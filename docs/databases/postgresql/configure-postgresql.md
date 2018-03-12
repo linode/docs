@@ -25,9 +25,9 @@ PostgreSQL can be configured and tuned through a series of configuration files. 
 
 ## Before You Begin
 
-You should have a working installation of PostgreSQL on your system before beginning this guide. Go through our [How to Install PostgreSQL on Ubuntu guide](/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04) to install PostgreSQL and create a sample database.
+You should have a working installation of PostgreSQL on your system before beginning this guide. Go through our [How to Install PostgreSQL on Ubuntu guide](/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04/) to install PostgreSQL and create a sample database.
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 

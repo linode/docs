@@ -40,7 +40,7 @@ All critical data should be backed up, and if possible in more than one location
 
 ### Backing up Databases
 
-Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found [here](/docs/databases/mysql/back-up-your-mysql-databases#option-1-create-backups-of-an-entire-database-management-system-using-the-mysqldump-utility).
+Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found [here](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/).
 
 ### Backing up Important Files
 
@@ -157,7 +157,7 @@ This guide is a high-level overview, and does not discuss runlevels. Read more a
 
 ## SSL Passphrases
 
-Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/networking/using-the-linode-shell-lish) console to enter your passphrase on reboot:
+Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/networking/using-the-linode-shell-lish/) console to enter your passphrase on reboot:
 
     Starting web server (apache2)...[Mon Sep 22 09:03:45 2008] [warn] module ssl_module is already loaded, skipping
     Apache/2.2.3 mod_ssl/2.2.3 (Pass Phrase Dialog)
@@ -177,7 +177,7 @@ If you use full-disk encryption, enter your password in the LISH console after a
 
 ## Firewall Rules
 
-If you followed the [Creating a Firewall](/docs/security/securing-your-server#configure-a-firewall) section of our [Securing your Server](/docs/security/securing-your-server) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
+If you followed the [Creating a Firewall](/docs/security/securing-your-server/#configure-a-firewall) section of our [Securing your Server](/docs/security/securing-your-server/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
 
 1.  Ensure that your custom firewall rules are saved:
 
@@ -194,6 +194,6 @@ You can deploy your services to an additional Linode to enable high availability
 {{< /note >}}
 
  - [Linode NodeBalancers](/docs/platform/nodebalancer/)
- - [Using Nginx for Proxy Services and Software Load Balancing](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
- - [MySQL Master-Master Replication](/docs/databases/mysql/mysql-master-master-replication)
- - [MariaDB Clusters with Galera](/docs/databases/mariadb/clustering-with-mariadb-and-galera)
+ - [Using Nginx for Proxy Services and Software Load Balancing](/docs/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)
+ - [MySQL Master-Master Replication](/docs/databases/mysql/configure-master-master-mysql-database-replication/)
+ - [MariaDB Clusters with Galera](/docs/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)

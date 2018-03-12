@@ -53,7 +53,7 @@ Before we get started, let's review the components of the setup we'll be creatin
 
 !["A sharded MongoDB cluster"](/docs/assets/mongodb-cluster-diagram.png "A sharded MongoDB cluster")
 
-The problem in this configuration is that if one of the shard servers experiences downtime, a portion of your data will become unavailable. To avoid this, you can use [replica sets](https://docs.mongodb.com/manual/reference/replica-configuration/) for each shard to ensure high availability. For more information, refer to our guide on [creating MongoDB replica sets](/docs/databases/mongodb/create-a-mongodb-replica-set).
+The problem in this configuration is that if one of the shard servers experiences downtime, a portion of your data will become unavailable. To avoid this, you can use [replica sets](https://docs.mongodb.com/manual/reference/replica-configuration/) for each shard to ensure high availability. For more information, refer to our guide on [creating MongoDB replica sets](/docs/databases/mongodb/create-a-mongodb-replica-set/).
 
 ## Configure Hosts File
 
