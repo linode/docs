@@ -25,14 +25,14 @@ This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 ![Install LAMP on Ubuntu 16.04](/docs/assets/install-lamp-on-ubuntu-1604.png "Install LAMP on Ubuntu 16.04")
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups).
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups/).
 
 Replace each instance of `example.com` in this guide with your site's domain name.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and that the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides and that the Linode's [hostname is set](/docs/getting-started/#setting-the-hostname).
 
 2.  Update your system:
 
@@ -158,7 +158,7 @@ a2dissite example.com.conf
 
         sudo systemctl reload apache2
 
-Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](https://www.linode.com/docs/networking/dns/dns-manager-overview) for your domain to point to your Linode's IP address.
+Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/networking/dns/dns-manager-overview/) for your domain to point to your Linode's IP address.
 
 If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 

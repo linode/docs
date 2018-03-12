@@ -43,24 +43,24 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
 ## Before You Begin
 
-1.  Many of the steps in this guide require root privileges. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
+1.  Many of the steps in this guide require root privileges. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
 
 2. Your Linode should have at least [4GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
 3. Install NGINX or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:
 
-      - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi)
-      - [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7)
+      - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/)
+      - [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7/)
 
 4. Configure your webserver for virtual domain hosting:
 
       **NGINX**
 
-      - [How to Configure NGINX](/docs/web-servers/nginx/how-to-configure-nginx)
+      - [How to Configure NGINX](/docs/web-servers/nginx/how-to-configure-nginx/)
 
       **Apache**
 
-      - [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics)
+      - [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics/)
 
 ## Update System and Install Pre-requisites
 

@@ -114,13 +114,13 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/VVs9Ed-HkjE" frameborder="0" allowfullscreen></iframe>
 
--   **Windows:** There is no native SSH client, but you can use a free, open source application called [PuTTY](/docs/networking/using-putty). For a walk-through of connecting to your Linode in Windows using PuTTY, see the following video:
+-   **Windows:** There is no native SSH client, but you can use a free, open source application called [PuTTY](/docs/networking/ssh/ssh-connections-using-putty-on-windows/). For a walk-through of connecting to your Linode in Windows using PuTTY, see the following video:
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/eEsCD7n17mk" frameborder="0" allowfullscreen></iframe>
 
 ### Find the IP Address of Your Linode
 
-Your Linode has a unique *IP address* that identifies it to other devices and users on the internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#add-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
+Your Linode has a unique *IP address* that identifies it to other devices and users on the internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/websites/hosting-a-website/#add-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
 
 Find your Linode's IP address from the [Linode Manager](https://manager.linode.com).
 
@@ -135,7 +135,7 @@ In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 addre
 
 ### Log In for the First Time
 
-Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/using-putty).
+Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/ssh/ssh-connections-using-putty-on-windows/).
 
 1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address:
 
@@ -215,7 +215,7 @@ After running a sync, it may end with a message that you should upgrade Portage 
 
 ## Setting the Hostname
 
-Your system's hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic. If you want to assign your system a fully qualified domain name, see our guide on using your system's [hosts file](/docs/networking/dns/using-your-systems-hosts-file).
+Your system's hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic. If you want to assign your system a fully qualified domain name, see our guide on using your system's [hosts file](/docs/networking/dns/using-your-systems-hosts-file/).
 
 Once you're done, you can verify by running the command `hostname`.
 
@@ -235,7 +235,7 @@ Replace `example_hostname` with one of your choice.
 {{< note >}}
 Debian and Ubuntu include a line in their hosts file for a loopback domain by default (127.0.1.1), but even though they're closely related, the commands above to set a hostname don't change the loopback domain.
 
-The result is the message when using sudo commands: *sudo: unable to resolve host* . To fix this, add your hostname to the hosts file as shown in the last example [here](/docs/networking/dns/using-your-systems-hosts-file).
+The result is the message when using sudo commands: *sudo: unable to resolve host* . To fix this, add your hostname to the hosts file as shown in the last example [here](/docs/networking/dns/using-your-systems-hosts-file/).
 {{< /note >}}
 
 ### CentOS 6
@@ -298,4 +298,4 @@ The output should look similar to: `Thu Feb 16 12:17:52 EST 2012`.
 
 ## Next Steps
 
-Now that you have an up-to-date Linode, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/security/securing-your-server) quick start guide to get going.
+Now that you have an up-to-date Linode, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/security/securing-your-server/) quick start guide to get going.
