@@ -31,9 +31,9 @@ This guide demonstrates how to:
 
 A [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/) is assumed to be available. Typically this is located in `~/home/username/.ssh/id_rsa.pub`.
 
-1.  Install Git if needed:
+Install Git if needed:
 
-        sudo apt install git
+    sudo apt install git
 
 ### On Your Linode
 
@@ -171,7 +171,7 @@ dokku   dokku@example-ip:flask-example (push)
 
 ## Deploy a Flask Application
 
-1.  On your local computer, deploy the Flask application by pushing the branch to the `dokku` remote. This will take care of NGINX behind the scenes and expose port 80:
+1.  On your local computer, deploy the Flask application by pushing the branch to the `dokku` remote. This will take care of NGINX behind the scenes and expose port `80`:
 
         git push dokku master
 
@@ -217,35 +217,35 @@ This requires Dokku version 0.5 or higher. Check by running `dokku version`.
 
 ## Start, Stop, and Restart Applications
 
-List all running Dokku applications:
+* List all running Dokku applications:
 
-    dokku apps
+        dokku apps
 
-Restart an application:
+* Restart an application:
 
-    dokku ps:restart flask-example
+        dokku ps:restart flask-example
 
-Stop an application:
+* Stop an application:
 
-    dokku ps:stop flask-example
+        dokku ps:stop flask-example
 
-Restore all applications after a reboot:
+* Restore all applications after a reboot:
 
-    dokku ps:restore
+        dokku ps:restore
 
 ### View Application Logs
 
-Viewing the application logs is done through Dokku or the Docker container.
+View the application logs through Dokku or the Docker container.
 
 1.  To see logs through Dokku:
 
         dokku logs flask-example
 
-1.  List all running Docker containers:
+2.  List all running Docker containers:
 
         sudo docker ps -a
 
-    Find the container ID then run:
+3.  Find the container ID then run:
 
         sudo docker logs container_id
 
@@ -253,7 +253,7 @@ Viewing the application logs is done through Dokku or the Docker container.
 
 Dokku does not scale applications automatically, and by default will only run a single `web` process. To increase the number of containers running your application, you can use the `ps:scale` command.
 
-1.  Check how many workers you application currently has:
+1.  Check how many workers your application currently has:
 
         dokku ps:scale flask-example
 
