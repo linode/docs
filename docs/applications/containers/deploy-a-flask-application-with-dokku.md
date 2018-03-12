@@ -29,7 +29,7 @@ This guide demonstrates how to:
 
 ### On Your Local Computer
 
-A [public key](httpdocs/security/authentication/use-public-key-authentication-with-ssh/) is assumed to be available. Typically this is located in `~/home/username/.ssh/id_rsa.pub`.
+A [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/) is assumed to be available. Typically this is located in `~/home/username/.ssh/id_rsa.pub`.
 
 1.  Install Git if needed:
 
