@@ -14,11 +14,11 @@ published: 2010-02-24
 title: Apache Configuration Structure
 external_resources:
  - '[Apache Installation](/docs/web-servers/apache/)'
- - '[LAMP Stack Guides](/docs/lamp-guides/)'
- - '[Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)'
+ - '[LAMP Stack Guides](/docs/web-servers/lamp/)'
+ - '[Troubleshooting Apache](/docs/troubleshooting/troubleshooting-common-apache-issues/)'
 ---
 
-Throughout our [Apache section](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/lamp-guides/), a very simple configuration based on `<VirtualHost>` is offered. This configuration is useful for hosting several websites on a single server. However, this approach does not provide granular control over resource usage within each site.
+Throughout our [Apache section](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/web-servers/lamp/), a very simple configuration based on `<VirtualHost>` is offered. This configuration is useful for hosting several websites on a single server. However, this approach does not provide granular control over resource usage within each site.
 
 ![Apache configuration structure](/docs/assets/apache-configuration-structure-headerimg.jpg "Apache configuration structure")
 
@@ -197,5 +197,3 @@ The following list provides a guide to the priority that Apache uses to merge co
 5.  Finally, `<Location>` and `<LocationMatch>` are read.
 
 Generally, `<Directory>` options are parsed in order from shortest to longest. In other words, options set for `/srv/www/example.com/public_html/objects` will be processed before options set for `/srv/www/example.com/public_html/objects/images` regardless of what order they appear in the configuration file. All other directives are processed in the order that they appear in the configuration file.
-
-
