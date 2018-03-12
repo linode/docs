@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Host your own PaaS with Dokku, a highly extensible way to deploy applications built on top of Docker and Git. This guide shows how to use Dokku to quickly deploy a Flask application with SSL and NGINX.'
 og_description: 'Host your own PaaS with Dokku, a highly extensible way to deploy applications built on top of Docker and Git. This guide shows how to use Dokku to quickly deploy a Flask application with SSL and NGINX.'
-keywords: ['docker','containers','nginx', 'heroku', 'PaaS', 'git']
+keywords: ['docker','containers','nginx', 'heroku', 'PaaS', 'git', 'Platform-as-aservice', 'Platform As a Service']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-07
 modified: 2018-03-07
@@ -16,7 +16,7 @@ external_resources:
 - '[Flask](http://flask.pocoo.org/)'
 ---
 
-Dokku is a self-hosted Platform-as-a-Service (PaaS) that makes deploying applications very simple through Git. Although the implementation is similar to Heroku, it lacks certain key features such as auto-scaling. However, Dokku is an extremely powerful tool that automatically runs your application inside Docker and requires minimal configuration of web servers.
+Dokku is a self-hosted Platform-as-a-Service (PaaS) that makes deploying applications simple using Git. Although Dokku's implementation is similar to Heroku, it lacks certain key features such as auto-scaling. Dokku is an extremely powerful tool that automatically runs your application inside Docker and requires minimal configuration of web servers.
 
 This guide demonstrates how to:
 
@@ -29,7 +29,7 @@ This guide demonstrates how to:
 
 ### On Your Local Computer
 
-A public key is assumed to be available. Typically this is located in `~/home/username/.ssh/id_rsa.pub`.
+A [public key](httpdocs/security/authentication/use-public-key-authentication-with-ssh/) is assumed to be available. Typically this is located in `~/home/username/.ssh/id_rsa.pub`.
 
 1.  Install Git if needed:
 
@@ -37,7 +37,7 @@ A public key is assumed to be available. Typically this is located in `~/home/us
 
 ### On Your Linode
 
-The Dokku install script will create a `dokku` user, install Docker, and pull relevant images behind the scenes.
+The Dokku install script creates a `dokku` user on the system, installs Docker, and pulls the relevant Docker.
 
 1.  Download the install script from Dokku then run the script:
 
@@ -62,7 +62,7 @@ If necessary, please consult this document to setup swap: http://dokku.viewdocs.
     ![Initial Dokku Installation](/docs/assets/dokku-public-key.png)
 
     {{< caution >}}
-Make sure to add the public key immediately after running the installation script to avoid someone else adding a public key to Dokku. For an unattended installation, refer to the [advanced installation instructions](https://github.com/dokku/dokku/blob/master/docs/getting-started/advanced-installation.md).
+Add the public key immediately after running the installation script to avoid someone else adding a public key to Dokku. For an unattended installation, refer to the [advanced installation instructions](https://github.com/dokku/dokku/blob/master/docs/getting-started/advanced-installation.md).
 {{< /caution >}}
 
 3.  To add additional SSH keys, pipe the output over SSH to the `dokku` user. Replace `example.com` with the IP address of your Linode.
@@ -101,7 +101,7 @@ Flask==0.12.1
 gunicorn==19.7.1
 {{< /file >}}
 
-4.  For more complex projects with many dependencies in a virtual environment, redirect output of `pip freeze` into `requirements.txt`.
+4.  For more complex projects with many dependencies using a virtual environment, redirect output of `pip freeze` into `requirements.txt`.
 
         pip freeze > requirements.txt
 
@@ -118,14 +118,14 @@ venv/
 
 ### Procfile
 
-The Procfile tells the Gunicorn server what command to use to launch the app:
+The Procfile tells the Gunicorn server what command to use when launching the app:
 
 {{< file "Procfile" >}}
 web: gunicorn hello_world:app --workers=4
 {{< /file >}}
 
 {{< note >}}
-4 workers is a good default for an app running on a Linode. See the [Gunicorn docs](http://docs.gunicorn.org/en/stable/design.html#how-many-workers) for more information about how to determine the correct number of workers for your particular app.
+4 workers is a good default for an web app running on a Linode. See the [Gunicorn docs](http://docs.gunicorn.org/en/stable/design.html#how-many-workers) for more information about determining the correct number of workers for your particular app.
 {{< /note >}}
 
 ### Git Remote
@@ -136,11 +136,11 @@ web: gunicorn hello_world:app --workers=4
         git add .
         git commit -m "Deploy Flask with Dokku"
 
-2.  Add a remote called `dokku` with the username `dokku` and substitute `example.com` with the public IP address of your Linode.
+2.  Add a remote named `dokku` with the username `dokku` and substitute `example.com` with the public IP address of your Linode:
 
         git remote add dokku dokku@example.com:flask-example
 
-3.  Verify the remote is added.
+3.  Verify the remote is added:
 
         git remote -v
 
@@ -151,15 +151,15 @@ dokku   dokku@example-ip:flask-example (fetch)
 dokku   dokku@example-ip:flask-example (push)
 {{< /output >}}
 
-In summary, the project layout looks like:
+    In summary, the project layout looks like:
 
-    flask-example
-    ├── .gitignore
-    ├── Procfile
-    ├── hello_world.py
-    └── requirements.txt
+        flask-example
+        ├── .gitignore
+        ├── Procfile
+        ├── hello_world.py
+        └── requirements.txt
 
-## Create Project on Dokku Host
+## Create Project on a Dokku Host
 
 1.  SSH into your Linode and create the application:
 
@@ -169,7 +169,7 @@ In summary, the project layout looks like:
 
         dokku domains:enable flask-example
 
-## Deploy Flask Application
+## Deploy a Flask Application
 
 1.  On your local computer, deploy the Flask application by pushing the branch to the `dokku` remote. This will take care of NGINX behind the scenes and expose port 80:
 
@@ -195,19 +195,19 @@ The remaining steps in this guide should be performed from your Linode.
 
         sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
 
-2.  Set the `DOKKU_LETSENCRYPT_EMAIL` environment variable to the email for Let's Encrypt.
+2.  Set the `DOKKU_LETSENCRYPT_EMAIL` environment variable to the email for Let's Encrypt:
 
         dokku config:set flask-example DOKKU_LETSENCRYPT_EMAIL=docs@linode.com
 
-3.  Add the application and domain.
+3.  Add the application and domain:
 
         dokku domains:add flask-example example.com
 
-4.  Create the SSL certificate. NGINX will automatically start serving the application over HTTPS on port 443.
+4.  Create the SSL certificate. NGINX will automatically start serving the application over HTTPS on port 443:
 
          dokku letsencrypt flask-example
 
-5.  Run this as a cron job so the certificate will automatically renew.
+5.  Run this as a cron job so the certificate will renew automatically:.
 
         dokku letsencrypt:cron-job --add
 
@@ -217,7 +217,7 @@ This requires Dokku version 0.5 or higher. Check by running `dokku version`.
 
 ## Start, Stop, and Restart Applications
 
-List all running applications:
+List all running Dokku applications:
 
     dokku apps
 
@@ -241,7 +241,7 @@ Viewing the application logs is done through Dokku or the Docker container.
 
         dokku logs flask-example
 
-1.  List all running containers with Docker:
+1.  List all running Docker containers:
 
         sudo docker ps -a
 
@@ -277,4 +277,4 @@ Dokku does not scale applications automatically, and by default will only run a 
 -----> web                4
 {{< /output >}}
 
-Dokku is an open source alternative to Heroku for small applications. Deploying applications is as simple as pushing to a remote with Git. Elements such as Docker and NGINX are abstracted away to minimize time to deployment. There are additional features such as pre-deploy hooks and linking databases which are not shown in this guide.
+Dokku is an open source alternative to Heroku for small applications. Deploying applications is as simple as pushing to a remote with Git. Elements such as Docker and NGINX are abstracted away to minimize time to deployment. There are additional features such as [pre-deploy hooks](http://dokku.viewdocs.io/dokku/advanced-usage/deployment-tasks/) and linking databases which are not shown in this guide.
