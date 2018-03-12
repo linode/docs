@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Host your own PaaS with Dokku, a highly extensible way to deploy applications built on top of Docker and Git. This guide shows how to use Dokku to quickly deploy a Flask application with SSL and NGINX.'
 og_description: 'Host your own PaaS with Dokku, a highly extensible way to deploy applications built on top of Docker and Git. This guide shows how to use Dokku to quickly deploy a Flask application with SSL and NGINX.'
-keywords: ['docker','containers','nginx', 'heroku', 'PaaS', 'git', 'Platform-as-aservice', 'Platform As a Service']
+keywords: ['docker','containers','nginx', 'heroku', 'PaaS', 'git', 'Platform-as-a-service', 'Platform As a Service']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-07
 modified: 2018-03-07
@@ -37,7 +37,7 @@ A [public key](httpdocs/security/authentication/use-public-key-authentication-wi
 
 ### On Your Linode
 
-The Dokku install script creates a `dokku` user on the system, installs Docker, and pulls the relevant Docker.
+The Dokku install script creates a `dokku` user on the system, installs Docker, and pulls the relevant image.
 
 1.  Download the install script from Dokku then run the script:
 
