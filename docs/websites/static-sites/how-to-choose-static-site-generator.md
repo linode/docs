@@ -39,20 +39,30 @@ Many websites are built using static site generators, including this [list of Je
 
 [StaticGen](https://www.staticgen.com/) has an updated list of static site generators. To find the right one for you, consider the following:
 
-* Tools you build with - Node / Ruby / Python / Git / etc.
-* Themes - have you found a theme you've fallen in love with?
-* Plugins - will you be able to connect it to that thing you need.
-* Language - available in your language?
-* Project activity - is the application still in active development?
+* **Tools you build with** - Node / Ruby / Python / Git / Markdown / etc.
+* **Themes** - have you found a theme you've fallen in love with?
+* **Plugins** - will you be able to connect it to that thing you need.
+* **Language** - available in your language?
+* **Project activity** - is the application still in active development?
 
 Since static site generators are easy to set up, it's worth installing a few and creating test pages to see which works best for your workflow.
 
 ## Static Site Generator Comparison
 
-**Jekyll**: Touts itself as "blog aware," meaning it was made to make blogging easy. Jekyll was built by GitHub and is consistently one of the most popular static site generators. The larger community means a great library of available themes, plugins, and available answers. [GitHub pages](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/) can be configured to automatically build and host a GitHub repository using Jekyll. Jekyll installs as a RubyGem.
-**Hugo**: Hugo builds pages quickly. Hugo has a built-in [LiveReload](https://gohugo.io/getting-started/usage/#livereload), so you can see your changes in browser as soon as a tracked file is saved. [Hugo can be installed](https://gohugo.io/getting-started/installing/) through a package manager or with one of the many available binary packages.
-**Hexo**: I'm not sure that anyone really uses this.
-**Gatsby**: Gatsby is quickly moving up the list of popular static site generators. Pages are built fast, and are created in a way that speeds loads times as well. Gatsby includes hot reloading, and changes are shown in browser instantly. [Install Gatsby](https://www.gatsbyjs.org/docs/) using npm.
+* **Jekyll**: Touts itself as "blog aware," meaning it was made to make blogging easy. Jekyll was built by GitHub and is consistently one of the most popular static site generators. The larger community means a great library of available themes, plugins, and available answers. [GitHub pages](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/) can be configured to automatically build and host a GitHub repository using Jekyll. Jekyll installs as a RubyGem.
+* **Hugo**: Hugo builds pages quickly. Hugo has a built-in [LiveReload](https://gohugo.io/getting-started/usage/#livereload), so you can see your changes in browser as soon as a tracked file is saved. [Hugo can be installed](https://gohugo.io/getting-started/installing/) through a package manager or with one of the many available binary packages.
+* **Hexo**: I'm not sure that anyone really uses this.
+* **Gatsby**: Gatsby is quickly moving up the list of popular static site generators. Pages are built fast, and are created in a way that speeds loads times as well. Gatsby includes hot reloading, and changes are shown in browser instantly. [Install Gatsby](https://www.gatsbyjs.org/docs/) using npm.
+
+## How to use a Static Site Generator
+
+1.  Choose a static site generator and follow the installation instructions on its site.
+2.  Install a theme with features that most closely resemble your needs. Remember that you can customize almost any aspect.
+3.  Edit and save a few sample pages in a text editor like [Atom](https://atom.io), [Sublime](https://www.sublimetext.com/), or [Neovim](https://neovim.io/).
+    * Note that each generator requires different meta information. Refer to the official documentation to learn more about available features.
+4.  Preview your pages if available.
+5.  Instruct your static site generator to build the site.
+6.  Move the newly built or updated pages to your [web server](/docs/web-servers/).
 
 ## Add a Front-End to Static Site Management
 
@@ -64,4 +74,9 @@ While convenient, using a front-end gives up some control and adds more moving p
 
 A static site doesn't have to mean a read-only user experience.
 
-You can add [Disqus](https://help.disqus.com/customer/portal/articles/472097-universal-embed-code) comments, [Snipcart](https://snipcart.com/blog/static-site-e-commerce-part-2-integrating-snipcart-with-jekyll) or [GoCommerce](https://github.com/netlify/gocommerce) for eCommerce, [MailChimp](https://kb.mailchimp.com/lists/signup-forms/add-a-signup-form-to-your-website) for email lists, or even create your own email form using [Zapier](https://www.harrycresswell.com/articles/form-data-with-zapier/).
+You can add:
+
+* [Disqus](https://help.disqus.com/customer/portal/articles/472097-universal-embed-code) comments,
+* [Snipcart](https://snipcart.com/blog/static-site-e-commerce-part-2-integrating-snipcart-with-jekyll) or [GoCommerce](https://github.com/netlify/gocommerce) for eCommerce,
+* [MailChimp](https://kb.mailchimp.com/lists/signup-forms/add-a-signup-form-to-your-website) for email lists, or even
+* Create your own email form using [Zapier](https://www.harrycresswell.com/articles/form-data-with-zapier/).
