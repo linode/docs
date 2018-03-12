@@ -117,11 +117,11 @@ Most servers and clients support both IMAP and POP3. POP3 clients connect to the
 
 Here are the most popular IMAP and POP3 servers available:
 
-- [Citadel](http://www.citadel.org) is an all-in-one mail service that includes mail, calendars, instant messaging, mailing lists, and other collaboration tools. It's open source and geared towards small and medium-sized organizations. Linode has  guides for [Citadel on Ubuntu 12.04](/docs/email/citadel/ubuntu-12-04-precise-pangolin) and [Citadel on Debian 6](/docs/email/citadel/debian-6-squeeze).
+- [Citadel](http://www.citadel.org) is an all-in-one mail service that includes mail, calendars, instant messaging, mailing lists, and other collaboration tools. It's open source and geared towards small and medium-sized organizations. Linode has  guides for [Citadel on Ubuntu 12.04](/docs/email/citadel/email-with-citadel-on-ubuntu-12-04-lts-precise-pangolin/) and [Citadel on Debian 6](/docs/email/citadel/email-with-citadel-on-debian-6-squeeze/).
 - [Courier](http://www.courier-mta.org) has a very popular IMAP server called [Courier IMAP](http://www.courier-mta.org/imap/). It's an all-in-one mail server software suite, but Courier IMAP can be installed by itself if that's the only part you need.
 - [Cyrus](http://www.cyrusimap.org/index.php) is a modern, security-oriented IMAP/POP3 server designed to work on sealed servers where users do not log in directly.
 - [DBMail](http://www.dbmail.org) is an open source project that stores mail in databases instead of flat files.
-- [Dovecot](http://www.dovecot.org) is a lightweight, modern, and configurable mail server, and is part of our [recommended mail server build](/docs/email/postfix/email-with-postfix-dovecot-and-mysql).
+- [Dovecot](http://www.dovecot.org) is a lightweight, modern, and configurable mail server, and is part of our [recommended mail server build](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/).
 - [Xmail](http://www.xmailserver.org) is a full-featured POP3 server, but does not support IMAP.
 - [Zimbra](http://www.zimbra.com) is an all-in-one mail service that's much simpler to install than other options, but less customizable.
 
@@ -131,17 +131,17 @@ Here are the most popular IMAP and POP3 servers available:
 
 An SSL certificate encrypts connections to your mail server. It's possible to run a mail server without an SSL certificate, but it's not recommended.
 
-Any type of SSL certificate will work, but some certificates have different degrees of trustworthiness for your users. If you want the highest level of trustworthiness, you should [purchase a signed SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) from a reputable company.
+Any type of SSL certificate will work, but some certificates have different degrees of trustworthiness for your users. If you want the highest level of trustworthiness, you should [purchase a signed SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate/) from a reputable company.
 
-You can also use a free self-signed certificate if you are comfortable with the warnings it generates. You can make your own [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate), or, if you're following our recommended build, you can use the one that comes with Dovecot by default.
+You can also use a free self-signed certificate if you are comfortable with the warnings it generates. You can make your own [self-signed SSL certificate](/docs/security/ssl/create-a-self-signed-tls-certificate/), or, if you're following our recommended build, you can use the one that comes with Dovecot by default.
 
 ### Software Installation
 
 Install and configure the MTA, MDA, and IMAP/POP3 server. To help manage domains, email addresses, user credentials, aliases, etc., install a database server like MySQL or PostgreSQL.
 
-For detailed configuration instructions, see our [Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide.
+For detailed configuration instructions, see our [Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide.
 
-For more mail server guides, including guides for older software versions and other mail-related services, visit our [Email Server Guides](/docs/email).
+For more mail server guides, including guides for older software versions and other mail-related services, visit our [Email Server Guides](/docs/email/).
 
 ### DNS Records
 
@@ -175,7 +175,7 @@ example.com         86400   MX      10      203.0.113.0
 mail.example.com    86400   MX      10      203.0.113.0
 {{< /output >}}
 
-If you use Linode's [DNS Manager](/docs/dns-manager), point your MX records to a target domain or subdomain that resolves to your Linode. Make sure that domain or subdomain has an *A record* that points to the correct IP address.
+If you use Linode's [DNS Manager](/docs/networking/dns/dns-manager-overview/), point your MX records to a target domain or subdomain that resolves to your Linode. Make sure that domain or subdomain has an *A record* that points to the correct IP address.
 
 #### SPF Records
 
