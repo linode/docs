@@ -10,7 +10,7 @@ published: 2018-03-09
 modified: 2018-03-09
 modified_by:
   name: Linode
-title: 'Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Compatibility Testing'
+title: 'Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
 h1_title: 'Use Selenium Grid for Cross-Browser Compatibility Testing'
 external_resources:
   - '[Selenium Project Home](https://www.seleniumhq.org/projects/webdriver/)'
@@ -149,9 +149,9 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
 21:33:23.178 INFO - The node is registered to the hub and ready to use
 {{< /output >}}
 
-    * You can also check the output from the hub itself:
+  * You can also check the output from the hub itself:
 
-        {{< output >}}
+    {{< output >}}
 21:27:53.849 INFO [DefaultGridRegistry.add] - Registered a node http://198.58.122.154:5555
 21:27:56.445 WARN [BaseRemoteProxy.<init>] - Max instance not specified. Using default = 1 instance
 21:27:56.450 INFO [DefaultGridRegistry.add] - Registered a node http://50.116.22.93:5555
