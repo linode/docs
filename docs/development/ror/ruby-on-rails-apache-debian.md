@@ -60,7 +60,7 @@ Ruby will be installed with the Ruby Version Manager (RVM), which makes it easy 
 
         sudo apt-get install build-essential libapache2-mod-passenger ruby ruby-dev libruby zlib1g-dev libsqlite3-dev
 
-2.  Rails requires a working Javascript runtime on your system in order to run. If you do not already have one installed, use Node.js:
+2.  Rails requires a working JavaScript runtime on your system in order to run. If you do not already have one installed, use Node.js:
 
         sudo curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
         sudo apt install nodejs
