@@ -12,7 +12,6 @@ modified_by:
   name: Linode
 published: 2009-08-13
 deprecated: true
-deprecated_link: 'development/ror/ruby-on-rails-with-apache-on-ubuntu'
 title: 'Ruby on Rails with Apache on Ubuntu 9.04 (Jaunty)'
 external_resources:
   - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
