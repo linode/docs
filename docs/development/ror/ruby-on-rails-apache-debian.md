@@ -17,7 +17,7 @@ external_resources:
  - '[Phusion Passenger](https://www.phusionpassenger.com/)'
 ---
 
-![Ruby on Rails with Apache on Debian 8](/docs/assets/ruby_on_rails_with_apache_debian_8.png "Ruby on Rails with Apache on Debian 8")
+![Ruby on Rails with Apache on Debian](/docs/assets/ror-apache/ruby_on_rails_with_apache_debian.jpg "Ruby on Rails with Apache on Debian")
 
 ## What is Ruby on Rails?
 
