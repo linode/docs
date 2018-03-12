@@ -10,6 +10,8 @@ modified: 2013-09-13
 modified_by:
   name: Linode
 published: 2013-09-13
+deprecated: true
+deprecated_link: 'development/ror/ruby-on-rails-apache-debian/'
 title: 'Ruby on Rails with Apache on Debian 7 (Wheezy)'
 external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
