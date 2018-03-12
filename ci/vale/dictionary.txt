@@ -469,6 +469,7 @@ hba
 hd0
 hdfs
 heartbleed
+heroku
 hiera
 hilights
 hl2
@@ -955,6 +956,7 @@ preprocessing
 prerouting
 prestashop
 pritunl
+procfile
 procmail
 procs
 programmatically
