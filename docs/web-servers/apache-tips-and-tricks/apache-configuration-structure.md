@@ -18,7 +18,7 @@ external_resources:
  - '[Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)'
 ---
 
-Throughout our [Apache section](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/lamp-guides/), a very simple configuration based on `<VirtualHost>` is offered. This configuration is useful for hosting several websites on a single server. However, this approach does not provide granular control over resource usage *within* these sites.
+Throughout our [Apache section](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/lamp-guides/), a very simple configuration based on `<VirtualHost>` is offered. This configuration is useful for hosting several websites on a single server. However, this approach does not provide granular control over resource usage within each site.
 
 ![Apache configuration structure](/docs/assets/apache-configuration-structure-headerimg.jpg "Apache configuration structure")
 
@@ -40,30 +40,15 @@ The `<Directory>` block refers to a directory within the filesystem and specifie
 {{< /file-excerpt >}}
 
 
-### Additional Information Regarding the <Directory> Block
+### Additional Information
 
 -   Directory blocks *cannot* be nested within each other.
 -   Directory blocks *can* be nested within `<VirtualHost>` blocks.
--   The path contained in a directory block can contain the wildcard character. The asterisk (e.g. `*`) will match any series of characters while a question mark (e.g. `?`) will match against any single character. This may be useful if you need to control an option for the `DocumentRoot` of all virtual hosts. You might begin a `<Directory>` block with the following line:
+-   The path contained in a directory block can contain the wildcard character. The asterisk will match any series of characters while a question mark will match against any single character. This may be useful if you need to control an option for the `DocumentRoot` of all virtual hosts:
 
-    **File excerpt:** *Directory Block in an Apache Configuration file* :
-
-        <Directory /srv/www/*/public_html>
-
-### Order of Precedence
-
-With so many possible locations for configuration options, it is possible to specify one option in one file or block only to have it be overridden by another option later. One of the chief challenges in using the Apache HTTP server is in determining how all of the disparately located configuration options combine to produce specific web server behaviors.
-
-The following list provides a guide to the priority that Apache uses to "merge configuration options" together. Later operations can override options specified earlier.
-
-1.  `<Directory>` blocks are read first.
-2.  `.htaccess` files are read at the same time as `<Directory>` blocks, but can override the options specified in `<Directory>` blocks if permitted by the `AllowOverride` option.
-3.  `<DirectoryMatch>` and `<Directory ~>` are read next.
-4.  `<Files>` and `<FilesMatch>` are read after directory behaviors have been determined.
-5.  Finally, `<Location>` and `<LocationMatch>` are read.
-
-Generally, `<Directory>` options are parsed in order from shortest to longest. In other words, options set for `/srv/www/example.com/public_html/objects` will be processed before options set for `/srv/www/example.com/public_html/objects/images` regardless of what order they appear in the configuration file. All other directives are processed in the order that they appear in the configuration file.
-
+	{{<file-excerpt "Apache Configuration File" apache >}}
+<Directory /srv/www/*/public_html>
+{{< /file-excerpt >}}
 
 ## File and Location Options
 
@@ -84,7 +69,7 @@ If enclosed in the `<VirtualHost>` block, this will apply to all files named `ro
 
 ### Location Options
 
-While `<Directory>` and `<Files>` blocks control Apache's behavior with regards to locations in the *filesystem*, the `<Location>` directive controls Apache's behavior with regard to a particular path requested by the client. If a user makes a request for `http://www.example.com/webmail/inbox/`, the web server would look in the `webmail/inbox/` directory beneath the `DocumentRoot` such as `/srv/www/example.com/public_html/webmail/inbox/`. One common use for this functionality might be to allow a script to handle requests made to a given path. For example, the following block directs all requests for the specified path to a `mod_python` script:
+While `<Directory>` and `<Files>` blocks control Apache's behavior with regards to locations in the *filesystem*, the `<Location>` directive controls Apache's behavior with regard to a particular path requested by the client. If a user makes a request for `http://www.example.com/webmail/inbox/`, the web server would look in the `webmail/inbox/` directory beneath the `DocumentRoot` such as `/srv/www/example.com/public_html/webmail/inbox/`. One common use for this functionality is to allow a script to handle requests made to a given path. For example, the following block directs all requests for the specified path to a `mod_python` script:
 
 {{< file-excerpt "Location Directive in an Apache Configuration file" apache >}}
 <Location /webmail/inbox>
@@ -98,9 +83,9 @@ While `<Directory>` and `<Files>` blocks control Apache's behavior with regards 
 
 Note that the options specified in `<Location>` directives are processed after the options specified in `<Directory>` blocks and can override any options set in these blocks.
 
-## htaccess Options
+## Override Options with htaccess
 
-In addition to the configuration methods discussed above, default configurations of Apache will read configuration options for a directory from a file located in that directory. This file is typically called `.htaccess`. Look for the following configuration options in your `httpd.conf` and connected files:
+In addition to the configuration methods discussed above, by default Apache will read configuration options for a directory from a file located in that directory. This file is typically called `.htaccess`. Look for the following configuration options in your `httpd.conf` and connected files:
 
 {{< file-excerpt "/etc/httpd/httpd.conf or /etc/apache2/apache2.conf" apache >}}
 AccessFileName .htaccess
@@ -129,7 +114,7 @@ Despite the power and flexibility provided by `.htaccess` files, there are disad
 
 If you want to disable `.htaccess` files for a directory or tree of directories, specify the following option in any *directory* block.
 
-{{< file-excerpt "Apache `<Directory >` block" apache >}}
+{{< file-excerpt "Apache Directory block" apache >}}
 AllowOverride None
 
 {{< /file-excerpt >}}
@@ -138,9 +123,9 @@ AllowOverride None
 You can specify `AllowOverride All` for a directory that falls within a directory where overrides have been disabled.
 {{</ note >}}
 
-### "Match" Directives and Regular Expressions
+## "Match" Directives and Regular Expressions
 
-In addition to the basic directives described above, Apache also allows server administrators some additional flexibility in how directories, files, and locations are specified. These "Match" blocks and regular expression-defined directive blocks allow administrators to define a single set of configuration options for a class of directories, files, and locations. Here is an example:
+In addition to the basic directives described above, Apache also allows server administrators some additional flexibility in how directories, files, and locations are specified. These "Match" blocks allow administrators to define a single set of configuration options for a class of directories, files, and locations. Here is an example:
 
 {{< file-excerpt "DirectoryMatch Block in an Apache Configuration file" apache >}}
 <DirectoryMatch "^.+/images">
@@ -154,7 +139,7 @@ In addition to the basic directives described above, Apache also allows server a
 
 This block specifies a number of options for any directory that matches the regular expression `^.+/images`. In other words, any path which begins with a number of characters and ends with images will match these options, including the following paths: `/srv/www/example.com/public_html/images/`, `/srv/www/example.com/public_html/objects/images`, and `/home/username/public/www/images`.
 
-Apache also allows an alternate syntax for regular expression-defined directory blocks. Adding a tilde (e.g. `~`) between the `Directory` term and the specified path causes the specified path to be read as a regular expression. Regular expressions are a standard syntax for pattern matching, and Apache supports standard and Perl regular expression variants.
+Apache also allows an alternate syntax for using regular expressions to define paths within a standard directory block. Adding a tilde (e.g. `~`) between `Directory` and the path causes the specified path to be read as a regular expression. Regular expressions are a standard syntax for pattern matching, and Apache supports standard and Perl regular expression variants.
 
 Though `DirectoryMatch` is preferred, the following block is equivalent to the previous block:
 
@@ -196,6 +181,21 @@ Apache provides similar functionality for using regular expressions to match a c
 {{< /file-excerpt >}}
 
 
-Note that the above `<Files>` and `<FilesMatch>` directives are equivalent, so are the `<Location>` and `<LocationMatch>` directives.
+The `<Files>` and `<FilesMatch>` directives above are equivalent, as are the `<Location>` and `<LocationMatch>` directives.
+
+
+## Order of Precedence
+
+With so many possible locations for configuration options, it is possible to specify one option in one file or block only to have it be overridden by another option later. One of the chief challenges in using the Apache HTTP server is in determining how all of the disparately located configuration options combine to produce specific web server behaviors.
+
+The following list provides a guide to the priority that Apache uses to merge configuration options together. Later operations can override options specified earlier.
+
+1.  `<Directory>` blocks are read first.
+2.  `.htaccess` files are read at the same time as `<Directory>` blocks, but can override the options specified in `<Directory>` blocks if permitted by the `AllowOverride` option.
+3.  `<DirectoryMatch>` and `<Directory ~>` are read next.
+4.  `<Files>` and `<FilesMatch>` are read after directory behaviors have been determined.
+5.  Finally, `<Location>` and `<LocationMatch>` are read.
+
+Generally, `<Directory>` options are parsed in order from shortest to longest. In other words, options set for `/srv/www/example.com/public_html/objects` will be processed before options set for `/srv/www/example.com/public_html/objects/images` regardless of what order they appear in the configuration file. All other directives are processed in the order that they appear in the configuration file.
 
 
