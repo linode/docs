@@ -126,7 +126,7 @@ Storage volumes **cannot** be sized down, only up. Keep this in mind when sizing
 
 Need ideas for what to do with space? We have several guides which walk you through installing software that would make a great pairing with large storage volumes:
 
-[Install Seafile with nginx on Ubuntu 16.04](/docs/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/)
+[Install Seafile with NGINX on Ubuntu 16.04](/docs/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/)
 
 [Install Plex Media Server on Ubuntu 16.04](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/)
 
