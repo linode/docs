@@ -235,4 +235,4 @@ This section will create a container, install the Apache web server, and add the
 
 ## Next Steps
 
-If you plan to use a single website, then a single `iptables` rule to the website container will suffice. If you plan to use multiple websites, you need to set up [a reverse proxy like NGINX](https://linode.com/docs/web-servers/nginx/nginx-reverse-proxy/) in a container. The `iptables` rule would then redirect to this container.
+If you plan to use a single website, then a single `iptables` rule to the website container will suffice. If you plan to use multiple websites, you will need to install a web server such as NGINX and set up [a reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) in a container. The `iptables` rule would then redirect to this container.
