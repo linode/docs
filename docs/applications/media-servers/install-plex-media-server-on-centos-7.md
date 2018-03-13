@@ -36,7 +36,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Plex
 
-1.  Head to the Plex [Downloads](https://www.plex.tv/downloads/) page and copy the installation link for Ubuntu. Use `wget` to download the installer via the copied link:
+1.  Head to the Plex [Downloads](https://www.plex.tv/downloads/) page and copy the installation link for CentOS. Use `wget` to download the installer via the copied link:
 
         wget https://downloads.plex.tv/plex-media-server/1.5.5.3634-995f1dead/plexmediaserver-1.5.5.3634-995f1dead.x86_64.rpm
 

@@ -83,7 +83,7 @@ Vlogger is a tool that logs information regarding Apache. Webalizer can then be 
     mv vlogger-1.3/vlogger /usr/sbin/
     rm -rf vlogger*
 
-More information on Webalizer can be found in our [Webalizer documentation](/docs/web-applications/analytics/webalizer/).
+More information on Webalizer can be found in our [Webalizer documentation](/docs/uptime/analytics/webalizer-on-centos-5/).
 
 # Install fail2ban
 

@@ -80,7 +80,7 @@ Our configuration also uses [XtraBackup](https://www.percona.com/software/mysql-
 
 ### Web Server
 
-Web servers monitor for requests for web content, and serve them accordingly. Our guide uses [Apache HTTPD](https://www.apache.org/), but other web servers like nginx and lighttpd will fill this role as well.
+Web servers monitor for requests for web content, and serve them accordingly. Our guide uses [Apache HTTPD](https://www.apache.org/), but other web servers like NGINX and lighttpd will fill this role as well.
 
 In most setups, the web server will read from a database to generate its content and write to a database if a form is filled out. On a dynamic website or application, the database is crucial to fulfilling web requests. The web server also stores software, such as Wordpress, and plugins within the file system.
 

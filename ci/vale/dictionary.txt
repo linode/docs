@@ -215,6 +215,8 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+datacenter
+datacenters
 datadir
 dataset
 datasets
@@ -394,6 +396,7 @@ gamemode
 gameplay
 gcc
 gcm
+geckodriver
 gem1
 gemfile
 genmask
@@ -430,6 +433,7 @@ golang
 goto
 gpc
 gpg
+gradle
 grafana
 graylog
 graylog2
@@ -466,6 +470,7 @@ hba
 hd0
 hdfs
 heartbleed
+heroku
 hexo
 hiera
 hilights
@@ -745,6 +750,7 @@ moolenaar
 motd
 mountpoint
 mouseover
+mpapis
 mpm
 msg
 msgid
@@ -953,6 +959,7 @@ preprocessing
 prerouting
 prestashop
 pritunl
+procfile
 procmail
 procs
 programmatically
@@ -1370,6 +1377,7 @@ webapp
 webapps
 webcit
 webdata1
+webdriver
 webmail
 webmin
 webpages

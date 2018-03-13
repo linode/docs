@@ -19,10 +19,10 @@ If you are using PostgreSQL in a production environment, it is important to take
 
 ## Before You Begin
 
-You should have a working installation of PostgreSQL on your system before beginning this guide. Go through our [How to Install PostgreSQL on Ubuntu guide](/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04) to install PostgreSQL and create a sample database.
+You should have a working installation of PostgreSQL on your system before beginning this guide. Go through our [How to Install PostgreSQL on Ubuntu guide](/docs/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04/) to install PostgreSQL and create a sample database.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## One-Time SQL Dump
@@ -102,7 +102,7 @@ You may want to set up a cron job so that your database will be backed up automa
 0 * * * 0 pg_dump -U postgres dbname > ~/postgres/backups/dbname.bak
 {{< /file-excerpt >}}
 
-5.  Save and exit from the editor. Your database will be backed up at midnight every Sunday. To change the time or frequency of the updates, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron) guide.
+5.  Save and exit from the editor. Your database will be backed up at midnight every Sunday. To change the time or frequency of the updates, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide.
 
 ## Next Steps
 

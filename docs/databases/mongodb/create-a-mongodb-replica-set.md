@@ -26,9 +26,9 @@ This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the c
 
 1.  To create a replica set, you'll need at least three Linodes with MongoDB installed. For information on how to install MongoDB, see the appropriate [guide](/docs/databases/mongodb/) for your distribution.
 
-2.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting each of your Linode's hostname and timezone.
+2.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting each of your Linode's hostname and timezone.
 
-3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 4.  Update your system:
 
@@ -141,7 +141,7 @@ replication:
 
 The `port` value of 27017 is the default. If you have reason to use a different port you may do so, but the rest of this guide will use the default. The `bindIp` directive specifies the IP address on which the MongoDB daemon will listen, and since we're connecting several hosts, this should be the IP address that corresponds with the Linode on which you're configuring it (the same address added to the hosts files in the previous section). Leaving the default of `127.0.0.1` allows you to connect locally as well, which may be useful for testing replication.
 
-Uncomment the `security` section, and use the `keyFile` option to direct MongoDB to the key you created previously. Enabling `keyFile` authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) as well, so you will need to [create users](/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them privileges to access specific databases.
+Uncomment the `security` section, and use the `keyFile` option to direct MongoDB to the key you created previously. Enabling `keyFile` authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) as well, so you will need to [create users](/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04/#create-database-users) and assign them privileges to access specific databases.
 
 The `replication` section needs to be uncommented to be enabled. Directives in this section are what directly affect the configuration of your replica set. The value `rs0` is the name we're using for our replica set; you can use a different naming convention if you like, but we'll be using `rs0` throughout this guide.
 
@@ -231,5 +231,5 @@ At this stage, your replica set is fully functional and ready to use. The steps 
 
 ## Next Steps
 
-Replica sets can be used as standalone components of a high availability system, or as part of a [sharded database cluster](https://docs.mongodb.com/manual/core/sharded-cluster-shards/). For larger datasets, a cluster allows you to distribute data across many database servers or replica sets and route queries to them based on criteria you specify. For more information on how to create a sharded cluster, see our guide on [building database clusters with MongoDB](/docs/databases/mongodb/build-database-clusters-with-mongodb).
+Replica sets can be used as standalone components of a high availability system, or as part of a [sharded database cluster](https://docs.mongodb.com/manual/core/sharded-cluster-shards/). For larger datasets, a cluster allows you to distribute data across many database servers or replica sets and route queries to them based on criteria you specify. For more information on how to create a sharded cluster, see our guide on [building database clusters with MongoDB](/docs/databases/mongodb/build-database-clusters-with-mongodb/).
 

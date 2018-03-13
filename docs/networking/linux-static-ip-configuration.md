@@ -154,7 +154,7 @@ IPADDR2=192.0.2.6
 PREFIX2=17
 
 # IPv6 gateway and primary address.
-IPV6_DEFAULTGW=fe80::1
+IPV6_DEFAULTGW=fe80::1%eth0
 IPV6ADDR=2001:db8:2000:aff0::2/128
 
 # Add additional IPv6 addresses, separated by a space.

@@ -23,13 +23,13 @@ Before we begin with the Drupal installation, there are few other guides that pr
 
 - If you're new to Linux system administration, consider our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics/) guides.
 - Before you can install Drupal, please complete our [Getting Started](/docs/getting-started/) guide to get a fully updated and running system.
-- Then, you will want to use one of the [LAMP](/docs/lamp-guides/) guides, or for beginners, the [Hosting a Website](/docs/websites/hosting-a-website) guide to get a functioning Linux/Apache/MySQL/PHP stack installed on your Linode.
-- If you want more information about installing [Apache](/docs/web-servers/apache/) or [the MySQL database](/docs/databases/mysql), our guides provide some additional information regarding these dependencies.
+- Then, you will want to use one of the [LAMP](/docs/web-servers/lamp/) guides, or for beginners, the [Hosting a Website](/docs/websites/hosting-a-website/) guide to get a functioning Linux/Apache/MySQL/PHP stack installed on your Linode.
+- If you want more information about installing [Apache](/docs/web-servers/apache/) or [the MySQL database](/docs/databases/mysql/), our guides provide some additional information regarding these dependencies.
 
 With these dependencies installed and running, we're ready to begin installing the Drupal content management system. We assume that you have a working SSH connection to your server and database credentials to access your database server.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Download and Install Drupal 7
@@ -120,7 +120,7 @@ You're now ready to begin using Drupal.
 
 Because Drupal is such a flexible and versatile system, it is difficult to recommend any particular set of practices for effective Drupal administration. The following guidelines and suggestions may be helpful on your journey:
 
--   Drupal sites tend to consume a great deal of system resources because of the way the system interacts with the database server. If you're having this kind of problem, consider resizing your Linode for more RAM or running your database on a [dedicated database server](/docs/databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy).
+-   Drupal sites tend to consume a great deal of system resources because of the way the system interacts with the database server. If you're having this kind of problem, consider resizing your Linode for more RAM or running your database on a [dedicated database server](/docs/databases/mysql/how-to-install-mysql-on-debian-7/).
 -   While it may be tempting to use many modules, it's often prudent to restrict your use of contributed modules to only those that provide functionality that you actively need. Turn off modules that you're not using to reduce your risk of running out of system resources or presenting possible security vulnerabilities.
 -   Linode - and the Drupal community - recommend that you avoid doing development work on you production machine. If at all possible, keep a clone of your production environment on an alternate server or on your local machine. This will allow you to test new modules and changes without affecting your live site.
 

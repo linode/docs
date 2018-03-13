@@ -97,13 +97,13 @@ By default your connection with Portainer GUI is not encrypted. If you need to u
 
 ### Set Up an Nginx Directory
 
-In the next section you will mount a directory on your Linode to an nginx Docker container. Create this directory now:
+In the next section you will mount a directory on your Linode to an NGINX Docker container. Create this directory now:
 
     mkdir -p ~/nginx/html
 
 ## Connect From a Remote Device
 
-With everything set up it's time to work with your remote development environment. This guide will test your development environment using a simple nginx container.
+With everything set up it's time to work with your remote development environment. This guide will test your development environment using a simple NGINX container.
 
 ### Install a Container from a Tablet
 
@@ -119,7 +119,7 @@ With everything set up it's time to work with your remote development environmen
 
     ![Portainer Templates List](/docs/assets/webdev-remote-devices/linode-on-remote-devices-06.png "Portainer Templates List")
 
-5. Deploy your container when ready by hitting the corresponding button. The nginx image will download automatically and will be available for deployment. You will be directed to the **Containers** menu, where you can manage your containers.
+5. Deploy your container when ready by hitting the corresponding button. The NGINX image will download automatically and will be available for deployment. You will be directed to the **Containers** menu, where you can manage your containers.
 
     ![Portainer Containers Menu](/docs/assets/webdev-remote-devices/linode-on-remote-devices-09.png "Portainer Containers Menu")
 
@@ -183,7 +183,7 @@ With everything set up it's time to work with your remote development environmen
 
 9. Tap the connection name to open an SSH connection to your Linode.
 
-10. Check your nginx container from JuiceSSH.
+10. Check your NGINX container from JuiceSSH.
 
         sudo docker ps
 
@@ -199,7 +199,7 @@ With everything set up it's time to work with your remote development environmen
 
         echo "<html><p>Hello World</p></html>" >> index.html
 
-14. Point your browser to the nginx server (you can check the port that nginx is listening on from the Portainer console). Any edits you make from your tablet's SSH connection will be rendered to the browser, allowing you to work on this nginx project from your tablet.
+14. Point your browser to the NGINX server (you can check the port that NGINX is listening on from the Portainer console). Any edits you make from your tablet's SSH connection will be rendered to the browser, allowing you to work on this NGINX project from your tablet.
 
 ### Edit Files Using QuickEdit
 
@@ -219,10 +219,10 @@ With everything set up it's time to work with your remote development environmen
 
 5. Enter your Linode's IP address or FQDN, desired label and username. Then select an authentication mode (you can use either a password or SSH keys).
 
-6. Touch your Linode connection and you will be forwarded to the remote directory structure. Find your nginx bind, then mount and open the `test.json` file.
+6. Touch your Linode connection and you will be forwarded to the remote directory structure. Find your NGINX bind, then mount and open the `test.json` file.
 
 ## Next Steps
 
 You now have a basic but powerful setup that allows you to work from any device with an internet connection.
 
-The main limitation of a tablet is its storage capacity. An efficient way to set up a centralized storage space is by using OwnCloud on a Linode with [block storage](/docs/platform/how-to-use-block-storage-with-your-linode/). This way you can host all your archives, dotfiles, scripts, images and more in a scalable Linode. An additional benefit is the possibility to connect external storage services like Dropbox, Google Drive or OneDrive. OwnCloud has native applications for Android and iOS so managing your assets won't be a problem. You can install and configure ownCloud by following our [ownCloud guide](/docs/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04).
+The main limitation of a tablet is its storage capacity. An efficient way to set up a centralized storage space is by using OwnCloud on a Linode with [block storage](/docs/platform/how-to-use-block-storage-with-your-linode/). This way you can host all your archives, dotfiles, scripts, images and more in a scalable Linode. An additional benefit is the possibility to connect external storage services like Dropbox, Google Drive or OneDrive. OwnCloud has native applications for Android and iOS so managing your assets won't be a problem. You can install and configure ownCloud by following our [ownCloud guide](/docs/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04/).

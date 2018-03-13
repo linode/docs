@@ -41,6 +41,12 @@
     "type": "bool",
     "description": "If true, guide will be displayed with a deprecated tag on view and in search results. Will not be visible on main section pages but still appears on subsections."
   },
+  "deprecated_link": {
+	"elements": false,
+	"required": false,
+	"type": "text",
+	"description": "In a deprecated guide, use this tag to include a link to the most up to date version of the guide. Must use alias-style relative links (e.g. applications/containers/using-docker. If this tag is absent in a deprecated guide, no link will be displayed"
+  },
   "description": {
     "elements": false,
     "required": true,

@@ -22,13 +22,13 @@ external_resources:
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.
 
-In this guide, we'll explain how to host a highly available website with WordPress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/websites/introduction-to-high-availability).
+In this guide, we'll explain how to host a highly available website with WordPress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/websites/introduction-to-high-availability/).
 
 ## Before You Begin
 
-1.  We will be using a total of nine nodes, or servers, all running CentOS 7, and all within the same data center. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone for each Linode you create.
+1.  We will be using a total of nine nodes, or servers, all running CentOS 7, and all within the same data center. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting the hostname and timezone for each Linode you create.
 
-2.  You should also be familiar with our [Securing Your Server](/docs/security/securing-your-server) guide, and follow best security practices as you create your servers. Do not create firewall rules yet, as we'll be handling that step in our guide.
+2.  You should also be familiar with our [Securing Your Server](/docs/security/securing-your-server/) guide, and follow best security practices as you create your servers. Do not create firewall rules yet, as we'll be handling that step in our guide.
 
 3.  The Linodes we will create during this guide will use the following hostname conventions:
 
@@ -38,14 +38,14 @@ In this guide, we'll explain how to host a highly available website with WordPre
 
     You can call your nodes anything you like, but try to keep the naming consistent for organizational purposes. When you see one of the above names, be sure to substitute the hostname you configured for the corresponding node.
 
-4.  To create a private network among your Linodes, you'll need a [private IP address](/docs/networking/remote-access#adding-private-ip-addresses) for each.
+4.  To create a private network among your Linodes, you'll need a [private IP address](/docs/networking/remote-access/#adding-private-ip-addresses) for each.
 
 5.  Remember to update each Linode's package repositories before attempting to install software:
 
         yum update
 
 {{< note >}}
-Most steps in this guide require root privileges. Be sure you're entering the commands as root, or using `sudo` if you're using a limited user account. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+Most steps in this guide require root privileges. Be sure you're entering the commands as root, or using `sudo` if you're using a limited user account. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## GlusterFS
@@ -391,7 +391,7 @@ Install the Apache HTTPD web server package on each of your three application no
 
     yum install httpd
 
-At this point, you may also tune your Apache instances to optimize performance based on your site or application's needs. This step is optional, however, and is beyond the scope of this guide. Check [Tuning Your Apache Server](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) for more information.
+At this point, you may also tune your Apache instances to optimize performance based on your site or application's needs. This step is optional, however, and is beyond the scope of this guide. Check [Tuning Your Apache Server](/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/) for more information.
 
 ### Add Firewall Rules
 
@@ -483,7 +483,7 @@ Remember to bring `gluster1`'s Gluster daemon back up before continuing:
 
 So far, we've successfully configured a redundant web stack, with three layers of nodes performing a series of tasks. Gluster automatically handles monitoring, and we configured the failover for the file system nodes in our application nodes' `/etc/fstab` files. Next, we'll use keepalived to handle database failover.
 
-Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In this section, you will be using the additional private IP address, or *floating IP* from your database node to fail over to the others if one should go down. A floating IP address is one that can be assigned to a different node if needed. If you didn't request an additional private IP in the Galera section, [contact support](https://www.linode.com/docs/platform/support/) and do so before continuing.
+Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In this section, you will be using the additional private IP address, or *floating IP* from your database node to fail over to the others if one should go down. A floating IP address is one that can be assigned to a different node if needed. If you didn't request an additional private IP in the Galera section, [contact support](/docs/platform/support/) and do so before continuing.
 
 We've added the floating IP address to `galera1`, but in practice, it can be configured to any of your database nodes.
 
@@ -492,7 +492,7 @@ No additional Linodes will be created in this section, and all configuration wil
     yum install keepalived
 
 {{< caution >}}
-Make sure that [Network Helper](/docs/platform/network-helper) is turned **OFF** on your database nodes before proceeding.
+Make sure that [Network Helper](/docs/platform/network-helper/) is turned **OFF** on your database nodes before proceeding.
 {{< /caution >}}
 
 ### Configure IP Failover
@@ -614,10 +614,10 @@ Congratulations! You've successfully installed and configured keepalived. Your d
 
 The final step in creating a highly available website or application is to load balance traffic to the application servers. In this step, we'll use a NodeBalancer to distribute traffic between the application servers to ensure that no single server gets overloaded. NodeBalancers are highly available by default, and do not constitute a single point of failure.
 
-For instructions on how to install this component, follow our guide on [getting started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
+For instructions on how to install this component, follow our guide on [getting started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
 
 {{< note >}}
-NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/platform/billing-and-payments#additional-linode-services) guide for more information.
+NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/platform/billing-and-payments/#additional-linode-services) guide for more information.
 {{< /note >}}
 
 ## WordPress (Optional)
@@ -661,16 +661,16 @@ If you're installing WordPress to manage your new highly available website, we'l
 
         systemctl restart httpd
 
-8.  In a web browser, navigate to the IP address of one of your application nodes (or the NodeBalancer) to access the WordPress admin panel. Use `wordpress` as the database name and user name, enter the password you configured in Step 2, and enter your floating IP address as the database host. For additional WordPress setup instruction, see our guide on [Installing and Configuring WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress#configure-wordpress).
+8.  In a web browser, navigate to the IP address of one of your application nodes (or the NodeBalancer) to access the WordPress admin panel. Use `wordpress` as the database name and user name, enter the password you configured in Step 2, and enter your floating IP address as the database host. For additional WordPress setup instruction, see our guide on [Installing and Configuring WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/#configure-wordpress).
 
-Congratulations! You've successfully configured a highly available WordPress site, and you're ready to start publishing content. For more information, feel free to reference our [WordPress configuration guide](/docs/websites/cms/how-to-install-and-configure-wordpress).
+Congratulations! You've successfully configured a highly available WordPress site, and you're ready to start publishing content. For more information, feel free to reference our [WordPress configuration guide](/docs/websites/cms/how-to-install-and-configure-wordpress/).
 
 ## DNS Records
 
 The NodeBalancer in the above system directs all incoming traffic to the application servers. As such, its IP address will be the one you should use when configuring your DNS records. To find this information, visit the **NodeBalancers** tab in the Linode Manager and look in the "IP Address" section.
 
-For more information on DNS configuration, refer to our [introduction to DNS records](/docs/networking/dns/dns-records-an-introduction) and our guide on how to use the [DNS Manager](/docs/networking/dns/dns-manager-overview).
+For more information on DNS configuration, refer to our [introduction to DNS records](/docs/networking/dns/dns-records-an-introduction/) and our guide on how to use the [DNS Manager](/docs/networking/dns/dns-manager-overview/).
 
 ## Configuration Management
 
-Because a high availability configuration involves so many different components, you may want to consider additional software to help you manage the cluster and create new nodes when necessary. For more information on the options available for managing your nodes, see our guides on [Salt](https://www.linode.com/docs/applications/salt/install-salt), [Chef](https://www.linode.com/docs/applications/chef/beginners-guide-chef), [Puppet](https://www.linode.com/docs/applications/puppet/set-up-puppet-master-agent), and [Ansible](https://www.linode.com/content/applications/ansible/getting-started-with-ansible). You can also refer to our guide on [Automating Server Builds](https://www.linode.com/content/platform/automating-server-builds) for an overview of how to choose a solution that is right for you.
+Because a high availability configuration involves so many different components, you may want to consider additional software to help you manage the cluster and create new nodes when necessary. For more information on the options available for managing your nodes, see our guides on [Salt](/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers/), [Chef](/docs/applications/configuration-management/beginners-guide-chef/), [Puppet](/docs/applications/configuration-management/install-and-configure-puppet/), and [Ansible](/docs/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/). You can also refer to our guide on [Automating Server Builds](/docs/platform/automating-server-builds/) for an overview of how to choose a solution that is right for you.

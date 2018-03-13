@@ -25,8 +25,8 @@ Redis as an in-memory store allows for extremely fast operations such as countin
 
 Prior to starting, we recommend you familiarize yourself with the following:
 
- * [Firewall settings using iptables or ufw](/docs/security/firewalls/configure-firewall-with-ufw)
- * [Master/Slave Replication ](/docs/databases/redis/deploy-redis-on-ubuntu-or-debian)
+ * [Firewall settings using iptables or ufw](/docs/security/firewalls/configure-firewall-with-ufw/)
+ * [Master/Slave Replication ](/docs/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
 
 ## Install Redis on Each Linode
 Depending on your version of Linux, it may be possible to install Redis through a package manager. Only Redis 3.0 and above supports clustering. The steps below are for installation of the latest stable branch of Redis.

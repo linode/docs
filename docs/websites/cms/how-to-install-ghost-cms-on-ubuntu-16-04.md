@@ -27,7 +27,7 @@ external_resources:
 
 Ghost 1.0.0 is the first major, stable release of the Ghost content management system (CMS). Ghost 1.0.0 has a brand new Markdown editor, refreshed user interface, new default theme design, improved install and update process with [Ghost-CLI](https://github.com/TryGhost/Ghost-CLI), and more.
 
-In this guide you'll set up, deploy, and secure a Ghost 1.0.0 blog on a Linode running Ubuntu 16.04 LTS, using nginx, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt.
+In this guide you'll set up, deploy, and secure a Ghost 1.0.0 blog on a Linode running Ubuntu 16.04 LTS, using NGINX, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -49,9 +49,9 @@ Replace each instance of `example.com` in this guide with your site’s domain n
 
         sudo apt install build-essential
 
-## Install nginx
+## Install NGINX
 
-nginx will be used as a reverse proxy for your Ghost application:
+NGINX will be used as a reverse proxy for your Ghost application:
 
     sudo apt install nginx
 
@@ -78,7 +78,7 @@ Download and install Node.js:
 
 ## Install Ghost-CLI
 
-Ghost-CLI is a command line interface (CLI) tool that makes installing and updating Ghost easy. It sets up the database, configures nginx as a reverse proxy, enables TLS/SSL security using Let's Encrypt CA, automatically renews your SSL, and initializes Ghost as a systemd service.
+Ghost-CLI is a command line interface (CLI) tool that makes installing and updating Ghost easy. It sets up the database, configures NGINX as a reverse proxy, enables TLS/SSL security using Let's Encrypt CA, automatically renews your SSL, and initializes Ghost as a systemd service.
 
 1. Install Ghost-CLI:
 
