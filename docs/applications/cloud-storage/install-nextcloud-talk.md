@@ -10,7 +10,7 @@ published: 2017-03-12
 modified: 2018-03-08
 modified_by:
   name: Angel
-title: 'Install NextCloud 13'
+title: 'Introducing Nextcloud Talk'
 external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
 ---
