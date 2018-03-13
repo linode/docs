@@ -96,8 +96,6 @@ Vlogger is a tool that logs information regarding Apache. Webalizer can then be 
     mv vlogger-1.3/vlogger /usr/sbin/
     rm -rf vlogger*
 
-More information on Webalizer can be found in our [Webalizer documentation](/docs/web-applications/analytics/webalizer/).
-
 # Install fail2ban
 
 Installing fail2ban is entirely optional, however ISPConfig can manage this service and show you the log output from it:
