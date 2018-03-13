@@ -29,13 +29,13 @@ Ideally, the person with root access should be trusted with it. But if security 
 SELinux defaults to denying anything that is not explicitly allowed. SELinux has global modes, `permissive` and `enforcing`. `Permissive` mode allows the system to function like a Discretionary Access Control system, while logging every violation to SELinux. The `enforcing` mode enforces a strict denial of access to anything that isn't explicitly allowed. To explicitly allow certain behavior on a machine, you, as the system administrator, have to write policies that allow it.
 
 {{< note >}}
-We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on [SELinux](/docs/quick-answers/linux/how-to-change-selinux-modes)
+We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on [SELinux](/docs/quick-answers/linux/how-to-change-selinux-modes/)
 {{< /note >}}
 
 ## Before You Begin
 
 1. This guide requires you to **OWN** the box you are going to use. SELinux is a security-control system; a small misconfiguration could cause your system to be compromised.
-2. Linode uses a custom kernel by default. This kernel does not support SELinux. If you are using a Linode, switch to a distribution-supplied kernel by using this guide: [Run a non-custom kernel](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm)
+2. Linode uses a custom kernel by default. This kernel does not support SELinux. If you are using a Linode, switch to a distribution-supplied kernel by using this guide: [Run a non-custom kernel](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/)
 3.  Update your system:
 
         yum update
@@ -155,7 +155,7 @@ An SELinux Boolean is a variable that can be toggled on and off without needing 
     xdm_sysadm_login --> off
     xdm_write_home --> off
 
-You can change the value of any variable using the `setsebool` command. If you set the `-P` flag, the setting will persist through reboots. If you want to permit a service like [openVPN](https://www.linode.com/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) to run unconfined in your system, you have to edit the policies boolean variable:
+You can change the value of any variable using the `setsebool` command. If you set the `-P` flag, the setting will persist through reboots. If you want to permit a service like [openVPN](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/) to run unconfined in your system, you have to edit the policies boolean variable:
 
     [root@centos ~]# getsebool -a  | grep "vpn"
     openvpn_can_network_connect --> on
