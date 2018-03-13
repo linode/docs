@@ -39,7 +39,7 @@ If you'd prefer to leave the management of your email to a third party, you may 
 
 ## Does my Linode have a control panel?
 
-We provide a base system install of the Linux distribution of your choice. Although there isn't a control panel installed by default, you're welcome to obtain and install one if you like. You may wish to try an open-source control panel; we have numerous [control panel guides](/docs/websites/cms) available to assist you with getting one installed.
+We provide a base system install of the Linux distribution of your choice. Although there isn't a control panel installed by default, you're welcome to obtain and install one if you like. You may wish to try an open-source control panel; we have numerous [control panel guides](/docs/websites/cms/) available to assist you with getting one installed.
 
 Please note that we do *not* sell control panel licenses. If you decide you'd like to use a commercial product, you'll need to obtain a license for it separately.
 
@@ -47,9 +47,9 @@ Please note that we do *not* sell control panel licenses. If you decide you'd li
 
 By default, SSH is enabled on all newly deployed Linodes. You may use any file transfer program that supports the SFTP standard to upload files. We've created guides for some commonly used programs:
 
--   [WinSCP](/docs/networking/file-transfer/transfer-files-winscp) - Windows 95 through Windows 10
--   [Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck) - Mac OS X
--   [Filezilla](/docs/tools-reference/file-transfer/filezilla) - Available on all major desktop platforms, including Linux-based operating systems
+-   [WinSCP](/docs/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/) - Windows 95 through Windows 10
+-   [Cyberduck](/docs/tools-reference/file-transfer/transfer-files-with-cyberduck-on-mac-os-x/) - Mac OS X
+-   [Filezilla](/docs/tools-reference/file-transfer/filezilla/) - Available on all major desktop platforms, including Linux-based operating systems
 
 ## How can I download a backup of my Linode?
 
@@ -58,7 +58,7 @@ First, you might want to give the [Linode Backup Service](http://www.linode.com/
 -   [Introduction to Rsync](/docs/tools-reference/tools/introduction-to-rsync/) - Using `rsync` to mirror files to another server.
 -   [Using Rdiff-backup with SSHFS](/docs/security/backups/using-rdiff-backup-with-sshfs/) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
 -   [Duplicating a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#duplicating-a-disk) - Creating an exact copy of a disk in the Linode Manager.
--   [Copying a Disk Over SSH](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh) - How to download an exact binary image of your Linode's disk over SSH.
+-   [Copying a Disk Over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/) - How to download an exact binary image of your Linode's disk over SSH.
 
 ## How can I install software on my Linode?
 
@@ -66,7 +66,7 @@ Please refer to our guide on [Linux package management](/docs/tools-reference/li
 
 ## How do I add another IP address?
 
-You may add an additional public IP address from the "Remote Access" tab in the Linode Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
+You may add an additional public IP address from the "Remote Access" tab in the Linode Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
 
 {{< note >}}
 We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the "Support" tab of the Linode Manager explaining the reason for the new IP.
@@ -86,11 +86,11 @@ If an application is crashing, be sure to check its error logs. These are typica
 
 ## Why is my connection to my Linode slow or broken?
 
-First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr) to and from your Linode, and submit them via the "Support" tab in the Linode Manager. You may need to use [Lish](/docs/networking/using-the-linode-shell-lish/) if you're having problems reaching your Linode via normal networking.
+First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to and from your Linode, and submit them via the "Support" tab in the Linode Manager. You may need to use [Lish](/docs/networking/using-the-linode-shell-lish/) if you're having problems reaching your Linode via normal networking.
 
 ## How can I upgrade or downgrade my Linode?
 
-Resizing your Linode is automated via the "Resize" tab in the Linode Manager, pending availability for the plan you wish to move to in your data center. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For more information, refer to our guide on [resizing a Linode](/docs/migrate-to-linode/disk-images/resizing-a-linode)
+Resizing your Linode is automated via the "Resize" tab in the Linode Manager, pending availability for the plan you wish to move to in your data center. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For more information, refer to our guide on [resizing a Linode](/docs/platform/disk-images/resizing-a-linode/)
 
 ## How can I test downloads speeds from different data centers?
 
@@ -105,10 +105,10 @@ Yes! Any time you'd like to transfer your Linode, you may open a ticket via the 
 For those just getting started with Linux systems, we've created a series of guides that will help explain basic concepts:
 
 -   [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts/) - An introduction to Linux and Unix-like systems.
--   [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) - An introduction to the principal concepts and use of the users and groups system.
+-   [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) - An introduction to the principal concepts and use of the users and groups system.
 -   [Using the Terminal](/docs/networking/ssh/using-the-terminal/) - Introducing the command line interface known as the shell or terminal.
 -   [Linux Package Management](/docs/tools-reference/linux-package-management/) - How to install software on your Linode.
--   [Securing your Server](/docs/security/securing-your-server) - Keeping your Linode safe from unauthorized access or abuse.
+-   [Securing your Server](/docs/security/securing-your-server/) - Keeping your Linode safe from unauthorized access or abuse.
 
 ## Where can I get help with something not covered here?
 

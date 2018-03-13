@@ -19,11 +19,11 @@ This guide presents a collection of common issues and useful tips for Linux syst
 
 ## Basic Configuration
 
-These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Getting Started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) useful.
+These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Getting Started guide](/docs/getting-started/) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts/) useful.
 
 ### Set the Hostname
 
-Please follow our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). You can use the following commands to make sure it is set properly:
+Please follow our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). You can use the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -101,7 +101,7 @@ The second entry tells the system to look to `192.168.1.1` for the domain `stick
 
 ## Network Diagnostics
 
-In this section, we'll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, adding the output from the relevant commands to your [support ticket](/docs/platform/support) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
+In this section, we'll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, adding the output from the relevant commands to your [support ticket](/docs/platform/support/) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
 
 ### The ping Command
 
@@ -606,31 +606,31 @@ This section covers a number of basic web serving tasks and functions, as well a
 
 Web servers work by listening on a TCP port, typically port 80 for HTTP and port 443 for HTTPS. When a visitor makes a request for content, the servers respond by delivering the resource requested. Typically, resources are specified with a URL that contains the protocol, `http` or `https`; a colon and two slashes, `://`; hostname or domain, `www.example.com` or `username.example.com`; and the path to a file, `/images/avatar.jpg,` or `index.html`. A full URL would resemble `http://www.example.com/images/avatar.jpg`.
 
-In order to provide these resources to users, your Linode needs to be running a web server. There are many different HTTP servers and countless configurations to provide support for various web development frameworks. The three most popular general use web servers are the [Apache HTTP](/docs/websites/apache) server, [Lighttpd](/docs/websites/lighttpd) ("Lighty"), and [nginx](/docs/websites/nginx) ("Engine X"). Each server has its strengths and weaknesses, and your choice depends largely on your experience and your needs.
+In order to provide these resources to users, your Linode needs to be running a web server. There are many different HTTP servers and countless configurations to provide support for various web development frameworks. The three most popular general use web servers are the [Apache HTTP](/docs/websites/apache) server, [Lighttpd](/docs/web-servers/lighttpd/) ("Lighty"), and [nginx](/docs/web-servers/nginx/) ("Engine X"). Each server has its strengths and weaknesses, and your choice depends largely on your experience and your needs.
 
 Once you've chosen a web server, you need to decide what (if any) scripting support you need to install. Scripting support allows you to run dynamic content with your web server and program server side scripts in languages such as Python, PHP, Ruby, and Perl.
 
-If you need a full web application stack, we encourage you to consider one of our more full-featured [LAMP stack guides](/docs/websites/lamp/). If you need support for a specific web development framework, consult our tutorials for installing and using specific [web application frameworks](/docs/development/frameworks/).
+If you need a full web application stack, we encourage you to consider one of our more full-featured [LAMP stack guides](/docs/web-servers/lamp/). If you need support for a specific web development framework, consult our tutorials for installing and using specific [web application frameworks](/docs/development/frameworks/).
 
 ### How to Choose a Web Server
 
 In most situations, end users are unaware of which web server you use. As a result, choosing a web server is often a personal decision based on the comfort of the administrator and the requirements of the deployment in question. This can be a challenge for the new systems administrator. This section offers some guidance by providing some background and information on the most popular web servers.
 
-The [Apache HTTP Server](/docs/web-servers/apache/) is considered by some to be the *de facto* standard web server. It is the most widely deployed open-source web server, its configuration interface has been stable for many years, and its modular architecture allows it to function in many different types of deployments. Apache forms the foundation of the [LAMP stack](/docs/lamp-guides), and supports the integration of dynamic server-side applications into the web server.
+The [Apache HTTP Server](/docs/web-servers/apache/) is considered by some to be the *de facto* standard web server. It is the most widely deployed open-source web server, its configuration interface has been stable for many years, and its modular architecture allows it to function in many different types of deployments. Apache forms the foundation of the [LAMP stack](/docs/web-servers/lamp/), and supports the integration of dynamic server-side applications into the web server.
 
-By contrast, web servers like [Lighttpd](/docs/websites/lighttpd) and [nginx](/docs/websites/nginx/) are optimized for efficiently serving static content. If you have a deployment where server resources are limited and are facing a great deal of demand, consider one of these servers. They are functional and stable with minimal system resources. Lighttpd and nginx can be more difficult to configure when integrating dynamic content interpreters.
+By contrast, web servers like [Lighttpd](/docs/web-servers/lighttpd/) and [nginx](/docs/web-servers/nginx/) are optimized for efficiently serving static content. If you have a deployment where server resources are limited and are facing a great deal of demand, consider one of these servers. They are functional and stable with minimal system resources. Lighttpd and nginx can be more difficult to configure when integrating dynamic content interpreters.
 
 Your choice of web servers is based on your needs. Specific choices depend on factors like the type of content you want to serve, the demand for that content, and your comfort with that software as an administrator.
 
 ### Apache Logs
 
-When there is something wrong with [Apache](/docs/websites/apache), it can be difficult to determine what the cause of the error is from the behavior of the web server. There are a number of common issues with which you might begin your [troubleshooting](/docs/troubleshooting/troubleshooting-common-apache-issues/) efforts. When more complex issues arise, you may need to review the Apache error logs.
+When there is something wrong with [Apache](/docs/web-servers/apache/), it can be difficult to determine what the cause of the error is from the behavior of the web server. There are a number of common issues with which you might begin your [troubleshooting](/docs/troubleshooting/troubleshooting-common-apache-issues/) efforts. When more complex issues arise, you may need to review the Apache error logs.
 
 By default, error logs are located in the `/var/log/apache2/error.log` file (on Debian-based distributions). You can track or "tail" this log with the following command:
 
     tail -F /var/log/apache2/error.log
 
-In the default virtual host configurations suggested in our [Apache installation](/docs/websites/apache/) and [LAMP guides](/docs/websites/lamp), we suggest adding a custom log setting:
+In the default virtual host configurations suggested in our [Apache installation](/docs/web-servers/apache/) and [LAMP guides](/docs/web-servers/lamp/), we suggest adding a custom log setting:
 
 {{< file-excerpt "Apache Virtual Host Configuration" >}}
 ErrorLog /var/www//html/example.com/logs/error.log CustomLog /var/www/html/example.com/logs/access.log combined
@@ -651,25 +651,25 @@ This will allow you to see new error messages as they appear. Problems can be di
 
 ## DNS Servers and Domain Names
 
-The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/networking/dns/dns-records-an-introduction). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/networking/dns/dns-manager-overview).
+The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/networking/dns/dns-records-an-introduction/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/networking/dns/dns-manager-overview/).
 
 ### Redirect DNS Queries with CNAMEs
 
-[CNAME DNS records](/docs/networking/dns/dns-records-an-introduction#cname) make it possible to redirect requests for one hostname or domain to another hostname or domain. This is useful in situations where you want to direct requests for one domain to another, but don't want to set up the web server to handle requests.
+[CNAME DNS records](/docs/networking/dns/dns-records-an-introduction/#cname) make it possible to redirect requests for one hostname or domain to another hostname or domain. This is useful in situations where you want to direct requests for one domain to another, but don't want to set up the web server to handle requests.
 
-CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.
+CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://manager.linode.com//), refer to our [DNS Manager Guide](/docs/networking/dns/dns-manager-overview).
+Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://manager.linode.com//), refer to our [DNS Manager Guide](/docs/networking/dns/dns-manager-overview/).
 
 ### Set Up Subdomains
 
-When [reading domain names](/docs/networking/dns/dns-records-an-introduction#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
+When [reading domain names](/docs/networking/dns/dns-records-an-introduction/#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
 
-Follow these steps to [create and host a sub-domain](/docs/networking/dns/common-dns-configurations#configuring-subdomains):
+Follow these steps to [create and host a sub-domain](/docs/networking/dns/common-dns-configurations/#configuring-subdomains):
 
-1.  First, create an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/networking/dns/dns-manager-overview). You may host the DNS for your domain with any provider you choose.
+1.  First, create an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/networking/dns/dns-manager-overview/). You may host the DNS for your domain with any provider you choose.
 
-2.  Set up a server to respond to requests sent to this domain. For web servers like [Apache](/docs/websites/apache/), this requires configuring a new virtual host. For XMPP servers you must configure an additional host to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
+2.  Set up a server to respond to requests sent to this domain. For web servers like [Apache](/docs/web-servers/apache/), this requires configuring a new virtual host. For XMPP servers you must configure an additional host to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 
 3.  Once configured, subdomains function almost identically to root domains on your server. If you need to, you can set up HTTP redirection for the new subdomain.
 
@@ -685,11 +685,11 @@ There may also be other components in the email server tool chain. These compone
 
 The most prevalent SMTP servers or MTAs in the UNIX-like world are [Postfix](http://www.postfix.org/), [Exim](https://www.exim.org/), and [Sendmail](http://www.sendmail.org/). Sendmail has the longest history and many system administrators have extensive experience with it. Postfix is robust and modern, and is compatible with many different configurations. Exim is the default MTA in Debian systems, and many consider it to be easier to use for basic tasks. For remote mailbox access, servers like [Courier](http://www.courier-mta.org/) and [Dovecot](https://www.dovecot.org/) are popular options.
 
-If you need an easy-to-install email solution, consider the [Citadel groupware server](/docs/email/citadel/). Citadel provides an integrated "turnkey" solution that includes an SMTP server, remote mailbox access, real time collaboration tools including XMPP, and a shared calendar interface. Along similar lines, we also provide documentation for the installation of the [Zimbra groupware server](/docs/email/zimbra).
+If you need an easy-to-install email solution, consider the [Citadel groupware server](/docs/email/citadel/). Citadel provides an integrated "turnkey" solution that includes an SMTP server, remote mailbox access, real time collaboration tools including XMPP, and a shared calendar interface. Along similar lines, we also provide documentation for the installation of the [Zimbra groupware server](/docs/email/zimbra/).
 
 If, by contrast, you want a more simple and modular email stack, we urge you to consider one of our guides built around the [Postfix SMTP server](/docs/email/postfix/).
 
-Finally, it's possible to outsource email service to a third-party provider, such as [Google Apps](/docs/email/using-google-apps-for-email) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode.
+Finally, it's possible to outsource email service to a third-party provider, such as [Google Apps](/docs/email/using-google-apps-for-email/) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode.
 
 ### Send Email From Your Server
 

@@ -33,9 +33,9 @@ Whether you use one Linode or dozens of them, mission-critical servers and servi
 
 There are several different availability monitoring tools available. Your decision should be based on how many servers you'll be monitoring:
 
--   **Multiple Servers**: If you run more than one server, [Nagios](/docs/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8) makes an ideal monitoring tool. This free and flexible framework makes it possible to keep an eye on a broad range of infrastructural components and network services. After installing the Nagios server and client packages, one Linode will act as the primary server to monitor the other servers.
--   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. (You could install Nagios, but if your server goes down, Nagios will go down with it.) You could also use a network diagnostic tool like [MTR](/docs/linux-tools/mtr) to diagnose and isolate networking errors.
--   **Linode Longview**: [Longview](/docs/platform/longview/longview) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using Longview in conjunction with a notification service like Nagios can help you to identify issues faster, and get your system up and running sooner.
+-   **Multiple Servers**: If you run more than one server, [Nagios](/docs/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8/) makes an ideal monitoring tool. This free and flexible framework makes it possible to keep an eye on a broad range of infrastructural components and network services. After installing the Nagios server and client packages, one Linode will act as the primary server to monitor the other servers.
+-   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. (You could install Nagios, but if your server goes down, Nagios will go down with it.) You could also use a network diagnostic tool like [MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to diagnose and isolate networking errors.
+-   **Linode Longview**: [Longview](/docs/platform/longview/longview/) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using Longview in conjunction with a notification service like Nagios can help you to identify issues faster, and get your system up and running sooner.
 
 If you need an availability monitoring tool for one or more server, take a look at Nagios or MTR now.
 
@@ -68,7 +68,7 @@ If you're new to performance monitoring, you can get started by logging in to th
 -   **CPU Utilization:** Monitor how your Linode's CPU cores are being utilized. Note that each of your Linode's CPU cores is capable of 100% utilization, which means you could see this graph spike well over 100%, depending on your Linode plan size.
 -   **Network Traffic:** Keep tabs on how much incoming and outgoing bandwidth your server is using.
 -   **IPv6 Network Traffic:** Wondering if any of your visitors are using IPv6? Check this graph to see how much bandwidth has been transferred over IPv6.
--   **Disk IO:** Watch for [disk input/output bottlenecks](/docs/troubleshooting/troubleshooting/#is-there-a-disk-io-bottleneck).
+-   **Disk IO:** Watch for [disk input/output bottlenecks](/docs/troubleshooting/troubleshooting/#is-your-disk-full).
 
 When you first start monitoring the graphs, you won't know what numbers are normal. Don't worry. With time and practice, you'll learn what the graphs are supposed to look like when your server is operating normally. Then you'll be able to spot performance abnormalities before they turn into full-blown problems.
 
@@ -97,7 +97,7 @@ If you receive an email threshold alert from the Linode Manager, don't panic. Th
 
 ### Using Linode Longview
 
-Our custom monitoring and graphing tool [Longview](/docs/platform/longview/longview) can give you a detailed breakdown of system performance and resource usage. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. On our platform, Longview, in conjunction with the Linode Manager email alerts, can help you to know quickly when your system is overloaded, and find out why.
+Our custom monitoring and graphing tool [Longview](/docs/platform/longview/longview/) can give you a detailed breakdown of system performance and resource usage. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. On our platform, Longview, in conjunction with the Linode Manager email alerts, can help you to know quickly when your system is overloaded, and find out why.
 
 ### Using Third-Party Tools
 
@@ -107,7 +107,7 @@ There are several free third-party performance monitoring tools available for yo
 
 -   Munin: Munin is a system and network monitoring tool that generates graphs of resource usage in an accessible web based interface. Munin also makes it possible to monitor multiple Linodes with a single installation.
 -   Cacti: If you have advanced monitoring needs, try Cacti. It allows you to monitor larger systems and more complex deployments with its plugin framework and web-based interface.
--   [Nagios](/docs/server-monitoring/nagios): Nagios is primarily used as an availability monitoring tool, but it can also be configured to monitor performance. For more information, check out the [graphing and trending add-ons](http://exchange.nagios.org/directory/Addons/Graphing-and-Trending).
+-   [Nagios](/docs/uptime/monitoring/nagios-server-monitoring/): Nagios is primarily used as an availability monitoring tool, but it can also be configured to monitor performance. For more information, check out the [graphing and trending add-ons](http://exchange.nagios.org/directory/Addons/Graphing-and-Trending).
 
 If you need a third-party performance monitoring tool, take a look at Munin, Cacti, or Nagios now.
 
@@ -117,15 +117,15 @@ Important events that occur on your system — things like login attempts or ser
 
 ### Rotating Logs
 
-As more and more events are logged, the log files on your server get bigger and bigger. Left unchecked, those files can start consuming a surprising amount of disk space. Enter [logrotate](/docs/linux-tools/utilities/logrotate), a utility that automatically archives and compresses current log files after a certain interval, creates new log files, and deletes the *really* old log files. After you configure `logrotate`, your system will automatically handle the entire process.
+As more and more events are logged, the log files on your server get bigger and bigger. Left unchecked, those files can start consuming a surprising amount of disk space. Enter [logrotate](/docs/uptime/logs/use-logrotate-to-manage-log-files/), a utility that automatically archives and compresses current log files after a certain interval, creates new log files, and deletes the *really* old log files. After you configure `logrotate`, your system will automatically handle the entire process.
 
-Use the [logrotate guide](/docs/linux-tools/utilities/logrotate) to get started.
+Use the [logrotate guide](/docs/uptime/logs/use-logrotate-to-manage-log-files/) to get started.
 
 ### Monitoring System Logs
 
-It's important to keep an eye on the events recorded in your system logs. But unless you're the type of person who loves scanning through hundreds of lines of log entries, you won't want to open log files unless absolutely necessary. Fortunately, there's an easier way to learn about the most important system events fast. [Logwatch](/docs/server-monitoring/logwatch) is a customizable utility that can automatically parse system logs and email you detailed reports highlighting notable events.
+It's important to keep an eye on the events recorded in your system logs. But unless you're the type of person who loves scanning through hundreds of lines of log entries, you won't want to open log files unless absolutely necessary. Fortunately, there's an easier way to learn about the most important system events fast. [Logwatch](/docs/uptime/monitoring/logwatch-log-monitoring/) is a customizable utility that can automatically parse system logs and email you detailed reports highlighting notable events.
 
-Use the [Logwatch guides](/docs/server-monitoring/logwatch) to get started.
+Use the [Logwatch guides](/docs/uptime/monitoring/logwatch-log-monitoring/) to get started.
 
 ## Updating Software
 
@@ -133,7 +133,7 @@ Linux distributions are frequently updated to fix bugs, add new features, and pa
 
 ### Updating Installed Packages
 
-You learned about the importance of regularly updating your server's packages in the [Getting Started](/docs/getting-started) quick start guide. It's worth mentioning here again. If nothing else, installing updates is a fast and easy way to mitigate vulnerabilities on your server.
+You learned about the importance of regularly updating your server's packages in the [Getting Started](/docs/getting-started/) quick start guide. It's worth mentioning here again. If nothing else, installing updates is a fast and easy way to mitigate vulnerabilities on your server.
 
 To check for software updates and install them in Ubuntu or Debian, enter the following commands, one by one:
 
@@ -141,7 +141,7 @@ To check for software updates and install them in Ubuntu or Debian, enter the fo
     apt-get upgrade --show-upgraded
 
 {{< note >}}
-If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/docs/using-linux/package-management).
+If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/docs/tools-reference/linux-package-management/).
 {{< /note >}}
 
 There are ways to automate the installation of software updates, but this is not recommended. You should always manually review the lists of available patches before installing updates.
@@ -187,8 +187,8 @@ Linux distributions such as Ubuntu and Fedora use version numbers to identify th
 
 There are two ways to upgrade a Linode running an unsupported release. You can upgrade your existing server to the next release, or you can create a new Linode with the newest release available and transfer your files from the old server:
 
--   To upgrade your server, use one of our [Upgrading Guides](/docs/upgrading) or check the distribution's website for instructions.
--   To create a new Linode and transfer your files from the old server, use our [Getting Started](/docs/getting-started) guide and then [migrate the disk](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) from the old server to transfer the files, or use an FTP client.
+-   To upgrade your server, use one of our [Upgrading Guides](/docs/security/upgrading/) or check the distribution's website for instructions.
+-   To create a new Linode and transfer your files from the old server, use our [Getting Started](/docs/getting-started/) guide and then [migrate the disk](/docs/platform/disk-images/migrating-a-server-to-your-linode/) from the old server to transfer the files, or use an FTP client.
 
  {{< note >}}
 Check the distribution's website to learn when support for your release will be discontinued. Ubuntu offers a *long-term support* (LTS) release that is supported for five years.

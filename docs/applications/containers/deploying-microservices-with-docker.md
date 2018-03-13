@@ -40,7 +40,7 @@ You will need a Linode with Docker and Docker Compose installed to complete this
 
 ## Prepare the Environment
 
-This section uses Dockerfiles to configure Docker images. For more information about Dockerfile syntax and best practices, see our [How To Use Dockerfiles guide](/docs/applications/containers/how-to-use-dockerfiles) and Docker's [Dockerfile Best Practices guide](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#sort-multi-line-arguments).
+This section uses Dockerfiles to configure Docker images. For more information about Dockerfile syntax and best practices, see our [How To Use Dockerfiles guide](/docs/applications/containers/how-to-use-dockerfiles/) and Docker's [Dockerfile Best Practices guide](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#sort-multi-line-arguments).
 
 1. Create a directory for the microservice:
 

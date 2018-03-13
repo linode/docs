@@ -16,13 +16,13 @@ In this guide, you'll learn how to set up a secure mail server with Postfix, Dov
 
 ![Email with Postfix, Dovecot, and MySQL](/docs/assets/email_with_postfix_dovecot_and_mysql.png "Setting up a mail server with Postfix, Dovecot, and MySQL")
 
-For a different Linux distribution or different mail server, review our [email tutorials](/docs/email).
+For a different Linux distribution or different mail server, review our [email tutorials](/docs/email/).
 
 ### Before You Begin
 
-1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
+1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
 
-2.  Ensure that the iptables [firewall](/docs/securing-your-server#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
+2.  Ensure that the iptables [firewall](/docs/security/securing-your-server/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
 
 ### Configure DNS
 
@@ -32,7 +32,7 @@ When ready to update the DNS and to start sending mail to the server, edit the d
     example.com MX 10 example.com
     mail.example.com MX 10 example.com
 
-Ensure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](/docs/dns-manager), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
+Ensure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](/docs/networking/dns/dns-manager-overview/), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
 
 ### Installing an SSL Certificate
 
@@ -41,7 +41,7 @@ Dovecot offers a default self-signed certificate for free. This certificate encr
 {{< note >}}
 As of version 2.2.13-7, Dovecot no longer provides a default SSL certificate. This affects Debian 8 users, and means that if you wish to use SSL encryption (recommended), you must generate your own self-signed certificate or use a trusted certificate from a Certificate Authority.
 
-Many email service providers such as Gmail will only accept commercial SSL certificates for secure IMAP/POP3 connections. To communicate with these providers, follow our guide for obtaining a commercial SSL certificate for [Debian and Ubuntu](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu) or [CentOS and Fedora](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora).
+Many email service providers such as Gmail will only accept commercial SSL certificates for secure IMAP/POP3 connections. To communicate with these providers, follow our guide for obtaining [a commercial SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate/).
 {{< /note >}}
 
 ## Installing Packages
@@ -866,7 +866,7 @@ Mar 22 18:20:29 host postfix/qmgr[15878]: AA10A2839B: removed
 {{< /file-excerpt >}}
 
 
-You now have a functioning mail server that can securely send and receive email. If things are not working smoothly, try consulting the [Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting) guide. At this point, consider adding spam and virus filtering and a webmail client. If DNS records have not been created for the mail server yet, do so now. Once the DNS records have propagated, email will be delivered via the new mail server.
+You now have a functioning mail server that can securely send and receive email. If things are not working smoothly, try consulting the [Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/) guide. At this point, consider adding spam and virus filtering and a webmail client. If DNS records have not been created for the mail server yet, do so now. Once the DNS records have propagated, email will be delivered via the new mail server.
 
 {{< note >}}
 If errors are encountered in the /var/log/syslog stating "Invalid settings: postmaster_address setting not given", you may need to append the following line to the /etc/dovecot/dovecot.conf file, replacing domain with the domain name.
@@ -880,7 +880,7 @@ Although the mail server is up and running, eventually you'll probably need to a
 
 ### Domains
 
-1.  To add a new domain, open a terminal window and [log in to the Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
+1.  To add a new domain, open a terminal window and [log in to the Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
 
 2.  Log in to the MySQL server with an appropriately privileged user. For this example, use the `root` user:
 
