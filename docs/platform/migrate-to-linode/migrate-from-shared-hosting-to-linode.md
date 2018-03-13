@@ -17,7 +17,7 @@ title: Migrate from Shared Hosting to Linode
 
 This guide walks you through the steps to migrate your website from a shared hosting provider to a Linode running a LAMP stack. A Linode server gives you much more power and flexibility than a shared host, but these advantages come at the cost of increased complexity and system administration responsibility.
 
-The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that you will be solely responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/tools-reference/linux-system-administration-basics), [security hardening](/docs/security/securing-your-server) and [system backups](/content/security/backups/backing-up-your-data).
+The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that you will be solely responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/tools-reference/linux-system-administration-basics/), [security hardening](/docs/security/securing-your-server/) and [system backups](/docs/security/backups/backing-up-your-data/).
 
 ## Before You Begin
 
@@ -31,7 +31,7 @@ This guide makes three assumptions:
 Because this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you're unsure whether or not your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.
 {{< /note >}}
 
-See our [Getting Started](/docs/getting-started) guide for more information on signing up and setting up your Linode.
+See our [Getting Started](/docs/getting-started/) guide for more information on signing up and setting up your Linode.
 
 ## Prepare Your Domain Name to Move
 
@@ -57,7 +57,7 @@ The next step is to back up your site from your old server to your local compute
 
 You may want to explore whether the application you use for your website has its own backup instructions, such as the combination of [WordPress](https://codex.wordpress.org/WordPress_Backups) and [phpMyAdmin](http://docs.phpmyadmin.net/en/latest/faq.html?highlight=backup#how-can-i-backup-my-database-or-table), for example. Regardless of the backup method, every website is made up of files and databases so you can use the instructions in this section to back up every type of website.
 
-If you have a MySQL or MariaDB database on your old server, you will need to back it up, too. Your old host probably has a control panel that will allow you to make an easy backup of your database. Contact that host for instructions if you are not sure how to do it. If your old host does not have a database backup solution, you can follow our instructions to [Back Up Your MySQL Databases](/docs/databases/mysql/backup-options) using the command line.
+If you have a MySQL or MariaDB database on your old server, you will need to back it up, too. Your old host probably has a control panel that will allow you to make an easy backup of your database. Contact that host for instructions if you are not sure how to do it. If your old host does not have a database backup solution, you can follow our instructions to [Back Up Your MySQL Databases](/docs/databases/mysql/back-up-your-mysql-databases/) using the command line.
 
 **Shared Host's Control Panel**
 
@@ -71,11 +71,11 @@ Linux and OS X can use [SCP](https://en.wikipedia.org/wiki/Secure_copy) natively
 
 **FileZilla (Linux / OS X / Windows)**
 
-See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) to use it for your site backups.
+See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla/) to use it for your site backups.
 
 ## Install a Basic Web Server on Your Linode
 
-The next step is to build the software environment needed for your site to function properly. Once that's complete, you can install a content management system of your choice such as [WordPress](https://wordpress.org/) or [Drupal](https://www.drupal.com/). There are many possibilities; see our [web servers](https://linode.com/docs/web-servers/) guides for available options. This guide will assume the use of a LAMP stack, one of the most common web server configurations.
+The next step is to build the software environment needed for your site to function properly. Once that's complete, you can install a content management system of your choice such as [WordPress](https://wordpress.org/) or [Drupal](https://www.drupal.com/). There are many possibilities; see our [web servers](/docs/web-servers/) guides for available options. This guide will assume the use of a LAMP stack, one of the most common web server configurations.
 
 ### LAMP Stack
 
@@ -86,7 +86,7 @@ The next step is to build the software environment needed for your site to funct
 *  **MySQL:** A database server.
 *  **PHP:** A software language that allows you to create and configure dynamic website content.
 
-To install a LAMP stack on Ubuntu, follow the steps in our [How to Install a LAMP Stack on Ubuntu 16.04](https://linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) guide.
+To install a LAMP stack on Ubuntu, follow the steps in our [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) guide.
 
 ## Get Your Website Live
 
@@ -114,13 +114,13 @@ Your website may not yet function completely correctly if it is URL-dependent. A
 
 ### A Note About Email
 
-A Linode can run both your web server and an [email server](/docs/mailserver) for your site. If you use a separate email host like Google Apps, you will need to make sure you preserve the correct *MX records* for email when you move your domain. If you use a mail service at your old host, you may need to consider where you're going to move your email.
+A Linode can run both your web server and an [email server](/docs/email/running-a-mail-server/) for your site. If you use a separate email host like Google Apps, you will need to make sure you preserve the correct *MX records* for email when you move your domain. If you use a mail service at your old host, you may need to consider where you're going to move your email.
 
 ## Move Your Domain
 
 The last step in your migration is to point your domain at your Linode's IP address. If you decided to shorten your TTL, make sure you've waited out the original time period.
 
-1.  Follow our instructions on [adding a domain zone](/docs/networking/dns/dns-manager-overview#add-a-domain-zone) to create DNS records at Linode for your domain.
+1.  Follow our instructions on [adding a domain zone](/docs/networking/dns/dns-manager-overview/#add-a-domain-zone) to create DNS records at Linode for your domain.
 
 2.  If you use a third-party email service, edit the default MX records.
 
@@ -136,7 +136,7 @@ The last step in your migration is to point your domain at your Linode's IP addr
 
 5.  Navigate to your domain in a web browser. It should now show the website from Linode, rather than your old host. If you can't tell the difference, you can use the [DIG utility](http://www.kloth.net/services/dig.php). It should show the IP address for your Linode.
 
-6.  [Set reverse DNS](/docs/networking/dns/setting-reverse-dns) for your domain so you don't have mail problems.
+6.  [Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for your domain so you don't have mail problems.
 
     {{< note >}}
 If you're having trouble seeing your site at the new IP address, you may need to try visiting it in a different browser, or in a private browsing session. Sometimes your browser will cache old DNS data, even if it has updated everywhere else.
@@ -146,4 +146,4 @@ Your website is now fully migrated to Linode. It is a good idea to wait a few da
 
 ## Next Steps
 
-Your server is only as secure as you make it. Follow our [Securing Your Server](/docs/securing-your-server) guide to make sure your Linode is hardened against unauthorized access.
+Your server is only as secure as you make it. Follow our [Securing Your Server](/docs/security/securing-your-server/) guide to make sure your Linode is hardened against unauthorized access.
