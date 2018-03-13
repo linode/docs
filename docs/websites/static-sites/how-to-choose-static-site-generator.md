@@ -15,7 +15,7 @@ title: 'How to Choose a Static Site Generator'
 
 ## What is a Static Site?
 
-A static website is made of pre-built pages with content that doesn't change between user visits. Because each page is delivered to the browser the same way every time, static pages are often much faster than pages with dynamic content that rely on the server to process each request for each webpage load.
+A static website is made of pre-built pages with content that doesn't change between user visits. Because each page is delivered to the browser the same way every time, static pages are often much faster than pages with dynamic content that rely on the server to process each request for each page load.
 
 A static site generator is an application that converts files (usually stored locally) into webpages. This allows content creators to focus on content, without needing to learn code or stylesheets, and without needing to manage many of the complexities of a backend server.
 
@@ -49,10 +49,10 @@ Since static site generators are easy to set up, it's worth installing a few and
 
 ## Static Site Generator Comparison
 
-* [**Jekyll**](https://jekyllrb.com/): Touts itself as "blog aware," meaning it was made to make blogging easy. Jekyll was built by GitHub and is consistently one of the most popular static site generators. The larger community means a great library of available themes, plugins, and available answers. [GitHub pages](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/) can be configured to automatically build and host a GitHub repository using Jekyll. Jekyll [installs as a RubyGem](https://jekyllrb.com/docs/installation/).
+* [**Jekyll**](https://jekyllrb.com/): Touts itself as "blog aware," meaning it was made to make blogging easy. Jekyll was built by GitHub and is consistently one of the most popular static site generators. The larger community means a great library of available themes, plugins, and available answers. [GitHub pages](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/) can be configured to automatically build and host a GitHub repository using Jekyll. Jekyll [installs via RubyGems](https://jekyllrb.com/docs/installation/).
 * [**Hugo**](https://gohugo.io/): Builds pages quickly. Hugo has a built-in [LiveReload](https://gohugo.io/getting-started/usage/#livereload), so you can see your changes in browser as soon as a tracked file is saved. [Hugo can be installed](https://gohugo.io/getting-started/installing/) through a package manager or with one of the many available binary packages.
 * [**Hexo**](https://hexo.io/): Focuses on speed and simplicity, and is still flexible enough to use both Jekyll and [Octopress](http://octopress.org/) plugins. One command deploys your site to GitHub Pages, Heroku, or via [SFTP](https://hexo.io/docs/deployment.html). Use npm to [install Hexo](https://hexo.io/docs/index.html).
-* [**Gatsby**](https://www.gatsbyjs.org/): Gatsby is quickly moving up the list of popular static site generators. Pages are built quickly, and are created in a way that speeds loads times as well. Gatsby includes hot reloading, and changes are shown in browser instantly. [Install Gatsby](https://www.gatsbyjs.org/docs/) using npm.
+* [**Gatsby**](https://www.gatsbyjs.org/): Gatsby is quickly moving up the list of popular static site generators. Pages are built quickly, and are created in a way that speeds loads times as well. Gatsby includes hot reloading, and changes are shown in the browser instantly. [Install Gatsby](https://www.gatsbyjs.org/docs/) using npm.
 
 ## How to use a Static Site Generator
 
@@ -64,9 +64,9 @@ Since static site generators are easy to set up, it's worth installing a few and
 5.  Instruct your static site generator to build the site.
 6.  Move the newly built or updated pages to your [web server](/docs/web-servers/).
 
-## Add a Front-End to Static Site Management
+## Manage Your Static Site Using a CMS Front-End
 
-To make static site content management even easier, check out [HeadlessCMS](https://headlesscms.org/) for a selection of front-ends for your static site generator. A front-end serves as an intermediary between your content and the site. It allows you to create and edit in a familiar and easy to use environment, and then automates the command line functions.
+To make static site content management even easier, check out [HeadlessCMS](https://headlesscms.org/) for a selection of CMS systems for your static site generator. A front-end serves as an intermediary between your content and the site. It allows you to create and edit in a familiar and easy to use environment, and then automates the command line functions.
 
 While convenient, using a front-end gives up some control and adds more moving parts (and potential points of failure) to what should be a simple system.
 
