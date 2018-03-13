@@ -466,6 +466,7 @@ hba
 hd0
 hdfs
 heartbleed
+hexo
 hiera
 hilights
 hl2
@@ -843,6 +844,7 @@ ntpong
 num
 numpy
 nvim
+octopress
 odoo
 oftc
 ohai
