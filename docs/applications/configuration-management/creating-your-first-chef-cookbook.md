@@ -19,7 +19,7 @@ Cookbooks are one of the key components in Chef. They describe the *desired stat
 
 ![Creating Your First Chef Cookbook](/docs/assets/creating-your-first-chef-cookbook.png)
 
-Prior to using this guide, be sure to set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/chef/setting-up-chef-ubuntu-14-04) guide, and, if needed, review the [Beginner's Guide to Chef](/docs/applications/chef/beginners-guide-chef).
+Prior to using this guide, be sure to set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/) guide, and, if needed, review the [Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/).
 
 {{< note >}}
 This guide assumes all nodes are using Ubuntu 14.04. Recipes can be adapted for use on multiple systems, but that is outside the scope of this guide.
@@ -44,7 +44,7 @@ This guide assumes all nodes are using Ubuntu 14.04. Recipes can be adapted for 
         attributes    definitions  libraries    providers  recipes    templates
         CHANGELOG.md  files        metadata.rb  README.md  resources
 
-    For more information about these directories see the [Beginner's Guide to Chef](/docs/applications/chef/beginners-guide-chef).
+    For more information about these directories see the [Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/).
 
 
 ## default.rb
@@ -155,7 +155,7 @@ Repeat steps 5-7 to upload the cookbook and run chef-client as needed through th
 
 ### Configure Virtual Hosts
 
-After the initial installation Apache needs to be configured, starting with its virtual hosts files. This configuration is based off of the [LAMP Server on Ubuntu 14.04](/docs/websites/lamp/lamp-server-on-ubuntu-14-04) guide.
+After the initial installation Apache needs to be configured, starting with its virtual hosts files. This configuration is based off of the [LAMP Server on Ubuntu 14.04](/docs/web-servers/lamp/lamp-on-ubuntu-14-04/) guide.
 
 1.  Because multiple websites may need to be configured, Chef's attributes feature will be used to define certain aspects of the virtual hosts file(s). Open a `default.rb` file under the `attributes` directory in your cookbook.
 
@@ -440,7 +440,7 @@ Chef contains a feature knows as *data bags*. Data bags store information, and c
 
         openssl rand -base64 512 > ~/chef-repo/.chef/encrypted_data_bag_secret
 
-2.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` (an example can be found in the [Setting Up Chef](/docs/applications/chef/setting-up-chef-ubuntu-14-04#add-the-rsa-private-keys) guide), or through the use of a recipe and cookbook file.
+2.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` (an example can be found in the [Setting Up Chef](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/#add-the-rsa-private-keys) guide), or through the use of a recipe and cookbook file.
 
 3.  Create a `mysql` data bag that will contain the file `rtpass.json` for the root password:
 
