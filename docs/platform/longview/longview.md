@@ -124,7 +124,7 @@ If you are monitoring multiple systems with Longview, you should relabel the cli
 
 ### Longview Apps
 
-Once your system is set up as a Longview client, you will also have access to Linode's *Longview Apps*. These extend Longview's statistics reporting to specific services running on your Linode, currently [Apache](/docs/longview/longview-for-apache), [nginx](/docs/longview/longview-for-nginx), and [MySQL/MariaDB](/docs/longview/longview-for-mysql).
+Once your system is set up as a Longview client, you will also have access to Linode's *Longview Apps*. These extend Longview's statistics reporting to specific services running on your Linode, currently [Apache](/docs/platform/longview/longview-app-for-apache/), [nginx](/docs/platform/longview/longview-app-for-nginx/), and [MySQL/MariaDB](/docs/platform/longview/longview-app-for-mysql/).
 
 ### Updating Longview
 
@@ -222,7 +222,7 @@ If you're experiencing problems with the Longview client, follow these steps to 
 
 Ensure that:
 
-1.  Your system is [fully updated](https://www.linode.com/docs/getting-started/). Longview also requires Perl 5.8 or later.
+1.  Your system is [fully updated](/docs/getting-started/). Longview also requires Perl 5.8 or later.
 
 2.  The Longview client is running. You can verify with one of the two commands below, depending on your distribution's initialization system:
 
@@ -267,7 +267,7 @@ If your Linode has a firewall, it must allow communication with Longview's aggre
 
     sudo ufw show added
 
-If the output of those commands show no rules for the Longview domain, you must add them. See our [firewall documentation](https://linode.com/docs/security/firewalls/) for more information.
+If the output of those commands show no rules for the Longview domain, you must add them. See our [firewall documentation](/docs/security/firewalls/) for more information.
 
 ### Verify API key
 

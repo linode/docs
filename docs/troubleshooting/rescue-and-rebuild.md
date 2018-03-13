@@ -132,7 +132,7 @@ The Finnix recovery distribution does not automatically start an SSH server, but
 
         /etc/init.d/ssh start
 
-Now you can access mounted disks with an SFTP client by using the `root` user and the password you just set. For instructions on connecting with an SFTP client, see the [File Transfer reference manuals](/docs/networking/file-transfer). For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh).
+Now you can access mounted disks with an SFTP client by using the `root` user and the password you just set. For instructions on connecting with an SFTP client, see the [File Transfer reference manuals](/docs/tools-reference/file-transfer/). For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/).
 
 ### Installing Packages
 
@@ -154,7 +154,7 @@ If you previously enabled the Linode Backup Service, you may be able to restore 
 
 ### Recovering From a System Compromise
 
-Did an unauthorized intruder gain access to your Linode? Since it is virtually impossible to determine the full scope of an attacker's reach into a compromised system, you should never continue using a compromised Linode. We recommend that you follow the instructions in [Recovering from a System Compromise](/docs/troubleshooting/compromise-recovery). You'll need to create a new Linode, copy your existing data from the old Linode to the new one, and then swap IP addresses.
+Did an unauthorized intruder gain access to your Linode? Since it is virtually impossible to determine the full scope of an attacker's reach into a compromised system, you should never continue using a compromised Linode. We recommend that you follow the instructions in [Recovering from a System Compromise](/docs/security/recovering-from-a-system-compromise/). You'll need to create a new Linode, copy your existing data from the old Linode to the new one, and then swap IP addresses.
 
 ### Erasing Everything and Starting Over
 
@@ -181,4 +181,4 @@ Here's how to rebuild your Linode from scratch:
 10. Click **Rebuild**. The Linode's dashboard appears. The Linode Manager deletes your existing disks and installs the Linux distribution you selected in a new disk.
 11. Click **Boot** to turn on the Linode.
 
-Your Linode will boot with the newly-installed Linux distribution. See the [Getting Started guide](/docs/getting-started) to provision your server.
+Your Linode will boot with the newly-installed Linux distribution. See the [Getting Started guide](/docs/getting-started/) to provision your server.

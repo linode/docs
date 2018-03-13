@@ -500,7 +500,7 @@ The `copyfrom` location is the path to what you want to back up on your *product
 
 Since you're trying to copy from a remote server (the *production\_server*), you should provide the SSH login credentials first. Then use a colon (`:`), followed by an absolute file path to the folder you want to back up.
 
-In this example, you're backing up the `~/public` directory, which is where your websites should be located if you followed the [Hosting a Website](/docs/hosting-website) guide. `~` is a shortcut for `/home/user/`. The trailing `/` is omitted from the final directory because you want to include the `public` folder itself in the backup, not just its contents.
+In this example, you're backing up the `~/public` directory, which is where your websites should be located if you followed the [Hosting a Website](/docs/websites/hosting-a-website/) guide. `~` is a shortcut for `/home/user/`. The trailing `/` is omitted from the final directory because you want to include the `public` folder itself in the backup, not just its contents.
 
 If you want to do a full-server backup from root, you should use `/*` as your path. You should also exclude some folders from the backup so you don't get a lot of warnings and errors every time you run it. `/dev`, `/proc`, `/sys`, `/tmp`, and `/run` do not contain permanent data, and `/mnt` is the mount point for other file systems. To make an exclusion, add the `--exclude` option at the very end of the rsync command, after everything else.
 

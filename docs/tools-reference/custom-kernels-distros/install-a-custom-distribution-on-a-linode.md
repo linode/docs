@@ -21,23 +21,23 @@ For the sake of organization, it has been split into two main sections:
 
 *  [Install a Custom Distribution](#install-a-custom-distribution): shows you how to use the advantages of **Direct Disk Boot** to easily install the custom distribution.
 
-*  [Linode Manager Compatibility](#linode-manager-compatibility): builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the [Linode Backup Service](/docs/platform/linode-backup-service).
+*  [Linode Manager Compatibility](#linode-manager-compatibility): builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the [Linode Backup Service](/docs/platform/linode-backup-service/).
 
 This guide will use Debian 8 (Jessie) as an example, but the steps provided are generic in nature and should work with most distributions.
 
 {{< note >}}
-This guide entails installing a custom Linux distribution on your KVM Linode. If you're currently running a Xen Linode, you can [upgrade to KVM](/docs/platform/kvm-reference/#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Xen Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode).
+This guide entails installing a custom Linux distribution on your KVM Linode. If you're currently running a Xen Linode, you can [upgrade to KVM](/docs/platform/kvm-reference/#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Xen Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode/).
 {{< /note >}}
 
 ## Advantages of KVM on Linode
 
 Linodes running on our KVM hypervisor offer several advantages over Xen, particularly for those looking to install a custom operating system:
 
-*  **Direct Disk Boot:** Direct disk booting allows you to boot from any disk with a Master Boot Record (MBR). This can be especially useful for operating systems that do not make use of the Grub bootloader, such as [FreeBSD](/docs/tools-reference/custom-kernels-distros/install-freebsd-on-linode).
+*  **Direct Disk Boot:** Direct disk booting allows you to boot from any disk with a Master Boot Record (MBR). This can be especially useful for operating systems that do not make use of the Grub bootloader, such as [FreeBSD](/docs/tools-reference/custom-kernels-distros/install-freebsd-on-linode/).
 
 *  **Full Virtualization:** Our KVM hypervisor offers a full virtualization option that simulates the experience of running directly from hardware. This can be useful for non-standard configurations.
 
-*  **Glish:** KVM introduces the [Glish](/docs/networking/use-the-graphic-shell-glish) graphical console, which makes it easy to access your distribution's installer directly from a disk.
+*  **Glish:** KVM introduces the [Glish](/docs/networking/using-the-linode-graphical-shell-glish/) graphical console, which makes it easy to access your distribution's installer directly from a disk.
 
 ## Install a Custom Distribution
 
@@ -54,7 +54,7 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 **Important**: If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.
 {{< /caution >}}
 
-2.  [Create two configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** dropdown menu:
+2.  [Create two configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** dropdown menu:
 
     **Installer profile**
 
@@ -73,7 +73,7 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 ### Download and Install Image
 
-1.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/networking/using-the-linode-shell-lish).
+1.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/networking/using-the-linode-shell-lish/).
 
 2.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer, but you can replace the URL in the first command with the location of the image you want to install:
 
@@ -87,10 +87,10 @@ As an additional security step, you can use the keys provided in the same direct
     {{< note >}}
 If you would prefer to write the installer directly to the disk as it downloads, use:
 
-curl http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
+    curl http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
 {{< /note >}}
 
-3.  Reboot into your *Installer* configuration profile, and open the [Glish](/docs/networking/use-the-graphic-shell-glish) graphical console from the **Remote Access** tab in your Linode's Dashboard. You'll see your distribution's installer, and you can begin the install process.
+3.  Reboot into your *Installer* configuration profile, and open the [Glish](/docs/networking/using-the-linode-graphical-shell-glish/) graphical console from the **Remote Access** tab in your Linode's Dashboard. You'll see your distribution's installer, and you can begin the install process.
 
 4.  During your installer's partitioning/installation phase, be sure to instruct it to use the `/dev/sda` volume. Most installers will create separate root and swap partitions, but you can adjust this as needed.
 
@@ -142,7 +142,7 @@ If you've followed the steps so far, you should have a working custom distributi
 
 *  **Backups:** The Linode Backup Service needs to be able to mount your filesystem, and does not support partitioned disks.
 
-*  **Helpers:** Several helpful features within the Linode Manager, such as [root password resets](/docs/platform/accounts-and-passwords#resetting-the-root-password) and [Network Helper](/docs/platform/network-helper), need access to your filesystem in order to make changes.
+*  **Helpers:** Several helpful features within the Linode Manager, such as [root password resets](/docs/platform/accounts-and-passwords/#resetting-the-root-password) and [Network Helper](/docs/platform/network-helper/), need access to your filesystem in order to make changes.
 
 This section covers how to move your custom installation over to an **ext4** formatted disk so it can take advantage of these tools.
 
@@ -206,7 +206,7 @@ Depending upon your distribution, it may use different parameters for your root 
 
 ### Transfer your Root Filesystem to your Ext4 Disk
 
-Now that you've updated the necessary configuration files, you're ready to move your root filesystem to the ext4 disk you created previously. To get started, boot your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild) with the following disk assignments:
+Now that you've updated the necessary configuration files, you're ready to move your root filesystem to the ext4 disk you created previously. To get started, boot your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/) with the following disk assignments:
 
 *  *Boot* disk mounted to `/dev/sda`
 *  *Boot-New* disk mounted to `/dev/sdb`

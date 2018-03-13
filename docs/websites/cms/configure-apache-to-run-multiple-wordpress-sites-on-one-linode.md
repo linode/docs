@@ -28,9 +28,9 @@ WordPress is a popular, dynamic, content management system that makes it easy to
 
 ## Before You Begin
 
--   Configure a [LAMP](/docs/websites/lamp/install-lamp-on-ubuntu-16-04) web stack.
+-   Configure a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) web stack.
 
--   This guide assumes you have followed the [Install WordPress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04) guide, and are familiar with the procedures described there.
+-   This guide assumes you have followed the [Install WordPress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/) guide, and are familiar with the procedures described there.
 
 -   Make sure MySQL has a database set up for each separate instance of WordPress that you wish to run. If you do not have a WordPress database, create one:
 
@@ -56,7 +56,7 @@ WordPress is a popular, dynamic, content management system that makes it easy to
 
             quit
 
--  This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+-  This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 
     -  All configuration files should be edited with elevated privileges. Remember to include `sudo` before running your text editor.
 
@@ -71,7 +71,7 @@ Replace each instance of `example.com`, `example`, `example1`, `example2`, and t
 
 ## Install Multiple WordPress Instances
 
-The following steps are adapted from the [Install WordPress](/docs/websites/cms/install-wordpress-on-ubuntu-16-04#install-wordpress) section of the [Install WordPress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04) guide.
+The following steps are adapted from the [Install WordPress](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/#install-wordpress) section of the [Install WordPress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/) guide.
 
 1.  Create the directory that will host your website and WordPress source files. In this guide, the home directory `/var/www/html/example1.com/` is used as an example. Navigate to that new directory:
 
@@ -88,16 +88,16 @@ The following steps are adapted from the [Install WordPress](/docs/websites/cms/
 
 3.  Repeat the procedure for `example2.com`:
 
-		sudo mkdir /var/www/html/example2.com/src/
-		cd /var/www/html/example2.com/src/
-		sudo wget http://wordpress.org/latest.tar.gz
-		sudo tar -zxvf latest.tar.gz
+        sudo mkdir /var/www/html/example2.com/src/
+        cd /var/www/html/example2.com/src/
+        sudo wget http://wordpress.org/latest.tar.gz
+        sudo tar -zxvf latest.tar.gz
 
 4.  Rename `latest.tar.gz` as `wordpress` followed by the date to store a backup of the original source files. This will be useful if you install new versions in the future and need to revert back to a previous release:
 
         sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
-	Repeat this step in `/var/www/html/example2.com/src`.
+    Repeat this step in `/var/www/html/example2.com/src`.
 
 5.  Set your web server's user, `www-data`, as the owner of your site's home directory:
 
@@ -177,6 +177,6 @@ Header always append X-Frame-Options SAMEORIGIN
 
 ## Configure WordPress
 
-Follow the steps from the [Configure WordPress](/docs/websites/cms/install-wordpress-on-ubuntu-16-04#configure-wordpress) section of the [Install WordPress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04) guide.
+Follow the steps from the [Configure WordPress](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/#configure-wordpress) section of the [Install WordPress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/) guide.
 
 

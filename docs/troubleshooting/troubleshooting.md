@@ -18,9 +18,9 @@ We know it's frustrating when you run into problems with your Linode. That's why
 -   Select the issue that best describes your problem
 -   Follow the troubleshooting steps in the order they are presented
 -   Once you've identified a problem, try fixing it with the suggested solutions
--   If you can't find your problem in this guide, take a look at the [troubleshooting manuals](/docs/troubleshooting)
+-   If you can't find your problem in this guide, take a look at the [troubleshooting manuals](/docs/troubleshooting/)
 
-If the issue you're experiencing isn't listed here, or if the recommended solution doesn't help, please feel free to [contact our Support team](/docs/support).
+If the issue you're experiencing isn't listed here, or if the recommended solution doesn't help, please feel free to [contact our Support team](/docs/platform/support/).
 
 ## Linode is Slow or Unresponsive
 
@@ -34,7 +34,7 @@ You can turn off a Linode, just like a physical computer. If you attempt to conn
 2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears, as shown below.
 
-    [![Check Linode boot status.](/content/assets/952-troubleshooting1-1-small.png)](/content/assets/953-troubleshooting1-1.png)
+    [![Check Linode boot status.](/docs/assets/952-troubleshooting1-1-small.png)](/docs/assets/953-troubleshooting1-1.png)
 
 4.  Review the *Server Status* box on the sidebar to determine whether or not the server is powered on.
 5.  If the server is powered off, click the **Boot** button to turn it on. Wait a couple of minutes for the server to boot.
@@ -59,7 +59,7 @@ Now that you've established that your Linode is turned on, you should verify tha
         64 bytes from 123.456.789.0: icmp_seq=2 ttl=47 time=90.714 ms
 
 4.  If you cannot ping the server, there may be a problem. Skip to the next section and try accessing the Linode with LISH. By default, your server is configured to respond to `ping`, but if you configured your firewall to block ICMP packets, the absence of a response is normal.
-5.  If there is packet loss or high latency, follow the instructions in [Are you experiencing network issues?](#id3) This section can help you diagnose and isolate networking errors.
+5.  If there is packet loss or high latency, follow the instructions in [Are you experiencing network issues?](/docs/troubleshooting/troubleshooting/#are-you-experiencing-network-issues) This section can help you diagnose and isolate networking errors.
 
 If you can successfully ping the server, please to continue to the next section.
 
@@ -73,12 +73,12 @@ To verify that your Linode is operating correctly, you should try to log in with
 4.  Click the **Remote Access** tab.
 5.  Select the **Launch Lish Console** link. The LISH console window appears.
 6.  Log in as `root` or another user. If you don't see a login prompt, press Enter. If you can't log in, [reset the root password](/docs/platform/accounts-and-passwords/#resetting-the-root-password) and try again.
-7.  If the console is not responding, [contact Linode support](/docs/support).
+7.  If the console is not responding, [contact Linode support](/docs/platform/support/).
 
     If you can log in, continue to the next section, even if there are error messages visible on the console.
 
     {{< note >}}
-For more information about LISH, see [this guide](/docs/networking/using-the-linode-shell-lish).
+For more information about LISH, see [this guide](/docs/networking/using-the-linode-shell-lish/).
 {{< /note >}}
 
 ### Is your disk full?
@@ -90,17 +90,17 @@ If your Linode's disk is full, this can cause performance degradation and instab
 The output will look similar to this:
 
     Filesystem      Size  Used Avail Use% Mounted on
-	/dev/root       189G  166G   14G  93% /
-	devtmpfs        3.9G     0  3.9G   0% /dev
-	tmpfs           3.9G   16K  3.9G   1% /dev/shm
-	tmpfs           3.9G  399M  3.6G  10% /run
-	tmpfs           5.0M     0  5.0M   0% /run/lock
-	tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
-	tmpfs           799M     0  799M   0% /run/user/1000
+    /dev/root       189G  166G   14G  93% /
+    devtmpfs        3.9G     0  3.9G   0% /dev
+    tmpfs           3.9G   16K  3.9G   1% /dev/shm
+    tmpfs           3.9G  399M  3.6G  10% /run
+    tmpfs           5.0M     0  5.0M   0% /run/lock
+    tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
+    tmpfs           799M     0  799M   0% /run/user/1000
 
 In this example, you can see that the root filesystem is 93% full. Here's a command you can use to list all files over 200MB on your root filesystem:
 
-	sudo find / -xdev -type f -size +200M -exec ls -lah {} \;
+    sudo find / -xdev -type f -size +200M -exec ls -lah {} \;
 
 You can adjust the `+200M` value in this command as needed, to search for files above a specific size.
 
@@ -111,18 +111,18 @@ If a service deletes a file that it is no longer using, the file remains on your
 
 Use the following command to check for deleted files that are currently open:
 
-	sudo lsof | grep deleted  | numfmt --field=8 --to=iec
+    sudo lsof | grep deleted  | numfmt --field=8 --to=iec
 
 This command will check the output of `lsof` for files marked as deleted, and will convert the file sizes so that they're more easily readable. In this example Apache is holding on to several old files:
 
-	apache2   32341         www-data   13u      REG                8,0          0        24K /tmp/.ZendSem.OmCTIC (deleted)
-	apache2   32341         www-data   14w      REG               0,19          0       243M /run/lock/apache2/proxy.13748 (deleted)
-	apache2   32341         www-data   15w      REG               0,19          0       243M /run/lock/apache2/mpm-accept.13748 (deleted)
-	apache2   32342         www-data   12w      REG               0,19          0       158M /run/lock/apache2/ssl-cache.13747 (deleted)
-	apache2   32342         www-data   13u      REG                8,0          0        24K /tmp/.ZendSem.OmCTIC (deleted)
-	apache2   32342         www-data   14w      REG               0,19          0       243M /run/lock/apache2/proxy.13748 (deleted)
-	apache2   32342         www-data   15wW     REG               0,19          0       243M /run/lock/apache2/mpm-accept.13748 (deleted)
-	apache2   32343         www-data   12w      REG               0,19          0       158M /run/lock/apache2/ssl-cache.13747 (deleted)
+    apache2   32341         www-data   13u      REG                8,0          0        24K /tmp/.ZendSem.OmCTIC (deleted)
+    apache2   32341         www-data   14w      REG               0,19          0       243M /run/lock/apache2/proxy.13748 (deleted)
+    apache2   32341         www-data   15w      REG               0,19          0       243M /run/lock/apache2/mpm-accept.13748 (deleted)
+    apache2   32342         www-data   12w      REG               0,19          0       158M /run/lock/apache2/ssl-cache.13747 (deleted)
+    apache2   32342         www-data   13u      REG                8,0          0        24K /tmp/.ZendSem.OmCTIC (deleted)
+    apache2   32342         www-data   14w      REG               0,19          0       243M /run/lock/apache2/proxy.13748 (deleted)
+    apache2   32342         www-data   15wW     REG               0,19          0       243M /run/lock/apache2/mpm-accept.13748 (deleted)
+    apache2   32343         www-data   12w      REG               0,19          0       158M /run/lock/apache2/ssl-cache.13747 (deleted)
 
 To free up this space, you can simply restart the Apache process on your Linode.
 
@@ -141,26 +141,26 @@ The applications on your Linode require a certain amount of physical memory to f
 
 7.  Examine the output. The free memory available (in megabytes) is shown in the *-/+ buffers/cache* column and the *free* row, as shown below.
 
-	[![Check free memory.](/docs/assets/941-troubleshooting3-1.png)](/docs/assets/941-troubleshooting3-1.png)
+    [![Check free memory.](/docs/assets/941-troubleshooting3-1.png)](/docs/assets/941-troubleshooting3-1.png)
 
 8.  A lack of free memory may indicate that an application is consuming all of your available memory. To see a list of running processes sorted by memory usage, execute the following command in the LISH console or a terminal window:
 
         ps -eo pmem,pcpu,rss,vsize,args --sort -pmem | less
 
-9.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](/docs/upgrading) to a larger plan.
-10. To reduce the memory footprint of common applications like Apache and MySQL, see [Troubleshooting Memory and Networking Issues](/docs/troubleshooting/memory-networking).
+9.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](https://www.linode.com/pricing) to a larger plan.
+10. To reduce the memory footprint of common applications like Apache and MySQL, see [Troubleshooting Memory and Networking Issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/).
 
 If your Linode is not out of memory, continue to the next section.
 
 ### Are you experiencing network issues?
 
-Network issues between your desktop computer and the data center can make your server appear slow or unavailable. You can check for issues with *upstream providers* by following the instructions in [Diagnosing Network Issues with MTR](/docs/linux-tools/mtr) to generate *my traceroute* (MTR) reports. MTR combines the functionality of the ping and traceroute programs in a single tool that can help diagnose and isolate networking problems. If the MTR reports indicate that there is a networking issue, use the following list to try resolving the issue yourself before contacting Linode support:
+Network issues between your desktop computer and the data center can make your server appear slow or unavailable. You can check for issues with *upstream providers* by following the instructions in [Diagnosing Network Issues with MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to generate *my traceroute* (MTR) reports. MTR combines the functionality of the ping and traceroute programs in a single tool that can help diagnose and isolate networking problems. If the MTR reports indicate that there is a networking issue, use the following list to try resolving the issue yourself before contacting Linode support:
 
 -   Most routing issues displayed in MTR reports are temporary and clear up within 24 hours.
 -   If you have experienced degraded service for an extended period of time, you can contact a service provider about the issues you're experiencing. Be sure to send MTR reports and any other relevant data.
 -   Network congestion over long distances and during peak times is normal. We recommended positioning hosts and resources as geographically close to the targeted audience as possible.
 
-When contacting [Linode support](/docs/support) for assistance, please include the output of two MTR reports; one from your local network to your Linode, and another from your Linode to your local network's IP address. You can use a website such as [whatsmyip.org](http://www.whatsmyip.org/) to determine the IP address of your local network. If you're not able to connect to your Linode over SSH, you can connect using the [Lish](/docs/networking/using-the-linode-shell-lish) console to generate a report.
+When contacting [Linode support](/docs/platform/support/) for assistance, please include the output of two MTR reports; one from your local network to your Linode, and another from your Linode to your local network's IP address. You can use a website such as [whatsmyip.org](http://www.whatsmyip.org/) to determine the IP address of your local network. If you're not able to connect to your Linode over SSH, you can connect using the [Lish](/docs/networking/using-the-linode-shell-lish/) console to generate a report.
 
 ### Is there a Disk I/O bottleneck?
 
@@ -169,17 +169,17 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 1.  Open a terminal window and log in to your Linode via SSH.
 2.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
-	[![Check for Disk I/O bottleneck.](/docs/assets/939-troubleshooting2.png)](/docs/assets/939-troubleshooting2.png)
+    [![Check for Disk I/O bottleneck.](/docs/assets/939-troubleshooting2.png)](/docs/assets/939-troubleshooting2.png)
 
 3.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
 4.  If your I/O wait percentage is above zero, verify that your server has enough free memory available. In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
-5.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance) to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.
+5.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance/) to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.
 
      {{< note >}}
 You must run `iotop` as `root` or with `sudo`.
 {{< /note >}}
 
-6.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/support) for assistance.
+6.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/platform/support/) for assistance.
 
 Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](/docs/uptime/monitoring/) for instructions on setting up a server monitoring utility.
 
@@ -258,17 +258,17 @@ If your firewall is not blocking ports 80 or 443, continue to the next section.
 
 ### Are the files in correct directory?
 
-If your website is unavailable, verify that you uploaded the files for the website to the correct directory on your server. By default, Apache looks for files in `/usr/local/apache2`, but if you followed the instructions in the [Hosting a Website](/docs/hosting-website) guide, you'll want to place your files in `~/public/example.com/public`, where `example.com` is the name of your domain name.
+If your website is unavailable, verify that you uploaded the files for the website to the correct directory on your server. By default, Apache looks for files in `/usr/local/apache2`, but if you followed the instructions in the [Hosting a Website](/docs/websites/hosting-a-website/) guide, you'll want to place your files in `~/public/example.com/public`, where `example.com` is the name of your domain name.
 
 If the files are in the correct directory, continue to the next section.
 
 ### Are virtual hosts correctly configured?
 
-If you're hosting more than website on your Linode, verify that you correctly configured the virtual host configuration files. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
+If you're hosting more than website on your Linode, verify that you correctly configured the virtual host configuration files. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers/).
 
 ### Did you add a new IP address?
 
-If you recently added a new IP address for an SSL certificate and it's not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
+If you recently added a new IP address for an SSL certificate and it's not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers/).
 
 ## Can't Connect via SSH or FTP
 
@@ -280,7 +280,7 @@ You should follow all steps in the [Linode is Slow or Unresponsive](#linode-is-s
 
 ### Are you using Telnet or FTP?
 
-Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) - the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh).
+Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) - the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh).
 
 ### Is port 22 blocked?
 
@@ -294,7 +294,7 @@ The SSH and SFTP protocols operate over port 22, so you will not be able to conn
 
         0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    state NEW tcp dpt:22
 
-3.  If that line is not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Securing Your Server](/docs/securing-your-server#configure-a-firewall) to revise and implement new firewall rules.
+3.  If that line is not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Securing Your Server](/docs/security/securing-your-server/#configure-a-firewall) to revise and implement new firewall rules.
 4.  Check for default `ACCEPT` and catch-all rules that send traffic transferred over port 22 to `DROP` or `REJECT`.
 
 ## Forgot My Username or Password
@@ -305,7 +305,7 @@ If you've forgotten the password for the root user on your Linode, you can follo
 
 Once you have access to your Linode as the root user, you can reset the password for any additional system users with the `passwd` command. In this case, we'll reset the password for the `example` user:
 
-	passwd example
+    passwd example
 
 ### Linode Manager User
 
@@ -313,7 +313,7 @@ Once you have access to your Linode as the root user, you can reset the password
 
 *  Assuming you know your Linode Manager username, but you've forgotten the password, you can retrieve it [here](https://manager.linode.com/session/forgot/password).
 
-If you've followed these steps, but you're still having trouble accessing your account, please [contact Support](/docs/platform/support#contacting-linode-support).
+If you've followed these steps, but you're still having trouble accessing your account, please [contact Support](/docs/platform/support/#contacting-linode-support).
 
 ## Linode Manager is Displaying "Incorrect" Information
 
