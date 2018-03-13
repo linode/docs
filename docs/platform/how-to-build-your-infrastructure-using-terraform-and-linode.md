@@ -42,14 +42,14 @@ The configurations and commands used in this guide will result in multiple Linod
      - The SHA256 checksums file.
      - The checksum signature file.
 
-2.  Import the HashiCorp Security GPG key:
+2.  Import the HashiCorp Security [GPG key](https://www.hashicorp.com/security.html):
 
         gpg --keyserver keyserver.ubuntu.com --recv 348FFC4C
 
     The output should show the key was imported:
 
     {{< output >}}
-        gpg: requesting key 348FFC4C from hkp server pgp.mit.edu
+        gpg: requesting key 348FFC4C from hkp server keyserver.ubuntu.com
         gpg: /root/.gnupg/trustdb.gpg: trustdb created
         gpg: key 348FFC4C: public key "HashiCorp Security <security@hashicorp.com>" imported
         gpg: no ultimately trusted keys found
