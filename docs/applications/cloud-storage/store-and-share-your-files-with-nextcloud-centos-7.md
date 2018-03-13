@@ -184,4 +184,4 @@ Once you have successfully installed you Nextcloud environment, you may want to 
 
 Although Apache was used as the web server in this guide, installing Nextcloud with nginx is possible as well. Navigate to the [Nextcloud NGINX Configuration](https://docs.nextcloud.com/server/12/admin_manual/installation/nginx.html) documentation to setup Nextcloud with NGINX.
 
-[Nextcloud Talk](https://nextcloud.com/talk/), is an addon to Nextcloud that allows for secure text and video conferencing through Nextcloud's platform. Check out our guide on how to [Install Nextcloud Talk](/docs/applications/cloud-storage/install-nextcloud-13/).
+[Nextcloud Talk](https://nextcloud.com/talk/), is an addon to Nextcloud that allows for secure text and video conferencing through Nextcloud's platform. Check out our guide on how to [Install Nextcloud Talk](/docs/applications/cloud-storage/install-nextcloud-talk).
