@@ -24,12 +24,12 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 ![Ruby on Rails with Apache on Debian 8](/docs/assets/ruby_on_rails_with_apache_debian_8.png "Ruby on Rails with Apache on Debian 8")
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and the Linode's [hostname is set](/docs/getting-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -38,7 +38,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-2.  Have a working Apache server. Follow the [Apache Web Server on Debian 8](/docs/websites/apache/apache-web-server-debian-8) guide if needed.
+2.  Have a working Apache server. Follow the [Apache Web Server on Debian 8](/docs/web-servers/apache/apache-web-server-debian-8/) guide if needed.
 
 3.  Update your system:
 
@@ -70,7 +70,7 @@ gem install rails --version 3.0.4
 
     This will install the appropriate versions of all required packages including ruby, rack, and other dependencies needed for basic Rails development.
 
-4.  (Optional) Install additional dependencies for your application, such as [MySQL](/docs/databases/mysql/mysql-relational-databases-debian-8) support:
+4.  (Optional) Install additional dependencies for your application, such as [MySQL](/docs/databases/mysql/how-to-install-mysql-on-debian-8/) support:
 
         sudo apt-get install mysql-server libmysqlclient-dev mysql-client mysql-common
         sudo gem install mysql
@@ -95,7 +95,7 @@ echo "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/gam
 
 ## Configuring Apache to Work with Passenger
 
-If your Apache virtual hosts file(s) mimics the ones create in the [Apache Web Server on Debian 8](/docs/websites/apache/apache-web-server-debian-8) guide, you will have a `<VirtualHost>` block containing a `DocumentRoot` value similar to `/var/www/html/example.com/public_html/`.
+If your Apache virtual hosts file(s) mimics the ones create in the [Apache Web Server on Debian 8](/docs/web-servers/apache/apache-web-server-debian-8/) guide, you will have a `<VirtualHost>` block containing a `DocumentRoot` value similar to `/var/www/html/example.com/public_html/`.
 
 1.  Open the file in a text editor, and edit the `DocumentRoot` to reflect the public directory of your application:
 
