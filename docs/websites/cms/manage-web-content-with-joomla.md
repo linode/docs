@@ -14,13 +14,13 @@ published: 2010-01-22
 title: 'Manage Web Content with Joomla!'
 ---
 
-Joomla is an advanced "content management system" (CMS) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](/docs/web-applications/cms-guides/drupal/) and [WordPress](/docs/web-applications/cms-guides/wordpress/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](/docs/frameworks/) and [Django](/content/frameworks/). Deployed on top of the industry standard [LAMP Stack](/content/lamp-guides/), Joomla is designed to be both easy to use and manage from the end-user's perspective and easy to administer and host.
+Joomla is an advanced "content management system" (CMS) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7/) and [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](/docs/development/ror/) and [Django](/docs/development/frameworks/). Deployed on top of the industry standard [LAMP Stack](/docs/web-servers/lamp/), Joomla is designed to be both easy to use and manage from the end-user's perspective and easy to administer and host.
 
-Before installing Joomla, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). Additionally, you will need to follow the [LAMP Guide](/content/lamp-guides) appropriate for the distribution you have deployed.
+Before installing Joomla, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Additionally, you will need to follow the [LAMP Guide](/docs/web-servers/lamp/) appropriate for the distribution you have deployed.
 
 ## Installing Prerequisites
 
-After installing the [LAMP stack](/docs/lamp-guides/), you must attend to a few additional prerequisites to complete this Joomla installation. Ensure that your distribution provides `wget` and `unzip` tools. In Debian- and Ubuntu-based systems, issue the following command:
+After installing the [LAMP stack](/docs/web-servers/lamp/), you must attend to a few additional prerequisites to complete this Joomla installation. Ensure that your distribution provides `wget` and `unzip` tools. In Debian- and Ubuntu-based systems, issue the following command:
 
     apt-get update
     apt-get upgrade --show-upgraded
