@@ -471,6 +471,7 @@ hd0
 hdfs
 heartbleed
 heroku
+hexo
 hiera
 hilights
 hl2
@@ -849,6 +850,7 @@ ntpong
 num
 numpy
 nvim
+octopress
 odoo
 oftc
 ohai
@@ -1139,6 +1141,7 @@ smtpd
 smux
 snakeoil
 snapsnot
+snipcart
 snmp
 snmpd
 softlimit
@@ -1464,6 +1467,7 @@ yoursite
 yubico
 yubikey
 zabbix
+zapier
 zgrep
 zile
 zimbra
