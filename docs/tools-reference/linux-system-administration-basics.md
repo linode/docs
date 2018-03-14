@@ -272,11 +272,11 @@ If you are giving other users access to upload files to your server, consider th
 
 ### Upload Files to a Remote Server
 
-If you're used to using an FTP client, OpenSSH (which is included and active with all of the Linode distribution images) allows you to use an FTP-like interface over the SSH protocol. Known as "SFTP," many clients support this protocol, including [WinSCP](/docs/networking/file-transfer/transfer-files-winscp) for Windows, [Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck) for Mac OS X, and [Filezilla](/docs/tools-reference/file-transfer/filezilla) for Linux, OS X, and Windows desktops.
+If you're used to using an FTP client, OpenSSH (which is included and active with all of the Linode distribution images) allows you to use an FTP-like interface over the SSH protocol. Known as "SFTP," many clients support this protocol, including [WinSCP](/docs/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/) for Windows, [Cyberduck](/docs/tools-reference/file-transfer/transfer-files-with-cyberduck-on-mac-os-x/) for Mac OS X, and [Filezilla](/docs/tools-reference/file-transfer/filezilla/) for Linux, OS X, and Windows desktops.
 
-If you are accustomed to FTP, SFTP will be very familiar to you. By default, whatever access a user has to a file system at the command line, that user will also have over SFTP. Consider the implications of [file permissions](/docs/tools-reference/linux-users-and-groups) when configuring user access.
+If you are accustomed to FTP, SFTP will be very familiar to you. By default, whatever access a user has to a file system at the command line, that user will also have over SFTP. Consider the implications of [file permissions](/docs/tools-reference/linux-users-and-groups/) when configuring user access.
 
-You can also use Unix utilities including `scp` and [rsync](/docs/linux-tools/utilities/rsync) to securely transfer files to your Linode. On a local machine, a command to copy `team-info.tar.gz` would look like:
+You can also use Unix utilities including `scp` and [rsync](/docs/tools-reference/tools/introduction-to-rsync/) to securely transfer files to your Linode. On a local machine, a command to copy `team-info.tar.gz` would look like:
 
     scp team-info.tar.gz username@hostname.example.com:/home/username/backups/
 
@@ -319,7 +319,7 @@ Note the following features of the link command:
 
 ### Manage Files on a Linux System
 
-If you're new to using Linux and manipulating files on the terminal interface we encourage you to consider our guide on [using the terminal](/docs/using-linux/using-the-terminal). This section provides a list of basic commands to manage the contents of your filesystem.
+If you're new to using Linux and manipulating files on the terminal interface we encourage you to consider our guide on [using the terminal](/docs/networking/ssh/using-the-terminal/). This section provides a list of basic commands to manage the contents of your filesystem.
 
 To **copy** files:
 
@@ -569,13 +569,13 @@ To match literal slashes (`/`), you must escape them with a backslash (`\`). As 
 
 This would strip the slashes from the string `r/e/g/e/x` so that this string would be `regex` after running the `sed` command on the file that contains the string.
 
-The following example, from our [migrating a server to your Linode](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) document, searches and replaces one IP address with another. In this case `98.76.54.32` is replaced with `12.34.56.78`:
+The following example, from our [migrating a server to your Linode](/docs/platform/disk-images/migrating-a-server-to-your-linode/) document, searches and replaces one IP address with another. In this case `98.76.54.32` is replaced with `12.34.56.78`:
 
     sed -i 's/98\.76\.54\.32/12\.34\.56\.78/'
 
 In the above example, period characters are escaped as `\.`. In regular expressions the full-stop (period) character matches to any character if it is not escaped.
 
-For more information about `sed` refer to our full documentation of [text manipulation with sed](/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed).
+For more information about `sed` refer to our full documentation of [text manipulation with sed](/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed/).
 
 ### Edit Text
 
@@ -598,7 +598,7 @@ This provides only the most basic outline of how to use these text editors, and 
 
 ## Web Servers and HTTP Issues
 
-Linodes do not come with a web server installed by default. You must install and configure your web server. This allows you to configure your web server in a way that makes sense for your application or website. [Linode Guides & Tutorials](/docs) contains a number of documents regarding the installation and maintenance of various [web servers](/docs/websites/).
+Linodes do not come with a web server installed by default. You must install and configure your web server. This allows you to configure your web server in a way that makes sense for your application or website. [Linode Guides & Tutorials](/docs/) contains a number of documents regarding the installation and maintenance of various [web servers](/docs/web-servers/).
 
 This section covers a number of basic web serving tasks and functions, as well as some guidance for users new to the world of web servers.
 
@@ -606,7 +606,7 @@ This section covers a number of basic web serving tasks and functions, as well a
 
 Web servers work by listening on a TCP port, typically port 80 for HTTP and port 443 for HTTPS. When a visitor makes a request for content, the servers respond by delivering the resource requested. Typically, resources are specified with a URL that contains the protocol, `http` or `https`; a colon and two slashes, `://`; hostname or domain, `www.example.com` or `username.example.com`; and the path to a file, `/images/avatar.jpg,` or `index.html`. A full URL would resemble `http://www.example.com/images/avatar.jpg`.
 
-In order to provide these resources to users, your Linode needs to be running a web server. There are many different HTTP servers and countless configurations to provide support for various web development frameworks. The three most popular general use web servers are the [Apache HTTP](/docs/websites/apache) server, [Lighttpd](/docs/web-servers/lighttpd/) ("Lighty"), and [nginx](/docs/web-servers/nginx/) ("Engine X"). Each server has its strengths and weaknesses, and your choice depends largely on your experience and your needs.
+In order to provide these resources to users, your Linode needs to be running a web server. There are many different HTTP servers and countless configurations to provide support for various web development frameworks. The three most popular general use web servers are the [Apache HTTP](/docs/web-servers/apache/) server, [Lighttpd](/docs/web-servers/lighttpd/) ("Lighty"), and [nginx](/docs/web-servers/nginx/) ("Engine X"). Each server has its strengths and weaknesses, and your choice depends largely on your experience and your needs.
 
 Once you've chosen a web server, you need to decide what (if any) scripting support you need to install. Scripting support allows you to run dynamic content with your web server and program server side scripts in languages such as Python, PHP, Ruby, and Perl.
 
