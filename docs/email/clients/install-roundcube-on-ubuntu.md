@@ -82,7 +82,7 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
         sudo chmod 644 apache2-roundcube.sample.conf
 
-5.  Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) is easy and free, but triggers an error in most modern browsers reporting that the connection is not private. [Let's Encrypt](https://letsencrypt.org/) offers browser trusted, free SSL certificates, but does not support [Extended Validation](https://en.wikipedia.org/wiki/Extended_Validation_Certificate) (EV) or multi-domain ([wildcard](https://en.wikipedia.org/wiki/Wildcard_certificate)) certificates. To gain those features, a [commercial SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate/) must be used.
+5.  Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/security/ssl/create-a-self-signed-tls-certificate/) is easy and free, but triggers an error in most modern browsers reporting that the connection is not private. [Let's Encrypt](https://letsencrypt.org/) offers browser trusted, free SSL certificates, but does not support [Extended Validation](https://en.wikipedia.org/wiki/Extended_Validation_Certificate) (EV) or multi-domain ([wildcard](https://en.wikipedia.org/wiki/Wildcard_certificate)) certificates. To gain those features, a [commercial SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate/) must be used.
 
 6.  Once you have your SSL certificate, edit the following options in `apache2-roundcube.sample.conf` to match your desired configuration:
 

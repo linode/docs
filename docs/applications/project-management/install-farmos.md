@@ -23,9 +23,9 @@ This guide explains how to install, setup and host your own FarmOS web app on a 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -34,7 +34,7 @@ This guide explains how to install, setup and host your own FarmOS web app on a 
 
 4. Install a LAMP Stack
 
-   Drupal needs to be built atop a web-server. The LAMP stack provides a quick and easy solution to serve web applications, like Drupal. Install the LAMP stack using our guide on [installing a LAMP stack](https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04).
+   Drupal needs to be built atop a web-server. The LAMP stack provides a quick and easy solution to serve web applications, like Drupal. Install the LAMP stack using our guide on [installing a LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/).
 
 
 ## MySQL Setup
@@ -132,7 +132,7 @@ After each user is created, use the **people** tab, to verify success:
 ## Next Steps
 
 ### Registering a Domain Name for FarmOS
-If you want to register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager-overview) and add your FQDN to the Linode Manager. A FQDN will provide you, and the people who plan on using FarmOS, the ability to navigate to a URL, instead of your Linode's public IP address. If you plan on using FarmOS internally, you can skip this step.
+If you want to register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](/docs/networking/dns/dns-manager-overview/) and add your FQDN to the Linode Manager. A FQDN will provide you, and the people who plan on using FarmOS, the ability to navigate to a URL, instead of your Linode's public IP address. If you plan on using FarmOS internally, you can skip this step.
 
 ### Generate a Google API Key
 FarmOS can interface with GoogleMaps. You need a GoogleAPI key to use this feature. The FarmOS official documentation has a section about using GoogleMaps in its [docs](http://farmos.org/hosting/googlemaps/). Interfacing with GoogleMaps allows you to save certain geographical areas into FarmOS. When creating FarmOS projects and tasks, you can use the Google Maps API to pinpoint where the task takes place.

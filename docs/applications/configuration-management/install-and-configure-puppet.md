@@ -30,9 +30,9 @@ Begin this guide as the `root` user. A limited user with administrative privileg
 
 ## Before You Begin
 
-1.  You should have three available Linodes, one of which has at least four CPU cores for the Puppet master. A [Linode 8GB](/pricing) plan is recommended. The two other nodes can be of any plan size, depending on how you intend to use them after Puppet is installed and configured.
+1.  You should have three available Linodes, one of which has at least four CPU cores for the Puppet master. A [Linode 8GB](https://www.linode.com/pricing) plan is recommended. The two other nodes can be of any plan size, depending on how you intend to use them after Puppet is installed and configured.
 
-2.  Follow the [Getting Started](/docs/getting-started) guide and ensure your Linodes are configured to use the same timezone.
+2.  Follow the [Getting Started](/docs/getting-started/) guide and ensure your Linodes are configured to use the same timezone.
 
     {{< note >}}
 For ease of use, set the Puppet master server's hostname to `puppet`, and have a valid fully-qualified domain name (FQDN).
@@ -61,7 +61,7 @@ If you wish to run another Linux distribution as your master server, the initial
 
 `wget https://apt.puppetlabs.com/puppetlabs-release-pc1-VERSION.deb`
 
-Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://docs.puppetlabs.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](https://www.linode.com/docs/tools-reference/linux-package-management).
+Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://docs.puppetlabs.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](/docs/tools-reference/linux-package-management/).
 {{< /note >}}
 
 2.  Install the `puppetmaster-passenger` package:
