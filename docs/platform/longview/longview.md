@@ -7,7 +7,7 @@ og_description: "Learn how to use Longview, Linode's system data graphing servic
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['longview/', 'uptime/longview/']
-modified: 2018-03-01
+modified: 2018-03-15
 modified_by:
   name: Linode
 title: What is Longview and How to Use it
@@ -211,7 +211,7 @@ Longview Free updates every 5 minutes and provides only twelve hours of data his
 2.  You'll be taken to the Longview subscriptions page. Select the radio dial of the plan you want to change to.
 
 3.  Click the **Continue \>\>** button.
-4.  Review your order, then click **Complete Order**.
+4.  Review your order, then click **Complete Order**. Please note that it may take up to 24 hours for the upgrade process complete.
 
 
 ## Troubleshooting
@@ -249,7 +249,7 @@ Restart the Longview client in debug mode for increased logging verbosity.
 
         sudo /etc/init.d/longview debug
 
-3.  When you're finished collecting information, stop Longview and restart it again without the debug flag.
+3.  When you're finished collecting information, stop Longview (sometimes this requires killing the process) and restart it again without the debug flag.
 
 ### Firewall Rules
 
