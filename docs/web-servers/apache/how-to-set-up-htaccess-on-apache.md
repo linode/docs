@@ -25,15 +25,15 @@ The purpose of this guide is to show you how to set up htaccess configuration (.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-4.  Complete the Apache section in the [Install a Lamp Stack](https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04) to install Apache on your Linode.
+4.  Complete the Apache section in the [Install a Lamp Stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) to install Apache on your Linode.
 
 {{< note >}}
 Throughout this guide, replace each instance of `testuser` with your custom user account. Replace each occurrence of `example.com` with the IP address or Fully Qualified Domain Name (FQDN) of your Linode.

@@ -29,7 +29,7 @@ Once your server has been created, deploying updates becomes as simple and painl
 
 1. Sign up for a [Laravel Forge](https://forge.laravel.com/auth/register) account if you do not have one.
 
-2. This guide will require a [Linode](https://www.linode.com/) account and an API key. For more detailed instructions, refer to [this guide](https://www.linode.com/docs/platform/api/api-key).
+2. This guide will require a [Linode](https://www.linode.com/) account and an API key. For more detailed instructions, refer to [this guide](/docs/platform/api/api-key/).
 
 ## Link to a Source Control Service
 

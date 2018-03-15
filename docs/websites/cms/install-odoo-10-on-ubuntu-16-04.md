@@ -27,7 +27,7 @@ This guide covers how to install and configure Odoo in under an hour using Git s
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started) guide.
+1.  Complete the [Getting Started](/docs/getting-started/) guide.
 
 2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for an Odoo production server in the next section.
 
@@ -39,7 +39,7 @@ This guide covers how to install and configure Odoo in under an hour using Git s
 
 ## Configure UFW Firewall for Odoo
 
-Before installing Odoo, we'll set up some basic firewall rules to allow SSH connections and access to the Odoo server. In this example we'll use Odoo's default port `8069`, but this could be any port you specify later in the configuration file. If you plan to run any other services, you can add their ports here as well. Refer to our guide on how to [Configure a Firewall with UFW](https://www.linode.com/docs/security/firewalls/configure-firewall-with-ufw#use-ufw-to-manage-firewall-rules) for help with rules and settings:
+Before installing Odoo, we'll set up some basic firewall rules to allow SSH connections and access to the Odoo server. In this example we'll use Odoo's default port `8069`, but this could be any port you specify later in the configuration file. If you plan to run any other services, you can add their ports here as well. Refer to our guide on how to [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#use-ufw-to-manage-firewall-rules) for help with rules and settings:
 
     sudo ufw allow ssh
     sudo ufw allow 8069/tcp
@@ -437,4 +437,4 @@ If all your tests pass, you can safely update your production installation.
 
 ## Next Steps
 
-If you plan to use Odoo 10 for your business, you may wish to configure SSL/TLS encryption to enable secure connections to your server. To do this, check out our guide on how to [install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates).
+If you plan to use Odoo 10 for your business, you may wish to configure SSL/TLS encryption to enable secure connections to your server. To do this, check out our guide on how to [install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/).

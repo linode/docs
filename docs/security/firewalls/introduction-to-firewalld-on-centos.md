@@ -276,4 +276,4 @@ To see all custom chains or rules added to FirewallD:
     firewall-cmd --direct --get-all-chains
     firewall-cmd --direct --get-all-rules
 
-Discussing iptables syntax details goes beyond the scope of this guide. If you want to learn more, you can review our [iptables guide](https://www.linode.com/docs/networking/firewalls/control-network-traffic-with-iptables).
+Discussing iptables syntax details goes beyond the scope of this guide. If you want to learn more, you can review our [iptables guide](/docs/security/firewalls/control-network-traffic-with-iptables/).

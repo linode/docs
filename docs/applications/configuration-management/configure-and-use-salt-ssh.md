@@ -14,7 +14,7 @@ contributor:
   name: Sergey Bulavintsev
 ---
 
-# Introduction to Salt SSH
+## Introduction to Salt SSH
 
 Salt SSH allows you to execute Salt commands, or states, without installing a salt-minion package.
 
@@ -23,7 +23,7 @@ During execution, Salt SSH will copy necessary files to the target system's `/tm
 Please note: Because it uses SSH, Salt SSH is slower than standard Salt with ZeroMQ.
 
 
-# Before You Begin
+## Before You Begin
 
 1.  This guide assumes that you're using an rpm-based system (CentOS, RedHat, Oracle Enterprise Linux) .
 
@@ -33,7 +33,7 @@ Please note: Because it uses SSH, Salt SSH is slower than standard Salt with Zer
         $rpm -q salt-ssh
 
     {{< note >}}
-For detailed instruction on how to set up SaltStack repo, please refer to the [Salt Stack Installation Guide](https://www.linode.com/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers)
+For detailed instruction on how to set up SaltStack repo, please refer to the [Salt Stack Installation Guide](/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers/)
 {{< /note >}}
 
 3.  Your minions must have Python installed. Without Python installed on minions, you will only be able to run Salt SSH in raw mode. In raw mode, a raw shell command cannot use execution modules or apply Salt states. If you're running a modern version of CentOS/RedHat, you already have Python installed on your systems

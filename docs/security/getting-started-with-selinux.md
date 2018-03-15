@@ -35,7 +35,7 @@ We do not recommend you disable SELinux. But if you wish to disable SELinux, ple
 ## Before You Begin
 
 1. This guide requires you to **OWN** the box you are going to use. SELinux is a security-control system; a small misconfiguration could cause your system to be compromised.
-2. Linode uses a custom kernel by default. This kernel does not support SELinux. If you are using a Linode, switch to a distribution-supplied kernel by using this guide: [Run a non-custom kernel](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/)
+2. Linode uses a custom kernel by default. This kernel does not support SELinux. If you are using a Linode, switch to a distribution-supplied kernel by using this guide: [Run a non-custom kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/)
 3.  Update your system:
 
         yum update
