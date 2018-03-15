@@ -56,7 +56,7 @@ The useradd command utilizes a variety of variables, some of which are shown in 
 | Option          | Description                                                        | Example                                    |
 |:----------------|:-------------------------------------------------------------------|:-------------------------------------------|
 | `-d <home_dir>` | home\_dir will be used as the value for the user's login directory | `useradd <name> -d /home/<user's home>`    |
-| `-e <date>`     | the date when the account will expire                              | `user add <name>** -e <YYYY-MM-DD>`        |
+| `-e <date>`     | the date when the account will expire                              | `useradd <name>** -e <YYYY-MM-DD>`        |
 | `-f <inactive>` | the number of days before the account expires                      | `useradd <name> -f <0 or -1>`              |
 | `-s <shell>`    | sets the default shell type                                        | `useradd <name> -s /bin/<shell>`           |
 

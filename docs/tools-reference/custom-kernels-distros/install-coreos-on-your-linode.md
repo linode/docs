@@ -27,12 +27,12 @@ CoreOS Container Linux is now available for deployment from the Linode Manager.
 
 CoreOS is not officially supported by Linode so there are limitations to using it in comparison to the Linux images provided in the Linode Manager.
 
-*   The CoreOS installer will create a partition table on the disk image which will interfere with the [Linode Backup](/docs/platform/backup-service) service because the disk image will not be directly mountable.
+*   The CoreOS installer will create a partition table on the disk image which will interfere with the [Linode Backup](/docs/platform/linode-backup-service/) service because the disk image will not be directly mountable.
 
 *   Unlike the case with most partitioned images, you *will* be able to resize the disk image holding a CoreOS system; however, it can only grow, not shrink. CoreOS will resize its root partition to fill the disk on next boot.
 
 {{< caution >}}
-These instructions perform **destructive** operations on your Linode! You should not attempt to install CoreOS on a Linode with data you want to preserve. You may wish to [use a second Linode](/docs/security/recovering-from-a-system-compromise#using-a-second-linode) and transfer your data after installation.
+These instructions perform **destructive** operations on your Linode! You should not attempt to install CoreOS on a Linode with data you want to preserve. You may wish to [use a second Linode](/docs/security/recovering-from-a-system-compromise/#using-a-second-linode) and transfer your data after installation.
 {{< /caution >}}
 
 ## Before You Begin
@@ -58,7 +58,7 @@ CoreOS configures no default way to log in except by supplying an option to the 
 
     [![Set /dev/sda to CoreOS disk image](/docs/assets/coreos-device-identifier-small.png)](/docs/assets/coreos-device-identifier.png)
 
-5.  Use [Lish](/docs/networking/using-the-linode-shell-lish) to access your Linode. From the **Remote Access** tab, go to the bottom of the page and under **Console Access**, click the link to the right of **Lish via SSH** to open an SSH connection in the local system's terminal.
+5.  Use [Lish](/docs/networking/using-the-linode-shell-lish/) to access your Linode. From the **Remote Access** tab, go to the bottom of the page and under **Console Access**, click the link to the right of **Lish via SSH** to open an SSH connection in the local system's terminal.
 
 ## Collect Installation Files
 

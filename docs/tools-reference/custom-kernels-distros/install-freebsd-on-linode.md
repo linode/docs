@@ -13,7 +13,7 @@ title: 'Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish/)'
- - '[Using the Graphic Shell (Glish) - BETA](/docs/networking/using-the-graphic-shell-glish)'
+ - '[Using the Graphic Shell (Glish)](/docs/networking/using-the-graphic-shell-glish/)'
  - '[FreeBSD Handbook - Comparing BSD and Linux](https://www.freebsd.org/doc/en/articles/explaining-bsd/comparing-bsd-and-linux.html)'
  - '[FreeBSD Handbook - Linux® Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)'
 ---
@@ -40,9 +40,9 @@ FreeBSD is not officially supported by Linode at this time. This means that the 
 
 Begin by creating the Linode and making some preliminary changes.
 
-1.  Create your Linode in your preferred data center. For the purposes of this tutorial, we recommend turning [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
+1.  Create your Linode in your preferred data center. For the purposes of this tutorial, we recommend turning [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configuring-shutdown-watchdog) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
-2.  [Create two disk images](https://www.linode.com/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk); both   should be in the RAW format.
+2.  [Create two disk images](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk); both   should be in the RAW format.
 
     - The first should be a 1024 MB image labeled *Installer*.
     - The second should use the Linode's remaining space. Label it *FreeBSD*.
@@ -76,7 +76,7 @@ Begin by creating the Linode and making some preliminary changes.
 
 6.  When the command finishes, reboot into your **Installer profile**.
 
-7.  Go to the **Remote Access** tab in the Linode Manager. Access your Linode using [Glish](/docs/networking/using-the-graphic-shell-glish) to start the installation.
+7.  Go to the **Remote Access** tab in the Linode Manager. Access your Linode using [Glish](/docs/networking/using-the-graphic-shell-glish/) to start the installation.
 
 ## Installing FreeBSD
 

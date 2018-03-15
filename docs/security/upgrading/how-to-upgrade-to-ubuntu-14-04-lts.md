@@ -25,7 +25,7 @@ Distribution upgrades can yield unpredictable results, due to variations in soft
  - Transferring your data
  - Swapping IP addresses
 
-In addition, you should use [LISH](https://www.linode.com/docs/networking/using-the-linode-shell-lish) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
+In addition, you should use [LISH](/docs/networking/using-the-linode-shell-lish/) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
 {{< /caution >}}
 
 {{< note >}}
@@ -136,4 +136,4 @@ Your Linode is now running Ubuntu 14.04 LTS.
 
 ## Upgrading from Previous Ubuntu Releases
 
-If your Linode is running an release of Ubuntu older than 12.04 LTS, use the upgrade guides in the [Upgrading](/docs/security/upgrading) section to upgrade to Ubuntu 12.04 LTS first. You may then upgrade your Linode to Ubuntu 14.04 LTS.
+If your Linode is running an release of Ubuntu older than 12.04 LTS, use the upgrade guides in the [Upgrading](/docs/security/upgrading/) section to upgrade to Ubuntu 12.04 LTS first. You may then upgrade your Linode to Ubuntu 14.04 LTS.

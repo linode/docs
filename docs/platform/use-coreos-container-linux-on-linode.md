@@ -35,10 +35,10 @@ Container Linux does not use a swap space, so while Linode's other distributions
 
 ### Filesystem/Boot Helpers
 
-These are not needed for Container Linux, and Network Helper is not compatible so they are all disabled. Linode's Container Linux images use `systemd-networkd`, so see our [static networking](https://www.linode.com/docs/networking/linux-static-ip-configuration/#arch--coreos) guide if you want to configure static and/or multiple IP addresses for your deployment.
+These are not needed for Container Linux, and Network Helper is not compatible so they are all disabled. Linode's Container Linux images use `systemd-networkd`, so see our [static networking](/docs/networking/linux-static-ip-configuration/#arch-coreos-container-linux-ubuntu-17-10) guide if you want to configure static and/or multiple IP addresses for your deployment.
 
 {{< note >}}
-The [Linode backup service](/docs/platform/linode-backup-service) is not available for Container Linux. You should back up your data and configurations using an [alternative backup method](/docs/security/backups/backing-up-your-data).
+The [Linode backup service](/docs/platform/linode-backup-service/) is not available for Container Linux. You should back up your data and configurations using an [alternative backup method](/docs/security/backups/backing-up-your-data/).
 {{< /note >}}
 
 ## Log into Container Linux
@@ -57,7 +57,7 @@ If you find an update has undesirable effects, [roll back](https://coreos.com/os
 
 ## Recovery Mode
 
-Should you need to access your Container Linux disk using Rescue Mode, use the boot instructions shown in our [Rescue and Rebuild](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) guide. The root partition is located on `/dev/sda9`. To access it, enter:
+Should you need to access your Container Linux disk using Rescue Mode, use the boot instructions shown in our [Rescue and Rebuild](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) guide. The root partition is located on `/dev/sda9`. To access it, enter:
 
     mount /dev/sda9 && cd /media/sda9
 

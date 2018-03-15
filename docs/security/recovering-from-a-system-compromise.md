@@ -34,17 +34,17 @@ This is the easiest option, yet the most destructive. It will wipe all of your d
 5.  Choose your new distribution, disk size, swap disk, and root password.
 6.  Click **Rebuild**.
 
-This will delete your current compromised images and deploy fresh disks. All data that was stored on the Linode previously will be unrecoverable, but your system will be free of compromise. At this point, we recommend that you follow the instructions in the [Securing Your Server](/docs/securing-your-server) guide to disable root logins via SSH, or to disable password logins, in favor of SSH keys only, for all accounts.
+This will delete your current compromised images and deploy fresh disks. All data that was stored on the Linode previously will be unrecoverable, but your system will be free of compromise. At this point, we recommend that you follow the instructions in the [Securing Your Server](/docs/securing-your-server/) guide to disable root logins via SSH, or to disable password logins, in favor of SSH keys only, for all accounts.
 
 ## Copying Data Offsite
 
-If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/troubleshooting/rescue-and-rebuild) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh) explains how to copy your entire disk offsite.
+If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/troubleshooting/rescue-and-rebuild/) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/platform/disk-images/copying-a-disk-image-over-ssh/) explains how to copy your entire disk offsite.
 
 ## Using a Second Linode
 
 You can use a second Linode for the most seamless transition to a new system.
 
-1.  Begin by adding a new Linode to your account. See the [Getting Started](/docs/getting-started) guide for instructions.
+1.  Begin by adding a new Linode to your account. See the [Getting Started](/docs/getting-started/) guide for instructions.
 2.  Set a strong password for **root** and all user accounts, making sure not to reuse any passwords from the compromised system.
 3.  Upgrade all system packages:
 
@@ -57,7 +57,7 @@ You can use a second Linode for the most seamless transition to a new system.
 
         yum update
 
-4.  Follow the instructions in the [Securing Your Server](/docs/securing-your-server) guide to disable root logins via SSH, or to disable password logins, in favor of SSH keys only, for all accounts.
+4.  Follow the instructions in the [Securing Your Server](/docs/securing-your-server/) guide to disable root logins via SSH, or to disable password logins, in favor of SSH keys only, for all accounts.
 
 ### Rebuild Your Configuration
 
@@ -72,7 +72,7 @@ Rebuild your production server's configuration on the new Linode.
 The next task is to copy your data to the new Linode, and make sure you've purged all compromised portions. Follow these steps:
 
 1.  Create a temporary directory on the new Linode.
-2.  Copy any needed user and configuration data from the compromised Linode using [rsync](/docs/linux-tools/utilities/rsync) or `scp`. If you are not familiar with these programs, you can find more information by entering the `man rsync` or `man scp` commands.
+2.  Copy any needed user and configuration data from the compromised Linode using [rsync](/docs/tools-reference/tools/introduction-to-rsync/) or `scp`. If you are not familiar with these programs, you can find more information by entering the `man rsync` or `man scp` commands.
 
     {{< caution >}}
 Do not log in to the new Linode from the compromised Linode. Files should be pulled from the compromised server to your new setup instead.
@@ -80,7 +80,7 @@ Do not log in to the new Linode from the compromised Linode. Files should be pul
 
 3.  Audit your data using tools such as `rkhunter` and `clamav`. You may wish to use additional malware scanners as well to be certain you aren't retaining tainted files. Examine all system scripts manually for contaminated code, and replace all suspicious executable files with known good copies.
 
-Alternately, if you're not comfortable copying anything from the compromised system to your new server prior to auditing the data, you may wish to use the [Finnix rescue environment](/docs/troubleshooting/finnix-rescue-mode) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server.
+Alternately, if you're not comfortable copying anything from the compromised system to your new server prior to auditing the data, you may wish to use the [Finnix rescue environment](/docs/troubleshooting/rescue-and-rebuild/) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server.
 
 ### Swap IP Addresses
 

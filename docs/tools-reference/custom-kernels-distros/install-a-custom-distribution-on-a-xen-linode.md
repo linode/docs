@@ -17,7 +17,7 @@ title: Install a Custom Distribution on a Xen Linode
 If you'd like to run a Linux distribution on your Linode that isn't available from our distribution list, you can do so by following these instructions. This guide is handy for people who prefer distributions that aren't heavily used in the community, or for those interested in creating a highly customized Linux environment and porting it to their Linode.
 
 {{< note >}}
-This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode).
+This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/).
 {{< /note >}}
 
 ## Creating the Virtual Machine
@@ -210,6 +210,6 @@ proc /proc proc defaults 0 0
 ~
 6.  Exit and save the file by pressing `Ctrl+x`, type `y` to save your changes, and press `enter` to exit.
 
-The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](https://www.linode.com/docs/getting-started#logging-in-for-the-first-time). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](https://www.linode.com/docs/networking/linux-static-ip-configuration/) guide.
+The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration/) guide.
 
 Congratulations, you have successfully transferred the custom distro disk from your local virtual machine to your Linode.

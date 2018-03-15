@@ -18,7 +18,7 @@ The Linode Manager provides some basic monitoring of system resource utilization
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug in framework and web-based interface.
 
-Before installing Cacti we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing Cacti we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [beginner's guide](/docs/platform/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
 # Prerequisites
 
@@ -65,9 +65,9 @@ Before installing Cacti we must install a few basic dependencies that are critic
     apt-get install snmpd snmp mysql-server apache2 libapache2-mod-php5 \
     php5-mysql php5-cli php5-snmp
 
-You will need to create a password for the `root` user of your MySQL database during the installation. After the installation completes, be sure to run `mysql_secure_installation` to disable some of MySQL's less secure components. Also consider reading our [MySQL installation guide](/docs/databases/mysql/ubuntu-10-04-lucid) for configuration recommendations.
+You will need to create a password for the `root` user of your MySQL database during the installation. After the installation completes, be sure to run `mysql_secure_installation` to disable some of MySQL's less secure components. Also consider reading our [MySQL installation guide](/docs/databases/mysql/use-mysql-relational-databases-on-ubuntu-10-04-lts-lucid/) for configuration recommendations.
 
-The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/docs/web-servers/apache/installation/ubuntu-10-04-lucid) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/docs/web-servers/apache/php-cgi/ubuntu-10-04-lucid) and with [nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid) running PHP as a FastCGI process.
+The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/docs/web-servers/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/docs/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-04-lts-lucid/) and with [nginx](/docs/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/) running PHP as a FastCGI process.
 
 ### Configuring SNMPD
 
@@ -146,5 +146,5 @@ You may wish to consult the following resources for additional information on th
 
 - [Cacti Website](http://www.cacti.net/index.php)
 - [Cacti Users Plugin Community](http://cactiusers.org/index.php)
-- [Linux Security Basics](/docs/security/basics)
+- [Linux Security Basics](/docs/security/securing-your-server/)
 
