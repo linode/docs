@@ -144,8 +144,8 @@ This guide requires additional libraries which are not included in our standard 
 
     Choose one of the following example files:
 
-        wget https://www.gottnt.com/l4d2/basic-server.cfg
-        wget https://www.gottnt.com/l4d2/detailed-server.cfg
+        wget https://raw.githubusercontent.com/linode/docs-scripts/master/hosted_scripts/left-4-dead-2-multiplayer-server-installation/basic-server.cfg
+        wget https://raw.githubusercontent.com/linode/docs-scripts/master/hosted_scripts/left-4-dead-2-multiplayer-server-installation/detailed-server.cfg
 
     Make sure to rename the file to `server.cfg` before launching the server:
 
