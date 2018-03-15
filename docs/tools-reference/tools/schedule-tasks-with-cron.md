@@ -28,10 +28,10 @@ Below is the default system `crontab` file from Debian 9:
     # command to install the new version when you edit this file
     # and files in /etc/cron.d. These files also have username fields,
     # that none of the other crontabs do.
-    
+
     SHELL=/bin/sh
     PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-    
+
     # m h dom mon dow user  command
     17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
     25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /        cron.daily )
@@ -96,7 +96,7 @@ Cron can run tasks as other system users than just `root`. This is useful if you
 
 ## Redirect Cron Job Messages
 
-Cron will email the executing user by default with any output or errors that would normally be sent to the `stdout` or `stderr`. To disable email alerts, add `>/dev/null` to the end of the job's line in your `crontab` file.     
+Cron will email the executing user by default with any output or errors that would normally be sent to the `stdout` or `stderr`. To disable email alerts, add `>/dev/null` to the end of the job's line in your `crontab` file.
 
 For example, the full line would be:
 
