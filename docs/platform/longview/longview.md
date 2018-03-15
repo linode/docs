@@ -211,7 +211,7 @@ Longview Free updates every 5 minutes and provides only twelve hours of data his
 2.  You'll be taken to the Longview subscriptions page. Select the radio dial of the plan you want to change to.
 
 3.  Click the **Continue \>\>** button.
-4.  Review your order, then click **Complete Order**. Please note that it may take up to 24 hours for the upgrade process complete.
+4.  Review your order, then click **Complete Order**. Please note that it may take up to 24 hours for the upgrade process to complete.
 
 
 ## Troubleshooting
