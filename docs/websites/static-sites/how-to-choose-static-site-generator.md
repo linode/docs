@@ -82,4 +82,4 @@ You can add:
 * [Disqus](https://help.disqus.com/customer/portal/articles/472097-universal-embed-code) comments,
 * [Snipcart](https://snipcart.com/blog/static-site-e-commerce-part-2-integrating-snipcart-with-jekyll) or [GoCommerce](https://github.com/netlify/gocommerce) for eCommerce,
 * [MailChimp](https://kb.mailchimp.com/lists/signup-forms/add-a-signup-form-to-your-website) for email lists, or even
-* Create your own email form using [Zapier](https://www.harrycresswell.com/articles/form-data-with-zapier/).
+* Your own email form using [Zapier](https://www.harrycresswell.com/articles/form-data-with-zapier/).
