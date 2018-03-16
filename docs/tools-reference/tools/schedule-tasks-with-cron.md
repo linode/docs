@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use Cron to run programs at specified times on your Linux server.'
+og_description: 'Cron is a classic UNIX utility that runs tasks at specific times or intervals. This guide shows how to automate a variety of tasks using Cron.'
 keywords: ["cron", "crontab", "automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linux-tools/utilities/cron/']
@@ -13,11 +14,13 @@ published: 2009-12-15
 title: Schedule Tasks with Cron
 ---
 
-![Schedule Tasks with Cron](/docs/assets/schedule_tasks_with_cron_smg.png)
+![Schedule Tasks with Cron](/docs/assets/schedule_tasks_with_cron_smg.png "Schedule Tasks with Cron")
 
-Cron is a classic utility found on Linux and UNIX systems for running tasks at pre-determined times or intervals.
+## What is Cron?
 
-## Basic Cron Use
+Cron is a classic utility found on Linux and UNIX systems for running tasks at pre-determined times or intervals. Use Cron to schedule automated updates, report generation, or check for available disk space every day and send you an email if it's under a certain amount.
+
+## How to Use Cron and crontab - The Basics
 
 System Cron jobs exist as entries in the `/etc/crontab` file. Each job is described on a single line by defining a time interval, a user to run the command as, and the command to run. Cron can run any kind of script, command, or executable.
 
@@ -71,24 +74,24 @@ See [man crontab](https://linux.die.net/man/1/crontab) for more information.
 
 Cron has additional operators to specify more complex time intervals. They are:
 
--   The `/` operator "steps through" or "skips" a specified units. Therefore `*/3` in the hour field, will run the specified job, at 12:00 am, 3:00am, 6:00am, 9:00am, 12:00pm, 3:00pm, 6:00pm, and 9:00pm. A `*/3` in the "day of month" field, runs the given task on the 3rd, 6th, 9th, 12th, 15th, 18th, 21st, and 29th of every month.
--   The `,` operator allows you to specify a list of times for repetition. Comma separated lists of times must not contain a space.
--   The `-` operator specifies a range of values. `2-4` in the month field will run a task in February, March, and April. `1-5` in the day of week field will run a task every weekday.
+- `/` operator: "steps through" or "skips" specified units. Therefore `*/3` in the hour field, will run the specified job, at 12:00am, 3:00am, 6:00am, 9:00am, 12:00pm, 3:00pm, 6:00pm, and 9:00pm. A `*/3` in the "day of month" field, runs the given task on the 3rd, 6th, 9th, 12th, 15th, 18th, 21st, and 29th of every month.
+- `,` operator: allows you to specify a list of times for repetition. Comma separated lists of times must not contain a space.
+- `-` operator: specifies a range of values. `2-4` in the month field will run a task in February, March, and April. `1-5` in the day of week field will run a task every weekday.
 
 ### Special Cron Syntaxes
 
 There are a number of special Cron schedule shortcuts used to specify common intervals. These are specified on the `crontab` entry in place of the conventional five column date specification. These special interval statements are:
 
--   `@yearly` and `@annually` both run the specified task **every year** at 12:00am on the 1st of January. This equivalent to specifying `0 0 1 1 *` in the `crontab` line.
--   `@daily` and `@midnight` both run the cronjob **every day** at 12:00am. This is equivalent to the following `cron` syntax: `0 0 * * *`.
--   `@monthly` runs the job **once a month**, on the 1st, at 12:00am. In standard `cron` syntax this is equivalent to: `0 0 1 * *`.
--   `@weekly` runs the job **once a week** at 12:00am on Sunday. This is the same as specifying `0 0 * * 0` on the `crontab` line.
--   `@hourly` runs the job at the top of every hour. In standard `cron` syntax this is equivalent to: `0 * * * *`.
--   The `@reboot` statement runs the specified command once, at start up. Generally boot-time tasks are managed by the distribution's init system, but `@reboot` cronjobs may be useful for users who don't have access to edit systemd units or other init scripts.
+- `@yearly` and `@annually` both run the specified task **every year** at 12:00am on the 1st of January. This is equivalent to specifying `0 0 1 1 *` in the `crontab` line.
+- `@daily` and `@midnight` both run the cronjob **every day** at 12:00am. This is equivalent to the following `cron` syntax: `0 0 * * *`.
+- `@monthly` runs the job **once a month**, on the 1st, at 12:00am. In standard `cron` syntax this is equivalent to: `0 0 1 * *`.
+- `@weekly` runs the job **once a week** at 12:00am on Sunday. This is the same as specifying `0 0 * * 0` on the `crontab` line.
+- `@hourly` runs the job at the top of every hour. In standard `cron` syntax this is equivalent to: `0 * * * *`.
+- The `@reboot` statement runs the specified command once, at start up. Generally boot-time tasks are managed by the distribution's init system, but `@reboot` cronjobs may be useful for users who don't have access to edit systemd units or other init scripts.
 
 ## Run Jobs as Other Users
 
-Cron can run tasks as other system users than just `root`. This is useful if you want to restrict the ability of a script to write to certain locations. For example, the command below allows you to edit the `crontab` for the `www-data` user.
+Cron can run tasks as other system users than just `root`. This is useful if you want to restrict the ability of a script to write to certain locations. For example, the command below allows you to edit the `crontab` for the `www-data` user:
 
     sudo crontab -u www-data -e
 
@@ -111,19 +114,22 @@ If you want to disable all output, including error messages, use `>/dev/null 2>&
 
 ## Example crontab Entries
 
-The site *[crontab.guru](https://crontab.guru/)* has a large amount of Cron job examples. Below are some quick `crontab` entries to get you started.
+The site [crontab.guru](https://crontab.guru/) has a large number of Cron job examples. Below are some quick `crontab` entries to get you started.
 
-Run the `cal-update-daily` binary every day at at 12:01am (`1 0`).
+- Run the `cal-update-daily` binary every day at at 12:01am (`1 0`).
 
-    1 0 \* \* \* /opt/bin/cal-update-daily
+        1 0 \* \* \* /opt/bin/cal-update-daily
 
+- Run the `/opt/bin/payroll-bi-monthly` application at 4:45pm (`45 16`), on the 1st and 15th of every month (`1,15`).
 
-Run the `/opt/bin/payroll-bi-monthly` application at 4:45pm (`45 16`), on the 1st and 15th of every month (`1,15`).
+        45 16 1,15 \* \* /opt/bin/payroll-bi-monthly
 
-    45 16 1,15 \* \* /opt/bin/payroll-bi-monthly
+- Run the `compress-static-files` script at the beginning of every hour. This can be done in two different ways. Enter only one into your `crontab` file.
 
-Run the `compress-static-files` script at the beginning of every hour. This can be done in two different ways; enter only one into your `crontab` file.
+    **Option A**
 
-    0 \* \* \* \* /opt/bin/compress-static-files
+        0 \* \* \* \* /opt/bin/compress-static-files
 
-    @hourly /opt/bin/compress-static-files
+    **Option B**
+
+        @hourly /opt/bin/compress-static-files
