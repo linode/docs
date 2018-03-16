@@ -18,7 +18,7 @@ title: Schedule Tasks with Cron
 
 ## What is Cron?
 
-Cron is a classic utility found on Linux and UNIX systems for running tasks at pre-determined times or intervals. Use Cron to schedule automated updates, report generation, or check for available disk space every day and send you an email if it's under a certain amount.
+Cron is a classic utility found on Linux and UNIX systems for running tasks at pre-determined times or intervals. These tasks are referred to as **Cron tasks** or **Cron jobs**. Use Cron to schedule automated updates, report generation, or check for available disk space every day and send you an email if it falls below a certain amount.
 
 ## How to Use Cron and crontab - The Basics
 
