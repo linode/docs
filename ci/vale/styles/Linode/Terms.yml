@@ -30,3 +30,5 @@ swap:
   yaml: YAML
   metabase: Metabase
   cloudflare: Cloudflare
+  urls: URLs
+  uris: URIs
