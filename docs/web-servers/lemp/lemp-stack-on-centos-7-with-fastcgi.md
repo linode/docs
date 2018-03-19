@@ -155,11 +155,12 @@ server {
     <?php echo '<p>Hello,</p>';
 
     // Define PHP variables for the MySQL connection.
+    $servername = "localhost";
     $username = "testuser";
     $password = "password";
 
     // Create a MySQL connection.
-    $conn = mysqli_connect(localhost, $username, $password);
+    $conn = mysqli_connect($servername, $username, $password);
 
     // Report if the connection fails or is successful.
     if (!$conn) {
