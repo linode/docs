@@ -1315,12 +1315,16 @@ untruncated
 untrusted
 unversioned
 uptime
+URI
 uri
+URIs
+URL
 url
 urllib
 urllib3
 urlopen
 urlparse
+URLs
 urls
 useradd
 usercolumn
