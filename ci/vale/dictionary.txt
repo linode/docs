@@ -1316,6 +1316,7 @@ untrusted
 unversioned
 uptime
 uri
+URIs
 url
 urllib
 urllib3
