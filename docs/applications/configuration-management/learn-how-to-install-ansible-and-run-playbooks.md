@@ -21,7 +21,7 @@ external_resources:
  - '[Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 ---
 
-![Ansible](/docs/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg)
+![Automatically Configure Servers with Ansible](/docs/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg)
 
 ## What is Ansible?
 
@@ -35,9 +35,9 @@ All Ansible commands are run from a **control machine**, which can be either a l
 
 This guide will use a control machine with three Linodes serving as nodes. These nodes will be referred to as `node-1`, `node-2`, and `node-3` throughout the guide. Create these three Linodes using the Linode Manager and deploy an appropriate image to each one (Ubuntu 16.04 was used for this guide). Since Ansible uses SSH, you will need to make sure that your control machine has SSH access to all of the nodes:
 
-1.  Create an SSH key on the control machine:
+1.  Create an SSH key on the control machine. This will create a public/private key pair: `~/home/.ssh/id_rsa.pub` and `~/home/.ssh/is_rsa`.
 
-        ssh-keygen
+        ssh-keygen -t rsa -b 4096
 
 2.  Copy the key to `node-1`:
 
@@ -74,6 +74,10 @@ All of the commands in the remainder of the guide should be performed from the c
 {{< note >}}
 Ansible can also be installed using a package manager such as `apt` on Debian/Ubuntu and [Homebrew](https://brew.sh) on OSX.
 {{< /note >}}
+
+4.  Verify the corresponding Python path is correct:
+
+        ansible --version
 
 ## Configure Ansible
 
