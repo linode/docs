@@ -172,7 +172,7 @@ Here's how to rebuild your Linode from scratch:
 4.  Select a Linode. The Linode's dashboard appears.
 5.  Click the **Rebuild** tab. The webpage shown below appears.
 
-    [![The "Rebuild" tab of the Linode Manager](/content/assets/1006-rescue7-small.png)](/content/assets/1005-rescue7.png)
+    [![The "Rebuild" tab of the Linode Manager](/docs/assets/1006-rescue7-small.png)](/docs/assets/1005-rescue7.png)
 
 6.  Select Linux distribution from the **Distribution** menu.
 7.  Enter a size for the new disk in the **Deployment Disk Size**.
