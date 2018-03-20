@@ -16,9 +16,9 @@ title: Piwik on CentOS 5
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." An alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership and control of the data collected from your visitors.
 
-For the purpose of this guide, we assume that you have a running and functional server, and have followed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+For the purpose of this guide, we assume that you have a running and functional server, and have followed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-Beyond the basics, Piwik requires a functioning LAMP stack, which you can configure by following the [CentOS 5 LAMP guide](/docs/lamp-guides/centos-5). Make sure you follow the steps for installing PHP and PHP-MySQL support. You will also want to be logged in over SSH as root.
+Beyond the basics, Piwik requires a functioning LAMP stack, which you can configure by following the [CentOS 5 LAMP guide](/docs/web-servers/lamp/lamp-server-on-centos-5/). Make sure you follow the steps for installing PHP and PHP-MySQL support. You will also want to be logged in over SSH as root.
 
 ## Prerequisites
 
@@ -50,7 +50,7 @@ You'll need to restart Apache after installing php-gd and modifying the PHP sett
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
-To create a virtual host we need to add an "[A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa)" for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
+To create a virtual host we need to add an "[A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa)" for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/networking/dns/dns-manager-overview/). Additionally, we'll need to create a new virtual hosting file for this sub domain.
 
 We'll append the following virtual host to our `vhost.conf` file, located at `/etc/httpd/conf.d/vhost.conf`:
 
@@ -111,7 +111,7 @@ After installation, follow the first recommendation by adding `charset = utf8` t
 
 When Piwik's installation process is complete, you will receive a JavaScript snippet that you can insert in every page on your site that you want to track using Piwik.
 
-If you are concerned about the security of the data collected by Piwik, consider limiting access to Piwik's virtual host, using either [rule-based](/docs/web-servers/apache/configuration/rule-based-access-control) or [authentication based access control](/docs/web-servers/apache/configuration/http-authentication).
+If you are concerned about the security of the data collected by Piwik, consider limiting access to Piwik's virtual host, using either [rule-based](/docs/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/) or [authentication based access control](/docs/web-servers/apache/apache-access-control/).
 
 Congratulations! You now have a fully functional statistics and web traffic analytics package running on your own server.
 
