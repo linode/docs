@@ -85,7 +85,11 @@ Change the `listen` variables in `www.conf` to that:
 
         sudo mkdir -p /var/www/example.com/
 
-2.  Website configuration files should be kept in `/etc/nginx/conf.d/`. Create a configuration file for your site. Again replace *example.com* with your site's domain.
+2.  Disable the default site configuration provided with the package as an example. Or if you have no use for it, delete it.
+
+        sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
+
+3.  Website configuration files should be kept in `/etc/nginx/conf.d/`. Create a configuration file for your site. Again replace *example.com* with your site's domain.
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
