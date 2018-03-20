@@ -12,12 +12,12 @@ published: 2018-03-05
 title: Install NGINX on Ubuntu from the Official NGINX Repository
 ---
 
-These instructions install NGINX on Ubuntu 16.04 from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)* series.
+These instructions install NGINX Mainline on Ubuntu 16.04 from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)* series.
 
 1.  Open `/etc/apt/sources.list` in a text editor and add the following line to the bottom:
 
     {{< file-excerpt "/etc/apt/sources.list" >}}
-deb http://nginx.org/packages/ubuntu/ xenial nginx
+deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx
 {{< /file-excerpt >}}
 
 2.  Import the repository's package signing key and add it to `apt`:
