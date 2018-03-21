@@ -264,10 +264,10 @@ You can quit at any time by pressing the `F10` or `Q` keys. There are a couple o
 
 Web developers and editors often use the FTP protocol to transfer and manage files on a remote system. FTP, however, is very insecure and inefficient for managing the files on a system when you have SSH access.
 
-If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/networking/file-transfer/transfer-files-winscp), [using rsync to synchronize files](/docs/linux-tools/utilities/rsync) and [using SSH and the terminal](/content/using-linux/using-the-terminal).
+If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/), [using rsync to synchronize files](/docs/tools-reference/tools/introduction-to-rsync/) and [using SSH and the terminal](/docs/networking/ssh/using-the-terminal/).
 
 {{< caution >}}
-If you are giving other users access to upload files to your server, consider the [security implications](/docs/security/basics) of all additional access that you grant to third parties.
+If you are giving other users access to upload files to your server, consider the [security implications](/docs/security/securing-your-server/) of all additional access that you grant to third parties.
 {{< /caution >}}
 
 ### Upload Files to a Remote Server

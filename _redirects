@@ -1,0 +1,2 @@
+# Netlify URL rewrite for Hugo's baseURL
+/docs/* /:splat

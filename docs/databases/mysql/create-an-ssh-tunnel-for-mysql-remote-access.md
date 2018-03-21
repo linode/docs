@@ -2,11 +2,11 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will teach you how to gain remote access to your MySQL Database using an SSH tunnel.'
-keywords: ["MySQL tunnel", "MySQL over SSH", "SSH tunnel"]
+description: 'Execute commands on a remote MySQL server though PuTTY or mysql-client. This guide will teach you how to gain remote access to your MySQL Database using an SSH tunnel.'
+keywords: ["MySQL tunnel", "MySQL over SSH", "SSH tunnel", "MySQL client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['databases/mysql/mysql-ssh-tunnel/','databases/mysql/securely-administer-mysql-with-an-ssh-tunnel']
-modified: 2013-08-22
+modified: 2018-03-05
 modified_by:
   name: Linode
 published: 2010-01-06
@@ -63,32 +63,55 @@ First, you need to establish a basic connection to your Linode:
     {{< note >}}
 This warning appears because PuTTY wants you to verify that the server you're logging in to is who it says it is. It is unlikely, but possible, that someone could be eavesdropping on your connection and posing as your Linode. To verify the server, compare the key fingerprint shown in the PuTTY warning - the string of numbers and letters starting with **ssh-rsa** in the image above - with your Linode's public key fingerprint. To get your Linode's fingerprint, log in to your Linode via the Lish console (see the **Console** tab in the Linode Manager) and executing the following command:
 
-`ssh-keygen -l -f /etc/ssh/ssh\_host\_rsa\_key.pub`
+    ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
 
 The key fingerprints should match. Once you click **Yes**, you won't receive further warnings unless the key presented to PuTTY changes for some reason; typically, this should only happen if you reinstall the remote server's operating system. If you receive this warning again for the same Linode after the key has already been cached, you should not trust the connection and investigate matters further.
 {{< /note >}}
 
 10. Direct your local MySQL client to `localhost:3306`. Your connection to the remote MySQL server will be encrypted through SSH, allowing you to access your databases without running MySQL on a public IP.
 
-## Create a Tunnel with mysql-tunnel on Mac OS X or Linux
+## Create an SSH Tunnel on Mac OS X or Linux
 
-This section will show you how to create an SSH tunnel to MySQL on Mac OS X or Linux, using the mysql-tunnel tool.
+This section will show you how to create an SSH tunnel to MySQL on Mac OS X or Linux.
 
-1.  Open a command prompt and run the following command to open the SSH tunnel:
+1.  Install a MySQL client. Installing MySQL server comes prepackaged with an installation of the client. To install the client only:
 
-        ssh -L 127.0.0.1:3306:127.0.0.1:3306 user@example.com -N
+    **MacOS**
 
-    Replace <**user@example.com*>\* with your SSH username and your server's hostname or IP address. The long string of numbers in the command lists the local IP, the local port, the remote IP, and the remote port, separated by colons (**:**).
+        brew install caskroom/cask/mysql-shell
+
+    **Ubuntu/Debian**
+
+        sudo apt install mysql-client
+
+2.  Open a command prompt and run the following command to open the SSH tunnel.
+
+        ssh user@example.com -L 3306:127.0.0.1:3306 -N
+
+    Replace <**user@example.com**> with your SSH username and your server's hostname or IP address. The long string of numbers in the command lists the local IP, the local port, the remote IP, and the remote port, separated by colons (**:**).
+
+    `-L` - binds a local port to the remote host post.
+    `-N` - means forwarding ports.
 
     {{< note >}}
-If you're already running a local copy of MySQL on your workstation, use a different local port (3307 is a common choice). Your new command would look like this:
+If you're already running a local MySQL server on your workstation, use a different local port (3307 is a common choice). Your new command would look like this:
 
-`ssh -L 127.0.0.1:3307:127.0.0.1:3306 user@example.com -N`
+    ssh user@example.com -L 3307:127.0.0.1:3306 -N
 {{< /note >}}
 
-2.  Direct your local MySQL client to `localhost:3306`. Your connection to the remote MySQL server will be encrypted through SSH, allowing you to access your databases without running MySQL on a public IP.
+3.  Open a new terminal window. Direct your local MySQL client to `127.0.0.1:3306` with the MySQL server username and password.
 
-3.  When you're ready to close the connection, issue a **CTRL-C** command or close the command prompt window. This will close the SSH tunnel.
+    **MacOS**
+
+        mysqlsh --host=127.0.0.1 --port=3306 -u user -p
+
+    **Ubuntu/Debian**
+
+        mysql --host=127.0.0.1 --port=3306 -u user -p
+
+    Your connection to the remote MySQL server will be encrypted through SSH, allowing you to access your databases without running MySQL on a public IP.
+
+4.  When you're ready to close the connection, issue a **CTRL-C** command or close the command prompt window. This will close the SSH tunnel.
 
 ### Persistent SSH Connections
 
