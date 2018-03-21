@@ -8,18 +8,20 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/lemp/lemp-server-on-debian-8/','web-servers/lemp/lemp-server-on-debian-8/','web-servers/lemp/lemp-stack-on-debian-8/']
 modified: 2018-03-21
 modified_by:
-  name: Linode
+  name: Chris Walsh
 published: 2014-02-07
 title: Install a LEMP Stack on Debian 9
 
 ---
 
-This guide describes an alternative to the popular LAMP stack, known as *LEMP*. The LEMP stack replaces the Apache web server component with NGINX, providing the *E* in the acronym.
+## What is a LEMP Stack?
+
+This guide describes an alternative to the popular LAMP stack, known as *LEMP*. The LEMP stack replaces the Apache web server component with NGINX, providing the *E* in the acronym: Linux, NGINX, MySQL, PHP.
 
 
 ## Before You Begin
 
-* You will need root access to the system, or a user account with `sudo` privilege.
+* You will need root access to your Linode, or a user account with `sudo` privilege.
 * Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
 * Update your system.
 
@@ -30,14 +32,13 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
 {{< content "install-nginx-debian.md" >}}
 
-
 ### MariaDB
 
 1.  Install the MariaDB server and MySQL/MariaDB-PHP support. You may be prompted to set a root password during installation.
 
         sudo apt install mariadb-server php7.0-mysql
 
-2.  Ensure NGINX is running and and enabled to start automatically on reboots:
+2.  Ensure MariaDB is running and enabled to start automatically on reboot:
 
         sudo systemctl start mariadb
         sudo systemctl enable mariadb
@@ -57,7 +58,7 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
 4.  Log in to MariaDB's SQL shell. Enter the `root` user's password when prompted.
 
-        mysql -u root -p
+        sudo mysql -u root -p
 
 5.  Create a test database and user with access permission. Replace `testdb` and `testuser` with appropriate names for your setup. Replace `password` with a strong password.
 
@@ -80,8 +81,8 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 3.  Ownership of PHP's listening UNIX sockets is set to `www-data` by default, but they need to match the user and group NGINX is running as. If you installed NGINX from the NGINX repository as done above, NGINX will be using the `nginx` user and group.
 Change the `listen` variables in `www.conf` to that:
 
-        sed -i 's/listen.owner = www-data/listen.owner = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
-        sed -i 's/listen.group = www-data/listen.group = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
+        sudo sed -i 's/listen.owner = www-data/listen.owner = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
+        sudo sed -i 's/listen.group = www-data/listen.group = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
 
 
 ## Set an NGINX Site Configuration File
@@ -173,8 +174,8 @@ server {
 
 {{< /file >}}
 
-2.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load at all, re-check your configuration.
+2.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load, re-check your configuration.
 
-3.  Remove the test file once the stack is verified to be working correctly:
+3.  Remove the test file once you have verified that the stack is working correctly:
 
         sudo rm /var/www/example.com/test.php

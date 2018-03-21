@@ -11,6 +11,8 @@ modified: 2012-06-21
 modified_by:
   name: Linode
 published: 2011-06-22
+deprecated: true
+deprecated_link: web-servers/lemp/install-a-lemp-stack-on-debian/
 title: 'LEMP Server on Debian 6 (Squeeze)'
 ---
 

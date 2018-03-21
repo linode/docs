@@ -11,6 +11,8 @@ modified_by:
   name: Alex Fornuto
 published: 2014-02-07
 title: 'LEMP Server on Debian 7 (Wheezy)'
+deprecated: true
+deprecated_link: web-servers/lemp/install-a-lemp-stack-on-debian/
 external_resources:
  - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
  - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
