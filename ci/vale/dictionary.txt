@@ -941,6 +941,7 @@ postgres
 postgresql
 postgresql0
 postmap
+postrotate
 postrouting
 ppa
 pparadis
@@ -956,6 +957,7 @@ prepend
 prepended
 prepending
 preprocessing
+prerotate
 prerouting
 prestashop
 pritunl
