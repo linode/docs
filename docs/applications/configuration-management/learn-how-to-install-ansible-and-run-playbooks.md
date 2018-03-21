@@ -8,10 +8,10 @@ keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible 
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['applications/ansible/getting-started-with-ansible/','applications/configuration-management/getting-started-with-ansible/']
 published: 2015-09-08
-modified: 2018-03-19
+modified: 2018-03-21
 modified_by:
     name: Jared Kobos
-title: 'Automatically Configure Servers with Ansible'
+title: 'Automatically Configure Servers with Ansible and Playbooks'
 contributor:
     name: Joshua Lyman
     link: https://twitter.com/jlyman
@@ -21,21 +21,21 @@ external_resources:
  - '[Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 ---
 
-![Automatically Configure Servers with Ansible](/docs/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg)
+![Automatically Configure Servers with Ansible and Playbooks](/docs/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg "Automatically Configure Servers with Ansible and Playbooks")
 
 ## What is Ansible?
 
 [Ansible](http://www.ansible.com/home) is an automation tool for server provisioning, configuration, and management. It allows you to organize your server inventory into groups, describe how those groups should be configured or what actions should be taken on them, and issue all of these commands from a central location.
 
-This guide will introduce you to the basics of Ansible.
+This guide introduces the basics of using Ansible and creating a configuration playbook.
 
 ## Before You Begin
 
 All Ansible commands are run from a **control machine**, which can be either a local computer or a Linode. Ansible uses SSH to execute commands remotely on **nodes**.
 
-This guide will use a control machine with three Linodes serving as nodes. These nodes will be referred to as `node-1`, `node-2`, and `node-3` throughout the guide. Create these three Linodes using the Linode Manager and deploy an appropriate image to each one (Ubuntu 16.04 was used for this guide). Since Ansible uses SSH, you will need to make sure that your control machine has SSH access to all of the nodes:
+This guide will use a control machine with three Linodes serving as nodes. These nodes will be referred to as `node-1`, `node-2`, and `node-3` throughout the guide. Create these three Linodes using the Linode Manager and deploy an appropriate image to each one (the examples in this guide use Ubuntu 16.04). Since Ansible uses SSH, you will need to make sure that your control machine has SSH access to all of the nodes:
 
-1.  Create an SSH key on the control machine. This will create a public/private key pair: `~/home/.ssh/id_rsa.pub` and `~/home/.ssh/is_rsa`.
+1.  Create an SSH key on the control machine. This will create a public/private key pair: `~/home/.ssh/id_rsa.pub` and `~/home/.ssh/is_rsa`:
 
         ssh-keygen -t rsa -b 4096
 
@@ -43,15 +43,15 @@ This guide will use a control machine with three Linodes serving as nodes. These
 
         ssh-copy-id root@$node-1-ip
 
-    Repeat this procedure for the remaining nodes.
+    Repeat this procedure for each remaining node.
 
 {{< note >}}
-If you would prefer to avoid setting up multiple Linodes, most of the commands in this guide can also be performed with a single node.
+The examples in this guide are for a multiple-Linode configuration. Most commands can also be performed with a single node for testing purposes. Please adjust accordingly.
 {{< /note >}}
 
 ## Install Ansible
 
-All of the commands in the remainder of the guide should be performed from the control machine.
+The remainder of the commands in this guide should be performed from the control machine.
 
 ### Install Miniconda
 
@@ -71,17 +71,15 @@ All of the commands in the remainder of the guide should be performed from the c
 
         pip install ansible
 
-{{< note >}}
-Ansible can also be installed using a package manager such as `apt` on Debian/Ubuntu and [Homebrew](https://brew.sh) on OSX.
-{{< /note >}}
+    Ansible can also be installed using a package manager such as `apt` on Debian/Ubuntu and [Homebrew](https://brew.sh) on OSX.
 
-4.  Verify the corresponding Python path is correct:
+4.  Verify that the corresponding Python path is correct:
 
         ansible --version
 
 ## Configure Ansible
 
-### Create an Inventory File
+### Create an Inventory File to Track Nodes
 
 Ansible keeps track of its nodes using an [inventory file](http://docs.ansible.com/ansible/intro_inventory.html).
 
@@ -96,7 +94,7 @@ Ansible keeps track of its nodes using an [inventory file](http://docs.ansible.c
 inventory = ~/Path/To/ansible/hosts
 {{< /file-excerpt >}}
 
-3.  Create the inventory file. Replace `$node-1-ip` etc. with the public IP address or domain name of each of your nodes.
+3.  Create the inventory file. Replace `$node-1-ip`,`$node-2-ip`, and `$node-3-ip` with the public IP address or domain name of each of your nodes:
 
     {{< file-excerpt "~/ansible/hosts" ini >}}
 [nginx]
@@ -136,13 +134,13 @@ $node-3-ip
 
         ansible nginx -u root -m ping
 
-    This time only `node-1` and `node-2` should respond.
+    This time, only `node-1` and `node-2` should respond.
 
-## Playbooks
+## Use Ansible Playbooks
 
 ### Syntax and Examples
 
-A [Playbook](http://docs.ansible.com/ansible/latest/playbooks.html) define a series of actions to run on specified groups of servers. Unlike some configuration tools, a playbook does not describe a state of the machine and rely on Ansible to determine the necessary changes to achieve that state. Instead, playbooks should be designed to be **idempotent**, meaning that they can be run more than once without negative effects. For example, a playbook might have a task that sets up a configuration file for a server and injects a few variables. The playbook should be written so that Ansible can take the template configuration file, compare it to the actual file, and create/update it only if necessary. Fortunately, many Ansible modules are built with this functionality in mind.
+A [Playbook](http://docs.ansible.com/ansible/latest/playbooks.html) defines a series of actions to run on specified groups of servers. Unlike some configuration tools, a playbook does not describe a state of the machine and rely on Ansible to determine the necessary changes to achieve that state. Instead, playbooks should be designed to be **idempotent**, meaning that they can be run more than once without negative effects. For example, a playbook might have a task that sets up a configuration file for a server and injects a few variables. The playbook should be written so that Ansible can take the template configuration file, compare it to the actual file, and create/update it only if necessary. Fortunately, many Ansible modules are built with this functionality in mind.
 
 Playbooks can be used to perform initial server configurations, add users and directories, ensure certain software packages are installed or uninstalled, move files, etc. A single playbook can run commands on any combination of groups. It is procedural, and tasks are run in order from top to bottom.
 
@@ -158,7 +156,7 @@ A playbook is a YAML file, and typically follows this structure:
 
 {{< /file-excerpt >}}
 
-The following playbook would log in to all servers in the `[nginx]` group and ensure NGINX was started.
+The following playbook would log in to all servers in the `[nginx]` group and ensure NGINX was started:
 
 {{< file-excerpt "playbook.yml" yaml >}}
 ---
@@ -176,32 +174,31 @@ Every task should have a name. Task names are logged as Ansible runs and can hel
 
 ### Ansible Modules
 
-Ansible ships with a large collection of modules that you can run as tasks or via ad-hoc commands. To see a listing of all available modules, run:
+Ansible ships with a large collection of modules that you can run as tasks or via commands as needed. To see a listing of all available modules, run:
 
     ansible-doc -l
 
 Common core modules include:
 
-* [command - Executes a command on a remote node](http://docs.ansible.com/ansible/command_module.html)
-* [script - Runs a local script on a remote node after transferring it](http://docs.ansible.com/ansible/script_module.html)
-* [shell - Execute commands in nodes](http://docs.ansible.com/ansible/shell_module.html)
-* [mysql_db - Add or remove MySQL databases from a remote host](http://docs.ansible.com/ansible/mysql_db_module.html)
-* [mysql_user - Adds or removes a user from a MySQL database](http://docs.ansible.com/ansible/mysql_user_module.html)
-* [postgresql_db - Add or remove PostgreSQL databases from a remote host](http://docs.ansible.com/ansible/postgresql_db_module.html)
-* [postgresql_user - Adds or removes a users (roles) from a PostgreSQL database](http://docs.ansible.com/ansible/postgresql_user_module.html)
-* [fetch - Fetches a file from remote nodes](http://docs.ansible.com/ansible/fetch_module.html)
-* [template - Templates a file out to a remote server](http://docs.ansible.com/ansible/template_module.html)
-* [yum - Manages packages with the yum package manager](http://docs.ansible.com/ansible/yum_module.html)
-* [apt - Manages apt-packages](http://docs.ansible.com/ansible/apt_module.html)
-* [git - Deploy software (or files) from git checkouts](http://docs.ansible.com/ansible/git_module.html)
-* [service - Manage services](http://docs.ansible.com/ansible/service_module.html)
-
+* `command` - [Executes a command on a remote node](http://docs.ansible.com/ansible/command_module.html)
+* `script` - [Runs a local script on a remote node after transferring it](http://docs.ansible.com/ansible/script_module.html)
+* `shell` - [Execute commands in nodes](http://docs.ansible.com/ansible/shell_module.html)
+* `mysql_db` - [Add or remove MySQL databases from a remote host](http://docs.ansible.com/ansible/mysql_db_module.html)
+* `mysql_user` - [Adds or removes a user from a MySQL database](http://docs.ansible.com/ansible/mysql_user_module.html)
+* `postgresql_db` - [Add or remove PostgreSQL databases from a remote host](http://docs.ansible.com/ansible/postgresql_db_module.html)
+* `postgresql_user` - [Adds or removes a users (roles) from a PostgreSQL database](http://docs.ansible.com/ansible/postgresql_user_module.html)
+* `fetch` - [Fetches a file from remote nodes](http://docs.ansible.com/ansible/fetch_module.html)
+* `template` - [Templates a file out to a remote server](http://docs.ansible.com/ansible/template_module.html)
+* `yum` - [Manages packages with the yum package manager](http://docs.ansible.com/ansible/yum_module.html)
+* `apt` - [Manages apt-packages](http://docs.ansible.com/ansible/apt_module.html)
+* `git` - [Deploy software (or files) from git checkouts](http://docs.ansible.com/ansible/git_module.html)
+* `service` - [Manage services](http://docs.ansible.com/ansible/service_module.html)
 
 ## Server Configuration Playbook
 
-This section will demonstrate using a playbook to automate basic server configuration, similar to the steps covered in our [Getting Started](https://linode.com/docs/getting-started/) and [Securing Your Server](https://linode.com/docs/security/securing-your-server/) guides.
+This section demonstrates using a playbook to automate basic server configuration, similar to the steps covered in our [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
 
-### Create Hashed Password
+### Create a Hashed Password
 
 1.  Install `passlib`:
 
@@ -211,9 +208,9 @@ This section will demonstrate using a playbook to automate basic server configur
 
         python -c "from passlib.hash import sha512_crypt; print sha512_crypt.encrypt('plaintextpassword')"
 
-### Create Regular User
+### Create a Regular User
 
-1.  Write a playbook that creates a new normal user, adds the control machine's public key, and adds the new user to the `sudoers` file. Replace `username` with your desired Unix account username and `hashed-password` with your hashed password. In the `authorized_key` task, substitute the path to the SSH key used on the control machine.
+1.  Write a playbook that creates a new normal user, adds the control machine's public key, and adds the new user to the `sudoers` file. Replace `username` with your desired Unix account username and `hashed-password` with your hashed password. In the `authorized_key` task, substitute the path to the SSH key used on the control machine:
 
     {{< file "initialize_basic_user.yml" yaml >}}
 ---
@@ -239,8 +236,7 @@ This section will demonstrate using a playbook to automate basic server configur
 
         ansible-playbook -u root initialize_basic_user.yml
 
-### Set Up Server
-
+### Set up Server
 
 1.  Create a new playbook to update packages, set timezone and hostname, and edit the `hosts` file. Replace the user information, hostname, and domain name with the appropriate entries:
 
@@ -273,7 +269,7 @@ This section will demonstrate using a playbook to automate basic server configur
 
         ansible-playbook common_server_setup.yml --check --ask-become-pass
 
-    You will be prompted for a sudo password; enter the plain text version of the password you previously hashed.
+    You will be prompted for a sudo password. Enter the plain text version of the password you previously hashed.
 
 3.  If the results are good, run the playbook:
 
@@ -283,9 +279,9 @@ This section will demonstrate using a playbook to automate basic server configur
 
 ### Install the Stack
 
-Finally, let's get a very basic server set up with Apache and PHP, and a test MySQL database to use.
+Create a basic server setup with Apache, PHP, and a test MySQL database to use.
 
-1.  The following playbook downloads the appropriate packages, turns on the Apache and MySQL services, and creates a basic database and user.
+1.  The following playbook downloads the appropriate packages, turns on the Apache and MySQL services, and creates a basic database and user:
 
     {{< file "setup_webserver.yml" yaml >}}
 ---
@@ -318,7 +314,6 @@ Finally, let's get a very basic server set up with Apache and PHP, and a test My
 
 {{< /file >}}
 
-
 2.  Run the playbook from your control machine:
 
         ansible-playbook setup_webserver.yml --ask-become-pass
@@ -332,10 +327,10 @@ Finally, let's get a very basic server set up with Apache and PHP, and a test My
 
 ## Next Steps
 
-More complicated playbooks will require working with more advanced concepts. Ansible provides a number of [example playbooks](https://github.com/ansible/ansible-examples) on Github. In addition, there is documentation for many of the important concepts for writing playbooks:
+More complicated playbooks will require working with more advanced concepts. Ansible provides a number of [example playbooks](https://github.com/ansible/ansible-examples) on GitHub. In addition, documentation is available for many of the important concepts for writing playbooks:
 
-  * [Users, and Switching Users](http://docs.ansible.com/ansible/playbooks_intro.html#hosts-and-users) and [Privilege Escalation](http://docs.ansible.com/ansible/become.html)
-  * [Handlers: Running Operations On Change](http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change)
-  * [Roles](http://docs.ansible.com/ansible/playbooks_roles.html)
-  * [Variables](http://docs.ansible.com/ansible/playbooks_variables.html)
-  * [Playbook Best Practices](http://docs.ansible.com/ansible/playbooks_best_practices.html)
+* [Users, and Switching Users](http://docs.ansible.com/ansible/playbooks_intro.html#hosts-and-users) and [Privilege Escalation](http://docs.ansible.com/ansible/become.html)
+* [Handlers: Running Operations On Change](http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change)
+* [Roles](http://docs.ansible.com/ansible/playbooks_roles.html)
+* [Variables](http://docs.ansible.com/ansible/playbooks_variables.html)
+* [Playbook Best Practices](http://docs.ansible.com/ansible/playbooks_best_practices.html)
