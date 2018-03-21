@@ -2,29 +2,26 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will teach you basic setup and configuration of Linux, Nginx, MySQL and PHP on Debian 9.'
+description: 'This guide teaches basic setup and configuration of Linux, NGINX, MySQL/MariaDB, and PHP (LEMP stack) on Debian 9.'
 keywords: ["nginx", "lemp", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/lemp/lemp-server-on-debian-8/','web-servers/lemp/lemp-server-on-debian-8/','web-servers/lemp/lemp-stack-on-debian-8/']
 modified: 2018-03-21
 modified_by:
-  name: Chris Walsh
+  name: Linode
 published: 2014-02-07
 title: Install a LEMP Stack on Debian 9
-
 ---
 
 ## What is a LEMP Stack?
 
-This guide describes an alternative to the popular LAMP stack, known as *LEMP*. The LEMP stack replaces the Apache web server component with NGINX, providing the *E* in the acronym: Linux, NGINX, MySQL, PHP.
-
+This guide describes an alternative to the popular LAMP stack, known as *LEMP*. The LEMP stack replaces the Apache web server component with NGINX, providing the *E* in the acronym: Linux, NGINX, MySQL/MariaDB, PHP.
 
 ## Before You Begin
 
 * You will need root access to your Linode, or a user account with `sudo` privilege.
 * Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
 * Update your system.
-
 
 ## Installation
 
@@ -34,7 +31,7 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
 ### MariaDB
 
-1.  Install the MariaDB server and MySQL/MariaDB-PHP support. You may be prompted to set a root password during installation.
+1.  Install the MariaDB server and MySQL/MariaDB-PHP support. You may be prompted to set a root password during installation:
 
         sudo apt install mariadb-server php7.0-mysql
 
@@ -47,7 +44,7 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
         sudo mysql_secure_installation
 
-     If you were not prompted to create a MySQL root user password when installing MariaDB, answer the script **Y** to set one.
+     If you were not prompted to create a MySQL root user password when installing MariaDB, press **Y** when prompted.
 
      Answer **Y** at the following prompts:
 
@@ -56,17 +53,16 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
      -  Remove test database and access to it?
      -  Reload privilege tables now?
 
-4.  Log in to MariaDB's SQL shell. Enter the `root` user's password when prompted.
+4.  Log in to MariaDB's SQL shell. Enter the `root` user's password when prompted:
 
         sudo mysql -u root -p
 
-5.  Create a test database and user with access permission. Replace `testdb` and `testuser` with appropriate names for your setup. Replace `password` with a strong password.
+5.  Create a test database and user with access permission. Replace `testdb` and `testuser` with appropriate names for your setup. Replace `password` with a strong password:
 
         CREATE DATABASE testdb;
         CREATE USER 'testuser' IDENTIFIED BY 'password';
         GRANT ALL PRIVILEGES ON testdb.* TO 'testuser';
         quit
-
 
 ### PHP
 
@@ -78,24 +74,24 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
         sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.0/fpm/php.ini
 
-3.  Ownership of PHP's listening UNIX sockets is set to `www-data` by default, but they need to match the user and group NGINX is running as. If you installed NGINX from the NGINX repository as done above, NGINX will be using the `nginx` user and group.
-Change the `listen` variables in `www.conf` to that:
+3.  Ownership of PHP's listening UNIX sockets is set to `www-data` by default, but they need to match the user and group NGINX is running as. If you installed NGINX from the NGINX repository as in the steps above, NGINX will be using the `nginx` user and group.
+
+    Change the `listen` variables in `www.conf` to that:
 
         sudo sed -i 's/listen.owner = www-data/listen.owner = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
         sudo sed -i 's/listen.group = www-data/listen.group = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
 
-
 ## Set an NGINX Site Configuration File
 
-1. Create the site's root directory where its content will live. Replace *example.com* with your site's domain.
+1. Create the site's root directory where its content will live. Replace `example.com` with your site's domain:
 
         sudo mkdir -p /var/www/example.com/
 
-2.  Disable the default site configuration provided with the package as an example. Or if you have no use for it, delete it.
+2.  Rename the default example site configuration provided with the package. This disables it. Or if you have no use for it, delete it:
 
         sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
 
-3.  Website configuration files should be kept in `/etc/nginx/conf.d/`. Create a configuration file for your site. Again replace *example.com* with your site's domain.
+3.  Website configuration files should be kept in `/etc/nginx/conf.d/`. Create a configuration file for your site. Again replace `example.com` with your site's domain:
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
@@ -120,22 +116,21 @@ server {
 
     Here's a breakdown of the `server` block above:
 
-    -  NGINX is listening on port 80 for incoming connections to *example.com* or *www.example.com*.
+    -  NGINX is listening on port `80` for incoming connections to `example.com` or `www.example.com`.
 
-    -  The site is served out of `/var/www/example.com/` and it's index page (`index.html`) is a simple `.html` file. If your index page will use PHP, substitute `index.php` for `index.html`.
+    -  The site is served out of `/var/www/example.com/` and its index page (`index.html`) is a simple `.html` file. If your index page will use PHP, substitute `index.php` for `index.html`.
 
-    -  `try_files` tells NGINX to verify that a requested file or directory [actually exist](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files) in the site's root filesystem before further processing the request. If it does not, a `404` is returned.
+    -  `try_files` tells NGINX to verify that a requested file or directory [actually exists](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files) in the site's root filesystem before further processing the request. If it does not, it returns a `404`.
 
-    -  `location ~* \.php$` means that NGINX will apply this configuration to all .php files (file names are not case sensitive) in your site’s root directory, including any subdirectories containing PHP files.
+    -  `location ~* \.php$` means that NGINX will apply this configuration to all `.php` files (file names are not case sensitive) in your site’s root directory, including any subdirectories containing PHP files.
 
     -  The `*` in the `~* \.php$` location directive indicates that PHP file names are not case sensitive. This can be removed if you prefer to enforce letter case.
 
-    -  `fastcgi_pass` specifics the [UNIX socket](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass) where PHP listens for incoming connections from other local processes
+    -  `fastcgi_pass` specifics the [UNIX socket](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass) where PHP listens for incoming connections from other local processes.
 
     -  `include fastcgi_params` tells NGINX to process a list of `fastcgi_param` variables at `/etc/nginx/fastcgi_params`.
 
     -  The `fastcgi_param` directives contain the [location](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#variables) (relative to the site's root directory) and file [naming convention](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_index) of PHP scripts to be served when called by NGINX.
-
 
 ## Test the LEMP Stack
 
@@ -144,8 +139,7 @@ server {
         sudo systemctl restart php7.0-fpm
         sudo nginx -s reload
 
-
-2.  Create a test page to verify NGINX can render PHP and connect to the MySQL database. Replace the `"testuser"` and `"password"` fields with the MySQL credentials you created above.
+2.  Create a test page to verify NGINX can render PHP and connect to the MySQL database. Replace the `testuser` and `password` fields with the MySQL credentials you created above.
 
     {{< file "/var/www/example.com/test.php" php >}}
 <html>
@@ -171,10 +165,9 @@ server {
     ?>
 </body>
 </html>
-
 {{< /file >}}
 
-2.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load, re-check your configuration.
+2.  Go to your FQDN or Linode's IP `/test.php` (for example, `http://example.com/test.php`) in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load, re-check your configuration.
 
 3.  Remove the test file once you have verified that the stack is working correctly:
 
