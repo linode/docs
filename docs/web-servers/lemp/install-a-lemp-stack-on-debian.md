@@ -55,7 +55,7 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
 4.  Log in to MariaDB's SQL shell. Enter the `root` user's password when prompted:
 
-        sudo mysql -u root -p
+        mysql -u root -p
 
 5.  Create a test database and user with access permission. Replace `testdb` and `testuser` with appropriate names for your setup. Replace `password` with a strong password:
 
