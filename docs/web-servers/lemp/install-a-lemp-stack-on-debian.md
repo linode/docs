@@ -167,7 +167,7 @@ server {
 </html>
 {{< /file >}}
 
-2.  Go to `http://example.com/test.php` in a web browser. Remember to substitiuge `example.com` with your site's domain or Linode's IP address. The page should report that *You have connected successfully*. If you see an error message or if the page does not load, re-check your configuration.
+2.  Go to `http://example.com/test.php` in a web browser. Remember to substitute `example.com` with your site's domain or Linode's IP address. The page should report that *You have connected successfully*. If you see an error message or if the page does not load, re-check your configuration.
 
 3.  Remove the test file once you have verified that the stack is working correctly:
 
