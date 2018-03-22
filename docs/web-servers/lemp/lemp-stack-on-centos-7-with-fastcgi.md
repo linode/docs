@@ -47,7 +47,13 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
         sudo mysql_secure_installation
 
-     If you were not prompted to create a MySQL root user password when installing MariaDB, answer the script **Y** to set one.
+     If you were not prompted to create a MySQL root user password when installing MariaDB, press enter when prompted for the root password:
+
+        Enter current password for root (enter for none):
+
+     Set a password when prompted:
+
+        Set root password? [Y/n]
 
      Answer **Y** at the following prompts:
 
@@ -84,8 +90,8 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
 4.  PHP is set to run under the `apache` user by default, but they need to match the user and group NGINX is running as. If you installed NGINX from the NGINX repository as done above, NGINX will be using the `nginx` user and group. Change the `user` and `group` variables in `www.conf` to that:
 
-        sed -i 's/user = apache/user = nginx/g' /etc/php-fpm.d/www.conf
-        sed -i 's/group = apache/group = nginx/g' /etc/php-fpm.d/www.conf
+        sudo sed -i 's/user = apache/user = nginx/g' /etc/php-fpm.d/www.conf
+        sudo sed -i 's/group = apache/group = nginx/g' /etc/php-fpm.d/www.conf
 
 
 ## Set an NGINX Site Configuration File
