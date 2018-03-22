@@ -75,8 +75,8 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 3.  Ownership of PHP's listening UNIX sockets is set to `www-data` by default, but they need to match the user and group NGINX is running as. If you installed NGINX from the NGINX repository as done above, NGINX will be using the `nginx` user and group.
 Change the `listen` variables in `www.conf` to that:
 
-        sed -i 's/listen.owner = www-data/listen.owner = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
-        sed -i 's/listen.group = www-data/listen.group = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
+        sudo sed -i 's/listen.owner = www-data/listen.owner = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
+        sudo sed -i 's/listen.group = www-data/listen.group = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
 
 
 ## Set an NGINX Site Configuration File
