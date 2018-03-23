@@ -27,7 +27,7 @@ title: Getting Started with Salt - Basic Installation and Setup
 
 ## Install Using Salt Bootstrap
 
-[Salt Boothstrap](https://repo.saltstack.com/#bootstrap) is a configuration script which automatically detects the operating system it's running on, sets the correct repositories, and installs Salt. The install script is intended to be run on the Salt master and all minion machines.
+[Salt Bootstrap](https://repo.saltstack.com/#bootstrap) is a configuration script which automatically detects the operating system it's running on, sets the correct repositories, and installs Salt. The install script is intended to be run on the Salt master and all minion machines.
 
 **Salt Master**
 
@@ -65,7 +65,7 @@ interface: 203.0.113.0
 These steps must be performed on *each* Salt minon.
 {{< /note >}}
 
-1.  Similar to what was previously done on the Salt master, uncomment the `#interface:` line near the top of the file and replace the address placeholder with the address of your Salt master's Linode. If you used the Linode's private IP address for your Salt master above, use the Minon's private IP addresse here.
+1.  Similar to what was previously done on the Salt master, uncomment the `#interface:` line near the top of the file and replace the address placeholder with the address of your Salt master's Linode. If you used the Linode's private IP address for your Salt master above, use the Minion's private IP address here.
 
     {{< file "/etc/salt/minion" >}}
 # The address of the interface to bind to:
@@ -148,7 +148,7 @@ The output should show `true` for each Minion:
 
 ## Package Management Overview
 
-Packages are installed or removed from Minions using the *[pkg state module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.pkg.html)*. As long as you're running a Linux distribution supported by Saltstack, the Salt module controls the distribution's package manager, be it `apt`, `yum`, etc. Packages can be targeted to individual Minions by specifying the minion's hostname or IP address, or to all Minions by using `*`.
+Packages are installed or removed from Minions using the *[pkg state module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.pkg.html)*. As long as you're running a Linux distribution supported by SaltStack, the Salt module controls the distribution's package manager, be it `apt`, `yum`, etc. Packages can be targeted to individual Minions by specifying the minion's hostname or IP address, or to all Minions by using `*`.
 
 Install packages using the same package name used in the system repositories of the Salt minion. For example, `apache` is the Apache httpd server package in Debian and Ubuntu, while `httpd` is the package name in RHEL-based systems. If your Salt Minions are a version of Debian or Ubuntu, you would install or remove Apache with the examples below.
 
