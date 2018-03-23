@@ -16,11 +16,11 @@ deprecated: true
 
 Postfix is an efficient, stable, and modern "Mail Transfer Agent" or MTA used for transmitting email messages between severs on the Internet. Most configurations involving Postfix combine the MTA with a server to allow users to download email using a protocol like IMAP or POP3. This document outlines a very simple configuration of Postfix that makes it possible to forward email, and deliver email to local mailboxes on your Linode instance. This guide *does not* provide any way to download this email or remotely access these mailboxes. In addition, this document provides instructions for sending email with this configuration. If you want to deploy a complete and fully featured email solution that includes the ability download locally delivered email, consider one of our other [postfix email guides](/docs/email/postfix/).
 
-Prior to beginning this document to install a basic Postfix email gateway, we assume that you have completed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Prior to beginning this document to install a basic Postfix email gateway, we assume that you have completed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -207,7 +207,7 @@ Edit this file to include your username and the location of your email gateway. 
     chmod +x /opt/smtp-tunnel
     /opt/smtp-tunnel start
 
-You may want to consider issuing the command to start the tunnel (`/opt/smtp-tunnel start`) as part of your boot script by including it in your `/etc/rc.local` file, or by creating a `@reboot` [cron job](/docs/linux-tools/utilities/cron). If your network configuration utility allows you to establish pre- and post-connection scripts, you may want to instantiate and destroy the tunnel during this process. To destroy the tunnel, issue the following command:
+You may want to consider issuing the command to start the tunnel (`/opt/smtp-tunnel start`) as part of your boot script by including it in your `/etc/rc.local` file, or by creating a `@reboot` [cron job](/docs/tools-reference/tools/schedule-tasks-with-cron/). If your network configuration utility allows you to establish pre- and post-connection scripts, you may want to instantiate and destroy the tunnel during this process. To destroy the tunnel, issue the following command:
 
     /opt/smtp-tunnel stop
 
@@ -236,8 +236,8 @@ You may wish to consult the following resources for additional information on th
 - [MSMTP Mail Sending Client](http://msmtp.sourceforge.net/)
 - [Postfix](http://postfix.org)
 - [Postfix Virtual Mail Handling](http://www.postfix.org/VIRTUAL_README.html)
-- [Introduction to the DNS System](/docs/dns-guides/introduction-to-dns)
-- [Host Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)](/docs/email/postfix/dovecot-mysql-debian-6-squeeze)
+- [Introduction to the DNS System](/docs/networking/dns/dns-records-an-introduction/)
+- [Host Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)](/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-6-squeeze/)
 
 
 
