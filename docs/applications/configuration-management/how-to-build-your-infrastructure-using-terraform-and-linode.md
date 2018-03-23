@@ -28,7 +28,7 @@ The configurations and commands used in this guide will result in multiple Linod
 
 -  You will need root access to the system and a standard user account with sudo privileges.
 
--  Create an API key for your Linode account. Be sure to take a screen capture of the API key when it's displayed, it will only appear once. See our [API Key](/docs/platform/api/api-key) guide if you need help.
+-  Create an API key for your Linode account. Be sure to take a screen capture of the API key when it's displayed, it will only appear once. See our [API Key](/docs/platform/api/api-key/) guide if you need help.
 
 -  You will need [Git](https://git-scm.com/) installed on your system.
 
@@ -362,7 +362,7 @@ resource "linode_linode" "terraform-example" {
         terraform apply
 
     {{< caution >}}
-Changing the size of your Linode will force your server to be powered off and migrated to a different host in the same data center. The associated disk migration will take approximately 1 minute for every 3-5 gigabytes of data. For more information about resizing read the [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode) guide.
+Changing the size of your Linode will force your server to be powered off and migrated to a different host in the same data center. The associated disk migration will take approximately 1 minute for every 3-5 gigabytes of data. For more information about resizing read the [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) guide.
 {{< /caution >}}
 
 4.  Return to the Linode Manager to verify the changes.

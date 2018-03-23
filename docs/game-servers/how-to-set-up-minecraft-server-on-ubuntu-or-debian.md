@@ -28,7 +28,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 1.  To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
 
-2.  Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
+2.  Complete our [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/securing-your-server/) guides.
 
 3.  Update your Linode's software:
 
@@ -36,7 +36,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 3.  Install *OpenJDK*, an open-source implementation of Java, and the GNU Screen package.
 
-	{{< note >}}
+    {{< note >}}
 Minecraft version 1.12 is only compatible with OpenJDK 8. If you are using OpenJDK 7 you must remove it using this command
 `sudo apt remove openjdk-7-\*` before continuing with this guide.
 {{< /note >}}
@@ -53,7 +53,7 @@ Minecraft version 1.12 is only compatible with OpenJDK 8. If you are using OpenJ
 
         sudo adduser minecraft
 
-    Assign a secure password, and configure any additional [SSH hardening](/docs/security/use-public-key-authentication-with-ssh) options at this time.
+    Assign a secure password, and configure any additional [SSH hardening](/docs/security/authentication/use-public-key-authentication-with-ssh/) options at this time.
 
 {{< note >}}
 If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
@@ -162,4 +162,4 @@ To disconnect from the screen session without stopping the game server, press **
 
     [![Minecraft Players.](/docs/assets/minecraft-gameplay_small.png)](/docs/assets/minecraft-gameplay.png)
 
-Congratulations! You can now play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
+Congratulations! You can now play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/).
