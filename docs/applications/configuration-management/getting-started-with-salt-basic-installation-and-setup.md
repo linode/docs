@@ -62,7 +62,7 @@ interface: 203.0.113.0
 **Salt Minions**
 
 {{< note >}}
-These steps must be performed on *each* Salt minon.
+These steps must be performed on *each* Salt minion.
 {{< /note >}}
 
 1.  Similar to what was previously done on the Salt master, uncomment the `#interface:` line near the top of the file and replace the address placeholder with the address of your Salt master's Linode. If you used the Linode's private IP address for your Salt master above, use the Minion's private IP address here.
@@ -177,6 +177,6 @@ View status of the `mariadb` service on `minion1`:
 
 ## Next Steps
 
-Salt is a complex ecosystem which requires study and practice to thoroughly grasp. The [Salt documentation](https://docs.saltstack.com/en/latest/) has many examples, tutorials, and reference pages which will help. 
+Salt is a complex ecosystem which requires study and practice to thoroughly grasp. The [Salt documentation](https://docs.saltstack.com/en/latest/) has many examples, tutorials, and reference pages which will help.
 
 Moving forward, you should start by familiarizing yourself with *[Execution Modules](https://docs.saltstack.com/en/latest/ref/modules/all/index.html#all-salt-modules)* and *[Salt States](https://docs.saltstack.com/en/latest/ref/states/index.html)*, and determine how they can be applied to your setup.
