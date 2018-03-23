@@ -15,19 +15,19 @@ title: 'Installing Nginx on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[Linode nginx Documentation](/docs/web-servers/nginx/)'
  - '[nginx Community Documentation](http://wiki.nginx.org)'
- - '[Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10-04-lucid)'
- - '[Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid)'
+ - '[Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/)'
+ - '[Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/)'
 ---
 
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and the Linode's [hostname is set](/docs/getting-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -254,4 +254,4 @@ Regardless of installation source or method, Nginx can be tested by navigating t
 
 ![Nginx welcome](/docs/assets/nginx-welcome.png)
 
-Continue reading our introduction to [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.
+Continue reading our introduction to [Basic NGINX Configuration](/docs/web-servers/nginx/how-to-configure-nginx/) for more information about using and setting up a web server.

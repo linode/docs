@@ -24,7 +24,7 @@ external_resources:
 
 **Irssi** is a terminal-based chat client for real-time conversations over Internet Relay Chat (**IRC**). IRC is the common meeting ground for Linode users to exchange knowledge and troubleshoot issues in our public channel, **#linode** on **OFTC**.
 
-Irssi can run on Linux or MAC OS X, either from your local workstation or your Linode. If you are unfamiliar with using a Linux terminal, you may want to review the Linode guides [Using the Terminal](/docs/using-linux/using-the-terminal) and [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts). Additionally, it is assumed that you have followed our [Getting Started Guide](/docs/getting-started/) if you intend to run Irssi on your Linode.
+Irssi can run on Linux or MAC OS X, either from your local workstation or your Linode. If you are unfamiliar with using a Linux terminal, you may want to review the Linode guides [Using the Terminal](/docs/networking/ssh/using-the-terminal/) and [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts/). Additionally, it is assumed that you have followed our [Getting Started Guide](/docs/getting-started/) if you intend to run Irssi on your Linode.
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ Complete these tasks before you start:
 
 -   All the procedures listed in the [Getting Started](/docs/getting-started/) guide
 -   The **Adding a New User**, **Using SSH Key Pair Authentication**, and **Disabling SSH Password Authentication and Root Login** sections in the [Securing Your Server](/docs/securing-your-server/) guide
--   Make sure **GNU Screen** is installed. It should be by default. See our [Screen Guide](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) for information.
+-   Make sure **GNU Screen** is installed. It should be by default. See our [Screen Guide](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) for information.
 
 ## Installing Irssi
 
@@ -249,4 +249,4 @@ To remove a `hilight`, use the command:
 
 ## User-friendly Plugins
 
-Enhance your Irssi experience with user-friendly plugins! Add a full list of open windows to the bottom of the screen, colored nicks, and more. Check out the [Using Plugins](/docs/communications/irc/advanced-irssi#using-plugins) section of the [Advanced Irssi Usage](/docs/communications/irc/advanced-irssi) guide.
+Enhance your Irssi experience with user-friendly plugins! Add a full list of open windows to the bottom of the screen, colored nicks, and more. Check out the [Using Plugins](/docs/communications/irc/advanced-irssi/#using-plugins) section of the [Advanced Irssi Usage](/docs/applications/messaging/advanced-irssi-usage/) guide.

@@ -23,7 +23,7 @@ Full disk encryption protects the information stored on your Linode's disks by c
 
 ## Potential Drawbacks
 
-Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots. And some Linode Manager tools may not work as expected if your disks are encrypted. You'll need to manually resize your filesystem if you want to resize your disk. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/backup-service) can't mount encrypted disks.
+Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots. And some Linode Manager tools may not work as expected if your disks are encrypted. You'll need to manually resize your filesystem if you want to resize your disk. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/platform/linode-backup-service/) can't mount encrypted disks.
 
 ## Getting Started
 
@@ -66,11 +66,11 @@ Now you're ready to enable full disk encryption on your Linode running Debian 7 
 
         cryptsetup luksFormat /dev/xvdc
 
-	{{< caution >}}
+    {{< caution >}}
 If you lose this passphrase your data will be irretrievable!
 {{< /caution >}}
 
-	{{< note >}}
+    {{< note >}}
 You may receive a FATAL notice about loading a kernel module used for hardware crypto acceleration. This message can be safely ignored.
 {{< /note >}}
 
@@ -89,7 +89,7 @@ You may receive a FATAL notice about loading a kernel module used for hardware c
         mkswap /dev/mapper/crypt-swap
         swapon /dev/mapper/crypt-swap
 
-	{{< note >}}
+    {{< note >}}
 Swap will not persist through reboots, so a random key will be used to encrypt swap data.
 {{< /note >}}
 
@@ -196,4 +196,4 @@ You're almost finished! Just a couple more steps and you'll have a Linode with e
         ^a^d
         reboot 1
 
-If everything is configured properly your Linode will boot and prompt you for the encryption passphrase. Enter the passphrase on your console to mount your encrypted disk and boot your Linode. Now you'll want to follow the steps in our [Getting Started](/docs/getting-started) guide.
+If everything is configured properly your Linode will boot and prompt you for the encryption passphrase. Enter the passphrase on your console to mount your encrypted disk and boot your Linode. Now you'll want to follow the steps in our [Getting Started](/docs/getting-started/) guide.

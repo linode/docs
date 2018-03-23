@@ -20,7 +20,7 @@ Be sure to review this guide in its entirety before beginning the procedure outl
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -44,7 +44,7 @@ During the Mailman installation, you will be required to specify the languages t
 
 # Configure Mailman
 
-Consider the [Configure Virtual Hosting](/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-12-04-precise-pangolin#configure-virtual-hosting) section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
+Consider the [Configure Virtual Hosting](/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-12-04-precise-pangolin/#configure-virtual-hosting) section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
 
     newlist mailman
 
@@ -101,7 +101,7 @@ mailman_destination_recipient_limit = 1
 {{< /file-excerpt >}}
 
 
-Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/dns-guides/introduction-to-dns#mx) for both domains that you want to receive email with. Additionally, ensure the following lines are included your `/etc/postfix/master.cf` file:
+Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/dns-guides/introduction-to-dns/#mx) for both domains that you want to receive email with. Additionally, ensure the following lines are included your `/etc/postfix/master.cf` file:
 
 {{< file-excerpt "/etc/postfix/master.cf" >}}
 mailman   unix  -       n       n       -       -       pipe
@@ -125,7 +125,7 @@ Finally, modify the `/etc/mailman/mm_cfg.py` file to set the following values. A
 
 This controls how Mailman processes the mail that it receives from postfix. Continue configuring Mailman by editing following file to update Mailman to interact properly with postfix:
 
-{{< file-excerpt "/etc/mailman/mm\\_cfg.py" >}}
+{{< file-excerpt "/etc/mailman/mm_cfg.py" >}}
 MTA = 'Postfix'
 POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com']
 # alias for postmaster, abuse and mailer-daemon
@@ -136,7 +136,7 @@ DEB_LISTMASTER = 'postmaster@example.com'
 
 Ensure that the fields `DEFAULT_EMAIL_HOST` and `DEFAULT_URL_HOST` match the sub-domain you are using for lists (e.g. `lists.example.com`) as follows:
 
-{{< file-excerpt "/etc/mailman/mm\\_cfg.py" >}}
+{{< file-excerpt "/etc/mailman/mm_cfg.py" >}}
 #-------------------------------------------------------------
 # Default domain for email addresses of newly created MLs
 DEFAULT_EMAIL_HOST = 'lists.example.com'
@@ -152,7 +152,7 @@ add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 
 If you need to configure additional domains for use, ensure that you've made the proper additions to the `relay_domains` field in the to the `POSTFIX_STYLE_VIRTUAL_DOMAINS` line and create additional `add_virtualhost` calls in the following form for every new domain:
 
-{{< file-excerpt "/etc/mailman/mm\\_cfg.py" >}}
+{{< file-excerpt "/etc/mailman/mm_cfg.py" >}}
 add_virtualhost('lists.example.org', 'lists.example.org')
 
 # Modify the following line
@@ -161,7 +161,7 @@ POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com', 'lists.example.org']
 {{< /file-excerpt >}}
 
 
-Ensure that your domains have valid MX and [A Records](/docs/dns-guides/introduction-to-dns#types-of-dns-records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart Postfix, and start Mailman for the first time:
+Ensure that your domains have valid MX and [A Records](/docs/dns-guides/introduction-to-dns/#types-of-dns-records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart Postfix, and start Mailman for the first time:
 
     newlist mailman
     /etc/init.d/postfix restart
@@ -176,7 +176,7 @@ From this point forward, you can create new lists by issuing `newlist` commands 
 
 # Configuring Mailman with Alternate Mail Configurations
 
-If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Dovecot and MySQL](/docs/email/postfix/dovecot-mysql-ubuntu-10-04-lucid) or the [Postfix with Dovecot and System Users](/docs/email/postfix/dovecot-system-users-ubuntu-10-04-lucid) configurations described in other documents, consider the following recommendations:
+If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Dovecot and MySQL](/docs/email/postfix/dovecot-mysql-ubuntu-10-04-lucid/) or the [Postfix with Dovecot and System Users](/docs/email/postfix/dovecot-system-users-ubuntu-10-04-lucid) configurations described in other documents, consider the following recommendations:
 
 Complete your basic mail configuration according to the appropriate guide before beginning to install and configure Mailman.
 

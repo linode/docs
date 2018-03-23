@@ -20,7 +20,7 @@ Although nginx is a relatively new entrant in the web server field, it has achie
 
 Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -132,6 +132,6 @@ You may wish to consult the following resources for additional information on th
 
 - [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/centos-5)
-- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/centos-5)
-- [Configure Ruby on Rails with nginx](/docs/frameworks/ruby-on-rails-nginx/centos-5)
+- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-perlfastcgi-on-centos-5/)
+- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-phpfastcgi-on-centos-5/)
+- [Configure Ruby on Rails with nginx](/docs/development/ror/ruby-on-rails-with-nginx-on-centos-5/)
