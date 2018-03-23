@@ -19,7 +19,7 @@ external_resources:
 
 GNU nano, or more commonly, nano is the basic, built-in editor for most Linux distributions. In this QuickAnswer, we'll cover some of the essentials to help you get started.
 
-To learn more, visit our full guide on [using nano](/docs/tools-reference/tools/using-nano).
+To learn more, visit our full guide on [using nano](/docs/tools-reference/tools/use-nano-text-editor-commands/).
 
 ## Use nano to Open a System File
 

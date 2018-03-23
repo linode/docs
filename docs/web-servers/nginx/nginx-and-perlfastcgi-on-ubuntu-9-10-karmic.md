@@ -109,11 +109,11 @@ Issue the following commands to enable the site:
     ln -s /etc/nginx/sites-available/www.example.com
     /etc/init.d/nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com//)).
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/networking/dns/dns-manager-overview/) pointing your domain name to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com//)).
 
 # Configure spawn-fcgi
 
-Install the Perl module for FastCGI using the [CPAN Minus](/docs/linux-tools/utilities/cpanm) interface for CPAN. Install CPAN Minus and FCGI by issuing the following sequence of commands:
+Install the Perl module for FastCGI using the [CPAN Minus](/docs/development/perl/manage-cpan-modules-with-cpan-minus/) interface for CPAN. Install CPAN Minus and FCGI by issuing the following sequence of commands:
 
     cd /opt/
     curl https://github.com/miyagawa/cpanminus/raw/master/cpanm > cpanm
@@ -171,4 +171,4 @@ You may wish to consult the following resources for additional information on th
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
 - [Installing NGINX on Ubuntu 9.10 (Karmic)](/docs/web-servers/nginx/installation/ubuntu-9-10-karmic)
-- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Basic NGINX Configuration](/docs/web-servers/nginx/how-to-configure-nginx/)

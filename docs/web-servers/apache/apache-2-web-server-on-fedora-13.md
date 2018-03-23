@@ -16,7 +16,7 @@ title: Apache 2 Web Server on Fedora 13
 
 
 
-This tutorial explains how to install and configure the Apache web server on Fedora 13. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 13](/docs/lamp-guides/fedora-13).
+This tutorial explains how to install and configure the Apache web server on Fedora 13. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 13](/docs/web-servers/lamp/lamp-server-on-fedora-13/).
 
 # Install Apache HTTP Server
 
