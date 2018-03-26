@@ -62,73 +62,71 @@ interface: 203.0.113.0
 **Salt Minions**
 
 {{< note >}}
-These steps must be performed on *each* Salt minion.
+This step must be performed on *each* Salt minion.
 {{< /note >}}
 
-1.  Similar to what was previously done on the Salt master, uncomment the `#interface:` line near the top of the file and replace the address placeholder with the address of your Salt master's Linode. If you used the Linode's private IP address for your Salt master above, use the Minion's private IP address here.
+Uncomment `#master: salt` near the top of `/etc/salt/minion`, and replace `salt` with your Salt master's IP address:
 
-    {{< file "/etc/salt/minion" >}}
-# The address of the interface to bind to:
-interface: 203.0.113.1
-{{< /file >}}
-
-2.  Also uncomment `#master: salt` near the top of the file, and replace `salt` with your Salt master's IP address:
-
-    {{< file "/etc/salt/minion" >}}
+  {{< file "/etc/salt/minion" >}}
 # Set the location of the salt master server. If the master server cannot be
 # resolved, then the minion will fail to start.
 master: 203.0.113.0
 {{< /file >}}
 
-
 ## Authenticate Minions to the Salt Master
+
+### Get Salt Master Key Fingerprint
 
 1.  From the Salt master, list its key fingerprint, and all Minions linked to it with their key fingerprints:
 
-        salt-key --finger-all
+        sudo salt-key --finger-all
 
     You should see the minion hostname or IP addresses listed under *Unaccepted Keys*, and a SHA256 fingerprint of each key. Here the fingerprints are truncated with `...` to avoid clutter.
 
-        Local Keys:
-        master.pem:  e9:6a:86:bf...
-        master.pub:  4b:2a:81:79...
-        Accepted Keys:
-        Unaccepted Keys:
-        minion1:  c7:b2:55:83:46...
-        minion2:  f8:41:ce:73:f8...
+    {{< output >}}
+Local Keys:
+master.pem:  e9:6a:86:bf...
+master.pub:  4b:2a:81:79...
+Accepted Keys:
+Unaccepted Keys:
+minion1:  c7:b2:55:83:46...
+minion2:  f8:41:ce:73:f8...
+{{< /output >}}
 
-2.  From each Salt Minion, you then need to do three things:
+### Configure Salt Minions
 
-    -  First add the Salt Master's `master.pub` fingerprint to `/etc/salt/minion`, between the single quotes:
+1.  Add the Salt Master's `master.pub` fingerprint to `/etc/salt/minion`, between the single quotes:
 
-        {{< file "/etc/salt/minion" >}}
+    {{< file "/etc/salt/minion" >}}
 # Fingerprint of the master public key to validate the identity of your Salt master
 # before the initial key exchange. The master fingerprint can be found by running
 # "salt-key -f master.pub" on the Salt master.
 master_finger: '4b:2a:81:79...'
 {{< /file >}}
 
-    -  Second, restart Salt:
+2.  Restart Salt:
 
             sudo systemctl restart salt-minion
 
-    - Third, list the Minion's fingerprint hash and verify it with what's reported by the Salt Master in Step 1 above:
+3.  List the Minion's fingerprint hash and verify it with what's reported by the Salt Master in Step 1 above:
 
-            salt-call key.finger --local
+            sudo salt-call key.finger --local
 
-4.  Once each Minion ID has been verified, accept them all from the Salt Master:
+### Accept Minions
 
-        salt-key -A
+1.  Once each Minion ID has been verified, accept them all from the Salt Master:
+
+        sudo salt-key -A
 
     {{< note >}}
 To accept an individual minion, specify it by hostname or IP address:
 
-    salt-key -a hostname
+    sudo salt-key -a hostname
 {{< /note >}}
 
-5.  Verify the status of accepted minions. The command below should return the hostname or IP address of each Minion which has been verified and is running.
+2.  Verify the status of accepted minions. The command below should return the hostname or IP address of each Minion which has been verified and is running.
 
-        salt-run manage.up
+        sudo salt-run manage.up
 
 For more information about Salt keys, see the *[salt-key](https://docs.saltstack.com/en/latest/ref/configuration/index.html)* man page.
 
@@ -136,15 +134,17 @@ For more information about Salt keys, see the *[salt-key](https://docs.saltstack
 
 Ping all Minions:
 
-    salt '*' test.ping
+    sudo salt '*' test.ping
 
 The output should show `true` for each Minion:
 
-    root@saltmaster:~# salt '*' test.ping
-    minion1:
-        True
-    minion2:
-        True
+  {{< output >}}
+root@saltmaster:~# salt '*' test.ping
+minion1:
+    True
+minion2:
+    True
+{{< /output >}}
 
 ## Package Management Overview
 
@@ -154,25 +154,25 @@ Install packages using the same package name used in the system repositories of 
 
 Install Apache to all Minions:
 
-    salt '*' pkg.install apache2
+    sudo salt '*' pkg.install apache2
 
 Remove Apache from `minion5`:
 
-    salt 'minion5' pkg.remove apache2
+    sudo salt 'minion5' pkg.remove apache2
 
 List all packages installed on `minion1`:
 
-    salt 'minion1' pkg.list_pkgs
+    sudo salt 'minion1' pkg.list_pkgs
 
 Services are controlled using the *[service module](https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.service.html)*.
 
 Restart Apache on all Minions:
 
-    salt '*' service.start apache2
+    sudo salt '*' service.start apache2
 
 View status of the `mariadb` service on `minion1`:
 
-    salt 'minion1' service.status mariadb
+    sudo salt 'minion1' service.status mariadb
 
 
 ## Next Steps
