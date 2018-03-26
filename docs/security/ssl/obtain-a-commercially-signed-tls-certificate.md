@@ -13,6 +13,8 @@ published: 2017-12-20
 title: 'Obtain a Commercially Signed TLS Certificate'
 ---
 
+![Obtain a Commercially Signed TLS Certificate](/docs/assets/tls-cert-commercial/Obtain-a-Commercially-Signed-TLS-Certificate-smg.jpg)
+
 If you intend to host a publicly accessible website which will use HTTPS, then you will want to install a commercially signed TLS certificate so people visiting your site don't get warnings in their browser about an unsafe connection.
 
 The easiest method is to sign your certificate using [Let's Encrypt](https://letsencrypt.org/). The [CertBot](https://certbot.eff.org/) tool makes obtaining and renewing certificates through Let's Encrypt extremely simple. However, this isn't a viable option for everyone.

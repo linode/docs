@@ -18,6 +18,7 @@ external_resources:
  - '[OSSEC](https://ossec.github.io/)'
 ---
 
+![Install and Configure OSSEC on Debian 7](/docs/assets/ossec-debian/Install-and-Configure-OSSEC-on-Debian-7-smg.jpg)
 
 OSSEC is an open-source, host-based intrusion detection system (**HIDS**) that performs log analysis, integrity checking, rootkit detection, time-based alerting, and active response, making it an ideal choice for server monitoring.
 

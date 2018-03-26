@@ -18,6 +18,7 @@ external_resources:
  - '[WildFly Administration Guide](https://books.google.com.sa/books?id=rufiBAAAQBAJ)'
 ---
 
+![Java Development with WildFly on CentOS 7](/docs/assets/wildfly/Java-Development-with-WildFly-on-CentOS-7-smg.jpg)
 
 JBoss AS (Renamed to [WildFly](http://wildfly.org/)) has been used for many years as one of the best known performing & free community Java Application Server. The attention even increased when Red Hat started providing commercial support to its enterprise version [JBoss EAP](http://www.redhat.com/en/technologies/jboss-middleware/application-platform) with support to on-premises, virtual, or cloud. Red Hat also provides commercial support for Red Hat Enterprise Linux & building huge ecosystem of multiple products to serve its clients.
 

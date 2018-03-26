@@ -17,6 +17,8 @@ external_resources:
 - '[Official Scrapy Documentation](https://doc.scrapy.org/en/latest/index.html)'
 ---
 
+![Use Scrapy to Extract Data from HTML Tags](/docs/assets/scrapy/Use-Scrapy-to-Extract-Data-From-HTML-Tags-smg.jpg)
+
 Scrapy is a Python framework for creating web scraping applications. It provides a programming interface to crawl the web by identifying new links, and extracts structured data from the downloaded content.
 
 This guide will provide you with instructions to build a spider which recursively checks all `<a>` tags of a website and tracks broken links. This guide is written for Python version 3.4 or above, and with Scrapy version 1.4. It will not work on a Python 2 environment.
