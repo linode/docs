@@ -11,6 +11,8 @@ modified: 2013-02-18
 modified_by:
   name: Linode
 published: 2010-06-22
+deprecated: true
+deprecated_link: 'web-servers/lemp/install-a-lemp-stack-on-debian/'
 title: 'LEMP Server on Debian 5 (Lenny)'
 ---
 
