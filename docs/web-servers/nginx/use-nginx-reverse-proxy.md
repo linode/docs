@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'NGINX has advanced load-balancing, security, and optimization features that make it an excellent reverse proxy. This guide shows how to confgure NGINX using the proxy_pass directive.'
+description: 'NGINX has advanced load-balancing, security, and optimization features that make it an excellent reverse proxy. This guide shows how to configure NGINX using the proxy_pass directive.'
 keywords: ["nginx","reverse proxy","proxy","node.js"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-20
@@ -77,30 +77,36 @@ At this point, you could simply configure Node.js to serve the example app on yo
 
 ### Basic Configuration
 
-1.  In a text editor, create a configuration file for the app in `/etc/nginx/conf.d/`. Replace `$linode-ip` with the public IP address of your Linode.
+1.  In a text editor, create a configuration file for the app in `/etc/nginx/conf.d/`. Replace `example.com` with your app's domain or Linode's public IP address.
 
     {{< file "/etc/nginx/conf.d/nodeapp.conf" conf >}}
-listen 80;
-listen [::]:80;
+server {
+  listen 80;
+  listen [::]:80;
 
-server_name $linode-ip;
+  server_name example.com;
 
-location / {
-    proxy_pass http://localhost:3000/;
+  location / {
+      proxy_pass http://localhost:3000/;
+  }
 }
 {{< /file >}}
 
-The `proxy_pass` directive is what makes this configuration a reverse proxy: it specifies that all requests that match the location block (in this case the root `/` path) should be forwarded to port 3000 on `localhost`, where the Node.js app is running.
+    The `proxy_pass` directive is what makes this configuration a reverse proxy. It specifies that all requests which match the location block (in this case the root `/` path) should be forwarded to port 3000 on `localhost`, where the Node.js app is running.
 
-2.  Test the configuration:
+2.  Disable or delete the default *Welcome to NGINX* page:
 
-    sudo nginx -t
+        sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
 
-3.  If no errors are reported, reload the new configuration:
+3.  Test the configuration:
 
-    sudo nginx -s reload
+        sudo nginx -t
 
-4.  In a browser, navigate to your Linode's public IP address. You should see the "Hello World!" message displayed.
+4.  If no errors are reported, reload the new configuration:
+
+        sudo nginx -s reload
+
+5.  In a browser, navigate to your Linode's public IP address. You should see the "Hello World!" message displayed.
 
 ## Advanced Options
 
