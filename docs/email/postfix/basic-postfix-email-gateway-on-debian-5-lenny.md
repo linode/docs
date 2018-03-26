@@ -238,7 +238,7 @@ You may wish to consult the following resources for additional information on th
 - [MSMTP Mail Sending Client](http://msmtp.sourceforge.net/)
 - [Postfix](http://postfix.org)
 - [Postfix Virtual Mail Handling](http://www.postfix.org/VIRTUAL_README.html)
-- [Introduction to the DNS System](/docs/dns-guides/introduction-to-dns)
+- [Introduction to the DNS System](/docs/networking/dns/dns-records-an-introduction/)
 - [Host Email with Postfix, Courier and MySQL on Debian 5 (Lenny)](/docs/email/postfix/email-with-postfix-courier-and-mysql-on-debian-5-lenny/)
 - [Host Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)](/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-5-lenny/)
 
