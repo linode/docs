@@ -13,6 +13,8 @@ published: 2018-02-09
 title: 'Getting Started with NGINX - Part 2: (Slightly More) Advanced Configurations'
 ---
 
+![Getting Started with NGINX - Part 2](/docs/assets/nginx-basics/Getting-Started-with-NGINX-Part-2-smg.jpg)
+
 ## Before You Begin
 
 * This guide is Part 2 of our *Getting Started with NGINX* series, and you will need a working NGINX setup with a website accessible via HTTP. If you do not already have that, complete [Part 1: Basic Installation and Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/).

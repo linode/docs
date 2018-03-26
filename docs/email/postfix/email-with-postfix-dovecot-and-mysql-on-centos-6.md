@@ -9,7 +9,7 @@ modified: 2015-03-26
 modified_by:
   name: Elle Krout
 published: 2015-03-26
-title: 'Email with Postfix, Dovecot and MySQL on CentOS 6'
+title: 'Email with Postfix, Dovecot, and MySQL on CentOS 6'
 external_resources:
  - '[ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny)'
  - '[Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny)'
@@ -18,6 +18,8 @@ external_resources:
  - '[Dovecot Documentation Wiki](http://wiki.dovecot.org/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
 ---
+
+![Email with Postfix, Dovecot, and MySQL on CentOS](/docs/assets/postfix-dovecot-mysql/Email-with-Postfix-Dovecot-and-MySQL-on-CentOS-smg.jpg)
 
 The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 6 Linode, using Dovecot for IMAP/POP3 service, and MySQL to store information on virtual domains and users.
 

@@ -13,6 +13,8 @@ published: 2015-02-12
 title: Getting Started with NodeBalancers
 ---
 
+![Getting Started with NodeBalancers](/docs/assets/get-started-nodebalancers/Getting-Started-with-NodeBalancers-smg.jpg)
+
 Nearly all applications that are built using Linodes can benefit from load balancing, and load balancing itself is the key to expanding an application to larger numbers of users. Linode now provides NodeBalancers, which can ease the deployment and administration of a load balancer.
 
 NodeBalancers are built for high availability and designed to be "set and forgotten". The most difficult part of transitioning to a NodeBalancer is simply making sure your application works well in the new environment. In this guide, we will examine a common use case: using a NodeBalancer to load balance a website and prepare it for scaling to thousands of users.
