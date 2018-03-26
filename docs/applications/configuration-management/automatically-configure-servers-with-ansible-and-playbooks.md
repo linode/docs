@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Ansible is an automation tool for server configuration, provisioning, and management. This guide shows how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server.'
 og_description: 'Ansible is an automation tool for server configuration, provisioning, and management. This guide shows how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server.'
-keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration", "ansible configuration change management", "ansible server automation"]
+keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration change management", "ansible server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['applications/ansible/getting-started-with-ansible/','applications/configuration-management/getting-started-with-ansible/']
 published: 2015-09-08
@@ -20,8 +20,6 @@ external_resources:
  - '[Ansible Documentation](http://docs.ansible.com/ansible/index.html)'
  - '[Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 ---
-
-![Automatically Configure Servers with Ansible and Playbooks](/docs/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg "Automatically Configure Servers with Ansible and Playbooks")
 
 ## What is Ansible?
 
