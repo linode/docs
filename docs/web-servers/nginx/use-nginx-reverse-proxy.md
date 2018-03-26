@@ -5,10 +5,10 @@ author:
 description: 'NGINX has advanced load-balancing, security, and optimization features that make it an excellent reverse proxy. This guide shows how to configure NGINX using the proxy_pass directive.'
 keywords: ["nginx","reverse proxy","proxy","node.js"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-20
+modified: 2018-03-26
 modified_by:
   name: Linode
-published: 2018-03-20
+published: 2018-03-26
 title: Use NGINX as a Reverse Proxy
 external_resources:
   - '[NGINX Reverse Proxy – NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
@@ -16,21 +16,21 @@ external_resources:
 
 ## What is a Reverse Proxy?
 
-A reverse proxy is a server that sits between internal applications and external clients, forwarding client requests to the appropriate server. Many common applications, such as Node.js, are able to function as servers on their own; however, NGINX has a number of advanced load balancing, security, and acceleration features that most specialized applications lack. Using NGINX as a reverse proxy enables you to add these features to any application.
+A reverse proxy is a server that sits between internal applications and external clients, forwarding client requests to the appropriate server. While many common applications, such as Node.js, are able to function as servers on their own, NGINX has a number of advanced load balancing, security, and acceleration features that most specialized applications lack. Using NGINX as a reverse proxy enables you to add these features to any application.
 
-This guide will use a simple Node.js app to demonstrate setting up NGINX as a reverse proxy.
+This guide uses a simple Node.js app to demonstrate how to configure NGINX as a reverse proxy.
 
 ## Install NGINX
 
 {{< content "install-nginx-ubuntu-ppa.md" >}}
 
-## Create Example App
+## Create an Example App
 
 ### Install Node.js
 
 {{< content "install-nodejs-ppa.md" >}}
 
-### Configure App
+### Configure the App
 
 1.  Create a directory for the example app:
 
@@ -40,7 +40,7 @@ This guide will use a simple Node.js app to demonstrate setting up NGINX as a re
 
         npm init
 
-    You can accept all defaults when prompted.
+    Accept all defaults when prompted.
 
 3.  Install Express.js:
 
@@ -70,14 +70,13 @@ app.listen(3000, () => console.log('Node.js app listening on port 3000.'))
 Hello World!
 {{< /output >}}
 
-
 ## Configure NGINX
 
-At this point, you could simply configure Node.js to serve the example app on your Linode's public IP address, which would make the app accessible on the public internet. Instead, this section will set up NGINX to forward all requests from the public IP address to the server already listening on `localhost`.
+At this point, you could configure Node.js to serve the example app on your Linode's public IP address, which would expose the app to the internet. Instead, this section configures NGINX to forward all requests from the public IP address to the server already listening on `localhost`.
 
-### Basic Configuration
+### Basic Configuration for an NGINX Reverse Proxy
 
-1.  In a text editor, create a configuration file for the app in `/etc/nginx/conf.d/`. Replace `example.com` with your app's domain or Linode's public IP address.
+1.  Create a configuration file for the app in `/etc/nginx/conf.d/`. Replace `example.com` in this example with your app's domain or public IP address:
 
     {{< file "/etc/nginx/conf.d/nodeapp.conf" conf >}}
 server {
@@ -92,7 +91,7 @@ server {
 }
 {{< /file >}}
 
-    The `proxy_pass` directive is what makes this configuration a reverse proxy. It specifies that all requests which match the location block (in this case the root `/` path) should be forwarded to port 3000 on `localhost`, where the Node.js app is running.
+    The `proxy_pass` directive is what makes this configuration a reverse proxy. It specifies that all requests which match the location block (in this case the root `/` path) should be forwarded to port `3000` on `localhost`, where the Node.js app is running.
 
 2.  Disable or delete the default *Welcome to NGINX* page:
 
@@ -110,7 +109,7 @@ server {
 
 ## Advanced Options
 
-For a simple app, the `proxy_pass` directive is sufficient. However, more complex apps may need additional directives. For example, Node.js is often used for apps that require a lot of real-time interactions. In this situation, you will want to disable NGINX's buffering feature:
+For a simple app, the `proxy_pass` directive is sufficient. However, more complex apps may need additional directives. For example, Node.js is often used for apps that require a lot of real-time interactions. To accommodate, disable NGINX's buffering feature:
 
   {{< file-excerpt "/etc/nginx/conf.d/nodeapp.conf" conf >}}
 location / {
@@ -132,4 +131,4 @@ This configuration uses the built-in `$remote_addr` variable to send the IP addr
 
 ## Next Steps
 
-For more information about general NGINX configuration, see our [NGINX series](https://linode.com/docs/web-servers/nginx/nginx-installation-and-basic-setup/). For practical examples of NGINX used to reverse proxy applications, see our guides on [Jupyter Notebooks](https://linode.com/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) and [Thingsboard](https://linode.com/docs/development/iot/install-thingsboard-iot-dashboard).
+For more information about general NGINX configuration, see our [NGINX series](/docs/web-servers/nginx/nginx-installation-and-basic-setup/). For practical examples of NGINX used to reverse proxy applications, see our guides on [Jupyter Notebooks](/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) and [Thingsboard](/docs/development/iot/install-thingsboard-iot-dashboard).
