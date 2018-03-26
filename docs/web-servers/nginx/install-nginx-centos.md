@@ -9,6 +9,8 @@ modified: 2018-03-19
 modified_by:
   name: Linode
 published: 2018-03-19
+show_on_rss_feed: false
+shortguide: true
 title: Install NGINX on Ubuntu from the Official NGINX Repository
 ---
 
@@ -25,7 +27,7 @@ enabled=1
 {{< /file-excerpt >}}
 
     {{< note >}}
-If you're using a CentOS version other than 7, substitute `7` in the `baseurl` in `nginx.repo` file for your CentOS version. The line's syntax is:
+If you're using a CentOS version other than 7, replace `7` in the `baseurl` in `nginx.repo` file with the correct CentOS version:
 
 `baseurl=http://nginx.org/packages/mainline/<OS>/<OSRELEASE>/$basearch/`
 {{< /note >}}
@@ -35,7 +37,7 @@ If you're using a CentOS version other than 7, substitute `7` in the `baseurl` i
         sudo yum update
         sudo yum install nginx
 
-3.  Ensure NGINX is running and and enabled to start automatically on reboots:
+3.  Ensure NGINX is running and and enabled to start automatically on reboot:
 
         sudo systemctl start nginx
         sudo systemctl enable nginx

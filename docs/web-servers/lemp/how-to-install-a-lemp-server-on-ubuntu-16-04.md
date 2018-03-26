@@ -2,11 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will teach you basic setup and configuration of Linux, NGINX, MySQL, and PHP on Ubuntu.'
-keywords: ["nginx", "lemp", "php"]
+description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
+og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
+keywords: ["nginx", "lemp", "php", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/lemp/lemp-server-on-ubuntu-16-04/','websites/lemp/lemp-server-on-ubuntu-16-04/','web-servers/lemp/lemp-server-on-ubuntu-16-04/']
-modified: 2018-03-19
+modified: 2018-03-26
 modified_by:
   name: Linode
 published: 2016-05-06
@@ -15,15 +16,15 @@ title: 'Install a LEMP Stack on Ubuntu 16.04'
 
 ![LEMP Server on Ubuntu 16.04](/docs/assets/lemp-server-on-ubuntu-1604.png "LEMP Server on Ubuntu 16.04")
 
-This guide describes an alternative to the popular LAMP stack, known as *LEMP*. The LEMP stack replaces the Apache web server component with NGINX, providing the *E* in LEMP.
+## What is a LEMP Stack?
 
+The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configuration for developing and hosting web applications. The four components of the stack are not tightly coupled, making it possible to substitute your preferred technologies. The LEMP stack is a common variant in which the Apache web server is replaced by NGINX.
 
 ## Before You Begin
 
-* You will need root access to the system, or a user account with `sudo` privilege.
-* Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
-* Update your system.
-
+1.  You will need root access to the system, or a user account with `sudo` privilege.
+2.  Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
+3.  Update your system.
 
 ## Installation
 
@@ -31,14 +32,13 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
 {{< content "install-nginx-ubuntu-ppa.md" >}}
 
-
 ### MariaDB
 
 1.  Install the MariaDB server and MySQL/MariaDB-PHP support. You may be prompted to set a root password during installation.
 
         sudo apt install mariadb-server php7.0-mysql
 
-2.  Run the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* script.
+2.  Run the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* script:
 
         sudo mysql_secure_installation
 
@@ -68,7 +68,7 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
         sudo apt install php7.0-fpm
 
-2.  Tell PHP to only accept URIs for [files which actually exist](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php) on the server:
+2.  Tell PHP to only accept URIs for files that actually exist on the server. This mitigates a security vulnerability where the PHP interpreter can be tricked into allowing arbitrary code execution if the requested `.php` file is not present in the filesystem. See [this tutorial](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php) for more information about this vulnerability.
 
         sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.0/fpm/php.ini
 
@@ -81,7 +81,7 @@ Change the `listen` variables in `www.conf` to that:
 
 ## Set an NGINX Site Configuration File
 
-1. Create the site's root directory where its content will live. Replace *example.com* with your site's domain.
+1. Create a root directory where the site's content will live. Replace *example.com* with your site's domain.
 
         sudo mkdir -p /var/www/example.com/
 
@@ -130,14 +130,12 @@ server {
 
     -  The `fastcgi_param` directives contain the [location](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#variables) (relative to the site's root directory) and file [naming convention](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_index) of PHP scripts to be served when called by NGINX.
 
-
 ## Test the LEMP Stack
 
 1.  Restart PHP and reload the NGINX configuration:
 
         sudo systemctl restart php7.0-fpm
         sudo nginx -s reload
-
 
 2.  Create a test page to verify NGINX can render PHP and connect to the MySQL database. Replace the `"testuser"` and `"password"` fields with the MySQL credentials you created above.
 

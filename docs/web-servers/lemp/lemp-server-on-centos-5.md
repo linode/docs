@@ -1,5 +1,6 @@
 ---
 deprecated: true
+deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
 author:
   name: Linode
   email: docs@linode.com

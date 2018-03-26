@@ -9,6 +9,8 @@ modified: 2018-03-16
 modified_by:
   name: Linode
 published: 2018-03-05
+shortguide: true
+show_on_rss_feed: false
 title: Install NGINX on Ubuntu from the Official NGINX Repository
 ---
 
@@ -30,7 +32,7 @@ deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx
         sudo apt update
         sudo apt install nginx
 
-4.  Ensure NGINX is running and and enabled to start automatically on reboots:
+4.  Ensure NGINX is running and and enabled to start automatically on reboot:
 
         sudo systemctl start nginx
         sudo systemctl enable nginx

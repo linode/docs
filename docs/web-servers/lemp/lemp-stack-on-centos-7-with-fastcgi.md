@@ -2,11 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will teach you basic setup and configuration of Linux, NGINX, MySQL, and PHP on CentOS 7.'
-keywords: ["nginx", "lemp", "php"]
+description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on CentOS 7.'
+og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on CentOS 7.'
+keywords: ["nginx", "lemp", "php", 'mariadb']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/lemp-guides/centos-7/','websites/lemp/lemp-server-on-centos-7-with-fastcgi/','web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
-modified: 2018-03-19
+modified: 2018-03-26
 modified_by:
     name: Linode
 published: 2014-12-11
@@ -15,15 +16,15 @@ title: Install a LEMP Stack on CentOS 7
 
 ![Install a LEMP Stack on CentOS](/docs/assets/lemp-on-centos-7-title-graphic.jpg "Install a LEMP Stack on CentOS")
 
-This guide describes an alternative to the popular LAMP stack, known as *LEMP*. The LEMP stack replaces the Apache web server component with NGINX, providing the *E* in LEMP.
+## What is a LEMP Stack?
 
+The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configuration for developing and hosting web applications. The four components of the stack are not tightly coupled, making it possible to substitute your preferred technologies. The LEMP stack is a common variant in which the Apache web server is replaced by NGINX.
 
 ## Before You Begin
 
-* You will need root access to the system, or a user account with `sudo` privilege.
-* Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
-* Update your system.
-
+1.  You will need root access to the system, or a user account with `sudo` privilege.
+2.  Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
+3.  Update your system.
 
 ## Installation
 
@@ -31,19 +32,18 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
 
 {{< content "install-nginx-centos.md" >}}
 
-
 ### MariaDB
 
 1.  Install the MariaDB server and MySQL/MariaDB-PHP support. You may be prompted to set a root password during installation.
 
         sudo yum install mariadb-server php-mysql
 
-2.  Ensure NGINX is running and and enabled to start automatically on reboots:
+2.  Ensure NGINX is running and and enabled to start automatically on reboot:
 
         sudo systemctl start mariadb
         sudo systemctl enable mariadb
 
-3.  Run the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* script.
+3.  Run the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* script:
 
         sudo mysql_secure_installation
 
@@ -84,23 +84,22 @@ This guide describes an alternative to the popular LAMP stack, known as *LEMP*. 
         sudo systemctl start php-fpm
         sudo systemctl enable php-fpm
 
-3.  Tell PHP to only accept URIs for [files which actually exist](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php) on the server:
+3.  Tell PHP to only accept URIs for files that actually exist on the server. This mitigates a security vulnerability where the PHP interpreter can be tricked into allowing arbitrary code execution if the requested `.php` file is not present in the filesystem. See [this tutorial](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php) for more information about this vulnerability.
 
         sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php.ini
 
-4.  PHP is set to run under the `apache` user by default, but they need to match the user and group NGINX is running as. If you installed NGINX from the NGINX repository as done above, NGINX will be using the `nginx` user and group. Change the `user` and `group` variables in `www.conf` to that:
+4.  PHP is set to run under the `apache` user by default, but this user needs to match the user and group used by NGINX. If you installed NGINX from the NGINX repository as described above, NGINX will use the `nginx` user and group. Change the `user` and `group` variables in `www.conf` to match:
 
         sudo sed -i 's/user = apache/user = nginx/g' /etc/php-fpm.d/www.conf
         sudo sed -i 's/group = apache/group = nginx/g' /etc/php-fpm.d/www.conf
 
-
 ## Set an NGINX Site Configuration File
 
-1. Create the site's root directory where its content will live. Replace *example.com* with your site's domain.
+1. Create a root directory for your site. Replace *example.com* with your site's domain:
 
         sudo mkdir -p /var/www/example.com/
 
-2.  Disable the default site configuration provided with the package as an example. Or if you have no use for it, delete it.
+2.  Disable the default site configuration provided with the package as an example:
 
         sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
 
@@ -127,15 +126,15 @@ server {
 }
 {{< /file >}}
 
-    Here's a breakdown of the `server` block above:
+    The `server` block above specifies the following configuration options:
 
     -  NGINX is listening on port 80 for incoming connections to *example.com* or *www.example.com*.
 
-    -  The site is served out of `/var/www/example.com/` and it's index page (`index.html`) is a simple `.html` file. If your index page will use PHP, substitute `index.php` for `index.html`.
+    -  The site is served out of `/var/www/example.com/` and its index page (`index.html`) is an `.html` file. If your index page will use PHP, substitute `index.php` for `index.html`.
 
     -  `try_files` tells NGINX to verify that a requested file or directory [actually exist](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files) in the site's root filesystem before further processing the request. If it does not, a `404` is returned.
 
-    -  `location ~* \.php$` means that NGINX will apply this configuration to all .php files (file names are not case sensitive) in your site’s root directory, including any subdirectories containing PHP files.
+    -  `location ~* \.php$` tells NGINX to apply this configuration to all .php files (file names are not case sensitive) in your site’s root directory, including any subdirectories containing PHP files.
 
     -  The `*` in the `~* \.php$` location directive indicates that PHP file names are not case sensitive. This can be removed if you prefer to enforce letter case.
 
@@ -145,7 +144,6 @@ server {
 
     -  The `fastcgi_param` directives contain the [location](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#variables) (relative to the site's root directory) and file [naming convention](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_index) of PHP scripts to be served when called by NGINX.
 
-
 ## Test the LEMP Stack
 
 1.  Restart PHP and reload the NGINX configuration:
@@ -153,8 +151,7 @@ server {
         sudo systemctl restart php-fpm
         sudo nginx -s reload
 
-
-2.  Create a test page to verify NGINX can render PHP and connect to the MySQL database. Replace the `"testuser"` and `"password"` fields with the MySQL credentials you created above.
+2.  Create a test page to verify NGINX can render PHP and connect to the MySQL database. Replace `testuser` and `password`  with the MySQL credentials you created above.
 
     {{< file "/var/www/example.com/test.php" php >}}
 <html>
@@ -182,8 +179,8 @@ server {
 </html>
 {{< /file >}}
 
-2.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load at all, re-check your configuration.
+2.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load, re-check your configuration.
 
-3.  Remove the test file once the stack is verified to be working correctly:
+3.  Remove the test file once you have confirmed that the stack is working correctly:
 
         sudo rm /var/www/example.com/test.php
