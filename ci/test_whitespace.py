@@ -18,9 +18,11 @@ def test_whitespace(md_filepath):
 @file_io
 def test_tabs(md_filepath):
     has_tabs = False
+    indent_regex = regex.compile(r'([ \t]*)')
     for line_number, line in enumerate(md_filepath, 1):
-        has_tabs = '\t' in list(line)
-        if has_tabs:
-            print("Mixed spacing on line " + str(line_number))
+        for position, char in enumerate(indent_regex.match(line).group(1)):
+            has_tabs = char != ' '
+            if has_tabs:
+                print("Mixed spacing on line " + str(line_number))
     assert has_tabs == False
 
