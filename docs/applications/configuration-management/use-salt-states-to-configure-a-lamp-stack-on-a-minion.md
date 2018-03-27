@@ -13,7 +13,7 @@ published: 2015-07-02
 title: Use Salt States to Configure a LAMP Stack on a Minion
 ---
 
-This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. You will need a working Salt master and minion configuration before starting this guide. If you need to set up that prerequisite, see our [Salt installation guide](/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers) to get started.
+This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. You will need a working Salt master and minion configuration before starting this guide. If you need to set up that prerequisite, see our [Salt installation guide](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup) to get started.
 
 ## Create the LAMP Configuration States
 The steps below configure all Salt Minions for a 2GB Linode, feel free to adjust as needed.
@@ -183,5 +183,3 @@ Salt State Modules are used for settings across groups of Minions. To adjust a c
 The above section used the [cmdmod](http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cmdmod.html), [file](http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.file.html), and [cp](http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cp.html) Salt Execution modules.
 
 You should now have a configured LAMP stack across as many Minions as you wanted. Optionally, use [grains](http://docs.saltstack.com/en/latest/topics/targeting/grains.html) for further customization and to apply specific variables to each host.
-
-

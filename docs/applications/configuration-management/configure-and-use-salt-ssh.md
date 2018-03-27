@@ -33,7 +33,7 @@ Please note: Because it uses SSH, Salt SSH is slower than standard Salt with Zer
         $rpm -q salt-ssh
 
     {{< note >}}
-For detailed instruction on how to set up SaltStack repo, please refer to the [Salt Stack Installation Guide](/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers/)
+For detailed instruction on how to set up SaltStack repo, please refer to the [Salt Stack Installation Guide](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/)
 {{< /note >}}
 
 3.  Your minions must have Python installed. Without Python installed on minions, you will only be able to run Salt SSH in raw mode. In raw mode, a raw shell command cannot use execution modules or apply Salt states. If you're running a modern version of CentOS/RedHat, you already have Python installed on your systems

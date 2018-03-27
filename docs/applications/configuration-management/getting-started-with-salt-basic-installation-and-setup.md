@@ -77,13 +77,13 @@ master: 203.0.113.0
 
 ### Get Salt Master Key Fingerprint
 
-1.  From the Salt master, list its key fingerprint, and all Minions linked to it with their key fingerprints:
+From the Salt master, list its key fingerprint, and all Minions linked to it with their key fingerprints:
 
-        sudo salt-key --finger-all
+    sudo salt-key --finger-all
 
-    You should see the minion hostname or IP addresses listed under *Unaccepted Keys*, and a SHA256 fingerprint of each key. Here the fingerprints are truncated with `...` to avoid clutter.
+You should see the minion hostname or IP addresses listed under *Unaccepted Keys*, and a SHA256 fingerprint of each key. Here the fingerprints are truncated with `...` to avoid clutter.
 
-    {{< output >}}
+{{< output >}}
 Local Keys:
 master.pem:  e9:6a:86:bf...
 master.pub:  4b:2a:81:79...
@@ -106,11 +106,11 @@ master_finger: '4b:2a:81:79...'
 
 2.  Restart Salt:
 
-            sudo systemctl restart salt-minion
+        sudo systemctl restart salt-minion
 
 3.  List the Minion's fingerprint hash and verify it with what's reported by the Salt Master in Step 1 above:
 
-            sudo salt-call key.finger --local
+        sudo salt-call key.finger --local
 
 ### Accept Minions
 
