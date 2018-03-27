@@ -16,10 +16,10 @@ title: How to Use Block Storage with Your Linode
 
 Linode’s block storage service allows you to attach additional storage volumes to your Linode. A single volume can range from 10 GiB to 10,000 GiB in size and costs $0.10/GiB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to eight volumes can be attached to a single Linode, be it new or already existing, so you do not need to recreate your server to add a Block Storage Volume.
 
-The Block Storage service is available now in production in the us-west/Fremont region only.
+The Block Storage service is currently available in the Dallas, Fremont, and Newark datacenters only.
 
 {{< caution >}}
--  Linode's backup services do not cover Block Storage Volumes. You must execute your own backups for this data.
+-  Linode's backup services do not cover Block Storage Volumes. You must execute [your own backups](/docs/security/backups/backing-up-your-data/) for this data.
 
 -  Your Linode must be running in Paravirtualization mode. Block storage currently does not support Full-virtualization.
 {{< /caution >}}
