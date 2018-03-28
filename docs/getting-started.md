@@ -271,7 +271,7 @@ If you have IPv6 enabled on your Linode, you may also want to add an entry for y
 2600:3c01::a123:b456:c789:d012 hostname.example.com hostname
 {{< /file-excerpt >}}
 
-The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For Linodes with IPv6 enabled, you should also set up an "AAAA" record in DNS pointing to your Linode's IPv6 address. For more information on configuring DNS, see [Adding DNS Records](/docs/hosting-website#sph_adding-dns-records).
+The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For Linodes with IPv6 enabled, you should also set up an "AAAA" record in DNS pointing to your Linode's IPv6 address. For more information on configuring DNS, see [Adding DNS Records](/docs/websites/hosting-a-website/#add-dns-records).
 
 For more information about the `hosts` file and how to configure it, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
 
