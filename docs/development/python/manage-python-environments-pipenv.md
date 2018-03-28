@@ -15,15 +15,11 @@ title: Manage Python Packages and Virtual Environments with Pipenv
 
 ## What is Pipenv?
 
-Most Python users are familiar with Pip and Virtualenv, two extremely popular and useful tools for installing Python packages and managing virtual environments, respectively. The two are often used together in a well-established workflow: create a virtual environment for each new project, activate it, install packages for the project's dependencies, then deactivate the virtual environment when switching to a different project. In addition, dependencies are usually tracked in a `requirements.txt` file so that new developers or users can install the required packages to work with the project.
-
-This workflow helps Python developers avoid dependency conflicts (when two projects rely on different versions of the same package) and coordinate setups between developers. However, the fact that the workflow relies on two separate tools results in a complicated process that can make managing environments and dependencies cumbersome. Pipenv, Python's officially recommended package management tool, aims to combine Pip and Virtualenv while also incorporating elements from successful package management tools for other langugages, such as NPM.
-
-## Installation
-
-You will need to have Python installed on your system to work wth Pipenv.
+Pipenv, Python's officially recommended package management tool, combines Pip and Virtualenv while also incorporating elements from successful package management tools for other langugages, such as NPM. This results in a simplified workflow for installing packages and managing virtual environments.
 
 ### Install Pipenv
+
+You will need to have Python installed on your system to work wth Pipenv.
 
 If you are using Ubuntu 17.10 or higher, you can install Pipenv directly from the Pypa ppa:
 
@@ -39,34 +35,128 @@ Other distributions should first install Pip and use it to install Pipenv:
 
 ## Use Pipenv
 
-Instead of using a `requirements.txt` file, Pipenv uses a **Pipfile**.
-
 1.  Create a directory for an example Python project:
 
         mkdir python-example && cd python-example
 
-2.  Use `pipenv` to install Numpy. Because there is no Pipfile in this directory, Pipenv will create a new virtual environment and add Numpy to the new environment's Pipfile.
+2.  Create a virtual environment in the directory:
+
+        pipenv --python 3.6
+
+    {{< output >}}
+Creating a virtualenv for this project…
+Using /home/username/miniconda3/bin/python3.6m (3.6.4) to create virtualenv…
+⠋Running virtualenv with interpreter /home/username/miniconda3/bin/python3.6m
+Using base prefix '/home/username/miniconda3'
+New python executable in /home/username/.local/share/virtualenvs/python-example-YJNpmGYi/bin/python3.6m
+Also creating executable in /home/username/.local/share/virtualenvs/python-example-YJNpmGYi/bin/python
+Installing setuptools, pip, wheel...done.
+
+Virtualenv location: /home/username/.local/share/virtualenvs/python-example-YJNpmGYi
+Creating a Pipfile for this project…
+{{< /output >}}
+
+    If you omit the `--python` option, the environment will be created with your system's default version of Python.
+
+3.  Check the contents of the directory with `ls`; you will see that both a `Pipfile` has been created automatically. View this file in a text editor:
+
+    {{< file "~/python-example/Pipfile" >}}
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+
+[packages]
+
+[requires]
+python_version = "3.6"
+{{< /file >}}
+
+
+4.  Install Numpy. Pipenv will automatically add the dependency to the `[packages]` section in the Pipfile. In addition, Pipenv creates a file named `Pipfile.lock`, which contains a hash of the exact versions used. This ensures that when other developers install the dependencies for this project, they will all end up with exactly the same versions.
 
         pipenv install numpy
 
-    {{< output >}}
+5.  Install a specific version of Pytest as a development dependency:
 
-{{< /output >}}
+        pipenv install --dev 'pytest>=3.*'
 
-    If you check the contents of the directory with `ls`, you will see that both a `Pipfile` and `Pipfile.lock` have been created automatically. The Pipfile contains a list of all installed packages in the environment, and `Pipfile.lock` contains a hash of the exact versions used, ensuring that all builds made from this environment will be deterministic.
+6.  View the changes these installations have made to the Pipfile:
 
-3.   Open the `Pipfile`:
+    {{< file "Pipfile" >}}
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
 
-    {{< file "~/python-example/Pipfile" >}}
+[dev-packages]
+pytest = ">=3.*"
 
+[packages]
+numpy = "*"
+
+[requires]
+python_version = "3.6"
 {{< /file >}}
 
-    Because a Python version was not specified explicitly when creating the virtual environment, the version in the Pipfile is the default version on your system. If you have multiple versions of Python installed and want to use a specific version for a given project, you can use `pipenv --python 3.6` when creating the environment. You can update the version used in an existing project by editing the version in the Pipfile and then running `pip install`.
+    Since no version was specified during when installing Numpy, the Pipfile specifies that any version (`"*"`) is acceptable. The specific version installed is recorded in `Pipfile.lock`.
+
+{{< note >}}
+If you install a package in a directory that does not have a Pipfile, Pipenv will create a new environment in that directory automatically, using your system's default Python version. This means that the commands in this section can be condensed into two steps:
+
+    pipenv install numpy
+    pipenv install --dev pytest
+{{< /note >}}
 
 ### Work with Virtual Environments
 
-1.
+1.  From within the directory containing the Pipfile, start a shell in the new environment:
 
+        pipenv shell
 
+    This is similar to running `source env/bin/activate` with `pip`.
+
+2.  Launch the Python interpreter from inside this shell:
+
+        python
+
+3.  You should be able to import any of the installed packages:
+
+        >>> import pytest
+        >>> import numpy as np
+
+4.  Exit the shell (similar to deactivating an environment with `pip`):
+
+        exit
+
+5.  View your project's dependencies in graph form:
+
+        pipenv graph
+
+    {{< output >}}
+numpy==1.14.2
+pytest==3.5.0
+  - attrs [required: >=17.4.0, installed: 17.4.0]
+  - more-itertools [required: >=4.0.0, installed: 4.1.0]
+    - six [required: >=1.0.0,<2.0.0, installed: 1.11.0]
+  - pluggy [required: >=0.5,<0.7, installed: 0.6.0]
+  - py [required: >=1.5.0, installed: 1.5.3]
+  - setuptools [required: Any, installed: 39.0.1]
+  - six [required: >=1.10.0, installed: 1.11.0]
+{{< /output >}}
+
+    The graph includes the packages you installed as well as their dependencies.
+
+6.  Locate the binary for the virtual environment:
+
+        pipenv --venv
+
+    {{< output >}}
+/home/jkobos/.local/share/virtualenvs/python-example-YJNpmGYi
+{{< /output >}}
 
 ## Next Steps
+
+For a full list of commands and options, see the Pipenv [Github repo](https://github.com/pypa/pipenv) and [official docs](https://docs.pipenv.org/).
