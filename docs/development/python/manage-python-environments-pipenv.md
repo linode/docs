@@ -19,7 +19,7 @@ Pipenv, Python's officially recommended package management tool, combines Pip an
 
 ### Install Pipenv
 
-You will need to have Python installed on your system to work wth Pipenv.
+You will need to have Python installed on your system before installing Pipenv.
 
 If you are using Ubuntu 17.10 or higher, you can install Pipenv directly from the Pypa ppa:
 
