@@ -32,4 +32,4 @@ Thumbs.dbi
 *.elc
 .\#*
 *.sublime-workspace
-*.idea
+**.idea
