@@ -146,7 +146,7 @@ servers:
 
     Each server block has a label: In the case of the example, `lobby` or `games`. These can be any word you want, but it's important that they are descriptive, as they will be used by the players to change servers.
 
-    So that players can recognise your server more easily in their server list, you can set a custom message. Change the line that says `motd: 'Just another Bungeecord - Forced Host'` and put your custom message between the quotes. You can use Minecraft color codes here.
+    So that players can recognize your server more easily in their server list, you can set a custom message. Change the line that says `motd: 'Just another Bungeecord - Forced Host'` and put your custom message between the quotes. You can use Minecraft color codes here.
 
     To allow for UUIDs to be correct in the Spigot servers, you should also ensure that you set `ip_forward` to `true`.
 
