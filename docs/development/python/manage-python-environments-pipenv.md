@@ -15,7 +15,9 @@ title: Manage Python Packages and Virtual Environments with Pipenv
 
 ## What is Pipenv?
 
-Most Python users are familiar with Pip and Virtualenv,
+Most Python users are familiar with Pip and Virtualenv, two extremely popular and useful tools for installing Python packages and managing virtual environments, respectively. The two are often used together in a well-established workflow: create a virtual environment for each new project, activate it, install packages for the project's dependencies, then deactivate the virtual environment when switching to a different project. In addition, dependencies are usually tracked in a `requirements.txt` file so that new developers or users can install the required packages to work with the project.
+
+This workflow helps Python developers avoid dependency conflicts (when two projects rely on different versions of the same package) and coordinate setups between developers. However, the fact that the workflow relies on two separate tools results in a complicated process that can make managing environments and dependencies cumbersome. Pipenv, Python's officially recommended package management tool, aims to combine Pip and Virtualenv while also incorporating elements from successful package management tools for other langugages, such as NPM.
 
 ## Installation
 
@@ -51,7 +53,7 @@ Instead of using a `requirements.txt` file, Pipenv uses a **Pipfile**.
 
 {{< /output >}}
 
-    If you check the contents of the directory with `ls`, you will see that both a `Pipfile` and `Pipfile.lock` were created automatically. The Pipfile contains a list of all installed packages for this environment, and `Pipfile.lock` contains a hash of the exact versions used, ensuring that all builds made from this environment will be deterministic.
+    If you check the contents of the directory with `ls`, you will see that both a `Pipfile` and `Pipfile.lock` have been created automatically. The Pipfile contains a list of all installed packages in the environment, and `Pipfile.lock` contains a hash of the exact versions used, ensuring that all builds made from this environment will be deterministic.
 
 3.   Open the `Pipfile`:
 
