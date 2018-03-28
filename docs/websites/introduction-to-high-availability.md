@@ -96,16 +96,6 @@ While GlusterFS handles monitoring and failover itself, a separate service is ne
 
 Keepalived uses *virtual router redundancy protocol*, or VRRP, to automatically assign the failover IP address to any of the database nodes. The keepalived service uses user-defined rules to monitor for a certain number of failures by a database node. When that failure threshold is met, keepalived assigns the failover IP address to a different node so that there is no interruption to the fulfillment of requests while the first node waits to be fixed.
 
-{{< note >}}
-A clarification on terminology:
-
-Virtual IP - an IP address that is does not correspond to a physical machine
-
-Failover IP - an IP address that can be switched from one server to another
-
-Floating IP - an IP address dynamically allocated to a virtual machine instance
-{{< /note >}}
-
 ### Load Balancing
 
 The load balancing component of a high availability system is one of its most important components, acting as the first barrier to handle traffic from users to the application servers. Without a load balancer, your site would be hosted on three application servers that have no way of assigning priority among themselves.
