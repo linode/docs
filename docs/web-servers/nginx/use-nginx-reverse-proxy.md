@@ -28,7 +28,7 @@ This guide uses a simple Node.js app to demonstrate how to configure NGINX as a 
 
 ### Install Node.js
 
-{{< content "install-nodejs-ppa.md" >}}
+{{< content "install-nodejs-nodesource.md" >}}
 
 ### Configure the App
 
