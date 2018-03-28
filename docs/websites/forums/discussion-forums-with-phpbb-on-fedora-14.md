@@ -29,10 +29,10 @@ Before installing phpBB, make sure your system is up to date and install the `ph
 
 After you have installed the packages above, you will need to update your php configuration to specify a timezone. You will want to modify or add the date.timezone option in `/etc/php.ini` to reflect the default timezone for your forum. For example:
 
-{{< file-excerpt "/etc/php.ini" ini >}}
+{{< file "/etc/php.ini" ini >}}
 date.timezone = 'America/New_York'
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The php.net documentation includes a list of [timezone names](http://www.php.net/manual/en/timezones.php) recognized by php. After updating your php configuration you will need to restart Apache by Issuing the following command:

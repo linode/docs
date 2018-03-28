@@ -79,10 +79,10 @@ Installing the Oracle XE GPG key ensures that you will get verified Oracle softw
 
 Add the following repository to your `/etc/apt/sources.list` file:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 deb http://oss.oracle.com/debian unstable main non-free
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Since you added a new repository, issue the following commands to update your package lists and install any outstanding updates:
@@ -128,7 +128,7 @@ First, you'll need to locate the `tnsnames.ora` file. Issue the following comman
 
 You may find more than one location for this file; ignore the version located in a "samples" directory if it's listed. Edit `tnsnames.ora`, setting a valid entry for "HOST" to match the one assigned to your Linode's hostname ("oracle" in our example).
 
-{{< file-excerpt "tnsnames.ora" >}}
+{{< file "tnsnames.ora" >}}
 XE =
   (DESCRIPTIONx =
     (ADDRESS = (PROTOCOL = TCP)(HOST = oracle)(PORT = 1521))
@@ -137,12 +137,12 @@ XE =
       (SERVICE_NAME = XE)
     )
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Next, edit the `listener.ora` file from the same directory:
 
-{{< file-excerpt "listener.ora" >}}
+{{< file "listener.ora" >}}
 LISTENER =
   (DESCRIPTION_LIST =
     (DESCRIPTION =
@@ -151,7 +151,7 @@ LISTENER =
     )
   )
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 If you had to modify either file, restart Oracle by issuing the following command:

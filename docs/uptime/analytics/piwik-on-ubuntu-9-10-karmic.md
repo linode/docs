@@ -37,10 +37,10 @@ Piwik requires a few additional dependencies beyond LAMP fundamentals. Most impo
 
 By default, PHP's `memory_limit` value is set to 64 megabytes. For "medium to high traffic" sites, Piwik's creators recommend setting this value to 128 megabytes. If you choose to follow this recommendation edit the `php.ini` file so `memory_limit` setting is as follows:
 
-{{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+{{< file "/etc/php5/apache2/php.ini" ini >}}
 memory_limit = 128M
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Restart the Web Server

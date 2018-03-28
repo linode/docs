@@ -35,11 +35,11 @@ If you would like to run the Sun Microsystems implementation of Java you must fi
 
 Add the following two lines to your `sources.list` list:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 deb http://us.archive.ubuntu.com/ubuntu/ jaunty multiverse
 deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty multiverse
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Update apt to get the necessary package lists:

@@ -197,12 +197,12 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
 2.  Open `/etc/php5/apache2/php.ini` in your text editor, and edit the following values. These settings are optimized for the 2GB Linode:
 
-    {{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+    {{< file "/etc/php5/apache2/php.ini" ini >}}
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
 error_log = /var/log/php/error.log
 max_input_time = 30
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}

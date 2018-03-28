@@ -91,7 +91,7 @@ end
 
 3.  Define the Linode provider:
 
-    {{< file-excerpt "~/vagrant-linode/Vagrantfile" ruby >}}
+    {{< file "~/vagrant-linode/Vagrantfile" ruby >}}
 Vagrant.configure('2') do |config|
 
   ...
@@ -105,14 +105,14 @@ Vagrant.configure('2') do |config|
 
 end
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Lines 6 defines the provider, and lines 7 and 8 define the *box*. Boxes are packages that include the basic requirements for a Vagrant environment to function. The supplied box is the `linode` box, created as part of the plugin. Replace the `API-KEY` with the key generated [above](#prerequisites).
 
 4.  Choose your Linode's settings:
 
-    {{< file-excerpt "~/vagrant-linode/Vagrantfile" ruby >}}
+    {{< file "~/vagrant-linode/Vagrantfile" ruby >}}
 Vagrant.configure('2') do |config|
 
   ...
@@ -132,7 +132,7 @@ Vagrant.configure('2') do |config|
 
 end
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     In this instance, a 2GB Ubuntu 14.04 LTS Linode is being created in the Newark data center. The `provider.label` is the name that the Linode will show up as in the Linode Manager.
@@ -170,7 +170,7 @@ apt-get update && apt-get upgrade -y
 
 2.  Within the Vagrantfile, call to the shell script you just created by adding the `config.vm.provision` method:
 
-    {{< file-excerpt "~/vagrant-linode/Vagrantfile" ruby >}}
+    {{< file "~/vagrant-linode/Vagrantfile" ruby >}}
 Vagrant.configure('2') do |config|
 
 ...
@@ -180,7 +180,7 @@ Vagrant.configure('2') do |config|
 
 end
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Install Apache and Sync Files
@@ -207,7 +207,7 @@ service apache2 reload
 
 2.  Add the shell script provisioner method to your Vagrantfile, under the line that references `setup.sh`:
 
-    {{< file-excerpt "~/vagrant-linode/Vagrantfile" ruby >}}
+    {{< file "~/vagrant-linode/Vagrantfile" ruby >}}
 Vagrant.configure('2') do |config|
 
 ...
@@ -218,7 +218,7 @@ Vagrant.configure('2') do |config|
 
 end
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Create a new directory for Apache configuration files:
@@ -258,7 +258,7 @@ Listen 6789
 
 6.  Return to the Vagrantfile, and use the `config.vm.synced_folder` method to sync the local directories with directories on the server:
 
-    {{< file-excerpt "~/vagrant-linode/Vagrantfile" ruby >}}
+    {{< file "~/vagrant-linode/Vagrantfile" ruby >}}
 Vagrant.configure('2') do |config|
 
   ...
@@ -270,7 +270,7 @@ Vagrant.configure('2') do |config|
 
 end
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     * Line 5 disables syncing for the root folders.

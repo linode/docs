@@ -78,10 +78,10 @@ For a CentOS system follow the instructions below:
 
 2.  Change the `enabled=` variable to **0**:
 
-    {{< file-excerpt "/etc/yum/pluginconf.d/fastestmirror.conf" >}}
+    {{< file "/etc/yum/pluginconf.d/fastestmirror.conf" >}}
 enabled=0
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Save and exit the `fastestmirror.conf` file.
 4.  Edit the `CentOS-Base.repo` file with the following command:

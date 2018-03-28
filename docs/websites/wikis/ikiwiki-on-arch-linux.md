@@ -89,15 +89,15 @@ Issue the following command to install Apache:
 
 Edit the `/etc/httpd/conf/httpd.conf` file to uncomment or add the following line:
 
-{{< file-excerpt "/etc/httpd/conf/extra/httpd-vhosts.conf" apache >}}
+{{< file "/etc/httpd/conf/extra/httpd-vhosts.conf" apache >}}
 Include conf/extra/httpd-vhosts.conf
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Replace the existing example `VirtualHost` configuration examples with one that resembles the following. Modify this example as needed to suit the needs of your deployment:
 
-{{< file-excerpt "/etc/httpd/conf/extra/httpd-vhosts.conf" apache >}}
+{{< file "/etc/httpd/conf/extra/httpd-vhosts.conf" apache >}}
 <VirtualHost *:80>
         ServerAdmin username@example.com
         ServerName example.com
@@ -113,7 +113,7 @@ Replace the existing example `VirtualHost` configuration examples with one that 
     </Directory>
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following commands to create the required directories and to restart the web server:
@@ -140,13 +140,13 @@ You will want to add the `fcgiwrap` daemon to the `DAEMONS=()` array at the end 
 
 Add an `include` directive to the `/etc/nginx/conf/nginx.conf` file so that nginx will read configuration files in the `/etc/nginx/conf.d/` directory. Use the following form:
 
-{{< file-excerpt "/etc/nginx/conf/nginx.conf" nginx >}}
+{{< file "/etc/nginx/conf/nginx.conf" nginx >}}
 http {
     include       /etc/nginx/conf.d/*.conf;
     include       mime.types;
     default_type  application/octet-stream;
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following command to create a `conf.d/` directory:
@@ -155,7 +155,7 @@ Issue the following command to create a `conf.d/` directory:
 
 Create a virtual host by inserting a version of the following excerpt into your nginx configuration. Modify this example for the needs of your deployment:
 
-{{< file-excerpt "/etc/nginx/conf.d/vhost.conf" nginx >}}
+{{< file "/etc/nginx/conf.d/vhost.conf" nginx >}}
 server {
     listen   80;
     server_name www.example.com example.com;
@@ -176,7 +176,7 @@ server {
     }
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following commands to create the required directories and to restart the web server:
@@ -203,7 +203,7 @@ Issue the following commands to create a `~/wiki/` directory as a git repository
 
 Add the following excerpt to `~/wiki/.git/config`:
 
-{{< file-excerpt "~/wiki/.git/config" >}}
+{{< file "~/wiki/.git/config" >}}
 [remote "origin"]
     fetch = +refs/heads/*:refs/remotes/origin/*
     url = /srv/git/wiki.git
@@ -212,7 +212,7 @@ Add the following excerpt to `~/wiki/.git/config`:
     remote = origin
     merge = refs/heads/master
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Configure the `username` user's identity within git. Modify the following model for your user:

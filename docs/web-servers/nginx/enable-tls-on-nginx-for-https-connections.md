@@ -50,13 +50,13 @@ Directives you want NGINX to apply to all sites on your server should go into th
 
 If you have multiple sites with their own HTTPS credentials, and/or are using a setup with both HTTP and HTTPS sites, move the `ssl_certificate` and `ssl_certificate_key` directives into the `server` block for the appropriate site (`.pem` format can also be used).
 
-{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+{{< file "/etc/nginx/nginx.conf" nginx >}}
 http {
     ssl_certificate     /root/certs/example.com/example.com.crt;
     ssl_certificate_key /root/certs/example.com/example.com.key;
     ssl_ciphers         EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH;
     ssl_protocols       TLSv1.1 TLSv1.2;
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ## Configure a Single HTTPS Site
 
@@ -68,14 +68,14 @@ With only one site to work with, simply use the `http` block configuration [in t
 
     This is only a starting step, you likely wouldn't want to use this configuration without HSTS or redirecting HTTP requests to port 443. We'll get to those in part 4 of this series.
 
-    {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
     listen              443 ssl default_server;
     listen              [::]:443 ssl default_server ;
     server_name         example.com www.example.com;
     root                /var/www/example.com;
     }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Reload your configuration after making changes to NGINX's config files:
 
@@ -91,23 +91,23 @@ In this scenario, the directives in the `http` block given in the [Configure the
 
 1.  The sites `example1.com`, `example2.com` are served using the same certificate and key we placed into `/root/certs/example.com/` [earlier](#credentials-storage-location).
 
-    {{< file-excerpt "/etc/nginx/conf.d/example1.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/example1.com.conf" nginx >}}
 server {
     listen              203.0.113.30:443 ssl;
     listen              [2001:DB8::5]:443 ssl;
     server_name         example1.com www.example1.com;
     root                /var/www/example1.com;
     }
-{{< /file-excerpt >}}
+{{< /file >}}
 
-    {{< file-excerpt "/etc/nginx/conf.d/example2.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/example2.com.conf" nginx >}}
 server {
     listen              203.0.113.40:443 ssl;
     listen              [2001:DB8::6]:443 ssl;
     server_name         example2.com www.example2.com;
     root                /var/www/example2.com;
     }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Reload your configuration:
 
@@ -131,18 +131,18 @@ Scenario: You have two (or more) completely independent websites you want to ser
 
 2.  Configure the `http` block of your `nginx.conf` as shown [above](#configure-the-http-block), but **without the certificate and key locations**. Those will instead go in the individual site's `server` block since the locations are different for each site. The result should be:
 
-    {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+    {{< file "/etc/nginx/nginx.conf" nginx >}}
 http {
     ssl_ciphers         EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH;
     ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
     ssl_session_cache   shared:SSL:10m;
     ssl_session_timeout 10m;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Add the `ssl_certificate` and `ssl_certificate_key` directives to each `server` block with the correct path to each site's certificate and key file.
 
-    {{< file-excerpt "/etc/nginx/conf.d/example1.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/example1.com.conf" nginx >}}
 server {
     listen              203.0.113.55:443 ssl;
     listen              [2001:DB8::7]:443 ssl;
@@ -152,9 +152,9 @@ server {
     ssl_certificate     /root/certs/example.com/example1.com.crt;
     ssl_certificate_key /root/certs/example.com/example1.com.key;
     }
-{{< /file-excerpt >}}
+{{< /file >}}
 
-    {{< file-excerpt "/etc/nginx/conf.d/example2.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/example2.com.conf" nginx >}}
 server {
     listen              203.0.113.65:443 ssl;
     listen              [2001:DB8::8]:443 ssl;
@@ -164,7 +164,7 @@ server {
     ssl_certificate     /root/certs/example2.com/example.com.crt;
     ssl_certificate_key /root/certs/example2.com/example.com.key;
     }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 4.  Reload your configuration:
 

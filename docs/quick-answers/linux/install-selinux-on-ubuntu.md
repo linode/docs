@@ -64,7 +64,7 @@ If you receive the error message, `setenforce: SELinux is disabled`, check if yo
 
 3.  To maintain `enforcing` mode after reboot, modify the SELinux configuration file in `/etc/selinux/config` from the default `SELINUX=permissive` to `SELINUX=enforcing`:
 
-    {{< file-excerpt "/etc/selinx/config" >}}
+    {{< file "/etc/selinx/config" >}}
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
 # enforcing - SELinux security policy is enforced.
@@ -72,7 +72,7 @@ If you receive the error message, `setenforce: SELinux is disabled`, check if yo
 # disabled - No SELinux policy is loaded.
 SELINUX=enforcing
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ## Next Steps

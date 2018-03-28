@@ -22,7 +22,7 @@ We assume you already have Apache running on your Linode; if you don't, you may 
 
 We'll edit the file `/etc/apache2/mods-available/proxy.conf` as follows:
 
-{{< file-excerpt "/etc/apache2/mods-available/proxy.conf" apache >}}
+{{< file "/etc/apache2/mods-available/proxy.conf" apache >}}
 <IfModule mod_proxy.c>
         # [...]
 
@@ -40,7 +40,7 @@ We'll edit the file `/etc/apache2/mods-available/proxy.conf` as follows:
 
 </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This turns on proxy support in the module configuration. **Please note** the warning regarding the `ProxyRequests` directive. It should be "off" in your configuration. Next, we'll issue the following commands:

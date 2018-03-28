@@ -122,9 +122,9 @@ Exit the MySQL shell by issuing the following command:
 
 Check that MySQL is set up to bind to localhost (127.0.0.1) by looking at the file `/etc/mysql/my.cnf`. You should have the following line in the configuration file:
 
-{{< file-excerpt >}}
+{{< file >}}
 /etc/mysql/my.cnf
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > bind-address = 127.0.0.1
 
@@ -294,9 +294,9 @@ This completes configuration for `saslauthd`. Next, we'll configure Courier to u
 
 Edit the file `/etc/courier/authdaemonrc`, changing the "authmodulelist" line to read as follows.
 
-{{< file-excerpt >}}
+{{< file >}}
 /etc/courier/authdaemonrc
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > authmodulelist="authmysql"
 

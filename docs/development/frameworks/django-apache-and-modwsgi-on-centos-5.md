@@ -105,7 +105,7 @@ You must append the path of your application to the system path as above. Additi
 
 Consider the following example virtual host configuration:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost example.com:80>
    ServerName example.com
    ServerAlias www.example.com
@@ -128,7 +128,7 @@ Consider the following example virtual host configuration:
    CustomLog /srv/www/example.com/logs/access.log combined
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example, the `WSGIScriptAlias` directive tells Apache that for this virtual host, all requests below `/` should be handled by the WSGI script specified. In the directory block that follows, we allow Apache to serve these requests. Finally, the series of four `Alias` directives allow Apache to serve the `robots.txt` and `favicon.ico` files as well as all resources beneath the `/images` and `/static` locations, directly from the `DocumentRoot` without engaging the WSGI application. You can add as many Alias directives as you need to.
@@ -137,10 +137,10 @@ In this example, the `WSGIScriptAlias` directive tells Apache that for this virt
 
 Edit the `/etc/httpd/conf.d/wsgi.conf` file to enable the `mod_wsgi` by uncommenting or adding the following line:
 
-{{< file-excerpt "/etc/httpd/conf.d/wsgi.conf" >}}
+{{< file "/etc/httpd/conf.d/wsgi.conf" >}}
 LoadModule wsgi_module modules/mod_wsgi.so
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 When you have successfully configured your Apache virtual host, and enabled the required module, issue the following command to restart the web server:

@@ -117,10 +117,10 @@ Exit the MySQL shell by issuing the following command:
 
 Check that MySQL is set up to bind to localhost (127.0.0.1) by looking at the file `/etc/mysql/my.cnf`. You should have the following line in the configuration file:
 
-{{< file-excerpt "/etc/mysql/my.cnf" >}}
+{{< file "/etc/mysql/my.cnf" >}}
 bind-address = 127.0.0.1
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This is required for Postfix to be able to communicate with the database server. If you have MySQL set up to run on another IP address (such as an internal IP), you will need to substitute this IP address in place of `127.0.0.1` in later Postfix configuration steps. Please note that it is *not* advisable to run MySQL on a publicly-accessible IP address.

@@ -50,7 +50,7 @@ Consider the [Configure Virtual Hosting](/docs/email/mailman/manage-email-lists-
 
 During the list creation process, Mailman will prompt you for the administrators email address and an initial mailman password. Mailman will then produce the following output that you will want to include in your `/etc/aliases` file.
 
-{{< file-excerpt "/etc/aliases" >}}
+{{< file "/etc/aliases" >}}
 ## mailman mailing list
 mailman:              "|/var/lib/mailman/mail/mailman post mailman"
 mailman-admin:        "|/var/lib/mailman/mail/mailman admin mailman"
@@ -63,7 +63,7 @@ mailman-request:      "|/var/lib/mailman/mail/mailman request mailman"
 mailman-subscribe:    "|/var/lib/mailman/mail/mailman subscribe mailman"
 mailman-unsubscribe:  "|/var/lib/mailman/mail/mailman unsubscribe mailman"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Press the return key to complete the installation and edit the `/etc/aliases` file as needed. After you've edited the `aliases` file issue the following command to inform postfix of these new addresses:
@@ -92,31 +92,31 @@ When constructing lists using the method described above, you must be careful to
 
 Complete the following steps after installing `postfix` and `mailman` by way of `apt-get`. However, complete the following instructions before creating the initial "mailman" list. Begin by adding the following lines to the `/etc/postfix/main.cf` file:
 
-{{< file-excerpt "/etc/postfix/main.cf" >}}
+{{< file "/etc/postfix/main.cf" >}}
 relay_domains = $mydestination, lists.example.com
 relay_recipient_maps = hash:/var/lib/mailman/data/virtual-mailman
 transport_maps = hash:/etc/postfix/transport
 mailman_destination_recipient_limit = 1
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/dns-guides/introduction-to-dns/#mx) for both domains that you want to receive email with. Additionally, ensure the following lines are included your `/etc/postfix/master.cf` file:
 
-{{< file-excerpt "/etc/postfix/master.cf" >}}
+{{< file "/etc/postfix/master.cf" >}}
 mailman   unix  -       n       n       -       -       pipe
 flags=FR user=list argv=/usr/lib/mailman/bin/postfix-to-mailman.py
 ${nexthop} ${user}
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 These lines enable postfix to hand off email to Mailman for processing directly. Add the following line to the `/etc/postfix/transport` file, modifying `lists.example.com` as needed.
 
-{{< file-excerpt "/etc/postfix/transport" >}}
+{{< file "/etc/postfix/transport" >}}
 lists.example.com mailman:
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Finally, modify the `/etc/mailman/mm_cfg.py` file to set the following values. After you've edited the `/etc/postfix/transport` file, and after every successive edit of this file, issue the following command to rebuild postfix's transport database:
@@ -125,18 +125,18 @@ Finally, modify the `/etc/mailman/mm_cfg.py` file to set the following values. A
 
 This controls how Mailman processes the mail that it receives from postfix. Continue configuring Mailman by editing following file to update Mailman to interact properly with postfix:
 
-{{< file-excerpt "/etc/mailman/mm_cfg.py" >}}
+{{< file "/etc/mailman/mm_cfg.py" >}}
 MTA = 'Postfix'
 POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com']
 # alias for postmaster, abuse and mailer-daemon
 DEB_LISTMASTER = 'postmaster@example.com'
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Ensure that the fields `DEFAULT_EMAIL_HOST` and `DEFAULT_URL_HOST` match the sub-domain you are using for lists (e.g. `lists.example.com`) as follows:
 
-{{< file-excerpt "/etc/mailman/mm_cfg.py" >}}
+{{< file "/etc/mailman/mm_cfg.py" >}}
 #-------------------------------------------------------------
 # Default domain for email addresses of newly created MLs
 DEFAULT_EMAIL_HOST = 'lists.example.com'
@@ -147,18 +147,18 @@ DEFAULT_URL_HOST   = 'lists.example.com'
 # Required when setting any of its arguments.
 add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 If you need to configure additional domains for use, ensure that you've made the proper additions to the `relay_domains` field in the to the `POSTFIX_STYLE_VIRTUAL_DOMAINS` line and create additional `add_virtualhost` calls in the following form for every new domain:
 
-{{< file-excerpt "/etc/mailman/mm_cfg.py" >}}
+{{< file "/etc/mailman/mm_cfg.py" >}}
 add_virtualhost('lists.example.org', 'lists.example.org')
 
 # Modify the following line
 POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com', 'lists.example.org']
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Ensure that your domains have valid MX and [A Records](/docs/dns-guides/introduction-to-dns/#types-of-dns-records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart Postfix, and start Mailman for the first time:

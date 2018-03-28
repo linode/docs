@@ -24,11 +24,11 @@ If you haven't done so already, please follow the steps outlined in our [getting
 
 Openfire requires a Java runtime engine (JRE). This tutorial uses the version provided by Sun Microsystems. Please note that although alternate Java runtime engines are available, Openfire may not work well with them. Add the `partner` package repository to your `/etc/apt/sources.list` file, as shown below:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 # Partner repository
 deb http://archive.canonical.com/ lucid partner
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 If you had to add the `partner` repository to your sources, issue the following command to update your package database:
@@ -72,10 +72,10 @@ Install the software using `dpkg` as follows:
 
 Next, edit the configuration file `/etc/openfire/openfire.xml`, inserting your Linode's public IP address in the `<interface>` section, and removing the `<!-- -->` comment markers that surround this section.
 
-{{< file-excerpt "/etc/openfire/openfire.xml" xml >}}
+{{< file "/etc/openfire/openfire.xml" xml >}}
 <interface>12.34.56.78</interface>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Restart Openfire with the following command:

@@ -40,7 +40,7 @@ Search engine results rank HTTPS-capable websites higher than sites available on
 
 1.  Assuming you already have a working HTTPS connection with a site configuration file similar to the SSL `server` block below (the second one), add the HTTP `server` block (the first one) above it as shown:
 
-    {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
     listen         80;
     server_name    example.com www.example.com;
@@ -54,7 +54,7 @@ server {
     server_name    example.com www.example.com;
     root           /var/www/example.com;
     }
-{{< /file-excerpt >}}
+{{< /file >}}
 
     The [return ](https://nginx.org/en/docs/http/ngx_http_rewrite_module.html#return) directives will be what handles the redirects. Whether to include directives for both `example.com` or `www.example.com`, depends on which domain your certificate was issued for, if not both. (The [NGINX docs](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#taxing-rewrites) explain why you should use `return 301` instead of `rewrite`).
 
@@ -76,9 +76,9 @@ For more information on HSTS in NGINX, [see NGINX's blog](https://www.nginx.com/
 
 1.  Add the HSTS header directive to the `http` block of `/etc/nginx/nginx.conf`. If you choose to put it elsewhere, remember that HTTP response header fields are [not inherited](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/#http-response-header-fields) from parent blocks.
 
-    {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+    {{< file "/etc/nginx/nginx.conf" nginx >}}
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Reload NGINX:
 
@@ -122,26 +122,26 @@ If you have selected a good cipher suite combination with NGINX's `ssl_ciphers` 
 
 Add this to the rest of your *ssl_* directives, be they in the `http` of `/etc/nginx/nginx.conf`, or an HTTPS site's `server` block:
 
-{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+{{< file "/etc/nginx/nginx.conf" nginx >}}
 ssl_prefer_server_ciphers on;
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ## Increase Keepalive Duration
 
 SSL/TLS handshakes use a non-negligible amount of CPU power, so minimizing the amount of handshakes which connecting clients need to perform will reduce your system's processor use. One way to do this is by increasing the duration of keepalive connections from 60 to 75 seconds. This is safe for HTTP and HTTPS, so can be added to the `http` block of `/etc/nginx/nginx.conf` or edited if already present.
 
-{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+{{< file "/etc/nginx/nginx.conf" nginx >}}
 keepalive_timeout 75;
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ## Increase TLS Session Duration
 
 Maintain a connected client's SSL/TLS session for 10 minutes before needing to re-negotiate the connection. Add these to the rest of your *ssl_* directives, be they in the `http` or an HTTPS site's `server` block:
 
-{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+{{< file "/etc/nginx/nginx.conf" nginx >}}
 ssl_session_cache shared:SSL:10m;
 ssl_session_timeout 10m;
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ## Enable HTTP/2 Support
@@ -173,11 +173,11 @@ When enabled, NGINX will make [OCSP](https://en.wikipedia.org/wiki/Online_Certif
 
 1.  Add the following directives to your `nginx.conf` file, or to the `server` block of your HTTPS site. If you have been following this series, then your certificates are located at `/root/certs/example.com/`.
 
-    {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+    {{< file "/etc/nginx/nginx.conf" nginx >}}
 ssl_stapling on;
 ssl_stapling_verify on;
 ssl_trusted_certificate /root/certs/example.com/cert.crt;
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Reload NGINX:
 

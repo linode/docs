@@ -71,10 +71,10 @@ In this section, you will install Postfix and set the domain and hostname.
 
 5.  Make sure that the **myhostname** parameter is configured with your server's FQDN:
 
-    {{< file-excerpt "/etc/postfix/main.cf" >}}
+    {{< file "/etc/postfix/main.cf" >}}
 myhostname = fqdn.example.com
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ## Configuring SMTP Usernames and Passwords
@@ -129,11 +129,11 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use the e
 
 2.  Update the **relayhost** parameter to show your external SMTP relay host. **Important**: If you specified a non-default TCP port in the `sasl_passwd` file, then you must use the same port when configuring the **relayhost** parameter.
 
-    {{< file-excerpt "/etc/postfix/main.cf" >}}
+    {{< file "/etc/postfix/main.cf" >}}
 # specify SMTP relay host
 relayhost = [mail.isp.example]:587
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}
@@ -142,7 +142,7 @@ Check the appropriate [Google Apps](/docs/email/postfix/configure-postfix-to-sen
 
 3.  At the end of the file, add the following parameters to enable authentication:
 
-    {{< file-excerpt "/etc/postfix/main.cf" >}}
+    {{< file "/etc/postfix/main.cf" >}}
 # enable SASL authentication
 smtp_sasl_auth_enable = yes
 # disallow methods that allow anonymous authentication.
@@ -154,7 +154,7 @@ smtp_use_tls = yes
 # where to find CA certificates
 smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  Save your changes.

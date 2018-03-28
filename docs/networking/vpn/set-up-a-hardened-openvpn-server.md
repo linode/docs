@@ -227,7 +227,7 @@ The rest of this guide will use EasyRSA.
 
 4.  The `vars` file created in `/ca` contains presets used by EasyRSA. Here you can specify a distinguished name for your certificate authority that will be  passed to client certificates. Changing these fields is optional, and you can always input them manually during certificate creation, but setting them here creates less work during client certificate creation.
 
-    {{< file-excerpt "~/ca/vars" aconf >}}
+    {{< file "~/ca/vars" aconf >}}
 # These are the default values for fields
 # which will be placed in the certificate.
 # Don't leave any of these fields blank.
@@ -238,7 +238,7 @@ export KEY_ORG="Fort-Funston"
 export KEY_EMAIL="me@myhost.mydomain"
 export KEY_OU="MyOrganizationalUnit"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 5.  From `~/ca`, [source](http://stackoverflow.com/a/9326746) the `vars` script:

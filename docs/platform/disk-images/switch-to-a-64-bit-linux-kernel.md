@@ -67,10 +67,10 @@ Now all future software installed from Yum will use the correct CPU architecture
 
 The Arch package manager, Pacman, chooses what architecture-specific builds to download based on the kernel. After switching to the 64-bit kernel, adjust this setting in `/etc/pacman.conf`:
 
-{{< file-excerpt "/etc/pacman.conf" >}}
+{{< file "/etc/pacman.conf" >}}
 Architecture=x86_64
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Gentoo

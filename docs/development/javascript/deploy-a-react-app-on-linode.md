@@ -80,7 +80,7 @@ The steps in this section should be performed on your Linode.
 
     Modify the line starting with `root` in the server block for your site:
 
-    {{< file-excerpt "/etc/nginx/conf.d/myapp.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/myapp.conf" nginx >}}
 server {
     listen 80;
     listen [::]:80;
@@ -89,7 +89,7 @@ server {
         index index.html index.htm;
 
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Restart the web server to apply the changes. Use whichever command applies to your web server:
 

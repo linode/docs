@@ -78,7 +78,7 @@ Once the configuration script has finished, you will need to compile Nagios and 
 
 Begin by editing the `/usr/local/nagios/etc/objects/contacts.cfg` file's email field, according to the example below:
 
-{{< file-excerpt "/usr/local/nagios/etc/objects/contacts.cfg" >}}
+{{< file "/usr/local/nagios/etc/objects/contacts.cfg" >}}
 define contact{
     contact_name nagiosadmin ; Short name of user use generic-contact
     ; Inherit default values from generic-contact template (defined above)
@@ -86,7 +86,7 @@ define contact{
     email nagiosuser@example.com> ; <<***** CHANGE THIS TO YOUR EMAIL ADDRESS ******
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following commands to configure the web interface for Nagios:

@@ -51,7 +51,7 @@ You'll also need to make some modifications to your `php.ini` file. Here's how:
 
 2.  If necessary, change the settings in that file, as shown below:
 
-    {{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+    {{< file "/etc/php5/apache2/php.ini" ini >}}
 memory_limit = 128M
 post_max_size = 32M
 upload_max_filesize = 16M
@@ -60,7 +60,7 @@ allow_url_fopen = On
 allow_url_include = Off
 magic_quotes_gpc = Off
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Save the changes to the file by pressing Control-X, pressing Y, and then pressing Enter.

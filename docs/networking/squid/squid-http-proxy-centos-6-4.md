@@ -43,10 +43,10 @@ This section covers the easiest way to use Squid as an HTTP proxy, using only th
 
 1.  Edit the Squid configuration file and add the following lines:
 
-    {{< file-excerpt "/etc/squid/squid.conf" >}}
+    {{< file "/etc/squid/squid.conf" >}}
 acl client src 12.34.56.78 # Home IP http\_access allow client
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Be sure to replace **client** with a name identifying the connecting computer, and **12.34.56.78** with your local IP address. The comment `# Home IP` isn't required, but comments can be used to help identify clients.
@@ -85,13 +85,13 @@ The following configuration allows for authenticated access to the Squid proxy s
 
 4.  Edit the Squid configuration file and add the following lines:
 
-	{{< file-excerpt "/etc/squid/squid.conf" >}}
+	{{< file "/etc/squid/squid.conf" >}}
 auth_param basic program /usr/lib64/squid/ncsa_auth /etc/squid/squid_passwd
 acl ncsa_users proxy_auth REQUIRED
 http_access allow ncsa_users
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 5.  Once you've saved and exited the file, restart Squid:
 
@@ -100,9 +100,9 @@ http_access allow ncsa_users
 6.  At this point, you can configure your local browser or operating system's network settings to use your Linode as an HTTP proxy. You will need to specify that the server requires authentication, and provide the username and password. How to do this will depend on your choice of OS and browser. Once you've made the settings change, test the connection by pointing your browser at a website that tells you your IP address, such as [ifconfig](http://ifconfig.me), [What is my IP](http://www.whatismyip.com/), or by Googling [What is my ip](https://www.google.com/search?q=what+is+my+ip).
 7.  To remove a user's access to the proxy, you must delete their entry in the `squid_passwd` file. Each user is represented in the file on a single line in the format of `user:passwordhash` :
 
-	{{< file-excerpt "/etc/squid/squid\\_passwd" >}}
+	{{< file "/etc/squid/squid\\_passwd" >}}
 user1:gh48gfno user2:9b83v5hd
-{{< /file-excerpt >}}
+{{< /file >}}
 
 	If you are using Nano, the command `Control+k` will remove the entire line where the cursor rests. Once you've saved and exited the file, restart Squid:
 
@@ -112,7 +112,7 @@ user1:gh48gfno user2:9b83v5hd
 
 In order to mask your IP address from servers you connect to, you will need to add the following lines to the Squid configuration file.
 
-{{< file-excerpt "/etc/squid/squid.conf" >}}
+{{< file "/etc/squid/squid.conf" >}}
 forwarded_for off
 request_header_access Allow allow all
 request_header_access Authorization allow all
@@ -144,7 +144,7 @@ request_header_access User-Agent allow all
 request_header_access Cookie allow all
 request_header_access All deny all
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Once you've saved and exited the file, restart Squid:

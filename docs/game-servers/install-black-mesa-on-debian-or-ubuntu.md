@@ -97,7 +97,7 @@ At the time of writing this guide, Black Mesa has yet to share with customers an
 ### Server.cfg
 The **server.cfg** file contains the settings of your server. It is not needed because you can start the server every time by specifying desired values using parameters.
 
-{{< file-excerpt "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/server.cfg" java >}}
+{{< file "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/server.cfg" java >}}
 // Black Mesa server.cfg file
 hostname "Black Mesa: Deathmatch" --> Your server's name.
 mp_timelimit 900                  --> Round time limit.
@@ -111,7 +111,7 @@ mp_warmup_time 30                 --> Time before the match starts.
 // sv_logecho 1                   --> Prints logs in the console (0 = disabled|1 = enabled).
 // sv_logfile 1                   --> Saves the logs to a file (0 = disabled|1 = enabled).
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 {{< caution >}}
@@ -172,7 +172,7 @@ You can find more maps in the [Steam Workshop](http://steamcommunity.com/worksho
 When a match ends, the server starts a new one with the next map in the rotation list.
 The map rotation list is in **mapcycle.txt**:
 
-{{< file-excerpt "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/mapcycle.txt" resource >}}
+{{< file "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/mapcycle.txt" resource >}}
 dm_bounce
 dm_gasworks
 dm_lambdabunker
@@ -181,7 +181,7 @@ dm_subtransit
 dm_undertow
 dm_custom
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 To put a custom map in the rotation, simply write its name; for example: if you have the map **dm_custom.bsp**, you need to write **dm_custom** inside **mapcycle.txt**.

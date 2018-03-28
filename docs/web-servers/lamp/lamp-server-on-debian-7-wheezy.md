@@ -50,7 +50,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
-    {{< file-excerpt "/etc/apache2/apache2.conf" aconf >}}
+    {{< file "/etc/apache2/apache2.conf" aconf >}}
 KeepAlive Off
 
 <IfModule mpm_prefork_module>
@@ -61,7 +61,7 @@ KeepAlive Off
         MaxConnectionsPerChild  4500
 </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Configure Name-Based Virtual Hosts
@@ -156,12 +156,12 @@ With Apache and MySQL installed, you are now ready to move on to installing PHP.
 
 2.  Once PHP5 is installed, tune the configuration file located in `/etc/php5/apache2/php.ini` to enable more descriptive errors, logging, and better performance. The following modifications provide a good starting point:
 
-    {{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+    {{< file "/etc/php5/apache2/php.ini" ini >}}
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
 error_log = /var/log/php/error.log
 max_input_time = 30
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}

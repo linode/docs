@@ -65,7 +65,7 @@ ThingsBoard runs on Java 8, and the Oracle JDK is recommended.
 
 3.  Open `/etc/thingsboard/conf/thingsboard.yml` in a text editor and comment out the `HSQLDB DAO Configuration` section:
 
-    {{< file-excerpt "/etc/thingsboard/conf/thingsboard.yml" yaml >}}
+    {{< file "/etc/thingsboard/conf/thingsboard.yml" yaml >}}
 # HSQLDB DAO Configuration
 #spring:
 #  data:
@@ -81,11 +81,11 @@ ThingsBoard runs on Java 8, and the Oracle JDK is recommended.
 #    url: "${SPRING_DATASOURCE_URL:jdbc:hsqldb:file:${SQL_DATA_FOLDER:/tmp}/thingsboardDb;sql.enforce_size=false}"
 #    username: "${SPRING_DATASOURCE_USERNAME:sa}"
 #    password: "${SPRING_DATASOURCE_PASSWORD:}"
-{{< /file-excerpt >}}
+{{< /file >}}
 
 4.  In the same section, uncomment the PostgreSQL configuration block. Replace `thingsboard` in the username and password fields with the username and password of your `thingsboard` user:
 
-    {{< file-excerpt "/etc/thingsboard/conf/thingsboard.yml" yaml >}}
+    {{< file "/etc/thingsboard/conf/thingsboard.yml" yaml >}}
 # PostgreSQL DAO Configuration
 spring:
   data:
@@ -101,7 +101,7 @@ spring:
     url: "${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/thingsboard}"
     username: "${SPRING_DATASOURCE_USERNAME:thingsboard}"
     password: "${SPRING_DATASOURCE_PASSWORD:thingsboard}"
-{{< /file-excerpt >}}
+{{< /file >}}
 
 5.  Run this installation script:
 
@@ -214,7 +214,7 @@ while True:
 
 3.  If the script is working correctly, remove the `print` statement and uncomment the `r = requests.post()` line. Also increase the `sleep()` time interval:
 
-    {{< file-excerpt "thingsboard.py" python >}}
+    {{< file "thingsboard.py" python >}}
 while True:
     data['temperature'] = sense.get_temperature()
     data['pressure']    = sense.get_pressure()
@@ -222,7 +222,7 @@ while True:
 
     r = requests.post(thingsboard_url, data=json.dumps(data))
     sleep(60)
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ### Create a Systemd Service
 

@@ -130,7 +130,7 @@ This is particularly useful when running multiple client sites because you can g
 
 2.  For each pool, adjust the pool name, user and group, and socket name:
 
-    {{< file-excerpt "/etc/php5/fpm/pool.d/site1.conf" pool >}}
+    {{< file "/etc/php5/fpm/pool.d/site1.conf" pool >}}
 ; Start a new pool named 'www'.
 ; the variable $pool can we used in any directive and will be replaced by the
 ; pool name ('www' here)
@@ -160,7 +160,7 @@ group = site1
 ; Note: This value is mandatory.
 listen = /var/run/php5-fpm-site1.com.sock
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}
@@ -190,7 +190,7 @@ In the file excerpt above, three sequential dots - `...`  - denote that there is
 
 4.  Add the `<IfModule mod_fastcgi.c>` block to each virtual host block:
 
-    {{< file-excerpt "/etc/apache2/sites-available/site1.com.conf" aconf >}}
+    {{< file "/etc/apache2/sites-available/site1.com.conf" aconf >}}
 <VirtualHost *:80>
 
 ...
@@ -204,7 +204,7 @@ In the file excerpt above, three sequential dots - `...`  - denote that there is
 
 ...
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 5.  Test the new configuration with `sudo apache2ctl configtest`. If there are no errors, reload Apache:

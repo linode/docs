@@ -98,10 +98,10 @@ This feed is maintained by OpenVAS and is updated about once per week. To keep y
 
 To access the Greenbone Security Assistant web interface remotely, you must configure it to listen on your Linode's public IP address. You can do so by editing its configuration file under the `/etc/init.d/openvas-gsa`, and specifying your public IP address on the `DAEMON_ARGS` line. Replace `198.51.100.221` with your Linode's public address:
 
-{{< file-excerpt "/etc/init.d/openvas-gsa" >}}
+{{< file "/etc/init.d/openvas-gsa" >}}
 DAEMON_ARGS= --listen "198.51.100.221"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Save your changes, then restart `openvas-gsa`:

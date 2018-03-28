@@ -19,9 +19,9 @@ shortguide: true
 
 2.  Create a yum repository configuration to use the Elastic yum repository:
 
-    {{< file-excerpt "/etc/yum.repos.d/elastic.repo" ini >}}
+    {{< file "/etc/yum.repos.d/elastic.repo" ini >}}
 [elasticsearch-6.x] name=Elastic repository for 6.x packages baseurl=https://artifacts.elastic.co/packages/6.x/yum gpgcheck=1 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch enabled=1 autorefresh=1 type=rpm-md
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Update the yum cache to ensure the latest packages will be installed:
 

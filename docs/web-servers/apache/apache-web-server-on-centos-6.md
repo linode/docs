@@ -68,7 +68,7 @@ KeepAlive Off
 
 1.  Create a file under `/etc/httpd/conf.d` named `vhost.conf`. Replace instances of `example.com` with your own domain information:
 
-    {{< file-excerpt "/etc/httpd/conf.d/vhost.conf" aconf >}}
+    {{< file "/etc/httpd/conf.d/vhost.conf" aconf >}}
 <VirtualHost *:80>
      ServerAdmin admin@example.org
      ServerName example.org
@@ -78,7 +78,7 @@ KeepAlive Off
      CustomLog /srv/www/example.org/logs/access.log combined
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Additional virtual host blocks can be added to the file for any other domains you wish to host on the Linode.

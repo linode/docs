@@ -139,7 +139,7 @@ At this stage, you should have a total of five Linodes:
 
 1.  Edit the `/etc/default/etcd` file to add the following configuration:
 
-    {{< file-excerpt "/etc/default/etcd" >}}
+    {{< file "/etc/default/etcd" >}}
 ETCD_LISTEN_PEER_URLS="http://192.0.2.21:2380"
 
 ETCD_LISTEN_CLIENT_URLS="http://localhost:2379,http://192.0.2.21:2379"
@@ -154,7 +154,7 @@ ETCD_INITIAL_CLUSTER_TOKEN="cluster1"
 
 ETCD_INITIAL_CLUSTER_STATE="new"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Save the file, then restart the etcd service:

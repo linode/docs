@@ -82,34 +82,34 @@ In order to simplify communication between Linodes, set hostnames for each serve
 
 1. PostgreSQL Master:
 
-    {{< file-excerpt "/etc/hosts" conf >}}
+    {{< file "/etc/hosts" conf >}}
 127.0.0.1       localhost
 127.0.1.1       masterdb.yourdomain.com   masterdb
 
 10.1.1.20       slavedb.yourdomain.com    slavedb
 10.1.3.10       odoo.yourdomain.com       odoo
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2. PostgreSQL Slave:
 
-    {{< file-excerpt "/etc/hosts" conf >}}
+    {{< file "/etc/hosts" conf >}}
 127.0.0.1       localhost
 127.0.1.1       slavedb.yourdomain.com    slavedb
 
 10.1.1.10       masterdb.yourdomain.com   masterdb
 10.1.3.10       odoo.yourdomain.com       odoo
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3. Odoo 11 server:
 
-    {{< file-excerpt "/etc/hosts" conf >}}
+    {{< file "/etc/hosts" conf >}}
 127.0.0.1       localhost
 127.0.1.1       odoo.yourdomain.com       odoo
 
 10.1.1.10       masterdb.yourdomain.com   masterdb
 10.1.1.20       slavedb.yourdomain.com    slavedb
-{{< /file-excerpt >}}
+{{< /file >}}
 
 FQDNs will be used throughout this guide whenever possible to avoid confusion.
 
@@ -163,18 +163,18 @@ Begin with the PostgreSQL user needed for Odoo communications. Create this user 
 
 2. Edit `pg_hba.conf` to allow PostgreSQL nodes to communicate with each other. Add the following lines to the **Master** database server:
 
-    {{< file-excerpt "/etc/postgresql/9.6/main/pg_hba.conf" conf >}}
+    {{< file "/etc/postgresql/9.6/main/pg_hba.conf" conf >}}
 host    replication     replicauser      slavedb.yourdomain.com         md5
 host    all             odoo             odoo.yourdomain.com            md5
-{{< /file-excerpt >}}
+{{< /file >}}
 
     Each line provides the client authentication permissions to connect to a specific database. For example, the first line allows the **Slave** to connect to the **Master** node using `replicauser`, and the second line grants the `odoo` user the rights connect to `all` databases within this server.
 
 3. Add a similar configuration to the **Slave** node, this will make it easier to promote it to `master` status if necessary:
 
-    {{< file-excerpt "/etc/postgresql/9.6/main/pg_hba.conf" conf >}}
+    {{< file "/etc/postgresql/9.6/main/pg_hba.conf" conf >}}
 host    all             odoo             odoo.yourdomain.com            md5
-{{< /file-excerpt >}}
+{{< /file >}}
 
 The settings in the `pg_hba.conf` file are:
 
@@ -199,7 +199,7 @@ The settings in the `pg_hba.conf` file are:
 
 3. Edit `postgresql.conf`, and uncomment lines as necessary:
 
-    {{< file-excerpt "/etc/postgresql/9.6/main/postgresql.conf" conf >}}
+    {{< file "/etc/postgresql/9.6/main/postgresql.conf" conf >}}
 #From CONNECTIONS AND AUTHENTICATION Section
 listen_addresses = '*'
 #From WRITE AHEAD LOG Section
@@ -212,13 +212,13 @@ archive_timeout = 1h
 #From REPLICATION Section
 max_wal_senders = 3
 wal_keep_segments = 10
-{{< /file-excerpt >}}
+{{< /file >}}
 
 **On the Slave node**
 
 Edit the **Slave's** `postgresql.conf`:
 
-{{< file-excerpt "/etc/postgresql/9.6/main/postgresql.conf" conf >}}
+{{< file "/etc/postgresql/9.6/main/postgresql.conf" conf >}}
 listen_addresses = '*'
 #From WRITE AHEAD LOG Section
 wal_level = replica
@@ -226,7 +226,7 @@ wal_level = replica
 max_wal_senders = 3
 wal_keep_segments = 10
 hot_standby = on
-{{< /file-excerpt >}}
+{{< /file >}}
 
 These settings are:
 

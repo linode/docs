@@ -210,7 +210,7 @@ This example will walk you through a basic configuration.
 
 2.  You can modify the bitrate to change the sound quality of the music and limit the amount of bandwidth consumed. If you purchase MP3 licensing, you can modify the encoder section to add the MP3 encoding and your unlock data:
 
-    {{< file-excerpt "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
+    {{< file "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
 ; for testing we will only setup a single encoder though it
 ; is easy to add in additional encoder configurations and
 ; we are using an aac plus encoder as the default due to
@@ -224,12 +224,12 @@ bitrate_2=56000
 unlockkeyname=YourUnlockName
 unlockkeycode=YourUnlockCode
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Next, modify the sc_trans to sc_serv connection details:
 
-    {{< file-excerpt "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
+    {{< file "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
 ; this is where we define the details required for sc_trans
 ; to connect to the sc_serv instance being used where the
 ; details must match those specified in sc_serv_basic.conf
@@ -248,12 +248,12 @@ streamid_1=1
 ; is the index of the created source from sc_trans lists.
 endpointname_1=/Bob
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  This step is optional, but you can also update your stream information:
 
-    {{< file-excerpt "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
+    {{< file "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
 ; here you would provide any information to fill in details
 ; provided to clients about the stream. it us up to you what
 ; is entered though do not do anything which will annoy, etc
@@ -261,21 +261,21 @@ streamtitle=My Test Server
 streamurl=http://www.shoutcast.com
 genre=Misc
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 5.  Set your playlist file for an automated stream:
 
-    {{< file-excerpt "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
+    {{< file "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
 ; here we specify a playlist to use as the master list from
 ; which to play files from.
 playlistfile=playlists/main.lst
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 6.  Now set the port, username, and password for the transcoder admin panel access:
 
-    {{< file-excerpt "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
+    {{< file "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
 ; these options will allow you access the admin interfaces
 ; of sc_trans though also allows the 'testui' example to be
 ; accessed. remember to change the password, etc as needed
@@ -283,7 +283,7 @@ adminport=7999
 adminuser=admin
 adminpassword=goaway
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 7.  Save the changes to the SHOUTcast configuration file by pressing Control-X, and then Y.

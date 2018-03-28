@@ -31,7 +31,7 @@ Typically, Virtual Host configurations specify a `DocumentRoot` which specifies 
 
 If the administrator needed to maintain the `code/` resource on the file system at `/srv/git/public/` but have it be accessible at `http://example.com/code/`, an alias would be required. This is accomplished in the following example:
 
-{{< file-excerpt "Apache Configuration" apache >}}
+{{< file "Apache Configuration" apache >}}
 DocumentRoot /srv/www/example.com/public_html/
 Alias /code /srv/git/public
 <Directory /srv/git/public>
@@ -39,7 +39,7 @@ Alias /code /srv/git/public
     Allow from all
 </Directory>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Without the `Alias` directive, a request for `http://example.com/code/` would return resources available in the folder `/srv/www/example.com/public_html/code/`. However, the `Alias` would direct Apache to serve content from the `/srv/git/public` directory. The `<Directory>` section permits remote users to access this directory.
@@ -52,7 +52,7 @@ There are a couple of important factors to consider when using `Alias` directive
 
 In addition to `Alias`, Apache provides an `AliasMatch` directive that offers similar functionality. `AlaisMatch` provides the additional ability to alias a class of requests for a given resource to a location outside of the `DocumentRoot`. Let us consider another fictive `example.com` virtual host configuration:
 
-{{< file-excerpt "Apache Configuration" apache >}}
+{{< file "Apache Configuration" apache >}}
 DocumentRoot /srv/www/example.com/public_html/
 AliasMatch /code/projects/(.+) /srv/git/projects/$1
 <DirectoryMatch "^/srv/git/projects/.+$">
@@ -60,7 +60,7 @@ AliasMatch /code/projects/(.+) /srv/git/projects/$1
     Allow from all
 </Directory>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example, requests for URLs such as `http://example.com/code/projects/my_app` and `http://example.com/code/projects/my_app2` will be served resources in `/srv/git/projects/my_app` and `/srv/git/projects/my_app2` respectively. However, `http://example.com/code/projects` would be served from `/srv/www/example.com/public_html/code/projects/` rather than `/srv/git/projects/`, because of the trailing slash in the alias to `/code/projects/(.+)`.

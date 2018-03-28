@@ -56,7 +56,7 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
     *IPv4*
 
-    {{< file-excerpt "iptables" >}}
+    {{< file "iptables" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -87,7 +87,7 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 -A FORWARD -j REJECT
 
 COMMIT
-{{< /file-excerpt >}}
+{{< /file >}}
 
     {{< note >}}
 Some Steam games require a few additional rules which can be found in our [Steam game guides](/docs/applications/game-servers/). Steam can also use multiple port ranges for various purposes, but they should only be allowed if your game(s) make use of those services. See [this](https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711) Steam Support page for more information.
@@ -97,7 +97,7 @@ Some Steam games require a few additional rules which can be found in our [Steam
 
     Steam currently supports multiplayer play over IPv4 only, so a Steam server only needs basic IPv6 firewall rules, shown below.
 
-    {{< file-excerpt "iptables" >}}
+    {{< file "iptables" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -116,7 +116,7 @@ Some Steam games require a few additional rules which can be found in our [Steam
 -A FORWARD -j REJECT
 
 COMMIT
-{{< /file-excerpt >}}
+{{< /file >}}
 
 5.  If you are using **firewalld** (CentOS 7, Fedora) instead of iptables, **use these rules**. If you are using iptables, do skip this step.
 

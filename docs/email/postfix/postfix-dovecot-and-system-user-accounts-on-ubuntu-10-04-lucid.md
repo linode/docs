@@ -53,9 +53,9 @@ The next prompt will ask for the system mail name. This should correspond to the
 
 Edit the `/etc/default/saslauthd` file to allow the SASL authentication daemon to start. Uncommon or add the following line:
 
-{{< file-excerpt "/etc/default/saslauthd" >}}
+{{< file "/etc/default/saslauthd" >}}
 START=yes
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Create the `/etc/postfix/sasl/smtpd.conf` file, and insert the following line:
 
@@ -92,11 +92,11 @@ Consider the [basic email gateway guide](/docs/email/postfix/gateway-ubuntu-10-0
 
 The above Postfix configuration makes it possible to *send* mail using postfix. If your server receives email, Postfix requires additional configuration to deliver mail locally. Edit the `main.cf` file to insert or modify the following configuration directives:
 
-{{< file-excerpt "/etc/postfix/main.cf" >}}
+{{< file "/etc/postfix/main.cf" >}}
 myhostname = lollipop.example.com
 virtual_alias_maps = hash:/etc/postfix/virtual
 home_mailbox = mail/
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Issue the following command to ensure that new user accounts have a `~/mail` directory:
 
@@ -122,9 +122,9 @@ You can add additional lines in the same format as the above to control how all 
 
 Edit the `/etc/alias` file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to `root` will be delivered to the `username` user's mail box.
 
-{{< file-excerpt "/etc/aliases" >}}
+{{< file "/etc/aliases" >}}
 root: username
-{{< /file-excerpt >}}
+{{< /file >}}
 
 When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
 
@@ -140,17 +140,17 @@ Dovecot is a contemporary POP3/IMAP server that makes it possible to access and 
 
 Edit the following configuration directive in the `/etc/dovecot/conf.d/01-dovecot-postfix.conf` file to select the services that Dovecot will provide.
 
-{{< file-excerpt "/etc/dovecot/conf.d/01-dovecot-postfix.conf" >}}
+{{< file "/etc/dovecot/conf.d/01-dovecot-postfix.conf" >}}
 protocols = imap imaps pop3 pop3s
-{{< /file-excerpt >}}
+{{< /file >}}
 
 The `protocols` directive enables `imap` and `pop3` services within Dovecot along with their SSL-encrypted alternatives. You may remove any of these services if you do not want Dovecot to provide `imap`, `pop3` or ssl services.
 
 Edit the following directives in `/etc/dovecot/conf.d/01-dovecot-postfix.conf` to ensure that Dovecot can find your user's Maildirs:
 
-{{< file-excerpt "/etc/dovecot/conf.d/01-dovecot-postfix.conf" >}}
+{{< file "/etc/dovecot/conf.d/01-dovecot-postfix.conf" >}}
 mail_location = maildir:~/mail:LAYOUT=fs
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Once configured, issue the following command to restart the Dovecot instance:
 

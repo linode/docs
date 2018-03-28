@@ -27,7 +27,7 @@ Ruby on Rails is a popular rapid development web framework that allows web desig
 
 Before updating your system and installing the required software, edit the `/etc/apt/sources.list` file to enable the Ubuntu's "universe" repository, so that it resembles the following:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 ## main & restricted repositories
 deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
@@ -48,7 +48,7 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 deb http://security.ubuntu.com/ubuntu karmic-security universe
 deb-src http://security.ubuntu.com/ubuntu karmic-security universe
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following command to reload your system's package repositories and ensure that all installed programs are up to date:
@@ -86,10 +86,10 @@ Additionally, the application you deploy will likely have additional dependencie
 
 If you configured Apache virtual hosting as outlined in the [Ubuntu 9.10 (Karmic) Apache guide](/docs/web-servers/apache/installation/ubuntu-9-10-karmic), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 DocumentRoot /srv/www/example.com/public_html/
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In typical Passenger-based Rails deployments, the application directory would be located in `/srv/www/example.com/`. For example `my-app/` would be located at `/srv/www/example.com/my-app/`. Issue the following commands to remove the existing `public_html/` directory and create a new symbolic link to the application's public directory:
@@ -117,13 +117,13 @@ If your application requires additional configuration including database migrati
 
 There are a number of strategies for deploying more than one Rails application using Passenger. The most simple approach requires running multiple distinct virtual hosts configured as above to host a single Rails app each. Alternatively you may host multiple Rails apps within a single virtual host. Add `RailsBaseURI` directives that specify the path to your Rails application within the VirtualHost configuration, as in the following example:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 DocumentRoot /srv/www/example.com/public_html/
 RailsBaseURI /my-app
 RailsBaseURI /frogs
 RailsBaseURI /simon
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 These directives configure Passenger to run three Rails apps on the `example.com` site at the three locations specified. Rather than linking the `public/` directory of your Rails app to the `public_html/` directory as above, link the `public/` directory of the application to a directory within the `public_html/` directory. These links would be created in the following manner:

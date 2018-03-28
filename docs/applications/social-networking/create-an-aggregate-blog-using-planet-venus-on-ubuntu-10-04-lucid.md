@@ -48,7 +48,7 @@ Copy the default configuration file to the `/srv/www/example.com` directory:
 
 Now edit the file, making sure to modify the following values to conform to the needs of your deployment. Consider the following example:
 
-{{< file-excerpt "planet.conf" >}}
+{{< file "planet.conf" >}}
 # Example Planet Venus configuration file
 
 # Documentation: <file:///usr/share/doc/planet-venus>
@@ -70,7 +70,7 @@ feed_timeout = 20
 items_per_page = 60
 log_level = DEBUG
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 These settings establish the name and some background information regarding the site. All directories are declared relative to the location of the `planet.conf` file. The `output_dir` determines where Planet will build the site, and should point to a publicly accessible directory equivalent to or beneath the "document root" of your web server. The `items_per_page` option trims the number of posts included in the feed to not surpass the threshold set.
@@ -85,11 +85,11 @@ You can modify any of the files or copy different theme files from the `/usr/sha
 
 At the end of your `planet.conf` file, add entries that resemble the following for each feed that you would like to collect in the Planet you're building
 
-{{< file-excerpt "planet.conf" >}}
+{{< file "planet.conf" >}}
 [<https://www.linode.com/docs/rss>]
 name = Linode
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Once you have completed all modifications to `planet.conf`, run Planet for the first time by issuing the following command:
@@ -106,10 +106,10 @@ While you can run Planet without incident using the above method, we recommend r
 
 Insert the following job into the crontab:
 
-{{< file-excerpt "fcrontab" >}}
+{{< file "fcrontab" >}}
 */10* * * * planet /srv/www/example.com/planet.conf
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Save the crontab, and issue the following command to start `fcron` for the first time:

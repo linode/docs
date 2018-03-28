@@ -439,11 +439,11 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
 1.  Edit the `/var/lib/pgsql/data/pg_hba.conf` file, under the `# "local" is for Unix domain socket connections only` header:
 
-    {{< file-excerpt "/var/lib/pgsql/data/pg_hba.conf" >}}
+    {{< file "/var/lib/pgsql/data/pg_hba.conf" >}}
 # "local" is for Unix domain socket connections only
 local    all        all             peer
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash.

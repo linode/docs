@@ -35,7 +35,7 @@ Linode Guides & Tutorials are written in [Markdown](https://en.wikipedia.org/wik
 
 Linode Guides & Tutorials store metadata and other information in a [YAML](http://yaml.org/) header at the top of every page. Use the template below for your own guide.
 
-{{< file-excerpt "Author Submission" >}}
+{{< file "Author Submission" >}}
 ---
 author:
   name: Linode Community
@@ -56,7 +56,7 @@ external_resources:
   - '[Link Title 2](http://www.example.net)'
 ---
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 If you're updating an existing guide in our repository, you may also notice a `deprecated` field in the header. This defaults to false, and setting it to *true* inserts a pre-written message near the beginning stating that the guide is no longer maintained. Typically, this will be used on guides specific to applications or distributions that have reached End of Life (EOL).
 
@@ -68,7 +68,7 @@ Introductions should be concise; explain what the goal of the guide is and why. 
 
 The *Before You Begin* section is an area for basic prerequisites a reader should know or have completed before proceeding further in your guide. Use the example below and edit as needed:
 
-{{< file-excerpt "Author Submission" >}}
+{{< file "Author Submission" >}}
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
@@ -79,7 +79,7 @@ The *Before You Begin* section is an area for basic prerequisites a reader shoul
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ### Describe Example Variables
 
@@ -100,18 +100,18 @@ Do not include any brackets or parentheses when using these temporary values in 
 
 ### Include a Note about Root or Non-Root users
 
-{{< file-excerpt "Guides Written for a Non-Root User" txt >}}
+{{< file "Guides Written for a Non-Root User" txt >}}
 {{</* note */>}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{</* /note */>}}
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
-{{< file-excerpt "Guides Written for a Root User" txt >}}
+{{< file "Guides Written for a Root User" txt >}}
 {{</* note */>}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{</* /note */>}}
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ## Paragraph Structure
 
@@ -239,9 +239,9 @@ The shortcode will take a file path as a parameter. As long as the markdown file
 
 To use a shortguide in another guide, use the following syntax:
 
-{{< file-excerpt "sample_guide.md" >}}
+{{< file "sample_guide.md" >}}
 {{</* content "install_nginx.md" */>}}
-{{< /file-excerpt >}}
+{{< /file >}}
 
 {{< note >}}
 Headers inside the shortguide will not be visible in the table of contents in the parent document.
@@ -276,15 +276,15 @@ For each file or file excerpt, a code language or syntax should be defined in th
 
 **Example**: File Excerpt shortcode
 
-    {{</* file-excerpt "script.py" python */>}}
+    {{</* file "script.py" python */>}}
     def some_function():
         print("This is a function.")
-    {{</* /file-excerpt */>}}
+    {{</* /file */>}}
 
-{{< file-excerpt "script.py" python >}}
+{{< file "script.py" python >}}
 def some_function():
     print("This is a function.")
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ### File Paths and File Names
 

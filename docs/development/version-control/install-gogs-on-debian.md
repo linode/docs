@@ -297,7 +297,7 @@ The Gogs site is still accessible over unsecured HTTP via `http://example.com:30
 
 2.  Open the configuration file `custom/conf/app.ini`. Add a new configuration value `HTTP_ADDR` under the `[server]` section. The section should look like this:
 
-    {{< file-excerpt "/home/git/go/src/github.com/gogits/gogs/custom/conf/app.ini" ini >}}
+    {{< file "/home/git/go/src/github.com/gogits/gogs/custom/conf/app.ini" ini >}}
 [server]
 DOMAIN = example.com
 HTTP_ADDR = 127.0.0.1
@@ -307,7 +307,7 @@ DISABLE_SSH = false
 SSH_PORT = 22
 OFFLINE_MODE = false
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  Logout from user `git`:

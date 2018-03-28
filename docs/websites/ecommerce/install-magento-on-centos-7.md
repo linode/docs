@@ -57,7 +57,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
 
 2.  Modify the virtual host file for your Magento site to resemble the example below. If you have not previously created a virtual host file, do so now and refer to our [Apache on CentOS 7](/docs/websites/apache/install-and-configure-apache-on-centos-7) guide for additional guidance.
 
-    {{< file-excerpt "/etc/httpd/conf.d/vhost.conf" aconf >}}
+    {{< file "/etc/httpd/conf.d/vhost.conf" aconf >}}
 <Directory /var/www/html/example.com/public_html>
     Require all granted
 </Directory>
@@ -77,7 +77,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
 
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     The `Directory` block inside the `Virtual Host` block should point to the directory where you plan to install Magento. For simplicity, we will be installing it in our web root, but if you want to put it elsewhere (e.g., a subdirectory of your web root), then modify this setting.
@@ -153,13 +153,13 @@ Magento is a PHP application, so you will need to install PHP 7 and make some ad
 
 3.  Modify the following settings in your `php.ini` file:
 
-    {{< file-excerpt "/etc/php.ini" >}}
+    {{< file "/etc/php.ini" >}}
 max_input_time = 30
 memory_limit= 2G
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
 error_log = /var/log/php/error.log
 date.timezone = America/New_York
-{{< /file-excerpt >}}
+{{< /file >}}
 
 This sets the time zone for PHP's `date()` function and imposes a 2GB limit to the amount of memory PHP can use. This value is recommended for a 4GB Linode, but could be increased for a larger server.
 
@@ -178,9 +178,9 @@ The value for `date.timezone` will vary based on your system's time zone. Refer 
 
 6.  **Optional**: You may want to take this opportunity to create a `phpinfo.php` page to ensure that PHP is active and working properly with Apache:
 
-    {{< file-excerpt "/var/www/html/example.com/public_html/phpinfo.php" php >}}
+    {{< file "/var/www/html/example.com/public_html/phpinfo.php" php >}}
 <?php phpinfo(); ?>
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Once you've visited this page in your browser and confirmed that PHP is working, delete the test page.
 
@@ -322,10 +322,10 @@ For more information about setting up cron jobs for development servers and cust
 
 We strongly recommended that you disable the ability to display your Magento storefront in a frame to prevent [clickjacking](https://en.wikipedia.org/wiki/Clickjacking) attacks. To do this, modify the following line in your `env.php` file:
 
-{{< file-excerpt "/var/www/html/example.com/public_html/app/etc/env.php" php >}}
+{{< file "/var/www/html/example.com/public_html/app/etc/env.php" php >}}
 'x-frame-options' => 'DENY',
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This prevents attackers from embedding your site in a frame (for example, on a malicious site that mimics your store) in an attempt to intercept payment and other sensitive customer information.

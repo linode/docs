@@ -51,18 +51,18 @@ On your client, change the `client.ovpn` configuration file as follows:
 
 1.  You should already have the setting  *dev tun* to specify the virtual network adapter. Change it to tun0 so it can be referred to in firewall rules:
 
-    {{< file-excerpt "client.ovpn" >}}
+    {{< file "client.ovpn" >}}
 dev tun0
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Make sure your VPN server is listed by its IP address instead of a hostname. For example:
 
-    {{< file-excerpt "client.ovpn" >}}
+    {{< file "client.ovpn" >}}
 remote 198.51.100.0 1194
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ## GNU/Linux Clients
@@ -141,13 +141,13 @@ Your VPN firewall is now active. Use `ufw disable` if you want to disable the fi
 
 1.  Edit the `pf` configuration file:
 
-    {{< file-excerpt "/etc/pf.conf" >}}
+    {{< file "/etc/pf.conf" >}}
 block drop all
 pass on lo0
 pass on utun0
 pass out proto udp from any to 198.51.100.0 port 1194
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Import the newly added rules as follows:

@@ -145,11 +145,11 @@ If persistence is a major issue for your application, it is possible to use Redi
 
 To use this mode, ensure that the following values are set in `redis.conf`:
 
-{{< file-excerpt "/opt/redis/redis.conf" >}}
+{{< file "/opt/redis/redis.conf" >}}
 appendonly yes
 appendfsync everysec
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The first directive enables the journaled "append only file" mode, while the second directive forces Redis to write the journal to the disk every second. The `appendfsync` directive also accepts the argument `always` to force writes after every operation which provides maximum durability, or `never` which allows the operating system to control when data is written to disk which is less reliable.
@@ -166,10 +166,10 @@ Redis contains limited support for master-slave replication which allows you to 
 
 To configure master-slave operation, ensure that the following configuration options are applied to the *slave* instance:
 
-{{< file-excerpt "redis.conf" >}}
+{{< file "redis.conf" >}}
 slaveof 192.168.10.101 6379
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The `slaveof` directive takes two arguments: the first is the IP address of the master node, and the second is the Redis port specified in the master's configuration.

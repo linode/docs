@@ -88,10 +88,10 @@ Use the Rubygems package manager to install Rails. Replace the version below wit
 
 1.  NGINX is now installed on the system, but support for Phusion Passenger is not enabled. As root, or with the `sudo` command, open the file `/etc/nginx/conf.d/mod-http-passenger.conf` and verify that the following two lines are present and uncommented:
 
-    {{< file-excerpt "/etc/nginx/conf.d/mod-http-passenger.conf" aconf >}}
+    {{< file "/etc/nginx/conf.d/mod-http-passenger.conf" aconf >}}
 passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
 passenger_ruby /usr/bin/passenger_free_ruby;
-{{< /file-excerpt >}}
+{{< /file >}}
 
     {{< note >}}
 If the file does not already exist, you will need to create it and add the lines manually.
@@ -140,12 +140,12 @@ If your Gemfile already includes `therubyracer`, or you have another JavaScript 
 
 3.  Open `/etc/nginx/sites-available/default` in a text editor and remove `default_server` from the first two lines of the `server` block:
 
-    {{< file-excerpt "/etc/nginx/sites-available/default" conf >}}
+    {{< file "/etc/nginx/sites-available/default" conf >}}
 server {
   listen 80;
   listen [::]:80;
    . . .
-  {{< /file-excerpt >}}
+  {{< /file >}}
 
 4. Since you are using RVM, you will need to specify which version of Ruby should be used by Passenger:
 

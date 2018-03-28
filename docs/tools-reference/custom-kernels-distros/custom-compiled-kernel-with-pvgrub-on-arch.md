@@ -89,14 +89,14 @@ Once your configuration options are set, exit the configuration interface and an
 
 4.  Create a `menu.lst` file with the following contents. Adjust the "title" and "kernel" lines to reflect the actual filenames found in the `/boot` directory.
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 timeout 5
 
 title Custom Compiled, kernel 3.19.3-custom
 root (hd0)
 kernel /boot/vmlinuz-3.19.3-custom root=/dev/xvda ro quiet
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Note that there is no `initrd` line. With some distributions, the `initrd` image prepared during the kernel installation process does not work correctly with the Linode, and isn't needed anyhow.

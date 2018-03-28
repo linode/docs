@@ -37,7 +37,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
 3.  In Apache's default virtual host file under the `<Directory /var/www/>` section, change the `AllowOverride` value to `all`.
 
-    {{< file-excerpt "/etc/apache2/sites-enabled/000-default" apache >}}
+    {{< file "/etc/apache2/sites-enabled/000-default" apache >}}
 <Directory /var/www/>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride all
@@ -45,7 +45,7 @@ Multicraft for Linux depends on several software packages in order to run.
         allow from all
 </Directory>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
     {{< note >}}
 If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.

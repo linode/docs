@@ -78,7 +78,7 @@ Below are example configurations for the given Linux distribution. Edit the exam
 
 Networking in these distributions is managed entirely by *systemd*. See `man systemd-networkd` and `man systemd-resolved` for more information.
 
-{{< file-excerpt "/etc/systemd/network/05-eth0.network" >}}
+{{< file "/etc/systemd/network/05-eth0.network" >}}
 [Match]
 Name=eth0
 
@@ -106,7 +106,7 @@ Address=2001:db8:2000:aff0::2/64
 
 # Add a second IPv6 address.
 Address=2001:db8:2000:aff0::3/32
-{{< /file-excerpt >}}
+{{< /file >}}
 
 {{< note >}}
 On Container Linux, you need to rename or remove the original cloud config data so it doesn't take precedence on reboots over the eth0 configuration above. Do this with `sudo mv /var/lib/coreos-install/user_data /var/lib/coreos-install/user_data.bak`.
@@ -116,7 +116,7 @@ On Container Linux, you need to rename or remove the original cloud config data 
 
 Networking in CentOS 7 and Fedora is managed by *systemd* and *NetworkManager*. See `man systemd-networkd` and `man networkmanager` for more information. Note that NetworkManger in CentOS 7 and Fedora includes the tools `nmtui` and `nmcli` to modify network configurations. Those are additional options to set static addressing if you would prefer to not directly edit the network interface's configuration file. See `man nmtui` and `man nmcli` for more info.
 
-{{< file-excerpt "/etc/sysconfig/network-scripts/ifcfg-eth0" >}}
+{{< file "/etc/sysconfig/network-scripts/ifcfg-eth0" >}}
 # Edit this line from "dhcp" to "none":
 BOOTPROTO=none
 
@@ -159,13 +159,13 @@ IPV6ADDR=2001:db8:2000:aff0::2/128
 
 # Add additional IPv6 addresses, separated by a space.
 IPV6ADDR_SECONDARIES=2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ### CentOS 6
 
 Networking CentOS 6 is managed by *dhclient*. NetworkManager is not installed by default, however a static configuration for CentOS 6 differs only slightly from CentOS 7 and Fedora. See the [RHEL 6 Deployment Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-Network_Interfaces.html) for more information.
 
-{{< file-excerpt "/etc/sysconfig/network-scripts/ifcfg-eth0" >}}
+{{< file "/etc/sysconfig/network-scripts/ifcfg-eth0" >}}
 # Edit this line from "dhcp" to "none":
 BOOTPROTO=none
 
@@ -207,7 +207,7 @@ IPV6ADDR=2001:db8:2000:aff0::2/64
 
 # Add additional IPv6 addresses, separated by a space.
 IPV6ADDR_SECONDARIES=2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Debian
@@ -218,7 +218,7 @@ Though systemd-networkd and systemd-resolved are both present in Debian 8 and 9,
 
 1.  Edit your configuration file to add the appropriate information:
 
-    {{< file-excerpt "/etc/network/interfaces" >}}
+    {{< file "/etc/network/interfaces" >}}
 . . .
 
 # IPv4 gateway and primary address. The netmask
@@ -240,7 +240,7 @@ iface eth0 inet6 static
 # Add a second IPv6 address.
 iface eth0 inet6 static
   address 2001:db8:2000:aff0::2/32
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.
 
@@ -257,7 +257,7 @@ options rotate
 
 Networking in Gentoo is managed by *netifrc*. See the [Gentoo Wiki](https://wiki.gentoo.org/wiki/Netifrc) and [Gentoo handbook](https://wiki.gentoo.org/wiki/Handbook:X86/Full/Networking) for more information.
 
-{{< file-excerpt "/etc/conf.d/net" >}}
+{{< file "/etc/conf.d/net" >}}
 # IPv4 gateway. Not necessary to specify IPv6 gateway.
 routes_eth0="default via 198.51.100.1"
 
@@ -275,7 +275,7 @@ config_eth0="2001:db8:2000:aff0::1/64
 dns_servers_eth0="203.0.113.1
 2001:db8:0:123::2
 203.0.113.3"
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### OpenSUSE
@@ -284,7 +284,7 @@ Networking in OpenSUSE is managed by *wicked* and *netconfig*. In addition to di
 
 1.  Modify the interface's config file:
 
-    {{< file-excerpt "/etc/sysconfig/network/ifcfg-eth0" >}}
+    {{< file "/etc/sysconfig/network/ifcfg-eth0" >}}
 BOOTPROTO=static
 NAME=eth0
 
@@ -301,25 +301,25 @@ IPV6_DEFAULTGW=fe80::1
 
 # Add additional IPv6 addresses, separated by a space.
 IPV6ADDR_SECONDARIES=2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Then add your IPv4 gateway to the network routes file:
 
     {{< file "/etc/sysconfig/network/routes" >}}
 # Destination   Gateway                 Netmask                 Device
 default         198.51.100.1            -                       eth0
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Last, set your DNS resolvers and options for netconfig, which then uses this info to modify `resolv.conf`:
 
-    {{< file-excerpt "/etc/sysconfig/network/config" >}}
+    {{< file "/etc/sysconfig/network/config" >}}
 . . .
 NETCONFIG_DNS_STATIC_SERVERS="203.0.113.1 2001:db8:0:123::2 203.0.113.3"
 . . .
 NETCONFIG_DNS_STATIC_SEARCHLIST="members.linode.com"
 . . .
 NETCONFIG_DNS_RESOLVER_OPTIONS="rotate"
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Ubuntu
@@ -328,7 +328,7 @@ The configuration below applies to 14.04 and 16.04. See above for 17.10. Ubuntu 
 
 Like with Debian, systemd-networkd and systemd-resolved are both present but not enabled in Ubuntu 16.04. If you decide to enable these services to manage networking, you can not set static addresses in the file `/etc/network/interfaces` as shown below. You'll need to use the section further above for [Arch, Container Linux and Ubuntu 17.10](#arch-coreos-container-linux-ubuntu-17-10). For more information, see `man ifup`, `man ifdown`, `man interfaces 5`, `man systemd-networkd` and `man systemd-resolved`.
 
-{{< file-excerpt "/etc/network/interfaces" >}}
+{{< file "/etc/network/interfaces" >}}
 . . .
 
 # IPv4 gateway and primary address. The netmask
@@ -355,7 +355,7 @@ iface eth0 inet6 static
 # Add a second IPv6 address.
 iface eth0 inet6 static
   address 2001:db8:2000:aff0::2/32
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ## Apply Your Changes

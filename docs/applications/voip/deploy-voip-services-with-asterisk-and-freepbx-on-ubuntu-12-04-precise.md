@@ -95,19 +95,19 @@ You will be presented with a menu like the one below asking you to choose a disk
 
     Change the `groot` line to resemble the following:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 ## default grub root device
 ## e.g. groot=(hd0,0)
 # groot=(hd0)
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Change the `indomU` line to resemble the following:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # indomU=false
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 4.  Save and exit the file. You will now need to update GRUB again in order to apply the changes. Issue the following command:
 
@@ -252,11 +252,11 @@ Before you can use FreePBX, you will need to set up a LAMP stack. An basic step-
 
 7.  For this installation, we want Apache to run as the Asterisk user. This will allow Apache to access all of the files it needs in order to run FreePBX. Make sure your `/etc/apache2/envvars` file resembles the following:
 
-    {{< file-excerpt "/etc/apache2/envvars" >}}
+    {{< file "/etc/apache2/envvars" >}}
 export APACHE_RUN_USER=asterisk
 		export APACHE_RUN_GROUP=asterisk
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 8.  Change ownership of the Apache lock file:
 

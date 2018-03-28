@@ -268,7 +268,7 @@ The UDF tags are explained in the table below:
 
 Below is an example implementation of the UDF variables:
 
-{{< file-excerpt "StackScript" bash >}}
+{{< file "StackScript" bash >}}
 # [...]
 <UDF name="var1" Label="A question" default="" example="Enter something here." />
 <UDF name="var2" Label="Pick one of" oneOf="foo,bar" example="Enter something here." />
@@ -276,7 +276,7 @@ Below is an example implementation of the UDF variables:
 <UDF name="var4" Label="Pick several from" manyOf="foo,bar" default="foo,bar" />
 # [...]
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 {{< note >}}
@@ -295,7 +295,7 @@ There are also a set of Linode created environmental variables that can be used 
 
 If you do not want to use the StackScript system to set your environment variables, you might consider hosting files with settings on a different system. This is accomplished with the following fragment:
 
-{{< file-excerpt "StackScript" bash >}}
+{{< file "StackScript" bash >}}
 # [...]
 IPADDR=$(/sbin/ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://')
 
@@ -306,7 +306,7 @@ source /tmp/base.env
 source /tmp/system.env
 # [...]
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Make sure that there are files accessible via `HTTP` hosted on the `example.com` domain for both basic environment (e.g. `base.env`) and machine specific (e.g. `[ip-address].env`) files before launching this StackScript. Also consider the possible security implications of allowing any file with sensitive information regarding your deployment to be publicly accessible.

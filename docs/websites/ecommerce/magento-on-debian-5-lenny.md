@@ -33,10 +33,10 @@ Magento requires Apache to be installed to serve webpages, as well as PHP 5 and 
 
 You will need to modify your PHP cli settings to ensure that the Magento installer has enough memory to run. You will want to set your PHP cli memory limit to at least 64M as shown below:
 
-{{< file-excerpt "/etc/php5/cli/php.ini" ini >}}
+{{< file "/etc/php5/cli/php.ini" ini >}}
 memory_limit = 64M
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 You'll also need to create a database for Magento, and a user with permission to access that database. The following commands provide an example of what steps would need to be taken to accomplish this:

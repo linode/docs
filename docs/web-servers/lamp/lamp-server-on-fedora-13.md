@@ -60,10 +60,10 @@ By default, Apache listens on all IP addresses available to it. We must configur
 
 Begin by adding the following line to the virtual hosting configuration file:
 
-{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+{{< file "/etc/httpd/conf.d/vhost.conf" apache >}}
 NameVirtualHost 13.34.56.78:80
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Be sure to replace 13.34.56.78 with your own IP address.
@@ -72,7 +72,7 @@ Be sure to replace 13.34.56.78 with your own IP address.
 
 Now we will create virtual host entries for each site that we need to host with this server. Here are two examples for sites at "example.com" and "example.org".
 
-{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+{{< file "/etc/httpd/conf.d/vhost.conf" apache >}}
 <VirtualHost 12.34.56.78:80>
      ServerAdmin webmaster@example.com
      ServerName example.com
@@ -91,7 +91,7 @@ Now we will create virtual host entries for each site that we need to host with 
      CustomLog /srv/www/example.org/logs/access.log combined
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Notes regarding this example configuration:
@@ -176,7 +176,7 @@ Once PHP5 is installed, we'll need to tune the configuration file located in `/e
 
 Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon (`;` character)):
 
-{{< file-excerpt "/etc/php.ini" ini >}}
+{{< file "/etc/php.ini" ini >}}
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
 display_errors = Off
 log_errors = On
@@ -185,7 +185,7 @@ max_execution_time = 300
 memory_limit = 64M
 register_globals = Off
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 If you need support for MySQL in PHP, then you must install the php5-mysql package with the following command:

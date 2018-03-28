@@ -89,10 +89,10 @@ kube-master
 
 3.  Add the following lines to `/etc/hosts`:
 
-    {{< file-excerpt "/etc/hosts" >}}
+    {{< file "/etc/hosts" >}}
 <kube-master-private-ip>    kube-master
 <kube-worker-private-ip>    kube-worker-1
-{{< /file-excerpt >}}
+{{< /file >}}
 
     If you have more than two nodes, add their private IPs to `/etc/hosts` as well.
 

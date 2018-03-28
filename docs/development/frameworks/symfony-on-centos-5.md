@@ -35,9 +35,9 @@ Since CentOS does not include the latest version of PHP 5.2 (which is required f
 
 Edit the file `/etc/yum.repos.d/webtatic.repo`. Under `[webtatic]` add the following line:
 
-{{< file-excerpt "/etc/yum.repos.d/webtatic.repo" >}}
+{{< file "/etc/yum.repos.d/webtatic.repo" >}}
 exclude=php\*5.3\*
-{{< /file-excerpt >}}
+{{< /file >}}
 
 This will ensure that no PHP 5.3 packages will be installed, as Symfony does not use any features of PHP 5.3.
 
@@ -78,15 +78,15 @@ Set the root password for the MySQL server and apply the security necessities:
 
 Edit /etc/php.ini and find the following line:
 
-{{< file-excerpt "/etc/php.ini" >}}
+{{< file "/etc/php.ini" >}}
 short_open_tag = On
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Replace it with this line:
 
-{{< file-excerpt "/etc/php.ini" >}}
+{{< file "/etc/php.ini" >}}
 short_open_tag = Off
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Set the web server to start on boot and start it:
 
@@ -143,7 +143,7 @@ Now, we need to configure the web server to serve our new project.
 
 Edit `/etc/httpd/conf/httpd.conf` and add at the end:
 
-{{< file-excerpt "/etc/httpd/conf/httpd.conf" >}}
+{{< file "/etc/httpd/conf/httpd.conf" >}}
 NameVirtualHost *:80
 <VirtualHost *:80>
   DocumentRoot "/home/sfproject/web"
@@ -159,7 +159,7 @@ NameVirtualHost *:80
     Allow from All
   </Directory>
 </VirtualHost>
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Restart the web server:
 

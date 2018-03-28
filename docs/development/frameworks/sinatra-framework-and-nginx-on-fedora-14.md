@@ -89,7 +89,7 @@ Create the following directories beneath the `/srv/www` hierarchy for your appli
 
 Insert the following line into the `/opt/nginx/conf/nginx.conf` file, modifying the path for `/srv/www/example.com/nginx.conf` to match the directory created above:
 
-{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+{{< file "/opt/nginx/conf/nginx.conf" nginx >}}
 # [...]
 http {
     include /srv/www/example.com/nginx.conf;
@@ -97,7 +97,7 @@ http {
     passenger_ruby /usr/bin/ruby;
 # [...]
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This inserts the contents of `/srv/www/example.com/nginx.conf` into your nginx configuration, and allows you to specify the configuration of the virtual host for the `example.com` site. Consider the following example configuration, and modify this file to meet the needs of your deployment:

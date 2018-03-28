@@ -186,9 +186,9 @@ You can also automate certificate renewal. This will prevent your certificates f
 
     Add the following line to the end of the crontab file:
 
-    {{< file-excerpt "crontab" >}}
+    {{< file "crontab" >}}
 0 0 1 * * /opt/letsencrypt/letsencrypt-auto renew
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ### Update Let's Encrypt
 
@@ -206,6 +206,6 @@ You can also use `cron` to keep the `letsencrypt-auto` client up to date.
 
     sudo crontab -e
 
-  {{< file-excerpt "crontab" >}}
+  {{< file "crontab" >}}
 0 0 1 * * cd /opt/letsencrypt && git pull
-{{< /file-excerpt >}}
+{{< /file >}}

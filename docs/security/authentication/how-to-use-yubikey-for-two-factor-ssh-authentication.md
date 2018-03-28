@@ -113,7 +113,7 @@ user4:vvddhfjjasui:vvfjidkflssd
 
 5. Add `auth required pam_yubico.so id=<client id> key=<secret key> authfile=/etc/ssh/authorized_yubikeys` to the start of `/etc/pam.d/sshd`. Replace `<client id>` with the ID you retrieved when applying for an API key, and `<secret key>` with the secret key. If you only want single-factor authentication (either a YubiKey or a password), change `required` to `sufficient` to tell the system that a valid YubiKey will be enough to log in.
 
-    {{< file-excerpt "/etc/pam.d/sshd" >}}
+    {{< file "/etc/pam.d/sshd" >}}
 # PAM configuration for the Secure Shell service
 
 # Add your line below this one
@@ -125,7 +125,7 @@ auth required pam_yubico.so id=client id key=secret key authfile=/etc/ssh/author
 # Standard Un*x authentication.
 @include common-auth
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}
@@ -134,11 +134,11 @@ On some systems, like Arch Linux, you will need to edit `/etc/pam.d/system-remot
 
 6. In `/etc/ssh/sshd_config`, add or edit the following settings:
 
-    {{< file-excerpt "/etc/ssh/sshd_config" >}}
+    {{< file "/etc/ssh/sshd_config" >}}
 ChallengeResponseAuthentication yes
 UsePAM yes
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     If you want to only use a YubiKey for single-factor authentication, set `PasswordAuthentication no`.
@@ -166,10 +166,10 @@ If you encounter any problems, make sure you've followed all of the steps in thi
 
 1. Add the word `debug` to the end of the line you added in `/etc/pam.d/sshd`:
 
-    {{< file-excerpt "/etc/pam.d/sshd" >}}
+    {{< file "/etc/pam.d/sshd" >}}
 auth required pam_yubico.so id=<client id> key=<secret key> authfile=/etc/ssh/authorized_yubikeys debug
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2. Create a debug log file:

@@ -65,10 +65,10 @@ Please see our [MySQL](/docs/databases/mysql/use-mysql-relational-databases-on-u
 
 Additionally you will want to increase PHP's `memory_limit` setting, by editing the `/etc/php5/cli/php.ini` and `/etc/php5/apache2/php.ini` file as follows:
 
-{{< file-excerpt "/etc/php5/cli/php.ini and /etc/php5/apache2/php.ini" ini >}}
+{{< file "/etc/php5/cli/php.ini and /etc/php5/apache2/php.ini" ini >}}
 memory_limit = 64M
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 At this point your server has the prerequisites to install Magento.

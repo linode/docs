@@ -283,9 +283,9 @@ submenu 'Advanced options for Debian GNU/Linux' $menuentry_id_option 'gnulinux-a
 
 3. Edit `/etc/vz/vz.conf` and change the following line to use `simfs` instead of `ploop`:
 
-    {{< file-excerpt "/etc/vz/vz.conf" >}}
+    {{< file "/etc/vz/vz.conf" >}}
 VE_LAYOUT=simfs
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4. List available OS templates for download:

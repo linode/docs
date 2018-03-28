@@ -53,7 +53,7 @@ By default, .htaccess isn't available. To enable it you will need to edit the co
 
 2.  After the VirtualHost block (</VirtualHost>) add:
 
-    {{< file-excerpt "/etc/apache2/sites-available/example.com.conf" >}}
+    {{< file "/etc/apache2/sites-available/example.com.conf" >}}
 ....
 </VirtualHost>
 <Directory /var/www/html/example.com/public_html>
@@ -62,7 +62,7 @@ By default, .htaccess isn't available. To enable it you will need to edit the co
     Require all granted
 </Directory>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Save the file, then restart apache:
 

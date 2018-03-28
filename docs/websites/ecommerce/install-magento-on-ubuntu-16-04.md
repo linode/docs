@@ -276,10 +276,10 @@ For more information about setting up cron jobs for development servers and cust
 
 We strongly recommend to disable the ability to display your Magento storefront in a frame to prevent [clickjacking](https://en.wikipedia.org/wiki/Clickjacking) attacks. To do this, modify the following line in your `env.php` file:
 
-{{< file-excerpt "/var/www/html/example.com/public_html/app/etc/env.php" php >}}
+{{< file "/var/www/html/example.com/public_html/app/etc/env.php" php >}}
 'x-frame-options' => 'DENY',
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This prevents attackers from embedding your site in a frame (for example, on a malicious site that mimics your store) in an attempt to intercept payment and other sensitive customer information.

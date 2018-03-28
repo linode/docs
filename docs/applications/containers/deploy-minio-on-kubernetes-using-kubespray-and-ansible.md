@@ -176,7 +176,7 @@ Below is a loop that adds the line `username ALL=(ALL:ALL) NOPASSWD: ALL` to the
 
 Add this snippet below at the end of `~/kubespray/roles/bootstrap-os/tasks/main.yml` to disable swap using Ansible.
 
-{{< file-excerpt "~/kubespray/roles/bootstrap-os/tasks/main.yml" >}}
+{{< file "~/kubespray/roles/bootstrap-os/tasks/main.yml" >}}
 - name: Remove swapfile from /etc/fstab
   mount:
     name: swap
@@ -185,7 +185,7 @@ Add this snippet below at the end of `~/kubespray/roles/bootstrap-os/tasks/main.
 
 - name: Disable swap
   command: swapoff -a
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ## Run Ansible Playbook
 

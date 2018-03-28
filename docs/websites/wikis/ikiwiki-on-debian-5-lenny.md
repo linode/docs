@@ -44,10 +44,10 @@ As with all user accounts, be sure assign a strong password consisting of letter
 
 To install the current version of Ikiwiki on Debian 5 (Lenny), you must install several packages from the [Backports project](http://backports.debian.org). Insert the following line in your `/etc/apt/sources.list` file:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 deb http://backports.debian.org/debian-backports lenny-backports main
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following commands to update your system's package database and all installed packages, and install the backports repository key:
@@ -58,7 +58,7 @@ Issue the following commands to update your system's package database and all in
 
 Add the following snippet to the `/etc/apt/preferences` file:
 
-{{< file-excerpt "/etc/apt/preferences" >}}
+{{< file "/etc/apt/preferences" >}}
 Package: ikiwiki
 Pin: release a=lenny-backports
 Pin-Priority: 999
@@ -71,7 +71,7 @@ Package: liburi-perl
 Pin: release a=lenny-backports
 Pin-Priority: 999
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following command to install Ikiwiki and other required software:
@@ -318,14 +318,14 @@ Issue the following commands to create a `~/wiki/` directory as a git repository
 
 Add the following excerpt to `~/wiki/.git/config`:
 
-{{< file-excerpt "~/wiki/.git/config" >}}
+{{< file "~/wiki/.git/config" >}}
 [remote "origin"]
     fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki.git
 
 [branch "master"]
     remote = origin merge = refs/heads/master
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](/docs/assets/691-ikiwiki.yaml), and create an initial commit in the `~/wiki` repository:

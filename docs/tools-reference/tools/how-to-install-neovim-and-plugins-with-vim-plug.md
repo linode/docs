@@ -122,14 +122,14 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
 
 2.  Add the following lines at the bottom of your `~/.config/nvim/init.vim` file to include the snippets available through UltiSnips and [vim-snippets](https://github.com/honza/vim-snippets):
 
-    {{< file-excerpt "~/.config/nvim/init.vim" aconf >}}
+    {{< file "~/.config/nvim/init.vim" aconf >}}
 call plug#begin()
 Plug 'roxma/nvim-completion-manager'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 call plug#end()
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Launch nvim, execute `PlugInstall`, update the plugins, and exit:
@@ -156,10 +156,10 @@ call plug#end()
 
 1.  Insert the following line before `call plug#end()` in `~/.config/nvim/init.vim`:
 
-    {{< file-excerpt "~/.config/nvim/init.vim" >}}
+    {{< file "~/.config/nvim/init.vim" >}}
 Plug 'brooth/far.vim'
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Open nvim and execute `PlugInstall`, update the plugins, and exit. The plugin will be available when you restart nvim:
@@ -175,16 +175,16 @@ Plug 'brooth/far.vim'
         mkdir myproject
         cd myproject
 
-    {{< file-excerpt "myproject/greeting.py" python >}}
+    {{< file "myproject/greeting.py" python >}}
 def greet(name):
     print('Hello', name)
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     and
 
-    {{< file-excerpt "myproject/persons.py" python >}}
+    {{< file "myproject/persons.py" python >}}
 #!/usr/bin/python3
 from greeting import greet
 # Import the greet function from greeting.py
@@ -193,7 +193,7 @@ greet('Jack')
 greet('Jill')
 greet('Bob')
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  Open either file with nvim and use Command mode:

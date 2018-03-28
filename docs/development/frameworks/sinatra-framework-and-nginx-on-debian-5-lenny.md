@@ -31,10 +31,10 @@ The first command should show your short hostname, and the second should show yo
 
 To install a more current version of Ruby Gems, which is required for running Sinatra Applications on Debian 5 (Lenny), you must install several packages from the [Backports project](http://backports.debian.org). Insert the following line in your `/etc/apt/sources.list` file:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 deb http://backports.debian.org/debian-backports lenny-backports main
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following commands to update your system's package database and all installed packages, and install the backports repository's key:
@@ -45,11 +45,11 @@ Issue the following commands to update your system's package database and all in
 
 Add the following snippet to the `/etc/apt/preferences` file (you may need to create it):
 
-{{< file-excerpt "/etc/apt/preferences" >}}
+{{< file "/etc/apt/preferences" >}}
 Package: rubygems Pin: release a=lenny-backports Pin-Priority: 999
 
 Package: rubygems1.8 Pin: release a=lenny-backports Pin-Priority: 999
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Issue the following command to install Ruby dependencies for Sinatra.
 
@@ -114,14 +114,14 @@ Create the following directories beneath the `/srv/www` hierarchy for your appli
 
 Insert the following line into the `/opt/nginx/conf/nginx.conf` file, modifying the path for `/srv/www/example.com/nginx.conf` to match the directory created above:
 
-{{< file-excerpt "/etc/apt/preferences" nginx >}}
+{{< file "/etc/apt/preferences" nginx >}}
 # [...]
 http {
     include /srv/www/example.com/nginx.conf;
     passenger_root /opt/passenger-3.0.1;
     passenger_ruby /usr/bin/ruby1.8;
 # [...]
-{{< /file-excerpt >}}
+{{< /file >}}
 
 This inserts the contents of `/srv/www/example.com/nginx.conf` into your nginx configuration, and allows you to specify the configuration of the virtual host for the `example.com` site. Consider the following example configuration, and modify this file to meet the needs of your deployment:
 

@@ -93,11 +93,11 @@ Since snmpd binds to localhost by default, we'll need to edit the `/etc
 Open the file and find the section labeled `Agent Behaviour`. Comment out the line that specifies `127.0.0.1` as the agent address by placing a `#`  in front of it. Uncomment the other line that defines the agentAddress as all  interfaces. The `Agent Behavior` section should now resemble the following:
 
 
-{{<file-excerpt "/etc/snmp/snmpd.conf">}}
+{{<file "/etc/snmp/snmpd.conf">}}
 #  Listen for connections from the local system only
 # agentAddressudp:127.0.0.1:161
 # Listen for connections on all interfaces (both IPv4 \*and\* IPv6) agentAddress udp:161,udp6:[::1]:161
-{{</file-excerpt>}}
+{{</file>}}
 
 After saving your changes to the configuration file, you'll need to reload  settings for snmpd by running the following command:
 

@@ -260,11 +260,11 @@ Consider limiting Graylog access to a private network, if you are deploying Gray
 
 5.  Your Graylog input is configured and listening on port `8514`. Now, you will need to configure rsyslog to send system logs to the newly created input. To do this, edit the `rsyslog.conf` file:
 
-    {{< file-excerpt "/etc/rsyslog.conf" >}}
+    {{< file "/etc/rsyslog.conf" >}}
 $template GRAYLOGRFC5424,"%protocol-version% %timestamp:::date-rfc3339% %HOSTNAME% %app-name% %procid% %msg%\n"
 *.* @192.168.0.102:8514;GRAYLOGRFC5424
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Save and close the file when you are finished, then restart your server with the Linode Manager to apply these changes.

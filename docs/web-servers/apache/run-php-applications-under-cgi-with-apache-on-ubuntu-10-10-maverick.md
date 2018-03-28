@@ -56,12 +56,12 @@ In order to set up Apache to use PHP-CGI on Ubuntu systems, you must enable the 
 
 The required directives can be set anywhere in Apache's [configuration tree](/docs/web-servers/apache/configuration/configuration-basics). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Ubuntu systems, this is located at `/etc/apache2/conf.d/`. You may also choose to place these settings in your `/etc/apache2/httpd.conf` file. Regardless of their location, the relevant settings are:
 
-{{< file-excerpt "Apache Configuration Block" apache >}}
+{{< file "Apache Configuration Block" apache >}}
 ScriptAlias /local-bin /usr/bin
 AddHandler application/x-httpd-php5 php
 Action application/x-httpd-php5 /local-bin/php-cgi
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example, the path to the `php-cgi` binary is `/usr/bin/php-cgi`. All files with the `php` extension will be handed to the PHP CGI binary.
@@ -70,7 +70,7 @@ You may also choose to put these configuration directives within a virtual hosti
 
 The configuration file for the CGI executable of PHP is located at `/etc/php5/cgi/php.ini`. You can modify this file to suit the needs of your deployment.
 
-{{< file-excerpt "/etc/php5/cgi/php.ini" ini >}}
+{{< file "/etc/php5/cgi/php.ini" ini >}}
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
 display_errors = Off
 log_errors = On
@@ -79,7 +79,7 @@ max_execution_time = 30
 memory_limit = 64M
 register_globals = Off
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 If you need support for MySQL in PHP, then you must install the php5-mysql package with the following command:
@@ -102,12 +102,12 @@ Begin by installing the mpm-itk module:
 
 Now, in the `<VirtualHost >` entries for your sites (the site-specific files in `/etc/apache2/sites-avalible/`) add the following sub-block:
 
-{{< file-excerpt "Apache Virtual Hosting Configuration Block" apache >}}
+{{< file "Apache Virtual Hosting Configuration Block" apache >}}
 <IfModule mpm_itk_module>
    AssignUserId webeditor webgroup
 </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/docs/tools-reference/linux-users-and-groups) for more information about creating the necessary users and groups.

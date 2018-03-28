@@ -43,56 +43,56 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 3.  Edit the `/boot/grub/menu.lst` file as follows. As noted in the file, please do not uncomment entries that begin with the `#` character. First, locate the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 timeout 3
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 timeout 10
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 5.  Next, locate the line containing `kopt` that resembles the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 6.  Change it to match the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # kopt=root=/dev/xvda console=hvc0 ro quiet
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 7.  Next, locate the line containing `groot` that resembles the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # groot=(hd0,0)
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 8.  Change it to match the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # groot=(hd0)
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 9.  Issue the following command to update `grub`:
@@ -148,56 +148,56 @@ exec /sbin/getty -8 38400 hvc0
 
 3.  Edit the `/boot/grub/menu.lst` file as follows. As noted in the file, please do not uncomment entries that begin with the `#` character. First, locate the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 timeout 3
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  Edit the file to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 timeout 10
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 5.  Next, locate the line containing `kopt` that resembles the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 6.  Edit it to match the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 kopt=root=/dev/xvda console=hvc0 ro quiet
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 7.  Next, locate the line containing "groot" that resembles the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # groot=(hd0,0)
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 8.  Change it to match the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # groot=(hd0)
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 9.  Issue the following command to update `grub`:
@@ -371,47 +371,47 @@ exec /sbin/getty -8 38400 hvc0
 
 4.  Edit the `/boot/grub/menu.lst` file as follows. As noted in the file, please do not uncomment entries that begin with the `#` character. First, locate the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 timeout 5
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 5.  Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 timeout 10
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 6.  Next, locate the line containing `kopt` that resembles the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 7.  Change it to match the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # kopt=root=/dev/xvda console=hvc0 ro quiet
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 8.  Next, locate the line containing `groot=` and verify that it matches the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # groot=(hd0)
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 9.  Issue the following command to update `grub`:
@@ -460,47 +460,47 @@ timeout 10
 
 4.  Edit the `/boot/grub/menu.lst` file as follows. As noted in the file, please do not uncomment entries that begin with the `#` character. First, locate the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 timeout 5
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 5.  Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 timeout 10
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 6.  Next, locate the line containing `kopt` that resembles the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 7.  Change it to match the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # kopt=root=/dev/xvda console=hvc0 ro quiet
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 8.  Next, locate the line containing `groot=` and verify that it matches the following excerpt:
 
-    {{< file-excerpt "/boot/grub/menu.lst" >}}
+    {{< file "/boot/grub/menu.lst" >}}
 # groot=(hd0)
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 9.  Issue the following command to update `grub`:

@@ -58,7 +58,7 @@ To enable the Apache Longview app manually, follow these steps on your Linode vi
 
 2.  Your `httpd.conf` file (or the file where you enabled mod\_status; `status.conf` is another common location) should look like the following:
 
-    {{< file-excerpt "httpd.conf" >}}
+    {{< file "httpd.conf" >}}
 <IfModule mod_status.c>
     ExtendedStatus On
     <Location /server-status>
@@ -69,7 +69,7 @@ To enable the Apache Longview app manually, follow these steps on your Linode vi
     </Location>
 </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Edit `/etc/linode/longview.d/Apache.conf` to look like the following:
 
@@ -226,11 +226,11 @@ To fix this, follow these steps:
 
 3.  Check the location for `mod_status`. The default location on Debian and Ubuntu systems is `http://127.0.0.1/server-status?auto` on localhost. In the Apache configuration file (typically `httpd.conf` or `status.conf`), this is designated with the lines:
 
-    {{< file-excerpt "httpd.conf" >}}
+    {{< file "httpd.conf" >}}
 <Location /server-status>
     SetHandler server-status
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
     The `SetHandler server-status` line indicates that this is the location block for mod\_status. The location line itself sets the location.
 
@@ -296,10 +296,10 @@ If some of your Apache graphs are missing, you may see the error `Enable Extende
 
 This indicates that you need to add the following line to your Apache configuration file (typically `httpd.conf` or `status.conf`) in the `<IfModule mod_status.c>` section:
 
-{{< file-excerpt "httpd.conf" >}}
+{{< file "httpd.conf" >}}
 ExtendedStatus On
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 When you've finished modifying the configuration file, restart Apache:

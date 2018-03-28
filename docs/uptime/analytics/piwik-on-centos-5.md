@@ -34,10 +34,10 @@ Piwik requires a few additional dependencies beyond LAMP fundamentals. Most impo
 
 If you followed our recommendations in the CentOS LAMP guide, your PHP `memory_limit` value is set to 64 megabytes. For medium to high traffic sites, Piwik's creators recommend setting this value to 128 megabytes. Edit the `php.ini` file so the `memory_limit` setting reflects these changes
 
-{{< file-excerpt "/etc/php.ini" ini >}}
+{{< file "/etc/php.ini" ini >}}
 memory_limit = 128M
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Restart the Web Server

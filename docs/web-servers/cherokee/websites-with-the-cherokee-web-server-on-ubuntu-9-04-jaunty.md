@@ -26,10 +26,10 @@ This document assumes that you already have a working and up to date Ubuntu 9.04
 
 First, make sure you have the `universe` repositories enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
-{{< file-excerpt "/etc/sources.list" >}}
+{{< file "/etc/sources.list" >}}
 ## main & restricted repositories
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     > deb <http://us.archive.ubuntu.com/ubuntu/> jaunty main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> jaunty main restricted

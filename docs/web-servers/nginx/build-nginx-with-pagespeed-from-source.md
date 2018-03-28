@@ -200,7 +200,7 @@ You can use NGINX's binary to control the process directly without making a star
 
     Create a configuration file for your site with a basic server block inside:
 
-    {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
     listen       80;
     listen       [::]:80;
@@ -211,7 +211,7 @@ server {
     root         /var/www/example.com/;
 
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Start NGINX:
 
@@ -237,7 +237,7 @@ server {
 
 2.  Add the PageSpeed directives to your site configuration's `server` block as shown below.
 
-    {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
 
       ...
@@ -254,7 +254,7 @@ server {
     location ~ "^/ngx_pagespeed_beacon$" { }
 
     }
-{{< /file-excerpt >}}
+{{< /file >}}
 
     {{< note >}}
 `RewriteLevel OptimizeForBandwidth` is a [safer choice](https://www.modpagespeed.com/doc/optimize-for-bandwidth) than the default CoreFilters rewrite level.

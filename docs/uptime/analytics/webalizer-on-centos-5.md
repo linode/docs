@@ -61,13 +61,13 @@ This section assumes that you've already configured at least one virtual host. I
 
 To process multiple virtual hosts, create a shell script. In this case, there are three virtual hosts. Be sure to substitute the correct hostname and paths for your particular virtual host configuration.
 
-{{< file-excerpt "/opt/webalizerScript.sh" bash >}}
+{{< file "/opt/webalizerScript.sh" bash >}}
 #!/bin/sh
 webalizer -n tunahoagie -o /srv/www/example.com/public_html/webalizer /srv/www/example.com/logs/access.log
 webalizer -n tofuhoagie -o /srv/www/example.org/public_html/webalizer /srv/www/example.org/logs/access.log
 webalizer -n fuzzyshambler -o /srv/www/fuzzyshambler.com/public_html/webalizer /srv/www/fuzzyshambler.com/logs/access.log
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Make the script executable:

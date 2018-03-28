@@ -45,7 +45,7 @@ The master configuration file for Munin is `/etc/munin/munin.conf`. This file is
 
 The first section of the file contains the paths to the directories used by Munin. Note that these directories are the default paths used by Munin and can be changed by uncommenting and updating the path. When configuring your web server with Munin, make sure to point the root folder to the path of `htmldir`.
 
-{{< file-excerpt "/etc/munin/munin.conf" apache >}}
+{{< file "/etc/munin/munin.conf" apache >}}
 <VirtualHost 12.34.56.78:80>
    ServerAdmin webmaster@stats.example.org
    ServerName stats.example.org
@@ -60,7 +60,7 @@ The first section of the file contains the paths to the directories used by Muni
    ServerSignature On
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
         # dbdir /var/lib/munin
         # htmldir /var/cache/munin/www
@@ -71,14 +71,14 @@ There are additional directives after the directory location block such as `tmpl
 
 The last section of the `munin.conf` file defines the hosts Munin retrieves information from. For a default configuration, adding a host can be done in the form shown below:
 
-{{< file-excerpt "/etc/munin/munin.conf" >}}
+{{< file "/etc/munin/munin.conf" >}}
 [example.org]
 :   address example.org
-{{< /file-excerpt >}}
+{{< /file >}}
 
 For more complex configurations, including grouping domains, see the comment section in the file, reproduced below for your convenience:
 
-{{< file-excerpt "/etc/munin/munin.conf" >}}
+{{< file "/etc/munin/munin.conf" >}}
 # A more complex example of a host tree
 # First our "normal" host.
 [fii.foo.com]
@@ -112,13 +112,13 @@ load3.combined_loads.label Combined loads
 # specify that this is a domain by adding a semicolon.
 [foo.com;]
 # node_order Totals fii.foo.com fay.foo.com
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ### Munin Node Configuration
 
 The default `/etc/munin/munin-node.conf` file contains several variables you'll want to adjust to your preference. For a basic configuration, you'll only need to add the IP address of the master Munin server as a regular expression. Simply follow the style of the existing `allow` line if you're unfamiliar with regular expressions.
 
-{{< file-excerpt "/etc/munin/munin-node.conf" >}}
+{{< file "/etc/munin/munin-node.conf" >}}
 # A list of addresses that are allowed to connect. This must be a
 # regular expression, due to brain damage in Net::Server, which
 # doesn't understand CIDR-style network notation. You may repeat
@@ -127,7 +127,7 @@ The default `/etc/munin/munin-node.conf` file contains several variables you'll 
 allow \^127.0.0.1\$
 
 # Replace this with the master munin server IP address allow \^123.45.67.89\$
-{{< /file-excerpt >}}
+{{< /file >}}
 
 The above line tells the munin-node that the master Munin server is located at IP address `123.45.67.89`. After updating this file, restart the `munin-node`. In Ubuntu, use the following command:
 
@@ -139,7 +139,7 @@ You can use Munin with the web server of your choice, simply point your web serv
 
 If you are using the [Apache HTTP Server](/docs/web-servers/apache/) you can create a Virtual Host configuration to serve the reports from Munin. In this scenario, we've created a subdomain in the DNS Manager and are now creating the virtual host file:
 
-{{< file-excerpt "/etc/apache2/sites-available/stats.example.org" apache >}}
+{{< file "/etc/apache2/sites-available/stats.example.org" apache >}}
 <VirtualHost 12.34.56.78:80>
    ServerAdmin webmaster@stats.example.org
    ServerName stats.example.org
@@ -153,7 +153,7 @@ If you are using the [Apache HTTP Server](/docs/web-servers/apache/) you can cre
    ErrorLog /var/log/apache2/error.log
    ServerSignature On
 </VirtualHost>
-{{< /file-excerpt >}}
+{{< /file >}}
 
 If you use this configuration you will want to issue the following commands to ensure that all required directories exist, and that your site is enabled:
 

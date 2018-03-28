@@ -56,7 +56,7 @@ http {
 
 The `http` block contains directives for handling web traffic. These directives are often referred to as *universal* because they are passed on to to all website configurations NGINX serves. See [the NGINX docs](https://nginx.org/en/docs/http/ngx_http_core_module.html) for a list of available directives for the `http` block.
 
-{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+{{< file "/etc/nginx/nginx.conf" nginx >}}
 http {
     include       /etc/nginx/mime.types;
     default_type  application/octet-stream;
@@ -76,7 +76,7 @@ http {
 
     include /etc/nginx/conf.d/*.conf;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ## Server Blocks
@@ -91,7 +91,7 @@ The `http` block above contains an `include` directive which tells NGINX where w
 
 Regardless of the installation source, server configuration files will contain a `server` block (or blocks) for a website. For example:
 
-{{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
+{{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
     listen         80 default_server;
     listen         [::]:80 default_server;
@@ -101,7 +101,7 @@ server {
     try_files $uri /index.html;
 }
 
-{{</ file-excerpt >}}
+{{</ file >}}
 ### Listening Ports
 
 The `listen` directive tells NGINX the hostname/IP and the TCP port where it should listen for HTTP connections. The argument `default_server` means this virtual host will answer requests on port 80 that don't specifically match another virtual host's listen statement. The second statement listens over IPv6 and behaves similarly.
@@ -114,24 +114,24 @@ You typically should create one file per domain or site you want to host on your
 
 1.  Process requests for both `example.com` and `www.example.com`:
 
-	  {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
+	  {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server_name   example.com www.example.com;
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  The `server_name` directive can also use wildcards. `*.example.com` and `.example.com` both instruct the server to process requests for all subdomains of `example.com`:
 
-  	{{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
+  	{{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server_name   *.example.com;
 server_name   .example.com;
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Process requests for all domain names beginning with `example.`:
 
-  	{{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
+  	{{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server_name   example.*;
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 NGINX allows you to specify server names that are not valid domain names. NGINX uses the name from the HTTP header to answer requests, regardless of whether the domain name is valid or not.
 
@@ -141,14 +141,14 @@ Using non-domain hostnames is useful if your server is on a LAN, or if you alrea
 
 The `location` setting lets you configure how NGINX will respond to requests for resources within the server. Just like the `server_name` directive tells NGINX how to process requests for the domain, `location` directives cover requests for specific files and folders, such as `http://example.com/blog/`. Here are some examples:
 
-{{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location / { }
 location /images/ { }
 location /blog/ { }
 location /planet/ { }
 location /planet/blog/ { }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The locations above are *literal string* matches, which match any part of an HTTP request that comes after the host segment:
@@ -163,35 +163,35 @@ NGINX always fulfills requests using the most specific match:
 
 **Returns:** This is fulfilled by the `location /planet/blog/` directive because it is more specific, even though `location /planet/` also matches this request.
 
-{{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location ~ IndexPage\.php$ { }
 location ~ ^/BlogPlanet(/|/index\.php)$ { }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 When a `location` directive is followed by a tilde (**~**), NGINX performs a *regular expression* match. These matches are always case-sensitive. So, `IndexPage.php` would match the first example above, but `indexpage.php` would not. In the second example, the regular expression `^/BlogPlanet(/|index\.php)$` will match requests for `/BlogPlanet/` and `/BlogPlanet/index.php`, but **not** `/BlogPlanet`, `/blogplanet/`, or `/blogplanet/index.php`. NGINX uses [Perl Compatible Regular Expressions](http://perldoc.perl.org/perlre.html) (PCRE).
 
-{{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location ~* \.(pl|cgi|perl|prl)$ { }
 location ~* \.(md|mdwn|txt|mkdn)$ { }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 If you want matches to be case-*insensitive*, use a tilde with an asterisk (**~***). The examples above all specify how nginx should process requests that end in a particular file extension. In the first example, any file ending in: `.pl`, `.PL`, `.cgi`, `.CGI`, `.perl`, `.Perl`, `.prl`, and `.PrL` (among others) will match the request.
 
-{{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location ^~ /images/IndexPage/ { }
 location ^~ /blog/BlogPlanet/ { }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Adding a caret and tilde (**^~**) to your `location` directives tells NGINX, if it matches a particular string, to stop searching for more specific matches and use the directives here instead. Other than that, these directives work like the literal string matches in the first group. Even if there's a more specific match later, if a request matches one of these directives, the settings here will be used. See below for more information about the order and priority of `location` directive processing.
 
-{{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location = / { }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Finally, if you add an equals sign (**=**) to the `location` setting, this forces an exact match with the path requested and then stops searching for more specific matches. For instance, the final example will match only `http://example.com/`, not `http://example.com/index.html`. Using exact matches can speed up request times slightly, which can be useful if you have some requests that are particularly popular.
@@ -215,13 +215,13 @@ The `location` setting is another variable that has its own block of arguments.
 
 Once NGINX has determined which `location` directive best matches a given request, the response to this request is determined by the contents of the associated `location` directive block. Here's an example:
 
-{{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location / {
     root html;
     index index.html index.htm;
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example, the document root is located in the `html/` directory. Under the default installation prefix for NGINX, the full path to this location is `/etc/nginx/html/`.
@@ -244,7 +244,7 @@ If multiple files are specified for the `index` directive, NGINX will process th
 
 Here's a more complex example, showcasing a set of `location` directives for a server responding to the domain `example.com`:
 
-{{< file-excerpt "/etc/nginx/sites-available/example.com location directive" nginx >}}
+{{< file "/etc/nginx/sites-available/example.com location directive" nginx >}}
 location / {
     root   /srv/www/example.com/public_html;
     index  index.html index.htm;
@@ -258,7 +258,7 @@ location ~ \.pl$ {
     fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example, all requests for resources that end in a `.pl` extension are handled by the second location block, which specifies a `fastcgi` handler for these requests. Otherwise, NGINX uses the first location directive. Resources are located on the file system at `/srv/www/example.com/public_html/`. If no file name is specified in the request, NGINX will look for and provide the `index.html` or `index.htm` file. If no `index` files are found, the server will return a 404 error.

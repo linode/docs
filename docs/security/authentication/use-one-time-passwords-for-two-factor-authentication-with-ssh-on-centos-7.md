@@ -104,29 +104,29 @@ It is strongly recommended that you have another terminal session open while con
 
 1.  Open `/etc/pam.d/sshd` with sudo privileges, and add the line from those below that references `pam_oath.so` (it has been marked by a comment here for clarity, but you can omit everything following the `#`). The surrounding lines are included for context, but they should not be modified. The line **must** be added between the lines specified here:
 
-    {{< file-excerpt "/etc/pam.d/sshd" >}}
+    {{< file "/etc/pam.d/sshd" >}}
 auth   	required    pam_sepermit.so
 auth    substack    password-auth
 auth    required    pam_oath.so usersfile=/etc/liboath/users.oath window=10 digits=6 #Add this line
 auth    include     postlogin
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
     This line specifies four criteria: the PAM OATH module as an additional method of authentication, the path for the users file, a window that specifies which passphrases will be accepted (to account for potential time syncing issues), and a verification code length of six digits.
 
     {{< note >}}
 If you follow the rest of the instructions and find that you are still unable to connect, try adding `debug=1` to the end of the `password-auth` line to provide you with more information when your authentication fails:
 
-{{< file-excerpt "/etc/pam.d/sshd" >}}
+{{< file "/etc/pam.d/sshd" >}}
 auth    required    password-auth debug=1
 {{< /note >}}
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Edit `/etc/ssh/sshd_config` to include the following lines, replacing `example-user` with any system user for which you'd like to enable two-factor authentication. Comments (preceded by #) are included here, but should not be added to your actual configuration file:
 
-    {{< file-excerpt "/etc/ssh/sshd_config" >}}
+    {{< file "/etc/ssh/sshd_config" >}}
 # This line already exists in the file and should be changed from 'no' to 'yes'
 ChallengeResponseAuthentication yes
 
@@ -136,7 +136,7 @@ ChallengeResponseAuthentication yes
 Match User example-user
     AuthenticationMethods keyboard-interactive
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     If you created TOTPs for multiple users and you'd like to have them all use two-factor authentication, create additional `Match User` blocks for each user, duplicating the format shown above.
@@ -167,23 +167,23 @@ Confirm that your public key has been copied to your Linode before completing th
 
 1.  Set `PasswordAuthentication` to `no` and modify the `AuthenticationMethods` line in `/etc/ssh/sshd_config`:
 
-    {{< file-excerpt "/etc/ssh/sshd_config" >}}
+    {{< file "/etc/ssh/sshd_config" >}}
 PasswordAuthentication no
 ...
 Match User example-user
     AuthenticationMethods publickey,keyboard-interactive
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Configure this setting in the `AuthenticationMethods` directive for each user as appropriate. When any of these users log in, they will need to provide their SSH key and they will be authenticated via TOTP, as well. Be sure to restart your SSH daemon to apply these changes.
 
 2.  Next, you'll need to make changes to your PAM configuration. Comment out or omit the following line in your `/etc/pam.d/sshd` file:
 
-    {{< file-excerpt "/etc/pam.d/sshd" >}}
+    {{< file "/etc/pam.d/sshd" >}}
 # auth       substack     password-auth
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 That's it! You should now be able to log in using your SSH key as the first method of authentication and your verification code as the second. To test your configuration, log out and try to log in again via SSH. You should be asked for your 6-digit verification code only, since the key authentication will not produce a prompt.

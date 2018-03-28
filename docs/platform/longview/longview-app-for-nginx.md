@@ -71,7 +71,7 @@ To enable the NGINX Longview app manually, follow these steps on your Linode via
 
 1.  Add the following lines to your NGINX configuration to enable the status module and set the location of the status page. The lines can go at the end of the main configuration file at `nginx.conf` or in a separate vhost configuration file:
 
-    {{< file-excerpt "nginx.conf" >}}
+    {{< file "nginx.conf" >}}
 server {
     listen 127.0.0.1:80;
     server_name 127.0.0.1;
@@ -82,7 +82,7 @@ server {
     }
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Restart NGINX:
@@ -173,7 +173,7 @@ To fix this, follow these steps:
 
 2.  Check the status page location, and make sure it's available over Port 80. The default location Longview checks is `http://127.0.0.1/nginx_status` on localhost, but NGINX doesn't typically have a status page location set up by default. In the NGINX configuration file (typically `nginx.conf` or a vhost configuration file), this is designated with the lines:
 
-    {{< file-excerpt "nginx.conf" >}}
+    {{< file "nginx.conf" >}}
 server {
     listen 127.0.0.1:80;
     server_name 127.0.0.1;
@@ -184,7 +184,7 @@ server {
     }
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview Nginx tab in the Linode Manager to verify that it's working now.

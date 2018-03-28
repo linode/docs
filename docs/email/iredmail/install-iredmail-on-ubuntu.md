@@ -171,30 +171,30 @@ For if your certificate issuer uses `.pem` files instead of `.crt`, be sure to r
 
 2. To replace the certificates used by Apache2, substitute the following paths in `default-ssl.conf` with the location of your certificate and key:
 
-    {{< file-excerpt "/etc/apache2/sites-available/default-ssl.conf" aconf >}}
+    {{< file "/etc/apache2/sites-available/default-ssl.conf" aconf >}}
 SSLCertificateFile /etc/ssl/certs/mail.yourdomain.com.crt
 SSLCertificateKeyFile /etc/ssl/private/mail.yourdomain.com.key
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 
 3. To replace the certificates used by Postfix, substitute the following paths in `main.cf` with the location of your certificate and key:
 
-    {{< file-excerpt "/etc/postfix/main.cf" aconf >}}
+    {{< file "/etc/postfix/main.cf" aconf >}}
 smtpd_tls_cert_file = /etc/ssl/certs/mail.yourdomain.com.crt
    smtpd_tls_key_file = /etc/ssl/private/mail.yourdomain.com.key
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4. To replace the certs used by Postfix, substitute the following paths in `dovecot.conf` with the location of your certificate and key:
 
-    {{< file-excerpt "/etc/dovecot/dovecot.conf" aconf >}}
+    {{< file "/etc/dovecot/dovecot.conf" aconf >}}
 ssl_cert = </etc/ssl/certs/mail.yourdomain.com.crt
    ssl_key = </etc/ssl/private/mail.yourdomain.com.key
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 <!-- syntax highlighting fix-->
 
@@ -266,7 +266,7 @@ AWStats quickly analyzes and displays log files/server activity via a few web-ba
 
 3.  Edit `apache2.conf` by adding the text block below to the end of the file. Make sure to comment out the existing Auth_MySQL lines at the end of the file.
 
-    {{< file-excerpt "/etc/apache2/conf/apache2.conf" aconf >}}
+    {{< file "/etc/apache2/conf/apache2.conf" aconf >}}
 #MySQL auth (mod_dbd, libaprutil1-dbd-mysql)
 <IfModule mod_dbd.c>
 	    DBDriver mysql
@@ -277,7 +277,7 @@ DBDParams "host=127.0.0.1 dbname=vmail user=vmail pass=(SUBSTITUTE WITH YOUR PAS
  DBDExptime 300
 </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  Edit `awstats.conf` to mirror the example text below, by adding the `mod_authn_dbd` section and commenting out the `Auth_MySQL` section.

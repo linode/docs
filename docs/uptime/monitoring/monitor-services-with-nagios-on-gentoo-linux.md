@@ -44,10 +44,10 @@ This command will install Nagios and place the website files in `/usr/share/nagi
 
 Edit the `APACHE2_OPTS` line in your `/etc/conf.d/apache2` so that it resembles the following:
 
-{{< file-excerpt "/etc/conf.d/apache2" >}}
+{{< file "/etc/conf.d/apache2" >}}
 APACHE2_OPTS="-D DEFAULT_VHOST -D INFO -D SSL -D SSL_DEFAULT_VHOST -D LANGUAGE -D PHP5 -D NAGIOS"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 You will also need to copy the Nagios Apache config to `/etc/apache2/modules.d/`:
@@ -58,7 +58,7 @@ You will also need to copy the Nagios Apache config to `/etc/apache2/modules.d/`
 
 Begin by editing the `/etc/nagios/objects/contacts.cfg` file's email field, according to the example below:
 
-{{< file-excerpt "/etc/nagios/objects/contacts.cfg" >}}
+{{< file "/etc/nagios/objects/contacts.cfg" >}}
 define contact{
     contact_name nagiosadmin ; Short name of user use generic-contact
     ; Inherit default values from generic-contact template (defined above)
@@ -66,7 +66,7 @@ define contact{
     email nagiosuser@example.com> ; <<***** CHANGE THIS TO YOUR EMAIL ADDRESS ******
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following command to create a password for the `nagiosadmin` user. You will use this password to log into the Nagios administration panel when it is configured.

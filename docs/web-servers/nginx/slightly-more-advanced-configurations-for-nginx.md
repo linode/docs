@@ -74,9 +74,9 @@ For more information, see the [NGINX docs](https://nginx.org/en/docs/http/ngx_ht
 
 2.  Add the `proxy_cache_path` directive to NGINX's `http` block. Make sure the file path references the folder you just created in Step 1.
 
-      {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+      {{< file "/etc/nginx/nginx.conf" nginx >}}
 proxy_cache_path /var/www/example.com/cache/ keys_zone=one:10m max_size=500m inactive=24h use_temp_path=off;
-{{< /file-excerpt >}}
+{{< /file >}}
 
     * `keys_zone=one:10m` sets a 10 megabyte shared storage zone (simply called `one`, but you can change this for your needs) for cache keys and metadata.
 

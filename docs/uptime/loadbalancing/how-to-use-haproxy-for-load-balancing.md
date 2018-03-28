@@ -117,13 +117,13 @@ When you configure load balancing using HAProxy, there are two types of nodes wh
 
 1.  Open `/etc/haproxy/haproxy.cfg` in a text editor and append the configuration for the front end:
 
-    {{< file-excerpt "/etc/haproxy/haproxy.cfg" aconf >}}
+    {{< file "/etc/haproxy/haproxy.cfg" aconf >}}
 frontend haproxynode
     bind *:80
     mode http
     default_backend backendnodes
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}
@@ -134,7 +134,7 @@ Throughout this guide, replace `203.0.113.2` with the IP address of your fronten
 
 2.  Add the back end configuration:
 
-    {{< file-excerpt "/etc/haproxy/haproxy.cfg" aconf >}}
+    {{< file "/etc/haproxy/haproxy.cfg" aconf >}}
 backend backendnodes
     balance roundrobin
     option forwardfor
@@ -144,7 +144,7 @@ backend backendnodes
     server node1 192.168.1.3:8080 check
     server node2 192.168.1.4:8080 check
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     This defines **backendnodes** and specifies several configuration options:
@@ -158,7 +158,7 @@ backend backendnodes
 
 3.  Add the optional stats node to the configuration:
 
-    {{< file-excerpt "/etc/haproxy/haproxy.cfg" aconf >}}
+    {{< file "/etc/haproxy/haproxy.cfg" aconf >}}
 listen stats
     bind :32700
     stats enable
@@ -166,7 +166,7 @@ listen stats
     stats hide-version
     stats auth someuser:password
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     The HAProxy stats node will listen on port 32700 for connections and is configured to hide the version of HAProxy as well as to require a  password login. Replace `password` with a more secure password. In addition, it is recommended to disable stats login in production.

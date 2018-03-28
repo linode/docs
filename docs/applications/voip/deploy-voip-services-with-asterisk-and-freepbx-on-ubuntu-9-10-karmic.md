@@ -30,7 +30,7 @@ There are quite a few prerequisites to satisfy before you can begin installing A
 
 You will need to enable the universe repositories in order to install Asterisk. To do so, edit `/etc/apt/sources.list` so that it looks like the following:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 ## main & restricted repositories
 deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
@@ -47,7 +47,7 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 deb http://security.ubuntu.com/ubuntu karmic-security universe
 deb-src http://security.ubuntu.com/ubuntu karmic-security universe
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following commands to update your package lists and upgrade packages on your Linode:
@@ -82,19 +82,19 @@ You will receive a warning about the `/boot/grub/menu.lst` file not existing and
 
 Change the groot line to resemble the following:
 
-{{< file-excerpt "/boot/grub/menu.lst" >}}
+{{< file "/boot/grub/menu.lst" >}}
 ## default grub root device
 ## e.g. groot=(hd0,0)
 # groot=(hd0)
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 You will also want to change the indomU line to resemble the following:
 
-{{< file-excerpt "/boot/grub/menu.lst" >}}
+{{< file "/boot/grub/menu.lst" >}}
 # indomU=false
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 You will now need to update grub again in order to apply the changes. Issue the following command:
 
@@ -166,20 +166,20 @@ By default, Apache listens on all IP addresses available to it. We must configur
 
 Begin by modifying the `NameVirtualHost` entry in `/etc/apache2/ports.conf` as follows:
 
-{{< file-excerpt "/etc/apache2/ports.conf" apache >}}
+{{< file "/etc/apache2/ports.conf" apache >}}
 NameVirtualHost 12.34.56.78:80
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Be sure to replace "12.34.56.78" with your Linode's public IP address.
 
 Now, modify the default site's virtual hosting in the file `/etc/apache2/sites-available/default` so that the `<VirtualHost >` entry reads:
 
-{{< file-excerpt "/etc/apache2/sites-available/default" apache >}}
+{{< file "/etc/apache2/sites-available/default" apache >}}
 <VirtualHost 12.34.56.78:80>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 You will now need to install MySQL. To begin the installation, issue the following command:
@@ -209,7 +209,7 @@ Next, you will need to install PHP. Issue the following commands:
 
 You will need to edit PHP's configuration file in order to ensure FreePBX can function properly. In particular you need to ensure that the "memory\_limit" directive is set to "100M" or else you may run into problems.
 
-{{< file-excerpt "/etc/php5/apache2/php.ini" >}}
+{{< file "/etc/php5/apache2/php.ini" >}}
 max_execution_time = 30
 memory_limit = 100M
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
@@ -218,24 +218,24 @@ log_errors = On
 error_log = /var/log/php.log
 register_globals = Off
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 FreePBX requires you to disable "magic quotes" in PHP. Find the following directives in your php.ini file and change them to reflect the example below:
 
-{{< file-excerpt "/etc/php5/apache2/php.ini" >}}
+{{< file "/etc/php5/apache2/php.ini" >}}
 magic_quotes_gpc = Off
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 For this installation, we want Apache to run as the Asterisk user. This will allow Apache to access all of the files it needs in order to run FreePBX. Make sure your `/etc/apache2/envvars` file resembles the following:
 
-{{< file-excerpt "/etc/apache2/envvars" >}}
+{{< file "/etc/apache2/envvars" >}}
 export APACHE_RUN_USER=asterisk
 export APACHE_RUN_GROUP=asterisk
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Finally, restart Apache to make sure everything is loaded correctly:
@@ -290,13 +290,13 @@ To update your Apache configuration, you will need to restart the server. Issue 
 
 You will also need to edit your `nano /etc/rc.local` file to enable some features of FreePBX on boot. You will need to add the "perl /var/www/html/panel/op\_server.pl -d" line to this file. **Please note:** You need to add this line before any lines that way "exit", as follows:
 
-{{< file-excerpt "/etc/rc.local" bash >}}
+{{< file "/etc/rc.local" bash >}}
 # [..]
 
 perl /var/www/html/panel/op_server.pl -d
 exit 0
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 You should now be able to visit your Linode's IP address or the A record you have pointed at your Linode in your web browser. You will need to log in using the `asterisk` username, and the password you selected for the FreePBX installation above. Once you have successfully logged in, you will be able to control your Asterisk installation through FreePBX!

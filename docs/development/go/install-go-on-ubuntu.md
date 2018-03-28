@@ -44,10 +44,10 @@ a4da5f4c07dfda8194c4621611aeb7ceaab98af0b38bfb29e1be2ebb04c3556c  go1.9.3.linux-
 
 1. Using a text editor, open the `~/.profile` file and add the following two lines to the bottom of the file:
 
-    {{< file-excerpt "~/.profile" conf >}}
+    {{< file "~/.profile" conf >}}
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2. Save the file, and load the commands into the current shell instance:
 

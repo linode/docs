@@ -313,10 +313,10 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 4. Open the `zfs.conf` file. Paste these lines into the editor and then adjust the two numerical values:
 
-    {{< file-excerpt "/etc/modprobe.d/zfs.conf" conf >}}
+    {{< file "/etc/modprobe.d/zfs.conf" conf >}}
 options zfs zfs_arc_min=3221225472
 options zfs zfs_arc_max=6442450944
-{{< /file-excerpt >}}
+{{< /file >}}
 
 5. Save the file and reboot the machine via the Linode Manager so the changes can take effect.
 

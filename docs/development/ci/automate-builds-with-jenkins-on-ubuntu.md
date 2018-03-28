@@ -677,7 +677,7 @@ In the example pipeline, `DOCKER = credentials('docker-hub')` creates two enviro
 
 The first thing you will notice about the `parallel` code block is that it's self-explanatory--it will run sub-stages in parallel. This is useful for building two Docker images at the same with the same shell commands you used before. Each image is declared in its own step which is also part of an independent stage.
 
-{{< file-excerpt "~/jenkins-guide/Jenkinsfile" >}}
+{{< file "~/jenkins-guide/Jenkinsfile" >}}
 // Building your Test Images
     stage('BUILD') {
       parallel {
@@ -700,7 +700,7 @@ The first thing you will notice about the `parallel` code block is that it's sel
         }
       }
     }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 After closing the parallel stage you encounter the `post` conditionals. `Post` means the definitions applies to the whole `BUILD` stage. In this case only the `failure` condition is set, so it will only run if any part of the `BUILD` stage fails. Configuring the different tools that Jenkins provides for communications is beyond the scope of this guide.
 
@@ -708,7 +708,7 @@ After closing the parallel stage you encounter the `post` conditionals. `Post` m
 
 The testing stage also uses parallel execution:
 
-{{< file-excerpt "~/jenkins-guide/Jenkinsfile" conf >}}
+{{< file "~/jenkins-guide/Jenkinsfile" conf >}}
 // Performing Software Tests
     stage('TEST') {
       parallel {
@@ -742,7 +742,7 @@ The testing stage also uses parallel execution:
         }
       }
     }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 The `Mocha Tests` stage starts the two images and performs the automatic tests, resulting in a `reports.xml` file saved into Jenkins workspace. On the other hand, the `Quality Tests` stage publishes the `trunk` version of your application to Docker Hub. It first issues the Docker login command (using the pre-defined credentials), then changes the image tag, and pushes it.
 
@@ -802,12 +802,12 @@ Up to this point, everything should work as expected without error. But what hap
 
 1.  Edit `app.js` in your local workstation. On the server, change the root address `/` with `/ERROR`. This will cause an error 404 on the `express` server (page not found) so the test will fail.
 
-{{< file-excerpt "~/jenkins-guide/app.js" js >}}
+{{< file "~/jenkins-guide/app.js" js >}}
 // Web Server
 app.get('/ERROR',function(req,res) {
   res.json(os);
 });
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Commit your changes to the Jenkins Server:
 
@@ -831,11 +831,11 @@ Now, induce an error on the `BUILD` stage.
 
 1.  Edit your `express-image/package.json`. Change the express package name to `express-ERROR` to simulate a mistyping.
 
-    {{< file-excerpt "~/jenkins-guide/express-image/package.json" json >}}
+    {{< file "~/jenkins-guide/express-image/package.json" json >}}
 "dependencies": {
     "express-ERROR": "^4.13.3"
   }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Push your changes to the Jenkins Server:
 

@@ -259,9 +259,9 @@ Adding an image through markdown requires having the images stored in the projec
 
 2.  Modify the references to images within the markdown to the appropriate path. Wrap the path in two curly braces and double quotes.
 
-    {{< file-excerpt "YYYY-MM-DD-example-post.md" >}}
+    {{< file "YYYY-MM-DD-example-post.md" >}}
 ![png]({{ "/assets/images/example_notebook_5_0.png" }})
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Graphs with legends that are in a longer dimension also can be displayed.
@@ -318,30 +318,30 @@ The default theme is installed as a gem. If there is another `_layouts` or `_inc
 
 3.  Within the `_includes` directory in the minima theme, create a new `scripts.html` file. Using Liquid templating, add logic to check for a `mathjax` header in a post:
 
-      {{< file-excerpt "_includes/scripts.html" html >}}
+      {{< file "_includes/scripts.html" html >}}
 {% if page.mathjax %}
 <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 {% endif %}
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  Add templating to `_layouts/post.html` to include `scripts.html` in posts:
 
-    {{< file-excerpt "_layouts/post.html" >}}
+    {{< file "_layouts/post.html" >}}
 ---
 layout: default
 ---
 
 {% include scripts.html %}
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 5.  Edit the header `/exampleblog/_posts/YYYY-MM-DD-example-post.md` with `mathjax: true`. Wrap the LaTeX in `$$` to create a math block. Remember to include the two lines of `---`:
 
-    {{< file-excerpt "YYYY-MM-DD-example-post.md" yaml >}}
+    {{< file "YYYY-MM-DD-example-post.md" yaml >}}
 ---
 layout: post
 mathjax: true
@@ -360,7 +360,7 @@ $$
 \end{equation*}
 $$
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 6.  The browser should use MathJax to display output identical to a Jupyter Notebook.

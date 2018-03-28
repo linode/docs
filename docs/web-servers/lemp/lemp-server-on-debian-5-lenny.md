@@ -58,15 +58,15 @@ This will install version 0.6.33 of the nginx server.
 
 Apart from the difference in the following procedure, installing from stable and backported packages are identical. Edit the `/etc/apt/sources.list` file to add the following line:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 deb <http://ftp.debian.org/debian> lenny-backports main
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Pin the `nginx` package to the `lenny-backports` repository by inserting the following lines in the `/etc/apt/preferences` file (note: you will need to create this file if it doesn't already exist.)
 
-{{< file-excerpt "/etc/apt/preferences" >}}
+{{< file "/etc/apt/preferences" >}}
 Package: nginx Pin: release a=lenny-backports Pin-Priority: 999
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Now issue the following commands to update the package manger and install the nginx package and the required dependencies:
 
@@ -131,7 +131,7 @@ Now, issue the following command to start the web-server:
 
 Regardless of the method you use to install nginx, you will need to configure `server` declarations to specify name-based virtual hosts. There are a number of approaches to organizing configuration files with nginx. Regardless of the organizational strategy, all virtual host configurations are contained within `server` configuration blocks that are in turn contained within the `http` block in the `nginx.conf` file. Consider the following nginx virtual host configuration:
 
-{{< file-excerpt "nginx.conf" >}}
+{{< file "nginx.conf" >}}
 server {
     listen   80;
     server_name www.example.com example.com;
@@ -143,7 +143,7 @@ server {
         index  index.html index.htm;
     }
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Create the directories referenced in this configuration by issuing the following commands:
 
@@ -164,7 +164,7 @@ The source file is saved, and the site can be re-enabled at any time.
 
 If you installed the web server after compiling it from source you have a number of options. You may insert the server directives directly into the `http` section of the `/opt/nginx/conf/nginx.conf` or `/etc/nginx/nginx.conf` file, although this may be difficult to manage. You may also replicate the management system created for the Debian project by creating `sites-available/` and `sites-enabled/` directories and inserting the following line into your `nginx.conf` file:
 
-{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+{{< file "/etc/nginx/nginx.conf" nginx >}}
 http {
 # [...]
 
@@ -173,12 +173,12 @@ include /opt/etc/nginx/sites-enabled/*;
 # [...]
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Modify the include statement to point to the path of your `sites-enabled` directory. In some circumstances, it may make more sense to create and include a file named `/opt/nginx-sites.conf` that is included in the `nginx.conf` file as follows:
 
-{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+{{< file "/opt/nginx/conf/nginx.conf" nginx >}}
 http {
 # [...]
 
@@ -187,7 +187,7 @@ include /opt/nginx-sites.conf;
 # [...]
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Then, depending on the size and nature of your deployment, place your virtual host configurations either directly in the `/opt/nginx-sites.conf` file or include statements for server-specific configuration files in the `nginx-sites.file`. For more information regarding nginx configuration options, consider our [overview of nginx configuration](/docs/websites/nginx/basic-nginx-configuration).
@@ -255,7 +255,7 @@ server {
 
 To mitigate this issue, you may wish to modify your configuration to include a `try_files` directive. Please note that this fix requires nginx and the php-fcgi workers to reside on the same server.
 
-{{< file-excerpt "nginx.conf" >}}
+{{< file "nginx.conf" >}}
 location ~ \.php$ {
     try_files $uri =404;
     include /etc/nginx/fastcgi_params;
@@ -263,11 +263,11 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Additionally, it's a good idea to secure any upload directories your applications may use. The following configuration excerpt demonstrates securing an "/images" directory.
 
-{{< file-excerpt "nginx.conf" >}}
+{{< file "nginx.conf" >}}
 location ~ \.php$ {
     include /etc/nginx/fastcgi_params;
     if ($uri !~ "^/images/") {
@@ -276,7 +276,7 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 When you've completed the modifications to the configuration, make sure that the virtual host is enabled and issue the following command to restart the web server:
 

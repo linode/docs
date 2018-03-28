@@ -119,10 +119,10 @@ eula=true
 
 2.  As the root user or with `sudo`, open `/etc/rc.local` and add the following before the `exit 0` line:
 
-    {{< file-excerpt "/etc/local.rc" >}}
+    {{< file "/etc/local.rc" >}}
 su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     This line will, at reboot, create a new [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session as the Minecraft user, and launch SpigotMC in it.

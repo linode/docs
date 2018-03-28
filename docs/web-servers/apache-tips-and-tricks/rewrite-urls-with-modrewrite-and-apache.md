@@ -36,18 +36,18 @@ In this guide, you'll learn how to rewrite URLs with mod_rewrite and Apache. Rew
 
 In a `<Directory>` block (usually found a virtual host file) or `.htaccess` file, enable mod_rewrite:
 
-{{< file-excerpt "Apache Configuration Option" apache >}}
+{{< file "Apache Configuration Option" apache >}}
 RewriteEngine on
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 You may create multiple separate rewrite rules. These rules provide a pattern that the server compares against incoming requests. If a request matches a rewrite pattern, the server modifies the request as described by the rule and processes that request. Here is an example of a rewrite rule:
 
-{{< file-excerpt "Apache Configuration Option" apache >}}
+{{< file "Apache Configuration Option" apache >}}
 RewriteRule ^post-id/([0-9]+)$ /posts/$1.html
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Let's explain this rule: The first string is the pattern for matching against incoming requests. The second string specifies the actual files to be served. Rewrite patterns use [regular expression](https://en.wikipedia.org/wiki/Regular_expression) syntax. The `^` defines the beginning of the string, and the `$` defines the end of the string, meaning that the rewrite engine won't rewrite strings that  match only part of the pattern.
@@ -63,13 +63,13 @@ Optionally, you can insert a `RewriteBase` directive to modify the behavior of t
 -   Some users make a requests in the form `http://example.com/page/title-of-page`, where "title of page" might represent any string of characters.
 -   The files are located on the filesystem at `/srv/www/example.com/public_html/objects/` and match requested object in name, but have an `.html` extension.
 
-{{< file-excerpt "Apache Configuration Options" apache >}}
+{{< file "Apache Configuration Options" apache >}}
 RewriteEngine on
 RewriteBase /objects
 RewriteRule ^post-id/([0-9]+)$ $1.html
 RewriteRule ^page/([^/]+)$ $1.html
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The above rewrite rules would take a request for:
@@ -83,14 +83,14 @@ This is useful when the locations of files on the file system do not correspond 
 
 With the `RewriteCond` parameter, you can set conditions under which a `RewriteRule` will be used. Let's take the following example from the default rewrite rules for the [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/) application:
 
-{{< file-excerpt "Apache Configuration Option for WordPress" apache >}}
+{{< file "Apache Configuration Option for WordPress" apache >}}
 RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example, all requests that begin with the top level of the context are affected by the rewrite rules. This is specified by the `RewriteBase /` directive. The context is determined by where the rewrite rules are specified in the virtual host, directory block, or `.htaccess` file.

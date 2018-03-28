@@ -37,7 +37,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 2.  The version of Postfix included in the main CentOS repository does not include support for MySQL; therefore, you will need install Postfix from the CentOS Plus repository. Before doing so, add exclusions to the `[base]` and `[updates]` repositories for the Postfix package to prevent it from being overwritten with updates that do not have MySQL support:
 
-    {{< file-excerpt "/etc/yum.repos.d/CentOS-Base.repo" >}}
+    {{< file "/etc/yum.repos.d/CentOS-Base.repo" >}}
 [base]
 name=CentOS-$releasever - Base
 exclude=postfix
@@ -47,7 +47,7 @@ exclude=postfix
 name=CentOS-$releasever - Updates
 exclude=postfix
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Install the required packages:
@@ -107,10 +107,10 @@ Next, set up a MySQL database to handle virtual domains and users.
 
 11. Bind MySQL to localhost (127.0.0.1) by editing `/etc/my.cnf`, and adding the following to the `[mysqld]` section of the file:
 
-    {{< file-excerpt "/etc/my.cnf" >}}
+    {{< file "/etc/my.cnf" >}}
 bind-address=127.0.0.1
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     This is required for Postfix to be able to communicate with the database server. If you have MySQL set up to listen on another IP address (such as an internal IP), you will need to substitute this IP address in place of `127.0.0.1` during the Postfix configuration steps. It is *not* advisable to run MySQL on a publicly-accessible IP address.
@@ -216,11 +216,11 @@ hosts = 127.0.0.1
 
 8.  Edit the file `/etc/postfix/master.cf` and add the Dovecot service to the bottom of the file:
 
-    {{< file-excerpt "/etc/postfix/master.cf" >}}
+    {{< file "/etc/postfix/master.cf" >}}
 dovecot   unix  -       n       n       -       -       pipe
     flags=DRhu user=vmail:vmail argv=/usr/libexec/dovecot/deliver -f ${sender} -d ${recipient}
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 9.  Configure Postfix to start on boot and start the service for the first time:
@@ -318,12 +318,12 @@ password_query = SELECT email as user, password FROM users WHERE email='%u';
 
 6.  Check `/var/log/maillog` to make sure Dovecot started without errors. Your log should have lines similar to the following:
 
-    {{< file-excerpt "/var/log/maillog" >}}
+    {{< file "/var/log/maillog" >}}
 Mar 18 15:21:59 sothoryos postfix/postfix-script[3069]: starting the Postfix mail system
 Mar 18 15:22:00 sothoryos postfix/master[3070]: daemon started -- version 2.6.6, configuration /etc/postfix
 Mar 18 15:32:03 sothoryos dovecot: master: Dovecot v2.0.9 starting up (core dumps disabled)
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 7.  Test your POP3 server to make sure it's running properly:
@@ -422,21 +422,21 @@ After the test mail is sent, check the mail logs to make sure the mail was deliv
 
 1.  Check the `maillog` located in `/var/log/maillog`. You should see something similar to the following:
 
-    {{< file-excerpt "/var/log/maillog" >}}
+    {{< file "/var/log/maillog" >}}
 Mar 18 15:39:07 server postfix/cleanup[3252]: 444E34055: message-id=<20150318153907.444E34055@server.example.com>
 Mar 18 15:39:07 server postfix/qmgr[3218]: 444E34055: from=<root@server.example.com>, size=489, nrcpt=1 (queue active)
 Mar 18 15:39:07 server postfix/pipe[3258]: 444E34055: to=<sales@example.com>, relay=dovecot, delay=0.09, delays=0.04/0.01/0/0.05, dsn=2.0.0, sta$
 Mar 18 15:39:07 server postfix/qmgr[3218]: 444E34055: removed
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Check the Dovecot delivery log located in `/home/vmail/dovecot-deliver.log`. The contents should look similar to the following:
 
-    {{< file-excerpt "/home/vmail/dovecot-deliver.log" >}}
+    {{< file "/home/vmail/dovecot-deliver.log" >}}
 deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=\<<20110121200319.E1D148908@hostname.example.com>>: saved mail to INBOX
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Now you can test to see what the users of your email server would see with their email clients.

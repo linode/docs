@@ -141,7 +141,7 @@ By default, Solr listens for search requests on all IP addresses at port 8983. F
 
 2.  Locate the section where listening host and port are set:
 
-    {{< file-excerpt "/opt/solr-4.10.4/example/etc/jetty.xml" >}}
+    {{< file "/opt/solr-4.10.4/example/etc/jetty.xml" >}}
 <!--
     <Call name="addConnector">
       <Arg>
@@ -159,7 +159,7 @@ By default, Solr listens for search requests on all IP addresses at port 8983. F
     </Call>
 -->
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Set the appropriate listening IP address:

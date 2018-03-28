@@ -160,9 +160,9 @@ Exit the MySQL shell by issuing the following command:
 
 Configure to MySQL to bind to 127.0.0.1 by editing the file `/etc/my.cnf`. You will need to add the `bind-address = 127.0.0.1` directive to the `[mysqld]` block as show below:
 
-{{< file-excerpt >}}
+{{< file >}}
 /etc/my.cnf
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > [mysqld] datadir=/var/lib/mysql socket=/var/lib/mysql/mysql.sock user=mysql \# Default to using old password format for compatibility with mysql 3.x \# clients (those using the mysqlclient10 compatibility package). old\_passwords=1 bind-address = 127.0.0.1
 

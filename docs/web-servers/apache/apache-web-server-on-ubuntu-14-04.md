@@ -50,10 +50,10 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 2.  Edit the main Apache configuration file and turn off the `KeepAlive` setting:
 
-    {{< file-excerpt "/etc/apache2/apache2.conf" >}}
+    {{< file "/etc/apache2/apache2.conf" >}}
 KeepAlive Off
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Configure the Multi-Processing Module
@@ -152,12 +152,12 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
     {{< note >}}
 If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
 
-{{< file-excerpt "/etc/apache2/sites-available/example.com.conf" aconf >}}
+{{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
 Options ExecCGI
 AddHandler cgi-script .pl
 {{< /note >}}
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 
