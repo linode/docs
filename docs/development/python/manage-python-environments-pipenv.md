@@ -15,7 +15,7 @@ title: Manage Python Packages and Virtual Environments with Pipenv
 
 ## What is Pipenv?
 
-Pipenv, Python's officially recommended package management tool, combines Pip and Virtualenv while also incorporating elements from successful package management tools for other langugages, such as NPM. This results in a simplified workflow for installing packages and managing virtual environments.
+Pipenv, Python's officially recommended package management tool, combines Pip and Virtualenv while also incorporating elements from successful package management tools for other languagages, such as NPM. This results in a simplified workflow for installing packages and managing virtual environments.
 
 ### Install Pipenv
 
