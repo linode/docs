@@ -2,9 +2,9 @@
 author:
   name: Jared Kobos
   email: docs@linode.com
-keywords: ["getting started", "intro", "basics", "first steps"]
-description: 'This guide will help you set up your first Linode.'
-og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
+keywords: ["python", "virtual environment", "pip","virtualenv","pipenv"]
+description: 'Pipenv combines the functionality of Pip and Virtualenv into a single tool, helping to simplify workflows as you install packages and manage virtual environments. This guide will show you how to install Pipenv, create and work with virtual envrionments, and install packages.'
+og_description: 'Pipenv combines the functionality of Pip and Virtualenv into a single tool, helping to simplify workflows as you install packages and manage virtual environments. This guide will show you how to install Pipenv, create and work with virtual envrionments, and install packages.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-27
 modified_by:
@@ -58,7 +58,7 @@ Creating a Pipfile for this project…
 
     If you omit the `--python` option, the environment will be created with your system's default version of Python.
 
-3.  Check the contents of the directory with `ls`; you will see that both a `Pipfile` has been created automatically. View this file in a text editor:
+3.  Check the contents of the directory with `ls`; you will see that a `Pipfile` has been created automatically. View this file in a text editor:
 
     {{< file "~/python-example/Pipfile" >}}
 [[source]]
