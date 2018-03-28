@@ -725,6 +725,6 @@ port 587
 {{< /file-excerpt >}}
 
 
-The `.msmptrc` file needs to be set to mode 600 and owned by the user account that will be sending mail. For example, if the configuration file is located at `/srv/smtp/msmtprc`, you can call mstmp with the following command:
+The `.msmptrc` file needs to be set to mode 600 and owned by the user account that will be sending mail. For example, if the configuration file is located at `/srv/smtp/msmtprc`, you can call msmtp with the following command:
 
     /usr/bin/msmtp --file=/srv/smtp/msmtprc

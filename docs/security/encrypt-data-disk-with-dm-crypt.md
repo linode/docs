@@ -133,7 +133,7 @@ Remember to replace `sdX` with the name of the device you want to encrypt.
         cd /root/ && umount /root/encrypted && cryptsetup close sdX-plain
 
 {{< caution >}}
-As mentioned earlier, dm-crypt in plain mode doesn't check to see if you're using the same password or encryption settings everytime. This exposes your server to the risk of being re-encrypted and having useful data overwritten. It's a good idea to routinely specify encryption settings on the command line every time you use dm-crypt in plain mode. Here's an example you can use: `cryptsetup --verify-passphrase --hash ripemd160 --cipher aes-cbc-essiv:sha256 --key-size 256 open --type plain /dev/sdX sdX-plain`
+As mentioned earlier, dm-crypt in plain mode doesn't check to see if you're using the same password or encryption settings every time. This exposes your server to the risk of being re-encrypted and having useful data overwritten. It's a good idea to routinely specify encryption settings on the command line every time you use dm-crypt in plain mode. Here's an example you can use: `cryptsetup --verify-passphrase --hash ripemd160 --cipher aes-cbc-essiv:sha256 --key-size 256 open --type plain /dev/sdX sdX-plain`
 {{< /caution >}}
 
 ## How to Use dm-crypt with LUKS

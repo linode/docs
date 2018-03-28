@@ -10,7 +10,9 @@ swap:
   'node[.]?js': Node.js
   'Post?gr?e(?:SQL)': PostgreSQL
   'java[ -]?scripts?': JavaScript
+  automattic: Automattic
   centOS: CentOS
+  cloudflare: Cloudflare
   debian: Debian
   fedora: Fedora
   gentoo: Gentoo
@@ -20,6 +22,7 @@ swap:
   linode: Linode
   longview: Longview
   macOS: macOS
+  metabase: Metabase
   miniconda: Miniconda
   nodebalancer: NodeBalancer
   nodebalancers: NodeBalancers
@@ -28,7 +31,5 @@ swap:
   ubuntu: Ubuntu
   wordpress: WordPress
   yaml: YAML
-  metabase: Metabase
-  cloudflare: Cloudflare
   urls: URLs
   uris: URIs

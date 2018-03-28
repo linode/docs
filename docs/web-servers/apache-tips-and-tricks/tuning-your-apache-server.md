@@ -36,7 +36,7 @@ More specific resources for resource tuning Apache includes Apache `mod_status` 
 
 ### Apache mod_status
 
-Apache `mod_status` diplays information related to incoming server connections by generating a detailed status page. View an example of this page at [Apache's own website](http://www.apache.org/server-status).
+Apache `mod_status` displays information related to incoming server connections by generating a detailed status page. View an example of this page at [Apache's own website](http://www.apache.org/server-status).
 
 1.  Open your website's configuration file. This file is located at `/etc/apache2/sites-available/example.com.conf` on Debian/Ubuntu systems or `/etc/httpd/conf.d/vhost.conf` on CentOS/Fedora systems.
 

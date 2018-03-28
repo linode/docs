@@ -126,7 +126,7 @@ Although there are a vast number of `top` commands, some of the more common ones
 -  **`H`**: Show individual threads for all processes.
 -  **`i`**: Toggles whether idle processes will be displayed.
 -  **`U` or `u`**: Filter processes by the owner's username.
--  **`1`**: Toggles between CPUs/CPU cores. When it reads *%Cpu(s)* all CPUs are being considered. *%Cpu* followed by a number denotes a single CPU core.
+-  **`1`**: Toggles between CPUs/CPU cores. When it reads `%Cpu(s)` all CPUs are being considered. `%Cpu` followed by a number denotes a single CPU core.
 -  **`L`**: Locate string.
 -  **`<`, `>`**: Select sort field (from column names).
 -  **`k`**: Kill a process. You will be prompted to enter the PID.

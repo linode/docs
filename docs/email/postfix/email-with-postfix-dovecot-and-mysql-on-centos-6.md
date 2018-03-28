@@ -457,7 +457,7 @@ Now you can test to see what the users of your email server would see with their
         ./dovecot.index.log
         ./tmp
 
-3.  Test the maillbox by using a mail client. For this test, using **mutt** is recommended. If it is not installed by default, install it with `yum install mutt`, then run:
+3.  Test the mailbox by using a mail client. For this test, using **mutt** is recommended. If it is not installed by default, install it with `yum install mutt`, then run:
 
         mutt -f .
 

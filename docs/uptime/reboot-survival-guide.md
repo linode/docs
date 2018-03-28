@@ -32,7 +32,7 @@ Linode maintains an RSS feed and web page for cataloging current and deprecated 
 
 Updating certain packages will occasionally require a system reboot too. This does not happen often, but when necessary, the terminal output will inform you that a reboot is needed.
 
-It's not uncommon to see *[fsck](http://linux.die.net/man/8/fsck)* run a filesystem scan on reboot. This does not mean anything is broken--fsck is a regularly scheduled process for optimal system health. Some Linux distros run fsck on every boot, others run the tool after a certain duration, and most distros perfom a filesystem check after unclean shutdowns.
+It's not uncommon to see *[fsck](http://linux.die.net/man/8/fsck)* run a filesystem scan on reboot. This does not mean anything is broken--fsck is a regularly scheduled process for optimal system health. Some Linux distros run fsck on every boot, others run the tool after a certain duration, and most distros perform a filesystem check after unclean shutdowns.
 
 ## Backups
 
