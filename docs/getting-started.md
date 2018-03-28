@@ -258,18 +258,18 @@ Enter the following commands to set the hostname, replacing `example_hostname` w
 
 The `hosts` file, located at `/etc/hosts`, creates static associations between IP addresses and hostnames, with higher priority than DNS. Open this file in a text editor and add a line for your Linode's public IP address. You can associate this address with your Linode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `203.0.113.10` is the public IP address, `hostname` is the local hostname, and `hostname.example.com` is the FQDN.
 
-  {{< file-excerpt "/etc/hosts"  conf >}}
+  {{< file "/etc/hosts"  conf >}}
 127.0.0.1 localhost.localdomain localhost
 203.0.113.10 hostname.example.com hostname
-{{< /file-excerpt >}}
+{{< /file >}}
 
 If you have IPv6 enabled on your Linode, you may also want to add an entry for your IPv6 address:
 
-  {{< file-excerpt "/etc/hosts" conf >}}
+  {{< file "/etc/hosts" conf >}}
 127.0.0.1 localhost.localdomain localhost
 203.0.113.10 hostname.example.com hostname
 2600:3c01::a123:b456:c789:d012 hostname.example.com hostname
-{{< /file-excerpt >}}
+{{< /file >}}
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For Linodes with IPv6 enabled, you should also set up an "AAAA" record in DNS pointing to your Linode's IPv6 address. For more information on configuring DNS, see [Adding DNS Records](/docs/websites/hosting-a-website/#add-dns-records).
 

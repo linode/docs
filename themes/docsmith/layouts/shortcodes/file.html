@@ -1,11 +1,11 @@
 <dl class="file">
-<dt>
 {{ if .Params }}
 {{ if gt (len .Params ) 0 }}
+<dt>
 		{{ .Get 0 }} {{ if gt (len .Params ) 1 }}{{ end }}
-{{ end }}
-{{ end }}
 </dt>
+{{ end }}
+{{ end }}
 <dd>
 {{ .Scratch.Set "style" "bash" }}
 {{ if .Params }}
