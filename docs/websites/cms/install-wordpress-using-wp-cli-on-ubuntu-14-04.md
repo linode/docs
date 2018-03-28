@@ -41,7 +41,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install WP-CLI
 
-1.  WP-CLI is available as a PHP Archive file (.phar). You can download it using either `wget` or `curl` commands:
+1.  WP-CLI is available as a PHP Archive file (`.phar`). You can download it using either `wget` or `curl` commands:
 
         curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
@@ -49,7 +49,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
-2.  You need to make this .phar file executable and move it to `/usr/local/bin` so that it can be run directly:
+2.  You need to make this `.phar` file executable and move it to `/usr/local/bin` so that it can be run directly:
 
         chmod +x wp-cli.phar
         sudo mv wp-cli.phar /usr/local/bin/wp

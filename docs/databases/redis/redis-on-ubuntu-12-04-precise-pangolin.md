@@ -92,7 +92,7 @@ While running the Redis instance in this configuration is useful for testing and
 
 Redis is not necessarily intended to provide a completely consistent and fault-tolerant data storage layer, and in the default configuration there are some conditions that may cause your data store to lose up to 60 seconds of the most recent data. Make sure you understand the risks associated and the potential impact that this kind of data loss may have on your application before deploying Redis.
 
-If persistence is a major issue for your application, it is possible to use Redis in a transaction-ournaling mode that provides greater data resilience at the expense of some performance.
+If persistence is a major issue for your application, it is possible to use Redis in a transaction-journaling mode that provides greater data resilience at the expense of some performance.
 
 To use this mode, ensure that the following values are set in `redis.conf`:
 
@@ -115,7 +115,7 @@ All modifications to the data store will be logged. Every time Redis restarts, i
 
 This command should return `Background append only file rewriting started`.
 
-You may wish to issue this command regularly, perhaps in a [cron job](/docs/linux-tools/utilities/cron), to ensure that the transaction journal doesn't expand exponentially. bgrewriteaof\ is non-destructive and can fail gracefully.
+You may wish to issue this command regularly, perhaps in a [cron job](/docs/linux-tools/utilities/cron), to ensure that the transaction journal doesn't expand exponentially. `bgrewriteaof` is non-destructive and can fail gracefully.
 
 ## Distributed Data Stores with Master Slave Replication
 

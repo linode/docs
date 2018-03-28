@@ -46,7 +46,7 @@ These methods are discussed in further detail below, with the exception of [Lino
 
 ### Linode Backup Service
 
-If you subscribe to the [Linode Backup Service](http://www.linode.com/backups/), you can create a golden disk by making a manual backup of an existing disk. Take a *snapsnot* of the disk to back it up, and then restore it to your other Linodes. There's no need to clone or resize the disk. The snapshot will be stored until you overwrite it with another backup.
+If you subscribe to the [Linode Backup Service](http://www.linode.com/backups/), you can create a golden disk by making a manual backup of an existing disk. Take a *snapshot* of the disk to back it up, and then restore it to your other Linodes. There's no need to clone or resize the disk. The snapshot will be stored until you overwrite it with another backup.
 
 1.  Use the Linode's existing disk, or [create a new disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed).
 2.  Install all necessary packages and configure the system settings.

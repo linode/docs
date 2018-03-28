@@ -160,7 +160,7 @@ After applying these configuration changes, restart Redis. All modifications to 
 
     /opt/redis/redis-cli bgrewriteaof
 
-You may wish to issue this command regularly, perhaps in a [cron job](/docs/tools-reference/tools/schedule-tasks-with-cron/), to ensure that the transaction journal doesn't expand exponentially. bgrewriteaof\` is non-destructive and can fail gracefully.
+You may wish to issue this command regularly, perhaps in a [cron job](/docs/tools-reference/tools/schedule-tasks-with-cron/), to ensure that the transaction journal doesn't expand exponentially. `bgrewriteaof` is non-destructive and can fail gracefully.
 
 # Distributed Data Stores with Master Slave Replication
 

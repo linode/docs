@@ -86,7 +86,7 @@ rpcbind mountd nfsd statd lockd rquotad : ALL : deny
 
         sudo systemctl restart nfs-kernel-server
 
-Done! Now you have a basic NFS server onone of your Linodes, configured to serve the `/var/nfsroot` directory to your second Linode.
+Done! Now you have a basic NFS server on one of your Linodes, configured to serve the `/var/nfsroot` directory to your second Linode.
 
 ## NFS Client Setup
 

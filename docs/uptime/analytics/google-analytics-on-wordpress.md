@@ -88,7 +88,7 @@ If you copy the above code, replace `UA-00000000-0` with your **tracking ID**.
 
 At this time you may want to consider enabling the *[demographics](https://support.google.com/analytics/answer/2819948?hl=en)* feature of Google Analytics. If you decide to do so, you will need to add an additional line of code to your JavaScript in the steps below. Insert the following between the lines containing `ga('create', 'UA-00000000-0', 'auto');` and `ga('send', 'pageview');`:
 
-ga('require', 'displayfeatures');
+    ga('require', 'displayfeatures');
 
 Should you decide to disable the demographics feature at a later date, simply remove the above code.
 {{< /note >}}

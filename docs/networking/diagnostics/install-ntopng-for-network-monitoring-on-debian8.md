@@ -120,7 +120,7 @@ The option flags commented with `# optional` are **not mandatory.** All flags re
 | --interface | The network interface ntopng will monitor.  |
 | -w | HTTP address and port used to connect to the admin interface. While port `3005` is the default, you may define any.  |
 | --community | The license ntopng will run under. |
-| --daemon | ntpong can be used as a forward service or as a background daemon. |
+| --daemon | ntopng can be used as a forward service or as a background daemon. |
 | --dump-flows | Logged traffic can be shared with other services |
 | --disable-autologout | Forces ntopng to allow users to remain logged into the web interface without being deactivated for inactivity.|
 | --disable-login | 1 to disable password authentication, 0 to require authentication. |

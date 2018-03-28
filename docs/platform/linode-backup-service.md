@@ -106,7 +106,7 @@ You can make a manual backup of your Linode by taking a *snapshot*. Here's how:
 Taking a new snapshot will overwrite a saved snapshot.
 {{< /note >}}
 
-4.  A warning appears asking if you would like to overwrite the previous snapsnot. Click **OK**.
+4.  A warning appears asking if you would like to overwrite the previous snapshot. Click **OK**.
 
 The Linode Backup Service initiates the manual snapshot. Be patient. Creating the manual snapshot can take several minutes, depending on the size of your Linode and the amount of data you have stored on it. Other Linode Manager jobs for this Linode will not run until the snapshot job has been completed.
 
