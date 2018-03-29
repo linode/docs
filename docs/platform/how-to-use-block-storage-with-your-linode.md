@@ -14,12 +14,12 @@ title: How to Use Block Storage with Your Linode
 
 ![How to Use Block Storage with Your Linode](/docs/assets/block-storage-title-graphic.png)
 
-Linode’s block storage service allows you to attach additional storage volumes to your Linode. A single volume can range from 10 GiB to 10,000 GiB in size and costs $0.10/GiB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to eight volumes can be attached to a single Linode, be it new or already existing, so you do not need to recreate your server to add a Block Storage Volume.
+Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. A single volume can range from 10 GiB to 10,000 GiB in size and costs $0.10/GiB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to eight volumes can be attached to a single Linode, be it new or already existing, so you do not need to recreate your server to add a Block Storage Volume.
 
-The Block Storage service is available now in production in the us-west/Fremont region only.
+The Block Storage service is currently available in the Dallas, Fremont, and Newark datacenters only.
 
 {{< caution >}}
--  Linode's backup services do not cover Block Storage Volumes. You must execute your own backups for this data.
+-  Linode's backup services do not cover Block Storage Volumes. You must execute [your own backups](/docs/security/backups/backing-up-your-data/) for this data.
 
 -  Your Linode must be running in Paravirtualization mode. Block storage currently does not support Full-virtualization.
 {{< /caution >}}
@@ -32,7 +32,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 1.  Go to the dashboard page of the Linode to which you want to attach a Block Storage Volume. Select **Create a new Volume**:
 
-    [![Linode Manager create a Volume](/docs/assets/bs-manager-create-new-volume-small.png)](/docs/assets/bs-manager-create-new-volume.png)
+    [![Linode Manager create a Volume](/docs/assets/bs-manager-create-new-volume.png)](/docs/assets/bs-manager-create-new-volume.png)
 
 2.  Assign the Block Storage Volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum volume size is 10,000 GiB. When finished, click *Add this Volume!*:
 
@@ -48,7 +48,7 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
 4.  If your Linode is not already running, boot and SSH into your Linode to execute the commands as shown on the instructions page. If you need to see the volume mount instructions again, click **Edit** to the right of the volume in that Linode's dashboard:
 
-    [![Linode Manager edit volume](/docs/assets/bs-edit-small.png)](/docs/assets/bs-edit.png)
+    [![Linode Manager edit volume](/docs/assets/bs-edit.png)](/docs/assets/bs-edit.png)
 
 ### Add a Volume from Your Account's Volume List
 
@@ -70,7 +70,7 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
 5.  If your Linode is not already running, boot and SSH into your Linode to execute the commands as shown on the instructions page. If you need to see the volume mount instructions again, click **Edit** to the right of the volume in that Linode's dashboard:
 
-    [![Linode Manager edit volume](/docs/assets/bs-edit-small.png)](/docs/assets/bs-edit.png)
+    [![Linode Manager edit volume](/docs/assets/bs-edit.png)](/docs/assets/bs-edit.png)
 
 ## How to Detach a Block Storage Volume from a Linode
 
@@ -78,19 +78,19 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
 2.  When the Linode is powered off, click **Detach** under the **Volumes** list:
 
-    [![Linode Manager edit volume](/docs/assets/bs-detach-small.png)](/docs/assets/bs-detach.png)
+    [![Linode Manager detach volume](/docs/assets/bs-detach.png)](/docs/assets/bs-detach.png)
 
 3.  A confirmation screen appears and explains that the volume will be detached from the Linode. Click **Detach** to confirm:
 
-    [![Linode Manager edit volume](/docs/assets/bs-detach-confirm-small.png)](/docs/assets/bs-detach-confirm.png)
+    [![Linode Manager detach volume confirmation](/docs/assets/bs-detach-confirm-small.png)](/docs/assets/bs-detach-confirm.png)
 
     The Linode's dashboard does not show the volume present anymore:
 
-    [![Linode Manager edit volume](/docs/assets/bs-detached-small.png)](/docs/assets/bs-detached.png)
+    [![Linode Manager detached volume](/docs/assets/bs-detached.png)](/docs/assets/bs-detached.png)
 
     The volume still exists on your account and you can see it if you click **View all Volumes**:
 
-    [![Linode Manager edit volume](/docs/assets/bs-volume-list-small.png)](/docs/assets/bs-volume-list.png)
+    [![Linode Manager volume list](/docs/assets/bs-volume-list-small.png)](/docs/assets/bs-volume-list.png)
 
 ## How to Delete a Block Storage Volume
 
