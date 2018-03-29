@@ -122,8 +122,8 @@ You can also modify or add the headers that are forwarded along with the proxied
 
 {{< file-excerpt "/etc/nginx/conf.d/nodeapp.conf" conf >}}
 location / {
-proxy_pass http://localhost:3000/;
-proxy_set_header X-Real-IP $remote_addr;
+    proxy_pass http://localhost:3000/;
+    proxy_set_header X-Real-IP $remote_addr;
 }
 {{< /file-excerpt >}}
 
@@ -131,4 +131,4 @@ This configuration uses the built-in `$remote_addr` variable to send the IP addr
 
 ## Next Steps
 
-For more information about general NGINX configuration, see our [NGINX series](/docs/web-servers/nginx/nginx-installation-and-basic-setup/). For practical examples of NGINX used to reverse proxy applications, see our guides on [Jupyter Notebooks](/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) and [Thingsboard](/docs/development/iot/install-thingsboard-iot-dashboard).
+For more information about general NGINX configuration, see our [NGINX series](/docs/web-servers/nginx/nginx-installation-and-basic-setup/). For practical examples of NGINX used to reverse proxy applications, see our guides on [RStudio Server](/docs/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/) and [Thingsboard](/docs/development/iot/install-thingsboard-iot-dashboard).
