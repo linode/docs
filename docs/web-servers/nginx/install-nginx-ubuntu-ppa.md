@@ -5,29 +5,34 @@ author:
 description: 'Shortguide for installing NGINX on Ubuntu.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-05
+modified: 2018-03-16
 modified_by:
   name: Linode
 published: 2018-03-05
-title: How to Install NGINX Using the NGINX ppa Repositories
+shortguide: true
+show_on_rss_feed: false
+title: Install NGINX on Ubuntu from the Official NGINX Repository
 ---
 
-These instructions install NGINX on Ubuntu 16.04. For other distributions, please see the [NGINX official docs](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/). For information on configuring NGINX for production environments, use our [series on NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/).
+These instructions install NGINX Mainline on Ubuntu 16.04 from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)* series.
 
-1.  Open `/etc/apt/sources.list` in a text editor and add the following two lines:
+1.  Open `/etc/apt/sources.list` in a text editor and add the following line to the bottom:
 
     {{< file-excerpt "/etc/apt/sources.list" >}}
-deb http://nginx.org/packages/ubuntu/ xenial nginx
-deb-src http://nginx.org/packages/ubuntu/ xenial nginx
+deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx
 {{< /file-excerpt >}}
 
-2.  Install NGINX:
+2.  Import the repository's package signing key and add it to `apt`:
+
+        sudo wget http://nginx.org/keys/nginx_signing.key
+        sudo apt-key add nginx_signing.key
+
+3.  Install NGINX:
 
         sudo apt update
         sudo apt install nginx
 
-3.  If you receive a GPG key error, run the following command. Replace the example GPG key signature (`ABF5BD827BD9BF62`) with the key that is output during the error message:
+4.  Ensure NGINX is running and and enabled to start automatically on reboot:
 
-        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABF5BD827BD9BF62
-
-    When this completes, run step 2 again to install NGINX.
+        sudo systemctl start nginx
+        sudo systemctl enable nginx

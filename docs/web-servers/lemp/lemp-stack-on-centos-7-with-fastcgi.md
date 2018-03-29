@@ -1,197 +1,188 @@
 ---
 author:
-    name: Linode
-    email: docs@linode.com
-description: This guide will teach you how to install a LEMP stack (Linux, Nginx, MariaDB, and PHP) with fastcgi on CentOS 7.
-keywords: ["nginx", "lemp", "php", "fastcgi", "linux", "web applications", " CentOS"]
+  name: Linode
+  email: docs@linode.com
+description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on CentOS 7.'
+og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on CentOS 7.'
+keywords: ["nginx", "lemp", "php", 'mariadb']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/lemp-guides/centos-7/','websites/lemp/lemp-server-on-centos-7-with-fastcgi/','web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
-modified: 2017-11-21
+modified: 2018-03-26
 modified_by:
-    name: Jared Kobos
+    name: Linode
 published: 2014-12-11
-title: Install a LEMP Stack on CentOS 7 with FastCGI
-external_resources:
-- '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
-- '[Nginx Documentation](http://nginx.org/en/docs/)'
-- '[MariaDB Knowledgebase](https://mariadb.com/kb/en/)'
-- '[MariaDB and MySQL compatibility](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/)'
+title: Install a LEMP Stack on CentOS 7
 ---
 
-This guide describes how to install a Linux, nginx, MariaDB and PHP server, also called LEMP stack, on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in `systemd` for easier administration.
+![Install a LEMP Stack on CentOS](/docs/assets/lemp-on-centos-7-title-graphic.jpg "Install a LEMP Stack on CentOS")
 
-![Install a LEMP Stack on CentOS 7 with FastCGI](/docs/assets/lemp-on-centos-7-title-graphic.jpg "Install a LEMP Stack on CentOS 7 with FastCGI")
+## What is a LEMP Stack?
 
-Make sure that before starting this guide you have read through and completed our [Getting Started](/docs/getting-started/) guide.
+The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configuration for developing and hosting web applications. The four components of the stack are not tightly coupled, making it possible to substitute your preferred technologies. The LEMP stack is a common variant in which the Apache web server is replaced by NGINX.
 
-## Set the hostname
+## Before You Begin
 
-Before you install any packages, ensure that your hostname is correct by completing the [Setting Your Hostname](/docs/getting-started#setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify:
+1.  You will need root access to the system, or a user account with `sudo` privilege.
+2.  Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
+3.  Update your system.
 
-    hostname
-    hostname -f
+## Installation
 
-In the first example, the hostname command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+### NGINX
 
+{{< content "install-nginx-centos.md" >}}
 
-## Install Nginx from the EPEL
+### MariaDB
 
-The easiest way to install nginx is from the Extra Packages for Enterprise Linux (EPEL) repository. You can install this using rpm:
+1.  Install the MariaDB server and MySQL/MariaDB-PHP support. You may be prompted to set a root password during installation.
 
-1.  Update your system:
+        sudo yum install mariadb-server php-mysql
 
-        yum update
+2.  Ensure NGINX is running and and enabled to start automatically on reboot:
 
-2.  Add the `epel-release` repository:
+        sudo systemctl start mariadb
+        sudo systemctl enable mariadb
 
-        yum install epel-release
-        yum update
+3.  Run the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* script:
 
-3.  Install nginx:
+        sudo mysql_secure_installation
 
-        yum install nginx
+     If you were not prompted to create a MySQL root user password when installing MariaDB, press enter when prompted for the root password:
 
-## Configure Nginx
+        Enter current password for root (enter for none):
 
-### Start nginx with systemd
+     Set a password when prompted:
 
-1.  Start the nginx service in systemd and enable the service so that it starts automatically on boot:
+        Set root password? [Y/n]
 
-        systemctl enable nginx.service
-        systemctl start nginx.service
+     Answer **Y** at the following prompts:
 
-2.  Check the status to make sure the service is running:
+     -  Remove anonymous users?
+     -  Disallow root login remotely?
+     -  Remove test database and access to it?
+     -  Reload privilege tables now?
 
-        systemctl status nginx.service
-
-### Configure nginx Virtual Hosts
-
-Once Nginx is installed, you need to configure your 'server' directives to specify your server blocks. Each server block needs to have a server and location directive. You can do this multiple ways, either through different server block files or all in the `/etc/nginx/nginx.conf` file. In this example, we will use the multiple file approach. By default, Nginx uses the `/etc/nginx/conf.d directory`, and will include any files ending in `.conf`.
-
-1.  Open `/etc/nginx/conf.d/example.com.conf` in a text editor and add the following content. Replace all instances of `example.com` with your Linode's public IP address or FQDN.
-
-    {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
-server {
-listen  80;
-server_name www.example.com example.com;
-access_log /var/www/example.com/logs/access.log;
-error_log /var/www/example.com/logs/error.log;
-
-location / {
-    root  /var/www/example.com/public_html;
-    index index.html index.htm index.php;
-    }
-}
-
-{{< /file-excerpt >}}
-
-
-    Any additional websites you like to host can be added as new files in the `/etc/nginx/conf.d/` directory.
-
-2.  Once you set the configuration, you need to make the directories for your public html files, and your logs:
-
-        mkdir -p /var/www/example.com/{public_html,logs}
-
-3.  Set ownership of the `public_html` folder so that the `nginx` user can access it:
-
-        chown nginx:nginx /var/www/example.com/public_html
-
-4.  Once you have configured your virtual hosts, restart nginx so that the changes will take effect:
-
-        systemctl restart nginx.service
-
-# Deploy PHP with FastCGI
-
-If you are using PHP code with your application, you will need to install "PHP-FastCGI" in order to allow Nginx to properly handle and parse PHP code. This module is available through the EPEL release repository installed earlier.
-
-1.  Install FastCGI and its dependencies:
-
-        yum install php-cli php spawn-fcgi
-
-2.  Create a script to start and control the php-cgi process. Create the `/usr/bin/php-fastcgi` file in a text editor and add the following content:
-
-    {{< file-excerpt "/usr/bin/php-fastcgi" bash >}}
-#!/bin/sh
-if [ `grep -c "nginx" /etc/passwd` = "1" ]; then
-    FASTCGI_USER=nginx
-elif [ `grep -c "www-data" /etc/passwd` = "1" ]; then
-    FASTCGI_USER=www-data
-elif [ `grep -c "http" /etc/passwd` = "1" ]; then
-    FASTCGI_USER=http
-else
-# Set the FASTCGI_USER variable below to the user that
-# you want to run the php-fastcgi processes as
-
-FASTCGI_USER=
-fi
-
-/usr/bin/spawn-fcgi -a 127.0.0.1 -p 9000 -C 6 -u $FASTCGI_USER -f /usr/bin/php-cgi
-
-{{< /file-excerpt >}}
-
-
-3.  Set the appropriate file permissions so that the script is executable:
-
-        chmod +x /usr/bin/php-fastcgi
-
-    You can then run the file manually, or for easier administration, you can set up a systemd service.
-
-### Configure PHP-FastCGI as a service
-
-When PHP-FastCGI is installed it does not automatically get set up as a service in systemd. If you want to be able to more easily control PHP-FastCGI with systemd, you can configure PHP-FastCGI as a systemd service. To do this, you need to create a service file that points to the /usr/bin/php-fastcgi file you created.
-
-1.  Open `/etc/systemd/system/php-fastcgi.service` in a text editor and add the following content:
-
-    {{< file "/etc/systemd/system/php-fastcgi.service" ini >}}
-[Unit]
-Description=php-fastcgi systemd service script
-
-[Service]
-Type=forking
-ExecStart=/usr/bin/php-fastcgi start
-
-[Install]
-WantedBy=multi-user.target
-
-{{< /file >}}
-
-
-2.  Reload the systemd daemons, enable the service, and start it:
-
-    systemctl daemon-reload
-    systemctl enable php-fastcgi.service
-    systemctl start php-fastcgi.service
-
-PHP-FastCGI is now installed as a systemd service.
-
-## Install MariaDB
-
-Finally, your LEMP stack needs a database. MySQL is no longer supported in CentOS 7, so you need to use MySQL's drop-in replacement, MariaDB.
-
-1.  Install MariaDB:
-
-        yum install mariadb-server
-
-2.  Once the installation is complete, MariaDB can be used the same way you as MySQL. First, enable and start it in systemd:
-
-        systemctl enable mariadb.service
-        systemctl start mariadb.service
-
-3.  MariaDB installs with default information and no root password, so it is highly recommend to secure your installation using the built-in `mysql_secure_installation` command:
-
-        mysql_secure_installation
-
-4.  You can follow the on screen prompts to remove the default information and set the root password for your mysql installation. Once you set the root password you can log in start adding data:
+4.  Log in to MariaDB's SQL shell. Enter the `root` user's password when prompted.
 
         mysql -u root -p
 
-5.  Enter the root password then you can issue the following commands to create the 'mydomain' and 'myuser' database and user. You then grant full permissions to the 'mydomain' database for the 'myuser' login:
+5.  Create a test database and user with access permission. Replace `testdb` and `testuser` with appropriate names for your setup. Replace `password` with a strong password.
 
-        CREATE DATABASE mydomain;
-        CREATE USER 'myuser' IDENTIFIED BY 'MyPassword';
-        GRANT ALL PRIVILEGES ON mydomain.* to 'myuser';
-        exit
+    {{< highlight sql >}}
+CREATE DATABASE testdb;
+CREATE USER 'testuser' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON testdb.* TO 'testuser';
+quit
+{{< /highlight >}}
 
-    You can edit the name of the user, database, and password to unique and more descriptive values. You can then configure your application to use the database to insert data.
+### PHP
 
-You now have a fully functioning and working LEMP stack on CentOS 7.
+1.  Install the PHP FastCGI Processing Manager, which will bring in the core PHP dependencies:
+
+        sudo yum install php-fpm
+
+2.  Ensure PHP-FPM is running and and enabled to start automatically on reboots:
+
+        sudo systemctl start php-fpm
+        sudo systemctl enable php-fpm
+
+3.  Tell PHP to only accept URIs for files that actually exist on the server. This mitigates a security vulnerability where the PHP interpreter can be tricked into allowing arbitrary code execution if the requested `.php` file is not present in the filesystem. See [this tutorial](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php) for more information about this vulnerability.
+
+        sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php.ini
+
+4.  PHP is set to run under the `apache` user by default, but this user needs to match the user and group used by NGINX. If you installed NGINX from the NGINX repository as described above, NGINX will use the `nginx` user and group. Change the `user` and `group` variables in `www.conf` to match:
+
+        sudo sed -i 's/user = apache/user = nginx/g' /etc/php-fpm.d/www.conf
+        sudo sed -i 's/group = apache/group = nginx/g' /etc/php-fpm.d/www.conf
+
+## Set an NGINX Site Configuration File
+
+1. Create a root directory for your site. Replace *example.com* with your site's domain:
+
+        sudo mkdir -p /var/www/example.com/
+
+2.  Disable the default site configuration provided with the package as an example:
+
+        sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
+
+3.  Website configuration files should be kept in `/etc/nginx/conf.d/`. Create a configuration file for your site. Again replace *example.com* with your site's domain.
+
+    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
+server {
+    listen         80 default_server;
+    listen         [::]:80 default_server;
+    server_name    example.com www.example.com;
+    root           /var/www/example.com;
+    index          index.html;
+
+    location / {
+      try_files $uri $uri/ =404;
+    }
+
+    location ~* \.php$ {
+      fastcgi_pass 127.0.0.1:9000;
+      include         fastcgi_params;
+      fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+      fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
+    }
+}
+{{< /file >}}
+
+    The `server` block above specifies the following configuration options:
+
+    -  NGINX is listening on port 80 for incoming connections to *example.com* or *www.example.com*.
+
+    -  The site is served out of `/var/www/example.com/` and its index page (`index.html`) is an `.html` file. If your index page will use PHP, substitute `index.php` for `index.html`.
+
+    -  `try_files` tells NGINX to verify that a requested file or directory [actually exist](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files) in the site's root filesystem before further processing the request. If it does not, a `404` is returned.
+
+    -  `location ~* \.php$` tells NGINX to apply this configuration to all .php files (file names are not case sensitive) in your site’s root directory, including any subdirectories containing PHP files.
+
+    -  The `*` in the `~* \.php$` location directive indicates that PHP file names are not case sensitive. This can be removed if you prefer to enforce letter case.
+
+    -  `fastcgi_pass` specifics the [IP address and port](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass) where PHP listens for incoming connections from other local processes.
+
+    -  `include fastcgi_params` tells NGINX to process a list of `fastcgi_param` variables at `/etc/nginx/fastcgi_params`.
+
+    -  The `fastcgi_param` directives contain the [location](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#variables) (relative to the site's root directory) and file [naming convention](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_index) of PHP scripts to be served when called by NGINX.
+
+## Test the LEMP Stack
+
+1.  Restart PHP and reload the NGINX configuration:
+
+        sudo systemctl restart php-fpm
+        sudo nginx -s reload
+
+2.  Create a test page to verify NGINX can render PHP and connect to the MySQL database. Replace `testuser` and `password`  with the MySQL credentials you created above.
+
+    {{< file "/var/www/example.com/test.php" php >}}
+<html>
+<head>
+    <h2>LEMP Stack Test</h2>
+</head>
+    <body>
+    <?php echo '<p>Hello,</p>';
+
+    // Define PHP variables for the MySQL connection.
+    $servername = "localhost";
+    $username = "testuser";
+    $password = "password";
+
+    // Create a MySQL connection.
+    $conn = mysqli_connect($servername, $username, $password);
+
+    // Report if the connection fails or is successful.
+    if (!$conn) {
+        exit('<p>Your connection has failed.<p>' .  mysqli_connect_error());
+    }
+    echo '<p>You have connected successfully.</p>';
+    ?>
+</body>
+</html>
+{{< /file >}}
+
+2.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load, re-check your configuration.
+
+3.  Remove the test file once you have confirmed that the stack is working correctly:
+
+        sudo rm /var/www/example.com/test.php
