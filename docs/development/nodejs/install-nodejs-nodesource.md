@@ -2,14 +2,14 @@
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'Install up to date versions of Node.js with an Ubuntu PPA'
+description: 'Install an up to date Node.js binary from NodeSource on Debian or Ubuntu.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-06
-modified: 2018-03-06
+modified: 2018-03-26
 modified_by:
   name: Linode
-title: 'Install Node.js using an Ubuntu ppa'
+title: 'Install Node.js from NodeSource on Debian or Ubuntu'
 shortguide: true
 ---
 
@@ -21,11 +21,7 @@ shortguide: true
 
         sudo bash nodesource_setup.sh
 
-3.  Update package lists:
-
-        sudo apt update
-
-4.  Install Node.js:
+3.  The setup script will run an `apt-get update` automatically, so you can install Node.js right away:
 
         sudo apt install nodejs
 

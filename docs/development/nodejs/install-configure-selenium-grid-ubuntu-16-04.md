@@ -172,7 +172,7 @@ In this example, the test script will be run from your local development machine
 
 This guide uses the NPM `selenium-webdriver` package, which contains Node.js bindings for Selenium.
 
-{{< content "install-nodejs-ppa.md" >}}
+{{< content "install-nodejs-nodesource.md" >}}
 
 ### Create an Example Test Script
 
