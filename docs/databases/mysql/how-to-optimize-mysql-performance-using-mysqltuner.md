@@ -95,17 +95,17 @@ The file you are changing is located at `/etc/mysql/my.cnf`.
 {{< note >}}
 Prior to updating the MySQL configuration, create a backup of the `my.cnf` file:
 
-cp /etc/mysql/my.cnf ~/my.cnf.backup
+    cp /etc/mysql/my.cnf ~/my.cnf.backup
 
 Best practice suggests that you make small changes, one at a time, and then monitor the server after each change. You should restart MySQL after each change:
 
--   For systems without systemd:
+For systems without systemd:
 
-systemctl restart mysqld
+    systemctl restart mysqld
 
--   For distributions which don't use systemd:
+For distributions which don't use systemd:
 
-service mysql restart
+    service mysql restart
 
 When changing values in the `my.cnf` file, be sure that the line you are changing hasn't been commented out with the pound (`#`) prefix.
 {{< /note >}}
