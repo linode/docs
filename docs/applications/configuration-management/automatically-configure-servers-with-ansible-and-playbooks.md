@@ -21,6 +21,8 @@ external_resources:
  - '[Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 ---
 
+![Automatically Configure Servers with Ansible and Playbooks](/docs/assets/automatically-configure-servers-with-ansible-title.jpg "Automatically Configure Servers with Ansible and Playbooks")
+
 ## What is Ansible?
 
 [Ansible](http://www.ansible.com/home) is an automation tool for server provisioning, configuration, and management. It allows you to organize your server inventory into groups, describe how those groups should be configured or what actions should be taken on them, and issue all of these commands from a central location.
