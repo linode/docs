@@ -50,10 +50,10 @@ The next prompt will ask for the system mail name. This should correspond to the
 
 Edit the `/etc/default/saslauthd` file to allow the SASL authentication daemon to start. Uncommon or add the following line:
 
-{{< file-excerpt "/etc/default/saslauthd" ini >}}
+{{< file "/etc/default/saslauthd" ini >}}
 START=yes
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Create the `/etc/postfix/sasl/smtpd.conf` file, and insert the following line:
@@ -89,7 +89,7 @@ You can use any SSL certificate with Postfix. If you already have a commercial c
 
 Edit the `/etc/postfix/main.cf` file to edit or add the following lines:
 
-{{< file-excerpt "/etc/postfix/main.cf" ini >}}
+{{< file "/etc/postfix/main.cf" ini >}}
 smtpd_tls_cert_file=/etc/ssl/postfix.pem
 smtpd_tls_key_file=/etc/ssl/postfix.key
 
@@ -110,7 +110,7 @@ broken_sasl_auth_clients = yes
 
 smtpd_recipient_restrictions = reject_unknown_sender_domain, reject_unknown_recipient_domain, reject_unauth_pipelining, permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 These settings make it possible for the SASL authentication process to interact with Postfix, and for Postfix to use the SSL certificate generated above. If you're using an SSL certificate with a different name, modify the first two lines of this configuration section.
@@ -127,12 +127,12 @@ Consider the [basic email gateway guide](/docs/email/postfix/basic-postfix-email
 
 The above Postfix configuration makes it possible to *send* mail using postfix. If your server receives email, Postfix requires additional configuration to deliver mail locally. Edit the `main.cf` file to insert or modify the following configuration directives:
 
-{{< file-excerpt "/etc/postfix/main.cf" ini >}}
+{{< file "/etc/postfix/main.cf" ini >}}
 myhostname = lollipop.example.com
 virtual_alias_maps = hash:/etc/postfix/virtual
 home_mailbox = mail/
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following command to ensure that new user accounts have a `~/mail` directory:
@@ -161,9 +161,9 @@ You can add additional lines in the same format as the above to control how all 
 
 Edit the `/etc/alias` file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to `root` will be delivered to the `username` user's mail box.
 
-{{< file-excerpt >}}
+{{< file >}}
 /etc/aliases
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > root: username
 

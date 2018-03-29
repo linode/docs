@@ -128,12 +128,12 @@ For the duration of this guide, when something needs to be added to the paramete
 
 4.  With the parameters finally defined, we need to call the `params.pp` file and the parameters into `init.pp`. To do this, the parameters need to be added after the class name, but before the opening curly bracket (`{`):
 
-    {{< file-excerpt "/etc/puppet/modules/apache/manifests/init.pp" puppet >}}
+    {{< file "/etc/puppet/modules/apache/manifests/init.pp" puppet >}}
 class apache (
   $apachename   = $::apache::params::apachename,
 ) inherits ::apache::params {
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     The value string `$::apache::params::value` tells Puppet to pull the values from the `apache` modules, `params` class, followed by the parameter name. The fragment `inherits ::apache::params` allows for `init.pp` to inherit these values.
@@ -147,29 +147,29 @@ Apache has two different configuration files, depending on whether you are worki
 
 2.  Both files need to be edited to turn `KeepAlive` settings to `Off`. This setting will need to be added to `httpd.conf`. Otherwise, a comment should to added to the top of each file:
 
-    {{< file-excerpt "/etc/puppet/modules/apache/files/httpd.conf" aconf >}}
+    {{< file "/etc/puppet/modules/apache/files/httpd.conf" aconf >}}
 # This file is managed by Puppet
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  These files now need to be added to the `init.pp` file, so Puppet will know where they are located on both the master server and agent nodes. To do this, the `file` resource is used:
 
-    {{< file-excerpt "/etc/puppet/modules/apache/manifests/init.pp" puppet >}}
+    {{< file "/etc/puppet/modules/apache/manifests/init.pp" puppet >}}
 file { 'configuration-file':
   path    => $conffile,
   ensure  => file,
   source  => $confsource,
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Because the configuration file is found in two different locations, the resource is given the generic name `configuration-file` with the file path defined as a parameter with the `path` attribute. `ensure` ensures that it is a file. `source` is another parameter, which will call to where the master files created above are located on the Puppet master.
 
 4.  Open the `params.pp` file. The `$conffile` and `$confsource` variables need to be defined within the `if` statement:
 
-    {{< file-excerpt "/etc/puppet/modules/apache/manifests/params.pp" puppet >}}
+    {{< file "/etc/puppet/modules/apache/manifests/params.pp" puppet >}}
 if $::osfamily == 'RedHat' {
 
 ...
@@ -186,14 +186,14 @@ if $::osfamily == 'RedHat' {
 
 ...
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     These parameters will also need to be added to the `init.pp` file, following the example of the additional parameters. A complete copy of the `init.pp` file can be seen [here](/docs/assets/puppet_apacheinit.pp).
 
 5.  When the configuration file is changed, Apache needs to restart. To automate this, the `service` resource can be used in combination with the `notify` attribute, which will call the resource to run whenever the configuration file is changed:
 
-    {{< file-excerpt "/etc/puppet/modules/apache/manifests/init.pp" puppet >}}
+    {{< file "/etc/puppet/modules/apache/manifests/init.pp" puppet >}}
 file { 'configuration-file':
   path    => $conffile,
   ensure  => file,
@@ -206,7 +206,7 @@ service { 'apache-service':
   hasrestart    => true,
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     The `service` resource uses the already-created parameter that defined the Apache name on Red Hat and Debian systems. The `hasrestart` attribute will trigger a restart of the defined service.
@@ -377,7 +377,7 @@ include apache::vhosts
 
 5.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If you followed the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent) guide, a single node configuration within `site.pp` will resemble the following:
 
-    {{< file-excerpt "/etc/puppet/manifests/site.pp" puppet >}}
+    {{< file "/etc/puppet/manifests/site.pp" puppet >}}
 node 'ubuntuhost.example.com' {
   $adminemail = 'webmaster@example.com'
   $servername = 'hostname.example.com'
@@ -420,7 +420,7 @@ node 'centoshost.example.com' {
 
   }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 6.  To run the new module on your agent nodes, log in to the nodes and run:

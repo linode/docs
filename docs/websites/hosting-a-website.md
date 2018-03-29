@@ -65,7 +65,7 @@ These guidelines are designed to optimize Apache for a **Linode 2GB**, but you c
 In Ubuntu 14.04, you will need to append the module section noted below to the end of your `apache2.conf` file:
 {{< /note >}}
 
-    {{< file-excerpt "/etc/apache2/apache2.conf" apache >}}
+    {{< file "/etc/apache2/apache2.conf" apache >}}
 KeepAlive Off
 
    ...
@@ -78,7 +78,7 @@ KeepAlive Off
        MaxRequestsPerChild 4500
    </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  Save the changes to Apache's configuration file. If you are using `nano`, do this by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
@@ -125,7 +125,7 @@ The file name *must* end with `.conf` in Apache versions 2.4 and later, which is
 
 6.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace all instances of `example.com` with your domain name.
 
-    {{< file-excerpt "/etc/apache2/sites-available/example.com.conf" apache >}}
+    {{< file "/etc/apache2/sites-available/example.com.conf" apache >}}
 # domain: example.com
 # public: /var/www/html/example.com/public_html/
 
@@ -144,7 +144,7 @@ The file name *must* end with `.conf` in Apache versions 2.4 and later, which is
   CustomLog /var/www/html/example.com/log/access.log combined
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 7.  Save the changes to the virtual host configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
@@ -199,7 +199,7 @@ These guidelines are designed to optimize MySQL 5.5 and up for a **Linode 2GB**,
 
 3.  Edit following values:
 
-    {{< file-excerpt "/etc/mysql/my.cnf" aconf >}}
+    {{< file "/etc/mysql/my.cnf" aconf >}}
 max_allowed_packet = 1M
 thread_stack = 128K
 
@@ -207,7 +207,7 @@ thread_stack = 128K
 
 max_connections = 75
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}
@@ -216,11 +216,11 @@ In MySQL 5.6 and above, you may need to add these lines as one block with `[mysq
 
 4.  Add the following lines to the end of `my.cnf`:
 
-    {{< file-excerpt "/etc/mysql/my.cnf" aconf >}}
+    {{< file "/etc/mysql/my.cnf" aconf >}}
 table_open_cache = 32M
 key_buffer_size = 32M
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 5.  Save the changes to MySQL's configuration file by pressing **CTRL+X** and then pressing **Y** and hitting **ENTER** to save.
@@ -301,7 +301,7 @@ These guidelines are designed to optimize PHP for a Linode 2GB, but you can use 
 
 2.  Verify that the following values are set. All of the lines listed below should be uncommented. Be sure to remove any semicolons (`;`) at the beginning of the lines.
 
-    {{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+    {{< file "/etc/php5/apache2/php.ini" ini >}}
 max_execution_time = 30
 memory_limit = 128M
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
@@ -310,7 +310,7 @@ log_errors = On
 error_log = /var/log/php/error.log
 register_globals = Off
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}

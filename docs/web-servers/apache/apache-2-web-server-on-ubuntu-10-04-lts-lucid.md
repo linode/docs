@@ -97,11 +97,11 @@ First create example.com (`/etc/apache2/sites-available/example.net`) so that it
 
 If you would like to enable Perl, add the following lines to the `VirtualHost` entry above.
 
-{{< file-excerpt "/etc/apache2/sites-available/example.net" apache >}}
+{{< file "/etc/apache2/sites-available/example.net" apache >}}
 Options ExecCGI
 AddHandler cgi-script .pl
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Next, create example.com (`/etc/apache2/sites-available/example.org`) so that it resembles this:
@@ -200,12 +200,12 @@ Begin by installing the mpm-itk module:
 
 Now, in the `<VirtualHost >` entries for your sites (the site-specific files in `/etc/apache2/sites-available/`) add the following sub-block:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 <IfModule mpm_itk_module>
    AssignUserId webeditor webgroup
 </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the particular group that "owns" the web server related files and processes. Remember that you must create the user accounts and groups using the `useradd` command.

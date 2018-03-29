@@ -39,7 +39,7 @@ This section will review an example Docker Compose file taken from the [Docker o
 
 1.  Open `docker-compose.yml` in a text editor and add the following content:
 
-    {{< file-excerpt "docker-compose.yml" yaml >}}
+    {{< file "docker-compose.yml" yaml >}}
 version: '3'
 
 services:
@@ -68,7 +68,7 @@ services:
 volumes:
     db_data:
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Save the file and run Docker Compose from the same directory:
 

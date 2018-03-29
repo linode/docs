@@ -33,7 +33,7 @@ The first command should show your short hostname, and the second should show yo
 
 Edit the file /etc/apt/sources.list and uncomment the `universe` repositories if they're not already enabled. Your repository list should resemble this:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 ## main & restricted repositories
 deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
@@ -51,7 +51,7 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 deb http://security.ubuntu.com/ubuntu karmic-security universe
 deb-src http://security.ubuntu.com/ubuntu karmic-security universe
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following commands to update your local package database and install any outstanding updates.
@@ -151,10 +151,10 @@ Issue the following commands to enable the site and reload Apache:
 
 Next, you'll need to tell nginx to run on a different port. Edit your nginx configuration file, setting the following value:
 
-{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+{{< file "/opt/nginx/conf/nginx.conf" nginx >}}
 listen 8080;
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 # Installing and Configuring Redmine
@@ -280,15 +280,15 @@ We'll create a "redmine" user to manage the installation. Issue the following co
 
 Edit the file `/opt/nginx/conf/nginx.conf`, setting the "user" parameter to "redmine":
 
-{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+{{< file "/opt/nginx/conf/nginx.conf" nginx >}}
 user  redmine;
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Add a server section after the first example server as follows. If you're proxying to nginx from another web server, be sure to change the `listen` directive to `listen 8080;` instead of the default.
 
-{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+{{< file "/opt/nginx/conf/nginx.conf" nginx >}}
 server {
      listen 80;
      server_name  redmine.example.com;
@@ -302,7 +302,7 @@ server {
      }
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Start nginx:

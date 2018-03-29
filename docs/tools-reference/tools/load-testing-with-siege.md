@@ -56,7 +56,7 @@ This guide is for Debian or Ubuntu systems.
 
 9.  The suggested Siege configuration is for 25 concurrent users over a period of 1 minute. Set a location for your log file. Be sure to uncomment the variables shown below, and any other commented settings you want to use by removing the pound sign (`#`):
 
-	{{< file-excerpt "~/.siegerc" >}}
+	{{< file "~/.siegerc" >}}
 ...
 
 		#
@@ -87,7 +87,7 @@ This guide is for Debian or Ubuntu systems.
 		time = 1M
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 You are now ready to run Siege!

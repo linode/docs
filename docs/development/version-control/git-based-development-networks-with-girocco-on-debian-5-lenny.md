@@ -58,7 +58,7 @@ Edit the configuration file for Girocco at `/opt/girocco/Girocco/Config.pm` and 
 
 Most of the default values in the `Config.pm` file can be left as the default. You will want to customize the `## Basic Settings` at the very beginning of the file, particularly the `name`, `title`, and `admin` variables. For the purposes of this guide we've modified the `## Paths` section as follows:
 
-{{< file-excerpt "/opt/girocco/Girocco/Config.pm" perl >}}
+{{< file "/opt/girocco/Girocco/Config.pm" perl >}}
 ## Paths
 
 # Path where the main chunk of Girocco files will be installed
@@ -81,12 +81,12 @@ our $cgiroot = "/srv/repo/public_html";
 # A web-accessible symlink to $reporoot (corresponds to $httppullurl, can be undef)
 our $webreporoot = "/srv/repo/public_html/r";
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Similarly, edit the `URL addresses` section of the guide in accordance with the needs of your deployment as follows:
 
-{{< file-excerpt "/opt/girocco/Girocco/Config.pm" perl >}}
+{{< file "/opt/girocco/Girocco/Config.pm" perl >}}
 ## URL addresses
 
 # URL of the gitweb.cgi script (must be in pathinfo mode)
@@ -116,7 +116,7 @@ our $pushurl = "ssh://repo.example.com/srv/repo/git";
 # to the community)
 our $giroccourl = "$Girocco::Config::gitweburl/girocco.git";
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Carefully consider the remaining configuration options in `/opt/girocco/Girocco/Config.pm`. The default settings are sufficient, but you may wish to modify configuration options to suit the needs of your deployment. When your configuration file is suitably configured for your needs, we recommend creating a backup of this file by issuing the following command:
@@ -146,7 +146,7 @@ Issue the following command to copy the scripts `fixup.sh` and `fixupcheck.sh` t
 
 These scripts are configured separately from the `Config.pm` file above. However, you must ensure that the settings correspond exactly. The following example contains the required modifications for our Girocco configuration:
 
-{{< file-excerpt "/root/repo/fixupcheck.sh" bash >}}
+{{< file "/root/repo/fixupcheck.sh" bash >}}
 ## and does not reuse Girocco::Config settings.
 
 ## Girocco::Config::reporoot
@@ -159,7 +159,7 @@ mirror_user="repo"
 ## Otherwise, the owner of these scripts can execute anything as root.
 fixup_dir="/root/repo"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Build and Install Girocco
@@ -207,10 +207,10 @@ You will also want to create a `root` user cron job to regularly run the `/root/
 
 Then insert the following line:
 
-{{< file-excerpt "root crontab" >}}
+{{< file "root crontab" >}}
 */5 * * * * /usr/bin/nice -n 18 /root/repo/fixupcheck.sh
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 This configures the script to run once every 5 minutes. Monitor the length of time it takes to run the script, and the frequency of pushes, and adjust the frequency based on this data.
 
@@ -220,10 +220,10 @@ Additionally issue the following command to create a `repo` user cronjob:
 
 Then insert the following line:
 
-{{< file-excerpt "repo crontab" >}}
+{{< file "repo crontab" >}}
 */5 * * * * /usr/bin/nice -n 18 /srv/repo/bin/jobd/jobd.sh -q --all-once
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 This configures the script to run once every 5 minutes. Monitor the length of time it takes to run the script, note any error messages this produces, and modify the frequency in response to this. You may also run the command `/srv/repo/bin/jobd/jobd.sh` in an interactive terminal as needed. Some tasks related to mirroring will not appear to succeed unless jobd is running constantly or runs at the appropriate time. You may want to run jobd in a GNU Screen session, by issuing the following command as the *repo* user:
 
@@ -231,10 +231,10 @@ This configures the script to run once every 5 minutes. Monitor the length of ti
 
 Additionally, add the following two lines as instructed by the installation script to your `/etc/rc.local` script to ensure that a chroot set up to isolate functions following reboot cycles:
 
-{{< file-excerpt "/etc/rc.local" >}}
+{{< file "/etc/rc.local" >}}
 mount --bind /srv/repo/git /srv/repo/data/srv/git mount --bind /proc /srv/repo/data/proc
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 # Configure Web Server
@@ -246,7 +246,7 @@ For the purpose of this document we will set up the repository hosting service u
 
 Furthermore, ensure that the paths specified in this file match the paths that you specified in the "Paths" section of the `/opt/girocco/Girocco/Config.pm` file. Consider the following:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost repo.example.com:80>
         ServerName repo.example.com
         ServerAdmin username@example.com
@@ -268,7 +268,7 @@ Furthermore, ensure that the paths specified in this file match the paths that y
         ScriptAlias /h /srv/repo/public_html/html.cgi
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Congratulations! You may now visit `http://repo.example.com` to begin using your Girocco repository hosting system.

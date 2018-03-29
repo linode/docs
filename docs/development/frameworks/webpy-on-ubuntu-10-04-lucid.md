@@ -111,14 +111,14 @@ Issue the following command to ensure that the required modules are enabled with
 
 WSGI requires a slight modification to your web.py application. Add the following lines to the end of the `code.py` file:
 
-{{< file-excerpt "code.py" >}}
+{{< file "code.py" >}}
 app = web.application(urls, globals(), autoreload=False)
 application = app.wsgifunc()
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Consider the following Apache VirtualHost configuration for a `mod_wsgi` powered Web.py application:
 
-{{< file-excerpt "Apache VirtualHost Configuration" >}}
+{{< file "Apache VirtualHost Configuration" >}}
 <VirtualHost example.com:80>
     ServerAdmin username@example.com
     ServerName example.com
@@ -145,7 +145,7 @@ Consider the following Apache VirtualHost configuration for a `mod_wsgi` powered
       RewriteRule ^(.*)$ code.py/$1 [PT]
     </Location>
 </VirtualHost>
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Ensure that this virtual host has been enabled, and issue the following command to restart the server:
 

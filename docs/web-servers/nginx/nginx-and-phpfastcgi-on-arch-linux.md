@@ -45,10 +45,10 @@ Issue the following commands to update your system and install the nginx web ser
 
 Edit the `/etc/rc.conf` file, adding "nginx" and "spawn-fcgi-php" to the "DEAMONS=" line as shown in the following excerpt:
 
-{{< file-excerpt "/etc/rc.conf" >}}
+{{< file "/etc/rc.conf" >}}
 DAEMONS=(syslog-ng network netfs crond sshd ntpd nginx spawn-fcgi-php)
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Since you have built spawn-fcgi-php from source, you will want to monitor its page in the Arch User Repository (AUR) so that you'll be able to recompile compile the [spawn-fcgi-php](http://aur.archlinux.org/packages.php?ID=37439) package when updates are available.
@@ -99,7 +99,7 @@ server {
 
 To mitigate this issue, you may wish to modify your configuration to include a `try_files` directive. Please note that this fix requires nginx and the php-fcgi workers to reside on the same server.
 
-{{< file-excerpt "/etc/nginx/sites-available/www.example.com" nginx >}}
+{{< file "/etc/nginx/sites-available/www.example.com" nginx >}}
 location ~ \.php$ {
     try_files $uri =404;
     include /etc/nginx/fastcgi_params;
@@ -107,11 +107,11 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/http/example.com/public_html$fastcgi_script_name;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Additionally, it's a good idea to secure any upload directories your applications may use. The following configuration excerpt demonstrates securing an "/images" directory.
 
-{{< file-excerpt "/etc/nginx/sites-available/www.example.com" nginx >}}
+{{< file "/etc/nginx/sites-available/www.example.com" nginx >}}
 location ~ \.php$ {
     include /etc/nginx/fastcgi_params;
     if ($uri !~ "^/images/") {
@@ -120,7 +120,7 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/http/example.com/public_html$fastcgi_script_name;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 After reviewing your configuration for potential security issues, issue the following commands to enable the site:
 
@@ -129,12 +129,12 @@ After reviewing your configuration for potential security issues, issue the foll
 
 Edit the file `/etc/nginx/conf/nginx.conf`, inserting the line `include /etc/nginx/conf/sites-enabled/*;` at the start of the `http {` block, as shown in the following file excerpt:
 
-{{< file-excerpt "/etc/nginx/conf/nginx.conf" nginx >}}
+{{< file "/etc/nginx/conf/nginx.conf" nginx >}}
 http {
 
     include /etc/nginx/conf/sites-enabled/*;
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following command to start nginx:

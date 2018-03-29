@@ -30,7 +30,7 @@ Before beginning the Citadel installation process, it is important that you sati
 
 You'll need to make sure the `universe` repositories are enabled in your `/etc/apt/sources.list` file. If necessary, uncomment or add them as follows:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 ## universe repositories
 deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
 deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
@@ -40,7 +40,7 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 deb http://security.ubuntu.com/ubuntu karmic-security universe
 deb-src http://security.ubuntu.com/ubuntu karmic-security universe
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Run the following commands to make sure your system is up to date:

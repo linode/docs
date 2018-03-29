@@ -60,11 +60,11 @@ Issue the following commands to create virtual hosting directories:
 
 Add the following lines to your `/etc/nginx/nginx.conf` file, immediately after the line for `include /etc/nginx/conf.d/*.conf`:
 
-{{< file-excerpt "/etc/nginx/nginx.conf" >}}
+{{< file "/etc/nginx/nginx.conf" >}}
 # Load virtual host configuration files.
 include /etc/nginx/sites-enabled/*;
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Next, we'll need to define our site's virtual host file:
 

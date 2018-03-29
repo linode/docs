@@ -58,7 +58,7 @@ Before changing any configuration files, we recommend that you make a backup of 
 cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 {{< /note >}}
 
-    {{< file-excerpt "/etc/httpd/conf/httpd.conf" aconf >}}
+    {{< file "/etc/httpd/conf/httpd.conf" aconf >}}
 DocumentRoot "/var/www/html/example.com/public_html"
 
 ...
@@ -71,7 +71,7 @@ DocumentRoot "/var/www/html/example.com/public_html"
     MaxConnectionsPerChild 5500
 </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     These settings can also be added to a separate file. The file must be located in the `conf.module.d` or `conf` directories, and must end in `.conf`, since this is the format of files included in the resulting configuration.
@@ -82,7 +82,7 @@ You can choose many ways to set up a virtual host. In this section we recommend 
 
 1.  Within the `conf.d` directory create `vhost.conf` to store your virtual host configurations. The example below is a template for website `example.com`; change the necessary values for your domain:
 
-    {{< file-excerpt "/etc/httpd/conf.d/vhost.conf" aconf >}}
+    {{< file "/etc/httpd/conf.d/vhost.conf" aconf >}}
 NameVirtualHost *:80
 
 <VirtualHost *:80>
@@ -94,7 +94,7 @@ NameVirtualHost *:80
     CustomLog /var/www/html/example.com/logs/access.log combined
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Additional domains can be added to the `vhost.conf` file as needed. To add domains, copy the `VirtualHost` block above and modify its values for each additional virtual host. When new requests come in from the internet, Apache checks which VirtualHost block matches the requested url, and serves the appropriate content:

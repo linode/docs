@@ -28,9 +28,9 @@ You should stop as many services as possible before upgrading your system. This 
 
 If you are running Ubuntu 8.04 or 9.10, edit your `/etc/fstab` file to include the following line (see later notes on Ubuntu 9.04).
 
-{{< file-excerpt >}}
+{{< file >}}
 /etc/fstab
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > dev /dev devtmpfs rw 0 0
 
@@ -45,9 +45,9 @@ Issue the following command to install the `screen` utility and the update manag
 
 Edit the `/etc/update-manager/release-upgrades` file, setting "Prompt=normal" as shown below. Please note that if you are running Ubuntu 9.04, you will be upgraded to Ubuntu 9.10 instead of Ubuntu 10.04; afterward, you may upgrade to Ubuntu 10.04 by repeating the `do-release-upgrade` process.
 
-{{< file-excerpt >}}
+{{< file >}}
 /etc/update-manager/release-upgrades
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > Prompt=normal
 
@@ -101,9 +101,9 @@ If you've already attempted to upgrade but your Linode is failing to boot proper
 
 Add the following line to your file:
 
-{{< file-excerpt >}}
+{{< file >}}
 /media/xvda/etc/fstab
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > dev /dev devtmpfs rw 0 0
 

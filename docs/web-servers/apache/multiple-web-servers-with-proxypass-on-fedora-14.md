@@ -57,7 +57,7 @@ Apache should restart cleanly. If you encounter any issues, you may wish to insp
 
 We already have a site called "www.firstsite.org" running under Apache as a normal virtual host. We'll use Apache to send requests for the site "www.secondsite.org" to a lighttpd instance, which we've configured to run on port 8080 on localhost. You can proxy to any local and non-local HTTP servers as required by your deployment. Here are the configuration directives for "www.secondsite.org":
 
-{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+{{< file "/etc/httpd/conf.d/vhost.conf" apache >}}
 <VirtualHost *:80>
      ServerAdmin support@secondsite.org
      ServerName secondsite.org
@@ -69,7 +69,7 @@ We already have a site called "www.firstsite.org" running under Apache as a norm
      #SSLProxyEngine On
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The `ProxyPass` directive tells Apache to forward all requests for this domain to a web server running on port 8080. If our target server was running on another Linode (as with a server that only answers on the backend private network), we could just specify that address instead. We'll enable the site with the following command:
@@ -88,7 +88,7 @@ Here's the site "www.secondsite.org" being served by lighttpd via ProxyPass:
 
 If we wanted to have `http://www.firstsite.org/myapp/` served by a web application running under lighttpd, we'd simply modify its configuration file to look like this:
 
-{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+{{< file "/etc/httpd/conf.d/vhost.conf" apache >}}
 <VirtualHost *:80>
      ServerAdmin support@firstsite.org
      ServerName firstsite.org
@@ -100,7 +100,7 @@ If we wanted to have `http://www.firstsite.org/myapp/` served by a web applicati
      ProxyPass /myapp http://localhost:8080/
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Now the location "/myapp" will be served by lighttpd instead of Apache. After reloading the Apache configuration with `/etc/init.d/httpd reload`, we can see that it's functioning correctly:

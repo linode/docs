@@ -50,7 +50,7 @@ The master configuration file for Munin is `/etc/munin/munin.conf`. This file is
 
 The first section of the file contains the paths to the directories used by Munin. When configuring your web server with Munin, make sure to point the root folder to the path of `htmldir`.
 
-{{< file-excerpt "/etc/munin/munin.conf" apache >}}
+{{< file "/etc/munin/munin.conf" apache >}}
 <VirtualHost 123.45.67.89:80>
    ServerAdmin webmaster@stats.example.com
    ServerName stats.example.com
@@ -65,7 +65,7 @@ The first section of the file contains the paths to the directories used by Muni
    ServerSignature On
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Now restart the server so that the changes to your configuration file can take effect. Issue the following command:

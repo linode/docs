@@ -37,7 +37,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 Most global configuration settings are stored in `postgresql.conf`, which is created automatically when you install PostgreSQL. Open this file in your preferred text editor:
 
-{{< file-excerpt "/etc/postgresql/9.5/main/postgresql.conf" txt >}}
+{{< file "/etc/postgresql/9.5/main/postgresql.conf" txt >}}
  -----------------------------
 # PostgreSQL configuration file
 # -----------------------------
@@ -49,7 +49,7 @@ Most global configuration settings are stored in `postgresql.conf`, which is cre
 # (The "=" is optional.) Whitespace may be used. Comments are introduced with
 # "#" anywhere on a line. The complete list of parameter names and allowed
 # values can be found in the PostgreSQL documentation.
-{{</ file-excerpt >}}
+{{</ file >}}
 
 The contents of the configuration file are broken up into different sections:
 
@@ -96,7 +96,7 @@ The `pg_hba.conf` file handles the default authentication options for client con
 
 The following entries are included by default:
 
-{{< file-excerpt "/etc/postgresql/9.5/main/pg_hba.conf" conf >}}
+{{< file "/etc/postgresql/9.5/main/pg_hba.conf" conf >}}
 TYPE  DATABASE        USER            ADDRESS                 METHOD
 local   all             postgres                                peer
 
@@ -105,15 +105,15 @@ local   all             all                                     peer
 host    all             all             127.0.0.1/32            md5
 
 host    all             all             ::1/128                 md5
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Each entry specifies how matching requests are authenticated. By default, if you type `psql` at the command line on the host where PostgreSQL is running, the **peer** authentication method will be used. It will attempt to log you in as the database user whose name matches the currently logged in Linux user. To require password authentication by default, set the **METHOD** field for the **local** entry to **password**.
 
 To allow a user on a remote system to log in to the `example` database using a non-hashed password, add a new line to this file, replacing `192.0.2.0` with the remote computer's public IP address:
 
-{{< file-excerpt "/etc/postgresql/9.5/main/pg_hba_conf" conf >}}
+{{< file "/etc/postgresql/9.5/main/pg_hba_conf" conf >}}
 host    example         exampleuser      192.0.2.0             password
-{{< /file-excerpt >}}
+{{< /file >}}
 
 The entries in this table are read in order for each incoming connection attempt. The first entry that matches will be applied to the connection. As a result, more general configurations (matching all users, all databases, or all IP addresses) should come at the end of the file, and should generally have tighter restrictions. More specific matches with less stringent authentication methods (such as the example above) should be placed at the beginning of the list.
 
@@ -137,6 +137,6 @@ In the following example, `exampleuser` can log in to postgres as the database u
 
 If you specify a mapping in this file, you must add `map=map-name` after the authentication method in the appropriate entry in `pg_hba.conf`. To allow the example user from the earlier `pg_hba.conf` example to log in as `db_user`, the complete entry would look like this:
 
-{{< file-excerpt "/etc/postgresql/9.5/main/pg_hba.conf" conf >}}
+{{< file "/etc/postgresql/9.5/main/pg_hba.conf" conf >}}
 host    example         exampleuser      192.0.2.0             password map=examplemap
-{{< /file-excerpt >}}
+{{< /file >}}

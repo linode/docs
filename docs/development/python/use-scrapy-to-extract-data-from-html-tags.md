@@ -169,7 +169,7 @@ The Spider parses the downloaded pages with the `parse(self,response)` method. T
 
 1.  Edit your `linkChecker/spiders/link_checker.py` file to extract all the `<a>` tags and get the `href` link text. Return the link URL with the `yield` keyword to add it to the download queue:
 
-    {{< file-excerpt "linkChecker/spiders/link_checker.py" py >}}
+    {{< file "linkChecker/spiders/link_checker.py" py >}}
 import scrapy
 
 class LinkCheckerSpider(scrapy.Spider):
@@ -193,7 +193,7 @@ class LinkCheckerSpider(scrapy.Spider):
             request = response.follow(link, callback=self.parse)
             # Return it thanks to a generator
             yield request
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Run your updated Spider:
 
@@ -213,7 +213,7 @@ The meta information is used for two purposes:
 
 1.  Starting with the previous spider, add an attribute to store the maximum depth (`maxdepth`) and update the `parse` function to the following:
 
-    {{< file-excerpt "linkChecker/spiders/link_checker.py" py >}}
+    {{< file "linkChecker/spiders/link_checker.py" py >}}
 
 # Add a maxdepth attribute
 maxdepth = 2
@@ -248,7 +248,7 @@ def parse(self, response):
             # Meta information: depth of the link
             request.meta['depth'] = depth + 1
             yield request
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Run the updated spider:
 
@@ -303,7 +303,7 @@ class LinkCheckerSpider(scrapy.Spider):
                     request.meta['from'] = response.url;
                     request.meta['text'] = text
                     yield request
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Run your updated spider:
 
@@ -317,7 +317,7 @@ Scrapy lets you add some handlers at various points in the scraping process. Sig
 
 To add a handler at the end of the scraping process to print information about broken links, overwrite the `from_crawler` method to register a handler for the `signals.spider_closed` signal:
 
-{{< file-excerpt "linkChecker/spiders/link_checker.py" py >}}
+{{< file "linkChecker/spiders/link_checker.py" py >}}
 # Overwrite the from_crawler method
 @classmethod
 def from_crawler(cls, crawler, *args, **kwargs):
@@ -337,7 +337,7 @@ def spider_closed(self):
         print("Broken links are:")
         for invalid in self.invalid_url:
             print(invalid)
-{{< /file-excerpt >}}
+{{< /file >}}
 
 See [Scrapy Signals documentation](https://doc.scrapy.org/en/latest/topics/signals.html) for a full list of available Signals.
 
@@ -349,14 +349,14 @@ The starting URL is hardcoded in the source code of your spider. It will be far 
 
 1.  Add a `__init__()` method to our spider with a `url` parameter:
 
-    {{< file-excerpt "linkChecker/spiders/link_checker.py" py >}}
+    {{< file "linkChecker/spiders/link_checker.py" py >}}
 # Add a custom constructor with the url parameter
 def __init__(self, url='http://www.example.com', *args, **kwargs):
     # Don't forget to call parent constructor
     super(LinkCheckerSpider, self).__init__(*args, **kwargs)
     # Set the start_urls to be the one given in url parameters
     self.start_urls = [url]
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Spider arguments are passed with the `-a` command line flag:
 
@@ -368,9 +368,9 @@ Default Scrapy settings of your spider are defined in `settings.py` file. Set th
 
 Edit `~/scrapy/linkChecker/linkChecker/settings.py` and add the following line:
 
-{{< file-excerpt "linkChecker/settings.py" py >}}
+{{< file "linkChecker/settings.py" py >}}
 DOWNLOAD_MAXSIZE = 3000000
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ## Remove Domain Limitation
 

@@ -85,11 +85,11 @@ In an effort to increase usability, the Debian project makes it possible for use
 
 If you use an operating system other than Debian or would like to use the "sites-enabled" organization for your configuration files, make sure that the appropriate line from the following exists in your `apache.conf` or `httpd.conf` file:
 
-{{< file-excerpt "/etc/httpd/httpd.conf or /etc/apache2/apache2.conf" apache >}}
+{{< file "/etc/httpd/httpd.conf or /etc/apache2/apache2.conf" apache >}}
 Include /etc/httpd/sites-enabled/
 Include /etc/apache2/sites-enabled/
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 If you haven't yet created this directory, you will need to do so with a command similar to the following: `mkdir -p /etc/httpd/sites-enabled/`. Now your Apache server will include configuration options specified in any files stored in these directories. To create a link to this directory, issue the following command:

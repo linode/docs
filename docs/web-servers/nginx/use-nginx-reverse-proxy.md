@@ -111,21 +111,21 @@ server {
 
 For a simple app, the `proxy_pass` directive is sufficient. However, more complex apps may need additional directives. For example, Node.js is often used for apps that require a lot of real-time interactions. To accommodate, disable NGINX's buffering feature:
 
-  {{< file-excerpt "/etc/nginx/conf.d/nodeapp.conf" conf >}}
+  {{< file "/etc/nginx/conf.d/nodeapp.conf" conf >}}
 location / {
     proxy_pass http://localhost:3000/;
     proxy_buffering off;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 You can also modify or add the headers that are forwarded along with the proxied requests with `proxy_set_header`:
 
-{{< file-excerpt "/etc/nginx/conf.d/nodeapp.conf" conf >}}
+{{< file "/etc/nginx/conf.d/nodeapp.conf" conf >}}
 location / {
     proxy_pass http://localhost:3000/;
     proxy_set_header X-Real-IP $remote_addr;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 This configuration uses the built-in `$remote_addr` variable to send the IP address of the original client to the proxy host.
 

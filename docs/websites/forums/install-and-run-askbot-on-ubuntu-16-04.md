@@ -128,18 +128,18 @@ This section requires that you have a Fully Qualified Domain Name (FQDN) that is
 
 1.  Edit `/home/example_user/askbot/wsgi.py`:
 
-    {{< file-excerpt "/home/example_user/askbot/wsgi.py" conf >}}
+    {{< file "/home/example_user/askbot/wsgi.py" conf >}}
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Create a `systemd` service for Gunicorn so that it can run as a service. Create the following `gunicorn.service` file:
 
-    {{< file-excerpt "/etc/systemd/system/gunicorn.service" conf >}}
+    {{< file "/etc/systemd/system/gunicorn.service" conf >}}
 [Unit]
 Description=gunicorn daemon
 After=network.target
@@ -154,7 +154,7 @@ ExecStart=/home/example_user/askbot/askbotenv/bin/gunicorn --workers 3 --bind un
 [Install]
 WantedBy=multi-user.target
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Enable and start the Gunicorn service:
@@ -177,7 +177,7 @@ WantedBy=multi-user.target
 
 7.  Add new `askbot` NGINX Server Blocks (Virtual Host) to run AskBot in the production environment:
 
-    {{< file-excerpt "/etc/nginx/sites-available/askbot" conf >}}
+    {{< file "/etc/nginx/sites-available/askbot" conf >}}
 server {
         listen 80;
         server_name example.com www.example.com;
@@ -213,7 +213,7 @@ server {
         }
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 8.  Add a symbolic link between NGINX server blocks:

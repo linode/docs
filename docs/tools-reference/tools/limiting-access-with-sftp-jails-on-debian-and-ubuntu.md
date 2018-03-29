@@ -33,19 +33,19 @@ These instructions will work for Ubuntu 9.04, Debian 5, and later. Unfortunately
 
 2.  Add or modify the `Subsystem sftp` line to look like the following:
 
-    {{< file-excerpt "/etc/ssh/sshd_config" >}}
+    {{< file "/etc/ssh/sshd_config" >}}
 Subsystem sftp internal-sftp
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Add this block of settings to the end of the file:
 
-    {{< file-excerpt "/etc/ssh/sshd_config" >}}
+    {{< file "/etc/ssh/sshd_config" >}}
 Match Group filetransfer
     ChrootDirectory %h
     X11Forwarding no
     AllowTcpForwarding no
     ForceCommand internal-sftp
-{{< /file-excerpt >}}
+{{< /file >}}
 
     Save the changes to your file.
 

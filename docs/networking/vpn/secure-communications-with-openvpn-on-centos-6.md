@@ -203,18 +203,18 @@ Once configured, the OpenVPN server allows you to encrypt traffic between your l
 
 By deploying the following configuration, you will be able to forward *all* traffic from client machines through your Linode and encrypt it with transport layer security (TLS/SSL) between the client machine and the Linode. Begin by adding the following parameter to the `/etc/openvpn/server.conf` file to enable "full tunneling":
 
-{{< file-excerpt "/etc/openvpn/server.conf" >}}
+{{< file "/etc/openvpn/server.conf" >}}
 push "redirect-gateway def1"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Now, edit the `/etc/sysctl.conf` file to modify the following line to ensure that your system is able to forward IPv4 traffic:
 
-{{< file-excerpt "/etc/sysctl.conf" >}}
+{{< file "/etc/sysctl.conf" >}}
 net.ipv4.ip_forward = 1
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following command to set this variable for the current session:
@@ -230,7 +230,7 @@ Issue the following commands to configure `iptables` to properly forward traffic
 
 Before continuing, insert these `iptables` rules into your system's `/etc/rc.local` file to ensure that these `iptables` rules will be recreated following your next reboot cycle:
 
-{{< file-excerpt "/etc/rc.local" >}}
+{{< file "/etc/rc.local" >}}
 #!/bin/sh
 #
 # [...]
@@ -240,7 +240,7 @@ iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT iptables -A F
 
 touch /var/lock/subsys/local
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This will enable all client traffic *except* DNS queries to be forwarded through the VPN. To forward DNS traffic through the VPN, you will need to install the `dnsmasq` package and modify the `/etc/openvpn/server.conf` package. Begin by issuing the following command to install the service:
@@ -249,32 +249,32 @@ This will enable all client traffic *except* DNS queries to be forwarded through
 
 After completing the installation, you will need to modify the configuration so that dnsmasq is not listening on a public interface. You will need to find the following lines in the configuration file and make sure the lines are uncommented and have the appropriate values:
 
-{{< file-excerpt "/etc/dnsmasq.conf" >}}
+{{< file "/etc/dnsmasq.conf" >}}
 listen-address=127.0.0.1,10.8.0.1
 
 bind-interfaces
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This will configure dnsmasq to listen on localhost and the gateway IP address of your OpenVPN's tun device.
 
 When your system boots, dnsmasq will try to start prior to the OpenVPN tun device being enabled. This will cause dnsmasq to fail at boot. To ensure that dnsmasq is properly started at boot, you'll need to modify your `/etc/rc.local` file once again. By adding the following line, dnsmasq will start after all the init scripts have finished. You should place the restart command below your iptables rules:
 
-{{< file-excerpt "/etc/rc.local" >}}
+{{< file "/etc/rc.local" >}}
 /etc/init.d/dnsmasq restart
 
 touch /var/lock/subsys/local
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Add the following directive to the `/etc/openvpn/server.conf` file:
 
-{{< file-excerpt "/etc/openvpn/server.conf" >}}
+{{< file "/etc/openvpn/server.conf" >}}
 push "dhcp-option DNS 10.8.0.1"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Finally, before attempting to connect to the VPN in any configuration, restart the OpenVPN server. You will also need to start dnsmasq and configure it to start at boot by issuing the following commands:

@@ -166,7 +166,7 @@ Install the Elastic Stack via RPM files to get the latest versions of all the so
 
 5. Modify the `01-wazuh.conf` file to indicate a single-host architecture. Replicate the contents below into your own file. The changes consist of commenting out the `Remote Wazuh Manager` section and uncommenting the `Local Wazuh Manager` section:
 
-    {{< file-excerpt "/etc/logstash/conf.d/01-wazuh.conf" >}}
+    {{< file "/etc/logstash/conf.d/01-wazuh.conf" >}}
 # Wazuh - Logstash configuration file
 ## Remote Wazuh Manager - Filebeat input
 #input {
@@ -187,7 +187,7 @@ input {
    }
 }
 . . .
-{{< /file-excerpt >}}
+{{< /file >}}
 
 6. Add the Logstash user to the "ossec" group to allow access to restricted files:
 
@@ -197,13 +197,13 @@ input {
 
 1.  Edit `/etc/logstash/startup.options` to change the `LS_GROUP=logstash` to `LS_GROUP=ossec`:
 
-    {{< file-excerpt "/etc/logstash/startup.options" >}}
+    {{< file "/etc/logstash/startup.options" >}}
 . . .
 # user and group id to be invoked as
 LS_USER=logstash
 LS_GROUP=logstash
 . . .
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2. Update the service with the new parameters:
 
@@ -264,21 +264,21 @@ The Elastic Stack will require some tuning before it can be accessed via the Waz
 
     Edit the systemd init file and add the following line:
 
-    {{< file-excerpt "/etc/systemd/system/multi-user.target.wants/elasticsearch.service" >}}
+    {{< file "/etc/systemd/system/multi-user.target.wants/elasticsearch.service" >}}
 . . .
 LimitMEMLOCK=infinity
 . . .
-{{< /file-excerpt >}}
+{{< /file >}}
 
     **System V**
 
     Edit the `/etc/sysconfig/elasticsearch` file for RPM or `/etc/default/elasticsearch` for Debian and Ubuntu. Add or change the following line:
 
-    {{< file-excerpt "/etc/sysconfig/elasticsearch or /etc/default/elasticsearch" >}}
+    {{< file "/etc/sysconfig/elasticsearch or /etc/default/elasticsearch" >}}
 . . .
 MAX_LOCKED_MEMORY=unlimited
 . . .
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3. Configure the Elasticsearch heap size based on your Linode's resources. This figure will determine how much memory Elasticsearch is allowed to consume. Keep the following rules in mind:
 
@@ -288,7 +288,7 @@ MAX_LOCKED_MEMORY=unlimited
 
     Open the `jvm.options` file and navigate to the block shown here:
 
-    {{< file-excerpt "/etc/elasticsearch/jvm.options" >}}
+    {{< file "/etc/elasticsearch/jvm.options" >}}
 . . .
 # Xms represents the initial size of total heap space
 # Xmx represents the maximum size of total heap space
@@ -296,7 +296,7 @@ MAX_LOCKED_MEMORY=unlimited
 -Xms4g
 -Xmx4g
 . . .
-{{< /file-excerpt >}}
+{{< /file >}}
 
     This configures Elasticsearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes, `Xms4096M` in this example. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
 
@@ -314,7 +314,7 @@ If you have SSL encryption enabled on your domain, follow the instructions in th
 
     **Non SSL**
 
-    {{< file-excerpt "/etc/nginx/conf.d or /etc/nginx/conf" >}}
+    {{< file "/etc/nginx/conf.d or /etc/nginx/conf" >}}
 server {
     listen 80;
     # Remove the line below if you do not have IPv6 enabled.
@@ -333,11 +333,11 @@ server {
     auth_basic "Restricted Access";
     auth_basic_user_file /etc/nginx/htpasswd.users;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
     **SSL**
 
-    {{< file-excerpt "/etc/nginx/conf.d or /etc/nginx/conf" >}}
+    {{< file "/etc/nginx/conf.d or /etc/nginx/conf" >}}
 server {
   listen 80;
   # Remove the line below if you do note have IPv6 enabled.
@@ -376,7 +376,7 @@ server {
   auth_basic "Restricted Access";
   auth_basic_user_file /etc/nginx/htpasswd.users;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2. Secure your Kibana site with a login page. Create a **.htpasswd** file first if you do not have one:
 
@@ -401,14 +401,14 @@ server {
 
 2. Enable the necessary mods in Apache. Open `00-proxy.conf` and verify that the lines below are included:
 
-    {{< file-excerpt "/etc/httpd/conf.modules.d/00-proxy.conf" >}}
+    {{< file "/etc/httpd/conf.modules.d/00-proxy.conf" >}}
 . . .
 LoadModule proxy_module modules/mod_proxy.so
 LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so
 LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
 LoadModule proxy_http_module modules/mod_proxy_http.so
 . . .
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3. Create a new virtual config file for the Kibana site. Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's public IP address. Replace `kibana.exampleIPorDomain` and `http://exampleIPorDomain` with your specific values:
 

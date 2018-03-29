@@ -40,10 +40,10 @@ Congratulations, you've now installed eGroupware!
 
 The configuration options for eGroupware are located in the file `/etc/httpd/conf.d/egroupware`. Add the following line to your virtual hosting configuration:
 
-{{< file-excerpt "Apache Virtual Hosting Configuration" apache >}}
+{{< file "Apache Virtual Hosting Configuration" apache >}}
 Alias /egroupware /usr/share/egroupware
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 When inserted into the virtual hosting configuration for `example.com`, accessing the URL `http://example.com/egroupware/` will allow you to access your eGroupware site. If you do not have virtual hosting configured, eGroupware will be accessible at `/egroupware` of the default Apache host.

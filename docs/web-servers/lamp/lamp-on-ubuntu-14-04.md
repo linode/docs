@@ -167,12 +167,12 @@ a2dissite example.com.conf
 
 2.  Once PHP5 is installed, tune the configuration file located in `/etc/php5/apache2/php.ini` to enable more descriptive errors, logging, and better performance. The following modifications provide a good starting point:
 
-    {{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+    {{< file "/etc/php5/apache2/php.ini" ini >}}
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
 error_log = /var/log/php/error.log
 max_input_time = 30
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}

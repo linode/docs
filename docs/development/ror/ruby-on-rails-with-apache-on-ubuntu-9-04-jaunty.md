@@ -81,10 +81,10 @@ The output of this should look like this:
 
 These files load and enable the Passenger module for use in your sites. If you configured Apache virtual hosting as outlined in the [Apache guide](/docs/web-servers/apache/installation/ubuntu-9-04-jaunty), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 DocumentRoot /srv/www/example.com/public_html/
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In typical Passenger-based Rails deployments the application directory would be located in `/srv/www/example.com/`; for example `my-app/` would be located at `/srv/www/example.com/my-app/` and we would symbolically link (symlink) the `my-app/public/` folder to `/srv/www/example.com/public_html/`. We'll begin by removing the current `public_html/` directory if it already exists:
@@ -113,13 +113,13 @@ This presents a number of advantages. The Apache mpm\_itk module (described in t
 
 Passenger also supports deploying more than one Rails application within a single virtual host configuration. By adding `RailsBaseURI` options with the path to your Application within the virtual host, you can deploy multiple applications within one site. For example:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 DocumentRoot /srv/www/example.com/public_html/
 RailsBaseURI /my-app
 RailsBaseURI /frogs
 RailsBaseURI /simon
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 These lines, taken from a fictitious `<VirtualHost >` tell Passenger about three Rails apps in the `example.com` host. Rather than linking the `public/` directory of your Rails app to the `public_html/` directory of the Host, we'll link the public directory of the application to a folder below the `public_html/` directory. In this example the following commands will create the necessary symbolic links:

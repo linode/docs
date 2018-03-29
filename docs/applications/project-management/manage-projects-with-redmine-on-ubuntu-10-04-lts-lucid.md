@@ -178,10 +178,10 @@ Issue the following commands to enable the site and reload Apache:
 
 Next, you'll need to tell nginx to run on a different port. Edit your nginx configuration file, setting the following value:
 
-{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+{{< file "/opt/nginx/conf/nginx.conf" nginx >}}
 listen 8080;
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 # Install and Configure Redmine
@@ -236,7 +236,7 @@ Issue the following commands to complete database configuration:
 
 If you receive an error message after issuing the `rake db:migrate` command, edit the `config/environment.rb` file to include the following excerpt between the bootstrap and initializer sections. After editing the file, retry the `rake db:migrate` command.
 
-{{< file-excerpt "config/environment.rb" ruby >}}
+{{< file "config/environment.rb" ruby >}}
 if Gem::VERSION >= "1.3.6"
     module Rails
         class GemDependency
@@ -248,7 +248,7 @@ if Gem::VERSION >= "1.3.6"
     end
 end
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Configure Email Service
@@ -324,15 +324,15 @@ We'll create a "redmine" user to manage the installation. Issue the following co
 
 Edit the file `/opt/nginx/conf/nginx.conf`, setting the "user" parameter to "redmine":
 
-{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+{{< file "/opt/nginx/conf/nginx.conf" nginx >}}
 user redmine;
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Add a server section after the first example server as follows. If you're proxying to nginx from another web server, be sure to change the `listen` directive to `listen 8080;` instead of the default. Be sure to replace "redmine.example.com" with the domain for your Redmine site.
 
-{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+{{< file "/opt/nginx/conf/nginx.conf" nginx >}}
 server {
      listen 80;
      server_name  redmine.example.com;
@@ -346,7 +346,7 @@ server {
      }
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Start nginx:

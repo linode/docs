@@ -74,9 +74,9 @@ Issue the following command to start Apache if you have not already:
 
 From this point we'll continue the configuration of Cacti through the browser. By default, the Cacti interface only accepts traffic from the local interface. Modify `/etc/httpd/conf.d/cacti.conf` to allow traffic to your local machine's IP address, as in the following example:
 
-{{< file-excerpt >}}
+{{< file >}}
 /etc/httpd/conf.d/cacti.conf
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > \<Directory /usr/share/cacti/\>
 > :   Order Deny,Allow Deny from all Allow from 193.194.195.196
@@ -104,9 +104,9 @@ Returning to the command line, issue the following command to create a new cron,
 
 Now insert the following line:
 
-{{< file-excerpt >}}
+{{< file >}}
 crontab
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > */5* \* \* \* /usr/bin/php /usr/share/cacti/poller.php \> /dev/null 2\>&1
 

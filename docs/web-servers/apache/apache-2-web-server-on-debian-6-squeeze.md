@@ -111,12 +111,12 @@ Follow these instructions:
     {{< note >}}
 If you would like to enable Perl support, add the following lines to the `VirtualHost` entry, right above the closing `</VirtualHost>` tag:
 
-{{< file-excerpt "/etc/apache2/sites-available/example.net" apache >}}
+{{< file "/etc/apache2/sites-available/example.net" apache >}}
 Options ExecCGI
 AddHandler cgi-script .pl
 {{< /note >}}
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
     >
 3.  Now you'll make the configuration file for the second domain. Create the file for **example.org**, called `/etc/apache2/sites-available/example.org`, with the following content. Be sure to replace **example.org** with your own domain name.
@@ -239,12 +239,12 @@ For more complex setups, however, we recommend that you consider using an altern
 
     Add the following lines to the file's `<VirtualHost >` block:
 
-    {{< file-excerpt "/etc/apache2/sites-available/example.net" apache >}}
+    {{< file "/etc/apache2/sites-available/example.net" apache >}}
 <IfModule mpm_itk_module>
    AssignUserId webeditor webgroup
 </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     In this example, `webeditor` is the name of the user for example.net, and `webgroup` is the name of the group that owns example.net. Remember that you must create the user accounts and groups using the `useradd` command.

@@ -94,12 +94,12 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
     {{< note >}}
 If you would like to enable Perl support, add the following lines to the `VirtualHost` entry, right above the closing `</VirtualHost>` tag:
 
-{{< file-excerpt "> /etc/apache2/sites-available/example.com.conf" apache >}}
+{{< file "> /etc/apache2/sites-available/example.com.conf" apache >}}
 Options ExecCGI
 AddHandler cgi-script .pl
 {{< /note >}}
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
     >
 

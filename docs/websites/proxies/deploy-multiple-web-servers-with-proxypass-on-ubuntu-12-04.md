@@ -25,7 +25,7 @@ We assume you already have Apache running on your Linode. If you don't, you may 
 
 You must first edit the file `/etc/apache2/mods-available/proxy.conf` as follows:
 
-{{< file-excerpt "/etc/apache2/mods-available/proxy.conf" apache >}}
+{{< file "/etc/apache2/mods-available/proxy.conf" apache >}}
 <IfModule mod_proxy.c>
         #turning ProxyRequests on and allowing proxying from all may allow
         #spammers to use your proxy to send email.
@@ -45,7 +45,7 @@ You must first edit the file `/etc/apache2/mods-available/proxy.conf` as follows
         ProxyVia On
 </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This turns on proxy support in the module configuration.

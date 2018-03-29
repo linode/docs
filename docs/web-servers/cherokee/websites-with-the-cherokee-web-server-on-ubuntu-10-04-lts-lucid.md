@@ -35,7 +35,7 @@ The first command should show your short hostname, and the second should show yo
 
 First, make sure you have the `universe` repositories enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 ## main & restricted repositories
 deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
@@ -53,7 +53,7 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
 deb http://security.ubuntu.com/ubuntu lucid-security universe
 deb-src http://security.ubuntu.com/ubuntu lucid-security universe
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 If you had to enable new repositories, issue the following commands to update your package lists:

@@ -18,13 +18,13 @@ These instructions install NGINX Mainline on CentOS 7 from NGINX Inc's official 
 
 1.  Create the file `/etc/yum.repos.d/nginx.repo` in a text editor and add the following:
 
-    {{< file-excerpt "/etc/yum.repos.d/nginx.repo" >}}
+    {{< file "/etc/yum.repos.d/nginx.repo" >}}
 [nginx]
 name=nginx repo
 baseurl=http://nginx.org/packages/mainline/centos/7/$basearch/
 gpgcheck=0
 enabled=1
-{{< /file-excerpt >}}
+{{< /file >}}
 
     {{< note >}}
 If you're using a CentOS version other than 7, replace `7` in the `baseurl` in `nginx.repo` file with the correct CentOS version:

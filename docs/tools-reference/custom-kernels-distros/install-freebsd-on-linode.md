@@ -136,12 +136,12 @@ SSH logins for `root` are disabled by default in FreeBSD but standard system use
 
 11.  This final step is required to enable Lish, Glish, and make a few other changes. Use your favorite text editor and insert the following at the bottom of `/boot/loader.conf`. (FreeBSD ships with `ee` and `nvi`, linked as `vi`)
 
-     {{< file-excerpt "/boot/loader.conf" >}}
+     {{< file "/boot/loader.conf" >}}
 boot_multicons="YES"
 boot_serial="YES"
 comconsole_speed="115200"
 console="comconsole,vidconsole"
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 12.  Exit Glish, return to the Linode Manager and reboot into the FreeBSD profile. You should have full SSH and administrative access as the user you created in Step 9.

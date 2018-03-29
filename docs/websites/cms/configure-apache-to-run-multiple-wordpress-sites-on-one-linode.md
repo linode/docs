@@ -131,7 +131,7 @@ Up until this point, the steps have been fairly straightforward and similar to s
 
 3.  Put the following contents in `example1.com`:
 
-    {{< file-excerpt "example1.conf" apache >}}
+    {{< file "example1.conf" apache >}}
 <VirtualHost *:80>
 # The primary domain for this host
 ServerName example1.com
@@ -162,7 +162,7 @@ Header always append X-Frame-Options SAMEORIGIN
 </IfModule>
 </VirtualHost>
 
-{{</file-excerpt >}}
+{{</file >}}
 
 
 4.  Enable the site. This will create a symlink to the `example.com` Apache conf file in `/etc/apache2/sites-enabled/`:

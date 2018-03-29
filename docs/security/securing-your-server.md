@@ -164,21 +164,21 @@ If you've already created an RSA key-pair, this command will overwrite it, poten
 1.  **Disallow root logins over SSH.** This requires all SSH connections be by non-root users. Once a limited user account is connected, administrative privileges are accessible either by using `sudo` or changing to a root shell using `su -`.
 
 
-    {{< file-excerpt "/etc/ssh/sshd_config" aconf >}}
+    {{< file "/etc/ssh/sshd_config" aconf >}}
 # Authentication:
 ...
 PermitRootLogin no
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  **Disable SSH password authentication.** This requires all users connecting via SSH to use key authentication. Depending on the Linux distribution, the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading `#`.
 
-    {{< file-excerpt "/etc/ssh/sshd_config" aconf >}}
+    {{< file "/etc/ssh/sshd_config" aconf >}}
 # Change to no to disable tunnelled clear text passwords
 PasswordAuthentication no
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}

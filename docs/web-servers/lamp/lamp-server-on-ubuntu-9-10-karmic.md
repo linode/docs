@@ -50,20 +50,20 @@ By default, Apache listens on all IP addresses available to it. We must configur
 
 Begin by modifying the `NameVirtualHost` entry in `/etc/apache2/ports.conf` as follows:
 
-{{< file-excerpt "/etc/apache2/ports.conf" apache >}}
+{{< file "/etc/apache2/ports.conf" apache >}}
 NameVirtualHost 12.34.56.78:80
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Be sure to replace "12.34.56.78" with your Linode's public IP address.
 
 Now, modify the default site's virtual hosting in the file `/etc/apache2/sites-available/default` so that the `<VirtualHost >` entry reads:
 
-{{< file-excerpt "/etc/apache2/sites-available/default" apache >}}
+{{< file "/etc/apache2/sites-available/default" apache >}}
 <VirtualHost 12.34.56.78:80>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Configure Name-based Virtual Hosts
@@ -177,7 +177,7 @@ Once PHP5 is installed we'll need to tune the configuration file located in `/et
 
 Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon (`;`)):
 
-{{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+{{< file "/etc/php5/apache2/php.ini" ini >}}
 max_execution_time = 30
 memory_limit = 64M
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
@@ -186,7 +186,7 @@ log_errors = On
 error_log = /var/log/php.log
 register_globals = Off
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 If you need support for MySQL in PHP, then you must install the php5-mysql package with the following command:
@@ -195,7 +195,7 @@ If you need support for MySQL in PHP, then you must install the php5-mysql packa
 
 To install the php5-suhosin package, which provides additional security for PHP 5 applications (recommended), you must add the "universe" software repositories. Uncomment the following lines from `/etc/apt/sources.list`:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
 deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
 deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
@@ -204,7 +204,7 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 deb http://security.ubuntu.com/ubuntu karmic-security universe
 deb-src http://security.ubuntu.com/ubuntu karmic-security universe
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Now run the following command to update the package archive:

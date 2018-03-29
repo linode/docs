@@ -153,7 +153,7 @@ The **docker-compose yml** files will control which system configuration we can 
 
 2.  Open `docker-init.yml` in a text editor and edit the content as follows:
 
-    {{< file-excerpt "~/docker-init.yml" >}}
+    {{< file "~/docker-init.yml" >}}
 version: '2'
 
 services:
@@ -207,7 +207,7 @@ services:
 volumes:
   dbfiles:
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
       - In the MySQL container section in the docker-init.yml, export the MySQL data directory, forward the MySQL port to the host, and add the restart command so that this service is automatically restarted if it goes down.
@@ -237,13 +237,13 @@ There are 2 different backup methods: using MySQL , and using sysadmin.
 
 1.  Ensure that the MySQL service is running on a container. You can check this with a `docker ps` command. The `docker ps` command displays the active containers:
 
-    {{< file-excerpt "docker -ps" >}}
+    {{< file "docker -ps" >}}
 CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS                              NAMES
 023d14e6193d        openzipkin/zipkin-dependencies   "crond -f"               3 days ago          Up 3 days                                              dependencies
 ee0c255b7765        openzipkin/zipkin                "/bin/sh -c 'test ..."   3 days ago          Up 3 days           9410/tcp, 0.0.0.0:9411->9411/tcp   zipkin
 43f659b36f17        openzipkin/zipkin-mysql          "/bin/sh -c /mysql..."   3 days ago          Up 3 days           0.0.0.0:3306->3306/tcp             mysql
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  If isn't running, make sure you start the Zipkin services with the `docker-compose up` command first. Then issue the MySQLdump with the following parameters from your Zipkin host machine.
 

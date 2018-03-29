@@ -67,19 +67,19 @@ Visit the [Confluence download page](http://www.atlassian.com/software/confluenc
 
 Edit the `confluence-init.properties` file, adding the following line to it. Adjust the full path to the file as necessary to reflect the current version number.
 
-{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties" >}}
+{{< file "/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties" >}}
 confluence.home=/var/lib/confluence
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Edit the `setenv.sh` file, adding the following lines. Adjust the full path to the file and the "JAVA\_HOME" line as necessary to reflect current version numbers.
 
-{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh" >}}
+{{< file "/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh" >}}
 JAVA_HOME="/usr/lib/java/jdk1.6.0_21"
 export JAVA_HOME
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following command to return to a root shell.
@@ -117,18 +117,18 @@ Issue the following commands to set a password for the `postgres` administrative
 
 Edit the file `/var/lib/pgsql/data/pg_hba.conf`. Locate the following line.
 
-{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+{{< file "/var/lib/pgsql/data/pg\\_hba.conf" >}}
 host all all 127.0.0.1/32 ident
 
-{{< /file-excerpt >}}
+{{< /file >}}
 ~
 
 Change it the match the following excerpt and save the file.
 
-{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+{{< file "/var/lib/pgsql/data/pg\\_hba.conf" >}}
 host all all 127.0.0.1/32 md5
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following command to create a `confluence` PostgreSQL role, making sure to assign a strong password.
@@ -163,7 +163,7 @@ By default, the web interface for Confluence runs on port 8080. If you're comfor
 
 Edit the `/etc/httpd/conf/httpd.conf` file, adding the following excerpt at the end.
 
-{{< file-excerpt "/etc/httpd/conf/httpd.conf" apache >}}
+{{< file "/etc/httpd/conf/httpd.conf" apache >}}
 <IfModule mod_proxy.c>
         #turning ProxyRequests on and allowing proxying from all may allow
         #spammers to use your proxy to send email.
@@ -183,7 +183,7 @@ Edit the `/etc/httpd/conf/httpd.conf` file, adding the following excerpt at the 
         ProxyVia On
 </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Create a file named `/etc/httpd/conf.d/vhost.conf` with the following contents, replacing "confluence.example.com" with the your actual domain name. Please note that you will need to add an "A" record to your DNS configuration to point the site to your Linode's public IP address. This example assumes that Confluence will be running on its default port (8080).

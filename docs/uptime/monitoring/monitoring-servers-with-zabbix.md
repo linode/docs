@@ -128,7 +128,7 @@ Now you'll want to make some adjustments to your `php.ini` file for Zabbix. Here
 
 2.  Verify that the following settings are set in the `php.ini` file.
 
-{{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+{{< file "/etc/php5/apache2/php.ini" ini >}}
 memory_limit = 128M
 post_max_size = 32M
 upload_max_filesize = 16M
@@ -136,7 +136,7 @@ max_execution_time = 600
 max_input_time = 600
 date.timezone = America/New_York
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
  {{< note >}}
@@ -247,10 +247,10 @@ Now you'll need to create a configuration file for the Zabbix server in your /et
 
 7.  Add the following to the `zabbix_server.conf` file. At this point, it only requires your database connection details, though we will also be adding a Zabbix server log as well.
 
-    {{< file-excerpt "/etc/zabbix/zabbix_server.conf" >}}
+    {{< file "/etc/zabbix/zabbix_server.conf" >}}
 
 DBName = zabbix DBPassword = YourZabbixMySQLpassword DBUser = zabbix LogFile = /var/log/zabbix.log
-{{< /file-excerpt>}}
+{{< /file>}}
 
     {{< note >}}
 A full list of configuration parameters for `zabbix_server.conf` are [available here](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_server).

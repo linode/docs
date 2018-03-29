@@ -129,7 +129,7 @@ Note that if `server.cfg` is present, its settings override any parameters that 
 
 Below is a sample server configuration:
 
-{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/server.cfg" java >}}
+{{< file "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/server.cfg" java >}}
 // Server name [Default: Half-Life 2 Deathmatch]
 hostname "My Linode"
 
@@ -199,7 +199,7 @@ sv_lan 0
 // Server password for players to join [Default: Empty]
 sv_password "MyLinode"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ## Custom Half-Life 2 Maps
@@ -229,7 +229,7 @@ When a match ends, the server starts a new match with the next map in the rotati
 
 If `mapcycle.txt` is not available, the system uses the default map rotation list in `mapcycle_default.txt`.
 
-{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle_default.txt" java >}}
+{{< file "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle_default.txt" java >}}
 // Default mapcycle file for hl2mp
 //
 // DO NOT MODIFY THIS FILE!
@@ -246,7 +246,7 @@ dm_runoff
 dm_steamlab
 dm_underpass
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 To add a custom map to the rotation:
@@ -257,7 +257,7 @@ To add a custom map to the rotation:
 
 2.  Write the custom map's name inside `mapcycle.txt`. For example: if you have the map `dm_custom.bsp`:
 
-{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle.txt" resource >}}
+{{< file "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle.txt" resource >}}
 // Default mapcycle file for hl2mp
 //
 // DO NOT MODIFY THIS FILE!
@@ -275,7 +275,7 @@ dm_runoff
 dm_steamlab
 dm_underpass
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ## Play Half-Life 2 on your Own Server

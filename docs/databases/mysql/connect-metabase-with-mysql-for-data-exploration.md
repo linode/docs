@@ -66,7 +66,7 @@ There are a number of additional databases that are supported from SQLite to Pos
 
 2.  Create a new NGINX configuration file with the settings below setting `server_name` with your FDQN or public IP address:
 
-    {{< file-excerpt "/etc/nginx/conf.d/metabase.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/metabase.conf" nginx >}}
 server {
         listen 80;
         listen [::]:80;
@@ -81,7 +81,7 @@ server {
              proxy_set_header Connection "Upgrade";
         }
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Verify there are no issues with the configuration:
 

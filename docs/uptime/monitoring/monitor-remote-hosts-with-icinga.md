@@ -35,22 +35,22 @@ Icinga 2 stores Host definitions in objects. These objects and their attributes 
 
 1.  To add a new host definition to be periodically monitored by Icinga 2 engine via ICMP checks, open `hosts.conf` and add the following lines to the bottom of the file:
 
-    {{< file-excerpt "/etc/icinga2/conf.d/hosts.conf" conf >}}
+    {{< file "/etc/icinga2/conf.d/hosts.conf" conf >}}
 object Host "Linode" {
   import "generic-host"
   address = "10.25.1.31"
   check_command = "hostalive"
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  To check the status of a web server that runs on this node, add the following lines after host definition. This check will verify if the web server is alive and responds with the proper HTTP codes:
 
-    {{< file-excerpt "/etc/icinga2/conf.d/hosts.conf" conf >}}
+    {{< file "/etc/icinga2/conf.d/hosts.conf" conf >}}
 object Service "http" {
   host_name = "Linode"
   check_command = "http"
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Restart the service to apply the host definitions and start monitoring the new host resource:
 
@@ -157,7 +157,7 @@ Icina2 can monitor a node's internal health parameters, such as CPU load, disk s
 
 2.  Add the following lines to the `centos.conf` zone configuration file:
 
-    {{< file-excerpt "centos.conf" conf >}}
+    {{< file "centos.conf" conf >}}
 object Zone "centos" {
   endpoints = [ "centos" ]
   parent = "icinga"
@@ -176,13 +176,13 @@ object Host "centos" {
   }
   vars.client_endpoint = name
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
     The CentOS endpoint object zone will report back to its master node defined by the `parent = “icinga”` statement. Replace the CentOS hostname and IP address accordingly.
 
 3.  Update the CentOS zone services configuration file:
 
-    {{< file-excerpt "/etc/icinga2/zones.d/centos/services.conf" conf >}}
+    {{< file "/etc/icinga2/zones.d/centos/services.conf" conf >}}
 apply Service "users" {
   import "generic-service"
   check_command = "users"
@@ -196,7 +196,7 @@ apply Service "procs" {
   command_endpoint = host.vars.client_endpoint
   assign where host.vars.client_endpoint
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
     In this configuration file we’ve defined the following services checks for the remote client:
 

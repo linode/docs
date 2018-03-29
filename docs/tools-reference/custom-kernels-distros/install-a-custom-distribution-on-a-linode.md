@@ -106,14 +106,14 @@ Some installers offer an option to place `/boot` on a separate partition. If you
 
 At this point you can connect to your Linode via SSH or the Glish graphical console, however you will not be able to connect to your Linode using the Lish serial console. To fix this, update the following settings in your `/etc/default/grub` file:
 
-{{< file-excerpt "/etc/default/grub" >}}
+{{< file "/etc/default/grub" >}}
 GRUB_TIMEOUT=10
 GRUB_CMDLINE_LINUX="console=ttyS0,19200n8"
 GRUB_TERMINAL=serial
 GRUB_DISABLE_LINUX_UUID=true
 GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Once you've finished editing `grub`, issue the appropriate command to apply your changes to your Grub configuration:

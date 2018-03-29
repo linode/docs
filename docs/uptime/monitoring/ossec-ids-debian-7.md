@@ -167,7 +167,7 @@ Although you specified an email and OSSEC auto-discovered the SMTP server, there
 
 1.  Open `ossec.conf`. The email settings are at the top of the file:
 
-    {{< file-excerpt "ossec.conf" >}}
+    {{< file "ossec.conf" >}}
 <global>
   <email_notification>yes</email_notification>
   <email_to>loginName@example.com</email_to>
@@ -175,14 +175,14 @@ Although you specified an email and OSSEC auto-discovered the SMTP server, there
   <email_from>ossecm@hostname</email_from>
 </global>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     The `< email_to >` entry is the email specified during installation. That is the address in which OSSEC will send alerts, and can be changed at any time. The `< email_from >` entry is where OSSEC's alerts will appear to be sent from. If you do not change the default, some SMTP servers will mark the email alerts as spam.
 
 2.  Modify the `< email_from >` line:
 
-    {{< file-excerpt "ossec.conf" >}}
+    {{< file "ossec.conf" >}}
 <global>
   <email_notification>yes</email_notification>
   <email_to>loginName@example.com</email_to>
@@ -190,7 +190,7 @@ Although you specified an email and OSSEC auto-discovered the SMTP server, there
   <email_from>loginName@example.com</email_from>
 </global>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}
@@ -229,24 +229,24 @@ By default OSSEC will not send out an alert when a new file is added to the syst
 
 1.  Open `ossec.conf` and scroll  down to the following section:
 
-    {{< file-excerpt "ossec.conf" >}}
+    {{< file "ossec.conf" >}}
 <syscheck>
   <!-- Frequency that syscheck is executed - default to every 22 hours -->
   <frequency>79200</frequency>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Modify the file:
 
-    {{< file-excerpt "ossec.conf" >}}
+    {{< file "ossec.conf" >}}
 <syscheck>
   <!-- Frequency that syscheck is executed - default to every 22 hours -->
   <frequency>79200</frequency>
 
   <alert_new_files>yes</alert_new_files>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Note that the `< frequency >` is the interval that OSSEC performs a system check. During testing, you may reduce that setting to a lower number, like 900. Afterwards, it can be changed back to the default.
@@ -256,23 +256,23 @@ By default OSSEC will not send out an alert when a new file is added to the syst
 
 1.  Open `ossec.conf`. Below the `< frequency >` setting is a list of system directories that OSSEC has been configured to monitor:
 
-    {{< file-excerpt "ossec.conf" >}}
+    {{< file "ossec.conf" >}}
 <!-- Directories to check  (perform all possible verifications) -->
 <directories check_all="yes">/etc,/usr/bin,/usr/sbin</directories>
 <directories check_all="yes">/bin,/sbin</directories>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  OSSEC can check the home directory and, if hosting a website on the server, monitor the website's data directory. For the specified directories, OSSEC can be configured to report changes in real-time:
 
-    {{< file-excerpt "ossec.conf" >}}
+    {{< file "ossec.conf" >}}
 <!-- Directories to check  (perform all possible verifications) -->
 <directories report_changes="yes" realtime="yes" check_all="yes">/etc,/usr/bin,/usr/sbin</directories>
 <directories report_changes="yes" realtime="yes" check_all="yes">/bin,/sbin</directories>
 <directories report_changes="yes" realtime="yes" check_all="yes">/home/username,/var/www</directories>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Another directory you may want to configure OSSEC to monitor is `/var/ossec`, OSSEC's installation directory. However, if monitored, OSSEC **must** be configured to ignore certain directories within `/var/ossec`, otherwise you risk running out of disk space.
@@ -281,7 +281,7 @@ By default OSSEC will not send out an alert when a new file is added to the syst
 
 For a Linux system, the default list of files and directories to ignore are:
 
-{{< file-excerpt "ossec.conf" >}}
+{{< file "ossec.conf" >}}
 <!-- Files/directories to ignore -->
 <ignore>/etc/mtab</ignore>
 <ignore>/etc/mnttab</ignore>
@@ -296,19 +296,19 @@ For a Linux system, the default list of files and directories to ignore are:
 <ignore>/etc/dumpdates</ignore>
 <ignore>/etc/svc/volatile</ignore>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 If OSSEC is configured to monitor `/var/ossec`, include the additional lines:
 
-{{< file-excerpt "ossec.conf" >}}
+{{< file "ossec.conf" >}}
 <ignore>/var/ossec/logs</ignore>
 <ignore>/var/ossec/queue</ignore>
 <ignore>/var/ossec/var</ignore>
 <ignore>/var/ossec/tmp</ignore>
 <ignore>/var/ossec/stats</ignore>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Modify Active Response Block Times
@@ -317,7 +317,7 @@ OSSEC uses tcpwrappers (`host.deny`) and iptables to ban any IP addresses that t
 
 To alter the timeframe of a ban, change the  `< timeout >` setting to suit. Note that it has to be in **seconds**:
 
-{{< file-excerpt "ossec.conf" >}}
+{{< file "ossec.conf" >}}
 <!-- Active Response Config -->
 <active-response>
 
@@ -336,7 +336,7 @@ To alter the timeframe of a ban, change the  `< timeout >` setting to suit. Note
   <timeout>600</timeout>
 </active-response>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 After making changes, save and close the file.
@@ -351,7 +351,7 @@ After making changes, save and close the file.
 
 2.  The rule that fires on new files is rule number **554**. The chunk of code that defines that rule in `ossec_rules.xml` is:
 
-    {{< file-excerpt "ossec_rules.xml" >}}
+    {{< file "ossec_rules.xml" >}}
 <rule id="554" level="0">
   <category>ossec</category>
   <decoded_as>syscheck_new_entry</decoded_as>
@@ -359,12 +359,12 @@ After making changes, save and close the file.
   <group>syscheck,</group>
 </rule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Since OSSEC does not alert on rules that are **level 0**, that rule has to be modified in `local_rules.xml` so that OSSEC can fire when a new file is added to the system. The rule modification should be located between the `< group > ... < /group >` tags:
 
-    {{< file-excerpt "local_rules.xml" >}}
+    {{< file "local_rules.xml" >}}
 <rule id="554" level="7" overwrite="yes">
   <category>ossec</category>
   <decoded_as>syscheck_new_entry</decoded_as>
@@ -377,7 +377,7 @@ After making changes, save and close the file.
 
         <!-- EOF -->
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 5.  Save and close the file.

@@ -155,11 +155,11 @@ The process for setting up a client is essentially the same as the server. If yo
 
 2.  The only difference between the client and server is the contents of the configuration file:
 
-    {{< file-excerpt "/etc/wireguard/wg0.conf" conf >}}
+    {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
 PrivateKey = <Output of privatekey file that contains your private key>
 Address = 192.168.2.2/24, fd86:ea04:1115::5/64
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ## Connect the Client and Server
 
@@ -167,12 +167,12 @@ There are two ways to add peer information to WireGuard; this guide will demonst
 
 1.  The first method is to directly edit the client's `wg0.conf` file with the server's information:
 
-    {{< file-excerpt "/etc/wireguard/wg0.conf" conf >}}
+    {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Peer]
 PublicKey = <Server Public key>
 Endpoint = <Server Public IP>:51820
 AllowedIPs = 192.168.2.1/24, fd86:ea04:1115::1/64
-{{< /file-excerpt >}}
+{{< /file >}}
 
     Use the server's public key, public IP address, and port.
 

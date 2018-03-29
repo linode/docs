@@ -57,11 +57,11 @@ Issue the following command to download an init script to manage the uWSGI proce
 
 Create an `/etc/conf.d/uwsgi` file to specify specific settings for your Python application. The `MODULE` specifies the name of the Python module that contains your `wsgi` specification. Consider the following example:
 
-{{< file-excerpt "/etc/conf.d/uwsgi" bash >}}
+{{< file "/etc/conf.d/uwsgi" bash >}}
 PYTHONPATH=/srv/www/example.com/application
 MODULE=wsgi_configuration_module
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following sequence of commands to prepare the new init script and log files:
@@ -80,7 +80,7 @@ You will want to add the `uwsgi` daemon to the `DAEMONS=()` array at the end of 
 
 Create an nginx server configuration that resembles the following for the site where the uWSGI app will be accessible:
 
-{{< file-excerpt "nginx virtual host configuration" nginx >}}
+{{< file "nginx virtual host configuration" nginx >}}
 server {
     listen   80;
     server_name www.example.com example.com;
@@ -98,7 +98,7 @@ server {
     }
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 All requests to URLs ending in `/static` will be served directly from the `/srv/www/example.com/public_html/static` directory. Restart the web server by issuing the following command:
@@ -109,7 +109,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 
 If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. Consider our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, consider the following example:
 
-{{< file-excerpt "nginx configuration" nginx >}}
+{{< file "nginx configuration" nginx >}}
 upstream uwsgicluster {
      server 127.0.0.1:9001;
      server 192.168.100.101:9001;
@@ -135,7 +135,7 @@ server {
     }
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example we create the `uwsgicluster` upstream, which has five components. One runs locally on the local interface, and four run on the local network interface of distinct Linodes (e.g. the `192.168.` addresses or the private "back end" network). The application servers that run on those dedicated application servers are identical to the application servers described above. However, the application server process must be configured to bind to the appropriate network interface to be capable of responding to requests.

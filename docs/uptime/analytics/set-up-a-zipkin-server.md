@@ -86,10 +86,10 @@ java -jar zipkin.jar
 
 2. Add the new hostname to `/etc/hosts`:
 
-    {{< file-excerpt "/etc/hosts" >}}
+    {{< file "/etc/hosts" >}}
 192.0.2.0     zipkinsvr
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Configure the Firewall for the Zipkin Server
@@ -154,20 +154,20 @@ The default Fedora 26 firewall rules block all ports as a safety precaution. Cre
 
 1. Set `ZIPKIN_SERVER` to the IP address of the Zipkin server:
 
-    {{< file-excerpt "website.py" python >}}
+    {{< file "website.py" python >}}
 def http_transport(encoded_span):
     import requests
     ZIPKIN_SERVER = "192.0.2.0"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Set the host to allow access on the public IP address. If your Zipkin server and analyst machine are on the same local network as the webserver, skip this step:
 
-    {{< file-excerpt "website.py" >}}
+    {{< file "website.py" >}}
 run(host='0.0.0.0', port=8080, reloader=True)
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Configure the Firewall for the Web Server

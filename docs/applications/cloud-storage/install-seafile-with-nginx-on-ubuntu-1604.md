@@ -78,9 +78,9 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
 
 7. Add the new hostname to `/etc/hosts`. The second line in the file should look like this:
 
-    {{< file-excerpt "/etc/hosts"  conf >}}
+    {{< file "/etc/hosts"  conf >}}
 127.0.1.1    members.linode.com     seafile
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 8.  On first boot, your Linode's timezone will be set to UTC. Changing this is optional, but if you wish, use:

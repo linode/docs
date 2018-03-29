@@ -208,11 +208,11 @@ output {
 
 1.  Open `/etc/kibana/kibana.yml`. Uncomment the following two lines and replace `localhost` with the public IP address of your Linode. If you have a firewall enabled on your server, make sure that the server accepts connections on port `5601`.
 
-    {{< file-excerpt "/etc/kibana/kibana.yml" >}}
+    {{< file "/etc/kibana/kibana.yml" >}}
 server.port: 5601
 server.host: "localhost"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Enable and start the Kibana service:

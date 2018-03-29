@@ -56,17 +56,17 @@ Jan 23 21:18:44 localhost systemd[1]: Started RStudio Server.
 
 4.  Because you will be accessing RStudio through a reverse proxy, set RStudio Server to listen on localhost instead of a public IP. Open `rserver.conf` in a text editor and add the following content:
 
-    {{< file-excerpt "/etc/rstudio/rserver.conf" >}}
+    {{< file "/etc/rstudio/rserver.conf" >}}
 # Server Configuration File
 www-address=127.0.0.1
-{{< /file-excerpt >}}
+{{< /file >}}
 
 5.  You can also set the configuration for each individual session. For example, the default session timeout is two hours. Change this to 30 minutes to conserve server resources:
 
-    {{< file-excerpt "/etc/rstudio/rsession.conf" >}}
+    {{< file "/etc/rstudio/rsession.conf" >}}
 # R Session Configuration File
 session-timeout-minutes=30
-{{< /file-excerpt >}}
+{{< /file >}}
 
 6.  Check your configuration:
 
@@ -86,7 +86,7 @@ Running Rstudio server behind a reverse proxy offers benefits such as being able
 
 2.  Open `nginx.conf` in a text editor and add the following configuration:
 
-    {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+    {{< file "/etc/nginx/nginx.conf" nginx >}}
 http {
         # Basic Settings
         # ...
@@ -96,11 +96,11 @@ http {
             ''      close;
         }
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Create an NGINX configuration in `/etc/nginx/conf.d/` called `rstudio.conf` with the following configuration. Replace `example.com` with the public IP address or FDQN of your Linode:
 
-    {{< file-excerpt "/etc/nginx/conf.d/rstudio.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/rstudio.conf" nginx >}}
 server {
         listen 80;
         listen [::]:80;
@@ -116,7 +116,7 @@ server {
              proxy_read_timeout 20d;
         }
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 4.  Check the NGINX configuration:
 

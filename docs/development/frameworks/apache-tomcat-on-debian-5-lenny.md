@@ -46,10 +46,10 @@ If you chose to run OpenJDK, then you can skip the remainder of this section. If
 
 Add the following line to your `sources.list` file:
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 deb http://mirror.cc.columbia.edu/pub/linux/debian/debian/  lenny non-free
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Update apt to get the necessary package lists:
@@ -118,10 +118,10 @@ exit 0
 
 Remember, if you installed open-jdk the `export JAVA_HOME` line should read:
 
-{{< file-excerpt "/etc/init.d/tomcat" bash >}}
+{{< file "/etc/init.d/tomcat" bash >}}
 export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Make the script executable by issuing this command:

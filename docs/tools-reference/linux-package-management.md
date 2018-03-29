@@ -145,11 +145,11 @@ The file located at `/etc/yum.conf` provides system-wide configuration options f
 
 The options in the `[main]` stanza don't need modification, though you may set alternate logging and cache locations for the database by adding the following lines:
 
-{{< file-excerpt "/etc/yum.conf" conf >}}
+{{< file "/etc/yum.conf" conf >}}
 logfile=/var/log/yum.log
 cachedir=/var/cache/yum
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Dandified YUM (DNF)
@@ -194,7 +194,7 @@ Note that RPM does not automatically check for dependencies, so you must install
 
 You can use the following template to define a new stanza for a new repository, replacing the capitalized strings with your own values:
 
-{{< file-excerpt "/etc/yum.repos.d/example.repo" conf >}}
+{{< file "/etc/yum.repos.d/example.repo" conf >}}
 [REPO-NAME]
 name=REPOSITORY-NAME
 mirrorlist=HTTP-ACCESSIBLE-MIRROR-LIST
@@ -202,12 +202,12 @@ mirrorlist=HTTP-ACCESSIBLE-MIRROR-LIST
 gpgcheck=BOOLEAN-VALUE-TO-VERIFY-REPOSITORY
 gpgkey=FILE-PATH-TO-GPG-KEY
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The following example is the default configuration for the "Base" repository in CentOS 7:
 
-{{< file-excerpt "/etc/yum.repos.d/CentOS-Base.repo" conf >}}
+{{< file "/etc/yum.repos.d/CentOS-Base.repo" conf >}}
 [base]
 name=CentOS-$releasever - Base
 mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
@@ -215,7 +215,7 @@ mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ## Slackware Package Management
@@ -311,12 +311,12 @@ While it is unlikely that you will need to modify the default `pacman.conf` for 
 
 If you need to add an additional third-party repository, add a repository stanza:
 
-{{< file-excerpt "/etc/pacman.conf" conf >}}
+{{< file "/etc/pacman.conf" conf >}}
 [REPOSITORY-NAME]
 Server = SERVER-LOCATION
 Include = REPOSITORY-LIST
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The `Server =` and `Include =` lines are both optional, and the order indicates their priority. By default, the testing repository is disabled, which is wise if you're planning to use the system for production work; however, if you need bleeding-edge packages, uncomment those lines.
@@ -351,7 +351,7 @@ Change to the package's directory:
 
 You have the option of modifying the `PKGBUILD` file. There's a build shell function that you can use to add additional patches to the files if you have modifications to the software or the build process. That shell function generally looks like:
 
-{{< file-excerpt "~/abs/PACKAGE/PKGBUILD" >}}
+{{< file "~/abs/PACKAGE/PKGBUILD" >}}
 build() {
   cd $startdir/src/$pkgname-$pkgver.orig
 
@@ -363,7 +363,7 @@ build() {
   make install
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 To build the package, use the following command as a non-root user:
 

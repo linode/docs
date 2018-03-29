@@ -68,12 +68,12 @@ A **master node** keeps knowledge about the distributed file system, like the `i
 
 For each node to communicate with its names, edit the `/etc/hosts` file to add the IP address of the three servers. Don't forget to replace the sample IP with your IP:
 
-{{< file-excerpt "/etc/hosts" >}}
+{{< file "/etc/hosts" >}}
 192.0.2.1    node-master
 192.0.2.2    node1
 192.0.2.3    node2
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ### Distribute Authentication Key-pairs for the Hadoop User
 
@@ -102,10 +102,10 @@ Login to **node-master** as the `hadoop` user, download the Hadoop tarball from 
 
 1.  Add Hadoop binaries to your PATH. Edit `/home/hadoop/.profile` and add the following line:
 
-    {{< file-excerpt "/home/hadoop/.profile" shell >}}
+    {{< file "/home/hadoop/.profile" shell >}}
 PATH=/home/hadoop/hadoop/bin:/home/hadoop/hadoop/sbin:$PATH
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ## Configure the Master Node
@@ -128,10 +128,10 @@ Configuration will be done on **node-master** and replicated to other nodes.
 
     with your actual java installation path. For example on a Debian with open-jdk-8:
 
-    {{< file-excerpt "~/hadoop/etc/hadoop/hadoop-env.sh" shell >}}
+    {{< file "~/hadoop/etc/hadoop/hadoop-env.sh" shell >}}
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 

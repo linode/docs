@@ -9491,50 +9491,6 @@ pre code {
 .file pre.chroma code {
   white-space: pre;
 }
-.file-excerpt dt {
-  margin-bottom: 5px;
-  color: #000;
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-}
-.file-excerpt dt:before {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  line-height: 1.1;
-  color: inherit;
-  margin-top: 11px;
-  margin-bottom: 11px;
-  font-size: 14px;
-  font-size: 19px;
-  font-weight: 400;
-  padding-right: 5px;
-}
-.file-excerpt dt:before small,
-.file-excerpt dt:before .small {
-  font-weight: normal;
-  line-height: 1;
-  color: #777777;
-}
-.file-excerpt dt:before small,
-.file-excerpt dt:before .small {
-  font-size: 75%;
-}
-.file-excerpt dt:before + .lead {
-  padding-top: 10px;
-}
-.file-excerpt dd + dt {
-  margin-top: 20px;
-}
-.file-excerpt pre.chroma code {
-  white-space: pre;
-}
-.file-excerpt dt {
-  background-color: #073642;
-  padding: 0.5em;
-  margin-bottom: 0;
-  color: #93a1a1;
-  text-align: center;
-  font-size: 16px;
-}
 .file dt {
   background-color: #073642;
   padding: 0.5em;

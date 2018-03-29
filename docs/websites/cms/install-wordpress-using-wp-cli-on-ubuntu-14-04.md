@@ -81,10 +81,10 @@ The bash completion feature of WP-CLI allows you to see all the available comman
 
 2.  Edit the `.bashrc` file so that it is loaded by the shell every time you login. Open the file and add the following line in the editor:
 
-    {{< file-excerpt "~/.bashrc" bash >}}
+    {{< file "~/.bashrc" bash >}}
 source /home/$USER/wp-completion.bash
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Run the following command to reload the bash profile:

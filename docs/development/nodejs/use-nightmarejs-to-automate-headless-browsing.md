@@ -153,8 +153,8 @@ For more information about using Cron, see our [Schedule Tasks with Cron](/docs/
 
 2.  Add the following line to the end of the file:
 
-    {{< file-excerpt "crontab" cron >}}
+    {{< file "crontab" cron >}}
 0 * * * * cd ~/automation && xvfb-run node linode.js >> data_$(date +\%Y_\%m_\%d_\%I_\%M_\%p).txt
 
-{{< /file-excerpt >}}
+{{< /file >}}
 

@@ -118,19 +118,19 @@ This downloads the latest version of BungeeCord. You can find older versions for
 
 3.  Edit the following block of the configuration, in order to add our existing Spigot servers:
 
-    {{< file-excerpt "config.yml" yaml >}}
+    {{< file "config.yml" yaml >}}
 servers:
   lobby:
     address: localhost:25565
     restricted: false
     motd: 'Just another BungeeCord - Forced Host'
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     For the servers that are specified as examples in the introduction, it would look like:
 
-    {{< file-excerpt "config.yml" yaml >}}
+    {{< file "config.yml" yaml >}}
 servers:
   lobby:
     address: 203.0.113.112:25565
@@ -141,7 +141,7 @@ servers:
  restricted: false
  motd: 'Just another BungeeCord - Forced Host'
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Each server block has a label: In the case of the example, `lobby` or `games`. These can be any word you want, but it's important that they are descriptive, as they will be used by the players to change servers.

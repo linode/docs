@@ -69,10 +69,10 @@ Recent versions of Debian (8 and newer) and Ubuntu (15.04 and newer) require Var
 
 1.  Open the `varnish.service` file, set the port, configuration file, and *memory allocation* on the `ExecStart` line. In the following example, these values are: `-a :80`, `/etc/varnish/user.vcl`, and `malloc,1G`.
 
-    {{< file-excerpt "/lib/systemd/system/varnish.service" bash >}}
+    {{< file "/lib/systemd/system/varnish.service" bash >}}
 ExecStart=/usr/sbin/varnishd -j unix,user=vcache -F -a :80 -T localhost:6082 -f /etc/varnish/user.vcl -S /etc/varnish/secret -s malloc,1G
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  The configuration above allocates a maximum of 1GB of memory to store its cache items. If you need to adjust this allocation, edit the number in `-s malloc,1G`. For example, to allocate 2GB of memory:
@@ -87,25 +87,25 @@ ExecStart=/usr/sbin/varnishd -j unix,user=vcache -F -a :80 -T localhost:6082 -f 
 
 Now that you've pointed the Varnish start script to `user.vcl`, you need to configure that file to serve the content Varnish gets from the web server. Edit the `backend default {` section of `/etc/varnish/user.vcl` to tell Varnish where to get the server (backend) content. The example below  uses port `8080`, a web server setting you  will configure later:
 
-{{< file-excerpt "/etc/varnish/user.vcl" >}}
+{{< file "/etc/varnish/user.vcl" >}}
 backend default {
     .host = "127.0.0.1";
     .port = "8080";
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Configure Cache Time-to-Live (TTL)
 
 By default, Varnish will cache requests for two minutes. To adjust this time, open your VCL file and override the `vcl_backend_response` subroutine by updating  your backend declaration:
 
-{{< file-excerpt "/etc/varnish/user.vcl" >}}
+{{< file "/etc/varnish/user.vcl" >}}
 sub vcl_backend_response {
   set beresp.ttl = 5m;
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This subroutine is called after a request is fetched from the backend. In this example, we're setting the TTL variable on the object to five minutes (`5m`). Values can be in seconds (`120s`), minutes (`2m`) or hours (`2h`). Your ideal TTL may vary depending on how often the content of your site is updated, and the amount of traffic you need to handle.
@@ -126,19 +126,19 @@ To allow Varnish to communicate with your web server, you'll need to modify a fe
 
     **Apache**:
 
-    {{< file-excerpt "/etc/apache2/sites-available/example.com.conf" aconf >}}
+    {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
 <VirtualHost *:8080>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     **nginx**:
 
-    {{< file-excerpt "/etc/nginx/sites-available/example.com" aconf >}}
+    {{< file "/etc/nginx/sites-available/example.com" aconf >}}
 listen 8080;
 listen [::]:8080;
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Check your `/etc/varnish/user.vcl` file and make sure the `backend default` is set to use port 8080:
@@ -171,7 +171,7 @@ You may want to exclude specific parts of your website from Varnish caching, par
 
 You'll need to override the `vcl_recv` subroutine in our VCL file, which is run each time Varnish receives a request, then add a conditional:
 
-{{< file-excerpt "/etc/varnish/user.vcl" >}}
+{{< file "/etc/varnish/user.vcl" >}}
 sub vcl_recv
 {
     if (req.http.host == "example.com" &&
@@ -181,7 +181,7 @@ sub vcl_recv
     }
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This example checks for two conditions you don't want to cache. The first is any request for `example.com`, the second is for any URI requests that begin with `/admin`. If both of these are true, Varnish will not cache the request.
@@ -192,17 +192,17 @@ As mentioned earlier, if Varnish detects your website is setting cookies, it ass
 
 Add this line to the bottom of the `vcl_recv` section:
 
-{{< file-excerpt "/etc/varnish/user.vcl" >}}
+{{< file "/etc/varnish/user.vcl" >}}
 unset req.http.Cookie;
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 You may find that a particular cookie is important for displaying content or determines if your user is logged in or not. In this case, you probably don't want to show cached content and instead, just want to send the user straight to the backend.
 
 For this case, you'll check `req.http.Cookie` for a cookie called "logged_in", and if its found, the request will be passed on to the backend with no caching. Here's our entire `vcl_recv` subroutine thus far:
 
-{{< file-excerpt "/etc/varnish/user.vcl" >}}
+{{< file "/etc/varnish/user.vcl" >}}
 sub vcl_recv
 {
     if ((req.http.host ~ "example.com" &&
@@ -215,7 +215,7 @@ sub vcl_recv
      unset req.http.Cookie;
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### To Cache POST, or Not to Cache POST?
@@ -224,7 +224,7 @@ It's likely you don't want to cache [POST](https://en.wikipedia.org/wiki/POST_(H
 
 To accomplish this, add the following condition to the existing `return (pass)` block inside of `vcl_recv`:
 
-{{< file-excerpt "/etc/varnish/user.vcl" >}}
+{{< file "/etc/varnish/user.vcl" >}}
 if ((req.http.host == "example.com" &&
     req.url ~ "^/admin") ||
     req.http.Cookie == "logged_in" ||
@@ -233,7 +233,7 @@ if ((req.http.host == "example.com" &&
     return (pass);
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ### Use Varnish Cache for High Availability with Backend Polling
@@ -242,7 +242,7 @@ Varnish can use a built-in tool called *backend polling* to check on the backend
 
 To set up polling, add a probe section to the backend declaration in `/etc/varnish/user.vcl`:
 
-{{< file-excerpt "/etc/varnish/user.vcl" >}}
+{{< file "/etc/varnish/user.vcl" >}}
 backend default {
     .host = '127.0.0.1';
     .port = '8080';
@@ -255,17 +255,17 @@ backend default {
      }
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 These settings are just a starting point, and you may want to tweak them for your website. This example instructs Varnish to *poll*, or perform a test connection to, `http://127.0.0.1:8080/` every second, and if it takes less than 40ms to respond for at least 8 of the last 10 polls, the backend is considered healthy.
 
 If the backend fails the test, it's considered unhealthy and objects are served out of the cache in accordance to their grace time setting. To set the grace time, include the following line in `vcl_backend_response`:
 
-{{< file-excerpt "/etc/varnish/user.vcl" >}}
+{{< file "/etc/varnish/user.vcl" >}}
 set beresp.grace = 1h;
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 "1h" allows the backend to be down for one hour without any impact to website users. If you're serving static content, the grace time can be even longer to ensure uptime.

@@ -66,7 +66,7 @@ LoadModule evasive20_module /usr/lib/httpd/modules/mod_evasive20.so
 
 3.  Below that section, add the mod_evasive configuration:
 
-    {{< file-excerpt "mod_evasive configuration" >}}
+    {{< file "mod_evasive configuration" >}}
 <IfModule mod_evasive20.c>
     DOSHashTableSize 3097
     DOSPageCount 2
@@ -76,7 +76,7 @@ LoadModule evasive20_module /usr/lib/httpd/modules/mod_evasive20.so
     DOSBlockingPeriod 60
     DOSEmailNotify <someone@somewhere.com>
 </IfModule>
-{{< /file-excerpt >}}
+{{< /file >}}
 
 4.  Restart Apache for your changes to take effect:
 

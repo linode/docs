@@ -30,7 +30,7 @@ The first command should show your short hostname, and the second should show yo
 
 Edit the `/etc/apt/sources.list` file, adding the following "mutliverse" repository lines if they don't already exist. The multiverse repository is required to allow the installation of the Sun Java 6 JDK; alternate Java JDK packages (such as OpenJDK) are not supported by Confluence as of this writing.
 
-{{< file-excerpt "/etc/apt/sources.list" >}}
+{{< file "/etc/apt/sources.list" >}}
 ## multiverse repositories
 deb http://us.archive.ubuntu.com/ubuntu/ karmic multiverse
 deb-src http://us.archive.ubuntu.com/ubuntu/ karmic multiverse
@@ -41,7 +41,7 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates multiverse
 deb http://security.ubuntu.com/ubuntu karmic-security multiverse
 deb-src http://security.ubuntu.com/ubuntu karmic-security multiverse
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following commands to update your package repositories and install all available application updates.
@@ -80,19 +80,19 @@ Visit the [Confluence download page](http://www.atlassian.com/software/confluenc
 
 Edit the `confluence-init.properties` file, adding the following line to it. Adjust the full path to the file as necessary to reflect the current version number.
 
-{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties" >}}
+{{< file "/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties" >}}
 confluence.home=/var/lib/confluence
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Edit the `setenv.sh` file, adding the following lines. Adjust the full path to the file as necessary to reflect the current version number.
 
-{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh" >}}
+{{< file "/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh" >}}
 JAVA_HOME="/usr/lib/jvm/java-6-sun"
 export JAVA_HOME
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following command to return to a root shell.

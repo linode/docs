@@ -35,9 +35,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 3.  Edit `/etc/selinux/config` to ensure SELinux is disabled:
 
-    {{< file-excerpt "/etc/selinux/config" >}}
+    {{< file "/etc/selinux/config" >}}
 SELINUX=disabled
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  Update your packages:

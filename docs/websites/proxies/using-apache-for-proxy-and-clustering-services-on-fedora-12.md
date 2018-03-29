@@ -26,7 +26,7 @@ In this configuration, Apache provides two or more virtual hosts which perform d
 
 To accomplish this, insert the following configuration directives into your Virtual Hosting configuration:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost static.example.com:80>
     ServerAdmin admin@example.com
     ServerName static.example.com
@@ -41,7 +41,7 @@ To accomplish this, insert the following configuration directives into your Virt
     </Directory>
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Create the necessary directories by issuing the following commands:
@@ -61,9 +61,9 @@ In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/ap
 
 Once `mod_proxy` is enabled and configured, you can insert the following directives into your virtual hosting configuration:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 > ProxyPass /static/ <http://static.example.com/> ProxyPass /media <http://media.example.com> ProxyPass /wiki/static/ ! ProxyPass /wiki/ <http://application.example.com/>
-{{< /file-excerpt >}}
+{{< /file >}}
 
 When added to the virtual host configuration for the `example.com` domain, these directives will have the following effects.
 
@@ -82,7 +82,7 @@ Before continuing, ensure that you've completed the ProxyPass guide, particularl
 
 Once `mod_proxy` is enabled and [configured properly](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-fedora-12), you can insert the following directives into your virtual hosting configuration.
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache  >}}
+{{< file "Apache Virtual Host Configuration" apache  >}}
 <VirtualHost example.com:80>
 	ServerName example.com
 	ServerAlias www.example.com
@@ -94,13 +94,13 @@ Once `mod_proxy` is enabled and [configured properly](/docs/web-servers/apache/p
 	RewriteEngine On
 	RewriteRule ^/blog/(.*)\.php$ http://app.example.com/blog/$1.php [proxy]
 </VirtualHost>
-{{< /file-excerpt >}}
+{{< /file >}}
 
 In this example all requests for resources that end with `.php` are proxied to `http://app.example.com/blog/`. This would include requests for `http://example.com/blog/index.php` and `http://example.com/blog/archive/index.php` but not `http://example.com/blog/screen.css` or `http://example.com/blog/` itself. All requests that do not end in `.php` will be served from resources located in the `DocumentRoot`. The `[proxy]` flags tell Apache that the rewritten URL should be passed to the Proxy module: this is equivalent to using the `last` directive as well. When a match is made, rewriting stops and the request is processed.
 
 While this method of specifying resources for proxying is much more limited in some respects, it does allow you to very specifically control and distribute HTTP requests among a group of servers. Use the above example, and the others that follow, as inspiration when constructing the rewrite rules for your deployment:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 RewriteRule ^/(.*)\.js$ http://static.example.com/javascript/$1.js [proxy]
 RewriteRule ^/(.*)\.css$ http://static.example.com/styles/$1.css [proxy]
 RewriteRule ^/(.*)\.jpg$ http://static.example.com/images/$1.jpg [proxy]
@@ -108,7 +108,7 @@ RewriteRule ^/(.*)\.jpg$ http://static.example.com/images/$1.jpg [proxy]
 RewriteRule ^/blog/(.*)\.php$ http://app.example.com/wordpress/$1.php [proxy]
 RewriteRule ^/wiki/(.*)$ http://app.example.com/mediawiki/$1 [proxy]
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In the first group we present three examples of requests for specific types of files that will be proxied to various directories in the `http://static.example.com/` host. Note that the entire contents of the parenthetical (e.g. `(.*)` in this case) will be passed to the proxy host. If you do not capture the extension of a request in the regular expression, you must add it to the rewritten location. Using the first example, assuming these rewrite rules are in the `example.com` virtual host, a requests for `http://example.com/toggle.js` and `http://example.com/blog/js/functions.js` are passed to `http://static.example.com/javascript/toggle.js` and `http://static.example.com/javascript/blog/js/functions.js`
@@ -126,7 +126,7 @@ Using `mod_rewrite` to direct requests to proxied resources gives administrators
 
 The following case presents a more streamlined and simple proxy and rewrite example. Consider the following configuration directives:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost example.com:80>
     ServerName example.com
     ServerAlias www.example.com
@@ -140,7 +140,7 @@ The following case presents a more streamlined and simple proxy and rewrite exam
     RewriteRule ^/(.*)$ http://app.example.com/$1 [proxy]
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example, the `RewriteCond` controls the behavior of the `RewriteEngine` so that requests for resources will *only* be passed to the proxied server (e.g. `http://app.example.com/`) if there is no file in the `/srv/www/example.com/public_html/` directory that matches the request. All other requests are passed to `http://app.example.com/`. This kind of configuration is quite useful in situations where your deployment's dynamic content is powered by an application specific HTTP server, but also requires static content that can be more efficiently served directly from Apache.
@@ -151,7 +151,7 @@ All of the previous cases presented in this document outline configurations for 
 
 Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in [this documentation](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-fedora-12/#enabling_the_proxy_module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost example.com:80>
     ServerName example.com
     ServerAlias www.example.com
@@ -174,7 +174,7 @@ Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in [this
     # ProxyPass / balancer://cluster/ lbmethod=bybusyness
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this case we establish a cluster of services, running on hosts named `app1.example.com` through `app4.example.com`. You can specify any host name or IP and port combination when creating the initial cluster. The `BalancerMember` directive also takes all of the arguments of the [ProxyPass directive](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html#proxypass) which allows you to customize and limit the behavior of each cluster component. Variables like `min=`, `max=` and `smax=` allow you to control "minimum" and "maximum" limits for sessions as well as "soft maximum" which sets a soft maximum after which additional connections will be subject to a time to live. Once the cluster is established, simply use the `ProxyPass` directive as described in earlier cases to pass requests to the cluster.
@@ -183,7 +183,7 @@ The `lbmethod=` argument to the `ProxyPass` directive controls the method by whi
 
 Apache also contains a "Balancer Manager" interface that you can use to monitor the status of the cluster. Begin by including the following location directive in the virtual host where your cluster is configured:
 
-{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+{{< file "Apache Virtual Host Configuration" apache >}}
 <Location /balancer-manager>
     SetHandler balancer-manager
     Order Deny,Allow
@@ -191,7 +191,7 @@ Apache also contains a "Balancer Manager" interface that you can use to monitor 
     Allow from 192.168.1.233
 </Location>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Modify the `Allow from` directive to allow access *only* from your current local machine's IP address, and read more about [rule-based access control](/docs/web-servers/apache/configuration/rule-based-access-control). Now visit `/balancer-manager` of the domain of your virtual host (e.g. `example.com`,) in our example `http://example.com/balancer-manager` to use Apache's tools for managing your cluster. Ensure that the `/balancer-manager` location is **not** established at a location that is to be passed to a proxied server. Congratulations you are now able to configure a fully functional cluster of web servers using the Apache web server as a frontend!

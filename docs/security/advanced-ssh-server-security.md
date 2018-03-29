@@ -101,12 +101,12 @@ The default behavior of SSH is to allow *any* user to log in to the server, but 
 
 ### Custom Rules Example
 
-{{< file-excerpt "/etc/ssh/sshd_config" aconf >}}
+{{< file "/etc/ssh/sshd_config" aconf >}}
 DenyUsers adam ben clark@198.51.100.0/24
 
 AllowUsers clark dan@192.168.5.200 eva
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Let's look at these rules in more detail. In the first line, Adam and Ben are blocked from accessing the server via SSH under any circumstances. Clark is not able to connect from a specific range of IP addresses, specified by `198.51.100.0/24`. In the second line, only Clark, Dan, and Eva will have SSH access. However, Clark's previous restriction from the `DenyUsers` line applies and Dan is *only* able to connect from one specific IP address. Eva is the only one who is able to connect via SSH from any computer.

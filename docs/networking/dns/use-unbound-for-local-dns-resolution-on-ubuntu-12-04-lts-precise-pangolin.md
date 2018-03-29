@@ -44,10 +44,10 @@ This will install and start the Unbound server on your system. Note that the Unb
 
 In the default configuration, Unbound will only listen for requests on the local interface. If you want Unbound to attach to additional interfaces, these interfaces must be configured manually. Possible interfaces include the public interface or the private networking interface. Specify those IP addresses after the `server:` directive in the following format:
 
-{{< file-excerpt "/etc/unbound/unbound.conf" >}}
+{{< file "/etc/unbound/unbound.conf" >}}
 server:
 :   interface: 19.28.37.56 interface: 192.168.3.105
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Modify these `interface:` directives to conform with the actual addresses assigned to your Linode. In this example, these directives would configure Unbound to listen for requests on the publicly accessible address `19.28.37.56`, and on the internal or private network address of `192.168.3.105`.
 
@@ -55,12 +55,12 @@ Modify these `interface:` directives to conform with the actual addresses assign
 
 By default, Unbound will only listen for and respond to requests for DNS queries on the localhost interface (i.e. from 127.0.0.1). Unbound must be configured to listen for requests on a given interface, as above, **and** be configured to allow requests from a given IP address before it can successfully provide DNS services. Insert lines modeled on the following example into the `unbound.conf` file, following the `server:` directive.
 
-{{< file-excerpt "/etc/unbound/unbound.conf" >}}
+{{< file "/etc/unbound/unbound.conf" >}}
 server:
 :   access-control: 192.168.0.0/16 allow access-control: 11.22.33.44/32 allow
 
     access-control: 12.34.56.0/24 deny access-control: 34.0.0.0/8 refuse
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Unbound uses a CIDR notation to control access to the DNS resolver. This allows you to permit or refuse DNS traffic to large or small groups of IP addresses in a simple and clear syntax. In the above example, we see a number of different access control approaches.
 

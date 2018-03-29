@@ -59,7 +59,7 @@ This will install version 1.2.1-22 of the Nginx server.
 
 You will need to configure `server` declarations to specify name-based virtual hosts. Since you are using the packages from the Debian project, create the virtual hosting configuration in the as `/etc/nginx/sites-available/example.com`. Consider the following Nginx virtual host configuration:
 
-{{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
 server {
     listen   80;
     server_name www.example.com example.com;
@@ -72,7 +72,7 @@ server {
     }
 }
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Create the `public_html` and `log` directories referenced in this configuration by issuing the following command (make sure to change example.com to your domain name):
@@ -149,7 +149,7 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Additionally, it is a good idea to secure any upload directories your applications may use. The following configuration excerpt demonstrates securing an "/images" directory:
 
@@ -162,7 +162,7 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 When you have completed the modifications to the configuration, make sure that the virtual host is enabled and issue the following command to restart the web server:
 

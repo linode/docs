@@ -86,15 +86,15 @@ Using SSH keys is the safest way to access your minions because passwords are no
 
     **a.** Disable the TTY check by commenting a line in the sudoers file on your minion:
 
-    {{< file-excerpt "/etc/sudoers" >}}
+    {{< file "/etc/sudoers" >}}
 # Defaults requiretty
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     **b.** Force TTY allocation by setting the `tty: True` option in your Roster file:
 
-    {{< file-excerpt "/etc/salt/roster" >}}
+    {{< file "/etc/salt/roster" >}}
 linode1:
     host: <IPADDRESS OR HOSTNAME>
     user: <username>
@@ -102,7 +102,7 @@ linode1:
     sudo: True
     tty: True
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}
@@ -176,7 +176,7 @@ An interesting use case for Salt SSH is automating the installation of `salt-min
 
 2.  Open the `/srv/salt/install_salt_minion/init.sls` file and declare your state:
 
-    {{< file-excerpt "/srv/salt/install_salt_minion/init.sls" >}}
+    {{< file "/srv/salt/install_salt_minion/init.sls" >}}
 # This is a state which will install salt-minion on your hosts using Salt SSH
 # It will install the SaltStack repo, install salt-minion from that repo, enable and start the salt-minion service and
 # declare master in /etc/salt/minion file
@@ -213,7 +213,7 @@ salt-minion:
         - contents:
             - master: <IPADDRESS OR HOSTNAME>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  To apply this state, run the following command:

@@ -105,9 +105,9 @@ Exit the MySQL shell by issuing the following command:
 
 Check that MySQL is set up to bind to localhost (127.0.0.1) by looking at the file `/etc/mysql/my.cnf`. You should have the following line in the configuration file:
 
-{{< file-excerpt >}}
+{{< file >}}
 /etc/mysql/my.cnf
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > bind-address = 127.0.0.1
 
@@ -265,9 +265,9 @@ This completes configuration for `saslauthd`. Next, you'll configure Dovecot to 
 
 Edit the file `/etc/postfix/master.cf` and add the dovecot service to the bottom of the file.
 
-{{< file-excerpt >}}
+{{< file >}}
 /etc/postfix/master.cf
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > dovecot unix - n n - - pipe
 > :   flags=DRhu user=vmail:vmail argv=/usr/lib/dovecot/deliver -d \${recipient}
@@ -347,9 +347,9 @@ Dovecot has now been configured. You must restart it to make sure it is working 
 
 Now check your /var/log/mail.log to make sure dovecot started without errors. Your log should have lines similar to the following:
 
-{{< file-excerpt >}}
+{{< file >}}
 /var/log/mail.log
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > Jan 21 20:00:18 li181-194 dovecot: Dovecot v1.0.15 starting up Jan 21 20:00:18 li181-194 dovecot: auth-worker(default): mysql: Connected to 127.0.0.1 (mail)
 
@@ -444,17 +444,17 @@ Given the possibility for virtual hosting a large number of virtual domains on a
 
 After you have sent the test mail, you'll want to check your error logs to make sure the mail was delivered. First check your `mail.log` located in `/var/log/mail.log`. You should see something similar to the following:
 
-{{< file-excerpt >}}
+{{< file >}}
 /var/log/mail.log
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > Jan 21 20:03:19 li181-194 postfix/cleanup[5877]: E1D148908: message-id=\<<20110121200319.E1D148908@hostname.example.com>\> Jan 21 20:03:19 li181-194 postfix/qmgr[5867]: E1D148908: from=\<<root@hostname.example.com>\>, size=377, nrcpt=1 (queue active) Jan 21 20:03:19 li181-194 postfix/pipe[5883]: E1D148908: to=\<<sales@example.com>\>, relay=dovecot, delay=0.05, delays=0.04/0.01/0/0.01, dsn=2.0.0, status=sent (delivered via dovecot service) Jan 21 20:03:19 li181-194 postfix/qmgr[5867]: E1D148908: removed
 
 Next you should check the Dovecot delivery log located in `/home/vmail/dovecot-deliver.log`. The contents should look similar to the following:
 
-{{< file-excerpt >}}
+{{< file >}}
 /home/vmail/dovecot-deliver.log
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=\<<20110121200319.E1D148908@hostname.example.com>\>: saved mail to INBOX
 

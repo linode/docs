@@ -97,7 +97,7 @@ Note that `site.pp` is the default manifest file. Without a qualifying `node { .
 
 To understand how Hiera works, consider this excerpt from the default `hiera.yaml` file:
 
-{{< file-excerpt "/etc/puppetlabs/puppet/hiera.yaml" yaml >}}
+{{< file "/etc/puppetlabs/puppet/hiera.yaml" yaml >}}
 ---
 :backends:
   - yaml
@@ -105,7 +105,7 @@ To understand how Hiera works, consider this excerpt from the default `hiera.yam
   - "nodes/%{::trusted.certname}"
   - common
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This Hiera configuration instructs Puppet to accept variable values from `nodes/%{::trusted.certname}.yaml`. If your Linode's hostname is `examplehostname`, define a file called `nodes/examplehostname.yaml`). Any variables found in YAML files higher in the hierarchy are preferred, while any variable names that do not exist in those files will fall-through to files lower in the hierarchy (in this example, `common.yaml`).

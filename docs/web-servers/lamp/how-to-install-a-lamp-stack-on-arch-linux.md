@@ -53,7 +53,7 @@ Before changing any configuration files, it is advised that you make a backup of
 cp /etc/httpd/conf/extra/httpd-mpm.conf ~/httpd-mpm.conf.backup
 {{< /note >}}
 
-    {{< file-excerpt "/etc/httpd/conf/extra/httpd-mpm.conf" aconf >}}
+    {{< file "/etc/httpd/conf/extra/httpd-mpm.conf" aconf >}}
 <IfModule mpm_prefork_module>
         StartServers            4
         MinSpareServers         20
@@ -62,15 +62,15 @@ cp /etc/httpd/conf/extra/httpd-mpm.conf ~/httpd-mpm.conf.backup
         MaxConnectionsPerChild  4500
 </IfModule>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3. Edit the `httpd-default.conf` file to turn KeepAlive off.
 
-    {{< file-excerpt "/etc/httpd/conf/extra/httpd-default.conf" aconf >}}
+    {{< file "/etc/httpd/conf/extra/httpd-default.conf" aconf >}}
 KeepAlive Off
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  Set Apache to start at boot:
@@ -83,23 +83,23 @@ Virtual hosting can be configured so that multiple domains (or subdomains) can b
 
 1. Open `httpd.conf` and edit the line `DocumentRoot /srv/http` to define the default document root:
 
-    {{< file-excerpt "/etc/httpd/conf/httpd.conf" >}}
+    {{< file "/etc/httpd/conf/httpd.conf" >}}
 DocumentRoot "/srv/http/default"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2. Uncomment the line that reads `Include  conf/extra/httpd-vhosts.conf` near the end of the `/etc/httpd/conf/httpd.conf` file:
 
-    {{< file-excerpt "/etc/httpd/conf/httpd.conf" apache >}}
+    {{< file "/etc/httpd/conf/httpd.conf" apache >}}
 Include conf/extra/httpd-vhosts.conf
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2. Open `httpd-vhosts.conf`, under the `extra` folder. Edit the example virtual hosts block to resemble the ones below, replacing `example.com` with your domain.
 
-    {{< file-excerpt "/etc/httpd/conf/extra/httpd-vhosts.conf" aconf >}}
+    {{< file "/etc/httpd/conf/extra/httpd-vhosts.conf" aconf >}}
 <VirtualHost *:80>
      ServerAdmin webmaster@example.com
      ServerName example.com
@@ -113,7 +113,7 @@ Include conf/extra/httpd-vhosts.conf
             </Directory>
 </VirtualHost>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Remove the second example in the file, or use it configure a second website.
@@ -194,14 +194,14 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
 2.  Edit `/etc/php/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 2GB**:
 
-    {{< file-excerpt "/etc/php/php.ini" ini >}}
+    {{< file "/etc/php/php.ini" ini >}}
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
 log_errors = On
 error_log = /var/log/php/error.log
 max_input_time = 30
 extension=mysql.so
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     {{< note >}}
@@ -215,7 +215,7 @@ Ensure that all lines noted above are uncommented. A commented line begins with 
 
 4.  Enable the PHP module in the `/etc/httpd/conf/httpd.conf` file by adding the following lines in the appropriate sections:
 
-    {{< file-excerpt "/etc/httpd/conf/httpd.conf" aconf >}}
+    {{< file "/etc/httpd/conf/httpd.conf" aconf >}}
 # Dynamic Shared Object (DSO) Support
 LoadModule php7_module modules/libphp7.so
 AddHandler php7-script php
@@ -228,15 +228,15 @@ Include conf/extra/php7_module.conf
 AddType application/x-httpd-php .php
 AddType application/x-httpd-php-source .phps
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 5.  In the same file, comment out the line `LoadModule mpm_event_module modules/mod_mpm_event.so` by adding a `#` in front, and add the line `LoadModule mpm_prefork_module modules/mod_mpm_prefork.so`:
 
-    {{< file-excerpt "/etc/httpd/conf/httpd.conf" apache >}}
+    {{< file "/etc/httpd/conf/httpd.conf" apache >}}
 #LoadModule mpm_event_module modules/mod_mpm_event.so
 LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 6.  Restart the Apache:

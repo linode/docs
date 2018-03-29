@@ -35,10 +35,10 @@ The MongoDB repository provides the latest stable release (currently mongodb-10g
 
     Replace the name in brackets <> with your own hostname. This example uses the Nano text editor. However, you may use the text editor you prefer.
 
-    {{< file-excerpt "/etc/hostname" bash >}}
+    {{< file "/etc/hostname" bash >}}
 hana
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Ubuntu's package management tool requires distributors to sign packages with GPG keys, this ensures consistency and authenticity. Therefore, you will need to copy the MongoDB public GPG key.
@@ -71,12 +71,12 @@ Before you begin, you will need to obtain all the private IP addresses for each 
 
 Once you have all your private IPs, add them to the `hosts` file. Use your favorite text editor and add the addresses.
 
-{{< file-excerpt "/etc/hosts" >}}
+{{< file "/etc/hosts" >}}
 192.168.160.1 mongo1
 192.168.170.1 mongo2
 192.168.180.1 mongo3
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Use your own IP addresses in place of the addresses in the above example. The names of the members in the replication set are also variables, so you may name them what you choose. However, it would be prudent to have some numerical or alphabetic notation as this will make it easier to identify when connecting to the different replication set members.
@@ -89,7 +89,7 @@ Replication set member names and the actual server name are different. In this i
 
 1.  Edit your `interfaces` file to reflect both the public and private IP address information. Do not omit the `auto eth0 eth0:1` declaration.
 
-    {{< file-excerpt "/etc/network/interfaces" >}}
+    {{< file "/etc/network/interfaces" >}}
 auto eth0 eth0:1
 
 # eth0 - Public IP
@@ -103,7 +103,7 @@ iface eth0:1 inet static
 address 192.168.160.1
 netmask 255.xxx.xxx.xxx
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Again you will replace the sample addresses with your own IP information.
@@ -116,22 +116,22 @@ netmask 255.xxx.xxx.xxx
 
 1.  Edit the `mongodb.conf` file to add the IP address and port number.
 
-    {{< file-excerpt "/etc/mongodb.conf" >}}
+    {{< file "/etc/mongodb.conf" >}}
 bind_ip = 192.168.160.1
 port = 27017
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Enter the private IP address of the server you are logged onto in the bind ip section. If the bind_ip variable is not present, you will need to add it. Uncomment the default port number **27017**.
 
 2.  While still in the `mongodb.conf` file, scroll to the bottom and add the following information:
 
-    {{< file-excerpt "/etc/mongodb.conf" >}}
+    {{< file "/etc/mongodb.conf" >}}
 fork = true
 replSet = rs1
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     In this example, the sample replication set is **rs1**, however, you may change the name as you choose.

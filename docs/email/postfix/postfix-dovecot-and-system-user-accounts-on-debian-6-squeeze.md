@@ -52,10 +52,10 @@ SASL Authentication
 
 Edit the `/etc/default/saslauthd` file to allow the SASL authentication daemon to start. Uncommon or add the following line:
 
-{{< file-excerpt "/etc/default/saslauthd" ini >}}
+{{< file "/etc/default/saslauthd" ini >}}
 START=yes
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Create the `/etc/postfix/sasl/smtpd.conf` file, and insert the following line:
@@ -98,12 +98,12 @@ Consider the [basic email gateway guide](/docs/email/postfix/gateway-debian-6-sq
 
 The above Postfix configuration makes it possible to *send* mail using postfix. If your server receives email, Postfix requires additional configuration to deliver mail locally. Edit the `main.cf` file to insert or modify the following configuration directives:
 
-{{< file-excerpt "/etc/postfix/main.cf" ini >}}
+{{< file "/etc/postfix/main.cf" ini >}}
 myhostname = lollipop.example.com
 virtual_alias_maps = hash:/etc/postfix/virtual
 home_mailbox = mail/
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Issue the following command to ensure that new user accounts have a `~/mail` directory:

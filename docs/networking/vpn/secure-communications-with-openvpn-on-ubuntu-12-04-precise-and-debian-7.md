@@ -267,20 +267,20 @@ By deploying the following configuration, you will be able to forward *all* traf
 
         nano /etc/openvpn/server.conf
 
-    {{< file-excerpt "/etc/openvpn/server.conf" >}}
+    {{< file "/etc/openvpn/server.conf" >}}
 push "redirect-gateway def1 bypass-dhcp"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Edit the `/etc/sysctl.conf` file to uncomment or add the following line to ensure that your system can forward IPv4 traffic:
 
         nano /etc/sysctl.conf
 
-    {{< file-excerpt "/etc/sysctl.conf" >}}
+    {{< file "/etc/sysctl.conf" >}}
 net.ipv4.ip_forward=1
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Issue the following command to set this variable for the current session:
@@ -302,7 +302,7 @@ net.ipv4.ip_forward=1
 
         nano /etc/rc.local
 
-    {{< file-excerpt "/etc/rc.local" >}}
+    {{< file "/etc/rc.local" >}}
 #!/bin/sh -e
 #
 # [...]
@@ -319,7 +319,7 @@ iptables -A FORWARD -i tap+ -j ACCEPT
 
 exit 0
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     This will enable all client traffic except for DNS queries to be forwarded through the VPN.
@@ -348,12 +348,12 @@ If you are using Debian 7, replace this command with `apt-get install dnsmasq re
 
         nano /etc/dnsmasq.conf
 
-    {{< file-excerpt "/etc/dnsmasq.conf" >}}
+    {{< file "/etc/dnsmasq.conf" >}}
 listen-address=10.8.0.1
 
 bind-interfaces
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 11. Now that dnsmasq is configured, you will need to add two new lines to /etc/network/interfaces. First, go to the Linode's **Remote Access** page, shown below. You'll need the IP addresses listed under **DNS Resolvers** for the `dns-nameservers` line:
@@ -364,7 +364,7 @@ bind-interfaces
 
         nano /etc/network/interfaces
 
-    {{< file-excerpt "/etc/network/interfaces" >}}
+    {{< file "/etc/network/interfaces" >}}
 # The primary network interface
 auto eth0
 iface eth0 inet dhcp
@@ -372,7 +372,7 @@ iface eth0 inet dhcp
 dns-search members.linode.com
 dns-nameservers 97.107.133.4 207.192.69.4 207.192.69.5
 
-{{< /file-excerpt >}}
+{{< /file >}}
 ~
 
     {{< note >}}
@@ -383,22 +383,22 @@ If you're not utilizing IPv6, you can omit the addresses starting with 2600:
 
         nano /etc/rc.local
 
-    {{< file-excerpt "/etc/rc.local" >}}
+    {{< file "/etc/rc.local" >}}
 /etc/init.d/dnsmasq restart
 
 exit 0
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 14. Add the following line to the `/etc/openvpn/server.conf` file:
 
         nano /etc/openvpn/server.conf
 
-    {{< file-excerpt "/etc/openvpn/server.conf" >}}
+    {{< file "/etc/openvpn/server.conf" >}}
 push "dhcp-option DNS 10.8.0.1"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 15. Restart the Linode:

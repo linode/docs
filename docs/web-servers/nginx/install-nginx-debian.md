@@ -16,9 +16,9 @@ These instructions install NGINX Mainline on Debian 9 from NGINX Inc's official 
 
 1.  Open `/etc/apt/sources.list` in a text editor and add the following line to the bottom:
 
-    {{< file-excerpt "/etc/apt/sources.list" >}}
+    {{< file "/etc/apt/sources.list" >}}
 deb http://nginx.org/packages/mainline/debian/ stretch nginx
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Import the repository's package signing key and add it to `apt`:
 

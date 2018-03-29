@@ -79,7 +79,7 @@ The example app used throughout this guide will be a simple Node.js app that wil
 
 10. Since you will be connecting to this database from a container (which will have an IP address other than `locahost`), you will need to edit the PostgreSQL config file to allow connections from remote addresses. Open `/etc/postgresql/9.5/main/postgresql.conf` in a text editor. Uncomment the `listen_addresses` line and set it to '*':
 
-    {{< file-excerpt "/etc/postgresql/9.5/main/postgresql.conf" >}}
+    {{< file "/etc/postgresql/9.5/main/postgresql.conf" >}}
 #------------------------------------------------------------------------------
 # CONNECTIONS AND AUTHENTICATION
 #------------------------------------------------------------------------------
@@ -87,7 +87,7 @@ The example app used throughout this guide will be a simple Node.js app that wil
 # - Connection Settings -
 
 listen_addresses = '*'                  # what IP address(es) to listen on;
-{{< /file-excerpt >}}
+{{< /file >}}
 
 11. Enable and start the `postgresql` service:
 
@@ -167,7 +167,7 @@ ENTRYPOINT tail -F /dev/null
 
 3. The image built from this Dockerfile will copy the `app/` directory to the new image. Edit `app.js` to allow the app to connect to the `database` host instead of `localhost`:
 
-    {{< file-excerpt "app/app.js" >}}
+    {{< file "app/app.js" >}}
 const client = new Client({
   user: 'postgres',
   host: 'database',
@@ -175,7 +175,7 @@ const client = new Client({
   password: 'newpassword',
   port: 5432
 })
-{{< /file-excerpt >}}
+{{< /file >}}
 
 4.  Build an image from the Dockerfile:
 
@@ -203,9 +203,9 @@ docker0   Link encap:Ethernet  HWaddr 02:42:1e:e8:39:54
 
 2.  Allow PostgreSQL to accept connections from the Docker interface. Open `/etc/postgresql/9.5/main/pg_hba.conf` in a text editor and add the following line:
 
-    {{< file-excerpt "/etc/postgresql/9.5/main/pg_hba.conf" >}}
+    {{< file "/etc/postgresql/9.5/main/pg_hba.conf" >}}
 host    all             postgres        172.17.0.0/16           password
-{{< /file-excerpt >}}
+{{< /file >}}
 
     Since 172.17.0.1 is the IP of the Docker host, all of the containers on the host will have an IP address in the range 172.17.0.0/16.
 
@@ -277,9 +277,9 @@ You should not store production database data inside a Docker container. Contain
 
     There should be a line similar to the following:
 
-      {{< file-excerpt "/etc/hosts" conf >}}
+      {{< file "/etc/hosts" conf >}}
 172.17.0.2  database  pg_container
-{{< /file-excerpt >}}
+{{< /file >}}
 
     This shows that `pg_container` has been assigned to the IP address 172.17.0.2, and is linked to this container via the hostname `database`, as expected.
 

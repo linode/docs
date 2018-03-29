@@ -117,10 +117,10 @@ Because the point-in-time snapshot persistence is enabled by default, you only n
 
 1.  Make sure that the following values are set for `appendonly` and `appendfsync` settings in `redis.conf`:
 
-    {{< file-excerpt "/etc/redis/redis.conf" >}}
+    {{< file "/etc/redis/redis.conf" >}}
 appendonly yes
 appendfsync everysec
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Restart Redis with:
@@ -138,10 +138,10 @@ To improve Redis performance, make the following adjustment to the Linux system 
 
 2.  This immediately changes the overcommit memory setting. To make the change permanent, add  `vm.overcommit_memory = 1` to `/etc/sysctl.conf`:
 
-    {{< file-excerpt "/etc/sysctl.conf" >}}
+    {{< file "/etc/sysctl.conf" >}}
 vm.overcommit_memory = 1
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 ## Distributed Redis
@@ -167,9 +167,9 @@ For this section of the guide, you will use two Linodes, respectively named `mas
 
 3.  Configure the `master` Redis instance to listen on a private IP address by updating the `bind` configuration option in `redis.conf`. Replace `192.0.2.100` with the `master` Linode's private IP address
 
-    {{< file-excerpt "/etc/redis/redis.conf" >}}
+    {{< file "/etc/redis/redis.conf" >}}
 bind 127.0.0.1 192.0.2.100
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Restart `redis-server` to apply the changes:
@@ -180,9 +180,9 @@ bind 127.0.0.1 192.0.2.100
 
 1.  Configure a slave instance by adding the `slaveof` directive into `redis.conf` to setup the replication. Again replace `192.0.2.100` with the `master` Linode's private IP address:
 
-    {{< file-excerpt "/etc/redis/redis.conf" >}}
+    {{< file "/etc/redis/redis.conf" >}}
 slaveof 192.0.2.100 6379
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     The `slaveof` directive takes two arguments: the first is the IP address of the master node; the second is the Redis port specified in the master's configuration.

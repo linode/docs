@@ -98,31 +98,31 @@ The Python SPF policy agent adds SPF policy-checking to Postfix. The SPF record 
 
 2.  Edit `/etc/postfix/master.cf` and add the following entry at the end:
 
-    {{< file-excerpt "/etc/postfix/master.cf" resource >}}
+    {{< file "/etc/postfix/master.cf" resource >}}
 policyd-spf  unix  -       n       n       -       0       spawn
     user=policyd-spf argv=/usr/bin/policyd-spf
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Open `/etc/postfix/main.cf` and add this entry to increase the Postfix policy agent timeout, which will prevent Postfix from aborting the agent if transactions run a bit slowly:
 
-    {{< file-excerpt "/etc/postfix/main.cf" aconf >}}
+    {{< file "/etc/postfix/main.cf" aconf >}}
 policyd-spf_time_limit = 3600
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 4.  Edit the `smtpd_recipient_restrictions` entry to add a `check_policy_service` entry:
 
-    {{< file-excerpt "/etc/postfix/main.cf" aconf >}}
+    {{< file "/etc/postfix/main.cf" aconf >}}
 smtpd_recipient_restrictions =
     ...
     reject_unauth_destination,
     check_policy_service unix:private/policyd-spf,
     ...
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Make sure to add the `check_policy_service` entry **after** the `reject_unauth_destination` entry to avoid having your system become an open relay. If `reject_unauth_destination` is the last item in your restrictions list, add the comma after it and omit the comma at the end of the `check_policy_service` item above.
@@ -210,20 +210,20 @@ OversignHeaders     From
 
 4.  Create the signing table `/etc/opendkim/signing.table`. It needs to have one line per domain that you handle email for. Each line should look like this:
 
-    {{< file-excerpt "/etc/opendkim/signing.table" >}}
+    {{< file "/etc/opendkim/signing.table" >}}
 *@example.com   example
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Replace `example.com` with your domain and `example` with a short name for the domain. The first field is a pattern that matches e-mail addresses. The second field is a name for the key table entry that should be used to sign mail from that address. For simplicity's sake, we're going to set up one key for all addresses in a domain.
 
 5.  Create the key table `/etc/opendkim/key.table`. It needs to have one line per short domain name in the signing table. Each line should look like this:
 
-    {{< file-excerpt "/etc/opendkim/key.table" resource >}}
+    {{< file "/etc/opendkim/key.table" resource >}}
 example     example.com:YYYYMM:/etc/opendkim/keys/example.private
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     Replace `example` with the `example` value you used for the domain in the signing table (make sure to catch the second occurrence at the end, where it's followed by `.private`). Replace `example.com` with your domain name and replace the `YYYYMM` with the current 4-digit year and 2-digit month (this is referred to as the selector). The first field connects the signing and key tables.
@@ -299,10 +299,10 @@ As with SPF, DKIM uses TXT records to hold information about the signing key for
 
 The value inside the parentheses is what you want. Select and copy the entire region from (but not including) the double-quote before `v=DKIM1` on up to (but not including) the final double-quote before the closing parentheses. Then edit out the double-quotes within the copied text and the whitespace between them. Also change `h=rsa-sha256` to `h=sha256`. From the above file the result would be:
 
-{{< file-excerpt "example-copied.txt" resource >}}
+{{< file "example-copied.txt" resource >}}
 v=DKIM1; h=sha256; k=rsa; s=email; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXRZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Paste that into the value for the TXT record.
@@ -350,7 +350,7 @@ SOCKET="local:/var/spool/postfix/opendkim/opendkim.sock"
 
 3.  Edit `/etc/postfix/main.cf` and add a section to activate processing of e-mail through the OpenDKIM daemon:
 
-    {{< file-excerpt "/etc/postfix/main.cf" aconf >}}
+    {{< file "/etc/postfix/main.cf" aconf >}}
 # Milter configuration
 # OpenDKIM
 milter_default_action = accept
@@ -359,7 +359,7 @@ milter_protocol = 6
 smtpd_milters = local:/opendkim/opendkim.sock
 non_smtpd_milters = local:/opendkim/opendkim.sock
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     You can put this anywhere in the file. The usual practice is to put it after the `smtpd_recipient_restrictions` entry. You'll notice the path to the socket isn't the same here as it was in the `/etc/defaults/opendkim` file. That's because of Postfix's chroot jail, the path here is the path within that restricted view of the filesystem instead of within the actual filesystem.

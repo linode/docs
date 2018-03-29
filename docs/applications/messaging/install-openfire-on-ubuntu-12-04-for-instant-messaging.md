@@ -74,10 +74,10 @@ Installing Openfire is relatively easy and can be completed in just a few steps.
 
 6.  Edit the configuration file `/opt/openfire/conf/openfire.xml`, substituting your Linode's public IP address for `198.51.100.0` in the `<interface>` section and removing the `<!-- -->` comment markers that surround the `<network>` section. While not required, this action is helpful if your Linode has multiple IP addresses, and you wish to limit access to a single address.
 
-    {{< file-excerpt "/opt/openfire/conf/openfire.xml" xml >}}
+    {{< file "/opt/openfire/conf/openfire.xml" xml >}}
 <interface>198.51.100.0</interface>
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 7.  Add a symbolic link for the daemon script to `/etc/init.d` so that you can start the daemon with a call to service:

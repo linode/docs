@@ -260,7 +260,7 @@ This section is optional, but provides instructions on downloading a cookbook to
 
 2.	Open the `default.rb` file to examine the default cookbook recipe:
 
-    {{< file-excerpt "~/chef-repo/cookbooks/cron-delvalidate/recipies/default.rb" >}}
+    {{< file "~/chef-repo/cookbooks/cron-delvalidate/recipies/default.rb" >}}
 #
 # Cookbook Name:: cron-delvalidate
 # Recipe:: Chef-Client Cron & Delete Validation.pem
@@ -279,7 +279,7 @@ file "/etc/chef/validation.pem" do
 end
 
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     The resource `cron "clientrun" do` defines the cron action. It is set to run the chef-client action (`/usr/bin/chef-client`) every hour (`*/1` with the `*/` defining that it's every hour and not 1AM daily). The `action` code denotes that Chef is *creating* a new cronjob.

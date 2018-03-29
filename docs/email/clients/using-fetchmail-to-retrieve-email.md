@@ -54,15 +54,15 @@ Fetchmail processes configuration options specified on the command line by defau
 
 You can specify a number of different accounts in your `~/.fetchmailrc` and even use fetchmail to deliver email to a number of different local users. Let's consider a number of examples, beginning with a very simple line:
 
-{{< file-excerpt ".fetchmailrc" >}}
+{{< file ".fetchmailrc" >}}
 poll example.com protocol pop3 username "username" password "XXX"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 This assumes that the username on the remote pop3 server is the same as the local user. In this case, mail will be delivered to the default system mail spool using in an `mbox` format and located at `/var/mail/username`. Allow us to consider the following example:
 
-{{< file-excerpt ".fetchmailrc" >}}
+{{< file ".fetchmailrc" >}}
 poll mail.example.com protocol pop3:
      username "admin" password "dir3cti0n" is "username" here;
      username "fore" password "0rd3r" is "foreman" here;
@@ -70,7 +70,7 @@ poll mail.example.com protocol pop3:
 poll mail.example.org protocol pop3 with option sslproto '':
      user "betty" password "p1nk" mda "/usr/bin/procmail -d %T":   user "betty" password "p1nk" mda "/usr/bin/procmail -d %T"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In the first specification, fetchmail is told to check the `mail.example.com` server, using the POP3 protocol, for the users `admin` and `fore`." Also, the "`is "[username]" here;` directive is used to clarify the relationship between a remote user (i.e. `admin` and `fore`) and users on the local machine (i.e. `username` and `foreman`).
@@ -115,12 +115,12 @@ In the above example, fetchmail will poll mail sources for new mail every 300 se
 
 In addition to the configuration options described above, fetchmail provides a number of additional "global" configuration options. These allow you to configure the behavior of fetchmail with regards to all of the servers that it polls. These options are included at the beginning of the file and begin with the word `set`. Here is an example:
 
-{{< file-excerpt ".fetchmailrc" >}}
+{{< file ".fetchmailrc" >}}
 set daemon [seconds] set postmaster "username"
 
 set logfile "\~/logs/fetchmail.log" set syslog
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The following sections will explain the functionality of these settings.
@@ -129,7 +129,7 @@ The following sections will explain the functionality of these settings.
 
 The `daemon` setting with an interval specification (in seconds,) will cause fetchmail to daemonize itself and run as a background service. In this mode, each mail server will be polled on the interval specified. If you need to poll from different accounts with different frequencies you can specify the `interval $NUM` where `$NUM` is the number of intervals. Consider the following excerpt:
 
-{{< file-excerpt ".fetchmailrc" >}}
+{{< file ".fetchmailrc" >}}
 set daemon 60
 
 poll mail.example.com protocol pop3 with option interval 3:
@@ -138,7 +138,7 @@ poll mail.example.com protocol pop3 with option interval 3:
 poll mail.example.org protocol pop3 with option ssl, interval 20:
      user "feedback" password "h3ck1e" mda "/usr/bin/procmail -d %T"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example the `daemon` is set to run every 60 seconds. Fetchmail is set to poll the `example.com` server every second interval, or every three minutes. At the same time, the `example.org` account will be polled every 20 intervals, or once every twenty minutes.
@@ -147,7 +147,7 @@ In this example the `daemon` is set to run every 60 seconds. Fetchmail is set to
 
 The `set postmaster` option allows you to configure where otherwise undeliverable will be delivered. Given the following example:
 
-{{< file-excerpt ".fetchmailrc" >}}
+{{< file ".fetchmailrc" >}}
 set postmaster "username"
 
 poll email.example.com protocol pop3:
@@ -155,7 +155,7 @@ poll email.example.com protocol pop3:
      username "fore" password "0rd3r";
      username "gigs" password "p@rty";
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Assuming that there are system user accounts for `username` and `fore`, mail downloaded from these accounts will be deposited in `/var/mail/username` and `/var/mail/fore` respectively. However, if there is no system account for a `gigs` user this mail would be deposited in the `username` user's mail spool (i.e. `/var/mail/username`) because the `username` user is set as the postmaster for this fetchmail session.
@@ -164,10 +164,10 @@ Assuming that there are system user accounts for `username` and `fore`, mail dow
 
 When invoked from the command line, `fetchmail` generates output regarding its activities to standard out. If this is undesirable behavior you can use the logging directives to specify an alternate record keeping behavior. Let us consider the following directives:
 
-{{< file-excerpt ".fetchmailrc" >}}
+{{< file ".fetchmailrc" >}}
 set syslog set logfile "\~/logs/fetchmail.log"
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The first directive tells fetchmail to store all logging information in the system log. The location of this log may vary depending on your system configuration, but is typically located in `/var/log/mail.log`. The `logfile` directive allows the user to specify a file in which to store logging information. In this example logs are kept in the `logs/` directory and `fetchmail.log` of the user's home directory for the user account that executes fetchmail.
@@ -180,7 +180,7 @@ This document has only covered a minimal subset of fetcmhail's functionality. In
 
 Typically, fetchmail is used to retrieve email from POP3 mailboxes; however, it also contains support for alternate protocols. Supported protocols include IMAP, POP3 with Kerberos, and ESTMTP. Example syntax for displaying alternate protocols is as follows:
 
-{{< file-excerpt ".fetchmailrc" >}}
+{{< file ".fetchmailrc" >}}
 poll email.example.com protocol imap:
      username "username" password "dir3cti0n";
 poll mail.example.org protocol kpop:
@@ -190,7 +190,7 @@ poll email.example.net protocol etrn:
 poll mail.example.info protocol auto:
      username "gigs" password "p@rty";
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Fetchmail is able to deduce which variant of the IMAP protocol is used. The `KPOP` option forces fetchmail to authenticate to a POP3 protocol with Kerberos V4 authentication on port 1109. The `ETRN` option allows fetchmail to receive email with the ESMTP protocol. You can also specify `auto` as a protocol option. In this case, fetchmail will try to determine which protocol your server supports when connecting.
@@ -199,7 +199,7 @@ Fetchmail is able to deduce which variant of the IMAP protocol is used. The `KPO
 
 Fetchmail provides a number of alternate options for authenticating to your mail server, if you are uncomfortable storing your passwords in your `.fetchmailrc` file. First, fetchmail will look in a `~/.netrc` file for log in credentials, before prompting for passwords on the command line. An example `.netrc` file is as follows:
 
-{{< file-excerpt ".netrc" >}}
+{{< file ".netrc" >}}
 machine email.example.com
         login username
         password d1r3ct1on
@@ -210,7 +210,7 @@ machine mail.example.net
         login gigs
         p@RFI3s
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The `ftp` UNIX utility also uses the `.netrc` file, so you can use this feature to avoid duplicating. If usernames are not provided in a `.netrc` file or in `.fetchmailrc`, fetchmail will try to connect to the remote server using the current user's username on the local system to connect to the remote server. The fetchmail program accepts alternate usernames with the `-u` option. This command takes the following syntax:

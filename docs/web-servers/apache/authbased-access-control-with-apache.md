@@ -30,13 +30,13 @@ This guide provides an overview of both credential-based and rule-based access c
 
 To enable passwords for a directory, insert the following lines into the appropriate `<Directory>` section of an Apache configuration file. You may also insert authentication information in an `.htaccess` file or in a virtual host configuration section. The required directives are:
 
-{{< file-excerpt "Apache Configuration File" apache >}}
+{{< file "Apache Configuration File" apache >}}
 AuthType Basic
 AuthUserFile /srv/auth/.htpasswd
 AuthName "Sign In Here To Gain Access To the Site"
 Require valid-user
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 The `AuthType` directive specifies which authentication method Apache should use when connecting with clients. `Basic` requires that passwords be sent as **clear text** over the network. As a result we don't recommend using this to protect sensitive resources.
@@ -65,21 +65,21 @@ If you have an existing file, omit the `-c` option. The `-b` option allows you t
 
 The `AuthUserFile` will, when populated look something like this:
 
-{{< file-excerpt "/srv/auth/.htpasswd" apache >}}
+{{< file "/srv/auth/.htpasswd" apache >}}
 AuthType Basic
 AuthUserFile /srv/auth/.htpasswd
 AuthGroupFile /srv/auth/.htpgroup
 Require group Authorized
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 In this example, we cite the same `AuthUserFile`, but we add an `AuthGroupFile` that specifies user groups. The group file contains a list of user groups and the usernames associated with each group. The `htgroup` file, like the `htpasswd` file, can be located anywhere on the file system. For clarity's sake, we recommend that `htgroup` be in the same directory as the `htpasswd` file. Here is an example of an `htgroup` file:
 
-{{< file-excerpt "/srv/auth/.htgroup" >}}
+{{< file "/srv/auth/.htgroup" >}}
 Authorized: username betty Team: fore hobby
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Given this `htgroup` file, only the users `username` and `betty` will have access to the above listed resource. The syntax of the group file follows a simple `[groupname]: [username 1] [username 2] [...]`. You can put as many usernames from your `AuthUserFile` into a group entry as you need for the particular resource.

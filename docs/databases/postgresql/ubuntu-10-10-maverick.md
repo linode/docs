@@ -120,18 +120,18 @@ You will be asked to specify several values for the new user. To delete this use
 
 By default, PostgreSQL uses `ident` authentication. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a program (local scripts, CGI/FastCGI processes owned by separate users, etc). However, you may wish to change this behavior to require passwords. To do so, edit the file `/etc/postgresql/8.4/main/pg_hba.conf` as root or the postgres user. Find the following line:
 
-{{< file-excerpt "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
+{{< file "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
 local all all ident
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Change it to the following to use password authentication:
 
-{{< file-excerpt "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
+{{< file "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
 local all all md5
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 If you changed the authentication method as shown above, restart PostgreSQL with the following command:

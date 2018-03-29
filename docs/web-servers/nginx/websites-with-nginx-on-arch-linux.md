@@ -40,9 +40,9 @@ Install the NGINX web server by issuing the following command:
 
 Edit the `/etc/rc.conf` file, adding "nginx" to the "DEAMONS=" line as shown in the following excerpt:
 
-{{< file-excerpt >}}
+{{< file >}}
 /etc/rc.conf
-{{< /file-excerpt >}}
+{{< /file >}}
 
 > DAEMONS=(syslog-ng network netfs crond sshd ntpd nginx)
 

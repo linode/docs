@@ -70,10 +70,10 @@ To create a connection, call Javascript's WebSocket constructor, which returns t
 
 The WebSocket constructor takes one required argument: the URL to which we want to connect. There is one optional argument that specifies a protocol:
 
-{{< file-excerpt "websockets.js" javascript >}}
+{{< file "websockets.js" javascript >}}
 // Connecting to the server with a protocol called myProtocol
 var ws = new WebSocket("ws://echo.websocket.org", "myProtocol");
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ### WebSocket Events
 
@@ -83,32 +83,32 @@ A WebSocket object dispatches four different events:
 
 * **Open**: The server responds to the WebSocket connection request. It indicates that the handshake has taken place and the connection is established. The callback to the open event is called `onopen`.
 
-    {{< file-excerpt "websockets.js" javascript >}}
+    {{< file "websockets.js" javascript >}}
 // Event handler for the WebSocket connection opening
 ws.onopen = function(e) {
    console.log("Connection established");
 };
-{{< /file-excerpt >}}
+{{< /file >}}
 
 * **Message**: The client receives data from the server. WebSocket messages contain the data from the server. The callback for the message event is `onmessage`.
 
-    {{< file-excerpt "websockets.js" javascript >}}
+    {{< file "websockets.js" javascript >}}
 // Event handler for receiving text messages
 ws.onmessage = function(e) {
       console.log("Message received", e, e.data);
 };
-{{< /file-excerpt >}}
+{{< /file >}}
 
 * **Error**: There is any error in communication. The corresponding callback to the error event is `onerror`.
 
-    {{< file-excerpt "websockets.js" javascript >}}
+    {{< file "websockets.js" javascript >}}
 // Event handler for errors in the WebSocket object
 ws.onerror = function(e) {
    console.log("WebSocket Error: " , e);
    //Custom function for handling errors
    handleErrors(e);
 };
-{{< /file-excerpt >}}
+{{< /file >}}
 
     {{< note >}}
 Errors also cause WebSocket connections to close.
@@ -116,12 +116,12 @@ Errors also cause WebSocket connections to close.
 
 * **Close**: The connection is closed. The corresponding callback to the close event is `onclose`.
 
-    {{< file-excerpt "websockets.js" javascript >}}
+    {{< file "websockets.js" javascript >}}
 // Event handler for closed connections
 ws.onclose = function(e) {
    console.log("Connection closed", e);
 };
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ### WebSocket Methods
 
@@ -129,17 +129,17 @@ Websocket provides two methods:
 
 * **send()**: The `socket.send(data)` method transmits data using the connection. If for some reasons the connection is not available or the connection is closed, it throws an exception about the invalid connection state.
 
-    {{< file-excerpt "websockets.js" javascript >}}
+    {{< file "websockets.js" javascript >}}
 // Send a text message
 ws.send("This is a message using WebSockets.");
-{{< /file-excerpt >}}
+{{< /file >}}
 
 * **close()**: The `socket.close()` method is used to terminate any existing connection. If the connection is already closed, then the method has no effect. The `close()` method has two optional arguments: `code` (a numerical status code) and `reason` (a text string).
 
-    {{< file-excerpt "websockets.js" javascript >}}
+    {{< file "websockets.js" javascript >}}
 // Close the WebSocket connection
 ws.close(1000, "Closing Connection Normally");
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ### WebSocket Object Attributes
 
@@ -153,7 +153,7 @@ A WebSocket connection object also has the following attributes:
 
 * **bufferedAmount**: A read-only attribute. It represents the number of bytes of UTF-8 text that have been queued using the `send()` method. The following example demonstrates using this attribute to make sure that messages are sent only when the buffer is not full:
 
-    {{< file-excerpt "websockets.js" javascript >}}
+    {{< file "websockets.js" javascript >}}
 // 6400 max buffer size.
 var THRESHOLD = 6400;
 
@@ -170,11 +170,11 @@ ws.onopen = function () {
       }
    }, 1000);
 };
-{{< /file-excerpt >}}
+{{< /file >}}
 
 * **protocol**: Lets the server know which protocol the client understands and can use over WebSocket:
 
-    {{< file-excerpt "websockets.js" javascript >}}
+    {{< file "websockets.js" javascript >}}
 // Connecting to the server with multiple protocol choices
 
 var ws = new WebSocket("ws://echo.websocket.org", [ "protocol", "another protocol"])
@@ -183,7 +183,7 @@ echoSocket.onopen = function(e) {
    // Check the protocol chosen by the server
    console.log( ws.protocol);
 }
-{{< /file-excerpt >}}
+{{< /file >}}
 
 ## WebSocket Client
 

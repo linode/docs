@@ -110,7 +110,7 @@ After you get acquainted with the initial introducer setup, you can [read about 
 
 8.  To automatically start up the introducer on boot, create a systemd service file with the following:
 
-      {{< file-excerpt "/etc/systemd/system/tahoe-autostart-introducer.service" >}}
+      {{< file "/etc/systemd/system/tahoe-autostart-introducer.service" >}}
 [Unit]
 Description=Tahoe-LAFS autostart introducer
 After=network.target
@@ -124,7 +124,7 @@ ExecStart=/usr/bin/tahoe run introducer --logfile=logs/introducer.log
 [Install]
 WantedBy=multi-user.target
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     While a rule to restart the process in case of a crash can be added here, it's better to inspect the Linode each time a node, client or introducer crashes, before restarting the process.

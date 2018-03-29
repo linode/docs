@@ -36,7 +36,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 2.  The version of Postfix included in the main CentOS repository does not include support for MariaDB; therefore, you will need install Postfix from the CentOS Plus repository. Before doing so, add exclusions to the `[base]` and `[updates]` repositories for the Postfix package to prevent it from being overwritten with updates that do not have MariaDB support:
 
-    {{< file-excerpt "/etc/yum.repos.d/CentOS-Base.repo" >}}
+    {{< file "/etc/yum.repos.d/CentOS-Base.repo" >}}
 [base]
 name=CentOS-$releasever - Base
 exclude=postfix
@@ -46,7 +46,7 @@ exclude=postfix
 name=CentOS-$releasever - Updates
 exclude=postfix
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Install the required packages:
@@ -106,10 +106,10 @@ Next, set up a MariaDB database to handle virtual domains and users.
 
 11. Bind MariaDB to localhost (127.0.0.1) by editing `/etc/my.cnf`, and adding the following to the `[mysqld]` section of the file:
 
-    {{< file-excerpt "/etc/my.cnf" >}}
+    {{< file "/etc/my.cnf" >}}
 bind-address=127.0.0.1
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
     This is required for Postfix to be able to communicate with the database server. If you have MariaDB set up to listen on another IP address (such as an internal IP), you will need to substitute this IP address in place of `127.0.0.1` during the Postfix configuration steps. It is *not* advisable to run MariaDB on a publicly-accessible IP address.
@@ -215,16 +215,16 @@ hosts = 127.0.0.1
 
 8.  Edit the file `/etc/postfix/master.cf` and add the Dovecot service to the bottom of the file:
 
-    {{< file-excerpt "/etc/postfix/master.cf" >}}
+    {{< file "/etc/postfix/master.cf" >}}
 dovecot   unix  -       n       n       -       -       pipe
     flags=DRhu user=vmail:vmail argv=/usr/libexec/dovecot/deliver -f ${sender} -d ${recipient}
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 9.  Uncomment the two lines starting with `submission` and `smtps` and the block of lines starting with `-o` after each. The first section of the `/etc/postfix/master.cf` file should resemble the following:
 
-    {{< file-excerpt "/etc/postfix/master.cf" >}}
+    {{< file "/etc/postfix/master.cf" >}}
 #
 # Postfix master process configuration file.  For details on the format
 # of the file, see the master(5) manual page (command: "man 5 master").
@@ -253,7 +253,7 @@ smtps     inet  n       -       -       -       -       smtpd
   -o smtpd_client_restrictions=permit_sasl_authenticated,reject
   -o milter_macro_daemon_name=ORIGINATING
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 10. Configure Postfix to start on boot and start the service for the first time:
@@ -351,12 +351,12 @@ password_query = SELECT email as user, password FROM users WHERE email='%u';
 
 6.  Now check `/var/log/maillog` to make sure Dovecot started without errors. Your log should have lines similar to the following:
 
-    {{< file-excerpt "/var/log/maillog" >}}
+    {{< file "/var/log/maillog" >}}
 Mar 18 17:10:26 localhost postfix/postfix-script[3274]: starting the Postfix mail system
 Mar 18 17:10:26 localhost postfix/master[3276]: daemon started -- version 2.10.1, configuration /etc/postfix
 Mar 18 17:12:28 localhost dovecot: master: Dovecot v2.2.10 starting up for imap, pop3 (core dumps disabled)
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 7.  Test your POP3 server to make sure it's running properly:
@@ -455,21 +455,21 @@ After the test mail is sent, check the mail logs to make sure the mail was deliv
 
 1.  Check the `maillog` located in `/var/log/maillog`. You should see something similar to the following:
 
-    {{< file-excerpt "/var/log/maillog" >}}
+    {{< file "/var/log/maillog" >}}
 Mar 18 17:18:47 localhost postfix/cleanup[3427]: B624062FA: message-id=<20150318171847.B624062FA@example.com>
 Mar 18 17:18:47 localhost postfix/qmgr[3410]: B624062FA: from=<root@example.com>, size=515, nrcpt=1 (queue active)
 Mar 18 17:18:47 localhost postfix/pipe[3435]: B624062FA: to=<sales@example.com>, relay=dovecot, delay=0.14, delays=0.04/0.01/0/0.09, dsn=2.0.0, $
 Mar 18 17:18:47 localhost postfix/qmgr[3410]: B624062FA: removed
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 2.  Check the Dovecot delivery log located in `/home/vmail/dovecot-deliver.log`. The contents should look similar to the following:
 
-    {{< file-excerpt "/home/vmail/dovecot-deliver.log" >}}
+    {{< file "/home/vmail/dovecot-deliver.log" >}}
 deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=<<20110121200319.E1D148908@hostname.example.com>>: saved mail to INBOX
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 Now you can test to see what the users of your email server would see with their email clients.

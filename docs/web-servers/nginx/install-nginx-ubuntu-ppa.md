@@ -18,9 +18,9 @@ These instructions install NGINX Mainline on Ubuntu 16.04 from NGINX Inc's offic
 
 1.  Open `/etc/apt/sources.list` in a text editor and add the following line to the bottom:
 
-    {{< file-excerpt "/etc/apt/sources.list" >}}
+    {{< file "/etc/apt/sources.list" >}}
 deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx
-{{< /file-excerpt >}}
+{{< /file >}}
 
 2.  Import the repository's package signing key and add it to `apt`:
 

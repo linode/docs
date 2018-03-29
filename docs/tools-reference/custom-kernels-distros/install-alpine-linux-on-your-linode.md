@@ -126,11 +126,11 @@ In this section, we will modify critical system files. It is recommended that yo
 
 2.  Uncomment the line below to enable a serial console output. This gives you visibility over Lish when booting the installed system.
 
-    {{< file-excerpt "/alpine/etc/inittab" >}}
+    {{< file "/alpine/etc/inittab" >}}
 # Put a getty on the serial port
 ttyS0::respawn:/sbin/getty -L ttyS0 115200 vt100
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 
 3.  Create the GRUB 2 boot configuration directory:
