@@ -50,7 +50,7 @@ quit;
 
 ### Install Ruby
 
-Redmine requires Ruby to run. Use the Ruby Version Manager (RVM) to install Ruby 2.2.3 and up.
+Redmine requires Ruby to run. Use the Ruby Version Manager (RVM) to install Ruby 2.2.3.
 
 1. Curl the latest version of RVM.
 
@@ -123,7 +123,7 @@ include /etc/nginx/conf.d/*.conf;
 
         cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
 
-3.  Change the `root` directory for the website, and add additional passenger configurations. To do this, add these lines to the `server{}` block of the file:
+3.  Change the `root` directory for the website, and add additional Passenger configurations. To do this, add these lines to the `server{}` block of the file:
 
     {{< file-excerpt "/etc/nginx/sites-available/default" aconf >}}
 root /data/redmine/redmine/public;
@@ -175,7 +175,7 @@ Everything looks good. :-()
 
 
 
-8.  Finally, check if NGINX has started the Passenger core process from the line uncommented earlier:
+8.  Finally, check if NGINX has started the Passenger core process:
 
         sudo /usr/sbin/passenger-memory-stats
 
