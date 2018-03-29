@@ -13,7 +13,7 @@ published: 2009-07-16
 title: DNS Manager Overview
 ---
 
-The *DNS Manager* is a comprehensive DNS management interface available within the [Linode Manager](https://manager.linode.com) that allows you to add DNS records for all of your domain names. This guide covers the use of Linode's DNS Manager and basic domain zone setup. For an introduction to DNS in general, please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
+The *DNS Manager* is a comprehensive DNS management interface available within the [Linode Manager](https://manager.linode.com) that allows you to add DNS records for all of your domain names. This guide covers the use of Linode's DNS Manager and basic domain zone setup. For an introduction to DNS in general, please see our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide.
 
 ![DNS Manager Overview](/docs/assets/dns-manager-overview.png)
 
@@ -34,8 +34,8 @@ When setting up any domain name on your Linode, make sure you perform the follow
 1.  Register (purchase) a domain name, if you haven't already.
 2.  [Set your domain name to use Linode's name servers](#set-domain-names-to-use-linodes-name-servers). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
 3.  Use the DNS Manager to [Add a domain zone](#add-a-domain-zone), and then start [adding some basic DNS records](#add-records).
-4.  [Set reverse DNS](/docs/networking/dns/setting-reverse-dns).
-5.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/docs/networking/dns/common-dns-configurations).
+4.  [Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
+5.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/docs/networking/dns/common-dns-configurations/).
 
 ## Set Domain Names to Use Linode's Name Servers
 
@@ -105,7 +105,7 @@ In order for Linode's DNS servers to function as slaves, your DNS master server 
 2a01:7e00::a
 {{< /note >}}
 
-If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](/docs/networking/dns/dns-manager-overview#add-records) section for instructions.
+If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](/docs/networking/dns/dns-manager-overview/#add-records) section for instructions.
 
 [![This page lets you add specific DNS records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
 
@@ -118,18 +118,18 @@ When you first create a domain zone, you'll need to add some DNS records. The DN
 
 1.  Select a domain zone from within your DNS Manager.
 
-	[![This page has seven sections showing seven different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, and SRV. You can adjust the SOA record by clicking the "Settings" link in that section. The next six sections each have a corresponding link that lets you add a new record of that type. For example, to add an NS record, click the "Add a new NS record" link. There are similar links for MX, A, CNAME, TXT, and SRV records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
+    [![This page has seven sections showing seven different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, and SRV. You can adjust the SOA record by clicking the "Settings" link in that section. The next six sections each have a corresponding link that lets you add a new record of that type. For example, to add an NS record, click the "Add a new NS record" link. There are similar links for MX, A, CNAME, TXT, and SRV records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
 
 2.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, and then click the **Add new [DNS] record** link.
 
-	{{< note >}}
+    {{< note >}}
 The exact form fields will vary depending on the type of DNS record you select.
 {{< /note >}}
 
     ![This page allows you to create a new A/AAAA record.](/docs/assets/1122-dns10.png)
 
 3.  Enter a hostname in the **Hostname** field.
-4.  Enter the IP address of your server in the **IP Address** field. For instructions, see [Finding the IP Address](/docs/getting-started#find-the-ip-address-of-your-linode).
+4.  Enter the IP address of your server in the **IP Address** field. For instructions, see [Finding the IP Address](/docs/getting-started/#find-the-ip-address-of-your-linode).
 5.  From the **TTL** menu, select a time interval. *TTL*, which stands for "time to live," controls how long DNS records are cached by DNS resolvers before the resolver must query the authoritative name servers for new records.
 6.  Click **Save Changes**.
 
@@ -154,12 +154,12 @@ Here's how to import a zone file:
 
 1.  Select **Import a zone**, from the DNS Manager tab.
 
-	[![This page lets you import a domain zone.](/docs/assets/1658-axfr_sm.png)](/docs/assets/1659-axfr.png)
+    [![This page lets you import a domain zone.](/docs/assets/1658-axfr_sm.png)](/docs/assets/1659-axfr.png)
 
 2.  Enter the domain name in the **Domain** field, as shown in the example above.
 3.  Enter the name server in the **Remote Nameserver** field.
 
-	{{< note >}}
+    {{< note >}}
 The name server must allow zone transfers (AXFR) from: 96.126.114.97, 96.126.114.98, 2600:3c00::5e, and 2600:3c00::5f
 {{< /note >}}
 
@@ -235,7 +235,7 @@ Having problems with your DNS records? We recommend reviewing this section to he
 
 If you've just made a DNS change and aren't seeing it reflected yet, try waiting 48 hours. DNS updates will take effect, or *propagate*, within the time period set by your zone file's [TTL](#set-the-time-to-live-or-ttl). In some cases the new information may not be reflected for up to 48 hours.
 
-While you can't control DNS caching at every point on the Internet, you do have control over your web browser. Try holding down the *Shift* key or the *Control* key (depending on your browser) while you refresh the page to bypass your browser's cache of the old DNS data. You can also try bringing up your site in an alternate browser, or [Previewing Your Website Without DNS](/docs/networking/dns/previewing-websites-without-dns).
+While you can't control DNS caching at every point on the Internet, you do have control over your web browser. Try holding down the *Shift* key or the *Control* key (depending on your browser) while you refresh the page to bypass your browser's cache of the old DNS data. You can also try bringing up your site in an alternate browser, or [Previewing Your Website Without DNS](/docs/networking/dns/previewing-websites-without-dns/).
 
 ### Set the Time To Live or TTL
 
@@ -282,4 +282,4 @@ If you're on a Windows machine, or you're more comfortable using a web-based too
 
 ## Next Steps
 
-Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/networking/dns/setting-reverse-dns), and consider looking at our [Common DNS Configurations](/docs/networking/dns/common-dns-configurations) guide.
+Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/networking/dns/configure-your-linode-for-reverse-dns/), and consider looking at our [Common DNS Configurations](/docs/networking/dns/common-dns-configurations/) guide.

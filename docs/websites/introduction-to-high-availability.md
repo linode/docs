@@ -92,9 +92,9 @@ Apache's communication with the database nodes works in a similar way. Because t
 
 *Failover* is the process by which one node takes over the job of another in the event that one becomes disabled. This comes as a result of monitoring for failures by the system.
 
-While GlusterFS handles monitoring and failover itself, a separate service is needed for the database cluster. For this, we use [Keepalived](http://www.keepalived.org/) with a *floating IP address*. The floating (or virtual) IP address is simply a private IP address that can be reassigned between nodes as needed when one fails.
+While GlusterFS handles monitoring and failover itself, a separate service is needed for the database cluster. For this, we use [Keepalived](http://www.keepalived.org/) with a *failover IP address*. The failover IP address is simply a private IP address that can be reassigned between nodes as needed when one fails.
 
-Keepalived uses *virtual router redundancy protocol*, or VRRP, to automatically assign the floating IP address to any of the database nodes. The keepalived service uses user-defined rules to monitor for a certain number of failures by a database node. When that failure threshold is met, keepalived assigns the floating IP address to a different node so that there is no interruption to the fulfillment of requests while the first node waits to be fixed.
+Keepalived uses *virtual router redundancy protocol*, or VRRP, to automatically assign the failover IP address to any of the database nodes. The keepalived service uses user-defined rules to monitor for a certain number of failures by a database node. When that failure threshold is met, keepalived assigns the failover IP address to a different node so that there is no interruption to the fulfillment of requests while the first node waits to be fixed.
 
 ### Load Balancing
 

@@ -15,13 +15,9 @@ ajp
 aker
 alives
 allmasquerade
-allnodes
-allrouters
 amavis
 amavisd
 amd64
-amongst
-analytics
 anonymize
 anonymizing
 ansible
@@ -46,7 +42,6 @@ authmysqlrc
 authn
 authomator
 authy
-autocomplete
 autocompletion
 autoconfiguration
 autoconfigure
@@ -77,17 +72,13 @@ backreference
 backreferences
 backtick
 backticks
-bak
 bampton
-barcode
-baremetal
 base64
 basearch
 bashdoor
 bashrc
 bc
 berkshelf
-bgrewriteaof
 binlog
 bitbucket
 bitrate
@@ -134,8 +125,6 @@ changeme
 changeset
 chatrooms
 cheatsheet
-checkboxes
-checkmark
 checksummed
 checksums
 chefspec
@@ -180,7 +169,6 @@ copyto
 coreutils
 corporateclean
 cpanminus
-cpu
 cqlsh
 cqlshrc
 craftbukkit
@@ -202,8 +190,6 @@ csum
 csv
 ctools
 ctrl
-customizability
-customizable
 cyberduck
 cyg
 cygwin
@@ -254,11 +240,9 @@ dialogs
 diavel
 diffie
 digium
-diplays
 dircaps
 directadmin
 dired
-displayfeatures
 disqus
 distro
 distros
@@ -313,7 +297,6 @@ elpaso
 email2email
 ender
 enix
-entrypoint
 env
 envs
 epel
@@ -323,7 +306,6 @@ esc
 etcd
 etcd0
 eth0
-everytime
 evhost
 example1
 example2
@@ -339,10 +321,8 @@ expirations
 ext2
 ext3
 ext4
-ext4
 facter
 facto
-fail2ban
 fail2ban
 failover
 failregex
@@ -436,7 +416,6 @@ gpg
 gradle
 grafana
 graylog
-graylog2
 graylog2
 greenbone
 greylist
@@ -554,7 +533,6 @@ ip6tables
 ipchains
 ipset
 ipsets
-iptabes
 iptables
 ipv4
 ipv6
@@ -570,7 +548,6 @@ isp
 issuewild
 iterable
 itk
-java6
 java6
 javac
 javascript
@@ -689,7 +666,6 @@ magento
 maildir
 maildirs
 maildrop
-maillbox
 mailname
 mailq
 mailserver
@@ -756,7 +732,6 @@ msg
 msgid
 msgpack
 msmtp
-mstmp
 mtr
 mtu
 multiarch
@@ -792,7 +767,6 @@ nameservers
 namespace
 namespaces
 nano
-natively
 ncurses
 neo
 neomake
@@ -843,10 +817,8 @@ nrcpt
 ns1
 ns2
 nsd4
-nsd4
 ntopng
 ntpd
-ntpong
 num
 numpy
 nvim
@@ -857,7 +829,6 @@ ohai
 ok
 oldstable
 oneof
-onone
 ons
 opencart
 opendkim
@@ -876,7 +847,6 @@ ossec
 ostemplate
 osx
 otomen
-ournaling
 overcommit
 overwatch
 ovpn
@@ -906,12 +876,10 @@ patroni
 pem
 pepi
 percona
-perfom
 permalink
 permalinks
 pflogsumm
 pgpass
-phar
 pharo
 phonebook
 php
@@ -931,7 +899,6 @@ ploop
 pluggable
 png
 pocketmine
-polcy
 pop3
 pop3d
 pop3s
@@ -941,6 +908,7 @@ postgres
 postgresql
 postgresql0
 postmap
+postrotate
 postrouting
 ppa
 pparadis
@@ -956,13 +924,13 @@ prepend
 prepended
 prepending
 preprocessing
+prerotate
 prerouting
 prestashop
 pritunl
 procfile
 procmail
 procs
-programmatically
 prosodyctl
 proto
 proxied
@@ -1040,7 +1008,6 @@ rimap
 rkt
 rmem
 ro
-roadmap
 rocommunity
 rollout
 roundcube
@@ -1057,7 +1024,6 @@ rtf
 rtt
 rubocop
 rubygems
-rubygems1
 ruleset
 rulesets
 rundir
@@ -1080,7 +1046,6 @@ sasldb
 sbin
 sbopkg
 scgi
-schemas
 scm
 scp
 scrapy
@@ -1140,7 +1105,6 @@ smtp
 smtpd
 smux
 snakeoil
-snapsnot
 snipcart
 snmp
 snmpd
@@ -1171,7 +1135,6 @@ stackscript
 stackscripts
 stalkyard
 starttls
-stateful
 statusbar
 stderr
 steamlab
@@ -1187,7 +1150,6 @@ subfolder
 subkey
 subkeys
 submenu
-submodules
 subnet
 subnets
 subnetwork
@@ -1227,7 +1189,6 @@ tbz
 tcp
 tcpwrappers
 teamspeak
-templating
 tensorflow
 terraria
 testdb
@@ -1246,7 +1207,6 @@ timeframe
 timespan
 timewait
 timey
-timme
 tinc
 tincd
 tinydb
@@ -1298,7 +1258,6 @@ uncompress
 unencrypted
 unformatted
 unicast
-unintuitive
 uniq
 unmerged
 unmount
@@ -1314,7 +1273,6 @@ untracked
 untruncated
 untrusted
 unversioned
-uptime
 uri
 uris
 url
@@ -1398,7 +1356,6 @@ werkzug
 wg
 wget
 whatsmyip
-whitelist
 whitelisted
 whitelisting
 whitespace

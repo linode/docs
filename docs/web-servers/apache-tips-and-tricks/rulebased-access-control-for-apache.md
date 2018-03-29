@@ -33,7 +33,7 @@ The most basic use of rule-based access control is to place firm limits on what 
 
 Additional uses for these access rules include blocking particular IP ranges that have been responsible for malicious traffic and limiting access to a given resource or set of resources to "internal users," among a number of other possibilities.
 
-We assume that you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, please reference our [Apache HTTP server configuration basics](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/content/web-servers/apache/configuration/configuration-structure) guides.
+We assume that you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, please reference our [Apache HTTP server configuration basics](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) guides.
 
 ## Examples of Rule Based Access Control
 

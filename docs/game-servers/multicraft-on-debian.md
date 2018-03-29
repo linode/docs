@@ -20,7 +20,7 @@ aliases: ['applications/game-servers/multicraft-on-debian/']
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers Free and paid versions are available. This guide will help you install Multicraft on a Linode running Debian 7.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
@@ -47,8 +47,8 @@ Multicraft for Linux depends on several software packages in order to run.
 
 {{< /file-excerpt >}}
 
-        {{< note >}}
-If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
+    {{< note >}}
+If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
 {{< /note >}}
 
 4.  Reload the Apache configuration:
@@ -152,4 +152,4 @@ eula=true
 {{< /file >}}
 
 
-    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/applications/game-servers/minecraft-on-debian-and-ubuntu#connect-to-your-minecraft-server).
+    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server).

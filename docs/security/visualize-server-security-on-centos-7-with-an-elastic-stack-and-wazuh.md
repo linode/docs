@@ -499,7 +499,7 @@ The new Kibana subdomain will need to be configured in the Linode DNS Manager.
 
 ## Open the Kibana Port
 
-Kibana's default access port, `5601`, must be opened for TCP traffic. Instructions are presented below for UFW, Iptabes, and FirewallD.
+Kibana's default access port, `5601`, must be opened for TCP traffic. Instructions are presented below for UFW, Iptables, and FirewallD.
 
 **UFW**
 

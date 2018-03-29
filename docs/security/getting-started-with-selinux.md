@@ -146,7 +146,7 @@ SELinux marks every single object on a machine with a *context*. That means ever
 
 ### SELinux Boolean
 
-An SELinux Boolean is a variable that can be toggled on and off without needing to reload or recompile an SELinux polcy. You can view the list of boolean variables using the `getsebool -a` command. It's a long list, so you can pipe it through `grep` to narrow down the results:
+An SELinux Boolean is a variable that can be toggled on and off without needing to reload or recompile an SELinux policy. You can view the list of boolean variables using the `getsebool -a` command. It's a long list, so you can pipe it through `grep` to narrow down the results:
 
 
     [root@centos ~]# getsebool -a | grep xdm
