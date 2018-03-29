@@ -89,21 +89,21 @@ Ansible keeps track of its nodes using an [inventory file](http://docs.ansible.c
 
 2.  Create a configuration file and edit it to include the location where you will store your inventory file:
 
-    {{< file-excerpt "~/ansible/ansible.cfg" ini >}}
+    {{< file "~/ansible/ansible.cfg" ini >}}
 [defaults]
 inventory = ~/Path/To/ansible/hosts
-{{< /file-excerpt >}}
+{{< /file >}}
 
 3.  Create the inventory file. Replace `$node-1-ip`,`$node-2-ip`, and `$node-3-ip` with the public IP address or domain name of each of your nodes:
 
-    {{< file-excerpt "~/ansible/hosts" ini >}}
+    {{< file "~/ansible/hosts" ini >}}
 [nginx]
 $node-1-ip
 $node-2-ip
 
 [linode]
 $node-3-ip
-{{< /file-excerpt >}}
+{{< /file >}}
 
     Each bracketed label denotes an Ansible [group](http://docs.ansible.com/ansible/latest/intro_inventory.html#hosts-and-groups). Grouping your nodes by function will make it easier to run commands against the correct set of nodes.
 
@@ -146,7 +146,7 @@ Playbooks can be used to perform initial server configurations, add users and di
 
 A playbook is a YAML file, and typically follows this structure:
 
-{{< file-excerpt "playbook.yml" yaml >}}
+{{< file "playbook.yml" yaml >}}
 ---
 - hosts: [target hosts]
   remote_user: [yourname]
@@ -154,11 +154,11 @@ A playbook is a YAML file, and typically follows this structure:
     - [task 1]
     - [task 2]
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 The following playbook would log in to all servers in the `[nginx]` group and ensure NGINX was started:
 
-{{< file-excerpt "playbook.yml" yaml >}}
+{{< file "playbook.yml" yaml >}}
 ---
 - hosts: [nginx]
   remote_user: webadmin
@@ -168,7 +168,7 @@ The following playbook would log in to all servers in the `[nginx]` group and en
       become: yes
       become_method: sudo
 
-{{< /file-excerpt >}}
+{{< /file >}}
 
 Every task should have a name. Task names are logged as Ansible runs and can help you track progress. Following the name line is the module that will be run (in this case, the [service module](http://docs.ansible.com/ansible/service_module.html)), and the other attributes provide more options, in this case instructing Ansible to use `sudo` privileges.
 
