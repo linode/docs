@@ -1,6 +1,7 @@
 __pycache__/
 public/
 .cache/
+.idea/
 .scrapy
 .pynb_checkpoints
 .env
@@ -32,4 +33,3 @@ Thumbs.dbi
 *.elc
 .\#*
 *.sublime-workspace
-**.idea
