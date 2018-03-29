@@ -1,12 +1,13 @@
 ---
 author:
-  name: Angel
+  name: Angel Guarisma
   email: docs@linode.com
 description: 'This guide shows how to install and set up Redmine, a free and open-source project management web application, written using Ruby on Rails, that is cross-platform and cross-database.'
+og_description: 'This guide shows how to install and set up Redmine, a free and open-source project management web application, written using Ruby on Rails, that is cross-platform and cross-database.'
 keywords: ["nginx", "ubuntu", "redmine"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
-modified: 2017-09-26
+modified: 2018-03-28
 modified_by:
   name: Linode
 title: 'How to Install and Configure Redmine on Ubuntu 16.04'
@@ -19,7 +20,7 @@ external_resources:
 
 Redmine is a project management web app that allows users to manage projects flexibly while offering robust tracking tools and an extensive library of plug-ins. This free and open source solution offers an alternative to paid project management tools and includes support for wikis, forums, calendars, and data visualization tools.
 
-This guide will show you how to install and set up Redmine on Ubuntu 16.04 through the Passenger application server connected to Nginx.
+This guide will show you how to install and set up Redmine on Ubuntu 16.04 through the Passenger application server connected to NGINX.
 
 ### Before You Begin
 
@@ -49,7 +50,7 @@ quit;
 
 ### Install Ruby
 
-Redmine requires Ruby to run. Use the Ruby Version Manager (RVM) to install Ruby 2.2.3 and up.
+Redmine requires Ruby to run. Use the Ruby Version Manager (RVM) to install Ruby 2.2.3.
 
 1. Curl the latest version of RVM.
 
@@ -75,9 +76,9 @@ Redmine requires Ruby to run. Use the Ruby Version Manager (RVM) to install Ruby
         rvm use 2.2.3 --default
 
 
-### Install Passenger and Nginx
+### Install Passenger and NGINX
 
-[Passenger](https://github.com/phusion/passenger) is an application server that runs your web application then communicates with the web server. The project has well-written [documentation](https://www.phusionpassenger.com/library/install/nginx/install/oss/xenial/) on installing Passenger and Nginx on Ubuntu 16.04 with an apt repository.
+[Passenger](https://github.com/phusion/passenger) is an application server that runs your web application then communicates with the web server. The project has well-written [documentation](https://www.phusionpassenger.com/library/install/nginx/install/oss/xenial/) on installing Passenger and NGINX on Ubuntu 16.04 with an apt repository.
 
 1.  Install the Passenger PGP key and HTTPS support for the package manager:
 
@@ -90,11 +91,13 @@ Redmine requires Ruby to run. Use the Ruby Version Manager (RVM) to install Ruby
         sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main > /etc/apt/sources.list.d/passenger.list'
         sudo apt update
 
-3.  Install Passenger and Nginx
+3.  Install Passenger and NGINX
 
         sudo apt install -y nginx-extras passenger
 
-Passenger has now installed Nginx with Passenger compiled in. You have to configure Nginx to make sure it uses Passenger correctly:
+### Configure NGINX
+
+Passenger has now installed NGINX with Passenger compiled in. You have to configure NGINX to make sure it uses Passenger correctly:
 
 1.  Uncomment the `include /etc/nginx/passenger.conf;` line in `/etc/nginx/nginx.conf`. Edit your config file to resemble the one below:
 
@@ -120,7 +123,7 @@ include /etc/nginx/conf.d/*.conf;
 
         cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
 
-3.  Change the `root` directory for the website, and add additional passenger configurations. To do this, add these lines to the `server{}` block of the file:
+3.  Change the `root` directory for the website, and add additional Passenger configurations. To do this, add these lines to the `server{}` block of the file:
 
     {{< file "/etc/nginx/sites-available/default" aconf >}}
 root /data/redmine/redmine/public;
@@ -149,9 +152,9 @@ client_max_body_size 10m;
 
 6.  Restart `nginx`:
 
-        sudo service nginx restart
+        sudo systemctl restart nginx
 
-7.  Validate the installation of Passenger and Nginx:
+7.  Validate the installation of Passenger and NGINX:
 
         sudo /usr/bin/passenger-config validate-install
 
@@ -167,19 +170,20 @@ client_max_body_size 10m;
 
 * Checking whether this Passenger install is in PATH... ✓
 * Checking whether there are no other Passenger installations... ✓
+Everything looks good. :-()
 {{< /output >}}
 
-Everything looks good. :-()
 
-8.  Finally, check if Nginx has started the Passenger core process from the line uncommented earlier:
+
+8.  Finally, check if NGINX has started the Passenger core process:
 
         sudo /usr/sbin/passenger-memory-stats
 
-    If Passenger was installed with Nginx correctly, your output should resemble:
+    If Passenger was installed with NGINX correctly, your output should resemble:
 
 
     {{< output >}}
---------- Nginx processes ----------
+--------- NGINX processes ----------
 PID   PPID  VMSize    Private  Name
 ------------------------------------
 6399  1     174.9 MB  0.6 MB   nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
@@ -211,11 +215,11 @@ PID   VMSize    Private  Name
         su redmine
         cd
 
-3.  Download Redmine tarball as the new user. Extract it, and rename the directory to `redmine` for convenience:
+3.  Download the Redmine tarball as the new user. Extract it and rename the directory to `redmine` for convenience:
 
-        wget https://www.redmine.org/releases/redmine-3.4.2.tar.gz
-        tar -zxvf redmine-3.4.2.tar.gz
-        mv redmine-3.4.2 redmine
+        wget https://www.redmine.org/releases/redmine-3.4.4.tar.gz
+        tar -zxvf redmine-3.4.4.tar.gz
+        mv redmine-3.4.4 redmine
 
 4. Add the database information created earlier to Redmine's config file. Only complete the section marked "Production," as you will not be using the development or test environments.
 
@@ -234,9 +238,9 @@ PID   VMSize    Private  Name
         RAILS_ENV=production bundle exec rake db:migrate
         RAILS_ENV=production bundle exec rake redmine:load_default_data
 
-7. Restart Nginx, and navigate to your server's IP address and you will be greeted by the Redmine application:
+7. Restart NGINX, and navigate to your server's IP address and you will be greeted by the Redmine application:
 
-        sudo service nginx restart
+        sudo systemctl restart nginx
 
     ![Login](/docs/assets/redmine/firstscreen.png)
 
@@ -262,10 +266,10 @@ If not installed, install git or download the plug-in directly through the Githu
         cd plugins
         git clone https://github.com/scrum2b/scrum2b
 
-2. Use Bundle to install the plug-in, then restart Nginx:
+2. Use Bundle to install the plug-in, then restart NGINX:
 
         bundle install
-        sudo service nginx restart
+        sudo systemctl restart nginx
 
 3. Navigate to Redmine in your browser. Log in, click **admin** then click **plugins**
 
