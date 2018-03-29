@@ -68,10 +68,12 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 
 5.  Create a test database and user with access permission. Replace `testdb` and `testuser` with appropriate names for your setup. Replace `password` with a strong password.
 
-        CREATE DATABASE testdb;
-        CREATE USER 'testuser' IDENTIFIED BY 'password';
-        GRANT ALL PRIVILEGES ON testdb.* TO 'testuser';
-        quit
+    {{< highlight sql >}}
+CREATE DATABASE testdb;
+CREATE USER 'testuser' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON testdb.* TO 'testuser';
+quit
+{{< /highlight >}}
 
 ### PHP
 
