@@ -29,8 +29,8 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/uptime/monitoring/top-htop-iotop) and the load-testing program [Siege](/docs/tools-reference/tools/load-testing-with-siege). Linode's own [Longview](/docs/platform/longview/longview) service can also help in server monitoring. At minimum, familiarize yourself with the RAM and CPU usage of your server. Discover usage statistics with these commands:
 
-	echo [PID]  [MEM]  [PATH] &&  ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 20
-	ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20
+    echo [PID]  [MEM]  [PATH] &&  ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 20
+    ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20
 
 More specific resources for resource tuning Apache includes Apache `mod_status` and Apache2Buddy.
 
@@ -42,7 +42,7 @@ Apache `mod_status` displays information related to incoming server connections 
 
 2.  Add the following to the `<virtual_hosts>` block:
 
-	{{< file "/etc/apache2/sites-available/example.com.conf (Debian/Ubuntu)" >}}
+    {{< file "/etc/apache2/sites-available/example.com.conf (Debian/Ubuntu)" >}}
 <Location /server-status>
      SetHandler server-status
      Order Deny,Allow
@@ -56,46 +56,46 @@ Apache `mod_status` displays information related to incoming server connections 
 
 3.  Apache `mod_status` also offers an option called **ExtendedStatus**, which provides additional information about each request made to Apache. To enable **ExtendedStatus** edit your Apache configuration file:
 
-	{{< file "/etc/apache2/apache2.conf (Debian/Ubuntu)" >}}
+    {{< file "/etc/apache2/apache2.conf (Debian/Ubuntu)" >}}
 ExtendedStatus On
 
 
 {{< /file >}}
 
 
-	{{< note >}}
+    {{< note >}}
 Enabling ExtendedStatus consumes additional system resources.
 {{< /note >}}
 
 4.  Restart Apache:
 
-	- 	Debian/Ubuntu:
+    -     Debian/Ubuntu:
 
-			systemctl restart apache2
+            systemctl restart apache2
 
-	-	CentOS/Fedora:
+    -    CentOS/Fedora:
 
-			systemctl restart httpd
+            systemctl restart httpd
 
 5.  To view the file generated, download Lynx:
 
-	-	Debian/Ubuntu:
+    -    Debian/Ubuntu:
 
-			apt-get install lynx
+            apt-get install lynx
 
-	- 	Fedora/CentOS:
+    -     Fedora/CentOS:
 
-			yum install lynx
+            yum install lynx
 
 6.  Open the file:
 
-		lynx http://localhost/server-status
+        lynx http://localhost/server-status
 
 ### Apache2Buddy
 
 The Apache2Buddy script, similar to MySQLTuner, reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, focusing on the `MaxClients` directive, Apache2Buddy is useful, and can be run through a single command:
 
-	curl -sL https://raw.githubusercontent.com/richardforth/apache2buddy/master/apache2buddy.pl | perl
+    curl -sL https://raw.githubusercontent.com/richardforth/apache2buddy/master/apache2buddy.pl | perl
 
 ## Multi Processing Modules
 
@@ -131,11 +131,11 @@ Once you select your MPM, you will need to change the values inside the configur
 
 {{< file "/etc/apache2/apache2.conf (Debian/Ubuntu)" >}}
 <IfModule mpm_prefork_module>
-   	StartServers          4
-   	MinSpareServers       20
-   	MaxSpareServers      40
-   	MaxClients           200
-   	MaxRequestsPerChild  4500
+       StartServers          4
+       MinSpareServers       20
+       MaxSpareServers      40
+       MaxClients           200
+       MaxRequestsPerChild  4500
 </IfModule>
 
 
@@ -168,13 +168,13 @@ One way to calculate the best value for this is to divide the amount of RAM each
 
 To determine the RAM each Apache process uses, replace `httpd` with `apache2` on Debian or Ubuntu systems:
 
-	ps -ylC httpd --sort:rss
+    ps -ylC httpd --sort:rss
 
 Divide the number by 2048 for megabytes.
 
 To get information on memory usage:
 
-	free -m
+    free -m
 
 To receive a fuller view of the resources Apache is using, use the `top` command.
 
@@ -186,7 +186,7 @@ This limits the number of requests a child server handles during its life. Once 
 
 If you need to increase the `MaxClients` above `256`, then increase your `ServerLimit` to match. To do this, add the `ServerLimit` line to your MPM code and alter the value:
 
-	ServerLimit          256
+    ServerLimit          256
 
 ### KeepAlive
 

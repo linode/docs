@@ -27,7 +27,7 @@ The `top` screen contains a variety of information regarding your server, beginn
 
 1.  The first line contains the time, uptime, and load average values for the server. The **load average** is displayed over 1, 5, and 15 minutes to provide a better overall look at the load your server has undertaken. If there is a spike at one minute, but the load at the five- and fifteen-minute marks is maintained at a lower level, then consider a different response compared to when the load is consistently high through all time intervals.
 
-	{{< note >}}
+    {{< note >}}
 In order to properly read the load average section, be aware of how many CPU cores the Linode has. If there is one CPU core, then a load average of 1.00 means the server is at its capacity. This number increases to 2.00 on a Linode with 2 CPU cores, 4.00 with 4, etc.
 
 A load of .70 for a Linode with 1 core is generally considered the threshold. Any higher than this, then reconfigure your resources or look into upgrading your plan.
@@ -89,31 +89,31 @@ Important commands to know include:
 
 Used alongside one-another, these commands can prove especially useful. For example, if you want to log a set number of processes over a period of time, you can combine batch mode, the process ID filter, the delay setting, and the iteration setting to output the results you are looking for:
 
-	top -b -p[PID] -d[interval] -n[limit]
+    top -b -p[PID] -d[interval] -n[limit]
 
 For this example, the process ID is 2774, the delay is set to 10 seconds, and the interval is 2 cycles:
 
-	top -b -p2774 -d10 -n2
+    top -b -p2774 -d10 -n2
 
 Which outputs these results:
 
-	top - 15:20:59 up 2 days,  1:14,  1 user,  load average: 0.00, 0.01, 0.05
-	Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
-	%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni, 99.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
-	KiB Mem:   1012584 total,   507792 used,   504792 free,    24720 buffers
-	KiB Swap:   262140 total,        0 used,   262140 free,   245800 cached
+    top - 15:20:59 up 2 days,  1:14,  1 user,  load average: 0.00, 0.01, 0.05
+    Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+    %Cpu(s):  0.0 us,  0.0 sy,  0.0 ni, 99.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+    KiB Mem:   1012584 total,   507792 used,   504792 free,    24720 buffers
+    KiB Swap:   262140 total,        0 used,   262140 free,   245800 cached
 
-	  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
-	 3774 mysql     20   0  356m  51m  10m S   0.0  5.2   1:54.01 mysqld
+      PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+     3774 mysql     20   0  356m  51m  10m S   0.0  5.2   1:54.01 mysqld
 
-	top - 15:21:04 up 2 days,  1:14,  1 user,  load average: 0.00, 0.01, 0.05
-	Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
-	%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni, 99.8 id,  0.0 wa,  0.0 hi,  0.2 si,  0.0 st
-	KiB Mem:   1012584 total,   507800 used,   504784 free,    24720 buffers
-	KiB Swap:   262140 total,        0 used,   262140 free,   245800 cached
+    top - 15:21:04 up 2 days,  1:14,  1 user,  load average: 0.00, 0.01, 0.05
+    Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+    %Cpu(s):  0.0 us,  0.0 sy,  0.0 ni, 99.8 id,  0.0 wa,  0.0 hi,  0.2 si,  0.0 st
+    KiB Mem:   1012584 total,   507800 used,   504784 free,    24720 buffers
+    KiB Swap:   262140 total,        0 used,   262140 free,   245800 cached
 
-	  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
-	 3774 mysql     20   0  356m  51m  10m S   0.2  5.2   1:54.02 mysqld
+      PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
+     3774 mysql     20   0  356m  51m  10m S   0.2  5.2   1:54.02 mysqld
 
 ### Interactive Commands
 
@@ -144,17 +144,17 @@ The `htop` command is an alternative to `top`, offering an easier interface feat
 
 To install:
 
-- 	For Debian/Ubuntu:
+-     For Debian/Ubuntu:
 
-		apt-get install htop
+        apt-get install htop
 
-- 	For CentOS/Fedora:
+-     For CentOS/Fedora:
 
-		yum install htop
+        yum install htop
 
 Run `htop` by entering:
 
-	htop
+    htop
 
 The `htop` screen runs similar to `top`, but with scroll and mouse support, and a variety of menus that allow for more intuitive use. When a process is highlighted you can act on that process, such as pressing `k` (kill). To learn more regarding `htop` commands, press `h` to open its help menu.
 
@@ -164,20 +164,20 @@ The `iotop` command tracks the input/output operations on a per-process basis. `
 
 To install:
 
--	For Debian/Ubuntu:
+-    For Debian/Ubuntu:
 
-		apt-get install iotop
+        apt-get install iotop
 
-- 	For CentOS/Fedora:
+-     For CentOS/Fedora:
 
-		yum install iotop
+        yum install iotop
 
 Run `iotop` by entering:
 
-	iotop
+    iotop
 
 To focus only on processes running, run it with the `--only` suffix:
 
-	iotop --only
+    iotop --only
 
 `iotop` also shares a number of command line options with `top` including: `-n`, `-b`, `-d`, `-u`, and `-p`, but is not interactive. To learn more about operating iotop, run `iotop -h` in your terminal.
