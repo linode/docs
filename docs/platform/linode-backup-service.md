@@ -126,13 +126,13 @@ You can restore a backup to any Linode located in the same data center, even if 
 
 1.  From the Dashboard of the Linode whose backups you intend to restore, click on the **Backups** tab. Select the **Restore to...** link beneath the backup that want to restore:
 
-	![Backup Service Tab](/docs/assets/backup-service-restore-to-link.png)
+    ![Backup Service Tab](/docs/assets/backup-service-restore-to-link.png)
 
 2.  Click the **Restore to this Linode** link next to your new Linode:
 
-	[![Restore to a New Linode](/docs/assets/backup-service-restore-to-new-small.png)](/docs/assets/backup-service-restore-to-new.png)
+    [![Restore to a New Linode](/docs/assets/backup-service-restore-to-new-small.png)](/docs/assets/backup-service-restore-to-new.png)
 
-	The backup disks and configuration profiles will be restored to the Linode you selected. Watch the *Host Job Queue* to monitor the progress. Restoring from a backup can take several minutes depending on the size of your Linode and the amount of data you have stored on it.
+    The backup disks and configuration profiles will be restored to the Linode you selected. Watch the *Host Job Queue* to monitor the progress. Restoring from a backup can take several minutes depending on the size of your Linode and the amount of data you have stored on it.
 
 
 ### Restore to an Existing Linode
@@ -141,31 +141,31 @@ To restore a backup to an existing Linode, you will need to make sure that you h
 
 1.  Start by confirming the size of the backup that you wish to restore. From the **Backups** tab in your Linode's Dashboard, click the **Restore to...** link beneath your desired backup:
 
-	![Backup Service Tab](/docs/assets/backup-service-restore-to-link.png)
+    ![Backup Service Tab](/docs/assets/backup-service-restore-to-link.png)
 
 2.  Check the **Total size required** field to confirm the size of your backup:
 
-	![Backup Service Tab](/docs/assets/backup-service-total-size-required.png)
+    ![Backup Service Tab](/docs/assets/backup-service-total-size-required.png)
 
-	In this example, the total size of the backup comes to 3107MB, meaning you would need at least that much free space to restore this backup to your Linode.
+    In this example, the total size of the backup comes to 3107MB, meaning you would need at least that much free space to restore this backup to your Linode.
 
 3.  Next, you'll confirm the total space assigned to disk images on your Linode, via the **Storage** indicator on your Linode's Dashboard:
 
-	[![Linode Dashboard Storage Indicator](/docs/assets/backup-service-dashboard-storage-indicator-small.png)](/docs/assets/backup-service-dashboard-storage-indicator.png)
+    [![Linode Dashboard Storage Indicator](/docs/assets/backup-service-dashboard-storage-indicator-small.png)](/docs/assets/backup-service-dashboard-storage-indicator.png)
 
-	Here you can see that the Linode has a total of 30720MB of storage space available, but all of it is currently assigned to the Linode's two disks.
+    Here you can see that the Linode has a total of 30720MB of storage space available, but all of it is currently assigned to the Linode's two disks.
 
 4.  Now that you know how much space you'll need to free in order to restore the backup, [resize your disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to make room for it.
 
 5.  Once the disk resize has completed, check the storage indicator on your Linode's Dashboard to confirm that you've freed up enough space for your backup:
 
-	![Linode Dashboard Storage Indicator](/docs/assets/backup-service-storage-indicator-resize.png)
+    ![Linode Dashboard Storage Indicator](/docs/assets/backup-service-storage-indicator-resize.png)
 
 6.  From the **Backups** tab, click the **Restore to this Linode** link next to your Linode:
 
-	[![Linode Dashboard Storage Indicator](/docs/assets/backup-service-restore-to-a-linode-small.png)](/docs/assets/backup-service-restore-to-a-linode.png)
+    [![Linode Dashboard Storage Indicator](/docs/assets/backup-service-restore-to-a-linode-small.png)](/docs/assets/backup-service-restore-to-a-linode.png)
 
-	Your backup will begin restoring to your Linode, and you can monitor its progress from the *Host Job Queue* in your Linode's Dashboard tab. Note that the time it takes to restore your backup will vary depending upon the restore size, and the number of files being restored.
+    Your backup will begin restoring to your Linode, and you can monitor its progress from the *Host Job Queue* in your Linode's Dashboard tab. Note that the time it takes to restore your backup will vary depending upon the restore size, and the number of files being restored.
 
 ## Boot from a Backup
 

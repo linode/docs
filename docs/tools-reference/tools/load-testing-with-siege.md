@@ -24,67 +24,67 @@ This guide is for Debian or Ubuntu systems.
 
 1.  Prior to installing any new programs, update your system:
 
-		sudo apt-get update && sudo apt-get upgrade --show-upgraded
+        sudo apt-get update && sudo apt-get upgrade --show-upgraded
 
 2.  Download the latest version of Siege (3.0.9 at the time of this publication), which is always available at [Siege's website](http://www.joedog.org/siege-home):
 
-		wget http://download.joedog.org/siege/siege-latest.tar.gz
+        wget http://download.joedog.org/siege/siege-latest.tar.gz
 
 3.  Extract the program:
 
-		tar -zxvf siege-latest.tar.gz
+        tar -zxvf siege-latest.tar.gz
 
 4.  Navigate to the Siege directory:
 
-		cd siege-*/
+        cd siege-*/
 
 5.  If the GNU Compiler Collection (gcc) is not installed, install now:
 
-		sudo apt-get install build-essential
+        sudo apt-get install build-essential
 
 6.  Configure and complete the installation:
 
-		./configure
-		make
-		sudo make install
+        ./configure
+        make
+        sudo make install
 
 7.  Generate a configuration file:
 
-		siege.config
+        siege.config
 
 8.  Open the `.siegerc` file located in your home directory.
 
 9.  The suggested Siege configuration is for 25 concurrent users over a period of 1 minute. Set a location for your log file. Be sure to uncomment the variables shown below, and any other commented settings you want to use by removing the pound sign (`#`):
 
-	{{< file "~/.siegerc" >}}
+    {{< file "~/.siegerc" >}}
 ...
 
-		#
-		# Variable declarations. You can set variables here
-		# for use in the directives below. Example:
-		# PROXY = proxy.joedog.org
-		# Reference variables inside ${} or $(), example:
-		# proxy-host = ${PROXY}
-		# You can also reference ENVIRONMENT variables without
-		# actually declaring them, example:
-		logfile = $(HOME)/siege.log
+        #
+        # Variable declarations. You can set variables here
+        # for use in the directives below. Example:
+        # PROXY = proxy.joedog.org
+        # Reference variables inside ${} or $(), example:
+        # proxy-host = ${PROXY}
+        # You can also reference ENVIRONMENT variables without
+        # actually declaring them, example:
+        logfile = $(HOME)/siege.log
 
 ...
 
-		#
-		# Default number of simulated  concurrent users
-		# ex: concurrent = 25
-		#
-		concurrent = 25
+        #
+        # Default number of simulated  concurrent users
+        # ex: concurrent = 25
+        #
+        concurrent = 25
 
-		#
-		# Default duration of the siege.  The right hand argument has
-		# a modifier which specifies the time units, H=hours, M=minutes,
-		# and S=seconds. If a modifier is not specified, then minutes
-		# are assumed.
-		# ex: time = 50M
-		#
-		time = 1M
+        #
+        # Default duration of the siege.  The right hand argument has
+        # a modifier which specifies the time units, H=hours, M=minutes,
+        # and S=seconds. If a modifier is not specified, then minutes
+        # are assumed.
+        # ex: time = 50M
+        #
+        time = 1M
 
 
 {{< /file >}}
@@ -96,31 +96,31 @@ You are now ready to run Siege!
 
 To run Siege with the default settings, input the following command, replacing `www.example.com` with your domain name or IP address:
 
-	siege www.example.com
+    siege www.example.com
 
 Siege outputs the results:
 
-	** SIEGE 2.70
-	** Preparing 25 concurrent users for battle.
-	The server is now under siege...
-	Lifting the server siege...      done.
-	Transactions:		        2913 hits
-	Availability:		      100.00 %
-	Elapsed time:		       59.51 secs
-	Data transferred:	        0.41 MB
-	Response time:		        0.00 secs
-	Transaction rate:	       48.95 trans/sec
-	Throughput:		        0.01 MB/sec
-	Concurrency:		        0.04
-	Successful transactions:        2913
-	Failed transactions:	           0
-	Longest transaction:	        0.01
-	Shortest transaction:	        0.00
+    ** SIEGE 2.70
+    ** Preparing 25 concurrent users for battle.
+    The server is now under siege...
+    Lifting the server siege...      done.
+    Transactions:               2913 hits
+    Availability:             100.00 %
+    Elapsed time:              59.51 secs
+    Data transferred:           0.41 MB
+    Response time:              0.00 secs
+    Transaction rate:          48.95 trans/sec
+    Throughput:              0.01 MB/sec
+    Concurrency:                 0.04
+    Successful transactions:         2913
+    Failed transactions:                0
+    Longest transaction:             0.01
+    Shortest transaction:            0.00
 
-	FILE: /var/log/siege.log
-	You can disable this annoying message by editing
-	the .siegerc file in your home directory; change
-	the directive 'show-logfile' to false.
+    FILE: /var/log/siege.log
+    You can disable this annoying message by editing
+    the .siegerc file in your home directory; change
+    the directive 'show-logfile' to false.
 
 If there are no failed connections and the availability remains at 100%, there are no problems.
 
@@ -132,7 +132,7 @@ If you want Siege to hit a number of pages on your website at random, configure 
 
 1.  Open the `urls.txt` file generally created at `/usr/local/etc/urls.txt`. Add a list of URLs or IP addresses to that file:
 
-	{{< file "/usr/local/etc/urls.txt" >}}
+    {{< file "/usr/local/etc/urls.txt" >}}
 # URLS file for siege
 # --
 # Format the url entries in any of the following formats:
@@ -159,11 +159,11 @@ www.example.org
 
 2.  To run Siege with this file use the `siege` command:
 
-		siege
+        siege
 
-	If using a separate file, run:
+    If using a separate file, run:
 
-		siege -f your/file/path.txt
+        siege -f your/file/path.txt
 
 ### Commands
 
