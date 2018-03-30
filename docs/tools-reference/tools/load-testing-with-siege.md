@@ -104,17 +104,17 @@ Siege outputs the results:
     ** Preparing 25 concurrent users for battle.
     The server is now under siege...
     Lifting the server siege...      done.
-    Transactions:                2913 hits
-    Availability:              100.00 %
-    Elapsed time:               59.51 secs
-    Data transferred:            0.41 MB
-    Response time:                0.00 secs
-    Transaction rate:           48.95 trans/sec
-    Throughput:                0.01 MB/sec
-    Concurrency:                0.04
-    Successful transactions:        2913
-    Failed transactions:               0
-    Longest transaction:            0.01
+    Transactions:               2913 hits
+    Availability:             100.00 %
+    Elapsed time:              59.51 secs
+    Data transferred:           0.41 MB
+    Response time:              0.00 secs
+    Transaction rate:          48.95 trans/sec
+    Throughput:              0.01 MB/sec
+    Concurrency:                 0.04
+    Successful transactions:         2913
+    Failed transactions:                0
+    Longest transaction:             0.01
     Shortest transaction:            0.00
 
     FILE: /var/log/siege.log
