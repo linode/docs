@@ -140,7 +140,7 @@ numpy==1.14.2
 pytest==3.5.0
   - attrs [required: >=17.4.0, installed: 17.4.0]
   - more-itertools [required: >=4.0.0, installed: 4.1.0]
-    - six [required: >=1.0.0,<2.0.0, installed: 1.11.0]
+  - six [required: >=1.0.0,<2.0.0, installed: 1.11.0]
   - pluggy [required: >=0.5,<0.7, installed: 0.6.0]
   - py [required: >=1.5.0, installed: 1.5.3]
   - setuptools [required: Any, installed: 39.0.1]
@@ -154,7 +154,7 @@ pytest==3.5.0
         pipenv --venv
 
     {{< output >}}
-/home/jkobos/.local/share/virtualenvs/python-example-YJNpmGYi
+/home/user/.local/share/virtualenvs/python-example-YJNpmGYi
 {{< /output >}}
 
 ## Next Steps
