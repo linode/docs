@@ -23,6 +23,6 @@ def test_tabs(md_filepath):
         for position, char in enumerate(indent_regex.match(line).group(1)):
             has_tabs = char != ' '
             if has_tabs:
-                print("Mixed spacing on line " + str(line_number))
+                print("Mixed spacing on line " + str(line_number) + ": " + "position " + str(position))
     assert has_tabs == False
 
