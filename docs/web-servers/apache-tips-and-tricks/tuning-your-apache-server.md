@@ -104,11 +104,11 @@ Before making any changes to your Apache configuration, be sure to back up the c
 
 On Debian/Ubuntu:
 
-cp /etc/apache2/apache2.config ~/apache2.conf.backup
+    cp /etc/apache2/apache2.config ~/apache2.conf.backup
 
 On CentOS/Fedora:
 
-cp /etc/httpd/conf/httpd.config ~/httpd.conf.backup
+    cp /etc/httpd/conf/httpd.config ~/httpd.conf.backup
 {{< /note >}}
 
 Apache offers two Multi Processing Modules, three if on Apache 2.4, for managing your settings.

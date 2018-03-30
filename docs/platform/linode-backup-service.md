@@ -32,7 +32,6 @@ Pricing is per Linode and varies depending upon your Linode's plan:
 | Linode 48GB  | $0.12/hr            | $80/mo
 | Linode 64GB  | $0.18/hr            | $120/mo
 | Linode 80GB  | $0.24/hr            | $160/mo
-|-----------------------------------------------------
 
 ### High Memory Plans
 
@@ -173,7 +172,7 @@ After the backup has been restored, the disks and configuration profiles will be
 
 1.  From the **Linodes** tab, select the Linode that you restored the backup to. The Linode's dashboard appears, as shown below.
 
-[![The restore from backup interface.](/docs/assets/1049-backups3.png)](/docs/assets/1049-backups3.png)
+    [![The restore from backup interface.](/docs/assets/1049-backups3.png)](/docs/assets/1049-backups3.png)
 
 2.  Select the configuration profile that was restored.
 3.  Click **Boot** or **Reboot** to start your Linode from the backup disks.
