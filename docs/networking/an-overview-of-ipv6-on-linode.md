@@ -51,7 +51,7 @@ To find your Linode's IPv6 address, see the [Remote Access](/docs/networking/rem
 
 -  Line 6 is the Linode's public IP address. You can see it's in a /64 pool.
 
--  Line 8 is the link-local IPv6 address. An IPv6 link-local address is a unicast address that can be automatically configured on any interface. The link-local is usually in the `fe80::/10` range. However, in order to comply with [RFC 3849](https://tools.ietf.org/html/rfc3849), this documentation uses an example in the `ff32::/10` range.
+-  Line 8 is the link-local IPv6 address. An IPv6 link-local address is a unicast address that is automatically configured on any interface.
 
 If your Linode does not have the correct IPv6 address or any IPv6 address at all, you should verify that you have router advertisements enabled and IPv6 privacy extensions disabled. Your Linode will need to accept router advertisements for SLAAC to function. These settings are properly configured by default in our supported distributions.
 
