@@ -34,37 +34,37 @@ you will find resources for getting wget on your machine.
 Picking the right location for your Linode is important, you have to decide what facility is closest to you and your clients. Linode offers a series of [Linode Speed test files](https://www.linode.com/speedtest). By using wget, you can test your connection speed with each of these clients.
 
 
-1. To download one file using wget, use only `wget <url>`:
+1.  To download one file using wget, use only `wget <url>`:
 
-		wget http://speedtest.newark.linode.com/100MB-newark.bin
+        wget http://speedtest.newark.linode.com/100MB-newark.bin
 
-	As the download begins, a small progress bar will appear with information about the download:
-
-
-		HTTP request sent, awaiting response... 200 OK
-		Length: 104857600 (100M) [application/octet-stream]
-		Saving to: ‘100MB-newark.bin’
-
-		100%[======================================>] 104,857,600  202MB/s   in 0.5s
-
-		2017-06-23 13:13:19 (202 MB/s) - ‘100MB-newark.bin’ saved [104857600/104857600]
-
-2. Write the output of Wget to a file using the `-O` option.
-
-		wget -O Newark http://speedtest.newark.linode.com/100MB-newark.bin
-
-	After the download completes, you will receive this message:
-
-		2017-06-23 13:24:21 (48.4 MB/s) - ‘newark’ saved [104857600/104857600]
-
-	You can also log the output of a file with `-o` as in:
-
-		wget -o newarkTest http://speedtest.newark.linode.com/100MB-newark.bin
-
-	Wget will then make a file and log the download information inside of it:
+    As the download begins, a small progress bar will appear with information about the download:
 
 
-	{{< file "newarkTest" >}}
+        HTTP request sent, awaiting response... 200 OK
+        Length: 104857600 (100M) [application/octet-stream]
+        Saving to: ‘100MB-newark.bin’
+
+        100%[======================================>] 104,857,600  202MB/s   in 0.5s
+
+        2017-06-23 13:13:19 (202 MB/s) - ‘100MB-newark.bin’ saved [104857600/104857600]
+
+2.  Write the output of Wget to a file using the `-O` option.
+
+        wget -O Newark http://speedtest.newark.linode.com/100MB-newark.bin
+
+    After the download completes, you will receive this message:
+
+        2017-06-23 13:24:21 (48.4 MB/s) - ‘newark’ saved [104857600/104857600]
+
+    You can also log the output of a file with `-o` as in:
+
+        wget -o newarkTest http://speedtest.newark.linode.com/100MB-newark.bin
+
+    Wget will then make a file and log the download information inside of it:
+
+
+    {{< file "newarkTest" >}}
 02350K .......... .......... .......... .......... ..........100%  457M 0s
 102400K                                                       100% 0.00 =0.6s
 
@@ -73,7 +73,7 @@ Picking the right location for your Linode is important, you have to decide what
 {{< /file >}}
 
 
-3. If you are trying to download a large file, wget offers the `-b` option for downloading in the background:
+3.  If you are trying to download a large file, wget offers the `-b` option for downloading in the background:
 
         wget -b http://speedtest.newark.linode.com/100MB-newark.bin
         Continuing in background, pid 8764.
@@ -83,7 +83,11 @@ Picking the right location for your Linode is important, you have to decide what
 
         wget -c http://speedtest.newark.linode.com/100MB-newark.bin
 
+4.  To get a more accurate benchmark, repeat the download multiple times. The `--delete-after` flag will clean up the file after each download.
 
+        for i in {1..5}; do
+          time wget --delete-after http://speedtest.newark.linode.com/100MB-newark.bin;
+        done
 
 
 
