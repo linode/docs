@@ -44,16 +44,16 @@ time_format_default = "Monday, January 2, 2006"
 
 
 # Related Content ("See Also") configuration.
-[related]
-threshold = 80
-includeNewer = true
-toLower = false
-
-[[related.indices]]
-name = "keywords"
-weight = 100
-[[related.indices]]
-name  = "date"
-weight = 10
-pattern = "2006"
+# [related]
+# threshold = 80
+# includeNewer = true
+# toLower = false
+# 
+# [[related.indices]]
+# name = "keywords"
+# weight = 100
+# [[related.indices]]
+# name  = "date"
+# weight = 10
+# pattern = "2006"
 
