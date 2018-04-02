@@ -7,7 +7,7 @@ keywords: ["meltdown", "spectre", "vulnerability", "kernel"]
 aliases: ["platform/meltdown_statement"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-11
-modified: 2018-01-17
+modified: 2018-04-02
 modified_by:
   name: Linode
 title: 'What You Need to Do to Mitigate Meltdown and Spectre'
@@ -68,8 +68,8 @@ Yes, but while rebooting with the new kernel will help prepare your Linode for t
 | **Exploit**    | **Fix**  | **Information**            |
 |----------------|----------|----------------------------|
 | **Meltdown**   | Deployed | Patching is complete.      |
-| **Spectre-V1** |    No    | No patch is available yet. |
-| **Spectre-V2** | Deployed    | Patching is complete. |
+| **Spectre-V1** |    Scheduled    | Patching is scheduled. |
+| **Spectre-V2** | Scheduled    | Patching is scheduled. |
 
 
 ### Update: Spectre-V2 Patch
@@ -78,7 +78,7 @@ The patch for Spectre-V2 has been released for your Linode. You can deploy the L
 
 If you use a Linode-supplied kernel follow [these steps](#how-to-reboot-into-an-updated-linode-kernel) to make sure your Linode has the latest fix. If you use a distribution-supplied kernel, please check your distribution's website for more information.
 
-Spectre-V2 mitigation is a two-stage process. The second stage is host-level fixes. We are currently waiting on host-level fixes to be released.
+Spectre-V2 mitigation is a two-stage process. The second stage is host-level fixes. We currently have these scheduled, and these will begin starting April 18th.
 
 ## What does this mean for Linode Customers?
 
