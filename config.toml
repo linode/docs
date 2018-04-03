@@ -3,6 +3,8 @@ languageCode = "en-us"
 title = "Linode Guides & Tutorials"
 theme = "docsmith"
 
+contentDir = "../docs/content"
+
 # Highlighting config (Pygments)
 
 # Styles created with hugo gen chromastyles --style=perldoc > assets/stylesheets/_syntax-chroma.css
@@ -48,7 +50,7 @@ time_format_default = "Monday, January 2, 2006"
 # threshold = 80
 # includeNewer = true
 # toLower = false
-# 
+#
 # [[related.indices]]
 # name = "keywords"
 # weight = 100
@@ -56,4 +58,3 @@ time_format_default = "Monday, January 2, 2006"
 # name  = "date"
 # weight = 10
 # pattern = "2006"
-
