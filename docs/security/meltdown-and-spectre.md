@@ -78,7 +78,7 @@ The patch for Spectre-V2 has been released for your Linode. You can deploy the L
 
 If you use a Linode-supplied kernel follow [these steps](#how-to-reboot-into-an-updated-linode-kernel) to make sure your Linode has the latest fix. If you use a distribution-supplied kernel, please check your distribution's website for more information.
 
-Spectre-V2 mitigation is a two-stage process. The second stage is host-level fixes. We currently have these scheduled, and these will begin starting April 18th.
+Spectre-V2 mitigation is a two-stage process. The second stage is host-level fixes. We currently have these scheduled, and these will begin starting April 20th.
 
 ## What does this mean for Linode Customers?
 
