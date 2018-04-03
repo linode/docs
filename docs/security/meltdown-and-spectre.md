@@ -82,7 +82,7 @@ Spectre-V2 mitigation is a two-stage process. The second stage is host-level fix
 
 ## What does this mean for Linode Customers?
 
-The last two weeks have seen the tech world buzzing about two recently revealed processor vulnerabilities, *Meltdown* and *Spectre*. These are extremely complex vulnerabilities, and the extent of affected hardware is not yet fully known. In short, they allow cached information in your system’s memory to be read by an attacker.
+Earlier this year, the tech world was buzzing about two processor vulnerabilities, *Meltdown* and *Spectre*. These are extremely complex vulnerabilities, and the extent of affected hardware is not yet fully known. In short, they allow cached information in your system’s memory to be read by an attacker.
 
 Virtually all devices, including Linode servers, are potentially vulnerable to one or both of these exploits.
 
