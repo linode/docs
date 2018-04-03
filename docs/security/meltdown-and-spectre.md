@@ -7,7 +7,7 @@ keywords: ["meltdown", "spectre", "vulnerability", "kernel"]
 aliases: ["platform/meltdown_statement"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-11
-modified: 2018-04-02
+modified: 2018-04-03
 modified_by:
   name: Linode
 title: 'What You Need to Do to Mitigate Meltdown and Spectre'
