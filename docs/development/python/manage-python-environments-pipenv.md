@@ -15,7 +15,7 @@ title: Manage Python Packages and Virtual Environments with Pipenv
 
 ## What is Pipenv?
 
-[Pipenv](https://docs.pipenv.org/), Python's officially recommended package management tool, combines the functionality of Pip and Virtualenv, along with the best features of packaging tools from other languages such as Bundler and NPM. This results in a simplified workflow for installing packages and managing virtual environments.
+[Pipenv](https://docs.pipenv.org/) is Python's officially recommended package management tool. It combines the functionality of Pip and Virtualenv, along with the best features of packaging tools from other languages such as Bundler and NPM. This results in a simplified workflow for installing packages and managing virtual environments.
 
 ### Install Pipenv
 
@@ -116,7 +116,7 @@ If you install a package in a directory that does not have a Pipfile, Pipenv wil
 
         pipenv shell
 
-    This is similar to running `source env/bin/activate` with `pip`.
+    This is similar to running `source env/bin/activate` with `virtualenv`.
 
 2.  Launch the Python interpreter from inside this shell:
 
@@ -126,8 +126,9 @@ If you install a package in a directory that does not have a Pipfile, Pipenv wil
 
         >>> import pytest
         >>> import numpy as np
+        >>> quit()
 
-4.  Exit the shell (similar to deactivating an environment with `pip`):
+4.  Exit the shell (similar to deactivating an environment with `virtualenv`):
 
         exit
 
@@ -159,4 +160,4 @@ pytest==3.5.0
 
 ## Next Steps
 
-For a full list of commands and options, see the Pipenv [Github repo](https://github.com/pypa/pipenv) and [official docs](https://docs.pipenv.org/).
+For a full list of commands and options, see the Pipenv [GitHub repo](https://github.com/pypa/pipenv) and [official docs](https://docs.pipenv.org/).
