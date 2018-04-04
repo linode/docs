@@ -889,6 +889,8 @@ phpmyadmin
 phusion
 pid
 pidfile
+pipfile
+pipenv
 piwik
 pki
 plaintext
@@ -951,8 +953,10 @@ px
 py
 pyamqp
 pyinotify
+pypa
 pypiserver
 pyspark
+pytest
 python3
 pythonic
 qmail
