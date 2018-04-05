@@ -131,11 +131,11 @@ On Red Hat-based distributions, change the `Rewritelog` path to `/var/log/httpd/
 
      - Debian / Ubuntu
 
-           touch /var/log/apache2/rewrite.log
+             touch /var/log/apache2/rewrite.log
 
      - CentOS
 
-           touch /var/log/httpd/rewrite.log
+             touch /var/log/httpd/rewrite.log
 
 ## Configure the Nginx Web Server
 
