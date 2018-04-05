@@ -139,7 +139,7 @@ If you check the NodeBalancer config again, it should report that both nodes are
 
 NodeBalancers can also be configured to use HTTPS. You will need to have a TLS certificate before enabling this option.
 
-1. If you do not have an existing TLS certicate, generate a self-signed certificate using OpenSSL:
+1. If you do not have an existing TLS certificate, generate a self-signed certificate using OpenSSL:
 
         openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out MyCertificate.crt -keyout MyKey.key
 
