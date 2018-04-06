@@ -5,12 +5,12 @@ author:
 description: 'Use Puppet for configuration change management.'
 keywords: ["puppet", "puppet configuration", "puppet linux", "configuration change management", "server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['application-stacks/puppet/automation/']
 modified: 2011-08-22
 modified_by:
   name: Linode
 published: 2010-06-13
-expiryDate: 2017-11-14
+deprecated: true
+deprecated_link: applications/configuration-management/install-and-configure-puppet/
 title: Manage and Automate Systems Configuration with Puppet
 external_resources:
  - '[Puppet Labs Home Page](http://www.puppetlabs.com/)'
