@@ -18,11 +18,15 @@ external_resources:
 
 [NodeBalancers](https://www.linode.com/nodebalancers) can be used to provide high availability load balancing for almost any type of website or service hosted on a Linode. This guide will demonstrate how to use the Linode API to create a NodeBalancer with two back end nodes.
 
-You will need an access token for the Linode API to complete the steps in this guide. The easiest way to get an access token is by visiting the beta [Linode Manager](https://cloud.linode.com/profile/tokens); for more information, as well as a basic introduction to using the Linode API, see our guide on [Getting Started with the Linode API](/docs/platform/api/getting-started-linode-api).
+You will need a Personal Access Token for the Linode API to complete the steps in this guide. The easiest way to get an access token is by visiting the beta [Linode Manager](https://cloud.linode.com/profile/tokens); for more information, as well as a basic introduction to using the Linode API, see our guide on [Getting Started with the Linode API](/docs/platform/api/getting-started-linode-api).
 
 ## Create a NodeBalancer
 
-1.  Using a text editor, create a file to store configuration options:
+1.  Store your Personal Access Token as a shell variable:
+
+        export TOKEN=<token-string>
+
+2.  Using a text editor, create a file to store configuration options:
 
     {{< file "nodebalancer.json" json >}}
 {
@@ -32,18 +36,18 @@ You will need an access token for the Linode API to complete the steps in this g
 }
 {{< /file >}}
 
-2.  Create a NodeBalancer by making a POST request to the `/nodebalancers` endpoint:
+3.  Create a NodeBalancer by making a POST request to the `/nodebalancers` endpoint:
 
         curl https://api.linode.com/v4/nodebalancers \
         -H "Authorization: Bearer $TOKEN" \
         -H "Content-Type: application/json" \
         -X POST -d @nodebalancer.json
 
-3.  If the NodeBalancer is successfully created, the response will include its ID. Copy the ID to use in subsequent requests.
+4.  If the NodeBalancer is successfully created, the response will include its ID. Copy the ID to use in subsequent requests.
 
 ## Add Configuration
 
-NodeBalancers are created without a configuration profile attached, so you will need to add one.
+NodeBalancers are created without any configuration profiles attached. Each profile configures a single port on the NodeBalancer. Once the port is configured, the NodeBalancer will begin listening for traffic on that port.
 
 1.  Create a new configuration file:
 
@@ -79,7 +83,8 @@ Even with a working configuration profile, the NodeBalancer isn't doing anything
   "region": "us-central",
   "type": "g5-standard-2",
   "image": "linode/debian9",
-  "root_pass": "password"
+  "root_pass": "password",
+  "booted": false
 }
 {{< /file >}}
 
@@ -92,33 +97,58 @@ Even with a working configuration profile, the NodeBalancer isn't doing anything
 
     Make a note of the new Linode's ID.
 
-3.  Add a private IP address to the new Linode:
+
+3.  Add configuration options for adding a private IPv4 address:
+
+    {{< file "ip-address.json" json >}}
+{
+  "type": "ipv4",
+  "public": false,
+  "linode_id": 7449584
+}
+{{< /file >}}
+
+4.  Add a private IP address to the new Linode:
 
         curl https://api.linode.com/v4/networking/ips \
         -H "Authorization: Bearer $TOKEN" \
         -H "Content-Type: application/json" \
-        -X POST -d \
-        '{"type": "ipv4",
-         "public": false,
-         "linode_id": 7449584}'
+        -X POST -d @ip-address.json
+
+
+5.  Boot the Linode:
+
+        curl -X POST https://api.linode.com/v4/linode/instances/$linode-id/boot \
+        -H "Authorization: Bearer $TOKEN"
 
 ### Add Nodes to NodeBalancer
 
-Add the new Linodes to the NodeBalancer's nodes. Substitute the private IP address of each node into the `address` field and give each node a unique label.
+Add the new Linodes to the NodeBalancer's nodes.
 
-    curl https://api.linode.com/v4/nodebalancers/$nodebalancer-id/configs/$config-id/nodes \
-    -H "Authorization: Bearer $TOKEN" \
-    -H "Content-Type: application/json" \
-    -X POST -d \
-    '{"label": "node-1",
-      "address": "$node-private-ip:80"
-      }'
+1.  Add configuration options for adding nodes. Substitute the private IP address of the node into the `address` field and give each node a unique label.
+
+    {{< file "add-node.json" json >}}
+{
+  "label": "node-1",
+  "address": "$node-private-ip:80"
+  }
+{{< /file >}}
+
+2.  Use the `/nodes` endpoint to add a node:
+
+        curl https://api.linode.com/v4/nodebalancers/$nodebalancer-id/configs/$config-id/nodes \
+        -H "Authorization: Bearer $TOKEN" \
+        -H "Content-Type: application/json" \
+        -X POST -d @add-node.json
+
+3.  Repeat this process for each additional node.
 
 ## Check Node Status
 
 Check the status of the two nodes:
 
-    curl https://api.linode.com/v4/nodebalancers/$nodebalancer-id/configs/$config-id -H "Authorization: Bearer $TOKEN"
+    curl https://api.linode.com/v4/nodebalancers/$nodebalancer-id/configs/$config-id \
+    -H "Authorization: Bearer $TOKEN"
 
   {{< output >}}
 . . .
