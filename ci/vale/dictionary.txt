@@ -24,6 +24,7 @@ ansible
 antispam
 ap
 apache2
+api
 appimage
 appletalk
 appserver
@@ -767,6 +768,8 @@ nameservers
 namespace
 namespaces
 nano
+nanode
+natively
 ncurses
 neo
 neomake
