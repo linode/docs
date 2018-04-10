@@ -17,7 +17,7 @@ external_resources:
 
 ## Strings in Python
 
-Strings are one of the most basic data types in Python, used to represent textual data. Almost every application will need to work with strings, and Python's `str` class provides a number of methods to make string manipulation easy.
+Strings are one of the most basic data types in Python, used to represent textual data. Almost every application involves working with strings, and Python's `str` class provides a number of methods to make string manipulation easy.
 
 ## Basic String Operations
 
@@ -36,7 +36,7 @@ Similarly, in single-quoted strings you will need to escape any apostrophes or s
 
     'This is Linode\'s documentation site.'
 
-### Subset a String
+### Subset Strings
 
 Python does not have a Character data type. To access individual characters within a string, use bracket notation. Python strings, like lists, are zero-indexed, so the first character of a string is can be accessed with `[0]`:
 
@@ -53,9 +53,9 @@ This will return all characters starting from the number before the colon (0, or
 'This'
 {{< /output >}}
 
-### Common Operators
+### String Operators
 
-Several basic operators are overridden for the string class, making it possible to add and multiply strings:
+The `+` and `*` operators are overridden for the string class, making it possible to add and multiply strings:
 
     first_name = "Abraham"
     last_name = " Lincoln"
@@ -75,7 +75,7 @@ Multiplication can be used to generate multiple copies of strings:
 
 ## String Methods
 
-Most basic string manipulation tasks can be handled with built-in methods. For example, to convert a string to uppercase letters, use `upper`:
+Many basic string manipulation tasks can be handled with built-in methods. For example, to convert a string to uppercase letters, use `upper`:
 
     'example string'.upper()
 
