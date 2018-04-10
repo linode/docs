@@ -16,6 +16,9 @@ external_resources:
 - '[Redmine Users Guide](https://www.redmine.org/projects/redmine/wiki/Getting_Started)'
 - "[Andrew Hosch's Guide on Redmine](http://www.untrustedconnection.com/2016/04/redmine-passenger-and-nginx-on-ubuntu.html)"
 ---
+
+![How to Install and Configure Redmine on Ubuntu](/docs/assets/redmine/how-to-install-and-configure-redmine-on-ubuntu-smg.jpg)
+
 ## What is Redmine?
 
 Redmine is a project management web app that allows users to manage projects flexibly while offering robust tracking tools and an extensive library of plug-ins. This free and open source solution offers an alternative to paid project management tools and includes support for wikis, forums, calendars, and data visualization tools.
