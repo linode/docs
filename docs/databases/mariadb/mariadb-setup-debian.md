@@ -21,6 +21,8 @@ external_resources:
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
 ---
 
+![How to Set Up MariaDB on Debian 9](/docs/assets/mariadb/how-to-set-up-mariadb-on-debian-smg.jpg/)
+
 ## What is MariaDB?
 
 MariaDB is a drop-in replacement for MySQL. It strives to be the logical choice for database professionals looking for a robust, scalable and reliable SQL Server. This guide will help beginners install and configure MariaDB on Debian 9 (Stretch).
