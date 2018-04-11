@@ -55,7 +55,9 @@ This will return all characters starting from the number before the colon (0, or
 
 ### String Operators
 
-The `+` and `*` operators are overridden for the string class, making it possible to add and multiply strings:
+The `+` and `*` operators are overridden for the string class, making it possible to add and multiply strings. Strings in Python are immutable. They cannot be modified after being created.
+
+Using the add operator to combine strings is called concatenation. The strings for first and last name remain unchanged. Concatenating the two strings returns a new string.
 
     first_name = "Abraham"
     last_name = " Lincoln"
@@ -91,7 +93,7 @@ To remove extra whitespace from the beginning or end of a string, use 'strip':
 'example'
 {{< /output >}}
 
-You can split a string in to a list of substrings with `split`. By default, Python will use a blank space as a delimiter, which is useful for splitting a sentence into individual words:
+Strings can be split into a list of substrings with `split`. By default, Python will use a blank space as a delimiter, which is useful for splitting a sentence into individual words:
 
     'This string has five words'.split()
 
@@ -99,7 +101,7 @@ You can split a string in to a list of substrings with `split`. By default, Pyth
 ['This', 'string', 'has', 'five', 'words']
 {{< /output >}}
 
-You can also specify a different delimiter by passing the character(s) as an argument to `split`:
+Specify a different delimiter by passing the character(s) as an argument to `split`:
 
     'one,two,three,four,five'.split(',')
 
@@ -135,9 +137,9 @@ Prior to Python 3.6, the `str.format()` method was arguably the easiest and most
     string_template = 'My name is {0} and I am {1} years old.'
     string_template.format(name, age)
 
-Here, the `format` method is called on the `string_template` object. It takes as arguments a comma-separated list of variables to insert into the string calling the method. The variables will be substituted into the bracketed portions of the string. The first argument (`name` is argument zero, since Python lists are zero-indexed) is substituted into the string in place of `{0}`, and `age` is substituted for `{1}`. Any number of substitutions can be made in this way.
+The `format` method is called on the `string_template` object. `format` takes as arguments a comma-separated list of variables to insert into the string calling the method. The variables will be substituted into the bracketed portions of the string. The first argument (`name` is argument zero, since Python lists are zero-indexed) is substituted into the string in place of `{0}`, and `age` is substituted for `{1}`. Any number of substitutions can be made in this way.
 
-Since variables are usually passed to `format` in the order in which they are to be used, it is possible to omit numbers between the brackets. Python will substitute the variables in the order in which they are passed to `format`:
+If numbers between the brackets are omitted, Python will substitute the variables in the order in which they are passed to `format`:
 
     snack, hobby = "avocado", "tail recursion"
     string_template = 'My name is {} and I am {} years old. I enjoy {} and {}.'
@@ -155,7 +157,7 @@ This syntax is often shortened by combining the string declaration and `str.form
 'My name is Alice and I am 26 years old. I enjoy avocado and tail recursion.'
 {{< /output >}}
 
-Finally, remember that a variable is just one type of expression in Python, and that other expressions can usually be used in place of a variable. This is true when formatting strings, where arbitrary expressions can be passed to `str.format`:
+Finally, recall that a variable is just one type of expression in Python, and other expressions can usually be used in place of a variable. This is true when formatting strings, where arbitrary expressions can be passed to `str.format`:
 
     fahrenheit = 54
     'The temperature is {} degrees F ({} degrees C).'.format(fahrenheit, int((fahrenheit - 32) * (5/9.0)))
@@ -171,7 +173,7 @@ Python 3.6 introduced a simpler way to format strings: formatted string literals
 'This Linode has 4GB of RAM, and is located in the us-east region.'
 {{< /output >}}
 
-The `f` at the beginning of the above string designates it as an f-string (hence the name). Otherwise, the syntax is similar to the `str.format()` method. The main difference is that variable names can be placed directly inside the string itself (enclosed in brackets), rather than in a function call following the string. This makes f-strings more compact and readable.
+The `f` at the beginning of the above string designates it as an f-string. The syntax is similar to the `str.format()` method. Variable names can be placed directly inside the string itself enclosed in brackets rather than in a function call following the string. This makes f-strings more compact and readable.
 
 Any Python expression can be placed inside the brackets in an f-string, giving them even more flexibility:
 
