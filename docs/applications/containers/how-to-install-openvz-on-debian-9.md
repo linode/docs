@@ -308,7 +308,7 @@ VE_LAYOUT=simfs
 
     - Give your virtual environment an IP address. The recommended format is 192.168.0.[CTID]. In this case it would be 192.168.0.101.
     - Provide a nameserver. Google's nameserver (8.8.8.8) should be sufficient.
-    - If you have trouble booting into your virtual environment, you may try changing **VE_LAYOUT** back to "ploop" from "simfs."
+    - If you have trouble booting into your virtual environment, you may try changing **VE_LAYOUT** back to `ploop` from `simfs`.
 
     You may also configure other options at your discretion, such as SWAP and RAM allocation. Save and close when finished.
 
