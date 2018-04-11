@@ -8,6 +8,7 @@ import re
 import subprocess
 import sys
 import time
+import datetime
 
 import frontmatter
 
@@ -28,7 +29,6 @@ BASE_URL = 'http://localhost:1313/docs/'
 TRAILING_WHITESPACE_REGEX = re.compile(r'[\t ]+$')
 MIXED_WHITESPACE_REGEX = re.compile(r'([ \t]*)')
 LINK_REGEX = re.compile(r'\[(.*)\]\((.*)\)')
-
 
 _validate = {'file_yaml': [], 'filepath': [], 'line': []}
 
@@ -69,16 +69,19 @@ def only_allowed_yaml(file_yaml):
 def format_yaml(file_yaml):
     for header, req in requirements.items():
         if header in file_yaml.keys():
-            val = file_yaml[header]
-            if req['type'] == "link":
+            val, type = file_yaml[header], req['type']
+            if type == "link":
                 if not re.search(LINK_REGEX, val):
                     return f"Invalid metadata format: {val}"
-            elif req['type'] == "list":
+            elif type == "list":
                 if not isinstance(val, list):
                     return f"Invalid metadata format: {val} should be a list."
-            elif req['type'] == "bool":
+            elif type == "bool":
                 if not isinstance(val, bool):
                     return f"Invalid metadata format: {val} should be a boolean."
+            elif type == "date":
+                if not isinstance(val, datetime.date):
+                    return f"Invalid metadata format: {val} should be YYYY-MM-DD."
 
 
 
