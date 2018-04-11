@@ -106,7 +106,6 @@ cabd
 cacert
 caddy
 caddyfile
-caker
 cakey
 calc
 captcha
@@ -129,11 +128,9 @@ cheatsheet
 checksummed
 checksums
 chefspec
-chery
 chgrp
 chmod
 chown
-christoph
 chroot
 chrooted
 citad
@@ -427,7 +424,6 @@ grsecurity
 gsa
 gsad
 guacd
-guarisma
 gui
 gunicorn
 gz
@@ -600,11 +596,8 @@ kubelet
 kubelets
 kubernetes
 kubespray
-labelled
 lambdabunker
 laravel
-lastest
-latestet
 lbmethod
 lda
 ldap
@@ -898,7 +891,6 @@ plaintext
 plesk
 plex
 plone
-ploop
 pluggable
 png
 pocketmine
@@ -1097,7 +1089,6 @@ shortguide
 shortguides
 shortname
 shoutcast
-simfs
 sintra
 sitename
 slackpkg
@@ -1229,7 +1220,6 @@ tomacat
 tomcat6
 traceroute
 trackbar
-trafic
 transcoder
 truststore
 tt
