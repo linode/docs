@@ -137,10 +137,13 @@ The LISH console requires certain kernel and GRUB options to be configured in th
 
 ### Configure GRUB
 
-When GRUB detects a partitionless disk, it will warn about the unreliability of blocklists. To force NixOS to ignore the warning and then continue, configure GRUB to use the `forceInstall` option. GRUB will run from the host machine and will read the GRUB file from the disk, so the GRUB on disk will never be used.
+When GRUB detects a partitionless disk, it may warn about the unreliability of blocklists. To force NixOS to ignore the warning and then continue, configure GRUB to use the `forceInstall` option. GRUB will run from the host machine and will read the GRUB file from the disk, so the GRUB on disk will never be used.
 
-Set the timeout for GRUB to be lengthy enough to accommodate LISH connection delays. The following hardware configuration example sets a 10 second timeout:
+The `copyKernels` option is sometimes required for GRUB to successfully boot the new image.
 
+Set the timeout for GRUB to be lengthy enough to accommodate LISH connection delays. The following hardware configuration example sets a 10 second timeout, along with the `copyKernels` option:
+
+    boot.loader.grub.copyKernels = true;
     boot.loader.grub.device = "nodev";
     boot.loader.timeout = 10;
 
