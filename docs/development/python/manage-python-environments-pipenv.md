@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-27
 modified_by:
   name: Linode
-published: 2018-03-27
+published: 2018-05-01
 title: Manage Python Packages and Virtual Environments with Pipenv
 ---
 
