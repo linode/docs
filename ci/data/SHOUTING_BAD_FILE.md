@@ -1,11 +1,11 @@
 ---
-author:
+ruthor:
   name: Linode
   email: docs@linode.com
 description: 'This is an example of really bad markdown.'
 keywords: ['docker','containers','docker hub']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-20
+published: 20179-11-20
 modified: 2017-11-20
 modified_by:
   name: Linode

@@ -27,6 +27,7 @@ BASE_URL = 'http://localhost:1313/docs/'
 
 TRAILING_WHITESPACE_REGEX = re.compile(r'[\t ]+$')
 MIXED_WHITESPACE_REGEX = re.compile(r'([ \t]*)')
+LINK_REGEX = re.compile(r'\[(.*)\]\((.*)\)')
 
 
 _validate = {'file_yaml': [], 'filepath': [], 'line': []}
@@ -54,7 +55,31 @@ with open('ci/yaml_rules.json') as json_data:
 
 @add_rule
 def require_yaml(file_yaml):
-    pass
+    for header, req in requirements.items():
+        if req['required'] and header not in file_yaml:
+            return f"Missing required metadata: {header}"
+
+@add_rule
+def only_allowed_yaml(file_yaml):
+    for header in file_yaml.keys():
+        if header not in requirements.keys():
+            return f"Non-allowed metadata: {header}"
+
+@add_rule
+def format_yaml(file_yaml):
+    for header, req in requirements.items():
+        if header in file_yaml.keys():
+            val = file_yaml[header]
+            if req['type'] == "link":
+                if not re.search(LINK_REGEX, val):
+                    return f"Invalid metadata format: {val}"
+            elif req['type'] == "list":
+                if not isinstance(val, list):
+                    return f"Invalid metadata format: {val} should be a list."
+            elif req['type'] == "bool":
+                if not isinstance(val, bool):
+                    return f"Invalid metadata format: {val} should be a boolean."
+
 
 
 # -----------------------------------------------------------------------------
@@ -190,6 +215,10 @@ class Reporter(object):
     def report_line_error(self):
         pass
 
+    def report_yaml_error(self):
+        for result in self.yaml_errors:
+            print(f"{result}")
+
     def collect_errors(self):
         self.total_errors =  self.get_filepath_error_count() + \
                              self.get_line_error_count() + \
@@ -203,6 +232,7 @@ class Reporter(object):
         print("Total errors: " + str(self.total_errors))
         print("Scanned files: " + str(self.counters['files']))
         self.report_filepath_error()
+        self.report_yaml_error()
 
 class TestManager(object):
     # TODO:
@@ -268,5 +298,3 @@ def _main():
 
 if __name__ == '__main__':
     _main()
-
-
