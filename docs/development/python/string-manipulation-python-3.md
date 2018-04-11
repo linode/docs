@@ -135,7 +135,7 @@ Prior to Python 3.6, the `str.format()` method was arguably the easiest and most
     string_template = 'My name is {0} and I am {1} years old.'
     string_template.format(name, age)
 
-Here, the `format` method is called on the `string_template` object. It takes as arguments a comma-separated list of variables to insert into the string calling the method. The variables will be substituted into the bracked portions of the string. The first argument (`name` is argument zero, since Python lists are zero-indexed) is substituted into the string in place of `{0}`, and `age` is substituted for `{1}`. Any number of substitutions can be made in this way.
+Here, the `format` method is called on the `string_template` object. It takes as arguments a comma-separated list of variables to insert into the string calling the method. The variables will be substituted into the bracketed portions of the string. The first argument (`name` is argument zero, since Python lists are zero-indexed) is substituted into the string in place of `{0}`, and `age` is substituted for `{1}`. Any number of substitutions can be made in this way.
 
 Since variables are usually passed to `format` in the order in which they are to be used, it is possible to omit numbers between the brackets. Python will substitute the variables in the order in which they are passed to `format`:
 
