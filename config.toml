@@ -3,6 +3,8 @@ languageCode = "en-us"
 title = "Linode Guides & Tutorials"
 theme = "docsmith"
 
+contentDir = "docs"
+
 # Highlighting config (Pygments)
 
 # Styles created with hugo gen chromastyles --style=perldoc > assets/stylesheets/_syntax-chroma.css
