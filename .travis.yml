@@ -11,7 +11,7 @@ env:
 
 before_install:
   - if [ $TEST_SUITE == pytest ]; then
-      wget https://github.com/gohugoio/hugo/releases/download/v0.36/hugo_0.36_Linux-64bit.deb;
+      wget https://github.com/gohugoio/hugo/releases/download/v0.38.2/hugo_0.38.2_Linux-64bit.deb;
       sudo dpkg -i hugo*.deb;
       (hugo server &);
     fi
