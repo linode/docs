@@ -21,17 +21,21 @@ external_resources:
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
 ---
 
-Irssi is a popular IRC client. With a flexible plugin architecture and embedded Perl interpreter, it can be customized a great deal beyond the off-the-shelf experience. This guide will demonstrate some of the most useful features, plugins, and customizations to help you get the most out of Irssi.
+Irssi is a popular IRC client with a flexible plugin architecture and an embedded Perl interpreter. It can be customized to greatly improve the off-the-shelf experience. This guide will demonstrate some of the most useful features, plugins, and customizations to help you get the most out of Irssi.
 
 This guide assumes that you are familiar with basic Irssi commands and usage. To review these commands, or for instructions on installing Irssi on your system, see our [Using Irssi for Internet Chat](/docs/applications/messaging/using-irssi-for-internet-relay-chat/) guide.
 
 ## Key Bindings and Aliases
 
-If there is a command that you use frequently, you can bind it to a key. For example, this command binds `/window last` to `Alt-x` or `Esc-x`:
+Frequently used commands can be mapped with key bindings. For example, this command binds `/window last` to `Alt-x` or `Esc-x`:
 
     /bind meta-x /window last
 
-This will create a key binding for `meta-x` (depending on your terminal emulation, this may be `Alt-x` or `Esc-x`) that runs the command `/window last`. Henceforth, when you press `Alt-m-x`, the focus of your Irssi session will toggle between your two most recent windows. If you would like to specify bindings for `Control-` combinations, use `^X` or `^v`, where `X` and `v` are the keys to be bound (`C-X` or `C-v` in emacs-style notation). Note that key bindings are case sensitive.
+This will create a key binding for `meta-x` (depending on your terminal emulation, this may be `Alt-x` or `Esc-x`) that runs the command `/window last`. When you press `Alt-m-x`, the focus of your Irssi session will toggle between your two most recent windows. If you would like to specify bindings for `Control-` combinations, use `^X` or `^v`, where `X` and `v` are the keys to be bound (`C-X` or `C-v` in emacs-style notation).
+
+{{< note >}}
+key bindings are case sensitive.
+{{< /note >}}
 
 Alternatively, you may want to create an **alias**:
 
@@ -49,19 +53,21 @@ When you use `/cs` or `/ns`, it will be as if you had typed `/msg chanserv` or `
 
 ## Save State
 
-Unless you explicitly save your configuration, every modification that you make to your Irssi session will be lost when you exit Irssi. To avoid this, you can save all current configuration modifications to your `~/.irssi/config` file:
+Unless your configuration is explicitly saved, modifications to your Irssi session will be lost when you exit Irssi. To avoid this, you can save all current configuration modifications to your `~/.irssi/config` file:
 
     /save
 
-You may also want to run `/layout save` to save the arrangement of windows so that when you start Irssi again, you do not have to rearrange all of the channels that you have set to automatically join. Additionally, you may want to create the following `ADDALLCHAN` alias to save all of your current channels:
+You may also want to run `/layout save` to save the arrangement of windows so that when you start Irssi again, you do not have to rearrange all of the channels that you have set to automatically join.
+
+Additionally, you may want to create the following `ADDALLCHAN` alias to save all of your current channels:
 
     /alias ADDALLCHAN script exec foreach my \$channel (Irssi::channels()) { Irssi::command("channel add -auto \$channel->{name} \$channel->{server}->{tag} \$channel->{key}")\;}
 
-The `/ADDALLCHAN` command saves all of the channels that you are currently joined to and automatically joins them the next time you run Irssi.
+The `/ADDALLCHAN` command saves all of your currently joined channels and automatically joins them the next time you run Irssi.
 
 ## Use Plugins
 
-There are many plugins for Irssi. To find scripts, check the [Irssi script repository](http://scripts.irssi.org/). Use these commands for managing scripts:
+There are many plugins for Irssi. Check the [Irssi script repository](http://scripts.irssi.org/) to find scripts. Use these commands for managing scripts:
 
 -   `/script` displays a list of all loaded scripts and full paths to their source files
 -   `/script load [script]` loads the specified script. Irssi expects all scripts to be located in the `~/.irssi/scripts/` directory. If you have stored a script in a subdirectory of `~/.irssi/scripts/`, you need to specify that in the load command. Scripts placed in the `~/.irssi/scripts/autorun/` directory are loaded when Irssi starts.
@@ -94,7 +100,7 @@ From within Irssi, load these plugins:
     /script load autorun/screen_away.pl
     /script load autorun/highlite.pl
 
-If you would like to install but not auto-load the scripts, use `cd ~/.irssi/scripts/` before starting your wget commands. That way, they'll end up in the main `scripts` directory, not the `autorun` directory. To load these scripts in Irssi:
+To install but not auto-load the scripts, use `cd ~/.irssi/scripts/` before starting your wget commands. They'll end up in the main `scripts` directory, not the `autorun` directory. To load these scripts in Irssi:
 
     /script load trackbar.pl
     /script load go.pl
