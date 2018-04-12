@@ -4,7 +4,7 @@ author:
   name: Jed Smith
   email: docs@linode.com
 description: DirectAdmin
-keywords: directadmin
+keywords: ['directadmin']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-applications/control-panels/directadmin/']
 modified: 2013-10-03
