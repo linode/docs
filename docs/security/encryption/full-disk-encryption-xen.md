@@ -4,7 +4,7 @@ author:
   name: Quintin Riis
   email: docs@linode.com
 description: Full Disk Encryption.
-keywords: full disk encryption debian wheezy security cryptsetup
+keywords: ['full disk encryption', 'debian', 'wheezy', 'security', 'cryptsetup']
 aliases: ['security/full-disk-encryption-xen/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-06-19
