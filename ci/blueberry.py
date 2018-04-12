@@ -91,24 +91,25 @@ def format_yaml(file_yaml, **kwargs):
                            f"Invalid metadata format: {val} should be a boolean."
             elif type == "date":
                 if not isinstance(val, datetime.date):
-                    return f"Invalid metadata format: {val} should be YYYY-MM-DD."
+                    return filename, \
+                           f"Invalid metadata format: {val} should be YYYY-MM-DD."
 
 @add_rule
-def valid_alias(file_yaml):
+def valid_alias(file_yaml, **kwargs):
     if 'aliases' in file_yaml:
         if 'deprecated' not in file_yaml or file_yaml['deprecated'] is False:
+            errors = []
             for alias in file_yaml['aliases']:
-                errors = []
                 if alias != alias.lower():
                     errors.append(f"{alias} should be lowercase.")
                 if not alias.endswith('/'):
                     errors.append(f"{alias} should end with a slash (/).")
                 if re.search('_', alias):
                     errors.append(f"{alias} should use dashes instead of underscores.")
-            if len(errors) == 0:
+            if not errors:
                 return None
             else:
-                return '\n'.join(errors)
+                return str(kwargs.get('filename')), '\n'.join(errors)
 
 
 # -----------------------------------------------------------------------------

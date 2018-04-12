@@ -1,5 +1,8 @@
 [
   "ci/test_frontmatter.py::test_required_yaml",
   "ci/test_frontmatter.py::test_only_allowed_yaml",
-  "ci/test_frontmatter.py::test_valid_alias"
+  "ci/test_frontmatter.py::test_valid_alias",
+  "ci/test_frontmatter.py::test_uppercase_alias",
+  "ci/test_frontmatter.py::test_underscore_alias",
+  "ci/test_frontmatter.py::test_alias_trailing_slash"
 ]
