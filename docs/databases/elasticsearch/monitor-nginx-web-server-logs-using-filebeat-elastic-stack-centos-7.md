@@ -9,7 +9,7 @@ description: 'This guide will demonstrate how to use Elasticsearch, Filebeat, Me
 og_description: 'The Elastic Stack provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install four components of the stack - Filebeat, Metricbeat, Elasticsearch, and Kibana - to monitor a typical NGINX webserver.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
-keywords: 'nginx centos 7,linux web server,elasticsearch,filebeat,metricbeat,beats,kibana,elk stack,elastic stack'
+keywords: ['nginx centos 7','elasticsearch','filebeat','metricbeat','beats','kibana','elk stack','elastic stack']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-13
 modified: 2017-12-13
