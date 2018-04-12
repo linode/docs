@@ -27,6 +27,7 @@ from pathlib import Path
 
 REPORT_KEYS = ['files', 'excluded_files', 'directories']
 BASE_URL = 'http://localhost:1313/docs/'
+OPTIONAL_PARAMS = ['args', 'kwargs']
 
 TRAILING_WHITESPACE_REGEX = re.compile(r'[\t ]+$')
 MIXED_WHITESPACE_REGEX = re.compile(r'([ \t]*)')
@@ -43,9 +44,10 @@ def add_rule(function):
     if inspect.isfunction(function):
         sig = inspect.signature(function)
         for p in sig.parameters.values():
-            intersect = list(_validate.keys() & {p.name})
-            if len(intersect) != 0:
-                _validate[intersect[0]].append(function)
+            if p.name not in OPTIONAL_PARAMS:
+                intersect = list(_validate.keys() & {p.name})
+                if len(intersect) != 0:
+                    _validate[intersect[0]].append(function)
     return function
 
 
@@ -56,31 +58,37 @@ with open('ci/yaml_rules.json') as json_data:
     requirements = json.load(json_data)
 
 @add_rule
-def require_yaml(file_yaml):
+def require_yaml(file_yaml, **kwargs):
     for header, req in requirements.items():
         if req['required'] and header not in file_yaml:
-            return f"Missing required metadata: {header}"
+            return str(kwargs.get('filename')), \
+            f"Missing required metadata: {header}"
 
 @add_rule
-def only_allowed_yaml(file_yaml):
+def only_allowed_yaml(file_yaml, **kwargs):
     for header in file_yaml.keys():
         if header not in requirements.keys():
-            return f"Non-allowed metadata: {header}"
+            return str(kwargs.get('filename')), \
+            f"Non-allowed metadata: {header}"
 
 @add_rule
-def format_yaml(file_yaml):
+def format_yaml(file_yaml, **kwargs):
+    filename = str(kwargs.get('filename'))
     for header, req in requirements.items():
         if header in file_yaml.keys():
             val, type = file_yaml[header], req['type']
             if type == "link":
                 if not re.search(LINK_REGEX, val):
-                    return f"Invalid metadata format: {val}"
+                    return filename, \
+                    f"Invalid metadata format: {val}"
             elif type == "list":
                 if not isinstance(val, list):
-                    return f"Invalid metadata format: {val} should be a list."
+                    return filename, \
+                           f"Invalid metadata format: {val} should be a list."
             elif type == "bool":
                 if not isinstance(val, bool):
-                    return f"Invalid metadata format: {val} should be a boolean."
+                    return filename, \
+                           f"Invalid metadata format: {val} should be a boolean."
             elif type == "date":
                 if not isinstance(val, datetime.date):
                     return f"Invalid metadata format: {val} should be YYYY-MM-DD."
@@ -237,8 +245,8 @@ class Reporter(object):
         pass
 
     def report_yaml_error(self):
-        for result in self.yaml_errors:
-            print(f"{result}")
+        for filepath, result in self.yaml_errors:
+            print(f"{filepath} - {result}")
 
     def collect_errors(self):
         self.total_errors =  self.get_filepath_error_count() + \
@@ -273,7 +281,7 @@ class TestManager(object):
     def print_report(self):
         self._reporter.report()
 
-    def _function_mapper(self, obj):
+    def _function_mapper(self, obj, **kwargs):
         """Maps an iterable of functions on an object."""
         if type(obj) is list:
             for line in obj:
@@ -281,7 +289,7 @@ class TestManager(object):
                 self._reporter.line += 1
                 # self._reporter.line_errors += filter(None, res)
         elif type(obj) is dict:
-            res = map(methodcaller('__call__', obj), _validate['file_yaml'])
+            res = map(methodcaller('__call__', obj, **kwargs), _validate['file_yaml'])
             self._reporter.yaml_errors += filter(None, res)
         else:
             # Must be a filepath
@@ -299,7 +307,7 @@ class TestManager(object):
             lines, front_matter = (readfile(filepath, section=s)
                                     for s in ('content', 'metadata'))
             for _ in filepath, lines, front_matter:
-                self._function_mapper(_)
+                self._function_mapper(_, **self._reporter.__dict__)
             self._reporter.collect_errors()
         pass
 
