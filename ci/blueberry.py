@@ -9,13 +9,15 @@ import subprocess
 import sys
 import time
 import datetime
+import urllib.request
+from urllib.error import HTTPError, URLError
+from conftest import file_io, LOCALHOST
 
 import frontmatter
 
 from contextlib import ContextDecorator
 from operator import methodcaller
 from pathlib import Path
-
 
 # TODO:
 # Add flake8 to requirements and lint this file
@@ -83,6 +85,22 @@ def format_yaml(file_yaml):
                 if not isinstance(val, datetime.date):
                     return f"Invalid metadata format: {val} should be YYYY-MM-DD."
 
+@add_rule
+def valid_alias(file_yaml):
+    if 'aliases' in file_yaml:
+        if 'deprecated' not in file_yaml or file_yaml['deprecated'] is False:
+            for alias in file_yaml['aliases']:
+                errors = []
+                if alias != alias.lower():
+                    errors.append(f"{alias} should be lowercase.")
+                if not alias.endswith('/'):
+                    errors.append(f"{alias} should end with a slash (/).")
+                if re.search('_', alias):
+                    errors.append(f"{alias} should use dashes instead of underscores.")
+            if len(errors) == 0:
+                return None
+            else:
+                return '\n'.join(errors)
 
 
 # -----------------------------------------------------------------------------

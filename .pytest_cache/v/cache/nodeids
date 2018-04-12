@@ -1,0 +1,5 @@
+[
+  "ci/test_frontmatter.py::test_required_yaml",
+  "ci/test_frontmatter.py::test_only_allowed_yaml",
+  "ci/test_frontmatter.py::test_valid_alias"
+]
