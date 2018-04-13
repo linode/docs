@@ -59,6 +59,7 @@ with open('ci/yaml_rules.json') as json_data:
 
 @add_rule
 def require_yaml(file_yaml, **kwargs):
+    """Ensure all required headers are present."""
     for header, req in requirements.items():
         if req['required'] and header not in file_yaml:
             return str(kwargs.get('filename')), \
@@ -66,6 +67,7 @@ def require_yaml(file_yaml, **kwargs):
 
 @add_rule
 def only_allowed_yaml(file_yaml, **kwargs):
+    """Misspelled/incorrect/non-allowed metadata headers."""
     for header in file_yaml.keys():
         if header not in requirements.keys():
             return str(kwargs.get('filename')), \
@@ -73,6 +75,10 @@ def only_allowed_yaml(file_yaml, **kwargs):
 
 @add_rule
 def format_yaml(file_yaml, **kwargs):
+    """
+    Uses yaml_rules.json to ensure metadata
+    headers are of the correct type/format.
+    """
     filename = str(kwargs.get('filename'))
     for header, req in requirements.items():
         if header in file_yaml.keys():
@@ -96,6 +102,7 @@ def format_yaml(file_yaml, **kwargs):
 
 @add_rule
 def valid_alias(file_yaml, **kwargs):
+    """Check formatting of aliases."""
     if 'aliases' in file_yaml:
         if 'deprecated' not in file_yaml or file_yaml['deprecated'] is False:
             errors = []
@@ -160,6 +167,18 @@ def mixed_whitespace(line):
         if has_tabs:
             return pos, "Use four spaces instead of tabs."
 
+@add_rule
+def href_404(line, internal=True):
+    """
+    Checks links for 404 errors.
+    By default, only checks internal links (/docs/...)
+    Pass internal=False to scan external links.
+    NOTE: Hugo server must be running locally or this test will fail.
+    """
+    match = re.search(LINK_REGEX, line)
+    if match:
+        link = match.group(1)
+        print()
 
 # -----------------------------------------------------------------------------
 # Misc checks independent of files
