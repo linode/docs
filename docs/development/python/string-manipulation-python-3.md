@@ -6,8 +6,8 @@ description: 'Strings are one of the most commonly used data types in Python. Th
 og_description: 'Strings are one of the most commonly used data types in Python. This guide will show how to create, manipulate, and format strings using Python 3.'
 keywords: ["python", "string", "f string", "format string", "python 3"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-04-09
-modified: 2018-04-09
+published: 2018-04-13
+modified: 2018-04-13
 modified_by:
   name: Linode
 title: 'String Manipulation in Python 3'
@@ -38,7 +38,7 @@ Similarly, in single-quoted strings you will need to escape any apostrophes or s
 
 ### Subset Strings
 
-Python does not have a Character data type. To access individual characters within a string, use bracket notation. Python strings, like lists, are zero-indexed, so the first character of a string is can be accessed with `[0]`:
+Python does not have a Character data type. To access individual characters within a string, use bracket notation. Like lists, Python strings are zero-indexed, so the first character of a string can be accessed with `[0]`:
 
     string_3 = "This is a string."
     first_letter = string_3[0]
@@ -47,7 +47,7 @@ To access a range of letters from a larger string, use slicing:
 
     string_3[0:4]
 
-This will return all characters starting from the number before the colon (0, or the first character) up to but not including the index after the colon (4); in this case, the first four letters of the string are returned:
+This will return all characters starting from the number before the colon (0, or the first character) up to but not including the index after the colon (4). In this case, the first four letters of the string are returned:
 
   {{< output >}}
 'This'
@@ -57,7 +57,7 @@ This will return all characters starting from the number before the colon (0, or
 
 The `+` and `*` operators are overridden for the string class, making it possible to add and multiply strings. Strings in Python are immutable. They cannot be modified after being created.
 
-Using the add operator to combine strings is called concatenation. The strings for first and last name remain unchanged. Concatenating the two strings returns a new string.
+Using the `add` operator to combine strings is called concatenation. The strings for first and last name remain unchanged. Concatenating the two strings returns a new string.
 
     first_name = "Abraham"
     last_name = " Lincoln"
@@ -85,7 +85,7 @@ Many basic string manipulation tasks can be handled with built-in methods. For e
 EXAMPLE STRING
 {{< /output >}}
 
-To remove extra whitespace from the beginning or end of a string, use 'strip':
+To remove extra whitespace from the beginning or end of a string, use `strip`:
 
     'example '.strip()
 
