@@ -106,10 +106,10 @@ def valid_alias(file_yaml, **kwargs):
                     errors.append(f"{alias} should end with a slash (/).")
                 if re.search('_', alias):
                     errors.append(f"{alias} should use dashes instead of underscores.")
-            if not errors:
-                return None
-            else:
+            if errors:
                 return str(kwargs.get('filename')), '\n'.join(errors)
+            else:
+                return None
 
 
 # -----------------------------------------------------------------------------

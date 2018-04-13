@@ -8,8 +8,15 @@ def test_required_yaml():
         yaml = frontmatter.loads(f.read()).metadata
     assert require_yaml(yaml) == None
 
-def test_only_allowed_yaml():
-    pass
+def test_missing_yaml_header():
+    with open('ci/data/missing_yaml_header.md','r') as f:
+        yaml = frontmatter.loads(f.read()).metadata
+    assert require_yaml(yaml)[1] == "Missing required metadata: published"
+
+def test_extra_yaml_header():
+    with open('ci/data/extra_yaml_header.md','r') as f:
+        yaml = frontmatter.loads(f.read()).metadata
+    assert only_allowed_yaml(yaml)[1] == "Non-allowed metadata: fake_header"
 
 def test_valid_alias():
     with open('ci/data/goodfile.md', 'r') as f:
