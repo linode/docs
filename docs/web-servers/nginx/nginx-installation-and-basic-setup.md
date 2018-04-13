@@ -150,7 +150,7 @@ server {
     listen         80;
     server_name    example1.com;
     gzip           on;
-    gzip           types text/html text/css image/jpg image/jpeg image/png image/svg;
+    gzip_types text/html text/css image/jpg image/jpeg image/png image/svg;
 }
 {{< /file >}}
 
