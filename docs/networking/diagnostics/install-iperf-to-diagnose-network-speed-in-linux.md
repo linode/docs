@@ -3,46 +3,40 @@ author:
   name: Dave R.
   email: docs@linode.com
 description: 'This tutorial will teach you how to install iPerf, and use its common commands and basic configuration to diagnose your network speed.'
-keywords: ["networking", "diagnostic", "speed", "iperf"]
+keywords: ["diagnostics", "iperf"]
 aliases: ['networking/diagnostics/diagnosing-network-speed-with-iperf/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-02-28
+modified: 2016-04-16
 modified_by:
-  name: Nick Brewer
+  name: Linode
 published: 2015-01-12
-title: Install iPerf to Diagnose Network Speed in Linux
-external_resources:
-  - '[iPerf Official Website](https://iperf.fr)'
+title: Network Throughput Testing with iPerf
 ---
-
-Linux systems administrators and network administrators often find diagnosing network speed degradation complicated, as there are very few tools available to diagnose these issues. iPerf is a command-line tool used in the diagnostics of network speed issues.
 
 ![Install iPerf to Diagnose Network Speed in Linux](/docs/assets/diagnosing-network-speed-with-iperf.png "Install iPerf to Diagnose Network Speed in Linux")
 
-iPerf measures the maximum network throughput a server can handle. It is particularly useful when experiencing network speed issues, as you can use iPerf to determine which server is unable to reach maximum throughput.
+[iPerf](https://iperf.fr) is a command-line tool used in diagnosing network speed issues by measuring the maximum network throughput a server can handle. It is particularly useful when experiencing network speed issues, as you can use iPerf to determine which server is unable to reach maximum throughput.
+
+## Before You Begin
+
+- You will need root access to your Linode, or a user account with `sudo` privilege.
+- Update your system.
 
 ## Install iPerf
 
-{{< note >}}
-The installation section assumes that you are the `root` user. If you are not using the super user, you will need to use `sudo` before each command.
-{{< /note >}}
+You'll find the `iperf` package in most Linux distribution's repositories.
 
 ### Debian and Ubuntu
 
-You can use `apt-get` to install iPerf on Debian and Ubuntu:
+You can use `apt` to install iPerf on Debian and Ubuntu:
 
     apt-get install iperf
 
-### Fedora/CentOS
+### CentOS
 
-**For CentOS**
-
-CentOS repositories do not have iPerf by default. Use the [EPEL](https://fedoraproject.org/wiki/EPEL) repository, which is a repository used to install third-party software packages on RedHat systems such as RHEL and CentOS:
+CentOS repositories do not have iPerf. Use the [EPEL](https://fedoraproject.org/wiki/EPEL) repository, which is a repository used to install third-party software packages on RedHat systems such as RHEL and CentOS:
 
     yum install epel-release
-
-**For Both**
-
     yum update
     yum install iperf
 
@@ -64,11 +58,13 @@ Use Portage to install iPerf on your Gentoo instance:
 
     emerge iperf
 
-If you have not yet run `emerge --sync` you may need to do so before it will allow you to install the iPerf package. Additionally, by default you will need to substitute each `iperf` command with `/usr/bin/iperf3`. This path may differ dependent on your iPerf version.
+If you have not yet run `emaint --sync` you may need to do so before it will allow you to install the iPerf package. Additionally, by default you will need to substitute each `iperf` command with `/usr/bin/iperf3`. This path may differ dependent on your iPerf version.
 
 ## How to Use iPerf
 
-iPerf must be installed on both computers between which you are testing the connection. If you are using a Unix or Linux-based operating system on your personal computer, you may be able to install iPerf on your local machine. If you are testing the throughput of your Linode, however, it's better to use another server as the end point, as your local ISP may impose network restrictions that can affect the results of your test.
+iPerf must be installed on the computers at both ends of the connection you're testing. If you are using a Unix or Linux-based operating system on your personal computer, you can install iPerf on your local machine.
+
+If you are testing the throughput of your Linode, however, it's better to use another server as the end point, as your local ISP may impose network restrictions that can affect the results of your test.
 
 ### TCP Clients & Servers
 

@@ -12,21 +12,20 @@ modified_by:
 published: 2010-04-28
 title: Diagnosing Network Issues with MTR
 external_resources:
- - '[The Official MTR Web Site](http://www.bitwizard.nl/mtr/)'
  - '[Understanding the Traceroute Command - Cisco Systems](http://www.cisco.com/en/US/products/sw/iosswrel/ps1831/products_tech_note09186a00800a6057.shtml#traceroute)'
  - '[Wikipedia article on traceroute](http://en.wikipedia.org/wiki/Trace_route)'
  - '[Traceroute by Exit109.com](http://www.exit109.com/~jeremy/news/providers/traceroute.html)'
 ---
 
-MTR is a powerful network diagnostic tool that enables administrators to diagnose and isolate networking errors and provide helpful reports of network status to upstream providers. MTR represents an evolution of the `traceroute` command by providing a greater data sample, as if augmenting `traceroute` with `ping` output. This document provides an in depth overview of MTR, the data it generates, and how to properly interpret and draw conclusions based on the data provided by it.
-
 ![Diagnosing Network Issues with MTR](/docs/assets/diagnosing-network-issues-with-mtr.png)
 
-For a basic overview of network diagnostic techniques consider our introduction to [network diagnostics](/docs/using-linux/administration-basics#network-diagnostics). If you suspect that you're having some other issue with your system, you may consider our overview of general [system diagnostics](/docs/using-linux/administration-basics#system-diagnostics). As a matter of course, it is assumed that all Linode deployments will have completed our [getting started guide](/docs/getting-started/) prior to beginning with this document.
+[MTR](http://www.bitwizard.nl/mtr/) is a powerful tool which enables administrators to diagnose and isolate networking errors and provide reports of network status to upstream providers. MTR represents an evolution of the `traceroute` command by providing a greater data sample, as if augmenting `traceroute` with `ping` output. This document provides an in depth overview of MTR, the data it generates, and how to properly interpret and draw conclusions based on the data provided by it.
+
+For a basic overview of network diagnostic techniques consider our introduction to [network diagnostics](/docs/using-linux/administration-basics#network-diagnostics). If you suspect that you're having some other issue with your system, consider our overview of general [system diagnostics](/docs/using-linux/administration-basics#system-diagnostics). As a matter of course, it is assumed you have completed our [Getting Started guide](/docs/getting-started/) prior to beginning with this document.
 
 ## Network Diagnostics Background
 
-Networking diagnostic tools including `ping`, `traceroute`, and `mtr` use "ICMP" packets to test contention and traffic between two points on the Internet. When a user pings a host on the Internet, a series of ICMP packets are sent to the host, which responds by sending packets in return. The user's client is then able to compute the round trip time between two points on the Internet.
+Networking diagnostic tools including `ping`, `traceroute`, and `mtr` use ICMP packets to test contention and traffic between two points on the Internet. When a user pings a host on the Internet, a series of ICMP packets are sent to the host, which responds by sending packets in return. The user's client is then able to compute the round trip time between two points on the Internet.
 
 By contrast, tools such as traceroute and MTR send ICMP packets with incrementally increasing TTLs in order to view the route or series of hops that the packet makes between the origin and its destination. The TTL, or time to live, controls how many "hops" a packet will make before "dying" and returning to the host. By sending a series of packets and causing them to die and return after one hop, then two, then three, the client machine is able to assemble the route that traffic takes between hosts on the Internet.
 
@@ -41,23 +40,18 @@ On Debian and Ubuntu systems, issue the following commands to ensure that your s
     apt-get upgrade
     apt-get install mtr-tiny
 
-On CentOS and Fedora systems you will want to issue the following commands to update repositories, upgrade installed packages, and install the MTR program:
+On CentOS systems you will want to issue the following commands to update repositories, upgrade installed packages, and install the MTR program:
 
     yum update
     yum install mtr
-
-On Arch Linux systems issue the following commands to update the package database and install MTR:
-
-    pacman -Syu
-    pacman -S mtr
 
 You may also want to use MTR to diagnose networking issues from your local workstation. If you're running a Linux system, you can install MTR using the commands above.
 
 ### Installing on Windows
 For Windows there is a port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](http://winmtr.net).
 
-### Installing on Mac OS X
-If you're running a Mac OS X workstation, you may install MTR with either [Homebrew](http://brew.sh/), or [MacPorts](http://www.macports.org/). To install MTR with Homebrew, run:
+### Installing on MacOS
+If you're running a Mac workstation, install MTR with either [Homebrew](http://brew.sh/) or [MacPorts](http://www.macports.org/). To install MTR with Homebrew, run:
 
     brew install mtr
 
@@ -69,13 +63,13 @@ To install MTR with MacPorts, run:
 
 Because MTR provides an image of the route traffic takes from one host to another, you can think of it as a directional tool. Furthermore, the route taken between two points on the Internet can vary a great deal based on location and the routers that are located upstream of you. For this reason it is often recommended that you collect MTR reports in *both* directions for all hosts that are experiencing connectivity issues, or as many hosts as possible.
 
-Linode support will often request "mtr reports" both **to** and **from** your Linode if you are experiencing networking issues. This is because, from time to time, MTR reports will not point to errors from one direction when there is still packet loss from the opposite direction. Having both reports is helpful as it can aid in the identification of issues and will be needed if a problem must be reported.
+Linode support will often request MTR reports both **to** and **from** your Linode if you are experiencing networking issues. This is because, from time to time, MTR reports will not point to errors from one direction when there is still packet loss from the opposite direction. Having both reports is helpful as it can aid in the identification of issues and will be needed if a problem must be reported.
 
-For the sake of clarity, when referring to MTR reports this document refers to the host running `mtr` as the **source host** and the host targeted by the query as the **destination host**.
+For the sake of clarity, when referring to MTR reports, this document refers to the host running `mtr` as the **source host** and the host targeted by the query as the **destination host**.
 
 ### Using MTR on Unix-based Systems
 
-Once installed on Linux or a Mac OS X system, you may generate MTR reports using the following syntax:
+Generate MTR reports using the following syntax:
 
     mtr -rw [destination_host]
 
@@ -83,23 +77,23 @@ For example, to test the route and connection quality of traffic to the destinat
 
     mtr -rw example.com
 
-When contacting Linode Support with an issue that may be networking related, the technician may request MTR reports **both to and from your Linode**. An MTR report **to your Linode** would be run while logged in to your home PC (or other PC at your current location). The command may resemble the following:
+An MTR report **to your Linode** would be run while logged in to your home PC (or other PC at your current location). The command may resemble the following:
 
-    mtr -rw 87.65.43.21
+    mtr -rw 192.0.2.0
 
-Be sure to replace `87.65.43.21` with the IP address of your Linode, which is listed on the "Remote Access" tab of the Linode Manager. At the same time, also collect the MTR report **from your Linode** to your home network. This command may resemble the following:
+Be sure to replace `192.0.2.0` with the IP address of your Linode, which is listed on the "Remote Access" tab of the Linode Manager. At the same time, also collect the MTR report **from your Linode** to your home network. This command may resemble the following:
 
-    mtr -rw 12.34.56.78
+    mtr -rw 198.51.100.0
 
-Replace `12.34.56.78` with the IP address of your home network. If you are unsure of what your home IP address is you may use the first or second host on your outgoing MTR reports (depending on the configuration of your home network). Alternatively, you may use a third party service, such as [WhatIsMyIP.com](http://whatismyip.com/).
+Replace `198.51.100.0` with the IP address of your home network. If you are unsure of what your home IP address is, see [WhatIsMyIP.com](http://whatismyip.com/).
 
-If no packet loss seems to be revealed, a support technician may aske you to run a faster interval:
+If no packet loss seems to be revealed, a support technician may ask you to run a faster interval:
 
-    mtr -rwc 50 -i 0.2 -rw 12.34.56.78
+    mtr -rwc 50 -i 0.2 -rw 198.51.100.0
 
 On some systems, it may require administrative privileges to run when using this flag:
 
-    sudo mtr -rwc 50 -i 0.2 -rw 12.34.56.78
+    sudo mtr -rwc 50 -i 0.2 -rw 198.51.100.0
 
 {{< note >}}
 The flags we are using above (`rwc [x] -i [y]`) are useful to our support technicians when contacting support about network-related issues.
@@ -115,7 +109,7 @@ The `i` option flag runs the report at a faster rate to reveal packet loss that 
 
 ### Using MTR on Windows Systems
 
-Running MTR on Windows uses a GUI. Open WinMTR, type the destination host in the box as prompted, and select the start option to begin generating report data. You'll need to use the Linux version of MTR to generate the MTR report from your Linode. Please refer to the Linux section above for assistance.
+Running MTR on Windows uses a GUI. Open WinMTR, type the destination host in the box as prompted, and select the start option to begin generating report data. You'll need to use the Linux version of MTR as shown above to generate the MTR report from your Linode.
 
 ## Reading MTR Reports
 
@@ -138,7 +132,7 @@ Because MTR reports contain a wealth of information, they may be difficult to in
 
 The command issued to generate the report is `mtr --report google.com`. This uses the report option which sends 10 packets to the host `google.com` and generates the output. Without the `--report` option, `mtr` will run continuously in an interactive environment. The interactive mode reflects current round trip times to each host. In most cases, the `--report` mode provides sufficient data in a useful format.
 
-Following the command, MTR generates its output. Typically, MTR reports take a few seconds to generate. Do not be alarmed if it takes a few moments to complete the report. The report is comprised of a series of hops (12 in this case). "Hops" are the nodes, or routers, on the Internet that packets transverse to get to their destination. In the above example, packets travel through the "inner-cake" and "outer-cake" local network devices and then to "68.85.118.13"" followed by a series of named hosts. The names for the hosts are determined by reverse DNS lookups. If you want to omit the rDNS lookups you can use the `--no-dns` option, which would produce output similar to the following:
+Following the command, MTR generates its output. The report is comprised of a series of hops (12 in this case). "Hops" are the nodes, or routers, on the Internet that packets transverse to get to their destination. In the above example, packets travel through the "inner-cake" and "outer-cake" local network devices and then to `68.85.118.13` followed by a series of named hosts. The names for the hosts are determined by reverse DNS lookups. If you want to omit the rDNS lookups you can use the `--no-dns` option, which would produce output similar to the following:
 
     % mtr --no-dns --report google.com
     HOST: deleuze                     Loss%   Snt   Last   Avg  Best  Wrst StDev
@@ -162,7 +156,7 @@ The final column, `StDev`, provides the standard deviation of the latencies to e
 
 In most circumstances, you may think of the MTR output in three major sections. Depending on configurations, the first 2 or 3 hops often represent the source host's ISP, while the last 2 or 3 hops represent the destination host's ISP. The hops in between are the routers the packet traverses to reach its destination.
 
-For example if MTR is run from your home PC to your Linode, the first 2 or 3 hops belong to **your** ISP. The last 3 hops belong to the data center where your Linode resides. Any hops in the middle are intermediate hops. When running MTR locally, if you see an abnormality in the first few hops near the source, contact your local service provider or investigate your local networking configuration. Conversely, if you see abnormalities near the destination you may want to contact the operator of the destination server or network support for that machine (e.g. Linode). Unfortunately, in cases where there are problems on the intermediate hops, both service providers will have limited ability to address those glitches.
+For example, if MTR is run from your home PC to your Linode, the first 2 or 3 hops belong to *your* ISP. The last 3 hops belong to the data center where your Linode resides. Any hops in the middle are intermediate hops. When running MTR locally, if you see an abnormality in the first few hops near the source, contact your local service provider or investigate your local networking configuration. Conversely, if you see abnormalities near the destination you may want to contact the operator of the destination server or network support for that machine (e.g. Linode). Unfortunately, in cases where there are problems on the intermediate hops, both service providers will have limited ability to address those glitches.
 
 ## Analyzing MTR Reports
 
@@ -202,7 +196,7 @@ Additionally, resist the temptation to investigate or report all incidences of p
 
 ### Understanding Network Latency
 
-In addition to helping you assess packet loss, MTR will also help you assess the latency of a connection between your host and the target host. By virtue of physical constraints, latency always increases with the number of hops in a route. However, the increases should be consistent and linear. Unfortunately, latency is often relative and very dependent on the quality of both host's connections and their physical distance. When evaluating MTR reports for potentially problematic connections, consider earlier fully functional reports as context in addition to known connection speeds between other hosts in a given area.
+In addition to helping you assess packet loss, MTR will also help assess the latency of a connection between your host and the target host. By virtue of physical constraints, latency always increases with the number of hops in a route. However, the increases should be consistent and linear. Unfortunately, latency is often relative and very dependent on the quality of both host's connections and their physical distance. When evaluating MTR reports for potentially problematic connections, consider earlier fully functional reports as context in addition to known connection speeds between other hosts in a given area.
 
 The connection quality may also affect the amount of latency you experience for a particular route. Predictably, dial-up connections will have much higher latency than cable modem connections to the same destination. Consider the following MTR report which shows a high latency:
 
