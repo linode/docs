@@ -165,4 +165,4 @@ Ntopng does not replace core security features such as a properly configured fir
 
 Now that you have some basic knowledge of how ntopng is used and some idea of its capabilities, you may want to further explore configurations for your specific situation. You can find detailed information at the [ntopng product page](https://www.ntop.org/products/traffic-analysis/ntop/) of ntop's website.
 
-Also see *[Network Security Using ntoping](http://www.ntop.org/wp-content/uploads/2017/04/NetworkSecurityUsingntopng.pdf)* for a thorough guide on using ntopng to enhance the security of your network.
+Also see *[Network Security Using ntopng](http://www.ntop.org/wp-content/uploads/2017/04/NetworkSecurityUsingntopng.pdf)* for a thorough guide on using ntopng to enhance the security of your network.
