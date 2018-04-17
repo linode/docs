@@ -153,22 +153,25 @@ def lowercase_extension(filepath):
 # Line
 
 @add_rule
-def trailing_whitespace(line):
+def trailing_whitespace(line, **kwargs):
     """Check for extra whitespace at end of lines."""
-    has_trailing = re.search(r'[\t ]+$', line)
+    pos = len(line)
+    has_trailing = re.search(TRAILING_WHITESPACE_REGEX, line)
     if has_trailing:
-        return len(line), "Remove trailing whitespace."
+        return kwargs.get('line_num'), pos, "Remove trailing whitespace."
 
 @add_rule
-def mixed_whitespace(line):
+def mixed_whitespace(line, **kwargs):
     """Detects mixed spaces and tabs."""
     for pos, char in enumerate(MIXED_WHITESPACE_REGEX.match(line).group(1)):
         has_tabs = char != ' '
         if has_tabs:
-            return pos, "Use four spaces instead of tabs."
+            # kwargs.get('line_num') is wrong due to
+            # python-frontmatter stripping excess newlines
+            return line, pos, "Use four spaces instead of tabs."
 
 @add_rule
-def href_404(line, internal=True):
+def href_404(line, internal=True, **kwargs):
     """
     Checks links for 404 errors.
     By default, only checks internal links (/docs/...)
@@ -212,6 +215,7 @@ def readfile(filename, section=None):
             if section == 'content':
                 # TODO:
                 # Check case of \r\n for Windows
+                # WARNING: Removes trailing newlines
                 return post.content.splitlines()
             elif section == 'metadata':
                 # WARNING: Implicitly converts dates to datetime
@@ -230,7 +234,7 @@ class Reporter(object):
         self.start_time = 0
         self.filepath_errors = []
         self.yaml_errors = []
-        self.line_errors = {0: []}
+        self.line_errors = {}
         self._report_keys = REPORT_KEYS
         self.counters = dict.fromkeys(self._report_keys, 0)
 
@@ -246,7 +250,7 @@ class Reporter(object):
     def init_file(self, filename):
         self.filename = filename
         self.file_errors = 0
-        self.line = 0
+        self.total_length = sum(1 for line in open(filename))
 
     def get_filepath_error_count(self):
         return len(self.filepath_errors)
@@ -262,7 +266,10 @@ class Reporter(object):
             print("{1} - {0}".format(*result))
 
     def report_line_error(self):
-        pass
+        for key, values in self.line_errors.items():
+            if len(values) > 0:
+                for v in values:
+                    print(key, "Position: {1} '{0}' - {2}".format(*v))
 
     def report_yaml_error(self):
         for filepath, result in self.yaml_errors:
@@ -282,6 +289,7 @@ class Reporter(object):
         print("Scanned files: " + str(self.counters['files']))
         self.report_filepath_error()
         self.report_yaml_error()
+        self.report_line_error()
 
 class TestManager(object):
     # TODO:
@@ -304,10 +312,13 @@ class TestManager(object):
     def _function_mapper(self, obj, **kwargs):
         """Maps an iterable of functions on an object."""
         if type(obj) is list:
-            for line in obj:
-                res = map(methodcaller('__call__', obj), _validate['line'])
-                self._reporter.line += 1
-                # self._reporter.line_errors += filter(None, res)
+            res = []
+            filename = kwargs.get('filename')
+            if filename not in self._reporter.line_errors:
+                self._reporter.line_errors[filename] = []
+            for idx in range(len(obj)):
+                res += map(methodcaller('__call__', obj[idx], line_num=idx, **kwargs), _validate['line'])
+            self._reporter.line_errors[filename] += filter(None, res)
         elif type(obj) is dict:
             res = map(methodcaller('__call__', obj, **kwargs), _validate['file_yaml'])
             self._reporter.yaml_errors += filter(None, res)
@@ -317,10 +328,6 @@ class TestManager(object):
             self._reporter.filepath_errors += filter(None, res)
 
     def _run(self):
-        # Run tests
-
-        # TODO:
-        # Handle keyboard exception
         for filepath in self.files:
             self._reporter.init_file(filepath)
             self._reporter.counters['files'] += 1
@@ -329,11 +336,13 @@ class TestManager(object):
             for _ in filepath, lines, front_matter:
                 self._function_mapper(_, **self._reporter.__dict__)
             self._reporter.collect_errors()
-        pass
 
     def run(self):
         self._reporter.start()
-        self._run()
+        try:
+            self._run()
+        except KeyboardInterrupt:
+            print("\n...\nManually stopped blueberry.py\n")
         self._reporter.end()
 
 
