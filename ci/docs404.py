@@ -50,9 +50,8 @@ class Docs404Spider(CrawlSpider):
 if __name__ == "__main__":
     import os
     import sys
-    import urllib.request
+    import requests
 
-    from urllib.error import HTTPError
     from blueberry import BASE_URL
 
     process = CrawlerProcess({ 'USER_AGENT': 'docs404',
@@ -64,9 +63,9 @@ if __name__ == "__main__":
     os.remove('temp.csv')
 
     try:
-        urllib.request.urlopen(BASE_URL).getcode()
-    except HTTPError:
-        print('Hugo server not running on port 1313')
+        requests.get(BASE_URL)
+    except requests.exceptions.ConnectionError:
+        print('\n\nHugo server not running on port 1313')
         sys.exit(1)
 
     if sum([1 for line in f]) != 0:

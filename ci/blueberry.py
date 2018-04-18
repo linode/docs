@@ -278,6 +278,7 @@ class Reporter(object):
         self.total_errors =  self.get_filepath_error_count() + \
                              self.get_line_error_count() + \
                              self.get_yaml_error_count()
+        return self.total_errors
 
     def report(self):
         # Print aggregated states for all tests
@@ -307,6 +308,9 @@ class TestManager(object):
 
     def print_report(self):
         self._reporter.report()
+
+    def exit_code(self):
+        return int(self._reporter.collect_errors() > 0)
 
     def _function_mapper(self, obj, **kwargs):
         """Maps an iterable of functions on an object."""
@@ -351,6 +355,7 @@ def _main():
     tm.set_reporter(reporter)
     tm.run()
     tm.print_report()
+    sys.exit(tm.exit_code())
 
 
 if __name__ == '__main__':
