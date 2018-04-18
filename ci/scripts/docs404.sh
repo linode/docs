@@ -1,5 +1,5 @@
 #!/bin/bash
 
 pip install -r ci/requirements.txt
-python ci/blueberry.py
+python ci/docs404.py
 
