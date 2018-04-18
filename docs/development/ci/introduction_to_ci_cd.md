@@ -40,7 +40,7 @@ These principles are taken from [Continuous Delivery](https://www.amazon.com/gp/
 5.  **Build quality in**: by fixing bugs and resolving problems earlier in the process, quality is built in continuously, rather than creating a broken product that requires time-consuming mitigation just before deployment.
 6.  **Done means released**: since every increment in continuous delivery should be releasable (even if it is not actually released), no feature or task can be considered complete unless it can be released to users with the press of a button. In practice, since deployment is easy and cheap, many teams may consider a feature to be done only when it has been released to production.
 7.  **Everyone is responsible**: every time a change is committed to version control, whoever commits the change is responsible for ensuring that the build completes and tests pass. In this way, members of all teams are responsible for keeping the project in a releasable state and preparing it for release.
-8.  **Continuous improvement**: most of the work involved in a product will take place after the initial release, through maintainence, bug fixes, and added features.
+8.  **Continuous improvement**: most of the work involved in a product will take place after the initial release, through maintenance, bug fixes, and added features.
 
 ## Pipelines
 

@@ -548,6 +548,7 @@ itk
 java6
 javac
 javascript
+jez
 jdbc
 jdk
 jenkinsfile
