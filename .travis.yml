@@ -8,6 +8,7 @@ cache:
 env:
   - TEST_SUITE=vale
   - TEST_SUITE=blueberry
+  - TEST_SUITE=docs404
 
 before_install:
   - if [ $TEST_SUITE == pytest ]; then
