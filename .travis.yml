@@ -7,7 +7,6 @@ cache:
 
 env:
   - TEST_SUITE=vale
-  - TEST_SUITE=pytest
   - TEST_SUITE=blueberry
 
 before_install:
