@@ -11,7 +11,6 @@ import time
 import datetime
 import urllib.request
 from urllib.error import HTTPError, URLError
-from conftest import file_io, LOCALHOST
 
 import frontmatter
 
@@ -181,7 +180,7 @@ def href_404(line, internal=True, **kwargs):
     match = re.search(LINK_REGEX, line)
     if match:
         link = match.group(1)
-        print()
+    pass
 
 # -----------------------------------------------------------------------------
 # Misc checks independent of files
