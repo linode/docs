@@ -57,7 +57,7 @@ The [Linode Manager](https://manager.linode.com) is a web-based control panel th
 
 ### Deploy an Image
 
-![How to Deploy an Image](/docs/assets/linode-manager/deploy-an-image.gif "Animation shows how to use the Linode manager to deploy a Linux image.")
+![How to Deploy an Image](/docs/assets/linode-manager/deploy-an-image.gif "Animation shows how to use the Linode Manager to deploy a Linux image.")
 
 Once you've created a new Linode, click the name or **Dashboard** to open the Linode Manager Dashboard.
 
