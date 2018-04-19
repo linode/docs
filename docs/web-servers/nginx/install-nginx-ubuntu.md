@@ -37,7 +37,7 @@ NGINX site-specific configuration files are kept in `/etc/nginx/conf.d/`. Genera
 
         sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
 
-3.  Open your site's configuration file in a text editor. Replace `example.com` in the `server_name` directive with your site's domain name or IP address. If you already have content ready to serve (such as a Wordpress installation or static files) replace the path in the `root` directive with the path to your site's content.
+3.  Open your site's configuration file in a text editor. Replace `example.com` in the `server_name` directive with your site's domain name or IP address. If you already have content ready to serve (such as a WordPress installation or static files) replace the path in the `root` directive with the path to your site's content.
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
