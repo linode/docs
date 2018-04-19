@@ -139,6 +139,8 @@ In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 addre
 
 Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/ssh/ssh-connections-using-putty-on-windows/).
 
+![Copy SSH Command with IP and Log in](/docs/assets/linode-manager/ssh-to-a-linode.gif "Go to the Remote Access tab and copy the SSH command, then paste it into a terminal.")
+
 1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address:
 
         ssh root@123.456.78.90
