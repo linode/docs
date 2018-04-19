@@ -103,16 +103,16 @@ To remove a task you can run the `task <task_number> delete` command.
 
 Using the `due` argument, you can assign a due date for a task:
 
-	task add write Taskwarrior guide for the Linode community due:tomorrow
+    task add write Taskwarrior guide for the Linode community due:tomorrow
 
-	taskwarrior@localhost:~$ task
-	[task next]
+    taskwarrior@localhost:~$ task
+    [task next]
 
-	ID Age   Due Description                                      Urg
- 	 2 11s    7h write Taskwarrior guide for the Linode community 8.65
- 	 1 16min     buy groceries                                       0
+    ID Age   Due Description                                      Urg
+     2 11s    7h write Taskwarrior guide for the Linode community 8.65
+     1 16min     buy groceries                                       0
 
-	2 tasks
+    2 tasks
 
 The `due` [argument](https://taskwarrior.org/docs/dates.html#due) allows a significant breadth for input. Read more about what's possible with the `due` argument at [the official documentation.](https://taskwarrior.org/docs/dates.html)
 
