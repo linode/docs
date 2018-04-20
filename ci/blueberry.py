@@ -31,6 +31,7 @@ OPTIONAL_PARAMS = ['args', 'kwargs']
 TRAILING_WHITESPACE_REGEX = re.compile(r'[\t ]+$')
 MIXED_WHITESPACE_REGEX = re.compile(r'([ \t]*)')
 LINK_REGEX = re.compile(r'\[(.*)\]\((.*)\)')
+INTERNAL_LINK_REGEX = re.compile(r'\[(.*)\]\((/docs/[^")]*)(\".*\")?\)')
 
 _validate = {'file_yaml': [], 'filepath': [], 'line': []}
 
@@ -86,6 +87,9 @@ def format_yaml(file_yaml, **kwargs):
                 if not re.search(LINK_REGEX, val):
                     return filename, \
                     f"Invalid metadata format: {val}"
+                if not val.endswith('/'):
+                    return filename, \
+                    f"Invalid metadata format: {val} should end with a slash (/)"
             elif type == "list":
                 if not isinstance(val, list):
                     return filename, \
@@ -170,17 +174,18 @@ def mixed_whitespace(line, **kwargs):
             return line, pos, "Use four spaces instead of tabs."
 
 @add_rule
-def href_404(line, internal=True, **kwargs):
+def link_format(line, **kwargs):
     """
-    Checks links for 404 errors.
-    By default, only checks internal links (/docs/...)
-    Pass internal=False to scan external links.
-    NOTE: Hugo server must be running locally or this test will fail.
+    Ensures that internal links use underscores (for consistency)
+    and end with a trailing slash (which avoids a redirect).
     """
-    match = re.search(LINK_REGEX, line)
+    match = re.search(INTERNAL_LINK_REGEX, line)
     if match:
-        link = match.group(1)
-    pass
+        link = match.group(2)
+        if not link.endswith('/'):
+            return line, link, "Internal links should end with a slash."
+        if '_' in link:
+            return line, link, "Use hyphens not underscores in link paths."
 
 # -----------------------------------------------------------------------------
 # Misc checks independent of files
