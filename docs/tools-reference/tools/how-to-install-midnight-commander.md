@@ -13,7 +13,7 @@ title: 'How to Use Midnight Commander, a Visual File Manager'
 contributor:
   name: Alexandru Andrei
 external_resources:
-- '[Midnight Commander](https://midnight-commander.org/)'
+ - '[Midnight Commander](https://midnight-commander.org/)'
 ---
 
 
