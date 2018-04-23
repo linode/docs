@@ -21,7 +21,7 @@ title: Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through
 This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode running Debian or Ubuntu.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prepare Your System
@@ -146,6 +146,3 @@ Passwords in the Subsonic database are stored in hex format, but not encrypted.
 [![The Subsonic Interface.](/docs/assets/subsonic-setup_small.png)](/docs/assets/subsonic-setup.png)
 
 You have now installed and configured Subsonic! To learn more about the many ways to customize your Subsonic setup, check out their [website](http://subsonic.org/).
-
-
-

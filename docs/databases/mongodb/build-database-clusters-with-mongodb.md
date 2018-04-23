@@ -380,7 +380,7 @@ bindIp: 192.0.2.5
 
     These steps can all be done from a single `mongos` connection; you don't need to log into each shard individually and make the connection to add a new shard. If you're using more than two shards, you can use this format to add more shards as well. Be sure to modify the hostnames in the above command if appropriate.
 
-4.  Optionally, if you configured [replica sets](/docs/databases/mongodb/create-a-mongodb-replica-set) for each shard instead of single servers, you can add them at this stage with a similar command:
+4.  Optionally, if you configured [replica sets](/docs/databases/mongodb/create-a-mongodb-replica-set/) for each shard instead of single servers, you can add them at this stage with a similar command:
 
         sh.addShard( "rs0/mongo-repl-1:27017,mongo-repl-2:27017,mongo-repl-3:27017" )
 

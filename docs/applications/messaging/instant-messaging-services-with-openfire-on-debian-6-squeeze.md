@@ -20,7 +20,7 @@ If you haven't done so already, please follow the steps outlined in our [getting
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -130,6 +130,3 @@ You may wish to consult the following resources for additional information on th
 - [Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)
 - [XMPP Standards Foundation](http://xmpp.org/)
 - [XMPP Software Clients](http://xmpp.org/software/clients.shtml)
-
-
-
