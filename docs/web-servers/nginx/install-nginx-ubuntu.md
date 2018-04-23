@@ -71,7 +71,7 @@ server {
 
 2.  Reload the configuration:
 
-        sudo systemctl restart nginx
+        sudo nginx -s reload
 
 3.  Navigate to your Linode's domain name or IP address in a browser. You should see the NGINX default page displayed (or your own content, if you specified the path in the previous section).
 

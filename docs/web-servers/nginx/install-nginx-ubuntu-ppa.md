@@ -5,7 +5,7 @@ author:
 description: 'Shortguide for installing NGINX on Ubuntu.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-16
+modified: 2018-04-23
 modified_by:
   name: Linode
 published: 2018-03-05
@@ -14,12 +14,12 @@ show_on_rss_feed: false
 title: Install NGINX on Ubuntu from the Official NGINX Repository
 ---
 
-These instructions install NGINX Mainline on Ubuntu 16.04 from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)* series.
+These instructions install NGINX Mainline on Ubuntu from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)* series.
 
-1.  Open `/etc/apt/sources.list` in a text editor and add the following line to the bottom:
+1.  Open `/etc/apt/sources.list` in a text editor and add the following line to the bottom. **Replace *CODENAME* with the codename of your Ubuntu release.** For example, Ubuntu 18.04 is named Bionic Beaver. You'd insert *bionic* in place of *CODENAME* below.
 
     {{< file "/etc/apt/sources.list" >}}
-deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx
+deb http://nginx.org/packages/mainline/ubuntu/ CODENAME nginx
 {{< /file >}}
 
 2.  Import the repository's package signing key and add it to `apt`:
