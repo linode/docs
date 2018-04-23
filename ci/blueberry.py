@@ -11,6 +11,7 @@ import time
 import datetime
 import urllib.request
 from urllib.error import HTTPError, URLError
+from yaml import scanner
 
 import frontmatter
 
@@ -225,9 +226,10 @@ def readfile(filename, section=None):
                 # WARNING: Implicitly converts dates to datetime
                 return post.metadata
 
-    except (LookupError, SyntaxError, UnicodeError):
+    except (LookupError, SyntaxError, UnicodeError, scanner.ScannerError):
         # Return Error; require utf-8
         # Should this sys.exit(1) here?
+        print(filename)
         sys.exit(1)
 
 
