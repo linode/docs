@@ -88,9 +88,6 @@ def format_yaml(file_yaml, **kwargs):
                 if not re.search(LINK_REGEX, val):
                     return filename, \
                     f"Invalid metadata format: {val}"
-                if not val.endswith('/'):
-                    return filename, \
-                    f"Invalid metadata format: {val} should end with a slash (/)"
             elif type == "list":
                 if not isinstance(val, list):
                     return filename, \
@@ -183,7 +180,7 @@ def link_format(line, **kwargs):
     match = re.search(INTERNAL_LINK_REGEX, line)
     if match:
         link = match.group(2)
-        if not link.endswith('/'):
+        if not link.endswith(('/','.png','.jpg')):
             return line, link, "Internal links should end with a slash."
         if '_' in link:
             return line, link, "Use hyphens not underscores in link paths."
@@ -229,7 +226,7 @@ def readfile(filename, section=None):
     except (LookupError, SyntaxError, UnicodeError, scanner.ScannerError):
         # Return Error; require utf-8
         # Should this sys.exit(1) here?
-        print(filename)
+        print(f"{filename} caused the Blueberry script to crash.")
         sys.exit(1)
 
 
