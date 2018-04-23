@@ -26,9 +26,9 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Taskwarrior does not require opening ports in your firewall unless you choose to run it as a [server daemon](https://taskwarrior.org/docs/#taskd) for multiple devices to connect to.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Taskwarrior does not require opening ports in your firewall unless you choose to run it as a [server daemon](https://taskwarrior.org/docs/#taskd) for multiple devices to connect to.
 
 3.  Update your system:
 
@@ -103,16 +103,16 @@ To remove a task you can run the `task <task_number> delete` command.
 
 Using the `due` argument, you can assign a due date for a task:
 
-    task add write Taskwarrior guide for the Linode community due:tomorrow
+  task add write Taskwarrior guide for the Linode community due:tomorrow
 
-    taskwarrior@localhost:~$ task
-    [task next]
+  taskwarrior@localhost:~$ task
+  [task next]
 
-    ID Age   Due Description                                      Urg
-     2 11s    7h write Taskwarrior guide for the Linode community 8.65
-     1 16min     buy groceries                                       0
+  ID Age   Due Description                                      Urg
+    2 11s    7h write Taskwarrior guide for the Linode community 8.65
+    1 16min     buy groceries                                       0
 
-    2 tasks
+  2 tasks
 
 The `due` [argument](https://taskwarrior.org/docs/dates.html#due) allows a significant breadth for input. Read more about what's possible with the `due` argument at [the official documentation.](https://taskwarrior.org/docs/dates.html)
 

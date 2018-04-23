@@ -46,7 +46,7 @@ The `<Directory>` block refers to a directory within the filesystem and specifie
 -   Directory blocks *can* be nested within `<VirtualHost>` blocks.
 -   The path contained in a directory block can contain the wildcard character. The asterisk will match any series of characters while a question mark will match against any single character. This may be useful if you need to control an option for the `DocumentRoot` of all virtual hosts:
 
-	{{<file "Apache Configuration File" apache >}}
+  {{<file "Apache Configuration File" apache >}}
 <Directory /srv/www/*/public_html>
 {{< /file >}}
 

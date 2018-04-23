@@ -62,14 +62,14 @@ A DNS MX record tells the internet where to send email directed at you domain. B
 
 3. Download the latest release of iRedMail. The current release, as of 16 September 2014, is 0.8.7 and can be downloaded by entering the following:
 
-	    cd /root/
-	    wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.8.7.tar.bz2
+    cd /root/
+    wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.8.7.tar.bz2
 
 4. Uncompress the package and run the script:
 
-	    tar xjf iRedMail-0.8.7.tar.bz2
-	    cd iRedMail-0.8.7
-	    bash iRedMail.sh
+    tar xjf iRedMail-0.8.7.tar.bz2
+    cd iRedMail-0.8.7
+    bash iRedMail.sh
 
 
     The remainder of the installation refers to on-screen confirmation of default options and selections. With the exception of the backend and hostname selections, most users will simply confirm the default options and continue the installation.
@@ -200,9 +200,9 @@ ssl_cert = </etc/ssl/certs/mail.yourdomain.com.crt
 
 5. To apply the certificate changes to both your web and mail server, run the following commands:
 
-	    service apache2 restart
-	    service dovecot restart
-	    service postfix restart
+    service apache2 restart
+    service dovecot restart
+    service postfix restart
 
     If you encounter error messages during these commands, go back and confirm the correct paths are in place for your certificates.
 
@@ -236,7 +236,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 3. A good way to test your mail server’s DKIM is to enter the following command:
 
-	    amavisd-new testkeys
+    amavisd-new testkeys
 
     You should receive `=> pass` as output.
 
@@ -261,7 +261,7 @@ AWStats quickly analyzes and displays log files/server activity via a few web-ba
 
 2.  Enable the two dbd apache modules:
 
-	    a2enmod dbd authn_dbd
+    a2enmod dbd authn_dbd
 
 
 3.  Edit `apache2.conf` by adding the text block below to the end of the file. Make sure to comment out the existing Auth_MySQL lines at the end of the file.
@@ -269,7 +269,7 @@ AWStats quickly analyzes and displays log files/server activity via a few web-ba
     {{< file "/etc/apache2/conf/apache2.conf" aconf >}}
 #MySQL auth (mod_dbd, libaprutil1-dbd-mysql)
 <IfModule mod_dbd.c>
-	    DBDriver mysql
+    DBDriver mysql
 DBDParams "host=127.0.0.1 dbname=vmail user=vmail pass=(SUBSTITUTE WITH YOUR PASSWORD: see in your iRedMail.tips file)"
  DBDMin 1
  DBDKeep 8
@@ -346,7 +346,7 @@ DBDParams "host=127.0.0.1 dbname=vmail user=vmail pass=(SUBSTITUTE WITH YOUR PAS
    # AuthMySQL_Encryption_Types Crypt_MD5
    # Auth_MySQL_Authoritative On
 
-		    #################
+      #################
    # mod_authn_dbd #
    #################
    # Password related.
@@ -363,7 +363,7 @@ DBDParams "host=127.0.0.1 dbname=vmail user=vmail pass=(SUBSTITUTE WITH YOUR PAS
 
 6.  Restart Apache for the changes to take effect, then test them by logging in to either Cluebringer or Awstats.
 
-	    service apache2 restart
+    service apache2 restart
 
 
 ### Greylist a Recommendation
@@ -380,7 +380,7 @@ For this reason, the author recommends turning this module off. Note, since bein
 
 4.  Restart Cluebringer to complete the changes.
 
-	    service postfix-cluebringer restart
+    service postfix-cluebringer restart
 
 ## Final Test and Conclusion
 

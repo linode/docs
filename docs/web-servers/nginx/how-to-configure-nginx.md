@@ -114,13 +114,13 @@ You typically should create one file per domain or site you want to host on your
 
 1.  Process requests for both `example.com` and `www.example.com`:
 
-	  {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server_name   example.com www.example.com;
 {{< /file >}}
 
 2.  The `server_name` directive can also use wildcards. `*.example.com` and `.example.com` both instruct the server to process requests for all subdomains of `example.com`:
 
-  	{{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server_name   *.example.com;
 server_name   .example.com;
 {{< /file >}}
@@ -128,7 +128,7 @@ server_name   .example.com;
 
 3.  Process requests for all domain names beginning with `example.`:
 
-  	{{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server_name   example.*;
 
 {{< /file >}}

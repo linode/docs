@@ -43,10 +43,10 @@ All of these things make Tahoe-LAFS a good fit for securely storing sensitive da
 ## Before You Begin
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian 9 (Stretch) image and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, deploy a Debian 9 (Stretch) image and complete the steps for setting your Linode's hostname and timezone.
 
 2.  Update your system:
 

@@ -63,7 +63,7 @@ Consult the "More Information" section at the end of this tutorial for additiona
 
     /etc/rc.d/mysqld restart
 
-Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases with local clients.
+Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel/) for information on connecting to your databases with local clients.
 
 # Use MySQL
 
@@ -179,6 +179,3 @@ You may wish to consult the following resources for additional information on th
 - [PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)
 - [Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)
 - [MySQLdb User's Guide](http://mysql-python.sourceforge.net/MySQLdb.html)
-
-
-

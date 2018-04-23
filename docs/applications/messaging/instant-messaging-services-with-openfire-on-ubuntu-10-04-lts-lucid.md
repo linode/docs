@@ -90,7 +90,7 @@ Direct your browser to your Linode's IP address or FQDN (fully qualified domain 
 
 [![Language selection in Openfire setup on Ubuntu 10.04 (Lucid).](/docs/assets/397-openfire-ubuntu-10.04-01-language-selection.png)](/docs/assets/397-openfire-ubuntu-10.04-01-language-selection.png)
 
-Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
+Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager/)).
 
 [![Domain and admin ports selection in Openfire setup on Ubuntu 10.04 (Lucid).](/docs/assets/398-openfire-ubuntu-10.04-02-domain-ports-selection.png)](/docs/assets/398-openfire-ubuntu-10.04-02-domain-ports-selection.png)
 
@@ -119,6 +119,3 @@ You may wish to consult the following resources for additional information on th
 - [Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)
 - [XMPP Standards Foundation](http://xmpp.org/)
 - [XMPP Software Clients](http://xmpp.org/software/clients.shtml)
-
-
-

@@ -16,8 +16,8 @@ external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
- - '[Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5)'
- - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5/)'
+ - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your CentOS 5 Linode.
@@ -135,7 +135,7 @@ After reviewing your configuration for potential security issues, issue the foll
     ln -s /etc/nginx/sites-available/www.example.com
     service nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address.
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager/) pointing your domain name to your Linode's IP address.
 
 ## Configure spawn-fcgi
 
