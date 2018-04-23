@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide will demonstrate how to install NGINX on Ubuntu 18.04.'
-og_description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide will demonstrate how to install NGINX on Ubuntu 18.04.'
+description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on Ubuntu 18.04.'
+og_description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on Ubuntu 18.04.'
 keywords: ["nginx", "load balancing", "ubuntu", "ubuntu 18", "web server", "static content", "install nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-04-16
@@ -21,7 +21,7 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
 ## Install NGINX
 
-{{< content "install-nginx-ubuntu-ppa" >}}
+{{< content "install-nginx-ubuntu-ppa.md" >}}
 
 ## Configure NGINX
 
@@ -37,7 +37,7 @@ NGINX site-specific configuration files are kept in `/etc/nginx/conf.d/`. Genera
 
         sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
 
-3.  Open your site's configuration file in a text editor. Replace `example.com` in the `server_name` directive with your site's domain name or IP address. If you already have content ready to serve (such as a WordPress installation or static files) replace the path in the `root` directive with the path to your site's content.
+3.  Open your site's configuration file in a text editor. Replace `example.com` in the `server_name` directive with your site's domain name or IP address. If you already have content ready to serve (such as a WordPress installation or static files) replace the path in the `root` directive with the path to your site's content:
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
