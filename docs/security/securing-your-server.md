@@ -1,13 +1,13 @@
 ---
 author:
-  name: Chris Walsh
+  name: Linode
   email: docs@linode.com
 description: 'This guide covers basic best practices for securing a production server, including setting up user accounts,  configuring a firewall, securing SSH, and disabling unused network services.'
 og_description: 'This guide serves as a starting point from which to secure your Linode against unauthorized access and includes topics such as user account set up, configuring a firewall, securing SSH, and disabling unused network services.'
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
-modified: 2017-12-14
+modified: 2018-04-16
 modified_by:
   name: Jared Kobos
 published: 2012-02-17
@@ -71,23 +71,21 @@ In CentOS 6 a wheel group is disabled by default for sudo access. You must to co
 
 ### Debian
 
-1.  Debian does not include `sudo` by default so it must be installed:
+A standard Debian Server installation does not include `sudo` by default, but Linode packages it in our Debian images. If you don't already have `sudo`, you'll need to install it before going further.
 
-        apt install sudo
-
-2.  Create the user, replacing `example_user` with your desired username. You'll then be asked to assign the user a password:
+1.  Create the user, replacing `example_user` with your desired username. You'll then be asked to assign the user a password:
 
         adduser example_user
 
-3.  Add the user to the `sudo` group so you'll have administrative privileges:
+2.  Add the user to the `sudo` group so you'll have administrative privileges:
 
         adduser example_user sudo
 
-4.  After creating your limited user, disconnect from your Linode:
+3.  After creating your limited user, disconnect from your Linode:
 
         exit
 
-5.  Log back in as your new user. Replace `example_user` with your username, and the example IP address with your Linode's IP address:
+4.  Log back in as your new user. Replace `example_user` with your username, and the example IP address with your Linode's IP address:
 
         ssh example_user@203.0.113.10
 

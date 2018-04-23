@@ -13,7 +13,7 @@ published: 2015-11-19
 title: Install and Configure Drupal 8
 ---
 
-Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian or Ubuntu.
+Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian or Ubuntu.
 
 ![Install and Configure Drupal 8](/docs/assets/install-and-configure-drupal-8.png)
 

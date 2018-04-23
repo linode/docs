@@ -2,9 +2,14 @@
 author:
     name: Linode Community
     email: contribute@linode.com
+<<<<<<< HEAD
 description: This guide will show how to install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu.
 og_description: This guide will show how to install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu.
 keywords: ['open web analytics','owa','mysql','analytics']
+=======
+description: 'Install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu with this guide.'
+keywords: ['open web analytics','owa','centos','mysql','debian','ubuntu']
+>>>>>>> f2c95a710d8159c7fab55288e80f080012244ee6
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-01-05
 modified: 2016-01-05

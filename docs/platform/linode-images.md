@@ -25,7 +25,7 @@ When saving a Linode image it is the aspects of the Linode that are on the **dis
 
 Linode Images captures an exact copy of your disk at the moment when the process is kicked off. Here's how to capture your first image.
 
- {{< note >}}
+{{< note >}}
 While an image can be captured while your Linode is running, we would recommend shutting your Linode down first if you are running any active databases. Capturing an image that includes a running database can cause corruption or data loss in the imaged copy of the database.
 {{< /note >}}
 
@@ -43,7 +43,7 @@ While an image can be captured while your Linode is running, we would recommend 
 
   [![Host Job Queue](/docs/assets/host-job-queue.png)](/docs/assets/host-job-queue.png)
 
- {{< note >}}
+    {{< note >}}
 Linode Images are limited to 2048MB of data per disk.  You will need to ensure that data within your disk does not exceed this size limit.
 {{< /note >}}
 
@@ -63,7 +63,7 @@ The images captured from your Linodes are stored for future usage, and can be mo
 
 4.  To delete a previously captured disk, simply click the **Delete** link to the right of the image in question.  You will be asked for confirmation prior to the image being deleted.
 
-  [![Images List](/docs/assets/images-list.png)](/docs/assets/images-list.png)
+    [![Images List](/docs/assets/images-list.png)](/docs/assets/images-list.png)
 
 ## Deploy From A Saved Image
 

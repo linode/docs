@@ -36,7 +36,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
 ## Download Zimbra
 
-1.  Download the latestet release of [Zimbra Open Source Edition](https://www.zimbra.com/downloads/zimbra-collaboration-open-source). It's a good idea to read the release notes and understand the requirements and caveats before installing. Choose the Ubuntu 14.04 LTS 64-bit release and download it to your Linode with `wget`. To do this, right-click the _64bit x86_ link in your browser and copy the link from the Zimbra page. Paste it into your shell command and execute it.
+1.  Download the latest release of [Zimbra Open Source Edition](https://www.zimbra.com/downloads/zimbra-collaboration-open-source). It's a good idea to read the release notes and understand the requirements and caveats before installing. Choose the Ubuntu 14.04 LTS 64-bit release and download it to your Linode with `wget`. To do this, right-click the _64bit x86_ link in your browser and copy the link from the Zimbra page. Paste it into your shell command and execute it.
 
     For example:
 

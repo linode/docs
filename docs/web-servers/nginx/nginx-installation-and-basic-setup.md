@@ -13,7 +13,7 @@ published: 2018-02-09
 title: 'Getting Started with NGINX - Part 1: Installation and Basic Setup'
 ---
 
-![Getting Started with NGINX - Part 1: Installation and Basic Setup'](/docs/assets/nginx-basics/Getting-Started-with-NGINX-Part-1-smg.jpg/)
+![Getting Started with NGINX - Part 1: Installation and Basic Setup](/docs/assets/nginx-basics/Getting-Started-with-NGINX-Part-1-smg.jpg/)
 
 This guide is the first of a four-part series. Parts One and Two will walk you through installing NGINX Open Source from the NGINX repositories and making some configuration changes to increase performance and security. Parts Three and Four set up NGINX to serve your site over HTTPS and harden the TLS connection.
 
@@ -150,7 +150,7 @@ server {
     listen         80;
     server_name    example1.com;
     gzip           on;
-    gzip           types text/html text/css image/jpg image/jpeg image/png image/svg;
+    gzip_types text/html text/css image/jpg image/jpeg image/png image/svg;
 }
 {{< /file >}}
 

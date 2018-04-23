@@ -18,6 +18,8 @@ external_resources:
 - '[Using Containers to Build a Microservices Architecture](https://medium.com/aws-activate-startup-blog/using-containers-to-build-a-microservices-architecture-6e1b8bacb7d1)'
 ---
 
+![Deploying Microservices with Docker](/docs/assets/docker-microservices/how-to-deploy-microservices-with-docker-smg.jpg/)
+
 ## What is a Microservice?
 
 Microservices are an increasingly popular architecture for building large-scale applications. Rather than using a single, monolithic codebase, applications are broken down into a collection of smaller components called microservices. This approach offers several benefits, including the ability to scale individual microservices, keep the codebase easier to understand and test, and enable the use of different programming languages, databases, and other tools for each microservice.
