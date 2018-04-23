@@ -81,8 +81,6 @@ To cut a line of text, use `^K`. To paste, move the cursor where you want the te
 
 To search for text in a document, use `^W`. This will open a search prompt and a submenu of search-related commands.
 
-Nano also supports a number of other search features that are all listed under the main search menu.
-
     ^G Get Help         ^Y First Line       ^T Go To Line       ^W Beg of Par       M-J FullJstify      M-B Backwards
     ^C Cancel           ^V Last Line        ^R Replace          ^O End of Par       M-C Case Sens       M-R Regexp
 
