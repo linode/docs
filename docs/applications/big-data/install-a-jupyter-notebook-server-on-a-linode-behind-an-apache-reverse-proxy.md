@@ -22,7 +22,7 @@ Jupyter Notebook is an interactive, enhanced shell that can be run within a web 
 
 Because this guide is written for Linodes running Ubuntu 16.04, you should:
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and log into your server via SSH.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and log into your server via SSH.
 2.  Have [Apache 2.4.18 or higher](https://help.ubuntu.com/lts/serverguide/httpd.html) installed.
 
 ## Install Anaconda Package Manager
@@ -182,4 +182,3 @@ The `/jupyter` url path can have any name as long as it matches the base url pat
     ![Jupyter Notebook Code](/docs/assets/jupyter-code-sample.png)
 
 Note this setup is for a single-user only; simultaneous users on the same Notebook may cause unpredictable results. For a multi-user server, consider using [JupyterHub](https://github.com/jupyterhub/jupyterhub) instead.
-

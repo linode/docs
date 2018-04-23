@@ -19,7 +19,7 @@ If you've used Google Drive, you know that it can be an indispensable tool for r
 
 **Google-drive-ocamlfuse (OCamlfuse)** uses the Drive API to scan and access your Google Drive contents. A majority of the following steps involve authorizing its use and applying that authorization to the copy running on your Linode. Once it has been installed and authorized, you will have real-time access to your Google Drive via Linode.
 
-Before beginning, you should be familiar with our guides on [getting started](/docs/getting-started) and [securing your server](/docs/security/securing-your-server), particularly if your Google Drive contains sensitive personal information. This guide is intended to be run as a non-root user, with sudo privileges required for some steps.
+Before beginning, you should be familiar with our guides on [getting started](/docs/getting-started/) and [securing your server](/docs/security/securing-your-server/), particularly if your Google Drive contains sensitive personal information. This guide is intended to be run as a non-root user, with sudo privileges required for some steps.
 
 ## Install Software
 
