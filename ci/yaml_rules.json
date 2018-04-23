@@ -157,7 +157,7 @@
   "slug": {
     "elements": false,
     "required": false,
-    "type": "bool",
+    "type": "text",
     "description": "Hugo front matter variable. Specifies the tail of the output URL for this page."
   },
   "title": {

@@ -111,7 +111,7 @@ The basic Nextcloud Docker image is already configured for persistent data in th
 
 3.  Launch the Docker Compose configuration:
 
-      	docker-compose up -d
+        docker-compose up -d
 
     Nextcloud should be available at port 8080 on your Linode's public IP address.
 
