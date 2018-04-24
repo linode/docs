@@ -175,7 +175,7 @@ upstream gitlab {
 
 3.  Enable your new virtual host by symbolically linking it to `sites-enabled` (change `example.com`):
 
-      sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
+        sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
 
 4.  Restart nginx to load your changes. On Ubuntu 14.04:
 
