@@ -171,23 +171,6 @@ def mixed_whitespace(line, **kwargs):
             # python-frontmatter stripping excess newlines
             return line, pos, "Use four spaces instead of tabs."
 
-<<<<<<< Updated upstream
-@add_rule
-def link_format(line, **kwargs):
-    """
-    Ensures that internal links use underscores (for consistency)
-    and end with a trailing slash (which avoids a redirect).
-    """
-    match = re.search(INTERNAL_LINK_REGEX, line)
-    if match:
-        link = match.group(2)
-        if not link.endswith(('/','.png','.jpg')):
-            return line, link, "Internal links should end with a slash."
-        if '_' in link:
-            return line, link, "Use hyphens not underscores in link paths."
-
-=======
->>>>>>> Stashed changes
 # -----------------------------------------------------------------------------
 # Misc checks independent of files
 # Should this be here?
@@ -200,11 +183,6 @@ def check_hugo_version():
         print("Check if Hugo is installed.")
         sys.exit(1)
 
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 def find_files(path='.', extension='md', recursive=False):
     # Returns list of absolute paths
     p = Path(path).resolve()
