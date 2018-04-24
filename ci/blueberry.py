@@ -264,11 +264,15 @@ class Reporter(object):
                              self.get_yaml_error_count()
         return self.total_errors
 
+    def rule_count(self):
+        return len(list(itertools.chain(*_validate.values())))
+
     def report(self):
         # Print aggregated states for all tests
         # Then print each error on file basis
         print("Reporting results")
         print("Elapsed time: " + str(self.end))
+        print("Collected checks: " + str(self.rule_count()))
         print("Total errors: " + str(self.total_errors))
         print("Scanned files: " + str(self.counters['files']))
         self.report_filepath_error()
