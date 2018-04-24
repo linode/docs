@@ -5,7 +5,7 @@ author:
 description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu or CentOS servers.'
 keywords: ["puppet installation", "configuration change management", "server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/puppet/basic-puppet-setup-and-configuration/','websites/puppet/manage-and-automate-systems-configuration-with-puppet/','applications/puppet/set-up-puppet-master-agent/','applications/puppet/install-and-configure-puppet']
+aliases: ['websites/puppet/basic-puppet-setup-and-configuration/','websites/puppet/manage-and-automate-systems-configuration-with-puppet/','applications/puppet/set-up-puppet-master-agent/','applications/puppet/install-and-configure-puppet/']
 modified: 2017-03-08
 modified_by:
     name: Phil Zona

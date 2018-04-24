@@ -5,7 +5,7 @@ author:
 description: How to configure service monitoring with Linode Managed.
 keywords: ["linode managed", "service monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linode-managed/', 'uptime/linode-managed']
+aliases: ['linode-managed/', 'uptime/linode-managed/']
 modified: 2014-05-10
 modified_by:
   name: Zack Buhman

@@ -108,12 +108,8 @@ def valid_alias(file_yaml, **kwargs):
         if 'deprecated' not in file_yaml or file_yaml['deprecated'] is False:
             errors = []
             for alias in file_yaml['aliases']:
-                if alias != alias.lower():
-                    errors.append(f"{alias} should be lowercase.")
                 if not alias.endswith('/'):
                     errors.append(f"{alias} should end with a slash (/).")
-                if re.search('_', alias):
-                    errors.append(f"{alias} should use dashes instead of underscores.")
             if errors:
                 return str(kwargs.get('filename')), '\n'.join(errors)
             else:
