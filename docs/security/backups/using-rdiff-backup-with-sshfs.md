@@ -54,12 +54,7 @@ Your backup server will be pulling data from remote devices by SSHFS, so SSH mus
 
 2.  Transfer the public key to the remote device to be backed up. Replace the IP address in the example below with that of your device:
 
-        ssh-copy-id rdbadmin@203.0.113.10
-
-3.  Add the output of the cat command to the `authorized_keys` file on the remote device:
-
-        ssh user@remote_IP "echo \`cat ~/.ssh/rdbadmin.pub\` >> ~/.ssh/authorized_keys"
-
+        ssh-copy-id rdbadmin@192.0.2.0
 
 ## Configure an SSHFS Filesystem Mount
 
