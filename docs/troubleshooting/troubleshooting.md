@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to performing basic troubleshooting.
-keywords: troubleshooting
+keywords: ['troubleshooting']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['quick-start-troubleshooting/']
 modified: 2017-03-06
