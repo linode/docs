@@ -108,7 +108,7 @@ This series will use `/var/www/example.com/` in its examples. Replace `example.c
 
 1.  The root directory for your site or sites should be added to the corresponding `server` block of `/etc/nginx/conf.d/example.com.conf`:
 
-      root /var/www/example.com;
+        root /var/www/example.com;
 
 2.  Then create that directory:
 

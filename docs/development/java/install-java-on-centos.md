@@ -27,13 +27,13 @@ Java is a powerful programming language. Software written in Java can compile an
 
 3.  Update your system:
 
-    sudo yum update
+        sudo yum update
 
 ## Install Java Runtime Environment (Java JRE)
 
 If you don't plan on using Java to write software, the JRE is all you need. In CentOS, the JRE package is `java-$(version)-openjdk`. The `openjdk-headless` package contains a minimal implementation of the JDK for executing Java applications on the command line. In this example, you'll install the minimal version of OpenJDK 8.
 
-  sudo yum install java-1.8.0-openjdk-headless
+    sudo yum install java-1.8.0-openjdk-headless
 
 After the installation finishes, verify its completion using `yum list installed | grep "java"`. The output should be:
 

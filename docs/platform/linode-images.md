@@ -33,21 +33,21 @@ While an image can be captured while your Linode is running, we would recommend 
 
 2.  On the **Edit Disk** page, click the **Create Image** button.
 
-  [![Edit Disk](/docs/assets/edit-disk-image.png)](/docs/assets/edit-disk-image.png)
+    [![Edit Disk](/docs/assets/edit-disk-image.png)](/docs/assets/edit-disk-image.png)
 
 3.  On the Image page, you can provide a label for your image. You can also write short notes about the image being captured in the Description box.
 
-  [![Capture Image](/docs/assets/imagize-image.png)](/docs/assets/imagize-image.png)
+    [![Capture Image](/docs/assets/imagize-image.png)](/docs/assets/imagize-image.png)
 
 4.  Once you click the Create Image button, your image will be frozen for later use. You can view the progress on the Dashboard under the Host Job Queue.
 
-  [![Host Job Queue](/docs/assets/host-job-queue.png)](/docs/assets/host-job-queue.png)
+    [![Host Job Queue](/docs/assets/host-job-queue.png)](/docs/assets/host-job-queue.png)
 
     {{< note >}}
 Linode Images are limited to 2048MB of data per disk.  You will need to ensure that data within your disk does not exceed this size limit.
 {{< /note >}}
 
-Once the job in the host queue has completed, your Linode's disk has been captured and stored.
+    Once the job in the host queue has completed, your Linode's disk has been captured and stored.
 
 ## Managing Your Images
 
