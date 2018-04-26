@@ -12,6 +12,8 @@ modified: 2018-04-18
 modified_by:
   name: Linode
 title: Introduction to Continuous Integration/Continuous Delivery (CI/CD)
+external_resources:
+  - '[How to Automate Builds with Jenkins on Ubuntu](/docs/development/ci/automate-builds-with-jenkins-on-ubuntu/)'
 ---
 
 ## What is Continuous Integration?
@@ -60,12 +62,4 @@ This pipeline expands on the previous example. When code is committed to the `st
 
 ## Host a CI/CD Server on Linode
 
-Usually, the integration pipeline runs on an external server rather than on developers' local computers. When developers commit code to the source repository, [Git hooks](https://git-scm.com/docs/githooks) are used to trigger the CI pipeline on a remote server, which then pulls the new code changes, builds the new version, and runs all of the tests against the new build. A Linode can be used as the remote server in this configuration, allowing you to set up whatever pipeline suits your projects's needs.
-
-<!-- Designing a custom pipeline can be time consuming, and as a result most development teams prefer to use one of the many professional continuous integration services available. These services include GitHub/BitBucket integrations that allow you to abstract away the need to write manual Git hooks. Most of these services provide their tools through a cloud service; some, such as [Jenkins](https://jenkins.io), can also be self-hosted on a Linode.
-
-
-IF THIS IS CUT, THEN THE DESCRIPTION SHOULD ALSO BE CHANGED
--->
-
-Our [How to Automate Builds with Jenkins on Ubuntu](/docs/development/ci/automate-builds-with-jenkins-on-ubuntu/) guide demonstrates how to set up a Jenkins server on a Linode, and introduces the syntax for constructing pipelines using a Jenkinsfile.
+Usually, the integration pipeline runs on an external server rather than on developers' local computers. When developers commit code to the source repository, [Git hooks](https://git-scm.com/docs/githooks) are used to trigger the CI pipeline on a remote server, which then pulls the new code changes, builds the new version, and runs all of the tests against the new build. A Linode can be used as the remote server in this configuration, allowing you to set up whatever pipeline suits your projects's needs. See the links in the More Info section below for information on how to set up a CI server on your Linode.
