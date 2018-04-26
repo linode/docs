@@ -78,7 +78,7 @@ The next task is to copy your data to the new Linode, and make sure that all com
 Do not log in to the new Linode from the compromised Linode. Files should be pulled from the compromised server to your new setup instead.
 {{< /caution >}}
 
-3.  Audit your data using tools such as `rkhunter` and `clamav`. You can use additional malware scanners to be certain you aren't retaining tainted files. Examine all system scripts manually for contaminated code, and replace all suspicious executable files with known good copies.
+3.  Audit your data using tools such as `rkhunter` and [`clamav`](/docs/security/vulnerabilities/scanning-your-linode-for-malware/). You can use additional malware scanners to be certain you aren't retaining tainted files. Examine all system scripts manually for contaminated code, and replace all suspicious executable files with known good copies.
 
 If you're not comfortable copying from the compromised system prior to auditing the data, you can instead use the [Finnix rescue environment](/docs/troubleshooting/rescue-and-rebuild/) to examine your old disks. Once you have verified the integrity of your data, copy it to the appropriate location on your new server.
 
