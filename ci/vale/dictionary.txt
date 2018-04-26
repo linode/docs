@@ -131,6 +131,7 @@ chefspec
 chgrp
 chmod
 chown
+chromecast
 chroot
 chrooted
 citad
