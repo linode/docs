@@ -15,11 +15,11 @@ external_resources:
  - '[HG Init, a Guide by Joel Spolsky](http://hginit.com/)'
 ---
 
-[Mercurial](https://www.mercurial-scm.org/) is one of the leading distributed version control systems which allows software developers and teams of collaborators to work on a common code base without the need to rely on a centralized server or constant network connection. Mercurial runs on multiple platforms so can even use Mercurial to manage code projects on systems running many different operating systems.
+[Mercurial](https://www.mercurial-scm.org/) is one of the leading distributed version control systems which allows software developers and teams of collaborators to work on a common code base without the need to rely on a centralized server or constant network connection. Mercurial runs on multiple platforms and can be used to manage code projects on many different operating systems.
 
 ## Before You Begin
 
-- You will need root access to your Linode, or a user account with `sudo` privilege.
+- You will need root access to your Linode, or a user account with `sudo` privileges.
 - Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
 - Update your system.
 
@@ -44,7 +44,7 @@ All Mercurial commands in the shell environment begin with `hg` in reference to 
 
 Like other distributed version control systems, Mercurial allows users to maintain a history of files independent of a centralized remote server. Most operations with Mercurial can be completed and tested locally and do not require any server configuration.
 
-Make a new directory called *myproject* and create a Mercurial repository in that directory:
+Make a new directory called `myproject` and create a Mercurial repository in that directory:
 
     hg init myproject
 
@@ -109,7 +109,7 @@ For each commit stored in Mercurial, the `log` command will produce output that 
     date:        Thu Apr 22 18:51:21 2010 +0000
     summary:     hello mercurial world
 
-To generate a patch or a view of the history of your repository containing the differences (a "diff"):
+To generate a patch or a view of the history of your repository containing the differences (a *diff*):
 
     hg log -p -r 2 5
 
@@ -145,11 +145,11 @@ Most of the Mercurial workflow is completed in isolation from other developers a
 
 ### Retrieve Content from Remote Repositories
 
-In many cases when you begin working on a project with Mercurial, you will be downloading a repository, or *cloning* the project. This creates a complete and independent copy of the repository on your local system.
+In many cases when you begin working on a project with Mercurial, you will be downloading a repository, or *cloning* the project. This creates a complete and independent copy of the repository on your local system:
 
     hg clone http://www.example.com/lollipop/
 
-In this instance, the URL `http://www.example.com/lollipop/` refers to the server hosting the repository in question. Once downloaded, you'll be able to manipulate files, create content, or remove content, *and* commit those changes incrementally to create a work history.
+In this instance, the URL `http://www.example.com/lollipop/` refers to the server hosting the repository in question. Once downloaded, you'll be able to manipulate files, create content, or remove content, and commit those changes incrementally to create a work history.
 
 As time passes you will probably want to update your local repositories with the changes. Use the `pull` command to download all changes to the remote repository since your initial clone, or the last time you ran a pull:
 
