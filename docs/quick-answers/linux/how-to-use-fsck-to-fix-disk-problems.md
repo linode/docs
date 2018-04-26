@@ -2,7 +2,7 @@
 author:
   name: Edward Angert
   email: docs@linode.com
-description: 'fsck is the Linux file system consistency check utility. This guide shows how to use fsck to check a system for corrupt files and bad disk sectors, and attempt ot repair any errors it finds.'
+description: 'fsck is the Linux file system consistency check utility. This guide shows how to use fsck to check a system for corrupt files and bad disk sectors, and attempt to repair any errors it finds.'
 keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-26
