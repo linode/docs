@@ -33,11 +33,11 @@ Nextcloud is a cloud storage platform that allows you to store and access your f
 
 1.  Create a Block Storage Volume and attach it to your Linode. See [How to Add a Block Storage Volume to a Linode](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) for instructions on how to do this from the Linode Manager.
 
-    You can also use the [Linode CLI](https://github.com/linode/linode-cli) to create a new Volume. The command below creates a 20GB Volume with the label `nextcloud` and attaches to a Linode labeled `nextcloud-linode`. Adjust the command as needed:
+    * You can also use the [Linode CLI](https://github.com/linode/linode-cli) to create a new Volume. The command below creates a 20GB Volume with the label `nextcloud` attached to a Linode labeled `nextcloud-linode`. Adjust the command as needed:
 
-        linode-cli volume create nextcloud -l nextcloud-linode -s 20
+            linode-cli volume create nextcloud -l nextcloud-linode -s 20
 
-2.  Create a filesystem on the Block Storage Volume, then create a mountpoint per the instructions from the Linode Manager:
+2.  Create a filesystem on the Block Storage Volume, then create a mount point per the instructions from the Linode Manager:
 
     ![Mount Block Storage Volume](/docs/assets/nextcloud/nextcloud-mount-volume.png)
 
@@ -69,7 +69,7 @@ Nextcloud provides an official `docker-compose.yml` file for persisting data to 
 
         mkdir ~/nextcloud && cd ~/nextcloud
 
-2.  In a text editor, create `docker-compose.yml` and add the following content. Add an appropriate password for MariaDB.
+2.  In a text editor, create `docker-compose.yml` and add the following content. Add an appropriate password for MariaDB:
 
     {{< file "~/nextcloud/docker-compose.yml" yaml >}}
 version: '2'
@@ -105,14 +105,14 @@ services:
 
       	docker-compose up -d
 
-    Nextcloud should be available at port 8080 on your Linode's public IP address.
+    Nextcloud should be available at port `8080` on your Linode's public IP address.
 
-4.  When creating an admin account, open the **Storage & database** drop-down menu, fill in the information as shown below, and enter the MySQL password you used in the `docker-compose` file:
+4.  When creating an admin account, open the **Storage & database** drop-down menu, fill in the information as shown below, and enter the MariaDB password you used in the `docker-compose` file:
 
     ![Nextcloud database connection](/docs/assets/docker_nextcloud/connect-mysql-container.png "Nextcloud database connection")
 
 {{< caution >}}
-The setup provided by Nextcloud does not include any SSL encryption. To secure your data and communications, the Nextcloud service should be placed behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/). A Docker Compose file using a NGINX reverse proxy and Let's Encrypt is also [available](https://github.com/nextcloud/docker/blob/master/.examples/docker-compose/with-nginx-proxy/mariadb/apache/docker-compose.yml).
+The setup provided by Nextcloud does not include any SSL encryption. To secure your data and communications, the Nextcloud service should be placed behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/). A Docker Compose file using an NGINX reverse proxy and Let's Encrypt is also [available](https://github.com/nextcloud/docker/blob/master/.examples/docker-compose/with-nginx-proxy/mariadb/apache/docker-compose.yml).
 {{< /caution >}}
 
 ## Upload Data
