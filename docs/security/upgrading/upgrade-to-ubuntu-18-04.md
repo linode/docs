@@ -33,7 +33,7 @@ The upgrade may be incomplete or your system may be corrupted if your internet c
 
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-In order to prepare you Linode for upgrade, the following steps will:
+In order to prepare your Linode for upgrade, the following steps will:
 
 1.  Install updates for Ubuntu 16.04.
 
@@ -53,7 +53,7 @@ Update package lists and install all updates:
 
 ### Back Up Your Linode
 
-It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the [Linode Backup Service](/backups), we recommend that you [take a manual snapshot](/docs/platform/linode-backup-service#take-a-manual-snapshot) before upgrading to Ubuntu 18.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
+It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the [Linode Backup Service](/backups), we recommend that you [take a manual snapshot](/docs/platform/linode-backup-service#take-a-manual-snapshot) before upgrading to Ubuntu 18.04 LTS. If you use another backup service or application, we recommend that you make a manual backup before continuing.
 
 ### Check Your Kernel
 
@@ -61,9 +61,15 @@ Verify that your Linode is using the latest supported kernel. See [Applying Kern
 
 ### Stop Services
 
-We recommend that you stop as many services as possible before upgrading to Ubuntu 18.04 LTS. This includes web server daemons (Apache and NGINX), database servers (PostgreSQL and MySQL), and any other non-critical services. To stop a service, enter the following command, replacing `apache2` with the name of the service you want to stop:
+We recommend that you stop as many services as possible before upgrading to Ubuntu 18.04 LTS. This includes web server daemons (Apache and NGINX), database servers (PostgreSQL and MySQL), and any other non-critical services.
 
-    systemctl stop apache2
+1.  Get a list of services currently running on your system:
+
+        sudo systemctl | grep running
+
+2.  To stop a service, enter the following command, replacing `apache2` with the name of the service you want to stop:
+
+        systemctl stop apache2
 
 You are now ready to install Ubuntu 18.04 LTS on your Linode.
 
