@@ -64,7 +64,7 @@ We recommend that you stop as many services as possible before upgrading to Ubun
 
 1.  Get a list of services currently running on your system:
 
-        sudo systemctl | grep running
+        systemctl | grep running
 
 2.  To stop a service, enter the following command, replacing `apache2` with the name of the service you want to stop:
 
