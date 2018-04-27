@@ -23,7 +23,7 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
 ## Install NGINX
 
-{{< content "install-nginx-ubuntu-ppa" >}}
+{{< content "install-nginx-ubuntu-ppa.md" >}}
 
 ## Configure NGINX
 
