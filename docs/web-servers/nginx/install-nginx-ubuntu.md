@@ -15,6 +15,8 @@ external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
 ---
 
+![Install NGINX on Ubuntu 18](/docs/assets/install-nginx/install-nginx-ubuntu-smg.jpg)
+
 ## What is NGINX?
 
 NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. It was [initially designed](https://www.nginx.com/resources/glossary/nginx/) to solve scaling and concurrency problems with existing web servers. Its event-based, asynchronous architecture has made it one of the most popular and best-performing web servers available.
