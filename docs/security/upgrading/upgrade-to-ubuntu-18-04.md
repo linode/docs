@@ -12,7 +12,7 @@ published: 2018-04-27
 title: 'How to Upgrade to Ubuntu 18.04 LTS'
 ---
 
-<!-- ![Upgrade to Ubuntu 18.04](/docs/assets/upgrade-to-ubuntu-18-04/upgrade-ubuntu-18-title.jpg) -->
+![Upgrade to Ubuntu 18.04](/docs/assets/upgrade-ubuntu-18-title.jpg)
 
 Ubuntu 18.04 is a Long-Term Support (LTS) release that will be supported by Canonical until April 2023. This guide shows how to upgrade your Linode from Ubuntu 16.04 (Xenial Xerus) or Ubuntu 17.10 (Artful Aardvark) to Ubuntu 18.04 (Bionic Beaver).
 
@@ -26,7 +26,6 @@ Distribution upgrades sometimes yield unpredictable results. If possible, use th
 
 The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
-**Important:** Ubuntu 18.04 ships with OpenSSH 7.6p1, which does not allow `ssh-dss` host authentication, or use of the SSH version 1 protocol.
 {{< /caution >}}
 
 ## Prepare to Upgrade to Ubuntu 18.04
