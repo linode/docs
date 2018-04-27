@@ -15,13 +15,36 @@ external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
 ---
 
+![Install NGINX on Ubuntu 18](/docs/assets/install-nginx/install-nginx-ubuntu-smg.jpg)
+
 ## What is NGINX?
 
 NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. It was [initially designed](https://www.nginx.com/resources/glossary/nginx/) to solve scaling and concurrency problems with existing web servers. Its event-based, asynchronous architecture has made it one of the most popular and best-performing web servers available.
 
 ## Install NGINX
 
-{{< content "install-nginx-ubuntu-ppa.md" >}}
+These steps install NGINX Mainline on Ubuntu from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)* series.
+
+1.  Open `/etc/apt/sources.list` in a text editor and add the following line to the bottom. Replace `CODENAME` in this example with the codename of your Ubuntu release. For example, for Ubuntu 18.04, named Bionic Beaver, insert `bionic` in place of `CODENAME` below:
+
+    {{< file "/etc/apt/sources.list" >}}
+deb http://nginx.org/packages/mainline/ubuntu/ CODENAME nginx
+{{< /file >}}
+
+2.  Import the repository's package signing key and add it to `apt`:
+
+        sudo wget http://nginx.org/keys/nginx_signing.key
+        sudo apt-key add nginx_signing.key
+
+3.  Install NGINX:
+
+        sudo apt update
+        sudo apt install nginx
+
+4.  Ensure NGINX is running and and enabled to start automatically on reboot:
+
+        sudo systemctl start nginx
+        sudo systemctl enable nginx
 
 ## Configure NGINX
 
