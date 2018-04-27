@@ -2,11 +2,12 @@
 author:
   name: Edward Angert
   email: docs@linode.com
-description: 'fsck is the Linux file system consistency check utility. This guide shows how to use fsck to check a system for corrupt files and bad disk sectors, and attempt to repair any errors it finds.'
+description: 'fsck is the Linux file system consistency check utility. This guide shows how to use fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds.'
+og_description: 'fsck is the Linux file system consistency check utility. This guide shows how to use fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds.'
 keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-04-26
-modified: 2018-04-26
+published: 2018-04-27
+modified: 2018-04-27
 modified_by:
   name: Linode
 title: 'How to use fsck to Find and Repair Disk Errors and Bad Sectors'
@@ -20,7 +21,7 @@ This guide is part of a series on Linux commands and features. Not all commands 
 
 ## What is fsck?
 
-fsck, short for file system consistency check, is a utility that examines the file system for errors and attempts to repair them if possible. It uses a combination of built-in tools to check the disk, based on the file system type, and generates a report of its findings.
+fsck, short for file system consistency check, is a utility that examines the file system for errors and attempts to repair them if possible. It uses a combination of built-in tools to check the disk and generates a report of its findings.
 
 On some systems, fsck runs automatically after an unclean shutdown or after a certain number of reboots.
 
@@ -63,7 +64,7 @@ Visit our [Rescue and Rebuild](/docs/troubleshooting/rescue-and-rebuild/#booting
 
         fdisk -l
 
-    Copy the disk location for the fsck command later.
+    Copy the disk location to use with the fsck command.
 
 ## Unmount the Disk
 
