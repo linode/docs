@@ -15,9 +15,8 @@ external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
 ---
 
-<!-- sample intro
 This guide is part of a series on Linux commands and features. Not all commands may be relevant to Linode-specific hardware, and are included here to provide an easy to access reference for the Linux community. If you have a command or troubleshooting tip that would help others, please submit a pull request or comment.
--->
+
 
 ## What is fsck?
 
@@ -50,13 +49,15 @@ Unmount the target disk first. You risk corrupting your file system and losing d
 | `-T`   | Skip the title on startup.  |
 | `-y`   | Interactive repair mode.  |
 
-## Boot into Rescue Mode
+## Unmount the Disk
 
-Visit our [Rescue and Rebuild](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. fsck should be run only as a user with root permissions.
+### Boot into Rescue Mode
 
-## View Mounted Disks and Verify Disk Location
+If you are using fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. fsck should be run only as a user with root permissions.
 
-1.  Run `df` to view a list of currently mounted disks. Confirm that the disk you're working on is not listed:
+### View Mounted Disks and Verify Disk Location
+
+1.  Run `df` to view a list of currently mounted disks. If you are using Rescue Mode, the disk you want to check should not be listed:
 
         df -h
 
@@ -64,17 +65,21 @@ Visit our [Rescue and Rebuild](/docs/troubleshooting/rescue-and-rebuild/#booting
 
         fdisk -l
 
-    Copy the disk location to use with the fsck command.
+    Copy the location of the target disk to use with the fsck command.
 
-## Unmount the Disk
+### Configuration Profile
 
-* Shut down the Linode and unmount the disk from the [Configuration Profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#editing-a-configuration-profile). Apply the changes and reboot the Linode.
+If you are working on a Linode but do not wish to use Rescue Mode, you shut down the Linode from the Linode Manager. Unmount the disk from the [Configuration Profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#editing-a-configuration-profile). Apply the changes and reboot the Linode.
 
-* For a local machine, use `umount` to unmount the disk location copied in the [previous step](#view-mounted-disks-and-verify-disk-location):
+### Manual Unmount
+
+If you are working on a local machine, you can unmount the disk manually.
+
+1.  Use `umount` to unmount the disk location copied in the [previous step](#view-mounted-disks-and-verify-disk-location):
 
         umount /dev/sdb
 
-* If the disk is declared in `/etc/fstab`, change the `mount point` to `none` there as well.
+2.  If the disk is declared in `/etc/fstab`, change the `mount point` to `none` there as well.
 
 ## How to Check for Errors on a Disk
 
