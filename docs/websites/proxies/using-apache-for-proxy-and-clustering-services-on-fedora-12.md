@@ -84,15 +84,15 @@ Once `mod_proxy` is enabled and [configured properly](/docs/web-servers/apache/p
 
 {{< file "Apache Virtual Host Configuration" apache  >}}
 <VirtualHost example.com:80>
-	ServerName example.com
-	ServerAlias www.example.com
-	DocumentRoot /srv/www/example.com/public_html/
+    ServerName example.com
+    ServerAlias www.example.com
+    DocumentRoot /srv/www/example.com/public_html/
 
-	ErrorLog /srv/www/example.com/logs/error.log
-	CustomLog /srv/www/example.com/logs/access.log combined
+    ErrorLog /srv/www/example.com/logs/error.log
+    CustomLog /srv/www/example.com/logs/access.log combined
 
-	RewriteEngine On
-	RewriteRule ^/blog/(.*)\.php$ http://app.example.com/blog/$1.php [proxy]
+    RewriteEngine On
+    RewriteRule ^/blog/(.*)\.php$ http://app.example.com/blog/$1.php [proxy]
 </VirtualHost>
 {{< /file >}}
 
@@ -203,6 +203,3 @@ You may wish to consult the following resources for additional information on th
 - [Official Apache Documentation for Proxy Pass](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)
 - [Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)
 - [Configure ProxyPass and Multiple Web Servers with Apache](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-fedora-12)
-
-
-

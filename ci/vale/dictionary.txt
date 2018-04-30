@@ -131,6 +131,7 @@ chefspec
 chgrp
 chmod
 chown
+chromecast
 chroot
 chrooted
 citad
@@ -1152,6 +1153,8 @@ subnet
 subnets
 subnetwork
 subreddits
+substring
+substrings
 subtab
 subtransit
 sudo
