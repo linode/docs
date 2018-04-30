@@ -17,7 +17,6 @@ external_resources:
 
 This guide is part of a series on Linux commands and features. Not all commands may be relevant to Linode-specific hardware, and are included here to provide an easy to access reference for the Linux community. If you have a command or troubleshooting tip that would help others, please submit a pull request or comment.
 
-
 ## What is fsck?
 
 fsck, short for file system consistency check, is a utility that examines the file system for errors and attempts to repair them if possible. It uses a combination of built-in tools to check the disk and generates a report of its findings.
@@ -69,11 +68,11 @@ If you are using fsck on a Linode, the easiest and safest way to unmount your di
 
 ### Configuration Profile
 
-If you are working on a Linode but do not wish to use Rescue Mode, you shut down the Linode from the Linode Manager. Unmount the disk from the [Configuration Profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#editing-a-configuration-profile). Apply the changes and reboot the Linode.
+If you are working on a Linode but do not wish to use Rescue Mode, shut down the Linode from the Linode Manager. Unmount the disk from the [Configuration Profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#editing-a-configuration-profile). Apply the changes and reboot the Linode.
 
 ### Manual Unmount
 
-If you are working on a local machine, you can unmount the disk manually.
+If you are working on a local machine, unmount the disk manually.
 
 1.  Use `umount` to unmount the disk location copied in the [previous step](#view-mounted-disks-and-verify-disk-location):
 
