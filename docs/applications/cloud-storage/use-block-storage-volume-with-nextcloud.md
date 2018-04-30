@@ -19,6 +19,11 @@ external_resources:
 
 Nextcloud is a cloud storage platform that allows you to store and access your files from any device. This guide shows how to attach a Block Storage Volume to a Linode in order to meet the demands of a large file library.
 
+## Before You Begin
+
+- You will need root access to your Linode, or a user account with `sudo` privilege.
+- Update your system.
+
 ## Install Docker and Docker Compose
 
 ### Docker
