@@ -2,14 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Our guide to upgrading to Ubuntu 18.04 LTS'
-keywords: ["upgrading", "ubuntu", "18.04"]
+description: 'Our guide to upgrading to Ubuntu 18.04 LTS (Bionic Beaver)'
+keywords: ["upgrading", "ubuntu", "18.04","bionic beaver"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-04-27
 modified_by:
   name: Edward Angert
 published: 2018-04-27
-title: 'How to Upgrade to Ubuntu 18.04 LTS'
+title: 'How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)'
 ---
 
 ![Upgrade to Ubuntu 18.04](/docs/assets/upgrade-ubuntu-18-title.jpg)
