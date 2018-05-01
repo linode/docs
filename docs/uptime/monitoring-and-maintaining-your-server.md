@@ -34,7 +34,7 @@ Whether you use one Linode or dozens of them, mission-critical servers and servi
 
 There are several different availability monitoring tools available. Your decision should be based on how many servers you'll be monitoring:
 
--   **Multiple Servers**: If you run more than one server, the [Elastic Stack](docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/) is an excellent monitoring tool.
+-   **Multiple Servers**: If you run more than one server, the [Elastic Stack](/docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/) is an excellent monitoring tool.
 -   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. You could also use a network diagnostic tool like [MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to diagnose and isolate networking errors.
 -   **Linode Longview**: [Longview](/docs/platform/longview/longview/) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using Longview in conjunction with a notification service can help you to identify issues faster, and get your system up and running sooner.
 
