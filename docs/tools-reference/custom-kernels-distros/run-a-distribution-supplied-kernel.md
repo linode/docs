@@ -6,7 +6,7 @@ description: "Use the Linode Manager's GRUB 2 boot setting to run your distribut
 keywords: ["kvm", "custom linux", " kernel", "custom linode", "grub", "grub 2"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: ['run-a-distribution-supplied-kernel-with-kvm/']
-modified: 2017-10-18
+modified: 2018-05-01
 modified_by:
   name: Linode
 published: 2015-06-29
@@ -42,7 +42,7 @@ The steps in this section currently apply only to the distributions under *Recom
 6.  Once booted, you can verify the kernel information with `uname`:
 
         [root@archlinux ~]# uname -r
-        4.11.7-1-ARCH
+        4.15.14-1-ARCH
 
 If you want to switch back to the Linode kernel at any time:
 
