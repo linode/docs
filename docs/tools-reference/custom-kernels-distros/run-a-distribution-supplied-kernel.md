@@ -29,13 +29,13 @@ The steps in this section currently apply only to the distributions under *Recom
 
     ![Edit the configuration profile](/docs/assets/edit_config_profile_small.png "Edit the configuration profile")
 
-3.  Under **Boot Settings** is a **Kernel** dropdown menu. By default, this will be set to the latest Linode-supplied 64 bit kernel:
-
-    ![Our latest 64 bit kernel](/docs/assets/boot-settings-kernel-latest.png "Our latest 64 bit kernel")
-
-4.  To switch to the distro's default kernel, select **GRUB 2** instead of the latest 64 bit.
+3.  Under **Boot Settings** is a **Kernel** dropdown menu. By default, this will be set to GRUB 2:
 
     ![Selecting the distribution's kernel](/docs/assets/boot-settings-kernel-grub2.png "Selecting the distribution's kernel")
+
+4.  To switch to the distro's default kernel, select the latest Linode-supplied 64 bit kernel:
+
+    ![Our latest 64 bit kernel](/docs/assets/boot-settings-kernel-latest.png "Our latest 64 bit kernel")
 
 5.  Click **Save Changes** at the bottom of the page and reboot into the new kernel.
 
@@ -44,10 +44,10 @@ The steps in this section currently apply only to the distributions under *Recom
         [root@archlinux ~]# uname -r
         4.15.14-1-ARCH
 
-If you want to switch back to the Linode kernel at any time:
+If you want to switch back to GRUB 2 at any time:
 
 1.  Shut down your Linode.
-2.  Select the latest 64 bit Linode kernel using the steps above.
+2.  Select GRUB 2 using the steps above.
 3.  Click **Save Changes** and reboot.
 
 ### Caveats
