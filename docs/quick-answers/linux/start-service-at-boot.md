@@ -13,6 +13,8 @@ published: 2018-05-01
 title: Use systemd to Start a Linux Service at Boot
 external_resources:
   - '[systemd – Wikipedia](https://en.wikipedia.org/wiki/Systemd)'
+  - '[systemd man page](http://man7.org/linux/man-pages/man1/init.1.html)'
+  - '[systemd Documentation](https://www.freedesktop.org/wiki/Software/systemd/)'
 ---
 
 ## What is systemd?
@@ -58,6 +60,10 @@ WantedBy=multi-user.target
 {{< /file >}}
 
     This defines a simple service. The critical part is the `ExecStart` directive, which specifies the command that will be run to start the service.
+
+{{< note >}}
+For more information about the Unit file and its available configuration options, see the [systemd documentation](https://www.freedesktop.org/wiki/Software/systemd/).
+{{< /note >}}
 
 ## Start and Enable the Service
 
