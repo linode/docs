@@ -9,6 +9,7 @@ modified: 2018-02-01
 modified_by:
   name: Linode
 published: 2017-06-16
+aliases: ['platform/how-to-use-block-storage-with-your-linode/']
 title: How to Use Block Storage with Your Linode
 ---
 
