@@ -21,11 +21,11 @@ external_resources:
 
 systemd is a Linux system tool initially developed by the Red Hat Linux team. It includes many features, including a bootstrapping system used to start and manage system processes. It is currently the default initialization system on most Linux distributions. Many commonly used software tools, such as SSH and Apache, ship with a systemd service.
 
-It is also simple to create a custom systemd service that will run any script or process you choose. Although there are several ways to run a script or start a process when your Linode boots, a custom systemd service makes it easy to start, stop, or restart your script, as well as configure it to start automatically on boot. systemd also offers the advantage of using a standardized interface that is consistent across all Linux distributions that support it.
+It is simple to create a custom systemd service that will run any script or process you choose. Although there are several ways to run a script or start a process when your Linode boots, a custom systemd service makes it easy to start, stop, or restart your script, as well as configure it to start automatically on boot. systemd offers the advantage of using a standardized interface that is consistent across all Linux distributions that support it.
 
 ## Create a Custom systemd Service
 
-1.  Create a script or executable that the service will manage. This guide will use a simple Bash script as an example:
+1.  Create a script or executable that the service will manage. This guide uses a simple Bash script as an example:
 
     {{< file "test_service.sh" bash >}}
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
@@ -38,11 +38,11 @@ sleep 30;
 done
 {{< /file >}}
 
-    This script will log the time at which it is initialized, then loop infinitely.
+    This script will log the time at which it is initialized, then loop infinitely to keep the service running.
 
 2.  Copy the script to `/usr/bin` and make it executable:
 
-        sudo cp test-service.sh /usr/bin/test_service.sh
+        sudo cp test_service.sh /usr/bin/test_service.sh
         sudo chmod +x /usr/bin/test_service.sh
 
 3.  Create a **Unit file** to define a systemd service:
@@ -61,9 +61,7 @@ WantedBy=multi-user.target
 
     This defines a simple service. The critical part is the `ExecStart` directive, which specifies the command that will be run to start the service.
 
-{{< note >}}
-For more information about the Unit file and its available configuration options, see the [systemd documentation](https://www.freedesktop.org/wiki/Software/systemd/).
-{{< /note >}}
+    For more information about the unit file and its available configuration options, see the [systemd documentation](https://www.freedesktop.org/wiki/Software/systemd/).
 
 ## Start and Enable the Service
 
@@ -108,4 +106,23 @@ May 01 18:17:14 localhost bash[16266]: Looping...
 Created symlink from /etc/systemd/system/multi-user.target.wants/myservice.service to /lib/systemd/system/myservice.service.
 {{< /output >}}
 
-5.   Reboot your Linode from the Linode Manager. Check the status of the service with `sudo systemctl status myservice`; you should see that the service logged its start time immediately after booting.
+5.  Reboot your Linode from the Linode Manager and check the status of the service:
+
+        sudo systemctl status myservice
+
+    You should see that the service logged its start time immediately after booting:
+
+    {{< output >}}
+● myservice.service - Example systemd service.
+   Loaded: loaded (/usr/lib/systemd/system/myservice.service; enabled; vendor preset: disabled)
+   Active: active (running) since Wed 2018-05-02 15:03:07 UTC; 48s ago
+ Main PID: 2973 (bash)
+   CGroup: /system.slice/myservice.service
+           ├─2973 /bin/bash /usr/bin/test_service.sh
+           └─3371 sleep 30
+
+May 02 15:03:07 localhost systemd[1]: Started Example systemd service..
+May 02 15:03:07 localhost systemd[1]: Starting Example systemd service....
+May 02 15:03:07 localhost bash[2973]: Looping...
+May 02 15:03:37 localhost bash[2973]: Looping...
+{{< /output >}}
