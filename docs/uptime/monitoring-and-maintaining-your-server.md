@@ -20,7 +20,7 @@ Now that your Linode is up and running, it's time to think about monitoring and 
 
 ## Availability Monitoring
 
-The *availability* of your servers, and the websites and web applications you host on them, can be critically important. If you generate income from a blog or charge subscription fees for your web application, downtime can have a severe impact on your bottom line. Using an availability monitoring tool can help you rapidly detect and resolve service disruptions, thereby mitigating the impact on your web sites and web applications.
+The *availability* of your servers, and the websites and web applications you host on them, can be critically important. If you generate income from a blog or charge subscription fees for your web application, downtime can have a severe impact on your bottom line. Using an availability monitoring tool can help you rapidly detect and resolve service disruptions, thereby mitigating the impact on your websites and web applications.
 
 ### Assess Your Needs
 
@@ -54,7 +54,7 @@ To turn Lassie on and off:
 5.  Select an option from the **Lassie is currently** menu, as shown below.
 6.  Click **Save Changes**.
 
-If you turned the feature on, your Linode will automatically reboot if it is powered off unexpectedly in the future.
+Once Lassie is enabled, your Linode will automatically reboot if it is unexpectedly powered off in the future.
 
 ## Performance Monitoring
 
@@ -144,7 +144,7 @@ There are ways to automate the installation of software updates, but this is not
 
 ### Apply Kernel Updates
 
-When you first sign up for Linode and create a virtual server, the Linode Manager automatically creates a [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) with the latest kernel selected. We [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Linode Manager. In most cases, new kernels will automatically be selected in the configuration profile in the Linode Manager — once we release a new kernel, all you have to do is reboot your Linode to start using it.
+When you first sign up for Linode and create a virtual server, the Linode Manager automatically creates a [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles/) with the latest kernel selected. We [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Linode Manager. In most cases, new kernels will automatically be selected in the configuration profile in the Linode Manager — once we release a new kernel, all you have to do is reboot your Linode to start using it.
 
 To check for a new kernel and start using it on your Linode:
 
@@ -176,7 +176,7 @@ Linux version 4.15.12-x86_64-linode105 (maker@build.linode.com) (gcc version 4.9
 
 Linux distributions such as Ubuntu and Fedora use version numbers to identify the individual versions, or *releases*, of the operating system. It's important to know which release your server is running, as releases are usually supported for one or more years. After support for your release is discontinued, you won't be able to download or apply critical security packages, which can put your server at risk.
 
-There are two ways to upgrade a Linode running an unsupported release. You can upgrade your existing server to the next release, or you can create a new Linode with the newest release available and transfer your files from the old server. See our [IUpgrading guides](/docs/security/upgrading) for more information.
+There are two ways to upgrade a Linode running an unsupported release. You can upgrade your existing server to the next release, or you can create a new Linode with the newest release available and transfer your files from the old server. See our [Upgrading guides](/docs/security/upgrading) for more information.
 
  {{< note >}}
 Check the distribution's website to learn when support for your release will be discontinued. Ubuntu offers a *long-term support* (LTS) release that is supported for five years.
