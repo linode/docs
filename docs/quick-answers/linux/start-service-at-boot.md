@@ -21,7 +21,7 @@ external_resources:
 
 systemd is a Linux system tool initially developed by the Red Hat Linux team. It includes many features, including a bootstrapping system used to start and manage system processes. It is currently the default initialization system on most Linux distributions. Many commonly used software tools, such as SSH and Apache, ship with a systemd service.
 
-It is simple to create a custom systemd service that will run any script or process you choose. Although there are several ways to run a script or start a process when your Linode boots, a custom systemd service makes it easy to start, stop, or restart your script, as well as configure it to start automatically on boot. systemd offers the advantage of using a standardized interface that is consistent across all Linux distributions that support it.
+It is simple to create a custom systemd service that will run any script or process you choose. Although there are several ways to run a script or start a process when your Linode boots, a custom systemd service makes it easy to start, stop, or restart your script, as well as configure it to start automatically on boot. systemd offers the advantage of using a standardized interface that is consistent across all [Linux distributions that support it](https://en.wikipedia.org/wiki/Systemd#Adoption).
 
 ## Create a Custom systemd Service
 
