@@ -3,7 +3,7 @@ author:
   name: Nick Brewer
   email: nbrewer@linode.com
 description: View and organize your media library with Plex on CentOS 7
-keywords: ["plex media server", " install plex", " plex centos"]
+keywords: ["plex media server", "install plex", "plex centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-06-21
 modified_by:
@@ -38,7 +38,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Head to the Plex [Downloads](https://www.plex.tv/downloads/) page and copy the installation link for CentOS. Use `wget` to download the installer via the copied link:
 
-        wget https://downloads.plex.tv/plex-media-server/1.5.5.3634-995f1dead/plexmediaserver-1.5.5.3634-995f1dead.x86_64.rpm
+        wget https://downloads.plex.tv/plex-media-server/1.12.3.4973-215c28d86/plexmediaserver-1.12.3.4973-215c28d86.x86_64.rpm
 
     This example uses the current link for CentOS, at the time of writing. Be sure to use the up-to-date version supplied on the Plex website.
 

@@ -109,8 +109,8 @@ Using the `due` argument, you can assign a due date for a task:
     [task next]
 
     ID Age   Due Description                                      Urg
-     2 11s    7h write Taskwarrior guide for the Linode community 8.65
-     1 16min     buy groceries                                       0
+      2 11s    7h write Taskwarrior guide for the Linode community 8.65
+      1 16min     buy groceries                                       0
 
     2 tasks
 

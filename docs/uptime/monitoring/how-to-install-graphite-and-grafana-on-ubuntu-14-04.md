@@ -11,6 +11,8 @@ modified_by:
   name: Sergey Pariev
 published: 2015-12-02
 title: 'Deploy Graphite with Grafana on Ubuntu 14.04'
+deprecated: true
+deprecated_link: uptime/monitoring/install-graphite-and-grafana/
 contributor:
   name: Sergey Pariev
   link: https://twitter.com/spariev

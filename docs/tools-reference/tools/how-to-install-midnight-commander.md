@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide shows how to install and use Midnight Commander, a text user-interface file manager.'
-keywords: ["midnight commander", " file manager", " text user-interface", " TUI"]
+keywords: ["midnight commander", "file manager", "text user interface", "TUI"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-11
 modified: 2017-09-12
@@ -13,7 +13,7 @@ title: 'How to Use Midnight Commander, a Visual File Manager'
 contributor:
   name: Alexandru Andrei
 external_resources:
-- '[Midnight Commander](https://midnight-commander.org/)'
+ - '[Midnight Commander](https://midnight-commander.org/)'
 ---
 
 

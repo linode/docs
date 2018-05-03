@@ -149,7 +149,7 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
 21:33:23.178 INFO - The node is registered to the hub and ready to use
 {{< /output >}}
 
-	You can also check the output from the hub itself:
+  You can also check the output from the hub itself:
 
     {{< output >}}
 21:27:53.849 INFO [DefaultGridRegistry.add] - Registered a node http://198.58.122.154:5555

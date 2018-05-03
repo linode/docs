@@ -1,12 +1,12 @@
-import pytest
+# -*- coding: utf-8 -*-
 
 import logging
 import scrapy
+
 from scrapy import Item, Field
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.crawler import CrawlerProcess
-from test_alias import localserver
 
 class Docs404Item(Item):
     referer = Field()
@@ -46,9 +46,14 @@ class Docs404Spider(CrawlSpider):
             item['url'] = response.url
             return item
 
-@localserver
-def test_404():
+
+if __name__ == "__main__":
     import os
+    import sys
+    import requests
+
+    from blueberry import BASE_URL
+
     process = CrawlerProcess({ 'USER_AGENT': 'docs404',
                                'FEED_URI': 'temp.csv',
                                'FEED_FORMAT': 'csv' })
@@ -56,6 +61,15 @@ def test_404():
     process.start()
     f = open('temp.csv')
     os.remove('temp.csv')
-    assert sum([1 for line in f]) == 0,'404 response in HTML - see scraper logs'
 
+    try:
+        requests.get(BASE_URL)
+    except requests.exceptions.ConnectionError:
+        print('\n\nHugo server not running on port 1313')
+        sys.exit(1)
 
+    if sum([1 for line in f]) != 0:
+        print('404 response in HTML - see logs')
+        sys.exit(1)
+    else:
+        print('\n\nScraper did not find any 404 links')

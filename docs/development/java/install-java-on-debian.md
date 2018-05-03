@@ -32,7 +32,7 @@ Java is a powerful programming language. Software written in Java can be compile
 
 If you don't plan on using Java to write programs, the JRE is all you need. In Debian the JRE metapackage is called `default-jre`, this metapackage pulls several packages needed to run headless Java applications.
 
-	sudo apt install default-jre
+  sudo apt install default-jre
 
 After the installation finishes, you can verify that the JRE was installed by running `dpkg -s default-jre`. The output will contain information about the Java installation, including a status line confirming that Java is installed:
 

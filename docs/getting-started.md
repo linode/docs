@@ -6,7 +6,7 @@ keywords: ["getting started", "intro", "basics", "first steps"]
 description: 'This guide will help you set up your first Linode.'
 og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-28
+modified: 2018-04-17
 modified_by:
   name: Linode
 published: 2009-07-19
@@ -26,7 +26,9 @@ Thank you for choosing Linode as your cloud hosting provider! This guide will he
 
 If you've already created an account and booted your Linode, skip ahead to [Connect to Your Linode via SSH](#connect-to-your-linode-via-ssh).
 
+<!-- removing the video for now to test if gifs are more helpful
 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/35724r19mr?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div><script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
+-->
 
 ## Sign Up
 
@@ -55,17 +57,25 @@ The [Linode Manager](https://manager.linode.com) is a web-based control panel th
 
 ### Deploy an Image
 
-After creating a new Linode, select it to open the Linode Manager Dashboard.
+![How to Deploy an Image](/docs/assets/linode-manager/deploy-an-image.gif "Animation shows how to use the Linode Manager to deploy a Linux image.")
 
-1.  Click on **Deploy an Image**.
+Once you've created a new Linode, click the name or **Dashboard** to open the Linode Manager Dashboard.
 
-    [![Linux Dashboard](/docs/assets/linode-manager-dashboard-newacct_small.png)](/docs/assets/linode-manager-dashboard-newacct.png)
+1.  Click on **Deploy an Image** to reach the *Deploy* page.
 
-    The *Deploy* page opens.
+2.  Select a Linux distribution from the **Image** menu. You can choose from:
 
-    [![Deploy a Linux Image](/docs/assets/linode-manager-deploy-an-image_small.png)](/docs/assets/linode-manager-deploy-an-image.png)
+    * [Arch Linux](http://www.archlinux.org/)
+    * [CentOS](http://www.centos.org/)
+    * [CoreOS](https://coreos.com/)
+    * [Debian](http://www.debian.org/)
+    * [Fedora](http://fedoraproject.org/)
+    * [Gentoo](http://www.gentoo.org/)
+    * [openSUSE](http://www.opensuse.org/)
+    * [Slackware](http://www.slackware.com/)
+    * [Ubuntu](http://www.ubuntu.com/)
 
-2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/). If you're new to the Linux operating system, consider selecting Ubuntu 16.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well-supported by online communities, so resolving any issues you may have should be simple.
+    If you're new to the Linux operating system, consider selecting Ubuntu 16.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well-supported by online communities, so resolving any issues you may have should be simple.
 
 3.  Enter a size for the disk in the **Deployment Disk Size** field. By default all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating multiple configuration profiles. You can always create, resize, and delete disks later.
 
@@ -79,13 +89,7 @@ After creating a new Linode, select it to open the Linode Manager Dashboard.
 
 6.  Click **Deploy**.
 
-    You can use the Linode Manager's Dashboard to monitor the progress in real time as shown below.
-
-    [![Provisioning Status](/docs/assets/linode-manager-provisioning-status_small.png)](/docs/assets/linode-manager-provisioning-status.png)
-
-    When the deployment process is completed, your Linode's configuration profile will appear on the Dashboard.
-
-    [![Configuration Profile](/docs/assets/linode-manager-configuration-profile_small.png)](/docs/assets/linode-manager-configuration-profile.png)
+    You can use the Dashboard's *Host Job Queue" to monitor the progress in real time.
 
     {{< note >}}
 Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy a customized Linux distribution. Some of the most popular StackScripts do things like install the Apache web server, configure a firewall, and set up the WordPress content management system.
@@ -95,13 +99,11 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy a cust
 
 Your Linode is now provisioned with the distro of your choice but it's turned off, as indicated in the Dashboard.
 
-Click **Boot** to turn on your Linode.
+![Boot the Linode](/docs/assets/linode-manager/boot-new-linode.gif "Click the Boot button, then OK in the dialog box.")
 
-[![Boot your Linode](/docs/assets/linode-manager-power-on-linode_small.png)](/docs/assets/linode-manager-power-on-linode.png)
+1.  Click **Boot** to turn on your Linode.
 
-When booted, the **Server Status** will change from **Powered Off** to **Running** and there will be a successfully completed **System Boot** job in the **Host Job Queue**.
-
-[![Linode Booted](/docs/assets/linode-manager-linode-booted_small.png)](/docs/assets/linode-manager-linode-booted.png)
+2.  When booted, the **Server Status** will change from **Powered Off** to **Running** and there will be a successfully completed **System Boot** job in the **Host Job Queue**.
 
 ## Connect to Your Linode via SSH
 
@@ -136,6 +138,8 @@ In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 addre
 ### Log In
 
 Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/ssh/ssh-connections-using-putty-on-windows/).
+
+![Copy SSH Command with IP and Log in](/docs/assets/linode-manager/ssh-to-a-linode.gif "Go to the Remote Access tab and copy the SSH command, then paste it into a terminal.")
 
 1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address:
 

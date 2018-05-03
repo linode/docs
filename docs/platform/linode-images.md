@@ -47,7 +47,7 @@ While an image can be captured while your Linode is running, we would recommend 
 Linode Images are limited to 2048MB of data per disk.  You will need to ensure that data within your disk does not exceed this size limit.
 {{< /note >}}
 
-Once the job in the host queue has completed, your Linode's disk has been captured and stored.
+    Once the job in the host queue has completed, your Linode's disk has been captured and stored.
 
 ## Managing Your Images
 
