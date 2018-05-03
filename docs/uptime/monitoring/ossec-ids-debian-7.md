@@ -27,12 +27,12 @@ When installed and configured, OSSEC will provide a real-time view of what's tak
 This guide covers how to install and configure OSSEC on a single Linode running Debian 7 in such a manner that if a file is modified, added or deleted, OSSEC will notify you by email in real-time. OSSEC can also provide notifications for other activities.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
 
-1.  Complete the [Getting Started](/docs/getting-started) guide.
+1.  Complete the [Getting Started](/docs/getting-started/) guide.
 
 2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide. It is especially important to create and enable a firewall. On Linux, OSSEC needs an active iptables firewall for its active response feature to work.
 

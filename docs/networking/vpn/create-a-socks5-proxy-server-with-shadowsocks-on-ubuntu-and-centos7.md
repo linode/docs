@@ -28,12 +28,12 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
 ## Before You Begin
 
-1.  The commands in this guide require root privileges. To run the steps as an elevated user with sudo privileges, prepend each command with `sudo`. If two commands are presented in the same instance (separated by `&&`), remember to use `sudo` after the `&&` (ex. `sudo [command] && sudo [command]`). To create a standard user account with `sudo` privileges, complete the [Add a Limited User Account](/docs/security/securing-your-server#add-a-limited-user-account) section of our Securing your Server guide.
+1.  The commands in this guide require root privileges. To run the steps as an elevated user with sudo privileges, prepend each command with `sudo`. If two commands are presented in the same instance (separated by `&&`), remember to use `sudo` after the `&&` (ex. `sudo [command] && sudo [command]`). To create a standard user account with `sudo` privileges, complete the [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account) section of our Securing your Server guide.
 
 2.  A working firewall is a necessary security measure. Firewall instructions [will be presented](#open-firewall-port-for-shadowsocks-client) for UFW, FirewallD, and Iptables. To configure a firewall on your Linode, visit one of our guides:
 
-    *  [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw)
-    *  [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos)
+    *  [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/)
+    *  [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/)
 
 ## Install the Shadowsocks Server
 
@@ -258,4 +258,3 @@ Press the **Global Mode** button to enable Shadowsocks globally on your computer
 ## Where to Go from Here
 
 Once your Shadowsocks server is online, configure a client on your mobile phone, tablet, or any other devices you use. The [Shadowsocks client download](https://shadowsocks.org/en/download/clients.html) page supports all mainstream platforms.
-

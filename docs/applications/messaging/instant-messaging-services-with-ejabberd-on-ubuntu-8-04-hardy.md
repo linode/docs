@@ -31,7 +31,7 @@ Though you can successfully run an XMPP server with only a passing familiarity o
     Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
 
 -   The XMPP system is federated by nature. Users with accounts on one server--if the server administrators allow it--can communicate with users on other servers. Without a centralized server, every XMPP server maintains the accounts and serves as the communication gateway for their own users. In the XMPP system there is no single point of failure, however each server administrator can decide how their server is going to participate in the federated network. For instance, to federate with Google's "GTalk" XMPP network, server administrators need to have server-to-server (s2s) SSL/TLS encryption enabled, while other servers don't always require this.
--   XMPP takes advantage of ["SRV" DNS records](/docs/dns-guides/introduction-to-dns) to support the resolution of domains to the servers which provide DNS records.
+-   XMPP takes advantage of ["SRV" DNS records](/docs/dns-guides/introduction-to-dns/) to support the resolution of domains to the servers which provide DNS records.
 
 # Install ejabberd
 
@@ -186,6 +186,3 @@ You may wish to consult the following resources for additional information on th
 - [Ejabberd Community Site](http://www.ejabberd.im/)
 - [XMPP Standards Foundation](http://xmpp.org/)
 - [XMPP Client Software](http://xmpp.org/software/clients.shtml)
-
-
-
