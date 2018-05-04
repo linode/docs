@@ -3,18 +3,19 @@ author:
   name: Linode
   email: docs@linode.com
 description: "This guide shows how to boot a Linode from a Block Storage Volume."
-keywords: ["block storage","volume","media","storage","disk"]
+og_description: "This guide shows how to boot a Linode from a Block Storage Volume."
+keywords: ["block storage","volume","media","storage","disk", "boot", "boot disk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-01
+modified: 2018-05-04
 modified_by:
   name: Linode
-published: 2018-05-01
+published: 2018-05-04
 title: Boot a Linode from a Block Storage Volume
 ---
 
 <!-- ![Boot a Linode from a Block Storage Volume](/docs/assets/block-storage/boot-linode-block-storage-title.png "Boot a Linode from a Block Storage Volume Title Graphic") -->
 
-Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. Due to the simplicity and low cost of attaching new Block Storage Volumes, Block Storage can be an easy mount point to save full volumes to and to boot from.
+Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. In addition to storing files and media, you can also use a Block Storage Volume as a boot disk. This can provide a low-cost way to maintain an image that can be quickly attached to a new Linode and booted up when needed.
 
 This guide shows how to create a duplicate of a primary disk to be booted from a Block Storage Volume. Once complete, the Linode can be booted from the Block Storage Volume. The process may be reversed in order to restore the primary disk from the Block Storage backup.
 
@@ -22,7 +23,7 @@ This guide shows how to create a duplicate of a primary disk to be booted from a
 
 Create a Block Storage Volume and attach it to the target Linode. Ensure that the Volume is the same size as the primary disk and in the same data center as the Linode.
 
-Visit our [Block Storage guide](/docs/platform/how-to-use-block-storage-with-your-linode/) to create and mount the Block Storage Volume.
+Visit our [Block Storage guide](/docs/platform/how-to-use-block-storage-with-your-linode/) to create a Block Storage Volume.
 
 ## Duplicate a Primary Disk to a Block Storage Volume
 
@@ -32,11 +33,11 @@ Visit our [Block Storage guide](/docs/platform/how-to-use-block-storage-with-you
 
     Connect to the Linode via [Lish](/docs/networking/using-the-linode-shell-lish/).
 
-2.  Use `fdisk` to make sure your primary disk and Block Storage Volume are available as `dev/sda` and `dev/sdc` respectively:
+2.  Use `fdisk` to make sure your primary disk and Block Storage Volume are available as `dev/sda` and `dev/sdc`, respectively:
 
         fdisk -l
 
-3.  Use pv to copy the contents of the primary diskto the Block Storage Volume. The options `-pte` display progress, elapsed time, and estimated time remaining and may be omitted:
+3.  Use pv to copy the contents of the primary disk to the Block Storage Volume. The options `-pte` display progress, elapsed time, and estimated time remaining and may be omitted:
 
         pv -pte < /dev/sda > /dev/sdc
 
