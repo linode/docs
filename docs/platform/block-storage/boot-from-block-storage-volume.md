@@ -14,7 +14,7 @@ title: Boot a Linode from a Block Storage Volume
 
 <!-- ![Boot a Linode from a Block Storage Volume](/docs/assets/block-storage/boot-linode-block-storage-title.png "Boot a Linode from a Block Storage Volume Title Graphic") -->
 
-Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. Due to the low cost and how easy it is to attach to Linodes on your account, Block Storage can be an easy mount point to save full volumes to and to boot from.
+Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. Due to the simplicity and low cost of attaching new Block Storage Volumes, Block Storage can be an easy mount point to save full volumes to and to boot from.
 
 This guide shows how to create a duplicate of a primary disk to be booted from a Block Storage Volume. Once complete, the Linode can be booted from the Block Storage Volume. The process may be reversed in order to restore the primary disk from the Block Storage backup.
 
@@ -32,7 +32,11 @@ Visit our [Block Storage guide](/docs/platform/how-to-use-block-storage-with-you
 
     Connect to the Linode via [Lish](/docs/networking/using-the-linode-shell-lish/).
 
-2.  Use pv to copy the contents of the primary disk, `/dev/sda`, to the Block Storage Volume, `/dev/sdc`. The options `-pte` display progress, elapsed time, and estimated time remaining and may be omitted:
+2.  Use `fdisk` to make sure your primary disk and Block Storage Volume are available as `dev/sda` and `dev/sdc` respectively:
+
+        fdisk -l
+
+3.  Use pv to copy the contents of the primary diskto the Block Storage Volume. The options `-pte` display progress, elapsed time, and estimated time remaining and may be omitted:
 
         pv -pte < /dev/sda > /dev/sdc
 
@@ -48,4 +52,4 @@ Visit our [Block Storage guide](/docs/platform/how-to-use-block-storage-with-you
 
 3.  Boot the Linode.
 
-The Linode should boot normally from the Block Storage Volume. Keep in mind that Block Storage might not be as fast as the SSD disks and performance may be affected. Check the Lish console for status updates.
+The Linode should boot normally from the Block Storage Volume. Keep in mind that Block Storage may not be as fast as the SSD disks and performance may be affected. Check the Lish console for status updates.
