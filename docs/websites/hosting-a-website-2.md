@@ -23,7 +23,9 @@ If your website consists only of static files–HTML, CSS, Javascript, and image
 
 ## LAMP Stack
 
-Other common sites, such as [WordPress](), need a database in addition to any static files.
+Other sites, such as [WordPress](), need a database in addition to a web server. This combination is known as a **stack**; one of the most commonly used stacks is the LAMP stack (Linux, Apache, MariaDB and PHP). To install a LAMP stack manually, find the guide for your distribution in our [LAMP](/docs/web-servers/lamp/) section.
+
+If you are using WordPress, another option is to use Docker. You can run a Docker container that includes everything you need to run WordPress. 
 
 ## Test your Website
 
