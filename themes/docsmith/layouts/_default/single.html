@@ -23,6 +23,7 @@
             {{ partial "deprecated" . }}
             {{ .Content }}
             {{ partial "more" . }}
+            {{ partial "community_link" }}
             {{ if and (getenv "HUGO_ENV") (ne .Params.comments false) }}
             {{ partial "disqus" . }}
             {{ end }}
