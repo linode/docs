@@ -5,7 +5,7 @@ author:
 description: 'FreeNAS is network-attached storage software configured through a web interface. This guide shows how to install FreeNAS and connect it to a Block Storage Volume.'
 keywords: ["zfs","freenas","block storage","nas"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-07
+modified: 2018-05-08
 modified_by:
   name: Linode
 title: 'Install FreeNAS on a Linode with Block Storage'
@@ -83,7 +83,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 ## Install FreeNAS
 
 1.  Press **Enter** to Install/Upgrade
-2.  Press the **Spacebar** to select the FreeNAS disk, `da0` in this screenshot, and press **Enter**:
+2.  Press the **Spacebar** to select the FreeNAS disk (`da0` in this screenshot) and press **Enter**:
 
     ![Select the FreeNAS disk](/docs/assets/applications/cloud-storage/freenas-bs/freenas-installation-select-disk.png "Select the FreeNAS disk.")
 
@@ -100,9 +100,9 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
     ![Screenshot of the Dashboard, ready to reboot into the FreeNAS profile.](/docs/assets/applications/cloud-storage/freenas-bs/reboot-freenas-profile.png "Screenshot of the Dashboard, ready to reboot into the FreeNAS profile.")
 
-    SSH and Lish are disabled in FreeNAS, use Glish to monitor the first boot which takes several minutes. Once initialization completes, close Glish and proceed to the next step to use the web interface for configuration.
+    SSH and Lish are disabled in FreeNAS. Use Glish to monitor the first boot which takes several minutes. Once initialization completes, close Glish and proceed to the next step to use the web interface for configuration.
 
-2.  Use a web browser to navigate to the Linode's IP. Log in with the user `root` and the password set in Step 4 of the previous section.
+2.  Use a web browser to navigate to the Linode's IP. Log in with the user `root` and the password set in Step 4 of the previous section. Close any popup menu that appears when you first log in.
 
 3.  Click the **Network** icon and complete the network information using the Default Gateways and DNS Resolvers found in the [Remote Access](/docs/networking/remote-access/) tab of the Linode Manager. Use the DNS Resolvers information to fill in the Nameserver fields. Click **Save** before continuing.
 
