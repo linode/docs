@@ -57,7 +57,7 @@ server {
 }
 {{< /file >}}
 
-3.  The configuration above tells NGINX to look for your site's files in `/var/www/example.com`; create this directory now, subsituting your domain name for `example.com`:
+3.  The configuration above tells NGINX to look for your site's files in `/var/www/example.com`; create this directory now, substituting your domain name for `example.com`:
 
         sudo mkdir -p /var/www/example.com
 
