@@ -65,19 +65,23 @@ server {
 
         sudo chown username:username /var/www/example.com
 
-5.  Test your NGINX configuration for errors:
+5.  Disable the default NGINX welcome page:
+
+        sudo rm /etc/nginx/sites-enabled/default
+
+6.  Test your NGINX configuration for errors:
 
         sudo nginx -t
 
-6.  If there are no errors, reload the configuration:
+7.  If there are no errors, reload the configuration:
 
         sudo nginx -s reload
 
-7.  Copy the static files from your local computer to the target directory on your Linode. There are many ways to accomplish this. For example, if your site files are stored in a directory called `my-website` on your computer, you can use `scp` from your local computer:
+8.  Copy the static files from your local computer to the target directory on your Linode. There are many ways to accomplish this. For example, if your site files are stored in a directory called `my-website` on your computer, you can use `scp` from your local computer:
 
         scp -r my-website/* username@<linode-ip-address>:/var/www/example.com/
 
-8.  Activate the firewall using the built-in NGINX plugin for ufw:
+9.  Activate the firewall using the built-in NGINX plugin for ufw:
 
         sudo ufw allow 'NGINX Full'
         sudo ufw allow ssh
@@ -93,11 +97,11 @@ This configuration is sufficient to get you started. For more advanced options a
 
 Other sites, such as [WordPress](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/), need a database in addition to a web server. This combination is known as a **stack**; WordPress is often used with the extremely popular LAMP stack (Linux, Apache, MariaDB and PHP). To install a LAMP stack manually, find the guide for your distribution in our [LAMP](/docs/web-servers/lamp/) section.
 
-If you are using WordPress, another option is to use Docker. All of the components needed to run WordPress, along with WordPress itself, are bundled into a container that can be deployed with single command. Official Docker images are also available for other CMS platforms including [Ghost](https://hub.docker.com/_/ghost/) and [Joomla](https://hub.docker.com/_/joomla/). <!--- See our [WordPress on Docker](/docs/quick-answers/install-wordpress-using-docker/) guide for details. --->
+If you are using WordPress, another option is to use Docker. All of the components needed to run WordPress, along with WordPress itself, are bundled into a container that can be deployed with single command. Official Docker images are also available for other CMS platforms including [Ghost](https://hub.docker.com/_/ghost/) and [Joomla](https://hub.docker.com/_/joomla/). <!--- See our [WordPress on Docker](/docs/quick-answers/install-wordpress-using-docker/) guide for details. ---->
 
 ### Other Site Types
 
-If none of these application stacks fits your situation, review our [Websites](/docs/websites/) and [Development](/docs/development/) sections to find a solution that will work for your project.
+If none of these application stacks fit your situation, review our [Websites](/docs/websites/) and [Development](/docs/development/) sections to find a solution that will work for your project.
 
 ## Test your Website
 
