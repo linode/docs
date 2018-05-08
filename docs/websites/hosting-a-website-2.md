@@ -3,10 +3,9 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Our guide to hosting a website on your Linode.'
-keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
+keywords: ["hosting a website", "website", "linode quickstart guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['hosting-website/']
-modified: 2018-05-7
+modified: 2018-05-07
 modified_by:
   name: Linode
 published: 2012-03-13
@@ -17,18 +16,22 @@ title: Hosting a Website
 
 ## Host a Website on Your Linode
 
-Hosting a website is one of the most common uses for a Linode. The process for getting your website up and running varies greatly with the size and complexity of your project. This guide will walk you through the process of setting up some of the most common types of simple website.
+Hosting a website is one of the most common uses for a Linode. A website can be anything from a single HTML file to an interactive application with multiple components, and the hosting process varies greatly depending on the type of website being served. This guide will walk you through the process of setting up some of the most common simple website types.
 
 Complete the steps in our [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides before you begin. The steps
 in this guide will take you from a configured Linode to a fully functioning website.
 
 {{< note >}}
-This guide was written for Debian 9 and Ubuntu 18.04. If you are using a different distribution, see our []() guides for distro-specific information.
+This guide was written for Debian 9 and Ubuntu 18.04. If you are using a different distribution, you will have to adapt some of the commands (e.g. using `yum` instead of `apt`).
 {{< /note >}}
 
-## Static Sites
+## Set Up a Web Server
 
-If your website consists only of static files–HTML, CSS, Javascript, and images–then you only need to set up a simple web server to serve the static files. Static sites include everything from bare-bones HTML and CSS pages to much more complicated [React.js](https://reactjs.org/) apps. NGINX is a good choice for hosting this type of website.
+The application you use to serve your website depends on the type of site. Find the section below that matches your situation.
+
+### Static Sites
+
+If your website consists entirely of static files–HTML, CSS, JavaScript, and images–then you only need to set up a simple web server to serve the files. Static sites include everything from bare-bones HTML pages to much more complicated [React.js](/docs/development/javascript/deploy-a-react-app-on-linode/) apps. NGINX is a good choice for hosting this type of website.
 
 {{< note >}}
 If you are planning to host a simple site such as a blog or photo gallery, another option is to use a [static site generator](https://linode.com/docs/websites/static-sites/how-to-choose-static-site-generator/).
@@ -42,8 +45,8 @@ If you are planning to host a simple site such as a blog or photo gallery, anoth
 
     {{< file "/etc/nginx/conf.d/example.com.conf" >}}
 server {
-    listen         80 default_server;
-    listen         [::]:80 default_server;
+    listen         80;
+    listen         [::]:80;
     server_name    example.com www.example.com;
     root           /var/www/example.com;
     index          index.html;
@@ -58,46 +61,51 @@ server {
 
         sudo mkdir -p /var/www/example.com
 
-4.  Give ownership of this directory to the `nginx` user:
+4.  Give ownership of this directory to your limited user account:
 
-        sudo chown nginx:nginx /var/www/example.com
+        sudo chown username:username /var/www/example.com
 
-5.  Deactivate the default NGINX site:
-
-        sudo mv /etc/nginx/conf.d/default /etc/nginx.conf.d/default.conf.disabled
-
-    If this doesn't work, your NGINX version may have stored the default page in a different location:
-
-        sudo rm /etc/nginx/sites-available/default
-
-6.  Test your NGINX configuration for errors:
+5.  Test your NGINX configuration for errors:
 
         sudo nginx -t
 
-7.  If there are no errors, reload the congiguration:
+6.  If there are no errors, reload the configuration:
 
         sudo nginx -s reload
 
-8.  Copy the static files from your local computer to the target directory on your Linode. There are many ways to accomplish this. For example, if your site files are stored in a directory called `my-website` on your computer, you can use `scp` from your local computer:
+7.  Copy the static files from your local computer to the target directory on your Linode. There are many ways to accomplish this. For example, if your site files are stored in a directory called `my-website` on your computer, you can use `scp` from your local computer:
 
-        scp -r my-website/* username@<linode-ip-address>:/var/www/example.com
+        scp -r my-website/* username@<linode-ip-address>:/var/www/example.com/
 
+8.  Activate the firewall using the built-in NGINX plugin for ufw:
 
+        sudo ufw allow 'NGINX Full'
+        sudo ufw allow ssh
+        sudo ufw enable
 
 If NGINX loads successfully (you can check with `sudo systemctl status nginx`) you can skip to the [Test your Website](#test-your-website) section below.
-## LAMP Stack
 
-Other sites, such as [WordPress](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/), need a database in addition to a web server. This combination is known as a **stack**; one of the most commonly used stacks is the LAMP stack (Linux, Apache, MariaDB and PHP). To install a LAMP stack manually, find the guide for your distribution in our [LAMP](/docs/web-servers/lamp/) section.
+{{< note >}}
+This configuration is sufficient to get you started. For more advanced options and optimizations, see our [series](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) on NGINX configuration.
+{{< /note >}}
 
-If you are using WordPress, another option is to use Docker. All of the components of the LAMP stack, as well as WordPress itself, are bundled into a single container. <!--- See our [WordPress on Docker](/docs/quick-answers/install-wordpress-using-docker/) guide for details. --->
+### LAMP Stack
+
+Other sites, such as [WordPress](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/), need a database in addition to a web server. This combination is known as a **stack**; WordPress is often used with the extremely popular LAMP stack (Linux, Apache, MariaDB and PHP). To install a LAMP stack manually, find the guide for your distribution in our [LAMP](/docs/web-servers/lamp/) section.
+
+If you are using WordPress, another option is to use Docker. All of the components needed to run WordPress, along with WordPress itself, are bundled into a container that can be deployed with single command. Official Docker images are also available for other CMS platforms including [Ghost](https://hub.docker.com/_/ghost/) and [Joomla](https://hub.docker.com/_/joomla/). <!--- See our [WordPress on Docker](/docs/quick-answers/install-wordpress-using-docker/) guide for details. --->
+
+### Other Site Types
+
+If none of these application stacks fits your situation, review our [Websites](/docs/websites/) and [Development](/docs/development/) sections to find a solution that will work for your project.
 
 ## Test your Website
 
-It's a good idea to test your website(s) before you add the DNS records. To do this, enter your Linode's public IP address in the address bar of a web browser. You should see your website displayed. When you are confident that the site if functioning correctly, proceed to the next section.
+It's a good idea to test your website(s) before you add DNS records and make the site available publicly on your domain. Enter your Linode's public IP address in the address bar of a web browser. You should see your website displayed. When you are confident that the site is functioning correctly, proceed to the next section.
 
 ## Add DNS Records
 
-Now you need to point your domain name at your Linode. This process can take a while, so please allow up to 24 hours for DNS changes to be reflected throughout the Internet.
+In order to point your domain name at your Linode, you will have to add DNS records. DNS changes can take up to 24 hours to propagate across the internet.
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 
