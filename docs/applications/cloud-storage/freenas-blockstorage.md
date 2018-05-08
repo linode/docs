@@ -15,7 +15,7 @@ external_resources:
  - '[Available FreeNAS Plugins](http://doc.freenas.org/11/plugins.html#available-plugins)'
 ---
 
-Network-attached storage (NAS) allows multiple devices (clients) to access the connected storage media as though it's stored locally to the device. FreeNAS is FreeBSD-based NAS software, configured via a browser interface.
+Network-attached storage (NAS) allows multiple client devices to access the connected storage media as though it's stored locally to the device. FreeNAS is FreeBSD-based NAS software, configurable via a browser interface.
 
 This guides shows how to install FreeNAS on a Linode and attach a [Block Storage Volume](/blockstorage/) so that you can access both FreeNAS and the Storage Volume from your computer, phone, or tablet almost anywhere in the world.
 
@@ -27,9 +27,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Prepare Your Linode
 
-1.  Create a Linode in your preferred data center. Ensure that your Linode has at least 8GB RAM and at least 11GB of available disk space.
-
-    FreeNAS recommends 16GB of RAM for media servers. Visit the [official requirements](http://www.freenas.org/hardware-requirements/) for more information.
+1.  Create a Linode in your preferred data center. Ensure that your Linode has at least 8GB RAM and at least 11GB of available disk space. FreeNAS recommends 16GB of RAM for media servers. Visit the [official requirements](http://www.freenas.org/hardware-requirements/) for more information.
 
 2.  Disable the [Lassie Shutdown Watchdog](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog/) to prevent it from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
@@ -60,17 +58,17 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Create an Installer Disk
 
-1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/docs/networking/using-the-linode-shell-lish/) from the **Remote Access** tab of the Linode Manager.
+1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/networking/using-the-linode-shell-lish/) from the **Remote Access** tab of the Linode Manager.
 
-2.  Once in Rescue Mode, run the following command to set the [latest FreeNAS release](http://www.freenas.org/download-freenas-release/) as a variable:
+2.  Once in Rescue Mode, run the following command to set the [latest FreeNAS release](http://www.freenas.org/download-freenas-release/) (11.1 at the time of this writing) as a variable:
 
         iso=https://download.freenas.org/11/latest/x64/FreeNAS-11.1-U4.iso
 
-3.  Update Certificate Authority Certificate to allow the secure download:
+3.  Run the `update-ca-certificates` program to allow the secure download:
 
         update-ca-certificates
 
-4.  Download the FreeNAS iso and expand it to the Installer disk:
+4.  Download the FreeNAS ISO image and expand it to the Installer disk:
 
         curl $iso | dd of=/dev/sda
 
@@ -82,7 +80,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Install FreeNAS
 
-1.  Press **Enter** to Install/Upgrade
+1.  Press **Enter** to Install/Upgrade.
 2.  Press the **Spacebar** to select the FreeNAS disk (`da0` in this screenshot) and press **Enter**:
 
     ![Select the FreeNAS disk](/docs/assets/applications/cloud-storage/freenas-bs/freenas-installation-select-disk.png "Select the FreeNAS disk.")
@@ -100,9 +98,9 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
     ![Screenshot of the Dashboard, ready to reboot into the FreeNAS profile.](/docs/assets/applications/cloud-storage/freenas-bs/reboot-freenas-profile.png "Screenshot of the Dashboard, ready to reboot into the FreeNAS profile.")
 
-    SSH and Lish are disabled in FreeNAS. Use Glish to monitor the first boot which takes several minutes. Once initialization completes, close Glish and proceed to the next step to use the web interface for configuration.
+    SSH and Lish are disabled in FreeNAS. Use Glish to monitor the first boot which takes several minutes. Once booted, close Glish and proceed to the next step to use the web interface for configuration.
 
-2.  Use a web browser to navigate to the Linode's IP. Log in with the user `root` and the password set in Step 4 of the previous section. Close any popup menu that appears when you first log in.
+2.  Use a web browser to navigate to the Linode's IP address. Log in with the user `root` and the password set in Step 4 of the previous section. Close any popup menu that appears when you first log in.
 
 3.  Click the **Network** icon and complete the network information using the Default Gateways and DNS Resolvers found in the [Remote Access](/docs/networking/remote-access/) tab of the Linode Manager. Use the DNS Resolvers information to fill in the Nameserver fields. Click **Save** before continuing.
 
@@ -117,7 +115,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 ### Format Block Storage Volume as ZFS
 
 {{< caution >}}
-Formatting will erase all data on the Volume.
+Formatting will erase all data on the volume.
 {{< /caution >}}
 
 1.  Click the **Storage** icon, then **View Disks** to confirm that FreeNAS recognized the Block Storage Volume.
@@ -144,9 +142,9 @@ Formatting will erase all data on the Volume.
 
 6.  Press **Confirm** and the Wizard will complete the remaining configuration.
 
-## Enable SSH Root Login to Troubleshoot your FreeNAS Linode
+## Enable SSH Root Login (Optional)
 
-FreeNAS has SSH disabled by default. This closes some security exposure, but makes it difficult to troubleshoot issues from the command line.
+FreeNAS has SSH disabled by default. This is a more secure configuration, but makes it difficult to troubleshoot issues from the command line.
 
 1.  Click the **Services** icon, then the wrench icon on the SSH line:
 
@@ -154,8 +152,8 @@ FreeNAS has SSH disabled by default. This closes some security exposure, but mak
 
 2.  Check **Login as Root with password** and press **OK**. Check **Start on Boot** if you would like to keep the setting enabled through future reboots. Click **Start Now**.
 
-    Use the same user name and password as for the web interface.
+    Use the same username and password as for the web interface.
 
 ## Next Steps
 
-Now that FreeNAS is running connected to your Block Storage Volume, you can [connect to it from your local machine](http://doc.freenas.org/11/sharing.html), from a [Plex server](http://www.freenas.org/blog/plex-on-freenas/), or from a variety of sources using [available plugins](http://doc.freenas.org/11/plugins.html#available-plugins).
+Now that FreeNAS is running connected to your Block Storage Volume, you can [connect to it from your local machine](http://doc.freenas.org/11/sharing.html), to a [Plex server](http://www.freenas.org/blog/plex-on-freenas/), or a variety of other platforms using [plugins](http://doc.freenas.org/11/plugins.html#available-plugins).
