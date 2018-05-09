@@ -1,6 +1,6 @@
 {
   "aliases": {
-    "elements": true,
+    "elements": false,
     "required": false,
     "type": "list",
     "description": "Other locations where this guide can be found. Should be an array of entries in the form /applications/big-data/using-big-data/"
@@ -32,7 +32,7 @@
       "link"
     ],
     "required": false,
-    "type": "dict",
+    "type": "text",
     "description": "For freelancer guides only. First and last name of the freelancer who wrote the guide."
   },
   "deprecated": {
@@ -157,7 +157,7 @@
   "slug": {
     "elements": false,
     "required": false,
-    "type": "bool",
+    "type": "text",
     "description": "Hugo front matter variable. Specifies the tail of the output URL for this page."
   },
   "title": {

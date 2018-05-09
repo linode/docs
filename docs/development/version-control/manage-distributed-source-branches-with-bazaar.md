@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2010-01-18
 title: Manage Distributed Source Branches with Bazaar
+deprecated: true
 external_resources:
  - '[The Bazaar Project](http://bazaar.canonical.com/en/)'
  - '[Official Bazaar User Documentation](http://doc.bazaar.canonical.com/latest/en/user-guide/)'

@@ -7,11 +7,12 @@ cache:
 
 env:
   - TEST_SUITE=vale
-  - TEST_SUITE=pytest
+  - TEST_SUITE=blueberry
+  - TEST_SUITE=docs404
 
 before_install:
-  - if [ $TEST_SUITE == pytest ]; then
-      wget https://github.com/gohugoio/hugo/releases/download/v0.36/hugo_0.36_Linux-64bit.deb;
+  - if [ $TEST_SUITE == docs404 ]; then
+      wget https://github.com/gohugoio/hugo/releases/download/v0.40.2/hugo_0.40.2_Linux-64bit.deb;
       sudo dpkg -i hugo*.deb;
       (hugo server &);
     fi

@@ -6,6 +6,8 @@ description: 'Learn how to generate, update, and disable your Linode API key.'
 keywords: ["linode api", " api key", " key"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['api/key/']
+deprecated: true
+deprecated_link: platform/api/getting-started-with-the-linode-api
 modified: 2014-02-14
 modified_by:
   name: Linode

@@ -19,7 +19,10 @@ external_resources:
  - '[Github Guides](https://guides.github.com/)'
 ---
 
+
 ## Introduction to Git
+
+![How to Install Git on Linux, Mac or Windows](/docs/assets/git/how-to-install-git.jpg/)
 
 Git was designed and developed by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) for Linux kernel development. Git provides support for non-linear, distributed development, allowing multiple contributors to work on a project simultaneously. Git is the most popular distributed version control and source code management system.
 
@@ -28,7 +31,7 @@ This guide explains how to install the latest, stable, prepackaged version `git`
 For more information about using and configuring Git, see our [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide.
 
 {{< note >}}
-This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account.
+This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account.
 {{< /note >}}
 
 

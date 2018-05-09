@@ -2,8 +2,9 @@
 author:
     name: Linode Community
     email: contribute@linode.com
-description: 'Install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu with this guide.'
-keywords: ‘open web analytics,owa,Centos,mysql,debian,ubuntu’
+description: This guide will show how to install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu.
+og_description: This guide will show how to install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu.
+keywords: ['open web analytics','owa','mysql','analytics']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-01-05
 modified: 2016-01-05
@@ -196,4 +197,3 @@ You must click "Save Profile" before trying to enter any of the settings below t
 7.  Copy the tracking code in the language of your choice (JavaScript or PHP) and paste the code into your websites' pages. Now whenever someone loads a page with the tracking code, OWA will know about it and the data will show up in the reports.
 
 8.  Click "View Reports" in the Sites Roster page and begin happy analyzing!
-

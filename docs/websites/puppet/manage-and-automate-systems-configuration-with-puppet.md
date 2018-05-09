@@ -5,12 +5,12 @@ author:
 description: 'Use Puppet for configuration change management.'
 keywords: ["puppet", "puppet configuration", "puppet linux", "configuration change management", "server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['application-stacks/puppet/automation/']
 modified: 2011-08-22
 modified_by:
   name: Linode
 published: 2010-06-13
-expiryDate: 2017-11-14
+deprecated: true
+deprecated_link: applications/configuration-management/install-and-configure-puppet/
 title: Manage and Automate Systems Configuration with Puppet
 external_resources:
  - '[Puppet Labs Home Page](http://www.puppetlabs.com/)'
@@ -23,11 +23,11 @@ external_resources:
 
 Puppet is an open source "configuration change management" tool that allows users to automate and standardize the configuration of software infrastructure. Using a domain specific language for describing configuration, Puppet allows users to manage configurations in a service-oriented manner.
 
-Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [getting started guide](/docs/getting-started/) and have installed Puppet according to our [Puppet installation guide](/docs/application-stacks/puppet/installation).
+Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [getting started guide](/docs/getting-started/) and have installed Puppet according to our [Puppet installation guide](/docs/applications/configuration-management/install-and-configure-puppet/).
 
 ## Using Puppet
 
-Puppet is a collection of tools built around a language that allows systems administrators to specify configurations, or manifests, to describe the state of a computer system. In the [Puppet installation guide](/docs/application-stacks/puppet/installation), we covered installing both the "Puppetmaster" server component and the Puppet client. This section covers a number of different methods you may use to apply Puppet manifests to your Linodes.
+Puppet is a collection of tools built around a language that allows systems administrators to specify configurations, or manifests, to describe the state of a computer system. This section covers a number of different methods you may use to apply Puppet manifests to your Linodes.
 
 ### Running Puppet Manually
 
@@ -39,7 +39,7 @@ This will apply the configuration specified in the manifest to your system.
 
 ### Running Puppet with Cron
 
-By default, `puppetd` runs every 30 minutes, contacts the `puppetmasterd`, retrieves changes to the manifests, and applies these changes to the system. If you want to run Puppet more or less frequently, you can configure a [cron job](/docs/linux-tools/utilities/cron) on your client systems that resemble the following:
+By default, `puppetd` runs every 30 minutes, contacts the `puppetmasterd`, retrieves changes to the manifests, and applies these changes to the system. If you want to run Puppet more or less frequently, you can configure a cron job on your client systems that resemble the following:
 
     30 * * * * puppetd --onetime --no-daemonize --logdest syslog > /dev/null 2>&1
 
@@ -47,7 +47,7 @@ The options to `puppetd` tell the program to run once without daemonizing, to lo
 
     puppetd --onetime --no-daemonize --logdest syslog
 
-In order for `puppetd` to work in this manner you must [configure secure Puppet communications](/docs/application-stacks/puppet/installation#configure_secure_puppet_communications). To test the operation of Puppetd at the command line, with interactive output, you may issue the following command:
+In order for `puppetd` to work in this manner you must configure secure Puppet communications. To test the operation of Puppetd at the command line, with interactive output, you may issue the following command:
 
     puppetd --test
 

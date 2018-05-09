@@ -56,18 +56,18 @@ You can edit hosts.allow and hosts.deny with any text editor you like. Open the 
 
 {{< file "/etc/hosts.deny" >}}
 #
-# hosts.deny	This file contains access rules which are used to
-	#		deny connections to network services that either use
-	#		the tcp_wrappers library or that have been
-	#		started through a tcp_wrappers-enabled xinetd.
-	#
-	#		The rules in this file can also be set up in
-	#		/etc/hosts.allow with a 'deny' option instead.
-	#
-	#		See 'man 5 hosts_options' and 'man 5 hosts_access'
-	#		for information on rule syntax.
-	#		See 'man tcpd' for information on tcp_wrappers
-	#
+# hosts.deny  This file contains access rules which are used to
+  #    deny connections to network services that either use
+  #    the tcp_wrappers library or that have been
+  #    started through a tcp_wrappers-enabled xinetd.
+  #
+  #    The rules in this file can also be set up in
+  #    /etc/hosts.allow with a 'deny' option instead.
+  #
+  #    See 'man 5 hosts_options' and 'man 5 hosts_access'
+  #    for information on rule syntax.
+  #    See 'man tcpd' for information on tcp_wrappers
+  #
 
 {{< /file >}}
 

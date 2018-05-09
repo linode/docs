@@ -24,6 +24,7 @@ ansible
 antispam
 ap
 apache2
+api
 appimage
 appletalk
 appserver
@@ -105,7 +106,6 @@ cabd
 cacert
 caddy
 caddyfile
-caker
 cakey
 calc
 captcha
@@ -128,11 +128,10 @@ cheatsheet
 checksummed
 checksums
 chefspec
-chery
 chgrp
 chmod
 chown
-christoph
+chromecast
 chroot
 chrooted
 citad
@@ -426,7 +425,6 @@ grsecurity
 gsa
 gsad
 guacd
-guarisma
 gui
 gunicorn
 gz
@@ -599,11 +597,8 @@ kubelet
 kubelets
 kubernetes
 kubespray
-labelled
 lambdabunker
 laravel
-lastest
-latestet
 lbmethod
 lda
 ldap
@@ -767,6 +762,8 @@ nameservers
 namespace
 namespaces
 nano
+nanode
+natively
 ncurses
 neo
 neomake
@@ -889,13 +886,14 @@ phpmyadmin
 phusion
 pid
 pidfile
+pipfile
+pipenv
 piwik
 pki
 plaintext
 plesk
 plex
 plone
-ploop
 pluggable
 png
 pocketmine
@@ -951,8 +949,10 @@ px
 py
 pyamqp
 pyinotify
+pypa
 pypiserver
 pyspark
+pytest
 python3
 pythonic
 qmail
@@ -1094,7 +1094,6 @@ shortguide
 shortguides
 shortname
 shoutcast
-simfs
 sintra
 sitename
 slackpkg
@@ -1154,6 +1153,8 @@ subnet
 subnets
 subnetwork
 subreddits
+substring
+substrings
 subtab
 subtransit
 sudo
@@ -1226,7 +1227,6 @@ tomacat
 tomcat6
 traceroute
 trackbar
-trafic
 transcoder
 truststore
 tt

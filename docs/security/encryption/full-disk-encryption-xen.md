@@ -3,8 +3,9 @@ deprecated: true
 author:
   name: Quintin Riis
   email: docs@linode.com
-description: Full Disk Encryption.
-keywords: full disk encryption debian wheezy security cryptsetup
+description: Full disk encryption helps you to protect the information stored on your Linode's disk. This guide shows how to implement full disk encryption on Debian.
+og_description: Full disk encryption helps you to protect the information stored on your Linode's disk. This guide shows how to implement full disk encryption on Debian.
+keywords: ['full disk encryption', 'debian', 'wheezy', 'security', 'cryptsetup']
 aliases: ['security/full-disk-encryption-xen/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-06-19

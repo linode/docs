@@ -254,7 +254,7 @@ Before you can use FreePBX, you will need to set up a LAMP stack. An basic step-
 
     {{< file "/etc/apache2/envvars" >}}
 export APACHE_RUN_USER=asterisk
-		export APACHE_RUN_GROUP=asterisk
+    export APACHE_RUN_GROUP=asterisk
 
 {{< /file >}}
 

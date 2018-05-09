@@ -7,7 +7,7 @@ contributor:
   link: https://twitter.com/jlwallen
 description: 'Create and tag a custom Docker Image on your Linode, and upload it to Docker Hub for sharing or archiving.'
 og_description: 'Docker makes it easy to develop and deploy custom and consistent environments, called images. Each image includes specific applications and dependencies. Learn how to create a custom Docker Image and upload it to Docker Hub for sharing or archiving.'
-keywords: 'docker,container,dockerfile,docker image'
+keywords: ['docker','container','dockerfile','docker image','docker hub']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-01
 modified_by:
@@ -22,7 +22,7 @@ external_resources:
 
 Docker makes it easy to develop and deploy custom and consistent environments that include specific applications and dependencies. Docker calls these compilations Images. Docker images can be hosted and retrieved from private locations or from the official repository, [Docker Hub](https://hub.docker.com/).
 
-This guide is part of a series of introductions to Docker concepts. The commands to create an image in this guide build on the previous guide, [How to Install and Pull Images for Container Deployment](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment). For more information about Docker and containers, visit our [guides on Containers](/docs/applications/containers).
+This guide is part of a series of introductions to Docker concepts. The commands to create an image in this guide build on the previous guide, [How to Install and Pull Images for Container Deployment](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/). For more information about Docker and containers, visit our [guides on Containers](/docs/applications/containers/).
 
 ## Create a Docker Image
 
