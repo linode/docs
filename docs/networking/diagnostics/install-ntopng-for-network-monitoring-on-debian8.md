@@ -5,7 +5,7 @@ author:
 description: 'This Linode tutorial guides you through deploying ntopng, a powerful, lightweight network tool that monitors and analyzes web traffic and packet flows.'
 keywords: ["ntopng", "network monitor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-06-28
+published: 2018-05-09
 aliases: ['networking/diagnostics/deploy-ntopng-on-debian-8/']
 modified: 2018-04-16
 modified_by:
@@ -20,18 +20,20 @@ contributor:
 
 ## Overview of ntopng Network Monitoring System
 
-In this tutorial you will configure and install [ntopng](https://www.ntop.org/products/traffic-analysis/ntop/) on your Linode. The tutorial will also cover configuration examples and suggestions for the web administration interface. After you complete the tutorial and have the network monitor deployed, you'll be able to perform the following:
+In this tutorial you will configure and install [ntopng](https://www.ntop.org/products/traffic-analysis/ntop/) on your Linode. The tutorial will also cover configuration examples and suggestions for the web administration interface. After you complete the tutorial and have the network monitor deployed, you'll be able to:
 
 -   Monitor and analyze traffic from your Linode, including security threats.
 -   Create Host Pools to group connected devices together based on your own criteria.
--   Have a general idea of how to work in the user interface and view statistics, as well as make your own configurations.
+-   Work with the user interface and view statistics, as well as make your own configurations.
 
 ### Before You Begin
 
-- You will need root access to your Linode, or a user account with `sudo` privilege.
-- Update your system.
-- Install `ethtool` from your system's repositories.
+You will need root access to your Linode, or a user account with `sudo` privilege.
 
+Update your system and install `ethtool`:
+
+    sudo apt update && sudo apt upgrade
+    sudo apt install ethtool
 
 ### Install ntopng
 
@@ -68,10 +70,10 @@ Ntopng runs as the user `nobody` by default. This is a good choice for daemons r
     Each line of the `tcp-segmentation-offload` section should be set to `off` as shown below:
 
         tcp-segmentation-offload: off
-                tx-tcp-segmentation: off
-                tx-tcp-ecn-segmentation: off
-                tx-tcp-mangleid-segmentation: off
-                tx-tcp6-segmentation: off
+        tx-tcp-segmentation: off
+        tx-tcp-ecn-segmentation: off
+        tx-tcp-mangleid-segmentation: off
+        tx-tcp6-segmentation: off
 
 ## Configure ntopng
 
