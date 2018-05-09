@@ -14,13 +14,9 @@ external_resources:
  - '[Linode API Documentation](https://developers.linode.com)'
 ---
 
-<<<<<<< Updated upstream
-The new version of the Linode API, which is now in general release, is a significant departure from previous versions. If you have existing code that uses an older API version, you will have to adapt it in order to work with the current version. This guide will discuss the key changes in the Linode API and give examples to help you modify your code to take advantage of the new version.
-=======
 Version 4 of the Linode API, which is now in general release, is a significant departure from previous versions. If you have existing code that uses an older API version, you will have to adapt it in order to work with version 4. This guide will discuss the key changes in the Linode API and give examples to help you modify your code to take advantage of the new features in the current version.
->>>>>>> Stashed changes
 
-If you have not used previous versions and are looking to get started with the current version, please see the [API documentation](https://developers.linode.com) or our [Getting Started with the Linode API guide](/docs/platform/api/getting-started-linode-api/).
+If you have not used previous versions and are looking to get started with the current version, please see the [API documentation](https://developers.linode.com) or our [Getting Started with the Linode API guide](/docs/platform/api/getting-started-with-the-linode-api/).
 
 ## General Changes
 
@@ -37,17 +33,6 @@ If you have not used previous versions and are looking to get started with the c
 
 * Error codes also follow standard RESTful format; the custom error codes from previous versions are no longer used or supported.
 
-<<<<<<< Updated upstream
-* Batch requests are no longer supported by the Linode API. Many of the actions that previously required multiple requests–such as creating and booting a new Linode or creating and attaching a Block Storage Volume–can now be achieved in a single request.
-
-## Creating a Linode
-
-The process for creating a new Linode has been streamlined in the new API. Previously setting up a new Linode required multiple requests for creating the Linode, deploying an image, and booting. All of these steps have been combined, allowing you to get a running Linode with a single request:
-
-    curl -X POST https://api.linode.com/v4/linode/instances \
-    -H "Authorization: Bearer $TOKEN" -H "Content-type: application/json" \
-    -d '{"type": "g5-standard-2", "region": "us-east", "image": "linode/debian9", "root_pass": "root_password", "label": "prod-1"}'
-=======
 * Batch requests are no longer supported. Many of the actions that previously required multiple requests–such as creating and booting a new Linode or creating and attaching a Block Storage Volume–can now be achieved in a single request.
 
 ## Creating a Linode
@@ -63,11 +48,10 @@ The process for creating a new Linode has been streamlined in the new API. Previ
       "root_pass": "root_password",
       "label": "prod-1"
       }'
->>>>>>> Stashed changes
 
 ## Examples
 
-This section presents examples of how to convert some of the most commmon tasks from version 3 of the API to version 4.
+This section presents examples of how to convert some of the most common tasks from version 3 of the API to version 4.
 
 ### Linodes
 
@@ -115,15 +99,6 @@ In the new API, `datacenter` has been replaced with `region`. Requests must also
 
 ### StackScripts
 
-<<<<<<< Updated upstream
-### Volumes
-
-### DNS
-
-### Account
-
-## Error Codes
-=======
 StackScripts have been moved under the `/linode` endpoint. To list all available StackScripts:
 
 **API v3**
@@ -136,7 +111,7 @@ StackScripts have been moved under the `/linode` endpoint. To list all available
 
 ### Volumes
 
-Previuosly, a Block Storage Volume could be resized through the `volume.update` method. This method no longer exists, and resizing is now done through the `/resize` endpoint.
+Previously, a Block Storage Volume could be resized through the `volume.update` method. This method no longer exists, and resizing is now done through the `/resize` endpoint.
 
 To resize a Volume (note that in both API versions the size can only be increased):
 
@@ -213,4 +188,3 @@ Version 3 of the API included utility methods for testing the API and retrieving
     curl https://api.linode.com/v4/images
 
     curl https://api.linode.com/v4/linode/types
->>>>>>> Stashed changes
