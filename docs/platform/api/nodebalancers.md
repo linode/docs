@@ -18,7 +18,7 @@ external_resources:
 
 [NodeBalancers](https://www.linode.com/nodebalancers) can be used to provide high availability load balancing for almost any type of website or service hosted on a Linode. This guide will demonstrate how to use the Linode API to create a NodeBalancer with two back end nodes.
 
-You will need a Personal Access Token for the Linode API to complete the steps in this guide. The easiest way to get an access token is by visiting the beta [Linode Manager](https://cloud.linode.com/profile/tokens); for more information, as well as a basic introduction to using the Linode API, see our guide on [Getting Started with the Linode API](/docs/platform/api/getting-started-linode-api).
+You will need a Personal Access Token for the Linode API to complete the steps in this guide. The easiest way to get an access token is by visiting the beta [Linode Manager](https://cloud.linode.com/profile/tokens); for more information, as well as a basic introduction to using the Linode API, see our guide on [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/).
 
 ## Create a NodeBalancer
 
@@ -67,12 +67,12 @@ NodeBalancers are created without any configuration profiles attached. Each prof
         -X POST -d @nodebalancer-config.json
 
 {{< note >}}
-For more information about configuration options, see our [NodeBalancer Reference Guide](https://www.linode.com/docs/platform/nodebalancer/nodebalancer-reference-guide/)
+For more information about configuration options, see our [NodeBalancer Reference Guide](https://www.linode.com/docs/platform/nodebalancer/nodebalancer-reference-guide/).
 {{< /note >}}
 
 ## Add Nodes
 
-Even with a working configuration profile, the NodeBalancer isn't doing anything yet, since it has no nodes connected to it. Repeat the steps in this section for each node you would like to add; usually you will want at least two nodes so that the NodeBalancer can balance the load between the two.
+Even with a working configuration profile, the NodeBalancer isn't doing anything yet, since it has no nodes connected to it. Repeat the steps in this section for each node you would like to add; usually you will want at least two nodes.
 
 ### Create Linodes
 
