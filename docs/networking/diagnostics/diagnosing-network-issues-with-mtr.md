@@ -7,7 +7,7 @@ og_description: MTR is a network diagnostic tool similar to ping and traceroute.
 keywords: ["mtr", "traceroute", "latency", "loss"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linux-tools/mtr/','networking/diagnosing-network-issues-with-mtr/']
-modified: 2018-05-09
+modified: 2018-05-10
 modified_by:
   name: Linode
 published: 2010-04-28
@@ -62,7 +62,7 @@ To install MTR with MacPorts, run:
 
 ## Generate an MTR Report
 
-Because MTR provides an image of the route traffic takes from one host to another, iti s essentially a directional tool. The route taken between two points on the Internet can vary a great deal based on location and the routers that are located upstream. For this reason it is a good idea to collect MTR reports in both directions for all hosts that are experiencing connectivity issues.
+Because MTR provides an image of the route traffic takes from one host to another, it is essentially a directional tool. The route taken between two points on the Internet can vary a great deal based on location and the routers that are located upstream. For this reason it is a good idea to collect MTR reports in both directions for all hosts that are experiencing connectivity issues.
 
 Linode Customer Support will often request MTR reports both **to** and **from** your Linode if you are experiencing networking issues. This is because, from time to time, MTR reports will not detect errors from one direction when there is still packet loss from the opposite direction.
 
@@ -131,7 +131,7 @@ Because MTR reports contain a great deal of information, they can be difficult t
 
 The report was generated with `mtr --report google.com`. This uses the `report` option, which sends 10 packets to the host `google.com` and generates a report. Without the `--report` option, `mtr` will run continuously in an interactive environment. The interactive mode reflects current round trip times to each host. In most cases, the `--report` mode provides sufficient data in a useful format.
 
-Each numbered line in the report represents a **hop**. Hops are the Internet nodes that packets pass through to get to their destination. The names for the hosts (e.g. "inner-cake" adn "outer-cake" in the example) are determined by reverse DNS lookups. If you want to omit the rDNS lookups you can use the `--no-dns` option, which produces output similar to the following:
+Each numbered line in the report represents a **hop**. Hops are the Internet nodes that packets pass through to get to their destination. The names for the hosts (e.g. "inner-cake" and "outer-cake" in the example) are determined by reverse DNS lookups. If you want to omit the rDNS lookups you can use the `--no-dns` option, which produces output similar to the following:
 
     % mtr --no-dns --report google.com
     HOST: deleuze                     Loss%   Snt   Last   Avg  Best  Wrst StDev

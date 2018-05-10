@@ -6,7 +6,7 @@ description: 'This tutorial will teach you how to install iPerf, and use its com
 keywords: ["diagnostics", "iperf"]
 aliases: ['networking/diagnostics/diagnosing-network-speed-with-iperf/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-09
+modified: 2018-05-10
 modified_by:
   name: Linode
 published: 2015-01-12
