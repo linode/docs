@@ -125,16 +125,16 @@ Storage volumes **cannot** be sized down, only up. Keep this in mind when sizing
 6.  Once your Linode has restarted, make sure the volume is unmounted for
 safety:
 
-        umount /dev/disk/by-id/scsi-0Linode_Volume_Record
+        umount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
 7.  Assuming you have an ext2, ext3, or ext4 partition, resize it to fill the
 new volume size:
 
-        resize2fs /dev/disk/by-id/scsi-0Linode_Volume_Record
+        resize2fs /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
 8.  Mount it back onto the filesystem:
 
-        mount /dev/disk/by-id/scsi-0Linode_Volume_Record /mnt/Record
+        mount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1 /mnt/BlockStorage1
 
 ## Where to Go From Here?
 
