@@ -79,9 +79,9 @@ Ntopng runs as the user `nobody` by default. This is a good choice for daemons r
 
 Configuration options can be defined in a file or set from the command line. If you specify options in both the command line and the file, ntopng will prioritize settings in the configuration file.
 
-1.  Create a configuration file for ntopng using the example below. Replace `192.0.2.0` with your Linode’s domain or public IP address. If needed, replace `eth0` with your primary network interface. Run `man ntopng` from the terminal to see all available configuration parameters.
+Create a configuration file for ntopng using the example below. Replace `192.0.2.0` with your Linode’s domain or public IP address. If needed, replace `eth0` with your primary network interface. Run `man ntopng` from the terminal to see all available configuration parameters.
 
-    {{< file "/etc/ntopng/ntopng.conf" conf >}}
+{{< file "/etc/ntopng/ntopng.conf" conf >}}
 --user=ntopng
 --interface=eth0
 -w=192.0.2.0:3005
@@ -92,7 +92,7 @@ Configuration options can be defined in a file or set from the command line. If 
 --disable-login=1 # optional
 {{< /file >}}
 
-    {{< note >}}
+{{< note >}}
 The option flags commented with `# optional` are not mandatory. All flags requiring input must be followed by an `=` and a value.
 {{< /note >}}
 
