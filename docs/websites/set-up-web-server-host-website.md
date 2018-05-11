@@ -2,14 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to set up a web server and point DNS and a domain name to it on your Linode.'
+description: 'How to set up your first web server and point a domain name to your Linode.'
 keywords: ["hosting a website", "website", "linode quickstart guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-07
 modified_by:
   name: Linode
 published: 2012-03-13
-title: Hosting a Website
+title: Set up a Web Server and Host a Website on Linode
 ---
 
 ![Hosting a Website](/docs/assets/hosting-website/Hosting-a-Website-smg.jpg "Hosting a Website")

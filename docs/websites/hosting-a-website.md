@@ -11,7 +11,7 @@ modified_by:
   name: Phil Zona
 published: 2012-03-13
 deprecated: true
-deprecated_link: 'websites/hosting-a-website-2/'
+deprecated_link: '/websites/set-up-web-server-host-website/'
 title: Hosting a Website
 ---
 
