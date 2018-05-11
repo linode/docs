@@ -50,9 +50,9 @@ Rather than provide a simple outline of the route that traffic takes across the 
 
 For Windows there is a port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](https://sourceforge.net/projects/winmtr/).
 
-### MacOS
+### macOS
 
-Install MTR on MacOS with either [Homebrew](http://brew.sh/) or [MacPorts](http://www.macports.org/). To install MTR with Homebrew, run:
+Install MTR on macOS with either [Homebrew](http://brew.sh/) or [MacPorts](http://www.macports.org/). To install MTR with Homebrew, run:
 
     brew install mtr
 
