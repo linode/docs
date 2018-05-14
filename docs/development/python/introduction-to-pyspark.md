@@ -31,37 +31,11 @@ The installation process requires the installation of Scala, which has Java JDK 
 
 ### Miniconda
 
-1.  Download and install Miniconda:
-
-        curl -OL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-        bash Miniconda3-latest-Linux-x86_64.sh
-
-2.  You will be prompted several times during the installation process. Review the terms and conditions and select "yes" for each prompt.
-
-3.  Restart your shell session for the changes to your PATH to take effect.
-
-
-4.  Check your Python version:
-
-        python --version
+{{< content "install_python_miniconda.md" >}}
 
 ### Java JDK 8
 
-1.  Install `software-properties-common` to easily add new repositories:
-
-        sudo apt-get install software-properties-common
-
-2.  Add the Java PPA in order to download from Oracle repositories:
-
-        sudo add-apt-repository ppa:webupd8team/java
-
-3.  Update the source list:
-
-        sudo apt-get update
-
-4.  Install the Java JDK 8:
-
-        sudo apt-get install oracle-java8-installer
+{{< content "install-java-8-ppa.md" >}}
 
 ### Scala
 

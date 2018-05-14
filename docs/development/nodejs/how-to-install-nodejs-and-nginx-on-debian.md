@@ -135,7 +135,8 @@ NGINX is now listening on port 80 and serving content. It's also configured to p
 
 1.  Install the Node Version Manager:
 
-        curl https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash
+        wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
 
 2.  Close and reopen your terminal.
 

@@ -18,7 +18,7 @@ title: 'Confluence on Ubuntu 10.04 (Lucid)'
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -237,6 +237,3 @@ You may wish to consult the following resources for additional information on th
 
 - [Confluence Homepage](http://www.atlassian.com/software/confluence/)
 - [Confluence Documentation](http://confluence.atlassian.com/display/DOC/Confluence+Documentation+Home)
-
-
-

@@ -29,16 +29,16 @@ external_resources:
 In this guide, you'll use Puppet to deploy [modules](https://docs.puppet.com/puppet/latest/modules_fundamentals.html) on your server. At the end, you will have MySQL installed, configured, and ready to use for a variety of applications that require a database backend.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
 1.  A [Linode 1GB](https://www.linode.com/pricing) plan should be sufficient to run MySQL. Consider using a larger plan if you plan to use MySQL heavily, or for more than just a simple personal website.
 
-2.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+2.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 4.  Update your system:
 
@@ -46,7 +46,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install and Configure Puppet
 
-Follow these steps to set up Puppet for single-host, local-only deployment. If you need to configure more than one server or to deploy a Puppet master, follow our [multi-server Puppet guide](/docs/applications/configuration-management/install-and-configure-puppet).
+Follow these steps to set up Puppet for single-host, local-only deployment. If you need to configure more than one server or to deploy a Puppet master, follow our [multi-server Puppet guide](/docs/applications/configuration-management/install-and-configure-puppet/).
 
 ### Install the Puppet Package
 
@@ -79,7 +79,7 @@ Follow these steps to set up Puppet for single-host, local-only deployment. If y
 
 ### Puppet MySQL Manifest
 
-This guide uses a Puppet *manifest* to provide Puppet with installation and configuration instructions. Alternatively, you can configure [a Puppet master](/docs/applications/configuration-management/install-and-configure-puppet).
+This guide uses a Puppet *manifest* to provide Puppet with installation and configuration instructions. Alternatively, you can configure [a Puppet master](/docs/applications/configuration-management/install-and-configure-puppet/).
 
 While the entirety of a Puppet *manifest* can contain the desired configuration for a host, values for Puppet *classes* or *types* can also be defined in a Hiera configuration file to simplify writing Puppet manifests in most cases. In this example, the `mysql::server` class parameters will be defined in Hiera, but the class must first be applied to the host.
 

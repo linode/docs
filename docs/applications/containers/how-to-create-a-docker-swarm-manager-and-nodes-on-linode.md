@@ -26,7 +26,7 @@ external_resources:
 
 1.  Completing this guide will require at least two Linodes located in the same data center. The instructions in this guide were written for Ubuntu 16.04, but other distributions can be used; the Linodes do not need to use the same distribution.
 
-2.  For each Linode, complete the steps in our [Getting Started](/docs/getting-started) guide for setting your Linode's hostname and timezone. Follow the steps in our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account.
+2.  For each Linode, complete the steps in our [Getting Started](/docs/getting-started/) guide for setting your Linode's hostname and timezone. Follow the steps in our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account.
 
 3. Install Docker on each Linode. See our [Installing Docker and Deploying a LAMP Stack](/docs/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/) guide or the [Docker installation docs](https://docs.docker.com/engine/installation/) for more information.
 

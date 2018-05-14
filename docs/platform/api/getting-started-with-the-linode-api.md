@@ -47,7 +47,7 @@ If you are building an application which will need to authenticate multiple user
 
 This token must be sent as a header on all requests to authenticated endpoints. The header should use the format:
 
-    Authentication: Bearer <token-string>
+    Authorization: Bearer <token-string>
 
 Store the token as a temporary shell variable to simplify repeated requests:
 

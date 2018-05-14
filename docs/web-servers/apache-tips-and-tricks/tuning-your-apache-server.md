@@ -22,12 +22,12 @@ Apache configuration has a major affect on your Linode's performance. The easies
 ![Tuning Your Apache Server](/docs/assets/tuning-your-apache-server.png "Tuning Your Apache Server")
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Tools
 
-There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/uptime/monitoring/top-htop-iotop) and the load-testing program [Siege](/docs/tools-reference/tools/load-testing-with-siege). Linode's own [Longview](/docs/platform/longview/longview) service can also help in server monitoring. At minimum, familiarize yourself with the RAM and CPU usage of your server. Discover usage statistics with these commands:
+There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/uptime/monitoring/top-htop-iotop/) and the load-testing program [Siege](/docs/tools-reference/tools/load-testing-with-siege/). Linode's own [Longview](/docs/platform/longview/longview/) service can also help in server monitoring. At minimum, familiarize yourself with the RAM and CPU usage of your server. Discover usage statistics with these commands:
 
     echo [PID]  [MEM]  [PATH] &&  ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 20
     ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20

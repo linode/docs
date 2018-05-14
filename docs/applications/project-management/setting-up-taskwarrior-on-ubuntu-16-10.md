@@ -26,9 +26,9 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Taskwarrior does not require opening ports in your firewall unless you choose to run it as a [server daemon](https://taskwarrior.org/docs/#taskd) for multiple devices to connect to.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Taskwarrior does not require opening ports in your firewall unless you choose to run it as a [server daemon](https://taskwarrior.org/docs/#taskd) for multiple devices to connect to.
 
 3.  Update your system:
 

@@ -30,11 +30,11 @@ Hadoop is an open-source Apache project that allows creation of parallel process
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/getting-started) guide to create three (3) Linodes. They'll be referred to throughout this guide as **node-master**, **node1** and **node2**. It's recommended that you set the hostname of each Linode to match this naming convention.
+1.  Follow the [Getting Started](/docs/getting-started/) guide to create three (3) Linodes. They'll be referred to throughout this guide as **node-master**, **node1** and **node2**. It's recommended that you set the hostname of each Linode to match this naming convention.
 
     Run the steps in this guide from the **node-master** unless otherwise specified.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server) guide to harden the three servers. Create a normal user for the install, and a user called `hadoop` for any Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
+2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to harden the three servers. Create a normal user for the install, and a user called `hadoop` for any Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
 
 3.  Install the JDK using the appropriate guide for your distribution, [Debian](/docs/development/java/install-java-on-debian/), [CentOS](/docs/development/java/install-java-on-centos/) or [Ubuntu](/docs/development/java/install-java-on-ubuntu-16-04/), or grab the latest JDK from Oracle.
 
@@ -507,4 +507,3 @@ Now that you have a YARN cluster up and running, you can:
 
 - Learn how to code your own YARN jobs with [Apache documentation](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html).
 - Install Spark on top on your YARN cluster with [Linode Spark guide](/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/).
-

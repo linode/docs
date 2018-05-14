@@ -22,7 +22,7 @@ external_resources:
 
 Docker makes it easy to develop and deploy custom and consistent environments that include specific applications and dependencies. Docker calls these compilations Images. Docker images can be hosted and retrieved from private locations or from the official repository, [Docker Hub](https://hub.docker.com/).
 
-This guide is part of a series of introductions to Docker concepts. The commands to create an image in this guide build on the previous guide, [How to Install and Pull Images for Container Deployment](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment). For more information about Docker and containers, visit our [guides on Containers](/docs/applications/containers).
+This guide is part of a series of introductions to Docker concepts. The commands to create an image in this guide build on the previous guide, [How to Install and Pull Images for Container Deployment](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/). For more information about Docker and containers, visit our [guides on Containers](/docs/applications/containers/).
 
 ## Create a Docker Image
 

@@ -24,14 +24,14 @@ Chef is comprised of a Chef server, one or more workstations, and a number of no
 This guide will show users how to create and configure a Chef server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
 
 -	One 4GB Linode to host the Chef server, running Ubuntu 14.04
 -	Two Linodes of any size to host a workstation and a node, each running Ubuntu 14.04
--	Each Linode should be configured by following the [Getting Started](/docs/getting-started) guide; also consider following the [Securing Your Sever](/docs/security/securing-your-server/) guide
+-	Each Linode should be configured by following the [Getting Started](/docs/getting-started/) guide; also consider following the [Securing Your Sever](/docs/security/securing-your-server/) guide
 -	Each Linode needs to be configured to have a valid FQDN
 -	Ensure that all servers are up-to-date:
 
@@ -305,5 +305,3 @@ end
     If running the node as a non-root user, append the above command with `sudo`.
 
     The recipes in the run list will be pulled from the server and run. In this instance, it will be the `cron-delvalidate` recipe. This recipe ensures that any cookbooks made, pushed to the Chef Server, and added to the node's run list will be pulled down to bootstrapped nodes once an hour. This automated step eliminates connecting to the node in the future to pull down changes.
-
-

@@ -84,7 +84,7 @@ While using `ProxyPass` directives allows you to distribute resources by directo
     a2enmod rewrite
     /etc/init.d/apache2 restart
 
-Once `mod_proxy` is enabled and configured, ensure that the server is [configured properly](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9-10-karmic). Now, a number of additional proxy services will be available. Consider the following virtual host configuration:
+Once `mod_proxy` is enabled and configured, ensure that the server is [configured properly](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9-10-karmic/). Now, a number of additional proxy services will be available. Consider the following virtual host configuration:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost 12.34.56.78:80>
@@ -218,7 +218,4 @@ You may wish to consult the following resources for additional information on th
 
 - [Official Apache Documentation for Proxy Pass](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)
 - [Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)
-- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9-10-karmic)
-
-
-
+- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9-10-karmic/)

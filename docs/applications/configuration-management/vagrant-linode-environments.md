@@ -142,7 +142,7 @@ end
 
 ## Set Up the Vagrant Box
 
-Although the server can now be created successfully, many aspects of it still need to be configured. Shell scripts will be used to complete the steps from the [Getting Started](/docs/getting-started) guide, and to install and configure Apache. Files will also be synced between the workstation and the Linode.
+Although the server can now be created successfully, many aspects of it still need to be configured. Shell scripts will be used to complete the steps from the [Getting Started](/docs/getting-started/) guide, and to install and configure Apache. Files will also be synced between the workstation and the Linode.
 
 ### Configure the Server
 
@@ -319,4 +319,3 @@ If you wish to shut down or remove the Linode from your workspace you can do so 
 -  `vagrant halt` will power down the Linode through the shutdown mechanism. You can then run `vagrant up` again to power on the Linode.
 -  `vagrant destroy` will remove the Linode entirely from your account, removing anything that was created during the Vagrant up process or added later to the server.
 {{< /note >}}
-

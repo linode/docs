@@ -44,9 +44,9 @@ This guide details the installation and configuration of NeoVim, along with two 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account.
 
 3.  Install the necessary tools:
     -  In CentOS and similar distributions, enable the [Extra Packages (EPEL) repository](https://fedoraproject.org/wiki/EPEL), then install the packages:

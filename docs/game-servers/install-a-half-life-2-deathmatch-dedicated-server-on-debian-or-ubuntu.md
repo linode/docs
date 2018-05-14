@@ -29,9 +29,9 @@ This guide will show you how to set up your own [Half-Life 2 Deathmatch](http://
 
 ## Before You Begin
 
-1.  Complete our [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server) guide.
+1.  Complete our [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server/) guide.
 
-2.  This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+2.  This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 
 3.  Add two firewall rules to extend the port range available to the server. This command assumes that you have **only** the iptables rules in place from the SteamCMD guide. If not, find the corresponding lines and replace the numbers in `INPUT 5` and `INPUT 7` below:
 
@@ -96,7 +96,7 @@ To exit the screen:
 
     exit
 
-For more information on Screen sockets, visit our guide on [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
+For more information on Screen sockets, visit our guide on [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/).
 
 ### Autostart with a Screen Script
 
@@ -291,4 +291,3 @@ dm_underpass
 3.  Double click on it to connect:
 
     [![In-game](/docs/assets/half-life-2-deathmatch-in-game_small.png)](/docs/assets/half-life-2-deathmatch-in-game.png)
-

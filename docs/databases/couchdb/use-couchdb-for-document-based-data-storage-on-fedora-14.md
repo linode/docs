@@ -45,7 +45,7 @@ Congratulations! In most cases, you will not need to modify CouchDB's configurat
 
 # Using CouchDB
 
-Most of your interaction with CouchDB will occur by way of the system's HTTP and JSON interface. CouchDB comes with a web-based administrative interface called "Futon". Since CouchDB is only accessible over the local interface by default, you will want to [create a secure ssh tunnel](/docs/databases/couchdb/ssh-tunnel) in order to access CouchDB or Futon from your local machine to avoid sending data in the clear.
+Most of your interaction with CouchDB will occur by way of the system's HTTP and JSON interface. CouchDB comes with a web-based administrative interface called "Futon". Since CouchDB is only accessible over the local interface by default, you will want to [create a secure ssh tunnel](/docs/databases/couchdb/ssh-tunnel/) in order to access CouchDB or Futon from your local machine to avoid sending data in the clear.
 
 Once the SSH tunnel is in place or you have configured your Linode, you can access the CouchDB HTTP interface by making a request for `http://localhost:5984`. For a simple command-line HTTP client consider installing `curl`. You can test your CouchDB instance by issuing the following command:
 
@@ -69,6 +69,3 @@ You may wish to consult the following resources for additional information on th
 
 - [CouchDB Project](http://couchdb.apache.org/)
 - [CouchDB Community Wiki](http://wiki.apache.org/couchdb/)
-
-
-

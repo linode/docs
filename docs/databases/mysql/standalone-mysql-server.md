@@ -25,7 +25,7 @@ In this guide we will be using two Linodes. Note that this is different than sim
 -   For the Linode running the web server, henceforth the application server, you should already have Apache (or your preferred web server) installed. For a fresh install, follow the [LAMP guide](/docs/lamp-guides/) for your distribution. The LAMP guide includes MySQL, which you do not need to install.
 -   The dedicated MySQL Linode should have MySQL installed. Follow the [MySQL database server](/docs/databases/mysql/) installation guide for your distribution. Keep in mind that you do not have to install Apache on the dedicated MySQL server.
 
-Also, you will want to configure aliases for the private IP address of each Linode. You can follow the [Linux Static IP Configuration](/docs/networking/configuring-static-ip-interfaces) guide for assistance with this. **It is important to note that both Linodes should be in the same data center** for private networking to work. This enables the servers to communicate without having the traffic count against your monthly bandwidth quota. It is necessary to reboot both Linodes after configuring the private IP addresses.
+Also, you will want to configure aliases for the private IP address of each Linode. You can follow the [Linux Static IP Configuration](/docs/networking/configuring-static-ip-interfaces/) guide for assistance with this. **It is important to note that both Linodes should be in the same data center** for private networking to work. This enables the servers to communicate without having the traffic count against your monthly bandwidth quota. It is necessary to reboot both Linodes after configuring the private IP addresses.
 
 # Edit /etc/hosts
 
@@ -88,6 +88,3 @@ You may wish to consult the following resources for additional information on th
 - [Web Application Guides](/docs/web-applications/)
 - [Web Application Frameworks](/docs/frameworks/)
 - [Database Management Systems](/docs/databases/)
-
-
-

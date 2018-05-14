@@ -14,9 +14,9 @@ title: 'Rule-based Access Control for Apache'
 external_resources:
  - '[LAMP Stack Guides](/docs/lamp-guides/)'
  - '[Apache Configuration and Administration](/docs/web-servers/apache/)'
- - '[Apache Configuration Basics](/docs/web-servers/apache/configuration/configuration-basics)'
- - '[Apache Configuration Structure](/docs/web-servers/apache/configuration/configuration-structure)'
- - '[Auth-based Access Control](/docs/web-servers/apache/configuration/http-authentication)'
+ - '[Apache Configuration Basics](/docs/web-servers/apache/configuration/configuration-basics/)'
+ - '[Apache Configuration Structure](/docs/web-servers/apache/configuration/configuration-structure/)'
+ - '[Auth-based Access Control](/docs/web-servers/apache/configuration/http-authentication/)'
  - '[Apache Troubleshooting](/docs/web-servers/apache/troubleshooting/)'
  - '[Apache Documentation](http://httpd.apache.org/docs/2.2/sections.html)'
  - '[Apache Access Control](http://httpd.apache.org/docs/2.0/mod/mod_access.html#allow)'
@@ -24,7 +24,7 @@ external_resources:
 
 
 ![Rule-based Access Control for Apache](/docs/assets/RBAC_Apache.jpg)
-Apache provides a number of tools that allow administrators to control access to specific resources provided by servers. You may already be familiar with [authentication based access controls](/docs/web-servers/apache/configuration/configuration-structure), which requires that visitors authenticate to the server before gaining access to resources.
+Apache provides a number of tools that allow administrators to control access to specific resources provided by servers. You may already be familiar with [authentication based access controls](/docs/web-servers/apache/configuration/configuration-structure/), which requires that visitors authenticate to the server before gaining access to resources.
 
 
  Apache's rule-based access control allows you to specify which visitors have access to which resources on a very granular level. You can create rules which block a given range of IPs from your web server, or from accessing a particular resource, or even simply from accessing a particular virtual host.
@@ -33,11 +33,11 @@ The most basic use of rule-based access control is to place firm limits on what 
 
 Additional uses for these access rules include blocking particular IP ranges that have been responsible for malicious traffic and limiting access to a given resource or set of resources to "internal users," among a number of other possibilities.
 
-We assume that you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, please reference our [Apache HTTP server configuration basics](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) guides.
+We assume that you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, please reference our [Apache HTTP server configuration basics](/docs/web-servers/apache/configuration/configuration-basics/) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure/) guides.
 
 ## Examples of Rule Based Access Control
 
-In the examples given in the [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) document, we presented configuration directives that specified rule-based access control conditions for specific resources. You may wish to consult our [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) guide to see a number of examples of these directives in practice.
+You may wish to consult our [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure/) guide to see a number of examples of these directives in practice.
 
 Here is an example of a basic rule:
 

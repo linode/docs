@@ -132,7 +132,7 @@ Component "conference.example.com" "muc"
 {{< /file >}}
 
 
-In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/dns-guides/introduction-to-dns)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
+In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/dns-guides/introduction-to-dns/)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
 
 MUC, in contrast to many other common components in the XMPP world, is provided internally by Prosody. Other components, like transports to other services, run on an external interface. Each external component has its own host name, and provides a secret key which allows the central server to authenticate to it. See the following "aim.example.com" component as an example.
 
@@ -160,7 +160,7 @@ Host "*"
 
 The XMPP protocol supports "in-band" registration, where users can register for accounts with your server via the XMPP interface. However, this is often an undesirable function as it doesn't permit the server administrator the ability to moderate the creation of new accounts and can lead to spam-related problems. As a result, Prosody has this functionality disabled by default. While you can enable in-band registration, we recommend using the `prosodyctl` interface at the terminal prompt.
 
-If you're familiar with the `ejabberdctl` interface from [ejabberd,](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin) `prosodyctl` mimics its counterpart as much as possible.
+If you're familiar with the `ejabberdctl` interface from [ejabberd](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin), `prosodyctl` mimics its counterpart as much as possible.
 
 To use `prosodyctl` to register a user, in this case `lollipop@example.com`, issue the following command:
 
@@ -186,6 +186,3 @@ You may wish to consult the following resources for additional information on th
 
 - [The official Prosody server website](http://prosody.im/)
 - [XMPP Standards Foundation](http://xmpp.org/)
-
-
-

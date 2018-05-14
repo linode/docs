@@ -138,7 +138,7 @@ Component "conference.example.com" "muc"
 {{< /file >}}
 
 
-In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/dns-guides/introduction-to-dns)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
+In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/dns-guides/introduction-to-dns/)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
 
 MUC, in contrast to many other common components in the XMPP world, is provided internally by Prosody. Other components, like transports to other services, run on an external interface. Each external component has its own host name, and provides a secret key which allows the central server to authenticate to it. See the following "aim.example.com" component as an example.
 
@@ -192,6 +192,3 @@ You may wish to consult the following resources for additional information on th
 - [Prosody Configuration Overview](http://prosody.im/doc/configure#overview)
 - [XMPP Standards Foundation](http://xmpp.org/)
 - [XMPP Client Software](http://xmpp.org/software/clients.shtml)
-
-
-

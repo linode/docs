@@ -48,7 +48,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
 2.  For each node, go into the Remote Access tab of your Linode Manager and add a [private IP](/docs/networking/remote-access#adding-private-ip-addresses). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
 
-3.  Configure a firewall with [UFW](/docs/security/firewalls/configure-firewall-with-ufw) or [iptables](/docs/security/firewalls/control-network-traffic-with-iptables) to ensure only the two nodes can communicate with each other.
+3.  Configure a firewall with [UFW](/docs/security/firewalls/configure-firewall-with-ufw/) or [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) to ensure only the two nodes can communicate with each other.
 
 ### Disable Swap Memory
 

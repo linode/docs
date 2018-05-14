@@ -36,7 +36,7 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started) guide. If you are using a Block Storage Volume, **select** the image `Ubuntu 16.04 LTS` from the drop-down menu according to the instructions.
+1.  Complete the [Getting Started](/docs/getting-started/) guide. If you are using a Block Storage Volume, **select** the image `Ubuntu 16.04 LTS` from the drop-down menu according to the instructions.
 
 2.  This guide will use `sudo` wherever possible. Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 

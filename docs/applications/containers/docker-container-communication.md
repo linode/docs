@@ -292,7 +292,7 @@ You should not store production database data inside a Docker container. Contain
 Using the `--link` or `--host` options every time you launch your containers can be cumbersome. If your server or any of the containers crash, they must be manually reconnected. This is not an ideal situation for any application that requires constant availability. Fortunately, Docker provides **Docker Compose** to manage multiple containers and automatically link them together when they are launched. This section will use Docker Compose to reproduce the results of the previous section.
 
 {{< note >}}
-For a more comprehensive explanation of Docker Compose and how to write `docker-compose.yml` configuration files, see our complete [Docker Compose](/docs/applications/containers/how-to-use-docker-compose) guide.
+For a more comprehensive explanation of Docker Compose and how to write `docker-compose.yml` configuration files, see our complete [Docker Compose](/docs/applications/containers/how-to-use-docker-compose/) guide.
 {{< /note >}}
 
 1.  Install Docker Compose:
