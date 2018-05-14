@@ -2,34 +2,34 @@
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. This guide demonstrates how to create, attach, clone, and resize Volumes using the Linode API.
-og_description: Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. This guide demonstrates how to create, attach, clone, and resize Volumes using the Linode API.
+description: "Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. This guide demonstrates how to create, attach, clone, and resize Volumes using the Linode API."
+og_description: "Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. This guide demonstrates how to create, attach, clone, and resize Volumes using the Linode API."
 keywords: ["linode api", "block storage", "volume"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-14
 modified_by:
   name: Linode
 published: 2018-05-14
-title: Block Storage Volumes with the Linode API
+title: Manage Block Storage Volumes with the Linode API
 external_resources:
   - '[API Documentation](https://developers.linode.com/api/v4)'
 ---
 
 <!--- ![Block Storage Volues with the Linode API](/docs/assets/api-block-storage/api-block-storage-smp.png) --->
 
-The Linode API allows you to create, delete, attach/detach, clone, and resize Block Storage Volumes.
+The Linode API allows you to create, delete, attach, detach, clone, and resize Block Storage Volumes.
 
 ## Before You Begin
 
-You will need a Personal Access Token to access the `/volumes` endpoint. Access tokens can be created through the beta [Linode Manager](https://cloud.linode.com/profile/tokens). See our [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/) for more information.
+You will need a Personal Access Token to access the `/volumes` endpoint. Create an Access Token through the [Beta Linode Manager](https://cloud.linode.com/profile/tokens). See our [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/) for more information.
 
-When you have a token, store it as a temporary shell variable to simplify repeated requests:
+Store the token as a temporary shell variable to simplify repeated requests. Replace `<Access Token>` in this example with your token:
 
     token=<Access Token>
 
-## Create a Volume
+## Create a Block Storage Volume
 
-You can create a new Block Storage Volume by making a POST request to the `/volumes` endpoint. You can also automatically attach the new Volume to an existing Linode by passing the Linode's ID when creating the Volume.
+Create a new Block Storage Volume by making a POST request to the `/volumes` endpoint. You can also automatically attach the new Volume to an existing Linode by passing the Linode's ID when creating the Volume.
 
 1.  List the Linodes on your account:
 
@@ -38,7 +38,7 @@ You can create a new Block Storage Volume by making a POST request to the `/volu
 
     Choose a Linode from the returned list and copy its `id` and `region` values.
 
-2.  Create the Volume. Use the ID of the target Linode and adjust the size, region, and label to the desired values.
+2.  Create a Volume in the same region as the target Linode. Use the ID of the target Linode and adjust the size, region, and label to the desired values:
 
         curl -H "Content-Type: application/json" \
         -H "Authorization: Bearer $token" \
@@ -54,7 +54,7 @@ You can create a new Block Storage Volume by making a POST request to the `/volu
 The Volume and Linode must be in the same region.
 {{< /note >}}
 
-2.  Examine the response JSON object and copy the values in the `id` and `filesystem_path` fields.
+3.  Examine the response JSON object and copy the values in the `id` and `filesystem_path` fields:
 
     {{< highlight json "linenos=table" >}}
 {
@@ -79,7 +79,7 @@ The Volume and Linode must be in the same region.
 
 ### Mount the Volume
 
-The API can't directly mount the new Volume after it is attached; you will have to SSH into the Linode and mount manually:
+The API can't directly mount the new Volume after it is attached. SSH into the Linode and mount it manually:
 
 1.  Create a filesystem on the Volume:
 
@@ -93,15 +93,17 @@ The API can't directly mount the new Volume after it is attached; you will have 
 
         mount $volume_path /mnt/my-volume
 
-4.  To have the Volume automatically mount every time your Linode boots, add the following line to your `/etc/fstab` file:
+4.  To automatically mount the Volume every time your Linode boots, add the following line to your `/etc/fstab` file:
 
-        $volume_path /mnt/my-volume defaults 0 2
+    {{< file "/etc/fstab" >}}
+$volume_path /mnt/my-volume defaults 0 2
+{{< /file >}}
 
-## Attach and Detach
+## Attach and Detach the Volume
 
-If you did not specify a Linode when creating the Volume, or would like to attach to a different Linode, you can use the `/attach` and `/detach` endpoints:
+If you did not specify a Linode when creating the Volume, or would like to attach it to a different Linode, use the `/attach` and `/detach` endpoints:
 
-1.  Detach the Volume. Replace `$volume_id` with the Volume's id from the previous section:
+1.  Detach the Volume. Replace `$volume_id` with the Volume ID from the previous section:
 
         curl -H "Authorization: Bearer $token" \
         -X POST \
@@ -116,13 +118,12 @@ If you did not specify a Linode when creating the Volume, or would like to attac
         https://api.linode.com/v4/volumes/$volume_id/attach
 
     {{< note >}}
-If a Linode is not running and has more than one configuration profile, you should also include a `config_id` parameter in the POST request to specify which profile to use. If you do not specify a profile, the first profile will be used by default.
+If a Linode is not running and has more than one configuration profile, include a `config_id` parameter in the POST request to specify which profile to use. If you do not specify a profile, the first profile will be used by default.
 {{< /note >}}
 
+## Clone a Volume
 
-## Clone
-
-You can copy all of the data in a Block Storage Volume to a new Volume:
+To copy all of the data in a Block Storage Volume to a new Volume:
 
     curl -H "Authorization: Bearer $token" \
     -X POST -d '{
@@ -130,18 +131,17 @@ You can copy all of the data in a Block Storage Volume to a new Volume:
     }' \
     https://api.linode.com/v4/volumes/$volume_id/clone
 
-## Delete
+## Delete a Volume
 
-Remove a Volume from your account with a DELETE request. If the Volume is attached to a Linode, you will have to detach it before it can be deleted.
+Remove a Volume from your account with a DELETE request. If the Volume is attached to a Linode, you will have to detach it before it can be deleted:
 
     curl -H "Authorization: Bearer $token" \
     -X DELETE \
     https://api.linode.com/v4/volumes/$volume_id
 
-## Resize
+## Resize a Volume
 
 If you need additional space, you can increase the size of a Volume through the API. It is not possible to reduce the size of a Volume.
-
 
 Pass the desired size (in gigabytes) using the `size` parameter:
 
