@@ -6,7 +6,7 @@ description: 'Use the Linode Backup Service to protect and secure your data.'
 keywords: ["backup service", "linode platform", "linode backup service", "enable a backup", "manage a backup", "schedule a backup", "disable a backup", "restore from a backup", "boot from a backup"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['backup-service/','platform/backup-service/', 'security/backups/linode-backup-service/']
-modified: 2017-02-24
+modified: 2018-05-14
 modified_by:
   name: Linode
 published: 2012-03-14
@@ -137,6 +137,10 @@ You can restore a backup to any Linode located in the same data center, even if 
 ### Restore to an Existing Linode
 
 To restore a backup to an existing Linode, you will need to make sure that you have enough storage space that is not currently assigned to disk images.
+
+{{< note >}}
+If you are attempting to restore a disk to the Linode the backup was created from, the restoration process will not delete the original disk for you. Manually delete the original disk to make room for the backup.
+{{< /note >}}
 
 1.  Start by confirming the size of the backup that you wish to restore. From the **Backups** tab in your Linode's Dashboard, click the **Restore to...** link beneath your desired backup:
 
