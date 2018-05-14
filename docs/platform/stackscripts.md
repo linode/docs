@@ -266,7 +266,7 @@ The UDF tags are explained in the table below:
 |manyof   | A comma separated list of values| Optional
 
 
-Below is an example implementation of the UDF variables. You will note that the UDF tags are commented out; this is done to prevent execution errors, as the stackscript system parses the tags without removing them.
+Below is an example implementation of the UDF variables. Note that the UDF tags are commented out to prevent execution errors, as the stackscript system parses the tags without removing them:
 
 {{< file "StackScript" bash >}}
 # [...]
