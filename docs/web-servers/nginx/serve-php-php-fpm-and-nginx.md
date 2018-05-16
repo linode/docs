@@ -15,7 +15,7 @@ external_resources:
  - '[PHP Manual](https://secure.php.net/docs.php)'
 ---
 
-![Serve PHP with PHP-FPM and NGINX](/docs/assets/php-fpm/serve-php-with-phpfpm-and-nginx-smp.jpg/)
+![Serve PHP with PHP-FPM and NGINX](/docs/assets/php-fpm/serve-php-with-phpfpm-and-nginx-smp.jpg)
 
 The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.wikipedia.org/wiki/FastCGI) handler for [PHP](https://secure.php.net/) scripts and applications. It's commonly paired with web servers to serve applications which require a PHP framework, such as web forums or login gateways, while the web server returns HTML, JavaScript, and other non-PHP content.
 

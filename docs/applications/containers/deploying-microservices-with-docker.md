@@ -18,7 +18,7 @@ external_resources:
 - '[Using Containers to Build a Microservices Architecture](https://medium.com/aws-activate-startup-blog/using-containers-to-build-a-microservices-architecture-6e1b8bacb7d1)'
 ---
 
-![Deploying Microservices with Docker](/docs/assets/docker-microservices/how-to-deploy-microservices-with-docker-smg.jpg/)
+![Deploying Microservices with Docker](/docs/assets/docker-microservices/how-to-deploy-microservices-with-docker-smg.jpg)
 
 ## What is a Microservice?
 

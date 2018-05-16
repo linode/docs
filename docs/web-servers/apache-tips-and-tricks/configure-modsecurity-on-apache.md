@@ -18,7 +18,7 @@ external_resources:
  - '[OWASP ModSecurity Core Rule Set Wiki](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project#tab=Installation)'
 ---
 
-![How to Configure ModSecurity on Apache](/docs/assets/modsecurity/how-to-configure-modsecurity-on-apache-smg.jpg/)
+![How to Configure ModSecurity on Apache](/docs/assets/modsecurity/how-to-configure-modsecurity-on-apache-smg.jpg)
 
 ## Introduction
 

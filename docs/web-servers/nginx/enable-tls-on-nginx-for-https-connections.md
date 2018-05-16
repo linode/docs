@@ -13,7 +13,7 @@ published: 2018-02-09
 title: 'Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections'
 ---
 
-![Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections](/docs/assets/nginx-basics/getting-started-with-nginx-part-3-smg.jpg/)
+![Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections](/docs/assets/nginx-basics/getting-started-with-nginx-part-3-smg.jpg)
 
 Transport Layer Security (TLS) is the successor to Secure Socket Layer (SSL). It provides stronger and more efficient HTTPS, and contains enhancements not found in SSL such as Forward Secrecy, compatibility with modern OpenSSL cipher suites, and HSTS.
 
