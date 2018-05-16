@@ -17,7 +17,7 @@ external_resources:
 - '[Official Celery Documentation](http://docs.celeryproject.org/en/latest/index.html)'
 ---
 
-![How to Set Up a Task Queue with Celery and RabbitMQ](/docs/assets/celery/how-to-set-up-a-task-queue-with-celery-and-rabbitmq-smg.jpg/)
+![How to Set Up a Task Queue with Celery and RabbitMQ](/docs/assets/celery/how-to-set-up-a-task-queue-with-celery-and-rabbitmq-smg.jpg)
 
 Celery is a Python Task-Queue system that handle distribution of tasks on workers across threads or network nodes. It makes asynchronous task management easy. Your application just need to push messages to a broker, like RabbitMQ, and Celery workers will pop them and schedule task execution.
 

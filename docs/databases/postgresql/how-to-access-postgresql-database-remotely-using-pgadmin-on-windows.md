@@ -16,7 +16,7 @@ external_resources:
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 ---
 
-![How to Access PostgreSQL Database Remotely Using pgAdmin on Windows](/docs/assets/pgpmyadmin-windows/how-to-access-postgresql-database-remotely-using-pgpmyadmin-on-windows-smg.jpg/)
+![How to Access PostgreSQL Database Remotely Using pgAdmin on Windows](/docs/assets/pgpmyadmin-windows/how-to-access-postgresql-database-remotely-using-pgpmyadmin-on-windows-smg.jpg)
 
 PgAdmin is a free, open-source PostgreSQL database administration GUI for Microsoft Windows, Mac OS X, and Linux systems. It offers database server information retrieval, development, testing, and ongoing maintenance. This guide will help you install pgAdmin on Windows, providing secure, remote access to PostgreSQL databases. It is assumed that you have already installed PostgreSQL on your Linode in accordance with our [PostgreSQL installation guides](/docs/databases/postgresql/).
 

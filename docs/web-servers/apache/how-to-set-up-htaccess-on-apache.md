@@ -18,7 +18,7 @@ external_resources:
 - '[Apache .htaccess Documentation](https://httpd.apache.org/docs/current/howto/htaccess.html)'
 ---
 
-![How to Set Up the htaccess File on Apache](/docs/assets/htaccess/how-to-set-up-the-htaccess-file-on-apache-smg.jpg/)
+![How to Set Up the htaccess File on Apache](/docs/assets/htaccess/how-to-set-up-the-htaccess-file-on-apache-smg.jpg)
 
 ## Introduction
 The purpose of this guide is to show you how to set up htaccess configuration (.htaccess) for Apache. The guide will cover topics relating to handling website file structure permissions, redirects, and IP address restrictions.
