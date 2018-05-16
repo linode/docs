@@ -20,6 +20,8 @@ show_on_rss_feed: false
 
 ![Getting Started with Linode](/docs/assets/getting-started/getting-started.jpg "Getting Started with Linode")
 
+Hey random change
+
 ## Welcome to Linode!
 
 Thank you for choosing Linode as your cloud hosting provider! This guide will help you sign up for an account, set up a Linux distribution, boot your Linode, and perform some basic system administration tasks.
