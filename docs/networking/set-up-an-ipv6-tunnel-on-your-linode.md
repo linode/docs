@@ -6,9 +6,9 @@ description: 'How to set up an IPv6 tunnel on your Linode.'
 keywords: ["ipv6", "tunnel", "broker", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/ipv6-tunnels/']
-modified: 2016-07-07
+modified: 2018-05-15
 modified_by:
-  name: Phil Zona
+  name: Linode
 published: 2011-04-29
 title: Set Up an IPv6 Tunnel on Your Linode
 ---
@@ -64,12 +64,12 @@ On Arch Linux, replace the `ifdown` and `ifup` commands with `ip link set eth0 d
             inet6 fe80::0000:0000/64 scope link
                valid_lft forever preferred_lft forever
 
-4.  Test the tunnel. Replace `he-ipv6` with the name of your tunnel:
+4.  Test the tunnel. Replace `he-ipv6` with the name of your tunnel. On Arch Linux and other distributions without `ping6`, use `ping -6` instead.
 
         ping6 -I he-ipv6 irc6.oftc.net
 
     {{< note >}}
-On Arch Linux and other distributions without `ping6`, use `ping -6` instead.
+Your system must allow ICMPv6 in through the firewall for pings to be returned.
 {{< /note >}}
 
 If everything is working, you should see ping replies. If not, go back and make sure that you haven't made any errors.
