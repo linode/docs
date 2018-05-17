@@ -6,7 +6,7 @@ description: Our guide to billing and payments.
 keywords: ["billing", "payments"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['billing-and-payments/']
-modified: 2018-01-15
+modified: 2018-05-17
 modified_by:
   name: Linode
 published: 2014-02-28
@@ -42,11 +42,11 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 
 | Service      | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
 |:-------------|:------------|:--------|:--------------------|:---------------
-| Linode 24GB  | $0.09/hr    | $60/mo  | $0.008/hr          | $5/mo
+| Linode 24GB  | $0.09/hr    | $60/mo  | $0.0075/hr          | $5/mo
 | Linode 48GB  | $0.18/hr    | $120/mo | $0.015/hr           | $10/mo
 | Linode 90GB  | $0.36/hr    | $240/mo | $0.03/hr            | $20/mo
 | Linode 150GB | $0.72/hr    | $480/mo | $0.06/hr            | $40/mo
-| Linode 300GB | $1.44/hr    | $960/mo | $0.09/hr            | $60/mo
+| Linode 300GB | $1.44/hr    | $960/mo | $0.12/hr            | $80/mo
 
 Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#high_memory)
 
