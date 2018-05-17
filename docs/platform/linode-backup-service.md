@@ -6,7 +6,7 @@ description: 'Use the Linode Backup Service to protect and secure your data.'
 keywords: ["backup service", "linode platform", "linode backup service", "enable a backup", "manage a backup", "schedule a backup", "disable a backup", "restore from a backup", "boot from a backup"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['backup-service/','platform/backup-service/', 'security/backups/linode-backup-service/']
-modified: 2018-05-14
+modified: 2018-05-17
 modified_by:
   name: Linode
 published: 2012-03-14
@@ -38,11 +38,11 @@ Pricing is per Linode and varies depending upon your Linode's plan:
 
 | Service      | Backups Hourly Rate | Backups Monthly
 |:-------------|:--------------------|:---------------
-| Linode 24GB  | $0.008/hr           | $5/mo
+| Linode 24GB  | $0.0075/hr           | $5/mo
 | Linode 48GB  | $0.015/hr           | $10/mo
 | Linode 90GB  | $0.03/hr            | $20/mo
 | Linode 150GB | $0.06/hr            | $40/mo
-| Linode 300GB | $0.09/hr            | $60/mo
+| Linode 300GB | $0.12/hr            | $80/mo
 
 ## Enable the Backup Service
 
