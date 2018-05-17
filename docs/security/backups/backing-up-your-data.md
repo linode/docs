@@ -267,7 +267,7 @@ For an explanation of the rsync command's options and arguments, and to learn ho
 If this is your first time running the command, select your favorite text editor.
 {{< /note >}}
 
-10. Copy and past the following line to the bottom of the file. This is the same line from Step 7 with some cron frequency information added at the beginning. Use this and cron will automatically trigger rsync to back up your server every day at 3 AM.
+10. Copy and paste the following line to the bottom of the file. This is the same line from Step 7 with some cron frequency information added at the beginning. Use this and cron will automatically trigger rsync to back up your server every day at 3 AM.
 
         0   3   *   *   *   rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date -I)
 
