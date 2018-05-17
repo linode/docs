@@ -76,4 +76,4 @@ You will see where the pool is routed under *Public IP Pools* on the Linode Mana
 
 ## IPv6 Forwarding
 
-For security reasons, IPv6 forwarding not available on the Linode network. This is enforced by our network infrastructure.
+For security reasons, IPv6 forwarding is not available on the Linode network. This is enforced by our network infrastructure.
