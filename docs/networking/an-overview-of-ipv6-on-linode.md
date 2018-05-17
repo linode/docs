@@ -7,7 +7,7 @@ og_description: "This guide is a brief overview of IPv6 support on Linode, inclu
 keywords: ["ipv6 networking", "IP configuration"]
 aliases: ['networking/native-ipv6-networking/','networking/how-to-enable-native-ipv6-on-linux/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-02
+modified: 2018-05-17
 modified_by:
   name: Linode
 published: 2011-05-03
@@ -74,6 +74,6 @@ You will see where the pool is routed under *Public IP Pools* on the Linode Mana
 | /116   | 4,096                         |
 
 
-## IPv6 Forwarding and Neighbor Discovery
+## IPv6 Forwarding
 
-For security reasons, these features are not available on the Linode network. This is enforced by our network infrastructure, so while it's possible to change the Linux kernel's `sysctl` parameters of your Linode's operating system to allow IPv6 forwarding, those changes will have no effect.
+For security reasons, IPv6 forwarding is not available on the Linode network. This is enforced by our network infrastructure.
