@@ -29,11 +29,12 @@ All services are billed automatically at the end of the month. If you used a ser
 | Linode 2GB   | $0.015/hr   | $10/mo  | $0.004/hr           | $2.50/mo
 | Linode 4GB   | $0.03/hr    | $20/mo  | $0.008/hr           | $5/mo
 | Linode 8GB   | $0.06/hr    | $40/mo  | $0.015/hr           | $10/mo
-| Linode 12GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
-| Linode 24GB  | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
-| Linode 48GB  | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
-| Linode 64GB  | $0.72/hr    | $480/mo | $0.18/hr            | $120/mo
-| Linode 80GB  | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
+| Linode 16GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
+| Linode 32GB  | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
+| Linode 64GB  | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
+| Linode 96GB   | $0.72/hr   |  $480/mo | $0.18/hr           | $120/mo  |
+| Linode 128GB  | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
+| Linode 192GB  | $1.44/hr    | $960/mo | $0.36/hr            | $240/mo
 
 Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#standard)
 
@@ -41,11 +42,11 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 
 | Service      | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
 |:-------------|:------------|:--------|:--------------------|:---------------
-| Linode 16GB  | $0.09/hr    | $60/mo  | $0.008/hr          | $5/mo
-| Linode 32GB  | $0.18/hr    | $120/mo | $0.015/hr           | $10/mo
-| Linode 60GB  | $0.36/hr    | $240/mo | $0.03/hr            | $20/mo
-| Linode 104GB | $0.72/hr    | $480/mo | $0.06/hr            | $40/mo
-| Linode 200GB | $1.44/hr    | $960/mo | $0.09/hr            | $60/mo
+| Linode 24GB  | $0.09/hr    | $60/mo  | $0.008/hr          | $5/mo
+| Linode 48GB  | $0.18/hr    | $120/mo | $0.015/hr           | $10/mo
+| Linode 90GB  | $0.36/hr    | $240/mo | $0.03/hr            | $20/mo
+| Linode 150GB | $0.72/hr    | $480/mo | $0.06/hr            | $40/mo
+| Linode 300GB | $1.44/hr    | $960/mo | $0.09/hr            | $60/mo
 
 Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#high_memory)
 
@@ -197,4 +198,3 @@ You do not have to cancel your account to prevent recurring charges. Instead, yo
 ## More Information
 
 If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/platform/prepaid-billing-and-payments-legacy/) guide for more information.
-
