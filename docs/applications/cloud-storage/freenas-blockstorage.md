@@ -5,7 +5,7 @@ author:
 description: 'FreeNAS is network-attached storage software configured through a web interface. This guide shows how to install FreeNAS and connect it to a Block Storage Volume.'
 keywords: ["zfs","freenas","block storage","nas"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-08
+modified: 2018-05-17
 modified_by:
   name: Linode
 title: 'Install FreeNAS on a Linode with Block Storage'
@@ -22,7 +22,7 @@ This guides shows how to install FreeNAS on a Linode and attach a [Block Storage
 {{< caution >}}
 FreeNAS is not officially supported by Linode at this time. This means that features like the [Linode Backup Service](/docs/platform/backup-service) and Lish will be unavailable to you.
 
-Any issues you may encounter with FreeNAS on your Linode are outside the scope of Linode Support.
+Any issues you may encounter with FreeNAS on your Linode are outside the scope of Linode Support. For further help with this guide's subject, you can ask questions on the [Linode Community Site](https://www.linode.com/community/questions/).
 {{< /caution >}}
 
 ## Prepare Your Linode
@@ -108,9 +108,9 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Add a Block Storage Volume to FreeNAS
 
-1.  [Add or attach a Block Storage Volume](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) to the Linode.
+1.  [Add or attach a Block Storage Volume](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) to the Linode. After you attach your Block Storage Volume, the Linode Manager will present command-line instructions for mounting it from your Linode, but you can disregard these.
 
-2.  In the FreeNAS sidebar, click **Reboot**. After a few minutes, refresh the page and log in again. You can monitor the reboot progress in Glish.
+2.  Reboot the Linode from the Linode Manager. After a few minutes, launch Glish from the **Remote Access** tab again. You can monitor the reboot progress in Glish.
 
 ### Format Block Storage Volume as ZFS
 
@@ -118,9 +118,11 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 Formatting will erase all data on the volume.
 {{< /caution >}}
 
-1.  Click the **Storage** icon, then **View Disks** to confirm that FreeNAS recognized the Block Storage Volume.
+1.  Log back into the web interface for FreeNAS.
 
-2.  Return to the **Storage** tab and click **Volume Manager**. Enter a Volume Name and under Available Disks click the **+** next to the Block Storage Volume. Below Volume layout, select **Stripe**. Click **Add Volume** to format and attach the Volume:
+2.  Click the **Storage** icon at the top, then **View Disks** to confirm that FreeNAS recognized the Block Storage Volume.
+
+3.  Return to the **Storage** tab and click **Volume Manager**. Enter a Volume Name and under Available Disks click the **+** next to the Block Storage Volume. Below Volume layout, select **Stripe**. Click **Add Volume** to format and attach the Volume:
 
     ![Volume Manager - Add a Volume](/docs/assets/applications/cloud-storage/freenas-bs/freenas-storage-add-volume.png "Volume Manager - Add a Volume")
 
