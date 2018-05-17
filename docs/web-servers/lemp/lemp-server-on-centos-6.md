@@ -11,7 +11,7 @@ modified_by:
   name: Doug Freed
 published: 2011-11-03
 deprecated: true
-deprecated_link: /web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/
+deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
 title: LEMP Server on CentOS 6
 external_resources:
  - '[Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
