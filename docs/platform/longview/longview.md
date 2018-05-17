@@ -7,7 +7,7 @@ og_description: "Learn how to use Longview, Linode's system data graphing servic
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['longview/', 'uptime/longview/']
-modified: 2018-03-15
+modified: 2018-05-17
 modified_by:
   name: Linode
 title: What is Longview and How to Use it
@@ -210,9 +210,9 @@ Longview Free updates every 5 minutes and provides only twelve hours of data his
 
 2.  You'll be taken to the Longview subscriptions page. Select the radio dial of the plan you want to change to.
 
-3.  Click the **Continue \>\>** button.
-4.  Review your order, then click **Complete Order**. Please note that it may take up to 24 hours for the upgrade process to complete.
+3.  Click the **Continue >>** button.
 
+4.  Review your order, then click **Complete Order**. Please note that it may take up to 24 hours for the upgrade process to complete.
 
 ## Troubleshooting
 
@@ -229,7 +229,7 @@ Ensure that:
         sudo systemctl status longview   # For distributions with systemd.
         sudo service longview status     # For distributions without systemd.
 
-    If the Longview client is not running, start it with one of the following commands, again depending on your distribution's init system:
+    If the Longview client is not running, start it with one of the following commands, depending on your distribution's init system:
 
         sudo systemctl start longview
         sudo service longview start
@@ -249,7 +249,12 @@ Restart the Longview client in debug mode for increased logging verbosity.
 
         sudo /etc/init.d/longview debug
 
-3.  When you're finished collecting information, stop Longview (sometimes this requires killing the process) and restart it again without the debug flag.
+3.  When you're finished collecting information, repeat the first two steps to stop Longview and restart it again without the debug flag.
+
+    If Longview does not close properly, find the process ID and kill the process:
+
+        ps aux | grep longview
+        sudo kill $PID
 
 ### Firewall Rules
 
@@ -273,7 +278,7 @@ If the output of those commands show no rules for the Longview domain, you must 
 
 The API key given in the Linode Manager should match that on your system in `/etc/linode/`.
 
-1.  The API key is located on the same page of the Linode Manager as the Longview client label. Follow the [instructions above](/docs/platform/longview/longview/#longview-client-labels) to get to that screen.
+1.  The API key is located on the same page of the Linode Manager as the Longview client label. Follow the [instructions above](#longview-client-labels) to get to that screen.
 
 2.  SSH into your Linode. The Longview key is located at `/etc/linode/longview.key`. Use `cat` to view the contents of that file and compare it to what's shown in the Linode Manager:
 
@@ -285,9 +290,11 @@ The API key given in the Linode Manager should match that on your system in `/et
 
 If you clone a Linode which has Longview installed, you may encounter the following error:
 
-    Multiple clients appear to be posting data with this API key. Please check your clients' configuration.
+{{< output >}}
+Multiple clients appear to be posting data with this API key. Please check your clients' configuration.
+{{< /output >}}
 
-This is caused by both Linodes posting data using the same Longview key. To resolve it, reinstall Longview on the cloned system using the instructions [above](/docs/platform/longview/longview/#install-the-longview-client). This will give the new Linode's system a Longview API key independent from the system which it was cloned from.
+This is caused by both Linodes posting data using the same Longview key. To resolve it, reinstall Longview on the cloned system using the instructions [above](#install-the-longview-client). This will give the new Linode's system a Longview API key independent from the system which it was cloned from.
 
 ### Contact Support
 
