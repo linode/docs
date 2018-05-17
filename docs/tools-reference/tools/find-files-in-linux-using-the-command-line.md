@@ -47,7 +47,7 @@ This command enables the maximum optimization level (-O3) and allows `find` to f
 | Command                                              | Description                                                                     |
 |------------------------------------------------------|:--------------------------------------------------------------------------------|
 | `find . -name testfile.txt`                          | Find a file called testfile.txt in current and sub-directories.                  |
-| `find /home -name '*.jpg`                            | Find all `.jpg` files in the `/home` and sub-directories.                        |
+| `find /home -name *.jpg`                            | Find all `.jpg` files in the `/home` and sub-directories.                        |
 | `find . -type f -empty`                              | Find an empty file within the current directory.                                 |
 | `find /home -user exampleuser -mtime 7 -iname ".db"` | Find all `.db` files (ignoring text case) modified in the last 7 days by a user named exampleuser.  |
 
