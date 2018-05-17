@@ -72,8 +72,3 @@ You will see where the pool is routed under *Public IP Pools* on the Linode Mana
 | /56    | 4,722,366,482,869,645,213,696 |
 | /64    | 18,446,744,073,709,551,616    |
 | /116   | 4,096                         |
-
-
-## IPv6 Forwarding and Neighbor Discovery
-
-For security reasons, these features are not available on the Linode network. This is enforced by our network infrastructure, so while it's possible to change the Linux kernel's `sysctl` parameters of your Linode's operating system to allow IPv6 forwarding, those changes will have no effect.
