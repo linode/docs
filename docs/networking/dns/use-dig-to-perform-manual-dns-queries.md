@@ -6,7 +6,7 @@ description: 'Use the dig utility to perform DNS queries at the command line.'
 keywords: ["dig", "dns", "troubleshooting", "domain names"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linux-tools/common-commands/dig/']
-modified: 2017-10-04
+modified: 2018-05-22
 modified_by:
   name: Linode
 published: 2010-10-13
@@ -17,21 +17,19 @@ title: Use dig to Perform Manual DNS Queries
 
 ## What is dig?
 
-`dig` is a command line domain name system (DNS) querying utility that allows you to diagnose issues with domain name resolution.
+`dig` is a command line DNS querying utility that allows you to diagnose issues with domain name resolution.
 
 ## Install dig
 
-`dig` is part of a collection of DNS utilities often packaged with the DNS server "BIND". You can install these utilities by issuing the appropriate command for your Linux distribution. For users of Debian and Ubuntu systems, use the following command:
+`dig` is part of a collection of DNS utilities often packaged with the *Bind* DNS server. You can install these utilities by issuing the appropriate command for your Linux distribution.
 
-    apt-get install dnsutils
-
-Users of CentOS and Fedora systems can use the following command:
+CentOS
 
     yum install bind-utils
 
-In Arch Linux, use the following command:
+Debian / Ubuntu
 
-    pacman -S dnsutils
+    apt-get install dnsutils
 
 ## How to Use dig
 
@@ -56,7 +54,7 @@ Consider the following basic `dig` output:
     ;; WHEN: Tue Aug 24 14: 2010
     ;; MSG SIZE  rcvd: 57
 
-There are a number of aspects of the DNS query that we can see from this output. The query returns a successful result of `NOERROR` and `dig` is able to retrieve an "A Record" for the name `example.com`, which resolves to the IP address `107.92.2.7`. `dig` concludes with a number of data points regarding the query itself including the DNS resolver used (`192.168.1.1`), the amount of time required to complete the query, and the size of the query response.
+The query returns a successful result of `NOERROR` and `dig` is able to retrieve an *A record* for the name `example.com`, which resolves to the IP address `107.92.2.7`. `dig` includes  a number of data points regarding the query itself including the DNS resolver used (`192.168.1.1`), the amount of time required to complete the query, and the size of the query response.
 
 To query for a different kind of DNS record, both of the following commands will produce the same output:
 
@@ -101,7 +99,7 @@ If you attempt to query a domain that doesn't exist, as is the case with `nonext
     ;; WHEN: Tue Aug 24 15:19:11 2010
     ;; MSG SIZE  rcvd: 100
 
-In this example, the query returns the status `NXDOMAIN` and the `SOA` or "Start of Authority" record that describes global values in every authoritative DNS zone. You may also occasionally see records that contain multiple A records. In these cases, multiple hosts are able to respond for a single name. See the following example:
+In this example, the query returns the status `NXDOMAIN` and the `SOA` or *Start of Authority* record that describes global values in every authoritative DNS zone. You may also occasionally see records that contain multiple A records. In these cases, multiple hosts are able to respond for a single name. See the following example:
 
     $ dig example.com
 
@@ -177,11 +175,11 @@ With the `+trace` option, `dig` will provide output that allows you follow each 
 
 This example traces a DNS query for the domain `www.example.com`. This ultimately resolves to the IP address `107.92.2.7`. DNS queries start at the end of the domain with the root-level `.`, and continue from right to left until a DNS server is able to provide an authoritative A record.
 
-DNS traces help you determine if DNS authority has delegated properly and if DNS "glue" records are leading to an incorrect resolution. DNS traces also provide information on how long queries take to complete and the specific servers that provide intermediate records.
+DNS traces help you determine if DNS authority has delegated properly and if DNS *glue* records are leading to an incorrect resolution. DNS traces also provide information on how long queries take to complete and the specific servers that provide intermediate records.
 
 ## Use dig to Target a Specific DNS Server
 
-Any DNS server can publish records for any domain; however, in normal use, DNS servers are only queried for records that have had authority delegated to them. You can use `dig` to query arbitrary DNS servers for records that they might not have been delegated authority, as in the following example:
+Any DNS server can publish records for any domain. However, in normal use, DNS servers are only queried for records that have had authority delegated to them. You can use `dig` to query arbitrary DNS servers for records that they might not have been delegated authority, as in the following example:
 
     $ dig @ns1.linode.com example.com
 
