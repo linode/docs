@@ -60,11 +60,11 @@ The next aspect of DNS management is specifying DNS records, which match domain 
     mail        A   12.34.56.78
     www         A   12.34.56.78
 
-Every domain's zone file contains the domain administrator's email address, the name servers, and the DNS records. Of course, you are not limited to these default entries. You can create a variety of DNS records for as many different subdomains as you wish. To learn how to add individual DNS records using the DNS Manager, read [this article](/docs/networking/dns/dns-manager).
+Every domain's zone file contains the domain administrator's email address, the name servers, and the DNS records. Of course, you are not limited to these default entries. You can create a variety of DNS records for as many different subdomains as you wish. To learn how to add individual DNS records using the DNS Manager, read the Linode [DNS Manager Overview article](/docs/networking/dns/dns-manager-overview/) guide.
 
 ### DNS Resolution
 
-So how does DNS actually work? First, the domain name needs to get translated into your Linode's IP address. DNS matches human-friendly domain names like *example.com* to computer-friendly IP addresses like *192.0.2.8*. This happens in a special text file called a *zone file*, which lists domains and their corresponding IP addresses (and a few other things). A zone file is like a phone book that matches names with street addresses.
+So how does DNS actually work? First, the domain name needs to get translated into your Linode's IP address. DNS matches human-friendly domain names like *example.com* to computer-friendly IP addresses like *192.0.2.8*. This happens in a special text file called a *zone file*, which lists domains and their corresponding IP addresses (and a [few other things](https://en.wikipedia.org/wiki/Zone_file)). A zone file is like a phone book that matches names with street addresses.
 
 Here's how the DNS lookup process works:
 
@@ -81,7 +81,7 @@ Here's how the DNS lookup process works:
 
 The scenario described above is what happens if the ISP has no current information about the requested domain. In actuality, ISPs cache a lot of DNS information after they've looked it up the first time. This results in faster lookups and less strain on DNS servers.
 
-Usually caching is a good thing, but it can be a problem if you've recently made a change to your DNS information, like when you move to Linode from a different hosting provider. In such a case, you'll want to pay attention to your zone file's [time to live (TTL)](/docs/networking/dns/dns-manager#set-the-time-to-live-or-ttl) so that your DNS change happens as quickly as possible.
+Usually caching is a good thing, but it can be a problem if you've recently made a change to your DNS information, like when you move to Linode from a different hosting provider. In such a case, you'll want to pay attention to your zone file's [time to live (TTL)](/docs/networking/dns/dns-manager-overview/#set-the-time-to-live-or-ttl) so that your DNS change happens as quickly as possible.
 
 ## Types of DNS Records
 
@@ -93,7 +93,7 @@ An *A record* points your domain or subdomain to your Linode's IP address, which
 
     hello.example.com       A       12.34.56.78
 
-You can point different subdomains to different IP addresses. If you want to point every subdomain of *example.com* to your Linode's IP, you can use an asterisk (*\**\*\*) as your subdomain:
+You can point different subdomains to different IP addresses. If you want to point every subdomain of *example.com* to your Linode's IP, you can use an asterisk (**\***) as your subdomain:
 
     *.example.com   A       12.34.56.78
 
@@ -105,7 +105,7 @@ An *AAAA record* is just like an A record, but for IPv6 IP addresses. A typical 
 
 An *AXFR record* is a type of DNS record used for DNS replication, although there are more modern ways to do DNS replication. AXFR records are not used in ordinary zone files. Rather, they are used on a slave DNS server to replicate the zone file from a master DNS server.
 
-For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, see our [guide on configuring DNS in cPanel](/docs/web-applications/control-panels/cpanel/dns-on-cpanel#using-linodes-dns-manager-as-a-slave).
+For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, see our [guide on configuring DNS in cPanel](/docs/websites/cms/set-up-dns-services-on-cpanel/#using-linode-s-dns-manager-as-a-slave).
 
 ### CAA
 
@@ -128,7 +128,7 @@ In some cases, a CNAME record can be an effective way to redirect traffic from o
 
 ### DKIM
 
-A *DKIM record* or *domain keys identified mail record* displays the public key for authenticating messages that have been signed with the DKIM protocol. This practice increases the capability to check mail authenticity. A typical DKIM record looks like the following:
+A *DKIM record* or *DomainKeys Identified Mail record* displays the public key for authenticating messages that have been signed with the DKIM protocol. This practice increases the capability to check mail authenticity. A typical DKIM record looks like the following:
 
     selector1._domainkey.example.com        TXT     k=rsa;p=J8eTBu224i086iK
 
@@ -136,14 +136,14 @@ DKIM records are implemented as text records. The record must be created for a s
 
 ### MX
 
-An *MX record* or *mail exchange record* sets the mail delivery destination for a domain or subdomain. A typical MX record looks like the following:
+An *MX record* or *mail exchanger record* sets the mail delivery destination for a domain or subdomain. A typical MX record looks like the following:
 
     example.com         MX      10  mail.example.com.
     mail.example.com    A           12.34.56.78
 
-The above records direct mail for *example.com* to the *mail.example.com* server. The target domain (`mail.example.com` above) needs to have its own A record that resolves to your Linode. An MX record should ideally point to a domain that is also the [hostname](/docs/getting-started#setting-the-hostname) for its server.
+The above records direct mail for *example.com* to the *mail.example.com* server. The target domain (`mail.example.com` above) needs to have its own A record that resolves to your Linode. An MX record should ideally point to a domain that is also the [hostname](/docs/getting-started/#set-the-hostname) for its server.
 
-Your MX records don't necessarily have to point to your Linode. If you're using a third-party mail service like [Google Apps](/docs/email/google-mail), you should use the MX records they provide.
+Your MX records don't necessarily have to point to your Linode. If you're using a third-party mail service like [Google Apps](/docs/email/using-google-apps-for-email/), you should use the MX records they provide.
 
 *Priority* is another component of MX records. This is the number written between the record type and the target server (10 in the example above). Priority allows you to designate a fallback server (or servers) for mail for a particular domain. Lower numbers have a higher priority. Here's an example of a domain that has two fallback mail servers:
 
@@ -180,7 +180,7 @@ PTR records are usually set with your hosting provider. They are not part of you
 
 As a prerequisite for adding a PTR record, you need to create a valid, live A or AAAA record that points the desired domain to that IP. If you want an IPv4 PTR record, point the domain or subdomain to your Linode's IPv4 address. If you want an IPv6 PTR record, point the domain to your Linode's IPv6 address. Beyond that, IPv4 and IPv6 PTR records work the same way.
 
-For instructions on setting up reverse DNS on your Linode, see our [Reverse DNS](/docs/networking/dns/setting-reverse-dns) guide.
+For instructions on setting up reverse DNS on your Linode, see our [Reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/#setting-reverse-dns) guide.
 
 {{< note >}}
 It's possible to have different IPs (including both IPv4 and IPv6 addresses) that have the same domain set for reverse DNS. To do this, you will have to configure multiple A or AAAA records for that domain that point to the various IPs.
