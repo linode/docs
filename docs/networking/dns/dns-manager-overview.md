@@ -22,7 +22,7 @@ The *DNS Manager* is a comprehensive DNS management interface available within t
 The Domain Name System (DNS) attaches human-readable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`. This global system allows users to remember the names of websites instead of their numeric IP addresses.
 
 {{< note >}}
-All steps within this guide are completed within the **[DNS Manager](https://manager.linode.com/dns)** tab of your Linode Manager.
+All steps within this guide are completed within the **[DNS Manager](https://manager.linode.com/dns/)** tab of your Linode Manager.
 {{< /note >}}
 
 ## DNS Set-Up Checklist
@@ -30,7 +30,7 @@ All steps within this guide are completed within the **[DNS Manager](https://man
 DNS records are only actively hosted on accounts with at least one Linode. When setting up a domain name on your Linode, make sure you perform the following steps:
 
 1.  Register (purchase) a domain name if you haven't already.
-2.  Set your domain name to [use Linode's name servers](#set-domain-names-to-use-linodes-name-servers). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
+2.  Set your domain name to [use Linode's name servers](#use-linode-s-name-servers-with-your-domain). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
 3.  Use the DNS Manager to [add a domain zone](#add-a-domain-zone), and then start [adding some basic DNS records](#add-records).
 4.  [Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
 5.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/docs/networking/dns/common-dns-configurations/).
@@ -51,7 +51,7 @@ DNS changes can take up to 24 hours to propagate throughout the internet, althou
 
 ## The DNS Manager
 
-Log in to the [Linode Manager](https://manager.linode.com) and click the **DNS Manager** tab. It should resemble this:
+Log in to the [Linode Manager](https://manager.linode.com/) and click the **DNS Manager** tab. It should resemble this:
 
 ![The DNS Manger](/docs/assets/1112-dns1-2.png)
 
