@@ -13,9 +13,11 @@ published: 2010-10-25
 title: Download Resources from the Command Line with wget
 ---
 
-`wget` is a command line utility that retrieves files from the internet and saves them to the local file system. Any file accessible over HTTP or FTP can be downloaded with `wget`. `wget` provides a number of options to allow users to configure how resources are downloaded and saved. It also features a recursive download function which allows you to download a set of linked resources for offline use.
+## What is wget?
 
-## Using wget
+`wget` is a command line utility that retrieves files from the internet and saves them to the local file system. Any file accessible over HTTP or FTP can be downloaded with `wget`. `wget` provides a number of options to allow users to configure how files are downloaded and saved. It also features a recursive download function which allows you to download a set of linked resources for offline use.
+
+## Use wget
 
 The `wget` command uses the following basic syntax:
 
@@ -23,7 +25,7 @@ The `wget` command uses the following basic syntax:
 
 When used without options, `wget` will download the file specified by the `[URL]` to the current directory:
 
-    wget http://www.linode.com/docs/assets/695-wget-example.txt
+    wget https://www.linode.com/docs/assets/695-wget-example.txt
 
 {{< output >}}
 --2018-05-18 19:40:17--  https://www.linode.com/docs/assets/695-wget-example.txt
@@ -59,9 +61,13 @@ uCf3HehndIeRghOAmXPc61cfUrHZ+MEqXYmSoKw4E0hI7GWXkwAyByCFPBVB9Fbe
 
 ### Download Content to Standard Output
 
-The `-O` option controls the location and name of the file where `wget` writes the downloaded content. If you specify the file name as `-` as in `wget -O -`, `wget` will output the downloaded resource to the terminal. Add the `-q` flag to suppress the "`wget` status output as follows:
+The `-O` option controls the location and name of the file where `wget` writes the downloaded content. To download the file as `example.txt` and save it to the `mydir` directory:
 
-    wget -q -O - http://www.linode.com/docs/assets/695-wget-example.txt
+    wget -O mydir/example.txt https://www.linode.com/docs/assets/695-wget-example.txt
+
+If you specify the file name as `-` as in `wget -O -`, `wget` will output the downloaded file to the terminal. Add the `-q` flag to suppress the status output:
+
+    wget -q -O - https://www.linode.com/docs/assets/695-wget-example.txt
 
 {{< output >}}
 This is an example resource for the `wget` document
@@ -76,41 +82,40 @@ wVPjuxsptT/L05K6avRI81Edg2+8CkS8uA16u+bXqRn1BBQutRvxwrWwrKuP10pR
 uCf3HehndIeRghOAmXPc61cfUrHZ+MEqXYmSoKw4E0hI7GWXkwAyByCFPBVB9Fbe
 {{< /output >}}
 
-### View the HTTP Headers for a Resource
+### View HTTP Headers
 
-To view the HTTP header information attached to the resource, use the `-S` flag. Header information is often helpful for diagnosing issues with web sever configuration.
+To view the HTTP header information attached to the resource, use the `-S` flag. Header information is often helpful for diagnosing issues with web server configuration.
 
-    wget -S http://www.linode.com/docs/assets/695-wget-example.txt
+    wget -S https://www.linode.com/docs/assets/695-wget-example.txt
 
 {{< output >}}
-URL transformed to HTTPS due to an HSTS policy
---2018-05-18 19:41:47--  https://www.linode.com/docs/assets/695-wget-example.txt
-Resolving www.linode.com (www.linode.com)... 2600:3c00::12, 2600:3c00::32, 2600:3c00::22, ...
-Connecting to www.linode.com (www.linode.com)|2600:3c00::12|:443... connected.
+--2018-05-18 20:19:30--  https://www.linode.com/docs/assets/695-wget-example.txt
+Resolving www.linode.com (www.linode.com)... 2600:3c00::22, 2600:3c00::12, 2600:3c00::32, ...
+Connecting to www.linode.com (www.linode.com)|2600:3c00::22|:443... connected.
 HTTP request sent, awaiting response...
   HTTP/1.1 200 OK
   Server: nginx
-  Date: Fri, 18 May 2018 19:41:47 GMT
+  Date: Fri, 18 May 2018 20:19:30 GMT
   Content-Type: text/plain
   Content-Length: 522
   Connection: keep-alive
   Vary: Accept-Encoding
-  Last-Modified: Thu, 19 Apr 2018 23:17:38 GMT
-  ETag: "5ad92392-20a"
+  Last-Modified: Thu, 19 Apr 2018 23:17:41 GMT
+  ETag: "5ad92395-20a"
   Accept-Ranges: bytes
   Strict-Transport-Security: max-age=31536000
   X-Frame-Options: DENY
 Length: 522 [text/plain]
-Saving to: ‘695-wget-example.txt.2’
+Saving to: ‘695-wget-example.txt.5’
 
-695-wget-example.txt.2                              100%[=================================================================================================================>]     522  --.-KB/s    in 0s
+695-wget-example.txt.5                              100%[=================================================================================================================>]     522  --.-KB/s    in 0s
 
-2018-05-18 19:41:47 (79.3 MB/s) - ‘695-wget-example.txt.2’ saved [522/522]
+2018-05-18 20:19:30 (75.1 MB/s) - ‘695-wget-example.txt.5’ saved [522/522]
 {{< /output >}}
 
 To view only the headers, add the `-q` flag as before to suppress the status output:
 
-    wget -Sq http://www.linode.com/docs/assets/695-wget-example.txt
+    wget -Sq https://www.linode.com/docs/assets/695-wget-example.txt
 
 {{< output >}}
 HTTP/1.1 200 OK
@@ -127,7 +132,7 @@ Strict-Transport-Security: max-age=31536000
 X-Frame-Options: DENY
 {{< /output >}}
 
-### Supply HTTP AUTH Credentials
+### Authenticate a Request
 
 If you need to download a file that requires HTTP authentication, you can pass a username and password with the `--http-user` and `--http-password` options:
 
@@ -138,9 +143,6 @@ If you need to download a file that requires HTTP authentication, you can pass a
 ### Accept Self Signed Certificates
 
 To download a file on a site that is protected with a self-signed SSL certificate, specify the `--no-check-certificate` option.
-
-    wget --no-check-certificate https://docstest.linode.com
-
 Information is still encrypted, but the authenticity of the certificate is not confirmed.
 
 ### Recursively Download Files
@@ -161,34 +163,29 @@ The options `-r -l 3 -k -p -H` have the following functionality:
 
 Use the `-b` option to background the download process if you do not want `wget` to occupy your terminal process.
 
-    $ wget -b http://www.linode.com/docs/assets/695-wget-example.txt
-    Continuing in background, pid 9810.
-    Output will be written to `wget-log'.
+    wget -b https://www.linode.com/docs/assets/695-wget-example.txt
 
-    $ cat wget-log
-    --2010-10-01 12:06:55--  http://www.linode.com/docs/assets/695-wget-example.txt
-    Resolving linode.com/docs... 74.207.233.254
-    Connecting to linode.com/docs|74.207.233.254|:80... connected.
-    HTTP request sent, awaiting response... 200 OK
-    Length: 477 [text/plain]
-    Saving to: `wget-example.txt'
+{{< output >}}
+Continuing in background, pid 953.
+Output will be written to ‘wget-log’.
+{{< /output >}}
 
-         0K                                                       100%  686K=0.001s
+Output will be written to `wget-log` for you to review later:
 
-    2010-10-01 12:06:37 (686 KB/s) - `wget-example.txt' saved [477/477]
+    cat wget-log
 
 ### Avoid Redundant Downloads
 
-`wget` includes a number of options designed to conserve bandwidth and redundant operations.
+`wget` includes a number of options designed to conserve bandwidth by avoiding redundant operations.
 
 -   `-nc` is the "no clobber" option, which prevents `wget` from downloading a file if it would overwrite an existing file.
 -   `-N` prevents `wget` from downloading a file if a newer file of the same name exists on the local machine.
 -   `-c` allows `wget` to continue downloading a file that was partially downloaded.
 
-### Rate Limit Download Operations with wget
+### Rate Limit
 
 If you need to control how much bandwidth `wget` uses, you can specify a "rate limit" with the `--limit-rate=[RATE]` option. `[RATE]` is specified in bytes per second unless a `k` is appended to specify kilobytes.
 
-    wget --limit-rate=3k http://example.com/releases/1285786486.tar.gz
+    wget --limit-rate=3k https://linode.com
 
 This command downloads the `1285786486.tar.gz` file with the operation limited to consume no more than 3 kilobytes a second. The method used to rate limit downloads is more effective for bigger files than for small downloads that complete rapidly.
