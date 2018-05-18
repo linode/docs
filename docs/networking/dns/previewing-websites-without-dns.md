@@ -17,8 +17,7 @@ title: Previewing Websites Without DNS
 
 Previewing your website before updating your domain's nameservers allows you to stage and test your setup without redirecting viewers from your live site running on your old host. This is done with an entry to your local system's hosts file.
 
-A hosts file is used to map specific hostnames to IP addresses, and takes precedence over name resolution provided by DNS queries. By manually specifying an IP/hostname pair, web traffic sent to the given domain is directed to the given IP address, regardless of the domain's actual A records. If these terms are unfamiliar, see our [DNS](/docs/networking/dns/introduction-to-dns-records) guide for more information.
-
+A hosts file is used to map specific hostnames to IP addresses, and takes precedence over name resolution provided by DNS queries. By manually specifying an IP/hostname pair, web traffic sent to the given domain is directed to the given IP address, regardless of the domain's actual A records. If these terms are unfamiliar, see our [DNS](/docs/networking/dns/dns-records-an-introduction/) guide for more information.
 
 ## Find Your Linode's IP Address
 
@@ -30,7 +29,6 @@ A hosts file is used to map specific hostnames to IP addresses, and takes preced
     [![Select a data center.](/docs/assets/1534-linode-manager-6-1-small.png)](/docs/assets/1535-linode-manager-6-1.png)
 
 5.  Copy the addresses in the Public IPs section. In this example, the Linode's IPv4 address is `96.126.108.183` and its IPv6 address is `2600:3c03::f03c:91ff:fedf:d693`.
-
 
 ## Edit Your Hosts File
 
