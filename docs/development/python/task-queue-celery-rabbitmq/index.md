@@ -17,7 +17,7 @@ external_resources:
 - '[Official Celery Documentation](http://docs.celeryproject.org/en/latest/index.html)'
 ---
 
-![How to Set Up a Task Queue with Celery and RabbitMQ](/docs/assets/celery/how-to-set-up-a-task-queue-with-celery-and-rabbitmq-smg.jpg)
+![How to Set Up a Task Queue with Celery and RabbitMQ](how-to-set-up-a-task-queue-with-celery-and-rabbitmq-smg.jpg)
 
 Celery is a Python Task-Queue system that handle distribution of tasks on workers across threads or network nodes. It makes asynchronous task management easy. Your application just need to push messages to a broker, like RabbitMQ, and Celery workers will pop them and schedule task execution.
 
@@ -329,7 +329,7 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
 
 4. Point your browser to `localhost:5555` to view the dashboard:
 
-      ![Flower screenshot](/docs/assets/celery/flower-screenshot.png)
+      ![Flower screenshot](flower-screenshot.png)
 
     {{< note >}}
 If Flower is exposed through a public IP address, be sure to take additional steps to secure this through a [reverse proxy](https://flower.readthedocs.io/en/latest/reverse-proxy.html).
