@@ -19,6 +19,8 @@ Linode also offers a number of resources you can refer to when troubleshooting a
 
 ## Resources
 
+Linode provides community spaces, an AI-powered assistant, libraries of reference material, and status updates for infrastructure components:
+
 -   **Linode Community and the Community Site:** Other Linode customers discuss the projects they're working on in the [Linode Community Site](https://www.linode.com/community/questions/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the [IRC channel](https://www.linode.com/chat/).
     ![Linode Community Site](/docs/assets/community-site-header.png)
 -   **Linode Support Bot:** The Linode Support Bot can answer a number of technical, billing, and account management questions, and it learns new answers every day. If the Linode Support Bot does not know an answer, it can create a support ticket for you. This feature is available from the Linode Manager:
