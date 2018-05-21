@@ -13,11 +13,13 @@ published: 2015-04-30
 title: Install OpenVPN Access Server on Linux for Secure Communications
 ---
 
+![Install OpenVPN Access Server on Linux for Secure Communications](/docs/assets/openvpn/openvpn-access-server-title.jpg "Install OpenVPN Access Server on Linux for Secure Communications title graphic")
+
 ## What is OpenVPN?
 
 OpenVPN is a popular software package which creates encrypted tunnels for secure data transfer.  In this guide, you will learn to configure your Linode as a VPN gateway using the OpenVPN Access Server software, and connect your Windows, OSX, or Linux computer to it.
 
-Before installing OpenVPN Access Server, you will need to follow our [Getting Started](/docs/getting-started/) guide. We also suggest following our [Securing Your Server](/docs/security/basics) guide.
+Before installing OpenVPN Access Server, you will need to follow our [Getting Started](/docs/getting-started/) guide. We also suggest following our [Securing Your Server](/docs/security/securing-your-server/) guide.
 
 {{< note >}}
 After securing your server, ensure that TCP port `943` and UDP port `1194` are permitted through your firewall in order for the OpenVPN Access Server to function.

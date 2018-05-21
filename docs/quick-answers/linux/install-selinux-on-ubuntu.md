@@ -12,8 +12,7 @@ published: 2017-06-30
 title: How to Install SELinux on Ubuntu
 ---
 
-
-
+![How to Install SELinux on Ubuntu](/docs/assets/selinux/selinux-ubuntu-title.jpg "How to Install SELinux on Ubuntu title graphic")
 
 Ubuntu has a Mandatory Access Control (MAC) system similar to SELinux, named AppArmor. Both SELinux and AppArmor provide a set of tools to isolate applications from each other to protect the host system from being compromised. AppArmor offers Ubuntu users mandatory access control options, without the perceived difficulty or learning curve that SELinux may have. However, if you are switching to Ubuntu, are already familiar with SELinux and would like to use it to enforce security on your system, you can install it by following this brief tutorial.
 

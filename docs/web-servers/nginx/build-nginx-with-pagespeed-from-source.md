@@ -12,6 +12,9 @@ modified_by:
   name: Linode
 title: 'Build NGINX with PageSpeed From Source'
 ---
+
+![Build NGINX with PageSpeed From Source](/docs/assets/nginx/build-nginx-pagespeed-from-source-title.jpg "Build NGINX with PageSpeed From Source title graphic")
+
 ## What is Google PageSpeed?
 
 [PageSpeed](https://www.modpagespeed.com/) is a set of modules for NGINX and Apache which optimize and measure page performance of websites. Optimization is done by minifying static assets such as CSS and JavaScript, which decreases page load time. [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) is a tool that measures your site's performance, and makes recommendations for further modifications based on the results.

@@ -16,6 +16,8 @@ published: 2015-02-06
 title: How to Install Git and Clone a GitHub Repository
 ---
 
+![How to Install Git and Clone a GitHub Repository](/docs/assets/install-clone-github-repo-title.jpg "How to Install Git and Clone a GitHub Repository title graphic")
+
 GitHub is a website that allows collaboration between developers using the Git version control system. With Git and GitHub, programmers from across the world can share ideas and code in an organized and up-to-date process.
 
 ## Install and Configure Git

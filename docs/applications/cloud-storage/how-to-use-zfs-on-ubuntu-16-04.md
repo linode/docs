@@ -19,6 +19,8 @@ external_resources:
  - '[RAID levels Wikipedia](https://en.wikipedia.org/wiki/Standard_RAID_levels)'
 ---
 
+![How to Use ZFS on Ubuntu 16.04](/docs/assets/zfs-on-ubuntu-title.jpg "How to Use ZFS on Ubuntu 16.04 title graphic")
+
 ## What is Silent Data Corruption? How Does ZFS Work?
 
 *Silent data corruption* can be caused by a controller fault, firmware bug, or microscopic flaw in the design of magnetic/flash memory. The drive will write incorrect data but report a successful operation. Since no errors have been reported by the filesystem, the backups contain the corrupted files so there is no way to recover.
