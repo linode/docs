@@ -18,6 +18,8 @@ external_resources:
  - '[SHOUTcast Transcoder MP3 Licensing](http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding)'
 ---
 
+![How to Install A SHOUTcast DNAS Server on Linux](/docs/assets/install-shoutcast-dnas-title.jpg "How to Install A SHOUTcast DNAS Server on Linux title graphic")
+
 SHOUTcast is software designed for streaming media over the internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
  {{< note >}}
@@ -329,4 +331,3 @@ To shut down the transcoder, you'll just need to issue a kill command:
 SHOUTcast's Source DSP plugin was developed for use with WinAmp version 5.5 and newer. This plugin gives you the ability to use WinAmp as a source for your sc\_serv (DNAS) or sc\_trans (Transcoder). It will also allow you to capture an audio input from your sound card and its line-in or microphone inputs. You will need a working installation of either the DNAS by itself, or the Transcoder feeding into a DNAS installation, before you can use the DSP WinAmp plugin. The download for the DSP plugin is near the bottom of the [broadcast tools page](http://www.shoutcast.com/broadcast-tools).
 
 Instructions for installation and configuration are located in the [WinAmp wiki](http://wiki.winamp.com/wiki/Source_DSP_Plug-in#Installing_the_Plug-in).
-

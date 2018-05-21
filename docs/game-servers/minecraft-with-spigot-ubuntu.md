@@ -16,12 +16,13 @@ contributor:
     link: https://github.com/Sxw1212
 ---
 
+![Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10](/docs/assets/minecraft/spigot-minecraft-ubuntu-title.jpg "Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10 title graphic")
+
 This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends or host a public server.
 
 We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the time of publication) so you can use the whole expanse of [Bukkit](https://bukkit.org/) plugins available.
 
 ## Preparation
-
 
 1.  Make sure your system is up to date:
 
@@ -181,4 +182,3 @@ When downloading plugins from Spigot, the `wget` flag `--content-disposition` wi
 2.  From within your screen session, enter `stop` to stop the server and exit the screen session. Your plugin will be loaded when you next start the SpigotMC server:
 
         su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
-

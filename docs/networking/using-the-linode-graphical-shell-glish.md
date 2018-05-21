@@ -13,6 +13,8 @@ published: 2015-08-28
 title: 'Using the Linode Graphical Shell (Glish)'
 ---
 
+![Using the Linode Graphical Shell Glish](/docs/assets/using-linode-glish-title.jpg "Using the Linode Graphical Shell Glish title graphic")
+
 Glish is the graphical version of the [Linode Shell](/docs/networking/using-the-linode-shell-lish/) (Lish). It allows you to use a graphic environment running natively on your Linode's operating system.
 
 {{< note >}}
