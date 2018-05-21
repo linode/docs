@@ -19,9 +19,10 @@ external_resources:
  - '[Github Guides](https://guides.github.com/)'
 ---
 
-![How to Install Git on Linux, Mac or Windows](/docs/assets/git/how-to-install-git.jpg)
 
 ## Introduction to Git
+
+![How to Install Git on Linux, Mac or Windows](/docs/assets/git/how-to-install-git.jpg)
 
 Git was designed and developed by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) for Linux kernel development. Git provides support for non-linear, distributed development, allowing multiple contributors to work on a project simultaneously. Git is the most popular distributed version control and source code management system.
 
