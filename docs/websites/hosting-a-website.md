@@ -10,6 +10,8 @@ modified: 2017-01-18
 modified_by:
   name: Phil Zona
 published: 2012-03-13
+deprecated: true
+deprecated_link: '/websites/set-up-web-server-host-website/'
 title: Hosting a Website
 ---
 

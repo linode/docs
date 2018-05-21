@@ -12,6 +12,8 @@ published: 2018-01-02
 title: How to Use Docker Compose
 ---
 
+![How to Use Docker Compose](/docs/assets/docker/how-to-use-docker-compose-title.jpg "How to Use Docker Compose title graphic")
+
 ## What is Docker Compose?
 
 If your Docker application includes more than one container (for example, a webserver and database running in separate containers), building, running, and connecting the containers from separate Dockerfiles is cumbersome and time-consuming. Docker Compose solves this problem by allowing you to use a YAML file to [define multi-container apps](https://docs.docker.com/compose/overview/). You can configure as many containers as you want, how they should be built and connected, and where data should be stored. When the YAML file is complete, you can run a single command to build, run, and configure all of the containers.
@@ -315,4 +317,3 @@ volumes:
 ## Next Steps
 
 Docker Compose is a powerful tool for orchestrating sets of containers that can work together. Things like an app or a development environment can utilize Docker-compose. The result is a modular and configurable environment that can be deployed anywhere.
-

@@ -18435,6 +18435,9 @@ blockquote strong {
     display: inline-block;
     vertical-align: middle;
   }
+  #footer-copyright .col:first-child {
+    margin-left: 20%;
+  }
 }
 .footer-col {
   position: relative;
@@ -18445,8 +18448,11 @@ blockquote strong {
 @media (min-width: 768px) {
   .footer-col {
     float: left;
-    width: 25%;
+    width: 16.66666667%;
   }
+}
+.footer-col:not(:first-child) {
+  margin-left: 4.166666667%;
 }
 .footer-col > h5,
 .footer-col > h5 > a {

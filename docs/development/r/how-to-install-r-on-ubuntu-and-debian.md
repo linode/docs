@@ -13,6 +13,7 @@ published: 2018-01-29
 title: 'How to install R on Ubuntu and Debian'
 ---
 
+![How to install R on Ubuntu and Debian](/docs/assets/R/install-r-ubuntu-debian-title.jpg "How to install R on Ubuntu and Debian title graphic")
 
 ## What is R?
 
