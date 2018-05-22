@@ -28,11 +28,13 @@ from pathlib import Path
 REPORT_KEYS = ['files', 'excluded_files', 'directories']
 BASE_URL = 'http://localhost:1313/docs/'
 OPTIONAL_PARAMS = ['args', 'kwargs']
+WORKING_DIR = os.getcwd()
 
 TRAILING_WHITESPACE_REGEX = re.compile(r'[\t ]+$')
 MIXED_WHITESPACE_REGEX = re.compile(r'([ \t]*)')
 LINK_REGEX = re.compile(r'\[(.*)\]\((.*)\)')
 INTERNAL_LINK_REGEX = re.compile(r'\[(.*)\]\((/docs/[^")]*)(\".*\")?\)')
+IMAGE_LINK_REGEX = re.compile(r'!\[(.*)\]\((.*(?:\.jpg|\.png)).?\s?(\".*\")?\)')
 
 _validate = {'file_yaml': [], 'filepath': [], 'line': []}
 
@@ -166,6 +168,20 @@ def mixed_whitespace(line, **kwargs):
             # kwargs.get('line_num') is wrong due to
             # python-frontmatter stripping excess newlines
             return line, pos, "Use four spaces instead of tabs."
+
+@add_rule
+def valid_image_links(line, **kwargs):
+    """Checks any image link encountered to see if a matching file exists in the
+    specified directory."""
+    match = IMAGE_LINK_REGEX.match(line)
+    pos = len(line)
+    if match:
+        image = match.group(2)
+        if image and image.endswith('/'):
+            return kwargs.get('line_num'), image, "Images should not end with a slash."
+        elif image and not os.path.isfile(WORKING_DIR + image):
+            return kwargs.get('line_num'), image, "Image link points to nonexistent file."
+
 
 # -----------------------------------------------------------------------------
 # Misc checks independent of files
