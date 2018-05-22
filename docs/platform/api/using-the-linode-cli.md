@@ -22,19 +22,13 @@ The [Linode CLI](https://bits.linode.com/LinodeAPI/linode-cli) is a wrapper arou
 
 The easiest way to install the CLI is through [Pip](https://pypi.org/project/pip/):
 
-1.  Make sure you do not have earlier versions of the CLI on your system:
+1.  Install the CLI:
 
-        pip3 uninstall linode-cli
+        pip install linode-cli --upgrade
 
-2.  Install the CLI:
+2.  You will need a Personal Access Token to use the CLI. Use the [beta Linode Manager](https://cloud.linode.com/profile/tokens) to obtain a token.
 
-        pip3 install linode-cli
-
-3.  You will need a Personal Access Token to use the CLI. Use the [beta Linode Manager](https://cloud.linode.com/profile/tokens) to obtain a token.
-
-4.  Run `linode-cli configure` and paste your access token (which will then be used by default for all requests made through the CLI) at the prompt. You will also be prompted to choose defaults for Linodes created through the CLI (region, type, and image). These are optional, and can be overridden for individual commands.
-
-        linode-cli --configure
+3.  The first time you run any command, you will be prompted with the CLI's configuration script. Paste your access token (which will then be used by default for all requests made through the CLI) at the prompt. You will also be prompted to choose defaults for Linodes created through the CLI (region, type, and image). These are optional, and can be overridden for individual commands. You can also update these defaults at any time by running `linode-cli configure`.
 
     {{< highlight text >}}
 Welcome to the Linode CLI.  This will walk you through some
@@ -48,9 +42,13 @@ on your account to work correctly.
 Personal Access Token:
 {{< /highlight >}}
 
+{{< note >}}
+On OSX, you may have to source the configuration file before it can be used. Add `source /etc/bash_completion.d/linode-cli.sh` to your `~/.bashrc` file.
+{{< /note >}}
+
 ## CLI Basics
 
-The API uses a RESTful architecture, and as a result commands follow a similar structure across the CLI. To view a list of a resource, such as `regions` or `domains`, use the following pattern:
+The API uses a RESTful architecture, and as a result commands follow a similar structure across the CLI. For many resources, such as `regions` or `domains`, you can view a list of items with the following pattern:
 
     linode-cli <resource-name> list
 
@@ -66,8 +64,9 @@ Creating or updating resources follows the same pattern, with additional paramet
 
     linode-cli <resource-name> create --color blue
 
-Specific examples of each pattern are covered in the [Examples](#examples) section.
 
+
+Some resources are nested, or use slightly different patterns. Specific examples are covered in the [Examples](#examples) section.
 
 ## Options
 
@@ -78,6 +77,16 @@ You can view information about any part of the CLI, including available actions 
     linode-cli --help
     linode-cli linodes --help
     linode-cli linodes create --help
+
+### Customize Output Fields
+
+By default, the CLI displays on some pre-selected fields for a given type of response. If you would like to see all available fields, use the `--all` flag:
+
+    linode-cli linodes list --all
+
+You can also specify exactly which fields you would like to receive with the `-format` option:
+
+    linode-cli linodes list --format 'id,region,memory'
 
 ### JSON Output
 
@@ -145,7 +154,7 @@ ap-northeast	jp
 ap-northeast-1a	jp
 {{< /highlight >}}
 
-    linode-cli regions list --text --delimiter
+    linode-cli regions list --text --delimiter ;
 
 {{< highlight text >}}
 id;country
@@ -162,19 +171,7 @@ ap-northeast-1a;jp
 
 ## Examples
 
-Almost any task that can be performed through the Linode Manager or API can also be done with the CLI. This section will review some common examples relating to Linodes, domains, Block Storage Volumes, NodeBalancers, and account details.
-
-{{< caution >}}
-Many of the actions described, such as adding new Linodes, NodeBalancers, or Block Storage Volumes, will result in charges to your account. There is no confirmation prompt when using these commands.
-{{< /caution >}}
-
-### View Available Resources
-
-To view available static resources such as regions, types, images, etc., use the following pattern:
-
-    linode-cli regions list
-    linode-cli types list
-    linode-cli images list
+Almost any task that can be performed through the Linode Manager or API can also be done with the CLI. This section will review some common examples relating to Linodes, Domains, Block Storage Volumes, NodeBalancers, and account details.
 
 ### Linodes
 
@@ -183,6 +180,12 @@ Tasks related to Linode instances are performed with `linode-cli linodes [ACTION
 1.  List all of the Linodes on your account:
 
         linode-cli linodes list
+
+    You can filter results to a particular region:
+
+        linode-cli linodes list --region us-east
+
+    Filtering works on many fields throughout the CLI; use `--help` for each action to see which properties are filterable.
 
 2.  Create a new Linode:
 
@@ -214,19 +217,21 @@ Tasks related to Linode instances are performed with `linode-cli linodes [ACTION
 
         linode-cli linodes ips-list $linode_id
 
-6.  Add an additional IP address to a Linode:
-
-    Private IPv4:
+6.  Add a private IP address to a Linode:
 
         linode-cli linodes ip-add $linode_id --type ipv4 --public false
 
-    Public IPv6:
-
-        linode-cli linodes ip-add $linode_id --type ipv6 --public true
-
-7.  List all disks attached to a Linode:
+7.  List all disks provisioned for a Linode:
 
         linode-cli linodes disks-list $linode_id
+
+8.  Upgrade your Linode. If an upgrade is available for the specified Linode, it will be placed in the Migration Queue. It will then be automatically shut down, migrated, and returned to its last state.
+
+        linode-cli linodes upgrade $linode_id
+
+9.  Rebuild a Linode:
+
+        linode-cli linodes rebuild $linode_id --image linode/debian9 --root_pass
 
 Many other actions are available. Use `linode-cli linodes --help` for a complete list.
 
@@ -244,7 +249,11 @@ Many other actions are available. Use `linode-cli linodes --help` for a complete
 
         linode-cli domains delete $domain_id
 
-4.  Create a new A record in a domain:
+4.  Create a domain:
+
+        linode-cli domains create --type master --domain www.example.com --soa_email email@example.com
+
+5.  Create a new A record in a domain:
 
         linode-cli domains records-create $domain_id --type A --name subdomain --target 192.0.2.0
 
@@ -260,7 +269,7 @@ Many other actions are available. Use `linode-cli linodes --help` for a complete
 
 3.  Attach a Node to a NodeBalancer:
 
-        linode-cli nodebalancers node-create --address 192.0.2.0 --label node-1
+        linode-cli nodebalancers node-create --address 192.200.12.34:80 --label node-1
 
 4.  To delete a node, you will need the ID of the NodeBalancer, configuration, and node:
 
@@ -301,14 +310,10 @@ You can view or update your account information, add payment methods, view notif
 
         linode-cli account view
 
-2.  View all of your OAuth clients:
-
-        linode-cli account clients-list
-
-3.  View your account settings:
+2.  View your account settings:
 
         linode-cli account settings
 
-4.  Make a payment:
+3.  Make a payment:
 
         linode-cli account payment-create --cvv 123 --usd 20.00
