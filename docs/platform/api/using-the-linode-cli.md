@@ -291,7 +291,7 @@ Many other actions are available. Use `linode-cli linodes --help` for a complete
 
 5.  Delete a Volume:
 
-        linode-cli volumes delete
+        linode-cli volumes delete $volume_id
 
 ### Account
 
