@@ -17,7 +17,7 @@ external_resources:
 
 ## Why Should You Back Up Your Data?
 
-A *backup* can refer to anything from a copy of an important file to a snapshot of a full disk. For personal computers, many desktop applications and operating systems automatically create backups of your data. In contrast, Linode is a flexible platform where you have full control over which operating systems and applications are installed, but this means that you need to take care to install a backups system yourself. 
+A *backup* can refer to anything from a copy of an important file to a snapshot of a full disk. For personal computers, many desktop applications and operating systems automatically create backups of your data. In contrast, Linode is a flexible platform where you have full control over which operating systems and applications are installed, but this means that you need to take care to install a backups system yourself.
 
 If you do not install any backups system, **data on your Linode is not backed up automatically**. This means that if your files are corrupted, accidentally deleted, or removed during a security compromise of your deployment, your data will be lost. If you store any critical or personal data on your Linode, you should take steps to make sure that your data is recoverable.
 
@@ -29,7 +29,7 @@ One simple way to make sure your entire system is backed up is to use the offici
 
 ## Manual Backups
 
-If your Linode contains only a few important items (a directory with pictures or personal documents, for example), then backing up the entire disk may be overkill. 
+If your Linode contains only a few important items (a directory with pictures or personal documents, for example), then backing up the entire disk may be overkill.
 
 You may have made manual backups of files on your personal computer by dragging them onto a flash drive or other external device. A similar procedure can be used to save copies of your files on your Linode to your home computer, another Linode, or a [Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). The simplest tool to use for this purpose is `scp`, which stands for *secure copy*.
 
