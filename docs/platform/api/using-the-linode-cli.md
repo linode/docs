@@ -43,7 +43,7 @@ Personal Access Token:
 {{< /highlight >}}
 
 {{< note >}}
-On OSX, you may have to source the configuration file before it can be used. Add `source /etc/bash_completion.d/linode-cli.sh` to your `~/.bashrc` file.
+The CLI also installs a bash completion file. On OSX, you may have to source this file before it can be used by adding `source /etc/bash_completion.d/linode-cli.sh` to your `~/.bashrc` file.
 {{< /note >}}
 
 ## CLI Basics
