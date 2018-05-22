@@ -17,11 +17,11 @@ external_resources:
 
 ## Why Should You Back Up Your Data?
 
-A *backup* can refer to anything from a copy of an important file to a snapshot of a full disk. For personal computers, many desktop applications and operating systems automatically create backups of your data. In contrast, Linode is a flexible platform where you have full control over which operating systems and applications are installed, but this means that you need to take care to install a backups system yourself.
+A *backup* can refer to anything from a copy of an important file to a snapshot of a full disk. Many desktop applications and operating systems automatically create backups of your data. In contrast, Linode is a flexible platform where you have full control over which operating systems and applications are installed, which means that no backup system is installed by default.
 
-If you do not install any backups system, **data on your Linode is not backed up automatically**. This means that if your files are corrupted, accidentally deleted, or removed during a security compromise of your deployment, your data will be lost. If you store any critical or personal data on your Linode, you should take steps to make sure that your data is recoverable.
+If you do not create or install a backup system, **data on your Linode is not backed up automatically**. This means that if your files are corrupted, accidentally deleted, or removed during a security compromise of your deployment, your data will be lost. If you store any critical or personal data on your Linode, you should take steps to make sure that your data is recoverable.
 
-Aside from protecting your files against data-loss scenarios, making periodic backups can help you restore earlier versions of your data. For example, if you decide to change your application's configuration, but the new configuration doesn't work as expected, then you can revert to your earlier configuration if you maintain periodic backups.
+Aside from protecting your files against data-loss scenarios, making periodic backups can help you restore earlier versions of your data. For example, if you decide to change your application's configuration, but the new configuration doesn't work as expected, then you can revert to your earlier configuration.
 
 ## Linode Backups
 
@@ -38,7 +38,7 @@ You may have made manual backups of files on your personal computer by dragging 
         sudo apt install zip
         zip backup-$(date +%F).zip my-directory
 
-        This will create a timestamped `.zip` file in your current working directory.
+    This will create a timestamped `.zip` file in your current working directory.
 
 2.  From your local computer, copy the archive to your hard drive. Replace `username` with your Linux username and `ip-address` with the public IP address of your Linode.
 
