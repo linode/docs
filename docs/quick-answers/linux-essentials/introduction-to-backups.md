@@ -17,7 +17,11 @@ external_resources:
 
 ## Why Should You Back Up Your Data?
 
-A *backup* can refer to anything from a copy of an important file to a snapshot of a full disk on your Linode. Many modern desktop applications and operating systems automatically create backups of your data, but a Linode is a platform rather than an application. As a result, **data on your Linode is not backed up automatically**. This means that if your system is hacked or your files are corrupted or accidentally deleted, your data will be lost. If you store any critical or personal data on your Linode, you should take steps to make sure that data lost in these ways can be recovered.
+A *backup* can refer to anything from a copy of an important file to a snapshot of a full disk. For personal computers, many desktop applications and operating systems automatically create backups of your data. In contrast, Linode is a flexible platform where you have full control over which operating systems and applications are installed, but this means that you need to take care to install a backups system yourself. 
+
+If you do not install any backups system, **data on your Linode is not backed up automatically**. This means that if your files are corrupted, accidentally deleted, or removed during a security compromise of your deployment, your data will be lost. If you store any critical or personal data on your Linode, you should take steps to make sure that your data is recoverable.
+
+Aside from protecting your files against data-loss scenarios, making periodic backups can help you restore earlier versions of your data. For example, if you decide to change your application's configuration, but the new configuration doesn't work as expected, then you can revert to your earlier configuration if you maintain periodic backups.
 
 ## Linode Backups
 
@@ -25,7 +29,9 @@ One simple way to make sure your entire system is backed up is to use the offici
 
 ## Manual Backups
 
-If your Linode contains only a few important items (a directory with pictures or personal documents, for example), then backing up the entire disk may be overkill. You have probably made manual backups of this type of file on your personal computer, by dragging them onto a flash drive or other external device. A similar procedure can be used to save copies of your files on your Linode to your home computer, another Linode, or a [Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). The simplest tool to use for this purpose is `scp`, which stands for *secure copy*.
+If your Linode contains only a few important items (a directory with pictures or personal documents, for example), then backing up the entire disk may be overkill. 
+
+You may have made manual backups of files on your personal computer by dragging them onto a flash drive or other external device. A similar procedure can be used to save copies of your files on your Linode to your home computer, another Linode, or a [Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). The simplest tool to use for this purpose is `scp`, which stands for *secure copy*.
 
 1.  On your Linode, use the `zip` tool to create a compressed archive of the directory you want to back up:
 
