@@ -37,11 +37,16 @@ Before configuring a client device, you will need to know:
 -  The device's network interface name.
 -  The client's local network's subnet.
 
-You can find this information by running the `route` command on your Linux client. Keep in mind that this requires root or sudo access.
+You can find this information by running the `route` command on your Linux client.
 
-![route-command-output](https://technofaq.org/wp-content/uploads/2017/08/Screenshot_20170806_182215.png)
+{{< highlight text >}}
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         gw-li938.linode 0.0.0.0         UG    0      0        0 eth0
+45.56.120.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
+{{< /highlight >}}
 
- The table shows the network interface name under the *Iface* column (wlp6s0), and the LAN's subnet under the *Genmask* (255.255.255.0). These values will be used throughout the remainder of this guide, so be sure to replace `wlp6s0` and `198.168.0.1/24` with the interface and IP address/subnet found by running `route` on your client.
+ The output shows the network interface name under the *Iface* column (eth0), and the LAN's subnet under the *Genmask* (255.255.255.0). These values will be used throughout the remainder of this guide, so replace `wlp6s0` and `198.168.0.1/24` with the interface and IP address/subnet found by running `route` on your client.
 
 For macOS, the commands `networksetup -listallhardwareports` and `ifconfig` will show all your possible network interfaces and associated network information. From that list, you can find your ethernet and WiFi device names and their local subnet.
 
