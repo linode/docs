@@ -14,9 +14,12 @@ published: 2018-05-22
 title: Using the Linode CLI
 external_resources:
   - '[Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/)'
+  - '[Linode API Documentation](https://developers.linode.com/)'
 ---
 
 The [Linode CLI](https://bits.linode.com/LinodeAPI/linode-cli) is a wrapper around the [Linode API](https://developers.linode.com) that allows you to manage your Linode account from the command line. Virtually any task that can be done through the Linode Manager can also be done through the CLI, making it an excellent tool for scripting.
+
+This guide will describe the basics of installing and working with the CLI. It will then go through examples illustrating how to complete common tasks using the CLI.
 
 ## Install the CLI
 
@@ -43,30 +46,8 @@ Personal Access Token:
 {{< /highlight >}}
 
 {{< note >}}
-The CLI also installs a bash completion file. On OSX, you may have to source this file before it can be used by adding `source /etc/bash_completion.d/linode-cli.sh` to your `~/.bashrc` file.
+The CLI also installs a bash completion file. On OSX, you may have to source this file before it can be used. To do this, add `source /etc/bash_completion.d/linode-cli.sh` to your `~/.bashrc` file.
 {{< /note >}}
-
-## CLI Basics
-
-The API uses a RESTful architecture, and as a result commands follow a similar structure across the CLI. For many resources, such as `regions` or `domains`, you can view a list of items with the following pattern:
-
-    linode-cli <resource-name> list
-
-To view a particular instance of a resource:
-
-    linode-cli <resource-name> view <resource-id>
-
-To delete a resource:
-
-    linode-cli <resource-name> delete <resource-id>
-
-Creating or updating resources follows the same pattern, with additional parameters specific to the resource:
-
-    linode-cli <resource-name> create --color blue
-
-
-
-Some resources are nested, or use slightly different patterns. Specific examples are covered in the [Examples](#examples) section.
 
 ## Options
 
@@ -80,7 +61,7 @@ You can view information about any part of the CLI, including available actions 
 
 ### Customize Output Fields
 
-By default, the CLI displays on some pre-selected fields for a given type of response. If you would like to see all available fields, use the `--all` flag:
+By default, the CLI displays a set of pre-selected fields for each type of response. If you would like to see all available fields, use the `--all` flag:
 
     linode-cli linodes list --all
 
@@ -112,26 +93,7 @@ The CLI will return output in tabulated format for easy readability. If you woul
     "country": "us",
     "id": "us-east"
   },
-  {
-    "country": "uk",
-    "id": "eu-west"
-  },
-  {
-    "country": "sg",
-    "id": "ap-south"
-  },
-  {
-    "country": "de",
-    "id": "eu-central"
-  },
-  {
-    "country": "jp",
-    "id": "ap-northeast"
-  },
-  {
-    "country": "jp",
-    "id": "ap-northeast-1a"
-  }
+  ...
 ]
 {{< /highlight >}}
 
@@ -171,7 +133,7 @@ ap-northeast-1a;jp
 
 ## Examples
 
-Almost any task that can be performed through the Linode Manager or API can also be done with the CLI. This section will review some common examples relating to Linodes, Domains, Block Storage Volumes, NodeBalancers, and account details.
+This section will review some common examples relating to Linodes, Domains, Block Storage Volumes, NodeBalancers, and account details.
 
 ### Linodes
 
@@ -237,23 +199,23 @@ Many other actions are available. Use `linode-cli linodes --help` for a complete
 
 ### Domains
 
-1.  List the domains on your account:
+1.  List the Domains on your account:
 
         linode-cli domains list
 
-2.  View all domain records in a specific domain:
+2.  View all domain records in a specific Domain:
 
         linode-cli domains records-list $domain_id
 
-3.  Delete a domain:
+3.  Delete a Domain:
 
         linode-cli domains delete $domain_id
 
-4.  Create a domain:
+4.  Create a Domain:
 
         linode-cli domains create --type master --domain www.example.com --soa_email email@example.com
 
-5.  Create a new A record in a domain:
+5.  Create a new A record in a Domain:
 
         linode-cli domains records-create $domain_id --type A --name subdomain --target 192.0.2.0
 
@@ -304,7 +266,7 @@ Many other actions are available. Use `linode-cli linodes --help` for a complete
 
 ### Account
 
-You can view or update your account information, add payment methods, view notifications, make payments, create OAuth clients, and more through the `account` action.
+You can view or update your account information, add payment methods, view notifications, make payments, create OAuth clients, and do other related tasks through the `account` action:
 
 1.  View your account:
 
@@ -317,3 +279,41 @@ You can view or update your account information, add payment methods, view notif
 3.  Make a payment:
 
         linode-cli account payment-create --cvv 123 --usd 20.00
+
+4.  View notifications:
+
+        linode-cli account notifications-list
+
+### Support Tickets
+
+1.  List your Support Tickets:
+
+        linode-cli tickets list
+
+2.  Open a new Ticket:
+
+        linode-cli tickets create --description "Detailed description of the issue" --summary "Summary or quick title for the Ticket"
+
+    If your issue concerns a particular Linode, Volume, Domain, or NodeBalancer, you can pass the ID with `--domain_id`, `--linode-id`, `--volume_id`, etc.
+
+3.  List replies for a Ticket:
+
+        linode-cli tickets replies $ticket_id
+
+4.  Reply to a Ticket:
+
+        linode-cli tickets reply $ticket_id --description "The content of your reply"
+
+### Events
+
+1.  View a list of events on your account:
+
+        linode-cli events list
+
+2.  View details about a specific event:
+
+        linode-cli events view $event_id
+
+3.  Mark an event as read:
+
+        linode-cli events mark-read $event_id
