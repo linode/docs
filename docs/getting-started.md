@@ -6,7 +6,7 @@ keywords: ["getting started", "intro", "basics", "first steps"]
 description: 'This guide will help you set up your first Linode.'
 og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-04-17
+modified: 2018-05-23
 modified_by:
   name: Linode
 published: 2009-07-19
@@ -87,12 +87,10 @@ Once you've created a new Linode, click the name or **Dashboard** to open the Li
     -   numbers
     -   punctuation characters
 
-6.  Click **Deploy**.
-
-    You can use the Dashboard's *Host Job Queue" to monitor the progress in real time.
+6.  Click **Deploy**. The Dashboard's Host Job Queue area will report the deployment progress in real time.
 
     {{< note >}}
-Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy a customized Linux distribution. Some of the most popular StackScripts do things like install the Apache web server, configure a firewall, and set up the WordPress content management system.
+Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install the Apache web server, configure a firewall, and set up the WordPress content management system.
 {{< /note >}}
 
 ## Boot Your Linode
