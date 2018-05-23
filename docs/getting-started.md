@@ -75,7 +75,7 @@ Once you've created a new Linode, click the name or **Dashboard** to open the Li
     * [Slackware](http://www.slackware.com/)
     * [Ubuntu](http://www.ubuntu.com/)
 
-    If you're new to the Linux operating system, consider selecting Ubuntu 16.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well-supported by online communities, so resolving any issues you may have should be simple.
+    If you're new to the Linux operating system, consider selecting Ubuntu 18.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well-supported by online communities, so resolving any issues you may have should be simple.
 
 3.  Enter a size for the disk in the **Deployment Disk Size** field. By default all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating multiple configuration profiles. You can always create, resize, and delete disks later.
 
