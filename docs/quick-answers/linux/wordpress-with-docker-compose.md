@@ -22,7 +22,7 @@ external_resources:
 
 ## Why Use Docker to Run WordPress?
 
-Containers for WordPress and MySQL are available from [Docker Hub](https://hub.docker.com/) in the form of *images*. A Docker image is a static snapshot of a container, and they are used to create new container instances. Docker Hub is an official repository where individuals and organizations can upload Docker images for public consumption. 
+Containers for WordPress and MySQL are available from [Docker Hub](https://hub.docker.com/) in the form of *images*. A Docker image is a static snapshot of a container, and they are used to create new container instances. Docker Hub is an official repository where individuals and organizations can upload Docker images for public consumption.
 
 The WordPress and MySQL images have been uploaded to Docker Hub by their respective organizations, and using them offers the following benefits:
 
