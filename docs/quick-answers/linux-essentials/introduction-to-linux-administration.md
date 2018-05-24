@@ -2,21 +2,21 @@
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: This guide provides an introduction for new
-og_description: This guide provides an introduction for new
+description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
+og_description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
 keywords: ["linux", "sysadmin", "administration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/common-commands/wget/']
-modified: 2018-05-22
+modified: 2018-05-24
 modified_by:
   name: Linode
-published: 2018-05-22
+published: 2018-05-24
 title: Introduction to Linux Administration
 external_resources:
   - '[Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics/)'
   - '[Linode API Documentation](https://developers.linode.com/)'
 ---
 
+Linode offers a flexible and customizable cloud platform for your applications. This offers many advantages in terms of cost and control, but also means that many services that are included in shared hosting need to be considered and customized for your project’s needs. If you are new to self-hosting, you may not know everything that needs to be done. This guide introduces the concepts and tools that you will need to be familiar with when hosting your own applications on a Linode.
 
 ## Create Servers
 
@@ -35,11 +35,7 @@ Making sure that all of your project's important data is backed up is one of a s
 
 The dashboard in the Linode Manager provides basic information about your Linode's status, CPU and memory usage, and network traffic. Linode also offers the [Longview](/docs/platform/longview/longview/) service, which provides much more detailed insight into your Linode. Sometimes, however, issues will occur on your system and you will have to investigate to determine the cause.
 
-### Basic Tools
-
-Simple tools like `ping` and [mtr](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/), which are available on most Linux distributions, are helpful in diagnosing network issues.
-
-### Elastic Stack
+Simple tools like `ping` and [mtr](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/), which are available on most Linux distributions, are helpful in diagnosing network issues. There are also [shell commands](/docs/tools-reference/linux-system-administration-basics/#system-diagnostics) used for checking memory usage, disk allocation, and running processes.
 
 Larger projects can benefit from more advanced monitoring tools, such as the [Elastic Stack](/docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/). The Elastic Stack provides dozens of services and plugins that can be used to record, index, and search dfferent types of data, from webserver logs to geolocation data.
 
@@ -59,7 +55,7 @@ Docker is the most commonly used container platform. [Docker Hub](https://hub.do
 
 ### Orchestration Tools
 
-If your project will involve multiple Linodes, or if you think it might need to scale in the future, orchestration tools can be very helpful. These tools allow you to specify networks of Linodes (five nodes running Apache and three database nodes, for example)
+For larger-scale projects, orchestration tools can be very helpful. These tools allow you to manage clusters of Linodes, including giving you the ability to quickly scale or perform rolling upgrades. If your application's audience is growing rapidly, having to manually create new Linodes, deploy your application to them, then connect each new Linode to your existing cluster is time consuming and error-prone. Similarly, making sure that a large fleet of Linodes is running the most up-to-date system packages and software versions can cause a lot of difficulty. With tools like [Kubernetes](https://kubernetes.io/), [Salt](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/), and [Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/), building out and managing your infrastructure becomes much easier.
 
 ## Advanced Topics
 
@@ -68,3 +64,5 @@ If your project will involve multiple Linodes, or if you think it might need to 
 In a larger application with many users, it often becomes important to distribute the requests received across multiple web servers. Typically, a single server, known as a load balancer, will listen for requests on your IP address or domain name. The balancer then forwards the requests to backend servers. Linode includes a [NodeBalancer](docs/platform/nodebalancer/getting-started-with-nodebalancers/) service that will automatically balance load between attached backend nodes, and also includes monitoring and other features. If you would prefer to configure your own load balancers, start with our [HAProxy](/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/) guide.
 
 ### Set Up an Email Server
+
+With a Linode and a fully-qualified domain name (FQDN), you can set up a private email server with @your-domain.com addresses. Email server configuration can be quite complex, but fortunately there are free third-party solutions that can simplify the process. Start with our [Running a Mail Server](/docs/email/running-a-mail-server/) guide, or for an all-in-one solution you can also consider [Mail-in-a-Box](/docs/email/how-to-create-an-email-server-with-mail-in-a-box/).
