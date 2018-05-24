@@ -6,7 +6,6 @@ description: The Linode CLI provides a simplified interface to the Linode API. T
 og_description: The Linode CLI provides a simplified interface to the Linode API. This guide shows how to install the CLI and describes how to perform basic tasks from the command line.
 keywords: ["linode api", "linode cli", "python cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/common-commands/wget/']
 modified: 2018-05-22
 modified_by:
   name: Linode
