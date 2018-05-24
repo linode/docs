@@ -16,17 +16,17 @@ external_resources:
 
 ## What Are Docker and Docker Compose?
 
-*Docker* is a system that provides pre-configured, self-contained packages for applications you want to run, like WordPress. When deployed, these packages are referred to as *containers*. Docker also allows you to create your own containers that includes any custom software you'd like.
+*Docker* is a system that provides pre-configured, self-contained packages for applications you want to run, like WordPress. When deployed, these packages are referred to as *containers*. Docker also allows you to create your own containers that include any custom software you'd like.
 
-*Docker Compose* is a complementary system which helps you link together individual Docker containers so that they can work together. This guide will walk through the deployment of a WordPress container and a MySQL container that WordPress will use to store its data. Docker Compose will facilitate the networking between them.
-
-## Why Use Docker to Run WordPress?
+*Docker Compose* is a complementary system which helps you link together individual Docker containers so that they can work together. This guide will walk through the deployment of a WordPress container and another MySQL container that WordPress will use to store its data. Docker Compose will facilitate the networking between them.
 
 Containers for WordPress and MySQL are available from [Docker Hub](https://hub.docker.com/) in the form of *images*. A Docker image is a static snapshot of a container, and they are used to create new container instances. Docker Hub is an official repository where individuals and organizations can upload Docker images for public consumption.
 
-The WordPress and MySQL images have been uploaded to Docker Hub by their respective organizations, and using them offers the following benefits:
+## Why Use Docker to Run WordPress?
 
-- The configuration of the software has been done for you, which means that you don't need to follow a step-by-step process for each application to install it on your system.
+The WordPress and MySQL images were uploaded to Docker Hub by their respective organizations, and using them offers the following benefits:
+
+- The configuration of the software has been done for you, which means that you don't need to follow a step-by-step process for each application in order to install it on your system.
 - Updating your software is as simple as downloading the latest images from Docker Hub.
 - Images and containers are self-contained, which means that they are easy to clean up if you decide to remove them.
 
@@ -43,7 +43,7 @@ mkdir ~/my_wordpress/
 cd ~/my_wordpress/
     ```
 
-3. Create a file called docker-compose.yml in this folder and add the following contents to it. Be sure to set your database passwords for the `WORDPRESS_DB_PASSWORD`, `MYSQL_ROOT_PASSWORD`, and `MYSQL_PASSWORD` environment options. The password entered for `WORDPRESS_DB_PASSWORD` and `MYSQL_PASSWORD` should be the same.
+3. Create a file named `docker-compose.yml` in this folder and add the following contents to it. Be sure to set your own database passwords for the `WORDPRESS_DB_PASSWORD`, `MYSQL_ROOT_PASSWORD`, and `MYSQL_PASSWORD` environment options. The password entered for `WORDPRESS_DB_PASSWORD` and `MYSQL_PASSWORD` should be the same.
 
     {{< file "docker-compose.yml" yaml >}}
 version: '3.3'
@@ -115,7 +115,7 @@ cd ~/my_wordpress/
 docker-compose down
 ```
 
-When a Docker container is stopped, it is also deleted, and this is how Docker is designed to work. However, your WordPress files and database data will be preserved, as the docker-compose.yml file was configured to create persistent named volumes for that data.
+When a Docker container is stopped, it is also deleted, and this is how Docker is designed to work. However, your WordPress files and database data will be preserved, as the `docker-compose.yml` file was configured to create persistent named volumes for that data.
 
 If you want to remove this data and start over with your WordPress site, you can add the `--volumes` flag to the previous command. **This will permanently delete the WordPress posts and customizations you've made so far:**
 
