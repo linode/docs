@@ -16,7 +16,7 @@ external_resources:
 
 ## What Are Docker and Docker Compose?
 
-*Docker* is a system that provides pre-configured, self-contained packages for applications you want to run, like WordPress. When deployed, these packages are referred to as *containers*. Docker also allows you to create your own containers with any custom software you'd like.
+*Docker* is a system that provides pre-configured, self-contained packages for applications you want to run, like WordPress. When deployed, these packages are referred to as *containers*. Docker also allows you to create your own containers that includes any custom software you'd like.
 
 *Docker Compose* is a complementary system which helps you link together individual Docker containers so that they can work together. This guide will walk through the deployment of a WordPress container and a MySQL container that WordPress will use to store its data. Docker Compose will facilitate the networking between them.
 
@@ -28,7 +28,7 @@ The WordPress and MySQL images have been uploaded to Docker Hub by their respect
 
 - The configuration of the software has been done for you, which means that you don't need to follow a step-by-step process for each application to install it on your system.
 - Updating your software is as simple as downloading the latest images from Docker Hub.
-- Images and containers are self-contained, which means that they are easy to clean up if you decide to stop or remove them.
+- Images and containers are self-contained, which means that they are easy to clean up if you decide to remove them.
 
 ## Setting Up Docker Compose and WordPress
 
@@ -106,7 +106,7 @@ cd ~/my_wordpress/
 docker-compose up -d
 ```
 
-You do not need to manually start your containers if you reboot your Linode, as the option `restart: always` was assigned to our services in our `docker-compose.yml` file. This option tells Docker Compose to automatically start your services when the server starts. This is a nice benefit as well, because you don't need to worry about logging into your server if you ever resize it to a different plan or if your Linode's host requires maintenance.
+You do not need to manually start your containers if you reboot your Linode, as the option `restart: always` was assigned to your services in your `docker-compose.yml` file. This option tells Docker Compose to automatically start your services when the server boots. As a result, you won't need to worry about logging into your server if you ever resize it to a different plan or if your Linode's host requires maintenance.
 
 To stop your WordPress application, run these commands:
 
@@ -115,9 +115,9 @@ cd ~/my_wordpress/
 docker-compose down
 ```
 
-When a Docker container is stopped, it is also removed, and this is how Docker is designed to work. However, your WordPress files and database data will be preserved, as the docker-compose.yml file was configured to create persistent named volumes for that data.
+When a Docker container is stopped, it is also deleted, and this is how Docker is designed to work. However, your WordPress files and database data will be preserved, as the docker-compose.yml file was configured to create persistent named volumes for that data.
 
-If you want to remove this data and start over with your WordPress site, you can add the `--volumes` flag to the previous command. **This will permanently delete the WordPress data you've set up so far:**
+If you want to remove this data and start over with your WordPress site, you can add the `--volumes` flag to the previous command. **This will permanently delete the WordPress posts and customizations you've made so far:**
 
 ```
 docker-compose down --volumes
