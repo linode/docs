@@ -16,7 +16,7 @@ external_resources:
 
 ## What Are Docker and Docker Compose?
 
-*Docker* is a system that provides pre-configured, self-contained packages for applications you want to run, like WordPress. When deployed, these packages are referred to as *containers*. Docker also allows you to create your own containers with any custom software you'd like. You can create multiple identical copies of a container, which means that if you ever want to reinstall your software on your existing Linode or deploy it on a new Linode, you don't need to re-configure everything again.
+*Docker* is a system that provides pre-configured, self-contained packages for applications you want to run, like WordPress. When deployed, these packages are referred to as *containers*. Docker also allows you to create your own containers with any custom software you'd like.
 
 *Docker Compose* is a complementary system which helps you link together individual Docker containers so that they can work together. This guide will walk through the deployment of a WordPress container and a MySQL container that WordPress will use to store its data. Docker Compose will facilitate the networking between them.
 
