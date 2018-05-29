@@ -40,13 +40,13 @@ The basic roadmap will be:
 
 ### Avoid One Common Pitfall
 
-Some online writeups advise to SCP an entire filesystem up to a new server as a migration, or to use `dd` to make a disk image of the system partition which is then written to a VPS provider's raw disk. Whether you're coming from another hosting provider or your personal hardware, this is not a good solution.
+Some online guides advise to SCP an entire filesystem up to a new server as a migration, or to use `dd` to make a disk image of the system partition which is then written to a VPS provider's raw disk. Whether you're coming from another hosting provider or your personal hardware, this is not a good solution.
 
-With this method, you end up with running your old provider's (or your local) system on Linode. While that alone doesn't present problems, there will be differences compared to if you built a new Linode and imported only your data. You can expect things like package repository URLs to differ, along with filesytem mount points, included packages, boot/grub options, network interface names, possibly added services, and other aspects.
+With this method, you end up with running your old provider's (or your local) system on Linode. While that alone doesn't present problems, there will be differences compared to if you built a new Linode and imported only your data. You can expect things like package repository URLs to differ, along with filesystem mount points, included packages, boot/grub options, network interface names, possibly added services, and other aspects.
 
 Furthermore, you won't have serial console (Lish and Glish) access and if you ever have trouble with the system, it could take longer for support staff to diagnose.
 
-The bottom line is that you're setting yourself up for a smoother experience if you first deploy one of our distribution images on your Linode and build your system up from that rather than copying over the full OS filesytem.
+The bottom line is that you're setting yourself up for a smoother experience if you first deploy one of our distribution images on your Linode and build your system up from that rather than copying over the full OS filesystem.
 
 The only scenario where this may be desirable (albeit we still recommend it only as a temporary one) is for mail servers, which are notoriously cantankerous and time consuming to configure properly. In this case, you'd need to boot your Linode use the Direct Disk boot option.
 
@@ -65,7 +65,7 @@ The only scenario where this may be desirable (albeit we still recommend it only
         sudo systemctl stop apache2 mysqld
         sudo systemctl stop mysqld
 
-4.  Export or compress any data on the old system which must be transferred to your Lindoe. Our example site has three main areas of data we want to migrate:
+4.  Export or compress any data on the old system which must be transferred to your Linode. Our example site has three main areas of data we want to migrate:
 
     - Site data located at /var/www/html/example.com/
     - The MariaDB database (which we'll use MySQLdump to export).
@@ -82,13 +82,13 @@ The only scenario where this may be desirable (albeit we still recommend it only
 
         scp /var/www/html/example.com/ wpuser@203.0.113.2:/var/www/html/example.com/
 
-    Export the database. The example user name is *wpuser* and database names is *wordpressdb*.
+    Export the database. The example user name is *wpuser* and database names is *wordpress*.
 
-        mysqldump -u wpuser -p wordpressdb --single-transaction --quick --lock-tables=false > wordpressdb-backup-$(date +%F).sql
+        mysqldump -u wpuser -p wordpressd--single-transaction --quick --lock-tables=false > wordpress-backup-$(date +%F).sql
 
     SCP the database export to the new Linode:
 
-        scp wordpressdb-backup-*.sql wpuser@203.0.113.2:/home/wpuser/
+        scp wordpress-backup-*.sql wpuser@203.0.113.2:/home/wpuser/
 
 6.  SSH in to your Linode and ensure permissions are correct for everything you just transferred. They should look as shown below:
 
@@ -107,7 +107,7 @@ The only scenario where this may be desirable (albeit we still recommend it only
 7.  Stop MariaDB and import the database back into MySQL or MariaDB:
 
         sudo systemctl stop mysql
-        mysql -u wpuser -p wordpressdb < wordpressdb-backup-$(date +%F).sql
+        mysql -u wpuser -p wordpress < wordpress-backup-$(date +%F).sql
 
 8.  Disable the default Apache example site and enable yours:
 
