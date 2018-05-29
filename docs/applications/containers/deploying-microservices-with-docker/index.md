@@ -34,11 +34,11 @@ You will need a Linode with Docker and Docker Compose installed to complete this
 
 ### Install Docker
 
-{{< content "install_docker_ce.md" >}}
+{{< content "install-docker-ce.md" >}}
 
 ### Install Docker Compose
 
-{{< content "install_docker_compose.md" >}}
+{{< content "install-docker-compose.md" >}}
 
 ## Prepare the Environment
 

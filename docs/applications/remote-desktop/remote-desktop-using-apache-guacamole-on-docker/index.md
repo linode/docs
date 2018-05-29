@@ -23,7 +23,7 @@ Apache Guacamole is an HTML5 application useful for accessing a remote desktop t
 ## Install Docker
 The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
 
-{{< content "install_docker_ce.md" >}}
+{{< content "install-docker-ce.md" >}}
 
 ## Initialize Guacamole Authentication with MySQL
 MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alternatives.
