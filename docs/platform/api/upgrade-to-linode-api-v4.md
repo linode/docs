@@ -14,7 +14,7 @@ external_resources:
  - '[Linode API Documentation](https://developers.linode.com)'
 ---
 
-Version 4 of the Linode API, which is now in general release, is a major improvement over previous versions. Almost any task that can be done through the Linode Manager can now be performed through the API. If you have existing code that uses an older API version you will have to adapt it in order to work with version 4. This guide will discuss the changes in the Linode API and give examples to help you modify your code to take advantage of the new features in the current version.
+Version 4 of the Linode API, which is now in general release, is a major improvement over previous versions. Almost any task that can be done through the Linode Manager can now be performed through the API. This guide will show you how to adapt existing code for previous API versions in order to take advantage of these new features.
 
 To get started with the current version, please see the [API documentation](https://developers.linode.com) or our [Getting Started with the Linode API guide](/docs/platform/api/getting-started-with-the-linode-api/).
 
