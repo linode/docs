@@ -24,7 +24,7 @@ You will have to choose the best region, plan size, type, and Linux distribution
 
 ## Users
 
-If you will be the only one working on your project, a single standard user account with `sudo` access should be all you need. However, if you have multiple users, you must create accounts for each of them and make sure they have the correct permissions. Every directory and file in a Linux system has permissions setting specifying who can read, write, or execute the file. 
+If you will be the only one working on your project, a single standard user account with `sudo` access should be all you need. However, if you have multiple users, you must create accounts for each of them and make sure they have the correct permissions. Every directory and file in a Linux system has permissions setting specifying who can read, write, or execute the file.
 
 Limited user accounts can only write to files in their home directories by default (located at `/home/username` for each user). In a common use case like hosting a website, the files for the website are often kept in `/var/www/html` or a similar directory. You can create a `web` group for editing the website and give that group access to the website files. Then you can add the user accounts for each collaborator to the `web` group. For more information, see our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 
@@ -54,7 +54,7 @@ It has become increasingly common practice to encapsulate components of an appli
 
 Docker is the most commonly used container platform. [Docker Hub](https://hub.docker.com) is a public repository of thousands of images that can be used to easily build containers to run common applications, and [Docker Compose](/docs/applications/containers/how-to-use-docker-compose/) is a tool for running multi-container applications.
 
-Read our guide on [When and Why to Use Docker](/docs/applications/containers/when-and-why-docker/) to see if docker is a good choice for your project. To install and start working with Docker, use our [Install Docker](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/) guide.
+Read our guide on [When and Why to Use Docker](/docs/applications/containers/when-and-why-to-use-docker/) to see if docker is a good choice for your project. To install and start working with Docker, use our [Install Docker](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/) guide.
 
 ### Orchestration Tools
 
@@ -64,7 +64,7 @@ For larger-scale projects, orchestration tools can be very helpful. These tools 
 
 ### Load Balancing
 
-In a larger application with many users, it often becomes important to distribute the requests received across multiple web servers. Typically, a single server, known as a *load balancer*, will listen for requests on your IP address or domain name. The balancer then forwards the requests to backend servers. Linode includes a [NodeBalancer](docs/platform/nodebalancer/getting-started-with-nodebalancers/) service that will automatically balance load between attached backend nodes, and also includes monitoring and other features. If you would prefer to configure your own load balancers, start with our [HAProxy](/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/) guide.
+In a larger application with many users, it often becomes important to distribute the requests received across multiple web servers. Typically, a single server, known as a *load balancer*, will listen for requests on your IP address or domain name. The balancer then forwards the requests to backend servers. Linode includes a [NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) service that will automatically balance load between attached backend nodes, and also includes monitoring and other features. If you would prefer to configure your own load balancers, start with our [HAProxy](/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/) guide.
 
 ### Set Up an Email Server
 
