@@ -55,7 +55,7 @@ The only scenario where this may be desirable (albeit we still recommend it only
 
 1.  Deploy your operating system of choice on your Linode and build up the server with our [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides. Assume we made a user account `wpuser` to do administrative tasks in which we'll use again later.
 
-2.  Install the packages needed to re-create your software stack, making way for your application data to be imported. Since we're running in Ubuntu, we can take advantage of `tasksel` to install the `lamp-server` metapackage. 
+2.  Install the packages needed to re-create your software stack, making way for your application data to be imported. Since we're running in Ubuntu, we can take advantage of `tasksel` to install the `lamp-server` metapackage.
 
         sudo apt install tasksel
         sudo tasksel install lamp-server
