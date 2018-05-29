@@ -189,7 +189,7 @@ server {
 }
 {{< /file >}}
 
-* Changes we want NGINX to apply universally are in the `html` block of `/etc/nginx/nginx.conf`. Our additions are at the bottom of the block so we know what was added compared to what's provided by default.
+* Changes we want NGINX to apply universally are in the `http` block of `/etc/nginx/nginx.conf`. Our additions are at the bottom of the block so we know what was added compared to what's provided by default.
 
     `nginx.conf` now looks like the following example. Note that `nginx.conf` does not contain any `server` blocks:
 
