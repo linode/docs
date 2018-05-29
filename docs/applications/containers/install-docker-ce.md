@@ -16,7 +16,13 @@ show_on_rss_feed: false
 
 <!-- Install Docker CE using the official Docker repositories. -->
 
-1.  At the time of writing, the recommended Docker installation is Docker CE. Remove any older installations of Docker that may be on your system:
+These steps will install Docker Community Edition (CE) using the official Ubuntu repositories. To install on another distribution, see the official [installation page](https://docs.docker.com/install/).
+
+{{< note >}}
+Docker CE is currently not officially supported on Ubuntu 18.04 LTS. You can install a testing candidate by replacing `stable` in the `add-apt-repository` command below with `test`.
+{{< /note >}}
+
+1.  Remove any older installations of Docker that may be on your system:
 
         sudo apt remove docker docker-engine docker.io
 
