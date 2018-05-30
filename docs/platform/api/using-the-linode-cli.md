@@ -115,7 +115,7 @@ ap-northeast	jp
 ap-northeast-1a	jp
 {{< /highlight >}}
 
-    linode-cli regions list --text --delimiter ;
+    linode-cli regions list --text --delimiter ";"
 
 {{< highlight text >}}
 id;country
