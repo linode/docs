@@ -10,7 +10,7 @@ keywords: ['jenkins','pipeline','ci','automation']
 aliases: ['development/automate-builds-with-jenkins-on-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-14
-modified: 2018-30-05
+modified: 2018-05-30
 modified_by:
   name: Linode
 title: 'How to Automate Builds with Jenkins on Ubuntu'
