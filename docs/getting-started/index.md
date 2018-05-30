@@ -129,7 +129,7 @@ Find your Linode's IP address from the [Linode Manager](https://manager.linode.c
 3.  Click the **Remote Access** tab.
 4.  Copy the addresses in the Public IPs section.
 
-    [![Public IPs.](/docs/assets/1711-remote_access_ips_small.png)](1710-remote_access_ips.png)
+    [![Public IPs.](1711-remote_access_ips_small.png)](1710-remote_access_ips.png)
 
 In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 address is *2600:3c03::f03c:91ff:fe70:cabd*. Unless your internet service provider supports IPv6, use the IPv4 address.
 

@@ -157,13 +157,13 @@ RCON allows you to make changes to your server from inside of the game.
 
 1.  To start using RCON, go to the **Options** setting in the game, and then select **Advanced...**
 
-    [![Enable the developer console.](/docs/assets/team-fortress-rcon-small.png)](team-fortress-rcon.png)
+    [![Enable the developer console.](team-fortress-rcon-small.png)](team-fortress-rcon.png)
 
 2.  From here, check **Enable developer console** and apply these settings.
 
 3.  To make changes in-game, it is recommended that you switch to spectator mode, and then press the backtick button (<code>`</code>) to access the developer's console.
 
-    [![Press `~` to access the console](/docs/assets/team-fortress-rcon-console-small.png)](team-fortress-rcon-console.png)
+    [![Press `~` to access the console](team-fortress-rcon-console-small.png)](team-fortress-rcon-console.png)
 
 4.  Log in to RCON by typing in `rcon_password` followed by your password.
 

@@ -242,7 +242,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
         sudo systemctl status odoo-server
 
-    [![Odoo service status running](/docs/assets/odoo_servicerunning_small.png)](odoo_servicerunning.png)
+    [![Odoo service status running](odoo_servicerunning_small.png)](odoo_servicerunning.png)
 
 3.  Check the database journal to make sure there are no errors:
 
@@ -258,7 +258,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
     Your output should look similar to this:
 
-    [![Odoo service status inactive](/docs/assets/odoo_servicestopped_small.png)](odoo_servicestopped.png)
+    [![Odoo service status inactive](odoo_servicestopped_small.png)](odoo_servicestopped.png)
 
 ## Enable the Odoo Service
 
@@ -286,7 +286,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
 3.  Congratulations, now you can create your first database and start using Odoo 10 applications!
 
-    [![Odoo 10 applications](/docs/assets/odoo_10_applications_small.png)](odoo_10_applications.png)
+    [![Odoo 10 applications](odoo_10_applications_small.png)](odoo_10_applications.png)
 
 ## Updating Odoo
 

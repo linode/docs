@@ -168,7 +168,7 @@ It's very important that you follow the steps outlined above carefully or your s
 
 8.  Finally, under `Compiler Flags` uncheck `BUILD_NATIVE`.
 
-    [![The BUILD\_NATIVE flag.](/docs/assets/1750-asterisk-12-small.png)](1749-asterisk-12.png)
+    [![The BUILD\_NATIVE flag.](1750-asterisk-12-small.png)](1749-asterisk-12.png)
 
 9.  When you've selected these and any other modules or build options you may want, use the **Save & Exit** button. Then issue the following commands to finish the installation:
 

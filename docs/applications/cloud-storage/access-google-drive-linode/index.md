@@ -51,11 +51,11 @@ Next, we're going to enable API access to Google Drive and create a set of crede
 
     Google will take a moment to create the project, and when it's complete you'll arrive at the dashboard:
 
-    [![The project "dashboard"](/docs/assets/API-dashboard-small.png)](API_dashboard.png)
+    [![The project "dashboard"](API-dashboard-small.png)](API_dashboard.png)
 
 3.  Enable the Google Drive API. Click **APIs & auth**, then **APIs** when the menu expands. You'll see a list like the one below. Click on **Drive API**:
 
-    [![The API list.](/docs/assets/google_API_screen-small.png)](google_API_screen.png)
+    [![The API list.](google_API_screen-small.png)](google_API_screen.png)
 
     If you don't see the **Drive API** on the list as pictured, you may need to search for it. After you've selected it, click the blue **Enable** button at the top of the page.
 
@@ -67,7 +67,7 @@ Next, we're going to enable API access to Google Drive and create a set of crede
 
     Click **Configure consent screen**. Google assumes you are writing a piece of software so it wants some information about it.
 
-    [![Creating a client ID.](/docs/assets/new_configure_screen_small.jpg)](new_configure_screen.jpg)
+    [![Creating a client ID.](new_configure_screen_small.jpg)](new_configure_screen.jpg)
 
     The product name field is required, but you can leave everything else blank. Then click **Save** at the bottom of the page.
 

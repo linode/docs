@@ -115,7 +115,7 @@ To see the output for the Longview Nginx App:
 
 Click the image for a full-size view.
 
-[![The Longview Nginx App.](/docs/assets/1455-longview_nginx_stats_sm.png)](1454-longview_nginx_stats.png)
+[![The Longview Nginx App.](1455-longview_nginx_stats_sm.png)](1454-longview_nginx_stats.png)
 
 You'll see the current version of NGINX listed on the upper right.
 

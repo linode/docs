@@ -175,7 +175,7 @@ nautilus &
 
 4.  Connect from your local VNC client using the same steps from the [previous section](#connect-to-vnc-from-your-desktop). You should now see the full Ubuntu Desktop:
 
-    [![A VNC connection with a full Ubuntu desktop.](/docs/assets/1643-vnc-ubuntu-3_small.png)](1642-vnc-ubuntu-3.png)
+    [![A VNC connection with a full Ubuntu desktop.](1643-vnc-ubuntu-3_small.png)](1642-vnc-ubuntu-3.png)
 
 ## Starting VNC Server on Boot
 

@@ -19,7 +19,7 @@ Viewing a server's processor activity in real-time can aid in discovering and di
 
 ## Reading the Screen
 
-[![The top screen](/docs/assets/top-full-small.png)](top-full.png)
+[![The top screen](top-full-small.png)](top-full.png)
 
 The `top` screen contains a variety of information regarding your server, beginning with the server's uptime, load average, and tasks status, located in the header.
 

@@ -212,7 +212,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 1. Navigate to your DNS provider, either where you purchased your domain name or Linode if you’ve transferred your DNS, and enter the following bits of information in your subdomain area to activate SPF. If you are using Linode's DNS manager, you can leave the name field blank, but other DNS providers may require you to specify @ for the hostname.
 
-    [![SPF Record](/docs/assets/iredmail-spf_preview.png)](iredmail-spf.png)
+    [![SPF Record](iredmail-spf_preview.png)](iredmail-spf.png)
 
         hostname  | ip address/url                | record type | ttl
         --------  | ----------------------------- | ----------- | ---
@@ -225,7 +225,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 1. In the same area of your DNS host records, add the following entry to enable DKIM. The IP address/url entry following the “p=“ is your public DKIM key, which can be found in your “Details of this iRedMail installation” email about halfway down under the “DNS record for DKIM support” section. Copy everything BETWEEN the double quotes and place after the “p=“ portion of the dkim._domainkey DNS entry.
 
 
-    [![DKIM Record](/docs/assets/iredmail-dkim_preview.png)](iredmail-dkim.png)
+    [![DKIM Record](iredmail-dkim_preview.png)](iredmail-dkim.png)
 
         hostname        | ip address/url      | record type | ttl
         --------------  | ------------------- | ----------- | ---

@@ -34,7 +34,7 @@ You can turn off a Linode, just like a physical computer. If you attempt to conn
 2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears, as shown below.
 
-    [![Check Linode boot status.](/docs/assets/952-troubleshooting1-1-small.png)](953-troubleshooting1-1.png)
+    [![Check Linode boot status.](952-troubleshooting1-1-small.png)](953-troubleshooting1-1.png)
 
 4.  Review the *Server Status* box on the sidebar to determine whether or not the server is powered on.
 5.  If the server is powered off, click the **Boot** button to turn it on. Wait a couple of minutes for the server to boot.

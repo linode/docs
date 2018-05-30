@@ -82,29 +82,29 @@ Begin by creating the Linode and making some preliminary changes.
 
 1.  The first thing Glish will show you is the FreeBSD welcome screen. Press **Enter** to boot into multi-user mode.
 
-    [![FreeBSD welcome.](/docs/assets/freebsd-welcome-small.png)](freebsd-welcome.png)
+    [![FreeBSD welcome.](freebsd-welcome-small.png)](freebsd-welcome.png)
 
 2.  Follow through the prompts to start the installer, choose your keymap and set a hostname if you want one.
 
 3.  For beginners, we suggest selecting to install 32-bit libraries (lib32) and source code (src). Deselect *games* if you have no use for them.
 
-    [![Choose your packages.](/docs/assets/freebsd-optional-components-small.png)](freebsd-optional-components.png)
+    [![Choose your packages.](freebsd-optional-components-small.png)](freebsd-optional-components.png)
 
 4.  Choose your partitioning and storage options. We recommend using *ZFS (auto)* for the filesystem and partitioning setup.
 
-    [![FreeBSD partition selection](/docs/assets/freebsd-partitioning-small.png)](freebsd-partitioning.png)
+    [![FreeBSD partition selection](freebsd-partitioning-small.png)](freebsd-partitioning.png)
 
     Configure any additional ZFS options you may want.
 
-    [![FreeBSD partition confirmation](/docs/assets/freebsd-zfs-configuration1-small.png)](freebsd-zfs-configuration1.png)
+    [![FreeBSD partition confirmation](freebsd-zfs-configuration1-small.png)](freebsd-zfs-configuration1.png)
 
     Select the *striped* disk type, as we're only using a single disk.
 
-    [![FreeBSD partition confirmation](/docs/assets/freebsd-zfs-configuration2-small.png)](freebsd-zfs-configuration2.png)
+    [![FreeBSD partition confirmation](freebsd-zfs-configuration2-small.png)](freebsd-zfs-configuration2.png)
 
     Select the `da0` virtual disk and then confirm that you do want to destroy its contents.
 
-    [![FreeBSD partition confirmation](/docs/assets/freebsd-zfs-configuration3-small.png)](freebsd-zfs-configuration3.png)
+    [![FreeBSD partition confirmation](freebsd-zfs-configuration3-small.png)](freebsd-zfs-configuration3.png)
 
 5.  At this point, the distribution files will extract and install. You'll then be asked to set a `root` user password.
 
@@ -116,23 +116,23 @@ SSH logins for `root` are disabled by default in FreeBSD but standard system use
 
     DHCP and SLAAC will provide the default DNS resolvers. Add or edit these options as needed.
 
-    [![FreeBSD network configuration](/docs/assets/freebsd-network-configuration-small.png)](freebsd-network-configuration.png)
+    [![FreeBSD network configuration](freebsd-network-configuration-small.png)](freebsd-network-configuration.png)
 
 7.  Ensure that your clock is set to local time rather than UTC. Choose **No** to set FreeBSD to a timezone of your choice.
 
-    [![FreeBSD Timezone Configuration](/docs/assets/freebsd-timezone-small.png)](freebsd-timezone.png)
+    [![FreeBSD Timezone Configuration](freebsd-timezone-small.png)](freebsd-timezone.png)
 
 8.  Select the services that you wish to run on boot. We recommend that beginners use the default choices.
 
-    [![FreeBSD Service Configuration](/docs/assets/freebsd-services-small.png)](freebsd-services.png)
+    [![FreeBSD Service Configuration](freebsd-services-small.png)](freebsd-services.png)
 
 9.  Add an additional user for SSH access safer system administration. To give your new user superuser privileges, add the user to the `wheel` group when asked to invite the user to any other groups. The other fields can be left default.
 
-    [![FreeBSD Network Configuration](/docs/assets/freebsd-user-wheel-small.png)](freebsd-user-wheel.png)
+    [![FreeBSD Network Configuration](freebsd-user-wheel-small.png)](freebsd-user-wheel.png)
 
 10.  At the next prompt, choose to **Apply configuration and exit installer**. You'll then be asked if you'd like to drop into a shell before rebooting. Choose **Yes** here.
 
-     [![FreeBSD Manual Configuration](/docs/assets/freebsd-manual-config-small.png)](freebsd-manual-config.png)
+     [![FreeBSD Manual Configuration](freebsd-manual-config-small.png)](freebsd-manual-config.png)
 
 11.  This final step is required to enable Lish, Glish, and make a few other changes. Use your favorite text editor and insert the following at the bottom of `/boot/loader.conf`. (FreeBSD ships with `ee` and `nvi`, linked as `vi`)
 

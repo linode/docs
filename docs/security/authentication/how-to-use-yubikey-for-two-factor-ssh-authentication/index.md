@@ -50,7 +50,7 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
 2. Click on the 'Yubico OTP' menu in the top-left corner, and select 'Quick'. Your screen should look like the one below.
 
-    [![YubiKey Personalization Tool](/docs/assets/yubikey-personalization-small.png)](yubikey-personalization.png)
+    [![YubiKey Personalization Tool](yubikey-personalization-small.png)](yubikey-personalization.png)
 
 3. Click 'Write Configuration'. Click 'Cancel' on the pop-up window that asks where to save the log file.
 

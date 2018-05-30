@@ -150,16 +150,16 @@ To disconnect from the screen session without stopping the game server, press **
 
 1.  Open your local Minecraft client. After logging in, click on the **Multiplayer** option:
 
-    [![Minecraft Launch Menu.](/docs/assets/minecraft-select-multiplayer_small.png)](minecraft-select-multiplayer.png)
+    [![Minecraft Launch Menu.](minecraft-select-multiplayer_small.png)](minecraft-select-multiplayer.png)
 
 2.  Click on **Add server** and enter your Linode's IP address or domain name. When you're finished click **Done**:
 
-    [![Edit Server Info.](/docs/assets/minecraft-server-info_small.png)](minecraft-server-info.png)
+    [![Edit Server Info.](minecraft-server-info_small.png)](minecraft-server-info.png)
 
 3.  Your server is now available to incoming connections. Click **Join Server** to connect:
 
-    [![Minecraft Server List.](/docs/assets/minecraft-server-added_small.png)](minecraft-server-added.png)
+    [![Minecraft Server List.](minecraft-server-added_small.png)](minecraft-server-added.png)
 
-    [![Minecraft Players.](/docs/assets/minecraft-gameplay_small.png)](minecraft-gameplay.png)
+    [![Minecraft Players.](minecraft-gameplay_small.png)](minecraft-gameplay.png)
 
 Congratulations! You can now play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/).

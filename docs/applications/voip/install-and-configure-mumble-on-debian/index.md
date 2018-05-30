@@ -48,7 +48,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
 3.  The first question asked is if you want the server to run at boot. Select `Yes` unless you would prefer to manually start Mumble after a server reboot.
 
-    [![Image description](/docs/assets/murmur-debian-auto-start-resized.png)](murmur-debian-auto-start.png)
+    [![Image description](murmur-debian-auto-start-resized.png)](murmur-debian-auto-start.png)
 
     {{< note >}}
 If you wish to disable the server starting at boot, you can use your init system to disable it.
@@ -64,13 +64,13 @@ For Debian 7 or earlier:
 
 4.  Mumble will then ask if you want to reduce latency by setting a higher CPU and network priority.
 
-    [![Image description](/docs/assets/murmur-debian-priority-resized.png)](murmur-debian-priority.png)
+    [![Image description](murmur-debian-priority-resized.png)](murmur-debian-priority.png)
 
     If you want Murmur to have priority over other applications on the server, you can answer **Yes** to this question.
 
 5.  Next, you will be asked to set a *SuperUser* password. Murmur has a SuperUser account that lets you change server settings from the Mumble client. You may set it to whatever password you want.
 
-    [![Image description](/docs/assets/murmur-debian-super-user-resized.png)](murmur-debian-super-user.png)
+    [![Image description](murmur-debian-super-user-resized.png)](murmur-debian-super-user.png)
 
     You now have a working Mumble server.  It's time to configure it further.
 
@@ -142,7 +142,7 @@ After installing the client and server, if you want to grant permissions to othe
 
 4.  You should now be connected as SuperUser. You can make changes to the server by right-clicking the *Root* channel and selecting **Edit**. Please refer to the [Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page) for more information on how to configure channels.
 
-    [![Connected as SuperUser.](/docs/assets/mumble_connected_as_superuser-resized.png)](mumble_connected_as_superuser.png)
+    [![Connected as SuperUser.](mumble_connected_as_superuser-resized.png)](mumble_connected_as_superuser.png)
 
 ### Connecting As Normal User
 
@@ -163,4 +163,4 @@ When a normal user connects, you follow the same relative process as you did to 
 
     You should now be logged in as a normal user and can use the server as a user with limited privileges.
 
-    [![Connected as Normal User.](/docs/assets/mumble-connected-as-normal-user-resized.png)](mumble-connected-as-normal-user.png)
+    [![Connected as Normal User.](mumble-connected-as-normal-user-resized.png)](mumble-connected-as-normal-user.png)

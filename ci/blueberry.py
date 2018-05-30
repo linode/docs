@@ -181,7 +181,6 @@ def valid_image_links(line, **kwargs):
             return kwargs.get('line_num'), image, "Images should not end with a slash."
         elif image:
             image_path = str(kwargs.get('filename'))[:-8] # Remove "index.md" from the end of the path
-            print(image_path + image)
             if not os.path.isfile(image_path + image):
                 return kwargs.get('line_num'), image, "Image link points to nonexistent file."
 

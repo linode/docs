@@ -98,7 +98,7 @@ Once you have a copy of your Linode's disk you may want to upload that copy from
 
 1.  Prepare your empty Linode by creating a new disk. Access your Linode through the Linode Manager and select **Create a new disk**:
 
-    [![Create a new disk](/docs/assets/copydisk-create-disk.png)](copydisk-create-disk-full.png)
+    [![Create a new disk](copydisk-create-disk.png)](copydisk-create-disk-full.png)
 
 2.  Enter a descriptive name in the **Label** field, and be sure the **Size** is large enough to hold the contents of the disk you are uploading. Click **Save Changes**.
 
@@ -173,7 +173,7 @@ You will now need to create a new configuration profile on the receiving Linode 
 
 1.  From within your Linode Manager, select your Linode and select **Create a New Configuration Profile**.
 
-    [![Selecting the configuration profile](/docs/assets/1065-migration6-small.png)](1064-migration6.png)
+    [![Selecting the configuration profile](1065-migration6-small.png)](1064-migration6.png)
 
 2.  Enter the name for the configuration profile in the **Label** field, and in the **Block Device Assignment** section set the `/dev/sda` to the new disk you created earlier in this section of the guide. Set `/dev/sdb` to the swap image. Save changes.
 

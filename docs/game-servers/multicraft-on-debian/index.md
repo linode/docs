@@ -83,25 +83,25 @@ Because of the insecure nature of FTP, we strongly recommend that you **not** en
 
 1.  In your local web browser, navigate to `http://12.34.56.78/multicraft/install.php`, replacing `12.34.56.78` with your Linode's IP address or domain name. Click on `Start Installation`:
 
-    [![Multicraft Installer.](/docs/assets/multicraft-init_small.png)](multicraft-init.png)
+    [![Multicraft Installer.](multicraft-init_small.png)](multicraft-init.png)
 
 2.  Multicraft will check your requirements. If you completed the steps above without issue, your page should reflect the results shown below:
 
-    [![Multicraft Requirements Check.](/docs/assets/multicraft-reqs_small.png)](multicraft-reqs.png)
+    [![Multicraft Requirements Check.](multicraft-reqs_small.png)](multicraft-reqs.png)
 
     Click `Continue`.
 
 3.  Multicraft will attempt to copy the default `config.php` file into place. If successful, click `Continue`:
 
-    [![Multicraft Configuration File Transfer.](/docs/assets/multicraft-config_small.png)](multicraft-config.png)
+    [![Multicraft Configuration File Transfer.](multicraft-config_small.png)](multicraft-config.png)
 
 4.  On the next page, click on `Initialize Database`. Afterwards, click `Continue`:
 
-    [![Multicraft Database Creation.](/docs/assets/multicraft-db_small.png)](multicraft-db.png)
+    [![Multicraft Database Creation.](multicraft-db_small.png)](multicraft-db.png)
 
 5.  The next page will attempt to connect to the panel database. You should see the message `Connection successful`. You can now click on the `Login` button and sign in with the username and password `admin`:
 
-    [![Multicraft Panel Database Connection.](/docs/assets/multicraft-panel_small.png)](multicraft-panel.png)
+    [![Multicraft Panel Database Connection.](multicraft-panel_small.png)](multicraft-panel.png)
 
 6.  After logging in you will be directed back to the previous page, where you can now click on `Continue`. The next page will allow you to configure your basic settings. When done, click `Save`.
 
@@ -114,7 +114,7 @@ Because of the insecure nature of FTP, we strongly recommend that you **not** en
 
 8.  Back in your browser, click on `Refresh`. You should see the daemon in a green box. Click `Continue`:
 
-    [![Multicraft Daemon Configuration.](/docs/assets/multicraft-daemon_small.png)](multicraft-daemon.png)
+    [![Multicraft Daemon Configuration.](multicraft-daemon_small.png)](multicraft-daemon.png)
 
 9.  Your configuration of the Multicraft control panel is now complete. As per the instructions on the page, delete the `install.php` file from your terminal:
 
@@ -132,7 +132,7 @@ Because of the insecure nature of FTP, we strongly recommend that you **not** en
 
 3.  Back in the Multicraft web interface, click on `Servers`, then `Create Server`. Fill in the options as you see fit, but be sure to add `minecraft_server.1.8.1.jar` (or your downloaded version) in the `JAR File` field:
 
-    [![Multicraft Server Settings.](/docs/assets/multicraft-server-settings_small.png)](multicraft-server-settings.png)
+    [![Multicraft Server Settings.](multicraft-server-settings_small.png)](multicraft-server-settings.png)
 
 4.  The first time you attempt to start the Minecraft server it will fail. By checking the Console view, you should see the following output:
 

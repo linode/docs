@@ -131,10 +131,10 @@ Before using SquirrelMail for the first time, it needs to be configured to acces
 
 1.  At this point you should be able to log in to the SquirrelMail Login page using your email credentials. Navigate in your web browser to the Linode's IP address, or domain name depending on how you've configured the virtual host:
 
-    [![SquirrelMail Login Page with a username and password.](/docs/assets/1501-squirrelmail_login_filled2.png)](1498-squirrelmail_login_filled.png)
+    [![SquirrelMail Login Page with a username and password.](1501-squirrelmail_login_filled2.png)](1498-squirrelmail_login_filled.png)
 
 2.  The interface layout follows standard email convention; all common functions should be easily accessible:
 
-    [![SquirrelMail Inbox view.](/docs/assets/1500-squirrelmail_inbox2.png)](1499-squirrelmail_inbox.png)
+    [![SquirrelMail Inbox view.](1500-squirrelmail_inbox2.png)](1499-squirrelmail_inbox.png)
 
 3.  Once you're finished, you can sign out using the link in the upper-right corner. Always remember to sign out if you're using a public computer.

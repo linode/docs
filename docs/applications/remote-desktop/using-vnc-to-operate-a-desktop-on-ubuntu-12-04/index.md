@@ -84,11 +84,11 @@ While there are many options for OS X and Windows, this guide will use [RealVNC 
 
 3. You will be prompted to enter the password you specified when first launching the VNC Server. See [Secure your VNC Connection](#secure-your-vnc-connection) if you have not yet started a VNC server on your Linode.
 
-    [![The VNC password prompt.](/docs/assets/1657-vnc-3-2.png)](1638-vnc-3.png)
+    [![The VNC password prompt.](1657-vnc-3-2.png)](1638-vnc-3.png)
 
 4.  After connecting you will be greeted with a terminal emulator window.
 
-    [![VNC connection to a terminal emulator.](/docs/assets/1646-vnc-4_small.png)](1639-vnc-4.png)
+    [![VNC connection to a terminal emulator.](1646-vnc-4_small.png)](1639-vnc-4.png)
 
 In the next section we will configure your Linode to launch a full desktop.
 
@@ -106,7 +106,7 @@ There are a variety of VNC clients available for Ubuntu desktops. You can find t
 
 3.  Press **Connect**.
 
-    [![An Ubuntu desktop computer connected to an Ubuntu desktop session on a Linode.](/docs/assets/1644-vnc-ubuntu-3-1_small.png)](1645-vnc-ubuntu-3-1.png)
+    [![An Ubuntu desktop computer connected to an Ubuntu desktop session on a Linode.](1644-vnc-ubuntu-3-1_small.png)](1645-vnc-ubuntu-3-1.png)
 
 In the next section we will configure your Linode to launch a full desktop.
 
@@ -147,7 +147,7 @@ x-window-manager &
 
     You should now see the full Ubuntu Desktop:
 
-    [![A VNC connection with a full Ubuntu desktop.](/docs/assets/1643-vnc-ubuntu-3_small.png)](1642-vnc-ubuntu-3.png)
+    [![A VNC connection with a full Ubuntu desktop.](1643-vnc-ubuntu-3_small.png)](1642-vnc-ubuntu-3.png)
 
 
 ## Starting VNC Server on Boot

@@ -43,11 +43,11 @@ In this section, you will install Postfix as well as *libsasl2*, a package which
 
 2.  During the Postfix installation, a prompt will appear asking for your **General type of mail configuration**. Select **Internet Site**:
 
-    [![General type of mail configuration options](/docs/assets/1737-postfixsmtp1_sm.png)](1736-postfixsmtp1.png)
+    [![General type of mail configuration options](1737-postfixsmtp1_sm.png)](1736-postfixsmtp1.png)
 
 3.  Enter the fully qualified name of your domain. In this example, **fqdn.example.com**:
 
-    [![System mail name prompt](/docs/assets/1738-postfixsmtp2_sm.png)](1739-postfixsmtp2.png)
+    [![System mail name prompt](1738-postfixsmtp2_sm.png)](1739-postfixsmtp2.png)
 
 4.  Once the installation is complete, confirm that the `myhostname` parameter is configured with your server's FQDN:
 

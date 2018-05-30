@@ -38,7 +38,7 @@ The directions below are for Debian or Ubuntu. For installation on Mac, Windows,
 
     Now that Git has been installed, refer to the image below for help with using Git and GitHub together.
 
-    [![Workflow for using Git with GitHub.](/docs/assets/git-github-workflow-650w.png)](git-github-workflow-1000w.png)
+    [![Workflow for using Git with GitHub.](git-github-workflow-650w.png)](git-github-workflow-1000w.png)
 
 ## Clone a GitHub Test Repository
 A repository, or repo, is a Git project. For tutorial purposes, there is a test repository setup on GitHub, which is listed below.

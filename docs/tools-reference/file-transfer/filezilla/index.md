@@ -55,7 +55,7 @@ CentOS/Fedora
 
 2.  Enter your Linode's IP address or domain name in the "Host" field. Enter the account username you wish to connect as in the "Username" field. Please note that this must be a user account on your Linode; if in doubt, enter "root" to log in as the root user. Enter the account's password in the "Password" field, and enter "22" in the "Port" field. Click "Quickconnect" to initiate the file transfer session.
 
-    [![Quickconnect](/docs/assets/filezilla-quick-connect-resized.png)](filezilla-quick-connect.png)
+    [![Quickconnect](filezilla-quick-connect-resized.png)](filezilla-quick-connect.png)
 
 3.  If this is the first time you've connected to your Linode with an SSH or SFTP program, you'll receive a warning that the host key is unknown. Place a check mark in the box next to "Always trust this host, add this key to the cache." Checking this box prevents further warnings unless the key presented to FileZilla changes; this should only happen if you reinstall the remote server's operating system.
 

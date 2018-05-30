@@ -39,11 +39,11 @@ The process for launching a getty may differ depending on your distribution.
 
 1.  From your Linode Dashboard, click on the **Remote Access** Tab. Under **Console Access**, click on the "Launch Graphical Web Console" link:
 
-    [![Glish access link.](/docs/assets/glish-link_small.png)](glish-link.png)
+    [![Glish access link.](glish-link_small.png)](glish-link.png)
 
     A new window will pop up:
 
-    [![Glish at the Debian login prompt.](/docs/assets/glish-debian-prompt_small.png)](glish-debian-prompt.png)
+    [![Glish at the Debian login prompt.](glish-debian-prompt_small.png)](glish-debian-prompt.png)
 
 2.  You will need to install a desktop environment. On our Debian example Linode, we're using Xfce4:
 
@@ -53,4 +53,4 @@ The process for launching a getty may differ depending on your distribution.
 
         startxfce4
 
-    [![Glish at the Xfce4 desktop.](/docs/assets/glish-xfce4-desktop_small.png)](glish-xfce4-desktop.png)
+    [![Glish at the Xfce4 desktop.](glish-xfce4-desktop_small.png)](glish-xfce4-desktop.png)

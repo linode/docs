@@ -39,7 +39,7 @@ To hold the files that will be transferred from the other Linode, you should cre
 3.  Select the Linode that will be receiving the disk. The Linode's dashboard appears.
 4.  Create a disk to hold the files from the other account's disk. Select **Create a new disk**. The webpage shown below appears.
 
-[![Creating a configuration profile](/docs/assets/1746-migration3-1_small.png)](1747-migration3-1.png)
+[![Creating a configuration profile](1746-migration3-1_small.png)](1747-migration3-1.png)
 
 5.  Enter a descriptive name for the disk in the **Label** field.
 6.  Enter a size for the disk in the **Size** field. You should make the disk large enough to hold the contents of the other disk.
@@ -121,7 +121,7 @@ The boot the receiving Linode from the transferred disk, you'll need to create a
 2.  Select the Linode that received the disk. The Linode's dashboard appears.
 3.  Select **Create a new Configuration Profile**. The webpage shown below appears.
 
-[![Selecting the configuration profile](/docs/assets/1065-migration6-small.png)](1064-migration6.png)
+[![Selecting the configuration profile](1065-migration6-small.png)](1064-migration6.png)
 
 4.  Enter a name for the configuration profile in the **Label** field, such as *Received disk*.
 5.  In the *Block Device Assignment* section, set `/dev/sda` to **Received disk**.
@@ -136,7 +136,7 @@ Now to start the receiving Linode from the transferred disk, you'll need to sele
 
 1.  From the Linode's dashboard, select the **Received disk** configuration profile you created in the last section, as shown below.
 
-[![Selecting the configuration profile](/docs/assets/1060-migration4-small.png)](1061-migration4.png)
+[![Selecting the configuration profile](1060-migration4-small.png)](1061-migration4.png)
 
 2.  Click **Reboot** to restart the Linode from the transferred disk.
 

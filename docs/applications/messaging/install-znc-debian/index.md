@@ -166,7 +166,7 @@ If the [Firewall portion](/docs/security/securing-your-server#configure-a-firewa
 {{< /note >}}
 
 
-    [![ZNC's Web Admin](/docs/assets/znc-web-admin_small.png)](znc-web-admin.png)
+    [![ZNC's Web Admin](znc-web-admin_small.png)](znc-web-admin.png)
 
 ## Connect to The Client
 

@@ -77,7 +77,7 @@ To view your current balance, follow the steps below. This shows you the sum of 
 2.  Select the **Account** tab.
 3.  In the **Account** tab, in the **Recent Billing Activity and Account Balance** section, you can see the **Current Balance**:
 
-    [![This customer has a $45.60 outstanding balance, shown next to the Current Balance.](/docs/assets/1622-manager_account_sm.png)](1623-manager_account.png)
+    [![This customer has a $45.60 outstanding balance, shown next to the Current Balance.](1622-manager_account_sm.png)](1623-manager_account.png)
 
 Here, you can keep track of your outstanding balance. In the example above, the customer has used $45.60 worth of Linode services in the month so far. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
 

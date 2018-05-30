@@ -86,7 +86,7 @@ To see the output for the Longview MySQL App:
 
 Click the image for a full-size view.
 
-[![The Longview MySQL App.](/docs/assets/1458-longview_mysql_stats_sm.png)](1457-longview_mysql_stats.png)
+[![The Longview MySQL App.](1458-longview_mysql_stats_sm.png)](1457-longview_mysql_stats.png)
 
 You'll see the current version of MySQL listed on the upper right.
 

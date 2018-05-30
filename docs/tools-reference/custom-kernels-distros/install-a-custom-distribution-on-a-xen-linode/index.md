@@ -143,7 +143,7 @@ Start from the Linode Manager by configuring a Linode to boot your custom image.
 
 9. Next, create a configuration profile for the Linode by selecting **Create a new Configuration Profile**. Change the **Label** to "Custom_Distro" or similar. Under **Block Device Assignment** change **/dev/xvda** to **Custom_Distro** and **/dev/xvdb** to **Swap**. Notice that **root device** is set to **Standard: /dev/xvda** making the Custom_Distro disk the boot device. Warning, do not change the **root device** setting.
 
-    [![Configuration Profile.](/docs/assets/config-profile-small.png)](config-profile-large.png)
+    [![Configuration Profile.](config-profile-small.png)](config-profile-large.png)
 
 10. Select **Save Changes**.
 

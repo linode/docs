@@ -129,6 +129,6 @@ From this point, do not press the **Control+C** keys while in the console unless
 
 ## Enter The Server
 
-[![JC2-MP Server with users on it](/docs/assets/JC2running_resized.png)](JC2running.png)
+[![JC2-MP Server with users on it](JC2running_resized.png)](JC2running.png)
 
 Now that you have installed and configured Just Cause 2 - Multiplayer, you have your very own Just Cause 2 server for you and your friends to play on. Your users can access the server by opening the server list, finding your server’s name, clicking **Connect**, and then entering a password - if you choose to set one.

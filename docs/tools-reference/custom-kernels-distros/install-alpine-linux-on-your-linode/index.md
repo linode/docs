@@ -62,7 +62,7 @@ Create a new configuration profile for your Linode. Choose **GRUB 2** from the k
 
 Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be left at their default values.
 
-[![Linode Config](/docs/assets/install-alpine-linux-config_small.png)](install-alpine-linux-config.png)
+[![Linode Config](install-alpine-linux-config_small.png)](install-alpine-linux-config.png)
 
 ## Install Alpine Linux
 

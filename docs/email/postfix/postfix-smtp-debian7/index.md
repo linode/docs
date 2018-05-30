@@ -57,13 +57,13 @@ In this section, you will install Postfix and set the domain and hostname.
 
 2.  During the installation, a prompt will appear asking for your **General type of mail configuration**.
 
-    [![Postfix configuration, General type of mail configuration options](/docs/assets/1737-postfixsmtp1_sm.png)](1736-postfixsmtp1.png)
+    [![Postfix configuration, General type of mail configuration options](1737-postfixsmtp1_sm.png)](1736-postfixsmtp1.png)
 
     Select **Internet Site**.
 
 3.  Enter the fully qualified name of your domain, **fqdn.example.com**.
 
-    [![Postfix configuration, System mail name prompt](/docs/assets/1738-postfixsmtp2_sm.png)](1739-postfixsmtp2.png)
+    [![Postfix configuration, System mail name prompt](1738-postfixsmtp2_sm.png)](1739-postfixsmtp2.png)
 
 4.  Once the installation is finished, open the `/etc/postfix/main.cf` file with your favorite text editor:
 

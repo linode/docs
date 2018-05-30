@@ -444,7 +444,7 @@ Now you have the Zabbix server and web admin installed, and you just set up the 
 
 2.  Click the **Configuration** tab, then the **Hosts** menu item, then the **Create Host** button. The screen shown below appears.
 
-    [![Zabbix add host screen.](/docs/assets/1073-zabbix-9-small.png)](859-AddHost.png)
+    [![Zabbix add host screen.](1073-zabbix-9-small.png)](859-AddHost.png)
 
 3.  Enter a name for the host in the **Name** field. This will be displayed on your server list.
 4.  Add the IP address of your monitored host to the **IP Address** field.

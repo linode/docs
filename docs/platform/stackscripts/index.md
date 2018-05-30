@@ -36,11 +36,11 @@ The **Rebuild** option will destroy all existing disks and profiles.
 
 3.  From here, click on **Deploying using StackScripts**.
 
-    [![Follow the 'Deploying using StackScripts' link.](/docs/assets/1684-stackscripts-2-small.png)](1683-stackscripts-2.png)
+    [![Follow the 'Deploying using StackScripts' link.](1684-stackscripts-2-small.png)](1683-stackscripts-2.png)
 
 4.  At this point we have the option of using a Community StackScript or one of our own.
 
-    [![Our StackScript options.](/docs/assets/1508-stackscripts_step3_small.png)](1503-stackscripts_step3.png)
+    [![Our StackScript options.](1508-stackscripts_step3_small.png)](1503-stackscripts_step3.png)
 
 Alternatively, you can follow along with this video, which will show you how to deploy from a StackScript:
 
@@ -54,15 +54,15 @@ There is no default logging when using a StackScript. Output is sent to the cons
 
 1.  In addition to the StackScripts created by Linode, any community member who creates a StackScript has the option to make it publicly available to other customers. As seen in the image below, you can use the drop down menu and keywords field to narrow your search to match your distribution and goal:
 
-    [![A search.](/docs/assets/1509-stackscripts_search_small.png)](1510-stackscripts_search.png)
+    [![A search.](1509-stackscripts_search_small.png)](1510-stackscripts_search.png)
 
 2.  For this example we'll select the first search result. This brings us to a page where we can define the variables that will go into the StackScript. In this case, the MySQL root password. The other options are standard whenever you deploy a new disk.
 
-    [![A public StackScript.](/docs/assets/1511-stackscripts_com_example_small.png)](1512-stackscripts_com_example.png)
+    [![A public StackScript.](1511-stackscripts_com_example_small.png)](1512-stackscripts_com_example.png)
 
 3.  Once you've adjusted the options, hit **Deploy**. You will be returned to the Linode Dashboard, and a disk will be created.
 
-    [![The newly created.](/docs/assets/1521-stackscripts_disk_create_small.png)](1522-stackscripts_disk_create.png)
+    [![The newly created.](1521-stackscripts_disk_create_small.png)](1522-stackscripts_disk_create.png)
 
 4.  A new configuration profile is also created which you can select to boot. The script will be run once at initial boot.
 
@@ -70,7 +70,7 @@ There is no default logging when using a StackScript. Output is sent to the cons
 
 1.  To begin creating your own StackScript, click on [Manage your StackScripts](https://manager.linode.com/stackscripts/index) From the [Linodes](https://manager.linode.com/linodes) page in the manager. Then click on **Add a new StackScript**.
 
-    [![The StackScripts management page.](/docs/assets/1523-stackscripts_manage_small.png)](1524-stackscripts_manage.png)
+    [![The StackScripts management page.](1523-stackscripts_manage_small.png)](1524-stackscripts_manage.png)
 
 2.  Fill in the various sections:
 
@@ -82,7 +82,7 @@ There is no default logging when using a StackScript. Output is sent to the cons
 
     Below is an example of a new StackScript being written:
 
-    [![A StackScript being created.](/docs/assets/1525-stackscripts_add_filled_small.png)](1526-stackscripts_add_filled.png)
+    [![A StackScript being created.](1525-stackscripts_add_filled_small.png)](1526-stackscripts_add_filled.png)
 
     Here's the code used in our example script. The comment lines explain what each section does:
 
@@ -118,7 +118,7 @@ echo $IPADDR $FQDN $HOSTNAME >> /etc/hosts
 3.  Once you've written the StackScript press **Save Changes**. Remember, you can always edit the script later if you want to make adjustments.
 4.  Now you can go back to the **Deploy from StackScript** page to see that your new StackScript is available. It can be deployed following the same procedure as step 2 of [Using a Community StackScript](#using-a-community-stackscript)
 
-    [![Our new StackScript is available.](/docs/assets/1527-stackscripts_new_small.png)](1528-stackscripts_new.png)
+    [![Our new StackScript is available.](1527-stackscripts_new_small.png)](1528-stackscripts_new.png)
 
 ## StackScript Use Cases
 

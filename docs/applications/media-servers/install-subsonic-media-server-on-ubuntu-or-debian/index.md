@@ -94,7 +94,7 @@ Passwords in the Subsonic database are stored in hex format, but not encrypted.
 
 &nbsp;
 
-[![The Subsonic Interface.](/docs/assets/subsonic-setup_small.png)](subsonic-setup.png)
+[![The Subsonic Interface.](subsonic-setup_small.png)](subsonic-setup.png)
 
 ## Next Steps
 

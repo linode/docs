@@ -23,7 +23,7 @@ Container Linux supports running [Docker](https://coreos.com/os/docs/latest/gett
 
 When you deploy a Container Linux image, you'll notice the default settings in the configuration profile are different from those of other distributions.
 
-[![CoreOS configuration profile](/docs/assets/container-linux-config-profile-small.png)](container-linux-config-profile.png)
+[![CoreOS configuration profile](container-linux-config-profile-small.png)](container-linux-config-profile.png)
 
 ### Boot Settings
 

@@ -49,7 +49,7 @@ To turn Lassie on and off:
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The Shutdown Watchdog settings appear, as shown below.
 
-    [![Configuring Shutdown Watchdog](/docs/assets/1105-monitor3-small.png)](1107-monitor3.png)
+    [![Configuring Shutdown Watchdog](1105-monitor3-small.png)](1107-monitor3.png)
 
 5.  Select an option from the **Lassie is currently** menu, as shown below.
 6.  Click **Save Changes**.
@@ -82,7 +82,7 @@ To turn on and customize the alerts:
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The *Email Alert Thresholds* settings appear, as shown below.
 
-    [![Configuring Linode Manager Email Alerts](/docs/assets/1104-monitor2-small.png)](1103-monitor2.png)
+    [![Configuring Linode Manager Email Alerts](1104-monitor2-small.png)](1103-monitor2.png)
 
 5.  To enable an email alert, select the **Enabled** checkbox.
 6.  To configure the threshold for an alert, set a value in the text field.

@@ -75,7 +75,7 @@ This video runs through the process of adding a new domain zone:
 
 1.  From the DNS Manager tab, select **Add a domain zone**:
 
-    [![This page lets you add a domain zone.](/docs/assets/1120-dns8.png)](1332-hosting-1.png)
+    [![This page lets you add a domain zone.](1120-dns8.png)](1332-hosting-1.png)
 
 2.  Enter your domain name in the **Domain** field. An example is shown above.
 3.  Enter an administrator's email address in the **SOA Email** field.
@@ -147,7 +147,7 @@ Here's how to import a zone file:
 
 1.  Select **Import a zone**, from the DNS Manager tab.
 
-    [![This page lets you import a domain zone.](/docs/assets/1658-axfr_sm.png)](1659-axfr.png)
+    [![This page lets you import a domain zone.](1658-axfr_sm.png)](1659-axfr.png)
 
 2.  Enter the domain name in the **Domain** field, as shown in the example above.
 

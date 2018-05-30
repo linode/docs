@@ -29,13 +29,13 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
 
     -   Select the API Keys tab:
 
-        [![Linode API](/docs/assets/linode-api-vagrant1-small.png)](linode-api-vagrant1.png)
+        [![Linode API](linode-api-vagrant1-small.png)](linode-api-vagrant1.png)
 
     -   Enter a label for your API Key and set an expiration time. Then click **Create API Key**.
 
     -   Your API Key will be output in a green box. **The key will only be shown once** so be sure to record it for later use:
 
-        [![Linode API Key Generated](/docs/assets/linode-api-vagrant2-small.png)](linode-api-vagrant2.png)
+        [![Linode API Key Generated](linode-api-vagrant2-small.png)](linode-api-vagrant2.png)
 
 
 ## Install the vagrant-linode Plugin

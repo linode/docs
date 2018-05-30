@@ -227,11 +227,11 @@ server{
 
     The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
 
-    [![First time starting Seafile](/docs/assets/seafile-firststart-small.png)](seafile-firststart.png)
+    [![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
 
 7. Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
 
-    [![Seafile login prompt](/docs/assets/seafile-login-small.png)](seafile-login.png)
+    [![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
 
 ## Automatically Start Seafile on Sever Bootup
 

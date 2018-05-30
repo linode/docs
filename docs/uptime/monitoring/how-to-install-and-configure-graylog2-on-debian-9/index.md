@@ -240,7 +240,7 @@ Graylog is now up and running, It's time to access the Graylog web interface.
 
 1.  Open your web browser and navigate to the URL: `http://192.168.0.102:9000` where `192.168.0.102` is the public IP address of your linode. You will be redirected to the Graylog login page as shown below:
 
-    [![Graylog Login Page](/docs/assets/Screenshot-of-graylog-login-page_small.png)](Screenshot-of-graylog-login-page.png)
+    [![Graylog Login Page](Screenshot-of-graylog-login-page_small.png)](Screenshot-of-graylog-login-page.png)
 
     {{< note >}}
 Consider limiting Graylog access to a private network, if you are deploying Graylog in a production environment. In the context of this guide, instances of `192.168.0.102` can be replaced with the Linode's public IP address to access on the browser.
@@ -248,15 +248,15 @@ Consider limiting Graylog access to a private network, if you are deploying Gray
 
 2.  Provide the username `admin` and password as the `hashedpassword` generated earlier, then click on the **Sign In** button. You should see the Graylog default dashboard:
 
-    [![Graylog Dashboard](/docs/assets/Screenshot-of-graylog-dashboard_small.png)](Screenshot-of-graylog-dashboard.png)
+    [![Graylog Dashboard](Screenshot-of-graylog-dashboard_small.png)](Screenshot-of-graylog-dashboard.png)
 
 3.  Configure Graylog Input to receive the logs from external source. Click on *System > Inputs*. Then select **Syslog UDP** from the drop down, click on the **Launch new input** button. You should see the following image:
 
-    [![Graylog Add Input](/docs/assets/Screenshot-of-graylog-syslog-input_small.png)](Screenshot-of-graylog-syslog-input.png)
+    [![Graylog Add Input](Screenshot-of-graylog-syslog-input_small.png)](Screenshot-of-graylog-syslog-input.png)
 
 4.  Fill in all of the details shown below. When you finish click on the **Save** button, you should see the local input in the following image:
 
-    [![Graylog Input Dashboard](/docs/assets/Screenshot-of-graylog-input-dashboard_small.png)](Screenshot-of-graylog-input-dashboard.png)
+    [![Graylog Input Dashboard](Screenshot-of-graylog-input-dashboard_small.png)](Screenshot-of-graylog-input-dashboard.png)
 
 5.  Your Graylog input is configured and listening on port `8514`. Now, you will need to configure rsyslog to send system logs to the newly created input. To do this, edit the `rsyslog.conf` file:
 
@@ -271,7 +271,7 @@ $template GRAYLOGRFC5424,"%protocol-version% %timestamp:::date-rfc3339% %HOSTNAM
 
 6.  After restarting, log in to your Graylog server web interface and click on *System > Inputs*. Then, click on the **Show received messages** button. You should see the syslog messages in the following image:
 
-    [![Graylog Log Messages](/docs/assets/Screenshot-of-graylog-server-messeges_small.png)](Screenshot-of-graylog-server-messeges.png)
+    [![Graylog Log Messages](Screenshot-of-graylog-server-messeges_small.png)](Screenshot-of-graylog-server-messeges.png)
 
 
 ### Next steps

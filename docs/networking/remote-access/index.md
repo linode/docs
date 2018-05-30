@@ -43,7 +43,7 @@ Before setting reverse DNS, verify that you have created a matching forward DNS 
 
 7.  Click **Look up**. A message appears indicating that a match has been found for both your IPv4 and IPv6 addresses.
 
-    [![Reverse DNS Match found](/docs/assets/1691-ptr_lookup_match_found_small.png)](1692-ptr_lookup_match_found.png)
+    [![Reverse DNS Match found](1691-ptr_lookup_match_found_small.png)](1692-ptr_lookup_match_found.png)
 
 8.  Click **Yes** beneath the desired address. Note that you can select only one address at a time. If you want to set up reverse DNS for both the IPv4 and IPv6 addresses, you can perform another lookup and select the other address.
 
@@ -69,7 +69,7 @@ To reset reverse DNS to the Linode domain, which will be something like **li12-3
 
 6.  Select the **Reset** link next to the reverse DNS setting you want to revert to the default Linode domain.
 
-    [![The Reset link](/docs/assets/1694-ptr_reset_marked_small.png)](1693-ptr_reset_marked.png)
+    [![The Reset link](1694-ptr_reset_marked_small.png)](1693-ptr_reset_marked.png)
 
 7.  Click **Yes** when asked to confirm the reset.
 
@@ -126,7 +126,7 @@ The menu only displays Linodes hosted in the same data center as the current Lin
 
 7.  Click **Select**. The webpage shown below appears.
 
-    [![Adding the domain name for Reverse DNS](/docs/assets/961-remote-3-small.png)](962-remote-3.png)
+    [![Adding the domain name for Reverse DNS](961-remote-3-small.png)](962-remote-3.png)
 
 8.  Select both of the **Move It** checkboxes to verify that you want the IP addresses switched.
 9.  Click **Do it**.
@@ -192,7 +192,7 @@ You can also access Lish with an SSH client application installed on your comput
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab. Scroll down to the *Console Access* section, as shown below.
 
-    [![The Console Access section of the Remote Access tab](/docs/assets/967-remote-6-small.png)](968-remote-6.png)
+    [![The Console Access section of the Remote Access tab](967-remote-6-small.png)](968-remote-6.png)
 
 5.  Accessing Lish via SSH requires additional authentication over and above your Linode's username and password. Enter a password for Lish in the **Lish via SSH Password** field, and then click **Change Password**. Or, if you use SSH key pair authentication, copy and paste your public key in to the **Lish via SSH Keys** field, and then click **Submit Keys**.
 6.  Select the **Lish via SSH** link, as shown below.

@@ -162,7 +162,7 @@ Version 1.5.7 is the current version and may be different by the time you read t
 
 2.  After clicking on **Let's Get Started**, you should see a configuration page for your OWA installation. OWA will automatically fill in the first field with the path to your OWA installation. You will need to fill in the other fields on the page with the information you set in the MySQL CLI:
 
-    [![Open Web Analytics set up screen.](/docs/assets/owa-install_small.png)](owa-install.png)
+    [![Open Web Analytics set up screen.](owa-install_small.png)](owa-install.png)
 
 3.  Click **Continue...**.
 

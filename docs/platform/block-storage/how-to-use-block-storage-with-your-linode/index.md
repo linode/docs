@@ -45,7 +45,7 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
 3.  Once you add a volume, you'll be presented with the Volume Attached page as shown below. This page provides customized instructions which show you how to make a filesystem in your volume from any of our supported Linux distributions. The page shows how to mount the volume, and how to add it to `/etc/fstab` so it's mounted automatically whenever you reboot your Linode:
 
-    [![Linode Manager volume instructions](/docs/assets/bs-volume-instructions-small.png)](bs-volume-instructions.png)
+    [![Linode Manager volume instructions](bs-volume-instructions-small.png)](bs-volume-instructions.png)
 
 4.  If your Linode is not already running, boot and SSH into your Linode to execute the commands as shown on the instructions page. If you need to see the volume mount instructions again, click **Edit** to the right of the volume in that Linode's dashboard:
 
@@ -55,19 +55,19 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
 1.  In the **Linodes** tab of Linode manager, click **Manage Volumes** to see your account's volume list:
 
-    [![Linode Manager add volume](/docs/assets/bs-manage-volumes-small.png)](bs-manage-volumes.png)
+    [![Linode Manager add volume](bs-manage-volumes-small.png)](bs-manage-volumes.png)
 
 2.  Click the **Attach** option for the volume you want to attach to a Linode:
 
-    [![Linode Manager add volume](/docs/assets/bs-volume-list-small.png)](bs-volume-list.png)
+    [![Linode Manager add volume](bs-volume-list-small.png)](bs-volume-list.png)
 
 3.  Select the label of the Linode you want to attach the volume to. Then click **Attach**:
 
-    [![Linode Manager add volume](/docs/assets/bs-volume-attach-small.png)](bs-volume-attach.png)
+    [![Linode Manager add volume](bs-volume-attach-small.png)](bs-volume-attach.png)
 
 4.  Once you add a volume, you'll be presented with the Volume Attached page as shown below. This page provides customized instructions which show you how to make a filesystem in your volume from any of our supported Linux distributions. The page shows how to mount the volume, and how to add it to `/etc/fstab` so it's mounted automatically whenever you reboot your Linode:
 
-    [![Linode Manager volume instructions](/docs/assets/bs-volume-instructions-small.png)](bs-volume-instructions.png)
+    [![Linode Manager volume instructions](bs-volume-instructions-small.png)](bs-volume-instructions.png)
 
 5.  If your Linode is not already running, boot and SSH into your Linode to execute the commands as shown on the instructions page. If you need to see the volume mount instructions again, click **Edit** to the right of the volume in that Linode's dashboard:
 
@@ -83,7 +83,7 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
 3.  A confirmation screen appears and explains that the volume will be detached from the Linode. Click **Detach** to confirm:
 
-    [![Linode Manager detach volume confirmation](/docs/assets/bs-detach-confirm-small.png)](bs-detach-confirm.png)
+    [![Linode Manager detach volume confirmation](bs-detach-confirm-small.png)](bs-detach-confirm.png)
 
     The Linode's dashboard does not show the volume present anymore:
 
@@ -91,7 +91,7 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
     The volume still exists on your account and you can see it if you click **View all Volumes**:
 
-    [![Linode Manager volume list](/docs/assets/bs-volume-list-small.png)](bs-volume-list.png)
+    [![Linode Manager volume list](bs-volume-list-small.png)](bs-volume-list.png)
 
 ## How to Delete a Block Storage Volume
 
@@ -115,11 +115,11 @@ Storage volumes **cannot** be sized down, only up. Keep this in mind when sizing
 
 3.  Enter the new volume size. The minimum size is 10 GiB and maximum is 10,000 GiB. Then click **Save Changes**.
 
-    [![Linode Manager edit volume](/docs/assets/bs-resize-volume-small.png)](bs-resize-volume.png)
+    [![Linode Manager edit volume](bs-resize-volume-small.png)](bs-resize-volume.png)
 
 4.  You'll be returned to the volume list and the **Status** column for the volume should say **resizing**.
 
-    [![Linode Manager edit volume](/docs/assets/bs-volume-resizing-small.png)](bs-volume-resizing.png)
+    [![Linode Manager edit volume](bs-volume-resizing-small.png)](bs-volume-resizing.png)
 
 5.  Reboot your Linode.
 

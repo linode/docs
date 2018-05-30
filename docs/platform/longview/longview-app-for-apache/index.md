@@ -106,7 +106,7 @@ To see the output for the Longview Apache App:
 
 Click the image for a full-size view.
 
-[![The Longview Apache App.](/docs/assets/1453-longview_apache_stats_sm.png)](1452-longview_apache_stats.png)
+[![The Longview Apache App.](1453-longview_apache_stats_sm.png)](1452-longview_apache_stats.png)
 
 You'll see the current version of Apache listed on the upper right.
 

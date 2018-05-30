@@ -67,7 +67,7 @@ If you've configured the firewall according to the [Securing Your Server](/docs/
 
 2.  Open a web browser on your computer, and navigate to `https://123.45.67.89:9700`, replacing `123.45.67.89` with your Linode's IP address. You will see a screen similar to this:
 
-    [![Pritunl DB setup screen](/docs/assets/pritunl-db-setup-resized.png)](pritunl-db-setup.png)
+    [![Pritunl DB setup screen](pritunl-db-setup-resized.png)](pritunl-db-setup.png)
 
 3.  Connect to the database. The installer has already populated the MongoDB URI. If it looks correct, click **Save**.
 

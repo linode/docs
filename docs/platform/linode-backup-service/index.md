@@ -64,7 +64,7 @@ You can also follow along with this video to enable the Backup Service on your L
 
 You'll manage your backups with a simple web interface in the Linode Manager. There's no software to install, and there are no commands to run. Just log in to the Linode Manager, click the **Linodes** tab, select a Linode, and then click the **Backups** tab. The backups interface is shown below.
 
-[![The Linode Backup Service interface](/docs/assets/954-backups0-small1-1.png)](955-backups01-1.png)
+[![The Linode Backup Service interface](954-backups0-small1-1.png)](955-backups01-1.png)
 
 1.  Schedule automated backups. For more information, see [Scheduling Backups](#schedule-backups).
 2.  Indicates when the daily and weekly backups were performed. Click the **Restore to...** link to restore a backup to a Linode.
@@ -130,7 +130,7 @@ You can restore a backup to any Linode located in the same data center, even if 
 
 2.  Click the **Restore to this Linode** link next to your new Linode:
 
-    [![Restore to a New Linode](/docs/assets/backup-service-restore-to-new-small.png)](backup-service-restore-to-new.png)
+    [![Restore to a New Linode](backup-service-restore-to-new-small.png)](backup-service-restore-to-new.png)
 
     The backup disks and configuration profiles will be restored to the Linode you selected. Watch the *Host Job Queue* to monitor the progress. Restoring from a backup can take several minutes depending on the size of your Linode and the amount of data you have stored on it.
 
@@ -155,7 +155,7 @@ If you are attempting to restore a disk to the Linode the backup was created fro
 
 3.  Next, you'll confirm the total space assigned to disk images on your Linode, via the **Storage** indicator on your Linode's Dashboard:
 
-    [![Linode Dashboard Storage Indicator](/docs/assets/backup-service-dashboard-storage-indicator-small.png)](backup-service-dashboard-storage-indicator.png)
+    [![Linode Dashboard Storage Indicator](backup-service-dashboard-storage-indicator-small.png)](backup-service-dashboard-storage-indicator.png)
 
     Here you can see that the Linode has a total of 30720MB of storage space available, but all of it is currently assigned to the Linode's two disks.
 
@@ -167,7 +167,7 @@ If you are attempting to restore a disk to the Linode the backup was created fro
 
 6.  From the **Backups** tab, click the **Restore to this Linode** link next to your Linode:
 
-    [![Linode Dashboard Storage Indicator](/docs/assets/backup-service-restore-to-a-linode-small.png)](backup-service-restore-to-a-linode.png)
+    [![Linode Dashboard Storage Indicator](backup-service-restore-to-a-linode-small.png)](backup-service-restore-to-a-linode.png)
 
     Your backup will begin restoring to your Linode, and you can monitor its progress from the *Host Job Queue* in your Linode's Dashboard tab. Note that the time it takes to restore your backup will vary depending upon the restore size, and the number of files being restored.
 

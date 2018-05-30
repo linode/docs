@@ -282,12 +282,12 @@ dm_underpass
 
 1.  Open Half-Life 2 Deathmatch, and click **FIND SERVERS**:
 
-    [![Half-Life 2 Main menu](/docs/assets/half-life-2-deathmatch-menu_small.png)](half-life-2-deathmatch-menu.png)
+    [![Half-Life 2 Main menu](half-life-2-deathmatch-menu_small.png)](half-life-2-deathmatch-menu.png)
 
 2.  Find your server in the servers list:
 
-    [![Server browser](/docs/assets/half-life-2-deathmatch-server-browser_small.png)](half-life-2-deathmatch-server-browser.png)
+    [![Server browser](half-life-2-deathmatch-server-browser_small.png)](half-life-2-deathmatch-server-browser.png)
 
 3.  Double click on it to connect:
 
-    [![In-game](/docs/assets/half-life-2-deathmatch-in-game_small.png)](half-life-2-deathmatch-in-game.png)
+    [![In-game](half-life-2-deathmatch-in-game_small.png)](half-life-2-deathmatch-in-game.png)

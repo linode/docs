@@ -157,11 +157,11 @@ You can connect to your new ARK server using two different methods. Because the 
 
 2.  Under **FAVORITES** select **ADD A SERVER** and direct Steam to connect to your Linode's IP address or domain name:
 
-    [![Steam Add Server](/docs/assets/ark-add-server-small.png)](ark-add-server.png)
+    [![Steam Add Server](ark-add-server-small.png)](ark-add-server.png)
 
 3.  Once Steam identifies your ARK server, it should appear in the **SERVERS** list. Choose your server and hit **CONNECT**:
 
-    [![Steam Servers](/docs/assets/ark-servers-small.png)](ark-servers.png)
+    [![Steam Servers](ark-servers-small.png)](ark-servers.png)
 
     Alternately, you can select **Favorites** from the **Server Filter** in the in-game server list:
 

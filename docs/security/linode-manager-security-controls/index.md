@@ -57,7 +57,7 @@ Enable two-factor authentication to start using it with your Linode Manager acco
 4.  Select the **Password & Authentication** tab.
 5.  In the **Two-Factor Authentication** section, click **Enable Two-Factor Authentication**:
 
-    [![Two-Factor Authentication.](/docs/assets/1286-manager_2factor_disabled-2.png)](1269-manager_2factor_disabled.png)
+    [![Two-Factor Authentication.](1286-manager_2factor_disabled-2.png)](1269-manager_2factor_disabled.png)
 
 6.  The window shown below appears. Write down the **Secret Key** and store it in a safe place:
 
@@ -103,7 +103,7 @@ Generating a one-time use scratch code is also recommended. In the event that yo
 
 1.  Click on the **generate** link to create a code.
 
-    [![Generate Scratch Code.](/docs/assets/1364-manager_2fa_enabled_sm.png)](1361-manager_2fa_enabled.png)
+    [![Generate Scratch Code.](1364-manager_2fa_enabled_sm.png)](1361-manager_2fa_enabled.png)
 
 2.  A pop-up window will appear asking you to confirm the action. Click **OK**.
 
@@ -111,7 +111,7 @@ Generating a one-time use scratch code is also recommended. In the event that yo
 
 3.  The scratch code is displayed. This code will be displayed only once, so write it down and store it somewhere safe.
 
-    [![Confirmation Window.](/docs/assets/1365-manager_scratchcode_enabled_sm.png)](1363-manager_scratchcode_enabled.png)
+    [![Confirmation Window.](1365-manager_scratchcode_enabled_sm.png)](1363-manager_scratchcode_enabled.png)
 
 ### Generate a New Key
 
@@ -123,7 +123,7 @@ The Linode Manager allows you to generate a new secret key for your two-factor a
 4.  Select the **Password & Authentication** tab.
 5.  In the *Two-Factor Authentication* section, click **Regenerate Secret Key**, as shown below.
 
-    [![Regenerate Secret Key.](/docs/assets/1364-manager_2fa_enabled_sm.png)](1361-manager_2fa_enabled.png)
+    [![Regenerate Secret Key.](1364-manager_2fa_enabled_sm.png)](1361-manager_2fa_enabled.png)
 
 A new secret key and barcode will be generated for your account and displayed on the screen. Follow the instructions in the [Enabling Two-Factor Authentication](#enabling) section to add the new key to your smartphone.
 
