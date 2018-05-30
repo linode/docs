@@ -65,7 +65,7 @@ It is imperative that the networking configurations are set and working properly
 
 Before you begin, you will need to obtain all the private IP addresses for each of your Linodes. This information can be found by logging into the Linode Manager. Under the **Remote Access** tab there is a section called "Private/LAN Network." Click on the "Add a Private IP" link to assign a private IP address to your Linode. Again, we are working with a three-member replication set, so you will need to acquire this information for each member.
 
-[![Finding your private IP address.](/docs/assets/1700-private_ip-v3.png)](/docs/assets/1700-private_ip-v3.png)
+[![Finding your private IP address.](1700-private_ip-v3.png)](1700-private_ip-v3.png)
 
 ### Setting the Hosts File
 
@@ -271,7 +271,7 @@ For this replset configuration, only the hostname was required to add a new memb
 
 An example of the add member process is included for your reference. Make sure to change names and port numbers to reflect your particular configuration.
 
-[![Add a member to a replication set.](/docs/assets/1687-add-node.png)](/docs/assets/1687-add-node.png)
+[![Add a member to a replication set.](1687-add-node.png)](1687-add-node.png)
 
 Use the `rs.conf()` command to check if the new member is present in the configuration file. In addition, any database should propagate almost immediately (depending on its size) over to the new member.
 

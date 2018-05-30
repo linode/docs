@@ -20,13 +20,13 @@ deprecated: true
 
 Before you can create a reseller account on your DirectAdmin Linode, you'll need to set up a package for resellers through your admin login. The first thing you need to do is log into your DirectAdmin panel with your admin user. Then, click on the "Manage Reseller Packages" link under the Server Management section. You'll then need to click the "Add Package" link near the top of the page. You'll want to fill in the form with the limits you wish to impose on the reseller plan you are creating. An example of the completed form is shown here:
 
-[![DirectAdmin Add Package screen.](/docs/assets/843-AddPackage.png)](/docs/assets/843-AddPackage.png)
+[![DirectAdmin Add Package screen.](843-AddPackage.png)](843-AddPackage.png)
 
 # Create a Reseller Account
 
 Once you have your reseller package created, you can move onto creating your reseller's account. Click the Home icon at the top of the page, then the "Create Reseller" link in the Server Management section. You'll want to fill in the form presented with your reseller client's information:
 
-[![DirectAdmin Create Reseller screen.](/docs/assets/844-CreateReseller.png)](/docs/assets/844-CreateReseller.png)
+[![DirectAdmin Create Reseller screen.](844-CreateReseller.png)](844-CreateReseller.png)
 
 Make sure you use a valid email address as the DirectAdminsystem will email your reseller their account details! That email will look similar to this:
 
@@ -97,13 +97,13 @@ Make sure you use a valid email address as the DirectAdminsystem will email your
 
 You can create user accounts either through the admin login or any reseller login. If you are logged into the DirectAdmin panel with your Admin login, just click the "» Reseller Level" link located on the top right of the panel. You'll need to create a package for your user accounts, so you'll want to first click the "Add Package" link under the Account Management section. You'll want to fill in the form with the limits you wish to impose on the user account plan you are creating. An example of the completed form is shown here:
 
-[![DirectAdmin Add User Package screen.](/docs/assets/845-AddUserPackage.png)](/docs/assets/845-AddUserPackage.png)
+[![DirectAdmin Add User Package screen.](845-AddUserPackage.png)](845-AddUserPackage.png)
 
 # Create a User Account
 
 Once you have your user package created, you can move onto creating your user's account. Click the Home icon at the top of the page, then the "Add New User" link in the Server Management section. You'll want to fill in the form presented with your reseller client's information:
 
-[![DirectAdmin Create Reseller screen.](/docs/assets/844-CreateReseller.png)](/docs/assets/844-CreateReseller.png)
+[![DirectAdmin Create Reseller screen.](844-CreateReseller.png)](844-CreateReseller.png)
 
 # More Information
 

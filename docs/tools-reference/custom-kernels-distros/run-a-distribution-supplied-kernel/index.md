@@ -27,15 +27,15 @@ The steps in this section currently apply only to the distributions under *Recom
 
 2.  Click **Edit** to view a distribution's configuration profile options:
 
-    ![Edit the configuration profile](/docs/assets/edit_config_profile_small.png "Edit the configuration profile")
+    ![Edit the configuration profile](edit_config_profile_small.png "Edit the configuration profile")
 
 3.  Under **Boot Settings** is a **Kernel** dropdown menu. By default, this will be set to GRUB 2:
 
-    ![Selecting the distribution's kernel](/docs/assets/boot-settings-kernel-grub2.png "Selecting the distribution's kernel")
+    ![Selecting the distribution's kernel](boot-settings-kernel-grub2.png "Selecting the distribution's kernel")
 
 4.  To switch to the distro's default kernel, select the latest Linode-supplied 64 bit kernel:
 
-    ![Our latest 64 bit kernel](/docs/assets/boot-settings-kernel-latest.png "Our latest 64 bit kernel")
+    ![Our latest 64 bit kernel](boot-settings-kernel-latest.png "Our latest 64 bit kernel")
 
 5.  Click **Save Changes** at the bottom of the page and reboot into the new kernel.
 

@@ -20,7 +20,7 @@ title: Common DNS Configurations
 
 The most common DNS configuration is a single domain name on a single Linode. For this, you'll need to add *SOA* and *NS records* for all of your name servers, and *A/AAAA* records for your domain names. Use the screenshot below as a guide.
 
-[![The SOA record is set to "ns1.linode.com". The NS records are set to "ns1.linode.com" through "ns5.linode.com", inclusive. The MX record is set to "mail.example.org". There are A records for [blank], which is the primary domain, and the "mail" and "www" subdomains. They are all set to the same IP.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
+[![The SOA record is set to "ns1.linode.com". The NS records are set to "ns1.linode.com" through "ns5.linode.com", inclusive. The MX record is set to "mail.example.org". There are A records for [blank], which is the primary domain, and the "mail" and "www" subdomains. They are all set to the same IP.](1121-dns9.png)](1121-dns9.png)
 
  {{< note >}}
 The DNS Manager can automatically add all of these records when you create a domain zone. For instructions, see [Adding Domain Zones](/docs/networking/dns/dns-manager#add-a-domain-zone) in the [DNS Manager](/docs/networking/dns/dns-manager) guide.
@@ -30,13 +30,13 @@ The DNS Manager can automatically add all of these records when you create a dom
 
 To configure a subdomain, such as `staging.example.org`, create an A record with the subdomain's hostname. Point the record at the IP address of the server you want to host the subdomain:
 
-[![Create a new A record, following the instructions in the "Adding" section. Add the subdomain text to the "Hostname" field. For example, you could type "staging" - NOT "staging.example.org".](/docs/assets/1125-dns13.png)](/docs/assets/1125-dns13.png)
+[![Create a new A record, following the instructions in the "Adding" section. Add the subdomain text to the "Hostname" field. For example, you could type "staging" - NOT "staging.example.org".](1125-dns13.png)](1125-dns13.png)
 
 ## Host Multiple Domains on a Single Server
 
 To host multiple domain names on a single server, create a separate domain zone for each domain name as shown below. When creating the new domain zones, we recommend that you allow the DNS Manager to automatically [insert basic records](/docs/networking/dns/dns-manager#add-a-domain-zone). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
 
-[![This page shows the DNS Manager tab with three different domain zones listed.](/docs/assets/1126-dns15.png)](/docs/assets/1126-dns15.png)
+[![This page shows the DNS Manager tab with three different domain zones listed.](1126-dns15.png)](1126-dns15.png)
 
 ## Use One Domain on Multiple Servers
 
@@ -50,4 +50,4 @@ To route email to a third-party email service, create MX records that associate 
 
 A *wildcard* DNS record matches requests for non-existent domain names. For example, if you create an A record for `*.example.org`, and a user visits `nonexistantname.example.org`, that user will be redirected to `example.org`. An example wildcard DNS record is shown below.
 
-[![Create a new A record, following the instructions in the "Adding" section. Add a single asterisk (\*) in the "Hostname" field. Set your IP address in the "IP Address" field. Then click the "Save Changes" button.](/docs/assets/1127-dns16.png)](/docs/assets/1127-dns16.png)
+[![Create a new A record, following the instructions in the "Adding" section. Add a single asterisk (\*) in the "Hostname" field. Set your IP address in the "IP Address" field. Then click the "Save Changes" button.](1127-dns16.png)](1127-dns16.png)

@@ -192,11 +192,11 @@ In this section, we'll explain how to get the Magento Community Edition (CE) sof
 
 1.  On your local computer, download a copy of Magento from their [official website](https://www.magentocommerce.com/download). Several versions are available, but we recommend downloading the latest release. As of this writing, the latest version is 2.1.2:
 
-    ![The Magento download screen](/docs/assets/magento-download-screen.png)
+    ![The Magento download screen](magento-download-screen.png)
 
     Next to your selected version, there will be a dropdown menu that says "Select your format." Choose the option ending with the `.tar.gz` extension and click **Download**. Be sure to note where you saved the downloaded file.
 
-    ![Select the option ending in ".tar.gz"](/docs/assets/magento-tar-gz.png)
+    ![Select the option ending in ".tar.gz"](magento-tar-gz.png)
 
     In this step, you'll also be able to download the software with optional sample data. Whether you choose this or the basic version is up to you.
 
@@ -361,17 +361,17 @@ Once you've installed your SSL certificate and configured Apache to serve your s
 
 2.  Click on **Stores** in the sidebar on the left of your screen, and select **Configuration** under the Settings submenu.
 
-    ![Go to "Configuration" in the "Stores" menu.](/docs/assets/magento-stores-config.png)
+    ![Go to "Configuration" in the "Stores" menu.](magento-stores-config.png)
 
 3.  On the next screen, you'll see a list of configuration settings including "General," "Catalog" and "Customers". Click on **General**, and select **Web** from its submenu.
 
-    ![Select "Web" from the "General" menu.](/docs/assets/magento-general-web.png)
+    ![Select "Web" from the "General" menu.](magento-general-web.png)
 
 4.  Select **Base URLs (Secure)**, which will open to display several text fields. Modify the first field, **Secure Base URL**, to use the HTTPS protocol, as opposed to HTTP:
 
         https://example.com
 
-    ![Enter your domain with the HTTPS protocol.](/docs/assets/magento-secure-base-url.png)
+    ![Enter your domain with the HTTPS protocol.](magento-secure-base-url.png)
 
     This assumes that you used `/var/www/html/example.com/public_html` as your Magento installation directory, as we did in our examples. If you installed Magento in a subdirectory of your web root, you will need to modify that here. For example, if you installed Magento in a folder called `/var/www/html/example.com/public_html/magento`, you'll need to enter:
 

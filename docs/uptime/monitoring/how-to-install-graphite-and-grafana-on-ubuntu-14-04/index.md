@@ -183,7 +183,7 @@ Listen 8080
 
     Now you should be able to access Graphite by going to your Linode's hostname or IP address using port 8080 in a web browser (ex: `example_domain.com:8080`). You'll see the Graphite landing page as shown below:
 
-    ![Graphite landing page](/docs/assets/graphite_landing_page.png)
+    ![Graphite landing page](graphite_landing_page.png)
 
 ## Create Sample Data
 
@@ -193,7 +193,7 @@ Listen 8080
 
 2.  Wait for the command prompt to be returned. Refresh the page and you should see a new `test.count` metric in the tree on the left:
 
-    ![Graphite test metric](/docs/assets/graphite_test_metric.png)
+    ![Graphite test metric](graphite_test_metric.png)
 
 ## Install and Configure Grafana
 
@@ -278,7 +278,7 @@ secret_key = somelongrandomstringkey
 
 2.  Click on **Data Sources** and select **Add new**. Fill in all the fields as shown in the screenshot below:
 
-    ![Add Data Source dialog](/docs/assets/graphite_grafana_data_source.png)
+    ![Add Data Source dialog](graphite_grafana_data_source.png)
 
     Click **Save** to create the new Data Source.
 
@@ -288,15 +288,15 @@ secret_key = somelongrandomstringkey
 
 4.  Create a new dashboard by clicking the **Home** button and then **+ New**:
 
-    ![Create new dashboard](/docs/assets/graphite_grafana_new_dashboard.png)
+    ![Create new dashboard](graphite_grafana_new_dashboard.png)
 
 5.  Add a Graph panel to the newly created dashboard:
 
-    ![Create new graph panel](/docs/assets/graphite_grafana_new_graph.png)
+    ![Create new graph panel](graphite_grafana_new_graph.png)
 
 6.  Edit the Graph panel properties by clicking the tab with the words **no title (click here)**. Then click **Edit**:
 
-    ![Edit graph panel](/docs/assets/graphite_grafana_edit_graph.png)
+    ![Edit graph panel](graphite_grafana_edit_graph.png)
 
 7.  Make sure the **graphite** data source you've created is chosen in the dropdown box at the bottom right (marked as 1 in the screenshot below). In the dropdown at the top right corner (marked as 2), choose **Last 15 minutes**.
 
@@ -304,5 +304,5 @@ secret_key = somelongrandomstringkey
 
     Finally, click the **Save** button (marked as 4) to save the dashboard you just created.
 
-    ![Add test metric to the panel](/docs/assets/graphite_grafana_edit_graph_add_metric.png)
+    ![Add test metric to the panel](graphite_grafana_edit_graph_add_metric.png)
 

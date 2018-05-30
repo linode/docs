@@ -166,7 +166,7 @@ If the [Firewall portion](/docs/security/securing-your-server#configure-a-firewa
 {{< /note >}}
 
 
-    [![ZNC's Web Admin](/docs/assets/znc-web-admin_small.png)](/docs/assets/znc-web-admin.png)
+    [![ZNC's Web Admin](/docs/assets/znc-web-admin_small.png)](znc-web-admin.png)
 
 ## Connect to The Client
 
@@ -176,13 +176,13 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 
 1.  Open HexChat, add your desired nicknames, and then create a new network. In this example, the network is called **ZNCserver**:
 
-    [![ZNC](/docs/assets/znc-hexchat-1.png)](/docs/assets/znc-hexchat-1.png)
+    [![ZNC](znc-hexchat-1.png)](znc-hexchat-1.png)
 
 2.  With **ZNCserver** selected, click `Edit...`.
 
 3.  Add your server's IP address and port to the list. If not using a signed certificate, select *Accept invalid SSL certificated*. Input your password:
 
-    [![ZNC](/docs/assets/znc-hexchat-2.png)](/docs/assets/znc-hexchat-2.png)
+    [![ZNC](znc-hexchat-2.png)](znc-hexchat-2.png)
 
     Close the window when done.
 
@@ -192,15 +192,15 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 
 1. Open Konversation, click 'New...'
 
-    [![ZNC](/docs/assets/znc-konversation-1.png)](/docs/assets/znc-konversation-1.png)
+    [![ZNC](znc-konversation-1.png)](znc-konversation-1.png)
 
 2. Enter a name for the new network. For this example the network is **linode-znc**. Then click 'Add...' to open the dialog to add the server.
 
-    [![ZNC](/docs/assets/znc-konversation-2.png)](/docs/assets/znc-konversation-2.png)
+    [![ZNC](znc-konversation-2.png)](znc-konversation-2.png)
 
 3. Now enter your network details such as IP Address, Port number, and password.
 
-    [![ZNC](/docs/assets/znc-konversation-3.png)](/docs/assets/znc-konversation-3.png)
+    [![ZNC](znc-konversation-3.png)](znc-konversation-3.png)
 
 
 ## SSL Encryption with a Signed Certificate (Optional)

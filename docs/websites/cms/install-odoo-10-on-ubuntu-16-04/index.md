@@ -242,7 +242,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
         sudo systemctl status odoo-server
 
-    [![Odoo service status running](/docs/assets/odoo_servicerunning_small.png)](/docs/assets/odoo_servicerunning.png)
+    [![Odoo service status running](/docs/assets/odoo_servicerunning_small.png)](odoo_servicerunning.png)
 
 3.  Check the database journal to make sure there are no errors:
 
@@ -258,7 +258,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
     Your output should look similar to this:
 
-    [![Odoo service status inactive](/docs/assets/odoo_servicestopped_small.png)](/docs/assets/odoo_servicestopped.png)
+    [![Odoo service status inactive](/docs/assets/odoo_servicestopped_small.png)](odoo_servicestopped.png)
 
 ## Enable the Odoo Service
 
@@ -282,11 +282,11 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
 2.  If everything is working properly, a screen similar to this should appear:
 
-    [![Odoo 10 database creation](/docs/assets/odoo_10_db_creation.png)](/docs/assets/odoo_10_db_creation.png)
+    [![Odoo 10 database creation](odoo_10_db_creation.png)](odoo_10_db_creation.png)
 
 3.  Congratulations, now you can create your first database and start using Odoo 10 applications!
 
-    [![Odoo 10 applications](/docs/assets/odoo_10_applications_small.png)](/docs/assets/odoo_10_applications.png)
+    [![Odoo 10 applications](/docs/assets/odoo_10_applications_small.png)](odoo_10_applications.png)
 
 ## Updating Odoo
 
@@ -402,13 +402,13 @@ At this point, you have a completely independent Odoo installation. Next steps w
 
         http://your_domain_or_IP_address:8069/web/database/manager
 
-    ![Back up a database in Odoo](/docs/assets/odoo_backup_db.png "Back up a database in Odoo")
+    ![Back up a database in Odoo](odoo_backup_db.png "Back up a database in Odoo")
 
 2.  Start your `odoo-server-te` service and restore the production database using the Odoo graphical interface by navigating to the URL below. Note that this time you'll be using port 8080 since that's where the test environment is running:
 
         http://your_domain_or_IP_address:8080/web/database/manager
 
-    ![Restore a database in Odoo](/docs/assets/odoo_restore_db.png "Restore a database in Odoo")
+    ![Restore a database in Odoo](odoo_restore_db.png "Restore a database in Odoo")
 
 3.  The final step is to update Odoo modules to newer versions, this is done restarting the service and updating database entries which tells the system to apply changes:
 

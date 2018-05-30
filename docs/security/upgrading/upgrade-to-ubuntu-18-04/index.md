@@ -150,7 +150,7 @@ download has finished, the process cannot be canceled.
 
     *  **Configuring openssh-server**: Press enter to choose `keep the local version currently installed`.
 
-        ![Configuring openssh-server message](/docs/assets/upgrade-to-ubuntu-18-04/openssh-server-message.png)
+        ![Configuring openssh-server message](openssh-server-message.png)
 
     *  **Remove obsolete packages?**: Enter `y`
 

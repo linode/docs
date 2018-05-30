@@ -37,7 +37,7 @@ You will need a Linode with Docker CE installed to follow along with the steps i
 
 3. Create an admin account when prompted:
 
-    ![Admin account creation](/docs/assets/docker_nextcloud/admin_creation.png "Admin account creation")
+    ![Admin account creation](admin_creation.png "Admin account creation")
 
 ### Talk
 
@@ -59,7 +59,7 @@ Nextcloud Talk is built using [WebRTC](https://simplewebrtc.com/), and works in 
 
 2.  Once Talk is installed, an icon for the addon will appear on the nav menu:
 
-    ![Talk menu icon](/docs/assets/docker_nextcloud/navbar-talk-icon.png "Talk menu icon")
+    ![Talk menu icon](navbar-talk-icon.png "Talk menu icon")
 
 3.  Click this icon to enter Talk and allow the use of your system's camera and microphone when prompted. Once this is done, you will be able to start a chat or video call with any of the users you have created.
 
@@ -117,7 +117,7 @@ The basic Nextcloud Docker image is already configured for persistent data in th
 
 4.  When creating an admin account, open the **Storage & database** drop-down menu, fill in the information as shown below, and enter the MySQL password you used in the `docker-compose` file:
 
-    ![Nextcloud database connection](/docs/assets/docker_nextcloud/connect-mysql-container.png "Nextcloud database connection")
+    ![Nextcloud database connection](connect-mysql-container.png "Nextcloud database connection")
 
 {{< caution >}}
 The setup provided by Nextcloud does not include any SSL encryption. To secure your data and communications, the Nextcloud service should be placed behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/). A Docker Compose file using a NGINX reverse proxy and Let's Encrypt is also [available](https://github.com/nextcloud/docker/blob/master/.examples/docker-compose/with-nginx-proxy/mariadb/apache/docker-compose.yml).

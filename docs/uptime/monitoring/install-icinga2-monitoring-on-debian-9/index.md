@@ -172,21 +172,21 @@ Create an Icinga Web 2 log directory and add the proper file system permissions 
 
 3.  In the first installation stage, add the token generated earlier:
 
-    ![Icinga Installation Token](/docs/assets/icinga/icinga-installation-token.png "Icinga Installation Token")
+    ![Icinga Installation Token](icinga-installation-token.png "Icinga Installation Token")
 
 4.  On the next screen, select and enable the **Doc** and **Monitoring** modules and press **Next** to continue:
 
-    ![Select Doc and Monitoring Modules](/docs/assets/icinga/icinga-docs-and-modules.png "Select Doc and Monitoring Modules")
+    ![Select Doc and Monitoring Modules](icinga-docs-and-modules.png "Select Doc and Monitoring Modules")
 
 5.  Icinga 2 will check your system requirements and PHP modules to see if all requirements are met before continuing with the installation and configuration process. Scroll down to the end of the page and press **Next** to continue.
 
 6.  Choose **Authentication Type = Database**:
 
-    ![Choose the "Database" Authentication Type](/docs/assets/icinga/icinga-database-authentication-type.png "Choose the "Database" Authentication Type")
+    ![Choose the "Database" Authentication Type](icinga-database-authentication-type.png "Choose the "Database" Authentication Type")
 
 7.  Use the information from the second database created earlier to add the credentials needed to access the Icinga 2 database for storing web interface users and groups. Use `icingaweb_db` as a name for this resource and leave the **Host**, **Port** and **Character** set variables as default. Do not enable **Persistent** and **SSL** option. Press **Validate Configuration** button to validate the database. After the database has been validated successfully, press **Next** to continue to the next phase of Icinga 2’s configuration process:
 
-    ![Database Resource Information](/docs/assets/icinga/icinga-database-resource-info.png "Database Resource Information")
+    ![Database Resource Information](icinga-database-resource-info.png "Database Resource Information")
 
 8.  Define a name for the database authentication backend (you can use the default value) and press **Next**.
 
@@ -206,7 +206,7 @@ Create an Icinga Web 2 log directory and add the proper file system permissions 
 
 11. Review the information report and press **Next** to continue:
 
-    ![Icinga Configuration Summary](/docs/assets/icinga/icinga-configuration-summary.png "Icinga Configuration Summary")
+    ![Icinga Configuration Summary](icinga-configuration-summary.png "Icinga Configuration Summary")
 
 12. Press **Next** to continue setting up Icinga 2 engine monitoring module.
 
@@ -230,11 +230,11 @@ Create an Icinga Web 2 log directory and add the proper file system permissions 
 
 18. Log in to Icinga Web 2 to exit the setup process and log in to Icinga Web 2 login webpage:
 
-    ![Icinga Successfully Set up - "Login to Icinga Web 2" button](/docs/assets/icinga/icinga-set-up-success-login.png "Icinga Successfully Set up - 'Login to Icinga Web 2' button")
+    ![Icinga Successfully Set up - "Login to Icinga Web 2" button](icinga-set-up-success-login.png "Icinga Successfully Set up - 'Login to Icinga Web 2' button")
 
     You will be directed to the Icinga Web 2 Dashboard, where you should see the default services and Linode resources that are currently monitored by the Icinga 2 engine:
 
-    ![Icinga Dashboard and Current Incidents](/docs/assets/icinga/icinga-dashboard-current-incidents.png "Icinga Dashboard and Current Incidents")
+    ![Icinga Dashboard and Current Incidents](icinga-dashboard-current-incidents.png "Icinga Dashboard and Current Incidents")
 
 ## Secure the Icinga Web 2 Interface Via TLS
 

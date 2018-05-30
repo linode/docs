@@ -46,19 +46,19 @@ First, you need to establish a basic connection to your Linode:
 2.  Save PuTTY to your desktop.
 3.  Double-click the PuTTY file to begin - no need to install. You will see the following window:
 
-    [![The session login screen in PuTTY on Windows.](/docs/assets/361-putty-01-session.png)](/docs/assets/361-putty-01-session.png)
+    [![The session login screen in PuTTY on Windows.](361-putty-01-session.png)](361-putty-01-session.png)
 
 4.  Enter the hostname or IP address of your Linode in the **Host Name (or IP address)** field.
 5.  In the left-hand menu, go to **Connection -\> SSH -\> Tunnels**.
 6.  In the **Source port** field, enter `3306`.
 7.  In the **Destination** field, enter `127.0.0.1:3306`. See the final configuration below:
 
-    [![Tunneling a remote MySQL connection through SSH with PuTTY on Windows.](/docs/assets/363-putty-04-mysql-ssh-tunnel.png)](/docs/assets/363-putty-04-mysql-ssh-tunnel.png)
+    [![Tunneling a remote MySQL connection through SSH with PuTTY on Windows.](363-putty-04-mysql-ssh-tunnel.png)](363-putty-04-mysql-ssh-tunnel.png)
 
 8.  Click **Open** to start the SSH session.
 9.  If you haven't logged in to this system with PuTTY before, you will receive a warning similar to the following. Verify that this server is the one to which you want to connect, then click **Yes**:
 
-    [![An unknown host key warning in PuTTY on Windows.](/docs/assets/362-putty-02-host-key-warning.png)](/docs/assets/362-putty-02-host-key-warning.png)
+    [![An unknown host key warning in PuTTY on Windows.](362-putty-02-host-key-warning.png)](362-putty-02-host-key-warning.png)
 
     {{< note >}}
 This warning appears because PuTTY wants you to verify that the server you're logging in to is who it says it is. It is unlikely, but possible, that someone could be eavesdropping on your connection and posing as your Linode. To verify the server, compare the key fingerprint shown in the PuTTY warning - the string of numbers and letters starting with **ssh-rsa** in the image above - with your Linode's public key fingerprint. To get your Linode's fingerprint, log in to your Linode via the Lish console (see the **Console** tab in the Linode Manager) and executing the following command:

@@ -52,16 +52,16 @@ Enable two-factor authentication to start using it with your Linode Manager acco
 2.  Select the **my profile** link.
 3.  Enter your password, and then click **Authenticate**.
 
-    [![Re-enter your password.](/docs/assets/1271-manager_reauth_linodedemo.png)](/docs/assets/1271-manager_reauth_linodedemo.png)
+    [![Re-enter your password.](1271-manager_reauth_linodedemo.png)](1271-manager_reauth_linodedemo.png)
 
 4.  Select the **Password & Authentication** tab.
 5.  In the **Two-Factor Authentication** section, click **Enable Two-Factor Authentication**:
 
-    [![Two-Factor Authentication.](/docs/assets/1286-manager_2factor_disabled-2.png)](/docs/assets/1269-manager_2factor_disabled.png)
+    [![Two-Factor Authentication.](/docs/assets/1286-manager_2factor_disabled-2.png)](1269-manager_2factor_disabled.png)
 
 6.  The window shown below appears. Write down the **Secret Key** and store it in a safe place:
 
-    [![The key and QR code for two-factor authentication.](/docs/assets/1291-manager_2factor_key_qr-4.png)](/docs/assets/1291-manager_2factor_key_qr-4.png)
+    [![The key and QR code for two-factor authentication.](1291-manager_2factor_key_qr-4.png)](1291-manager_2factor_key_qr-4.png)
 
     {{< caution >}}
 Do not refresh this page until you have configured Authy on your phone. The key will be shown only once. If you get locked out of your account, [contact support](/docs/support) to regain access.
@@ -91,7 +91,7 @@ Now that you have set up two-factor authentication for your account, you'll need
 
 3.  In your web browser, enter your username and password and click **Log in**. The webpage shown below appears.
 
-    [![Enter your token.](/docs/assets/1270-manager_login_token_470042.png)](/docs/assets/1270-manager_login_token_470042.png)
+    [![Enter your token.](1270-manager_login_token_470042.png)](1270-manager_login_token_470042.png)
 
 4.  Enter your token, and then click **Authenticate**. Checking the box below the authentication option will add your computer to the trusted computer list for 30 days, and generate a confirmation email to the address on file for your account.
 
@@ -103,15 +103,15 @@ Generating a one-time use scratch code is also recommended. In the event that yo
 
 1.  Click on the **generate** link to create a code.
 
-    [![Generate Scratch Code.](/docs/assets/1364-manager_2fa_enabled_sm.png)](/docs/assets/1361-manager_2fa_enabled.png)
+    [![Generate Scratch Code.](/docs/assets/1364-manager_2fa_enabled_sm.png)](1361-manager_2fa_enabled.png)
 
 2.  A pop-up window will appear asking you to confirm the action. Click **OK**.
 
-    [![Confirmation Window.](/docs/assets/1362-warning_generate_scratchcode.png)](/docs/assets/1362-warning_generate_scratchcode.png)
+    [![Confirmation Window.](1362-warning_generate_scratchcode.png)](1362-warning_generate_scratchcode.png)
 
 3.  The scratch code is displayed. This code will be displayed only once, so write it down and store it somewhere safe.
 
-    [![Confirmation Window.](/docs/assets/1365-manager_scratchcode_enabled_sm.png)](/docs/assets/1363-manager_scratchcode_enabled.png)
+    [![Confirmation Window.](/docs/assets/1365-manager_scratchcode_enabled_sm.png)](1363-manager_scratchcode_enabled.png)
 
 ### Generate a New Key
 
@@ -123,7 +123,7 @@ The Linode Manager allows you to generate a new secret key for your two-factor a
 4.  Select the **Password & Authentication** tab.
 5.  In the *Two-Factor Authentication* section, click **Regenerate Secret Key**, as shown below.
 
-    [![Regenerate Secret Key.](/docs/assets/1364-manager_2fa_enabled_sm.png)](/docs/assets/1361-manager_2fa_enabled.png)
+    [![Regenerate Secret Key.](/docs/assets/1364-manager_2fa_enabled_sm.png)](1361-manager_2fa_enabled.png)
 
 A new secret key and barcode will be generated for your account and displayed on the screen. Follow the instructions in the [Enabling Two-Factor Authentication](#enabling) section to add the new key to your smartphone.
 
@@ -137,7 +137,7 @@ You can disable two-factor authentication for your Linode Manager account at any
 4.  Select the **Password & Authentication** tab.
 5.  In the **Two-Factor Authentication** section, select **Disable**, as shown below.
 
-    [![Disabling Two-Factor Authentication.](/docs/assets/1292-2f-disable-1.png)](/docs/assets/1292-2f-disable-1.png)
+    [![Disabling Two-Factor Authentication.](1292-2f-disable-1.png)](1292-2f-disable-1.png)
 
 6.  A confirmation window appears asking if you want to disable two-factor authentication. Click **OK**.
 
@@ -167,12 +167,12 @@ The first step is enabling the IP address whitelist feature in the Linode Manage
 5.  Select the **Password & Authentication** tab.
 6.  In the *Account Security* section, select **Enabled** from the **Status** menu, as shown below.
 
-    [![Enabling the IP address whitelist feature.](/docs/assets/1294-2f-whitelist-1.png)](/docs/assets/1294-2f-whitelist-1.png)
+    [![Enabling the IP address whitelist feature.](1294-2f-whitelist-1.png)](1294-2f-whitelist-1.png)
 
 7.  Click **Save security setting**. The IP address whitelist feature will be enabled.
 8.  In the *Account Security* section, select the **Edit Whitelist** link to add your IP address, as shown below.
 
-    [![Enabling the IP address whitelist feature.](/docs/assets/1295-2f-whitelist-2.png)](/docs/assets/1295-2f-whitelist-2.png)
+    [![Enabling the IP address whitelist feature.](1295-2f-whitelist-2.png)](1295-2f-whitelist-2.png)
 
 9.  Enter your IP address and netmask, and then click **Add IP**. You can add as many IP addresses as you want.
 
@@ -192,7 +192,7 @@ You can disable the IP address whitelist feature at any time. Here's how:
 4.  Select the **Password & Authentication** tab.
 5.  In the *Account Security* section, select **Disabled** from the **Status** menu, as shown below.
 
-    [![Disabling the IP address whitelist feature.](/docs/assets/1296-2f-whitelist-3.png)](/docs/assets/1296-2f-whitelist-3.png)
+    [![Disabling the IP address whitelist feature.](1296-2f-whitelist-3.png)](1296-2f-whitelist-3.png)
 
 6.  Click **Save security setting**.
 
@@ -212,7 +212,7 @@ You can enable and disable event notifications sent via email in the Linode Mana
 4.  Select the **Notifications** tab.
 5.  In the *Linode Events Email* section, click **Toggle Event Email Notifications**, as shown below.
 
-    [![Toggling the Events Email Notification.](/docs/assets/1297-2f-events-1.png)](/docs/assets/1297-2f-events-1.png)
+    [![Toggling the Events Email Notification.](1297-2f-events-1.png)](1297-2f-events-1.png)
 
 If the events email notification was enabled before you clicked the button, it is now disabled, and vice versa.
 
@@ -226,7 +226,7 @@ The event notifications for your Linode Manager account are also available as an
 4.  Select the **Notifications** tab.
 5.  The RSS feed URL is displayed in the *Linode Events RSS* section, as shown below.
 
-    [![Finding the RSS event notifications URL.](/docs/assets/1298-2f-events-2.png)](/docs/assets/1298-2f-events-2.png)
+    [![Finding the RSS event notifications URL.](1298-2f-events-2.png)](1298-2f-events-2.png)
 
 6.  To regenerate the URL for the RSS feed, click **Generate a new RSS key**.
 

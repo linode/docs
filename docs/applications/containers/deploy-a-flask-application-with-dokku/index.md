@@ -59,7 +59,7 @@ If necessary, please consult this document to setup swap: http://dokku.viewdocs.
 
 2.  Navigate to the public IP address of your Linode in a browser and enter the public key:
 
-    ![Initial Dokku Installation](/docs/assets/dokku-public-key.png)
+    ![Initial Dokku Installation](dokku-public-key.png)
 
     {{< caution >}}
 Add the public key immediately after running the installation script to avoid someone else adding a public key to Dokku. For an unattended installation, refer to the [advanced installation instructions](https://github.com/dokku/dokku/blob/master/docs/getting-started/advanced-installation.md).

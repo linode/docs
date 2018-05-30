@@ -327,8 +327,8 @@ exit 0
 
 2.  A screen similar to this will show:
 
-    [![Odoo Db creation](/docs/assets/odoo_db_creation.png)](/docs/assets/odoo_db_creation.png)
+    [![Odoo Db creation](odoo_db_creation.png)](odoo_db_creation.png)
 
 3.  Congratulations, now you can create your first database and start using Odoo!
 
-    [![Odoo applications](/docs/assets/odoo_applications.png)](/docs/assets/odoo_applications.png)
+    [![Odoo applications](odoo_applications.png)](odoo_applications.png)

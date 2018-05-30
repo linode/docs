@@ -137,18 +137,18 @@ sed -i -e 's/php7/php5/g' start.sh
 
 1.  Open Minecraft - Pocket Edition on your phone or tablet. Tap on **Play**:
 
-    [![Minecraft Pocket Edition.](/docs/assets/pocketmine-game-home_small.png)](/docs/assets/pocketmine-game-home.png)
+    [![Minecraft Pocket Edition.](/docs/assets/pocketmine-game-home_small.png)](pocketmine-game-home.png)
 
 2.  From the next screen, tap **Edit**, then **External**.
 
 
 3.  Enter a name under `Server Name`, and your Linode's domain or IP address under `Address`. When you're done, tap **Add Server**:
 
-    [![Adding a remote server to Minecraft Pocket Edition.](/docs/assets/pocketmine-add-server_small.png)](/docs/assets/pocketmine-add-server.png)
+    [![Adding a remote server to Minecraft Pocket Edition.](/docs/assets/pocketmine-add-server_small.png)](pocketmine-add-server.png)
 
 4.  You can now connect to your server, and begin playing!
 
-    [![Gameplay on the PocketMine server.](/docs/assets/pocketmine-gameplay_small.png)](/docs/assets/pocketmine-gameplay.png)
+    [![Gameplay on the PocketMine server.](/docs/assets/pocketmine-gameplay_small.png)](pocketmine-gameplay.png)
 
 ## Installing Plugins
 
@@ -156,7 +156,7 @@ You can downloaded plugins for PocketMine from their [site](http://forums.pocket
 
 1.  From the plugin page, copy the **Download Plugin** link address:
 
-    [![A plugin download page.](/docs/assets/pocketmine-plugin-page_small.png)](/docs/assets/pocketmine-plugin-page.png)
+    [![A plugin download page.](/docs/assets/pocketmine-plugin-page_small.png)](pocketmine-plugin-page.png)
 
 2.  In your Linode terminal, while detached from your screen session, use `curl` to download the plugin into the `plugins` directory:
 

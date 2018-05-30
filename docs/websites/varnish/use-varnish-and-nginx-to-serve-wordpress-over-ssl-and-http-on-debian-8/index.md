@@ -43,7 +43,7 @@ For HTTPS traffic, NGINX will listen on port `443` and send decrypted traffic to
 
 Our setup is illustrated below. Please note that frontend NGINX and backend NGINX are one and the same server:
 
-[![Nginx-Varnish-Nginx server configuration diagram](/docs/assets/varnish-cache.png)](/docs/assets/varnish-cache.png "Nginx-Varnish-Nginx server configuration diagram")
+[![Nginx-Varnish-Nginx server configuration diagram](varnish-cache.png)](varnish-cache.png "Nginx-Varnish-Nginx server configuration diagram")
 
 ## Before You Begin
 

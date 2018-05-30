@@ -471,4 +471,4 @@ Now test to see what the users of your email server would see with their email c
 
 4.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured! To quit mutt press `q`.
 
-    [![Your mailbox is working!](/docs/assets/postfixcentos-mutt.png)](/docs/assets/postfixcentos-mutt.png)
+    [![Your mailbox is working!](postfixcentos-mutt.png)](postfixcentos-mutt.png)

@@ -24,11 +24,11 @@ The Longview client is [open source](https://github.com/linode/longview) and can
 
 1.  Log in to the [Linode Manager](https://manager.linode.com) and click the **Longview** tab.
 
-    ![Linode Manager Longview tab](/docs/assets/linode-manager-longview-tab.png "Linode Manager Longview tab")
+    ![Linode Manager Longview tab](linode-manager-longview-tab.png "Linode Manager Longview tab")
 
 2.  Click the **Add Client** tile. This will bring up a modal window with a `curl` command at the center.
 
-    ![Linode Manager Longview install](/docs/assets/linode-manager-longview-install.png "Linode Manager Longview install")
+    ![Linode Manager Longview install](linode-manager-longview-install.png "Linode Manager Longview install")
 
 3.  Open a terminal on your local computer and log into your Linode over SSH. Change to the `root` user:
 
@@ -38,11 +38,11 @@ The Longview client is [open source](https://github.com/linode/longview) and can
 
 5.  The installation takes a few minutes and will return you to an empty terminal prompt when finished. Return to the Linode Manager in your browser. The modal window will have closed and you should now see the Longview client's overview screen.
 
-    ![Linode Manager Longview Waiting](/docs/assets/linode-manager-longview-waiting.png "Linode Manager Longview waiting")
+    ![Linode Manager Longview Waiting](linode-manager-longview-waiting.png "Linode Manager Longview waiting")
 
     It can take several minutes for data to start showing in the Manager but once it does, you'll see the graphs and charts populating with your Linode's metrics.
 
-    ![Linode Manager Longview data](/docs/assets/linode-manager-longview-running.png "Linode Manager Longview running")
+    ![Linode Manager Longview data](linode-manager-longview-running.png "Linode Manager Longview running")
 
 
 ### Manual Installation with yum or apt
@@ -113,11 +113,11 @@ If you are monitoring multiple systems with Longview, you should relabel the cli
 
 1.  Go to the **Longview** tab in the Linode Manager. You'll see an overview of all Longview clients on your Linode account.
 
-    ![Linode Manager Longview clients overview](/docs/assets/linode-manager-longview-clients-overview.png "Linode Manager Longview clients overview")
+    ![Linode Manager Longview clients overview](linode-manager-longview-clients-overview.png "Linode Manager Longview clients overview")
 
 2.  Click the **i** button at the top left of the client you want to relabel. The webpage shown below appears.
 
-    ![Linode Manager Longview client relabel](/docs/assets/linode-manager-longview-client-relabel.png "Linode Manager Longview client relabel")
+    ![Linode Manager Longview client relabel](linode-manager-longview-client-relabel.png "Linode Manager Longview client relabel")
 
 3.  In the **Label** field, enter a name for the system.
 4.  Click **Save Changes**.
@@ -206,7 +206,7 @@ Longview Free updates every 5 minutes and provides only twelve hours of data his
 
 1.  At the bottom of the Longview overview page in the Linode Manager, click the **Upgrade to Longview Pro** tile.
 
-    ![Linode Manager Longview Pro tile](/docs/assets/linode-manager-longview-pro-tile.png "Linode Manager Longview Pro tile")
+    ![Linode Manager Longview Pro tile](linode-manager-longview-pro-tile.png "Linode Manager Longview Pro tile")
 
 2.  You'll be taken to the Longview subscriptions page. Select the radio dial of the plan you want to change to.
 

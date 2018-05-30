@@ -81,15 +81,15 @@ The easiest way to install Portainer is by deploying the official image.
 
 3. Point your browser to http://192.0.0.0:9000, replacing `192.0.0.0` with the IP address or FQDN of your workstation Linode. You should see a screen similar to this:
 
-    ![Portainer Login Screen](/docs/assets/webdev-remote-devices/linode-on-remote-devices-01.png "Portainer Login Screen")
+    ![Portainer Login Screen](linode-on-remote-devices-01.png "Portainer Login Screen")
 
 4. After registering your `admin` user you will be asked about the type of connection you are using: **Local** or **Remote**. Since you will run your containers from the same Linode choose Local:
 
-    ![Portainer Connection Type](/docs/assets/webdev-remote-devices/linode-on-remote-devices-02.png "Portainer Connection Type")
+    ![Portainer Connection Type](linode-on-remote-devices-02.png "Portainer Connection Type")
 
 5. If everything goes as expected you will be presented with the Portainer Dashboard.
 
-    ![Portainer Dashboard](/docs/assets/webdev-remote-devices/linode-on-remote-devices-03.png "Portainer Dashboard")
+    ![Portainer Dashboard](linode-on-remote-devices-03.png "Portainer Dashboard")
 
 {{< note >}}
 By default your connection with Portainer GUI is not encrypted. If you need to use SSL then you must install the corresponding certificates on your Linode and pass their location to the Docker container on start. For more information please read how to [Secure Portainer using SSL](https://portainer.readthedocs.io/en/stable/deployment.html#secure-portainer-using-ssl) in the Portainer official documentation.
@@ -109,35 +109,35 @@ With everything set up it's time to work with your remote development environmen
 
 1. Open your browser and point it to the address: http://192.0.2.0:9000 from Portainer Dashboard Sidebar navigate to **App Templates** menu.
 
-    ![Portainer App Templates](/docs/assets/webdev-remote-devices/linode-on-remote-devices-04.png "Portainer App Templates")
+    ![Portainer App Templates](linode-on-remote-devices-04.png "Portainer App Templates")
 
 2. In the Application templates list, click on **Nginx** to install the container.
 
-    ![Portainer Templates List](/docs/assets/webdev-remote-devices/linode-on-remote-devices-05.png "Portainer Templates List")
+    ![Portainer Templates List](linode-on-remote-devices-05.png "Portainer Templates List")
 
 3. You will see the Configuration screen. From here you can name your container, choose a Docker network and even determine access control (useful for teams).
 
-    ![Portainer Templates List](/docs/assets/webdev-remote-devices/linode-on-remote-devices-06.png "Portainer Templates List")
+    ![Portainer Templates List](linode-on-remote-devices-06.png "Portainer Templates List")
 
 5. Deploy your container when ready by hitting the corresponding button. The NGINX image will download automatically and will be available for deployment. You will be directed to the **Containers** menu, where you can manage your containers.
 
-    ![Portainer Containers Menu](/docs/assets/webdev-remote-devices/linode-on-remote-devices-09.png "Portainer Containers Menu")
+    ![Portainer Containers Menu](linode-on-remote-devices-09.png "Portainer Containers Menu")
 
 6. Check your installation by pointing your browser to the assigned port `http://<Linode IP or FQDN> :32769`.
 
-    ![NGINX welcome page](/docs/assets/webdev-remote-devices/linode-on-remote-devices-10.png "NGINX welcome page")
+    ![NGINX welcome page](linode-on-remote-devices-10.png "NGINX welcome page")
 
 ### Use Portainer to Manage your Containers
 
 1. Navigate to the **Containers** menu on the left sidebar and click the check-box for the `web-01` container you just created. Review the available options for managing this container.
 
-    ![Portainer Containers management](/docs/assets/webdev-remote-devices/linode-on-remote-devices-25.png "Portainer Containers management")
+    ![Portainer Containers management](linode-on-remote-devices-25.png "Portainer Containers management")
 
 2. You can start, stop, kill, restart, pause, resume, or remove the selected container in the same manner you would use `docker` from the terminal. You can also edit `web-01` container by clicking on its name.
 
 3. Remove the `web-01` container by touching the **Remove** button, and select to automatically remove non-persistent volumes.
 
-    ![Portainer Remove Container](/docs/assets/webdev-remote-devices/linode-on-remote-devices-26.png "Portainer Remove Container")
+    ![Portainer Remove Container](linode-on-remote-devices-26.png "Portainer Remove Container")
 
 ### Bind Volumes to your Container
 
@@ -145,41 +145,41 @@ With everything set up it's time to work with your remote development environmen
 
 2. Disable access control and click on **Show advanced options**. On the volume mapping section touch the **Bind** button for the container's `/usr/share/nginx/html` and set the host to `/home/username/nginx/html`.
 
-    ![Portainer Bind Container](/docs/assets/webdev-remote-devices/linode-on-remote-devices-27.png "Portainer Bind Container")
+    ![Portainer Bind Container](linode-on-remote-devices-27.png "Portainer Bind Container")
 
 ### Connect to your Linode host using JuiceSSH
 
 1. Open JuiceSSH and then select **connections** from the main dashboard.
 
-    ![JuiceSSH Dashboard](/docs/assets/webdev-remote-devices/linode-on-remote-devices-11.png "JuiceSSH Dashboard")
+    ![JuiceSSH Dashboard](linode-on-remote-devices-11.png "JuiceSSH Dashboard")
 
-    ![JuiceSSH Dashboard](/docs/assets/webdev-remote-devices/linode-on-remote-devices-12.png "JuiceSSH Dashboard")
+    ![JuiceSSH Dashboard](linode-on-remote-devices-12.png "JuiceSSH Dashboard")
 
 2. Add a new identity by swiping right on the **identities** menu and then clicking the **+** sign.
 
-    ![JuiceSSH New Identity](/docs/assets/webdev-remote-devices/linode-on-remote-devices-13.png "JuiceSSH New Identity")
+    ![JuiceSSH New Identity](linode-on-remote-devices-13.png "JuiceSSH New Identity")
 
 3. Enter a nickname, and then fill in the username and password for your Linode (make sure you choose an account that has sudo access).
 
-    ![JuiceSSH Identity creation](/docs/assets/webdev-remote-devices/linode-on-remote-devices-14.png "JuiceSSH Identity creation")
+    ![JuiceSSH Identity creation](linode-on-remote-devices-14.png "JuiceSSH Identity creation")
 
 4. You can also create a private SSH key for secure access. Once you have connected to your Linode you can use `ssh-copy-id` to transfer the public key to the server.
 
 5. Press the check button on top right to save the identity.
 
-    ![JuiceSSH Save Identity](/docs/assets/webdev-remote-devices/linode-on-remote-devices-16.png "JuiceSSH Save Identity")
+    ![JuiceSSH Save Identity](linode-on-remote-devices-16.png "JuiceSSH Save Identity")
 
 6. If you created an SSH key, you can export the public key by pressing and holding the identity name in the Identities menu. Coose **Export Public Key** from the pop-up menu.
 
-    ![JuiceSSH Export SSH Key](/docs/assets/webdev-remote-devices/linode-on-remote-devices-17.png "JuiceSSH Export SSH Key")
+    ![JuiceSSH Export SSH Key](linode-on-remote-devices-17.png "JuiceSSH Export SSH Key")
 
 7. Swipe left on the **Connections** menu and create a new connection by press the **+** sign.
 
-    ![JuiceSSH New Connection](/docs/assets/webdev-remote-devices/linode-on-remote-devices-19.png "JuiceSSH New Connection")
+    ![JuiceSSH New Connection](linode-on-remote-devices-19.png "JuiceSSH New Connection")
 
 8. Assign a nickname to your connection, fill in the Linode's IP address or FQDN, and save your connection by touching the check mark on top right.
 
-    ![JuiceSSH Connection Settings](/docs/assets/webdev-remote-devices/linode-on-remote-devices-20.png "JuiceSSH Connection Settings")
+    ![JuiceSSH Connection Settings](linode-on-remote-devices-20.png "JuiceSSH Connection Settings")
 
 9. Tap the connection name to open an SSH connection to your Linode.
 
@@ -189,7 +189,7 @@ With everything set up it's time to work with your remote development environmen
 
 11. You can work with your Docker containers through the command line as normal. The top of the virtual keyboard provides some shortcuts pre-defined for ease of use.
 
-    ![JuiceSSH Keyboard](/docs/assets/webdev-remote-devices/linode-on-remote-devices-24.png "JuiceSSH Keyboard")
+    ![JuiceSSH Keyboard](linode-on-remote-devices-24.png "JuiceSSH Keyboard")
 
 12. Navigate to the volume bound to the container:
 
@@ -205,17 +205,17 @@ With everything set up it's time to work with your remote development environmen
 
 1. Editing simple configuration files is not hard. But if you need to do substantial editing from your tablet then you will need a text editor with syntax highlighting and other features. Open QuickEdit and allow access to photos, media, and files on your device.
 
-    ![Open QuickEdit](/docs/assets/webdev-remote-devices/linode-on-remote-devices-29.png "Open QuickEdit")
+    ![Open QuickEdit](linode-on-remote-devices-29.png "Open QuickEdit")
 
 2. By default, you will see a blank file. Touch the menu icon on top left.
 
-    ![Menu QuickEdit](/docs/assets/webdev-remote-devices/linode-on-remote-devices-30.png "Menu QuickEdit")
+    ![Menu QuickEdit](linode-on-remote-devices-30.png "Menu QuickEdit")
 
 3. Select the **Storage Manager** from the menu.
 
 4. Create a new connection by touching the **+** button on lower right. When prompted choose **FTP/FTPS/SFTP** and then **SFTP**
 
-    ![New Connection QuickEdit](/docs/assets/webdev-remote-devices/linode-on-remote-devices-32.png "New Connection QuickEdit")
+    ![New Connection QuickEdit](linode-on-remote-devices-32.png "New Connection QuickEdit")
 
 5. Enter your Linode's IP address or FQDN, desired label and username. Then select an authentication mode (you can use either a password or SSH keys).
 

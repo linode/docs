@@ -200,7 +200,7 @@ It is common to run mail servers on UTC, as they regularly accept mail from all 
 Since you haven't installed a trusted cert yet, you will likely get a browser warning about an untrusted site. Bypass the warning for now. Later you can either add Zimbra's self-signed cert to your browser or install a trusted cert in Zimbra.
 {{< /caution >}}
 
-    ![Zimbra admin console](/docs/assets/AdminConsole.png)
+    ![Zimbra admin console](AdminConsole.png)
 
     If you configured the appropriate DNS records (step 4 of [Set up Your Linode](#set-up-your-linode) above), you should be able to send and receive mail with this account.
 
@@ -244,11 +244,11 @@ Zimbra installs a default class of service which will be applied to all new acco
 
 1.  To manage COS in the console, click the **Configure** menu option. The Configure menu opens, and **Class of Service** is already selected.
 
-    ![Configure menu](/docs/assets/ConfigureMenu.png)
+    ![Configure menu](ConfigureMenu.png)
 
 2.  Double-click the **default** COS and the Class of Service page opens. There is a page menu on the left. Each page allows you to modify the settings of this COS.
 
-    ![Class of Service page](/docs/assets/ClassOfService.png)
+    ![Class of Service page](ClassOfService.png)
 
 3.  You will want to go through the **Features** page and decide what you want to offer your users. You may wish to turn off the Briefcase (file saving and sharing) if you don't have enough storage, restrict some forms of sharing, or enable external POP or IMAP access, for example.
 
@@ -268,9 +268,9 @@ You received an admin account when you installed Zimbra. The Open Source Edition
 
 2.  Click the gear icon top right, then click **New**.
 
-    ![Open the new account dialog](/docs/assets/OpenNewAccount.png)
+    ![Open the new account dialog](OpenNewAccount.png)
 
-    ![Create a new account](/docs/assets/NewAccount.png)
+    ![Create a new account](NewAccount.png)
 
 3.  The only required items are the email address and the last name but you will want to create a temporary password, and possibly override the default COS if you've set up others.
 
@@ -284,11 +284,11 @@ When users forget their passwords, resets are easily accomplished.
 
 1.  On the **Manage Accounts** page, right-click the account you want to change, and click **Change Password**.
 
-    ![Change a user password](/docs/assets/ContextChangePassword.png)
+    ![Change a user password](ContextChangePassword.png)
 
 2.  Enter a temporary password which you will send to the user, and also click **Must change password**. The next time they log in, they will be prompted to choose a new password.
 
-    ![Change password dialog](/docs/assets/ChangePassword.png)
+    ![Change password dialog](ChangePassword.png)
 
 ## Install an SSL Certificate
 

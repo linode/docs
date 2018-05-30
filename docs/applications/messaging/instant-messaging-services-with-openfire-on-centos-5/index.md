@@ -89,23 +89,23 @@ This completes the initial installation steps for Openfire. Next, we'll continue
 
 Direct your browser to your Linode's IP address or FQDN (fully qualified domain name, if an entry in DNS points to your Linode's IP) on port 9090. As an example, if your Linode's IP address were "12.34.56.78", you would visit `http://12.34.56.78:9090` in your web browser. You will be presented with a language selection screen similar to this:
 
-[![Language selection in Openfire setup on CentOS 5.](/docs/assets/407-openfire-centos-5-01-language-selection.png)](/docs/assets/407-openfire-centos-5-01-language-selection.png)
+[![Language selection in Openfire setup on CentOS 5.](407-openfire-centos-5-01-language-selection.png)](407-openfire-centos-5-01-language-selection.png)
 
 Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager/).
 
-[![Domain and admin ports selection in Openfire setup on CentOS 5.](/docs/assets/408-openfire-centos-5-02-domain-ports-selection.png)](/docs/assets/408-openfire-centos-5-02-domain-ports-selection.png)
+[![Domain and admin ports selection in Openfire setup on CentOS 5.](408-openfire-centos-5-02-domain-ports-selection.png)](408-openfire-centos-5-02-domain-ports-selection.png)
 
 You may choose to use Openfire's internal database for account management, or you may connect to an external database. Most users will want to choose the built-in option.
 
-[![Database type selection in Openfire setup on CentOS 5.](/docs/assets/409-openfire-centos-5-03-database-selection.png)](/docs/assets/409-openfire-centos-5-03-database-selection.png)
+[![Database type selection in Openfire setup on CentOS 5.](409-openfire-centos-5-03-database-selection.png)](409-openfire-centos-5-03-database-selection.png)
 
 User profiles may be stored in the server database, or they may be pulled from LDAP or Clearspace. Most users will want to choose the default option.
 
-[![Profile storage selection in Openfire setup on CentOS 5.](/docs/assets/410-openfire-centos-5-04-profile-settings.png)](/docs/assets/410-openfire-centos-5-04-profile-settings.png)
+[![Profile storage selection in Openfire setup on CentOS 5.](410-openfire-centos-5-04-profile-settings.png)](410-openfire-centos-5-04-profile-settings.png)
 
 Enter the email address of the default administrative user and select a strong password.
 
-[![Administrator account settings in Openfire setup on CentOS 5.](/docs/assets/411-openfire-centos-5-05-admin-account-settings.png)](/docs/assets/411-openfire-centos-5-05-admin-account-settings.png)
+[![Administrator account settings in Openfire setup on CentOS 5.](411-openfire-centos-5-05-admin-account-settings.png)](411-openfire-centos-5-05-admin-account-settings.png)
 
 After the initial web-based configuration is complete, restart the Openfire server before attempting to log in with the default "**admin**" user account.
 

@@ -26,7 +26,7 @@ PuTTY is a free and open source SSH client for Windows and UNIX systems. It prov
 
 2.  When you open PuTTY, you'll be shown the configuration menu.
 
-    ![PuTTY session configuration](/docs/assets/putty-configuration-window.png)
+    ![PuTTY session configuration](putty-configuration-window.png)
 
     Enter your Linode's hostname or IP address. The default port for SSH is **22**. If your remote server's SSH daemon is running on a different port, you'll need to specify it in the **Session** category.
 
@@ -34,7 +34,7 @@ PuTTY is a free and open source SSH client for Windows and UNIX systems. It prov
 
     **Do not click anything yet! You first need to verify the fingerprint.**
 
-    ![PuTTY verify SSH fingerprint](/docs/assets/putty-verify-host-ssh-key-fingerprint.png)
+    ![PuTTY verify SSH fingerprint](putty-verify-host-ssh-key-fingerprint.png)
 
 4.  Use [Lish](/docs/networking/using-the-linode-shell-lish) to log in to your Linode. Use the command below to query OpenSSH for your Linode's SSH fingerprint:
 
@@ -67,7 +67,7 @@ To do so:
  - Enter **127.0.0.1:3306** in the **Destination** field.
  - Click **Add**, then click **Open** to log in.
 
-    ![Tunneling a remote MySQL connection with PuTTY.](/docs/assets/putty-port-forwarding.png)
+    ![Tunneling a remote MySQL connection with PuTTY.](putty-port-forwarding.png)
 
 Once you've connected to the remote server with this tunnel configuration, you'll be able to direct your local MySQL client to `localhost:3306`. Your connection to the remote MySQL server will be encrypted through SSH, allowing you to access your databases without running MySQL on a public IP.
 
@@ -89,8 +89,8 @@ You will need the `xauth` package installed on your remote server for X11 forwar
     - Enter **localhost:0** in the **X display location** field.
     - Click **Open** to log in.
 
-    ![Configure X11 forwarding in PuTTY.](/docs/assets/putty-x11-forwarding.png)
+    ![Configure X11 forwarding in PuTTY.](putty-x11-forwarding.png)
 
 3.  Once you're logged into the remote server, you may start any graphical application hosted there. The application will be projected onto your local desktop. Here's the `xcalc` application running on a remote server, visible a Windows desktop:
 
-    ![xcalc running in PuTTY.](/docs/assets/162-putty-03-xcalc-running.png)
+    ![xcalc running in PuTTY.](162-putty-03-xcalc-running.png)

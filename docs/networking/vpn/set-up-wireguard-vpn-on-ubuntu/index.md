@@ -33,7 +33,7 @@ Wireguard requires using Ubuntu's kernel rather than the Linode kernel. Follow t
 
 1.  In the Linode Manager, open the configuration profile for your Linode and find the **Boot Settings** section. Select **GRUB 2** as your kernel.
 
-    ![Configuration Profile](/docs/assets/wireguard/wireguard-config.png)
+    ![Configuration Profile](wireguard-config.png)
 
 2.  Boot your Linode, then connect to it with SSH and complete the standard setup procedure in our [Getting Started](/docs/getting-started) guide.
 

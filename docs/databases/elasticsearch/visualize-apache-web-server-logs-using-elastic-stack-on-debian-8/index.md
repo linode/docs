@@ -226,7 +226,7 @@ server.host: "localhost"
 
 4.  Next, open Kibana in your browser. Kibana listens for requests on port `5601`, so depending on your Linode's configuration, you may need to port-forward Kibana through SSH. The landing page should look similar to the following:
 
-    ![Kibana 5 Index Pattern Configuration](/docs/assets/elastic-stack-debian-8-kibana-index-pattern.png "Kibana 5 Index Pattern Configuration")
+    ![Kibana 5 Index Pattern Configuration](elastic-stack-debian-8-kibana-index-pattern.png "Kibana 5 Index Pattern Configuration")
 
     This screen permits you to create an index pattern, which is a way for Kibana to know which indices to search for when browsing logs and creating dashboards. The default value of `logstash-*` matches the default indices created by Logstash. Clicking "Create" on this screen is enough to configure Kibana and begin reading logs.
 

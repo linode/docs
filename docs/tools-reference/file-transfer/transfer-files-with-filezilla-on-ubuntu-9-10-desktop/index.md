@@ -22,15 +22,15 @@ You'll need to make sure your Linode is running an SSH daemon (all Linodes run a
 
 On your desktop, click "System" -\> "Administration" -\> "Synaptic Package Manager" as shown below to start the package installer.
 
-[![Launching Synaptic on Ubuntu 9.10 desktop edition.](/docs/assets/179-filezilla-ubuntu-synaptic.png)](/docs/assets/179-filezilla-ubuntu-synaptic.png)
+[![Launching Synaptic on Ubuntu 9.10 desktop edition.](179-filezilla-ubuntu-synaptic.png)](179-filezilla-ubuntu-synaptic.png)
 
 In the package manager's "Quick search" box, enter "sftp" and click the "Search" icon. A list of packages related to sftp programs will appear. Locate "filezilla" in this list and check its box to select it for installation. Click the "Apply" button to proceed.
 
-[![Finding a package in Synaptic on Ubuntu 9.10 desktop edition.](/docs/assets/180-filezilla-ubuntu-selected.png)](/docs/assets/180-filezilla-ubuntu-selected.png)
+[![Finding a package in Synaptic on Ubuntu 9.10 desktop edition.](180-filezilla-ubuntu-selected.png)](180-filezilla-ubuntu-selected.png)
 
 You will be asked to confirm your installation request. Click the "Apply" button to proceed.
 
-[![Confirming package installation in Synaptic on Ubuntu 9.10 desktop edition.](/docs/assets/181-filezilla-ubuntu-apply.png)](/docs/assets/181-filezilla-ubuntu-apply.png)
+[![Confirming package installation in Synaptic on Ubuntu 9.10 desktop edition.](181-filezilla-ubuntu-apply.png)](181-filezilla-ubuntu-apply.png)
 
 Filezilla and required dependency files will be installed on your system. You may close Synaptic once the install has completed.
 
@@ -38,15 +38,15 @@ Filezilla and required dependency files will be installed on your system. You ma
 
 On your desktop, click "Applications" -\> "Internet" -\> "Filezilla" to launch the program.
 
-[![Menu entry for Filezilla on Ubuntu 9.10 desktop edition.](/docs/assets/182-filezilla-ubuntu-menu-entry.png)](/docs/assets/182-filezilla-ubuntu-menu-entry.png)
+[![Menu entry for Filezilla on Ubuntu 9.10 desktop edition.](182-filezilla-ubuntu-menu-entry.png)](182-filezilla-ubuntu-menu-entry.png)
 
 Enter your Linode's IP address in the "Host" field. Enter the account username you wish to connect as in the "Username" field. Please note that this must be a user account on your Linode; if in doubt, enter "root" to log in as the root user. Enter the account's password in the "Password" field, and enter "22" in the "Port" field. Click "Quickconnect" to initiate the file transfer session.
 
-[![Quickconnect in Filezilla on Ubuntu 9.10 desktop edition.](/docs/assets/183-filezilla-ubuntu-quick-connect.png)](/docs/assets/183-filezilla-ubuntu-quick-connect.png)
+[![Quickconnect in Filezilla on Ubuntu 9.10 desktop edition.](183-filezilla-ubuntu-quick-connect.png)](183-filezilla-ubuntu-quick-connect.png)
 
 If this is the first time you've connected to your Linode with an SSH or SFTP program, you'll receive a warning that the host key is unknown.
 
-[![Unknown SSH key warning in Filezilla on Ubuntu 9.10 desktop edition.](/docs/assets/184-filezilla-ubuntu-unknown-key.png)](/docs/assets/184-filezilla-ubuntu-unknown-key.png)
+[![Unknown SSH key warning in Filezilla on Ubuntu 9.10 desktop edition.](184-filezilla-ubuntu-unknown-key.png)](184-filezilla-ubuntu-unknown-key.png)
 
 This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log into. You need some "out of band" method of comparing the key fingerprint presented to Filezilla with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the Lish console (see the "Console" tab in the Linode Manager) and executing the following command:
 

@@ -160,7 +160,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 6.  Linode's kernels, booted by default, don't include the ZFS module you'll need so you have to switch to the kernel provided by Ubuntu. In your Linode's dashboard, click **Edit** to make changes to your Ubuntu configuration profile. Under **Boot settings**, change the **Kernel** to **GRUB 2**.
 
-    ![Changing Boot Settings](/docs/assets/zfs-ubuntu-changing-boot-settings.png)
+    ![Changing Boot Settings](zfs-ubuntu-changing-boot-settings.png)
 
 7.  Reboot through the Linode Manager.
 

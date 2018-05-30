@@ -99,7 +99,7 @@ NameVirtualHost *:80
 
     Additional domains can be added to the `vhost.conf` file as needed. To add domains, copy the `VirtualHost` block above and modify its values for each additional virtual host. When new requests come in from the internet, Apache checks which VirtualHost block matches the requested url, and serves the appropriate content:
 
-    ![Apache VirtualHost Traffic Flow](/docs/assets/apache-vhost-flow.png "Apache VirtualHost Traffic Flow")
+    ![Apache VirtualHost Traffic Flow](apache-vhost-flow.png "Apache VirtualHost Traffic Flow")
 
     {{< note >}}
 `ErrorLog` and `CustomLog` entries are suggested for more specific logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
@@ -116,7 +116,7 @@ NameVirtualHost *:80
 
     You can now visit your domain to test the Apache server. A default Apache page will be visible if no index page is found in your Document Root as declared in `/etc/httpd/conf/httpd.conf`:
 
-    ![Apache on CentOS 7 Welcome Screen](/docs/assets/centos7-apache-welcome.png "Welcome to Apache on CentOS 7")
+    ![Apache on CentOS 7 Welcome Screen](centos7-apache-welcome.png "Welcome to Apache on CentOS 7")
 
 ## Configure firewalld to Allow Web Traffic
 

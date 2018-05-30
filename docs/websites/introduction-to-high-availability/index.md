@@ -60,7 +60,7 @@ In this section, we'll go over the function of each component of the high availa
 
 The concepts discussed here are specifically geared toward the configuration described in our guide on how to [host a website with high availability](/docs/websites/host-a-website-with-high-availability), but will apply to highly available systems in general. The  diagram below shows the configuration we use in our guide.
 
-[![High availability server configuration](/docs/assets/high-availability-diagram.png)](/docs/assets/high-availability-diagram.png)
+[![High availability server configuration](high-availability-diagram.png)](high-availability-diagram.png)
 
 ### File System
 

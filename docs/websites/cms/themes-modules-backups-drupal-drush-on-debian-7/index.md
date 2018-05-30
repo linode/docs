@@ -45,7 +45,7 @@ Downloading, enabling, and setting the theme is extremely easy with Drupal Drush
 
 1.  Find a theme to download. The Drush download name is usually in the release notes under the "Downloads" section on any drupal.org/project/project_theme theme page. Spaces are either removed or replaced with an underscore. Pictured below is an example. Here, "corporateclean" would be used in the Drush command:
 
-    [![Corporate Clean Drupal Theme Notes.](/docs/assets/corporate-clean-drupal-theme-name.png)](/docs/assets/corporate-clean-drupal-theme-name.png)
+    [![Corporate Clean Drupal Theme Notes.](corporate-clean-drupal-theme-name.png)](corporate-clean-drupal-theme-name.png)
 
     {{< note >}}
 At the time of this guide's publication, this theme is not yet available for Drupal 8 beta. If you're using this version of Drupal, select another theme to replace Corporate Clean for this example.
@@ -83,11 +83,11 @@ Notice that Commerce includes 21 sub-modules. Each has its own functionality and
 
 3.  Sign in to the Drupal browser interface and click on the "Modules" selection.
 
-    [![Drupal Modules Selection.](/docs/assets/drupal-modules-selection.png)](/docs/assets/drupal-modules-selection.png)
+    [![Drupal Modules Selection.](drupal-modules-selection.png)](drupal-modules-selection.png)
 
 4.  Next, scroll down to the "Commerce" module set, pictured below. Start checking or turning on the different Commerce sub-modules. Finally, select the "Save configuration" button at the very bottom of the page.
 
-    [![Drupal Modules Page.](/docs/assets/drupal-modules-page.png)](/docs/assets/drupal-modules-page.png)
+    [![Drupal Modules Page.](drupal-modules-page.png)](drupal-modules-page.png)
 
 You have successfully installed and turned on a new module. The module is now running and ready to be used. In the case of the Commerce module set, notice the new "Store" menu on the Admin's homepage.
 

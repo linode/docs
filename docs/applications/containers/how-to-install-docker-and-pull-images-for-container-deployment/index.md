@@ -55,7 +55,7 @@ The first thing you are going to want to do is pull down an image to be used as 
 
         docker images
 
-    ![List Docker Images](/docs/assets/docker/docker-install-images-list.jpg "List Docker Images")
+    ![List Docker Images](docker-install-images-list.jpg "List Docker Images")
 
 2. Pull the [nginx web server](https://nginx.org/en/), using the `docker pull` command:
 
@@ -63,11 +63,11 @@ The first thing you are going to want to do is pull down an image to be used as 
 
     This will pull the latest official nginx Docker image
 
-    ![Pull Official nginx Image](/docs/assets/docker/docker-install-image-nginx.jpg "Pull the official nginx image")
+    ![Pull Official nginx Image](docker-install-image-nginx.jpg "Pull the official nginx image")
 
 3.  If you run `docker images` again, you'll see the nginx image:
 
-    ![docker images Shows the nginx Image](/docs/assets/docker/docker-install-image-nginx-installed.jpg "docker images now shows the nginx image")
+    ![docker images Shows the nginx Image](docker-install-image-nginx-installed.jpg "docker images now shows the nginx image")
 
 ### Find Unofficial nginx Images
 

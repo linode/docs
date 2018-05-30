@@ -71,7 +71,7 @@ If you need Session Persistence it is our recommendation to utilize both the Sou
 
 If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
 
-[![The NodeBalancer Certificate and Private Key fields.](/docs/assets/1354-nodebalancer_cert.png)](/docs/assets/1354-nodebalancer_cert.png)
+[![The NodeBalancer Certificate and Private Key fields.](1354-nodebalancer_cert.png)](1354-nodebalancer_cert.png)
 
 Copy your certificate into the **Certificate** field. If you have chained certificates, you can copy all of them into the text field, one after the other.
 

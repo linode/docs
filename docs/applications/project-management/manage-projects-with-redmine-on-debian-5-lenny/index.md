@@ -200,41 +200,41 @@ Issue the following commands to install `exim4` and configure it for outgoing In
 
 Select "internet site" as the type of mail configuration to use:
 
-[![Exim general configuration on Debian 5.](/docs/assets/298-redmine-debian-5-exim-config-1.png)](/docs/assets/298-redmine-debian-5-exim-config-1.png)
+[![Exim general configuration on Debian 5.](298-redmine-debian-5-exim-config-1.png)](298-redmine-debian-5-exim-config-1.png)
 
 Specify your systems's fully qualified domain name as the system mail name:
 
-[![Exim system mail name configuration on Debian 5.](/docs/assets/299-redmine-debian-5-exim-config-2.png)](/docs/assets/299-redmine-debian-5-exim-config-2.png)
+[![Exim system mail name configuration on Debian 5.](299-redmine-debian-5-exim-config-2.png)](299-redmine-debian-5-exim-config-2.png)
 
 Enter "127.0.0.1" when asked for the IP address to listen on for SMTP connections. For purposes of allowing Redmine to send mail, we only want to listen on localhost.
 
-[![Exim IP address configuration on Debian 5.](/docs/assets/300-redmine-debian-5-exim-config-3.png)](/docs/assets/300-redmine-debian-5-exim-config-3.png)
+[![Exim IP address configuration on Debian 5.](300-redmine-debian-5-exim-config-3.png)](300-redmine-debian-5-exim-config-3.png)
 
 Enter "localhost.localdomain" and your fully qualified domain name when asked for the list of recipient domains.
 
-[![Exim destination domains configuration on Debian 5.](/docs/assets/301-redmine-debian-5-exim-config-4.png)](/docs/assets/301-redmine-debian-5-exim-config-4.png)
+[![Exim destination domains configuration on Debian 5.](301-redmine-debian-5-exim-config-4.png)](301-redmine-debian-5-exim-config-4.png)
 
 Relay domains and machines should be left blank.
 
-[![Exim relay domains configuration on Debian 5.](/docs/assets/302-redmine-debian-5-exim-config-5.png)](/docs/assets/302-redmine-debian-5-exim-config-5.png)
+[![Exim relay domains configuration on Debian 5.](302-redmine-debian-5-exim-config-5.png)](302-redmine-debian-5-exim-config-5.png)
 
-[![Exim relay machines configuration on Debian 5.](/docs/assets/303-redmine-debian-5-exim-config-6.png)](/docs/assets/303-redmine-debian-5-exim-config-6.png)
+[![Exim relay machines configuration on Debian 5.](303-redmine-debian-5-exim-config-6.png)](303-redmine-debian-5-exim-config-6.png)
 
 Specify "No" when asked about DNS queries.
 
-[![Exim DNS queries configuration on Debian 5.](/docs/assets/304-redmine-debian-5-exim-config-7.png)](/docs/assets/304-redmine-debian-5-exim-config-7.png)
+[![Exim DNS queries configuration on Debian 5.](304-redmine-debian-5-exim-config-7.png)](304-redmine-debian-5-exim-config-7.png)
 
 When asked about maildirs versus mbox format, you may choose either. Maildirs are increasingly preferred by many modern mail tools.
 
-[![Exim maildirs or mbox configuration on Debian 5.](/docs/assets/305-redmine-debian-5-exim-config-8.png)](/docs/assets/305-redmine-debian-5-exim-config-8.png)
+[![Exim maildirs or mbox configuration on Debian 5.](305-redmine-debian-5-exim-config-8.png)](305-redmine-debian-5-exim-config-8.png)
 
 Specify "No" when asked whether to split the configuration into smaller files.
 
-[![Exim config file splitting configuration on Debian 5.](/docs/assets/306-redmine-debian-5-exim-config-9.png)](/docs/assets/306-redmine-debian-5-exim-config-9.png)
+[![Exim config file splitting configuration on Debian 5.](306-redmine-debian-5-exim-config-9.png)](306-redmine-debian-5-exim-config-9.png)
 
 Enter "root" and an email address at your domain for the postmaster mail query.
 
-[![Exim postmaster configuration on Debian 5.](/docs/assets/307-redmine-debian-5-exim-config-10.png)](/docs/assets/307-redmine-debian-5-exim-config-10.png)
+[![Exim postmaster configuration on Debian 5.](307-redmine-debian-5-exim-config-10.png)](307-redmine-debian-5-exim-config-10.png)
 
 Create the file `config/email.yml` and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.
 

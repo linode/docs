@@ -97,23 +97,23 @@ FarmOS will configure Drupal and itself at the same time:
 
 1. The first screen you will encounter asks you to choose a profile and a language:
 
-    ![FarmOS first screen](/docs/assets/FarmOS/firstscreen.png)
+    ![FarmOS first screen](firstscreen.png)
 
 2. Drupal checks if the installation is correct in the **Verify requirements** section. Then, it will move to configuring the database. In this section you should input the information from the database built earlier in this tutorial:
 
-    ![Database Configuration](/docs/assets/FarmOS/second.png)
+    ![Database Configuration](second.png)
 
 3. Once FarmOS hooks into the database, you will need to configure your FarmOS site. This is where you will define the name and the main user account:
 
-    ![Configure](/docs/assets/FarmOS/configure.png)
+    ![Configure](configure.png)
 
 4. The next section is going to ask you what modules you want to install. You can install and uninstall modules at any time, but this is a chance to install personalized modules that will work for your specific type of farm.
 
-    ![modules](/docs/assets/FarmOS/modules.png)
+    ![modules](modules.png)
 
 5. Finally, after installing the modules, you will be dropped into the FarmOS dashboard:
 
-    ![welcome](/docs/assets/FarmOS/welcome.png)
+    ![welcome](welcome.png)
 
 6. After the installation has finished, you may want to reset your file permissions to avoid security vulnerabilities:
 
@@ -123,7 +123,7 @@ FarmOS will configure Drupal and itself at the same time:
 ## Add Users
 To add users to your FarmOS distribution, you can do so from the **People** tab under **Manage**.
 
-   ![Add user](/docs/assets/FarmOS/Adduser.png)
+   ![Add user](Adduser.png)
 
 After each user is created, use the **people** tab, to verify success:
 

@@ -23,7 +23,7 @@ For more information about the [Standard Edition of Google Apps](http://www.goog
 
 To direct your email to Google Apps, you need to set up five MX records for your domain. When you click on "Add/Edit a MX Record," you will find a form that looks like this:
 
-[![Adding an MX record for Google Apps in the Linode DNS Manager.](/docs/assets/97-google-mail-01-create-mx-record.png)](/docs/assets/97-google-mail-01-create-mx-record.png)
+[![Adding an MX record for Google Apps in the Linode DNS Manager.](97-google-mail-01-create-mx-record.png)](97-google-mail-01-create-mx-record.png)
 
 Create the following MX records:
 

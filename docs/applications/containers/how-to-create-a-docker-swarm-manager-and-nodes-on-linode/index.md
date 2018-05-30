@@ -50,13 +50,13 @@ In this guide, we create a single Swarm Manager. If your goal is high-availabili
 
     Docker responds with the command necessary for the nodes to join the Swarm:
 
-    ![Command to join Docker Swarm](/docs/assets/docker/dockerswarm-join.jpg "Command to join Docker Swarm")
+    ![Command to join Docker Swarm](dockerswarm-join.jpg "Command to join Docker Swarm")
 
 2.  Use `docker info` to verify that your Swarm is running and active:
 
         docker info
 
-    ![Swarm is running and active](/docs/assets/docker/dockerswarm-active.jpg "Swarm is running and active")
+    ![Swarm is running and active](dockerswarm-active.jpg "Swarm is running and active")
 
 
 ## Join Nodes to the Manager
@@ -75,7 +75,7 @@ Where `TOKEN` is the long string of characters presented to you when you initial
 
     The output shows that the node has joined the swarm as a worker. You now have a small Docker Swarm cluster, with one manager and one node:
 
-    ![Node has joined the swarm as a worker](/docs/assets/docker/swarm-joined-as-worker.jpg "Node has joined the swarm as a worker")
+    ![Node has joined the swarm as a worker](swarm-joined-as-worker.jpg "Node has joined the swarm as a worker")
 
 2.  Repeat Step 1 to join as many nodes to the Swarm as needed.
 

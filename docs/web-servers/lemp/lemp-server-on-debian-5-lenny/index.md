@@ -292,7 +292,7 @@ The MySQL database engine may be the leading open source relational database eng
 
 During the installation process you will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Debian Lenny.](/docs/assets/65-lenny-01-mysql-root-password.png)](/docs/assets/65-lenny-01-mysql-root-password.png)
+[![Setting the MySQL root password in Debian Lenny.](65-lenny-01-mysql-root-password.png)](65-lenny-01-mysql-root-password.png)
 
 Issue the following command to secure the MySQL instance:
 

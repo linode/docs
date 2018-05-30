@@ -78,7 +78,7 @@ Be sure to have your phone or mobile device ready, since this is where you'll ad
 
 2.  A QR code will appear in your terminal, which you can scan with your mobile device to set up your password:
 
-    [![The generated QR Code and keys in CentOS 7.](/docs/assets/two-factor-keys-centos.png)](/docs/assets/two-factor-keys-centos.png)
+    [![The generated QR Code and keys in CentOS 7.](two-factor-keys-centos.png)](two-factor-keys-centos.png)
 
     You'll also notice some additional information displayed above and below the QR code. Notably, the secret key in the line beginning with `URI` provides you with a hex code that you can use to manually configure the code on your device. You'll also see another hex code on a line containing the username. That second hex code will resemble the following:
 

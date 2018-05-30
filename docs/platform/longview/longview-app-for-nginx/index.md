@@ -35,7 +35,7 @@ If you already have Longview installed, and later want to install NGINX and enab
 
 3.  For most people, this will prompt a popup asking whether you would like Longview to attempt an automatic configuration of the NGINX status module:
 
-    [![Longview has detected Nginx running on this server but was unable to access the server status page. Would you like to attempt to automatically configure the Nginx status module? This will require restarting Nginx to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](/docs/assets/1456-longview_ngnix_popup_crop.png)](/docs/assets/1456-longview_ngnix_popup_crop.png)
+    [![Longview has detected Nginx running on this server but was unable to access the server status page. Would you like to attempt to automatically configure the Nginx status module? This will require restarting Nginx to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1456-longview_ngnix_popup_crop.png)](1456-longview_ngnix_popup_crop.png)
 
     {{< note >}}
 It's also possible that Longview will be able to locate the status page on its own. In that case, you won't get the popup, and you can go directly to Step 5.
@@ -115,7 +115,7 @@ To see the output for the Longview Nginx App:
 
 Click the image for a full-size view.
 
-[![The Longview Nginx App.](/docs/assets/1455-longview_nginx_stats_sm.png)](/docs/assets/1454-longview_nginx_stats.png)
+[![The Longview Nginx App.](/docs/assets/1455-longview_nginx_stats_sm.png)](1454-longview_nginx_stats.png)
 
 You'll see the current version of NGINX listed on the upper right.
 

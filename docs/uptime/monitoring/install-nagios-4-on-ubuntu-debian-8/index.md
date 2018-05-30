@@ -137,11 +137,11 @@ For Ubuntu versions after 14.04, see the [Systemd section below](#systemd) befor
 
     You will be greeted with a screen like this one:
 
-    ![Nagios 4 Greeting](/docs/assets/greeting_nagios4.png)
+    ![Nagios 4 Greeting](greeting_nagios4.png)
 
     To view monitoring status, click the **Hosts** link in the menu on the left. This example screenshot shows an active Nagios server called `localhost`:
 
-    ![Nagios 4 Hosts](/docs/assets/hosts_nagios4.png)
+    ![Nagios 4 Hosts](hosts_nagios4.png)
 
 
 ### Systemd

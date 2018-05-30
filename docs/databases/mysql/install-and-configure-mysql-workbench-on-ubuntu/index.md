@@ -68,11 +68,11 @@ See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/databases
 
 3.  Open MySQL Workbench on your local machine and click `+` to create a new connection:
 
-    ![MySQL Workbench Home](/docs/assets/mysql-workbench-home.png "MySQL Workbench Home")
+    ![MySQL Workbench Home](mysql-workbench-home.png "MySQL Workbench Home")
 
 4.  Create a **Connection Name**. Click the **Connection Method** dropdown menu and select `Standard TCP/IP over SSH`. Complete the credentials for SSH and MySQL user login:
 
-    ![MySQL Workbench Connection](/docs/assets/mysql-workbench-connection.png "MySQL Workbench Connection")
+    ![MySQL Workbench Connection](mysql-workbench-connection.png "MySQL Workbench Connection")
 
     {{< note >}}
 The MySQL server default port should be `3306` on `l27.0.0.1`. If you wish to connect to another server with a different port, update the inputs accordingly. See [Deploy MySQL Workbench for Database Administration](/docs/databases/mysql/deploy-mysql-workbench-for-database-administration/) for more information.
@@ -80,7 +80,7 @@ The MySQL server default port should be `3306` on `l27.0.0.1`. If you wish to co
 
 5.  Under **File**, select **Run SQL Script...**. Select `sakila-schema.sql` then click **Run**:
 
-    ![MySQL Workbench Script](/docs/assets/mysql-workbench-run-script.png "MySQL Workbench Script")
+    ![MySQL Workbench Script](mysql-workbench-run-script.png "MySQL Workbench Script")
 
 6.  Repeat Step 5 for `sakila-data.sql`.
 
@@ -89,6 +89,6 @@ The MySQL server default port should be `3306` on `l27.0.0.1`. If you wish to co
         USE sakila;
         SELECT * FROM actors WHERE first_name LIKE 'A%';
 
-    ![MySQL Workbench Query](/docs/assets/mysql-workbench-query.png "MySQL Workbench Query")
+    ![MySQL Workbench Query](mysql-workbench-query.png "MySQL Workbench Query")
 
 The sample database provides a sandbox in which to test configurations and show how to integrate them into your workflow. MySQL Workbench offers a graphical interface to view database models in addition to building queries. While there are plenty of features, free and commercial, lightweight alternatives are available, depending on needs of the user. MySQL Workbench remains a great choice for most database administration tasks.

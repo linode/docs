@@ -135,7 +135,7 @@ Alternatively, [download pypiserver from Github](https://github.com/pypiserver/p
 
 6.  Currently the server is listening on all IP addresses. In a web browser, navigate to `192.0.2.0:8080`, where `192.0.2.0` is the public IP of your Linode. The browser should display:
 
-    ![pypiserver_home](/docs/assets/pypiserver.png)
+    ![pypiserver_home](pypiserver.png)
 
     You are now able to install the `linode_example` package by declaring an external url `pip install --extra-index-url http://192.0.2.0:8080/simple/ --trusted-host 192.0.2.0 linode_example`.
 

@@ -164,16 +164,16 @@ To exit McMyAdmin and return to the command line, enter `/quit`.
 
 2.  Log in with the username `admin` and the password that you provided in the installation step.
 
-    ![McMyAdmin Login Page](/docs/assets/mcmyadmin-login-page.png)
+    ![McMyAdmin Login Page](mcmyadmin-login-page.png)
 
 3.  Once the initial configuration steps are completed, select your settings and then switch to the status page.
 
-    ![McMyAdmin Configuration Page](/docs/assets/mcmyadmin-config-page.png)
+    ![McMyAdmin Configuration Page](mcmyadmin-config-page.png)
 
 4.  Select *Start Server* and accept the Minecraft Server EULA.
 
-    ![McMyAdmin Status Page](/docs/assets/mymyadmin-status-page.png)
+    ![McMyAdmin Status Page](mymyadmin-status-page.png)
 
-    ![McMyAdmin Server Started](/docs/assets/mcmyadmin-server-running.png)
+    ![McMyAdmin Server Started](mcmyadmin-server-running.png)
 
 Congratulations, you now have McMyAdmin running on your Minecraft server!

@@ -25,7 +25,7 @@ Finding your Linode's IP address (or addresses) is easy and can be done in two d
     - The Linode's public IP addresses (both IPv4 and IPv6) are under the **Public Network** section near the top of the Remote Access page.
     - Private addresses are under the **Private/LAN Network** section near the bottom of the page.
 
-[![Public IPs.](/docs/assets/1711-remote_access_ips_small.png)](/docs/assets/1710-remote_access_ips.png)
+[![Public IPs.](/docs/assets/1711-remote_access_ips_small.png)](1710-remote_access_ips.png)
 
 The graphic above shows:
 

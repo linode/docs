@@ -173,13 +173,13 @@ Start the service, and enable it to start at boot:
 
 1.  Browse to the URL of your server, which should render the Tiny Tiny RSS login page:
 
-    ![Tiny Tiny RSS Login Page](/docs/assets/tiny-tiny-rss-login.png)
+    ![Tiny Tiny RSS Login Page](tiny-tiny-rss-login.png)
 
 2.  Log in with the username `admin` and default password `password`.
 
 3.  Change the administrator password to something stronger by clicking the **Actions** button in the top-right corner of the Tiny Tiny RSS main page. Select **Preferences**, then click the **Users** tab that appears. Click on the `admin` user and you'll see the following screen, with the option to change the user password:
 
-    ![Tiny Tiny RSS User Editor](/docs/assets/ttrss-user-editor.png)
+    ![Tiny Tiny RSS User Editor](ttrss-user-editor.png)
 
     Note that if you prefer to log in with a less privileged user, you can create additional users from the **Users** page, by clicking **Create user**.
 

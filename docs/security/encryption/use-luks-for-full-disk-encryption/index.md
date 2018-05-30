@@ -78,61 +78,61 @@ As an additional security step, you can use the keys provided in the same direct
 
 1.  From the Glish console, you can view your distribution's installer. Select **Install** and press the Enter key:
 
-    ![Debian 8 Installer](/docs/assets/fde-debian-installer.png)
+    ![Debian 8 Installer](fde-debian-installer.png)
 
 2.  Choose your language:
 
-    [![Debian 8 Language Setting](/docs/assets/fde-language-small.png)](/docs/assets/fde-language.png)
+    [![Debian 8 Language Setting](/docs/assets/fde-language-small.png)](fde-language.png)
 
 3.  Select your location. This will be used to determine your system locale and time zone:
 
-    [![Debian 8 Location Setting](/docs/assets/fde-location-small.png)](/docs/assets/fde-location.png)
+    [![Debian 8 Location Setting](/docs/assets/fde-location-small.png)](fde-location.png)
 
 4.  After you select a keyboard layout, the installer will use DHCP to connect to the network. If you prefer, you'll have the option to configure your network settings manually:
 
-    [![Debian 8 DHCP](/docs/assets/fde-dhcp-config-small.png)](/docs/assets/fde-dhcp-config.png)
+    [![Debian 8 DHCP](/docs/assets/fde-dhcp-config-small.png)](fde-dhcp-config.png)
 
 5.  Assign your Linode's hostname and domain name. In this example we're using `fde-test` as the hostname, and `members.linode.com` for the domain:
 
-    [![Debian 8 Hostname Setting](/docs/assets/fde-hostname-small.png)](/docs/assets/fde-hostname.png)
-    [![Debian 8 Domain Name Setting](/docs/assets/fde-domain-name-small.png)](/docs/assets/fde-domain-name.png)
+    [![Debian 8 Hostname Setting](/docs/assets/fde-hostname-small.png)](fde-hostname.png)
+    [![Debian 8 Domain Name Setting](/docs/assets/fde-domain-name-small.png)](fde-domain-name.png)
 
 6.  Choose the Debian mirror that will be used to download packages. Select the appropriate location depending on which data center your Linode resides in:
 
-    [![Debian 8 Mirror Location Setting](/docs/assets/fde-mirror-location-small.png)](/docs/assets/fde-mirror-location.png)
-    [![Debian 8 Mirror Selection](/docs/assets/fde-mirror-selection-small.png)](/docs/assets/fde-mirror-selection.png)
+    [![Debian 8 Mirror Location Setting](/docs/assets/fde-mirror-location-small.png)](fde-mirror-location.png)
+    [![Debian 8 Mirror Selection](/docs/assets/fde-mirror-selection-small.png)](fde-mirror-selection.png)
 
 7.  Set the password for the `root` user:
 
-    [![Debian 8 Root Password Setting](/docs/assets/fde-root-password-small.png)](/docs/assets/fde-root-password.png)
+    [![Debian 8 Root Password Setting](/docs/assets/fde-root-password-small.png)](fde-root-password.png)
 
 8.  Create a second, non-administrative user and password combination:
 
-    [![Debian 8 User Setting](/docs/assets/fde-new-user-small.png)](/docs/assets/fde-new-user.png)
+    [![Debian 8 User Setting](/docs/assets/fde-new-user-small.png)](fde-new-user.png)
 
 9.  Select the method to be used for partitioning your disk. Since we're encrypting the disk, choose **Guided - use entire disk and set up encrypted LVM**:
 
-    [![Debian 8 Partitioning](/docs/assets/fde-partitioning-small.png)](/docs/assets/fde-partitioning.png)
+    [![Debian 8 Partitioning](/docs/assets/fde-partitioning-small.png)](fde-partitioning.png)
 
 10. Select the volume on which you'll create partitions and install Debian. Since we previously mounted the *Boot* disk to `/dev/sda`, select it here:
 
-    [![Debian 8 Volume Selection](/docs/assets/fde-volume-selection-small.png)](/docs/assets/fde-volume-selection.png)
+    [![Debian 8 Volume Selection](/docs/assets/fde-volume-selection-small.png)](fde-volume-selection.png)
 
 11. Choose your partitioning scheme. For this example, we'll keep all files in a single partition, but you can select another option without affecting the rest of the process:
 
-    [![Debian 8 Partition Scheme](/docs/assets/fde-disk-partitioning-small.png)](/docs/assets/fde-disk-partitioning.png)
+    [![Debian 8 Partition Scheme](/docs/assets/fde-disk-partitioning-small.png)](fde-disk-partitioning.png)
 
 12. Confirm and apply your changes. This step may take awhile, as the volume is overwritten with random data to protect against [cryptanalysis](https://en.wikipedia.org/wiki/Cryptanalysis):
 
-    [![Debian 8 Partitioning Confirmation](/docs/assets/fde-write-changes-small.png)](/docs/assets/fde-write-changes.png)
+    [![Debian 8 Partitioning Confirmation](/docs/assets/fde-write-changes-small.png)](fde-write-changes.png)
 
 13. Once the partitioning process completes, create an encryption passphrase:
 
-    [![Debian 8 Encryption Passphrase](/docs/assets/fde-encryption-passphrase-small.png)](/docs/assets/fde-encryption-passphrase.png)
+    [![Debian 8 Encryption Passphrase](/docs/assets/fde-encryption-passphrase-small.png)](fde-encryption-passphrase.png)
 
     It's recommended that you follow best practices for creating a secure password. If you enter a password with less than eight characters, you will receive a warning prompt:
 
-    [![Debian 8 Encryption Passphrase Warning](/docs/assets/fde-weak-passphrase-warning-small.png)](/docs/assets/fde-weak-passphrase-warning.png)
+    [![Debian 8 Encryption Passphrase Warning](/docs/assets/fde-weak-passphrase-warning-small.png)](fde-weak-passphrase-warning.png)
 
     {{< caution >}}
 If you lose or forget this password, the data on this disk image will be **irrecoverable**.
@@ -140,27 +140,27 @@ If you lose or forget this password, the data on this disk image will be **irrec
 
 14. Next you'll receive a full overview of the partitioning scheme being applied to your disk. Once you've confirmed the changes, select **Finish partitioning and write changes to disk**:
 
-    [![Debian 8 Write Partition Changes](/docs/assets/fde-partition-overview-small.png)](/docs/assets/fde-partition-overview.png)
+    [![Debian 8 Write Partition Changes](/docs/assets/fde-partition-overview-small.png)](fde-partition-overview.png)
 
 15. Confirm the new partitions you've created, and write your changes by selecting **Yes**:
 
-    [![Debian 8 Write Partition Confirmation](/docs/assets/fde-disk-formatting-small.png)](/docs/assets/fde-disk-formatting.png)
+    [![Debian 8 Write Partition Confirmation](/docs/assets/fde-disk-formatting-small.png)](fde-disk-formatting.png)
 
 16. The installer will begin deploying the base system. Once it completes, you'll have the option to choose specific software packages. The only packages required for the server are `SSH server` and `standard system utilities`, but you can select additional options as needed. If you wish to make use of a graphical shell over [VNC](/docs/applications/remote-desktop/install-vnc-on-ubuntu-16-04/) or the Glish console, select the desktop environment of your choice. Once you've confirmed your selections, hit **Continue**:
 
-    [![Debian 8 Software Selection](/docs/assets/fde-software-selection-small.png)](/docs/assets/fde-software-selection.png)
+    [![Debian 8 Software Selection](/docs/assets/fde-software-selection-small.png)](fde-software-selection.png)
 
 17. When the software installation completes, you'll be presented with the option to install the GRUB boot loader to the master boot record. Choose **Yes**:
 
-    [![Debian 8 Grub Installation](/docs/assets/fde-grub-install-small.png)](/docs/assets/fde-grub-install.png)
+    [![Debian 8 Grub Installation](/docs/assets/fde-grub-install-small.png)](fde-grub-install.png)
 
 18. From the list of available target devices for GRUB installation, select `/dev/sda`:
 
-    [![Debian 8 Grub Device Selection](/docs/assets/fde-device-selection-small.png)](/docs/assets/fde-device-selection.png)
+    [![Debian 8 Grub Device Selection](/docs/assets/fde-device-selection-small.png)](fde-device-selection.png)
 
 19. The installer will confirm once it has completed:
 
-    [![Debian 8 Install Complete](/docs/assets/fde-installation-complete-small.png)](/docs/assets/fde-installation-complete.png)
+    [![Debian 8 Install Complete](/docs/assets/fde-installation-complete-small.png)](fde-installation-complete.png)
 
 ## Configure GRUB
 
@@ -168,7 +168,7 @@ By default the GRUB menu will only work with the Glish interface. This section e
 
 1.  Now that you've completed the Debian installation, reboot your Linode into its *Boot* configuration profile, and connect to it from the Glish console. You will be prompted to enter your disk encryption passphrase:
 
-    [![Glish Decryption Password](/docs/assets/fde-glish-decrypt-small.png)](/docs/assets/fde-glish-decrypt.png)
+    [![Glish Decryption Password](/docs/assets/fde-glish-decrypt-small.png)](fde-glish-decrypt.png)
 
 2.  Once you've entered your encryption passphrase, you'll have access to a login prompt for your Debian installation. Log in as the root user with the password created previously.
 
@@ -189,7 +189,7 @@ GRUB_TERMINAL=serial
 
 5.  Reboot your Linode and open the Lish console. Now that we've configured the serial console in GRUB, you will receive a prompt to enter your decryption password in Lish:
 
-    [![Lish Decryption Password](/docs/assets/fde-lish-small.png)](/docs/assets/fde-lish.png)
+    [![Lish Decryption Password](/docs/assets/fde-lish-small.png)](fde-lish.png)
 
 ## Confirm Disk Encryption.
 

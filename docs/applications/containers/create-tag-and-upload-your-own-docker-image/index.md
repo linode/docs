@@ -46,7 +46,7 @@ Create a new local image based on the latest Ubuntu Docker image. Although the r
 
 4.  Use `docker ps -a` to list all of the available containers:
 
-    ![docker ps -a shows a list of available images](/docs/assets/docker/docker-image-list-available.png "docker ps -a shows a list of available images")
+    ![docker ps -a shows a list of available images](docker-image-list-available.png "docker ps -a shows a list of available images")
 
 ## Commit Changes to the Image
 
@@ -74,7 +74,7 @@ Docker tags are an easy way for you to know what version or release you are work
 
 2.  Run `docker images` to see the new image created along with the associated tag:
 
-    ![Our newly tagged image, ready to be pushed to Docker Hub](/docs/assets/docker/docker-image-tags.png "Our newly tagged image, ready to be pushed to Docker Hub")
+    ![Our newly tagged image, ready to be pushed to Docker Hub](docker-image-tags.png "Our newly tagged image, ready to be pushed to Docker Hub")
 
 ## Push Your Image to Docker Hub
 
@@ -92,6 +92,6 @@ Docker tags are an easy way for you to know what version or release you are work
 
 4.  Open a browser, log in to your Docker Hub account, and go your main repository. You will see the new image listed. Click on the image and then click on the **Tags** tab to see the added tag:
 
-    ![Our image, complete with tags, on Docker Hub](/docs/assets/docker/docker-image-public-repo.png "Our image, complete with tags, on Docker Hub")
+    ![Our image, complete with tags, on Docker Hub](docker-image-public-repo.png "Our image, complete with tags, on Docker Hub")
 
 And that is all there is to creating a new image, changing the image, committing your changes, tagging the image, and pushing the complete image to Docker Hub, all handled directly from your Linode.

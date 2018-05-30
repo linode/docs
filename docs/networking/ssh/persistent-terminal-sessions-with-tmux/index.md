@@ -42,7 +42,7 @@ On Debian or Ubuntu:
 
     Your terminal window should have a green menu bar at the bottom, similar to the one below:
 
-    ![Tmux menu](/docs/assets/tmux/tmux_menu.png)
+    ![Tmux menu](tmux_menu.png)
 
 2.  Detach from the session:
 

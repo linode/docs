@@ -75,7 +75,7 @@ This video runs through the process of adding a new domain zone:
 
 1.  From the DNS Manager tab, select **Add a domain zone**:
 
-    [![This page lets you add a domain zone.](/docs/assets/1120-dns8.png)](/docs/assets/1332-hosting-1.png)
+    [![This page lets you add a domain zone.](/docs/assets/1120-dns8.png)](1332-hosting-1.png)
 
 2.  Enter your domain name in the **Domain** field. An example is shown above.
 3.  Enter an administrator's email address in the **SOA Email** field.
@@ -85,7 +85,7 @@ This video runs through the process of adding a new domain zone:
 
 5.  Click **Add a Master Zone**. The page shown below then appears, populated with your domain zone information.
 
-    [![This page lets you add specific DNS records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
+    [![This page lets you add specific DNS records.](1121-dns9.png)](1121-dns9.png)
 
 6.  If you want to add a *slave zone* instead of a master zone, click the **I wanted a slave zone** link to the lower right.
 
@@ -112,11 +112,11 @@ When you first create a domain zone, you'll need to add some DNS records. The DN
 
 1.  Select a domain zone from within your DNS Manager.
 
-    [![This page has seven sections showing seven different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, and SRV. You can adjust the SOA record by clicking the "Settings" link in that section. The next six sections each have a corresponding link that lets you add a new record of that type. For example, to add an NS record, click the "Add a new NS record" link. There are similar links for MX, A, CNAME, TXT, and SRV records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
+    [![This page has seven sections showing seven different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, and SRV. You can adjust the SOA record by clicking the "Settings" link in that section. The next six sections each have a corresponding link that lets you add a new record of that type. For example, to add an NS record, click the "Add a new NS record" link. There are similar links for MX, A, CNAME, TXT, and SRV records.](1121-dns9.png)](1121-dns9.png)
 
 2.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, then click **Add new [DNS] record**.
 
-    ![This page allows you to create a new A/AAAA record.](/docs/assets/1122-dns10.png)
+    ![This page allows you to create a new A/AAAA record.](1122-dns10.png)
 
     {{< note >}}
 The exact form fields will vary depending on the type of DNS record you select.
@@ -147,7 +147,7 @@ Here's how to import a zone file:
 
 1.  Select **Import a zone**, from the DNS Manager tab.
 
-    [![This page lets you import a domain zone.](/docs/assets/1658-axfr_sm.png)](/docs/assets/1659-axfr.png)
+    [![This page lets you import a domain zone.](/docs/assets/1658-axfr_sm.png)](1659-axfr.png)
 
 2.  Enter the domain name in the **Domain** field, as shown in the example above.
 
@@ -174,7 +174,7 @@ Here's how to clone an existing zone:
 
 2.  Select a zone from the **Clone this zone** menu.
 
-    [![This page lets you clone a domain zone.](/docs/assets/1119-dns7.png)](/docs/assets/1119-dns7.png)
+    [![This page lets you clone a domain zone.](1119-dns7.png)](1119-dns7.png)
 
 3.  Enter the name of the new zone in the **Into this zone** field.
 
@@ -194,7 +194,7 @@ The DNS Manager allows you to view the contents of a domain zone file. This is e
 
 From the **DNS Manager** tab of your Linode Manager, select **Zone file** to the far right column of your chosen domain's name. An example of the file is provided below.
 
-[![This page shows a text-only dump of the DNS zone file for this domain.](/docs/assets/1115-dns3.png)](/docs/assets/1115-dns3.png)
+[![This page shows a text-only dump of the DNS zone file for this domain.](1115-dns3.png)](1115-dns3.png)
 
 ### Remove Domain Zones
 
@@ -202,7 +202,7 @@ If one of your domain names has expired or if you want to start hosting it on an
 
 Select the **Remove** link next to the zone you want to remove.
 
-[![This page lets you remove a DNS zone.](/docs/assets/1117-dns5.png)](/docs/assets/1117-dns5.png)
+[![This page lets you remove a DNS zone.](1117-dns5.png)](1117-dns5.png)
 
 Click **Yes, delete this sucker** to permanently delete the zone, including all associated records. It can take up to 30 minutes for the changes to be removed.
 

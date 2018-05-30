@@ -113,25 +113,25 @@ Replace "12.34.56.78" with your Linode's IP address. You may now visit `http://l
 
 You'll be presented with the Cherokee administration panel, which you may use to configure websites and specify configuration options. You'll still need to log in using the username and one-time password provided when you launched `cherokee-admin`.
 
-[![The cherokee-admin web server administration interface running on an Ubuntu Linux 10.04 LTS (Lucid) Linode.](/docs/assets/1138-cherokee-ubuntu-lucid-admin-01-home.png)](/docs/assets/1138-cherokee-ubuntu-lucid-admin-01-home.png)
+[![The cherokee-admin web server administration interface running on an Ubuntu Linux 10.04 LTS (Lucid) Linode.](1138-cherokee-ubuntu-lucid-admin-01-home.png)](1138-cherokee-ubuntu-lucid-admin-01-home.png)
 
 ### Secure Admin Panel Access on Windows
 
 You can use [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/) to set up a secure SSH tunnel for Cherokee administration. Enter your Linode's public IP address in the session tab:
 
-[![Session information for PuTTY.](/docs/assets/1134-cherokee-putty-01-session.png)](/docs/assets/1134-cherokee-putty-01-session.png)
+[![Session information for PuTTY.](1134-cherokee-putty-01-session.png)](1134-cherokee-putty-01-session.png)
 
 Expand the "Connection -\> SSH" menus to select the "Tunnel" configuration page. Enter the values shown here:
 
-[![Configuring an SSH tunnel for Cherokee administration in PuTTY.](/docs/assets/1135-cherokee-putty-02-tunnel.png)](/docs/assets/1135-cherokee-putty-02-tunnel.png)
+[![Configuring an SSH tunnel for Cherokee administration in PuTTY.](1135-cherokee-putty-02-tunnel.png)](1135-cherokee-putty-02-tunnel.png)
 
 Back on the session tab, enter "Cherokee Admin" in the "Saved Sessions" field and click "Save" to retain your settings for future use.
 
-[![Saving an SSH session for Cherokee administration in PuTTY.](/docs/assets/1136-cherokee-putty-03-saved-session.png)](/docs/assets/1136-cherokee-putty-03-saved-session.png)
+[![Saving an SSH session for Cherokee administration in PuTTY.](1136-cherokee-putty-03-saved-session.png)](1136-cherokee-putty-03-saved-session.png)
 
 Click "Open" to connect to your server and start the tunnel. You may receive a warning similar to the one shown here:
 
-[![An SSH key alert in PuTTY.](/docs/assets/1137-cherokee-putty-04-alert.png)](/docs/assets/1137-cherokee-putty-04-alert.png)
+[![An SSH key alert in PuTTY.](1137-cherokee-putty-04-alert.png)](1137-cherokee-putty-04-alert.png)
 
 Click "Yes" to continue, and log into your Linode as you normally would. As long as the SSH session is open you'll be able to navigate to `http://localhost:9090` in your web browser to access the Cherokee admin panel via the secure tunnel.
 

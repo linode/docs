@@ -38,7 +38,7 @@ If you haven't already signed up for a Linode account, start here.
 2.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 3.  Select a Linode plan and datacenter location:
 
-    ![Available Linode plans](/docs/assets/linode-manager-select-plan.png)
+    ![Available Linode plans](linode-manager-select-plan.png)
 
 If you're not sure which datacenter to select, use our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the datacenters to determine which of our facilities provides the best latency from your particular location.
 
@@ -129,7 +129,7 @@ Find your Linode's IP address from the [Linode Manager](https://manager.linode.c
 3.  Click the **Remote Access** tab.
 4.  Copy the addresses in the Public IPs section.
 
-    [![Public IPs.](/docs/assets/1711-remote_access_ips_small.png)](/docs/assets/1710-remote_access_ips.png)
+    [![Public IPs.](/docs/assets/1711-remote_access_ips_small.png)](1710-remote_access_ips.png)
 
 In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 address is *2600:3c03::f03c:91ff:fe70:cabd*. Unless your internet service provider supports IPv6, use the IPv4 address.
 

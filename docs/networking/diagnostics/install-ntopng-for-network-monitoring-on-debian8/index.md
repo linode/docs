@@ -137,13 +137,13 @@ If you want to group devices over the same network or host a home media server, 
 
 2.  Click on the `+` icon on the far right of the screen. Give your pool a descriptive name and save.
 
-    ![Add a pool name to the managed pools](/docs/assets/ntopng/ntopng-add-pool.png "Add a pool name to the managed pools")
+    ![Add a pool name to the managed pools](ntopng-add-pool.png "Add a pool name to the managed pools")
 
 3.  Click on the **Unassigned Devices** tab. This is a list of devices currently transmitting data through the Linode (you should at least see the device you’re connecting from listed here). Determine which devices you’ll add to your pool and add them. Click **Save Settings** when you’re finished.
 
 4.  To view data from your host pool, you’ll need to mouse over the **Hosts** dropdown and select **Host Pools**. You’ll find the pool name you created listed on this page. Click on it. Here you’ll see all currently open connections from each host in your pool:
 
-    ![Currently open connections](/docs/assets/ntopng/ntopng-currently-open-connections.png "Currently open connections")
+    ![Currently open connections](ntopng-currently-open-connections.png "Currently open connections")
 
     {{< note >}}
 If you want to see all host connections on a single page, set the number of rows to display per page next to the filtering options above the table.

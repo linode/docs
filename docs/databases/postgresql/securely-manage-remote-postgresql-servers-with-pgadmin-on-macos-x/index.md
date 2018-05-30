@@ -24,7 +24,7 @@ pgAdmin is a free, open-source PostgreSQL database administration GUI for Micros
 
 1.  Visit the [pgAdmin download page](https://www.pgadmin.org/download/macos4.php) to obtain the most recent version of the program. Save the installer to your desktop and launch it. Read the license agreement and click the "Agree" button to continue.
 
-    [![pgAdmin on Mac OS X installer license agreement dialog](/docs/assets/pg-admin-macosx-license.png)](/docs/assets/pg-admin-macosx-license.png)
+    [![pgAdmin on Mac OS X installer license agreement dialog](pg-admin-macosx-license.png)](pg-admin-macosx-license.png)
 
 2.  After the program has uncompressed itself, you'll see a pgAdmin icon in a Finder window. You may drag this to your Applications folder or your dock.
 
@@ -40,7 +40,7 @@ Although PostgreSQL uses port 5432 for TCP connections, we're using the local po
 
 1.  Launch pgAdmin and you'll be presented with a default view containing no servers. Click "File -> Add Server" as shown below.
 
-    [![pgAdmin III default view on Mac OS X](/docs/assets/pg-admin-macosx-add-server.png)](/docs/assets/pg-admin-macosx-add-server.png)
+    [![pgAdmin III default view on Mac OS X](pg-admin-macosx-add-server.png)](pg-admin-macosx-add-server.png)
 
 2.  If you're having problems connecting, you may need to check PostgreSQL's configuration to ensure it accepts connections. Modify the following lines in `/etc/postgresql/9.5/main/postgresql.conf` if necessary:
 
@@ -60,10 +60,10 @@ port = 5432
 
     For greater security, uncheck the "Store password" box. Click "OK" to connect to your server.
 
-    [![pgAdmin III new server details dialog on Mac OS X](/docs/assets/pg-admin-macosx-server-details.png)](/docs/assets/pg-admin-macosx-server-details.png)
+    [![pgAdmin III new server details dialog on Mac OS X](pg-admin-macosx-server-details.png)](pg-admin-macosx-server-details.png)
 
 4.  You will be presented with a full view of the databases that your user account has access to:
 
-    [![pgAdmin III full database view on Mac OS X](/docs/assets/pg-admin-macosx-database-view.png)](/docs/assets/pg-admin-macosx-database-view.png)
+    [![pgAdmin III full database view on Mac OS X](pg-admin-macosx-database-view.png)](pg-admin-macosx-database-view.png)
 
 Congratulations! You've securely connected to your remote PostgreSQL server with pgAdmin III.

@@ -144,16 +144,16 @@ To complete the setup process, navigate to the Ghost configuration page by appen
 
 1. On the welcome screen, click **Create your account**:
 
-    ![Ghost Welcome Screen](/docs/assets/ghost-1-0-0-welcome-small.png "Ghost Welcome Screen")
+    ![Ghost Welcome Screen](ghost-1-0-0-welcome-small.png "Ghost Welcome Screen")
 
 2. Enter your email, create a user, password, and blog title:
 
-    ![Create Your Account Screen](/docs/assets/ghost-1-0-0-create-account-small.png "Create Your Account Screen")
+    ![Create Your Account Screen](ghost-1-0-0-create-account-small.png "Create Your Account Screen")
 
 3. Invite additional members to your team. If you’d prefer to skip this step, click **I’ll do this later, take me to my blog!** at the bottom of the page.
 
-    ![Invite Your Team Screen](/docs/assets/ghost-1-0-0-invite-team-small.png "Invite Your Team Screen")
+    ![Invite Your Team Screen](ghost-1-0-0-invite-team-small.png "Invite Your Team Screen")
 
 4. Navigate the Ghost admin area to create your first post, change your site's theme, or configure additional settings:
 
-    ![Ghost Admin Area](/docs/assets/ghost-1-0-0-getting-started-small.png "Ghost Admin Area")
+    ![Ghost Admin Area](ghost-1-0-0-getting-started-small.png "Ghost Admin Area")

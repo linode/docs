@@ -148,7 +148,7 @@ server {
 
 1.  Navigate to your Linode's IP address with a web browser. You should see the ThingsBoard login page:
 
-    ![ThingsBoard Login](/docs/assets/thingsboard/login.png)
+    ![ThingsBoard Login](login.png)
 
     The demo account login `tenant@thingsboard.org` and the password is `tenant`. You should change this to a more secure password after you have signed in.
 
@@ -282,13 +282,13 @@ If the service is running successfully, data should be transmitted to your Thing
 
 1.  Log back into the ThingsBoard dashboard in your browser and click on your device's card in the **Devices** menu. Choose the **Latest Telemetry** tab from the resulting details page. You should see the temperature, humidity, and pressure data from your device:
 
-    ![View Latest Telemetry](/docs/assets/thingsboard/latest-telemetry.png)
+    ![View Latest Telemetry](latest-telemetry.png)
 
 2.  Click the checkbox next to one of the data types and then click **Show on Widget**.
 
 3.  Use the drop-down and carousel menus to choose a one of the preset widgets to display this data type on a dashboard. Click **Add to Dashboard** when you have chosen a widget.
 
-    ![Pi Dashboard](/docs/assets/thingsboard/pi-dashboard.png)
+    ![Pi Dashboard](pi-dashboard.png)
 
 ## Next Steps
 

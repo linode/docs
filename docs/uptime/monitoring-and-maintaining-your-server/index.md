@@ -49,7 +49,7 @@ To turn Lassie on and off:
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The Shutdown Watchdog settings appear, as shown below.
 
-    [![Configuring Shutdown Watchdog](/docs/assets/1105-monitor3-small.png)](/docs/assets/1107-monitor3.png)
+    [![Configuring Shutdown Watchdog](/docs/assets/1105-monitor3-small.png)](1107-monitor3.png)
 
 5.  Select an option from the **Lassie is currently** menu, as shown below.
 6.  Click **Save Changes**.
@@ -82,7 +82,7 @@ To turn on and customize the alerts:
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The *Email Alert Thresholds* settings appear, as shown below.
 
-    [![Configuring Linode Manager Email Alerts](/docs/assets/1104-monitor2-small.png)](/docs/assets/1103-monitor2.png)
+    [![Configuring Linode Manager Email Alerts](/docs/assets/1104-monitor2-small.png)](1103-monitor2.png)
 
 5.  To enable an email alert, select the **Enabled** checkbox.
 6.  To configure the threshold for an alert, set a value in the text field.
@@ -163,11 +163,11 @@ Linux version 4.15.12-x86_64-linode105 (maker@build.linode.com) (gcc version 4.9
 5.  Select your Linode. The Linode's dashboard appears.
 6.  Select the active configuration profile by clicking the link, as shown below.
 
-    ![Selecting the active configuration profile](/docs/assets/monitoring-and-maintaining/configuration-profile-select.png)
+    ![Selecting the active configuration profile](configuration-profile-select.png)
 
 7.  From the **Kernel** menu, verify that **GRUB 2** is selected:
 
-    ![Selecting the latest kernel](/docs/assets/monitoring-and-maintaining/grub2.png)
+    ![Selecting the latest kernel](grub2.png)
 
 8.  If you selected a new kernel, click **Save Changes**. The Linode's dashboard appears.
 9. Click **Reboot** to reboot your Linode and start using the new kernel.

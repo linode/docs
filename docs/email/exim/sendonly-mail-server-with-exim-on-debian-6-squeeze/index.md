@@ -45,37 +45,37 @@ Issue the following command to start Exim configuration:
 
 You'll be presented with a welcome screen, followed by a screen asking what type mail delivery you'd like to support. Choose the option for "internet site" and select "Ok" to continue.
 
-[![Exim4 mail delivery type configuration on Debian 6 (Squeeze).](/docs/assets/98-debian-6-exim-01-general.png)](/docs/assets/98-debian-6-exim-01-general.png)
+[![Exim4 mail delivery type configuration on Debian 6 (Squeeze).](98-debian-6-exim-01-general.png)](98-debian-6-exim-01-general.png)
 
 Enter your system's FQDN (fully qualified domain name) on the "mail name" configuration screen.
 
-[![Exim4 system mail name configuration on Debian 6 (Squeeze).](/docs/assets/99-debian-6-exim-02-mail-name.png)](/docs/assets/99-debian-6-exim-02-mail-name.png)
+[![Exim4 system mail name configuration on Debian 6 (Squeeze).](99-debian-6-exim-02-mail-name.png)](99-debian-6-exim-02-mail-name.png)
 
 Enter "127.0.0.1" when asked which IP address to listen on for SMTP connections.
 
-[![Exim4 listening IP address configuration on Debian 6 (Squeeze).](/docs/assets/100-debian-6-exim-03-listen-ip.png)](/docs/assets/100-debian-6-exim-03-listen-ip.png)
+[![Exim4 listening IP address configuration on Debian 6 (Squeeze).](100-debian-6-exim-03-listen-ip.png)](100-debian-6-exim-03-listen-ip.png)
 
 Make sure you list your FQDN, hostname, and localhost entries when you're asked which destinations mail should be accepted for.
 
-[![Exim4 mail destination configuration on Debian 6 (Squeeze).](/docs/assets/101-debian-6-exim-04-recipient-domains.png)](/docs/assets/101-debian-6-exim-04-recipient-domains.png)
+[![Exim4 mail destination configuration on Debian 6 (Squeeze).](101-debian-6-exim-04-recipient-domains.png)](101-debian-6-exim-04-recipient-domains.png)
 
 Leave the relay domains and relay machines fields blank.
 
-[![Exim4 relay domains configuration on Debian 6 (Squeeze).](/docs/assets/102-debian-6-exim-05-relay-domains.png)](/docs/assets/102-debian-6-exim-05-relay-domains.png)
+[![Exim4 relay domains configuration on Debian 6 (Squeeze).](102-debian-6-exim-05-relay-domains.png)](102-debian-6-exim-05-relay-domains.png)
 
-[![Exim4 relay machines configuration on Debian 6 (Squeeze).](/docs/assets/103-debian-6-exim-06-relay-machines.png)](/docs/assets/103-debian-6-exim-06-relay-machines.png)
+[![Exim4 relay machines configuration on Debian 6 (Squeeze).](103-debian-6-exim-06-relay-machines.png)](103-debian-6-exim-06-relay-machines.png)
 
 Select "No" when asked whether to keep DNS queries to a minimum.
 
-[![Exim4 DNS queries configuration on Debian 6 (Squeeze).](/docs/assets/104-debian-6-exim-07-dns-queries.png)](/docs/assets/104-debian-6-exim-07-dns-queries.png)
+[![Exim4 DNS queries configuration on Debian 6 (Squeeze).](104-debian-6-exim-07-dns-queries.png)](104-debian-6-exim-07-dns-queries.png)
 
 You may select either "mbox" or "Maildir" when asked about the delivery method used for incoming mail. While many utilities use mbox format, Maildir format can make handling individual locally delivered mail messages easier, and is widely supporting by a range of applications.
 
-[![Exim4 mail format configuration on Debian 6 (Squeeze).](/docs/assets/105-debian-6-exim-08-mail-format.png)](/docs/assets/105-debian-6-exim-08-mail-format.png)
+[![Exim4 mail format configuration on Debian 6 (Squeeze).](105-debian-6-exim-08-mail-format.png)](105-debian-6-exim-08-mail-format.png)
 
 Accept the default "non-split" option for your mail configuration file.
 
-[![Exim4 mail configuration file specification on Debian 6 (Squeeze).](/docs/assets/106-debian-6-exim-09-split-config.png)](/docs/assets/106-debian-6-exim-09-split-config.png)
+[![Exim4 mail configuration file specification on Debian 6 (Squeeze).](106-debian-6-exim-09-split-config.png)](106-debian-6-exim-09-split-config.png)
 
 # Test Your Mail Configuration
 

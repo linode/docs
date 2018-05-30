@@ -52,7 +52,7 @@ Jan 23 21:18:44 localhost systemd[1]: Started RStudio Server.
 
 3.  In a browser, navigate to your Linode's public IP address on port 8787 (i.e. `public-ip:8787`). Use your Unix user's username and password to log in when prompted:
 
-    ![RStudio Server Login](/docs/assets/R/rstudio-server-login.png)
+    ![RStudio Server Login](rstudio-server-login.png)
 
 4.  Because you will be accessing RStudio through a reverse proxy, set RStudio Server to listen on localhost instead of a public IP. Open `rserver.conf` in a text editor and add the following content:
 
@@ -128,7 +128,7 @@ server {
 
 6.  In a browser, navigate to the public IP or FDQN of your Linode. After logging in, the RStudio IDE should be available from your browser:
 
-    ![Rstudio Screen](/docs/assets/R/rstudio-server-page.png)
+    ![Rstudio Screen](rstudio-server-page.png)
 
 {{< note >}}
 If Rstudio does not load in the browser, you may need to clear your browser cache.

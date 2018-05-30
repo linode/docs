@@ -100,7 +100,7 @@ Some installers offer an option to place `/boot` on a separate partition. If you
 
 5.  Once the installation completes, reboot into your *Boot* profile and open the Glish console. You will have access to a login prompt:
 
-    [![Custom Distro Glish](/docs/assets/custom-distro-glish-small.png)](/docs/assets/custom-distro-glish.png)
+    [![Custom Distro Glish](/docs/assets/custom-distro-glish-small.png)](custom-distro-glish.png)
 
 ### Configure Grub for Lish Access
 

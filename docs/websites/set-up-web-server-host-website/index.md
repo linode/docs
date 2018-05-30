@@ -114,7 +114,7 @@ In order to point your domain name at your Linode, you will have to add DNS reco
 
 3.  Select the **Add a domain zone** link. The form shown below appears.
 
-    [![Create a domain zone](/docs/assets/910-hosting-1-small.png "Create a Domain zone.")](/docs/assets/909-hosting-1.png)
+    [![Create a domain zone](/docs/assets/910-hosting-1-small.png "Create a Domain zone.")](909-hosting-1.png)
 
 4.  In the **Domain** field, enter your website's domain name in the **Domain** field.
 
@@ -124,7 +124,7 @@ In order to point your domain name at your Linode, you will have to add DNS reco
 
 7.  Click **Add a Master Zone**. Several DNS records will be created for your domain, as shown below.
 
-    [![The DNS records created for the domain](/docs/assets/911-hosting-2-small.png "The DNS records created for the domain")](/docs/assets/912-hosting-2.png)
+    [![The DNS records created for the domain](/docs/assets/911-hosting-2-small.png "The DNS records created for the domain")](912-hosting-2.png)
 
 8. Through your domain registrar (where you bought the domain), make sure that your domain name is set to use Linode's DNS. Use your domain name registrar's interface to set the name servers for your domain to the following:
 
@@ -148,11 +148,11 @@ DNS changes can take up to 48 hours to propagate through the Internet. Once the 
 
 5.  Select the **Reverse DNS** link, as shown below.
 
-    [![Select Reverse DNS link](/docs/assets/951-hosting-3-1.png "Select Reverse DNS link")](/docs/assets/951-hosting-3-1.png)
+    [![Select Reverse DNS link](951-hosting-3-1.png "Select Reverse DNS link")](951-hosting-3-1.png)
 
 6.  Enter the domain in the **Hostname** field, as shown below.
 
-    [![Enter domain in Hostname field](/docs/assets/914-hosting-4-small.png "Enter domain in Hostname field")](/docs/assets/915-hosting-4.png)
+    [![Enter domain in Hostname field](/docs/assets/914-hosting-4-small.png "Enter domain in Hostname field")](915-hosting-4.png)
 
 7.  Click **Look up**. A message appears, indicating that a match has been found.
 

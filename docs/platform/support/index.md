@@ -23,7 +23,7 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
 -   **Linode Community and the Community Site:** Customers and staff discuss the projects they're working on in the [Linode Community Site](/community/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the [IRC channel](/chat/).
 
-    ![Linode Community Site](/docs/assets/community-site-header.png "Linode Community Site")
+    ![Linode Community Site](community-site-header.png "Linode Community Site")
 
 -   **Linode Support Bot:** The Linode Support Bot can answer a number of technical, billing, and account management questions, and it learns new answers every day. If the Linode Support Bot does not know an answer, it can create a support ticket for you. This feature is available from the Linode Manager by clicking the green and white question mark button in the bottom right corner of the page. After clicking this button, a chat panel will slide in from the right side of the page:
 

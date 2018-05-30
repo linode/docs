@@ -479,7 +479,7 @@ HDFS is a distributed storage system, it doesn't provide any services for runnin
 
 2.  As with HDFS, YARN provides a friendlier web UI, started by default on port `8088` of the Resource Manager. Point your browser to http://node-master-IP:8088 and browse the UI:
 
-    ![Screenshot of YARN Web UI](/docs/assets/hadoop/hadoop-4-yarn-webui-wide.png "Screenshot of YARN Web UI")
+    ![Screenshot of YARN Web UI](hadoop-4-yarn-webui-wide.png "Screenshot of YARN Web UI")
 
 ### Submit MapReduce Jobs to YARN
 

@@ -46,7 +46,7 @@ Unless you already have a specific Longview database user set up in the `/etc/li
 
 If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
-[![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](/docs/assets/1459-longview_mysql_popup_crop.png)](/docs/assets/1459-longview_mysql_popup_crop.png)
+[![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](1459-longview_mysql_popup_crop.png)](1459-longview_mysql_popup_crop.png)
 
 ### Manual Configuration (All Distributions)
 
@@ -86,7 +86,7 @@ To see the output for the Longview MySQL App:
 
 Click the image for a full-size view.
 
-[![The Longview MySQL App.](/docs/assets/1458-longview_mysql_stats_sm.png)](/docs/assets/1457-longview_mysql_stats.png)
+[![The Longview MySQL App.](/docs/assets/1458-longview_mysql_stats_sm.png)](1457-longview_mysql_stats.png)
 
 You'll see the current version of MySQL listed on the upper right.
 
@@ -144,7 +144,7 @@ If you don't see Longview data for MySQL, you'll instead get an error on the pag
 
 If you run the [automatic Longview configuration tool](#debian-and-ubuntu-automatic-configuration), and get the popup message shown below:
 
-[![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](/docs/assets/1459-longview_mysql_popup_crop.png)](/docs/assets/1459-longview_mysql_popup_crop.png)
+[![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](1459-longview_mysql_popup_crop.png)](1459-longview_mysql_popup_crop.png)
 
 This indicates that Longview can't locate any valid MySQL user credentials, so it will create some for itself (in the `/etc/linode/longview.d/MySQL.conf` file) and ask you to add them to MySQL. To finish getting Longview set up, copy the command shown in the popup message, log in to your database as the root MySQL user, then run the query that was shown in the popup message:
 

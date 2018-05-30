@@ -98,7 +98,7 @@ If your application uses another database, skip installing `python-sqlite` and `
 
     Visit `http://example.com:8080` in your browser to confirm that the sample application is set up correctly and working. You should see the Django test page:
 
-    [![Django test page.](/docs/assets/django-test-page-small.png)](/docs/assets/django-test-page.png)
+    [![Django test page.](/docs/assets/django-test-page-small.png)](django-test-page.png)
 
     Then stop development server with **Ctrl-C**.
 

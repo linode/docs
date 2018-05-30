@@ -21,7 +21,7 @@ Your Linode plan comes with persistent storage to hold your most important asset
 
 A *configuration profile* is a boot loader for your Linode. It controls general boot settings, including the disk your Linode will start up from, the disks that will be mounted, and the kernel that will be used. You can create multiple configuration profiles and store them in the Linode Manager.
 
-[![Overview of disks and configuration profiles.](/docs/assets/1740-disk-images1.png)](/docs/assets/1740-disk-images1.png)
+[![Overview of disks and configuration profiles.](1740-disk-images1.png)](1740-disk-images1.png)
 
 The Linode Manager automatically creates a disk and configuration profile when you sign up for an account or create a Linode, but you can manually create as many as you want, provided you have the storage space available. The space for disks is allocated from your Linode plan's storage. You can allocate all available storage to one disk, or you can create multiple disks, as shown in the examples above and below.
 
@@ -29,7 +29,7 @@ The Linode Manager automatically creates a disk and configuration profile when y
 
 All of a Linode's disks and configuration profiles are displayed on the Linode's Dashboard. You can add, edit, select, and remove items from this webpage, as shown below.
 
-[![Overview of Linode Manager interface.](/docs/assets/977-disk1-2-small.png)](/docs/assets/978-disk1-1.png)
+[![Overview of Linode Manager interface.](/docs/assets/977-disk1-2-small.png)](978-disk1-1.png)
 
 1.  These are your configuration profiles. Select one and then click **Reboot** to start your Linode with the settings and disks you have specified in the configuration profile.
 2.  Click this link to create a new configuration profile.
@@ -55,7 +55,7 @@ A new configuration profile will automatically be created when you make a disk t
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the **Deploy an Image** link. The webpage shown below appears.
 
-[![Create a new disk with a Linux distribution.](/docs/assets/980-disk2-small.png)](/docs/assets/979-disk2.png)
+[![Create a new disk with a Linux distribution.](/docs/assets/980-disk2-small.png)](979-disk2.png)
 
 5.  Select a Linux distribution from the **Distribution** menu.
 
@@ -79,7 +79,7 @@ Create a blank disk if you need detachable storage space or want to download and
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the **Create a new disk** link. The *Edit disk* webpage appears, as shown below.
 
-[![Create a new blank disk.](/docs/assets/982-disk3-small.png)](/docs/assets/983-disk3.png)
+[![Create a new blank disk.](/docs/assets/982-disk3-small.png)](983-disk3.png)
 
 5.  Enter a name for the disk in the **Label** field.
 6.  By default, **Type** is set to `ext4`. We recommend that you stick with this setting.
@@ -127,7 +127,7 @@ You can delete a disk to remove it from your Linode and reallocate its storage s
 4.  Click **Shut down** to turn your Linode off. Watch the *Host Job Queue* for confirmation that the Linode has shut down.
 5.  Select the **Remove** link next to the Linode you want to delete, as shown below. The disk will be deleted. Watch the *Host Job Queue* for confirmation that the disk has been duplicated.
 
-    [![Deleting a disk](/docs/assets/987-disk5-1-small.png)](/docs/assets/986-disk5-1.png)
+    [![Deleting a disk](/docs/assets/987-disk5-1-small.png)](986-disk5-1.png)
 
 6.  Click **Boot** to turn on the Linode.
 
@@ -146,7 +146,7 @@ Making a new configuration profile allows you to create a new and separate boot 
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the **Create a new Configuration Profile** link. The *Configuration Profile* webpage appears, as shown below.
 
-    [![Creating a configuration profile](/docs/assets/createconfprofile-small.png)](/docs/assets/createconfprofile.png)
+    [![Creating a configuration profile](/docs/assets/createconfprofile-small.png)](createconfprofile.png)
 
 5.  Enter a descriptive name for the configuration profile in the **Label** field. This name appears on the dashboard and will help you differentiate it from other configuration profiles.
 6.  You can enter comments or notes about this configuration profile in the **Notes** field.
@@ -180,7 +180,7 @@ You can create and store many different configuration profiles in the Linode Man
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the button to select a configuration profile, as shown below.
 
-    [![Selecting a configuration profile](/docs/assets/993-disk7-1.png)](/docs/assets/993-disk7-1.png)
+    [![Selecting a configuration profile](993-disk7-1.png)](993-disk7-1.png)
 
 5.  Click **Reboot** to restart your Linode using the selected configuration profile.
 

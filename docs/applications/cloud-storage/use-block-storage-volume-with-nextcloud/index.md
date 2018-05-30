@@ -44,7 +44,7 @@ Nextcloud is a cloud storage platform that allows you to store and access your f
 
 2.  Create a filesystem on the Block Storage Volume, then create a mount point per the instructions from the Linode Manager:
 
-    ![Mount Block Storage Volume](/docs/assets/nextcloud/nextcloud-mount-volume.png)
+    ![Mount Block Storage Volume](nextcloud-mount-volume.png)
 
 3.  Check available disk space. Notice that there is some overhead with the Volume due to the file system:
 
@@ -114,7 +114,7 @@ services:
 
 4.  When creating an admin account, open the **Storage & database** drop-down menu, fill in the information as shown below, and enter the MariaDB password you used in the `docker-compose` file:
 
-    ![Nextcloud database connection](/docs/assets/docker_nextcloud/connect-mysql-container.png "Nextcloud database connection")
+    ![Nextcloud database connection](connect-mysql-container.png "Nextcloud database connection")
 
 {{< caution >}}
 The setup provided by Nextcloud does not include any SSL encryption. To secure your data and communications, the Nextcloud service should be placed behind a [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/). A Docker Compose file using an NGINX reverse proxy and Let's Encrypt is also [available](https://github.com/nextcloud/docker/blob/master/.examples/docker-compose/with-nginx-proxy/mariadb/apache/docker-compose.yml).
@@ -124,7 +124,7 @@ The setup provided by Nextcloud does not include any SSL encryption. To secure y
 
 1.  After you have created an admin account, the Nextcloud dashboard will be displayed. Click on the `+` icon in the upper left and select **Upload file**. For demonstration purposes, choose a large file (an Ubuntu `.iso` file was used to generate the output below).
 
-    ![Nextcloud Upload File](/docs/assets/nextcloud/upload-file.jpg)
+    ![Nextcloud Upload File](upload-file.jpg)
 
 2.  After the file has uploaded successfully, return to the terminal and check to see your available space:
 

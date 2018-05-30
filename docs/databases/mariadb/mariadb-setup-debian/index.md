@@ -58,7 +58,7 @@ In this section, you will install MariaDB and set the password for the MariaDB r
 
     You will be prompted to set a password for the MariaDB root user:
 
-    [![Set the password for root during MariaDB installation](/docs/assets/1745-mariadb-set-root-password.png)](/docs/assets/1745-mariadb-set-root-password.png)
+    [![Set the password for root during MariaDB installation](1745-mariadb-set-root-password.png)](1745-mariadb-set-root-password.png)
 
     Choose a strong password to secure your server.
 

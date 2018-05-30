@@ -13,7 +13,7 @@ published: 2018-05-04
 title: Boot a Linode from a Block Storage Volume
 ---
 
-<!-- ![Boot a Linode from a Block Storage Volume](/docs/assets/block-storage/boot-linode-block-storage-title.png "Boot a Linode from a Block Storage Volume Title Graphic") -->
+<!-- ![Boot a Linode from a Block Storage Volume](boot-linode-block-storage-title.png "Boot a Linode from a Block Storage Volume Title Graphic") -->
 
 Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. In addition to storing files and media, you can also use a Block Storage Volume as a boot disk. This can provide a low-cost way to maintain an image that can be quickly attached to a new Linode and booted up when needed.
 
@@ -29,7 +29,7 @@ Visit our [Block Storage guide](/docs/platform/how-to-use-block-storage-with-you
 
 1.  [Reboot into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) and mount the Block Storage Volume as `/dev/sdc` as shown here:
 
-    ![Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode](/docs/assets/block-storage/bs-rescue-mode-sdc.png "Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode")
+    ![Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode](bs-rescue-mode-sdc.png "Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode")
 
     Connect to the Linode via [Lish](/docs/networking/using-the-linode-shell-lish/).
 
@@ -49,7 +49,7 @@ Visit our [Block Storage guide](/docs/platform/how-to-use-block-storage-with-you
 
 2.  Edit the configuration profile and set `/dev/sda` to the Block Storage Volume. Change `/dev/sdc` to `-- None --`. Click **Save Changes**
 
-    ![/dev/sda set to Block Storage Volume](/docs/assets/block-storage/bs-bs-primary.png "Configuration Management Block Device Assignment shows /dev/sda set to the Block Storage Volume")
+    ![/dev/sda set to Block Storage Volume](bs-bs-primary.png "Configuration Management Block Device Assignment shows /dev/sda set to the Block Storage Volume")
 
 3.  Boot the Linode.
 

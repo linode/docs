@@ -19,7 +19,7 @@ title: Linode Managed
 
 First, you'll need to [sign up for Linode Managed](https://www.linode.com/managed/). Once Linode Managed is enabled for your account, you'll see the **Managed** tab when you log in to the Linode Manager, as shown below. You'll use this interface to interact with Linode Managed and monitor your servers.
 
-[![The Linode Managed interface.](/docs/assets/1198-managed_overview.png)](/docs/assets/1198-managed_overview.png)
+[![The Linode Managed interface.](1198-managed_overview.png)](1198-managed_overview.png)
 
 1.  **History:** Review the historical availability of your monitored services at a glance. If any of your services were unavailable at any time within the past 10 days, you will see those outages here.
 2.  **Monitoring:** Add new services that will be monitored by Linode Managed, and check the status of the services you have already added. You can also edit, temporarily disable, and remove services.
@@ -59,7 +59,7 @@ First, copy the public key to your computer's clipboard. Here's how:
 2.  Click the **Managed** tab.
 3.  Click the **Credentials** tab. The webpage shown below appears.
 
-    [![The Linode Managed credential interface.](/docs/assets/1196-managed_credential3.png)](/docs/assets/1196-managed_credential3.png)
+    [![The Linode Managed credential interface.](1196-managed_credential3.png)](1196-managed_credential3.png)
 
 4.  Copy Linode's public key to your clipboard.
 
@@ -125,7 +125,7 @@ To allow our support staff to log in to your servers when an issue is detected, 
 
 1.  From the **Managed** tab, click the **Linodes** tab. The webpage shown below appears.
 
-    [![The Linode SSH settings interface.](/docs/assets/1301-ssh_settings1.png)](/docs/assets/1301-ssh_settings1.png)
+    [![The Linode SSH settings interface.](1301-ssh_settings1.png)](1301-ssh_settings1.png)
 
 2.  From the **SSH Access** menu, select **Enabled**. If this setting is selected, the Linode Managed team will log in to your server when an issue is detected.
 3.  Enter a username in the **SSH User** field. The specified user needs to have Linode's public SSH key installed. For instructions, see [Adding the Public Key](#adding-the-public-key).
@@ -144,11 +144,11 @@ Here's how to add a service credential to Linode Managed:
 
 1.  From the **Managed** tab, click the **Credentials** tab. The webpage shown below appears.
 
-    [![The Linode Managed credential interface.](/docs/assets/1191-managed_credential1.png)](/docs/assets/1191-managed_credential1.png)
+    [![The Linode Managed credential interface.](1191-managed_credential1.png)](1191-managed_credential1.png)
 
 2.  Select the **Add an Account Credential** link. The webpage shown below appears.
 
-    [![The Linode Managed credential interface.](/docs/assets/1192-managed_credential2.png)](/docs/assets/1192-managed_credential2.png)
+    [![The Linode Managed credential interface.](1192-managed_credential2.png)](1192-managed_credential2.png)
 
 3.  In the **Label** field, enter a descriptive name for the credential. For example, if you are entering the MySQL `root` password, you might enter "MySQL Root".
 4.  In the **Optional User Name** field, enter a username for the credential.
@@ -165,11 +165,11 @@ Here's how to add a contact to Linode Managed:
 
 1.  From the **Managed** tab, click the **Contacts** tab. The webpage shown below appears.
 
-    [![The Linode Managed contacts interface.](/docs/assets/1188-managed_contacts1.png)](/docs/assets/1188-managed_contacts1.png)
+    [![The Linode Managed contacts interface.](1188-managed_contacts1.png)](1188-managed_contacts1.png)
 
 2.  Select the **Add a Contact** link. The webpage shown below appears.
 
-    [![The Linode Managed contacts interface.](/docs/assets/1190-managed_contacts2-1.png)](/docs/assets/1190-managed_contacts2-1.png)
+    [![The Linode Managed contacts interface.](1190-managed_contacts2-1.png)](1190-managed_contacts2-1.png)
 
 3.  In the **Name** field, enter the individual's name.
 4.  In the **Email** field, enter the individual's email address.
@@ -194,11 +194,11 @@ Here's how to add a new service to Linode Managed:
 
 1.  From the **Managed** tab, click the **Monitoring** tab. The webpage shown below appears.
 
-    [![The Linode Managed monitoring interface.](/docs/assets/1184-addservice1-2.png)](/docs/assets/1184-addservice1-2.png)
+    [![The Linode Managed monitoring interface.](1184-addservice1-2.png)](1184-addservice1-2.png)
 
 2.  Select the **Add a Service to Monitor** link. The webpage shown below appears.
 
-    [![Adding a new service to be monitoring.](/docs/assets/1183-addservice2.png)](/docs/assets/1183-addservice2.png)
+    [![Adding a new service to be monitoring.](1183-addservice2.png)](1183-addservice2.png)
 
 3.  Enter a label for your service in the **Label** field. Being descriptive will help our team fix the service if it becomes unavailable.
 4.  *Optional:* Select a group name from the **Consult with** menu to ensure that Linode can contact you or members of your team if we need help fixing this service.
@@ -222,7 +222,7 @@ You have successfully added a service to Linode Managed. We'll start monitoring 
 
 To help you get started, we've provided an example service monitoring configuration for the Apache web server. In this examine, Linode Managed will continuously monitor the URL provided to verify that the service is responding correctly. This is a great way to monitor the availability of a website.
 
-[![An example Linode Managed service.](/docs/assets/1197-managed_example.png)](/docs/assets/1197-managed_example.png)
+[![An example Linode Managed service.](1197-managed_example.png)](1197-managed_example.png)
 
 Here are the example values:
 
@@ -242,7 +242,7 @@ Since Linode Managed continuously monitors your services for availability, you s
 1.  From the **Managed** tab, click the **Monitoring** tab.
 2.  Find the service that you want to temporarily disable, and then select the **Disable** link. The dashboard will indicate that service's monitoring status is **Disabled**, as shown below.
 
-    [![Adding a new service to be monitoring.](/docs/assets/1186-disableservice1-2.png)](/docs/assets/1186-disableservice1-2.png)
+    [![Adding a new service to be monitoring.](1186-disableservice1-2.png)](1186-disableservice1-2.png)
 
 The service is now temporarily disabled. Linode Managed won't resume monitoring this service until you reenable monitoring, as described in the next section.
 
@@ -253,7 +253,7 @@ When you're finished modifying the service, you'll need to reenable monitoring. 
 1.  From the **Managed** tab, click the **Monitoring** tab.
 2.  Find the disabled service, and then select the **Enable** link. The dashboard will indicate that the service's status is **Pending**, as shown below.
 
-    [![Adding a new service to be monitoring.](/docs/assets/1187-pending1.png)](/docs/assets/1187-pending1.png)
+    [![Adding a new service to be monitoring.](1187-pending1.png)](1187-pending1.png)
 
 Linode Managed is now monitoring the service again. The service will be checked in a couple minutes - if it's available, the dashboard will indicate that the service's status is **OK**.
 

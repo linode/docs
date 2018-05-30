@@ -108,7 +108,7 @@ Install Ruby Version Manager (RVM). RVM is recommended for a few reasons:
 
         bundle exec jekyll serve --host=0.0.0.0
 
-    ![First Jekyll Post](/docs/assets/jekyll/jekyll_first_post.png "First Jekyll Post")
+    ![First Jekyll Post](jekyll_first_post.png "First Jekyll Post")
 
     {{< note >}}
 After starting the Jekyll server, there will be a new `_site` folder. Do not store files in this folder as it is rebuilt each time changes are made to the site.
@@ -142,7 +142,7 @@ This section demonstrates some common features of a Jupyter Notebook that can be
 
 1.  Open the notebook of interest, or use the code below to create an example notebook. Run all of the relevant cells so that the output you want to display on your Jekyll blog is visible on the page. Navigate to `File > Download As > Markdown (.md)`. The markdown file will save to the default `Downloads` folder of the browser.
 
-    ![Jupyter Menu](/docs/assets/jupyter_menu.png "Jupyter Menu")
+    ![Jupyter Menu](jupyter_menu.png "Jupyter Menu")
 
     Alternatively, this can be done directly from the command line. In addition to creating `example_notebook.md`, graphics are also saved in a separate `example_notebook_files` folder.
 
@@ -249,7 +249,7 @@ margin-bottom: 0; }
 
 2.  The HTML table will have the new styles applied.
 
-    ![Jupyter Table](/docs/assets/jupyter_table.png "Jupyter Table") ![Jekyll Table](/docs/assets/jekyll/jekyll_table.png "Jekyll Table")
+    ![Jupyter Table](/docs/assets/jupyter_table.png "Jupyter Table") ![Jekyll Table](jekyll_table.png "Jekyll Table")
 
 ### Add an Image in Jekyll
 
@@ -266,7 +266,7 @@ Adding an image through markdown requires having the images stored in the projec
 
 3.  Graphs with legends that are in a longer dimension also can be displayed.
 
-    ![GG Plot](/docs/assets/jekyll/jekyll_ggplot.png "GG Plot")
+    ![GG Plot](jekyll_ggplot.png "GG Plot")
 
     This is just an example. Adding interactive graphs using JavaScript libraries is beyond the scope of this guide.
 
@@ -365,4 +365,4 @@ $$
 
 6.  The browser should use MathJax to display output identical to a Jupyter Notebook.
 
-    ![Jupyter Mathjax](/docs/assets/jupyter_mathjax.png "Jupyter Mathjax") ![Jekyll Mathjax](/docs/assets/jekyll/jekyll_mathjax.png "Jekyll Mathjax")
+    ![Jupyter Mathjax](/docs/assets/jupyter_mathjax.png "Jupyter Mathjax") ![Jekyll Mathjax](jekyll_mathjax.png "Jekyll Mathjax")

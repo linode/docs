@@ -44,7 +44,7 @@ This guide has been written with the assumption that you are logged in as the ro
 
 1.  Go to your NodeBalancer's configuration page. If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
 
-    [![The NodeBalancer SSL Certificate Fields.](/docs/assets/nodebalancer-ssl-cert.png)](/docs/assets/nodebalancer-ssl-cert.png)
+    [![The NodeBalancer SSL Certificate Fields.](nodebalancer-ssl-cert.png)](nodebalancer-ssl-cert.png)
 
 2.  Copy the contents of your SSL certificate into the **Certificate** field. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another.
 

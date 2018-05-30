@@ -36,7 +36,7 @@ Shiny Server comes with pre-installed demo apps. However, in order to demonstrat
 
 2.  In the **File** menu, under **New File**, select **Shiny Web App...**. When prompted, choose a name for your project. Select **Multiple File** and choose a directory to store the new app's files.
 
-    ![Create New Shiny App](/docs/assets/shiny/create-shiny-app.png "Create New Shiny App")
+    ![Create New Shiny App](create-shiny-app.png "Create New Shiny App")
 
 3.  Rstudio automatically opens two new files: `ui.R` and `server.R`. These files are pre-filled with a demo app that will create an interactive histogram of R's built-in Old Faithful data set. Edit `server.R` to adjust the formatting of the histogram according to your tastes. For example, to change the bars to red with a black border:
 
@@ -83,7 +83,7 @@ Use `install.packages()` to add the Shiny package:
 
 5.  In a browser, navigate to your Linode's public IP address or FQDN on port `3838` (e.g. `example.com:3838`). You should see the Shiny Server welcome page:
 
-    ![Shiny Server Welcome Page](/docs/assets/shiny/shiny-welcome.png "Shiny Server Welcome Page")
+    ![Shiny Server Welcome Page](shiny-welcome.png "Shiny Server Welcome Page")
 
 ### Deploy Your App
 
@@ -99,7 +99,7 @@ By default, Shiny Server uses `/srv/shiny-server/` as its site directory. Any Sh
 
     You should see your app displayed:
 
-    ![Shiny Demo App](/docs/assets/shiny/shiny3.png "Shiny Demo App")
+    ![Shiny Demo App](shiny3.png "Shiny Demo App")
 
 ### Configure Shiny Server
 

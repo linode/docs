@@ -216,41 +216,41 @@ Issue the following commands to install `exim4` and configure it for outgoing In
 
 Select "internet site" as the type of mail configuration to use:
 
-[![Exim general configuration on Ubuntu 9.10.](/docs/assets/288-exim4-config-1-general.png)](/docs/assets/288-exim4-config-1-general.png)
+[![Exim general configuration on Ubuntu 9.10.](288-exim4-config-1-general.png)](288-exim4-config-1-general.png)
 
 Specify your systems's fully qualified domain name as the system mail name:
 
-[![Exim system mail name configuration on Ubuntu 9.10.](/docs/assets/289-exim4-config-2-system-mail-name.png)](/docs/assets/289-exim4-config-2-system-mail-name.png)
+[![Exim system mail name configuration on Ubuntu 9.10.](289-exim4-config-2-system-mail-name.png)](289-exim4-config-2-system-mail-name.png)
 
 Enter "127.0.0.1" when asked for the IP address to listen on for SMTP connections. For purposes of allowing Redmine to send mail, we only want to listen on localhost.
 
-[![Exim IP address configuration on Ubuntu 9.10.](/docs/assets/290-exim4-config-3-ip-address.png)](/docs/assets/290-exim4-config-3-ip-address.png)
+[![Exim IP address configuration on Ubuntu 9.10.](290-exim4-config-3-ip-address.png)](290-exim4-config-3-ip-address.png)
 
 Enter "localhost.localdomain" and your fully qualified domain name when asked for the list of recipient domains.
 
-[![Exim destination domains configuration on Ubuntu 9.10.](/docs/assets/291-exim4-config-4-destinations.png)](/docs/assets/291-exim4-config-4-destinations.png)
+[![Exim destination domains configuration on Ubuntu 9.10.](291-exim4-config-4-destinations.png)](291-exim4-config-4-destinations.png)
 
 Relay domains and machines should be left blank.
 
-[![Exim relay domains configuration on Ubuntu 9.10.](/docs/assets/292-exim4-config-5-relay-domains.png)](/docs/assets/292-exim4-config-5-relay-domains.png)
+[![Exim relay domains configuration on Ubuntu 9.10.](292-exim4-config-5-relay-domains.png)](292-exim4-config-5-relay-domains.png)
 
-[![Exim relay machines configuration on Ubuntu 9.10.](/docs/assets/293-exim4-config-6-relay-machines.png)](/docs/assets/293-exim4-config-6-relay-machines.png)
+[![Exim relay machines configuration on Ubuntu 9.10.](293-exim4-config-6-relay-machines.png)](293-exim4-config-6-relay-machines.png)
 
 Specify "No" when asked about DNS queries.
 
-[![Exim DNS queries configuration on Ubuntu 9.10.](/docs/assets/294-exim4-config-7-dns.png)](/docs/assets/294-exim4-config-7-dns.png)
+[![Exim DNS queries configuration on Ubuntu 9.10.](294-exim4-config-7-dns.png)](294-exim4-config-7-dns.png)
 
 When asked about maildirs versus mbox format, you may choose either. Maildirs are increasingly preferred by many modern mail tools.
 
-[![Exim maildirs or mbox configuration on Ubuntu 9.10.](/docs/assets/295-exim4-config-8-maildirs.png)](/docs/assets/295-exim4-config-8-maildirs.png)
+[![Exim maildirs or mbox configuration on Ubuntu 9.10.](295-exim4-config-8-maildirs.png)](295-exim4-config-8-maildirs.png)
 
 Specify "No" when asked whether to split the configuration into smaller files.
 
-[![Exim config file splitting configuration on Ubuntu 9.10.](/docs/assets/296-exim4-config-9-split.png)](/docs/assets/296-exim4-config-9-split.png)
+[![Exim config file splitting configuration on Ubuntu 9.10.](296-exim4-config-9-split.png)](296-exim4-config-9-split.png)
 
 Enter "root" and an email address at your domain for the postmaster mail query.
 
-[![Exim postmaster configuration on Ubuntu 9.10.](/docs/assets/297-exim4-config-10-postmaster.png)](/docs/assets/297-exim4-config-10-postmaster.png)
+[![Exim postmaster configuration on Ubuntu 9.10.](297-exim4-config-10-postmaster.png)](297-exim4-config-10-postmaster.png)
 
 Create the file `config/email.yml` and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.
 

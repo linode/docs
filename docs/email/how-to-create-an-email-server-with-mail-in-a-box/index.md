@@ -118,17 +118,17 @@ Every step is thoroughly explained in the terminal output. The first steps are e
 
 1.  When you're prompted to choose an email address, delete the pre-filled value and replace it with `your_name`@example.com. You can replace `your_name` with whatever you desire, as long as it's a valid username.
 
-    ![Choose Main Email Address and Domain](/docs/assets/mail-in-a-box-choose-email-and-domain-ubuntu1404.png)
+    ![Choose Main Email Address and Domain](mail-in-a-box-choose-email-and-domain-ubuntu1404.png)
 
 2.  In the next step, the hostname should look like this:
 
-    ![Choose Hostname](/docs/assets/mail-in-a-box-choose-hostname-ubuntu1404.png)
+    ![Choose Hostname](mail-in-a-box-choose-hostname-ubuntu1404.png)
 
     Now, the install wizard should continue to download and configure software packages. Just wait for it to do its magic.
 
 3.  At the next step, you'll be prompted to choose your timezone. Use the arrow keys to make the desired selection and press `ENTER`.
 
-    ![Choose Timezone](/docs/assets/mail-in-a-box-choosing-timezone-ubuntu1404.png)
+    ![Choose Timezone](mail-in-a-box-choosing-timezone-ubuntu1404.png)
 
     Once again, Mail-in-a-Box will continue to pull in required packages and auto-configure them. Wait for it to finish, it will take longer this time.
 
@@ -180,7 +180,7 @@ Since it's very likely that a Let's Encrypt TLS certificate hasn't been installe
 
 2.  In the top-left menu you'll notice an element called **System**. Click on it and then select **TLS (SSL) Certificates**. Now click on the blue button that says **Provision** and follow the instructions.
 
-    ![Control Panel - TLS Certificates Page](/docs/assets/mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
+    ![Control Panel - TLS Certificates Page](mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
 
 3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/networking/dns/configure-your-linode-for-reverse-dns/), to set up a pointer record (PTR). This step is important to execute and pass some antispam checks. Without it, some of the other mail servers will flag your outbound email as spam or will consider it suspicious that your IP doesn't point to your domain name.
 

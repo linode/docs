@@ -357,13 +357,13 @@ listen postgres
 
 2.  You can also connect to the HAProxy Linode on port `7000` to see the HAProxy dashboard:
 
-    ![HAProxy dashboard - all servers running](/docs/assets/pgha-haproxy-1-small.png "HAProxy dashboard - all servers running")
+    ![HAProxy dashboard - all servers running](pgha-haproxy-1-small.png "HAProxy dashboard - all servers running")
 
     In the `postgres` section, the `postgresql_192.0.2.11_5432` row is highlighted in green. This indicates that `192.0.2.11` is currently acting as the master.
 
 3.  If you kill the primary Linode (using `sudo systemctl stop patroni` or by shutting down the server), the dashboard will look similar to:
 
-    ![HAProxy dashboard - when primary fails](/docs/assets/pgha-haproxy-2-small.png "HAProxy dashboard - when primary fails")
+    ![HAProxy dashboard - when primary fails](pgha-haproxy-2-small.png "HAProxy dashboard - when primary fails")
 
     In the `postgres` section, the `postgresql_192.0.2.11_5432` row is now red and the `postgresql_192.0.2.13_5432` row is highlighted in green. This indicates that `192.0.2.13` is currently acting as the master.
 

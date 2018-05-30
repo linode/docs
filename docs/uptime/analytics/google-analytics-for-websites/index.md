@@ -36,7 +36,7 @@ Prior to adding Google Analytics to your website, you need to sign up and set up
 
 3.  Be sure the **Website** option is selected, then enter your account information as desired. Be sure that your website URL is accurate.
 
-    ![Google Analytics account creation](/docs/assets/googleana-wordpress-signup.png)
+    ![Google Analytics account creation](googleana-wordpress-signup.png)
 
 4.  Press **Get Tracking ID**, and read through and accept the Google Analytics Terms of Service.
 

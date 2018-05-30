@@ -167,18 +167,18 @@ The `/jupyter` url path can have any name as long as it matches the base url pat
 
 1.  On your local machine, navigate to `https://your-domain-name/` where `your-domain-name` is the IP address of your Linode or your selected domain name. If using a self-signed certificate, your browser might require that you confirm a security exception:
 
-    ![OpenSSL Browser Error](/docs/assets/jupyter-add-exception.png)
+    ![OpenSSL Browser Error](jupyter-add-exception.png)
 
 2.  If Apache is configured properly, Jupyter prompts you to log in:
 
-    ![Jupyter Login Page](/docs/assets/jupyter-login-page.png)
+    ![Jupyter Login Page](jupyter-login-page.png)
 
 3.  Create a new notebook using a Python kernel:
 
-    ![Jupyter Python Kernel](/docs/assets/jupyter-new-notebook.png)
+    ![Jupyter Python Kernel](jupyter-new-notebook.png)
 
 4.  The Notebook is ready to run Python code or additional kernels added in the future:
 
-    ![Jupyter Notebook Code](/docs/assets/jupyter-code-sample.png)
+    ![Jupyter Notebook Code](jupyter-code-sample.png)
 
 Note this setup is for a single-user only; simultaneous users on the same Notebook may cause unpredictable results. For a multi-user server, consider using [JupyterHub](https://github.com/jupyterhub/jupyterhub) instead.

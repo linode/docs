@@ -42,11 +42,11 @@ To install the Postfix MTA issue the following command:
 
 During the installation process, the package manager will prompt you for the responses to a few questions. To the first question regarding the type of mail server you want to configure select "Internet Site" and continue as in the following image:
 
-[![Selecting the Postfix mail server configuration type on a Debian 5.0 (Lenny) system.](/docs/assets/79-postfix-courier-mysql-02-mail-server-type-2.png)](/docs/assets/79-postfix-courier-mysql-02-mail-server-type-2.png)
+[![Selecting the Postfix mail server configuration type on a Debian 5.0 (Lenny) system.](79-postfix-courier-mysql-02-mail-server-type-2.png)](79-postfix-courier-mysql-02-mail-server-type-2.png)
 
 The next prompt will ask for the system mail name. This should correspond to the canonical a fully qualified domain name (FQDN) that points to your Linode's IP address. In this example, we're using a machine specific hostname for our server. Set the reverse DNS for your Linode's IP address to the fully qualified domain name you assign as the system mail name. You will be able to send mail from additional domains as configured later in this document. See the following example:
 
-[![Selecting the Postfix system mail name on a Debian 5.0 (Lenny) system.](/docs/assets/80-postfix-courier-mysql-02-mail-server-type-3.png)](/docs/assets/80-postfix-courier-mysql-02-mail-server-type-3.png)
+[![Selecting the Postfix system mail name on a Debian 5.0 (Lenny) system.](80-postfix-courier-mysql-02-mail-server-type-3.png)](80-postfix-courier-mysql-02-mail-server-type-3.png)
 
 When the installation process completes proceed with the configuration of Postfix.
 

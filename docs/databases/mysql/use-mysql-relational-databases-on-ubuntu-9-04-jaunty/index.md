@@ -29,7 +29,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Ubuntu Jaunty.](/docs/assets/468-jaunty-01-mysql-root-password.png)](/docs/assets/468-jaunty-01-mysql-root-password.png)
+[![Setting the MySQL root password in Ubuntu Jaunty.](468-jaunty-01-mysql-root-password.png)](468-jaunty-01-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. Next, make sure your `/etc/hosts` file has proper entries, similar to the ones shown below:
 

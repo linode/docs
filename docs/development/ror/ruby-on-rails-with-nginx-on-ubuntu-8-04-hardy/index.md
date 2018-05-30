@@ -94,7 +94,7 @@ Run the Phusion Passenger installer for Nginx:
 
 You'll be greeted by the Phusion Passenger Nginx installer program. Press "Enter" to continue with the installation.
 
-[![Phusion Passenger Nginx installer program running on Ubuntu 8.04 LTS (Hardy).](/docs/assets/465-01-passenger-nginx-installer.png)](/docs/assets/465-01-passenger-nginx-installer.png)
+[![Phusion Passenger Nginx installer program running on Ubuntu 8.04 LTS (Hardy).](465-01-passenger-nginx-installer.png)](465-01-passenger-nginx-installer.png)
 
 When prompted for the Nginx installation method, we recommend you choose "1" to allow the installer to automatically download, compile, and install Nginx for you. Unless you have specific needs that would necessitate passing custom options to Nginx at compile time, this is the safest way to proceed.
 

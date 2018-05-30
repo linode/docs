@@ -146,7 +146,7 @@ call plug#end()
 
     Press **i** to enter Insert mode, and type `def`. You should be presented with a dropdown list similar to that shown in the image below. Highlight one of the options using the up and down arrows in your keyboard and press the *Tab* key. The code snippet will be inserted into the body of the file:
 
-    ![Neovim autocomplete snippets](/docs/assets/neovim/neovim-autocomplete-snippets.png "Neovim autocomplete snippets")
+    ![Neovim autocomplete snippets](neovim-autocomplete-snippets.png "Neovim autocomplete snippets")
 
     For more examples using other programming languages, refer to the [plugin documentation](https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt).
 

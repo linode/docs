@@ -93,7 +93,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 1.  Visit your domain in a web browser and follow the steps shown onscreen. Select your preferred language, review the information page and click the **Let's go!** button. Enter the database credentials that were set when you installed MySQL:
 
-    ![WordPress Installer](/docs/assets/wordpress-setup_small.png)
+    ![WordPress Installer](wordpress-setup_small.png)
 
     WordPress will test the credentials and if authentication is successful, prompt you to **Run the install**.
 
@@ -103,7 +103,7 @@ If WordPress doesn't display when you visit your domain, try adding `/wp-admin` 
 
 2.  Fill out the administration information and click **Install WordPress**.
 
-    ![WordPress Administrative Information](/docs/assets/wordpress-installation-screen01.png)
+    ![WordPress Administrative Information](wordpress-installation-screen01.png)
 
     Click **Log In**, enter your credentials and proceed to the WordPress Dashboard.
 
@@ -137,7 +137,7 @@ To configure permalink settings:
 
 2.  Mouseover **Settings** in the menu on the left of your screen, then click **Permalinks**:
 
-    ![Wordpress Settings Permalinks](/docs/assets/wordpress-settings-permalinks.png)
+    ![Wordpress Settings Permalinks](wordpress-settings-permalinks.png)
 
 3.  Select your preferred permalink style or create your own *Custom Structure* and click **Save Changes**
 

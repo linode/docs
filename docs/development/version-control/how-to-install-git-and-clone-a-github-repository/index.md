@@ -38,20 +38,20 @@ The directions below are for Debian or Ubuntu. For installation on Mac, Windows,
 
     Now that Git has been installed, refer to the image below for help with using Git and GitHub together.
 
-    [![Workflow for using Git with GitHub.](/docs/assets/git-github-workflow-650w.png)](/docs/assets/git-github-workflow-1000w.png)
+    [![Workflow for using Git with GitHub.](/docs/assets/git-github-workflow-650w.png)](git-github-workflow-1000w.png)
 
 ## Clone a GitHub Test Repository
 A repository, or repo, is a Git project. For tutorial purposes, there is a test repository setup on GitHub, which is listed below.
 
 1.  Go to the [GitHub homepage](https://www.github.com). At the top, search for `test-repo-789`. If you would like to contribute to Linode's guides, search for `linode docs`.
 
-    [![GitHub homepage search.](/docs/assets/github-search.png)](/docs/assets/github-search.png)
+    [![GitHub homepage search.](github-search.png)](github-search.png)
 
 2.  Select `test-repo-789`, it should be the first result, listed as `NwayNway/test-repo-789`.
 
 3.  Copy the "HTTPS clone URL" link using the clipboard icon at the bottom right of the page's side-bar, pictured below.
 
-    [![GitHub clone clipboard.](/docs/assets/github-clone-arrow.png)](/docs/assets/github-clone-arrow.png)
+    [![GitHub clone clipboard.](github-clone-arrow.png)](github-clone-arrow.png)
 
 4.  In the Linode terminal **from the home directory**, use the command `git clone`, then paste the link from your clipboard, or copy the command and link from below:
 
@@ -72,13 +72,13 @@ To share new files or file revisions, you'll need a GitHub account and a project
 
 2.  Select your username at the top right of the page, pictured below, which links to your profile.
 
-    [![GitHub username icon.](/docs/assets/github-sampleuser.png)](/docs/assets/github-sampleuser.png)
+    [![GitHub username icon.](github-sampleuser.png)](github-sampleuser.png)
 
 3.  To fork `test-repo-789`, use the search bar at the top left of the page. Search for `test-repo-789`.
 
 4. After you select `NwayNway/test-repo-789`, fork the repo using the **"Fork"** button on the top right of the page. The **"Fork"** button is under the username icon pictured in step 2 above.
 
-    [![GitHub Fork Button.](/docs/assets/github-fork.png)](/docs/assets/github-fork.png)
+    [![GitHub Fork Button.](github-fork.png)](github-fork.png)
 
 You now have a copy of the repo on your GitHub account. Next, return to the terminal of the development Linode.
 
@@ -135,27 +135,27 @@ So far, Git was installed on a development Linode, a repo project was cloned to 
 
 1.  From the GitHub browser window, select your username from the top right of the page, pictured below.
 
-    [![GitHub username icon.](/docs/assets/github-sampleuser.png)](/docs/assets/github-sampleuser.png)
+    [![GitHub username icon.](github-sampleuser.png)](github-sampleuser.png)
 
 2.  At your GitHub profile, select the `test-repo-789` in the center of the page, pictured below.
 
-    [![GitHub popular repositories.](/docs/assets/github-popular-repositories.png)](/docs/assets/github-popular-repositories.png)
+    [![GitHub popular repositories.](github-popular-repositories.png)](github-popular-repositories.png)
 
 3.  At the `test-repo-789` page, select **"branches"**.
 
-    [![GitHub branches.](/docs/assets/github-branches.png)](/docs/assets/github-branches.png)
+    [![GitHub branches.](github-branches.png)](github-branches.png)
 
 4.  Under **"Your branches"**, select **"New pull request"**.
 
-    [![GitHub branches.](/docs/assets/github-new-pull-request.png)](/docs/assets/github-new-pull-request.png)
+    [![GitHub branches.](github-new-pull-request.png)](github-new-pull-request.png)
 
 5.  Check that the branch filters are set correctly.
 
-    [![GitHub branch filters.](/docs/assets/github-branch-filters.png)](/docs/assets/github-branch-filters.png)
+    [![GitHub branch filters.](github-branch-filters.png)](github-branch-filters.png)
 
 6.  Select the **"Create pull request"** button.
 
-    [![GitHub branch filters.](/docs/assets/github-create-pull-request.png)](/docs/assets/github-create-pull-request.png)
+    [![GitHub branch filters.](github-create-pull-request.png)](github-create-pull-request.png)
 
 
 Congratulations, you have used Git and GitHub for file sharing and version control. There are still many Git commands to learn, but you are off to a great start.

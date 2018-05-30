@@ -181,29 +181,29 @@ Now you can run the install script from your browser. Here's how:
 
 1.  Navigate to <http://example.com/dolphin/install/index.php>. Replace `example.com` with your domain name or IP address. The Dolphin installation page appears, as shown below.
 
-    [![Dolphin installer.](/docs/assets/1076-dolphin-1-small.png)](/docs/assets/861-Dolphin1.png)
+    [![Dolphin installer.](/docs/assets/1076-dolphin-1-small.png)](861-Dolphin1.png)
 
 2.  Click **Install** to begin. The webpage shown below appears.
 
-    [![Dolphin installer.](/docs/assets/1077-dolphin-2-small.png)](/docs/assets/862-Dolphin2.png)
+    [![Dolphin installer.](/docs/assets/1077-dolphin-2-small.png)](862-Dolphin2.png)
 
-    [![Dolphin installer.](/docs/assets/1078-dolphin-3-small.png)](/docs/assets/863-Dolphin2a.png)
+    [![Dolphin installer.](/docs/assets/1078-dolphin-3-small.png)](863-Dolphin2a.png)
 
 3.  All of the files listed should be *Writable*. Click **Next** to continue. The *Paths Check* webpage appears, as shown below.
 
-    [![Dolphin installer.](/docs/assets/1079-dolphin-4-small.png)](/docs/assets/864-Dolphin3.png)
+    [![Dolphin installer.](/docs/assets/1079-dolphin-4-small.png)](864-Dolphin3.png)
 
 4.  All of the paths listed should be "found". You should also see a **GD library installed** message at the bottom of the webpage. Click **Next** to continue. The *Database* webpage appears, as shown below.
 
-    [![Dolphin installer.](/docs/assets/1080-dolphin-5-small.png)](/docs/assets/865-Dolphin4.png)
+    [![Dolphin installer.](/docs/assets/1080-dolphin-5-small.png)](865-Dolphin4.png)
 
 5.  Enter the details for the Dolphin database you created earlier in this guide. Click **Next** to continue. The *Configuration* webpage appears, as shown below.
 
-    [![Dolphin installer.](/docs/assets/1081-dolphin-6-small.png)](/docs/assets/866-Dolphin5.png)
+    [![Dolphin installer.](/docs/assets/1081-dolphin-6-small.png)](866-Dolphin5.png)
 
 6.  Complete the form by entering the required information for your website, and then click **Next** to continue. The *Cron Jobs* webpage appears, as shown below.
 
-    [![Dolphin installer.](/docs/assets/1082-dolphin-7-small.png)](/docs/assets/867-Dolphin6.png)
+    [![Dolphin installer.](/docs/assets/1082-dolphin-7-small.png)](867-Dolphin6.png)
 
 7.  Now you'll need to set up a cron job specified on the webpage. To set up your cron job, you'll need to open your crontab for editing by entering the following command:
 
@@ -217,7 +217,7 @@ Now you can run the install script from your browser. Here's how:
 9.  To save the cron job, press Control-X, and then press Y to save.
 10. Back in your web browser, click **Next**. The *Permissions Reversal* webpage appears, as shown below.
 
-    [![Dolphin installer.](/docs/assets/1083-dolphin-8-small.png)](/docs/assets/868-Dolphin7.png)
+    [![Dolphin installer.](/docs/assets/1083-dolphin-8-small.png)](868-Dolphin7.png)
 
 11. To reverse your permissions, enter the following commands, one by one. Be sure to replace `example_user` with your username, and `example.com` with your domain name:
 
@@ -228,11 +228,11 @@ Now you can run the install script from your browser. Here's how:
 
 12. Back in your web browser, click **Check**. The webpage should now indicate that the directory is "Non-writable", as shown below.
 
-    [![Dolphin installer.](/docs/assets/1084-dolphin-9-small.png)](/docs/assets/869-Dolphin7a.png)
+    [![Dolphin installer.](/docs/assets/1084-dolphin-9-small.png)](869-Dolphin7a.png)
 
 13. Click **Next**. If the webpage shown below appears, You have successfully installed Dolphin on your Linode.
 
-    [![Dolphin installer.](/docs/assets/1085-dolphin-10-small.png)](/docs/assets/870-Dolphin8.png)
+    [![Dolphin installer.](/docs/assets/1085-dolphin-10-small.png)](870-Dolphin8.png)
 
 14. Copy the languages from the install directory by entering the following command. Be sure to replace `example_user` with your username, and `example.com` with your domain name:
 

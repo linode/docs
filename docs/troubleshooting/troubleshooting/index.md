@@ -34,7 +34,7 @@ You can turn off a Linode, just like a physical computer. If you attempt to conn
 2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears, as shown below.
 
-    [![Check Linode boot status.](/docs/assets/952-troubleshooting1-1-small.png)](/docs/assets/953-troubleshooting1-1.png)
+    [![Check Linode boot status.](/docs/assets/952-troubleshooting1-1-small.png)](953-troubleshooting1-1.png)
 
 4.  Review the *Server Status* box on the sidebar to determine whether or not the server is powered on.
 5.  If the server is powered off, click the **Boot** button to turn it on. Wait a couple of minutes for the server to boot.
@@ -141,7 +141,7 @@ The applications on your Linode require a certain amount of physical memory to f
 
 7.  Examine the output. The free memory available (in megabytes) is shown in the *-/+ buffers/cache* column and the *free* row, as shown below.
 
-    [![Check free memory.](/docs/assets/941-troubleshooting3-1.png)](/docs/assets/941-troubleshooting3-1.png)
+    [![Check free memory.](941-troubleshooting3-1.png)](941-troubleshooting3-1.png)
 
 8.  A lack of free memory may indicate that an application is consuming all of your available memory. To see a list of running processes sorted by memory usage, execute the following command in the LISH console or a terminal window:
 
@@ -169,7 +169,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 1.  Open a terminal window and log in to your Linode via SSH.
 2.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
-    [![Check for Disk I/O bottleneck.](/docs/assets/939-troubleshooting2.png)](/docs/assets/939-troubleshooting2.png)
+    [![Check for Disk I/O bottleneck.](939-troubleshooting2.png)](939-troubleshooting2.png)
 
 3.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
 4.  If your I/O wait percentage is above zero, verify that your server has enough free memory available. In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
@@ -332,6 +332,6 @@ If you recently upgraded your plan, your Linode won't be able to take advantage 
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Examine the *Storage* pane on the sidebar, as shown below. If you have free storage space, you can allocate that space to your existing disks.
 
-[![Resize disks.](/docs/assets/944-troubleshooting4-1.png)](/docs/assets/944-troubleshooting4-1.png)
+[![Resize disks.](944-troubleshooting4-1.png)](944-troubleshooting4-1.png)
 
 Follow our steps for [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to take advantage of the extra space.

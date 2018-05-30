@@ -208,30 +208,30 @@ Metabase is now accessible on the browser on your Linode's public IP address.
 
 1.  The first time you try to access, it will take some time because the MySQL database needs to migrate:
 
-    ![Metabase Load Screen](/docs/assets/metabase/metabase-load.png)
+    ![Metabase Load Screen](metabase-load.png)
 
 2.  Create an account:
 
-    ![Metabase Account](/docs/assets/metabase/metabase-login.png)
+    ![Metabase Account](metabase-login.png)
 
 3.  Enter the database information or skip this then add the information later from the Admin Panel:
 
-    ![MySQL Login Information](/docs/assets/metabase/metabase-mysql.png)
+    ![MySQL Login Information](metabase-mysql.png)
 
 4.  From the top right drop down menu, select Admin Panel then click Data Model on the top menu.
 
-    ![Metabase Data Model](/docs/assets/metabase/metabase-admin-panel.png)
+    ![Metabase Data Model](metabase-admin-panel.png)
 
 5.  On the left, select salaries to see information about the table, such as foreign keys and column names. Click **Add a Segment**:
 
-    ![Metabase Salaries](/docs/assets/metabase/metabase-salaries.png)
+    ![Metabase Salaries](metabase-salaries.png)
 
 6.  Create a filter to view all employees with a salary greater than $50,000 (Metabase allows you to create this filter without writing SQL):
 
-    ![Metabase Segment](/docs/assets/metabase/metabase-segment.png)
+    ![Metabase Segment](metabase-segment.png)
 
 7.  See the results:
 
-    ![Metabase Results](/docs/assets/metabase/metabase-results.png)
+    ![Metabase Results](metabase-results.png)
 
 Metabase has much more functionality you can explore. Refer to the [official documentation](https://metabase.com/docs/latest/) for other use cases with Metabase.

@@ -498,17 +498,17 @@ Confirm that everything is working as expected.
 
 4. Click on the **Manage Databases** link:
 
-    ![Odoo 11 Login Screen](/docs/assets/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode/odoo-11-login-screen.png "Odoo 11 Login Screen")
+    ![Odoo 11 Login Screen](odoo-11-login-screen.png "Odoo 11 Login Screen")
 
     Now you can see the test database you created earlier.
 
 5.  Click **Create Database** and fill out the form with a test database. Check the **Load demonstation data** box to populate your database with sample data.
 
-    ![Odoo 11 Create Database](/docs/assets/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode/odoo-11-create-db.png "Odoo 11 Create Database")
+    ![Odoo 11 Create Database](odoo-11-create-db.png "Odoo 11 Create Database")
 
 6. In the browser, you should see a list of available apps, indicating that database creation was successful:
 
-    ![Odoo 11 Welcome Screen](/docs/assets/install-an-odoo-11-stack-on-ubuntu-16-04-using-linode/odoo-11-welcome.png "Odoo 11 Welcome Screen")
+    ![Odoo 11 Welcome Screen](odoo-11-welcome.png "Odoo 11 Welcome Screen")
 
     The first time you create a database, Odoo may take several minutes to load all of its add-ons. Do not reload the page during this process.
 

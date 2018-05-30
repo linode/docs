@@ -160,7 +160,7 @@ Selenium provides a single `.jar` file that can be used to run a standalone serv
 
 4.  Navigate to `http://192.0.2.0:4444/grid/console` in a web browser (replace `192.0.2.0` with the public IP address of your `hub` Linode) to see a console listing your available nodes.
 
-    ![Selenium Grid Console](/docs/assets/selenium/grid-console.png "Selenium Grid Console")
+    ![Selenium Grid Console](grid-console.png "Selenium Grid Console")
 
     The console should show that each node is configured to use a different version of Firefox.
 

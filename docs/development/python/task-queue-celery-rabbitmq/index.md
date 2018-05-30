@@ -329,7 +329,7 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
 
 4. Point your browser to `localhost:5555` to view the dashboard:
 
-      ![Flower screenshot](/docs/assets/celery/flower-screenshot.png)
+      ![Flower screenshot](flower-screenshot.png)
 
     {{< note >}}
 If Flower is exposed through a public IP address, be sure to take additional steps to secure this through a [reverse proxy](https://flower.readthedocs.io/en/latest/reverse-proxy.html).

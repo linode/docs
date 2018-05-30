@@ -156,7 +156,7 @@ You will need Don’t Starve Together installed on your personal computer to get
 
 1.  Open up the game on your computer. Once you reach the main menu, press the backtick key (<code>`</code>) on your keyboard. You will see a screen similar to this one:
 
-    [![DST Console.](/docs/assets/DSTconsole_resized.png)](/docs/assets/DSTconsole.png)
+    [![DST Console.](/docs/assets/DSTconsole_resized.png)](DSTconsole.png)
 
     {{< note >}}
 If you've never before played the game, you first need to click on **Play** and create an account.
@@ -167,7 +167,7 @@ If you've never before played the game, you first need to click on **Play** and 
         TheNet:GenerateServerToken()
 
     It should look like this:
-    [![DST Console with command](/docs/assets/DSTconsolecommand_resized.png)](/docs/assets/DSTconsolecommand.png)
+    [![DST Console with command](/docs/assets/DSTconsolecommand_resized.png)](DSTconsolecommand.png)
 
     Once you have done this, press **ENTER** on your keyboard. The console will close, and you can exit the game. Locate the file that has been generated in one of the following directories, depending on your operating system.
 
@@ -212,6 +212,6 @@ From this point, do not press the **Control+C** keys while in the console unless
 
 ## Enter The Server
 
-[![DST Server with users on it](/docs/assets/DSTrunning_resized.png)](/docs/assets/DSTrunning.png)
+[![DST Server with users on it](/docs/assets/DSTrunning_resized.png)](DSTrunning.png)
 
 Now you have your very own Don’t Starve Together server for you and your friends to play on. Players can access the server by opening the server list and finding your server’s name, clicking **Connect**, and entering a password if you chose to set one.

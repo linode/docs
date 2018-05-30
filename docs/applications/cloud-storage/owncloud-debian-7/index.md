@@ -94,7 +94,7 @@ Since the LAMP stack utilizes MySQL, ownCloud can be configured to use this data
 
         12.34.56.78/owncloud
 
-    [![Address bar](/docs/assets/1731-address-bar.png)](/docs/assets/1731-address-bar.png)
+    [![Address bar](1731-address-bar.png)](1731-address-bar.png)
 
 2.  Create an ownCloud account by entering a user name and password.
 3.  Click on **Advanced**, select MySQL and enter the following information:
@@ -104,11 +104,11 @@ Since the LAMP stack utilizes MySQL, ownCloud can be configured to use this data
     -   Database Name
     -   Localhost
 
-    [![Configuring ownCloud advanced settings.](/docs/assets/1733-owncloud-advanced-settings.png)](/docs/assets/1733-owncloud-advanced-settings.png)
+    [![Configuring ownCloud advanced settings.](1733-owncloud-advanced-settings.png)](1733-owncloud-advanced-settings.png)
 
 4.  Click on the **Finish Setup** button.
 
-    [![Accessing ownCloud.](/docs/assets/1732-owncloud-2.png)](/docs/assets/1732-owncloud-2.png)
+    [![Accessing ownCloud.](1732-owncloud-2.png)](1732-owncloud-2.png)
 
 ## More Information
 

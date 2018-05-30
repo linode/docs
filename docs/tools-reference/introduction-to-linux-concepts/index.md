@@ -114,7 +114,7 @@ In this section, we'll look at the structure of a Linux server. Everything on yo
 
 Most Linux systems have directories called `lib` and `var` (along with several others) underneath the root directory. The `lib` directory contains system libraries, while the `var` directory contains all of the files on your system that are likely to change, such as your logs and your mail messages. Directories can go inside other directories, as illustrated below:
 
-[![The Linux directory structure.](/docs/assets/1489-linux_directory_structure_2.png)](/docs/assets/1489-linux_directory_structure_2.png)
+[![The Linux directory structure.](1489-linux_directory_structure_2.png)](1489-linux_directory_structure_2.png)
 
 ### Print a Working Directory
 Find out where you are in the directory structure. Make sure your terminal application is selected and that you're logged in to your Linode. You should see a blinking cursor where you can start typing.

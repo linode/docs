@@ -91,7 +91,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Visit your domain in your web browser and follow the steps outlined by the configuration process. Begin by reviewing the informational page and clicking the "Let's go!" button. Supply WordPress with the database credentials established when you installed the database server. Finally, select "Run the install" and supply the required values as prompted:
 
-    [![WordPress Installer.](/docs/assets/wordpress-setup_small.png)](/docs/assets/wordpress-setup.png)
+    [![WordPress Installer.](/docs/assets/wordpress-setup_small.png)](wordpress-setup.png)
 
 2.  As it stands, should you try to update WordPress or install new themes or plugins, you will be asked to input your FTP information. To bypass this, you must alter your `wp-config.php` file by adding the following line:
 

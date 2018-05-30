@@ -40,7 +40,7 @@ If you're new to the idea of running a digital phone system, you may want to bru
 
 The diagram below shows the relationship between each of the components that allow a standard phone and your SIP client to communicate:
 
-[![](/docs/assets/1748-asterisk-flowchart.png)](/docs/assets/1748-asterisk-flowchart.png)
+[![](1748-asterisk-flowchart.png)](1748-asterisk-flowchart.png)
 
 ## Prerequisites
 
@@ -79,7 +79,7 @@ Asterisk uses the dahdi\_dummy kernel module, which requires you to edit a few t
 
 You will be presented with a menu like the one below asking you to choose a disk to install GRUB on. You can continue without choosing an option, since this version will be purged in the next step.
 
-[![A Grub option menu.](/docs/assets/1671-asterisk-1.png)](/docs/assets/1671-asterisk-1.png)
+[![A Grub option menu.](1671-asterisk-1.png)](1671-asterisk-1.png)
 
 ### Install and Configure Grub
 
@@ -164,11 +164,11 @@ It's very important that you follow the steps outlined above carefully or your s
 
 7.  Now go up to `Channel Drivers` and select `cham_motif`.
 
-    [![Asterisk Module and Build Option selection](/docs/assets/1678-asterisk-8.png)](/docs/assets/1678-asterisk-8.png)
+    [![Asterisk Module and Build Option selection](1678-asterisk-8.png)](1678-asterisk-8.png)
 
 8.  Finally, under `Compiler Flags` uncheck `BUILD_NATIVE`.
 
-    [![The BUILD\_NATIVE flag.](/docs/assets/1750-asterisk-12-small.png)](/docs/assets/1749-asterisk-12.png)
+    [![The BUILD\_NATIVE flag.](/docs/assets/1750-asterisk-12-small.png)](1749-asterisk-12.png)
 
 9.  When you've selected these and any other modules or build options you may want, use the **Save & Exit** button. Then issue the following commands to finish the installation:
 
@@ -317,7 +317,7 @@ To update your Apache configuration, you will need to restart the server. Issue 
 
 You should now be able to visit your Linode's IP address or the domain you've pointed at your Linode in your web browser. The first page should prompt you to create a user and password to administer the system from:
 
-[![](/docs/assets/1673-asterisk-3.png)](/docs/assets/1673-asterisk-3.png)
+[![](1673-asterisk-3.png)](1673-asterisk-3.png)
 
 ## Configure FreePBX
 
@@ -329,11 +329,11 @@ From your web browser, go to your FreePBX web interface.
 
 1.  Under the **Admin** menu select **Module Admin**.
 
-    [![The Module Admin button.](/docs/assets/1674-asterisk-4.png)](/docs/assets/1674-asterisk-4.png)
+    [![The Module Admin button.](1674-asterisk-4.png)](1674-asterisk-4.png)
 
 2.  Select the **Unsupported** repository, then press the **Check Online** button.
 
-    [![Module Administration Options.](/docs/assets/1675-asterisk-5.png)](/docs/assets/1675-asterisk-5.png)
+    [![Module Administration Options.](1675-asterisk-5.png)](1675-asterisk-5.png)
 
 3.  Select the **Upgrade All** link. Under the Connectivity section, select **Google Voice/Chan Motif**. If there are other modules on this list you want to install, select them now.
 4.  When finished, press the **Process** button, and then **Confirm**.
@@ -344,7 +344,7 @@ If downloading modules fails, from the terminal run this command from the termin
 
 5.  You will now see a red **Apply Config** button. Use it to enable the modules and updates you just downloaded.
 
-    [![Menu bar with Apply Config.](/docs/assets/1676-asterisk-6.png)](/docs/assets/1676-asterisk-6.png)
+    [![Menu bar with Apply Config.](1676-asterisk-6.png)](1676-asterisk-6.png)
 
 6.  To prevent a bug later on, go back to your terminal and issue the following commands:
 
@@ -360,11 +360,11 @@ Your PBX system will need at least one defined extension to send incoming calls 
 1.  Under the **Applications** menu select **Extensions**.
 2.  Unless you have a custom device to configure, keep the drop down menu at `Generic SIP Device` and hit submit.
 
-    [![Creating the new extension.](/docs/assets/1680-asterisk-10.png)](/docs/assets/1680-asterisk-10.png)
+    [![Creating the new extension.](1680-asterisk-10.png)](1680-asterisk-10.png)
 
 3.  Create your SIP extension. The only fields required are the Extension itself, a Display Name, and a secret (password).
 
-    [![Extension info.](/docs/assets/1681-asterisk-11.png)](/docs/assets/1681-asterisk-11.png)
+    [![Extension info.](1681-asterisk-11.png)](1681-asterisk-11.png)
 
 ## Configure Integration with Google Voice
 
@@ -372,10 +372,10 @@ The steps in this section will let your Asterisk server use Google Voice as a tr
 
 1.  From the FreePBX web interface, under the **Connectivity** menu select **Google Voice (Motif)**. Fill out your Google Voice account information and check the options as show below:
 
-    [![Google Voice options.](/docs/assets/1679-asterisk-9.png)](/docs/assets/1679-asterisk-9.png)
+    [![Google Voice options.](1679-asterisk-9.png)](1679-asterisk-9.png)
 
 2.  Under **Connectivity** go to **Inbound Routes**. Create an inbound route pointing to your extension:
 
-    [![](/docs/assets/1749-asterisk-12.png)](/docs/assets/1749-asterisk-12.png)
+    [![](1749-asterisk-12.png)](1749-asterisk-12.png)
 
 3.  Now you can point your SIP client at your Linode, sign in with your extension and password, and begin making and receiving calls.

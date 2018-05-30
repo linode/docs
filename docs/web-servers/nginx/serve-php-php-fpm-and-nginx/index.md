@@ -144,4 +144,4 @@ server {
 
 5.  Access `test.php` from a web browser, using your site's domain or Linode's IP address. You should see the PHP configuration page:
 
-    ![PHP configuration page](/docs/assets/test-php.png "PHP configuration page")
+    ![PHP configuration page](test-php.png "PHP configuration page")

@@ -76,11 +76,11 @@ If you have a firewall set up, allow connections from the port Subsonic is liste
 
 3.  The first time you access your Subsonic server in your browser, you will see the following:
 
-    ![First time Subsonic access](/docs/assets/subsonic-firstlogin.png)
+    ![First time Subsonic access](subsonic-firstlogin.png)
 
 4.  Use the default username and password (admin/admin) or the provided link to log in:
 
-    ![First time Subsonic access](/docs/assets/subsonic-gettingstarted.png)
+    ![First time Subsonic access](subsonic-gettingstarted.png)
 
 5. Create a password for your admin account. You can also set up any other accounts at this time.
 
@@ -90,11 +90,11 @@ Passwords in the Subsonic database are stored in hex format, but not encrypted.
 
 6.  Click on the **Media folders** link and point Subsonic to where you will store your music. If you used the default directory (`/var/music`) above, you can skip this step. Once you've pointed Subsonic to the correct directory and uploaded your music, you can press **Scan media folders now**. Subsonic will then create a database of music files.
 
-    ![First time Subsonic access](/docs/assets/subsonic-foldersetup.png)
+    ![First time Subsonic access](subsonic-foldersetup.png)
 
 &nbsp;
 
-[![The Subsonic Interface.](/docs/assets/subsonic-setup_small.png)](/docs/assets/subsonic-setup.png)
+[![The Subsonic Interface.](/docs/assets/subsonic-setup_small.png)](subsonic-setup.png)
 
 ## Next Steps
 

@@ -30,7 +30,7 @@ The idea behind a golden disk is simple: Create the perfect image and then save 
 Be aware that certain files like `/etc/hosts`, `/etc/hostname`, and static networking configurations may need to be modified for individual Linodes.
 {{< /note >}}
 
-[![Cloning your Linode disk.](/docs/assets/1303-image_cloning_2.jpg)](/docs/assets/1303-image_cloning_2.jpg)
+[![Cloning your Linode disk.](1303-image_cloning_2.jpg)](1303-image_cloning_2.jpg)
 
 There are several places to store a golden disk:
 

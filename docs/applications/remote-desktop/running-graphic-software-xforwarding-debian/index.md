@@ -78,7 +78,7 @@ Connecting from a Windows machine will depend on what software you have chosen. 
         sudo apt-get install iceweasel
         iceweasel &
 
-    [![Iceweasel, running on a Linode](/docs/assets/1632-xforwarding3_small.png)](/docs/assets/1633-xforwarding_3.png)
+    [![Iceweasel, running on a Linode](/docs/assets/1632-xforwarding3_small.png)](1633-xforwarding_3.png)
 
  {{< note >}}
 More intense graphic software may lag when running in this fashion. Using a Linode in a data center geographically close to you can help reduce latency.

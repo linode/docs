@@ -75,11 +75,11 @@ Since Solr is a Java web application, it requires a *Java Runtime Environment (J
 
 2.  Apache will provide a download link based on location:
 
-    [![Selecting an Apache download mirror site](/docs/assets/wpsolr_select_apache_mirror_resized.png)](/docs/assets/wpsolr_select_apache_mirror.png)
+    [![Selecting an Apache download mirror site](/docs/assets/wpsolr_select_apache_mirror_resized.png)](wpsolr_select_apache_mirror.png)
 
 3.  Click the link to open a page of Solr releases:
 
-    [![List of Solr releases](/docs/assets/wpsolr_mirror_directory_listing_resized.png)](/docs/assets/wpsolr_mirror_directory_listing.png)
+    [![List of Solr releases](/docs/assets/wpsolr_mirror_directory_listing_resized.png)](wpsolr_mirror_directory_listing.png)
 
 4.  Click on the highest available 4.x version to see the files in that release:
 
@@ -87,7 +87,7 @@ Since Solr is a Java web application, it requires a *Java Runtime Environment (J
 Since Solr 5.x is still in beta, its configuration procedures are different from 4.x, and WPSolr is not yet compatible with the 5.x release.
 {{< /note >}}
 
-    ![Solr release directory listing](/docs/assets/wpsolr_directory_files.png)
+    ![Solr release directory listing](wpsolr_directory_files.png)
 
 5.  Copy the link address for the non-source `.tgz` file.
 
@@ -108,7 +108,7 @@ For Solr to index blog posts, it needs to know the structure of the blog data. T
 1.  WPSolr provides ready-made configuration files on their website.
 Visit the [WPSolr website](http://wpsolr.com/releases/) and get the link address of the latest WPSolr release for your Solr version:
 
-    [![WPSolr Configuration Download](/docs/assets/wpsolr_wpsolr_config_download_resized.png)](/docs/assets/wpsolr_wpsolr_config_download.png)
+    [![WPSolr Configuration Download](/docs/assets/wpsolr_wpsolr_config_download_resized.png)](wpsolr_wpsolr_config_download.png)
 
     The copied address will look similar to `http://wpsolr.com/?wpdmdl=2064`.
 
@@ -430,31 +430,31 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 2.  On the **Plugins** page, activate the plugin named **Enterprise Search in seconds**:
 
-    [![Activate WPSolr plugin](/docs/assets/wpsolr_activate_wpsolr_plugin_resized.png)](/docs/assets/wpsolr_activate_wpsolr_plugin.png)
+    [![Activate WPSolr plugin](/docs/assets/wpsolr_activate_wpsolr_plugin_resized.png)](wpsolr_activate_wpsolr_plugin.png)
 
 3.  WordPress then displays a *plugin activated* message and adds a **WPSOLR** menu item to the sidebar:
 
-    [![After WPSolr activation](/docs/assets/wpsolr_after_plugin_activation_resized.png)](/docs/assets/wpsolr_after_plugin_activation.png)
+    [![After WPSolr activation](/docs/assets/wpsolr_after_plugin_activation_resized.png)](wpsolr_after_plugin_activation.png)
 
 
 ### Configure WPSolr Plugin
 
 1.  Open WPSolr page:
 
-    [![WPSolr admin page](/docs/assets/wpsolr_open_wpsolr_admin_resized.png)](/docs/assets/wpsolr_open_wpsolr_admin.png)
+    [![WPSolr admin page](/docs/assets/wpsolr_open_wpsolr_admin_resized.png)](wpsolr_open_wpsolr_admin.png)
 
 2.  Click on the button **I uploaded my 2 compatible configuration files to my Solr core**:
 
-    ![WPSolr first configuration](/docs/assets/wpsolr_wpsolr_solr_config_tab_firsttime.png)
+    ![WPSolr first configuration](wpsolr_wpsolr_solr_config_tab_firsttime.png)
 
 
 3.  On the next page, select **Self Hosted** option:
 
-    [![WPSolr Hosting tab](/docs/assets/wpsolr_wpsolr_hosting_tab_resized.png)](/docs/assets/wpsolr_wpsolr_hosting_tab.png)
+    [![WPSolr Hosting tab](/docs/assets/wpsolr_wpsolr_hosting_tab_resized.png)](wpsolr_wpsolr_hosting_tab.png)
 
 4.  When selecting **Self Hosted**, the plugin prompts you to enter details about the Solr server:
 
-    [![WPSolr self hosting settings](/docs/assets/wpsolr_wpsolr_hosting_tab_settings_resized.png)](/docs/assets/wpsolr_wpsolr_hosting_tab_settings.png)
+    [![WPSolr self hosting settings](/docs/assets/wpsolr_wpsolr_hosting_tab_settings_resized.png)](wpsolr_wpsolr_hosting_tab_settings.png)
 
     -   **Solr Host**: This should be the same value as the host typed in `/opt/solr-4.10.4/example/etc/jetty.xml`. If Solr is installed on same server as WordPress, enter `localhost`. If Solr is installed on a different server, enter the same IP address or hostname.
 
@@ -466,7 +466,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 6.  Click on the **Solr Options** tab:
 
-    [![WPSolr Indexing Options](/docs/assets/wpsolr_wpsolr_indexing_options_resized.png)](/docs/assets/wpsolr_wpsolr_indexing_options.png)
+    [![WPSolr Indexing Options](/docs/assets/wpsolr_wpsolr_indexing_options_resized.png)](wpsolr_wpsolr_indexing_options.png)
 
     -   **Post types to be indexed**: Selecting all of them is recommended. **Post** indexes all blog posts, **page** all pages (such as about pages), and **attachment** all documents (such as PDFs and DOC files).
 
@@ -482,11 +482,11 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 8.  Open the **Solr Options > Result Options** page:
 
-    [![WPSolr Result Options](/docs/assets/wpsolr_wpsolr_result_options_resized.png)](/docs/assets/wpsolr_wpsolr_result_options.png)
+    [![WPSolr Result Options](/docs/assets/wpsolr_wpsolr_result_options_resized.png)](wpsolr_wpsolr_result_options.png)
 
     -   **Display Suggestions (Did you mean?)**: Recommended. If selected, Solr will suggest alternate search phrases if it doesn't find any matches for the entered search phrase:
 
-        ![WPSolr Suggestions](/docs/assets/wpsolr_search_results_did_you_mean_small.png)
+        ![WPSolr Suggestions](wpsolr_search_results_did_you_mean_small.png)
 
     -   **Display number of results and current page**: Recommended. This is useful for paginating search results.
 
@@ -496,17 +496,17 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
     -   **No. of values to be displayed by facets**: Facets refer to the filters that Solr shows to enable visitors to shortlist from search results. This value is the maximum number of values shown for each facet. For example, in the image below, this value has been set to 5 so that the *Tags* facet shows a maximum of 5 tag filters.
 
-        ![Facet count](/docs/assets/wpsolr_search_results_facet_count.png)
+        ![Facet count](wpsolr_search_results_facet_count.png)
 
 9.  Press the **Save Options** button.
 
 10. Next, open the **Solr Options > Facets Options** page:
 
-    [![WPSolr Facet Options](/docs/assets/wpsolr_wpsolr_facet_options_resized.png)](/docs/assets/wpsolr_wpsolr_facet_options.png)
+    [![WPSolr Facet Options](/docs/assets/wpsolr_wpsolr_facet_options_resized.png)](wpsolr_wpsolr_facet_options.png)
 
     Press the green "+" buttons to add a facet. The ones added here are shown as filters in the search results page. Generally, *categories* and *tags* are enough, but if the blog has multiple contributors or custom taxonomies, you may also want to add these values as additional facets.
 
-    [![WPSolr Faceting](/docs/assets/wpsolr_search_results_facets_resized.png)](/docs/assets/wpsolr_search_results_facets.png)
+    [![WPSolr Faceting](/docs/assets/wpsolr_search_results_facets_resized.png)](wpsolr_search_results_facets.png)
 
 11. Go to the **Solr Operations** tab and click the **Synchronize Wordpress with my Solr index** button.
 
@@ -514,7 +514,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 Whenever you publish a new post or page or attachment, this button must be selected for the new pages to be indexed.
 {{< /note >}}
 
-    ![Solr Operations](/docs/assets/wpsolr_wpsolr_solr_operations.png)
+    ![Solr Operations](wpsolr_wpsolr_solr_operations.png)
 
     After the operation has completed, the same page displays how many documents were indexed.
 
@@ -525,20 +525,20 @@ The following steps will be completed while on your blog.
 
 1.  Test **autocompletion** by beginning to type a word you know is in one of your blog posts. As you are typing, the search box should display some suggestions in a dropdown:
 
-    ![Autocompletion](/docs/assets/wpsolr_search_box_suggestions.png)
+    ![Autocompletion](wpsolr_search_box_suggestions.png)
 
 2.  Test **search results** by entering a search phrase. Matching results should be displayed:
 
-    [![Search Results](/docs/assets/wpsolr_search_results_resized.png)](/docs/assets/wpsolr_search_results.png)
+    [![Search Results](/docs/assets/wpsolr_search_results_resized.png)](wpsolr_search_results.png)
 
 3.  Test **autocorrection suggestions** by entering a word with some spelling mistakes or a word that does not occur in any of your blog posts. It should show *Did you mean* suggestions:
 
-    [![Did you mean suggestions](/docs/assets/wpsolr_search_results_did_you_mean_resized.png)](/docs/assets/wpsolr_search_results_did_you_mean.png)
+    [![Did you mean suggestions](/docs/assets/wpsolr_search_results_did_you_mean_resized.png)](wpsolr_search_results_did_you_mean.png)
 
 
 4. Test the  **document search** by creating and publishing some test posts with added file attachments (such as PDFs). Update the search data, then search for a phrase that you know occurs in your attachment. It should display matches inside those attachments:
 
-    [![Document search results](/docs/assets/wpsolr_search_results_from_doc_pdf_resized.png)](/docs/assets/wpsolr_search_results_from_doc_pdf.png)
+    [![Document search results](/docs/assets/wpsolr_search_results_from_doc_pdf_resized.png)](wpsolr_search_results_from_doc_pdf.png)
 
 
 ## Location of Search Data

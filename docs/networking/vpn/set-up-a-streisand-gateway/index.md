@@ -32,11 +32,11 @@ Streisand uses open-source platform Ansible to automate much of the process that
 
 2.  Select the "API Keys" tab on the far right of the menu.
 
-    ![Linode API Menu](/docs/assets/streisand/linode_api_menu.png)
+    ![Linode API Menu](linode_api_menu.png)
 
 3.  Provide a label for your API key if desired, and choose when the key should expire. When you have finished, click "Create API Key."
 
-    ![API Key](/docs/assets/streisand/api_key.png)
+    ![API Key](api_key.png)
 
 4. Record the generated key! Please note: You will not be able to view the full key after closing or reloading the page.
 
@@ -106,7 +106,7 @@ You are now ready to run Streisand.
 
 3.  When prompted, choose Linode as your hosting provider. Choose a location for your gateway, then enter the API key you created earlier.
 
-    ![Streisand API Prompt](/docs/assets/streisand/api-prompt.png)
+    ![Streisand API Prompt](api-prompt.png)
 
 {{< note >}}
 Choosing a server location near your home will help to reduce latency. However, if you intend to use your VPN to evade geolocation or avoid local internet restrictions, consider choosing a location in an appropriate country.

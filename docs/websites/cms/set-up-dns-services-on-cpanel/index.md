@@ -25,7 +25,7 @@ external_resources:
 
 In your root WHM, under the Service Configuration section, click on "Nameserver Selection." You will be presented with this screen:
 
-[![cPanel Nameserver selection screen.](/docs/assets/829-NSSelect.png)](/docs/assets/829-NSSelect.png)
+[![cPanel Nameserver selection screen.](829-NSSelect.png)](829-NSSelect.png)
 
 You can choose from BIND, MyDNS or NSD; the advantages and disadvantages for each are displayed. If you are unfamiliar with any of them, select BIND, which will be the easiest to work with.
 
@@ -33,11 +33,11 @@ You can choose from BIND, MyDNS or NSD; the advantages and disadvantages for eac
 
 To use your own nameservers (e.g. ns1.example.com, ns2.example.com), you'll need to create those entries at your registrar first. The process for adding those can vary based on which registrar you are using, so if you are unsure as to how to go about getting these entries set up, you should contact your registrar's support and ask them how to do so. You'll also need to add A records for your nameservers on your Linode through WHM. To do that, you'll want to log into your WHM as root, then navigate to the DNS Functions section and click on Edit DNS Zone, which will present you with this page:
 
-[![cPanel Edit DNS screen.](/docs/assets/830-EditDNS.png)](/docs/assets/830-EditDNS.png)
+[![cPanel Edit DNS screen.](830-EditDNS.png)](830-EditDNS.png)
 
 Simply click the domain you used when you set up your nameservers at your registrar and click the Edit button to get to the DNS Editor screen. On the DNS Editor screen, you will want to add A records for your nameservers. To do this, you will fill in the spaces at the bottom of the screen like so:
 
-[![cPanel add NS entries.](/docs/assets/832-AddNS2.png)](/docs/assets/832-AddNS2.png)
+[![cPanel add NS entries.](832-AddNS2.png)](832-AddNS2.png)
 
 Just make sure you use your own Linode's IP address. You can add more than two nameservers if you like.
 
@@ -109,7 +109,7 @@ You'll then want to begin adding your domains to the Linode DNS Manager as slave
 3.  On the bottom right corner of the next page, click the link titled "I wanted a slave zone."
 4.  On the slave zone page, you'll want to enter your domain name in the "Domain" box and your cPanel server's main IP address in the "Masters" box.
 
-    [![Linode slave zone screen.](/docs/assets/1358-slave_zone.png)](/docs/assets/1358-slave_zone.png)
+    [![Linode slave zone screen.](1358-slave_zone.png)](1358-slave_zone.png)
 
 5.  Click the "Add a Slave Zone" button.
 

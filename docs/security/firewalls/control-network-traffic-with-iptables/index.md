@@ -547,11 +547,11 @@ If `dpkg` returns that there are no matching packages, you will need to install 
 
 During the installation, you will be prompted twice. The first prompt is asking if you would like to save your current IPv4 rules.
 
-[![Save IPv4 rules prompt.](/docs/assets/1721-ipv4-rules.png)](/docs/assets/1721-ipv4-rules.png)
+[![Save IPv4 rules prompt.](1721-ipv4-rules.png)](1721-ipv4-rules.png)
 
 The second prompt is to save the rules configured for IPv6.
 
-[![Save IPv6 rules prompt.](/docs/assets/1722-ipv6-rules.png)](/docs/assets/1722-ipv6-rules.png)
+[![Save IPv6 rules prompt.](1722-ipv6-rules.png)](1722-ipv6-rules.png)
 
 After the install is complete, you should see the iptables's subdirectory. Run the `ls /etc/iptables` command again to verify that your output resembles the following:
 

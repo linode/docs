@@ -87,15 +87,15 @@ SELECT current_user();
 
 1. After ownCloud is installed and MySQL is configured, point your browser to `ip_address_or_domain/owncloud` (where, `ip_address_or_domain` is your IP or FQDN) and create an administrator account:
 
-    ![ownCloud login screen](/docs/assets/ownCloud/login.png)
+    ![ownCloud login screen](login.png)
 
 2.  Click **Storage & database** and enter the database login information:
 
-    ![ownCloud database information](/docs/assets/ownCloud/dbinfo.png)
+    ![ownCloud database information](dbinfo.png)
 
     Welcome to ownCloud:
 
-    ![ownCloud greeting](/docs/assets/ownCloud/owncloud.png)
+    ![ownCloud greeting](owncloud.png)
 
 ## Install ClamAV and Configure ownCloud
 
@@ -107,15 +107,15 @@ SELECT current_user();
 
 2.  Enable the antivirus app in ownCloud. Select **Apps** from the menu, then **Not enabled** to find "Antivirus App for files" and click **Enable**:
 
-    ![Antivirus app for files](/docs/assets/ownCloud/antivirus.png)
+    ![Antivirus app for files](antivirus.png)
 
 3.  Configure the antivirus mode in ownCloud to reflect the changes to your system:
 
-    ![Antivirus socket configuration](/docs/assets/ownCloud/owncloud_socket.png)
+    ![Antivirus socket configuration](owncloud_socket.png)
 
 4.  To add new users and groups, select **Users** in the dropdown menu in the upper right-hand corner:
 
-    ![User configuration panel](/docs/assets/ownCloud/owncloudusers.png)
+    ![User configuration panel](owncloudusers.png)
 
 ## Secure the System
 

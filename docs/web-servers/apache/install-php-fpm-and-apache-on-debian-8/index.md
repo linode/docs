@@ -115,7 +115,7 @@ deb-src http://mirrors.linode.com/debian/ jessie-updates main contrib non-free
 
     Navigate to `http://example.com/info.php` and look for the **Server API** line:
 
-    ![The Server API Line.](/docs/assets/php-fpm-info.png)
+    ![The Server API Line.](php-fpm-info.png)
 
 ## Configure PHP Pools
 
@@ -213,4 +213,4 @@ In the file excerpt above, three sequential dots - `...`  - denote that there is
 
 6.  You can confirm the user with the `info.php` file described above, by checking the **Environment** section:
 
-    ![The PHP Environment Variable](/docs/assets/php-fpm-env.png)
+    ![The PHP Environment Variable](php-fpm-env.png)

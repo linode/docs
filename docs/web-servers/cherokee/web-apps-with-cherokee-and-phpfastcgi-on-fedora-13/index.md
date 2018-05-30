@@ -65,63 +65,63 @@ If you haven't already done so, start the Cherokee administration program by iss
 
 Navigate to the "Remote Access" tab on the "General" page in the admin interface. You may wish to enable SSL support, change the server tokens, or enable graphs.
 
-[![Network tab on the general page of the Cherokee admin panel on Fedora 13.](/docs/assets/581-fedora-13-01-general-network.png)](/docs/assets/251-fedora-13-01-general-network-large.png)
+[![Network tab on the general page of the Cherokee admin panel on Fedora 13.](/docs/assets/581-fedora-13-01-general-network.png)](251-fedora-13-01-general-network-large.png)
 
 On the "Permissions" tab, change the user and group.
 
-[![Permissions tab on the general page of the Cherokee admin panel on Fedora 13.](/docs/assets/582-fedora-13-03-general-permissions.png)](/docs/assets/252-fedora-13-03-general-permissions-large.png)
+[![Permissions tab on the general page of the Cherokee admin panel on Fedora 13.](/docs/assets/582-fedora-13-03-general-permissions.png)](252-fedora-13-03-general-permissions-large.png)
 
 Navigate to the "vServers" page and click the "New" button. Supply your domain name and the path to your site's document root.
 
-[![Adding a new virtual server on the vServers page of the Cherokee admin panel on Fedora 13.](/docs/assets/583-fedora-13-04-vservers-new-manual.png)](/docs/assets/253-fedora-13-04-vservers-new-manual-large.png)
+[![Adding a new virtual server on the vServers page of the Cherokee admin panel on Fedora 13.](/docs/assets/583-fedora-13-04-vservers-new-manual.png)](253-fedora-13-04-vservers-new-manual-large.png)
 
 On the "Host Match" tab, specify the wildcard pattern to use for matching inbound requests.
 
-[![Specifying which host patterns should match inbound requests on the vServers page of the Cherokee admin panel on Fedora 13.](/docs/assets/584-fedora-13-05-host-match-domain.png)](/docs/assets/254-fedora-13-05-host-match-domain-large.png)
+[![Specifying which host patterns should match inbound requests on the vServers page of the Cherokee admin panel on Fedora 13.](/docs/assets/584-fedora-13-05-host-match-domain.png)](254-fedora-13-05-host-match-domain-large.png)
 
 On the "Behavior" tab of your new vhost, delete all existing rules except for the "Default" rule.
 
-[![Deleting rules on the Rule tab of the vServers page of the Cherokee admin panel on Fedora 13.](/docs/assets/255-fedora-13-07-rule-delete1.png)](/docs/assets/255-fedora-13-07-rule-delete1.png)
+[![Deleting rules on the Rule tab of the vServers page of the Cherokee admin panel on Fedora 13.](255-fedora-13-07-rule-delete1.png)](255-fedora-13-07-rule-delete1.png)
 
-[![Deleting rules on the Rule tab of the vServers page of the Cherokee admin panel on Fedora 13.](/docs/assets/256-fedora-13-08-rule-delete2.png)](/docs/assets/256-fedora-13-08-rule-delete2.png)
+[![Deleting rules on the Rule tab of the vServers page of the Cherokee admin panel on Fedora 13.](256-fedora-13-08-rule-delete2.png)](256-fedora-13-08-rule-delete2.png)
 
 On the "Logging" tab for the vhost, specify appropriate log file settings.
 
-[![Specifying logging settings on the "Logging" tab of the vServers page of the Cherokee admin panel on Fedora 13.](/docs/assets/586-fedora-13-09-logging.png)](/docs/assets/257-fedora-13-09-logging-large.png)
+[![Specifying logging settings on the "Logging" tab of the vServers page of the Cherokee admin panel on Fedora 13.](/docs/assets/586-fedora-13-09-logging.png)](257-fedora-13-09-logging-large.png)
 
 Navigate to the "Sources" page and click the "New" button. Enter the values shown below.
 
-[![Creating a new information source on the "Sources" page of the Cherokee admin panel on Fedora 13.](/docs/assets/587-fedora-13-10-new-information-source.png)](/docs/assets/258-fedora-13-10-new-information-source-large.png)
+[![Creating a new information source on the "Sources" page of the Cherokee admin panel on Fedora 13.](/docs/assets/587-fedora-13-10-new-information-source.png)](258-fedora-13-10-new-information-source-large.png)
 
-[![A newly created information source on the "Sources" page of the Cherokee admin panel on Fedora 13.](/docs/assets/588-fedora-13-11-new-information-source-configured.png)](/docs/assets/259-fedora-13-11-new-information-source-configured-large.png)
+[![A newly created information source on the "Sources" page of the Cherokee admin panel on Fedora 13.](/docs/assets/588-fedora-13-11-new-information-source-configured.png)](259-fedora-13-11-new-information-source-configured-large.png)
 
 Navigate to the "vServers" page and select your vhost. Click the "Default" link on the "Behavior" tab.
 
-[![The "Behavior" tab on the "vServers" page of the Cherokee admin panel on Fedora 13.](/docs/assets/595-fedora-13-13-behavior.png)](/docs/assets/260-fedora-13-13-behavior-large.png)
+[![The "Behavior" tab on the "vServers" page of the Cherokee admin panel on Fedora 13.](/docs/assets/595-fedora-13-13-behavior.png)](260-fedora-13-13-behavior-large.png)
 
 Click the "New" button on the "Handler" tab.
 
-[![The "Handler" tab on the "vServers" page of the Cherokee admin panel on Fedora 13.](/docs/assets/589-fedora-13-12-behavior-default.png)](/docs/assets/261-fedora-13-12-behavior-default-large.png)
+[![The "Handler" tab on the "vServers" page of the Cherokee admin panel on Fedora 13.](/docs/assets/589-fedora-13-12-behavior-default.png)](261-fedora-13-12-behavior-default-large.png)
 
 Click the "New" button and add a rule for PHP.
 
-[![Creating a new extensions rule on the "Behavior" tab on the "vServers" page of the Cherokee admin panel on Fedora 13.](/docs/assets/590-fedora-13-14-behavior-new-extensions.png)](/docs/assets/262-fedora-13-14-behavior-new-extensions-large.png)
+[![Creating a new extensions rule on the "Behavior" tab on the "vServers" page of the Cherokee admin panel on Fedora 13.](/docs/assets/590-fedora-13-14-behavior-new-extensions.png)](262-fedora-13-14-behavior-new-extensions-large.png)
 
 Specify "FastCGI" for the handler and add your existing data source to the "Sources" section.
 
-[![FastCGI settings for a new extensions rule on the "Behavior" tab on the "vServers" page of the Cherokee admin panel on Fedora 13.](/docs/assets/591-fedora-13-15-behavior-new-fastcgi.png)](/docs/assets/263-fedora-13-15-behavior-new-fastcgi-large.png)
+[![FastCGI settings for a new extensions rule on the "Behavior" tab on the "vServers" page of the Cherokee admin panel on Fedora 13.](/docs/assets/591-fedora-13-15-behavior-new-fastcgi.png)](263-fedora-13-15-behavior-new-fastcgi-large.png)
 
 On the "Encoding" tab, enable support for gzip and deflate compression.
 
-[![Enabling compression support for a new extensions rule on the "Behavior" tab on the "vServers" page of the Cherokee admin panel on Fedora 13.](/docs/assets/592-fedora-13-16-encoding.png)](/docs/assets/264-fedora-13-16-encoding-large.png)
+[![Enabling compression support for a new extensions rule on the "Behavior" tab on the "vServers" page of the Cherokee admin panel on Fedora 13.](/docs/assets/592-fedora-13-16-encoding.png)](264-fedora-13-16-encoding-large.png)
 
 Navigate to the "Status" page and select your vhost. Check the box labeled "Collect Statistics" near the bottom of the page. The image below shows how traffic graphs will look after the server has been accepting requests for some time; your graphs will be blank for now.
 
-[![Enabling traffic statistics collection for a new vhost on the "Status" page of the Cherokee admin panel on Fedora 13.](/docs/assets/593-fedora-13-17-status-collect-statistics.png)](/docs/assets/265-fedora-13-17-status-collect-statistics-large.png)
+[![Enabling traffic statistics collection for a new vhost on the "Status" page of the Cherokee admin panel on Fedora 13.](/docs/assets/593-fedora-13-17-status-collect-statistics.png)](265-fedora-13-17-status-collect-statistics-large.png)
 
 Save your changes and restart Cherokee.
 
-[![Saving changes and restarting the web server in the Cherokee admin panel on Fedora 13.](/docs/assets/594-fedora-13-18-save-changes.png)](/docs/assets/266-fedora-13-18-save-changes-large.png)
+[![Saving changes and restarting the web server in the Cherokee admin panel on Fedora 13.](/docs/assets/594-fedora-13-18-save-changes.png)](266-fedora-13-18-save-changes-large.png)
 
 Cherokee should now be properly configured. If you receive any errors when restarting the server, please go back and review each step you took for accuracy.
 

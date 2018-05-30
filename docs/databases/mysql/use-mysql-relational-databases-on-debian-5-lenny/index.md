@@ -29,7 +29,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Debian Lenny.](/docs/assets/358-lenny-01-mysql-root-password.png)](/docs/assets/358-lenny-01-mysql-root-password.png)
+[![Setting the MySQL root password in Debian Lenny.](358-lenny-01-mysql-root-password.png)](358-lenny-01-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries.
 

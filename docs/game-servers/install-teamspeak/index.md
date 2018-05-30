@@ -97,7 +97,7 @@ Once TeamSpeak is downloaded, you're ready to start the server. TeamSpeak comes 
 
 4.  From your computer, open your TeamSpeak client, and open the connect dialog.
 
-    ![The connect dialog box](/docs/assets/teamspeak-connect.png)
+    ![The connect dialog box](teamspeak-connect.png)
 
 5.  Enter the IP address of your Linode or a domain pointed to it, the nickname `serveradmin` and the password as provided.
 

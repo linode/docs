@@ -103,7 +103,7 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 
     Now, open http://192.51.100.1:3000/ in your browser (be sure to replace `192.51.100.1` with your Linode's public IP), and you will see the sample application main page.
 
-    ![Luminus application main page](/docs/assets/clj-luminus-main-page.png)
+    ![Luminus application main page](clj-luminus-main-page.png)
 
     {{< note >}}
 Make sure port 3000 is open in firewall for this to work.

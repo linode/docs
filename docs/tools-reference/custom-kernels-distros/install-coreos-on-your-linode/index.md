@@ -46,17 +46,17 @@ CoreOS configures no default way to log in except by supplying an option to the 
 
 2. Under the **Disks** section of the Linode Dashboard, click on **Create a new Disk**:
 
-    [![Create a new disk](/docs/assets/custom-distro-new-disk_small.png)](/docs/assets/custom-distro-new-disk.png)
+    [![Create a new disk](/docs/assets/custom-distro-new-disk_small.png)](custom-distro-new-disk.png)
 
 3. Label your new disk image and choose an appropriate size. You will probably need to allocate at least **5 GB**. Set the **Type** to **unformatted / raw**.
 
-    [![Specify disk name and size](/docs/assets/coreos-disk-image-small.png)](/docs/assets/coreos-disk-image.png)
+    [![Specify disk name and size](/docs/assets/coreos-disk-image-small.png)](coreos-disk-image.png)
 
    If you're not sure how big your disk image needs to be, you may wish to choose a small size so that you can grow the disk later. You will not be able to shrink the disk image after it has been generated.
 
 4. Return to the **Linode Dashboard** and select the **Rescue** tab. Check to make sure the CoreOS disk image you created is set as `/dev/sda` and all other selectable devices set to **--None--**, then click the **Reboot into Rescue Mode** button. Your Linode will now boot into the Finnix recovery image.
 
-    [![Set /dev/sda to CoreOS disk image](/docs/assets/coreos-device-identifier-small.png)](/docs/assets/coreos-device-identifier.png)
+    [![Set /dev/sda to CoreOS disk image](/docs/assets/coreos-device-identifier-small.png)](coreos-device-identifier.png)
 
 5.  Use [Lish](/docs/networking/using-the-linode-shell-lish/) to access your Linode. From the **Remote Access** tab, go to the bottom of the page and under **Console Access**, click the link to the right of **Lish via SSH** to open an SSH connection in the local system's terminal.
 
@@ -121,7 +121,7 @@ You can also supply any other options (see `coreos-install -h`). If you do not w
 
 3.  Under **Block Device Assignment**, set **/dev/sda** to the CoreOS disk image you created and installed CoreOS to.
 
-    [![Configuration profile](/docs/assets/coreos-config-profile.png)](/docs/assets/coreos-config-profile.png)
+    [![Configuration profile](coreos-config-profile.png)](coreos-config-profile.png)
 
 4.  All other settings can be left in their default state. Click **Save Changes**.
 

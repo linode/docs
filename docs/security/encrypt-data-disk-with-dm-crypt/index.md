@@ -32,15 +32,15 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian 9 image, reserving approximately 4096 MB for your operating system so that you can use the rest of your available disk space as encrypted storage:
 
-    ![Debian Allocation](/docs/assets/dm-crypt/debian_allocation.png)
+    ![Debian Allocation](debian_allocation.png)
 
 2.  Go to the Linode Manager dashboard, create a new disk and select **unformatted / raw** under **Type**:
 
-    ![Data Disk](/docs/assets/dm-crypt/data_disk.png)
+    ![Data Disk](data_disk.png)
 
 2.  Open your [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
 
-    ![Configuration Profile](/docs/assets/dm-crypt/configuration_profile.png)
+    ![Configuration Profile](configuration_profile.png)
 
 3.  After your block device assignments are configured, boot your Linode.
 

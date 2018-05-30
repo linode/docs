@@ -232,7 +232,7 @@ spark.history.ui.port             18080
 
 6.  Access the History Server by navigating to http://node-master:18080 in a web browser:
 
-    ![Screenshot of Spark History Server](/docs/assets/spark/spark-history-server-wide.png "Screenshot of Spark History Server")
+    ![Screenshot of Spark History Server](spark-history-server-wide.png "Screenshot of Spark History Server")
 
 ## Run the Spark Shell
 

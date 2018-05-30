@@ -75,7 +75,7 @@ To start Irssi, follow the steps below.
 
     You should see the Irssi startup screen on the default chat interface:
 
-    [![Irssi's default message.](/docs/assets/1735-irssi-1.png)](/docs/assets/1735-irssi-1.png)
+    [![Irssi's default message.](1735-irssi-1.png)](1735-irssi-1.png)
 
 To rejoin Irssi later, just rejoin your Screen session.
 
@@ -181,7 +181,7 @@ Below are more commands for navigating between windows:
 
 -   `/win list` - generates a list in detail of all the windows. Sample output is below.
 
-    [![Window list output sample.](/docs/assets/1484-Irssi-window-list-v2.png)](/docs/assets/1484-Irssi-window-list-v2.png)
+    [![Window list output sample.](1484-Irssi-window-list-v2.png)](1484-Irssi-window-list-v2.png)
 
 -   `Alt+A` (/window goto active) - changes the focus of the current window to the window with the highest amount of activity and the lowest identifier.
 -   `Ctrl-n` (/window next) - moves the current focus to the next window in sequence.

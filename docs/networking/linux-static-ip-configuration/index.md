@@ -53,11 +53,11 @@ Our [Network Helper](/docs/platform/network-helper/) tool is enabled by default 
 
 1.  From the Linode Manager's **Dashboard**, choose **Edit** for the desired configuration profile.
 
-    [![Linode Manager: Dashboard > Configuration Profile > Edit](/docs/assets/linode-dashboard-hilighted_small.png)](/docs/assets/linode-dashboard-hilighted.png)
+    [![Linode Manager: Dashboard > Configuration Profile > Edit](/docs/assets/linode-dashboard-hilighted_small.png)](linode-dashboard-hilighted.png)
 
 2.  Under **Filesystem/Boot Helpers**  at the bottom of the page,  set **Auto-configure Networking** to **No**. Then click **Save Changes**.
 
-    [![Linode Manager: Dashboard > Configuration Profile > Edit](/docs/assets/network-helper-hilighted_small.png)](/docs/assets/network-helper-hilighted.png)
+    [![Linode Manager: Dashboard > Configuration Profile > Edit](/docs/assets/network-helper-hilighted_small.png)](network-helper-hilighted.png)
 
 
 ## Configure Static Addressing
@@ -69,7 +69,7 @@ On the **Remote Access** tab of the Linode Manager, you'll see the following inf
 *   IPv6 gateway
 *   DNS resolvers (if you want to use Linode's)
 
-[![Linode Manager / Remote Access](/docs/assets/1711-remote_access_ips_small.png)](/docs/assets/1710-remote_access_ips.png)
+[![Linode Manager / Remote Access](/docs/assets/1711-remote_access_ips_small.png)](1710-remote_access_ips.png)
 
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 

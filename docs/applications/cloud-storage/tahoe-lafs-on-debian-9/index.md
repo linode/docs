@@ -292,7 +292,7 @@ The web interface is the most user-friendly way to interact with your grid. One 
 
         tahoe run --basedir client
 
-    [![Tahoe-LAFS Web User Interface](/docs/assets/tahoe-lafs-web-user-interface_small.png)](/docs/assets/tahoe-lafs-web-user-interface.png "Tahoe-LAFS Web User Interface")
+    [![Tahoe-LAFS Web User Interface](/docs/assets/tahoe-lafs-web-user-interface_small.png)](tahoe-lafs-web-user-interface.png "Tahoe-LAFS Web User Interface")
 
 2.  Files can be uploaded using one of three algorithms:
 
@@ -308,7 +308,7 @@ The web interface is the most user-friendly way to interact with your grid. One 
 
 4.  Since it's hard to keep track of multiple random strings of characters, a more efficient way to store your data is to organize it in directories. These come with a handful of advantages:
 
-    [![Directory Displayed in Web User Interface](/docs/assets/tahoe-lafs-directory-seen-in-wui_small.png)](/docs/assets/tahoe-lafs-directory-seen-in-wui.png "Directory Displayed in Web User Interface")
+    [![Directory Displayed in Web User Interface](/docs/assets/tahoe-lafs-directory-seen-in-wui_small.png)](tahoe-lafs-directory-seen-in-wui.png "Directory Displayed in Web User Interface")
 
     *  They can be bookmarked in your browser, allowing you to easily come back to them.
         *  These are also accessed using cryptographic secrets. If you lose the bookmarks or directory writecaps/readcaps, there's no way to recover them. You can still access directory contents though if you have individual elements bookmarked or their capabilities saved somewhere.

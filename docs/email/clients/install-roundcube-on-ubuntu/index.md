@@ -206,7 +206,7 @@ install ok: channel://pear.php.net/Mail_mimeDecode-1.5.6
 
 2.  Begin configuring Roundcube. The first step of Roundcube’s graphical configuration is an *environment check*. Click on the **NEXT** button at the bottom of the page to continue.
 
-    ![Roundcube Webmail Installer](/docs/assets/roundcube/roundcube_webmail_installer.png)
+    ![Roundcube Webmail Installer](roundcube_webmail_installer.png)
 
     {{< note >}}
 Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warnings will appear under the **Checking available databases** section. MySQL was installed earlier as part of the LAMP stack, so you can ignore these warnings.
@@ -229,11 +229,11 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
 
 5.  Complete the configuration by clicking **CONTINUE**.
 
-    [![Roundcube configuration saved successfully](/docs/assets/roundcube/roundcube-configuration-saved-successfully_small.png)](/docs/assets/roundcube/roundcube-configuration-saved-successfully.png)
+    [![Roundcube configuration saved successfully](/docs/assets/roundcube/roundcube-configuration-saved-successfully_small.png)](roundcube-configuration-saved-successfully.png)
 
 6.  Lastly, import Roundcube’s MySQL database structure by clicking on the **Initialize database** button.
 
-    ![Roundcube MySQL database initialization](/docs/assets/roundcube/roundcube-mysql-database-initialization.png)
+    ![Roundcube MySQL database initialization](roundcube-mysql-database-initialization.png)
 
 # Remove the Installer Directory
 
@@ -247,7 +247,7 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
 
 1.  Navigate to `https://webmail.example.com` and log in using your email account's username and password. If your configuration is functional, Roundcube will allow you to receive, read and send emails from inside and outside of your domain name.
 
-    ![Roundcube login](/docs/assets/roundcube/roundcube-login.png)
+    ![Roundcube login](roundcube-login.png)
 
 ## Keeping Roundcube Updated
 

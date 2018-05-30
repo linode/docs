@@ -228,7 +228,7 @@ server {
 
 4.  Verify NGINX is working by going to your site's domain or IP address in a web browser. You should see the NGINX welcome page:
 
-    ![NGINX welcome page](/docs/assets/nginx-welcome.png "NGINX welcome page")
+    ![NGINX welcome page](nginx-welcome.png "NGINX welcome page")
 
 
 ### PageSpeed

@@ -278,7 +278,7 @@ Your API endpoint should now be ready to accept POST requests with an image atta
 
 1.  Right click and download the image below onto your local machine:
 
-    ![MNIST 7](/docs/assets/machine-learning/7.png "MNIST 7")
+    ![MNIST 7](7.png "MNIST 7")
 
 2.  From your local machine, use `curl` to POST the image to your API. Replace the IP address with the public IP address of your Linode, and provide the absolute path to the downloaded image in place of `/path/to/7.png`:
 

@@ -113,15 +113,15 @@ Next, run the following commands to make sure these directories are writable.
 
 Visit your website in your browser. You should be redirected to the OpenCart Installer in a page that looks like this:
 
-[![OpenCart Installer Page 1.](/docs/assets/opencart-1-scaled.png)](/docs/assets/opencart-1.png)
+[![OpenCart Installer Page 1.](/docs/assets/opencart-1-scaled.png)](opencart-1.png)
 
 Press **CONTINUE** and you will see the _Pre-Installation_ page.
 
-[![OpenCart Installer Page 2.](/docs/assets/opencart-2-scaled.png)](/docs/assets/opencart-2.png)
+[![OpenCart Installer Page 2.](/docs/assets/opencart-2-scaled.png)](opencart-2.png)
 
 Make sure that you see the green checkmark for every section before proceeding. If you see any red marks, please go back and make sure all of the instructions in this guide were followed properly. Once you've confirmed that every section has a green checkmark, press the **CONTINUE** button to see the OpenCart configuration page:
 
-[![OpenCart Installer Page 3.](/docs/assets/opencart-3-scaled.png)](/docs/assets/opencart-3.png)
+[![OpenCart Installer Page 3.](/docs/assets/opencart-3-scaled.png)](opencart-3.png)
 
 Here, select the **MySQLi** driver and fill out the form with the relevant information from the [Create a Database and User](#create-a-database-and-user) section of this guide. You also need to select a username and password for the default administrator account for this OpenCart installation.
 

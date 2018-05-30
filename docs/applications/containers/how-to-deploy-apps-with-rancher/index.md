@@ -72,11 +72,11 @@ In order for Rancher to deploy containers on remote hosts, each host must be reg
 
 1.  In a browser, navigate to `yourLinodesIP:8080` to view the Rancher landing page:
 
-    ![Rancher first screen](/docs/assets/Rancher/rancher_first_screen.png "Rancher first screen")
+    ![Rancher first screen](rancher_first_screen.png "Rancher first screen")
 
 2.  A banner at the top of the screen will prompt you to add a host. Click **Add a host** to begin this process.
 
-    ![Rancher Host Register](/docs/assets/Rancher/register_host.png "Rancher Host Register")
+    ![Rancher Host Register](register_host.png "Rancher Host Register")
 
 3.  Enter your Linode's IP address into the box in Item 4. This will customize the registration command in item 5 for your system. Copy this command and run it from the command line.
 
@@ -90,7 +90,7 @@ a16cd00943fc        rancher/agent:v1.2.7    "/run.sh run"            3 minutes a
 
 5.  Go back to the Rancher web application and press **Close**. You will be taken to the catalog, where Rancher lists all of the applications that can be installed through the platform:
 
-    ![Rancher Catalog](/docs/assets/Rancher/catalog.png "Rancher Catalog")
+    ![Rancher Catalog](catalog.png "Rancher Catalog")
 
 ### Install the Ghost Blogging Engine
 
@@ -98,7 +98,7 @@ As an example, install the Ghost blog platform. This will showcase Rancher's int
 
 1.  In the catalog, select Ghost, leave the default settings and click the create button.
 
-    ![Ghost screen](/docs/assets/Rancher/rancher_ghost.png "Ghost screen")
+    ![Ghost screen](rancher_ghost.png "Ghost screen")
 
 2.  Query your Linode with `docker ps`, and Docker will show what containers are running on the machine:
 
@@ -111,7 +111,7 @@ As an example, install the Ghost blog platform. This will showcase Rancher's int
 
 4.  In the Rancher interface, click on the Ghost container:
 
-    ![Rancher Options](/docs/assets/Rancher/rancher_options.png "Rancher Options")
+    ![Rancher Options](rancher_options.png "Rancher Options")
 
     This page monitors performance, and offers you options to manage each individual container. Everything from spawning a shell within the container, to changing environment variables can be handled from within this page. To remove the application on the Apps screen, click **Delete**.
 

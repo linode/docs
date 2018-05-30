@@ -77,11 +77,11 @@ The `ProxyPass` directive tells Apache to forward all requests for this domain t
 
 Let's do some testing. Here's the normal Apache-served site "www.firstsite.org" in our browser:
 
-[![Website running under Apache on Debian 6 (Squeeze).](/docs/assets/196-proxypass-apache-site.png)](/docs/assets/196-proxypass-apache-site.png)
+[![Website running under Apache on Debian 6 (Squeeze).](196-proxypass-apache-site.png)](196-proxypass-apache-site.png)
 
 Here's the site "www.secondsite.org" being served by lighttpd via ProxyPass:
 
-[![Website running under Lighttpd on Debian 6 (Squeeze).](/docs/assets/197-proxypass-lighttpd-site.png)](/docs/assets/197-proxypass-lighttpd-site.png)
+[![Website running under Lighttpd on Debian 6 (Squeeze).](197-proxypass-lighttpd-site.png)](197-proxypass-lighttpd-site.png)
 
 # Proxying a Specific URL to Lighttpd
 
@@ -104,7 +104,7 @@ If we wanted to have `http://www.firstsite.org/myapp/` served by a web applicati
 
 Now the location "/myapp" will be served by lighttpd instead of Apache. After reloading the Apache configuration with `/etc/init.d/apache2 reload`, we can see that it's functioning correctly:
 
-[![Web application running under a directory via lighttpd on Debian 6 (Squeeze).](/docs/assets/198-proxypass-lighttpd-directory.png)](/docs/assets/198-proxypass-lighttpd-directory.png)
+[![Web application running under a directory via lighttpd on Debian 6 (Squeeze).](198-proxypass-lighttpd-directory.png)](198-proxypass-lighttpd-directory.png)
 
 This is an easy method for hosting multiple application servers (with different web server requirements) under a single domain.
 

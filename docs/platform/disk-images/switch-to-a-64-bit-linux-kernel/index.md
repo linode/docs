@@ -25,11 +25,11 @@ Before an existing Linode can be migrated to a new host, you'll need to ensure t
 
 1.  Next to your Configuration Profile, click **Edit**.
 
-    [![Select "Edit" to modify your Configuration Profile](/docs/assets/1728-64bit1v3_small.png)](/docs/assets/1727-64bit1v3.png)
+    [![Select "Edit" to modify your Configuration Profile](/docs/assets/1728-64bit1v3_small.png)](1727-64bit1v3.png)
 
 2.  Under `Boot Settings` click on the **Kernel** drop down. Select the `Latest 64 bit` option.
 
-    [![Select the latest 64-bit kernel from the dropdown menu.](/docs/assets/1726-64bit-2v3.png)](/docs/assets/1726-64bit-2v3.png)
+    [![Select the latest 64-bit kernel from the dropdown menu.](1726-64bit-2v3.png)](1726-64bit-2v3.png)
 
 3.  Press **Save Changes**, which will take you back to your Linode Dashboard. Now reboot your Linode.
 

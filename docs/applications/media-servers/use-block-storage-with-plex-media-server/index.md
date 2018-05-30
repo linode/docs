@@ -34,7 +34,7 @@ This guide also assumes you already have a Plex account since Plex Media Player 
 
 2.  Create a filesystem on the Block Storage Volume, then create a mountpoint per the instructions from the Linode Manager:
 
-    ![Mount Block Storage Volume](/docs/assets/plex/plex-mount-volume.png)
+    ![Mount Block Storage Volume](plex-mount-volume.png)
 
 3.  Check available disk space. Notice that there is some overhead with the Volume due to the file system:
 
@@ -62,15 +62,15 @@ tmpfs                 1G    0G        1G   0% /run/user/1000
 
 2.  In the left menu, hover the mouse over **Libraries**. Click the *+* button:
 
-    ![Plex Left Menu](/docs/assets/plex/plex-left-menu.png "Plex Left Menu")
+    ![Plex Left Menu](plex-left-menu.png "Plex Left Menu")
 
 3.  Select the library type. **Movies** is selected in this example. Then click next:
 
-    ![Plex Add Library](/docs/assets/plex/plex-library-type.png "Plex Add Library")
+    ![Plex Add Library](plex-library-type.png "Plex Add Library")
 
 4.  Click **Browse for Media Folder**.
 
-    ![Plex Browse Folder](/docs/assets/plex/plex-browse-folder.png "Plex Browse Folder")
+    ![Plex Browse Folder](plex-browse-folder.png "Plex Browse Folder")
 
 5.  A window will appear. Select the folder corresponding to the Block Storage Volume. In this example, the mountpoint is `/mnt/plex-volume`.
 

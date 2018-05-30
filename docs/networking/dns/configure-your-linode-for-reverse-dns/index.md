@@ -27,14 +27,14 @@ Before setting the reverse DNS for your Linode, configure your domain zone and D
 2.  Click the **Remote Access** tab.
 3.  Select the **Reverse DNS** link:
 
-    [![The Reverse DNS link](/docs/assets/1709-remoteaccess_reversedns.png)](/docs/assets/1709-remoteaccess_reversedns.png)
+    [![The Reverse DNS link](1709-remoteaccess_reversedns.png)](1709-remoteaccess_reversedns.png)
 
 4.  Enter your Linode's fully qualified domain name in the **Hostname** field:
 
-    [![Adding the domain name for reverse DNS](/docs/assets/1706-ptr_lookup_marked.png)](/docs/assets/1706-ptr_lookup_marked.png)
+    [![Adding the domain name for reverse DNS](1706-ptr_lookup_marked.png)](1706-ptr_lookup_marked.png)
 
 5.  Click **Look up**. A message will appear indicating that a match has been found for both your IPv4 and IPv6 addresses:
 
-    [![Reverse DNS Match found](/docs/assets/1707-ptr_lookup_match_found.png)](/docs/assets/1707-ptr_lookup_match_found.png)
+    [![Reverse DNS Match found](1707-ptr_lookup_match_found.png)](1707-ptr_lookup_match_found.png)
 
 6.  Click **Yes** beneath the desired address. Note that you can select only one address at a time. If you want to set up reverse DNS for both the IPv4 and IPv6 addresses, you can perform another lookup and select the other address.

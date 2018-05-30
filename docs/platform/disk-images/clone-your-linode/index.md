@@ -29,11 +29,11 @@ To follow the steps in this guide, you will need a Linode with enough free stora
 4.  **Recommended:** Click **Shut down** to power down the Linode. This is recommended to prevent data corruption.
 5.  Click the **Clone** tab to select the disks or configuration profiles you wish to clone. If you select a configuration profile, all of the disks attached to it will be included automatically. You can confirm this from the *Disks Attached* column.
 
-    [![Selecting configuration profiles and disks to migrate](/docs/assets/clone-tab-small.png)](/docs/assets/clone-tab.png "Selecting configuration profiles and disks to migrate")
+    [![Selecting configuration profiles and disks to migrate](/docs/assets/clone-tab-small.png)](clone-tab.png "Selecting configuration profiles and disks to migrate")
 
 6.  Once you've applied your choices, hit **Select**. You'll be provided with an approximate estimate of how long it will take to clone your Linode:
 
-    [![Clone summary page](/docs/assets/clone-tab-destination-small.png)](/docs/assets/clone-tab-destination.png "Clone summary page")
+    [![Clone summary page](/docs/assets/clone-tab-destination-small.png)](clone-tab-destination.png "Clone summary page")
 
 7.  From the **Destination Linode** menu, select the Linode you want to clone to.
 8.  Click **Clone**. The receiving Linode's Dashboard will appear. Watch the *Host Job Queue* to monitor your progress.

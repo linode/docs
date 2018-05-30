@@ -68,11 +68,11 @@ This guide will use three example [Go](https://golang.org/) apps to demonstrate 
 
 1.  In a web browser, navigate to the [Wercker main page](http://www.wercker.com/) and sign up for a free account.
 
-    ![Wercker Main Page](/docs/assets/wercker/wercker-main.png "Wercker Main Page")
+    ![Wercker Main Page](wercker-main.png "Wercker Main Page")
 
 2.  The easiest way to register is using your GitHub account.
 
-    ![Wercker Registration](/docs/assets/wercker/wercker-registration.png "Wercker Registration")
+    ![Wercker Registration](wercker-registration.png "Wercker Registration")
 
 ## Configure wercker.yml and Practice Examples
 
@@ -288,21 +288,21 @@ As the name implies, Wercker applications correspond to each of your projects. B
 
 1.  Register the three forked repositories. Click the **+** button in the upper right:
 
-    ![Application creation](/docs/assets/wercker/wercker-app-button.jpg "Application creation")
+    ![Application creation](wercker-app-button.jpg "Application creation")
 
 2.  Select the first example repository, **\<GITHUB_USER>/jClocksGMT**:
 
-    ![Choose repository](/docs/assets/wercker/wercker-choose-repository.png "Choose repository")
+    ![Choose repository](wercker-choose-repository.png "Choose repository")
 
 3.  Configure access to your repository. If the project doesn't use submodules, the recommended option is usually the best choice.
 
-    ![Configure access](/docs/assets/wercker/wercker-conf-access.jpg "Configure access")
+    ![Configure access](wercker-conf-access.jpg "Configure access")
 
 4.  Choose whether your application should be private (default) or public. Mark the example as public and click the **Finish** button.
 
     A greeting message indicates you are almost ready to start building your application. It offers to start a wizard to help you create the application `wercker.yml` file, but that won't be necessary because you already did that in the previous section.
 
-    ![YML Wizard](/docs/assets/wercker/wercker-yml-wizard.jpg "YML Wizard")
+    ![YML Wizard](wercker-yml-wizard.jpg "YML Wizard")
 
 5.  Repeat the same procedure for the other two example projects.
 
@@ -314,11 +314,11 @@ Similar to the configuration files, you have several environmental variables to 
 
 1.  For the first example you need a SSH key pair for communication with your Linode. Click on the **Environment** tab:
 
-    ![jClocksGMT variables](/docs/assets/wercker/wercker-global-environment-variables.jpg "jClocksGMT variables")
+    ![jClocksGMT variables](wercker-global-environment-variables.jpg "jClocksGMT variables")
 
 2.  Click on "Generate SSH Keys". A popup window will ask for a key name (use the same name used in your `wercker.yml` file: `linode`). Choose **4096 bit** encryption:
 
-    ![jClocksGMT SSH Keys](/docs/assets/wercker/wercker-ssh-key-creation.jpg "jClocksGMT SSH Keys")
+    ![jClocksGMT SSH Keys](wercker-ssh-key-creation.jpg "jClocksGMT SSH Keys")
 
     This will generate a key pair: `linode_PUBLIC` and `linode_PRIVATE`. The suffix is automatically added and is not needed in the configuration file.
 
@@ -332,15 +332,15 @@ Similar to the configuration files, you have several environmental variables to 
 
 5.  An animation will show each step's progress, allowing you to debug any problems. In this case, the build will fail:
 
-    ![jClocksGMT build error](/docs/assets/wercker/wercker-jclocks-error-01.jpg "jClocksGMT build error")
+    ![jClocksGMT build error](wercker-jclocks-error-01.jpg "jClocksGMT build error")
 
     The hint says "Update code on remote Linode failed." Click on the build pipeline for more information:
 
-    ![jClocksGMT build error - more information](/docs/assets/wercker/wercker-jclocks-error-02.jpg "jClocksGMT build error - more information")
+    ![jClocksGMT build error - more information](wercker-jclocks-error-02.jpg "jClocksGMT build error - more information")
 
 6. This shows that the process failed at the step "Update code on remote Linode." This is due to the fact the repository was not cloned on the remote Linode in the first place. Connect to your Linode and clone the repository in the appropriate location, then return to the Wercker dashboard and click the "Retry" button:
 
-    ![jClocksGMT build error retry](/docs/assets/wercker/wercker-jclocks-retry.jpg "jClocksGMT build error retry")
+    ![jClocksGMT build error retry](wercker-jclocks-retry.jpg "jClocksGMT build error retry")
 
     This time the run should succeed, and your remote Linode repository will be updated. This basic example can be useful for many scenarios. If you are hosting a static website, you can configure Wercker to update your remote server each time you commit a change.
 
@@ -350,7 +350,7 @@ Click the **Workflows** tab in the Wercker dashboard. The editor will show a sin
 
 1. Click **Add new pipeline**:
 
-    ![Add pipeline](/docs/assets/wercker/wercker-add-pipeline.jpg "Add pipeline")
+    ![Add pipeline](wercker-add-pipeline.jpg "Add pipeline")
 
 2.  Fill in the fields as follows:
 
@@ -360,13 +360,13 @@ Click the **Workflows** tab in the Wercker dashboard. The editor will show a sin
 
 3.  Once you configure your pipelines you can chain them. Click the **+** to the right of the `build` pipeline:
 
-    ![Chain pipeline](/docs/assets/wercker/wercker-chain-pipeline.jpg "Chain pipeline")
+    ![Chain pipeline](wercker-chain-pipeline.jpg "Chain pipeline")
 
     You have the option to define an specific branch (or branches) to trigger the pipeline. By default Wercker will monitor all branches and start executing the steps if any commit is made, this is the case for our example. Select **deploy-docker** in the drop-down list and then click **Add**.
 
 4.  Repeat this procedure to chain `deploy-linode` after this pipeline. The end result will look similar to this:
 
-    ![Workflow screen](/docs/assets/wercker/wercker-workflow-01.jpg "Workflow screen")
+    ![Workflow screen](wercker-workflow-01.jpg "Workflow screen")
 
 5.  Next you need to define the environmental variables, but this time you will do it inside each pipeline and not globally. On the Workflows tab, click the **deploy-docker** pipeline at the bottom of the screen. Here you can create the variables. There are two variables from this example's `wercker.yml` that must be defined here: `DOCKER_USERNAME` and `DOCKER_PASSWORD`. Create them and mark the password as **protected**.
 
@@ -378,11 +378,11 @@ Click the **Workflows** tab in the Wercker dashboard. The editor will show a sin
 
     You will end up with a result similar to:
 
-    ![Example Workflow](/docs/assets/wercker/wercker-example-final.jpg "Example Workflow")
+    ![Example Workflow](wercker-example-final.jpg "Example Workflow")
 
 8.  Test your application on the remote server by logging in remotely and running `docker images`:
 
-    ![Docker images](/docs/assets/wercker/wercker-hello-images.jpg "Docker images")
+    ![Docker images](wercker-hello-images.jpg "Docker images")
 
     Only an image tagged `current` is present.
 
@@ -394,7 +394,7 @@ Click the **Workflows** tab in the Wercker dashboard. The editor will show a sin
 
 11. Run your application again. You should see the modified message:
 
-    ![Changed text](/docs/assets/wercker/wercker-hello-run-02.jpg "Changed text")
+    ![Changed text](wercker-hello-run-02.jpg "Changed text")
 
 #### Wercker CLI Example
 
@@ -406,7 +406,7 @@ The final example demonstrates the Wercker CLI.
 
         wercker build
 
-    ![Wercker CLI build](/docs/assets/wercker/wercker-cli-build.jpg "Wercker CLI build")
+    ![Wercker CLI build](wercker-cli-build.jpg "Wercker CLI build")
 
     The output should be similar to the logs you saw on the Wercker dashboard. The difference is that you can check each step locally and detect any errors early in the process. The Wercker CLI replicates the SaaS behavior: it downloads specified images, builds, tests and shows errors. Since the CLI is a development tool intended to facilitate local testing, you will not be able to deploy the end result remotely.
 
@@ -422,13 +422,13 @@ The final example demonstrates the Wercker CLI.
 
 5. Navigate to `localhost:5000/cities.json` in your browser. You should see a list of cities displayed:
 
-    ![Cities JSON](/docs/assets/wercker/wercker-cities-JSON.png "Cities JSON")
+    ![Cities JSON](wercker-cities-JSON.png "Cities JSON")
 
 6.  Close the program with **CTRL+C**. Run `wercker dev`:
 
         wercker dev --expose-ports
 
-    ![Wercker Dev](/docs/assets/wercker/wercker-dev.jpg "Wercker Dev")
+    ![Wercker Dev](wercker-dev.jpg "Wercker Dev")
 
     This command starts the auto-build function in the `dev` pipeline. It builds the application within the Docker container and serves from there. If you make any changes to the app, the container will rebuild to reflect the changes.
 

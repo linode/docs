@@ -41,7 +41,7 @@ When changing servers, however, you want a shorter TTL to make sure that when yo
 
 1.  Locate your current *nameservers* in your shared hosting provider's account control panel. If you're not sure what your nameservers are, you can find out with a [Whois Search tool](http://www.internic.net/whois.html). You will see several nameservers listed, probably all at the same company.
 
-    [![Version control overview.](/docs/assets/1424-internic_whois_nameserver-3.png)](/docs/assets/1424-internic_whois_nameserver-3.png)
+    [![Version control overview.](1424-internic_whois_nameserver-3.png)](1424-internic_whois_nameserver-3.png)
 
 2.  Contact your domain registrar for details on how to shorten the TTL for your domain. Every provider is a little different, so you may have to ask for instructions.
 

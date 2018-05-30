@@ -15,7 +15,7 @@ external_resources:
   - '[API Documentation](https://developers.linode.com/api/v4)'
 ---
 
-<!--- ![Block Storage Volues with the Linode API](/docs/assets/api-block-storage/api-block-storage-smp.png) --->
+<!--- ![Block Storage Volues with the Linode API](api-block-storage-smp.png) --->
 
 The Linode API allows you to create, delete, attach, detach, clone, and resize Block Storage Volumes.
 

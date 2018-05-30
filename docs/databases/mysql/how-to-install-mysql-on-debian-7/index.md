@@ -52,7 +52,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 During the installation process, you will be prompted to set a password for the MySQL root user as shown below. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Debian 7.](/docs/assets/mysql-rootpw-debian.png)](/docs/assets/mysql-rootpw-debian.png)
+[![Setting the MySQL root password in Debian 7.](mysql-rootpw-debian.png)](mysql-rootpw-debian.png)
 
 MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases with local clients.
 

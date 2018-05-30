@@ -34,7 +34,7 @@ Prior to adding Google Analytics to your website, you need to sign up for a Goog
 
 3.  Be sure the **Website** option is selected, then enter your account information as desired. Be sure that your website URL is accurate.
 
-    ![Google Analytics account creation](/docs/assets/googleana-wordpress-signup.png)
+    ![Google Analytics account creation](googleana-wordpress-signup.png)
 
 4.  Press **Get Tracking ID**, and read through and accept the Google Analytics Terms of Service.
 
@@ -95,7 +95,7 @@ Should you decide to disable the demographics feature at a later date, simply re
 
 5.  To determine the success of the above process, open your WordPress website in a browser, then right click and select View Page Source. You should see the Google Analytics code inserted below the `<body>` tag. It is highlighted in the below example:
 
-    ![Google Analytics source check](/docs/assets/googleana-wordpress-source.png)
+    ![Google Analytics source check](googleana-wordpress-source.png)
 
 Congratulations! You have added Google Analytics to your WordPress website. It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics. Please note that if you change the theme you will have to redo the above steps.
 
@@ -117,13 +117,13 @@ The Google Analytics Dashboard for WP is a comprehensive WordPress plugin that i
 
 3. Click on the **Google Analytics** link and select **Authorize Plugin**. It will ask for an access code, which you can acquire by clicking the **Get Access Code** link. You will need to log in to your Google account and allow the plugin to view your Google Analytics data.
 
-    ![Google Analytics Dashboard for WP](/docs/assets/googleana-wordpress-forwp1.png)
+    ![Google Analytics Dashboard for WP](googleana-wordpress-forwp1.png)
 
 4.  Copy the resulting code and insert it in the appropriate text field. From here, you can select the appropriate domain and alter other settings as needed.
 
 5.  If you have not already inserted the tracking code within your website, make sure **Tracking Options** under the **Tracking Code** link is set to **Enabled**. Otherwise, this can be disabled.
 
-    ![Google Analytics Dashboard for WP tracking enabled](/docs/assets/googleana-wordpress-forwp2.png)
+    ![Google Analytics Dashboard for WP tracking enabled](googleana-wordpress-forwp2.png)
 
 Google Analytics Dashboard for WP has now been set up and configured. You can proceed to use WordPress as usual. It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.
 
@@ -138,7 +138,7 @@ Google Analytics by Yoast inserts a Google Analytics section to your WordPress d
 
 3.  Copy the resulting code and paste it into the box. From here, select the domain you are using Google Analytics for and alter other settings as needed. Be aware that if your domain information is not entered correctly, this plugin does not work.
 
-    ![Google Analytics by Yoast](/docs/assets/googleana-wordpress-yoast.png)
+    ![Google Analytics by Yoast](googleana-wordpress-yoast.png)
 
 Google Analytics by Yoast has now been set up. It may take up to twenty-four hours for any data concerning your website to show up on Google Analytics.
 

@@ -47,7 +47,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Ubuntu 10.10 (Maverick)](/docs/assets/359-maverick-01-mysql-root-password.png)](/docs/assets/359-maverick-01-mysql-root-password.png)
+[![Setting the MySQL root password in Ubuntu 10.10 (Maverick)](359-maverick-01-mysql-root-password.png)](359-maverick-01-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. After installing MySQL, it's recommended that you run `mysql_secure_installation` in order to help secure MySQL. It is recommended that you accept the program's default answers. If you are prompted to reload privileges, select "yes." Run the following command to execute the program:
 

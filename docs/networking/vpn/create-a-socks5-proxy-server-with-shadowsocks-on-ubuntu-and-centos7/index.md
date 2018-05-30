@@ -251,7 +251,7 @@ Press the **Global Mode** button to enable Shadowsocks globally on your computer
 
 2. Extract the contents of the .zip file into any folder and run `Shadowsocks.exe`. Shadowsocks will run as a background process. Locate the Shadowsocks icon in the taskbar (it may be in the *Hidden Icons* taskbar menu), right-click on the Shadowsocks icon, then click on **Edit Servers**. Enter the information that you saved in the *shadowsocks.json* file.
 
-    ![New server configuration dialog](/docs/assets/shadowsocks/shadowsocks-windows-edit-servers.png "Windows New Server configuration dialog")
+    ![New server configuration dialog](shadowsocks-windows-edit-servers.png "Windows New Server configuration dialog")
 
 3. Right-click on the Shadowsocks icon again. Mouse over **PAC** and select both **Local PAC** and **Secure Local PAC**. To confirm that your Linode's IP address is selected, mouse over **Servers**.
 

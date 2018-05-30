@@ -245,7 +245,7 @@ PID   VMSize    Private  Name
 
         sudo systemctl restart nginx
 
-    ![Login](/docs/assets/redmine/firstscreen.png)
+    ![Login](firstscreen.png)
 
 ## Redmine
 
@@ -276,7 +276,7 @@ If not installed, install git or download the plug-in directly through the Githu
 
 3. Navigate to Redmine in your browser. Log in, click **admin** then click **plugins**
 
-    ![scrum2b](/docs/assets/redmine/thirdscreen.png)
+    ![scrum2b](thirdscreen.png)
 
 ## Next Steps
 You now have a working Redmine setup on your Linode. If you plan on using it in production, explore plug-ins that will be useful for your team. Take a look at some of the guides below to customize Redmine for your team.

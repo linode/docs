@@ -73,7 +73,7 @@ Be sure to have your phone or mobile device ready, since this is where you'll ad
 
 2.  You should see a [QR code](https://en.wikipedia.org/wiki/QR_code) in your terminal:
 
-    ![The Google Authenticator QR Code and keys on Ubuntu 16.04.](/docs/assets/google-authenticator-ubuntu.png)
+    ![The Google Authenticator QR Code and keys on Ubuntu 16.04.](google-authenticator-ubuntu.png)
 
     Using the authenticator app on your phone or mobile device, scan the code. A new entry should be added to your authenticator app in the format `username@hostname`.
 

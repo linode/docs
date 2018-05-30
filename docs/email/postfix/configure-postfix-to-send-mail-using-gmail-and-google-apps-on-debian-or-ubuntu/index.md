@@ -43,11 +43,11 @@ In this section, you will install Postfix as well as *libsasl2*, a package which
 
 2.  During the Postfix installation, a prompt will appear asking for your **General type of mail configuration**. Select **Internet Site**:
 
-    [![General type of mail configuration options](/docs/assets/1737-postfixsmtp1_sm.png)](/docs/assets/1736-postfixsmtp1.png)
+    [![General type of mail configuration options](/docs/assets/1737-postfixsmtp1_sm.png)](1736-postfixsmtp1.png)
 
 3.  Enter the fully qualified name of your domain. In this example, **fqdn.example.com**:
 
-    [![System mail name prompt](/docs/assets/1738-postfixsmtp2_sm.png)](/docs/assets/1739-postfixsmtp2.png)
+    [![System mail name prompt](/docs/assets/1738-postfixsmtp2_sm.png)](1739-postfixsmtp2.png)
 
 4.  Once the installation is complete, confirm that the `myhostname` parameter is configured with your server's FQDN:
 
@@ -65,13 +65,13 @@ When Two-Factor Authentication (2FA) is enabled, Gmail is preconfigured to refus
 
 2.  Click the following link to [Generate an App password](https://security.google.com/settings/security/apppasswords) for Postfix:
 
-    ![Generate an App password](/docs/assets/postfix-gmail-app-password.png "Generate an App password")
+    ![Generate an App password](postfix-gmail-app-password.png "Generate an App password")
 
 3.  Click **Select app** and choose **Other (custom name)** from the dropdown. Enter "Postfix" and click **Generate**.
 
 4.  The newly generated password will appear. Write it down or save it somewhere secure that you'll be able to find easily in the next steps, then click **Done**:
 
-    ![Generated app password](/docs/assets/postfix-gmail-generated-app-password.png "Generated app password")
+    ![Generated app password](postfix-gmail-generated-app-password.png "Generated app password")
 
 ## Add Gmail Username and Password to Postfix
 
@@ -143,7 +143,7 @@ In some cases, Gmail might still block connections from what it calls "Less secu
 
     Select **Turn on**. A yellow "Updated" notice will appear at the top of the browser window and Gmail will automatically send a confirmation email.
 
-    ![Enable "Less Secure Apps"](/docs/assets/postfix-gmail-less-secure-apps.png "Enable "Less Secure Apps"")
+    ![Enable "Less Secure Apps"](postfix-gmail-less-secure-apps.png "Enable "Less Secure Apps"")
 
 2.  Test Postfix as shown in the following section. If your test emails don't appear after a few minutes, [disable captcha from new application login attempts](https://accounts.google.com/DisplayUnlockCaptcha) and click **Continue**.
 

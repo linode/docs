@@ -102,7 +102,7 @@ To install the Apache module:
 
 2.  Click on the Apache module. If it has not already been installed automatically, you will see the following:
 
-    ![Install Apache Message](/docs/assets/webmin/install_plugin.png "Install Apache Message")
+    ![Install Apache Message](install_plugin.png "Install Apache Message")
 
 3.  Click the **Click Here** button to have Webmin install the module for you.
 
@@ -118,7 +118,7 @@ There are many [third-party modules](http://www.webmin.com/cgi-bin/search_third.
 
 3.  Click the **Webmin Modules** menu icon, and you will see a menu similar to:
 
-    ![Install Module Menu](/docs/assets/webmin/install-module-menu.png "Install Module Menu")
+    ![Install Module Menu](install-module-menu.png "Install Module Menu")
 
 4.  Choose **From uploaded file** and navigate to the file you just downloaded to your local machine.
 

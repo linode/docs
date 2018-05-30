@@ -34,13 +34,13 @@ To configure OpenVPN for tunneling, you'll first need to log in to the Access Se
 
 1. In the **Routing** section, ensure that the option "Should client Internet traffic be routed through the VPN?" is set to **Yes**.
 
-    ![OpenVPN Access Server Internet Routing](/docs/assets/openvpn-access-server-routing.png "OpenVPN Access Server Internet Routing")
+    ![OpenVPN Access Server Internet Routing](openvpn-access-server-routing.png "OpenVPN Access Server Internet Routing")
 
     The option "Should VPN clients have access to private subnets (non-public networks on the server side)?" can be set to **No**, since you are using the VPN to mask internet traffic. If you wish to give VPN users access to services listening on your Linode's local network, set this option to **Yes, using NAT**.
 
 2. To avoid [DNS leaking](https://www.dnsleaktest.com/what-is-a-dns-leak.html), modify the DNS resolver settings. Under **DNS Settings**, select **Have clients use the same DNS servers as the Access Server host**.
 
-    ![OpenVPN Access Server DNS Settings](/docs/assets/openvpn-access-server-dns.png "OpenVPN Access Server DNS Settings")
+    ![OpenVPN Access Server DNS Settings](openvpn-access-server-dns.png "OpenVPN Access Server DNS Settings")
 
     Alternatively, you can manually set the DNS resolvers that will be used by your VPN client machines, under **Have clients use these DNS servers**. This will require that you add both a primary and secondary server. Some popular public DNS servers to consider include:
 
@@ -60,7 +60,7 @@ The first command enables traffic forwarding over IPv4 in your system configurat
 
 Once forwarding is enabled, restart OpenVPN by clicking on the **Stop the Server**, then **Start the Server** buttons under the **Status Overview** section in the Access Server Admin UI:
 
-[![OpenVPN Access Server Restart](/docs/assets/openvpn-access-server-restart-resize.png "OpenVPN Access Server Restart")](/docs/assets/openvpn-access-server-restart.png)
+[![OpenVPN Access Server Restart](/docs/assets/openvpn-access-server-restart-resize.png "OpenVPN Access Server Restart")](openvpn-access-server-restart.png)
 
 ### Disable IPv6
 

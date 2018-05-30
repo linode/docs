@@ -180,7 +180,7 @@ MySQL database engine may be the leading open source relational database engine,
 
 2.  Set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-    [![Setting the MySQL root password in Debian Squeeze.](/docs/assets/1550-wheezy-01-mysql-root-password.png)](/docs/assets/1550-wheezy-01-mysql-root-password.png)
+    [![Setting the MySQL root password in Debian Squeeze.](1550-wheezy-01-mysql-root-password.png)](1550-wheezy-01-mysql-root-password.png)
 
 3.  Issue the following command to secure the MySQL instance:
 

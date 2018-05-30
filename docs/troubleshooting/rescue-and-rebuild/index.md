@@ -30,7 +30,7 @@ Here's how to boot your Linode into Rescue Mode:
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Rescue** tab. The webpage shown below appears.
 
-    [![The Rescue tab in the Linode Manager](/docs/assets/1000-rescue3-1.png)](/docs/assets/1000-rescue3-1.png)
+    [![The Rescue tab in the Linode Manager](1000-rescue3-1.png)](1000-rescue3-1.png)
 
 5.  In the **Rescue Mode** section, select the disks you want to be mounted.
 
@@ -46,7 +46,7 @@ Your Linode has been booted into rescue mode. To access it, follow the instructi
 
 To access your Linode when it's running in rescue mode, you'll need to use the Linode shell (Lish). For instructions, see [Console Access](/docs/networking/remote-access/#console-access) and [Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish/). Once you've successfully logged in, you'll see the window shown below.
 
-[![Lish console](/docs/assets/1002-rescue1-2.png)](/docs/assets/1002-rescue1-2.png)
+[![Lish console](1002-rescue1-2.png)](1002-rescue1-2.png)
 
 Now you've connected to your Linode, you can start doing stuff in rescue mode.
 
@@ -56,7 +56,7 @@ You can use the `fsck` system utility (short for "file system check") to check t
 
 1.  Enter the `df` command to verify that your primary disks are not currently mounted. Your primary disks should not appear in the list. For example, when [we booted into rescue mode earlier](#booting-into-rescue-mode), we specified two disks: Ubuntu at `/dev/sda` and Swap at `/dev/sdb`, neither of which are shown as being mounted in the screenshot below.
 
-    [![Output of df command](/docs/assets/999-rescue2.png)](/docs/assets/999-rescue2.png)
+    [![Output of df command](999-rescue2.png)](999-rescue2.png)
 
      {{< note >}}
 You should never run `fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
@@ -65,7 +65,7 @@ You should never run `fsck` on a mounted disk. Do not continue unless you're sur
 2.  To verify the location of your disks, enter the `fdisk -l` command. The disk layout will appear, as shown below. Notice that the Ubuntu disk is `/dev/sda`, the Swap disk is `/dev/sdb`, and the Finnix partition is `/dev/sdh`.
 
 
-    [![Output of fdisk -l command](/docs/assets/1001-rescue4.png)](/docs/assets/1001-rescue4.png)
+    [![Output of fdisk -l command](1001-rescue4.png)](1001-rescue4.png)
 
 3.  Run `fsck` by entering the following command, replacing `/dev/sda` with the location of the disk you want to check and repair:
 
@@ -73,11 +73,11 @@ You should never run `fsck` on a mounted disk. Do not continue unless you're sur
 
 4.  If no problems are detected, `fsck` will display a message indicating that the file system is "clean," as shown below.
 
-    [![Output of e2fsck command](/docs/assets/1003-rescue5.png)](/docs/assets/1003-rescue5.png)
+    [![Output of e2fsck command](1003-rescue5.png)](1003-rescue5.png)
 
 5.  If `fsck` determines that there is a problem with your file system, it will perform several tests and prompt you to fix problems as they are found, as shown below. Press enter to automatically attempt to fix the problems.
 
-    [![Output of e2fsck command](/docs/assets/1007-rescue6-1.png)](/docs/assets/1007-rescue6-1.png)
+    [![Output of e2fsck command](1007-rescue6-1.png)](1007-rescue6-1.png)
 
 Once the file system check completes, any problems detected should be fixed. You can try restarting the Linode now. With any luck, `fsck` fixed your problem and the Linode will boot normally.
 
@@ -172,7 +172,7 @@ Here's how to rebuild your Linode from scratch:
 4.  Select a Linode. The Linode's dashboard appears.
 5.  Click the **Rebuild** tab. The webpage shown below appears.
 
-    [![The "Rebuild" tab of the Linode Manager](/docs/assets/1006-rescue7-small.png)](/docs/assets/1005-rescue7.png)
+    [![The "Rebuild" tab of the Linode Manager](/docs/assets/1006-rescue7-small.png)](1005-rescue7.png)
 
 6.  Select Linux distribution from the **Distribution** menu.
 7.  Enter a size for the new disk in the **Deployment Disk Size**.

@@ -37,13 +37,13 @@ If you want to be able to quickly deploy from Github, Gitlab or Bitbucket, you w
 
 1. Choose your preferred source control by clicking on the **Source Control** link on the Left.
 
-    ![Linode API](/docs/assets/configuration-management/linking_source_control.png)
+    ![Linode API](linking_source_control.png)
 
 2. Click on the source control service you would like to connect to.
 
     Once you link to a source control service, you will be prompted to authorize Laravel Forge. You will then be redirected back to Forge’s website.
 
-    ![Linode API](/docs/assets/configuration-management/source_control_authorized.png)
+    ![Linode API](source_control_authorized.png)
 
 ## Adding Your Linode API Key to Forge
 
@@ -53,13 +53,13 @@ If you want to be able to quickly deploy from Github, Gitlab or Bitbucket, you w
 
 3. Select **Linode** and input your API key.
 
-   ![Linode API](/docs/assets/configuration-management/adding_api_key_to_forge.png)
+   ![Linode API](adding_api_key_to_forge.png)
 
 ## Create a Server
 
 1. Click on **Linode**.
 
-    ![Linode API](/docs/assets/configuration-management/create_a_server.png)
+    ![Linode API](create_a_server.png)
 
     You will then be provided with some options:
 
@@ -77,21 +77,21 @@ If you want to be able to quickly deploy from Github, Gitlab or Bitbucket, you w
 
 2. Once you have finished selecting options, click **Create Server**. A pop up will show you the sudo and database passwords that have been automatically generated for you. Be sure to copy these values and store them in a secure place.
 
-    ![Linode API](/docs/assets/configuration-management/server_credential.png)
+    ![Linode API](server_credential.png)
 
     Forge will now perform the steps necessary to create and configure a Linode based on the settings you chose earlier.
 
 3. A green check in the **Status** column means the server is active. This will take a few seconds.
 
-    ![Linode API](/docs/assets/configuration-management/active_servers.png)
+    ![Linode API](active_servers.png)
 
 4. Navigate to the public IP address of your Linode in a browser.
 
-    ![Linode API](/docs/assets/configuration-management/server_set_up_with_php_7_1.png)
+    ![Linode API](server_set_up_with_php_7_1.png)
 
 5. When the setup process has completed, you will receive an email containing details about your new server.
 
-    ![Linode API](/docs/assets/configuration-management/mail_from_linode_showing_details_created.png)
+    ![Linode API](mail_from_linode_showing_details_created.png)
 
 ## Add a Domain Name
 
@@ -102,7 +102,7 @@ If you want to use Let's Encrypt to obtain a free SSL certificate for your websi
 2. Go to your domain name provider, add an ANAME record for the domain or subdomain, and point it to the public IP address of your server.
 
 
-    ![Linode API](/docs/assets/configuration-management/adding_new_domain.png)
+    ![Linode API](adding_new_domain.png)
 
     - Root Domain: This is your domain name.
     - Project Type: This is the type of project you are using. If you are building regular PHP, you can choose `General PHP/Laravel`. Other options include Static, HTML, Symfony, and Symfony (Dev).
@@ -122,26 +122,26 @@ If you do not add a domain name, you can still access your server through its pu
 
 2. Click **Apps** on the left-hand side and then select your Git repository.
 
-    ![Linode API](/docs/assets/configuration-management/adding_git_repository.png)
+    ![Linode API](adding_git_repository.png)
 
 3. Fill in the repository field with your username and repository. Then select the branch you want to use. Click on **INSTALL REPOSITORY.** Observe that the repository field is `gitlab_username/repository_name_without_.git`. The sample image below shows `dongido/transaction-manager`:
 
-    ![Linode API](/docs/assets/configuration-management/git_repository_name.png)
+    ![Linode API](git_repository_name.png)
 
 4. If you visit the website again, the repository is now copied to your Linode server and everything is set up.
 
-    ![Linode API](/docs/assets/configuration-management/site_up_and_running.png)
+    ![Linode API](site_up_and_running.png)
 
 ## Quick Deploy
 These steps will show how to immediately deploy changes from the source directory to the live site.
 
 1. From the **INSTALL REPOSITORY** menu, toggle **Quick Deploy** to "on".
 
-    ![Linode API](/docs/assets/configuration-management/Laravel_forge_deploy.png)
+    ![Linode API](Laravel_forge_deploy.png)
 
 2. Make changes to your project on Github or Gitlab and commit them to the master branch. Your live site will be updated to reflect the changes.
 
-    ![Linode API](/docs/assets/configuration-management/laravel_forge_sites.png)
+    ![Linode API](laravel_forge_sites.png)
 
 ## Adding SSL to Your Domain Name
 SSL (Secure Sockets Layer) is the standard security technology for establishing an encrypted link between a web server and a browser. To add SSL:
@@ -152,7 +152,7 @@ SSL (Secure Sockets Layer) is the standard security technology for establishing 
 
 3. Click on **SSL** from the menu on the left.
 
-    ![Linode API](/docs/assets/configuration-management/laravel_forge_adding_ssl.png)
+    ![Linode API](laravel_forge_adding_ssl.png)
 
     Laravel Forge comes with Let's Encrypt which help us generate a free SSL certificate.
 

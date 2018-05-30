@@ -77,7 +77,7 @@ Here's how the DNS lookup process works:
 7.  The zone file shows which IP address goes with the domain.
 8.  Now that the ISP has the IP address for *example.com*, it (in short) returns this to your browser which then accesses the site's web server.
 
-    ![The steps for DNS resolution, also displayed below.](/docs/assets/1330-dnsoverview.jpg)
+    ![The steps for DNS resolution, also displayed below.](1330-dnsoverview.jpg)
 
 The scenario described above is what happens if the ISP has no current information about the requested domain. In actuality, ISPs cache a lot of DNS information after they've looked it up the first time. This results in faster lookups and less strain on DNS servers.
 

@@ -58,11 +58,11 @@ The next steps are to install the required packages on the Linode.
 
     Follow the prompt to type in a secure MySQL password and to select the type of mail server you wish to configure. Select **Internet Site**. The *System Mail Name* should be the FQDN.
 
-    [![Set the root MySQL password.](/docs/assets/1234-mysql_setroot1.png)](/docs/assets/1234-mysql_setroot1.png)
+    [![Set the root MySQL password.](1234-mysql_setroot1.png)](1234-mysql_setroot1.png)
 
-    [![Choose "Internet Site" for Postfix.](/docs/assets/1236-postfix_internetsite.png)](/docs/assets/1236-postfix_internetsite.png)
+    [![Choose "Internet Site" for Postfix.](1236-postfix_internetsite.png)](1236-postfix_internetsite.png)
 
-    [![Set the system mail name for Postfix.](/docs/assets/1237-postfix_systemmailname.png)](/docs/assets/1237-postfix_systemmailname.png)
+    [![Set the system mail name for Postfix.](1237-postfix_systemmailname.png)](1237-postfix_systemmailname.png)
 
 ## MySQL
 

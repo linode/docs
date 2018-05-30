@@ -108,7 +108,7 @@ GRUB_DISABLE_OS_PROBER=true
 
 2.  Under **Boot Settings** Click on the **Kernel** drop-down menu, and select **GRUB2**:
 
-    ![The GRUB2 Option.](/docs/assets/custom-kernel-grub2.png)
+    ![The GRUB2 Option.](custom-kernel-grub2.png)
 
 3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/networking/using-the-linode-shell-lish) or [GLISH](/docs/networking/using-the-graphic-shell-glish) session first, so you can monitor the boot process and troubleshoot if necessary.
 

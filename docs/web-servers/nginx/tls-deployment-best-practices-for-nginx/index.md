@@ -165,7 +165,7 @@ To check your distribution's version of OpenSSL, run:
 
 3.  Verify HTTP/2 is enabled with the [KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test). The result should tell you that your site supports HTTP/2.
 
-    ![HTTP2 Report](/docs/assets/keycdn-http2-test.jpg)
+    ![HTTP2 Report](keycdn-http2-test.jpg)
 
 ## OCSP Stapling
 

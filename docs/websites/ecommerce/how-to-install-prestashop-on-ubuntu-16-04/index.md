@@ -211,13 +211,13 @@ You can also use:
 
     An install wizard will guide you through the setup process. When prompted, fill in the database credentials you set up earlier. Leave the first field as it is: **127.0.0.1**. The **table prefix** can be left unchanged as well.
 
-    ![Database Credentials Form](/docs/assets/prestashop-ubuntu1604-database-credentials-form.png)
+    ![Database Credentials Form](prestashop-ubuntu1604-database-credentials-form.png)
 
 2. Test your connection to the database server.
 
 3. After clicking **Next** the installer will create the necessary tables and finalize setting up the store. You will see a page that looks something like this:
 
-  ![PrestaShop Installation Completed](/docs/assets/prestashop-ubuntu1604-installation-completed.png)
+  ![PrestaShop Installation Completed](prestashop-ubuntu1604-installation-completed.png)
 
 4. Remove the `install` directory and `zip` archive:
 
@@ -228,27 +228,27 @@ You can also use:
 
 1. Enable https redirection. In the PrestaShop backend, in the far-left menu, look for **CONFIGURE**. Click on **Shop Parameters** under it.
 
-    ![Far-left menu from PrestaShop](/docs/assets/prestashop-ubuntu1604-left-side-menu.png)
+    ![Far-left menu from PrestaShop](prestashop-ubuntu1604-left-side-menu.png)
 
     Choose **YES** for **Enable SSL** and **Enable SSL on all pages**. Scroll down and click **Save**.
 
     If you can't switch on **Enable SSL on all pages**, try again after enabling SSL and saving your settings.
 
-    ![SSL switches turned on in settings](/docs/assets/prestashop-ubuntu1604-SSL-switches.png)
+    ![SSL switches turned on in settings](prestashop-ubuntu1604-SSL-switches.png)
 
 2. Go back to the left menu, and as your mouse pointer hovers on top of **Shop Parameters** you'll see a submenu pop up. Click on **Traffic and SEO**. Scroll down until you find the settings pictured below:
 
-    ![PrestaShop SEO and URL settings](/docs/assets/prestashop-ubuntu1604-SEO-and-URL-switches.png)
+    ![PrestaShop SEO and URL settings](prestashop-ubuntu1604-SEO-and-URL-switches.png)
 
     Select **YES** for **Friendly URL** and **301 Moved Permanently** for **Redirect to the canonical URL**. Save your settings.
 
 3. Out of the box, PrestaShop includes some features that help it render pages faster for your clients. You can access these from the far-left menu. Under **CONFIGURE**, hover over **Advanced Parameters** and click on **Performance** in the submenu that opens up. Select **Recompile templates if the files have been updated** under **Template compilation** and **YES** for **Cache**. This will activate Smarty cache and decrease the need for your server to compile parts of the PHP code, decreasing load times for the frontend. The final settings should look like this:
 
-    ![Smarty cache settings](/docs/assets/prestashop-ubuntu1604-smarty-cache-settings.png)
+    ![Smarty cache settings](prestashop-ubuntu1604-smarty-cache-settings.png)
 
 4. Scroll down until you find **CCC (COMBINE, COMPRESS AND CACHE)**. Switch everything there to **YES**. Save your settings.
 
-    ![CCC (COMBINE, COMPRESS AND CACHE settings)](/docs/assets/prestashop-ubuntu1604-combine-compress-cache-settings.png)
+    ![CCC (COMBINE, COMPRESS AND CACHE settings)](prestashop-ubuntu1604-combine-compress-cache-settings.png)
 
 5. Open `/etc/php/7.0/apache2/php.ini` in a text editor and look for the following three settings:
 

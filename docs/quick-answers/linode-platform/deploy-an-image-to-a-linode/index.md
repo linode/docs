@@ -16,11 +16,11 @@ This QuickAnswer will show you how to deploy a Linux distribution to your Linode
 
 1.  Once you've created your Linode, select it from the **Linodes** tab to access the Dashboard. Click on **Deploy an Image**:
 
-    [![Linux Dashboard](/docs/assets/linode-manager-dashboard-newacct_small.png)](/docs/assets/linode-manager-dashboard-newacct.png)
+    [![Linux Dashboard](/docs/assets/linode-manager-dashboard-newacct_small.png)](linode-manager-dashboard-newacct.png)
 
     The *Deploy* page will open:
 
-    [![Deploy a Linux Image](/docs/assets/linode-manager-deploy-an-image_small.png)](/docs/assets/linode-manager-deploy-an-image.png)
+    [![Deploy a Linux Image](/docs/assets/linode-manager-deploy-an-image_small.png)](linode-manager-deploy-an-image.png)
 
 2.  Select a Linux distribution from the **Image** menu.
 

@@ -233,11 +233,11 @@ server {
 
 1.  Open a web browser and navigate to your Linode's domain name:
 
-    ![access askbot on web browser](/docs/assets/askbot-1.png)
+    ![access askbot on web browser](askbot-1.png)
 
 2.  Click on **create a password-protected account** to create an Admin Account:
 
-    ![create an askbot admin account](/docs/assets/askbot-2.png)
+    ![create an askbot admin account](askbot-2.png)
 
     {{< note >}}
 The first account created using the above method will be treated as an admin account. Any subsequent accounts will be normal accounts.
@@ -245,19 +245,19 @@ The first account created using the above method will be treated as an admin acc
 
 3.  Choose an admin username and password:
 
-    ![create a admin username and password](/docs/assets/askbot-3.png)
+    ![create a admin username and password](askbot-3.png)
 
 4.  Set your domain name with AskBot using base url settings by clicking **APP_URL**:
 
-    ![set your domain name to askbot base url settings](/docs/assets/askbot-4.png)
+    ![set your domain name to askbot base url settings](askbot-4.png)
 
 5.  Add your domain name in the place of Base URL box and click **Save**:
 
-    ![add your domain name to askbot base url settings](/docs/assets/askbot-5.png)
+    ![add your domain name to askbot base url settings](askbot-5.png)
 
 6.  AskBot is now ready to run. Access the AskBot admin interface and customize it according to your needs:
 
-    ![final access to askbot forum](/docs/assets/askbot-6.png)
+    ![final access to askbot forum](askbot-6.png)
 
 ## Next Steps
 

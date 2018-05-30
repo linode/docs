@@ -36,7 +36,7 @@ Here's how to resize your Linode:
 3.  Select a Linode from the list.
 4.  Click the **Resize** tab. The webpage shown below appears.
 
-    [![The Linode Manager interface.](/docs/assets/resizing-a-linode-small.png)](/docs/assets/resizing-a-linode.png)
+    [![The Linode Manager interface.](/docs/assets/resizing-a-linode-small.png)](resizing-a-linode.png)
 
 5.  Select a plan.
 6.  Click **Resize this Linode Now**. Your Linode will be powered off and moved to another host. Depending on the size of your Linode, this process can take up to one hour.
@@ -44,7 +44,7 @@ Here's how to resize your Linode:
 
     In your Dashboard, click the **Edit** button next to the disk you'd like to allocate the extra storage to. Enter a new size in the specified range and click **Save Changes**.
 
-    [![Adding storage space to an individual disk.](/docs/assets/resize-a-disk-small.png)](/docs/assets/resize-a-disk.png)
+    [![Adding storage space to an individual disk.](/docs/assets/resize-a-disk-small.png)](resize-a-disk.png)
 
 8.  Once completed, your Linode will still be powered off. From the **Dashboard** tab, click **Boot** to turn it on.
 

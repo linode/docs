@@ -74,7 +74,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 5.  When the command finishes, reboot into the **Installer profile**:
 
-    ![Screenshot of the Dashboard, ready to reboot into the Installer profile.](/docs/assets/applications/cloud-storage/freenas-bs/reboot-installer-profile.png "Screenshot of the Dashboard, ready to reboot into the Installer profile.")
+    ![Screenshot of the Dashboard, ready to reboot into the Installer profile.](reboot-installer-profile.png "Screenshot of the Dashboard, ready to reboot into the Installer profile.")
 
 6.  Go to the **Remote Access** tab in the Linode Manager. Access your Linode using [Glish](/docs/networking/using-the-linode-graphical-shell-glish/) to start the installation.
 
@@ -83,7 +83,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 1.  Press **Enter** to Install/Upgrade.
 2.  Press the **Spacebar** to select the FreeNAS disk (`da0` in this screenshot) and press **Enter**:
 
-    ![Select the FreeNAS disk](/docs/assets/applications/cloud-storage/freenas-bs/freenas-installation-select-disk.png "Select the FreeNAS disk.")
+    ![Select the FreeNAS disk](freenas-installation-select-disk.png "Select the FreeNAS disk.")
 
 3.  The installation shows a warning that all data on the disk will be deleted. Press **Enter** to continue.
 4.  Enter a root password, tab to the next field to re-enter it, and press **Enter** to continue.
@@ -96,7 +96,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 1.  Select the FreeNAS configuration profile, and click **Boot**:
 
-    ![Screenshot of the Dashboard, ready to reboot into the FreeNAS profile.](/docs/assets/applications/cloud-storage/freenas-bs/reboot-freenas-profile.png "Screenshot of the Dashboard, ready to reboot into the FreeNAS profile.")
+    ![Screenshot of the Dashboard, ready to reboot into the FreeNAS profile.](reboot-freenas-profile.png "Screenshot of the Dashboard, ready to reboot into the FreeNAS profile.")
 
     SSH and Lish are disabled in FreeNAS. Use Glish to monitor the first boot which takes several minutes. Once booted, close Glish and proceed to the next step to use the web interface for configuration.
 
@@ -124,17 +124,17 @@ Formatting will erase all data on the volume.
 
 3.  Return to the **Storage** tab and click **Volume Manager**. Enter a Volume Name and under Available Disks click the **+** next to the Block Storage Volume. Below Volume layout, select **Stripe**. Click **Add Volume** to format and attach the Volume:
 
-    ![Volume Manager - Add a Volume](/docs/assets/applications/cloud-storage/freenas-bs/freenas-storage-add-volume.png "Volume Manager - Add a Volume")
+    ![Volume Manager - Add a Volume](freenas-storage-add-volume.png "Volume Manager - Add a Volume")
 
 ### Set Permissions, Share the Volume, and Complete Configuration
 
 1.  Click the Wizard icon:
 
-    ![FreeNAS Wizard Icon](/docs/assets/applications/cloud-storage/freenas-bs/freenas-wizard-icon.png "FreeNAS Wizard Icon")
+    ![FreeNAS Wizard Icon](freenas-wizard-icon.png "FreeNAS Wizard Icon")
 
 2.  Select your language, keyboard map, and timezone and click **Next**:
 
-    ![Wizard Keyboard and Timezone Selection](/docs/assets/applications/cloud-storage/freenas-bs/freenas-wizard-lang-keyboard-timezone.png "Wizard Keyboard and Timezone Selection")
+    ![Wizard Keyboard and Timezone Selection](freenas-wizard-lang-keyboard-timezone.png "Wizard Keyboard and Timezone Selection")
 
 3.  When prompted for the Directory Service, press **Next** to skip the step.
 
@@ -150,7 +150,7 @@ FreeNAS has SSH disabled by default. This is a more secure configuration, but ma
 
 1.  Click the **Services** icon, then the wrench icon on the SSH line:
 
-    ![FreeNAS Services](/docs/assets/applications/cloud-storage/freenas-bs/freenas-services.png "FreeNAS Services")
+    ![FreeNAS Services](freenas-services.png "FreeNAS Services")
 
 2.  Check **Login as Root with password** and press **OK**. Check **Start on Boot** if you would like to keep the setting enabled through future reboots. Click **Start Now**.
 

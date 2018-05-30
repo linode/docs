@@ -50,15 +50,15 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
 2. Click on the 'Yubico OTP' menu in the top-left corner, and select 'Quick'. Your screen should look like the one below.
 
-    [![YubiKey Personalization Tool](/docs/assets/yubikey-personalization-small.png)](/docs/assets/yubikey-personalization.png)
+    [![YubiKey Personalization Tool](/docs/assets/yubikey-personalization-small.png)](yubikey-personalization.png)
 
 3. Click 'Write Configuration'. Click 'Cancel' on the pop-up window that asks where to save the log file.
 
-    ![Prompt to save the log file](/docs/assets/yubikey-log-window.png)
+    ![Prompt to save the log file](yubikey-log-window.png)
 
 4. Now select 'Upload to Yubico'. In the web form that opens, fill in your email address. Select the field asking for an 'OTP from the YubiKey' and touch the button on your YubiKey (or touch and hold if you programmed slot 2). This should fill the field with a string of letters. Complete the captcha and press 'Upload AES key'.
 
-    ![AES key upload form](/docs/assets/yubikey-upload-form.png)
+    ![AES key upload form](yubikey-upload-form.png)
 
     {{< note >}}
 The page will respond with a table containing your key information. You should keep this data in a safe place. Should you ever lose your YubiKey, you will need this data to reconfigure a new one with the same settings.

@@ -266,7 +266,7 @@ From `dbserver`:
 
     If everything has been configured successfully you should see an output similar to this:
 
-    ![VPN output](/docs/assets/appserver-dbserver-output.jpg "VPN output")
+    ![VPN output](appserver-dbserver-output.jpg "VPN output")
 
 3.  You can open another terminal (i.e., from `appserver`) and check the active interfaces:
 

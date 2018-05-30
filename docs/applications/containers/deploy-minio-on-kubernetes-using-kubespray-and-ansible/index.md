@@ -361,8 +361,8 @@ minio-service   LoadBalancer   10.233.28.163   <pending>     9000:30593/TCP   20
 
 4.  In a browser, navigate to the public IP address of any of the Linodes in the cluster, at the exposed port (30593 in the example above):
 
-    ![Minio Login Screen](/docs/assets/minio-login-screen.png)
+    ![Minio Login Screen](minio-login-screen.png)
 
 5.  Minio has similar functionality to S3: file uploads, creating buckets, and storing other data.
 
-    ![Minio Browser](/docs/assets/minio-browser.png)
+    ![Minio Browser](minio-browser.png)

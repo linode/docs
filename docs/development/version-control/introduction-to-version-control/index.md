@@ -21,7 +21,7 @@ In the [Hosting a Website](/docs/websites/hosting-a-website/) guide, you learned
 
 A *version control* system is a special application that stores and manages every revision of your files and code. Many developers and organizations use version control to collaborate on source code, manage releases, and roll back to previous versions when bugs are discovered.
 
-[![Version control overview.](/docs/assets/1204-image_versioning_intro_1.jpg)](/docs/assets/1204-image_versioning_intro_1.jpg)
+[![Version control overview.](1204-image_versioning_intro_1.jpg)](1204-image_versioning_intro_1.jpg)
 
 Setting up a version control system is easy. The hard part is learning to use it, and then incorporate it in your daily workflow. This section introduces version control and explains how you can apply it to your own projects. We'll walk you through all of the steps, from evaluating the different version control systems to creating and using a repository.
 
@@ -31,7 +31,7 @@ If you host a website or web-based application on your Linode, your users rely o
 
 Version control (also referred to as *revision control* or *source control*) is a file storage system that tracks every change made to a file and allows you to reverse or roll back those changes. For example, if you were editing a file on your personal computer and decided to delete a section of code, you could use version control to restore that section of code in the future - even weeks or months from now.
 
-[![A basic form of version control.](/docs/assets/1203-image_versioning_basics_1.jpg)](/docs/assets/1203-image_versioning_basics_1.jpg)
+[![A basic form of version control.](1203-image_versioning_basics_1.jpg)](1203-image_versioning_basics_1.jpg)
 
 Version control is also a great tool for individuals who need to work on the same files at the same time. With version control, they can *check out* the repository and then *commit* the changes when they're finished. If two individuals have modified the same file, the version control system can usually *merge* the changes, unless there's a *conflict*, in which case the user will need to manually combine the changes or favor one change over the other.
 
@@ -57,7 +57,7 @@ This is the process most developers use to create, stage, and commit files to a 
 
 An illustrated overview of this process is shown below.
 
-[![An illustration of a sample version control system.](/docs/assets/1205-image_versioning_workflow_1.jpg)](/docs/assets/1205-image_versioning_workflow_1.jpg)
+[![An illustration of a sample version control system.](1205-image_versioning_workflow_1.jpg)](1205-image_versioning_workflow_1.jpg)
 
 For an added layer of protection, you can store your files in *both* a local and a remote Git repository. This is ideal for developers who modify files on their local desktop computers and then need to transfer them to a server. Such a setup is beyond the scope of this guide, but the official Git website provides [some excellent instructions on this topic](http://git-scm.com/book/ch2-5.html).
 
@@ -98,7 +98,7 @@ Now it's time to use what you've learned about version control and server builds
 
 To get started, you'll need to decide which environments you want to create and then set them up. We recommend creating three different environments, which should be suitable for most individual developers and small organizations. Larger companies will likely want and need several other environments, depending on the established teams and processes. Ideally, the environments you create should correspond to your workflow. For example, if your organization has a dedicated quality control department, you'll probably want to create an additional environment specifically for that department.
 
-[![An illustration of a sample deployment configuration.](/docs/assets/1206-image_workflow_1.jpg)](/docs/assets/1206-image_workflow_1.jpg)
+[![An illustration of a sample deployment configuration.](1206-image_workflow_1.jpg)](1206-image_workflow_1.jpg)
 
 We recommend creating the following environments:
 

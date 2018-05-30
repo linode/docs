@@ -88,7 +88,7 @@ Run the Phusion Passenger installer for nginx:
 
 You'll be greeted by the Phusion Passenger nginx installer program. Press "Enter" to continue with the installation.
 
-[![Phusion Passenger nginx installer program running on Ubuntu 9.10 (Karmic).](/docs/assets/463-01-passenger-nginx-installer.png)](/docs/assets/463-01-passenger-nginx-installer.png)
+[![Phusion Passenger nginx installer program running on Ubuntu 9.10 (Karmic).](463-01-passenger-nginx-installer.png)](463-01-passenger-nginx-installer.png)
 
 When prompted for the nginx installation method, we recommend you choose "1" to allow the installer to automatically download, compile, and install nginx for you. Unless you have specific needs that would necessitate passing custom options to nginx at compile time, this is the safest way to proceed. Accept the default installation location for nginx.
 

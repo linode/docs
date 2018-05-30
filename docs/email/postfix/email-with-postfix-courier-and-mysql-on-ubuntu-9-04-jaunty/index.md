@@ -53,19 +53,19 @@ Issue the following command to get the required packages installed on your Linod
 
 This will install the Postfix mail server, the MySQL database server, the Courier IMAP and POP daemons, and several supporting packages that provide services related to authentication. You will be prompted to choose a root password for MySQL; make sure you select a strong password comprised of letters, numbers, and non-alphanumeric characters. Write this password down and keep it in a safe place for later reference.
 
-[![Setting the root password for MySQL on a Linode.](/docs/assets/435-postfix-courier-mysql-01-mysql-root-password.png)](/docs/assets/435-postfix-courier-mysql-01-mysql-root-password.png)
+[![Setting the root password for MySQL on a Linode.](435-postfix-courier-mysql-01-mysql-root-password.png)](435-postfix-courier-mysql-01-mysql-root-password.png)
 
 When prompted, select "No" for web-based administration.
 
-[![Declining web-based administration for the Postfix mail server on an Ubuntu 9.04 (Jaunty) Linode.](/docs/assets/436-postfix-courier-mysql-02-mail-server-type-4.png)](/docs/assets/436-postfix-courier-mysql-02-mail-server-type-4.png)
+[![Declining web-based administration for the Postfix mail server on an Ubuntu 9.04 (Jaunty) Linode.](436-postfix-courier-mysql-02-mail-server-type-4.png)](436-postfix-courier-mysql-02-mail-server-type-4.png)
 
 Next, you'll be prompted to select the type of mail server configuration you want for your Linode. Select "Internet Site" and continue.
 
-[![Selecting the Postfix mail server configuration type on an Ubuntu 9.04 (Jaunty) Linode.](/docs/assets/437-postfix-courier-mysql-02-mail-server-type-2.png)](/docs/assets/437-postfix-courier-mysql-02-mail-server-type-2.png)
+[![Selecting the Postfix mail server configuration type on an Ubuntu 9.04 (Jaunty) Linode.](437-postfix-courier-mysql-02-mail-server-type-2.png)](437-postfix-courier-mysql-02-mail-server-type-2.png)
 
 Now you'll need to set the system mail name. This should be a fully qualified domain name (FQDN) that points to your Linode's IP address. In this example, we're using an example organization's domain for our mail server. You should set the reverse DNS for your Linode's IP address to the fully qualified domain name you assign as the system mail name, while other domains you wish to host email for will be handled through later virtual domain setup steps.
 
-[![Selecting the Postfix system mail name on an Ubuntu 9.04 (Jaunty) Linode.](/docs/assets/438-postfix-courier-mysql-02-mail-server-type-3.png)](/docs/assets/438-postfix-courier-mysql-02-mail-server-type-3.png)
+[![Selecting the Postfix system mail name on an Ubuntu 9.04 (Jaunty) Linode.](438-postfix-courier-mysql-02-mail-server-type-3.png)](438-postfix-courier-mysql-02-mail-server-type-3.png)
 
 This completes the initial package configuration steps. Next, we'll set up a MySQL database to handle our virtual domains and users.
 

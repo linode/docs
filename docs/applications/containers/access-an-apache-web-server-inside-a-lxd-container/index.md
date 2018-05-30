@@ -56,7 +56,7 @@ When setting up LXD, you can either store container data in an [external volume]
 **Do not** format the volume and do not add it to `/etc/fstab`.
 {{< /caution >}}
 
-    ![Add a volume for Disk Storage](/docs/assets/lxd/add-volume-for-disk-storage.png "Add a volume for Disk Storage")
+    ![Add a volume for Disk Storage](add-volume-for-disk-storage.png "Add a volume for Disk Storage")
 
 2.  Edit your Configuration Profile and under **Boot Settings** select **GRUB 2** as your kernel. See [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/) for more information.
 
@@ -66,7 +66,7 @@ When setting up LXD, you can either store container data in an [external volume]
 
 1.  In the Linode Manager, find the **Disks** section and click **Create a new disk**.
 
-    ![Create a Linode Disk](/docs/assets/lxd/create_new_disk.png)
+    ![Create a Linode Disk](create_new_disk.png)
 
     {{< note >}}
 If your Linode's distribution disk already has 100% of the available disk space allocated to it, you will need to resize the disk before you can create a storage disk. See [Resizing a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) for more information.
@@ -74,7 +74,7 @@ If your Linode's distribution disk already has 100% of the available disk space 
 
 2.  Edit your Linode's Configuration Profile. Under **Block Device Assignment**, assign your new disk to `/dev/sdc`. Make a note of this path, which you will need when configuring LXD in the next section.
 
-    ![Block Device Assignment](/docs/assets/lxd/block-device-assignment.png "Block Device Assignment")
+    ![Block Device Assignment](block-device-assignment.png "Block Device Assignment")
 
 3.  Under **Boot Settings** select **GRUB 2** as your kernel.
 
@@ -231,7 +231,7 @@ This section will create a container, install the Apache web server, and add the
 
 6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
 
-    [![Web page of Apache server running in a container](/docs/assets/lxd/apache-server-running-in-lxd-container.png)](/docs/assets/lxd/apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
+    [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
 ## Next Steps
 

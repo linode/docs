@@ -144,11 +144,11 @@ You can connect to your new ARK server using two different methods. Because the 
 
 1.  On your local computer, open the ARK: Survival Evolved game client. Click on **JOIN ARK**:
 
-    [![The ARK: Survival Evolved Main Menu](/docs/assets/ark-menu-small.png "The ARK: Survival Evolved Main Menu")](/docs/assets/ark-menu.png "The ARK: Survival Evolved Main Menu")
+    [![The ARK: Survival Evolved Main Menu](/docs/assets/ark-menu-small.png "The ARK: Survival Evolved Main Menu")](ark-menu.png "The ARK: Survival Evolved Main Menu")
 
 2.  As the server list populates, you can filter the results using the **Server Name Filter** field (1). You must also select *UnOfficial* from the **Server Filter** field (2). If you've password-protected your ARK server, you must also check the **Show Password Protected** box (3):
 
-    [![The ARK: Survival Evolved Server List](/docs/assets/ark-server-list-small.png "The ARK: Survival Evolved Server List")](/docs/assets/ark-server-list.png "The ARK: Survival Evolved Server List")
+    [![The ARK: Survival Evolved Server List](/docs/assets/ark-server-list-small.png "The ARK: Survival Evolved Server List")](ark-server-list.png "The ARK: Survival Evolved Server List")
 
 3.  Select your server, and click **Join**. If your server is password-protected, you'll be prompted to enter the password.
 
@@ -157,25 +157,25 @@ You can connect to your new ARK server using two different methods. Because the 
 
 2.  Under **FAVORITES** select **ADD A SERVER** and direct Steam to connect to your Linode's IP address or domain name:
 
-    [![Steam Add Server](/docs/assets/ark-add-server-small.png)](/docs/assets/ark-add-server.png)
+    [![Steam Add Server](/docs/assets/ark-add-server-small.png)](ark-add-server.png)
 
 3.  Once Steam identifies your ARK server, it should appear in the **SERVERS** list. Choose your server and hit **CONNECT**:
 
-    [![Steam Servers](/docs/assets/ark-servers-small.png)](/docs/assets/ark-servers.png)
+    [![Steam Servers](/docs/assets/ark-servers-small.png)](ark-servers.png)
 
     Alternately, you can select **Favorites** from the **Server Filter** in the in-game server list:
 
-    [![ARK: Survival Evolved Favorites List](/docs/assets/ark-favorites-list-small.png "ARK: Survival Evolved Favorites List")](/docs/assets/ark-favorites-list.png "ARK: Survival Evolved Favorites List")
+    [![ARK: Survival Evolved Favorites List](/docs/assets/ark-favorites-list-small.png "ARK: Survival Evolved Favorites List")](ark-favorites-list.png "ARK: Survival Evolved Favorites List")
 
 4.  If you've created a server password in your `GameUserSettings.ini` file, enter it here:
 
-    ![ARK Server Password](/docs/assets/ark-password.png)
+    ![ARK Server Password](ark-password.png)
 
     Or if you are using the in-game menu, enter the server password here:
 
-    [![ARK: Survival Evolved Server Password Prompt](/docs/assets/ark-server-password-small.png "ARK: Survival Evolved Server Password Prompt")](/docs/assets/ark-server-password.png "ARK: Survival Evolved Server Password Prompt")
+    [![ARK: Survival Evolved Server Password Prompt](/docs/assets/ark-server-password-small.png "ARK: Survival Evolved Server Password Prompt")](ark-server-password.png "ARK: Survival Evolved Server Password Prompt")
 
 
 Congratulations! You can now explore the world of ARK in your own persistent server.
 
-[![ARK: Survival Evolved Gameplay](/docs/assets/ark-gameplay-small.png "ARK: Survival Evolved Gameplay")](/docs/assets/ark-gameplay.png "ARK: Survival Evolved Gameplay")
+[![ARK: Survival Evolved Gameplay](/docs/assets/ark-gameplay-small.png "ARK: Survival Evolved Gameplay")](ark-gameplay.png "ARK: Survival Evolved Gameplay")

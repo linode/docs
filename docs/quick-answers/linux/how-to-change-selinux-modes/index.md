@@ -66,7 +66,7 @@ SELINUXTYPE=targeted
 
 4.  Reboot your Linode. During the bootup process, SELinux may need to run a relabeling of the filesystem. It will handle this automatically and when it's done, it'll reboot the system. If you do not have Lassie enabled, the Linode will shut down and you will need to manually reboot in the Linode Manager.
 
-    ![SELinux filesystem relabel](/docs/assets/selinux-filesystem-relabel.png "SELinux filesystem relabel")
+    ![SELinux filesystem relabel](selinux-filesystem-relabel.png "SELinux filesystem relabel")
 
 5.  When your Linode boots back up, log in and verify that SELinux is now running in the new enforcement mode. Run `sestatus` again. The output should show that you're in the mode you set in steps 2 and 3 above.
 
