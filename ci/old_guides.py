@@ -1,21 +1,9 @@
 from tabulate import tabulate
 from operator import itemgetter
-import yaml
+import frontmatter
 import sys
 import regex
 import glob
-
-def parse_yaml(filestring):
-    """Use the yaml module to parse a filestring."""
-
-    reg = regex.compile(r'^---(.*?)---',flags=regex.DOTALL)
-    match = regex.search(reg, filestring)
-    if not match: return {}
-    yaml_text = match.group(1)
-    try:
-        return yaml.load(yaml_text)
-    except:
-        return {}
 
 def make_record(yaml):
     """Create a dictionary object from yaml front matter"""
@@ -42,13 +30,11 @@ def find_old_guides(count=20):
     old_guides = []
     guides_scanned = 0
     rootdir = 'docs'
-    for files in glob.glob('docs/**/*.md',recursive=True):
+    for filename in glob.glob('docs/**/*.md',recursive=True):
         guides_scanned += 1
-        filename = files 
         with open(filename, 'r') as f:
-            filestring = f.read()
-            parsed = parse_yaml(filestring)
-            if 'modified' in parsed and 'deprecated' not in parsed:
+            yaml = frontmatter.loads(f.read())
+            if 'modified' in yaml and 'deprecated' not in yaml:
                 record = make_record(parsed)
                 record['path'] = filename
                 old_guides.append(record)
