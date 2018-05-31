@@ -16,7 +16,6 @@ contributor:
 external_resources:
  - '[Varnish Documentation](https://varnish-cache.org/docs/index.html)'
  - '[NGINX Documentation](https://nginx.org/en/docs/)'
-image: https://linode.com/docs/assets/varnish-nginx-ssl.png
 ---
 
 

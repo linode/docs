@@ -210,7 +210,7 @@ Zimbra provides two ways to manage configuration: a web console and the command 
 
 From the admin console you can configure default settings for new accounts (Zimbra calls this a Class Of Service, or COS), add and manage accounts, change passwords, and generally manage your mail server. The admin console has built-in descriptions for most settings. Click the label for the input item and a tool tip will appear. Click the **More** button below right and a more detailed note will be shown.
 
-![Click label for a tool tip](/docs/assets/Tooltip.png) ![Click More for details](Tooltipmore.png)
+![Click label for a tool tip](Tooltip.png) ![Click More for details](Tooltipmore.png)
 
 {{< note >}}
 You can also reach the admin console if you are already logged in to your Zimbra webmail page. A drop-down menu beside your account name in the upper right of the window provides a link to the admin console.

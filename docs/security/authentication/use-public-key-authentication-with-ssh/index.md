@@ -147,7 +147,7 @@ When saving the public key, make sure you save it in a plaintext format such as 
 
 7.  Enter a passphrase in the **Key passphrase** text field, and enter it again to confirm. The passphrase can be any string of letters and numbers. The passphrase should be something unique and not easily recognized. **Important:** make a note of your passphrase, as you will need it later.
 
-    ![Enter a new passphrase](docs/assets/1465-new-passphrase.png)
+    ![Enter a new passphrase](1465-new-passphrase.png)
 
 8.  After you have entered your passphrase, click on the **Save private key** button. This will save the private key to your PC.
 

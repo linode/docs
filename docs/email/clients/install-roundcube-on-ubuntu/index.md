@@ -229,7 +229,7 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
 
 5.  Complete the configuration by clicking **CONTINUE**.
 
-    [![Roundcube configuration saved successfully](/docs/assets/roundcube/roundcube-configuration-saved-successfully_small.png)](roundcube-configuration-saved-successfully.png)
+    [![Roundcube configuration saved successfully](roundcube-configuration-saved-successfully_small.png)](roundcube-configuration-saved-successfully.png)
 
 6.  Lastly, import Roundcube’s MySQL database structure by clicking on the **Initialize database** button.
 

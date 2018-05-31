@@ -365,4 +365,4 @@ $$
 
 6.  The browser should use MathJax to display output identical to a Jupyter Notebook.
 
-    ![Jupyter Mathjax](/docs/assets/jupyter_mathjax.png "Jupyter Mathjax") ![Jekyll Mathjax](jekyll_mathjax.png "Jekyll Mathjax")
+    ![Jupyter Mathjax](jupyter_mathjax.png "Jupyter Mathjax") ![Jekyll Mathjax](jekyll_mathjax.png "Jekyll Mathjax")
