@@ -6,10 +6,10 @@ description: This guide introduces important sysadmin concepts and tools for new
 og_description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
 keywords: ["linux", "sysadmin", "administration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-24
+modified: 2018-05-31
 modified_by:
   name: Linode
-published: 2018-05-24
+published: 2018-05-31
 title: Introduction to Linux Administration
 external_resources:
   - '[Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics/)'
@@ -36,7 +36,7 @@ Making sure that all important data is backed up is one of a system administrato
 
 The dashboard in the Linode Manager provides basic information about your Linode's status, CPU and memory usage, and network traffic. Linode also offers the [Longview](/docs/platform/longview/longview/) service, which provides much more detailed insight into your Linode. Sometimes, however, issues will occur on your system and you will have to investigate to determine their cause.
 
-Simple tools like `ping` and `[mtr](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/)`, which are available on most Linux distributions, are helpful in diagnosing network issues. There are also [shell commands](/docs/tools-reference/linux-system-administration-basics/#system-diagnostics) used for checking memory usage, disk allocation, and running processes.
+Simple tools like `ping` and [MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/), which are available on most Linux distributions, are helpful in diagnosing network issues. There are also [shell commands](/docs/tools-reference/linux-system-administration-basics/#system-diagnostics) used for checking memory usage, disk allocation, and running processes.
 
 Larger projects can benefit from more advanced monitoring tools, such as the [Elastic Stack](/docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/). The Elastic Stack provides dozens of services and plugins that can be used to record, index, and search different types of data, from webserver logs to geolocation data.
 
