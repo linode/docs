@@ -10,7 +10,7 @@ modified: 2014-09-20
 modified_by:
   name: Linode
 published: 2012-11-05
-title: 'Email with Citadel on Ubuntu 14.04 LTS (Truly Tahr)'
+title: 'Email with Citadel on Ubuntu 14.04 LTS (Trusty Tahr)'
 external_resources:
  - '[Citadel Home Page](http://www.citadel.org/doku.php)'
  - '[Citadel FAQ](http://www.citadel.org/doku.php?id=faq:start)'
