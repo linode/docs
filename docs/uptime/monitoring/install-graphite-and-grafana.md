@@ -27,11 +27,11 @@ You will need both Docker and Docker Compose to complete this guide.
 
 ### Install Docker
 
-{{< content "install_docker_ce" >}}
+{{< content "install-docker-ce" >}}
 
 ### Install Docker Compose
 
-{{< content "install_docker_compose" >}}
+{{< content "install-docker-compose" >}}
 
 ## Docker Compose Configuration
 

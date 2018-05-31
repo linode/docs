@@ -23,7 +23,7 @@ Nextcloud 13 is a cloud storage platform that offers users the ability to self-h
 
 You will need a Linode with Docker CE installed to follow along with the steps in this guide.
 
-{{< content "install_docker_ce.md" >}}
+{{< content "install-docker-ce.md" >}}
 
 ## Install Nextcloud 13 and Talk
 
@@ -71,7 +71,7 @@ The basic Nextcloud Docker image is already configured for persistent data in th
 
 ### Install Docker Compose
 
-{{< content "install_docker_compose.md" >}}
+{{< content "install-docker-compose.md" >}}
 
 ### Create docker-compose.yaml
 

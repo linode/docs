@@ -23,7 +23,7 @@ Apache Guacamole is an HTML5 application useful for accessing a remote desktop t
 ## Install Docker
 The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
 
-{{< content "install_docker_ce.md" >}}
+{{< content "install-docker-ce.md" >}}
 
 ## Initialize Guacamole Authentication with MySQL
 MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alternatives.
@@ -228,4 +228,3 @@ If you have multiple displays running on the same Linode, increment the port num
     ![Guacamole Recent Connections](/docs/assets/guacamole/guac_recent.png)
 
 This guide aimed to streamline the installation process through Docker and demonstrate remote desktop with Apache Guacamole as quickly as possible. There are many features such as screen recording, two factor authentication with Duo, file transfer via SFTP, and much more. As an Apache Incubator project, expect to see further developments in the near future.
-
