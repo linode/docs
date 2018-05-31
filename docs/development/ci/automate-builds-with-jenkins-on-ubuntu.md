@@ -23,7 +23,7 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode’s hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode’s hostname and timezone.
 
 2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
@@ -47,7 +47,7 @@ This guide is oriented toward DevOps professionals and thus presumes:
 
 4.  Jenkins will be used mainly through the newer [Blue Ocean](https://jenkins.io/projects/blueocean/) web interface.
 
-5.  The workstation and remote Linode will each need Docker installed beforehand. See our [guide](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment) for detailed instructions.
+5.  The workstation and remote Linode will each need Docker installed beforehand. See our guide on [how to install docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/) for detailed instructions.
 
 6.  For the purpose of this guide, only a Jenkins master server will be used.
 
@@ -59,7 +59,7 @@ This guide is oriented toward DevOps professionals and thus presumes:
 
 Before automating your workflow, it's necessary to understand the basic CI/CD process. The following image illustrates it:
 
-![Blue Ocean Workflow](/docs/assets/jenkins/jenkins-workflow.jpg)
+![Blue Ocean Workflow](/docs/assets/jenkins/jenkins-workflow.jpg "Blue Ocean Workflow")
 
 The most basic process consist of three phases: build, test, deploy. Each time you make changes on your distributed version control system, you trigger an automation cycle on the Jenkins server. The entire set of instructions for running the process is in the `Jenkinsfile` located at the root of your source repository. That single file tells the server what to do, when to do it and how you want those tasks to be performed.
 
@@ -69,7 +69,7 @@ As mentioned in the previous section, the automation process starts by making a 
 
 Create a new repository in GitHub. This guide will use a simple Node.js application to showcase how the Jenkins Pipelines works. Select your `.gitignore` accordingly and don't forget to initialize it with a `README`:
 
-![New GitHub repository](/docs/assets/jenkins/jenkins-gh-new-repo.png)
+![New GitHub repository](/docs/assets/jenkins/jenkins-gh-new-repo.png "New GitHub repository")
 
 Clone the new repository to your local workstation:
 
@@ -247,7 +247,7 @@ CMD ["npm", "test"]
 
     Your final project distribution will be similar to this:
 
-    ![Project tree view](/docs/assets/jenkins/jenkins-nodejs-tree.png)
+    ![Project tree view](/docs/assets/jenkins/jenkins-nodejs-tree.png "Project tree view")
 
     {{< note >}}
 The approach of the folder structure and the implementation of two Docker containers is unusual, but used for pedagogical reasons to showcase Jenkins Pipeline features.
@@ -266,13 +266,13 @@ Before starting the real automation process, you first need to understand what t
 
         sudo docker run --name nodeapp-dev --network="bridge" -d -p 9000:9000 nodeapp-dev:trunk
 
-    ![app.js Mozilla output](/docs/assets/jenkins/jenkins-app-mozilla-output.png)
+    ![app.js Mozilla output](/docs/assets/jenkins/jenkins-app-mozilla-output.png "app.js Mozilla output")
 
 3.  Next, start the `test-image` container. It's important to use the same network, along with the `--link` flag, in order to communicate with `nodeapp-dev`. You will notice the container's report folder `JUnit` will be mounted at the current repository root. This is necessary to write the `reports.xml` on the host machine. Run it in interactive mode using the `-it` flag to output the results to `stdout`.
 
         sudo docker run --name test-image -v $PWD:/JUnit --network="bridge" --link=nodeapp-dev -it -p 9001:9000 test-image:latest npm run mocha
 
-    ![Mocha test console output](/docs/assets/jenkins/jenkins-testing-console-output.png)
+    ![Mocha test console output](/docs/assets/jenkins/jenkins-testing-console-output.png "Mocha test console output")
 
 4.  Remove the container (you may need `sudo -i`) and run it again in detached mode to test the `JUnit` output. The `reports.xml` file should be saved afterwards.
 
@@ -345,7 +345,7 @@ It's out of the scope of this guide to establish security parameters for Jenkins
 
 -  When you add `jenkins` user to the Docker group you are technically giving it `root` permissions.
 -  You must enforce firewall policies for Jenkins connections.
--  It's extremely important to secure the connection between your local workstation and your remote Linode running Jenkins. You can achieve this using SSL and a reverse proxy (like Apache or Nginx), or by using a VPN.
+-  It's extremely important to secure the connection between your local workstation and your remote Linode running Jenkins. You can achieve this using SSL and a reverse proxy (like Apache or NGINX), or by using a VPN.
 {{< /caution >}}
 
 ## Set up Jenkins
@@ -356,7 +356,7 @@ It's out of the scope of this guide to establish security parameters for Jenkins
 
     The first screen you should see would be similar to this:
 
-    ![Unlocking Jenkins](/docs/assets/jenkins/jenkins-unlock.png)
+    ![Unlocking Jenkins](/docs/assets/jenkins/jenkins-unlock.png "Unlocking Jenkins")
 
 2.  Copy the temporary administrator password and use it to log in:
 
@@ -364,45 +364,45 @@ It's out of the scope of this guide to establish security parameters for Jenkins
 
 3.  Choose **Install suggested plugins** to start downloading the standard plugins:
 
-    ![Customize Jenkins](/docs/assets/jenkins/jenkins-customize.png)
+    ![Customize Jenkins](/docs/assets/jenkins/jenkins-customize.png "Customize Jenkins")
 
-    ![Standard Plugins](/docs/assets/jenkins/jenkins-standard-plugins.png)
+    ![Standard Plugins](/docs/assets/jenkins/jenkins-standard-plugins.png "Standard Plugins")
 
 4.  When the plugin installation finishes, you will be asked to create a new administrative user:
 
-    ![First Admin User](/docs/assets/jenkins/jenkins-admin-user.png)
+    ![First Admin User](/docs/assets/jenkins/jenkins-admin-user.png "First Admin User")
 
 5.  If successful, you will see:
 
-    ![Jenkins Ready](/docs/assets/jenkins/jenkins-ready.png)
+    ![Jenkins Ready](/docs/assets/jenkins/jenkins-ready.png "Jenkins Ready")
 
 6.  Click on **Start using Jenkins** to display the application dashboard:
 
-    ![Jenkins Main Dashboard](/docs/assets/jenkins/jenkins-dashboard.png)
+    ![Jenkins Main Dashboard](/docs/assets/jenkins/jenkins-dashboard.png "Jenkins Main Dashboard")
 
 7.  As mentioned earlier, this guide will use the new Blue Ocean interface, so you will need to click the **Manage Jenkins** link on the sidebar:
 
-    ![Manage Jenkins link](/docs/assets/jenkins/jenkins-manage-sidebar.png)
+    ![Manage Jenkins link](/docs/assets/jenkins/jenkins-manage-sidebar.png "Manage Jenkins link")
 
 8.  A new menu will appear. Click on **Manage Plugins**:
 
-    ![Manage Plugins link](/docs/assets/jenkins/jenkins-manage-plugins.png)
+    ![Manage Plugins link](/docs/assets/jenkins/jenkins-manage-plugins.png "Manage Plugins link")
 
 9.  Click on the **Available** tab and filter the results searching for Blue Ocean.
 
-    ![Filter Plugins](/docs/assets/jenkins/jenkins-filter-plugins.png)
+    ![Filter Plugins](/docs/assets/jenkins/jenkins-filter-plugins.png "Filter Plugins")
 
 10.  Check the box corresponding to Blue Ocean plugin and then click the button **Install without restart**.
 
-    ![Install Blue Ocean](/docs/assets/jenkins/jenkins-bo-box.png)
+    ![Install Blue Ocean](/docs/assets/jenkins/jenkins-bo-box.png "Install Blue Ocean")
 
 11.  You should see the installation progress. Once it's finished click the **Go back to the top page** link, then click the **Open Blue Ocean** link in the sidebar.
 
-    ![Blue Ocean link](/docs/assets/jenkins/jenkins-bo-link.png)
+    ![Blue Ocean link](/docs/assets/jenkins/jenkins-bo-link.png "Blue Ocean link")
 
 12.  You'll then see the new Blue Ocean dashboard:
 
-    ![Blue Ocean Dashboard](/docs/assets/jenkins/jenkins-bo-dashboard.png)
+    ![Blue Ocean Dashboard](/docs/assets/jenkins/jenkins-bo-dashboard.png "Blue Ocean Dashboard")
 
 ## Scripted vs. Declarative Pipeline Syntax
 
@@ -411,7 +411,7 @@ Jenkins offers two different choices for the `Jenkinsfile` syntax:
 *  The legacy Scripted Pipeline syntax.
 *  The newer Declarative Pipeline syntax.
 
-Both have support for continuous delivery and Jenkins plugins. Scripted syntax is based on the Groovy programming environment so is more complete. On the other hand, Declarative syntax "was created to offer a simpler and more opinionated syntax for authoring Jenkins Pipeline", and thus is intended for everyday automation builds. You can learn more about syntax comparison in the [Jenkins documentation].(https://jenkins.io/doc/book/pipeline/syntax/#compare)
+Both have support for continuous delivery and Jenkins plugins. Scripted syntax is based on the Groovy programming environment so is more complete. On the other hand, Declarative syntax "was created to offer a simpler and more opinionated syntax for authoring Jenkins Pipeline", and thus is intended for everyday automation builds. You can learn more about syntax comparison in the [Jenkins documentation](https://jenkins.io/doc/book/pipeline/syntax/#compare).
 
 This guide will use the Declarative syntax to illustrate Jenkins processes because it's designed to be easier to implement and understand.
 
@@ -419,13 +419,13 @@ This guide will use the Declarative syntax to illustrate Jenkins processes becau
 
 Declarative Pipeline syntax is very intuitive. The most basic layout would be similar to the one shown below:
 
-![Basic Declarative Syntax](/docs/assets/jenkins/jenkins-declarative-syntax-basics.png)
+![Basic Declarative Syntax](/docs/assets/jenkins/jenkins-declarative-syntax-basics.png "Basic Declarative Syntax")
 
-`pipeline`: All files should start with this declaration at the top. It indicates the start of the new Pipeline.
-`agent`: Defines the working environment, usually a Docker image. The `any` statement indicates the pipeline can use any available agent.
-`stages`: This block is a collection of `stage` directives.
-`stage`: Groups one or more `steps`. You can use as many stages as needed, this is useful when you are working in complex models that need detailed debugging "per stage".
-`steps`: Here you define your actions. A stage can group many steps, and each step is usually linked to one specific task/command.
+* `pipeline`: All files should start with this declaration at the top. It indicates the start of the new Pipeline.
+* `agent`: Defines the working environment, usually a Docker image. The `any` statement indicates the pipeline can use any available agent.
+* `stages`: This block is a collection of `stage` directives.
+* `stage`: Groups one or more `steps`. You can use as many stages as needed, this is useful when you are working in complex models that need detailed debugging "per stage".
+* `steps`: Here you define your actions. A stage can group many steps, and each step is usually linked to one specific task/command.
 
 Code blocks are delimited by curly brackets (`{` and `}`) and no semicolons are used. Each statement has to be in its own line, and the heart of the `Jenkinsfile` are the steps you perform. Some common steps are:
 
@@ -437,7 +437,7 @@ Code blocks are delimited by curly brackets (`{` and `}`) and no semicolons are 
 * Create Docker images, dockerize applications, pull images.
 * Almost any action you can think of is possible through steps.
 
-All these actions can be executed inside your `agent` or you can also instruct Jenkins to remotely perform any of them via SSH. As you can see there are endless automation possibilities. In a simple scenario, only one pipeline executing its stages sequentially is enough to achieve the desired final state, but you can define pipelines to run in parallel if needed. For detailed information about Jenkins Declarative Pipeline Syntax, see the official [documentation.](https://jenkins.io/doc/book/pipeline/syntax/)
+All these actions can be executed inside your `agent` or you can also instruct Jenkins to remotely perform any of them via SSH. As you can see there are endless automation possibilities. In a simple scenario, only one pipeline executing its stages sequentially is enough to achieve the desired final state, but you can define pipelines to run in parallel if needed. For detailed information about Jenkins Declarative Pipeline Syntax, see the [official documentation](https://jenkins.io/doc/book/pipeline/syntax/).
 
 ## Start Working with Pipelines
 
@@ -472,35 +472,35 @@ pipeline {
 
 3.  Return to the Blue Ocean Dashboard and click **Create a new Pipeline**:
 
-    ![Blue Ocean Dashboard](/docs/assets/jenkins/jenkins-bo-dashboard.png)
+    ![Blue Ocean Dashboard](/docs/assets/jenkins/jenkins-bo-dashboard.png "Blue Ocean Dashboard")
 
 4.  Select GitHub as your CVS:
 
-    ![GitHub pipeline](/docs/assets/jenkins/jenkins-bo-gh-pipeline.png)
+    ![GitHub pipeline](/docs/assets/jenkins/jenkins-bo-gh-pipeline.png "GitHub pipeline")
 
 5.  You will be asked to connect with your GitHub account by means of an access key. Click on the link to create that key.
 
-    ![GitHub connect](/docs/assets/jenkins/jenkins-bo-gh-connect.png)
+    ![GitHub connect](/docs/assets/jenkins/jenkins-bo-gh-connect.png "GitHub connect")
 
 6.  Next you will need to login to your GitHub account, give a description to the token and generate it. You will be presented with a screen similar to this:
 
-    ![GitHub token](/docs/assets/jenkins/jenkins-bo-gh-token.png)
+    ![GitHub token](/docs/assets/jenkins/jenkins-bo-gh-token.png "GitHub token")
 
 7.  Copy the token value and then paste it into the field on the Blue Ocean tab. Then click the **Connect** button:
 
-    ![GitHub authentication BO](/docs/assets/jenkins/jenkins-bo-token.png)
+    ![GitHub authentication BO](/docs/assets/jenkins/jenkins-bo-token.png "GitHub authentication BO")
 
 8.  If you have multiple organization accounts along with your personal account, then you will need to choose which organization contains your repository:
 
-    ![GitHub Organization](/docs/assets/jenkins/jenkins-bo-organizations.png)
+    ![GitHub Organization](/docs/assets/jenkins/jenkins-bo-organizations.png "GitHub Organization")
 
 9.  After choosing your repository location, click **Create Pipeline**. That will trigger your first build automatically.
 
-    ![First Build](/docs/assets/jenkins/jenkins-bo-first-build-01.png)
+    ![First Build](/docs/assets/jenkins/jenkins-bo-first-build-01.png "First Build")
 
 10.  Click on the build to see your detailed Pipeline.
 
-    ![First Build](/docs/assets/jenkins/jenkins-bo-first-build-02.png)
+    ![First Build](/docs/assets/jenkins/jenkins-bo-first-build-02.png "First Build")
 
 From here you can obtain valuable information regarding: 1) your build number, 2) the console output for each step, 3) selecting stages for further analysis, 4) browsing through tabs with information about commit changes, tests results, and artifacts stored, 5) replaying your build, 6) editing your pipeline visually, and 7) go to your pipeline settings.
 
@@ -656,15 +656,15 @@ The `DOCKER` definition is done through the *credentials* feature. This allows y
 
 2.  You will see the project's settings page, click the **Credentials** link at the bottom of the sidebar menu.
 
-    ![Project Pipeline Settings](/docs/assets/jenkins/jenkins-pipeline-settings-sidebar.png)
+    ![Project Pipeline Settings](/docs/assets/jenkins/jenkins-pipeline-settings-sidebar.png "Project Pipeline Settings")
 
 3.  In the next screen you can choose the scope of the credentials you want to configure. This can be limited to the current project or can be defined as global. In this case you want Docker Hub login information to be global. Click **Add Credentials** in the left sidebar.
 
-    ![Global Credentials](/docs/assets/jenkins/jenkins-global-credentials.png)
+    ![Global Credentials](/docs/assets/jenkins/jenkins-global-credentials.png "Global Credentials")
 
 4.  You will be redirected to a screen similar to the screenshot below. There you need to enter your Docker Hub username, password and enter a unique identifier (ID) for this credential. The chosen one for this example was `docker-hub`. Once you save your credentials you can use them anywhere in the Pipeline.
 
-    ![Username and Password](/docs/assets/jenkins/jenkins-user-pwd.png)
+    ![Username and Password](/docs/assets/jenkins/jenkins-user-pwd.png "Username and Password")
 
 In the example pipeline, `DOCKER = credentials('docker-hub')` creates two environmental variables, `DOCKER_USER` and `DOCKER_PWD` that can be used to log in your Docker Hub account.
 
@@ -769,27 +769,27 @@ It's time to commit the complete Jenkinsfile to your Jenkins server and trigger 
 
 3.  Click on the gear icon (Pipeline settings) on your Blue Ocean Dashboard and then click **Scan Repository Now**:
 
-    ![Scan Repository Now](/docs/assets/jenkins/jenkins-scan-repository.png)
+    ![Scan Repository Now](/docs/assets/jenkins/jenkins-scan-repository.png "Scan Repository Now")
 
 4.  Return to your Pipeline view to watch your stages run in parallel:
 
-    ![Parallel Execution](/docs/assets/jenkins/jenkins-parallel-execution.png)
+    ![Parallel Execution](/docs/assets/jenkins/jenkins-parallel-execution.png "Parallel Execution")
 
 5.  Once finished, you will see your entire Pipeline. Notice that this commit was submitted as branch, and because of that, the `DEPLOY` stage was skipped, which is expected.
 
-    ![Successful Pipeline 01](/docs/assets/jenkins/jenkins-successful-trunk-01.png)
+    ![Successful Pipeline 01](/docs/assets/jenkins/jenkins-successful-trunk-01.png "Successful Pipeline 01")
 
 6.  If you navigate through the menu tabs, you can check the test results and the artifacts stored:
 
-    ![Test Results](/docs/assets/jenkins/jenkins-all-test-passing.png)
+    ![Test Results](/docs/assets/jenkins/jenkins-all-test-passing.png "Test Results")
 
-    ![Artifacts Stored](/docs/assets/jenkins/jenkins-artifacts.png)
+    ![Artifacts Stored](/docs/assets/jenkins/jenkins-artifacts.png "Artifacts Stored")
 
 ### Configure Automatic Triggers
 
 You can set Jenkins to scan your repository periodically. To do so just click again on the gear icon on the Pipeline view and then click **Configure**. There are many options available. Find **Scan Repository Triggers** and check the box **Periodically if not otherwise run**. You can choose any amount of time and for this example, one minute will be selected.
 
-![Repository Triggers](/docs/assets/jenkins/jenkins-bo-scan-gh.png)
+![Repository Triggers](/docs/assets/jenkins/jenkins-bo-scan-gh.png "Repository Triggers")
 
 ### Failing Tests (Unstable Pipeline)
 
@@ -810,11 +810,11 @@ app.get('/ERROR',function(req,res) {
 
 3.  There is no need to manually scan your repository because you already setup Jenkins to do it automatically every minute. Wait for the trigger. After running you should see something similar to this:
 
-    ![Unstable Pipeline](/docs/assets/jenkins/jenkins-unstable-pipeline.png)
+    ![Unstable Pipeline](/docs/assets/jenkins/jenkins-unstable-pipeline.png "Unstable Pipeline")
 
 4.  Navigate to the **Tests** tab and click on the chevron for a complete console output:
 
-    ![Test Unstable](/docs/assets/jenkins/jenkins-unstable-results.png)
+    ![Test Unstable](/docs/assets/jenkins/jenkins-unstable-results.png "Test Unstable")
 
 5.  Close your view (upper right "X") and you will return to the Repository view.
 
@@ -838,11 +838,11 @@ Now, induce an error on the `BUILD` stage.
 
 3.  In the pipeline view click on `BUILD` stage and the on **Shell Script** to see the console output:
 
-    ![Failed BUild](/docs/assets/jenkins/jenkins-bo-failed-build.png)
+    ![Failed Build](/docs/assets/jenkins/jenkins-bo-failed-build.png "Failed Build")
 
 4.  Scroll down and check the error:
 
-    ![Failed Build Msg](/docs/assets/jenkins/jenkins-bo-failed-build-msg.png)
+    ![Failed Build Msg](/docs/assets/jenkins/jenkins-bo-failed-build-msg.png "Failed Build Msg")
 
 5.  Fix the error in `express-image/package.json`.
 
@@ -854,7 +854,7 @@ Merge the `trunk` branch into `master`. This will trigger a run of the full pipe
     git merge trunk
     git push origin master
 
-![Successful Trunk Merge](/docs/assets/jenkins/jenkins-successful-master.png)
+![Successful Trunk Merge](/docs/assets/jenkins/jenkins-successful-master.png "Successful Trunk Merge")
 
 ## Outside Blue Ocean Dashboard
 
@@ -862,11 +862,11 @@ Blue Ocean interface is still under development, which means that many aspects o
 
 1.  Click on the gear icon to enter at your repository menu. Once there, click **Status** in the left sidebar. You will see your branches and some general information:
 
-    ![Project Status](/docs/assets/jenkins/jenkins-project-status.png)
+    ![Project Status](/docs/assets/jenkins/jenkins-project-status.png "Project Status")
 
 2.  If you click on the `master` branch you will see a more detailed dashboard:
 
-    ![Master Details](/docs/assets/jenkins/jenkins-master-details.png)
+    ![Master Details](/docs/assets/jenkins/jenkins-master-details.png "Master Details")
 
     From this view you can review a lot of useful information like logs, artifacts, changes, trends of test results, and much more.
 
