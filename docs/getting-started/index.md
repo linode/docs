@@ -57,7 +57,7 @@ The [Linode Manager](https://manager.linode.com) is a web-based control panel th
 
 ### Deploy an Image
 
-![How to Deploy an Image](/docs/assets/linode-manager/deploy-an-image.gif "Animation shows how to use the Linode Manager to deploy a Linux image.")
+![How to Deploy an Image](deploy-an-image.gif "Animation shows how to use the Linode Manager to deploy a Linux image.")
 
 Once you've created a new Linode, click the name or **Dashboard** to open the Linode Manager Dashboard.
 
@@ -97,7 +97,7 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
 Your Linode is now provisioned with the distro of your choice but it's turned off, as indicated in the Dashboard.
 
-![Boot the Linode](/docs/assets/linode-manager/boot-new-linode.gif "Click the Boot button, then OK in the dialog box.")
+![Boot the Linode](boot-new-linode.gif "Click the Boot button, then OK in the dialog box.")
 
 1.  Click **Boot** to turn on your Linode.
 
@@ -137,7 +137,7 @@ In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 addre
 
 Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/ssh/ssh-connections-using-putty-on-windows/).
 
-![Copy SSH Command with IP and Log in](/docs/assets/linode-manager/ssh-to-a-linode.gif "Go to the Remote Access tab and copy the SSH command, then paste it into a terminal.")
+![Copy SSH Command with IP and Log in](ssh-to-a-linode.gif "Go to the Remote Access tab and copy the SSH command, then paste it into a terminal.")
 
 1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address:
 

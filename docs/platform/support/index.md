@@ -27,7 +27,7 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
 -   **Linode Support Bot:** The Linode Support Bot can answer a number of technical, billing, and account management questions, and it learns new answers every day. If the Linode Support Bot does not know an answer, it can create a support ticket for you. This feature is available from the Linode Manager by clicking the green and white question mark button in the bottom right corner of the page. After clicking this button, a chat panel will slide in from the right side of the page:
 
-    ![Accessing the Linode Support Bot from the Manager](/docs/assets/linode-support-bot.gif "Accessing the Linode Support Bot from the Manager")
+    ![Accessing the Linode Support Bot from the Manager](linode-support-bot.gif "Accessing the Linode Support Bot from the Manager")
 
 -   **Linode Guides & Tutorials:** The [Guides & Tutorials](/docs/) library hosts a catalogued and searchable list of guides on a large number of topics. Here are a few that focus on troubleshooting:
 

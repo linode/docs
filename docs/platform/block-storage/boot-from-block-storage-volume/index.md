@@ -41,7 +41,7 @@ Visit our [Block Storage guide](/docs/platform/how-to-use-block-storage-with-you
 
         pv -pte < /dev/sda > /dev/sdc
 
-    ![Lish console - pv /dev/sda to /dev/sdc](/docs/assets/block-storage/bs-pv-sda-sdc.gif "Lish consol output of the above pv command")
+    ![Lish console - pv /dev/sda to /dev/sdc](bs-pv-sda-sdc.gif "Lish console output of the above pv command")
 
 ## Set the Block Storage Volume as Primary and Reboot
 

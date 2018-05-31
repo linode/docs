@@ -19,7 +19,6 @@ external_resources:
  - '[Github Guides](https://guides.github.com/)'
 ---
 
-
 ## Introduction to Git
 
 ![How to Install Git on Linux, Mac or Windows](how-to-install-git.jpg)

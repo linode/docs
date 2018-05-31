@@ -118,7 +118,7 @@ If you do not add a domain name, you can still access your server through its pu
 
 1. Click on your active servers. Under the active site, choose the domain name you added in the previous step.
 
-    ![Linode API](/docs/assets/configuration-management/adding_repository.gif)
+    ![Linode API](adding_repository.gif)
 
 2. Click **Apps** on the left-hand side and then select your Git repository.
 

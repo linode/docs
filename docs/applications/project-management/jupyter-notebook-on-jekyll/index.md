@@ -249,7 +249,7 @@ margin-bottom: 0; }
 
 2.  The HTML table will have the new styles applied.
 
-    ![Jupyter Table](/docs/assets/jupyter_table.png "Jupyter Table") ![Jekyll Table](jekyll_table.png "Jekyll Table")
+    ![Jupyter Table](jupyter_table.png "Jupyter Table") ![Jekyll Table](jekyll_table.png "Jekyll Table")
 
 ### Add an Image in Jekyll
 
