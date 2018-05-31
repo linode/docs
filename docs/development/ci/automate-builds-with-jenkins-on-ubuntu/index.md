@@ -10,7 +10,7 @@ keywords: ['jenkins','pipeline','ci','automation']
 aliases: ['development/automate-builds-with-jenkins-on-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-14
-modified: 2017-11-15
+modified: 2018-05-30
 modified_by:
   name: Linode
 title: 'How to Automate Builds with Jenkins on Ubuntu'
@@ -23,7 +23,7 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode’s hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode’s hostname and timezone.
 
 2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
@@ -39,45 +39,43 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 This guide is oriented toward DevOps professionals and thus presumes:
 
-1.  A Workstation machine will be used for local development and testing.
+1.  A local workstation will be used for development and testing.
 
-2.  A remote Linode Server will be used for the Jenkins Server.
+2.  A Linode will be used for the remote Jenkins server.
 
-3.  Both will use Ubuntu 16.04 Operating System.
+3.  Both will use Ubuntu 16.04.
 
 4.  Jenkins will be used mainly through the newer [Blue Ocean](https://jenkins.io/projects/blueocean/) web interface.
 
-5.  The workstation and the remote Linode will each need Docker installed beforehand. See our [guide](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment) for detailed instructions.
+5.  The workstation and remote Linode will each need Docker installed beforehand. See our guide on [how to install docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/) for detailed instructions.
 
-6.  For the purpose of this guide only a Jenkins Master Server will be used.
+6.  For the purpose of this guide, only a Jenkins master server will be used.
 
-7.  You will need a GitHub account already created, similar procedures can be used for Bitbucket and GitLab.
+7.  You will need a GitHub account already created, or similar procedures can be used for Bitbucket and GitLab.
 
 8.  You will also need a Docker Hub or similar registry account.
 
 ## Understanding How Jenkins Works
 
-Before starting automating your entire workflow, it's necessary to understand the basic CI/CD process. The following image illustrates it:
+Before automating your workflow, it's necessary to understand the basic CI/CD process. The following image illustrates it:
 
-<!----- This image is likely copyrighted and should be removed. Editor please review. JSK -->
-![Blue Ocean Workflow](jenkins-workflow.jpg)
+![Blue Ocean Workflow](jenkins-workflow.jpg "Blue Ocean Workflow")
 
-As you can see the most basic process consist of three phases: build - test - deploy. Each time you make changes on your distributed version control system you trigger an automation cycle on the Jenkins server. The entire set of instructions for running the process is on the `Jenkinsfile` located at the root of your source repository. That single file tells the server *what* to do, *when* to do it and *how* you want those tasks to be performed.
+The most basic process consist of three phases: build, test, deploy. Each time you make changes on your distributed version control system, you trigger an automation cycle on the Jenkins server. The entire set of instructions for running the process is in the `Jenkinsfile` located at the root of your source repository. That single file tells the server what to do, when to do it and how you want those tasks to be performed.
 
 ## Write an Example Node.js Application
 
-As mentioned in the previous section, the automation process starts by making a commit to a Version Control System.
+As mentioned in the previous section, the automation process starts by making a commit to a version control system.
 
-Create a new repository in GitHub. This guide will use a simple Node.js application to showcase how Jenkins Pipelines works, select your `.gitignore` accordingly and don't forget to initialize it with a `README`:
+Create a new repository in GitHub. This guide will use a simple Node.js application to showcase how the Jenkins Pipelines works. Select your `.gitignore` accordingly and don't forget to initialize it with a `README`:
 
-![New GitHub repository](jenkins-gh-new-repo.png)
+![New GitHub repository](jenkins-gh-new-repo.png "New GitHub repository")
 
 Clone the new repository to your local workstation:
 
      git clone git@github.com:<GITHUB_USERNAME>/jenkins-guide.git
 
-Open your favorite text editor and create the file `app.js` in the root of your repository. Add the following content:
-
+Open your favorite text editor and create the file `app.js` at the root of your repository. Add the following content:
 
 {{< file "~/jenkins-guide/app.js" js >}}
 'use strict';
@@ -102,7 +100,7 @@ app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
 {{< /file >}}
 
-This application uses the *Express* web server to deliver a single JSON output to the browser on port 9000. Next, save the `test.js` file to the same location on the root of your folder.
+This application uses the [Express](https://expressjs.com/) web server to deliver a single JSON output to the browser on port 9000. Next, save `test.js` to the same location at the root of your repository.
 
 {{< file "~/jenkins-guide/test.js" js >}}
 var supertest = require("supertest");
@@ -135,7 +133,7 @@ describe("Webapp Status",function(){
 });
 {{< /file >}}
 
-This is a simplified test suite that uses `supertest` and `should`. It only has two tests: the first checks the HTTP status, expecting it to be 200. The second is not a real test but a control that always passes.
+This is a simplified test suite that uses `supertest` and `should`. It only has two tests: The first checks the HTTP status, which it expects to be 200. The second is not a real test but a control that always passes.
 
 This example will use two Docker containers, one to serve `app.js` using Express and the other exclusively for the test suite using Mocha. Each image will have its own folder containing the respective `Dockerfile` and `package.json`.
 
@@ -148,7 +146,7 @@ This example will use two Docker containers, one to serve `app.js` using Express
     {{< file "~/jenkins-guide/express-image/Dockerfile" >}}
 FROM node:6-alpine
 
-# Create server working directory
+# Create a server directory
 RUN mkdir -p /home/node/app
 WORKDIR /home/node/app
 
@@ -165,9 +163,9 @@ EXPOSE 9000
 CMD ["npm", "start"]
 {{< /file >}}
 
-    This image runs by default `app.js` when launched. You can think of it as the "dockerized" version of the web application.
+    This image runs `app.js` by default when launched. You can think of it as the "dockerized" version of the web application.
 
-3.  The Dockerfile copies a `package.json` file from the root of your project directory into the new image; create this file and add the following content:
+3.  The Dockerfile copies a `package.json` file from the root of your project directory into the new image:
 
     {{< file "~/jenkins-guide/express-image/package.json" json >}}
 {
@@ -189,16 +187,15 @@ CMD ["npm", "start"]
 }
 {{< /file >}}
 
-4.  Create the `Dockerfile` for the `test-image`.
-
+4.  Create the `Dockerfile` for the `test-image`:
 
     {{< file "~/jenkins-guide/test-image/Dockerfile" conf >}}
 FROM node:6-alpine
 
-# Create Reports directory
+# Create feports directory
 RUN mkdir -p /JUnit
 
-# Create server working directory
+# Create a server directory
 RUN mkdir -p /home/node/tests
 WORKDIR /home/node/tests
 
@@ -214,7 +211,7 @@ EXPOSE 9000
 CMD ["npm", "test"]
 {{< /file >}}
 
-    This image creates a Report folder (which will be used later) and installs dependencies from `package.json`. On start, it executes the Mocha tests.
+    This image creates a *report* folder and installs dependencies from `package.json`. On start, it executes the Mocha tests.
 
 5.  Add a `package.json` file for your testing image:
 
@@ -246,73 +243,71 @@ CMD ["npm", "test"]
 }
 {{< /file >}}
 
-    This JSON file contains all the necessary dependencies, including `mocha-junit-reporter` that will be needed by Jenkins for tests storage. Notice that the test script is configured with the `mochaFile` option that uses the image's report folder specified in the `Dockerfile`.
+    This JSON file contains all the necessary dependencies, including `mocha-junit-reporter` that will be needed by Jenkins for tests storage. Notice that the test script is configured with the `mochaFile` option which uses the image's report folder specified in the `Dockerfile`.
 
     Your final project distribution will be similar to this:
 
-    ![Project tree view](jenkins-nodejs-tree.png)
+    ![Project tree view](jenkins-nodejs-tree.png "Project tree view")
 
     {{< note >}}
-The approach of the folder structure and the implementation of two Docker containers is unusual, but used for pedagogical reasons to showcase Jenkins Pipelines features.
+The approach of the folder structure and the implementation of two Docker containers is unusual, but used for pedagogical reasons to showcase Jenkins Pipeline features.
 {{< /note >}}
 
 ### Run Your Application Manually
 
-Before starting the real automation process you first need to understand what to automate.
+Before starting the real automation process, you first need to understand what to automate.
 
-1. Assuming you are on the root of your repository start by building your images:
+1.  Assuming you are at the root of your repository, start by building your images:
 
         sudo docker build -f express-image/Dockerfile -t nodeapp-dev:trunk .
         sudo docker build -f test-image/Dockerfile -t test-image:latest .
 
-2. You will need to start your `nodeapp-dev` container first. The flag `--network` is used to avoid conflicts with the other container network. Notice that port 9000 is opened and  `-d` flag is used to run it in detached mode. Once started you can open your browser and enter the address: http://localhost:9000 to check it.
+2.  You will need to start your `nodeapp-dev` container first. The flag `--network` is used to avoid conflicts with the other container network. Notice that port 9000 is opened and  `-d` flag is used to run it in detached mode. Once started you can open your browser and enter the address: `http://localhost:9000` to check it.
 
         sudo docker run --name nodeapp-dev --network="bridge" -d -p 9000:9000 nodeapp-dev:trunk
 
-    ![app.js Mozilla output](jenkins-app-mozilla-output.png)
+    ![app.js Mozilla output](jenkins-app-mozilla-output.png "app.js Mozilla output")
 
-3. Next, start the `test-image` container. It's important to use the same network along with the `--link` flag in order to communicate with `nodeapp-dev`. You will notice that a volume will be mounted: the container's report folder `JUnit` will be mounted on the current repository root of the host. This is necessary to write the `reports.xml` in the host machine. First run it in interactive mode using the `-it` flag to output the results to `stdout`.
+3.  Next, start the `test-image` container. It's important to use the same network, along with the `--link` flag, in order to communicate with `nodeapp-dev`. You will notice the container's report folder `JUnit` will be mounted at the current repository root. This is necessary to write the `reports.xml` on the host machine. Run it in interactive mode using the `-it` flag to output the results to `stdout`.
 
         sudo docker run --name test-image -v $PWD:/JUnit --network="bridge" --link=nodeapp-dev -it -p 9001:9000 test-image:latest npm run mocha
 
-    ![Mocha test console output](jenkins-testing-console-output.png)
+    ![Mocha test console output](jenkins-testing-console-output.png "Mocha test console output")
 
-4. Now remove the container (you may need `sudo -i`), and run it again in detached mode to test the `JUnit` output. The `reports.xml` file should be saved afterwards.
+4.  Remove the container (you may need `sudo -i`) and run it again in detached mode to test the `JUnit` output. The `reports.xml` file should be saved afterwards.
 
         sudo docker rm -f test-image
         sudo docker run --name test-image -v $PWD:/JUnit --network="bridge" --link=nodeapp-dev -d -p 9001:9000 test-image:latest
 
-5. After testing your application you can publish it in a public registry. First change its tag to something more appropriate.
+5.  After testing your application you can publish it in a public registry. First change its tag to something more appropriate.
 
         sudo docker tag nodeapp-dev:trunk <YOUR_DOCKERHUB_USERNAME>/nodeapp-prod:latest
 
-6. Assuming you are already logged in to Docker Hub, push your image to the registry.
+6.  Assuming you are already logged in to Docker Hub, push your image to the registry.
 
         sudo docker push <YOUR_DOCKERHUB_USERNAME>/nodeapp-prod:latest
 
-7. Alternatively, you could save your compressed image for further distribution.
+7.  Alternatively, you could save your compressed image for further distribution.
 
         sudo docker save <YOUR_DOCKERHUB_USERNAME>/nodeapp-prod:latest | gzip > nodeapp-prod-golden.tar.gz
 
-8. Do some clean-up. Stop both containers, use `sudo -i` if necessary.
+8.  Do some clean-up. Stop both containers, using `sudo -i` if necessary.
 
         sudo docker stop test-image nodeapp-dev
 
-9. And finally, prune your system.
+9.  And finally, prune your system.
 
         sudo docker system prune -f
 
-You just finished the entire "Build - Test - Deploy" process for this fictional web application. Now it's time to automate it.
+You just finished the entire *build, test, and deploy* process for this fictional web application. Now it's time to automate it.
 
-## Install Jenkins and Blue Ocean Plugin
+## Install Jenkins and Blue Ocean
 
 Jenkins offers many installation options:
 
-* You can download the self-executable `jenkins.war` from project's site. This is a quick and effective solution to work with Jenkins with few pre-requisites, but harder to maintain and update.
-* You can pull the [official Docker image](https://hub.docker.com/r/jenkins/jenkins/) and run Jenkins from there. This method requires extra configuration, especially for "Docker in Docker" functionality.
-* Finally, you can use the *project-maintained* package. This offers the benefit of easier upgrading.
-
-This guide will use the third method to install Jenkins onto your remote Linode.
+*  You can download the self-executable `jenkins.war` from project's site. This is a quick and effective solution to work with Jenkins with few pre-requisites, but harder to maintain and update.
+*  You can pull the [official Docker image](https://hub.docker.com/r/jenkins/jenkins/) and run Jenkins from there. This method requires extra configuration, especially for *Docker in Docker* functionality.
+*  Finally, you can use the project-maintained package. This offers the benefit of easier upgrading. This is the method used by this guide.
 
 ### Install Jenkins
 
@@ -322,11 +317,11 @@ Using the package maintained by the Jenkins project allows you to use a more rec
 
         wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 
-2.  Now include the new repository to your `sources.list`:
+2.  Add the new repository to your `sources.list`:
 
         sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 
-3.  Update your system using `apt` as usual and install Jenkins:
+3.  Update your system and install Jenkins:
 
         sudo apt update
         sudo apt install jenkins
@@ -348,9 +343,9 @@ Using the package maintained by the Jenkins project allows you to use a more rec
     {{< caution >}}
 It's out of the scope of this guide to establish security parameters for Jenkins remote installation. However, be aware of these critical points that need to be addressed in a production environment:
 
-- When you add `jenkins` user to the Docker group you are technically giving it `root` permissions.
-- You must enforce Firewall policies for Jenkins connections.
-- It's extremely important to secure the connection between your local workstation and your remote Linode running Jenkins. You can achieve this using SSL and a reverse proxy (like Apache or Nginx), or by using a VPN.
+-  When you add `jenkins` user to the Docker group you are technically giving it `root` permissions.
+-  You must enforce firewall policies for Jenkins connections.
+-  It's extremely important to secure the connection between your local workstation and your remote Linode running Jenkins. You can achieve this using SSL and a reverse proxy (like Apache or NGINX), or by using a VPN.
 {{< /caution >}}
 
 ## Set up Jenkins
@@ -361,7 +356,7 @@ It's out of the scope of this guide to establish security parameters for Jenkins
 
     The first screen you should see would be similar to this:
 
-    ![Unlocking Jenkins](jenkins-unlock.png)
+    ![Unlocking Jenkins](jenkins-unlock.png "Unlocking Jenkins")
 
 2.  Copy the temporary administrator password and use it to log in:
 
@@ -369,72 +364,72 @@ It's out of the scope of this guide to establish security parameters for Jenkins
 
 3.  Choose **Install suggested plugins** to start downloading the standard plugins:
 
-    ![Customize Jenkins](jenkins-customize.png)
+    ![Customize Jenkins](jenkins-customize.png "Customize Jenkins")
 
-    ![Standard Plugins](jenkins-standard-plugins.png)
+    ![Standard Plugins](jenkins-standard-plugins.png "Standard Plugins")
 
 4.  When the plugin installation finishes, you will be asked to create a new administrative user:
 
-    ![First Admin User](jenkins-admin-user.png)
+    ![First Admin User](jenkins-admin-user.png "First Admin User")
 
-5.  If everything goes without errors, you will see:
+5.  If successful, you will see:
 
-    ![Jenkins Ready](jenkins-ready.png)
+    ![Jenkins Ready](jenkins-ready.png "Jenkins Ready")
 
 6.  Click on **Start using Jenkins** to display the application dashboard:
 
-    ![Jenkins Main Dashboard](jenkins-dashboard.png)
+    ![Jenkins Main Dashboard](jenkins-dashboard.png "Jenkins Main Dashboard")
 
 7.  As mentioned earlier, this guide will use the new Blue Ocean interface, so you will need to click the **Manage Jenkins** link on the sidebar:
 
-    ![Manage Jenkins link](jenkins-manage-sidebar.png)
+    ![Manage Jenkins link](jenkins-manage-sidebar.png "Manage Jenkins link")
 
 8.  A new menu will appear. Click on **Manage Plugins**:
 
-    ![Manage Plugins link](jenkins-manage-plugins.png)
+    ![Manage Plugins link](jenkins-manage-plugins.png "Manage Plugins link")
 
 9.  Click on the **Available** tab and filter the results searching for Blue Ocean.
 
-    ![Filter Plugins](jenkins-filter-plugins.png)
+    ![Filter Plugins](jenkins-filter-plugins.png "Filter Plugins")
 
 10.  Check the box corresponding to Blue Ocean plugin and then click the button **Install without restart**.
 
-    ![Install Blue Ocean](jenkins-bo-box.png)
+    ![Install Blue Ocean](jenkins-bo-box.png "Install Blue Ocean")
 
 11.  You should see the installation progress. Once it's finished click the **Go back to the top page** link, then click the **Open Blue Ocean** link in the sidebar.
 
-    ![Blue Ocean link](jenkins-bo-link.png)
+    ![Blue Ocean link](jenkins-bo-link.png "Blue Ocean link")
 
 12.  You'll then see the new Blue Ocean dashboard:
 
-    ![Blue Ocean Dashboard](jenkins-bo-dashboard.png)
+    ![Blue Ocean Dashboard](jenkins-bo-dashboard.png "Blue Ocean Dashboard")
 
 ## Scripted vs. Declarative Pipeline Syntax
 
 Jenkins offers two different choices for the `Jenkinsfile` syntax:
 
-* The legacy Scripted Pipeline syntax.
-* The newer Declarative Pipeline syntax.
+*  The legacy Scripted Pipeline syntax.
+*  The newer Declarative Pipeline syntax.
 
-Both have support for continuous delivery and Jenkins plugins. Scripted syntax is based on the Groovy programming environment so is more complete. On the other hand, Declarative syntax "was created to offer a simpler and more opinionated syntax for authoring Jenkins Pipeline" and thus is intended for everyday automation builds. You can learn more about syntax comparison in the Jenkins documentation [here].(https://jenkins.io/doc/book/pipeline/syntax/#compare)
+Both have support for continuous delivery and Jenkins plugins. Scripted syntax is based on the Groovy programming environment so is more complete. On the other hand, Declarative syntax "was created to offer a simpler and more opinionated syntax for authoring Jenkins Pipeline", and thus is intended for everyday automation builds. You can learn more about syntax comparison in the [Jenkins documentation](https://jenkins.io/doc/book/pipeline/syntax/#compare).
 
 This guide will use the Declarative syntax to illustrate Jenkins processes because it's designed to be easier to implement and understand.
 
-## Jenkinsfile structure
+## Jenkinsfile Structure
 
-Declarative Pipeline syntax is very intuitive, the most basic layout would be similar to the one shown below:
+Declarative Pipeline syntax is very intuitive. The most basic layout would be similar to the one shown below:
 
-![Basic Declarative Syntax](jenkins-declarative-syntax-basics.png)
+![Basic Declarative Syntax](jenkins-declarative-syntax-basics.png "Basic Declarative Syntax")
 
-`pipeline`: all files should start with this declaration at the top. Indicates the start of the new Pipeline.
-`agent`: defines the working environment, usually a Docker image. The `any` statement indicates the pipeline can use any available agent.
-`stages`: this block is a collection of `stage` directives.
-`stage`: groups one or more "steps". You can use as many stages as needed, this is useful when you are working in complex models that need detailed debugging "per stage".
-`steps`: here you define your actions. A stage can group many steps, and each step is usually linked to one specific task/command.
+* `pipeline`: All files should start with this declaration at the top. It indicates the start of the new Pipeline.
+* `agent`: Defines the working environment, usually a Docker image. The `any` statement indicates the pipeline can use any available agent.
+* `stages`: This block is a collection of `stage` directives.
+* `stage`: Groups one or more `steps`. You can use as many stages as needed, this is useful when you are working in complex models that need detailed debugging "per stage".
+* `steps`: Here you define your actions. A stage can group many steps, and each step is usually linked to one specific task/command.
 
-Code blocks are delimited by curly brackets {} and no semicolons are used. Each statement has to be in its own line, and the heart of the `Jenkinsfile` are the steps you perform. Some common steps are:
+Code blocks are delimited by curly brackets (`{` and `}`) and no semicolons are used. Each statement has to be in its own line, and the heart of the `Jenkinsfile` are the steps you perform. Some common steps are:
 
-* Running scripts or code commands.
+* Run scripts or code commands.
 * Compile code.
 * Run tests.
 * Push or pull from your source control.
@@ -442,11 +437,11 @@ Code blocks are delimited by curly brackets {} and no semicolons are used. Each 
 * Create Docker images, dockerize applications, pull images.
 * Almost any action you can think of is possible through steps.
 
-All these actions can be executed inside your `agent` or you can also instruct Jenkins to remotely perform any of them via SSH. As you can see there are endless automation possibilities. In a simple scenario, only one pipeline executing its stages sequentially is enough to achieve the desired final state, but you can define pipelines to run in parallel if needed. For detailed information about Jenkins Declarative Pipeline Syntax, see the official [documentation.](https://jenkins.io/doc/book/pipeline/syntax/)
+All these actions can be executed inside your `agent` or you can also instruct Jenkins to remotely perform any of them via SSH. As you can see there are endless automation possibilities. In a simple scenario, only one pipeline executing its stages sequentially is enough to achieve the desired final state, but you can define pipelines to run in parallel if needed. For detailed information about Jenkins Declarative Pipeline Syntax, see the [official documentation](https://jenkins.io/doc/book/pipeline/syntax/).
 
 ## Start Working with Pipelines
 
-1.  Create your first `Jenkinsfile` in the `jenkins-guide` directory on your client workstation. This is only a template, but it contains all the necessary code to start your Pipeline:
+1.  Create your first `Jenkinsfile` in the `jenkins-guide` directory on your workstation. This is only a template, but it contains all the necessary code to start your Pipeline:
 
     {{< file "~/jenkins-guide/Jenkinsfile" conf  >}}
 pipeline {
@@ -475,43 +470,43 @@ pipeline {
 
         git add . && git commit -m "Jenkinsfile template" && git push origin master
 
-3.  Return to your Blue Ocean Dashboard and click on **Create a new Pipeline** button:
+3.  Return to the Blue Ocean Dashboard and click **Create a new Pipeline**:
 
-    ![Blue Ocean Dashboard](jenkins-bo-dashboard.png)
+    ![Blue Ocean Dashboard](jenkins-bo-dashboard.png "Blue Ocean Dashboard")
 
-4. Select GitHub as your CVS:
+4.  Select GitHub as your CVS:
 
-    ![GitHub pipeline](jenkins-bo-gh-pipeline.png)
+    ![GitHub pipeline](jenkins-bo-gh-pipeline.png "GitHub pipeline")
 
-5. You will be asked to connect with your GitHub account by means of an access key. Click on the link to create that key.
+5.  You will be asked to connect with your GitHub account by means of an access key. Click on the link to create that key.
 
-    ![GitHub connect](jenkins-bo-gh-connect.png)
+    ![GitHub connect](jenkins-bo-gh-connect.png "GitHub connect")
 
-6. Next you will need to login to your GitHub account, give a description to the token and generate it. You will be presented with a screen similar to this:
+6.  Next you will need to login to your GitHub account, give a description to the token and generate it. You will be presented with a screen similar to this:
 
-    ![GitHub token](jenkins-bo-gh-token.png)
+    ![GitHub token](jenkins-bo-gh-token.png "GitHub token")
 
-7. Copy the token value and then paste it into the field on the Blue Ocean tab. Then click the **Connect** button:
+7.  Copy the token value and then paste it into the field on the Blue Ocean tab. Then click the **Connect** button:
 
-    ![GitHub authentication BO](jenkins-bo-token.png)
+    ![GitHub authentication BO](jenkins-bo-token.png "GitHub authentication BO")
 
-8. If you have multiple organization accounts along with your personal account, then you will need to choose which organization contains your repository:
+8.  If you have multiple organization accounts along with your personal account, then you will need to choose which organization contains your repository:
 
-    ![GitHub Organization](jenkins-bo-organizations.png)
+    ![GitHub Organization](jenkins-bo-organizations.png "GitHub Organization")
 
-9. After choosing your repository location, click on the **Create Pipeline** button. That will trigger your first build automatically.
+9.  After choosing your repository location, click **Create Pipeline**. That will trigger your first build automatically.
 
-    ![First Build](jenkins-bo-first-build-01.png)
+    ![First Build](jenkins-bo-first-build-01.png "First Build")
 
-10. Click on the build to see your detailed Pipeline.
+10.  Click on the build to see your detailed Pipeline.
 
-    ![First Build](jenkins-bo-first-build-02.png)
+    ![First Build](jenkins-bo-first-build-02.png "First Build")
 
-From here you can obtain valuable information regarding: 1) your build number, 2) the console output for each step, 3) selecting stages for further analysis, 4) browsing through tabs with information about commit changes, tests results and artifacts stored, 5) replaying your build, 6) editing your pipeline visually, and 7) go to your pipeline settings.
+From here you can obtain valuable information regarding: 1) your build number, 2) the console output for each step, 3) selecting stages for further analysis, 4) browsing through tabs with information about commit changes, tests results, and artifacts stored, 5) replaying your build, 6) editing your pipeline visually, and 7) go to your pipeline settings.
 
 ### Automate Your Entire Process with Jenkins
 
-The `Jenkinsfile` template uses a very basic pipeline structure with only three stages. You can customize it to accommodate as many stages as needed. The final Pipeline structure is dictated by the project complexity and the development guidelines you must follow. Since you've already walked through the Node.js example, you know how to design a pipeline that automates each stage. For the purpose of this guide, the resulting pipeline should:
+The `Jenkinsfile` template uses a very basic pipeline structure with only three stages. You can customize it to accommodate as many stages as needed. The final pipeline structure is dictated by the project complexity and the development guidelines you must follow. Since you've already walked through the Node.js example, you know how to design a pipeline that automates each stage. For the purpose of this guide, the resulting pipeline should:
 
 * Build Stage
     - Create both images and abort any further testing or deployment if an error is encountered.
@@ -519,9 +514,9 @@ The `Jenkinsfile` template uses a very basic pipeline structure with only three 
 * Test Stage
     - Perform the automatic Mocha test suite.
     - Publish the `nodeapp-dev` image for easier distribution and manual quality tests.
-    - Inform the appropriate department depending on the outcome of the automatic tests: success, unstable (failure of any automatic test) or total failure of the stage.
+    - Inform the appropriate department depending on the outcome of the automatic tests: success, unstable (failure of any automatic test), or total failure of the stage.
 * Deploy Stage
-    - Will run only if the commit is performed on the `master` branch and tests stage completed successfully.
+    - Will run only if the commit is performed on the `master` branch and test stage completed successfully.
     - Changes the image tag before publish.
     - Deploys the dockerized application to Docker Hub.
     - Save a compressed 'golden' image for further distribution.
@@ -641,7 +636,7 @@ pipeline {
 }
 {{< /file >}}
 
-This complete Jenkinsfile is written using declarative syntax. If you read it carefully, you will notice that it describes the same procedure used during the application deployment done in a previous section. This section will analyze the Jenkinsfile in more detail.
+This complete Jenkinsfile is written using declarative syntax. If you read it carefully, you will notice that it describes the same procedure used during the application deployment in a previous section. This section will analyze the Jenkinsfile in more detail.
 
 ### Agent and Environmental Variables
 
@@ -659,23 +654,23 @@ The `DOCKER` definition is done through the *credentials* feature. This allows y
 
 1.  Click on the gear icon (Pipeline Settings).
 
-2.  You will see the project's settings page, click on the **Credentials** link at the bottom of the sidebar menu.
+2.  You will see the project's settings page, click the **Credentials** link at the bottom of the sidebar menu.
 
-    ![Project Pipeline Settings](jenkins-pipeline-settings-sidebar.png)
+    ![Project Pipeline Settings](jenkins-pipeline-settings-sidebar.png "Project Pipeline Settings")
 
-3.  In the next screen you can choose the scope of the credentials you want to configure. This can be limited to the current project or can be defined to be global. In this case you want Docker Hub login information to be global. Click on the **Add Credentials** link on the left sidebar.
+3.  In the next screen you can choose the scope of the credentials you want to configure. This can be limited to the current project or can be defined as global. In this case you want Docker Hub login information to be global. Click **Add Credentials** in the left sidebar.
 
-    ![Global Credentials](jenkins-global-credentials.png)
+    ![Global Credentials](jenkins-global-credentials.png "Global Credentials")
 
 4.  You will be redirected to a screen similar to the screenshot below. There you need to enter your Docker Hub username, password and enter a unique identifier (ID) for this credential. The chosen one for this example was `docker-hub`. Once you save your credentials you can use them anywhere in the Pipeline.
 
-    ![Username and Password](jenkins-user-pwd.png)
+    ![Username and Password](jenkins-user-pwd.png "Username and Password")
 
 In the example pipeline, `DOCKER = credentials('docker-hub')` creates two environmental variables, `DOCKER_USER` and `DOCKER_PWD` that can be used to log in your Docker Hub account.
 
 ### Build Stage
 
-The first thing you will notice about the `parallel` code block is that it's self-explanatory--it will run sub-stages in parallel. This is useful for building two Docker images at the same with the same shell commands you used before. Each image is declared in its own step which is also part of an independent stage.
+The first thing you will notice about the `parallel` code block is that it's self-explanatory-it will run sub-stages in parallel. This is useful for building two Docker images at the same with the same shell commands you used before. Each image is declared in its own step which is also part of an independent stage.
 
 {{< file "~/jenkins-guide/Jenkinsfile" >}}
 // Building your Test Images
@@ -758,7 +753,7 @@ The `post` block has been designed to run a cleanup in case of failure. No notif
 
 ### Reports and Cleanup Stages
 
-The final two stages of your pipeline are comparatively simple. The `junit` statement allows Jenkins to use the `reports.xml` file generated by your Mocha image, and the `archiveArtifacts` command saves the report and application file to a persistent location. By default, that location is `JENKINS_HOME/var/lib/jenkins/jobs/<REPOSITORY>/branches/master/builds/lastStableBuild`. You can configure a custom location in Jenkins General Settings if needed.
+The final two stages of your pipeline are comparatively simple. The `junit` statement allows Jenkins to use the `reports.xml` file generated by your Mocha image, and the `archiveArtifacts` command saves the report and application file to a persistent location. By default, that location is `JENKINS_HOME/var/lib/jenkins/jobs/<REPOSITORY>/branches/master/builds/lastStableBuild`. You can configure a custom location in Jenkins' General Settings if needed.
 
 ### Working with Branches
 
@@ -772,29 +767,29 @@ It's time to commit the complete Jenkinsfile to your Jenkins server and trigger 
 
         git add . && git commit -m "Jenkinsfile complete Pipeline" && git push origin trunk
 
-3.  Click on the gear icon (Pipeline settings) on your Blue Ocean Dashboard and then click on **Scan Repository Now** link:
+3.  Click on the gear icon (Pipeline settings) on your Blue Ocean Dashboard and then click **Scan Repository Now**:
 
-    ![Scan Repository Now](jenkins-scan-repository.png)
+    ![Scan Repository Now](jenkins-scan-repository.png "Scan Repository Now")
 
 4.  Return to your Pipeline view to watch your stages run in parallel:
 
-    ![Parallel Execution](jenkins-parallel-execution.png)
+    ![Parallel Execution](jenkins-parallel-execution.png "Parallel Execution")
 
 5.  Once finished, you will see your entire Pipeline. Notice that this commit was submitted as branch, and because of that, the `DEPLOY` stage was skipped, which is expected.
 
-    ![Successful Pipeline 01](jenkins-successful-trunk-01.png)
+    ![Successful Pipeline 01](jenkins-successful-trunk-01.png "Successful Pipeline 01")
 
 6.  If you navigate through the menu tabs, you can check the test results and the artifacts stored:
 
-    ![Test Results](jenkins-all-test-passing.png)
+    ![Test Results](jenkins-all-test-passing.png "Test Results")
 
-    ![Artifacts Stored](jenkins-artifacts.png)
+    ![Artifacts Stored](jenkins/jenkins-artifacts.png "Artifacts Stored")
 
 ### Configure Automatic Triggers
 
-You can set Jenkins to scan your repository periodically. To do so just click again on the gear icon on the Pipeline view and then click the **Configure** link. There are many options available. Find **Scan Repository Triggers** and check the box **Periodically if not otherwise run**. You can choose any amount of time and for this example, one minute will be selected.
+You can set Jenkins to scan your repository periodically. To do so just click again on the gear icon on the Pipeline view and then click **Configure**. There are many options available. Find **Scan Repository Triggers** and check the box **Periodically if not otherwise run**. You can choose any amount of time and for this example, one minute will be selected.
 
-![Repository Triggers](jenkins-bo-scan-gh.png)
+![Repository Triggers](jenkins-bo-scan-gh.png "Repository Triggers")
 
 ### Failing Tests (Unstable Pipeline)
 
@@ -809,17 +804,17 @@ app.get('/ERROR',function(req,res) {
 });
 {{< /file >}}
 
-2.  Commit your changes to the Jenkins Server:
+2.  Commit your changes to Jenkins:
 
         git add . && git commit -m "404 error" && git push origin trunk
 
 3.  There is no need to manually scan your repository because you already setup Jenkins to do it automatically every minute. Wait for the trigger. After running you should see something similar to this:
 
-    ![Unstable Pipeline](jenkins-unstable-pipeline.png)
+    ![Unstable Pipeline](jenkins-unstable-pipeline.png "Unstable Pipeline")
 
 4.  Navigate to the **Tests** tab and click on the chevron for a complete console output:
 
-    ![Test Unstable](jenkins-unstable-results.png)
+    ![Test Unstable](jenkins-unstable-results.png "Test Unstable")
 
 5.  Close your view (upper right "X") and you will return to the Repository view.
 
@@ -829,7 +824,7 @@ app.get('/ERROR',function(req,res) {
 
 Now, induce an error on the `BUILD` stage.
 
-1.  Edit your `express-image/package.json`. Change the express package name to `express-ERROR` to simulate a mistyping.
+1.  Edit your `express-image/package.json`. Change the Express package name to `express-ERROR` to simulate a mistyping.
 
     {{< file "~/jenkins-guide/express-image/package.json" json >}}
 "dependencies": {
@@ -837,17 +832,17 @@ Now, induce an error on the `BUILD` stage.
   }
 {{< /file >}}
 
-2.  Push your changes to the Jenkins Server:
+2.  Push your changes to Jenkins:
 
         git add . && git commit -m "express-image Build error" && git push origin trunk
 
 3.  In the pipeline view click on `BUILD` stage and the on **Shell Script** to see the console output:
 
-    ![Failed BUild](jenkins-bo-failed-build.png)
+    ![Failed Build](jenkins-bo-failed-build.png "Failed Build")
 
 4.  Scroll down and check the error:
 
-    ![Failed Build Msg](jenkins-bo-failed-build-msg.png)
+    ![Failed Build Msg](jenkins-bo-failed-build-msg.png "Failed Build Msg")
 
 5.  Fix the error in `express-image/package.json`.
 
@@ -859,19 +854,19 @@ Merge the `trunk` branch into `master`. This will trigger a run of the full pipe
     git merge trunk
     git push origin master
 
-![Successful Trunk Merge](jenkins-successful-master.png)
+![Successful Trunk Merge](jenkins-successful-master.png "Successful Trunk Merge")
 
 ## Outside Blue Ocean Dashboard
 
 Blue Ocean interface is still under development, which means that many aspects of Jenkins are not managed by the new interface. Below are some of the most common screens.
 
-1.  Click on the gear icon to enter at your repository menu. Once there, click on the **Status** link in the left sidebar. You will see your branches and some general information:
+1.  Click on the gear icon to enter at your repository menu. Once there, click **Status** in the left sidebar. You will see your branches and some general information:
 
-    ![Project Status](jenkins-project-status.png)
+    ![Project Status](jenkins-project-status.png "Project Status")
 
-2.  If you click on `master` branch you will see a more detailed dashboard:
+2.  If you click on the `master` branch you will see a more detailed dashboard:
 
-    ![Master Details](jenkins-master-details.png)
+    ![Master Details](jenkins-master-details.png "Master Details")
 
     From this view you can review a lot of useful information like logs, artifacts, changes, trends of test results, and much more.
 
