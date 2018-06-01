@@ -554,6 +554,7 @@ jdbc
 jdk
 jenkinsfile
 jetpack
+jez
 jk
 jks
 jobd
