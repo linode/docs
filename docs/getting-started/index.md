@@ -235,7 +235,7 @@ Replace `example_hostname` with one of your choice.
 
     hostnamectl set-hostname example_hostname
 
-### Debian 7 / Slackware / Ubuntu 14.04
+### Slackware / Ubuntu 14.04
 
 Replace `example_hostname` with one of your choice.
 
