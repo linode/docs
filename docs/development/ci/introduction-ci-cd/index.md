@@ -50,7 +50,7 @@ These principles are taken from the book [Continuous Delivery](http://www.inform
 
 ![CD Pipeline](cd-pipeline.jpg "CD pipeline tests each browser.")
 
-This example illustrates a continuous delivery pipelin. When code is committed to the `staging` branch, it is built and tested on the CI server as before. This time, tests are run on different browsers for a more production-ready test environment. The environments are also dockerized, which helps guarantee that all developers will be working in identical environments and makes differences between production, staging, and test environments explicit. If these steps complete successfully, the build is then deployed to the staging branch.
+This example illustrates a continuous delivery pipeline. When code is committed to the `staging` branch, it is built and tested on the CI server as before. This time, tests are run on different browsers for a more production-ready test environment. The environments are also dockerized, which helps guarantee that all developers will be working in identical environments and makes differences between production, staging, and test environments explicit. If these steps complete successfully, the build is then deployed to the staging branch.
 
 ## Host a CI/CD Server on Linode
 
