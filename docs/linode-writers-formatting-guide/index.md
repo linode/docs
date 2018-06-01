@@ -309,7 +309,7 @@ When adding an image, ensure that all identifying attributes such as names and I
 
 | Up to 650 px wide. | Over 650 px wide. |
 |:--------------------------|:----------------------------------------------|
-| \!\[Description of the image\](/docs/assets/filename.png "Description of the image.") | \[!\[Description of the image\](/docs/assets/filename_small.png)](/docs/assets/filename.png "Description of the image.") |
+| \!\[Description of the image\](filename.png "Description of the image.") | \[!\[Description of the image\](filename_small.png)](filename.png "Description of the image.") |
 
 ### Key Combinations
 
@@ -383,7 +383,7 @@ Use single spaces between sentences; do not double-space.
 | by the hyphens | and colons | above. &nbsp;&nbsp;&nbsp; |
     </td>
     <td>
-    <img src="/docs/assets/example-blue-stripe-table.png">
+    <img src="example-blue-stripe-table.png">
     </td>
   </tr>
 </table>

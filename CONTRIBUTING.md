@@ -56,7 +56,9 @@ This section takes you through the process of creating a new guide using the top
 
 2.  From the root of the `docs` repo, run the following command. Specify the location and title of your guide; the example nginx guide should be located in `web-servers/nginx`. This will create a markdown file populated with YAML front matter:
 
-        hugo new web-servers/nginx/how-to-install-nginx-on-debian.md --kind content
+        hugo new web-servers/nginx/how-to-install-nginx-on-debian/index.md --kind content
+
+	This will create a subdirectory with the guide's intended url, with an `index.md` file inside that will hold the guide's contents. Any images should be added inside this directory as well.
 
 3.  Start the Hugo server:
 
@@ -88,7 +90,7 @@ The `ci/` directory contains tests written in Python to ensure a given guide mee
 
 Your local Hugo development server has hot-reloading enabled, so you will be able to view changes to your guide as you save them. Please see our [Linode Writer's Formatting guide](https://www.linode.com/docs/linode-writers-formatting-guide/) for more information.
 
-If your guide requires any images, create a subdirectory in the `content/assets` folder and place all images there.
+Images should be placed in the guide's subdirectory and linked using their filename as the relative URL: `![Image Title](image.png)`.
 
 1.  Commit your changes to your local branch:
 
