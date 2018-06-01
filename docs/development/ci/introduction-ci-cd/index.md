@@ -48,17 +48,9 @@ These principles are taken from the book [Continuous Delivery](http://www.inform
 
 *Pipelines* are an important concept in CI/CD. A pipeline is a sequence of steps that will be run whenever a change is made to a project (source code, database schemas, environments, or configuration). Pipelines can include steps executed in series or in parallel, and often multiple pipelines are used to handle different situations when working on a project.
 
-### Simple Pipeline
-
-![Simple Pipeline](simple-ci-pipeline.jpg "Simple CI pipeline builds the app and runs the test suite.")
-
-In this basic pipeline, whenever changes are committed to the master branch on GitHub, the CI server pulls the changes, builds the application, and runs the test suite. If these steps are completed successfully, the code can be deployed to a staging server for developers to review.
-
-### CD Pipeline
-
 ![CD Pipeline](cd-pipeline.jpg "CD pipeline tests each browser.")
 
-This pipeline expands on the previous example. When code is committed to the `staging` branch, it is built and tested on the CI server as before. This time, tests are run on different browsers for a more production-ready test environment. The environments are also dockerized, which helps guarantee that all developers will be working in identical environments and makes differences between production, staging, and test environments explicit. If these steps complete successfully, the build is then deployed to the staging branch.
+This example illustrates a continuous delivery pipeline. When code is committed to the `staging` branch, it is built and tested on the CI server as before. This time, tests are run on different browsers for a more production-ready test environment. The environments are also dockerized, which helps guarantee that all developers will be working in identical environments and makes differences between production, staging, and test environments explicit. If these steps complete successfully, the build is then deployed to the staging branch.
 
 ## Host a CI/CD Server on Linode
 
