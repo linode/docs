@@ -25,8 +25,8 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
 Currently, the best way to install NGINX on Ubuntu 18.04 is to use the version included in Ubuntu's repositories:
 
-	sudo apt update
-	sudo apt install nginx
+    sudo apt update
+    sudo apt install nginx
 
 ## Configure NGINX
 
