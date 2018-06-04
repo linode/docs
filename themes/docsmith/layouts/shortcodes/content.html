@@ -7,13 +7,13 @@
 {{ $p.Content }}
 </div>
 {{ else }}
-{{ errorf "%s: Content shortcode is empty." .Page.File }}
+{{ errorf "%s: Content shortcode is empty." .Page.Title }}
 {{ end }}
 {{else}}
 {{ $p := .Site.GetPage "page" $file }}
 {{ if $p }}
 {{ $p.Content }}
 {{ else }}
-{{ errorf "%s: Content shortcode is empty." .Page.File }}
+{{ errorf "%s: Content shortcode is empty." .Page.Title }}
 {{ end }}
 {{ end }}
