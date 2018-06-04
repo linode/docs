@@ -1262,6 +1262,7 @@ uncommented
 uncommenting
 uncompress
 unencrypted
+unexported
 unformatted
 unicast
 uniq
