@@ -33,7 +33,7 @@ WordPress is a popular dynamic content management system (CMS) focused on blogs.
 
     The first command will output your short hostname; the second, your fully-qualified domain name (FQDN).
 
--   Configure a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) web stack.
+-   Configure a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) web stack.
 
 -   Make sure MySQL/MariaDB has a database set up for WordPress. If you do not have a WordPress database, create one:
 
