@@ -2,11 +2,11 @@
 author:
   name: Kamesh Balasubramanian
   email: kamesh@wirecog.com
-description: 'Learn how to get started with using Go packages.'
+description: 'Learn how to get started with Go packages.'
 keywords: ["go","golang","packages","export"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-01
-modified: 2018-06-01
+published: 2018-06-04
+modified: 2018-06-04
 modified_by:
   name: Linode
 title: 'Getting Started with Go Packages'
@@ -14,32 +14,30 @@ contributor:
   name: Kamesh Balasubramanian
   link: https://twitter.com/EngineerKamesh
 external_resources:
-  - '[A Tour of Go](https://tour.golang.org)'
+  - '[A Tour of Go](https://tour.golang.org/)'
   - '[The Go Standard Library](https://golang.org/pkg/)'
-  - '[Go Essentials for Full Stack Web Development](https://www.packtpub.com/web-development/go-essentials-full-stack-web-development-video)'
+  - '[Go Essentials for Full Stack Web Development](https://www.packtpub.com/web-development/go-essentials-full-stack-web-development-video/)'
 ---
 
-# Getting Started with Go Packages
+## What is Go?
 
-## Introduction
+Go is a compiled, [statically typed](https://en.wikipedia.org/wiki/Type_system#Static_type_checking) programming language developed by Google. Many modern applications, including Docker, Kubernetes, and Caddy, are written in Go.
 
-Go is a compiled, statically typed programming language developed by Google. Many modern applications, including Docker, Kubernetes, and Caddy, are written in Go.
-
-Go packages allow developers to organize and reuse Go code in a simple and maintainable manner. Using and declaring Go packages are essential tasks that are performed when writing Go programs. This guide will demonstrate and help you to understand how to create and use Go packages.
+Go packages allow developers to organize and reuse Go code in a simple and maintainable manner. Using and declaring Go packages are essential tasks that are performed when writing Go applications. This guide will demonstrate and help you to understand how to create and use Go packages.
 
 ## Before You Begin
 
-If you haven't installed Go on your server yet, follow the instructions from the [Install Go on Ubuntu](/docs/development/go/install-go-on-ubuntu/) article before proceeding.
+If you haven't installed Go on your server yet, follow the instructions from the [Install Go on Ubuntu](/docs/development/go/install-go-on-ubuntu/) guide before proceeding.
 
 If you prefer to experiment with Go without installing it first, you can run the examples found in this guide using the [Go Playground](https://play.golang.org).
 
 ## Packages
 
-In Go, **packages** are the mechanism that provide the capability to organize and reuse source code.
+Packages provide the capability to organize and reuse source code.
 
 ### Declaring a Package
 
-In a text editor, create `hellogopher.go` in your $GOPATH and add the following content to create a simple "Hello world" program in Go:
+In a text editor, create a `hellogopher.go` file in your [GOPATH](/docs/development/go/install-go-on-ubuntu/#adjust-the-path-variable) and add the following content to create a simple "Hello world" program:
 
 {{< file "hellogopher.go" go >}}
 package main
@@ -51,9 +49,9 @@ func main() {
 }
 {{< /file >}}
 
-The first statement in the program declares a package name of `main` using the `package` keyword.
+The first statement declares the package `main` using the `package` keyword.
 
-Every Go source file must declare a package. This tells Go which package the Go source code file is part of. Any Go program that's intended to run on the command line declares package `main`. The `main` function that we define after declaring package `main` is where execution of the Go program begins. The `main` function takes no arguments and returns no values.
+Every Go source file must declare a package. This tells Go which package the source code file is part of. Any Go app that's intended to run on the command line declares the package `main`. The `main` function that we define after declaring package `main` is where execution of the Go code begins. The `main` function takes no arguments and returns no values.
 
 Run the program:
 
@@ -65,13 +63,13 @@ Hello Gopher!
 
 ### Import a Package
 
-You can import a package using the `import` keyword. For example, in the Hello Gopher program, we import the `fmt` package:
+Import the `fmt` package using the `import` keyword:
 
 {{< highlight go >}}
 import "fmt"
 {{< /highlight >}}
 
-The `fmt` package includes functionality for formatting output to the screen, such as the `Println` function used to output text:
+The `fmt` package includes functionality for formatting output to the screen such as the `Println` function:
 
 {{< highlight go >}}
 fmt.Println("Hello Gopher!")
@@ -79,31 +77,31 @@ fmt.Println("Hello Gopher!")
 
 ### Grouping Imports
 
-When a Go program has to import more than one package, it's handy to use an import grouping. For example, if you wanted to expand the example program by printing out the current time as well as a greeting, you can do this by using the `time` package.
-
-It is possible to import this by simply adding another `import` statement:
+To have the example program print the current time as well as a greeting, add the `time` package. You could add each `import` on its own line:
 
 {{< highlight go >}}
 import "fmt"
 import "time"
 {{< /highlight >}}
 
-However, it is more concise to replace the import statements with an import grouping that includes both the `fmt` and `time` packages. This is considered such a standard practice that your text editor may make this change automatically if you have a plugin for Go language support.
+Instead of using `import` on each line, replace the import statements with an import grouping that includes both the `fmt` and `time` packages.
 
-    {{< highlight go >}}
+{{< highlight go >}}
 import (
 	"fmt"
 	"time"
 )
 {{< /highlight >}}
 
+If your text editor includes a Go language plugin, it may adjust the text automatically.
+
 In the `main` function, right after the greeting is printed, use the `Now()` function in the `time` module to print out the current time:
 
 {{< highlight go >}}
-	fmt.Println(time.Now())
+fmt.Println(time.Now())
 {{< /highlight >}}
 
-We print out the current time, by printing out the `Time` value returned from the `Now` function of the `time` package. The `time` package and the `fmt` package are part of [Go's robust standard library](https://golang.org/pkg/).
+We print out the current time by printing out the `time` value returned from the `Now` function of the `time` package. The `time` package and the `fmt` package are part of [Go's robust standard library](https://golang.org/pkg/).
 
 After making these two changes, the Hello Gopher program now looks like this:
 
@@ -130,10 +128,9 @@ Hello Gopher!
 2018-04-29 14:41:08.715214 -0700 PDT m=+0.000391168
 {{< /output >}}
 
-
 ### Aliasing a Package
 
-Go provides the facility to alias imported packages. For example, in the Hello Gopher program we can use an alias, `f`, to refer to the `fmt` package like so:
+Go provides the ability to alias imported packages. For example, in the Hello Gopher program we can use an alias, `f`, to refer to the `fmt` package like so:
 
 {{< highlight go >}}
 package main
@@ -151,26 +148,21 @@ func main() {
 
 We alias the `fmt` package with the name `f`, by placing the alias name in front of the package name inside the import grouping.
 
-Notice that all `Println` function calls to the `fmt` package have Now been replaced to call the `fmt` package's alias, `f`.
+Notice that all `Println` function calls to the `fmt` package have now been replaced to call the `fmt` package's alias, `f`.
 
 ### Create a Package
 
-We will create a package named "greetings", which will contain functionality to print out a greeting to the screen.
+Create a package called `greetings`, which will contain functionality to print out a greeting to the screen.
 
-Navigate to your `$GOPATH/src` directory and create a new directory for the `greetings` package:
+Go packages follow a convention where Go source files that implement a particular package must be housed in a directory whose name matches the package's name. In this example, our package is called `greetings`, and we create a directory called `greetings` for the Go source file that implements the `greetings` package.
 
-    cd $GOPATH/src
-    mkdir greetings
+Create and change to a new directory for the `greetings` package:
 
-Note: If the `src` directory doesn't exist in your `$GOPATH`, you should create it using the `mkdir` command.
+    mkdir -p $GOPATH/src/greetings && cd $GOPATH/src/greetings
 
-Go packages follow a convention where Go source files that implement a particular package must be housed in a directory whose name matches the package's name. Since our package name is `greetings`, we must create a directory called "greetings" which houses the Go source file that implements the `greetings` package.
+Create a source file called `greetings.go` and place it inside the `greetings` directory with the following contents:
 
-Let's create a source file named "greetings.go" and place it inside the "greetings" folder with the following contents:
-
-
-
-{{< file "greetings.go" go >}}
+{{< file "$GOPATH/src/greetings/greetings.go" go >}}
 package greetings
 
 import (
@@ -188,13 +180,11 @@ func printGreetingsUnexported() {
 
 The first line of code in `greetings.go` declares the `greetings` package, using the `package` keyword.
 
-The `PrintGreetings` function in the `greetings` package is responsible for printing out the greeting. In Go, upper-casing the first letter of a function name has a special significance – it indicates that a function is an exported function. An exported function is a function that can be called from outside a package.
+The `PrintGreetings` function in the `greetings` package is responsible for printing out the greeting. In Go, capitalizing the first letter of a function name has a special significance – it indicates that a function is an exported function. An exported function is a function that can be called from outside a package.
 
-Function names that have their first letter lower-cased are only accessible by Go source files within the same package. The `printGreetingsUnexported` function also prints out a variation of the "Hello Gopher" greeting, but it cannot be called outside of the `greetings` package, since it is an unexported function.
+Function names that begin with a lowercase letter are only accessible by Go source files within the same package. The `printGreetingsUnexported` function also prints out a variation of the "Hello Gopher" greeting, but it cannot be called outside of the `greetings` package, since it is an unexported function.
 
-A Go package can contain multiple Go source files. Let's create another Go source file named `magic.go` inside the "greetings" directory with the following contents:
-
-
+A Go package can contain multiple Go source files. Let's create another Go source file named `magic.go` inside the `greetings` directory with the following contents:
 
 {{< file "magic.go" go >}}
 package greetings
@@ -220,7 +210,7 @@ func init() {
 
 The first line of code declares that `magic.go` belongs to the `greetings` package.
 
-In the same manner by which we declare exported and unexported functions, by upper-casing or lower-casing the first letter, we can follow the same rules when declaring package variables.
+In the same manner by which we declare exported and unexported functions by capitalization of the first letter, we can follow the same rules when declaring package variables.
 
 For example, the `magicNumber` variable is an unexported package variable of type `int` (integer):
 
@@ -228,7 +218,7 @@ For example, the `magicNumber` variable is an unexported package variable of typ
 var magicNumber int
 {{< /highlight >}}
 
- This means that it can be accessed by any Go source file within the `greetings` package, but the `magicNumber` variable cannot be accessed outside of the `greetings` package.
+This means that it can be accessed by any Go source file within the `greetings` package, but the `magicNumber` variable cannot be accessed outside of the `greetings` package.
 
 The `PrintMagicNumber` function prints out the value of the `magicNumber` variable.
 
@@ -242,9 +232,9 @@ Although `printGreetingsUnexported` is defined in a different source file than `
 
 At this point we've created our own custom package, and now it's time to use the functionality defined in the package.
 
-Let's create a new directory called `usegreetings` inside the `$GOPATH/src` directory. Let's create a Go source file named `usegreetings.go` in the `usegreetings` directory with the following contents:
+Create a new directory called `usegreetings` inside the `$GOPATH/src` directory and create a source file called `usegreetings.go` with the following contents:
 
-{{< file "usegreetings.go" go >}}
+{{< file "$GOPATH/src/usegreetings/usegreetings.go" go >}}
 package main
 
 import (
@@ -258,7 +248,7 @@ func main() {
 }
 {{< /file >}}
 
-The `usegreetings.go` source file implements a command line program, so we have to declare package `main` and we have to define a `main` function which is the primary entry point of the command line Go program.
+The `usegreetings.go` source file implements a command line program, so we have to declare the `main` package and function which is the primary entry point of the command line Go program.
 
 Notice that we have included the `greetings` package in the import grouping.
 
