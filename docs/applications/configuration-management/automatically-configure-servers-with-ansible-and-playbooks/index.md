@@ -85,7 +85,7 @@ Ansible keeps track of its nodes using an [inventory file](http://docs.ansible.c
 
 1.  Create a directory for Ansible configuration files and playbooks:
 
-        mkdir ~/ansible && cd ~/.ansible
+        mkdir ~/ansible && cd ~/ansible
 
 2.  Create a configuration file and edit it to include the location where you will store your inventory file:
 
