@@ -19,7 +19,7 @@ external_resources:
 
 ## What is a LAMP Stack?
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps.
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free, and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps.
 
 This guide shows how to install and test a LAMP stack on Ubuntu 18.04 (LTS).
 
@@ -39,34 +39,48 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
         sudo apt update && sudo apt upgrade
 
-## Quick Install Using Tasksel
+## Installation
+
+### Install Using Tasksel
+
 Instead of installing Apache, MySQL, and PHP separately, Tasksel offers a convenient way to get a LAMP stack running quickly.
 
 1.  Install Tasksel if not already installed by default.
 
         sudo apt install tasksel
 
-2.  Use tasksel to install the LAMP stack.
+2.  Use Tasksel to install the LAMP stack.
 
         sudo tasksel install lamp-server
 
-3.  Tasksel does not set a password for MySQL on installation. Secure MySQL's root user with a password and configure additional options using `mysql_secure_installation`:
+### Install Packages Separately
 
-        sudo mysql_secure_installation
-
-See the steps below for Apache configurations, creating a virtual host, and installation of PHP modules for WordPress installation.
-
-## Apache
-
-### Install and Configure Apache
+If you prefer not to install the bundled packages via Tasksel, you can instead install them separately:
 
 1.  Install Apache 2.4 from the Ubuntu repository:
 
         sudo apt install apache2
 
-2. The `KeepAlive` setting allows Apache to utilize server-side memory, reducing latency for users on the hosted site. `KeepAlive` will make a website faster if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request.
+2.  Install the `mysql-server` package:
 
-    The state of `KeepAlive` depends on the type of site you plan to run. Please read more about your specific use-case [here](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
+        sudo apt install mysql-server
+
+3.  Install PHP, the PHP Extension and Application Repository, Apache support, and MySQL support:
+
+        sudo apt install php7.2 libapache2-mod-php7.2 php-mysql
+
+    Optionally, install additional cURL, JSON, and CGI support:
+
+        sudo apt install php-curl php-json php-cgi
+
+
+## Configuration
+
+### Apache
+
+1. The `KeepAlive` setting allows Apache to better utilize server-side memory, reducing latency for users on the hosted site. `KeepAlive` will make a website faster if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request.
+
+    Open the `apache2.conf` Apache config file and adjust the `KeepAlive` setting:
 
     {{< file "/etc/apache2/apache2.conf" aconf >}}
 KeepAlive On
@@ -76,10 +90,10 @@ KeepAliveTimeout 5
 {{< /file >}}
 
     {{< note >}}
-The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this number higher depending on your use-case. The `KeepAliveTimeout` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
+The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this number higher depending on your use-case. The `KeepAliveTimeout` setting controls how long the server waits (measured in seconds) for new requests from already connected clients. Setting this to 5 will avoid wasting RAM.
 {{< /note >}}
 
-3.  The default *multi-processing module* (MPM) is the **prefork** module. `mpm_prefork` is the module that is compatible with most systems. Since the LAMP stack requires PHP, it may be best to stick with the default. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
+2.  The default *multi-processing module* (MPM) is the **prefork** module. `mpm_prefork` is the module that is compatible with most systems. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
 
     {{< file "/etc/apache2/mods-available/mpm_prefork.conf" aconf >}}
 <IfModule mpm_prefork_module>
@@ -91,24 +105,24 @@ The `MaxKeepAliveRequests` setting controls the maximum number of requests durin
 </IfModule>
 {{< /file >}}
 
-4.  Disable the event module and enable prefork:
+3.  Disable the event module and enable prefork:
 
         sudo a2dismod mpm_event
         sudo a2enmod mpm_prefork
 
-5.  Restart Apache:
+4.  Restart Apache:
 
         sudo systemctl restart apache2
 
-### Configure Virtual Hosts
+### Virtual Hosts
 
-You can set up virtual hosts several ways; however, below is the recommended method. By default, Apache listens on all IP addresses available to it. For all steps below, replace `example.com` with your domain name.
+You can set up virtual hosts several ways, and the following steps outline the recommended method. For each of these steps, replace `example.com` with your domain name.
 
 1.  Create a copy of the default Apache configuration file for your site:
 
         sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
 
-2.  Edit the new `example.com.conf` configuration file by uncommenting `ServerName` and replacing `example.com` with your site's IP or Fully Qualified Domain Name (FQDN). Enter the document root path and log directories as shown below, and add a `Directory` block before `<VirtualHost>`:
+2.  Open the new `example.com.conf` configuration file in your text editor. Uncomment the `ServerName` option and update it with your domain. Enter the document root path and log directories as shown below, and add a `Directory` block before `<VirtualHost>`:
 
     {{< file "/etc/apache2/sites-available/example.com.conf" apache >}}
 <Directory /var/www/html/example.com/public_html>
@@ -161,27 +175,27 @@ Virtual hosting should now be enabled. To allow the virtual host to use your dom
 
 If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 
-## MySQL
-
-### Install MySQL
-
-Install the `mysql-server` package and choose a secure password when prompted:
-
-    sudo apt install mysql-server
-
-### Create a MySQL Database
+### MySQL
 
 1.  Log into MySQL:
 
-        sudo mysql -u root -p
+        sudo mysql -u root
 
-    Enter MySQL's root password, and you'll be presented with a MySQL prompt.
+    MySQL will not prompt you for a password, as it is initially configured to use the 'auth_socket' authorization plugin. This authorization scheme allows you to login to the MySQL root user as long as you are connecting from the Linux root user on localhost:
 
-2.  If no password was entered in the previous section, or if you want to change the root password, enter the following command. Replace `password` with a new root password:
+        mysql> SELECT user,host,authentication_string,plugin FROM mysql.user WHERE user='root';
+        +------+-----------+-----------------------+-------------+
+        | user | host      | authentication_string | plugin      |
+        +------+-----------+-----------------------+-------------+
+        | root | localhost |                       | auth_socket |
+        +------+-----------+-----------------------+-------------+
+        1 row in set (0.02 sec)
+
+2.  To switch to password authentication and assign a password, enter the following command. Replace `password` with a new root password:
 
         ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'password';
 
-3.  Create a database and a user with permissions for it. In this example, the database is called `webdata`, the user `webuser`, and password `password`:
+3.  Create a database and a user with permissions for it. In this example, the database is called `webdata`, the user `webuser`, and password `password`. Be sure to enter your own password; this should be different from the root password for MySQL:
 
         CREATE DATABASE webdata;
         GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
@@ -190,17 +204,13 @@ Install the `mysql-server` package and choose a secure password when prompted:
 
         quit
 
-## PHP
+5.  Use the `mysql_secure_installation` tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
 
-1.  Install PHP, the PHP Extension and Application Repository, Apache support, and MySQL support:
+        sudo mysql_secure_installation
 
-        sudo apt install php7.2 libapache2-mod-php7.2 php-mysql
+### PHP
 
-    Optionally, install additional cURL, JSON, and CGI support:
-
-        sudo apt install php-curl php-json php-cgi
-
-2.  Once PHP is installed, edit the configuration file located in `/etc/php/7.2/apache2/php.ini` to enable more descriptive errors, logging, and better performance. The following modifications provide a good starting point:
+1.  Edit the configuration file located in `/etc/php/7.2/apache2/php.ini` to enable more descriptive errors, logging, and better performance. The following modifications provide a good starting point:
 
     {{< file "/etc/php/7.2/apache2/php.ini" ini >}}
 error_reporting = E_COMPILE_ERROR | E_RECOVERABLE_ERROR | E_ERROR | E_CORE_ERROR
@@ -212,12 +222,12 @@ error_log = /var/log/php/error.log
 The beginning of the `php.ini` file contains examples commented out with a semicolon (**;**), which disables these directives. Ensure that the lines you modify in this step follow the examples section and are uncommented.
 {{< /note >}}
 
-3.  Create the log directory for PHP and give ownership to the Apache system user:
+2.  Create the log directory for PHP and give ownership to the Apache system user:
 
         sudo mkdir /var/log/php
         sudo chown www-data /var/log/php
 
-4.  Restart Apache:
+3.  Restart Apache:
 
         sudo systemctl restart apache2
 
@@ -225,7 +235,7 @@ The beginning of the `php.ini` file contains examples commented out with a semic
 If you plan on using your LAMP stack to host a WordPress server, install additional PHP modules: `sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc`
 {{< /note >}}
 
-### Optional: Test and Troubleshoot the LAMP Stack
+## Optional: Test and Troubleshoot the LAMP Stack
 
 In this section, you'll create a test page that shows whether Apache can render PHP and connect to the MySQL database. This can be helpful in locating the source of an error if one of the elements of your LAMP stack is not communicating with the others.
 
@@ -268,7 +278,7 @@ In this section, you'll create a test page that shows whether Apache can render 
 
 *   If the site does not load at all, check if Apache is running, and restart it if required:
 
-        systemctl status apache2
+        sudo systemctl status apache2
         sudo systemctl restart apache2
 
 *   If the site loads, but the page returned is the default "Congratulations" page, return to the **Configure Virtual Hosts** section above and check that the `DocumentRoot` matches your `example.com/public_html` folder.
