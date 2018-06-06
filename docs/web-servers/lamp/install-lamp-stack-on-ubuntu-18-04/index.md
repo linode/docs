@@ -177,36 +177,52 @@ If there are additional websites you wish to host on your Linode, repeat the abo
 
 ### MySQL
 
-1.  Log into MySQL:
+1.  Log in to MySQL's SQL shell:
 
         sudo mysql -u root
 
-    MySQL will not prompt you for a password, as it is initially configured to use the 'auth_socket' authorization plugin. This authorization scheme allows you to login to the MySQL root user as long as you are connecting from the Linux root user on localhost:
+    The database will not prompt you for a password, as it is initially configured to use the `auth_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are connecting from the Linux root user on localhost:
+    
+    {{< highlight sql >}}
+mysql> SELECT user,host,authentication_string,plugin FROM mysql.user WHERE user='root';
++------+-----------+-----------------------+-------------+
+| user | host      | authentication_string | plugin      |
++------+-----------+-----------------------+-------------+
+| root | localhost |                       | auth_socket |
++------+-----------+-----------------------+-------------+
+1 row in set (0.02 sec)
+{{< /highlight >}}
 
-        mysql> SELECT user,host,authentication_string,plugin FROM mysql.user WHERE user='root';
-        +------+-----------+-----------------------+-------------+
-        | user | host      | authentication_string | plugin      |
-        +------+-----------+-----------------------+-------------+
-        | root | localhost |                       | auth_socket |
-        +------+-----------+-----------------------+-------------+
-        1 row in set (0.02 sec)
+2.  You can keep using the `auth_socket` plugin, and this is considered a secure option for production systems. If you'd rather switch to password authentication and assign a password, enter the following commands. Replace `password` with a new root password:
 
-2.  To switch to password authentication and assign a password, enter the following command. Replace `password` with a new root password:
-
-        ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'password';
+    {{< highlight sql >}}
+ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'password';
+FLUSH PRIVILEGES;
+{{< /highlight >}}
 
 3.  Create a database and a user with permissions for it. In this example, the database is called `webdata`, the user `webuser`, and password `password`. Be sure to enter your own password; this should be different from the root password for MySQL:
 
-        CREATE DATABASE webdata;
-        GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
+    {{< highlight sql >}}
+CREATE DATABASE webdata;
+GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
+{{< /highlight >}}
 
-4.  Exit MySQL:
+4.  Exit the SQL shell:
 
-        quit
+    {{< highlight sql >}}
+quit
+{{< /highlight >}}
 
-5.  Use the `mysql_secure_installation` tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
 
         sudo mysql_secure_installation
+
+    Answer **Y** at the following prompts:
+
+    -  Remove anonymous users?
+    -  Disallow root login remotely?
+    -  Remove test database and access to it?
+    -  Reload privilege tables now?
 
 ### PHP
 

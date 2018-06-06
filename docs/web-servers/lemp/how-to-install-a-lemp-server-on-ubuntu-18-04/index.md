@@ -31,40 +31,60 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 
 ### NGINX
 
-Install and enable NGINX from the package repository:
+Install NGINX from the package repository:
 
     sudo apt install nginx
-    sudo systemctl start nginx && sudo systemctl enable nginx
 
 ### MariaDB
 
-1.  Install the MariaDB server and MySQL/MariaDB-PHP support. You may be prompted to set a root password during installation:
+1.  Install the MariaDB server and MySQL/MariaDB-PHP support:
 
         sudo apt install mariadb-server php-mysql
 
-2.  Run the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* script:
+    MariaDB is a popular fork of MySQL, and its development is considered to be more open and transparent than MySQL's. MariaDB is administered with the same commands as MySQL.
 
-        sudo mysql_secure_installation
+2.  Log in to MariaDB's SQL shell:
 
-     If you were not prompted to create a MySQL root user password when installing MariaDB, set one now, and answer **Y** at the following prompts:
+        sudo mysql -u root
 
-     -  Remove anonymous users?
-     -  Disallow root login remotely?
-     -  Remove test database and access to it?
-     -  Reload privilege tables now?
+    The database will not prompt you for a password, as it is initially configured to use the `unix_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are connecting from the Linux root user on localhost:
 
-3.  Log in to MariaDB's SQL shell. Enter the `root` user's password when prompted.
+    {{< highlight sql >}}
+MariaDB [(none)]> SELECT user,host,authentication_string,plugin FROM mysql.user;
++------+-----------+-----------------------+-------------+
+| user | host      | authentication_string | plugin      |
++------+-----------+-----------------------+-------------+
+| root | localhost |                       | unix_socket |
++------+-----------+-----------------------+-------------+
+1 row in set (0.00 sec)
+{{< /highlight >}}
 
-        mysql -u root -p
+    You can keep using the `unix_socket` plugin for the root user; this is considered a secure option for production systems, and it is needed for certain Ubuntu maintenance scripts to run normally. Further reading on this subject is available in `/usr/share/doc/mariadb-server-10.1/README.Debian.gz` on your filesystem.
 
-4.  Create a test database and user with access permission. Replace `testdb` and `testuser` with appropriate names for your setup. Replace `password` with a strong password.
+3.  Create a test database and user with access permission. Replace `testdb` and `testuser` with appropriate names for your setup. Replace `password` with a strong password.
 
     {{< highlight sql >}}
 CREATE DATABASE testdb;
 CREATE USER 'testuser' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON testdb.* TO 'testuser';
+{{< /highlight >}}
+
+4.  Exit the SQL shell:
+
+    {{< highlight sql >}}
 quit
 {{< /highlight >}}
+
+4.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+
+        sudo mysql_secure_installation
+
+    Answer **Y** at the following prompts:
+
+    -  Remove anonymous users?
+    -  Disallow root login remotely?
+    -  Remove test database and access to it?
+    -  Reload privilege tables now?
 
 ### PHP
 
@@ -86,9 +106,9 @@ quit
 
         sudo rm -f /etc/nginx/sites-enabled/default
 
-3.  Website configuration files should be kept in `/etc/nginx/conf.d/`. Create a configuration file for your site. Replace *example.com* with your site's FQDN or IP:
+3.  Website configuration files should be kept in `/etc/nginx/sites-available/`. Create a configuration file inside this directory with the following content. Replace *example.com* with your domain in both the file name and in the file's contents:
 
-    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
+    {{< file "/etc/nginx/conf.d/sites-available/example.com" nginx >}}
 server {
     listen         80 default_server;
     listen         [::]:80 default_server;
@@ -115,30 +135,36 @@ server {
 
     -  The site is served out of `/var/www/html/example.com/public_html` and its index page (`index.html`) is a simple `.html` file. If your index page will use PHP like WordPress does, substitute `index.php` for `index.html`.
 
-    -  `try_files` tells NGINX to verify that a requested file or directory [actually exist](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files) in the site's root filesystem before further processing the request. If it does not, a `404` is returned.
+    -  `try_files` tells NGINX to verify that a requested file or directory [actually exists](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files) in the site's root filesystem before further processing the request. If it does not, a `404` is returned.
 
     -  `location ~* \.php$` means that NGINX will apply this configuration to all .php files (file names are not case sensitive) in your site’s root directory, including any subdirectories containing PHP files.
 
     -  The `*` in the `~* \.php$` location directive indicates that PHP file names are not case sensitive. This can be removed if you prefer to enforce letter case.
 
-    -  `fastcgi_pass` specifics the [UNIX socket](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass) where PHP listens for incoming connections from other local processes
+    -  `fastcgi_pass` specifies the [UNIX socket](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass) where PHP listens for incoming connections from other local processes
 
     -  `include fastcgi_params` tells NGINX to process a list of `fastcgi_param` variables at `/etc/nginx/fastcgi_params`.
 
     -  The `fastcgi_param` directives contain the [location](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#variables) (relative to the site's root directory) and file [naming convention](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_index) of PHP scripts to be served when called by NGINX.
 
+4.  Create a link to your website configuration file from within the sites-enabled directory. Change the name of the file to the name you used for your domain:
+
+        sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+
 ## Test the LEMP Stack
 
-1.  Restart PHP and reload the NGINX configuration:
+1. To ensure that your web server can be reached with your domain name, configure the [DNS records](/docs/networking/dns/dns-manager-overview/) for your domain to point to your Linode's IP address.
+
+2.  Restart PHP and reload the NGINX configuration:
 
         sudo systemctl restart php7.2-fpm
         sudo nginx -s reload
 
-2.  Test the NGINX configuration:
+3.  Test the NGINX configuration:
 
         sudo nginx -t
 
-3.  Create a test page to verify NGINX can render PHP and connect to the MySQL database. Replace the `"testuser"` and `"password"` fields with the MySQL credentials you created above.
+4.  Create a test page to verify NGINX can render PHP and connect to the MySQL database. Replace the `"testuser"` and `"password"` fields with the MySQL credentials you created above.
 
     {{< file "/var/www/html/example.com/public_html/test.php" php >}}
 <html>
@@ -167,8 +193,17 @@ server {
 
 {{< /file >}}
 
-4.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load at all, re-check your configuration.
+5.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load at all, re-check your configuration. If your DNS changes haven't propagated yet, you can test your page with `curl` instead:
 
-5.  Remove the test file once the stack is working correctly:
+        $ curl -H "Host: example.com" http://<your-ip-address>/test.php
+        <html>
+        <head>
+        <h2>LEMP Stack Test</h2>
+        </head>
+        <body>
+        <p>Hello,</p><p>You have connected successfully.</p></body>
+        </html>
+
+6.  Remove the test file once the stack is working correctly:
 
         sudo rm /var/www/html/example.com/public_html/test.php
