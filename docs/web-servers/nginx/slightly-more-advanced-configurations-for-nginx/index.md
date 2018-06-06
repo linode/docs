@@ -90,7 +90,7 @@ proxy_cache_path /var/www/example.com/cache/ keys_zone=one:10m max_size=500m ina
 
     Replace *ip-address* and *port* with the URL and port of the upstream service whose files you wish to cache. For example, you would fill in `127.0.0.1:9000` if using [WordPress](https://www.nginx.com/resources/wiki/start/topics/recipes/wordpress/) or `127.0.0.1:2638` with [Ghost](https://docs.ghost.org/v1/docs/config#section-server).
 
-    {{< file "/etc/nginx/conf.d/example.com" nginx >}}
+    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 proxy_cache one;
     location / {
     proxy_pass http://ip-address:port;
