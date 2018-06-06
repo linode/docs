@@ -14,7 +14,7 @@ external_resources:
  - '[Linode API Documentation](https://developers.linode.com)'
 ---
 
-Version 4 of the Linode API, which is now in general release, is a major improvement over previous versions. Almost any task that can be done through the Linode Manager can now be performed through the API. This guide will show you how to adapt existing code for previous API versions in order to take advantage of these new features.
+Version 4 of the Linode API is now in general release and it is a major improvement over previous versions. Almost any task which can be done through the Linode Manager can now be performed through the API. This guide will show you how to adapt existing code for previous API versions in order to take advantage of these new features.
 
 To get started with the current version, please see the [API documentation](https://developers.linode.com) or our [Getting Started with the Linode API guide](/docs/platform/api/getting-started-with-the-linode-api/).
 
@@ -24,28 +24,28 @@ To get started with the current version, please see the [API documentation](http
 
     | Verb  |  Result |
     |---|---|
-    | GET  | used to retrieve information about a resource.  |
-    | POST | for collections, create a new resource of that type; also used to perform actions on action endpoints.  |
-    | PUT  | update a resource.  |
-    | DELETE  | remove a resource from your account.  |
+    | GET  | Used to retrieve information about a resource.  |
+    | POST | For collections or to create a new resource of that type; also used to perform actions on action endpoints.  |
+    | PUT  | Update a resource.  |
+    | DELETE  | Remove a resource from your account.  |
 
 * Previous versions of the API allowed users to submit request and method parameters via URL parameters; this is no longer supported. Instead, entity IDs are included in URL paths (e.g. `/linode/instances/1234567` is used to access a Linode with ID 1234567). Additional parameters are passed in the request body.
 
 * Authentication is now done through the `Authorization` header rather than through the query string.
 
-* Error codes also follow standard RESTful format (e.g. 2XX for success, 4XX for bad input, 5XX for server errors); the custom error codes from previous versions are no longer used or supported.
+* Error codes also follow standard RESTful format (e.g. 2XX for success, 4XX for bad input, 5XX for server errors). The custom error codes from previous versions are no longer used or supported.
 
 * Most common static resources can be specified with slugs (e.g. `linode/debian9` for a Debian 9 image) instead of numeric IDs.
 
 * Batch requests are no longer supported. Many of the actions that previously required multiple requests–such as creating and booting a new Linode or creating and attaching a Block Storage Volume–can now be achieved in a single request.
 
-* Modernized language is used throughout the API: "datacenters" are now "regions", "distributions" are now "images", and "plans" are now "types".
+* Modernized language is used throughout the API: "data centers" are now "regions", "distributions" are now "images", and "plans" are now "types".
 
-* A new version of the [Linode CLI](https://github.com/linode/linode-cli) is available to make it more convenient to interact with the API.
+* A new version of the [Linode CLI](https://github.com/linode/linode-cli) is available to make interacting with the API more convenient.
 
 ## Creating a Linode
 
-The process for creating a new Linode has been streamlined in the new API. Previously, setting up a Linode required multiple requests for creating the Linode, deploying an image, and booting. All of these steps have been combined, allowing you to get a running Linode with a single request:
+The process for creating a new Linode with the new API has been streamlined. Setting up a Linode previously required multiple requests for creating the Linode, deploying an image, and booting. All of these steps have been combined, allowing you to get a running Linode with a single request:
 
     curl -H "Authorization: Bearer $TOKEN" \
         -H "Content-type: application/json" \
@@ -68,7 +68,7 @@ This section presents examples of how to convert some of the most common tasks f
 
 #### List All Linodes
 
-To view all Linodes on your account:
+View all Linodes on your account:
 
 **API v3**
 
@@ -95,7 +95,7 @@ To view all Linodes on your account:
 
 ### NodeBalancers
 
-In the new API, `datacenter` has been replaced with `region`. Requests must also be converted to RESTful format, so for example creating a new NodeBalancer uses a POST request to the `/nodebalancers` endpoint:
+`Data center` has been replaced with `region` in the new API and requests must also be converted to RESTful format. For example, creating a new NodeBalancer uses a POST request to the `/nodebalancers` endpoint:
 
 **API v3**
 
@@ -140,9 +140,9 @@ This will list all public StackScripts, and if the request is authenticated will
 
 ### Volumes
 
-Previously, a Block Storage Volume could be resized through the `volume.update` method. This method no longer exists, and resizing is now done through the `/resize` endpoint.
+Block storage volumes previously were resized through the `volume.update` method. This method no longer exists, and resizing is now done through the `/resize` endpoint. Note: In both API versions, a block storage volume size can only be increased.
 
-To resize a Volume (note that in both API versions the size can only be increased):
+To resize a volume:
 
 **API v3**
 
@@ -159,7 +159,7 @@ To resize a Volume (note that in both API versions the size can only be increase
 
 ### DNS
 
-Working with DNS domains and records is similar in both versions. Resources are now Records, and are nested beneath the `/domains` endpoint.
+Working with DNS domains and records is similar in both versions. `Resources` are now `Records`, and are nested beneath the `/domains` endpoint.
 
 To create a new A record:
 
@@ -200,7 +200,7 @@ See the [API documentation](https://developers.linode.com) for information about
 
 ### Utility
 
-Version 3 of the API included utility methods for testing the API and retrieving general information about available plans, datacenters, and distributions. The debugging methods `api.spec` and `test.echo` are not included in version 4, and the `avail` information methods have been replaced by GET requests to the corresponding endpoints. Remember that "datacenters" are now referred to as "regions", "distributions" as "images", and "plans" as "types".
+Version 3 of the API included utility methods for testing the API and retrieving general information about available plans, data centers, and distributions. The debugging methods `api.spec` and `test.echo` are not included in version 4, and the `avail` information methods have been replaced by GET requests to the corresponding endpoints. Remember that "data centers" are now referred to as "regions", "distributions" as "images", and "plans" as "types".
 
 **API v3**
 
