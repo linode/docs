@@ -5,8 +5,8 @@ author:
 description: 'Learn how to get started with Go packages.'
 keywords: ["go","golang","packages","export"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-04
-modified: 2018-06-04
+published: 2018-06-06
+modified: 2018-06-06
 modified_by:
   name: Linode
 title: 'Getting Started with Go Packages'
@@ -45,7 +45,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello Gopher!")
+        fmt.Println("Hello Gopher!")
 }
 {{< /file >}}
 
@@ -88,8 +88,8 @@ Instead of using `import` on each line, replace the import statements with an im
 
 {{< highlight go >}}
 import (
-	"fmt"
-	"time"
+        "fmt"
+        "time"
 )
 {{< /highlight >}}
 
@@ -109,13 +109,13 @@ After making these two changes, the Hello Gopher program now looks like this:
 package main
 
 import (
-	"fmt"
-	"time"
+        "fmt"
+        "time"
 )
 
 func main() {
-	fmt.Println("Hello Gopher!")
-	fmt.Println(time.Now())
+        fmt.Println("Hello Gopher!")
+        fmt.Println(time.Now())
 }
 {{< /file >}}
 
@@ -136,13 +136,13 @@ Go provides the ability to alias imported packages. For example, in the Hello Go
 package main
 
 import (
-	f "fmt"
-	"time"
+        f "fmt"
+        "time"
 )
 
 func main() {
-	f.Println("Hello Gopher!")
-	f.Println(time.Now())
+        f.Println("Hello Gopher!")
+        f.Println(time.Now())
 }
 {{< /highlight >}}
 
@@ -170,11 +170,11 @@ import (
 )
 
 func PrintGreetings() {
-	fmt.Println("Hello Gopher!")
+        fmt.Println("Hello Gopher!")
 }
 
 func printGreetingsUnexported() {
-	fmt.Println("Hello Gopher! (from unexported)")
+        fmt.Println("Hello Gopher! (from unexported)")
 }
 {{< /file >}}
 
@@ -195,16 +195,16 @@ var magicNumber int
 
 // PrintMagicNumber : Prints the internal variable magicNumber
 func PrintMagicNumber() {
-	fmt.Println("The magic number is...", magicNumber)
+        fmt.Println("The magic number is...", magicNumber)
 }
 
 // PrintTheUnexportedGreetings : Prints the unexported greeting
 func PrintTheUnexportedGreetings() {
-	printGreetingsUnexported()
+        printGreetingsUnexported()
 }
 
 func init() {
-	magicNumber = 108
+        magicNumber = 108
 }
 {{< /file >}}
 
@@ -238,13 +238,13 @@ Create a new directory called `usegreetings` inside the `$GOPATH/src` directory 
 package main
 
 import (
-	"greetings"
+        "greetings"
 )
 
 func main() {
-	greetings.PrintGreetings()
-	greetings.PrintMagicNumber()
-	greetings.PrintTheUnexportedGreetings()
+        greetings.PrintGreetings()
+        greetings.PrintMagicNumber()
+        greetings.PrintTheUnexportedGreetings()
 }
 {{< /file >}}
 
