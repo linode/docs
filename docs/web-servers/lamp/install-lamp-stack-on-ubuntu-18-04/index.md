@@ -120,11 +120,11 @@ You can set up virtual hosts several ways, and the following steps outline the r
 
 1.  Create a copy of the default Apache configuration file for your site:
 
-        sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
+        sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com
 
-2.  Open the new `example.com.conf` configuration file in your text editor. Uncomment the `ServerName` option and update it with your domain. Enter the document root path and log directories as shown below, and add a `Directory` block before `<VirtualHost>`:
+2.  Open the new `example.com` configuration file in your text editor. Uncomment the `ServerName` option and update it with your domain. Enter the document root path and log directories as shown below, and add a `Directory` block before `<VirtualHost>`:
 
-    {{< file "/etc/apache2/sites-available/example.com.conf" apache >}}
+    {{< file "/etc/apache2/sites-available/example.com" apache >}}
 <Directory /var/www/html/example.com/public_html>
         Require all granted
 </Directory>
@@ -157,10 +157,10 @@ Make sure that you do not put a space after the comma between `public_html` and 
 
 4.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
 
-        sudo a2ensite example.com.conf
+        sudo a2ensite example.com
 
     {{< note >}}
-If you need to disable your website, run `a2dissite example.com.conf`.
+If you need to disable your website, run `a2dissite example.com`.
 {{< /note >}}
 
 5.  Disable the default virtual host to minimize security risks:

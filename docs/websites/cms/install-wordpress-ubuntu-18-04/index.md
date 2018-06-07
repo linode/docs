@@ -18,7 +18,7 @@ external_resources:
 
 ## What is WordPress?
 
-WordPress is a popular dynamic content management system (CMS) focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.
+WordPress is a popular dynamic content management system (CMS) focused on blogs. WordPress can be deployed on a LAMP or LEMP stack. It features an extensive plugin framework and theme system that allows site owners to use its simple, yet powerful publishing tools.
 
 <!-- ![Install WordPress on Ubuntu 18.04](wordpress-ubuntu-18-04-title.png "Install WordPress on Ubuntu 18.04") -->
 
@@ -35,24 +35,43 @@ WordPress is a popular dynamic content management system (CMS) focused on blogs.
 
 -   Configure a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) web stack.
 
+-   If you're running NGINX, edit the `location /` block of your configuration to set `index.php` as an index for the site:
+
+    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
+location / {
+    index index.php index.html index.htm;
+    try_files $uri $uri/ =404;
+}
+{{< /file >}}
+
 -   Make sure MySQL/MariaDB has a database set up for WordPress. If you do not have a WordPress database, create one:
 
-    1.  Log in to the MySQL command line as the root user:
+    1.  Log in to the MySQL command line as the root user. If use password authentication for the MySQL root user, use this command:
 
             mysql -u root -p
+        
+        If you use `unix_socket` or `auth_socket` authentication for the MySQL root user (which is the default on Ubuntu 18.04), use this command instead:
+
+            sudo mysql -u root
 
     2.  Create the WordPress database:
 
-            CREATE DATABASE wordpress;
+        {{< highlight sql >}}
+CREATE DATABASE wordpress;
+{{< /highlight >}}
 
     3.  Create a user and grant them privileges for the newly created `wordpress` database, replacing `wpuser` and `password` with the username and password you wish to use:
 
-            CREATE USER 'wpuser' IDENTIFIED BY 'password';
-            GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser';
+        {{< highlight sql >}}
+CREATE USER 'wpuser' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser';
+{{< /highlight >}}
 
     4.  Exit MySQL:
 
-            quit
+        {{< highlight sql >}}
+quit
+{{< /highlight >}}
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, visit our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -151,7 +170,7 @@ To configure permalink settings:
 
 Instruct Apache to allow individual sites to update the `.htaccess` file, by adding the following options to the *Directory* section in your virtual host configuration:
 
-{{< file "/etc/apache2/sites-available/example.com.conf" apache >}}
+{{< file "/etc/apache2/sites-available/example.com" apache >}}
 <Directory /var/www/html/example.com/public_html>
     Options Indexes FollowSymLinks
     AllowOverride All
@@ -159,9 +178,9 @@ Instruct Apache to allow individual sites to update the `.htaccess` file, by add
 </Directory>
 {{< /file >}}
 
-Restart Apache to enable the changes:
+Reload Apache to enable the changes:
 
-    sudo systemctl restart apache2
+    sudo systemctl reload apache2
 
 ### Configure WordPress to Allow Permalinks on NGINX
 
@@ -171,8 +190,12 @@ Direct nginx to check whether each permalink refers to an existing page. By defa
 location / {
     index index.php index.html index.htm;
     try_files $uri $uri/ /index.php?$args;
-
+}
 {{< /file >}}
+
+Reload NGINX to enable the changes:
+
+    sudo systemctl reload nginx
 
 ## Configure Maximum File Size Upload Setting to Allow Larger Files
 
