@@ -141,7 +141,7 @@ allow from 172.15.23
 
 ## Handle Redirects
 
-You can redirect traffic using .htaccess configuration. In the below example, you'll update the .htaccess file for the root directory of your website. You want to redirect a visitor to `http://example.com/test2/index.html if they try to visit `http://example.com/main.html`.
+You can redirect traffic using .htaccess configuration. In the below example, you'll update the .htaccess file for the root directory of your website to redirect a visitor to `http://example.com/test2/index.html` if they try to visit `http://example.com/main.html`.
 
 1.  Create a test html file to redirect to:
 
