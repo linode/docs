@@ -28,7 +28,7 @@ Cloud is divided up into three models: Infrastructure as a Service (IaaS), Platf
 
 **SaaS**
 
-Software as a Service is one or more applications that run on a cloud-based server. Netflix, Google Office, and iCloud are examples of Software as a Service. 
+Software as a Service is one or more applications that run on a cloud-based server. Netflix, Google Office, and iCloud are examples of Software as a Service.
 
 **PaaS**
 
