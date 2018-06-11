@@ -42,7 +42,7 @@ Throughout this guide, replace each instance of `testuser` with your custom user
 
 ## What is .htaccess
 
-.htaccess is a configuration file for the Apache web server. It's an extremely powerful tool, that can be used to modify the Apache configuration without needing to edit the Apache configuration files. The following sections describe how to create this configuration and use it to restrict directory listings and IP addresses, and to handle redirects.
+.htaccess is a configuration file for the Apache web server. It's an extremely powerful tool that can be used to modify the Apache configuration without needing to edit the Apache configuration files. The following sections describe how to create this configuration and use it to restrict directory listings and IP addresses, and to handle redirects.
 
 ## Enable .htaccess
 
@@ -141,7 +141,7 @@ allow from 172.15.23
 
 ## Handle Redirects
 
-You can redirect traffic using .htaccess configuration. In the below example, you'll update the .htaccess file for the root directory of your website. You want to redirect a visitor to `http://example.com/test2/index.html if they try to visit `http://example.com/main.html`.
+You can redirect traffic using .htaccess configuration. In the below example, you'll update the .htaccess file for the root directory of your website to redirect a visitor to `http://example.com/test2/index.html` if they try to visit `http://example.com/main.html`.
 
 1.  Create a test html file to redirect to:
 
