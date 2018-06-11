@@ -311,6 +311,10 @@ ssl-cert=/etc/mysql/ssl/client-cert.pem
 ssl-key=/etc/mysql/ssl/client-key.pem
 {{< /file >}}
 
+{{< note >}}
+If the webserver Linode uses MySQL you can find the configuration file in `/etc/mysql/mysql.conf.d/mysqld.cnf`. 
+{{< /note >}}
+
 3.  Log in to the remote database to test the login over SSL:
 
         mysql -u wpuser -h 192.0.2.100 -p
