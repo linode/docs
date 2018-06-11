@@ -17,11 +17,11 @@ title: 'Install a LEMP Stack on Ubuntu 18.04'
 
 ## What is a LEMP Stack?
 
-The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configuration for developing and hosting web applications. The four components of the stack are not tightly coupled, making it possible to substitute your preferred technologies. The LEMP stack is a common variant in which the Apache web server is replaced by NGINX.
+The [LEMP](https://lemp.io/) stack (Linux, NGINX, MariaDB, and PHP) is a popular server configuration for developing and hosting web applications. The four components of the stack are not tightly coupled, making it possible to substitute your preferred technologies. The LEMP stack is a common variant of a [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) server in which the Apache web server is replaced by NGINX.
 
 ## Before You Begin
 
-1.  You will need root access to the system, or a user account with `sudo` privilege.
+1.  You will need root access to the system or a user account with `sudo` privilege.
 2.  Set your system's [hostname](/docs/getting-started/#set-the-hostname).
 3.  Update your system:
 
@@ -59,7 +59,7 @@ MariaDB [(none)]> SELECT user,host,authentication_string,plugin FROM mysql.user;
 1 row in set (0.00 sec)
 {{< /highlight >}}
 
-    You can keep using the `unix_socket` plugin for the root user; this is considered a secure option for production systems, and it is needed for certain Ubuntu maintenance scripts to run normally. Further reading on this subject is available in `/usr/share/doc/mariadb-server-10.1/README.Debian.gz` on your filesystem.
+    You can keep using the `unix_socket` plugin for the root user. This is considered a secure option for production systems and is needed for certain Ubuntu maintenance scripts to run normally. Further reading on this subject is available in `/usr/share/doc/mariadb-server-10.1/README.Debian.gz` on your filesystem.
 
 3.  Create a test database and user with access permission. Replace `testdb` and `testuser` with appropriate names for your setup. Replace `password` with a strong password.
 
@@ -102,11 +102,11 @@ quit
 
         sudo mkdir -p /var/www/html/example.com/public_html
 
-2.  Delete the default site configuration provided with the package as an example:
+2.  Delete the example site configuration provided with the package:
 
         sudo rm -f /etc/nginx/sites-enabled/default
 
-3.  Website configuration files should be kept in `/etc/nginx/sites-available/`. Create a configuration file inside this directory with the following content. Replace *example.com* with your domain in both the file name and in the file's contents:
+3.  Website configuration files should be kept in `/etc/nginx/sites-available/`. Create a configuration file there with the following content. Replace *example.com* with your domain in both the file name and in the file's contents:
 
     {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 server {
