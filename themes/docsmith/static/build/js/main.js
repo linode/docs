@@ -178,7 +178,6 @@
             else {
               resultList.append(searchitem)
             }
-            console.log(shortguide);
         }
 
         deprecatedResults.forEach(function(result) {
