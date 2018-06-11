@@ -17,11 +17,11 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
+<!-- ![Install LAMP on Ubuntu 18.04](install-lamp-on-ubuntu-18-04.png "Install LAMP on Ubuntu 18.04") -->
+
 ## What is a LAMP Stack?
 
 A [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle) (Linux, Apache, MySQL, PHP) stack is a common free and open-source web stack used for hosting content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web applications.
-
-<!-- ![Install LAMP on Ubuntu 18.04](install-lamp-on-ubuntu-18-04.png "Install LAMP on Ubuntu 18.04") -->
 
 ## Before You Begin
 
@@ -71,7 +71,6 @@ If you prefer not to install the bundled packages via Tasksel, you can instead i
 
         sudo apt install php-curl php-json php-cgi
 
-
 ## Configuration
 
 ### Apache
@@ -84,7 +83,6 @@ If you prefer not to install the bundled packages via Tasksel, you can instead i
 KeepAlive On
 MaxKeepAliveRequests 50
 KeepAliveTimeout 5
-
 {{< /file >}}
 
     {{< note >}}
@@ -136,7 +134,6 @@ You can set up virtual hosts several ways, and the following steps outline the r
         CustomLog /var/www/html/example.com/logs/access.log combined
 
 </VirtualHost>
-
 {{< /file >}}
 
     {{< note >}}
@@ -179,8 +176,8 @@ If there are additional websites you wish to host on your Linode, repeat the abo
 
         sudo mysql -u root
 
-    The database will not prompt you for a password, as it is initially configured to use the `auth_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are  connecting from the Linux root user on localhost:
-    
+    The database will not prompt you for a password, as it is initially configured to use the `auth_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are connecting from the Linux root user on localhost:
+
     {{< highlight sql >}}
 mysql> SELECT user,host,authentication_string,plugin FROM mysql.user WHERE user='root';
 +------+-----------+-----------------------+-------------+

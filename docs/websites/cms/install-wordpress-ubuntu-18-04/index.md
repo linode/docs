@@ -59,7 +59,7 @@ If you do not already have a WordPress database, create one:
 1.  Log in to MySQL as the root user. If you use password authentication for the MySQL root user, use this command:
 
         mysql -u root -p
-        
+
     If you use `unix_socket` or `auth_socket` authentication for the MySQL root user (which is the default on Ubuntu 18.04), use this command instead:
 
         sudo mysql -u root
