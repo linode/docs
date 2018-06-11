@@ -19,21 +19,19 @@ external_resources:
 
 ## What is a LAMP Stack?
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free, and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps.
-
-This guide shows how to install and test a LAMP stack on Ubuntu 18.04 (LTS).
+A [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle) (Linux, Apache, MySQL, PHP) stack is a common free and open-source web stack used for hosting content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web applications.
 
 <!-- ![Install LAMP on Ubuntu 18.04](install-lamp-on-ubuntu-18-04.png "Install LAMP on Ubuntu 18.04") -->
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups/).
-
-Replace each instance of `example.com` in this guide with your site's domain name.
-{{< /note >}}
 
 ## Before You Begin
 
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides and that the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
+
+    {{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups/).
+
+Replace each instance of `example.com` in this guide with your site's domain name.
+{{< /note >}}
 
 2.  Update your system:
 
@@ -65,7 +63,7 @@ If you prefer not to install the bundled packages via Tasksel, you can instead i
 
         sudo apt install mysql-server
 
-3.  Install PHP, the PHP Extension and Application Repository, Apache support, and MySQL support:
+3.  Install PHP, PEAR (PHP Extension and Application Repository), Apache support, and MySQL support:
 
         sudo apt install php7.2 libapache2-mod-php7.2 php-mysql
 
@@ -90,7 +88,7 @@ KeepAliveTimeout 5
 {{< /file >}}
 
     {{< note >}}
-The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this number higher depending on your use-case. The `KeepAliveTimeout` setting controls how long the server waits (measured in seconds) for new requests from already connected clients. Setting this to 5 will avoid wasting RAM.
+The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. Fifty is a conservative amount; you may need to set this number higher depending on your use case. The `KeepAliveTimeout` setting controls how long the server waits (measured in seconds) for new requests from already connected clients. Setting this to 5 will avoid wasting RAM.
 {{< /note >}}
 
 2.  The default *multi-processing module* (MPM) is the **prefork** module. `mpm_prefork` is the module that is compatible with most systems. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
@@ -163,7 +161,7 @@ Make sure that you do not put a space after the comma between `public_html` and 
 If you need to disable your website, run `a2dissite example.com`.
 {{< /note >}}
 
-5.  Disable the default virtual host to minimize security risks:
+5.  Disable the default virtual host:
 
         sudo a2dissite 000-default.conf
 
@@ -181,7 +179,7 @@ If there are additional websites you wish to host on your Linode, repeat the abo
 
         sudo mysql -u root
 
-    The database will not prompt you for a password, as it is initially configured to use the `auth_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are connecting from the Linux root user on localhost:
+    The database will not prompt you for a password, as it is initially configured to use the `auth_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are  connecting from the Linux root user on localhost:
     
     {{< highlight sql >}}
 mysql> SELECT user,host,authentication_string,plugin FROM mysql.user WHERE user='root';

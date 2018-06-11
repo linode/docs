@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
-keywords: ["install WordPress", "WordPress on Linode", "how to configure WordPress", "Permalink"]
+keywords: ["WordPress", "Permalink"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-06-04
 modified_by:
@@ -18,7 +18,7 @@ external_resources:
 
 ## What is WordPress?
 
-WordPress is a popular dynamic content management system (CMS) focused on blogs. WordPress can be deployed on a LAMP or LEMP stack. It features an extensive plugin framework and theme system that allows site owners to use its simple, yet powerful publishing tools.
+[WordPress](https://wordpress.org/) is a popular dynamic content management system (CMS) focused on blogs. WordPress can be deployed on a LAMP or LEMP stack. It features an extensive plugin framework and theme system that allows site owners to use its simple, yet powerful publishing tools.
 
 <!-- ![Install WordPress on Ubuntu 18.04](wordpress-ubuntu-18-04-title.png "Install WordPress on Ubuntu 18.04") -->
 
@@ -44,35 +44,6 @@ location / {
 }
 {{< /file >}}
 
--   Make sure MySQL/MariaDB has a database set up for WordPress. If you do not have a WordPress database, create one:
-
-    1.  Log in to the MySQL command line as the root user. If use password authentication for the MySQL root user, use this command:
-
-            mysql -u root -p
-        
-        If you use `unix_socket` or `auth_socket` authentication for the MySQL root user (which is the default on Ubuntu 18.04), use this command instead:
-
-            sudo mysql -u root
-
-    2.  Create the WordPress database:
-
-        {{< highlight sql >}}
-CREATE DATABASE wordpress;
-{{< /highlight >}}
-
-    3.  Create a user and grant them privileges for the newly created `wordpress` database, replacing `wpuser` and `password` with the username and password you wish to use:
-
-        {{< highlight sql >}}
-CREATE USER 'wpuser' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser';
-{{< /highlight >}}
-
-    4.  Exit MySQL:
-
-        {{< highlight sql >}}
-quit
-{{< /highlight >}}
-
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, visit our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 
@@ -80,6 +51,37 @@ All configuration files should be edited with elevated privileges. Remember to i
 
 Replace each instance of `example.com` in this guide with your site's domain name or IP.
 {{< /note >}}
+
+## Set up MariaDB or MySQL for WordPress
+
+If you do not already have a WordPress database, create one:
+
+1.  Log in to MySQL as the root user. If you use password authentication for the MySQL root user, use this command:
+
+        mysql -u root -p
+        
+    If you use `unix_socket` or `auth_socket` authentication for the MySQL root user (which is the default on Ubuntu 18.04), use this command instead:
+
+        sudo mysql -u root
+
+2.  Create the WordPress database:
+
+    {{< highlight sql >}}
+CREATE DATABASE wordpress;
+{{< /highlight >}}
+
+3.  Create a user and grant them privileges for the newly created `wordpress` database, replacing `wpuser` and `password` with the username and password you wish to use:
+
+    {{< highlight sql >}}
+CREATE USER 'wpuser' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser';
+{{< /highlight >}}
+
+4.  Exit MySQL:
+
+    {{< highlight sql >}}
+quit
+{{< /highlight >}}
 
 ## Install WordPress
 
@@ -112,7 +114,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 ## Configure WordPress
 
-1.  Visit your domain in a web browser and follow the steps shown onscreen. Select your preferred language, review the information page and click the **Let's go!** button. Enter the database credentials that were set when you installed MySQL:
+1.  Visit your domain in a web browser and follow the steps shown onscreen. Select your preferred language, review the information page and click **Let's go!**. Enter the database credentials that were set when you installed MySQL:
 
     ![WordPress Installer](wordpress-setup_small.png)
 
@@ -139,14 +141,14 @@ define('FS_METHOD', 'direct');
 
         sudo a2enmod status
 
-    If it isn't already enabled, enable a2enmod and restart Apache:
+    If `mod_rewrite` isn't already enabled, enable it and restart Apache:
 
         sudo a2enmod rewrite
         sudo systemctl restart apache2
 
 5.  To make changes to your site in the future, you can access the Dashboard of your WordPress site from the web interface by adding `/wp-admin` to your site's URL: `example.com/wp-admin`.
 
-Congratulations! You have now successfully installed WordPress.
+    Congratulations! You have now successfully installed WordPress.
 
 ## Create WordPress Permalinks (Optional)
 
@@ -168,9 +170,11 @@ To configure permalink settings:
 
 ### Configure WordPress to Allow Permalinks on Apache
 
-Instruct Apache to allow individual sites to update the `.htaccess` file, by adding the following options to the *Directory* section in your virtual host configuration:
+Instruct Apache to allow individual sites to update the `.htaccess` file.
 
-{{< file "/etc/apache2/sites-available/example.com" apache >}}
+1.  Add the following options to the *Directory* section in your virtual host configuration:
+
+    {{< file "/etc/apache2/sites-available/example.com" apache >}}
 <Directory /var/www/html/example.com/public_html>
     Options Indexes FollowSymLinks
     AllowOverride All
@@ -178,24 +182,26 @@ Instruct Apache to allow individual sites to update the `.htaccess` file, by add
 </Directory>
 {{< /file >}}
 
-Reload Apache to enable the changes:
+2.  Reload Apache to enable the changes:
 
-    sudo systemctl reload apache2
+        sudo systemctl reload apache2
 
 ### Configure WordPress to Allow Permalinks on NGINX
 
-Direct nginx to check whether each permalink refers to an existing page. By default, nginx assumes that it doesn't, and returns a server-side 404. Update the following lines in the `location / {` block in your virtual host configuration:
+Direct NGINX to check whether each permalink refers to an existing page. By default, NGINX assumes that it doesn't, and returns a server-side 404.
 
-{{< file "/etc/nginx/sites-available/example.com" nginx >}}
+1.  Update the following lines in the `location / {` block in your virtual host configuration:
+
+    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location / {
     index index.php index.html index.htm;
     try_files $uri $uri/ /index.php?$args;
 }
 {{< /file >}}
 
-Reload NGINX to enable the changes:
+2.  Reload NGINX to enable the changes:
 
-    sudo systemctl reload nginx
+        sudo systemctl reload nginx
 
 ## Configure Maximum File Size Upload Setting to Allow Larger Files
 
