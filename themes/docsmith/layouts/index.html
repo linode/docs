@@ -21,7 +21,6 @@
 
     </div>
   </div>
-  {{ partial "spectre_alert" . }}
   {{ $tiles := where .Site.Pages "Params.show_on_frontpage" true }}
   {{ range $i, $section := $tiles }}
   {{ if mod (add $i 1) 3 | eq 1 }}<div class="row-tiles">{{ end }}
