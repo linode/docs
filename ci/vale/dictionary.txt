@@ -243,6 +243,7 @@ digium
 dircaps
 directadmin
 dired
+direnv
 disqus
 distro
 distros
