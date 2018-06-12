@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
-og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
+description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
+og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-06-04
@@ -75,7 +75,7 @@ GRANT ALL PRIVILEGES ON testdb.* TO 'testuser';
 quit
 {{< /highlight >}}
 
-4.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
 
         sudo mysql_secure_installation
 
@@ -106,7 +106,7 @@ quit
 
         sudo rm -f /etc/nginx/sites-enabled/default
 
-3.  Website configuration files should be kept in `/etc/nginx/sites-available/`. Create a configuration file inside this directory with the following content. Replace *example.com* with your domain in both the file name and in the file's contents:
+3.  Website configuration files should be kept in `/etc/nginx/sites-available/`. Create a configuration file inside this directory with the example content. Replace *example.com* with your domain in both the file name and in the file's contents:
 
     {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 server {
@@ -133,7 +133,7 @@ server {
 
     -  NGINX is listening on port `80` for incoming connections to `example.com` or `www.example.com`.
 
-    -  The site is served out of `/var/www/html/example.com/public_html` and its index page (`index.html`) is a simple `.html` file. If your index page will use PHP like WordPress does, substitute `index.php` for `index.html`.
+    -  The site is served out of `/var/www/html/example.com/public_html` and its index page (`index.html`) is a simple `.html` file. If your index page will use PHP like WordPress does, substitute `index.html` for `index.php`.
 
     -  `try_files` tells NGINX to verify that a requested file or directory [actually exists](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files) in the site's root filesystem before further processing the request. If it does not, a `404` is returned.
 
@@ -164,7 +164,7 @@ server {
 
         sudo nginx -t
 
-4.  Create a test page to verify NGINX can render PHP and connect to the MySQL database. Replace the `"testuser"` and `"password"` fields with the MySQL credentials you created above.
+4.  Create a test page to verify NGINX can render PHP and connect to the MariaDB database. Replace the `"testuser"` and `"password"` fields with the MariaDB credentials you created above.
 
     {{< file "/var/www/html/example.com/public_html/test.php" php >}}
 <html>
