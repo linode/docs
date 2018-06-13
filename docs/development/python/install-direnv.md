@@ -1,7 +1,6 @@
 ---
 author:
   name: Leslie Salazar
-  email: sfoo@linode.com
 description: 'Shortguide for installing direnv'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["python", "bash", "direnv", "automation"]
