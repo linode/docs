@@ -182,7 +182,6 @@ If there are additional websites you wish to host on your Linode, repeat the abo
         sudo mysql -u root
 
     The database will not prompt you for a password, as it is initially configured to use the `auth_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are connecting from the Linux root user on localhost:
-    
     {{< highlight sql >}}
 mysql> SELECT user,host,authentication_string,plugin FROM mysql.user WHERE user='root';
 +------+-----------+-----------------------+-------------+
