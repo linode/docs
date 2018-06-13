@@ -49,7 +49,7 @@ location / {
     1.  Log in to the MySQL command line as the root user. If use password authentication for the MySQL root user, use this command:
 
             mysql -u root -p
-        
+
         If you use `unix_socket` or `auth_socket` authentication for the MySQL root user (which is the default on Ubuntu 18.04), use this command instead:
 
             sudo mysql -u root
