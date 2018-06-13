@@ -44,7 +44,7 @@ Local transfer options are Bluetooth, USB or some other external media. macOS ca
 There are two main options for an Android OpenVPN client. The first is *OpenVPN Connect* on [Google Play](https://play.google.com/store/apps/details?id=net.openvpn.openvpn), the official client from OpenVPN Technologies, Inc., the parent company behind OpenVPN. The second option is *OpenVPN for Android* on both [Google Play](https://play.google.com/store/apps/details?id=de.blinkt.openvpn) and [F-droid](https://f-droid.org/packages/de.blinkt.openvpn/). The two clients are similar but OpenVPN for Android is open source, more feature-rich, and usually updated more often so we'll use it for this guide.
 
 {{< note >}}
-If you have a a Windows computer or a Linux computer with the package `gvfs-backends` installed, you can connect the device by USB and it will be visible in the system's file manager as an external USB device. If you have macOS, you need to first install [Android File Transfer](https://android.com/filetransfer/).
+If you have a Windows computer or a Linux computer with the package `gvfs-backends` installed, you can connect the device by USB and it will be visible in the system's file manager as an external USB device. If you have macOS, you need to first install [Android File Transfer](https://android.com/filetransfer/).
 {{< /note >}}
 
 1.  Ensure that your Android device is fully updated, then install OpenVPN for Android from whichever source you prefer.
