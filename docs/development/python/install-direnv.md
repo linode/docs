@@ -13,7 +13,7 @@ shortguide: true
 show_on_rss_feed: false
 ---
 <!-- Start direnv shortguide. -->
-Direnv modifies the shell environment depending on your current directory.  This allows users to isolate project-specific environment variables and avoid depending on a single shell `.profile` file.  When direnv detects an `.envrc` file within the current directory it will load the file's declared environment variables, execute any shell commands and scripts.
+Direnv modifies the shell environment depending on your current directory. This allows users to isolate project-specific environment variables and avoid depending on a single shell `.profile` file. When direnv detects an `.envrc` file within the current directory it will load the file's declared environment variables, execute any shell commands and scripts.
 
 ### Install
 
@@ -27,7 +27,7 @@ Direnv modifies the shell environment depending on your current directory.  This
         direnv help
 
 ### Configure
-1. Direnv will need to hook directly into your shell to execute the file `.envrc `.  This will allow direnv to automatically execute when your shell changes directory.
+1. Direnv will need to hook directly into your shell to execute the file `.envrc `. This will allow direnv to automatically execute when your shell changes directory.
 
     **BASH**
 
