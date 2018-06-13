@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: Julia is a dynamically typed, functional programming language intended to match the readable syntax and ease of use of Python without sacrificing the performance of a traditional compiled language. This guide introduces the main features, benefits, and limitations of Julia and includes a brief section on installation and basic use.
-keywords: ['data science','julia','python']
+keywords: ['data science','julia','python','why learn Julia']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-11
 modified: 2018-06-11
@@ -18,7 +18,7 @@ external_resources:
 
 ## What is Julia?
 
-Julia is a functional programming language first released to the public in 2012. Its creators wanted to combine the readability and simplicity of Python with the speed of statically-typed, compiled languages like C.
+Julia is a functional programming language released in 2012. Its creators wanted to combine the readability and simplicity of Python with the speed of statically-typed, compiled languages like C.
 
 ## Who is Julia For?
 
@@ -28,17 +28,13 @@ Julia is popular among data scientists and mathematicians. It shares features (s
 
 Julia is a relatively new language and is still under development. This means there are more bugs and fewer native packages than you would expect from a more mature language. Established languages like Python and Java also have much larger communities, making it easier to find tutorials, third-party packages, and answers to your questions. On the other hand, Julia's speed, ease of use, and suitability for big-data applications (through its high-level support for parallelism and cloud computing) have helped it to grow quickly and it continues to attract new users. Julia developers are already working at companies including Google, NASA, and Intel, and major projects like RStudio have announced plans to add support for Julia.
 
-## Julia vs. Python <!--- This entire section can be removed depending on copy editor's judgment -->
-
-Julia is similar to Python in many ways (and can even use Python modules with the `PyCall` package). However, there are syntactic and fundamental differences that Python developers will have to adjust to when converting code to Julia.
-
 ### Compiling
 
-In order to achieve faster performance than interpreted languages like (unoptimized) Python, Julia is a compiled language. However, unlike traditional compiled languages, Julia is not strictly statically typed. It uses JIT (Just In Time) compilation to infer the type of each variable in your code and optimize accordingly. The result is a dynamically-typed language that can be run from the command line like Python, but that can achieve comparable speeds to compiled languages like C and Go.
+Julia is a compiled language, that's one of the reasons that it performs faster than interpreted languages. However, unlike traditional compiled languages, Julia is not strictly statically typed. It uses JIT (Just In Time) compilation to infer the type of each individual variable in your code. The result is a dynamically-typed language that can be run from the command line like Python, but that can achieve comparable speeds to compiled languages like C and Go.
 
 ### Parallelism
 
-It is possible to run code in parallel in Python in order to take advantage of all of the CPU cores on your system. However, this requires importing modules and involves some quirks that can make concurrency difficult to work with. In contrast, Julia has top-level support for parallelism and a simple, intuitive syntax for declaring that a function should be run concurrently:
+It is possible to run code in parallel in Python in order to take advantage of all of the CPU cores on your system. This requires importing modules and involves some quirks that can make concurrency difficult to work with. In contrast, Julia has top-level support for parallelism and a simple, intuitive syntax for declaring that a function should be run concurrently:
 
     nheads = @parallel (+) for i = 1:100000000
       rand(Bool)
@@ -60,7 +56,7 @@ Python is a dynamically-typed language, meaning that you declare a variable with
 
 One small but significant difference between Julia and Python (along with most other modern programming languages) is that arrays in Julia are 1-indexed, meaning that you access the first element of an array with `this_array[1]` rather than `this_array[0]`. This choice was made to make Julia more intuitive for users of Mathematica and other technical computing tools, but can be a source of frustration (and errors) for users used to zero-indexed languages.
 
-## How Can I Get Started?
+## How Can I Get Started with Julia?
 
 ### Install Julia
 
