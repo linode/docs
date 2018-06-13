@@ -362,6 +362,7 @@ firewalld
 firstsite
 flatpress
 flyspray
+fortran
 fpm
 fragging
 framesets
@@ -565,6 +566,7 @@ jpg
 jre
 js
 json
+julialang
 jumpbox
 jupyter
 kakfa
@@ -676,6 +678,7 @@ mapreduce
 mariadb
 maskname
 masterdb
+mathematica
 mathjax
 maxconn
 maxdepth
@@ -1251,6 +1254,7 @@ ufw
 ui
 uidl
 un
+unarchive
 unban
 unbans
 unbilled
