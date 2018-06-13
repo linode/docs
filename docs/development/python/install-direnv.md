@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 ---
-=======
-    ---
->>>>>>> 13c0edca... Direnv shortguide
 author:
   name: Leslie Salazar
   email: sfoo@linode.com
 description: 'Shortguide for installing direnv'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-<<<<<<< HEAD
-keywords: ["python", "bash", "direnv"]
-=======
 keywords: ["python", "bash", "direnv", "automation"]
->>>>>>> 13c0edca... Direnv shortguide
 modified: 2018-11-06
 modified_by:
   name: Leslie Salazar
