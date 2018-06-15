@@ -5,7 +5,6 @@ author:
   email: docs@linode.com
 description: 'Thank you page after submission'
 keywords: []
-slug: 'contribute/thankyou/'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-05
 modified: 2017-12-05
