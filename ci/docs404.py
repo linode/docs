@@ -68,15 +68,6 @@ if __name__ == "__main__":
         print('\n\nHugo server not running on port 1313')
         sys.exit(1)
 
-#   Manually supply edge case urls
-    edge_cases = ['http://localhost:1313/docs/contribute/thankyou', 'http://localhost:1313/docs/doesnotexist']
-
-    for edge in edge_cases:
-        r =  requests.get(edge)
-        if r.status_code == 404:
-            print(edge, "returend a 404")
-#    end manual edge case
-
     if sum([1 for line in f]) != 0:
         print('404 response in HTML - see logs')
         sys.exit(1)
