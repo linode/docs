@@ -13,9 +13,7 @@ published: 2018-06-12
 title: What is Cloud Computing?
 ---
 
-Cloud computing provides access to powerful, scalable, and versatile computer resources over the internet for a variety of purposes. Common uses are hosting websites, streaming media, providing email services, and data storage and analysis. Because cloud computing infrastructre is shared, computing power is available for a much lower cost than owning and maintaing these systems independently.
-
-You can acquire cloud computing capabilities from a cloud hosting company that offers different plans. These plans can be expanded or reduced to meet a variety of user requirements. The cost and time spent maintaining the hardware and virtualization software are offloaded to the cloud provider - you only need to worry about your application.
+Cloud computing provides access to powerful, scalable, and versatile computer resources over the internet for a variety of purposes. Common uses are hosting websites, streaming media, providing email services, and data storage and analysis. Because cloud computing infrastructure is shared, computing power is available for a much lower cost than owning and maintaining these systems independently.
 
 ## Why Use Cloud Computing?
 

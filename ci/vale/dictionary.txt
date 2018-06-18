@@ -1046,6 +1046,7 @@ s3cr37
 s3cret
 saas
 sakila
+salesforce
 sasl
 sasl2
 saslauth
@@ -1237,6 +1238,7 @@ tomcat6
 traceroute
 trackbar
 transcoder
+trello
 truststore
 tt
 ttl
