@@ -14,7 +14,7 @@ def test_urls(edge_cases):
         print("No 404s were found from manual test")
 
 def main():
-    edge_cases = ['http://localhost:1313/docs/contribute/thankyou', 'http://localhost:1313/docs/somefile']
+    edge_cases = ['http://localhost:1313/docs/contribute/thankyou']
     test_urls(edge_cases)
 
 main()
