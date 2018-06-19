@@ -3,13 +3,13 @@ author:
   name: Nathan Melehan
   email: docs@linode.com
 description: 'This guide shows how to analyze performance bottlenecks for a WordPress website and describes optimization best practices for WordPress'
-keywords: ["htaccess", " apache"]
+keywords: ["htaccess", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-15
-modified: 2018-06-15
+published: 2018-06-19
+modified: 2018-06-19
 modified_by:
   name: Linode
-title: 'How to Speed Up a Wordpress Website'
+title: 'How to Speed Up a WordPress Website'
 external_resources:
 - '[Finding Bottlenecks in WordPress Code](https://deliciousbrains.com/finding-bottlenecks-wordpress-code/)'
 - '[Profiling WordPress Performance](https://pressjitsu.com/blog/profiling-wordpress-performance/)'
@@ -45,7 +45,7 @@ These two Compose files are decoupled. This decoupling allows you to separately 
 
 You can read this guide without installing the environment, but working through the steps presented may help you better understand the process. If you would prefer to not perform this work, skip to the [Profiling the Application](#profiling-the-application) section.
 
-To install the test environment, you will need a Linode which does not have any running processes already bound to ports 80, 8080, 3306, and 27017.
+To install the test environment, you will need a Linode which does not have any running processes already bound to ports `80`, `8080`, `3306`, and `27017`.
 
 ### Install Docker
 
@@ -103,7 +103,9 @@ Run these commands from your Linode:
 
         docker-compose up -d
 
-3.  Verify that you can view the visualization app by loading `http://<your-Linode-IP-address>:8080` in a web browser.
+3.  Verify that you can view the visualization app by loading `http://<your-Linode-IP-address>:8080` in a web browser:
+
+    ![Visualization app started](/docs/websites/cms/how-to-speed-up-a-wordpress-website/php-profile-visualization-started.png "Visualization app started")
 
 ## Profiling the Application
 
@@ -115,26 +117,29 @@ The profiling data is collected by a tool called [XHProf](http://pecl.php.net/pa
 
 Run this `curl` command from your home computer to test the site speed prior to troubleshooting:
 
-    time curl http://172.104.27.185/ -s 1>/dev/null
-    12.79 real
-    0.01 user
-    0.02 sys
+    time curl http://<your-Linode-IP-address> -s 1>/dev/null
+
+{{< output >}}
+12.79 real
+0.01 user
+0.02 sys
+{{< /output >}}
 
 The time displayed can vary between requests. If you do not have `curl` installed on your computer, you can use an in-browser speed test like [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/).
 
 ### View the Profiling Data
 
-1.  Visit XHGUI in your browser on port 8080: `http://<your-Linode-IP-address>:8080`. A page which lists entries for your recent requests should appear:
+1.  Visit XHGUI in your browser on port `8080`: `http://<your-Linode-IP-address>:8080`. A page which lists entries for your recent requests should appear:
 
     ![XHGUI Recent Requests View](recent-runs.png "XHGUI Recent Requests View")
 
-2.  Click on the timestamp link for most recent `GET` request on `/`. A page which shows detailed information for that request will appear, including bar charts of the highest CPU usage (referred to as Wall Time) and memory usage ordered by function. This page also has links to other useful visualizations for the request, like the Flamegraph.
+2.  Click the timestamp link for the most recent `GET` request on `/`. A page which shows detailed information for that request will appear, including bar charts of the highest CPU usage (referred to as Wall Time) and memory usage ordered by function. This page also has links to other useful visualizations for the request, like the Flamegraph:
 
     ![XHGUI Request Detail View](request-profile-detail.png "XHGUI Request Detail View")
 
 ### Investigate CPU Usage: Pi_Widget::calculatePi
 
-Under the bar chart for CPU usage, the first item listed is labelled `Pi_Widget::calculatePi`. This function had a wall time of 5,693,944 µs, or about 5.7 seconds. To find the code responsible for this function call, execute these commands from the Linode:
+Under the bar chart for CPU usage, the first item listed is labelled `Pi_Widget::calculatePi`. This function had a wall time of `5,693,944 µs`, or about 5.7 seconds. To find the code responsible for this function call, execute these commands from the Linode:
 
 1.  Open a Bash shell on the WordPress Docker container:
 
@@ -143,8 +148,11 @@ Under the bar chart for CPU usage, the first item listed is labelled `Pi_Widget:
 2.  From the document root of the container, search for the function name:
 
         root@localhost:/var/www/html# grep -R calculatePi .
-        ./wp-content/plugins/pi_widget/pi_widget.php:		public function calculatePi() {
-        ./wp-content/plugins/pi_widget/pi_widget.php:			echo $this->calculatePi();
+
+    {{< output >}}
+./wp-content/plugins/pi_widget/pi_widget.php:		public function calculatePi() {
+./wp-content/plugins/pi_widget/pi_widget.php:			echo $this->calculatePi();
+{{< /output >}}
 
     We can see that a plugin (named Pi Widget) is responsible for this call, though we may have guessed that from the XHGUI view. Further examination of the plugin shows that it calculates a value for Pi using 100 billion iterations of an approximation algorithm.
 
@@ -152,16 +160,19 @@ Under the bar chart for CPU usage, the first item listed is labelled `Pi_Widget:
 
 4.  Re-test the site response time from your home computer:
 
-        time curl http://172.104.27.185/ -s 1>/dev/null
-        5.96 real
-        0.01 user
-        0.02 sys
+        time curl http://<your-Linode-IP-address> -s 1>/dev/null
+
+    {{< output >}}
+5.96 real
+0.01 user
+0.02 sys
+{{< /output >}}
 
 ### Investigate CPU Usage: mysqli_query
 
-The next highest CPU usage function call displayed by XHGUI was labelled `mysqli_query`. This is the PHP-MySQL interface that WordPress uses to run database queries. 
+The next highest CPU usage function call displayed by XHGUI was labelled `mysqli_query`. This is the PHP-MySQL interface that WordPress uses to run database queries.
 
-This name is too generic for us to search the WordPress code base for the cause of the query. To continue troubleshooting: 
+This name is too generic for us to search the WordPress code base for the cause of the query. To continue troubleshooting:
 
 1.  Install the *Query Monitor* WordPress plugin, which will show the individual queries that WordPress runs. You can find this by visiting the Plugin page of the WordPress admin site, clicking the `Add New` button at the top, and then searching for `Query Monitor`. Be sure to activate the plugin once you install it.
 
@@ -174,35 +185,47 @@ This name is too generic for us to search the WordPress code base for the cause 
 3.  The Queries by Component section of Query Monitor will sometimes show the name of a plugin that was responsible for the query. That is not the case for this query, so you will search the code base for where it appears. Run this command from the Bash shell you already opened on the WordPress Docker container:
 
         root@localhost:/var/www/html# grep -R 'SELECT SLEEP' .
-        ./wp-content/plugins/slow_query_test/slow_query_test.php:      $wpdb->query($wpdb->prepare ( "SELECT SLEEP(%d)", array(5) ));
+
+    {{< output >}}
+./wp-content/plugins/slow_query_test/slow_query_test.php:      $wpdb->query($wpdb->prepare ( "SELECT SLEEP(%d)", array(5) ));
+{{< /output >}}
 
 4.  This reveals that the Slow Query Test plugin is responsible. Deactivate this plugin from the WordPress admin site.
 
 5.  Re-test the site response time from your home computer:
 
-        time curl http://172.104.27.185/ -s 1>/dev/null
-        0.96 real
-        0.00 user
-        0.02 sys
+        time curl http://<your-Linode-IP-address> -s 1>/dev/null
+
+    {{< output >}}
+0.96 real
+0.00 user
+0.02 sys
+{{< /output >}}
 
 ### Investigate Memory Usage: openssl_random_pseudo_bytes
 
 XHGUI showed that a function named openssl_random_pseudo_bytes was responsible for allocating 30MB of memory. Searching the code base reveals that the High Memory Test plugin is responsible:
 
     root@localhost:/var/www/html# grep -R openssl_random_pseudo_bytes .
-    ./wp-content/plugins/high_memory_test/high_memory_test.php:		$data = openssl_random_pseudo_bytes(1000000);
-    ./wp-includes/random_compat/random_bytes_openssl.php: * Since openssl_random_pseudo_bytes() uses openssl's
-    ./wp-includes/random_compat/random_bytes_openssl.php:    $buf = openssl_random_pseudo_bytes($bytes, $secure);
-    ./wp-includes/random_compat/random_bytes_com_dotnet.php: * openssl_random_pseudo_bytes() available, so let's use
-    ./wp-includes/random_compat/random.php:         *   5. openssl_random_pseudo_bytes() (absolute last resort)
-    ./wp-includes/random_compat/random.php:         * openssl_random_pseudo_bytes()
 
-Other files in the wp-includes folder call this function, but they are part of the WordPress core. Deactivate the High Memory Test plugin and then re-test speed:
+{{< output >}}
+./wp-content/plugins/high_memory_test/high_memory_test.php:		$data = openssl_random_pseudo_bytes(1000000);
+./wp-includes/random_compat/random_bytes_openssl.php: * Since openssl_random_pseudo_bytes() uses openssl's
+./wp-includes/random_compat/random_bytes_openssl.php:    $buf = openssl_random_pseudo_bytes($bytes, $secure);
+./wp-includes/random_compat/random_bytes_com_dotnet.php: * openssl_random_pseudo_bytes() available, so let's use
+./wp-includes/random_compat/random.php:         *   5. openssl_random_pseudo_bytes() (absolute last resort)
+./wp-includes/random_compat/random.php:         * openssl_random_pseudo_bytes()
+{{< /output >}}
 
-    time curl http://172.104.27.185/ -s 1>/dev/null
-    0.20 real
-    0.00 user
-    0.02 sys
+Other files in the `wp-includes` folder call this function, but they are part of the WordPress core. Deactivate the High Memory Test plugin and then re-test speed:
+
+    time curl http://<your-Linode-IP-address> -s 1>/dev/null
+
+{{< output >}}
+0.20 real
+0.00 user
+0.02 sys
+{{< /output >}}
 
 ### Investigate Slow Loading Time: Render-Blocking Javascript
 
@@ -225,7 +248,10 @@ The load time reported by curl is now low, but if you load the page in a web bro
 6.  In the Bash shell on your WordPress Docker container, search for this code:
 
         root@localhost:/var/www/html# grep -R 'function sleep( timeInMilliseconds ){' .
-        ./wp-content/plugins/blocking_js_test/blocking_js_test.php:		function sleep( timeInMilliseconds ){
+
+    {{< output >}}
+./wp-content/plugins/blocking_js_test/blocking_js_test.php:		function sleep( timeInMilliseconds ){
+{{< /output >}}
 
 7.  The Blocking JS Test plugin is responsible for this code. Deactivate this plugin. The page should now load in less than a second in the browser.
 
@@ -237,13 +263,13 @@ Slow code can also be found in WordPress themes, and so if you can't find bottle
 
 ## Best Practices
 
-In addition to identifying bottlenecks in your code, you can implement general best practices for speeding up your site. Many of these practices can be easily set up by a publicly-available plugins for WordPress
+In addition to identifying bottlenecks in your code, you can implement general best practices for speeding up your site. Many of these practices can be easily set up by publicly-available WordPress plugins.
 
 ### Asset Optimization
 
-High-resolution images can slow down the speed of a site. Down-size the resolution of your images and optimize them for the web. Plugins like [WP Smush](https://wordpress.org/plugins/wp-smushit/) can handle this task.
+High-resolution images can slow down the speed of a site. Reduce the resolution of your images and optimize them for the web. Plugins like [WP Smush](https://wordpress.org/plugins/wp-smushit/) can handle this task.
 
-Minify CSS and Javascripts that are loaded by your site. Minification is the process of compressing code so that it is harder for a human to read, but faster for a computer to process. Scripts are often distributed in minified and non-minified versions, so you can look up the minified style for each of your scripts and upload them to your server. Some WordPress plugins can also automatically minify your scripts.
+Minify CSS and Javascript loaded by your site. Minification is the process of compressing code so that it is harder for a human to read, but faster for a computer to process. Scripts are often distributed in minified and non-minified versions, so you can look up the minified style for each of your scripts and upload them to your server. Some WordPress plugins can also automatically minify your scripts.
 
 ### Browser Caching
 
@@ -265,9 +291,9 @@ When you visit a WordPress page, the page is dynamically generated on each reque
 
 After you fix code performance bottlenecks and install other best practice measures, you can fine-tune the basic settings for your web server and database. This involves estimating the average memory and CPU usage of a request, comparing that with the total level of resources for your server, and then adjusting your software configuration to make the most of those resources. Linode has guides on optimizing Apache and MySQL:
 
--   [Tuning Your Apache Server](https://www.linode.com/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/)
+-   [Tuning Your Apache Server](/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/)
 
--   [How to Optimize MySQL Performance Using MySQLTuner](https://www.linode.com/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/)
+-   [How to Optimize MySQL Performance Using MySQLTuner](/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/)
 
 ## Optional: Profile Your Own WordPress Site
 
@@ -275,6 +301,8 @@ You can reuse the XHGUI Docker Compose file provided by this guide to profile yo
 
 1.  Run the provided XHGUI Docker Compose file to store and view profiling data from your WordPress site
 2.  Insert the XHProf code into your WordPress app so that the data is actually generated on each request
+
+Perform the steps in the Setting Up the Test Environment section, and stop after you [Download the Test Environment](#download-the-test-environment).
 
 ### Run the XHGUI app
 
@@ -288,7 +316,7 @@ You can reuse the XHGUI Docker Compose file provided by this guide to profile yo
 
 ### Insert the XHProf code into your WordPress site
 
-These instructions will only succeed if you are running PHP 7. For earlier versions of PHP, you will need to replace Tideways with the original distribution of XHProf.
+These instructions will only succeed if you are running PHP 7 and have `unzip` and the `php-dev` packages installed. For earlier versions of PHP, you will need to replace Tideways with the original distribution of XHProf.
 
 These instructions walk through downloading the source code for XHGUI. This may seem strange, as the Docker Compose file is already responsible for running the XHGUI app. The reason the code is downloaded again is because XHGUI also provides helper tools for injecting the XHProf/Tideways profiling code into your app. Without these helper functions, you would need to manually add calls to XHProf/Tideways to your WordPress code, and also set up the connection to the Mongo database running inside Docker Compose.
 
@@ -315,16 +343,20 @@ These instructions walk through downloading the source code for XHGUI. This may 
         wget -O xhgui.zip https://github.com/perftools/xhgui/archive/master.zip
         unzip xhgui.zip
         sudo cp -r xhgui-master /var/www/html/xhgui
-        cd /var/www/html/xhgui
-        chown www-data:www-data -R .
+        cd /var/www/html/xhgui/xhgui-master
+        sudo chown www-data:www-data -R .
         sudo php install.php
         sudo cp config/config.default.php config/config.php
 
-6.  Install XHGUI's helper injection function. For Apache servers, insert this line into your Virtual Host--remember to substitue in your document root:
+6.  Install XHGUI's helper injection function.
+
+    **For Apache servers,** insert this line into your Virtual Host--remember to substitute in your document root--then reload Apache with `sudo systemctl reload apache2`:
 
         php_admin_value auto_prepend_file "/var/www/html/xhgui/external/header.php"
 
-    This line will call XHGUI's header.php at the beginning of every PHP file that is served. For NGINX, add this line to your server block:
+    This line will call XHGUI's `header.php` at the beginning of every PHP file that is served.
+
+    **For NGINX,** add this line to your server block, then reload the configuration file with `sudo nginx -s reload`:
 
         fastcgi_param PHP_VALUE "auto_prepend_file=/var/www/html/xhgui/external/header.php";
 
@@ -333,11 +365,11 @@ These instructions walk through downloading the source code for XHGUI. This may 
         'profiler.enable' => function() {
             return rand(1, 100) === 42;
         }
-    
+
     If you want to profile every request, change this to always return true:
 
         'profiler.enable' => function() {
             return true;
         }
 
-8.  Your XHGUI app should now be collecting profiling data for requests on your site. The XHGUI app can be reached on port 8080 on your IP address.
+8.  Your XHGUI app should now be collecting profiling data for requests on your site. The XHGUI app can be reached on port `8080` on your IP address.
