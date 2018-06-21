@@ -243,6 +243,7 @@ digium
 dircaps
 directadmin
 dired
+direnv
 disqus
 distro
 distros
@@ -362,6 +363,7 @@ firewalld
 firstsite
 flatpress
 flyspray
+fortran
 fpm
 fragging
 framesets
@@ -484,6 +486,7 @@ hyperefficient
 hypervisor
 hypervisors
 i386
+iaas
 icanhazip
 iceweasel
 icinga
@@ -565,6 +568,7 @@ jpg
 jre
 js
 json
+julialang
 jumpbox
 jupyter
 kakfa
@@ -676,6 +680,7 @@ mapreduce
 mariadb
 maskname
 masterdb
+mathematica
 mathjax
 maxconn
 maxdepth
@@ -855,6 +860,7 @@ ovpn
 owadb
 owncloud
 pacman
+paas
 pagent
 pagespeed
 pandoc
@@ -1042,7 +1048,9 @@ s1
 s2s
 s3cr37
 s3cret
+saas
 sakila
+salesforce
 sasl
 sasl2
 saslauth
@@ -1234,6 +1242,7 @@ tomcat6
 traceroute
 trackbar
 transcoder
+trello
 truststore
 tt
 ttl
@@ -1251,6 +1260,7 @@ ufw
 ui
 uidl
 un
+unarchive
 unban
 unbans
 unbilled
