@@ -36,7 +36,7 @@ This guide will provide the steps to deploy Rocket.Chat on a Linode running Ubun
 
 ## Installing Rocket.Chat
 
-The quickest way to install Rocket.Chat is to use its Snap.  Snaps are containerised software packages that run on all major Linux systems. Snapd is the service that runs and manages snaps. Snapd is installed by default on Ubunt 16.04 LTS.
+The quickest way to install Rocket.Chat is to use its Snap.  Snaps are containerised software packages that run on all major Linux systems. Snapd is the service that runs and manages snaps. Snapd is installed by default on Ubuntu 16.04 LTS.
 
 1. Install Rocket.Chat
 
@@ -55,7 +55,7 @@ A reverse proxy is a server that sits between internal applications and external
 
 **Setup NGINX Reverse Proxy**
 
-1. Create a configuraiton file for Rocket.Chat. In this example the file has been named `rocketchat.conf`:
+1. Create a configuration file for Rocket.Chat. In this example the file has been named `rocketchat.conf`:
 
         touch etc/nginx/conf.d/rocketchat.conf
 
