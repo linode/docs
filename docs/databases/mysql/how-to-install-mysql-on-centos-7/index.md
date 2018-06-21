@@ -78,6 +78,10 @@ Allowing unrestricted access to MySQL on a public IP not advised but you may cha
 
 You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/mysql-secure-installation.html).
 
+If mysql 5.7 was installed, you will need the temporary password that was created during installation. This password is notated in the `/var/log/mysql.log` file, and can be quickly found using the following command.
+
+        sudo grep 'temporary password' /var/log/mysqld.log
+
 ## Using MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client which installs with the `mysql-server` package. The MySQL client is used through a terminal.
