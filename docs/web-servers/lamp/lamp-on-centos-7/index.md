@@ -5,7 +5,7 @@ author:
 description: 'Create a LAMP stack on a CentOS 7 Linode.'
 keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-10-26
+modified: 2018-06-21
 modified_by:
     name: Alex Fornuto
 published: 2015-12-01
@@ -20,7 +20,7 @@ external_resources:
 
 ![LAMP on CentOS 7](lamp-on-centos-7-title-graphic.jpg "LAMP on CentOS 7")
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting web content. This guide shows you how to install a LAMP stack on a CentOS 7 server.
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting web content. This guide shows how to install a LAMP stack on a CentOS 7 Linode.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -28,7 +28,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#set-the-hostname).
 
     To check your hostname run:
 
@@ -105,12 +105,39 @@ NameVirtualHost *:80
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-3.  Enable Apache to start at boot, and restart the service for the above changes to take place:
+### Configure SELinux to Allow HTTP
+
+SELinux is enabled by default on CentOS 7 Linodes. Its default setting is to restrict Apache's access to directories until explicit permissions are granted.
+
+Without these steps, Apache will not start and may give the following error:
+
+{{< output >}}
+Jun 21 17:58:09 example.com systemd[1]: Failed to start The Apache HTTP Server.
+Jun 21 17:58:09 example.com systemd[1]: Unit httpd.service entered failed state.
+Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
+{{< /output >}}
+
+1.  Use `chown` to make `apache` the owner of the web directory:
+
+        chown apache:apache -R /var/www/html/example.com/
+
+2.  Modify the permissions for files and directories:
+
+        cd /var/www/html/example.com/
+        find . -type f -exec chmod 0644 {} \;
+        find . -type d -exec chmod 0755 {} \;
+
+3.  Use SELinux's `chcon` to change the file security context for web content:
+
+        chcon -t httpd_sys_content_t /var/www/html/example.com -R
+        chcon -t httpd_sys_rw_content_t /var/www/html/example.com -R
+
+4.  Enable Apache to start at boot, and restart the service for the above changes to take place:
 
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
 
-    You can now visit your domain to test the Apache server; a default Apache page will be visible.
+    Visit your domain or public IP to test the Apache server and view the default Apache page.
 
 ## MySQL / MariaDB
 
