@@ -5,8 +5,8 @@ author:
 description: 'This guide shows how to analyze performance bottlenecks for a WordPress website and describes optimization best practices for WordPress'
 keywords: ["htaccess", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-19
-modified: 2018-06-19
+published: 2018-06-21
+modified: 2018-06-21
 modified_by:
   name: Linode
 title: 'How to Speed Up a WordPress Website'
@@ -227,7 +227,7 @@ Other files in the `wp-includes` folder call this function, but they are part of
 0.02 sys
 {{< /output >}}
 
-### Investigate Slow Loading Time: Render-Blocking Javascript
+### Investigate Slow Loading Time: Render-Blocking JavaScript
 
 The load time reported by curl is now low, but if you load the page in a web browser, it can still take 5 seconds to show content. Because of this, we can deduce that the slowness is likely the result of a client-side bottleneck. We will use the developer tools of the [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/) browser to investigate this:
 
@@ -269,7 +269,7 @@ In addition to identifying bottlenecks in your code, you can implement general b
 
 High-resolution images can slow down the speed of a site. Reduce the resolution of your images and optimize them for the web. Plugins like [WP Smush](https://wordpress.org/plugins/wp-smushit/) can handle this task.
 
-Minify CSS and Javascript loaded by your site. Minification is the process of compressing code so that it is harder for a human to read, but faster for a computer to process. Scripts are often distributed in minified and non-minified versions, so you can look up the minified style for each of your scripts and upload them to your server. Some WordPress plugins can also automatically minify your scripts.
+Minify CSS and JavaScript loaded by your site. Minification is the process of compressing code so that it is harder for a human to read, but faster for a computer to process. Scripts are often distributed in minified and non-minified versions, so you can look up the minified style for each of your scripts and upload them to your server. Some WordPress plugins can also automatically minify your scripts.
 
 ### Browser Caching
 
@@ -331,6 +331,10 @@ These instructions walk through downloading the source code for XHGUI. This may 
         sudo make install
 
 2.  Add a line with the value `extension=tideways_xhprof.so` to your `php.ini` configuration file.
+
+    {{< note >}}
+There may be more than a `php.ini` in more than one location, like `/etc/php/7.0/apache2/php.ini` and `/etc/php/7.0/cli/php.ini`. Add this value in each `php.ini` file both in this step and in Step 4 that follows.
+{{< /note >}}
 
 3.  Install the MongoDB PHP Driver:
 
