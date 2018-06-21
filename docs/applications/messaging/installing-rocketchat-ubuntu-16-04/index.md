@@ -57,7 +57,7 @@ A reverse proxy is a server that sits between internal applications and external
 
 1. Create a configuration file for Rocket.Chat. In this example the file has been named `rocketchat.conf`:
 
-        touch etc/nginx/conf.d/rocketchat.conf
+        sudo touch /etc/nginx/conf.d/rocketchat.conf
 
 1. Disable the default *Welcome to NGINX* page:
 
