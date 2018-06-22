@@ -6,15 +6,14 @@ keywords: ["Docker", "Docker Compose", "Drupal"]
 description: This guide explains how to set up Drupal with Docker Compose.
 og_description: This guide explains how to set up Drupal with Docker Compose.
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-05-29
-modified: 2018-05-29
+published: 2018-06-22
+modified: 2018-06-22
 modified_by:
   name: Linode
 title: Install Drupal with Docker Compose
 external_resources:
-  - '[Official WordPress Image on Docker Hub](https://hub.docker.com/_/wordpress/)'
+  - '[Official Drupal Image on Docker Hub](https://hub.docker.com/_/drupal/)'
   - '[Overview of Docker Compose | Docker Documentation](https://docs.docker.com/compose/overview/)'
-  - '[Quickstart: Compose and Wordpress | Docker Documentation](https://docs.docker.com/compose/wordpress/)'
 ---
 
 ## What Are Docker and Docker Compose?
@@ -27,7 +26,7 @@ Containers for Drupal and PostgreSQL are available from [Docker Hub](https://hub
 
 ## Why Use Docker to Run Drupal?
 
-The Drupal and PostgreSQL images are maintained on Docker Hub by their respective organizations, and using them offers the following benefits:
+Using the Drupal and PostgreSQL images from Docker Hub offers the following benefits:
 
 -  The configuration of the software has been done for you, which means that you don't need to follow a step-by-step process for each application to get them running on your system.
 -  Updating your software is as simple as downloading the latest images from Docker Hub.
