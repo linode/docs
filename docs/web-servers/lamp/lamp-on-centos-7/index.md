@@ -7,7 +7,7 @@ keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-06-21
 modified_by:
-    name: Alex Fornuto
+    name: Edward Angert
 published: 2015-12-01
 title: LAMP on CentOS 7
 aliases: ['websites/lamp/lamp-server-on-centos-7/','websites/lamp/lamp-on-centos-7/']
