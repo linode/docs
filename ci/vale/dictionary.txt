@@ -162,6 +162,7 @@ conda
 config
 configs
 configtest
+containerised
 convolutional
 coose
 copyfrom
@@ -1118,6 +1119,7 @@ smtp
 smtpd
 smux
 snakeoil
+snapd
 snipcart
 snmp
 snmpd
