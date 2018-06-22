@@ -41,7 +41,7 @@ You will need a Linode with Docker CE installed to follow along with the steps i
 
 ### Talk
 
-Talk works by allowing all the users that are registered to your Nextcloud instance to communicate with each other. Nextcloud Talk offers simple text and video chat, private or group password protected calls, and screen sharing. It's built on [Spreed](https://github.com/nextcloud/spreed).
+Talk works by allowing all the users that are registered to your Nextcloud instance to communicate with each other. Nextcloud Talk offers simple text and video chat, private or group password protected calls, and screen sharing. The [Nextcloud Talk](https://github.com/nextcloud/spreed) source code is available on GitHub.
 
 1. From the Nextcloud console main page, click the **Settings** icon on the right side of the navigation bar. Choose **+ Apps**.
 
