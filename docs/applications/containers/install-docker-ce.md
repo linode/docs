@@ -54,7 +54,7 @@ Docker CE is not officially supported on Ubuntu 18.04 LTS. You can install a tes
         sudo apt update
         sudo apt install docker-ce
 
-7.  Add your limited user account to the `docker` group:
+7.  Add your limited Linux user account to the `docker` group:
 
         sudo usermod -aG docker exampleuser
 
