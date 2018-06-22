@@ -225,7 +225,7 @@ After running a sync, it may end with a message that you should upgrade Portage 
 
 ## Set the Hostname
 
-Your system's hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic. If you want to assign your system a fully qualified domain name, see our guide on using your system's [hosts file](/docs/networking/dns/using-your-systems-hosts-file/).
+A hostname is used to identify your device in an easy-to-remember format. The hostname is stored in the `/etc/hostname` file. Your system's hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic. If you want to assign your system a fully qualified domain name, see our guide on using your system's [hosts file](/docs/networking/dns/using-your-systems-hosts-file/).
 
 Once you're done, you can verify by running the command `hostname`.
 
