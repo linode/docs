@@ -73,6 +73,7 @@ backreference
 backreferences
 backtick
 backticks
+backupninja
 bampton
 base64
 basearch
@@ -161,6 +162,7 @@ conda
 config
 configs
 configtest
+containerised
 convolutional
 coose
 copyfrom
@@ -242,6 +244,7 @@ digium
 dircaps
 directadmin
 dired
+direnv
 disqus
 distro
 distros
@@ -361,6 +364,7 @@ firewalld
 firstsite
 flatpress
 flyspray
+fortran
 fpm
 fragging
 framesets
@@ -483,6 +487,7 @@ hyperefficient
 hypervisor
 hypervisors
 i386
+iaas
 icanhazip
 iceweasel
 icinga
@@ -553,6 +558,7 @@ jdbc
 jdk
 jenkinsfile
 jetpack
+jez
 jk
 jks
 jobd
@@ -563,6 +569,7 @@ jpg
 jre
 js
 json
+julialang
 jumpbox
 jupyter
 kakfa
@@ -674,6 +681,7 @@ mapreduce
 mariadb
 maskname
 masterdb
+mathematica
 mathjax
 maxconn
 maxdepth
@@ -853,6 +861,7 @@ ovpn
 owadb
 owncloud
 pacman
+paas
 pagent
 pagespeed
 pandoc
@@ -1040,12 +1049,15 @@ s1
 s2s
 s3cr37
 s3cret
+saas
 sakila
+salesforce
 sasl
 sasl2
 saslauth
 saslauthd
 sasldb
+sbackup
 sbin
 sbopkg
 scgi
@@ -1107,6 +1119,7 @@ smtp
 smtpd
 smux
 snakeoil
+snapd
 snipcart
 snmp
 snmpd
@@ -1231,6 +1244,7 @@ tomcat6
 traceroute
 trackbar
 transcoder
+trello
 truststore
 tt
 ttl
@@ -1248,6 +1262,7 @@ ufw
 ui
 uidl
 un
+unarchive
 unban
 unbans
 unbilled
@@ -1259,6 +1274,7 @@ uncommented
 uncommenting
 uncompress
 unencrypted
+unexported
 unformatted
 unicast
 uniq

@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "The Linode API is a programmatic interface that allows you to interact with many of the [Linode Manager's](https://manager.linode.com/) features.<br/>To learn more, please visit the Linode API web page:<br/><https://www.linode.com/api/>"
+description: "The Linode API is a programmatic interface that allows you to interact with many of the [Linode Manager's](https://manager.linode.com/) features.<br/>To learn more, please visit the Linode API web page:<br/><https://developers.linode.com/api/v4>"
 keywords: ["linode api", " api key", " key"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['api/']
