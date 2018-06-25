@@ -348,7 +348,7 @@ define('DB_HOST', '192.0.2.100');
 
 Access the WordPress installation interface through `wp-admin`. Use a browser to navigate to `example.com/wp-admin`. If the database connection is successful, you'll see the installation screen:
 
-![WordPress Installation Screen](/docs/assets/databases/mariadb/remote-dbs/remote-db-wp-installation.png "WordPress Installation Screen")
+![WordPress Installation Screen](remote-db-wp-installation.png "WordPress Installation Screen")
 
 ## Next Steps
 
