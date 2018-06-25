@@ -16,8 +16,6 @@ external_resources:
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
 ---
 
-<!--![Configure WordPress to use a Remote Database](/docs/assets/mariadb/configure-wordpress-remote-database-title.jpg "Configure WordPress to use a Remote Database")-->
-
 ## Before You Begin
 
 - This guide uses two Linodes in the same datacenter to communicate via [private IP](/docs/networking/remote-access/#adding-private-ip-addresses) addresses. You will need to configure a [LEMP](/docs/web-servers/lemp/) or [LAMP](/docs/web-servers/lamp/) stack on one.
