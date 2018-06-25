@@ -70,6 +70,8 @@ services:
     image: postgres:10
     environment:
       POSTGRES_PASSWORD: your_postgres_password
+    volumes:
+        - ./postgres-data:/var/lib/postgresql/data
     restart: always
 {{< /file >}}
 
@@ -81,7 +83,7 @@ services:
 
     ![Drupal setup screen in the web browser - 'Choose language' page](drupal_setup_choose_language.png "Drupal setup screen in the web browser - 'Choose language' page")
 
-5.  On the *Set up database* page, enter the following values:
+5.  On the *Set up database* page, select `PostgreSQL` as the *Database type* and enter the following values:
 
     -   Database name: `postgres`
 
@@ -102,9 +104,22 @@ You do not need to manually start your containers if you reboot your Linode, bec
 To stop your Drupal application:
 
     cd ~/my_drupal/
+    docker-compose stop
+
+This will stop the running Drupal and PostgreSQL containers, but will not remove them.
+
+To restart your Drupal application:
+
+    cd ~/my_drupal/
+    docker-compose start
+
+
+To stop and remove containers, networks and images created by the `docker-compose.yml` file:
+
+    cd ~/my_drupal/
     docker-compose down
 
-When a Docker container is stopped, it is also deleted; this is how Docker is designed to work. However, your Drupal files and data will be preserved, as the `docker-compose.yml` file was configured to create persistent volumes for that data.
+When a Docker container is taken down, it is also deleted; this is how Docker is designed to work. However, your Drupal files and data will be preserved, as the `docker-compose.yml` file was configured to create persistent volumes for that data.
 
 If you want to remove this data and start over with your Drupal site, you can add the `--volumes` flag to the previous command. **This will permanently delete the Drupal customizations you've made so far.**
 
