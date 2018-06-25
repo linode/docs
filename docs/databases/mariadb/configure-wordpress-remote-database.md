@@ -5,10 +5,10 @@ author:
 description: 'This guide shows how to configure WordPress to access a database on a separate Linode.'
 keywords: ["mariadb", "database", "mysql", "remote database", "remote db", "remote client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-21
+modified: 2018-06-25
 modified_by:
   name: Linode
-published: 2018-05-21
+published: 2018-06-25
 title: Configure WordPress to use a Remote Database
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
@@ -16,37 +16,34 @@ external_resources:
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
 ---
 
-![Configure WordPress to use a Remote Database](/docs/assets/mariadb/configure-wordpress-remote-database-title.jpg "Configure WordPress to use a Remote Database")
-
-## Why Use a Remote Database for WordPress?
-
+<!--![Configure WordPress to use a Remote Database](/docs/assets/mariadb/configure-wordpress-remote-database-title.jpg "Configure WordPress to use a Remote Database")-->
 
 ## Before You Begin
 
-This guide uses two Linodes in the same datacenter to communicate via [private IPs](/docs/networking/remote-access/#adding-private-ip-addresses). Before you begin, follow the [Getting Started](/docs/getting-started/) and [Secure your Server](/docs/security/securing-your-server/) guides to create a non-root sudo user, and ensure that all packages are up to date.
+- This guide uses two Linodes in the same datacenter to communicate via [private IP](/docs/networking/remote-access/#adding-private-ip-addresses) addresses. You will need to configure a [LEMP](/docs/web-servers/lemp/) or [LAMP](/docs/web-servers/lamp/) stack on one.
 
-One Linode should have a [LEMP](/docs/web-servers/lemp/) or [LAMP](/docs/web-servers/lamp/) stack configured.
+- Ensure that all packages are up to date.
+
+- Follow the [Getting Started](/docs/getting-started/) and [Secure your Server](/docs/security/securing-your-server/) guides to create a non-root sudo user.
+
+- While the steps to configure an existing database may be similar, this guide is written for a fresh database and WordPress installation. Visit our guide on how to [backup an existing database](/docs/databases/mysql/back-up-your-mysql-databases/#creating-backups-of-a-single-database).
 
 ### Variables Used in This Guide
 
-* *Database* Linode: Linode on which the database is installed.
-* *Web Server* Linode: Linode on which [WordPress is downloaded](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/).
-* `example.com`: Your FQDN or IP.
+* *Database server*: Linode on which the database is installed.
+* *Web server*: Linode on which [WordPress is downloaded](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/).
+* `example.com`: Your fully qualified domain name (FQDN) or IP address.
 * `wordpress`: Database name.
 * `wpuser`: The WordPress client database user.
 * `password`: SQL database password.
-* `192.0.2.100`: Database Linode's private IP.
-* `192.0.2.255`: Web server Linode's private IP.
+* `192.0.2.100`: Database server's private IP.
+* `192.0.2.255`: Web server's private IP.
 * `example_user`: Local non-root sudo user.
-* `203.0.113.15`: Web server's FQDN or IP address.
-
-### Migrate an Existing WordPress Database
-
-While the steps to configure an existing database may be similar, this guide is written for a fresh database and WordPress installation. Visit our guide on how to [backup an existing database](/docs/databases/mysql/back-up-your-mysql-databases/#creating-backups-of-a-single-database).
+* `203.0.113.15`: Web server's FQDN or IP.
 
 ## Install MariaDB on its Own Linode
 
-Run these steps on the database Linode.
+Run these steps on the database server.
 
 1.  Install MariaDB:
 
@@ -58,18 +55,18 @@ Run these steps on the database Linode.
 
 ### Accept Remote Connections
 
-1.  Change the `bind-address` to the database Linode's private IP to configure the database to accept remote connections:
+1.  Change the `bind-address` to the database server's private IP to configure the MariaDB to accept remote connections:
 
     {{< file "/etc/mysql/mariadb.conf.d/50-server.cnf" >}}
 bind-address    = 192.0.2.100
 {{< /file >}}
 
-2.  Restart MariaDB and allow connections to port `3306` through the firewall. This example uses UFW to automatically open the port:
+2.  Restart MariaDB and allow connections to port `3306` through the firewall. This example uses UFW to automatically open the port over both IPv4 and IPv6:
 
         sudo systemctl restart mysql
         sudo ufw allow mysql
 
-3.  Log in to MariaDB as root, create the database and remote user, and grant the remote user access to the database. Replace `192.0.2.255` with the web server Linode's private IP:
+3.  Log in to MariaDB as root, create the database and remote user, and grant the remote user access to the database. Replace `192.0.2.255` with your web server's private IP:
 
         sudo mysql -u root -p
         CREATE DATABASE wordpress;
@@ -88,30 +85,30 @@ bind-address    = 192.0.2.100
 
 ## Connect to the Remote Database from the Web Server
 
-Run these steps on the web server Linode.
+Run these steps on the web server.
 
-The web server should already have MariaDB installed. If it doesn't, install it. PHP-MySQL is required for WordPress:
+1.  The web server should already have MariaDB installed. If it doesn't, install it. PHP-MySQL is required for WordPress:
 
-    sudo apt update && sudo apt install mariadb-client php-mysql
+        sudo apt update && sudo apt install mariadb-client php-mysql
 
-Test remote login with the new remote user. Replace `192.0.2.100` with the database Linode’s private IP:
+2.  Test remote login with the new remote user. Replace `192.0.2.100` with the database Linode’s private IP:
 
-    mysql -u wpuser -h 192.0.2.100 -p
-    status;
-    exit
+        mysql -u wpuser -h 192.0.2.100 -p
+        status;
+        exit
 
-The web server can now connect to the remote database.
+    The web server can now connect to the remote database.
 
 ## Configure WordPress to Use a Remote Database
 
-When first installed and configured through the web interface and a local database, WordPress creates a file called `wp-config.php`. Create the file manually and configure the initial remote database settings.
+When first installed and configured through the web interface and a local database, WordPress creates a file called `wp-config.php`. Configure the initial remote database settings.
 
 1.  Navigate to the directory to which [WordPress was extracted](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/#install-wordpress), copy the sample configuration and set it to use the remote database:
 
         cd /var/www/html/example.com/public_html
         sudo cp wp-config-sample.php wp-config.php
 
-2.  Change the login variables to match the database and user. Replace `192.0.2.100` with the database Linode's private IP:
+2.  Change the login variables to match the database and user. Replace `192.0.2.100` with the database server's private IP:
 
     {{< file "/var/www/html/example.com/public_html/wp-config.php" >}}
 /** The name of the database for WordPress */
@@ -154,21 +151,21 @@ define('NONCE_SALT',       'put your unique phrase here');
 
 ## Secure WordPress Database Traffic with SSL
 
-**On the web server Linode**
+1.  **On the web server**
 
-Create a directory to receive the certificates created in this section:
+    Create a directory to receive the certificates created in this section:
 
-    mkdir ~/certs
+        mkdir ~/certs
 
-**On the database Linode**
+2.  **On the database server**
 
-1.  Create and switch to a directory for generating keys and certificates:
+    Create and switch to a directory for generating keys and certificates:
 
         mkdir ~/certs && cd ~/certs
 
-2.  Generate a CA key and create the certificate and private key. Respond to the prompts as appropriate. The key in this example expires in 100 years. Change the `-days 36500` value in this and the following steps to set the certificates to expire as needed:
+3.  Generate a CA key and create the certificate and private key. Respond to the prompts as appropriate. The key in this example expires in 100 years. Change the `-days 36500` value in this and the following steps to set the certificates to expire as needed:
 
-        sudo openssl genrsa 2048 > ca-key.pem
+        sudo openssl genrsa 4096 > ca-key.pem
         sudo openssl req -new -x509 -nodes -days 36500 -key ca-key.pem -out cacert.pem
 
     {{< output >}}
@@ -188,12 +185,12 @@ Common Name (e.g. server FQDN or YOUR name) []:MariaDB
 Email Address []:
 {{< /output >}}
 
-3.  Create a server certificate and write the RSA key. The `Common Name` should be your web server's FQDN or IP address:
+4.  Create a server certificate and write the RSA key. The `Common Name` should be your web server's FQDN or IP address:
 
-        sudo openssl req -newkey rsa:2048 -days 36500 -nodes -keyout server-key.pem -out server-req.pem
+        sudo openssl req -newkey rsa:4096 -days 36500 -nodes -keyout server-key.pem -out server-req.pem
 
     {{< output >}}
-Generating a 2048 bit RSA private key
+Generating a 4096 bit RSA private key
 ......................+++
 .............................+++
 writing new private key to 'server-key.pem'
@@ -221,21 +218,21 @@ An optional company name []:
 
         sudo openssl rsa -in server-key.pem -out server-key.pem
 
-4.  Sign the certificate:
+5.  Sign the certificate:
 
         sudo openssl x509 -req -in server-req.pem -days 36500 -CA cacert.pem -CAkey ca-key.pem -set_serial 01 -out server-cert.pem
 
-5.  Move the keys and certificate to a permanent location:
+6.  Move the keys and certificate to a permanent location:
 
         sudo mkdir /etc/mysql/ssl
         sudo mv *.* /etc/mysql/ssl && cd /etc/mysql/ssl
 
-6.  Generate a client key. Respond to the prompts as appropriate and set the `Common Name` to your web server's FQDN or IP address:
+7.  Generate a client key. Respond to the prompts as appropriate and set the `Common Name` to your web server's FQDN or IP address:
 
         sudo openssl req -newkey rsa:2048 -days 36500 -nodes -keyout client-key.pem -out client-req.pem
 
     {{< output >}}
-Generating a 2048 bit RSA private key
+Generating a 4096 bit RSA private key
 ....................+++
 ............................................................................................+++
 writing new private key to 'client-key.pem'
@@ -261,19 +258,19 @@ A challenge password []:
 An optional company name []:
 {{< /output >}}
 
-7.  Write the RSA key:
+8.  Write the RSA key:
 
         sudo openssl rsa -in client-key.pem -out client-key.pem
 
-8.  Sign the client certificate:
+9.  Sign the client certificate:
 
         sudo openssl x509 -req -in client-req.pem -days 36500 -CA cacert.pem -CAkey ca-key.pem -set_serial 01 -out client-cert.pem
 
-9.  Verify the certificates:
+10.  Verify the certificates:
 
         openssl verify -CAfile cacert.pem server-cert.pem client-cert.pem
 
-10. Configure the MariaDB server to use the certificates. Find the following lines and remove the `#` to uncomment the certificate locations. Modify the paths to match:
+11. Configure the MariaDB server to use the certificates. Find the following lines and remove the `#` to uncomment the certificate locations. Modify the paths to match:
 
     {{< file "/etc/mysql/mariadb.conf.d/50-server.cnf" >}}
 ssl-ca=/etc/mysql/ssl/cacert.pem
@@ -281,22 +278,22 @@ ssl-cert=/etc/mysql/ssl/server-cert.pem
 ssl-key=/etc/mysql/ssl/server-key.pem
 {{< /file >}}
 
-11. Log in to MariaDB and require SSL for all logins to the database. Replace `192.0.2.255` with the web server Linode's private IP:
+12. Log in to MariaDB and require SSL for all logins to the database. Replace `192.0.2.255` with the web server Linode's private IP:
 
         sudo mysql -u root -p
         GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'192.0.2.255' REQUIRE SSL;
         FLUSH PRIVILEGES;
         exit
 
-12. Restart MariaDB:
+13. Restart MariaDB:
 
         sudo systemctl restart mysql
 
-13. Copy the certificates and key to the web server. Replace `example_user` with the web server's user and `192.0.2.255` with the web server Linode's private IP:
+14. Copy the certificates and key to the web server. Replace `example_user` with the web server's user and `192.0.2.255` with the web server's private IP:
 
         scp cacert.pem client-cert.pem client-key.pem example_user@192.0.2.255:~/certs
 
-**On the webserver Linode**
+**On the web server**
 
 1.  Create the directory and move the certificates and key to `/etc/mysql/ssl`:
 
@@ -311,8 +308,8 @@ ssl-cert=/etc/mysql/ssl/client-cert.pem
 ssl-key=/etc/mysql/ssl/client-key.pem
 {{< /file >}}
 
-{{< note >}}
-If the webserver Linode uses MySQL you can find the configuration file in `/etc/mysql/mysql.conf.d/mysqld.cnf`. 
+    {{< note >}}
+If the web server uses MySQL you can find the configuration file in `/etc/mysql/mysql.conf.d/mysqld.cnf`. 
 {{< /note >}}
 
 3.  Log in to the remote database to test the login over SSL:
@@ -347,7 +344,7 @@ define('DB_HOST', '192.0.2.100');
 ...
 {{< /file >}}
 
-## Complete WordPress Installation with Remote Database
+## Complete the WordPress Installation
 
 Access the WordPress installation interface through `wp-admin`. Use a browser to navigate to `example.com/wp-admin`. If the database connection is successful, you'll see the installation screen:
 
@@ -355,4 +352,4 @@ Access the WordPress installation interface through `wp-admin`. Use a browser to
 
 ## Next Steps
 
-Now that the database is configured to communicate over a secure connection, consider using SSL/TLS for the web server itself. Our guide on [TLS on NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/) has great detail on some best practices for securing NGINX and web servers in general. Visit the [SSL Certificates](/docs/security/ssl/) section of Linode Docs for information on other servers and Linux distributions.
+Now that the database is configured to communicate over a secure connection, consider using SSL/TLS for the web server itself. Our guide covering [TLS on NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/) details some best practices for securing NGINX and web servers in general. Visit the [SSL Certificates](/docs/security/ssl/) section of Linode Docs for information on other servers and Linux distributions.
