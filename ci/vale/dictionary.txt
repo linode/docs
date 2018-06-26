@@ -85,6 +85,7 @@ binlog
 bitbucket
 bitrate
 blocklists
+blockwise
 boonex
 bootable
 bootloader
@@ -124,6 +125,7 @@ changelog
 changelogs
 changeme
 changeset
+characterwise
 chatrooms
 cheatsheet
 checksummed
@@ -294,6 +296,7 @@ ejabberd
 el6
 el7
 elasticsearch
+elisp
 elgg
 elpaso
 email2email
@@ -631,6 +634,7 @@ lighthttpd
 lighttpd
 lighty
 ligttpd
+linewise
 linode
 linodes
 lish
@@ -1213,6 +1217,7 @@ testfile
 testkeys
 testparam
 testuser
+tetris
 tf
 tgz
 thawte
