@@ -150,15 +150,15 @@ Tasks related to Linode instances are performed with `linode-cli linodes [ACTION
 
 2.  Create a new Linode:
 
-        linode-cli linodes create --label new-linode --root_pass mypassword
+        linode-cli linodes create --root_pass mypassword
 
     The defaults you specified when configuring the CLI will be used for the new Linode's type, region, and image. You can also override these options by specifying the values:
 
-        linode-cli linodes create --label new-linode-2 --root_pass mypassword --region us-east --image linode/debian9 --group webservers
+        linode-cli linodes create --root_pass mypassword --region us-east --image linode/debian9 --group webservers
 
     If you are not writing a script, it is more secure to use `--root_pass` without specifying a password. You will then be prompted to enter a password:
 
-        linode-cli linodes create --label new-linode-3 --root_pass
+        linode-cli linodes create --root_pass
 
 3.  For commands targeting a specific Linode, you will need that Linode's ID. The ID is returned when creating the Linode, and can be viewed by listing the Linodes on your account as described above. Store the ID of the new Linode (or an existing Linode) for later use:
 
