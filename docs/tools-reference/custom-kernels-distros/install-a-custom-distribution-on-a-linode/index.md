@@ -26,7 +26,7 @@ For the sake of organization, it has been split into two main sections:
 This guide will use Debian 8 (Jessie) as an example, but the steps provided are generic in nature and should work with most distributions.
 
 {{< note >}}
-This guide entails installing a custom Linux distribution on your KVM Linode. If you're currently running a Xen Linode, you can [upgrade to KVM](/docs/platform/kvm-reference/#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Xen Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode/).
+This guide covers the process for installing a custom Linux distribution on a KVM Linode. If you're currently running a Xen Linode, you can [upgrade to KVM](/docs/platform/kvm-reference/#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Xen Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode/).
 {{< /note >}}
 
 ## Advantages of KVM on Linode
