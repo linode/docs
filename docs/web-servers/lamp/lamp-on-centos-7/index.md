@@ -149,6 +149,7 @@ ssh dhcpv6-client
 
 To allow connections to Apache, add HTTP as a service:
 
+    sudo firewall-cmd --zone=public --add-service=http --permanent
     sudo firewall-cmd --zone=public --add-service=http
 
 ## MySQL / MariaDB
