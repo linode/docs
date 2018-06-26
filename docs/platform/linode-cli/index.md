@@ -122,25 +122,25 @@ To start with, most users will want to run the configuration utility:
 
          Default distribution when deploying a new Linode or rebuilding an existing one. (Optional)
          Valid options are:
-           1 - Arch 2017.01.01
-           2 - CentOS 5.6
-           3 - CentOS 6.5
-           4 - CentOS 7
-           5 - Debian 7
-           6 - Debian 8
-           7 - Fedora 24
-           8 - Fedora 25
-           9 - Gentoo 2017-01-05
-          10 - Slackware 13.37
-          11 - Slackware 13.37 32bit
-          12 - Slackware 14.1
-          13 - Slackware 14.2
-          14 - Ubuntu 12.04 LTS
-          15 - Ubuntu 14.04 LTS
-          16 - Ubuntu 16.04 LTS
-          17 - Ubuntu 16.10
-          18 - openSUSE Leap 42.1
-          19 - openSUSE Leap 42.2
+           1 - Arch Linux
+           2 - CentOS 6.8
+           3 - CentOS 7
+           4 - CoreOS Container Linux
+           5 - Debian 8
+           6 - Debian 9
+           7 - Fedora 26
+           8 - Fedora 27
+           9 - Fedora 28
+           10 - Gentoo
+           11 - Slackware 13.37
+           12 - Slackware 14.1
+           13 - Slackware 14.2
+           14 - Ubuntu 14.04 LTS
+           15 - Ubuntu 16.04 LTS
+           16 - Ubuntu 17.10
+           17 - Ubuntu 18.04 LTS
+           18 - openSUSE Leap 15.0
+           19 - openSUSE Leap 42.3
          Choose[ 1-19 ] or Enter to skip>>
 
          Default data center when deploying a new Linode. (Optional)
@@ -158,20 +158,21 @@ To start with, most users will want to run the configuration utility:
 
          Default plan when deploying a new Linode. (Optional)
          Valid options are:
-           1 - Linode 1024
-           2 - Linode 2048
-           3 - Linode 4096
-           4 - Linode 8192
-           5 - Linode 12288
-           6 - Linode 16384
-           7 - Linode 24576
-           8 - Linode 32768
-           9 - Linode 49152
-          10 - Linode 61440
-          11 - Linode 65536
-          12 - Linode 81920
-          13 - Linode 102400
-          14 - Linode 204800
+           1 - Nanode 1GB
+           2 - Linode 2GB
+           3 - Linode 4GB
+           4 - Linode 8GB
+           5 - Linode 16GB
+           6 - Linode 24GB
+           7 - Linode 32GB
+           8 - Linode 48GB
+           9 - Linode 64GB
+           10 - Linode 90GB
+           11 - Linode 96GB
+           12 - Linode 128GB
+           13 - Linode 150GB
+           14 - Linode 192GB
+           15 - Linode 300GB
          Choose[ 1-14 ] or Enter to skip>>
 
           Path to an SSH public key to install when deploying a new Linode. (Optional)
@@ -295,20 +296,20 @@ To view available [Linode plan sizes](https://www.linode.com/pricing/) for the `
 
 Choose from the options below:
 
-- Linode 1024
-- Linode 2048
-- Linode 4096
-- Linode 8192
-- Linode 12288
-- Linode 16384
-- Linode 24576
-- Linode 32768
-- Linode 49152
-- Linode 61440
-- Linode 65536
-- Linode 81920
-- Linode 102400
-- Linode 204800
+- Nanode 1GB
+- Linode 2GB
+- Linode 4GB
+- Linode 8GB
+- Linode 24GB
+- Linode 32GB
+- Linode 48GB
+- Linode 64GB
+- Linode 90GB
+- Linode 96GB
+- Linode 128GB
+- Linode 150GB
+- Linode 192GB
+- Linode 300GB
 
 #### --location options
 
@@ -338,25 +339,25 @@ To view available distributions for new Linodes for the `--distribution` option,
 
 Choose from the options below:
 
-- Arch 2017.01.01
-- CentOS 5.6
-- CentOS 6.5
+- Arch Linux
+- CentOS 6.8
 - CentOS 7
-- Debian 7
+- CentOS Container Linux
 - Debian 8
-- Fedora 24
-- Fedora 25
-- Gentoo 2017-01-05
+- Debian 9
+- Fedora 26
+- Fedora 27
+- Fedora 28
+- Gentoo
+- openSUSE Leap 15.0
+- openSUSE Leap 42.3
 - Slackware 13.37
-- Slackware 13.37 32bit
 - Slackware 14.1
 - Slackware 14.2
-- Ubuntu 12.04 LTS
 - Ubuntu 14.04 LTS
 - Ubuntu 16.04 LTS
-- Ubuntu 16.10
-- openSUSE Leap 42.1
-- openSUSE Leap 42.2
+- Ubuntu 17.10
+- Ubuntu 18.04 LTS
 
 ### Domains
 
