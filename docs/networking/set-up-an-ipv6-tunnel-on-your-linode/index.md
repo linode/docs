@@ -17,8 +17,8 @@ As IPv4 address exhaustion nears, many people are making the switch to IPv6. Lin
 
 An IPv6 tunnel lets a system reach an IPv6 network using existing IPv4 connectivity. Follow this guide if you:
 
- - Have a tunnel that you are migrating to your Linode;
- - Want to increase your IPv6 footprint for redundancy and failover in case of routing issues;
+ - Have a tunnel that you are migrating to your Linode.
+ <!--- Want to increase your IPv6 footprint for redundancy and failover in case of routing issues;-->
  - Don't have IPv6 from your ISP, and want to interact with your Linode through its IPv6 address. By configuring the tunnel to a local computer instead of your Linode, you can connect to your Linode via the IPv6 address.
 
 ## Before You Begin
