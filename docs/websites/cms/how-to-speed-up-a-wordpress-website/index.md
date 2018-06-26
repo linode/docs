@@ -5,8 +5,8 @@ author:
 description: 'This guide shows how to analyze performance bottlenecks for a WordPress website and describes optimization best practices for WordPress'
 keywords: ["htaccess", "apache", "wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-26
-modified: 2018-06-26
+published: 2018-06-27
+modified: 2018-06-27
 modified_by:
   name: Linode
 title: 'How to Speed Up a WordPress Website'
