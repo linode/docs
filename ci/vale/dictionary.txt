@@ -365,6 +365,8 @@ filimonov
 finnix
 firewalld
 firstsite
+flamegraph
+flamegraphs
 flatpress
 flyspray
 fortran
@@ -761,6 +763,7 @@ mypassword
 myproject
 myserver
 mysql
+mysqli
 mysqlclient10
 mysqld
 mysqldefault
@@ -1121,6 +1124,7 @@ smartcard
 smartcards
 smtp
 smtpd
+smush
 smux
 snakeoil
 snapd
