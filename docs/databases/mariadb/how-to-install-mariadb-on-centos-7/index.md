@@ -1,6 +1,6 @@
 ---
 author:
-    name: Chris Walsh
+    name: Linode
     email: docs@linode.com
 description: 'Getting started with MariaDB on CentOS 7'
 keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]

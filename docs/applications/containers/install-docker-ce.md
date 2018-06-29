@@ -56,7 +56,7 @@ sub   4096R/F273FCD8 2017-02-22
         sudo apt update
         sudo apt install docker-ce
 
-7.  Add your limited user account to the `docker` group:
+7.  Add your limited Linux user account to the `docker` group:
 
         sudo usermod -aG docker exampleuser
 
