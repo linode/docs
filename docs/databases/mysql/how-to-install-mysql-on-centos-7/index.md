@@ -1,6 +1,6 @@
 ---
 author:
-  name: Chris Walsh
+  name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL on CentOS 7'
 keywords: ["MySQL on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]

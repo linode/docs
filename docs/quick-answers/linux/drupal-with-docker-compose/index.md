@@ -6,8 +6,8 @@ keywords: ["Docker", "Docker Compose", "Drupal"]
 description: This guide explains how to set up Drupal with Docker Compose.
 og_description: This guide explains how to set up Drupal with Docker Compose.
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-22
-modified: 2018-06-22
+published: 2018-06-29
+modified: 2018-06-29
 modified_by:
   name: Linode
 title: Install Drupal with Docker Compose
