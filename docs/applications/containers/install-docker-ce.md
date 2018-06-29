@@ -40,12 +40,10 @@ Docker CE is not officially supported on Ubuntu 18.04 LTS. You can install a tes
 
     You should see output similar to the following:
 
-    {{< output >}}
-pub   4096R/0EBFCD88 2017-02-22
-      Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
-uid                  Docker Release (CE deb) <docker@docker.com>
-sub   4096R/F273FCD8 2017-02-22
-{{< /output >}}
+        pub   4096R/0EBFCD88 2017-02-22
+              Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+        uid                  Docker Release (CE deb) <docker@docker.com>
+        sub   4096R/F273FCD8 2017-02-22
 
 5.  Add the `stable` Docker repository:
 
@@ -56,7 +54,7 @@ sub   4096R/F273FCD8 2017-02-22
         sudo apt update
         sudo apt install docker-ce
 
-7.  Add your limited user account to the `docker` group:
+7.  Add your limited Linux user account to the `docker` group:
 
         sudo usermod -aG docker exampleuser
 
