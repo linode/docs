@@ -5,11 +5,14 @@ author:
 description: 'Setting up a mail server with Postfix, Dovecot, and MySQL.'
 keywords: ["email", " mail", " server", " postfix", " dovecot", " mysql", " debian", " ubuntu", " dovecot 2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-04-29
+modified: 2018-07-02
 modified_by:
-  name: Phil Zona
+  name: Linode
 published: 2013-05-13
 title: 'Email with Postfix, Dovecot, and MySQL'
+external_resources:
+ - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
+ - '[Dovecot Wiki](https://wiki2.dovecot.org/)'
 ---
 
 In this guide, you'll learn how to set up a secure virtual user mail server with Postfix, Dovecot, and MySQL on Debian or Ubuntu. We'll explain how to create new user mailboxes and send or receive email to and from configured domains.
@@ -38,7 +41,7 @@ Ensure that the MX record is changed for all domains and subdomains that might r
 
 ## Update Hosts File
 
-Verify that the `hosts` file contains a line for the Linode's public IP address and is associated with the **Fully Qualified Domain Name** (FQDN). In the example below, 192.0.2.0 is the public IP address, hostname is the local hostname, and hostname.example.com is the FQDN.
+Verify that the `hosts` file contains a line for the Linode's public IP address and is associated with the **Fully Qualified Domain Name** (FQDN). In the example below, `192.0.2.0` is the public IP address, `hostname` is the local hostname, and `hostname.example.com` is the FQDN.
 
 {{< file "/etc/hosts" >}}
 127.0.0.1 localhost.localdomain localhost
@@ -75,7 +78,7 @@ The next steps are to install the required packages on the Linode.
 
 ### Versions
 
-This guide was created using the following package versions:
+This guide uses the following package versions:
 
 * Postfix 3.1.0
 * Dovecot 2.2.22
@@ -96,23 +99,26 @@ The mail server's virtual users and passwords are stored in a MySQL database. Do
         mysql -u root -p mailserver
 
 4.  Create the MySQL user and grant the new user permissions over the database. Replace `mailuserpass` with a secure password:
-
+        {{< output >}}
         GRANT SELECT ON mailserver.* TO 'mailuser'@'127.0.0.1' IDENTIFIED BY 'mailuserpass';
+{{</ output >}}
 
 5.  Flush the MySQL privileges to apply the change:
-
+        {{< output >}}
         FLUSH PRIVILEGES;
+{{</ output >}}
 
 6.  Create a table for the domains that will receive mail on the Linode:
-
+        {{< output >}}
         CREATE TABLE `virtual_domains` (
           `id` int(11) NOT NULL auto_increment,
           `name` varchar(50) NOT NULL,
           PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+{{</ output >}}
 
 7.  Create a table for all of the email addresses and passwords:
-
+        {{< output >}}
         CREATE TABLE `virtual_users` (
           `id` int(11) NOT NULL auto_increment,
           `domain_id` int(11) NOT NULL,
@@ -122,9 +128,10 @@ The mail server's virtual users and passwords are stored in a MySQL database. Do
           UNIQUE KEY `email` (`email`),
           FOREIGN KEY (domain_id) REFERENCES virtual_domains(id) ON DELETE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+{{</ output >}}
 
 8.  Create a table for the email aliases:
-
+        {{< output >}}
         CREATE TABLE `virtual_aliases` (
           `id` int(11) NOT NULL auto_increment,
           `domain_id` int(11) NOT NULL,
@@ -133,13 +140,14 @@ The mail server's virtual users and passwords are stored in a MySQL database. Do
           PRIMARY KEY (`id`),
           FOREIGN KEY (domain_id) REFERENCES virtual_domains(id) ON DELETE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+{{</ output >}}
 
 ### Adding Data
 
 Now that the database and tables have been created, add some data to MySQL.
 
 1.  Add the domains to the `virtual_domains` table. Replace the values for `example.com` and `hostname` with your own settings.
-
+        {{< output >}}
         INSERT INTO 'mailserver'.'virtual_domains'
           ('id' ,'name')
         VALUES
@@ -147,25 +155,28 @@ Now that the database and tables have been created, add some data to MySQL.
           ('2', 'hostname.example.com'),
           ('3', 'hostname'),
           ('4', 'localhost.example.com');
+{{</ output >}}
 
     {{< note >}}
 Note which `id` corresponds to which domain, the `id` value is necessary for the next two steps.
 {{< /note >}}
 
 1.  Add email addresses to the `virtual_users` table. The `domain_id` value references the `virtual_domain` table's `id` value. Replace the email address values with the addresses that you wish to configure on the mailserver. Replace the `password` values with strong passwords.
-
+        {{< output >}}
         INSERT INTO `mailserver`.`virtual_users`
           (`id`, `domain_id`, `password` , `email`)
         VALUES
           ('1', '1', ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email1@example.com'),
           ('2', '1', ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email2@example.com');
+{{</ output >}}
 
 1.  An email alias will forward all email from one email address to another. To set up an email alias, add it to the `virtual_aliases` table.
-
+        {{< output >}}
         INSERT INTO `mailserver`.`virtual_aliases`
           (`id`, `domain_id`, `source`, `destination`)
         VALUES
           ('1', '1', 'alias@example.com', 'email1@example.com');
+{{</ output >}}
 
 ### Testing
 
@@ -176,11 +187,12 @@ In the previous section, data was added to the MySQL `mailserver` database. The 
         mysql -u root -p mailserver
 
 1.  Check the contents of the `virtual_domains` table:
-
+        {{< output >}}
         SELECT * FROM mailserver.virtual_domains;
+{{</ output >}}
 
 1.  Verify that you see the following output:
-
+        {{< output >}}
         +----+-----------------------+
         | id | name                  |
         +----+-----------------------+
@@ -190,13 +202,15 @@ In the previous section, data was added to the MySQL `mailserver` database. The 
         |  4 | localhost.example.com |
         +----+-----------------------+
         4 rows in set (0.00 sec)
+{{</ output >}}
 
 1.  Check the `virtual_users` table:
-
+        {{< output >}}
         SELECT * FROM mailserver.virtual_users;
+{{</ output >}}
 
 1.  Verify the following output, the hashed passwords are longer than they appear below:
-
+        {{< output >}}
         +----+-----------+-------------------------------------+--------------------+
         | id | domain_id | password                            | email              |
         +----+-----------+-------------------------------------+--------------------+
@@ -204,23 +218,27 @@ In the previous section, data was added to the MySQL `mailserver` database. The 
         |  2 |         1 | $6$030fa94bcfc6554023a9aad90a8c9ca1 | email2@example.com |
         +----+-----------+-------------------------------------+--------------------+
         2 rows in set (0.01 sec)
+{{</ output >}}
 
 1.  Check the `virtual_aliases` table:
-
+        {{< output >}}
         SELECT * FROM mailserver.virtual_aliases;
+{{</ output >}}
 
 1.  Verify the following output:
-
+        {{< output >}}
         +----+-----------+-------------------+--------------------+
         | id | domain_id | source            | destination        |
         +----+-----------+-------------------+--------------------+
         |  1 |         1 | alias@example.com | email1@example.com |
         +----+-----------+-------------------+--------------------+
         1 row in set (0.00 sec)
+{{</ output >}}
 
 1.  If everything outputs as expected, you can exit MySQL:
-
+        {{< output >}}
         exit
+{{</ output >}}
 
 ## Postfix
 
@@ -441,11 +459,12 @@ postmaster_address=postmaster at docteamdemosite.club
 
     Modify the following variables within the configuration file:
 
-    {{< file "/etc/dovecot/conf.d/10-mail.conf" >}}
+    {{< file "10-mail.conf" >}}
+...
 mail_location = maildir:/var/mail/vhosts/%d/%n
 ...
 mail_privileged_group = mail
-
+...
 {{< /file >}}
 
 1.  Create the `/var/mail/vhosts/` directory and a subdirectory for your domain. Replace `example.com` with your domain name:
@@ -466,6 +485,7 @@ mail_privileged_group = mail
 1. Edit the user authentication file, located in `/etc/dovecot/conf.d/10-auth.conf`. Uncomment the following variables and replace with the file excerpt's example values:
 
     {{< file "10-auth.conf" >}}
+...
 disable_plaintext_auth = yes
 ...
 auth_mechanisms = plain login
@@ -483,7 +503,7 @@ For reference, [view](/docs/assets/1238-dovecot_10-auth.conf.txt) a complete `10
 
 1. Edit the `auth-sql.conf.ext` file with authentication and storage information. Ensure your file contains the following lines and that they are uncommented:
 
-    {{< file "/etc/dovecot/conf.d/auth-sql.conf.ext" >}}
+    {{< file "auth-sql.conf.ext" >}}
 ...
 passdb {
   driver = sql
@@ -500,7 +520,7 @@ userdb {
 
 1. Update the `/etc/dovecot/dovecot-sql.conf.ext` file with you MySQL connection information.  Uncomment the following variables and replace the values with the excerpt example.  Enusre you replace `dbname`, `user` and `password` with your own MySQL database values.
 
-    {{< file "/etc/dovecot/dovecot-sql.conf.ext" >}}
+    {{< file "dovecot-sql.conf.ext" >}}
 ...
 driver = mysql
 ...
@@ -584,7 +604,7 @@ service lmtp {
 
     Locate `service auth` and configure it as shown below:
 
-    {{< file "/etc/dovecot/conf.d/10-master.conf" >}}
+    {{< file "10-master.conf" >}}
 ...
 service auth {
   ...
@@ -608,7 +628,7 @@ service auth {
 
     In the `service auth-worker` section, uncomment the `user` line and set it to `vmail`:
 
-    {{< file "/etc/dovecot/conf.d/10-master.conf" >}}
+    {{< file "10-master.conf" >}}
 ...
 service auth-worker {
   ...
@@ -623,7 +643,7 @@ service auth-worker {
 
 1. Edit `/etc/dovecot/conf.d/10-ssl.conf` file to require SSL and to add the location of your domain's SSL certificate and key.  Replace `example.com` with your domain:
 
-    {{< file "/etc/dovecot/conf.d/10-ssl.conf" >}}
+    {{< file "10-ssl.conf" >}}
 ...
 # SSL/TLS support: yes, no, required. <doc/wiki/SSL.txt>
 ssl = required
@@ -638,74 +658,74 @@ ssl_key = </etc/letsencrypt/live/example.com/privkey.pem
         sudo systemctl restart Dovecot
 
 
-## Test Email
+## Test Email with Mailutils
 
-1.  Set up a test account in an email client to ensure that everything is working. Many clients detect server settings automatically. However, manual configuration requires the following parameters:
+1. To send and receive test emails to your Linode mail server, install the Mailutils package.
 
-    -   the full email address, including the `@example.com` part, is the username.
-    -   the password should be the one you added to the MySQL table for this email address.
-    -   The incoming and outgoing server names must be a domain that resolves to the Linode.
-    -   Both the incoming and outgoing servers require authentication and SSL encryption.
-    -   You should use Port 993 for secure IMAP, Port 995 for secure POP3, and Port 587 with SSL for SMTP.
+        sudo apt-get install mailutils
 
-2.  Try sending an email to this account from an outside email account and then reply to it. Check the mail log file in */var/log/mail.log* for the following output (the first block is for an incoming message, and the second block for an outgoing message):
+1. Send a test email to an email address outside of your mail server, like a gmail account. Replace `email1@example.com` with an email address from your mail server:
 
-    {{< file "/var/log/mail.log" >}}
-Mar 22 18:18:15 host postfix/smtpd[22574]: connect from mail1.linode.com[96.126.108.55]
-Mar 22 18:18:15 host postfix/smtpd[22574]: 2BD192839B: client=mail1.linode.com[96.126.108.55]
-Mar 22 18:18:15 host postfix/cleanup[22583]: 2BD192839B: message-id=<D4887A5E-DEAC-45CE-BDDF-3C89DEA84236@example.com>
-Mar 22 18:18:15 host postfix/qmgr[15878]: 2BD192839B: from=<support@linode.com>, size=1156, nrcpt=1 (queue active)
-Mar 22 18:18:15 host postfix/smtpd[22574]: disconnect from mail1.linode.com[96.126.108.55]
-Mar 22 18:18:15 host dovecot: lmtp(22587): Connect from local
-Mar 22 18:18:15 host dovecot: lmtp(22587, email1@example.com): 5GjrDafYTFE7WAAABf1gKA: msgid=<D4887A5E-DEAC-45CE-BDDF-3C89DEA84236@linode.com>: saved mail to INBOX
-Mar 22 18:18:15 host dovecot: lmtp(22587): Disconnect from local: Client quit (in reset)
-Mar 22 18:18:15 host postfix/lmtp[22586]: 2BD192839B: to=<email1@example.com>, relay=host.example.com[private/dovecot-lmtp], delay=0.09, delays=0.03/0.02/0.03/0.01, dsn=2.0.0, status=sent (250 2.0.0 <email1@example.com> 5GjrDafYTFE7WAAABf1gKA Saved)
-Mar 22 18:18:15 host postfix/qmgr[15878]: 2BD192839B: removed
+        echo "Email body text" | sudo mail -s "Email subject line" recipient@gmail.com -aFrom:email1@example.com
 
+1. Log in to the test email account and verify that you have received an email from the specified mail server email address.
 
-{{< /file >}}
+1. Send a test email to your Linode mail server from an outside email address.  Log back in to your Linode and check that the email was received:
 
+        mail
 
-    {{< file "/var/log/mail.log" >}}
-Mar 22 18:20:29 host postfix/smtpd[22590]: connect from 173-161-199-49-Philadelphia.hfc.comcastbusiness.net[173.161.199.49]
-Mar 22 18:20:29 host dovecot: auth-worker: mysql(127.0.0.1): Connected to database mailserver
-Mar 22 18:20:29 host postfix/smtpd[22590]: AA10A2839B: client=173-161-199-49-Philadelphia.hfc.comcastbusiness.net[173.161.199.49], sasl_method=PLAIN, sasl_username=email1@example.com
-Mar 22 18:20:29 host postfix/cleanup[22599]: AA10A2839B: message-id=<FB6213FA-6F13-49A8-A5DD-F324A4FCF9E9@example.com>
-Mar 22 18:20:29 host postfix/qmgr[15878]: AA10A2839B: from=<email1@example.com>, size=920, nrcpt=1 (queue active)
-Mar 22 18:20:29 host postfix/smtp[22601]: AA10A2839B: to=<support@linode.com>, relay=mail1.linode.com[96.126.108.55]:25, delay=0.14, delays=0.08/0.01/0.05/0.01, dsn=2.0.0, status=sent (250 2.0.0 Ok: queued as C4232266C9)
-Mar 22 18:20:29 host postfix/qmgr[15878]: AA10A2839B: removed
+     When prompted, enter the number corresponding to the email you would like to view:
+        {{< output >}}
+user@hostname:~$ mail
+"/var/mail/email1": 9 messages 5 new 4 unread
+U   1 John Doe     Wed Jun 27 16:00  57/2788  test 13
+U   2 John Doe     Wed Jun 27 16:02  56/2761  test 14
+U   3 John Doe     Wed Jun 27 16:35  15/594   Subject of the Email
+U   4 John Doe     Wed Jun 27 16:42  71/3535  Re: This is the subject
+>N   5 John Doe     Mon Jul  2 10:55  13/599   Subject of the Email
+?
+{{</ output >}}
+
+    The email message header and body should display. consider adding spam and virus filtering and a webmail client.
+
+    See [Troubleshooting problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/) for debugging steps.
 
 
-{{< /file >}}
 
+#### Email Client
 
-You now have a functioning mail server that can securely send and receive email. If things are not working smoothly, try consulting the [Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/) guide. At this point, consider adding spam and virus filtering and a webmail client. If DNS records have not been created for the mail server yet, do so now. Once the DNS records have propagated, email will be delivered via the new mail server.
+You can set up an email client to connect to your mail server. Many clients detect server settings automatically. Manual configuration requires the following parameters:
 
-{{< note >}}
-If errors are encountered in the /var/log/syslog stating "Invalid settings: postmaster_address setting not given", you may need to append the following line to the /etc/dovecot/dovecot.conf file, replacing domain with the domain name.
+-   Username: the full email address, including the `@example.com` part.
+-   Password: this is the MySQL password used to create the `mailuser` database.
+-   Server name: the incoming and outgoing server names must be a domain that resolves to the Linode.
+-   SSL: incoming and outgoing servers require authentication and SSL encryption.
+-   Ports: use Port 993 for secure IMAP, Port 995 for secure POP3, and Port 587 with SSL for SMTP.
 
-postmaster_address=postmaster at DOMAIN
-{{< /note >}}
+See [Install SquirrelMail on Ubuntu 16.04](docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
 
 ## Adding New Domains, Email Addresses, and Aliases
 
-Although the mail server is up and running, eventually you'll probably need to add new domains, email addresses, and aliases for the users. To do this, simply add a new line to the appropriate MySQL table. These instructions are for command-line MySQL, but you can also use [phpMyAdmin](http://www.phpmyadmin.net/) to add new entries to the tables.
+To add new domains, email addresses, and aliases to the mailserver you will need to update the corresponding MySQL tables created in the [MySQL](#MySQL) section of this guide.
 
 ### Domains
 
-1.  To add a new domain, open a terminal window and [log in to the Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
+1.  To add a new domain, [connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
 
-2.  Log in to the MySQL server with an appropriately privileged user. For this example, use the `root` user:
+1.  Log in to the MySQL server. Replace `mailserver` with the name of your mailserver's database:
 
-        mysql -u root -p mailserver
+        sudo mysql -u root -p mailserver
 
-3.  Enter the root MySQL password when prompted.
-4.  Always view the contents of the table before adding new entries. Enter the following command to view the current contents of any table, replacing `virtual_domains` with the table:
 
+1.  Enter the root MySQL password when prompted.
+
+1.  View the contents of the table before adding new entries. If you did not use `virtual_domains` as the name of your domain table, replace the value:
+        {{< output >}}
         SELECT * FROM mailserver.virtual_domains;
+{{</ output >}}
 
-5.  The output should resemble the following:
-
+1.  The output should resemble the following:
+        {{< output >}}
         +----+-----------------------+
         | id | name                  |
         +----+-----------------------+
@@ -714,74 +734,122 @@ Although the mail server is up and running, eventually you'll probably need to a
         |  3 | hostname              |
         |  4 | localhost.example.com |
         +----+-----------------------+
+{{</ output >}}
 
-6.  To add another domain, enter the following command, replacing `newdomain.com` with the domain name:
-
+1.  Add a new domain to the table. Replace `newdomain.com` with the desired domain name:
+        {{< output >}}
         INSERT INTO `mailserver`.`virtual_domains`
           (`name`)
         VALUES
           ('newdomain.com');
+{{</ output >}}
 
-7.  Verify that the new domain has been added. The output should display the new domain name.
-
+1.  Verify that the new domain has been added. The output should display the new domain name.
+        {{< output >}}
         SELECT * FROM mailserver.virtual_domains;
+{{</ output >}}
 
-8.  Exit MySQL:
-
+1.  Exit MySQL:
+        {{< output >}}
         quit
-
-You have successfully added the new domain to the Postfix and Dovecot setup.
+{{</ output >}}
 
 ### Email Addresses
 
-1.  To add a new email address, enter the following command in MySQL, replacing `newpassword` with the user's password, and `email3@newdomain.com` with the user's email address:
+1.  Log in to the MySQL server. Replace `mailserver` with the name of your mailserver's database:
 
+        sudo mysql -u root -p mailserver
+
+    When prompted enter the MySQL password.
+
+1. Verify the contents of the user table.  Replace `virtual_users` with your table name:
+        {{< output>}}
+        SELECT * FROM mailserver.virtual_user;
+{{</ output >}}
+
+    The output should resemble the following:
+        {{< output >}}
+        +----+-----------+-------------------------------------+--------------------+
+        | id | domain_id | password                            | email              |
+        +----+-----------+-------------------------------------+--------------------+
+        |  1 |         1 | $6$574ef443973a5529c20616ab7c6828f7 | email1@example.com |
+        |  2 |         1 | $6$030fa94bcfc6554023a9aad90a8c9ca1 | email2@example.com |
+        +----+-----------+-------------------------------------+--------------------+
+        2 rows in set (0.01 sec)
+{{</ output >}}
+
+1. Add a new email address to the existing table. Replace `newpassword` with the user's password, and `email3@newdomain.com` with the user's email address:
+        {{< output >}}
         INSERT INTO `mailserver`.`virtual_users`
           (`domain_id`, `password` , `email`)
         VALUES
           ('5', ENCRYPT('newpassword', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))) , 'email3@newdomain.com');
+{{</ output >}}
 
     {{< note >}}
-Be sure to use the correct number for the `domain_id`. In this case, we are using `5`, because we want to make an email address for `newdomain.com`, and `newdomain.com` has an `id` of `5` in the `virtual_domains` table.
+The `domain_id` should correspond to the `id` value of the domain in the `virtual_domains` table. In the example, we are creating an email address for `newdomain.com` added in the previous section.
 {{< /note >}}
 
-2.  Verify that the new email address has been added.  The new email address should be displayed in the output.
-
+1.  Verify that the new email address has been added.  The new email address should be displayed in the output.
+        {{< output >}}
         SELECT * FROM mailserver.virtual_users;
+{{</ output >}}
 
-3.  Exit MySQL:
-
+1.  Exit MySQL:
+        {{< output >}}
         quit
-
-You have successfully added the new email address to the Postfix and Dovecot setup.
+{{</ output >}}
 
 ### Aliases
 
-1.  To add a new alias, enter the following command in MySQL, replacing `alias@newdomain.com` with the address from which you want to forward email, and `myemail@gmail.com` with the address that you want to forward the mail to. The `alias@newdomain.com` needs to be an email address that already exists on the server.
+1. Log in to the MySQL server. Replace `mailserver` with the name of your mailserver's database:
 
+        sudo mysql -u root -p mailserver
+
+    When prompted enter the MySQL password.
+
+1. Verify the contents of the user table.  Replace `virtual_users` with your table name:
+        {{< output>}}
+        SELECT * FROM mailserver.virtual_aliases;
+{{</ output >}}
+
+    The output should resemble the following:
+        {{< output>}}
+        +----+-----------+-------------------+--------------------+
+        | id | domain_id | source            | destination        |
+        +----+-----------+-------------------+--------------------+
+        |  1 |         1 | alias@example.com | email1@example.com |
+        +----+-----------+-------------------+--------------------+
+        1 row in set (0.00 sec)
+{{</ output>}}
+
+1.  Add a new alias. Replace `alias@newdomain.com` with the address to forward email from, and `email1@gmail.com` with the address that you want to forward the mail to. The `alias@newdomain.com` needs to be an email address that already exists on the mail server.
+        {{< output >}}
         INSERT INTO `mailserver`.`virtual_aliases`
           (`domain_id`, `source`, `destination`)
         VALUES
           ('5', 'alias@newdomain.com', 'myemail@gmail.com');
+{{</ output >}}
 
     {{< note >}}
-Ensure that the correct number is entered for the `domain_id` value. Use the `id` of the domain for this email address. For an explanation of `id` us, see the email users section above.
+The `domain_id` should correspond to the `id` value of the domain in the `virtual_domains` table. In the example, we are creating an email address for `newdomain.com` added in the previous section.
 {{< /note >}}
 
-    You can also add a "catch-all" alias which will forward all emails sent to a domain which do not have matching aliases or users by specifying `@newdomain.com` as the source of the alias.
-
+    You can create a "catch-all" alias which will forward all emails sent to the matching domain that does not have matching aliases or users. Replace `@newdomain.com` with your domain.  This value is the source of the alias.
+        {{< output >}}
         INSERT INTO `mailserver`.`virtual_aliases`
           (`domain_id`, `source`, `destination`)
         VALUES
           ('5', '@newdomain.com', 'myemail@gmail.com');
+{{</ output >}}
 
-2.  Verify that the new alias has been added. The new alias will be displayed in the output.
-
+1.  Verify that the new alias has been added. The new alias will be displayed in the output.
+        {{< output >}}
         SELECT * FROM mailserver.virtual_aliases;
+{{</ output >}}
 
-3.  Exit MySQL:
-
+1.  Exit MySQL:
+        {{< output >}}
         quit
-
-You have now successfully added the new alias to the Postfix and Dovecot setup.
+{{</ output >}}
 
