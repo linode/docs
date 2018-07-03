@@ -15,7 +15,7 @@ external_resources:
   - '[DNS Records: An Introduction](https://linode.com/docs/networking/dns/dns-records-an-introduction/)'
 ---
 
-[Cloudflare.com](https://www.cloudflare.com) is a business which provides a *content delivery network* (*CDN*) for their customers' websites, APIs, and other applications hosted on the web. The Linode platform is compatible with Cloudflare, so if you run a web application on a Linode, you can enroll it in Cloudflare's CDN. Using the Cloudflare network can speed up your application's response time and protect your Linode from denial-of-service attacks.
+[Cloudflare](https://www.cloudflare.com) provides a *content delivery network* (*CDN*) for websites, APIs, and other applications hosted on the web. The Linode platform is compatible with Cloudflare, so if you run a web application on a Linode, you can enroll it in Cloudflare's CDN. Using the Cloudflare network can speed up your application's response time and protect your Linode from denial-of-service attacks.
 
 ## How Cloudflare Works
 
@@ -49,9 +49,9 @@ If you were previously attacked and are setting up Cloudflare to protect yoursel
 
 ## Set Up Cloudflare
 
-Cloudflare offers a free tier of service which enables the benefits described by this guide. This free tier will be used to explore how to sign up for the service.
+Cloudflare offers a free tier of service which enables the benefits described by this guide. This free tier will be used to explore how to sign up for the service. You will need a registered domain and [DNS record](https://linode.com/docs/networking/dns/dns-manager-overview/#dns-set-up-checklist) set up on your Linode before proceeding with these steps.
 
-1.  Create an account on [Cloudflare.com](https://dash.cloudflare.com/sign-up).
+1.  Create an account on the [Cloudflare](https://dash.cloudflare.com/sign-up) site.
 
 2.  After creating your account, you are presented with a form that asks for your domain name:
 
@@ -61,23 +61,23 @@ Cloudflare offers a free tier of service which enables the benefits described by
 
     ![Cloudflare setup - DNS record scan dialog](cloudflare-setup-scan-dialog.png "Cloudflare setup - DNS record scan dialog")
 
-4.  Cloudflare will next ask you which plan you'd like to proceed with. Choose the free tier. You can upgrade your plan later if you'd like.
+4.  The *Select a Plan* screen will ask you to choose a plan. Select the free tier. You can upgrade your plan later if you'd like.
 
     ![Cloudflare setup - select plan](cloudflare-setup-select-plan.png "Cloudflare setup - select plan")
 
-5.  The Cloudflare site will present a screen which displays the results of the DNS record scan they performed. Cloudflare will scan the current records for the apex of your domain (e.g. `example.com`) and common subdomains (e.g. `www.example.com`). This scan will likely not detect other custom subdomains (e.g. `mysubdomain.example.com`), so you should take care to add any of your current records that were missed by this scan at the bottom of this page.
+5.  The Cloudflare site will present the DNS query results for your domain. The query scans the current DNS records for the apex of your domain (e.g. `example.com`) and common subdomains (e.g. `www.example.com`). This scan will likely not detect custom subdomains (e.g. `mysubdomain.example.com`). You can manually add any of your current records that were missed by the scan using the provided form.
 
     ![Cloudflare setup - DNS record scan results](cloudflare-setup-scan-results.png "Cloudflare setup - DNS record scan results")
 
-    The table which lists your DNS records will show an *orange cloud* icon for hostnames that will be routed through Cloudflare's network. A *gray cloud* is displayed for hostnames which bypass Cloudflare's network. You can toggle between these two options, depending on which is more appropriate for your services. Cloudflare's documentation describes which services you should route through their network: [What subdomains are appropriate for orange / gray clouds?](https://support.cloudflare.com/hc/en-us/articles/200169626-What-subdomains-are-appropriate-for-orange-gray-clouds-)
+    The table displays an *orange cloud* icon for hostnames that will be routed through Cloudflare's network. A *gray cloud* denotes hostnames which bypass Cloudflare's network. You can toggle between these two options. Consult Cloudflare's [documentation](https://support.cloudflare.com/hc/en-us/articles/200169626-What-subdomains-are-appropriate-for-orange-gray-clouds-) to determine which services you should route through their network.
 
-6.  Cloudflare will ask you to set their name servers as the *authoritative name servers* for your domain with the registrar that you purchased the domain from. The next page presented will list the Cloudflare name servers that you should use:
+6.  You will need to change the [name servers](https://linode.com/docs/networking/dns/dns-records-an-introduction/#name-servers) configured with your domain registrar to the ones listed under the *To* heading. This sets Cloudflare's nameservers as the *authoritative name servers* for your domain.
 
     ![Cloudflare setup - authoritative name servers](cloudflare-setup-name-servers.png "Cloudflare setup - authoritative name servers")
 
-    If you're not sure which registrar you purchased your domain from, you can check your domain using a `whois` website like [whois.net](https://whois.net). The steps for changing your authoritative name servers vary slightly depending on which registrar you used. Cloudflare provides a list of instructions for common registrars in this document: [Change your domain name servers to Cloudflare](https://support.cloudflare.com/hc/en-us/articles/205195708-Step-3-Change-your-domain-name-servers-to-Cloudflare#step3).
+    You can check your domain registrar information by using a `whois` website like [whois.net](https://whois.net). The steps for changing your authoritative name servers vary slightly depending on which registrar you used. Cloudflare provides a [list of instructions](https://support.cloudflare.com/hc/en-us/articles/205195708-Step-3-Change-your-domain-name-servers-to-Cloudflare#step3) for common registrars.
 
-7.  Cloudflare will present a dashboard for your new site. If you haven't set their name servers at your registrar yet, or if you have made those changes but they haven't propagated to Cloudflare yet, you may see a `Status: Website not active (DNS modification pending)` message:
+7.  Cloudflare will present a dashboard for your new site. If you haven't changed the nameserver values with the registrar or if the changes haven't propogated, a `Status: Website not active (DNS modification pending)` message will display:
 
     ![Cloudflare overview - website not active](cloudflare-overview-not-active.png "Cloudflare overview - website not active")
 
