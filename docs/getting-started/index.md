@@ -52,7 +52,7 @@ The [Linode Manager](https://manager.linode.com) is a web-based control panel th
 
 * Boot and shut down your virtual server,
 * Access monitoring statistics,
-* Update your billing and account information,
+* Update your [billing and account information](/docs/platform/accounts-and-passwords/),
 * Request support and perform other administrative tasks.
 
 ### Deploy an Image
