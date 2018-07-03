@@ -162,9 +162,9 @@ The Universal SSL certificate that is provide for free is shared with other cust
 
 It is possible to order a [dedicated SSL certificate](https://support.cloudflare.com/hc/en-us/articles/228009108-Dedicated-SSL-Certificates) from Cloudflare whose common name is your domain name and which isn't shared with other customers. This is a fully managed solution from Cloudflare, and the certificate provided will auto-renew.
 
-These certificates can be entirely administered through the Cloudflare website. To purchase this service from Cloudflare, scroll to the *Edge Certificates* panel of the *Crypto* section on Cloudflare's dashboard and click *Order SSL Certificate*. 
+These certificates can be entirely administered through the Cloudflare website. To purchase this service from Cloudflare, scroll to the *Edge Certificates* panel of the *Crypto* section on Cloudflare's dashboard and click *Order SSL Certificate*.
 
-There are two options for dedicated SSL certificates: a $5/month plan will cover your domain and a wildcard representing one-level subdomains, and a $10/month plan will also cover up to 50 specific subdomains. These certificates also require SNI compatibilty in web browsers. You can purchase these certificates while otherwise remaining on the free Cloudflare tier.
+There are two options for dedicated SSL certificates: a $5/month plan will cover your domain and a wildcard representing one-level subdomains, and a $10/month plan will also cover up to 50 specific subdomains. These certificates also require SNI compatibility in web browsers. You can purchase these certificates while otherwise remaining on the free Cloudflare tier.
 
 ![Cloudflare crypto - edge certificates panel](cloudflare-crypto-edge-certificates.png "Cloudflare crypto - edge certificates panel")
 
