@@ -35,15 +35,15 @@ This video will show you how to add a new user:
 Here's how to add a user to your Linode account:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Account** tab.
-3.  Click the **Users and Permissions** tab.
-4.  Enter your password and click **Authenticate**. The *User Manager* webpage appears.
-5.  Select the **Add a user** link. The *Edit User* webpage appears.
-6.  Enter a username for the user in the **Username** field.
-7.  Enter a password for the user in the **New Password** fields.
-8.  Enter the user's email address in the **Email** field.
-9.  Select an access setting for the user's account. You can specify restrictions or grant the user full access to all of the settings in the Linode Manager.
-10. Click **Save Changes**.
+1.  Click the **Account** tab.
+1.  Click the **Users and Permissions** tab.
+1.  Enter your password and click **Authenticate**. The *User Manager* webpage appears.
+1.  Select the **Add a user** link. The *Edit User* webpage appears.
+1.  Enter a username for the user in the **Username** field.
+1.  Enter a password for the user in the **New Password** fields.
+1.  Enter the user's email address in the **Email** field.
+1.  Select an access setting for the user's account. You can specify restrictions or grant the user full access to all of the settings in the Linode Manager.
+1. Click **Save Changes**.
 
 If you granted the user full access, the account will be created and no further action is required. If you opted to restrict the user, follow the instructions in the next section.
 
@@ -54,21 +54,21 @@ Setting permissions restricts a user's access to certain areas of the Linode Man
 Here's how to set a user's access permissions:
 
 1.  Click the **Account** tab.
-2.  Click the **Users and Permissions** tab.
-3.  Enter your password and click **Authenticate**. The *User Manager* webpage appears.
-4.  Locate the user in the list and select the **Edit Permissions** link. The webpage shown below appears.
+1.  Click the **Users and Permissions** tab.
+1.  Enter your password and click **Authenticate**. The *User Manager* webpage appears.
+1.  Locate the user in the list and select the **Edit Permissions** link. The webpage shown below appears.
 
-    [![Configure permissions for a user in the Linode Manager.](922-user1-small.png)](921-user1.png)
+    ![Configure permissions for a user in the Linode Manager.](users-manager.png "Linode manager")
 
-5.  Select checkboxes in the **Global Grants** section to allow the user to add Linodes, Domains, and NodeBalancers to the account, create StackScripts, access all billing information, and cancel the entire account.
+1.  Select checkboxes in the **Global Grants** section to allow the user to add Linodes, NodeBalancers, Domains, Longview clients, Block Storage Volumes to the account, create StackScripts and frozen Images, access all billing information, and cancel the entire account.
 
     {{< note >}}
-Granting access to settings denoted with a dollar sign ($) will allow the user perform actions that incur billing costs, such as adding or resizing a Linode.
+Granting access to settings denoted with a dollar sign ($) will allow the user to perform actions that incur billing costs, such as adding or resizing a Linode.
 
 {{< /note >}}
 
-6.  Select checkboxes in the other sections to allow the user to access certain features and sections of the Linode Manager.
-7.  When you have finished configuring the user's permissions, click **Update Grants**.
+1.  Select checkboxes in the other sections to allow the user to access certain features and sections of the Linode Manager.
+1.  When you have finished configuring the user's permissions, click **Update Grants**.
 
 The user's permissions will be saved and effective immediately.
 
@@ -77,8 +77,8 @@ The user's permissions will be saved and effective immediately.
 Did you forget your Linode Manager username? Recover it with the *Forgot Username* webpage. Here's how:
 
 1.  Visit the [Forgot Username](https://manager.linode.com/session/forgot/username) webpage.
-2.  Enter your email address in the **Email** field.
-3.  Click **Submit**.
+1.  Enter your email address in the **Email** field.
+1.  Click **Submit**.
 
 In a couple minutes, you'll receive an email message with your Linode Manager username.
 
@@ -87,10 +87,10 @@ In a couple minutes, you'll receive an email message with your Linode Manager us
 You can permanently remove a user account from the Linode Manager. Here's how:
 
 1.  Click the **Account** tab.
-2.  Click the **Users and Permissions** tab.
-3.  Authenticate with your Linode Manager password. The *User Manager* webpage appears.
-4.  Locate the user in the list and select the **Remove** link. A warning appears asking you to confirm that you want to delete the user.
-5.  Click **Yes. Delete!**
+1.  Click the **Users and Permissions** tab.
+1.  Authenticate with your Linode Manager password. The *User Manager* webpage appears.
+1.  Locate the user in the list and select the **Remove** link. A warning appears asking you to confirm that you want to delete the user.
+1.  Click **Yes. Delete!**
 
 The account will be removed, and the user will no longer be able to access the Linode Manager.
 
@@ -107,22 +107,23 @@ Use the *Account* webpage to update the contact information for the Linode accou
 Here's how to update the contact information and the email address on the *Account* webpage:
 
 1.  Click the **Account** tab.
-2.  Click the **Contact Info** tab.
-3.  Update the contact information for the account and the email address, if necessary.
-4.  Click **Save Changes**.
+1.  Click the **Contact Info** tab.
+1.  Update the contact information and the email address for the accounty.
+1.  Click **Save Changes**.
 
 The account's contact information will be updated.
 
 ### Changing Your Email Address
 
-Use the *My Profile* webpage to modify the email address associated with your user account. The email address saved on this webpage receives IP whitelist warnings, password reset messages, and support tickets for services that you have permission to access. You may also receive invoices and receipts, if the primary account holder grants you access to that information.
+Use the *My Profile* webpage to modify the email address associated with your user account. The email address saved on this webpage receive IP whitelist warnings, password reset messages, and support tickets for services that you have permission to access. You may also receive invoices and receipts, if the primary account holder grants you access to that information.
 
 Here's how to change your email address on the *My Profile* webpage:
 
 1.  Select the **My Profile** link.
-2.  Enter your password and click **Authenticate**.
-3.  In the **My Profile** tab, enter your email address in the **New Email** field.
-4.  Click **Change Email**.
+1.  Enter your password and click **Authenticate**.
+1.  In the **My Profile** tab, enter your email address in the **New Email** field.
+    ![Modify email address associated with your user account.](my-profile.png "My Profile page")
+1.  Click **Change Email**.
 
 Your profile's email account will be updated.
 
@@ -135,26 +136,27 @@ Creating strong passwords is essential to protecting your Linode and your Linode
 It's a good idea to periodically change the password for your Linode Manager user account. Here's how:
 
 1.  Select the **My Profile** link.
-2.  Enter your password and click **Authenticate**.
-3.  Select the **Password & Authentication** tab.
-4.  Enter a new password in both of the **New Password** fields.
-5.  *Optional:* Set an expiration date for your password by selecting a value from the **Expires** menu. When the password expires, you'll be prompted to reset it at login.
-6.  Click **Change Password**.
+1.  Enter your password and click **Authenticate**.
+1.  Select the **Password & Authentication** tab.
+1.  Enter a new password in both of the **New Password** fields.
+1.  *Optional:* Set an expiration date for your password by selecting a value from the **Expires** menu. When the password expires, you'll be prompted to reset it at login.
 
-Your Linode Manager password will be changed.
+1.  Click **Change Password**.
+
+Your Linode Manager password will be changed. See [Linode Manager Security Control](/docs/security/linode-manager-security-controls/) to learn about additional security features.
 
 ### Resetting Your Linode Manager Password
 
 Did you forget your Linode Manager password? Reset it with the *Forgot Password* webpage. Here's how:
 
 1.  Visit the [Forgot Password](https://manager.linode.com/session/forgot/password) webpage.
-2.  Enter your username in the **Username** field.
+1.  Enter your username in the **Username** field.
 
- {{< note >}}
-If you've forgotten your Linode Manager username, see [Recovering a Lost Username](#recovering-a-lost-username).
+    {{< note >}}
+  If you've forgotten your Linode Manager username, see [Recovering a Lost Username](#recovering-a-lost-username).
 {{< /note >}}
 
-3.  Check your email for a message containing further instructions.
+1.  Check your email for a message containing further instructions.
 
 Follow the instructions in the email message to reset your password.
 
@@ -163,13 +165,13 @@ Follow the instructions in the email message to reset your password.
 If you can't remember the password for the `root` user on a Linode, use the Linode Manager to reset it. Here's how:
 
 1.  Click the **Linodes** tab. A list of your Linodes appears.
-2.  Select a Linode. The Linode's dashboard appears.
-3.  Click **Shut down** to turn off your Linode. Monitor the *Host Job Queue* for a message indicating that your Linode has shut down.
-4.  Click the **Rescue** tab. The rescue webpage appears.
-5.  Select your primary disk from the **Filesystem** menu.
-6.  Enter a new password for the `root` user in the **New Password** field.
-7.  Click **Reset Root Password**. The Linode's dashboard appears.
-8.  Click **Boot** to turn on your Linode.
+1.  Select a Linode. The Linode's dashboard appears.
+1.  Click **Shut down** to turn off your Linode. Monitor the *Host Job Queue* for a message indicating that your Linode has shut down.
+1.  Click the **Rescue** tab. The rescue webpage appears.
+1.  Select your primary disk from the **Filesystem** menu.
+1.  Enter a new password for the `root` user in the **New Password** field.
+1.  Click **Reset Root Password**. The Linode's dashboard appears.
+1.  Click **Boot** to turn on your Linode.
 
 Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh) for more information about connecting.
 
