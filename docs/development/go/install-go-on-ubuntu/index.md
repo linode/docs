@@ -13,6 +13,8 @@ modified_by:
 title: 'How to Install Go on Ubuntu'
 ---
 
+![How to Install Go on Ubuntu](install-go-ubuntu-title.jpg "How to Install Go on Ubuntu")
+
 ## What is Go?
 
 [Go](https://golang.org/) is a compiled, statically typed programming language developed by Google. Many modern applications, including Docker, Kubernetes, and Caddy, are written in Go.

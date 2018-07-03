@@ -18,6 +18,8 @@ external_resources:
 - '[Gradle](https://gradle.org/)'
 ---
 
+![How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04](deploy-spring-boot-nginx-reverse-proxy.jpg "How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04")
+
 ## What is Spring Boot?
 
 [Spring Boot](https://projects.spring.io/spring-boot/) enables quick development of the [Spring Framework](https://projects.spring.io/spring-framework/) by taking care of default configurations and allowing Java developers to focus on rapid prototyping. This guide shows how to create a simple Spring Boot application which is then exposed through an NGINX reverse proxy.

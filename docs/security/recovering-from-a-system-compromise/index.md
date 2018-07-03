@@ -14,6 +14,8 @@ published: 2009-08-26
 title: Recovering from a System Compromise
 ---
 
+![Recovering from a System Compromise](recovering-from-system-compromise-title.jpg "Recovering from a System Compromise")
+
 If you suspect that an unauthorized user has gained access to your Linode, your system should be considered **compromised**. Unfortunately, it's virtually impossible to determine the full scope of an attacker's reach into a compromised system. The server should not be trusted for production use and you should take immediate steps to secure your data and applications.
 
 This guide describes several methods to recover from a system compromise:
