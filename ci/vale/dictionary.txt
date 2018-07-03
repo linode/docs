@@ -85,6 +85,7 @@ binlog
 bitbucket
 bitrate
 blocklists
+blockwise
 boonex
 bootable
 bootloader
@@ -124,6 +125,7 @@ changelog
 changelogs
 changeme
 changeset
+characterwise
 chatrooms
 cheatsheet
 checksummed
@@ -162,6 +164,7 @@ conda
 config
 configs
 configtest
+containerised
 convolutional
 coose
 copyfrom
@@ -243,6 +246,7 @@ digium
 dircaps
 directadmin
 dired
+direnv
 disqus
 distro
 distros
@@ -292,6 +296,7 @@ ejabberd
 el6
 el7
 elasticsearch
+elisp
 elgg
 elpaso
 email2email
@@ -360,8 +365,11 @@ filimonov
 finnix
 firewalld
 firstsite
+flamegraph
+flamegraphs
 flatpress
 flyspray
+fortran
 fpm
 fragging
 framesets
@@ -484,6 +492,7 @@ hyperefficient
 hypervisor
 hypervisors
 i386
+iaas
 icanhazip
 iceweasel
 icinga
@@ -554,6 +563,7 @@ jdbc
 jdk
 jenkinsfile
 jetpack
+jez
 jk
 jks
 jobd
@@ -564,6 +574,7 @@ jpg
 jre
 js
 json
+julialang
 jumpbox
 jupyter
 kakfa
@@ -625,6 +636,7 @@ lighthttpd
 lighttpd
 lighty
 ligttpd
+linewise
 linode
 linodes
 lish
@@ -675,6 +687,7 @@ mapreduce
 mariadb
 maskname
 masterdb
+mathematica
 mathjax
 maxconn
 maxdepth
@@ -750,6 +763,7 @@ mypassword
 myproject
 myserver
 mysql
+mysqli
 mysqlclient10
 mysqld
 mysqldefault
@@ -854,6 +868,7 @@ ovpn
 owadb
 owncloud
 pacman
+paas
 pagent
 pagespeed
 pandoc
@@ -1041,7 +1056,9 @@ s1
 s2s
 s3cr37
 s3cret
+saas
 sakila
+salesforce
 sasl
 sasl2
 saslauth
@@ -1107,8 +1124,10 @@ smartcard
 smartcards
 smtp
 smtpd
+smush
 smux
 snakeoil
+snapd
 snipcart
 snmp
 snmpd
@@ -1202,6 +1221,7 @@ testfile
 testkeys
 testparam
 testuser
+tetris
 tf
 tgz
 thawte
@@ -1233,6 +1253,7 @@ tomcat6
 traceroute
 trackbar
 transcoder
+trello
 truststore
 tt
 ttl
@@ -1250,6 +1271,7 @@ ufw
 ui
 uidl
 un
+unarchive
 unban
 unbans
 unbilled
@@ -1261,6 +1283,7 @@ uncommented
 uncommenting
 uncompress
 unencrypted
+unexported
 unformatted
 unicast
 uniq
