@@ -16,6 +16,7 @@ contributor:
   link:
 ---
 
+![Set Up WireGuard VPN on Ubuntu](wireguard-vpn-ubuntu-title.jpg "Set Up WireGuard VPN on Ubuntu")
 
 [WireGuard](https://www.wireguard.com) is a simple, fast, and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and has a much smaller source code footprint. WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol and delivers lower ping times in comparison.
 

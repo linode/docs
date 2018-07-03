@@ -13,6 +13,8 @@ published: 2013-01-20
 title: Install a Mosh Server as SSH Alternative on Linux
 ---
 
+![Install a Mosh Server as SSH Alternative on Linux](mosh-server-ssh-alternative-title.jpg "Install a Mosh Server as SSH Alternative on Linux")
+
 [Mosh](http://mosh.mit.edu/) is a free replacement for SSH that allows roaming and supports intermittent connectivity. Unlike regular SSH connections, Mosh continuously syncs your local and remote sessions to ensure that your client automatically reconnects to the server when you switch between wireless networks or wake your computer from sleep. This guide explains how to install Mosh on your Linode and your personal computer.
 
  {{< note >}}
