@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Ever wonder what operating system you should use to develop your projects in? It can seem a daunting decision to make, but it's much easier than you may think.'
-og_description: 'Ever wonder what operating system you should use to develop your projects in? It can seem a daunting decision to make, but it's much easier than you may think.'
+description: 'A quick answer for why you should use Linux for development.'
+og_description: A quick answer for why you should use Linux for development.'
 keywords: ['linux', 'development', 'dev', 'develop', 'developing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-07-07
