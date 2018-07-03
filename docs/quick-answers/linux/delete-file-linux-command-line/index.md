@@ -87,7 +87,7 @@ filename05.png
 
 ### `-rf` Remove Files and Directories, Even if Not Empty
 
-Add the `f` flag to a recursive rm command to skip all confirmation prompts:
+Add the `f` flag to a recursive `rm` command to skip all confirmation prompts:
 
     rm -rf filenames/
 
@@ -95,7 +95,7 @@ Add the `f` flag to a recursive rm command to skip all confirmation prompts:
 
 ### Remove Old Files Using find and rm
 
-Combine the [find command](/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/)'s `-exec` option with rm to find and remove all files older than 28 days old:
+Combine the [find command](/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/)'s `-exec` option with `rm` to find and remove all files older than 28 days old.  The files that match are printed on the screen (`-print`):
 
-    find -v filename* -type f -mtime +28 -exec rm {} \;
+    find filename* -type f -mtime +28 -exec rm {} \; -print
 
