@@ -1250,6 +1250,7 @@ tokenizing
 tokyo2
 tomacat
 tomcat6
+toolchain
 traceroute
 trackbar
 transcoder
@@ -1415,6 +1416,7 @@ wx
 xabbix
 xap
 xcalc
+xcode
 xen
 xenial
 xerus
