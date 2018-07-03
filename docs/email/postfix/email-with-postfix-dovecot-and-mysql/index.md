@@ -25,7 +25,7 @@ For a different Linux distribution or different mail server, review our [email t
 
 1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
 
-1.  Ensure that the iptables [firewall](/docs/security/securing-your-server/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
+1.  Verify that the iptables [firewall](/docs/security/securing-your-server/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
 
 1. Review the concepts in the [Running a Mail Server](/docs/email/running-a-mail-server/) guide.
 
@@ -37,7 +37,7 @@ When ready to update the DNS and to start sending mail to the server, edit the d
     example.com MX 10 example.com
     mail.example.com MX 10 example.com
 
-Ensure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](/docs/networking/dns/dns-manager-overview/), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
+Make sure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](/docs/networking/dns/dns-manager-overview/), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
 
 ## Update Hosts File
 
@@ -518,7 +518,7 @@ userdb {
 
 {{< /file >}}
 
-1. Update the `/etc/dovecot/dovecot-sql.conf.ext` file with you MySQL connection information.  Uncomment the following variables and replace the values with the excerpt example.  Enusre you replace `dbname`, `user` and `password` with your own MySQL database values.
+1. Update the `/etc/dovecot/dovecot-sql.conf.ext` file with you MySQL connection information.  Uncomment the following variables and replace the values with the excerpt example.  Replace `dbname`, `user` and `password` with your own MySQL database values.
 
     {{< file "dovecot-sql.conf.ext" >}}
 ...
@@ -559,7 +559,7 @@ When editing the file, be careful you don't remove any opening or closing curly 
 [Here](/docs/assets/1240-dovecot_10-master.conf.txt) is an example of a complete `10-master.conf` file.
 {{< /note >}}
 
-1. Disable unencrypted IMAP and POP3 by setting the protocols' ports to `0`. Ensure that the `port` and `ssl` variables are uncommented:
+1. Disable unencrypted IMAP and POP3 by setting the protocols' ports to `0`. Uncomment the `port` and `ssl` variables:
 
     {{< file "10-master.conf" >}}
 ...
