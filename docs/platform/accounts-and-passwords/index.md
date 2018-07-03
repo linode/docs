@@ -60,7 +60,7 @@ Here's how to set a user's access permissions:
 
     ![Configure permissions for a user in the Linode Manager.](users-manager.png "Linode manager")
 
-1.  Select checkboxes in the **Global Grants** section to allow the user to add Linodes, NodeBalancers, Domains, Longview clients, Block Storage Volumes to the account, create StackScripts and frozen Images, access all billing information, and cancel the entire account.
+1.  Select checkboxes in the **Global Grants** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](http://localhost:1313/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](http://localhost:1313/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](http://localhost:1313/docs/platform/longview/longview/) clients, [Block Storage Volumes](http://localhost:1313/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](http://localhost:1313/docs/platform/stackscripts/) and frozen [Images](http://localhost:1313/docs/platform/linode-images/), access all billing information, and cancel the entire account.
 
     {{< note >}}
 Granting access to settings denoted with a dollar sign ($) will allow the user to perform actions that incur billing costs, such as adding or resizing a Linode.
