@@ -97,5 +97,6 @@ Add the `f` flag to a recursive `rm` command to skip all confirmation prompts:
 
 Combine the [find command](/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/)'s `-exec` option with `rm` to find and remove all files older than 28 days old.  The files that match are printed on the screen (`-print`):
 
-    find filename* -type f -mtime +28 -exec rm {} \; -print
+    find filename* -type f -mtime +28 -exec rm '{}' ';' -print
 
+In this command's syntax, `{}` is replaced by the `find` command with all files that it finds, and `;` tells `find` that the command sequence invoked with the `-exec` option has ended. In particular, `-print` is an option for `find`, not the executed `rm`. `{}` and `;` are both surrounded with single quote marks to protect them from interpretation by the shell.
