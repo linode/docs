@@ -42,7 +42,7 @@ There are a number of pathways to adopting Linux in your work, and you don't nee
     -   [Install Ubuntu desktop](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0)
     -   [Linux Mint Installation Guide](https://linuxmint-installation-guide.readthedocs.io/en/latest/)
 
--   Purchase a [Raspberry Pi](https://www.raspberrypi.org/). Raspberry Pis are small, affordable computers that run Linux and are designed to facilitiate learning about the platform and programming in general. There is a very active Raspberry Pi community, and there are lots of [example projects](https://projects.raspberrypi.org/en/) to follow along and learn from.
+-   Purchase a [Raspberry Pi](https://www.raspberrypi.org/). Raspberry Pis are small, affordable computers that run Linux and are designed to facilitate learning about the platform and programming in general. There is a very active Raspberry Pi community, and there are lots of [example projects](https://projects.raspberrypi.org/en/) to follow along and learn from.
 
 -   Create a Linode and work with Linux remotely. The Linode platform offers a fast way to create Linux servers, and you are only billed for the time between when you create a server and when you remove it. If you create a Linode and test something out, you can remove it after the test finishes to save money. Or, if your test doesn't work out the way you'd hoped, you can remove the Linode, create a new one, and start fresh. Linode provides a [Getting Started](/docs/getting-started/) guide for beginners on the platform.
 
