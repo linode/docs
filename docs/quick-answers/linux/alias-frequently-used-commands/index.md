@@ -44,7 +44,7 @@ Any alias added through the command line can be unaliased using `unalias`:
 
 ## Create a Permanent Alias
 
-To create a persistent alias, edit the [configuration profile for your shell](#where-to-find-aliases-in-bash-zsh-and-fish) and add the alias to the end of the file:
+To create a persistent alias, edit the [configuration profile for your shell](#where-to-find-and-edit-aliases-in-bash-z-shell-zsh-and-fish) and add the alias to the end of the file:
 
 {{< file "~/.bashrc" bash >}}
 ...
