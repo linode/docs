@@ -53,42 +53,42 @@ Cloudflare offers a free tier of service which enables the benefits described by
 
 1.  Create an account on the [Cloudflare](https://dash.cloudflare.com/sign-up) site.
 
-2.  After creating your account, you are presented with a form that asks for your domain name:
+1.  After creating your account, you are presented with a form that asks for your domain name:
 
     ![Cloudflare setup - enter domain](cloudflare-setup-enter-domain.png "Cloudflare setup - enter domain")
 
-3.  The Cloudflare site will present a screen explaining that the service is scanning your current DNS records:
+1.  The Cloudflare site will present a screen explaining that the service is scanning your current DNS records:
 
     ![Cloudflare setup - DNS record scan dialog](cloudflare-setup-scan-dialog.png "Cloudflare setup - DNS record scan dialog")
 
-4.  The *Select a Plan* screen will ask you to choose a plan. Select the free tier. You can upgrade your plan later if you'd like.
+1.  The *Select a Plan* screen will ask you to choose a plan. Select the free tier. You can upgrade your plan later if you'd like.
 
     ![Cloudflare setup - select plan](cloudflare-setup-select-plan.png "Cloudflare setup - select plan")
 
-5.  The Cloudflare site will present the DNS query results for your domain. The query scans the current DNS records for the apex of your domain (e.g. `example.com`) and common subdomains (e.g. `www.example.com`). This scan will likely not detect custom subdomains (e.g. `mysubdomain.example.com`). You can manually add any of your current records that were missed by the scan using the provided form.
+1.  The Cloudflare site will present the DNS query results for your domain. The query scans the current DNS records for the apex of your domain (e.g. `example.com`) and common subdomains (e.g. `www.example.com`). This scan will likely not detect custom subdomains (e.g. `mysubdomain.example.com`). You can manually add any of your current records that were missed by the scan using the provided form.
 
     ![Cloudflare setup - DNS record scan results](cloudflare-setup-scan-results.png "Cloudflare setup - DNS record scan results")
 
     The table displays an *orange cloud* icon for hostnames that will be routed through Cloudflare's network. A *gray cloud* denotes hostnames which bypass Cloudflare's network. You can toggle between these two options. Consult Cloudflare's [documentation](https://support.cloudflare.com/hc/en-us/articles/200169626-What-subdomains-are-appropriate-for-orange-gray-clouds-) to determine which services you should route through their network.
 
-6.  You will need to change the [name servers](https://linode.com/docs/networking/dns/dns-records-an-introduction/#name-servers) configured with your domain registrar to the ones listed under the *To* heading. This sets Cloudflare's nameservers as the *authoritative name servers* for your domain.
+1.  You will need to change the [name servers](https://linode.com/docs/networking/dns/dns-records-an-introduction/#name-servers) configured with your domain registrar to the ones listed under the *To* heading. This sets Cloudflare's nameservers as the *authoritative name servers* for your domain.
 
     ![Cloudflare setup - authoritative name servers](cloudflare-setup-name-servers.png "Cloudflare setup - authoritative name servers")
 
     You can check your domain registrar information by using a `whois` website like [whois.net](https://whois.net). The steps for changing your authoritative name servers vary slightly depending on which registrar you used. Cloudflare provides a [list of instructions](https://support.cloudflare.com/hc/en-us/articles/205195708-Step-3-Change-your-domain-name-servers-to-Cloudflare#step3) for common registrars.
 
-7.  Cloudflare will present a dashboard for your new site. If you haven't changed the nameserver values with the registrar or if the changes haven't propogated, a `Status: Website not active (DNS modification pending)` message will display:
+1.  Cloudflare will present a dashboard for your new site. If you haven't changed the nameserver values with the registrar or if the changes haven't propogated, a `Status: Website not active (DNS modification pending)` message will display.
 
     ![Cloudflare overview - website not active](cloudflare-overview-not-active.png "Cloudflare overview - website not active")
 
-    Otherwise, you will see a `Status: Active` message:
+    Otherwise, you will see a `Status: Active` message.
 
     ![Cloudflare overview - website active](cloudflare-overview-active.png "Cloudflare overview - website active")
 
 
 ## Set Up SSL with Cloudflare
 
-Cloudflare's SSL settings can be controlled from the *Crypto* section of your site's dashboard:
+Cloudflare's SSL settings can be controlled from the *Crypto* section of the dashboard:
 
 ![Cloudflare crypto - SSL mode](cloudflare-crypto-ssl-mode.png "Cloudflare crypto - SSL mode")
 
@@ -102,73 +102,83 @@ This arrangement means that a secure connection symbol will be displayed by your
 
 In total, there are four different SSL modes:
 
--   **Off**: Cloudflare will only serve content over HTTP from its edge servers. HTTPS requests will be redirected to HTTP by the edge servers. The edge servers will only open HTTP connections to your origin server.
+-   **Off**: Cloudflare will serve content over HTTP from its edge servers to site visitors. HTTPS requests will be redirected to HTTP by the edge servers. The edge servers will only open HTTP connections to your origin server.
 
--   **Flexible SSL**: Edge servers will respond to HTTPS requests. Edge servers will only make connections to your origin over HTTP.
+-   **Flexible SSL**: Edge servers will respond to HTTPS requests. Edge servers will make connections to your origin server over HTTP. This option is not recommended by Cloudflare and should only be used if you are unable to set up SSL on your origin server.
 
     {{< note >}}
-If your web server is configured to redirect all HTTP requests to HTTPS while using the Flexible SSL mode with Cloudflare, visitors will encounter a redirect loop when attempting to view your site.
+If your web server is configured to redirect all HTTP requests to HTTPS while using Cloudflare's Flexible SSL mode, visitors may encounter a redirect loop when attempting to view your site.
 {{< /note >}}
 
--   **Full SSL**: All connections between your visitors and the edge servers will be redirected to HTTPS, and the edge servers will only open HTTPs connections to your origin. This option requires that you set up SSL on your origin web server. The certificate you use on the origin will not be validated by Cloudflare; in other words, you can use a [self-signed certificate](https://www.linode.com/docs/security/ssl/create-a-self-signed-tls-certificate/).
+-   **Full SSL**: All connections between your site visitors and the edge servers will be redirected to HTTPS, and the edge servers will open HTTPS connections to your origin server. This option requires that you set up SSL on your origin web server with, at minimum, a [self-signed certificate](https://www.linode.com/docs/security/ssl/create-a-self-signed-tls-certificate/). The certificate you use on the origin server will not be validated by Cloudflare.
 
--   **Full SSL (strict)**: As the *Full SSL* option, but Cloudflare will also validate the origin's certificate. A valid certificate can be obtained through a trusted commercial certificate provider, through [Let's Encrypt](https://letsencrypt.org), or from Cloudflare (referred to as a *Cloudflare Origin CA Certificate*).
+-   **Full SSL (strict)**: All connections between your site visitors and the edge servers will be redirected to HTTPS, and the edge servers will open HTTPS connections to your origin server. This option requires that you set up SSL on your origin web server with a certificate authority that Cloudflare can validate. A valid certificate can be obtained through [Let's Encrypt](https://letsencrypt.org), or directly from [Cloudflare](https://blog.cloudflare.com/cloudflare-ca-encryption-origin/).
 
 ### Set Up SSL on the Origin Server
 
-Setting up SSL on your origin server will enable you to use the *Full SSL* or *Full SSL (strict)* modes. If you already have SSL set up on the origin, you should already be able to use those modes.
+Setting up SSL on your origin server will enable you tu use Cloudflare's *Full SSL* mode or *Full SSL (strict)* modes.  If you already have SSL set up on the origin server, skip to Step 8 of this section.
 
-If you do not have a certificate for your origin server, Cloudflare provides an easy way of getting one via their own [*Origin CA*](https://blog.cloudflare.com/cloudflare-ca-encryption-origin/) (Certificate Authority). This certificate can be used with the *Full SSL (strict)* mode.
+If you do not have a certificate for your origin server, Cloudflare provides an easy way of getting one via their own [*Origin CA*](https://blog.cloudflare.com/cloudflare-ca-encryption-origin/) (Certificate Authority). This certificate can be used with *Full SSL (strict)* mode.
 
 {{< caution >}}
-Certificates from Cloudflare's Origin CA are only trusted inside the Cloudflare network. This means that if you set one up on your origin server but then later stop using Cloudflare, the installed certificate will not be valid for visitors to your site. You will need to obtain and install a new certificate from another trusted authority in this circumstance.
+Certificates from Cloudflare's Origin CA are only trusted within the Cloudflare network. You will need to obtain and install a new certificate if you stop using Cloudflare and have one of their certificate's installed on your origin server.
 {{< /caution >}}
 
 1.  From the Crypto tab of the Cloudflare dashboard, scroll to the *Origin Certificates* panel and click the *Create Certificate* button:
 
     ![Cloudflare crypto - origin certificates panel](cloudflare-crypto-origin-certificates.png "Cloudflare crypto - origin certificates panel")
 
-2.  In the panel that appears, leave the options for private key/CSR generation, hostname, and certificate validity duration in their default values. Scroll to the bottom of this panel and click *Next*.
+1.  In the Origin Certificate Intallation panel, leave the default values for private key/CSR generation, hostname, and certificate validity duration. Scroll to the bottom of this panel and click *Next*.
 
-3.  Another panel will appear that shows the new certificate (in PEM format by default) and private key.
+1. The origin certificate and the private key will appear in PEM format.
 
     ![Cloudflare crypto - new certificate and private key](cloudflare-crypto-origin-certificate-installation.png "Cloudflare crypto - new certificate and private key")
 
-    Copy the contents of these into two files on your computer: name the certificate file example.com.pem, and the private key file example.com.key. Substitute your domain name for example.com in those filenames.
+    Copy the contents of each into two separate files on your computer: name the certificate file example.com.pem, and the private key file example.com.key. Substitute your domain name for example.com in those filenames.
 
-4.  Upload these files to your Linode. You can upload files by using an SFTP client like [FileZilla](https://linode.com/docs/tools-reference/file-transfer/filezilla/). Or, you can use the command line tool [rsync](https://linode.com/docs/tools-reference/tools/introduction-to-rsync/).
+1.  Upload these files to your Linode. You can upload files by using an SFTP client like [FileZilla](https://linode.com/docs/tools-reference/file-transfer/filezilla/) or you can use the command line tool [rsync](https://linode.com/docs/tools-reference/tools/introduction-to-rsync/).
 
-5.  Configure your Linode's web server software to listen on port 443 (HTTPS) to use the new certificate and private key. Instructions for doing this can vary by which web server software you use:
+1.  Configure your Linode's web server software to listen on port 443 (HTTPS) to use the new certificate and private key. Instructions for doing this can vary depending on which web server software you use:
 
-    -    Cloudflare has a number of guides for installing the Origin CA certificate with different software packages: [Cloudflare Support > SSL > Origin CA](https://support.cloudflare.com/hc/en-us/sections/207182687-Origin-CA).
-    -    You can also adapt instructions from Linode's various SSL Certificate guides: [Guides & Tutorials > Security, Upgrades & Backups > SSL Certificates](https://www.linode.com/docs/security/ssl/).
+    - Cloudflare has a number of guides for installing the Origin CA certificate with different software packages. Consult their [documentation](https://support.cloudflare.com/hc/en-us/sections/207182687-Origin-CA) for instructions.
+    - You can also adapt instructions from Linode's various [SSL Certificate guides](https://www.linode.com/docs/security/ssl/).
 
-6.  Be sure to restrict the file permissions of your certificate and private key files on your Linode so that only your web server process can read them. For example, if your files are stored in the directory `/etc/ssl/certs/example.com/`, run:
+1.  Be sure to restrict the file permissions of your certificate and private key files on your Linode so that only your web server process can read them. For example, if your files are stored in the directory `/etc/ssl/certs/example.com/`, run:
 
         sudo chown -R root:root /etc/ssl/certs/example.com/
         sudo chmod -R 400 /etc/ssl/certs/example.com/
 
     These commands will change ownership of that directory and its files to `root:root` and give read access only to the `root` user.
 
-7.  After you've finished updating the configuration of the web server, restart or reload the web server process.
+1.  After you've finished updating the configuration of the web server, restart or reload the web server process.
 
-8.  From the Crypto tab of the Cloudflare dashboard, set your SSL mode to *Full SSL (Strict)*.
+1.  From the Crypto tab of the Cloudflare dashboard, set your SSL mode to *Full (Strict)*.
+![Cloudflare ssl full strict mode](cloudflare-full-strict.png "Cloudflare ssl full strict mode")
 
 If you see an error from Cloudflare when visiting your site, your web server's SSL configuration may be incorrect. You can troubleshoot this by reviewing your web server's error logs.
 
 ### Set Up Dedicated SSL on the Edge Servers
 
-The Universal SSL certificate that is provide for free is shared with other customers. This certificate will have a *common name* that looks similar to `sni170707.cloudflaressl.com`. This certificate uses SNI (Server Name Indication) technology to function, but this technology is incompatible with [some much older browsers](https://en.wikipedia.org/wiki/Server_Name_Indication#Implementation).
+The Universal SSL certificate that is provided for free by Cloudflare is shared with other customers. This certificate will have a *common name* (CN) that looks similar to `sni170707.cloudflaressl.com`. This certificate uses SNI (Server Name Indication) technology to function. This technology is incompatible with [some much older browsers](https://en.wikipedia.org/wiki/Server_Name_Indication#Implementation).
 
-It is possible to order a [dedicated SSL certificate](https://support.cloudflare.com/hc/en-us/articles/228009108-Dedicated-SSL-Certificates) from Cloudflare whose common name is your domain name and which isn't shared with other customers. This is a fully managed solution from Cloudflare, and the certificate provided will auto-renew.
+You can order a [dedicated SSL certificate](https://support.cloudflare.com/hc/en-us/articles/228009108-Dedicated-SSL-Certificates) from Cloudflare which will use your domain name as the CN and will not be shared with other customers. This is a fully managed solution from Cloudflare, which provides certificate auto-renewal.
 
-These certificates can be entirely administered through the Cloudflare website. To purchase this service from Cloudflare, scroll to the *Edge Certificates* panel of the *Crypto* section on Cloudflare's dashboard and click *Order SSL Certificate*.
+These certificates can be entirely administered through the Cloudflare website. To purchase this service from Cloudflare,
 
-There are two options for dedicated SSL certificates: a $5/month plan will cover your domain and a wildcard representing one-level subdomains, and a $10/month plan will also cover up to 50 specific subdomains. These certificates also require SNI compatibility in web browsers. You can purchase these certificates while otherwise remaining on the free Cloudflare tier.
+1. Scroll to the *Edge Certificates* panel of the *Crypto* section on Cloudflare's dashboard and click *Order SSL Certificate*.
 
-![Cloudflare crypto - edge certificates panel](cloudflare-crypto-edge-certificates.png "Cloudflare crypto - edge certificates panel")
+    ![Cloudflare crypto - edge certificates panel](cloudflare-crypto-edge-certificates.png "Cloudflare crypto - edge certificates panel")
 
+
+1. Select the certificate type and click *Next*. There are two options for dedicated SSL certificates: a $5/month plan will cover your domain and a wildcard representing one-level subdomains, and a $10/month plan will cover your domain and up to 50 specific subdomains. These certificates require SNI compatibility in web browsers. You can purchase these certificates while otherwise remaining on the free Cloudflare tier.
+
+1. Provide the certificate hostnames. If ordering the $5/month plan, you can leave the generated values unchanged. Click *Next*.
+
+1. Cloudflare will validate the domain before ordering the certificate for your domain. When the validation is complete, click *Next* and provide a payment type to complete the purchase.
+
+{{< note >}}
 If you would like to upload your own SSL certificate from another authority, you can do so by clicking the *Upload Custom SSL Certificate* button in the *Edge Certificates* panel. This functionality requires that you subscribe to the *Business Website* Cloudflare tier.
+{{</ note >}}
 
 ## Next Steps
 
@@ -176,4 +186,4 @@ The Cloudflare dashboard offers a wide array of settings and features that you c
 
 ![Cloudflare dashboard header](cloudflare-dashboard-header.png "Cloudflare dashboard header")
 
-For more information on the features in each section, click the `Help` link in the bottom-right corner of that feature's panel.
+For more information on the features in each section, click the `Help` link in the bottom-right corner of the selected feature's panel.
