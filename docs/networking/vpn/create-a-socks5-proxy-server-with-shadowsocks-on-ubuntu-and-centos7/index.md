@@ -7,7 +7,7 @@ keywords: ["shadowsocks", "proxy", "shadowsocks server", "ubuntu", "centos", " s
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/']
 published: 2017-12-07
-modified: 2017-08-16
+modified: 2018-07-06
 modified_by:
   name: Linode
 title: Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7
@@ -55,13 +55,14 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
         yum install -y gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel \
                        libev-devel libsodium-devel mbedtls-devel git m2crypto c-ares-devel
 
-2.  Navigate to the `/opt` directory and download the Shadowsocks Git module:
+1.  Navigate to the `/opt` directory and download the Shadowsocks Git module:
 
+        cd /opt
         git clone https://github.com/shadowsocks/shadowsocks-libev.git
         cd shadowsocks-libev
         git submodule update --init --recursive
 
-3.  Install Shadowsocks-libev:
+1.  Install Shadowsocks-libev:
 
         ./autogen.sh
         ./configure
@@ -79,40 +80,34 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
         adduser --system --no-create-home -s /bin/false shadowsocks
 
-2. Create a new directory for the configuration file:
+1. Create a new directory for the configuration file:
 
         mkdir -m 755 /etc/shadowsocks
 
-3. Create the Shadowsocks config file. Paste the contents listed below into the file, noting the instructions in the **shadowsocks.json Breakdown** table for each property. Follow these instructions to determine the value you should set for each property.
+1. Create the Shadowsocks config file at `/etc/shadowsocks/shadowsocks.json`. Paste the contents listed below into the file, noting the instructions in the **shadowsocks.json Breakdown** table for each property. Follow these instructions to determine the value you should set for each property.
 
-## shadowsocks.json Breakdown
+    {{< file "/etc/shadowsocks/shadowsocks.json" json >}}
+{
+    "server":"your_public_IP_address",
+    "server_port":8388,
+    "password":"your_password",
+    "timeout":300,
+    "method":"aes-256-gcm",
+    "fast_open": true
+}
+{{< /file >}}
+
+### shadowsocks.json Breakdown
 
 |  **Property**  | **Explanation** | **Possible Values** |
 |:--------------:|:---------------:|:-------------------:|
 | server | Enter your server's public IP address. | User determined |
 | server_port | Shadowsocks will listen on this port. Use the default value of `8388`. | User determined |
-| local_address | Local listening address. Use your loopback address, `127.0.0.1`. | Loopback address |
-| local_port | Local listening port. Use the default value of `1080`. | User determined |
 | password | Connection password. Set a strong password. | User determined |
 | timeout | Connection timeout in seconds. The default value should be sufficient here. | User determined |
 | method | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
-| fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check your kernel version with `umame -r`. | true, false |
+| fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check your kernel version with `uname -r`. | true, false |
 | nameserver | Name servers for internal DNS resolver. | User determined |
-
-{{< file "**/etc/shadowsocks/shadowsocks.json**" json >}}
-{
-    "server":"192.0.0.1",
-    "server_port":8388,
-    "local_address": "127.0.0.1",
-    "local_port":1080,
-    "password":"mypassword",
-    "timeout":300,
-    "method":"aes-256-gcm",
-    "fast_open": true
-}
-
-{{< /file >}}
-
 
 ## Optimize Shadowsocks
 
@@ -139,7 +134,6 @@ net.core.wmem_default = 65536
 net.core.netdev_max_backlog = 4096
 # max backlog
 net.core.somaxconn = 4096
-
 # resist SYN flood attacks
 net.ipv4.tcp_syncookies = 1
 # reuse timewait sockets when safe
@@ -164,17 +158,14 @@ net.ipv4.tcp_rmem = 4096 87380 67108864
 net.ipv4.tcp_wmem = 4096 65536 67108864
 # turn on path MTU discovery
 net.ipv4.tcp_mtu_probing = 1
-
 # for high-latency network
 net.ipv4.tcp_congestion_control = hybla
-
 # for low-latency network, use cubic instead
 net.ipv4.tcp_congestion_control = cubic
 
 {{< /file >}}
 
-
-2. Apply optimizations:
+1.  Apply optimizations:
 
         sysctl --system
 
@@ -200,8 +191,7 @@ WantedBy=multi-user.target
 
 {{< /file >}}
 
-
-2. Enable and start `shadowsocks.service`:
+1.  Enable and start `shadowsocks.service`:
 
         systemctl daemon-reload
         systemctl enable shadowsocks
@@ -233,27 +223,37 @@ Open port `8388` for the Shadowsocks Client:
 
 The second stage to a Shadowsocks setup is to install a client on the user's device. This could include a computer, mobile device, tablet, and even home network router. Supported operating systems include Windows, OS X, iOS, Linux, Android, and OpenWRT.
 
-### Mac OS Shadowsocks Client
+### macOS Shadowsocks Client
 
-Download ShadowsocksX-NG, or the appropriate GUI or CLI client for your system:
+1.  Download the [ShadowsocksX-NG GUI Client for macOS](https://shadowsocks.org/en/download/clients.html):
 
-![Shadowsocks download page](shadowsocks_download.png "Shadowsocks download page")
+    [![Shadowsocks download page](shadowsocks_download.png "Shadowsocks download page")](https://shadowsocks.org/en/download/clients.html)
 
-Once the program is installed, run it, and then enter your information in the **New Server** button:
+1.  Launch the application on your Mac. The app preferences will be available from a new menu bar icon. Select the *Server Preferences* menu item:
 
-![Shadowsocks configuration](shadowsocks_config.png "Shadowsocks configuration")
+    ![macOS Shadowsocks menu bar - Server Preferences menu item](shadowsocks-macos-menu-server-preferences.png "macOS Shadowsocks menu bar - Server Preferences menu item")
 
-Press the **Global Mode** button to enable Shadowsocks globally on your computer.
+1.  In the *Server Preferences* window, click on the plus-sign button in the lower left. Enter the details for your Shadowsocks Linode. Be sure to select the same port and encryption scheme that you listed in your Linode's shadowsocks.json file. Afterwards, close the window.
 
-### Install Windows Client
+    ![macOS Shadowsocks menu bar - Server Preferences window](shadowsocks-macos-menu-server-new-server-preferences.png "macOS Shadowsocks menu bar - Server Preferences window")
 
-1. Navigate to the [Windows Shadowsocks](https://github.com/shadowsocks/shadowsocks-windows/releases) page. Click on **Shadowsocks-4.0.4.zip** under **Downloads**.
+1.  In the Shadowsocks menu, make sure that Shadowsocks is turned on and that the *Global Mode* item is selected.
 
-2. Extract the contents of the .zip file into any folder and run `Shadowsocks.exe`. Shadowsocks will run as a background process. Locate the Shadowsocks icon in the taskbar (it may be in the *Hidden Icons* taskbar menu), right-click on the Shadowsocks icon, then click on **Edit Servers**. Enter the information that you saved in the *shadowsocks.json* file.
+    ![macOS Shadowsocks menu bar - Global Mode menu item](shadowsocks-macos-menu-server-global-mode.png "macOS Shadowsocks menu bar - Global Mode menu item")
+
+1.  Verify that your Shadowsocks connection is active by visiting an IP address lookup website like [ifconfig.co](https://ifconfig.co/). When your connection is working as expected, the website will list your Shadowsocks Linode's public IP.
+
+### Windows Shadowsocks Client
+
+1.  Navigate to the [Windows Shadowsocks](https://github.com/shadowsocks/shadowsocks-windows/releases) page. Click on **Shadowsocks-4.0.4.zip** under **Downloads**.
+
+1.  Extract the contents of the .zip file into any folder and run `Shadowsocks.exe`. Shadowsocks will run as a background process. Locate the Shadowsocks icon in the taskbar (it may be in the *Hidden Icons* taskbar menu), right-click on the Shadowsocks icon, then click on **Edit Servers**. Enter the information that you saved in the *shadowsocks.json* file.
 
     ![New server configuration dialog](shadowsocks-windows-edit-servers.png "Windows New Server configuration dialog")
 
-3. Right-click on the Shadowsocks icon again. Mouse over **PAC** and select both **Local PAC** and **Secure Local PAC**. To confirm that your Linode's IP address is selected, mouse over **Servers**.
+1.  Right-click on the Shadowsocks icon again. Mouse over **PAC** and select both **Local PAC** and **Secure Local PAC**. To confirm that your Linode's IP address is selected, mouse over **Servers**.
+
+1.  Verify that your Shadowsocks connection is active by visiting an IP address lookup website like [ifconfig.co](https://ifconfig.co/). When your connection is working as expected, the website will list your Shadowsocks Linode's public IP.
 
 ## Where to Go from Here
 
