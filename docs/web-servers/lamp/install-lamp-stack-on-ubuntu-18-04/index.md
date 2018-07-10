@@ -124,7 +124,7 @@ You can set up virtual hosts several ways, and the following steps outline the r
 
 2.  Open the new `example.com` configuration file in your text editor. Uncomment the `ServerName` option and update it with your domain. Enter the document root path and log directories as shown below, and add a `Directory` block before `<VirtualHost>`:
 
-    {{< file "/etc/apache2/sites-available/example.com" apache >}}
+    {{< file "/etc/apache2/sites-available/example.com.conf" apache >}}
 <Directory /var/www/html/example.com/public_html>
         Require all granted
 </Directory>
