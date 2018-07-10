@@ -41,7 +41,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
 1.  Update system repositories, then download and install dependencies:
 
-    **Ubuntu 17.04**
+    **Ubuntu 16.04**
 
         apt update && apt upgrade -yuf
         apt install -y --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev \
@@ -72,7 +72,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
 1. Create a new system user for Shadowsocks:
 
-    **Ubuntu 17.04**
+    **Ubuntu 16.04**
 
         adduser --system --no-create-home --group shadowsocks
 
@@ -229,7 +229,7 @@ The second stage to a Shadowsocks setup is to install a client on the user's dev
 
     [![Shadowsocks download page](shadowsocks_download.png "Shadowsocks download page")](https://shadowsocks.org/en/download/clients.html)
 
-1.  Launch the application on your Mac. The app preferences will be available from a new menu bar icon. Select the *Server Preferences* menu item:
+1.  Launch the application on your Mac. The app preferences will be available from a new status menu bar icon. Select the *Server Preferences* menu item:
 
     ![macOS Shadowsocks menu bar - Server Preferences menu item](shadowsocks-macos-menu-server-preferences.png "macOS Shadowsocks menu bar - Server Preferences menu item")
 
