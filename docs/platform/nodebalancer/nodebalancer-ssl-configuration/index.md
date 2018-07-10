@@ -77,6 +77,27 @@ This guide has been written with the assumption that you are logged in as the ro
 
     Select **Save Changes** when you're finished.
 
+### If You Want to Use Diffie-Hellman Parameters
+
+[Diffie-Hellman key exchange](https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange) is a method for enabling [forward secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) for SSL/TLS connections. [Configuring Diffie-Hellman](https://weakdh.org/sysadmin.html) is normally achieved by generating a `dhparams.pem` file and then updating your web server's cipher suites list.
+
+A NodeBalancer's SSL/TLS settings can't be accessed in the same way you can view your web server configuration, but you can still use Diffie-Hellman with your SSL certificate. This is accomplished by concatenating your certificate file with the contents of your `dhparams.pem` and then supplying that to the **Certificate** field of your NodeBalancer's HTTPS configuration. The result of this concatenation would look like the following:
+
+{{< output >}}
+-----BEGIN CERTIFICATE-----
+YOUR_CERTIFICATE_INFORMATION
+-----END CERTIFICATE-----
+-----BEGIN DH PARAMETERS-----
+YOUR_DHPARAMS_INFORMATION
+-----END DH PARAMETERS-----
+{{< /output >}}
+
+{{< caution >}}
+To avoid [security vulnerabilities](https://weakdh.org), it is recommended that you use at least 2048 bits when generating your Diffie-Hellman parameters:
+
+    openssl dhparam -out dhparams.pem 2048
+{{< /caution >}}
+
 
 ## Configure the Apache Web Server
 

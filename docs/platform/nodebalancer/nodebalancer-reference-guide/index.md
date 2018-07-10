@@ -89,6 +89,27 @@ However, bear in mind that by gaining backwards compatibility, your NodeBalancer
 
     ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA
 
+### If You Want to Use Diffie-Hellman Parameters
+
+[Diffie-Hellman key exchange](https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange) is a method for enabling [forward secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) for SSL/TLS connections. [Configuring Diffie-Hellman](https://weakdh.org/sysadmin.html) is normally achieved by generating a `dhparams.pem` file and then updating your web server's cipher suites list.
+
+A NodeBalancer's SSL/TLS settings can't be accessed in the same way you can view your web server configuration, but you can still use Diffie-Hellman with your SSL certificate. This is accomplished by concatenating your certificate file with the contents of your `dhparams.pem` and then supplying that to the **Certificate** field of your NodeBalancer's HTTPS configuration. The result of this concatenation would look like the following:
+
+{{< output >}}
+-----BEGIN CERTIFICATE-----
+YOUR_CERTIFICATE_INFORMATION
+-----END CERTIFICATE-----
+-----BEGIN DH PARAMETERS-----
+YOUR_DHPARAMS_INFORMATION
+-----END DH PARAMETERS-----
+{{< /output >}}
+
+{{< caution >}}
+To avoid [security vulnerabilities](https://weakdh.org), it is recommended that you use at least 2048 bits when generating your Diffie-Hellman parameters:
+
+    openssl dhparam -out dhparams.pem 2048
+{{< /caution >}}
+
 ## Health Checks
 
 NodeBalancers perform both passive and active health checks against the backend nodes. Nodes that are no longer responding are taken out of rotation.
