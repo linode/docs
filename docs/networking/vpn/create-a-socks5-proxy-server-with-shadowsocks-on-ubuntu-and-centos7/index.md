@@ -7,7 +7,7 @@ keywords: ["shadowsocks", "proxy", "shadowsocks server", "ubuntu", "centos", " s
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/']
 published: 2017-12-07
-modified: 2018-07-06
+modified: 2018-07-10
 modified_by:
   name: Linode
 title: Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7
@@ -19,7 +19,6 @@ external_resources:
  - '[Shadowsocks-libev GitHub](https://github.com/shadowsocks/shadowsocks-libev)'
 ---
 
-
 ![Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7](shadowsocks.jpg "Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7")
 
 Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
@@ -30,7 +29,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
 1.  The commands in this guide require root privileges. To run the steps as an elevated user with sudo privileges, prepend each command with `sudo`. If two commands are presented in the same instance (separated by `&&`), remember to use `sudo` after the `&&` (ex. `sudo [command] && sudo [command]`). To create a standard user account with `sudo` privileges, complete the [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account) section of our Securing your Server guide.
 
-2.  A working firewall is a necessary security measure. Firewall instructions [will be presented](#open-firewall-port-for-shadowsocks-client) for UFW, FirewallD, and Iptables. To configure a firewall on your Linode, visit one of our guides:
+1.  A working firewall is a necessary security measure. Firewall instructions [will be presented](#open-firewall-port-for-shadowsocks-client) for UFW, FirewallD, and Iptables. To configure a firewall on your Linode, visit one of our guides:
 
     *  [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/)
     *  [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/)
@@ -84,7 +83,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
         mkdir -m 755 /etc/shadowsocks
 
-1. Create the Shadowsocks config file at `/etc/shadowsocks/shadowsocks.json`. Paste the contents listed below into the file, noting the instructions in the **shadowsocks.json Breakdown** table for each property. Follow these instructions to determine the value you should set for each property.
+1. Create the Shadowsocks config file at `/etc/shadowsocks/shadowsocks.json`. Paste the contents listed below into the file, noting the instructions in the [shadowsocks.json Breakdown](#shadowsocks-json-breakdown) table for each property. Follow these instructions to determine the value you should set for each property.
 
     {{< file "/etc/shadowsocks/shadowsocks.json" json >}}
 {
@@ -113,7 +112,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
 Apply the following optimizations to your system kernel to provide for a smooth running Shadowsocks installation.
 
-1. Create the `/etc/sysctl.d/local.conf` system optimization file and paste the contents shown below into your file.
+1. Create the `/etc/sysctl.d/local.conf` system optimization file and paste the contents shown below into your file:
 
     {{< caution >}}
 These settings provide the optimal kernel configuration for Shadowsocks. If you have previously configured your system kernel settings for any reason, make sure no conflicts exist.
@@ -175,7 +174,7 @@ The Shadowsocks systemd service allows the daemon to automatically start on syst
 
 1. Create a systemd file with the following content:
 
-    {{< file "/etc/systemd/system/shadowsocks.service" service >}}
+    {{< file "/etc/systemd/system/shadowsocks.service" sh >}}
 [Unit]
 Description=Shadowsocks proxy server
 
@@ -199,7 +198,7 @@ WantedBy=multi-user.target
 
 ## Open Firewall Port for Shadowsocks Client
 
-Depending on your preference, you may use either the iptables, UFW, or firewallD (CentOS 7 only) commands to complete this section.
+Depending on your preference, you may use either the iptables, UFW, or firewalld (CentOS 7 only) commands to complete this section.
 
 Open port `8388` for the Shadowsocks Client:
 
@@ -217,11 +216,11 @@ Open port `8388` for the Shadowsocks Client:
         rule family="ipv4"
         port protocol="tcp" port="8388" accept'
 
-        firewall-cmd --reload
+    firewall-cmd --reload
 
 ## Install a Shadowsocks Client
 
-The second stage to a Shadowsocks setup is to install a client on the user's device. This could include a computer, mobile device, tablet, and even home network router. Supported operating systems include Windows, OS X, iOS, Linux, Android, and OpenWRT.
+The second stage to a Shadowsocks setup is to install a client on the user's device. This could include a computer, mobile device, tablet, and even home network router. Supported operating systems include Windows, macOS, iOS, Linux, Android, and OpenWRT.
 
 ### macOS Shadowsocks Client
 
@@ -233,11 +232,11 @@ The second stage to a Shadowsocks setup is to install a client on the user's dev
 
     ![macOS Shadowsocks menu bar - Server Preferences menu item](shadowsocks-macos-menu-server-preferences.png "macOS Shadowsocks menu bar - Server Preferences menu item")
 
-1.  In the *Server Preferences* window, click on the plus-sign button in the lower left. Enter the details for your Shadowsocks Linode. Be sure to select the same port and encryption scheme that you listed in your Linode's shadowsocks.json file. Afterwards, close the window.
+1.  In the *Server Preferences* window, click on the **+** (plus-sign) button in the lower left. Enter the details for your Shadowsocks Linode. Be sure to select the same port and encryption scheme that you listed in your Linode's `shadowsocks.json` file. Afterwards, close the window:
 
     ![macOS Shadowsocks menu bar - Server Preferences window](shadowsocks-macos-menu-server-new-server-preferences.png "macOS Shadowsocks menu bar - Server Preferences window")
 
-1.  In the Shadowsocks menu, make sure that Shadowsocks is turned on and that the *Global Mode* item is selected.
+1.  In the Shadowsocks menu, make sure that Shadowsocks is turned on and that the *Global Mode* item is selected:
 
     ![macOS Shadowsocks menu bar - Global Mode menu item](shadowsocks-macos-menu-server-global-mode.png "macOS Shadowsocks menu bar - Global Mode menu item")
 
@@ -247,11 +246,13 @@ The second stage to a Shadowsocks setup is to install a client on the user's dev
 
 1.  Navigate to the [Windows Shadowsocks](https://github.com/shadowsocks/shadowsocks-windows/releases) page. Click on **Shadowsocks-4.0.4.zip** under **Downloads**.
 
-1.  Extract the contents of the .zip file into any folder and run `Shadowsocks.exe`. Shadowsocks will run as a background process. Locate the Shadowsocks icon in the taskbar (it may be in the *Hidden Icons* taskbar menu), right-click on the Shadowsocks icon, then click on **Edit Servers**. Enter the information that you saved in the *shadowsocks.json* file.
+1.  Extract the contents of the .zip file into any folder and run `Shadowsocks.exe`. Shadowsocks will run as a background process. Locate the Shadowsocks icon in the taskbar (it may be in the *Hidden Icons* taskbar menu), right-click on the Shadowsocks icon, then click on **Edit Servers**. Enter the information that you saved in the `shadowsocks.json` file:
 
     ![New server configuration dialog](shadowsocks-windows-edit-servers.png "Windows New Server configuration dialog")
 
-1.  Right-click on the Shadowsocks icon again. Mouse over **PAC** and select both **Local PAC** and **Secure Local PAC**. To confirm that your Linode's IP address is selected, mouse over **Servers**.
+1.  Right-click on the Shadowsocks icon again. Mouse over **PAC** and select both **Local PAC** and **Secure Local PAC**.
+
+    To confirm that your Linode's IP address is selected, mouse over **Servers**.
 
 1.  Verify that your Shadowsocks connection is active by visiting an IP address lookup website like [ifconfig.co](https://ifconfig.co/). When your connection is working as expected, the website will list your Shadowsocks Linode's public IP.
 
