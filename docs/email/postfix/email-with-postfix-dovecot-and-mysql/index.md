@@ -11,7 +11,9 @@ modified_by:
 published: 2013-05-13
 title: 'Email with Postfix, Dovecot, and MySQL'
 external_resources:
+ - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
+ - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Wiki](https://wiki2.dovecot.org/)'
 ---
 
