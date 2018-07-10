@@ -16,7 +16,7 @@ external_resources:
 
 ## What is an Alias?
 
-An alias is a custom shortcut set to represent a set of commands or one run with specific options. Use an alias to run frequently used processes with as little as a single character.
+An alias is a custom shortcut set to represent a set of commands or a single command run with specific options. Use an alias to execute frequently used processes with as little as a single character.
 
 ## List Existing Aliases
 
@@ -24,7 +24,7 @@ An alias is a custom shortcut set to represent a set of commands or one run with
 
 ## Where to Find and Edit Aliases in Bash, Z shell (ZSH), and fish
 
-The Bash shell is the default on most modern operating systems. If using [ZSH](https://en.wikipedia.org/wiki/Z_shell) (or [oh-my-zsh](https://ohmyz.sh/)) or [fish](https://fishshell.com/), the configuration file may be in another location. Based on the shell in use, the configuration profile may be found in:
+The Bash shell is the default on most modern operating systems. If using [ZSH](https://en.wikipedia.org/wiki/Z_shell), [oh-my-zsh](https://ohmyz.sh/) or [fish](https://fishshell.com/), the shell's configuration file may be in another location. Based on the shell in use, the configuration profile will be found in:
 
 * **Bash:** `~/.bashrc`
 * **ZSH:** `~/.zshrc`
