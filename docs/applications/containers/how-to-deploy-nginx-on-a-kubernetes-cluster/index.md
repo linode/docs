@@ -188,9 +188,9 @@ as root:
 
 2.  On the master node, configure the `kubectl` tool:
 
-        mkdir -p $home/.kube
-        sudo cp -i /etc/kubernetes/admin.conf $home/.kube/config
-        sudo chown $(id -u):$(id -g) $home/.kube/config
+        mkdir -p $HOME/.kube
+        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+        sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 3.  Check on the status of the nodes with `kubectl get nodes`. Output will resemble:
 
