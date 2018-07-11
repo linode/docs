@@ -6,14 +6,14 @@ description: Our guide to managing accounts and passwords.
 keywords: ["accounts", "passwords", "linode manager", "manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['accounts-and-passwords/']
-modified: 2014-02-10
+modified: 2018-07-11
 modified_by:
   name: Linode
 published: 2012-04-03
 title: Accounts and Passwords
 ---
 
-Maintaining your accounts, passwords, and contact information in the Linode Manager is just as important as administering your Linode. This guide shows you how to control access to the Linode Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Linode Manager only, except for the section on resetting the root password.
+Maintaining your user Linode Manager accounts, passwords, and contact information is just as important as administering your Linode. This guide shows you how to control access to the Linode Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Linode Manager only, except for the section on resetting the root password.
 
 ## Users and Permissions
 
@@ -59,17 +59,15 @@ Here's how to set a user's access permissions:
 
     ![Configure permissions for a user in the Linode Manager.](users-manager.png "Linode manager")
 
-1.  Select checkboxes in the **Global Grants** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](http://localhost:1313/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](http://localhost:1313/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](http://localhost:1313/docs/platform/longview/longview/) clients, [Block Storage Volumes](http://localhost:1313/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](http://localhost:1313/docs/platform/stackscripts/) and frozen [Images](http://localhost:1313/docs/platform/linode-images/), access all billing information, and cancel the entire account.
+1.  Select the boxes in the **Global Grants** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](http://localhost:1313/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](http://localhost:1313/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](http://localhost:1313/docs/platform/longview/longview/) clients, [Block Storage Volumes](http://localhost:1313/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](http://localhost:1313/docs/platform/stackscripts/) and frozen [Images](http://localhost:1313/docs/platform/linode-images/), access all billing information, and cancel the entire account.
 
     {{< note >}}
 Granting access to settings denoted with a dollar sign ($) will allow the user to perform actions that incur billing costs, such as adding or resizing a Linode.
 
 {{< /note >}}
 
-1.  Select checkboxes in the other sections to allow the user to access certain features and sections of the Linode Manager.
-1.  When you have finished configuring the user's permissions, click **Update Grants**.
-
-The user's permissions will be saved and effective immediately.
+1.  Select the boxes in the other sections to allow the user to access certain features and sections of the Linode Manager.
+1.  When you have finished configuring the user's permissions, click **Update Grants**. The user's permissions will be saved and effective immediately.
 
 ### Recovering a Lost Username
 
@@ -79,7 +77,7 @@ Did you forget your Linode Manager username? Recover it with the *Forgot Usernam
 1.  Enter your email address in the **Email** field.
 1.  Click **Submit**.
 
-In a couple minutes, you'll receive an email message with any Linode Manager users that correspond with that email. If you do not receive information about any users, then you may have registered your account with a different email.
+In a couple minutes, you'll receive an email message with any Linode Manager users that correspond to that email. If you do not receive information about any users, then you may have registered your account with a different email.
 
 ### Removing a User
 
@@ -97,7 +95,7 @@ The account will be removed, and the user will no longer be able to access the L
 
 Linode uses the contact information on file in your account to notify and bill you. Keep this information current to prevent service interruptions. It's especially important to keep your email address current.
 
-Both the *Account* and *My Profile* webpages have a field for email address. The email addresses saved on these pages receive different notifications, as described in the following sections. If you are the only user, you should enter your email address on both webpages. If there are multiple users, verify that the primary account holder's email address is current on the *Account* webpage.
+Both the *Account* and *My Profile* pages have an email address field. The email addresses saved on these pages receive different notifications, as described in the following sections. If you are the only user, you should enter your email address on both webpages. If there are multiple users, verify that the primary account holder's email address is current on the *Account* webpage.
 
 ### Updating Contact Information
 
@@ -157,7 +155,7 @@ Did you forget your Linode Manager password? Reset it with the *Forgot Password*
 
 1.  Check your email for a message containing further instructions.
 
-Follow the instructions in the email message to reset your password.
+1.  Follow the instructions in the email message to reset your password.
 
 ### Resetting the Root Password
 
