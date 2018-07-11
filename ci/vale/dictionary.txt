@@ -1454,6 +1454,7 @@ yourdomain
 yourdomainorsubdomainhere
 yourname
 yoursite
+youtube
 yubico
 yubikey
 zabbix
