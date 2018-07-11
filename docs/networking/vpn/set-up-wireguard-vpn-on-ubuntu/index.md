@@ -20,9 +20,9 @@ contributor:
 
 [WireGuard](https://www.wireguard.com) is a simple, fast, and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and has a much smaller source code footprint. WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol and delivers lower ping times in comparison.
 
-WireGuard aims to be as simple to configure as SSH. A connection is established by an exchange of public keys between server and client, and only a client with its public key present in its server configuration file is considered authorized. WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as `ifconfig` and `ip`.
+The WireGuard configuration is as simple to configure as SSH. A connection is established by an exchange of public keys between server and client, and only a client with its public key present in its server configuration file is considered authorized. WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as `ifconfig` and `ip`.
 
-WireGuard is currently only available on Linux. This guide will configure a simple peer connection between a server, which will be a Linode running Ubuntu 16.04, and a client. The client can be either your local computer or another Linode.
+Currently, WireGuard is only available on Linux. This guide will configure a simple peer connection between a server, which will be a Linode running Ubuntu 16.04, and a client. The client can be either your local computer or another Linode.
 
 {{< caution >}}
 Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent critical updates in the future.
@@ -192,7 +192,7 @@ The second way of adding peer information is through the command line. This info
 
         wg
 
-Regardless of which method above you chose, there will be a **Peer** section in the output of this command if the setup was successful. This Peer section will be automatically added to `wg0.conf` when the service is restarted. If you would like to add this information to the config file immediately, you can run:
+Regardless of which method you choose, there will be a **Peer** section in the output of this command if the setup was successful. This Peer section will be automatically added to `wg0.conf` when the service is restarted. If you would like to add this information immediately to the config file, you can run:
 
     wg-quick save wg0
 
