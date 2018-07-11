@@ -1271,6 +1271,7 @@ ufw
 ui
 uidl
 un
+unaliased
 unarchive
 unban
 unbans
