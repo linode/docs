@@ -77,6 +77,10 @@ This guide has been written with the assumption that you are logged in as the ro
 
     Select **Save Changes** when you're finished.
 
+### Diffie-Hellman Parameters
+
+{{< content "use-dhparams-with-nodebalancer" >}}
+
 
 ## Configure the Apache Web Server
 
