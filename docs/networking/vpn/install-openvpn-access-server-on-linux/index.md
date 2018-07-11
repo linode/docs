@@ -206,7 +206,7 @@ The first command enables traffic forwarding over IPv4 in your system configurat
 
 Once forwarding is enabled, restart OpenVPN by clicking on the **Stop the Server**, then **Start the Server** buttons under the **Status Overview** section in the Access Server Admin UI:
 
-[![OpenVPN Access Server Restart](openvpn-access-server-restart-resize.png "OpenVPN Access Server Restart")](openvpn-access-server-restart.png)
+![OpenVPN Access Server Restart](openvpn-access-server-restart.png "OpenVPN Access Server Restart")
 
 ### Disable IPv6
 
