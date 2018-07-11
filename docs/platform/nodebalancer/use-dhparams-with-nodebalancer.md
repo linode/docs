@@ -18,7 +18,7 @@ show_on_rss_feed: false
 
 [Diffie-Hellman key exchange](https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange) is a method for enabling [forward secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) for SSL/TLS connections. [Configuring Diffie-Hellman](https://weakdh.org/sysadmin.html) is normally achieved by generating a `dhparams.pem` file and then updating your web server's cipher suites list.
 
-A NodeBalancer's SSL/TLS settings can't be accessed in the same way you can view your web server configuration, but you can still use Diffie-Hellman with your SSL certificate. This is accomplished by concatenating your certificate file with the contents of your `dhparams.pem` and then supplying that to the **Certificate** field of your NodeBalancer's HTTPS configuration. The result of this concatenation would look like the following:
+A NodeBalancer's SSL/TLS settings can't be accessed in the same way you can view your web server configuration, but you can still use Diffie-Hellman with your SSL certificate. This is accomplished by concatenating your certificate file with the contents of your `dhparams.pem` file and then supplying that to the **Certificate** field of your NodeBalancer's HTTPS configuration. The result of this concatenation will look similar to the example:
 
 {{< output >}}
 -----BEGIN CERTIFICATE-----

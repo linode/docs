@@ -77,7 +77,7 @@ This guide has been written with the assumption that you are logged in as the ro
 
     Select **Save Changes** when you're finished.
 
-### If You Want to Use Diffie-Hellman Parameters
+### Diffie-Hellman Parameters
 
 {{< content "use-dhparams-with-nodebalancer" >}}
 
