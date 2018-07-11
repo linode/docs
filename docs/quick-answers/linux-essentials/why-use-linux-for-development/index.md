@@ -31,7 +31,7 @@ Others see OS platforms merely as tools and are impartial to switching between t
 
 1. The application is then deployed to production.
 
-The above is just one scenario. It may be differ from yours but it's meant to highlight that code is mostly written locally, not on remote servers.
+The above is just one scenario. It may differ from yours, but it's meant to highlight that code is mostly written locally, not on remote servers.
 
 The local system--the operating system you're writing your code in--needs very little in terms of hardware resources or special features, and unless you have strict requirements for the dev environment (like Visual Studio or Xcode), then the OS on that local machine can be whatever your preference.
 
@@ -66,6 +66,6 @@ There are a number of ways to adopt Linux in your work, and it's not necessary t
     - [Install Ubuntu desktop](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0)
     - [Linux Mint Installation Guide](https://linuxmint-installation-guide.readthedocs.io/en/latest/)
 
-- Purchase a [Raspberry Pi](https://www.raspberrypi.org/). Raspberry Pis are small, affordable computers which and an easy introduction to Linux. There is an active Raspberry Pi community, and many [example projects](https://projects.raspberrypi.org/en/) to follow and learn from.
+- Purchase a [Raspberry Pi](https://www.raspberrypi.org/). Raspberry Pis are small, affordable computers which are an easy introduction to Linux. There is an active Raspberry Pi community, and many [example projects](https://projects.raspberrypi.org/en/) to follow and learn from.
 
 - Create a Linode and work with the Linux command line remotely. The Linode platform offers a fast way to create Linux servers, and you are only billed for the time between when you create a server and when you remove it. If you create a Linode and test something out, you can remove it after the test finishes to save money. Or, if your test doesn't work out the way you'd hoped, you can remove the Linode, create a new one, and start fresh.
