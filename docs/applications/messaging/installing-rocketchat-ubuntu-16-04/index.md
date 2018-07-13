@@ -140,4 +140,4 @@ server {
 
 1.  In a browser, navigate to your domain address. Follow the Rocket.Chat setup wizard steps.
 
-    [![Rocket.Chat home page](rocketchat.png)](rocketchat_small.png "Rocket.Chat home page”)
+    ![Rocket.Chat home page](rocketchat.png)
