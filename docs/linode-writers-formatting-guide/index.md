@@ -309,7 +309,7 @@ When adding an image, ensure that all identifying attributes such as names and I
 
 | Up to 650 px wide. | Over 650 px wide. |
 |:--------------------------|:----------------------------------------------|
-| \!\[Description of the image\](filename.png "Description of the image.") | \[!\[Description of the image\](filename_small.png)](filename.png "Description of the image.") |
+| \!\[Description of the image\](filename.png "Description of the image.") | \[!\[Description of the image\](filename_small.png "Description of the image.")](filename.png) |
 
 ### Key Combinations
 
