@@ -25,7 +25,7 @@ Although Linux and alternative operating systems (OS) increasingly support many 
 
 - Linux is free and open source, released under the [GNU General Public License (GPL)](https://www.gnu.org/licenses/licenses.html). This means you can install and use a Linux distribution on your machine for free.
 
-- A large number of cloud server deployments like Linode (*Linux-Node*) use Linux. If you are going to host your application on a cloud-based Linux server, developing your project on the same Linux variant can minimize deployment surprises.
+- A large number of cloud server deployments like Linode (*Linux-Node*) use Linux. If you are going to host your application on a cloud server, developing your project on the same Linux variant can minimize deployment surprises.
 
 - Linux distributions offer native package management. Useful development tools, libraries, and updates are available for free from trusted sources.
 
