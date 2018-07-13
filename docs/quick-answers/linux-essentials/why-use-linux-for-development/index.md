@@ -13,59 +13,40 @@ modified_by:
 title: Why Use Linux for Development?
 ---
 
-Ever wonder what operating system would be best to develop your projects in? It can seem a daunting decision, or maybe it's one you never really considered before. The playing field between Linux, Windows, and macOS has become more level in recent years than ever, but Linux still has a lot to offer the developer looking for a system to call home.
+Linux is one of the most popular platforms used for development.  Its widespread adoption stems from core design principles behind it’s kernel; to be extensible, efficient, modular, simple, robust and open source.  When Linux first emerged in the early 1990s, its features and performance were able to rival those of its proprietary competitors leading to a strong community of developers quickly flourishing behind it.  The Linux open source system created a framework for software development that was decentralized, open and peer-reviewed -- a model that persists today in modern software development practices.
 
-This is a subjective and personal topic. You need to choose what works best for you, and that's a mixture of your preferences and requirements, exacted by experimentation. Some people just prefer Linux; others love Apple products. Others are heavily invested in Windows.
-
-Some people feel the operating system they use daily is the best to work in. They're already comfortable and familiar with it, it provides everything they need, and they don't want to buy a separate machine or involve containers or virtualization.
-
-Others see OS platforms merely as tools and are impartial to switching between them for various tasks. If you don't have platform-specific requirements, then the platform you should choose is wherever you feel you can work efficiently and enjoyably.
-
-## A Development Scenario
-
-1. Code is written in a text editor and/or [integrated development environment](https://en.wikipedia.org/wiki/Integrated_development_environment) (IDE). This happens on a local machine--be a laptop, desktop, tablet or even a smartphone.
-
-1. That code is then pushed up to the cloud. For example, a remote repository, from which an automation system builds the application and runs some basic tests (the CI/CD pipeline).
-
-1. The application is further tested in a remote staging environment.
-
-1. The application is then deployed to production.
-
-The above is just one scenario. It may be differ from yours but it's meant to highlight that code is mostly written locally, not on remote servers.
-
-The local system--the operating system you're writing your code in--needs very little in terms of hardware resources or special features, and unless you have strict requirements for the dev environment (like Visual Studio or Xcode), then the OS on that local machine can be whatever your preference.
-
-You have even more configuration options if you take virtual machines and containers into consideration. It's possible to run, for example, Windows, Linux, macOS, and BSD from a single laptop if you choose. Compiling code locally is of course a trade-off of hardware performance versus time, but the principle is the same. If you're not locked to a specific IDE or build toolchain, then hardware upgrades are independent of the operating system and what to use for an OS is your choice.
+Other open source projects, like the [Apache](https://httpd.apache.org/) web-server, brought Linux mainstream visibility and success.  Users adopted Apache on Linux servers, capturing most of the websites on the internet.  Linux’s modularity made it easier to secure and its open source code meant an entire community could work on removing vulnerabilities.  Today, Linux and its many [distributions](https://en.wikipedia.org/wiki/List_of_Linux_distributions) provide the flexibility and reliability needed for the budding developer and the enterprise level website or application.
 
 ## Why Use Linux over Another Operating System?
 
-- Most Linux-based operating systems are free, and the user experience has improved drastically over time.
+Although Linux and alternative OSes increasingly support many of the same technologies, the historical evolution of Linux and its community has made it one of the most popular choices for present-day developers.  Here are some of the reasons why you might choose Linux over other OSes:
 
-- Linux is used for a large amount of cloud server deployments. It can be desirable to develop applications in the environment that will be used in production. If you are going to ultimately host your application on a cloud-based Linux server, writing your site and application on that same Linux variant can minimize deployment surprises.
+- Linux is free and open source released under the [GNU General Public License (GPL)](https://www.gnu.org/licenses/licenses.html). This means you can install a Linux distribution on your machine for free and get started working on your project.
 
-- Linux distributions offer native package management--many tools and libraries are available for free from trusted sources.
+- A large amount of cloud server deployments use Linux. If you are going to host your application on a cloud-based Linux server, developing your project on the same Linux variant can minimize deployment surprises.
 
-- Linux is often where many new server technologies are first made available.
+- Native package management is offered by Linux distributions.  Useful development tools and libraries are available for free from trusted sources.
 
-- Native access to the [GNU toolchain](https://en.wikipedia.org/wiki/GNU_toolchain).
+- New server technologies are often first made available on Linux, so you can start building with the newest and latest tooling.
 
-- Linux is very customizable, from configuration files, to multiple shell choices, to desktop environments ranging from minimal window managers to a full-featured GUI.
+- Access to the [GNU toolchain](https://en.wikipedia.org/wiki/GNU_toolchain) provides a set of native programming tools for software development.
 
-- Some Linux distributions have very low minimum system resource requirements. These can be used to rescue aging computers from obsolescence so you don't need to buy a separate machine if you a want bare-metal workstation.
+- Customize and personalize your Linux distribution with configuration files, multiple shell choices and desktop environments that range from minimal window managers to full-featured GUIs.
 
-- Most Linux distributions are are unofficially [POSIX](https://en.wikipedia.org/wiki/POSIX) compliant. This basically means that much of the way Linux behaves is very similar to other operating systems, so the knowledge you gain from using it is often transferable to other environments.
+- Lightweight Linux distributions have low minimum system resource requirements. These can be used to rescue aging computers from obsolescence.
 
-- Linux distributions don't collect user data.
+- Most Linux distributions are unofficially [POSIX](https://en.wikipedia.org/wiki/POSIX) compliant. This means you can transfer your Linux OS knowledge to other operating systems, like macOS.
+
 
 ## How to Get Started with Linux
 
-There are a number of ways to adopt Linux in your work, and it's not necessary to immediately reinstall your computer's operating system. Instead, you can progressively include Linux in your development flow:
+There are a number of ways to adopt Linux as your development OS. It’s not necessary to immediately reinstall your computer’s operating system. Instead, you can progressively include Linux in your development flow:
 
-- Consider installing Linux on an older spare computer if you have one. Some Linux distributions, like Ubuntu and Linux Mint, market themselves as more beginner-friendly. These include basic installation guides provided by those distributions:
+- Consider installing Linux on an older spare computer. Some Linux distributions, like Ubuntu and Linux Mint, market themselves as beginner-friendly. These include basic installation guides provided by those distributions:
 
-    - [Install Ubuntu desktop](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0)
-    - [Linux Mint Installation Guide](https://linuxmint-installation-guide.readthedocs.io/en/latest/)
+  - [Install Ubuntu desktop](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0)
+  - [Linux Mint Installation Guide](https://linuxmint-installation-guide.readthedocs.io/en/latest/)
 
-- Purchase a [Raspberry Pi](https://www.raspberrypi.org/). Raspberry Pis are small, affordable computers which and an easy introduction to Linux. There is an active Raspberry Pi community, and many [example projects](https://projects.raspberrypi.org/en/) to follow and learn from.
+- Purchase a [Raspberry Pi](https://www.raspberrypi.org/). Raspberry Pis are small, affordable computers which and an easy introduction to Linux. There is an active Raspberry Pi community, and many [example projects](https://projects.raspberrypi.org/en/) to learn from and follow.
 
-- Create a Linode and work with the Linux command line remotely. The Linode platform offers a fast way to create Linux servers, and you are only billed for the time between when you create a server and when you remove it. If you create a Linode and test something out, you can remove it after the test finishes to save money. Or, if your test doesn't work out the way you'd hoped, you can remove the Linode, create a new one, and start fresh.
+- [Create a Linode](/docs/getting-started) and work with the Linux command line remotely. The Linode platform offers a fast and cost-effective way to create Linux servers. You can easily create a Linode, test something out, then restart with a fresh Linode to try something else out.
