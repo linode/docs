@@ -70,10 +70,10 @@ These steps should be run on each file system node in your cluster.
 GlusterFS generates a UUID upon installation. Do not clone a single Linode to replicate your GlusterFS installation; it must be installed separately on each node.
 {{< /caution >}}
 
-1.  Add the `centos-release-gluster39` repository, which will allow you to install the GlusterFS server edition package:
+1.  Add the `centos-release-gluster` repository, which will allow you to install the GlusterFS server edition package:
 
         yum install epel-release
-        yum install centos-release-gluster39
+        yum install centos-release-gluster
         yum install glusterfs-server
 
     {{< note >}}
