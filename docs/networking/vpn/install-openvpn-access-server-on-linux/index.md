@@ -12,7 +12,7 @@ published: 2015-04-30
 title: Manage OpenVPN with OpenVPN Access Server
 ---
 
-<!--![Manage OpenVPN with OpenVPN Access Server](openvpn-access-server-title.jpg "Manage OpenVPN with OpenVPN Access Server title graphic") -->
+![Manage OpenVPN with OpenVPN Access Server](Install_OpenVPN_Access_Server_v2_smg.png "Manage OpenVPN with OpenVPN Access Server title graphic")
 
 ## What is OpenVPN?
 
