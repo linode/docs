@@ -1,4 +1,4 @@
 ---
-title: Longview Guides
+title: Longview
 show_in_lists: true
 ---

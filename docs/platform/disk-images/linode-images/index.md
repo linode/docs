@@ -5,7 +5,7 @@ author:
 description: How to retain Disks with the Linode Images service
 keywords: ["linode Images", " imagize"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linode-images/']
+aliases: ['linode-images/','platform/linode-images']
 modified: 2017-09-08
 modified_by:
   name: Linode

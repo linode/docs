@@ -5,7 +5,7 @@ author:
 description: 'Beginner''s Guide to Linode''s Platform answers common configuration questions about the Linode cloud.'
 keywords: ["linode beginners guide", "linux beginner", "linode beginner", "Linode guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['beginners-guide/']
+aliases: ['beginners-guide/','platform/linode-beginners-guide/']
 modified: 2017-03-02
 modified_by:
   name: Phil Zona
