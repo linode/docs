@@ -44,7 +44,7 @@ The **Rebuild** option will destroy all existing disks and profiles.
 
 Alternatively, you can follow along with this video, which will show you how to deploy from a StackScript:
 
-<iframe width="825" height="465" src="https://www.youtube.com/embed/XviHHyXVH20?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
+{{< youtube XviHHyXVH20 >}}
 
 ### Using a Community StackScript
 
