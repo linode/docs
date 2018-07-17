@@ -13,7 +13,7 @@ published: 2017-02-15
 title: 'Upgrade to Hourly Billing'
 ---
 
-This guide will show you how to upgrade your prepaid Linode account to use Hourly billing. For more information on Hourly billing, see our [Billing Guide](/docs/platform/billing-and-payments/).
+This guide will show you how to upgrade your prepaid Linode account to use Hourly billing. For more information on Hourly billing, see our [Billing Guide](/docs/platform/billing-and-support/billing-and-payments/).
 
 ## Upgrading
 
@@ -45,8 +45,8 @@ When you select the **Convert to Hourly billing** link in Step 3 above, you may 
 To resolve unpaid packages, you can:
 
 -   Check for unpaid invoices, and attempt to pay them immediately. Use the **click to charge** link on the main **Account** tab
--   Check for **extras** packages, and [remove](/docs/platform/billing-and-payments/#removing-services) them manually
--   [Contact support](/docs/platform/support/) for other notices on this page
+-   Check for **extras** packages, and [remove](/docs/platform/billing-and-support/billing-and-payments/#removing-services) them manually
+-   [Contact support](/docs/platform/billing-and-support/support/) for other notices on this page
 
 You will no longer receive the annual discount when you switch to Hourly billing. If you have a discounted package on your account, you will receive this notice:
 

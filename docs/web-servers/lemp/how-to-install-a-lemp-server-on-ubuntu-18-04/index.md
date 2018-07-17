@@ -153,7 +153,7 @@ server {
 
 ## Test the LEMP Stack
 
-1. To ensure that your web server can be reached with your domain name, configure the [DNS records](/docs/networking/dns/dns-manager-overview/) for your domain to point to your Linode's IP address.
+1. To ensure that your web server can be reached with your domain name, configure the [DNS records](/docs/platform/manager/dns-manager/) for your domain to point to your Linode's IP address.
 
 2.  Restart PHP and reload the NGINX configuration:
 

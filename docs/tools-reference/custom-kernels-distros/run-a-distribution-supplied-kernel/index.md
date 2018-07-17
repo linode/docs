@@ -101,7 +101,7 @@ When the installation finishes, you'll then see the kernel and other components 
 
 ### Configure Grub
 
-After the kernel is installed, you'll need to configure the serial console and other Grub settings so you can use [Lish](/docs/networking/using-the-linode-shell-lish/) and [Glish](/docs/networking/using-the-linode-graphical-shell-glish/).
+After the kernel is installed, you'll need to configure the serial console and other Grub settings so you can use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) and [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/).
 
 1.  Open `/etc/default/grub` in a text editor and go to the line beginning with `GRUB_CMDLINE_LINUX`. Remove the word `quiet` if present, and add `console=ttyS0,19200n8 net.ifnames=0`. Leave the other entries in the line. For example, on CentOS 7 you should have something similar to:
 

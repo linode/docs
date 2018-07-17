@@ -31,7 +31,7 @@ Visit our [Block Storage guide](/docs/platform/how-to-use-block-storage-with-you
 
     ![Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode](bs-rescue-mode-sdc.png "Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode")
 
-    Connect to the Linode via [Lish](/docs/networking/using-the-linode-shell-lish/).
+    Connect to the Linode via [Lish](/docs/platform/manager/using-the-linode-shell-lish/).
 
 2.  Use `fdisk` to make sure your primary disk and Block Storage Volume are available as `dev/sda` and `dev/sdc`, respectively:
 
