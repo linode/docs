@@ -119,7 +119,7 @@ In the Linode Manger, you may notice that the netmask for your private IP addres
 
         mkdir -p /data/example-volume
 
-1. Create a distributed replicated volume. This step needs to be done on only one of the nodes in your pool. In this example, we create the volume `example-volume`, which sets `/data/example-volume` as the brick storage directory for each linode in the network. Replace the volume name and the hostname values with your own:
+1. Create a distributed replicated volume. This step needs to be done on only one of the nodes in your pool. In this example, we create the volume `example-volume`, which sets `/data/example-volume` as the brick storage directory for each Linode in the network. Replace the volume name and the hostname values with your own:
 
         gluster volume create example-volume replica 3 gluster1:/data/example-volume gluster2:/data/example-volume gluster3:/data/example-volume force
 
