@@ -22,15 +22,15 @@ external_resources:
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.
 
-In this guide, we'll explain how to host a highly available website with WordPress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/websites/introduction-to-high-availability/).
+This guide shows how to host a highly available website with WordPress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/websites/introduction-to-high-availability/).
 
 ## Before You Begin
 
-1.  We will be using a total of nine nodes, or servers, all running CentOS 7 with SELinux enabled, and all within the same data center. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting the hostname and timezone for each Linode you create.
+1.  This guide uses a total of nine nodes, all Linodes running CentOS 7 with SELinux enabled, and all within the same data center. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting the hostname and timezone for each Linode you create.
 
 1.  You should also be familiar with our [Securing Your Server](/docs/security/securing-your-server/) guide, and follow best security practices as you create your servers. Do not create firewall rules yet, as we'll be handling that step in our guide.
 
-1.  The Linodes we will create during this guide will use the following hostname conventions:
+1.  The Linodes we create in this guide will use the following hostname conventions:
 
     *   File system nodes - `gluster1`, `gluster2`, `gluster3`
     *   Database nodes - `galera1`, `galera2`, `galera3`
@@ -45,12 +45,12 @@ In this guide, we'll explain how to host a highly available website with WordPre
         yum update
 
 {{< note >}}
-Most steps in this guide require root privileges. Be sure you're entering the commands as root, or using `sudo` if you're using a limited user account. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+Most steps in this guide require root privileges. Be sure you're entering the commands as root, or using `sudo` if you're using a limited user account. If you’re not familiar with the `sudo` command, visit our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## GlusterFS
 
-Our first step in creating a high-availability setup is to install and configure a file system using GlusterFS. In this section, we'll be using three 2GB Linodes named `gluster1`, `gluster2`, and `gluster3`.
+The first step towards creating a high-availability setup is to install and configure a file system using GlusterFS. In this section, we'll be using three 2GB Linodes named `gluster1`, `gluster2`, and `gluster3`.
 
 Edit the `/etc/hosts` file on each Linode to match the following, substituting your own private IP addresses, fully qualified domain names, and host names:
 
@@ -58,7 +58,6 @@ Edit the `/etc/hosts` file on each Linode to match the following, substituting y
 192.168.1.2    gluster1.yourdomain.com    gluster1
 192.168.3.4    gluster2.yourdomain.com    gluster2
 192.168.5.6    gluster3.yourdomain.com    gluster3
-
 {{< /file >}}
 
 ### Install GlusterFS
@@ -76,9 +75,9 @@ GlusterFS generates a UUID upon installation. Do not clone a single Linode to re
         yum install glusterfs-server
 
     {{< note >}}
-When installing `glusterfs-server`, you may be prompted to verify a GPG key from the CentOS Storage SIG repository. Before running the third command, you can manually import the GPG key:
+During the `glusterfs-server` installation, you may be prompted to verify a GPG key from the CentOS Storage SIG repository. Before running the third command, you can manually import the GPG key:
 
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
+    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
 {{< /note >}}
 
 1.  Start the GlusterFS daemon:
@@ -89,7 +88,7 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
 
 Run the following commands on each Linode in your GlusterFS cluster.
 
-1.  Add firewall rules that allow GlusterFS service to communicate between your trusted servers. Replace the IP addresses below with the private IP addresses of your hosts:
+1.  Add firewall rules that allow the GlusterFS service to communicate between your trusted servers. Replace the IP addresses below with the private IP addresses of your hosts:
 
         firewall-cmd --zone=internal --add-service=glusterfs --permanent
         firewall-cmd --zone=internal --add-source=192.168.1.2/32 --permanent
@@ -97,20 +96,20 @@ Run the following commands on each Linode in your GlusterFS cluster.
         firewall-cmd --zone=internal --add-source=192.168.5.6/32 --permanent
 
     {{< note >}}
-In the Linode Manger, you may notice that the netmask for your private IP addresses is /17. Firewalld does not recognize this, so a /32 prefix should be used instead.
+In the Linode Manger, you may notice that the netmask for your private IP addresses is `/17`. Firewalld does not recognize this, so a `/32` prefix should be used instead.
 {{< /note >}}
 
 1.  Reload your firewall configuration:
 
         firewall-cmd --reload
 
-1.  Enable the `firewalld` and `glusterd` services to have them start automatically upon booting:
+1.  Enable the `firewalld` and `glusterd` services to have them start automatically on boot:
 
         systemctl enable firewalld glusterd
 
 ### Configure GlusterFS
 
-1.  Create a *trusted storage pool*. A storage pool is a trusted network of file servers that will communicate to share data. You only need to run this command on one of your nodes. We'll use `gluster1` in this example, probing each of the other nodes we want to add to our storage pool:
+1.  Create a *trusted storage pool*. A storage pool is a trusted network of file servers that will communicate to share data. You only need to run this command on one of your nodes. We use `gluster1` in this example, probing each of the other nodes we want to add to our storage pool:
 
         gluster peer probe gluster2
         gluster peer probe gluster3
@@ -119,7 +118,7 @@ In the Linode Manger, you may notice that the netmask for your private IP addres
 
         mkdir -p /data/example-volume
 
-1. Create a distributed replicated volume. This step needs to be done on only one of the nodes in your pool. In this example, we create the volume `example-volume`, which sets `/data/example-volume` as the brick storage directory for each Linode in the network. Replace the volume name and the hostname values with your own:
+1.  Create a distributed replicated volume. This step needs to be done on only one of the nodes in your pool. In this example, we create the volume `example-volume`, which sets `/data/example-volume` as the brick storage directory for each Linode in the network. Replace the volume name and the hostname values with your own:
 
         gluster volume create example-volume replica 3 gluster1:/data/example-volume gluster2:/data/example-volume gluster3:/data/example-volume force
 
@@ -127,26 +126,28 @@ In the Linode Manger, you may notice that the netmask for your private IP addres
 
         gluster volume start example-volume
 
-    You can check the configuration by running `gluster volume info`. If everything is working correctly, the output should resemble the following. Check that each brick is listed here:
+    Check the configuration by running `gluster volume info`. If everything is working correctly, the output should resemble the following. Check that each brick is listed here:
 
-        Volume Name: example-volume
-        Type: Replicate
-        Volume ID: 1b5ce8e2-2e1e-4207-b8c9-b704ef8a6ebc
-        Status: Started
-        Number of Bricks: 1 x 3 = 3
-        Transport-type: tcp
-        Bricks:
-        Brick1: gluster1:/data/example-volume
-        Brick2: gluster2:/data/example-volume
-        Brick3: gluster3:/data/example-volume
-        Options Reconfigured:
-        performance.readdir-ahead: on
+    {{< output >}}
+Volume Name: example-volume
+Type: Replicate
+Volume ID: 1b5ce8e2-2e1e-4207-b8c9-b704ef8a6ebc
+Status: Started
+Number of Bricks: 1 x 3 = 3
+Transport-type: tcp
+Bricks:
+Brick1: gluster1:/data/example-volume
+Brick2: gluster2:/data/example-volume
+Brick3: gluster3:/data/example-volume
+Options Reconfigured:
+performance.readdir-ahead: on
+{{< /output >}}
 
 ### Test Replication
 
-This section will explain how to test file replication between servers in your pool. Testing in this manner should not be done in a live production environment.
+This section explains how to test file replication between servers in your pool. Testing in this manner should not be done in a live production environment.
 
-1.  Mount the volume on one of your hosts. In this example, we'll use `gluster1`, but you can use any file system node:
+1.  Mount the volume on one of your hosts. This example uses `gluster1`, but you can use any file system node:
 
         mount -t glusterfs gluster1:/example-volume /mnt
 
@@ -160,14 +161,14 @@ This section will explain how to test file replication between servers in your p
 
     If replication is working properly, the `test` file you created on the mounted volume should now show up on your other hosts.
 
-1.  Remember to delete the test file from `/mnt` (on the same host used to create it) and unmount the volume before using GlusterFS in production:
+1.  Delete the test file from `/mnt` (on the same host used to create it) and unmount the volume before using GlusterFS in production:
 
         rm /mnt/test
         umount /mnt
 
 ## Galera with XtraDB
 
-Now that we have a replicated file system, we can begin to set up our database cluster. In this section, we'll be using a cluster of Percona XtraDB database servers with Galera replication.
+Now that we have a replicated file system, we can begin to set up our database cluster. In this section, we use a cluster of Percona XtraDB database servers with Galera replication.
 
 We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` as our database nodes. Create these now if you have not already, and edit the `/etc/hosts` file on each to add the following, replacing the private IP addresses, fully qualified domain names, and hostnames of your database nodes:
 
@@ -177,12 +178,12 @@ We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` a
 192.168.5.6    galera3.yourdomain.com    galera3
 {{< /file >}}
 
-
 {{< note >}}
-You will need an additional private IP address for one of your database nodes, as we'll be using it as a *floating IP* for failover in a later section. To request an additional private IP address, you'll need to [contact support](/docs/platform/support/).
+You will need an additional private IP address for one of your database nodes, as we'll be using it as a *floating IP* for failover in a later section. To request an additional private IP address, [contact support](/docs/platform/support/).
 {{< /note >}}
 
 ### Install Galera and XtraDB
+
 Install Galera and XtraDB on each Linode that will be in the database cluster.
 
 1.  Remove the `mysql-libs` package from each node:
@@ -198,7 +199,7 @@ Install Galera and XtraDB on each Linode that will be in the database cluster.
     {{< note >}}
 When installing `Percona-XtraDB-Cluster-57` and `Percona-XtraDB-Cluster-shared-57`, you will be prompted to verify a GPG key from the Percona repository. Before running the third command, you can manually import the GPG key:
 
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
+    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
 {{< /note >}}
 
 ### Add Firewall Rules
@@ -207,7 +208,7 @@ Run the following commands on each database node.
 
 1.  Create and edit `/etc/firewalld/services/galera.xml` to match the following:
 
-    {{< file "/etc/firewalld/services/galera.xml" conf >}}
+    {{< file "/etc/firewalld/services/galera.xml" xml >}}
 <?xml version="1.0" encoding="utf-8"?>
 <service>
   <short>Galera Replication</short>
@@ -216,7 +217,6 @@ Run the following commands on each database node.
   <port protocol="tcp" port="4568"/>
   <port protocol="tcp" port="4444"/>
 </service>
-
 {{< /file >}}
 
 1.  Add firewall rules that allow Galera and MySQL service to communicate between your trusted servers. Replace the IP addresses below with the private IP addresses of your database nodes:
@@ -228,7 +228,7 @@ Run the following commands on each database node.
         firewall-cmd --zone=internal --add-source=192.168.5.6/32 --permanent
 
     {{< note >}}
-In the Linode Manger, you may notice that the netmask for your private IP addresses is /17. Firewalld does not recognize this, so a /32 prefix should be used instead.
+In the Linode Manger, you may notice that the netmask for your private IP addresses is `/17`. Firewalld does not recognize this, so a `/32` prefix should be used instead.
 {{< /note >}}
 
 1.  Reload your firewall configuration and enable the `firewalld` service to start automatically on boot:
@@ -245,20 +245,20 @@ SELinux is enabled by default on CentOS 7 Linodes, and it can interfere with the
 
 When in this mode, SELinux will still log operations that it would have denied in `/var/log/audit/audit.log`.
 
-{{< note >}}
-SE Linux permissive mode disables all SELinux policies for the MySQL service. If you would like to enable enforcing mode with SELinux and Galera consult the following guides:
+**To Enable Enforcing Mode**
+
+SE Linux permissive mode disables all SELinux policies for the MySQL service. To enable enforcing mode with SELinux and Galera consult the following guides:
 
 -   [Galera Cluster - SELinux Configuration](http://galeracluster.com/documentation-webpages/selinux.html)
 -   [Lock Down: Enforcing SELinux with Percona XtraDB Cluster](https://www.percona.com/blog/2018/06/21/enforcing-selinux-with-percona-xtradb-cluster/)
-{{< /note >}}
 
 ### Configure Your Galera Cluster
 
-We will configure the cluster to use XtraBackup for *state snapshot transfer* (SST), which is a more efficient way of syncing data between database nodes than other alternatives like `rsync` or `mysqldump`.
+Configure the cluster to use XtraBackup for *state snapshot transfer* (SST), which is a more efficient way of syncing data between database nodes than other alternatives like `rsync` or `mysqldump`.
 
 1.  Edit `/etc/percona-xtradb-cluster.conf.d/wsrep.cnf` on each of your database nodes and substitute in values from the following file excerpt:
 
-    {{< file "/etc/percona-xtradb-cluster.conf.d/wsrep.cnf" conf >}}
+    {{< file "/etc/percona-xtradb-cluster.conf.d/wsrep.cnf" ini >}}
 [mysqld]
 # ...
 wsrep_cluster_address = gcomm://galera1,galera2,galera3
@@ -272,7 +272,6 @@ wsrep_node_name=galera1
 wsrep_sst_method=xtrabackup-v2
 # ...
 wsrep_sst_auth="sstuser:password"
-
 {{< /file >}}
 
     The values for `wsrep_node_name` and `wsrep_node_address` should be configured individually for each node, using the private IP address and the hostname for that node. The rest of the lines should match on all your database nodes.
@@ -283,7 +282,7 @@ wsrep_sst_auth="sstuser:password"
 The `xtrabackup-v2` service accesses the database as `sstuser`, authenticating using `password` to log into MySQL to grab backup locks for replication.
 {{< /note >}}
 
-1.  On your first database node, start MySQL as the primary component in your cluster. This process is known as *bootstrapping*; this tells the database node to start as the primary component that the other nodes in the cluster will use as a reference point when they join the cluster and sync their data:
+1.  On your first database node, start MySQL as the primary component in your cluster. This process is known as *bootstrapping*. This tells the database node to start as the primary component that the other nodes in the cluster will use as a reference point when they join the cluster and sync their data:
 
         systemctl start mysql@bootstrap
 
@@ -293,7 +292,7 @@ The `xtrabackup-v2` service accesses the database as `sstuser`, authenticating u
 
         sudo grep 'A temporary password' /var/log/mysqld.log
 
-    The output will resemble the following example:
+    The output will resemble the following:
 
     {{< output >}}
 2018-07-11T16:28:15.356630Z 1 [Note] A temporary password is generated for root@localhost: temporary_generated_password
@@ -321,13 +320,11 @@ The `xtrabackup-v2` service accesses the database as `sstuser`, authenticating u
 
         systemctl start mysql
 
-   {{< note >}}
-If you want to learn more about `xtrabackup` privileges their [documentation](https://www.percona.com/doc/percona-xtrabackup/2.4/using_xtrabackup/privileges.html) is a good place to start.
-{{< /note >}}
+To learn more about `xtrabackup` privileges, visit the [Percona XtraBackup documentation](https://www.percona.com/doc/percona-xtrabackup/2.4/using_xtrabackup/privileges.html).
 
 ### Test Database Replication
 
-Now that your database nodes are configured, we can test to make sure they've all joined the cluster and are replicating properly.
+Now that your database nodes are configured, test to make sure they've all joined the cluster and are replicating properly.
 
 1.  Enter the MySQL shell on any database node, using the `mysql` command. Run the following command in MySQL to check the status of your cluster:
 
@@ -335,18 +332,20 @@ Now that your database nodes are configured, we can test to make sure they've al
 
     If your cluster has been configured properly, your output should resemble the following, showing the expected value of `3` for `wsrep_cluster_size`, and `wsrep_cluster_status` should show `Primary`:
 
-        +--------------------------+--------------------------------------+
-        | Variable_name            | Value                                |
-        +--------------------------+--------------------------------------+
-        | wsrep_cluster_conf_id    | 3                                    |
-        | wsrep_cluster_size       | 3                                    |
-        | wsrep_cluster_state_uuid | a3dab288-3275-11e6-a26f-42e24e1d7125 |
-        | wsrep_cluster_status     | Primary                              |
-        +--------------------------+--------------------------------------+
-        4 rows in set (0.00 sec)
+    {{< output >}}
++--------------------------+--------------------------------------+
+| Variable_name            | Value                                |
++--------------------------+--------------------------------------+
+| wsrep_cluster_conf_id    | 3                                    |
+| wsrep_cluster_size       | 3                                    |
+| wsrep_cluster_state_uuid | a3dab288-3275-11e6-a26f-42e24e1d7125 |
+| wsrep_cluster_status     | Primary                              |
++--------------------------+--------------------------------------+
+4 rows in set (0.00 sec)
+{{< /output >}}
 
     {{< note >}}
-If you add or remove nodes to and from the cluster in the future, you may notice the value for `wsrep_cluster_conf_id` increases each time. This value is the number of changes the cluster's configuration has gone through, and does not directly affect functionality. The above value of `3` is only an example.
+If you add to or remove nodes from the cluster in the future, you may notice the value for `wsrep_cluster_conf_id` increases each time. This value is the number of changes the cluster's configuration has gone through, and does not directly affect functionality. The above value of `3` is only an example.
 {{< /note >}}
 
 1.  Create a test database:
@@ -359,16 +358,18 @@ If you add or remove nodes to and from the cluster in the future, you may notice
 
     This should output a table that includes the `testdb` database, confirming that the databases are synchronized:
 
-        +--------------------+
-        | Database           |
-        +--------------------+
-        | information_schema |
-        | mysql              |
-        | performance_schema |
-        | sys                |
-        | testdb             |
-        +--------------------+
-        4 rows in set (0.00 sec)
+    {{< output >}}
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| testdb             |
++--------------------+
+4 rows in set (0.00 sec)
+{{< /output >}}
 
     You can run the same command on any other database node to check that replication is occurring across the entire cluster.
 
@@ -395,7 +396,7 @@ Before you start, edit the `/etc/hosts` file on each application node to include
 
 ### Add Firewall Rules
 
-Run the following commands on each app node to start your firewall, enable it on boot, and configure firewall rules to allow web traffic on port 80. To enable HTTPS traffic, run the third command again, substituting `https` for `http`, before reloading the rules:
+Run the following commands on each app node to start your firewall, enable it on boot, and configure firewall rules to allow web traffic on port `80`. To enable HTTPS traffic, run the third command again, substituting `https` for `http`, before reloading the rules:
 
     systemctl start firewalld
     systemctl enable firewalld
@@ -404,7 +405,7 @@ Run the following commands on each app node to start your firewall, enable it on
 
 ### Allow Private Traffic to GlusterFS Nodes
 
-To allow our application servers to communicate with the networked file system, we'll need to add firewall rules to the file system nodes. On each of your GlusterFS nodes, enter the following commands, substituting the private IP address of each application node:
+To allow our application servers to communicate with the networked file system, we need to add firewall rules to the file system nodes. On each of your GlusterFS nodes, enter the following commands, substituting the private IP address of each application node:
 
     firewall-cmd --zone=internal --add-source=192.168.0.1/32 --permanent
     firewall-cmd --zone=internal --add-source=192.168.2.3/32 --permanent
@@ -416,7 +417,7 @@ After these rules have been set, reload the firewall rules on each file system n
 
 ### Allow Private Traffic to Galera Nodes
 
-To allow our application servers to communicate with the database cluster, we'll need to add firewall rules to the Galera nodes. On each of your Galera nodes, enter the following commands, substituting the private IP address of each application node:
+To allow our application servers to communicate with the database cluster, we need to add firewall rules to the Galera nodes. On each of your Galera nodes, enter the following commands, substituting the private IP address of each application node:
 
     firewall-cmd --zone=internal --add-source=192.168.0.1/32 --permanent
     firewall-cmd --zone=internal --add-source=192.168.2.3/32 --permanent
@@ -436,7 +437,7 @@ At this point, you may also tune your Apache instances to optimize performance b
 
 ### Configure SELinux Compatibility for Apache
 
-SELinux's default settings will not allow allow Apache to access files on the GlusterFS cluster or to make connections to the database cluster. Allow this activity on each application server:
+SELinux's default settings do not allow allow Apache to access files on the GlusterFS cluster or to make connections to the database cluster. Allow this activity on each application server:
 
     yum install policycoreutils-python
     setsebool -P httpd_use_fusefs 1
@@ -445,7 +446,7 @@ SELinux's default settings will not allow allow Apache to access files on the Gl
 
 ### Mount the Gluster Filesystem
 
-Next, we'll mount the Gluster volume on our application servers. The steps in this section should be performed on each Apache server node.
+Next, mount the Gluster volume on the application servers. The steps in this section should be performed on each Apache server node.
 
 1.  Install `glusterfs-fuse`:
 
@@ -455,7 +456,6 @@ Next, we'll mount the Gluster volume on our application servers. The steps in th
 
     {{< file "/etc/fstab" conf >}}
 gluster1:/example-volume  /srv/www  glusterfs defaults,_netdev,backup-volfile-servers=gluster2:gluster3 0 0
-
 {{< /file >}}
 
 1.  Create the `/srv/www/` directory and mount the volume to it:
@@ -473,49 +473,49 @@ gluster1:/example-volume  /srv/www  glusterfs defaults,_netdev,backup-volfile-se
         Options Indexes FollowSymLinks Multiviews
     </Directory>
 </VirtualHost>
-
 {{< /file >}}
-
 
 1.  Start the Apache server:
 
         systemctl start httpd
 
-1.  You may also want to enable Apache to start on boot, although this is optional:
+1.  (Optional) You may also want to enable Apache to start on boot:
 
         systemctl enable httpd
 
 ### Test Your Configuration
 
-Your Apache servers should now be capable of serving files and applications from your Gluster volume. To test whether everything is connected properly, you can create a test file and check whether it's accessible by all of your application servers. On any one of your application nodes, create a blank file in the directory where you mounted your volume:
+Your Apache servers should now be capable of serving files and applications from your Gluster volume. To test whether everything is connected properly, create a test file and check whether it's accessible by all of your application servers.
 
-    touch /srv/www/testfile
+1.  On any one of your application nodes, create a blank file in the directory where you mounted your volume:
 
-In a web browser, enter the public IP address of any of your Apache servers. You should see a page titled "Index of /" with a list consisting of `testfile`. Make sure that the same list is visible when using the public IP of all of your Apache servers.
+        touch /srv/www/testfile
 
-To test redundancy of your file system, you can stop the Gluster daemon on your `gluster1` node:
+1.  In a web browser, enter the public IP address of any of your Apache servers. You should see a page titled "Index of /" with a list consisting of `testfile`. Make sure that the same list is visible when using the public IP of all of your Apache servers.
 
-    systemctl stop glusterd
+1.  To test redundancy of your file system, you can stop the Gluster daemon on your `gluster1` node:
 
-Follow the above steps again, creating another test file and checking whether it is visible from your application nodes' public IPs. Because the GlusterFS volume is replicated and distributed, and we set backup volumes for our Apache servers, taking down one GlusterFS node should not affect the accessibility of your files.
+        systemctl stop glusterd
 
-When you're finished, be sure to remove the test files. Do this for any additional test files you created as well:
+1.  Follow the above steps again, creating another test file and checking whether it is visible from your application nodes' public IPs. Because the GlusterFS volume is replicated and distributed, and because we set backup volumes for our Apache servers, taking down one GlusterFS node should not affect the accessibility of your files.
 
-    rm /srv/www/testfile
+1.  When you're finished, remove the test files. Do this for any additional test files you created as well:
 
-Remember to bring `gluster1`'s Gluster daemon back up before continuing:
+        rm /srv/www/testfile
 
-    systemctl start glusterd
+1.  Remember to bring `gluster1`'s Gluster daemon back up before continuing:
+
+        systemctl start glusterd
 
 ## Keepalived
 
-So far, we've successfully configured a redundant web stack, with three layers of nodes performing a series of tasks. Gluster automatically handles monitoring, and we configured the failover for the file system nodes in our application nodes' `/etc/fstab` files. Next, we'll use Keepalived to handle database failover.
+So far, we've successfully configured a redundant web stack with three layers of nodes performing a series of tasks. Gluster automatically handles monitoring, and we configured the failover for the file system nodes in our application nodes' `/etc/fstab` files. In this section, we use Keepalived to handle database failover.
 
 {{< note >}}
 Alternatively, some users prefer to configure HAProxy instead of or in addition to Keepalived. For more information, visit our guide on [how to use HAProxy for load balancing](/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/).
 {{< /note >}}
 
-Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In this section, you will be using the additional private IP address, or *floating IP* from your database node to fail over to the others if one should go down. A floating IP address is one that can be assigned to a different node if needed. If you didn't request an additional private IP in the Galera section, [contact support](/docs/platform/support/) and do so before continuing.
+Keepalived is a routing service that can be used to monitor and failover components in a high availability configuration. In this section, you will be using the additional private IP address, or *floating IP* from your database node to fail over to the others if one should go down. A floating IP address is one that can be assigned to a different node if needed. If you didn't request an additional private IP in the Galera section, [contact support](/docs/platform/support/) and do so before continuing.
 
 We've added the floating IP address to `galera1`, but in practice, it can be configured to any of your database nodes.
 
@@ -529,9 +529,9 @@ Make sure that [Network Helper](/docs/platform/network-helper/) is turned **OFF*
 
 ### Configure IP Failover
 
-First, we'll configure IP failover on `galera2` and `galera3` to take on the floating IP address from `galera1` in the event that it fails.
+Configure IP failover on `galera2` and `galera3` to take on the floating IP address from `galera1` in the event that it fails.
 
-1.  Go to the **Remote Access** tab in the Linode Manager for `galera2`, and click "IP Failover" under your public IP addresses.
+1.  Go to the **Remote Access** tab in the Linode Manager for `galera2`, and click **IP Failover** under your public IP addresses.
 
 1.  You'll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP address for `galera1`, which we will now refer to as the floating IP address, and click **Save Changes**.
 
@@ -550,9 +550,8 @@ This guide will later describe how to enable compatibility with SELinux enforcem
 
 1.  Edit the following line in your `/etc/sysconfig/keepalived` file on all database nodes, adding `-P` to enable virtual router redundancy protocol:
 
-    {{< file "/etc/sysconfig/keepalived" conf >}}
+    {{< file "/etc/sysconfig/keepalived" ini >}}
 KEEPALIVED_OPTIONS="-D -P"
-
 {{< /file >}}
 
 1.  On all database nodes, back up `keepalived.conf`:
@@ -561,7 +560,7 @@ KEEPALIVED_OPTIONS="-D -P"
 
 1.  On all database nodes, replace the original file with the following:
 
-    {{< file "/etc/keepalived/keepalived.conf" conf >}}
+    {{< file "/etc/keepalived/keepalived.conf" sv >}}
 ! Configuration File for keepalived
 global_defs {
     notification_email {
@@ -610,7 +609,6 @@ vrrp_instance VI_1 {
 
 {{< /file >}}
 
-
     In the lines beginning with `script` and `auth_pass`, change `example_password` to a secure password of your choosing. In the `virtual_ipaddress` block, replace `192.168.9.9` with the floating IP address you configured previously. Be sure to include the `/17` netmask on this line. These sections, and the rest of the file, should be the same on all database nodes.
 
     In the line beginning with `unicast_src_ip`, change `192.168.0.1` to the private IP address of the node you are configuring. In the `unicast_peer` block, change the IP addresses to the private IP addresses of the other two nodes. Note that these sections will be slightly different depending on which node you are configuring.
@@ -619,7 +617,7 @@ vrrp_instance VI_1 {
 
         mysql -u root -p
 
-1.  Create the user `clustercheck`, replacing `example_password` with the password configured in step 3:
+1.  Create the user `clustercheck`, replacing `example_password` with the password configured in Step 3:
 
         GRANT USAGE ON *.* to 'clustercheck'@'localhost' IDENTIFIED BY 'example_password';
         FLUSH PRIVILEGES;
@@ -646,9 +644,9 @@ vrrp_instance VI_1 {
         systemctl start keepalived
         systemctl enable keepalived
 
-1.  Reboot each of your three database nodes to bring up the failover configuration.
+1.  Reboot each of your three database nodes, one at a time, to bring up the failover configuration.
 
-{{< caution >}}
+    {{< caution >}}
 It is important to boot each database node one at a time, otherwise you may bring down the entire cluster, in which case you would need to bootstrap MySQL and add each node to the cluster again. Refer to the [Galera documentation](http://galeracluster.com/documentation-webpages/restartingcluster.html) on how to restart the entire Galera cluster.
 {{</ caution >}}
 
@@ -678,11 +676,11 @@ SELinux provides a tool named `audit2allow` that analyzes these log messages and
 
 SELinux should now resume normal enforcement while allowing the operations described by the new policy. If you find that the Keepalived service is not functioning normally, check your `audit.log` file for further operations that may have been denied. If there are any further denials, you can repeat these steps to update your policy.
 
-## Nodebalancer
+## NodeBalancer
 
 The final step in creating a highly available website or application is to load balance traffic to the application servers. In this step, we'll use a NodeBalancer to distribute traffic between the application servers to ensure that no single server gets overloaded. NodeBalancers are highly available by default, and do not constitute a single point of failure.
 
-For instructions on how to install this component, follow our guide on [getting started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
+For instructions on how to install this component, follow our guide on [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
 
 {{< note >}}
 NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/platform/billing-and-payments/#additional-linode-services) guide for more information.
@@ -692,7 +690,7 @@ NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will cr
 
 If you're installing WordPress to manage your new highly available website, we'll explain how to do so here. If you're using your cluster to serve a custom application, website, or for another purpose, you may skip this section.
 
-1.  Install the MariaDB package on all three of your application nodes. This provides a MySQL client from which to read and write to your Galera cluster:
+1.  Install the MariaDB package on all three of your application nodes. This provides a MySQL client from which to read from and write to your Galera cluster:
 
         yum install mariadb
 
@@ -707,7 +705,7 @@ If you're installing WordPress to manage your new highly available website, we'l
 
         yum install php php-mysql php-gd
 
-1.  On all of your application servers, update the `DocumentRoot` setting in `/etc/httpd/conf.d/welcome.conf` to be `/srv/www/wordpress`.
+1.  On all of your application servers, update the `DocumentRoot` setting in `/etc/httpd/conf.d/welcome.conf` to `/srv/www/wordpress`.
 
 1.  Restart Apache on each of your application nodes:
 
@@ -719,7 +717,7 @@ If you're installing WordPress to manage your new highly available website, we'l
         wget http://wordpress.org/latest.tar.gz -O /srv/www/latest.tar.gz
         tar -xvf /srv/www/latest.tar.gz -C /srv/www/
 
-    Optionally, you can create a backup of your original WordPress archive in case you need to reinstall it at a later time:
+    Optionally, create a backup of your original WordPress archive in case you need to reinstall it at a later time:
 
         mv /srv/www/latest.tar.gz /srv/www/wordpress-`date "+%Y-%m-%d"`.tar.gz
 
@@ -731,15 +729,15 @@ If you're installing WordPress to manage your new highly available website, we'l
 
         systemctl restart httpd
 
-1.  In a web browser, navigate to the IP address of one of your application nodes (or the NodeBalancer) to access the WordPress admin panel. Use `wordpress` as the database name and user name, enter the password you configured in Step 2, and enter your floating IP address as the database host. For additional WordPress setup instruction, see our guide on [Installing and Configuring WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/#configure-wordpress).
+1.  In a web browser, navigate to the IP address of one of your application nodes (or the NodeBalancer) to access the WordPress admin panel. Use `wordpress` as the database name and user name, enter the password you configured in Step 2, and enter your floating IP address as the database host. For additional WordPress setup instructions, see our guide on [Installing and Configuring WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/#configure-wordpress).
 
-You've successfully configured a highly available WordPress site, and you're ready to start publishing content. For more information, feel free to reference our [WordPress configuration guide](/docs/websites/cms/how-to-install-and-configure-wordpress/).
+You've successfully configured a highly available WordPress site, and you're ready to start publishing content. For more information, reference our [WordPress configuration guide](/docs/websites/cms/how-to-install-and-configure-wordpress/).
 
 ## DNS Records
 
 The NodeBalancer in the above system directs all incoming traffic to the application servers. As such, its IP address will be the one you should use when configuring your DNS records. To find this information, visit the **NodeBalancers** tab in the Linode Manager and look in the *IP Address* section.
 
-For more information on DNS configuration, refer to our [introduction to DNS records](/docs/networking/dns/dns-records-an-introduction/) and our guide on how to use the [DNS Manager](/docs/networking/dns/dns-manager-overview/).
+For more information on DNS configuration, refer to our [introduction to DNS records](/docs/networking/dns/dns-records-an-introduction/) guide and our guide on how to use the [DNS Manager](/docs/networking/dns/dns-manager-overview/).
 
 ## Configuration Management
 
