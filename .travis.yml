@@ -9,6 +9,7 @@ env:
   - TEST_SUITE=vale
   - TEST_SUITE=blueberry
   - TEST_SUITE=docs404
+  - TEST_SUITE=test_urls
 
 before_install:
   - if [ $TEST_SUITE == docs404 ]; then
