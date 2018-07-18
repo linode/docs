@@ -2,7 +2,7 @@
 author:
   name: Edward Angert
   email: docs@linode.com
-description: "Install Certbot to obtain TLS certificates on a Debian or Ubuntu server."
+description: "Install Certbot to obtain TLS certificates on a Debian server."
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-28
@@ -36,6 +36,8 @@ blank to select all options shown (Enter 'c' to cancel):
 
     Certbot will store all generated keys and issued certificates in the `/etc/letsencrypt/live/$domain` directory, where `$domain` is the name of the domain entered during the Certbot certificate generation step. Certbot recommends pointing your web server configuration to the default directory or creating symlinks. Keys and certificates should not be moved to a different directory.
 
-1.  If you have a firewall configured on your Linode, you can add a firewall rule to allow incoming and outgoing connections to the https service. To configure firewalld for HTTPS traffic:
+1.  If you have a firewall configured on your Linode, you can add a firewall rule to allow incoming and outgoing connections to the HTTPS service. On Debian, *UFW* is a commonly used and simple tool for managing firewall rules. Install and configure UFW for HTTPS traffic:
 
+        sudo apt install ufw
+        sudo systemctl start ufw && sudo systemctl enable ufw
         sudo ufw allow https

@@ -2,7 +2,7 @@
 author:
   name: Edward Angert
   email: docs@linode.com
-description: "Install Certbot to obtain TLS certificates on a CentOS or Red Hat server."
+description: "Install Certbot to obtain TLS certificates on a CentOS 7 or Red Hat server."
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-28
@@ -41,6 +41,6 @@ blank to select all options shown (Enter 'c' to cancel):
 
     Certbot will store all generated keys and issued certificates in the `/etc/letsencrypt/live/$domain` directory, where `$domain` is the name of the domain entered during the Certbot certificate generation step. Certbot recommends pointing your web server configuration to the default directory or creating symlinks. Keys and certificates should not be moved to a different directory.
 
-1.  If you have a firewall configured on your Linode, you can add a firewall rule to allow incoming and outgoing connections to the https service. To configure firewalld for HTTPS traffic:
+1.  If you have a firewall configured on your Linode, you can add a firewall rule to allow incoming and outgoing connections to the HTTPS service. On CentOS 7, *firewalld* is the default tool for managing firewall rules. Configure firewalld for HTTPS traffic:
 
         sudo firewall-cmd --zone=public --permanent --add-service=https

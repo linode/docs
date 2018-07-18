@@ -23,85 +23,19 @@ For most operating system and web server configurations, Certbot creates signed 
 
 ## Before You Begin
 
-Make sure you have a Fully Qualified Domain Name (FQDN) with a DNS A/AAA record pointing to the domain's Publlic IP address. Consult [Add DNS Records](https://www.linode.com/docs/websites/hosting-a-website/#add-dns-records) for more information.
+Make sure you have a Fully Qualified Domain Name (FQDN) with a DNS A/AAA record pointing to the domain's Public IP address. Consult [Add DNS Records](https://www.linode.com/docs/websites/hosting-a-website/#add-dns-records) for more information.
 
-## Use Certbot on Debian or Ubuntu
+## Use Certbot on Debian
 
-1. Install the Certbot and web server-specific packages, then run Certbot. If using Apache, change each instance of `nginx` to `apache` in the following example:
+{{< content "certbot-shortguide-debian.md" >}}
 
-    **Ubuntu**
+## Use Certbot on Ubuntu
 
-        sudo apt-get update
-        sudo apt-get install software-properties-common
-        sudo add-apt-repository ppa:certbot/certbot
-        sudo apt-get update
-        sudo apt-get install python-certbot-nginx
-        sudo certbot --nginx
-
-    **Debian**
-
-        sudo apt install certbot python-certbot-nginx
-        sudo certbot --nginx
-
-1.  Certbot will ask for information about the site. The responses will be saved as part of the certificate:
-
-    {{< output >}}
-# sudo certbot --nginx
-Saving debug log to /var/log/letsencrypt/letsencrypt.log
-Plugins selected: Authenticator nginx, Installer nginx
-
-Which names would you like to activate HTTPS for?
--------------------------------------------------------------------------------
-1: example.com
-2: www.example.com
--------------------------------------------------------------------------------
-Select the appropriate numbers separated by commas and/or spaces, or leave input
-blank to select all options shown (Enter 'c' to cancel):
-{{< /output >}}
+{{< content "certbot-shortguide-ubuntu.md" >}}
 
 ## Use Certbot on CentOS 7
 
-1.  Enable the EPEL repository
-
-        sudo yum install epel-release
-        sudo yum update
-
-1.  Install the Certbot and web server-specific packages, then run Certbot. If using Nginx, change each instance of `apache` to `nginx` in the following example:
-
-        sudo yum install python2-certbot-apache
-        sudo certbot --apache
-
-1.  Certbot will ask for information about the site. The responses will be saved as part of the certificate:
-
-    {{< output >}}
-# sudo certbot --nginx
-Saving debug log to /var/log/letsencrypt/letsencrypt.log
-Plugins selected: Authenticator apache, Installer apache
-
-Which names would you like to activate HTTPS for?
--------------------------------------------------------------------------------
-1: example.com
-2: www.example.com
--------------------------------------------------------------------------------
-Select the appropriate numbers separated by commas and/or spaces, or leave input
-blank to select all options shown (Enter 'c' to cancel):
-{{< /output >}}
-
-## Keys and Certificate Location
-
-Certbot will store all generated keys and issued certificates in the `/etc/letsencrypt/live/$domain` directory, where `$domain` is the name of the domain entered during the Certbot certificate generation step. Certbot recommends pointing your web server configuration to the default directory or creating symlinks. Keys and certificates should not be moved to a different directory.
-
-## Configure Firewall for HTTPS Traffic
-
-If you have a firewall configured on your Linode, you can add a firewall rule to allow incoming and outgoing connections to the https service.
-
-### UFW: Debian / Ubuntu
-
-    sudo ufw allow https
-
-### firewalld: CentOS
-
-    sudo firewall-cmd --zone=public --permanent --add-service=https
+{{< content "certbot-shortguide-centos.md" >}}
 
 ## Use Certbot to Renew All Certificates
 
