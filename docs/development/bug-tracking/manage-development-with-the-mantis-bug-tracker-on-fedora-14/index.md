@@ -16,7 +16,7 @@ title: Manage Development with the Mantis Bug Tracker on Fedora 14
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.
 
-Before beginning this guide, we assume that you've completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/platform/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/tools-reference/linux-system-administration-basics/). Additionally, you'll need to have followed the [LAMP guide for Fedora 14](/docs/web-servers/lamp/lamp-server-on-fedora-14/) and be able to [send email from your Linode](/docs/tools-reference/linux-system-administration-basics/#send-email-from-your-server) if you don't already have a means of sending mail from your server.
+Before beginning this guide, we assume that you've completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/tools-reference/linux-system-administration-basics/). Additionally, you'll need to have followed the [LAMP guide for Fedora 14](/docs/web-servers/lamp/lamp-server-on-fedora-14/) and be able to [send email from your Linode](/docs/tools-reference/linux-system-administration-basics/#send-email-from-your-server) if you don't already have a means of sending mail from your server.
 
 ## Installing Prerequisites
 

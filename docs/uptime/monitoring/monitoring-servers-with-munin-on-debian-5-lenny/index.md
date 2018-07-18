@@ -21,7 +21,7 @@ The Linode Manager provides some basic monitoring of system resource utilization
 
 Munin is a system and network monitoring tool that uses RRDTool to generate useful visualizations of resource usage. The primary goal of the Munin project is to provide an easy to use tool that is simple to install and configure and provides information in an accessible web based interface. Munin also makes it possible to monitor multiple "nodes" with a single installation.
 
-Before installing Munin, we assume that you have followed our [getting started](/docs/getting-started/) guide. If you're new to Linux server administration you may be interested in our [using Linux](/docs/tools-reference/introduction-to-linux-concepts) document series, including the [beginner's guide](/docs/platform/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Additionally, you'll need to install a web server such as [Apache](/docs/web-servers/apache/installation/debian-5-lenny) in order to use the web interface.
+Before installing Munin, we assume that you have followed our [getting started](/docs/getting-started/) guide. If you're new to Linux server administration you may be interested in our [using Linux](/docs/tools-reference/introduction-to-linux-concepts) document series, including the [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Additionally, you'll need to install a web server such as [Apache](/docs/web-servers/apache/installation/debian-5-lenny) in order to use the web interface.
 
 Installing Munin
 ----------------

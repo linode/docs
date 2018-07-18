@@ -91,7 +91,7 @@ Direct your browser to your Linode's IP address or FQDN (fully qualified domain 
 
 [![Language selection in Openfire setup on CentOS 5.](407-openfire-centos-5-01-language-selection.png)](407-openfire-centos-5-01-language-selection.png)
 
-Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager/).
+Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/platform/manager/dns-manager/).
 
 [![Domain and admin ports selection in Openfire setup on CentOS 5.](408-openfire-centos-5-02-domain-ports-selection.png)](408-openfire-centos-5-02-domain-ports-selection.png)
 

@@ -255,7 +255,7 @@ Creating a new Storm cluster involves four main steps, some of which are necessa
 
 ### Create a Zookeeper Image
 
-A *Zookeeper image* is a master disk image with all necessary Zookeeper software and libraries installed. We'll create our using [Linode Images](/docs/platform/linode-images/) The benefits of using a Zookeeper image include:
+A *Zookeeper image* is a master disk image with all necessary Zookeeper software and libraries installed. We'll create our using [Linode Images](/docs/platform/disk-images/linode-images/) The benefits of using a Zookeeper image include:
 
 -  Quick creation of a Zookeeper cluster by simply cloning it to create as many nodes as required, each a perfect copy of the image
 -  Distribution packages and third party software packages are identical on all nodes, preventing version mismatch errors

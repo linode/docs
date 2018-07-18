@@ -33,7 +33,7 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
   - The [Troubleshooting](/docs/troubleshooting/troubleshooting/) quick start guide provides answers for common server connectivity and management issues.
 
-  - The [Linode Beginner's Guide](/docs/platform/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
+  - The [Linode Beginner's Guide](/docs/platform/billing-and-support/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
 
   - The [Quick Answers](/docs/quick-answers/) section offers short guides with fast answers.
 

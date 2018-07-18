@@ -175,7 +175,7 @@ example.com         86400   MX      10      203.0.113.0
 mail.example.com    86400   MX      10      203.0.113.0
 {{< /output >}}
 
-If you use Linode's [DNS Manager](/docs/networking/dns/dns-manager-overview/), point your MX records to a target domain or subdomain that resolves to your Linode. Make sure that domain or subdomain has an *A record* that points to the correct IP address.
+If you use Linode's [DNS Manager](/docs/platform/manager/dns-manager/), point your MX records to a target domain or subdomain that resolves to your Linode. Make sure that domain or subdomain has an *A record* that points to the correct IP address.
 
 #### SPF Records
 

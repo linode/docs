@@ -157,7 +157,7 @@ This guide is a high-level overview, and does not discuss runlevels. Read more a
 
 ## SSL Passphrases
 
-Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/networking/using-the-linode-shell-lish/) console to enter your passphrase on reboot:
+Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/platform/manager/using-the-linode-shell-lish/) console to enter your passphrase on reboot:
 
     Starting web server (apache2)...[Mon Sep 22 09:03:45 2008] [warn] module ssl_module is already loaded, skipping
     Apache/2.2.3 mod_ssl/2.2.3 (Pass Phrase Dialog)
