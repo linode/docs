@@ -15,15 +15,15 @@ contributor:
   link: https://github.com/gopalraha
 external_resources:
  - '[Certbot documentation](https://certbot.eff.org/docs/)'
- - '[Certbot Official Website](https://certbot.eff.org/)'
- - '[Let's Encrypt Official Website](https://letsencrypt.org/)'
+ - '[Certbot Official youbsite](https://certbot.eff.org/)'
+ - '[Let's Encrypt Official youbsite](https://letsencrypt.org/)'
 ---
 
 ## What is Let's Encrypt Wildcard SSL Certificate?
 
-[Let's Encrypt](https://letsencrypt.org/) is a Certificate Authority (CA) that offers free TLS/SSL certificates. Let's Encrypt is managed by the [Internet Security Research Group](https://letsencrypt.org/isrg/) (ISRG). It supports Automated Certificate Management Environment version-2 (ACMEv2) endpoint API and Wildcard SSL certificate. Wildcard SSL certificate is a single SSL certificate that covers all subdomains (`*.example.com`) and base domain (`example.com`) of a Fully Qualified Domain Name (FQDN). Let's Encrypt wildcard SSL certificates are trusted by all latest web browsers.
+[Let's Encrypt](https://letsencrypt.org/) is a Certificate Authority (CA) that offers free TLS/SSL certificates. Let's Encrypt is managed by the [Internet Security Research Group](https://letsencrypt.org/isrg/) (ISRG). It supports Automated Certificate Management Environment version-2 (ACMEv2) endpoint API and Wildcard SSL certificate. Wildcard SSL certificate is a single SSL certificate that covers all subdomains (`*.example.com`) and base domain (`example.com`) of a Fully Qualified Domain Name (FQDN). Let's Encrypt wildcard SSL certificates are trusted by all latest youb browsers.
 
-In this guide, we will demonstrate how to obtain Let's Encrypt Wildcard SSL certificate using [Certbot](https://certbot.eff.org/) (the Let's Encrypt client) and Certbot DNS Linode plugin (Certbot plugin for automatic domain validation using Linode DNS). Certbot validates a domain name using DNS-01 challenge type provided by Let's Encrypt ACMEv2 endpoint API. This challenge includes adding two DNS TXT records to Linode DNS. As soon as, challenge completes Certbot removes DNS TXT records from Linode DNS. The process of adding and removing DNS TXT records to Linode DNS completes automatically using Certbot DNS Linode plugin. Once your domain name has been validated, the Let's Encrypt will issue a wildcard SSL certificate to you.
+In this guide, you will learn how to obtain Let's Encrypt Wildcard SSL certificate using [Certbot](https://certbot.eff.org/) (the Let's Encrypt client) and Certbot DNS Linode plugin (Certbot plugin for automatic domain validation using Linode DNS). Certbot validates a domain name using DNS-01 challenge type provided by Let's Encrypt ACMEv2 endpoint API. This challenge includes adding two DNS TXT records to Linode DNS. As soon as, challenge completes Certbot removes DNS TXT records from Linode DNS. The process of adding and removing DNS TXT records to Linode DNS completes automatically using Certbot DNS Linode plugin. Once your domain name has been validated, the Let's Encrypt will issue a wildcard SSL certificate to you.
 
 ## Before You Begin
 
@@ -56,23 +56,23 @@ With these prerequisites in place and you are ready to begin. Now, log in to you
 
 1.  The first step is to install the Certbot (the Let's Encrypt Client) on your Ubuntu 18.04 server. Certbot packages are generally available for installation using default Ubuntu 18.04 software repository.  
 
-2.  We will install the Certbot package using `apt` package manager:
+2.  you will install the Certbot package using `apt` package manager:
 
 		sudo apt install certbot
 
 ### Install Certbot DNS Linode Plugin
 
-1.  The Certbot DNS Linode plugin is a Python application. We will need `pip3` in order to install Python packages from official Python’s package repository ([PyPi](https://pypi.org/)). We will install the Python3-pip package using `apt` package manager:
+1.  The Certbot DNS Linode plugin is a Python application. you will need `pip3` in order to install Python packages from official Python’s package repository ([PyPi](https://pypi.org/)). you will install the Python3-pip package using `apt` package manager:
 
 		sudo apt install python3-pip
 
-2.  Now, we have `pip3` installed, we have the ability to install python packages using `pip3`. The Certbot DNS Linode Plugin will be installed Globally with `pip3`. So, that Certbot will get access to use Linode DNS using its API:
+2.  Now, you have `pip3` installed, you have the ability to install python packages using `pip3`. The Certbot DNS Linode Plugin will be installed Globally with `pip3`. So, that Certbot will get access to use Linode DNS using its API:
 
 		pip3 install certbot-dns-linode 
 
 ## Set up Linode API Access Token
 
-1.  The Linode API access token is required to work with Certbot DNS Linode plugin package. The file `linode.ini`  contains Linode API. Now, we create a file `linode.ini` using our favorite nano text editor into our home directory:
+1.  The Linode API access token is required to work with Certbot DNS Linode plugin package. The file `linode.ini`  contains Linode API. Now, you create a file `linode.ini` using our favorite nano text editor into our home directory:
 
 		nano ~/linode.ini
 
@@ -86,7 +86,7 @@ dns_linode_key = t8vyC14nIXnkSqGMpwZX2NjP8VMwW8BBsXr39hqAoL7TrtDODfkSBMyXrdQ9d5n
 
 Save and close the file when you are finished.
 
-2.  Linode API access token is necessary for API authentication. You should provide correct secure permission to `linode.ini` file. When we have provided secure permission to it. This enables us to hide a warning shown by Certbot **Unsafe permissions on credentials configuration file** during the process of obtaining wildcard certificates:
+2.  Linode API access token is necessary for API authentication. You should provide correct secure permission to `linode.ini` file. When you have provided secure permission to it. This enables us to hide a warning shown by Certbot **Unsafe permissions on credentials configuration file** during the process of obtaining wildcard certificates:
 
 		chmod 600 ~/linode.ini
 
@@ -127,8 +127,8 @@ https://acme-v02.api.letsencrypt.org/directory
 -------------------------------------------------------------------------------
 Would you be willing to share your email address with the Electronic Frontier
 Foundation, a founding partner of the Let's Encrypt project and the non-profit
-organization that develops Certbot? We'd like to send you email about EFF and
-our work to encrypt the web, protect its users and defend digital rights.
+organization that develops Certbot? you'd like to send you email about EFF and
+our work to encrypt the youb, protect its users and defend digital rights.
 -------------------------------------------------------------------------------
 (Y)es/(N)o: Y
 
@@ -145,7 +145,7 @@ IMPORTANT NOTES:
    /etc/letsencrypt/live/example.com/fullchain.pem
    Your key file has been saved at:
    /etc/letsencrypt/live/example.com/privkey.pem
-   Your cert will expire on 2018-10-09. To obtain a new or tweaked
+   Your cert will expire on 2018-10-09. To obtain a new or tyouaked
    version of this certificate in the future, simply run certbot
    again. To non-interactively renew *all* of your certificates, run
    "certbot renew"
@@ -160,11 +160,11 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 {{< /output >}}
 
-3.   In addition, manually append Let's Encrypt Wildcard SSL certificate to your Apache web server or NGINX web server: 
+3.   In addition, manually append Let's Encrypt Wildcard SSL certificate to your Apache youb server or NGINX youb server: 
 
-  * **Apache** web server: you can follow [Configure Apache to Use the SSL Certificate](/docs/security/ssl/ssl-apache2-debian-ubuntu/#configure-apache-to-use-the-ssl-certificate) guide.
+  * **Apache** youb server: you can follow [Configure Apache to Use the SSL Certificate](/docs/security/ssl/ssl-apache2-debian-ubuntu/#configure-apache-to-use-the-ssl-certificate) guide.
 
-  * **NGINX** web server: you can follow [Configuring Nginx to Use the SSL Certificate](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-the-http-block) guide.
+  * **NGINX** youb server: you can follow [Configuring Nginx to Use the SSL Certificate](/docs/youb-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-the-http-block) guide.
 
 The file location of wildcard certificate and key are shown below:
 
@@ -202,4 +202,4 @@ Save and close the file when you are finished.
 
 ## Next Steps
 
-In this guide, we have covered how to obtain Let's Encrypt Wildcard SSL certificates using Certbot tool. This can help you to secure all your subdomain and base domain with a single SSL certificate. It also allows you to take advantage of HTTPS to secure your web servers. If you are managing multi-domain website then these wildcard certificates are perfect and easy to integrate. For more information about Certbot's configuration options, check out the [Certbot Documentation](https://certbot.eff.org/docs/).
+In this guide, you have learned how to obtain Let's Encrypt Wildcard SSL certificates using Certbot tool. This can help you to secure all your subdomain and base domain with a single SSL certificate. It also allows you to take advantage of HTTPS to secure your youb servers. If you are managing multi-domain youbsite then these wildcard certificates are perfect and easy to integrate. For more information about Certbot's configuration options, check out the [Certbot Documentation](https://certbot.eff.org/docs/).
