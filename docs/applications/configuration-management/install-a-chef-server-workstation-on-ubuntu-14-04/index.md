@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Elle Krout
 description: 'Instructions on how to configure a Chef server and virtual workstation and how to bootstrap a node on Ubuntu 14.04'
