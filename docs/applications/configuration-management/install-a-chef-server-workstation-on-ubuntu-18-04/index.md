@@ -54,13 +54,13 @@ The Chef server is the hub of interaction between all workstations and nodes usi
 
         rm chef-server-core_*.deb
 
-1.	The Chef server includes a command-line utility named chef-server-ctl. Run the `chef-server-ctl` command to start the Chef server services:
+1.	The Chef server includes a command-line utility named `chef-server-ctl`. Run the `chef-server-ctl` command to start the Chef server services:
 
         sudo chef-server-ctl reconfigure
 
 ### Create a User and Organization
 
-1.	In order to link workstations and nodes to the Chef server, an administrator and an organization need to be created with associated RSA private keys. From the home directory, create a `.chef` directory to store the keys:
+1. In order to link workstations and nodes to the Chef server, an administrator and an organization need to be created with associated RSA private keys. From the home directory, create a `.chef` directory to store the keys:
 
         mkdir .chef
 
