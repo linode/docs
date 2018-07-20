@@ -37,11 +37,15 @@ class Docs404Spider(CrawlSpider):
              callback='parse_item', follow=True),
     )
 
+    def parse_start_url(self, response):
+        return self.parse_item(response)
+
     def parse_item(self, response):
         item = Docs404Item()
 
         if response.status == 404:
-            item['referer'] = response.request.headers.get('Referer')
+            ref = response.request.headers.get('Referer')
+            item['referer'] = ref if ref else 'orphaned link'
             item['status'] = response.status
             item['url'] = response.url
             return item
