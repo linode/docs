@@ -19,6 +19,8 @@ external_resources:
 
 ![Connect Docker Containers](Connect_Docker_Containers.jpg)
 
+[Test link](/docs/hello)
+
 When using [Docker](https://www.docker.com/hello) to containerize your applications, it is common practice to run each component of the application in a separate container. For example, a website might have a web server, application, and database, each running in its own container.
 
 Configuring the containers to communicate with each other and the host machine can be a challenge. This guide will use a simple example app to demonstrate the basics of Docker container communication. The app will consist of a Node.js app that reads data from a PostgreSQL database.
