@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-keywords: ["cloud", "compute", "computing","What is Cloud Computing", "cloud Computing", "the cloud"]
+keywords: ["cloud", "compute", "computing","What is cloud computing", "cloud computing", "the cloud"]
 description: This guide explains a brief overview of what cloud computing is and why you should use it.
 og_description: This guide explains a brief overview of what cloud computing is and why you should use it.
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
