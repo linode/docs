@@ -22,10 +22,6 @@ The Linode Command Line Interface (**CLI**) is an [open-source](https://github.c
 
 Your Linode [API key](/docs/platform/api/api-key/) is required for the CLI to function.
 
-{{< note >}}
-A [beta version of the Linode CLI](https://github.com/linode/linode-cli) is now available, and offers more features in addition to those described below.  The beta CLI
-requires a [Personal Access Token](https://cloud.linode.com/profile/tokens) instead of the API key described above.
-{{< /note >}}
 
 ![Linode CLI](linode-cli.png "Linode CLI")
 

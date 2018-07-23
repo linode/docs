@@ -99,7 +99,7 @@ We accept Visa, MasterCard, Discover, and American Express. We also accept PayPa
 
 The following video will show you how to make a payment via PayPal:
 
-<iframe width="825" height="465" src="https://www.youtube.com/embed/9BG6CGsIZwc?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
+{{< youtube 9BG6CGsIZwc >}}
 
 {{< note >}}
 PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card.

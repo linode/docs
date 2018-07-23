@@ -57,7 +57,7 @@ The Linode Backup Service is now enabled for the selected Linode.
 
 You can also follow along with this video to enable the Backup Service on your Linode:
 
-<iframe width="825" height="465" src="https://www.youtube.com/embed/X1J1OigQre0?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
+{{< youtube X1J1OigQre0 >}}
 
 ## Manage Backups
 
