@@ -101,7 +101,7 @@ The second entry tells the system to look to `192.168.1.1` for the domain `stick
 
 ## Network Diagnostics
 
-In this section, we'll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, adding the output from the relevant commands to your [support ticket](/docs/platform/support/) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
+In this section, we'll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, adding the output from the relevant commands to your [support ticket](/docs/platform/billing-and-support/support/) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
 
 ### The ping Command
 
@@ -154,7 +154,7 @@ Here is an example of output from a `traceroute` command:
 
 Often the hostnames and IP addresses on either side of a failed jump are useful in determining who operates the machine where the routing error occurs. Failed jumps are designated by lines with three asterisks (`* * *`).
 
-Adding `traceroute` output to [Linode support](/docs/platform/support/) tickets is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
+Adding `traceroute` output to [Linode support](/docs/platform/billing-and-support/support/) tickets is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
 
 ### The mtr Command
 
@@ -239,7 +239,7 @@ The memory and swap columns provide the same kind of information provided by the
 
 If this number is consistently and considerably higher than 0, you might consider taking measures to address your IO usage. However, if the `vmstat` output resembles the above, you can be sure in the knowledge that you're not experiencing an IO-related issues.
 
-If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an I/O issue. `vmstat` output can sometimes help [support](/docs/platform/support/) diagnose problems.
+If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an I/O issue. `vmstat` output can sometimes help [support](/docs/platform/billing-and-support/support/) diagnose problems.
 
 ### Monitor Processes, Memory, and CPU Usage with htop
 
@@ -651,7 +651,7 @@ This will allow you to see new error messages as they appear. Problems can be di
 
 ## DNS Servers and Domain Names
 
-The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/networking/dns/dns-records-an-introduction/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/networking/dns/dns-manager-overview/).
+The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/networking/dns/dns-records-an-introduction/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/platform/manager/dns-manager/).
 
 ### Redirect DNS Queries with CNAMEs
 
@@ -659,7 +659,7 @@ The *Domain Name System*, or DNS, is the service that the internet uses to assoc
 
 CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://manager.linode.com//), refer to our [DNS Manager Guide](/docs/networking/dns/dns-manager-overview/).
+Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://manager.linode.com//), refer to our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
 
 ### Set Up Subdomains
 
@@ -667,7 +667,7 @@ When [reading domain names](/docs/networking/dns/dns-records-an-introduction/#do
 
 Follow these steps to [create and host a sub-domain](/docs/networking/dns/common-dns-configurations/#configuring-subdomains):
 
-1.  First, create an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/networking/dns/dns-manager-overview/). You may host the DNS for your domain with any provider you choose.
+1.  First, create an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/platform/manager/dns-manager/). You may host the DNS for your domain with any provider you choose.
 
 2.  Set up a server to respond to requests sent to this domain. For web servers like [Apache](/docs/web-servers/apache/), this requires configuring a new virtual host. For XMPP servers you must configure an additional host to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 

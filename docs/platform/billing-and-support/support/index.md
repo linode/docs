@@ -5,12 +5,12 @@ author:
 description: Our guide to submitting support tickets and getting technical support.
 keywords: ["support", "tech support", "tickets", "help desk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['support/']
+aliases: ['support/','platform/support/']
 modified: 2018-05-21
 modified_by:
   name: Linode
 published: 2012-03-21
-title: Support
+title: Linode Support
 ---
 
 Linode provides live technical support services 24 hours a day, 7 days a week. Linode Support ensures network availability, verifies that you can access your Linode, resolves performance issues with hosts, and works to fix any service-related issues you may be experiencing.
@@ -33,7 +33,7 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
   - The [Troubleshooting](/docs/troubleshooting/troubleshooting/) quick start guide provides answers for common server connectivity and management issues.
 
-  - The [Linode Beginner's Guide](/docs/platform/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
+  - The [Linode Beginner's Guide](/docs/platform/billing-and-support/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
 
   - The [Quick Answers](/docs/quick-answers/) section offers short guides with fast answers.
 

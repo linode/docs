@@ -5,7 +5,7 @@ author:
 description: 'Learn how to use Lish as a shell for managing or rescuing your Linode.'
 keywords: ["Console", "Shell", "Lish", "rescue"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/','networking/using-the-linode-shell-lish/']
+aliases: ['using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/','networking/using-the-linode-shell-lish/','platform/using-the-linode-shell-lish/']
 modified: 2018-05-08
 modified_by:
   name: Linode
@@ -49,7 +49,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
         ssh user@lish-newark.linode.com
 
     {{< note >}}
-Users who have been granted "Access" rights on a particular Linode will have access to that Linode’s Lish console via the gateway. Linodes that a user can't access in the Linode Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/platform/accounts-and-passwords/).
+Users who have been granted "Access" rights on a particular Linode will have access to that Linode’s Lish console via the gateway. Linodes that a user can't access in the Linode Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/platform/manager/accounts-and-passwords/).
 {{< /note >}}
 
 3.  Verify that the Lish SSH gateway's fingerprint is valid. [Click here](#lish-gateway-fingerprints) for more information.

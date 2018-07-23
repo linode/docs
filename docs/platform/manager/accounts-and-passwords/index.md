@@ -5,7 +5,7 @@ author:
 description: Our guide to managing accounts and passwords.
 keywords: ["accounts", "passwords", "linode manager", "manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['accounts-and-passwords/']
+aliases: ['accounts-and-passwords/','platform/accounts-and-passwords/']
 modified: 2018-07-11
 modified_by:
   name: Linode
@@ -59,7 +59,7 @@ Here's how to set a user's access permissions:
 
     ![Configure permissions for a user in the Linode Manager.](users-manager.png "Linode manager")
 
-1.  Select the boxes in the **Global Grants** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/) and frozen [Images](/docs/platform/linode-images/), access all billing information, and cancel the entire account.
+1.  Select the boxes in the **Global Grants** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/) and frozen [Images](/docs/platform/disk-images/linode-images/), access all billing information, and cancel the entire account.
 
     {{< note >}}
 Granting access to settings denoted with a dollar sign ($) will allow the user to perform actions that incur billing costs, such as adding or resizing a Linode.
@@ -169,7 +169,7 @@ If you can't remember the password for the `root` user on a Linode, use the Lino
 1.  Click **Reset Root Password**. The Linode's dashboard appears.
 1.  Click **Boot** to turn on your Linode.
 
-Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh) for more information about connecting. If you are unable to connect with the `root` credentials via SSH, try connecting with [Lish](/docs/networking/using-the-linode-shell-lish/) instead. If you are able to connect via Lish but not SSH, you may need to troubleshoot your SSH configuration and firewall rules.
+Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh) for more information about connecting. If you are unable to connect with the `root` credentials via SSH, try connecting with [Lish](/docs/platform/manager/using-the-linode-shell-lish/) instead. If you are able to connect via Lish but not SSH, you may need to troubleshoot your SSH configuration and firewall rules.
 
 ## Next Steps
 

@@ -5,7 +5,7 @@ author:
 description: Our guide to billing and payments.
 keywords: ["billing", "payments"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['billing-and-payments/']
+aliases: ['billing-and-payments/','platform/billing-and-payments/']
 modified: 2018-05-17
 modified_by:
   name: Linode
@@ -13,7 +13,7 @@ published: 2014-02-28
 title: Billing and Payments
 ---
 
-We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/docs/platform/support/).
+We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/docs/platform/billing-and-support/support/).
 
 ## How Hourly Billing Works
 
@@ -66,7 +66,7 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 {{< note >}}
 A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [transfer overage](#transfer-overages) charge beyond the monthly cap.
 
-Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/platform/support/) with your justification.
+Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/platform/billing-and-support/support/) with your justification.
 {{< /note >}}
 
 ## Viewing Current Balance
@@ -95,7 +95,7 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/platform/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
+We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
 
 The following video will show you how to make a payment via PayPal:
 
@@ -197,4 +197,4 @@ You do not have to cancel your account to prevent recurring charges. Instead, yo
 
 ## More Information
 
-If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/platform/prepaid-billing-and-payments-legacy/) guide for more information.
+If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information.

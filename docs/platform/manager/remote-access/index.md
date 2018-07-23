@@ -5,7 +5,7 @@ author:
 description: Our guide to the remote access area of the Linode Manager.
 keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['remote-access/']
+aliases: ['remote-access/','networking/remote-access/']
 modified: 2014-09-06
 modified_by:
   name: Phil Zona
@@ -160,15 +160,15 @@ The Linode Manager allows you to add private IP addresses for fast and secure co
 6.  The Linode Manager assigns a private IP address to your Linode.
 7.  Make sure [Network Helper](/docs/platform/network-helper/) is enabled on your configuration profile. Otherwise, configure static networking. See the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration/) guide for instructions.
 
-If you'd like to add more than one private IP address to your Linode, please [contact support](/docs/platform/support/).
+If you'd like to add more than one private IP address to your Linode, please [contact support](/docs/platform/billing-and-support/support/).
 
 ## Adding Public IP Addresses
 
-You can use the Linode Manager to add additional public IP addresses to your account. However, due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/platform/support/) with your justification.
+You can use the Linode Manager to add additional public IP addresses to your account. However, due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/platform/billing-and-support/support/) with your justification.
 
 ## Console Access
 
-The Lish console allows you to access your Linode at any time, even if you've messed up your network settings. To access Lish, use the Lish console or an SSH client application installed on your computer. For more information about Lish, including usage tips, see [Using the Linode Shell](/docs/networking/using-the-linode-shell-lish/).
+The Lish console allows you to access your Linode at any time, even if you've messed up your network settings. To access Lish, use the Lish console or an SSH client application installed on your computer. For more information about Lish, including usage tips, see [Using the Linode Shell](/docs/platform/manager/using-the-linode-shell-lish/).
 
 ### Using the Lish Console
 

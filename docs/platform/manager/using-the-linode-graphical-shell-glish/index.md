@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use the graphic shell, Glish, to Manage Graphic Environments on Your Linode.'
 keywords: ["Console", "Shell", "glish", "graphic"]
-aliases: ['networking/using-the-graphic-shell-glish/','networking/use-the-graphic-shell-glish/', 'networking/using-the-linode-graphical-shell-glish/']
+aliases: ['networking/using-the-graphic-shell-glish/','networking/use-the-graphic-shell-glish/', 'networking/using-the-linode-graphical-shell-glish/','platform/using-the-linode-graphical-shell-glish/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-03-09
 modified_by:
@@ -15,7 +15,7 @@ title: 'Using the Linode Graphical Shell (Glish)'
 
 ![Using the Linode Graphical Shell Glish](using-linode-glish-title.jpg "Using the Linode Graphical Shell Glish title graphic")
 
-Glish is the graphical version of the [Linode Shell](/docs/networking/using-the-linode-shell-lish/) (Lish). It allows you to use a graphic environment running natively on your Linode's operating system.
+Glish is the graphical version of the [Linode Shell](/docs/platform/manager/using-the-linode-shell-lish/) (Lish). It allows you to use a graphic environment running natively on your Linode's operating system.
 
 {{< note >}}
 Linode base distribution images do not have graphic environments installed. You will need to install one, or use a [Custom Distro](/docs/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/) with a graphic environment pre-installed.

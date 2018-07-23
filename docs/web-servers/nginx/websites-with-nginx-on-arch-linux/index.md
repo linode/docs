@@ -16,7 +16,7 @@ title: Websites with NGINX on Arch Linux
 
 Nginx is a lightweight and high performance web server, designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/), which uses a threaded or process-oriented approach to handling requests, NGINX uses an asynchronous event-driven model to provide more predictable performance under load.
 
-Before you begin installing the NGINX web server, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), our [beginner's guide](/docs/platform/linode-beginners-guide/), and our [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before you begin installing the NGINX web server, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), our [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/), and our [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
 # Set the Hostname
 

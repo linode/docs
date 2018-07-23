@@ -5,7 +5,7 @@ author:
 description: 'Beginner''s Guide to Linode''s Platform answers common configuration questions about the Linode cloud.'
 keywords: ["linode beginners guide", "linux beginner", "linode beginner", "Linode guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['beginners-guide/']
+aliases: ['beginners-guide/','platform/linode-beginners-guide/']
 modified: 2017-03-02
 modified_by:
   name: Phil Zona
@@ -86,7 +86,7 @@ If an application is crashing, be sure to check its error logs. These are typica
 
 ## Why is my connection to my Linode slow or broken?
 
-First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to and from your Linode, and submit them via the "Support" tab in the Linode Manager. You may need to use [Lish](/docs/networking/using-the-linode-shell-lish/) if you're having problems reaching your Linode via normal networking.
+First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to and from your Linode, and submit them via the "Support" tab in the Linode Manager. You may need to use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) if you're having problems reaching your Linode via normal networking.
 
 ## How can I upgrade or downgrade my Linode?
 

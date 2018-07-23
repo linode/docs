@@ -16,7 +16,7 @@ title: 'Magento on Ubuntu 9.10 (Karmic)'
 
 Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/) and offers the user a wide variety of options.
 
-Before installing Magento, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before installing Magento, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
 # Installing Prerequisites
 
