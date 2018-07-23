@@ -71,7 +71,7 @@ If you're new to Linode, or if you've just purchased a new domain name, the firs
 
 This video runs through the process of adding a new domain zone:
 
-<iframe width="825" height="465" src="https://www.youtube.com/embed/-GHW8aPsyPI?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
+{{< youtube -GHW8aPsyPI >}}
 
 1.  From the DNS Manager tab, select **Add a domain zone**:
 
