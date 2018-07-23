@@ -73,6 +73,7 @@ backreference
 backreferences
 backtick
 backticks
+backupninja
 bampton
 base64
 basearch
@@ -84,6 +85,7 @@ binlog
 bitbucket
 bitrate
 blocklists
+blockwise
 boonex
 bootable
 bootloader
@@ -123,6 +125,7 @@ changelog
 changelogs
 changeme
 changeset
+characterwise
 chatrooms
 cheatsheet
 checksummed
@@ -161,6 +164,7 @@ conda
 config
 configs
 configtest
+containerised
 convolutional
 coose
 copyfrom
@@ -235,6 +239,7 @@ devops
 devtmpfs
 df
 dhclient
+dhparams
 dialogs
 diavel
 diffie
@@ -242,6 +247,7 @@ digium
 dircaps
 directadmin
 dired
+direnv
 disqus
 distro
 distros
@@ -291,6 +297,7 @@ ejabberd
 el6
 el7
 elasticsearch
+elisp
 elgg
 elpaso
 email2email
@@ -359,8 +366,11 @@ filimonov
 finnix
 firewalld
 firstsite
+flamegraph
+flamegraphs
 flatpress
 flyspray
+fortran
 fpm
 fragging
 framesets
@@ -483,6 +493,7 @@ hyperefficient
 hypervisor
 hypervisors
 i386
+iaas
 icanhazip
 iceweasel
 icinga
@@ -553,6 +564,7 @@ jdbc
 jdk
 jenkinsfile
 jetpack
+jez
 jk
 jks
 jobd
@@ -563,6 +575,7 @@ jpg
 jre
 js
 json
+julialang
 jumpbox
 jupyter
 kakfa
@@ -624,6 +637,7 @@ lighthttpd
 lighttpd
 lighty
 ligttpd
+linewise
 linode
 linodes
 lish
@@ -674,6 +688,7 @@ mapreduce
 mariadb
 maskname
 masterdb
+mathematica
 mathjax
 maxconn
 maxdepth
@@ -749,6 +764,7 @@ mypassword
 myproject
 myserver
 mysql
+mysqli
 mysqlclient10
 mysqld
 mysqldefault
@@ -853,6 +869,7 @@ ovpn
 owadb
 owncloud
 pacman
+paas
 pagent
 pagespeed
 pandoc
@@ -1040,12 +1057,15 @@ s1
 s2s
 s3cr37
 s3cret
+saas
 sakila
+salesforce
 sasl
 sasl2
 saslauth
 saslauthd
 sasldb
+sbackup
 sbin
 sbopkg
 scgi
@@ -1105,8 +1125,10 @@ smartcard
 smartcards
 smtp
 smtpd
+smush
 smux
 snakeoil
+snapd
 snipcart
 snmp
 snmpd
@@ -1200,6 +1222,7 @@ testfile
 testkeys
 testparam
 testuser
+tetris
 tf
 tgz
 thawte
@@ -1228,9 +1251,11 @@ tokenizing
 tokyo2
 tomacat
 tomcat6
+toolchain
 traceroute
 trackbar
 transcoder
+trello
 truststore
 tt
 ttl
@@ -1248,6 +1273,8 @@ ufw
 ui
 uidl
 un
+unaliased
+unarchive
 unban
 unbans
 unbilled
@@ -1259,6 +1286,7 @@ uncommented
 uncommenting
 uncompress
 unencrypted
+unexported
 unformatted
 unicast
 uniq
@@ -1390,6 +1418,7 @@ wx
 xabbix
 xap
 xcalc
+xcode
 xen
 xenial
 xerus
@@ -1425,6 +1454,7 @@ yourdomain
 yourdomainorsubdomainhere
 yourname
 yoursite
+youtube
 yubico
 yubikey
 zabbix

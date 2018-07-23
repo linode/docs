@@ -19,8 +19,8 @@ service imap-login {
     port = 0
   }
   inet_listener imaps {
-    #port = 993
-    #ssl = yes
+    port = 993
+    ssl = yes
   }
 
   # Number of connections to handle before starting a new process. Typically
@@ -40,8 +40,8 @@ service pop3-login {
     port = 0
   }
   inet_listener pop3s {
-    #port = 995
-    #ssl = yes
+    port = 995
+    ssl = yes
   }
 }
 
