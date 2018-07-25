@@ -90,37 +90,6 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 
         rm chefdk_*.deb
 
-1.	Verify the components of the development kit:
-
-        chef verify
-
-    It should output:
-
-      {{< output >}}
-        Running verification for component 'berkshelf'
-        Running verification for component 'test-kitchen'
-        Running verification for component 'tk-policyfile-provisioner'
-        Running verification for component 'chef-client'
-        Running verification for component 'chef-dk'
-        Running verification for component 'chef-provisioning'
-        Running verification for component 'chefspec'
-        Running verification for component 'generated-cookbooks-pass-chefspec'
-        Running verification for component 'fauxhai'
-        Running verification for component 'knife-spork'
-        ........................
-        ---------------------------------------------
-        Verification of component 'rubocop' succeeded.
-        Verification of component 'kitchen-vagrant' succeeded.
-        Verification of component 'fauxhai' succeeded.
-        Verification of component 'berkshelf' succeeded.
-        Verification of component 'knife-spork' succeeded.
-        Verification of component 'test-kitchen' succeeded.
-        Verification of component 'chef-dk' succeeded.
-        Verification of component 'chef-client' succeeded.
-        Verification of component 'chefspec' succeeded.
-        Verification of component 'package installation' succeeded.
-      {{</ output >}}
-
 1.	Generate the chef-repo and move into the newly-created directory:
 
         chef generate app chef-repo
