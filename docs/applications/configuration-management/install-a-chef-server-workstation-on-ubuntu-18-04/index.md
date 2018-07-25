@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
 description: 'Instructions on how to configure a Chef server and virtual workstation and how to bootstrap a client node on Ubuntu 18.04'
 keywords: ["chef", "chef installation", "configuration change management", "server automation", "chef server", "chef workstation", "chef-client", "knife.rb", "version control"]
@@ -10,10 +10,8 @@ modified: 2018-07-19
 modified_by:
   name: Linode
 title: 'Install a Chef Server Workstation on Ubuntu 18.04'
-external_resources:
-- '[Chef](http://www.chef.io)'
 ---
-Chef is an automation platform that "turns infrastructure into code," allowing users to manage and deploy resources across multiple servers, or *nodes*. Chef allows users to create and download recipes (stored in cookbooks) to automate content and policies on these nodes.
+[Chef](http://www.chef.io) is an automation platform that "turns infrastructure into code," allowing users to manage and deploy resources across multiple servers, or *nodes*. Chef allows users to create and download recipes (stored in cookbooks) to automate content and policies on these nodes.
 
 Chef is comprised of a Chef server, one or more workstations, and a number of nodes that are managed by the chef-client installed on each node.
 
@@ -66,11 +64,11 @@ The Chef server is the hub of interaction between all workstations and nodes usi
 
 1. Create a user. Change `USER_NAME` with the desired name, `FIRST_NAME` and `LAST_NAME` to your first and last name, `EMAIL` with your email, `PASSWORD` to a secure password and `USER_NAME.pem` to your username followed by `.pem`:
 
-        chef-server-ctl user-create USER_NAME FIRST_NAME LAST_NAME EMAIL 'PASSWORD' --filename ~/.chef/USER_NAME.pem
+        sudo chef-server-ctl user-create USER_NAME FIRST_NAME LAST_NAME EMAIL 'PASSWORD' --filename ~/.chef/USER_NAME.pem
 
 1. Create an organization and add the user created above to the admins and billing admins security groups. Replace `ORG_NAME` with a short identifier for the organization, `ORG_FULL_NAME` with the organizations' complete name, `USER_NAME` with the username created in the step above and `ORG_NAME.pem` with organization's short identifier followed by `.pem`:
 
-        chef-server-ctl org-create ORG_NAME "ORG_FULL_NAME" --association_user USER_NAME --filename ~/.chef/ORG_NAME.pem
+        sudo chef-server-ctl org-create ORG_NAME "ORG_FULL_NAME" --association_user USER_NAME --filename ~/.chef/ORG_NAME.pem
 
       With the Chef server installed and the needed RSA keys generated, you can move on to configuring your workstation, where all major work will be performed for your Chef's nodes.
 
