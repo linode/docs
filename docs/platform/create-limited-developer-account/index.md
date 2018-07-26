@@ -160,7 +160,7 @@ Drupal's main administrator account is the **User 1** account. This account serv
 
 1.  Log in to the Drupal admin (this may be through your site's `www.example.com/admin`), and click **Manage**, then **People** in the Admin menu.
 
-1.  To create a user with administrative privilages, click **Add user** and fill out the information on the page that follows. Select the **Administrator** role when prompted.
+1.  To create a user with administrative privileges, click **Add user** and fill out the information on the page that follows. Select the **Administrator** role when prompted.
 
     To view a list of permissions allowed to the Administrator role, return to the **People** page and click **Permissions**.
 
