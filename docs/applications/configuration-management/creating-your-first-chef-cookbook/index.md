@@ -163,7 +163,7 @@ Repeat steps 5-7 to upload the cookbook and run chef-client as needed through th
 
 After the initial installation Apache needs to be configured, starting with its virtual hosts files. This configuration is based off of the [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) guide.
 
-1.  Because multiple websites may need to be configured, Chef's attributes feature will be used to define certain aspects of the virtual hosts file(s). The ChefDK has a bult in command to generate the attributes directory and `default.rb` file within a cookbook.  Replace `~/chef-repo/cookbooks/lamp_stack` with your cookbook's path.
+1.  Because multiple websites may need to be configured, Chef's attributes feature will be used to define certain aspects of the virtual hosts file(s). The ChefDK has a built in command to generate the attributes directory and `default.rb` file within a cookbook.  Replace `~/chef-repo/cookbooks/lamp_stack` with your cookbook's path.
 
         chef generate attribute ~/chef-repo/cookbooks/lamp_stack default
 
