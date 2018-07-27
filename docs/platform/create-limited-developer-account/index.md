@@ -41,7 +41,7 @@ Useful *Global Grants* for a developer or agency might include the ability to:
 
 For the steps in this section, [connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh/) to log in to the system itself as `root` or a non-root user with *sudo* permissions.
 
-If you don't remember your root password, [reset it through the Manager](/docs/platform/manager/accounts-and-passwords/#resetting-the-root-password).
+If you don't remember your root password, [reset it through the Manager](/docs/platform/accounts-and-passwords/#resetting-your-linode-manager-password).
 
 ### Who Has SSH Access to Your Linode?
 
@@ -51,9 +51,17 @@ Use `getent` to display the list of users. Keep in mind that some applications c
 
     getent passwd
 
-To see which users have SSH keys:
+To see which users have SSH public keys on the server:
 
     cat ~/.ssh/authorized_keys
+
+The output will resemble the following:
+
+{{< output >}}
+ssh-rsa MIIEpQIBAAKCAQEAqOT7+bo5YUnzmBJYifL5b/VrLhHNjI0Sjm0miyZ4HocvSjIJ+Kx1nWP1LjDG0wt6gimXjRrfPCykHFyJwdZO69dK/gJ0GdcejWtC1sJBCSvI9TISXISLBNXr5rLHedhR2wFOJTRkKTquHP5dw2o5UNBBMyuM0wfkv5ggw8ShecIuO6xCw7yYQIg66BIe2G5toL6uasVOBjvJv5iKWKQNx1sf5ICfDJdVjQojtfHiPAyufidAjm4qO4/jOyfTTncu5+IEJCk12YpO66H3COJwbjPcRXlAcHM4CrBdTb8TmYmmStetY5Lmso++OaD4QjlO2TrhIXjoXDccU7/1BpkdpnPiapPuGKlWYa1vLEeUoIYV6NC9rxJCiYd/V//rBupYt4hkbSAbKl3o24gl1qOw/U7p+yelAZmDVWQCqOOdz3RttXyO/MoET9v0z2+1/57/gxLpHdsrPli7SeyrWMax18GM8DyfjVG5DFxYb/V0uTeew3xVzwXL+OnRdfnIsliSPXkmv15Yqbh10AEarK0EjfHR/VOMEgozrRoL8g9t4Yt5xhiWpbG9wk/EKfj3eaVg2AssQcw6IhzsaS5Kj4qr6aj3I6nx4fhTGUdfvmGqRETR8Hcyg7cDZId9qXve5PVxtxE2ROoszpTLkls+rL7L6+e2y9qfO4Np1ssTWz8495QPojjoMUnMIm6ZTVALjudn+eQ== user@example.com
+{{</ output >}}
+
+Each SSH public key entry will begin with `ssh-rsa` and end with a corresponding email address.
 
 ### Add a User Account
 
@@ -67,7 +75,7 @@ Rather than set permissions for each user, create a limited privilege user group
 
         groupadd devGroup
 
-1.  Add the user to the group and grant them permissions for their home directory:
+1.  Add the user to the group and specify a new home directory for the user:
 
         usermod -g devGroup -d /var/www/html/example.com exampleUser
 
@@ -231,6 +239,10 @@ While logged in to MySQL:
 While logged in to MySQL:
 
     DROP USER 'exampleUser'@'localhost';
+
+If using MariaDB:
+
+    DROP USER exampleUser;
 
 ### Add a New MySQL User
 
