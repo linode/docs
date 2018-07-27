@@ -1025,6 +1025,7 @@ retpoline
 reutilize
 richlanguage
 rimap
+ritchie
 rkt
 rmem
 ro
@@ -1158,6 +1159,7 @@ ssl
 stackscript
 stackscripts
 stalkyard
+stallman
 starttls
 statusbar
 stderr
@@ -1251,6 +1253,7 @@ tokenizing
 tokyo2
 tomacat
 tomcat6
+torvalds
 toolchain
 traceroute
 trackbar
