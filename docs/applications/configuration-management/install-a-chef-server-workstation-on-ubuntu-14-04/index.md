@@ -1,5 +1,6 @@
 ---
 deprecated: true
+deprecated_link: 'applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/'
 author:
   name: Elle Krout
 description: 'Instructions on how to configure a Chef server and virtual workstation and how to bootstrap a node on Ubuntu 14.04'
