@@ -71,7 +71,7 @@ Your registrar will not necessarily be the same organization as your current nam
 
     {{< disclosure-note "Updating authoritative nameservers at common registrars" >}}
 
-The following support documents describe how to update the authoritative nameservers at common registrars:
+The following support documents describe how to update the authoritative nameservers of common registrars:
 
 -   [GoDaddy](https://support.hostgator.com/articles/how-to-change-godaddy-name-servers)
 -   [DreamHost](https://help.dreamhost.com/hc/en-us/articles/216385417-How-do-I-change-my-nameservers-at-DreamHost-)
