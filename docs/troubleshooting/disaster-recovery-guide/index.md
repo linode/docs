@@ -9,9 +9,9 @@ published: 2018-07-27
 modified: 2018-07-27
 modified_by:
   name: Linode
-title: "Acessessing Your Linode After Maintenance"
+title: "Acessing Your Linode After Maintenance"
 ---
-If you are having issues accessesing your Linode after maintenance has been applied to your host, here are a few troubleshooting steps to follow:
+If you are having issues accessing your Linode after maintenance has been applied to your host, here are a few troubleshooting steps to follow:
 
 
 ## Is the Linode Powered On?
@@ -45,7 +45,7 @@ Your Linode's Network Helper automatically deposits a static networking configur
 
 1. Under *Configuration Profiles*, click the *Edit* link for the profile you want to adjust.
 
-1. On the Configuration Profle page, scroll to the *Filesystem/Boot Helpers* section and toggle *Yes* next to *Auto-configure Networking*.
+1. On the Configuration Profile page, scroll to the *Filesystem/Boot Helpers* section and toggle *Yes* next to *Auto-configure Networking*.
 
 1. Click on *Save Changes*, then reboot your Linode.
 
@@ -53,7 +53,7 @@ For more information, refer to the [Network Helper](/docs/platform/network-helpe
 
 ## Checking Interfaces/Networking
 
-Once you've rebooted your Linode and have SSH accesss via Lish, determine if a Linode's networking interfaces have been configured and brought up properly.
+Once you've rebooted your Linode and have SSH access via Lish, determine if a Linode's networking interfaces have been configured and brought up properly.
 
 1. Print out the contents of the network interfaces file to view the applied configuration from the Network Helper:
 
@@ -94,9 +94,9 @@ This section provides some troubleshooting steps for specific errors you may hav
 
 ### Was Your Interface Renamed?
 
-When viewing the output of the `interfaces` file, if you notice your interfaces have been renamed to something other than `eth0` (for example, `ensp`) this may be due to the lastest version of systemd (226-1+ as of writing this guide).  The latest version of systemd uses [Predictable Network Interface Names](https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/).
+When viewing the output of the `interfaces` file, if you notice your interfaces have been renamed to something other than `eth0` (for example, `ensp`) this may be due to the latest version of systemd (226-1+ as of writing this guide).  The latest version of systemd uses [Predictable Network Interface Names](https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/).
 
-1. You can disable the use of Predicatable Network Interface Names with the following command:
+1. You can disable the use of Predictable Network Interface Names with the following command:
 
     ln -s /dev/null /etc/systemd/network/99-default.link
 
@@ -125,13 +125,13 @@ When viewing the output of the `interfaces` file, if you notice your interfaces 
 
         ifdown -a && ifup -a
 
-      You will need to manually renable the firewall and restore the moved iptables file after running the commands. You can use the full output of the `sudo systemctl status networking.service -l` to determine if the failure is happening when executing the `etc/network/if-up.d/iptables` file or within the rules of the iptables. The exec codes provided in the output will help you determine which of the two is the source of failure.
+      You will need to manually reenable the firewall and restore the moved iptables file after running the commands. You can use the full output of the `sudo systemctl status networking.service -l` to determine if the failure is happening when executing the `etc/network/if-up.d/iptables` file or within the rules of the iptables. The exec codes provided in the output will help you determine which of the two is the source of failure.
 
       See the [Control Network Traffic with Iptables](https://linode.com/docs/security/firewalls/control-network-traffic-with-iptables/) guide for more information.
 
 ### SendMail
 
-If you have sendmail installed, and saw the `Failed to start Raise network interfaces` error message, the following commands will help you troubleshoot the issue.
+If you have SendMail installed, and saw the `Failed to start Raise network interfaces` error message, the following commands will help you troubleshoot the issue.
 
 1. Check the status of the networking service on the Linode:
 
@@ -141,11 +141,11 @@ If you have sendmail installed, and saw the `Failed to start Raise network inter
 
         ifdown -a && ifup -a
 
-    If after running those commands you encounter the following error, a sendmail version update may be at fault.
+    If after running those commands you encounter the following error, a SendMail version update may be at fault.
 
         /etc/network/if-up.d/sendmail: 44: .: Can't open /usr/share/sendmail/dynamic run-parts: /etc/network/if-up.d/sendmail exited with return code 2
 
-    This issue is related to a known [SendMail bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=873978) found in SendMail version 8.15.2-8 and fixed in version 8.15.2-9. `/etc/network/if-up.d/sendmail` calls for `/usr/share/sendmail/dynamic`, which may not exist as a result of the broken SendMail update or SendMail not cleaning itself up after removel of Sendmail.
+    This issue is related to a known [SendMail bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=873978) found in SendMail version 8.15.2-8 and fixed in version 8.15.2-9. `/etc/network/if-up.d/sendmail` calls for `/usr/share/sendmail/dynamic`, which may not exist as a result of the broken SendMail update or SendMail not cleaning itself up after removal of Sendmail.
 
 1. To resolve the described SendMail issue, move the `sendmail` file to the home directory:
 
@@ -159,7 +159,7 @@ If you have sendmail installed, and saw the `Failed to start Raise network inter
 
             rm ~/sendmail
 
-    - If you need to continue using SendMail, you way want to consider resinstalling SendMail or do further research before modifying the SendMail if-up script.
+    - If you need to continue using SendMail, you may want to consider reinstalling SendMail or do further research before modifying the SendMail if-up script.
 
 
 ## Did All of your Services Start After Reboot?
@@ -206,7 +206,7 @@ If you expect a service to be running, but it is displayed as not running try re
 
 ## Still Unable to Connect
 
-If you have tried all the steps listed above and still cannot connect to your Linode, you may still be running into issues with your firewell.
+If you have tried all the steps listed above and still cannot connect to your Linode, you may still be running into issues with your firewall.
 
 1. Display your iptables ruleset:
 
@@ -228,7 +228,7 @@ If you are unable to determine a specific rule that is causing issues with your 
 
         sudo iptables -t nat -F
 
-1. Flush the `mangle` talbe that is used for specialized packet alteration:
+1. Flush the `mangle` table that is used for specialized packet alteration:
 
         sudo iptables -t mangle -F
 
