@@ -2,21 +2,17 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows how to obtain a Let's Encrypt Wildcard SSL Certificate using Certbot tool on Ubuntu 18.04'
-keywords: ["Wildcard SSL", "Let's Encrypt", "Certbot"]
+description: 'This guide shows how to obtain a Lets Encrypt Wildcard SSL Certificate using Certbot tool on Ubuntu 18.04'
+keywords: ['Wildcard SSL','Lets Encrypt','Certbot','Ubuntu 18.04']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2018-07-30
 modified: 2018-07-30
 modified_by:
   name: Linode
-published: 2018-07-30
-title: 'How To Obtain Let's Encrypt Wildcard SSL Certificate using Certbot on Ubuntu 18.04'
+title: "What is Linux?"
 contributor:
   name: Gopal Raha
   link: https://github.com/gopalraha
-external_resources:
- - '[Certbot documentation](https://certbot.eff.org/docs/)'
- - '[Certbot Official website](https://certbot.eff.org/)'
- - '[Lets Encrypt Official website](https://letsencrypt.org/)'
 ---
 
 ## What is Let's Encrypt Wildcard SSL Certificate?
