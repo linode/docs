@@ -88,15 +88,15 @@ Save and close the file when you are finished.
 
 		chmod 600 ~/linode.ini
 
-## Obtain Let's Encrypt Wildcard SSL Certificate 
+## Obtain Lets Encrypt Wildcard SSL Certificate 
 
-	{{< note >}}
+ 	{{< note >}}
 This section requires that you have a Fully Qualified Domain Name (FQDN) that is configured to point to your Linode. In the examples below, replace `example.com` with your FQDN.
 {{< /note >}}
 
 1.  Certbot will obtain Let's Encrypt Wildcard SSL certificate using `certonly` subcommand. By default, it will attempt to use Linode DNS for Domain Validation (DV) purpose. The preferred challenge during domain authorization includes DNS-01 challenge type and it can be done automatically using Certbot DNS Linode plugin:
 
-  {{< note >}}
+	{{< note >}}
 This command requires patience and estimate waiting time is **960 seconds** or **16 minutes** for DNS changes to propagate through DNS propagation. It is important step towards automatic Let's Encrypt Domain Validation (DV) over Linode DNS.  
 {{< /note >}}
 
