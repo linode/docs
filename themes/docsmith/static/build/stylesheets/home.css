@@ -9236,6 +9236,103 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .note strong {
   font-weight: bold;
 }
+#article-body .disclosure-note {
+  padding: 15px;
+  background-color: #edf7fe;
+  border-left: 4px solid #bde2fb;
+}
+#article-body .disclosure-note:before {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  font-size: 14px;
+  font-size: 19px;
+  font-weight: 400;
+  color: #000;
+}
+#article-body .disclosure-note:before small,
+#article-body .disclosure-note:before .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #777777;
+}
+#article-body .disclosure-note:before small,
+#article-body .disclosure-note:before .small {
+  font-size: 75%;
+}
+#article-body .disclosure-note:before + .lead {
+  padding-top: 10px;
+}
+#article-body .disclosure-note:before {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+#article-body .disclosure-note * {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+#article-body .disclosure-note:before {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  font-size: 14px;
+  font-size: 19px;
+  font-weight: 400;
+}
+#article-body .disclosure-note:before small,
+#article-body .disclosure-note:before .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #777777;
+}
+#article-body .disclosure-note:before small,
+#article-body .disclosure-note:before .small {
+  font-size: 75%;
+}
+#article-body .disclosure-note:before + .lead {
+  padding-top: 10px;
+}
+#article-body .disclosure-note a {
+  color: #0089bc;
+}
+#article-body .disclosure-note a:hover {
+  color: #006489;
+}
+#article-body .disclosure-note strong {
+  font-weight: bold;
+}
+#article-body .disclosure-note img.disclosure-icon {
+  display: inline-block;
+  height: 1.5em;
+  margin: -0.1em 0 0 0;
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+#article-body .disclosure-note .disclosure-note-content {
+  overflow: hidden;
+  margin-top: 10px;
+}
+#article-body .disclosure-note table:not([class]) > thead > tr > th {
+  background: transparent;
+}
+#article-body .disclosure-note table:not([class]) > tbody > tr:nth-of-type(odd) {
+  background: #fff;
+}
+#article-body .disclosure-note.disclosed img.disclosure-icon {
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+  -webkit-transform: scaleY(-1);
+          transform: scaleY(-1);
+}
 .caution {
   padding: 15px;
   background-color: #fdf3f2;
