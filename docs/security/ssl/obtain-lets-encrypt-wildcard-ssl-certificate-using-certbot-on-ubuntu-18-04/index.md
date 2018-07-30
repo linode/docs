@@ -1,7 +1,7 @@
 ---
 author:
-  name: Gopal Raha
-  email: gopalraha@outlook.com
+  name: Linode
+  email: docs@linode.com
 description: 'This guide shows how to obtain a Let's Encrypt Wildcard SSL Certificate using Certbot tool on Ubuntu 18.04'
 keywords: ["Wildcard SSL", "Let's Encrypt", "Certbot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
