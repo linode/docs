@@ -9,7 +9,7 @@ published: 2018-07-30
 modified: 2018-07-30
 modified_by:
   name: Linode
-title: "What is Linux?"
+title: "How to Obtain a Lets Encrypt Wildcard SSL Certificate using Certbot tool on Ubuntu 18.04"
 contributor:
   name: Gopal Raha
   link: https://github.com/gopalraha
