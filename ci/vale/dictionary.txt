@@ -667,6 +667,7 @@ lsd
 lst
 lsyncd
 lua
+lubuntu
 lucene
 luminus
 lxml
