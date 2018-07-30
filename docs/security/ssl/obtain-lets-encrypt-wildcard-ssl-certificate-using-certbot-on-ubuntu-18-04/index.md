@@ -14,7 +14,6 @@ contributor:
   name: Gopal Raha
   link: https://github.com/gopalraha
 ---
-
 ## What is Let's Encrypt Wildcard SSL Certificate?
 
 [Let's Encrypt](https://letsencrypt.org/) is a Certificate Authority (CA) that offers free TLS/SSL certificates. Let's Encrypt is managed by the [Internet Security Research Group](https://letsencrypt.org/isrg/) (ISRG). It supports Automated Certificate Management Environment version-2 (ACMEv2) endpoint API and Wildcard SSL certificate. Wildcard SSL certificate is a single SSL certificate that covers all subdomains (`*.example.com`) and base domain (`example.com`) of a Fully Qualified Domain Name (FQDN). Let's Encrypt wildcard SSL certificates are trusted by all latest web browsers.
@@ -44,7 +43,7 @@ Before you begin this guide you will need the following:
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-With these pre-requisites in place and you are ready to begin. Now, log in to your Ubuntu 18.04 server as a sudo user and continue below:
+   With these pre-requisites in place and you are ready to begin. Now, log in to your Ubuntu 18.04 server as a sudo user and continue below:
 
 ## Install Dependencies
 
@@ -74,15 +73,15 @@ With these pre-requisites in place and you are ready to begin. Now, log in to yo
 
         nano ~/linode.ini
 
-  {{< note >}}
+    {{< note >}}
 You have created Linode API access token earlier. You need to replace it (`t8vyC14nIXnkSqGMpwZX2NjP8VMwW8BBsXr39hqAoL7TrtDODfkSBMyXrdQ9d5nN`) with your Linode API access token.
 {{< /note >}}
 
-  {{< file "~/linode.ini" conf >}}
+    {{< file "~/linode.ini" conf >}}
 dns_linode_key = t8vyC14nIXnkSqGMpwZX2NjP8VMwW8BBsXr39hqAoL7TrtDODfkSBMyXrdQ9d5nN
 {{< /file >}}
 
-Save and close the file when you are finished.
+   Save and close the file when you are finished.
 
 2. Linode API access token is necessary for API authentication. You should provide correct secure permission to `linode.ini` file. When you will provide secure permission to it then this enables us to hide a warning shown by Certbot **Unsafe permissions on credentials configuration file** during the process of obtaining wildcard certificates:
 
@@ -90,13 +89,13 @@ Save and close the file when you are finished.
 
 ## Obtain Let's Encrypt Wildcard SSL Certificate 
 
-  {{< note >}}
+    {{< note >}}
 This section requires that you have a Fully Qualified Domain Name (FQDN) that is configured to point to your Linode. In the examples below, replace `example.com` with your FQDN.
 {{< /note >}}
 
 1. Certbot will obtain Let's Encrypt Wildcard SSL certificate using `certonly` subcommand. By default, it will attempt to use Linode DNS for Domain Validation (DV) purpose. The preferred challenge during domain authorization includes DNS-01 challenge type and it can be done automatically using Certbot DNS Linode plugin:
 
-  {{< note >}}
+    {{< note >}}
 This command requires patience and estimate waiting time is **960 seconds** or **16 minutes** for DNS changes to propagate through DNS propagation. It is important step towards automatic Let's Encrypt Domain Validation (DV) over Linode DNS.  
 {{< /note >}}
 
@@ -160,17 +159,16 @@ IMPORTANT NOTES:
 
    Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
    Donating to EFF:                    https://eff.org/donate-le
-{{< /output >}}
+   {{< /output >}}
 
 3. In addition, manually append Let's Encrypt Wildcard SSL certificate to your Apache web server or NGINX web server: 
 
-  * **Apache** web server: you can follow [Configure Apache to Use the SSL Certificate](/docs/security/ssl/ssl-apache2-debian-ubuntu/#configure-apache-to-use-the-ssl-certificate) guide.
+    * **Apache** web server: you can follow [Configure Apache to Use the SSL Certificate](/docs/security/ssl/ssl-apache2-debian-ubuntu/#configure-apache-to-use-the-ssl-certificate) guide.
 
-  * **NGINX** web server: you can follow [Configuring Nginx to Use the SSL Certificate](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-the-http-block) guide.
+    * **NGINX** web server: you can follow [Configuring Nginx to Use the SSL Certificate](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-the-http-block) guide.
 
    File location of Wildcard certificate and key are shown below:
-
-| Name of Certificate and Key  | File Location of Certificate and Key |
+   | Name of Certificate and Key  | File Location of Certificate and Key |
 | ---------------- |:-------------:|
 | **Fullchain Certificate** (Your certificate + chain combined)  | `/etc/letsencrypt/live/example.com/fullchain.pem` |
 | **Private Key** (Your certificate's private key) | `/etc/letsencrypt/live/example.com/privkey.pem` |
@@ -181,13 +179,13 @@ IMPORTANT NOTES:
 
 1. Let’s Encrypt Wildcard SSL certificates are valid for 90-days. You will renew your certificates before its expiry date. While checking use the flag `--dry-run` after the `certbot renew` command. Check whether renew scripts are working or not:
 
-  {{< note >}}
+    {{< note >}}
 This command requires patience and estimate waiting time is **960 seconds** or **16 minutes** for DNS changes to propagate through DNS propagation. It is important step towards automatic Let's Encrypt Domain Validation (DV) over Linode DNS.  
 {{< /note >}}
 
           sudo certbot renew --dry-run
 
-The **subcommands** and **flags** for renewing a Let's Encrypt Wildcard SSL certificate are given below: 
+   The **subcommands** and **flags** for renewing a Let's Encrypt Wildcard SSL certificate are given below: 
 
   * `renew`: It will attempt to renew all the Let's Encrypt Wildcard SSL certificates that you have previously obtained.  
   * `--dry-run`: Perform a test run of the Certbot to obtain test certificates but not saving them to disk. 
@@ -196,13 +194,13 @@ The **subcommands** and **flags** for renewing a Let's Encrypt Wildcard SSL cert
 
           sudo crontab -e
 
-During first run, select default text editor as a nano (`/bin/nano`) text editor. The given example, shows `crontab` will run every 24 hours. You can [set your own crontab schedule from various examples](https://crontab.guru/examples.html). In advance, `certbot renew` command will renew your wildcard certificate at a scheduled time:
+   During first run, select default text editor as a nano (`/bin/nano`) text editor. The given example, shows `crontab` will run every 24 hours. You can [set your own crontab schedule from various examples](https://crontab.guru/examples.html). In advance, `certbot renew` command will renew your wildcard certificate at a scheduled time:
 
   {{< file "crontab" conf >}}
 0 0 * * * certbot renew
 {{< /file >}}
 
-Save and close the file when you are finished.
+   Save and close the file when you are finished.
 
 ## Next Steps
 In this guide, you have learned how to obtain Let's Encrypt Wildcard SSL certificates using Certbot tool. This can help you to secure all your subdomain and base domain with a single SSL certificate. It also allows you to take advantage of HTTPS to secure your web servers. If you are managing multi-domain website then these wildcard certificates are perfect and easy to integrate. For more information about Certbot's configuration options, check out the [Certbot Documentation](https://certbot.eff.org/docs/).
