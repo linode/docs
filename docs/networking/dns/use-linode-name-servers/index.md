@@ -21,7 +21,7 @@ When changing servers, however, you want a shorter TTL to make sure that when yo
 
 1.  Locate your current *nameservers*. If you're not sure what your nameservers are, you can find out with a [Whois Search tool](https://whois.icann.org/). You will see several nameservers listed, probably all at the same company.
 
-    {{< image src="whois-icann-name-servers.png" alt="linode.com nameservers" title="whois.icann.org lookup of nameservers for linode.com" link="hello" >}}
+    {{< image src="whois-icann-name-servers.png" alt="linode.com nameservers" title="whois.icann.org lookup of nameservers for linode.com" >}}
 
     You can usually derive the website of your nameserver authority (the organization that manages your DNS) from the nameservers you find in the Whois report (e.g. `ns1.linode.com` corresponds with linode.com). Sometimes the labelling for the nameservers is not directly related to the organization's website, and in those cases you can often find the website by plugging the nameserver into a Google search.
 
@@ -55,7 +55,7 @@ Most nameserver authorities will allow you to set the TTL on your domain or on i
 
 1.  Locate your domain's registrar, which is the company you originally purchased your domain from. If you're not sure who your registrar is, you can find out with a [Whois Search tool](https://whois.icann.org/).
 
-    {{< image src="whois-icann-registrar.png" alt="linode.com nameservers" title="whois.icann.org lookup of nameservers for linode.com" link="hello" >}}
+    {{< image src="whois-icann-registrar.png" alt="linode.com nameservers" title="whois.icann.org lookup of nameservers for linode.com" >}}
 
     {{< note >}}
 Your registrar will not necessarily be the same organization as your current nameserver authority, though they often are, as registrars generally offer free DNS services.
