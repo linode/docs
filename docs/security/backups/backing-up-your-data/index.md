@@ -91,7 +91,7 @@ This guide will evaluate six different backup utilities to see how they meet the
 -   **Where**: The files are stored in our secure data centers.
 -   **Rotation**: Backups are rotated automatically so you'll always have a daily, weekly, and bi-weekly backup. You can also store one snapshot of your choice indefinitely.
 
-To configure Linode's Backup Service for your Linode, follow [these instructions](/docs/platform/linode-backup-service/).
+To configure Linode's Backup Service for your Linode, follow [these instructions](/docs/platform/disk-images/linode-backup-service/).
 
 ### Linode's Disks
 

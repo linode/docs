@@ -24,7 +24,7 @@ If you've ever thought about opening an online store, you may have felt overwhel
 
 PrestaShop's ecommerce breadth can make it seem daunting to learn; however, its menus are neatly structured, terms are intuitive, and interface is easily navigable. In addition, customizing your website with PrestaShop's many *What You See Is What You Get* (WYSIWYG) tools makes for a user-friendly set up, without having to inspect and edit source code. Also, PrestaShop comes with many out-of-the-box features and plug-ins that streamline setup and use.
 
-Installing Prestashop on a remote server is more involved and time-consuming than using cloud hosting, but the rewards are greater: you will have better performance, since you have conserved server resources, and greater flexibility, with the freedom to tweak your settings as you see fit. You won't ever have to wait for a cloud-host support team to change PHP settings for you. Furthermore, [high availability](/docs/websites/introduction-to-high-availability/), [load balancing](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), advanced [backup schemes](/docs/platform/linode-backup-service/), and other features become easily accessible, allowing you to scale your business and increase your site's reliability.
+Installing Prestashop on a remote server is more involved and time-consuming than using cloud hosting, but the rewards are greater: you will have better performance, since you have conserved server resources, and greater flexibility, with the freedom to tweak your settings as you see fit. You won't ever have to wait for a cloud-host support team to change PHP settings for you. Furthermore, [high availability](/docs/websites/introduction-to-high-availability/), [load balancing](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), advanced [backup schemes](/docs/platform/disk-images/linode-backup-service/), and other features become easily accessible, allowing you to scale your business and increase your site's reliability.
 
 
 ## Before You Begin
@@ -37,7 +37,7 @@ Installing Prestashop on a remote server is more involved and time-consuming tha
 
         sudo apt-get update && sudo apt-get upgrade
 
-4.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview/) guide for more information.
+4.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our [DNS Manager Overview](/docs/platform/manager/dns-manager/) guide for more information.
 
       {{< note >}}
 Throughout this guide, replace `example.com` with the public IP address or Fully Qualified Domain Name (FQDN) of your Linode.

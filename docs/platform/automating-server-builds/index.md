@@ -34,13 +34,13 @@ Be aware that certain files like `/etc/hosts`, `/etc/hostname`, and static netwo
 
 There are several places to store a golden disk:
 
--   **Linode Images:** [Linode Images](/docs/platform/linode-images/) allows you to take snapshots of your disks, and then deploy them to any Linode under your account.
+-   **Linode Images:** [Linode Images](/docs/platform/disk-images/linode-images/) allows you to take snapshots of your disks, and then deploy them to any Linode under your account.
 -   **Linode Backup Service:** After enabling the Linode Backup Service, you can [make a manual backup](/docs/platform/linode-backup-service/#take-a-manual-snapshot) of your Linode (called a "snapshot"). This snapshot can function as your golden disk. Instead of cloning a disk to new Linodes, you can simply restore them from the snapshot backup.
 -   **Dedicated Linode:** Boot the Linode, make the desired changes, and clone the disk again.
 -   **Existing Linode:** You can clone from an existing Linode, but you will need to power down the Linode to ensure a consistent copy.
 -   **Different Computer:** You can transfer the disk to another computer. For instructions, see our guide on [Copying a Disk Over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/).
 
-These methods are discussed in further detail below, with the exception of [Linode Images](/docs/platform/linode-images/) which has its own article.
+These methods are discussed in further detail below, with the exception of [Linode Images](/docs/platform/disk-images/linode-images/) which has its own article.
 
 
 

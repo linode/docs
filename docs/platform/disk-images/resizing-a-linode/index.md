@@ -50,4 +50,4 @@ Here's how to resize your Linode:
 
 Your Linode has been successfully resized and migrated to the new host. This video goes through the resizing process in detail:
 
-<iframe width="825" height="465" src="https://www.youtube.com/embed/RjCDNtHU0Z4?controls=0&amp;showinfo=0&amp;rel=0" frameborder="0" allowfullscreen></iframe>
+{{< youtube RjCDNtHU0Z4 >}}

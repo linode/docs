@@ -21,7 +21,7 @@ For the sake of organization, it has been split into two main sections:
 
 *  [Install a Custom Distribution](#install-a-custom-distribution): shows you how to use the advantages of **Direct Disk Boot** to easily install the custom distribution.
 
-*  [Linode Manager Compatibility](#linode-manager-compatibility): builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the [Linode Backup Service](/docs/platform/linode-backup-service/).
+*  [Linode Manager Compatibility](#linode-manager-compatibility): builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the [Linode Backup Service](/docs/platform/disk-images/linode-backup-service/).
 
 This guide will use Debian 8 (Jessie) as an example, but the steps provided are generic in nature and should work with most distributions.
 
@@ -37,7 +37,7 @@ Linodes running on our KVM hypervisor offer several advantages over Xen, particu
 
 *  **Full Virtualization:** Our KVM hypervisor offers a full virtualization option that simulates the experience of running directly from hardware. This can be useful for non-standard configurations.
 
-*  **Glish:** KVM introduces the [Glish](/docs/networking/using-the-linode-graphical-shell-glish/) graphical console, which makes it easy to access your distribution's installer directly from a disk.
+*  **Glish:** KVM introduces the [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/) graphical console, which makes it easy to access your distribution's installer directly from a disk.
 
 ## Install a Custom Distribution
 
@@ -73,7 +73,7 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 ### Download and Install Image
 
-1.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/networking/using-the-linode-shell-lish/).
+1.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/platform/manager/using-the-linode-shell-lish/).
 
 2.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer, but you can replace the URL in the first command with the location of the image you want to install:
 
@@ -90,7 +90,7 @@ If you would prefer to write the installer directly to the disk as it downloads,
     curl http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
 {{< /note >}}
 
-3.  Reboot into your *Installer* configuration profile, and open the [Glish](/docs/networking/using-the-linode-graphical-shell-glish/) graphical console from the **Remote Access** tab in your Linode's Dashboard. You'll see your distribution's installer, and you can begin the install process.
+3.  Reboot into your *Installer* configuration profile, and open the [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/) graphical console from the **Remote Access** tab in your Linode's Dashboard. You'll see your distribution's installer, and you can begin the install process.
 
 4.  During your installer's partitioning/installation phase, be sure to instruct it to use the `/dev/sda` volume. Most installers will create separate root and swap partitions, but you can adjust this as needed.
 
