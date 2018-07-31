@@ -77,7 +77,7 @@ If any new information is added to the database on the current host prior to ful
 
 ### Transfer Data to Linode
 
-The following commands will copy files into the home directory of your Linode's Linux user. The next section will ensure that these files are moved to the right locations on disk and that their file owneship is correct. This work is done in two steps because the Linux user is assumed to have limited privileges and is unable to write to certain locations on disk.
+The following commands will copy files into the home directory of your Linode's Linux user. The next section will ensure that these files are moved to the right locations on disk and that their file ownership is correct. This work is done in two steps because the Linux user is assumed to have limited privileges and is unable to write to certain locations on disk.
 
 1.  From your current host, upload the Apache configuration files to your new Linode:
 

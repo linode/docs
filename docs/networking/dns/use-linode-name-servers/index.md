@@ -23,7 +23,7 @@ When changing servers, however, you want a shorter TTL to make sure that when yo
 
     {{< image src="whois-icann-name-servers.png" alt="linode.com nameservers" title="whois.icann.org lookup of nameservers for linode.com" >}}
 
-    You can usually derive the website of your nameserver authority (the organization that manages your DNS) from the nameservers you find in the Whois report (e.g. `ns1.linode.com` corresponds with linode.com). Sometimes the labelling for the nameservers is not directly related to the organization's website, and in those cases you can often find the website by plugging the nameserver into a Google search.
+    You can usually derive the website of your nameserver authority (the organization that manages your DNS) from the nameservers you find in the Whois report (e.g. `ns1.linode.com` corresponds with linode.com). Sometimes the labeling for the nameservers is not directly related to the organization's website, and in those cases you can often find the website by plugging the nameserver into a Google search.
 
 1.  Contact your nameserver authority for details on how to shorten the TTL for your domain. Every provider is a little different, so you may have to ask for instructions.
 
