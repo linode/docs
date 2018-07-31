@@ -14,9 +14,9 @@ title: Create an Account for a Developer to Work on Your Linode
 
 One of the most powerful features of Linode's unmanaged service is the amount of control Linode users have over their account and systems.
 
-As your needs grow or change, your Linode service is ready to meet them. [Linode Support](/docs/platform/support/) is available to help with Linode service related issues 24/7, every day of the year. For security and privacy, Support is not able to troubleshoot issues related to users and application access.
+As your needs grow or change, Linode is ready to meet them. [Linode Support](/docs/platform/support/) is available to help with Linode service related issues 24/7, every day of the year. For security and privacy, Support is not able to troubleshoot issues related to users and application access.
 
-When you hire someone to work on your Linode, there are a variety of ways they might have or need access to your Linode account, the Linodes on it, and the system and applications on your Linodes. This guide explains and answers some of the most frequently asked questions about account access.
+When you hire someone to work on your Linode, there are a variety of ways to grant access to your Linode account, the Linodes on it, and the system and applications on your Linodes. This guide explains and answers some of the most frequently asked questions about account access.
 
 The sections are separated in order of granularity, starting with service-level access at the top, and working towards application-specific access.
 
@@ -24,11 +24,11 @@ The sections are separated in order of granularity, starting with service-level 
 
 Log in to the Linode Manager and navigate to the [**Users and Permissions**](https://manager.linode.com/user/index/) section of the **Acount** tab. You may be prompted to reauthenticate your password in order to access the User Manager where all account users are displayed.
 
-Not sure if you're logged in as the account administrator? Look for a `No` in the **Restricted** column of your username's row in the User Manager.
+If you're not sure whether you're logged in as the account administrator, look for a `No` in the **Restricted** column of your username's row in the User Manager.
 
-Keep your account administrator credentials secret. When hiring a developer or agency to work on your site or application, create a user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/platform/accounts-and-passwords/#users-and-permissions) guide.
+Keep your account administrator credentials secret. When hiring an external individual or agency to work on your site or application, create a user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/platform/accounts-and-passwords/#users-and-permissions) guide.
 
-Useful *Global Grants* for a developer or agency might include the ability to:
+Useful *Global Grants* for a limited access user might include the ability to:
 
 * Add a [NodeBalancer](/nodebalancers/).
 * Add [Longview](/longview/) clients.
@@ -39,15 +39,15 @@ Useful *Global Grants* for a developer or agency might include the ability to:
 
 ## Add or Restrict SSH Logins and Access to Applications on your Linode
 
-For the steps in this section, [connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh/) to log in to the system itself as `root` or a non-root user with *sudo* permissions.
+For the steps in this section, [connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh/) to log in to the system as `root` or a non-root user with *sudo* permissions.
 
+{{< note >}}
 If you don't remember your root password, [reset it through the Manager](/docs/platform/accounts-and-passwords/#resetting-your-linode-manager-password).
+{{</ note >}}
 
 ### Who Has SSH Access to Your Linode?
 
-Users access the Linode through [SSH](/docs/getting-started/#connect-to-your-linode-via-ssh). In addition to the `root` user, the password for which can be [reset from the Linode Manager](/docs/platform/manager/accounts-and-passwords/#resetting-the-root-password), other users may have access to the system.
-
-Use `getent` to display the list of users. Keep in mind that some applications create users that will be listed here:
+Users access the Linode through [SSH](/docs/getting-started/#connect-to-your-linode-via-ssh). Use `getent` to display the list of users. Keep in mind that some applications create users that will be listed here.
 
     getent passwd
 
@@ -81,16 +81,14 @@ Rather than set permissions for each user, create a limited privilege user group
 
 ### Restrict a User to a Specific Directory
 
-If your user should only have access to a specific directory, for example `/var/www/html/example.com/` and its subdirectories, use `chroot` *jails*, as described in the [Advanced SSH Security](/docs/security/advanced-ssh-server-security/#chroot-users) guide.
+If your user should only have access to a specific directory and its subdirectories, for example `/var/www/html/example.com/`, use `chroot` *jails*, as described in the [Advanced SSH Security](/docs/security/advanced-ssh-server-security/#chroot-users) guide.
 
 ## Restrict a User to SFTP Only
 
-For many web applications, a user may only need to transfer files to or from the server. In this case, create a user that can transfer files through SFTP but that can't access the server with SSH.
+For some applications, a user may only need to transfer files to or from the server. In this case, create a user that can transfer files through SFTP but that can't access the server with SSH.
 
 {{< caution >}}
-The steps in this section disable a user's access to SSH.
-
-Do not follow the steps in this section for any user who needs SSH access.
+The steps in this section disable a user's SSH access. Do not follow the steps in this section for any user who needs SSH access.
 {{< /caution >}}
 
 Consult our guide to configure this using [SFTP jails on Debian or Ubuntu](/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu/).
@@ -140,7 +138,7 @@ The user can now `sftp` to the system and transfer files to and from the specifi
 
 If your site runs WordPress, add a user with the appropriate permissions.
 
-WordPress user roles are useful for authors and content contributors, but might not be enough for a developer to manage the site. If you don't feel comfortable sharing the existing administrator account credentials, create an administrator account.
+WordPress user roles are useful for authors and content contributors, but might not be enough for a developer to work on the site. If you don't feel comfortable sharing the existing administrator account credentials, create an administrator account.
 
 1.  Log in to your WordPress admin, typically through `www.example.com/wp-admin` (where `example.com` is your site).
 
@@ -164,7 +162,7 @@ WordPress user roles are useful for authors and content contributors, but might 
 
 ## Add or Remove a Drupal User
 
-Drupal's main administrator account is the **User 1** account. This account serves as the *root* user and can create other users with different *permissions* and *roles*. Create a new role with administrative-level permissions to grant a developer the access they need to maintain your Drupal site.
+Drupal's main administrator account is the **User 1** account. This account serves as the *root* user and can create other users with different *permissions* and *roles*. Create a new role with administrative-level permissions to grant someone the necessary access to maintain your Drupal site.
 
 1.  Log in to the Drupal admin (this may be through your site's `www.example.com/admin`), and click **Manage**, then **People** in the Admin menu.
 
