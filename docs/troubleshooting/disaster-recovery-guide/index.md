@@ -55,7 +55,7 @@ For more information, refer to the [Network Helper](/docs/platform/network-helpe
 
 Once you've rebooted your Linode and have SSH access via Lish, determine if a Linode's networking interfaces have been configured and brought up properly.
 
-1. Print out the contents of the network interfaces file to view the applied configuration from the Network Helper:
+1. Print out the contents of the network interfaces file to view the configuration applied by Network Helper:
 
     **Debian / Ubuntu**
 
@@ -84,13 +84,11 @@ Once you've rebooted your Linode and have SSH access via Lish, determine if a Li
 
         ip r
 
-## Failed to Raise Network Error Message Troubleshooting
+## *Failed to Raise Network* Error Message Troubleshooting
 
-While you were checking interfaces / networking on your Linode, you may have encountered the following error message:
+This section provides some troubleshooting steps for specific errors you may encounter if the status of `networking.service` reports the following error:
 
     [FAILED] Failed to start Raise network interfaces. See 'systemctl status networking.service' for details.
-
-This section provides some troubleshooting steps for specific errors you may have encountered when checking interfaces / networking on your Linode.
 
 ### Was Your Interface Renamed?
 
@@ -168,7 +166,7 @@ When troubleshooting it is helpful to determine which services are running on yo
 
 1. Run the following command to view all network connections with their corresponding address, state, PID and name
 
-        sudo netstat -plntu
+        sudo ss -atpu
 
 1. To display all units of type service that the system manager knows about:
 
@@ -186,19 +184,19 @@ If you expect a service to be running, but it is displayed as not running try re
 
 - Debian and Ubuntu:
 
-        sudo service apache2 restart
+        sudo systemctl restart apache2
 
 - Fedora and CentOS:
 
-        sudo service httpd restart
+        sudo systemctl restart httpd
 
-**Nginx**
+**NGINX**
 
-    sudo service nginx restart
+    sudo systemctl restart nginx
 
 **MySQL**
 
-    sudo service mysqld restart
+    sudo systemctl restart mysqld
 
 **SSH**
 
