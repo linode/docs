@@ -17,7 +17,7 @@ external_resources:
 - '[Connecting Containers](https://deis.com/blog/2016/connecting-docker-containers-1/)'
 ---
 
-![Connect Docker Containers](Connect_Docker_Containers.jpg)
+![Connect Docker Containers](connect-docker-containers.jpg)
 
 When using [Docker](https://www.docker.com) to containerize your applications, it is common practice to run each component of the application in a separate container. For example, a website might have a web server, application, and database, each running in its own container.
 

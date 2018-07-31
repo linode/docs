@@ -239,6 +239,7 @@ devops
 devtmpfs
 df
 dhclient
+dhparams
 dialogs
 diavel
 diffie
@@ -1250,6 +1251,7 @@ tokenizing
 tokyo2
 tomacat
 tomcat6
+toolchain
 traceroute
 trackbar
 transcoder
@@ -1271,6 +1273,7 @@ ufw
 ui
 uidl
 un
+unaliased
 unarchive
 unban
 unbans
@@ -1415,6 +1418,7 @@ wx
 xabbix
 xap
 xcalc
+xcode
 xen
 xenial
 xerus
@@ -1450,6 +1454,7 @@ yourdomain
 yourdomainorsubdomainhere
 yourname
 yoursite
+youtube
 yubico
 yubikey
 zabbix

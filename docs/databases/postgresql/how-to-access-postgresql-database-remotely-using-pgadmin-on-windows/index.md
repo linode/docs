@@ -58,7 +58,7 @@ Click the "Open" button to start your connection. If you haven't logged into you
 
 [![An unknown host key warning in PuTTY on Windows 7](371-putty-02-host-key-warning.png)](371-putty-02-host-key-warning.png)
 
-PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method to compare the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via [Lish](/docs/networking/using-the-linode-shell-lish/) and executing the following command:
+PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method to compare the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via [Lish](/docs/platform/manager/using-the-linode-shell-lish/) and executing the following command:
 
     ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
 
