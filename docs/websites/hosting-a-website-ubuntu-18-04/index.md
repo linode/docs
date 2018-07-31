@@ -6,20 +6,15 @@ description: 'Our guide to hosting a website on your Linode.'
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['hosting-website/']
-modified: 2017-01-18
+modified: 2018-07-31
 modified_by:
-  name: Phil Zona
+  name: Linode
 published: 2012-03-13
-deprecated: true
-deprecated_link: '/websites/set-up-web-server-host-website/'
-title: Hosting a Website
+title: Host a Website on Ubuntu 18.04
 ---
-
-![Hosting a Website](Hosting-a-Website-smg.jpg)
-
 Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
 
-**Debian 8** and **Ubuntu 14.04 LTS** are the [Linux distributions](/docs/getting-started/#deploy-an-image) used in this guide. If you'd like to use **Ubuntu 16.04 LTS**, refer to the distribution-specific guide on configuring a [LAMP Stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/), and then continue to the [upload files](#upload-files) section.
+**Debian 9** and **Ubuntu 18.04 LTS** are the [Linux distributions](/docs/getting-started/#deploy-an-image) used in this guide. If you'd like to use **Ubuntu 16.04 LTS**, refer to the distribution-specific guide on configuring a [LAMP Stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/), and then continue to the [upload files](#upload-files) section.
 
 {{< note >}}
 This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
@@ -27,12 +22,15 @@ This guide is designed for small and medium-size websites running on WordPress, 
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/f067hwymxy?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
-<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
-
 ## Web Server
 
 Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/docs/web-servers/).
+
+If you are using **Ubuntu 18.04**, you can use the Tasksel tool to install a LAMP stack on your Linode:
+
+    sudo tasksel install lamp-server
+
+Once you've installed the LAMP stack, you can skip the install sections and continue on to the configuration sections for each part of the stack.
 
 ### Install Apache
 
@@ -64,7 +62,7 @@ These guidelines are designed to optimize Apache for a **Linode 2GB**, but you c
 3.  Make sure that the following values are set:
 
     {{< note >}}
-In Ubuntu 14.04, you will need to append the module section noted below to the end of your `apache2.conf` file:
+In Ubuntu 18.04, you will need to append the module section noted below to the end of your `apache2.conf` file:
 {{< /note >}}
 
     {{< file "/etc/apache2/apache2.conf" apache >}}
@@ -87,9 +85,9 @@ KeepAlive Off
 
 5.  Restart Apache to incorporate the new settings:
 
-        sudo service apache2 restart
+        sudo systemctl restart apache2
 
-Good work! You've successfully optimized Apache for your Linode, increasing performance and implementing safeguards to prevent excessive resource consumption. You're almost ready to host websites with Apache.
+You've successfully optimized Apache for your Linode, increasing performance and implementing safeguards to prevent excessive resource consumption. You're almost ready to host websites with Apache.
 
 ### Configure Name-based Virtual Hosts
 
@@ -122,7 +120,7 @@ You should *not* be logged in as `root` while executing these commands. To learn
         sudo nano /etc/apache2/sites-available/example.com.conf
 
     {{< caution >}}
-The file name *must* end with `.conf` in Apache versions 2.4 and later, which is the default version in Ubuntu 14.04. The `.conf` extension is backwards-compatible with earlier versions.
+The file name *must* end with `.conf` in Apache versions 2.4 and later, which is the default version in Ubuntu 18.04. The `.conf` extension is backwards-compatible with earlier versions.
 {{< /caution >}}
 
 6.  Now it's time to create a configuration for your virtual host. We've created some basic settings to get your started. Copy and paste the settings shown below in to the virtual host file you just created. Replace all instances of `example.com` with your domain name.
@@ -157,13 +155,13 @@ The file name *must* end with `.conf` in Apache versions 2.4 and later, which is
 
     This creates a symbolic link to your `example.com.conf` file in the appropriate directory for active virtual hosts.
 
-9. The previous command will alert you that you need to restart Apache to save the changes. Restart to apply your new configuration:
+9. The previous command will alert you that you need to reload Apache to save the changes. Reload to apply your new configuration:
 
-        sudo service apache2 restart
+        sudo systemctl reload apache2
 
 10. Repeat steps 1-9 for any other websites you want to host on your Linode.
 
-Congratulations! You've configured Apache to host one or more websites on your Linode. After you [upload files](#upload-files) and [add DNS records](#add-dns-records) later in this guide, your websites will be accessible to the outside world.
+You've configured Apache to host one or more websites on your Linode. After you [upload files](#upload-files) and [add DNS records](#add-dns-records) later in this guide, your websites will be accessible to the outside world.
 
 ## Database
 
@@ -175,61 +173,54 @@ Databases store data in a structured and easily accessible manner, serving as th
 
         sudo apt-get install mysql-server
 
-2.  You will be prompted to enter a password for the MySQL root user. This is not related to the root user for your Linode, so be sure to choose a different password for security purposes.
-
-3.  Secure MySQL using the `mysql_secure_installation` utility:
+1.  Secure MySQL using the `mysql_secure_installation` utility:
 
         sudo mysql_secure_installation
 
-4.  The `mysql_secure_installation` utility appears. Follow the instructions to remove anonymous user accounts, disable remote root login, and remove the test database.
+1.  The `mysql_secure_installation` utility appears. You will be prompted to:
 
-That's it! MySQL is now installed and running on your Linode.
+    - Set up the `VALIDATE PASSWORD` plugin that checks the strength of password and allows the users to set only those passwords which are secure enough.
+
+    - Set a password for `root`.
+
+    - Remove anonymous users.
+
+    - Disallow root login.
+
+    - Remove test database.
+
+It is recommended that you answer `yes` to these options. You can read more about the script in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/mysql-secure-installation.html). MySQL is now installed and running on your Linode.
 
 ### Optimize MySQL for a Linode 2GB
 
 MySQL consumes a lot of memory when using the default configuration. To set resource constraints, you'll need to edit the MySQL configuration file.
 
 {{< note >}}
-These guidelines are designed to optimize MySQL 5.5 and up for a **Linode 2GB**, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.
+These guidelines are designed to optimize MySQL 5.7 and up for a **Linode 2GB**, but you can use this information for any size Linode. If you have a larger Linode, start with these values and modify them while carefully watching for memory and performance issues.
 {{< /note >}}
 
 1.  Open the MySQL configuration file for editing:
 
         sudo nano /etc/mysql/my.cnf
 
-2.  Comment out all lines beginning with `key_buffer`. This is a deprecated setting and we'll use the correct option instead.
+2.  If applicalble, comment out all lines beginning with `key_buffer`. This is a deprecated setting and we'll use the correct option instead.
 
-3.  Edit following values:
+3.  Add the following values:
 
     {{< file "/etc/mysql/my.cnf" aconf >}}
+[mysqld]
 max_allowed_packet = 1M
 thread_stack = 128K
-
-...
-
 max_connections = 75
-
-{{< /file >}}
-
-
-    {{< note >}}
-In MySQL 5.6 and above, you may need to add these lines as one block with `[mysqld]` at the top. In earlier MySQL versions, there may be multiple entries for a single option so be sure to edit both lines.
-{{< /note >}}
-
-4.  Add the following lines to the end of `my.cnf`:
-
-    {{< file "/etc/mysql/my.cnf" aconf >}}
 table_open_cache = 32M
 key_buffer_size = 32M
-
 {{< /file >}}
-
 
 5.  Save the changes to MySQL's configuration file by pressing **CTRL+X** and then pressing **Y** and hitting **ENTER** to save.
 
 6.  Restart MySQL to save the changes:
 
-        sudo service mysql restart
+        sudo systemctl restart mysql
 
 Now that you've edited the MySQL configuration file, you're ready to start creating and importing databases.
 
@@ -239,7 +230,7 @@ The first thing you'll need to do in MySQL is create a *database*. (If you alrea
 
 1.  Log in using the MySQL root password:
 
-        mysql -u root -p
+        sudo mysql -u root -p
 
 2.  Create a database, replacing `exampleDB` with your own database name:
 
@@ -281,13 +272,17 @@ PHP is a general-purpose scripting language that allows you to produce dynamic a
 
 ### Install PHP
 
-1.  Install the base PHP package:
+1.  Install the base PHP package and the PHP Extension and Application Repository:
 
-        sudo apt-get install php5 php-pear
+        sudo apt-get install php php-pear
 
-2.  Add the MySQL support extension for PHP:
+1.  Add the MySQL support extension for PHP:
 
-        sudo apt-get install php5-mysql
+        sudo apt-get install php-mysql
+
+1. Add the PHP module for the Apache 2 webserver:
+
+        sudo apt-get install libapache2-mod-php
 
 ### Optimize PHP for a Linode 2GB
 
@@ -299,14 +294,14 @@ These guidelines are designed to optimize PHP for a Linode 2GB, but you can use 
 
 1.  Open the PHP configuration files:
 
-        sudo nano /etc/php5/apache2/php.ini
+        sudo nano /etc/php/7.2/apache2/php.ini
 
 2.  Verify that the following values are set. All of the lines listed below should be uncommented. Be sure to remove any semicolons (`;`) at the beginning of the lines.
 
     {{< file "/etc/php5/apache2/php.ini" ini >}}
 max_execution_time = 30
 memory_limit = 128M
-error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
 display_errors = Off
 log_errors = On
 error_log = /var/log/php/error.log
