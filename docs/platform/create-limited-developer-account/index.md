@@ -140,7 +140,7 @@ To revoke access to an SSH user, change the password for that user:
 
     passwd exampleUser
 
-In addition to password authentication, a user may rely on [public key authentication](http://localhost:1313/docs/security/securing-your-server/#harden-ssh-access) to connect via SSH. For any users that you would like to revoke access on, you should also check for the presence of a public key.
+In addition to password authentication, a user may rely on [public key authentication](/docs/security/securing-your-server/#harden-ssh-access) to connect via SSH. For any users that you would like to revoke access on, you should also check for the presence of a public key.
 
 These public keys are listed as line in a text file in the user's home directory named `/home/exampleUser/.ssh/authorized_keys`. To see which keys are present, run:
 
@@ -168,7 +168,7 @@ If you instead want to fully remove the file, run:
 Files removed in this way can't be easily restored.
 {{< /caution >}}
 
-## WordPress Users
+## Add or Remove WordPress Users
 
 If your site runs WordPress, add a user with the appropriate permissions.
 
@@ -194,7 +194,7 @@ WordPress user roles are useful for authors and content contributors, but might 
 
         * Click **Bulk Actions**, select **Delete**, then click **Apply**. Click **Confirm Deletion** to delete the user.
 
-## Drupal Users
+## Add and Manage Drupal Users
 
 Drupal's main administrator account is the **User 1** account. This account serves as the *root* user and can create other users with different *permissions* and *roles*.
 
@@ -206,7 +206,7 @@ Create a new user with administrative-level permissions to grant someone the nec
 
 To view a list of permissions allowed to the Administrator role, return to the **People** page and click **Permissions**.
 
-### Manage Drupal Roles
+### Configure Drupal Roles
 
 If you don't feel comfortable granting the full list of administrative privileges, create a new Role that can be reused and applied to many users.
 
