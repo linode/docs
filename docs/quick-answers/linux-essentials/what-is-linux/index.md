@@ -16,7 +16,7 @@ contributor:
 
 Linux is an *operating system* (OS) that works similarly to other well-known OSes like Windows and macOS. As an operating system, Linux manages your computer or server’s hardware and provides background services that your other software needs to run.
 
-A significant difference between Linux and other OSes is that it’s open source and free of cost. Open source means anyone has access to the Linux source code and can contribute to enhancing it, adding features, and fixing bugs and security vulnerabilities. Independent programmers all around the world invest their time and expertise to improving Linux. This model of software development rivals proprietary OSes that keep their code closed and solely work with the programmers they employ.
+A significant difference between Linux and other OSes is that it’s open source and free of cost. Open source means anyone has access to the Linux source code and can contribute to enhancing it, adding features, and fixing bugs and security vulnerabilities. Independent programmers all around the world invest their time and expertise to improve Linux. This model of software development rivals proprietary OSes that keep their code closed and solely work with the programmers they employ.
 
 Colloquially, Linux refers to the *Linux Kernel* plus all the tools, utilities and libraries running on top of the kernel, many of which are managed under the umbrella of the GNU project. There are Linux community members that find it more correct and precise to use the term [GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.en.html) over Linux alone as a name for the OS.
 
@@ -68,11 +68,11 @@ Using Linux means selecting a [*distribution*](https://en.wikipedia.org/wiki/Lin
 
 * [Arch](https://www.archlinux.org/) features a rolling release cycle and an incredibly dedicated community that maintains the distro as well as the Arch User Repository (AUR) of software packages.
 
-### Graphical User Interfaces (GUI) and Desktop Environments
+### Graphical User Interfaces and Desktop Environments
 
-Windows and macOS both come with a single graphical user interface that is generally not able to be replaced or substantially changed by the user. In contrast, there are a wide variety of GUIs available for Linux, and Linux users can switch between them and customize them another according to personal preference. In general, the desktop environment is simply a graphical shell that interacts with the Linux Kernel.
+Windows and macOS both come with a single graphical user interface (GUI) that is generally not able to be replaced or substantially changed by the user. In contrast, there are a wide variety of GUIs available for Linux, and Linux users can switch between them and customize them according to personal preference. In essence, the desktop environment is simply a graphical shell that interacts with the Linux Kernel.
 
-Popular GUIs include [GNOME](https://www.gnome.org/), [KDE](https://www.kde.org/plasma-desktop.php), [Xfce](https://xfce.org/), and [Cinnamon](https://en.wikipedia.org/wiki/Cinnamon_(software)). Different desktop Linux distributions come packaged with and are associated with specific GUIs, but those can also be changed by the user after installation.
+Popular GUIs include [GNOME](https://www.gnome.org/), [KDE](https://www.kde.org/plasma-desktop.php), [Xfce](https://xfce.org/), and [Cinnamon](https://en.wikipedia.org/wiki/Cinnamon_(software)). Different desktop Linux distributions come packaged with specific GUIs, but those can also be changed by the user after installation.
 
 ### Minimum Install Distributions for Older Hardware
 
@@ -91,11 +91,11 @@ Some examples of lightweight distributions include:
 
 Linux distributions feature a built-in *package manager*, which is a tool that helps install, update, and remove applications. The package manager differs by distribution: [**APT**](https://en.wikipedia.org/wiki/APT_(Debian)) is the manager for Debian and Ubuntu systems, and [**YUM**](https://en.wikipedia.org/wiki/Yum_(software)) is the manager for CentOS and RHEL systems.
 
-These tools retrieve packaged applications from *repositories* (repos), which are archives of software available for your Linux environment. Distributions offer *stable* repositories composed of software that has received extensive testing. You can also configure your package manager to use alternative repositories which feature newer software versions that have received less testing. In addition, third-party repositories exist which feature software not included in any of your distribution's standard repositories.
+These tools retrieve packaged applications from *repositories* (repos), which are archives of software available for your Linux environment. Distributions offer *stable* repositories composed of software that has received extensive testing. You can also configure your package manager to use alternative repositories which feature newer software versions that have received less testing. Third-party repositories exist which feature software not included in any of your distribution's standard repositories.
 
-In addition to a distribution's built-in package manager, you might use a *application-level* package manager. Examples of application-level package managers are [*pip*](https://pypi.org/project/pip/) for Python applications and [*npm*](https://www.npmjs.com/) for Node.js applications.
+In addition to a distribution's built-in package manager, you might use an *application-level* package manager. Examples of application-level package managers are [*pip*](https://pypi.org/project/pip/) for Python applications and [*npm*](https://www.npmjs.com/) for Node.js applications.
 
-For more information about available package managers, visit [Wikipedia](https://en.wikipedia.org/wiki/List_of_software_package_management_systems) for a more comprehensive understanding.
+For a comprehensive list of available package managers, visit [Wikipedia](https://en.wikipedia.org/wiki/List_of_software_package_management_systems).
 
 ## Learn More
 

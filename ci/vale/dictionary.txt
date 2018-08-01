@@ -164,6 +164,7 @@ conda
 config
 configs
 configtest
+configurability
 containerised
 convolutional
 coose
