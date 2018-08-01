@@ -1347,6 +1347,7 @@ virtualenvwrapper
 virtualhost
 virtualizations
 virtualized
+virtualmin
 vlogger
 vmail
 vmem
