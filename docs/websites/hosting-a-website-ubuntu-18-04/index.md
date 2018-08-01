@@ -5,7 +5,7 @@ author:
 description: 'Our guide to hosting a website on your Linode.'
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['hosting-website/']
+aliases: ['hosting-website/','websites/hosting-a-website/']
 modified: 2018-07-31
 modified_by:
   name: Linode
@@ -203,7 +203,7 @@ These guidelines are designed to optimize MySQL 5.7 and up for a **Linode 2GB**,
 
         sudo nano /etc/mysql/my.cnf
 
-2.  If applicalble, comment out all lines beginning with `key_buffer`. This is a deprecated setting and we'll use the correct option instead.
+2.  If applicable, comment out all lines beginning with `key_buffer`. This is a deprecated setting and we'll use the correct option instead.
 
 3.  Add the following values:
 
