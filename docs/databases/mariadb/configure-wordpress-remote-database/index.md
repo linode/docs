@@ -18,7 +18,7 @@ external_resources:
 
 ## Before You Begin
 
-- This guide uses two Linodes in the same datacenter to communicate via [private IP](/docs/networking/remote-access/#adding-private-ip-addresses) addresses. You will need to configure a [LEMP](/docs/web-servers/lemp/) or [LAMP](/docs/web-servers/lamp/) stack on one.
+- This guide uses two Linodes in the same data center to communicate via [private IP](/docs/networking/remote-access/#adding-private-ip-addresses) addresses. You will need to configure a [LEMP](/docs/web-servers/lemp/) or [LAMP](/docs/web-servers/lamp/) stack on one.
 
 - Ensure that all packages are up to date.
 
