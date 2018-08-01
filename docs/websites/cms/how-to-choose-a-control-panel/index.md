@@ -54,21 +54,21 @@ Control panels often come with robust community support networks. In some cases,
 
 When considering which control panel to use, review the following factors:
 
--   **Cost** to use the control panel, if any
+-   **Cost** to use the control panel, if any.
 
--   **User interface**: does the control panel's UI appeal to you, and is it easy to understand?
+-   **User interface**: Does the control panel's UI appeal to you, and is it easy to understand?
 
--   **Features** available in the control panel
+-   **Features** available in the control panel.
 
--   **Community support**: is there is a community forum, and do the members seem friendly/helpful?
+-   **Community support**: Is there is a community forum, and do the members seem friendly/helpful?
 
--   **Documentation**: is it easy to understand, and are there articles for most/all of the features?
+-   **Documentation**: Is it easy to understand, and are there articles for most/all of the features?
 
--   **Paid support** (if desired): is it available, and what is the cost?
+-   **Paid support** (if desired): Is it available, and what is the cost?
 
--   **Frequency of updates**: is the control panel actively maintained, and are security updates promptly issued?
+-   **Frequency of updates**: Is the control panel actively maintained, and are security updates promptly issued?
 
--   **Distributions supported**: can you install the control panel on your preferred Linux distribution?
+-   **Distributions supported**: Can you install the control panel on your preferred Linux distribution?
 
 ## Control Panel Comparison
 
