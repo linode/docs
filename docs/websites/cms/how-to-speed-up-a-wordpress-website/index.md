@@ -16,7 +16,7 @@ external_resources:
 - '[Profiling with XHProf and XHGUI](https://www.engineyard.com/blog/topic/profiling-with-xhprof-and-xhgui)'
 - '[Tideways XHProf Extension](https://github.com/tideways/php-xhprof-extension)'
 - '[XHGUI](https://github.com/perftools/xhgui)'
-- '[How to Use Docker Compose](http://localhost:1313/docs/applications/containers/how-to-use-docker-compose/)'
+- '[How to Use Docker Compose](/docs/applications/containers/how-to-use-docker-compose/)'
 ---
 
 ## Goals For This Guide
