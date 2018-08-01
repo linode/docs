@@ -6,7 +6,7 @@ description: 'Use DNS Manager to Direct Domains to Your Linode.'
 keywords: ["dns manager", "linode dns", "linode manager dns", "dns configuration", "ttl", "domain zones", "domain name"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/', 'networking/dns/dns-manager/','networking/dns/dns-manager-overview/']
-modified: 2018-05-22
+modified: 2018-08-01
 modified_by:
   name: Linode
 published: 2009-07-16
@@ -211,15 +211,17 @@ Once removed, you **MUST** delete the Linode nameserver entries from the domain 
 permission.
 {{< /caution >}}
 
+### Wildcards
+
+To create a [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_record), add a new record and enter an asterisk (`*`) in the **Hostname** field.
+
 ### Subdomains
 
 The DNS Manager does not support addition of a subdomain on top of an existing subdomain in the same zone. For example, if you have `example.com` as a zone, with an A record for `subdomain.example.com`, you cannot create `another.subdomain.example.com` within that zone.
 
-Instead, [add](#add-a-domain-zone) the subdomain as a separate zone in the DNS Manager, and then create your additional subdomain as an A record.
+Instead, [add](#add-a-domain-zone) the subdomain as a separate zone in the DNS Manager, and then create your additional subdomain as an A record. In the previous example, you would create a zone named `subdomain.example.com` with a record with hostname `another` inside of it.
 
-### Wildcards
-
-The DNS Manager uses an asterisk (`*`) for wildcards.
+To create a wildcard record on a subdomain (e.g. `*.subdomain.example.com`), create a new zone for the subdomain and then [add a wildcard record](#wildcards) to it.
 
 ## Troubleshoot
 
