@@ -1,0 +1,10 @@
+<blockquote class="disclosure-note">
+    <span>
+        <!-- arrow-down-circle.svg - Feather icon set | MIT License | https://feathericons.com -->
+        <img class="disclosure-icon" src="{{ relURL "media/images/arrow-down-circle.svg" }}" />
+        <strong class="callout-title">
+            {{ default "Disclosure Note" (.Get 0) }}
+        </strong>
+    </span>
+    <div class="disclosure-note-content"><div class="height-preservation-wrapper">{{ .Inner | markdownify }}</div></div>
+</blockquote>

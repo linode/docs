@@ -66,6 +66,50 @@
 
 })(jQuery);
 
+$(function() {
+    $('.disclosure-note').each(function() {
+        $(this).css("cursor", "pointer")
+            .click(function() { toggleNoteDisclosure($(this)) });
+        $(this).children('div').first()
+            .css("height", '3em')
+            .css("opacity", .5);
+    });
+});
+
+function toggleNoteDisclosure(disclosureNote) {
+    disclosureNoteTitle = disclosureNote.children('span').first();
+    arrowIcon = disclosureNoteTitle.children('img.disclosure-icon').first();
+    disclosableDiv = disclosureNoteTitle.next('div')
+    if (disclosureNote.hasClass('disclosed')) {
+        disclosableDiv.animate(
+            {
+                height: '3em',
+                opacity: .5
+            }, 
+            200,
+            function() {
+                disclosureNoteTitle.css("cursor", "pointer")
+                    .unbind('click');
+                disclosureNote.css("cursor", "pointer")
+                    .unbind('click').click(function() { toggleNoteDisclosure($(this)); });
+            });
+    }
+    else {
+        disclosableDiv.animate(
+            {
+                height: disclosableDiv.children('.height-preservation-wrapper').first().height(),
+                opacity: 1
+            }, 
+            200,
+            function() {
+                disclosureNote.css("cursor", "default")
+                    .unbind('click');
+                disclosureNoteTitle.css("cursor", "pointer")
+                    .unbind('click').click(function() { toggleNoteDisclosure($(this).parent()); });
+            });
+    }
+    disclosureNote.toggleClass('disclosed');
+}
 (function($) {
 
     Page = {
