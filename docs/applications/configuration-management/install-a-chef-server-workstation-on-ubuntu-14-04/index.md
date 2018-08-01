@@ -1,4 +1,6 @@
 ---
+deprecated: true
+deprecated_link: 'applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/'
 author:
   name: Elle Krout
 description: 'Instructions on how to configure a Chef server and virtual workstation and how to bootstrap a node on Ubuntu 14.04'
@@ -18,7 +20,7 @@ Chef is an automation platform that "turns infrastructure into code," allowing u
 
 Chef is comprised of a Chef server, one or more workstations, and a number of nodes that are managed by the chef-client installed on each node.
 
-[![chef_graph-small.png](chef_graph-small.png)](chef_graph.png)
+[![chef_graph-small.png](chef-graph-small.png)](chef_graph.png)
 
 
 This guide will show users how to create and configure a Chef server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.

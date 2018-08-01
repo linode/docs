@@ -83,7 +83,7 @@ Every ten seconds, NodeBalancer will request the root of the web application and
 
     [![The backend node has been added, and is now status UP.](800-5.png)](778-backend-up.png)
 
-    If the backend status reports **DOWN**, check to make sure that your web application is configured to respond on the Linode's private IP address. There might be a virtual host mismatch as well -- check the notes in the next section.
+    If the backend status reports **DOWN**, check to make sure that your web application is configured to respond on the Linode's private IP address.  You do this by adding the private IP address to your /etc/hosts file on your Linode and then reboot your Linode. There might be a virtual host mismatch as well -- check the notes in the next section.
 
 2.  Now that the backend is up, go directly to your NodeBalancer's IP address in a browser. You should see your web application as the NodeBalancer proxies the traffic through.
 

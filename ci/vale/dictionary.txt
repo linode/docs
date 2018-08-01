@@ -993,6 +993,7 @@ rcon
 rdbadmin
 rdiff
 readcaps
+reauthenticate
 readme
 readonly
 readwrite
@@ -1294,6 +1295,7 @@ unexported
 unformatted
 unicast
 uniq
+unmanaged
 unmerged
 unmount
 unmounting

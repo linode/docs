@@ -66,7 +66,7 @@ When setting up LXD, you can either store container data in an [external volume]
 
 1.  In the Linode Manager, find the **Disks** section and click **Create a new disk**.
 
-    ![Create a Linode Disk](create_new_disk.png)
+    ![Create a Linode Disk](create-new-disk.png)
 
     {{< note >}}
 If your Linode's distribution disk already has 100% of the available disk space allocated to it, you will need to resize the disk before you can create a storage disk. See [Resizing a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) for more information.
