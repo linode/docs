@@ -14,11 +14,11 @@ contributor:
   name: Linode
 ---
 
-Linux is an *operating system* (OS) that works similarly to other well-known OSes like Windows and macOS. As an operating system, Linux manages your computer or server’s hardware and provides background services that your other software needs to run.
+Linux refers to the *Linux Kernel* plus all the tools, utilities and libraries running on top of the kernel, many of which are managed under the umbrella of the GNU project. Colloquially, Linux refers to an *operating system* (OS). There are Linux community members that find it more correct and precise to use the term [GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.en.html) over Linux alone as a name for the OS.
+
+Linux works similarly to other well-known OSes like Windows and macOS. As an operating system, Linux manages your computer or server’s hardware and provides background services that your other software needs to run.
 
 A significant difference between Linux and other OSes is that it’s open source and free of cost. Open source means anyone has access to the Linux source code and can contribute to enhancing it, adding features, and fixing bugs and security vulnerabilities. Independent programmers all around the world invest their time and expertise improving Linux. This model of software development rivals proprietary OSes that keep their code closed and solely work with the programmers they employ.
-
-Colloquially, Linux refers to the *Linux Kernel* plus all the tools, utilities and libraries running on top of the kernel, many of which are managed under the umbrella of the GNU project. There are Linux community members that find it more correct and precise to use the term [GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.en.html) over Linux alone as a name for the OS.
 
 Linux is unique in its development model, history, and the strength of its community. At its core it is a mature and secure operating system that anyone can easily begin using for today’s most common tasks like accessing the internet, editing text documents, and creating media. This Quick Answer covers some key defining features of Linux.
 
@@ -64,7 +64,7 @@ Using Linux means selecting a [*distribution*](https://en.wikipedia.org/wiki/Lin
 
 * [CentOS](https://www.centos.org/) is a free and community-supported version of [Red Hat Enterprise Linux](https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux) (RHEL).
 
-* With [Gentoo](https://www.gentoo.org/get-started/), you compile everything from source and each package is the newest, bleeding edge version, so you choose exactly what you install when adding any new software to your system.
+* With [Gentoo](https://www.gentoo.org/get-started/), you compile everything from source, so you choose exactly what you install when adding any new software to your system.
 
 * [Arch](https://www.archlinux.org/) features a rolling release cycle and an incredibly dedicated community that maintains the distro as well as the Arch User Repository (AUR) of software packages.
 
