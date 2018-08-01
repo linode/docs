@@ -16,7 +16,7 @@ contributor:
 
 Linux is an *operating system* (OS) that works similarly to other well-known OSes like Windows and macOS. As an operating system, Linux manages your computer or server’s hardware and provides background services that your other software needs to run.
 
-A significant difference between Linux and other OSes is that it’s open source and free of cost. Open source means anyone has access to the Linux source code and can contribute to enhancing it, adding features, and fixing bugs and security vulnerabilities. Independent programmers all around the world invest their time and expertise to improve Linux. This model of software development rivals proprietary OSes that keep their code closed and solely work with the programmers they employ.
+A significant difference between Linux and other OSes is that it’s open source and free of cost. Open source means anyone has access to the Linux source code and can contribute to enhancing it, adding features, and fixing bugs and security vulnerabilities. Independent programmers all around the world invest their time and expertise improving Linux. This model of software development rivals proprietary OSes that keep their code closed and solely work with the programmers they employ.
 
 Colloquially, Linux refers to the *Linux Kernel* plus all the tools, utilities and libraries running on top of the kernel, many of which are managed under the umbrella of the GNU project. There are Linux community members that find it more correct and precise to use the term [GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.en.html) over Linux alone as a name for the OS.
 
