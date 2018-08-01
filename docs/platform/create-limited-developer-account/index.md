@@ -12,9 +12,11 @@ published: 2018-07-26
 title: Create an Account for a Developer to Work on Your Linode
 ---
 
-One of the most powerful features of Linode's unmanaged service is the amount of control Linode users have over their account and the software installed on their systems. If you're a business owner that does not have expertise with installing or maintaining software on Linux, or if you do have experience with Linux but don't have the time to set up a new server, then hiring a developer or administrator is a popular way to get your services up and running.
+One of the most powerful features of Linode's unmanaged service is the amount of control Linode users have over their account and the software installed on their systems. If you're a business owner that does not have expertise with installing or maintaining software on Linux, or if you do have experience with Linux but don't have the time to set up a new server, then contracting with a developer or administrator is a popular way to get your services up and running.
 
-When you hire someone to work on your Linode, there are a variety of ways to grant access to your Linode account, the Linodes on it, and the system and applications on your Linodes. Keeping track of which of these credentials you've shared is important in the event that you need to end your contract with your developer.
+## What to Keep Track of When Hiring a Developer
+
+When you hire someone to work on your Linode, there are a variety of ways to grant access to your Linode account, the Linodes on it, and the system and applications on your Linodes. Recording which of these credentials you've shared is important in the event that you need to end your contract with your developer.
 
 This guide explains and answers some of the most frequently asked questions about account access. The sections are separated in order of granularity, starting with service-level access at the top, and working towards application-specific access.
 
@@ -194,7 +196,7 @@ WordPress user roles are useful for authors and content contributors, but might 
 
 ## Drupal Users
 
-Drupal's main administrator account is the **User 1** account. This account serves as the *root* user and can create other users with different *permissions* and *roles*. 
+Drupal's main administrator account is the **User 1** account. This account serves as the *root* user and can create other users with different *permissions* and *roles*.
 
 Create a new user with administrative-level permissions to grant someone the necessary access to maintain your Drupal site.
 
