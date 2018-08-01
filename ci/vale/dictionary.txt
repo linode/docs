@@ -165,6 +165,7 @@ conda
 config
 configs
 configtest
+configurability
 containerised
 convolutional
 coose
@@ -522,6 +523,7 @@ imaps
 img
 immutant
 impor
+incentivized
 inet
 inet6
 ini
@@ -669,6 +671,7 @@ lsd
 lst
 lsyncd
 lua
+lubuntu
 lucene
 luminus
 lxml
@@ -1030,6 +1033,7 @@ retpoline
 reutilize
 richlanguage
 rimap
+ritchie
 rkt
 rmem
 ro
@@ -1163,6 +1167,7 @@ ssl
 stackscript
 stackscripts
 stalkyard
+stallman
 starttls
 statusbar
 stderr
@@ -1256,6 +1261,7 @@ tokenizing
 tokyo2
 tomacat
 tomcat6
+torvalds
 toolchain
 traceroute
 trackbar
