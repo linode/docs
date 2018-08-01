@@ -14,7 +14,7 @@ title: Create an Account for a Developer to Work on Your Linode
 
 One of the most powerful features of Linode's unmanaged service is the amount of control Linode users have over their account and the software installed on their systems. If you're a business owner that does not have expertise with installing or maintaining software on Linux, or if you do have experience with Linux but don't have the time to set up a new server, then contracting with a developer or administrator is a popular way to get your services up and running.
 
-## What to Keep Track of When Hiring a Developer
+## What to Keep Track of when Hiring a Developer
 
 When you hire someone to work on your Linode, there are a variety of ways to grant access to your Linode account, the Linodes on it, and the system and applications on your Linodes. Recording which of these credentials you've shared is important in the event that you need to end your contract with your developer.
 
