@@ -14,10 +14,8 @@ title: Host a Website on Ubuntu 18.04
 ---
 Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
 
-**Debian 9** and **Ubuntu 18.04 LTS** are the [Linux distributions](/docs/getting-started/#deploy-an-image) used in this guide. If you'd like to use **Ubuntu 16.04 LTS**, refer to the distribution-specific guide on configuring a [LAMP Stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/), and then continue to the [upload files](#upload-files) section.
-
 {{< note >}}
-This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
+This guide is intended for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
 
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
@@ -26,18 +24,21 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/docs/web-servers/).
 
-If you are using **Ubuntu 18.04**, you can use the Tasksel tool to install a LAMP stack on your Linode:
+If you are using Ubuntu 18.04, use Tasksel to install a LAMP stack on your Linode instead of installing each component separately. When Tasksel completes, skip the install sections below and continue on to the configuration sections for each part of the stack.
 
-    sudo tasksel install lamp-server
+        sudo tasksel install lamp-server
 
-Once you've installed the LAMP stack, you can skip the install sections and continue on to the configuration sections for each part of the stack.
+{{< note >}}
+For Debian-based systems, you'll need to follow the installation sections below to install Apache, MySQL, and PHP individually.
+{{< /note >}}
+
 
 ### Install Apache
 
 Check for and install all system updates, and install Apache on your Linode:
 
-    sudo apt-get update && sudo apt-get upgrade
-    sudo apt-get install apache2
+    sudo apt update && sudo apt upgrade
+    sudo apt install apache2
 
 Your Linode will download, install, and start the Apache web server.
 
@@ -109,11 +110,9 @@ You should *not* be logged in as `root` while executing these commands. To learn
 
         sudo mkdir example.com
 
-4.  Create a set of folders inside the folder you've just created to store your website's files, logs, and backups. Enter the following commands, replacing `example.com` with your domain name:
+4.  Create a set of folders inside the folder you've just created to store your website's files, logs, and backups. Enter the following command, replacing `example.com` with your domain name:
 
-        sudo mkdir -p example.com/public_html
-        sudo mkdir -p example.com/log
-        sudo mkdir -p example.com/backups
+        sudo mkdir -p example.com/{public_html,log,backups}
 
 5.  Create the virtual host file for your website. Replace the `example.com` in `example.com.conf` with your domain name:
 
@@ -171,7 +170,7 @@ Databases store data in a structured and easily accessible manner, serving as th
 
 1.  Install MySQL. Your Linode will download, install, and start the MySQL database server.
 
-        sudo apt-get install mysql-server
+        sudo apt install mysql-server
 
 1.  Secure MySQL using the `mysql_secure_installation` utility:
 
@@ -185,7 +184,7 @@ Databases store data in a structured and easily accessible manner, serving as th
 
     - Remove anonymous users.
 
-    - Disallow root login.
+    - Disallow remote root logins.
 
     - Remove test database.
 
@@ -274,15 +273,15 @@ PHP is a general-purpose scripting language that allows you to produce dynamic a
 
 1.  Install the base PHP package and the PHP Extension and Application Repository:
 
-        sudo apt-get install php php-pear
+        sudo apt install php php-pear
 
 1.  Add the MySQL support extension for PHP:
 
-        sudo apt-get install php-mysql
+        sudo apt install php-mysql
 
 1. Add the PHP module for the Apache 2 webserver:
 
-        sudo apt-get install libapache2-mod-php
+        sudo apt install libapache2-mod-php
 
 ### Optimize PHP for a Linode 2GB
 
@@ -298,14 +297,13 @@ These guidelines are designed to optimize PHP for a Linode 2GB, but you can use 
 
 2.  Verify that the following values are set. All of the lines listed below should be uncommented. Be sure to remove any semicolons (`;`) at the beginning of the lines.
 
-    {{< file "/etc/php5/apache2/php.ini" ini >}}
+    {{< file "/etc/php/7.0/apache2/php.ini" ini >}}
 max_execution_time = 30
 memory_limit = 128M
 error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
 display_errors = Off
 log_errors = On
-error_log = /var/log/php/error.log
-register_globals = Off
+error_log = /var/log/php/php_errors.log
 
 {{< /file >}}
 
