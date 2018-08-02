@@ -104,7 +104,7 @@ A full list of CPanel's features is available on the [documentation site](https:
 
 ### Plesk
 
-[Plesk](https://cpanel.com) is a proprietary, closed-source, privately-owned control panel first released in 2001.
+[Plesk](https://plesk.com) is a proprietary, closed-source, privately-owned control panel first released in 2001.
 
 ![Plesk screenshot](plesk-screenshot.png)
 
