@@ -25,18 +25,18 @@ In this guide, you will learn how to obtain Let's Encrypt Wildcard SSL certifica
 
 Before you begin this guide you will need the following:
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  A Fully Qualified Domain Name (FQDN) is required and it must be hosted on [Linode DNS](/docs/networking/dns/dns-manager-overview/) service. A domain name is configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager Overview](/docs/networking/dns/dns-manager-overview/#add-records) guide.
+3.A Fully Qualified Domain Name (FQDN) is required and it must be hosted on [Linode DNS](/docs/networking/dns/dns-manager-overview/) service. A domain name is configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager Overview](/docs/networking/dns/dns-manager-overview/#add-records) guide.
 
   *  DNS A record with **base domain** (`example.com`) is pointing to your Server IP address.
   *  DNS A records with **all subdomain** i.e. wildcard (`*.example.com`) is pointing to your Server IP address.
 
-4.  The Linode API access token is required and you need to create Linode API access token by following [How to Create a Linode API Access Token](/docs/platform/api/getting-started-with-the-linode-api/#create-an-api-token) guide and be sure to note your Linode API access token.
+4.The Linode API access token is required and you need to create Linode API access token by following [How to Create a Linode API Access Token](/docs/platform/api/getting-started-with-the-linode-api/#create-an-api-token) guide and be sure to note your Linode API access token.
 
-5.  Update your server's software packages:
+5.Update your server's software packages:
 
     **CentOS**
 
@@ -56,7 +56,7 @@ First of all, log in to server as a sudo user and continue below:
 
 ### Install Certbot
 
-1.  Now, install the Certbot (the Let's Encrypt Client) on your server.
+1.Now, install the Certbot (the Let's Encrypt Client) on your server.
 
     **CentOS**
 
@@ -72,7 +72,7 @@ First of all, log in to server as a sudo user and continue below:
 
 ### Install Certbot DNS Linode Plugin
 
-1.  The Certbot DNS Linode plugin is a Python application. You need python-pip in order to install Python packages from official Python’s package repository ([PyPi](https://pypi.org/)).
+1.The Certbot DNS Linode plugin is a Python application. You need python-pip in order to install Python packages from official Python’s package repository ([PyPi](https://pypi.org/)).
 
     **CentOS**
 
@@ -82,7 +82,7 @@ First of all, log in to server as a sudo user and continue below:
 
         sudo apt install python3-pip
 
-2.  Now, you have the ability to install python packages using python-pip. The Certbot DNS Linode Plugin will be installed globally. So, that Certbot will get access to use Linode DNS using its API:
+2.Now, you have the ability to install python packages using python-pip. The Certbot DNS Linode Plugin will be installed globally. So, that Certbot will get access to use Linode DNS using its API:
 
     **CentOS**
 
@@ -95,7 +95,7 @@ First of all, log in to server as a sudo user and continue below:
 
 ## Set up Linode API Access Token
 
-1.  The Linode API access token is required to work with Certbot DNS Linode plugin package. The file `linode.ini` contains Linode API access token. Now, you will create a file `linode.ini` using your favorite text editor into your home directory:
+1.The Linode API access token is required to work with Certbot DNS Linode plugin package. The file `linode.ini` contains Linode API access token. Now, you will create a file `linode.ini` using your favorite text editor into your home directory:
 
     **CentOS**
 
@@ -115,7 +115,7 @@ dns_linode_key = t8vyC14nIXnkSqGMpwZX2NjP8VMwW8BBsXr39hqAoL7TrtDODfkSBMyXrdQ9d5n
 
 Save and close the file when you are finished.
 
-2.  Linode API access token is necessary for API authentication. You should provide correct secure permission to `linode.ini` file. When you will provide secure permission to it then this enables you to hide a warning shown by Certbot *Unsafe permissions on credentials configuration file* during the process of obtaining wildcard certificates:
+2.Linode API access token is necessary for API authentication. You should provide correct secure permission to `linode.ini` file. When you will provide secure permission to it then this enables you to hide a warning shown by Certbot *Unsafe permissions on credentials configuration file* during the process of obtaining wildcard certificates:
 
         chmod 600 ~/linode.ini
 
@@ -125,7 +125,7 @@ Save and close the file when you are finished.
 This section requires that you have a Fully Qualified Domain Name (FQDN) that is configured to point to your Linode. In the examples below, replace `example.com` with your FQDN.
 {{< /note >}}
 
-1.  Certbot will obtain Let's Encrypt Wildcard SSL certificate using `certonly` subcommand. By default, it will attempt to use Linode DNS for Domain Validation (DV) purpose. The preferred challenge during domain authorization includes DNS-01 challenge type and it can be done automatically using Certbot DNS Linode plugin:
+1.Certbot will obtain Let's Encrypt Wildcard SSL certificate using `certonly` subcommand. By default, it will attempt to use Linode DNS for Domain Validation (DV) purpose. The preferred challenge during domain authorization includes DNS-01 challenge type and it can be done automatically using Certbot DNS Linode plugin:
 
   {{< note >}}
 This command requires time (**960 seconds** or **16 minutes**) for DNS changes to propagate through DNS propagation. It is important step towards automatic Let's Encrypt Domain Validation (DV) over Linode DNS.
@@ -206,7 +206,7 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 {{< /output >}}
 
-2.  In addition, manually add Let's Encrypt Wildcard SSL certificate to Apache web server or Nginx web server:
+2.In addition, manually add Let's Encrypt Wildcard SSL certificate to Apache web server or Nginx web server:
 
     **CentOS**
 
@@ -229,7 +229,7 @@ File location of Wildcard certificate and key are:
 
 ## Automatically Renew Let's Encrypt Wildcard SSL Certificate
 
-1.  Let’s Encrypt Wildcard SSL certificates are valid for 90-days. You will renew your certificates before its expiry date. While checking use the flag `--dry-run` after the `certbot renew` command. Check whether renew scripts are working or not:
+1.Let’s Encrypt Wildcard SSL certificates are valid for 90-days. You will renew your certificates before its expiry date. While checking use the flag `--dry-run` after the `certbot renew` command. Check whether renew scripts are working or not:
 
   {{< note >}}
 This command requires time (**960 seconds** or **16 minutes**) for DNS changes to propagate through DNS propagation. It is important step towards automatic Let's Encrypt Domain Validation (DV) over Linode DNS.
@@ -242,7 +242,7 @@ This command requires time (**960 seconds** or **16 minutes**) for DNS changes t
    * `renew`: It will attempt to renew all the Let's Encrypt Wildcard SSL certificates that you have previously obtained.
    * `--dry-run`: Perform a test run of the Certbot to obtain test certificates but not saving them to disk.
 
-2.  Schedule automatic certificate renewal using `crontab`. This task will enable certificate renewal at a scheduled time:
+2.Schedule automatic certificate renewal using `crontab`. This task will enable certificate renewal at a scheduled time:
 
           sudo crontab -e
 
