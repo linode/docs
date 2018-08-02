@@ -17,26 +17,26 @@ contributor:
 
 ## What is Let's Encrypt Wildcard SSL Certificate?
 
-[Let's Encrypt](https://letsencrypt.org/) is a Certificate Authority (CA) that offers free TLS/SSL certificates. Let's Encrypt Wildcard SSL certificate is a single SSL certificate that covers all subdomains i.e. wildcard (`*.example.com`) and base domain (`example.com`) of a Fully Qualified Domain Name (FQDN). Let's Encrypt supports Automated Certificate Management Environment version-2 (ACMEv2) endpoint API and Wildcard SSL certificate. Let's Encrypt wildcard SSL certificates are trusted by all latest web browsers.
+ [Let's Encrypt](https://letsencrypt.org/) is a Certificate Authority (CA) that offers free TLS/SSL certificates. Let's Encrypt Wildcard SSL certificate is a single SSL certificate that covers all subdomains i.e. wildcard (`*.example.com`) and base domain (`example.com`) of a Fully Qualified Domain Name (FQDN). Let's Encrypt supports Automated Certificate Management Environment version-2 (ACMEv2) endpoint API and Wildcard SSL certificate. Let's Encrypt wildcard SSL certificates are trusted by all latest web browsers.
 
-In this guide, you will learn how to obtain Let's Encrypt Wildcard SSL certificate using [Certbot](https://certbot.eff.org/) (the Let's Encrypt client) and Certbot DNS Linode plugin (Certbot plugin for automatic domain validation using Linode DNS). Certbot validates a domain name using DNS-01 challenge type provided by Let's Encrypt ACMEv2 endpoint API. This challenge includes adding two DNS TXT records to Linode DNS. As soon as, challenge completes Certbot removes DNS TXT records from Linode DNS. The process of adding and removing DNS TXT records to Linode DNS completes automatically using Certbot DNS Linode plugin. After your domain name has been successfully validated, the Let's Encrypt will issue a wildcard SSL certificate.
+ In this guide, you will learn how to obtain Let's Encrypt Wildcard SSL certificate using [Certbot](https://certbot.eff.org/) (the Let's Encrypt client) and Certbot DNS Linode plugin (Certbot plugin for automatic domain validation using Linode DNS). Certbot validates a domain name using DNS-01 challenge type provided by Let's Encrypt ACMEv2 endpoint API. This challenge includes adding two DNS TXT records to Linode DNS. As soon as, challenge completes Certbot removes DNS TXT records from Linode DNS. The process of adding and removing DNS TXT records to Linode DNS completes automatically using Certbot DNS Linode plugin. After your domain name has been successfully validated, the Let's Encrypt will issue a wildcard SSL certificate.
 
 ## Before You Begin
 
-Before you begin this guide you will need the following:
+ Before you begin this guide you will need the following:
 
-1.Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.A Fully Qualified Domain Name (FQDN) is required and it must be hosted on [Linode DNS](/docs/networking/dns/dns-manager-overview/) service. A domain name is configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager Overview](/docs/networking/dns/dns-manager-overview/#add-records) guide.
+3.  A Fully Qualified Domain Name (FQDN) is required and it must be hosted on [Linode DNS](/docs/networking/dns/dns-manager-overview/) service. A domain name is configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager Overview](/docs/networking/dns/dns-manager-overview/#add-records) guide.
 
   *  DNS A record with **base domain** (`example.com`) is pointing to your Server IP address.
   *  DNS A records with **all subdomain** i.e. wildcard (`*.example.com`) is pointing to your Server IP address.
 
-4.The Linode API access token is required and you need to create Linode API access token by following [How to Create a Linode API Access Token](/docs/platform/api/getting-started-with-the-linode-api/#create-an-api-token) guide and be sure to note your Linode API access token.
+4.  The Linode API access token is required and you need to create Linode API access token by following [How to Create a Linode API Access Token](/docs/platform/api/getting-started-with-the-linode-api/#create-an-api-token) guide and be sure to note your Linode API access token.
 
-5.Update your server's software packages:
+5.  Update your server's software packages:
 
     **CentOS**
 
@@ -52,11 +52,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Dependencies
 
-First of all, log in to server as a sudo user and continue below:
+ First of all, log in to server as a sudo user and continue below:
 
 ### Install Certbot
 
-1.Now, install the Certbot (the Let's Encrypt Client) on your server.
+1.  Now, install the Certbot (the Let's Encrypt Client) on your server.
 
     **CentOS**
 
@@ -72,7 +72,7 @@ First of all, log in to server as a sudo user and continue below:
 
 ### Install Certbot DNS Linode Plugin
 
-1.The Certbot DNS Linode plugin is a Python application. You need python-pip in order to install Python packages from official Python’s package repository ([PyPi](https://pypi.org/)).
+1.  The Certbot DNS Linode plugin is a Python application. You need python-pip in order to install Python packages from official Python’s package repository ([PyPi](https://pypi.org/)).
 
     **CentOS**
 
@@ -82,7 +82,7 @@ First of all, log in to server as a sudo user and continue below:
 
         sudo apt install python3-pip
 
-2.Now, you have the ability to install python packages using python-pip. The Certbot DNS Linode Plugin will be installed globally. So, that Certbot will get access to use Linode DNS using its API:
+2.  Now, you have the ability to install python packages using python-pip. The Certbot DNS Linode Plugin will be installed globally. So, that Certbot will get access to use Linode DNS using its API:
 
     **CentOS**
 
@@ -95,7 +95,7 @@ First of all, log in to server as a sudo user and continue below:
 
 ## Set up Linode API Access Token
 
-1.The Linode API access token is required to work with Certbot DNS Linode plugin package. The file `linode.ini` contains Linode API access token. Now, you will create a file `linode.ini` using your favorite text editor into your home directory:
+1.  The Linode API access token is required to work with Certbot DNS Linode plugin package. The file `linode.ini` contains Linode API access token. Now, you will create a file `linode.ini` using your favorite text editor into your home directory:
 
     **CentOS**
 
@@ -113,9 +113,9 @@ Already, you have created Linode API access token. You need to replace `t8vyC14n
 dns_linode_key = t8vyC14nIXnkSqGMpwZX2NjP8VMwW8BBsXr39hqAoL7TrtDODfkSBMyXrdQ9d5nN
 {{< /file >}}
 
-Save and close the file when you are finished.
+ Save and close the file when you are finished.
 
-2.Linode API access token is necessary for API authentication. You should provide correct secure permission to `linode.ini` file. When you will provide secure permission to it then this enables you to hide a warning shown by Certbot *Unsafe permissions on credentials configuration file* during the process of obtaining wildcard certificates:
+2.  Linode API access token is necessary for API authentication. You should provide correct secure permission to `linode.ini` file. When you will provide secure permission to it then this enables you to hide a warning shown by Certbot *Unsafe permissions on credentials configuration file* during the process of obtaining wildcard certificates:
 
         chmod 600 ~/linode.ini
 
@@ -125,7 +125,7 @@ Save and close the file when you are finished.
 This section requires that you have a Fully Qualified Domain Name (FQDN) that is configured to point to your Linode. In the examples below, replace `example.com` with your FQDN.
 {{< /note >}}
 
-1.Certbot will obtain Let's Encrypt Wildcard SSL certificate using `certonly` subcommand. By default, it will attempt to use Linode DNS for Domain Validation (DV) purpose. The preferred challenge during domain authorization includes DNS-01 challenge type and it can be done automatically using Certbot DNS Linode plugin:
+1.  Certbot will obtain Let's Encrypt Wildcard SSL certificate using `certonly` subcommand. By default, it will attempt to use Linode DNS for Domain Validation (DV) purpose. The preferred challenge during domain authorization includes DNS-01 challenge type and it can be done automatically using Certbot DNS Linode plugin:
 
   {{< note >}}
 This command requires time (**960 seconds** or **16 minutes**) for DNS changes to propagate through DNS propagation. It is important step towards automatic Let's Encrypt Domain Validation (DV) over Linode DNS.
@@ -133,7 +133,7 @@ This command requires time (**960 seconds** or **16 minutes**) for DNS changes t
 
          sudo certbot certonly -d *.example.com -d example.com --dns-linode --dns-linode-credentials ~/linode.ini --server https://acme-v02.api.letsencrypt.org/directory
 
-The **subcommands** and **flags** for obtaining the Let's Encrypt Wildcard SSL certificate are:
+ The **subcommands** and **flags** for obtaining the Let's Encrypt Wildcard SSL certificate are:
 
    * `certonly` : Obtain a Let's Encrypt Wildcard SSL certificate, but do not install it.
    * `-d` : Obtain a Let's Encrypt Wildcard SSL certificate for a domain name includes all subdomain i.e. wildcard (`*.example.com`) and base domain (`example.com`), you can use two `-d` flags.
@@ -141,7 +141,7 @@ The **subcommands** and **flags** for obtaining the Let's Encrypt Wildcard SSL c
    * `--dns-linode-credentials`: Linode API access tokens credentials in `linode.ini` file.
    * `--server`: Let's Encrypt ACMEv2 Directory Resource URL (`https://acme-v02.api.letsencrypt.org/directory`) for obtaining Let's Encrypt Wildcard SSL certificate.
 
-When prompted, you will specify your email address. This allows you to get renewal and security notices for your domain name on your inbox.
+ When prompted, you will specify your email address. This allows you to get renewal and security notices for your domain name on your inbox.
 
 {{< output >}}
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
@@ -150,7 +150,7 @@ Enter email address (used for urgent renewal and security notices) (Enter 'c' to
 cancel): email@example.com
 {{< /output >}}
 
-Next, agree to the Let's Encrypt Terms of Service:
+ Next, agree to the Let's Encrypt Terms of Service:
 
 {{< output >}}
 -------------------------------------------------------------------------------
@@ -162,7 +162,7 @@ https://acme-v02.api.letsencrypt.org/directory
 (A)gree/(C)ancel: A
 {{< /output >}}
 
-Specify, whether you like to share your email address with the [Electronic Frontier Foundation](https://www.eff.org/) (EFF).
+ Specify, whether you like to share your email address with the [Electronic Frontier Foundation](https://www.eff.org/) (EFF).
 
 {{< output >}}
 -------------------------------------------------------------------------------
@@ -175,7 +175,7 @@ our work to encrypt the web, protect its users and defend digital rights.
 {{< /output >}}
 
 
-If given information will appear means Let’s Encrypt approves your domain name and issue a wildcard SSL certificate to you:
+ If given information will appear means Let’s Encrypt approves your domain name and issue a wildcard SSL certificate to you:
 
 {{< output >}}
 Obtaining a new certificate
@@ -206,19 +206,19 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 {{< /output >}}
 
-2.In addition, manually add Let's Encrypt Wildcard SSL certificate to Apache web server or Nginx web server:
+2.  In addition, manually add Let's Encrypt Wildcard SSL certificate to Apache web server or Nginx web server:
 
     **CentOS**
 
    * Apache web server: you can follow [Configure Apache to Use the SSL Certificate](/docs/security/ssl/ssl-apache2-centos/#configure-apache-to-use-the-ssl-certificate) guide.
    * Nginx web server: you can follow [Configuring Nginx to Use the SSL Certificate](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-the-http-block) guide.
 
-    **Ubuntu**
+     **Ubuntu**
 
    * Apache web server: you can follow [Configure Apache to Use the SSL Certificate](/docs/security/ssl/ssl-apache2-debian-ubuntu/#configure-apache-to-use-the-ssl-certificate) guide.
    * Nginx web server: you can follow [Configuring Nginx to Use the SSL Certificate](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-the-http-block) guide.
 
-File location of Wildcard certificate and key are:
+ File location of Wildcard certificate and key are:
 
 | **Name of Certificate and Key** | **File Location of Certificate and Key** |
 | ---------------- |:-------------:|
@@ -229,7 +229,7 @@ File location of Wildcard certificate and key are:
 
 ## Automatically Renew Let's Encrypt Wildcard SSL Certificate
 
-1.Let’s Encrypt Wildcard SSL certificates are valid for 90-days. You will renew your certificates before its expiry date. While checking use the flag `--dry-run` after the `certbot renew` command. Check whether renew scripts are working or not:
+1.  Let’s Encrypt Wildcard SSL certificates are valid for 90-days. You will renew your certificates before its expiry date. While checking use the flag `--dry-run` after the `certbot renew` command. Check whether renew scripts are working or not:
 
   {{< note >}}
 This command requires time (**960 seconds** or **16 minutes**) for DNS changes to propagate through DNS propagation. It is important step towards automatic Let's Encrypt Domain Validation (DV) over Linode DNS.
@@ -237,12 +237,12 @@ This command requires time (**960 seconds** or **16 minutes**) for DNS changes t
 
           sudo certbot renew --dry-run
 
-  The **subcommands** and **flags** for renewing a Let's Encrypt Wildcard SSL certificate are given below:
+ The **subcommands** and **flags** for renewing a Let's Encrypt Wildcard SSL certificate are given below:
 
    * `renew`: It will attempt to renew all the Let's Encrypt Wildcard SSL certificates that you have previously obtained.
    * `--dry-run`: Perform a test run of the Certbot to obtain test certificates but not saving them to disk.
 
-2.Schedule automatic certificate renewal using `crontab`. This task will enable certificate renewal at a scheduled time:
+2.  Schedule automatic certificate renewal using `crontab`. This task will enable certificate renewal at a scheduled time:
 
           sudo crontab -e
 
@@ -252,8 +252,8 @@ During first run, select the default text editor. The given example, shows `cron
 0 0 * * * certbot renew
 {{< /file >}}
 
-Save and close the file when you are finished.
+ Save and close the file when you are finished.
 
 ## Next Steps
 
-In this guide, you have learned how to obtain Let's Encrypt Wildcard SSL certificates using Certbot tool. This can help you to secure all your subdomain and base domain with a single SSL certificate. It also allows you to take advantage of HTTPS to secure your web servers. If you are managing multi-domain website then these wildcard certificates are perfect and easy to integrate. For more information about Certbot's configuration options, check out the [Certbot Documentation](https://certbot.eff.org/docs/).
+ In this guide, you have learned how to obtain Let's Encrypt Wildcard SSL certificates using Certbot tool. This can help you to secure all your subdomain and base domain with a single SSL certificate. It also allows you to take advantage of HTTPS to secure your web servers. If you are managing multi-domain website then these wildcard certificates are perfect and easy to integrate. For more information about Certbot's configuration options, check out the [Certbot Documentation](https://certbot.eff.org/docs/).
