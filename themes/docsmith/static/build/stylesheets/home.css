@@ -20014,12 +20014,6 @@ li.list-group-item {
 .library-breadcrumb-search {
   padding: 20px 15px 55px 15px;
 }
-@media screen and (min-width: 768px) {
-  .library-breadcrumb-search {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
 #library-main-search {
   margin-top: 20px;
   height: 45px;
@@ -21356,6 +21350,105 @@ blockquote > div > div.btn-copy > .copy-code {
 }
 .alert-banner i {
   padding: 0 15px;
+}
+/* New Sub Menu  */
+.sub-menu-wrap {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.sub-menu-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #e7e6e6;
+  width: 100%;
+  -webkit-font-smoothing: initial;
+}
+.with-subnavigation {
+  margin-top: 30px;
+}
+.breadcrumb-row.with-subnavigation,
+.pad-xs.with-subnavigation {
+  margin-top: 0 !important;
+}
+#library-main-search {
+  margin-bottom: 0;
+}
+.sub-menu-wrapper::before,
+.sub-menu-wrapper::after {
+  display: none;
+}
+.sub-menu-wrapper__title {
+  line-height: 1.3;
+  padding: 21px 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  font-family: "Trebuchet MS", "Helvetica", sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 22px;
+}
+.sub-menu-wrapper__title a:link,
+.sub-menu-wrapper__title a:visited {
+  color: #000;
+  text-decoration: none;
+}
+.sub-menu-wrapper__title a:hover {
+  color: #000;
+}
+.sub-menu {
+  list-style-type: none;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.sub-menu li {
+  display: inline-block;
+}
+.sub-menu-wrapper .sub-menu li:first-child a {
+  margin-left: 0;
+}
+.sub-menu li:last-child a {
+  margin-right: 0;
+}
+.sub-menu a:link,
+.sub-menu a:visited {
+  color: #aaa;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  font-size: 15px;
+  line-height: 15px;
+  margin: 13px 10px 0px 10px;
+}
+.sub-menu a:hover,
+.sub-menu a.active {
+  color: #000;
+}
+@media (max-width: 768px) {
+  .sub-menu {
+    width: 100%;
+  }
+  .sub-menu li {
+    display: block;
+  }
+  .sub-menu-wrapper {
+    padding-bottom: 20px;
+  }
+  .sub-menu-wrapper .sub-menu li a {
+    margin: 0;
+  }
 }
 /* Background */
 .chroma {
