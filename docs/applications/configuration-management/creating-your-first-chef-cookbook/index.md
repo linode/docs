@@ -19,13 +19,11 @@ Cookbooks are one of the key components in Chef. They describe the *desired stat
 
 ![Creating Your First Chef Cookbook](creating-your-first-chef-cookbook.png)
 
-Prior to using this guide, be sure to set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/) guide, and, if needed, review the [Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/).
+Prior to using this guide, set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/) guide. When following that guide, **be sure to make the following change:** for the Chef node, choose Ubuntu 16.04 as your Linux image. This is required because the [MySQL Chef cookbook](https://supermarket.chef.io/cookbooks/mysql) that will be used is not yet compatible with Ubuntu 18.04.
+
+If needed, you can also review the [Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/).
 
 Working through this tutorial requires a root user account, and is written as if commands are issued as the root user. Readers choosing to use a limited user account will need to prefix commands with sudo where required when working on the Chef client node. If you have yet to create a limited user account, follow the steps in the Securing Your Server guide.
-
-{{< note >}}
-This guide assumes all nodes are using Ubuntu 16.04. Recipes can be adapted for use on multiple systems, but that is outside the scope of this guide.
-{{< /note >}}
 
 ## Create the Cookbook
 
@@ -167,7 +165,7 @@ After the initial installation Apache needs to be configured, starting with its 
 
         chef generate attribute ~/chef-repo/cookbooks/lamp_stack default
 
-1.  Within `default.rb`, create the default values of the cookbook:
+1.  Within the new `default.rb`, create the default values of the cookbook:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/attributes/default.rb" ruby >}}
 default["lamp_stack"]["sites"]["example.com"] = { "port" => 80, "servername" => "example.com", "serveradmin" => "webmaster@example.com" }
@@ -212,7 +210,7 @@ end
 
     This calls in the values under `["lamp_stack"]["sites"]`. Code added to this block will be generated for *each* value, which is defined by the word *sitename*. The *data* value calls the values that are listed in the array of each *sitename* attribute.
 
-1.  Within the node resource, define a document root. This root will be used to define the public HTML files, and any log files that will be generated:
+1.  Within the *node* resource, define a document root. This root will be used to define the public HTML files, and any log files that will be generated:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/apache.rb" ruby >}}
 node["lamp_stack"]["sites"].each do |sitename, data|
@@ -242,9 +240,9 @@ end
 
         chef generate template ~/chef-repo/cookbooks/lamp_stack virtualhosts
 
-1.  Open and edit the `virtualhosts.erb` file. Instead of inputting the true values, use Ruby variables. Ruby variables are identified by `<%= @brackets %>` around them and the `@` symbol. The variable names you use, will need to be defined in the recipe file:
+1.  Open and edit the `virtualhosts.erb` file. Instead of writing in the true values for each VirtualHost parameter, use Ruby variables. Ruby variables are identified by the `<%= @variable_name %>` syntax. The variable names you use will need to be defined in the recipe file:
 
-    {{< file "~/chef-repo/cookbooks/lamp_stack/templates/default/virtualhosts.erb" erb >}}
+    {{< file "~/chef-repo/cookbooks/lamp_stack/templates/virtualhosts.erb" erb >}}
 <VirtualHost *:<%= @port %>>
         ServerAdmin <%= @serveradmin %>
         ServerName <%= @servername %>
@@ -292,7 +290,7 @@ end
 {{< /file >}}
 
 
-    The name of the template resource should be the location where the virtual host file is placed on the nodes. The `source` is the name of the template file. Mode `0644` gives the owner read and write privileges, and everyone else read privileges. The values defined in the `variables` section are taken from the attributes file, and are the same values that are called upon in the template.
+    The name of the template resource should be the location where the virtual host file is placed on the nodes. The `source` is the name of the template file. Mode `0644` gives the file owner read and write privileges, and everyone else read privileges. The values defined in the `variables` section are taken from the attributes file, and they are the same values that are called upon in the template.
 
 1.  The sites now need to be enabled in Apache, and the server restarted. This *only* should occur if there are changes to the virtual hosts, so the `notifies` value should be added to the *template* resource. What `notifies` does is notify Chef when things have changed, and **only then** runs the commands:
 
@@ -314,9 +312,11 @@ end
 
     The `notifies` command names the `:action` to be committed, then the resource, and resource name in square brackets.
 
-1. `notifies` can also call on `execute` commands, which will run `a2ensite`and enable the sites we've made virtual hosts files for. Add the following `execute` command **above** the *template* resource code to create the `a2ensite` script:
+1. `notifies` can also call on *execute* commands, which will run `a2ensite`and enable the sites we've made virtual hosts files for. Add the following *execute* command **above** the *template* resource code to create the `a2ensite` script:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
+# [...]
+
 directory document_root do
   mode "0755"
   recursive true
@@ -329,26 +329,41 @@ end
 
 template "/etc/apache2/sites-available/#{sitename}.conf" do
 
+# [...]
+
 {{< /file >}}
 
 
-    The `action :nothing` directive means the resource will wait to be called on. Add it to the *template* resource code to use it, **above** the previous `notifies` line:
+    The `action :nothing` directive means the resource will wait to be called on. Add a new `notifies` line to the *template* resource code to use it, **above** the previous `notifies` line:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
-notifies :run, "execute[enable-sites]"
+# [...]
 
+template "/etc/apache2/sites-available/#{sitename}.conf" do
+  # [...]
+  notifies :run, "execute[enable-sites]"
+  notifies :restart, "service[apache2]"
+end
+
+# [...]
 {{< /file >}}
 
 
 1. The paths referenced in the virtual hosts files need to be created. Once more, this is done with the *directory* resource, and should be added before the final `end` tag:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
-directory "/var/www/html/#{sitename}/public_html" do
-  action :create
-end
+# [...]
 
-directory "/var/www/html/#{sitename}/logs" do
-  action :create
+node["lamp_stack"]["sites"].each do |sitename, data|
+  # [...]
+
+  directory "/var/www/html/#{sitename}/public_html" do
+    action :create
+  end
+
+  directory "/var/www/html/#{sitename}/logs" do
+    action :create
+  end
 end
 
 {{< /file >}}
@@ -361,7 +376,7 @@ With the virtual hosts files configured and your website enabled, you next want 
 
 The MPMs are all located in the `mods_available` directory of Apache. In this example the *event* MPM will be used, located at `/etc/apache2/mods-available/mpm_event.conf`. If we were planning on deploying to nodes of varying size we would create a template file to replace the original, which would allow for more customization of specific variables. In this instance, a *cookbook file* will be used to edit the file.
 
-Cookbook files are static documents that are run against the document in the same locale on your servers -- if any changes are made, it makes a backup of the original file and replaces it with the new one.
+Cookbook files are static documents that are run against the document in the same locale on your servers. If any changes are made, the cookbook file makes a backup of the original file and replaces it with the new one.
 
 1.  To create a cookbook file navigate to `files/default` from your cookbook's main directory. If the directories do not already exist, create them:
 
@@ -384,31 +399,45 @@ Cookbook files are static documents that are run against the document in the sam
 {{< /file >}}
 
 
-1.  Return to `apache.rb`, and use the *cookbook_file* resource to call the file we just created. Because the MPM will need to be enabled, we'll use the `notifies` command again, this time to execute `a2enmod mpm_event`. Add this to the *end* of the `apache.rb` file:
+1.  Return to `apache.rb`, and use the *cookbook_file* resource to call the file we just created. Because the MPM will need to be enabled, we'll use the `notifies` command again, this time to execute `a2enmod mpm_event`. Add the *execute* and *cookbook_file* resources to the `apache.rb` file prior to the final `end` tag:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
-execute "enable-event" do
-  command "a2enmod mpm_event"
-  action :nothing
-end
+# [...]
 
-cookbook_file "/etc/apache2/mods-available/mpm_event.conf" do
-  source "mpm_event.conf"
-  mode "0644"
-  notifies :run, "execute[enable-event]"
-end
+node["lamp_stack"]["sites"].each do |sitename, data|
+  # [...]
 
+  execute "enable-event" do
+    command "a2enmod mpm_event"
+    action :nothing
+  end
+
+  cookbook_file "/etc/apache2/mods-available/mpm_event.conf" do
+    source "mpm_event.conf"
+    mode "0644"
+    notifies :run, "execute[enable-event]"
+  end
+end
 {{< /file >}}
 
 
-1.  Within the `apache2.conf` the `KeepAlive` value should be set to `off`, which is the only change made within the file. This can be altered through templates or cookbook files, although in this instance a simple `sed` command will be used, paired with the *execute* resource:
+1.  Within the `apache2.conf` the `KeepAlive` value should be set to `off`, which is the only change made within the file. This can be altered through templates or cookbook files, although in this instance a simple `sed` command will be used, paired with the *execute* resource. Update `apache.rb` with the new *execute* resource:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
+# [...]
+
+directory "/var/www/html/#{sitename}/logs" do
+  action :create
+end
+
 execute "keepalive" do
   command "sed -i 's/KeepAlive On/KeepAlive Off/g' /etc/apache2/apache2.conf"
   action :run
 end
 
+execute "enable-event" do
+
+# [...]
 {{< /file >}}
 
 
@@ -419,7 +448,7 @@ end
 
 ### Download the MySQL Library
 
-1.  The Chef Supermarket has an OpsCode-maintained [MySQL cookbook](https://supermarket.chef.io/cookbooks/mysql) that sets up MySQL lightweight resources/providers (LWRPs) to be used. From the workstation, download and install the cookbook:
+1.  The Chef Supermarket has an OpsCode-maintained [MySQL cookbook](https://supermarket.chef.io/cookbooks/mysql) that sets up MySQL *lightweight resources/providers* (LWRPs) to be used. From the workstation, download and install the cookbook:
 
         knife cookbook site install mysql
 
@@ -520,7 +549,7 @@ mysqlpass = data_bag_item("mysql", "rtpass.json")
 mysqlpass = data_bag_item("mysql", "rtpass.json")
 
 mysql_service "mysqldefault" do
-  version '5.6'
+  version '5.7'
   initial_root_password mysqlpass["password"]
   action [:create, :start]
 end
@@ -575,7 +604,7 @@ max_input_time = 30
 {{< /file >}}
 
 
-1.  Return to `php.rb` and add the cookbook file to the recipe:
+1.  Return to `php.rb` and append the `cookbook_file` resource to the end of the recipe:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/php.rb" ruby >}}
 cookbook_file "/etc/php/7.0/cli/php.ini" do
@@ -587,7 +616,7 @@ end
 {{< /file >}}
 
 
-1.  Because of the changes made to `php.ini`, a `/var/log/php` directory needs to be made and its ownership set to the Apache user. This is done through a `notifies` command and *execute* resource, as done previously:
+1.  Because of the changes made to `php.ini`, a `/var/log/php` directory needs to be made and its ownership set to the Apache user. This is done through a `notifies` command and *execute* resource, as done previously. Append these resources to the end of `php.rb`:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/php.rb" ruby >}}
 execute "chownlog" do
@@ -605,7 +634,7 @@ end
 
     The PHP recipe is now done! View an example of the `php.rb` file [here](/docs/applications/configuration-management/creating-your-first-chef-cookbook/php.rb).
 
-1. Ensure that your Chef server contains the updated cookbook, and your node's run list is up-to-date:
+1. Ensure that your Chef server contains the updated cookbook, and your node's run list is up-to-date; replace `nodename` with your Chef node's name:
 
         knife cookbook upload lamp_stack
         knife node run_list add nodename "recipe[lamp_stack],recipe[lamp_stack::apache],recipe[lamp_stack::mysql],recipe[lamp_stack::php]"
