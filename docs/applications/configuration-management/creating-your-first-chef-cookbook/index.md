@@ -19,7 +19,7 @@ Cookbooks are one of the key components in Chef. They describe the *desired stat
 
 ![Creating Your First Chef Cookbook](creating-your-first-chef-cookbook.png)
 
-Prior to using this guide, set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/) guide. When following that guide, **be sure to make the following change:** for the Chef node, choose Ubuntu 16.04 as your Linux image. This is required because the [MySQL Chef cookbook](https://supermarket.chef.io/cookbooks/mysql) that will be used is not yet compatible with Ubuntu 18.04.
+Prior to using this guide, set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/) guide. When following that guide, **be sure to make the following change:** for the Chef node, choose Ubuntu 16.04 as your Linux image. This is required because the [MySQL Chef cookbook](https://supermarket.chef.io/cookbooks/mysql) that will be used is not yet compatible with Ubuntu 18.04.
 
 If needed, you can also review the [Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/).
 
@@ -37,9 +37,11 @@ Working through this tutorial requires a root user account, and is written as if
 
 1.  Move to your cookbook's newly-created directory:
 
-        cd cookbooks/lamp_stack
+        cd lamp_stack
 
 1.  If you list the files located in the newly-created cookbook, you will see that a number of directories and files have been created:
+
+        ls
 
     {{< output >}}
         Berksfile  CHANGELOG.md  chefignore  LICENSE  metadata.rb  README.md  recipes  spec  test

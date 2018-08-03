@@ -13,7 +13,7 @@ published: 2015-06-10
 title: A Beginner's Guide to Chef
 external_resources:
  - '[Chef](http://www.chef.io)'
- - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/)'
+ - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/)'
  - '[Creating Your First Chef Cookbook](/docs/applications/configuration-management/creating-your-first-chef-cookbook/)'
 
 ---
@@ -28,7 +28,7 @@ Chef works with three core components: The Chef server, workstations, and nodes.
 
 These three components communicate in a mostly-linear fashion, with any changes being pushed from workstations to the Chef server, and then pulled from the server to the nodes. In turn, information about the node passes to the server to determine which files are different from the current settings and need to be updated.
 
-If you wish to farther explore Chef please see the guides [Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/) and [Creating Your First Chef Cookbook](/docs/applications/configuration-management/creating-your-first-chef-cookbook/).
+If you wish to farther explore Chef please see the guides [Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/) and [Creating Your First Chef Cookbook](/docs/applications/configuration-management/creating-your-first-chef-cookbook/).
 
 ## The Chef Server
 
