@@ -228,10 +228,10 @@ Next to your selected version, there will be a dropdown menu that says "Select y
 
 ![Select the option ending in ".tar.gz"](magento-tar-gz.png)
 
-2. From your local computer, copy the file to your Linode. Replace /path/on/local/ with the path of your downloaded file, user with your standard user account on your Linode, and yourhost with your Linode’s hostname or IP address:
+2. From your local computer, copy the file to your Linode. Replace */path/on/local/* with the path of your downloaded file, *user* with your standard user account on your Linode, and *host-ip_or_web-url* with your Linode’s web-url or IP address:
 
 ```
-scp /path/on/local/Magento-CE-2.*.tar.gz user@yourhost:~/
+scp /path/on/local/Magento-CE-2.*.tar.gz user@host-ip_or_web-url:~/
 ```
 
 Alternatively, you can use an FTP client, like [Filezilla](/docs/tools-reference/file-transfer/filezilla), if you're running Windows or are otherwise unable to use a command-line tool like `scp`.
