@@ -4,61 +4,67 @@ author:
 description: 'How to Use GPG Keys to Send Encrypted Messages'
 keywords: ['gpg','security','cryptography','encrypt', 'decrypt']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-02
-modified: 2018-08-02
+published: 2018-08-06
+modified: 2018-08-06
 modified_by:
   name: Linode
 title: "How to Use GPG Keys to Send Encrypted Messages"
-contributor:
-  name: Linode
 external_resources:
 - '[Primes, Modular Arithmetic, and Public Key Cryptography ](http://pi.math.cornell.edu/~mec/2003-2004/cryptography/diffiehellman/diffiehellman.html)'
 - '[The Mathematics of the RSA Public-Key Cryptosystem ](http://www.mathaware.org/mam/06/Kaliski.pdf)'
 ---
+
 ## What is GnuPG?
 
-GNU Privacy Guard (GnuPG), also known as GPG, is a tool for secure communication that was created by Werner Koch as a piece of [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) under the [GNU Project](https://www.gnu.org/gnu/thegnuproject.en.html). GnuPG follows the [OpenPGP protocol](https://www.openpgp.org/about/standard/), which defines and standardizes all the necessary components involved in sending encrypted messages --signatures, private keys and public key certificates. This piece of free software is notably used by Journalists around the globe to ensure that their sensitive email communication is kept secure and private.
+GNU Privacy Guard (GnuPG), also known as GPG, is a tool for secure communication that was created by Werner Koch as [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) under the [GNU Project](https://www.gnu.org/gnu/thegnuproject.en.html). GnuPG follows the [OpenPGP protocol](https://www.openpgp.org/about/standard/), which defines and standardizes all the necessary components involved in sending encrypted messages--signatures, private keys and public key certificates. This piece of free software is notably used by journalists around the world to ensure that their sensitive email communication is kept secure and private.
 
-GPG uses a combination of symmetric-key cryptography and public-key cryptography. Public key cryptography is likely already familiar to you since it is the recommended way to authenticate when [SSHing](https://linode.com/docs/security/securing-your-server/#harden-ssh-access) into your Linode. Public-key cryptography uses a key-pair system where any single user has a private and public key pair. The public key can be shared with anyone, while the private key should be protected and secret to maintain the integrity of the system. This assymetric cryptographic system is ideal for secure communication,because all it requires is that the sender of the message have a copy of the receivers public key before encrypting and sending the message. The recipient can then use their private key to decrypt the message. This means anyone can send you a secure message if they have a copy of your public key.
+GPG uses a combination of symmetric-key cryptography and public-key cryptography. Public key cryptography is likely already familiar to you since it is the recommended way to authenticate when [SSHing in to your Linode](/docs/security/securing-your-server/#harden-ssh-access). Public-key cryptography uses a key-pair system where any single user has a private and public key pair. The public key can be shared with anyone, while the private key should be protected and secret to maintain the integrity of the system. This asymmetric cryptographic system is ideal for secure communication, because all it requires is that the sender of the message have a copy of the receivers public key before encrypting and sending the message. The recipient can then use their private key to decrypt the message. This means anyone can send you a secure message if they have a copy of your public key.
 
-This guide will cover how to create your own key-pair, distribute the public key to a receiver, and encrypt and decrypt a message on Ubuntu 16.04 and 18.04.
-
+This guide shows how to create your own key-pair, distribute the public key to a receiver, and encrypt and decrypt a message on Ubuntu 16.04 and 18.04.
 
 ## Create GPG Keys
 
-1. Download and install the most recent version of the [GPG command line tools](https://www.gnupg.org/download/) for Ubuntu.
+1. Download and install the most recent version of the [GPG command line tools](https://www.gnupg.org/download/) for Ubuntu:
 
-        sudo apt-get update
-        sudo apt-get install gnupg
+        sudo apt update
+        sudo apt install gnupg
 
 1. Create a new primary keypair:
 
-        gpg --gen-key
+        gpg --full-generate-key
 
     Several prompts will appear before the keypair is generated:
 
-    - Select `RSA and RSA (default)` for the type of key.
+    - Select `(1) RSA and RSA (default)` for the type of key.
     - Enter `4096` for the key size.
     - Specify the length of the time the key should be valid in days, weeks, months or years. For example, `1y` will set an expiration date of one year from the time of keypair creation.
     - Enter a name, email address, and comment to associate with the key pair. Any one of these three values can be used to identify the keypair for future use. Enter the desired information for each value and confirm when prompted.
-
     - Provide a passphrase. The passphrase is used to unlock the private key, so it is important to ensure the passphrase is strong. Use a mix of alphanumeric characters.
 
     Once you have responded to all prompts, the keypair will be generated. This may take a few minutes to generate depending on the key size that was chosen.
 
-    - If your system requires more [entropy](https://en.wikipedia.org/wiki/Entropy_(computing)) to generate the keypair, in a new shell session, install the `rng-utils` package:
+    - If your system seems to hang at the following message:
 
-            apt-get install rng-tools
+        {{< output >}}
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+{{< /output >}}
 
-    - Check and feed random data from an entropy source (e.g. hardware RNG device) to an entropy sink (e.g. kernel entropy pool) to provide the needed entropy for a secure keypair to be generated:
+        The system may require more [entropy](https://en.wikipedia.org/wiki/Entropy_(computing)) to generate the keypair, in a new shell session, install the `rng-utils` package:
 
-            rngd -f -r /dev/urandom
+            sudo apt install rng-tools
 
-    - To check the amount of entropy available on your Linode:
+        - Check and feed random data from an entropy source (e.g. hardware RNG device) to an entropy sink (e.g. kernel entropy pool) to provide the needed entropy for a secure keypair to be generated:
 
-            cat /proc/sys/kernel/random/entropy_avail
+                rngd -f -r /dev/urandom
 
-        The value should be somewhere near 3000 for keypair generation.
+        - To check the amount of entropy available on your Linode:
+
+                cat /proc/sys/kernel/random/entropy_avail
+
+            The value should be somewhere near 3000 for keypair generation.
 
 1. Verify the keys on your public keyring:
 
@@ -78,32 +84,32 @@ This guide will cover how to create your own key-pair, distribute the public key
 
     Each value in the list represents the following information:
 
-    - public key: `pub`
-    - key size and type: `4096R`
-    - short key ID: `A11C0F78`
-    - creation date: `2018-08-02`
-    - expiration date: `[expires: 2018-09-01]`
-    - user IDs: `exampleName2 (example comment) <user2@example.com>`
-    - subkey: `sub`
+    - Public key: `pub`
+    - Key size and type: `4096R`
+    - Short key ID: `A11C0F78`
+    - Creation date: `2018-08-02`
+    - Expiration date: `[expires: 2018-09-01]`
+    - User IDs: `exampleName2 (example comment) <user2@example.com>`
+    - Subkey: `sub`
 
    Throughout the remainder of this guide, the first public key will be used to encrypt our message.
 
    {{< note >}}
-   The output may vary slightly depending on the version of Ubuntu you are using.
-   {{</ note >}}
+The output may vary slightly depending on the version of Ubuntu you are using.
+{{</ note >}}
 
 ## Generate a Revocation Certificate
 
 A revocation certificate is useful if you forget your passphrase of if your private key is somehow compromised. It is used to notify others that the public key is no longer valid. Create the revocation certificate immediately after generating your public key.
 
-1. Generate a revocation certificate. Replace `user@example.com` with the email address associated with the public key:
+Generate a revocation certificate. Replace `user@example.com` with the email address associated with the public key:
 
-        gpg --output revoke.asc --gen-revoke user@example.com
+    gpg --output revoke.asc --gen-revoke user@example.com
 
-    - A prompt will ask you to select a reason for the revocation and provide an optional description. The default reason is recommended.
-    - The revocation certificate will be saved to the current directory as a file named `revoke.asc`. Save the certificate to a safe location on a different system so that you can access it in case your key is compromised in the future.
+- A prompt will ask you to select a reason for the revocation and provide an optional description. The default reason is recommended.
+- The revocation certificate will be saved to the current directory as a file named `revoke.asc`. Save the certificate to a safe location on a different system so that you can access it in case your key is compromised in the future.
 
-    Once you've revoked a public key it cannot be used to encrypt future messages to you. It can still be used to verify signatures that you made in the past and to decrypt past messages sent to you.
+Once you've revoked a public key it cannot be used to encrypt future messages to you. It can still be used to verify signatures that you made in the past and to decrypt past messages sent to you.
 
 ## Exchange Public Keys
 
@@ -176,7 +182,7 @@ You can submit your public key to a GPG server to make it available to the gener
 
     {{< output >}}
     pub   4096R/C7277DE1A11C0F78 2018-08-02 [expires: 2018-09-01]
-    uid                          leslie sala <user@example.com>
+    uid                          example user <user@example.com>
     sub   4096R/B838757D5C4E6643 2018-08-02 [expires: 2018-09-01]
     {{</ output >}}
 
@@ -194,20 +200,20 @@ You can submit your public key to a GPG server to make it available to the gener
 
 After you have obtained someone's public keys, you can send them encrypted messages. When you are encrypting a message to send to someone, you are using their public key to encrypt the message. Only the holder of the corresponding private key will be able to decrypt the message.
 
-1. To encrypt a message:
+To encrypt a message:
 
-        gpg --output encrypted-doc.gpg --encrypt --sign --armor --recipient user3@example3.com -recipient user@example.com doc-to-encrypt.txt
+    gpg --output encrypted-doc.gpg --encrypt --sign --armor --recipient user3@example3.com -recipient user@example.com doc-to-encrypt.txt
 
-    Replace `encrypted-doc.gpg` with a name for the encrypted version of your document, `user3@example3.com` with the email associated with the public key of the encrypted message's recipient, `user@example.com` with your own public key's associated email and `doc-to-encrypt.txt` with the name of the document you will encrypt. If the document is not in the current directory, include the full path to the document.
+Replace `encrypted-doc.gpg` with a name for the encrypted version of your document, `user3@example3.com` with the email associated with the public key of the encrypted message's recipient, `user@example.com` with your own public key's associated email and `doc-to-encrypt.txt` with the name of the document you will encrypt. If the document is not in the current directory, include the full path to the document.
 
-    The extension `.gpg` is used for encrypted/binary data and `.asc` or `.sig` is used for detached or clearsign signatures. Including the `--armor` flag will encrypt the message in plaintext.
+The extension `.gpg` is used for encrypted/binary data and `.asc` or `.sig` is used for detached or clearsign signatures. Including the `--armor` flag will encrypt the message in plain text.
 
 ## Decrypt a Message
 
 A message will need to have been encrypted with your public key for you to able to decrypt it with your private key. Ensure that anyone that will be sending you an encrypted message has a copy of your public key.
 
-1. To decrypt a message:
+To decrypt a message:
 
-        gpg --output decrypted-doc --decrypt doc-to-decrypt.gpg
+    gpg --output decrypted-doc --decrypt doc-to-decrypt.gpg
 
-    Replace `decrypted-doc` with the name you want to assign to the decrypted message and `doc-to-decrypt.gpg` with the name of the encrypted document. If the document is not in the current directory, include the full path to the document.
+Replace `decrypted-doc` with the name you want to assign to the decrypted message and `doc-to-decrypt.gpg` with the name of the encrypted document. If the document is not in the current directory, include the full path to the document.
