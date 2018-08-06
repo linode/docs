@@ -1,0 +1,10 @@
+<!-- image -->
+<!-- this shortcode loads an image from the .Page.Resources of a Hugo Page Bundle -->
+{{ $image := .Page.Resources.GetMatch (.Get "src") }}
+{{ with .Get "link"}}<a href="{{.}}">{{ end }}
+    <img src="{{ $image.RelPermalink }}" 
+        {{ with (.Get "alt") }}alt="{{.}}"{{ end }}
+        {{ with (.Get "title") }}title="{{.}}"{{ end }}
+    />
+{{ if .Get "link"}}</a>{{ end }}
+<!-- image -->

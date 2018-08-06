@@ -132,7 +132,7 @@ After each user is created, use the **people** tab, to verify success:
 ## Next Steps
 
 ### Registering a Domain Name for FarmOS
-If you want to register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](/docs/networking/dns/dns-manager-overview/) and add your FQDN to the Linode Manager. A FQDN will provide you, and the people who plan on using FarmOS, the ability to navigate to a URL, instead of your Linode's public IP address. If you plan on using FarmOS internally, you can skip this step.
+If you want to register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](/docs/platform/manager/dns-manager/) and add your FQDN to the Linode Manager. A FQDN will provide you, and the people who plan on using FarmOS, the ability to navigate to a URL, instead of your Linode's public IP address. If you plan on using FarmOS internally, you can skip this step.
 
 ### Generate a Google API Key
 FarmOS can interface with GoogleMaps. You need a GoogleAPI key to use this feature. The FarmOS official documentation has a section about using GoogleMaps in its [docs](http://farmos.org/hosting/googlemaps/). Interfacing with GoogleMaps allows you to save certain geographical areas into FarmOS. When creating FarmOS projects and tasks, you can use the Google Maps API to pinpoint where the task takes place.

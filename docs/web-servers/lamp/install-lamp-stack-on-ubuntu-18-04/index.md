@@ -124,7 +124,7 @@ You can set up virtual hosts several ways, and the following steps outline the r
 
 2.  Open the new `example.com` configuration file in your text editor. Uncomment the `ServerName` option and update it with your domain. Enter the document root path and log directories as shown below, and add a `Directory` block before `<VirtualHost>`:
 
-    {{< file "/etc/apache2/sites-available/example.com" apache >}}
+    {{< file "/etc/apache2/sites-available/example.com.conf" apache >}}
 <Directory /var/www/html/example.com/public_html>
         Require all granted
 </Directory>
@@ -171,7 +171,7 @@ If you need to disable your website, run `a2dissite example.com`.
 
         sudo systemctl reload apache2
 
-Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/networking/dns/dns-manager-overview/) for your domain to point to your Linode's IP address.
+Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/platform/manager/dns-manager/) for your domain to point to your Linode's IP address.
 
 If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 

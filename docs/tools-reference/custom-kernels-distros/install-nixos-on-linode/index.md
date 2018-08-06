@@ -109,10 +109,10 @@ The `nixos-generate-config` command in the [Set up the Install Environment](#set
 
 Since you can modify these later, it is better to use the `/dev/sdX` identifiers (where `X` is the assigned volume, like `sda` or `sdb`) to allow you to easily swap in backup disks without having to boot into rescue mode and rewrite the UUID to match the new disk:
 
-Replace the contents of the `filesystems` and `swapDevices` sections with the following:
+Replace the contents of the `fileSystems` and `swapDevices` sections with the following:
 
 {{< file "/mnt/etc/nixos/hardware-configuration.nix" >}}
-filesystems."/" =
+fileSystems."/" =
   { device = "/dev/sda";
     fsType = "ext4";
   };

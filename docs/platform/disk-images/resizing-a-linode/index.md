@@ -26,7 +26,7 @@ Linodes can be resized to a smaller or larger plan. A [standard](https://www.lin
 You can move your Linode from one plan to another by using the *resize* feature. To complete the resizing process, your Linode will be powered off and migrated to a different host in the same data center. Your data, configuration profiles, and IP addresses will be all be moved to the new host. Please note that the migration will take approximately 1 minute for every 3-5 gigabytes of data.
 
 {{< note >}}
-If you're downgrading your plan, verify that your disks are using less space than the new plan provides. for more information, see our documentation on [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk).
+If you're downgrading your plan, verify that your disks are using less space than the new plan provides. For more information, see our documentation on [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk).
 {{< /note >}}
 
 Here's how to resize your Linode:
@@ -50,4 +50,4 @@ Here's how to resize your Linode:
 
 Your Linode has been successfully resized and migrated to the new host. This video goes through the resizing process in detail:
 
-<iframe width="825" height="465" src="https://www.youtube.com/embed/RjCDNtHU0Z4?controls=0&amp;showinfo=0&amp;rel=0" frameborder="0" allowfullscreen></iframe>
+{{< youtube RjCDNtHU0Z4 >}}

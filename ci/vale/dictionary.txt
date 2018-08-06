@@ -85,6 +85,8 @@ binlog
 bitbucket
 bitrate
 blocklists
+blockwise
+bluehost
 boonex
 bootable
 bootloader
@@ -124,6 +126,7 @@ changelog
 changelogs
 changeme
 changeset
+characterwise
 chatrooms
 cheatsheet
 checksummed
@@ -162,6 +165,7 @@ conda
 config
 configs
 configtest
+configurability
 containerised
 convolutional
 coose
@@ -202,8 +206,6 @@ daemonizes
 daemonizing
 daemonset
 dahdi
-datacenter
-datacenters
 datadir
 dataset
 datasets
@@ -237,6 +239,7 @@ devops
 devtmpfs
 df
 dhclient
+dhparams
 dialogs
 diavel
 diffie
@@ -294,6 +297,7 @@ ejabberd
 el6
 el7
 elasticsearch
+elisp
 elgg
 elpaso
 email2email
@@ -362,6 +366,8 @@ filimonov
 finnix
 firewalld
 firstsite
+flamegraph
+flamegraphs
 flatpress
 flyspray
 fortran
@@ -377,6 +383,7 @@ fstab
 galera
 gamemode
 gameplay
+gandi
 gcc
 gcm
 geckodriver
@@ -488,6 +495,7 @@ hypervisor
 hypervisors
 i386
 iaas
+icann
 icanhazip
 iceweasel
 icinga
@@ -513,6 +521,7 @@ imaps
 img
 immutant
 impor
+incentivized
 inet
 inet6
 ini
@@ -631,6 +640,7 @@ lighthttpd
 lighttpd
 lighty
 ligttpd
+linewise
 linode
 linodes
 lish
@@ -659,6 +669,7 @@ lsd
 lst
 lsyncd
 lua
+lubuntu
 lucene
 luminus
 lxml
@@ -757,6 +768,7 @@ mypassword
 myproject
 myserver
 mysql
+mysqli
 mysqlclient10
 mysqld
 mysqldefault
@@ -765,6 +777,7 @@ mytestdb
 myuser
 nagios
 nagiosadmin
+namecheap
 nameserver
 nameservers
 namespace
@@ -981,6 +994,7 @@ rcon
 rdbadmin
 rdiff
 readcaps
+reauthenticate
 readme
 readonly
 readwrite
@@ -1017,6 +1031,7 @@ retpoline
 reutilize
 richlanguage
 rimap
+ritchie
 rkt
 rmem
 ro
@@ -1117,6 +1132,7 @@ smartcard
 smartcards
 smtp
 smtpd
+smush
 smux
 snakeoil
 snapd
@@ -1149,6 +1165,7 @@ ssl
 stackscript
 stackscripts
 stalkyard
+stallman
 starttls
 statusbar
 stderr
@@ -1213,6 +1230,7 @@ testfile
 testkeys
 testparam
 testuser
+tetris
 tf
 tgz
 thawte
@@ -1241,6 +1259,8 @@ tokenizing
 tokyo2
 tomacat
 tomcat6
+torvalds
+toolchain
 traceroute
 trackbar
 transcoder
@@ -1262,6 +1282,7 @@ ufw
 ui
 uidl
 un
+unaliased
 unarchive
 unban
 unbans
@@ -1278,6 +1299,7 @@ unexported
 unformatted
 unicast
 uniq
+unmanaged
 unmerged
 unmount
 unmounting
@@ -1335,6 +1357,7 @@ virtualenvwrapper
 virtualhost
 virtualizations
 virtualized
+virtualmin
 vlogger
 vmail
 vmem
@@ -1406,6 +1429,7 @@ wx
 xabbix
 xap
 xcalc
+xcode
 xen
 xenial
 xerus
@@ -1441,6 +1465,7 @@ yourdomain
 yourdomainorsubdomainhere
 yourname
 yoursite
+youtube
 yubico
 yubikey
 zabbix

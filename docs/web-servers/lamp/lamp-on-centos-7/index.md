@@ -5,9 +5,9 @@ author:
 description: 'Create a LAMP stack on a CentOS 7 Linode.'
 keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-10-26
+modified: 2018-06-21
 modified_by:
-    name: Alex Fornuto
+    name: Edward Angert
 published: 2015-12-01
 title: LAMP on CentOS 7
 aliases: ['websites/lamp/lamp-server-on-centos-7/','websites/lamp/lamp-on-centos-7/']
@@ -20,7 +20,7 @@ external_resources:
 
 ![LAMP on CentOS 7](lamp-on-centos-7-title-graphic.jpg "LAMP on CentOS 7")
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting web content. This guide shows you how to install a LAMP stack on a CentOS 7 server.
+A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MySQL, and PHP. This guide shows how to install a LAMP stack on a CentOS 7 Linode.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -28,9 +28,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#set-the-hostname).
 
-    To check your hostname run:
+    To check your hostname, run:
 
         hostname
         hostname -f
@@ -54,7 +54,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< note >}}
 Before changing any configuration files, it is advised that you make a backup of the file. To make a backup:
 
-cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+    cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 {{< /note >}}
 
     {{< file "/etc/httpd/conf/httpd.conf" aconf >}}
@@ -71,14 +71,13 @@ KeepAlive Off
 
 {{< /file >}}
 
-
-    These settings can also be added to a separate file if so desired. The file must be located in the `conf.module.d` or `conf` directories, and must end in `.conf`.
+    These settings can also be added to a separate file if so desired. The file must be located in the `conf.module.d` or `conf.d` directories, and must end in `.conf`.
 
 ### Configure Name-based Virtual Hosts
 
 There are different ways to set up virtual hosts; however, the method below is recommended.
 
-1.  Within the `conf.d` directory create `vhost.conf` to store your virtual host configurations. The example below is a template for website `example.com`; change the necessary values for your domain:
+1.  Within the `conf.d` directory create a file named `vhost.conf` to store your virtual host configurations. The example below is a template for website `example.com`; change the necessary values for your domain:
 
     {{< file "/etc/httpd/conf.d/vhost.conf" aconf >}}
 NameVirtualHost *:80
@@ -105,12 +104,53 @@ NameVirtualHost *:80
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-3.  Enable Apache to start at boot, and restart the service for the above changes to take place:
+### Configure SELinux to Allow HTTP
+
+SELinux is enabled by default on CentOS 7 Linodes. Its default setting is to restrict Apache's access to directories until explicit permissions are granted.
+
+Without these steps, Apache will not start and may give the following error:
+
+{{< output >}}
+Jun 21 17:58:09 example.com systemd[1]: Failed to start The Apache HTTP Server.
+Jun 21 17:58:09 example.com systemd[1]: Unit httpd.service entered failed state.
+Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
+{{< /output >}}
+
+1.  Use `chown` to make `apache` the owner of the web directory:
+
+        sudo chown apache:apache -R /var/www/html/example.com/
+
+2.  Modify the permissions for files and directories:
+
+        cd /var/www/html/example.com/
+        find . -type f -exec sudo chmod 0644 {} \;
+        find . -type d -exec sudo chmod 0755 {} \;
+
+3.  Use SELinux's `chcon` to change the file security context for web content:
+
+        sudo chcon -t httpd_sys_content_t /var/www/html/example.com -R
+        sudo chcon -t httpd_sys_rw_content_t /var/www/html/example.com -R
+
+4.  Enable Apache to start at boot, and restart the service for the above changes to take place:
 
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
 
-    You can now visit your domain to test the Apache server; a default Apache page will be visible.
+    Visit your domain or public IP to test the Apache server and view the default Apache page.
+
+### Configure FirewallD to Allow HTTP Connections
+
+FirewallD is enabled for CentOS 7 Linodes, but HTTP is not included in the default set of services:
+
+    sudo firewall-cmd --zone=public --list-services
+{{< output >}}
+ssh dhcpv6-client
+{{< /output >}}
+
+To allow connections to Apache, add HTTP as a service:
+
+    sudo firewall-cmd --zone=public --add-service=http --permanent
+    sudo firewall-cmd --zone=public --add-service=http
 
 ## MySQL / MariaDB
 
@@ -121,7 +161,7 @@ MySQL is replaced with MariaDB in CentOS 7. MariaDB is a popular drop-in replace
 {{< note >}}
 If you prefer to use the MySQL branded database in CentOS 7, you will need to add the required repositories by issuing the following command:
 
-sudo yum install http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+    sudo yum install http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
 {{< /note >}}
 
 1.  Install the MariaDB-server package:
@@ -135,7 +175,7 @@ sudo yum install http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch
 
 3.  Run `mysql_secure_installation` to secure MariaDB. You will be given the option to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases and reload privileges. It is recommended that you answer yes to these options:
 
-        mysql_secure_installation
+        sudo mysql_secure_installation
 
 ### Create a MySQL/MariaDB Database
 

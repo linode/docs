@@ -19,6 +19,8 @@ external_resources:
  - '[Official Icinga Documentation](https://www.icinga.com/docs/icinga2/latest/doc/01-about/)'
 ---
 
+![Monitor Remote Hosts with Icinga](monitor-remote-hosts-icinga-title.jpg "Monitor Remote Hosts with Icinga")
+
 ## What is Icinga 2?
 
 This guide is a continuation of our guide on [Icinga 2](/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9).

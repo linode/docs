@@ -25,7 +25,7 @@ Aside from protecting your files against data-loss scenarios, making periodic ba
 
 ## Linode Backups
 
-One simple way to make sure your entire system is backed up is to use the official Linode Backup service. This is a paid add-on to your account, and it will automatically take a snapshot of your disk at regular intervals. If your data is ever lost, you can use the most recent snapshot to recover the disk. For more information, see our full guide on the [Linode Backup Service](/docs/platform/linode-backup-service/).
+One simple way to make sure your entire system is backed up is to use the official Linode Backup service. This is a paid add-on to your account, and it will automatically take a snapshot of your disk at regular intervals. If your data is ever lost, you can use the most recent snapshot to recover the disk. For more information, see our full guide on the [Linode Backup Service](/docs/platform/disk-images/linode-backup-service/).
 
 ## Manual Backups
 

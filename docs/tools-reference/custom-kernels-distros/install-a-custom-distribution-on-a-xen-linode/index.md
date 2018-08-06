@@ -149,7 +149,7 @@ Start from the Linode Manager by configuring a Linode to boot your custom image.
 
 11. Next, select the **Rescue** sub-tab, which is located on the same row as the **Dashboard** tab. Select **Reboot into Rescue Mode**. Monitor the **Host Job Queue** progress bar for the system shutdown and the system boot. It should take under a minute.
 
-12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](/docs/networking/using-the-linode-shell-lish/).
+12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](/docs/platform/manager/using-the-linode-shell-lish/).
 
 ## Starting SSH in Finnix
 

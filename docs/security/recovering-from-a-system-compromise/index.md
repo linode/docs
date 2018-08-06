@@ -14,6 +14,8 @@ published: 2009-08-26
 title: Recovering from a System Compromise
 ---
 
+![Recovering from a System Compromise](recovering-from-system-compromise-title.jpg "Recovering from a System Compromise")
+
 If you suspect that an unauthorized user has gained access to your Linode, your system should be considered **compromised**. Unfortunately, it's virtually impossible to determine the full scope of an attacker's reach into a compromised system. The server should not be trusted for production use and you should take immediate steps to secure your data and applications.
 
 This guide describes several methods to recover from a system compromise:
@@ -96,4 +98,4 @@ Alternatively, you can [update your DNS entries](/docs/websites/hosting-a-websit
 
 You may want to download a complete copy of the compromised Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh). If you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
 
-When you no longer need the old Linode's disks, you should [remove the Linode](/docs/platform/billing-and-payments/#removing-services). Your account will be issued a pro-rated credit for that Linode's charges in the current billing period.
+When you no longer need the old Linode's disks, you should [remove the Linode](/docs/platform/billing-and-support/billing-and-payments/#removing-services). Your account will be issued a pro-rated credit for that Linode's charges in the current billing period.

@@ -20,7 +20,7 @@ We know it's frustrating when you run into problems with your Linode. That's why
 -   Once you've identified a problem, try fixing it with the suggested solutions
 -   If you can't find your problem in this guide, take a look at the [troubleshooting manuals](/docs/troubleshooting/)
 
-If the issue you're experiencing isn't listed here, or if the recommended solution doesn't help, please feel free to [contact our Support team](/docs/platform/support/).
+If the issue you're experiencing isn't listed here, or if the recommended solution doesn't help, please feel free to [contact our Support team](/docs/platform/billing-and-support/support/).
 
 ## Linode is Slow or Unresponsive
 
@@ -73,12 +73,12 @@ To verify that your Linode is operating correctly, you should try to log in with
 4.  Click the **Remote Access** tab.
 5.  Select the **Launch Lish Console** link. The LISH console window appears.
 6.  Log in as `root` or another user. If you don't see a login prompt, press Enter. If you can't log in, [reset the root password](/docs/platform/accounts-and-passwords/#resetting-the-root-password) and try again.
-7.  If the console is not responding, [contact Linode support](/docs/platform/support/).
+7.  If the console is not responding, [contact Linode support](/docs/platform/billing-and-support/support/).
 
     If you can log in, continue to the next section, even if there are error messages visible on the console.
 
     {{< note >}}
-For more information about LISH, see [this guide](/docs/networking/using-the-linode-shell-lish/).
+For more information about LISH, see [this guide](/docs/platform/manager/using-the-linode-shell-lish/).
 {{< /note >}}
 
 ### Is your disk full?
@@ -160,7 +160,7 @@ Network issues between your desktop computer and the data center can make your s
 -   If you have experienced degraded service for an extended period of time, you can contact a service provider about the issues you're experiencing. Be sure to send MTR reports and any other relevant data.
 -   Network congestion over long distances and during peak times is normal. We recommended positioning hosts and resources as geographically close to the targeted audience as possible.
 
-When contacting [Linode support](/docs/platform/support/) for assistance, please include the output of two MTR reports; one from your local network to your Linode, and another from your Linode to your local network's IP address. You can use a website such as [whatsmyip.org](http://www.whatsmyip.org/) to determine the IP address of your local network. If you're not able to connect to your Linode over SSH, you can connect using the [Lish](/docs/networking/using-the-linode-shell-lish/) console to generate a report.
+When contacting [Linode support](/docs/platform/billing-and-support/support/) for assistance, please include the output of two MTR reports; one from your local network to your Linode, and another from your Linode to your local network's IP address. You can use a website such as [whatsmyip.org](http://www.whatsmyip.org/) to determine the IP address of your local network. If you're not able to connect to your Linode over SSH, you can connect using the [Lish](/docs/platform/manager/using-the-linode-shell-lish/) console to generate a report.
 
 ### Is there a Disk I/O bottleneck?
 
@@ -179,7 +179,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 You must run `iotop` as `root` or with `sudo`.
 {{< /note >}}
 
-6.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/platform/support/) for assistance.
+6.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/platform/billing-and-support/support/) for assistance.
 
 Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](/docs/uptime/monitoring/) for instructions on setting up a server monitoring utility.
 

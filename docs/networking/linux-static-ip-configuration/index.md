@@ -13,11 +13,11 @@ published: 2014-07-20
 title: Linux Static IP Configuration
 ---
 
-All Linodes are created with one IPv4 address and one for IPv6. An IPv4 address is assigned by our infrastructure from a pool of unused addresses when you create your Linode, and [Stateless Address Autoconfiguration](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_.28SLAAC.29) (SLAAC) is used for IPv6 assignment. Additional IPv4 or IPv6 addresses can be requested by opening a [support ticket](/docs/platform/support/) and detailing your requirements.
+All Linodes are created with one IPv4 address and one for IPv6. An IPv4 address is assigned by our infrastructure from a pool of unused addresses when you create your Linode, and [Stateless Address Autoconfiguration](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_.28SLAAC.29) (SLAAC) is used for IPv6 assignment. Additional IPv4 or IPv6 addresses can be requested by opening a [support ticket](/docs/platform/billing-and-support/support/) and detailing your requirements.
 
 ![Linux Static IP Configuration](linux-static-ip-configuration.png)
 
-If you want to manually configure static addressing in your Linode's operating system, this guide shows you how to do that. You will want to make these changes using [Lish](/docs/networking/using-the-linode-shell-lish/), so if a configuration error disconnects your SSH session, you won't be locked out of a system that has no network access.
+If you want to manually configure static addressing in your Linode's operating system, this guide shows you how to do that. You will want to make these changes using [Lish](/docs/platform/manager/using-the-linode-shell-lish/), so if a configuration error disconnects your SSH session, you won't be locked out of a system that has no network access.
 
 
 ## General Information
@@ -42,7 +42,7 @@ For example, if the address `198.51.100.5` is assigned to the interface `eth0:3`
 
 **DNS Resolution**
 
-Your DNS resolver addresses are listed under the [**Remote Access** tab of the Linode Manager](/docs/networking/remote-access/), though of course you are free to use any resolvers you choose.
+Your DNS resolver addresses are listed under the [**Remote Access** tab of the Linode Manager](/docs/platform/manager/remote-access/), though of course you are free to use any resolvers you choose.
 
 However, unless you have a specific reason for doing so, you should *not* change your Linode's nameservers by editing `/etc/resolv.conf`. Depending on your distribution, `resolv.conf` may be overwritten by a networking service such as NetworkManager or systemd-resolved. Resolver options are usually set in the network interface's configuration file.
 

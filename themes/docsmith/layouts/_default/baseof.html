@@ -60,7 +60,15 @@
         {{ end }}
         <header>
             {{ partial "nav" . }}
-            {{ partial "subnav" . }}
+            {{ if .IsHome }}
+                <div class="container">   
+                    {{ partial "subnav" . }}
+                </div>
+            {{ else }}
+                <div class="container sub-menu-wrap">   
+                    {{ partial "subnav" . }}
+                </div>
+            {{ end }}
         </header>
         {{block "main" .}}{{ end }}
         <footer>

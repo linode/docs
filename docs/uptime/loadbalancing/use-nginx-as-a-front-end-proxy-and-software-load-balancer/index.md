@@ -33,7 +33,7 @@ Before we begin, make sure you have completed the following:
 -   Install the [NGINX server](/docs/web-servers/nginx/).
 -   Familiarize yourself with [Basic NGINX Configuration](/docs/web-servers/nginx/how-to-configure-nginx/).
 
-If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/tools-reference/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/platform/linode-beginners-guide/) and [Administration Basics](/docs/tools-reference/linux-system-administration-basics/) guide.
+If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/tools-reference/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [Administration Basics](/docs/tools-reference/linux-system-administration-basics/) guide.
 
 ## Front-End Proxy Services with NGINX: How It Works
 

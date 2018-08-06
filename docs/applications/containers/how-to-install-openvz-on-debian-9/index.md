@@ -48,11 +48,11 @@ If you intend to dedicate an entire Linode VPS to running OpenVZ and no other se
 
 1. Log into your Linode Manager and select your Linode. Power down the machine, and verify the job completed by viewing the *Host Job Queue* section. Under the *Disks* tab, click *Create a new Disk*. Add a label of your choosing, select "ext4" in the *Type* drop-down menu, and allocate as much space as you can in the *Size* field. Click *Save Changes*; an optimal configuration will resemble the image below.
 
-     ![Linode Manager - Partition Scheme](openvz_two.png)
+     ![Linode Manager - Partition Scheme](openvz-two.png)
 
 2. Under the *Dashboard* tab, click your main Configuration Profile. Under the *Block Device Assignment* tab, assign your new partition to an open device. Click *Save Changes* when finished.
 
-    ![Linode Manager - Block Device Assignment](openvz_three.png)
+    ![Linode Manager - Block Device Assignment](openvz-three.png)
 
 3. Boot the Linode and log in via SSH. Issue the command below to verify that the new disk has been created properly. The output will display your newly created disk.
 

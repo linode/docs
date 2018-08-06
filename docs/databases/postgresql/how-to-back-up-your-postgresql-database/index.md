@@ -15,6 +15,8 @@ external_resources:
 - '[PostgreSQL Documentation](https://www.postgresql.org/docs/9.1/static/)'
 ---
 
+![How to Back Up Your PostgreSQL Database](back-up-postgresql-database-title.jpg "How to Back Up Your PostgreSQL Database")
+
 If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, and/or automating backups with a cron task, you will be able to quickly restore your system in the event that your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage.
 
 ## Before You Begin

@@ -118,7 +118,7 @@ auth_mechanisms = plain login
 #!include auth-deny.conf.ext
 #!include auth-master.conf.ext
 
-#!include auth-system.conf.ext
+!include auth-system.conf.ext
 !include auth-sql.conf.ext
 #!include auth-ldap.conf.ext
 #!include auth-passwdfile.conf.ext

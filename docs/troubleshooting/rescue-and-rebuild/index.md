@@ -44,7 +44,7 @@ Your Linode has been booted into rescue mode. To access it, follow the instructi
 
 ### Connecting to a Linode Running in Rescue Mode
 
-To access your Linode when it's running in rescue mode, you'll need to use the Linode shell (Lish). For instructions, see [Console Access](/docs/networking/remote-access/#console-access) and [Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish/). Once you've successfully logged in, you'll see the window shown below.
+To access your Linode when it's running in rescue mode, you'll need to use the Linode shell (Lish). For instructions, see [Console Access](/docs/networking/remote-access/#console-access) and [Using the Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/). Once you've successfully logged in, you'll see the window shown below.
 
 [![Lish console](1002-rescue1-2.png)](1002-rescue1-2.png)
 

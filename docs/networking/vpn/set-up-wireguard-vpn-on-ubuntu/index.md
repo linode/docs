@@ -7,7 +7,7 @@ og_description: 'This guide will show you how to install WireGuard, a fast and s
 keywords: ['wireguard','vpn']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-14
-modified: 2017-11-14
+modified: 2018-07-09
 modified_by:
   name: Linode
 title: "Set Up WireGuard VPN on Ubuntu"
@@ -16,12 +16,13 @@ contributor:
   link:
 ---
 
+![Set Up WireGuard VPN on Ubuntu](wireguard-vpn-ubuntu-title.jpg "Set Up WireGuard VPN on Ubuntu")
 
 [WireGuard](https://www.wireguard.com) is a simple, fast, and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and has a much smaller source code footprint. WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol and delivers lower ping times in comparison.
 
-WireGuard aims to be as simple to configure as SSH. A connection is established by an exchange of public keys between server and client just like SSH keys and only a client with its public key present in its server configuration file is considered authorized. WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as `ifconfig` and `ip`.
+The WireGuard configuration is as simple to configure as SSH. A connection is established by an exchange of public keys between server and client, and only a client with its public key present in its server configuration file is considered authorized. WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as `ifconfig` and `ip`.
 
-WireGuard is currently only available on Linux. This guide will configure a simple peer connection between a server, which will be a Linode running Ubuntu 16.04, and a client. The client can be either your local computer or another Linode.
+Currently, WireGuard is only available on Linux. This guide will configure a simple peer connection between a server, which will be a Linode running Ubuntu 16.04, and a client. The client can be either your local computer or another Linode.
 
 {{< caution >}}
 Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent critical updates in the future.
@@ -153,7 +154,7 @@ The process for setting up a client is essentially the same as the server. If yo
         umask 077
         wg genkey | tee privatekey | wg pubkey > publickey
 
-2.  The only difference between the client and server is the contents of the configuration file:
+2.  The only difference between the client and server is the contents of the configuration file--the client's `wg0.conf` must contain its IP addresses.
 
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
@@ -183,7 +184,7 @@ AllowedIPs = 192.168.2.1/24, fd86:ea04:1115::1/64
 
 The second way of adding peer information is through the command line. This information will be added to the config file automatically because of the SaveConfig option specified earlier.
 
-1.  Run the following command from the server:
+1.  Run the following command from the server, where the example IP addresses are those of the client:
 
         wg set wg0 peer <Client Public Key> endpoint <Client IP address>:51820 allowed-ips 192.168.2.2/24,fd86:ea04:1115::5/64
 
@@ -191,7 +192,7 @@ The second way of adding peer information is through the command line. This info
 
         wg
 
-Regardless of which method above you chose, there will be a **Peer** section in the output of this command if the setup was successful. This Peer section will be automatically added to `wg0.conf` when the service is restarted. If you would like to add this information to the config file immediately, you can run:
+Regardless of which method you choose, there will be a **Peer** section in the output of this command if the setup was successful. This Peer section will be automatically added to `wg0.conf` when the service is restarted. If you would like to add this information immediately to the config file, you can run:
 
     wg-quick save wg0
 
@@ -214,6 +215,4 @@ This indicates that you now have a private connection between the server and cli
 
 ## Next steps
 
-The process used in this guide can be extended to configure network topologies. You can also use the link in the More Information section below to experiment with setting up port forwarding, so that all of your client traffic will be routed through the server.
-
-As mentioned previously, Wireguard is an evolving technology. If you use WireGuard, you should monitor the [official documentation](https://www.wireguard.com/) and [todo list](https://www.wireguard.com/todo/) for critical updates and new/upcoming features.
+The process used in this guide can be extended to configure network topologies. As mentioned previously, Wireguard is an evolving technology. If you use WireGuard, you should monitor the [official documentation](https://www.wireguard.com/) and [todo list](https://www.wireguard.com/todo/) for critical updates and new/upcoming features.
