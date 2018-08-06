@@ -36,11 +36,11 @@ If you haven't already signed up for a Linode account, start here.
 
 1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
 2.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
-3.  Select a Linode plan and datacenter location:
+3.  Select a Linode plan and data center location:
 
     ![Available Linode plans](linode-manager-select-plan.png)
 
-If you're not sure which datacenter to select, use our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the datacenters to determine which of our facilities provides the best latency from your particular location.
+If you're not sure which data center to select, use our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
 
 ## Provision Your Linode
 
