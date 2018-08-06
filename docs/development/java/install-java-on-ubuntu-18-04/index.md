@@ -13,7 +13,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases:
   - applications/development/install-java-on-ubuntu-18-04/
   - development/install-java-on-ubuntu-18-04/
-modified: null
+modified: 2018-08-06
 modified_by:
   name: Phil Zona
 published: 2017-05-30T00:00:00.000Z
