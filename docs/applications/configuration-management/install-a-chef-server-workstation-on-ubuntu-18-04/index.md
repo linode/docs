@@ -5,8 +5,8 @@ author:
 description: 'Instructions on how to configure a Chef server and a virtual workstation, and how to bootstrap a client node on Ubuntu 18.04.'
 keywords: ["chef", "chef installation", "configuration change management", "server automation", "chef server", "chef workstation", "chef-client", "knife.rb", "version control"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-07-19
-modified: 2018-07-19
+published: 2018-08-06
+modified: 2018-08-06
 modified_by:
   name: Linode
 title: 'Install a Chef Server Workstation on Ubuntu 18.04'
@@ -16,7 +16,7 @@ title: 'Install a Chef Server Workstation on Ubuntu 18.04'
 
 Chef is comprised of a Chef server, one or more workstations, and a number of nodes that are managed by the chef-client installed on each node.
 
-[![chef_graph-small.png](chef-graph-small.png)](chef-graph.png)
+[![chef_graph-small.png](chef-graph-small.png)](chef-graph.png "Illustration showing that workstations talk to Nodes via the Chef Server")
 
 This guide shows how to create and configure a Chef server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
 
@@ -36,11 +36,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## The Chef Server
 
-The Chef server is the hub of interaction between all workstations and nodes using Chef. Changes made through workstations are uploaded to the Chef server, which is then accessed by the chef-client and used to configure each individual node.
+The Chef server is the hub of interaction between all workstations and nodes using Chef. Changes made through workstations are uploaded to the Chef server, which is then accessed by `chef-client` and used to configure each individual node.
 
 ### Install the Chef Server
 
-1.  [Download](https://downloads.chef.io/chef-server/#ubuntu) the latest Chef server core:
+1.  Download the [latest Chef server core](https://downloads.chef.io/chef-server/#ubuntu):
 
         wget https://packages.chef.io/files/current/chef-server/12.17.54+20180531095715/ubuntu/18.04/chef-server-core_12.17.54+20180531095715-1_amd64.deb
 
@@ -56,7 +56,7 @@ The Chef server is the hub of interaction between all workstations and nodes usi
 
         sudo chef-server-ctl reconfigure
 
-### Create a User and Organization
+### Create a Chef User and Organization
 
 In order to link workstations and nodes to the Chef server, create an administrator and organization with associated RSA private keys.
 
@@ -74,7 +74,7 @@ In order to link workstations and nodes to the Chef server, create an administra
 
       With the Chef server installed and the RSA keys generated, you can begin configuring your workstation, where all major work will be performed for your Chef's nodes.
 
-## Workstations
+## Chef Workstations
 
 Your Chef workstation is where you create and configure any recipes, cookbooks, attributes, and other changes made to your Chef configurations. Although this can be a local machine running any OS, there is some benefit to keeping a remote server as your workstation so you can access it from anywhere.
 
@@ -97,7 +97,7 @@ Your Chef workstation is where you create and configure any recipes, cookbooks, 
         chef generate app chef-repo
         cd chef-repo
 
-1.  The `.chef` directory is used to store the `knife.rb`, `ORGANIZATION-validator.pem`, and `USER.pem` files. Make the `.chef` directory to store these files later:
+1.  Make the `.chef` directory to store the `knife.rb`, `ORGANIZATION-validator.pem`, and `USER.pem` files later:
 
         mkdir .chef
 
@@ -105,11 +105,11 @@ Your Chef workstation is where you create and configure any recipes, cookbooks, 
 
 1.  The RSA private keys generated when setting up the Chef server now need to be placed on the workstation. The process behind this will vary depending on whether or not you are using SSH key pair authentication to log into your Linodes.
 
-    - If you are **not** using key pair authentication, copy the file directly from the Chef Server. Replace `user` with your username on the server, and `192.0.2.0` with the URL or IP of your Chef Server:
+    - **If you are not using key pair authentication**, copy the file directly from the Chef Server. Replace `user` with your username on the server, and `192.0.2.0` with the URL or IP of your Chef Server:
 
             scp user@192.0.2.0:~/.chef/*.pem ~/chef-repo/.chef/
 
-    - If you **are** using key pair authentication, then from your **local terminal** copy the `.pem` files from your server to your workstation using the `scp` command. Replace `user` with the appropriate username, and `192.0.2.0` with the URL or IP for your Chef Server and `203.0.113.0` with the URL or IP for your workstation:
+    - **If you are using key pair authentication**, then from your **local terminal** copy the `.pem` files from your server to your workstation using the `scp` command. Replace `user` with the appropriate username, and `192.0.2.0` with the URL or IP for your Chef Server and `203.0.113.0` with the URL or IP for your workstation:
 
             scp -3 user@192.0.2.0:~/.chef/*.pem user@203.0.113.0:~/chef-repo/.chef/
 
@@ -171,7 +171,7 @@ cookbook_path            ["#{current_dir}/../cookbooks"]
 1.  Change the following:
 
      - The value for `node_name` should be the username that was created on the chef server.
-     - Change `USER.pem` under `client_key` to reflect your `.pem` file for your **user**.
+     - Change `USER.pem` under `client_key` to reflect your `.pem` file for your user.
      - The `validation_client_name` should be your organization's `ORG_NAME` followed by `-validator`.
      - `ORGANIZATION-validator.pem` in the `validation_key` path should be set to the `ORG_NAME` followed by `-validator.pem`.
      - Finally the `chef_server_url` needs to contain the IP address or FQDN of your Chef server, with your `ORG_NAME`.
@@ -203,15 +203,15 @@ Bootstrapping a client node installs the Chef client and validates the node, all
 
 1.  Bootstrap the client node either using the client node's root user, or a user with elevated privileges:
 
-    - As the node's root user, change `password` to your root password and `nodename` to the desired name for your client node. You can leave this off if you would like the name to default to your node's hostname:
+    - **As the node's root user**, change `password` to your root password and `nodename` to the desired name for your client node. You can leave this off if you would like the name to default to your node's hostname:
 
             knife bootstrap 192.0.2.0 -x root -P password --node-name nodename
 
-    - As a user with sudo privileges, change `username` to a node user, `password` to the user's password and `nodename` to the desired name for the client node. You can leave this off if you would like the name to default to your node's hostname:
+    - **As a user with sudo privileges**, change `username` to a node user, `password` to the user's password and `nodename` to the desired name for the client node. You can leave this off if you would like the name to default to your node's hostname:
 
             knife bootstrap 192.0.2.0 -x username -P password --sudo --node-name nodename
 
-    - As a user with key-pair authentication, change `username` to a node user, and `nodename` to the desired name for the client node. You can leave this off if you would like the name to default to your client node's hostname:
+    - **As a user with key-pair authentication**, change `username` to a node user, and `nodename` to the desired name for the client node. You can leave this off if you would like the name to default to your client node's hostname:
 
             knife bootstrap 192.0.2.0 --ssh-user username --sudo --identity-file ~/.ssh/id_rsa.pub --node-name hostname
 
@@ -227,7 +227,7 @@ When using Chef you will want the Chef client to periodically run on your nodes 
 
 This section is optional, but provides instructions on downloading a cookbook to your workstation, pushing it to a server, and includes the skeleton of a basic cookbook to expand and experiment with.
 
-1. From your *workstation*, navigating to your `~/chef-repo/.chef` directory:
+1. From your *workstation*, navigate to your `~/chef-repo/.chef` directory:
 
         cd ~/chef-repo/.chef
 
@@ -237,7 +237,7 @@ This section is optional, but provides instructions on downloading a cookbook to
 
 1.  Open the `default.rb` file to examine the default cookbook recipe:
 
-    {{< file "~/chef-repo/cookbooks/cron-delvalidate/recipes/default.rb" >}}
+    {{< file "~/chef-repo/cookbooks/cron-delvalidate/recipes/default.rb" ruby >}}
 #
 # Cookbook Name:: cron-delvalidate
 # Recipe:: Chef-Client Cron & Delete Validation.pem
@@ -256,7 +256,7 @@ file "/etc/chef/validation.pem" do
 end
 {{< /file >}}
 
-    The resource `cron "clientrun" do` defines the cron action. It is set to run the chef-client action (`/usr/bin/chef-client`) every hour (`*/1` with the `*/` defining that it's every hour and not 1AM daily). The `action` code denotes that Chef is *creating* a new cronjob.
+    The resource `cron "clientrun" do` defines the cron action. It is set to run the `chef-client` action (`/usr/bin/chef-client`) every hour (`*/1` with the `*/` defining that it's every hour and not 1AM daily). The `action` code denotes that Chef is *creating* a new cronjob.
 
     `file "/etc/chef/validation.pem" do` calls to the `validation.pem` file. The `action` defines that the file should be removed (`:delete`).
 
@@ -272,7 +272,7 @@ end
 
     This command is also used when updating cookbooks.
 
-1.  Switch to your *bootstrapped* node(s) and run the initial chef-client command:
+1.  Switch to your *bootstrapped* node(s) and run the initial `chef-client` command:
 
         chef-client
 
