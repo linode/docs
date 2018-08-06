@@ -39,10 +39,10 @@ This guide will cover how to create your own key-pair, distribute the public key
 
     - Select `RSA and RSA (default)` for the type of key.
     - Enter `4096` for the key size.
-    - Specify the length of the time the key should be valid in days, weeks, months or years. For example, `1y` will set an expration date of one year from the time of keypair creation.
+    - Specify the length of the time the key should be valid in days, weeks, months or years. For example, `1y` will set an expiration date of one year from the time of keypair creation.
     - Enter a name, email address, and comment to associate with the key pair. Any one of these three values can be used to identify the keypair for future use. Enter the desired information for each value and confirm when prompted.
 
-    - Provide a passphrase. The passphrase is used to unlock the private key, so it is important to ensure the passphrase is strong. Use a mix of alphnumeric characters.
+    - Provide a passphrase. The passphrase is used to unlock the private key, so it is important to ensure the passphrase is strong. Use a mix of alphanumeric characters.
 
     Once you have responded to all prompts, the keypair will be generated. This may take a few minutes to generate depending on the key size that was chosen.
 
@@ -80,13 +80,13 @@ This guide will cover how to create your own key-pair, distribute the public key
 
     - public key: `pub`
     - key size and type: `4096R`
-    - short keyid: `A11C0F78`
+    - short key ID: `A11C0F78`
     - creation date: `2018-08-02`
     - expiration date: `[expires: 2018-09-01]`
     - user IDs: `exampleName2 (example comment) <user2@example.com>`
     - subkey: `sub`
 
-   Throughout the remainder of this guide, the first public key will be used to encrpyt our message.
+   Throughout the remainder of this guide, the first public key will be used to encrypt our message.
 
    {{< note >}}
    The output may vary slightly depending on the version of Ubuntu you are using.
@@ -107,7 +107,7 @@ A revocation certificate is useful if you forget your passphrase of if your priv
 
 ## Exchange Public Keys
 
-You will need to exhange public keys with someone in order to securely communicate with them. If you do not want to make your key available on a [key server](#submit-your-gpg-key-to-a-key-server), you can exchange keys with someone directly by exporting your public key and sending them directly to the recipient.
+You will need to exchange public keys with someone in order to securely communicate with them. If you do not want to make your key available on a [key server](#submit-your-gpg-key-to-a-key-server), you can exchange keys with someone directly by exporting your public key and sending them directly to the recipient.
 
 ### Export Your Public Key
 
@@ -166,13 +166,13 @@ You can add someone else's public key to your public keyring by importing it. Th
 
 ### Submit Your Public Key to a Key Server
 
-You can submit your public key to a GPG server to make it available to the general public. The GnuPG configuration file `~/.gnupg/gpg.conf` by default sets the keyserver as `hkp://keys.gnupg.net` and provides examples of other keyservers that can be used in the file's comments. Since keyservers around the globe synchronize their keys to each other it should not be necessary to change the default value set in the configuration file.
+You can submit your public key to a GPG server to make it available to the general public. The GnuPG configuration file `~/.gnupg/gpg.conf` by default sets the key server as `hkp://keys.gnupg.net` and provides examples of other key servers that can be used in the file's comments. Since key servers around the globe synchronize their keys to each other it should not be necessary to change the default value set in the configuration file.
 
-1. Find the long keyid for the public key you would like to send to the keyserver:
+1. Find the long key ID for the public key you would like to send to the key server:
 
         gpg --keyid-format long --list-keys user@example.com
 
-    You will see an output similar to the example. The long keyid is the value after the key size `4096R` in the `pub` row. In the example the long keyid is `C7277DE1A11C0F78`:
+    You will see an output similar to the example. The long key ID is the value after the key size `4096R` in the `pub` row. In the example the long key ID is `C7277DE1A11C0F78`:
 
     {{< output >}}
     pub   4096R/C7277DE1A11C0F78 2018-08-02 [expires: 2018-09-01]
@@ -180,11 +180,11 @@ You can submit your public key to a GPG server to make it available to the gener
     sub   4096R/B838757D5C4E6643 2018-08-02 [expires: 2018-09-01]
     {{</ output >}}
 
-1. To send your public key to the default keyserver use the following command and replace `keyid` with your public key's long keyid:
+1. To send your public key to the default key server use the following command and replace `keyid` with your public key's long key ID:
 
         gpg --send-keys keyid
 
-1. Anyone can request your public key from the keyserver with the following command:
+1. Anyone can request your public key from the key server with the following command:
 
         gpg --recv-keys keyid
 
@@ -198,7 +198,7 @@ After you have obtained someone's public keys, you can send them encrypted messa
 
         gpg --output encrypted-doc.gpg --encrypt --sign --armor --recipient user3@example3.com -recipient user@example.com doc-to-encrypt.txt
 
-    Replace `encrypted-doc.gpg` with a name for the encrypted version of your document, `user3@example3.com` with the email associated with the public key of the encrypted message's recipient, `user@example.com` with your own public key's associcated email and `doc-to-encrypt.txt` with the name of the document you will encrypt. If the document is not in the current directory, include the full path to the document.
+    Replace `encrypted-doc.gpg` with a name for the encrypted version of your document, `user3@example3.com` with the email associated with the public key of the encrypted message's recipient, `user@example.com` with your own public key's associated email and `doc-to-encrypt.txt` with the name of the document you will encrypt. If the document is not in the current directory, include the full path to the document.
 
     The extension `.gpg` is used for encrypted/binary data and `.asc` or `.sig` is used for detached or clearsign signatures. Including the `--armor` flag will encrypt the message in plaintext.
 
