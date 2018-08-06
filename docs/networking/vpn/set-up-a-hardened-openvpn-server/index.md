@@ -1,6 +1,6 @@
 ---
 author:
-  name: Chris Walsh
+  name: Linode
   email: docs@linode.com
 description: 'Learn how to securely tunnel your traffic with OpenVPN and OpenSSL.'
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
