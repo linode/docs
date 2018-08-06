@@ -25,10 +25,10 @@ This guide shows how to install and test a LAMP stack on Ubuntu 18.04 (LTS).
 
 <!-- ![Install LAMP on Ubuntu 18.04](install-lamp-on-ubuntu-18-04.png "Install LAMP on Ubuntu 18.04") -->
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups/).
+{{< content "limited-user-note-shortguide" >}}
 
-Replace each instance of `example.com` in this guide with your site's domain name.
+{{< note >}}
+Replace each instance of `example.com` in this guide with your site's domain name or IP.
 {{< /note >}}
 
 ## Before You Begin
@@ -120,7 +120,7 @@ You can set up virtual hosts several ways, and the following steps outline the r
 
 1.  Create a copy of the default Apache configuration file for your site:
 
-        sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com
+        sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
 
 2.  Open the new `example.com` configuration file in your text editor. Uncomment the `ServerName` option and update it with your domain. Enter the document root path and log directories as shown below, and add a `Directory` block before `<VirtualHost>`:
 
@@ -181,23 +181,7 @@ If there are additional websites you wish to host on your Linode, repeat the abo
 
         sudo mysql -u root
 
-    The database will not prompt you for a password, as it is initially configured to use the `auth_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are connecting from the Linux root user on localhost:
-    {{< highlight sql >}}
-mysql> SELECT user,host,authentication_string,plugin FROM mysql.user WHERE user='root';
-+------+-----------+-----------------------+-------------+
-| user | host      | authentication_string | plugin      |
-+------+-----------+-----------------------+-------------+
-| root | localhost |                       | auth_socket |
-+------+-----------+-----------------------+-------------+
-1 row in set (0.02 sec)
-{{< /highlight >}}
-
-2.  You can keep using the `auth_socket` plugin, and this is considered a secure option for production systems. If you'd rather switch to password authentication and assign a password, enter the following commands. Replace `password` with a new root password:
-
-    {{< highlight sql >}}
-ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'password';
-FLUSH PRIVILEGES;
-{{< /highlight >}}
+    {{< content "mysql-authsocket-authentication-note-shortguide" >}}
 
 3.  Create a database and a user with permissions for it. In this example, the database is called `webdata`, the user `webuser`, and password `password`. Be sure to enter your own password; this should be different from the root password for MySQL:
 
