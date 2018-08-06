@@ -21384,10 +21384,6 @@ blockquote > div > div.btn-copy > .copy-code {
 #library-main-search {
   margin-bottom: 0;
 }
-.sub-menu-wrapper::before,
-.sub-menu-wrapper::after {
-  display: none;
-}
 .sub-menu-wrapper__title {
   line-height: 1.3;
   padding: 21px 0;
@@ -21413,6 +21409,18 @@ blockquote > div > div.btn-copy > .copy-code {
   font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  top: 1px;
+}
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance:none) {
+    .sub-menu {
+      top: -2px;
+    }
+  }
 }
 .sub-menu li {
   display: inline-block;
@@ -21430,7 +21438,7 @@ blockquote > div > div.btn-copy > .copy-code {
   padding-bottom: 21px;
   font-size: 15px;
   line-height: 15px;
-  margin: 13px 10px 0px 10px;
+  margin: 13px 12px 0px 12px;
 }
 .sub-menu a:hover,
 .sub-menu a.active {
@@ -21439,6 +21447,7 @@ blockquote > div > div.btn-copy > .copy-code {
 @media (max-width: 768px) {
   .sub-menu {
     width: 100%;
+    display: block;
   }
   .sub-menu li {
     display: block;
@@ -21448,6 +21457,22 @@ blockquote > div > div.btn-copy > .copy-code {
   }
   .sub-menu-wrapper .sub-menu li a {
     margin: 0;
+  }
+  .some-space.first-section.with-subnavigation {
+    padding-bottom: 30px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .navbar .nav-home {
+    top: 1px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .navbar.navbar-default {
+    height: auto;
+  }
+  .navbar .navbar-nav > li > a {
+    padding-bottom: 20px;
   }
 }
 /* Background */
