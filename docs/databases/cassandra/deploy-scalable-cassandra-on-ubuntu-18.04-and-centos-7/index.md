@@ -274,7 +274,7 @@ sudo vim ~/.cassandra/cqlshrc
 CentOS 7 users can find a sample file containing all the configuration options at `/etc/cassandra/conf/cqlshrc.sample`.
 {{< /note >}}
 
-{{< file ".cassandra/cqlshrc" aconf >}}
+{{< file "~/.cassandra/cqlshrc" aconf >}}
 . . .
 
 ;; Options that are common to both COPY TO and COPY FROM
