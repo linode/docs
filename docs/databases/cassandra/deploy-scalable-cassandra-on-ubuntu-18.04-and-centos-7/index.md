@@ -44,7 +44,7 @@ Add required repositories/gpg keys. Be sure to run the key add commands in the o
 {{< /caution >}}
 
 **Ubuntu 18.04**
-s
+
 1.  Add the Java repository:
 
 ```
@@ -75,7 +75,9 @@ gpg --export --armor A278B781FE4B2BDA | apt-key add -
 
 1.  Install the "yum-utils" package:
 
-        yum install yum-utils -y
+```
+yum install yum-utils -y
+```
 
 2.  Add the Datastax repository:
 
@@ -148,13 +150,13 @@ If `UN` is displayed in the output, the cluster is working. Your output should r
 
 If you are receiving connection errors, open the `cassandra-env.sh` file in a text editor:
 
-**Ubuntu 18.04**
+    **Ubuntu 18.04**
 
 ```
 vim /etc/cassandra/cassandra-env.sh
 ```
 
-**CentOS 7**
+    **CentOS 7**
 
 ```
 vim /etc/cassandra/conf/cassandra-env.sh
@@ -186,21 +188,21 @@ It may take a few seconds for Cassandra to refresh the configuration. If you rec
 The CentOS 7 installation already includes a backup file located at `/etc/cassandra/conf/cassandra.yaml.orig`.
 {{< /note >}}
 
-**Ubuntu 18.04**
-
 ```
 cp /etc/cassandra/cassandra.yaml /etc/cassandra/cassandra.yaml.backup
 ```
 
 2.  Open "cassandra.yaml" in your preferred text editor:
 
-**Ubuntu 18.04**
+{{< note >}} Locations of the cassandra.yaml file may differ slightly between distros. {{< /note >}}
+
+    **Ubuntu 18.04**
 
 ```
 vim /etc/cassandra/cassandra.yaml
 ```
 
-**CentOS 7**
+    **CentOS 7**
 
 ```
 vim /etc/cassandra/conf/cassandra.yaml
@@ -332,13 +334,13 @@ UPDATE system.local SET cluster_name = '[new_name]' WHERE KEY = 'local';
 
 3.  Save and close.
 
-**Ubuntu 18.04**
+    **Ubuntu 18.04**
 
 ```
 vim /etc/cassandra/cassandra.yaml
 ```
 
-**CentOS 7**
+    **CentOS 7**
 
 ```
 vim /etc/cassandra/conf/cassandra.yaml
