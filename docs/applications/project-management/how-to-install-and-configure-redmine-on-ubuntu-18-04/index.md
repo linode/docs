@@ -158,7 +158,7 @@ sudo systemctl restart nginx
 sudo ls /etc/nginx/conf.d/mod-http-passenger.conf
 ```
 
-If the ouput of the final command does not read `/etc/nginx/conf.d/mod-http-passenger.conf`, you must create the file and then set the configuration options manually via the following command:
+If the output of the final command does not read `/etc/nginx/conf.d/mod-http-passenger.conf`, you must create the file and then set the configuration options manually via the following command:
 
 {{< note >}} Due to restrictive directory permissions, you must switch to the root user account in order to perform the following command. {{< /note >}}
 
