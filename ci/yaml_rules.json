@@ -172,6 +172,12 @@
     "type": "text",
     "description": "Short version of title to be displayed in a front page icon."
   },
+  "type": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Hugo front matter variable. Override .Page.Type variable for this guide."
+  },
   "weight": {
     "elements": false,
     "required": false,

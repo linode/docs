@@ -13,6 +13,7 @@ published: 2009-07-19
 title: Getting Started with Linode
 show_on_frontpage: true
 title_short: "Getting Started"
+type: "guide"
 weight: 10
 icon: "book"
 show_on_rss_feed: false
