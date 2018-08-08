@@ -24,9 +24,7 @@ WordPress is a popular dynamic content management system (CMS) focused on blogs.
 
 {{< content "limited-user-note-shortguide" >}}
 
-{{< note >}}
 Replace each instance of `example.com` in this guide with your site's domain name or IP.
-{{< /note >}}
 
 ## Before You Begin
 
