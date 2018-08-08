@@ -4,8 +4,8 @@ author:
 description: 'How to Use GPG Keys to Send Encrypted Messages'
 keywords: ['gpg','security','cryptography','encrypt', 'decrypt']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-06
-modified: 2018-08-06
+published: 2018-08-08
+modified: 2018-08-08
 modified_by:
   name: Linode
 title: "How to Use GPG Keys to Send Encrypted Messages"
@@ -16,11 +16,13 @@ external_resources:
 
 ## What is GnuPG?
 
-GNU Privacy Guard (GnuPG), also known as GPG, is a tool for secure communication that was created by Werner Koch as [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) under the [GNU Project](https://www.gnu.org/gnu/thegnuproject.en.html). GnuPG follows the [OpenPGP protocol](https://www.openpgp.org/about/standard/), which defines and standardizes all the necessary components involved in sending encrypted messages--signatures, private keys and public key certificates. This piece of free software is notably used by journalists around the world to ensure that their sensitive email communication is kept secure and private.
+GNU Privacy Guard (GnuPG), also known as GPG, is a tool for secure communication that was created by Werner Koch as [Free Software](https://www.gnu.org/philosophy/free-sw.en.html) under the [GNU Project](https://www.gnu.org/gnu/thegnuproject.en.html). GnuPG follows the [OpenPGP protocol](https://www.openpgp.org/about/standard/), which defines and standardizes all the necessary components involved in sending encrypted messages--signatures, private keys, and public key certificates. This piece of free software is notably used by journalists around the world to ensure that their sensitive email communication is kept secure and private.
 
-GPG uses a combination of symmetric-key cryptography and public-key cryptography. Public key cryptography is likely already familiar to you since it is the recommended way to authenticate when [SSHing in to your Linode](/docs/security/securing-your-server/#harden-ssh-access). Public-key cryptography uses a key-pair system where any single user has a private and public key pair. The public key can be shared with anyone, while the private key should be protected and secret to maintain the integrity of the system. This asymmetric cryptographic system is ideal for secure communication, because all it requires is that the sender of the message have a copy of the receivers public key before encrypting and sending the message. The recipient can then use their private key to decrypt the message. This means anyone can send you a secure message if they have a copy of your public key.
+GPG uses a combination of symmetric-key cryptography and public-key cryptography. Public key cryptography is likely already familiar to you since it is the recommended way to authenticate when [SSHing in to your Linode](/docs/security/securing-your-server/#harden-ssh-access). Public-key cryptography uses a key-pair system where any single user has a private and public key pair. The public key can be shared with anyone, while the private key should be protected and secret to maintain the integrity of the system.
 
-This guide shows how to create your own key-pair, distribute the public key to a receiver, and encrypt and decrypt a message on Ubuntu 16.04 and 18.04.
+This asymmetric cryptographic system is ideal for secure communication, because all it requires is that the sender of the message have a copy of the receiver's public key before encrypting and sending the message. The recipient can then use their private key to decrypt the message. This means anyone can send you a secure message if they have a copy of your public key.
+
+This guide shows how to create your own keypair, distribute the public key to a receiver, and encrypt and decrypt a message on Ubuntu 16.04 and 18.04.
 
 ## Create GPG Keys
 
@@ -37,34 +39,32 @@ This guide shows how to create your own key-pair, distribute the public key to a
 
     - Select `(1) RSA and RSA (default)` for the type of key.
     - Enter `4096` for the key size.
-    - Specify the length of the time the key should be valid in days, weeks, months or years. For example, `1y` will set an expiration date of one year from the time of keypair creation.
+    - Specify the duration the key should be valid in days, weeks, months, or years. For example, `1y` will set an expiration date of one year from the time of keypair creation.
     - Enter a name, email address, and comment to associate with the key pair. Any one of these three values can be used to identify the keypair for future use. Enter the desired information for each value and confirm when prompted.
     - Provide a passphrase. The passphrase is used to unlock the private key, so it is important to ensure the passphrase is strong. Use a mix of alphanumeric characters.
 
     Once you have responded to all prompts, the keypair will be generated. This may take a few minutes to generate depending on the key size that was chosen.
 
-    - If your system seems to hang at the following message:
+    If your system seems to hang at the following message:
 
-        {{< output >}}
+    {{< output >}}
 We need to generate a lot of random bytes. It is a good idea to perform
 some other action (type on the keyboard, move the mouse, utilize the
 disks) during the prime generation; this gives the random number
 generator a better chance to gain enough entropy.
 {{< /output >}}
 
-        The system may require more [entropy](https://en.wikipedia.org/wiki/Entropy_(computing)) to generate the keypair, in a new shell session, install the `rng-utils` package:
+    The system may require more [entropy](https://en.wikipedia.org/wiki/Entropy_(computing)) to generate the keypair, in a new shell session, install the `rng-utils` package:
 
-            sudo apt install rng-tools
+        sudo apt install rng-tools
 
-        - Check and feed random data from an entropy source (e.g. hardware RNG device) to an entropy sink (e.g. kernel entropy pool) to provide the needed entropy for a secure keypair to be generated:
+    - Check and feed random data from an entropy source (e.g. hardware RNG device) to an entropy sink (e.g. kernel entropy pool) to provide the needed entropy for a secure keypair to be generated:
 
-                rngd -f -r /dev/urandom
+            rngd -f -r /dev/urandom
 
-        - To check the amount of entropy available on your Linode:
+    - Check the amount of entropy available on your Linode. The value should be somewhere near 3000 for keypair generation.
 
-                cat /proc/sys/kernel/random/entropy_avail
-
-            The value should be somewhere near 3000 for keypair generation.
+            cat /proc/sys/kernel/random/entropy_avail
 
 1. Verify the keys on your public keyring:
 
@@ -92,15 +92,11 @@ generator a better chance to gain enough entropy.
     - User IDs: `exampleName2 (example comment) <user2@example.com>`
     - Subkey: `sub`
 
-   Throughout the remainder of this guide, the first public key will be used to encrypt our message.
-
-   {{< note >}}
-The output may vary slightly depending on the version of Ubuntu you are using.
-{{</ note >}}
+   Throughout the remainder of this guide, the first public key will be used to encrypt our message. The output may vary slightly depending on the version of Ubuntu you are using.
 
 ## Generate a Revocation Certificate
 
-A revocation certificate is useful if you forget your passphrase of if your private key is somehow compromised. It is used to notify others that the public key is no longer valid. Create the revocation certificate immediately after generating your public key.
+A revocation certificate is useful if you forget your passphrase or if your private key is somehow compromised. It is used to notify others that the public key is no longer valid. Create the revocation certificate immediately after generating your public key.
 
 Generate a revocation certificate. Replace `user@example.com` with the email address associated with the public key:
 
@@ -129,7 +125,7 @@ You will need to exchange public keys with someone in order to securely communic
 
 ### Import and Validate a Public Key
 
-You can add someone else's public key to your public keyring by importing it. The user's public key must first be sent to you, by email or some other format, before you can import it to your public key ring. When the key is imported you should verify the key by checking the key's fingerprint and then signing it.
+You can add someone else's public key to your public keyring by importing it. The user's public key must first be sent to you, by email or some other format, before you can import it to your public key ring. When the key is imported you should verify the key by checking its fingerprint and then signing it.
 
 1. Once you've received the user's public key and the `.gpg` file is saved to your Linode, import it to your public key ring. Replace `public-key.gpg` with the file name of the public key you will import. If your file is saved somewhere other than the current directory, make sure you use the full path to the file:
 
