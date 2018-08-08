@@ -57,7 +57,7 @@ Most nameserver authorities will allow you to set the TTL on your domain or on i
 
     {{< image src="whois-icann-registrar.png" alt="linode.com nameservers" title="whois.icann.org lookup of nameservers for linode.com" >}}
 
-Your registrar may not be the same organization as your current nameserver authority, though they often are, as registrars generally offer free DNS services.
+    Your registrar may not be the same organization as your current nameserver authority, though they often are, as registrars generally offer free DNS services.
 
 1.  Log in to your domain registrar's control panel and update the authoritative nameservers to be Linode's nameservers:
 
