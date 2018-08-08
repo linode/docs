@@ -9,6 +9,7 @@ modified_by:
   name: Nathan Melehan
 published: 2018-08-03
 title: About MySQL auth_socket Authentication
+keywords: []
 shortguide: true
 show_on_rss_feed: false
 ---
