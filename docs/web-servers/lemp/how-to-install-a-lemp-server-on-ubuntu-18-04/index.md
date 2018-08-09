@@ -108,7 +108,7 @@ quit
 
 3.  Website configuration files should be kept in `/etc/nginx/sites-available/`. Create a configuration file inside this directory with the example content. Replace *example.com* with your domain in both the file name and in the file's contents:
 
-    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
+    {{< file "/etc/nginx/sites-available/example.com.conf" nginx >}}
 server {
     listen         80 default_server;
     listen         [::]:80 default_server;
