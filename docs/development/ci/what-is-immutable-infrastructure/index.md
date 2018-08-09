@@ -46,10 +46,10 @@ Docker Containers were designed to be immutable. Docker comes with many utilitie
 
 Another benefit to using Docker containers to implement your immutable infrastructure, is that it helps manage data persistence or *stateful* components, like an application's database. Stateful components cannot simply be destroyed and redeployed using a server image. With a Docker container, you can take advantage of their [volumes](https://docs.docker.com/storage/volumes/) feature. The Docker volume will exist outside the lifecycle of a given container allowing you to destroy a container at will and spin up a new one with the persisted data.
 
-For more information on Docker see, the [An Introduction to Docker](https://linode.com/docs/applications/containers/introduction-to-docker/) guide. You can also read [How to Deploy Microservices with Docker](docs/applications/containers/deploying-microservices-with-docker/) to learn about building large-scale applications with containers.
+For more information on Docker see, the [An Introduction to Docker](/docs/applications/containers/introduction-to-docker/) guide. You can also read [How to Deploy Microservices with Docker](/docs/applications/containers/deploying-microservices-with-docker/) to learn about building large-scale applications with containers.
 
 ## Pros and Cons to an Immutable Infrastructure
-There are many benefits to implementing an immutable infrastructure into your [CI/CD pipeline](/docs/development/ci/introduction-ci-cd/), however there are also some initial drawbacks that are importaint to understand. Your adoption of this pattern can depend on your current infrastructure, if one already exists, your team's expertise and your own desire to learn and implement new tooling. This information will help you determine if this is a model that makes sense for your project or organization.
+There are many benefits to implementing an immutable infrastructure into your [CI/CD pipeline](/docs/development/ci/introduction-ci-cd/), however there are also some initial drawbacks that are important to understand. Your adoption of this pattern can depend on your current infrastructure, if one already exists, your team's expertise and your own desire to learn and implement new tooling. This information will help you determine if this is a model that makes sense for your project or organization.
 
 **Pros**
 
@@ -62,7 +62,7 @@ There are many benefits to implementing an immutable infrastructure into your [C
 
 **Cons**
 
-- Higher initial overhead to learn new tooling and implement the infrastruture.
+- Higher initial overhead to learn new tooling and implement the infrastructure.
 - Small quick fixes require a full redeploy.
 - Possible increase in resource usage and cost depending on how often servers are destroyed and redeployed in a given time period.
 
@@ -79,4 +79,4 @@ Here are some popular tools:
 - [Docker Swarm](/docs/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/) helps you scale up the power of Docker by creating a cluster of Docker hosts.
 - [SaltStack](https://saltstack.com/) is a configuration management platform designed to control a number of *minion* servers from a single master server.
 - [Linode Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) can easily store and persist date across Linodes.
-- [Jenkins](/docs/development/ci/automate-builds-with-jenkins-on-ubuntu/) is an open-source automation server that allows you to build piplelines for build, testing and deployment automation.
+- [Jenkins](/docs/development/ci/automate-builds-with-jenkins-on-ubuntu/) is an open-source automation server that allows you to build pipelines for build, testing and deployment automation.
