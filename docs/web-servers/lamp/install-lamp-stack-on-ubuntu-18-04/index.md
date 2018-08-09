@@ -120,7 +120,7 @@ You can set up virtual hosts several ways, and the following steps outline the r
 
 1.  Create a copy of the default Apache configuration file for your site:
 
-        sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com
+        sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
 
 2.  Open the new `example.com` configuration file in your text editor. Uncomment the `ServerName` option and update it with your domain. Enter the document root path and log directories as shown below, and add a `Directory` block before `<VirtualHost>`:
 
