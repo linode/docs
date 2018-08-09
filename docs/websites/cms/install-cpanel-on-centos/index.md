@@ -6,7 +6,7 @@ description: 'Use cPanel to manage services on your CentOS Linode.'
 keywords: ["cpanel", "Linode control panel", "install cpanel", "cpanel centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-applications/control-panels/cpanel/centos-6/','websites/cms/cpanel-on-centos-6-5/','websites/cms/cpanel-on-centos-5/','websites/cms/cpanel-on-centos/']
-modified: 2017-11-08
+modified: 2018-08-09
 modified_by:
   name: Edward Angert
 published: 2016-09-07
@@ -39,8 +39,7 @@ If you plan to use a domain name for nameservers for which you will also be host
 
 ## Kernel Prerequisites
 
-cPanel needs to run on the CentOS kernel. To configure your Linode to boot the CentOS kernel instead of the default Linode kernel, edit the CentOS configuration profile and select GRUB2 from the Boot Settings menu. Save the changes and reboot your Linode. For more information, [see our guide](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel#recommended-distributions) on running the distribution-supplied kernel on a Linode.
-
+Use `uname -r` to check which kernel you are booted with. CPanel requires the CentOS kernel so if you are using the Linode kernel, you will need to change. See our guide on [changing your Linode's kernel](/docs/platform/manager/switch-your-linodes-kernel) for more information.
 
 ## Install cPanel
 
