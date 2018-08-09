@@ -59,6 +59,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     You should see a similar output like that displayed below, which means you can proceed:
 
+    {{< output >}}
         OS:	Linux 4.15.0-29-generic #31-Ubuntu SMP Tue Jul 17 15:39:52 UTC 2018 x86_64
         Shell:	/usr/bin/bash
         PHP binary:	/usr/bin/php7.2
@@ -70,32 +71,48 @@ This guide is written for a non-root user. Commands that require elevated privil
         WP-CLI packages dir:
         WP-CLI global config:
         WP-CLI project config:
-        WP-CLI version:	1.5.1
+        WP-CLI version:	2.0.0
+    {{</ output >}}
 
 You can use the above three steps for upgrading WP-CLI as well.
 
 ### Activate Bash Completion
 
-The bash completion feature of WP-CLI allows you to see all the available commands on the fly.
+The bash completion feature of WP-CLI allows you to see all its available commands on the fly when pressing **Tab**. WP-CLI supports tab completion for [Bash](https://www.gnu.org/software/bash/) and [Zsh](https://en.wikipedia.org/wiki/Z_shell).
 
 1.  Download the bash script in your home directory:
 
-        cd ~/
+        cd ~
         wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
 
-1.  Edit the `.bashrc` file so that it is loaded by the shell every time you login. Open the file and add the following line in the editor:
+1. Edit your shell's configuration file so that wp-completion is loaded by the shell every time you open a new shell session:
 
-    {{< file "~/.bashrc" bash >}}
-source /home/$USER/wp-completion.bash
+    **Bash**
+    - Open the `.bashrc`file and add the following line in the editor:
 
-{{< /file >}}
+        {{< file "~/.bashrc" bash >}}
+        source /home/$USER/wp-completion.bash
+        {{< /file >}}
 
+    - Run the following command to reload the bash profile:
 
-1.  Run the following command to reload the bash profile:
+            source ~/.bashrc
 
-        source ~/.bashrc
+    **Zsh**
 
-That's it. Bash completion is now enabled. To test it, type `wp theme ` (include the trailing space) and press **Tab** twice. You will see the list of available commands with `wp theme` again on the prompt.
+    - Open the `.zshrc`file and add the following lines in the editor:
+
+        {{< file "~/.zshrc" bash >}}
+        autoload bashcompinit
+        bashcompinit
+        source /home/$USER/wp-completion.bash
+        {{< /file >}}
+
+    - Run the following command to reload the Zsh profile:
+
+            source ~/.zshrc
+
+Shell completion is now enabled. To test it, type `wp theme ` (include the trailing space) and press **Tab** twice. You will see the list of available commands with `wp theme` again on the prompt.
 
 ## Basics of WP-CLI
 Before moving on, let's learn some basics of how WP-CLI works. This will help you feel comfortable with the upcoming steps.
@@ -112,6 +129,7 @@ WP-CLI also comes with a detailed help section, which displays all the commands 
 
 The output should resemble:
 
+{{< output >}}
     wp
 
     DESCRIPTION
@@ -134,7 +152,7 @@ The output should resemble:
     eval                Execute arbitrary PHP code after loading WordPress.
     eval-file           Load and execute a PHP file after loading WordPress.
     :
-
+{{</ output >}}
 
 `:` is a prompt that, with subcommands, can help you navigate through this help menu. Up and down arrow keys will let you scroll through the entire help command list. Typing `q` will exit the help menu. For additional details on how to further navigate through the complete help section, you can always type `h` at the above prompt.
 
@@ -159,7 +177,10 @@ CREATE DATABASE wordpress;
     {{< highlight sql >}}
 CREATE USER 'wpuser' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser';
+FLUSH PRIVILEGES;
 {{< /highlight >}}
+
+1. Type `quit` to exit the MySQL command line.
 
 ### Download and Configure WordPress
 
@@ -200,6 +221,7 @@ Let's say you want to install the Yoast SEO plugin. Your first step will be to f
 
 You will get an output similar to this.
 
+{{< output >}}
     Success: Showing 10 of 574 plugins.
     +---------------------------------------------------+------------------------------------+--------+
     | name                                              | slug                               | rating |
@@ -215,12 +237,13 @@ You will get an output similar to this.
     | LiteSpeed Cache                                   | litespeed-cache                    | 98     |
     | WPGlobus &#8211; Multilingual Everything!         | wpglobus                           | 92     |
     +---------------------------------------------------+------------------------------------+--------+
+{{</ output >}}
 
 You can see more than 10 plugins per page by modifying the command:
 
     wp plugin search yoast --per-page=20
 
-Now that you know the slug of the plugin you want to install (wordpress-seo), copy it to your command and activate it:
+Now that you know the slug of the plugin you want to install (`wordpress-seo`), copy it to your command and activate it:
 
     sudo -u www-data wp plugin install wordpress-seo
     sudo -u www-data wp plugin activate wordpress-seo
@@ -238,7 +261,7 @@ Or, to list all the installed plugins on your blog, you can use:
     wp plugin list
 
 To uninstall a plugin:
-    
+
     sudo -u www-data wp plugin deactivate wordpress-seo
     sudo -u www-data wp plugin uninstall wordpress-seo
 
@@ -278,4 +301,4 @@ The first command updates the files. The second one completes the database upgra
 
 ## Conclusion
 
-Congratulations! You have installed and can now further configure WP-CLI. These commands are just the tip of the iceberg about how you can manage WordPress from the command line. Write or edit posts, perform database queries, manage user capabilities, manage cron events, import or export content, manage attachments and even manage multi-site installations are all now available to you through a few, quick and practical keystrokes. You have refined WordPress management and conserved valuable time. Sweet!
+You have installed and can now further configure WP-CLI. These commands are just the tip of the iceberg about how you can manage WordPress from the command line. Write or edit posts, perform database queries, manage user capabilities, manage cron events, import or export content, manage attachments and even manage multi-site installations are all now available to you through a few, quick and practical keystrokes. You have refined WordPress management and conserved valuable time. Sweet!
