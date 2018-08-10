@@ -10,7 +10,7 @@ modified: 2018-08-09
 modified_by:
   name: Linode
 published: 2015-06-29
-title: Switching Your Linode's Kernel
+title: Switch Kernels on Your Linode
 ---
 
 Your Linode is capable of using your choice of the upstream kernel provided by a Linux distribution's maintainers, Linode's own kernel, or one which you've compiled yourself. Most distributions boot the upstream-supplied kernel by default, with exception to CentOS 6, OpenSUSE Leap 42.3, Slackware, and Ubuntu 14.04, which boot the Linode kernel by default.
