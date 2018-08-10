@@ -13,8 +13,6 @@ published: 2015-06-29
 title: 'Switching Your Linode's Kernel'
 ---
 
-<!--![Run a Distribution-Supplied Kernel on a KVM Linode](run-a-distribution-supplied-kernel-with-kvm.png "Run a Distribution-Supplied Kernel on a KVM Linode")-->
-
 Your Linode is capable of using your choice of the upstream kernel provided by a Linux distribution's maintainers, Linode's own kernel, or one which you've compiled yourself. Most distributions boot the upstream-supplied kernel by default, with exception to CentOS 6, OpenSUSE Leap 42.3, Slackware, and Ubuntu 14.04, which boot the Linode kernel by default.
 
 This guide demonstrates using the Linode Manager to change which kernel a KVM-based Linode will boot.
