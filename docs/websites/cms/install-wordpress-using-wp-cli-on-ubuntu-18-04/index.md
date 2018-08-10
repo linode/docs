@@ -7,7 +7,7 @@ keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion",
 aliases: ['websites/cms/install-and-configure-wordpress-using-wp-cli/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
-modified: 2018-08-06
+modified: 2018-08-10
 modified_by:
     name: Linode
 title: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
@@ -91,8 +91,8 @@ The bash completion feature of WP-CLI allows you to see all its available comman
     - Open the `.bashrc`file and add the following line in the editor:
 
         {{< file "~/.bashrc" bash >}}
-        source /home/$USER/wp-completion.bash
-        {{< /file >}}
+source /home/$USER/wp-completion.bash
+{{< /file >}}
 
     - Run the following command to reload the bash profile:
 
@@ -103,10 +103,10 @@ The bash completion feature of WP-CLI allows you to see all its available comman
     - Open the `.zshrc`file and add the following lines in the editor:
 
         {{< file "~/.zshrc" bash >}}
-        autoload bashcompinit
-        bashcompinit
-        source /home/$USER/wp-completion.bash
-        {{< /file >}}
+autoload bashcompinit
+bashcompinit
+source /home/$USER/wp-completion.bash
+{{< /file >}}
 
     - Run the following command to reload the Zsh profile:
 
@@ -203,11 +203,9 @@ FLUSH PRIVILEGES;
 
     Replace `wpuser` and `password` with your WordPress database user and password. `dbhost` and `dbprefix` are entirely optional and can be omitted unless you need to change their default values.
 
-1.  Run the installation:
+1.  Run the installation. Replace `adminuser` with the username you'd like to login to WordPress, and replace `password` with a unique password. Replace example.com with your domain, or replace it with your IP address if you haven't set up a domain yet.
 
         sudo -u www-data wp core install --url='http://example.com' --title='Blog Title' --admin_user='adminuser' --admin_password='password' --admin_email='email@domain.com'
-
-    Replace `adminuser` with the username you'd like to login to WordPress, and replace `password` with a unique password. Replace example.com with your domain, or replace it with your IP address if you haven't set up a domain yet.
 
 1.  Visit `http://example.com/wp-admin` (or `http://<Linode IP address>/wp-admin` if you haven't set up a domain) and verify that you can log in with the WordPress user you created in the previous step.
 
@@ -215,7 +213,7 @@ FLUSH PRIVILEGES;
 
 ### Install and Update Plugins
 
-Let's say you want to install the Yoast SEO plugin. Your first step will be to find the *plugin slug*. In this case, the slug is the last part of a permalink url which describes the plugin directory. If a plugin is available at http://wordpress.org/plugins/plugin-dir/, then `plugin-dir` is the slug of the plugin. You install the plugin under the same directory on your blog at http://example.com/wp-content/plugins/plugin-dir/. Since this slug is unique to every plugin, you can search for the slug of any plugin using WP-CLI and then install it:
+Let's say you want to install the Yoast SEO plugin. Your first step will be to find the *plugin slug*. In this case, the slug is the last part of a permalink URL which describes the plugin directory. If a plugin is available at http://wordpress.org/plugins/plugin-dir/, then `plugin-dir` is the slug of the plugin. You install the plugin under the same directory on your blog at `http://example.com/wp-content/plugins/plugin-dir/`. Since this slug is unique to every plugin, you can search for the slug of any plugin using WP-CLI and then install it:
 
     wp plugin search yoast
 
@@ -267,16 +265,16 @@ To uninstall a plugin:
 
 ### Install and Update Themes
 
-The procedure for installing and activating a theme is nearly identical to that of the plugin. Just swap `plugin` for `theme` in all the commands:
+The procedure for installing and activating a theme is nearly identical to that of a plugin. Just swap `plugin` for `theme` in all the commands:
 
     wp theme search twentyfourteen
 
-To install and activate, you can use:
+To install and activate:
 
     sudo -u www-data wp theme install twentyfourteen
     sudo -u www-data wp theme activate twentyfourteen
 
-To update one or all themes, you can use:
+To update one or all themes:
 
     sudo -u www-data wp theme update twentyfourteen
     sudo -u www-data wp theme update --all
@@ -292,13 +290,11 @@ To uninstall a theme, activate a different theme first:
 
 ### Update WordPress
 
-You can update your blog through the following commands:
+You can update your blog through the following commands. The first command updates the files. The second one completes the database upgrade.
 
     sudo -u www-data wp core update
     sudo -u www-data wp core update-db
 
-The first command updates the files. The second one completes the database upgrade.
-
 ## Conclusion
 
-You have installed and can now further configure WP-CLI. These commands are just the tip of the iceberg about how you can manage WordPress from the command line. Write or edit posts, perform database queries, manage user capabilities, manage cron events, import or export content, manage attachments and even manage multi-site installations are all now available to you through a few, quick and practical keystrokes. You have refined WordPress management and conserved valuable time. Sweet!
+You can now further configure WP-CLI. These commands are just the tip of the iceberg about how you can manage WordPress from the command line. Write or edit posts, perform database queries, manage user capabilities, manage `cron` events, import or export content, manage attachments, and even manage multi-site installations are all now available to you through a few, quick and practical keystrokes. You have refined WordPress management and conserved valuable time.
