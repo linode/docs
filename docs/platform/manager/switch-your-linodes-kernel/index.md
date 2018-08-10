@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Use the Linode Manager to change which kernel your Linode boots."
+description: 'Use the Linode Manager to change which kernel your Linode boots.''
 keywords: ["kernel", "grub"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: ['run-a-distribution-supplied-kernel-with-kvm/','tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/']
@@ -10,7 +10,7 @@ modified: 2018-08-09
 modified_by:
   name: Linode
 published: 2015-06-29
-title: 'Switching Your Linode's Kernel'
+title: Switching Your Linode's Kernel
 ---
 
 Your Linode is capable of using your choice of the upstream kernel provided by a Linux distribution's maintainers, Linode's own kernel, or one which you've compiled yourself. Most distributions boot the upstream-supplied kernel by default, with exception to CentOS 6, OpenSUSE Leap 42.3, Slackware, and Ubuntu 14.04, which boot the Linode kernel by default.
