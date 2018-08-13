@@ -21,7 +21,7 @@ external_resources:
 Ideally, you want to keep SELinux in enforcing mode, but there may be times when you need to set it to permissive mode, or disable it altogether. Note that the *disabled* state means the daemon is still running and is still enforcing rules for [discretionary access control](https://en.wikipedia.org/wiki/Discretionary_access_control), however no MAC security policies are being used, and no violations are being logged.
 
 {{< note >}}
-To use SELinux on CentOS or Fedora, you must use the upstream kernel--you can not use the Linode kernel. See our guide on [switching your Linode's kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel) if you need help on the topic.
+To use SELinux on CentOS or Fedora, you must use the distribution-supplied *upstream* kernel (as opposed to the Linode-supplied kernel, which does not support SELinux). All recently created Linodes run an upstream kernel by default. Review the [How to Change your Linode's Kernel](/docs/platform/manager/how-to-change-your-linodes-kernel/) guide for more information on upstream kernels, the Linode kernel, and how to switch between them.
 {{< /note >}}
 
 1.  View the current enforcement mode of SELinux on your system using `sestatus`. You can see below that SELinux is set to permissive mode.

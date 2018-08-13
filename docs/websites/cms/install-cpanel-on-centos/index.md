@@ -39,7 +39,7 @@ If you plan to use a domain name for nameservers for which you will also be host
 
 ## Kernel Prerequisites
 
-Use `uname -r` to check which kernel you are booted with. CPanel requires the CentOS kernel so if you are using the Linode kernel, you will need to change. See our guide on [changing your Linode's kernel](/docs/platform/manager/switch-kernels-on-your-linode) for more information.
+CPanel requires the distribution-supplied/*upstream* CentOS kernel, as opposed to the Linode-provided kernel. Run `uname -r` on your Linode to check which kernel you are booted with. If you are booted under the Linode kernel, follow the [How to Change your Linode's Kernel](/docs/platform/manager/how-to-change-your-linodes-kernel/) guide for instructions on switching to the upstream kernel.
 
 ## Install cPanel
 
