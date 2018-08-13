@@ -63,7 +63,7 @@ Replace each instance of example.com in this guide with your Mastodon site’s d
         sudo apt-get install python-certbot-nginx
         sudo certbot certonly --standalone -d example.com
 
-    These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linodess.
+    These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linodes.
 
     {{< note >}}
 Why not use the Docker Certbot image? When Certbot is run, you generally pass a command with the [`--deploy-hook` option](https://certbot.eff.org/docs/api/hooks.html#certbot.hooks.deploy_hook) which reloads your web server. In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. Another workaround would be needed to enable this architecture.
@@ -120,7 +120,7 @@ services:
 #    build: .
     image: tootsuite/mastodon:v2.4.2
     # [...]
-    
+
 {{< /file >}}
 
     {{< note >}}
@@ -342,7 +342,7 @@ SMTP_FROM_ADDRESS=Mastodon <notifications@example.com>
 {{< /file >}}
 
     If you're using Mailgun for your mail service, remove all the lines from the `Mail settings` section and enter the following options:
-    
+
     {{< file ".env.production" >}}
 SMTP_SERVER=smtp.mailgun.org
 SMTP_PORT=587
@@ -362,7 +362,7 @@ SMTP_PASSWORD=your_mailgun_email_password
 
         sed -i "s/OTP_SECRET=$/&$(docker-compose run --rm web bundle exec rake secret)/" .env.production
 
-1.  Another command generates values for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`: 
+1.  Another command generates values for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`:
 
         docker-compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
 
@@ -406,7 +406,7 @@ This command can take awhile to finish.
 
 1.  Enter a new username, email address, and password to create a new user on your Mastodon instance. When communicating with users of other Mastodon servers, your full username is `@your_username@your_mastodon_server_domain`.
 
-1.  Mastodon will attempt to send you a confirmation email. Check your email and click the link inside to confirm your signup.
+1.  Mastodon will attempt to send you a confirmation email. Check your email and click the link inside to confirm your registration.
 
     If you did not set up email notifications, you can manually confirm the new user by running the `confirm_email` task on the Docker container:
 
