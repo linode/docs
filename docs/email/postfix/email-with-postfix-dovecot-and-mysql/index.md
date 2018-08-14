@@ -102,11 +102,11 @@ The mail server's virtual users and passwords are stored in a MySQL database. Do
 
 1.  Create a new database:
 
-        sudo mysqladmin -u root create mailserver
+        sudo mysqladmin -u root -p create mailserver
 
 1.  Log in to MySQL:
 
-        sudo mysql -u root
+        sudo mysql -u root -p
 
 1.  Create the MySQL user and grant the new user permissions over the database. Replace `mailuserpass` with a secure password:
 
@@ -115,6 +115,10 @@ The mail server's virtual users and passwords are stored in a MySQL database. Do
 1.  Flush the MySQL privileges to apply the change:
 
         FLUSH PRIVILEGES;
+
+1.  Switch to the new `mailsever` database:
+
+        USE mailserver;
 
 1.  Create a table for the domains that will receive mail on the Linode:
 
