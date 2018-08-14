@@ -2,13 +2,13 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installation and basic usage guide of Mastodon, an open-source alternative to Twitter.'
+description: 'Installation and basic usage guide of Mastodon, an open source alternative to Twitter.'
 keywords: ["mastodon", "twitter alternative", "micro blog", "fediverse"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-08
 modified_by:
   name: Linode
-published: 2018-08-08
+published: 2018-08-16
 title: 'How to Install Mastodon on Ubuntu 16.04'
 external_resources:
 - '[Mastodon GitHub - Docker Guide](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Docker-Guide.md)'
@@ -22,7 +22,7 @@ external_resources:
 
 **Mastodon** is a free, decentralized, and open source social network alternative to Twitter. Like Twitter, Mastodon users can follow other users and post messages, images, and videos. Unlike Twitter, there is no single central authority and store for content on the network.
 
-Instead, anyone can create a Mastodon server, invite their friends to join it, and build their own communities. In addition, while each Mastodon instance is privately operated, users from different servers can still communicate with and follow each other across instances.
+Instead, anyone can create a Mastodon server, invite friends to join it, and build their own communities. In addition, while each Mastodon instance is privately operated, users from different servers can still communicate with and follow each other across instances.
 
 {{< youtube "IPSbNdBmWKE" >}}
 
@@ -31,7 +31,6 @@ Instead, anyone can create a Mastodon server, invite their friends to join it, a
 This network of independent servers is referred to as the [Fediverse](https://en.wikipedia.org/wiki/Fediverse). Mastodon can actually communicate with any server implementing the [ActivityPub](https://en.wikipedia.org/wiki/ActivityPub) and/or [OStatus](https://en.wikipedia.org/wiki/OStatus) protocols (one other example is [GNU Social](https://en.wikipedia.org/wiki/GNU_social)), and Mastodon is just one implementation of these protocols.
 
 While Mastodon servers are privately-operated, they are often open to public registration. Some servers are small, and some are very large (for example, [Mastodon.social](https://mastodon.social) has over 180,000 users). Servers are frequently centered on specific interests of their users, or by the principles those users want to organize under. To enforce those principles, each Mastodon server has the power to moderate and set rules for the content created by the users on that server (for example, see Mastodon.social's [Code of Conduct](https://mastodon.social/about/more)).
-
 
 ## Before You Begin
 
@@ -45,9 +44,7 @@ Consult Mastodon's [resource usage examples](https://github.com/tootsuite/docume
 
 1.  This guide uses sudo wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-    {{< note >}}
-Replace each instance of example.com in this guide with your Mastodon site’s domain name.
-{{< /note >}}
+    Replace each instance of `example.com` in this guide with your Mastodon site’s domain name.
 
 1.  Complete the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Mastodon Linode.
 
@@ -55,21 +52,21 @@ Replace each instance of example.com in this guide with your Mastodon site’s d
 
         sudo apt update && sudo apt upgrade
 
-1.  Mastodon will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Request and download a free certificate from [Let's Encrypt](https://letsencrypt.org) by using [Certbot](https://certbot.eff.org):
+1.  Mastodon will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Request and download a free certificate from [Let's Encrypt](https://letsencrypt.org) using [Certbot](https://certbot.eff.org):
 
-        sudo apt-get install software-properties-common
+        sudo apt install software-properties-common
         sudo add-apt-repository ppa:certbot/certbot
-        sudo apt-get update
-        sudo apt-get install python-certbot-nginx
+        sudo apt update
+        sudo apt install certbot
         sudo certbot certonly --standalone -d example.com
 
-    These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linodes.
+    These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linode.
 
-    {{< note >}}
-Why not use the Docker Certbot image? When Certbot is run, you generally pass a command with the [`--deploy-hook` option](https://certbot.eff.org/docs/api/hooks.html#certbot.hooks.deploy_hook) which reloads your web server. In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. Another workaround would be needed to enable this architecture.
-{{< /note >}}
+    {{< disclosure-note "Why not use the Docker Certbot image?" >}}
+When Certbot is run, you generally pass a command with the [`--deploy-hook` option](https://certbot.eff.org/docs/api/hooks.html#certbot.hooks.deploy_hook) which reloads your web server. In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. Another workaround would be needed to enable this architecture.
+{{< /disclosure-note >}}
 
-1.  Mastodon will send email notifications to users for different events, like when a user first signs up, or when someone else requests to follow them. You will need to supply an SMTP server which will be used to send these messages. One option is to install your own mail server; the [Email with Postfix, Dovecot, and MySQL](https://linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide shows how to set one up that will be able to send Mastodon's notifications.
+1.  Mastodon will send email notifications to users for different events, like when a user first signs up, or when someone else requests to follow them. You will need to supply an SMTP server which will be used to send these messages. One option is to install your own mail server; the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide shows how to set one up that will be able to send Mastodon's notifications.
 
     You can install such a mail server on the same Linode as your Mastodon server, or on a different one. If you follow this guide, be sure to create a `notifications@example.com` email address which you will later use for notifications. If you install your mail server on the same server as your Mastodon deployment, you can use your Let's Encrypt certificate in `/etc/letsencrypt/live/example.com/` for the mail server too.
 
@@ -93,6 +90,7 @@ Mastodon has a number of components: Postgres and Redis are used to store data, 
 
 1.  SSH into your Linode and clone Mastodon's Git repository:
 
+        cd ~/
         git clone https://github.com/tootsuite/mastodon
         cd mastodon
 
@@ -100,7 +98,7 @@ Mastodon has a number of components: Postgres and Redis are used to store data, 
 
     Open `docker-compose.yml` in your favorite text editor, comment-out the `build` lines, and add a version number to the `image` lines for the `web`, `streaming`, and `sidekiq` services:
 
-    {{< file "docker-compose.yml" >}}
+    {{< file "docker-compose.yml" docker >}}
 version: '3'
 
 services:
@@ -129,7 +127,7 @@ At time of publishing, [v2.4.3](https://github.com/tootsuite/mastodon/releases/t
 
 1.  For the `db`, `redis`, `web`, and `sidekiq` services, set the volumes listed in this snippet:
 
-    {{< file "docker-compose.yml" >}}
+    {{< file "docker-compose.yml" docker >}}
 version: '3'
 
 services:
@@ -159,7 +157,7 @@ services:
 
 1.  After the `sidekiq` service, but before the final `networks` section, add a new `nginx` service. NGINX will be used to proxy requests on HTTP and HTTPS to the Mastodon Ruby on Rails application:
 
-    {{< file "docker-compose.yml" >}}
+    {{< file "docker-compose.yml" docker >}}
 version: '3'
 
 services:
@@ -200,15 +198,15 @@ networks:
 
 1.  Create a file named `Dockerfile` in the `nginx` directory and paste in the following contents:
 
-    {{< file "nginx/Dockerfile" >}}
+    {{< file "nginx/Dockerfile" dockerfile >}}
 FROM nginx:latest
 
 COPY default.conf /etc/nginx/conf.d
 {{< /file >}}
 
-1.  Create a file named `default.conf` in the `nginx` directory and paste in the following contents:
+1.  Create a file named `default.conf` in the `nginx` directory and paste in the following contents. Change each instance of `example.com`:
 
-    {{< file "nginx/default.conf" >}}
+    {{< file "nginx/default.conf" conf >}}
 map $http_upgrade $connection_upgrade {
   default upgrade;
   ''      close;
@@ -217,7 +215,7 @@ map $http_upgrade $connection_upgrade {
 server {
   listen 80;
   listen [::]:80;
-  server_name mastodon.docteamdemosite.club;
+  server_name example.com;
   # Useful for Let's Encrypt
   location /.well-known/acme-challenge/ { root /usr/share/nginx/html; allow all; }
   location / { return 301 https://$host$request_uri; }
@@ -226,15 +224,15 @@ server {
 server {
   listen 443 ssl http2;
   listen [::]:443 ssl http2;
-  server_name mastodon.docteamdemosite.club;
+  server_name example.com;
 
   ssl_protocols TLSv1.2;
   ssl_ciphers HIGH:!MEDIUM:!LOW:!aNULL:!NULL:!SHA;
   ssl_prefer_server_ciphers on;
   ssl_session_cache shared:SSL:10m;
 
-  ssl_certificate     /etc/letsencrypt/live/mastodon.docteamdemosite.club/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/mastodon.docteamdemosite.club/privkey.pem;
+  ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
 
   keepalive_timeout    70;
   sendfile             on;
@@ -301,15 +299,11 @@ server {
 }
 {{< /file >}}
 
-1.  Build the Docker Compose file:
-
-        docker-compose build
-
 ### Configure Mastodon
 
 The configuration settings for Mastodon are held in `.env.production` at the root of the Git repository.
 
-1.  Create the `.env.production` file and copy in the following contents. Replace all instances of `example.com` with your domain name. Fill in the SMTP_SERVER and SMTP_PASSWORD fields with the domain and credentials from your mail server.
+1.  Create the `.env.production` file and copy in the following contents. Replace all instances of `example.com` with your domain name. Fill in the `SMTP_SERVER` and `SMTP_PASSWORD` fields with the domain and credentials from your mail server:
 
     {{< file ".env.production" >}}
 LOCAL_DOMAIN=example.com
@@ -354,9 +348,11 @@ SMTP_PASSWORD=your_mailgun_email_password
 
         SECRET_KEY_BASE=$(docker-compose run --rm web bundle exec rake secret)
 
+    This creates a string of random characters. If you encounter an error in the next step, run this command again to generate another string.
+
 1.  Insert this into `.env.production` using the `sed` command:
 
-        sed -i "s/SECRET_KEY_BASE=$/&${SECRET_KEY_BASE}/" .env.production
+        sed -i -e "s/SECRET_KEY_BASE=/&${SECRET_KEY_BASE}/" .env.production
 
 1.  Combine those two actions into one step to set a value for OTP_SECRET in `.env.production`:
 
@@ -368,6 +364,10 @@ SMTP_PASSWORD=your_mailgun_email_password
 
 1.  Copy the output from that command, open `.env.production` in your text editor, and then paste the command output into the two lines for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`.
 
+1.  Build the Docker Compose file:
+
+        docker-compose build
+
 ### Finish Mastodon Setup
 
 1.  Set Mastodon as the owner of the `public` directory inside the Git repository:
@@ -375,7 +375,7 @@ SMTP_PASSWORD=your_mailgun_email_password
         sudo chown -R 991:991 public
 
     {{< note >}}
-991 is the UID that Mastodon will run under, but there is no `mastodon` user created on your system.
+`991` is the UID that Mastodon will run under, but there is no `mastodon` user created on your system.
 {{< /note >}}
 
 1.  Create a directory which will hold [Let's Encrypt challenge files](https://letsencrypt.org/how-it-works/) for future certificate renewals:
@@ -390,9 +390,7 @@ SMTP_PASSWORD=your_mailgun_email_password
 
         docker-compose run --rm web bundle exec rake assets:precompile
 
-    {{< note >}}
-This command can take awhile to finish.
-{{< /note >}}
+    This command will take a while to finish.
 
 1.  Start Mastodon:
 
@@ -402,9 +400,9 @@ This command can take awhile to finish.
 
 1.  Visit your domain in a web browser:
 
-    ![Mastodon Sign Up Screen](mastodon-sign-up-screen.png)
+    ![Mastodon Sign Up Screen](mastodon-sign-up-screen.png "Mastodon Sign Up Screen")
 
-1.  Enter a new username, email address, and password to create a new user on your Mastodon instance. When communicating with users of other Mastodon servers, your full username is `@your_username@your_mastodon_server_domain`.
+1.  Enter a new username, email address, and password to create a new user on your Mastodon instance. When communicating with users of other Mastodon servers, your full username is `@your_username@example.com`.
 
 1.  Mastodon will attempt to send you a confirmation email. Check your email and click the link inside to confirm your registration.
 
@@ -415,7 +413,6 @@ This command can take awhile to finish.
 1.  Run the `make_admin` task on your Docker container to make this new user an admin for the Mastodon instance:
 
         docker-compose run web bundle exec rake mastodon:make_admin USERNAME=your_mastodon_instance_user
-
 
 ##  Troubleshooting
 
@@ -432,10 +429,9 @@ If your Mastodon site doesn't appear in your browser, try reviewing the logs gen
 
 1.  To shut down Docker Compose and return the command prompt again, enter `CTRL-C`.
 
-    If your Mastodon site is appearing but some specific site functions are not working, try using the tools available in Mastodon's [administrative settings](https://mastodon.docteamdemosite.club/admin/settings/edit). Specifically, the Sidekiq dashboard can show the status of jobs issued by Mastodon:
+If your Mastodon site appears, but some specific site functions are not working, use the tools available in Mastodon's administrative settings, found through `example.com/admin/settings/edit`. Specifically, the Sidekiq dashboard can show the status of jobs issued by Mastodon:
 
-    ![Sidekiq Dashboard](sidekiq-dashboard.png)
-
+![Sidekiq Dashboard](sidekiq-dashboard.png "Sidekiq Dashboard")
 
 ## Maintenance
 
@@ -447,7 +443,7 @@ To update your Mastodon version, review the instructions from the Mastodon GitHu
 
         sudo crontab -e
 
-1.  Add a line which will invoke Certbot at 11PM every day. Replace example.com with your domain:
+1.  Add a line which will invoke Certbot at 11PM every day. Replace `example.com` with your domain:
 
         0 23 * * *   certbot certonly -n --webroot -w /usr/share/nginx/html -d example.com --deploy-hook='docker exec mastodon_nginx_1 nginx -s reload'
 
@@ -455,9 +451,10 @@ To update your Mastodon version, review the instructions from the Mastodon GitHu
 
         sudo bash -c "certbot certonly -n --webroot -w /usr/share/nginx/html -d example.com --deploy-hook='docker exec mastodon_nginx_1 nginx -s reload'"
 
-
 ## Getting Started with your New Mastodon Instance
 
-Now that your new instance is running, you can start experimenting with and participating in the Mastodon network. The official [Mastodon User's Guide](https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/User-guide.md) describes the mechanics of how the application and network works. As well, Eugen Rochko (Mastodon's founder) has written a non-technical [How to start a Mastodon server](https://medium.com/tootsuite/how-to-start-a-mastodon-server-dea0dec56028) blog post that outlines his best practices for building a new community.
+Now that your new instance is running, you can start experimenting with and participating in the Mastodon network. The official [Mastodon User's Guide](https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/User-guide.md) describes the mechanics of how the application and network works. Mastodon's founder, Eugen Rochko, has also written a non-technical [How to start a Mastodon server](https://medium.com/tootsuite/how-to-start-a-mastodon-server-dea0dec56028) blog post that outlines his best practices for building a new community.
 
 [Mastodon's discussion forum](https://discourse.joinmastodon.org) hosts conversations about technical issues and also governance/community concerns. [Mastodon's official blog](https://blog.joinmastodon.org) highlights new releases and features articles on the philosophy of Mastodon's design.
+
+To add your new instance to the list at [joinmastodon.org](https://joinmastodon.org), submit it through [instances.social](https://instances.social/admin).
