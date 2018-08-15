@@ -21315,9 +21315,20 @@ h1.contribute {
   right: 1.4rem;
   opacity: 0;
 }
-blockquote > div > div.btn-copy > .copy-code {
+#article-body .disclosure-note div.btn-copy > .copy-code {
   padding-top: 0.01rem;
   right: 2.2rem;
+}
+#article-body .disclosure-note .glyphicon.glyphicon-copy {
+  font-size: 1.6rem;
+  color: #a6a6a6;
+}
+blockquote div.btn-copy > .copy-code {
+  padding-top: 0.01rem;
+  right: 2.2rem;
+}
+blockquote div.btn-copy .glyphicon.glyphicon-copy {
+  color: #a6a6a6;
 }
 .copy-code:hover {
   opacity: 1;
