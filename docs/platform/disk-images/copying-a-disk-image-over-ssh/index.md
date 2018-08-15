@@ -21,9 +21,9 @@ You can use SSH to copy a Linode's disk to a system that resides on a different 
 
 You have successfully transferred your Linode's disk to another host using SSH.
 
-## Upload the Disk
+## Upload a Disk over SSH
 
-Once you have a copy of your Linode's disk you may want to upload that copy from your local machine to a Linode in the future.
+Once you have a copy of your Linode's disk you may want to upload that copy from your local machine to a Linode in the future. For example, if you previously downloaded your Linode disk and removed the Linode to halt billing on it, you can create a new Linode at a later date and upload the disk to it to resume your services.
 
 1.  Prepare your empty Linode by creating a new disk. Access your Linode through the Linode Manager and select **Create a new disk**:
 

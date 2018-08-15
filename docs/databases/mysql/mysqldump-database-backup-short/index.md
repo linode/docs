@@ -24,7 +24,7 @@ The `mysqldump` command’s general syntax is:
 * The database backup will be created in the directory the command is run.
 * `-$(date +%F)` adds a timestamp to the filename.
 
-### Backup Examples
+Example use cases include:
 
 * Create a backup of an entire Database Management System (DBMS):
 

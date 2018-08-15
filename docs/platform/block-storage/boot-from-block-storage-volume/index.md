@@ -29,15 +29,15 @@ Visit our [Block Storage guide](/docs/platform/how-to-use-block-storage-with-you
 
 1.  [Reboot into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) and mount the Block Storage Volume as `/dev/sdc` as shown here:
 
-    {{< image src="bs-rescue-mode-sdc.png" alt="Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode" title="Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode" >}}
+    ![Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode](bs-rescue-mode-sdc.png "Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode")
 
     Connect to the Linode via [Lish](/docs/platform/manager/using-the-linode-shell-lish/).
 
-1.  Use `fdisk` to make sure your primary disk and Block Storage Volume are available as `dev/sda` and `dev/sdc`, respectively:
+2.  Use `fdisk` to make sure your primary disk and Block Storage Volume are available as `dev/sda` and `dev/sdc`, respectively:
 
         fdisk -l
 
-1.  Use pv to copy the contents of the primary disk to the Block Storage Volume. The options `-pte` display progress, elapsed time, and estimated time remaining and may be omitted:
+3.  Use pv to copy the contents of the primary disk to the Block Storage Volume. The options `-pte` display progress, elapsed time, and estimated time remaining and may be omitted:
 
         pv -pte < /dev/sda > /dev/sdc
 

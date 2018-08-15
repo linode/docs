@@ -13,11 +13,15 @@ published: 2018-08-10
 shortguide: true
 ---
 
-## Prepare the Receiving Computer
+## Download a Disk over SSH
+
+Downloading your disk will copy a `.img` file to your computer that encapulates all of the data that is on your Linode's disk.
+
+### Prepare the Receiving Computer
 
 Verify that the receiving computer has SSH installed. (Most Linux/Unix-like systems have it installed by default.) If you're running Windows locally, you may wish to set up the [Cygwin](http://www.cygwin.com/) compatibility layer to provide a reasonably complete Unix-like environment. Instructions on setting up Cygwin are located [here](/docs/platform/disk-images/copying-a-disk-image-over-ssh/#windows-cygwin-instructions), at the bottom of the guide.
 
-## Start Your Linode in Rescue Mode
+### Start Your Linode in Rescue Mode
 
 Before you initiate the transfer, start the source Linode in *Rescue Mode* and start SSH by following these guides:
 
@@ -25,7 +29,7 @@ Before you initiate the transfer, start the source Linode in *Rescue Mode* and s
 1.  [Connecting to a Linode Running in Rescue Mode via LISH](/docs/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
 1.  [Start the SSH server on your Linode](/docs/troubleshooting/rescue-and-rebuild/#starting-ssh).
 
-## Copy the Disk
+### Copy the Disk
 
 Now that the Linode is running in Rescue Mode, you can transfer the disk from the Linode to the receiving machine over SSH:
 
@@ -61,7 +65,7 @@ The device `/dev/sda` is used for Linodes running on top of KVM. If you Linode i
 Copying your disk can take a while. Please be patient. If you have a slow internet connection, add the `-C` option to the SSH command; this enables gzip compression for data transfer. If you receive a `Write failed: Broken pipe` error, repeat this step.
 {{< /note >}}
 
-## Verify the Disk
+### Verify the Disk
 
 Once the copy has completed, you can verify it by mounting the image on the receiving machine.
 
