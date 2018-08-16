@@ -12,25 +12,36 @@ modified_by:
 title: "How to Update Your Linux Kernel"
 contributor:
   name: Linode
+promo: no
 ---
 
-## Verify Your Kernel Version
+Updating your Linux kernel periodically is an important part of keeping your system's security up-to-date. This guide describes how to update your kernel.
 
-1.  [SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) into your Linode and run the following command:
+## Which Kernel Am I Running?
 
-        uname -r
+Your Linode is capable of running one of three kinds of kernels:
 
-    If your output contains `linode` in the version tag, then you are running the [Linode Kernel](#update-your-linode-kernel):
+-   An upstream kernel that is maintained and provided by your Linux distribution's authors (this is also referred to as the distribution-supplied kernel).
 
-    {{< output >}}
-    4.14.12-x86_64-linode92
-    {{</ output >}}
+-   The Linode kernel. Linode maintains an up-to-date kernel: Linode's engineering team monitors for new versions of the Linux kernel and then packages them for users shortly after they are available. These kernels are not installed on your filesystem--instead, the Linode Manager supplies them to your system when it boots.
 
-    If your output contains `generic` in the version tag, then you are running a [distribution-supplied Kernel](#update-your-distribution-supplied-kernel):
+-   A kernel that you compile from source.
 
-    {{< output >}}
-    44.15.0-29-generic
-    {{</ output >}}
+The steps needed to update your kernel vary by which kind you are using. To find out which type you're using, [SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) into your Linode and run the following command:
+
+    uname -r
+
+If your output contains `linode` in the version tag, then you are running the [Linode kernel](#update-your-linode-kernel):
+
+{{< output >}}
+4.14.12-x86_64-linode92
+{{</ output >}}
+
+If your output contains `generic` in the version tag, then you are probably running a [distribution-supplied kernel](#update-your-distribution-supplied-kernel):
+
+{{< output >}}
+44.15.0-29-generic
+{{</ output >}}
 
 <!-- ## Update Your Linode Kernel with Linode's Cloud Manager
 
