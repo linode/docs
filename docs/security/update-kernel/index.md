@@ -15,8 +15,6 @@ contributor:
 promo: no
 ---
 
-Updating your Linux kernel periodically is an important part of keeping your system's security up-to-date. This guide describes how to update your kernel.
-
 ## Which Kernel Am I Running?
 
 Your Linode is capable of running one of three kinds of kernels:
