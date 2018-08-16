@@ -42,6 +42,7 @@ authmysql
 authmysqlrc
 authn
 authomator
+authsocket
 authy
 autocompletion
 autoconfiguration

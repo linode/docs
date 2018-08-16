@@ -22,6 +22,10 @@ WordPress is a popular dynamic content management system (CMS) focused on blogs.
 
 <!-- ![Install WordPress on Ubuntu 18.04](wordpress-ubuntu-18-04-title.png "Install WordPress on Ubuntu 18.04") -->
 
+{{< content "limited-user-note-shortguide" >}}
+
+Replace each instance of `example.com` in this guide with your site's domain name or IP.
+
 ## Before You Begin
 
 -   This guide assumes you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and that your Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
@@ -44,48 +48,49 @@ location / {
 }
 {{< /file >}}
 
--   Make sure MySQL/MariaDB has a database set up for WordPress. If you do not have a WordPress database, create one:
+-    If you're using Apache, run the following commands to ensure that `mod_rewrite` is enabled:
 
-    1.  Log in to the MySQL command line as the root user. If use password authentication for the MySQL root user, use this command:
+        sudo a2enmod status
 
-            mysql -u root -p
+    If it isn't already enabled, enable a2enmod and restart Apache:
 
-        If you use `unix_socket` or `auth_socket` authentication for the MySQL root user (which is the default on Ubuntu 18.04), use this command instead:
+        sudo a2enmod rewrite
+        sudo systemctl restart apache2
 
-            sudo mysql -u root
+## Install WordPress
 
-    2.  Create the WordPress database:
+### Prepare the WordPress Database
 
-        {{< highlight sql >}}
+WordPress stores blog posts and other content in your MySQL database, and you need to prepare the database before you can start using WordPress:
+
+1.  Log in to the MySQL command line as the root user:
+
+        sudo mysql -u root
+
+2.  Create the WordPress database:
+
+    {{< highlight sql >}}
 CREATE DATABASE wordpress;
 {{< /highlight >}}
 
-    3.  Create a user and grant them privileges for the newly created `wordpress` database, replacing `wpuser` and `password` with the username and password you wish to use:
+3.  Create a user and grant them privileges for the newly created `wordpress` database, replacing `wpuser` and `password` with the username and password you wish to use:
 
-        {{< highlight sql >}}
+    {{< highlight sql >}}
 CREATE USER 'wpuser' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser';
 {{< /highlight >}}
 
-    4.  Exit MySQL:
+4.  Exit MySQL:
 
-        {{< highlight sql >}}
+    {{< highlight sql >}}
 quit
 {{< /highlight >}}
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, visit our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-
-All configuration files should be edited with elevated privileges. Remember to include `sudo` before running your text editor.
-
-Replace each instance of `example.com` in this guide with your site's domain name or IP.
-{{< /note >}}
-
-## Install WordPress
+### Download WordPress
 
 1.  Create a directory called `src` under your website's directory to store fresh copies of WordPress's source files. In this guide, the home directory `/var/www/html/example.com/` is used as an example. Navigate to that new directory:
 
-        sudo mkdir /var/www/html/example.com/src/
+        sudo mkdir -p /var/www/html/example.com/src/
         cd /var/www/html/example.com/src/
 
 2.  Set your web server's user, `www-data`, as the owner of your site's home directory:
@@ -110,11 +115,11 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
         sudo chown -R www-data:www-data /var/www/html/example.com/public_html
 
-## Configure WordPress
+### Configure WordPress
 
 1.  Visit your domain in a web browser and follow the steps shown onscreen. Select your preferred language, review the information page and click the **Let's go!** button. Enter the database credentials that were set when you installed MySQL:
 
-    ![WordPress Installer](wordpress-setup_small.png)
+    ![WordPress Setup: Configure Database](wordpress-setup-wizard-config-database.png)
 
     WordPress will test the credentials and if authentication is successful, prompt you to **Run the install**.
 
@@ -124,7 +129,7 @@ If WordPress doesn't display when you visit your domain, try adding `/wp-admin` 
 
 2.  Fill out the administration information and click **Install WordPress**.
 
-    ![WordPress Administrative Information](wordpress-installation-screen01.png)
+    ![WordPress Setup: Configure Site](wordpress-setup-wizard-config-site.png)
 
     Click **Log In**, enter your credentials and proceed to the WordPress Dashboard.
 
@@ -134,15 +139,6 @@ If WordPress doesn't display when you visit your domain, try adding `/wp-admin` 
 /** Bypass FTP */
 define('FS_METHOD', 'direct');
 {{< /file >}}
-
-4.  If you're using Apache, run the following commands to ensure that `mod_rewrite` is enabled:
-
-        sudo a2enmod status
-
-    If it isn't already enabled, enable a2enmod and restart Apache:
-
-        sudo a2enmod rewrite
-        sudo systemctl restart apache2
 
 5.  To make changes to your site in the future, you can access the Dashboard of your WordPress site from the web interface by adding `/wp-admin` to your site's URL: `example.com/wp-admin`.
 
