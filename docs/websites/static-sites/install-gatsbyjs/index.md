@@ -2,14 +2,14 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Create a CI/CD workflow with Gatsby.js, Netlify and Travis CI'
-keywords: ['gatsbyjs','gatsby','ssg','static site generator']
+description: 'Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
+keywords: ['gatsbyjs','gatsby','ssg','static site generator', 'travis', 'netlify']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-09
 modified: 2018-08-09
 modified_by:
   name: Linode
-title: "Create a CI/CD workflow with Gatsby.js, Netlify and Travis CI"
+title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
 contributor:
   name: Linode
 external_resources:
