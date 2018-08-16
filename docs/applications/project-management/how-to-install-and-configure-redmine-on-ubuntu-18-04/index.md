@@ -1,6 +1,6 @@
 ---
 author:
-  name: Angel Guarisma
+  name: Linode
   email: docs@linode.com
 description: 'This guide shows how to install and set up Redmine, a free and open-source project management web application, written using Ruby on Rails, that is cross-platform and cross-database.'
 og_description: 'This guide shows how to install and set up Redmine, a free and open-source project management web application, written using Ruby on Rails, that is cross-platform and cross-database.'
