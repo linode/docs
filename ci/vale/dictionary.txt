@@ -384,6 +384,7 @@ galera
 gamemode
 gameplay
 gandi
+gatsby
 gcc
 gcm
 geckodriver
@@ -798,6 +799,7 @@ netfilter
 netflow
 netfs
 netifrc
+netlify
 netloc
 netmask
 networkd
