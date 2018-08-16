@@ -140,6 +140,7 @@ chroot
 chrooted
 citad
 cjones
+clearsign
 clearspace
 cli
 clickboard
