@@ -2,14 +2,14 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to Update Your Linux Kernel'
+description: 'Determine which kernel version your Linode is running and update it to the latest available'
 keywords: ['kernel','upgrade']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-16
 modified: 2018-08-16
 modified_by:
   name: Linode
-title: "How to Update Your Linux Kernel"
+title: "How to Update your Linux Kernel"
 contributor:
   name: Linode
 promo: no
@@ -55,13 +55,13 @@ If your output contains `generic` in the version tag, then you are probably runn
 
 1.  Reboot the Linode to boot into the new kernel. -->
 
-## Update Your Linode Kernel
+## Update your Linode Kernel
 
 1. Log in to the Linode Manager.
 
 1. Navigate to the Linode's Dashboard and edit the configuration profile.
 
-1. Under **Boot Settings**, select **Latest 64 Bit (4.17.15-x86_64-linode115)** and click **Save Changes**.
+1. Under **Boot Settings**, select **Latest 64 Bit** and click **Save Changes**.
 
 1. Reboot your Linode and verify the kernel version:
 
@@ -71,9 +71,9 @@ If your output contains `generic` in the version tag, then you are probably runn
 4.17.15-x86_64-linode115
 {{< /output >}}
 
-## Update Your Distribution-Supplied Kernel
+## Update your Distribution-Supplied Kernel
 
-If you boot your Linode using the **GRUB2** or Direct Disk boot setting, your kernel is supplied by your distribution’s maintainers, not Linode. If you’ve compiled your own kernel, you’ll need to recompile using the `4.17.15` or later source code.
+If you boot your Linode using the **GRUB2** or Direct Disk boot setting, your kernel is supplied by your distribution’s maintainers, not Linode. If you’ve compiled your own kernel, you’ll need to download a new set of kernel sources and recompile.
 
 Update your kernel to the latest available version using the distribution’s package manager:
 
@@ -91,7 +91,7 @@ Update your kernel to the latest available version using the distribution’s pa
     sudo apt-get update
     sudo apt-get upgrade
 
-Reboot the Linode. When it comes back up, use the command `uname -r` to verify you are running the new kernel against the patched version given in your distribution’s security bulletin: [CentOS](https://access.redhat.com/errata/#/?q=rhsa-2018&p=1&sort=portal_publication_date%20desc&rows=10); [Debian](https://security-tracker.debian.org/tracker/); [Ubuntu](https://people.canonical.com/~ubuntu-security/cve/).
+Reboot the Linode. When it comes back up, use the command `uname -r` to verify which version you are running. It's recommend that you compare your new kernel version against the patched version given in your distribution’s security bulletin: [CentOS](https://access.redhat.com/errata/#/?q=rhsa-2018&p=1&sort=portal_publication_date%20desc&rows=10); [Debian](https://security-tracker.debian.org/tracker/); [Ubuntu](https://people.canonical.com/~ubuntu-security/cve/).
 
 <!-- ## Update Your Kernel with the Linode API
 
