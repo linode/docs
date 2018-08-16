@@ -7,7 +7,7 @@ og_description: 'This guide shows how to install and set up Redmine, a free and 
 keywords: ["nginx", "ubuntu", "redmine"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
-modified: 2018-08-06
+modified: 2018-08-16
 modified_by:
   name: Andrew Lescher
 title: 'How to Install and Configure Redmine on Ubuntu 18.04'
