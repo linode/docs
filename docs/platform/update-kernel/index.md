@@ -73,7 +73,7 @@ If your output contains `generic` in the version tag, then you are probably runn
 
 ## Update your Distribution-Supplied Kernel
 
-If you boot your Linode using the **GRUB2** or Direct Disk boot setting, your kernel is supplied by your distribution’s maintainers, not Linode. If you’ve compiled your own kernel, you’ll need to download a new set of kernel sources and recompile.
+If you boot your Linode using the GRUB2 or Direct Disk boot setting, your kernel is supplied by your distribution’s maintainers, not Linode. If you’ve compiled your own kernel, download a new set of kernel sources and recompile.
 
 Update your kernel to the latest available version using the distribution’s package manager:
 
