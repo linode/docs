@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Determine which kernel version your Linode is running and update it to the latest available'
+description: 'Determine which kernel version your Linode is running and update it to the latest available.'
 keywords: ['kernel','upgrade']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-16
