@@ -10,7 +10,7 @@ modified: 2018-08-17
 modified_by:
   name: Linode
 published: 2011-04-05
-title: Introduction to SSH Key Authentication
+title: Use Public Key Authentication with SSH
 ---
 
 ![Use Public Key Authentication with SSH](use_public_key_authentication_with_ssh.png "Use Public Key Authentication with SSH")
@@ -54,7 +54,7 @@ If you accidentally lock yourself out of your Linode, use [Lish](/docs/networkin
 1.  Create the `.ssh` directory and `authorized_keys` file if they don't already exist on the remote server:
 
         mkdir ~/.ssh && touch ~/.ssh/authorized_keys
-        sudo chmod 700 ~/.ssh && sudo chmod 600 ~/.ssh/authorized_keys
+        chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 
 1.  **Now on your local machine again**, add the public key to the remote server's `authorized_keys` file:
 
@@ -123,7 +123,7 @@ Do not allow the local machine to remember the password in its keychain unless y
 1.  Once you're logged in to the remote server, configure it to authenticate with your SSH keypair instead a user's 'password. Create an `.ssh` directory in your home directory on your Linode, create a blank `authorized_keys` file inside, and set their access permissions.
 
         mkdir ~/.ssh && touch ~/.ssh/authorized_keys
-        sudo chmod 700 ~/.ssh && sudo chmod 600 ~/.ssh/authorized_keys
+        chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 
 1.  Copy the public key from your local workstation to the `authorized_keys` file on your Linode. When copying from the public key file exported from PuTTY, only select the key as shown below.
 
