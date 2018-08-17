@@ -19,7 +19,7 @@ Downloading your disk will copy a `.img` file to your computer that encapulates 
 
 ### Prepare the Receiving Computer
 
-Verify that the receiving computer has SSH installed. (Most Linux/Unix-like systems have it installed by default.) If you're running Windows locally, you may wish to set up the [Cygwin](http://www.cygwin.com/) compatibility layer to provide a reasonably complete Unix-like environment. Instructions on setting up Cygwin are located [here](/docs/platform/disk-images/copying-a-disk-image-over-ssh/#windows-cygwin-instructions), at the bottom of the guide.
+Verify that the receiving computer has SSH installed. (Most Linux/Unix-like systems have it installed by default.) If you're running Windows locally, you may wish to set up the [Cygwin](http://www.cygwin.com/) compatibility layer to provide a reasonably complete Unix-like environment. Instructions on setting up Cygwin are located [here](/docs/platform/disk-images/copying-a-disk-image-over-ssh/#windows-cygwin-instructions).
 
 ### Start Your Linode in Rescue Mode
 
@@ -38,10 +38,10 @@ Now that the Linode is running in Rescue Mode, you can transfer the disk from th
         ssh root@123.45.67.89 "dd if=/dev/sda " | dd of=/home/archive/linode.img
 
     {{< note >}}
-The device `/dev/sda` is used for Linodes running on top of KVM. If you Linode is still using XEN, then throughout this guide you must use `/dev/xvda` instead.
+The device `/dev/sda` is used for Linodes running on top of KVM. If your Linode is still using XEN, then throughout this guide you must use `/dev/xvda` instead.
 {{< /note >}}
 
-1.  The receiving machine will connect to the Linode. Type `yes` and press Enter to continue connecting:
+1.  The receiving machine will connect to the Linode. Type `yes` and press **Enter** to continue connecting:
 
         The authenticity of host '123.45.67.89 (123.45.67.89)' can't be established.
         RSA key fingerprint is 39:6b:eb:05:f1:28:95:f0:da:63:17:9e:6b:6b:11:4a.
@@ -54,15 +54,17 @@ The device `/dev/sda` is used for Linodes running on top of KVM. If you Linode i
 
     The transfer starts, and you'll see output similar to the following:
 
+    {{< output >}}
         4096000+0 records in
         4096000+0 records out
         2097152000 bytes (2.1 GB) copied, 371.632 seconds, 5.6 MB/s
         4096000+0 records in
         4096000+0 records out
         2097152000 bytes (2.1 GB) copied, 364.002 s, 5.8 MB/s
+    {{</ output >}}
 
     {{< note >}}
-Copying your disk can take a while. Please be patient. If you have a slow internet connection, add the `-C` option to the SSH command; this enables gzip compression for data transfer. If you receive a `Write failed: Broken pipe` error, repeat this step.
+Copying your disk can take a while. Please be patient. If you have a slow internet connection, add the `-C` option to the SSH command; this enables gzip compression for data transfer. If you receive a `Write failed: Broken pipe` error, repeat this process.
 {{< /note >}}
 
 ### Verify the Disk

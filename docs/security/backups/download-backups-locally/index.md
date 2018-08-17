@@ -12,12 +12,12 @@ published: 2018-08-08
 title: Download a Local Copy of your Linode Backup
 ---
 
-The [Linode Backups](/docs/platform/disk-images/linode-backup-service/) service can create automatic and manual snapshots of your Linode. A completed backup can be directly restored to the same Linode it was created for or to a new Linode in the same data center. These workflows make it easy to revert to a working configuration if you run into any unexpected issues with your software.
+The [Linode Backups](/docs/platform/disk-images/linode-backup-service/) service can create automatic and manual snapshots of your Linode. A completed backup can be directly restored to the origin Linode or to a new Linode in the same data center. These workflows make it easy to revert to a working configuration if you run into any unexpected issues with your software.
 
 Linode's backups are stored in a way that is only directly readable by the Linode Backups service. A common question for the service is how you can download the content from your Linode Backups to another storage location, like your home computer. This can be accomplished in two phases:
 
 1. Restore a backup to a new Linode in the same data center.
-2. Then, download either specific files or the entire disk image from that Linode, as needed.
+2. Download either specific files or the entire disk image from that Linode, as needed.
 
 ## Before You Begin
 
@@ -25,7 +25,7 @@ Linode's backups are stored in a way that is only directly readable by the Linod
 
 Several of the steps in this guide involve adding services to or removing services from a Linode account. Visit our guide on [Users and Permissions](/docs/platform/manager/accounts-and-passwords/#users-and-permissions) for more information about restricted Linode users.
 
-Note that the cost of adding Backups service and adding a Linode to your account is billed, pro-rated per hour. If the backups service is only enabled for a few hours, you will only be charged for a few hours of the service. See the [Backups pricing details](/docs/platform/disk-images/linode-backup-service/#pricing) for more information. Likewise, when you create a Linode, you will be billed per hour that the Linode exists, whether it is powered on or not.
+Note that the cost of adding Backups service and adding a Linode to your account is billed, prorated per hour. If the backups service is only enabled for a few hours, you will only be charged for a few hours of the service. See the [Backups pricing details](/docs/platform/disk-images/linode-backup-service/#pricing) for more information. Likewise, when you create a Linode, you will be billed per hour that the Linode exists, whether it is powered on or not.
 
 The steps in this guide have been designed to minimize the potential costs associated with this process. Additionally, keep the following in mind:
 
@@ -41,13 +41,13 @@ These steps are the minimum required for the scope of this guide. Visit our [Bac
 
 1.  This guide focuses on saving a snapshot or specific backup. Click **Take a New Snapshot Now**.
 
-    The snapshot appears in the *Backup History* at the bottom of the page.
+    - The snapshot appears in the *Backup History* at the bottom of the page.
 
 {{< content "restore-backup-image-short" >}}
 
 ## Download Specific Files or Directories over SSH
 
-If you just need specific files from your Linode, you can download those over SSH. In order to do so, you'll first need to [reboot your Linode](http://localhost:1313/docs/platform/disk-images/disk-images-and-configuration-profiles/#selecting-and-using-a-configuration-profile) under the new configuration profile that was created by the restore process. This new profile is assigned to the restored disks, and your backed up data will be accessible when you boot from them.
+If you just need specific files from your Linode, you can download those over SSH. In order to do so, you'll first need to [reboot your Linode](/docs/platform/disk-images/disk-images-and-configuration-profiles/#selecting-and-using-a-configuration-profile) under the new configuration profile that was created by the restore process. This new profile is assigned to the restored disks, and your backed up data will be accessible when you boot from them.
 
 Downloading files over SSH can be done at a command-line interface, or with a graphical *SFTP* file browser.
 
@@ -91,7 +91,7 @@ If you intend to repeat this process regularly, consider [using rsync](/docs/sec
 
 ### Using FileZilla
 
-As an alternative to the command-line, you can download and install an *SFTP* client. These applications provide a graphical interface for your Linode's filesystem. 
+As an alternative to the command-line, you can download and install an *SFTP* client. These applications provide a graphical user interface for your Linode's filesystem.
 
 *FileZilla* is a popular free example. Windows and OS X users can download FileZilla [here](https://filezilla-project.org/download.php?show_all=1). To install FileZilla on Linux:
 
@@ -99,7 +99,7 @@ As an alternative to the command-line, you can download and install an *SFTP* cl
 
         sudo apt-get install filezilla
 
--   CentOS/Fedora
+-   CentOS/Fedora:
 
         sudo yum install filezilla
 
@@ -115,7 +115,7 @@ Special care is needed when downloading data from a database. Before it can be d
 
 {{< content "mysqldump-database-backup-short" >}}
 
-For more information on MySQL database backups, including how to restore the data in a dump file to a MySQL installation, review [our guide](http://localhost:1313/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/#restore-a-backup) on the subject. An alternative to using `mysqldump` is to create [*physical* backups](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/). It's also possible to [backup PostgreSQL databases](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/).
+For more information on MySQL database backups, including how to restore the data in a dump file to a MySQL installation, review [our guide](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/#restore-a-backup) on the subject. An alternative to using `mysqldump` is to create [*physical* backups](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/). It's also possible to [backup PostgreSQL databases](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/).
 
 {{< content "copy-disk-over-ssh-short" >}}
 

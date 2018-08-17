@@ -19,7 +19,7 @@ The `mysqldump` command’s general syntax is:
 
     mysqldump -u [username] -p [databaseName] > [filename]-$(date +%F).sql
 
-* mysqldump prompts for a password before it starts the backup process.
+* `mysqldump` prompts for a password before it starts the backup process.
 * Depending on the size of the database, it could take a while to complete.
 * The database backup will be created in the directory the command is run.
 * `-$(date +%F)` adds a timestamp to the filename.
@@ -40,6 +40,6 @@ Example use cases include:
 
 Here's a breakdown of the `mysqldump` command options used above:
 
--  `--single-transaction`: Issue a BEGIN SQL statement before dumping data from server.
--  `--quick`: Enforce dumping tables row by row. Added safety for systems with little RAM and/or large databases where storing tables in memory could become problematic.
+-  `--single-transaction`: Issue a BEGIN SQL statement before dumping data from the server.
+-  `--quick`: Enforce dumping tables row by row. This provides added safety for systems with little RAM and/or large databases where storing tables in memory could become problematic.
 -  `--lock-tables=false`: Do not lock tables for the backup session.
