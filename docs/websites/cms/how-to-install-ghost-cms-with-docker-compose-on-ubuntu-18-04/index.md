@@ -22,9 +22,9 @@ external_resources:
 
 [Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog.
 
-Ghost's 1.0.0 version debuted in July 2017 and was the first major, stable release of the Ghost content management system (CMS). Ghost 1.0.0 had a brand new Markdown editor, refreshed user interface, new default theme design, and more. Ghost has been [frequently updated since](https://github.com/TryGhost/Ghost/releases), and the current version at time of publication is [1.25.5](https://github.com/TryGhost/Ghost/releases/tag/1.25.5).
+Ghost's 1.0.0 version is the first major, stable release of the Ghost content management system (CMS). Ghost 1.0.0 has a brand new Markdown editor, refreshed user interface, new default theme design, and more. Ghost has been [frequently updated since](https://github.com/TryGhost/Ghost/releases) this major release, and the current version at time of publication is [1.25.5](https://github.com/TryGhost/Ghost/releases/tag/1.25.5).
 
-In this guide you'll deploy Ghost using Docker Compose on Ubuntu 18.04. Ghost is powered by Javascript and Node.js, and using Docker to deploy will encapsulate all of Ghost's Node dependencies keep the deployment self-contained. The Docker Compose services are also fast to set up and easy to update.
+In this guide you'll deploy Ghost using Docker Compose on Ubuntu 18.04. Ghost is powered by Javascript and Node.js. Using Docker to deploy Ghost will encapsulate all of Ghost's Node dependencies and keep the deployment self-contained. The Docker Compose services are also fast to set up and easy to update.
 
 ## Before you Begin
 
@@ -111,6 +111,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: your_database_root_password
+    volumes:
       - /opt/ghost_mysql:/var/lib/mysql
 
   nginx:
@@ -196,7 +197,7 @@ server {
 
 ### Run and Test Your Site
 
-Start Ghost:
+From the `ghost` directory start the Ghost CMS by running all services defined in the `docker-compose.yml` file:
 
     docker-compose up -d
 
@@ -241,7 +242,7 @@ You do not need to manually start your containers if you reboot your Linode, bec
 
 ### Update Ghost
 
-Your `docker-compose.yml` specifies the `latest` version of the Ghost image, so it’s easy to update your WordPress version:
+Your `docker-compose.yml` specifies the `latest` version of the Ghost image, so it’s easy to update your Ghost version:
 
     docker-compose down
     docker-compose pull && docker-compose up -d
