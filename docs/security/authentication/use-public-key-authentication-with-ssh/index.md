@@ -10,7 +10,7 @@ modified: 2018-08-17
 modified_by:
   name: Linode
 published: 2011-04-05
-title: Introduction to SSH Key Authentication
+title: Use Public Key Authentication with SSH
 ---
 
 ![Use Public Key Authentication with SSH](use_public_key_authentication_with_ssh.png "Use Public Key Authentication with SSH")
