@@ -6,7 +6,7 @@ description: 'Accessing remote servers with PuTTY, a free and open source SSH cl
 keywords: ["putty", "putty ssh", "windows ssh client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/using-putty/']
-modified: 2017-10-09
+modified: 2018-08-17
 modified_by:
   name: Linode
 published: 2009-09-20
@@ -24,11 +24,9 @@ PuTTY is a free and open source SSH client for Windows and UNIX systems. It prov
 
 1.  Download and run the PuTTY installer from [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
-2.  When you open PuTTY, you'll be shown the configuration menu.
+2.  When you open PuTTY, you'll be shown the configuration menu. Enter the hostname or IP address of your Linode. TCP port `22` is the IANA assigned port for for SSH traffic so that is PuTTY's default; change it if your server is listening on a different port. Name the session in the **Saved Sessions** text bar if you choose, and click **Save**.
 
-    ![PuTTY session configuration](putty-configuration-window.png)
-
-    Enter your Linode's hostname or IP address. The default port for SSH is **22**. If your remote server's SSH daemon is running on a different port, you'll need to specify it in the **Session** category.
+    ![Saving your connection information.](putty-session-window.png)
 
 3.  Click **Open** to start an SSH session. If you have never previously logged into this system with PuTTY (we'll assume here you have not), you will see a message alerting you that the server's SSH key fingerprint is new, and asking if you want to proceed.
 
