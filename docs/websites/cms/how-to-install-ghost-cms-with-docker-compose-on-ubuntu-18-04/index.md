@@ -24,7 +24,7 @@ external_resources:
 
 Ghost's 1.0.0 version is the first major, stable release of the Ghost content management system (CMS). Ghost 1.0.0 has a brand new Markdown editor, refreshed user interface, new default theme design, and more. Ghost has been [frequently updated since](https://github.com/TryGhost/Ghost/releases) this major release, and the current version at time of publication is [1.25.5](https://github.com/TryGhost/Ghost/releases/tag/1.25.5).
 
-In this guide you'll deploy Ghost using Docker Compose on Ubuntu 18.04. Ghost is powered by Javascript and Node.js. Using Docker to deploy Ghost will encapsulate all of Ghost's Node dependencies and keep the deployment self-contained. The Docker Compose services are also fast to set up and easy to update.
+In this guide you'll deploy Ghost using Docker Compose on Ubuntu 18.04. Ghost is powered by JavaScript and Node.js. Using Docker to deploy Ghost will encapsulate all of Ghost's Node dependencies and keep the deployment self-contained. The Docker Compose services are also fast to set up and easy to update.
 
 ## Before you Begin
 
