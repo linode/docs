@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-02-01
 modified_by:
   name: Linode
-published: 2017-06-16
+published: 2018-08-17
 aliases: ['platform/how-to-use-block-storage-with-your-linode/']
 title: How to Use Block Storage with Your Linode
 ---
@@ -31,7 +31,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 ### Add a Volume from the Linode Dashboard
 
-1.  Go to the page of the Linode to which you want to attach a Block Storage Volume. 
+1.  Go to the page of the Linode to which you want to attach a Block Storage Volume.
 
     [![Linode Manager select a Linode](bs-cloud-select-linode.png)](bs-cloud-select-linode.png)
 
@@ -48,7 +48,7 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 {{< /note >}}
 
 4.  Once you add a volume it will appear under Attached Volumes with the new volume's label, size, and file system path.
-   
+
     [![Linode Manager Attached Volumes](bs-cloud-volume-created.png)](bs-cloud-volume-created.png)
 
 5.  You'll need to create a filesystem in your new volume. If your Linode is not already running, boot then SSH into your Linode and execute the following command, where `FILE_SYSTEM_PATH` is your volume's file system path:
@@ -59,7 +59,7 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
         mkdir /mnt/BlockStorage1
 
-7.  You can then mount the new volume, where `FILE_SYSTEM_PATH` is your volume's file system path:
+7.  You can then mount the new volume:
 
         mount FILE_SYSTEM_PATH /mnt/BlockStorage1
 
@@ -83,8 +83,8 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
     {{< note >}}
 The Linodes available in this dropdown menu all share the same region as your volume.
-    {{< /note >}}
-    
+{{< /note >}}
+
 
 4.  You'll need to create a filesystem in your new volume. If your Linode is not already running, boot then SSH into your Linode and execute the following command, where `FILE_SYSTEM_PATH` is your volume's file system path:
 
@@ -100,7 +100,7 @@ The Linodes available in this dropdown menu all share the same region as your vo
 
 7.  If you want to mount the new volume automatically every time your Linode boots, you'll want to add the following line to your **/etc/fstab** file:
 
-        FILE_SYSTEM_PATH /mnt/BlockStorage1 
+        FILE_SYSTEM_PATH /mnt/BlockStorage1
 
 ## How to Detach a Block Storage Volume from a Linode
 
