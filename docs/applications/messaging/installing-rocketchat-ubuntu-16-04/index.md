@@ -5,10 +5,10 @@ author:
 description: 'Installation and basic usage guide for Rocket.Chat, a lightweight XMPP server on Ubuntu 16.04.'
 keywords: ["rocket.chat", "slack alternative", "chat", "xmpp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-21
+modified: 2018-08-17
 modified_by:
   name: Linode
-published: 2018-08-16
+published: 2018-06-21
 title: 'Installing Rocket.Chat on Ubuntu 16.04'
 external_resources:
  - '[Deploying Rocket.Chat on Ubuntu](https://rocket.chat/docs/installation/manual-installation/ubuntu/)'
@@ -67,7 +67,7 @@ A reverse proxy is a server that sits between internal applications and external
 1.  Disable the default *Welcome to NGINX* page. The default page is configured within `/etc/nginx/sites-enabled/default`. This is actually a link to a file within `/etc/nginx/sites-available/`:
 
         sudo ls -l /etc/nginx/sites-enabled
-    
+
     {{< output >}}
 total 0
 lrwxrwxrwx 1 root root 34 Aug 16 14:59 default -> /etc/nginx/sites-available/default
@@ -111,7 +111,7 @@ Your Rocket.Chat site will use an SSL certificate from [Let's Encrypt](https://l
 
 ## View Your Rocket.Chat Site
 
-1.  Certbot updated your NGINX configuration, so test the new configuration to make sure it works:
+1.  Certbot updated your NGINX configuration. Test the new configuration to make sure it works:
 
         sudo nginx -t
 

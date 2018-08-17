@@ -23,10 +23,10 @@ For most operating system and web server configurations, Certbot creates signed 
 
 ## Before You Begin
 
-Make sure you have a Fully Qualified Domain Name (FQDN) with a DNS A/AAA record pointing to the domain's Public IP address. Consult [Add DNS Records](https://www.linode.com/docs/websites/hosting-a-website/#add-dns-records) for more information.
+Make sure you have a Fully Qualified Domain Name (FQDN) with a DNS A/AAA record pointing to the domain's Public IP address. Consult [Add DNS Records](/docs/websites/hosting-a-website/#add-dns-records) for more information.
 
 {{< note >}}
-If you're using Apache, change each instance of `nginx` to `apache` of the following sections.
+If you're using Apache, change each instance of `nginx` to `apache` in the following sections.
 {{< /note >}}
 
 ## Use Certbot on Debian

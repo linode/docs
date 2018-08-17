@@ -133,7 +133,7 @@ This configuration uses the built-in `$remote_addr` variable to send the IP addr
 
 One advantage of a reverse proxy is that it is easy to set up HTTPS using a TLS certificate. [Certbot](https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx) is a tool that allows you to quickly obtain free certificates from Let's Encrypt. This guide will use Certbot on Ubuntu 16.04, but the official site maintains comprehensive installation and usage instructions for all major distros.
 
-Follow these steps to get a certificate via Certbot; Certbot will also automatically update your NGINX configuration files to use the new certificate:
+Follow these steps to get a certificate via Certbot. Certbot will automatically update your NGINX configuration files to use the new certificate:
 
 {{< content "certbot-shortguide-ubuntu.md" >}}
 
