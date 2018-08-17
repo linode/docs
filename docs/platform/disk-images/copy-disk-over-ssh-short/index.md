@@ -15,7 +15,7 @@ shortguide: true
 
 ## Download a Disk over SSH
 
-Downloading your disk will copy a `.img` file to your computer that encapulates all of the data that is on your Linode's disk.
+Downloading your disk will copy a `.img` file to your computer that encapsulates all of the data that is on your Linode's disk.
 
 ### Prepare the Receiving Computer
 

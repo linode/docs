@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Shortguide which shows how to use FileZilla after it has been installed.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+keywords: []
 aliases: ['networking/file-transfer/transfer-files-filezilla/']
 modified: 2018-08-14
 modified_by:
