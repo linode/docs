@@ -51,18 +51,9 @@ CentOS/Fedora
 
 ## Using FileZilla
 
-1.  Open FileZilla from your Windows start menu, OS X Launchpad, or the launcher provided by your Linux distribution of choice.
+{{< content "filezilla-shortguide" >}}
 
-2.  Enter your Linode's IP address or domain name in the "Host" field. Enter the account username you wish to connect as in the "Username" field. Please note that this must be a user account on your Linode; if in doubt, enter "root" to log in as the root user. Enter the account's password in the "Password" field, and enter "22" in the "Port" field. Click "Quickconnect" to initiate the file transfer session.
-
-    [![Quickconnect](filezilla-quick-connect-resized.png)](filezilla-quick-connect.png)
-
-3.  If this is the first time you've connected to your Linode with an SSH or SFTP program, you'll receive a warning that the host key is unknown. Place a check mark in the box next to "Always trust this host, add this key to the cache." Checking this box prevents further warnings unless the key presented to FileZilla changes; this should only happen if you reinstall the remote server's operating system.
-
-    [![Unknown Key](filezilla-unknown-key.png)](filezilla-unknown-key.png)
-
-4.  Click the "OK" button to proceed. You'll be presented with a split view, with your local filesystem on the left and your Linode's filesystem on the right. You may transfer files by dragging and dropping them between each side.
-
+### If You Use Public Key Authentication
 
 If you have followed our [Securing Your Server](/docs/security/securing-your-server) guide, you won't be able to connect to your Linode using a password. If you are using Linux or OS X, the keys that you generated while following that guide will be automatically used for authentication.
 
@@ -76,7 +67,7 @@ If you are using Windows, you'll need to follow a few additional steps to enable
 
 2.  Start Pagent from your Start menu. In your system tray, you'll see the Pageant icon appear.
 
-3.  Right-click the icon and select "Add Key".
+3.  Right-click the icon and select `Add Key`.
 
 4.  Navigate to the location where you stored your keys and select your private key (PPK) file. You will be prompted for your passphrase if you provided one when creating the key.
 
