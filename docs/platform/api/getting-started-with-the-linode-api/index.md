@@ -6,7 +6,7 @@ description: 'This guide introduces the Linode API and demonstrates several basi
 og_description: 'This guide introduces the Linode API and demonstrates several basic queries. It also covers authentication and the process of creating a new Linode through the API.'
 keywords: ["linode api", "api v4", "access token"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-29
+modified: 2018-08-20
 modified_by:
   name: Linode
 published: 2018-04-03
@@ -27,7 +27,7 @@ For example, this command creates a new 2GB Linode, deploys a Debian 9 image, an
     -H "Authorization: Bearer $TOKEN" -H "Content-type: application/json" \
     -d '{"type": "g5-standard-2", "region": "us-east", "image": "linode/debian9", "root_pass": "root_password", "label": "prod-1"}'
 
-This guide will help you get set up to run this example. Note that if you run this command, you will be create and be [charged for a 2GB Linode](/pricing).
+This guide will help you get set up to run this example. Note that if you run this command, you will create and be [charged for a 2GB Linode](/pricing).
 
 ## Get an Access Token
 
@@ -43,7 +43,13 @@ If you are building an application which will need to authenticate multiple user
 
 1.  Log in to the Manager and select the **API Tokens** tab from the **My Profile** menu:
 
-1.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have. Privileges are cascading, so a token with *Create* access will also have *Modify* and *View* access.
+    ![Select My Profile](get-started-with-linode-api-select-my-profile.png)
+
+    ![Select API Tokens from My Profile](get-started-with-linode-api-my-profile.png)
+
+2.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have. Privileges are cascading, so a token with *Create* access will also have *Modify* and *View* access.
+
+    ![Add a Personal Access Token](get-started-with-linode-api-new-token.png)
 
     When you have finished, click **Submit** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through the Manager after closing the popup.**
 
