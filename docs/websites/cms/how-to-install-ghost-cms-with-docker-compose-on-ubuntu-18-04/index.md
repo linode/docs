@@ -6,10 +6,10 @@ description: 'This tutorial will teach you how to install Ghost, a publishing pl
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode.'
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 18.04", "docker", "docker compose"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-16
+modified: 2018-08-20
 modified_by:
   name: Linode
-published: 2018-08-16
+published: 2018-08-20
 title: How to Install Ghost CMS with Docker Compose on Ubuntu 18.04
 external_resources:
 - '[Ghost Setup Documentation](https://docs.ghost.org/v1.0.0)'
@@ -22,7 +22,7 @@ external_resources:
 
 [Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog.
 
-Ghost's 1.0.0 version is the first major, stable release of the Ghost content management system (CMS). Ghost 1.0.0 has a brand new Markdown editor, refreshed user interface, new default theme design, and more. Ghost has been [frequently updated since](https://github.com/TryGhost/Ghost/releases) this major release, and the current version at time of publication is [1.25.5](https://github.com/TryGhost/Ghost/releases/tag/1.25.5).
+Ghost's 1.0.0 version was the first major, stable release of the Ghost content management system (CMS). Ghost includes a Markdown editor, refreshed user interface, new default theme design, and more. Ghost has been [frequently updated since](https://github.com/TryGhost/Ghost/releases/) this major release, and the current version at time of publication is [1.25.5](https://github.com/TryGhost/Ghost/releases/tag/1.25.5/).
 
 In this guide you'll deploy Ghost using Docker Compose on Ubuntu 18.04. Ghost is powered by JavaScript and Node.js. Using Docker to deploy Ghost will encapsulate all of Ghost's Node dependencies and keep the deployment self-contained. The Docker Compose services are also fast to set up and easy to update.
 
@@ -42,23 +42,23 @@ Replace each instance of example.com in this guide with your Ghost site’s doma
 
         sudo apt update && sudo apt upgrade
 
-1.  Your Ghost site will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Request and download a free certificate from [Let's Encrypt](https://letsencrypt.org) by using [Certbot](https://certbot.eff.org):
+1.  Your Ghost site will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Use [Certbot](https://certbot.eff.org/) to request and download a free certificate from [Let's Encrypt](https://letsencrypt.org/):
 
-        sudo apt-get install software-properties-common
+        sudo apt install software-properties-common
         sudo add-apt-repository ppa:certbot/certbot
-        sudo apt-get update
-        sudo apt-get install certbot
+        sudo apt update
+        sudo apt install certbot
         sudo certbot certonly --standalone -d example.com
 
     These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linode.
 
-    {{< note >}}
-Why not use [Certbot's Docker container](https://hub.docker.com/r/certbot/certbot/)? When your certificate is periodically renewed, your web server will need to be reloaded in order to use the new certificate. This is usually accomplished by passing a web server reload command through Certbot's [`--deploy-hook` option](https://certbot.eff.org/docs/api/hooks.html#certbot.hooks.deploy_hook).
+    {{< disclosure-note "Why not use Certbot's Docker container?" >}}
+When your certificate is periodically renewed, your web server needs to be reloaded in order to use the new certificate. This is usually accomplished by passing a web server reload command through Certbot's [`--deploy-hook` option](https://certbot.eff.org/docs/api/hooks.html#certbot.hooks.deploy_hook).
 
 In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. A workaround for this limitation would be needed to enable this architecture.
-{{< /note >}}
+{{< /disclosure-note >}}
 
-1.  You will need to install Docker and Docker Compose before proceeding. If you haven't used Docker before, it's recommended that you review the [Introduction to Docker](/docs/applications/containers/introduction-to-docker/), [When and Why to Use Docker](/docs/applications/containers/when-and-why-to-use-docker/), and [How to Use Docker Compose](/docs/applications/containers/how-to-use-docker-compose/) guides for some context on how these technologies work.
+1.  Install Docker and Docker Compose before proceeding. If you haven't used Docker before, review the [Introduction to Docker](/docs/applications/containers/introduction-to-docker/), [When and Why to Use Docker](/docs/applications/containers/when-and-why-to-use-docker/), and [How to Use Docker Compose](/docs/applications/containers/how-to-use-docker-compose/) guides for some context on how these technologies work.
 
 ### Install Docker
 
@@ -70,24 +70,23 @@ In your deployment, the web server will run in its own container, and the Certbo
 
 ## Install Ghost
 
-The Ghost deployment has three different components:
+The Ghost deployment has three components:
 
--   The Ghost service itself
--   A database (MySQL) that will store your blog posts
--   A web server (NGINX) that will proxy requests on HTTP and HTTPS to your Ghost service
+-  The Ghost service itself;
+-  A database (MySQL) that will store your blog posts;
+-  A web server (NGINX) that will proxy requests on HTTP and HTTPS to your Ghost service.
 
 These services are listed in a single Docker Compose file.
 
 ### Create the Docker Compose file
 
-1.  Create a directory to hold your new Docker Compose services:
+1.  Create and change to a directory to hold your new Docker Compose services:
 
-        mkdir ghost
-        cd ghost
+        mkdir ghost && cd ghost
 
-1.  Create a file named `docker-compose.yml` and open it in your text editor. Paste in the contents from the following snippet. Replace `example.com` with your domain, and insert a new database password where `your_database_root_password` appears. The values for `database__connection__password` and `MYSQL_ROOT_PASSWORD` should be the same.
+1.  Create a file named `docker-compose.yml` and open it in your text editor. Paste in the contents from the following snippet. Replace `example.com` with your domain, and insert a new database password where `your_database_root_password` appears. The values for `database__connection__password` and `MYSQL_ROOT_PASSWORD` should be the same:
 
-    {{< file "docker-compose.yml" >}}
+    {{< file "docker-compose.yml" yaml >}}
 version: '3'
 services:
 
@@ -131,11 +130,11 @@ services:
 
 1.  The Docker Compose file creates a few [Docker bind mounts](https://docs.docker.com/storage/bind-mounts/#choosing-the--v-or---mount-flag):
 
-    -   `/var/lib/ghost/content` and `/var/lib/mysql` inside your containers are mapped to `/opt/ghost_content` and `/opt/ghost_mysql` on the Linode. These locations store your Ghost content.
+    -  `/var/lib/ghost/content` and `/var/lib/mysql` inside your containers are mapped to `/opt/ghost_content` and `/opt/ghost_mysql` on the Linode. These locations store your Ghost content.
 
-    -   NGINX uses a bind mount for `/etc/letsencrypt/` to access your Let's Encrypt certificates.
+    -  NGINX uses a bind mount for `/etc/letsencrypt/` to access your Let's Encrypt certificates.
 
-    -   NGINX also uses a bind mount for `/usr/share/nginx/html` so that it can access the [Let's Encrypt challenge files](https://letsencrypt.org/how-it-works/) that are created when your certificate is renewed.
+    -  NGINX also uses a bind mount for `/usr/share/nginx/html` so that it can access the [Let's Encrypt challenge files](https://letsencrypt.org/how-it-works/) that are created when your certificate is renewed.
 
     Create directories for those bind mounts (except for `/etc/letsencrypt/`, which was already created when you first generated your certificate):
 
@@ -143,7 +142,7 @@ services:
         sudo mkdir /opt/ghost_mysql
         sudo mkdir -p /usr/share/nginx/html
 
-### Create the NGINX Docker image
+### Create the NGINX Docker Image
 
 The Docker Compose file relies on a customized NGINX image. This image will be packaged with the appropriate server block settings.
 
@@ -153,7 +152,7 @@ The Docker Compose file relies on a customized NGINX image. This image will be p
 
 1.  Create a file named `Dockerfile` in the `nginx` directory and paste in the following contents:
 
-    {{< file "nginx/Dockerfile" >}}
+    {{< file "nginx/Dockerfile" dockerfile >}}
 FROM nginx:latest
 
 COPY default.conf /etc/nginx/conf.d
@@ -161,7 +160,7 @@ COPY default.conf /etc/nginx/conf.d
 
 1.  Create a file named `default.conf` in the `nginx` directory and paste in the following contents. Replace all instances of `example.com` with your domain:
 
-    {{< file "nginx/default.conf" >}}
+    {{< file "nginx/default.conf" nginx >}}
 server {
   listen 80;
   listen [::]:80;
@@ -203,7 +202,7 @@ From the `ghost` directory start the Ghost CMS by running all services defined i
 
 Verify that your blog appears by loading your domain in a web browser. It may take a few minutes for Docker to start your services, so try refreshing if the page does not appear when you first load it.
 
-If your site doesn’t ever appear in your browser, try reviewing the logs generated by Docker for more information. To see these errors:
+If your site doesn’t appear in your browser, review the logs generated by Docker for more information. To see these errors:
 
 1.  Shut down your containers:
 
@@ -214,31 +213,31 @@ If your site doesn’t ever appear in your browser, try reviewing the logs gener
 
         docker-compose up
 
-1.  To shut down your services and return the command prompt again, enter `CTRL-C`.
+1.  To shut down your services and return the command prompt again, press `CTRL-C`.
 
 ## Complete the Setup
 
 To complete the setup process, navigate to the Ghost configuration page by appending `/ghost` to the end of your blog’s URL or IP. This example uses `https://example.com/ghost`.
 
-1. On the welcome screen, click **Create your account**:
+1.  On the welcome screen, click **Create your account**:
 
     ![Ghost Welcome Screen](ghost-1-0-0-welcome-small.png "Ghost Welcome Screen")
 
-2. Enter your email, create a user, password, and blog title:
+1.  Enter your email, create a user and password, and enter a blog title:
 
     ![Create Your Account Screen](ghost-1-0-0-create-account-small.png "Create Your Account Screen")
 
-3. Invite additional members to your team. If you’d prefer to skip this step, click **I’ll do this later, take me to my blog!** at the bottom of the page.
+1.  Invite additional members to your team. If you’d prefer to skip this step, click **I’ll do this later, take me to my blog!** at the bottom of the page:
 
     ![Invite Your Team Screen](ghost-1-0-0-invite-team-small.png "Invite Your Team Screen")
 
-4. Navigate the Ghost admin area to create your first post, change your site's theme, or configure additional settings:
+1.  Navigate to the Ghost admin area to create your first post, change your site's theme, or configure additional settings:
 
     ![Ghost Admin Area](ghost-1-0-0-getting-started-small.png "Ghost Admin Area")
 
 ## Usage and Maintenance
 
-You do not need to manually start your containers if you reboot your Linode, because the option `restart: always` was assigned to your services in your `docker-compose.yml` file. This option tells Docker Compose to automatically start your services when the server boots.
+Because the option `restart: always` was assigned to your services in your `docker-compose.yml` file, you do not need to manually start your containers if you reboot your Linode. This option tells Docker Compose to automatically start your services when the server boots.
 
 ### Update Ghost
 
