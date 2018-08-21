@@ -34,7 +34,7 @@ This guide will help you get set up to run this example. Note that if you run th
 
 Only authorized users can add Linodes and make changes to your account, and each request must be authenticated with an access token.
 
-The easiest way to get a token is through the [beta Linode Manager](https://cloud.linode.com).
+The easiest way to get a token is through the [early access Linode Manager](https://cloud.linode.com).
 
   {{< note >}}
 If you are building an application which will need to authenticate multiple users (for example, a custom interface to Linode's infrastructure for your organization), you can set up an [OAuth authentication flow](https://developers.linode.com/v4/access) to generate tokens for each user.
@@ -44,13 +44,13 @@ If you are building an application which will need to authenticate multiple user
 
 1.  Log in to the Manager and select the **API Tokens** tab from the **My Profile** menu:
 
-    ![Select My Profile](get-started-with-linode-api-select-my-profile.png)
+    ![Select My Profile.](get-started-with-linode-api-select-my-profile.png "Select My Profile.")
 
-    ![Select API Tokens from My Profile](get-started-with-linode-api-my-profile.png)
+    ![Select API Tokens tab in My Profile Settings.](get-started-with-linode-api-my-profile-small.png "Select the API Tokens tab in My Profile Settings.")
 
 2.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have. Privileges are cascading, so a token with *Create* access will also have *Modify* and *View* access.
 
-    ![Add a Personal Access Token](get-started-with-linode-api-new-token.png)
+    ![Add a Personal Access Token](get-started-with-linode-api-new-token.png "Add a Personal Access Token")
 
     When you have finished, click **Submit** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through the Manager after closing the popup.**
 
