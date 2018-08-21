@@ -6,7 +6,7 @@ description: NodeBalancer Reference Guide
 keywords: ["load balancing", "nodebalancer"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['nodebalancers/reference/','linode-platform/nodebalancer-reference/']
-modified: 2017-02-23
+modified: 2018-08-21
 modified_by:
   name: Linode
 published: 2011-07-08
