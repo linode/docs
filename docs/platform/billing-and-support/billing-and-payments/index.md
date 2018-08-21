@@ -121,16 +121,6 @@ You can use the Linode Manager to pay an outstanding balance or prepay for Linod
 
 The payment may take a few minutes to be applied to your account. Click the **Account** subtab to view your new account balance.
 
-## Transfer Overages
-
-If you exceed your monthly network transfer quota, your account will be billed for $0.02/GB at the end of the current month.
-
-## Transfer Proration
-
-Your Linode's transfer quota is prorated based on its creation date. This means that a Linode you create mid-month will have a lower transfer quota than what's listed on our [pricing page](https://www.linode.com/pricing), depending on how much time remains in the month.
-
-The prorated transfer quota is reset at the beginning of the following month.
-
 ## Accessing Billing History
 
 All of your billing history is stored in the Linode Manager. Here's how to access it:
@@ -197,4 +187,6 @@ You do not have to cancel your account to prevent recurring charges. Instead, yo
 
 ## More Information
 
-If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information.
+- If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information.
+
+- For information on how your Linode account's network transfer pool quota is calculated and billed, see the [Network Transfer Pool Quota](/docs/platform/billing-and-support/network-transfer-quota/) guide.
