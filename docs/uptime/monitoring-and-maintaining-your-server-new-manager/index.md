@@ -84,7 +84,7 @@ To turn on and customize the alerts:
 
     [![Configuring Linode Manager Email Alerts](notification-thresholds-small.png)](notification-thresholds.png)
 
-5.  To enable an email alert, toggle the **Enabled** box.
+5.  To enable an email alert, toggle the appropriate box.
 6.  To configure the threshold for an alert, set a value in the text field.
 7.  Click **Save** to save the email alert thresholds.
 
