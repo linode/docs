@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
 description: 'Details on how your Linode account's network transfer pool quota is calculated and billed.
 keywords: ['network','billing','account','transfer', 'overage']
@@ -17,7 +17,7 @@ Every Linode plan includes a network transfer limit. The network transfer limit 
 
 - The network transfer pool can be used by any Linode on your account. It does not matter if your Linodes are in separate data centers.
 
-- Network bandwith usage only counts transfers on the public address.
+- Network bandwidth usage only counts transfers on the public address.
 
 - All inbound traffic is free and will not count against your quota.
 
