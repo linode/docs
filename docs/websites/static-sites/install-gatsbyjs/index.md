@@ -12,48 +12,51 @@ modified_by:
 title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
 contributor:
   name: Linode
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
+
 Gatsby is a [Static Site Generator](/docs/websites/static-sites/how-to-choose-static-site-generator/#what-is-a-static-site) for React built on Node.js. Gatsby uses a modern web technology stack based on client-side Javascript, reusable APIs and prebuilt Markdown, otherwise known as the [*JAMstack*](https://jamstack.org/). This method of building a site is fast, secure and scalable. All production site pages are prebuilt and static, so Gatsby does not have to build HTML for each page request.
 
 [Netlify](https://www.netlify.com/) is a PaaS provider that allows you to quickly deploy sites on their platform. In this guide Netlify will be used to provide a preview of your Gatsby site that can be shared with different stakeholders for site change approvals.
 
-[Travis CI](https://travis-ci.com/) is a continuous integration tool that can be integrated with a GitHub repository to test and deploy your code. This tool will be used in this guide to test and deploy your Gatsby site to a Linode.
+[Travis CI](https://travis-ci.com/) is a continuous integration tool that can be integrated with a GitHub repository to test and deploy your code. This tool will be used in this guide to test and deploy your Gatsby site to a Linode running Ubuntu 18.04.
 
 This guide creates the following CI/CD workflow:
 
 1. Make code changes to your Gatsby project in your local git repository.
 
-1. Push these changes to your remote git repository and submit a pull request.
+1. Push those changes to your GitHub repository and submit a pull request.
 
-1. Netlify will create a preview of the site with a unique URL that can be shared.
+1. Netlify creates a preview of the site with a unique URL that can be shared.
 
-1. Travis CI will build the site in a container and run any declared tests.
+1. Travis CI builds the site in a container and runs any declared tests.
 
-1. When all tests pass, merge the PR into master to trigger a deployment to the live production site.
+1. When all tests pass, you merge the PR into master to trigger a deployment to the production server.
 
 ## Before You Begin
 
-- Follow the [Getting Started](https://www.linode.com/docs/getting-started/) and [Securing Your Server](https://www.linode.com/docs/security/securing-your-server/) guides. This guide will use sudo wherever possible. Complete the sections of our Securing Your Server guide to create a standard user account, harden SSH access and remove unnecessary network services.
-- Install [NGINX on Ubuntu 18.04](https://www.linode.com/docs/web-servers/nginx/install-nginx-ubuntu/).
-- Set up and [host a website on a Linode](/docs/websites/set-up-web-server-host-website/).
-    - Make sure your Linode’s hostname and Fully Qualified Domain Name (FQDN) are set. Throughout this guide our FQDN is `example.com`
+- Follow the [Getting Started](/docs/getting-started/) guide.
 
-        - To check your hostname run:
+- Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account with sudo privilege, harden SSH access, and remove unnecessary network services.
 
-                hostname
-                hostname -f
+- Configure DNS for your site by adding a [domain zone](/docs/platform/manager/dns-manager/#add-a-domain-zone) and [reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
 
-            The first command will output your short hostname; the second, your fully-qualified domain name (FQDN).
-- Create a [GitHub](https://github.com/) account, if you don't have one.
+- Create a [GitHub](https://github.com/) account if you don't already have one.
 
-## NGINX Configuration
+- [Install Git](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) on your local machine.
 
-NGINX should be installed on your [Linode running Ubuntu 18.04](/docs/web-servers/nginx/install-nginx-ubuntu/). Below is a copy of the NGINX configuration file that will be used for the Gatsby production site:
+## Configure NGINX
 
-{{< file "/etc/nginx/conf.d/example.com.conf" nginx>}}
+1. Install NGINX from Ubuntu's repository:
+
+        sudo apt install nginx
+
+1.  Delete the default welcome page:
+
+        sudo rm /etc/nginx/sites-enabled/default
+
+1.  Create a site configuration file for Gatsby. Notice the `root` directive points to the Gatsby's `public` directory instead of `/var/www/`. This directory and all its static files are created whenever the `gatsby build` command is issued. Our production site should only server static files to site visitors.
+
+    {{< file "/etc/nginx/conf.d/example.com.conf" nginx>}}
 server {
     listen       80;
     server_name  example.com;
@@ -76,10 +79,6 @@ server {
 }
 {{</ file >}}
 
-The `root` directive is pointing to the `public` directory within the Gatsby site files. This directory and all its static files are created whenever the `gatsby build` command is issued. Our production site should only server static files to site visitors.
-
-### Test NGINX
-
 1. Test your configuration for errors:
 
         sudo nginx -t
@@ -88,27 +87,20 @@ The `root` directive is pointing to the `public` directory within the Gatsby sit
 
         sudo nginx -s reload
 
-Navigate to your Linode’s FQDN or IP address in a browser. You should see the NGINX default page displayed.
+1. Navigate to your Linode’s domain or IP address in a browser. Gatsby isn't installed yet, so you should only see a *404* error at the top of the page and the NGINX version running on Ubuntu. This at least tells you NGINX is working properly.
+
 
 ## Install Gatsby on Your Local Computer
 
 You will develop Gatsby locally and version control your files using [Git](/docs/development/version-control/how-to-configure-git/).
 
-1. Install Node.js on your local computer:
+1. Install Node.js and the Node Package Manager (npm) on your local computer:
 
-        sudo apt install nodejs
+        sudo apt install nodejs npm
 
-1. Ensure Node.js was installed by checking its version:
+1. Ensure Node.js was installed by checking its version.
 
         node --version
-
-    Gatsby supports versions of Node back to v6.
-
-1. Install the Node Package Manager (npm)
-
-        sudo apt install npm
-
-    Gatsby supports versions of npm back to v3.
 
 1. Install the Gatsby command line:
 
@@ -157,7 +149,7 @@ You will develop Gatsby locally and version control your files using [Git](/docs
 
 Once you have created your "Hello World" Gatsby site, begin tracking your files locally. If you have not already set up a [GitHub](https://github.com/) account, you will need to do this before proceeding.
 
-1. Make sure you are in the the `example-site` directory. Initialize a git repository to begin tracking your project files and stage all the files for your first commit:
+1. Make sure you are in your site `example-site` directory. Initialize a git repository to begin tracking your project files and stage all the files for your first commit:
 
         git init
         git add -A
@@ -276,10 +268,10 @@ ssh_known_hosts:
     Travis can run your builds on different types of environments:
 
     - A sudo enabled, full virtual machine per build, that runs Linux.
-    - A fast boot time container environment running Linux Ubuntu Trusty 14.04 in which sudo commands are not available.
+    - A fast boot time container environment running Ubuntu 14.04 in which sudo commands are not available.
     - An OS X environment for Objective-C and other OS X specific projects.
 
-    The `.travis.yml` file uses a container environment running Linux Ubuntu Trusty 14.04. Travis CI can add entries to `~/.ssh/known_hosts` prior to cloning your git repository. Replace `192.0.2.0` with your Linode server's IP address.
+    The `.travis.yml` file uses a container environment running Ubuntu 14.04. Travis CI can add entries to `~/.ssh/known_hosts` prior to cloning your git repository. Replace `192.0.2.0` with your Linode's IP address.
 
         The Gatsby *Hello World* starter includes a `package.json` file. This file will be used by Travis during the build to create the build environment and run any declared tests. Creating tests for Gatsby is out of scope for this guide. [Mocha] is a commonly used Javascript test framework. To add a test to your Travis environment, you can edit the `package.json` file at the root of the local Gatsby project and add your mocha test script.
 
@@ -301,9 +293,10 @@ ssh_known_hosts:
 }
     {{</ file >}}
 
-1. You will need the Travis CLI to generate an encrypted version of your secret SSH key. Install the Travis CLI to your local computer:
+1. You will need the Travis CLI to generate an encrypted version of your secret SSH key. Install the Ruby and Travis CLI to your local computer:
 
-        gem install travis
+        sudo apt install ruby ruby-dev
+        sudo gem install travis
 
 1. Log into your git hub account via the Travis CLI. Follow the prompts to provide your GitHub login credentials:
 
@@ -313,55 +306,52 @@ ssh_known_hosts:
 
         mkdir scripts
 
-1. Generate a pair of ssh keys to use when deploying your site to the production server to the Create ssh separate keys to store in the `scripts` directory:
+1. Generate a pair of ssh keys to use when deploying your site to the production server to the Create ssh separate keys to store in the `scripts` directory. The keypair will be named *gatsby-deploy* so you don't accidentally overwrite any preexisting keypairs.
 
-        ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/example-site/scripts/id_rsa
+        ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/example-site/scripts/gatsby-deploy
 
-    Your `scripts` directory will now have your pair of SSH keys, `id_rsa` and `id_rsa.pub`.
+    Your `scripts` directory will now have your private SSH key, `gatsby-deploy`, and `gatsby-deploy.pub`, your public key.
 
-1. Add the location of the secret `id_rsa` key to your Gatsby projects `.gitignore` file. This will ensure that you do not accidentally commit the secret key to your remote repository:
+1. Add the location of `gatsby-deploy` to your Gatsby projects `.gitignore` file. This will ensure that you do not accidentally commit the secret key to your remote repository:
 
     {{< file ".gitignore" git >}}
-scripts/id_rsa
+scripts/gatsby-deploy
     {{</ file >}}
 
-1. Encrypt your ssh keys using the Travis CLI. Make sure you are in your `scripts` directory when issuing the command:
+1. Encrypt your private SSH key using the Travis CLI:
 
-        cd scripts
-        travis encrypt-file id_rsa --add
+        cd scripts && travis encrypt-file gatsby-deploy --add
 
-    You should now see a `id_rsa.enc` file in your scripts directory. The `--add` flag tells Travis CLI to add the following line to the `.travis.yml` file:
+    You should now see a `gatsby-deploy.enc` file in your scripts directory. The `--add` flag tells Travis CLI to add the following line to the `.travis.yml` file:
+
+        before_install:
+            - openssl aes-256-cbc -K $encrypted_07d52615a665_key -iv $encrypted_07d52615a665_iv
+            -in gatsby-deploy.enc -out .ssh/gatsby-deploy -d
+
+    Edit that line in `.travis.yml` with `scripts/gatsby-deploy.enc` to update the location of your Gatsby project's encrypted private SSH key:
 
     {{< file ".travis.yml" yml >}}
 before_install:
     - openssl aes-256-cbc -K $encrypted_07d52615a665_key -iv $encrypted_07d52615a665_iv
-    -in id_rsa.enc -out .ssh/id_rsa -d
+    - in scripts/gatsby-deploy.enc -out .ssh/gatsby-deploy -d
     {{</ file >}}
 
-    Edit the `.travis.yml` file to update the location of the encrypted secret key file for your Gatsby project with `scripts/id_rsa.enc`:
-
-    {{< file ".travis.yml" yml >}}
-before_install:
-    - openssl aes-256-cbc -K $encrypted_07d52615a665_key -iv $encrypted_07d52615a665_iv
-    - in scripts/id_rsa.enc -out .ssh/id_rsa -d
-    {{</ file >}}
-
-1. Set up the SSH agent and ssh keys on the [Travis Worker](https://github.com/travis-ci/worker). The Travis Worker is the component of Travis CI that will run a CI job on your Travis build environment. Add the following lines after the secret key encryption lines:
+1. Set up the SSH agent and SSH keys on the [Travis Worker](https://github.com/travis-ci/worker). The Travis Worker is the component of Travis CI that will run a CI job on your Travis build environment. Add the following lines after the encrypted private key's lines:
 
     {{< file "~/example-site/.travis.yml" yml>}}
 before_install:
 - openssl aes-256-cbc -K $encrypted_07d52615a665_key -iv $encrypted_07d52615a665_iv
-- in scripts/id_rsa.enc -out scripts/id_rsa -d
+- in scripts/gatsby-deploy.enc -out scripts/gatsby-deploy -d
 - eval "$(ssh-agent -s)"
-- cp scripts/id_rsa ~/.ssh/id_rsa
-- chmod 600 ~/.ssh/id_rsa
-- ssh-add ~/.ssh/id_rsa
+- cp scripts/gatsby-deploy ~/.ssh/gatsby-deploy
+- chmod 600 ~/.ssh/gatsby-deploy
+- ssh-add ~/.ssh/gatsby-deploy
 - echo -e "Host 192.0.2.0\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
     {{</ file >}}
 
-1. The Linode production server will need a copy of the public key. Add your deploy key to the Linode production server. Replace `192.0.2.0` with your Linode's IP address:
+1. The production server will need a copy of the public key. Add your deploy key to the Linode production server. Replace `192.0.2.0` with your Linode's IP address:
 
-        scp ~/example-site/scripts/id_rsa.pub example_user@192.0.2.0:~/.ssh/authorized_keys
+        scp ~/example-site/scripts/gatsby-deploy.pub example_user@192.0.2.0:~/.ssh/authorized_keys
 
 1. Provide deploy configurations for Travis to complete when a pull request is merged to the Master branch. Add the following lines to the bottom of the `.travis.yml` file:
 
@@ -391,11 +381,11 @@ ssh_known_hosts:
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_07d52615a665_key -iv $encrypted_07d52615a665_iv
--in scripts/id_rsa.enc -out scripts/id_rsa -d
+-in scripts/gatsby-deploy.enc -out scripts/gatsby-deploy -d
 - eval "$(ssh-agent -s)"
-- cp scripts/id_rsa ~/.ssh/id_rsa
-- chmod 600 ~/.ssh/id_rsa
-- ssh-add ~/.ssh/id_rsa
+- cp scripts/gatsby-deploy ~/.ssh/gatsby-deploy
+- chmod 600 ~/.ssh/gatsby-deploy
+- ssh-add ~/.ssh/gatsby-deploy
 - echo -e "Host 192.0.2.0\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 deploy:
@@ -425,7 +415,7 @@ In the previous section you completed the configurations for the Travis build. I
 
         git config receive.denyCurrentBranch updateInstead
 
-1. When Travis deploys the Gatsby site to the bare Git repository a Git hook will create a [detached working tree](https://git-scm.com/docs/git-worktree) copy of the bare Git repository files, which will make them available to the location of the `example-site.com` [NGINX root](/docs/websites/static-sites/install-gatsbyjs/#nginx-configuration). Your static Gatsby files are served from this location. From the bare Git repository, create a Git hook `post-receive` file and make it executable:
+1. When Travis deploys the Gatsby site to the bare Git repository a Git hook will create a [detached working tree](https://git-scm.com/docs/git-worktree) copy of the bare Git repository files, which will make them available to the location of the `example-site.com` [NGINX root](/docs/websites/static-sites/install-gatsbyjs/#configure-nginx). Your static Gatsby files are served from this location. From the bare Git repository, create a Git hook `post-receive` file and make it executable:
 
         touch hooks/post-receive
         chmod +x hooks/post-receive
@@ -433,9 +423,9 @@ In the previous section you completed the configurations for the Travis build. I
     - Add the following lines to the `post-receive` Git hook file:
 
         {{< file "hooks/post-receive" bash >}}
-    #!/bin/sh
-    git --work-tree=/usr/share/nginx/html/example-site --git-dir=/home/user/gatsbybare.git checkout -f
-        {{</ file >}}
+#!/bin/sh
+git --work-tree=/usr/share/nginx/html/example-site --git-dir=/home/user/gatsbybare.git checkout -f
+{{</ file >}}
 
         Replace the directory locations with the location of your site's NGINX root and bare Git repository.
 
@@ -505,6 +495,6 @@ You will need to test your Travis CI/CD Pipeline to ensure it behaves as expecte
 If your Travis build is failing, here are some places to look when troubleshooting:
 
 - Ensure all your `.sh` scripts are executable, including the Git hook on the Linode.
-- You can test the Git hook on the linode server by running `bash ~/gatsbybare.git/post-receive`
+- You can test the Git hook on your Linode by running `bash ~/gatsbybare.git/post-receive`
 - If you encounter permissions issues, make sure your local repository Gatsby files and Linode directories are owned by the same user group.
 - To view the contents of the bare Git repository you can run `git ls-tree --full-tree -r HEAD`.
