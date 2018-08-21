@@ -15,6 +15,7 @@ external_resources:
   - '[API Documentation](https://developers.linode.com/v4/introduction)'
   - '[Linode CLI](https://github.com/linode/linode-cli)'
   - '[Linode API Python Library](https://github.com/linode/python-linode-api)'
+shortguide: true
 ---
 
 ## Create a Linode Using the Linode API
