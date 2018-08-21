@@ -122,7 +122,7 @@ services:
 {{< /file >}}
 
     {{< note >}}
-This guide uses Mastodon [v2.4.2](https://github.com/tootsuite/mastodon/releases/tag/v2.4.2). At the time of writing, there was a [known issue]((https://github.com/tootsuite/mastodon/issues/8001)) with [v2.4.3](https://github.com/tootsuite/mastodon/releases/tag/v2.4.3) during installation.
+This guide uses Mastodon [v2.4.2](https://github.com/tootsuite/mastodon/releases/tag/v2.4.2). At the time of writing, there was a [known issue](https://github.com/tootsuite/mastodon/issues/8001) with [v2.4.3](https://github.com/tootsuite/mastodon/releases/tag/v2.4.3) during installation.
 {{< /note >}}
 
 1.  For the `db`, `redis`, `web`, and `sidekiq` services, set the volumes listed in this snippet:
@@ -449,7 +449,7 @@ To update your Mastodon version, review the instructions from the Mastodon GitHu
 
 1. You can test your new job with the `--dry-run` option:
 
-        sudo bash -c "certbot certonly -n --webroot -w /usr/share/nginx/html -d example.com --deploy-hook='docker exec mastodon_nginx_1 nginx -s reload'"
+        sudo bash -c "certbot certonly -n --webroot -w /usr/share/nginx/html -d example.com --deploy-hook='docker exec mastodon_nginx_1 nginx -s reload' --dry-run"
 
 ## Using your New Mastodon Instance
 Now that your new instance is running, you can start participating in the Mastodon network. The official [Mastodon User's Guide](https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/User-guide.md) describes the mechanics of the application and network. Mastodon's founder, Eugen Rochko, has also written a non-technical blog post that outlines his best practices for building a new community: [How to start a Mastodon server](https://medium.com/tootsuite/how-to-start-a-mastodon-server-dea0dec56028).
