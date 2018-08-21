@@ -22,7 +22,7 @@ This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting S
 
 Click the NodeBalancers page, and then "Add a NodeBalancer". You must choose the same location as your back-end Linodes for a given deployment.
 
-![NodeBalancer page in Linode Manager](nodebalancer-rg-add-a-nodebalancer.png "NodeBalancer page in Linode Manager")
+[![NodeBalancer page in Linode Manager](nodebalancer-rg-add-a-nodebalancer-small.png "NodeBalancer page in Linode Manager")](nodebalancer-rg-add-a-nodebalancer.png)
 
 ## NodeBalancer Settings
 
@@ -32,7 +32,7 @@ Here you may adjust the NodeBalancer's display label, along with the 'Client Con
 
 ## Configuration
 
-![NodeBalancer Configuration in Linode Manager](nodebalancer-rg-nodebalancer-config1.png "NodeBalancer Configuration in Linode Manager")
+[![NodeBalancer Configuration in Linode Manager](nodebalancer-rg-nodebalancer-config1-small.png "NodeBalancer Configuration in Linode Manager")](nodebalancer-rg-nodebalancer-config1.png)
 
 Each NodeBalancer config adds another port that the NodeBalancer will listen on. For instance, if you wish to balance both port 80 and 81, you'll need to add two configuration profiles to your NodeBalancer.
 
@@ -130,7 +130,7 @@ Three different Health Check Types exist:
 
 ## Nodes
 
-![NodeBalancer Configuration in Linode Manager](nodebalancer-rg-nodebalancer-config2.png "NodeBalancer Configuration in Linode Manager")
+[![NodeBalancer Configuration in Linode Manager](nodebalancer-rg-nodebalancer-config2-small.png "NodeBalancer Configuration in Linode Manager")](nodebalancer-rg-nodebalancer-config2.png)
 
 NodeBalancers work over the private network. Backend nodes must have a private IP configured via [static networking](/docs/networking/configuring-static-ip-interfaces).
 
