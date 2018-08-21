@@ -48,15 +48,15 @@ Sticking with the simple web application example above, the backend Linode curre
 
 1.  Visit the NodeBalancers page in the Linode Manager and select **Add a NodeBalancer**.
 
-    [![The NodeBalancer tab.](nodebalancers-tab.png)](nodebalancers-tab.png)
+    [![The NodeBalancer page.](nodebalancers-tab-small.png "The NodeBalancers page")](nodebalancers-tab.png)
 
 2.  For the example web application, only one NodeBalancer is needed. Add one in the same data center that your backend Linodes are located in.
 
-    [![The NodeBalancer creation screen.](nodebalancers-create-choose-region.png)](nodebalancers-create-choose-region.png)
+    [![The NodeBalancer creation screen.](nodebalancers-create-choose-region-small.png "The NodeBalancer creation screen.")](nodebalancers-create-choose-region.png)
 
 3.  A NodeBalancer is configured using ports, and let's say our example web application uses only one: port 80 for regular HTTP traffic.
 
-    [![Adding a port configuration to a NodeBalancer.](nodebalancers-settings.png)](nodebalancers-settings.png)
+    ![Adding a port configuration to a NodeBalancer.](nodebalancers-settings.png "Adding a port configuration to a NodeBalancer")
 
     **HTTP**
 
@@ -70,11 +70,11 @@ Sticking with the simple web application example above, the backend Linode curre
 
 4.  Now we must add the single backend node to the NodeBalancer's configuration. Point this at the private IP address of your web server Linode.
 
-    [![Adding a backend node to a NodeBalancer.](nodebalancers-backend-nodes.png)](nodebalancers-backend-nodes.png)
+    [![Adding a backend node to a NodeBalancer.](nodebalancers-backend-nodes-small.png "Adding a backend node to a NodeBalancer")](nodebalancers-backend-nodes.png)
 
     These configuration changes will take a few moments to be reflected by your NodeBalancer. If everything is configured on your backend correctly, once the changes have gone through, the **Node Status** column will update to **1 up / 0 down**.
 
-    [![The backend node has been added, and is now status UP.](nodebalancers-1up.png)](nodebalancers-1up.png)
+    [![The backend node has been added, and is now status UP.](nodebalancers-1up-small.png "The backend node has been added, and is now status UP")](nodebalancers-1up.png)
 
     If the backend status reports **0 up / 1 down**, check to make sure that your web application is configured to respond on the Linode's private IP address.  You do this by adding the private IP address to your /etc/hosts file on your Linode and then reboot your Linode. There might be a virtual host mismatch as well -- check the notes in the next section.
 
@@ -102,7 +102,7 @@ Once you are satisfied that NodeBalancer is working normally, you can switch you
 
 2.  Edit or create an A record for `www.nodebalancerexample.com`, pointing to your NodeBalancer's IP address.
 
-    [![Adding an A Record.](nodebalancers-add-a-name.png)](nodebalancer-add-a-name.png)
+    [![Adding an A Record.](nodebalancers-add-a-name-small.png "Adding an A Record")](nodebalancers-add-a-name.png)
 
     Also add an AAAA record for the IPv6 address.
 
@@ -112,7 +112,7 @@ Once the DNS changes propagate, traffic will begin flowing through the NodeBalan
 
 On another Linode, make an exact copy of your current web server. The Linode backups service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply repeat step four of [Configuring a NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/#configuring-a-nodebalancer) to add it to the NodeBalancer configuration.
 
-[![Adding another backend to the NodeBalancer's configuration.](nodebalancers-backend-nodes2.png)](nodebalancers-backend-nodes2.png)
+[![Adding another backend to the NodeBalancer's configuration.](nodebalancers-backend-nodes2-small.png "Adding another backend to the NodeBalancer's configuration")](nodebalancers-backend-nodes2.png)
 
 Once the configuration is sent to the backend, users will be transparently balanced over the two Linodes and each will be monitored for health. This configuration is very easy to work with, as upgrades can be rolled out to each backend without disrupting service and backends can be taken in and out of rotation at will.
 
