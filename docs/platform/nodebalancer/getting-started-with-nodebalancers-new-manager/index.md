@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2015-02-12
 title: Getting Started with NodeBalancers
+shortguide: true
 ---
 
 ![Getting Started with NodeBalancers](Getting-Started-with-NodeBalancers-smg.jpg)
