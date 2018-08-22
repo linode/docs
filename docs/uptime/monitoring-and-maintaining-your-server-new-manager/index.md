@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2012-08-22
 title: Monitoring and Maintaining Your Server
-shortguide: true
+hiddenguide: true
 ---
 
 ![Monitoring and Maintaining Your Server](monitoring-and-maintaining-your-server.jpg)
