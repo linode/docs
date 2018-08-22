@@ -11,7 +11,7 @@ modified_by:
 published: 2018-08-17
 aliases: ['platform/how-to-use-block-storage-with-your-linode/']
 title: How to Use Block Storage with Your Linode
-shortguide: true
+hiddenguide: true
 ---
 
 ![How to Use Block Storage with Your Linode](block-storage-title-graphic.png)
