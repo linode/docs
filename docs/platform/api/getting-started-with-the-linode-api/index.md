@@ -58,7 +58,7 @@ Get the necessary configuration parameters to create your new Linode.
             -H "Authorization: Bearer $TOKEN" -H "Content-type: application/json" \
             -d '{"type": "g5-standard-2", "region": "us-east", "image": "linode/debian9", "root_pass": "root_password", "label": "prod-1"}'
 
-    Note that if you run this command, you will create and be charged for a [2GB Linode](http://localhost:1313/pricing).
+    Note that if you run this command, you will create and be charged for a [2GB Linode](https://www.linode.com/pricing).
 
 ### Filtering and Sorting
 
