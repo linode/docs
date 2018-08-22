@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Details on how your Linode account's network transfer pool quota is calculated and billed.
+description: 'Details on how your Linode account's network transfer pool quota is calculated and billed.'
 keywords: ['network','billing','account','transfer', 'overage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-21
