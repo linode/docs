@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2014-09-25
 title: Linode Images
-shortguide: true
+hiddenguide: true
 ---
 
 ![Linode Images](linode-images.jpg)
