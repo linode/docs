@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2011-07-08
 title: NodeBalancer Reference Guide
-shortguide: true
+hiddenguide: true
 ---
 
 ![NodeBalancer Reference Guide](NodeBalancer_Reference_Guide_smg.jpg)
