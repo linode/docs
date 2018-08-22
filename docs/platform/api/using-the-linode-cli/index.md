@@ -18,37 +18,23 @@ external_resources:
 
 ![Linode CLI](linode-cli.png "Linode CLI")
 
-The Linode CLI is a wrapper around the [Linode API](https://developers.linode.com) that allows you to manage your Linode account from the command line. Virtually any task that can be done through the Linode Manager can be done through the CLI, making it an excellent tool for scripting.
-
-This guide describes the basics of installing and working with the CLI. It also offers examples illustrating how to complete common tasks using the CLI.
+The Linode CLI is a wrapper around the [Linode API](https://developers.linode.com) that allows you to manage your Linode account from the command line. This guide describes the basics of installing and working with the CLI.
 
 ## Install the CLI
 
-The easiest way to install the CLI is through [Pip](https://pypi.org/project/pip/):
-
-1.  Install the CLI:
+1.  Install the CLI using [Pip](https://pypi.org/project/pip/):
 
         pip install linode-cli --upgrade
 
 1.  You need a Personal Access Token to use the CLI. Use the [beta Linode Manager](https://cloud.linode.com/profile/tokens) to obtain a token.
 
-1.  The first time you run any command, you will be prompted with the CLI's configuration script. Paste your access token (which will then be used by default for all requests made through the CLI) at the prompt. You will be prompted to choose defaults for Linodes created through the CLI (region, type, and image). These are optional, and can be overridden for individual commands. Update these defaults at any time by running `linode-cli configure`:
 
-    {{< output >}}
-Welcome to the Linode CLI.  This will walk you through some
-initial setup.
+1.  The first time you run any command, you will be prompted with the CLI's configuration script. Paste your access token at the prompt and proceed with the remaining configurations. Update these defaults at any time by running `linode-cli configure`.
 
-First, we need a Personal Access Token.  To get one, please visit
-https://cloud.linode.com/profile/tokens and click
-"Create a Personal Access Token".  The CLI needs access to everything
-on your account to work correctly.
 
-Personal Access Token:
-{{< /output >}}
-
-{{< note >}}
+    {{< note >}}
 The CLI installs a bash completion file. On OSX, you may have to source this file before it can be used. To do this, add `source /etc/bash_completion.d/linode-cli.sh` to your `~/.bashrc` file.
-{{< /note >}}
+    {{< /note >}}
 
 ## Options
 
@@ -72,70 +58,21 @@ Specify exactly which fields you would like to receive with the `-format` option
 
 ### JSON Output
 
-The CLI will return output in tabulated format for easy readability. If you prefer to work with JSON, use the `--json` flag. Adding the `--pretty` flag will format the JSON output to make it more readable:
+The CLI will return output in tabulated format for easy readability. Use the `--json` and `--pretty` flag to work with a readable JSON output:
 
     linode-cli regions list --json --pretty
 
-{{< highlight json >}}
-[
-  {
-    "country": "us",
-    "id": "us-central"
-  },
-  {
-    "country": "us",
-    "id": "us-west"
-  },
-  {
-    "country": "us",
-    "id": "us-southeast"
-  },
-  {
-    "country": "us",
-    "id": "us-east"
-  },
-  ...
-]
-{{< /highlight >}}
-
 ### Machine Readable Output
 
-You can also display the output as plain text. By default, tabs are used as a delimiter, but you can specify another character with the `--delimiter` option:
+Display the output as plain text using the default tab delimiter:
 
     linode-cli regions list --text
 
-{{< highlight text >}}
-id	country
-us-central	us
-us-west	us
-us-southeast	us
-us-east	us
-eu-west	uk
-ap-south	sg
-eu-central	de
-ap-northeast	jp
-ap-northeast-1a	jp
-{{< /highlight >}}
+Display the output as plain text using a `;` as the delimiter:
 
     linode-cli regions list --text --delimiter ";"
 
-{{< highlight text >}}
-id;country
-us-central;us
-us-west;us
-us-southeast;us
-us-east;us
-eu-west;uk
-ap-south;sg
-eu-central;de
-ap-northeast;jp
-ap-northeast-1a;jp
-{{< /highlight >}}
-
 ## Examples
-
-This section reviews some common examples related to Linodes, Domains, Block Storage Volumes, NodeBalancers, and account details.
-
 ### Linodes
 
 Tasks related to Linode instances are performed with `linode-cli linodes [ACTION]`.
@@ -148,8 +85,6 @@ Tasks related to Linode instances are performed with `linode-cli linodes [ACTION
 
         linode-cli linodes list --region us-east
 
-    Filtering works on many fields throughout the CLI. Use `--help` for each action to see which properties are filterable.
-
 1.  Create a new Linode:
 
         linode-cli linodes create --root_pass mypassword
@@ -158,13 +93,9 @@ Tasks related to Linode instances are performed with `linode-cli linodes [ACTION
 
         linode-cli linodes create --root_pass mypassword --region us-east --image linode/debian9 --group webservers
 
-    If you are not writing a script, it is more secure to use `--root_pass` without specifying a password. You will then be prompted to enter a password:
+    It is more secure to use `--root_pass` without specifying a password. You will then be prompted to enter a password:
 
         linode-cli linodes create --root_pass
-
-1.  For commands targeting a specific Linode, you will need that Linode's ID. The ID is returned when creating the Linode, and can be viewed by listing the Linodes on your account as described above. Store the ID of the new Linode (or an existing Linode) for later use:
-
-        export linode_id=<id-string>
 
 1.  View details about a particular Linode:
 
@@ -188,7 +119,7 @@ Tasks related to Linode instances are performed with `linode-cli linodes [ACTION
 
         linode-cli linodes disks-list $linode_id
 
-1.  Upgrade your Linode. If an upgrade is available for the specified Linode, it will be placed in the Migration Queue. It will then be automatically shut down, migrated, and returned to its last state:
+1.  Upgrade your Linode:
 
         linode-cli linodes upgrade $linode_id
 
@@ -266,8 +197,6 @@ Many other actions are available. Use `linode-cli linodes --help` for a complete
         linode-cli volumes delete $volume_id
 
 ### Account
-
-View or update your account information, add payment methods, view notifications, make payments, create OAuth clients, and do other related tasks through the `account` action:
 
 1.  View your account:
 
