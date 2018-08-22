@@ -13,7 +13,7 @@ published: 2011-04-05
 title: Automate Deployment with StackScripts
 external_resources:
   - '[StackScript Community Library](http://linode.com/stackscripts)'
-shortguide: true
+hiddenguide: true
 ---
 
 ![Automate Deployment with StackScripts](automate-deployment-with-stackscripts-title-graphic.jpg "Automate Deployment with StackScripts")
