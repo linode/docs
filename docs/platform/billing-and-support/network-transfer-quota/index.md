@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Details on how your Linode account's network transfer pool quota is calculated and billed.'
-keywords: ['network','billing','account','transfer', 'overage']
+description: "Learn how your Linode account's network transfer pool quota is calculated and billed."
+keywords: ["network","billing","account","transfer", "overage"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-21
 modified: 2018-08-21
@@ -40,7 +40,7 @@ The prorated transfer quota is reset at the beginning of the following month.
 
 In order to mitigate going over your Network Transfer quota, you can:
 
-1. [Increase the size](https://linode.com/docs/platform/disk-images/resizing-a-linode/) of an existing Linode to access more monthly transfer bandwidth.
+1. [Increase the size](/docs/platform/disk-images/resizing-a-linode/) of an existing Linode to access more monthly transfer bandwidth.
 
 1. Purchase (an) additional Linode(s) with the specific purpose of increasing your Network Transfer Pool quota to avoid the overage.
 
