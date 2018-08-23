@@ -219,6 +219,12 @@ Inserting `headless: true` in the front matter will hide the guide from the site
 
 When using the `content` shortcode in a guide to embed a shortguide, the shortcode will take the name of your guide's directory (e.g. `example-shortguide-name`) as a parameter. A shortguide can be within a different part of the `docs` heirarchy from the guide that embeds it, so the guide directory name exists within a global namespace of all shortguides in the repository. In other words, two different shortguides can't use the same directory name.
 
+To use an image in a shortguide, add the image to your shortguide's directory and then use the `image` shortcode to embed it:
+
+{{< file "sample_embedding_guide/index.md" text >}}
+{{</* image src="image-name.png" alt="image alt label" title="image title" */>}}
+{{< /file >}}
+
 #### Example Usage
 
 The following shortguide describes how to install Python via Miniconda. Create a directory named `install_python_miniconda` and filed named `index.md` within it:
