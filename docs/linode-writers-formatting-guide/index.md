@@ -213,15 +213,33 @@ If you wish to provide links to external sites for the user to review after goin
 
 Using shortcodes, it is possible to extend a markdown file with another. For common tasks such as basic software installation, consider using the `content` shortcode. This allows our library to maintain consistent and up to date installation instructions for frequently used tools such as Python, MySQL, and Docker.
 
-Markdown files intended to be inserted into multiple guides are called shortguides and should be standalone documents.
+Markdown files intended to be inserted into multiple guides are called shortguides. To create a shortguide, create a directory with the name of your shortguide anywhere within `docs/`, and then create an index.md within the directory for your content (e.g. `example-shortguide-name/index.md`).
 
-Inserting `shortguide: true` in the front matter will hide the guide from the site navigation as well as the search index.
+Inserting `headless: true` in the front matter will hide the guide from the site navigation as well as the search index.
+
+When using the `content` shortcode in a guide to embed a shortguide, the shortcode will take the name of your guide's directory (e.g. `example-shortguide-name`) as a parameter. A shortguide can be within a different part of the `docs` heirarchy from the guide that embeds it, so the guide directory name exists within a global namespace of all shortguides in the repository. In other words, two different shortguides can't use the same directory name.
 
 #### Example Usage
 
-The shortcode will take a file path as a parameter. As long as the markdown file exists in the `content` directory, only the filename needs to be specified.
+The following shortguide describes how to install Python via Miniconda. Create a directory named `install_python_miniconda` and filed named `index.md` within it:
 
-{{< file "install_python_miniconda.md"  text >}}
+{{< file "install_python_miniconda/index.md"  text >}}
+---
+author:
+  name: Linode
+  email: docs@linode.com
+description: 'A shortguide that shows how to install Python via Miniconda.'
+keywords: []
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2018-08-23
+modified: 2018-08-23
+modified_by:
+  name: Linode
+title: "Install Python with Miniconda"
+headless: true
+show_on_rss_feed: false
+---
+
 <!-- Installation instructions for Python 3. -->
 
 1.  Download and install Miniconda:
@@ -237,10 +255,10 @@ The shortcode will take a file path as a parameter. As long as the markdown file
         python --version
 {{< /file >}}
 
-To use a shortguide in another guide, use the following syntax:
+To use this shortguide in another guide, use the following syntax:
 
-{{< file "sample_guide.md" >}}
-{{</* content "install_nginx.md" */>}}
+{{< file "sample_embedding_guide/index.md" >}}
+{{</* content "install_python_miniconda" */>}}
 {{< /file >}}
 
 {{< note >}}
