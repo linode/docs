@@ -136,7 +136,7 @@
     "type": "date",
     "description": "Date this guide was originally published. Should use the form YYYY-MM-DD."
   },
-  "shortguide": {
+  "hiddenguide": {
     "elements": false,
     "required": false,
     "type": "bool",

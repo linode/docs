@@ -10,6 +10,7 @@ modified: 2015-12-18
 modified_by:
   name: Linode
 published: 2015-02-12
+cloud_manager_link: 'platform/test-guide/'
 title: Getting Started with NodeBalancers
 ---
 
