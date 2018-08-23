@@ -126,7 +126,7 @@ Creating strong passwords is essential to protecting your Linode and your Linode
 
 ### Changing or Resetting Your Linode Manager Password
 
-If you want to change your password, or you forgot your password and need a new one, you can accomplish this task through the *Forgot Password* webpage. Here's how:
+If you want to change your password, or you forgot your password and need a new one, you can accomplish these task through the *Forgot Password* webpage. Here's how:
 
 1.  Visit the [Forgot Password](https://manager.linode.com/session/forgot/password) webpage.
 1.  Enter your username in the **Username** field.
