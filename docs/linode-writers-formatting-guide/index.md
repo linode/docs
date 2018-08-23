@@ -253,7 +253,7 @@ Adding `os: ["mac", "linux", "windows"]` to the front matter inserts a jQuery sc
 
 The shortcode should contain two parameters: filepath and operating system.
 
-For example, `{{</* content "how-to-install-git-mac.md" mac */>}}` will insert a markdown snippet that will only be visible when the Mac button is in the active state.
+For example, `{{</* content "how-to-install-git-mac" mac */>}}` will insert a markdown snippet that will only be visible when the Mac button is in the active state.
 
 ### Files and File Excerpts
 

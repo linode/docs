@@ -28,7 +28,7 @@ This guide uses a simple Node.js app to demonstrate how to configure NGINX as a 
 
 ### Install Node.js
 
-{{< content "install-nodejs-nodesource.md" >}}
+{{< content "install-nodejs-nodesource" >}}
 
 ### Configure the App
 
@@ -135,7 +135,7 @@ One advantage of a reverse proxy is that it is easy to set up HTTPS using a TLS 
 
 Follow these steps to get a certificate via Certbot. Certbot will automatically update your NGINX configuration files to use the new certificate:
 
-{{< content "certbot-shortguide-ubuntu.md" >}}
+{{< content "certbot-shortguide-ubuntu" >}}
 
 ## Next Steps
 

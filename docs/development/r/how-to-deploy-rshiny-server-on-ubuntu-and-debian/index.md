@@ -54,7 +54,7 @@ The steps in this section should be completed on your Linode.
 
 ### Install R
 
-{{< content "install_r_ubuntu.md" >}}
+{{< content "install_r_ubuntu" >}}
 
 ### Add the Shiny Package
 
