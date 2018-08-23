@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode
+  name: Linode Community
   email: docs@linode.com
 description: 'Details on how your Linode account's network transfer pool quota is calculated and billed.'
 keywords: ['network','billing','account','transfer', 'overage']
@@ -13,6 +13,7 @@ title: "Network Transfer Pool Quota"
 contributor:
   name: Linode
 ---
+
 Every Linode plan includes a network transfer limit. The network transfer limit for all of your Linodes are combined to determine your monthly *network transfer pool* quota.
 
 - The network transfer pool can be used by any Linode on your account. It does not matter if your Linodes are in separate data centers.
