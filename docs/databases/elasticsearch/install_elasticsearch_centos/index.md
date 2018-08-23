@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Install Elasticsearch on Fedora, Red Hat, and CentOS"
 published: 2018-01-09
-shortguide: true
+headless: true
 ---
 
 1.  Trust the Elastic signing key:

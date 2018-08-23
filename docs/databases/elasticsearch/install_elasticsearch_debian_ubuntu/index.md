@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Install Elasticsearch on Debian and Ubuntu"
 published: 2018-01-09
-shortguide: true
+headless: true
 ---
 
 1.  Install the official Elastic APT package signing key:

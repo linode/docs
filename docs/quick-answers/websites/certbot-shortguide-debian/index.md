@@ -10,7 +10,7 @@ modified: 2018-06-28
 modified_by:
   name: Linode
 title: 'Install Certbot for TLS on Debian'
-shortguide: true
+headless: true
 ---
 
 1.  Install the Certbot and web server-specific packages, then run Certbot:

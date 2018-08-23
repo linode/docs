@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2018-03-19
 show_on_rss_feed: false
-shortguide: true
+headless: true
 title: Install NGINX on Ubuntu from the Official NGINX Repository
 ---
 

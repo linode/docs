@@ -10,7 +10,7 @@ modified_by:
   name: Sam Foo
 title: "How to Install R on Ubuntu"
 published: 2018-02-07
-shortguide: true
+headless: true
 show_on_rss_feed: false
 ---
 

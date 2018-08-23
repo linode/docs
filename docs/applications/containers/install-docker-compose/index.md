@@ -10,7 +10,7 @@ modified_by:
   name: Sam Foo
 title: "How to Install Docker Compose"
 published: 2018-01-08
-shortguide: true
+headless: true
 ---
 
 <!--- Installation instructions for Docker Compose -->
