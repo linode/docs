@@ -74,7 +74,7 @@ You can add logical operators to your search filters.
 
         curl https://api.linode.com/v4/images/ -H "{"+or": [{"vendor":"Debian"}, {"vendor":"Ubuntu"}]}"
 
-    See the [Linode API documentation](https://developers.linode.com/v4/filtering) for a full list of supported operators.
+    See the [Linode API documentation](https://developers.linode.com/api/v4#section/Filtering-and-Sorting) for a full list of supported operators.
 
 If a results list contains more than 100 items, the response will be split into multiple pages. Each response will include the total number of pages and the current page.
 
