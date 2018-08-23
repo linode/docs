@@ -136,6 +136,12 @@
     "type": "date",
     "description": "Date this guide was originally published. Should use the form YYYY-MM-DD."
   },
+  "shortguide": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, this guide will be hidden from all layouts and search index."
+  },
   "hiddenguide": {
     "elements": false,
     "required": false,
