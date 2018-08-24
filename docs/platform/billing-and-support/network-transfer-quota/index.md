@@ -24,7 +24,7 @@ The transfer quota amounts for all of your Linodes are added together to create 
 
 If an individual Linode exceeds the transfer quota specified by its plan, but the total transfer used between all of your Linodes is still less than your pool total, then you will not be charged any overages.
 
-Linodes from different datacenters all contribute to and consume from the same pool total.
+Linodes from different data centers all contribute to and consume from the same pool total.
 
 ### Network Transfer Pool Example
 
