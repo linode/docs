@@ -38,7 +38,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Install Docker
 
-{{< content "install-docker-ce.md" >}}
+{{< content "install-docker-ce" >}}
 
 ## Start and Enable Docker
 

@@ -55,7 +55,7 @@ Verify that the `hosts` file contains a line for the Linode's public IP address 
 
 ## Install SSL Certificate
 
-You will need to install a SSL certificate on your mail server prior to completing the [Dovecot](#dovecot) configuration steps. The SSL certificate will authenticate the identity of the mail server to users and encrypt the transmitted data between the user's mail client and the mail server. To install a SSL certificate, use the [Certbot documentation](https://certbot.eff.org/).
+You will need to install a SSL certificate on your mail server prior to completing the [Dovecot](#dovecot) configuration steps. The SSL certificate will authenticate the identity of the mail server to users and encrypt the transmitted data between the user's mail client and the mail server. Follow our guide to [Install an SSL certificate with Certbot](/docs/quick-answers/websites/secure-http-traffic-certbot/).
 
 Make a note of the certificate and key locations on the Linode. You will need the path to each during the [Dovecot](#dovecot) configuration steps.
 
