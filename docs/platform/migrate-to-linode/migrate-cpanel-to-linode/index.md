@@ -17,7 +17,7 @@ external_resources:
 
 ---
 
-This guide describes how to migrate from a server running WHM and CPanel on another host to Linode. This transfer is completed using CPanel's official [Transfer Tool](https://documentation.cpanel.net/display/70Docs/Transfer+Tool). Prior to using the Transfer Tool, you will complete a basic WHM installation on a new Linode. Read the [Best Practices when Migrating to Linode](/docs/platform/migrate-to-linode/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your sites.
+This guide describes how to migrate from a server running WHM and CPanel on another hosting service to Linode. This transfer is completed using CPanel's official [Transfer Tool](https://documentation.cpanel.net/display/70Docs/Transfer+Tool). Prior to using the Transfer Tool, you will complete a basic WHM installation on a new Linode. Read the [Best Practices when Migrating to Linode](/docs/platform/migrate-to-linode/best-practices-when-migrating-to-linode/) guide for more information about migrating your sites before beginning.
 
 {{< note >}}
 The Transfer Tool only transfers your CPanel accounts, and not your WHM settings. You will need to recreate your WHM settings on your new Linode separately.
@@ -29,21 +29,21 @@ This guide does not cover how to handle CPanel deployments that are part of a DN
 
 ### Deploy Your Linode
 
-1.  Follow Linode's [Getting Started](/docs/getting-started/) guide and choose CentOS 7 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the data within the CPanel accounts on your current host.
+1.  Follow Linode's [Getting Started](/docs/getting-started/) guide and choose CentOS 7 as your Linux image. Choose a Linode plan with enough storage capacity to accommodate the data within the CPanel accounts on your current host.
 
-1.  Follow the [How to Secure Your Server](/docs/security/securing-your-server/) guide and create a limited Linux user with `sudo` privileges.
+1.  Use the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a limited Linux user with `sudo` privileges.
 
-1.  Follow the [Install CPanel on Linode](/docs/websites/cms/install-cpanel-on-centos/) guide to stand up a new WHM/CPanel installation. When following this guide, use the generic domain name for your Linode for WHM's **Hostname** setting. This generic domain will be listed under the Remote Access tab for your Linode in the Linode Manager, and it will have the form `liXY-ABC.members.linode.com`.
+1.  Stand up a new WHM/CPanel installation by following the [Install CPanel on Linode](/docs/websites/cms/install-cpanel-on-centos/) guide. Use the Linode's generic domain name for WHM's **Hostname** setting. This generic domain will be listed under the Remote Access tab for your Linode in the Linode Manager, and it will have the form `liXY-ABC.members.linode.com`.
 
     {{< note >}}
-You will set the Hostname to be your actual domain name later on in this guide. If you set the Hostname setting to your domain name now, the WHM and CPanel dashboards on your new Linode will redirect to your current host, and you will not be able to access the settings for your new Linode.
+You will set the Hostname to be your actual domain name later on in this guide. If you set the Hostname setting as your domain name now, the WHM and CPanel dashboards on your new Linode will redirect to your current host, and you will not be able to access the settings for your new Linode.
 {{< /note >}}
 
 ### Use the CPanel Transfer Tool
 
-1.  Visit `http://your_linode_ip_address:2087` in your web browser to load the WHM dashboard. Your browser will display a warning about the SSL/TLS certificate provided by the web server, but you can bypass this message.
+1.  Visit `http://your_linode_ip_address:2087` in your web browser to load the WHM dashboard. Bypass the browser warning message about the web server's SSL/TLS certificate.
 
-1.  When presented with the WHM Login form, login with the root user and password for your Linode.
+1.  Log in to WHM with the root user and password for your Linode.
 
     ![WHM Login Page](whm-login-page.png "WHM login page.")
 
@@ -55,29 +55,29 @@ You will set the Hostname to be your actual domain name later on in this guide. 
 
     ![WHM Transfer Tool Remote Server Information Form](whm-transfer-tool-page-1-remote-server-information.png "WHM Transfer Tool - Remote Server Information form.")
 
-1.  If you have the root password for your current host and if root logins are allowed on that host, enter the root credentials from your current host under the **Authentication** section.
+1.  Enter the root credentials for your current host under the **Authentication** section. You will need the root password for your current host and root logins should be allowed on that host.
 
-    If you don't have the root credentials or if root logins are not allowed, you will need the credentials of another user with 'sudo' privileges on your current host. Enter that username and password and choose **sudo** for the **Root Escalation Method** field.
+    If you don't have root credentials or if root logins are not allowed, you will need the credentials of another user with `sudo` privileges on your current host. Enter that username and password and choose **sudo** for the **Root Escalation Method** field.
 
     ![WHM Transfer Tool Authentication Form](whm-transfer-tool-page-1-authentication.png "WHM Transfer Tool - Authentication form.")
 
 1.  Click the **Fetch Account List** button at the bottom of the form.
 
-1.  A new page will load with forms listing the **Service Configurations**, **Packages**, and **Accounts** from your current host. Click the checkboxes on each item in these sections to enable their transfer. You will need to click the **Show** button for the **Service Configurations** section to see the options in that area:
+1.  A new page will load with forms listing the **Service Configurations**, **Packages**, and **Accounts** from your current host. Click the corresponding checkbox for each item in these sections to enable their transfer. Click the **Show** button for the **Service Configurations** section to see the options in that area:
 
     ![WHM Transfer Tool Service Configurations Form](whm-transfer-tool-page-2-service-configurations.png "WHM Transfer Tool - Service Configurations form.")
 
-1.  When all of the options are selected, click the **Copy** button at the bottom of the page. A new page will appear showing the progress for your transfer:
+1.  When all of the options are selected, click the **Copy** button at the bottom of the page. A new page will appear showing the progress of your transfer:
 
     ![WHM Transfer Tool Progress Information](whm-transfer-tool-page-3-progress-information.png "WHM Transfer Tool - transfer progress information.")
 
 ## Verify Transferred Accounts
 
-Your CPanel accounts show now be fully transferred to your new Linode, but you should verify that all information was transferred successfully. You can do this by logging into CPanel on your new Linode for each account that was transferred and reviewing the contents of the dashboard. In addition, the specific information in the following sections should be reviewed.
+You should verify that all information from your CPanel accounts was transferred successfully to your Linode. To do this, you will log in to CPanel on your new Linode for each account that was transferred and review the contents of the dashboard. The specific information in the following sections should also be reviewed for each account.
 
 ### Verify IP Address Assignments
 
-The Transfer Tool tries to assign your new Linode IP to the transferred CPanel accounts, but it will sometimes leave your old host's IP in place, so you should confirm which IP is assigned to your CPanel accounts:
+The Transfer Tool will attempt to assign your new Linode IP to the transferred CPanel accounts. It will sometimes fail and leave your old host's IP in place, so you should confirm which IP is assigned to your CPanel accounts:
 
 1.  In the menu on the left side of the WHM dashboard, navigate to the **Account Information** section and choose the **List Accounts** option:
 
@@ -89,22 +89,22 @@ The Transfer Tool tries to assign your new Linode IP to the transferred CPanel a
 
 The official [CPanel migration documentation](https://documentation.cpanel.net/display/CKB/How+to+Move+All+cPanel+Accounts+from+One+Server+to+Another#HowtoMoveAllcPanelAccountsfromOneServertoAnother-ReinstallallSSLcertificates.) notes that SSL certificates (apart from the self-signed certificates that CPanel provides) need to be manually downloaded from the source CPanel server and then installed on the new Linode.
 
-When writing this guide it was found that the SSL certificates from the test source server did actually transfer automatically. Still, it's recommended that you verify your SSL certificates are present on the new server, and that you backup the certificate files from the source server.
+When writing this guide it was found that the SSL certificates from the test source server were transferred automatically. It's recommended that you verify that your SSL certificates are present on the new server, and that you backup the certificate files from the source server.
 
 1.  The SSL certificates on your current CPanel host are located in `/etc/ssl`. Download them to your computer:
 
         scp -r root@current_host_ip_address:/etc/ssl ~
 
-    Instead of using SCP to download the files, you can also use [FileZilla](/docs/tools-reference/file-transfer/filezilla/).
+    You can also use [FileZilla](/docs/tools-reference/file-transfer/filezilla/) to download the files.
 
-1.  If you are not able to login as `root` to your host, login as a user with `sudo` privileges and then copy those files to the user's home folder:
+    If you are not able to login as `root` to your host, login as a user with `sudo` privileges and then copy those files to the user's home folder:
 
         ssh your_sudo_user@current_host_ip_address
         sudo cp -r /etc/ssl ~
         sudo chown $(whoami):$(whoami) ssl
         exit
 
-    Then download the files from the user's home folder:
+    Then download the files from the user's home folder to your computer:
 
         scp -r root@current_host_ip_address:~/ssl ~
 
@@ -120,7 +120,7 @@ When writing this guide it was found that the SSL certificates from the test sou
 
     ![CPanel SSL/TLS Page](cpanel-ssl-tls.png "CPanel SSL/TLS page.")
 
-1.  Visit `http://your_linode_ip_address:2083` in your web browser to load the CPanel dashboard on your Linode. Your browser will display a warning about the SSL/TLS certificate provided by the web server, but you can bypass this message.
+1.  Visit `http://your_linode_ip_address:2083` in your web browser to load the CPanel dashboard on your Linode. Bypass the browser warning message about the web server's SSL/TLS certificate.
 
 1.  When presented with the CPanel Login form, enter the credentials you use for your CPanel account on your current host. These credentials were transferred by the Transfer Tool and are the same as before.
 
@@ -128,7 +128,7 @@ When writing this guide it was found that the SSL certificates from the test sou
 
 1.  Visit the **SSL/TLS** section again and navigate to the **Install and Manage SSL for your site (HTTPS)** page. Click the **Certificate Details** link to view which certificate is installed for your site.
 
-    ![CPanel SSL/TLS Manage SSL Certificates Certificate Details](cpanel-manage-ssl-certificates-certificate-details.png "CPanel SSL/TLS - Manage SSL Cerificates - Certificate Details.")
+    ![CPanel SSL/TLS Manage SSL Certificates Certificate Details](cpanel-manage-ssl-certificates-certificate-details.png "CPanel SSL/TLS - Manage SSL Certificates - Certificate Details.")
 
 1.  If your certificate is not being used, click the **Browse Certificates** button and choose your certificate from the dialog that appears. After choosing your certificate, click the **Install Certificate** button at the bottom of the page.
 
@@ -136,22 +136,22 @@ When writing this guide it was found that the SSL certificates from the test sou
 
 ### Test Your New CPanel Deployment
 
-If you visit your Linode's IP address directly in your browser, the website served by your CPanel account will not appear. This is because the CPanel server expects your domain name to be passed in your web request, and you have not updated your DNS yet.
+If you visit your Linode's IP address in your browser, the website served by your CPanel account will not appear. This is because the CPanel server expects your domain name to be passed in your web request, and you have not updated your DNS yet.
 
 The [Previewing Websites Without DNS](/docs/networking/dns/previewing-websites-without-dns/) guide describes a way to visit your domain prior to updating your DNS records. When you have updated your DNS, this workaround will no longer be necessary to view your site.
 
 ## Migrating DNS Records
 
-After completing the CPanel migration, update your DNS records to reflect your new Linode's IP. Once this is done, visitors will start loading your CPanel accounts' services from your Linode.
+After completing the CPanel migration, update your DNS records to reflect your new Linode's IP. Once this is done, site visitors will start loading your CPanel accounts' services from your new Linode.
 
 {{< content "use-linode-name-servers" >}}
 
 ## Update WHM Hostname
 
-After your DNS changes have propagated, update WHM's hostname to be your domain. In the menu on the left side of the WHM dashboard, navigate to the **Networking Setup** section and choose the **Change Hostname** option. Enter the new hostname in form that appears and click the **Change** button:
+After your DNS changes have propagated, update WHM's hostname to be your domain. In the menu on the left side of the WHM dashboard, navigate to the **Networking Setup** section and choose the **Change Hostname** option. Enter the new hostname in the form that appears and click the **Change** button:
 
 ![CPanel Change Hostname page](whm-change-hostname.png "CPanel Change Hostname page.")
 
 ## Transfer CPanel License
 
-If you previously purchased your license directly from CPanel, [update your license](https://documentation.cpanel.net/display/MAN/Transfer+a+license) to feature your new Linode's IP address. If you purchased your license through your previous host, then you will need to purchase a new license from CPanel for your Linode deployment. As an alternative to purchasing from CPanel, a free CPanel subscription is included for each of your Linodes if you are a Linode Managed subscriber.
+If you purchased your license directly from CPanel, [update your license](https://documentation.cpanel.net/display/MAN/Transfer+a+license) to feature your new Linode's IP address. If you purchased your license through your previous host, then you will need to purchase a new license from CPanel for your Linode deployment. As an alternative to purchasing from CPanel, a free CPanel subscription is included for each of your Linodes if you are a [Linode Managed](https://www.linode.com/managed) subscriber.
