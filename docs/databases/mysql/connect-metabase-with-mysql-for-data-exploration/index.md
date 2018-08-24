@@ -27,7 +27,7 @@ There are a number of additional databases that are supported from SQLite to Pos
 
 ### Java Runtime Environment
 
-{{< content "install-java-8-ppa.md" >}}
+{{< content "install-java-8-ppa" >}}
 
 ### MySQL Server
 
