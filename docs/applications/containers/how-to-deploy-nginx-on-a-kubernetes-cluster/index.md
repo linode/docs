@@ -130,7 +130,7 @@ If you are unable to ping any of your hosts by their hostnames or private IPs:
 
 ### Install Docker
 
-{{< content "install-docker-ce.md" >}}
+{{< content "install-docker-ce" >}}
 
 ### Install kubeadm, kubectl, and kubelet
 

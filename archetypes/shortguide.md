@@ -10,7 +10,7 @@ modified: {{ now.Format "2006-01-02" }}
 modified_by:
   name: Linode
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
-shortguide: true
+headless: true
 show_on_rss_feed: false
 ---
 
