@@ -14,7 +14,7 @@ contributor:
   name: Linode
 ---
 
-Every Linode plan includes a network transfer quota. Transfer quotas represent the total amount of monthly traffic your services can use as part of your plans' basic pricing.
+Every Linode plan includes a *network transfer quota*. Transfer quotas represent the total amount of monthly traffic your services can use as part of your plans' basic pricing.
 
 Transfer quota amounts are listed for each plan on the Linode [pricing page](https://www.linode.com/pricing).
 
@@ -22,9 +22,9 @@ Transfer quota amounts are listed for each plan on the Linode [pricing page](htt
 
 The transfer quota amounts for all of your Linodes are added together to create a *network transfer pool*. Each of your Linodes is able to use transfer from this pool.
 
-If a specific Linode exceeds the transfer quota provided by its plan, but the total transfer used between all of your Linodes is still less than your pool total, then you will not be charged any overages.
+If an individual Linode exceeds the transfer quota specified by its plan, but the total transfer used between all of your Linodes is still less than your pool total, then you will not be charged any overages.
 
-Linodes from different datacenters all contribute to and use the same pool total.
+Linodes from different datacenters all contribute to and consume from the same pool total.
 
 ### Network Transfer Pool Example
 
@@ -39,7 +39,7 @@ Your monthly pool total would be 3TB. If Linode A uses 1.5TB of traffic during t
 
 Transfer quota usage only considers traffic on your Linode's public address. Transfer over the private network does not count towards your monthly quota.
 
-All inbound traffic to your Linode is free and will not count against your quota--only trafic that your Linode emits on the public address is counted.
+All inbound traffic to your Linode is free and will not count against your quota--only traffic that your Linode emits on the public address is counted.
 
 ## Transfer Resets, Proration, and Overages
 
@@ -47,17 +47,17 @@ Your transfer quota is reset every month.
 
 ### Why is My Linode's Quota less than My Plan's Quota?
 
-Your Linode’s transfer quota is prorated based on the Linode's creation date. This means that a Linode you create mid-month will have a lower transfer quota than what’s listed on the pricing page, depending on how much time remains in the month. For example, if you create a Linode half-way through the month, it will come with half of the quota listed for your Linode's plan.
+**Your Linode’s transfer quota is prorated** based on the Linode's creation date. This means that a Linode you create mid-month will have a lower transfer quota than what’s listed on the pricing page, depending on how much time remains in the month. For example, if you create a Linode half-way through the month, it will come with half of the quota listed for your Linode's plan.
 
 The transfer quota is reset at the beginning of the next month, and you will see the full quota amount listed at that time.
 
-If you remove a Linode before the end of the month, then the quota it contributes to your pool will also be reduced, according to the date the Linode was deleted.
+If you remove a Linode before the end of the month, then the quota it contributes to your pool will also be reduced according to the date the Linode was deleted.
 
 For example, if you create a Linode on the first of the month, then your pool will initially include the full quota for that Linode's plan. If you remove that Linode half-way through the month, then your pool total will be updated and reduced by half the Linode plan's quota.
 
 ### How Overages Work
 
-If you use all available bandwidth in your network transfer pool, you can continue to use your Linodes normally, but you'll be **charged $0.02 for each additional GB** at the end of your billing cycle.
+If you use all available bandwidth in your network transfer pool, you can continue to use your Linodes normally, **but you will be charged $0.02 for each additional GB** at the end of your billing cycle.
 
 ### How to Mitigate Overages
 
@@ -65,7 +65,7 @@ If you have gone over your quota, or you think you may before the end of the mon
 
 1. [Increase the size](/docs/platform/disk-images/resizing-a-linode/) of an existing Linode to access more monthly transfer bandwidth.
 
-1. Purchase (an) additional Linode(s) with the specific purpose of increasing your pool total.
+1. Purchase (an) additional Linode(s) with the specific purpose of increasing your pool total. You may want to delete any Linodes created for this purpose at the end of the month if you don't anticipate needing a higher pool total in the future.
 
 When taking one of these actions, keep in mind that the quota amount that will be added is [prorated](#why-is-my-linode-s-quota-less-than-my-plan-s-quota) according to the current date.
 
