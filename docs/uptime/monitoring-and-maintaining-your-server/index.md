@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2012-08-22
 title: Monitoring and Maintaining Your Server
+cloud_manager_link: uptime/monitoring-and-maintaining-your-server-new-manager/
 ---
 
 ![Monitoring and Maintaining Your Server](monitoring-and-maintaining-your-server.jpg)
