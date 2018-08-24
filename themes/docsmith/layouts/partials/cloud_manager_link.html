@@ -1,0 +1,6 @@
+{{ with .Params.cloud_manager_link }}
+<blockquote class="cloud_manager_link">
+	<strong class="callout-title">Cloud Manager</strong>
+	<div><a href={{ print ($.Site.BaseURL) (.) }}>An updated version of this guide</a> has been written for the <a href="https://cloud.linode.com">new Linode Manager</a>.</div>
+</blockquote>
+{{ end }}

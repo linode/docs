@@ -14,6 +14,12 @@
     "type": "dict",
     "description": "First and last names of the original guide author."
   },
+  "cloud_manager_link": {
+	  "elements": false,
+	  "required": false,
+	  "type": "text",
+	  "description": "In a guide written for the current Linode Manager, if a new version of the guide exists written for the new Linode Manager, use this in the original guide to embed a link to the new guide. Must use alias-style relative links (e.g. platform/manager/dns-manager-cloud-manager/)."
+  },
   "h1_title": {
     "elements": false,
     "required": false,
@@ -45,7 +51,7 @@
 	"elements": false,
 	"required": false,
 	"type": "text",
-	"description": "In a deprecated guide, use this tag to include a link to the most up to date version of the guide. Must use alias-style relative links (e.g. applications/containers/using-docker. If this tag is absent in a deprecated guide, no link will be displayed"
+	"description": "In a deprecated guide, use this tag to include a link to the most up to date version of the guide. Must use alias-style relative links (e.g. applications/containers/using-docker). If this tag is absent in a deprecated guide, no link will be displayed"
   },
   "description": {
     "elements": false,
@@ -141,6 +147,18 @@
     "required": true,
     "type": "date",
     "description": "Date this guide was originally published. Should use the form YYYY-MM-DD."
+  },
+  "shortguide": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, this guide will be hidden from all layouts and search index."
+  },
+  "hiddenguide": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, this guide will be hidden from all layouts and search index."
   },
   "show_on_frontpage": {
     "elements": false,
