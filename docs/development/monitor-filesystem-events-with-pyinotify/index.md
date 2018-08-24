@@ -23,7 +23,7 @@ File system monitoring through `inotify` can be interfaced through Python using 
 
 ## Install Python 3
 
-{{< content "install_python_miniconda.md" >}}
+{{< content "install_python_miniconda" >}}
 
 ## Install Pyinotify
 

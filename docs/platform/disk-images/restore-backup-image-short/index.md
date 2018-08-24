@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "How to Restore a Backup Shortguide"
 published: 2018-08-10
-shortguide: true
+headless: true
 ---
 
 ## Restore from a Backup

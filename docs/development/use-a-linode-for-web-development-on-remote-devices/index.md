@@ -58,7 +58,7 @@ By using Docker, you can ensure that your development is fully portable: contain
 
 ### Install Docker
 
-{{< content "install-docker-ce.md" >}}
+{{< content "install-docker-ce" >}}
 
 ### Install Portainer
 
