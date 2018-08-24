@@ -9,7 +9,7 @@ published: 2018-03-08
 modified: 2018-03-08
 modified_by:
   name: Jared Kobos
-shortguide: true
+headless: true
 show_on_rss_feed: false
 title: 'Install Ruby Using RVM'
 ---

@@ -10,7 +10,7 @@ modified_by:
   name: Jared Kobos
 title: "How to install JDK on Ubuntu"
 published: 2018-01-30
-shortguide: true
+headless: true
 show_on_rss_feed: false
 ---
 

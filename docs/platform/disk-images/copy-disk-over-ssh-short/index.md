@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Copy Disk Over SSH Shortguide"
 published: 2018-08-10
-shortguide: true
+headless: true
 ---
 
 ## Download a Disk over SSH

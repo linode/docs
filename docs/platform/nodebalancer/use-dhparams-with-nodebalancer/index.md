@@ -10,7 +10,7 @@ modified_by:
   name: Nathan Melehan
 title: "How to Use Diffie-Hellman Parameters with a NodeBalancer"
 published: 2018-07-11
-shortguide: true
+headless: true
 show_on_rss_feed: false
 ---
 

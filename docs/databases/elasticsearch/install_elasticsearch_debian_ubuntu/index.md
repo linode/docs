@@ -2,44 +2,42 @@
 author:
   name: Jared Kobos
   email: sfoo@linode.com
-description: 'Shortguide for installing Elasticsearch on Fedora systems'
+description: 'Shortguide for installing Elasticsearch on Debian systems'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["elasticsearch", "elastic stack", "fedora", "red hat", "centos"]
 modified: 2018-01-08
 modified_by:
   name: Linode
-title: "Install Elasticsearch on Fedora, Red Hat, and CentOS"
+title: "Install Elasticsearch on Debian and Ubuntu"
 published: 2018-01-09
-shortguide: true
+headless: true
 ---
 
-1.  Trust the Elastic signing key:
-
-        sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
-
-2.  Create a yum repository configuration to use the Elastic yum repository:
-
-    {{< file "/etc/yum.repos.d/elastic.repo" ini >}}
-[elasticsearch-6.x] name=Elastic repository for 6.x packages baseurl=https://artifacts.elastic.co/packages/6.x/yum gpgcheck=1 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch enabled=1 autorefresh=1 type=rpm-md
-{{< /file >}}
-
-3.  Update the yum cache to ensure the latest packages will be installed:
-
-        sudo yum update
-        Debian Based Distributions
-
-4.  Install the official Elastic APT package signing key:
+1.  Install the official Elastic APT package signing key:
 
         wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 
+2.  Install the `apt-transport-https` package, which is required to retrieve deb packages served over HTTPS:
+
+        sudo apt-get install apt-transport-https
+
+3.  Add the APT repository information to your server's list of sources:
+
+        echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic.list
+
+4.  Update the list of available packages:
+
+        sudo apt-get update
+
 5.  Install the `elasticsearch` package:
 
-        sudo yum install -y elasticsearch
+        sudo apt-get install -y elasticsearch
 
-6.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the Xms and Xmx values in the `/etc/elasticsearch/jvm.options` file to `512m`, and leave the other values in this file unchanged:
+6.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file to `512m`. Leave the other values in this file unchanged:
 
-    {{< file "/etc/elasticsearch/jvm.options" aconf >}}
--Xms512m -Xmx512m
+    {{< file "/etc/elasticsearch/jvm.options" conf >}}
+-Xms512m
+-Xmx512m
 {{< /file >}}
 
 7.  Enable and start the `elasticsearch` service:
