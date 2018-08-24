@@ -1063,6 +1063,7 @@ rundir
 runlevels
 runtime
 runtimes
+rvm
 rw
 rwx
 rwxr
