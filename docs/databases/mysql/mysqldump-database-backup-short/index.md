@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Back up a MySQL database with mysqldump - Shortguide"
 published: 2018-08-13
-shortguide: true
+headless: true
 ---
 
 <!-- This shortguide assumes that there's a heading on the referring page -->

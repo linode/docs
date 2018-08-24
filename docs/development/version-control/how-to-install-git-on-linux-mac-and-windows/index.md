@@ -36,11 +36,11 @@ This guide will use `sudo` wherever possible. Complete the sections of our [Secu
 
 ## Install Git
 
-{{< content "how-to-install-git-linux.md" linux >}}
+{{< content "how-to-install-git-linux" linux >}}
 
-{{< content "how-to-install-git-mac.md" mac >}}
+{{< content "how-to-install-git-mac" mac >}}
 
-{{< content "how-to-install-git-windows.md" windows >}}
+{{< content "how-to-install-git-windows" windows >}}
 
 ## Get Started with Git
 

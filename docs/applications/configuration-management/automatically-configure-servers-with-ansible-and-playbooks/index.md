@@ -55,7 +55,7 @@ The remainder of the commands in this guide should be performed from the control
 
 ### Install Miniconda
 
-{{< content "install_python_miniconda.md" >}}
+{{< content "install_python_miniconda" >}}
 
 ### Install Ansible
 
