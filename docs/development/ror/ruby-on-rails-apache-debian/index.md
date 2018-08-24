@@ -52,7 +52,7 @@ external_resources:
 
 Ruby will be installed with the Ruby Version Manager (RVM), which makes it easy to install and manage different versions of Ruby on the same system.
 
-{{< content "install-ruby-with-rvm.md" >}}
+{{< content "install-ruby-with-rvm" >}}
 
 ## Install Passenger and Dependencies
 
