@@ -180,7 +180,7 @@ Here's how to clone an existing zone:
 
 2.  Enter the name of the new zone in the **New Domain** field.
 
-    ![Clone an existing domain zone](domain-clone-a-zone.png "Clone an exisiting domain zone.")
+    ![Clone an existing domain zone](domain-clone-a-zone.png "Clone an existing domain zone.")
 
 3.  Click **Create**. The DNS records will then be copied from the existing zone to the new zone.
 
