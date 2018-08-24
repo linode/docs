@@ -15,6 +15,7 @@ external_resources:
   - '[API Documentation](https://developers.linode.com/v4/introduction)'
   - '[Linode CLI](https://github.com/linode/linode-cli)'
   - '[Linode API Python Library](https://github.com/linode/python-linode-api)'
+cloud_manager_link: platform/api/getting-started-with-the-linode-api-new-manager/
 ---
 
 ## Create a Linode Using the Linode API
@@ -43,7 +44,7 @@ If you are building an application which will need to authenticate multiple user
 
 1.  Log in to the Manager and select the **API Tokens** tab from the **My Profile** menu:
 
-1.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have. Privileges are cascading, so a token with *Create* access will also have *Modify* and *View* access.
+2.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have. Privileges are cascading, so a token with *Create* access will also have *Modify* and *View* access.
 
     When you have finished, click **Submit** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through the Manager after closing the popup.**
 
