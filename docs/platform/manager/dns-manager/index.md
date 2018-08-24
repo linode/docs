@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2009-07-16
 title: DNS Manager
+cloud_manager_link: platform/manager/dns-manager-new-manager/
 ---
 
 ![DNS Manager Overview](dns-manager-overview.png)
