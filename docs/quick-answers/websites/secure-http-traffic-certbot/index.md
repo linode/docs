@@ -31,15 +31,15 @@ If you're using Apache, change each instance of `nginx` to `apache` in the follo
 
 ## Use Certbot on Debian
 
-{{< content "certbot-shortguide-debian.md" >}}
+{{< content "certbot-shortguide-debian" >}}
 
 ## Use Certbot on Ubuntu
 
-{{< content "certbot-shortguide-ubuntu.md" >}}
+{{< content "certbot-shortguide-ubuntu" >}}
 
 ## Use Certbot on CentOS 7
 
-{{< content "certbot-shortguide-centos.md" >}}
+{{< content "certbot-shortguide-centos" >}}
 
 ## Use Certbot to Renew All Certificates
 

@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2018-08-14
 title: 'Transfer Files with FileZilla'
-shortguide: true
+headless: true
 ---
 
 1.  Open FileZilla from your Windows start menu, OS X Launchpad, or the launcher provided by your Linux distribution of choice.

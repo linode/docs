@@ -9,7 +9,7 @@ modified_by:
   name: Leslie Salazar
 title: "How to install direnv"
 published: 2018-06-12
-shortguide: true
+headless: true
 show_on_rss_feed: false
 ---
 <!-- Start direnv shortguide. -->

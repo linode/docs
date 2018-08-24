@@ -10,7 +10,7 @@ modified_by:
   name: Sam Foo
 title: "How to install Git on Mac"
 published: 2018-01-08
-shortguide: true
+headless: true
 show_on_rss_feed: false
 ---
 

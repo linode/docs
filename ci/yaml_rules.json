@@ -65,6 +65,12 @@
     "type": "list",
     "description": "List of external links that will appear at the bottom of the guide."
   },
+  "headless": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, this guide will be hidden from all layouts and search index and will not be rendered unless embedded in another guide."
+  },
   "icon": {
     "elements": false,
     "required": false,
@@ -135,12 +141,6 @@
     "required": true,
     "type": "date",
     "description": "Date this guide was originally published. Should use the form YYYY-MM-DD."
-  },
-  "shortguide": {
-    "elements": false,
-    "required": false,
-    "type": "bool",
-    "description": "If true, this guide will be hidden from all layouts and search index."
   },
   "show_on_frontpage": {
     "elements": false,
