@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2013-05-02
 title: Linode Manager Security Controls
+cloud_manager_link: security/linode-manager-security-controls-new-manager
 ---
 
 The [Linode Manager](https://manager.linode.com) is the gateway to all of your Linode products and services, and you should take steps to protect it from unauthorized access.
