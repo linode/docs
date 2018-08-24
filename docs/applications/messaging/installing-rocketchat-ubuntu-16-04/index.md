@@ -5,7 +5,7 @@ author:
 description: 'Installation and basic usage guide for Rocket.Chat, a lightweight XMPP server on Ubuntu 16.04.'
 keywords: ["rocket.chat", "slack alternative", "chat", "xmpp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-21
+modified: 2018-08-17
 modified_by:
   name: Linode
 published: 2018-06-21
@@ -35,7 +35,7 @@ This guide provides the steps to deploy Rocket.Chat on a Linode running Ubuntu 1
 
 ## Install Rocket.Chat
 
-The quickest way to install Rocket.Chat is to use its Snap. Snaps are containerized software packages that run on all major Linux systems. Snapd is the service that runs and manages snaps. Snapd is installed by default on Ubuntu 16.04 LTS.
+The quickest way to install Rocket.Chat is to use its *Snap*. Snaps are containerized software packages that run on all major Linux systems. *Snapd* is the service that runs and manages snaps. Snapd is installed by default on Ubuntu 16.04 LTS.
 
 1.  Install Rocket.Chat
 
@@ -51,15 +51,33 @@ The quickest way to install Rocket.Chat is to use its Snap. Snaps are containeri
 
 A reverse proxy is a server that sits between internal applications and external clients, forwarding client requests to the appropriate server. While many common applications are able to function as servers on their own, NGINX has a number of advanced load balancing, security, and acceleration features that most specialized applications lack. Using NGINX as a reverse proxy enables you to add these features to any application.  We will use NGINX as a reverse proxy for Rocket.Chat.
 
-{{< content "install-nginx-ubuntu-ppa" >}}
+### Install NGINX
+
+1.  Download NGINX from the package manager:
+
+        sudo apt install nginx
+
+1.  Ensure NGINX is running and and enabled to start automatically on reboot:
+
+        sudo systemctl start nginx
+        sudo systemctl enable nginx
 
 ### Set up NGINX Reverse Proxy
 
-1.  Disable the default *Welcome to NGINX* page:
+1.  Disable the default *Welcome to NGINX* page. The default page is configured within `/etc/nginx/sites-enabled/default`. This is actually a link to a file within `/etc/nginx/sites-available/`:
 
-        sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
+        sudo ls -l /etc/nginx/sites-enabled
 
-1.  Create `/etc/nginx/conf.d/rocketchat.conf` and add the necessary values to point to your domain name and to add the reverse proxy. Replace `example.com` with your domain name:
+    {{< output >}}
+total 0
+lrwxrwxrwx 1 root root 34 Aug 16 14:59 default -> /etc/nginx/sites-available/default
+{{< /output >}}
+
+1.  Remove this link to disable the default site:
+
+        sudo rm /etc/nginx/sites-enabled/default
+
+1.  Create `/etc/nginx/sites-available/rocketchat.conf` and add the necessary values to point to your domain name and to add the reverse proxy. Replace `example.com` with your domain name:
 
     {{< file "/etc/nginx/conf.d/rocketchat.conf" nginx >}}
 server {
@@ -73,6 +91,10 @@ server {
 }
 {{< /file >}}
 
+1.  Enable the new configuration by creating a link to it from `/etc/nginx/sites-available/`:
+
+        sudo ln -s /etc/nginx/sites-available/rocketchat.conf /etc/nginx/sites-enabled/
+
 1.  Test the configuration:
 
         sudo nginx -t
@@ -81,56 +103,15 @@ server {
 
         sudo nginx -s reload
 
-## Generate SSL certificates using Certbot
+### Generate SSL certificates using Certbot
 
-1.  Generate SSL certificates for your Linode using the [Configure HTTPS with Certbot](/docs/web-servers/nginx/use-nginx-reverse-proxy/#configure-https-with-certbot) section of our Use NGINX as a Reverse Proxy guide. Follow the prompts to choose which domains will be covered by the new certificate.
+Your Rocket.Chat site will use an SSL certificate from [Let's Encrypt](https://letsencrypt.org), which is a free certificate provider trusted by common web browsers. A popular tool called [Certbot](https://certbot.eff.org) makes getting and using a Let's Encrypt certificate easy:
 
-    During the prompts you will be asked for:
+{{< content "certbot-shortguide-ubuntu" >}}
 
-    * An email address
-    * Agreement to Certbot's terms of service
-    * Which domains to use HTTPS for (it detects the list using server_name lines in your Nginx config)
-    * Whether to redirect HTTP to HTTPS (recommended) or not
+## View Your Rocket.Chat Site
 
-1.  Configure the `rocketchat.conf` file for SSL.
-
-    Update the listening socket to `443`, add the `ssl` parameter and the location of the SSL server certificate and private key. Replace `example.com` with your domain name or IP address:
-
-    {{< file "/etc/nginx/conf.d/rocketchat.conf" nginx >}}
-server {
-    listen       443 ssl;
-    server_name  example.com;
-
-    error_log /var/log/nginx/rocketchat.access.log;
-
-    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-
-    location / {
-        proxy_pass http://localhost:3000/;
-    }
-}
-{{< /file >}}
-
-1. Add two new server blocks for domain redirection to the top of the `rocketchat.conf` file. The first block will redirect `http` to `https`, the second will redirect `https://www.example.com` to `https://example.com`. The third block will remain unchanged and is the block that will actually handle requests.
-
-    {{< file "/etc/nginx/conf.d/rocketchat.conf" nginx >}}
-server {
-    server_name www.docteamdemosite.club docteamdemosite.club;
-    return 301 https://docteamdemosite.club$request_uri;
-}
-
-server {
-    listen 443 ssl;
-    ssl_certificate /etc/letsencrypt/live/docteamdemosite.club/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/docteamdemosite.club/privkey.pem;
-    server_name www.docteamdemosite.club;
-    return 301 https://docteamdemosite.club$request_uri;
-}
-{{< /file >}}
-
-1. Test the configuration:
+1.  Certbot updated your NGINX configuration. Test the new configuration to make sure it works:
 
         sudo nginx -t
 
