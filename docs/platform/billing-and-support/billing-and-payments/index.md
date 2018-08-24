@@ -93,6 +93,10 @@ What does a mid-month bill mean? Your existing active services will stay active.
 
 If you want to stop being billed for a particular Linode service, you need to [remove](#removing-services) it from your account entirely.
 
+## Network Transfer Quota
+
+Each Linode plan specifies a network transfer quota. These quotas determine the amount of monthly traffic your services can use as part of your plan's basic pricing. It is possible to use more traffic than the included quota, and this will incur [overages](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work). For more information on transfer quotas, review the [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota) guide.
+
 ## Payment Methods
 
 We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
@@ -185,8 +189,6 @@ Your account will be canceled and all of your services will be deactivated.
 You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Linode Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the [Removing Services](#removing-services) section for more information.
 {{< /note >}}
 
-## More Information
+## Prepaid Billing
 
-- If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information.
-
-- For information on how your Linode account's network transfer pool quota is calculated and billed, see the [Network Transfer Pool Quota](/docs/platform/billing-and-support/network-transfer-quota/) guide.
+If you created your account before hourly billing was first available and have not converted to hourly billing, your account uses prepaid billing. Review the legacy [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information on how your bills and invoices are prepared.
