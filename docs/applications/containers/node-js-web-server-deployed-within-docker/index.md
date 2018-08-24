@@ -22,7 +22,7 @@ Node.js is a server-side, JavaScript package, often used for various cloud appli
 
 ## Install Docker
 
-{{< content "install-docker-ce.md" >}}
+{{< content "install-docker-ce" >}}
 
 ## Download the Docker Node.js Server Image
 The Docker Hub user page for Linode can be accessed [here](https://hub.docker.com/u/linode/). Select the **server-node-js** image for configuration information.

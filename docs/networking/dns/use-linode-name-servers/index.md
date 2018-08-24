@@ -10,7 +10,7 @@ modified_by:
   name: Nathan Melehan
 title: "How to Use Linode's Nameservers"
 published: 2018-07-19
-shortguide: true
+headless: true
 ---
 
 ### (Optional) Prepare Your Domain Name to Move
