@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2011-07-08
 title: NodeBalancer Reference Guide
+cloud_manager_link: platform/nodebalancer/nodebalancer-reference-guide-new-manager/
 ---
 
 ![NodeBalancer Reference Guide](NodeBalancer_Reference_Guide_smg.jpg)
