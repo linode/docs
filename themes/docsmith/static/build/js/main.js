@@ -189,7 +189,7 @@ function toggleNoteDisclosure(disclosureNote) {
         var resultList = $('#ds-search-list');
         var MAX_DEPRECATED_GUIDES = 5;
         var deprecatedResults = [];
-        var hiddenGuide = [];
+        var hiddenGuides = [];
         var item, doc;
         resultList.empty();
         for (var i = 0; i < result.length; i++) {
@@ -204,7 +204,7 @@ function toggleNoteDisclosure(disclosureNote) {
             var url = item.ref
             var badge = ''
             var deprecated = doc.deprecated
-            var shortguide = doc.shortguide
+            var hiddenguide = doc.hiddenguide
             if (deprecated) {
               badge = '<span class="search-deprecated">DEPRECATED</span>'
              }
@@ -216,8 +216,8 @@ function toggleNoteDisclosure(disclosureNote) {
                 deprecatedResults.push(searchitem)
               }
             }
-            else if (shortguide) {
-              hiddenGuide.push(searchitem)
+            else if (hiddenguide) {
+              hiddenGuides.push(searchitem)
             }
             else {
               resultList.append(searchitem)
@@ -227,7 +227,7 @@ function toggleNoteDisclosure(disclosureNote) {
         deprecatedResults.forEach(function(result) {
           resultList.append(result);
           resultList = resultList.filter(function(val) {
-                return hiddenGuide.indexOf(val) == -1;
+                return hiddenGuides.indexOf(val) == -1;
             });
         });
         resultList.show();
