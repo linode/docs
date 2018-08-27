@@ -13,7 +13,7 @@ title: "Subscribe to Linode Status Updates"
 contributor:
   name: Linode
 ---
-The [Linode Status Page](https://status.linode.com/) provides system status and maintenance updates. You can subscribe to these real-time notifications via email, SMS, and Atom and RSS feed. All Linode customers are encouraged to subscribe to Linode Status notifications to stay up to date with any events that may impact your service.
+The [Linode Status Page](https://status.linode.com/) provides real-time system status and maintenance updates via email, SMS, and Atom and RSS feed. All Linode customers are encouraged to subscribe to Linode Status notifications to stay up to date with any events that may impact your service.
 
 When you sign up for Linode status updates via email or SMS, you can fine-tune which service updates you receive. These different topic areas are referred to as *components*. If, for example, all your Linodes are restricted to the Newark Data Center, you may only wish to subscribe to the Newark component. You can also subscribe to individual incident notifications.
 
@@ -88,7 +88,7 @@ You can update your component preferences or cancel your subscription to Linode 
 - If you would like to unsubscribe, click on the **Cancel Subscription** link in the Subscriber section of the page and follow the prompt.
 
 {{< note >}}
-You can unsubscribe from SMS alerts by replying to any text message alert with the word "STOP".
+You can unsubscribe from SMS notifications by replying to any text message notification with the word "STOP".
 {{</ note >}}
 
 **RSS**
