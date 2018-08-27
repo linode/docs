@@ -93,10 +93,12 @@ With the Python virtualenvs set up, continue to first set up the Buildbot master
 
 The `buildbot create-master master` command installed a default configuration file, but in order to secure and customize the Buildbot master configuration, a few settings should be changed before using the application. All the following changed settings should be applied to `buildbot-master/master/master.cfg`.
 
+Buildbot has a number of concepts that are represented in the master build configuration. Open this file in your text editor (such as vim, emacs, nano, or another) and browse the Buildbot configuration. Unlike some configuration files, the Buildbot configuration is written in Python instead of a markup language like Yaml.
+
 1.  Generate a random string to serve as the password that workers will use to authenticate against the Buildbot master. This is easily accomplished by using `openssl` to create a random sequence of characters:
 
         openssl rand -hex 16
-        588e6985e2d5f537fc6daad2007b115b
+        <a random string>
 
 1.  Using this password, update the following line, replacing `pass` with the randomly-generated password:
 
@@ -128,6 +130,19 @@ The `buildbot create-master master` command installed a default configuration fi
         )
         c['www']['auth'] = util.UserPasswordAuth([('myusername','<password>')])
 
+1.  Buildbot supports building repositories based upon GitHub activity, so prepare Buildbot to receive GitHub webhooks by first generating a random string to serve as a webhook secret in a similar way as the worker password was generated previously:
+
+        openssl rand -hex 16
+        <a random string>
+
+1.  Then, using this value in place of `<webhook secret>` in the configuration snippet below, configure Buildbot to recognize GitHub webhooks as a change source by appending the following configuration to the end of the `master.cfg` file:
+
+        c['www']['change_hook_dialects'] = {
+            'github': {
+                'secret': '<webhook secret>',
+            }
+        }
+
 1.  Finally, start the Buildbot master. This command will start Buildbot in the background.
 
         buildbot start master
@@ -153,8 +168,8 @@ server {
         index index.html index.htm;
 
         ssl on;
-        ssl_certificate /etc/letsencrypt/archive/example.com/fullchain1.pem;
-        ssl_certificate_key /etc/letsencrypt/archive/example.com/privkey1.pem;
+        ssl_certificate /etc/letsencrypt/archive/example.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/archive/example.com/privkey.pem;
 
         # put a one day session timeout for websockets to stay longer
         ssl_session_cache      shared:SSL:10m;
@@ -249,7 +264,45 @@ In order for Buildbot to execute test builds, the Buildbot master will require a
 
 ## Configuring Builds
 
-With Buildbot installed, you can now configure it to run builds. In this tutorial, we will use the GitHub repository for the [Linode Guides and Tutorials repository](https://github.com/linode/docs) as an example project to illustrate how to use Buildbot as a system to run tests against the repository.
+With Buildbot installed, you can now configure it to run builds. In this tutorial, we will use a forked GitHub repository for the [Linode Guides and Tutorials repository](https://github.com/linode/docs) as an example project to illustrate how to use Buildbot as a system to run tests against the repository.
+
+### Configuring GitHub
+
+Before creating the build configuration, fork the `linode/docs` repository into your GitHub account, which will be the repository used from this point forward to run tests against. The repository will also require webhooks to be configured to send push or PR events to Buildbot.
+
+{{< note >}}
+The actions you take to fork, add webhook, and push changes to your fork of `linode/docs` will not affect the parent (or upstream) repository and can be safely experimented with. Any changes you make to branches of your fork will remain separate until you submit a pull request to the original `linode/docs` repository.
+{{< /note >}}
+
+#### Forking and Configuring the Repository
+
+While logged in to GitHub, browse to https://github.com/linode/docs. and click the "Fork" button:
+
+![GitHub Fork Button](github-fork-button.png "GitHub Fork Button")
+
+After selecting the "Fork" button, choose the account to fork the repository into (typically just your username). GitHub should bring you to the page for your fork of the `linode/docs` repository. Select "Settings" to browse your fork's settings, then select "Webhooks" from the sidebar.
+
+![GitHub Fork Settings](github-fork-settings.png "GitHub Fork Settings")
+
+![GitHub Webhook Settings](github-webhook-settings.png "GitHub Webhook Settings")
+
+Select "Add Webhook" from the following page. There are several fields here to populate:
+
+* Under "Payload URL" enter the domain name for your Buildbot server with the URL path `/change_hook/github` appended to it, for example:
+  * https://example.com/change_hook/github
+* Leave "Content type" as the default value (application/x-www-form-urlencoded)
+* Under the "Secret" field, enter the value that you configured in `master.cfg` under `<webhook secret>`
+* Leave "Enable SSL Verification" selected
+* For "Which events would you like to trigger this webhook?", select "Let me select individual events" and ensure that only the following boxes are checked:
+  * Pull requests
+  * Pushes
+* Leave "Active" selected to indicate GitHub should be configured to send webhooks to Buildbot.
+
+Save your webhook. After saving, GitHub should return your browser to the list of webhooks for your repository. After configuring a new webhook, GitHub will send a test webhook to the configured payload URL, and will indicate whether GitHub was able to send a webhook without errors by adding a checkmark to the webhook item:
+
+![GitHub Webhook Success](github-webhook-success.png "GitHub Webhook Success")
+
+Congratulations! GitHub is ready to send new pushes to your fork to your instance of Buildbot.
 
 ### Build Prerequisites
 
@@ -261,9 +314,7 @@ Because we have already installed Python and virtualenv, the prerequisites for r
 
 ### Writing Builds
 
-Buildbot has a number of concepts that are represented in the master build configuration, which in this tutorial is located at `buildbot-master/master/master.cfg`. Open this file in your text editor (such as vim, emacs, nano, or another) and browse the Buildbot configuration. Unlike some configuration files, the Buildbot configuration is written in Python instead of a markup language like Yaml.
-
-Sections in the configuration include:
+There are a few sections within the `buildbox-master/master/master.cfg` file that are used to configure builds. These sections in the configuration include:
 
 * `workers`, which define which worker executors the master will connect to in order to run builds
 * `schedulers`, which define when and why builds are executed
@@ -308,34 +359,49 @@ This configuration code does the following:
 * Finally, the `blueberry.py` testing script is executing using the sanboxed `python3` executable from the virtualenv.
 * With the Build Factory defined, it must be added to the configuration for the master.
 
-Next, define a simple scheduler to enable the build to be started manually. This is a fairly simple scheduler definition, add it to the end of `master.cfg`:
+Next, define a simple scheduler to build any branch that is pushed to the GitHub repository. This is a fairly simple scheduler definition, add it to the end of `master.cfg`:
 
     {{< file "~/buildbox-master/master/master.cfg" python  >}}
-c['schedulers'].append(schedulers.ForceScheduler(
+c['schedulers'].append(schedulers.AnyBranchScheduler(
     name="build-docs",
     builderNames=["linode-docs"]))
 {{< /file >}}
 
-This simple instructs the Buildbot master to create a scheduler that will let a user manually invoke the `linode-docs` builder, which is named `build-docs`.
+This simply instructs the Buildbot master to create a scheduler that will build any branch for the `linode-docs` builder (which was just created). This scheduler will be invoked by the change hook defined previously for GitHub, which is triggered by the GitHub webhook configured in the GitHub interface.
 
 ### Running Builds
 
 With a custom scheduler and builder defined, the Buildbot master can be reloaded. Enter the Buildbot master directory and issue the command to reconfigure the master:
 
-    cd buildbot-master/master/ 
-    ../venv/bin/buildbot reconfig master
+    cd buildbot-master
+    ./venv/bin/buildbot reconfig master
 
 The web interface should reflect the new build and scheduler. Select Build -> Builders from the sidebar, which should return a page with `linode-docs` listed:
 
 ![Buildbot Custom Builder](buildbot-custom-builder-page.png "Buildbot Custom Builder")
 
-At this point, a new build can be started for the `linode-docs` builder. From this same page, select the `linode-docs` link, then click on the `build-docs` button in the upper right corner of the page. The following dialog will open:
+At this point, a new build can be started for the `linode-docs` builder. Recall that the GitHub webook configuration for your fork of `linode/docs` is set to call Buildbot upon any push or pull request event. To demonstrate how this works, clone your fork of the `linode/docs` repository locally on your local machine (do not run the following commands on your Buildbot server):
 
-![Buildbot Force Build Page](buildbot-force-build-dialog.png "Buildbot Force Build Page")
+    git clone git@github.com:<username>/<repository>
+    cd <repository>
 
-The only required field here is to enter an email address under the "Your name" field to identify who started the build. Enter a dummy address, such as `buildbot@example.com`, then click the "Start Build" button.
+Because git repositories change often, you should start at a revision in the code in a known state to ensure that the remaining instructions still function as intended. Check out revision `76cd31a5271b41ff5a80dee2137dcb5e76296b93`:
 
-The build page will open, and each step along with logging output will be represented in the interface.
+    git checkout 76cd31a5271b41ff5a80dee2137dcb5e76296b93
+
+Next, create a branch starting at this revision in which to create dummy commits and test your Buildbot master's functionality.
+
+    git checkout -b linode-tutorial-demo
+
+At this point, you can create an empty commit in order to have something to push to your fork:
+
+    git commit --allow-empty -m 'Buildbot test'
+
+Finally, push your branch to your forked remote repository:
+
+    git push --set-upstream origin linode-tutorial-demo
+
+Now open the Buildbot web interface and navigate to your running builds. The "Home" button on the sidebar will show currently executing builds. Click on the running build to view more details about the running build, and each step along with logging output will be represented in the interface.
 
 ![Buildbot Build Page](buildbot-build-page.png "Buildbot Build Page")
 
