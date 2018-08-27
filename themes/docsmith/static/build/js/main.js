@@ -71,7 +71,7 @@ $(function() {
         $(this).css("cursor", "pointer")
             .click(function() { toggleNoteDisclosure($(this)) });
         $(this).children('div').first()
-            .css("height", '3em')
+            .css("height", '2.8em')
             .css("opacity", .5);
     });
 });
@@ -83,7 +83,7 @@ function toggleNoteDisclosure(disclosureNote) {
     if (disclosureNote.hasClass('disclosed')) {
         disclosableDiv.animate(
             {
-                height: '3em',
+                height: '2.8em',
                 opacity: .5
             }, 
             200,
