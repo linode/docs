@@ -25,11 +25,9 @@ This guide shows how to install and test a LAMP stack on Ubuntu 18.04 (LTS).
 
 <!-- ![Install LAMP on Ubuntu 18.04](install-lamp-on-ubuntu-18-04.png "Install LAMP on Ubuntu 18.04") -->
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups/).
+{{< content "limited-user-note-shortguide" >}}
 
-Replace each instance of `example.com` in this guide with your site's domain name.
-{{< /note >}}
+Replace each instance of `example.com` in this guide with your site's domain name or IP.
 
 ## Before You Begin
 
@@ -45,11 +43,11 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 Instead of installing Apache, MySQL, and PHP separately, Tasksel offers a convenient way to get a LAMP stack running quickly.
 
-1.  Install Tasksel if not already installed by default.
+1.  Install Tasksel if not already installed by default:
 
         sudo apt install tasksel
 
-2.  Use Tasksel to install the LAMP stack.
+1.  Use Tasksel to install the LAMP stack:
 
         sudo tasksel install lamp-server
 
@@ -61,18 +59,17 @@ If you prefer not to install the bundled packages via Tasksel, you can instead i
 
         sudo apt install apache2
 
-2.  Install the `mysql-server` package:
+1.  Install the `mysql-server` package:
 
         sudo apt install mysql-server
 
-3.  Install PHP, the PHP Extension and Application Repository, Apache support, and MySQL support:
+1.  Install PHP, the PHP Extension and Application Repository, Apache support, and MySQL support:
 
         sudo apt install php7.2 libapache2-mod-php7.2 php-mysql
 
     Optionally, install additional cURL, JSON, and CGI support:
 
         sudo apt install php-curl php-json php-cgi
-
 
 ## Configuration
 
@@ -93,7 +90,7 @@ KeepAliveTimeout 5
 The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this number higher depending on your use-case. The `KeepAliveTimeout` setting controls how long the server waits (measured in seconds) for new requests from already connected clients. Setting this to 5 will avoid wasting RAM.
 {{< /note >}}
 
-2.  The default *multi-processing module* (MPM) is the **prefork** module. `mpm_prefork` is the module that is compatible with most systems. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
+1.  The default *multi-processing module* (MPM) is the **prefork** module. `mpm_prefork` is the module that is compatible with most systems. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
 
     {{< file "/etc/apache2/mods-available/mpm_prefork.conf" aconf >}}
 <IfModule mpm_prefork_module>
@@ -105,12 +102,12 @@ The `MaxKeepAliveRequests` setting controls the maximum number of requests durin
 </IfModule>
 {{< /file >}}
 
-3.  Disable the event module and enable prefork:
+1.  Disable the event module and enable prefork:
 
         sudo a2dismod mpm_event
         sudo a2enmod mpm_prefork
 
-4.  Restart Apache:
+1.  Restart Apache:
 
         sudo systemctl restart apache2
 
@@ -120,9 +117,9 @@ You can set up virtual hosts several ways, and the following steps outline the r
 
 1.  Create a copy of the default Apache configuration file for your site:
 
-        sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com
+        sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
 
-2.  Open the new `example.com` configuration file in your text editor. Uncomment the `ServerName` option and update it with your domain. Enter the document root path and log directories as shown below, and add a `Directory` block before `<VirtualHost>`:
+1.  Open the new `example.com` configuration file in your text editor. Uncomment the `ServerName` option and update it with your domain. Enter the document root path and log directories as shown below, and add a `Directory` block before `<VirtualHost>`:
 
     {{< file "/etc/apache2/sites-available/example.com.conf" apache >}}
 <Directory /var/www/html/example.com/public_html>
@@ -142,12 +139,12 @@ You can set up virtual hosts several ways, and the following steps outline the r
 {{< /file >}}
 
     {{< note >}}
-The file example above has all comment sections removed for brevity; you may keep or remove the commented areas as you see fit.
+The file example above has all comment sections removed for brevity. Keep or remove the commented areas as you see fit.
 
 The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
 {{< /note >}}
 
-3.  Create the directories referenced above:
+1.  Create the directories referenced above:
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
@@ -155,19 +152,19 @@ The `ServerAlias` directive allows you to include multiple domain names or subdo
 Make sure that you do not put a space after the comma between `public_html` and `logs` because it will create a folder named `{public_html,` and will cause an error when you will reload Apache.
 {{< /note >}}
 
-4.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
+1.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
 
         sudo a2ensite example.com
 
     {{< note >}}
-If you need to disable your website, run `a2dissite example.com`.
+To disable your website, run `a2dissite example.com`.
 {{< /note >}}
 
-5.  Disable the default virtual host to minimize security risks:
+1.  Disable the default virtual host to minimize security risks:
 
         sudo a2dissite 000-default.conf
 
-6.  Reload Apache:
+1.  Reload Apache:
 
         sudo systemctl reload apache2
 
@@ -181,38 +178,22 @@ If there are additional websites you wish to host on your Linode, repeat the abo
 
         sudo mysql -u root
 
-    The database will not prompt you for a password, as it is initially configured to use the `auth_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are connecting from the Linux root user on localhost:
-    {{< highlight sql >}}
-mysql> SELECT user,host,authentication_string,plugin FROM mysql.user WHERE user='root';
-+------+-----------+-----------------------+-------------+
-| user | host      | authentication_string | plugin      |
-+------+-----------+-----------------------+-------------+
-| root | localhost |                       | auth_socket |
-+------+-----------+-----------------------+-------------+
-1 row in set (0.02 sec)
-{{< /highlight >}}
+    {{< content "mysql-authsocket-authentication-note-shortguide" >}}
 
-2.  You can keep using the `auth_socket` plugin, and this is considered a secure option for production systems. If you'd rather switch to password authentication and assign a password, enter the following commands. Replace `password` with a new root password:
-
-    {{< highlight sql >}}
-ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'password';
-FLUSH PRIVILEGES;
-{{< /highlight >}}
-
-3.  Create a database and a user with permissions for it. In this example, the database is called `webdata`, the user `webuser`, and password `password`. Be sure to enter your own password; this should be different from the root password for MySQL:
+1.  Create a database and a user with permissions for it. In this example, the database is called `webdata`, the user `webuser`, and password `password`. Be sure to enter your own password. This should be different from the root password for MySQL:
 
     {{< highlight sql >}}
 CREATE DATABASE webdata;
 GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
 {{< /highlight >}}
 
-4.  Exit the SQL shell:
+1.  Exit the SQL shell:
 
     {{< highlight sql >}}
 quit
 {{< /highlight >}}
 
-5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+1.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
 
         sudo mysql_secure_installation
 
@@ -237,12 +218,12 @@ error_log = /var/log/php/error.log
 The beginning of the `php.ini` file contains examples commented out with a semicolon (**;**), which disables these directives. Ensure that the lines you modify in this step follow the examples section and are uncommented.
 {{< /note >}}
 
-2.  Create the log directory for PHP and give ownership to the Apache system user:
+1.  Create the log directory for PHP and give ownership to the Apache system user:
 
         sudo mkdir /var/log/php
         sudo chown www-data /var/log/php
 
-3.  Restart Apache:
+1.  Restart Apache:
 
         sudo systemctl restart apache2
 
@@ -283,9 +264,9 @@ In this section, you'll create a test page that shows whether Apache can render 
 
 {{< /file >}}
 
-2.  Navigate to `example.com/phptest.php` from your local machine. If the components of your LAMP stack are working correctly, the browser will display a "Connected successfully" message. If not, the output will be an error message.
+1.  Navigate to `example.com/phptest.php` from your local machine. If the components of your LAMP stack are working correctly, the browser will display a "Connected successfully" message. If not, the output will be an error message.
 
-3.  Remove the test file:
+1.  Remove the test file:
 
         sudo rm /var/www/html/example.com/public_html/phptest.php
 

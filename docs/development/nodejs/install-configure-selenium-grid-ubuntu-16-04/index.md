@@ -35,7 +35,7 @@ Install Java and other dependencies on each Linode that will be part of the Sele
 
 ### Install Java
 
-{{< content "install-java-8-ppa.md" >}}
+{{< content "install-java-8-ppa" >}}
 
 ### Install Dependencies
 
@@ -172,7 +172,7 @@ In this example, the test script will be run from your local development machine
 
 This guide uses the NPM `selenium-webdriver` package, which contains Node.js bindings for Selenium.
 
-{{< content "install-nodejs-nodesource.md" >}}
+{{< content "install-nodejs-nodesource" >}}
 
 ### Create an Example Test Script
 

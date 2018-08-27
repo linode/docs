@@ -31,34 +31,7 @@ The instructions in this guide apply to both MySQL and MariaDB. For simplificati
 
 ## Back up a Database
 
-The `mysqldump` command’s general syntax is:
-
-    mysqldump -u [username] -p [databaseName] > [filename]-$(date +%F).sql
-
-* mysqldump prompts for a password before it starts the backup process.
-* Depending on the size of the database, it could take a while to complete.
-* The database backup will be created in the directory the command is run.
-* `-$(date +%F)` adds a timestamp to the filename.
-
-### Backup Examples
-
-* Create a backup of an entire Database Management System (DBMS):
-
-        mysqldump --all-databases --single-transaction --quick --lock-tables=false > full-backup-$(date +%F).sql -u root -p
-
-* Back up a specific database. Replace `db1` with the name of the database you want to back up:
-
-        mysqldump -u username -p db1 --single-transaction --quick --lock-tables=false > db1-backup-$(date +%F).sql
-
-* Back up a single table from any database. In the example below, `table1` is exported from the database `db1`:
-
-        mysqldump -u username -p --single-transaction --quick --lock-tables=false db1 table1 > db1-table1-$(date +%F).sql
-
-Here's a breakdown of the `mysqldump` command options used above:
-
--  `--single-transaction`: Issue a BEGIN SQL statement before dumping data from server.
--  `--quick`: Enforce dumping tables row by row. Added safety for systems with little RAM and/or large databases where storing tables in memory could become problematic.
--  `--lock-tables=false`: Do not lock tables for the backup session.
+{{< content "mysqldump-database-backup-short" >}}
 
 ## Automate Backups with cron
 
@@ -86,19 +59,4 @@ password = MySQL root user's password
 
 ## Restore a Backup
 
-The restoration command's general syntax is:
-
-    mysql -u [username] -p [databaseName] < [filename].sql
-
-* Restore an entire DBMS backup. You will be prompted for the MySQL root user's password:\
-  **This will overwrite all current data in the MySQL database system**
-
-        mysql -u root -p < full-backup.sql
-
-* Restore a single database dump. An empty or old destination database must already exist to import the data into, and the MySQL user you're running the command as must have write access to that database:
-
-        mysql -u [username] -p db1 < db1-backup.sql
-
-* Restore a single table, you must have a destination database ready to receive the data:
-
-        mysql -u dbadmin -p db1 < db1-table1.sql
+{{< content "mysqldump-database-restore-short" >}}

@@ -42,6 +42,7 @@ authmysql
 authmysqlrc
 authn
 authomator
+authsocket
 authy
 autocompletion
 autoconfiguration
@@ -140,6 +141,7 @@ chroot
 chrooted
 citad
 cjones
+clearsign
 clearspace
 cli
 clickboard
@@ -312,6 +314,7 @@ esc
 etcd
 etcd0
 eth0
+eugen
 evhost
 example1
 example2
@@ -347,6 +350,7 @@ fdisk
 fdriver
 fe70
 fedf
+fediverse
 fetchmail
 fetchmailrc
 ff02
@@ -679,6 +683,7 @@ magento
 maildir
 maildirs
 maildrop
+mailgun
 mailname
 mailq
 mailserver
@@ -1035,6 +1040,7 @@ ritchie
 rkt
 rmem
 ro
+rochko
 rocommunity
 rollout
 roundcube
@@ -1057,6 +1063,7 @@ rundir
 runlevels
 runtime
 runtimes
+rvm
 rw
 rwx
 rwxr
@@ -1124,6 +1131,7 @@ shortguide
 shortguides
 shortname
 shoutcast
+sidekiq
 sintra
 sitename
 slackpkg
