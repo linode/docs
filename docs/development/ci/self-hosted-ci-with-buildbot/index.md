@@ -259,7 +259,7 @@ Select "Add Webhook" from the following page. There are several fields here to p
 
 * Under "Payload URL" enter the domain name for your Buildbot server with the URL path `/change_hook/github` appended to it, for example:
   * https://example.com/change_hook/github
-* Leave "Content type" as the default value (application/x-www-form-urlencoded)
+* Leave "Content type" as the default value (`application/x-www-form-urlencoded`)
 * Under the "Secret" field, enter the value that you configured in `master.cfg` under `<webhook secret>`
 * Leave "Enable SSL Verification" selected
 * For "Which events would you like to trigger this webhook?", select "Let me select individual events" and ensure that only the following boxes are checked:
@@ -325,9 +325,9 @@ This configuration code does the following:
 
 * First, a new Build Factory is instantiated. Build Factories define how builds are run.
 * Steps are then added to the Build Factory, in order. To begin, your fork of the `linode/docs` GitHub repository is cloned.
-* Next, a Python virtualenv is setup. This ensures that the dependencies and libraries used for testing are sanboxed and kept separate from the Python libraries on the worker machine.
+* Next, a Python virtualenv is setup. This ensures that the dependencies and libraries used for testing are kept separate from the Python libraries on the worker machine in a dedicated sandbox.
 * Necessary Python packages used in testing are then installed into the build's virtualenv.
-* Finally, the `blueberry.py` testing script is executing using the sandboxed `python3` executable from the virtualenv.
+* Finally, the `blueberry.py` testing script is run using the `python3` executable from the virtualenv sandbox.
 * With the Build Factory defined, it must be added to the configuration for the master.
 
 Next, define a simple scheduler to build any branch that is pushed to the GitHub repository. This is a fairly simple scheduler definition, add it to the end of `master.cfg`:
@@ -350,7 +350,7 @@ The web interface should reflect the new build and scheduler. Select Build -> Bu
 
 ![Buildbot Custom Builder](buildbot-custom-builder-page.png "Buildbot Custom Builder")
 
-At this point, a new build can be started for the `linode-docs` builder. Recall that the GitHub webook configuration for your fork of `linode/docs` is set to call Buildbot upon any push or pull request event. To demonstrate how this works, clone your fork of the `linode/docs` repository locally on your local machine (do not run the following commands on your Buildbot server):
+At this point, a new build can be started for the `linode-docs` builder. Recall that the GitHub webhook configuration for your fork of `linode/docs` is set to call Buildbot upon any push or pull request event. To demonstrate how this works, clone your fork of the `linode/docs` repository locally on your local machine (do not run the following commands on your Buildbot server):
 
     git clone git@github.com:<username>/<repository>
     cd <repository>

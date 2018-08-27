@@ -98,6 +98,7 @@ brackley
 bram
 bs4
 bugtracker
+buildbot
 bukkit
 bundler
 bungeecord
