@@ -18,7 +18,7 @@ external_resources:
 
 [Buildbot](https://buildbot.net/) is an open source, modern system for testing software projects.
 
-In this guide, you will set up your own self-hosted Buildbot server you can use to serve as a continuous integration platform to test code. Much like some hosted solutions like Travis CI, Buildbot can act as a automated testing platform to watch for code changes, test a project, and send notifications regarding build failures.
+In this guide, you will set up your own self-hosted Buildbot server you can use to serve as a continuous integration platform to test code. Much like some hosted solutions like Travis CI, Buildbot can act as an automated testing platform to watch for code changes, test a project, and send notifications regarding build failures.
 
 ## Before you Begin
 
@@ -48,7 +48,7 @@ Replace each instance of example.com in this guide with your Buildbot site's dom
 
 ## Install Buildbot
 
-Buildbot is provided as an Ubuntu package, so it will be installed from the official Ubuntu repositories then setup accordingly.
+Buildbot is provided as an Ubuntu package, so install the software from the official Ubuntu repositories.
 
 ### Install Buildbot Master
 
@@ -342,9 +342,9 @@ This simply instructs the Buildbot master to create a scheduler that will build 
 
 ### Running Builds
 
-With a custom scheduler and builder defined, the Buildbot master can be reloaded.
+With a custom scheduler and builder defined, the Buildbot master can be restarted.
 
-    sudo systemctl reload buildmaster@ci.service
+    sudo systemctl restart buildmaster@ci.service
 
 The web interface should reflect the new build and scheduler. Select Build -> Builders from the sidebar, which should return a page with `linode-docs` listed:
 
