@@ -12,7 +12,7 @@ modified_by:
 published: 2018-08-26
 title: How to Use Buildbot for Software Testing on Ubuntu 18.04
 external_resources:
-- '[Buildbot Tutorial](http://docs.buildbot.net/current/tutorial/)'
+- '[Official Buildbot Tutorial](http://docs.buildbot.net/current/tutorial/)'
 - '[Buildbot Documentation](http://docs.buildbot.net/current/index.html)'
 ---
 
@@ -48,50 +48,31 @@ Replace each instance of example.com in this guide with your Buildbot site's dom
 
 ## Install Buildbot
 
-Buildbot is a [Python](https://www.python.org/) application, so this guide will set up a standalone Python environment using a [virtualenv](https://virtualenv.pypa.io/en/stable/) in order to simplify installation. Once the virtualenv is set up, Buildbot will be run via the independent `python` executable in the virtualenv.
-
-### Setup Python virtualenvs
-
-1.  Install the necessary prerequisite packages to acquire virtualenv and build tools:
-
-        sudo apt-get install -y build-essential python3-dev python3-venv
-
-1.  Two Python processes will run for Buildbot: once for the master, which coordinates running builds, and another for a worker, which will execute builds. Although you can create the Buildbot worker on a separate host to scale out a deployment of Buildbot, this guide will setup both the master and worker on the same host.
-
-1.  First, create a dedicated directory for the Buildbot master and install a virtualenv into the directory:
-
-        mkdir -p buildbot-master
-        python3 -m venv buildbot-master/venv
-
-1.  Now do the same for a dedicated worker directory:
-
-        mkdir -p buildbot-worker
-        python3 -m venv buildbot-worker/venv
+Buildbot is provided as an Ubuntu package, so it will be installed from the official Ubuntu repositories then setup accordingly.
 
 ### Install Buildbot Master
 
-With the Python virtualenvs set up, continue to first set up the Buildbot master.
+1.  Install the `buildbot` package along with `pip3`, which will be used to install additional python packages:
 
-1.  First, activate the Buildbot master virtualenv. This will set up the shell environment to use the local Python virtualenv.
+        sudo apt-get install -y buildbot python3-pip
 
-        cd buildbot-master
-        source venv/bin/activate
+1.  Install several required Buildbot Python packages:
 
-1.  Install the `buildbot[bundle]` Python package:
+        sudo pip3 install buildbot-www buildbot-waterfall-view buildbot-console-view buildbot-grid-view
 
-        pip install 'buildbot[bundle]'
+1.  The `buildbot` package sets up several file paths and services to run persistently on your host. In order to create a new configuration for a Buildbot master, enter the directory for Buildbot master configurations and create a new master called `ci` (for "continuous integration"):
 
-1.  The `buildbot` executable is now available in the virtualenv and ready to use. First, set up a new master configuration with the following command:
+        cd /var/lib/buildbot/masters
+        sudo -u buildbot -- buildbot create-master ci
 
-        buildbot create-master master
+1.  The generated master configuration file can be found at `ci/master.cfg.sample`. Copy this default configuration to the path that Buildbot expects for its configuration file. Also change the permissions for this configuration file so that the `buildbot` user has rights for the configuration file.
 
-1.  The generated master configuration file can be found at `master/master.cfg.sample`. Copy this default configuration to the path that Buildbot expects for its configuration file:
-
-        cp master/master.cfg.sample master/master.cfg
+        sudo cp ci/master.cfg.sample ci/master.cfg
+        sudo chown buildbot:buildbot ci/master.cfg
 
 ### Configure Buildbot Master
 
-The `buildbot create-master master` command installed a default configuration file, but in order to secure and customize the Buildbot master configuration, a few settings should be changed before using the application. All the following changed settings should be applied to `buildbot-master/master/master.cfg`.
+The `buildbot create-master ci` command installed a default configuration file, but in order to secure and customize the Buildbot master configuration, a few settings should be changed before using the application. All the following changed settings should be applied to `/var/lib/buildbot/masters/ci/master.cfg`.
 
 Buildbot has a number of concepts that are represented in the master build configuration. Open this file in your text editor (such as vim, emacs, nano, or another) and browse the Buildbot configuration. Unlike some configuration files, the Buildbot configuration is written in Python instead of a markup language like Yaml.
 
@@ -104,11 +85,11 @@ Buildbot has a number of concepts that are represented in the master build confi
 
         c['workers'] = [worker.Worker("example-worker", "<replace 'pass' here>")]
 
-1.  If desired, change the name of this Buildbot installation:
+1.  Uncomment the configuration option for 'title' and, if desired, change the name of this Buildbot installation:
 
         c['title'] = "My CI"
 
-1.  Change the URL of this Buildbot installation in the configuration file to reflect where this instance of Buildbot is installed. Using `example.com` as an example, change the `titleURL` config option:
+1.  Uncomment and change the URL of this Buildbot installation in the configuration file to reflect where this instance of Buildbot is installed. Using `example.com` as an example, change the `titleURL` config option:
 
         c['titleURL'] = "https://example.com"
 
@@ -118,7 +99,12 @@ Buildbot has a number of concepts that are represented in the master build confi
 
     These options assume that you will use a custom domain secured with Let's Encrypt certificates from `certbot` as outlined in this guide's prerequisites.
 
-1.  Configure users for the Buildbot master web interface, replacing username and password values with those of your choosing:
+1.  Uncomment the web interface configuration:
+
+        c['www'] = dict(port=8010,
+                      plugins=dict(waterfall_view={}, console_view={}, grid_view={}))
+
+1.  Configure users for the Buildbot master web interface, replacing username and password values with those of your choosing. These lines should appear after the uncommented `c['www']` line.
 
         c['www']['authz'] = util.Authz(
                 allowRules = [
@@ -143,9 +129,9 @@ Buildbot has a number of concepts that are represented in the master build confi
             }
         }
 
-1.  Finally, start the Buildbot master. This command will start Buildbot in the background.
+1.  Finally, start the Buildbot master. This command will start the Buildbot process and persist it across reboots.
 
-        buildbot start master
+        sudo systemctl enable --now buildmaster@ci.service
 
 ### Setup Buildbot Master Web Interface
 
@@ -217,10 +203,7 @@ server {
 
     ![Buildbot Landing Page](buildbot-landing-page.png "Buildbot Landing Page")
 
-Congratulations! Your continuous integration test server is up and running. You may now deactivate the virtualenv and leave the Buildbot master directory.
-
-    deactivate
-    cd ..
+Congratulations! Your continuous integration test server is up and running.
 
 Before proceeding, be sure to log in to the Buildbot interface (over HTTPS) in order to have sufficient permissions to view builds and workers.
 
@@ -228,39 +211,25 @@ Before proceeding, be sure to log in to the Buildbot interface (over HTTPS) in o
 
 In order for Buildbot to execute test builds, the Buildbot master will require a worker. The following steps will setup a worker on the same host as the master.
 
-1.  Activate the Buildbot worker virtualenv which was previously setup:
+1.  Install the `buildbot-slave` Ubuntu package:
 
-        cd buildbot-worker
-        source venv/bin/activate
+        sudo apt-get install -y buildbot-slave
 
-1.  Install the `buildbot-worker` Python package into the virtualenv:
+1.  Enter the directory for Buildbot worker configurations on the host:
 
-        pip install buildbot-worker
+        cd /var/lib/buildbot/workers
 
 1.  Now create the configuration directory for a Buildbot worker, replacing `<worker password>` with the password generated for workers in the master configuration file:
 
-        buildbot-worker create-worker worker localhost example-worker <worker password>
+        sudo -u buildbot -- buildbot-worker create-worker default localhost example-worker <worker password>
 
 1.  At this point the Buildbot worker is configured and ready to connect to the Buildbot master. Start the worker process now:
 
-        buildbot-worker start worker
+        sudo systemctl enable --now buildbot-worker@default.service
 
-1.  Confirm that the worker has connected to the Buildbot master process. Check the master logs to see worker connection messages:
-
-        grep -i worker ../buildbot-master/master/twistd.log
-
-    You should see messages similar to the following:
-
-        2018-08-26 18:19:36+0000 [Broker,0,127.0.0.1] worker 'example-worker' attaching from IPv4Address(type='TCP', host='127.0.0.1', port=60836)
-
-    In addition, from the Buildbot web interface, you can confirm that the worker has connected by navigating to Builds -> Workers in the sidebar:
+    From the Buildbot web interface, you can confirm that the worker has connected by navigating to Builds -> Workers in the sidebar:
 
     ![Buildbot Workers Page](buildbot-worker-page.png "Buildbot Workers Page")
-
-1.  Clean up your shell environment by deactivating the virtualenv and leaving the `buildbot-worker` directory:
-
-        deactivate
-        cd ..
 
 ## Configuring Builds
 
@@ -308,13 +277,15 @@ Congratulations! GitHub is ready to send new pushes to your fork to your instanc
 
 Although Buildbot supports executing builds within Docker, to keep this setup simple, builds will be run as a simple process on the Buildbot worker.
 
-Most software projects will have several prerequisites listed that are required to build and run tests for a project. At the time of this writing, the Linode Guides and Tutorials repository has a couple of different tests, but this example will use a script called `blueberry.py` in order to perform several checks including looking for broken links, missing images, and more.
+Most software projects will have several prerequisites listed that are required to build and run tests for a project. At the time of this writing, the Linode Guides and Tutorials repository has a couple of different tests, but this example will use a script called `blueberry.py` in order to perform several checks including looking for broken links, missing images, and more. This is a python script with dependencies that can be installed via the `pip` in a virtualenv.
 
-Because we have already installed Python and virtualenv, the prerequisites for running this suite of tests is already present on the build worker, so we can proceed to configuring the Buildbot master to reference the `linode/docs` repository with associated build instructions.
+Install the packages necessary to permit the build to use a Python virtualenv to create a sandbox during the build.
+
+    sudo apt-get install -y build-essential python3-dev python3-venv
 
 ### Writing Builds
 
-There are a few sections within the `buildbox-master/master/master.cfg` file that are used to configure builds. These sections in the configuration include:
+There are a few sections within the `/var/lib/buildbot/masters/ci/master.cfg` file that are used to configure builds. These sections in the configuration include:
 
 * `workers`, which define which worker executors the master will connect to in order to run builds
 * `schedulers`, which define when and why builds are executed
@@ -322,14 +293,14 @@ There are a few sections within the `buildbox-master/master/master.cfg` file tha
 
 Because our worker has already been configured and connected to our Buildbot master, the only settings necessary to define a custom build for our purposes are the `schedulers` and `builders` fields.
 
-To begin, append the following lines to the end of `buildbot-master/master/master.cfg`:
+To begin, append the following lines to the end of `/var/lib/buildbot/masters/ci/master.cfg`, making sure to replace `<your username>` and `<your repository name>` with the correct values for your fork of `linode/docs`:
 
-    {{< file "~/buildbox-master/master/master.cfg" python  >}}
+{{< file "/var/lib/buildbot/masters/ci/master.cfg" python  >}}
 docs_blueberry_test = util.BuildFactory()
 # Clone the repository
 docs_blueberry_test.addStep(
     steps.Git(
-        repourl='git://github.com/linode/docs.git',
+        repourl='git://github.com/<your username>/<your repository name>.git',
         mode='incremental'))
 # Create virtualenv
 docs_blueberry_test.addStep(
@@ -353,15 +324,15 @@ c['builders'].append(
 This configuration code does the following:
 
 * First, a new Build Factory is instantiated. Build Factories define how builds are run.
-* Steps are then added to the Build Factory, in order. To begin, the `linode/docs` GitHub repository is cloned.
+* Steps are then added to the Build Factory, in order. To begin, your fork of the `linode/docs` GitHub repository is cloned.
 * Next, a Python virtualenv is setup. This ensures that the dependencies and libraries used for testing are sanboxed and kept separate from the Python libraries on the worker machine.
 * Necessary Python packages used in testing are then installed into the build's virtualenv.
-* Finally, the `blueberry.py` testing script is executing using the sanboxed `python3` executable from the virtualenv.
+* Finally, the `blueberry.py` testing script is executing using the sandboxed `python3` executable from the virtualenv.
 * With the Build Factory defined, it must be added to the configuration for the master.
 
 Next, define a simple scheduler to build any branch that is pushed to the GitHub repository. This is a fairly simple scheduler definition, add it to the end of `master.cfg`:
 
-    {{< file "~/buildbox-master/master/master.cfg" python  >}}
+{{< file "~/buildbox-master/master/master.cfg" python  >}}
 c['schedulers'].append(schedulers.AnyBranchScheduler(
     name="build-docs",
     builderNames=["linode-docs"]))
@@ -371,10 +342,9 @@ This simply instructs the Buildbot master to create a scheduler that will build 
 
 ### Running Builds
 
-With a custom scheduler and builder defined, the Buildbot master can be reloaded. Enter the Buildbot master directory and issue the command to reconfigure the master:
+With a custom scheduler and builder defined, the Buildbot master can be reloaded.
 
-    cd buildbot-master
-    ./venv/bin/buildbot reconfig master
+    sudo systemctl reload buildmaster@ci.service
 
 The web interface should reflect the new build and scheduler. Select Build -> Builders from the sidebar, which should return a page with `linode-docs` listed:
 
@@ -401,8 +371,22 @@ Finally, push your branch to your forked remote repository:
 
     git push --set-upstream origin linode-tutorial-demo
 
-Now open the Buildbot web interface and navigate to your running builds. The "Home" button on the sidebar will show currently executing builds. Click on the running build to view more details about the running build, and each step along with logging output will be represented in the interface.
+Now open the Buildbot web interface and navigate to your running builds. The "Home" button on the sidebar will show currently executing builds.
+
+![Buildbot running Builds](buildbot-running-builds.png "Buildbot running Builds")
+
+Click on the running build to view more details about the running build, and each step along with logging output will be represented in the interface.
 
 ![Buildbot Build Page](buildbot-build-page.png "Buildbot Build Page")
 
 Each step of the build process can be followed as the build progresses. As the steps progress, each can be clicked to view standard output logs, and each step should complete successfully until the build finishes.
+
+Congratulations! Your Buildbot host will now actively build pushes to any branch or any pull requests to your repository.
+
+## Features to Explore
+
+At this point you can continue to add configuration options to `master.cfg` in order to add more features to your CI server. Some useful functions that Buildbot supports include:
+
+* [Reporters](http://docs.buildbot.net/current/manual/cfg-reporters.html), which can notify you about build failures over IRC, GitHub comments, or email.
+* [Workers](http://docs.buildbot.net/current/manual/cfg-workers.html), which can execute builds in Docker containers or in temporary cloud instances instead of static hosts.
+* [Web server features](http://docs.buildbot.net/current/manual/cfg-www.html), including the ability to generate badges for your repository indicating the current build status of the project.
