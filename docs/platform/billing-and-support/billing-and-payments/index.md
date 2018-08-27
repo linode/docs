@@ -95,7 +95,7 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 ## Network Transfer Quota
 
-Each Linode plan specifies a network transfer quota. These quotas determine the amount of monthly traffic your services can use as part of your plan's basic pricing. It is possible to use more traffic than the included quota, and this will incur [overages](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work). For more information on transfer quotas, review the [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota) guide.
+Your *network transfer quota* represents the total monthly amount of traffic your services can use as part of your Linode plans' basic pricing. It is possible to use more traffic than your account's monthly transfer quota, and this will incur [overages](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work). For more information on your transfer quota, review the [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota) guide.
 
 ## Payment Methods
 

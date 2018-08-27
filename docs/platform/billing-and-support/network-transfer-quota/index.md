@@ -14,17 +14,15 @@ contributor:
   name: Linode
 ---
 
-Every Linode plan includes a *network transfer quota*. Transfer quotas represent the total amount of monthly traffic your services can use as part of your plans' basic pricing.
-
-Transfer quota amounts are listed for each plan on the Linode [pricing page](https://www.linode.com/pricing).
+Your *network transfer quota* represents the total monthly amount of traffic your services can use as part of your Linode plans' basic pricing. Each Linode plan includes a specified amount of transfer. Transfer amounts are listed for each plan on the Linode [pricing page](https://www.linode.com/pricing).
 
 ## Network Transfer Pool
 
-The transfer quota amounts for all of your Linodes are added together to create a *network transfer pool*. Each of your Linodes is able to use transfer from this pool.
+Your monthly network transfer quota for your services is for your entire account, not for any individual Linode. The transfer amounts provided by all of your Linodes' plans are added together, and your account's monthly quota is equal to the total. This is also referred to as your *network transfer pool*. Each of your Linodes is able to use bandwidth from this pool.
 
-If an individual Linode exceeds the transfer quota specified by its plan, but the total transfer used between all of your Linodes is still less than your pool total, then you will not be charged any overages.
+If an individual Linode's traffic exceeds the network transfer amount specified by its plan, but the total transfer used between all of your Linodes is still less than your pool total, then you will *not* be charged overages.
 
-Linodes from different data centers all contribute to and consume from the same pool total.
+Linodes from different data centers all use the same transfer pool.
 
 ### Network Transfer Pool Example
 
@@ -33,27 +31,29 @@ If you have two Linodes:
 - Linode A, which comes with 1TB transfer
 - Linode B, which comes with 2TB transfer
 
-Your monthly pool total would be 3TB. If Linode A uses 1.5TB of traffic during the month, and Linode B uses 1TB of traffic, then the total used is 2.5TB. The 1.5TB used by Linode A is greater than its individual 1TB quota, but the 2.5TB total is less than the pool, so no overages are billed.
+Your monthly pool total, or your account's quota, would be 3TB. If Linode A uses 1.5TB of traffic during the month, and Linode B uses 1TB of traffic, then the total used between them is 2.5TB. The 1.5TB used by Linode A is greater than the 1TB of transfer specified by its plan, but the 2.5TB total is less than the account quota, so no overages are billed.
 
 ## Which Traffic Applies to the Transfer Quota
 
-Transfer quota usage only considers traffic on your Linode's public address. Transfer over the private network does not count towards your monthly quota.
+The transfer quota only considers traffic on your Linodes' public addresses. Traffic over the private network does not count against your monthly quota.
 
-All inbound traffic to your Linode is free and will not count against your quota--only traffic that your Linode emits on the public address is counted.
+All inbound traffic to your Linodes is free and will not count against your quota--only traffic that your Linodes emit on their public addresses is counted.
 
 ## Transfer Resets, Proration, and Overages
 
-Your transfer quota is reset every month.
+Your transfer quota is reset at the beginning of each month.
 
-### Why is My Linode's Quota less than My Plan's Quota?
+### Why is My Linode's Network Transfer less than My Plan's Transfer?
 
-**Your Linode’s transfer quota is prorated** based on the Linode's creation date. This means that a Linode you create mid-month will have a lower transfer quota than what’s listed on the pricing page, depending on how much time remains in the month. For example, if you create a Linode half-way through the month, it will come with half of the quota listed for your Linode's plan.
+**Your account's transfer quota is prorated** based on your Linodes' creation and deletion dates.
 
-The transfer quota is reset at the beginning of the next month, and you will see the full quota amount listed at that time.
+A Linode you create mid-month will include a lower transfer amount than what’s listed on the pricing page, depending on how much time remains in the month.
 
-If you remove a Linode before the end of the month, then the quota it contributes to your pool will also be reduced according to the date the Linode was deleted.
+For example, if you create a Linode half-way through the month, it will come with half of the transfer listed for your Linode's plan. Because your transfer quota is reset at the beginning of the next month, and you will see the full transfer amount at that time.
 
-For example, if you create a Linode on the first of the month, then your pool will initially include the full quota for that Linode's plan. If you remove that Linode half-way through the month, then your pool total will be updated and reduced by half the Linode plan's quota.
+If you remove a Linode before the end of the month, then the transfer it contributes to your pool will also be reduced according to the date the Linode was deleted.
+
+For example, if you create a Linode on the first of the month, then your pool will initially include the full transfer amount for that Linode's plan. If you remove that Linode half-way through the month, then your pool total will be updated and reduced by half the Linode plan's transfer.
 
 ### How Overages Work
 
@@ -77,7 +77,7 @@ Linode recommends that you monitor your network pool usage throughout the month.
 
 1. Log in to the Linode Manager and view your Linode Dashboard.
 
-1. Under the **This Month's Network Transfer Pool** heading, a graphic displays (in GB) the transfer used, the unused pool amount remaining, and the pool total for the month.
+1. Under the **This Month's Network Transfer Pool** heading, a graphic displays (in GB) the transfer used, the unused pool amount remaining, and your account's quota for the month.
 
 **Linode CLI**
 
