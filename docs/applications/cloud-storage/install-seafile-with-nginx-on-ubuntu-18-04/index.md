@@ -5,7 +5,7 @@ author:
 description: 'Seafile is an open-source cross-platform file hosting tool with server applications compatible with Linux, Windows, and OS X.'
 keywords: ["Seafile", " nginx", " Ubuntu 18.04", " file server", " media", " sharing"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
+modified: 2018-08-28
 modified_by:
   name: Andrew Lescher
 published: 2017-05-23
@@ -26,55 +26,55 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Update the system:
 
-```
-apt update && apt upgrade -y
-```
+    ```
+    apt update && apt upgrade
+    ```
 
 2.  Create a standard user account with root privileges. As an example, we'll call the user *sfadmin*:
 
-```
-adduser sfadmin
-adduser sfadmin sudo
-```
+    ```
+    adduser sfadmin
+    adduser sfadmin sudo
+    ```
 
-3.  Log out of your Linode's root user account and back in as *sfadmin*:
+3.  Log out of your Linode's root user account and log back in as *sfadmin*:
 
-```
-exit
-ssh sfadmin@<your_linode's_ip>
-```
+    ```
+    exit
+    ssh sfadmin@<your_linode's_ip>
+    ```
 
 4.  You should now be logged into your Linode as *sfadmin*. Use our [Securing Your Server](/docs/security/securing-your-server/#harden-ssh-access) guide to harden SSH access.
 
 5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/). Set the allow rules for SSH and HTTP(S) access with:
 
-```
-sudo ufw allow ssh
-sudo ufw allow http
-sudo ufw allow https
-sudo ufw enable
-```
+    ```
+    sudo ufw allow ssh
+    sudo ufw allow http
+    sudo ufw allow https
+    sudo ufw enable
+    ```
 
-Then check the status of your rules and list them numerically:
+    Then check the status of your rules and list them numerically:
 
-```
-sudo ufw status numbered
-```
+    ```
+    sudo ufw status numbered
+    ```
 
-The output should be:
+    The output should be:
 
-{{< output >}}
+    {{< output >}}
 
-        Status: active
+Status: active
 
-        To                         Action      From
-        --                         ------      ----
-        [ 1] 22                         ALLOW IN    Anywhere
-        [ 2] 80                         ALLOW IN    Anywhere
-        [ 3] 443                        ALLOW IN    Anywhere
-        [ 4] 22 (v6)                    ALLOW IN    Anywhere (v6)
-        [ 5] 80 (v6)                    ALLOW IN    Anywhere (v6)
-        [ 6] 443 (v6)                   ALLOW IN    Anywhere (v6)
+To                         Action      From
+--                         ------      ----
+[ 1] 22                         ALLOW IN    Anywhere
+[ 2] 80                         ALLOW IN    Anywhere
+[ 3] 443                        ALLOW IN    Anywhere
+[ 4] 22 (v6)                    ALLOW IN    Anywhere (v6)
+[ 5] 80 (v6)                    ALLOW IN    Anywhere (v6)
+[ 6] 443 (v6)                   ALLOW IN    Anywhere (v6)
 
 {{< /output >}}
 
@@ -84,13 +84,13 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
 
 6.  Set the Linode's hostname. We'll call it *seafile* as an example:
 
-```
-sudo hostnamectl set-hostname seafile
-```
+    ```
+    sudo hostnamectl set-hostname seafile
+    ```
 
 7. Add the new hostname to `/etc/hosts`. The second line in the file should look like this if you selected "seafile" as the hostname.
 
-{{< file "/etc/hosts"  conf >}}
+    {{< file "/etc/hosts"  conf >}}
 
 127.0.1.1    members.linode.com     seafile
 
@@ -99,23 +99,23 @@ sudo hostnamectl set-hostname seafile
 
 8.  On first boot, your Linode's timezone will be set to UTC. Changing this is optional, but if you wish, use:
 
-```
-sudo dpkg-reconfigure tzdata
-```
+    ```
+    sudo dpkg-reconfigure tzdata
+    ```
 
 ## Install and Configure MySQL
 
 1.  During Installation, you will be asked to assign a password for the root mysql user. Be sure to install the package `mysql-server-5.7`, not `mysql-server`. This is because an upstream issue causes problems starting the MySQL service if you install by using the `mysql-server` package.
 
-```
-sudo apt install mysql-server-5.7
-```
+    ```
+    sudo apt install mysql-server-5.7
+    ```
 
 2.  Run the *mysql_secure_installation* script:
 
-```
-sudo mysql_secure_installation
-```
+    ```
+    sudo mysql_secure_installation
+    ```
 
     For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04/)
 
@@ -125,19 +125,19 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 
 1.  Change to the location where we'll store the certificate files and create server's certificate with key:
 
-```
-cd /etc/ssl
-sudo openssl genrsa -out privkey.pem 4096
-sudo openssl req -new -x509 -key privkey.pem -out cacert.pem
-```
+    ```
+    cd /etc/ssl
+    sudo openssl genrsa -out privkey.pem 4096
+    sudo openssl req -new -x509 -key privkey.pem -out cacert.pem
+    ```
 
 ## Install and Configure NGINX
 
 1.  Install NGINX from Ubuntu's repository:
 
-```
-sudo apt install nginx
-```
+    ```
+    sudo apt install nginx
+    ```
 
 2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with NGINX](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/).
 
@@ -201,66 +201,66 @@ server{
     location /media {
         root /home/sfadmin/sfroot/seafile-server-latest/seahub;
     }
-    }
+}
 
 {{< /file >}}
 
 
 3.  Disable the default site configuration and enable the one you just created:
 
-```
-sudo rm /etc/nginx/sites-enabled/default
-sudo ln -s /etc/nginx/sites-available/seafile.conf /etc/nginx/sites-enabled/seafile.conf
-```
+    ```
+    sudo rm /etc/nginx/sites-enabled/default
+    sudo ln -s /etc/nginx/sites-available/seafile.conf /etc/nginx/sites-enabled/seafile.conf
+    ```
 
 4.  Run the NGINX configuration test and restart the web server. If the test fails, it will give you a brief description of what's wrong so you can troubleshoot the problem.
 
-```
-sudo nginx -t
-sudo systemctl restart nginx
-```
+    ```
+    sudo nginx -t
+    sudo systemctl restart nginx
+    ```
 
 ## Configure and Install Seafile
 
 1.  The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example `haiwen` directory found in the Seafile manual, we'll create a directory called `sfroot` in the `sfadmin` home folder.
 
-```
-mkdir ~/sfroot && cd ~/sfroot
-```
+    ```
+    mkdir ~/sfroot && cd ~/sfroot
+    ```
 
 2.  Download the Seafile CE 64 bit Linux server. You'll need to get the exact link from [seafile.com](https://www.seafile.com/en/download/). Once you have the URL, use `wget` to download it to *~/sfadmin/sfroot*.
 
-```
-wget <link>
-```
+    ```
+    wget <link>
+    ```
 
 3.  Extract the tarball and move it when finished:
 
-```
-tar -xzvf seafile-server*.tar.gz
-mkdir installed && mv seafile-server*.tar.gz installed
-```
+    ```
+    tar -xzvf seafile-server*.tar.gz
+    mkdir installed && mv seafile-server*.tar.gz installed
+    ```
 
 4.  Install dependency packages for Seafile:
 
-```
-sudo apt install python2.7 libpython2.7 python-setuptools python-imaging python-ldap python-mysqldb python-memcache python-urllib3
-```
+    ```
+    sudo apt install python2.7 libpython2.7 python-setuptools python-imaging python-ldap python-mysqldb python-memcache python-urllib3
+    ```
 
 5.  Run the installation script:
 
-```
-cd seafile-server-* && ./setup-seafile-mysql.sh
-```
+    ```
+    cd seafile-server-* && sudo ./setup-seafile-mysql.sh
+    ```
 
 You'll be prompted to answer several questions and choose settings during the installation process. For those that recommend a default, use that.
 
 6.  Start the server.
 
-```
-./seafile.sh start
-./seahub.sh start-fastcgi
-```
+    ```
+    sudo ./seafile.sh start
+    sudo ./seahub.sh start-fastcgi
+    ```
 
 The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
 
@@ -276,7 +276,7 @@ The `seafile.sh` and `seahub.sh` scripts don't automatically run if your Linode 
 
 1.  Create the systemd unit files:
 
-{{< file "/etc/systemd/system/seafile.service" >}}
+    {{< file "/etc/systemd/system/seafile.service" >}}
 
 [Unit]
 Description=Seafile Server
@@ -295,7 +295,7 @@ WantedBy=multi-user.target
 
 {{< /file >}}
 
-{{< file "/etc/systemd/system/seahub.service" >}}
+    {{< file "/etc/systemd/system/seahub.service" >}}
 
 [Unit]
 Description=Seafile Hub
@@ -316,17 +316,17 @@ WantedBy=multi-user.target
 
 2.  Then enable the services:
 
-```
-sudo systemctl enable seafile
-sudo systemctl enable seahub
-```
+    ```
+    sudo systemctl enable seafile
+    sudo systemctl enable seahub
+    ```
 
-You can verify they've started successfully with:
+    You can verify they've started successfully with:
 
-```
-sudo systemctl status seafile
-sudo systemctl status seahub
-```
+    ```
+    sudo systemctl status seafile
+    sudo systemctl status seahub
+    ```
 
 3.  Confirm the startup scripts are working by rebooting your Linode. After bootup, both the Seafile and Seahub services should be active when running the status commands in the previous step. You should also still be able to access Seafile with a web browser.
 
