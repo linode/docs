@@ -1,6 +1,7 @@
 abc
 absecon
 abspath
+aconf
 adc
 addon
 addons
@@ -87,6 +88,7 @@ bitrate
 blocklists
 blockwise
 bluehost
+boolstyle
 boonex
 bootable
 bootloader
@@ -161,6 +163,7 @@ codebase
 codec
 com2sec
 comodo
+completekey
 conda
 config
 configs
@@ -213,6 +216,7 @@ datasource
 datastax
 datastore
 datetime
+datetimeformat
 dav
 davfs
 davfs2
@@ -595,6 +599,7 @@ keymap
 keypair
 keypairs
 keysize
+keyspace
 keystore
 kibana
 kickban
@@ -840,6 +845,7 @@ nsd4
 ntop
 ntopng
 ntpd
+nullval
 num
 numpy
 nvim
