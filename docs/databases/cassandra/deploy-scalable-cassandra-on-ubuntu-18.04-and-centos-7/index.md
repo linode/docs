@@ -37,12 +37,6 @@ After completing this guide, you will have a single-node, production-ready insta
 
 ### Add Repositories and GPG Keys
 
-Add required repositories/gpg keys. Be sure to run the key add commands in the order shown.
-
-{{< caution >}}
-(Ubuntu only) If you receive an error while running `apt update` that pertains to a missing key, copy the key listed in the error message and add it to your keyring using the commands in step 4. As of this publish date, the only keys required are listed below.
-{{< /caution >}}
-
 **Ubuntu 18.04**
 
 1.  Add the Java repository:
@@ -228,7 +222,7 @@ After editing the file restart Cassandra.
 
 ## Add An Administration Superuser
 
-1.  Open the Cassandra command terminal by typing `cqlsh`. Login with the credentials shown below for the default user "cassandra":
+1.  Open the Cassandra command terminal by typing `cqlsh`. Log in with the credentials shown below for the default user "cassandra":
 
     ```
     cqlsh -u cassandra -p cassandra
@@ -260,7 +254,7 @@ After editing the file restart Cassandra.
 
 The *cqlshrc* file holds configuration settings that influence user preferences on how Cassandra performs certain tasks. Before proceeding, switch from the "root" user to your administrative Linux user account (you need sudo privileges for this).
 
-Since your Cassandra username and password can be stored here in plaintext, this should only be accessible to your administrative user account, and is designed to be inaccessible to other accounts on your Linux system. Do not set this up as the root user. Caution: Before proceeding, fully evaluate the security risks and consequences to your node cluster before adding the [authentication] section.
+Since your Cassandra username and password can be stored here in plaintext, this file should only be accessible to your administrative user account, and is designed to be inaccessible to other accounts on your Linux system. Do not set this up as the root user. Caution: Before proceeding, fully evaluate the security risks and consequences to your node cluster before adding the [authentication] section.
 
 1.  Create the file *cqlshrc* using your preferred text editor. If the `~/.cassandra` directory does not exist, create it:
 
