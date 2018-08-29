@@ -171,7 +171,7 @@ Header always append X-Frame-Options SAMEORIGIN
 
 5.  Restart Apache to enable the changes:
 
-        sudo service restart apache2
+        sudo systemctl restart apache2
 
 6.  Repeat Steps 2 through 5 for each WordPress site that you want to run.
 
