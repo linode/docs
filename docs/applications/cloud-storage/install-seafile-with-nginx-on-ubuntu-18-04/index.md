@@ -163,9 +163,6 @@ server{
     ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH !RC4";
     ssl_prefer_server_ciphers   on;
 
-    fastcgi_param   HTTPS               on;
-    fastcgi_param   HTTP_SCHEME         https;
-
   location / {
     proxy_pass         http://127.0.0.1:8000;
     proxy_set_header   Host $host;
