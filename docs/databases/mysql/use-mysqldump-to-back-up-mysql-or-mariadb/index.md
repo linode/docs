@@ -52,7 +52,7 @@ password = MySQL root user's password
 3. Create the cron job file. Below is an example cron job to back up the entire database management system every day at 1am:
 
     {{< file "/etc/cron.daily/mysqldump" >}}
-0 1 * * * /usr/bin/mysqldump mysqldump --defaults-extra-file=/home/example_user/.my.cnf -u root --single-transaction --quick --lock-tables=false --all-databases > full-backup-$(date +%F).sql
+0 1 * * * /usr/bin/mysqldump --defaults-extra-file=/home/example_user/.my.cnf -u root --single-transaction --quick --lock-tables=false --all-databases > full-backup-$(date +%F).sql
 {{< /file >}}
 
     For more information on cron, see the [cron(8)](https://linux.die.net/man/8/cron) and [cron(5)](https://linux.die.net/man/5/crontab) manual pages.
