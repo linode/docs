@@ -41,8 +41,8 @@ The Dokku install script creates a `dokku` user on the system, installs Docker, 
 
 1.  Download the install script from Dokku then run the script:
 
-        wget https://raw.githubusercontent.com/dokku/dokku/v0.11.6/bootstrap.sh
-        sudo DOKKU_TAG=v0.11.6 bash bootstrap.sh
+        wget https://raw.githubusercontent.com/dokku/dokku/v0.12.5/bootstrap.sh
+        sudo DOKKU_TAG=v0.12.5 bash bootstrap.sh
 
     {{< output >}}
 Preparing to install v0.11.6 from https://github.com/dokku/dokku.git...
