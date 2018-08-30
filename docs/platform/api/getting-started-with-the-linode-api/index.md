@@ -20,7 +20,7 @@ The Linode API provides the ability to programmatically manage the full range of
 
 ### Create an API Token
 
-All endpoints affecting your account require either a Personal Access Token or [OAuth authentication]((https://developers.linode.com/api/v4#section/OAuth)) (when using third-party applications). You can generate an access token through the [beta Linode Manager](https://cloud.linode.com).
+All endpoints affecting your account require either a Personal Access Token or [OAuth authentication](https://developers.linode.com/api/v4#section/OAuth) (when using third-party applications). You can generate an access token through the [beta Linode Manager](https://cloud.linode.com).
 
 1. Log in to the Manager and select the **API Tokens** tab from the **My Profile** menu.
 
