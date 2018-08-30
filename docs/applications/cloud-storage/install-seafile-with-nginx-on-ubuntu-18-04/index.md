@@ -88,7 +88,7 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
     sudo hostnamectl set-hostname seafile
     ```
 
-7. Add the new hostname to `/etc/hosts`. The second line in the file should look like this if you selected "seafile" as the hostname.
+7. Add the new hostname to `/etc/hosts`. The second line in the file should look like this if you selected "seafile" as the hostname:
 
     {{< file "/etc/hosts"  conf >}}
 
@@ -105,7 +105,7 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
 
 ## Install and Configure MySQL
 
-1.  During Installation, you will be asked to assign a password for the root mysql user. Be sure to install the package `mysql-server-5.7`, not `mysql-server`. This is because an upstream issue causes problems starting the MySQL service if you install by using the `mysql-server` package.
+1.  During Installation, you will be asked to assign a password for the root MySQL user. Be sure to install the package `mysql-server-5.7`, not `mysql-server`. This is because an upstream issue causes problems starting the MySQL service if you install by using the `mysql-server` package.
 
     ```
     sudo apt install mysql-server-5.7
@@ -123,7 +123,7 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
 
 If you don't already have an SSL/TLS certificate, you can create one. This certificate will be self-signed, and will cause web browsers to protest about a non-private connection. You should verify the SHA256 fingerprint of the certificate in the browser versus that on the server, and add a permanent exception to the browser to trust this certificate.
 
-1.  Change to the location where we'll store the certificate files and create server's certificate with key:
+1.  Change to the location where we'll store the certificate files and create the server's certificate with key:
 
     ```
     cd /etc/ssl
@@ -257,7 +257,7 @@ server{
 
     [![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
 
-7.  Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
+7.  Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file. Nginx will redirect to HTTPS and, as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
 
     [![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
 
