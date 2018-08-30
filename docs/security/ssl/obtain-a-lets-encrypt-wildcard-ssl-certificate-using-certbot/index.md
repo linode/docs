@@ -2,14 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows how to obtain a Lets Encrypt Wildcard SSL Certificate using Certbot tool'
+description: 'This guide shows how to obtain a Lets Encrypt Wildcard SSL Certificate using Certbot tool on CentOS 7 and Ubuntu 18.04'
 keywords: ['Wildcard SSL','Lets Encrypt','Certbot']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-07-30
 modified: 2018-07-30
 modified_by:
   name: Linode
-title: "How to Obtain a Let's Encrypt Wildcard SSL Certificate using Certbot"
+title: "How to Obtain a Let's Encrypt Wildcard SSL Certificate using Certbot on CentOS 7 and Ubuntu 18.04"
 contributor:
   name: Gopal Raha
   link: https://github.com/gopalraha
@@ -38,11 +38,11 @@ contributor:
 
 5.  Update your server's software packages:
 
-    **CentOS**
+    **CentOS 7**
 
           sudo yum update && sudo yum upgrade
 
-    **Ubuntu**
+    **Ubuntu 18.04**
 
           sudo apt update && sudo apt upgrade
 
@@ -56,23 +56,23 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Install Certbot
 
-1.  Generally, Certbot packages are available for installation from the software repository. Hence you will install EPEL (Extra Packages for Enterprise Linux) repository for CentOS or Official Certbot PPA (Personal Package Archive) for Ubuntu to install the Certbot packages directly from the software repository:
+1.  Generally, Certbot packages are available for installation from the software repository. Hence you will install EPEL (Extra Packages for Enterprise Linux) repository for CentOS 7 or Official Certbot PPA (Personal Package Archive) for Ubuntu 18.04 to install the Certbot packages directly from the software repository:
 
-    **CentOS**
+    **CentOS 7**
 
         sudo yum install epel-release
 
-    **Ubuntu**
+    **Ubuntu 18.04**
 
         sudo add-apt-repository ppa:certbot/certbot
 
-2.  Now, you will install the Certbot (the Let's Encrypt Client) on your server:
+1.  Now, you will install the Certbot (the Let's Encrypt Client) on your server:
 
-    **CentOS**
+    **CentOS 7**
 
         sudo yum install certbot
 
-    **Ubuntu**
+    **Ubuntu 18.04**
 
         sudo apt install certbot
 
@@ -80,22 +80,22 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  The Certbot DNS Linode plugin is a Python application. You need python-pip in order to install Python packages from official Python’s package repository ([PyPi](https://pypi.org/)):
 
-    **CentOS**
+    **CentOS 7**
 
         sudo yum install python2-pip
 
-    **Ubuntu**
+    **Ubuntu 18.04**
 
         sudo apt install python3-pip
 
-2.  Now, you have the ability to install python packages using python-pip. The Certbot DNS Linode Plugin will be installed globally. So, that Certbot will get access to use Linode DNS using its API:
+1.  Now, you have the ability to install python packages using python-pip. The Certbot DNS Linode Plugin will be installed globally. So, that Certbot will get access to use Linode DNS using its API:
 
-    **CentOS**
+    **CentOS 7**
 
         sudo pip install --upgrade pip
         sudo pip install certbot-dns-linode
 
-    **Ubuntu**
+    **Ubuntu 18.04**
 
         sudo pip3 install certbot-dns-linode
 
@@ -103,11 +103,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  The Linode API access token is required to work with Certbot DNS Linode plugin package. The file `linode.ini` contains Linode API access token. Now, you will create a file `linode.ini` using your favorite text editor into your home directory:
 
-    **CentOS**
+    **CentOS 7**
 
         vi ~/linode.ini
 
-    **Ubuntu**
+    **Ubuntu 18.04**
 
         nano ~/linode.ini
 
@@ -121,7 +121,7 @@ dns_linode_key = t8vyC14nIXnkSqGMpwZX2NjP8VMwW8BBsXr39hqAoL7TrtDODfkSBMyXrdQ9d5n
 
   Save and close the file when you are finished.
 
-2.  Linode API access token is necessary for API authentication. You should provide correct secure permission to `linode.ini` file. When you will provide secure permission to it then this enables you to hide a warning shown by Certbot *Unsafe permissions on credentials configuration file* during the process of obtaining wildcard certificates:
+1.  Linode API access token is necessary for API authentication. You should provide correct secure permission to `linode.ini` file. When you will provide secure permission to it then this enables you to hide a warning shown by Certbot *Unsafe permissions on credentials configuration file* during the process of obtaining wildcard certificates:
 
         chmod 600 ~/linode.ini
 
@@ -212,14 +212,14 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 {{< /output >}}
 
-2.  In addition, manually add Let's Encrypt Wildcard SSL certificate to Apache web server or Nginx web server:
+1.  In addition, manually add Let's Encrypt Wildcard SSL certificate to Apache web server or Nginx web server:
 
-    **CentOS**
+    **CentOS 7**
 
    * Apache web server: you can follow [Configure Apache to Use the SSL Certificate](/docs/security/ssl/ssl-apache2-centos/#configure-apache-to-use-the-ssl-certificate) guide.
    * Nginx web server: you can follow [Configuring Nginx to Use the SSL Certificate](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-the-http-block) guide.
 
-     **Ubuntu**
+     **Ubuntu 18.04**
 
    * Apache web server: you can follow [Configure Apache to Use the SSL Certificate](/docs/security/ssl/ssl-apache2-debian-ubuntu/#configure-apache-to-use-the-ssl-certificate) guide.
    * Nginx web server: you can follow [Configuring Nginx to Use the SSL Certificate](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/#configure-the-http-block) guide.
@@ -248,7 +248,7 @@ This command requires time (**960 seconds** or **16 minutes**) for DNS changes t
    * `renew`: It will attempt to renew all the Let's Encrypt Wildcard SSL certificates that you have previously obtained.
    * `--dry-run`: Perform a test run of the Certbot to obtain test certificates but not saving them to disk.
 
-2.  Schedule automatic certificate renewal using `crontab`. This task will enable certificate renewal at a scheduled time:
+1.  Schedule automatic certificate renewal using `crontab`. This task will enable certificate renewal at a scheduled time:
 
           sudo crontab -e
 
