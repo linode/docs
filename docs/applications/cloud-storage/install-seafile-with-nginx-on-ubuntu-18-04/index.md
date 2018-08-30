@@ -16,7 +16,7 @@ external_resources:
 
 Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with NGINX or Apache to enable connections over HTTPS.
 
-Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with NGINX serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode/) service with this setup.
+Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Professional edition is free for up to 3 users, this guide will use Seafile Community Edition with NGINX serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode/) service with this setup.
 
 ## Prepare Ubuntu
 
@@ -163,28 +163,19 @@ server{
     ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH !RC4";
     ssl_prefer_server_ciphers   on;
 
-    fastcgi_param   HTTPS               on;
-    fastcgi_param   HTTP_SCHEME         https;
-
   location / {
-        fastcgi_pass    127.0.0.1:8000;
-        fastcgi_param   SCRIPT_FILENAME     $document_root$fastcgi_script_name;
-        fastcgi_param   PATH_INFO           $fastcgi_script_name;
+    proxy_pass         http://127.0.0.1:8000;
+    proxy_set_header   Host $host;
+    proxy_set_header   X-Real-IP $remote_addr;
+    proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header   X-Forwarded-Host $server_name;
+    proxy_read_timeout  1200s;
 
-        fastcgi_param    SERVER_PROTOCOL        $server_protocol;
-        fastcgi_param   QUERY_STRING        $query_string;
-        fastcgi_param   REQUEST_METHOD      $request_method;
-        fastcgi_param   CONTENT_TYPE        $content_type;
-        fastcgi_param   CONTENT_LENGTH      $content_length;
-        fastcgi_param    SERVER_ADDR         $server_addr;
-        fastcgi_param    SERVER_PORT         $server_port;
-        fastcgi_param    SERVER_NAME         $server_name;
-        fastcgi_param   REMOTE_ADDR         $remote_addr;
+    # used for view/edit office file via Office Online Server
+    client_max_body_size 0;
 
-        access_log      /var/log/nginx/seahub.access.log;
-        error_log       /var/log/nginx/seahub.error.log;
-        fastcgi_read_timeout 36000;
-        client_max_body_size 0;
+    access_log      /var/log/nginx/seahub.access.log;
+    error_log       /var/log/nginx/seahub.error.log;
     }
 
     location /seafhttp {
@@ -244,7 +235,7 @@ server{
 4.  Install dependency packages for Seafile:
 
     ```
-    sudo apt install python2.7 libpython2.7 python-setuptools python-imaging python-ldap python-mysqldb python-memcache python-urllib3
+    sudo apt install python2.7 libpython2.7 python-setuptools python-pil python-ldap python-mysqldb python-memcache python-urllib3
     ```
 
 5.  Run the installation script:
@@ -253,22 +244,22 @@ server{
     cd seafile-server-* && sudo ./setup-seafile-mysql.sh
     ```
 
-You'll be prompted to answer several questions and choose settings during the installation process. For those that recommend a default, use that.
+    You'll be prompted to answer several questions and choose settings during the installation process. Answer the questions with the default value when provided with one.
 
 6.  Start the server.
 
     ```
-    sudo ./seafile.sh start
-    sudo ./seahub.sh start-fastcgi
+    ./seafile.sh start
+    ./seahub.sh start
     ```
 
-The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
+    The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
 
-[![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
+    [![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
 
-7. Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
+7.  Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
 
-[![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
+    [![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
 
 ## Automatically Start Seafile on Sever Bootup
 
