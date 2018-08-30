@@ -163,7 +163,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
 
     The `Directory` block inside the `Virtual Host` block should point to the directory where you plan to install Magento. For simplicity, we will be installing it in our web root, but if you want to put it elsewhere (e.g., a subdirectory of your web root), modify this setting.
 
-    It's important to note the value of `AllowOverride` as this affects which settings in each directory's `.htaccess` file will apply and which will be ignored. If you're not sure if the `All` option is optimal for your site, refer to the [Apache documentation](http://httpd.apache.org/docs/current/mod/core.html#allowoverride) for more information on this setting.
+    It's important to note the value of `AllowOverride` as this affects which settings in each directory's `.htaccess` file will be applied and which will be ignored. If you're not sure if the `All` option is optimal for your site, refer to the [Apache documentation](http://httpd.apache.org/docs/current/mod/core.html#allowoverride) for more information on this setting.
 
 4.  If you haven't already, enable your site:
 
@@ -187,7 +187,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
 
 ## Create a MySQL Database and User
 
-If you previously installed a LAMP stack using our guide, you should already have set up MySQL root login credentials. If not, you'll need to go back and do so before proceeding.
+If you previously installed a LAMP stack using this or our other guides you should already have set up MySQL root login credentials. If not, you'll need to go back and do so before proceeding.
 
 1.  Log into the MySQL shell as the root user, entering your password when prompted:
 
