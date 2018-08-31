@@ -103,7 +103,7 @@ Cron will email the executing user by default with any output or errors that wou
 
 For example, the full line would be:
 
-    @hourly /opt/bin/job >/dev/null 2>&1
+    @hourly /opt/bin/job >/dev/null
 
 That will only ignore messages sent to `stdout`. If your script generates an error, Cron will still send it to your email.
 
