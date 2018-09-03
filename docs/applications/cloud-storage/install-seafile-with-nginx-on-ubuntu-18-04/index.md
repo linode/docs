@@ -24,178 +24,213 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1.  Update the system:
+1. This guide assumes you have a basic server setup. Before moving forward, check to see that you have completed the objectives outlined in the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides. If not, it should be done before proceeding.
+
+2.  Update the system:
 
 ```
-apt update && apt upgrade -y
+sudo apt update && apt upgrade -y
 ```
 
-2.  Create a standard user account with root privileges. As an example, we'll call the user *sfadmin*:
+## Install and Configure MariaDB 10.0
+
+Seafile stores synced data in MySQL server. MariaDB 10 will be used in this installation, but other MySQL variants and versions should work. If you have a variant already installed, check the [Seafile Manual](https://manual.seafile.com/) and confirm it can be used with Seafile.
+
+1. Install required packages.
 
 ```
-adduser sfadmin
-adduser sfadmin sudo
+sudo apt install software-properties-common -y
 ```
 
-3.  Log out of your Linode's root user account and back in as *sfadmin*:
+2. Fetch the MariaDB repository GPG key.
 
 ```
-exit
-ssh sfadmin@<your_linode's_ip>
+sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
 ```
 
-4.  You should now be logged into your Linode as *sfadmin*. Use our [Securing Your Server](/docs/security/securing-your-server/#harden-ssh-access) guide to harden SSH access.
-
-5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/). Set the allow rules for SSH and HTTP(S) access with:
+3. Add the MariaDB Server repository.
 
 ```
-sudo ufw allow ssh
-sudo ufw allow http
-sudo ufw allow https
-sudo ufw enable
+sudo add-apt-repository 'deb [arch=amd64] http://mirror.zol.co.zw/mariadb/repo/10.3/ubuntu bionic main'
 ```
 
-Then check the status of your rules and list them numerically:
+4. Install MariaDB Server.
+
+You will be prompted several times to set a password for the MySQL root user during installation. Leave the password input blank and press `Enter` to skip this step, as it will be addressed in the next step.
 
 ```
-sudo ufw status numbered
+apt install mariadb-server mariadb-client -y
 ```
 
-The output should be:
-
-{{< output >}}
-
-        Status: active
-
-        To                         Action      From
-        --                         ------      ----
-        [ 1] 22                         ALLOW IN    Anywhere
-        [ 2] 80                         ALLOW IN    Anywhere
-        [ 3] 443                        ALLOW IN    Anywhere
-        [ 4] 22 (v6)                    ALLOW IN    Anywhere (v6)
-        [ 5] 80 (v6)                    ALLOW IN    Anywhere (v6)
-        [ 6] 443 (v6)                   ALLOW IN    Anywhere (v6)
-
-{{< /output >}}
-
-    {{< note >}}
-If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can delete it. For example, you can delete the rule to allow SSH over IPv6 with `sudo ufw delete 4`.
-{{< /note >}}
-
-6.  Set the Linode's hostname. We'll call it *seafile* as an example:
-
-```
-sudo hostnamectl set-hostname seafile
-```
-
-7. Add the new hostname to `/etc/hosts`. The second line in the file should look like this if you selected "seafile" as the hostname.
-
-{{< file "/etc/hosts"  conf >}}
-
-127.0.1.1    members.linode.com     seafile
-
-{{< /file >}}
-
-
-8.  On first boot, your Linode's timezone will be set to UTC. Changing this is optional, but if you wish, use:
-
-```
-sudo dpkg-reconfigure tzdata
-```
-
-## Install and Configure MySQL
-
-1.  During Installation, you will be asked to assign a password for the root mysql user. Be sure to install the package `mysql-server-5.7`, not `mysql-server`. This is because an upstream issue causes problems starting the MySQL service if you install by using the `mysql-server` package.
-
-```
-sudo apt install mysql-server-5.7
-```
-
-2.  Run the *mysql_secure_installation* script:
+5. Run the *mysql_secure_installation* script. Set a root password for the MySQL root user and answer `Y` to all following questions.
 
 ```
 sudo mysql_secure_installation
+
+Set root password? [Y/n] Y
+Remove anonymous users? [Y/n] Y
+Disallow root login remotely? [Y/n] Y
+Remove test database and access to it? [Y/n] Y
+Reload privilege tables now? [Y/n] Y
 ```
 
-    For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04/)
+## Install and Configure NGINX With Letsencrypt
 
-## Create a TLS Certificate for use with NGINX
+The configuration setup below works in tandem with Letsencrypt to provide SSL protection to your Seafile installation.
 
-If you don't already have an SSL/TLS certificate, you can create one. This certificate will be self-signed, and will cause web browsers to protest about a non-private connection. You should verify the SHA256 fingerprint of the certificate in the browser versus that on the server, and add a permanent exception to the browser to trust this certificate.
-
-1.  Change to the location where we'll store the certificate files and create server's certificate with key:
+1.  Install NGINX from Ubuntu's repository
 
 ```
-cd /etc/ssl
-sudo openssl genrsa -out privkey.pem 4096
-sudo openssl req -new -x509 -key privkey.pem -out cacert.pem
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
 ```
 
-## Install and Configure NGINX
+2. Install LetsEncrypt
 
-1.  Install NGINX from Ubuntu's repository:
+Press `Enter` to accept the prompt in the first command.
 
 ```
-sudo apt install nginx
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt install python-certbot-nginx -y
 ```
 
-2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with NGINX](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/).
+3. Issue a new SSL certificate to you seafile site. Supply your own input in the **bolded** options inside the command below.
 
-    {{< file "/etc/nginx/sites-available/seafile.conf" nginx >}}
-server{
+Select your Seafile site in the options given to issue the certificate.
+
+```
+certbot --nginx --rsa-key-size 4096 --agree-tos --no-eff-email --email **your-email-address**
+```
+
+4. Create a config file for Certbot at `/etc/nginx/snippets/certbot.conf`
+
+{{< file "/etc/nginx/snippets/certbot.conf" conf >}}
+location /.well-known {
+    alias /var/www/html/.well-known;
+}
+{{< /file >}}
+
+5.  Create the site configuration file. The only lines you need to change below are `server_name`, `ssl_certificate`, and `ssl_certificate_key`. For more HTTPS configuration options, see our guide on [TLS Best Practices with NGINX](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/).
+
+{{< file "/etc/nginx/sites-available/seafile.conf" conf >}}
+
+server {
     listen 80;
-    server_name example.com;
+    server_name seafile.com;
     rewrite ^ https://$http_host$request_uri? permanent;
     proxy_set_header X-Forwarded-For $remote_addr;
-    }
- server {
+    server_tokens off;
+}
+
+server {
     listen 443 ssl http2;
+    server_name seafile.com;
+
     ssl on;
-    ssl_certificate /etc/ssl/cacert.pem;
-    ssl_certificate_key /etc/ssl/privkey.pem;
-    server_name example.com;
+    ssl_certificate /etc/letsencrypt/keys/seafile/cert.pem;
+    ssl_certificate_key /etc/letsencrypt/keys/privkey.pem;
 
+    # secure settings (A+ at SSL Labs ssltest at time of writing)
+    # see https://wiki.mozilla.org/Security/Server_Side_TLS#Nginx
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    add_header   Strict-Transport-Security "max-age=31536000; includeSubdomains";
-    add_header   X-Content-Type-Options nosniff;
-    add_header   X-Frame-Options DENY;
-    ssl_session_cache shared:SSL:10m;
-    ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH !RC4";
-    ssl_prefer_server_ciphers   on;
+    ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-CAMELLIA256-SHA:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-SEED-SHA:DHE-RSA-CAMELLIA128-SHA:HIGH:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS';
+    ssl_prefer_server_ciphers on;
 
-  location / {
-    proxy_pass         http://127.0.0.1:8000;
-    proxy_set_header   Host $host;
-    proxy_set_header   X-Real-IP $remote_addr;
-    proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header   X-Forwarded-Host $server_name;
-    proxy_read_timeout  1200s;
+    proxy_set_header X-Forwarded-For $remote_addr;
 
-    # used for view/edit office file via Office Online Server
-    client_max_body_size 0;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+    server_tokens off;
 
-    access_log      /var/log/nginx/seahub.access.log;
-    error_log       /var/log/nginx/seahub.error.log;
+    location / {
+        proxy_pass         http://127.0.0.1:8000;
+        proxy_set_header   Host $host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Host $server_name;
+        proxy_set_header   X-Forwarded-Proto https;
+
+        access_log      /var/log/nginx/seahub.access.log;
+        error_log       /var/log/nginx/seahub.error.log;
+
+        proxy_read_timeout  1200s;
+
+        client_max_body_size 0;
     }
 
     location /seafhttp {
-        rewrite ^/seafhttp(.*)$ $1 break;
+        rewrite ^/seafhttp(.\*)$ $1 break;
         proxy_pass http://127.0.0.1:8082;
         client_max_body_size 0;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+
         proxy_connect_timeout  36000s;
         proxy_read_timeout  36000s;
         proxy_send_timeout  36000s;
+
         send_timeout  36000s;
-        proxy_request_buffering off;
     }
 
     location /media {
-        root /home/sfadmin/sfroot/seafile-server-latest/seahub;
+        root /home/user/haiwen/seafile-server-latest/seahub;
     }
-    }
+
+    include snippets/certbot.conf;
+}
 
 {{< /file >}}
 
+{{< note >}}
+If you plan on uploading large fles (greater or equal to 4GB), you may want to turn off the Nginx buffer feature, as it has issues handling large files with Seafile. Add the following to the *nginx.conf* file in the `/seafhttp` location section.
+
+  {{< file "/etc/nginx/sites-available/seafile.conf" conf >}}
+  ...
+
+  location /seafhttp {
+        ... ...
+        proxy_request_buffering off;
+  }
+
+  ...
+  {{< /file >}}
+
+{{< /note >}}
+
+6. Modify the `ccnet.conf` file.
+
+Change the value of **SERVICE_URL** to your seafile web address.
+
+{{< file "/opt/installed/conf/ccnet.conf" conf >}}
+[General]
+USER_NAME = seafile-server
+ID = 42d62cf1269308d4a39acfa6733936e5fac71e62
+NAME = seafile-server
+SERVICE_URL = https://your-seafile-server.com
+
+. . .
+{{< /file >}}
+
+7. Modify the `seahub_settings.py` file.
+
+Add the **FILE_SERVER_ROOT** line at the end of the file. Replace the value with your personal seafile address.
+
+{{< file "" >}}
+# -*- coding: utf-8 -*-
+SECRET_KEY = "akcc%gmq8m^_h_-gmbq+ebm20#s_7o-c3s476illvxr2ber4lj"
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'seahub-db',
+        'USER': 'seafile',
+        'PASSWORD': 'seafile',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
+    }
+}
+
+FILE_SERVER_ROOT = 'https://your-seafile-address.com/seafhttp'
+{{< /file >}}
 
 3.  Disable the default site configuration and enable the one you just created:
 
@@ -213,50 +248,55 @@ sudo systemctl restart nginx
 
 ## Configure and Install Seafile
 
-1.  The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example `haiwen` directory found in the Seafile manual, we'll create a directory called `sfroot` in the `sfadmin` home folder.
+The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example `haiwen` directory found in the Seafile manual, we'll install everything in the `opt` directory.
+
+1. Download the Seafile CE 64 bit Linux server file. Version *6.2.5* is the latest as of this guide's publication. Find the latest version at https://www.seafile.com/en/download/ and replace the version below if needed.
 
 ```
-mkdir ~/sfroot && cd ~/sfroot
-```
-
-2.  Download the Seafile CE 64 bit Linux server. You'll need to get the exact link from [seafile.com](https://www.seafile.com/en/download/). Once you have the URL, use `wget` to download it to *~/sfadmin/sfroot*.
-
-```
-wget <link>
+wget --directory-prefix=/opt https://download.seadrive.org/seafile-server_6.2.5_x86-64.tar.gz
 ```
 
 3.  Extract the tarball and move it when finished:
 
 ```
 tar -xzvf seafile-server*.tar.gz
-mkdir installed && mv seafile-server*.tar.gz installed
+mkdir installed && mv seafile-server-6.2.5 installed
 ```
 
 4.  Install dependency packages for Seafile:
 
 ```
-sudo apt install python2.7 libpython2.7 python-setuptools python-imaging python-ldap python-mysqldb python-memcache python-urllib3
+sudo apt install python2.7 libpython2.7 python-setuptools python-pil python-ldap python-urllib3 ffmpeg python-pip python-mysqldb python-memcache python-requests -y
 ```
 
 5.  Run the installation script:
 
 ```
-cd seafile-server-* && ./setup-seafile-mysql.sh
+cd /opt/installed/seafile-server-6.2.5
+./setup-seafile-mysql.sh
 ```
 
-You'll be prompted to answer several questions and choose settings during the installation process. For those that recommend a default, use that.
+In the first prompt, choose `1` to have the script build the databases for you. You'll be prompted to answer several other questions and choose settings during the installation process. For those that recommend a default, use that. Otherwise, provide any inputs the script may ask for.
 
-6.  Start the server.
+6. If you have a firewall in place, port 8082 and 8000 must be opened. The Iptables method is shown below.
+
+```
+iptables -A INPUT -p tcp -i eth0 -m multiport --dports 8000,8082 -j ACCEPT
+iptables-save
+```
+
+6.  Start the Seafile and Seahub servers.
 
 ```
 ./seafile.sh start
+./seahub.sh start
 ```
 
 The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
 
 [![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
 
-7. Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
+7. Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file.
 
 [![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
 
