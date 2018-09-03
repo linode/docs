@@ -364,3 +364,7 @@ sudo systemctl status seahub
 ## Updating Seafile
 
 There are various ways to update Seafile depending on if you are upgrading from one milestone to another (version 5 to 6), or upgrading between point releases (5.1.0 to 5.1.1). See the [Seafile Manual](https://manual.seafile.com/deploy/upgrade.html) for upgrade instructions that best suit your needs.
+
+# Where To Go From here
+
+Upon installation of Seafile, studying the [Seafile Manual](https://manual.seafile.com/) for additional improvements available for your specific setup is the best way to improve your installation. For those taking advantage of SSL encryption, generating a DH Param key will immediately improve the security of your site, and can be done by following the instructions in the [Seafile Manual](https://manual.seafile.com/deploy/https_with_nginx.html) starting at the *Generate DH Params* section.
