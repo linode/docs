@@ -5,7 +5,7 @@ author:
 description: 'Seafile is an open-source cross-platform file hosting tool with server applications compatible with Linux, Windows, and OS X.'
 keywords: ["Seafile", " nginx", " Ubuntu 18.04", " file server", " media", " sharing"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
+modified: 2018-08-28
 modified_by:
   name: Andrew Lescher
 published: 2017-05-23
@@ -16,7 +16,7 @@ external_resources:
 
 Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with NGINX or Apache to enable connections over HTTPS.
 
-Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with NGINX serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode/) service with this setup.
+Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Professional edition is free for up to 3 users, this guide will use Seafile Community Edition with NGINX serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode/) service with this setup.
 
 ## Prepare Ubuntu
 
@@ -28,12 +28,19 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 2.  Update the system:
 
+<<<<<<< HEAD
 ```
 sudo apt update && apt upgrade -y
 ```
+=======
+    ```
+    apt update && apt upgrade
+    ```
+>>>>>>> 5a7dd868745c04e7353d0a8a79f87f1458e52108
 
 ## Install and Configure MariaDB 10.0
 
+<<<<<<< HEAD
 Seafile stores synced data in MySQL server. MariaDB 10 will be used in this installation, but other MySQL variants and versions should work. If you have a variant already installed, check the [Seafile Manual](https://manual.seafile.com/) and confirm it can be used with Seafile.
 
 1. Install required packages.
@@ -41,9 +48,23 @@ Seafile stores synced data in MySQL server. MariaDB 10 will be used in this inst
 ```
 sudo apt install software-properties-common -y
 ```
+=======
+    ```
+    adduser sfadmin
+    adduser sfadmin sudo
+    ```
+
+3.  Log out of your Linode's root user account and log back in as *sfadmin*:
+
+    ```
+    exit
+    ssh sfadmin@<your_linode's_ip>
+    ```
+>>>>>>> 5a7dd868745c04e7353d0a8a79f87f1458e52108
 
 2. Fetch the MariaDB repository GPG key.
 
+<<<<<<< HEAD
 ```
 sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
 ```
@@ -66,6 +87,51 @@ apt install mariadb-server mariadb-client -y
 
 ```
 sudo mysql_secure_installation
+=======
+    ```
+    sudo ufw allow ssh
+    sudo ufw allow http
+    sudo ufw allow https
+    sudo ufw enable
+    ```
+
+    Then check the status of your rules and list them numerically:
+
+    ```
+    sudo ufw status numbered
+    ```
+
+    The output should be:
+
+    {{< output >}}
+
+Status: active
+
+To                         Action      From
+--                         ------      ----
+[ 1] 22                         ALLOW IN    Anywhere
+[ 2] 80                         ALLOW IN    Anywhere
+[ 3] 443                        ALLOW IN    Anywhere
+[ 4] 22 (v6)                    ALLOW IN    Anywhere (v6)
+[ 5] 80 (v6)                    ALLOW IN    Anywhere (v6)
+[ 6] 443 (v6)                   ALLOW IN    Anywhere (v6)
+
+{{< /output >}}
+
+    {{< note >}}
+If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can delete it. For example, you can delete the rule to allow SSH over IPv6 with `sudo ufw delete 4`.
+{{< /note >}}
+
+6.  Set the Linode's hostname. We'll call it *seafile* as an example:
+
+    ```
+    sudo hostnamectl set-hostname seafile
+    ```
+
+7. Add the new hostname to `/etc/hosts`. The second line in the file should look like this if you selected "seafile" as the hostname:
+
+    {{< file "/etc/hosts"  conf >}}
+>>>>>>> 5a7dd868745c04e7353d0a8a79f87f1458e52108
 
 Set root password? [Y/n] Y
 Remove anonymous users? [Y/n] Y
@@ -80,6 +146,7 @@ The configuration setup below works in tandem with Letsencrypt to provide SSL pr
 
 1.  Install NGINX from Ubuntu's repository
 
+<<<<<<< HEAD
 ```
 sudo apt install nginx -y
 sudo systemctl start nginx
@@ -87,21 +154,52 @@ sudo systemctl enable nginx
 ```
 
 2. Install LetsEncrypt
+=======
+    ```
+    sudo dpkg-reconfigure tzdata
+    ```
+
+## Install and Configure MySQL
+
+1.  During Installation, you will be asked to assign a password for the root MySQL user. Be sure to install the package `mysql-server-5.7`, not `mysql-server`. This is because an upstream issue causes problems starting the MySQL service if you install by using the `mysql-server` package.
+
+    ```
+    sudo apt install mysql-server-5.7
+    ```
+>>>>>>> 5a7dd868745c04e7353d0a8a79f87f1458e52108
 
 Press `Enter` to accept the prompt in the first command.
 
+<<<<<<< HEAD
 ```
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt install python-certbot-nginx -y
 ```
+=======
+    ```
+    sudo mysql_secure_installation
+    ```
+>>>>>>> 5a7dd868745c04e7353d0a8a79f87f1458e52108
 
 3. Issue a new SSL certificate to you seafile site. Supply your own input in the **bolded** options inside the command below.
 
+<<<<<<< HEAD
 Select your Seafile site in the options given to issue the certificate.
 
 ```
 certbot --nginx --rsa-key-size 4096 --agree-tos --no-eff-email --email **your-email-address**
 ```
+=======
+If you don't already have an SSL/TLS certificate, you can create one. This certificate will be self-signed, and will cause web browsers to protest about a non-private connection. You should verify the SHA256 fingerprint of the certificate in the browser versus that on the server, and add a permanent exception to the browser to trust this certificate.
+
+1.  Change to the location where we'll store the certificate files and create the server's certificate with key:
+
+    ```
+    cd /etc/ssl
+    sudo openssl genrsa -out privkey.pem 4096
+    sudo openssl req -new -x509 -key privkey.pem -out cacert.pem
+    ```
+>>>>>>> 5a7dd868745c04e7353d0a8a79f87f1458e52108
 
 4. Create a config file for Certbot at `/etc/nginx/snippets/certbot.conf`
 
@@ -111,7 +209,13 @@ location /.well-known {
 }
 {{< /file >}}
 
+<<<<<<< HEAD
 5.  Create the site configuration file. The only lines you need to change below are `server_name`, `ssl_certificate`, and `ssl_certificate_key`. For more HTTPS configuration options, see our guide on [TLS Best Practices with NGINX](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/).
+=======
+    ```
+    sudo apt install nginx
+    ```
+>>>>>>> 5a7dd868745c04e7353d0a8a79f87f1458e52108
 
 {{< file "/etc/nginx/sites-available/seafile.conf" conf >}}
 
@@ -172,8 +276,14 @@ server {
     }
 
     location /media {
+<<<<<<< HEAD
         root /home/user/haiwen/seafile-server-latest/seahub;
     }
+=======
+        root /home/sfadmin/sfroot/seafile-server-latest/seahub;
+    }
+}
+>>>>>>> 5a7dd868745c04e7353d0a8a79f87f1458e52108
 
     include snippets/certbot.conf;
 }
@@ -181,7 +291,7 @@ server {
 {{< /file >}}
 
 {{< note >}}
-If you plan on uploading large fles (greater or equal to 4GB), you may want to turn off the Nginx buffer feature, as it has issues handling large files with Seafile. Add the following to the *nginx.conf* file in the `/seafhttp` location section.
+If you plan on uploading large files (greater or equal to 4GB), you may want to turn off the Nginx buffer feature, as it has issues handling large files with Seafile. Add the following to the *nginx.conf* file in the `/seafhttp` location section.
 
   {{< file "/etc/nginx/sites-available/seafile.conf" conf >}}
   ...
@@ -234,22 +344,23 @@ FILE_SERVER_ROOT = 'https://your-seafile-address.com/seafhttp'
 
 3.  Disable the default site configuration and enable the one you just created:
 
-```
-sudo rm /etc/nginx/sites-enabled/default
-sudo ln -s /etc/nginx/sites-available/seafile.conf /etc/nginx/sites-enabled/seafile.conf
-```
+    ```
+    sudo rm /etc/nginx/sites-enabled/default
+    sudo ln -s /etc/nginx/sites-available/seafile.conf /etc/nginx/sites-enabled/seafile.conf
+    ```
 
 4.  Run the NGINX configuration test and restart the web server. If the test fails, it will give you a brief description of what's wrong so you can troubleshoot the problem.
 
-```
-sudo nginx -t
-sudo systemctl restart nginx
-```
+    ```
+    sudo nginx -t
+    sudo systemctl restart nginx
+    ```
 
 ## Configure and Install Seafile
 
 The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example `haiwen` directory found in the Seafile manual, we'll install everything in the `opt` directory.
 
+<<<<<<< HEAD
 1. Download the Seafile CE 64 bit Linux server file. Version *6.2.5* is the latest as of this guide's publication. Find the latest version at https://www.seafile.com/en/download/ and replace the version below if needed.
 
 ```
@@ -284,21 +395,64 @@ In the first prompt, choose `1` to have the script build the databases for you. 
 iptables -A INPUT -p tcp -i eth0 -m multiport --dports 8000,8082 -j ACCEPT
 iptables-save
 ```
+=======
+    ```
+    mkdir ~/sfroot && cd ~/sfroot
+    ```
+
+2.  Download the Seafile CE 64 bit Linux server. You'll need to get the exact link from [seafile.com](https://www.seafile.com/en/download/). Once you have the URL, use `wget` to download it to *~/sfadmin/sfroot*.
+
+    ```
+    wget <link>
+    ```
+
+3.  Extract the tarball and move it when finished:
+
+    ```
+    tar -xzvf seafile-server*.tar.gz
+    mkdir installed && mv seafile-server*.tar.gz installed
+    ```
+
+4.  Install dependency packages for Seafile:
+
+    ```
+    sudo apt install python2.7 libpython2.7 python-setuptools python-pil python-ldap python-mysqldb python-memcache python-urllib3
+    ```
+
+5.  Run the installation script:
+
+    ```
+    cd seafile-server-* && sudo ./setup-seafile-mysql.sh
+    ```
+
+    You'll be prompted to answer several questions and choose settings during the installation process. Answer the questions with the default value when provided with one.
+>>>>>>> 5a7dd868745c04e7353d0a8a79f87f1458e52108
 
 6.  Start the Seafile and Seahub servers.
 
+<<<<<<< HEAD
 ```
 ./seafile.sh start
 ./seahub.sh start
 ```
+=======
+    ```
+    ./seafile.sh start
+    ./seahub.sh start
+    ```
+>>>>>>> 5a7dd868745c04e7353d0a8a79f87f1458e52108
 
-The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
+    The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
 
-[![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
+    [![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
 
+<<<<<<< HEAD
 7. Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file.
+=======
+7.  Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file. Nginx will redirect to HTTPS and, as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
+>>>>>>> 5a7dd868745c04e7353d0a8a79f87f1458e52108
 
-[![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
+    [![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
 
 ## Automatically Start Seafile on Sever Bootup
 
@@ -306,7 +460,7 @@ The `seafile.sh` and `seahub.sh` scripts don't automatically run if your Linode 
 
 1.  Create the systemd unit files:
 
-{{< file "/etc/systemd/system/seafile.service" >}}
+    {{< file "/etc/systemd/system/seafile.service" >}}
 
 [Unit]
 Description=Seafile Server
@@ -325,7 +479,7 @@ WantedBy=multi-user.target
 
 {{< /file >}}
 
-{{< file "/etc/systemd/system/seahub.service" >}}
+    {{< file "/etc/systemd/system/seahub.service" >}}
 
 [Unit]
 Description=Seafile Hub
@@ -346,17 +500,17 @@ WantedBy=multi-user.target
 
 2.  Then enable the services:
 
-```
-sudo systemctl enable seafile
-sudo systemctl enable seahub
-```
+    ```
+    sudo systemctl enable seafile
+    sudo systemctl enable seahub
+    ```
 
-You can verify they've started successfully with:
+    You can verify they've started successfully with:
 
-```
-sudo systemctl status seafile
-sudo systemctl status seahub
-```
+    ```
+    sudo systemctl status seafile
+    sudo systemctl status seahub
+    ```
 
 3.  Confirm the startup scripts are working by rebooting your Linode. After bootup, both the Seafile and Seahub services should be active when running the status commands in the previous step. You should also still be able to access Seafile with a web browser.
 
