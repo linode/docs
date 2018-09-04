@@ -54,6 +54,7 @@ autologin
 autologout
 automagically
 automattic
+automount
 autorelabel
 autorun
 autoscaling
@@ -576,6 +577,7 @@ jk
 jks
 jobd
 joomla
+journalctl
 journaled
 journaling
 jpg
@@ -619,10 +621,12 @@ kubernetes
 kubespray
 lambdabunker
 laravel
+launchd
 lbmethod
 lda
 ldap
 leiningen
+lenart
 letsencrypt
 lf
 li181
@@ -885,6 +889,7 @@ pagespeed
 pandoc
 param
 paramiko
+parallelization
 params
 paravirt
 paravirtualization
@@ -927,6 +932,7 @@ plone
 pluggable
 png
 pocketmine
+poetttering
 pop3
 pop3d
 pop3s
@@ -1132,6 +1138,7 @@ shortguides
 shortname
 shoutcast
 sidekiq
+sievers
 sintra
 sitename
 slackpkg
