@@ -84,13 +84,13 @@ We need to specify the `GOROOT` environment variable since we are installing Go 
 
 1.  Download and install Gogs:
 
-        go get -u github.com/gogits/gogs
+        go get -u github.com/gogs/gogs
 
     This may take a few minutes during which your console will appear unresponsive.
 
 2.  Build the Gogs binary:
 
-        cd $GOPATH/src/github.com/gogits/gogs
+        cd $GOPATH/src/github.com/gogs/gogs
         go build
 
 3.  It will produce a binary named `gogs` in the current directory. Execute the binary:
@@ -99,9 +99,9 @@ We need to specify the `GOROOT` environment variable since we are installing Go 
 
     It will start the web server and listen for HTTP connections on port 3000 while outputting something like this:
 
-        2015/10/09 15:41:41 [W] Custom config (/home/git/go/src/github.com/gogits/gogs/custom/conf/app.ini) not found, ignore this if you're running first time
-        2015/10/09 15:41:41 [T] Custom path: /home/git/go/src/github.com/gogits/gogs/custom
-        2015/10/09 15:41:41 [T] Log path: /home/git/go/src/github.com/gogits/gogs/log
+        2015/10/09 15:41:41 [W] Custom config (/home/git/go/src/github.com/gogs/gogs/custom/conf/app.ini) not found, ignore this if you're running first time
+        2015/10/09 15:41:41 [T] Custom path: /home/git/go/src/github.com/gogs/gogs/custom
+        2015/10/09 15:41:41 [T] Log path: /home/git/go/src/github.com/gogs/gogs/log
         2015/10/09 15:41:41 [I] Gogs: Go Git Service 0.6.16.1008 Beta
         2015/10/09 15:41:41 [I] Log Mode: Console(Trace)
         2015/10/09 15:41:41 [I] Cache Service Enabled
@@ -220,8 +220,8 @@ After=nginx.service
 Type=simple
 User=git
 Group=git
-WorkingDirectory=/home/git/go/src/github.com/gogits/gogs
-ExecStart=/home/git/go/src/github.com/gogits/gogs/gogs web
+WorkingDirectory=/home/git/go/src/github.com/gogs/gogs
+ExecStart=/home/git/go/src/github.com/gogs/gogs/gogs web
 Restart=always
 Environment=USER=git HOME=/home/git
 
@@ -250,7 +250,7 @@ WantedBy=multi-user.target
            Active: active (running) since Sat 2015-10-10 16:51:45 WIB; 34s ago
          Main PID: 818 (gogs)
            CGroup: /system.slice/gogs.service
-                   └─818 /home/git/go/src/github.com/gogits/gogs/gogs web
+                   └─818 /home/git/go/src/github.com/gogs/gogs/gogs web
 
         Oct 10 16:51:45 debian gogs[818]: 2015/10/10 16:51:45 [W] Custom config (/home/git/go/src/github.com/g... time
         Oct 10 16:51:45 debian gogs[818]: 2015/10/10 16:51:45 [T] Custom path: /home/git/go/src/github.com/gog...ustom
@@ -293,11 +293,11 @@ The Gogs site is still accessible over unsecured HTTP via `http://example.com:30
 1.  Login as user `git` and go to the Gogs installation directory:
 
         sudo su - git
-        cd $GOPATH/src/github.com/gogits/gogs
+        cd $GOPATH/src/github.com/gogs/gogs
 
 2.  Open the configuration file `custom/conf/app.ini`. Add a new configuration value `HTTP_ADDR` under the `[server]` section. The section should look like this:
 
-    {{< file "/home/git/go/src/github.com/gogits/gogs/custom/conf/app.ini" ini >}}
+    {{< file "/home/git/go/src/github.com/gogs/gogs/custom/conf/app.ini" ini >}}
 [server]
 DOMAIN = example.com
 HTTP_ADDR = 127.0.0.1
