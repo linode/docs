@@ -324,4 +324,4 @@ Thu Feb 16 12:17:52 EST 2018
 
 ## Next Steps
 
-Now that you have an up-to-date Linode, secure your server and your Linode Manager from unauthorized access. Read the [Securing Your Server](/docs/security/securing-your-server/) guide and the [Linode Manager Security Controls](/docs/security/linode-manager-security-controls/) guide to get you going.
+Now that you have an up-to-date Linode, secure your server and your Linode Manager from unauthorized access. Read the [Securing Your Server](/docs/security/securing-your-server/) guide and the [Linode Manager Security Controls](/docs/security/linode-manager-security-controls/) guide to get you going. Make sure you follow Linode system status and maintenance updates by visiting the [Linode Status page](https://status.linode.com/) and by [subscribing to Linode status updates](/docs/platform/linode-status-page/).
