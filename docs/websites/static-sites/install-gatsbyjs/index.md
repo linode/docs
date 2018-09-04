@@ -200,7 +200,7 @@ export default () => <div>Hello world and universe!</div>
 
 ### Version Control Your Gatsby Project
 
-In the workflow explored by this guide, Git and Github are used to:
+In the workflow explored by this guide, Git and GitHub are used to:
 
 -   Track changes you make during your site's development.
 -   Trigger the preview, test, and deployment functions offered by Netlify and Travis.
