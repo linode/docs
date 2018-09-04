@@ -626,7 +626,7 @@ lbmethod
 lda
 ldap
 leiningen
-lenart
+lennart
 letsencrypt
 lf
 li181
@@ -932,7 +932,7 @@ plone
 pluggable
 png
 pocketmine
-poetttering
+poettering
 pop3
 pop3d
 pop3s
