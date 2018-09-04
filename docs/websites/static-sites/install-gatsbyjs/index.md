@@ -403,7 +403,7 @@ sudo: false
     ![GitHub Travis Builds](github-travis-builds.png "GitHub Travis Builds")
 
     {{< note >}}
-Four rows for your Travis builds will appear, which is more than you may expect. This is because Travis runs your builds whenever your branch is updated, and whenever your pull request is updated, and [Travis considers these to be separate events](https://docs.travis-ci.com/user/pull-requests/#double-builds-on-pull-requests). 
+Four rows for your Travis builds will appear, which is more than you may expect. This is because Travis runs your builds whenever your branch is updated, and whenever your pull request is updated, and [Travis considers these to be separate events](https://docs.travis-ci.com/user/pull-requests/#double-builds-on-pull-requests).
 
 In addition, the rows prefixed by `Travis CI - ` are links to GitHub's preview of those builds, while rows prefixed with `continuous-integration/travis-ci/` are direct links to the builds on [travis-ci.com](https://travis-ci.com/).
 
@@ -416,7 +416,7 @@ For now, these builds will produce identical output. After the deployment functi
 
     Towards the end of your output, you should see the "Run your tests here" message from the test stub that you entered in your `package.json`. If you implement testing of your code with Jest or another library, the output from those tests will appear at this location in your build logs.
 
-    If any of the commands that Travis CI runs in the `script` step (or in any preceding steps, like `install`) returns with a [non-zero exit code](https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html), then [the build will fail](https://docs.travis-ci.com/user/customizing-the-build/#breaking-the-build), and you will not be able to merge your pull request on GitHub. 
+    If any of the commands that Travis CI runs in the `script` step (or in any preceding steps, like `install`) returns with a [non-zero exit code](https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html), then [the build will fail](https://docs.travis-ci.com/user/customizing-the-build/#breaking-the-build), and you will not be able to merge your pull request on GitHub.
 
 1.  For now, do not merge your pull request, even if the builds were successful.
 
@@ -462,7 +462,7 @@ The private key will also need to be encrypted, as the key file will live in you
 1.  Add the location of the `gatsby-deploy` file to your project's `.gitignore` file. **This will ensure that you do not accidentally commit the secret key to your central repository:**
 
     {{< file ".gitignore" git >}}
-# Other .gitignore instructions 
+# Other .gitignore instructions
 # [...]
 scripts/gatsby-deploy
 {{</ file >}}
@@ -631,7 +631,7 @@ git push -f production HEAD:refs/heads/master
 Remember that because these instructions are executed in an isolated virtual environment, the `git commit` that is run here does not affect the repository on your local computer or on GitHub.
 {{< /note >}}
 
-1.  You may recall that you previously updated your `.gitignore` file to exclude the `public` directory. To allow this directory to be commited in your build environment's repository (and therefore pushed to your Linode), you will need to override that rule at deploy time. 
+1.  You may recall that you previously updated your `.gitignore` file to exclude the `public` directory. To allow this directory to be committed in your build environment's repository (and therefore pushed to your Linode), you will need to override that rule at deploy time.
 
     From the root of your local Gatsby project, copy your `.gitignore` to a new `scripts/prodignore` file:
 
@@ -714,13 +714,13 @@ Skipping a deployment with the script provider because this branch is not permit
 
     This message appears because your `.travis.yml` restricts the deployment script to updates on the *master* branch.
 
-1.  If your Travis builds failed, review the build logs for the reason for the failure. 
+1.  If your Travis builds failed, review the build logs for the reason for the failure.
 
 1.  If the builds succeeded, [merge your pull request](https://help.github.com/articles/merging-a-pull-request/).
 
 1.  After merging the pull request, visit [travis-ci.com](https://travis-ci.com/) directly and view the `example-site` repository. A new Travis build corresponding to your `Merge pull request` commit will be in progress. When this build completes, a `Deploying application` message will appear at the end of the build logs. This message can be expanded to view the complete logs for the `deploy` step.
 
-1.  If your `deploy` step succeeeded, you can now visit your domain name in your browser. You should see the message from your Gatsby project's `index.js`.
+1.  If your `deploy` step succeeded, you can now visit your domain name in your browser. You should see the message from your Gatsby project's `index.js`.
 
 ## Troubleshooting
 
