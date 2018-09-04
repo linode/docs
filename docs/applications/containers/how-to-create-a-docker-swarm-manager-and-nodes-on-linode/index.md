@@ -67,7 +67,7 @@ In Step 1 of the previous section, The `docker swarm init` command outputs instr
 
 Where `TOKEN` is the long string of characters presented to you when you initialized the Swarm, and `PUBLIC_IP` is the public-facing IP address of your Swarm Manager Linode. If you don’t remember the token, run `join-token` on the manager to view the information from the `swarm init` command:
 
-    docker swarm join-token manager
+    docker swarm join-token worker
 
 1.  To join the node to the Swarm, run `docker swarm join` from the node. Change `TOKEN` to the token from Step 1 in the previous section, and `PUIBLIC_IP` to the manager's public IP:
 
