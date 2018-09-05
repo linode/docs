@@ -62,7 +62,7 @@ The above commands are good for managing a service in a single session, but many
 
     sudo systemctl enable nginx
 
-Enabling a service creates a symlink from the unit file's location, usually in `/lib/systemd/system/` or `/etc/systemd/system`, to wherever `systemd` looks for autostart files (usually `/etc/systemd/system/yourservice.target.wants`, where 'yourservice' is the name of the service). For more on targets, see [Working with systemd Targes](#working-with-systemd-targets).
+Enabling a service creates a symlink from the unit file's location, usually in `/lib/systemd/system/` or `/etc/systemd/system`, to wherever `systemd` looks for autostart files (usually `/etc/systemd/system/yourservice.target.wants`, where 'yourservice' is the name of the service). For more on targets, see [Working with systemd Targets](#working-with-systemd-targets).
 
 To disable the service from starting at boot, issue the `disable` command:
 
@@ -80,7 +80,7 @@ Additionally, you can provide a file path to the service unit file you wish to e
 
 However, this file needs to be accessible by `systemd` at startup. For example, this means files underneath `/home` or `/var` are not allowed, unless those directories are located on the root file system.
 
-### Checking a Service's Satus
+### Checking a Service's Status
 
 `systemctl` allows us to check on the status of individual services:
 
@@ -261,7 +261,7 @@ There are two ways to edit a unit file using `systemctl`.
 
         sudo systemctl edit ssh --full
 
-    This command opens a full copy of whatever unit file you chose to edit in a text editor. When the file is saved, `systemctl` will create a file at `/etc/systemd/system/yourservice.service`. This is useful if you need to make many changes to an exisiting unit file.
+    This command opens a full copy of whatever unit file you chose to edit in a text editor. When the file is saved, `systemctl` will create a file at `/etc/systemd/system/yourservice.service`. This is useful if you need to make many changes to an existing unit file.
 
 It should be made clear that in general any unit file in `/etc/systemd/system` will override the corresponding file in `/lib/systemd/system`.
 
@@ -351,7 +351,7 @@ This command is similar to `systemctl isolate rescue`, but will also issue a not
 
 ### Emergency Mode
 
-Emergency mode offers the user the most minimal environment possible to salvage a system in need of repair, and is useful if the system cannot even enter rescue mode. For a full explanation of emegency mode, refer to the [Redhat Customer Portal page](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-targets#sect-Managing_Services_with_systemd-Targets-Emergency). To enter emergency mode, enter the following:
+Emergency mode offers the user the most minimal environment possible to salvage a system in need of repair, and is useful if the system cannot even enter rescue mode. For a full explanation of emergency mode, refer to the [RedHat Customer Portal page](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-targets#sect-Managing_Services_with_systemd-Targets-Emergency). To enter emergency mode, enter the following:
 
     sudo systemctl emergency
 
