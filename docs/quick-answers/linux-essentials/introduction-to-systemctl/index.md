@@ -20,7 +20,7 @@ external_resources:
 
 ## What is systemctl?
 
-`Systemctl` is a controlling interface and inspection tool for the widely-adopted init system and service manager `systemd`. This guide will cover how to use `systemctl` to manage `systemd` services, where those services are defined, and how to create your own services.
+`systemctl` is a controlling interface and inspection tool for the widely-adopted init system and service manager `systemd`. This guide will cover how to use `systemctl` to manage `systemd` services, where those services are defined, and how to create your own services.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -28,7 +28,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Managing Services
 
-`Systemd` is tasked with initializing 'userland' components, or components that run after the Linux kernel has booted, as well as continuously maintaining those components throughout a system's lifecycle. These tasks are known as *units*, and each unit has a corresponding *unit file*. Units might concern mounting storage devices (.mount), configuring hardware (.device), sockets (.socket), or, as we'll be covering in this guide, managing services (.service).
+`systemd` is tasked with initializing 'userland' components, or components that run after the Linux kernel has booted, as well as continuously maintaining those components throughout a system's lifecycle. These tasks are known as *units*, and each unit has a corresponding *unit file*. Units might concern mounting storage devices (.mount), configuring hardware (.device), sockets (.socket), or, as we'll be covering in this guide, managing services (.service).
 
 ### Starting and Stopping a Service
 
@@ -305,7 +305,7 @@ After you issue these commands you should reload the `systemd` daemon so that it
 
 ## Working with systemd Targets
 
-Systemd targets are represented by *target units*. Target units end with the .target file extension and their only purpose is to group together other systemd units through a chain of dependencies. Like other init system's run levels, these targets help `systemd` determine which unit files are necessary to produce a certain system state.
+`systemd` targets are represented by *target units*. Target units end with the .target file extension and their only purpose is to group together other systemd units through a chain of dependencies. Like other init system's run levels, these targets help `systemd` determine which unit files are necessary to produce a certain system state.
 
 For instance, there is a `graphical.target` that denotes when the system's graphical session is ready. Units that are required to start in order to achieve this state have `WantedBy=` or `RequiredBy=` `graphical.target` in their configuration. Units that depend on `graphical.target` can include `Wants=`, `Requires=`, or `After=` in their configuration to make themselves available at the correct time.
 
