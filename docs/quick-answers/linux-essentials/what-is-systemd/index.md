@@ -17,11 +17,11 @@ external_resources:
 - '[systemd GitHub](https://github.com/systemd/systemd)'
 ---
 
-Systemd is a Linux initialization system and service manager that includes features like on-demand starting of daemons, mount and automount point maintenance, snapshot support, and processes tracking using Linux control groups. Systemd provides a logging daemon and other tools and utilities to help with common system administration tasks.
+systemd is a Linux initialization system and service manager that includes features like on-demand starting of daemons, mount and automount point maintenance, snapshot support, and processes tracking using Linux control groups. systemd provides a logging daemon and other tools and utilities to help with common system administration tasks.
 
 [Lennart Poettering](http://0pointer.de/blog/projects/systemd.html) and [Kay Sievers](https://en.wikipedia.org/wiki/Kay_Sievers) wrote systemd, inspired by macOS's [launchd](https://en.wikipedia.org/wiki/Launchd) and [Upstart](http://upstart.ubuntu.com/), with the goal of creating a modern and dynamic system. Notably, systemd provides aggressive parallelization capabilities and dependency-based service control logic, allowing for services to start in parallel and leading to a quicker boot time. These two aspects were present in Upstart, but improved upon by systemd.
 
-Systemd is the default init system for the major Linux distributions but is backwards compatible with SysV init scripts. SysVinit is an initialization system which predates systemd and uses a simplified approach to service startup. Systemd not only manages system initialization, but also provides alternatives for other well known utilities, like cron and syslog. Because systemd does several things within the Linux user space, many have criticized it for violating [the Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy), which emphasizes simplicity and modularity.
+systemd is the default init system for the major Linux distributions but is backwards compatible with SysV init scripts. SysVinit is an initialization system which predates systemd and uses a simplified approach to service startup. systemd not only manages system initialization, but also provides alternatives for other well known utilities, like cron and syslog. Because systemd does several things within the Linux user space, many have criticized it for violating [the Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy), which emphasizes simplicity and modularity.
 
 This guide provides an introduction to systemd by taking a closer look at systemd units. The [Mount Units](/docs/quick-answers/linux-essentials/what-is-systemd/#mount-units) section will analyze a unit file that is shipped by default with systemd on an Ubuntu 18.04 system, while the [Timer Units](/docs/quick-answers/linux-essentials/what-is-systemd/#timer-units) section will create a custom unit file on the same system.
 
@@ -33,7 +33,7 @@ All examples in this guide were created with a Linode running Ubuntu 18.04.
 
 To better understand what is meant by an initialization system, this section provides a high-level overview of the Linux boot process.
 
-Linux requires an initialization system during its boot and startup process. At the end of the [boot process](https://en.wikipedia.org/wiki/Linux_startup_process), the Linux kernel loads systemd and passes control over to it and the startup process begins. During this step, the kernel initializes the first [user space](https://en.wikipedia.org/wiki/User_space) process, the systemd init process with process ID 1, and then goes idle unless called again. Systemd prepares the [user space](https://en.wikipedia.org/wiki/User_space) and brings the Linux host into an operational state by starting all other processes on the system.
+Linux requires an initialization system during its boot and startup process. At the end of the [boot process](https://en.wikipedia.org/wiki/Linux_startup_process), the Linux kernel loads systemd and passes control over to it and the startup process begins. During this step, the kernel initializes the first [user space](https://en.wikipedia.org/wiki/User_space) process, the systemd init process with process ID 1, and then goes idle unless called again. systemd prepares the [user space](https://en.wikipedia.org/wiki/User_space) and brings the Linux host into an operational state by starting all other processes on the system.
 
 Below is a simplified overview of the entire Linux boot and startup process:
 
@@ -46,7 +46,7 @@ Below is a simplified overview of the entire Linux boot and startup process:
 
 ## systemd Units
 
-Systemd introduces the concept of *systemd units* and there are several types, such as a *service unit*, *mount unit*, *socket unit* and *slice unit*. Units are defined in unit configuration files, which include information about the unit type and its behavior.
+systemd introduces the concept of *systemd units* and there are several types, such as a *service unit*, *mount unit*, *socket unit* and *slice unit*. Units are defined in unit configuration files, which include information about the unit type and its behavior.
 
 Expand the note below for a comprehensive list of all available systemd unit types.
 
@@ -232,7 +232,7 @@ When creating unit files, you can verify the correctness of the file with the fo
 
     systemd-analyze verify /etc/systemd/system/my-db-backup.timer
 
-Systemd's `system-analyze` command provide several other useful analyze and debug options. View the [official documentation](https://www.freedesktop.org/software/systemd/man/systemd-analyze.html) for more options.
+systemd's `system-analyze` command provide several other useful analyze and debug options. View the [official documentation](https://www.freedesktop.org/software/systemd/man/systemd-analyze.html) for more options.
 
 When you enable the timer, systemd will hook the timer unit into the specified places and ensure it starts on boot. Enable the timer unit with following command:
 
@@ -244,10 +244,10 @@ When you start the timer unit, systemd will start it right away. To do this, iss
 
 ## systemd Tools
 
-Systemd makes common system administration tasks easier to manage with its `systemctl` and `journalctl` commands. `systemctl` can be used to gather detailed information about the overall state of your server and any individual unit type. It can stop and start the server and modify the system state. In the Timer Unit Files section `systemctl` is used to enable and start an individual timer unit. systemd can be used in a similar way for any unit.
+systemd makes common system administration tasks easier to manage with its `systemctl` and `journalctl` commands. `systemctl` can be used to gather detailed information about the overall state of your server and any individual unit type. It can stop and start the server and modify the system state. In the Timer Unit Files section `systemctl` is used to enable and start an individual timer unit. systemd can be used in a similar way for any unit.
 
 Read the "Introduction to systemctl" guide for a deeper dive into this systemd tool.
 
-Systemd's `journalctl` tool provides a centralized process and system logging tool. This command allows you to query the systemd journal, which creates and maintains indexed journals from logging information that is pooled from different areas within the system; areas like standard output and standard error of service units, log messages via syslog, and kernel log messages. In this way, system administrators can use a single tool to monitor and debug a server.
+systemd's `journalctl` tool provides a centralized process and system logging tool. This command allows you to query the systemd journal, which creates and maintains indexed journals from logging information that is pooled from different areas within the system; areas like standard output and standard error of service units, log messages via syslog, and kernel log messages. In this way, system administrators can use a single tool to monitor and debug a server.
 
 To learn some commonly used `journalctl` commands, view the "How to use journalctl" guide.
