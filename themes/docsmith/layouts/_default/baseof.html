@@ -44,6 +44,11 @@
              {{ partial "includes_head_dev" . }}
         {{ end }}
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.0"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.0/dist/instantsearch.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.0/dist/instantsearch-theme-algolia.min.css">
         <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
         <link rel="canonical" href="{{ .Permalink | safeURL }}">
         {{ range .AlternativeOutputFormats -}}
@@ -52,35 +57,35 @@
         <link rel="shortcut icon" href="/favicon.ico">
     </head>
     <body class="no-subnav">
-         {{ partial "search_modal" . }}
-         {{ if eq (getenv "HUGO_ENV") "prod" }}
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3XXZX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-        {{ end }}
-        <header>
-            {{ partial "nav" . }}
-            {{ if .IsHome }}
-                <div class="container">   
-                    {{ partial "subnav" . }}
-                </div>
-            {{ else }}
-                <div class="container sub-menu-wrap">   
-                    {{ partial "subnav" . }}
-                </div>
-            {{ end }}
-        </header>
-        {{block "main" .}}{{ end }}
-        <footer>
-            {{ partial "contribute_footer" . }}
-            {{ partial "footer" . }}
-        </footer>
-        {{ if (getenv "HUGO_ENV") }}
-            {{ partial "includes_body_end_prod" . }}
+      {{ partial "search_modal" . }}
+      {{ if eq (getenv "HUGO_ENV") "prod" }}
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3XXZX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+      {{ end }}
+      <header>
+        {{ partial "nav" . }}
+        {{ if .IsHome }}
+          <div class="container">   
+              {{ partial "subnav" . }}
+          </div>
         {{ else }}
-             {{ partial "includes_body_end_dev" . }}
+            <div class="container sub-menu-wrap">   
+                {{ partial "subnav" . }}
+            </div>
         {{ end }}
-        {{ partial "js" . }}
-        {{block "body-end" .}}{{ end }}
+      </header>
+      {{block "main" .}}{{ end }}
+      <footer>
+        {{ partial "contribute_footer" . }}
+        {{ partial "footer" . }}
+      </footer>
+      {{ if (getenv "HUGO_ENV") }}
+        {{ partial "includes_body_end_prod" . }}
+      {{ else }}
+        {{ partial "includes_body_end_dev" . }}
+      {{ end }}
+      {{ partial "js" . }}
+      {{block "body-end" .}}{{ end }}
     </body>
 </html>
