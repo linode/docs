@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-keywords: ['systemctl','systemd','services','service','unit','unit file','target']
+description: 'This guide will cover how to use `systemctl` to manage systemd services.'
+keywords: ['systemctl','systemd','service','unit file','target']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-31
 modified: 2018-08-31
@@ -20,7 +20,7 @@ external_resources:
 
 ## What is systemctl?
 
-`systemctl` is a controlling interface and inspection tool for the widely-adopted init system and service manager `systemd`. This guide will cover how to use `systemctl` to manage `systemd` services, where those services are defined, and how to create your own services.
+`systemctl` is a controlling interface and inspection tool for the widely-adopted init system and service manager systemd. This guide will cover how to use `systemctl` to manage systemd services, work with systemd Targets and extract meaningful information about your system's overall state.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -28,7 +28,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Managing Services
 
-`systemd` is tasked with initializing 'userland' components, or components that run after the Linux kernel has booted, as well as continuously maintaining those components throughout a system's lifecycle. These tasks are known as *units*, and each unit has a corresponding *unit file*. Units might concern mounting storage devices (.mount), configuring hardware (.device), sockets (.socket), or, as we'll be covering in this guide, managing services (.service).
+`systemd` initializes *user space* components that run after the Linux kernel has booted, as well as continuously maintaining those components throughout a system's lifecycle. These tasks are known as *units*, and each unit has a corresponding *unit file*. Units might concern mounting storage devices (.mount), configuring hardware (.device), sockets (.socket), or, as will be covered in this guide, managing services (.service).
 
 ### Starting and Stopping a Service
 
@@ -58,23 +58,23 @@ Finally, you can use the `reload-or-restart` command if you are unsure about whe
 
 ### Enabling a Service at Boot
 
-The above commands are good for managing a service in a single session, but many services are also required to start at boot. To also enable a service at boot:
+The above commands are good for managing a service in a single session, but many services are also required to start at boot. To enable a service at boot:
 
     sudo systemctl enable nginx
 
-Enabling a service creates a symlink from the unit file's location, usually in `/lib/systemd/system/` or `/etc/systemd/system`, to wherever `systemd` looks for autostart files (usually `/etc/systemd/system/yourservice.target.wants`, where 'yourservice' is the name of the service). For more on targets, see [Working with systemd Targets](#working-with-systemd-targets).
+Enabling a service creates a symlink from the unit file's location, usually in `/lib/systemd/system/` or `/etc/systemd/system`, to wherever `systemd` looks for autostart files (usually `/etc/systemd/system/yourservice.target.wants`, where `yourservice` is the name of the service). For more on targets, see [Working with systemd Targets](#working-with-systemd-targets).
 
 To disable the service from starting at boot, issue the `disable` command:
 
     sudo systemctl disable nginx
 
 {{< note >}}
-It is worth noting that `enable` does not start the service in the current session, nor does `disable` stop the service in the current session. To enable/disable and start/stop a service simultaneously, combine the command with the `--now` switch:
+The `enable` command does not start the service in the current session, nor does `disable` stop the service in the current session. To enable/disable and start/stop a service simultaneously, combine the command with the `--now` switch:
 
     sudo systemctl enable nginx --now
 {{</ note >}}
 
-Additionally, you can provide a file path to the service unit file you wish to enable if the service unit file is not located within one of the known `systemd` file paths:
+If the service unit file is not located within one of the known `systemd` file paths, you can provide a file path to the service unit file you wish to enable:
 
     sudo systemctl enable /path/to/myservice.service
 
@@ -86,7 +86,7 @@ However, this file needs to be accessible by `systemd` at startup. For example, 
 
     systemctl status mysql
 
-This will result in a message similar to the result below:
+This will result in a message similar to the output below:
 
 {{< output >}}
     ● mysql.service - MySQL Community Server
@@ -102,12 +102,12 @@ You can also use `is-active`, `is-enabled`, and `is-failed` to monitor a service
 
     systemctl is-enabled mysql
 
-To get a sense of which `systemd` service units are currently active on your system, issue the following `list-units` command and filter by the service type:
+To view which `systemd` service units are currently active on your system, issue the following `list-units` command and filter by the service type:
 
     systemctl list-units --type=service
 
 {{< note >}}
-`list-units` is the default action for the `systemctl` command, and as such you may simply enter `systemctl` to retrieve a list of units.
+`list-units` is the default action for the `systemctl` command, so you can simply enter `systemctl` to retrieve a list of units.
 {{</ note >}}
 
 The generated list includes all currently active service units, service units that have jobs pending, and service units that were active and have failed:
@@ -136,20 +136,20 @@ To list all units, including inactive units, append the `--all` flag:
 
     systemctl list-units --type=service --all
 
-Listing inactive units with the `--all` flag allows us to filter the units by state. Supply a comma-separated list of unit LOAD, SUB, or ACTIVE states with the `--state` flag:
+You can filter the list of units by state. Supply a comma-separated list of unit states to output as the value for the `--state` flag:
 
-    systemctl list-units --type=service --all --state=exited
+    systemctl list-units --type=service --all --state=exited,inactive
 
-Finally, to retrieve a list of failed units, you may enter the `list-units` command with the `--failed` flag:
+To retrieve a list of failed units, enter the `list-units` command with the `--failed` flag:
 
     systemctl list-units --failed
 
 ## Working with Unit Files
 
-Each unit has a corresponding *unit file*. As mentioned before these unit files are usually located in either `/lib/systemd/system/` or `/etc/systemd/system`.
+Each unit has a corresponding *unit file*. These unit files are usually located in the following directories:
 
-- `/lib/systemd/system` files are usually provided by the system or are supplied by installed packages.
-- `/etc/systemd/system` files are usually user-provided.
+- The `/lib/systemd/system` directory holds unit files that are provided by the system or are supplied by installed packages.
+- The `/etc/systemd/system` directory stores unit files that are user-provided.
 
 ### Listing Installed Unit Files
 
@@ -168,15 +168,15 @@ The generated list has two columns, **UNIT FILE** and **STATE**:
     apt-daily.service                      static
     ...
 
-A unit's STATE will normally be either enabled, disabled, static, masked, or generated. Static unit files do not contain an "Install" section and are either meant to be run once, or they are a dependency of another unit file and should not be run alone. For more on masking, see [Masking a Unit File](#masking-a-unit-file).
+A unit's STATE can be either enabled, disabled, static, masked, or generated. Unit files with a static state do not contain an *Install* section and are either meant to be run once or they are a dependency of another unit file and should not be run alone. For more on masking, see [Masking a Unit File](#masking-a-unit-file).
 
 ### Viewing a Unit File
 
-To view the contents of an individual unit file, you can run the `cat` command:
+To view the contents of a unit file, run the `cat` command:
 
     systemctl cat cron
 
-{{< file "/lib/systemd/system/cron.service" >}}
+{{< output >}}
 # /lib/systemd/system/cron.service
 [Unit]
 Description=Regular background program processing daemon
@@ -190,15 +190,15 @@ KillMode=process
 
 [Install]
 WantedBy=multi-user.target
-{{</ file >}}
+{{</ output >}}
 
-This file output is a snapshot of the currently running service, and as such might display an older version of the service if there are recent changes that have not yet been loaded into `systemd`.
+If there are recent changes to the unit file that have not yet been loaded into systemd, the output of the `systemctl cat` command may be an older version of the service.
 
-For a low-level view of a unit file, you can issue the `show` command:
+For a low-level view of a unit file, issue the `show` command:
 
     systemctl show cron
 
-This will generate a list of property key=value pairs for all non-empty properties:
+This will generate a list of property key=value pairs for all non-empty properties defined in the unit file:
 
     Type=simple
     Restart=no
@@ -209,7 +209,7 @@ This will generate a list of property key=value pairs for all non-empty properti
     RuntimeMaxUSec=infinity
     ...
 
-To show empty property values, supply the `--all` tag.
+To show empty property values, supply the `--all` flag.
 
 To filter the key=value pairs by property, use the `-p` flag:
 
@@ -244,40 +244,38 @@ To check which unit files depend on a service unit file, you can run the `list-d
 ### Editing a Unit File
 
 {{< note >}}
-While the particulars of unit file contents are beyond the scope of this article, there are a number of good resources online that describe them, such as the [RedHat Customer Portal page on Creating and Modifying systemd Unit Files](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_files).
+While the particulars of unit file contents are beyond the scope of this article, there are a number of good resources online that describe them, such as the RedHat Customer Portal page on [Creating and Modifying systemd Unit Files](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_files).
 {{</ note >}}
 
 There are two ways to edit a unit file using `systemctl`.
 
-1.  The `edit` command:
-
-    The `edit` command opens up a blank drop-in snippet file in a text editor:
+1.  The `edit` command opens up a blank drop-in snippet file in the system's default text editor:
 
         sudo systemctl edit ssh
 
-    When the file is saved `systemctl` will create a file called `override.conf` under a folder at `/etc/systemd/system/yourservice.service.d`, where `yourservice` is the name of the service you chose to edit. This command is useful for changing a few properties of the unit file.
+    When the file is saved, `systemctl` will create a file called `override.conf` under a directory at `/etc/systemd/system/yourservice.service.d`, where `yourservice` is the name of the service you chose to edit. This command is useful for changing a few properties of the unit file.
 
-2.  The `edit` command with the `--full` tag:
+2.  The second way is to use the `edit` command with the `--full` flag:
 
         sudo systemctl edit ssh --full
 
     This command opens a full copy of whatever unit file you chose to edit in a text editor. When the file is saved, `systemctl` will create a file at `/etc/systemd/system/yourservice.service`. This is useful if you need to make many changes to an existing unit file.
 
-It should be made clear that in general any unit file in `/etc/systemd/system` will override the corresponding file in `/lib/systemd/system`.
+In general, any unit file in `/etc/systemd/system` will override the corresponding file in `/lib/systemd/system`.
 
 ### Creating a Unit File
 
-While `systemctl` will error if you try to open a unit file that does not exist, you can force `systemctl` to create a new unit file using the `--force` flag:
+While `systemctl` will throw an error if you try to open a unit file that does not exist, you can force `systemctl` to create a new unit file using the `--force` flag:
 
     sudo systemctl edit yourservice.service --force
 
-On file save, `systemctl` will create an `override.conf` file in the folder `/etc/systemd/system/yourservice.service.d`, where 'yourservice' is the name of the service you chose to create. If you would like to create a full unit file instead of just a snippet, use `--force` in tandem with `--full`:
+When the file is saved, `systemctl` will create an `override.conf` file in the `/etc/systemd/system/yourservice.service.d` directory, where 'yourservice' is the name of the service you chose to create. To create a full unit file instead of just a snippet, use `--force` in tandem with `--full`:
 
     sudo systemctl edit yourservice.service --force --full
 
 ### Masking a Unit File
 
-If you would like to prevent a service from ever starting, either manually or automatically, you can use the `mask` command to symlink a service to `/dev/null`:
+To prevent a service from ever starting, either manually or automatically, use the `mask` command to symlink a service to `/dev/null`:
 
     sudo systemctl mask mysql
 
@@ -291,7 +289,7 @@ To unmask a service, use the `unmask` command:
 
 ### Removing a Unit File
 
-To remove a unit file snippet, one that you created with the `edit` command, remove the directory `yourservice.service.d` (where 'yourservice' is the service you would like to delete), and the `override.conf` file inside of that directory:
+To remove a unit file snippet that was created with the `edit` command, remove the directory `yourservice.service.d` (where 'yourservice' is the service you would like to delete), and the `override.conf` file inside of the directory:
 
     sudo rm -r /etc/systemd/system/yourservice.service.d
 
@@ -299,19 +297,19 @@ To remove a full unit file, run the following command:
 
     sudo rm /etc/systemd/system/yourservice.service
 
-After you issue these commands you should reload the `systemd` daemon so that it no longer tries to reference the deleted service:
+After you issue these commands, reload the `systemd` daemon so that it no longer tries to reference the deleted service:
 
     sudo systemctl daemon-reload
 
 ## Working with systemd Targets
 
-`systemd` targets are represented by *target units*. Target units end with the .target file extension and their only purpose is to group together other systemd units through a chain of dependencies. Like other init system's run levels, these targets help `systemd` determine which unit files are necessary to produce a certain system state.
+`systemd` targets are represented by *target units*. Target units end with the `.target` file extension and their only purpose is to group together other systemd units through a chain of dependencies. Like other init system's run levels, these targets help `systemd` determine which unit files are necessary to produce a certain system state.
 
-For instance, there is a `graphical.target` that denotes when the system's graphical session is ready. Units that are required to start in order to achieve this state have `WantedBy=` or `RequiredBy=` `graphical.target` in their configuration. Units that depend on `graphical.target` can include `Wants=`, `Requires=`, or `After=` in their configuration to make themselves available at the correct time.
+For instance, there is a `graphical.target` that denotes when the system's graphical session is ready. Units that are required to start in order to achieve the necessary state have `WantedBy=` or `RequiredBy=` `graphical.target` in their configuration. Units that depend on `graphical.target` can include `Wants=`, `Requires=`, or `After=` in their configuration to make themselves available at the correct time.
 
 ### Getting and Setting the Default Target
 
-To get the default target for your system, the end goal of the chain of dependencies, issue the `get-default` command:
+To get the default target for your system --the end goal of the chain of dependencies-- issue the `get-default` command:
 
     systemctl get-default
 
@@ -321,27 +319,27 @@ If you would like to change the default target for your system, issue the `set-d
 
 ### Listing Targets
 
-To retrieve a list of available targets, issue the `list-unit-files` command and filter by target:
+To retrieve a list of available targets, use the `list-unit-files` command and filter by target:
 
     systemctl list-unit-files --type=target
 
-To list all currently active targets, issue the `list-units` command and filter by target:
+To list all currently active targets, use the `list-units` command and filter by target:
 
     systemctl list-units --type=target
 
 ### Changing the Active Target
 
-To change the current active target, you may issue the `isolate` command. This command starts the isolated target with all dependent units and shuts down all others. For instance, if you wanted to move to a multi-user command line interface and stop the graphical shell, you would type:
+To change the current active target, issue the `isolate` command. This command starts the isolated target with all dependent units and shuts down all others. For instance, if you wanted to move to a multi-user command line interface and stop the graphical shell, use the following command:
 
     sudo systemctl isolate multi-user.target
 
-However, it is a good idea to first check on the dependencies of the target you wish to isolate so as not to stop anything important. To do this, issue the `list-dependencies` command:
+However, it is a good idea to first check on the dependencies of the target you wish to isolate so you do not stop anything important. To do this, issue the `list-dependencies` command:
 
     systemctl list-dependencies multi-user.target
 
 ### Rescue Mode
 
-When a situation arises where you are unable to proceed with a normal boot, it's beneficial to place your system in rescue mode. Rescue mode provides a single-user interface used to repair your system. To place your system in rescue mode, enter the following:
+When a situation arises where you are unable to proceed with a normal boot, you can place your system in rescue mode. Rescue mode provides a single-user interface used to repair your system. To place your system in rescue mode, enter the following command:
 
     sudo systemctl rescue
 
@@ -351,14 +349,13 @@ This command is similar to `systemctl isolate rescue`, but will also issue a not
 
 ### Emergency Mode
 
-Emergency mode offers the user the most minimal environment possible to salvage a system in need of repair, and is useful if the system cannot even enter rescue mode. For a full explanation of emergency mode, refer to the [RedHat Customer Portal page](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-targets#sect-Managing_Services_with_systemd-Targets-Emergency). To enter emergency mode, enter the following:
+Emergency mode offers the user the most minimal environment possible to salvage a system in need of repair, and is useful if the system cannot enter rescue mode. For a full explanation of emergency mode, refer to the [RedHat Customer Portal page](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-targets#sect-Managing_Services_with_systemd-Targets-Emergency). To enter emergency mode, enter the following command:
 
     sudo systemctl emergency
 
 This command is similar to `systemctl isolate emergency`, but will also issue a notice to all other users that the system is entering emergency mode. To prevent this message, apply the `--no-wall` flag:
 
     sudo systemctl emergency --no-wall
-
 
 ### More Shortcuts
 
@@ -368,12 +365,12 @@ To halt a system, issue the following command:
 
     sudo systemctl halt
 
-To shutdown a system, type:
+To shutdown a system, use:
 
     sudo systemctl shutdown
 
-Finally, to reboot a system, type:
+Finally, to reboot a system, enter the following command:
 
     sudo systemctl reboot
 
-Similar to the `emergency` and `rescue` commands, these commands will also issue a notice to all users that the system state is changing.
+Similar to the `emergency` and `rescue` commands, these commands will issue a notice to all users that the system state is changing.
