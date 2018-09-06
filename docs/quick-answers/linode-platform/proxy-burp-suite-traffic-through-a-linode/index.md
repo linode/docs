@@ -18,6 +18,8 @@ One workaround is to proxy Burp's traffic through a Linode. Doing this will bypa
 
 1. [Configure your browser](https://support.portswigger.net/customer/portal/articles/1783055-configuring-your-browser-to-work-with-burp) to work with Burp.
 
+1.  If you haven't already, [install Burp's CA certificate in your browser](https://support.portswigger.net/customer/portal/articles/1783075-Installing_Installing%20CA%20Certificate.html).
+
 1.  Open an SSH connection to your Linode through port `12345`. Local traffic will be passed to this port to your linode. Keep this terminal window running in the background during your testing.
 
         ssh -D 12345 root@yourlinodeip
