@@ -404,6 +404,14 @@ iface eth0 inet6 static
 
 To apply your changes, reboot from the Linode Manager's dashboard. Rebooting ensures that the new settings take effect without issues and that the all networking services reliably start again.
 
+If for whatever reason you prefer not to reboot, you should be able to bring your networking online using the following series of commands with most major Distributions:
+
+	ip link set eth0 up
+	ip addr add 198.51.100.5/24 broadcast 198.51.100.255 dev eth0
+	ip route add default via 198.51.100.1  
+
+	
+
 ## Test Connectivity
 
 1.  Log into your Linode via SSH.
