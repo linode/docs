@@ -45,7 +45,7 @@ Replace each instance of `example.com` in this guide with your Buildbot site's d
     These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linode.
 
     {{< note >}}
-  The steps to install NGINX will be covered in the [Set up the Buildbot Master Web Interface](docs/development/ci/self-hosted-ci-with-buildbot/#setup-buildbot-master-web-interface) section of the guide.
+  The steps to install NGINX will be covered in the [Set up the Buildbot Master Web Interface](/docs/development/ci/use-buildbot-for-software-testing-on-ubuntu/#configure-buildbot-master#setup-buildbot-master-web-interface) section of the guide.
     {{</ note >}}
 
 ## Install Buildbot
@@ -116,7 +116,7 @@ c['buildbotURL'] = "https://example.com/"
 ...
     {{</ file >}}
 
-    These options assume that you will use a custom domain secured with Let's Encrypt certificates from `certbot` as outlined in the [Before You Begin](/docs/development/ci/self-hosted-ci-with-buildbot/#before-you-begin) section of this guide.
+    These options assume that you will use a custom domain secured with Let's Encrypt certificates from `certbot` as outlined in the [Before You Begin](/docs/development/ci/use-buildbot-for-software-testing-on-ubuntu/#before-you-begin) section of this guide.
 
 1.  Uncomment the web interface configuration lines and keep the default options:
 
@@ -243,7 +243,7 @@ server {
 
     Your continuous integration test server is now up and running.
 
-1. Ensure that you can log into your Buildbot instance with the admin credentials you created in the [Configure Buildbot Master](/docs/development/ci/self-hosted-ci-with-buildbot/#configure-buildbot-master) section. Click on the top right hand dropdown menu entitled **Anonymous** and then, click on **Login**. A *Sign In* modal will appear. Enter your credentials to log in to Buildbot as the admin user.
+1. Ensure that you can log into your Buildbot instance with the admin credentials you created in the [Configure Buildbot Master](/docs/development/ci/use-buildbot-for-software-testing-on-ubuntu/#configure-buildbot-master) section. Click on the top right hand dropdown menu entitled **Anonymous** and then, click on **Login**. A *Sign In* modal will appear. Enter your credentials to log in to Buildbot as the admin user.
 
 ### Install the Buildbot Worker
 
