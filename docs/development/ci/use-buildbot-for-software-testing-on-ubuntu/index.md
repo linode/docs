@@ -6,11 +6,11 @@ description: 'This tutorial will explain how to install, configure, and use Buil
 og_description: 'Deploy self-hosted continuous integration using Buildbot.'
 keywords: ["buildbot", "testing", "python", "continuous integration", "ci", "build", "qa"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-26
+modified: 2018-09-06
 modified_by:
   name: Linode
-published: 2018-08-26
-title: How to Use Buildbot for Software Testing on Ubuntu 18.04
+published: 2018-09-06
+title: Use Buildbot for Software Testing on Ubuntu 18.04
 external_resources:
 - '[Official Buildbot Tutorial](http://docs.buildbot.net/current/tutorial/)'
 - '[Buildbot Documentation](http://docs.buildbot.net/current/index.html)'
@@ -34,7 +34,7 @@ external_resources:
 Replace each instance of `example.com` in this guide with your Buildbot site's domain name.
 {{< /note >}}
 
-1.  Your Buildbot site will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Use [Certbot](/docs/quick-answers/websites/secure-http-traffic-certbot/#use-certbot-on-ubuntu) to request and download a free certificate from [Let's Encrypt](https://letsencrypt.org/):
+1.  Your Buildbot site will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Use [Certbot](/docs/quick-answers/websites/secure-http-traffic-certbot/#use-certbot-on-ubuntu) to request and download a free certificate from [Let's Encrypt](https://letsencrypt.org/).
 
         sudo apt install software-properties-common
         sudo add-apt-repository ppa:certbot/certbot
@@ -62,18 +62,18 @@ Since Buildbot is provided as an Ubuntu package, install the software from the o
 
         sudo pip3 install buildbot-www buildbot-waterfall-view buildbot-console-view buildbot-grid-view
 
-1.  The `buildbot` package sets up several file paths and services to run persistently on your host. In order to create a new configuration for a Buildbot master, enter the directory for Buildbot master configurations and create a new master called `ci` (for "continuous integration"):
+1.  The `buildbot` package sets up several file paths and services to run persistently on your host. In order to create a new configuration for a Buildbot master, enter the directory for Buildbot master configurations and create a new master called `ci` (for "continuous integration").
 
         cd /var/lib/buildbot/masters
         sudo -u buildbot -- buildbot create-master ci
 
     The generated master configuration file's location is `/var/lib/buildbot/masters/ci/master.cfg.sample`.
 
-1.  Make a copy of the default configuration to the path that Buildbot expects for its configuration file.
+1.  Make a copy of the default configuration to the path that Buildbot expects for its configuration file:
 
         sudo cp ci/master.cfg.sample ci/master.cfg
 
-1. Change the permissions for this configuration file so that the `buildbot` user has rights for the configuration file.
+1. Change the permissions for this configuration file so that the `buildbot` user has rights for the configuration file:
 
         sudo chown buildbot:buildbot ci/master.cfg
 
@@ -83,7 +83,7 @@ In order to secure and customize Buildbot, you will change a few settings in the
 
 Buildbot has a number of concepts that are represented in the master build configuration file. Open this file in your preferred text editor and browse the Buildbot configuration. The Buildbot configuration is written in Python instead of a markup language like Yaml.
 
-1.  Generate a random string to serve as the password that workers will use to authenticate against the Buildbot master. This is accomplished by using `openssl` to create a random sequence of characters:
+1.  Generate a random string to serve as the password that workers will use to authenticate against the Buildbot master. This is accomplished by using `openssl` to create a random sequence of characters.
 
         openssl rand -hex 16
         <a random string>
@@ -99,7 +99,7 @@ c['workers'] = [worker.Worker("example-worker", "pass")]
 ...
     {{</ file >}}
 
-1.  Uncomment the `c[title]` and the `c[titleURL]` lines. If desired, change the name of the Buildbot installation by updating the value of ``c[title]``. Replace the `c[titleURL]` value with the URL of your Buildbot instance. In the example, the URL value is replaced with `example.com`.:
+1.  Uncomment the `c[title]` and the `c[titleURL]` lines. If desired, change the name of the Buildbot installation by updating the value of ``c[title]``. Replace the `c[titleURL]` value with the URL of your Buildbot instance. In the example, the URL value is replaced with `example.com`.
 
     {{< file "/var/lib/buildbot/masters/ci/master.cfg" python >}}
 ...
@@ -129,7 +129,7 @@ c['www'] = dict(port=8010,
 
 1.  By default, Buildbot does not require people to authenticate in order to access control features in the web UI. To secure Buildbot, you will need to configure an authentication plugin.
 
-    Configure users for the Buildbot master web interface. Add the following lines below the web interface configuration lines and replace the `myusername` and `password` values with the ones you would like to use:
+    Configure users for the Buildbot master web interface. Add the following lines below the web interface configuration lines and replace the `myusername` and `password` values with the ones you would like to use.
 
     {{< file "/var/lib/buildbot/masters/ci/master.cfg" python >}}
 ...
@@ -149,12 +149,12 @@ c['www']['auth'] = util.UserPasswordAuth([('myusername','password')])
 ...
     {{</ file >}}
 
-1.  Buildbot supports building repositories based on GitHub activity. This is done with a GitHub webhook. Generate a random string to serve as a webhook secret token to validate payloads.:
+1.  Buildbot supports building repositories based on GitHub activity. This is done with a GitHub webhook. Generate a random string to serve as a webhook secret token to validate payloads.
 
         openssl rand -hex 16
         <a random string>
 
-1.  Configure Buildbot to recognize GitHub webhooks as a change source. Add the following snippet to the end of the `master.cfg` file and replace `webhook secret` with the random string generated in the previous step:
+1.  Configure Buildbot to recognize GitHub webhooks as a change source. Add the following snippet to the end of the `master.cfg` file and replace `webhook secret` with the random string generated in the previous step.
 
     {{< file "/var/lib/buildbot/masters/ci/master.cfg" python >}}
 c['www']['change_hook_dialects'] = {
@@ -174,9 +174,9 @@ Buildbot is now running and listening on HTTP without encryption. To secure the 
 
 {{< content "install-nginx-ubuntu-ppa" >}}
 
-Now that NGINX is installed, configure NGINX to talk to the local Buildbot port. Nginx will listen for SSL traffic using the Let's Encrypt certificate for your domain.
+Now that NGINX is installed, configure NGINX to talk to the local Buildbot port. NGINX will listen for SSL traffic using the Let's Encrypt certificate for your domain.
 
-1.  Create your site's NGINX configuration file. Ensure that you replace the configuration file's name `example.com.conf` with your domain name. Replace all instances of `example.com` with your Buildbot instance's URL:
+1.  Create your site's NGINX configuration file. Ensure that you replace the configuration file's name `example.com.conf` with your domain name. Replace all instances of `example.com` with your Buildbot instance's URL.
 
     {{< file "/etc/nginx/conf.d/example.com.conf" conf >}}
 server {
@@ -233,7 +233,7 @@ server {
 
         mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
 
-1.  Restart nginx to apply the Buildbot reverse proxy configuration:
+1.  Restart NGINX to apply the Buildbot reverse proxy configuration:
 
         sudo systemctl restart nginx
 
@@ -257,11 +257,11 @@ In order for Buildbot to execute test builds, the Buildbot master will require a
 
         cd /var/lib/buildbot/workers
 
-1.  Create the configuration directory for the Buildbot worker. Replace `example-worker` and `my-worker-password` with the values used for the `c[worker]` configuration in the `master.cfg` file:
+1.  Create the configuration directory for the Buildbot worker. Replace `example-worker` and `my-worker-password` with the values used for the `c[worker]` configuration in the `master.cfg` file.
 
         sudo -u buildbot -- buildbot-worker create-worker default localhost example-worker my-worker-password
 
-1.  The Buildbot worker is ready to connect to the Buildbot master. Enable the worker process:
+1.  The Buildbot worker is ready to connect to the Buildbot master. Enable the worker process.
 
         sudo systemctl enable --now buildbot-worker@default.service
 
