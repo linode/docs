@@ -22,13 +22,13 @@ One workaround is to proxy Burp's traffic through a Linode. Doing this will bypa
 
         ssh -D 12345 root@yourlinodeip
 
-1.  In Burp suite, open the **Project Options** and go to the **Connections** tab.
+1.  In Burp Suite, go to the **Project Options** tab, then the **Connections** tab.
+
+1.  Under **SOCKS Proxy**, check the **Override user options** box. You'll see a form field options appear.
 
 1.  Make the following changes:
 
- - Check the box to enable **Override user options**.
-
- - Enable **Use SOCKS proxy**.
+ - Check **Use SOCKS proxy**.
 
  - In the field labeled **SOCKS proxy host**, enter **localhost**.
 
