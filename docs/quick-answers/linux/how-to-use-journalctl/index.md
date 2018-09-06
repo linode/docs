@@ -149,7 +149,7 @@ Pass the format name with the `-o` option to display your logs in that format. F
 
 ### Anatomy of a Log Record
 
-The following is an example of the structured data of a log record, as displayed by `journalctl -o verbose`. For more information on this data struture, review [the man page for journalctl](https://www.freedesktop.org/software/systemd/man/journalctl.html):
+The following is an example of the structured data of a log record, as displayed by `journalctl -o verbose`. For more information on this data structure, review [the man page for journalctl](https://www.freedesktop.org/software/systemd/man/journalctl.html):
 
 {{< output >}}
 Fri 2018-08-31 12:00:25.543177 EDT [s=0b341b44cf194c9ca45c99101497befa;i=70d5;b=a09dce7b2c1c458d861d7d0f0a7c8c65;m=9fb524664c4;t=57517dfc5f57d;x=97097ca5ede0dfd6]
