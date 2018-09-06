@@ -21,7 +21,7 @@ external_resources:
 
 *journalctl* is a command for viewing logs collected by systemd. The systemd-journald service is responsible for systemd's log collection, and  it retrieves messages from the kernel, systemd services, and other sources.
 
-These logs are gathered in a central location, which makes it easier to review them than if they were spread across different logging systems. The log records in the journal are structured and indexed, and as a result journalctl is able to present your log information in a variety of useful formats.
+These logs are gathered in a central location, which makes them easy to review. The log records in the journal are structured and indexed, and as a result journalctl is able to present your log information in a variety of useful formats.
 
 ## Using journalctl for the First Time
 
@@ -179,7 +179,7 @@ Fri 2018-08-31 12:00:25.543177 EDT [s=0b341b44cf194c9ca45c99101497befa;i=70d5;b=
 
 {{< note >}}
 
-In addition the types of filters listed in the previous section, you can also filter logs by specifying values for the variables in the log record structure. For example, `journalctl _UID=0` will show logs for user ID 0 (i.e. the root user).
+In addition to the types of filters listed in the previous section, you can also filter logs by specifying values for the variables in the log record structure. For example, `journalctl _UID=0` will show logs for user ID 0 (i.e. the root user).
 
 {{< /note >}}
 
@@ -190,6 +190,8 @@ systemd-journald can be configured to persist your systemd logs on disk, and it 
 To start persisting your logs, uncomment the `Storage` line in `/etc/systemd/journald.conf` and set its value to `persistent`. Your archived logs will be held in `/var/log/journal`. If this directory does not already exist in your file system, systemd-journald will create it.
 
 After updating your `journald.conf`, load the change:
+
+    sudo systemctl restart systemd-journald
 
 ### Control the Size of Your Logs' Disk Usage
 

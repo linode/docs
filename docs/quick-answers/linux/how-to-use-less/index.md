@@ -15,7 +15,7 @@ title: How to Use the Less Command
 
 ## What is Less?
 
-On Linux systems, `less` is a command that displays the contents of a file or the output from another command one page at a time in your terminal. `less` is most useful for viewing the content of large files or the results of commands that produce many lines of output. The content displayed by `less` can be navigated by entering keyboard shortcuts.
+On Linux systems, `less` is a command that displays file contents or command output one page at a time in your terminal. `less` is most useful for viewing the content of large files or the results of commands that produce many lines of output. The content displayed by `less` can be navigated by entering keyboard shortcuts.
 
 ## Invoking Less
 
