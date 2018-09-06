@@ -582,6 +582,7 @@ jks
 jobd
 joomla
 journalctl
+journald
 journaled
 journaling
 jpg
