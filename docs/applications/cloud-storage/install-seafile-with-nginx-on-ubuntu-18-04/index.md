@@ -193,117 +193,41 @@ The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises
 
 1.  Download the Seafile CE 64 bit Linux server file. Version *6.2.5* is the latest as of this guide's publication. Find the latest version at https://www.seafile.com/en/download/ and replace the version below if needed.
 
+
         wget --directory-prefix=/opt https://download.seadrive.org/seafile-server_6.2.5_x86-64.tar.gz
+
 
 2.  Extract the tarball and move it when finished:
 
         tar -xzvf seafile-server*.tar.gz
-        sudo mkdir installed && sudo mv seafile-server-6.2.5 installed
+        mkdir installed && mv seafile-server-6.2.5 installed
+
 
 3.  Install dependency packages for Seafile:
 
-        sudo apt install python2.7 libpython2.7 python-setuptools python-pil python-ldap python-urllib3 ffmpeg python-pip python-mysqldb python-memcache python-requests
+        sudo apt install python2.7 libpython2.7 python-setuptools python-pil python-ldap python-urllib3 ffmpeg python-pip python-mysqldb python-memcache python-requests -y
 
 4.  Run the installation script:
 
         cd /opt/installed/seafile-server-6.2.5
-        sudo ./setup-seafile-mysql.sh
-
-    In the first prompt, choose `1` to have the script build the databases for you. You'll be prompted to answer several other questions and choose settings during the installation process. For those that recommend a default, use that. Otherwise, provide any inputs the script may ask for.
-
-5.  Modify the `ccnet.conf` file.
-
-    Change the value of **SERVICE_URL** to your seafile web address.
-
-    {{< file "/opt/installed/conf/ccnet.conf" conf >}}
-[General]
-USER_NAME = seafile-server
-ID = 42d62cf1269308d4a39acfa6733936e5fac71e62
-NAME = seafile-server
-SERVICE_URL = https://your-seafile-server.com
-
-. . .
-{{< /file >}}
-
-6.  Modify the `seahub_settings.py` file.
-
-    Add the **FILE_SERVER_ROOT** line at the end of the file. Replace the domain name with your personal seafile domain.
-
-    {{< file "/opt/installed/conf/seahub_settings.py" >}}
-# -*- coding: utf-8 -*-
-SECRET_KEY = "akcc%gmq8m^_h_-gmbq+ebm20#s_7o-c3s476illvxr2ber4lj"
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'seahub-db',
-        'USER': 'seafile',
-        'PASSWORD': 'seafile',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
-    }
-}
-
-FILE_SERVER_ROOT = 'https://your-seafile-address.com/seafhttp'
-{{< /file >}}
-
-7.  If you have a firewall in place, port 8082 and 8000 must be opened. The Iptables method is shown below.
-
-        iptables -A INPUT -p tcp -i eth0 -m multiport --dports 8000,8082 -j ACCEPT
-        iptables-save
-
-8.  Start the Seafile and Seahub servers.
-
-        ./seafile.sh start
-        ./seahub.sh start
-
-## Configure and Install Seafile
-
-The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example `haiwen` directory found in the Seafile manual, we'll install everything in the `opt` directory.
-
-<<<<<<< HEAD
-1. Download the Seafile CE 64 bit Linux server file. Version *6.2.5* is the latest as of this guide's publication. Find the latest version at https://www.seafile.com/en/download/ and replace the version below if needed.
-
-```
-wget --directory-prefix=/opt https://download.seadrive.org/seafile-server_6.2.5_x86-64.tar.gz
-```
-
-3.  Extract the tarball and move it when finished:
-
-```
-tar -xzvf seafile-server*.tar.gz
-mkdir installed && mv seafile-server-6.2.5 installed
-```
-
-4.  Install dependency packages for Seafile:
-
-```
-sudo apt install python2.7 libpython2.7 python-setuptools python-pil python-ldap python-urllib3 ffmpeg python-pip python-mysqldb python-memcache python-requests -y
-```
-
-5.  Run the installation script:
-
-```
-cd /opt/installed/seafile-server-6.2.5
-./setup-seafile-mysql.sh
-```
+        ./setup-seafile-mysql.sh
 
 In the first prompt, choose `1` to have the script build the databases for you. You'll be prompted to answer several other questions and choose settings during the installation process. For those that recommend a default, use that. Otherwise, provide any inputs the script may ask for.
 
-6. If you have a firewall in place, port 8082 and 8000 must be opened. The Iptables method is shown below.
+1. If you have a firewall in place, port 8082 and 8000 must be opened. The Iptables method is shown below.
 
 ```
 iptables -A INPUT -p tcp -i eth0 -m multiport --dports 8000,8082 -j ACCEPT
 iptables-save
 ```
 
-2.  Download the Seafile CE 64 bit Linux server. You'll need to get the exact link from [seafile.com](https://www.seafile.com/en/download/). Once you have the URL, use `wget` to download it to the **/opt** directory. An example is show below using the latest Seafile server package available as of this guide's publication date.
+6.  Download the Seafile CE 64 bit Linux server. You'll need to get the exact link from [seafile.com](https://www.seafile.com/en/download/). Once you have the URL, use `wget` to download it to the **/opt** directory. An example is show below using the latest Seafile server package available as of this guide's publication date.
 
 ```
 wget --directory-prefix=/opt https://download.seadrive.org/seafile-server_6.2.5_x86-64.tar.gz
 ```
 
-3.  Extract the tarball and move it when finished:
+7.  Extract the tarball and move it when finished:
 
 ```
 tar -xzvf seafile-server*.tar.gz
