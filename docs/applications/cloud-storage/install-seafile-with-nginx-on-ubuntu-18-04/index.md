@@ -88,7 +88,7 @@ The configuration setup below works in tandem with Let's Encrypt to provide SSL 
 
 4.  Create a config file for Certbot at `/etc/nginx/snippets/certbot.conf`
 
-    {{< file "/etc/nginx/snippets/certbot.conf" conf >}}
+    {{< file "/etc/nginx/snippets/certbot.conf" nginx >}}
 location /.well-known {
     alias /var/www/html/.well-known;
 }
@@ -96,7 +96,7 @@ location /.well-known {
 
 5.  Create the site configuration file. The only lines you need to change below are the two `server_name` lines, `ssl_certificate`, and `ssl_certificate_key`. `ssl_certificate` and `ssl_certificate_key` locations can be found in the output of the certbot command you ran in step three. For more HTTPS configuration options, see our guide on [TLS Best Practices with NGINX](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/).
 
-    {{< file "/etc/nginx/sites-available/seafile.conf" conf >}}
+    {{< file "/etc/nginx/sites-available/seafile.conf" nginx >}}
 
 server {
     listen 80;
@@ -164,7 +164,7 @@ server {
 {{< /file >}}
 
     {{< note >}}
-If you plan on uploading large files (greater or equal to 4GB), you may want to turn off the Nginx buffer feature, as it has issues handling large files with Seafile. Add the following to the *nginx.conf* file in the `/seafhttp` location section.
+If you plan on uploading large files (greater or equal to 4GB), you may want to turn off the Nginx buffer feature, as it has issues handling large files with Seafile. Add the following to the *seafile.conf* file in the `/seafhttp` location section.
 
   {{< file "/etc/nginx/sites-available/seafile.conf" conf >}}
   ...
@@ -191,17 +191,14 @@ If you plan on uploading large files (greater or equal to 4GB), you may want to 
 
 The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example `haiwen` directory found in the Seafile manual, we'll install everything in the `opt` directory.
 
-1.  Download the Seafile CE 64 bit Linux server file. Version *6.2.5* is the latest as of this guide's publication. Find the latest version at https://www.seafile.com/en/download/ and replace the version below if needed.
-
+1.  Download the Seafile CE 64 bit Linux server. You'll need to get the exact link from [seafile.com](https://www.seafile.com/en/download/). Once you have the URL, use `wget` to download it to the **/opt** directory. An example is show below using the latest Seafile server package available as of this guide's publication date.
 
         wget --directory-prefix=/opt https://download.seadrive.org/seafile-server_6.2.5_x86-64.tar.gz
-
 
 2.  Extract the tarball and move it when finished:
 
         tar -xzvf seafile-server*.tar.gz
         mkdir installed && mv seafile-server-6.2.5 installed
-
 
 3.  Install dependency packages for Seafile:
 
@@ -212,56 +209,25 @@ The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises
         cd /opt/installed/seafile-server-6.2.5
         ./setup-seafile-mysql.sh
 
-In the first prompt, choose `1` to have the script build the databases for you. You'll be prompted to answer several other questions and choose settings during the installation process. For those that recommend a default, use that. Otherwise, provide any inputs the script may ask for.
+    You'll be prompted to answer several questions and choose settings during the installation process. Answer the questions with the default value when provided with one.
 
-1. If you have a firewall in place, port 8082 and 8000 must be opened. The Iptables method is shown below.
+5.  If you have a firewall in place, port 8082 and 8000 must be opened. The Iptables method is shown below.
 
-```
-iptables -A INPUT -p tcp -i eth0 -m multiport --dports 8000,8082 -j ACCEPT
-iptables-save
-```
+        iptables -A INPUT -p tcp -i eth0 -m multiport --dports 8000,8082 -j ACCEPT
+        iptables-save
 
-6.  Download the Seafile CE 64 bit Linux server. You'll need to get the exact link from [seafile.com](https://www.seafile.com/en/download/). Once you have the URL, use `wget` to download it to the **/opt** directory. An example is show below using the latest Seafile server package available as of this guide's publication date.
+6.  Start the Seafile and Seahub servers.
 
-```
-wget --directory-prefix=/opt https://download.seadrive.org/seafile-server_6.2.5_x86-64.tar.gz
-```
+        ./seafile.sh start
+        ./seahub.sh start
 
-7.  Extract the tarball and move it when finished:
+    The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
 
-```
-tar -xzvf seafile-server*.tar.gz
-mkdir installed && mv seafile-server*.tar.gz installed
-```
+    [![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
 
-4.  Install dependency packages for Seafile:
+7.  Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file.
 
-```
-sudo apt install python2.7 libpython2.7 python-setuptools python-pil python-ldap python-mysqldb python-memcache python-urllib3
-```
-
-5.  Run the installation script:
-
-```
-cd seafile-server-* && sudo ./setup-seafile-mysql.sh
-```
-
-You'll be prompted to answer several questions and choose settings during the installation process. Answer the questions
-with the default value when provided with one.
-
-6. Start the Seafile and Seahub servers.
-
-```
-./seafile.sh start
-./seahub.sh start
-```
-
-The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
-[![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
-
-7. Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file.
-
-[![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
+    [![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
 
 ## Automatically Start Seafile on Sever Bootup
 
@@ -269,7 +235,7 @@ The `seafile.sh` and `seahub.sh` scripts don't automatically run if your Linode 
 
 1.  Create the systemd unit files:
 
-{{< file "/etc/systemd/system/seafile.service" >}}
+    {{< file "/etc/systemd/system/seafile.service" >}}
 
 [Unit]
 Description=Seafile Server
@@ -286,7 +252,7 @@ WantedBy=multi-user.target
 
 {{< /file >}}
 
-{{< file "/etc/systemd/system/seahub.service" >}}
+    {{< file "/etc/systemd/system/seahub.service" >}}
 
 [Unit]
 Description=Seahub Server
@@ -305,22 +271,18 @@ WantedBy=multi-user.target
 
 2.  Then enable the services to automate the startup of both daemons during server boot.
 
-```
-sudo systemctl daemon-reload
-sudo systemctl start seafile
-sudo systemctl start seahub
-sudo systemctl enable seafile
-sudo systemctl enable seahub
-```
+        sudo systemctl daemon-reload
+        sudo systemctl start seafile
+        sudo systemctl start seahub
+        sudo systemctl enable seafile
+        sudo systemctl enable seahub
 
-You can verify they've started successfully with the following commands.
+    You can verify they've started successfully with the following commands.
 
-```
-sudo systemctl -l status seafile
-sudo systemctl -l status seahub
-```
+        sudo systemctl -l status seafile
+        sudo systemctl -l status seahub
 
-2.  Confirm the startup scripts are working by rebooting your Linode. After bootup, both the Seafile and Seahub services should be active when running the status commands in the previous step. You should also still be able to access Seafile with a web browser.
+3.  Confirm the startup scripts are working by rebooting your Linode. After bootup, both the Seafile and Seahub services should be active when running the status commands in the previous step. You should also still be able to access Seafile with a web browser.
 
 
 ## Updating Seafile
