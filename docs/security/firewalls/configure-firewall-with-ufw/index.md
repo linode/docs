@@ -36,7 +36,7 @@ UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in A
 
 ## Install UFW
 
-UFW is included in Ubuntu by default but must be installed in Arch and Debian. Debian will start UFW's systemd unit automatically and enable it to start on reboots, but Arch will not. *This is not the same as telling UFW to enable the firewall rules*, as enabling UFW with systemd or upstart only tells the init system to switch on the UFW daemon.
+Debian will start UFW's systemd unit automatically and enable it to start on reboots, but Arch will not. *This is not the same as telling UFW to enable the firewall rules*, as enabling UFW with systemd or upstart only tells the init system to switch on the UFW daemon.
 
 By default, UFW's rulesets are blank so it is not enforcing any firewall rules--even when the daemon is running. Enforcing your firewall ruleset is covered [further down the page](#enable-the-firewall).
 
