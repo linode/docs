@@ -155,7 +155,7 @@ server {
     }
 
     location /media {
-        root /opt/installed/seafile-server-latest/seahub;
+        root /opt/installed/seafile-server-6.2.5/seahub;
     }
 
     include snippets/certbot.conf;
@@ -257,13 +257,87 @@ FILE_SERVER_ROOT = 'https://your-seafile-address.com/seafhttp'
         ./seafile.sh start
         ./seahub.sh start
 
-    The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
+## Configure and Install Seafile
 
-    [![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
+The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example `haiwen` directory found in the Seafile manual, we'll install everything in the `opt` directory.
 
-7.  Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file.
+<<<<<<< HEAD
+1. Download the Seafile CE 64 bit Linux server file. Version *6.2.5* is the latest as of this guide's publication. Find the latest version at https://www.seafile.com/en/download/ and replace the version below if needed.
 
-    [![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
+```
+wget --directory-prefix=/opt https://download.seadrive.org/seafile-server_6.2.5_x86-64.tar.gz
+```
+
+3.  Extract the tarball and move it when finished:
+
+```
+tar -xzvf seafile-server*.tar.gz
+mkdir installed && mv seafile-server-6.2.5 installed
+```
+
+4.  Install dependency packages for Seafile:
+
+```
+sudo apt install python2.7 libpython2.7 python-setuptools python-pil python-ldap python-urllib3 ffmpeg python-pip python-mysqldb python-memcache python-requests -y
+```
+
+5.  Run the installation script:
+
+```
+cd /opt/installed/seafile-server-6.2.5
+./setup-seafile-mysql.sh
+```
+
+In the first prompt, choose `1` to have the script build the databases for you. You'll be prompted to answer several other questions and choose settings during the installation process. For those that recommend a default, use that. Otherwise, provide any inputs the script may ask for.
+
+6. If you have a firewall in place, port 8082 and 8000 must be opened. The Iptables method is shown below.
+
+```
+iptables -A INPUT -p tcp -i eth0 -m multiport --dports 8000,8082 -j ACCEPT
+iptables-save
+```
+
+2.  Download the Seafile CE 64 bit Linux server. You'll need to get the exact link from [seafile.com](https://www.seafile.com/en/download/). Once you have the URL, use `wget` to download it to the **/opt** directory. An example is show below using the latest Seafile server package available as of this guide's publication date.
+
+```
+wget --directory-prefix=/opt https://download.seadrive.org/seafile-server_6.2.5_x86-64.tar.gz
+```
+
+3.  Extract the tarball and move it when finished:
+
+```
+tar -xzvf seafile-server*.tar.gz
+mkdir installed && mv seafile-server*.tar.gz installed
+```
+
+4.  Install dependency packages for Seafile:
+
+```
+sudo apt install python2.7 libpython2.7 python-setuptools python-pil python-ldap python-mysqldb python-memcache python-urllib3
+```
+
+5.  Run the installation script:
+
+```
+cd seafile-server-* && sudo ./setup-seafile-mysql.sh
+```
+
+You'll be prompted to answer several questions and choose settings during the installation process. Answer the questions
+with the default value when provided with one.
+
+6. Start the Seafile and Seahub servers.
+
+```
+./seafile.sh start
+./seahub.sh start
+```
+
+The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
+[![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
+
+7. Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file.
+
+[![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
 
 ## Automatically Start Seafile on Sever Bootup
 
@@ -271,7 +345,7 @@ The `seafile.sh` and `seahub.sh` scripts don't automatically run if your Linode 
 
 1.  Create the systemd unit files:
 
-    {{< file "/etc/systemd/system/seafile.service" >}}
+{{< file "/etc/systemd/system/seafile.service" >}}
 
 [Unit]
 Description=Seafile Server
@@ -279,49 +353,48 @@ After=network.target mysql.service
 
 [Service]
 Type=oneshot
-ExecStart=/opt/installed/seafile-server-latest/seafile.sh start
-ExecStop=/opt/installed/seafile-server-latest/seafile.sh stop
+ExecStart=/opt/installed/seafile-server-6.2.5/seafile.sh start
+ExecStop=/opt/installed/seafile-server-6.2.5/seafile.sh stop
 RemainAfterExit=yes
-User=sfadmin
-Group=sfadmin
 
 [Install]
 WantedBy=multi-user.target
 
 {{< /file >}}
 
-    {{< file "/etc/systemd/system/seahub.service" >}}
+{{< file "/etc/systemd/system/seahub.service" >}}
 
 [Unit]
-Description=Seafile Hub
-After=network.target seafile.service
+Description=Seahub Server
+After=network.target mysql.service
 
 [Service]
 Type=oneshot
-ExecStart=/opt/installed/seafile-server-latest/seahub.sh start
-ExecStop=/opt/installed/seafile-server-latest/seahub.sh stop
+ExecStart=/opt/installed/seafile-server-6.2.5/seahub.sh start
+ExecStop=/opt/installed/seafile-server-6.2.5/seahub.sh stop
 RemainAfterExit=yes
-User=sfadmin
-Group=sfadmin
 
 [Install]
 WantedBy=multi-user.target
 
 {{< /file >}}
 
-1.  Then enable the services:
+2.  Then enable the services to automate the startup of both daemons during server boot.
 
-    ```
-    sudo systemctl enable seafile
-    sudo systemctl enable seahub
-    ```
+```
+sudo systemctl daemon-reload
+sudo systemctl start seafile
+sudo systemctl start seahub
+sudo systemctl enable seafile
+sudo systemctl enable seahub
+```
 
-    You can verify they've started successfully with:
+You can verify they've started successfully with the following commands.
 
-    ```
-    sudo systemctl status seafile
-    sudo systemctl status seahub
-    ```
+```
+sudo systemctl -l status seafile
+sudo systemctl -l status seahub
+```
 
 2.  Confirm the startup scripts are working by rebooting your Linode. After bootup, both the Seafile and Seahub services should be active when running the status commands in the previous step. You should also still be able to access Seafile with a web browser.
 
