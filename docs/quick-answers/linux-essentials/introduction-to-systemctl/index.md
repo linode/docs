@@ -62,8 +62,6 @@ The above commands are good for managing a service in a single session, but many
 
     sudo systemctl enable nginx
 
-Enabling a service creates a symlink from the unit file's location, usually in `/lib/systemd/system/` or `/etc/systemd/system`, to wherever `systemd` looks for autostart files (usually `/etc/systemd/system/yourservice.target.wants`, where `yourservice` is the name of the service). For more on targets, see [Working with systemd Targets](#working-with-systemd-targets).
-
 To disable the service from starting at boot, issue the `disable` command:
 
     sudo systemctl disable nginx
@@ -303,9 +301,11 @@ After you issue these commands, reload the `systemd` daemon so that it no longer
 
 ## Working with systemd Targets
 
-`systemd` targets are represented by *target units*. Target units end with the `.target` file extension and their only purpose is to group together other systemd units through a chain of dependencies. Like other init system's run levels, these targets help `systemd` determine which unit files are necessary to produce a certain system state.
+Like other init system's run levels, `systemd`'s targets help it determine which unit files are necessary to produce a certain system state. `systemd` targets are represented by *target units*. Target units end with the `.target` file extension and their only purpose is to group together other systemd units through a chain of dependencies. 
 
 For instance, there is a `graphical.target` that denotes when the system's graphical session is ready. Units that are required to start in order to achieve the necessary state have `WantedBy=` or `RequiredBy=` `graphical.target` in their configuration. Units that depend on `graphical.target` can include `Wants=`, `Requires=`, or `After=` in their configuration to make themselves available at the correct time.
+
+When you enable a service, symlinks are created from the service's unit file to `systemd`'s `.target.wants` directories under `/etc/systemd/system` as appropriate for that target.
 
 ### Getting and Setting the Default Target
 
