@@ -1483,6 +1483,7 @@ yourdomain
 yourdomainorsubdomainhere
 yourname
 yoursite
+yourservice
 youtube
 yubico
 yubikey
