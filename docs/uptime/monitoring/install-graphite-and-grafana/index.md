@@ -100,7 +100,7 @@ CONTAINER ID        IMAGE                         COMMAND             CREATED   
 
 3.  Click **Create data source** in the main dashboard and fill in the form as follows:
 
-    ![Grafana Add Data Source](grafana/grafana-add-datasource.png "Add Data Source page")
+    ![Grafana Add Data Source](grafana-add-datasource.png "Add Data Source page")
 
     * **Name:** `Graphite`
     * **Type:** `Graphite`
@@ -112,7 +112,7 @@ CONTAINER ID        IMAGE                         COMMAND             CREATED   
 
 4.  Click **New dashboard** to create and customize a new panel:
 
-    ![Grafana Dashboard Panel](grafana/grafana-dashboard.png "Example of a panel")
+    ![Grafana Dashboard Panel](grafana-dashboard.png "Example of a panel")
 
     * To import a sample Dashboard, try the [Internal Grafana Stats](https://grafana.com/dashboards/55).
 
@@ -126,7 +126,7 @@ CONTAINER ID        IMAGE                         COMMAND             CREATED   
 
 7.  Hover over the user icon in the lower left corner of the sidebar and click **Preferences** to open a menu where you can replace the default admin username and password with something more secure:
 
-    ![Admin Preferences](grafana/change-admin-password.png "On click, user name and icon shows Preferences and Sign out menu.")
+    ![Admin Preferences](change-admin-password.png "On click, user name and icon shows Preferences and Sign out menu.")
 
 ## Next Steps
 

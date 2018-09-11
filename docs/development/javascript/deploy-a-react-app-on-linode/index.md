@@ -65,7 +65,7 @@ The steps in this section should be performed on your Linode.
 
     Modify the `DocumentRoot` in your virtual host file:
 
-    {{< file "/etc/nginx/sites-available/mydomain.com.conf" aconf >}}
+    {{< file "/etc/apache2/sites-available/mydomain.com.conf" aconf >}}
 <VirtualHost *:80>
      ServerAdmin webmaster@mydomain.com
      ServerName mydomain.com

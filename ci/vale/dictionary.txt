@@ -1,6 +1,7 @@
 abc
 absecon
 abspath
+aconf
 adc
 addon
 addons
@@ -88,6 +89,7 @@ bitrate
 blocklists
 blockwise
 bluehost
+boolstyle
 boonex
 bootable
 bootloader
@@ -163,6 +165,7 @@ codebase
 codec
 com2sec
 comodo
+completekey
 conda
 config
 configs
@@ -215,6 +218,7 @@ datasource
 datastax
 datastore
 datetime
+datetimeformat
 dav
 davfs
 davfs2
@@ -388,6 +392,7 @@ galera
 gamemode
 gameplay
 gandi
+gatsby
 gcc
 gcm
 geckodriver
@@ -576,6 +581,8 @@ jk
 jks
 jobd
 joomla
+journalctl
+journald
 journaled
 journaling
 jpg
@@ -599,6 +606,7 @@ keymap
 keypair
 keypairs
 keysize
+keyspace
 keystore
 kibana
 kickban
@@ -803,6 +811,7 @@ netfilter
 netflow
 netfs
 netifrc
+netlify
 netloc
 netmask
 networkd
@@ -845,6 +854,7 @@ nsd4
 ntop
 ntopng
 ntpd
+nullval
 num
 numpy
 nvim

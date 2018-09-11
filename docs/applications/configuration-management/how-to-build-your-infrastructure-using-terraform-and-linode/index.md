@@ -28,7 +28,7 @@ The configurations and commands used in this guide will result in multiple Linod
 
 -  You will need root access to the system and a standard user account with sudo privileges.
 
--  Create an API key for your Linode account. Be sure to take a screen capture of the API key when it's displayed, it will only appear once. See our [API Key](/docs/platform/api/api-key/) guide if you need help.
+-  Create an API key for your Linode account. Be sure to take a screen capture of the API key when it's displayed, it will only appear once. See our guide [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) if you need help.
 
 -  You will need [Git](https://git-scm.com/) installed on your system.
 
