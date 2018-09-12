@@ -14,4 +14,4 @@ hiddenguide: true
 show_on_rss_feed: false
 ---
 
-Hiddenguide guide for testing webhook deployment. Should be directly linkable but not appear in search.
+Hidden guide for testing webhook deployment. Should be directly linkable but not appear in search.
