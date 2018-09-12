@@ -55,6 +55,7 @@ autologin
 autologout
 automagically
 automattic
+automount
 autorelabel
 autorun
 autoscaling
@@ -628,10 +629,12 @@ kubernetes
 kubespray
 lambdabunker
 laravel
+launchd
 lbmethod
 lda
 ldap
 leiningen
+lennart
 letsencrypt
 lf
 li181
@@ -896,6 +899,7 @@ pagespeed
 pandoc
 param
 paramiko
+parallelization
 params
 paravirt
 paravirtualization
@@ -938,6 +942,7 @@ plone
 pluggable
 png
 pocketmine
+poettering
 pop3
 pop3d
 pop3s
@@ -1143,6 +1148,7 @@ shortguides
 shortname
 shoutcast
 sidekiq
+sievers
 sintra
 sitename
 slackpkg
