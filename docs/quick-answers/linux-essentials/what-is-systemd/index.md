@@ -5,8 +5,8 @@ author:
 description: 'An introduction to systemd and systemd unit files.'
 keywords: ['systemd','linux', 'init', 'unit files']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-29
-modified: 2018-08-29
+published: 2018-09-12
+modified: 2018-09-12
 modified_by:
   name: Linode
 title: "What is systemd?"
@@ -246,8 +246,8 @@ When you start the timer unit, systemd will start it right away. To do this, iss
 
 systemd makes common system administration tasks easier to manage with its `systemctl` and `journalctl` commands. `systemctl` can be used to gather detailed information about the overall state of your server and any individual unit type. It can stop and start the server and modify the system state. In the Timer Unit Files section `systemctl` is used to enable and start an individual timer unit. systemd can be used in a similar way for any unit.
 
-Read the "Introduction to systemctl" guide for a deeper dive into this systemd tool.
+Read our *[Introduction to systemctl](/docs/quick-answers/linux-essentials/introduction-to-systemctl/)* guide for a deeper dive into this systemd tool.
 
 systemd's `journalctl` tool provides a centralized process and system logging tool. This command allows you to query the systemd journal, which creates and maintains indexed journals from logging information that is pooled from different areas within the system; areas like standard output and standard error of service units, log messages via syslog, and kernel log messages. In this way, system administrators can use a single tool to monitor and debug a server.
 
-To learn some commonly used `journalctl` commands, view the "How to use journalctl" guide.
+To learn some commonly used `journalctl` commands, see our guide *[Use journalctl to View Your System's Logs](https://www.linode.com/docs/quick-answers/linux/how-to-use-journalctl/)*.
