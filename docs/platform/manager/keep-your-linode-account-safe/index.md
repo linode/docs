@@ -81,7 +81,7 @@ In this analogy, your card's PIN is akin to your Linode account's password, and 
 
 ### Record Your Scratch Code
 
-In the event that your smartphone is unavailable or your secret key is lost, you can use a one-time scratch code to log back in to the Linode Manager and regenerate the key. Scratch codes are disabled by default. **We highly recommend you generate a scratch code** and store it somewhere accessible.
+In the event that your smartphone is unavailable or your secret key is lost, you can use a one-time scratch code to log back in to the Linode Manager and regenerate the key. Scratch codes are disabled by default. **We highly recommend you generate a scratch code** and store it somewhere accessible and secure.
 
 1.  Return to the **Password & Authentication** tab in the Linode Manager and click the **generate** link to create a scratch code.
 
@@ -122,7 +122,7 @@ IP address whitelisting restricts access to the Linode Manager to a set of IPs t
 
 ### Enable Whitelisting
 
-1.  Find and write down the IP address and netmask assigned to you by your ISP. They will usually be given on a statistics or dashboard page of your home router's admin login.
+1.  Find and write down the IP address and netmask assigned to you by your ISP. They will usually be given on a statistics or dashboard page of your home router's admin panel.
 
 1.  Click the **my profile** link at the top right corner of the Linode Manager.
 
