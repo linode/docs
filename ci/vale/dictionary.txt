@@ -615,6 +615,7 @@ kickban
 kickbans
 kickstarter
 killall
+kinser
 klei
 kloth
 kloxo
