@@ -158,7 +158,7 @@ IPV6_DEFAULTGW=fe80::1%eth0
 IPV6ADDR=2001:db8:2000:aff0::2/128
 
 # Add additional IPv6 addresses, separated by a space.
-IPV6ADDR_SECONDARIES=2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64
+IPV6ADDR_SECONDARIES="2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64"
 {{< /file >}}
 
 ### CentOS 6
@@ -206,7 +206,7 @@ PREFIX2=17
 IPV6ADDR=2001:db8:2000:aff0::2/64
 
 # Add additional IPv6 addresses, separated by a space.
-IPV6ADDR_SECONDARIES=2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64
+IPV6ADDR_SECONDARIES="2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64"
 {{< /file >}}
 
 
