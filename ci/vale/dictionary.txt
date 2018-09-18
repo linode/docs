@@ -1287,6 +1287,7 @@ tomacat
 tomcat6
 torvalds
 toolchain
+tos
 traceroute
 trackbar
 transcoder
