@@ -11,6 +11,7 @@ modified_by:
 published: 2017-06-16
 aliases: ['platform/how-to-use-block-storage-with-your-linode/']
 title: How to Use Block Storage with Your Linode
+cloud_manager_link: platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager
 ---
 
 ![How to Use Block Storage with Your Linode](block-storage-title-graphic.png)
