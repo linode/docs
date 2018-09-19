@@ -60,10 +60,7 @@ Enable two-factor authentication to start using it with your Linode Manager acco
 
     [![The key and QR code for two-factor authentication.](security-tfa-settings-small.png "The key and QR code for two-factor authentication")](security-tfa-settings.png)
 
-    {{< caution >}}
-Do not refresh this page until you have configured Authy on your phone. The key will be shown only once. If you get locked out of your account, [contact support](/docs/support) to regain access.
-{{< /caution >}}
-
+    
 7.  On your smartphone, open Authy.
 
 8.  Tap **Add Account**.
