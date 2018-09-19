@@ -1,3 +1,27 @@
+var client = algoliasearch('KGUN8FAIPF','d4847002cd30392fe0fbd00a1da933ed');
+var index = client.initIndex('linode-docs');
+var search = autocomplete('.search-box', { hint: false }, [
+  {
+    source: autocomplete.sources.hits(index, { hitsPerPage: 10 }),
+    autoselect: true,
+    displayKey: 'title',
+    templates: {
+      suggestion: function(suggestion) {
+        return suggestion.title;
+      }
+    }
+  }
+]).on('autocomplete:selected', function(event, suggestion, dataset) {
+  window.location.href = suggestion.href;
+});
+
+var urlParams = new URLSearchParams(window.location.search);
+var query = urlParams.get('q');
+
+if (query) {
+  search.autocomplete.setVal(query);
+  search.autocomplete.open();
+}
 (function($) {
 
     $("pre").each(function () {
@@ -71,7 +95,7 @@ $(function() {
         $(this).css("cursor", "pointer")
             .click(function() { toggleNoteDisclosure($(this)) });
         $(this).children('div').first()
-            .css("height", '3em')
+            .css("height", '2.8em')
             .css("opacity", .5);
     });
 });
@@ -83,7 +107,7 @@ function toggleNoteDisclosure(disclosureNote) {
     if (disclosureNote.hasClass('disclosed')) {
         disclosableDiv.animate(
             {
-                height: '3em',
+                height: '2.8em',
                 opacity: .5
             }, 
             200,
@@ -254,61 +278,6 @@ function toggleNoteDisclosure(disclosureNote) {
             $('#ds-search').focus();
         });
     }
-
-    Search = {
-
-        init: function() {
-            $(document).ready(function() {
-
-                initModal();
-
-                var setupSearch = function(json) {
-                    var searchStore = {}
-                    searchStore.index = lunr.Index.load(json.index);
-                    searchStore.store = json.store;
-
-                    if (window.location.pathname == '/docs/search/' && Page.param('q')) {
-                        var query = decodeURIComponent(Page.param('q').replace(/\+/g, '%20'));
-                        toggleAndSearch(searchStore, query);
-                    };
-
-                    $(document).on('keypress', '#ss_keyword', function(e) {
-                        if (e.keyCode !== 13) {
-                            return
-                        }
-                        var query = $(this).val();
-                        toggleAndSearch(searchStore, query);
-
-                    });
-
-                    $('#ds-search').keyup(function(e) {
-                        var query = $(this).val();
-                        search(query, searchStore);
-                    });
-
-                    $(document).on('click', '#ds-search-btn', function(e) {
-                        toggleAndSearch(searchStore);
-
-                    });
-
-                    $(document).on('click', '#ds-search-btn-modal', function(e) {
-                        query = $('#ds-search').val();
-                        search(query, searchStore);
-                    });
-                }
-
-                $.getJSON('/docs/build/lunr.json', setupSearch);
-
-            });
-
-        },
-
-    };
-
-
-    // For now we assume that every page that includes this JS needs search.
-    Search.init();
-
 
 })(jQuery);
 

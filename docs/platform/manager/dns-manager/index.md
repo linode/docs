@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2009-07-16
 title: DNS Manager
+cloud_manager_link: platform/manager/dns-manager-new-manager/
 ---
 
 ![DNS Manager Overview](dns-manager-overview.png)
@@ -213,7 +214,7 @@ permission.
 
 ### Wildcards
 
-To create a [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_record), add a new record and enter an asterisk (`*`) in the **Hostname** field.
+To create a [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_record), add a new A/AAAA record and enter an asterisk (`*`) in the **Hostname** field.  Next, enter the IP address and then click **Save Changes**.
 
 ### Subdomains
 

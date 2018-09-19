@@ -20076,6 +20076,63 @@ li.list-group-item {
   margin-left: 5px;
   vertical-align: middle;
 }
+.search-form {
+  position: relative;
+}
+.hits {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  z-index: 10;
+}
+.hit-body {
+  width: 100%;
+  background: white;
+  color: #747474;
+  border: solid 0.5px #e7e6e6;
+  padding: 1em;
+}
+.hit-body:hover {
+  background: #edf7fe;
+  color: white;
+}
+.hit-body a {
+  text-decoration: none;
+  display: inline-block;
+  color: #747474;
+}
+.hit-body a:hover {
+  text-decoration: none;
+  color: #747474;
+}
+.algolia-autocomplete {
+  width: 100%;
+}
+.algolia-autocomplete .aa-input,
+.algolia-autocomplete .aa-hint {
+  width: 100%;
+}
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #cecccc;
+  border-top: none;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  padding: 10px 12px;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background-color: #edf7fe;
+  color: #343434;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+}
 .library-article-blurb {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -21387,9 +21444,20 @@ h1.contribute {
   right: 1.4rem;
   opacity: 0;
 }
-blockquote > div > div.btn-copy > .copy-code {
+#article-body .disclosure-note div.btn-copy > .copy-code {
   padding-top: 0.01rem;
   right: 2.2rem;
+}
+#article-body .disclosure-note .glyphicon.glyphicon-copy {
+  font-size: 1.6rem;
+  color: #a6a6a6;
+}
+blockquote div.btn-copy > .copy-code {
+  padding-top: 0.01rem;
+  right: 2.2rem;
+}
+blockquote div.btn-copy .glyphicon.glyphicon-copy {
+  color: #a6a6a6;
 }
 .copy-code:hover {
   opacity: 1;

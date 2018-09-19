@@ -6,7 +6,7 @@ description: 'Learn how to use Lish as a shell for managing or rescuing your Lin
 keywords: ["Console", "Shell", "Lish", "rescue"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/','networking/using-the-linode-shell-lish/','platform/using-the-linode-shell-lish/']
-modified: 2018-05-08
+modified: 2018-09-17
 modified_by:
   name: Linode
 published: 2009-08-04
@@ -142,6 +142,10 @@ There are two ways to run these commands for a specific Linode. If you are at th
 
 You can also bring up the Linode's console, then type **CTRL+A** then **D** to drop back to the host for that Linode. Now all of the commands above will be run for that Linode specifically. To exit back to the main Lish menu, type `exit`.
 
+{{< note >}}
+You can activate the ability to scroll back through the Lish console by pressing **CTRL-A + ESC**
+{{</ note >}}
+
 ## Advanced Lish Tricks
 
 While the Lish interface as described above is useful as a basic command-line interface, you may find that you want to issue commands to your Linode without going through the Lish login process.
@@ -159,7 +163,6 @@ Similarly, you can generate a view of the log using Lish:
     ssh -t [manager-username]@lish-[location].linode.com [linode-name] logview
 
 This command format works for all Lish functionality.
-
 
 ## Lish Gateway Fingerprints
 

@@ -93,6 +93,10 @@ What does a mid-month bill mean? Your existing active services will stay active.
 
 If you want to stop being billed for a particular Linode service, you need to [remove](#removing-services) it from your account entirely.
 
+## Network Transfer Quota
+
+Your *network transfer quota* represents the total monthly amount of traffic your services can use as part of your Linode plans' basic pricing. It is possible to use more traffic than your account's monthly transfer quota, and this will incur [overages](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work). For more information on your transfer quota, review the [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota) guide.
+
 ## Payment Methods
 
 We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
@@ -120,16 +124,6 @@ You can use the Linode Manager to pay an outstanding balance or prepay for Linod
 7.  Click **Charge Credit Card**.
 
 The payment may take a few minutes to be applied to your account. Click the **Account** subtab to view your new account balance.
-
-## Transfer Overages
-
-If you exceed your monthly network transfer quota, your account will be billed for $0.02/GB at the end of the current month.
-
-## Transfer Proration
-
-Your Linode's transfer quota is prorated based on its creation date. This means that a Linode you create mid-month will have a lower transfer quota than what's listed on our [pricing page](https://www.linode.com/pricing), depending on how much time remains in the month.
-
-The prorated transfer quota is reset at the beginning of the following month.
 
 ## Accessing Billing History
 
@@ -195,6 +189,6 @@ Your account will be canceled and all of your services will be deactivated.
 You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Linode Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the [Removing Services](#removing-services) section for more information.
 {{< /note >}}
 
-## More Information
+## Prepaid Billing
 
-If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information.
+If you created your account before hourly billing was first available and have not converted to hourly billing, your account uses prepaid billing. Review the legacy [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information on how your bills and invoices are prepared.
