@@ -49,9 +49,9 @@ Setting permissions restricts a user's access to certain areas of the Linode Man
 
 Here's how to set a user's access permissions:
 
-1.  Click the **Account** link on the left-hand side of the page.
+1.  Click the **Account** link on the left-hand side of the panel..
 2.  Click the **Users** link.
-3.  Click on the user in the list and select the **User Permissions** tab. The webpage shown below appears.
+3.  Click on the user in the list and select the **User Permissions** tab.
 
     [![Configure User permissions in the Linode Manager.](accounts-user-permissions-small.png "Configure User permissions in the Linode Manager")](accounts-user-permissions.png)
 
@@ -61,7 +61,7 @@ Here's how to set a user's access permissions:
 Granting access to settings denoted with a dollar sign ($) will allow the user to perform actions that incur billing costs, such as adding or resizing a Linode.
 {{< /note >}}
 
-1.  Select the appropriate permissions (None, Read Only, or Read-Write) in the **Specific Grants** section to allow the user access your Linodes, StackSripts, Images, NodeBalancers and Domains.
+1.  Select the appropriate permissions (None, Read Only, or Read-Write) in the **Permissions** section to allow the user access your Linodes, StackSripts, Images, NodeBalancers and Domains.
 2.  When you have finished configuring the user's permissions, click **Save**. The user's permissions will be saved and effective immediately.
 
 ### Recovering a Lost Username
@@ -100,7 +100,7 @@ Here's how to update the contact information and the email address on the *Accou
 
 1.  Click the **Account** link on the left-hand side of the Manager.
 1.  Click the **Account & Billing** tab.
-1.  Expand **Update Contact Information** under **Billing Account** and update the contact information and the email address for the account.
+1.  Expand **Update Contact Information** and update the contact information and the email address for the account.
     [![Update your Contact Information in the Linode Manager](accounts-update-billing-info-small.png "Update your Contact Information in the Linode Manager")](accounts-update-billing-info.png)
 2.  Click **Save**.
 
