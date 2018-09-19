@@ -7,7 +7,7 @@ og_description: 'This guide serves as a starting point from which to secure your
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
-modified: 2018-04-16
+modified: 2018-09-19
 modified_by:
   name: Jared Kobos
 published: 2012-02-17
@@ -151,7 +151,7 @@ If you've already created an RSA key-pair, this command will overwrite it, poten
 
     Finally, you'll want to set permissions for the public key directory and the key file itself:
 
-        sudo chmod 700 -R ~/.ssh && chmod 600 ~/.ssh/authorized_keys
+        sudo chmod -R 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 
     These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on [how to modify file permissions](/docs/tools-reference/tools/modify-file-permissions-with-chmod/).
 
