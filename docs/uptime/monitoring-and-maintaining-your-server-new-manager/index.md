@@ -1,9 +1,9 @@
-0---
+---
 author:
   name: Linode
   email: docs@linode.com
-description: This guide introdues concepts and tools for monitoring and maintaining your server.
-og_description: This guide introdues concepts and tools for monitoring and maintaining your server.
+description: This guide introduces concepts and tools for monitoring and maintaining your server.
+og_description: This guide introduces concepts and tools for monitoring and maintaining your server.
 keywords: ["lassie", "monitor", "monitoring", "maintaining", "maintenance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['monitoring-and-maintaining/']
