@@ -1,4 +1,4 @@
----
+0---
 author:
   name: Linode
   email: docs@linode.com
@@ -45,7 +45,7 @@ Shutdown Watchdog, also known as *Lassie*, is a Linode Manager feature capable o
 
 To turn Lassie on and off:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Manager](https://cloud.linode.com).
 2.  Click the **Linodes** page.
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The Shutdown Watchdog settings appear, as shown below.
@@ -77,7 +77,7 @@ The Linode Manager allows you to configure *email alerts* that automatically not
 
 To turn on and customize the alerts:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Manager](https://cloud.linode.com).
 2.  Click the **Linodes** page.
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The *Notification Thresholds* settings appear, as shown below.
@@ -158,7 +158,7 @@ To check for a new kernel and start using it on your Linode:
 Linux version 4.15.12-x86_64-linode105 (maker@build.linode.com) (gcc version 4.9.2 (Debian 4.9.2-10+deb8u1)) #1 SMP Thu Mar 22 02:13:40 UTC 2018
 {{< /output >}}
 
-3.  Log in to the [Linode Manager](https://manager.linode.com).
+3.  Log in to the [Linode Manager](https://cloud.linode.com).
 4.  Click the **Linodes** tab.
 5.  Select your Linode. The Linode's dashboard appears.
 6.  Select the active configuration profile by clicking the **Edit** link, as shown below.
