@@ -2,17 +2,17 @@
 author:
   name: Linode
   email: docs@linode.com
-description: This guide introdues concepts and tools for monitoring and maintaining your server.
-og_description: This guide introdues concepts and tools for monitoring and maintaining your server.
+description: This guide introduces concepts and tools for monitoring and maintaining your server.
+og_description: This guide introduces concepts and tools for monitoring and maintaining your server.
 keywords: ["lassie", "monitor", "monitoring", "maintaining", "maintenance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['monitoring-and-maintaining/']
-modified: 2018-05-01
+modified: 2018-08-21
 modified_by:
   name: Linode
 published: 2012-08-22
 title: Monitoring and Maintaining Your Server
-cloud_manager_link: uptime/monitoring-and-maintaining-your-server-new-manager/
+hiddenguide: true
 ---
 
 ![Monitoring and Maintaining Your Server](monitoring-and-maintaining-your-server.jpg)
@@ -45,15 +45,14 @@ Shutdown Watchdog, also known as *Lassie*, is a Linode Manager feature capable o
 
 To turn Lassie on and off:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab.
+1.  Log in to the [Linode Manager](https://cloud.linode.com).
+2.  Click the **Linodes** page.
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The Shutdown Watchdog settings appear, as shown below.
 
-    [![Configuring Shutdown Watchdog](1105-monitor3-small.png)](1107-monitor3.png)
+    [![Configuring Shutdown Watchdog](shutdown-watchdog-small.png)](shutdown-watchdog.png)
 
-5.  Select an option from the **Lassie is currently** menu, as shown below.
-6.  Click **Save Changes**.
+5.  Toggle the box to turn Shutdown Watchdog on.
 
 Once Lassie is enabled, your Linode will automatically reboot if it is unexpectedly powered off in the future.
 
@@ -65,10 +64,10 @@ Once Lassie is enabled, your Linode will automatically reboot if it is unexpecte
 
 If you're new to performance monitoring, you can get started by logging in to the Linode Manager. There are four simple graphs available on the Dashboard and in the Graphs section:
 
--   **CPU Utilization:** Monitor how your Linode's CPU cores are being utilized. Note that each of your Linode's CPU cores is capable of 100% utilization, which means you could see this graph spike well over 100%, depending on your Linode plan size.
--   **Network Traffic:** Keep tabs on how much incoming and outgoing bandwidth your server is using.
+-   **CPU %:** Monitor how your Linode's CPU cores are being utilized. Note that each of your Linode's CPU cores is capable of 100% utilization, which means you could see this graph spike well over 100%, depending on your Linode plan size.
+-   **IPv4 Network Traffic:** Keep tabs on how much incoming and outgoing bandwidth your server is using.
 -   **IPv6 Network Traffic:** Wondering if any of your visitors are using IPv6? Check this graph to see how much bandwidth has been transferred over IPv6.
--   **Disk IO:** Watch for [disk input/output bottlenecks](/docs/troubleshooting/troubleshooting/#is-your-disk-full).
+-   **Disk I/O:** Watch for [disk input/output bottlenecks](/docs/troubleshooting/troubleshooting/#is-your-disk-full).
 
 When you first start monitoring the graphs, you won't know what numbers are normal. Don't worry. With time and practice, you'll learn what the graphs are supposed to look like when your server is operating normally. Then you'll be able to spot performance abnormalities before they turn into full-blown problems.
 
@@ -78,16 +77,16 @@ The Linode Manager allows you to configure *email alerts* that automatically not
 
 To turn on and customize the alerts:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab.
+1.  Log in to the [Linode Manager](https://cloud.linode.com).
+2.  Click the **Linodes** page.
 3.  Select your Linode. The Linode's dashboard appears.
-4.  Click the **Settings** tab. The *Email Alert Thresholds* settings appear, as shown below.
+4.  Click the **Settings** tab. The *Notification Thresholds* settings appear, as shown below.
 
-    [![Configuring Linode Manager Email Alerts](1104-monitor2-small.png)](1103-monitor2.png)
+    [![Configuring Linode Manager Email Alerts](notification-thresholds-small.png)](notification-thresholds.png)
 
-5.  To enable an email alert, select the **Enabled** checkbox.
+5.  To enable an email alert, toggle the appropriate box.
 6.  To configure the threshold for an alert, set a value in the text field.
-7.  Click **Save Changes** to save the email alert thresholds.
+7.  Click **Save** to save the email alert thresholds.
 
 You have successfully configured email alerts in the Linode Manager.
 
@@ -159,19 +158,21 @@ To check for a new kernel and start using it on your Linode:
 Linux version 4.15.12-x86_64-linode105 (maker@build.linode.com) (gcc version 4.9.2 (Debian 4.9.2-10+deb8u1)) #1 SMP Thu Mar 22 02:13:40 UTC 2018
 {{< /output >}}
 
-3.  Log in to the [Linode Manager](https://manager.linode.com).
+3.  Log in to the [Linode Manager](https://cloud.linode.com).
 4.  Click the **Linodes** tab.
 5.  Select your Linode. The Linode's dashboard appears.
-6.  Select the active configuration profile by clicking the link, as shown below.
+6.  Select the active configuration profile by clicking the **Edit** link, as shown below.
 
-    ![Selecting the active configuration profile](configuration-profile-select.png)
+    [![Selecting the active configuration profile](edit-configuration-menu-small.png)](edit-configuration-menu.png)
 
 7.  From the **Kernel** menu, verify that **GRUB 2** is selected:
 
-    ![Selecting the latest kernel](grub2.png)
+    ![Selecting the latest kernel](kernel-menu.png)
 
-8.  If you selected a new kernel, click **Save Changes**. The Linode's dashboard appears.
-9. Click **Reboot** to reboot your Linode and start using the new kernel.
+8.  If you selected a new kernel, click **Submit**. The Linode's dashboard appears.
+9.  Select **Reboot** from the status menu to reboot your Linode and start using the new kernel.
+
+    ![Reboot your Linode](reboot.png)
 
 ### Upgrade to a New Release
 
