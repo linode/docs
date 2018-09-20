@@ -14,11 +14,13 @@ external_resources:
 keywords: ['elastic', 'elasticsearch', 'plugins', 'search', 'analytics', 'search engine']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-09
-modified: 2018-01-09
+modified: 2018-09-20
 modified_by:
   name: Linode
 title: 'How to Install and Use Elasticsearch Plugins'
 ---
+
+![banner_image](How_to_Install_and_Use_Elasticsearch_Plugins_smg.jpg)
 
 ## What are Elasticsearch Plugins?
 

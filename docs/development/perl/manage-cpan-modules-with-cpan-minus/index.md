@@ -6,7 +6,7 @@ description: 'Use cpanminus to easily install and manage Perl modules.'
 og_description: "This guide shows how to use cpanminus to easily install and manage Perl modules."
 keywords: ["cpan", "perl", "cpanm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-28
+modified: 2018-09-20
 aliases: ['linux-tools/utilities/cpanm/','applications/development/manage-cpan-modules-with-cpan-minus/','development/manage-cpan-modules-with-cpan-minus/']
 modified_by:
   name: Linode
@@ -16,6 +16,8 @@ external_resources:
  - '[cpanminus Documentation](http://search.cpan.org/~miyagawa/App-cpanminus-0.9929/lib/App/cpanminus.pm)'
  - '[cpanminus Development](http://github.com/miyagawa/cpanminus/)'
 ---
+
+![banner_image](Manage_CPAN_Modules_with_cpanminus_smg.jpg)
 
 CPAN, the Comprehensive Perl Archive Network, is the primary source for publishing and fetching the latest modules and libraries for the Perl programming language. The default method for installing Perl modules, using the **CPAN Shell**, provides users with a great deal of power and flexibility, but this comes at the cost of a complex configuration and an inelegant default setup.
 

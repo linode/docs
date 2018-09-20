@@ -18,6 +18,8 @@ external_resources:
 - '[Official Yubico PAM Module Documentation](https://developers.yubico.com/yubico-pam/)'
 ---
 
+![banner_image](How_to_use_a_YubiKey_for_Two_Factor_Secure_Shell_Authentication_smg.jpg)
+
 ## What is Yubikey?
 
 [YubiKeys](https://www.yubico.com/products/yubikey-hardware/yubikey4/) are small USB dongles that you can plug into your computer. They can simulate keyboard input, allowing you to enter One Time Passwords (OTPs) with the press of a button to authenticate with services like Google, Dropbox and GitHub.

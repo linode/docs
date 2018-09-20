@@ -7,13 +7,15 @@ og_description: 'fsck is the Linux file system consistency check utility. This g
 keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-27
-modified: 2018-04-27
+modified: 2018-09-20
 modified_by:
   name: Linode
 title: 'How to use fsck to Find and Repair Disk Errors and Bad Sectors'
 external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
 ---
+
+![banner_image](How_to_use_fsck_to_Find_and_Repair_Disk_Errors_and_Bad_Sectors_smg.jpg)
 
 This guide is part of a series on Linux commands and features. Not all commands may be relevant to Linode-specific hardware, and are included here to provide an easy to access reference for the Linux community. If you have a command or troubleshooting tip that would help others, please submit a pull request or comment.
 
