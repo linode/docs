@@ -13,6 +13,8 @@ published: 2010-10-25
 title: Download Resources from the Command Line with wget
 ---
 
+![Banner_image](Download_Resources_from_the_Command_Line_with_wget_smg.jpg)
+
 ## What is wget?
 
 `wget` is a command line utility that retrieves files from the internet and saves them to the local file system. Any file accessible over HTTP or FTP can be downloaded with `wget`. `wget` provides a number of options to allow users to configure how files are downloaded and saved. It also features a recursive download function which allows you to download a set of linked resources for offline use.
