@@ -7,7 +7,7 @@ description: Our guide to billing and payments
 keywords: ["prepaid", "billing", "payments", "credit", "referral", "invoice"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['prepaid-billing/','platform/prepaid-billing-and-payments-legacy/']
-modified: 2017-02-15
+modified: 2018-09-20
 modified_by:
   name: Linode
 published: 2012-04-05
@@ -25,6 +25,8 @@ To convert your prepaid account to Hourly billing, see [this guide](/docs/platfo
 ## How Prepaid Billing Works
 
 All services are billed automatically on the first of the month, and all fees billed to your account are prorated for the current billing cycle. This means that if you sign up or purchase extras in the middle of the billing cycle, you will be charged a prorated amount for the amount of time left in the cycle. At the beginning of the next billing cycle, your account will be billed the full cost of your Linode and any extra services.
+
+Linode previously provided a 10% discount for annual prepayment and a 15% discount for biennial prepayment. We no longer offer these discounts.
 
  {{< note >}}
 If you sign up after the 19th of the month, your account will be billed for the time left in the current month, plus the full amount of the next month.
@@ -47,10 +49,6 @@ You can use the Linode Manager to pay an outstanding balance or prepay for Linod
 7.  Click **Charge Credit Card**.
 
 The payment may take a few minutes to be applied to your account. Click the **Account** subtab to view your new account balance.
-
-### Discounts for Prepayment
-
-Linode provides a 10% discount for annual prepayment, and a 15% discount for biennial prepayment. To prepay for a year or more of service and receive your discount, please [contact support](/docs/support).
 
 ## Bandwidth Overages
 
