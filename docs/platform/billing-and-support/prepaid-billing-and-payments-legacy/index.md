@@ -7,7 +7,7 @@ description: Our guide to billing and payments
 keywords: ["prepaid", "billing", "payments", "credit", "referral", "invoice"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['prepaid-billing/','platform/prepaid-billing-and-payments-legacy/']
-modified: 2017-02-15
+modified: 2018-09-20
 modified_by:
   name: Linode
 published: 2012-04-05
@@ -50,7 +50,7 @@ The payment may take a few minutes to be applied to your account. Click the **Ac
 
 ### Discounts for Prepayment
 
-Linode provides a 10% discount for annual prepayment, and a 15% discount for biennial prepayment. To prepay for a year or more of service and receive your discount, please [contact support](/docs/support).
+Linode previously provided a 10% discount for annual prepayment and a 15% discount for biennial prepayment. We no longer offer these discounts.
 
 ## Bandwidth Overages
 
