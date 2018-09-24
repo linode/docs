@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2013-05-02
 title: How to Keep Your Linode Account Safe
+cloud_manager_link: security/linode-manager-security-controls-new-manager
 ---
 
 <!-- ![Linode Manager Security Controls](Linode_Manager_Security_Controls_smg.jpg) -->
