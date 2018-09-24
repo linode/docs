@@ -52,7 +52,7 @@ There is no default logging when using a StackScript. Output is sent to the cons
 
     [![A search for 'wordpress.'](stackscripts-search-wordpress-small.png "A search for 'wordpress.'")](stackscripts-search-wordpress.png)
 
-2.  For this example we'll select the first search result. This brings us to a page where we can define the variables that will go into the StackScript. In this case, the MySQL root password and WordPress database name. The other options are standard whenever you deploy a new Linode.
+2.  For this example we'll select the first search result. This brings up a panel underneath the "Select StackScript" panel where we can define the variables that will go into the StackScript. Each StackScript has a different set of variables that are used when the script is run. The WordPress StackScript requires a root password for MySQL and a database name, along with the information required for deploying any new Linode.
 
     ![StackScript options](stackscripts-wordpress-options.png "Stackscript options.")
 
