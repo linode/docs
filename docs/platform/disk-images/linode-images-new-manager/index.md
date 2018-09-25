@@ -38,7 +38,7 @@ While an image can be captured while your Linode is running, we would recommend 
 
     ![Create an Image menu](images-create-image-menu.png "Create an Image menu.")
 
-3.  Once you click the **Submit** button, your image will be frozen for later use. You can view the progress under the bell notifications at the top of the page.
+3.  Once you click the **Create** button, your image will be frozen for later use. You can view the progress under the bell notifications at the top of the page.
 
     ![Image creation status under the bell notifications.](images-image-being-created.png "Image creation status under the bell notifications.")
 
