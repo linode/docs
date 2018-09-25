@@ -179,7 +179,7 @@ If you have an outstanding balance, you will need to make a manual payment to br
 Our services are provided without a contract, so you're free to remove services from your account at any time. Here's how:
 
 1.  Log in to the [Linode Manager](http://cloud.linode.com).
-2.  To remove a Linode from your account, select **Linodes**. From the Lindode's menu select **Settings**. Expand the **Delete Linode** box and click **Delete**.
+2.  To remove a Linode from your account, select **Linodes**. From the Linode's menu select **Settings**. Expand the **Delete Linode** box and click **Delete**.
 3.  To remove a NodeBalancer from your account, select **NodeBalancers**. Open the menu of the NodeBalancer you would like to remove, then select **Remove**.
 4.  To remove the Linode Backup Service, select **Linodes**. Select the corresponding Linode. Under the **Backups** tab click the **Cancel Backups** button at the bottom of the page.
 
