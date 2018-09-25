@@ -34,7 +34,7 @@ While an image can be captured while your Linode is running, we would recommend 
 
     [![Select 'Add an Image'](images-add-an-image-small.png "Select 'Add an Image.')](images-add-an-image.png)
 
-2.  In the **Create an Image** menu select the Linode and disk you would like to freeze, and provide a label. You may also add an optional description of the image. Then, click **Submit**.
+2.  In the **Create an Image** menu select the Linode and disk you would like to freeze, and provide a label. You may also add an optional description of the image. Then, click **Create**..
 
     ![Create an Image menu](images-create-image-menu.png "Create an Image menu.")
 
