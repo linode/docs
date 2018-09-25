@@ -44,7 +44,7 @@ Additionally, NodeBalancer will watch each backend for failure, rerouting users 
 
 ## Configuring a NodeBalancer
 
-Sticking with the simple web application example above, the backend Linode currently powering it must have a private IP address. If it does not, add one now and configure the Linode for [static networking](/docs/networking/configuring-static-ip-interfaces/) -- this will also be a good opportunity to do the same for the database server, since private network traffic is unbilled. Reboot if necessary, and configure your web application to respond on the private IP address, if it is not already.
+Sticking with the simple web application example above, the backend Linode currently powering it must have a private IP address. If it does not, add one now -- this will also be a good opportunity to do the same for the database server, since private network traffic is unbilled. Reboot if necessary, and configure your web application to respond on the private IP address, if it is not already.
 
 1.  Visit the NodeBalancers page in the Linode Manager and select **Add a NodeBalancer**.
 
@@ -94,13 +94,13 @@ Health checks are transmitted with a Host header (in HTTP/1.0 mode).
 
 ## Putting the NodeBalancer in Charge
 
-Your NodeBalancer is now working and is able to pass traffic to your web application. It is important to note at this point that configuring the NodeBalancer has not impacted your application's normal operations at all -- you can test NodeBalancer without your users ever knowing. The only exception to this would be when adding a private IP address, if necessary.
+Your NodeBalancer is now working and is able to pass traffic to your web application. It is important to note at this point that configuring the NodeBalancer has not impacted your application's normal operations at all -- you can test NodeBalancer without your users ever knowing.
 
 Once you are satisfied that NodeBalancer is working normally, you can switch your web application's traffic over to it through DNS.
 
 1.  On the NodeBalancer's overview, you can see its IP address. Take note of the IP address, to use in the A record for your domain.
 
-2.  Edit or create an A record for `www.nodebalancerexample.com`, pointing to your NodeBalancer's IP address.
+2.  Edit or create an A record for your website's domain name, pointing to your NodeBalancer's IP address.
 
     [![Adding an A Record.](nodebalancers-add-a-name-small.png "Adding an A Record")](nodebalancers-add-a-name.png)
 
@@ -114,6 +114,6 @@ On another Linode, make an exact copy of your current web server. The Linode bac
 
 [![Adding another backend to the NodeBalancer's configuration.](nodebalancers-backend-nodes2-small.png "Adding another backend to the NodeBalancer's configuration")](nodebalancers-backend-nodes2.png)
 
-Once the configuration is sent to the backend, users will be transparently balanced over the two Linodes and each will be monitored for health. This configuration is very easy to work with, as upgrades can be rolled out to each backend without disrupting service and backends can be taken in and out of rotation at will.
+Once the configuration is sent to the backend, users will be balanced over the two Linodes and each will be monitored for health. This configuration is very easy to work with, as upgrades can be rolled out to each backend without disrupting service and backends can be taken in and out of rotation at will.
 
 This is just the beginning; NodeBalancers are extremely flexible and cater to a lot of needs. From here, the API can be used to add many backends. Multiple ports on one backend can be balanced for complex setups. Additionally, new tools like *memcached* can be introduced to the application to allow session stickiness to become irrelevant.
