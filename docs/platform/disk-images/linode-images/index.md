@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2014-09-25
 title: Linode Images
+cloud_manager_link: platform/disk-images/linode-images-new-manager
 ---
 
 ![Linode Images](linode-images.jpg)
