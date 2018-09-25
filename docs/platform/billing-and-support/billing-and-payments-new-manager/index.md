@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2014-02-28
 title: Billing and Payments
-cloud_manager_link: platform/billing-and-support/billing-and-payments-new-manager
+hiddenguide: true
 ---
 
 We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/docs/platform/billing-and-support/support/).
@@ -74,17 +74,18 @@ Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.
 
 To view your current balance, follow the steps below. This shows you the sum of all Linode services used so far in the month, down to the hour.
 
-1.  Log in to the [Linode Manager](http://manager.linode.com).
-2.  Select the **Account** tab.
-3.  In the **Account** tab, in the **Recent Billing Activity and Account Balance** section, you can see the **Current Balance**:
+1.  Log in to the [Linode Manager](http://cloud.linode.com).
+2.  Select **Account**.
+3.  Select **Account & Billing**.
+4.  Under **Billing Information**, expand the **Make a Payment** section. There you can see the **Current Balance**:
 
-    [![This customer has a $45.60 outstanding balance, shown next to the Current Balance.](1622-manager_account_sm.png)](1623-manager_account.png)
+    [![This customer has a $0 outstanding balance](billing-current-balance-small.png "This customer has a $0 outstanding balance.")](billing-current-balance.png)
 
-Here, you can keep track of your outstanding balance. In the example above, the customer has used $45.60 worth of Linode services in the month so far. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
+Here, you can keep track of your outstanding balance. In the example above, the customer has not accrued a balance for Linode services in the month so far. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
 
 ## Mid-Month Billing
 
-You may receive a mid-month bill from Linode if you reach a certain threshold of Linode services used within a single month. For many users, this amount will be **$50.00**, although your account history with Linode can adjust that amount. In general, a history of on-time payments to Linode will increase the threshold amount. In the example image in the previous section, the user received a mid-month bill for $50.16 on February 9th.
+You may receive a mid-month bill from Linode if you reach a certain threshold of Linode services used within a single month. For many users, this amount will be **$50.00**, although your account history with Linode can adjust that amount. In general, a history of on-time payments to Linode will increase the threshold amount.
 
 What does a mid-month bill mean? Your existing active services will stay active. However, you must pay the mid-month bill before you can activate additional Linode services. Once your payment is processed, you may continue adding new services.
 
@@ -94,21 +95,18 @@ What does a mid-month bill mean? Your existing active services will stay active.
 
 If you want to stop being billed for a particular Linode service, you need to [remove](#removing-services) it from your account entirely.
 
-## Network Transfer Quota
-
-Your *network transfer quota* represents the total monthly amount of traffic your services can use as part of your Linode plans' basic pricing. It is possible to use more traffic than your account's monthly transfer quota, and this will incur [overages](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work). For more information on your transfer quota, review the [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota) guide.
-
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
+We accept Visa, MasterCard, Discover, and American Express. We also accept <!-- PayPal, as well as -->checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
 
-The following video will show you how to make a payment via PayPal:
+<!-- The following video will show you how to make a payment via PayPal:
 
-{{< youtube 9BG6CGsIZwc >}}
+{{< youtube 9BG6CGsIZwc >}} -->
 
-{{< note >}}
+<!-- {{< note >}}
 PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card.
 {{< /note >}}
+-->
 
 If you overpay, credit will be applied to your account; this allows you to prepay if desired. Service credit is always used before charging the credit card on file for ongoing service.
 
@@ -116,32 +114,43 @@ If you overpay, credit will be applied to your account; this allows you to prepa
 
 You can use the Linode Manager to pay an outstanding balance or prepay for Linode services. Here's how:
 
-1.  Log in to the [Linode Manager](http://manager.linode.com).
-2.  Click the **Account** tab.
-3.  Click the **Make a Payment** tab.
-4.  Enter the amount of money you would like to pay in the **Amount to Charge** field.
-5.  Enter the CVV number on the back of you credit card in the **CVV** field.
-6.  Click **Continue**. A verification prompt appears.
-7.  Click **Charge Credit Card**.
+1.  Log in to the [Linode Manager](http://cloud.linode.com).
+2.  Select **Account**.
+3.  Select **Account & Billing**.
+4.  Expand the **Make a Payment** box.
+5.  Enter the amount of money you would like to pay in the **Amount to Charge** field.
+6.  Enter the CVV number on the back of your credit card in the **CVV** field.
+7.  Click **Confirm Payment**.
 
-The payment may take a few minutes to be applied to your account. Click the **Account** subtab to view your new account balance.
+The payment may take a few minutes to be applied to your account.
+
+## Transfer Overages
+
+If you exceed your monthly network transfer quota, your account will be billed for $0.02/GB at the end of the current month.
+
+## Transfer Proration
+
+Your Linode's transfer quota is prorated based on its creation date. This means that a Linode you create mid-month will have a lower transfer quota than what's listed on our [pricing page](https://www.linode.com/pricing), depending on how much time remains in the month.
+
+The prorated transfer quota is reset at the beginning of the following month.
 
 ## Accessing Billing History
 
 All of your billing history is stored in the Linode Manager. Here's how to access it:
 
-1.  Log in to the [Linode Manager](http://manager.linode.com).
-2.  Select the **Account** tab.
-3.  Select the **Billing History** tab.
+1.  Log in to the [Linode Manager](http://cloud.linode.com).
+2.  Select **Account**.
+3.  Select **Account & Billing**.
+4.  Expand the **Recent Invoices** and **Recent Payments** boxes.
 
-Select an invoice to view the charges for a particular month. You can also download invoices in PDF format.
+Select an invoice to view the charges for a particular month. <!-- You can also download invoices in PDF format. -->
 
 ## Referral Credits
 
 You can receive service credit by referring new users to Linode. When you refer someone who maintains at least one active Linode for 90 days, your account will be issued a $20 service credit. Here's how to find your account referral code and URL:
 
-1.  Log in to the [Linode Manager](http://manager.linode.com).
-2.  Select the **my profile** link.
+1.  Log in to the [Linode Manager](http://cloud.linode.com).
+2.  Select the **My Profile** link by clicking on your username at the top of the page.
 3.  Select the **Referrals** tab.
 4.  The referral code and URL are listed under the **Referrals** section. You can provide the code to friends and use the URL on your website to generate referrals.
 
@@ -151,13 +160,15 @@ Referral service credits must be used to purchase Linode services, and cannot be
 
 Keep your credit card information up to date to prevent service interruptions. Here's how:
 
-1.  Log in to the [Linode Manager](http://manager.linode.com).
-2.  Click the **Account** tab.
-3.  Click the **Update Credit Card** tab.
-4.  Enter your credit card number and the card's expiration date.
-5.  Click **Update Credit Card**.
+1.  Log in to the [Linode Manager](http://cloud.linode.com).
+2.  Select **Account**.
+3.  Select **Account & Billing**.
+4.  Expand the **Update Credit Card** box and enter your credit card number and the card's expiration date.
+5.  Click **Save**.
 
 Your credit card information will be updated.
+
+  [![Update your credit card information.](billing-change-card-small.png "Update your credit card.")](billing-change-card.png)
 
  {{< note >}}
 If you have an outstanding balance, you will need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
@@ -167,18 +178,18 @@ If you have an outstanding balance, you will need to make a manual payment to br
 
 Our services are provided without a contract, so you're free to remove services from your account at any time. Here's how:
 
-1.  Log in to the [Linode Manager](http://manager.linode.com).
-2.  To remove a Linode from your account, click the **Linodes** tab, and then select the **Remove** link next to the Linode you want to remove.
-3.  To remove extras from your account, click the **Linodes** tab, select a Linode, click the **Extras** tab, and then select the **Remove** link.
-4.  To remove a NodeBalancer from your account, click the **NodeBalancers** tab, and then select the **Remove** link next to the NodeBalancer you want to remove.
-5.  To remove the Linode Backup Service, go to the **Backups** tab in your Linode's Dashboard, and click the **Cancel Backups** link at the bottom of the page.
+1.  Log in to the [Linode Manager](http://cloud.linode.com).
+2.  To remove a Linode from your account, select **Linodes**. From the Linode's menu select **Settings**. Expand the **Delete Linode** box and click **Delete**.
+3.  To remove a NodeBalancer from your account, select **NodeBalancers**. Open the menu of the NodeBalancer you would like to remove, then select **Remove**.
+4.  To remove the Linode Backup Service, select **Linodes**. Select the corresponding Linode. Under the **Backups** tab click the **Cancel Backups** button at the bottom of the page.
+
 
 ## Canceling Your Account
 
 You can cancel your account and receive a refund. Here's how:
 
-1.  Log in to the [Linode Manager](http://manager.linode.com).
-2.  Click the **Accounts** tab.
+1.  Log in to the [Legacy Linode Manager](http://manager.linode.com).
+2.  Click the **Accounts** link.
 3.  At the bottom of the page, select the **Cancel this Account** link. The cancel account webpage appears.
 4.  If you have a prepaid service credit on your account at the time of cancellation, you are entitled to a refund, minus a $5 processing fee. To request a refund, enter a note in the text field. Note that credits from sources other than prepaying cannot be refunded.
 5.  Select the confirmation checkbox.
@@ -190,6 +201,8 @@ Your account will be canceled and all of your services will be deactivated.
 You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Linode Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the [Removing Services](#removing-services) section for more information.
 {{< /note >}}
 
-## Prepaid Billing
 
-If you created your account before hourly billing was first available and have not converted to hourly billing, your account uses prepaid billing. Review the legacy [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information on how your bills and invoices are prepared.
+
+## More Information
+
+If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information.
