@@ -23,7 +23,7 @@ title: 'Getting Started with NGINX - Part 2: (Slightly More) Advanced Configurat
 
 * You may want to make another backup of your `nginx.conf` so you have a snapshot of the work you've done up to this point:
 
-        cp etc/nginx/nginx.conf etc/nginx/nginx.conf.backup-pt2
+        cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup-pt2
 
 ## Configuration Notes
 
