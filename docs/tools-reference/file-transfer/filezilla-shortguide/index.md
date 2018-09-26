@@ -14,7 +14,7 @@ title: 'Transfer Files with FileZilla'
 headless: true
 ---
 
-1.  Open FileZilla from your Windows start menu, OS X Launchpad, or the launcher provided by your Linux distribution of choice.
+1.  Open FileZilla from your Windows start menu, macOS Launchpad, or the launcher provided by your Linux distribution of choice.
 
 1.  Enter your Linode's IP address or domain name in the `Host` field. Enter the account username you wish to connect as in the `Username` field. Please note that this must be a user account on your Linode; if in doubt, enter `root` to log in as the root user. Enter the account's password in the `Password` field, and enter "22" in the `Port` field. Click **Quickconnect** to initiate the file transfer session.
 

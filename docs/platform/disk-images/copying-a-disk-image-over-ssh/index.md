@@ -107,19 +107,3 @@ You will now need to create a new configuration profile on the receiving Linode 
 2.  Enter the name for the configuration profile in the **Label** field, and in the **Block Device Assignment** section set the `/dev/sda` to the new disk you created earlier in this section of the guide. Set `/dev/sdb` to the swap image. Save changes.
 
 3.  Return to the Linode's dashboard manager, and select the configuration profile that you just created. Click **Reboot** to start the Linode using the disk you just transferred.
-
-### Windows Cygwin Instructions
-
-1.  Download and install [Cygwin](https://www.cygwin.com/)
-
-2.  Install the OpenSSH package, by clicking on the Cygwin install **after** the install succeeds.
-
-    ![Cygwin install package](3.png)
-
-3. Type `openssh` into the search bar, and press install.
-
-    ![Cygwin Openssh](1.png)
-
-4. Test if the `ssh` function of Cygwin works:
-
-    ![Cygwin ssh test](2.png)

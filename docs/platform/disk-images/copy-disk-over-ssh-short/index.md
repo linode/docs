@@ -19,7 +19,7 @@ Downloading your disk will copy a `.img` file to your computer that encapsulates
 
 ### Prepare the Receiving Computer
 
-Verify that the receiving computer has SSH installed. (Most Linux/Unix-like systems have it installed by default.) If you're running Windows locally, you may wish to set up the [Cygwin](http://www.cygwin.com/) compatibility layer to provide a reasonably complete Unix-like environment. Instructions on setting up Cygwin are located [here](/docs/platform/disk-images/copying-a-disk-image-over-ssh/#windows-cygwin-instructions).
+Verify that the receiving computer has SSH installed. (Most Linux/Unix-like systems have it installed by default.) If you're running Windows locally, you may wish to set up the [Cygwin](http://www.cygwin.com/) compatibility layer to provide a reasonably complete Unix-like environment. Instructions on setting up Cygwin are located [here](#windows-cygwin-instructions).
 
 ### Start Your Linode in Rescue Mode
 
@@ -66,6 +66,24 @@ The device `/dev/sda` is used for Linodes running on top of KVM. If your Linode 
     {{< note >}}
 Copying your disk can take a while. Please be patient. If you have a slow internet connection, add the `-C` option to the SSH command; this enables gzip compression for data transfer. If you receive a `Write failed: Broken pipe` error, repeat this process.
 {{< /note >}}
+
+### Windows Cygwin Instructions
+
+1.  Download and install [Cygwin](https://www.cygwin.com/)
+
+2.  Install the OpenSSH package, by clicking on the Cygwin install **after** the install succeeds.
+
+    {{< image src="3.png" alt="Cygwin install package" title="Cygwin install package" >}}
+
+3. Type `openssh` into the search bar, and press install.
+
+    {{< image src="1.png" alt="Cygwin Openssh" title="Cygwin Openssh" >}}
+
+4. Test if the `ssh` function of Cygwin works:
+
+    {{< image src="2.png" alt="Cygwin ssh test" title="Cygwin ssh test" >}}
+
+5. Follow the instructions in the previous sections.
 
 ### Verify the Disk
 
