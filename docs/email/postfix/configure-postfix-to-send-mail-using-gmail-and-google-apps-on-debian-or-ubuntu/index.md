@@ -85,7 +85,7 @@ Usernames and passwords are stored in `sasl_passwd` in the `/etc/postfix/sasl/` 
 {{< /file >}}
 
     {{< note >}}
-smtp.google.com supports message submission over port 587 ([StartTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)) and port 465 ([SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security)). Whichever you choose, be sure the port number is the same in `/etc/postfix/sasl/sasl\\_passwd` and `/etc/postfix/main.cf` below. See Google's [G Suite Administrator Help](https://support.google.com/a/answer/176600?hl=en) for more information.
+The SMTP server address configuration `smtp.gmail.com` supports message submission over port 587 ([StartTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)) and port 465 ([SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security)). Whichever protocol you choose, be sure the port number is the same in `/etc/postfix/sasl/sasl\\_passwd` and `/etc/postfix/main.cf` files. See Google's [G Suite Administrator Help](https://support.google.com/a/answer/176600?hl=en) for more information.
 {{< /note >}}
 
 2.  Create the hash db file for Postfix by running the `postmap` command:
