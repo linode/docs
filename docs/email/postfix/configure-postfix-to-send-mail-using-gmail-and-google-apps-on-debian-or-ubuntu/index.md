@@ -5,9 +5,9 @@ author:
 description: 'Install and configure Postfix on Debian and Ubuntu to send email through Gmail and Google Apps.'
 keywords: ["Postfix", " Ubuntu", " Debian", " SMTP", " Gmail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-05
+modified: 2018-09-27
 modified_by:
-  name: Edward Angert
+  name: Linode
 published: 2016-12-13
 title: Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu
 ---
@@ -84,6 +84,9 @@ Usernames and passwords are stored in `sasl_passwd` in the `/etc/postfix/sasl/` 
 
 {{< /file >}}
 
+    {{< note >}}
+The SMTP server address configuration `smtp.gmail.com` supports message submission over port 587 ([StartTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)) and port 465 ([SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security)). Whichever protocol you choose, be sure the port number is the same in `/etc/postfix/sasl/sasl\\_passwd` and `/etc/postfix/main.cf` files. See Google's [G Suite Administrator Help](https://support.google.com/a/answer/176600?hl=en) for more information.
+{{< /note >}}
 
 2.  Create the hash db file for Postfix by running the `postmap` command:
 
@@ -104,7 +107,7 @@ To restrict access to these files, change their permissions so that only the **r
 
 In this section, you will configure the `/etc/postfix/main.cf` file to use Gmail's SMTP server.
 
-1.  Find and modify `relayhost` in `/etc/postfix/main.cf` to match the following example:
+1.  Find and modify `relayhost` in `/etc/postfix/main.cf` to match the following example. Be sure the port number matches what you specified in `/etc/postfix/sasl/sasl\\_passwd` above.
 
     {{< file "/etc/postfix/main.cf" >}}
 relayhost = [smtp.gmail.com]:587
