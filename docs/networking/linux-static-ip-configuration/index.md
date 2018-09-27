@@ -74,7 +74,7 @@ On the **Remote Access** tab of the Linode Manager, you'll see the following inf
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
 
-### Arch, CoreOS Container Linux, Ubuntu 17.10
+### Arch, CoreOS Container Linux, Ubuntu 17.10, Ubuntu 18.04
 
 Networking in these distributions is managed entirely by *systemd*. See `man systemd-networkd` and `man systemd-resolved` for more information.
 
@@ -110,6 +110,9 @@ Address=2001:db8:2000:aff0::3/32
 
 {{< note >}}
 On Container Linux, you need to rename or remove the original cloud config data so it doesn't take precedence on reboots over the eth0 configuration above. Do this with `sudo mv /var/lib/coreos-install/user_data /var/lib/coreos-install/user_data.bak`.
+{{< /note >}}
+{{< note >}}
+In Ubuntu 18.04, networking services are controlled by netplan. To apply changes to this file, you will need to run `sudo netplan apply`.
 {{< /note >}}
 
 ### CentOS 7, Fedora
