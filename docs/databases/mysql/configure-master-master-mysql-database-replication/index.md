@@ -32,13 +32,13 @@ This guide is written for Debian 9 or Ubuntu 18.04.
 
 1.  Use the following commands to install MySQL on each of the Linodes:
 
-    sudo apt-get update
-    sudo apt-get upgrade -y
-    sudo apt-get install mysql-server mysql-client
+        sudo apt-get update
+        sudo apt-get upgrade -y
+        sudo apt-get install mysql-server mysql-client
 
 2.  Run the MySQL secure installation command. You will be asked to create a root password. It is recommended you select yes to all of the questions:
 
-    mysql_secure_installation
+        mysql_secure_installation
 
 ## Edit MySQL's Configuration
 
