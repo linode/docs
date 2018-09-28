@@ -53,13 +53,13 @@ Clicking on the banner will take you to a new page which shows the estimated dur
 
 The following sequence executes when you start the migration:
 
-1.  Your Linode is gracefully powered down.
+1.  If your Linode is running, your Linode is gracefully powered down.
 
 1.  At the same time, your Linode will be assigned new IP addresses. You will be able to view these new IPs from the [Remote Access tab](/docs/platform/manager/remote-access/) of your Linode's dashboard.
 
 1.  The migration of your Linode is started immediately after the shutdown completes.
 
-1.  When the migration completes, your Linode will be automatically booted in Tokyo 2.
+1.  If the Linode was running before the migration started, it will be automatically booted after the migration completes. If the Linode was not running, it will remain offline after the migration.
 
 You will be able to monitor the progress of your Linode's migration from that Linode's dashboard. While waiting on the migration to complete, [update your DNS records](#update-dns-records) to use your new IP addresses. DNS changes can take time to propagate, so we recommend doing this quickly after the migration is initiated.
 
