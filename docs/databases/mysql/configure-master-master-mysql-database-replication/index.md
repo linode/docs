@@ -80,7 +80,7 @@ auto-increment-offset = 2
 {{< /file >}}
 
 
-2.  For each of the Linodes, edit the `bind-address` configuration in order to use the private IP addresses:
+2. Edit the `bind-address` configuration in order to use the private IP addresses, for each of the Linodes. 
 
     {{< file "/etc/mysql/my.cnf" >}}
 bind-address    = x.x.x.x
