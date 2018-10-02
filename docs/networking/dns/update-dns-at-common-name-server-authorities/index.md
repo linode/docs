@@ -16,6 +16,7 @@ headless: true
 {{< disclosure-note "Updating DNS records at common nameserver authorities" >}}
 The following support documents describe how to update DNS records at common nameserver authorities:
 
+-   [CloudFlare](https://support.cloudflare.com/hc/en-us/articles/200168686-What-do-I-do-if-I-changed-my-server-IP-address-or-hosting-provider-)
 -   [GoDaddy](https://www.godaddy.com/help/manage-dns-zone-files-680)
 -   [DreamHost](https://help.dreamhost.com/hc/en-us/articles/215414867-How-do-I-add-custom-DNS-records)
 -   [Gandi](https://doc.gandi.net/en/dns/zone)
