@@ -32,7 +32,7 @@ Different Linodes will be scheduled to migrate on different dates and times. The
 You are able to move your servers to Tokyo 2 before the scheduled migration dates. We recommend that all customers move their servers early. Moving early will help you better control the uptime of your services.
 
 {{< note >}}
-You will receive a credit on your account equal to three months of service for each of your Tokyo 1 Linodes. This credit will cover the cost of creating new servers in Tokyo 2 if you choose to [clone your Linodes](#clone-your-linodes).
+You will receive a credit on your account equal to three months of service for each of your Tokyo 1 Linodes. This credit will cover the cost of creating new servers in Tokyo 2 if you choose to [clone your Linodes](#option-2-clone-your-linodes).
 {{< /note >}}
 
 ## What are My Options for Migrating?
@@ -104,7 +104,7 @@ If you do not choose to migrate or clone early, Linode will automatically start 
 If Linode initiates your migration when it is scheduled, **your Linode will not be powered on automatically when the migration finishes**. Your Linode is not powered on in order to minimize potential security issues that could result from booting under a new IP assignment.
 {{< /caution >}}
 
-After the scheduled migration completes, you can log into the Linode's dashboard and power it on. You may need to update your new Linode's [network configuration]((#update-your-network-configuration)). Then, [update your DNS records](#update-dns-records). You can also choose to update your DNS records as soon as the migration starts.
+After the scheduled migration completes, you can log into the Linode's dashboard and power it on. You may need to update your new Linode's [network configuration](#update-your-network-configuration). Then, [update your DNS records](#update-dns-records). You can also choose to update your DNS records as soon as the migration starts.
 
 ## Update your Network Configuration
 
