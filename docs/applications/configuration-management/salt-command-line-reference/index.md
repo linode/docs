@@ -32,7 +32,7 @@ Used to issue commands to minions in parallel. `salt` allows you to both control
 |`-v`, `--verbose`|Print extra data like the job ID.|`salt 'minion1' user.add steve --verbose`|
 |`--hide-timeout`|Only print minions which could be reached.|`salt '*' test.ping --hide-timeout`|
 |`-b`, `--batch-size`|Execute on a batch or percentage of minions.|`salt '*' test.ping --batch-size 25%`|
-|`-a`, `--auth`|Use an external authetication medium. You will be prompted for credentials. Options are `auto`, `keystone`, `ldap`, and `pam`. Can be used with `-T`.|`salt -a pam '*' status.meminfo`|
+|`-a`, `--auth`|Use an external authentication medium. You will be prompted for credentials. Options are `auto`, `keystone`, `ldap`, and `pam`. Can be used with `-T`.|`salt -a pam '*' status.meminfo`|
 |`-T`, `--make-token`|Used with `-a`. Creates an authentication token in the active user's home directory that has a default 12 hour expiration time. Token expiration time is set in the Salt master config file.|`salt -T -a pam '*' status.cpuinfo`|
 |`--return`|Used to select an alternative returner. Options are `carbon`, `cassandra`, `couchbase`, `couchdb`, `elasticsearch`, `etcd`, `hipchat`, `local`, `local_cache`, `memcache`, `mongo`, `mysql`, `odbc`, `postgres`, `redis`, `sentry`, `slack`, `sms`, `smtp`, `sqlite3`, `syslog`, and `xmpp`.|`salt '*' status.all_status --return mongo`|
 |`-d`, `--doc`, `--documentation`|Return all available documentation for module function, or all functions if one is not provided.|`salt 'minion3' service.available -d`|
@@ -40,7 +40,7 @@ Used to issue commands to minions in parallel. `salt` allows you to both control
 |`--log-file`|Change the log file path. Defaults to `/var/log/salt/master`|`salt '*' test.ping --log-file /home/salt/log`|
 |`--log-file-level`|Change the logging level of the log file. Same options as `--log-level`|`salt '*' test.ping --log-level all`|
 |`-E`, `--pcre`|Target expression will be interpreted as a Pearl Compatible Regular Expression (PCRE) rather than a shell glob.|`salt -E 'minion[0-9]' service.reload apache2`|
-|`-L`, `--list`|Targest expression will be interpreted as a comma-delimited list.|`salt -L 'minion1,minion2' service.show sshd`|
+|`-L`, `--list`|Target expression will be interpreted as a comma-delimited list.|`salt -L 'minion1,minion2' service.show sshd`|
 |`-G`, `--grain`|Target expression in the form of a glob expression matches a Salt grain. &lt;grain value&gt;:&lt;glob expression&gt;.|`salt -G 'os:Ubuntu' service.available mysql`|
 |`--grain-pcre`|Target expression in the form of a Pearl Compatible Regular Expression matches values returned by Salt grains on the minion.&lt;grain value&gt;:&lt;regular expression&gt;|`salt --grain-pcre 'os:Arch' service.restart apache2`|
 |`-I`, `--pillar`| Use pillar values instead of shell globs to identify targets.|`salt -I 'role:production' test.echo 'playback'`|
@@ -216,7 +216,7 @@ Use SSH transport to execute salt routines.
 |`--roster`|Choose which roster system to use. The default is the flat file roster.|`salt-ssh '192.168.0.0/16' --roster scan pkg.install apache2`|
 |`--roster-file`|Change the roster file directory. The default is the same directory as the master config file.|`salt-ssh 'minion1' --roster-file /path/to/roster test.ping`|
 |`--refresh`, `--refresh-cache`|Use to force refresh the target's data in the master side cache before the auto refresh timeframe has been reached.|`salt-ssh 'minion1' --refresh-cache status.diskstats`|
-|`--max-procs`|The nuber of minions to communicate with concurrently. In general, more connections mean faster communication. Default is 25.|`salt-ssh '*' --max-procs 50 test.ping`|
+|`--max-procs`|The number of minions to communicate with concurrently. In general, more connections mean faster communication. Default is 25.|`salt-ssh '*' --max-procs 50 test.ping`|
 |`-v`, `--verbose`|Display job ID.|`salt-ssh '*' -v test.ping`|
 |`-s`, `--static`|Return minion data as a grouping.|`salt-ssh '*' -s status.meminfo`|
 |`-w`, `--wipe`|Remove salt files when the job is done.|`salt-ssh '*' -w state.apply`|

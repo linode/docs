@@ -888,6 +888,8 @@ ossec
 ostemplate
 osx
 otomen
+outputter
+outputters
 overcommit
 overwatch
 ovpn
@@ -1178,6 +1180,7 @@ sparklines
 spectre
 speedtest
 spf1
+spm
 spork
 sql
 sqlplus
