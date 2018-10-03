@@ -96,7 +96,7 @@ Used to provision virtual machines on public clouds with Salt.
 |`--list-providers`|Display a list of configured providers.|`salt-cloud --list-providers`|
 |`--list-profiles`|Display a list of configured profiles. Supply a cloud provider, such as `linode`, or pass `all` to view all configured profiles.|`salt-cloud --list-profiles linode`|
 |`--list-locations`|Display a list of available locations. Supply a cloud provider, such as `linode`, or pass `all` to view all location for configured profiles.|`salt-cloud --list-locations linode`|
-|`--list-images`|Display a list of avaialble images. Supply a cloud provider, such as `linode`, or pass `all` to view all images for configured profiles.|`salt-cloud --list-images linode`|
+|`--list-images`|Display a list of available images. Supply a cloud provider, such as `linode`, or pass `all` to view all images for configured profiles.|`salt-cloud --list-images linode`|
 |`--list-sizes`|Display a list of available sizes. Supply a cloud provider, such as `linode`, or pass `all` to view all sizes for configured profiles.|`salt-cloud --list-sizes linode`|
 |`--out`| Choose an alternative outputter to display returned data. Available outputters are: `grains`, `highstate`, `json`, `key`, `overstatestage`, `pprint`, `raw`, `txt`, `yaml`.| `salt-call test.version --out json`|
 
@@ -115,7 +115,7 @@ Used to copy files from the master to all salt minions that match a specific tar
 |`--log-file`|Change log file path. Defaults to `/var/log/salt/master`.|`salt-cp '*' --logfile /home/salt/log/minion /file/to/copy /destination`|
 |`--log-file-level`|Change logfile log level. Defaults to `warning`. Available options are `all`, `garbage`, `trace`, `debug`, `info`, `warning`, `error`, and `quiet`.|`salt-cp '*' --log-file-level all /file/to/copy /destination`|
 |`-E`, `--pcre`|Target expression will be interpreted as a Pearl Compatible Regular Expression (PCRE) rather than a shell glob.|`salt-cp -E 'minion[0-9]' /file/to/copy /destination`|
-|`-L`, `--list`| Targest expression will be interpreted as a comma-delimited list.|`salt -L 'minion1,minion2' /file/to/copy /destination`|
+|`-L`, `--list`| Target expression will be interpreted as a comma-delimited list.|`salt -L 'minion1,minion2' /file/to/copy /destination`|
 |`-G`, `--grain`|Target expression matches a Salt grain. &lt;grain value&gt;:&lt;glob expression&gt;.|`salt -G 'os:Ubuntu' /file/to/copy /destination`|
 |`--grain-pcre`|Target expression in the form of a Pearl Compatible Regular Expression matches values returned by Salt grains on the minion.&lt;grain value&gt;:&lt;regular expression&gt;|`salt-cp --grain-pcre 'os:Arch' /file/to/copy /destination`|
 |`-C`, `--chunked`|Use chunked mode to copy files. Supports large files, recursive directories copying and compression.|`salt-cp -C /some/large/file /destination`|

@@ -987,6 +987,7 @@ psql
 psudo
 psycop2
 pty
+pubkey
 publickey
 puppetd
 puppetmaster
