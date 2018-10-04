@@ -10,12 +10,15 @@ modified: 2018-10-03
 modified_by:
   name: Linode
 title: "SaltStack Command Line Reference"
+contributor:
+    name: "Andy Stevens"
+    link: "https://github.com/andystevensname"
 external_resources:
 - '[SaltStack Command Line Documentation](https://docs.saltstack.com/en/latest/ref/cli/index.html)'
 - '[Linode Cloud Module](https://docs.saltstack.com/en/latest/ref/clouds/all/salt.cloud.clouds.linode.html)'
 ---
 
-SaltStack is a powerful configuration management tool. The following is a quick-reference guide for for Salt's command line interface (cli).
+[SaltStack](https://github.com/saltstack/salt) is a powerful configuration management tool. The following is a quick-reference guide for Salt's command line interface (CLI).
 
 ## salt
 
@@ -29,27 +32,27 @@ Used to issue commands to minions in parallel. `salt` allows you to both control
 |`-s`, `--static`|Only return data after all minions have returned.|`salt --static`|
 |`--async`|Instead of waiting for a job on a minion or minions, print the job ID and the job completion.|`salt '*' pkg.install apache2 --async`|
 |`--subset`|Execute commands on a random subset of minions.|`salt '*' telegram.post_message message="Hello random 3!" --subset 3`|
-|`-v`, `--verbose`|Print extra data like the job ID.|`salt 'minion1' user.add steve --verbose`|
-|`--hide-timeout`|Only print minions which could be reached.|`salt '*' test.ping --hide-timeout`|
+|`-v`, `--verbose`|Print extra data, such as the job ID.|`salt 'minion1' user.add steve --verbose`|
+|`--hide-timeout`|Only print minions that can be reached.|`salt '*' test.ping --hide-timeout`|
 |`-b`, `--batch-size`|Execute on a batch or percentage of minions.|`salt '*' test.ping --batch-size 25%`|
 |`-a`, `--auth`|Use an external authentication medium. You will be prompted for credentials. Options are `auto`, `keystone`, `ldap`, and `pam`. Can be used with `-T`.|`salt -a pam '*' status.meminfo`|
 |`-T`, `--make-token`|Used with `-a`. Creates an authentication token in the active user's home directory that has a default 12 hour expiration time. Token expiration time is set in the Salt master config file.|`salt -T -a pam '*' status.cpuinfo`|
 |`--return`|Used to select an alternative returner. Options are `carbon`, `cassandra`, `couchbase`, `couchdb`, `elasticsearch`, `etcd`, `hipchat`, `local`, `local_cache`, `memcache`, `mongo`, `mysql`, `odbc`, `postgres`, `redis`, `sentry`, `slack`, `sms`, `smtp`, `sqlite3`, `syslog`, and `xmpp`.|`salt '*' status.all_status --return mongo`|
-|`-d`, `--doc`, `--documentation`|Return all available documentation for module function, or all functions if one is not provided.|`salt 'minion3' service.available -d`|
+|`-d`, `--doc`, `--documentation`|Return all available documentation for a module function, or all functions if one is not provided.|`salt 'minion3' service.available -d`|
 |`-l`, `--log-level`|Change console log level. Defaults to `warning`. Available options are `all`, `garbage`, `trace`, `debug`, `info`, `warning`, `error`, and `quiet`.|`salt 'minion2' state.apply -l info`|
 |`--log-file`|Change the log file path. Defaults to `/var/log/salt/master`|`salt '*' test.ping --log-file /home/salt/log`|
 |`--log-file-level`|Change the logging level of the log file. Same options as `--log-level`|`salt '*' test.ping --log-level all`|
-|`-E`, `--pcre`|Target expression will be interpreted as a Pearl Compatible Regular Expression (PCRE) rather than a shell glob.|`salt -E 'minion[0-9]' service.reload apache2`|
+|`-E`, `--pcre`|Target expression will be interpreted as a Perl Compatible Regular Expression (PCRE) rather than a shell glob.|`salt -E 'minion[0-9]' service.reload apache2`|
 |`-L`, `--list`|Target expression will be interpreted as a comma-delimited list.|`salt -L 'minion1,minion2' service.show sshd`|
 |`-G`, `--grain`|Target expression in the form of a glob expression matches a Salt grain. &lt;grain value&gt;:&lt;glob expression&gt;.|`salt -G 'os:Ubuntu' service.available mysql`|
-|`--grain-pcre`|Target expression in the form of a Pearl Compatible Regular Expression matches values returned by Salt grains on the minion.&lt;grain value&gt;:&lt;regular expression&gt;|`salt --grain-pcre 'os:Arch' service.restart apache2`|
+|`--grain-pcre`|Target expression in the form of a Perl Compatible Regular Expression matches values returned by Salt grains on the minion.&lt;grain value&gt;:&lt;regular expression&gt;|`salt --grain-pcre 'os:Arch' service.restart apache2`|
 |`-I`, `--pillar`| Use pillar values instead of shell globs to identify targets.|`salt -I 'role:production' test.echo 'playback'`|
-|`--out`| Choose an alternative outputter to display returned data. Available outputters are: `grains`, `highstate`, `json`, `key`, `overstatestage`, `pprint`, `raw`, `txt`, `yaml`. Note: When using `--out json` you will probably want to also use `--static`.| `salt '*' test.version --out json --static`|
+|`--out`| Choose an alternative outputter to display returned data. Available outputters are: `grains`, `highstate`, `json`, `key`, `overstatestage`, `pprint`, `raw`, `txt`, `yaml`. Note: when using `--out json` you will probably want to also use `--static`.| `salt '*' test.version --out json --static`|
 
 
 ## salt-call
 
-Runs module functions on a minion instead of the master. It is used to run a Standalone Minion.
+Runs module functions on a minion instead of the master. It is used to run a standalone minion.
 
 |Option|Description|Example|
 |------|-----------|-------|
@@ -61,7 +64,7 @@ Runs module functions on a minion instead of the master. It is used to run a Sta
 |`-d`, `--doc`, `--documentation`|Return all available documentation for module function, or all functions if one is not provided.|`salt-call system.get_system_time -d`|
 |`--master`|Choose which master to use. The minion must be authenticated with the master. If the master is omitted, the first master in the minion config will be used.|`salt-call --master master1`|
 |`--return`|Used to select an alternative returner. Options are `carbon`, `cassandra`, `couchbase`, `couchdb`, `elasticsearch`, `etcd`, `hipchat`, `local`, `local_cache`, `memcache`, `mongo`, `mysql`, `odbc`, `postgres`, `redis`, `sentry`, `slack`, `sms`, `smtp`, `sqlite3`, `syslog`, and `xmpp`.|`salt-call --return mongo status.all_status`|
-|`--local`|Run salt as if there was no master running.|`salt-call --local system.get_system_time`|
+|`--local`|Run Salt as if there was no master running.|`salt-call --local system.get_system_time`|
 |`--file-root`|Set a directory as the base file directory.|`salt-call --file-root /home/salt`|
 |`--pillar-root`|Set a directory as the base pillar directory.|`salt-call --file-root /home/salt/pillar`|
 |`-l`, `--log-level`|Change console log level. Defaults to `warning`. Available options are `all`, `garbage`, `trace`, `debug`, `info`, `warning`, `error`, and `quiet`.|`salt-call -l all test.exception 'oh no!'`|
@@ -103,7 +106,7 @@ Used to provision virtual machines on public clouds with Salt.
 
 ## salt-cp
 
-Used to copy files from the master to all salt minions that match a specific target expression.
+Used to copy files from the master to all Salt minions that match a specific target expression.
 
 |Option|Description|Example|
 |------|-----------|-------|
@@ -114,10 +117,10 @@ Used to copy files from the master to all salt minions that match a specific tar
 |`-l`, `--log-level`|Change console log level. Defaults to `warning`. Available options are `all`, `garbage`, `trace`, `debug`, `info`, `warning`, `error`, and `quiet`.|`salt-cp '*' -l all /file/to/copy /destination`|
 |`--log-file`|Change log file path. Defaults to `/var/log/salt/master`.|`salt-cp '*' --logfile /home/salt/log/minion /file/to/copy /destination`|
 |`--log-file-level`|Change logfile log level. Defaults to `warning`. Available options are `all`, `garbage`, `trace`, `debug`, `info`, `warning`, `error`, and `quiet`.|`salt-cp '*' --log-file-level all /file/to/copy /destination`|
-|`-E`, `--pcre`|Target expression will be interpreted as a Pearl Compatible Regular Expression (PCRE) rather than a shell glob.|`salt-cp -E 'minion[0-9]' /file/to/copy /destination`|
+|`-E`, `--pcre`|Target expression will be interpreted as a Perl Compatible Regular Expression (PCRE) rather than a shell glob.|`salt-cp -E 'minion[0-9]' /file/to/copy /destination`|
 |`-L`, `--list`| Target expression will be interpreted as a comma-delimited list.|`salt -L 'minion1,minion2' /file/to/copy /destination`|
 |`-G`, `--grain`|Target expression matches a Salt grain. &lt;grain value&gt;:&lt;glob expression&gt;.|`salt -G 'os:Ubuntu' /file/to/copy /destination`|
-|`--grain-pcre`|Target expression in the form of a Pearl Compatible Regular Expression matches values returned by Salt grains on the minion.&lt;grain value&gt;:&lt;regular expression&gt;|`salt-cp --grain-pcre 'os:Arch' /file/to/copy /destination`|
+|`--grain-pcre`|Target expression in the form of a Perl Compatible Regular Expression matches values returned by Salt grains on the minion.&lt;grain value&gt;:&lt;regular expression&gt;|`salt-cp --grain-pcre 'os:Arch' /file/to/copy /destination`|
 |`-C`, `--chunked`|Use chunked mode to copy files. Supports large files, recursive directories copying and compression.|`salt-cp -C /some/large/file /destination`|
 |`-n`, `--no-compression`|Disable gzip in chunked mode.|`salt-cp -C -n /some/large/file /destination`|
 
@@ -132,8 +135,8 @@ Used to manage the Salt server public keys.
 |`-c`, `--config-dir`|Change the Salt configuration directory. The default is `/etc/salt`.|`salt-key -c /home/salt/conf`|
 |`-u`, `--user`|Supply a user to run salt-key.|`salt-key --user steven`|
 |`-q`, `--quiet`|Suppress output|`salt-key -q`|
-|`-y`, `--yes`|Answer yes to all questions. Default is False.|`salt-key -y True`|
-|`--rotate-aes-key`|Setting to False prevents the key session from being refreshed when keys are deleted or rejected. Default is True.|`salt-key --rotate-aes-key False`|
+|`-y`, `--yes`|Answer yes to all questions. Default is `False`.|`salt-key -y True`|
+|`--rotate-aes-key`|Setting to `False` prevents the key session from being refreshed when keys are deleted or rejected. Default is `True`.|`salt-key --rotate-aes-key False`|
 |`--log-file`|Change log file path. Defaults to `/var/log/salt/minion`.|`salt-key --logfile /home/salt/log/minion -D`|
 |`--log-file-level`|Change logfile log level. Defaults to `warning`. Available options are `all`, `garbage`, `trace`, `debug`, `info`, `warning`, `error`, and `quiet`.|`salt-key --log-file-level all --accept '*'`|
 |`-l`, `--list`|List public keys. `pre`, `un`, and `unaccepted` will list unaccepted/unsigned keys. `acc` or `accepted` will list accepted/signed keys. `rej` or `rejected` will list rejected keys. `all` will list all keys.|`salt-key -l all`|
@@ -150,7 +153,7 @@ Used to manage the Salt server public keys.
 |`--gen-keys`|Set a name to generate a key-pair.|`salt-key --gen-keys newminion`|
 |`--gen-keys-dir`|Choose where to save newly generated key-pairs. Only works with `--gen-keys`.|`salt-key --gen-keys newminion --gen-keys-dir /home/salt/keypairs`|
 |`--keysize`|Set the keysize for a generated key. Must be a value of 2048 or higher. Only works with `--gen-keys`.|`salt-key --gen-keys newminion --keysize 4096`|
-|`--gen-signature`|Create a signature for the master's public key named master_pubkey_signature. This requires a new-signing-keypair which can be created with the --auto-create option.|`salt-key --gen-signature --auto-create`|
+|`--gen-signature`|Create a signature for the master's public key named master_pubkey_signature. This requires a new-signing-keypair which can be created with the `--auto-create` option.|`salt-key --gen-signature --auto-create`|
 |`--priv`|The private-key file with which to create a signature.|`salt-key --priv key.pem`|
 |`--signature-path`|The file path for the new signature.|`salt-key  --gen-signature --auto-create --signature-path /path/to/signature`|
 |`--pub`|The public-key file with which to create a signature.|`salt-key --gen-signature key.pub`|
@@ -219,25 +222,25 @@ Use SSH transport to execute salt routines.
 |`--max-procs`|The number of minions to communicate with concurrently. In general, more connections mean faster communication. Default is 25.|`salt-ssh '*' --max-procs 50 test.ping`|
 |`-v`, `--verbose`|Display job ID.|`salt-ssh '*' -v test.ping`|
 |`-s`, `--static`|Return minion data as a grouping.|`salt-ssh '*' -s status.meminfo`|
-|`-w`, `--wipe`|Remove salt files when the job is done.|`salt-ssh '*' -w state.apply`|
+|`-w`, `--wipe`|Remove Salt files when the job is done.|`salt-ssh '*' -w state.apply`|
 |`-W`. `--rand-thin-dir`|Deploys to a random temp directory and cleans the directory when done.|`salt-ssh '*' -W state.apply`|
 |`--python2-bin`|File path to a python2 binary which has Salt installed.|`salt-ssh '*' --python2-bin /file/to/bin test.ping`|
 |`--python3-bin`|File path to a python3 binary which has Salt installed.|`salt-ssh '*' --python3-bin /file/to/bin test.ping`|
 |`--jid`|Supply a job ID instead of generating one.|`salt-ssh '*' -v --jid 00000000000000000000 test.ping`|
 |`--priv`|Supply which SSH private key to use for authentication.|`salt-ssh '*' --priv /path/to/privkey status.netstats`|
 |`-i`, `--ignore-host-keys`|Disable StrictHostKeyChecking, which suppresses asking for connection approval.|`salt-ssh '*' -i pkg.install mysql-client`|
-|`--no-host-keys`|Ignores ssh host keys. Useful if an error persists with `--ignore-host-keys`.|`salt-ssh '*' -i --no-host-keys pkg.install cowsay`|
+|`--no-host-keys`|Ignores SSH host keys. Useful if an error persists with `--ignore-host-keys`.|`salt-ssh '*' -i --no-host-keys pkg.install cowsay`|
 |`--user`|Supply the user to authenticate with.|`salt-ssh '*' --user steven -r cowsay 'hello!'`|
 |`--passwd`|Supply the password to authenticate with.|`salt-ssh 'minion2' --passwd p455w0rd system.reboot`|
 |`--askpass`|Request a password prompt.|`salt-ssh 'minion1' --askpass sys.doc`|
-|`--key-deploy`|Deploy the authorized ssh key to all minions.|`salt-ssh '*' --key-deploy --passwd test.ping`|
+|`--key-deploy`|Deploy the authorized SSH key to all minions.|`salt-ssh '*' --key-deploy --passwd test.ping`|
 |`--sudo`|Run command with elevated privileges.|`salt-ssh '*' -r --sudo somecommand`|
 |`--scan-ports`|A comma-separated list of ports to scan in the scan roster.|`salt-ssh '192.168.0.0/16' --roster scan --scan-ports 22,23 test.ping`|
 |`--scan-timeout`|Timeout for scan roster.|`salt-ssh '192.168.0.0/16' --roster scan --scan-timeout 100 test.ping`|
 |`-l`, `--log-level`|Change console log level. Defaults to `warning`. Available options are `all`, `garbage`, `trace`, `debug`, `info`, `warning`, `error`, and `quiet`.|`salt-ssh -l info test.ping`|
 |`--log-file`|Change the log file path. Defaults to `/var/log/salt/ssh`|`salt-ssh --log-file /home/salt/log test.ping`|
 |`--log-file-level`|Change the logging level of the log file. Same options as `--log-level`|`salt-ssh --log-level all test.ping`|
-|`-E`, `--pcre`|Target expression will be interpreted as a Pearl Compatible Regular Expression (PCRE) rather than a shell glob.|`salt-ssh -E 'minion[0-9]' service.reload apache2`|
+|`-E`, `--pcre`|Target expression will be interpreted as a Perl Compatible Regular Expression (PCRE) rather than a shell glob.|`salt-ssh -E 'minion[0-9]' service.reload apache2`|
 |`--out`| Choose an alternative outputter to display returned data. Available outputters are: `grains`, `highstate`, `json`, `key`, `overstatestage`, `pprint`, `raw`, `txt`, `yaml`.| `salt-ssh '*' test.version --out json`|
 
 ## salt-syndic
@@ -250,7 +253,7 @@ A minion set up on a master that allows for passing commands in from a higher ma
 |`-h`, `--help`|Display Salt commands and help text.|`salt-syndic -h`|
 |`-c`, `--config-dir`|Change the Salt configuration directory. The default is `/etc/salt`.|`salt-syndic -c /home/salt/conf`|
 |`-u`, `--user`|Supply a user to run salt-syndic.|`salt-syndic --user steven`|
-|`-d`, `--daemon`|Run salt-master as daemon.|`salt-syndic -d`|
+|`-d`, `--daemon`|Run salt-syndic as daemon.|`salt-syndic -d`|
 |`--pid-file`|Specify the file path of the pidfile. Default is `/var/run/salt-syndic.pid`|`salt-syndic --pid-file /path/to/new/pid`|
 |`-l`, `--log-level`|Change console log level. Defaults to `warning`. Available options are `all`, `garbage`, `trace`, `debug`, `info`, `warning`, `error`, and `quiet`.|`salt-syndic -l info`|
 |`--log-file`|Change the log file path. Defaults to `/var/log/salt/master`|`salt-syndic --log-file /home/salt/log`|
@@ -277,7 +280,7 @@ Salt Package Manager
 |`files`|List an installed package's files.|`spm files mongodb`|
 |`local`|Perform a command on a local package, not a package in a repository or an installed package. Does not work with `remove`.|`spm local install /path/to/package`|
 |`build`|Build a package.|`spm build /path/to/package`|
-|`create_repo`|Scan a directory for a valid SPM package and build a SPM-METADATA file in that directory.|`spm create_rep /path/to/package`|
+|`create_repo`|Scan a directory for a valid SPM package and build an SPM-METADATA file in that directory.|`spm create_rep /path/to/package`|
 
 ## salt-api
 
@@ -288,8 +291,8 @@ Used to start the Salt API
 |`--version`|Get the current version of Salt.|`salt-api --version`|
 |`-h`, `--help`|Display Salt commands and help text.|`salt-api -h`|
 |`-c`, `--config-dir`|Change the Salt configuration directory. The default is `/etc/salt`.|`salt-api -c /home/salt/conf`|
-|`-u`, `--user`|Supply a user to run salt-syndic.|`salt-api --user steven`|
-|`-d`, `--daemon`|Run salt-master as daemon.|`salt-api -d`|
+|`-u`, `--user`|Supply a user to run salt-api.|`salt-api --user steven`|
+|`-d`, `--daemon`|Run salt-api as daemon.|`salt-api -d`|
 |`--pid-file`|Specify the file path of the pidfile. Default is `/var/run/salt-api.pid`|`salt-api --pid-file /path/to/new/pid`|
 |`-l`, `--log-level`|Change console log level. Defaults to `warning`. Available options are `all`, `garbage`, `trace`, `debug`, `info`, `warning`, `error`, and `quiet`.|`salt-api -l info`|
 |`--log-file`|Change the log file path. Defaults to `/var/log/salt/api`|`salt-api --log-file /home/salt/log`|
