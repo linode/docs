@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to managing accounts and passwords.
+description: Linode is retiring our Tokyo 1 data center, and this guide shows how to migrate to our new Tokyo 2 location.
 keywords: ["tokyo 1", "tokyo 2", "migrate", "migration", "migrating", "data center"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-09-27
