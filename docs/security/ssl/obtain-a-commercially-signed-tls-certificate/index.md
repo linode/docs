@@ -17,7 +17,7 @@ title: 'Obtain a Commercially Signed TLS Certificate'
 
 If you intend to host a publicly accessible website which will use HTTPS, then you will want to install a commercially signed TLS certificate so people visiting your site don't get warnings in their browser about an unsafe connection.
 
-The easiest method is to sign your certificate using [Let's Encrypt](https://letsencrypt.org/). The [CertBot](/docs/quick-answers/websites/secure-http-traffic-certbot/) tool makes obtaining and renewing certificates through Let's Encrypt extremely simple. However, this isn't a viable option for everyone as the Let's Encrypt certificate is not compatible with all platforms. You can see the list of certificate compatibility [here](https://letsencrypt.org/docs/certificate-compatibility/) and then determine if you are okay or not okay with not having a valid certificate on those incompatible platfroms.
+The easiest method is to sign your certificate using [Let's Encrypt](https://letsencrypt.org/). The [CertBot](/docs/quick-answers/websites/secure-http-traffic-certbot/) tool makes obtaining and renewing certificates through Let's Encrypt extremely simple. The Let's Encrypt certificate is not compatible with all platforms. You can see the list of compatible platoforms [here](https://letsencrypt.org/docs/certificate-compatibility/).
 
 If you need [Domain Validation](https://en.wikipedia.org/wiki/Domain-validated_certificate) or [Extended Validation certificates](https://en.wikipedia.org/wiki/Extended_Validation_Certificate), you must create a Certificate Signing Request (CSR) for submission to a Certificate Authority (CA) such as Thawte or Verisign. This is the method for obtaining a signed TLS certificate that this guide focuses on.
 
