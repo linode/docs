@@ -472,6 +472,7 @@ heartbleed
 heroku
 hexo
 hiera
+highstate
 hilights
 hl2
 hl2
