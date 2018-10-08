@@ -15,9 +15,7 @@ headless: true
 
 ## Download Specific Files or Directories over SSH
 
-If you just need specific files from your Linode, you can download those over SSH. In order to do so, you'll first need to [reboot your Linode](/docs/platform/disk-images/disk-images-and-configuration-profiles/#selecting-and-using-a-configuration-profile) under the new configuration profile that was created by the restore process. This new profile is assigned to the restored disks, and your backed up data will be accessible when you boot from them.
-
-Downloading files over SSH can be done at a command-line interface, or with a graphical *SFTP* file browser.
+If you just need specific files from your Linode, you can download those over SSH. Downloading files over SSH can be done at a command-line interface, or with a graphical *SFTP* file browser.
 
 ### Using SCP
 
@@ -77,14 +75,16 @@ After you've installed FileZilla on your computer:
 
 For more information on FileZilla, [review our full guide](/docs/tools-reference/file-transfer/filezilla/) on using the application.
 
-### Using mysqldump to Back Up a Database
+### Downloading Data from a Database
 
 Special care is needed when downloading data from a database. Before it can be downloaded, the data in a database needs to first be *dumped* to a file. This file can then be transferred just as any other normal file type.
 
-To create a dump of a MySQL (or MariaDB) database, use the `mysqldump` command as in the following instructions. If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) guide instead.
+To create a dump of a MySQL (or MariaDB) database, [use the `mysqldump` command](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb) as in the following instructions.
+
+{{< note >}}
+An alternative to using `mysqldump` is to create [*physical* backups](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/). If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) guide instead.
+{{< /note >}}
 
 {{< content "mysqldump-database-backup-short" >}}
-
-For more information on MySQL database backups, including how to restore the data in a dump file to a MySQL installation, review [our guide](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/#restore-a-backup) on the subject. An alternative to using `mysqldump` for MySQL databases is to create [*physical* backups](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
 {{< content "copy-disk-over-ssh-short" >}}

@@ -12,7 +12,7 @@ published: 2018-09-25
 title: How to Download Files and Data from your Linodes 
 ---
 
-If you need to download data from your Linodes, either to move it to another service, in the event that you need to remove a Linode from your account, or for any other purpose, there are a number of open source tools you can use to transfer your information. You have the option to either download specific files and directories or copy complete images of your Linodes' disks.
+If you need to download data from your Linodes, either to move it to another service, in the event that you need to remove a Linode from your account, or for any other purpose, there are a number of open source tools you can use to transfer your information. You have the option to either [download specific files and directories](#download-specific-files-or-directories-over-ssh) or [copy complete images](#download-a-disk-over-ssh) of your Linodes' disks.
 
 {{< content "download-files-from-your-linode-shortguide" >}}
 
