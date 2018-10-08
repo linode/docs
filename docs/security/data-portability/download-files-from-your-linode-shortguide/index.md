@@ -79,7 +79,7 @@ For more information on FileZilla, [review our full guide](/docs/tools-reference
 
 Special care is needed when downloading data from a database. Before it can be downloaded, the data in a database needs to first be *dumped* to a file. This file can then be transferred just as any other normal file type.
 
-To create a dump of a MySQL (or MariaDB) database, [use the `mysqldump` command](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb) as in the following instructions.
+To create a dump of a MySQL (or MariaDB) database, [use the `mysqldump` command](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb) as in the following instructions. **You can only use this tool if your database process is accessible and running.**
 
 {{< note >}}
 An alternative to using `mysqldump` is to create [*physical* backups](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/). If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) guide instead.
