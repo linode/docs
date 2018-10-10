@@ -74,6 +74,14 @@ Make a note of the certificate and key locations on the Linode. You will need th
 
 Next, set up a MariaDB database to handle virtual domains and users.
 
+### Versions
+
+This guide uses the following package versions:
+
+* Postfix 2.10.1
+* Dovecot 2.2.10
+* MariaDB 5.5.60
+
 ## MariaDB
 
 The mail server's virtual users and passwords are stored in a MySQL database. Dovecot and Postfix require this data. Follow the steps below to create the database tables for virtual users, domains and aliases:
