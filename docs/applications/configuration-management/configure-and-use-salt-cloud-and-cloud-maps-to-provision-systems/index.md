@@ -345,6 +345,6 @@ enable_hard_maps: True
 
     2. Execute `salt-cloud` with the `--hard` option:
 
-            salt-cloud -d -m /etc/salt/cloud.maps.d/linode.map
+            salt-cloud -d -m /etc/salt/cloud.conf.d/linode.map
 
     3. Confirm the deletion when prompted.
