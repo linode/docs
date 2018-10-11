@@ -181,7 +181,7 @@ Alternatively, you can manually set DNS resolvers of your choice which are pushe
     [![DMG Finder Window.](openvpn-download-profile-ubuntu-resize.png)](openvpn-download-profile-ubuntu.png)
 
     {{< note >}}
-If you are connecting a headless machine to your OpenVPN server, such as another Linode, you will need to use `cURL` or `wget` tool to download the appropriate profile. You can do so by copying the link from the OpenVPN Access Server client page for your required profile, and then pasting it at the end of a `cURL` or `[wget](/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget)` command.
+If you are connecting a headless machine to your OpenVPN server, such as another Linode, you will need to use `cURL` or `wget` tool to download the appropriate profile. You can do so by copying the link from the OpenVPN Access Server client page for your required profile, and then pasting it at the end of a `cURL` or [wget](/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget) command.
 {{< /note >}}
 
 1.  Copy the downloaded profile to your `/etc/openvpn` folder and rename it to `client.conf`. Replace `~/Downloads/client.ovpn` with the location of your download folder, if necessary.
