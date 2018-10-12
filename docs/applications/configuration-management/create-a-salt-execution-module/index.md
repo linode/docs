@@ -21,11 +21,15 @@ This guide will cover the creation and installation of a Salt *execution module*
 
 If you haven't already, set up a Salt master and at least one Salt minion. You can follow the first few steps of our [Getting Started with Salt - Basic Installation and Setup](https://www.linode.com/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide.
 
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< /note >}}
+
 ## Preparing Salt
 
-The following steps deal with the `/srv/salt` folder. If you have changed Salt's default [`file_roots`](https://docs.saltstack.com/en/latest/ref/configuration/master.html#std:conf_master-file_roots), use that location instead.
+The files created in the following steps will be located in the `/srv/salt` directory. If you have changed Salt's default [`file_roots`](https://docs.saltstack.com/en/latest/ref/configuration/master.html#std:conf_master-file_roots) configuration, use that directory location instead.
 
-1.  Begin by creating the `/srv/salt` folder if it does not already exist. This is where we will place our top file and our salt state file:
+1.  Begin by creating the `/srv/salt` directory if it does not already exist. This is where you will place your top file and your Salt state file:
 
         mkdir /srv/salt
 
@@ -92,9 +96,9 @@ def __virtual__():
 . . .
 {{< /file >}}
 
-    The `__virtual__` function either returns the module name, or returns `False` with an error string and the module is not loaded. Here we've tied this decision to the try/except block we created in the previous step through the use of the `HAS_REQUESTS` variable.
+    The `__virtual__` function either returns the module's virtual name and loads the module, or returns `False` with an error string and the module is not loaded. The `if HAS_REQUESTS` conditional is tied to the try/except block created in the previous step through the use of the `HAS_REQUESTS` variable.
 
-1.  Add the public and private functions:
+1.  Add the public `get()` function and the private `_make_request()` function:
 
     {{< file "/srv/salt/_modules/weather.py" python >}}
 . . .
@@ -130,7 +134,7 @@ def _make_request(sign):
     return conditions
 {{< /file >}}
 
-    There are two functions in this step. The function `get` is passed in one or more weather station call signs in a comma seprated list. It then calls `_make_request` to make the HTTP request and return a text description of the current weather and the temperature. It's important to note that by adding an underscore to the beginning of the `_make_request` functions we make it private, which mean it is not directly accessible through the Salt command line or a state file.
+    There are two functions in this step. The `get()` function accepts one or more weather station call signs as a comma separated list. It calls `_make_request()` to make the HTTP request and returns a text description of the current weather and the temperature. It's important to note that by adding an underscore to the beginning of the `_make_request()` function it becomes a private function, which means it is not directly accessible through the Salt command line or a state file.
 
 The complete file looks like this:
 
@@ -189,7 +193,7 @@ def _make_request(sign):
 
 ## Running the Execution Module
 
-1.  We need to get the execution module onto our minions in order for it to run. To do this, we can apply a highstate with `state.apply`, which will also try to apply the state changes we specified earlier in our `weather.sls`. Or, because we already did that, we could use the `saltutil.sync_modules` function:
+1.  To run the execution module, you need to first sync it to your minions. To do this, you can call a highstate with `state.apply`, which will also try to apply the state changes you specified earlier in the `weather.sls` state file. Since the `weather.sls` state was already applied in the [Preparing Salt](#preparing-salt) section, use the `saltutil.sync_modules` function:
 
         salt '*' saltutil.sync_modules
 
@@ -210,35 +214,13 @@ KPHL:
         17.2
 {{< /output >}}
 
-1.  Alternatively you can run the Salt execution module locally on your Salt minion by entering the following:
+1.  Alternatively, you can run the Salt execution module locally on your Salt minion by entering the following:
 
-        salt-call -l debug --local weather.get KVAY,KACY
+        salt-call weather.get KVAY,KACY
 
     You should get an output like the following:
 
     {{< output >}}
-[DEBUG   ] Reading configuration from /etc/salt/minion
-[DEBUG   ] Including configuration from '/etc/salt/minion.d/_schedule.conf'
-[DEBUG   ] Reading configuration from /etc/salt/minion.d/_schedule.conf
-[DEBUG   ] Using cached minion ID from /etc/salt/minion_id: salt-minion
-[DEBUG   ] Configuration file path: /etc/salt/minion
-[DEBUG   ] Grains refresh requested. Refreshing grains.
-[DEBUG   ] Reading configuration from /etc/salt/minion
-[DEBUG   ] Including configuration from '/etc/salt/minion.d/_schedule.conf'
-[DEBUG   ] Reading configuration from /etc/salt/minion.d/_schedule.conf
-[DEBUG   ] Please install 'virt-what' to improve results of the 'virtual' grain.
-[DEBUG   ] Determining pillar cache
-[DEBUG   ] LazyLoaded jinja.render
-[DEBUG   ] LazyLoaded yaml.render
-[DEBUG   ] LazyLoaded jinja.render
-[DEBUG   ] LazyLoaded yaml.render
-[DEBUG   ] LazyLoaded weather.get
-[DEBUG   ] KVAY,KACY
-[DEBUG   ] Starting new HTTPS connection (1): api.weather.gov
-[DEBUG   ] https://api.weather.gov:443 "GET /stations/KVAY/observations/current HTTP/1.1" 200 1054
-[DEBUG   ] Starting new HTTPS connection (1): api.weather.gov
-[DEBUG   ] https://api.weather.gov:443 "GET /stations/KACY/observations/current HTTP/1.1" 200 1050
-[DEBUG   ] LazyLoaded nested.output
 local:
     ----------
     KACY:
@@ -255,4 +237,4 @@ local:
             16.7
 {{< /output >}}
 
-Congratulations, you've successfully created and installed a Salt execution module.
+You have now successfully created and installed a Salt execution module.
