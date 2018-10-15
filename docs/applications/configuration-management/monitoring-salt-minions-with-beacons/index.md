@@ -16,7 +16,7 @@ external_resources:
 - '[Salt Reactors Documentation](https://docs.saltstack.com/en/latest/topics/reactor/)'
 ---
 
-Every action taken by Salt emits an event: applying a highstate, restarting a minion, accepting a key, etc. *Beacons* emit events for non-salt processes, such a system state changes or file changes. In this guide we will be using Salt beacons to notify the Salt master of changes to our minions, and Salt *reactors* to react to those changes.
+Every action taken by Salt, such as applying a highstate or restarting a minion, generates an event. *Beacons* emit events for non-salt processes, such a system state changes or file changes. In this guide we will be using Salt beacons to notify the Salt master of changes to our minions, and Salt *reactors* to react to those changes.
 
 ## Before You Begin
 
