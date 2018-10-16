@@ -543,6 +543,7 @@ inittab
 inode
 inotify
 insmod
+inspec
 interdomain
 interruptible
 introducer
@@ -616,6 +617,7 @@ kickbans
 kickstarter
 killall
 kinser
+kitchensalt
 klei
 kloth
 kloxo
@@ -744,6 +746,7 @@ minification
 minikube
 minimalistic
 minio
+minitest
 misconfiguration
 misconfigurations
 misconfigured
@@ -1066,6 +1069,7 @@ rpaf
 rpc
 rpmforge
 rsa
+rspec
 rss
 rstudio
 rsync
@@ -1125,6 +1129,7 @@ serv
 server1
 servername
 serverpassword
+serverspec
 servlet
 servlets
 setattr
