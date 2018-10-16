@@ -196,7 +196,7 @@ Refer to the [Imports and Includes](#imports-and-includes) section for more info
 
 **Imports**
 
-Importing in Jinja works is similar to importing in Python. You can import an entire template, a specific state or a macro defined within a file.
+Importing in Jinja is similar to importing in Python. You can import an entire template, a specific state or a macro defined within a file.
 
     {% import '/srv/salt/users.sls' as users %}
 
@@ -275,49 +275,42 @@ jane:
     {%- endfor -%}
 {{</ file >}}
 
-The following for loop will assign the user `jane` to all the groups in the `groups` list set at the top of the `users.sls` file.
+The previous for loop will assign the user `jane` to all the groups in the `groups` list set at the top of the `users.sls` file.
 
 **Conditionals**
 
 A conditional expression evaluates to either `True` or `False` and controls the flow of a program based on the result of the evaluated boolean expression. Jinja's conditional expressions are prefixed with if/elif/else and placed within the `{% ... %}` delimiter.
 
 {{< file "/srv/salt/users.sls" yaml >}}
-{% set admin_groups = ['sudo','wheel', 'admins'] %}
+{% set users = ['anna','juan','genaro','mirza'] %}
 {% set admin_users = ['genaro','mirza'] %}
+{% set admin_groups = ['sudo','wheel', 'admins'] %}
 {% set org_groups = ['games', 'webserver'] %}
-{% set org_users = ['anna','juan'] %}
+
 
 include:
   - groups
 
-{% for admin_user in admin_users %}
-{% if admin_user in admin_users %}
-{{ admin_user }}:
+{% for user in users %}
+{{ user }}:
   user.present:
     - shell: /bin/zsh
     - createhome: True
-    - home: /home/{{ admin_user }}
+    - home: /home/{{ user }}
     - groups:
+{% if user in admin_users %}
     {%- for admin_group in admin_groups %}
       - {{ admin_group }}
     {%- endfor -%}
 {% else %}
-{% for org_user in org_users %}
-{{ org_user }}:
-  user.present:
-    - shell: /bin/zsh
-    - createhome: True
-    - home: /home/{{ org_user }}
-    - groups:
     {%- for org_group in org_groups %}
       - {{ org_group }}
     {% endfor %}
-{% endfor %}
 {%- endif -%}
 {% endfor %}
 {{</ file >}}
 
-In this example user state file, the conditional expression `{% if admin_user in admin_users %}` controls which state is created for each user based on the presence of that user within one of the lists defined at the top of the state file. This example is for illustrative purposes. Refer to the [Salt Best Practices](#salt-best-practices) section for information on using conditionals and control flow statements within state files.
+In this example user state file, the conditional expression `{% if user in admin_users %}` controls which state is created for each user based on the presence of that user within the `admin_users` list defined at the top of the state file. This example is for illustrative purposes. Refer to the [Salt Best Practices](#salt-best-practices) section for information on using conditionals and control flow statements within state files.
 
 ### Template Inheritance
 
