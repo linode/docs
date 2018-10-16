@@ -56,7 +56,13 @@ Verify that the `hosts` file contains a line for the Linode's public IP address 
 
 ## Install SSL Certificate
 
-You will need to install a SSL certificate on your mail server prior to completing the [Dovecot](#dovecot) configuration steps. The SSL certificate will authenticate the identity of the mail server to users and encrypt the transmitted data between the user's mail client and the mail server. Follow our guide to [Install an SSL certificate with Certbot](/docs/quick-answers/websites/secure-http-traffic-certbot/).
+You will need to install a SSL certificate on your mail server prior to completing the [Dovecot](#dovecot) configuration steps. The SSL certificate will authenticate the identity of the mail server to users and encrypt the transmitted data between the user's mail client and the mail server.
+
+{{< note >}}
+
+{{</ note >}}
+
+{{< content "certbot-shortguide-centos" >}}
 
 Make a note of the certificate and key locations on the Linode. You will need the path to each during the [Dovecot](#dovecot) configuration steps.
 
@@ -72,8 +78,6 @@ Make a note of the certificate and key locations on the Linode. You will need th
 
     This installs the Postfix mail server, the MariaDB database server, the Dovecot IMAP and POP daemons, and several supporting packages that provide services related to authentication.
 
-Next, set up a MariaDB database to handle virtual domains and users.
-
 ### Versions
 
 This guide uses the following package versions:
@@ -84,7 +88,16 @@ This guide uses the following package versions:
 
 ## MariaDB
 
-The mail server's virtual users and passwords are stored in a MySQL database. Dovecot and Postfix require this data. Follow the steps below to create the database tables for virtual users, domains and aliases:
+In this section you will set up a MariaDB database to store virtual domains, users and passwords. Dovecot and Postfix require this data.
+
+### Creating the Database and Tables
+
+Follow the steps below to create the database tables for virtual users, domains and aliases:
+
+1. Ensure the MariaDb server is running and enabled to start automatically on reboot:
+
+        sudo systemctl start mariadb
+        sudo systemctl enable mariadb
 
 1.  Use the [*mysql_secure_installation*](https://mariadb.com/kb/en/library/mysql_secure_installation/) tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
 
@@ -150,7 +163,7 @@ The mail server's virtual users and passwords are stored in a MySQL database. Do
 
 ### Adding Data
 
-Now that the database and tables have been created, add some data to MySQL.
+You can now add data to the database and tables that were created in the previous section.
 
 1.  Add the domains to the `virtual_domains` table. Replace the values for `example.com` and `hostname` with your own settings:
 
@@ -187,13 +200,13 @@ In the previous section, data was added to the MySQL `mailserver` database. The 
 
 1. Log in to MySQL:
 
-        sudo mysql -u root
+        sudo mysql -u root -p
 
 1.  Check the contents of the `virtual_domains` table:
 
         SELECT * FROM mailserver.virtual_domains;
 
-1.  Verify that you see the following output:
+1.  Verify that the output displays the domains you add to the `virtual_domains` table:
 
     {{< output >}}
 +----+-----------------------+
@@ -211,7 +224,7 @@ In the previous section, data was added to the MySQL `mailserver` database. The 
 
         SELECT * FROM mailserver.virtual_users;
 
-1.  Verify the following output, the hashed passwords are longer than they appear below:
+1.  Verify that the output displays the email addresses you added to the `virutal_users` table. Your hashed passwords will appear longer than they are displayed below:
 
     {{< output >}}
 +----+-----------+-------------------------------------+--------------------+
@@ -227,7 +240,7 @@ In the previous section, data was added to the MySQL `mailserver` database. The 
 
         SELECT * FROM mailserver.virtual_aliases;
 
-1.  Verify the following output:
+1.  Verify that the outout displays the aliases you added to the `virtual_aliases` table:
 
     {{< output >}}
 +----+-----------+-------------------+--------------------+
@@ -238,7 +251,7 @@ In the previous section, data was added to the MySQL `mailserver` database. The 
 1 row in set (0.00 sec)
 {{</ output >}}
 
-1.  If everything outputs as expected, exit MySQL:
+1.  If all the desired data displays as expected, exit MySQL:
 
         exit
 
@@ -302,7 +315,7 @@ inet_interfaces = all
 inet_protocols = all
 
 # Handing off local delivery to Dovecot's LMTP, and telling it where to store mail
-virtual_transport = dovecot
+virtual_transport = lmtp:unix:private/dovecot-lmtp
 
 # Virtual domains, users, and aliases
 virtual_mailbox_domains = mysql:/etc/postfix/mysql-virtual-mailbox-domains.cf
@@ -312,9 +325,9 @@ virtual_alias_maps = mysql:/etc/postfix/mysql-virtual-alias-maps.cf,
 
 {{< /file >}}
 
-1.  The `main.cf` file declares the location of `virtual_mailbox_domains`, `virtual_mailbox_maps`, and `virtual_alias_maps` files. These files contain the connection information for the MySQL lookup tables created in the [MySQL](#mysql) section of this guide. Postfix will use this data to identify all domains, corresponding mailboxes, and valid users.
+1.  The `main.cf` file declares the location of `virtual_mailbox_domains`, `virtual_mailbox_maps`, `virtual_alias_maps`, and `mysql-virtual-email2email` files. These files contain the connection information for the MySQL lookup tables created in the [MariaDB](#mariadb) section of this guide. Postfix will use this data to identify all domains, corresponding mailboxes, and valid users.
 
-    Create the file for `virtual_mailbox_domains`. Replace the value for `password` with your database user's password.  If you used a different name for your database `user` and `dbname` replace those with your own values:
+    Create the file for `virtual_mailbox_domains`. Replace the value for `password` with your database user's password. This password was created in the [Creating the Database and Tables](#creating-the-database-and-tables) section.  If you used a different name for your database `user` and `dbname` replace those with your own values:
 
     {{< file "/etc/postfix/mysql-virtual-mailbox-domains.cf" >}}
 user = mailuser
@@ -370,6 +383,10 @@ query = SELECT email FROM virtual_users WHERE email='%s'
 
         sudo postmap -q email1@example.com mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
 
+      Verify that Postifx can retrieve the first email address from the MySQL table `virtual_users` using the database values entered in the `mysql-virtual-mailbox-maps.cf` file. Replace `email1@example.com` with the first email address added to the table. You should receive `1` as the output:
+
+        sudo postmap -q alias@example.com mysql:/etc/postfix/mysql-virtual-email2email.cf
+
 1. Test Postfix to verify that it can query the `virtual_aliases` table. Replace `alias@example.com` with the first `source` value created in the table. The command should return the `destination` value for the row:
 
         sudo postmap -q alias@example.com mysql:/etc/postfix/mysql-virtual-alias-maps.cf
@@ -384,7 +401,7 @@ Postfix's master program starts and monitors all of Postfix's processes. The con
 
 1. Edit `/etc/postfix/master.cf` to contain the values in the excerpt example. The rest of the file can remain unchanged:
 
-    {{< file "master.cf" >}}
+    {{< file "/etc/postfix/master.cf" >}}
 #
 # Postfix master process configuration file.  For details on the format
 # of the file, see the master(5) manual page (command: "man 5 master" or
@@ -445,7 +462,7 @@ Dovecot is the *Mail Delivery Agent* (MDA) which is passed messages from Postfix
 
 1.  Edit the `/etc/dovecot/dovecot.conf` file. Uncomment `protocols = imap pop3 lmtp` in the `# Protocols we want to be serving.` section of the file:
 
-    {{< file "dovecot.conf" >}}
+    {{< file "/etc/dovecot/dovecot.conf" >}}
 ## Dovecot configuration file
 ...
 # Protocols we want to be serving.
@@ -453,11 +470,11 @@ protocols = imap pop3 lmtp
 
 {{< /file >}}
 
-1.  Edit the `/etc/dovecot/conf.d/10-mail.conf` file. This file controls how Dovecot interacts with the server's file system to store and retrieve messages:
+1.  Edit the `/etc/dovecot/conf.d/10-mail.conf` file. This file controls how Dovecot interacts with the server's file system to store and retrieve messages.
 
     Modify the following variables within the configuration file:
 
-    {{< file "10-mail.conf" >}}
+    {{< file "/etc/dovecot/conf.d/10-mail.conf" >}}
 ...
 mail_location = maildir:/var/mail/vhosts/%d/%n
 ...
@@ -474,15 +491,15 @@ mail_privileged_group = mail
 1. Create the `vmail` group with ID `5000`. Add a new user `vmail` to the `vmail` group.  This system user will read mail from the server.
 
         sudo groupadd -g 5000 vmail
-        sudo useradd -g vmail -u 5000 vmail -d /var/mail
+        sudo useradd -g vmail -u 5000 vmail -d /var/mail/
 
 1.  Change the owner of the `/var/mail/` folder and its contents to belong to `vmail`:
 
-        sudo chown -R vmail:vmail /var/mail
+        sudo chown -R vmail:vmail /var/mail/
 
 1. Edit the user authentication file, located in `/etc/dovecot/conf.d/10-auth.conf`. Uncomment the following variables and replace with the file excerpt's example values:
 
-    {{< file "10-auth.conf" >}}
+    {{< file "/etc/dovecot/conf.d/10-auth.conf" >}}
 ...
 disable_plaintext_auth = yes
 ...
@@ -497,7 +514,7 @@ auth_mechanisms = plain login
 
 1. Edit the `/etc/dovecot/conf.d/auth-sql.conf.ext` file with authentication and storage information. Ensure your file contains the following lines and that they are uncommented:
 
-    {{< file "auth-sql.conf.ext" >}}
+    {{< file "/etc/dovecot/conf.d/auth-sql.conf.ext" >}}
 ...
 passdb {
   driver = sql
@@ -514,7 +531,7 @@ userdb {
 
 1. Create the `/etc/dovecot/dovecot-sql.conf.ext` file and update it with your MySQL connection information. Add the following variables and replace the values with the excerpt example.  Replace `dbname`, `user` and `password` with your own MySQL database values:
 
-    {{< file "dovecot-sql.conf.ext" >}}
+    {{< file "/etc/dovecot/dovecot-sql.conf.ext" >}}
 driver = mysql
 connect = host=127.0.0.1 dbname=mailserver user=mailuser password=mailuserpass
 default_pass_scheme = SHA512-CRYPT
@@ -544,7 +561,7 @@ When editing the file, be careful not to remove any opening or closing curly bra
 
     Disable unencrypted IMAP and POP3 by setting the protocols' ports to `0`. Uncomment the `port` and `ssl` variables:
 
-    {{< file "10-master.conf" >}}
+    {{< file "/etc/dovecot/conf.d/10-master.conf" >}}
 ...
 service imap-login {
   inet_listener imap {
@@ -571,7 +588,7 @@ service pop3-login {
 
     Find the `service lmtp` section of the file and use the configuration shown below:
 
-    {{< file "10-master.conf" >}}
+    {{< file "/etc/dovecot/conf.d/10-master.conf" >}}
 ...
 service lmtp {
   unix_listener /var/spool/postfix/private/dovecot-lmtp {
@@ -587,7 +604,7 @@ service lmtp {
 
     Locate `service auth` and configure it as shown below:
 
-    {{< file "10-master.conf" >}}
+    {{< file "etc/dovecot/conf.d/10-master.conf" >}}
 ...
 service auth {
   ...
@@ -611,7 +628,7 @@ service auth {
 
     In the `service auth-worker` section, uncomment the `user` line and set it to `vmail`:
 
-    {{< file "10-master.conf" >}}
+    {{< file "1etc/dovecot/conf.d/10-master.conf" >}}
 ...
 service auth-worker {
   ...
@@ -625,7 +642,7 @@ service auth-worker {
 
 1. Edit `/etc/dovecot/conf.d/10-ssl.conf` file to require SSL and to add the location of your domain's SSL certificate and key.  Replace `example.com` with your domain:
 
-    {{< file "10-ssl.conf" >}}
+    {{< file "/etc/dovecot/conf.d/10-ssl.conf" >}}
 ...
 # SSL/TLS support: yes, no, required. <doc/wiki/SSL.txt>
 ssl = required
@@ -687,7 +704,7 @@ Mar 18 17:18:47 localhost postfix/qmgr[3410]: B624062FA: removed
 
 1.  Test the mailbox by using a simple mail client. For this test, using [**mutt**](http://www.mutt.org/) is recommended. If it is not installed by default, install it with `yum install mutt`, then run:
 
-        mutt -f .
+        sudo mutt -f .
 
     You may be prompted to create the root mailbox. This is not required.
 
@@ -704,6 +721,8 @@ You can set up an email client to connect to your mail server. Many clients dete
 -   **Server name:** The incoming and outgoing server names must be a domain that resolves to the Linode.
 -   **SSL:** Incoming and outgoing servers require authentication and SSL encryption.
 -   **Ports:** Use Port `993` for secure IMAP, Port `995` for secure POP3, and Port `587` with SSL for SMTP.
+
+See [Install SquirrelMail on Ubuntu 16.04](docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
 
 ## Adding New Domains, Email Addresses, and Aliases
 
