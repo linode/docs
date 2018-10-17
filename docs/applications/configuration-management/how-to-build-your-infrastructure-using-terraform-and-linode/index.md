@@ -4,10 +4,10 @@ author:
   email: docs@linode.com
 description: 'Use Terraform to deploy Linodes containing pre-configured application environments such as Docker or from a manual configuration.'
 og_description: 'Use Terraform to deploy Linodes containing pre-configured application environments such as Docker or from a manual configuration.'
-keywords: ["Linode", "terraform", "plugin", "infrastructure", "IaC", "Infrastructure as Code"]
+keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-06
-modified: 2018-03-13
+modified: 2018-10-18
 aliases: ['platform/how-to-build-your-infrastructure-using-terraform-and-linode/']
 modified_by:
   name: Linode
@@ -18,7 +18,16 @@ contributor:
 
 Infrastructure as code (IaC) is software that gives developers the ability to build, manage, and provision computing environments with a high-level [configuration syntax](https://www.terraform.io/docs/configuration/syntax.html). Some benefits include the ability to enforce DevOps best practices, process automation, and the opportunity to use version control systems for greater visibility and collaboration within a team.
 
-[Terraform](https://www.terraform.io) stands out from other IaC solutions because it's an orchestration tool, which means it's designed specifically for bare-metal server and virtual machines. The commands in this guide should be run from a client machine running Ubuntu 16.04.
+[Terraform](https://www.terraform.io) stands out from other IaC solutions because it's an orchestration tool, meaning it's designed specifically for bare-metal server and virtual machines.
+
+Terraform offers many ways to set up and provision your Linode using:
+
+* Custom scripts, which can be included in a configuration file itself or called from a local or remote file.
+* Specialized software tools integrated with Terraform like Chef or Puppet.
+* Container-based solutions like Docker or Kubernetes.
+* Terraform plugin-based solutions.
+
+There are also plenty of [provisioners](https://www.terraform.io/docs/provisioners/index.html), [providers](https://github.com/terraform-providers), and even [modules](https://registry.terraform.io) available, one of which is the official [Linode-maintained provider](https://github.com/terraform-providers/terraform-provider-linode/).
 
 {{< caution >}}
 The configurations and commands used in this guide will result in multiple Linodes being added to your account. Be sure to monitor your account closely in the Linode Manager to avoid unwanted charges.
@@ -28,171 +37,176 @@ The configurations and commands used in this guide will result in multiple Linod
 
 -  You will need root access to the system and a standard user account with sudo privileges.
 
--  Create an API key for your Linode account. Be sure to take a screen capture of the API key when it's displayed, it will only appear once. See our guide [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) if you need help.
+-  Create an API token for your Linode account. It will only appear once on the screen, so be sure to take a screen capture of the token while it's displayed. See our guide [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) if you need help.
 
--  You will need [Git](https://git-scm.com/) installed on your system.
+## Install Terraform
 
-## Configure Client Machine
+ 1.  Make a Terraform project directory to work from and `cd` into it:
 
-### Install Terraform
+         mkdir terraform
+         cd terraform
 
- 1.  Download the following from [Terraform's website](https://www.terraform.io/downloads.html):
+ 1.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html):
 
      - The 64-bit Linux `.zip` archive.
      - The SHA256 checksums file.
      - The checksum signature file.
 
-2.  Import the HashiCorp Security [GPG key](https://www.hashicorp.com/security.html):
 
-        gpg --keyserver keyserver.ubuntu.com --recv 348FFC4C
+### Verify Download
+
+1.  Import the HashiCorp Security [GPG key](https://www.hashicorp.com/security.html):
+
+        gpg --recv-keys *keyID*
 
     The output should show that the key was imported:
 
     {{< output >}}
-        gpg: requesting key 348FFC4C from hkp server keyserver.ubuntu.com
-        gpg: /root/.gnupg/trustdb.gpg: trustdb created
-        gpg: key 348FFC4C: public key "HashiCorp Security <security@hashicorp.com>" imported
-        gpg: no ultimately trusted keys found
-        gpg: Total number processed: 1
-        gpg:               imported: 1  (RSA: 1)
-    {{</ output >}}
+root@localhost:~# gpg --recv-keys 51852D87348FFC4C
+gpg: /root/.gnupg/trustdb.gpg: trustdb created
+gpg: key 51852D87348FFC4C: public key "HashiCorp Security <security@hashicorp.com>" imported
+gpg: no ultimately trusted keys found
+gpg: Total number processed: 1
+gpg:               imported: 1
+{{</ output >}}
 
-3.  Verify the checksum file's GPG signature:
+    {{< note >}}
+If you recieve an error to the effect of `No dirmngrnupg/S.dirmngr'`, install the package `dirmngr` and run the GPG command again.
+{{< /note >}}
+
+1.  Verify the checksum file's GPG signature:
 
         gpg --verify terraform*.sig terraform*SHA256SUMS
 
     The output should say the signature is good:
+
     {{< output >}}
-        gpg: Signature made Wed 31 Jan 2018 08:53:21 PM UTC using RSA key ID 348FFC4C
-        gpg: Good signature from "HashiCorp Security <security@hashicorp.com>"
-        gpg: WARNING: This key is not certified with a trusted signature!
-        gpg:          There is no indication that the signature belongs to the owner.
-        Primary key fingerprint: 91A6 E7F8 5D05 C656 30BE  F189 5185 2D87 348F FC4C
+root@localhost:~# gpg --verify terraform*.sig terraform*SHA256SUMS
+gpg: Signature made Wed 15 Aug 2018 10:07:05 PM UTC
+gpg:                using RSA key 51852D87348FFC4C
+gpg: Good signature from "HashiCorp Security <security@hashicorp.com>" [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 91A6 E7F8 5D05 C656 30BE  F189 5185 2D87 348F FC4C
 {{</ output >}}
 
-4.  Verify that the fingerprint matches what's on [HashiCorp's security page](https://www.hashicorp.com/security.html).
+1.  Verify that the fingerprint matches what's on [HashiCorp's security page](https://www.hashicorp.com/security.html).
 
-5.  Verify the `.zip` archive's checksum:
+1.  Verify the `.zip` archive's checksum:
 
         sha256sum -c terraform*SHA256SUMS 2>&1 | grep OK
 
     The output should show the file's name as given in the `terraform*SHA256SUMS` file:
 
-        terraform_0.11.3_linux_amd64.zip: OK
+    {{< output >}}
+terraform_0.11.8_linux_amd64.zip: OK
+{{< /output >}}
 
-### Install Golang
+### Configure Terraform Environment
 
-1.  Download and extract Go from the project's [downloads page](https://golang.org/dl/). Terraform requires version 1.9:
+1.  Unzip `terraform_*_linux_amd64.zip` to your desired working directory:
 
-        wget -c https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz
-        sudo tar -C /usr/local -xzf go*.linux-amd64.tar.gz
+        unzip terraform_*_linux_amd64.zip
 
-2.  Create separate directories for project executables and source code:
-
-        mkdir -p ~/go_projects/{bin,src,pkg}
-
-3.  Add Go-specific `PATH` locations to your user's environment. Add these lines to the bottom of your user's `~/.profile` file:
-
-    {{< file "~/.profile" aconf >}}
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go_projects/bin
-export GOPATH="$HOME/go_projects"
-export GOBIN="$GOPATH/bin"
-{{</file>}}
     {{< note >}}
-You can change the variables to any location that suits you, as long as it is included it in the `PATH` variable.
-{{< /note >}}
+If you recieve the error: `-bash: /usr/bin/unzip: No such file or directory`, install the `unzip` package and try again.
+    {{< /note >}}
 
-4.  Reload your user's environment profile:
+1.  Add your working directory to `~/.profile` so it's available to your user's PATH. Then reload the Bash profile.
 
+        echo 'export PATH="$PATH:$HOME/terraform"' >> ~/.profile
         source ~/.profile
 
-### Build a Linode Plugin for Terraform
+1.  Verify Terraform can run by simply calling it with no options or arguments:
 
-1.  Download the Terraform repository:
+        terraform
 
-        go get github.com/hashicorp/terraform
+    You should see the output below:
 
-2.  Download the custom `terraform-provider-linode` repository:
+    {{< output >}}
+user@terraform-example:~$ terraform
+Usage: terraform [-version] [-help] <command> [args]
 
-        go get github.com/LinodeContent/terraform-provider-linode
+The available commands for execution are listed below.
+The most common, useful commands are shown first, followed by
+less common or more advanced commands. If you're just getting
+started with Terraform, stick with the common commands. For the
+other commands, please read the help and docs before usage.
 
-3.  Source code is stored in Go's `src` directory by default. Change directories to the location of the Terraform Linode plugin and build the package. Dependencies will be handled automatically by `godeps` that's already in the plugin folder.
+Common commands:
+    apply              Builds or changes infrastructure
+    console            Interactive console for Terraform interpolations
+    destroy            Destroy Terraform-managed infrastructure
+    env                Workspace management
+    fmt                Rewrites config files to canonical format
+    get                Download and install modules for the configuration
+    graph              Create a visual graph of Terraform resources
+    import             Import existing infrastructure into Terraform
+    init               Initialize a Terraform working directory
+    output             Read an output from a state file
+    plan               Generate and show an execution plan
+    providers          Prints a tree of the providers used in the configuration
+    push               Upload this Terraform module to Atlas to run
+    refresh            Update local state file against real resources
+    show               Inspect Terraform state or plan
+    taint              Manually mark a resource for recreation
+    untaint            Manually unmark a resource as tainted
+    validate           Validates the Terraform files
+    version            Prints the Terraform version
+    workspace          Workspace management
 
-        cd ~/go_projects/src/github.com/LinodeContent/terraform-provider-linode/bin/terraform-provider-linode
-        go build -o terraform-provider-linode
+All other commands:
+    debug              Debug output management (experimental)
+    force-unlock       Manually unlock the terraform state
+    state              Advanced state management
+{{< /output >}}
 
-4.  Move the newly created binary and the Terraform configuration file to `~/go_projects/bin`:
 
-        mv ~/go_projects/src/github.com/LinodeContent/terraform-provider-linode/bin/terraform-provider-linode/terraform-provider-linode ~/go_projects/bin
-        mv ~/go_projects/src/github.com/LinodeContent/terraform-provider-linode/linode-template.tf ~/go_projects/bin
-
-At this point, you have all the binaries needed. If the rest of your clients use the same operating system, then you can distribute these files among them. There is no need for each client to install `Go` or build the same package.
-
-### Prepare the Terraform Plugin
-
-1.  Download the Terraform repository:
-
-        go get github.com/hashicorp/terraform
-
-2.  Get the Linode plugin for Terraform:
-
-        wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/terraform-linode-plugin/terraform-provider-linode
-
-3.  Move the plugin to `~go_projects/bin`:
-
-        mv terraform-provider-linode ~/go_projects/bin/
-        chmod 750 ~/go_projects/bin/terraform-provider-linode
-
-### Configure the Linode Provider
+## Building with the Linode Provider
 
 Terraform can understand two types of configuration files: JSON and HashiCorp Configuration Language (HCL). This guide [used the HCL format](#install-terraform), designated by the extension `.tf`.
 
-1.  Open `linode-template.tf` in a text editor and add the snippet displayed below. Fill in your Linode API key, public SSH key, and desired root password where indicated:
+1.  Create the file `linode-template.tf` and add the snippet below. Fill in your Linode API key, public SSH key, and desired root password where indicated. See [Terraform's documentation](https://www.terraform.io/docs/configuration/syntax.html) for more information on configuration syntax.
 
-    {{< file "~/go_projects/bin/linode-template.tf" aconf >}}
+    {{< file "~/terraform/linode-template.tf" aconf >}}
 provider "linode" {
-  key = "your-linode-API-key-here"
+  token = "LINODE_API_KEY_HERE"
 }
 
-resource "linode_linode" "terraform-example" {
-        image = "Ubuntu 16.04 LTS"
-        kernel = "Grub 2"
-        name = "linode-example"
-        group = "terraform-test"
-        region = "Atlanta, GA, USA"
-        size = 1024
-        ssh_key = "your-ssh-id_rsa.pub-here"
-        root_password = "your-server-password-here"
+resource "linode_instance" "terraform-example" {
+        image = "linode/ubuntu18.04"
+        label = "Terraform-Example"
+        group = "Terraform"
+        region = "us-east"
+        type = "g6-standard-1"
+        authorized_keys = "PUBLIC_SSH_KEY_HERE"
+        root_pass = "ROOT_PASSWORD_HERE"
 }
 {{< /file >}}
 
-    See [Terraform's documentation](https://www.terraform.io/docs/configuration/syntax.html) for specific information regarding configuration syntax.
+1.  Initialize the Terraform configuration:
 
-2.  Navigate to `~/go_projects/bin` and initialize the Terraform configuration:
-
-        cd ~/go_projects/bin
         terraform init
 
     Terraform will confirm successful initialization:
+
     {{< output >}}
-        Terraform has been successfully initialized!
+Terraform has been successfully initialized!
 {{</ output >}}
 
-3.  If an error occurs, run the command again in debug mode:
+1.  If an error occurs, run the command again in debug mode:
 
         TF_LOG=debug terraform init
 
-##  Use Terraform to Deploy a Linode
-
-### Single Server Basic Linode
+### Provision a Single Server
 
 1.  Check your Terraform plan:
 
         terraform plan
 
     You will see:
-{{< output >}}
+
+    {{< output >}}
         Refreshing Terraform state in-memory prior to plan...
         The refreshed state will be used to calculate this plan, but will not be
         persisted to local or remote state storage.
@@ -206,23 +220,22 @@ resource "linode_linode" "terraform-example" {
 
         Terraform will perform the following actions:
 
-          + linode_linode.your-terraform-name-here
+          + linode_image.your-terraform-name-here
               id:                              <computed>
               disk_expansion:                  "false"
               group:                           "your-linode-group-name-here"
               helper_distro:                   "true"
-              image:                           "Ubuntu 16.04 LTS"
+              image:                           "linode/ubuntu18.04"
               ip_address:                      <computed>
-              kernel:                          "Grub 2"
               manage_private_ip_automatically: "true"
               name:                            "TFtest"
               plan_storage:                    <computed>
               plan_storage_utilized:           <computed>
               private_ip_address:              <computed>
-              region:                          "Atlanta, GA, USA"
-              root_password:                   "wAZ9SvTofwDbrGO2FWgoI3BZFy0bvqxnQnNF1qn9pIQ="
-              size:                            "1024"
-              ssh_key:                         "QLWOVauEwNxWGbj2ErWF9vFYIXsxW/2duL/og8gtV84="
+              region:                          "us-south"
+              root_pass:                   "wAZ9SvTofwDbrGO2FWgoI3BZFy0bvqxnQnNF1qn9pIQ="
+              type:                            "g6-standard-1"
+              authorized_keys:                         "QLWOVauEwNxWGbj2ErWF9vFYIXsxW/2duL/og8gtV84="
               status:                          <computed>
               swap_size:                       "512"
 
@@ -242,7 +255,7 @@ resource "linode_linode" "terraform-example" {
 
     The `terraform plan` command won't take any action or make any changes on your Linode account. Terraform uses a declarative approach in which your configuration file specifies the desired end-state of the infrastructure. When you run `terraform plan`, an analysis is done to determine which actions are required to achieve this state.
 
-2.  If there are no errors, start the deployment:
+1.  If there are no errors, start the deployment:
 
         terraform apply
 
@@ -255,23 +268,22 @@ resource "linode_linode" "terraform-example" {
 
         Terraform will perform the following actions:
 
-          + linode_linode.your-terraform-name-here
+          + linode_instance.your-terraform-name-here
               id:                              <computed>
               disk_expansion:                  "false"
               group:                           "your-linode-group-name-here"
               helper_distro:                   "true"
-              image:                           "Ubuntu 16.04 LTS"
+              image:                           "linode/ubuntu18.04"
               ip_address:                      <computed>
-              kernel:                          "Grub 2"
               manage_private_ip_automatically: "true"
               name:                            "your-linode-name-here"
               plan_storage:                    <computed>
               plan_storage_utilized:           <computed>
               private_ip_address:              <computed>
-              region:                          "Atlanta, GA, USA"
-              root_password:                   "wAZ9SvTofwDbrGO2FWgoI3BZFy0bvqxnQnNF1qn9pIQ="
-              size:                            "1024"
-              ssh_key:                         "QLWOVauEwNxWGbj2ErWF9vFYIXsxW/2duL/og8gtV84="
+              region:                          "us-south"
+              root_pass:                   "wAZ9SvTofwDbrGO2FWgoI3BZFy0bvqxnQnNF1qn9pIQ="
+              type:                            "g6-standard-1"
+              authorized_keys:                         "QLWOVauEwNxWGbj2ErWF9vFYIXsxW/2duL/og8gtV84="
               status:                          <computed>
               swap_size:                       "512"
 
@@ -285,93 +297,53 @@ resource "linode_linode" "terraform-example" {
           Enter a value:
 {{</ output >}}
 
-3.  Return to the Linode Manager. You should see the `linode-test` Linode has been added to your account.
+1.  Return to the Linode Manager. You should see the `linode-test` Linode has been added to your account.
 
-### Two-Server Configuration
+### Provision Additional Servers
 
-Now that you have the `linode-example` Linode created using Terraform, imagine you need to implement a web and database server deployment.
+Now imagine you need to implement a web and database server deployment in addition to the Linode created above.
 
 It's important to remember that:
 
-* Terraform loads all files with the ".tf" extension present in the working directory into memory. As a result, all files are concatenated (in memory) and you don't need to define the provider in this file, since it was declared in `linode-template.tf`.
+* Terraform loads into memory all files present in the working directory which have a `.tf` extension. As a result, all files are concatenated (in memory) and you don't need to define the provider in this file, since it was declared in `linode-template.tf`.
 
-* Resources can't be duplicated, so you need to assign a unique name for each one.
+* Resources can't be duplicated, so you need to assign a unique name for each new Linode.
 
 * In this example the same SSH key and root password are being used. You should change these values in production environments.
 
 * A new parameter `swap_size` is used to override the default value of 512Mb. You can check all available options for `terraform-provider-linode` in the plugin GitHub repository [readme.md](https://github.com/LinodeContent/terraform-provider-linode).
 
-1.  From the `linode-template.tf` create another file called `linode-www.tf` (don't delete `linode-template.tf`):
+1.  From the `linode-template.tf` create another file called `linode-www.tf`. **Do not delete `linode-template.tf`**.
 
-    {{< file "~/go_projects/bin/linode-www.tf" aconf >}}
-resource "linode_linode" "terraform-www" {
-  image = "CentOS 7"
-  kernel = "Grub 2"
+    {{< file "~/terraform/linode-www.tf" aconf >}}
+resource "linode_instance" "terraform-www" {
+  image = "linode/centos7"
   name = "www"
   group = "web"
-  region = "Dallas, TX, USA"
-  size = 2048
+  region = "us-south"
+  type = "g6-standard-1"
   swap_size = 1024
-  ssh_key = "your-ssh-id_rsa.pub-here"
-  root_password = "your-server-password-here"
+  authorized_keys = "PUBLIC_SSH_KEY_HERE"
+  root_pass = "ROOT_PASSWORD_HERE"
 }
 {{< /file >}}
 
-2.  Check your plan for errors:
+1.  Check your plan for errors:
 
         terraform plan
 
-3.  Apply all changes:
+1.  Apply all changes:
 
         terraform apply
 
-4.  Check the Linode Manager to ensure that the `www` Linode was added to the `web` display group on your account.
-
-### Adjust Deployment
-
-Imagine you want to change the first server name and tag to something more relevant, and also increase the size to match the newly created Linode.
-
-1.  Modify the `linode-template.tf`
-
-    {{< file "~/go_projects/bin/linode-template.tf" aconf >}}
-provider "linode" {
-  key = "your-linode-API-key-here"
-}
-
-resource "linode_linode" "terraform-example" {
-        image = "Ubuntu 16.04 LTS"
-        kernel = "Grub 2"
-        name = "database"
-        group = "web"
-        region = "Atlanta, GA, USA"
-        size = 2048
-        swap_size = 1024
-        ssh_key = "your-ssh-id_rsa.pub-here"
-        root_password = "your-server-password-here"
-}
-
-{{< /file >}}
+1.  Check the Linode Manager to ensure that the `www` Linode was added to the `web` display group on your account.
 
 
-2.  Check your plan:
+### Provision Multiple Servers Using Variables
 
-        terraform plan
+Up to this point, the procedure for adding a new node to your infrastructure was to create a new file and run `terraform apply`. But what happens when your planned infrastructure has dozens of servers? In this example, you will use a very simplistic version of a Terraform configuration file that uses variables.
 
-3.  Apply your changes:
-
-        terraform apply
-
-    {{< caution >}}
-Changing the size of your Linode will force your server to be powered off and migrated to a different host in the same data center. The associated disk migration will take approximately 1 minute for every 3-5 gigabytes of data. For more information about resizing read the [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) guide.
-{{< /caution >}}
-
-4.  Return to the Linode Manager to verify the changes.
-
-### Advanced Configuration Example
-
-Up to this point, the procedure for adding a new node to your infrastructure was to create a new file and run the `terraform apply` command. But what happens when your planned infrastructure has dozens of servers? In this example, you will use a very simplistic version of a Terraform configuration file that uses variables.
-
-1.  For the purpose of this example you will need to delete previous nodes:
+1.  For the purpose of this example you will need to delete the previous nodes created above:
 
         terraform plan -destroy
 
@@ -382,7 +354,7 @@ Up to this point, the procedure for adding a new node to your infrastructure was
         The refreshed state will be used to calculate this plan, but will not be
         persisted to local or remote state storage.
 
-        linode_linode.your-terraform-name-here: Refreshing state... (ID: 6630470)
+        linode_instance.your-terraform-name-here: Refreshing state... (ID: 6630470)
 
         ------------------------------------------------------------------------
 
@@ -404,7 +376,7 @@ Up to this point, the procedure for adding a new node to your infrastructure was
         "terraform apply" is subsequently run.
 {{</ output >}}
 
-2.  Similar to `terraform plan`, the above command checks your infrastructure before doing any change. To perform the deletion, run:
+1.  Similar to `terraform plan`, the above command checks your infrastructure before doing any change. To perform the deletion, run:
 
         terraform destroy
 
@@ -436,34 +408,34 @@ Up to this point, the procedure for adding a new node to your infrastructure was
         Destroy complete! Resources: 1 destroyed.
 {{</ output >}}
 
-3.  Verify the deletion in the Linode Manager.
+1.  Verify the deletion in the Linode Manager.
 
-4.  Delete (or move to a different location) all Terraform files.
+1.  Delete (or move to a different location) all Terraform files.
 
-        rm *.tf*
+        rm *.tf
 
-5.  Create a new file to define variables. You can use any name but for this example we'll use `variables.tf`:
+1.  Create a new file to define variables. You can use any name but for this example we'll use `variables.tf`:
 
-    {{< file "~/go_projects/bin/variables.tf" aconf >}}
-variable "linode_key" {}
-variable "ssh_key" {}
-variable "root_password" {}
+    {{< file "~/terraform/variables.tf" aconf >}}
+variable "token" {}
+variable "authorized_keys" {}
+variable "root_pass" {}
 variable "region" {
-  default = "Atlanta, GA, USA"
+  default = "us-south"
 }
 {{< /file >}}
 
-6.  Create the file `terraform.tfvars` to store your variables. **You can't change this filename** after creating it:
+1.  Create the file `terraform.tfvars` to store your variables. **You can't change this filename** after creating it.
 
-    {{< file "~/go_projects/bin/terraform.tfvars" aconf >}}
-linode_key = "your-linode-API-key-here"
-ssh_key = "your-ssh-id_rsa.pub-here"
-root_password ="your-root-password-here"
+    {{< file "~/terraform/terraform.tfvars" aconf >}}
+token = "LINODE_API_KEY_HERE"
+authorized_keys = "PUBLIC_SSH_KEY_HERE"
+root_pass ="ROOT_PASSWORD_HERE"
 {{< /file >}}
 
-7.  Create a new configuration file called `linode-mod-template.tf`:
+1.  Create a new configuration file called `linode-mod-template.tf`:
 
-    {{< file "~/go_projects/bin/linode-mod-template.tf" aconf >}}
+    {{< file "~/terraform/linode-mod-template.tf" aconf >}}
 # Linode Provider definition
 
 provider "linode" {
@@ -472,49 +444,83 @@ provider "linode" {
 
 # Example Web Server
 
-resource "linode_linode" "www-01" {
-        image = "CentOS 7"
-        kernel = "Latest 64 bit"
+resource "linode_instance" "www-01" {
+        image = "linode/centos7"
         name = "www"
         group = "web"
-        region = "Dallas, TX, USA"
-        size = 2048
+        region = "us-south"
+        type = "g6-standard-1"
         swap_size = 1024
-        ssh_key = "${var.ssh_key}"
-        root_password = "${var.root_password}"
+        authorized_keys = "${var.authorized_keys}"
+        root_pass = "${var.root_pass}"
 }
 
 # Example Database Server
 
-resource "linode_linode" "db-01" {
-        image = "Ubuntu 16.04 LTS"
-        kernel = "Latest 64 bit"
+resource "linode_instance" "db-01" {
+        image = "linode/ubuntu18.04"
         name = "database"
         group = "web"
         region = "${var.region}"
-        size = 2048
+        type = "g6-standard-1"
         swap_size = 1024
-        ssh_key = "${var.ssh_key}"
-        root_password = "${var.root_password}"
+        ssh_key = "${var.authorized_keys}"
+        root_password = "${var.root_pass}"
 }
-
 {{< /file >}}
 
-8.  Check your new deployment for errors:
+1.  Check your new deployment for errors:
 
         terraform plan
 
-9.  Apply all changes:
+1.  Apply all changes:
 
         terraform apply
 
     The end result is the same as before. The use of variables gives Terraform great flexibility, not only to store repetitive data (as keys) but also to assign default values to any field.
 
-## Manage your Infrastructure with Terraform
 
-### Terraform Modules
+## Modify Live Deployments
 
-The idea behind any code-driven solution is to avoid repetitive blocks. Terraform uses a concept called *modules* to group common server requirements and configurations. Think of modules as similar to *functions* in programming languages.
+Imagine you want to change the first server's name and size without needing to destroy and rebuild it. Simply change the values in the `.tf` file.
+
+{{< caution >}}
+Changing the size of your Linode will force your server to be powered off and migrated to a different host in the same data center. The associated disk migration will take approximately 1 minute for every 3-5 gigabytes of data. See our [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) guide for more information.
+{{< /caution >}}
+
+1.  Modify the `linode-template.tf`
+
+    {{< file "~/terraform/linode-template.tf" aconf >}}
+provider "linode" {
+  token = "LINODE_API_KEY_HERE"
+}
+
+resource "linode_instance" "terraform-example" {
+        image = "linode/ubuntu18.04"
+        name = "database"
+        group = "web"
+        region = "us-south"
+        type = "g6-standard-4"
+        swap_size = 1024
+        authorized_keys = "PUBLIC_SSH_KEY_HERE"
+        root_pass = "ROOT_PASSWORD_HERE"
+}
+{{< /file >}}
+
+1.  Check your plan:
+
+        terraform plan
+
+1.  Apply your changes:
+
+        terraform apply
+
+1.  Verify the changes in the Linode Manager.
+
+
+## Terraform Modules
+
+Terraform uses a concept called *modules* to group common server requirements and configurations. Think of modules as similar to *functions* in programming languages.
 
 Take a look at the following file structure:
 
@@ -522,43 +528,47 @@ Take a look at the following file structure:
 
 There is a directory called `modules` containing the reusable code blocks (in this case `appserver`) and a `testing` directory containing the specific configuration to implement. It's a minimal layout but enough to highlight benefits.
 
-#### Basic Module Structure
+Create the directory structure for the module files below:
+
+    cd ~/terraform
+    mkdir -p modules/appserver
+    mkdir testing
+
+### Basic Module Structure
 
 The module structure is flexible, so you can use as many Terraform files as needed to describe your infrastructure. This example contains just one main configuration file describing the reusable code:
 
-{{< file "~/go_projects/bin/modules/appserver/main.tf" aconf >}}
+{{< file "~/terraform/modules/appserver/main.tf" aconf >}}
 # Application Server
 
-resource "linode_linode" "appserver" {
-        image = "Ubuntu 16.04 LTS"
-        kernel = "Latest 64 bit"
+resource "linode_instance" "appserver" {
+        image = "linode/ubuntu18.04"
         name = "${var.appserver_name}"
         group = "web"
         region = "${var.region}"
-        size = 2048
+        type = "g6-standard-1"
         swap_size = 1024
-        ssh_key = "${var.ssh_key}"
-        root_password = "${var.root_password}"
+        authorized_keys = "${var.authorized_keys}"
+        root_pass = "${var.root_pass}"
 }
 
 # Database Server
 
-resource "linode_linode" "dbserver" {
-        image = "CentOS 7"
-        kernel = "Latest 64 bit"
+resource "linode_instance" "dbserver" {
+        image = "centos7"
         name = "${var.dbserver_name}"
         group = "web"
         region = "${var.region}"
-        size = "${var.db_size}"
+        type = "${var.db_type}"
         swap_size = 1024
-        ssh_key = "${var.ssh_key}"
-        root_password = "${var.root_password}"
+        authorized_keys = "${var.authorized_keys}"
+        root_pass = "${var.root_pass}"
 }
 {{< /file >}}
 
-The configuration above reproduces the previous examples using variables. The next file contains variable definitions:
+The configuration above reproduces the previous examples using variables. The next file contains variable definitions. Assign a default value for each variable. That value will be used if you don't override it when you call the module.
 
-{{< file "~/go_projects/bin/modules/appserver/variables.tf" aconf >}}
+{{< file "~/terraform/modules/appserver/variables.tf" aconf >}}
 variable "appserver_name" {
     description = "The name for the Application Server"
     default = "default-app"
@@ -569,75 +579,62 @@ variable "dbserver_name" {
     default = "default-db"
 }
 
-variable "db_size" {
+variable "db_type" {
     description = "The size (plan) for your Database Linode"
-    default = "1024"
+    default = "g6-standard-1"
 }
 
 variable "region" {
     description = "The default Linode region to deploy the infrastructure"
-    default = "default-region"
+    default = "us-east"
 }
 
-variable "ssh_key" {
+variable "authorized_keys" {
     description = "The Public id_rsa.pub key used for secure SSH connections"
-    default = "default-ssh-key"
+    default = "default-ssh-public-key"
 }
 
-variable "root_password" {
+variable "root_pass" {
     description = "The default root password for the Linode server"
-    default = "default-root-pwd"
+    default = "default-root-password"
 }
 
 {{< /file >}}
 
-{{< note >}}
-Assign a default value for each variable. That value will be used if you don't override it when you call the module.
-{{< /note >}}
+### Working with Modules
 
-Create a `main.tf` configuration file that uses the module you just created:
+1.  Create a `main.tf` configuration file that uses the module you just created:
 
-{{< file "~/go_projects/bin/testing/main.tf" aconf >}}
+    {{< file "~/terraform/testing/main.tf" aconf >}}
 # Newark Testing Environment Infrastructure
 
 provider "linode" {
-  key = "your-linode-API-key-here"
+  token = "LINODE_API_KEY_HERE"
 }
 
 module "appserver" {
-  source = "/your/absolute/path/to/modules/appserver"
+  source = "$HOME/terraform/appserver"
 
 # Variables Specific to this Deployment
 
-region = "Newark, NJ, USA"
-ssh_key = "your-ssh-id_rsa"
-root_password ="your-root-password-here"
+region = "us-east"
+authorized_keys = "PUBLIC_SSH_KEY_HERE"
+root_pass ="ROOT_PASSWORD_HERE"
 
 # Variables Specific to Servers
 
 appserver_name = "NJ-app"
 dbserver_name = "NJ-db"
-db_size = "8192"
+db_type = "g6-standard-8"
 
 }
 {{< /file >}}
 
-To use a module, call it by name with the command `module` and indicate the absolute path where it is saved. Then you can assign values to each field defined by a variable. The final result will be the same as if you pasted in all of the reusable code in the main configuration file.
+1.  To use a module, call it by name with the command `module` and indicate the absolute path where it is saved. Then you can assign values to each field defined by a variable. The final result will be the same as if you pasted in all of the reusable code in the main configuration file.
 
-    cd ~/go_projects/bin/testing/
-    terraform init
-    terraform planned
-    terraform apply
+        cd ~/terraform/testing/
+        terraform init
+        terraform planned
+        terraform apply
 
-The possibilities of modules are endless. You can use several modules at once, you can mix the use of modules with traditional `resource` definitions, or you can even call modules from remote sources. For more information read the Terraform [modules documentation](https://www.terraform.io/docs/modules/index.html).
-
-## Server Configuration
-
-Terraform offers many ways to set up and provision your Linode, using:
-
-* Custom scripts, which can be included on configuration file itself or called from a local or remote file.
-* Specialized software tools integrated with Terraform like Chef or Puppet.
-* Container-based solutions like Docker or Kubernetes.
-* Terraform plugin-based solutions.
-
-There are also plenty of [provisioners](https://www.terraform.io/docs/provisioners/index.html), [providers](https://github.com/terraform-providers), and even [modules](https://registry.terraform.io) available.
+    The possibilities of modules are endless. You can use several modules at once, you can mix the use of modules with traditional `resource` definitions, or you can even call modules from remote sources. For more information read the [Terraform modules documentation](https://www.terraform.io/docs/modules/index.html).
