@@ -7,7 +7,7 @@ og_description: 'Use Terraform to deploy Linodes containing pre-configured appli
 keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-06
-modified: 2018-10-18
+modified: 2018-10-19
 aliases: ['platform/how-to-build-your-infrastructure-using-terraform-and-linode/']
 modified_by:
   name: Linode
@@ -179,7 +179,7 @@ resource "linode_instance" "terraform-example" {
         group = "Terraform"
         region = "us-east"
         type = "g6-standard-1"
-        authorized_keys = "PUBLIC_SSH_KEY_HERE"
+        authorized_keys = [ "PUBLIC_SSH_KEY_HERE" ]
         root_pass = "ROOT_PASSWORD_HERE"
 }
 {{< /file >}}
@@ -207,46 +207,50 @@ Terraform has been successfully initialized!
     You will see:
 
     {{< output >}}
-        Refreshing Terraform state in-memory prior to plan...
-        The refreshed state will be used to calculate this plan, but will not be
-        persisted to local or remote state storage.
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
 
 
-        ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
-        An execution plan has been generated and is shown below.
-        Resource actions are indicated with the following symbols:
-          + create
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
 
-        Terraform will perform the following actions:
+Terraform will perform the following actions:
 
-          + linode_image.your-terraform-name-here
-              id:                              <computed>
-              disk_expansion:                  "false"
-              group:                           "your-linode-group-name-here"
-              helper_distro:                   "true"
-              image:                           "linode/ubuntu18.04"
-              ip_address:                      <computed>
-              manage_private_ip_automatically: "true"
-              name:                            "TFtest"
-              plan_storage:                    <computed>
-              plan_storage_utilized:           <computed>
-              private_ip_address:              <computed>
-              region:                          "us-south"
-              root_pass:                   "wAZ9SvTofwDbrGO2FWgoI3BZFy0bvqxnQnNF1qn9pIQ="
-              type:                            "g6-standard-1"
-              authorized_keys:                         "QLWOVauEwNxWGbj2ErWF9vFYIXsxW/2duL/og8gtV84="
-              status:                          <computed>
-              swap_size:                       "512"
+  + linode_instance.terraform-example
+      id:                 <computed>
+      alerts.#:           <computed>
+      authorized_keys.#:  "1"
+      authorized_keys.0:  "ssh-rsa . . ."
+      backups.#:          <computed>
+      backups_enabled:    <computed>
+      boot_config_label:  <computed>
+      group:              "Terraform"
+      image:              "linode/ubuntu18.04"
+      ip_address:         <computed>
+      ipv4.#:             <computed>
+      ipv6:               <computed>
+      label:              "Terraform-Example"
+      private_ip_address: <computed>
+      region:             "us-east"
+      root_pass:          <sensitive>
+      specs.#:            <computed>
+      status:             <computed>
+      swap_size:          <computed>
+      type:               "g6-standard-1"
+      watchdog_enabled:   "true"
 
 
-        Plan: 1 to add, 0 to change, 0 to destroy.
+Plan: 1 to add, 0 to change, 0 to destroy.
 
-        ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
-        Note: You didn't specify an "-out" parameter to save this plan, so Terraform
-        can't guarantee that exactly these actions will be performed if
-        "terraform apply" is subsequently run.
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
 {{</ output >}}
 
     If you need to fix any issues, activate debug mode:
@@ -262,39 +266,43 @@ Terraform has been successfully initialized!
     You'll be asked to confirm the action, enter `yes` and press **Enter**:
 
     {{< output >}}
-        An execution plan has been generated and is shown below.
-        Resource actions are indicated with the following symbols:
-          + create
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
 
-        Terraform will perform the following actions:
+Terraform will perform the following actions:
 
-          + linode_instance.your-terraform-name-here
-              id:                              <computed>
-              disk_expansion:                  "false"
-              group:                           "your-linode-group-name-here"
-              helper_distro:                   "true"
-              image:                           "linode/ubuntu18.04"
-              ip_address:                      <computed>
-              manage_private_ip_automatically: "true"
-              name:                            "your-linode-name-here"
-              plan_storage:                    <computed>
-              plan_storage_utilized:           <computed>
-              private_ip_address:              <computed>
-              region:                          "us-south"
-              root_pass:                   "wAZ9SvTofwDbrGO2FWgoI3BZFy0bvqxnQnNF1qn9pIQ="
-              type:                            "g6-standard-1"
-              authorized_keys:                         "QLWOVauEwNxWGbj2ErWF9vFYIXsxW/2duL/og8gtV84="
-              status:                          <computed>
-              swap_size:                       "512"
+  + linode_instance.terraform-example
+      id:                 <computed>
+      alerts.#:           <computed>
+      authorized_keys.#:  "1"
+      authorized_keys.0:  "ssh-rsa . . ."
+      backups.#:          <computed>
+      backups_enabled:    <computed>
+      boot_config_label:  <computed>
+      group:              "Terraform"
+      image:              "linode/ubuntu18.04"
+      ip_address:         <computed>
+      ipv4.#:             <computed>
+      ipv6:               <computed>
+      label:              "Terraform-Example"
+      private_ip_address: <computed>
+      region:             "us-east"
+      root_pass:          <sensitive>
+      specs.#:            <computed>
+      status:             <computed>
+      swap_size:          <computed>
+      type:               "g6-standard-1"
+      watchdog_enabled:   "true"
 
 
-        Plan: 1 to add, 0 to change, 0 to destroy.
+Plan: 1 to add, 0 to change, 0 to destroy.
 
-        Do you want to perform these actions?
-          Terraform will perform the actions described above.
-          Only 'yes' will be accepted to approve.
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
 
-          Enter a value:
+  Enter a value:
 {{</ output >}}
 
 1.  Return to the Linode Manager. You should see the `linode-test` Linode has been added to your account.
@@ -318,12 +326,12 @@ It's important to remember that:
     {{< file "~/terraform/linode-www.tf" aconf >}}
 resource "linode_instance" "terraform-www" {
   image = "linode/centos7"
-  name = "www"
+  label = "www"
   group = "web"
   region = "us-south"
   type = "g6-standard-1"
   swap_size = 1024
-  authorized_keys = "PUBLIC_SSH_KEY_HERE"
+  authorized_keys = [ "PUBLIC_SSH_KEY_HERE" ]
   root_pass = "ROOT_PASSWORD_HERE"
 }
 {{< /file >}}
@@ -347,65 +355,67 @@ Up to this point, the procedure for adding a new node to your infrastructure was
 
         terraform plan -destroy
 
-    That returns:
+    That should return:
 
     {{< output >}}
-        Refreshing Terraform state in-memory prior to plan...
-        The refreshed state will be used to calculate this plan, but will not be
-        persisted to local or remote state storage.
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
 
-        linode_instance.your-terraform-name-here: Refreshing state... (ID: 6630470)
+linode_instance.terraform-example: Refreshing state... (ID: 10948649)
 
-        ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
-        An execution plan has been generated and is shown below.
-        Resource actions are indicated with the following symbols:
-          - destroy
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  - destroy
 
-        Terraform will perform the following actions:
+Terraform will perform the following actions:
 
-          - linode_linode.TFtest
+  - linode_instance.terraform-example
 
 
-        Plan: 0 to add, 0 to change, 1 to destroy.
+Plan: 0 to add, 0 to change, 1 to destroy.
 
-        ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
-        Note: You didn't specify an "-out" parameter to save this plan, so Terraform
-        can't guarantee that exactly these actions will be performed if
-        "terraform apply" is subsequently run.
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
 {{</ output >}}
 
 1.  Similar to `terraform plan`, the above command checks your infrastructure before doing any change. To perform the deletion, run:
 
         terraform destroy
 
-    That will return:
+    That should return:
 
     {{< output >}}
-        linode_linode.your-terraform-name-here: Refreshing state... (ID: 6630470)
+linode_instance.terraform-example: Refreshing state... (ID: 10948649)
 
-        An execution plan has been generated and is shown below.
-        Resource actions are indicated with the following symbols:
-          - destroy
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  - destroy
 
-        Terraform will perform the following actions:
+Terraform will perform the following actions:
 
-          - linode_linode.TFtest
+  - linode_instance.terraform-example
 
 
-        Plan: 0 to add, 0 to change, 1 to destroy.
+Plan: 0 to add, 0 to change, 1 to destroy.
 
-        Do you really want to destroy?
-          Terraform will destroy all your managed infrastructure, as shown above.
-          There is no undo. Only 'yes' will be accepted to confirm.
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
 
-          Enter a value: yes
+  Enter a value: yes
 
-        linode_linode.your-terraform-name-here: Destroying... (ID: 6630470)
-        linode_linode.your-terraform-name-here: Destruction complete after 0s
+linode_instance.terraform-example: Destroying... (ID: 10948649)
+linode_instance.terraform-example: Still destroying... (ID: 10948649, 10s elapsed)
+linode_instance.terraform-example: Still destroying... (ID: 10948649, 20s elapsed)
+linode_instance.terraform-example: Destruction complete after 21s
 
-        Destroy complete! Resources: 1 destroyed.
+Destroy complete! Resources: 1 destroyed.
 {{</ output >}}
 
 1.  Verify the deletion in the Linode Manager.
@@ -446,12 +456,12 @@ provider "linode" {
 
 resource "linode_instance" "www-01" {
         image = "linode/centos7"
-        name = "www"
+        label = "www"
         group = "web"
         region = "us-south"
         type = "g6-standard-1"
         swap_size = 1024
-        authorized_keys = "${var.authorized_keys}"
+        authorized_keys = [ "${var.authorized_keys}" ]
         root_pass = "${var.root_pass}"
 }
 
@@ -459,12 +469,12 @@ resource "linode_instance" "www-01" {
 
 resource "linode_instance" "db-01" {
         image = "linode/ubuntu18.04"
-        name = "database"
+        label = "database"
         group = "web"
         region = "${var.region}"
         type = "g6-standard-1"
         swap_size = 1024
-        ssh_key = "${var.authorized_keys}"
+        authorized_keys = [ "${var.authorized_keys}" ]
         root_password = "${var.root_pass}"
 }
 {{< /file >}}
@@ -497,12 +507,12 @@ provider "linode" {
 
 resource "linode_instance" "terraform-example" {
         image = "linode/ubuntu18.04"
-        name = "database"
+        label = "database"
         group = "web"
         region = "us-south"
         type = "g6-standard-4"
         swap_size = 1024
-        authorized_keys = "PUBLIC_SSH_KEY_HERE"
+        authorized_keys = [ "PUBLIC_SSH_KEY_HERE" ]
         root_pass = "ROOT_PASSWORD_HERE"
 }
 {{< /file >}}
@@ -543,12 +553,12 @@ The module structure is flexible, so you can use as many Terraform files as need
 
 resource "linode_instance" "appserver" {
         image = "linode/ubuntu18.04"
-        name = "${var.appserver_name}"
+        label = "${var.appserver_label}"
         group = "web"
         region = "${var.region}"
         type = "g6-standard-1"
         swap_size = 1024
-        authorized_keys = "${var.authorized_keys}"
+        authorized_keys = [ "${var.authorized_keys}" ]
         root_pass = "${var.root_pass}"
 }
 
@@ -556,12 +566,12 @@ resource "linode_instance" "appserver" {
 
 resource "linode_instance" "dbserver" {
         image = "centos7"
-        name = "${var.dbserver_name}"
+        label = "${var.dbserver_label}"
         group = "web"
         region = "${var.region}"
         type = "${var.db_type}"
         swap_size = 1024
-        authorized_keys = "${var.authorized_keys}"
+        authorized_keys = [ "${var.authorized_keys}" ]
         root_pass = "${var.root_pass}"
 }
 {{< /file >}}
@@ -569,12 +579,12 @@ resource "linode_instance" "dbserver" {
 The configuration above reproduces the previous examples using variables. The next file contains variable definitions. Assign a default value for each variable. That value will be used if you don't override it when you call the module.
 
 {{< file "~/terraform/modules/appserver/variables.tf" aconf >}}
-variable "appserver_name" {
+variable "appserver_label" {
     description = "The name for the Application Server"
     default = "default-app"
 }
 
-variable "dbserver_name" {
+variable "dbserver_label" {
     description = "The name for the Database Server"
     default = "default-db"
 }
@@ -618,13 +628,13 @@ module "appserver" {
 # Variables Specific to this Deployment
 
 region = "us-east"
-authorized_keys = "PUBLIC_SSH_KEY_HERE"
+authorized_keys = [ "PUBLIC_SSH_KEY_HERE" ]
 root_pass ="ROOT_PASSWORD_HERE"
 
 # Variables Specific to Servers
 
-appserver_name = "NJ-app"
-dbserver_name = "NJ-db"
+appserver_label = "NJ-app"
+dbserver_label = "NJ-db"
 db_type = "g6-standard-8"
 
 }
