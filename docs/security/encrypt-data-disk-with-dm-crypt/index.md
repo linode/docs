@@ -170,7 +170,7 @@ Follow these steps very carefully.
 
 2.  Test a scenario where the LUKS header is accidentally overwritten:
 
-        dd if=/dev/zero of=/dev/sdX bs=128 count=1
+        dd conv=notrunc if=/dev/zero of=/dev/sdX bs=128 count=1
 
 3.  Trying to open your container will now return an error:
 
