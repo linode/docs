@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
 description: 'Test Salt configuration locally with Kitchen and kitchen-salt.'
 keywords: ['saltstack','salt','kitchen','kitchen-salt','kitchensalt','salt solo','saltsolo']
@@ -22,9 +22,8 @@ KitchenSalt allows you to use Test Kitchen to test your Salt configurations loca
 
 ## Before You Begin
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+- You will need root access to your Linode, or a user account with `sudo` privilege. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+- Update your system.
 
 ## Install rbenv and Ruby
 
@@ -32,8 +31,7 @@ Kitchen runs on Ruby. The following commands will install the Ruby version contr
 
 1.  Install the packages necessary for rbenv:
 
-        sudo apt update
-        sudo apt install -y libssl-dev libreadline-dev zlib1g-dev bzip2 gcc make git
+        sudo apt install libssl-dev libreadline-dev zlib1g-dev bzip2 gcc make git ruby-dev
 
 2.  Clone the rbenv git repository and set up your PATH:
 
@@ -43,15 +41,11 @@ Kitchen runs on Ruby. The following commands will install the Ruby version contr
         sudo tee /etc/profile.d/rbenv.sh <<< 'export PATH="/usr/local/rbenv/plugins/ruby-build/bin:/usr/local/rbenv/bin:$PATH"'
         sudo tee -a /etc/profile.d/rbenv.sh <<< 'source <(rbenv init -)'
 
-3.  Restart the shell.
+3.  Log out of your Linode and back in again.
 
 4.  Install Ruby:
 
         rbenv install 2.5.1
-
-5.  Install ruby-dev:
-
-        apt install ruby-dev
 
 ## Install Docker
 
@@ -61,9 +55,9 @@ Kitchen runs on Ruby. The following commands will install the Ruby version contr
 
 1. Install the bundler gem:
 
-        gem install bundler
+        sudo gem install bundler
 
-2.  Create a Gemfile and add the `kitchen-salt`, `kitchen-docker`, and `kitchen-sync` gems:
+2.  Create a Gemfile in your working directory and add the `kitchen-salt`, `kitchen-docker`, and `kitchen-sync` gems:
 
     {{< file "Gemfile" ruby>}}
 #Gemfile
@@ -78,11 +72,11 @@ gem 'kitchen-sync'
 
 1.  Install the gems with bundler:
 
-        bundle install
+        sudo bundle install
 
 ## Create a Sample .sls File
 
-For testing purposes we will create a Salt state file that installs NGINX and ensures that it is running. In a text editor, create `nginx.sls` and add the following lines:
+For testing purposes we will create a Salt state file that installs NGINX and ensures that it is running. In a text editor, create an `nginx.sls` file in your working directory and add the following lines:
 
 {{< file "nginx.sls" yaml >}}
 nginx:
@@ -97,7 +91,7 @@ nginx:
 
 ## Configure kitchen.yml
 
-1.  Now you will write the Kitchen configuration file, beginning with the **provisioner** section. Copy the following lines into `kitchen.yml`:
+1.  Now you will write the Kitchen configuration file, beginning with the **provisioner** section. Copy the following lines into a `kitchen.yml` file in your working directory.
 
     {{< file "kitchen.yml" yaml >}}
 provisioner:
@@ -183,20 +177,28 @@ transport:
   name: sftp
 {{< /file >}}
 
-You can now test your Salt configuration with Kitchen. Type the following command to run the test:
+1.  You can now test your Salt configuration with Kitchen. Type the following command to run the test:
 
-    kitchen test
+        kitchen test
 
-This command will create, converge, and then destroy the test instance. For a more granular approach to running your test, you can use the individual commands in series:
+    This command will create, converge, and then destroy the test instance. If completed sucessfully, the final terminal output will be:
 
-    kitchen list
-    kitchen create
-    kitchen converge
-    kitchen destroy
+    {{< output >}}
+-----> Kitchen is finished. (13m32.13s)
+{{< /output >}}
+
+    For a more granular approach to running your test, you can use the individual commands in series:
+
+        kitchen list
+        kitchen create
+        kitchen converge
+        kitchen destroy
 
 ## Using a Verifier and Next Steps
 
-Though it is beyond the scope of this article, Kitchen allows for more robust testing than just checking a Salt configuration. You can write tests in bash using Bats, in Ruby using Minitest, Rspec, Serverspec and Inspec, or if you're more familiar with Python you can use pytest. As an example, you would add the following code to your `kitchen.yaml` to verify your tests using the Inspec gem:
+Though it is beyond the scope of this article, Kitchen allows for more robust testing than just checking a Salt configuration. You can write tests in bash using Bats, in Ruby using Minitest, Rspec, Serverspec and Inspec, or if you're more familiar with Python you can use pytest.
+
+As an example, you would add the following code to your `kitchen.yaml` to verify your tests using the Inspec gem:
 
 {{< file "kitchen.yml" yaml >}}
 ...
@@ -206,11 +208,3 @@ verifier:
 {{< /file >}}
 
 For more information on writing tests, visit the links in the More Information section below.
-
-
-
-
-
-
-
-
