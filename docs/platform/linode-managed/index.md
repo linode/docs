@@ -6,7 +6,7 @@ description: How to configure service monitoring with Linode Managed.
 keywords: ["linode managed", "service monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linode-managed/', 'uptime/linode-managed/']
-modified: 2014-05-10
+modified: 2018-10-16
 modified_by:
   name: Zack Buhman
 published: 2013-02-12
@@ -105,7 +105,7 @@ Here's how to install Linode's SSH key as a non-root user:
 5.  In the *User privilege specification* section of the file, add the following line, replacing `example_user` with your user name:
 
     {{< file "/etc/sudoers" >}}
-User privilege specification example_user ALL=(ALL) NOPASSWD: ALL
+example_user ALL=(ALL) NOPASSWD: ALL
 {{< /file >}}
 
 6.  Press **Esc** to exit insert mode.
