@@ -19,7 +19,7 @@ In November 2016, Linode [announced and opened](https://blog.linode.com/2016/11/
 
 The Tokyo 2 data center provides access to features that are not available in Tokyo 1. These features are:
 
--  The [Block Storage Service](https://www.linode.com/blockstorage) (available starting Q3 2018).
+-  The [Block Storage Service](https://www.linode.com/blockstorage).
 -  The [newest Linode plans](https://blog.linode.com/2018/05/17/updated-linode-plans-new-larger-linodes/).
 -  Future features on Linode's product roadmap.
 
