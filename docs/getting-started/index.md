@@ -6,7 +6,7 @@ keywords: ["getting started", "intro", "basics", "first steps"]
 description: 'This guide will help you set up your first Linode.'
 og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-23
+modified: 2018-10-19
 modified_by:
   name: Linode
 published: 2009-07-19
@@ -286,7 +286,7 @@ By default, your Linode will be set to UTC time. You may want to change this to 
 
     dpkg-reconfigure tzdata
 
-### Arch Linux and CentOS 7
+### Arch Linux / CentOS 7 / Fedora
 
 1.  View a list of available time zones:
 

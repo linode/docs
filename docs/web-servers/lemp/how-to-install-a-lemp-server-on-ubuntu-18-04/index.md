@@ -6,7 +6,7 @@ description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alterna
 og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-04
+modified: 2018-10-19
 modified_by:
   name: Edward
 published: 2018-06-04
@@ -149,7 +149,7 @@ server {
 
 4.  Create a link to your website configuration file from within the sites-enabled directory. Change the name of the file to the name you used for your domain:
 
-        sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+        sudo ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/
 
 ## Test the LEMP Stack
 
