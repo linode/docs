@@ -1,12 +1,12 @@
 ---
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
 description: 'Create a Salt execution module.'
-keywords: ['salt','create','execution module','module','saltstack']
+keywords: ['salt','execution module','saltstack']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-10-05
-modified: 2018-10-05
+published: 2018-10-22
+modified: 2018-10-22
 modified_by:
   name: Linode
 title: "Create a Salt Execution Module"
@@ -15,7 +15,7 @@ external_resources:
 - '[Execution of Salt Modules From Within States](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.module.html#execution-of-salt-modules-from-within-states)'
 ---
 
-This guide will cover the creation and installation of a Salt *execution module*. Salt execution modules are Python modules that run on a Salt minion. They perform tasks and return data to the Salt master.  In this tutorial you will create an execution module that will call the [US National Weather Service API](https://forecast-v3.weather.gov/documentation) and return the current temperature at a specified weather station. This example could easily be adopted to access any API.
+A Salt *execution module* is a Python module that runs on a Salt minion. It perform tasks and returns data to the Salt master. In this tutorial you will create and install an execution module that will call the [US National Weather Service API](https://forecast-v3.weather.gov/documentation) and return the current temperature at a specified weather station. This example could easily be adapted to access any API.
 
 ## Before You Begin
 
@@ -25,7 +25,7 @@ If you haven't already, set up a Salt master and at least one Salt minion. You c
 The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Preparing Salt
+## Prepare Salt
 
 The files created in the following steps will be located in the `/srv/salt` directory. If you have changed Salt's default [`file_roots`](https://docs.saltstack.com/en/latest/ref/configuration/master.html#std:conf_master-file_roots) configuration, use that directory location instead.
 
@@ -33,14 +33,14 @@ The files created in the following steps will be located in the `/srv/salt` dire
 
         mkdir /srv/salt
 
-2.  Create a top file in `/srv/salt` that will be Salt's point of entry for our Salt configuration:
+1.  Create a top file in `/srv/salt` which will be Salt's point of entry for our Salt configuration:
     {{< file "/srv/salt/top.sls" yaml >}}
 base:
   '*':
     - weather
 {{< /file >}}
 
-3.  Create a state file named `weather.sls` and instruct Salt to make sure our minions have PIP installed, as well as the requests Python library.
+1.  Create a state file named `weather.sls` and instruct Salt to make sure our minions have PIP installed, as well as the required Python library.
 
     {{< file "/srv/salt/weather.sls" yaml >}}
 python-pip:
@@ -52,15 +52,15 @@ requests:
       - pkg: python-pip
 {{< /file>}}
 
-4.  Apply these state changes:
+1.  Apply these state changes:
 
         salt '*' state.apply
 
-5.  Finally, create the `/srv/salt/_modules` directory. This will house our execution module:
+1.  Finally, create the `/srv/salt/_modules` directory which will contain our execution module:
 
         mkdir /srv/salt/_modules
 
-## Creating the Execution Module
+## Create the Execution Module
 
 1.  Create a file called `weather.py` in the `/srv/salt/_modules` directory, and add the following lines to set up Salt logging and import the requests module.
 
@@ -77,7 +77,7 @@ log = logging.getLogger(__name__)
 . . .
 {{< /file >}}
 
-2. Add the `__virtualname__` variable and the `__virtual__` function.
+1. Add the `__virtualname__` variable and the `__virtual__` function.
 
     {{< file "/srv/salt/_modules/weather.py" python>}}
 . . .
@@ -111,7 +111,7 @@ def get(signs=None):
 
         salt minion weather.get KPHL
 
-    This module also accepts multiple values in a comma seperated list::
+    This module also accepts multiple values in a comma separated list::
 
         salt minion weather.get KPHL,KACY
     '''
@@ -134,11 +134,13 @@ def _make_request(sign):
     return conditions
 {{< /file >}}
 
-    There are two functions in this step. The `get()` function accepts one or more weather station call signs as a comma separated list. It calls `_make_request()` to make the HTTP request and returns a text description of the current weather and the temperature. It's important to note that by adding an underscore to the beginning of the `_make_request()` function it becomes a private function, which means it is not directly accessible through the Salt command line or a state file.
+    There are two functions in this step. The `get()` function accepts one or more weather station call signs as a comma separated list. It calls `_make_request()` to make the HTTP request and returns a text description of the current weather and the temperature.
 
-The complete file looks like this:
+    It's important to note that by adding an underscore to the beginning of the `_make_request()` function it becomes a private function, which means it is not directly accessible through the Salt command line or a state file.
 
-{{< file "/srv/salt/_modules/weather.py" python >}}
+    The complete file looks like this:
+
+    {{< file "/srv/salt/_modules/weather.py" python >}}
 import logging
 try:
     import requests
@@ -191,13 +193,13 @@ def _make_request(sign):
     return conditions
 {{< /file >}}
 
-## Running the Execution Module
+## Run the Execution Module
 
 1.  To run the execution module, you need to first sync it to your minions. To do this, you can call a highstate with `state.apply`, which will also try to apply the state changes you specified earlier in the `weather.sls` state file. Since the `weather.sls` state was already applied in the [Preparing Salt](#preparing-salt) section, use the `saltutil.sync_modules` function:
 
         salt '*' saltutil.sync_modules
 
-2.  Run the execution module on your Salt master:
+1.  Run the execution module on your Salt master:
 
         salt '*' weather.get KPHL
 
