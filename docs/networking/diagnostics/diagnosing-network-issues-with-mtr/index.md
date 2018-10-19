@@ -22,7 +22,7 @@ external_resources:
 
 [MTR](http://www.bitwizard.nl/mtr/) is a powerful tool which enables administrators to diagnose and isolate networking errors and provide reports of network status to upstream providers. MTR represents an evolution of the `traceroute` command by providing a greater data sample, as if augmenting `traceroute` with `ping` output. This document provides an in depth overview of MTR, the data it generates, and how to interpret and draw conclusions based on the data provided by it.
 
-For a basic overview of network diagnostic techniques, see our introduction to [network diagnostics](/docs/using-linux/administration-basics/#network-diagnostics). If you are having general issues with your system, read our overview of general [system diagnostics](/docs/using-linux/administration-basics/#system-diagnostics).
+For a basic overview of network diagnostic techniques, see our introduction to [network diagnostics](/docs/tools-reference/linux-system-administration-basics/#network-diagnostics). If you are having general issues with your system, read our overview of general [system diagnostics](/docs/using-linux/administration-basics/#system-diagnostics).
 
 ## Network Diagnostics Background
 
