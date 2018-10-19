@@ -27,7 +27,7 @@ Terraform offers many ways to set up and provision your Linode using:
 * Container-based solutions like Docker or Kubernetes.
 * Terraform plugin-based solutions.
 
-There are also plenty of [provisioners](https://www.terraform.io/docs/provisioners/index.html), [providers](https://github.com/terraform-providers), and even [modules](https://registry.terraform.io) available, one of which is the official [Linode-maintained provider](https://github.com/terraform-providers/terraform-provider-linode/).
+There are also plenty of [provisioners](https://www.terraform.io/docs/provisioners/index.html), [providers](https://github.com/terraform-providers), and [modules](https://registry.terraform.io) available, one of which is the official [Linode-maintained provider](https://github.com/terraform-providers/terraform-provider-linode/).
 
 {{< caution >}}
 The configurations and commands used in this guide will result in multiple Linodes being added to your account. Be sure to monitor your account closely in the Linode Manager to avoid unwanted charges.
@@ -37,7 +37,11 @@ The configurations and commands used in this guide will result in multiple Linod
 
 -  You will need root access to the system and a standard user account with sudo privileges.
 
--  Create an API token for your Linode account. It will only appear once on the screen, so be sure to take a screen capture of the token while it's displayed. See our guide [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) if you need help.
+-  Create an API token for your Linode account. It will only appear once on the screen, so be sure to take a screen capture of the token while it's displayed. See our guide [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) if you need help.
+
+{{< note >}}
+The Linode provider uses [Linode's API v4](https://developers.linode.com/api/v4#section/Access-and-Authentication). To generate an API v4 Personal Access Token, you will need to use the [new Linode Manager](https://cloud.linode.com/). Any Personal Access Tokens generated from the previous Linode Manager are API v3 tokens and will not work with Terraform's Linode provider.
+{{</ note >}}
 
 ## Install Terraform
 
@@ -62,8 +66,8 @@ The configurations and commands used in this guide will result in multiple Linod
     The output should show that the key was imported:
 
     {{< output >}}
-root@localhost:~# gpg --recv-keys 51852D87348FFC4C
-gpg: /root/.gnupg/trustdb.gpg: trustdb created
+user@localhost:~# gpg --recv-keys 51852D87348FFC4C
+gpg: /home/user/.gnupg/trustdb.gpg: trustdb created
 gpg: key 51852D87348FFC4C: public key "HashiCorp Security <security@hashicorp.com>" imported
 gpg: no ultimately trusted keys found
 gpg: Total number processed: 1
@@ -78,10 +82,10 @@ If you recieve an error to the effect of `No dirmngrnupg/S.dirmngr'`, install th
 
         gpg --verify terraform*.sig terraform*SHA256SUMS
 
-    The output should say the signature is good:
+    The output should confimr `Good signature from "HashiCorp Security <security@hashicorp.com>"`:
 
     {{< output >}}
-root@localhost:~# gpg --verify terraform*.sig terraform*SHA256SUMS
+user@localhost:~# gpg --verify terraform*.sig terraform*SHA256SUMS
 gpg: Signature made Wed 15 Aug 2018 10:07:05 PM UTC
 gpg:                using RSA key 51852D87348FFC4C
 gpg: Good signature from "HashiCorp Security <security@hashicorp.com>" [unknown]
@@ -164,7 +168,7 @@ All other commands:
 
 ## Building with the Linode Provider
 
-Terraform can understand two types of configuration files: JSON and HashiCorp Configuration Language (HCL). This guide [used the HCL format](#install-terraform), designated by the extension `.tf`.
+Terraform can understand two types of configuration files: JSON and HashiCorp Configuration Language (HCL). This guide [used the HCL format](https://github.com/hashicorp/hcl), designated by the extension `.tf`.
 
 1.  Create the file `linode-template.tf` and add the snippet below. Fill in your Linode API key, public SSH key, and desired root password where indicated. See [Terraform's documentation](https://www.terraform.io/docs/configuration/syntax.html) for more information on configuration syntax.
 
@@ -191,6 +195,19 @@ resource "linode_instance" "terraform-example" {
     Terraform will confirm successful initialization:
 
     {{< output >}}
+Initializing provider plugins...
+- Checking for available provider plugins on https://releases.hashicorp.com...
+- Downloading plugin for provider "linode" (1.0.0)...
+
+The following providers do not have any version constraints in configuration,
+so the latest version was installed.
+
+To prevent automatic upgrades to new major versions that may contain breaking
+changes, it is recommended to add version = "..." constraints to the
+corresponding provider blocks in configuration, with the constraint strings
+suggested below.
+
+* provider.linode: version = "~> 1.0"
 Terraform has been successfully initialized!
 {{</ output >}}
 
@@ -253,11 +270,11 @@ can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 {{</ output >}}
 
+    The `terraform plan` command won't take any action or make any changes on your Linode account. Terraform uses a declarative approach in which your configuration file specifies the desired end-state of the infrastructure. When you run `terraform plan`, an analysis is done to determine which actions are required to achieve this state.
+
     If you need to fix any issues, activate debug mode:
 
         TF_LOG=debug terraform plan
-
-    The `terraform plan` command won't take any action or make any changes on your Linode account. Terraform uses a declarative approach in which your configuration file specifies the desired end-state of the infrastructure. When you run `terraform plan`, an analysis is done to determine which actions are required to achieve this state.
 
 1.  If there are no errors, start the deployment:
 
@@ -313,15 +330,15 @@ Now imagine you need to implement a web and database server deployment in additi
 
 It's important to remember that:
 
-* Terraform loads into memory all files present in the working directory which have a `.tf` extension. As a result, all files are concatenated (in memory) and you don't need to define the provider in this file, since it was declared in `linode-template.tf`.
+* Terraform loads into memory all files present in the working directory which have a `.tf` extension. As a result, all files are concatenated (in memory). This means you don't need to define the provider in new `.tf` files, since it was already declared in `linode-template.tf`.
 
 * Resources can't be duplicated, so you need to assign a unique name for each new Linode.
 
-* In this example the same SSH key and root password are being used. You should change these values in production environments.
+* In this example the same SSH key and root password are being used. In production environments, these values should be unique for each resource.
 
 * A new parameter `swap_size` is used to override the default value of 512Mb. You can check all available options for `terraform-provider-linode` in the plugin GitHub repository [readme.md](https://github.com/LinodeContent/terraform-provider-linode).
 
-1.  From the `linode-template.tf` create another file called `linode-www.tf`. **Do not delete `linode-template.tf`**.
+1.  Create another file called `linode-www.tf`. **Do not delete `linode-template.tf`**.
 
     {{< file "~/terraform/linode-www.tf" aconf >}}
 resource "linode_instance" "terraform-www" {
@@ -344,7 +361,7 @@ resource "linode_instance" "terraform-www" {
 
         terraform apply
 
-1.  Check the Linode Manager to ensure that the `www` Linode was added to the `web` display group on your account.
+1.  Check the Linode Manager to ensure that the `www` Linode was added to your account.
 
 
 ### Provision Multiple Servers Using Variables
@@ -384,7 +401,7 @@ can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 {{</ output >}}
 
-1.  Similar to `terraform plan`, the above command checks your infrastructure before doing any change. To perform the deletion, run:
+1.  Similar to `terraform plan`, the above command checks your infrastructure before performing any changes. To destroy the Linodes, run:
 
         terraform destroy
 
@@ -415,7 +432,7 @@ linode_instance.terraform-example: Still destroying... (ID: 10948649, 10s elapse
 linode_instance.terraform-example: Still destroying... (ID: 10948649, 20s elapsed)
 linode_instance.terraform-example: Destruction complete after 21s
 
-Destroy complete! Resources: 1 destroyed.
+Destroy complete! Resources: 2 destroyed.
 {{</ output >}}
 
 1.  Verify the deletion in the Linode Manager.
@@ -424,7 +441,7 @@ Destroy complete! Resources: 1 destroyed.
 
         rm *.tf
 
-1.  Create a new file to define variables. You can use any name but for this example we'll use `variables.tf`:
+1.  Create a new file to define variables. You can use any name but for this example use `variables.tf`:
 
     {{< file "~/terraform/variables.tf" aconf >}}
 variable "token" {}
@@ -449,7 +466,7 @@ root_pass ="ROOT_PASSWORD_HERE"
 # Linode Provider definition
 
 provider "linode" {
-  key = "${var.linode_key}"
+  token = "${var.token}"
 }
 
 # Example Web Server
@@ -475,7 +492,7 @@ resource "linode_instance" "db-01" {
         type = "g6-standard-1"
         swap_size = 1024
         authorized_keys = [ "${var.authorized_keys}" ]
-        root_password = "${var.root_pass}"
+        root_pass = "${var.root_pass}"
 }
 {{< /file >}}
 
@@ -487,7 +504,7 @@ resource "linode_instance" "db-01" {
 
         terraform apply
 
-    The end result is the same as before. The use of variables gives Terraform great flexibility, not only to store repetitive data (as keys) but also to assign default values to any field.
+    The end result is the same as before. The use of variables gives Terraform great flexibility, not only to store repetitive data (like keys) but also to assign default values to any field.
 
 
 ## Modify Live Deployments
@@ -498,22 +515,39 @@ Imagine you want to change the first server's name and size without needing to d
 Changing the size of your Linode will force your server to be powered off and migrated to a different host in the same data center. The associated disk migration will take approximately 1 minute for every 3-5 gigabytes of data. See our [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) guide for more information.
 {{< /caution >}}
 
-1.  Modify the `linode-template.tf`
+1.  Modify the `linode-mod-template.tf` and update the `type` value to `g6-standard-4` for the `db-01` resource.
 
-    {{< file "~/terraform/linode-template.tf" aconf >}}
+    {{< file "~/terraform/linode-mod-template.tf" aconf >}}
+# Linode Provider definition
+
 provider "linode" {
-  token = "LINODE_API_KEY_HERE"
+  token = "${var.token}"
 }
 
-resource "linode_instance" "terraform-example" {
+# Example Web Server
+
+resource "linode_instance" "www-01" {
+        image = "linode/centos7"
+        label = "www"
+        group = "web"
+        region = "us-south"
+        type = "g6-standard-1"
+        swap_size = 1024
+        authorized_keys = [ "${var.authorized_keys}" ]
+        root_pass = "${var.root_pass}"
+}
+
+# Example Database Server
+
+resource "linode_instance" "db-01" {
         image = "linode/ubuntu18.04"
         label = "database"
         group = "web"
-        region = "us-south"
+        region = "${var.region}"
         type = "g6-standard-4"
-        swap_size = 1024
-        authorized_keys = [ "PUBLIC_SSH_KEY_HERE" ]
-        root_pass = "ROOT_PASSWORD_HERE"
+        swap_size = 2048
+        authorized_keys = [ "${var.authorized_keys}" ]
+        root_pass = "${var.root_pass}"
 }
 {{< /file >}}
 
@@ -558,20 +592,20 @@ resource "linode_instance" "appserver" {
         region = "${var.region}"
         type = "g6-standard-1"
         swap_size = 1024
-        authorized_keys = [ "${var.authorized_keys}" ]
+        authorized_keys = "${var.authorized_keys}"
         root_pass = "${var.root_pass}"
 }
 
 # Database Server
 
 resource "linode_instance" "dbserver" {
-        image = "centos7"
+        image = "linode/centos7"
         label = "${var.dbserver_label}"
         group = "web"
         region = "${var.region}"
         type = "${var.db_type}"
         swap_size = 1024
-        authorized_keys = [ "${var.authorized_keys}" ]
+        authorized_keys = "${var.authorized_keys}"
         root_pass = "${var.root_pass}"
 }
 {{< /file >}}
@@ -601,7 +635,7 @@ variable "region" {
 
 variable "authorized_keys" {
     description = "The Public id_rsa.pub key used for secure SSH connections"
-    default = "default-ssh-public-key"
+    default = ["default-ssh-public-key"]
 }
 
 variable "root_pass" {
@@ -613,7 +647,7 @@ variable "root_pass" {
 
 ### Working with Modules
 
-1.  Create a `main.tf` configuration file that uses the module you just created:
+1.  Create a `main.tf` configuration file that uses the module you just created. Ensure you replace the values for `authorized_keys` and `root_pass`:
 
     {{< file "~/terraform/testing/main.tf" aconf >}}
 # Newark Testing Environment Infrastructure
@@ -623,7 +657,7 @@ provider "linode" {
 }
 
 module "appserver" {
-  source = "$HOME/terraform/appserver"
+  source = "../modules/appserver"
 
 # Variables Specific to this Deployment
 
@@ -644,7 +678,7 @@ db_type = "g6-standard-8"
 
         cd ~/terraform/testing/
         terraform init
-        terraform planned
+        terraform plan
         terraform apply
 
     The possibilities of modules are endless. You can use several modules at once, you can mix the use of modules with traditional `resource` definitions, or you can even call modules from remote sources. For more information read the [Terraform modules documentation](https://www.terraform.io/docs/modules/index.html).
