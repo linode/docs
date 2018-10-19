@@ -1,12 +1,12 @@
 ---
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
 description: 'How to monitor Salt minions with beacons.'
 keywords: ['salt','saltstack','minion','minions','beacon','beacons','reactor','reactors','monitor','configuration drift','slack']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-10-10
-modified: 2018-10-10
+published: 2018-10-19
+modified: 2018-10-19
 modified_by:
   name: Linode
 title: "Monitoring Salt Minions with Beacons"
@@ -16,11 +16,11 @@ external_resources:
 - '[Salt Reactors Documentation](https://docs.saltstack.com/en/latest/topics/reactor/)'
 ---
 
-Every action taken by Salt, such as applying a highstate or restarting a minion, generates an event. *Beacons* emit events for non-salt processes, such as system state changes or file changes. In this guide we will use Salt beacons to notify the Salt master of changes to our minions, and Salt *reactors* to react to those changes.
+Every action performed by Salt, such as applying a highstate or restarting a minion, generates an event. *Beacons* emit events for non-salt processes, such as system state changes or file changes. This guide will use Salt beacons to notify the Salt master of changes to minions, and Salt *reactors* to react to those changes.
 
 ## Before You Begin
 
-If you don't already have a Salt master and a Salt minion, follow the first steps in our [Getting Started with Salt - Basic Installation and Setup](https://www.linode.com/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide.
+If you don't already have a Salt master and minion, follow the first steps in our [Getting Started with Salt - Basic Installation and Setup](https://www.linode.com/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -28,7 +28,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Example 1: Preventing Configuration Drift
 
-Configuration drift occurs when there are untracked changes to a system configuration file. Salt can help prevent configuration drift by ensuring that a file is immediately reverted to a safe state upon change. In order to do this, we first have to let Salt manage the file. This section will use a NGINX configuration file as an example, but you can choose any file.
+Configuration drift occurs when there are untracked changes to a system configuration file. Salt can help prevent configuration drift by ensuring that a file is immediately reverted to a safe state upon change. In order to do this, we first have to let Salt manage the file. This section will use an NGINX configuration file as an example, but you can choose any file.
 
 ### Manage Your File
 
@@ -48,7 +48,7 @@ Configuration drift occurs when there are untracked changes to a system configur
     - makedirs: True
 {{< /file >}}
 
-    There are two file paths in this `.sls` file. The first file path is the path to your managed file on your minion. The second, under source and prefixed with `salt://`, points to the file path on your master. `salt://` is a convenience file path that maps to `/srv/salt`.
+    There are two file paths in this `.sls` file. The first file path is the path to your managed file on your minion. The second, under `source` and prefixed with `salt://`, points to the file path on your master. `salt://` is a convenience file path that maps to `/srv/salt`.
 
 1.  On your Salt master, create a top file if it does not already exist and add your `nginx_conf.sls`:
 
@@ -58,7 +58,7 @@ base:
     - nginx_conf
 {{< /file >}}
 
-1. Apply a highstate from your Salt master to run the `nginx_conf.sls` state on your minions.
+1.  Apply a highstate from your Salt master to run the `nginx_conf.sls` state on your minions.
 
         salt '*' state.apply
 
@@ -80,12 +80,12 @@ pyinotify:
 The inotify beacon only works on OSes that have inotify kernel support. Currently this excludes FreeBSD, macOS, and Windows.
 {{< /note >}}
 
-1. On the Salt master create a `minion.d` directory to store the beacon configuration file:
+1.  On the Salt master create a `minion.d` directory to store the beacon configuration file:
 
         mkdir /srv/salt/files/minion.d
 
 
-1. Now, create a beacon that will emit an event every time your `nginx.conf` file changes on your minion. Create the `/etc/salt/minion.d/beacons.conf` file and add the following lines:
+1.  Now create a beacon that will emit an event every time the `nginx.conf` file changes on your minion. Create the `/etc/salt/minion.d/beacons.conf` file and add the following lines:
 
     {{< file "/etc/salt/minion.d/beacons.conf" yaml >}}
 beacons:
@@ -97,7 +97,7 @@ beacons:
     - disable_during_state_run: True
 {{< /file >}}
 
-1. To apply this beacon to your minions, create a new `file.managed` Salt state:
+1.  To apply this beacon to your minions, create a new `file.managed` Salt state:
 
     {{< file "/srv/salt/beacons.sls" >}}
 /etc/salt/minion.d/beacons.conf:
@@ -107,7 +107,7 @@ beacons:
     - makedirs: True
     {{</ file >}}
 
-1. Add the new `packages` and `beacons` states to your Salt master's top file:
+1.  Add the new `packages` and `beacons` states to your Salt master's top file:
 
     {{< file "/srv/salt/top.sls" yaml >}}
 base:
@@ -117,7 +117,7 @@ base:
     - beacons
 {{< /file >}}
 
-1. Apply a highstate from your Salt master to implement these changes on your minions:
+1.  Apply a highstate from your Salt master to implement these changes on your minions:
 
         salt '*' state.apply
 
@@ -150,7 +150,7 @@ salt/beacon/salt-minion/inotify//etc/nginx/nginx.conf	{
 
         mkdir /srv/reactor
 
-2.  Then, create a reactor state file in the `/srv/reactor` directory and include the following:
+2.  Then create a reactor state file in the `/srv/reactor` directory and include the following:
 
     {{< file "/srv/reactor/nginx_conf_reactor.sls" yaml >}}
 /etc/nginx/nginx.conf:
@@ -160,7 +160,7 @@ salt/beacon/salt-minion/inotify//etc/nginx/nginx.conf	{
       - nginx_conf
 {{< /file >}}
 
-    The file path in the first line is simply the name of the reactor, and can be whatever you choose. The `tgt`, or target, is the Salt minion that will receive the highstate. In this case, the information passed to the reactor from the beacon event is used to programatically choose the right Salt minion ID. This information is available as the `data` dictionary. The `arg`, or argument, is the name of the Salt state file that was created to manage the `nginx.conf` file.
+    The file path in the first line is simply the name of the reactor, and can be whatever you choose. The `tgt`, or target, is the Salt minion that will receive the highstate. In this case, the information passed to the reactor from the beacon event is used to programmatically choose the right Salt minion ID. This information is available as the `data` dictionary. The `arg`, or argument, is the name of the Salt state file that was created to manage the `nginx.conf` file.
 
 1.  On your Salt master, create a `reactor.conf` file and include the new reactor state file:
 
@@ -178,7 +178,7 @@ reactor:
 
 5.  On your Salt minion, make a change to the `nginx.conf` file. Then check out your event runner shell and you should see a number of events. Then, check your `nginx.conf` file. The changes you made should have automatically been reverted.
 
-Congratulations, you know now how to manage configuration drift with Salt. All future updates to `nginx.conf` should be made on the Salt master and applied using `state.apply`.
+Congratulations, you now know how to manage configuration drift with Salt. All future updates to `nginx.conf` should be made on the Salt master and applied using `state.apply`.
 
 ## Example 2: Monitoring Minion Memory Usage with Slack
 
@@ -188,11 +188,11 @@ Salt comes with a number of system monitoring beacons. In this example we will m
 
 1.  [Create a Slack app](https://api.slack.com/apps?new_app=1).
 
-2.  From the Slack app settings page, navigate to OAuth & Permissions.
+1.  From the Slack app settings page, navigate to OAuth & Permissions.
 
-3.  Copy down the OAuth Access Token.
+1.  Copy down the OAuth Access Token.
 
-4.  Under Scopes, select "Send Messages As &lt; your app name &gt;.
+1.  Under Scopes, select **Send Messages As &lt; your app name &gt;**.
 
 ### Create a Beacon
 
@@ -212,11 +212,11 @@ beacons:
 
         salt '*' state.apply
 
-3.  If you haven't already, open another shell into your Salt master and start the event runner:
+1.  If you haven't already, open another shell into your Salt master and start the event runner:
 
         salt-run state.event pretty=True
 
-4.  After a few seconds, assuming you've set the memory percentage low enough, you should see an event like the following:
+1.  After a few seconds, assuming you've set the memory percentage low enough, you should see an event like the following:
 
     {{< output >}}
 salt/beacon/salt-minion/memusage/	{
@@ -234,7 +234,7 @@ salt/beacon/salt-minion/memusage/	{
 
         mkdir /srv/reactor
 
-2.  On your Salt master, create a reactor state file and add the following lines, making sure to change the `channel`, `api_key`, and `from_name` keys to reflect your desired values. The `api_key` is the OAuth token you copied down in step 3 of the [Configure Your Slack App](#configure-your-slack-app) section:
+1.  Then create a reactor state file and add the following lines, making sure to change the `channel`, `api_key`, and `from_name` keys to reflect your desired values. The `api_key` is the OAuth token you copied down in step 3 of the [Configure Your Slack App](#configure-your-slack-app) section:
 
     {{< file "/srv/reactor/memusage.sls" yaml >}}
 Send memusage to Slack:
@@ -249,7 +249,7 @@ Send memusage to Slack:
 
     We're using the `data` dictionary provided to the reactor from the memusage event to populate the minion ID and the memory usage.
 
-3.  On your Salt master, open or create the `reactor.conf` file. If you already have a `reactor.conf` file from the previous example, leave out the `reactor:` line, but ensure that rest of the configuration is indented two spaces:
+1.  Open or create the `reactor.conf` file. If you already have a `reactor.conf` file from the previous example, leave out the `reactor:` line, but ensure that rest of the configuration is indented two spaces:
 
     {{< file "/etc/salt/master.d/reactor.conf" yaml >}}
 reactor:
@@ -259,11 +259,11 @@ reactor:
 
     In this example we've used a glob (*) in the event name instead of specifying a specific minion ID, (which means that any memusage event will trigger the reactor), but you might find a specific minion ID better suits your needs.
 
-4.  Restart `salt-master` to apply the `reactor.conf`:
+1.  Restart `salt-master` to apply the `reactor.conf`:
 
         systemctl restart salt-master
 
-5.  In your event-runner shell, after a few seconds, you should see an event like the following:
+1.  In your event-runner shell, after a few seconds, you should see an event like the following:
 
     {{< output >}}
 salt/job/20181010161053393111/ret/salt-minion	{
@@ -286,7 +286,6 @@ salt/job/20181010161053393111/ret/salt-minion	{
 }
 {{< /output >}}
 
-6.  Open Slack, and you should see that your app has notified the room.
+1.  Open Slack and you should see that your app has notified the room.
 
 Congratulations, you now know how to monitor your Salt minion's memory usage with Slack integration. Salt can also monitor CPU load, disk usage, and a number of other things. Refer to the More Information section below for additional resources.
-
