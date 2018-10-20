@@ -546,7 +546,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 Terraform uses a concept called [*modules*](https://www.terraform.io/docs/modules/index.html) to group common server requirements and configurations. Think of modules as similar to *functions* in programming languages.
 
-As an example, let's say that you run a web agency and need to deploy identical pairs of webservers and database servers for different clients. To facilitate this, you can create a reusable Terraform module which describes the webserver and database server pairing. 
+As an example, let's say that you run a web agency and need to deploy identical pairs of webservers and database servers for different clients. To facilitate this, you can create a reusable Terraform module which describes the webserver and database server pairing.
 
 The module's description allows for variable substition of relevant attributes (passwords, keys, etc), just as in the configuration from the previous section. Once the module is configured, new servers can be instantiated for each of your clients by combining the module code with a new set of variable values.
 
