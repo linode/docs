@@ -344,7 +344,7 @@ In production environments, your SSH key and root password should be unique for 
 resource "linode_instance" "terraform-db" {
   image = "linode/centos7"
   label = "Terraform-Db-Example"
-  group = "web"
+  group = "Terraform"
   region = "us-south"
   type = "g6-standard-1"
   swap_size = 1024
