@@ -65,7 +65,7 @@ All of these steps should be performed on a local machine, *not* your Linode.
 
 2.  Open a command prompt and execute:
 
-        gpg2 --gen-key
+        gpg2 --full-gen-key
 
 3.  When prompted to select the kind of key you want, select `(1) RSA and RSA`.
 
@@ -423,31 +423,10 @@ Return to your local machine, import all of the appropriate GPG keys and insert 
 
 1.  Edit the `~/.bash_profile` file (or similar shell startup file) to include:
 
-    **Linux:**
-
     {{< file "~/.bash_profile" >}}
-if [ -f "${HOME}/.gpg-agent-info" ]; then
-     source "${HOME}/.gpg-agent-info"
-       export GPG_AGENT_INFO
-       export SSH_AUTH_SOCK
-       export SSH_AGENT_PID
-else
-    eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
-fi
-
-{{< /file >}}
-
-
-    **OS X**
-
-    {{< file "~/.bash_profile" >}}
-[ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
-if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
-    export GPG_AGENT_INFO
-    export SSH_AUTH_SOCK
-    export SSH_AGENT_PID
-else
-    eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
 
 {{< /file >}}
@@ -461,7 +440,6 @@ fi
 default-cache-ttl 600
 max-cache-ttl 7200
 enable-ssh-support
-write-env-file ~/.gpg-agent-info
 
 {{< /file >}}
 
@@ -474,9 +452,8 @@ write-env-file ~/.gpg-agent-info
 
 3.  Restart the GPG agent:
 
-        sudo killall gpg-agent
-        gpg-agent --daemon --write-env-file ~/.gpg-agent-info --enable-ssh-support
-        source ~/.gpg-agent-info
+        gpgconf --kill gpg-agent
+        gpg-connect-agent /bye
 
 ## Add the New Key to Your Linode
 
