@@ -14,7 +14,7 @@ external_resources:
  - '[SaltStack Documentation](https://docs.saltstack.com/)'
 ---
 
-[Salt](https://s.saltstack.com/community/) is a Python-based configuration management and orchestration system. Salt uses a client/server model to communicate with remote machines. Here is a brief overview of the major components to SatlStack. These are useful terms to become familiar with before beginning to work with Salt.
+[Salt](https://s.saltstack.com/community/) is a Python-based configuration management and orchestration system. Salt uses a client/server model to communicate with remote machines. Here is a brief overview of the major components to SaltStack. These are useful terms to become familiar with before beginning to work with Salt.
 
 
 ## Master
@@ -31,11 +31,11 @@ A [Salt state](https://docs.saltstack.com/en/latest/topics/tutorials/starting_st
 
 Multiple SLS files can be combined and reference each other to form a Salt Tree, and while SLS files are most commonly used on minons, it's  possible to enforce a particular state on your Salt master in the same way.
 
-One use case for a Salt State is a base system configuration, such as an added third party package repository with an application installed from it, configured as necessary. From this state, Pillar can be used to add additional information for user credentials, site files, scripts or service files, etc.
+One use case for a Salt State is a base system configuration that would include items such as an added third party package repository with an application installed from it, configured as necessary. From this state, A Pillar can be used to add additional information for user credentials, site files, scripts or service files, etc.
 
 Where a state can be templated to provide abstraction over running the same monotonous commands each time, and to make it variable, etc., a [Salt formula](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html) is able to provide a group of states all working toward a common configuration or function.
 
-One example would be an Apache server proxying traffic to NGINX. You've got the initial installation with accompanying packages that may not be direct dependencies, possibly a monitoring service for each web server's service, and potentially a watchdog for configuration changes so as to restart the individual service. Pillar can then be used to manage the web servers' configuration files.
+One example of a Salt formula would be an Apache server proxying traffic to NGINX. You could have the initial installation with accompanying packages that may not be direct dependencies, possibly a monitoring service for each web server's service, and potentially a watchdog for configuration changes so as to restart the individual services. A Pillar can then be used to manage the web servers' configuration files.
 
 ## Grains
 
