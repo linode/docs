@@ -31,7 +31,7 @@ A [Salt state](https://docs.saltstack.com/en/latest/topics/tutorials/starting_st
 
 Multiple SLS files can be combined and reference each other to form a Salt Tree, and while SLS files are most commonly used on minons, it's  possible to enforce a particular state on your Salt master in the same way.
 
-One use case for a Salt State is a base system configuration that would include items such as an added third party package repository with an application installed from it, configured as necessary. From this state, A Pillar can be used to add additional information for user credentials, site files, scripts or service files, etc.
+One use case for a Salt State is a base system configuration that would include items such as an added third party package repository with an application installed from it, configured as necessary. From this state, a Pillar can be used to add additional information for user credentials, site files, scripts or service files, etc.
 
 Where a state can be templated to provide abstraction over running the same monotonous commands each time, and to make it variable, etc., a [Salt formula](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html) is able to provide a group of states all working toward a common configuration or function.
 
