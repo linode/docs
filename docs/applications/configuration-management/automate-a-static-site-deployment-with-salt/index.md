@@ -124,6 +124,10 @@ master: 192.0.2.2
 # [...]
 {{</ file >}}
 
+    {{< note >}}
+Linode does not charge for traffic within a datacenter across private IP addresses. If your Salt master and minion are in the same datacenter, and both have a private IP addresses, you can use your Salt master's private IP address in this step to avoid incurring data traffic charges.
+{{< /note >}}
+
 1.  Restart Salt on the minion:
 
         sudo systemctl restart salt-minion
@@ -217,7 +221,7 @@ Salt configurations are declared in YAML, and YAML incorporates whitespace/inden
 
     The above snippet says that a package with name `nginx` (i.e. NGINX) should be installed via the distribution's package manager. Salt knows how to negotiate software installation via the built-in package manager for various distributions. Salt also knows how to install software via NPM and other package managers.
 
-    The string `nginx_pkg` is the *ID* for the state component, `pkg` is the name of the Salt *module* used, and `pkg.installed` is referred to as a *function declaration*. The component ID's is arbitrary, so you can name it however you prefer.
+    The string `nginx_pkg` is the *ID* for the state component, `pkg` is the name of the Salt *module* used, and `pkg.installed` is referred to as a *function declaration*. The component ID is arbitrary, so you can name it however you prefer.
 
     {{< note >}}
 If you were to name the ID to be the same as the relevant installed package, then you do not need to specify the `- name` option, as it will be inferred from the ID. For example, this snippet also installs NGINX:
@@ -478,7 +482,7 @@ The Salt minion's formula needs to be updated in order to serve the Hugo site. S
 
 -   Update the NGINX configuration to serve the built site.
 
-Some of the new state components will refer to data stored in [*Salt Pillar*](https://docs.saltstack.com/en/latest/topics/pillar/). Pillar is a Salt system that stores private data and other parameters that you don't want to list in your formulas. The Pillar data will be kept as a file on the Salt master and not checked into version control. 
+Some of the new state components will refer to data stored in [*Salt Pillar*](https://docs.saltstack.com/en/latest/topics/pillar/). Pillar is a Salt system that stores private data and other parameters that you don't want to list in your formulas. The Pillar data will be kept as a file on the Salt master and not checked into version control.
 
 {{< note >}}
 There are methods for securely checking this data into version control or using other backends to host the data, but those strategies are outside the scope of this guide.
@@ -592,8 +596,8 @@ nginx_document_root:
       - user: hugo_user
 {{< /file >}}
 
-    -   The `nginx_default` component removes the symlink in `sites-enabled` for the default NGINX config, which disables that configuration. 
-    -   `nginx_config` and `nginx_symlink` then create a new configuration file in `sites-available` and a symlink to it in `sites-enabled`. 
+    -   The `nginx_default` component removes the symlink in `sites-enabled` for the default NGINX config, which disables that configuration.
+    -   `nginx_config` and `nginx_symlink` then create a new configuration file in `sites-available` and a symlink to it in `sites-enabled`.
     -   The `nginx_document_root` component creates the directory that NGINX will serve your Hugo site files from (when filled in with Pillar data, this will directory will look like `/var/www/example-hugo-site`).
 
 1.  The `- source: salt://hugo/files/hugo_site` declaration in `nginx_config` refers to an NGINX configuration file that doesn't exist in your repository yet. Create the `files/` directory:
