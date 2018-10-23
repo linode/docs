@@ -6,7 +6,7 @@ description: 'Installing Asterisk 13 on CentOS 7'
 keywords: ["asterisk 13", "centos 7", "centos", "open source", "private branch exchange", "pbx", "asterisk pbx", "sip", "session initiation protocol", "sip protocol", "IP PBX systems", "VoIP gateways"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-30
-modified: 2015-09-30
+modified: 2018-10-23
 modified_by:
     name: Linode
 title: 'How to Install Asterisk on CentOS 7'
@@ -185,7 +185,7 @@ CentOS 7 does not come with the `iptables-services` pre-installed, it will have 
 
 A number of dependencies will be to be installed prior to installing Asterisk. To install them run:
 
-    sudo yum install -y epel-release dmidecode gcc-c++ ncurses-devel libxml2-devel make wget openssl-devel newt-devel kernel-devel sqlite-devel libuuid-devel gtk2-devel jansson-devel binutils-devel
+    sudo yum install -y epel-release dmidecode gcc-c++ ncurses-devel libxml2-devel make wget openssl-devel newt-devel kernel-devel sqlite-devel libuuid-devel gtk2-devel jansson-devel binutils-devel bzip2
 
 
 ### Installing PJPROJECT
@@ -202,15 +202,15 @@ PJPROJECT is Asterisk's SIP channel driver. It should provide improved call clar
 
 3.  Use `wget` to fetch the PJSIP fdriver source code:
 
-        wget http://www.pjsip.org/release/2.3/pjproject-2.3.tar.bz2
+        wget https://www.pjsip.org/release/2.8/pjproject-2.8.tar.bz2
 
 4.  Extract it:
 
-        tar -jxvf pjproject-2.3.tar.bz2
+        tar -jxvf pjproject-2.8.tar.bz2
 
 5.  Change to the newly created directory:
 
-        cd pjproject-2.3
+        cd pjproject-2.8
 
 6.  Prepare the software to be compiled:
 
@@ -286,7 +286,7 @@ With the new Kernel in place, you're now ready to build DAHDI.
 
         cd ~/build
 
-2.  Download the latest version of DAHDI (version 2.10.2 at the time of this writing):
+2.  Download the latest version of DAHDI (version 2.11.1 at the time of this writing):
 
         wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz
 
@@ -296,11 +296,11 @@ With the new Kernel in place, you're now ready to build DAHDI.
 
 4.  Switch to the new directory:
 
-        cd dahdi-linux-complete-2.10.2+2.10.2/
+        cd dahdi-linux-complete-2.11.1+2.11.1/
 
 
     {{< note >}}
-Your version may be different, so substitute `2.10.2` with the version that was extracted.
+Your version may be different, so substitute `2.11.1` with the version that was extracted.
 {{< /note >}}
 
 5.  Build DAHDI:
@@ -315,7 +315,7 @@ Your version may be different, so substitute `2.10.2` with the version that was 
 
 ## Installing Asterisk
 
-We're now ready to install Asterisk 13, the current long-term support release of Asterisk.
+We're now ready to install Asterisk 16, the current long-term support release of Asterisk.
 
 ### Installing Asterisk from Source
 
@@ -323,17 +323,17 @@ We're now ready to install Asterisk 13, the current long-term support release of
 
         cd ~/build
 
-2.  Download the latest version of Asterisk 13:
+2.  Download the latest version of Asterisk 16:
 
-        wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
+        wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz
 
 3.  Untar the file:
 
-        tar -zxvf asterisk-13-current.tar.gz
+        tar -zxvf asterisk-16-current.tar.gz
 
-4.  Switch to the new Asterisk directory, replacing `13.5.0` if needed:
+4.  Switch to the new Asterisk directory, replacing `16.0.0` if needed:
 
-        cd asterisk-13.5.0
+        cd asterisk-16.0.0
 
 
 ### Enable MP3 Support
@@ -351,37 +351,41 @@ To use MP3 files for Music on Hold, some dependencies will need to be installed.
 
 ### Configure and Build Asterisk
 
-1.  Run the `configure` script to prepare the Asterisk source code for compiling:
+1. Install dependencies:
 
-        ./configure --libdir=/usr/lib64
+        sudo yum install patch libedit libedit-devel
+
+2.  Run the `configure` script to prepare the Asterisk source code for compiling:
+
+        ./configure --libdir=/usr/lib64 --with-jansson-bundled
 
         If there are any missing dependencies, install them.
 
-2.  Start the build process:
+3.  Start the build process:
 
         make menuselect
 
     After a short while, you should get a menu on screen that allows you to configure the features you want to build.
 
-3.  If you want to use the MP3 format with Music on Hold, you should select `Add-Ons`, then use the right arrow to move to the right-hand list. Navigate to `format_mp3` and press enter to select it.
+4.  If you want to use the MP3 format with Music on Hold, you should select `Add-Ons`, then use the right arrow to move to the right-hand list. Navigate to `format_mp3` and press enter to select it.
 
-4.  Select addition sound packages and Music on Hold packs on the left menu, and enable the wav format for your desired language. (ie. use the `EN` package for English.)
+5.  Select addition sound packages and Music on Hold packs on the left menu, and enable the wav format for your desired language. (ie. use the `EN` package for English.)
 
-5.  Press **F12** to save and exit.
+6.  Press **F12** to save and exit.
 
-6.  Compile Asterisk:
+7.  Compile Asterisk:
 
-        make
+        sudo make
 
-7.  Install Asterisk on the system:
+8.  Install Asterisk on the system:
 
         sudo make install
 
-8.  Install sample configuration files:
+9.  Install sample configuration files:
 
         sudo make samples
 
-9.  Configure Asterisk to start itself automatically on boot:
+10. Configure Asterisk to start itself automatically on boot:
 
         sudo make config
 
@@ -396,7 +400,7 @@ Congratulations! You now have a working Asterisk phone server. Let's fire up Ast
 
 2.  Connect to Asterisk:
 
-        asterisk -rvv
+        sudo asterisk -rvv
 
     You should get a prompt with the current version number.
 
