@@ -292,9 +292,9 @@ No commits yet
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   hugo/init.sls
-	new file:   hugo/install.sls
-	new file:   hugo/service.sls
+  new file:   hugo/init.sls
+  new file:   hugo/install.sls
+  new file:   hugo/service.sls
 {{< /output >}}
 
 1.  Commit the files:
@@ -432,7 +432,7 @@ baseURL = "http://yourdomain.com"
 # [...]
 themesDir = "themes"
 # [...]
-	name = "Your Name"
+  name = "Your Name"
 {{< /file >}}
 
 1.  Run the Hugo development server on your computer:
