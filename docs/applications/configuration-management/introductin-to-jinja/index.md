@@ -4,8 +4,8 @@ author:
 description: 'An introduction to Jinja using Salt configuration management examples.'
 keywords: ['salt','jinja','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-10-11
-modified: 2018-10-11
+published: 2018-10-29
+modified: 2018-10-29
 modified_by:
   name: Linode
 title: "Introduction to Jinja"
@@ -18,7 +18,7 @@ external_resources:
 ---
 ## Introduction to Templating Languages
 
-Jinja is a flexible templating language for Python that can be used to generate any text based format, like HTML, XML and YAML. Templating languages, like Jinja, allow you to insert data into a structured format. You can also embed logic or control-flow statements into templates for greater reusability and modularity. Jinja's template engine is responsible for processing the code within the templates and generating the output to the final text based document.
+Jinja is a flexible templating language for Python that can be used to generate any text based format such as HTML, XML, and YAML. Templating languages like Jinja allow you to insert data into a structured format. You can also embed logic or control-flow statements into templates for greater reusability and modularity. Jinja's template engine is responsible for processing the code within the templates and generating the output to the final text based document.
 
 Templating languages are well known within the context of creating web pages in a *Model View Controller* architecture. In this scenario the template engine processes source data, like the data found in a database, and a web template that includes a mixture of HTML and the templating language. These two pieces are then used to generate the final web page for users to consume. Templating languages, however, are not limited to web pages. Salt, a popular Python based configuration management software, supports Jinja to allow for abstraction and reuse within Salt state files and regular files.
 
@@ -28,7 +28,7 @@ This guide will provide an overview of the Jinja templating language used primar
 
 This section provides an introductory description of Jinja syntax and concepts along with examples of Jinja and Salt states. For an exhaustive dive into Jinja, consult the official Jinja [Template Designer Documentation](http://jinja.pocoo.org/docs/2.10/templates/).
 
-Applications, like Salt, can define their own set of configurations and default behavior for the Jinja templating engine. All examples use Salt's default Jinja environment options. These default settings can be changed in the Salt master configuration file:
+Applications like Salt can define their own set of configurations and default behavior for the Jinja templating engine. All examples use Salt's default Jinja environment options. These default settings can be changed in the Salt master configuration file:
 
 {{< file "/etc/salt/master" yaml >}}
 # Default Jinja environment options for all templates except sls templates
@@ -60,10 +60,12 @@ Applications, like Salt, can define their own set of configurations and default 
 #  lstrip_blocks: False
 {{</ file >}}
 
-Before including Jinja in your Salt states be sure to review the [Salt and Jinja Best Practices](#salt-and-jinja-best-practices) section of this guide to ensure that you are creating maintainable and readable Salt states. More advanced Salt tools and concepts can be used to improve the modularity and reusability of some of the Jinja and Salt state examples used throughout this guide.
+{{< note> }}
+Before including Jinja in your Salt states, be sure to review the [Salt and Jinja Best Practices](#salt-and-jinja-best-practices) section of this guide to ensure that you are creating maintainable and readable Salt states. More advanced Salt tools and concepts can be used to improve the modularity and reusability of some of the Jinja and Salt state examples used throughout this guide.
+{{< /note> }}
 
 ### Delimiters
-Templating language delimiters are used to denote the boundary between the templating language and another type of data format, like HTML or YAML. Jinja uses the following delimiters:
+Templating language delimiters are used to denote the boundary between the templating language and another type of data format like HTML or YAML. Jinja uses the following delimiters:
 
 - `{% ... %}` - Used for control structures.
 - `{{ ... }}` - Used to evaluate expressions that will print to the template output.
@@ -90,7 +92,7 @@ Template variables are available via a template's context dictionary. A template
 
     {% foo.bar %}
 
-  or subscript syntax:
+  Or subscript syntax:
 
     {% foo['bar'] %}
 
@@ -124,11 +126,11 @@ Template variables are available via a template's context dictionary. A template
 
         {{ salt['grains.get']('shell') }}
 
-  - **SALTENV**: You can define multiple salt environments for minions in a Salt master's top file, like `base`, `prod`, `dev` and `test`. The `saltenv` variable provides a way to access the current Salt environment within a Salt state file. This variable is only available within Salt state files.
+  - **SALTENV**: You can define multiple salt environments for minions in a Salt master's top file, such as `base`, `prod`, `dev` and `test`. The `saltenv` variable provides a way to access the current Salt environment within a Salt state file. This variable is only available within Salt state files.
 
         {{ saltenv }}
 
-  - **SLS**: With the `sls` variable you can obtain the sate file reference value for the current state file, i.e. `apache`, `webserver`, etc. This is the same value used in a top file to map minions to state files or via the `include` option in state files.
+  - **SLS**: With the `sls` variable you can obtain the state file reference value for the current state file, i.e. `apache`, `webserver`, etc. This is the same value used in a top file to map minions to state files or via the `include` option in state files.
 
         {{ sls }}
 
@@ -142,9 +144,9 @@ You can assign a value to a variable by using the `set` tag along with the follo
 
     {% set var_name = myvalue %}
 
-  Follow [Python naming coventions](https://www.python.org/dev/peps/pep-0008/?#naming-conventions) when creating variable names. If the variable is assigned at the top level of a template, the assignment is exported and available to be imported by other templates.
+  Follow [Python naming conventions](https://www.python.org/dev/peps/pep-0008/?#naming-conventions) when creating variable names. If the variable is assigned at the top level of a template, the assignment is exported and available to be imported by other templates.
 
-  Any value generated by a salt [template variable](#template-variables) library function can be assigned to a new variable.
+  Any value generated by a Salt [template variable](#template-variables) library function can be assigned to a new variable.
 
     {% set username = salt['user.info']('username') %}
 
@@ -165,7 +167,7 @@ These chained filters will return a recursive list of all the files in the `/etc
   /etc/salt/pillar/device1.sls
   {{</ output >}}
 
-  For a complete list of all builtin Jinja filters, refer to the [Jinja Template Design documentation](http://jinja.pocoo.org/docs/2.10/templates/#builtin-filters). Salt provides a list of custom Jinja filters in their [official documentation](https://docs.saltstack.com/en/latest/topics/jinja/index.html#filters).
+  For a complete list of all built in Jinja filters, refer to the [Jinja Template Design documentation](http://jinja.pocoo.org/docs/2.10/templates/#builtin-filters). Salt provides a list of custom Jinja filters in their [official documentation](https://docs.saltstack.com/en/latest/topics/jinja/index.html#filters).
 
 ### Macros
 
@@ -188,7 +190,7 @@ Macros are small, reusable templates that allow you to minimize repetition when 
 db.mysql_privs('jane','exampledb.*','select,insert,update')
 {{</ file >}}
 
-The `mysql_privs()` macro is defined in the `db_macro.sls` file. The template is then imported to the `db` variable in the `db_privs.sls` state file and used to create a mysql grants state for a specific user.
+The `mysql_privs()` macro is defined in the `db_macro.sls` file. The template is then imported to the `db` variable in the `db_privs.sls` state file and used to create a MySQL `grants` state for a specific user.
 
 Refer to the [Imports and Includes](#imports-and-includes) section for more information on importing templates and variables.
 
@@ -251,7 +253,7 @@ This will output the numbers `12345` without any leading whitespace. Without the
 
 ### Control Structures
 
-Jinja provides control structures common to many programming languages, like for loops, conditionals, macros and blocks. The use of control structures within Salt states allow for fine-grained control of state execution flow.
+Jinja provides control structures common to many programming languages such as loops, conditionals, macros, and blocks. The use of control structures within Salt states allow for fine-grained control of state execution flow.
 
 **For Loops**
 
@@ -341,7 +343,7 @@ To use a base template within a child template, use the `{% extends "base.sls"%}
 { % block home_dir % }{{ salt['pillar.get']('jane:home_dir', 'jane') }}{% endblock %}
 {{</ file >}}
 
-The `webserver_users.sls` state file extends the `users.jinja` template and defines values for the `fullname` and `home_dir` blocks. The values are generated using the [salt context variable](#template-variable) and pillar data. The rest of the state will be rendered as the parent `user.jinja` template has defined it.
+The `webserver_users.sls` state file extends the `users.jinja` template and defines values for the `fullname` and `home_dir` blocks. The values are generated using the [Salt context variable](#template-variable) and pillar data. The rest of the state will be rendered as the parent `user.jinja` template has defined it.
 
 ## Salt and Jinja Best Practices
 
