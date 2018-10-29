@@ -18,7 +18,7 @@ We've done our best to create straightforward billing and payment policies. Stil
 
 ## How Hourly Billing Works
 
-All services are billed automatically at the end of the month. If you used a service for the entirety of the past month, you'll be billed the **monthly cap** amount for that service. If you used a service for only part of the past month, you'll be billed at the **hourly** rate for that service. If your usage during any given month hits the monthly cap for the service, hourly billing stops. You'll never be billed more than the monthly cap for any service, excluding network [transfer overages](#transfer-overages). In other words, if you've used a service for the entire month, you'll have a predictable amount on your bill.
+All services are billed automatically at the end of the month. If you used a service for the entirety of the past month, you'll be billed the **monthly cap** amount for that service. If you used a service for only part of the past month, you'll be billed at the **hourly** rate for that service. If your usage during any given month hits the monthly cap for the service, hourly billing stops. You'll never be billed more than the monthly cap for any service, excluding network [transfer overages](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work). In other words, if you've used a service for the entire month, you'll have a predictable amount on your bill.
 
 ## Linode Cloud Hosting and Backups
 
@@ -65,7 +65,7 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 
 
 {{< note >}}
-A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [transfer overage](#transfer-overages) charge beyond the monthly cap.
+A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [transfer overage](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work) charge beyond the monthly cap.
 
 Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/platform/billing-and-support/support/) with your justification.
 {{< /note >}}
@@ -97,16 +97,15 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. We also accept <!-- PayPal, as well as -->checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
+We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
 
 <!-- The following video will show you how to make a payment via PayPal:
 
 {{< youtube 9BG6CGsIZwc >}} -->
 
-<!-- {{< note >}}
+{{< note >}}
 PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card.
 {{< /note >}}
--->
 
 If you overpay, credit will be applied to your account; this allows you to prepay if desired. Service credit is always used before charging the credit card on file for ongoing service.
 
@@ -123,16 +122,6 @@ You can use the Linode Manager to pay an outstanding balance or prepay for Linod
 7.  Click **Confirm Payment**.
 
 The payment may take a few minutes to be applied to your account.
-
-## Transfer Overages
-
-If you exceed your monthly network transfer quota, your account will be billed for $0.02/GB at the end of the current month.
-
-## Transfer Proration
-
-Your Linode's transfer quota is prorated based on its creation date. This means that a Linode you create mid-month will have a lower transfer quota than what's listed on our [pricing page](https://www.linode.com/pricing), depending on how much time remains in the month.
-
-The prorated transfer quota is reset at the beginning of the following month.
 
 ## Accessing Billing History
 
@@ -201,8 +190,6 @@ Your account will be canceled and all of your services will be deactivated.
 You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Linode Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the [Removing Services](#removing-services) section for more information.
 {{< /note >}}
 
+## Prepaid Billing
 
-
-## More Information
-
-If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information.
+If you created your account before hourly billing was first available and have not converted to hourly billing, your account uses prepaid billing. Review the legacy [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information on how your bills and invoices are prepared.
