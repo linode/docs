@@ -9236,6 +9236,78 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .note strong {
   font-weight: bold;
 }
+.community {
+  padding: 15px;
+  background-color: #edf7fe;
+  border-left: 4px solid #bde2fb;
+}
+.community:before {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  font-size: 14px;
+  font-size: 19px;
+  font-weight: 400;
+  color: #000;
+}
+.community:before small,
+.community:before .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #777777;
+}
+.community:before small,
+.community:before .small {
+  font-size: 75%;
+}
+.community:before + .lead {
+  padding-top: 10px;
+}
+.community:before {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.community * {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.community:before {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  font-size: 14px;
+  font-size: 19px;
+  font-weight: 400;
+}
+.community:before small,
+.community:before .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #777777;
+}
+.community:before small,
+.community:before .small {
+  font-size: 75%;
+}
+.community:before + .lead {
+  padding-top: 10px;
+}
+.community a {
+  color: #0089bc;
+}
+.community a:hover {
+  color: #006489;
+}
+.community strong {
+  font-weight: bolder;
+}
 #article-body .disclosure-note {
   padding: 15px;
   background-color: #edf7fe;
@@ -20078,6 +20150,16 @@ li.list-group-item {
 }
 .search-form {
   position: relative;
+  width: 100%;
+}
+.search-box {
+  padding-left: 35px;
+}
+.search-icon {
+  position: absolute;
+  top: .85em;
+  left: .85em;
+  z-index: 10;
 }
 .hits {
   position: absolute;
