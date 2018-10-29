@@ -8,12 +8,12 @@ published: 2018-10-29
 modified: 2018-10-29
 modified_by:
   name: Linode
-title: "Introduction to Jinja"
+title: "Introduction to Jinja Templates for Salt"
 contributor:
   name: Linode
 external_resources:
 - '[Salt Best Practices](https://docs.saltstack.com/en/latest/topics/best_practices.html#modularity-within-states)'
-- '[Salt States Tutorial](hhttps://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html)'
+- '[Salt States Tutorial](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html)'
 - '[Jinja Template Designer Documentation](http://jinja.pocoo.org/docs/2.10/templates/#import)'
 ---
 ## Introduction to Templating Languages
@@ -28,7 +28,7 @@ This guide will provide an overview of the Jinja templating language used primar
 
 This section provides an introductory description of Jinja syntax and concepts along with examples of Jinja and Salt states. For an exhaustive dive into Jinja, consult the official Jinja [Template Designer Documentation](http://jinja.pocoo.org/docs/2.10/templates/).
 
-Applications like Salt can define their own set of configurations and default behavior for the Jinja templating engine. All examples use Salt's default Jinja environment options. These default settings can be changed in the Salt master configuration file:
+Applications like Salt can define default behaviors for the Jinja templating engine. All examples in this guide use Salt's default Jinja environment options. These settings can be changed in the Salt master configuration file:
 
 {{< file "/etc/salt/master" yaml >}}
 # Default Jinja environment options for all templates except sls templates
@@ -60,19 +60,21 @@ Applications like Salt can define their own set of configurations and default be
 #  lstrip_blocks: False
 {{</ file >}}
 
-{{< note> }}
+{{< note >}}
 Before including Jinja in your Salt states, be sure to review the [Salt and Jinja Best Practices](#salt-and-jinja-best-practices) section of this guide to ensure that you are creating maintainable and readable Salt states. More advanced Salt tools and concepts can be used to improve the modularity and reusability of some of the Jinja and Salt state examples used throughout this guide.
-{{< /note> }}
+{{< /note >}}
 
 ### Delimiters
 Templating language delimiters are used to denote the boundary between the templating language and another type of data format like HTML or YAML. Jinja uses the following delimiters:
 
-- `{% ... %}` - Used for control structures.
-- `{{ ... }}` - Used to evaluate expressions that will print to the template output.
-- `{# ... #}` - Comments that will be ignored by the template engine.
-- `#  ... ##` - Line statements.
+| Delimiter Syntax | Usage       |
+| ---------------- |-------------|
+| `{% ... %}`      | Control structures |
+| `{{ ... }}`      | Evaluated expressions that will print to the template output |
+| `{# ... #}`      | Comments that will be ignored by the template engine |
+| `#  ... ##`      | Line statements |
 
-In the example Salt state file, you can differentiate the Jinja syntax from the YAML because of the `{% ... %}` delimiters surrounding the if/else conditionals:
+In this example Salt state file, you can differentiate the Jinja syntax from the YAML because of the `{% ... %}` delimiters surrounding the if/else conditionals:
 
 {{< file "/srv/salt/webserver/init.sls" yaml >}}
 {% if grains['group'] == 'admin' %}
@@ -90,51 +92,51 @@ See the [control structures](#control-structures) section for more information o
 
 Template variables are available via a template's context dictionary. A template's context dictionary is created automatically during the different stages of a template's evaluation. These variables can be accessed using dot notation:
 
-    {% foo.bar %}
+    {{ foo.bar }}
 
-  Or subscript syntax:
+  Or they can be accessed by subscript syntax:
 
-    {% foo['bar'] %}
+    {{ foo['bar'] }}
 
-  Salt provides several context variables that are available by default to any Salt state file or file template. These context variables are the following:
+  Salt provides several context variables that are available by default to any Salt state file or file template:
 
-  - **SALT**: All Salt templates have access to the `salt` variable. This variable provides a powerful set of [salt library functions](https://docs.saltstack.com/en/latest/ref/modules/all/index.html#all-salt-modules).
+  - **Salt**: The `salt` variable provides a powerful set of [Salt library functions](https://docs.saltstack.com/en/latest/ref/modules/all/index.html#all-salt-modules).
 
         {{ salt['pw_user.list_groups']('jdoe') }}
 
     You can run `salt '*' sys.doc` from the Salt master to view a list of all available functions.
 
-  - **OPTS**: The `opts` variable is a dictionary that is available in all templates and provides access to the content of the minion's configuration file.
+  - **Opts**: The `opts` variable is a dictionary that provides access to the content of a Salt minion's [configuration file](https://docs.saltstack.com/en/latest/ref/internals/opts.html):
 
         {{ opts['log_file'] }}
 
-    The location for a Minion configuration file is `/etc/salt/minion`.
+    The location for a minion's configuration file is `/etc/salt/minion`.
 
-  - **PILLAR**: This variable is a dictionary that provides all pillar data and is available in all templates.
+  - **Pillar**: The `pillar` variable is a dictionary used to access Salt's [pillar data](https://docs.saltstack.com/en/latest/topics/tutorials/pillar.html):
 
         {{ pillar['my_key'] }}
 
-    Although you can access pillar keys and values directly, it is recommended to use the `pillar.get` salt variable library function, because it allows you to define a default value in the case that the value does not exist in the pillar.
+    Although you can access pillar keys and values directly, it is recommended that you use Salt's `pillar.get` variable library function, because it allows you to define a default value. This is useful when a value does not exist in the pillar:
 
         {{ salt['pillar.get']('my_key', 'default_value') }}
 
-  - **GRAINS**: The `grains` variable is a dictionary and provides access to minion grains.
+  - **Grains**: The `grains` variable is a dictionary and provides access to minions' [grains data](https://docs.saltstack.com/en/latest/topics/grains/):
 
         {{ grains['shell'] }}
 
-    You can also use the `grains.get` salt variable library function to access grain data.
+    You can also use Salt's `grains.get` variable library function to access grain data:
 
         {{ salt['grains.get']('shell') }}
 
-  - **SALTENV**: You can define multiple salt environments for minions in a Salt master's top file, such as `base`, `prod`, `dev` and `test`. The `saltenv` variable provides a way to access the current Salt environment within a Salt state file. This variable is only available within Salt state files.
+  - **Saltenv**: You can define multiple salt environments for minions in a Salt master's top file, such as `base`, `prod`, `dev` and `test`. The `saltenv` variable provides a way to access the current Salt environment within a Salt state file. This variable is only available within Salt state files.
 
         {{ saltenv }}
 
-  - **SLS**: With the `sls` variable you can obtain the state file reference value for the current state file, i.e. `apache`, `webserver`, etc. This is the same value used in a top file to map minions to state files or via the `include` option in state files.
+  - **SLS**: With the `sls` variable you can obtain the reference value for the current state file (e.g. `apache`, `webserver`, etc). This is the same value used in a top file to map minions to state files or via the `include` option in state files:
 
         {{ sls }}
 
-  - **SLSPATH**: This variable provides the path to the current state file when used in a Jinja expression.
+  - **Slspath**: This variable provides the path to the current state file:
 
         {{ slspath }}
 
@@ -154,7 +156,6 @@ You can assign a value to a variable by using the `set` tag along with the follo
 
 Filters can be applied to any template variable via a `|` character. Filters are chainable and accept optional arguments within parentheses. When chaining filters, the output of one filter becomes the input of the following filter.
 
-
     {{ '/etc/salt/' | list_files | join('\n') }}
 
 These chained filters will return a recursive list of all the files in the `/etc/salt/` directory. Each list item will be joined with a new line.
@@ -167,11 +168,11 @@ These chained filters will return a recursive list of all the files in the `/etc
   /etc/salt/pillar/device1.sls
   {{</ output >}}
 
-  For a complete list of all built in Jinja filters, refer to the [Jinja Template Design documentation](http://jinja.pocoo.org/docs/2.10/templates/#builtin-filters). Salt provides a list of custom Jinja filters in their [official documentation](https://docs.saltstack.com/en/latest/topics/jinja/index.html#filters).
+  For a complete list of all built in Jinja filters, refer to the [Jinja Template Design documentation](http://jinja.pocoo.org/docs/2.10/templates/#builtin-filters). Salt's official documentation includes a [list of custom Jinja filters](https://docs.saltstack.com/en/latest/topics/jinja/index.html#filters).
 
 ### Macros
 
-Macros are small, reusable templates that allow you to minimize repetition when creating states. You can define macros within Jinja templates and then reuse the macros throughout your state files to reduce the repetition of frequently used constructs.
+Macros are small, reusable templates that help you to minimize repetition when creating states. Define macros within Jinja templates to represent frequently used constructs and then reuse the macros in state files.
 
 {{< file "/srv/salt/mysql/db_macro.sls" jinja >}}
 {% macro mysql_privs(user, grant=select, database, host=localhost) %}
@@ -190,7 +191,7 @@ Macros are small, reusable templates that allow you to minimize repetition when 
 db.mysql_privs('jane','exampledb.*','select,insert,update')
 {{</ file >}}
 
-The `mysql_privs()` macro is defined in the `db_macro.sls` file. The template is then imported to the `db` variable in the `db_privs.sls` state file and used to create a MySQL `grants` state for a specific user.
+The `mysql_privs()` macro is defined in the `db_macro.sls` file. The template is then imported to the `db` variable in the `db_privs.sls` state file and is used to create a MySQL `grants` state for a specific user.
 
 Refer to the [Imports and Includes](#imports-and-includes) section for more information on importing templates and variables.
 
@@ -198,7 +199,7 @@ Refer to the [Imports and Includes](#imports-and-includes) section for more info
 
 **Imports**
 
-Importing in Jinja is similar to importing in Python. You can import an entire template, a specific state or a macro defined within a file.
+Importing in Jinja is similar to importing in Python. You can import an entire template, a specific state, or a macro defined within a file.
 
     {% import '/srv/salt/users.sls' as users %}
 
@@ -221,23 +222,31 @@ include:
 {% include 'users.sls' %}
 {{</ file >}}
 
+{{< note >}}
+A file referenced by the Jinja `include` tag needs to be specified by its [absolute path from Salt's `file_roots` setting](https://github.com/saltstack/salt/issues/15863#issuecomment-57823633); using a relative path from the current state file will generate an error. To include a file in the same directory as the current state file:
+
+    {% include slspath + "/users.sls" %}
+
+Also note that [Salt has its own native `include` declaration](https://docs.saltstack.com/en/latest/ref/states/include.html) which is independent of Jinja's `include`.
+{{< /note >}}
+
 **Import Context Behavior**
 
 By default, an import will not include the context of the imported template, because imports are cached. This can be overridden by adding `with context` to your import statements.
 
     {% from '/srv/salt/user.sls' import mysql_privs with context %}
 
-Similarly, if you would like to remove the context from an `{% include %}`, add `without context`.
+Similarly, if you would like to remove the context from an `{% include %}`, add `without context`:
 
     {% include 'users.sls' without context %}
 
 ### Whitespace Control
 
-Jinja provides several mechanisms for whitespace control of its rendered output. By default, Jinja strips single trailing new lines and leaves anything else unchanged, i.e. tabs, spaces, multiple new lines. You can customize how Salt's Jinja template engine handles whitespace in the [Salt master configuration file](#jinja-basics). Some of the available environment options for whitespace control are:
+Jinja provides several mechanisms for whitespace control of its rendered output. By default, Jinja strips single trailing new lines and leaves anything else unchanged, e.g. tabs, spaces, and multiple new lines. You can customize how Salt's Jinja template engine handles whitespace in the [Salt master configuration file](#jinja-basics). Some of the available environment options for whitespace control are:
 
-- `trim_blocks`: When set to `True`, the first newline after a template tag is removed automatically. This is set to `False` by default in Salt's Jinja environment options.
-- `lstrip_blocks`: When set to `True`, Jinja strips tabs and spaces from the beginning of a line to the start of a block. If other characters are present before the start of the block, nothing will be stripped. This is set to `False` by default in Salt's Jinja environment options.
-- `keep_trailing_newline`: When set to `True`, Jinja will keep single trailing newlines. This is set to `False` by default in Salt's Jinja environment options.
+- `trim_blocks`: When set to `True`, the first newline after a template tag is removed automatically. This is set to `False` by default in Salt.
+- `lstrip_blocks`: When set to `True`, Jinja strips tabs and spaces from the beginning of a line to the start of a block. If other characters are present before the start of the block, nothing will be stripped. This is set to `False` by default in Salt.
+- `keep_trailing_newline`: When set to `True`, Jinja will keep single trailing newlines. This is set to `False` by default in Salt.
 
 To avoid running into YAML syntax errors, ensure that you take Jinja's whitespace rendering behavior into consideration when inserting templating markup into Salt states. Remember, Jinja must produce valid YAML. When using control structures or macros, it may be necessary to strip whitespace from the template block to appropriately render valid YAML.
 
@@ -281,7 +290,7 @@ The previous for loop will assign the user `jane` to all the groups in the `grou
 
 **Conditionals**
 
-A conditional expression evaluates to either `True` or `False` and controls the flow of a program based on the result of the evaluated boolean expression. Jinja's conditional expressions are prefixed with if/elif/else and placed within the `{% ... %}` delimiter.
+A conditional expression evaluates to either `True` or `False` and controls the flow of a program based on the result of the evaluated boolean expression. Jinja's conditional expressions are prefixed with `if`/`elif`/`else` and placed within the `{% ... %}` delimiter.
 
 {{< file "/srv/salt/users.sls" yaml >}}
 {% set users = ['anna','juan','genaro','mirza'] %}
@@ -312,7 +321,7 @@ include:
 {% endfor %}
 {{</ file >}}
 
-In this example user state file, the conditional expression `{% if user in admin_users %}` controls which state is created for each user based on the presence of that user within the `admin_users` list defined at the top of the state file. This example is for illustrative purposes. Refer to the [Salt Best Practices](#salt-best-practices) section for information on using conditionals and control flow statements within state files.
+In this example the presence of a user within the `admin_users` list determines which groups are set for that user in the state. Refer to the [Salt Best Practices](#salt-and-jinja-best-practices) section for more information on using conditionals and control flow statements within state files.
 
 ### Template Inheritance
 
@@ -321,9 +330,9 @@ With template inheritance you can define a base template that can be reused by c
 Use the `{% block block_name %}` tag with a block name to define an area of a base template that can be overridden.
 
 {{< file "/srv/salt/users.jinja" >}}
-{ % block user % }jane{% endblock %}:
+{% block user %}jane{% endblock %}:
   user.present:
-    - fullname: { % block fullname % }{% endblock %}
+    - fullname: {% block fullname %}{% endblock %}
     - shell: /bin/zsh
     - createhome: True
     - home: /home/{% block home_dir %}
@@ -339,11 +348,11 @@ To use a base template within a child template, use the `{% extends "base.sls"%}
 {{< file "/srv/salt/webserver_users.sls" yaml >}}
 {% extends "/srv/salt/users.jinja" %}
 
-{ % block fullname % }{{ salt['pillar.get']('jane:fullname', '') }}{% endblock %}
-{ % block home_dir % }{{ salt['pillar.get']('jane:home_dir', 'jane') }}{% endblock %}
+{% block fullname %}{{ salt['pillar.get']('jane:fullname', '') }}{% endblock %}
+{% block home_dir %}{{ salt['pillar.get']('jane:home_dir', 'jane') }}{% endblock %}
 {{</ file >}}
 
-The `webserver_users.sls` state file extends the `users.jinja` template and defines values for the `fullname` and `home_dir` blocks. The values are generated using the [Salt context variable](#template-variable) and pillar data. The rest of the state will be rendered as the parent `user.jinja` template has defined it.
+The `webserver_users.sls` state file extends the `users.jinja` template and defines values for the `fullname` and `home_dir` blocks. The values are generated using the [`salt` context variable](#template-variables) and pillar data. The rest of the state will be rendered as the parent `user.jinja` template has defined it.
 
 ## Salt and Jinja Best Practices
 
