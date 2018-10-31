@@ -189,7 +189,7 @@ Defining your configurations in states eases system administration:
 
 -   Setting up states minimizes human error, as you will not need to enter commands one-by-one by hand.
 
--   Applying a state to minion multiple times generally does not result in any changes beyond the first application. Salt understands when a state has been implemented on a minion and will not perform unnecessary actions.
+-   Applying a state to minion multiple times generally does not result in any changes beyond the first application. Salt understands when a state has already been implemented on a minion and will not perform unnecessary actions.
 
 -   If you update a state file and apply it to a minion, Salt will detect and only apply the changes, which makes updating your systems more efficient.
 
