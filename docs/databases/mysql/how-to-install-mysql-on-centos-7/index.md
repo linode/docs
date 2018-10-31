@@ -205,3 +205,9 @@ If you forget your root MySQL password, it can be reset.
     You will be asked for the MySQL root user's name and password. The output will show two areas of interest: General recommendations and Variables to adjust.
 
 MySQL Tuner is an excellent starting point to optimize a MySQL server but it would be prudent to perform additional research for configurations tailored to the application(s) utilizing MySQL on your Linode.
+
+{{< community >}}
+* [How to install phpMyAdmin on Centos7](https://www.linode.com/community/questions/16988/completing-install-of-phpmyadmin-on-centos-7)
+* [How can I setup a lamp/lemp stack on my Linode](https://www.linode.com/community/questions/62/how-can-i-set-up-a-lamplemp-stack-on-my-linode)
+* [How do I run both MySQL and MongoDB](https://www.linode.com/community/questions/425/how-do-i-run-both-mysql-and-mongodb)
+{{</ community >}}
