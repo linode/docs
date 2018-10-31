@@ -49,7 +49,7 @@ Communication between the master and minions is performed over the [ZeroMQ](http
 Salt offers a [very wide array](https://docs.saltstack.com/en/latest/ref/modules/all/) of remote *execution modules*. An execution module is a collection of related functions that you can run on your minions **from the master**. For example:
 
     salt 'webserver1' npm.install gulp
-    
+
 In this command `npm` is [the module](https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.npm.html) and `install` is [the function](https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.npm.html#salt.modules.npm.install). This command installs the [Gulp](https://gulpjs.com) Node.js package via the Node Package Manager (NPM). Other functions in the `npm` module handle uninstalling NPM packages, listing installed NPM packages, and related tasks.
 
 The execution modules that Salt makes available represent system administration tasks that you would otherwise perform in a shell, including but not limited to:
@@ -199,7 +199,7 @@ Defining your configurations in states eases system administration:
 
 ## Targeting Minions
 
-You can match against your minions' IDs using shell style globbing. This works at either the command line or in the top file. 
+You can match against your minions' IDs using shell style globbing. This works at either the command line or in the top file.
 
 These examples would apply the `webserver_setup` state to all minions whose ID begins with `webserver` (e.g. `webserver1`, `webserver2`, etc):
 
@@ -278,7 +278,7 @@ base:
 
 To inject pillar data into your states, use [Jinja's template syntax](https://docs.saltstack.com/en/latest/topics/jinja/index.html). While Salt uses the YAML syntax for state and pillar files, the files are first interpreted as Jinja templates (by default).
 
-This example state file uses the pillar data from the previous section to create system users and set the shell for each: 
+This example state file uses the pillar data from the previous section to create system users and set the shell for each:
 
 {{< file "/srv/salt/user_setup.sls" >}}
 {% for user_name, user_info in pillar['users'].iteritems() %}
