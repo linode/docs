@@ -7,7 +7,7 @@ og_description: 'Host your own PaaS with Dokku, a highly extensible way to deplo
 keywords: ['docker','containers','nginx', 'heroku', 'PaaS', 'git', 'Platform-as-a-service', 'Platform As a Service']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-07
-modified: 2018-03-07
+modified: 2018-10-31
 modified_by:
   name: Linode
 title: "Deploy a Flask Application with Dokku"
@@ -26,6 +26,10 @@ This guide demonstrates how to:
  - Add an SSL certificate through Dokku with the Let's Encrypt plugin
 
 ## Before You Begin
+
+{{< note >}}
+Dokku v0.12.5 is compatible with Ubuntu 16.04 x64, Ubuntu 14.04 x64, and Debian 8.2 x64. CentOS 7 x64 is only supported experimentally, and as such some steps like configuring SSH keys and virtual hosts must be done manually using the dokku command line interface. See [the official documentation](http://dokku.viewdocs.io/dokku~v0.12.5/getting-started/installation/) for more information.
+{{< /note >}}
 
 ### On Your Local Computer
 
