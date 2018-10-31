@@ -42,10 +42,10 @@ Communication between the master and minions is performed over the [ZeroMQ](http
 
 ## Remote Execution
 
-Salt offers a [very wide array](https://docs.saltstack.com/en/latest/ref/modules/all/) of remote *execution modules*. An execution module is a collection of related functions that you can run on your minions **from the master**. For example: 
+Salt offers a [very wide array](https://docs.saltstack.com/en/latest/ref/modules/all/) of remote *execution modules*. An execution module is a collection of related functions that you can run on your minions **from the master**. For example:
 
     salt 'webserver1' npm.install gulp
-    
+
 In this command `npm` is [the module](https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.npm.html) and `install` is [the function](https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.npm.html#salt.modules.npm.install). This command installs the [Gulp](https://gulpjs.com) Node.js package via the Node Package Manager (NPM). Other functions in the `npm` module handle uninstalling packages, listing installed packages, and related tasks.
 
 The execution modules that Salt makes available represent system administration tasks that you would otherwise perform in a shell, including but not limited to:
@@ -76,7 +76,7 @@ Where possible, it's better to use execution modules than to "shell out" with `c
 
 The previous section described how to use remote execution to perform specific actions on a minion. With remote execution, you can set up a minion by entering a series of such commands.
 
-Salt offers another way to configure a minion in which you declare the state that a minion *should be in*. This kind of configuration is called a Salt *state*, and the methodology is referred to generally as *configuration management*.
+Salt offers another way to configure a minion in which you instead declare the state that a minion *should be in*. This kind of configuration is called a Salt *state*, and the methodology is referred to generally as *configuration management*.
 
 The distinction between the two styles is subtle; for example, here's how installing NGINX is interpreted in each methodology:
 
@@ -84,7 +84,7 @@ The distinction between the two styles is subtle; for example, here's how instal
 
 -   **Configuration management**: "NGINX should be installed on the minion"
 
-Salt states are defined in *state files*. Once you have recorded your states, you then *apply* them to a minion. Salt analyzes the state file and determines what it needs to do to make sure that the minion satisfies the configuration declared by the state. This sometimes results in the same command that would be run via remote execution, but sometimes it doesn't. In the NGINX example, if Salt sees that NGINX was already installed previously, it won't invoke the package manager again when the state is applied.
+Salt states are defined in *state files*. Once you have recorded your states, you then *apply* them to a minion. Salt analyzes the state file and determines what it needs to do to make sure that the minion satisfies the configuration declared by the state. This sometimes results in the same command that would be run via remote execution, but sometimes it doesn't. In the NGINX example, if Salt sees that it's already been installed previously, it won't invoke the package manager when the state is applied.
 
 ### Anatomy of a State
 
@@ -138,7 +138,7 @@ To apply a state to a minion, use the `state.apply` function from the master:
 
     salt `webserver1` state.apply webserver_setup
 
-This command applies the example `webserver_setup.sls` state to a minion named `webserver1`. When applying the state, the `.sls` suffix is not mentioned. All of the state declarations in the state file are applied.
+This command applies the example `webserver_setup.sls` state to a minion named `webserver1`. When applying the state, the `.sls` suffix is not mentioned.
 
 ### Salt Formulas
 
@@ -152,28 +152,17 @@ The definition of what constitutes a formula is somewhat loose, and the specific
 
 In addition to manually applying states to minions, Salt provides a way for you to automatically map which states should be applied to different minions. This map is called the *top file*.
 
-Here's a simple top file:
 
-{{< file "/srv/salt/top.sls" >}}
-base:
-  '*':
-    - universal_setup
 
-  'webserver1':
-    - webserver_setup
-{{< /file >}}
 
-`base` refers to the [Salt *environment*](https://docs.saltstack.com/en/latest/ref/states/top.html#environments). You can specify more than one environment corresponding to different phases of your work; for example: development, QA, production, etc. `base` is the default.
 
-Groups of minions are specified under the environment, and states are listed for each set of minions. The above example top file says that a `universal_setup` state should be applied to all minions (`'*'`), and the `webserver_setup` state should be applied to the `webserver1` minion.
+A [Salt state](https://docs.saltstack.com/en/latest/topics/tutorials/starting_states.html) is a particular configuration setup enforced by a `top.sls` file. An SLS file contains YAML data for specific configuration options such as (but not limited to) installed packages, system changes, and application configurations.
 
-If you run the `state.apply` function with no arguments, then Salt will inspect the top file and apply all states within it according to the mapping you've created it:
+One use case for a Salt State is a base system configuration that would include items such as an added third party package repository with an application installed from it, configured as necessary. From this state, a Pillar can be used to add additional information for user credentials, site files, scripts or service files, etc.
 
-    salt '*' state.apply
+Where a state can be templated to provide abstraction over running the same monotonous commands each time, and to make it variable, etc., a [Salt formula](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html) is able to provide a group of states all working toward a common configuration or function.
 
-{{< note >}}
-This action is colliquially known as a [*highstate*](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html#running-highstate).
-{{< /note >}}
+One example of a Salt formula would be an Apache server proxying traffic to NGINX. You could have the initial installation with accompanying packages that may not be direct dependencies, possibly a monitoring service for each web server's service, and potentially a watchdog for configuration changes so as to restart the individual services. A Pillar can then be used to manage the web servers' configuration files.
 
 ### Benefits of States and Configuration Management
 
@@ -189,126 +178,22 @@ Defining your configurations in states eases system administration:
 
 -   State files can be entered into a version control system, which helps you track changes to your systems over time.
 
-## Targeting Minions
-
-You can match against your minions' IDs using shell style globbing. This works at either the command line or in the top file. These examples would apply the `webserver_setup` state to all minions whose IDs begin with `webserver` (e.g. `webserver1`, `webserver2`, etc):
-
--   CLI:
-
-        salt 'webserver*' state.apply webserver_setup
-
--   Top file:
-
-    {{< file >}}
-base:
-  'webserver*':
-    - webserver_setup
-{{< /file >}}
-
-[Regular Expressions](https://docs.saltstack.com/en/latest/topics/targeting/globbing.html#regular-expressions) and [lists](https://docs.saltstack.com/en/latest/topics/targeting/globbing.html#lists) can also be used to match against minion IDs.
-
 ## Grains
 
-Salt's [*grains*](https://docs.saltstack.com/en/latest/topics/grains/) system makes available information generated by and stored on a minion. Examples include a minion's operating system, domain name, IP address, and so on. You can also specify custom grain data on a minion, as outlined in Salt's documentation.
+[Grains](https://docs.saltstack.com/en/latest/topics/grains/) are individual properties of an operating system or hardware setup such as domain, OS version, CPU core count, etc. Grains allow you to target minons matching specific requirements. For example, the following command installs Apache HTTP Server on all minions running CentOS:
 
-You can use grain data to target minions from the command line. This command would install httpd on all minions running CentOS:
+        salt -G 'os:CentOS' pkg.install httpd
 
-    salt -G 'os:CentOS' pkg.install httpd
+Grains are considered to be static and unchanging (such as hardware information), or one-time configurations (such as a machine's domain name). Grains can be assigned to minon configuration files or stored in `/etc/salt/grains`. The built-in grains are those made available by [salt.grains.core](https://docs.saltstack.com/en/latest/ref/grains/all/salt.grains.core.html). You can create custom grains or alter pre-existing ones.
 
-You can also use grains in a top file:
 
-{{< file >}}
-base:
-  'os:CentOS':
-    - match: grain
-    - centos_setup
-{{< /file >}}
+## Pillars
 
-Grain information generally isn't very dynamic, but it can change occassionally, and Salt will refresh its grain data when it does. To view your minions' grain data:
+Salt's Pillar feature takes data defined on the Salt master and distributes it to minons. Pillars are especially useful for secure data such as account credentials, defining variables such as network addresses, and minion module configuration. On the other hand, Pillars can be much more complex and Pillar data can be pulled from a multitude of places, such as a Git repository or database. Similar to Salt States, Pillar data is distributed to minions matched in a `top.sls` file.
 
-    salt '*' grains.items
+Using Pillars is optional, but a way to determine appropriate use of a Pillar over a Salt state could be: Data goes into a Pillar, while the logic of how that data should be used makes up a State. Furthermore, sometimes the distinction between Grains and Pillars can be confusing. A Pillar is a structure of application or system data for use by a minion (or multiple minions), whereas Grains are small points of information about the minion, created by, and stored on, the minion.
 
-## Storing Data and Secrets in Pillar
-
-Salt's [*pillar*](https://docs.saltstack.com/en/latest/topics/tutorials/pillar.html) feature takes data defined on the Salt master and distributes it to minons. A primary use for pillar is to store secrets, such as account credentials. Pillar is also a useful place to store non-secret data that you wouldn't want to record directly in your state files.
-
-{{< note >}}
-In addition to storing pillar data on the master, you can also keep it in other locations, like in a [Git repository](https://docs.saltstack.com/en/latest/ref/pillar/all/salt.pillar.git_pillar.html) or [Hashicorp's Vault](https://docs.saltstack.com/en/latest/ref/pillar/all/salt.pillar.vault.html).
-{{< /note >}}
-
-Let's say that you want to create system users on a minion and assign different shells to each of them. If you were to code this information into a state file, you would need a new declaration for each user. If you store the data in pillar instead, you can then just create one state declaration and inject the pillar data into it using Salt's [Jinja templating](#jinja-templates) feature.
-
-{{< note >}}
-Salt Pillar is sometimes confused with Salt Grains, as they both keep data that is used in states and remote execution. The data that grains maintains originates *from* the minions, while the data in pillar originates on the master (or another backend) and is delivered *to* the minions.
-{{< /note >}}
-
-### Anatomy of Pillar Data
-
-Pillar data is kept in `.sls` files and are written in the same YAML syntax as states:
-
-{{< file "/srv/pillar/user_info.sls">}}
-users:
-  joe:
-    shell: /bin/zsh
-  amy:
-    shell: /bin/bash
-  sam
-    shell: /bin/fish
-{{< /file >}}
-
-As with state files, a top file (separate from your states' top file) maps pillar data to minions:
-
-{{< file "/srv/pillar/top.sls">}}
-base:
-  'webserver1':
-    - user_info
-{{< /file >}}
-
-## Jinja Templates
-
-To inject pillar data into your states, use [Jinja's template syntax](https://docs.saltstack.com/en/latest/topics/jinja/index.html). While Salt uses the YAML syntax for state and pillar files, the files are first interpreted as Jinja templates (by default).
-
-This example state file uses the pillar data from the previous section to create system users and set the shell for each:
-
-{{< file "/srv/salt/user_setup.sls" >}}
-{% for user, user_info in pillar['users'].iteritems() %}
-{{ user }}:
-  user.present:
-    - shell: {{ user_info['shell'] }}
-{% endfor %}
-{{< /file >}}
-
-Salt will compile the state file into something that looks like this before it is applied to the minion:
-
-{{< file >}}
-joe:
-  user.present:
-    - shell: /bin/zsh
-
-amy:
-  user.present:
-    - shell: /bin/bash
-
-sam:
-  user.present:
-    - shell: /bin/fish
-{{< /file >}}
-
-You can also use Jinja to interact with grain data in your states. This example state will install Apache and adjust the name for the package according to the operating system:
-
-{{< file "/srv/salt/webserver_setup.sls" >}}
-install_apache:
-  pkg.installed:
-    {% if grains['os'] == 'CentOS' %}
-    - name: httpd
-    {% else %}
-    - name: apache
-    {% endif %}
-{{< /file >}}
-
-{{< note >}}
-In addition to Salt's documentation on Jinja, the [official Jinja documentation](http://jinja.pocoo.org/docs/2.10/templates/) also details the template syntax.
-{{< /note >}}
+As an example, if you simply need to change root’s shell to `/bin/zsh`, you could easily just hardcode that right into a State. However, if you’re operating with hundreds of users, you'd want to avoid the process of hardcoding that logic hundreds of times.
 
 ## Beacons
 
