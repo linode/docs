@@ -82,7 +82,7 @@ The previous section described how to use remote execution to perform specific a
 
 Salt offers another way to configure a minion in which you declare the state that a minion *should be in*. This kind of configuration is called a Salt *state*, and the methodology is referred to generally as *configuration management*.
 
-The distinction between the two styles is subtle; for example, here's how installing NGINX is interpreted in each methodology:
+The distinction between the two styles is subtle; to illustrate, here's how installing NGINX is interpreted in each methodology:
 
 -   **Remote execution**: "Install NGINX on the minion"
 
