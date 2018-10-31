@@ -88,7 +88,7 @@ The distinction between the two styles is subtle; to illustrate, here's how inst
 
 -   **Configuration management**: "NGINX should be installed on the minion"
 
-Salt states are defined in *state files*. Once you have recorded your states, you then *apply* them to a minion. Salt analyzes the state file and determines what it needs to do to make sure that the minion satisfies the configuration declared by the state. 
+Salt states are defined in *state files*. Once you have recorded your states, you then *apply* them to a minion. Salt analyzes the state file and determines what it needs to do to make sure that the minion satisfies the state's declarations.
 
 {{< note >}}
 This sometimes results in the same command that would be run via remote execution, but sometimes it doesn't. In the NGINX example, if Salt sees that NGINX was already installed previously, it won't invoke the package manager again when the state is applied.
