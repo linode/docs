@@ -7,7 +7,7 @@ keywords: ["meltdown", "spectre", "vulnerability", "kernel"]
 aliases: ["platform/meltdown_statement/"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-11
-modified: 2018-04-03
+modified: 2018-10-31
 modified_by:
   name: Linode
 title: 'What You Need to Do to Mitigate Meltdown and Spectre'
@@ -125,7 +125,7 @@ If you boot your Linode using the **GRUB** or **Direct Disk** boot setting, your
     **Ubuntu**
 
         sudo apt-get update
-        sudo apt-get upgrade linux-image
+        sudo apt-get upgrade linux-image-generic
 
 2. Reboot your system. When it comes back up, use the command `uname -r` to verify you are running the new kernel against the patched version given in your distribution's security bulletin (see links below). This is also the recommended mitigation path for any hardware you use at home: your laptop, network hardware, and home servers.
 
