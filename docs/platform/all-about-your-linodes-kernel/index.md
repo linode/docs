@@ -32,13 +32,13 @@ To find out which kernel you're using, [SSH](/docs/getting-started/#connect-to-y
 
     uname -r
 
-If your output contains `linode` in the version tag, then you are running the [Linode kernel](#update-your-linode-kernel):
+If your output contains `linode` in the version tag, then you are running the Linode kernel:
 
 {{< output >}}
 4.14.12-x86_64-linode92
 {{</ output >}}
 
-If your output contains `generic` in the version tag, then you are probably running a [distribution-supplied kernel](#update-your-distribution-supplied-kernel):
+If your output contains `generic` in the version tag, then you are probably running a distribution-supplied kernel:
 
 {{< output >}}
 44.15.0-29-generic
