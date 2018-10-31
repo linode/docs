@@ -80,7 +80,7 @@ Where possible, it's better to use execution modules than to "shell out" with `c
 
 The previous section described how to use remote execution to perform specific actions on a minion. With remote execution, you could set up a minion by entering a series of such commands.
 
-Salt offers another way to configure a minion in which you declare the state that a minion *should be in*. This kind of configuration is called a Salt *state*, and the methodology is referred to generally as *configuration management*.
+Salt offers another way to configure a minion in which you declare **the state that a minion should be in**. This kind of configuration is called a Salt *state*, and the methodology is referred to generally as *configuration management*.
 
 The distinction between the two styles is subtle; to illustrate, here's how installing NGINX is interpreted in each methodology:
 
