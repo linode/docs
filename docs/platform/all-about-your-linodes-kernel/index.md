@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Determine which kernel version your Linode is running and update it to the latest available.'
 keywords: ['kernel','upgrade']
+aliases: ['platform/manager/how-to-change-your-linodes-kernel/','platform/update-kernel/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-16
 modified: 2018-10-31
