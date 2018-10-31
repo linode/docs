@@ -14,7 +14,7 @@ external_resources:
  - '[SaltStack Documentation](https://docs.saltstack.com/)'
 ---
 
-[Salt](https://s.saltstack.com/community/) (also referred to as *SaltStack*) is a Python-based configuration management and orchestration system. Salt uses a master/client model in which a dedicated Salt *master* server manages one or more Salt *minion* servers. Two of Salt's primary jobs are:
+[Salt](https://www.saltstack.com) (also referred to as *SaltStack*) is a Python-based configuration management and orchestration system. Salt uses a master/client model in which a dedicated Salt *master* server manages one or more Salt *minion* servers. Two of Salt's primary jobs are:
 
 -   Remotely executing commands across a set of minions
 
@@ -171,7 +171,7 @@ base:
     - webserver_setup
 {{< /file >}}
 
-`base` refers to the [Salt *environment*](https://docs.saltstack.com/en/latest/ref/states/top.html#environments). You can specify more than one environment corresponding to different phases of your work; for example: development, QA, production, etc. `base` is the default.
+`base` refers to the Salt [*environment*](https://docs.saltstack.com/en/latest/ref/states/top.html#environments). You can specify more than one environment corresponding to different phases of your work; for example: development, QA, production, etc. `base` is the default.
 
 Groups of minions are specified under the environment, and states are listed for each set of minions. The above example top file says that a `universal_setup` state should be applied to all minions (`'*'`), and the `webserver_setup` state should be applied to the `webserver1` minion.
 
@@ -240,7 +240,7 @@ Grain information generally isn't very dynamic, but it can change occassionally,
 
 ## Storing Data and Secrets in Pillar
 
-Salt's [*pillar*](https://docs.saltstack.com/en/latest/topics/tutorials/pillar.html) feature takes data defined on the Salt master and distributes it to minons. A primary use for pillar is to store secrets, such as account credentials. Pillar is also a useful place to store non-secret data that you wouldn't want to record directly in your state files.
+Salt's [*pillar*](https://docs.saltstack.com/en/latest/topics/tutorials/pillar.html) feature takes data defined on the Salt master and distributes it to minions. A primary use for pillar is to store secrets, such as account credentials. Pillar is also a useful place to store non-secret data that you wouldn't want to record directly in your state files.
 
 {{< note >}}
 In addition to storing pillar data on the master, you can also keep it in other locations, like in a [Git repository](https://docs.saltstack.com/en/latest/ref/pillar/all/salt.pillar.git_pillar.html) or [Hashicorp's Vault](https://docs.saltstack.com/en/latest/ref/pillar/all/salt.pillar.vault.html).
@@ -322,7 +322,7 @@ In addition to Salt's documentation on Jinja, the [official Jinja documentation]
 
 ## Beacons
 
-The [beacon](https://salt.readthedocs.io/en/stable/topics/beacons/index.html) system is a way of monitoring a variety of system processes on Salt minions. There are a number of [beacon modules](https://docs.saltstack.com/en/latest/ref/beacons/all/index.html) available.
+The [beacon](https://docs.saltstack.com/en/latest/topics/beacons/) system is a way of monitoring a variety of system processes on Salt minions. There are a number of [beacon modules](https://docs.saltstack.com/en/latest/ref/beacons/all/index.html) available.
 
 Beacons can trigger [reactors](https://docs.saltstack.com/en/latest/topics/reactor/index.html#reactor) which can then help implement a change or troubleshoot an issue. For example, if a service's response times out, the reactor system can restart the service.
 
