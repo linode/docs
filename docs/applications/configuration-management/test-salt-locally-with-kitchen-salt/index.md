@@ -2,14 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Test Salt configuration locally with Kitchen and kitchen-salt.'
+description: 'Test Salt states locally with Kitchen and kitchen-salt.'
 keywords: ['saltstack','salt','kitchen','kitchen-salt','kitchensalt','salt solo','saltsolo']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-15
 modified: 2018-10-15
 modified_by:
   name: Linode
-title: "Test Salt Locally with KitchenSalt"
+title: "Test Salt States Locally with KitchenSalt"
 external_resources:
 - '[KitchenSalt Documentation](https://kitchen.saltstack.com/docs/file/README.rdoc)'
 - '[Kitchen Documentation](https://docs.chef.io/kitchen.html)'
@@ -18,12 +18,13 @@ external_resources:
 - '[Sample Pytest tests](https://github.com/gtmanfred/wordpress-formula/tree/master/tests/integration)'
 ---
 
-KitchenSalt allows you to use Test Kitchen to test your Salt configurations locally without a Salt master. In this guide we will install KitchenSalt and use Docker to test a Salt configuration.
+KitchenSalt allows you to use Test Kitchen to test your Salt configurations locally without a Salt master or minions. In this guide you will install KitchenSalt and use Docker to test a Salt state. This guide was created using a system running Ubuntu 18.04.
 
 ## Before You Begin
 
-- You will need root access to your Linode, or a user account with `sudo` privilege. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-- Update your system.
+- You will need root access to your computer, or a user account with `sudo` privilege. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+- [Install Git](https://linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) on your local computer, if it is not already installed.
+- Update your system packages.
 
 ## Install rbenv and Ruby
 
@@ -41,7 +42,11 @@ Kitchen runs on Ruby. The following commands will install the Ruby version contr
         sudo tee /etc/profile.d/rbenv.sh <<< 'export PATH="/usr/local/rbenv/plugins/ruby-build/bin:/usr/local/rbenv/bin:$PATH"'
         sudo tee -a /etc/profile.d/rbenv.sh <<< 'source <(rbenv init -)'
 
-3.  Log out of your Linode and back in again.
+3.  Reload your system's profile so that the rbenv commands are added to your `PATH`:
+
+        source /etc/profile
+
+    You can also restart your shell session so the `PATH` changes take effect.
 
 4.  Install Ruby:
 
@@ -76,7 +81,7 @@ gem 'kitchen-sync'
 
 ## Create a Sample .sls File
 
-For testing purposes we will create a Salt state file that installs NGINX and ensures that it is running. In a text editor, create an `nginx.sls` file in your working directory and add the following lines:
+For testing purposes, create a Salt state file that installs NGINX and ensures that it is running. In a text editor, create an `nginx.sls` file in your working directory and add the following lines:
 
 {{< file "nginx.sls" yaml >}}
 nginx:
@@ -91,7 +96,7 @@ nginx:
 
 ## Configure kitchen.yml
 
-1.  Now you will write the Kitchen configuration file, beginning with the **provisioner** section. Copy the following lines into a `kitchen.yml` file in your working directory.
+1.  Now, write the Kitchen configuration file, beginning with the **provisioner** section. Copy the following lines into a `kitchen.yml` file in your working directory.
 
     {{< file "kitchen.yml" yaml >}}
 provisioner:
@@ -107,7 +112,7 @@ provisioner:
 ...
 {{< /file >}}
 
-    This section defines `salt_solo` as the provisioner, which will allow Kitchen to use Salt without a Salt master. In this section Salt is installed via the bootstrap script by setting `salt_install: bootstrap`, the Salt file root is mapped to the directory where `.kitchen.yml` is located by setting `is_file_root: true`, and Chef is disabled by setting `require_chef: false`. Instead of providing a top file for Salt states, the top file is declared inline. This section is also where Salt pillar files are added. For reference, they would also be added under the **provisioner** block:
+    This section defines `salt_solo` as the provisioner, which will allow Kitchen to use Salt without a Salt master. In this section Salt is installed via the bootstrap script by setting `salt_install: bootstrap`, the Salt file root is mapped to the directory where `.kitchen.yml` is located by setting `is_file_root: true`, and Chef is disabled by setting `require_chef: false`. Instead of providing a top file for Salt states, the top file is declared inline. This section is also where Salt pillar files are added. For reference, they are added under the **provisioner** block:
 
     {{< file "kitchen.yml" yaml >}}
 provisioner:
@@ -121,7 +126,7 @@ provisioner:
     nginx_pillar.sls: nginx.pillar
 {{< /file >}}
 
-1.  Next you will configure the **driver** section:
+1.  Next, configure the **driver** section:
 
     {{< file "kitchen.yml" yaml >}}
 ...
@@ -136,7 +141,7 @@ driver:
 ...
 {{< /file >}}
 
-    This section declares Docker as the driver, though you could also use Vagrant. Kitchen does not need to use `sudo` to build the Docker containers, so `user_sudo` is set to `false`. `privileged` is set to `true` to ensure that the containers run systemd as the exec command. Lastly, the Docker container will `forward` traffic to the host on port `80`.
+    This section declares Docker as the driver, though you could also use Vagrant. Kitchen does not need to use `sudo` to build the Docker containers, so `user_sudo` is set to `false`. `privileged` is set to `true` to ensure that the containers run systemd as the exec command. The Docker container will `forward` traffic to the host on port `80`.
 
 1.  Configure the **platforms** section:
 
@@ -166,7 +171,7 @@ suites:
 ...
 {{< /file >}}
 
-    This section is where the software suite Kitchen will test against is defined. In this context we are testing against the Oxygen release of Salt. More than one suite can be defined.
+    `suites` defines which software suite Kitchen will test against. In this context, Kitchen will test against the Oxygen release of Salt. More than one suite can be defined.
 
 1.  Lastly, the **transport** section allows us to specify the use of `kitchen-sync` for transfering files:
 
@@ -198,7 +203,7 @@ transport:
 
 Though it is beyond the scope of this article, Kitchen allows for more robust testing than just checking a Salt configuration. You can write tests in bash using Bats, in Ruby using Minitest, Rspec, Serverspec and Inspec, or if you're more familiar with Python you can use pytest.
 
-As an example, you would add the following code to your `kitchen.yaml` to verify your tests using the Inspec gem:
+As an example, you can add the following code to your `kitchen.yaml` to verify your tests using the Inspec gem:
 
 {{< file "kitchen.yml" yaml >}}
 ...
