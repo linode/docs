@@ -7,7 +7,7 @@ og_description: 'Take control of your email with your own mail server. This guid
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['mailserver/']
-modified: 2018-01-23
+modified: 2018-10-19
 modified_by:
   name: Linode
 published: 2013-06-05
@@ -195,7 +195,7 @@ Make sure your SPF records are not too strict. If you accidentally exclude a leg
 
 #### Reverse DNS
 
-[Set reverse DNS](/docs/hosting-website#setting-reverse-dns) for your mail server's domain or subdomain.
+[Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns) for your mail server's domain or subdomain.
 
 The reverse DNS for your mail server must match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner."
 
