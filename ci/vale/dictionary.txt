@@ -1159,6 +1159,7 @@ sintra
 sitename
 slackpkg
 slavedb
+sls
 smartcard
 smartcards
 smtp

@@ -173,7 +173,7 @@ suites:
 
     `suites` defines which software suite Kitchen will test against. In this context, Kitchen will test against the Oxygen release of Salt. More than one suite can be defined.
 
-1.  Lastly, the **transport** section allows us to specify the use of `kitchen-sync` for transfering files:
+1.  Lastly, the **transport** section allows us to specify the use of `kitchen-sync` for transferring files:
 
     {{< file "kitchen.yml" yaml >}}
 ...
@@ -186,7 +186,7 @@ transport:
 
         kitchen test
 
-    This command will create, converge, and then destroy the test instance. If completed sucessfully, the final terminal output will be:
+    This command will create, converge, and then destroy the test instance. If completed successfully, the final terminal output will be:
 
     {{< output >}}
 -----> Kitchen is finished. (13m32.13s)
