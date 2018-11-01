@@ -550,7 +550,7 @@ The `- creates` declaration tells Salt that running the `cmd` command module wil
 
 {{< /note >}}
 
-The `require` delcarations in each component ensure that:
+The `require` declarations in each component ensure that:
 
 -   The clone is not run until the system user and home directory have been created, and until the software package for Git has been installed.
 -   The user is not created until the group it belongs to is created.
