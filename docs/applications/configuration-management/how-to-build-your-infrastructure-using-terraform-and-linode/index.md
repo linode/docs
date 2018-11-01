@@ -666,7 +666,7 @@ modules
 &emsp;&emsp;&emsp;&emsp;└── variables.tf
 {{< /output >}}
 
-1.  Initiatize the Terraform configuration for the client, review the plan, and apply it:
+1.  Initialize the Terraform configuration for the client, review the plan, and apply it:
 
         cd ~/terraform/client1/
         terraform init

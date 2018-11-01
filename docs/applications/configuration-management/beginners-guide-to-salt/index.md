@@ -78,7 +78,7 @@ Where possible, it's better to use execution modules than to "shell out" with `c
 
 ## States, Formulas, and the Top File
 
-The previous section described how to use remote execution to perform specific actions on a minion. With remote execution, you could adminster a minion by entering a series of such commands.
+The previous section described how to use remote execution to perform specific actions on a minion. With remote execution, you could administer a minion by entering a series of such commands.
 
 Salt offers another way to configure a minion in which you declare **the state that a minion should be in**. This kind of configuration is called a Salt *state*, and the methodology is referred to generally as *configuration management*.
 
@@ -180,7 +180,7 @@ If you run the `state.apply` function with no arguments, then Salt will inspect 
     salt '*' state.apply
 
 {{< note >}}
-This action is colliquially known as a [*highstate*](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html#running-highstate).
+This action is colloquially known as a [*highstate*](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html#running-highstate).
 {{< /note >}}
 
 ### Benefits of States and Configuration Management
@@ -234,7 +234,7 @@ base:
     - centos_setup
 {{< /file >}}
 
-Grain information generally isn't very dynamic, but it can change occassionally, and Salt will refresh its grain data when it does. To view your minions' grain data:
+Grain information generally isn't very dynamic, but it can change occasionally, and Salt will refresh its grain data when it does. To view your minions' grain data:
 
     salt '*' grains.items
 

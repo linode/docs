@@ -263,7 +263,7 @@ include:
   - hugo.service
 {{< /file >}}
 
-    Using the `include` delcaration in this way simply concatenates the `install.sls` and `service.sls` files into a single combined state file.
+    Using the `include` declaration in this way simply concatenates the `install.sls` and `service.sls` files into a single combined state file.
 
     Right now, these state files only install and enable NGINX. More functionality will be enabled later in this guide.
 
@@ -413,7 +413,7 @@ Salt's GitFS fetches files from remotes periodically, and this period [can be co
 
         hugo new site example-hugo-site
 
-1.  Navigate to the new Hugo site directory and initalize a Git repository:
+1.  Navigate to the new Hugo site directory and initialize a Git repository:
 
         cd example-hugo-site
         git init
@@ -512,7 +512,7 @@ hugo_pkg:
 
 The first state component installs Git, and the second component installs Hugo. The second component's `sources` declaration specifies that the package should be downloaded from Hugo's GitHub repository (instead of from the distribution package manager).
 
-The `{{ }}` syntax that appears in `{{ pillar['hugo_deployment_data']['hugo_version'] }}` is a Jinja substition statement. `pillar['hugo_deployment_data']['hugo_version']` returns the value of the `hugo_version` key from a dictionary named `hugo_deployment_data` in Pillar. Keeping the Hugo version in Pillar lets you update Hugo without needing to update your formulas.
+The `{{ }}` syntax that appears in `{{ pillar['hugo_deployment_data']['hugo_version'] }}` is a Jinja substitution statement. `pillar['hugo_deployment_data']['hugo_version']` returns the value of the `hugo_version` key from a dictionary named `hugo_deployment_data` in Pillar. Keeping the Hugo version in Pillar lets you update Hugo without needing to update your formulas.
 
 ### Clone the Hugo Site Git Repository
 
