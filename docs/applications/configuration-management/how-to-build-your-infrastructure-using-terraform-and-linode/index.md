@@ -16,6 +16,7 @@ contributor:
   name: Damaso Sanoja
 ---
 
+
 Infrastructure as code (IaC) is a development and operations methodology that allows server deployments and software configuration to be represented as code. This methodology reduces the chance for human error, makes complex systems more manageable, eases collaboration on systems engineering projects, and offers a number of other benefits.
 
 Terraform is an IaC tool that focuses on creating, modifying, and destroying servers, instead of managing the software on those servers. Terraform offers plugins to interface with different hosting providers, and an official Linode plugin is available. This guide will show how to get started with Terraform and Linode.
