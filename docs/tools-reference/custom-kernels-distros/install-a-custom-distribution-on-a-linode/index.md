@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/']
 modified_by:
   name: Linode
-modified: 2017-06-26
+modified: 2018-10-16
 title: Install a Custom Distribution on a Linode
 ---
 
@@ -216,3 +216,6 @@ In Rescue Mode, connect via Lish and transfer your root filesystem from the `/de
     dd if=/dev/sda1 of=/dev/sdb bs=1M
 
 Once the transfer completes, reboot into your *Installer-New* profile. You now have a custom distribution that works with the Linode Manager's extra features. In order to make use of the Backup Service, you'll need to remove the raw disks that were used during the installation process.
+
+### Linode Images
+Linode offers an image feature. The feature allows users to quickly deploy custom or preconfigured distribution images to new Linodes. Read this [guide](/docs/platform/disk-images/linode-images/) to learn more.

@@ -7,7 +7,7 @@ og_description: 'This guide will show you how to install WireGuard, a fast and s
 keywords: ['wireguard','vpn']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-14
-modified: 2018-07-09
+modified: 2018-10-16
 modified_by:
   name: Linode
 title: "Set Up WireGuard VPN on Ubuntu"
@@ -82,7 +82,7 @@ Wireguard requires using Ubuntu's kernel rather than the Linode kernel. Follow t
         Setting up wireguard-tools (0.0.20171111-wg1~xenial) ...
         Processing triggers for libc-bin (2.23-0ubuntu9) ...
   {{< note >}}
-If the installation completes but this output does not appear, your kernel is most likely not configured correctly (to double check, the output of `lsmod | grep wireguard` should not be blank). Refer to the previous section to troubleshoot.
+If the installation completes but this output does not appear, your kernel is most likely not configured correctly (to double check, the output of `modprobe lsmod && lsmod | grep wireguard` should not be blank). Refer to the previous section to troubleshoot.
 {{< /note >}}
 
 ## Configure WireGuard Server

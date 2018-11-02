@@ -8,6 +8,7 @@ addons
 addr
 adduser
 adminpack
+adnanh
 adodb
 aes
 ahci0
@@ -127,6 +128,7 @@ certbot
 certcheck
 cfg
 cgi
+chainable
 changelog
 changelogs
 changeme
@@ -213,6 +215,7 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+datacenter
 datadir
 dataset
 datasets
@@ -240,6 +243,7 @@ defragment
 deprovisioning
 descolada
 descr
+deserialize
 dest
 dev
 devel
@@ -387,11 +391,13 @@ framesets
 freedns
 friendster
 frontend
+frontmatter
 fs
 fsck
 fstab
 galera
 gamemode
+gamepad
 gameplay
 gandi
 gatsby
@@ -472,6 +478,7 @@ heartbleed
 heroku
 hexo
 hiera
+highstate
 hilights
 hl2
 hl2
@@ -710,6 +717,7 @@ mapreduce
 mariadb
 maskname
 masterdb
+masterless
 mathematica
 mathjax
 maxconn
@@ -1053,6 +1061,7 @@ resolvconf
 resque
 restapi
 retpoline
+reusability
 reutilize
 richlanguage
 rimap
