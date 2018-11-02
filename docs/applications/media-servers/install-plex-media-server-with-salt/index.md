@@ -200,4 +200,4 @@ base:
 
 2.  You are now able to stream your content with Plex.
 
-    ![Plex's MacOS App](plex-salt-mac-app.png)
+    ![Plex's macOS App](plex-salt-mac-app.png)
