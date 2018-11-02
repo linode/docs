@@ -18,15 +18,17 @@ external_resources:
   - '[Plex Media Server Quick State](https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/)'
 ---
 
-Plex is a media server that allows you to stream video and audio content you own to many different types of devices. In this guide you will use a masterless Salt minion to set up a Plex server, and then you will learn how to connect to that server to stream content to your devices.
+Plex is a media server that allows you to stream video and audio content you own to many different types of devices. In this guide you will learn how to use a masterless Salt minion to set up a Plex server, attach and use a Block Storage Volume, and how to connect to your media server to stream content to your devices.
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Update your system:
+1.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
+
+2. You will need to create a Block Storage Volume and attach it to your Linode. This Volume will be used to store your media, so you should pick a size that's appropriate for your media collection, though you can resize the Volume later if you need more storage. For more on Block Storage, see our [How to Use Block Storage guide](https://linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/).
 
 3.  Plex requires an account to use their service. Visit the [Plex website](https://www.plex.tv/) to sign up for an account if you do not already have one.
 
@@ -92,34 +94,57 @@ It is best practice to create a fork of the Plex formula's git repository on Git
 base:
   '*':
     - plex
+    - disk
     - directory
 {{< /file >}}
 
-    This file tells Salt to look for state files in the plex folder of the Plex formula's git repository, and for a state file named `directory.sls`, which we will create in the next step.
+    This file tells Salt to look for state files in the plex folder of the Plex formula's git repository, and for a state files named `disk.sls` and `directory.sls`, which we will create in the next steps.
+
+1.  Create the `disk.sls` file in `/srv/salt`:
+
+    {{< file "/srv/salt/disk.sls" yaml >}}
+disk.format:
+  module.run:
+    - device: /dev/disk/by-id/scsi-0Linode_Volume_{{ pillar['volume_name'] }}
+    - fs_type: ext4
+
+/mnt/plex:
+  mount.mounted:
+    - device: /dev/disk/by-id/scsi-0Linode_Volume_{{ pillar['volume_name'] }}
+    - fstype: ext4
+    - mkmnt: True
+    - persist: True
+{{< /file >}}
+
+    This file instructs Salt to prepare your Block Storage Volume for use in Plex. It first formats your Block Storage Volume with the `ext4` filesystem type by using the `disk.format` Salt module, which can be run in a state file using `module.run`. Then `disk.sls` instructs Salt to mount your Volume at `/mnt/plex`, creating the mount target if it does not already exist with `mkmnt`, and persisting the mount to `/etc/fstab` so that the Volume is always mounted at boot.
 
 1.  Create the `directory.sls` file in `/srv/salt`:
 
     {{< file "/srv/salt/directory.sls" >}}
-/home/plex:
-  file.directory
+/mnt/plex/plex-media:
+  file.directory:
+    - require:
+      - mount: /mnt/plex
 
-/home/plex/plex-media:
-  file.directory
+/mnt/plex/plex-media/movies:
+  file.directory:
+    - require:
+      - mount: /mnt/plex
 
-/home/plex/plex-media/movies:
-  file.directory
-
-/home/plex/plex-media/television:
-  file.directory
+/mnt/plex/plex-media/television:
+  file.directory:
+    - require:
+      - mount: /mnt/plex
 {{< /file >}}
 
-    The folders that are created during this step are for organizational purposes, and will house your media. The location is up to you. If at you wish to add more directories, perhaps one for your music media, you can do so here.
+    The directories that are created during this step are for organizational purposes, and will house your media. The location of the directories is the Volume you mounted in the previous step. If at you wish to add more directories, perhaps one for your music media, you can do so here, just be sure to include the `- require` block, as this prevent Salt from trying to create the directory before the Block Storage Volume has been mounted.
 
-1.  Go to the [Plex Media Server download page](https://www.plex.tv/media-server-downloads/#plex-media-server) and note the most recent version of their Linux distribution. At the time of writing, the most recent version is `1.13.9.5456-ecd600442`. Create the `plex.sls` Pillar file in `/srv/pillar`, changing the version number as necessary:
+1.  Go to the [Plex Media Server download page](https://www.plex.tv/media-server-downloads/#plex-media-server) and note the most recent version of their Linux distribution. At the time of writing, the most recent version is `1.13.9.5456-ecd600442`. Create the `plex.sls` Pillar file in `/srv/pillar`, changing the Plex version number and your Block Storage Volume name as necessary:
 
     {{< file "/srv/pillar/plex.sls" yaml >}}
 plex:
   version: 1.13.9.5456-ecd600442
+volume_name: plex
 {{< /file >}}
 
 1.  Create the Salt Pillar top file in `/srv/pillar`:
@@ -164,7 +189,7 @@ base:
 
     ![Select Movies and click next](plex-salt-add-library1.png)
 
-3.  Click **Browse for Media Folder** and select the appropriate folder at `/home/plex/plex-media/movies`. Then click **Add**:
+3.  Click **Browse for Media Folder** and select the appropriate folder at `/mnt/plex/plex-media/movies`. Then click **Add**:
 
     ![Select the appropriate folder](plex-salt-add-library2.png)
 
@@ -198,6 +223,20 @@ base:
 
     ![Connect to your Plex Server](plex-salt-connect-to-server.png)
 
-2.  You are now able to stream your content with Plex.
+1.  You are now able to stream your content with Plex.
 
     ![Plex's macOS App](plex-salt-mac-app.png)
+
+## Transfer Media to Your Server
+
+### Transfer Files with scp
+
+You can use `scp` to transfer media to your server from your local computer. Replace your username and `123.456.7.8` with the IP address of your Linode.
+
+    scp example_video.mp4 username@123.456.7.8:/mnt/plex
+
+### Scan for New Files
+
+Once you've transferred files to your Plex media server, you may need to scan for new files to have them to show up in your Library. Click on the ellipsis next to a Library and select **Scan Library Files**.
+
+![Scan your Library for new files](plex-salt-scan-for-files.png)
