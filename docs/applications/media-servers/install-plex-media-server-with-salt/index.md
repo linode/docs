@@ -36,7 +36,7 @@ Plex is a media server that allows you to stream video and audio content you own
 
         mkdir /srv/salt && mkdir /srv/pillar
 
-1.  Install `salt-minion` via the Salt boostrap script:
+1.  Install `salt-minion` via the Salt bootstrap script:
 
         curl -L https://bootstrap.saltstack.com -o bootstrap_salt.sh
         sudo sh bootstrap_salt.sh
@@ -190,7 +190,7 @@ base:
 
 1. Visit the [Plex Apps](https://www.plex.tv/media-server-downloads/#plex-app) download page or the app store on your device to download Plex Media Player if you have not already done so.
 
-1.  Open your Plex app. The example provided here will use the Plex Media Player for MacOS.
+1.  Open your Plex app. The example provided here will use the Plex Media Player for macOS.
 
 1.  Sign in to Plex.
 
