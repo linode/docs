@@ -6,18 +6,18 @@ keywords: ["getting started", "intro", "basics", "first steps"]
 description: 'This guide will help you set up your first Linode.'
 og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-10-19
+modified: 2018-11-05
 modified_by:
   name: Linode
-published: 2009-07-19
+published: 2018-11-05
 title: Getting Started with Linode
-show_on_frontpage: true
+show_on_frontpage: false
 title_short: "Getting Started"
 type: "guide"
 weight: 10
 icon: "book"
 show_on_rss_feed: false
-cloud_manager_link: getting-started-new-manager
+hiddenguide: true
 ---
 
 ![Getting Started with Linode](getting-started.jpg "Getting Started with Linode")
@@ -38,72 +38,37 @@ If you haven't already signed up for a Linode account, start here.
 
 1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
 2.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
-3.  Select a Linode plan and data center location:
 
-    ![Available Linode plans](linode-manager-select-plan.png)
+## Log In to the Linode Manager
 
-If you're not sure which data center to select, use our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
-
-## Provision Your Linode
-
-After your Linode is created, prepare it for operation by setting up a Linux distribution.
-
-### Log In to the Linode Manager
-
-The [Linode Manager](https://manager.linode.com) is a web-based control panel that allows you to manage your Linode virtual servers and services. Log in with the username and password you created when you signed up. After you've created your first Linode, you can use the Linode Manager to:
+The [Linode Manager](https://cloud.linode.com) is a web-based control panel that allows you to manage your Linode virtual servers and services. Log in with the username and password you created when you signed up. After you've created your first Linode, you can use the Linode Manager to:
 
 * Boot and shut down your virtual server,
 * Access monitoring statistics,
 * Update your [billing and account information](/docs/platform/manager/accounts-and-passwords/),
 * Request support and perform other administrative tasks.
 
-### Deploy an Image
+## Create a Linode
 
-![How to Deploy an Image](deploy-an-image.gif "Animation shows how to use the Linode Manager to deploy a Linux image.")
+![Create a Linode by selecting the Image, the Region, the Plan, and creating a label and a password.](getting-started-add-linode.gif)
 
-Once you've created a new Linode, click the name or **Dashboard** to open the Linode Manager Dashboard.
+1.  At the top of the page, click **Create** and select *Linode*.
 
-1.  Click on **Deploy an Image** to reach the *Deploy* page.
+1.  Select the Image you would like to use. You can choose a standard Linux image from the list, or you can select a previously created image from the 'My Images' tab.
 
-2.  Select a Linux distribution from the **Image** menu. You can choose from:
+1.  Select the Region, or data center, where you would like your Linode to reside.
 
-    * [Arch Linux](http://www.archlinux.org/)
-    * [CentOS](http://www.centos.org/)
-    * [CoreOS](https://coreos.com/)
-    * [Debian](http://www.debian.org/)
-    * [Fedora](http://fedoraproject.org/)
-    * [Gentoo](http://www.gentoo.org/)
-    * [openSUSE](http://www.opensuse.org/)
-    * [Slackware](http://www.slackware.com/)
-    * [Ubuntu](http://www.ubuntu.com/)
+    If you're not sure which data center to select, use our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
 
-    If you're new to the Linux operating system, consider selecting Ubuntu 16.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well-supported by online communities, so resolving any issues you may have should be simple.
+1.  Create a label for your Linode.
 
-3.  Enter a size for the disk in the **Deployment Disk Size** field. By default all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating multiple configuration profiles. You can always create, resize, and delete disks later.
+1.  Create a strong password for your Linode. You will use this password to SSH into your Linode.
 
-4.  Select a swap disk size from the **Swap Disk** menu.
+1.  Click **Create**. You will be directed back to the *Linodes* page where you can watch the status of your Linode as it boots up.
 
-5. Enter a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories:
-
-    -   lowercase and uppercase case letters
-    -   numbers
-    -   punctuation characters
-
-6.  Click **Deploy**. The Dashboard's Host Job Queue area will report the deployment progress in real time.
-
-    {{< note >}}
+{{< note >}}
 Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install the Apache web server, configure a firewall, and set up the WordPress content management system.
 {{< /note >}}
-
-## Boot Your Linode
-
-Your Linode is now provisioned with the distro of your choice but it's turned off, as indicated in the Dashboard.
-
-![Boot the Linode](boot-new-linode.gif "Click the Boot button, then OK in the dialog box.")
-
-1.  Click **Boot** to turn on your Linode.
-
-2.  When booted, the **Server Status** will change from **Powered Off** to **Running** and there will be a successfully completed **System Boot** job in the **Host Job Queue**.
 
 ## Connect to Your Linode via SSH
 
@@ -124,22 +89,25 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
 
 Your Linode has a unique **IP address** that identifies it to other devices and users on the internet.
 
-Find your Linode's IP address from the [Linode Manager](https://manager.linode.com).
+Find your Linode's IP address from the [Linode Manager](https://cloud.linode.com).
 
-1.  Click the **Linodes** tab.
-2.  Select your Linode.
-3.  Click the **Remote Access** tab.
-4.  Copy the addresses in the Public IPs section.
+1.  Click the **Linodes** link in the left hand navigation.
 
-    [![Public IPs.](1711-remote_access_ips_small.png)](1710-remote_access_ips.png)
+1.  Find your Linode, and click on it's name.
 
-In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 address is *2600:3c03::f03c:91ff:fe70:cabd*. Unless your internet service provider supports IPv6, use the IPv4 address.
+1.  Your IPv4 and IPv6 addresses appear under the IPv4 and IPv6 sections.
+
+    [![The Networking settings tab for your Linode](getting-started-networking-small.png)](getting-started-networking.png)
+
+You can also quickly reference your Linode's IP address from the **Linodes** page:
+
+![IP address from the Linodes page](getting-started-quick-ip-address.png)
 
 ### Log In
 
 Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/ssh/ssh-connections-using-putty-on-windows/).
 
-![Copy SSH Command with IP and Log in](ssh-to-a-linode.gif "Go to the Remote Access tab and copy the SSH command, then paste it into a terminal.")
+![Copy SSH Command with IP and Log in](getting-started-ssh.gif "Go to the Networking tab and copy the SSH command, then paste it into a terminal.")
 
 1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address:
 
