@@ -53,23 +53,23 @@ For example:
 
 Below you can see that each time cURL is run, a different average download speed is reported and each takes a slightly different amount of time to complete. This is to be expected, and you should analyze multiple data sets to get a real feel for how fast a certain DC will behave for you.
 
-{{< output >}}
+```
 root@debian:~# curl -O http://speedtest.dallas.linode.com/100MB-dallas.bin
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  100M  100  100M    0     0  11.4M      0  0:00:08  0:00:08 --:--:-- 12.0M
-{{< /output >}}
+```
 
-{{< output >}}
+```
 root@debian:~# curl -O http://speedtest.dallas.linode.com/100MB-dallas.bin
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  100M  100  100M    0     0  10.8M      0  0:00:09  0:00:09 --:--:--  9.9M
-{{< /output >}}
+```
 
-{{< output >}}
+```
 root@debian:~# curl -O http://speedtest.dallas.linode.com/100MB-dallas.bin
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  100M  100  100M    0     0  9189k      0  0:00:11  0:00:11 --:--:-- 10.0M
-{{< /output >}}
+```
