@@ -1287,6 +1287,7 @@ theano
 theming
 thingsboard
 tika
+timedatectl
 timeframe
 timespan
 timewait
