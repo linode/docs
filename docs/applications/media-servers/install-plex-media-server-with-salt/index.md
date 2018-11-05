@@ -28,7 +28,7 @@ Plex is a media server that allows you to stream video and audio content you own
 
         sudo apt-get update && sudo apt-get upgrade
 
-2. You will need to create a Block Storage Volume and attach it to your Linode. This Volume will be used to store your media, so you should pick a size that's appropriate for your media collection, though you can resize the Volume later if you need more storage. For more on Block Storage, see our [How to Use Block Storage guide](https://linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/).
+2. You will need to create a Block Storage Volume and attach it to your Linode. You will format and mount the drive as part of this guide. This Volume will be used to store your media, so you should pick a size that's appropriate for your media collection, though you can resize the Volume later if you need more storage. For more on Block Storage, see our [How to Use Block Storage guide](https://linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/).
 
 3.  Plex requires an account to use their service. Visit the [Plex website](https://www.plex.tv/) to sign up for an account if you do not already have one.
 
@@ -116,7 +116,7 @@ disk.format:
     - persist: True
 {{< /file >}}
 
-    This file instructs Salt to prepare your Block Storage Volume for use in Plex. It first formats your Block Storage Volume with the `ext4` filesystem type by using the `disk.format` Salt module, which can be run in a state file using `module.run`. Then `disk.sls` instructs Salt to mount your Volume at `/mnt/plex`, creating the mount target if it does not already exist with `mkmnt`, and persisting the mount to `/etc/fstab` so that the Volume is always mounted at boot.
+    This file instructs Salt to prepare your Block Storage Volume for use with Plex. It first formats your Block Storage Volume with the `ext4` filesystem type by using the `disk.format` Salt module, which can be run in a state file using `module.run`. Then `disk.sls` instructs Salt to mount your Volume at `/mnt/plex`, creating the mount target if it does not already exist with `mkmnt`, and persisting the mount to `/etc/fstab` so that the Volume is always mounted at boot.
 
 1.  Create the `directory.sls` file in `/srv/salt`:
 
@@ -137,9 +137,9 @@ disk.format:
       - mount: /mnt/plex
 {{< /file >}}
 
-    The directories that are created during this step are for organizational purposes, and will house your media. The location of the directories is the Volume you mounted in the previous step. If at you wish to add more directories, perhaps one for your music media, you can do so here, just be sure to include the `- require` block, as this prevent Salt from trying to create the directory before the Block Storage Volume has been mounted.
+    The directories that are created during this step are for organizational purposes, and will house your media. The location of the directories is the Volume you mounted in the previous step. If at you wish to add more directories, perhaps one for your music media, you can do so here, just be sure to include the `- require` block, as this prevents Salt from trying to create the directory before the Block Storage Volume has been mounted.
 
-1.  Go to the [Plex Media Server download page](https://www.plex.tv/media-server-downloads/#plex-media-server) and note the most recent version of their Linux distribution. At the time of writing, the most recent version is `1.13.9.5456-ecd600442`. Create the `plex.sls` Pillar file in `/srv/pillar`, changing the Plex version number and your Block Storage Volume name as necessary:
+1.  Go to the [Plex Media Server download page](https://www.plex.tv/media-server-downloads/#plex-media-server) and note the most recent version of their Linux distribution. At the time of writing, the most recent version is `1.13.9.5456-ecd600442`. Create the `plex.sls` Pillar file in `/srv/pillar`, changing the Plex version number and your the name of your Block Storage Volume as necessary:
 
     {{< file "/srv/pillar/plex.sls" yaml >}}
 plex:
@@ -233,7 +233,7 @@ base:
 
 You can use `scp` to transfer media to your server from your local computer. Replace your username and `123.456.7.8` with the IP address of your Linode.
 
-    scp example_video.mp4 username@123.456.7.8:/mnt/plex
+    scp example_video.mp4 username@123.456.7.8:/mnt/plex/plex-media/movies
 
 ### Scan for New Files
 
