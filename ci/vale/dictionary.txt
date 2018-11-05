@@ -698,6 +698,7 @@ maxdepth
 mbit
 mbits
 mbox
+Mbps
 mbstrings
 mcrypt
 mcy
