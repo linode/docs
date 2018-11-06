@@ -202,7 +202,7 @@ You may want to leave password authentication enabled if you connect to your Lin
 
     If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
 
-        sudo service sshd restart
+        sudo service ssh restart
 
 ### Use Fail2Ban for SSH Login Protection
 

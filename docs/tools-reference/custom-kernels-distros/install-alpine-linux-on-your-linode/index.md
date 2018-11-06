@@ -145,8 +145,8 @@ set default="Alpine Linux"
 set timeout=0
 
 menuentry "Alpine Linux" {
-    linux /vmlinuz-vanilla root=/dev/sdb modules=sd-mod,usb-storage,ext4 console=ttyS0 quiet
-    initrd /initramfs-vanilla
+    linux /vmlinuz-hardened root=/dev/sdb modules=sd-mod,usb-storage,ext4 console=ttyS0 quiet
+    initrd /initramfs-hardened
 }
 
 {{< /file >}}
@@ -205,9 +205,9 @@ features="ata ide scsi virtio base ext4"
 
     If you'll need other services, you can also add them now. The above is intended to serve as a starting point.
 
-7.  Install the kernel:
+7.  Install the [grsecurity](https://grsecurity.net/) kernel:
 
-        apk add linux-vanilla
+        apk add linux-grsec
 
 8.  Exit the chroot jail:
 
