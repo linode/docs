@@ -12,6 +12,7 @@ modified_by:
 published: 2010-07-27
 title: How to Install and Configure WordPress
 deprecated: true
+deprecated_link: 'websites/cms/install-wordpress-ubuntu-18-04/'
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
