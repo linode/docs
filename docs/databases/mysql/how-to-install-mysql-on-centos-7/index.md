@@ -208,6 +208,6 @@ MySQL Tuner is an excellent starting point to optimize a MySQL server but it wou
 
 {{< community >}}
 * [How to install phpMyAdmin on Centos7](https://www.linode.com/community/questions/16988/completing-install-of-phpmyadmin-on-centos-7)
-* [How can I setup a LAMP/LEMP stack on my Linode](https://www.linode.com/community/questions/62/how-can-i-set-up-a-lamplemp-stack-on-my-linode)
+* [How can I setup a lamp/lemp stack on my Linode](https://www.linode.com/community/questions/62/how-can-i-set-up-a-lamplemp-stack-on-my-linode)
 * [How do I run both MySQL and MongoDB](https://www.linode.com/community/questions/425/how-do-i-run-both-mysql-and-mongodb)
 {{</ community >}}
