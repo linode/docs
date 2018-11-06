@@ -392,6 +392,7 @@ fsck
 fstab
 galera
 gamemode
+gamepad
 gameplay
 gandi
 gatsby

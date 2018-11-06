@@ -16,7 +16,7 @@ contributor:
   name: Damaso Sanoja
 ---
 
-Infrastructure as code (IaC) is a development and operations methodology that allows server deployments and software configuration to be represented as code. This methodology reduces the chance for human error, makes complex systems more manageable, eases collaboration on systems engineering projets, and offers a number of other benefits.
+Infrastructure as code (IaC) is a development and operations methodology that allows server deployments and software configuration to be represented as code. This methodology reduces the chance for human error, makes complex systems more manageable, eases collaboration on systems engineering projects, and offers a number of other benefits.
 
 Terraform is an IaC tool that focuses on creating, modifying, and destroying servers, instead of managing the software on those servers. Terraform offers plugins to interface with different hosting providers, and an official Linode plugin is available. This guide will show how to get started with Terraform and Linode.
 
@@ -548,7 +548,7 @@ Terraform uses a concept called [*modules*](https://www.terraform.io/docs/module
 
 As an example, let's say that you run a web agency and need to deploy identical pairs of webservers and database servers for different clients. To facilitate this, you can create a reusable Terraform module which describes the webserver and database server pairing.
 
-The module's description allows for variable substition of relevant attributes (passwords, keys, etc), just as in the configuration from the previous section. Once the module is configured, new servers can be instantiated for each of your clients by combining the module code with a new set of variable values.
+The module's description allows for variable substitution of relevant attributes (passwords, keys, etc), just as in the configuration from the previous section. Once the module is configured, new servers can be instantiated for each of your clients by combining the module code with a new set of variable values.
 
 ### Basic Module Structure
 
@@ -666,7 +666,7 @@ modules
 &emsp;&emsp;&emsp;&emsp;└── variables.tf
 {{< /output >}}
 
-1.  Initiatize the Terraform configuration for the client, review the plan, and apply it:
+1.  Initialize the Terraform configuration for the client, review the plan, and apply it:
 
         cd ~/terraform/client1/
         terraform init
