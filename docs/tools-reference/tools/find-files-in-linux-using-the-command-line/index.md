@@ -116,3 +116,9 @@ In the following example, `find` locates all files in the hierarchy starting at 
 
     find . -name "*.bak" -delete
 
+
+{{< community >}}
+* [Where are My Files](https://www.linode.com/community/questions/17057/where-are-my-files)
+* [How do I check my servers log files](https://www.linode.com/community/questions/295/how-do-i-check-my-servers-log-files)
+* [Can I check my files through the Linode manager](https://www.linode.com/community/questions/11220/can-i-check-my-files-through-linode-manager)
+{{< /community >}}
