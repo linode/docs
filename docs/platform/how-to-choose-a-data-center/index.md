@@ -5,7 +5,7 @@ author:
 description: 'How determine which Linode data centers is right for you.'
 keywords: ["data center", "datacenter", "dc", "speed"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-10-31
+modified: 2018-11-05
 modified_by:
   name: Linode
 published: 2018-10-31
