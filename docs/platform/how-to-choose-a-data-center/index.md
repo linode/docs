@@ -20,7 +20,7 @@ This page is a quick guide for choosing and speed testing a data center. Start b
 
 ## Network Latency
 
-The Linux [ping](https://linux.die.net/man/8/ping) tool sends IPv4 [ICMP echo requests](https://en.wikipedia.org/wiki/Ping_(networking_utility#Echo_request) to a specified IP address or hostname. Pinging a server is often used to check whether the server is up and/or responding to ICMP. Because `ping` commands also return the time it takes a request's packet to reach the server, `ping` is commonly used to measure network [latency](https://en.wikipedia.org/wiki/Network_delay).
+The Linux [ping](https://linux.die.net/man/8/ping) tool sends IPv4 [ICMP echo requests](https://en.wikipedia.org/wiki/Ping_(networking_utility)#Echo_request) to a specified IP address or hostname. Pinging a server is often used to check whether the server is up and/or responding to ICMP. Because `ping` commands also return the time it takes a request's packet to reach the server, `ping` is commonly used to measure network [latency](https://en.wikipedia.org/wiki/Network_delay).
 
 Ping a data center to test your connection's latency to that DC:
 
