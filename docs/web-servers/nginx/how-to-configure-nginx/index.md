@@ -280,3 +280,10 @@ Let's analyze what happens during a few requests:
 **Request:** `http://example.com/username/roster.pl`
 
 **Returns:** NGINX will use the FastCGI handler to execute the file located at `/srv/www/example.com/public_html/username/roster.pl` and return the result.
+
+
+{{< community >}}
+* [Nginx troubleshooting](https://www.linode.com/community/questions/466/nginx-troubleshooting)
+* [Nginx font rules](https://www.linode.com/community/questions/16980/nginx-font-rules)
+* [How to set up SSL with NGINX](https://www.linode.com/community/questions/408/set-up-ssl-on-my-nginx-linode)
+{{< /community >}}
