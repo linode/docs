@@ -283,7 +283,7 @@ Let's analyze what happens during a few requests:
 
 
 {{< community >}}
-* [Nginx Troubleshooting](https://www.linode.com/community/questions/466/nginx-troubleshooting)
-* [Nginx Font Rules](https://www.linode.com/community/questions/16980/nginx-font-rules)
+* [Nginx troubleshooting](https://www.linode.com/community/questions/466/nginx-troubleshooting)
+* [Nginx font rules](https://www.linode.com/community/questions/16980/nginx-font-rules)
 * [How to set up SSL with NGINX](https://www.linode.com/community/questions/408/set-up-ssl-on-my-nginx-linode)
 {{< /community >}}
