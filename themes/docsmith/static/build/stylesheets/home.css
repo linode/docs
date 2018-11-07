@@ -20150,6 +20150,16 @@ li.list-group-item {
 }
 .search-form {
   position: relative;
+  width: 100%;
+}
+.search-box {
+  padding-left: 35px;
+}
+.search-icon {
+  position: absolute;
+  top: .85em;
+  left: .85em;
+  z-index: 10;
 }
 .hits {
   position: absolute;

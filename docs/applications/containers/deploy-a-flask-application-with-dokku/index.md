@@ -29,6 +29,10 @@ This guide demonstrates how to:
 
 ### On Your Local Computer
 
+{{< note >}}
+Dokku v0.12.5 is compatible with Ubuntu 16.04 x64, Ubuntu 14.04 x64, and Debian 8.2 x64. CentOS 7 x64 is only supported experimentally, and as such some steps like configuring SSH keys and virtual hosts must be done manually using the dokku command line interface. See [the official documentation](http://dokku.viewdocs.io/dokku~v0.12.5/getting-started/installation/) for more information.
+{{< /note >}}
+
 A [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/) is assumed to be available. Typically this is located in `~/home/username/.ssh/id_rsa.pub`.
 
 Install Git if needed:
