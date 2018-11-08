@@ -12,7 +12,7 @@ modified_by:
 title: "How to Update your Linux Kernel"
 contributor:
   name: Linode
-promo: no
+promo_default: false
 ---
 
 ## Which Kernel Am I Running?
