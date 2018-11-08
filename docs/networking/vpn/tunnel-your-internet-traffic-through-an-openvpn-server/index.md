@@ -122,6 +122,18 @@ The steps below will overwrite any custom IPv4 firewall rules you may have.
 
 COMMIT
 
+*nat
+
+# Allow traffic to leave the VPN
+-A POSTROUTING -o eth0 -s 10.8.0.0/24 -j MASQUERADE
+
+-A PREROUTING -j ACCEPT
+-A INPUT -j ACCEPT
+-A OUTPUT -j ACCEPT
+-A POSTROUTING -j ACCEPT
+
+COMMIT
+
 {{< /file >}}
 
 
@@ -129,23 +141,19 @@ COMMIT
 
         iptables-restore < /etc/iptables/rules.v4
 
-4.  Apply the routing rule so that traffic can leave the VPN. This must be done after `iptables-restore` because that directive doesn't  take a table option:
-
-        iptables -t nat -A POSTROUTING -s 10.89.0.0/24 -o eth0 -j MASQUERADE
-
-5.  Save the currently loaded rules with `iptables-persistent`:
+4.  Save the currently loaded rules with `iptables-persistent`:
 
         dpkg-reconfigure iptables-persistent
 
-6.  The kernel must then be told it can forward incoming IPv4 traffic:
+5.  The kernel must then be told it can forward incoming IPv4 traffic:
 
         echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.d/99-sysctl.conf
 
-7.  Activate the sysctl change:
+6.  Activate the sysctl change:
 
         sysctl -p
 
-8.  Restart OpenVPN and exit the `root` user account:
+7.  Restart OpenVPN and exit the `root` user account:
 
         systemctl restart openvpn*
         exit
