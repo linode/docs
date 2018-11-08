@@ -6,14 +6,16 @@ description: 'Determine which kernel version your Linode is running and update i
 keywords: ['kernel','upgrade']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-16
-modified: 2018-08-16
+modified: 2018-11-08
 modified_by:
   name: Linode
-title: "How to Update your Linux Kernel"
+title: "How to Update your Existing Linux Kernel"
 contributor:
   name: Linode
 promo: no
 ---
+
+This guide is about updating your existing Linux kernel to a newer version. For information on how to change your Linode's kernel, check out the [How to Change your Linode's Kernel guide](https://www.linode.com/docs/platform/how-to-change-your-linodes-kernel/).
 
 ## Which Kernel Am I Running?
 
@@ -89,7 +91,7 @@ Update your kernel to the latest available version using the distribution’s pa
 **Ubuntu**
 
     sudo apt-get update
-    sudo apt-get upgrade
+    sudo apt-get upgrade linux-image-generic
 
 Reboot the Linode. When it comes back up, use the command `uname -r` to verify which version you are running. It's recommend that you compare your new kernel version against the patched version given in your distribution’s security bulletin: [CentOS](https://access.redhat.com/errata/#/?q=rhsa-2018&p=1&sort=portal_publication_date%20desc&rows=10); [Debian](https://security-tracker.debian.org/tracker/); [Ubuntu](https://people.canonical.com/~ubuntu-security/cve/).
 

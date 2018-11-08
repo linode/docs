@@ -6,12 +6,16 @@ description: 'Use the Linode Manager to change which kernel your Linode boots.'
 keywords: ["kernel", "grub"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: ['run-a-distribution-supplied-kernel-with-kvm/','tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/']
-modified: 2018-08-09
+modified: 2018-11-08
 modified_by:
   name: Linode
 published: 2015-06-29
 title: How to Change your Linode's Kernel
 ---
+
+This guide is about changing your Linode's kernel. For information on updating your Linode's existing kernel, check out the [How to Update your Existing Linux Kernel guide](https://www.linode.com/docs/platform/update-kernel/).
+
+## Which Kernel Am I Running?
 
 Your Linode is capable of running one of three kinds of kernels:
 
@@ -124,7 +128,7 @@ All configuration files should be edited with elevated privileges. Remember to i
 
     **Ubuntu**
 
-        apt install linux-image grub2
+        apt install linux-image-generic grub2
 
 When the installation finishes, you'll see the kernel and other components in the `/boot` directory. For example:
 
