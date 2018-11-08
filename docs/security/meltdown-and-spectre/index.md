@@ -11,7 +11,7 @@ modified: 2018-04-03
 modified_by:
   name: Linode
 title: 'What You Need to Do to Mitigate Meltdown and Spectre'
-promo: false
+promo_default: false
 external_resources:
   - '[MeltdownAttack.com](https://meltdownattack.com/)'
   - '[How to Install Software Updates](/docs/getting-started/#install-software-updates)'
