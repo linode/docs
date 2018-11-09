@@ -12,4 +12,4 @@ published: 2016-11-21
 title: 'Test guide'
 ---
 
-Test text update 2
+Test text update 3
