@@ -13,7 +13,7 @@ published: 2015-06-29
 title: How to Change your Linode's Kernel
 ---
 
-This guide is about changing your Linode's kernel. For information on updating your Linode's existing kernel, check out the [How to Update your Existing Linux Kernel guide](https://www.linode.com/docs/platform/update-kernel/).
+This guide is about changing your Linode's kernel. For information on updating your Linode's existing kernel, check out the [How to Update your Existing Linux Kernel guide](/docs/platform/update-kernel/).
 
 ## Which Kernel Am I Running?
 
@@ -43,21 +43,21 @@ The different kinds of kernels you can use offer different benefits:
 
 1.  Shut down your Linode from the Linode Manager.
 
-1.  Click **Edit** to view a distribution's configuration profile options:
+2.  Click **Edit** to view a distribution's configuration profile options:
 
     ![Edit the configuration profile](edit_config_profile_small.png "Edit the configuration profile")
 
-1.  Observe the **Kernel** dropdown menu under **Boot Settings**. Depending on your distribution, this will be set to either `GRUB 2` or `Latest 64 bit (<kernel version>-x86_64-linode<linode kernel release number>)`.
+3.  Observe the **Kernel** dropdown menu under **Boot Settings**. Depending on your distribution, this will be set to either `GRUB 2` or `Latest 64 bit (<kernel version>-x86_64-linode<linode kernel release number>)`.
 
     ![Selecting the GRUB 2 kernel option](boot-settings-kernel-grub2.png "Selecting the GRUB 2 kernel option")
 
-1.  To use Linode's kernel, select `Latest 64 bit (<kernel version>-x86_64-linode)` from the Kernel menu. To change to the upstream kernel, or to use a kernel you've compiled from source, select `GRUB 2`. For more information on custom compiled kernels, review our guides for [Debian, Ubuntu,](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/) and [CentOS](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos-7/).
+4.  To use Linode's kernel, select `Latest 64 bit (<kernel version>-x86_64-linode)` from the Kernel menu. To change to the upstream kernel, or to use a kernel you've compiled from source, select `GRUB 2`. For more information on custom compiled kernels, review our guides for [Debian, Ubuntu,](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/) and [CentOS](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos-7/).
 
     ![Our latest 64 bit kernel](boot-settings-kernel-latest.png "Our latest 64 bit kernel")
 
-1.  Click **Save Changes** at the bottom of the page and reboot into the new kernel.
+5.  Click **Save Changes** at the bottom of the page and reboot into the new kernel.
 
-1.  Once booted, you can verify the kernel information with `uname`:
+6.  Once booted, you can verify the kernel information with `uname`:
 
         [root@archlinux ~]# uname -r
         4.15.14-1-ARCH

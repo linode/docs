@@ -15,7 +15,7 @@ contributor:
 promo: no
 ---
 
-This guide is about updating your existing Linux kernel to a newer version. For information on how to change your Linode's kernel, check out the [How to Change your Linode's Kernel guide](https://www.linode.com/docs/platform/how-to-change-your-linodes-kernel/).
+This guide is about updating your existing Linux kernel to a newer version. For information on how to change your Linode's kernel, check out the [How to Change your Linode's Kernel guide](/docs/platform/how-to-change-your-linodes-kernel/).
 
 ## Which Kernel Am I Running?
 
@@ -47,15 +47,15 @@ If your output contains `generic` in the version tag, then you are probably runn
 
 1.  Select the Linode from the *Dashboard*
 
-1.  Click the **Settings** tab and expand the **Advanced Configurations** section.
+2.  Click the **Settings** tab and expand the **Advanced Configurations** section.
 
-1.  Click **Add Linode Configuration**, add a label, and scroll to the *Boot Settings* section.
+3.  Click **Add Linode Configuration**, add a label, and scroll to the *Boot Settings* section.
 
-1.  Select **Latest 64 bit (4.17.15-x86_64-linode115)** from the *Kernel* dropdown.
+4.  Select **Latest 64 bit (4.17.15-x86_64-linode115)** from the *Kernel* dropdown.
 
-1.  Configure Block Device Assignments as needed and click **Submit** to save the changes.
+5.  Configure Block Device Assignments as needed and click **Submit** to save the changes.
 
-1.  Reboot the Linode to boot into the new kernel. -->
+6.  Reboot the Linode to boot into the new kernel. -->
 
 ## Update your Linode Kernel
 
