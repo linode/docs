@@ -12,11 +12,11 @@ published: 2018-10-31
 title: How to Choose a Data Center
 
 ---
-Deploying your Linode to a geographically advantageous data center can make a big difference in connection speeds to your server. Ideally, your site or application should be served from multiple points around the world, with requests sent to the appropriate region based on client geolocation. On a smaller scale, deploying a Linode in a data center nearest you will make it easier to work with than one in a different region or continent.
+Deploying your Linode to a geographically advantageous data center can make a big difference in connection speeds to your server. Ideally, your site or application should be served from multiple points around the world, with requests sent to the appropriate region based on client geolocation. On a smaller scale, deploying a Linode in the data center nearest to you will make it easier to work with than one in a different region or continent.
 
-Bear in mind that many things can affect network congestion, connection speeds, and throughput, so you should never interpret one reading as a sole data point. Always perform tests in multiples of three or five for an average, and on both weekend and weekdays for the most accurate information.
+There are many things can affect network congestion, connection speeds, and throughput, so you should never interpret one reading as the sole data point. Always perform tests in multiples of three or five for an average, and on both weekend and weekdays for the most accurate information.
 
-This page is a quick guide for choosing and speed testing a data center. Start by creating a Linode in a data center in or near your region, or several Linodes in multiple regions if you're close to more than one DC. From there, use Linode's [Facilities Speedtest](https://www.linode.com/speedtest) page for test domains to ping and files to download.
+This page is a quick guide for choosing and speed testing a data center (DC). Start by creating a Linode in the data center in or near your region, or several Linodes in multiple regions if you're close to more than one DC. From there, use Linode's [Facilities Speedtest](https://www.linode.com/speedtest) page for test domains to ping and files to download.
 
 ## Network Latency
 
@@ -31,7 +31,7 @@ Use [ping6](https://linux.die.net/man/8/ping6) for IPv6:
     ping6 -c 5 speedtest.dallas.linode.com
 
 {{< note >}}
-Many internet connections still don't support IPv6 so don't be alarmed if `ping6` commands don't work *to* your Linode from your local machine. They will, however, work *from* your Linode to other IPv6-capable network connections (ex. between two Linodes in different data centers).
+Many internet connections still don't support IPv6 so don't be alarmed if `ping6` commands don't work *to* your Linode from your local machine. They will, work *from* your Linode to other IPv6-capable network connections (ex. between two Linodes in different data centers).
 {{< /note >}}
 
 ## Download Speed
@@ -51,7 +51,7 @@ For example:
     curl -O http://speedtest.dallas.linode.com/100MB-dallas.bin
     wget http://speedtest.dallas.linode.com/100MB-dallas.bin
 
-Below you can see that each time cURL is run, a different average download speed is reported and each takes a slightly different amount of time to complete. This is to be expected, and you should analyze multiple data sets to get a real feel for how fast a certain DC will behave for you.
+Below you can see that each time `cURL` is run, a different average download speed is reported and each takes a slightly different amount of time to complete. This is to be expected, and you should analyze multiple data sets to get a real feel for how fast a certain DC will behave for you.
 
 ```
 root@debian:~# curl -O http://speedtest.dallas.linode.com/100MB-dallas.bin
