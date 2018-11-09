@@ -16,7 +16,7 @@ title: Manage OpenVPN with OpenVPN Access Server
 
 ## What is OpenVPN?
 
-OpenVPN is a popular software package which creates encrypted tunnels for secure data transfer.  In this guide, you will learn to configure your Linode as a VPN gateway using the OpenVPN Access Server software, and connect your Windows, macOS, or Linux computer to it.
+OpenVPN is a popular software package which creates encrypted tunnels for secure data transfer. In this guide, you will learn to configure your Linode as a VPN gateway using the OpenVPN Access Server software, and connect your Windows, macOS, or Linux computer to it.
 
 OpenVPN Access Server requires a paid license to use more than two connected devices.
 
@@ -44,7 +44,7 @@ OpenVPN Access Server requires a paid license to use more than two connected dev
 
         curl -O http://swupdate.openvpn.org/as/openvpn-as-2.5.2-Debian9.amd_64.deb
 
-1.  Print the the binary installer's SHA256 checksum:
+1.  Print the binary installer's SHA256 checksum:
 
         sha256sum openvpn-as-*
 
@@ -62,7 +62,7 @@ bf98f0cacacb2e3e914e1bc559e780e5f5a689bed2008b91ea4e5698955fe58f  openvpn-as-2.5
 
         sudo dpkg -i openvpn-as-*.deb
 
-1.  Once the installation completes, the Admin and Client UI access information will be displayed as shown below. The Admin UI is where you configure OpenVPN Access Server, while the Client UI is used to download credential packages to connect client devices.
+1.  Once the installation completes, the Admin and Client UI access information will be displayed as shown below. The Admin UI is where you configure the OpenVPN access server, while the Client UI is used to download credential packages to connect client devices.
 
     {{< output >}}
 The Access Server has been successfully installed in /usr/local/openvpn_as
@@ -201,7 +201,7 @@ If you are connecting a headless machine to your OpenVPN server, such as another
 
 1.  Enable the VPN connection and go to [https://dnsleaktest.com/](https://dnsleaktest.com/) in a web browser from your VPN client. The IP address shown should be that of your Linode's public IPv4 address.
 
-1.  Choose **Extended test**. The resulting IP addresses should be for the DNS resolvers you chose for your client device (if applicable).
+1.  Choose **Extended test**. The resulting IP addresses should be for the DNS resolvers you chose for your client device.
 
 1.  To ensure that no IPv6 traffic is coming from the VPN server, run the test at [http://test-ipv6.com/](http://test-ipv6.com/). Your public IP address should again be that of your Linode VPN, and the results should show that no IPv6 address was detected.
 
