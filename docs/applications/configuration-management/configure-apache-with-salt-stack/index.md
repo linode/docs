@@ -6,7 +6,7 @@ description: 'Configure Apache on Ubuntu, Debian and CentOS with Salt Stack.'
 keywords: ['salt','stack','saltstack','apache','httpd','ubuntu','debian','centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-19
-modified: 2018-10-19
+modified: 2018-11-08
 modified_by:
   name: Linode
 title: "Configure Apache with Salt Stack"
@@ -50,7 +50,7 @@ base:
     - apache-centos
 {{< /file >}}
 
-    This top file uses [compound matching](https://docs.saltstack.com/en/latest/topics/targeting/compound.html) to target your minions by operating system using Salt Grains. This will allow Salt to choose the appropriate Apache configuration depending on the Linux distribution. These matchers could be extended to be even more specific. For instance, if you wanted to only target minions with the ID of `web-server` that are running on Ubuntu, you might type `web* and G@os:Ubuntu`.
+    This top file uses [compound matching](https://docs.saltstack.com/en/latest/topics/targeting/compound.html) to target your minions by operating system using Salt Grains. This will allow Salt to choose the appropriate Apache configuration depending on the Linux distribution. These matchers could be extended to be even more specific. For instance, if you wanted to only target minions with the ID of `web-server` that are running on Ubuntu, you can type `web* and G@os:Ubuntu`.
 
 ### Pillar Files
 
