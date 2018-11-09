@@ -17,7 +17,7 @@ external_resources:
 - '[Using Grains in SLS Modules](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt3.html#using-grains-in-sls-modules)'
 ---
 
-Salt is a powerful configuration management tool. In this guide you will create Salt state files that are capable of installing and configuring Apache on Ubunutu 18.04, Debian 9, or CentOS 7.
+Salt is a powerful configuration management tool. In this guide you will create Salt state files that are capable of installing and configuring Apache on Ubuntu 18.04, Debian 9, or CentOS 7.
 
 ## Before You Begin
 
