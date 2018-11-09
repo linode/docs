@@ -8,7 +8,7 @@ keywords: ["custom distro", "NixOS", "advanced Linux", "kvm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Andrew Miller
-modified: 2018-04-04
+modified: 2018-10-29
 title: Install and Configure NixOS on a Linode
 external_resources:
  - '[NixOS](https://nixos.org/nixos/manual/)'
@@ -64,7 +64,7 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/download.html) and copy the URL from the **Minimal installation CD, 64-bit Intel/AMD** link.
 
-[Boot your Linode into rescue mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with the installer disk mounted as `/dev/sda`. Once in rescue mode, run the following command, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html). This example installs NixOS 18.03:
+[Boot your Linode into rescue mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with the installer disk mounted as `/dev/sda`. Once in rescue mode, run the following command, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html). This example installs NixOS 18.09:
 
     # Bind the URL you grabbed from the download page to a bash variable
     iso=<URL for nixos download>
