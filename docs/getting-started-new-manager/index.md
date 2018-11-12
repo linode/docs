@@ -258,7 +258,7 @@ All new Linodes will be set to UTC time by default. However, you may prefer your
 
 ### Debian / Ubuntu
 
-1.  Though newer versions of Debian and Ubuntu use sytemd with timedatectl, the recommended method to change timezones for these distributions is to use `tzdata`. It can be called using `dpkg`:
+1.  Though newer versions of Debian and Ubuntu use systemd with `timedatectl`, the recommended method to change timezones for these distributions is to use `tzdata`. It can be called using `dpkg`:
 
         dpkg-reconfigure tzdata
 
