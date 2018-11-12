@@ -27,11 +27,11 @@ SaltStack's GitHub page contains Salt formulas for commonly needed configuration
 
 1. If you are new to SaltStack, read [A Beginner's Guide to Salt](/docs/applications/configuration-management/beginners-guide-to-salt/) to familiarize yourself with basic Salt concepts.
 
-1. Download git on your local computer by following our [How to Install Git on Linux, Mac or Windows](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) guide.
+1. Download Git on your local computer by following our [How to Install Git on Linux, Mac or Windows](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) guide.
 
 1. Familiarize yourself with Git using our [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide.
 
-1.  Make sure you have [configured git](/docs/development/version-control/how-to-configure-git/) on your local computer.
+1.  Make sure you have [configured git](/docs/development/version-control/how-to-configure-git/#configure-git) on your local computer.
 
 1. Use the [Getting Started with Salt - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide to set up a Salt Master and two Salt minions; one running Ubuntu 18.04 and the second running CentOS 7.
 
@@ -86,7 +86,7 @@ timezone_symlink:
 
     Salt will interpret the name of this file as `timezone`, since any `init.sls` file in a subdirectory is referred to by the path of the directory.
 
-    This state file contains three state declarations, `timezone_setting`, `timezone_packages` and `timezeon_symlink`. Below is a description of the configuration each declaration will accomplish on a Salt minion.
+    This state file contains three state declarations, `timezone_setting`, `timezone_packages` and `timezone_symlink`. Below is a description of the configuration each declaration will accomplish on a Salt minion.
 
   - `timezone.system`: This state uses Salt's [timezone state module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.timezone.html) to manage the timezone for the minion. The values for `name` and `utc` are derived from the corresponding Salt master's Pillar file. This is accomplished in the two variable assignment at the top of the file: `{%- set timezone = salt['pillar.get']('timezone:name', 'Europe/Berlin') %}` and `{%- set utc = salt['pillar.get']('timezone:utc', True) %}`.
 
@@ -253,7 +253,7 @@ Changes not staged for commit:
   &nbsp&nbsp(use "git add &ltfile&gt..." to update what will be committed)
   &nbsp&nbsp(use "git checkout -- &ltfile&gt..." to discard changes in working directory)
 
-	&nbsp&nbspmodified:   timezone/init.sls
+  &nbsp&nbspmodified:   timezone/init.sls
 
 no changes added to commit (use "git add" and/or "git commit -a")
     {{</ output >}}
@@ -283,7 +283,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ## Install a Salt Formula
 
-There are two ways to use a Salt Formula, you can add the formula as a GitFS Remote, which will allow you to directly serve the files hosted on your GitHub account or you can add the formula directly to the Salt master using Git's clone mechanism. This section will cover both ways to use Salt formulas.
+There are two ways to use a Salt Formula: you can add the formula as a GitFS Remote, which will allow you to directly serve the files hosted on your GitHub account, or you can add the formula directly to the Salt master using Git's clone mechanism. This section will cover both ways to use Salt formulas.
 
 ### Manually Add a Salt Formula to your Master
 
@@ -355,7 +355,11 @@ GitFs allows Salt to serve files directly from remote git repositories. This is 
 
 To include your timezone formula in your Salt state tree, you must add it to your top file.
 
-1. Add the `timezone` state declared in the `timezone-formula` to your top file:
+1.  Create the `/srv/salt` directory if it does not already exist:
+
+        mkdir /srv/salt
+
+2. Add the `timezone` state declared in the `timezone-formula` to your top file:
 
     {{< file "/srv/salt/top.sls" >}}
 base:
@@ -400,7 +404,7 @@ timezone:
     pkgname: timezone
     {{</ file >}}
 
-1. Add the timezone-formula's directory to the Salt master's `file_roots` configuration.:
+1. If you cloned the timezone-formula to your master instead of adding the formula as a GitFS remote, add the timezone-formula's directory to the Salt master's `file_roots` configuration.:
 
     {{< file "/etc/salt/master">}}
 file_roots:
@@ -412,9 +416,9 @@ file_roots:
 1. Add the Pillar to the Pillar's top file:
 
     {{< file "/srv/pillar/top.sls" >}}
-  base:
-    '*':
-      - timezone
+base:
+  '*':
+    - timezone
     {{</ file >}}
 
 1. Configure the location of the Pillar file:
