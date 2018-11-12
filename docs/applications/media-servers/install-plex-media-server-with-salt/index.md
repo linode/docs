@@ -18,11 +18,13 @@ external_resources:
   - '[Plex Media Server Quick State](https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/)'
 ---
 
-Plex is a media server that allows you to stream video and audio content you own to many different types of devices. In this guide you will learn how to use a masterless Salt minion to set up a Plex server, attach and use a Block Storage Volume, and how to connect to your media server to stream content to your devices.
+Plex is a media server that allows you to stream video and audio content that you own to many different types of devices. In this guide you will learn how to use a masterless Salt minion to set up a Plex server, attach and use a Block Storage Volume, and how to connect to your media server to stream content to your devices.
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+
+1. Follow the steps in the [How to Secure Your Server](/docs/security/securing-your-server/) guide.
 
 1.  Update your system:
 
@@ -31,6 +33,10 @@ Plex is a media server that allows you to stream video and audio content you own
 2. You will need to create a Block Storage Volume and attach it to your Linode. You will format and mount the drive as part of this guide. This Volume will be used to store your media, so you should pick a size that's appropriate for your media collection, though you can resize the Volume later if you need more storage. For more on Block Storage, see our [How to Use Block Storage guide](https://linode.com/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/).
 
 3.  Plex requires an account to use their service. Visit the [Plex website](https://www.plex.tv/) to sign up for an account if you do not already have one.
+
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< /note >}}
 
 ## Prepare the Salt Minion
 
@@ -43,7 +49,7 @@ Plex is a media server that allows you to stream video and audio content you own
         curl -L https://bootstrap.saltstack.com -o bootstrap_salt.sh
         sudo sh bootstrap_salt.sh
 
-1.  The Salt minion will use a Salt formula to set up Plex. In order to use this Salt formula you will need GitPython installed. Install GitPython:
+1. The Salt minion will use the official [Plex Salt Formula](https://github.com/saltstack-formulas/plex-formula), which is hosted on the SaltStack GitHub repository. In order to use a Salt formula hosted on an external repository, you will need GitPython installed. Install GitPython:
 
         sudo apt-get install python-git
 
@@ -78,10 +84,10 @@ gitfs_remotes:
 gitfs_provider: gitpython
 {{< /file >}}
 
-    The `fileserver_backend` block instructs the Salt minion to look for Salt configuration files in two places. First, it tells Salt to look for Salt state files in our minion's document `roots` (`/srv/salt`). Secondly, it instructs Salt to use the Git Fileserver (gitfs) to look for Salt configuration files in any git remote repositories that have been named in the `gitfs_remotes` section. The address for the Plex Salt formula's git repository is included in the `gitfs_remotes` section.
+    The `fileserver_backend` block instructs the Salt minion to look for Salt configuration files in two places. First, it tells Salt to look for Salt state files in our minion's `roots` backend (`/srv/salt`). Secondly, it instructs Salt to use the Git Fileserver (gitfs) to look for Salt configuration files in any git remote repositories that have been named in the `gitfs_remotes` section. The address for the Plex Salt formula's git repository is included in the `gitfs_remotes` section.
 
     {{< note >}}
-It is best practice to create a fork of the Plex formula's git repository on GitHub and put your fork's git repository address in the `gitfs_remotes` section. This will ensure that any further changes to the upstream Plex formula that might break your current configuration can be reviewed and handled accordingly, before applying them.
+It is best practice to create a fork of the Plex formula's git repository on GitHub and to add your fork's git repository address in the `gitfs_remotes` section. This will ensure that any further changes to the upstream Plex formula that might break your current configuration can be reviewed and handled accordingly, before applying them.
 {{< /note >}}
 
     Lastly, GitPython is specified as the `gitfs_provider`.
@@ -98,7 +104,7 @@ base:
     - directory
 {{< /file >}}
 
-    This file tells Salt to look for state files in the plex folder of the Plex formula's git repository, and for a state files named `disk.sls` and `directory.sls`, which we will create in the next steps.
+    This file tells Salt to look for state files in the plex folder of the Plex formula's git repository, and for a state files named `disk.sls` and `directory.sls`, which you will create in the next steps.
 
 1.  Create the `disk.sls` file in `/srv/salt`:
 
@@ -125,21 +131,27 @@ disk.format:
   file.directory:
     - require:
       - mount: /mnt/plex
+    - user: username
+    - group: plex
 
 /mnt/plex/plex-media/movies:
   file.directory:
     - require:
       - mount: /mnt/plex
+    - user: username
+    - group: plex
 
 /mnt/plex/plex-media/television:
   file.directory:
     - require:
       - mount: /mnt/plex
+    - user: username
+    - group: plex
 {{< /file >}}
 
-    The directories that are created during this step are for organizational purposes, and will house your media. The location of the directories is the Volume you mounted in the previous step. If at you wish to add more directories, perhaps one for your music media, you can do so here, just be sure to include the `- require` block, as this prevents Salt from trying to create the directory before the Block Storage Volume has been mounted.
+    The directories that are created during this step are for organizational purposes, and will house your media. Make sur you replace `username` with the name of the limited user account you created when following the [How to Secure Your Server](/docs/security/securing-your-server/) guide. The location of the directories is the Volume you mounted in the previous step. If you wish to add more directories, perhaps one for your music media, you can do so here, just be sure to include the `- require` block, as this prevents Salt from trying to create the directory before the Block Storage Volume has been mounted.
 
-1.  Go to the [Plex Media Server download page](https://www.plex.tv/media-server-downloads/#plex-media-server) and note the most recent version of their Linux distribution. At the time of writing, the most recent version is `1.13.9.5456-ecd600442`. Create the `plex.sls` Pillar file in `/srv/pillar`, changing the Plex version number and your the name of your Block Storage Volume as necessary:
+1.  Go to the [Plex Media Server download page](https://www.plex.tv/media-server-downloads/#plex-media-server) and note the most recent version of their Linux distribution. At the time of writing, the most recent version is `1.13.9.5456-ecd600442`. Create the `plex.sls` Pillar file in `/srv/pillar` and change the Plex version number and the name of your Block Storage Volume as necessary:
 
     {{< file "/srv/pillar/plex.sls" yaml >}}
 plex:
@@ -167,9 +179,9 @@ base:
 
 ### Initial Configuration
 
-1.  To connect to Plex's web UI you'll need to create an SSH tunnel. Run the following command, replacing `<your_ip_address>` with your Plex server's IP address.:
+1.  To connect to Plex's web UI you'll need to create an SSH tunnel. On your local computer, run the following command, replacing `<your_ip_address>` with your Plex server's IP address.:
 
-        ssh root@<your_ip_address> -L 8888:localhost:32400
+        ssh username@<your_ip_address> -L 8888:localhost:32400
 
 2.  In a browser, navigate to `http://localhost:8888/web/`.
 
@@ -195,7 +207,9 @@ base:
 
 4.  Repeat the process to add your 'Television' folder.
 
-5.  When you are done adding libraries, click **Next**.
+5.  When you are done adding your libraries, click **Add Library**.
+
+5.  To continue the configuration process, click **Next**.
 
 6.  Click on **Get Plex Apps** to download the appropriate Plex client for your device. Then click **Done**.
 
@@ -221,7 +235,7 @@ base:
 
 1.  On the left there's a dropdown menu where you can select your server by the name you chose. Select your server.
 
-    ![Connect to your Plex Server](plex-salt-connect-to-server.png)
+    ![Connect to your Plex Server](plex-salt-select-remote.png)
 
 1.  You are now able to stream your content with Plex.
 
@@ -237,6 +251,6 @@ You can use `scp` to transfer media to your server from your local computer. Rep
 
 ### Scan for New Files
 
-Once you've transferred files to your Plex media server, you may need to scan for new files to have them to show up in your Library. Click on the ellipsis next to a Library and select **Scan Library Files**.
+Once you've transferred files to your Plex media server, you may need to scan for new files to have them show up in your Library. Click on the ellipsis next to a Library and select **Scan Library Files**.
 
 ![Scan your Library for new files](plex-salt-scan-for-files.png)
