@@ -412,11 +412,13 @@ gfxmode
 gibibytes
 girocco
 gist
+gitfs
 github
 gitignore
 gitlab
 gitolite
 gitosis
+gitpython
 gitweb
 glibc
 glish
@@ -1228,6 +1230,7 @@ suid
 sukharev
 supervisord
 surbma
+suse
 svn
 symantec
 symfony
