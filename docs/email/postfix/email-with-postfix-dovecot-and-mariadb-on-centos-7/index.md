@@ -240,7 +240,7 @@ In the previous section, data was added to the MySQL `mailserver` database. The 
 
         SELECT * FROM mailserver.virtual_aliases;
 
-1.  Verify that the outout displays the aliases you added to the `virtual_aliases` table:
+1.  Verify that the output displays the aliases you added to the `virtual_aliases` table:
 
     {{< output >}}
 +----+-----------+-------------------+--------------------+
@@ -383,7 +383,7 @@ query = SELECT email FROM virtual_users WHERE email='%s'
 
         sudo postmap -q email1@example.com mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
 
-      Verify that Postifx can retrieve the first email address from the MySQL table `virtual_users` using the database values entered in the `mysql-virtual-mailbox-maps.cf` file. Replace `email1@example.com` with the first email address added to the table. You should receive `1` as the output:
+      Verify that Postfix can retrieve the first email address from the MySQL table `virtual_users` using the database values entered in the `mysql-virtual-mailbox-maps.cf` file. Replace `email1@example.com` with the first email address added to the table. You should receive `1` as the output:
 
         sudo postmap -q alias@example.com mysql:/etc/postfix/mysql-virtual-email2email.cf
 
