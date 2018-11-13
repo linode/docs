@@ -5,6 +5,12 @@
     "type": "list",
     "description": "Other locations where this guide can be found. Should be an array of entries in the form /applications/big-data/using-big-data/"
   },
+  "audiences": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "An array of audiences. Could be Foundational, Beginner, Intermediate, or Expert"
+  },
   "author": {
     "elements": [
       "name",
