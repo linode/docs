@@ -722,7 +722,7 @@ You can set up an email client to connect to your mail server. Many clients dete
 -   **SSL:** Incoming and outgoing servers require authentication and SSL encryption.
 -   **Ports:** Use Port `993` for secure IMAP, Port `995` for secure POP3, and Port `587` with SSL for SMTP.
 
-See [Install SquirrelMail on Ubuntu 16.04](docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
+See [Install SquirrelMail on Ubuntu 16.04](/docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
 
 ## Adding New Domains, Email Addresses, and Aliases
 
