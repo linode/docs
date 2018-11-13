@@ -5,8 +5,8 @@ author:
 description: 'Learn how to use and modify official SaltStack formulas to manage your infrastructure.'
 keywords: ['salt', 'formulas', 'git']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-10-31
-modified: 2018-10-31
+published: 2018-11-12
+modified: 2018-11-12
 modified_by:
   name: Linode
 title: "Use and Modify Official SaltStack Formulas"
@@ -19,9 +19,11 @@ external_resources:
 
 ## Salt State Files
 
-The SaltStack Platform is made up of two primary components; a remote execution engine, which handles bi-directional communication for any node within your infrastructure (master and minions) and a configuration management system which maintains all infrastructure nodes in a defined state. Salt's configuration management system is known as the *Salt State* system. A Salt state is declared within a *Salt State file* (SLS) using YAML syntax and represents the information Salt needs to configure minions. A Salt Formula is a collection of related SLS files that will achieve a common configuration.
+The SaltStack Platform is made up of two primary components: A remote execution engine which handles bi-directional communication for any node within your infrastructure (master and minions), and a configuration management system which maintains all infrastructure nodes in a defined state. Salt's configuration management system is known as the *Salt State* system. A Salt state is declared within a *Salt State file* (SLS) using YAML syntax and represents the information Salt needs to configure minions. A Salt Formula is a collection of related SLS files that will achieve a common configuration.
 
-SaltStack's GitHub page contains Salt formulas for commonly needed configurations, like creating and managing SSL/TLS certificates, installing and configuring the Apache webserver, installing and configuring a WordPress site and many other useful formulas. You can easily add any of these pre-written formulas to your own Salt state tree using GitHub.  This guide will use GitHub to fork and modify SaltStack's [timezone formula](https://github.com/saltstack-formulas/timezone-formula) and then use the formula on a Salt master to configure the time zone on two minions.
+SaltStack's GitHub page contains Salt formulas for commonly needed configurations, like creating and managing SSL/TLS certificates, installing and configuring the Apache HTTP Server, installing and configuring a WordPress site and many other useful formulas. You can easily add any of these pre-written formulas to your own Salt state tree using GitHub.
+
+This guide will use GitHub to fork and modify SaltStack's [timezone formula](https://github.com/saltstack-formulas/timezone-formula) and then use the formula on a Salt master to configure the time zone on two minions.
 
 ## Before You Begin
 
@@ -33,9 +35,9 @@ SaltStack's GitHub page contains Salt formulas for commonly needed configuration
 
 1.  Make sure you have [configured git](/docs/development/version-control/how-to-configure-git/#configure-git) on your local computer.
 
-1. Use the [Getting Started with Salt - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide to set up a Salt Master and two Salt minions; one running Ubuntu 18.04 and the second running CentOS 7.
+1. Use the [Getting Started with Salt - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide to set up a Salt Master and two Salt minions: one running Ubuntu 18.04 and the second running CentOS 7.
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -51,7 +53,7 @@ In this section, we will take a closer look at SaltStack's `timezone-formula`, w
     - The available states: `timezone`
     - The provided default values: `timezone: 'Europe/Berlin' utc: True`
 
-    The repository's `FORMULA` file includes additional details, including the supported OS families (Debian, RedHat, Suse, Arch, FreeBSD), a summary, description and release number.
+    The repository's `FORMULA` file includes additional details, including the supported OS families (Debian, RedHat, SUSE, Arch, FreeBSD), a summary, description and release number.
 
 1. Viewing the `timezone-formula`, click on the `timezone` directory to view its contents. You should see the following files:
 
@@ -263,11 +265,11 @@ no changes added to commit (use "git add" and/or "git commit -a")
         git add -A
         git commit -m 'My commit message'
 
-1. Push your changes to your Fork:
+1. Push your changes to your fork:
 
         git push origin update-variable-statements
 
-1. Navigate to your timezone formula's remote GitHub repository and create a pull request against your Fork's `master` branch.
+1. Navigate to your timezone formula's remote GitHub repository and create a pull request against your fork's `master` branch.
 
     ![Submit a pull request](update-variables-pull-request.png)
 
@@ -287,7 +289,7 @@ There are two ways to use a Salt Formula: you can add the formula as a GitFS Rem
 
 ### Manually Add a Salt Formula to your Master
 
-1. Navigate to your fork of the timezone-formula, click on the **Clone or download** button and copy the repository's url to your clipboard.
+1. Navigate to your fork of the timezone-formula, click on the **Clone or download** button and copy the repository's URL to your clipboard.
 
 1. SSH into your Salt master. Replace the `username` with your limited user account and replace `198.51.100.0` with your Linode's IP address:
 
@@ -305,7 +307,7 @@ There are two ways to use a Salt Formula: you can add the formula as a GitFS Rem
         apt-get update
         apt-get install git
 
-    **Centos/Fedora**
+    **Centos**
 
         yum update
         yum install git
@@ -325,25 +327,25 @@ GitFs allows Salt to serve files directly from remote git repositories. This is 
 1. Edit the Salt master configuration file to use GitFs as a fileserver backend. Make sure the lines listed below are uncommented in your master configuration file:
 
       {{< file "/etc/salt/master" >}}
-  fileserver_backend:
-    - gitfs
-    - roots
-      {{</ file >}}
+fileserver_backend:
+  - gitfs
+  - roots
+{{</ file >}}
 
     When using multiple backends, you should list all backends in the order you want them to be searched. `roots` is the fileserver backend used to serve files from any of the master's directories listed in the `file_roots` configuration.
 
 1. In the same Salt master configuration file, add the location of your timezone formula's GitHub repository. Ensure you have uncommented `gitfs_remote`:
 
       {{< file "/etc/salt/master" >}}
-    gitfs_remotes:
-      - https://github.com/git-username/timezone-formula.git
-      {{</ file >}}
+gitfs_remotes:
+  - https://github.com/git-username/timezone-formula.git
+{{</ file >}}
 
 1. Uncomment the gitfs_provider declaration and set its value to gitpython:
 
     {{< file "/etc/salt/master" >}}
-  gitfs_provider: gitpython
-    {{</ file >}}
+gitfs_provider: gitpython
+{{</ file >}}
 
 1. Restart the Salt master to apply the new configurations:
 
@@ -404,7 +406,7 @@ timezone:
     pkgname: timezone
     {{</ file >}}
 
-1. If you cloned the timezone-formula to your master instead of adding the formula as a GitFS remote, add the timezone-formula's directory to the Salt master's `file_roots` configuration.:
+1. If you cloned the timezone-formula to your master instead of adding the formula as a GitFS remote, add the timezone-formula's directory to the Salt master's `file_roots` configuration:
 
     {{< file "/etc/salt/master">}}
 file_roots:
@@ -439,4 +441,4 @@ pillar_roots:
 
 ## Next Steps
 
-To learn how to create your own Salt formulas and how to organize your formula's states in a logical and modular way, read the [Automate Static Site Deployments with Salt, Git, and Webhooks](/docs//applications/configuration-management/automate-a-static-site-deployment-with-salt/#initialize-the-salt-minion-s-formula) guide.
+To learn how to create your own Salt formulas and how to organize your formula's states in a logical and modular way, read our [Automate Static Site Deployments with Salt, Git, and Webhooks](/docs//applications/configuration-management/automate-a-static-site-deployment-with-salt/#initialize-the-salt-minion-s-formula) guide.
