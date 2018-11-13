@@ -12,6 +12,7 @@ modified_by:
 published: 2018-01-29
 title: 'How to install R on Ubuntu and Debian'
 audiences: ["beginner"]
+concentrations: ["Scientific Computing and Big Data"]
 ---
 
 ![How to install R on Ubuntu and Debian](install-r-ubuntu-debian-title.jpg "How to install R on Ubuntu and Debian title graphic")

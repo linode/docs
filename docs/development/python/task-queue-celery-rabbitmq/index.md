@@ -16,6 +16,7 @@ external_resources:
 - '[Celery Project page](http://www.celeryproject.org/)'
 - '[Official Celery Documentation](http://docs.celeryproject.org/en/latest/index.html)'
 audiences: ["intermediate"]
+concentrations: ["Scripting, Automation, and Build Tools"]
 ---
 
 ![How to Set Up a Task Queue with Celery and RabbitMQ](how-to-set-up-a-task-queue-with-celery-and-rabbitmq-smg.jpg)

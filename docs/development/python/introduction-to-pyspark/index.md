@@ -16,6 +16,7 @@ external_resources:
 - '[Spark Documentation](https://spark.apache.org/)'
 - '[PySpark Documentation](https://spark.apache.org/docs/latest/api/python/#)'
 audiences: ["intermediate"]
+concentrations: ["Scientific Computing and Big Data"]
 ---
 
 ![Introduction to PySpark](PySpark.jpg)

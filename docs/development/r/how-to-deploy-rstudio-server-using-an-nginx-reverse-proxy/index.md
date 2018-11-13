@@ -12,6 +12,7 @@ modified_by:
 published: 2018-01-29
 title: 'How to Deploy RStudio Server Using an NGINX Reverse Proxy'
 audiences: ["beginner"]
+concentrations: ["Scientific Computing and Big Data"]
 ---
 
 ![How to Deploy Rstudio using an NGINX reverse proxy](How_to_Deploy_RStudio_Server_Using_an_NGINX_Reverse_Proxy_smg.jpg)

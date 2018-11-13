@@ -16,6 +16,7 @@ external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
  - '[Phusion Passenger](https://www.phusionpassenger.com/)'
 audiences: ["beginner"]
+concentrations: ["Web Applications"]
 ---
 
 ![Ruby on Rails with Apache on Debian](ruby_on_rails_with_apache_debian.jpg "Ruby on Rails with Apache on Debian")

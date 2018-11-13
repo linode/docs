@@ -15,6 +15,7 @@ external_resources:
   - '[Shiny Server – Introduction](https://shiny.rstudio.com/articles/shiny-server.html)'
   - '[Gallery of Shiny Apps](https://shiny.rstudio.com/gallery/)'
 audiences: ["beginner"]
+concentrations: ["Scientific Computing and Big Data"]
 ---
 
 ![How to Deploy Interactive R Apps with Shiny Server](shiny-server.jpg)

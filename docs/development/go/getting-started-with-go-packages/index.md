@@ -18,6 +18,7 @@ external_resources:
   - '[The Go Standard Library](https://golang.org/pkg/)'
   - '[Go Essentials for Full Stack Web Development](https://www.packtpub.com/web-development/go-essentials-full-stack-web-development-video/)'
 audiences: ["beginner"]
+concentrations: ["Web Applications"]
 ---
 
 ## What is Go?

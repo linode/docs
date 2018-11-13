@@ -18,6 +18,7 @@ external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
  - '[mod_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
 audiences: ["beginner"]
+concentrations: ["Web Applications"]
 ---
 
 Ruby on Rails is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.
