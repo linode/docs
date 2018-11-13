@@ -17,6 +17,7 @@ external_resources:
  - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
  - '[Pro Git Book](https://git-scm.com/book/en/v2)'
  - '[Github Guides](https://guides.github.com/)'
+audiences: ["foundational"]
 ---
 
 ## Introduction to Git

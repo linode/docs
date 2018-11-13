@@ -14,6 +14,7 @@ title: Use Buildbot for Software Testing on Ubuntu 18.04
 external_resources:
 - '[Official Buildbot Tutorial](http://docs.buildbot.net/current/tutorial/)'
 - '[Buildbot Documentation](http://docs.buildbot.net/current/index.html)'
+audiences: ["intermediate"]
 ---
 
 [Buildbot](https://buildbot.net/) is an open source system for testing software projects. In this guide, you will set up a Linode as a Buildbot server to use as a continuous integration platform to test code. Similarly to hosted solutions like Travis CI, Buildbot is an automated testing platform that can watch for code changes, test a project's code, and send notifications regarding build failures.
@@ -22,13 +23,13 @@ external_resources:
 
 1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running Ubuntu 18.04, including setting the hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-1.  Ensure your system is up to date:
+3.  Ensure your system is up to date:
 
         sudo apt update && sudo apt upgrade
 
-1.  Complete the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Linode instance hosting Buildbot.
+4.  Complete the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Linode instance hosting Buildbot.
 
     {{< note >}}
 Replace each instance of `example.com` in this guide with your Buildbot site's domain name.

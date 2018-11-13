@@ -23,6 +23,7 @@ contributor:
   link: 'https://github.com/pbzona'
 external_resources:
   - '[Oracle Java](https://www.oracle.com/java/index.html)'
+audiences: ["beginner"]
 ---
 
 [Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Java can be used to create anything from software to basic web applications.

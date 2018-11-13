@@ -14,6 +14,7 @@ title: 'Install Apache Tomcat on Ubuntu 16.04'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
+audiences: ["beginner"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
