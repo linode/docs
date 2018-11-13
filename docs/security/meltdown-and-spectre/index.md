@@ -125,7 +125,7 @@ If you boot your Linode using the **GRUB** or **Direct Disk** boot setting, your
     **Ubuntu**
 
         sudo apt-get update
-        sudo apt-get upgrade linux-image-generic
+        sudo apt-get upgrade linux-generic
 
 2. Reboot your system. When it comes back up, use the command `uname -r` to verify you are running the new kernel against the patched version given in your distribution's security bulletin (see links below). This is also the recommended mitigation path for any hardware you use at home: your laptop, network hardware, and home servers.
 
