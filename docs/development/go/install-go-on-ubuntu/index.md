@@ -11,6 +11,7 @@ modified: 2018-01-29
 modified_by:
   name: Linode
 title: 'How to Install Go on Ubuntu'
+audiences: ["beginner"]
 ---
 
 ![How to Install Go on Ubuntu](install-go-ubuntu-title.jpg "How to Install Go on Ubuntu")

@@ -13,6 +13,7 @@ published: 2017-06-01
 title: Install Java on Centos 7
 external_resources:
 - '[Fedora Wiki Java Entry](https://fedoraproject.org/wiki/Java)'
+audiences: ["beginner"]
 ---
 
 ![Install Java on CentOS 7](install-java-on-centos-7-title-graphic.jpg "Install Java on CentOS 7")

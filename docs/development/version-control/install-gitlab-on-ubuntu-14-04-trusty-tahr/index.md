@@ -19,6 +19,7 @@ external_resources:
  - '[GitLab Documentation](https://www.gitlab.com/documentation/)'
  - '[GitLab Requirements](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/requirements.md)'
  - '[GitLab Manual Installation](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md)'
+audiences: ["intermediate"]
 ---
 
 

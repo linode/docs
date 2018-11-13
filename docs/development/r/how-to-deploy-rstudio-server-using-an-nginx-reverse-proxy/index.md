@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2018-01-29
 title: 'How to Deploy RStudio Server Using an NGINX Reverse Proxy'
+audiences: ["beginner"]
 ---
 
 ## What is RStudio Server?

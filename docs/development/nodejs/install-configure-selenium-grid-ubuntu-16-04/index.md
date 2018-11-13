@@ -15,6 +15,7 @@ h1_title: 'Use Selenium Grid for Cross-Browser Compatibility Testing'
 external_resources:
   - '[Selenium Project Home](https://www.seleniumhq.org/projects/webdriver/)'
   - '[Selenium Node.js Documentation](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index.html)'
+audiences: ["intermediate"]
 ---
 
 ## What is Selenium Grid?

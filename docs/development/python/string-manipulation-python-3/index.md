@@ -13,6 +13,7 @@ modified_by:
 title: 'String Manipulation in Python 3'
 external_resources:
 - '[Official f-strings Documentation](https://docs.python.org/3.6/reference/lexical_analysis.html#f-strings)'
+audiences: ["beginner"]
 ---
 
 ## Strings in Python

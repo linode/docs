@@ -15,6 +15,7 @@ contributor:
 external_resources:
 - '[Scrapy Project page](https://scrapy.org/)'
 - '[Official Scrapy Documentation](https://doc.scrapy.org/en/latest/index.html)'
+audiences: ["intermediate"]
 ---
 
 ![Use Scrapy to Extract Data from HTML Tags](Use-Scrapy-to-Extract-Data-From-HTML-Tags-smg.jpg)

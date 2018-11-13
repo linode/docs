@@ -20,6 +20,7 @@ external_resources:
  - '[NGINX Home Page](http://nginx.org/)'
  - '[NGINX Documentation](http://nginx.org/en/docs/)'
  - '[NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+audiences: ["beginner"]
 ---
 
 ![Ruby on Rails with nginx on Debian](ruby_on_rails_with_nginx_debian_8_smg.png "Ruby on Rails with nginx on Debian 8")

@@ -17,6 +17,7 @@ contributor:
   link: https://twitter.com/chrispiccini11
 external_resources:
 - '[virtualenv Documentation](http://virtualenv.pypa.io/)'
+audiences: ["beginner"]
 ---
 
 ![Create a Python Virtual Environment on Ubuntu 16.10](python-ve-u16-title.jpg "Create a Python Virtual Environment on Ubuntu 16.10")

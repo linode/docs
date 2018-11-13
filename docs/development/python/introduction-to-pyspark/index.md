@@ -15,6 +15,7 @@ external_resources:
 - '[AMPLab Paper on RDDs](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final138.pdf)'
 - '[Spark Documentation](https://spark.apache.org/)'
 - '[PySpark Documentation](https://spark.apache.org/docs/latest/api/python/#)'
+audiences: ["intermediate"]
 ---
 
 ![Introduction to PySpark](PySpark.jpg)

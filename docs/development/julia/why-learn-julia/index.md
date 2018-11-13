@@ -14,6 +14,7 @@ external_resources:
 - '[Julia](https://julialang.org/)'
 - '[Julia By Example](https://juliabyexample.helpmanual.io/)'
 - '[JuliaBox](https://juliabox.com/)'
+audiences: ["beginner"]
 ---
 
 ## What is Julia?
