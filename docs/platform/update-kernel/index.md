@@ -12,7 +12,7 @@ modified_by:
 title: "How to Update your Existing Linode's Kernel"
 contributor:
   name: Linode
-promo: no
+promo_default: false
 ---
 
 This guide is about updating your existing Linode's kernel to a newer version. For information on how to change your Linode's kernel, check out the [How to Change your Linode's Kernel guide](/docs/platform/how-to-change-your-linodes-kernel/).
