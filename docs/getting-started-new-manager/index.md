@@ -48,7 +48,7 @@ If you haven't already signed up for a Linode account, start here.
 
 1.  At the top of the page, click **Create** and select **Linode**.
 
-1.  Select the image you would like to use. You can choose a standard Linux image from the list or you can select a previously created image from the *My Images* tab.
+1.  Select the image you would like to use. You can choose a standard Linux image from the list or you can select a previously created image from the *Images* menu item.
 
     {{< note >}}
 Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress.
@@ -56,18 +56,27 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
 1.  Choose the region where you would like your Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
-1.  Give your Linode a label. This is a name tag to help easily identify it (ex: the type of server or database, your website's domain, etc.).
+1. Select a Linode plan.
+
+1.  Give your Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
 
 1.  Create a strong password for your Linode. You will use this password to SSH into your Linode.
 
+1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories:
+
+    - lowercase and uppercase case letters
+    - numbers
+    - punctuation characters
+
 1.  Click **Create**. You will be directed back to the *Linodes* page which will report the status of your Linode as it boots up. You can now use the Cloud Manager to:
 
-    * Boot and shut down your virtual server,
-    * Access [monitoring statistics](/docs/platform/longview/longview/),
-    * Update your [billing](/docs/platform/billing-and-support/billing-and-payments/) and [account](/docs/platform/manager/accounts-and-passwords/) information,
-    * Open a [support](/docs/platform/billing-and-support/support/) ticket and perform other administrative tasks.
+    * Boot and shut down your Linode
+    * Access [monitoring statistics](/docs/platform/longview/longview/)
+    * Update your [billing](/docs/platform/billing-and-support/billing-and-payments/) and [account](/docs/platform/manager/accounts-and-passwords/) information
+    * Add additional Linode services, like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/)
+    * Open a [support](/docs/platform/billing-and-support/support/) ticket and perform other administrative tasks
 
-1.  Be sure to bookmark the [Linode Status page](https://status.linode.com/) or [subscribe](/docs/platform/linode-status-page/) to our system status updates by email so you're aware of any service issues.
+1.  Be sure to bookmark the [Linode Status page](https://status.linode.com/) or [subscribe](/docs/platform/linode-status-page/) to our system status updates by email.
 
 ## Connect to Your Linode via SSH
 
@@ -86,17 +95,17 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
 
 Your Linode has a unique IP address that identifies it to other devices and users on the internet.
 
-1.  Click the **Linodes** link in the left hand navigation in the [Linode Manager](https://cloud.linode.com).
+1.  Click the **Linodes** menu item in the [Cloud Manager's](https://cloud.linode.com/) left hand navigation.
 
-1.  Find your Linode, and click on it's name.
+1.  Find your Linode, click on it's name and navigate to *Networking*.
 
-1.  Your IPv4 and IPv6 addresses appear under the IPv4 and IPv6 sections.
+1.  Your IPv4 and IPv6 addresses appear under the *IPv4* and *IPv6* sections.
 
     [![The Networking settings tab for your Linode](getting-started-networking-small.png)](getting-started-networking.png)
 
-You can also quickly reference your Linode's IP addresses from the **Linodes** page:
+    You can also quickly reference your Linode's IP addresses from the **Linodes** page:
 
-![IP address from the Linodes page](getting-started-quick-ip-address.png)
+    ![IP address from the Linodes page](getting-started-quick-ip-address.png)
 
 ### Log in Using SSH
 
@@ -181,6 +190,10 @@ After running a sync, it may end with a message that you should upgrade Portage 
 
     emerge --uDN @world
 
+### OpenSUSE
+
+    zypper update
+
 ### Slackware
 
     slackpkg update
@@ -218,6 +231,13 @@ Enter the following commands to set the hostname, replacing `example_hostname` w
 
     echo "HOSTNAME=\"example_hostname\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
+
+### OpenSUSE
+
+Replace `example-hostname` with one of your choice.
+
+    hostname example-hostname
+
 
 ### Update Your System's hosts File
 
@@ -277,6 +297,20 @@ All new Linodes will be set to UTC time by default. However, you may prefer your
 1.  Configure the `sys-libs/timezone-data` package, which will set `/etc/localtime` appropriately:
 
         emerge --config sys-libs/timezone-data
+
+### OpenSUSE
+
+1. View a list of available time zones:
+
+        yast2 timezone
+
+1.  Arrow up or down to the *Region* of your choice and press **Enter**.
+
+1. Press **Option+Z** (on a macOS) or **ALT+Z** (on Windows/Linux) to select the *Time Zone*.
+
+1. Use arrow up or down to move through the list of time zones. Press **Enter** to make your selection.
+
+1. Press **F10** when done.
 
 ### Slackware
 
