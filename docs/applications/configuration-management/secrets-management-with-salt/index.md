@@ -26,7 +26,7 @@ A common problem when working with Salt's state files is the need access to sens
 
 ## Salt Pillar
 
-A primary method for storing secrets in Salt is to keep them in Salt's *Pillar* feature. Salt Pillar is designed to maintain secrets and other variable information in a single location (generally, on the Salt master) and then deliver that information to specific minions. If you separate your secrets out from your states and into pillar files, you can ignore those files in your version control system.
+A primary method for storing secrets in Salt is to keep them in Salt's [*Pillar*](https://docs.saltstack.com/en/latest/topics/pillar/) feature. Salt Pillar is designed to maintain secrets and other variable information in a single location (generally, on the Salt master) and then deliver that information to specific minions. If you separate your secrets out from your states and into pillar files, you can ignore those files in your version control system.
 
 {{< note >}}
 In addition to storing secrets, Salt Pillar can also maintain non-sensitive data; for example, the versions of the packages you want to install on your minions. So, you may still want to track some pillar files in version control.
@@ -38,7 +38,7 @@ To handle this distinction, you could create a special directory at `/srv/pillar
 
 Pillar data is kept in `.sls` files which are written in the same YAML syntax as states. These are generally stored within `/srv/pillar` on the Salt master, but this location can be configured via the `pillar_roots` option in your master's configuration.
 
-For example, let's say your minion runs an application which accesses the Linode API. This pillar file keeps your API token in a variable called `linode_api_token`:
+For example, let's say your minion runs an application which accesses the [Linode API](https://developers.linode.com/api/v4). This example pillar file records your API token in a variable called `linode_api_token`:
 
 {{< file "/srv/pillar/app_secrets.sls" >}}
 linode_api_token: YOUR_API_TOKEN
@@ -60,7 +60,7 @@ You may want to create a `pillar.example` file (like those provided by Salt form
 
 To inject pillar data into your states, use Salt's Jinja template syntax. While Salt uses the YAML syntax for state and pillar files, the files are first interpreted as Jinja templates (by default).
 
-This example embeds the API token from Salt Pillar in a file on your Linode (which could later be consumed by your app to access the Linode API). The data is accessed through the `pillar` dictionary:
+This example state embeds the API token in a file on your Linode; the data is accessed through the `pillar` dictionary:
 
 {{< file "/srv/salt/setup_app.sls" >}}
 api_token:
@@ -69,19 +69,19 @@ api_token:
     - contents: {{ pillar['linode_api_token'] }}
 {{< /file >}}
 
-### Passing Pillar Data at the Command Line
-
-You can also supply pillar values as a dictionary through the command line, and values files will override any values set in your pillar files. This example command would apply the `A_DIFFERENT_API_TOKEN` value instead of the original `YOUR_API_TOKEN` from the previous example:
-
-    salt '*' state.apply pillar='{"linode_api_token": "A_DIFFERENT_API_TOKEN"}'
-
 {{< caution >}}
 There are times when pillar data could show up in the output that Salt generates, like when `file.managed` displays diffs of a modified file. To avoid displaying these diffs, you can set `file.managed`'s `show_diff` flag to false.
 {{< /caution >}}
 
+### Passing Pillar Data at the Command Line
+
+You can also supply pillar values as a dictionary through the command line, and those values will override any values set in your pillar files. This example command would apply the `A_DIFFERENT_API_TOKEN` value instead of the original `YOUR_API_TOKEN` from the previous example:
+
+    salt '*' state.apply pillar='{"linode_api_token": "A_DIFFERENT_API_TOKEN"}'
+
 ## Environment Variables
 
-Another way to keep sensitive values out of version control is to use environment variables. The method for passing environment variables to your states is similar to how pillar data can be passed via the command line. For example, you might issue the following command:
+Another way to keep sensitive values out of version control is to use environment variables. The method for passing environment variables to your states is similar to how pillar data can be passed via the command line. The environment variable prefixes your salt command, as in this example:
 
     LINODE_API_TOKEN="YOUR_API_TOKEN" salt '*' state.apply example.sls
 
