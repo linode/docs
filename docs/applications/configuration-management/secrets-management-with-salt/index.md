@@ -83,7 +83,7 @@ You can also supply pillar values as a dictionary through the command line, and 
 
 Another way to keep sensitive values out of version control is to use environment variables. The method for passing environment variables to your states is similar to how pillar data can be passed via the command line. The environment variable prefixes your salt command, as in this example:
 
-    LINODE_API_TOKEN="YOUR_API_TOKEN" salt '*' state.apply example.sls
+    LINODE_API_TOKEN="YOUR_API_TOKEN" salt 'appserver' state.apply setup_app
 
 The environment variable is referenced by a Salt state file through the `salt['environ.get']('ENVIRONMENT_VARIABLE_NAME')` syntax. The previous `setup_app` example state can be adapted to use an environment variable as follows:
 
