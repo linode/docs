@@ -6,14 +6,16 @@ description: 'Determine which kernel version your Linode is running and update i
 keywords: ['kernel','upgrade']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-16
-modified: 2018-08-16
+modified: 2018-11-08
 modified_by:
   name: Linode
-title: "How to Update your Linux Kernel"
+title: "How to Update your Existing Linode's Kernel"
 contributor:
   name: Linode
 promo: no
 ---
+
+This guide is about updating your existing Linode's kernel to a newer version. For information on how to change your Linode's kernel, check out the [How to Change your Linode's Kernel guide](/docs/platform/how-to-change-your-linodes-kernel/).
 
 ## Which Kernel Am I Running?
 
@@ -21,11 +23,11 @@ Your Linode is capable of running one of three kinds of kernels:
 
 -   An upstream kernel that is maintained and provided by your Linux distribution's authors (this is also referred to as the distribution-supplied kernel).
 
--   The Linode kernel. Linode maintains an up-to-date kernel: Linode's engineering team monitors for new versions of the Linux kernel and then packages them for users shortly after they are available. These kernels are not installed on your filesystem--instead, the Linode Manager supplies them to your system when it boots.
+-   The Linode kernel. Linode maintains an up-to-date kernel: Linode's engineering team monitors for new versions of the Linux kernel and then packages them for users shortly after they are available. These kernels are not installed on your filesystem --instead, the Linode Manager supplies them to your system when it boots.
 
 -   A kernel that you compile from source.
 
-The steps needed to update your kernel vary by which kind you are using. To find out which type you're using, [SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) into your Linode and run the following command:
+The steps needed to update your kernel vary depending on the type of kernel you are running. To find out which type you're using, [SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) into your Linode and run the following command:
 
     uname -r
 
@@ -41,21 +43,27 @@ If your output contains `generic` in the version tag, then you are probably runn
 44.15.0-29-generic
 {{</ output >}}
 
-<!-- ## Update Your Linode Kernel with Linode's Cloud Manager
+## Update Your Linode Kernel with Linode's Cloud Manager
 
 1.  Select the Linode from the *Dashboard*
 
 1.  Click the **Settings** tab and expand the **Advanced Configurations** section.
 
-1.  Click **Add Linode Configuration**, add a label, and scroll to the *Boot Settings* section.
+1. Find your current *Configuration*, click on the corresponding ellipses (**...**) menu and select **Edit**.
 
-1.  Select **Latest 64 bit (4.17.15-x86_64-linode115)** from the *Kernel* dropdown.
+1.  Scroll to the *Boot Settings* section.
 
-1.  Configure Block Device Assignments as needed and click **Submit** to save the changes.
+1.  Select **Latest 64 bit** from the *Kernel* dropdown and click **Submit** to save the changes.
 
-1.  Reboot the Linode to boot into the new kernel. -->
+1.  Reboot the Linode to boot into the new kernel and verify the kernel version:
 
-## Update your Linode Kernel
+        uname -r
+
+    {{< output >}}
+4.17.15-x86_64-linode115
+{{< /output >}}
+
+<!-- ## Update your Linode Kernel
 
 1. Log in to the Linode Manager.
 
@@ -69,7 +77,7 @@ If your output contains `generic` in the version tag, then you are probably runn
 
     {{< output >}}
 4.17.15-x86_64-linode115
-{{< /output >}}
+{{< /output >}} -->
 
 ## Update your Distribution-Supplied Kernel
 
@@ -89,7 +97,7 @@ Update your kernel to the latest available version using the distribution’s pa
 **Ubuntu**
 
     sudo apt-get update
-    sudo apt-get upgrade
+    sudo apt-get upgrade linux-generic
 
 Reboot the Linode. When it comes back up, use the command `uname -r` to verify which version you are running. It's recommend that you compare your new kernel version against the patched version given in your distribution’s security bulletin: [CentOS](https://access.redhat.com/errata/#/?q=rhsa-2018&p=1&sort=portal_publication_date%20desc&rows=10); [Debian](https://security-tracker.debian.org/tracker/); [Ubuntu](https://people.canonical.com/~ubuntu-security/cve/).
 

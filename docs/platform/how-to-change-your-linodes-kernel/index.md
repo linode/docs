@@ -6,18 +6,22 @@ description: 'Use the Linode Manager to change which kernel your Linode boots.'
 keywords: ["kernel", "grub"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: ['run-a-distribution-supplied-kernel-with-kvm/','tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/']
-modified: 2018-08-09
+modified: 2018-11-08
 modified_by:
   name: Linode
 published: 2015-06-29
 title: How to Change your Linode's Kernel
 ---
 
+This guide is about changing your Linode's kernel to an upstream kernel, a Linode kernel or a kernel that you compile from source. For information on updating your existing Linode's kernel, check out the [How to Update your Existing Linux Kernel guide](/docs/platform/update-kernel/).
+
+## Which Kernel Am I Running?
+
 Your Linode is capable of running one of three kinds of kernels:
 
 -   An *upstream* kernel that is maintained and provided by your Linux distribution's authors (this is also referred to as the *distribution-supplied* kernel).
 
--   The Linode kernel. Linode maintains an up-to-date kernel: Linode's engineering team monitors for new versions of the Linux kernel and then packages them for users shortly after they are available. These kernels are not installed on your filesystem--instead, the Linode Manager supplies them at boot time to your system.
+-   The Linode kernel. Linode maintains an up-to-date kernel: Linode's engineering team monitors for new versions of the Linux kernel and then packages them for users shortly after they are available. These kernels are not installed on your filesystem --instead, the Linode Manager supplies them at boot time to your system.
 
 -   A kernel that you compile from source.
 
@@ -37,28 +41,58 @@ The different kinds of kernels you can use offer different benefits:
 
 ## How to Switch your Kernel
 
-1.  Shut down your Linode from the Linode Manager.
+1.  Select the Linode from the *Dashboard*
 
-1.  Click **Edit** to view a distribution's configuration profile options:
+1.  Click the **Settings** tab and expand the **Advanced Configurations** section.
 
-    ![Edit the configuration profile](edit_config_profile_small.png "Edit the configuration profile")
+1. Find your current *Configuration*, click on the corresponding ellipses (**...**) menu and select **Edit**.
 
-1.  Observe the **Kernel** dropdown menu under **Boot Settings**. Depending on your distribution, this will be set to either `GRUB 2` or `Latest 64 bit (<kernel version>-x86_64-linode<linode kernel release number>)`.
+1.  Scroll to the *Boot Settings* section.
 
-    ![Selecting the GRUB 2 kernel option](boot-settings-kernel-grub2.png "Selecting the GRUB 2 kernel option")
+1.  Observe the **Kernel** dropdown menu. Depending on your distribution, this will be set to either `GRUB 2` or `Latest 64 bit (<kernel version>-x86_64-linode<linode kernel release number>)`.
+
+    ![GRUB2 Upstream Kernel](kernel-select-grub2.png "GRUB2 Upstream Kernel")
 
 1.  To use Linode's kernel, select `Latest 64 bit (<kernel version>-x86_64-linode)` from the Kernel menu. To change to the upstream kernel, or to use a kernel you've compiled from source, select `GRUB 2`. For more information on custom compiled kernels, review our guides for [Debian, Ubuntu,](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/) and [CentOS](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos-7/).
 
-    ![Our latest 64 bit kernel](boot-settings-kernel-latest.png "Our latest 64 bit kernel")
+    ![Our latest 64 bit kernel](kernel-select-linode-latest.png "Our latest 64 bit kernel")
 
-1.  Click **Save Changes** at the bottom of the page and reboot into the new kernel.
+1.  Click **Submit** at the bottom of the page and reboot into the new kernel.
 
 1.  Once booted, you can verify the kernel information with `uname`:
+
+        uname -r
+
+    {{< output >}}
+4.17.15-x86_64-linode115
+{{< /output >}}
+
+    You can switch back to your previous kernel setting at any time by repeating the steps above for the kernel of your choice.
+
+<!-- ## How to Switch your Kernel
+
+1.  Shut down your Linode from the Linode Manager.
+
+2.  Click **Edit** to view a distribution's configuration profile options:
+
+    ![Edit the configuration profile](edit_config_profile_small.png "Edit the configuration profile")
+
+3.  Observe the **Kernel** dropdown menu under **Boot Settings**. Depending on your distribution, this will be set to either `GRUB 2` or `Latest 64 bit (<kernel version>-x86_64-linode<linode kernel release number>)`.
+
+    ![Selecting the GRUB 2 kernel option](boot-settings-kernel-grub2.png "Selecting the GRUB 2 kernel option")
+
+4.  To use Linode's kernel, select `Latest 64 bit (<kernel version>-x86_64-linode)` from the Kernel menu. To change to the upstream kernel, or to use a kernel you've compiled from source, select `GRUB 2`. For more information on custom compiled kernels, review our guides for [Debian, Ubuntu,](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian-ubuntu/) and [CentOS](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos-7/).
+
+    ![Our latest 64 bit kernel](boot-settings-kernel-latest.png "Our latest 64 bit kernel")
+
+5.  Click **Save Changes** at the bottom of the page and reboot into the new kernel.
+
+6.  Once booted, you can verify the kernel information with `uname`:
 
         [root@archlinux ~]# uname -r
         4.15.14-1-ARCH
 
-    You can switch back to your previous kernel setting at any time by repeating the steps above for the kernel of your choice.
+    You can switch back to your previous kernel setting at any time by repeating the steps above for the kernel of your choice. -->
 
 ## Caveats when Booting under GRUB 2
 
@@ -86,6 +120,10 @@ This guide is written for a non-root user. Some commands may require elevated pr
 All configuration files should be edited with elevated privileges. Remember to include `sudo` before running your text editor.
 {{< /note >}}
 
+{{< note >}}
+Most distributions that can be deployed from the Linode Manager boot the upstream kernel by default. CentOS 6, OpenSUSE Leap 42.3, Slackware, and Ubuntu 14.04, and older distributions are exceptions to this rule, and they boot the Linode kernel by default.
+{{</ note >}}
+
 1.  Update your package management system:
 
     **Arch Linux**
@@ -110,7 +148,11 @@ All configuration files should be edited with elevated privileges. Remember to i
 
         pacman -S linux grub
 
-    **CentOS**
+    **CentOS 6**
+
+        yum install kernel grub
+
+    **CentOS 7**
 
         yum install kernel grub2
 
@@ -124,7 +166,7 @@ All configuration files should be edited with elevated privileges. Remember to i
 
     **Ubuntu**
 
-        apt install linux-image grub2
+        apt install linux-generic grub2
 
 When the installation finishes, you'll see the kernel and other components in the `/boot` directory. For example:
 
