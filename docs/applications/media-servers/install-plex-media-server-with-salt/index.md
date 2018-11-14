@@ -87,7 +87,7 @@ gitfs_provider: gitpython
     The `fileserver_backend` block instructs the Salt minion to look for Salt configuration files in two places. First, it tells Salt to look for Salt state files in our minion's `roots` backend (`/srv/salt`). Secondly, it instructs Salt to use the Git Fileserver (gitfs) to look for Salt configuration files in any Git remote repositories that have been named in the `gitfs_remotes` section. The address for the Plex Salt formula's Git repository is included in the `gitfs_remotes` section.
 
     {{< note >}}
-It is best practice to create a fork of the Plex formula's Git repository on GitHub and to add your fork's Git repository address in the `gitfs_remotes` section. This will ensure that any further changes to the upstream Plex formula whichh might break your current configuration can be reviewed and handled accordingly, before applying them.
+It is best practice to create a fork of the Plex formula's Git repository on GitHub and to add your fork's Git repository address in the `gitfs_remotes` section. This will ensure that any further changes to the upstream Plex formula which might break your current configuration can be reviewed and handled accordingly, before applying them.
 {{< /note >}}
 
     Lastly, GitPython is specified as the `gitfs_provider`.
