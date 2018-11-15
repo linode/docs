@@ -2,7 +2,7 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Installing Asterisk 13 on CentOS 7'
+description: 'Installing Asterisk on CentOS 7'
 keywords: ["asterisk 13", "centos 7", "centos", "open source", "private branch exchange", "pbx", "asterisk pbx", "sip", "session initiation protocol", "sip protocol", "IP PBX systems", "VoIP gateways"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-30
@@ -31,13 +31,13 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Create a CentOS 7 Linode in your closest data center (barring Atlanta (us-southeast), which does not currently support SIP servers). A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
-1.  Ensure you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides to prepare your server. **Do not** complete the steps to set up a firewall.
+1.  Ensure you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
 
 1.  Update your system:
 
         sudo yum update
 
-1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) enabled, your Linode will be back up running in a few minutes.
+1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) enabled, your Linode will be back up and running in a few minutes.
 
         sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 
@@ -83,11 +83,11 @@ All the following firewalld rules contain the `--permanent` flag to ensure the r
 
             sudo firewall-cmd --zone=public --permanent --add-port=10000-20000/udp
 
-    - Uncomment these lines if you plan to use FreePBX to manage Asterisk.
+    - If you plan to use FreePBX to manage Asterisk, add the following rule:
 
             sudo firewall-cmd --zone=public --permanent --add-service={http,https}
 
-    - IAX - Leave IAX commented out unless you know you need it. IAX is "Inter-Asterisk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won't need IAX or IAX2.
+    - IAX - If you need IAX, add the following rule. IAX is "Inter-Asterisk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won't need IAX or IAX2.
 
             sudo firewall-cmd --zone=public --permanent --add-port=4569/udp
 
@@ -120,7 +120,7 @@ PJPROJECT is Asterisk's SIP channel driver. It should improve call clarity and p
 
 1.  As **a non-root user**, create a working directory for the build:
 
-        mkdir ~/build
+        mkdir ~/build-asterisk
 
 1.  Change to that directory:
 
@@ -146,7 +146,7 @@ PJPROJECT is Asterisk's SIP channel driver. It should improve call clarity and p
 
         make dep
 
-1.  If `make dep` completes successfully, then build the plugin. It should only take several minutes.
+1.  If `make dep` completes successfully, then build the plugin. It should only take a few minutes.
 
         make
 
@@ -193,7 +193,7 @@ PJPROJECT is Asterisk's SIP channel driver. It should improve call clarity and p
 
 DAHDI, or *Digium/Asterisk Hardware Device Interface*, is the kernel module that controls telephone interface cards. This type of card is usually used when adding Asterisk to an existing call center that uses older technology.
 
-Since it's not possible to add physical cards to a virtual machine you probably won't need the DAHDI driver installed. There is one exception: If you plan to host conference calls on your Asterisk box where more than one person can join a conference room, DAHDI also provides the required timing source for this feature to work.
+Since it's not possible to add physical cards to a virtual machine you probably won't need the DAHDI driver installed. There is one exception: if you plan to host conference calls on your Asterisk box where more than one person can join a conference room. DAHDI provides the required timing source for this feature to work.
 
 #### Build DAHDI
 
@@ -255,7 +255,7 @@ Since it's not possible to add physical cards to a virtual machine you probably 
 
 ### Configure and Build Asterisk
 
-1.  Still in your build directory for Asterisk, run the `configure` script to prepare the Asterisk source code for compiling:
+1.  In your build directory for Asterisk, run the `configure` script to prepare the Asterisk source code for compiling:
 
         ./configure --libdir=/usr/lib64 --with-jansson-bundled
 
@@ -263,7 +263,7 @@ Since it's not possible to add physical cards to a virtual machine you probably 
 
         make menuselect
 
-1.  If you want to use the MP3 format with Music on Hold, you should select `Add-Ons`, then use the right arrow to move to the right-hand list. Navigate to `format_mp3` and press Enter to select it.
+1.  If you want to use the MP3 format with Music on Hold, you should select `Add-Ons`, then use the right arrow to move to the right-hand list. Navigate to `format_mp3` and press **Enter** to select it.
 
 1.  Select additional core sound packages and Music on Hold packages in the left menu, and enable `.wav` format for your desired language (ie. use the `EN` package for English.).
 
@@ -288,7 +288,7 @@ Since it's not possible to add physical cards to a virtual machine you probably 
 
 ### Test Connection
 
-Congratulations! You now have a working Asterisk phone server. Let's fire up Asterisk and make sure it runs.
+You now have a working Asterisk phone server. Fire up Asterisk and make sure it runs.
 
 1.  Start Asterisk:
 
@@ -298,7 +298,7 @@ Congratulations! You now have a working Asterisk phone server. Let's fire up Ast
 
         sudo asterisk -rvv
 
-    You should see an output similar to below:
+    You should see an output similar to the following:
 
     {{< output >}}
 Asterisk 16.0.0, Copyright (C) 1999 - 2018, Digium, Inc. and others.
@@ -323,7 +323,7 @@ Connected to Asterisk 16.0.0 currently running on li73-122 (pid = 980)
 
 ## Next Steps
 
-Now that you have an Asterisk server running on your Linode, it's time to connect some phones add extensions, and configure the various options that are available with Asterisk. For detailed instructions, check out the Asterisk Project's guide to [Configuring Asterisk](https://wiki.asterisk.org/wiki/display/AST/Basic+PBX+Functionality).
+Now that you have an Asterisk server running on your Linode, it's time to connect some phones, add extensions, and configure the various options that are available with Asterisk. For detailed instructions, check out the Asterisk Project's guide to [Configuring Asterisk](https://wiki.asterisk.org/wiki/display/AST/Basic+PBX+Functionality).
 
 {{< caution >}}
 When running a phone system on a remote server such as a Linode, it's always good practice to secure the signaling data with TLS and the audio portion of calls using SRTP to prevent eavesdropping. Once you have a working dial-plan, be sure to follow the [Secure Calling Guide](https://wiki.asterisk.org/wiki/display/AST/Secure+Calling) to encrypt your communications.
