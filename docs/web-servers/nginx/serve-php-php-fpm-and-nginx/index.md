@@ -24,14 +24,14 @@ The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.w
 
 - **You will need a working NGINX setup.** If you do not already have that, complete Part 1 of our Getting Started with NGINX series: [*Basic Installation and Setup*](/docs/web-servers/nginx/nginx-installation-and-basic-setup/).
 
-- You will need root access to the system, or a user account with sudo privilege.
+- You will need root access to the system, or a user account with `sudo` privileges.
 
 - Update your system’s packages.
 
 
 ## Install and Configure PHP-FPM
 
-1.  Install the PHP process manager. In CentOS, Debian, and Ubuntu, the package name to install is `php-fpm`.
+1.  Install the PHP process manager. On CentOS, Debian, and Ubuntu, the package name to install is `php-fpm`.
 
     You can verify the PHP-FPM service is running with:
 
