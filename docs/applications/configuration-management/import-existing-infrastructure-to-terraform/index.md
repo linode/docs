@@ -17,7 +17,7 @@ external_resources:
 - '[Terraform Linode Instance Documentation](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 ---
 
-Terraform is an Infrastructure as Code tool that allows you to write declarative code to provision and manage servers and services. Typically this means that Terraform manages servers and services throughout the entire life cyle of these resources, from creation to destruction. However, Terraform can also manage existing servers and services. This guide will describe how to import existing Linode infrastructure into Terraform using the official Linode provider plugin.
+Terraform is an Infrastructure as Code tool that allows you to write declarative code to provision and manage servers and services. Typically this means that Terraform manages servers and services throughout the entire life cycle of these resources, from creation to destruction. However, Terraform can also manage existing servers and services. This guide will describe how to import existing Linode infrastructure into Terraform using the official Linode provider plugin.
 
 ## Before You Begin
 
