@@ -17,7 +17,7 @@ external_resources:
 - '[Terraform Linode Instance Documentation](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 ---
 
-Terraform is an Infrastructure as Code tool that allows you to write declarative code to provision and manage servers and services. Typically this means that Terraform manages servers and services throughout the entire lifecyle of these resources, from creation to destruction. However, Terraform can also manage existing servers and services. This guide will describe how to import exisiting Linode infrastructure into Terraform using the official Linode provider plugin.
+Terraform is an Infrastructure as Code tool that allows you to write declarative code to provision and manage servers and services. Typically this means that Terraform manages servers and services throughout the entire life cyle of these resources, from creation to destruction. However, Terraform can also manage existing servers and services. This guide will describe how to import existing Linode infrastructure into Terraform using the official Linode provider plugin.
 
 ## Before You Begin
 
@@ -27,12 +27,12 @@ Terraform is an Infrastructure as Code tool that allows you to write declarative
 
 3.  This guide uses the Linode CLI to retrieve some information about the Linode infrastructure you will be importing to Terraform. For more information on the setup, installation, and usage of the Linode CLI, check out the [Using the Linode CLI](https://www.linode.com/docs/platform/api/using-the-linode-cli/) guide.
 
-4.  To import a resource into Terraform you issue the `terraform import` command. However, at the time of this writing that command does not create a Terraform resource configuration for you. This means that you have to manually write your own resource configuration, ensuring that all the information matches your exisiting infrastructure. Additionally, there is no current way to import more than one resource at a time. **All resources must be individually imported**.
+4.  To import a resource into Terraform you issue the `terraform import` command. However, at the time of this writing that command does not create a Terraform resource configuration for you. This means that you have to manually write your own resource configuration, ensuring that all the information matches your existing infrastructure. Additionally, there is no current way to import more than one resource at a time. **All resources must be individually imported**.
 
 ## Import a Linode to Terraform
 
 {{< caution >}}
-Failure to provide the correct information about your Linode when importing your Linode to Terraform can result in the unwanted alteration or destruction of your Linode. Please follow the instructions provided here carefully. It might be benificial to practice on a new testing environment Linode before trying to manage production servers.
+Failure to provide the correct information about your Linode when importing your Linode to Terraform can result in the unwanted alteration or destruction of your Linode. Please follow the instructions provided here carefully. It might be beneficial to practice on a new testing environment Linode before trying to manage production servers.
 {{< /caution >}}
 
 ### Retrieve Your Linode's ID
@@ -275,7 +275,7 @@ resource "linode_instance" "linode-import" {
 
         terraform plan
 
-    `terraform plan` shows you the changes that would take place if you were to run `terraform apply`. Running `terraform plan` is a good way to determine if the configuration you provided is exact enough for Terraform to take over mangement of your Linode.
+    `terraform plan` shows you the changes that would take place if you were to run `terraform apply`. Running `terraform plan` is a good way to determine if the configuration you provided is exact enough for Terraform to take over management of your Linode.
 
     Most of the time, if there are changes that will be made, perhaps you have a Private IP address that was not defined in the configuration above, you will be notified by `terraform plan`. It is important to note, however, that you will not be notified about the addition and removal of disks with `terraform plan`, which is why it is vital that you supply the correct information from the `terraform show` command after your initial import.
 
