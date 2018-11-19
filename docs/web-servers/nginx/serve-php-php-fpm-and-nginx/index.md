@@ -66,9 +66,9 @@ The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.w
         sed -i 's/listen.owner = www-data/listen.owner = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
         sed -i 's/listen.group = www-data/listen.group = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
 
-4.  When pairing NGINX with PHP-FPM, it's possible to return to NGINX a `.php` URI that does not actually exist in the site's directory structure. The PHP processor will process the URI, and execute the `.php` file, because its job is to process anything handed to it by NGINX. This of course presents a security problem.
+4.  When pairing NGINX with PHP-FPM, it's possible to return to NGINX a `.php` URI that does not actually exist within the site's directory structure. The PHP processor will process the URI, and execute the `.php` file, because its job is to process anything handed to it by NGINX. This presents a security problem.
 
-    It's important limit what NGINX passes to PHP-FPM so malicious scripts can't be injected into return streams to the server. Instead, the request is stopped, possibly then resulting in a 404. There are multiple ways to do this ([see the NGINX wiki](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php)) but here we chose to specify the setting in PHP-FPM rather than in NGINX's configuration.
+    It's important to limit what NGINX passes to PHP-FPM so malicious scripts can't be injected into return streams to the server. Instead, the request is stopped, possibly then resulting in a 404. There are multiple ways to do this ([see the NGINX wiki](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php)) but here we chose to specify the setting in PHP-FPM rather than in NGINX's configuration.
 
         sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.0/fpm/php.ini
 
