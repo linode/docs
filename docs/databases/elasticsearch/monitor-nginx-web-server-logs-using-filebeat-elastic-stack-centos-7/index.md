@@ -17,6 +17,7 @@ modified_by:
   name: Linode
 title: 'Monitor an NGINX Web Server Using the Elastic Stack on Centos 7'
 ---
+![Monitor NGINX Logs with Elastic](Monitor_NGINX_Elastic.jpg)
 
 ## What is the Elastic Stack?
 
