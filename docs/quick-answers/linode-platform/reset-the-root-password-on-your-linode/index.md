@@ -11,6 +11,7 @@ modified_by:
 published: 2017-05-08
 title: Reset the Root Password on your Linode
 ---
+![Reset the root password on your Linode](Reset_the_Root_Password_on_your_Linode_smg.jpg)
 
 This QuickAnswer will show you how to reset the root password for the Linux distribution running on your Linode. See our [Accounts and Passwords](/docs/platform/accounts-and-passwords/#resetting-the-root-password) guide for additional information.
 
