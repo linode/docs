@@ -21,7 +21,7 @@ external_resources:
 WordPress is a popular dynamic content management system (CMS) focused on blogs. WordPress can be deployed on a LAMP or LEMP stack. It features an extensive plugin framework and theme system that allows site owners to use its simple, yet powerful publishing tools.
 
 <!-- ![Install WordPress on Ubuntu 18.04](wordpress-ubuntu-18-04-title.png "Install WordPress on Ubuntu 18.04") -->
-![Install Wordpress on Ubuntu](Install_WordPress_on_Ubuntu_smg.jpg)
+![Install WordPress on Ubuntu](Install_WordPress_on_Ubuntu_smg.jpg)
 {{< content "limited-user-note-shortguide" >}}
 
 Replace each instance of `example.com` in this guide with your site's domain name or IP.
