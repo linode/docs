@@ -197,29 +197,29 @@ provider "linode" {
 }
 
 resource "linode_instance" "your_local_label" {
-    label = label
-    region = region
-    type = type
+    label = "label"
+    region = "region"
+    type = "type"
     config {
-        label = config.0.label
-        kernel = config.0.kernel
-        root_device = config.0.root_device
+        label = "config.0.label"
+        kernel = "config.0.kernel"
+        root_device = "config.0.root_device"
         devices {
             sda = {
-                disk_label = config.0.devices.0.sda.0.disk_label
+                disk_label = "config.0.devices.0.sda.0.disk_label"
             }
             sdb = {
-                disk_label = config.0.devices.0.sdb.0.disk_label
+                disk_label = "config.0.devices.0.sdb.0.disk_label"
             }
         }
     }
     disk {
-        label = disk.0.label
-        size = disk.0.size
+        label = "disk.0.label"
+        size = "disk.0.size"
     }
     disk {
-        label = disk.1.label
-        size = disk.1.size
+        label = "disk.1.label"
+        size = "disk.1.size"
     }
 }
 {{< /file >}}
@@ -262,11 +262,11 @@ resource "linode_instance" "linode-import" {
     }
     disk {
         label = "Debian 9 Disk"
-        size = 50688
+        size = "50688"
     }
     disk {
         label = "512 MB Swap Image"
-        size = 512
+        size = "512"
     }
 }
 {{< /file >}}
@@ -473,7 +473,7 @@ linode_volume.volume_import:
   label = import-example
   linode_id = 11426126
   region = us-east
-  size = 20
+  size = "20"
   status = active
 {{< /output >}}
 
@@ -489,7 +489,7 @@ provider "linode" {
 resource "linode_volume" "volume_import" {
     label = "import-example"
     region = "us-east"
-    size = 20
+    size = "20"
 }
 {{< /file >}}
 
