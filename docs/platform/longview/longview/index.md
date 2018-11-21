@@ -92,7 +92,7 @@ deb http://apt-longview.linode.com/ xenial main
 
         sudo mkdir /etc/linode/
 
-5.  Copy the API key from the **Settings** tab of your Longview client's overview page in the Linode Manager. Put the key into a file, replacing key in the command below with your own.
+5.  Copy the API key from the **Settings** tab of your Longview client's overview page in the Linode Manager. Put the key into a file, replacing the key in the command below with your own.
 
         echo '266096EE-CDBA-0EBB-23D067749E27B9ED' | sudo tee /etc/linode/longview.key
 
