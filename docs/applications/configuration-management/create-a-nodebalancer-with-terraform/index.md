@@ -116,7 +116,7 @@ Here two labels are supplied. The first label, the label used internally by Terr
 
 ### Create NodeBalancer Config Resources
 
-In addition to the NodeBalancer resource configuration, you must supply at least one NodeBalancer Configuration resource. This resource defines ports, protocol, healtch checks, and session stickiness, among other options, that the NodeBalancer might use. For this example we will create a NodeBalancer configuration for HTTP access on port 80, but you might also want to create one for HTTPS access on port 443 if you have SSL/TLS certificates:
+In addition to the NodeBalancer resource configuration, you must supply at least one NodeBalancer Configuration resource. This resource defines ports, protocol, health checks, and session stickiness, among other options, that the NodeBalancer might use. For this example we will create a NodeBalancer configuration for HTTP access on port 80, but you might also want to create one for HTTPS access on port 443 if you have SSL/TLS certificates:
 
 {{< file "nodebalancer.tf" >}}
 ...
@@ -244,7 +244,7 @@ With the crafting of `nodebalancer.tf` complete, it's time to review the Terrafo
 
     terraform plan
 
-You should see a lengthy output with all the `create` actions that will take place. Review the output, taking note that the `<computed>` values you see will be defined on creation. Once you are satified with the proposed actions, it's time to apply them.
+You should see a lengthy output with all the `create` actions that will take place. Review the output, taking note that the `<computed>` values you see will be defined on creation. Once you are satisfied with the proposed actions, it's time to apply them.
 
 Run the `apply` command:
 
