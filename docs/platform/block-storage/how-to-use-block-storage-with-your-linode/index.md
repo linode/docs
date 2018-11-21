@@ -94,6 +94,13 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
     [![Linode Manager volume list](bs-volume-list-small.png)](bs-volume-list.png)
 
+    {{< caution >}}
+To avoid issues with your Linode, remove this line from your `/etc/fstab/` configuration:
+
+    `FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2`
+
+{{< /caution >}}
+
 ## How to Delete a Block Storage Volume
 
 {{< caution >}}
