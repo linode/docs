@@ -261,3 +261,9 @@ NodeBalancer IP Address = 104.237.148.131
 {{< /output >}}
 
 You can now navigate to your NodeBalancer IP address and view your NodeBalancer in action. You have successfully created a NodeBalancer and backend nodes in Terraform.
+
+If you are done with the resources you just created, you can remove them with the `destroy` command
+
+    terraform destroy
+
+This command will prompt you to confirm the action.
