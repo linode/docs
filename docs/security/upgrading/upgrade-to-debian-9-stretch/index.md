@@ -127,7 +127,7 @@ Your Linode is now running Debian 9!
 
 ### fail2ban issue
 
-The upgrade will abort because of this known issue, caused by an error in `/etc/fail2ban/jail.local`. Use your prefered editor to repair this file:
+The upgrade will abort because of this known issue, caused by an error in `/etc/fail2ban/jail.local`. Use your preferred editor to repair this file:
 
     sudo vim /etc/fail2ban/jail.local
 
