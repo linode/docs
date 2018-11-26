@@ -14,7 +14,9 @@ external_resources:
  - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
 ---
 
-EDITOR'S NOTE: There's a decent amount of overlap with the existing `Use Terraform to Provision Linode Environments` guide here, which I think is ok. The HCL section here includes a healthy amount of example syntax, which I consider to be a good idea so that readers brand-new to Terraform have a more concrete sense of what using it actually looks like.
+EDITOR'S NOTE: There's a decent amount of overlap with the existing `Use Terraform to Provision Linode Environments` guide here, which I think is ok, as it means a beginner could land on either guide and be well-served. But, we may also consider revising that guide to 'lean' it out/streamline it (perhaps just down to installing and then writing and applying a first infrastructure plan). I would prefer having a Beginners Guide that has robust coverage the concepts with a lean install-and-go guide over having a lean Beginners Guide and a more in-depth install-and-go guide.
+
+EDITOR'S NOTE: The HCL section here includes a healthy amount of example syntax, which I consider to be a good idea so that readers brand-new to Terraform have a more concrete sense of what using it actually looks like.
 
 Intro paragraph: define Terraform, e.g.:
 
@@ -173,3 +175,5 @@ List backend types: https://www.terraform.io/docs/backends/types/index.html
 Possible section introducing that existing infrastructure can be added to Terraform (don't go far into detail, maybe just link out to the guide we write on that subject, if we do).
 
 ## Next Steps
+
+Link to `Use Terraform to Provision Linode Environments` guide.
