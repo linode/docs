@@ -13,7 +13,7 @@ published: 2015-06-29
 title: How to Change your Linode's Kernel
 ---
 
-This guide is about changing your Linode's kernel to an upstream kernel, a Linode kernel or a kernel that you compile from source. For information on updating your existing Linode's kernel, check out the [How to Update your Existing Linux Kernel guide](/docs/platform/update-kernel/).
+This guide is about changing your Linode's kernel to an upstream kernel, a Linode kernel, or a kernel that you compile from source. For information on updating your Linode's current kernel, check out the [How to Update your Linode's Existing Kernel](/docs/platform/update-kernel/) guide.
 
 ## Which Kernel Am I Running?
 
@@ -21,7 +21,11 @@ Your Linode is capable of running one of three kinds of kernels:
 
 -   An *upstream* kernel that is maintained and provided by your Linux distribution's authors (this is also referred to as the *distribution-supplied* kernel).
 
--   The Linode kernel. Linode maintains an up-to-date kernel: Linode's engineering team monitors for new versions of the Linux kernel and then packages them for users shortly after they are available. These kernels are not installed on your filesystem --instead, the Linode Manager supplies them at boot time to your system.
+-   The Linode kernel. Linode maintains an up-to-date kernel: Linode's engineering team monitors for new versions of the Linux kernel and then packages them for users shortly after they are available. These kernels are not installed on your filesystem--instead, the Linode Manager supplies them at boot time to your system.
+
+    {{< note >}}
+A version history for Linode's kernel is available [here](https://www.linode.com/kernels).
+{{< /note >}}
 
 -   A kernel that you compile from source.
 
