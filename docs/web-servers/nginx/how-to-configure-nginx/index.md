@@ -255,7 +255,7 @@ location ~ \.pl$ {
     include /etc/nginx/fastcgi_params;
     fastcgi_pass unix:/var/run/fcgiwrap.socket;
     fastcgi_index index.pl;
-    fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
+    fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
 }
 
 {{< /file >}}
