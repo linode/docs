@@ -99,6 +99,9 @@ If you receive an email threshold alert from the Linode Manager, don't panic. Th
 
 Our custom monitoring and graphing tool [Longview](/docs/platform/longview/longview/) can give you a detailed breakdown of system performance and resource usage. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. On our platform, Longview, in conjunction with the Linode Manager email alerts, can help you to know quickly when your system is overloaded, and find out why.
 
+## Use Linode Managed
+[Linode Managed](https://www.linode.com/managed) is our monitoring service. Linode Managed offers 24x7 incident response, live migrations, and an automatic backup service. With a three-month Linode Managed commitment, you also get two complimentary standard site migrations performed by our [Professional Services Team](https://www.linode.com/professional-services).
+
 ### Use Third-Party Tools
 
 The graphs in the Linode Manager provide basic information for things like CPU utilization and bandwidth consumption. That's good information as far as it goes, but it won't sate the appetite of true geeks who crave detailed statistics on a server's disk, network, system, and service performance. For that kind of information, you'll need to install and configure a third-party performance monitoring tool.
