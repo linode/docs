@@ -38,6 +38,7 @@ There are several different availability monitoring tools available. Your decisi
 -   **Multiple Servers**: If you run more than one server, the [Elastic Stack](/docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/) is an excellent monitoring tool.
 -   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. You could also use a network diagnostic tool like [MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to diagnose and isolate networking errors.
 -   **Linode Longview**: [Longview](/docs/platform/longview/longview/) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using Longview in conjunction with a notification service can help you to identify issues faster, and get your system up and running sooner.
+-   **Linode Managed**: The [Managed](https://www.linode.com/managed) service lets Linode manage your infrastructure and provides incident response around the clock. You also receive access to [Longview Pro](https://www.linode.com/longview), free cPanel to manage your sites, data protection at no additional cost, and several other benefits.
 
 ### Configure Shutdown Watchdog
 
@@ -106,6 +107,10 @@ There are several free third-party performance monitoring tools available for yo
 
 -   **Munin**: Munin is a system and network monitoring tool that generates graphs of resource usage in an accessible web based interface. Munin also makes it possible to monitor multiple Linodes with a single installation.
 -   **Cacti**: If you have advanced monitoring needs, try Cacti. It allows you to monitor larger systems and more complex deployments with its plugin framework and web-based interface.
+
+## Linode Managed
+
+[Linode Managed](https://www.linode.com/managed) is our monitoring service that offers 24x7 incident response, dashboard metrics for your Linodes, free cPanel, and an automatic backup service. With a three-month Linode Managed commitment, you also get two complimentary standard site migrations performed by our [Professional Services Team](https://www.linode.com/professional-services). If you are running more than one Linode, not all are required to be managed. You can establish separate accounts (e.g., production and development) and monitor only the most critical services running on designated Linode(s). Existing customers can sign up for Linode Managed by [contacting support](https://cloud.linode.com/support/tickets) or from the legacy Linode Manager's [account tab](https://manager.linode.com/account).
 
 ## Manage Logs
 
