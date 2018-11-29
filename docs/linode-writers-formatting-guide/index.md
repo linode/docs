@@ -267,10 +267,6 @@ To use this shortguide in another guide, use the following syntax:
 {{</* content "install_python_miniconda" */>}}
 {{< /file >}}
 
-{{< note >}}
-Headers inside the shortguide will not be visible in the table of contents in the parent document.
-{{< /note >}}
-
 #### Hide Content Through Buttons
 
 Adding `os: ["mac", "linux", "windows"]` to the front matter inserts a jQuery script that will hide and display content shortcodes.
