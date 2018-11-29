@@ -2,7 +2,7 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Use Salt States to Create a LAMP Stack and Fail2ban Across All Listed Salt Minions on Debian 8.'
+description: 'This guides provides an introduction to some commonly used HCL terminology.'
 keywords: ["terraform", "hcl", "hashicorp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-11-26
