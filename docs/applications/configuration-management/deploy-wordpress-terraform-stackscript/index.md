@@ -78,6 +78,7 @@ resource "linode_domain_record" "madreypadre" {
      name = "www"
      record_type = "${var.a_record}"
      target = "${linode_instance.linode_id.ipv4[0]}"
+}
 
 resource "linode_domain_record" "root_madreypadre" {
      domain_id = "${linode_domain.madreypadre.id}"
@@ -153,6 +154,7 @@ resource "linode_domain_record" "madreypadre" {
      name = "www"
      record_type = "${var.a_record}"
      target = "${linode_instance.linode_id.ipv4[0]}"
+}
 
 resource "linode_domain_record" "root_madreypadre" {
      domain_id = "${linode_domain.madreypadre.id}"
@@ -243,7 +245,6 @@ Terraform allows you to assign variables in many ways, for example, you can assi
 1. Create a file named `terraform.tfvars` in your `terraform` directory to hold all non-sensitive values:
 
     {{< file "~/terraform/terraform.tfvars">}}
-token = "my-linode-api4-token"
 label = "wp-linode"
 stackscript_id = "81736"
 stackscript_data = {
@@ -259,6 +260,7 @@ soa_email = "user@email.com"
 1. Create a file name `secrets.tfvars` in your `terraform` directory to hold any sensitive values:
 
     {{< file "~/terraform/secrets.tfvars">}}
+token = "my-linode-api4-token"
 stackscript_data = {
   sspassword = "my-secure-password"
   db_password = "my-secure-password"
