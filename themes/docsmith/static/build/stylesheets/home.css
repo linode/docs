@@ -21323,10 +21323,14 @@ li.library-article-item:nth-child(odd) {
   margin-bottom: 8px;
   width: 100%;
 }
+@media only screen and (min-width: 1200px) {
+  .signup-top > div.row > div:first-child {
+    padding-top: 4px;
+  }
+}
 .signup-top span {
   font-family: Lato, sans-serif;
   font-size: 18px;
-  margin-right: 20px;
   vertical-align: middle;
 }
 .signup-top form {
@@ -21472,7 +21476,7 @@ h1.contribute {
 .social-share .share-group {
   float: left;
   max-width: 59px;
-  margin-top: 10px !important;
+  margin-top: 12.5px !important;
   min-width: 200px;
 }
 .social-share .share-group ul {
