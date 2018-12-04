@@ -30,7 +30,7 @@ You will need a current version of Go on your Linode. Read our guide on [install
 
 2. Navigate to the Caddy directory and start the build:
 
-        cd $GOPATH/src/github.com/mholt/caddy
+        cd $GOPATH/src/github.com/mholt/caddy/caddy
         go run build.go -goos=linux -goarch=amd64
 
 3. When the build finishes you will have a Caddy binary in the current directory. Move the binary to `/usr/bin` so that Caddy can function correctly:
