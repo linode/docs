@@ -14,8 +14,8 @@
             {{ partial "article_header" . }}
 	    {{ if ne .Params.promo_default false }}
             <div class="row">
-              <div class="col-sm-9">{{ partial "promo_code" . }}</div>
-              <div class="col-sm-3">{{ partial "share" . }}</div>
+              <div class="col-sm-10">{{ partial "promo_code" . }}</div>
+              <div class="col-sm-2">{{ partial "share" . }}</div>
             </div>
 	    {{ end }}
             {{ partial "github" . }}
