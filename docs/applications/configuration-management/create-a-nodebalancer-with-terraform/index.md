@@ -236,7 +236,7 @@ output "NodeBalancer IP Address" {
 
 Because this guide employs two Providers (Linode and Random) that you might not have installed on your local development environment, you'll need to run the `init` command to install them.
 
-    `terraform init`
+    terraform init
 
 You should see a message that Terraform has been successfully initialized.
 
