@@ -55,9 +55,11 @@ The Linode Stackscripts module will included two nested modules that split up th
 {{< output >}}
 linode_stackscripts/
 ├── main.tf
-├── variables.tf
 ├── outputs.tf
+├── secrets.tfvars
+├── terraform
 ├── terraform.tfvars
+├── variables.tf
 └── modules/
 &emsp;&emsp;&emsp;&emsp;├── linodes/
 &emsp;&emsp;&emsp;&emsp;│&emsp;&emsp; ├── main.tf
@@ -66,7 +68,7 @@ linode_stackscripts/
 &emsp;&emsp;&emsp;&emsp;└── stackscripts/
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── main.tf
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── variables.tf
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; └──outputs.tf
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; └── outputs.tf
 {{</ output >}}
 
 {{< note >}}
@@ -90,7 +92,7 @@ In this section, you will create the `linodes` module which will be in charge of
 
 1. Using your preferred text editor, create a `main.tf` file in `modules/linodes/` with the following resources:
 
-      {{< file "linode_stackscripts/linodes/main.tf">}}
+      {{< file "linode_stackscripts/modules/linodes/main.tf">}}
 locals {
     key ="${var.key}"
 }
@@ -110,7 +112,7 @@ resource "linode_instance" "linode_id" {
     stackscript_id = "${var.stackscript_id}"
     stackscript_data = "${var.stackscript_data}"
 }
-      {{</ file >}}
+{{</ file >}}
 
       The `main.tf` file declares a `linode_instance` resource that deploys a linode using a StackScript. Notice that all argument values use interpolation syntax to access variable values. You will declare the variables next and provide the variable values in the root module's `terraform.tfvars` file. Using separate files for variable declaration and assignment parameterizes your configurations and allows them to be reused as modules.
 
@@ -125,11 +127,11 @@ resource "linode_sshkey" "main_key" {
     label = "${var.key_label}"
     ssh_key = "${chomp(file(local.key))}"
 }
-      {{</ file >}}
+{{</ file >}}
 
       - The `locals` stanza declares a local variable `key` whose value will be provided by an input variable.
 
-      - The `linode_sshkey` resource will create Linode SSH Keys tied to your Linode account. These keys can be reused for future Linode deployments once the resource has been created. `ssh_key = "${chomp(file(local.key))}"` uses Terraform’s built-in function `file()` to provide a local file path to the public ssh key’s location. The location of the file path is the value of the local variable `key`. The `chomp()` built-in function removes trailing new lines from the ssh key.
+      - The `linode_sshkey` resource will create Linode SSH Keys tied to your Linode account. These keys can be reused for future Linode deployments once the resource has been created. `ssh_key = "${chomp(file(local.key))}"` uses Terraform’s built-in function `file()` to provide a local file path to the public SSH key’s location. The location of the file path is the value of the local variable `key`. The `chomp()` built-in function removes trailing new lines from the SS key.
 
         If you do not already have SSH keys, follow the steps in the **Create an Authentication Key-pair** section of the [Securing Your Server Guide](/docs/security/securing-your-server/#create-an-authentication-key-pair).
 
@@ -144,11 +146,11 @@ resource "linode_instance" "linode_id" {
     stackscript_id = "${var.stackscript_id}"
     stackscript_data = "${var.stackscript_data}"
 }
-      {{</ file >}}
+{{</ file >}}
 
       The `linode_instance` resource creates a Linode instance with the listed arguments. Please note the following information:
 
-      - The `authorized_keys` argument uses the ssh public key provided by the `linode_sshkey` resource in the previous stanza. This argument expects a value of type list, so the value must be wrapped in brackets.
+      - The `authorized_keys` argument uses the SSH public key provided by the `linode_sshkey` resource in the previous stanza. This argument expects a value of type list, so the value must be wrapped in brackets.
 
       - To use an existing Linode StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. Later on in the guide, you will create your own StackScript and expose its ID as an output variable in order to use its ID to deploy your Linode instance.
 
@@ -162,7 +164,7 @@ variable "key" {
 }
 
 variable "key_label" {
-  description = "new ssh key label"
+  description = "new SSH key label"
 }
 
 variable "image" {
@@ -202,7 +204,7 @@ variable "stackscript_data" {
   description = "Map of required StackScript UDF data."
   type = "map"
 }
-        {{</ file >}}
+{{</ file >}}
 
     - Modules must include a description for each input variable to help document your configuration’s usage. This will make it easier for anyone else to use this module.
 
@@ -218,7 +220,7 @@ variable "stackscript_data" {
 output "sshkey_linode" {
   value = "${linode_sshkey.main_key.ssh_key}"
 }
-      {{</ file >}}
+{{</ file >}}
 
       The `outputs.tf` file exposes any values from the resources you declared in the `main.tf` file. Any exposed values can be used by any other module within the root module. The `sshkey_linode` output variable exposes the `linode_sshkey` resource's public key.
 
@@ -242,7 +244,7 @@ resource "linode_stackscript" "default" {
   images = [ "${var.stackscript_image}" ]
   rev_note = "${var.rev_note}"
 }
-      {{</ file >}}
+{{</ file >}}
 
       The `main.tf` file creates the `linode_stackscript` resource and provides the required configurations. All argument values use interpolation syntax to access input variable values. You will declare the input variables next and provide the variable values in the root module’s `terraform.tfvars file`. For more information on StackScripts see the [Automate Deployments with StackScripts](https://www.linode.com/docs/platform/stackscripts/) guide and the [Linode APIv4 docs](https://developers.linode.com/api/v4#tag/StackScripts).
 
@@ -267,15 +269,15 @@ variable "stackscript_image" {
 variable "rev_note" {
   description = "This field allows you to add notes for the set of revisions made to this StackScript."
 }
-    {{</ file >}}
+{{</ file >}}
 
 1. Create the `outputs.tf` file:
 
-    {{< file "~/linode_stackscripts/modules/stackscripts/variables.tf" >}}
+    {{< file "~/linode_stackscripts/modules/stackscripts/output.tf" >}}
 output "stackscript_id" {
   value = "${linode_stackscript.default.id}"
 }
-    {{</ file >}}
+{{</ file >}}
 
     The `outputs.tf` file exposes the value of the `linode_stackscript` resource's ID. Every StackScript is assigned a unique ID upon creation. You will need this ID when creating your root module.
 
@@ -314,7 +316,7 @@ module "linodes" {
     stackscript_id = "${module.stackscripts.stackscript_id}"
     stackscript_data = "${var.stackscript_data}"
 }
-    {{</ file >}}
+{{</ file >}}
 
     The `main.tf` file uses the `linodes` and `stackscripts` modules that were created in the previous sections and provides the required arguments. All argument values use interpolation syntax to access variable values, which you will declare in a `variables.tf` file and then provide corresponding values in a `terraform.tfvars` file.
 
@@ -324,7 +326,7 @@ module "linodes" {
 provider "linode" {
     token = "${var.token}"
 }
-    {{</ file >}}
+{{</ file >}}
 
     The first stanza declares Linode as the provider that will manage the lifecycle of any resources declared throughout the configuration file. The Linode provider requires your Linode APIv4 token for authentication.
 
@@ -337,7 +339,7 @@ module "stackscripts" {
     stackscript_image = [ "${var.stackscript_image}" ]
     rev_note = "${var.rev_note}"
 }
-    {{</ file >}}
+{{</ file >}}
 
     The next stanza instructs Terraform to create an instance of the `stackscripts` module and instantiate any of the resources defined within the module. The `source` attribute provides the location of the child module's source code and is required whenever you create an instance of a module. All other attributes are determined by the module. Notice that all the attributes included in the module block correspond to the `linode_stackscript` resource's arguments declared in the `main.tf` file of the `stackscripts` module.
 
@@ -356,7 +358,7 @@ module "linodes" {
     stackscript_id = "${module.stackscripts.stackscript_id}"
     stackscript_data = "${var.stackscript_data}"
 }
-    {{</ file >}}
+{{</ file >}}
 
     This stanza creates an instance of the `linodes` module and then instantiate the resources you defined in the module. Notice that `authorized_keys = [ "${module.linodes.sshkey_id}" ]` and `stackscript_id = "${module.stackscripts.stackscript_id}"` both access values exposed as output variables by the `linodes` and `stackscripts` modules. Any module's exposed output variables can be referenced in your root module's `main.tf` file.
 
@@ -392,7 +394,7 @@ variable "key" {
 }
 
 variable "key_label" {
-  description = "New ssh key label."
+  description = "New SSH key label."
 }
 
 variable "image" {
@@ -423,7 +425,7 @@ variable "stackscript_data" {
   description = "Map of required StackScript UDF data."
   type = "map"
 }
-    {{</ file >}}
+{{</ file >}}
 
 1. Create the `outputs.tf` file:
 
@@ -431,11 +433,7 @@ variable "stackscript_data" {
 output "stackscript_id" {
   value = "${module.stackscripts.stackscript_id}"
 }
-
-output "stackscript_id" {
-  value = "${module.linodes.sshkey_linode}"
-}
-    {{</ file >}}
+{{</ file >}}
 
     In the `outputs.tf` file you will re-expose the output variables exposed by the `linodes` and `stackscripts` modules.
 
@@ -470,15 +468,14 @@ user_add_sudo "$MY_USERNAME" "$MY_PASSWORD"
 user_add_pubkey "$MY_USERNAME" "$MY_USERPUBKEY"
 ssh_disable_root
 goodstuff
-set +x
 EOF
 stackscript_image = "linode/ubuntu18.04"
 rev_note = "First revision of my StackScript created with the Linode Terraform provider."
-    {{</ file >}}
+{{</ file >}}
 
     The `terraform.tfvars` file supplies all values required by the `linodes` and `stackscripts` modules. Ensure you replace any values with your own values when using this example file.
 
-    The `stackscript` variable provides the actual contents of the StackScript you create. This example StackScript requires four `UDF` values `my_hostname`, `my_username`, `my_password`, and `my_userpubkey`. These values are supplied by the `stackscript_data` map. The StackScript will then use these values to create a limited user account, set a hostname, add a host entry, add the created user to the `sudo` group, disable ssh access for the root user, and install vim, wget, and less. This StackScript uses bash functions defined in the Linode Community [StackScript Bash Library](https://www.linode.com/stackscripts/view/1).
+    The `stackscript` variable provides the actual contents of the StackScript you create. This example StackScript requires four `UDF` values `my_hostname`, `my_username`, `my_password`, and `my_userpubkey`. These values are supplied by the `stackscript_data` map. The StackScript will then use these values to create a limited user account, set a hostname, add a host entry, add the created user to the `sudo` group, disable SSH access for the root user, and install vim, wget, and less. This StackScript uses bash functions defined in the Linode Community [StackScript Bash Library](https://www.linode.com/stackscripts/view/1).
 
 1. Create a file named `secrets.tfvars` to hold any sensitive values:
 
@@ -489,7 +486,7 @@ stackscript_data {
   my_password = "my-limited-users-password"
   my_userpubkey = "my-public-ssh-key"
 }
-    {{</ file >}}
+{{</ file >}}
 
     This file contains all sensitive data needed for your Linode deployment. Ensure you replace all values with your own secure passwords and your Linode account's APIv4 token. This file should never be tracked in version control software and should be listed in your `.gitignore` file if using [GitHub](https://github.com/).
 
@@ -517,9 +514,7 @@ Whenever a new Provider is used in a Terraform configuration, it must first be i
 
 1. You are now ready to create the infrastructure defined in your root module's `main.tf` configuration file:
 
-        terraform apply \
-        -var-file="secrets.tfvars" \
-        -var-file="terraform.tfvars"
+        terraform apply -var-file="secrets.tfvars" -var-file="terraform.tfvars"
 
     Since you are using multiple variable value files, you must call each file individually using the `var-file` argument. You will be prompted to confirm the `apply` action. Type *yes* and hit **enter**. Terraform will begin to create the resources you’ve defined throughout this guide. This process will take a couple of minutes to complete. Once the infrastructure has been successfully built you will see a similar output:
 
@@ -537,7 +532,7 @@ Whenever a new Provider is used in a Terraform configuration, it must first be i
         ip_address = 192.0.2.0
       {{</ output >}}
 
-1. Open a new shell session and ssh into your Linode using the ip address you retrieved in the previous step and the username you defined in the `terraform.tfvars` file's `my_username` variable:
+1. Open a new shell session and SSH into your Linode using the ip address you retrieved in the previous step and the username you defined in the `terraform.tfvars` file's `my_username` variable:
 
         ssh username@192.0.2.0
 
@@ -554,11 +549,11 @@ secrets.tfvars
 .terraform/
 terraform/
 terraform.tfstate
-    {{</ file >}}
+{{</ file >}}
 
     {{< note >}}
 If there are any files related to the Terraform installation steps completed before beginning this guide (i.e zip files and checksum files), you can remove these files from the `linode_stackscripts` directory, since you should not track them in version control and they are no longer necessary.
-    {{</ note >}}
+{{</ note >}}
 
 1. Initialize the git repository:
 
