@@ -220,6 +220,7 @@ Here are some of the most popular spam and virus filter services:
 - [Amavis](http://www.amavis.org) is an open source content filter for email that integrates directly with your MTA. It does some checking on its own, and can also be used in conjunction with more robust spam and virus filters.
 - [Clam AntiVirus](http://www.clamav.net/lang/en/) is a popular, free, and open-source virus scanner.
 - [SpamAssassin](http://spamassassin.apache.org) is a very popular free spam filter.
+- [Anti-Spam SMTP Proxy Server](https://sourceforge.net/projects/assp/) Anti-Spam SMTP Proxy Server implements multiple spam filters.
 
 #### What to do if your server has been blacklisted
 
