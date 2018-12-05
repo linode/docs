@@ -17,6 +17,7 @@ type: "guide"
 weight: 10
 icon: "book"
 show_on_rss_feed: false
+cloud_manager_link: getting-started-new-manager
 ---
 
 ![Getting Started with Linode](getting-started.jpg "Getting Started with Linode")

@@ -77,7 +77,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 3.  Install the latest version of WordPress and expand it:
 
         sudo wget http://wordpress.org/latest.tar.gz
-        sudo -u www-data tar -xvf latest.tar.gz
+        sudo tar -xvf latest.tar.gz
 
 4.  Move `latest.tar.gz`, so it is renamed as `wordpress`, followed by the date to store a pristine backup of the source files:
 

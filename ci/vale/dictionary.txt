@@ -418,11 +418,13 @@ gfxmode
 gibibytes
 girocco
 gist
+gitfs
 github
 gitignore
 gitlab
 gitolite
 gitosis
+gitpython
 gitweb
 glibc
 glish
@@ -550,6 +552,7 @@ inittab
 inode
 inotify
 insmod
+inspec
 interdomain
 interruptible
 introducer
@@ -623,6 +626,7 @@ kickbans
 kickstarter
 killall
 kinser
+kitchensalt
 klei
 kloth
 kloxo
@@ -725,6 +729,7 @@ maxdepth
 mbit
 mbits
 mbox
+Mbps
 mbstrings
 mcrypt
 mcy
@@ -752,6 +757,7 @@ minification
 minikube
 minimalistic
 minio
+minitest
 misconfiguration
 misconfigurations
 misconfigured
@@ -1078,6 +1084,7 @@ rpaf
 rpc
 rpmforge
 rsa
+rspec
 rss
 rstudio
 rsync
@@ -1137,6 +1144,7 @@ serv
 server1
 servername
 serverpassword
+serverspec
 servlet
 servlets
 setattr
@@ -1166,6 +1174,7 @@ sintra
 sitename
 slackpkg
 slavedb
+sls
 smartcard
 smartcards
 smtp
@@ -1236,6 +1245,7 @@ suid
 sukharev
 supervisord
 surbma
+suse
 svn
 symantec
 symfony
@@ -1277,6 +1287,7 @@ theano
 theming
 thingsboard
 tika
+timedatectl
 timeframe
 timespan
 timewait

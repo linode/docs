@@ -281,23 +281,102 @@ function toggleNoteDisclosure(disclosureNote) {
 
 })(jQuery);
 
+
+function articleHeadersChangedVisibility() {
+    function navListElementForHeaderID(id) {
+        var href = "#" + id;
+        return $('#TableOfContents > ul').find('a[href="' + href + '"]').first().parent();
+    }
+
+    var articleBody = $('div#article-body');
+
+    var visibleHeaders = articleBody
+        .find(':header')
+        .not("div:hidden :header");
+    visibleHeaders.each(function() {
+        navListElementForHeaderID(this.id).show();
+    });
+
+    var hiddenHeaders = articleBody
+        .find(':header')
+        .filter("div:hidden :header");
+    hiddenHeaders.each(function() {
+        navListElementForHeaderID(this.id).hide();
+    });
+
+    $('body').scrollspy('refresh')
+}
+
+// Hugo's .TableOfContents shortcode 
+// (which relies on the Blackfriday markdown
+// renderer to compile the table of contents)
+// does not include headers from embedded 
+// shortguides. buildNav() rebuilds the nav, 
+// including embedded shortguides.
+function buildNav() {
+    function addListTagsForHeaderToNav(parentList, currentHeaderElement, previousHeaderElement) {
+        function headerLevel(headerElement) {
+            return parseInt(headerElement.prop('tagName').slice(1));
+        }
+        var currentHeaderLevel = headerLevel(currentHeaderElement);
+        var previousHeaderLevel = headerLevel(previousHeaderElement);
+    
+        function anchorElement(headerElement) {
+            return $("<a />").attr("href", "#" + headerElement.prop('id'))
+                .text($(headerElement.contents()[0]).text());
+        }
+    
+        if (currentHeaderLevel === previousHeaderLevel) {
+            var li = $("<li></li>").appendTo(parentList);
+            anchorElement(currentHeaderElement).appendTo(li);
+        }
+        else if (currentHeaderLevel > previousHeaderLevel) {
+            for (var i = 0; i < currentHeaderLevel - previousHeaderLevel; i++) {
+                parentList = $("<ul></ul>").appendTo(parentList.children("li:last"));
+                $("<li></li>").appendTo(parentList);
+            }
+            anchorElement(currentHeaderElement).appendTo(parentList.children("li:last"));
+        }
+        else if (currentHeaderLevel < previousHeaderLevel) {
+            for (var i = 0; i < previousHeaderLevel - currentHeaderLevel; i++) {
+                parentList = parentList.parent().closest("ul");
+            }
+            var li = $("<li></li>").appendTo(parentList);
+            anchorElement(currentHeaderElement).appendTo(li);
+        }
+    
+        return parentList;
+    }
+
+    var parentList = $('#TableOfContents > ul');
+    // All of .TableOfContent's elements were embedded in 
+    // #TableOfContents > ul > li
+    parentList.children('li:first').empty();
+
+    var headers = $('div#article-body')
+        .find(':header');
+    for (var i = 1; i < headers.length; i++) {
+        parentList = addListTagsForHeaderToNav(parentList, headers.eq(i), headers.eq(i-1));
+    }
+}
+
 (function($) {
+
+    buildNav();
 
     SidebarScroll = {
         init: function() {
             var tocElemID = '#doc-sidebar';
-            var toc = $(tocElemID);
-
-            var footer = $('footer');
-            var bottom = Math.round($(document).height() - footer.offset().top) + 80;
 
             /* activate scrollspy menu */
             var $body = $(document.body);
-            var navHeight = toc.outerHeight(true) + 10;
+
+            // The y position of the sticky nav element
+            var scrollSpyOffset = 20;
 
             $body.scrollspy({
                 target: tocElemID,
-                offset: navHeight
+                offset: scrollSpyOffset
             });
 
             /*  scrollspy Table of contents, adapted from https://www.bootply.com/100983
@@ -310,8 +389,11 @@ function toggleNoteDisclosure(disclosureNote) {
                     var target = $(this.hash);
                     target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
                     if (target.length) {
+                        // Add 1 to push the scroll position past the scrollspy threshold
+                        // for the header. Otherwise, the header prior to the target would be
+                        // highlighted in the nav at the end of the scroll animation.
                         $('html,body').animate({
-                            scrollTop: target.offset().top - 50
+                            scrollTop: target.offset().top - scrollSpyOffset + 1
                         }, 1000);
                         /* Change the hash location in URL */
                         window.location.hash = this.hash;

@@ -15,6 +15,8 @@ title: How to Keep Your Linode Account Safe
 cloud_manager_link: security/linode-manager-security-controls-new-manager
 ---
 
+![Banner_image](How_to_Keep_Your_Linode_Account_Safe_smg.jpg)
+
 <!-- ![Linode Manager Security Controls](Linode_Manager_Security_Controls_smg.jpg) -->
 
 The [Linode Manager](https://manager.linode.com) is the gateway to your Linode products and services, and you should take steps to protect it from unauthorized access. Linode supports and recommends implementing the following security measures:

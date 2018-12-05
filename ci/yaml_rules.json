@@ -136,12 +136,24 @@
     "type": "list",
     "description": "List of operating systems to generate buttons"
   },
-  "promo": {
+  "promo_code_amount": {
+      "elements": false,
+	  "required": false,
+	  "type": "text",
+	  "description": "Amount to be displayed for custom promotion code message"
+    },
+  "promo_code": {
     "elements": false,
 	"required": false,
-	"type": "bool",
-	"description": "Set to false to disable DOCS10 promo code message"
+	"type": "text",
+	"description": "Name to be displayed for custom promotion code message"
   },
+  "promo_default": {
+      "elements": false,
+	  "required": false,
+	  "type": "bool",
+	  "description": "Set to false to disable DOCS10 promo code message"
+    },
   "published": {
     "elements": false,
     "required": true,

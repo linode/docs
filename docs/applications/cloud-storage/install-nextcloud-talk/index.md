@@ -3,11 +3,11 @@ author:
   name: Angel
   email: docs@linode.com
 description: "Nextcloud is an open source solution to hosting your own content online. In addition to the total control users gain over their own files, Nextcloud offers customizable security features that allow the user to take control of sharing and access privileges."
-og_description: "Nextcloud 13 brings improved UI, video and text chat, and end-to-end encryption wrapped into a cloud storage platform. This guide shows you how to install Nextcloud 13 using Docker."
+og_description: "Nextcloud 14 brings improved UI, video and text chat, and end-to-end encryption wrapped into a cloud storage platform. This guide shows you how to install Nextcloud 14 using Docker."
 keywords: ["nextcloud", "cloud", "open source hosting", "video chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-03-12
-modified: 2018-03-08
+modified: 2018-12-04
 modified_by:
   name: Angel
 title: 'Introduction to Nextcloud Talk'
@@ -15,9 +15,9 @@ external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
 ---
 
-## What is Nextcloud 13?
+## What is Nextcloud 14?
 
-Nextcloud 13 is a cloud storage platform that offers users the ability to self-host a video and text chat platform called Talk, featuring end-to-end encryption. This guide will walk you through setting up Nextcloud, and show how to use the video chat platform built-into the latest release.
+Nextcloud 14 is a cloud storage platform that offers users the ability to self-host a video and text chat platform called Talk, featuring end-to-end encryption. This guide will walk you through setting up Nextcloud, and show how to use the video chat platform built-into the latest release.
 
 ## Install Docker CE
 
@@ -25,7 +25,7 @@ You will need a Linode with Docker CE installed to follow along with the steps i
 
 {{< content "install-docker-ce" >}}
 
-## Install Nextcloud 13 and Talk
+## Install Nextcloud 14 and Talk
 
 ### Nextcloud
 
