@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
+description: 'Create a Terraform module that deploys a Linode instance from a StackScript.'
 keywords: ['terraform','resource','modules','provider']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-11-30
@@ -15,20 +15,21 @@ contributor:
 external_resources:
 - '[Linode Terraform Provider](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 - '[Terraform - Creating Modules](https://www.terraform.io/docs/modules/create.html)'
+- '[Terraform - Module Sources](https://www.terraform.io/docs/modules/sources.html)'
 ---
 Terraform modules allow you to better organize your configuration code and make the code reusable. You can host your Terraform modules on remote version control services, like GitHub, for others to use. The [Terraform Module Registry](https://registry.terraform.io/) hosts community modules that you can reuse for your own Terraform configurations or publish your own modules for consumption by the Terraform community.
 
-In this guide, you will create a **Linode StackScripts** module that provides a reusable Terraform configuration that deploys a Linode instance from a StackScript you will create. This module will include nested modules that split up the required resources between the **root module**, a `linode_instace` module and a `stackscripts` module.
+In this guide, you will create a **Linode StackScripts** module that deploys a Linode instance from a StackScript you will create. This module will include nested modules that split up the required resources between the **root module**, a `linode_instace` module and a `stackscripts` module.
 
 ## Before You Begin
 
 1. Install Terraform on your local computer using the steps found in the **Install Terraform** section of the [Use Terraform to Provision Linode Environments](https://linode.com/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide. Your Terraform project directory should be named `linode_stackscripts`.
 
-1. Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain a token.
+2. Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain a token.
 
-1. Complete the steps in the **Configure Git** section of the [Getting Started with Git](/docs/development/version-control/how-to-configure-git/#configure-git) guide.
+3. Complete the steps in the **Configure Git** section of the [Getting Started with Git](/docs/development/version-control/how-to-configure-git/#configure-git) guide.
 
-1. Read the Deploy a WordPress Site using Terraform and StackScripts to familiarize yourself with the Linode Provider's StackScript resource.
+4. Read the Deploy a WordPress Site using Terraform and StackScripts to familiarize yourself with the Linode Provider's StackScript resource.
 
 ## Standard Module Structure
 
@@ -435,7 +436,7 @@ output "stackscript_id" {
 }
 {{</ file >}}
 
-    In the `outputs.tf` file you will re-expose the output variables exposed by the `linodes` and `stackscripts` modules.
+    In the `outputs.tf` file you will re-expose the output variables exposed by the `stackscripts` module.
 
 1. Create the `terraform.tfvars` file to provide values for all input variables defined in the `variables.tf` file. This file will exclude any values that provide sensitive data, like passwords and API tokens. A file containing sensitive values will be created in the next step:
 
@@ -475,7 +476,7 @@ rev_note = "First revision of my StackScript created with the Linode Terraform p
 
     The `terraform.tfvars` file supplies all values required by the `linodes` and `stackscripts` modules. Ensure you replace any values with your own values when using this example file.
 
-    The `stackscript` variable provides the actual contents of the StackScript you create. This example StackScript requires four `UDF` values `my_hostname`, `my_username`, `my_password`, and `my_userpubkey`. These values are supplied by the `stackscript_data` map. The StackScript will then use these values to create a limited user account, set a hostname, add a host entry, add the created user to the `sudo` group, disable SSH access for the root user, and install vim, wget, and less. This StackScript uses bash functions defined in the Linode Community [StackScript Bash Library](https://www.linode.com/stackscripts/view/1).
+    The `stackscript` variable provides the actual contents of the StackScript you create. This example StackScript requires four `UDF` values `my_hostname`, `my_username`, `my_password`, and `my_userpubkey`. The `my_hostname` and `my_username` values are supplied by the `stackscript_data` map. (The `my_password` and `my_userpubkey` values will be provided in the next step.) The StackScript will then use these values to create a limited user account, set a hostname, add a host entry, add the created user to the `sudo` group, disable SSH access for the root user, and install vim, wget, and less. This StackScript uses bash functions defined in the Linode Community [StackScript Bash Library](https://www.linode.com/stackscripts/view/1).
 
 1. Create a file named `secrets.tfvars` to hold any sensitive values:
 
@@ -500,7 +501,7 @@ You are now ready to apply your `linode_stackscripts` module's Terraform configu
 
 Whenever a new Provider is used in a Terraform configuration, it must first be initialized. The initialization process downloads and installs the provider’s plugin and performs any other steps needed for its use. It is useful to view your configuration’s execution plan before applying the configuration to build your desired infrastructure. In this section, you will complete all these steps.
 
-1. Initialize the Linode Provider. Ensure you are in the terraform directory before running this command:
+1. Initialize the Linode Provider. Ensure you are in the `linode_stackscripts` directory before running this command:
 
         terraform init
 
@@ -580,3 +581,12 @@ If there are any files related to the Terraform installation steps completed bef
         git push -u origin master
 
 Your Terraform module is now tracked via GitHub and can be used, shared and modified by anyone who has access to your GitHub account.
+
+In the future, you can source this module from GitHub within your Terraform module declarations. You would write your module block like the following:
+
+    module "linode_stackscripts" {
+        source = "github.com/username/linode_stackscripts"
+
+        VARIABLES HERE
+        . . .
+    }
