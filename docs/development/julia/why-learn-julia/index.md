@@ -15,6 +15,7 @@ external_resources:
 - '[Julia By Example](https://juliabyexample.helpmanual.io/)'
 - '[JuliaBox](https://juliabox.com/)'
 ---
+![Why You Should Learn Julia](Why_You_Should_Learn_Julia_smg.jpg)
 
 ## What is Julia?
 
