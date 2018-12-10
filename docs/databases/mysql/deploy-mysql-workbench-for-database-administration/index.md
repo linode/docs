@@ -80,7 +80,7 @@ The first step after running MySQL Workbench is to add your Linode as a database
     *   Default Schema - This is the default database to connect to.  It's OK to leave this blank if you haven't created a database yet or don't want one to load by default.
 
         {{< note >}}
-Using MySQL Workbench with multi-factor authentication for SSH connections is not supported at this time.
+Using MySQL Workbench (currently release 8.0.13) with multi-factor authentication for SSH connections is not supported at this time.
 {{< /note >}}
 
 2.  Once you've configured everything, click **Test Connection**.  If you didn't save your passwords then Workbench will prompt for them.
