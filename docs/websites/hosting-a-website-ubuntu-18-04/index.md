@@ -318,6 +318,10 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 
 1.  Enter your Linode's IP address in a web browser (e.g., type `http://192.0.2.0` in the address bar, replacing the example IP address with your own). Your website should load in the web browser.
 
+    {{< note >}}
+  If you have configured a firewall on your Linode, ensure your firewall rules allow traffic to your Apache web server. For more informatino on configuring firewall rules on Ubuntu, see [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+    {{</ note >}}
+
 1.  If you plan on hosting multiple websites, you can test the virtual hosts by editing the `hosts` file on your local computer. Check out the [Previewing Websites Without DNS](/docs/networking/dns/previewing-websites-without-dns/) guide for more information.
 
 1.  Test the name-based virtual hosts by entering the domain names in the address bar of the web browser on a local device. Your websites should load in the web browser.
