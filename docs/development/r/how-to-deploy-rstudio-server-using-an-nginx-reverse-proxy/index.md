@@ -6,12 +6,14 @@ description: 'RStudio Server is a the web based version of RStudio for a desktop
 og_description: 'RStudio Server is a the web based version of RStudio for a desktop environment. Gain access to your R development environment from anywhere in the world.'
 keywords: ['R', 'statistic', 'R Foundation', 'data visualization']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-01-29
+modified: 2019-12-11
 modified_by:
   name: Linode
 published: 2018-01-29
 title: 'How to Deploy RStudio Server Using an NGINX Reverse Proxy'
 ---
+
+![How to Deploy Rstudio using an NGINX reverse proxy](How_to_Deploy_RStudio_Server_Using_an_NGINX_Reverse_Proxy_smg.jpg)
 
 ## What is RStudio Server?
 
