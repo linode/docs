@@ -46,7 +46,7 @@ resource "linode_instance" "example_linode" {
     {{</ file >}}
 
 {{< note >}}
-You should not include sensitive data in your resource declarations. For more information on secrets management, see [Secrets Management with Terraform](/docs/link-terraform-secrets).
+You should not include sensitive data in your resource declarations. For more information on secrets management, see [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/).
 {{</ note >}}
 
 ### Key Elements of HCL
@@ -86,7 +86,7 @@ provider "linode" {
 Once your provider is declared, you can begin configuring resources available from the provider.
 
 {{< note >}}
-Providers are packaged as plugins for Terraform. Whenever declaring a new provider in your Terraform configuration files, the `terraform init` command should be run. This command will complete several initalization steps that are necessary before you can apply your Terraform configuration, including downloading the plugins for any providers you've specified.
+Providers are packaged as plugins for Terraform. Whenever declaring a new provider in your Terraform configuration files, the `terraform init` command should be run. This command will complete several initialization steps that are necessary before you can apply your Terraform configuration, including downloading the plugins for any providers you've specified.
 {{</ note >}}
 
 ## Resources
@@ -128,7 +128,7 @@ module "linode-module-example" {
 }
 {{</ file >}}
 
-Authoring modules involves defining resource requirements and parameterizing configurations using [input variables](#input-variables), variable files, and outputs. To learn how to write your own Terraform modules, see [Create a Terraform Module](/docs/link-to-create-a-terraform).
+Authoring modules involves defining resource requirements and parameterizing configurations using [input variables](#input-variables), variable files, and outputs. To learn how to write your own Terraform modules, see [Create a Terraform Module](/docs/applications/configuration-management/create-terraform-module/).
 
 ## Input Variables
 
