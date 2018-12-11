@@ -476,8 +476,8 @@ rev_note = "First revision of my StackScript created with the Linode Terraform p
 
     The `terraform.tfvars` file supplies all values required by the `linodes` and `stackscripts` modules. Ensure you replace any values with your own values when using this example file.
 
-    The `stackscript` variable provides the actual contents of the StackScript you create. This example StackScript requires four `UDF` values: `my_hostname`, `my_username`, `my_password`, and `my_userpubkey`. The `my_hostname` and `my_username` values are supplied by the `stackscript_data` map. The `my_password` and `my_userpubkey` values will be provided in the next step. 
-    
+    The `stackscript` variable provides the actual contents of the StackScript you create. This example StackScript requires four `UDF` values: `my_hostname`, `my_username`, `my_password`, and `my_userpubkey`. The `my_hostname` and `my_username` values are supplied by the `stackscript_data` map. The `my_password` and `my_userpubkey` values will be provided in the next step.
+
     The StackScript will then use these values to create a limited user account; set a hostname; add a host entry; add the created user to the `sudo` group; disable SSH access for the root user; and install vim, wget, and less. This StackScript uses bash functions defined in the Linode Community [StackScript Bash Library](https://www.linode.com/stackscripts/view/1).
 
 1. Create a file named `secrets.tfvars` to hold any sensitive values:
