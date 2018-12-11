@@ -86,7 +86,7 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
         OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
       {{</ output >}}
 
-1. If your Lindoe doesn't have curl installed, install curl:
+1. If your Linode doesn't have curl installed, install curl:
 
         yum install curl
 
