@@ -258,7 +258,7 @@ The `stackscript_data` variable is of type `map`. This will allow you to provide
 Terraform allows you to assign variables in many ways. For example, you can assign a variable value via the command line when running `terraform apply`. In order to persist variable values, you can also create files to hold all your values.
 
 {{< note >}}
-There are several other options available for secrets management with Terraform. For more information on this, see Secrets Management with Terraform.
+There are several other options available for secrets management with Terraform. For more information on this, see [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/).
 {{</ note >}}
 
 Terraform will automatically load any file named `terraform.tfvars` and use its contents to populate variables. However, you should separate out any sensitive values, like passwords and tokens, into their own file. Keep this sensitive file out of version control.
