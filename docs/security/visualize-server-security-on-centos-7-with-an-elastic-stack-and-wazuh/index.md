@@ -47,7 +47,9 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
 1. Your Linode should have at least [8GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
-1. Add a Domain Zone, NS record, and A/AAA record for the domain you will use to access your Kibana installation. See the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your Kibana instance via your Linode's IP address, instead, you can skip this step.
+1. Add a Domain Zone, NS record, and A/AAA record for the domain you will use to access your Kibana installation. See the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your Kibana instance via your Linode's IP address, you can skip this step.
+
+1. [Create an SSL Certificate](https://linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/), if you will be using SSL encryption for your Domain.
 
 1. Install NGINX or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:
 
@@ -326,7 +328,7 @@ MAX_LOCKED_MEMORY=unlimited
 
     This configures Elasticsearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes, `Xms4096M` in this example. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
 
-1. Restart the Elastisearch for the configurations to take effect:
+1. Restart Elasticsearch for the configurations to take effect:
 
         systemctl daemon-reload
         systemctl restart elasticsearch
