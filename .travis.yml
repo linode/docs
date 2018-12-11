@@ -4,6 +4,7 @@ python:
 
 cache:
     pip: true
+    vale: true
 
 env:
   - TEST_SUITE=vale
