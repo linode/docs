@@ -125,7 +125,7 @@ This method is a bit easier to use than supplying environment variables, and has
 
 ## How to Manage Your State File
 
-While it is relatively easy to keep secrets out of `.tf` files using any of the above methods, there is another file you need to be aware of when managing secrets, and that is the `terraform.tfstate` file. 
+While it is relatively easy to keep secrets out of `.tf` files using any of the above methods, there is another file you need to be aware of when managing secrets, and that is the `terraform.tfstate` file.
 
 This *state file* contains a JSON object that holds your managed infrastructure's current state. This state is a snapshot of the various attributes of your infrastructure at the time it was last modified. It is generated on `terraform apply` and is a necessary part of the Terraform process, as it maps the declarative code of your `.tf` files to your real world infrastructure.
 
