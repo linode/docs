@@ -5,8 +5,8 @@ python:
 cache:
     pip: true
     directories:
-      - /home/hugo/
-      - /home/vale/
+      - /home/travis/hugo
+      - /home/travis/vale
 
 env:
   - TEST_SUITE=vale
