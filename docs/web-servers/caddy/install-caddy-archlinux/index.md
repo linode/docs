@@ -78,7 +78,7 @@ example.com {
 {{< /file >}}
 
     {{< note >}}
-If you choose to serve your site from a filesystem directory othehr than `/usr/share/caddy/`, you must remove the Caddy test site files located there. The folder `/usr/share/caddy/` is prioritized over other locations, even when specified in the Caddyfile, so this directory must then be emptied.
+If you choose to serve your site from a filesystem directory other than `/usr/share/caddy/`, you must remove the Caddy test site files located there. The folder `/usr/share/caddy/` is prioritized over other locations, even when specified in the Caddyfile, so this directory must then be emptied.
 {{< /note >}}
 
 1. Reload Caddy:
