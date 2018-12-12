@@ -26,21 +26,25 @@ Terraform allows you to represent Infrastructure as Code (IaC). You can use it t
 
 {{< caution >}}
 The configurations and commands used in this guide will result in multiple billable resources being added to your account. Be sure to monitor your account closely in the Linode Manager to avoid unwanted charges. See the [Billings and Payments](/docs/platform/billing-and-support/billing-and-payments-new-manager/) guide for more details.
+
+If you would like to stop billing for the resources created in this guide, [remove them](#optional-remove-the-nodebalancer-resources) when you have finished your work.
 {{< /caution >}}
 
 ## Before You Begin
 
-1.  You should have Terraform installed in your development environment, and have a working knowledge of Terraform resource configuration and the [Linode Provider](https://www.terraform.io/docs/providers/linode/index.html). For more information on how to install and use Terraform, check out our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
+1.  You should have Terraform installed in your development environment, and have a working knowledge of Terraform resource configuration and the [Linode provider](https://www.terraform.io/docs/providers/linode/index.html). For more information on how to install and use Terraform, check out our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
 
-2.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain a token.
+1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain a token.
+
+1.  Create a `terraform_nodebalancer` directory on your computer for the Terraform project you will create in this guide. All files you create in this guide should be placed in this directory, and you should run all commands from this directory. This new project should not be created inside another Terraform project directory, including the one you may have made when previously following [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/).
 
 ## Create a Terraform Configuration File
 
 ### Create a Provider Block
 
-The first step to take when creating a Terraform configuration file is to create a Provider block. This block lets Terraform know which provider to use. The only configuration value that the Linode Provider needs is an API access token.
+The first step to take when creating a Terraform configuration file is to create a *provider block*. This block lets Terraform know which provider to use. The only configuration value that the Linode provider needs is an API access token.
 
-Create a file named `nodebalancer.tf` in your Terraform's project directory. You will be adding to this file throughout the guide. Add the Provider block to the file:
+Create a file named `nodebalancer.tf` in your Terraform project directory. You will be adding to this file throughout the guide. Add the provider block to the file:
 
 {{< file "nodebalancer.tf" >}}
 provider "linode" {
@@ -93,7 +97,11 @@ resource "linode_nodebalancer_config" "example-nodebalancer-config" {
 
 The NodeBalancer Config resource requires a NodeBalancer ID, which is populated in the first line with the variable `linode_nodebalancer.example-nodebalancer.id`. Because the `nodebalancer_id` argument references a NodeBalancer that has not been created yet, you can use this variable as a placeholder to reference the NodeBalancer ID. Terraform will automatically know to create the NodeBalancer resource before it creates any other resources that reference it. In this way you can craft intricate infrastructure that references its own parts, without having to worry about the order the resources appear in the Terraform configuration or whether or not the resources already exist.
 
-As far as settings go, the health check is set to `http_body`, meaning that the health check will look for the string set by `check_body` within the body of the page set at `check_path`. The check will issue 30 health check attempts, waiting for a response for 25 seconds each time, with 30 seconds between checks. Additionally, the session stickiness setting has been set to `http_cookie`. This means that the user will continue to be sent to the same server by the use of a session cookie. The algorithm has been set to `roundrobin`, which will sort users evenly across your backend nodes based on which server was accessed last.
+As far as settings go, the health check is set to `http_body`, meaning that the health check will look for the string set by `check_body` within the body of the page set at `check_path`. The NodeBalancer will take a node out of rotation after 30 failed check attempts. Each check will wait for a response for 25 seconds before it is considered a failure, with 30 seconds between checks. Additionally, the session stickiness setting has been set to `http_cookie`. This means that the user will continue to be sent to the same server by the use of a session cookie. The algorithm has been set to `roundrobin`, which will sort users evenly across your backend nodes based on which server was accessed last.
+
+{{< note >}}
+Review the [NodeBalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide) for a full list of NodeBalancer configuration options.
+{{< /note >}}
 
 ### Create NodeBalancer Node Resources
 
@@ -114,11 +122,11 @@ resource "linode_nodebalancer_node" "example-nodebalancer-node" {
 ...
 {{< /file >}}
 
-This resource's `count` argument will be populated with the `node_count` input variable you will define later on in this guide. The `count` argument tells Terraform that it should provision X number of Nodes, where X is `node_count`.
+This resource's `count` argument will be populated with the `node_count` input variable you will define later on in this guide. The `count` argument tells Terraform that it should provision `node_count` number of Nodes.
 
-Because provisioning more than one node creates a loop in the Terraform process, where the step for creating a node is repeated, you can use the `count.index` variable to keep track of which iteration Terraform is on in the loop. The interpolation `{count.index + 1}` in the node's `label` argument tells Terraform that you'd like each of the of nodes to be labeled sequentially, and because `count.index` starts at zero, you'd like the count to begin at one.
+Because provisioning more than one node creates a loop in the Terraform process, where the step for creating a node is repeated, you can use the `count.index` variable to keep track of which iteration Terraform is on in the loop. The interpolation `{count.index + 1}` in the node's `label` argument tells Terraform that you'd like each of the nodes to be labeled sequentially, and because `count.index` starts at zero, you'd like the count to begin at one.
 
-`linode_instance.example-instance.*.private_ip_address` references the private IP addresses of the yet-to-be-created Linode instances. In the next step, the Linode Instance resources will be labeled `example-instance`. Terraform has access to some attributes for each of the resources it creates, and `private_ip_address` is one of the available attributes from a Linode Instance resource. Because there will be two Linode instances created during the same step, Terraform groups these sets of attributes in a list. The `element()` function allows you to grab a single item from a list based on the item index. Here, instead of providing a hard-coded number for the index you can instead provide `count.index`. In this way the first NodeBalancer Node will reference the private IP address of the first Linode instance, and the second NodeBalancer Node will reference the private IP address of the second instance.
+`linode_instance.example-instance.*.private_ip_address` references the private IP addresses of the yet-to-be-created Linode instances. In the next step, the Linode Instance resources will be labeled `example-instance`. Terraform has access to some attributes for each of the resources it creates, and `private_ip_address` is one of the availdable attributes from a Linode Instance resource. Because there will be two Linode instances created during the same step, Terraform groups these sets of attributes in a list. The `element()` function allows you to grab a single item from a list based on the item index. Here, instead of providing a hard-coded number for the index you can instead provide `count.index`. In this way the first NodeBalancer Node will reference the private IP address of the first Linode instance, and the second NodeBalancer Node will reference the private IP address of the second instance.
 
 ### Create a Linode Instance Resource
 
@@ -141,13 +149,13 @@ resource "linode_instance" "example-instance" {
 
     provisioner "remote-exec" {
         inline = [
-            # install nginx
+            # install NGINX
             "export PATH=$PATH:/usr/bin",
 
             "apt-get -q update",
             "mkdir -p /var/www/html/",
             "mkdir -p /var/www/html/healthcheck",
-            "echo health check > /var/www/html/healthcheck/index.html",
+            "echo healthcheck > /var/www/html/healthcheck/index.html",
             "echo node ${count.index + 1} > /var/www/html/index.html",
             "apt-get -q -y install nginx",
         ]
@@ -169,7 +177,7 @@ The `authorized_keys` argument is supplied an SSH key input variable that will b
 
 `root_pass` is given the result of the `random_string` resource that will be defined later in this guide.
 
-The last thing of note in this Linode Instance resource is the `remote-exec` Provisioner block. This block contains two other components, the `inline` list and `connection` block. `inline` is a list of commands that Terraform will execute on the Linode instance once the Linode instance has booted. In this example, the inline commands will: update the Linode instance, create the necessary directory structure for NGINX, create the health check file and the more generalized `index.html` file, and install nginx.
+The last thing of note in this Linode Instance resource is the `remote-exec` Provisioner block. This block contains two other components, the `inline` list and `connection` block. `inline` is a list of commands that Terraform will execute on the Linode instance once the Linode instance has booted. In this example, the inline commands will: update the Linode instance, create the necessary directory structure for NGINX, create the health check file and the more generalized `index.html` file, and install NGINX.
 
 The `connection` block explains to Terraform how it should gain access to the Linode instance in order to run the commands supplied by the `inline` list. In this case, Terraform will gain access over SSH, logging in as the `root` user.
 
@@ -223,7 +231,7 @@ resource "random_string" "password" {
 
     In addition to the variables you defined above, there is also a `random_string` resource with the label `password`. This resource is provided by the [Random provider](https://www.terraform.io/docs/providers/random/index.html), and will generate a random string of 32 characters, including uppercase characters, lowercase characters, and numbers. This string will be the root password for your backend Nodes. If you would rather have exact control over your passwords, you can define a password here in `variables.tf` and set the value for that password in `terraform.tfvars` in the next step.
 
-1.  Create the `terraform.tfvars` file, and supply the `token`, `region`, and `node_count` values. This example uses the `us-east` regional datacenter, and the `node_count` is two.
+1.  Create the `terraform.tfvars` file and supply values for the `token`, `region`, and `node_count` variables. This example uses the `us-east` regional datacenter, and the `node_count` is two.
 
     {{< file "terraform.tfvars" >}}
 token = "your_api_token"
@@ -231,10 +239,10 @@ region = "us-east"
 node_count = 2
 {{< /file >}}
 
-    When Terraform runs, it looks for a file named `terraform.tfvars`, or files with the extention of `*.auto.tfvars`, and populates the Terraform variables with those values. If your SSH key is at a file location that is different than the default value, i.e., it does not exist at `~/.ssh/id_rsa.pub`, then you will need to add that value to `terraform.tfvars`.
+    When Terraform runs, it looks for a file named `terraform.tfvars`, or files with the extension `*.auto.tfvars`, and populates the Terraform variables with those values. If your SSH key is at a file location that is different than the default value, i.e., it does not exist at `~/.ssh/id_rsa.pub`, then you will need to add that value to `terraform.tfvars`.
 
     {{< note >}}
-If you want to use an input variable's default value defined in the `variable.tf` file, you can omit providing a value for that variable in the `terraform.tfvars` file.
+If you want to use an input variable's default value defined in the `variables.tf` file, you can omit providing a value for that variable in the `terraform.tfvars` file.
     {{</ note >}}
 
     Feel free to change any of the values in the `terraform.tfvars` file to your liking. For a list of regional datacenter IDs, you can use the cURL command to query the API:
@@ -243,7 +251,7 @@ If you want to use an input variable's default value defined in the `variable.tf
 
 ## Initializing, Planning, and Applying the Terraform State
 
-Because this guide employs two Providers (Linode and Random) that you might not have installed on your local development environment, you'll need to run the `init` command to install them.
+Because this guide employs two providers (Linode and Random) that you might not have installed on your local development environment, you'll need to run the `init` command to install them.
 
     terraform init
 
@@ -270,6 +278,8 @@ NodeBalancer IP Address = 104.237.148.131
 {{< /output >}}
 
 Navigate to your NodeBalancer IP address and view your NodeBalancer in action. You have successfully created a NodeBalancer and backend nodes in Terraform.
+
+### (Optional) Remove the NodeBalancer Resources
 
 If you are done with the resources you just created, you can remove them with the `destroy` command
 
