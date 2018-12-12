@@ -21,13 +21,13 @@ external_resources:
 
 1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3. You will need to register your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point your domain to your Linode.
+1. You will need to register your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point your domain to your Linode.
 
-4. Update your system with `sudo pacman -Syu`
+1. Update your system with `sudo pacman -Syu`
 
-5. Install the development packages with `sudo pacman -S base-devel`
+1. Install the development package group with `sudo pacman -S base-devel`
 
 ## What is Caddy?
 
@@ -41,15 +41,15 @@ The best way to install Caddy on Arch Linux is by using a snapshot from the *Arc
 
         curl https://aur.archlinux.org/cgit/aur.git/snapshot/caddy.tar.gz -o caddy.tar.gz
 
-2. Unpack the snapshot.
+1. Unpack the snapshot.
 
         tar xf caddy.tar.gz
 
-3. Navigate to the directory.
+1. Navigate to the directory.
 
         cd caddy
 
-4. Build and install the package.
+1. Build and install the package.
 
         makepkg -si
 
@@ -59,32 +59,30 @@ The best way to install Caddy on Arch Linux is by using a snapshot from the *Arc
 
         sudo systemctl start caddy
 
-2. Enable the Caddy service:
+1. Enable the Caddy service:
 
         sudo systemctl enable caddy
 
-3. Navigate to your Linode's domain name or IP address in a web browser. You should see the Caddy default page displayed.
+1. Navigate to your Linode's domain name or IP address in a web browser. You should see the Caddy default page displayed.
 
 ## Configure Caddy
 
-Caddy default configuration file resides in `/etc/caddy/`.
-Custom configuration files can be created in `/etc/caddy/caddy.conf.d`.
+Caddy configuration files reside in `/etc/caddy/` and website configuration files should be created in `/etc/caddy/caddy.conf.d/`.
 
-1. Create a sample configuration file for your website.
+1. Create a sample configuration file for your website. Replace `example.com` with your Linode's domain name, or `:80` if you don't have a domain yet but still want to get started with Caddy.
 
-        sudo touch /etc/caddy/caddy.conf.d/example.com.conf
-
-2. Open the example configuration file that you just created in a text editor. Replace `example.com` with your Linode's domain name.
-
-{{< file "/etc/caddy/caddy.conf.d/example.com.conf" caddy >}}
+    {{< file "/etc/caddy/caddy.conf.d/example.com.conf" caddy >}}
 example.com {
-    root /usr/share/caddy
+    root /usr/share/caddy/
 }
 {{< /file >}}
 
-3. Reload Caddy
+    {{< note >}}
+If you choose to serve your site from a filesystem directory othehr than `/usr/share/caddy/`, you must remove the Caddy test site files located there. The folder `/usr/share/caddy/` is prioritized over other locations, even when specified in the Caddyfile, so this directory must then be emptied.
+{{< /note >}}
+
+1. Reload Caddy:
 
         sudo systemctl reload caddy
 
-4. Navigate to your Linode's domain name in a web browser. You should be able to see content served from the root directory configured above.
-
+1. Navigate to your Linode's domain name in a web browser. You should be able to see content served from the root directory configured above.
