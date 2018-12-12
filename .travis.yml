@@ -4,7 +4,8 @@ python:
 
 cache:
     pip: true
-    vale: true
+    directories:
+      - /home/hugo/
 
 env:
   - TEST_SUITE=vale
