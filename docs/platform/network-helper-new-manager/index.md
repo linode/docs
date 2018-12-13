@@ -10,7 +10,7 @@ published: 2014-12-08
 modified_by:
   name: Linode
 title: Network Helper
-cloud_manager_link: platform/network-helper-new-manager/
+hiddenguide: true
 ---
 
 ![Network Helper](network-helper-title-graphic.jpg "Network Helper")
@@ -41,16 +41,19 @@ If you create an advanced configuration, Network Helper will undo those changes 
 
 Even with the global setting for Network Helper set to **OFF**, you can enable Network Helper on specific configuration profiles.
 
-1.  Go to your Linode's Dashboard, and under Configuration Profiles click **Edit** for the profile you want to adjust:
+1.  From the Linodes page, navigate to your Linode's **Settings** page.
 
-    [![The Edit link for a Configuration Profile](linode-dashboard-hilighted_small.png)](linode-dashboard-hilighted.png)
+    ![Navigate to the Linode's Settings page](network-helper-linode-settings-link.png)
 
-2.  Under the Filesystem/Boot Helpers section, change the **Auto-Configure Networking** option to Yes:
+2.  Under **Advanced Configurations**, click on the three dots to the right of your Configuration Profile and click **Edit**
 
+    [![Select the Configuration Profile Edit Menu](network-helper-linode-settings-page-small.png)](network-helper-linode-settings-page.png)
 
-    [![The Auto-configure Networking option](network-helper-hilighted_small.png)](network-helper-hilighted.png)
+3.  A menu will appear with your Profile's settings. Under Filesystem/Boot Helpers section make sure the toggle box labeled **auto-configure networking** is toggled on and blue.
 
-3. Click on **Save Changes**.
+    [![Toggle the 'auto-configure networking' box](network-helper-linode-config-profile-settings-small.png)](network-helper-linode-config-profile-settings.png)
+
+4. Click on **Submit**.
 
 ## What Files are Affected
 
@@ -141,12 +144,10 @@ Similarly, if you boot an unsupported older distribution while Network Helper is
 
 Network helper is enabled on all new configuration profiles by default. To modify this behavior as default follow the steps below.
 
-1.  From the Linode Manager, click on the **Account** tab:
+1.  From the Linode Manager, click on the **Account** link in the list on the left:
 
-    ![The Account tab in the Linode Manager](account-tab.png)
+2.  Click on the **Global Settings** tab. You can modify the default behavior under the Network Helper section:
 
-2.  Click on the **Account Settings** tab. You can modify the default behavior under the network helper section:
-
-    [![The Network Helper Default Behavior option](account-settings_small.png)](account-settings.png)
+    [![The Network Helper Default Behavior option](network-helper-linode-account-settings-small.png)](network-helper-linode-account-settings.png)
 
 3. Click the **Save** button.
