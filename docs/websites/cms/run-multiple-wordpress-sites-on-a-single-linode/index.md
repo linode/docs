@@ -5,7 +5,7 @@ author:
 description: 'This guide shows how to configure Apache Virtual Hosts to serve multiple WordPress sites from the same Linode.'
 keywords: ["install WordPress", "WordPress on Linode", "multiple WordPress", "how to configure WordPress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/cms/configure-apache-to-run-multiple-wordpress-sites-on-one-linode']
+aliases: ['websites/cms/configure-apache-to-run-multiple-wordpress-sites-on-one-linode/']
 modified: 2018-12-14
 modified_by:
   name: Linode
@@ -160,7 +160,7 @@ Header always append X-Frame-Options SAMEORIGIN
 
 Follow the [Configure WordPress](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/#configure-wordpress) section of our Install WordPress on Ubuntu 16.04 guide.
 
-If you do not yet have registered domains to use, you can still perform theh WordPress installation using your Linode's IP address. For example:
+If you do not yet have registered domains to use, you can still perform the WordPress installation using your Linode's IP address. For example:
 
     http://203.0.113.15/example1.com/public_html
     http://203.0.113.15/example2.com/public_html
