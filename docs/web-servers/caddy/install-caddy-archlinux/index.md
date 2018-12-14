@@ -5,8 +5,8 @@ author:
 description: 'Caddy is an open source HTTP/2-enabled web server with automatic HTTPS. This guide demonstrates how to install Caddy on Arch Linux.'
 keywords: ['caddy', 'install caddy', 'archlinux', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-10-17
-modified: 2018-10-17
+published: 2018-12-14
+modified: 2018-12-14
 modified_by:
   name: Linode
 title: "Install Caddy on Arch Linux"
@@ -31,31 +31,31 @@ external_resources:
 
 ## What is Caddy?
 
-Caddy is an open source HTTP/2 capable web server with automatic HTTPS written in [Go](https://golang.org/). It supports a vast variety of web site technologies which, alongside its security defaults and usability, make it one of the most easy to use web servers.
+Caddy is an open source HTTP/2 capable web server with automatic HTTPS written in [Go](https://golang.org/). It supports a variety of web site technologies, includes security defaults, and is very easy to use.
 
 ## Install Caddy
 
-The best way to install Caddy on Arch Linux is by using a snapshot from the *Arch User Repository* (AUR).
+You can install Caddy on Arch Linux by using a snapshot from the *Arch User Repository* (AUR).
 
-1. Download the snapshot from the AUR.
+1. Download the snapshot from the AUR:
 
         curl https://aur.archlinux.org/cgit/aur.git/snapshot/caddy.tar.gz -o caddy.tar.gz
 
-1. Unpack the snapshot.
+1. Unpack the snapshot:
 
         tar xf caddy.tar.gz
 
-1. Navigate to the directory.
+1. Navigate to the `caddy` directory:
 
         cd caddy
 
-1. Build and install the package.
+1. Build and install the package:
 
         makepkg -si
 
 ## Test Caddy
 
-1. Start Caddy:
+1. Start the Caddy web server:
 
         sudo systemctl start caddy
 
@@ -67,9 +67,9 @@ The best way to install Caddy on Arch Linux is by using a snapshot from the *Arc
 
 ## Configure Caddy
 
-Caddy configuration files reside in `/etc/caddy/` and website configuration files should be created in `/etc/caddy/caddy.conf.d/`.
+Caddy configuration files reside in `/etc/caddy/` and website configuration files should be created in the `/etc/caddy/caddy.conf.d/` directory.
 
-1. Create a sample configuration file for your website. Replace `example.com` with your Linode's domain name, or `:80` if you don't have a domain yet but still want to get started with Caddy.
+1. Create a sample configuration file for your website. Replace `example.com` with your Linode's domain name. If you have not set up a domain, but still want to get started with Caddy, replace `example.com` with `:80`.
 
     {{< file "/etc/caddy/caddy.conf.d/example.com.conf" caddy >}}
 example.com {
@@ -78,7 +78,7 @@ example.com {
 {{< /file >}}
 
     {{< note >}}
-If you choose to serve your site from a filesystem directory other than `/usr/share/caddy/`, you must remove the Caddy test site files located there. The folder `/usr/share/caddy/` is prioritized over other locations, even when specified in the Caddyfile, so this directory must then be emptied.
+If you choose to serve your site from a directory other than `/usr/share/caddy/`, you must remove the Caddy test site files located in that directory. The `/usr/share/caddy/` directory is prioritized over other locations, so any files stored in that directory will be served first, even if you have configured a different directory location.
 {{< /note >}}
 
 1. Reload Caddy:
