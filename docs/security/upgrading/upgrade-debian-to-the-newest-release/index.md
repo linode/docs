@@ -7,15 +7,15 @@ keywords: ['debian','upgrade','update']
 aliases: ['security/upgrading/upgrade-to-debian-8-jessie/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-11
-modified: 2018-12-11
+modified: 2018-12-14
 modified_by:
   name: Linode
 title: "Upgrade Debian to the Newest Release"
 ---
 
-Debian repositories can be tracked either by codename (Wheezy, Jessie, etc.), or by status name (stable, testing, etc.). For example, Debian 9 Stretch is the *stable* release at the time of this writing; the status of Debian 8 (Jessie) is *oldstable*. Debian stable releases are eventually taken up by the [Debian Long Term Support](https://wiki.debian.org/LTS/) team for a total lifespan of about 5 years.
+Debian repositories can be tracked either by codename (Wheezy, Jessie, etc.), or by status name (stable, testing, etc.). For example, Debian 9 Stretch is the *stable* release at the time of this writing; the status of Debian 8 (Jessie) is *oldstable*. Debian stable releases are eventually managed by the [Debian Long Term Support](https://wiki.debian.org/LTS/) (LTS) team for a total lifespan of about 5 years.
 
-Linode offers Debian's [stable](https://wiki.debian.org/DebianStable) and [oldstable](https://wiki.debian.org/DebianOldStable) releases. When exclusively tracking the stable releases wit APT, this results in, for example, using Debian 8 until it reaches end of life, at which point your system will make available a deluge of new packages which will upgrade you to Debian 9.
+Linode offers Debian's [stable](https://wiki.debian.org/DebianStable) and [oldstable](https://wiki.debian.org/DebianOldStable) releases. When exclusively tracking the stable releases with APT, your system will upgrade whenever the stable release reaches its end of life. For example, if you're tracking the stable release of Debian 8 and it reaches its end of life, your system will make available a number of new packages which will upgrade you to Debian 9.
 
 On the other hand, if you're currently tracking repositories by codename, as Debian does by default, you will never upgrade beyond that codename release. This is the safest option and you can still manually upgrade to a newer Debian codename or release status name at any time.
 
@@ -25,9 +25,9 @@ While upstream maintainers try to ensure cross-compatibility and problem-free up
 
 ## Before You Begin
 
-- You will need root access to your Linode, or a user account with `sudo` privilege.
+- You will need root access to your Linode, or a user account with `sudo` privileges.
 
-- **Back up any important data stored on your Linode!** If you subscribe to the Linode Backups service, we recommend taking a [manual snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot) before upgrading your system. If you use different backup service or application, you should do a manual backup now.
+- **Back up any important data stored on your Linode!** If you subscribe to the Linode Backups service, we recommend taking a [manual snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot) before upgrading your system. If you use a different backup service or application, you should do a manual backup now.
 
     {{< note >}}
 You may also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. See our [backup guides](/docs/security/backups/) for more information.
@@ -38,16 +38,16 @@ You may also want to back up your configuration files (usually located in `/etc/
 
 1.  Verify that you are booting with Debian's kernel using the *GRUB 2* [boot setting](/docs/platform/how-to-change-your-linodes-kernel/) in the Linode Cloud Manager. We recommend you use the distribution-supplied kernel unless you have a specific reason not to.
 
-1.  Exit the SSH session if you're currently logged in to one and instead open a Lish session to your Linode. Lish will give you continuous access to your Linode whereas SSH could disconnect during the upgrade. Read more about Lish [here](/docs/platform/manager/using-the-linode-shell-lish/).
+2.  Exit the SSH session if you're currently logged in to one and instead open a Lish session to your Linode. Lish will give you continuous access to your Linode whereas SSH could disconnect during the upgrade. Read more about Lish [here](/docs/platform/manager/using-the-linode-shell-lish/).
 
-1.  Install all available updates for your current Debian system:
+3.  Install all available updates for your current Debian system:
 
         sudo apt update && sudo apt upgrade
 
-1.  If you've set APT to pin any packages to a specific Debian version other than stable, You'll need to disable APT pinning for those packages if you want them upgraded to those offered in the newest release.
+4.  If you've set APT to pin any packages to a specific Debian version other than stable, You'll need to disable APT pinning for those packages if you want them upgraded to those offered in the newest release.
 
 
-1.  You may want to stop services which are non-essential to the system but important to your setup, such as a database service. This would be to ensure a graceful shutdown of the service to prevent data loss or system locks from causing problems. To stop a service, enter the following command, replacing `mariadb` with the name of the service you want to stop:
+5.  You may want to stop services which are non-essential to the system but important to your setup, such as a database service. This would be to ensure a graceful shutdown of the service to prevent data loss or system locks from causing problems. To stop a service, enter the following command, replacing `mariadb` with the name of the service you want to stop:
 
         sudo systemctl stop mariadb
 
@@ -62,7 +62,7 @@ You may also want to back up your configuration files (usually located in `/etc/
 
 ## Upgrade Debian
 
-1.  Edit your `sources.list` file to change all instances of the current codename to the new release codename. The example of upgrading from Debian 8 (Jessie) to Debian 9 (Stretch) is used below, so `jessie` is changed to `stretch` (or, alternatively from `jessie` to `stable`.
+1.  Edit your `sources.list` file to change all instances of the current codename to the new release codename. The example of upgrading from Debian 8 (Jessie) to Debian 9 (Stretch) is used below, so `jessie` is changed to `stretch` (or, alternatively from `jessie` to `stable`).
 
     {{< file "/etc/apt/sources.list" >}}
 deb http://mirrors.linode.com/debian stretch main
@@ -89,11 +89,11 @@ Ensure any third party repositories are also tracking `stretch`. You will need t
 
         sudo apt upgrade
 
-    - During the upgrade process, you will prompted whether you want to replace or keep the current Grub 2 file. This is because Linode must edit `/etc/default/grub` from upstream to work properly with our infrastructure.
+    - During the upgrade process, you will prompted whether you want to replace or keep the current GRUB 2 file. This is because Linode must edit `/etc/default/grub` from upstream to work properly with our infrastructure.
 
         ![Keep current Grub 2 configuration](keep-current-grub2-configuration.png)
 
-        Choose `Keep the local version currently installed`. Further prompts about installing Grub should be answered with installing to `/dev/sda`, then `Continue without installing Grub`. Grub is not needed in your disk MBR because your Linode boots from a Grub installation provided by Linode's host servers.
+        Choose `Keep the local version currently installed`. Further prompts about installing GRUB should be answered with installing to `/dev/sda`, then `Continue without installing GRUB`. GRUB is not needed in your disk MBR because your Linode boots from a GRUB installation provided by Linode's host servers.
 
     - During the upgrade process, you'll be prompted to review configuration files which you've modified to decide whether to keep or replace them with the upstream default file. An example:
 
@@ -107,7 +107,7 @@ N or O  : keep your currently-installed version
 D     : show the differences between the versions
 {{< /output >}}
 
-    -  If your system is running Fail2ban, the upgrade will end with the error shown below. This is a [known issue](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=860397). See the [troubleshooting](/docs/security/upgrading/upgrade-debian-to-the-newest-release/#fail2ban) section of this page to fix before proceeding furter.
+    -  If your system is running Fail2ban, the upgrade will end with the error shown below. This is a [known issue](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=860397). See the [troubleshooting](/docs/security/upgrading/upgrade-debian-to-the-newest-release/#fail2ban) section of this page to fix before proceeding further.
 
         {{< output >}}
 Errors were encountered while processing:
@@ -155,6 +155,6 @@ maxretry = 6
         sudo dpkg --configure -a
         sudo apt-get install --fix-broken
 
-### Apache 2.2 to 2.4
+### Upgrading Apache 2.2 to 2.4
 
 Upgrading from Debian 7 to 8 moves Apache from version 2.2 to 2.4. This version change can break existing websites if you're already running Apache and requires adjusting configuration files. See our [Upgrading Apache](/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/) guide for more information.
