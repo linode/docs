@@ -22,6 +22,10 @@ external_resources:
  - '[DMARC Record Assistant](http://kitterman.com/dmarc/assistant.html) provides a web form to generate a DMARC record for you based on your selections.'
 ---
 
+{{< note >}}
+We have created a [new version of this guide](/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-9) to run on Debian 9.
+{{< /note >}}
+
 ![SPF and DKIM with Postfix](Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
 
 [SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
