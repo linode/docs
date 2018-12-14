@@ -6,7 +6,7 @@ description: 'Test Salt states locally with Kitchen and kitchen-salt.'
 keywords: ['saltstack','salt','kitchen','kitchen-salt','kitchensalt','salt solo','saltsolo']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-15
-modified: 2018-10-15
+modified: 2018-12-14
 modified_by:
   name: Linode
 title: "Test Salt States Locally with KitchenSalt"
