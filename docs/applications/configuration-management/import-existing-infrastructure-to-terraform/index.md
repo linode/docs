@@ -187,6 +187,10 @@ linode_instance.linode-import:
 
     You will use this information in the next section.
 
+    {{< note >}}
+There is currently a bug where config.0.root_device imports as /dev/root instead of /dev/sda. This means that on terraform apply you will see the disk changing from /dev/root to /dev/sda. This does not seem to have any adverse effects as the correct disk is in fact targeted, but it is something to be aware of, nonetheless. See [this GitHub issue](https://github.com/terraform-providers/terraform-provider-linode/issues/10) for more information.
+{{< /note >}}
+
 ### Fill In Your Linode's Configuration Data
 
 1.  As mentioned above, Terraform does not yet have the ability to create a `.tf` file with the information gathered by `terraform import`, so you must fill in the values by hand. Below is a skeleton of the necessary configuration values and where to find them in the data provided by `terraform show`:
