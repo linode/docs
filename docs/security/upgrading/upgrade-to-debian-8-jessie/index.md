@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Alex Fornuto
   email: docs@linode.com
