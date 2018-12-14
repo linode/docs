@@ -360,8 +360,8 @@ SOCKET="local:/var/spool/postfix/opendkim/opendkim.sock"
 milter_default_action = accept
 # Postfix ≥ 2.6 milter_protocol = 6, Postfix ≤ 2.5 milter_protocol = 2
 milter_protocol = 6
-smtpd_milters = local:/opendkim/opendkim.sock
-non_smtpd_milters = local:/opendkim/opendkim.sock
+smtpd_milters = local:opendkim/opendkim.sock
+non_smtpd_milters = local:opendkim/opendkim.sock
 
 {{< /file >}}
 
