@@ -25,7 +25,7 @@ external_resources:
 
 ## What is WordPress?
 
-WordPress is a popular, dynamic, content management system that makes it easy to build anything from blogs to complete websites and online stores. This guide shows you how to configure your system to run multiple WordPress sites on a single Linode.
+WordPress is a popular, dynamic, content management system that makes it easy to build anything from blogs to complete websites and online stores. This guide shows you how to configure your system to run multiple WordPress sites on a single Linode running Ubuntu 16.04.
 
 ## Before You Begin
 
@@ -39,7 +39,7 @@ LAMP consists of Linux, Apache HTTP Server, MySQL, and PHP.
 
     sudo tasksel install lamp-server
 
-## Create Your Site Databases
+## Create Your Site Databases and Users
 
 You will need a MySQL database for *each instance* of WordPress you intend to run. An example of a two-WordPress setup is shown below. Replace `example1` and `example2` with your respective website names.
 
