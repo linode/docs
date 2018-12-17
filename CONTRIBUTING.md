@@ -50,23 +50,35 @@ Use [Chocolatey](https://chocolatey.org/) to install Hugo on Windows:
 
 This section takes you through the process of creating a new guide using the topic of installing nginx on Debian as an example. You can use a [Hugo archetype](https://gohugo.io/content-management/archetypes/) to simplify the process.
 
-1.  Create a new branch for your guide:
+1.  Checkout the develop branch:
+
+        git checkout develop
+
+2.  Update the develop branch with the latest changes. If this is the first time creating a new guide, you will have to first add the docs repository as a remote:
+
+        git remote add upstream https://github.com/linode/docs.git
+
+    Update the develop branch:
+
+        git pull upstream develop
+
+3.  Create a new branch for your guide:
 
         git checkout -b nginx-on-debian
 
-2.  From the root of the `docs` repo, run the following command. Specify the location and title of your guide; the example nginx guide should be located in `web-servers/nginx`. This will create a markdown file populated with YAML front matter:
+4.  From the root of the `docs` repo, run the following command. Specify the location and title of your guide; the example nginx guide should be located in `web-servers/nginx`. This will create a markdown file populated with YAML front matter:
 
         hugo new web-servers/nginx/how-to-install-nginx-on-debian/index.md --kind content
 
-	This will create a subdirectory with the guide's intended url, with an `index.md` file inside that will hold the guide's contents. Any images should be added inside this directory as well.
+    This will create a subdirectory with the guide's intended url, with an `index.md` file inside that will hold the guide's contents. Any images should be added inside this directory as well.
 
-3.  Start the Hugo server:
+5.  Start the Hugo server:
 
         hugo server
 
     This starts a local server you can use to view the Linode library in your browser on `http://localhost:1313/docs/`.
 
-4.  In a web browser, navigate to the location of your new guide. The example nginx guide will be located at `http://localhost:1313/docs/web-servers/nginx/how-to-install-nginx-on-debian`.
+6.  In a web browser, navigate to the location of your new guide. The example nginx guide will be located at `http://localhost:1313/docs/web-servers/nginx/how-to-install-nginx-on-debian`.
 
 ## Run Tests
 
