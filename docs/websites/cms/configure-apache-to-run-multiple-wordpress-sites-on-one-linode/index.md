@@ -6,13 +6,13 @@ description: 'This guide shows how to configure Apache Virtual Hosts to serve mu
 keywords: ["install WordPress", "WordPress on Linode", "multiple WordPress", "how to configure WordPress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/cms/configure-apache-to-run-multiple-wordpress-sites-on-one-linode/']
-modified: 2018-12-14
+modified: 2018-12-17
 modified_by:
   name: Linode
 contributor:
   name: Jonathan Tsai
 published: 2017-10-24
-title: Run Multiple WordPress Sites on a Single Linode
+title: Set Up Apache to Run Multiple WordPress Sites on a Single Linode
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
@@ -21,7 +21,7 @@ external_resources:
 ---
 
 
-<!--![WordPress on Apache](Multiple_WordPress.jpg)-->
+![Set Up Apache to Run Multiple WordPress Sites on a Single Linode](Multiple_WordPress.jpg)
 
 ## What is WordPress?
 
@@ -41,7 +41,7 @@ WordPress is a popular, dynamic, content management system that makes it easy to
 
 ## Install a LAMP Stack
 
-WordPress can be deployed on a LAMP stack. A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free, and open-source web stack used for hosting web content in a Linux environment.
+WordPress can be deployed on a LAMP stack. A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free, and open source web stack used for hosting web content in a Linux environment.
 
 Install the LAMP stack using the Tasksel tool:
 
@@ -147,7 +147,7 @@ In this section, you will configure the Apache virtual hosts file so that a visi
 
     {{</file >}}
 
-1.  Enable the site. This will create a symlink to the `example.com` Apache conf file in `/etc/apache2/sites-enabled/`:
+1.  Enable the site. This will create a symlink to the `example1.com` Apache conf file in `/etc/apache2/sites-enabled/`:
 
         sudo a2ensite example1.conf
 
@@ -218,7 +218,7 @@ If you do not yet have registered domains to use, you can still perform the Word
 
     ![WordPress setup-config.php](wp-config.png)
 
-1. you can begin configuring your WordPress sites. Follow the [Configure WordPress](/docs/websites/cms/install-wordpress-ubuntu-18-04/#configure-wordpress) section of our Install WordPress on Ubuntu 18.04 guide.
+1. You can begin configuring your WordPress sites. Follow the [Configure WordPress](/docs/websites/cms/install-wordpress-ubuntu-18-04/#configure-wordpress) section of our Install WordPress on Ubuntu 18.04 guide.
 
 1. If you have not yet added DNS records for your Domains, follow the *Add DNS Records* steps in the [Host a Website on Ubuntu 18.04](/docs/websites/hosting-a-website-ubuntu-18-04/#add-dns-records) guide.
 
