@@ -17,7 +17,7 @@ title: 'How to Automate Builds with Jenkins on Ubuntu'
 external_resources:
  - '[Jenkins User Documentation](https://jenkins.io/doc/)'
  - '[Blue Ocean Documentation](https://jenkins.io/doc/book/blueocean/)'
-audiences: ["beginner"]
+audiences: ["intermediate"]
 ---
 
 [Jenkins](https://jenkins.io) is an open-source automation server that allows you to build pipelines to automate the process of building, testing, and deploying applications. In this guide, you will implement a basic workflow to speed up your Continuous Integration and Continuous Delivery (CI/CD) process.
