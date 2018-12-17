@@ -7,7 +7,7 @@ og_description: 'MySQL Master-Master replication adds speed and redundancy. With
 keywords: ["set up mysql", "replication", "master-master", "high availability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['databases/mysql/backup-options/', 'databases/mysql/mysql-master-master/', 'databases/mysql/mysql-master-master-replication/']
-modified: 2017-10-10
+modified: 2018-12-18
 modified_by:
   name: Linode
 published: 2014-12-24
@@ -25,16 +25,20 @@ MySQL Master-Master replication adds speed and redundancy for active websites. W
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-This guide is written for Debian 7 or Ubuntu 14.04.
+This guide is written for Debian 9 or Ubuntu 18.04.
 {{< /note >}}
 
 ## Install MySQL
 
-Use the following commands to install MySQL on each of the Linodes:
+1.  Use the following commands to install MySQL on each of the Linodes:
 
-    sudo apt-get update
-    sudo apt-get upgrade -y
-    sudo apt-get install mysql-server mysql-client
+        sudo apt-get update
+        sudo apt-get upgrade -y
+        sudo apt-get install mysql-server mysql-client
+
+2.  Run the MySQL secure installation command. You will be asked to create a root password. It is recommended you select yes to all of the questions:
+
+        mysql_secure_installation
 
 ## Edit MySQL's Configuration
 
@@ -43,6 +47,7 @@ Use the following commands to install MySQL on each of the Linodes:
     **Server 1:**
 
     {{< file "/etc/mysql/my.cnf" >}}
+[mysqld]
 server_id           = 1
 log_bin             = /var/log/mysql/mysql-bin.log
 log_bin_index       = /var/log/mysql/mysql-bin.log.index
@@ -60,6 +65,7 @@ auto-increment-offset = 1
     **Server 2:**
 
     {{< file "/etc/mysql/my.cnf" >}}
+[mysqld]
 server_id           = 2
 log_bin             = /var/log/mysql/mysql-bin.log
 log_bin_index       = /var/log/mysql/mysql-bin.log.index
@@ -74,7 +80,7 @@ auto-increment-offset = 2
 {{< /file >}}
 
 
-2.  For each of the Linodes, edit the `bind-address` configuration in order to use the private IP addresses:
+2. Edit the `bind-address` configuration in order to use the private IP addresses, for each of the Linodes.
 
     {{< file "/etc/mysql/my.cnf" >}}
 bind-address    = x.x.x.x
@@ -84,7 +90,7 @@ bind-address    = x.x.x.x
 
 3.  Once completed, restart the MySQL application:
 
-        sudo service mysql restart
+        sudo systemctl restart mysql
 
 ## Create Replication Users
 
