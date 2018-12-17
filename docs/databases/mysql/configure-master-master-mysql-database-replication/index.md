@@ -7,7 +7,7 @@ og_description: 'MySQL Master-Master replication adds speed and redundancy. With
 keywords: ["set up mysql", "replication", "master-master", "high availability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['databases/mysql/backup-options/', 'databases/mysql/mysql-master-master/', 'databases/mysql/mysql-master-master-replication/']
-modified: 2018-09-28
+modified: 2018-12-18
 modified_by:
   name: Linode
 published: 2014-12-24
