@@ -14,6 +14,7 @@ title: 'View IoT Data with ThingsBoard'
 external_resources:
   - '[Getting Started – ThingsBoard](https://thingsboard.io/docs/getting-started-guides/helloworld)'
   - '[ThingsBoard Github Repo](https://github.com/thingsboard/thingsboard)'
+audiences: ["intermediate"]
 ---
 
 ![View IoT Data with ThingsBoard](ThingsBoard.jpg)

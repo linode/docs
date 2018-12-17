@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2018-05-01
 title: Manage Python Packages and Virtual Environments with Pipenv
+audiences: ["beginner"]
 ---
 
 ## What is Pipenv?

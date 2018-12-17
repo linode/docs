@@ -12,6 +12,7 @@ modified_by:
 title: "Immutable Infrastructure"
 contributor:
   name: Linode
+audiences: ["intermediate"]
 ---
 
 ## What is Immutable Infrastructure?
