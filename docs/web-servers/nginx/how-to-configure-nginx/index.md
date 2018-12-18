@@ -7,7 +7,7 @@ og_description: 'NGINX is a high-performance web server that delivers large amou
 keywords: ["nginx", "web server", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/nginx/configuration/basic/','websites/nginx/basic-nginx-configuration/index.cfm/','websites/nginx/basic-nginx-configuration/','websites/nginx/how-to-configure-nginx/index.cfm/','websites/nginx/how-to-configure-nginx/']
-modified: 2018-03-08
+modified: 2018-12-18
 modified_by:
   name: Linode
 published: 2010-01-18
@@ -30,7 +30,7 @@ Configuration options in NGINX are called [directives](http://nginx.org/en/docs/
 
 Lines preceded by a `#` character are comments and not interpreted by NGINX. Lines containing directives must end with a `;` or NGINX will fail to load the configuration and report an error.
 
-Below is a condensed copy of the `/etc/nginx/nginx.conf` file that is included with installations from the NGINX repositories. The file starts with 5 directives: `user`, `worker_processes`, `error_log`, and `pid`. These are outside any specific block or context, so they're said to exist in the `main` context. The `events` and `http` blocks are areas for additional directives, and they also exist in the `main` context.
+Below is a condensed copy of the `/etc/nginx/nginx.conf` file that is included with installations from the NGINX repositories. The file starts with 4 directives: `user`, `worker_processes`, `error_log`, and `pid`. These are outside any specific block or context, so they're said to exist in the `main` context. The `events` and `http` blocks are areas for additional directives, and they also exist in the `main` context.
 
 See [the NGINX docs](https://nginx.org/en/docs/ngx_core_module.html) for explanations of these directives and others available in the `main` context.
 
