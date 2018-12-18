@@ -16,6 +16,7 @@ external_resources:
 - '[JuliaBox](https://juliabox.com/)'
 audiences: ["beginner"]
 concentrations: ["Scientific Computing and Big Data"]
+languages: ["julia"]
 ---
 ![Why You Should Learn Julia](Why_You_Should_Learn_Julia_smg.jpg)
 

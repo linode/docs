@@ -112,6 +112,12 @@
     "type": "text",
     "description": "If a layout other than the default is needed (i.e. for the Contribute page), specify the name of the layout here."
   },
+  "languages": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "An array of programming languages that apply to the guide. Could be JavaScript, Go, Python, etc."
+  },
   "license": {
     "elements": false,
     "required": true,

@@ -18,6 +18,7 @@ external_resources:
 - '[Gradle](https://gradle.org/)'
 audiences: ["intermediate"]
 concentrations: ["Web Applications"]
+languages: ["java"]
 ---
 
 ![How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04](deploy-spring-boot-nginx-reverse-proxy.jpg "How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04")

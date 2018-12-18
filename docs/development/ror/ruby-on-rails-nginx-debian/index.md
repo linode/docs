@@ -22,6 +22,7 @@ external_resources:
  - '[NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
+languages: ["ruby"]
 ---
 
 ![Ruby on Rails with nginx on Debian](ruby_on_rails_with_nginx_debian_8_smg.png "Ruby on Rails with nginx on Debian 8")

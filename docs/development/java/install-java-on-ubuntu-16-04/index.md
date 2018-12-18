@@ -18,6 +18,7 @@ external_resources:
  - '[Oracle Java](https://www.oracle.com/java/index.html)'
 audiences: ["beginner"]
 
+languages: ["java"]
 ---
 
 ![Java](Install_Oracle_Java.jpg)

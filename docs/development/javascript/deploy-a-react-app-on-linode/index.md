@@ -19,6 +19,7 @@ external_resources:
 - '[Deploy a React App with Sass Using NGINX](http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
+languages: ["javascript"]
 ---
 
 ## What is React?
