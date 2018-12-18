@@ -812,6 +812,7 @@ netifrc
 netlify
 netloc
 netmask
+netplan
 networkd
 newgrp
 newtag
