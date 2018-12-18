@@ -5,8 +5,8 @@ author:
 description: 'Create a Terraform module that deploys a Linode instance from a StackScript.'
 keywords: ['terraform','resource','modules','provider']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-11-30
-modified: 2018-11-30
+published: 2018-12-12
+modified: 2018-12-12
 modified_by:
   name: Linode
 title: "Create a Terraform Module"

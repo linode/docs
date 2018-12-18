@@ -5,10 +5,10 @@ author:
 description: 'This guides provides an introduction to HCL syntax and commonly used HCL terminology.'
 keywords: ["terraform", "hcl", "hashicorp", "orchestration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-11-26
+modified: 2018-12-12
 modified_by:
     name: Linode
-published: 2018-11-26
+published: 2018-12-12
 title: Introduction to HashiCorp Configuration Language (HCL)
 external_resources:
     - '[HCL on GitHub](https://github.com/hashicorp/hcl)'
