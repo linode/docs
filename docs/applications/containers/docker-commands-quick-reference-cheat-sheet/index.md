@@ -6,7 +6,7 @@ description: 'A quick reference cheat sheet on Docker commands for installation,
 keywords: ["docker", "quick reference", "cheat sheet", "commands"]
 aliases: ['applications/containers/docker-quick-reference-cheat-sheet/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-20
+modified: 2018-12-18
 modified_by:
   name: Linode
 published: 2015-03-30
@@ -14,6 +14,8 @@ title: Docker Commands Quick Reference Cheat Sheet
 external_resources:
   - '[Docker Cheat Sheet (Github)](https://github.com/wsargent/docker-cheat-sheet)'
 ---
+
+![Docker Commands Quick Reference Cheat Sheet](Docker_Commands_Quick_Reference_Cheat_Sheet_smg.png "Docker Commands Quick Reference Cheat Sheet")
 
 Docker is becoming increasingly popular among software developers, operators and enterprises as a software container platform. Containers package software in a format that can run isolated on a host operating system. Bundled with only essential libraries and settings, Docker renders lightweight, efficient, self-contained systems that run identically wherever deployed.
 
