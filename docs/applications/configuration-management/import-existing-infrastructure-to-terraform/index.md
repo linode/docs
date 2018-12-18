@@ -31,7 +31,7 @@ Terraform is an orchestration tool that uses declarative code to build, change, 
 
 Throughout this guide the `terraform import` command will be used to import Linode resources. At the time of writing this guide, the import command **does not generate a Terraform resource configuration**. Instead, it imports your existing resources into Terraform's *state*.
 
-State is Terraform's stored JSON mapping of your current Linode resources to their configurations. You can access and use the information provided by the state to manually create a corresponding resource configuration file and manage your existing Linode infrastructure with Terraform. 
+State is Terraform's stored JSON mapping of your current Linode resources to their configurations. You can access and use the information provided by the state to manually create a corresponding resource configuration file and manage your existing Linode infrastructure with Terraform.
 
 Additionally, there is no current way to import more than one resource at a time. **All resources must be individually imported**.
 
