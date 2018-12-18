@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 published: 2012-03-14
 title: 'The Linode Backup Service'
+cloud_manager_link: platform/disk-images/linode-backup-service-new-manager/
 ---
 
 ![The Linode Backup Service](The_Linode_Backup_Service_smg.jpg)
