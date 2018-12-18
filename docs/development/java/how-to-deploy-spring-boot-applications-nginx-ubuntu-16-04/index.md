@@ -17,6 +17,7 @@ external_resources:
 - '[SDKMAN!](http://sdkman.io/)'
 - '[Gradle](https://gradle.org/)'
 audiences: ["intermediate"]
+concentrations: ["Web Applications"]
 ---
 
 ![How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04](deploy-spring-boot-nginx-reverse-proxy.jpg "How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04")
