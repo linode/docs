@@ -6,7 +6,7 @@ description: 'Set static IP, routes and DNS in Linux.'
 keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/configuring-static-ip-interfaces/']
-modified: 2017-11-30
+modified: 2018-12-18
 modified_by:
   name: Linode
 published: 2014-07-20
@@ -55,7 +55,7 @@ Our [Network Helper](/docs/platform/network-helper/) tool is enabled by default 
 
     [![Linode Manager: Dashboard > Configuration Profile > Edit](linode-dashboard-hilighted_small.png)](linode-dashboard-hilighted.png)
 
-2.  Under **Filesystem/Boot Helpers**  at the bottom of the page,  set **Auto-configure Networking** to **No**. Then click **Save Changes**.
+1.  Under **Filesystem/Boot Helpers**  at the bottom of the page,  set **Auto-configure Networking** to **No**. Then click **Save Changes**.
 
     [![Linode Manager: Dashboard > Configuration Profile > Edit](network-helper-hilighted_small.png)](network-helper-hilighted.png)
 
@@ -74,7 +74,7 @@ On the **Remote Access** tab of the Linode Manager, you'll see the following inf
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
 
-### Arch, CoreOS Container Linux, Ubuntu 17.10
+### Arch, CoreOS Container Linux
 
 Networking in these distributions is managed entirely by *systemd*. See `man systemd-networkd` and `man systemd-resolved` for more information.
 
@@ -303,14 +303,14 @@ IPV6_DEFAULTGW=fe80::1
 IPV6ADDR_SECONDARIES=2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64
 {{< /file >}}
 
-2.  Then add your IPv4 gateway to the network routes file:
+1.  Then add your IPv4 gateway to the network routes file:
 
     {{< file "/etc/sysconfig/network/routes" >}}
 # Destination   Gateway                 Netmask                 Device
 default         198.51.100.1            -                       eth0
 {{< /file >}}
 
-3.  Last, set your DNS resolvers and options for netconfig, which then uses this info to modify `resolv.conf`:
+1.  Last, set your DNS resolvers and options for netconfig, which then uses this info to modify `resolv.conf`:
 
     {{< file "/etc/sysconfig/network/config" >}}
 . . .
@@ -321,10 +321,48 @@ NETCONFIG_DNS_STATIC_SEARCHLIST="members.linode.com"
 NETCONFIG_DNS_RESOLVER_OPTIONS="rotate"
 {{< /file >}}
 
+### Ubuntu 18.04
 
-### Ubuntu
+[Netplan](https://www.linuxjournal.com/content/have-plan-netplan) is used to configure networking in Ubuntu 18.04 and later. Ubuntu Server installs using `systemd-networkd` as the [backend](https://netplan.io/design#design-overview) for Netplan, as opposed to NetworkManager used by Ubuntu Desktop.
 
-The configuration below applies to 14.04 and 16.04. See above for 17.10. Ubuntu 14.04 and 16.04 include [resolvconf](http://packages.ubuntu.com/xenial/resolvconf) in their base installation. This is an application which manages the contents of `/etc/resolv.conf`, so do not edit `resolv.conf` directly. Instead, add DNS resolver addresses and options to the network interface file as shown.
+The `ifupdown` file `/etc/network/interfaces` is no longer used but it's still possible to configure static networking using `/etc/systemd/network/*.network`.
+
+1.  Remove default configuration files that may interfere with your static addressing:
+
+        sudo rm /etc/systemd/network/05-eth0.network
+        sudo rm /etc/netplan/01-netcfg.yaml
+
+1.  Create the configuration file for Netplan:
+
+    {{< file "/etc/netplan/01-eth0.yaml" >}}
+# This file describes the network interfaces available on your system
+# For more information, see netplan(5).
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: no
+      dhcp6: no
+      addresses:
+        - 198.51.100.5/24                         # Your Linode's public IPv4 address.
+        - 192.168.1.2/17                          # Private IPv4 address.
+        - "2001:db8:2000:aff0::2/64"              # Primary IPv6 address.
+      gateway4: 198.51.100.1                      # Primary IPv4 gateway.
+      gateway6: "fe80::1"                         # Primary IPv6 gateway.
+      nameservers:
+        search: [members.linode.com]              # Search domain.
+        addresses: [203.0.113.20,203.0.113.21]    # DNS Server IP addresses.
+{{< /file >}}
+
+1.  Apply the changes and reboot:
+
+        sudo netplan apply
+
+
+### Ubuntu 14.04, 16.04
+
+Ubuntu 14.04 and 16.04 include [resolvconf](http://packages.ubuntu.com/xenial/resolvconf) in their base installation. This is an application which manages the contents of `/etc/resolv.conf`, so do not edit `resolv.conf` directly. Instead, add DNS resolver addresses and options to the network interface file as shown.
 
 Like with Debian, systemd-networkd and systemd-resolved are both present but not enabled in Ubuntu 16.04. If you decide to enable these services to manage networking, you can not set static addresses in the file `/etc/network/interfaces` as shown below. You'll need to use the section further above for [Arch, Container Linux and Ubuntu 17.10](#arch-coreos-container-linux-ubuntu-17-10). For more information, see `man ifup`, `man ifdown`, `man interfaces 5`, `man systemd-networkd` and `man systemd-resolved`.
 
