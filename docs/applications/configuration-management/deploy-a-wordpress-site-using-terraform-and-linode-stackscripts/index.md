@@ -5,8 +5,8 @@ author:
 description: 'In this guide you will learn how to use a Community StackScript to deploy WordPress on a Linode using Terraform.'
 keywords: ['terraform','stackscripts','wordpress','orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-11-21
-modified: 2018-11-21
+published: 2018-12-12
+modified: 2018-12-12
 modified_by:
   name: Linode
 title: "Deploy a WordPress Site Using Terraform and Linode StackScripts"
