@@ -18,6 +18,7 @@ contributor:
 external_resources:
 - '[virtualenv Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
+languages: ["python"]
 ---
 
 ![Create a Python Virtual Environment on Ubuntu 16.10](python-ve-u16-title.jpg "Create a Python Virtual Environment on Ubuntu 16.10")

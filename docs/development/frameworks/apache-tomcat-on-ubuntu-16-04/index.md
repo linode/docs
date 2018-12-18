@@ -16,6 +16,7 @@ external_resources:
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
+languages: ["java"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
