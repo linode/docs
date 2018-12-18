@@ -17,21 +17,23 @@ external_resources:
 - '[Terraform Linode Instance Documentation](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 ---
 
-Terraform is an orchestration management tool that uses declarative code to build, change, and version infrastructure that is made up of server instances and services. You can use [Linode's official Terraform provider](https://www.terraform.io/docs/providers/linode/index.html) to interact with Linode services. Existing Linode infrastructure can be imported and brought under Terraform management. This guide will describe how to import existing Linode infrastructure into Terraform using the official Linode provider plugin.
+Terraform is an orchestration tool that uses declarative code to build, change, and version infrastructure that is made up of server instances and services. You can use [Linode's official Terraform provider](https://www.terraform.io/docs/providers/linode/index.html) to interact with Linode services. Existing Linode infrastructure can be imported and brought under Terraform management. This guide will describe how to import existing Linode infrastructure into Terraform using the official Linode provider plugin.
 
 ## Before You Begin
 
-1.  Terraform should be installed in your development environment, as well as the Linode Terraform provider. You should also have a basic understanding of [Terraform resources](https://www.terraform.io/docs/configuration/resources.html). To install and learn about Terraform, read our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
+1.  Terraform and the Linode Terraform provider should be installed in your development environment. You should also have a basic understanding of [Terraform resources](https://www.terraform.io/docs/configuration/resources.html). To install and learn about Terraform, read our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
 
-2.  To use Terraform you must have a valid API access token. For more information on creating an API access tokens, visit our [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide.
+2.  To use Terraform you must have a valid API access token. For more information on creating a Linode API access token, visit our [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide.
 
 3.  This guide uses the Linode CLI to retrieve information about the Linode infrastructure you will import to Terraform. For more information on the setup, installation, and usage of the Linode CLI, check out the [Using the Linode CLI](https://www.linode.com/docs/platform/api/using-the-linode-cli/) guide.
 
 ## Terraform's Import Command
 
-Throughout this guide the `terraform import` command will be used to import Linode resources. At the time of writing this guide, the import command **does not generate a Terraform resource configuration**, instead, it imports your existing resources into *state*.
+Throughout this guide the `terraform import` command will be used to import Linode resources. At the time of writing this guide, the import command **does not generate a Terraform resource configuration**. Instead, it imports your existing resources into Terraform's *state*.
 
-State is Terraform's stored JSON mapping of your current Linode resources to their configurations. You can access and use the information provided by the state to manually create a corresponding resource configuration file to manage your existing Linode infrastructure with Terraform. Additionally, there is no current way to import more than one resource at a time. **All resources must be individually imported**.
+State is Terraform's stored JSON mapping of your current Linode resources to their configurations. You can access and use the information provided by the state to manually create a corresponding resource configuration file and manage your existing Linode infrastructure with Terraform. 
+
+Additionally, there is no current way to import more than one resource at a time. **All resources must be individually imported**.
 
 {{< caution >}}
 When importing your infrastructure to Terraform, failure to accurately provide your Linode service's ID information can result in the unwanted alteration or destruction of the service. Please follow the instructions provided in this guide carefully. It might be beneficial to use multiple [Terraform Workspaces](https://www.terraform.io/docs/state/workspaces.html) to manage separate testing and production infrastructures.
@@ -41,7 +43,7 @@ When importing your infrastructure to Terraform, failure to accurately provide y
 
 ### Retrieve Your Linode's ID
 
-1.  Using the Linode CLI, retrieve a list of all your Linode instances to find the ID of the Linode you would like to manage under Terraform:
+1.  Using the Linode CLI, retrieve a list of all your Linode instances and find the ID of the Linode you would like to manage under Terraform:
 
         linode-cli linodes list --json --pretty
 
@@ -51,7 +53,7 @@ When importing your infrastructure to Terraform, failure to accurately provide y
 &nbsp;&nbsp;&nbsp;&nbsp;"id": 11426126,
 &nbsp;&nbsp;&nbsp;&nbsp;"image": "linode/debian9",
 &nbsp;&nbsp;&nbsp;&nbsp;"ipv4": [
-&nbsp;&nbsp;&nbsp;&nbsp;"45.79.147.177"
+&nbsp;&nbsp;&nbsp;&nbsp;"192.0.2.2"
 &nbsp;&nbsp;&nbsp;&nbsp;],
 &nbsp;&nbsp;&nbsp;&nbsp;"label": "terraform-import",
 &nbsp;&nbsp;&nbsp;&nbsp;"region": "us-east",
@@ -61,16 +63,15 @@ When importing your infrastructure to Terraform, failure to accurately provide y
 ]
 {{< /output >}}
 
-    This command will return a list of your existing Linodes in JSON format. From the list, find the Linode you would like to import and copy down its corresponding `id`. In this example, the Linode's id is `11426126`. You will use your Linode's `id` to import your Linode to Terraform.
+    This command will return a list of your existing Linodes in JSON format. From the list, find the Linode you would like to import and copy down its corresponding `id`. In this example, the Linode's ID is `11426126`. You will use your Linode's ID to import your Linode to Terraform.
 
 ### Create An Empty Resource Configuration
 
-1. Ensure you are in your [Terraform project directory](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform). Create a terraform configuration file to manage the Linode instance you will import in the next section. Your file can be named anything you like, but must end in `.tf`. Add a Linode provider block with your API access token and an empty `linode_instance` resource configuration block the file:
+1. Ensure you are in your [Terraform project directory](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform). Create a Terraform configuration file to manage the Linode instance you will import in the next section. Your file can be named anything you like, but it must end in `.tf`. Add a Linode provider block with your API access token and an empty `linode_instance` resource configuration block in the file:
 
     {{< note >}}
-  The example resource block defines `example_label` as the label. This can be changed to any value you prefer. This label is used to reference your Linode resource configuration within Terraform, and does not have to be the same label originally assigned to the Linode when it was created outside of Terraform.
-    {{</ note >}}
-
+The example resource block defines `example_label` as the label. This can be changed to any value you prefer. This label is used to reference your Linode resource configuration within Terraform, and does not have to be the same label originally assigned to the Linode when it was created outside of Terraform.
+{{</ note >}}
 
     {{< file "linode_import.tf" >}}
 provider "linode" {
@@ -78,7 +79,7 @@ provider "linode" {
 }
 
 resource "linode_instance" "example_label" {}
-    {{< /file >}}
+{{< /file >}}
 
 ### Import Your Linode to Terraform
 
@@ -102,7 +103,7 @@ your Terraform state and will henceforth be managed by Terraform.
 
     This command will create a `terraform.tfstate` file with information about your Linode. You will use this information to fill out your resource configuration.
 
-1.  To view the information created by `terraform import`, run the `show` command. This command will display a list of key value pairs representing information about the imported Linode instance.
+1.  To view the information created by `terraform import`, run the `show` command. This command will display a list of key-value pairs representing information about the imported Linode instance.
 
         terraform show
 
@@ -170,9 +171,9 @@ linode_instance.example_label:
   disk.1.stackscript_data.% = 0
   disk.1.stackscript_id = 0
   group = Terraform
-  ip_address = 45.79.147.177
+  ip_address = 192.0.2.2
   ipv4.# = 1
-  ipv4.1835604989 = 45.79.147.177
+  ipv4.1835604989 = 192.0.2.2
   ipv6 = 2600:3c03::f03c:91ff:fef6:3ebe/64
   label = terraform-import
   private_ip = false
@@ -200,7 +201,7 @@ You can follow the corresponding [GitHub issue](https://github.com/terraform-pro
 
 As mentioned in the [Terraform's Import Command](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/#terraform-s-import-command) section, you must manually create your resource configurations when importing existing infrastructure.
 
-  1. Fill in the configuration values for the `linode_instance` resource block. In the example, the necessary values were collected from the output of the `terraform show` command applied in Step 2 of the [Import Your Linode to Terraform](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/#import-your-linode-to-terraform) section. The file's comments indicate the corresponding keys used to determine the values for the `linode_instance` configuration block.
+  1. Fill in the configuration values for the `linode_instance` resource block. In the example below, the necessary values were collected from the output of the `terraform show` command applied in Step 2 of the [Import Your Linode to Terraform](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/#import-your-linode-to-terraform) section. The file's comments indicate the corresponding keys used to determine the values for the `linode_instance` configuration block.
 
       {{< file "linode_instance_import.tf" >}}
 provider "linode" {
@@ -236,7 +237,7 @@ resource "linode_instance" "example_label" {
     {{< /file >}}
 
     {{< note >}}
-If your Linode uses more than two disks, for instance, if you have attached a [Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/), you will need to add those disks to your Linode resource configuration block. In order to add a disk, you must add the disk to the `devices` stanza, as well as create an additional `disk` stanza.
+If your Linode uses more than two disks (for instance, if you have attached a [Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/)), you will need to add those disks to your Linode resource configuration block. In order to add a disk, you must add the disk to the `devices` stanza and create an additional `disk` stanza.
 {{< /note >}}
 
     {{< note >}}
@@ -257,7 +258,7 @@ If you have more than one [configuration profile](/docs/platform/disk-images/dis
   Running `terraform plan` will display any changes that will be applied to your existing infrastructure based on your configuration file(s). However, you will **not be notified** about the **addition and removal of disks** with `terraform plan`. For this reason, it is vital that the values you include in your `linode_instance` resource configuration block match the values generated from running the `terraform show` command.
     {{</ note >}}
 
-1. Once you have verified the configurations you provided in the `linode_instance` resource block, you are ready to begin managing your Linode instance with Terraform. Any changes or updates can be made by updating your `linode_instance_import.tf` file, then verifying the changes with the `terrform plan` command, and finally, running the changes with the `terraform apply` command.
+1. Once you have verified the configurations you provided in the `linode_instance` resource block, you are ready to begin managing your Linode instance with Terraform. Any changes or updates can be made by updating your `linode_instance_import.tf` file, then verifying the changes with the `terrform plan` command, and then finally applying the changes with the `terraform apply` command.
 
     For more available configuration options, visit the [Linode Instance](https://www.terraform.io/docs/providers/linode/r/instance.html) Terraform documentation.
 
@@ -287,7 +288,7 @@ If you have more than one [configuration profile](/docs/platform/disk-images/dis
 
 ### Create an Empty Resource Configuration
 
-1. Ensure you are in your [Terraform project directory](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform). Create a terraform configuration file to manage the Domain you will import in the next section. Your file can be named anything you like, but must end in `.tf`. Add a Linode provider block with your API access token and an empty `linode_domain` resource configuration block to the file:
+1. Ensure you are in your [Terraform project directory](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform). Create a Terraform configuration file to manage the domain you will import in the next section. Your file can be named anything you like, but must end in `.tf`. Add a Linode provider block with your API access token and an empty `linode_domain` resource configuration block to the file:
 
     {{< file "domain_import.tf" >}}
 provider "linode" {
@@ -299,7 +300,7 @@ resource "linode_domain" "example_label" {}
 
 ### Import Your Domain to Terraform
 
-1. Run the `import` command, supplying the `linode_domain` resource's label, and the domain ID that was retrieved in the [Retrieve Your Domain's ID](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/#retrieve-your-domain-s-id) section :
+1. Run the `import` command, supplying the `linode_domain` resource's label, and the domain ID that was retrieved in the [Retrieve Your Domain's ID](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/#retrieve-your-domain-s-id) section:
 
         terraform import linode_domain.example_label domainID
 
@@ -319,7 +320,7 @@ your Terraform state and will henceforth be managed by Terraform.
 
       This command will create a `terraform.tfstate` file with information about your domain. You will use this information to fill out your resource configuration.
 
-1. To view the information created by `terraform import`, run the show command. This command will display a list of key value pairs representing information about the imported Linode instance.
+1. To view the information created by `terraform import`, run the show command. This command will display a list of key-value pairs representing information about the imported domain:
 
         terraform show
 
@@ -360,7 +361,7 @@ resource "linode_domain" "example_label" {
     {{< /file >}}
 
     {{< note >}}
-  If your Domain `type` is `slave` then you'll need to include a `master_ips` argument with a value of the IP addresses that represent the Master DNS for your domain
+  If your Domain `type` is `slave` then you'll need to include a `master_ips` argument with values set to the IP addresses that represent the Master DNS for your domain.
     {{< /note >}}
 
 1. Check for errors in your configuration by running the `plan` command:
@@ -369,7 +370,7 @@ resource "linode_domain" "example_label" {
 
     `terraform plan` shows you the changes that would take place if you were to apply the configurations with the `terraform apply` command. Running `terraform plan` should result in Terraform displaying that no changes are to be made.
 
-1. Once you have verified the configurations you provided in the `linode_domain` block, you are ready to begin managing your domain with Terraform. Any changes or updates can be made by updating your `linode_domain_example.tf` file, then verifying the changes with the `terrform plan` command, and finally, applying the changes with the `terraform apply` command.
+1. Once you have verified the configurations you provided in the `linode_domain` block, you are ready to begin managing your domain with Terraform. Any changes or updates can be made by updating your `linode_domain_example.tf` file, then verifying the changes with the `terrform plan` command, and then finally applying the changes with the `terraform apply` command.
 
     For more available configuration options, visit the [Linode Domain](https://www.terraform.io/docs/providers/linode/r/domain.html) Terraform documentation.
 
@@ -400,7 +401,7 @@ resource "linode_domain" "example_label" {
 
 ### Create an Empty Resource Configuration
 
-1. Ensure you are in your Terraform project directory. Create a terraform configuration file to manage the Block Storage Volume you will import in the next section. Your file can be named anything you like, but must end in `.tf`. Add a Linode provider block with your API access token and an empty `linode_volume` resource configuration block to the file:
+1. Ensure you are in your Terraform project directory. Create a Terraform configuration file to manage the Block Storage Volume you will import in the next section. Your file can be named anything you like, but must end in `.tf`. Add a Linode provider block with your API access token and an empty `linode_volume` resource configuration block to the file:
 
     {{< file "linode_volume_example.tf" >}}
 provider "linode" {
@@ -412,7 +413,7 @@ resource "linode_volume" "example_label" {}
 
 ### Import Your Volume to Terraform
 
-1. Run the `import` command, supplying the `linode_volume` resource's label, and the volume ID that was retrieved in the [Retrieve Your Volume's ID](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/#retrieve-your-domain-s-id) section :
+1. Run the `import` command, supplying the `linode_volume` resource's label, and the volume ID that was retrieved in the [Retrieve Your Block Storage Volume's ID](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/#retrieve-your-block-storage-volume-s-id) section:
 
         terraform import linode_volume.example_label volumeID
 
@@ -432,7 +433,7 @@ your Terraform state and will henceforth be managed by Terraform.
 
     This command will create a `terraform.tfstate` file with information about your Volume. You will use this information to fill out your resource configuration.
 
-1.  To view the information created by `terraform import`, run the `show` command. This command will display a list of key value pairs representing information about the imported Linode instance.
+1.  To view the information created by `terraform import`, run the `show` command. This command will display a list of key-value pairs representing information about the imported Volume:
 
         terraform show
 
@@ -477,13 +478,13 @@ Though it is not required, it's a good idea to include a configuration for the s
 
     `terraform plan` shows you the changes that would take place if you were to apply the configurations with the `terraform apply` command. Running `terraform plan` should result in Terraform displaying that no changes are to be made.
 
-1. Once you have verified the configurations you provided in the `linode_volume` block, you are ready to begin managing your Block Storage Volume with Terraform. Any changes or updates can be made by updating your `linode_volume_example.tf` file, then verifying the changes with the `terrform plan` command, and finally, applying the changes with the `terraform apply` command.
+1. Once you have verified the configurations you provided in the `linode_volume` block, you are ready to begin managing your Block Storage Volume with Terraform. Any changes or updates can be made by updating your `linode_volume_example.tf` file, then verifying the changes with the `terrform plan` command, and then finally applying the changes with the `terraform apply` command.
 
     For more optional configuration options, visit the [Linode Volume](https://www.terraform.io/docs/providers/linode/r/volume.html) Terraform documentation.
 
 ## Import a NodeBalancer to Terraform
 
-Configuring [Linode NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) with Terraform require three separate resource configuration blocks: one to create the NodeBalancer, a second for the NodeBalancer Configuration, and a third for the NodeBalancer Nodes. This section will cover how to import your Linode NodeBalancer to be managed with Terraform.
+Configuring [Linode NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) with Terraform requires three separate resource configuration blocks: one to create the NodeBalancer, a second for the NodeBalancer Configuration, and a third for the NodeBalancer Nodes.
 
 ### Retrieve Your NodeBalancer, NodeBalancer Config, NodeBalancer Node IDs
 
@@ -497,9 +498,9 @@ Configuring [Linode NodeBalancers](/docs/platform/nodebalancer/getting-started-w
 [
 &nbsp;&nbsp;{
 &nbsp;&nbsp;&nbsp;&nbsp;"client_conn_throttle": 0,
-&nbsp;&nbsp;&nbsp;&nbsp;"hostname": "nb-104-237-148-95.newark.nodebalancer.linode.com",
+&nbsp;&nbsp;&nbsp;&nbsp;"hostname": "nb-192-0-2-3.newark.nodebalancer.linode.com",
 &nbsp;&nbsp;&nbsp;&nbsp;"id": 40721,
-&nbsp;&nbsp;&nbsp;&nbsp;"ipv4": "104.237.148.95",
+&nbsp;&nbsp;&nbsp;&nbsp;"ipv4": "192.0.2.3",
 &nbsp;&nbsp;&nbsp;&nbsp;"ipv6": "2600:3c03:1::68ed:945f",
 &nbsp;&nbsp;&nbsp;&nbsp;"label": "terraform-example",
 &nbsp;&nbsp;&nbsp;&nbsp;"region": "us-east"
@@ -556,9 +557,9 @@ Configuring [Linode NodeBalancers](/docs/platform/nodebalancer/getting-started-w
 
 ### Create Empty Resource Configurations
 
-1. Ensure you are in your Terraform project directory. Create a terraform configuration file to manage the NodeBalancer you will import in the next section. Your file can be named anything you like, but must end in `.tf`.
+1. Ensure you are in your Terraform project directory. Create a Terraform configuration file to manage the NodeBalancer you will import in the next section. Your file can be named anything you like, but must end in `.tf`.
 
-    Add a Linode provider block with your API access token and empty `linode_nodebalancer`, `linode_nodebalancer_config`, and `linode_nodebalancer_node` resource configuration blocks to the file. Be sure to give the resources appropriate labels. These labels will be used to reference the resources locally within Terraform. :
+    Add a Linode provider block with your API access token and empty `linode_nodebalancer`, `linode_nodebalancer_config`, and `linode_nodebalancer_node` resource configuration blocks to the file. Be sure to give the resources appropriate labels. These labels will be used to reference the resources locally within Terraform:
 
     {{< file "linode_nodebalancer_example.tf" >}}
 provider "linode" {
@@ -572,11 +573,11 @@ resource "linode_nodebalancer_config" "example_nodebalancer_config_label" {}
 resource "linode_nodebalancer_node" "example_nodebalancer_node_label" {}
 {{< /file >}}
 
-    If you have more than one NodeBalancer Configuration you will need to supply multiple `linode_nodebalancer_config` resource blocks with different labels. The same is true for each NodeBalancer Node requiring an additional `linode_nodebalancer_node` block.
+    If you have more than one NodeBalancer Configuration, you will need to supply multiple `linode_nodebalancer_config` resource blocks with different labels. The same is true for each NodeBalancer Node requiring an additional `linode_nodebalancer_node` block.
 
 ### Import Your NodeBalancer, NodeBalancer Configuration, and NodeBalancer Nodes to Terraform
 
-1.  Run the `import` command for your NodeBalancer, supplying your local label, and the ID of your NodeBalancer as the last parameter.
+1.  Run the `import` command for your NodeBalancer, supplying your local label and the ID of your NodeBalancer as the last parameter.
 
         terraform import linode_nodebalancer.example_nodebalancer_label nodebalancerID
 
@@ -643,8 +644,8 @@ linode_nodebalancer.example_nodebalancer_label:
   id = 40721
   client_conn_throttle = 0
   created = 2018-11-16T20:21:03Z
-  hostname = nb-104-237-148-95.newark.nodebalancer.linode.com
-  ipv4 = 104.237.148.95
+  hostname = nb-192-0-2-3.newark.nodebalancer.linode.com
+  ipv4 = 192.0.2.3
   ipv6 = 2600:3c03:1::68ed:945f
   label = terraform-example
   region = us-east
