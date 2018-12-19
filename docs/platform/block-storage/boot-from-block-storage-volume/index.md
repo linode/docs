@@ -6,7 +6,7 @@ description: "This guide shows how to boot a Linode from a Block Storage Volume.
 og_description: "This guide shows how to boot a Linode from a Block Storage Volume."
 keywords: ["block storage","volume","media","storage","disk", "boot", "boot disk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-04
+modified: 2018-12-19
 modified_by:
   name: Linode
 published: 2018-05-04
@@ -21,13 +21,13 @@ This guide shows how to create a duplicate of a primary disk to be booted from a
 
 ## Create the Block Storage Volume
 
-Create a Block Storage Volume and attach it to the target Linode. Ensure that the Volume is the same size as the primary disk and in the same data center as the Linode.
+Create a Block Storage Volume and attach it to the target Linode. Ensure that the Volume is the same size as, or larger than, the primary disk and in the same data center as the Linode. Failure to ensure the Volume is the right size will result in an error.
 
 Visit our [Block Storage guide](/docs/platform/how-to-use-block-storage-with-your-linode/) to create a Block Storage Volume.
 
 ## Duplicate a Primary Disk to a Block Storage Volume
 
-1.  [Reboot into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) and mount the Block Storage Volume as `/dev/sdc` as shown here:
+1.  Reboot into Rescue Mode and mount the Block Storage Volume as `/dev/sdc` as shown below. Visit our [Rescue and Rebuild guide](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) for more information on booting into Rescue Mode.
 
     ![Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode](bs-rescue-mode-sdc.png "Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode")
 
