@@ -14,166 +14,233 @@ external_resources:
  - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
 ---
 
-EDITOR'S NOTE: There's a decent amount of overlap with the existing `Use Terraform to Provision Linode Environments` guide here, which I think is ok, as it means a beginner could land on either guide and be well-served. But, we may also consider revising that guide to 'lean' it out/streamline it (perhaps just down to installing and then writing and applying a first infrastructure plan). I would prefer having a Beginners Guide that has robust coverage the concepts with a lean install-and-go guide over having a lean Beginners Guide and a more in-depth install-and-go guide.
+[Terraform](https://www.terraform.io) by HashiCorp is an orchestration tool that allows you to represent your Linode instances and other resources inside configuration files, instead of manually creating those resources via the Linode Manager or API. This practice is generally referred to as *Infrastructure as Code*, and Terraform is a popular example of this methodology. The basic workflow when using Terraform is:
 
-EDITOR'S NOTE: The HCL section here includes a healthy amount of example syntax, which I consider to be a good idea so that readers brand-new to Terraform have a more concrete sense of what using it actually looks like.
+1.  Write configuration files on your computer that declares the elements of your infrastructure that you want to create.
 
-Intro paragraph: define Terraform, e.g.:
+2.  Tell Terraform to analyze your configurations and then create the corresponding infrastructure.
 
-    Terraform is an orchestration tool that provides a method for declaring your server infrastructure in code, instead of manually creating them via the Linode Manager or API.
-
-Paragraph (or include in previous paragraph): What Terraform does vs what it doesn't do, e.g.:
-
-    Terraform creates and destroys servers and other elements of your infrastructure. Terraform generally does not configure your servers' software, which is the responsibility of configuration management (link down to #salt-and-chef subsection in Provisioners section).
-
-EDITOR'S NOTE: Using the intro to the beginners guide to salt as an analog for the content of this section.
+Terraform's primary job is to create, modify, and destroy servers and other resources. Terraform generally does not configure your servers' software. Configuring your software can be performed with scripts that you [upload to and execute on your new servers](#provisioners), or via configuration management tools or container deployments.
 
 ## The Linode Provider
 
-Paragraph:
+Terraform is a general orchestration tool that can interface with a number of different cloud platforms. These integrations are referred to as *providers*. The Terraform provider for Linode was [officially released](https://blog.linode.com/2018/10/30/now-available-linode-terraform-provider/) in October 2018.
 
-- What are Terraform providers
-- When was the Linode Terraform provider first made officially available
-- Note about how the Linode provider uses APIv4 and requires an access token
-- What infrastructure elements can be created with the Linode provider
+{{< note >}}
+The Linode provider relies on Linode's [APIv4](https://developers.linode.com/api/v4), so an API access token is needed to use it. See [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) for instructions on getting an API token and installing Terraform and the Linode provider on your computer.
+{{< /note >}}
 
-## HashiCorp Configuration Language
+The Linode provider can be used to create Linode instances, Images, domain records, Block Storage Volumes, StackScripts, and other resources. Terraform's [official Linode provider documentation](https://www.terraform.io/docs/providers/linode/index.html) details each resource that can be managed.
 
-Paragraph: What is HCL, how is it used by Terraform.
+## Infrastructure as Code
 
-Simple example to illustrate syntax (make a better example than this):
+Terraform's representation of your resources in configuration files is referred to as *Infrastructure as Code* (IAC). The benefits of this methodology and of using Terraform include:
 
-{{< file >}}
-provider "linode" {
-  token = "$LINODE_TOKEN"
-}
+-   **Version control of your infrastructure.** Because your resources are declared in code, you can track changes to that code over time in systems like Git.
 
-resource "linode_instance" "foobar" {
-  # ...
-}
-{{< /file >}}
+-   **Minimization of human error.** Terraform's analysis of your configuration files will produce the same results every time it creates your declared resources. As well, telling Terraform to repeatedly apply the same configuration will not result in extra resource creation, as Terraform tracks the changes it makes over time.
 
-Link to full HCL syntax reference (https://www.terraform.io/docs/configuration/syntax.html) or Linode's separate HCL guide (currently being written).
+-   **Better collaboration among team members.** Terraform's [backends](#backends) allow multiple team members to safely work on the same Terraform configuration simultaneously.
 
-### Infrastructure as Code
+### HashiCorp Configuration Language
 
-Paragraph: elaborate on the infrastructure-as-code metaphor from the intro paragraph. Contrast with using the API to create infrastructure. List benefits of infrastructure-as-as code, e.g.:
+Terraform's configuration files can be written in either the [*HashiCorp Configuration Language*](https://github.com/hashicorp/hcl) (HCL), or in JSON. HCL is a configuration language authored by HashiCorp for use with its products, and it is designed to be human readable and machine friendly. It is recommended that you use HCL over JSON for your Terraform deployments.
 
--   Being able to version control IaC
--   Minimization of human error
--   Better collaboration among team members
--   Idempotent application of Terraform configuration
-
-EDITOR'S NOTE: see `Benefits of States and Configuration Management` section of Beginner's Guide to Salt for example benefits, which are similar to benefits of Terraform
+The next sections will illustrate core Terraform concepts with examples written in HCL. For a more complete review of HCL syntax, see [Introduction to HashiCorp Configuration Language (HCL)](/docs/applications/configuration-management/introduction-to-hcl/).
 
 ### Resources
 
-Paragraph: define Resources in the context of HCL and the Linode Provider, e.g.: Resource declarations correspond with the components of your Linode infrastucture: Linode instances, Block Storage Volumes, etc.
+Here's a simple example of a complete Terraform configuration in HCL:
 
-Simple example that creates a Linode:
+{{< file "example.tf" >}}
+provider "linode" {
+    token = "your-linode-api-token"
+}
 
-{{< file >}}
-resource "linode_instance" "web" {
-    label = "simple_instance"
-    group = "foo"
+resource "linode_instance" "example_instance" {
+    label = "example_instance_label"
     image = "linode/ubuntu18.04"
     region = "us-central"
     type = "g6-standard-1"
     authorized_keys = ["ssh-rsa AAAA...Gw== user@example.local"]
-    root_pass = "terr4form-test"
+    root_pass = "your-root-password"
 }
 {{< /file >}}
 
 {{< note >}}
-Note about how the `root_pass` declaration is mandatory, as Linode instances require a root password assignment at creation.
+The SSH key in this example was truncated for brevity.
 {{< /note >}}
 
-#### Dependencies
+This example represents the creation of a single Linode instance named `example_instance_label`. Terraform configuration files end in the `.tf` file extension. This example file is prefixed with a `provider` block, which sets up the Linode provider and which you must list somewhere in your configuration.
 
-Paragraph: explain how resources can have implicit or explicit dependencies between each other.
+The `provider` block is followed by a *resource* declaration. Resource declarations correspond with the components of your Linode infrastucture: Linode instances, Block Storage Volumes, etc.
 
-Simple example file: Create a domain resource that uses the IP address from the previous example's Linode instance resource.
+Resources can accept arguments, as in the `resource` block above. `region` and `type` are required arguments for the `linode_instance` resource. A root password must be assigned to every Linode, but the `root_pass` Terraform argument is optional; if it is not specified, a random password will be generated.
 
-{{< file >}}
-Insert syntax for that example here.
+{{< note >}}
+The `example_instance` string that follows the `linode_instance` resource type declaration is Terraform's name for the resource. You cannot declare more than one Terraform resource with the same name and resource type.
+
+The `label` argument specifies the label for the Linode instance in the Linode Manager. This name is independent of Terraform's name for the resource (though you can assign the same value to both). The Terraform name is only recorded in Terraform's [state](#state) and is not communicated to the Linode API. Labels for Linode instances in the same Linode account must be unique.
+{{< /note >}}
+
+### Dependencies
+
+Terraform resources can depend on each other. When one resource depends on another, it will be created after that other resource, even if it is listed before the other resource in your configuration file.
+
+The following snippet expands on the previous example. It declares a new domain with an A record that targets the Linode instance's IP address:
+
+{{< file "example.tf" >}}
+provider "linode" {
+    # ...
+}
+
+resource "linode_instance" "example_instance" {
+    # ...
+}
+
+resource "linode_domain" "example_domain" {
+    domain = "example.com"
+    soa_email = "example@example.com"
+}
+
+resource "linode_domain_record" "example_domain_record" {
+    domain_id = "${linode_domain.example_domain.id}"
+    name = "www"
+    record_type = "A"
+    target = "${linode_instance.example_instance.ip_address}"
+}
 {{< /file >}}
 
-### Variables
+The domain record's `domain_id` and `target` arguments use HCL's [interpolation syntax](/docs/applications/configuration-management/introduction-to-hcl/#interpolation) to retrieve the ID of the domain resource and the IP of the Linode instance, respectively. Terraform creates an *implicit dependency* on the `example_instance` and `example_domain` resources for the `example_domain_record` resource. As a result, the domain record will not be created until after the Linode instance and the domain are created.
 
-Paragraph: explain how variables can be used to fill in parameters in a Terraform configuration.
+{{< note >}}
+[Explicit dependencies](https://www.terraform.io/docs/configuration/resources.html#explicit-dependencies) can also be declared.
+{{< /note >}}
 
-New example that sets variables for the `region`, `root_pass`, and `authorized_keys` declarations in the first Resources example.
+### Input Variables
 
-{{< file >}}
-Insert example here
+The previous example hard-coded sensitive data in your configuration, including your API token and root password. Terraform allows you to provide the values for your resource arguments in *input variables*. These variables are declared and referenced in your Terraform configuration (using the interpolation syntax), and the values for those variables are assigned in a separate file.
+
+Input variables can also be used for non-sensitive data. These example files will employ variables for the sensitive `token` and `root_pass` arguments and the non-sensitive `authorized_keys` and `region` arguments:
+
+{{< file "example.tf" >}}
+provider "linode" {
+    token = "${var.token}"
+}
+
+resource "linode_instance" "example_instance" {
+    label = "example_instance_label"
+    image = "linode/ubuntu18.04"
+    region = "${var.region}"
+    type = "g6-standard-1"
+    authorized_keys = ["${var.ssh_key}"]
+    root_pass = "${var.root_pass}"
+}
+
+variable "token" {}
+variable "root_pass" {}
+variable "ssh_key" {}
+variable "region" {
+  default = "us-southeast"
+}
 {{< /file >}}
 
-## Terraform CLI
-
-Paragraph: Introduce the CLI as the primary method for interacting with Terraform.
-
-## Plan and Apply
-
-Paragraph: Define the Plan command and show how it works.
-
-Paragraph: Define the Apply command and show how it works.
-
-### State
-
-Paragraph: Explain how Terraform maintains a state file (not to be confused with Salt states) in order to keep track of what infrastructure has been provisioned via Terraform.
-
-Paragarph: Explain how this state information is stored locally by default (in a terraform.tfstate file). Note that it can be stored in other backend for better collaboration with teams (link to #backends section further down in guide)
-
-### Other Commands
-
-Link out to Terraform reference doc for other commands (https://www.terraform.io/docs/commands/index.html)
-
-## Provisioners
-
-Paragraph: define Provisioners, similar to Terraform docs' definition. EDITOR'S NOTE: This is a direct copy from their docs, avoid plagiarizing it in our actual guide:
-
-    Provisioners are used to execute scripts on a local or remote machine as part of resource creation or destruction. Provisioners can be used to bootstrap a resource, cleanup before destroy, run configuration management, etc.
-
-Link out to Terraform provisioners reference: https://www.terraform.io/docs/provisioners/index.html
-
-Paragraph: describe how provisioners (except for `null_resource` are added to resource declaration, that multiple provisioners can be added to a resource, and that they will be run in the order they are listed in inside a resource declaration.
-
-### Uploading Files and Executing Commands
-
-Paragraph: introduce the `file`, `local-exec`, and `remote-exec` provisioners.
-
-Simple example: use the `remote-exec` provisioner to install Apache
-
-{{< file >}}
-Insert example here
+{{< file "terraform.tfvars" >}}
+token = "your-linode-api-token"
+root_pass = "your-root-password"
+ssh_key = "ssh-rsa AAAA...Gw== user@example.local"
 {{< /file >}}
 
 {{< note >}}
-Make a note that Stackscripts (which can be assigned in a Linode instance resource) are an alternative to using the `remote-exec` provisioner.
+Place all of your Terraform project's files in the same directory. Terraform will automatically load input variable values from any file named `terraform.tfvars` or ending in `.auto.tfvars`.
 {{< /note >}}
 
-### Salt and Chef
+The `region` variable is not assigned a specific value, so it will use the default value provided in the variable's declaration. See [Introduction to HashiCorp Configuration Language](/docs/applications/configuration-management/introduction-to-hcl/#input-variables) for more detailed information about input variables.
 
-Paragraph: introduce the `chef` and `salt-masterless` provisioners as a means of integrating those two configuration management softwares.
+## Terraform CLI
+
+You interact with Terraform via its command line interface. After you have created the configuration files in your Terraform project, you need to run the `init` command from the project's directory:
+
+    terraform init
+
+This command will download the Linode provider plugin and take other actions needed to initialize your project. It is safe to run this command more than once, but you generally will only need to run it again if you are adding another provider to your project.
+
+### Plan and Apply
+
+After you have declared your resources in your configuration files, you create them by running Terraform's `apply` command from your project's directory. However, you may want to verify that Terraform will create the resources as you expect it to before making any actual changes to your infrastructure. To do this, you can first run the `plan` command:
+
+    terraform plan
+
+This command will generate a report detailing what actions Terraform will take to set up your Linode resources.
+
+If you are satisfied with this report, run `apply`:
+
+    terraform apply
+
+This command will ask you to confirm that you want to proceed. When Terraform has finished applying your configuration, it will show a report of what actions were taken.
+
+### State
+
+When Terraform analyzes and applies your configuration, it creates an internal representation of the infrastructure it creates to track the changes it makes. This *state* information is recorded in JSON in a local file named `terraform.tfstate` by default, but it can also be stored in other [backends](#backends).
+
+{{< caution >}}
+Your sensitive infrastructure data (like passwords and tokens) is visible in plain-text in your `terraform.tfstate` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
+{{< /caution >}}
+
+### Other Commands
+
+Other useful commands are available, like `terraform show`, which reports a human-readable version of your Terraform state. A full list of [Terraform commands](https://www.terraform.io/docs/commands/index.html) is available in the official Terraform documentation.
+
+## Provisioners
+
+In addition to resource declarations, Terraform configurations can include *provisioners*. You declare provisioners to run scripts in your local development environment or on your Terraform-managed servers. These actions are performed when you apply your Terraform configuration
+
+The following example uploads a setup script to a newly created Linode instance and then executes it. This pattern can be used to bootstrap the new instance or enroll it in configuration management:
+
+{{< file "example.tf" >}}
+resource "linode_instance" "example_instance" {
+  # ...
+
+  provisioner "file" {
+      source      = "setup_script.sh"
+      destination = "/tmp/setup_script.sh"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/setup_script.sh",
+      "/tmp/setup_script.sh",
+    ]
+  }
+}
+{{< /file >}}
+
+Most provisioners are declared inside of a resource declaration. When multiple provisioners are declared inside a resource, they are executed in the order they are listed. For a full list of [provisioners](https://www.terraform.io/docs/provisioners/index.html), review the official Terraform documentation.
+
+{{< note >}}
+Linode [StackScripts](https://www.terraform.io/docs/providers/linode/r/stackscript.html) can also be used to set up a new Linode instance. A distinction between using StackScripts and the `file` and `remote-exec` provisioners is that those provisioners will run and complete synchronously before Terraform continues to apply your plan, while a StackScript will run in parallel while Terraform creates the rest of your remaining resources.
+{{< /note >}}
 
 ## Modules
 
-Define Modules and show an example similar to the Module section of the current Terraform guide:
-https://linode.com/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#terraform-modules
-
-The Module section could technically be a subsection of the HCL section, but if we did that I feel like the guide would be a little 'top-heavy'. I think segueing into Terraform commands (Plan and Apply) faster is worth it.
+Terraform allows you to organize your configurations into reusable structures called *modules*. This is useful if you need to create multiple instances of the same cluster of servers. Review [Create a Terraform Module](/docs/applications/configuration-management/create-terraform-module/) for more information on authoring and using modules.
 
 ## Backends
 
-Paragraph: introduce Terraform Backends and their benefits as described here:
-https://www.terraform.io/docs/backends/index.html
+By default, Terraform maintains its state in your project's directory. Terraform also supports storing your state in non-local [*backends*](https://www.terraform.io/docs/backends/index.html). The benefits of including your state in another backend include:
 
-List backend types: https://www.terraform.io/docs/backends/types/index.html
+-   **Better collaboration with your team.** Backends let you share the same state as other team members that have access to the backend.
 
-## Importing?
+-   **Better security.** The state information stored in and retrieved from backends is only kept in memory on your computer.
 
-Possible section introducing that existing infrastructure can be added to Terraform (don't go far into detail, maybe just link out to the guide we write on that subject, if we do).
+-   **Remote operations.** When working with a large infrastructure, `terraform apply` can take a long time to complete. Some backends allow you to run the `apply` remotely, instead of on your computer.
+
+The [kinds of backends available](https://www.terraform.io/docs/backends/types/index.html) are listed in Terraform's official documentation.
+
+## Importing
+
+It is possible to import Linode infrastructure that was created outside of Terraform into your Terraform plan. Review [Import Existing Infrastructure to Terraform](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/) for instructions on this subject.
 
 ## Next Steps
 
-Link to `Use Terraform to Provision Linode Environments` guide.
+To get started with installing Terraform and creating your first projects, read through our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
