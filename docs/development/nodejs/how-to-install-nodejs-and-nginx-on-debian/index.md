@@ -19,6 +19,9 @@ external_resources:
  - '[NodeSchool](http://nodeschool.io/)'
  - '[Node Version Manager](https://github.com/creationix/nvm)'
  - '[npm](https://www.npmjs.com/)'
+audiences: ["intermediate"]
+concentrations: ["Web Applications"]
+languages: ["javascript"]
 ---
 
 ![Install Node.js and NGINX on Debian](How_to_Install_Nodejs_and_Nginx_on_Debian_smg.jpg)

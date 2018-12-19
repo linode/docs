@@ -16,6 +16,7 @@ contributor:
   name: Damaso Sanoja
 external_resources:
  - '[Wercker Developer Documentation](http://devcenter.wercker.com/docs/home)'
+audiences: ["intermediate"]
 ---
 
 

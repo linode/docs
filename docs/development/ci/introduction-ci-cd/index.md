@@ -14,6 +14,7 @@ modified_by:
 title: Introduction to Continuous Integration/Continuous Delivery (CI/CD)
 external_resources:
   - '[How to Automate Builds with Jenkins on Ubuntu](/docs/development/ci/automate-builds-with-jenkins-on-ubuntu/)'
+audiences: ["foundational", "beginner"]
 ---
 
 ## What is Continuous Integration?

@@ -5,7 +5,7 @@ author:
 description: Julia is a dynamically typed, functional programming language intended to match the readable syntax and ease of use of Python without sacrificing the performance of a traditional compiled language. This guide introduces the main features, benefits, and limitations of Julia and includes a brief section on installation and basic use.
 keywords: ['data science','julia','python','why learn Julia']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-11
+published: 2018-12-11
 modified: 2018-06-11
 modified_by:
   name: Linode
@@ -14,7 +14,11 @@ external_resources:
 - '[Julia](https://julialang.org/)'
 - '[Julia By Example](https://juliabyexample.helpmanual.io/)'
 - '[JuliaBox](https://juliabox.com/)'
+audiences: ["beginner"]
+concentrations: ["Scientific Computing and Big Data"]
+languages: ["julia"]
 ---
+![Why You Should Learn Julia](Why_You_Should_Learn_Julia_smg.jpg)
 
 ## What is Julia?
 

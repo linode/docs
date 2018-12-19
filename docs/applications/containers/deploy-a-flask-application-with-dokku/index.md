@@ -7,7 +7,7 @@ og_description: 'Host your own PaaS with Dokku, a highly extensible way to deplo
 keywords: ['docker','containers','nginx', 'heroku', 'PaaS', 'git', 'Platform-as-a-service', 'Platform As a Service']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-07
-modified: 2018-03-07
+modified: 2018-12-14
 modified_by:
   name: Linode
 title: "Deploy a Flask Application with Dokku"

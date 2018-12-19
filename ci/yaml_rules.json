@@ -5,6 +5,12 @@
     "type": "list",
     "description": "Other locations where this guide can be found. Should be an array of entries in the form /applications/big-data/using-big-data/"
   },
+  "audiences": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "An array of audiences. Could be Foundational, Beginner, Intermediate, or Expert"
+  },
   "author": {
     "elements": [
       "name",
@@ -19,6 +25,12 @@
 	  "required": false,
 	  "type": "text",
 	  "description": "In a guide written for the current Linode Manager, if a new version of the guide exists written for the new Linode Manager, use this in the original guide to embed a link to the new guide. Must use alias-style relative links (e.g. platform/manager/dns-manager-cloud-manager/)."
+  },
+  "concentrations": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "A list of development section concentrations. Case sensitive, capitalize words where appropriate. Could be one of: 'Scripting, Automation, and Build Tools', 'Web Applications', 'Unit Testing', or 'Scientific Computing and Big Data'"
   },
   "h1_title": {
     "elements": false,
@@ -99,6 +111,12 @@
     "required": false,
     "type": "text",
     "description": "If a layout other than the default is needed (i.e. for the Contribute page), specify the name of the layout here."
+  },
+  "languages": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "An array of programming languages that apply to the guide. Could be JavaScript, Go, Python, etc."
   },
   "license": {
     "elements": false,

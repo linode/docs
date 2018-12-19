@@ -15,6 +15,8 @@ title: Manage CPAN Modules with cpanminus
 external_resources:
  - '[cpanminus Documentation](http://search.cpan.org/~miyagawa/App-cpanminus-0.9929/lib/App/cpanminus.pm)'
  - '[cpanminus Development](http://github.com/miyagawa/cpanminus/)'
+audiences: ["beginner"]
+languages: ["perl"]
 ---
 
 ![banner_image](Manage_CPAN_Modules_with_cpanminus_smg.jpg)

@@ -18,6 +18,7 @@ external_resources:
  - '[Haskell Wiki for *cabal-install*](http://www.haskell.org/haskellwiki/Cabal-Install)'
  - '[Information for *yesod-platform*](http://hackage.haskell.org/package/yesod-platform)'
  - '[Yesod Quick Start Guide](http://www.yesodweb.com/page/quickstart)'
+concentrations: ["Web Applications"]
 ---
 
 

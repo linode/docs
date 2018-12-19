@@ -6,7 +6,7 @@ description: 'Metabase is a data exploration tool that makes analytics accessibl
 og_description: 'Metabase provides a clean interface to query data on your browser. Metabase offers functionality to analyze data without SQL, create dashboards, and track metrics. This guide shows how to connect MySQL to Metabase then deploy on NGINX through a reverse proxy'
 keywords: ["visualization", "database", "query", "What is Metabase", "metabase", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-02-22
+modified: 2018-12-10
 modified_by:
   name: Linode
 published: 2018-02-22
@@ -16,6 +16,8 @@ external_resources:
  - '[Metabase](https://metabase.com/)'
  - '[Employees Testing Database](https://github.com/datacharmer/test_db)'
 ---
+
+![Connect Metabase with mysql for data exploration](Connect_Metabase_with_MySQL_for_Data_Exploration_smg.jpg)
 
 ## What is Metabase
 
