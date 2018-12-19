@@ -1,4 +1,4 @@
----
+ ---
 author:
   name: Linode
   email: docs@linode.com
@@ -8,15 +8,15 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-11-26
 modified_by:
   name: Linode
-published: 2018-11-26
+published: 2018-12-19
 title: A Beginner's Guide to Terraform
 external_resources:
  - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
 ---
 
-[Terraform](https://www.terraform.io) by HashiCorp is an orchestration tool that allows you to represent your Linode instances and other resources inside configuration files, instead of manually creating those resources via the Linode Manager or API. This practice is generally referred to as *Infrastructure as Code*, and Terraform is a popular example of this methodology. The basic workflow when using Terraform is:
+[Terraform](https://www.terraform.io) by HashiCorp is an orchestration tool that allows you to represent your Linode instances and other resources inside configuration files, instead of manually creating those resources via the Linode Manager or API. This practice is referred to generally as *Infrastructure as Code*, and Terraform is a popular example of this methodology. The basic workflow when using Terraform is:
 
-1.  Write configuration files on your computer that declares the elements of your infrastructure that you want to create.
+1.  Write configuration files on your computer in which you declare the elements of your infrastructure that you want to create.
 
 2.  Tell Terraform to analyze your configurations and then create the corresponding infrastructure.
 
