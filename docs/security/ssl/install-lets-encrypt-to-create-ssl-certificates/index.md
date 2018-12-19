@@ -6,7 +6,7 @@ description: "Let's Encrypt is an SSL certificate authority managed by the Inter
 keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-25
-modified: 2018-05-11
+modified: 2018-12-19
 modified_by:
   name: 'Linode'
 title: "Install Let's Encrypt to Create SSL Certificates"
@@ -74,7 +74,7 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
         sudo -H ./letsencrypt-auto certonly --standalone -d example.com -d www.example.com
 
     {{< note >}}
-Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires its own certificate.
+ACME version 2 now supports wildcard certificates for subdomains by using the a DNS challenge. For more information on obtaining wildcards, visit the [Let's Encrypt documentation](https://community.letsencrypt.org/t/acme-v2-production-environment-wildcards/55578).
 {{< /note >}}
 
 2.  When prompted, specify an administrative email address. This will allow you to regain control of a lost certificate and receive urgent security notices if necessary. Press **ENTER** or **RETURN** to save.
