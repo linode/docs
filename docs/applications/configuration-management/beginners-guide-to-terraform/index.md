@@ -5,7 +5,7 @@ author:
 description: 'A look into Terraform''s primary components, features, and configurations for the new Terraform user'
 keywords: ["terraform", "orchestration", "linode provider"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-11-26
+modified: 2018-12-19
 modified_by:
   name: Linode
 published: 2018-12-19
@@ -73,7 +73,7 @@ The SSH key in this example was truncated for brevity.
 
 This example represents the creation of a single Linode instance named `example_instance_label`. Terraform configuration files end in the `.tf` file extension. This example file is prefixed with a `provider` block, which sets up the Linode provider and which you must list somewhere in your configuration.
 
-The `provider` block is followed by a *resource* declaration. Resource declarations correspond with the components of your Linode infrastucture: Linode instances, Block Storage Volumes, etc.
+The `provider` block is followed by a *resource* declaration. Resource declarations correspond with the components of your Linode infrastructure: Linode instances, Block Storage Volumes, etc.
 
 Resources can accept arguments, as in the `resource` block above. `region` and `type` are required arguments for the `linode_instance` resource. A root password must be assigned to every Linode, but the `root_pass` Terraform argument is optional; if it is not specified, a random password will be generated.
 
