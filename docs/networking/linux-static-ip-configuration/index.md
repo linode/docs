@@ -242,7 +242,7 @@ iface eth0 inet6 static
   address 2001:db8:2000:aff0::2/32
 {{< /file >}}
 
-2.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.
+1.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.
 
     {{< file "/etc/resolv.conf" >}}
 nameserver 203.0.113.1
@@ -323,11 +323,15 @@ NETCONFIG_DNS_RESOLVER_OPTIONS="rotate"
 
 ### Ubuntu 18.04
 
-[Netplan](https://www.linuxjournal.com/content/have-plan-netplan) is used to configure networking in Ubuntu 18.04 and later. Ubuntu Server installs using `systemd-networkd` as the [backend](https://netplan.io/design#design-overview) for Netplan, as opposed to NetworkManager used by Ubuntu Desktop.
+[Netplan](https://netplan.io/) is used to configure networking in Ubuntu 18.04 and later. Ubuntu Server is packaged with `systemd-networkd` as the [backend](https://netplan.io/design#design-overview) for Netplan, while NetworkManager is used as the Netplan backend in Ubuntu Desktop. The `ifupdown` package has been deprecated, and `/etc/network/interfaces` is no longer used, but it's still possible to configure static networking with `/etc/systemd/network/*.network` files.
 
-The `ifupdown` file `/etc/network/interfaces` is no longer used but it's still possible to configure static networking using `/etc/systemd/network/*.network`.
+{{< note >}}
+If you have upgraded to Ubuntu 18.04 or later from an earlier version, you may need to enable `systemd-networkd`:
 
-1.  Remove default configuration files that may interfere with your static addressing:
+    systemctl enable systemd-networkd
+{{< /note >}}
+
+1.  Remove default configuration files that may interfere with static addressing:
 
         sudo rm /etc/systemd/network/05-eth0.network
         sudo rm /etc/netplan/01-netcfg.yaml
@@ -404,7 +408,7 @@ To apply your changes, reboot from the Linode Manager's dashboard. Rebooting ens
 
 1.  Log into your Linode via SSH.
 
-2.  Use the `ip` tool to be sure the addresses you set above were applied:
+1.  Use the `ip` tool to be sure the addresses you set above were applied:
 
         root@localhost:~# ip addr | grep inet
         inet 127.0.0.1/8 scope host lo
@@ -413,7 +417,7 @@ To apply your changes, reboot from the Linode Manager's dashboard. Rebooting ens
         inet6 2600:3c02::f03c:91ff:fe24:3a2f/64 scope global
         inet6 fe80::f03c:91ff:fe24:3a2f/64 scope link
 
-3.  Confirm that your `/etc/resolv.conf` exists and is correct. Its contents will differ according to the Linux distribution.
+1.  Confirm that your `/etc/resolv.conf` exists and is correct. Its contents will differ according to the Linux distribution.
 
         root@localhost:~# cat /etc/resolv.conf
         nameserver 8.8.8.8
@@ -421,7 +425,7 @@ To apply your changes, reboot from the Linode Manager's dashboard. Rebooting ens
         domain members.linode.com
         options rotate
 
-4.  Try pinging something to confirm you have full connectivity, both over IPv4 and IPv6.
+1.  Try pinging something to confirm you have full connectivity, both over IPv4 and IPv6.
 
         ping -c 3 google.com
         ping6 -c 3 ipv6.google.com
