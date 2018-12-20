@@ -5,10 +5,10 @@ description: 'Use the Linode Backup Service to protect and secure your data.'
 keywords: ["backup service", "linode platform", "linode backup service", "enable a backup", "manage a backup", "schedule a backup", "disable a backup", "restore from a backup", "boot from a backup"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['backup-service/','platform/backup-service/', 'security/backups/linode-backup-service/','platform/linode-backup-service/']
-modified: 2018-12-18
+modified: 2018-12-20
 modified_by:
   name: Linode
-published: 2018-12-18
+published: 2018-12-20
 title: 'The Linode Backup Service'
 hiddenguide: true
 ---
