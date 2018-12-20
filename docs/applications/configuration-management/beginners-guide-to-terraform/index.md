@@ -14,7 +14,7 @@ external_resources:
  - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
 ---
 
-[Terraform](https://www.terraform.io) by HashiCorp is an orchestration tool that allows you to represent your Linode instances and other resources inside configuration files, instead of manually creating those resources via the Linode Manager or API. This practice is referred to generally as *Infrastructure as Code*, and Terraform is a popular example of this methodology. The basic workflow when using Terraform is:
+[Terraform](https://www.terraform.io) by HashiCorp is an orchestration tool that allows you to represent your Linode instances and other resources with declarative code inside configuration files, instead of manually creating those resources via the Linode Manager or API. This practice is referred to as *Infrastructure as Code*, and Terraform is a popular example of this methodology. The basic workflow when using Terraform is:
 
 1.  Write configuration files on your computer in which you declare the elements of your infrastructure that you want to create.
 
@@ -36,7 +36,7 @@ The Linode provider can be used to create Linode instances, Images, domain recor
 
 Terraform's representation of your resources in configuration files is referred to as *Infrastructure as Code* (IAC). The benefits of this methodology and of using Terraform include:
 
--   **Version control of your infrastructure.** Because your resources are declared in code, you can track changes to that code over time in systems like Git.
+-   **Version control of your infrastructure.** Because your resources are declared in code, you can track changes to that code over time in version control systems like Git.
 
 -   **Minimization of human error.** Terraform's analysis of your configuration files will produce the same results every time it creates your declared resources. As well, telling Terraform to repeatedly apply the same configuration will not result in extra resource creation, as Terraform tracks the changes it makes over time.
 
@@ -71,7 +71,7 @@ resource "linode_instance" "example_instance" {
 The SSH key in this example was truncated for brevity.
 {{< /note >}}
 
-This example represents the creation of a single Linode instance named `example_instance_label`. Terraform configuration files end in the `.tf` file extension. This example file is prefixed with a `provider` block, which sets up the Linode provider and which you must list somewhere in your configuration.
+This example Terraform file, with the Terraform file extensions `.tf`, represents the creation of a single Linode instance labeled `example_instance_label`. This example file is prefixed with a mandatory `provider` block, which sets up the Linode provider and which you must list somewhere in your configuration.
 
 The `provider` block is followed by a *resource* declaration. Resource declarations correspond with the components of your Linode infrastructure: Linode instances, Block Storage Volumes, etc.
 
@@ -85,7 +85,7 @@ The `label` argument specifies the label for the Linode instance in the Linode M
 
 ### Dependencies
 
-Terraform resources can depend on each other. When one resource depends on another, it will be created after that other resource, even if it is listed before the other resource in your configuration file.
+Terraform resources can depend on each other. When one resource depends on another, it will be created after the resource it depends on, even if it is listed before the other resource in your configuration file.
 
 The following snippet expands on the previous example. It declares a new domain with an A record that targets the Linode instance's IP address:
 
@@ -119,9 +119,9 @@ The domain record's `domain_id` and `target` arguments use HCL's [interpolation 
 
 ### Input Variables
 
-The previous example hard-coded sensitive data in your configuration, including your API token and root password. Terraform allows you to provide the values for your resource arguments in *input variables*. These variables are declared and referenced in your Terraform configuration (using the interpolation syntax), and the values for those variables are assigned in a separate file.
+The previous example hard-coded sensitive data in your configuration, including your API token and root password. To avoid this practice, Terraform allows you to provide the values for your resource arguments in *input variables*. These variables are declared and referenced in your Terraform configuration (using the interpolation syntax), and the values for those variables are assigned in a separate file.
 
-Input variables can also be used for non-sensitive data. These example files will employ variables for the sensitive `token` and `root_pass` arguments and the non-sensitive `authorized_keys` and `region` arguments:
+Input variables can also be used for non-sensitive data. The following example files will employ variables for the sensitive `token` and `root_pass` arguments and the non-sensitive `authorized_keys` and `region` arguments:
 
 {{< file "example.tf" >}}
 provider "linode" {
@@ -167,7 +167,7 @@ This command will download the Linode provider plugin and take other actions nee
 
 ### Plan and Apply
 
-After you have declared your resources in your configuration files, you create them by running Terraform's `apply` command from your project's directory. However, you may want to verify that Terraform will create the resources as you expect it to before making any actual changes to your infrastructure. To do this, you can first run the `plan` command:
+After you have declared your resources in your configuration files, you create them by running Terraform's `apply` command from your project's directory. However, you should always verify that Terraform will create the resources as you expect them to be created before making any actual changes to your infrastructure. To do this, you can first run the `plan` command:
 
     terraform plan
 
@@ -193,7 +193,7 @@ Other useful commands are available, like `terraform show`, which reports a huma
 
 ## Provisioners
 
-In addition to resource declarations, Terraform configurations can include *provisioners*. You declare provisioners to run scripts in your local development environment or on your Terraform-managed servers. These actions are performed when you apply your Terraform configuration
+In addition to resource declarations, Terraform configurations can include *provisioners*. You declare provisioners to run scripts and commands in your local development environment or on your Terraform-managed servers. These actions are performed when you apply your Terraform configuration.
 
 The following example uploads a setup script to a newly created Linode instance and then executes it. This pattern can be used to bootstrap the new instance or enroll it in configuration management:
 
@@ -218,7 +218,7 @@ resource "linode_instance" "example_instance" {
 Most provisioners are declared inside of a resource declaration. When multiple provisioners are declared inside a resource, they are executed in the order they are listed. For a full list of [provisioners](https://www.terraform.io/docs/provisioners/index.html), review the official Terraform documentation.
 
 {{< note >}}
-Linode [StackScripts](https://www.terraform.io/docs/providers/linode/r/stackscript.html) can also be used to set up a new Linode instance. A distinction between using StackScripts and the `file` and `remote-exec` provisioners is that those provisioners will run and complete synchronously before Terraform continues to apply your plan, while a StackScript will run in parallel while Terraform creates the rest of your remaining resources.
+Linode [StackScripts](https://www.terraform.io/docs/providers/linode/r/stackscript.html) can also be used to set up a new Linode instance. A distinction between using StackScripts and the `file` and `remote-exec` provisioners is that those provisioners will run and complete synchronously before Terraform continues to apply your plan, while a StackScript will run in parallel while Terraform creates the rest of your remaining resources. As a result, Terraform might complete its application before a StackScript has finished running.
 {{< /note >}}
 
 ## Modules
