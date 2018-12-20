@@ -19,6 +19,8 @@ title: Linode Managed
 
 First, you'll need to [sign up for Linode Managed](https://www.linode.com/managed/). Once Linode Managed is enabled for your account, you'll see the **Managed** tab when you log in to the Linode Manager, as shown below. You'll use this interface to interact with Linode Managed and monitor your servers.
 
+Linode Managed applies to all Linodes on your account. If you have multiple Linodes on your account and would like to choose which Linodes fall under Linode Managed, you will need to create a separate account and transfer the Linodes that you would not like to be Managed into the new account. To start that process, please open a Support ticket.
+
 [![The Linode Managed interface.](/docs/assets/1198-managed_overview.png)](/docs/assets/1198-managed_overview.png)
 
 1.  **History:** Review the historical availability of your monitored services at a glance. If any of your services were unavailable at any time within the past 10 days, you will see those outages here.
