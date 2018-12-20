@@ -62,6 +62,14 @@ You can also follow along with this video to enable the Backup Service on your L
 
 {{< youtube X1J1OigQre0 >}}
 
+### Auto Enroll New Linodes in the Backup Service
+
+You can automatically enroll all new Linodes in the Backup Service. To do so, navigate to the **Account** tab in the Linode Manager, then select the **Account Settings** tab. In the  **Linode Backup Enrollment** section, select the **AUTOMATIC** option and save the change.
+
+{{< note >}}
+Enabling this setting does not retroactively enroll any previously created Linodes in the Backup Service. To enroll your existing Linodes in the Backup Service, click the **Enable backups for all existing Linodes** link in the **Linode Backup Enrollment** section and then confirm your choice in the page that appears.
+{{< /note >}}
+
 ## Manage Backups
 
 You'll manage your backups with a simple web interface in the Linode Manager. There's no software to install, and there are no commands to run. Just log in to the Linode Manager, click the **Linodes** tab, select a Linode, and then click the **Backups** tab. The backups interface is shown below.
