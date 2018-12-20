@@ -23,6 +23,6 @@ headless: true
 
 3.  The setup script will run an `apt-get update` automatically, so you can install Node.js right away:
 
-        sudo apt install nodejs
+        sudo apt install nodejs npm
 
 The Node Package Manager (NPM) will be installed alongside Node.js.
