@@ -31,10 +31,6 @@ Different Linodes will be scheduled to migrate on different dates and times. The
 
 You are able to move your servers to Tokyo 2 before the scheduled migration dates. We recommend that all customers move their servers early. Moving early will help you better control the uptime of your services.
 
-{{< note >}}
-You will receive a credit on your account equal to three months of service for each of your Tokyo 1 Linodes. This credit will cover the cost of creating new servers in Tokyo 2 if you choose to [clone your Linodes](#option-2-clone-your-linodes).
-{{< /note >}}
-
 ## What are My Options for Migrating?
 
 There are three different options for moving your servers to the Tokyo 2 data center. The first two of these methods can be followed before the scheduled migration deadlines for your Linodes.
@@ -93,7 +89,7 @@ To clone a Linode, follow these steps:
 After you have created your new Linode and completed the clone, you may need to update your new Linode's [network configuration](#update-your-network-configuration). After making sure that your new Tokyo 2 servers all work as expected, [update your DNS records](#update-dns-records).
 
 {{< note >}}
-If you clone your Tokyo 1 Linodes to Tokyo 2, your Tokyo 1 Linodes will remain running and active on your account by default. To prevent double-billing, [remove](/docs/platform/billing-and-support/billing-and-payments/#removing-services) the original Tokyo 1 Linodes after you have finished your clones. The three-month credit that will be applied to your account will cover the costs for your extra servers during this transition period. This credit will not cover future costs if you do not delete your Tokyo 1 Linodes.
+If you clone your Tokyo 1 Linodes to Tokyo 2, your Tokyo 1 Linodes will remain running and active on your account by default. To prevent double-billing, [remove](/docs/platform/billing-and-support/billing-and-payments/#removing-services) the original Tokyo 1 Linodes after you have finished your clones.
 {{< /note >}}
 
 ### Option 3: Migrate when Scheduled
