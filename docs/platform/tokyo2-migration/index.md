@@ -11,6 +11,7 @@ modified_by:
 published: 2018-09-27
 title: Migrating from Tokyo 1 to Tokyo 2
 hiddenguide: true
+promo_default: false
 ---
 
 In November 2016, Linode [announced and opened](https://blog.linode.com/2016/11/21/new-linode-datacenter-tokyo-2/) the Tokyo 2 data center. This is the second facility operated by Linode in the Tokyo region. Linode is now making preparations to retire the original Tokyo 1 facility. All Linodes hosted in this data center will be migrated to Tokyo 2. This guide is written to prepare customers for this migration and to make migrating easier.
