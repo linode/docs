@@ -15,7 +15,9 @@ title: Linode Managed
 
 [Linode Managed](https://www.linode.com/managed/) is a 24/7 incident response service. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, we'll monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
 
+ {{< note >}}
 Linode Managed applies to all Linodes on your account. If you have multiple Linodes on your account and would like to choose which Linodes fall under Linode Managed, you will need to create a separate account and transfer the Linodes that you would not like to be Managed into the new account.  If necessary, you can transfer Linodes between your accounts by opening transfer request tickets with Support on both of them.
+ {{< /note >}}
 
 ## Getting Started
 
