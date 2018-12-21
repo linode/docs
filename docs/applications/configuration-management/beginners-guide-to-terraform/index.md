@@ -2,13 +2,13 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'A look into Terraform''s primary components, features, and configurations for the new Terraform user'
+description: 'A look into Terraform's primary components, features, and configurations for the new Terraform user'
 keywords: ["terraform", "orchestration", "linode provider"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-19
+modified: 2018-12-21
 modified_by:
   name: Linode
-published: 2018-12-19
+published: 2018-12-21
 title: A Beginner's Guide to Terraform
 external_resources:
  - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
@@ -71,11 +71,11 @@ resource "linode_instance" "example_instance" {
 The SSH key in this example was truncated for brevity.
 {{< /note >}}
 
-This example Terraform file, with the Terraform file extensions `.tf`, represents the creation of a single Linode instance labeled `example_instance_label`. This example file is prefixed with a mandatory `provider` block, which sets up the Linode provider and which you must list somewhere in your configuration.
+This example Terraform file, with the Terraform file extension `.tf`, represents the creation of a single Linode instance labeled `example_instance_label`. This example file is prefixed with a mandatory `provider` block, which sets up the Linode provider and which you must list somewhere in your configuration.
 
 The `provider` block is followed by a *resource* declaration. Resource declarations correspond with the components of your Linode infrastructure: Linode instances, Block Storage Volumes, etc.
 
-Resources can accept arguments, as in the `resource` block above. `region` and `type` are required arguments for the `linode_instance` resource. A root password must be assigned to every Linode, but the `root_pass` Terraform argument is optional; if it is not specified, a random password will be generated.
+Resources can accept arguments. `region` and `type` are required arguments for the `linode_instance` resource. A root password must be assigned to every Linode, but the `root_pass` Terraform argument is optional; if it is not specified, a random password will be generated.
 
 {{< note >}}
 The `example_instance` string that follows the `linode_instance` resource type declaration is Terraform's name for the resource. You cannot declare more than one Terraform resource with the same name and resource type.
@@ -119,7 +119,7 @@ The domain record's `domain_id` and `target` arguments use HCL's [interpolation 
 
 ### Input Variables
 
-The previous example hard-coded sensitive data in your configuration, including your API token and root password. To avoid this practice, Terraform allows you to provide the values for your resource arguments in *input variables*. These variables are declared and referenced in your Terraform configuration (using the interpolation syntax), and the values for those variables are assigned in a separate file.
+The previous example hard-coded sensitive data in your configuration, including your API token and root password. To avoid this practice, Terraform allows you to provide the values for your resource arguments in *input variables*. These variables are declared and referenced in your Terraform configuration (using interpolation syntax), and the values for those variables are assigned in a separate file.
 
 Input variables can also be used for non-sensitive data. The following example files will employ variables for the sensitive `token` and `root_pass` arguments and the non-sensitive `authorized_keys` and `region` arguments:
 
@@ -181,7 +181,7 @@ This command will ask you to confirm that you want to proceed. When Terraform ha
 
 ### State
 
-When Terraform analyzes and applies your configuration, it creates an internal representation of the infrastructure it creates to track the changes it makes. This *state* information is recorded in JSON in a local file named `terraform.tfstate` by default, but it can also be stored in other [backends](#backends).
+When Terraform analyzes and applies your configuration, it creates an internal representation of the infrastructure it created and uses it to track the changes made. This *state* information is recorded in JSON in a local file named `terraform.tfstate` by default, but it can also be stored in other [backends](#backends).
 
 {{< caution >}}
 Your sensitive infrastructure data (like passwords and tokens) is visible in plain-text in your `terraform.tfstate` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
