@@ -11,6 +11,7 @@ modified_by:
 published: 2018-09-27
 title: Migrating from Tokyo 1 to Tokyo 2
 hiddenguide: true
+promo_default: false
 ---
 
 In November 2016, Linode [announced and opened](https://blog.linode.com/2016/11/21/new-linode-datacenter-tokyo-2/) the Tokyo 2 data center. This is the second facility operated by Linode in the Tokyo region. Linode is now making preparations to retire the original Tokyo 1 facility. All Linodes hosted in this data center will be migrated to Tokyo 2. This guide is written to prepare customers for this migration and to make migrating easier.
@@ -30,10 +31,6 @@ You will receive a support ticket from Linode that lists the scheduled dates and
 Different Linodes will be scheduled to migrate on different dates and times. The support ticket you receive will list the migration schedule for all of your Tokyo 1 Linodes. **Linode will not be able to adjust this schedule of migrations.**
 
 You are able to move your servers to Tokyo 2 before the scheduled migration dates. We recommend that all customers move their servers early. Moving early will help you better control the uptime of your services.
-
-{{< note >}}
-You will receive a credit on your account equal to three months of service for each of your Tokyo 1 Linodes. This credit will cover the cost of creating new servers in Tokyo 2 if you choose to [clone your Linodes](#option-2-clone-your-linodes).
-{{< /note >}}
 
 ## What are My Options for Migrating?
 
@@ -93,7 +90,7 @@ To clone a Linode, follow these steps:
 After you have created your new Linode and completed the clone, you may need to update your new Linode's [network configuration](#update-your-network-configuration). After making sure that your new Tokyo 2 servers all work as expected, [update your DNS records](#update-dns-records).
 
 {{< note >}}
-If you clone your Tokyo 1 Linodes to Tokyo 2, your Tokyo 1 Linodes will remain running and active on your account by default. To prevent double-billing, [remove](/docs/platform/billing-and-support/billing-and-payments/#removing-services) the original Tokyo 1 Linodes after you have finished your clones. The three-month credit that will be applied to your account will cover the costs for your extra servers during this transition period. This credit will not cover future costs if you do not delete your Tokyo 1 Linodes.
+If you clone your Tokyo 1 Linodes to Tokyo 2, your Tokyo 1 Linodes will remain running and active on your account by default. To prevent double-billing, [remove](/docs/platform/billing-and-support/billing-and-payments/#removing-services) the original Tokyo 1 Linodes after you have finished your clones.
 {{< /note >}}
 
 ### Option 3: Migrate when Scheduled
