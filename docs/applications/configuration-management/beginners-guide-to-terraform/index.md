@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A look into Terraform's primary components, features, and configurations for the new Terraform user'
-keywords: ["terraform", "orchestration", "linode provider"]
+keywords: ['terraform', 'orchestration', 'linode provider']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-21
 modified_by:
   name: Linode
 published: 2018-12-21
-title: A Beginner's Guide to Terraform
+title: "A Beginner's Guide to Terraform"
 external_resources:
  - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
 ---
