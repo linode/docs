@@ -70,14 +70,14 @@ Configuration log file has been written to /usr/local/openvpn_as/init.log
 
 Please enter "passwd openvpn" to set the initial
 administrative password, then login as "openvpn" to continue
-configuration here: https://74.207.231.122:943/admin
+configuration here: https://192.0.2.0:943/admin
 
 To reconfigure manually, use the /usr/local/openvpn_as/bin/ovpn-init tool.
 
 +++++++++++++++++++++++++++++++++++++++++++++++
 Access Server Web UIs are available here:
-Admin  UI: https://74.207.231.122:943/admin
-Client UI: https://74.207.231.122:943/
+Admin  UI: https://192.0.2.0:943/admin
+Client UI: https://192.0.2.0:943/
 +++++++++++++++++++++++++++++++++++++++++++++++
 {{< /output >}}
 
