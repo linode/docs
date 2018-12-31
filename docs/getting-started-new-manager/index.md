@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-keywords: ["linode", "cloud manager", "disk", "resize"]
+keywords: ["getting started", "intro", "basics", "first steps"]
 description: 'This guide will help you set up your first Linode.'
 og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
