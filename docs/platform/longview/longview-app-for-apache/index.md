@@ -6,7 +6,7 @@ description: Longview App for Apache
 keywords: ["Longview", " Apache", " statistics", " mod\\_status"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['longview/longview-for-apache/']
-modified: 2014-01-06
+modified: 2018-12-26
 modified_by:
   name: Linode
 published: 2013-11-04
@@ -36,11 +36,13 @@ If you already have Longview installed, and later want to install Apache and ena
 
 For most people, Longview should be able to configure itself automatically, and you will receive output something like this:
 
+{{< output >}}
     [ ok ] Stopping Longview Agent: longview.
     Checking Apache configuration...
     Found Apache status page at http://127.0.0.1/server-status?auto (default URL)
     [ ok ] Starting Longview Agent: longview.
     update-rc.d: using dependency based boot sequencing
+{{</ output >}}
 
 Once you see this successful message, the Longview Apache App should automatically start collecting Apache data. Refresh the Longview Apache tab in the Linode Manager to start viewing your stats.
 
@@ -58,14 +60,12 @@ To enable the Apache Longview app manually, follow these steps on your Linode vi
 
 2.  Your `httpd.conf` file (or the file where you enabled mod\_status; `status.conf` is another common location) should look like the following:
 
-    {{< file "httpd.conf" >}}
+    {{< file "httpd.conf" apache >}}
 <IfModule mod_status.c>
     ExtendedStatus On
     <Location /server-status>
         SetHandler server-status
-        Order deny,allow
-        Deny from all
-        Allow from 127.0.0.1
+        Require local
     </Location>
 </IfModule>
 
@@ -73,7 +73,7 @@ To enable the Apache Longview app manually, follow these steps on your Linode vi
 
 3.  Edit `/etc/linode/longview.d/Apache.conf` to look like the following:
 
-    {{< file "/etc/linode/longview.d/Apache.conf" >}}
+    {{< file "/etc/linode/longview.d/Apache.conf" apache >}}
 location http://127.0.0.1/server-status?auto
 
 {{< /file >}}
@@ -178,6 +178,7 @@ If you choose:
 -   **\<No\>**: the Longview tool will quit, and you can do a [manual configuration](#manual-configuration-all-distributions). This is the safer option.
 -   **\<Yes\>**: the Longview tool will attempt to enable mod\_status, set the status page location, and restart Apache. This option is easier, but has the potential to disrupt your current Apache configuration. If you choose yes, and the configuration is successful, you should see output like the following:
 
+    {{< output >}}
         [ ok ] Stopping Longview Agent: longview.
         Checking Apache configuration...
         Enabling module status.
@@ -187,12 +188,15 @@ If you choose:
         Apache mod_status enabled
         [ ok ] Starting Longview Agent: longview.
         update-rc.d: using dependency based boot sequencing
+    {{</ output >}}
 
 Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
 
 If instead you receive a failure message, such as:
 
+  {{< output >}}
     [FAIL] Reloading web server config: apache2 failed!
+  {{</ output >}}
 
 You will need to double-check your Apache installation, and then do a [manual configuration](#manual-configuration-all-distributions).
 
@@ -226,7 +230,7 @@ To fix this, follow these steps:
 
 3.  Check the location for `mod_status`. The default location on Debian and Ubuntu systems is `http://127.0.0.1/server-status?auto` on localhost. In the Apache configuration file (typically `httpd.conf` or `status.conf`), this is designated with the lines:
 
-    {{< file "httpd.conf" >}}
+    {{< file "httpd.conf" apache >}}
 <Location /server-status>
     SetHandler server-status
 
@@ -238,7 +242,7 @@ To fix this, follow these steps:
 
     To direct Longview to the cPanel customized status page, edit the `location` line in `/etc/linode/longview.d/Apache.conf` to match the following:
 
-    {{< file "/etc/linode/longview.d/Apache.conf" >}}
+    {{< file "/etc/linode/longview.d/Apache.conf" apache >}}
 location http://localhost/whm-server-status?auto
 
 {{< /file >}}
@@ -247,7 +251,7 @@ location http://localhost/whm-server-status?auto
 4.  Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
 5.  If you're not using the default location, you need to create a new file, `/etc/linode/longview.d/Apache.conf`, and set the `location` variable to match what you set in the Apache configuration file:
 
-    {{< file "/etc/linode/longview.d/Apache.conf" >}}
+    {{< file "/etc/linode/longview.d/Apache.conf" apache >}}
 location http://127.0.0.1/custom/location/path
 
 {{< /file >}}
@@ -296,7 +300,7 @@ If some of your Apache graphs are missing, you may see the error `Enable Extende
 
 This indicates that you need to add the following line to your Apache configuration file (typically `httpd.conf` or `status.conf`) in the `<IfModule mod_status.c>` section:
 
-{{< file "httpd.conf" >}}
+{{< file "httpd.conf" apache >}}
 ExtendedStatus On
 
 {{< /file >}}
