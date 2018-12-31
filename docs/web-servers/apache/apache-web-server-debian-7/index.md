@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
@@ -6,7 +7,7 @@ description: 'Install Apache on your Debian 7 server, configure virtual hosting,
 keywords: ["apache", "apache 2", "debian", "debian 7", "wheezy", "apache web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/apache/installation/debian-7-wheezy/','websites/apache/apache-2-web-server-on-debian-7-wheezy/','websites/apache/how-to-install-and-configure-the-apache-web-server-on-debian-7-wheezy/','websites/apache/apache-web-server-debian-7/']
-modified: 2014-01-10
+modified: 2018-12-31
 modified_by:
   name: Linode
 published: 2013-09-05
