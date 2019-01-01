@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/apache-tips-and-tricks/tuning-your-apache-server/']
 modified: 2018-12-31
 modified_by:
-  name: AMiller
+  name: Linode
 published: 2015-02-27
 title: Tuning Your Apache Server
 external_resources:
@@ -190,6 +190,10 @@ If you need to increase the `MaxClients` above `256`, then increase your `Server
 
 ### KeepAlive
 
-[KeepAlive](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) allows connecting clients to use a single TCP conversation instead of opening a new one for each request to a web server, and counting as only one request against the `MaxRequestsPerChild` directive. This decreases page load times and lowers CPU use at the expense of an increase in RAM use.
+[KeepAlive](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) allows connecting clients to use a single TCP connection to make multiple requests, instead of opening a new one for each request. This decreases page load times and lowers CPU use for your web server, at the expense of an increase in your server's RAM use.
 
-KeepAlive can be disabled or enabled by default depending on your Linux distribution. It was often disabled to conserve RAM use but server resources have become less expensive while site content has become more resource-consuming. KeepAlive significantly contributes to your site's user experience so be wary of disabling (or not enabling) it without good reason supported by testing.
+In the past, this setting was often disabled to conserve RAM use, but server resources have become less expensive, and the option is now enabled by default in Apache 2.4. Enabling KeepAlive can significantly benefit your site's user experience, so be wary of disabling it without testing the effects of doing so. KeepAlive can be enabled or disabled in your web server configuration, or within a Virtual Host block.
+
+{{< note >}}
+A KeepAlive connection will be counted as a single "request" for the [`MaxConnectionsPerChild` directive](https://httpd.apache.org/docs/2.4/mod/mpm_common.html#maxconnectionsperchild).
+{{< /note >}}

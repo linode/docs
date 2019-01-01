@@ -41,14 +41,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get update && sudo apt-get upgrade
 
-
 ## Install Apache
 
-1.  Install Apache 2.4, its documentation, and a collection of utilities:
+Install Apache 2.4, its documentation, and a collection of utilities:
 
-        sudo apt-get install apache2 apache2-doc apache2-utils
-
-{{< /file >}}
+    sudo apt-get install apache2 apache2-doc apache2-utils
 
 
 ### Configure the Multi-Processing Module

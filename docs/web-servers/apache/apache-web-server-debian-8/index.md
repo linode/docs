@@ -43,9 +43,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Apache
 
-1.  Install the Apache 2 web server, its documentation, and a collection of utilities:
+Install the Apache 2 web server, its documentation, and a collection of utilities:
 
-        sudo apt-get install apache2 apache2-doc apache2-utils
+    sudo apt-get install apache2 apache2-doc apache2-utils
 
 
 ### Configure the Multi-Processing Module
