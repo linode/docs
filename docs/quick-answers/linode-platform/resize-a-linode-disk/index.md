@@ -25,5 +25,5 @@ This Quick Answer will show you how to resize a disk on your Linode. See our [Di
 8.  Click **Boot** to turn on the Linode.
 
 {{< note >}}
-The Linode Manager will not allow you to resize your disk to an amount smaller than the space taken up by files on your filesystem. To confirm how much space you're using, issue the `df -h` command on your Linode
+The Linode Manager will not allow you to resize your disk to an amount smaller than the space taken up by files on your filesystem. To confirm how much space you're using, issue the `df -h` command on your Linode.
 {{< /note >}}
