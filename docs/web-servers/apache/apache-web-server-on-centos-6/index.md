@@ -6,9 +6,9 @@ description: 'Install Apache on your CentOS 6 server, configure virtual hosting,
 keywords: ["Apache", "web sever", "CentOS 6", "centos", "apache 2", "httpd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/apache/installation/centos-6/','websites/apache/apache-2-web-server-on-centos-6/']
-modified: 2015-07-31
+modified: 2018-12-31
 modified_by:
-  name: Elle Krout
+  name: Linode
 published: 2013-11-11
 title: Apache Web Server on CentOS 6
 external_resources:
@@ -50,8 +50,6 @@ This guide is written for a non-root user. Commands that require elevated privil
 2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {{< file "/etc/httpd/conf/httpd.conf" aconf >}}
-KeepAlive Off
-
 
 <IfModule prefork.c>
     StartServers        4
