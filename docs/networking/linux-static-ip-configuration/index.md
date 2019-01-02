@@ -6,7 +6,7 @@ description: 'Set static IP, routes and DNS in Linux.'
 keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/configuring-static-ip-interfaces/']
-modified: 2018-12-20
+modified: 2018-01-02
 modified_by:
   name: Linode
 published: 2014-07-20
@@ -406,11 +406,10 @@ To apply your changes, reboot from the Linode Manager's dashboard. Rebooting ens
 
 If for whatever reason you prefer not to reboot, you should be able to bring your networking online using the following series of commands with most major Distributions:
 
-    ip link set eth0 up
-    ip addr add 198.51.100.5/24 broadcast 198.51.100.255 dev eth0
-    ip route add default via 198.51.100.1
-
-
+        sudo ip addr flush dev eth0
+        ip link set eth0 up
+        ip addr add 198.51.100.5/24 broadcast 198.51.100.255 dev eth0
+        ip route add default via 198.51.100.1
 
 ## Test Connectivity
 
@@ -421,7 +420,7 @@ If for whatever reason you prefer not to reboot, you should be able to bring you
         root@localhost:~# ip addr | grep inet
         inet 127.0.0.1/8 scope host lo
         inet6 ::1/128 scope host
-        inet 74.207.231.122/24 brd 74.207.231.255 scope global eth0
+        inet 198.51.100.5/24 brd 198.51.100.255 scope global eth0
         inet6 2600:3c02::f03c:91ff:fe24:3a2f/64 scope global
         inet6 fe80::f03c:91ff:fe24:3a2f/64 scope link
 
