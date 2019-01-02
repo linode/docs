@@ -7,7 +7,7 @@ og_description: 'This guide describes the security features of the Linode Manage
 keywords: ["two-factor authentication", "password", "security", "Linode Manager", "token"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linode-manager-security/','security/linode-manager-security-controls/']
-modified: 2018-09-04
+modified: 2019-01-02
 modified_by:
   name: Linode
 published: 2013-05-02
@@ -122,6 +122,12 @@ If you lose your token and get locked out of the Linode Manager, email <support@
 ## IP Address Whitelisting
 
 IP address whitelisting restricts access to the Linode Manager to a set of IPs that you specify.
+
+{{< note >}}
+IP address whitelisting is not available in the new [Linode Cloud Manager](https://cloud.linode.com). IP whitelisting will soon be deprecated within the classic Linode Manager.
+
+The instructions below have been preserved to document the existing workflow for this feature. These functions will be removed from the Manager when the feature becomes deprecated.
+{{< /note >}}
 
 ### Enable Whitelisting
 
