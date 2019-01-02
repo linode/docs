@@ -13,6 +13,8 @@ title: "Install Let's Encrypt to Create SSL Certificates"
 contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
+deprecated: true
+deprecated_link: quick-answers/websites/secure-http-traffic-certbot/
 external_resources:
   - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 ---
