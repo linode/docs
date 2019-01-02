@@ -6,11 +6,13 @@ description: 'Use Salt States to Create a LAMP Stack and Fail2ban Across All Lis
 keywords: ["salt", "salt state", "lamp stack", "apache", "mysql", "php", "fail2ban", "salt minions", "debian 8"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['applications/salt/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/','applications/salt/salt-states-apache-mysql-php-fail2ban/']
-modified: 2016-11-22
+modified: 2019-01-02
 modified_by:
     name: Edward Angert
 published: 2015-07-02
 title: Use Salt States to Create LAMP Stack and Fail2ban Across Salt minions
+promo_code_amount: '50'
+promo_code: 'Salt50'
 ---
 
 Salt States can install and define a server setup on other servers. This tutorial demonstrates the use of Salt States to create a LAMP stack across all Salt Minions.
