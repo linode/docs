@@ -167,6 +167,13 @@ Malformed rules in your iptables ruleset can sometimes cause issues for your net
 Apr 06 01:03:17 xlauncher ifup[6359]: run-parts: failed to exec /etc/network/if- Apr 06 01:03:17 xlauncher ifup[6359]: run-parts: /etc/network/if-up.d/iptables e
 {{< /output >}}
 
+You can run the following commands to resolve this issue.
+
+    sudo mv /etc/network/if-up.d/iptables ~
+    ifdown -a && ifup -a
+
+Please note that your firewall will be down at this point, so you will need to re-enable it manually.
+
 ### Was your Interface Renamed?
 
 When viewing the output of the `interfaces` file, or the output from your `ip` commands, if you notice your interfaces have been renamed to something other than `eth0` (for example, `ensp`) this may be due to the latest version of systemd (226-1+ as of writing this guide). Specifically, [Predictable Network Interface Names](https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/) may be renaming your interfaces.
