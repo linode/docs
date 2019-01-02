@@ -297,6 +297,21 @@ For Apache issues, review the [Troubleshooting Common Apache Issues](/docs/troub
 
 Take instructions from https://www.linode.com/docs/troubleshooting/disaster-recovery-guide/#did-all-of-your-services-start-after-reboot
 
+### Review Application Logs
+
+EDITOR'S NOTE: Not sure if we should include this section, but possibly:
+
+Show locations for common application logs maintained outside of the system logs, e.g.:
+
+MySQL: /var/log/mysql + the slow queries log
+Show how to turn slow queries log on
+
+PHP: /var/log/php, or check phpinfo() from web browser to see where log file is
+
+Apache: See dedicated apache guide
+
+NGINX: /var/log/nginx, or check log location in nginx config
+
 ### Is your Firewall Blocking the Service?
 
 Link back to [Review Firewall Rules](#review-firewall-rules) back in basic connectivity section, add some context about looking for rules on the port that matches your service (e.g. 80 for HTTP).
