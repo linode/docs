@@ -64,7 +64,7 @@ Begin by creating the Linode and making some preliminary changes.
     - /dev/sda: FreeBSD disk image.
     - root / boot device: Standard /dev/sda
 
-4.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/docs/platform/manager/using-the-linode-shell-lish/) from the **Remote Access** tab of the Linode Manager.
+4.  [Boot into **Rescue Mode**](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/docs/platform/manager/using-the-linode-shell-lish/) from the **Remote Access** tab of the Linode Manager.
 
 5.  Once in Rescue Mode, run the following command, replacing latest with the latest `memstick.img` file from the [FreeBSD download page](ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/):
 
