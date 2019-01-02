@@ -14,7 +14,7 @@ published: 2011-05-03
 title: An Overview of IPv6 on Linode
 external_resources:
  - '[Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)'
- - '[IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)'
+ - '[IPv6 Chart](https://www.ripe.net/support/training/material/lir-training-course/LIR-Training-Handbook-Appendices/IPv6Chart_2015.pdf)'
 ---
 
 ![An Overview of IPv6 on Linode](an-overview-of-ipv6-on-linode-title-graphic.jpg "An Overview of IPv6 on Linode")
