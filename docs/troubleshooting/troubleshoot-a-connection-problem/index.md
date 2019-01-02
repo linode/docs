@@ -321,6 +321,14 @@ Apache: See dedicated apache guide
 
 NGINX: /var/log/nginx, or check log location in nginx config
 
+### Check which IP Addresses and Ports your Services Are Bound To
+
+Include instructions for using `netstat -plntu` to see which processes are listening on which ports and which addresses. Possible example problems:
+
+-   Web server is only listening on the IPv4 address, not also the IPv6 address (which is a common problem for users trying to connect to a website via a cell phone, as those networks seem to prefer IPv6).
+
+-   Service not listening on a standard port. Include markdown table of common services+ports
+
 ### Is your Firewall Blocking the Service?
 
 Link back to [Review Firewall Rules](#review-firewall-rules) back in basic connectivity section, add some context about looking for rules on the port that matches your service (e.g. 80 for HTTP).
