@@ -106,6 +106,8 @@ Networking issues can have two causes: your Linode may not be responding to netw
 
 ### Check for Network Route Issues
 
+EDITOR'S NOTE: include example MTR output in disclosure-note blocks to illsutrate 100% packet loss at Linode vs. packet loss along route (might be harder to generate an example for that. Maybe take from a previous ticket where we ran a report against a Linode IP, potentially from the nlnog ring network?)
+
 To diagnose routing problems, run and analyze an MTR report from your computer to your Linode. For instructions on how to use MTR, review Linode's [MTR guide](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#analyze-mtr-reports).
 
 If your report shows no packet loss along the route, but 100% packet loss at your Linode, that indicates an issue with your Linode's networking configuration. Move to the next section to continue troubleshooting.
@@ -113,6 +115,10 @@ If your report shows no packet loss along the route, but 100% packet loss at you
 If your report shows significant packet loss starting part-way through the route, there may be an issue between your internet service provider and Linode's upstream network peers. To confirm this issue, run another test originating from your Linode (by logging in with Lish and running the MTR command from the Linode) to your home computer's IP address. To find out what your local IP is, visit a website like https://www.whatismyip.com/.
 
 Once you have finished generating these reports, open a Linode support ticket with the results. Linode Support will try to help further diagnose the routing issue.
+
+{{< note >}}
+If you are located in China, there is a chance that your IP has been blacklisted by the GFW (Great Firewall of China). Because this is a systemic issue, Linode is no longer in the process of swapping IP addresses for affected Linodes. You can point the reader to the instructions found here: https://www.linode.com/community/questions/17192/ssh-refused
+{{< /note >}}
 
 ### Try Enabling Network Helper
 
