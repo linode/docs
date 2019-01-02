@@ -12,6 +12,8 @@ modified_by:
 title: "How to Troubleshoot a Connection Problem"
 ---
 
+EDITOR'S NOTE: This outline attempts to cover connection issues logically in ascending order: booting issues -> basic connectivity (routing or network interface issues) -> SSH -> other services (http, mysql, etc)
+
 EDITOR's NOTE: This takes from the [Access Your Linode After Maintenance](https://www.linode.com/docs/troubleshooting/disaster-recovery-guide/#did-all-of-your-services-start-after-reboot) guide and re-structures things. This could serve as an update to that guide (and we could alias from there to here). I don't think there's really much difference between these two guides.
 
 Or, we could write this guide, and then insert it as a shortguide in the Access Your Linode After Maintenance guide (replacing the bulk of the content in it), then add some extra context at the top of that guide (before the shortguide insertion), and include other context after the shortguide (like linking to the Reboot Survival Guide/offering precautions and preparations for future possible maintenance).
