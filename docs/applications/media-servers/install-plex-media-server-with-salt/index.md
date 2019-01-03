@@ -6,7 +6,7 @@ description: 'Install Plex Media Server on Ubuntu 18.04 with Salt masterless.'
 keywords: ['plex','media','server','ubuntu 18.04','ubuntu','salt','saltstack']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-11-13
-modified: 2018-11-13
+modified: 2019-01-02
 modified_by:
   name: Linode
 title: "Install Plex Media Server on Ubuntu 18.04 Using Salt Masterless"
@@ -16,6 +16,8 @@ external_resources:
   - '[Salt Masterless Walkthough](https://docs.saltstack.com/en/latest/topics/tutorials/quickstart.html)'
   - '[Salt Fileserver Backend Walthrough](https://docs.saltstack.com/en/latest/topics/tutorials/gitfs.html)'
   - '[Plex Media Server Quick State](https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/)'
+promo_code_amount: '50'
+promo_code: 'Salt50'
 ---
 
 Plex is a media server that allows you to stream video and audio content that you own to many different types of devices. In this guide you will learn how to use a masterless Salt minion to set up a Plex server, attach and use a Block Storage Volume, and how to connect to your media server to stream content to your devices.

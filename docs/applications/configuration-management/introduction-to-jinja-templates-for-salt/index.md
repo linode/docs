@@ -5,7 +5,7 @@ description: 'An introduction to Jinja using Salt configuration management examp
 keywords: ['salt','jinja','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-29
-modified: 2018-10-29
+modified: 2019-01-02
 modified_by:
   name: Linode
 title: "Introduction to Jinja Templates for Salt"
@@ -15,6 +15,8 @@ external_resources:
 - '[Salt Best Practices](https://docs.saltstack.com/en/latest/topics/best_practices.html#modularity-within-states)'
 - '[Salt States Tutorial](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html)'
 - '[Jinja Template Designer Documentation](http://jinja.pocoo.org/docs/2.10/templates/#import)'
+promo_code_amount: '50'
+promo_code: 'Salt50'
 ---
 ## Introduction to Templating Languages
 
