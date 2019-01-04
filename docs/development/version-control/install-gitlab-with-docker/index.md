@@ -23,7 +23,7 @@ GitLab is a free git repository management application, like GitHub or Bitbucket
 ## Before You Begin
 
 ### Choose An Appropriately Sized Linode
-GitLab is a resource heavy application. To get the most of GitLab, we recommend a Linode with at least 2GB of memory, and, if you are supporting up to 500 users, at least a 2 core CPU. A 1 core CPU is sufficient for 100 users or less.
+GitLab is a resource heavy application. To get the most of GitLab, we recommend a Linode with at least 8GB of memory, and at least 2 cores. For more information on system requirements, visit the [GitLab Hardware Requirements page](https://docs.gitlab.com/ce/install/requirements.html#hardware-requirements).
 
 ### Change Your Linode's Default SSH Port
 Because your SSH connection to your Linode will interfere with GitLab's ability to listen on the SSH port, you'll want to change your Linode's default SSH port and connect to that port instead. This can be accomplished by editing your Linode's `/etc/ssh/sshd_config` file and changing the `Port` assignment. In the example below changes the port from 22 to port 26:
@@ -64,7 +64,7 @@ It may take a few minutes to download the image. When the download is complete, 
 
 1.  In order to configure and run the GitLab container, you need to provide a few options at runtime.
 
-    Consider the following command, a verison of which you will use to start the GitLab container:
+    Consider the following command, a version of which you will use to start the GitLab container:
 
         sudo docker run --detach \
           --hostname gitlab.example.com \
@@ -89,7 +89,7 @@ It may take a few minutes to download the image. When the download is complete, 
 
     -  The `--volume` option defines the host mounted volumes the container uses to store persistent data. These three volumes store application data, log files, and configuration files. The value to the left of the the semi-colon is the local location, and the value to the right is the container location.
 
-    -  Optionally, the `--env` option supplies the global variable `GITLAB_OMNIBUS_CONFIG`, which can hold a series of values, seperated by a colon, that correspond to [GitLab Omnibus configuration settings](https://docs.gitlab.com/omnibus/settings/configuration.html). In this case, an external URL is supplied. Some additional settings might include SMTP configuration values so that GitLab can send activity emails.
+    -  Optionally, the `--env` option supplies the global variable `GITLAB_OMNIBUS_CONFIG`, which can hold a series of values, separated by a colon, that correspond to [GitLab Omnibus configuration settings](https://docs.gitlab.com/omnibus/settings/configuration.html). In this case, an external URL is supplied. Some additional settings might include SMTP configuration values so that GitLab can send activity emails.
 
         {{< note >}}
 As of GitLab 10.7, if you provide an external URL with a HTTPS protocol, GitLab will automatically set up SSL certificates using Let's Encrypt, and all traffic will be forwarded to HTTPS. For more information about this functionality, read the [GitLab SSL Documentation](https://docs.gitlab.com/omnibus/settings/ssl.html#primary-gitlab-instance)
