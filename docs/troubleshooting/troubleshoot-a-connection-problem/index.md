@@ -321,6 +321,26 @@ Apache: See dedicated apache guide
 
 NGINX: /var/log/nginx, or check log location in nginx config
 
+### Is your Disk Full?
+
+If you're having issues with your database service, one common reason a database might not run as expected is if your disk is full. To check on your current disk usage, run the `df` command:
+
+    df -h
+
+{{< note >}}
+Note about how this is not the same thing as the reported unallocated space in the Linode Manager.
+{{< /note >}}
+
+Include instructions for how to resolve this situation:
+
+-   Free up space on your disk by locating and removing files you don't need, using a tool like du or ncdu
+
+-   Resize the disk if you have any unallocated space on your Linode
+
+-   Upgrade your Linode (either through a free upgrade if one is available or by resizing to a higher tier) and then resize your disk to use the newly available space.
+
+Or, consider putting those instructions into a new "How to Free Up Space on Your Linode" guide and then link to it.
+
 ### Check which IP Addresses and Ports your Services Are Bound To
 
 Include instructions for using `netstat -plntu` to see which processes are listening on which ports and which addresses. Possible example problems:
