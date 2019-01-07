@@ -13,8 +13,8 @@ modified_by:
 title: 'Configure and Use Salt Cloud and Cloud Maps to Provision Systems'
 contributor:
   name: Sergey Bulavintsev
-promo_code_amount: '50'
-promo_code: 'Salt50'
+promo_code_amount: '20'
+promo_code: 'Salt20'
 ---
 
 ![Salt Cloud](SaltCloud.jpg)
