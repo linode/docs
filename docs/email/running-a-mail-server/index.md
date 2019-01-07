@@ -7,7 +7,7 @@ og_description: 'Take control of your email with your own mail server. This guid
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['mailserver/']
-modified: 2018-10-19
+modified: 2019-01-07
 modified_by:
   name: Linode
 published: 2013-06-05

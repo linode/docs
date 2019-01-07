@@ -6,7 +6,7 @@ description: 'This guide will explain how to build Caddy from source'
 keywords: ["caddy", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
-modified: 2018-02-02
+modified: 2019-01-07
 modified_by:
   name: Linode
 title: 'How To Build Caddy From Source'
