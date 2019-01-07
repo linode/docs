@@ -16,8 +16,8 @@ external_resources:
 - '[Salt Formulas](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)'
 - '[Writing a Test](https://kitchen.ci/docs/getting-started/writing-test/)'
 - '[Sample Pytest tests](https://github.com/gtmanfred/wordpress-formula/tree/master/tests/integration)'
-promo_code_amount: '50'
-promo_code: 'Salt50'
+promo_code_amount: '20'
+promo_code: 'Salt20'
 ---
 
 KitchenSalt allows you to use Test Kitchen to test your Salt configurations locally without a Salt master or minions. In this guide you will install KitchenSalt and use Docker to test a Salt state. This guide was created using a system running Ubuntu 18.04.
