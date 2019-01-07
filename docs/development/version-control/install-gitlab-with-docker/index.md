@@ -111,7 +111,9 @@ As of GitLab 10.7, if you provide an external URL with a HTTPS protocol, GitLab 
 
         sudo docker logs -f gitlab-linode
 
-    If you supplied an HTTPS protocol external URL, you might initially be presented with a 502 error while GitLab configures Let's Encrypt in the background.
+    {{< note >}}
+You may initially be presented with a 502 error while GitLab configures itself.
+{{< /note >}}
 
 1.  Once GitLab is up and running, the first time you access the site it will prompt you to enter an administrative password. After you've entered the administrative password you will be able to log in using this password as the `root` user.
 
