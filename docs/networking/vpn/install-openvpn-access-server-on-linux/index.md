@@ -5,7 +5,7 @@ description: 'This guide will show how to install and configure an OpenVPN acces
 keywords: ["openvpn", "vpn"]
 aliases: ['networking/vpn/openvpn-access-server/','networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-01-01
+modified: 2019-01-01
 modified_by:
     name: Linode
 published: 2015-04-30

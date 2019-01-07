@@ -6,7 +6,7 @@ description: 'Install an up to date Node.js binary from NodeSource on Debian or 
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-06
-modified: 2018-03-26
+modified: 2018-12-27
 modified_by:
   name: Linode
 title: 'Install Node.js from NodeSource on Debian or Ubuntu'
