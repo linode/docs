@@ -15,8 +15,8 @@ external_resources:
 - '[Salt Best Practices](https://docs.saltstack.com/en/latest/topics/best_practices.html#modularity-within-states)'
 - '[Salt States Tutorial](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt1.html)'
 - '[Jinja Template Designer Documentation](http://jinja.pocoo.org/docs/2.10/templates/#import)'
-promo_code_amount: '50'
-promo_code: 'Salt50'
+promo_code_amount: '20'
+promo_code: 'Salt20'
 ---
 ## Introduction to Templating Languages
 

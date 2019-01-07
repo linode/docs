@@ -13,8 +13,8 @@ title: "Create a Salt Execution Module"
 external_resources:
 - '[Writing Execution Modules](https://docs.saltstack.com/en/latest/ref/modules/)'
 - '[Execution of Salt Modules From Within States](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.module.html#execution-of-salt-modules-from-within-states)'
-promo_code_amount: '50'
-promo_code: 'Salt50'
+promo_code_amount: '20'
+promo_code: 'Salt20'
 ---
 
 A Salt *execution module* is a Python module that runs on a Salt minion. It perform tasks and returns data to the Salt master. In this tutorial you will create and install an execution module that will call the [US National Weather Service API](https://forecast-v3.weather.gov/documentation) and return the current temperature at a specified weather station. This example could easily be adapted to access any API.

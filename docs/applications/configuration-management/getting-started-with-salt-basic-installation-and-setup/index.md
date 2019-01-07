@@ -11,8 +11,8 @@ modified_by:
     name: Linode
 published: 2015-09-22
 title: Getting Started with Salt - Basic Installation and Setup
-promo_code_amount: '50'
-promo_code: 'Salt50'
+promo_code_amount: '20'
+promo_code: 'Salt20'
 ---
 
 [Salt](https://saltstack.com/) is a Python-based configuration management platform designed to control a number of slave servers (called Minions in Salt terminology) from a single master server. This guide walks you through configuring a Salt Master and Minion, and is relevant to any supported Linux distribution.

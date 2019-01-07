@@ -18,8 +18,8 @@ external_resources:
   - '[Salt GPG Renderer](https://docs.saltstack.com/en/latest/ref/renderers/all/salt.renderers.gpg.html)'
   - '[Salt SDB Documentation](https://docs.saltstack.com/en/latest/topics/sdb/)'
   - '[Salt SDB Modules](https://docs.saltstack.com/en/latest/ref/sdb/all/index.html)'
-promo_code_amount: '50'
-promo_code: 'Salt50'
+promo_code_amount: '20'
+promo_code: 'Salt20'
 ---
 
 Salt is a powerful configuration management tool which helps you manage your server deployments with configuration *state* files. These files are easily shared with others on your team and can be checked in to version control systems like Git.
