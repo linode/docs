@@ -6,7 +6,7 @@ description: 'Install Apache on your Ubuntu 14.04 (Trusty Tahr) server, configur
 keywords: ["apache", "ubuntu", "ubuntu 14.04", "trusty tahr", "http", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/apache/apache-web-server-on-ubuntu-14-04/']
-modified: 2017-09-05
+modified: 2018-12-31
 modified_by:
   name: Linode
 published: 2015-07-31
@@ -41,19 +41,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get update && sudo apt-get upgrade
 
-
 ## Install Apache
 
-1.  Install Apache 2.4, its documentation, and a collection of utilities:
+Install Apache 2.4, its documentation, and a collection of utilities:
 
-        sudo apt-get install apache2 apache2-doc apache2-utils
-
-2.  Edit the main Apache configuration file and turn off the `KeepAlive` setting:
-
-    {{< file "/etc/apache2/apache2.conf" >}}
-KeepAlive Off
-
-{{< /file >}}
+    sudo apt-get install apache2 apache2-doc apache2-utils
 
 
 ### Configure the Multi-Processing Module

@@ -6,7 +6,7 @@ description: 'Learn how to use Salt to configure a static site webserver and use
 keywords: ['salt','saltstack','github','webhooks','hugo','static site','deployment']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-15
-modified: 2018-10-15
+modified: 2019-01-02
 modified_by:
   name: Linode
 title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
@@ -18,6 +18,8 @@ external_resources:
 - '[SaltStack Git Fileserver Documentation](https://docs.saltstack.com/en/latest/topics/tutorials/gitfs.html#tutorial-gitfs)'
 - '[SaltStack Salt Formulas Documentation](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)'
 - '[GitHub Developer - Webhooks](https://developer.github.com/webhooks/)'
+promo_code_amount: '20'
+promo_code: 'Salt20'
 ---
 
 This guide will walk through the deployment of a static site using [SaltStack](https://github.com/saltstack/salt), which is a flexible configuration management system. The configuration files created for Salt will be version controlled using Git. Updates to your static site's code will be automatically communicated to the production system using webhooks, an event notification system for the web.

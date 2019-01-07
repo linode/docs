@@ -42,12 +42,18 @@ Any Personal Access Tokens generated from the previous Linode Manager are API v3
 
 ## Install Terraform
 
+If you're using macOS, you can install Terraform via [Homebrew](https://brew.sh/) by running the following command:
+
+    brew install terraform
+
+You can then skip to [Building with the Terraform Provider](#building-with-the-linode-provider"). If you are using Linux, or would rather not install Terraform with Homebrew, follow the instructions below.
+
 1.  Make a Terraform project directory in your home directory and then navigate to it:
 
         mkdir ~/terraform
         cd ~/terraform
 
-1.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html). Example `wget` commands are listed using the latest version available at time of publishing (0.11.9). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
+2.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html). Example `wget` commands are listed using the latest version available at time of publishing (0.11.9). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
 
     -   The 64-bit Linux `.zip` archive
 

@@ -6,9 +6,9 @@ description: Tuning your Apache server to optimize your website.
 keywords: ["configuration", "apache", "web server", "resource tuning"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/apache-tips-and-tricks/tuning-your-apache-server/']
-modified: 2017-08-11
+modified: 2018-12-31
 modified_by:
-  name: AMiller
+  name: Linode
 published: 2015-02-27
 title: Tuning Your Apache Server
 external_resources:
@@ -190,4 +190,10 @@ If you need to increase the `MaxClients` above `256`, then increase your `Server
 
 ### KeepAlive
 
-The `KeepAlive` directive, when set to `on` allows for multiple requests to come from the same TCP connection. When a KeepAlive connection is used, it counts as only one request against the `MaxRequestsPerChild` directive. This value is kept outside of your MPM, but can tie in closely to your MPM choices.
+[KeepAlive](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) allows connecting clients to use a single TCP connection to make multiple requests, instead of opening a new one for each request. This decreases page load times and lowers CPU use for your web server, at the expense of an increase in your server's RAM use.
+
+In the past, this setting was often disabled to conserve RAM use, but server resources have become less expensive, and the option is now enabled by default in Apache 2.4. Enabling KeepAlive can significantly benefit your site's user experience, so be wary of disabling it without testing the effects of doing so. KeepAlive can be enabled or disabled in your web server configuration, or within a Virtual Host block.
+
+{{< note >}}
+A KeepAlive connection will be counted as a single "request" for the [`MaxConnectionsPerChild` directive](https://httpd.apache.org/docs/2.4/mod/mpm_common.html#maxconnectionsperchild).
+{{< /note >}}

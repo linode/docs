@@ -5,9 +5,9 @@ author:
 description: 'Get your website or web application online by setting up Apache, MySQL, and PHP'
 keywords: ["debian 8 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian", "debian 8", "websites", "apache", "mysql", "php", "apache 2.4", "lamp debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-12-01
+modified: 2019-01-02
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: 2015-06-29
 title: 'LAMP on Debian 8 (Jessie)'
 aliases: ['websites/lamp/lamp-server-debian-8/','websites/lamp/lamp-on-debian-8-jessie/']
@@ -50,15 +50,8 @@ Prior to installing your LAMP stack ensure that:
 
         sudo apt-get install apache2
 
-2.  Edit the main Apache configuration file and turn off the `KeepAlive` setting:
 
-    {{< file "/etc/apache2/apache2.conf" aconf >}}
-KeepAlive Off
-
-{{< /file >}}
-
-
-3.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 2GB Linode:
+1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 2GB Linode:
 
     {{< file "/etc/apache2/mods-available/mpm_prefork.conf" aconf >}}
 # prefork MPM
@@ -82,15 +75,15 @@ KeepAlive Off
 
 
     {{< note >}}
-These settings are good starting points, but should be adjusted to best suite your specific stack's needs.
+These settings are good starting points, but they should be adjusted to best suit your deployment's needs.
 {{< /note >}}
 
-4.  On Debian 8, the *event module* is enabled by default. This should be disabled, and the *prefork module* enabled:
+1.  On Debian 8, the *event module* is enabled by default. This should be disabled, and the *prefork module* enabled:
 
         sudo a2dismod mpm_event
         sudo a2enmod mpm_prefork
 
-5.  Restart Apache:
+1.  Restart Apache:
 
         sudo systemctl restart apache2
 
@@ -106,7 +99,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
     Repeat the process if you intend on hosting multiple websites on your Linode.
 
-2.  Create an `example.com.conf` file in `/etc/apache2/sites-available` with your text editor, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
+1.  Create an `example.com.conf` file in `/etc/apache2/sites-available` with your text editor, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
 
     {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
 <VirtualHost *:80>
@@ -136,7 +129,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
 {{< /file >}}
 
 
-3.  Symbolically link your virtual hosts files from the `sites-available` directory to the `sites-enabled` directory. Replace the filename with your own:
+1.  Symbolically link your virtual hosts files from the `sites-available` directory to the `sites-enabled` directory. Replace the filename with your own:
 
         sudo a2ensite example.com.conf
         sudo a2ensite example.org.conf
@@ -145,7 +138,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
 Should you need to disable a site, you can use `a2dissite example.com`.
 {{< /note >}}
 
-4.  Restart Apache:
+1.  Restart Apache:
 
         sudo systemctl restart apache2
 
@@ -162,7 +155,7 @@ MySQL is a *relational database management system* (RDBMS) and is a popular comp
 
     Input a secure password when prompted by the installation.
 
-2.  Run `mysql_secure_installation` to remove the test database and any extraneous user permissions added during the initial installation process:
+1.  Run `mysql_secure_installation` to remove the test database and any extraneous user permissions added during the initial installation process:
 
         sudo mysql_secure_installation
 
@@ -178,12 +171,12 @@ Next, you can create a database and grant your users permissions to use database
 
     Enter MySQL's root password when prompted.
 
-2.  Create a database and grant your users permissions on it. Change the database name (`webdata`) and username (`username`). Change the password (`password`):
+1.  Create a database and grant your users permissions on it. Change the database name (`webdata`) and username (`username`). Change the password (`password`):
 
         create database webdata;
         grant all on webdata.* to 'username' identified by 'password';
 
-3.  Exit MySQL:
+1.  Exit MySQL:
 
         quit
 
@@ -191,13 +184,26 @@ Next, you can create a database and grant your users permissions to use database
 
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks.
 
-1.  Install PHP 5 and the PHP Extension and Application Repository:
+### Install PHP
 
-        sudo apt-get install php5 php-pear
+PHP 7.3 is the [latest version available](http://php.net/supported-versions.php) and has the longest period of support offered as of this guide's publishing:
 
-2.  Open `/etc/php5/apache2/php.ini` in your text editor, and edit the following values. These settings are optimized for the 2GB Linode:
+1.  Add the [sury.org](https://deb.sury.org) repository, which packages PHP 7.3 for Debian 8:
 
-    {{< file "/etc/php5/apache2/php.ini" ini >}}
+        sudo apt install lsb-release apt-transport-https ca-certificates
+        sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+        echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php7.3.list
+        sudo apt update
+
+1.  Install PHP 7.3 and the PHP Extension and Application Repository:
+
+        sudo apt-get install php7.3 php-pear
+
+### Configure PHP
+
+1.  Open `/etc/php/7.3/apache2/php.ini` in your text editor and edit the following values. These settings are optimized for the 2GB Linode:
+
+    {{< file "/etc/php/7.3/apache2/php.ini" ini >}}
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
 error_log = /var/log/php/error.log
 max_input_time = 30
@@ -209,15 +215,15 @@ max_input_time = 30
 Ensure that all values are uncommented, by making sure they do not start with a semicolon (**;**).
 {{< /note >}}
 
-3.  Create the log directory for PHP and give the Apache user ownership:
+1.  Create the log directory for PHP and give the Apache user ownership:
 
         sudo mkdir /var/log/php
         sudo chown www-data /var/log/php
 
-4.  If you need support for MySQL in PHP, then you must install the php5-mysql package:
+1.  If you need support for MySQL in PHP, then you must install the php7.3-mysql package:
 
-        sudo apt-get install php5-mysql
+        sudo apt-get install php7.3-mysql
 
-5.  Restart Apache:
+1.  Restart Apache:
 
         sudo systemctl restart apache2

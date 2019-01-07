@@ -6,7 +6,7 @@ description: 'How to monitor Salt minions with beacons.'
 keywords: ['salt','saltstack','minion','minions','beacon','beacons','reactor','reactors','monitor','configuration drift','slack']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-19
-modified: 2018-10-19
+modified: 2019-01-02
 modified_by:
   name: Linode
 title: "Monitoring Salt Minions with Beacons"
@@ -14,6 +14,8 @@ external_resources:
 - '[Salt Beacons Documentation](https://docs.saltstack.com/en/latest/topics/beacons/)'
 - '[Salt Beacon Modules](https://docs.saltstack.com/en/latest/ref/beacons/all/index.html)'
 - '[Salt Reactors Documentation](https://docs.saltstack.com/en/latest/topics/reactor/)'
+promo_code_amount: '20'
+promo_code: 'Salt20'
 ---
 
 Every action performed by Salt, such as applying a highstate or restarting a minion, generates an event. *Beacons* emit events for non-salt processes, such as system state changes or file changes. This guide will use Salt beacons to notify the Salt master of changes to minions, and Salt *reactors* to react to those changes.

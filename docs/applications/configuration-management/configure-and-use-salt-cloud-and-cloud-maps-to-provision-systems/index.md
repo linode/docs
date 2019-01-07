@@ -7,12 +7,14 @@ og_description: "Salt Cloud is a part of the SaltStack that makes provisioning m
 keywords: ["SaltStack", "Salt", "salt-cloud"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-27
-modified: 2018-10-11
+modified: 2019-01-02
 modified_by:
   name: Linode
 title: 'Configure and Use Salt Cloud and Cloud Maps to Provision Systems'
 contributor:
   name: Sergey Bulavintsev
+promo_code_amount: '20'
+promo_code: 'Salt20'
 ---
 
 ![Salt Cloud](SaltCloud.jpg)

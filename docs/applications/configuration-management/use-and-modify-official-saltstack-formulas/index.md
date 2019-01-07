@@ -6,7 +6,7 @@ description: 'Learn how to use and modify official SaltStack formulas to manage 
 keywords: ['salt', 'formulas', 'git']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-11-12
-modified: 2018-11-12
+modified: 2019-01-02
 modified_by:
   name: Linode
 title: "Use and Modify Official SaltStack Formulas"
@@ -15,6 +15,8 @@ contributor:
 external_resources:
 - '[Salt Formulas](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)'
 - '[Git Fileserver Backend Walkthrough](https://docs.saltstack.com/en/latest/topics/tutorials/gitfs.html)'
+promo_code_amount: '20'
+promo_code: 'Salt20'
 ---
 
 ## Salt State Files
