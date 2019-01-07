@@ -132,13 +132,7 @@ Network Helper configures `/etc/rc.d/rc.inet1.conf` & `/etc/resolv.conf`.
 
 ## Failure to Run
 
-If Network Helper is unable to determine the operating system during boot, it will not attempt to write any new configuration files. When this happens, Network Helper will let you know in the Host Job Queue:
-
-[![Network Helper Failure Message](network-helper-failure_small.png)](network-helper-failure.png)
-
-Similarly, if you boot an unsupported older distribution while Network Helper is enabled, you'll see a warning in the Host Job Queue:
-
-[![Network Helper Failure Message](network-helper-unsupported_small.png)](network-helper-unsupported.png)
+If Network Helper is unable to determine the operating system during boot (usually because of an inability to confirm what package manager is in use), or if you boot an unsupported older distribution, Network Helper will not attempt to write any new configuration files.
 
 ## Modify Global Network Helper Settings
 
