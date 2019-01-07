@@ -6,7 +6,7 @@ keywords: ["getting started", "intro", "basics", "first steps"]
 description: 'This guide will help you set up your first Linode.'
 og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-23
+modified: 2018-10-19
 modified_by:
   name: Linode
 published: 2009-07-19
@@ -17,6 +17,7 @@ type: "guide"
 weight: 10
 icon: "book"
 show_on_rss_feed: false
+cloud_manager_link: getting-started-new-manager
 ---
 
 ![Getting Started with Linode](getting-started.jpg "Getting Started with Linode")
@@ -142,12 +143,12 @@ Once you have the IP address and an SSH client, you can log in via SSH. The foll
 
 1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address:
 
-        ssh root@123.456.78.90
+        ssh root@198.51.100.4
 
 2.  If this is the first time connecting to your Linode, you'll see the authenticity warning below. This is because your SSH client has never encountered the server's key fingerprint before. Type `yes` and press **Enter** to continue connecting.
 
     {{< output >}}
-The authenticity of host '123.456.78.90 (123.456.78.90)' can't be established.
+The authenticity of host '198.51.100.4 (198.51.100.4)' can't be established.
 RSA key fingerprint is 11:eb:57:f3:a5:c3:e0:77:47:c4:15:3a:3c:df:6c:d2.
 Are you sure you want to continue connecting (yes/no)?
 {{< /output >}}
@@ -155,13 +156,13 @@ Are you sure you want to continue connecting (yes/no)?
     After you enter `yes`, the client confirms the addition:
 
     {{< output >}}
-Warning: Permanently added '123.456.78.90' (RSA) to the list of known hosts.
+Warning: Permanently added '198.51.100.4' (RSA) to the list of known hosts.
 {{< /output >}}
 
 3.  The login prompt appears for you to enter the password you created for the `root` user above.
 
     {{< output >}}
-root@123.456.78.90's password:
+root@198.51.100.4's password:
 {{< /output >}}
 
 4.  The SSH client initiates the connection. When the connection is completed the following prompt appears:
@@ -178,7 +179,7 @@ To reconnect via SSH, revoke the key for that IP address.
 
 For Linux and Mac OS X:
 
-    ssh-keygen -R 123.45.67.89
+    ssh-keygen -R 198.51.100.4
 
 For Windows, PuTTY users must remove the old host IP addresses manually. PuTTY's known hosts are in the registry entry:
 
@@ -286,7 +287,7 @@ By default, your Linode will be set to UTC time. You may want to change this to 
 
     dpkg-reconfigure tzdata
 
-### Arch Linux and CentOS 7
+### Arch Linux / CentOS 7 / Fedora
 
 1.  View a list of available time zones:
 

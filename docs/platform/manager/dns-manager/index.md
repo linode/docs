@@ -105,7 +105,7 @@ In order for Linode's DNS servers to function as slaves, your DNS master server 
     2a01:7e00::a
 {{< /note >}}
 
-If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](/docs/networking/dns/dns-manager-overview/#add-records) section for instructions.
+If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now.
 
 ### Add Records
 

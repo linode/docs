@@ -56,7 +56,7 @@ Restart Apache by entering the following command:
 
 Verify the version of ModSecurity is 2.8.0 or higher:
 
-    yum info mod_fcgid
+    yum info mod_security
 
 ## OWASP ModSecurity Core Rule Set
 

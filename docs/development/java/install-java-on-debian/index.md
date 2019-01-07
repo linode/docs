@@ -13,6 +13,8 @@ published: 2017-06-01
 title: Install Java on Debian 8
 external_resources:
 - '[Java Debian Wiki](https://wiki.debian.org/Java)'
+audiences: ["beginner"]
+languages: ["java"]
 ---
 
 Java is a powerful programming language. Software written in Java can be compiled and run on any system. Unlike Python or C, Java does not come pre-installed on Linode distribution images. This guide installs the OpenJDK 7 runtime environment and development kit in Debian 8. OpenJDK is the free and open-source implementation of the Java SE Development Kit.

@@ -11,7 +11,9 @@ modified_by:
   name: Linode
 published: 2012-04-03
 title: Accounts and Passwords
+cloud_manager_link: 'platform/manager/accounts-and-passwords-new-manager'
 ---
+![Accounts and Passwords](Accounts_and_Passwords_smg.jpg)
 
 Maintaining your user Linode Manager accounts, passwords, and contact information is just as important as administering your Linode. This guide shows you how to control access to the Linode Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Linode Manager only, except for the section on resetting the root password.
 

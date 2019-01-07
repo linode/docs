@@ -6,12 +6,14 @@ description: 'How to set up an IPv6 tunnel on your Linode.'
 keywords: ["ipv6", "tunnel", "broker", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/ipv6-tunnels/']
-modified: 2018-05-15
+modified: 2018-12-11
 modified_by:
   name: Linode
 published: 2011-04-29
 title: Set Up an IPv6 Tunnel on Your Linode
 ---
+
+![Set up an IPv6 Tunnel on Your Linode](Set_Up_an_IPv6_Tunnel_on_Your_Linode_smg.jpg)
 
 As IPv4 address exhaustion nears, many people are making the switch to IPv6. Linode offers [native IPv6](/docs/networking/native-ipv6-networking/) addresses in all locations.
 

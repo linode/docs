@@ -7,7 +7,7 @@ og_description: 'Subsonic is a free music streaming application. This guide show
 keywords: ["subsonic", "music", "audio", "streaming", "media server"]
 aliases: ['applications/media-servers/subsonic/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-04-26
+modified: 2018-12-18
 modified_by:
   name: Linode
 published: 2015-02-02
@@ -15,6 +15,8 @@ title: Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through
 external_resources:
   - '[Subsonic official site](http://www.subsonic.org)'
 ---
+
+![Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through Your Linode](Install_Subsonic_Media_Server_on_Ubuntu_or_Debian_smg.png "Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through Your Linode")
 
 ## What is Subsonic?
 

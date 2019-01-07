@@ -16,6 +16,9 @@ contributor:
     link: https://github.com/ashraffouad
 external_resources:
  - '[WildFly Administration Guide](https://books.google.com.sa/books?id=rufiBAAAQBAJ)'
+audiences: ["intermediate"]
+concentrations: ["Web Applications"]
+languages: ["java"]
 ---
 
 ![Java Development with WildFly on CentOS 7](Java-Development-with-WildFly-on-CentOS-7-smg.jpg)

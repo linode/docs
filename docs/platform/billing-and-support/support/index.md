@@ -6,11 +6,12 @@ description: Our guide to submitting support tickets and getting technical suppo
 keywords: ["support", "tech support", "tickets", "help desk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['support/','platform/support/']
-modified: 2018-05-21
+modified: 2018-12-31
 modified_by:
   name: Linode
 published: 2012-03-21
 title: Linode Support
+cloud_manager_link: platform/billing-and-support/support-new-manager
 ---
 
 Linode provides live technical support services 24 hours a day, 7 days a week. Linode Support ensures network availability, verifies that you can access your Linode, resolves performance issues with hosts, and works to fix any service-related issues you may be experiencing.
@@ -39,9 +40,17 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
 -   **Network Status:** If a data center experiences downtime, Linode's staff will regularly update the [Status webpage](http://status.linode.com/) until the issue has been resolved.
 
+## Scope of Support
+
+As declared in Linode's [Terms of Service](https://www.linode.com/tos), the Linode Support Team does not provide support regarding the installation or configuration of application software, such as mail and web server software, nor does it provide support regarding the configuration of Linux on your server. For these issues, please consult the various other [resources](#resources) Linode makes available. If you are providing a service to your customers, Linode does not offer tech support for those customers.
+
+Linode provides support related to the physical operation of your Linode virtual servers, such as: ensuring that your network traffic is properly routed to and from your Linodes' IP addresses; helping with potential CPU steal or other aspects of base system performance that may be related to Linode's virtualization systems; and resolving potential hardware issues within Linode's infrastructure.
+
+Linode also helps with products such as NodeBalancers and Block Storage. Additionally, Linode Support can help you use Linode software such as the Linode Manager, and can help you with understanding and paying your bill.
+
 ## Contacting Linode Support
 
-If you are not able to solve an issue with the resources listed above, you can contact Linode Support. As a reminder, application configuration and other similar topics are outside the scope of Linode Support. The primary method for contacting Linode Support is to open a support ticket from the Linode Manager:
+If you are not able to solve an issue with the resources listed above, you can contact Linode Support. As a reminder, application configuration and other similar topics are outside the [scope of Linode Support](#scope-of-support). The primary method for contacting Linode Support is to open a support ticket from the Linode Manager:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Select the **Support** link.

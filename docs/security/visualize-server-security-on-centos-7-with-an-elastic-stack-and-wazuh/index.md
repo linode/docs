@@ -7,7 +7,7 @@ og_description: 'An Elastic Stack combines Elasticsearch, Logstash, and Kibana. 
 keywords: ["ossec", "elk stack", "elk,ossec-hids"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-17
-modified: 2017-10-17
+modified: 2018-12-11
 modified_by:
   name: Linode
 title: 'Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh'
@@ -21,7 +21,7 @@ external_resources:
 
 ![Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh](elastic-stack-security-title.jpg "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh")
 
-## What are Elasticsearch, ELK Stack, and Wazuh?
+## What are Elasticsearch, Elastic Stack, and Wazuh?
 
 An Elastic Stack, formerly known as an ELK Stack, is a combination of Elasticsearch, Logstash, and Kibana. In this tutorial, you will learn how to install and link together ElasticSearch, Logstash, Kibana, with Wazuh OSSEC to help monitor and visualize security threats to your machine. The resulting structure can be broken down into three core components that work with Wazuh's endpoint security:
 
@@ -45,14 +45,18 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
 1.  Many of the steps in this guide require root privileges. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
 
-2. Your Linode should have at least [4GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
+1. Your Linode should have at least [8GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
-3. Install NGINX or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:
+1. Add a domain zone, NS record, and A/AAA record for the domain you will use to access your Kibana installation. See the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your Kibana instance via your Linode's IP address, you can skip this step.
+
+1. [Create an SSL Certificate](https://linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/), if you will be using SSL encryption for your domain.
+
+1. Install NGINX or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:
 
       - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/)
       - [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7/)
 
-4. Configure your webserver for virtual domain hosting:
+1. Configure your webserver for virtual domain hosting:
 
       **NGINX**
 
@@ -62,27 +66,29 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
       - [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics/)
 
-## Update System and Install Pre-requisites
+## Update System and Install Prerequisites
 
 1. Update system packages:
 
         yum update -y && yum upgrade -y
 
-2. Install Java 8 JDK:
+1. Install Java 8 JDK:
 
         yum install java-1.8.0-openjdk.x86_64
 
-3.  Verify the Java installation by checking the version:
+1.  Verify the Java installation by checking the version:
 
         java -version
 
     Your output should be similar to:
 
-        openjdk version "1.8.0_144"
-        OpenJDK Runtime Environment (IcedTea 3.5.1) (suse-13.3-x86_64)
-        OpenJDK 64-Bit Server VM (build 25.144-b01, mixed mode)
+      {{< output >}}
+        openjdk version "1.8.0_191"
+        OpenJDK Runtime Environment (build 1.8.0_191-b12)
+        OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
+      {{</ output >}}
 
-3. Install curl:
+1. If your Linode doesn't have curl installed, install curl:
 
         yum install curl
 
@@ -96,27 +102,33 @@ gpgcheck=1
 gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
 enabled=1
 name=CentOS-$releasever - Wazuh
-baseurl=https://packages.wazuh.com/yum/el/$releasever/$basearch
+baseurl=https://packages.wazuh.com/3.x/yum/
 protect=1
 {{< /file >}}
 
-2. Install Wazuh Manager:
+1. Install Wazuh Manager:
 
         yum install wazuh-manager
 
-3. Install Wazuh API:
+1. Install Wazuh API:
 
     1. Install the Node.js repository:
 
-            curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+            curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
 
-    2. Install NodeJS:
+    1. Install NodeJS:
 
-            yum install nodejs
+            yum install -y nodejs
 
-    3. Install Wazuh API:
+    1. Install Wazuh API:
 
             yum install wazuh-api
+
+      {{< note >}}
+  Python >= 2.7 is required in order to run the Wazuh API. To find out which version of Python is running on your Linode, issue the following command:
+
+      python --version
+      {{</ note >}}
 
 ## Install Elasticsearch, Logstash, and Kibana
 
@@ -127,69 +139,70 @@ Install the Elastic Stack via RPM files to get the latest versions of all the so
 1. Download the Elasticsearch RPM into the `/opt` directory:
 
         cd /opt
-        curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.2.rpm
+        curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.2.rpm
 
-2.  Install Elasticsearch:
+1.  Install Elasticsearch:
 
-        rpm -ivh elasticsearch-5.5.2.rpm
+        rpm -i elasticsearch-6.5.2.rpm
 
-3. Enable the Elasticsearch service to start on system boot:
+1. Enable the Elasticsearch service to start on system boot:
 
         systemctl enable elasticsearch
         systemctl start elasticsearch
 
-4. Load the Wazuh Elasticsearch template. Replace `exampleIP` with your Linode's public IP address:
+1. Verify that Elasticsearch has installed and is listening on port 9200:
 
-        curl https://raw.githubusercontent.com/wazuh/wazuh-kibana-app/master/server/startup/integration_files/template_file.json | curl -XPUT 'http://exampleIP:9200/_template/wazuh' -H 'Content-Type: application/json' -d @-
+        curl "http://localhost:9200/?pretty"
+
+    You should receive a similar response:
+
+      {{< output >}}
+        {
+  "name" : "-7B24Uk",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "UdLfdUOoRH2elGYckoiewQ",
+  "version" : {
+  &emsp;&emsp;"number" : "6.5.2",
+  &emsp;&emsp; "build_flavor" : "default",
+  &emsp;&emsp;"build_type" : "rpm",
+  &emsp;&emsp;"build_hash" : "9434bed",
+  &emsp;&emsp;"build_date" : "2018-11-29T23:58:20.891072Z",
+  &emsp;&emsp;"build_snapshot" : false,
+  &emsp;&emsp;"lucene_version" : "7.5.0",
+  &emsp;&emsp;"minimum_wire_compatibility_version" : "5.6.0",
+  &emsp;&emsp;"minimum_index_compatibility_version" : "5.0.0"
+  &emsp;&emsp;},
+  "tagline" : "You Know, for Search"
+}
+        {{</ output >}}
+
+1. Load the Wazuh Elasticsearch template. Replace `exampleIP` with your Linode's public IP address:
+
+        curl https://raw.githubusercontent.com/wazuh/wazuh/3.7/extensions/elasticsearch/wazuh-elastic6-template-alerts.json | curl -X PUT "http://exampleIP:9200/_template/wazuh" -H 'Content-Type: application/json' -d @-
+
 
 ### Install Logstash
 
 1. Download the Logstash RPM into the `/opt` directory:
 
         cd /opt
-        curl https://artifacts.elastic.co/downloads/logstash/logstash-5.5.2.rpm
+        curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-6.5.2.rpm
 
-2. Install Logstash:
+1. Install Logstash:
 
-        rpm -ivh logstash-5.5.2.rpm
+        rpm -i logstash-6.5.2.rpm
 
-3. Enable Logstash on system boot:
+1. Enable Logstash on system boot:
 
         systemctl daemon-reload
         systemctl enable logstash
         systemctl start logstash
 
-4. Download the Wazuh config and template files for Logstash:
+1. Download the Wazuh config file for a **single-host architecture** for Logstash:
 
         curl -so /etc/logstash/conf.d/01-wazuh.conf https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/logstash/01-wazuh.conf
-        curl -so /etc/logstash/wazuh-elastic5-template.json https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/elasticsearch/wazuh-elastic5-template.json
 
-5. Modify the `01-wazuh.conf` file to indicate a single-host architecture. Replicate the contents below into your own file. The changes consist of commenting out the `Remote Wazuh Manager` section and uncommenting the `Local Wazuh Manager` section:
-
-    {{< file "/etc/logstash/conf.d/01-wazuh.conf" >}}
-# Wazuh - Logstash configuration file
-## Remote Wazuh Manager - Filebeat input
-#input {
-#    beats {
-#        port => 5000
-#        codec => "json_lines"
-##        ssl => true
-##        ssl_certificate => "/etc/logstash/logstash.crt"
-##        ssl_key => "/etc/logstash/logstash.key"
-#    }
-#}
-# Local Wazuh Manager - JSON file input
-input {
-   file {
-       type => "wazuh-alerts"
-       path => "/var/ossec/logs/alerts/alerts.json"
-       codec => "json"
-   }
-}
-. . .
-{{< /file >}}
-
-6. Add the Logstash user to the "ossec" group to allow access to restricted files:
+1. Add the Logstash user to the `ossec` group to allow access to restricted files:
 
         usermod -aG ossec logstash
 
@@ -205,11 +218,11 @@ LS_GROUP=logstash
 . . .
 {{< /file >}}
 
-2. Update the service with the new parameters:
+1. Update the service with the new parameters:
 
         /usr/share/logstash/bin/system-install
 
-3. Restart Logstash:
+1. Restart Logstash:
 
         systemctl restart logstash
 
@@ -218,35 +231,43 @@ LS_GROUP=logstash
 1. Download the Kibana RPM into the `/opt` directory:
 
         cd /opt
-        curl https://artifacts.elastic.co/downloads/kibana/kibana-5.5.2-x86_64.rpm
+        curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-6.5.2-x86_64.rpm
 
-2. Install Kibana:
+1. Install Kibana:
 
-        rpm -ivh kibana-5.5.2-x86_64.rpm
+        rpm -i kibana-6.5.2-x86_64.rpm
 
-3. Enable Kibana on system boot:
+1. Enable Kibana on system boot:
 
         systemctl enable kibana
         systemctl start kibana
 
-4. Install the Wazuh app for Kibana:
+1. Install the Wazuh app for Kibana:
 
-        /usr/share/kibana/bin/kibana-plugin install https://packages.wazuh.com/wazuhapp/wazuhapp.zip
+        sudo -u kibana NODE_OPTIONS="--max-old-space-size=3072" /usr/share/kibana/bin/kibana-plugin install https://packages.wazuh.com/wazuhapp/wazuhapp-3.7.1_6.5.2.zip
 
     The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled.
 
-5. If you will access Kibana remotely, configure it to listen on your IP address. Replace the following values with the correct parameters. If you are accessing Kibana from a local host, you can leave the `server.host` value alone.
+1. By default Kibana only listens on the loopback interface. To configure it to listen on all interfaces, update the `/etc/kibana/kibana.yml` file and uncomment `server.host` and the following value:
+
+    {{< file "/etc/kibana/kibana.yml">}}
+# Specifies the address to which the Kibana server will bind. IP addresses and host names are both valid values.
+# The default is 'localhost', which usually means remote machines will not be able to connect.
+# To allow connections from remote users, set this parameter to a non-loopback address.
+server.host: "0.0.0.0"
+    {{</ file >}}
+
+    Reference the table below for information on other configurations available in the `/etc/kibana/kibana.yml` file:
 
     | Value           | Parameter                                                                                  |
     | :-------------: | :----------------------------------------------------------------------------------------: |
-    | server.port     | Change this value if the default port, `5601`, is in use.                                  |
-    | server.host     | Set this value to your Linode's external IP address.                                       |
-    | server.name     | This value is used for display purposes only. Set to anything you wish, or leave it alone. |
+    | server.port     | If the default port `5601` is in use, change this value.                                  |
+    | server.name     | This value is used for display purposes only. Set to anything you wish, or leave it unchanged. |
     | logging.dest    | Specify a location to log program information. `/var/log/kibana.log` is recommended.       |
 
     You may modify other values in this file as you see fit, but this configuration should work for most.
 
-6. Restart Kibana:
+1. Restart Kibana:
 
         systemctl restart kibana
 
@@ -254,11 +275,18 @@ LS_GROUP=logstash
 
 The Elastic Stack will require some tuning before it can be accessed via the Wazuh API.
 
-1. Enable memory locking in Elasticsearch to mitigate poor performance. Uncomment or add this line to `/etc/elasticsearch/elasticsearch.yml`:
+1. Enable memory locking in Elasticsearch to mitigate poor performance. Uncomment the `bootstrap.memory_lock: true` line in the `/etc/elasticsearch/elasticsearch.yml` file:
 
-        bootstrap.memory_lock: true
+    {{< file "/etc/elasticsearch/elasticsearch.yml">}}
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+bootstrap.memory_lock: true
+#
+    {{</ file >}}
 
-2. Edit locked memory allocation. Follow the instructions under the appropriate init system used in your system:
+1. Edit locked memory allocation. Follow the instructions under the appropriate init system used on your Linode:
 
     **SystemD**
 
@@ -272,15 +300,15 @@ LimitMEMLOCK=infinity
 
     **System V**
 
-    Edit the `/etc/sysconfig/elasticsearch` file for RPM or `/etc/default/elasticsearch` for Debian and Ubuntu. Add or change the following line:
+    Edit the `/etc/sysconfig/elasticsearch` file. Add or change the following line:
 
-    {{< file "/etc/sysconfig/elasticsearch or /etc/default/elasticsearch" >}}
+    {{< file "/etc/sysconfig/elasticsearch" >}}
 . . .
 MAX_LOCKED_MEMORY=unlimited
 . . .
 {{< /file >}}
 
-3. Configure the Elasticsearch heap size based on your Linode's resources. This figure will determine how much memory Elasticsearch is allowed to consume. Keep the following rules in mind:
+1. Configure the Elasticsearch heap size based on your Linode's resources. This figure will determine how much memory Elasticsearch is allowed to consume. Keep the following rules in mind:
 
       - No more than 50% of available RAM
       - No more than 32GB of RAM
@@ -300,21 +328,26 @@ MAX_LOCKED_MEMORY=unlimited
 
     This configures Elasticsearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes, `Xms4096M` in this example. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
 
+1. Restart Elasticsearch for the configurations to take effect:
+
+        systemctl daemon-reload
+        systemctl restart elasticsearch
+
 ## Configure a Reverse Proxy
 
 A reverse proxy server allows you to secure the Kibana web interface with SSL and limit access to others. Instructions are provided for NGINX and Apache. The instructions assume you have your webserver configured to host virtual domains.
 
 ### Set up a Reverse Proxy Server to Host Kibana as a Subdomain
 
-If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended.
+If you have SSL encryption enabled on your domain, follow the instructions in the **HTTPS** section below. If not, follow the instructions included in the **HTTP** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended.
 
 #### NGINX
 
-1. Navigate to your NGINX virtual host config directory. Create a new virtual host config file and name it something similar to `kibana.conf`. Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's external IP address:
+1. Navigate to your NGINX virtual host config directory. Create a new virtual host config file and name it something similar to `example.conf`. Replace `example.com` Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's external IP address:
 
-    **Non SSL**
+    **HTTP**
 
-    {{< file "/etc/nginx/conf.d or /etc/nginx/conf" >}}
+    {{< file "/etc/nginx/conf.d/example.com.conf" >}}
 server {
     listen 80;
     # Remove the line below if you do not have IPv6 enabled.
@@ -335,9 +368,9 @@ server {
 }
 {{< /file >}}
 
-    **SSL**
+    **HTTPS**
 
-    {{< file "/etc/nginx/conf.d or /etc/nginx/conf" >}}
+    {{< file "/etc/nginx/conf.d/example.com.conf" >}}
 server {
   listen 80;
   # Remove the line below if you do note have IPv6 enabled.
@@ -374,17 +407,21 @@ server {
   ssl_certificate_key /path/to/ssl/certificate.key;
 
   auth_basic "Restricted Access";
-  auth_basic_user_file /etc/nginx/htpasswd.users;
+  auth_basic_user_file /etc/nginx/.htpasswd;
 }
 {{< /file >}}
 
-2. Secure your Kibana site with a login page. Create a **.htpasswd** file first if you do not have one:
+1. Install `httpd-tools` if it is not already installed on your Linode:
 
-        touch /etc/nginx/htpasswd.users
-        htpasswd -c /etc/nginx/.htpasswd.users YourNewUsername
-        chmod 644 /etc/nginx/.htpasswd.users
+        yum install httpd-tools
 
-3. Restart the NGINX server to load the new configuration:
+1. Secure your Kibana site with a login page. Create a **.htpasswd** file first if you do not have one:
+
+        touch /etc/nginx/.htpasswd
+        htpasswd -c /etc/nginx/.htpasswd YourNewUsername
+        chmod 644 /etc/nginx/.htpasswd
+
+1. Restart the NGINX server to load the new configuration:
 
         systemctl restart nginx
 
@@ -399,7 +436,7 @@ server {
     - proxy_balancer_module
     - proxy_http_module
 
-2. Enable the necessary mods in Apache. Open `00-proxy.conf` and verify that the lines below are included:
+1. Enable the necessary mods in Apache. Open `00-proxy.conf` and verify that the lines below are included:
 
     {{< file "/etc/httpd/conf.modules.d/00-proxy.conf" >}}
 . . .
@@ -410,11 +447,11 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 . . .
 {{< /file >}}
 
-3. Create a new virtual config file for the Kibana site. Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's public IP address. Replace `kibana.exampleIPorDomain` and `http://exampleIPorDomain` with your specific values:
+1. Create a new virtual config file for the Kibana site. Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's public IP address. Replace `kibana.exampleIPorDomain` and `http://exampleIPorDomain` with your specific values:
 
-    **Non SSL**
+    **HTTP**
 
-    {{< file "/etc/httpd/sites-available/kibana.conf or /etc/apache2/sites-available/kibana.conf" >}}
+    {{< file "/etc/httpd/sites-available/example.com.conf" >}}
 <VirtualHost *:80>
   ServerName kibana.exampleIPorDomain
   ProxyPreserveHost On
@@ -431,9 +468,9 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 </VirtualHost>
 {{< /file >}}
 
-    **SSL**
+    **HTTPS**
 
-    {{< file "/etc/httpd/sites-available/kibana.conf or /etc/apache2/sites-available/kibana.conf" >}}
+    {{< file "/etc/httpd/sites-available/example.com.conf" >}}
 <VirtualHost *:80>
   ServerName kibana.exampleIPorDomain
   ProxyPreserveHost On
@@ -473,13 +510,13 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 </VirtualHost>
 {{< /file >}}
 
-4. Secure your Kibana site with a login page. Create a **.htpasswd** file first if you do not have one:
+1. Secure your Kibana site with a login page. Create a **.htpasswd** file first if you do not have one:
 
         touch /etc/apache2/htpasswd.users
         htpasswd -c /etc/apache2/.htpasswd.users YourNewUsername
         chmod 644 /etc/apache2/.htpasswd.users
 
-5. Restart Apache:
+1. Restart Apache:
 
         systemctl restart httpd
 
@@ -487,7 +524,7 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 
 The new Kibana subdomain will need to be configured in the Linode DNS Manager.
 
-1. Login to the Linode Manager and select your Linode VPS. Click on *DNS Manager*. Add a new A/AAA record for the subdomain. Refer to the table below for the field values.
+1. Login to the Linode Manager and select **Domains**. Click on your domain's corresponding ellipses and select **Edit DNS Records**. Add a new A/AAA record for the subdomain. Refer to the table below for the field values.
 
     | Field           | Value                                                |
     | :-------------: | :--------------------------------------------------: |
@@ -495,41 +532,46 @@ The new Kibana subdomain will need to be configured in the Linode DNS Manager.
     | IP Address      | Set this value to your Linode's external IP address. |
     | TTL             | Set this to 5 minutes.                               |
 
-2. Click **Save Changes**.
+1. Click **Save Changes**.
 
 ## Open the Kibana Port
 
-Kibana's default access port, `5601`, must be opened for TCP traffic. Instructions are presented below for UFW, Iptables, and FirewallD.
+Kibana's default access port, `5601`, must be opened for TCP traffic. Instructions are presented below for FirewallD, iptables, and UFW.
 
-**UFW**
+**FirewallD**
 
-    ufw allow 5601/tcp comment "Kibana port"
+    firewall-cmd --add-port=5601/tcp --permanent
+    firewall-cmd --reload
+
+1. Set SELinux to allow HTTP connections:
+
+        setsebool -P httpd_can_network_connect 1
 
 **iptables**
 
     iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
 
 {{< note >}}
-To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`, or install iptables-persistent to automatically save rules.
+To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`.
 {{< /note >}}
 
-**FirewallD**
+**UFW**
 
-    firewall-cmd --add-port=5601/tcp --permanent
+    ufw allow 5601/tcp comment "Kibana port"
 
 ## Connect the Elastic Stack with the Wazuh API
 
-Now you are ready to access the API and begin making use of your OSSEC Elastic Stack!
+Now you are ready to access the API and begin making use of your OSSEC Elastic Stack.
 
-1. The Wazuh API requires users to provide credentials in order to login. Navigate to `/var/ossec/api/configuration/auth`. Replace `NewUserName` whatever user name you choose. Set a password following the system prompts:
+1. The Wazuh API requires users to provide credentials in order to login. Navigate to `/var/ossec/api/configuration/auth`. Replace `NewUserName` with whatever user name you choose. Set a password following the system prompts:
 
-        sudo node htpasswd -c user NewUserName
+        node htpasswd -c user NewUserName
 
-2. Restart the Wazuh API:
+1. Restart the Wazuh API:
 
         systemctl restart wazuh-api
 
-3. Check the status of all daemon components and verify that they are running:
+1. Check the status of all daemon components and verify that they are running:
 
         systemctl -l status wazuh-api
         systemctl -l status wazuh-manager
@@ -542,10 +584,10 @@ Now you are ready to access the API and begin making use of your OSSEC Elastic S
 If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. Find the rules and decoders in the `/var/ossec/ruleset` directory. To disable, rename the file to any other file extension.
 {{< /note >}}
 
-4. In a web browser, navigate to the Kibana homepage. If you created a subdomain for Kibana, the URL will be similar to `kibana.exampleIPorDomain`. You can also reach Kibana by navigating to your server's IP address and specifying port `5601`. Login with the credentials you setup for your Kibana site.
+1. In a web browser, navigate to the Kibana homepage. If you created a subdomain for Kibana, the URL will be similar to `kibana.exampleIPorDomain`. You can also reach Kibana by navigating to your server's IP address and specifying port `5601`. Login with the credentials you setup for your Kibana site.
 
-5. If everything is working correctly, you should have landed on the **Discover** page. Navigate to the **Wazuh** page using the left hand side menu. You will be immediately presented with the API configuration page. Underneath the **ADD NEW API** button, enter the user credentials you created for Wazuh. For URL and Port, enter you URL or IP and `55000`, then click **SAVE**.
+1. If everything is working correctly, you should have landed on the **Discover** page. Navigate to the **Wazuh** page using the left hand side menu. You will be immediately presented with the API configuration page. Underneath the **ADD NEW API** button, enter the user credentials you created for Wazuh. For URL and Port, enter you URL or IP and `55000`, then click **SAVE**.
 
 ## Where To Go From Here
 
-Your OSSEC Elastic Stack setup is now complete! At this point, you will want to customize and configure your OSSEC rules to better suit the needs of your environment. The Wazuh API contains pre-configured charts and queries, and more information on how to use them can be found in the official Wazuh documentation.
+Your OSSEC Elastic Stack setup is now complete! At this point, you will want to customize and configure your OSSEC rules to better suit the needs of your environment. The Wazuh API contains pre-configured charts and queries, and more information on how to use them can be found in the official [Wazuh documentation](https://documentation.wazuh.com/current/user-manual/index.html).

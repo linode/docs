@@ -7,7 +7,7 @@ og_description: "Learn how to use Longview, Linode's system data graphing servic
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['longview/', 'uptime/longview/']
-modified: 2018-05-17
+modified: 2018-11-20
 modified_by:
   name: Linode
 title: What is Longview and How to Use it
@@ -92,7 +92,7 @@ deb http://apt-longview.linode.com/ xenial main
 
         sudo mkdir /etc/linode/
 
-5.  Copy the API key from either the *Welcome to Longview!* modal window or the **Settings** tab of your Longview client's overview page in the Linode Manager. Put the key into a file, replacing key in the command below with your own.
+5.  Copy the API key from the **Settings** tab of your Longview client's overview page in the Linode Manager. Put the key into a file, replacing the key in the command below with your own.
 
         echo '266096EE-CDBA-0EBB-23D067749E27B9ED' | sudo tee /etc/linode/longview.key
 

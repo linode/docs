@@ -158,3 +158,9 @@ You can remove all access to these files with commands in one of the following f
 
     chmod 600 .msmtprc
     chmod g-rwx,o-rwx .fetchmail
+
+{{< community >}}
+* [How to set permissions for the webserver directory](https://www.linode.com/community/questions/8808/setting-ownership-and-permissions-for-webserver-directories)
+* [Permission issues with Ubuntu](https://www.linode.com/community/questions/6076/permission-issues-with-ubuntu-amp-wordpress-chown-fails)
+* [Issues with /var/www permissions](https://www.linode.com/community/questions/7302/varwww-permissions)
+{{</ community >}}

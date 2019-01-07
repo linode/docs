@@ -17,6 +17,8 @@ external_resources:
 - '[Pyinotify on Github](https://github.com/seb-m/pyinotify)'
 - '[Pyinotify API documentation](http://seb-m.github.com/pyinotify)'
 - '[Inotify manpage](http://www.kernel.org/doc/man-pages/online/pages/man7/inotify.7.html)'
+audiences: ["intermediate"]
+languages: ["python"]
 ---
 
 ![banner_image](Monitor_Filesystem_Events_with_Pyinotify_smg.jpg)
