@@ -6,7 +6,7 @@ description: Our guide to submitting support tickets and getting technical suppo
 keywords: ["support", "tech support", "tickets", "help desk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['support/','platform/support/']
-modified: 2018-12-31
+modified: 2019-01-07
 modified_by:
   name: Linode
 published: 2012-03-21
