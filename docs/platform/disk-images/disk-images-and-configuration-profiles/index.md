@@ -60,7 +60,7 @@ A new configuration profile will automatically be created when you make a disk t
 1.  Select a Linux distribution from the **Distribution** menu.
 
     {{< note >}}
-  You can install a customized Linux distribution on your disk by clicking **Deploying using StackScripts**. Some of the most popular StackScripts do things like install Apache, configure a firewall, and set up the WordPress.
+  You can install a customized Linux distribution on your disk by clicking on the **Deploying using StackScripts** link. Some of the most popular StackScripts do things like install Apache, configure a firewall, and set up WordPress.
     {{< /note >}}
 
 1.  Enter a size for the disk in the **Deployment Disk Size** field. The size must be smaller than the amount of storage space remaining in your Linode plan.
