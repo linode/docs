@@ -2,38 +2,38 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to use two-factor authentication and other security controls in the Linode Manager.'
+description: 'How to use two-factor authentication and other security controls in the Linode Cloud Manager.'
 og_description: 'This guide describes the security features of the Linode Manager, including two-factor authentication, IP address whitelisting, API access controls, forced password expiration, and more.'
 keywords: ["two-factor authentication", "password", "security", "Linode Manager", "token"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linode-manager-security/']
-modified: 2018-08-24
+modified: 2019-01-08
 modified_by:
   name: Linode
 published: 2013-05-02
-title: Linode Manager Security Controls
+title: Linode Cloud Manager Security Controls
 hiddenguide: true
 ---
 
-The [Linode Manager](https://manager.linode.com) is the gateway to all of your Linode products and services, and you should take steps to protect it from unauthorized access.
+The [Linode Cloud Manager](https://cloud.linode.com) is the gateway to all of your Linode products and services, and you should take steps to protect it from unauthorized access.
 
-![Linode Manager Security Controls](Linode_Manager_Security_Controls_smg.jpg)
+![Linode Cloud Manager Security Controls](Linode_Manager_Security_Controls_smg.jpg)
 
-This guide documents several of Linode Manager's features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, Linode Manager's built-in security tools can help.
+This guide documents several of the Linode Cloud Manager's features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, the Linode Cloud Manager's built-in security tools can help.
 
-Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, then [set up an IP address whitelist](#ip-address-whitelisting), and then [configure security event notifications](#security-event-notifications) for your Linode Manager account. You'll also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
+Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, and then [configure security event notifications](#security-event-notifications) for your Linode account. You'll also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
 
 ## Two-Factor Authentication
 
-Two-factor authentication increases the security of your Linode Manager account by requiring two forms of authentication: something you have, and something you know. You're already familiar with this concept if you've ever used a debit card at an ATM. The debit card is something you have, and the PIN access code is something you know. You need both the debit card and the PIN to access your bank account.
+Two-factor authentication increases the security of your Linode account by requiring two forms of authentication: something you have, and something you know. You're already familiar with this concept if you've ever used a debit card at an ATM. The debit card is something you have, and the PIN access code is something you know. You need both the debit card and the PIN to access your bank account.
 
 ![Diagram of two-factor authentication with SSH login.](two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
 
-If you enable this optional feature in the Linode Manager, you'll access your Linode Manager account using your smartphone as a physical token in addition to your username and password. This additional layer of security reduces the risk that an unauthorized individual will gain access to your Linode Manager account.
+If you enable this optional feature in the Linode Cloud Manager, you'll access your Linode account using your smartphone as a physical token in addition to your username and password. This additional layer of security reduces the risk that an unauthorized individual will gain access to your Linode account.
 
 ### Select a Token Application
 
-Before you enable two-factor authentication in the Linode Manager, select a token application for your smartphone. This guide will use Authy as an example, but you can use any application that supports the Time-based One-Time Password (TOTP) algorithm. For example, you can use any of the following applications:
+Before you enable two-factor authentication in the Cloud Manager, select a token application for your smartphone. This guide will use Authy as an example, but you can use any application that supports the Time-based One-Time Password (TOTP) algorithm. For example, you can use any of the following applications:
 
 * [Authy](https://authy.com/features/setup/) (iOS/Android/Chrome)
 * [Google Authenticator](http://support.google.com/accounts/bin/answer.py?hl=en&answer=1066447) (iOS/Android/BlackBerry)
@@ -47,9 +47,9 @@ Authy stores your authentication tokens (hashed for security) on their servers. 
 
 ### Enable Two-Factor Authentication
 
-Enable two-factor authentication to start using it with your Linode Manager account.
+Enable two-factor authentication to start using it with your Linode account.
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 2.  Select the **My Profile** link by clicking on your username at the top of the page:
 
    ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
@@ -67,7 +67,7 @@ Enable two-factor authentication to start using it with your Linode Manager acco
 
 9.  Tap **SCAN QR CODE**.
 
-10.  Point your device's camera at the barcode on your computer screen. The app creates a new token for your Linode Manager login automatically. It will be labeled **LinodeManager:user**. Change the account name if necessary, and press **Done**.
+10.  Point your device's camera at the barcode on your computer screen. The app creates a new token for your Cloud Manager login, automatically. It will be labeled **LinodeManager:user**. Change the account name if necessary, and press **Done**.
 
 11.  In the **Token** field of the Two-Factor Authentication form, enter the Linode Token, and click **Save**.
 
@@ -77,9 +77,9 @@ That's it! You've successfully enabled two-factor authentication and set up toke
 
 ### Log in with Two-Factor Authentication
 
-Now that you have set up two-factor authentication for your account, you'll need to have your token available whenever you log in to your account. Here's how to log in to the Linode Manager with two-factor authentication enabled:
+Now that you have set up two-factor authentication for your account, you'll need to have your token available whenever you log in to your account. Here's how to log in to the Linode Cloud Manager with two-factor authentication enabled:
 
-1.  Open the [Linode Manager](https://manager.linode.com) in your web browser.
+1.  Open the [Linode Cloud Manager](https://cloud.linode.com) in your web browser.
 
 2.  On your smartphone, open Authy, and then select your **LinodeManager:user** account.
 
@@ -89,7 +89,7 @@ Now that you have set up two-factor authentication for your account, you'll need
 
 4.  Enter your token, and then click **Authenticate**. Checking the box below the authentication option will add your computer to the trusted computer list for 30 days, and generate a confirmation email to the address on file for your account.
 
-You have successfully logged in to the Linode Manager using two-factor authentication.
+You have successfully logged in to the Linode Cloud Manager using two-factor authentication.
 
 <!--
 ### Scratch Code
@@ -112,9 +112,9 @@ Generating a one-time use scratch code is also recommended. In the event that yo
 
 ### Generate a New Key
 
-The Linode Manager allows you to generate a new secret key for your two-factor authentication token device. This is a good way to start using a new smartphone as your two-factor token device. Here's how to generate a new secret key:
+The Linode Cloud Manager allows you to generate a new secret key for your two-factor authentication token device. This is a good way to start using a new smartphone as your two-factor token device. Here's how to generate a new secret key:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 2.  Select the **My Profile** link by clicking on your username at the top of the page:
 
    ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
@@ -128,9 +128,9 @@ A new secret key and barcode will be generated for your account and displayed on
 
 ### Disable Two-Factor Authentication
 
-You can disable two-factor authentication for your Linode Manager account at any time. Here's how:
+You can disable two-factor authentication for your Linode account at any time. Here's how:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 2.  Select the **My Profile** link by clicking on your username at the top of the page:
 
    ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
@@ -139,11 +139,11 @@ You can disable two-factor authentication for your Linode Manager account at any
 4.  In the *Two-Factor Authentication (TFA)* section, toggle the *Enabled* box to disable Two-factor Authentication.
 5.  A confirmation window appears asking if you want to disable two-factor authentication. Click **Disable Two-factor Authentication**.
 
-You have successfully disabled the two-factor authentication feature for your Linode Manager account.
+You have successfully disabled the two-factor authentication feature for your Linode Cloud Manager account.
 
 ### Recovery Procedure
 
-If you lose your token and get locked out of the Linode Manager, email <support@linode.com> to regain access to your account.
+If you lose your token and get locked out of the Manager, email <support@linode.com> to regain access to your account.
 
 Should you need us to disable your Two-Factor Authentication, the following information is required:
 
@@ -160,7 +160,7 @@ The IP Address Whitelist feature protects your Linode Manager account from unaut
 The first step is enabling the IP address whitelist feature in the Linode Manager. Here's how:
 
 1.  Find your computer's or router's IP address.
-2.  Log in to the [Linode Manager](https://manager.linode.com).
+2.  Log in to the [Linode Manager](https://cloud.linode.com).
 2.  Select the **My Profile** link by clicking on your username at the top of the page:
 
    ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
@@ -187,7 +187,7 @@ Now that the IP address whitelist feature is enabled and you've added one or mor
 
 You can disable the IP address whitelist feature at any time. Here's how:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Manager](https://cloud.linode.com).
 2.  Select the **my profile** link.
 3.  Enter your password, and then click **Authenticate**.
 4.  Select the **Password & Authentication** tab.
@@ -209,7 +209,7 @@ By default, the Linode Manager automatically notifies you via email when any Lin
 
 You can enable and disable event notifications sent via email in the Linode Manager. This feature is enabled for all accounts by default, but you can disable it or reenable it at any time. Here's how:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Manager](https://cloud.linode.com).
 2.  Select the **My Profile** link by clicking on your username at the top of the page:
 
    ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
@@ -225,7 +225,7 @@ If the events email notification was enabled before you clicked the button, it i
 
 The event notifications for your Linode Manager account are also available as an RSS feed. The URL is displayed in the Linode Manager on your profile — you can add it to any RSS reader. You can also regenerate the URL. Here's how:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Manager](https://cloud.linode.com).
 2.  Select the **my profile** link.
 3.  Enter your password, and then click **Authenticate**.
 4.  Select the **Notifications** tab.
@@ -241,17 +241,17 @@ If you regenerated the URL for the RSS feed, you will need to update it in your 
 
 ## API Access
 
-The [Linode API](https://www.linode.com/api/) is a programmatic interface for many of the features available in the Linode Manager. It's an indispensable tool for developers, but it's also a potential attack vector. For this reason, the Linode Manager provides two security controls for your account's API key. First, you can generate a new API key if you suspect that your existing key has been compromised. And if you're not using the API key, you can remove access to it altogether.
+The [Linode API](https://www.linode.com/api/) is a programmatic interface for many of the features available in the Cloud Manager. It's an indispensable tool for developers, but it's also a potential attack vector. For this reason, the Linode Cloud Manager provides two security controls for your account's API key. First, you can generate a new API key if you suspect that your existing key has been compromised. And if you're not using the API key, you can remove access to it altogether.
 
 For details on generating and removing API keys, please see the [API Key](/docs/platform/api/api-key/) article.
 
 ## Next Steps
-If you've completed this guide, you've proactively taken steps to protect your Linode Manager account. But don't stop here! There are a couple other steps that some users should take to secure their Linode Manager accounts. Take some time and work through the following action items outlined in our other guides.
+If you've completed this guide, you've proactively taken steps to protect your Linode account. There are a couple of other steps that some users should take to secure their Linode accounts. Take some time and work through the following action items outlined in our other guides.
 
 ### Configure User Accounts
 
-Organizations that have multiple individuals accessing the same Linode Manager account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain areas of the control panel. This is useful for groups that need to grant all team members access to the Linode Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information. For more information, see our guide on [Accounts and Passwords](/docs/platform/accounts-and-passwords).
+Organizations that have multiple individuals accessing the same Cloud Manager account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain areas of the control panel. This is useful for groups that need to grant all team members access to the Cloud Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information. For more information, see our guide on [Accounts and Passwords](/docs/platform/accounts-and-passwords).
 
 ### Force Password Expirations
 
-Some organizations have policies that require users to change their passwords every so often. The Linode Manager can be configured to force users to change their passwords every 1, 3, 6, or 12 months. For more information, see the documentation on [Passwords in the Linode Manager](/docs/platform/accounts-and-passwords/#passwords).
+Some organizations have policies that require users to change their passwords every so often. The Linode Cloud Manager can be configured to force users to change their passwords every 1, 3, 6, or 12 months.
