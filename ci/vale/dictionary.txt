@@ -183,6 +183,7 @@ copyto
 coreutils
 corporateclean
 cpanminus
+cpu
 cqlsh
 cqlshrc
 craftbukkit
