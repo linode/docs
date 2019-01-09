@@ -5,14 +5,14 @@ author:
 description: Our guide to automating server builds with the Linode Manager
 keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-04-15
+modified: 2019-01-08
 modified_by:
   name: Alex Fornuto
 published: 2013-06-28
 title: Automating Server Builds
 ---
 
-If you run a large website that requires multiple servers, or have a general interest in server automation, you may want to automate your server builds. You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden image* that can be cloned to multiple Linodes with the intention of eliminating server discrepancies.
+If you run a large website that requires multiple servers, or have a general interest in server automation, you may want to automate your server builds. You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden image* that can be cloned to multiple Linodes with the intention of eliminating configuration drift.
 
 Server configuration can also be automated through [Stackscripts](https://www.linode.com/stackscripts). View the [Stackscripts](/docs/platform/stackscripts/) guide for more information.
 
@@ -24,7 +24,7 @@ It is recommended that you take steps to automate the server-provisioning proces
 
 ## Golden Disk
 
-The idea behind a golden disk is simple: Create the perfect image and then save it for cloning to other servers. To get started, set up a new Linode, install the desired packages, configure the settings, and then test the configuration. Once satisfied with the server configuration, shut down the Linode, duplicate the disk, and then clone it to all of your other Linodes, either manually or though [the Linode API](http://www.linode.com/api/linode/linode.clone).
+The idea behind a golden disk is simple: create the desired image and then save it for cloning to other servers. To get started, set up a new Linode, install the desired packages, configure the settings, and then test the configuration. Once satisfied with the server configuration, shut down the Linode, duplicate the disk, and then clone it to all of your other Linodes, either manually or though [the Linode API](http://www.linode.com/api/linode/linode.clone).
 
 {{< note >}}
 Be aware that certain files like `/etc/hosts`, `/etc/hostname`, and static networking configurations may need to be modified for individual Linodes.
@@ -35,7 +35,7 @@ Be aware that certain files like `/etc/hosts`, `/etc/hostname`, and static netwo
 There are several places to store a golden disk:
 
 -   **Linode Images:** [Linode Images](/docs/platform/disk-images/linode-images/) allows you to take snapshots of your disks, and then deploy them to any Linode under your account.
--   **Linode Backup Service:** After enabling the Linode Backup Service, you can [make a manual backup](/docs/platform/linode-backup-service/#take-a-manual-snapshot) of your Linode (called a "snapshot"). This snapshot can function as your golden disk. Instead of cloning a disk to new Linodes, you can simply restore them from the snapshot backup.
+-   **Linode Backup Service:** After enabling the Linode Backup Service, you can [make a manual backup](/docs/platform/linode-backup-service/#take-a-manual-snapshot) of your Linode (called a *snapshot*). This snapshot can function as your golden disk. Instead of cloning a disk to new Linodes, you can simply restore them from the snapshot backup.
 -   **Dedicated Linode:** Boot the Linode, make the desired changes, and clone the disk again.
 -   **Existing Linode:** You can clone from an existing Linode, but you will need to power down the Linode to ensure a consistent copy.
 -   **Different Computer:** You can transfer the disk to another computer. For instructions, see our guide on [Copying a Disk Over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/).
@@ -71,7 +71,7 @@ A dedicated Linode can be used to store and maintain a golden disk. It can be sh
 
 ### Existing Linode
 
-You can create and store a golden disk using an *existing Linode*, with some drawbacks: All of the disks stored on the Linode will need to be resized to fit within your target Linode's allocated storage space, and you will have to shut down the Linode to ensure an accurate clone, which will result in downtime.
+You can create and store a golden disk using an *existing Linode*, with some drawbacks: all of the disks stored on the Linode will need to be resized to fit within your target Linode's allocated storage space, and you will have to shut down the Linode to ensure an accurate clone, which will result in downtime.
 
 1.  Use the Linode's existing disk, or [create a new disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed).
 2.  Install all necessary packages and configure the system settings, if you haven't already done so.
@@ -89,16 +89,64 @@ After you restore or clone a disk to another Linode, you may need to change its 
 
 ## Third-Party Tools
 
-Golden disks are capable of handling automated server builds for most individuals and small businesses, but if you work for a large business that manages dozens of Linodes, you may need to turn to a third-party configuration management tool such as:
+Golden disks are capable of handling automated server builds for most individuals and small businesses, but if you work for a large business that manages dozens of Linodes, you may need to turn to third-party configuration management and orchestration tools, such as:
 
 -   **Puppet:** An open source configuration management tool that manages systems declaratively. It can automates IT tasks like application configuration, patch management, and even infrastructure audit and compliance. See the following Puppet guides:
 
     - [Basic Puppet Setup and Configuration](/docs/websites/puppet/basic-puppet-setup-and-configuration/)
     - [Manage and Automate Systems Configuration with Puppet](/docs/websites/puppet/manage-and-automate-systems-configuration-with-puppet/)
+    - [Use Puppet Modules to Create a LAMP Stack](/docs/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/)
+    - [Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04](/docs/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/)
 
--   **Chef:** An open source configuration management tool that allows you to "turn your infrastructure into code." See the [Chef website](https://www.chef.io/) for more information. The [knife Linode](https://github.com/chef/knife-linode) subcommand can also be used to manage Linodes with Chef.
+-   **Chef:** An open source configuration management tool used to turn your infrastructure into code. See the [Chef website](https://www.chef.io/) for more information. The [knife Linode](https://github.com/chef/knife-linode) subcommand can also be used to manage Linodes with Chef. See the following Chef guides to get started:
 
--   **Ansible:** A "radically simple" open source platform for configuring and managing systems. It works by connecting to your systems via SSH — it doesn't install anything on the remote systems. See the [AnsibleWorks website](http://www.ansible.com/) for more information. Read more about the [Linode Module from Ansible](http://docs.ansible.com/ansible/latest/linode_module.html) in the official documentation.
+    {{< note >}}
+Knife Linode is based on Linode's deprecated APIv3.
+    {{</ note >}}
+
+    - [A Beginner's Guide to Chef](https://linode.com/docs/applications/configuration-management/beginners-guide-chef/)
+    - [Creating Your First Chef Cookbook](/docs/applications/configuration-management/creating-your-first-chef-cookbook/)
+    - [Install a Chef Server Workstation on Ubuntu 18.04](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/)
+
+-   **Ansible:** An open source platform for configuring and managing systems. It works by connecting to your systems via SSH — it doesn't install anything on the remote systems. See the [AnsibleWorks website](http://www.ansible.com/) for more information. Read more about the [Linode Module from Ansible](http://docs.ansible.com/ansible/latest/linode_module.html) in the official documentation. To start using Ansible, check out the following guides:
+
+    {{< note >}}
+The Linode Module from Ansible is based on Linode's deprecated APIv3.
+    {{</ note >}}
+
+    - [Learn How to Install Ansible and Run Playbooks](/docs/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/)
+    - [Automatically Configure Servers with Ansible and Playbooks](/docs/applications/configuration-management/automatically-configure-servers-with-ansible-and-playbooks/)
+
+- **Salt:** Salt (also referred to as SaltStack) is a Python-based configuration management and orchestration system. Salt uses a master/client model in which a dedicated Salt master server manages one or more Salt minion servers. To learn more about Salt, see the following guides:
+
+    - [A Beginner's Guide to Salt](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-salt/)
+    - [Getting Started with Salt - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/)
+    - [SaltStack Command Line Reference](/docs/applications/configuration-management/salt-command-line-reference/)
+    - [Introduction to Jinja Templates for Salt](/docs/applications/configuration-management/introduction-to-jinja-templates-for-salt/)
+    - [Test Salt States Locally with KitchenSalt](/docs/applications/configuration-management/test-salt-locally-with-kitchen-salt/)
+    - [Secrets Management with Salt](/docs/applications/configuration-management/secrets-management-with-salt/)
+    - [Use and Modify Official SaltStack Formulas](/docs/applications/configuration-management/use-and-modify-official-saltstack-formulas/)
+    - [Use Salt States to Configure a LAMP Stack on a Minion](/docs/applications/configuration-management/use-salt-states-to-configure-a-lamp-stack-on-a-minion/)
+    - [Monitoring Salt Minions with Beacons](/docs/applications/configuration-management/monitoring-salt-minions-with-beacons/)
+    - [Create a Salt Execution Module](/docs/applications/configuration-management/create-a-salt-execution-module/)
+    - [Automate Static Site Deployments with Salt, Git, and Webhooks](/docs/applications/configuration-management/automate-a-static-site-deployment-with-salt/)
+    - [Use Salt States to Create LAMP Stack and Fail2ban Across Salt minions](/docs/applications/configuration-management/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/)
+    - [Configure and Use Salt Cloud and Cloud Maps to Provision Systems](/docs/applications/configuration-management/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/)
+
+- **Terraform:** Terraform by HashiCorp is an orchestration tool that allows you to represent your Linode instances and other resources with declarative code inside configuration files, instead of manually creating those resources via the Linode Manager or API. This practice is referred to as Infrastructure as Code, and Terraform is a popular example of this methodology.
+
+    {{< note >}}
+The Terraform Linode provider is based on [Linode's APIv4](https://developers.linode.com/api/v4).
+    {{</ note >}}
+
+    - [A Beginner's Guide to Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/)
+    - [Introduction to HashiCorp Configuration Language (HCL)](/docs/applications/configuration-management/introduction-to-hcl/)
+    - [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)
+    - [Import Existing Infrastructure to Terraform](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/)
+    - [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/)
+    - [Create a NodeBalancer with Terraform](/docs/applications/configuration-management/create-a-nodebalancer-with-terraform/)
+    - [Deploy a WordPress Site Using Terraform and Linode StackScripts](/docs/applications/configuration-management/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/)
+    - [Create a Terraform Module](/docs/applications/configuration-management/create-terraform-module/)
 
 There are plenty of other third-party configuration management tools to be used should the above options not suit your needs.
 
