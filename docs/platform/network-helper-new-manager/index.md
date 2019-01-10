@@ -48,7 +48,7 @@ When Network Helper is enabled globally, all new Linodes created on your account
 
 1. Click the **Save** button.
 
-### Singluar (Per-Linode)
+### Single (Per-Linode)
 
 1.  Click on **Linodes** in the left sidebar of the Linode Cloud Manager.
 
