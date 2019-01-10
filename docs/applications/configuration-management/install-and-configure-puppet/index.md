@@ -2,7 +2,7 @@
 author:
     name: Elle Krout
     email: ekrout@linode.com
-description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu or CentOS servers.'
+description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu and CentOS servers.'
 keywords: ["puppet installation", "configuration change management", "server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/puppet/basic-puppet-setup-and-configuration/','websites/puppet/manage-and-automate-systems-configuration-with-puppet/','applications/puppet/set-up-puppet-master-agent/','applications/puppet/install-and-configure-puppet/']
@@ -48,25 +48,10 @@ To check your hostname, run `hostname` and to check your FQDN, run `hostname -f`
 
 1.  Download the Puppet repository, update your system packages, and install `puppetserver`:
 
-        wget https://apt.puppetlabs.com/puppet6-release-bionic.deb
-        sudo dpkg -i puppet6-release-bionic.deb
+        wget https://apt.puppetlabs.com/puppet-release-bionic.deb
+        sudo dpkg -i puppet-release-bionic.deb
         sudo apt update
-
-        sudo apt-get install puppetserver
-
-    {{< note >}}
-If you wish to run another Linux distribution as your master server, the initial `.deb` file can be substituted for another distribution based on the following formats:
-
-**Red Hat-based systems:**
-
-`wget https://yum.puppet.com/<PLATFORM_VERSION>/<PLATFORM_NAME>-release-<OS ABBREVIATION>-<OS VERSION>.noarch.rpm`
-
-**Debian-based systems:**
-
-`wget 	https://apt.puppet.com/<PLATFORM_VERSION>-release-<VERSION CODE NAME>.deb`
-
-Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://puppet.com/docs/puppetserver/6.1/install_from_packages.html) or our guide to [package management](/docs/tools-reference/linux-package-management/).
-{{< /note >}}
+        sudo apt install puppetserver
 
 <!--
 
@@ -109,18 +94,16 @@ dns_alt_names=puppet,puppet.example.com
 
 ### Install Puppet Agent
 
-On agent nodes running **Ubuntu 18.04**, use this command to install `puppet-agent`:
+On your agent node running **Ubuntu 18.04**, use these commands to install `puppet-agent`:
 
-    wget https://apt.puppetlabs.com/puppet6-release-bionic.deb
-    sudo dpkg -i puppet6-release-bionic.deb
+    wget https://apt.puppetlabs.com/puppet-release-bionic.deb
+    sudo dpkg -i puppet-release-bionic.deb
     sudo apt update
+    sudo apt install puppet-agent
 
-    sudo apt-get install puppet-agent
+On the agent node running **CentOS 7**, follow these steps:
 
-On agent nodes running **CentOS 7** or other Red Hat systems, follow these steps:
-
-    rpm -ivh sudo rpm -Uvh https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm
-
+    sudo rpm -Uvh https://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm
     yum install puppet-agent
 
 ### Configure Puppet Agent
