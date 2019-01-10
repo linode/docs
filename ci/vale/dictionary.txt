@@ -1006,6 +1006,7 @@ pty
 pubkey
 publickey
 puppetd
+puppetlabs
 puppetmaster
 puttygen
 pv
