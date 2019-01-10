@@ -108,7 +108,7 @@ Below are example network configuration files for a Debian 9 Linode with Network
 # current network configuration. If you need to modify this file, please
 # first disable the 'Auto-configure Networking' setting within your Linode's
 # configuration profile:
-#  - https://manager.linode.com/linodes/config/LT1?id=13561415
+#  - https://manager.linode.com/linodes/config/lin1?id=13561415
 #
 # For more information on Network Helper:
 #  - https://www.linode.com/docs/platform/network-helper
@@ -139,7 +139,7 @@ iface eth0 inet static
 # current network configuration. If you need to modify this file, please
 # first disable the 'Auto-configure Networking' setting within your Linode's
 # configuration profile:
-#  - https://manager.linode.com/linodes/config/LT1?id=13561415
+#  - https://manager.linode.com/linodes/config/lin1?id=13561415
 #
 # For more information on Network Helper:
 #  - https://www.linode.com/docs/platform/network-helper
