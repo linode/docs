@@ -6,7 +6,7 @@ description: 'A look into Chef''s primary components, features, and configuratio
 keywords: ["chef", "automation", "chefdk", "chef server", "chef development kit", "cookbooks", "beginners", "server automation", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['applications/chef/beginners-guide-chef/']
-modified: 2019-01-09
+modified: 2019-01-11
 modified_by:
   name: Linode
 published: 2015-06-10
@@ -45,7 +45,7 @@ The Chef Server itself is made up of several components that help it to efficien
 
 ### Bookshelf
 
-To store cookbooks and related files and templates, the Chef server uses a *Bookshelf* that operates as a versioned repository(generally located at `/var/opt/opscode/bookshelf`; full root access is needed). When a cookbook is uploaded to the Chef server, the new version of the cookbook is compared to the one already stored; if there are changes, a new version is stored. The Chef server only stores one copy of a file or template, meaning if resources are shared between cookbooks and cookbook versions, they will not be stored multiple times.
+To store cookbooks and related files and templates, the Chef server uses a *Bookshelf* that operates as a versioned repository (generally located at `/var/opt/opscode/bookshelf`; full root access is needed). When a cookbook is uploaded to the Chef server, the new version of the cookbook is compared to the one already stored; if there are changes, a new version is stored. The Chef server only stores one copy of a file or template, meaning if resources are shared between cookbooks and cookbook versions, they will not be stored multiple times.
 
 ## Workstations
 
@@ -225,4 +225,4 @@ Resources are written in Ruby and defined in recipe files. Resources must contai
 
 ### Templates
 
-Templates are embedded Ruby files (.erb) that are used to dynamically create static text files. To use a template within a cookbook, you must declare a template resource in a recipe and include a corresponding `.erb` template file in a `template` subdirectory. Your template resource can contain variables that will then be used by the template to dynamically provide those values based on a nodes particular context.
+Templates are embedded Ruby files (`.erb`) that are used to dynamically create static text files. To use a template within a cookbook, you must declare a template resource in a recipe and include a corresponding `.erb` template file in a `template` subdirectory. Your template resource can contain variables that will then be used by the template to dynamically provide those values based on a nodes particular context.
