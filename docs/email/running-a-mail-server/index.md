@@ -133,6 +133,8 @@ An SSL certificate encrypts connections to your mail server. It's possible to ru
 
 Any type of SSL certificate will work, but some certificates have different degrees of trustworthiness for your users. If you want the highest level of trustworthiness, you should [purchase a signed SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate/) from a reputable company.
 
+You can set up an free and automatically renewing certificate from [LetsEncrypt](https://letsencrypt.org/).
+
 You can also use a free self-signed certificate if you are comfortable with the warnings it generates. You can make your own [self-signed SSL certificate](/docs/security/ssl/create-a-self-signed-tls-certificate/), or, if you're following our recommended build, you can use the one that comes with Dovecot by default.
 
 ### Software Installation
