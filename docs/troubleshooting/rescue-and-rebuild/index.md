@@ -6,7 +6,7 @@ description: 'Our guide to rescuing and rebuilding your Linode.'
 keywords: ["rescue", "rebuild"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['rescue-and-rebuild/','troubleshooting/finnix-rescue-mode/']
-modified: 2016-08-18
+modified: 2019-01-14
 modified_by:
   name: Linode
 published: 2012-05-31
@@ -130,7 +130,7 @@ The Finnix recovery distribution does not automatically start an SSH server, but
 2.  Enter the password for the `root` user.
 3.  Start the SSH server by entering the following command:
 
-        /etc/init.d/ssh start
+        service ssh start
 
 Now you can access mounted disks with an SFTP client by using the `root` user and the password you just set. For instructions on connecting with an SFTP client, see the [File Transfer reference manuals](/docs/tools-reference/file-transfer/). For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/).
 
