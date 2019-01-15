@@ -12,7 +12,7 @@ modified_by:
 title: 'Install a Chef Server Workstation on Ubuntu 18.04'
 ---
 
-[Chef](http://www.chef.io) is a Ruby based configuration management tool used to define infrastructure as code. This enables users to automate the management of many *nodes* and maintain consistency across all nodes. *Recipes* declare the desired state for managed nodes and are created on a user's *workstation* using the *Chef Workstation* package. Your recipes are distributed across nodes via a *Chef server*. A *Chef client*, installed on each node, is in charge of applying the recipe to its corresponding node.
+[Chef](http://www.chef.io) is a Ruby based configuration management tool used to define infrastructure as code. This enables users to automate the management of many *nodes* and maintain consistency across those nodes. *Recipes* declare the desired state for managed nodes and are created on a user's *workstation* using the *Chef Workstation* package. Your recipes are distributed across nodes via a *Chef server*. A *Chef client*, installed on each node, is in charge of applying the recipe to its corresponding node.
 
 [![chef_graph-small.png](chef-graph-small.png)](chef-graph.png "Illustration showing that workstations talk to Nodes via the Chef Server")
 
@@ -142,24 +142,24 @@ Authentication between the Chef server and workstation and/or nodes is completed
 
 ### Add Version Control
 
-The workstation is used to create, download, and edit cookbooks and other related files. You should track any changes made to these files with version control software, like Git. The Chef Workstation adds the Git component to your workstation and initializes a Git repository in the directory where the `chef-repo` was generated. Configure Git to add your username and email, and to add and commit any new files created in the steps above.
+The workstation is used to create, download, and edit cookbooks and other related files. You should track any changes made to these files with version control software, like Git. The Chef Workstation adds the Git component to your workstation and initializes a Git repository in the directory where the `chef-repo` was generated. Configure Git by adding your username and email, and add and commit any new files created in the steps above.
 
 1.  Configure Git by adding your username and email, replacing the needed values:
 
         git config --global user.name yourname
         git config --global user.email user@email.com
 
-1.  Add the `.chef` directory to the `.gitignore` file:
+2.  Add the `.chef` directory to the `.gitignore` file:
 
         echo ".chef" > ~/chef-repo/.gitignore
 
-1.  Move into the `~/chef-repo` directory, if you are not already there and add and commit all existing files:
+3.  Move into the `~/chef-repo` directory, if you are not already there and add and commit all existing files:
 
         cd ~/chef-repo
         git add .
         git commit -m "initial commit"
 
-1.  Make sure the directory is clean:
+4.  Make sure the directory is clean:
 
         git status
 
@@ -259,9 +259,9 @@ If you encounter any `401 Unauthorized` errors ensure that your `ORGANIZATION.pe
 
 ## Download a Cookbook (Optional)
 
-When using Chef, the Chef client should periodically run on your nodes and pull down any changes pushed to the Chef server from your workstation. You will also want the `validation.pem` file that is uploaded to your node upon bootstrap to be deleted for security purposes. While these steps can be performed manually, it is often easier and more efficient to set it up as a cookbook.
+When using Chef, the Chef client should periodically run on your nodes and pull down any changes pushed to the Chef server from your workstation. You will also want the `validation.pem` file that is uploaded to your node upon bootstrap to be deleted for security purposes. While these steps can be performed manually, it is often easier and more efficient to set them up as a cookbook.
 
-This section is optional, but provides instructions on downloading a cookbook to your workstation, pushing it to a server, and includes the skeleton of a basic cookbook to expand on and experiment with.
+This section is optional, but provides instructions on downloading a cookbook to your workstation and pushing it to a server, and includes the skeleton of a basic cookbook to expand on and experiment with.
 
 1. From your *workstation*, navigate to your `~/chef-repo/.chef` directory:
 
