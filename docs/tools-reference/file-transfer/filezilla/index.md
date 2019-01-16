@@ -29,7 +29,7 @@ external_resources:
 
 ## Install FileZilla
 
-1.  Download FileZilla [here](https://filezilla-project.org/download.php) for MacOS and Windows. Use your distribution's package manager to install FileZilla on Linux:
+1.  Download FileZilla [here](https://filezilla-project.org/download.php) for macOS and Windows. Use your distribution's package manager to install FileZilla on Linux:
 
      - CentOS:
 
@@ -53,10 +53,10 @@ external_resources:
 
 ## FileZilla with Public Key Authentication
 
-If you followed our [Securing Your Server](/docs/security/securing-your-server) guide, you won't be able to connect to your Linode using a password. If you are using Linux or MacOS, the SSH keypair generated while following that guide will be automatically used for authentication.
+If you followed our [Securing Your Server](/docs/security/securing-your-server) guide, you won't be able to connect to your Linode using a password. If you are using Linux or macOS, the SSH keypair generated while following that guide will be automatically used for authentication.
 
 {{< note >}}
-If you are using MacOS, the passphrase for your key will need to be stored in your keychain to successfully connect using an SSH keypair. FileZilla will not be able to use a key that was generated without a passphrase to connect to your Linode.
+If you are using macOS, the passphrase for your key will need to be stored in your keychain to successfully connect using an SSH keypair. FileZilla will not be able to use a key that was generated without a passphrase to connect to your Linode.
 {{< /note >}}
 
 If you are using Windows, you'll need to follow a few additional steps to enable key based authentication. The instructions below assume that you have already completed the guide for [generating your SSH key with Putty](/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
