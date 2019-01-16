@@ -5,7 +5,7 @@ author:
 description: "Learn how to download a local copy of your Linode backups."
 keywords: ["backup", "backups", "rsync", "restore", "local"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-08
+modified: 2019-01-15
 modified_by:
   name: Linode
 published: 2018-08-08

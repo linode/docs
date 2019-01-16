@@ -15,7 +15,7 @@ headless: true
 
 ## Secure Copy Protocol (SCP)
 
-You can use SCP to retrieve a specific directory or file via the command-line. SCP is installed by default on most MacOS and Linux systems, and is available with [Cygwin or PuTTY](/docs/networking/ssh/using-ssh-on-windows) for Windows.
+You can use SCP to retrieve a specific directory or file via the command-line. SCP is installed by default on most macOS and Linux systems, and is available with [Cygwin or PuTTY](/docs/networking/ssh/using-ssh-on-windows) for Windows.
 
 -   The syntax for using SCP to copy a file from your Linode into a directory on another computer is:
 

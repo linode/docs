@@ -13,7 +13,7 @@ published: 2012-06-04
 title: "Copy a Disk Over SSH"
 ---
 
-![Copy a Disk Over SSH](copying_a_disk_over_ssh_smg.png "Copy a Disk Over SSH")
+<!-- ![Copy a Disk Over SSH](copying_a_disk_over_ssh_smg.png "Copy a Disk Over SSH")-->
 
 Piping SSH commands to utilities such as `dd`, `gzip`, or `rsync` is an easy way to copy a Linode's data into a single file for later extraction. This can effectively back up your Linode's disk or migrate your installed system among Linodes.
 

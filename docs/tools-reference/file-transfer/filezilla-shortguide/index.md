@@ -16,7 +16,7 @@ headless: true
 
 FileZilla is a popular free and open source FTP, FTPS, and SFTP client which has a GUI but can also take CLI arguments. In contrast to to SCP, SFTP can list directory contents, create or delete files, and resume interrupted file transfers.
 
- 1.  Download FileZilla [here](https://filezilla-project.org/download.php) for MacOS and Windows. Use your distribution's package manager to install FileZilla on Linux:
+ 1.  Download FileZilla [here](https://filezilla-project.org/download.php) for macOS and Windows. Use your distribution's package manager to install FileZilla on Linux:
 
      - CentOS:
 
