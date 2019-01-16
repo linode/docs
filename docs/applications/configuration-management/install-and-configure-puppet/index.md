@@ -7,7 +7,7 @@ keywords: ["puppet installation", "configuration change management", "server aut
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/puppet/basic-puppet-setup-and-configuration/','websites/puppet/manage-and-automate-systems-configuration-with-puppet/','applications/puppet/set-up-puppet-master-agent/','applications/puppet/install-and-configure-puppet/']
 deprecated: true
-deprecated_link: 'applications/configuration-management/getting-started-with-puppet-basic-installation-and-setup/'
+deprecated_link: 'applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/'
 modified: 2019-01-15
 modified_by:
     name: Linode
