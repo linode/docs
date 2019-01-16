@@ -16,12 +16,12 @@ title: Automating Server Builds
 
 Manually configuring systems is a good way to learn, but it's also a time consuming process which is prone to human error. There are multiple ways to automate deploying new systems and various degrees to which that automation can be applied.
 
-For example, if your needs are relatively straightforward and concise, a shell script or Linode [StackScript](https://www.linode.com/stackscripts) could be all that is necessary. For more complex solutions, configuration orchestration and management exist to deploy and manage fleets of systems and services across multiple regions, networks, and service providers.
+For example, if your needs are relatively straightforward and concise, a shell script or Linode [StackScript](https://www.linode.com/stackscripts) could be all that is necessary. For more complex solutions, configuration orchestration and management exists to deploy and manage fleets of systems and services across multiple regions, networks, and service providers.
 
 
 ## Working with a Golden Image
 
-Using a *golden image* as a configuration base is often a starting point in cloud environment automation. This helps quickly deploy multiple systems which are exactly identical. Across the industry, golden images are also referred to as *master*, *base*, or *clone* images, among other terms. Irrespective of name, the idea behind a golden disk is simple: create the desired image and preserve it for cloning/deploying to other servers, thereby simplifying the deployment process and eliminating configuration gap.
+Using a *golden image* as a configuration base is a frequent starting point in cloud environment automation. This helps quickly deploy multiple systems which are exactly identical. Across the industry, golden images are also referred to as *master*, *base*, or *clone* images, among other terms. Irrespective of name, the idea behind a golden disk is simple: create the desired image and preserve it for cloning/deploying to other servers, thereby simplifying the deployment process and eliminating configuration gap.
 
 ![Cloning your Linode disk.](1303-image_cloning_2.jpg)
 
@@ -33,7 +33,7 @@ Using a *golden image* as a configuration base is often a starting point in clou
 1. Shut down the Linode and either:
     - [Duplicate the disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#duplicating-a-disk).
     - Alternatively, [take a snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot) of the disk with Linode Backups.
-1. Store your golden image; this can be done in a variety of ways. A few examples are:
+1. Store your golden image. This can be done in a variety of ways. A few examples are:
   - As a snapshot using [Linode Images](/docs/platform/disk-images/linode-images/) or [Linode Backups](/docs/platform/linode-backup-service/#take-a-manual-snapshot).
   - In a [version control](/docs/development/version-control/introduction-to-version-control/) system running on a remote or local server.
   - On [local](/docs/platform/disk-images/copying-a-disk-image-over-ssh/) storage.
