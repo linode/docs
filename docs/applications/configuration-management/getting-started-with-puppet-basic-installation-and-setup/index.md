@@ -1,15 +1,14 @@
 ---
 author:
-    name: Elle Krout
-    email: ekrout@linode.com
+    name: Linode
+    email: docs@linode.com
 description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu and CentOS servers.'
 keywords: ["puppet installation", "configuration change management", "server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/puppet/basic-puppet-setup-and-configuration/','websites/puppet/manage-and-automate-systems-configuration-with-puppet/','applications/puppet/set-up-puppet-master-agent/','applications/puppet/install-and-configure-puppet/']
 modified: 2019-01-15
 modified_by:
     name: Linode
-published: 2015-09-17
+published: 2019-01-15
 title: Getting Started with Puppet - Basic Installation and Setup
 external_resources:
     - '[Puppet Labs](https://puppetlabs.com/)'
