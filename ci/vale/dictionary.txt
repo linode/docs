@@ -177,6 +177,7 @@ configtest
 configurability
 containerised
 convolutional
+cookstyle
 coose
 copyfrom
 copyto
@@ -215,6 +216,7 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+databags
 datacenter
 datadir
 dataset
@@ -384,6 +386,7 @@ flamegraph
 flamegraphs
 flatpress
 flyspray
+foodcritic
 fortran
 fpm
 fragging
