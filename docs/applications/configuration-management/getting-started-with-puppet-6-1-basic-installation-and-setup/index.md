@@ -32,7 +32,7 @@ Puppet deployments can range from small groups of servers up to enterprise-level
 After installation, the next section will show you how to secure these servers via Puppet. This section will demonstrate core features of the Puppet language.
 
 {{< note >}}
-Most guides will instruct you to follow the [How to Secure your Server](/docs/security/securing-your-server/) guide before proceeding. Because Puppet will be used to perform this task, you shoud begin this guide as the `root` user. A limited user with administrative privileges will be configured via Puppet in later steps.
+Most guides will instruct you to follow the [How to Secure your Server](/docs/security/securing-your-server/) guide before proceeding. Because Puppet will be used to perform this task, you should begin this guide as the `root` user. A limited user with administrative privileges will be configured via Puppet in later steps.
 {{< /note >}}
 
 ## Before You Begin

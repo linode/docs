@@ -12,7 +12,6 @@ modified: 2019-01-15
 modified_by:
     name: Linode
 published: 2015-09-17
-
 title: Install and Configure Puppet
 external_resources:
     - '[Puppet Labs](https://puppetlabs.com/)'
