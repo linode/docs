@@ -703,6 +703,7 @@ luminus
 lxml
 lzma
 lzopio
+macos
 magento
 maildir
 maildirs

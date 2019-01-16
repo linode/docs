@@ -122,6 +122,10 @@ The Linode Backup Service initiates the manual snapshot. Be patient. Creating th
 
 {{< content "restore-backup-image-short" >}}
 
+### Restore to a Linode in a Different Data Center
+
+To restore a backup to a different data center from the source Linode's location, first restore to a Linode in the same data center, creating a new one if necessary. Once the restore is complete, use the [Clone](/docs/migrate-to-linode/disk-images/clone-your-linode/) tab to copy the disk(s) to a Linode in a different data center.
+
 ## Boot from a Backup
 
 After the backup has been restored, the disks and configuration profiles will be available to the Linode you selected. Select the restored configuration profile and reboot your Linode to start up from the restored disks. Here's how:

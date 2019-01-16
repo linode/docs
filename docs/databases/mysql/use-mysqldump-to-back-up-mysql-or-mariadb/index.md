@@ -19,7 +19,9 @@ external_resources:
 ![Use mysqldump to Back Up MySQL or MariaDB](mysqldump-backup-title.jpg "Use mysqldump to Back Up MySQL or MariaDB")
 
 
-[MySQL](http://www.mysql.com/) and [MariaDB](https://mariadb.com/) include the [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) utility to simplify the process to create a backup of a database or system of databases. Using `mysqldump` is a form of *logical backup*, as opposed to a [*physical backup*](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/), which is a copy of the filesystem structure which contains your data.
+[MySQL](http://www.mysql.com/) and [MariaDB](https://mariadb.com/) include the [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) utility to simplify the process to create a backup of a database or system of databases. Using `mysqldump` creates a *logical backup*. **You can only use this tool if your database process is accessible and running.**
+
+If your database isn't accessible for any reason, you can instead create a [*physical backup*](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/), which is a copy of the filesystem structure which contains your data.
 
 The instructions in this guide apply to both MySQL and MariaDB. For simplification, the name MySQL will be used to apply to either.
 

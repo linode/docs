@@ -2,25 +2,40 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Accessing remote servers with PuTTY, a free and open source SSH client for Windows and UNIX systems.'
-keywords: ["putty", "putty ssh", "windows ssh client"]
+description: 'Accessing remote servers with SSH on Windows systems.'
+keywords: ["ssh", "windows", "putty", "cygwin", "openssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['networking/using-putty/']
-modified: 2018-08-20
+aliases: ['networking/using-putty/','networking/ssh/ssh-connections-using-putty-on-windows/']
+modified: 2019-01-14
 modified_by:
   name: Linode
 published: 2009-09-20
-title: SSH Connections Using PuTTY on Windows
-external_resources:
- - '[PuTTY Documentation](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)'
- - '[Xming Manual](http://www.straightrunning.com/XmingNotes/manual.php)'
+title: Using SSH on Windows
 ---
 
-![Using PuTTY](using-putty.png "Using PuTTY")
+<!-- ![Using PuTTY](using-putty.png "Using PuTTY")-->
+
+## OpenSSH
+As of late 2018, [OpenSSH](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_overview) is included with some versions of Windows.
+
+## Cygwin
+
+Cygwin is a utility for running popular Linux and BSD tools on Windows. It's often used as an SSH client and/or server solution on Windows systems.
+
+1.  Download and install [Cygwin](https://www.cygwin.com/).
+
+1.  Search for the OpenSSH package and install it.
+
+    ![Cygwin install OpenSSH](cygwin-intsall-openssh.png "Install OpenSSH with Cygwin")
+
+1. You should then have SSH capability.
+
+    ![Cygwin OpenSSH Options](cygwin-openssh-options.png "Cygwin OpenSSH Options")
+
+
+## PuTTY
 
 PuTTY is a free and open source SSH client for Windows and UNIX systems. It provides easy connectivity to any server running an SSH daemon, so you can work as if you were logged into a console session on the remote system.
-
-## Install PuTTY and Connect to a Remote Host
 
 1.  Download and run the PuTTY installer from [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
@@ -54,7 +69,7 @@ For the fingerprint of an RSA key instead of elliptical curve, use: `ssh-keygen 
 
     **If the fingerprints do not match, do not connect to the server!** You won't receive further warnings unless the key presented to PuTTY changes for some reason. Typically, this should only happen if you reinstall the remote server's operating system. If you receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.
 
-## Port Forwarding (SSH Tunnels) with PuTTY
+### SSH Tunneling/Port Forwarding
 
 SSH tunnels allow you to access network services running on a remote server though a secure channel. This is useful in cases where the service you wish to access doesn't run over SSL, or you do not wish to allow public access to it. As an example, you can use tunneling to securely access a MySQL server running on a remote server.
 
@@ -70,7 +85,7 @@ To do so:
 
 Once you've connected to the remote server with this tunnel configuration, you'll be able to direct your local MySQL client to `localhost:3306`. Your connection to the remote MySQL server will be encrypted through SSH, allowing you to access your databases without running MySQL on a public IP.
 
-## Run Remote Graphical Applications over SSH
+### Remote Graphical Applications over SSH
 
 PuTTY can securely run graphical applications hosted on a remote Linux server. You can run virtually any X11 application in this manner, and the connection will be encrypted through SSH, providing a safe means of interacting with remote graphical systems.
 
@@ -80,7 +95,7 @@ PuTTY can securely run graphical applications hosted on a remote Linux server. Y
 You will need the `xauth` package installed on your Linode for X11 forwarding to work correctly. It is installed by default on Debian and RedHat based systems, but may not be for other Linux distributions.
 {{< /note >}}
 
-2.  Tell PuTTY to forward X11 connections to your desktop:
+1.  Tell PuTTY to forward X11 connections to your desktop:
 
     1. In PuTTY's configuration window, make sure the remote server's hostname or IP, and the correct port, are entered on the **Session** category.
     1. In the **Connection** category, go to **SSH**, then **X11**.
@@ -90,6 +105,6 @@ You will need the `xauth` package installed on your Linode for X11 forwarding to
 
     ![Configure X11 forwarding in PuTTY.](putty-x11-forwarding.png "PuTTY Configuration for X11 connections.")
 
-3.  Once you're logged into the remote server, you may start any graphical application hosted there. The application will be projected onto your local desktop. Here's the `xcalc` application running on a Windows desktop from a remote server:
+1.  Once you're logged into the remote server, you may start any graphical application hosted there. The application will be projected onto your local desktop. Here's the `xcalc` application running on a Windows desktop from a remote server:
 
-    ![xcalc running in PuTTY.](162-putty-03-xcalc-running.png "xcalc running in PuTTY.")
+    ![xcalc running in PuTTY.](xcalc-putty.png "xcalc running in PuTTY.")
