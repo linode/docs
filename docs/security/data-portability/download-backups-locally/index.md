@@ -16,8 +16,8 @@ The [Linode Backups](/docs/platform/disk-images/linode-backup-service/) service 
 
 Linode's backups are stored in a way that is only directly readable by the Linode Backups service. A common question for the service is how you can download the content from your Linode Backups to another storage location, like your home computer. This can be accomplished in two phases:
 
-1. Restore a backup to a new or existing Linode.
-2. Download either specific files or the entire disk image from that Linode, as needed.
+1. [Restore a backup](#restore-from-a-backup) to a new or existing Linode.
+2. Download either [specific files](#download-specific-files-or-directories-over-ssh) or the [entire disk image](#download-a-disk-over-ssh) from that Linode, as needed.
 
 ## Before You Begin
 
