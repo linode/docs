@@ -3,10 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions on how to configure a Chef server and a virtual workstation, and how to bootstrap a client node on Ubuntu 18.04.'
-keywords: ["chef", "chef installation", "configuration change management", "server automation", "chef server", "chef workstation", "chef-client", "knife.rb", "version control"]
+keywords: ["chef", "configuration management", "server automation", "chef server", "chef workstation", "chef-client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
-modified: 2019-01-14
+modified: 2019-01-17
 modified_by:
   name: Linode
 title: 'Install a Chef Server Workstation on Ubuntu 18.04'
@@ -107,6 +107,14 @@ In this section, you will download and install the Chef Workstation package, whi
 
         chef generate repo chef-repo
 
+1. Ensure that your workstation's `/etc/hosts` file maps its IP address to your workstation's hostname. For example:
+
+    {{< file "/etc/hosts">}}
+127.0.0.1 localhost
+192.0.2.0 workstation
+...
+    {{</ file >}}
+
 1. Create a `.chef` subdirectory. The `.chef` subdirectory will store your [Knife](/docs/applications/configuration-management/beginners-guide-chef/#knife) configuration file and your `.pem` files that are used for RSA key pair authentication with the Chef server. Move into the `chef-repo` directory:
 
         mkdir ~/chef-repo/.chef
@@ -180,13 +188,13 @@ The workstation is used to create, download, and edit cookbooks and other relate
         chef generate app chef-repo
         cd chef-repo
 
-### Generate knife.rb
+### Configure Knife
 
-1.  Create a knife configuration file by navigating to your `~/chef-repo/.chef` directory and creating a file named `knife.rb` using your preferred text editor.
+1.  Create a knife configuration file by navigating to your `~/chef-repo/.chef` directory and creating a file named `config.rb` using your preferred text editor.
 
-1.  Copy the following configuration into the `knife.rb` file:
+1.  Copy the following configuration into the `config.rb` file:
 
-    {{< file "~/chef-repo/.chef/knife.rb" ruby >}}
+    {{< file "~/chef-repo/.chef/config.rb" ruby >}}
 current_dir = File.dirname(__FILE__)
 log_level                :info
 log_location             STDOUT
@@ -217,7 +225,7 @@ cookbook_path            ["#{current_dir}/../cookbooks"]
 The SSL certificates are generated during the installation of the Chef server. These certificates are self-signed, which means there isn’t a signing certificate authority (CA) to verify. The Chef server's hostname and FQDN should be the same so that the workstation can fetch and verify the SSL certificates. You can verify the Chef server's hostname and FQDN by running `hostname` and `hostname -f`, respectively. Consult the [Chef documentation](https://docs.chef.io/server_security.html#regenerate-certificates) for details on regenerating SSL certificates.
 {{</ note >}}
 
-1.  Confirm that `knife.rb` is set up correctly by running the client list:
+1.  Confirm that `config.rb` is set up correctly by running the client list:
 
         knife client list
 
@@ -251,11 +259,20 @@ If you encounter any `401 Unauthorized` errors ensure that your `ORGANIZATION.pe
 
             knife bootstrap 192.0.2.0 --ssh-user username --sudo --identity-file ~/.ssh/id_rsa.pub --node-name hostname
 
-2.  Confirm that the node has been bootstrapped by listing the client nodes:
+1.  Confirm that the node has been bootstrapped by listing the client nodes:
 
         knife client list
 
     Your new client node should be included in the list.
+
+1. Add the bootstrapped node to your workstation's `/etc/hosts` file. Replace `node-hostname` with the hostname you just assigned to the node when it was bootstrapped:
+
+    {{< file "/etc/hosts">}}
+127.0.0.1 localhost
+192.0.2.0 workstation
+198.51.100.0 node-hostname
+...
+    {{</ file >}}
 
 ## Download a Cookbook (Optional)
 
@@ -308,9 +325,9 @@ end
 
     This command is also used when updating cookbooks.
 
-1. Use `knife-ssh` to run the `chef-client` command on your node. Replace `nodename` with your node's name.
+1. Use `knife-ssh` to run the `chef-client` command on your node. Replace `nodename` with your node's name. If you have set up your node with a limited user account, replace `-x root` with the correct username, i.e. `-x username`.
 
-        knife ssh 'name:nodename' 'sudo chef-client'
+        knife ssh 'name:nodename' 'sudo chef-client' -x root
 
     The recipes in the run list will be pulled from the server and run on the node. In this instance, it will be the `cron-delvalidate` recipe. This recipe ensures that any cookbooks pushed to the Chef Server, and added to the node's run list will be pulled down to bootstrapped nodes once an hour. This automated step eliminates connecting to the node in the future to pull down changes.
 
