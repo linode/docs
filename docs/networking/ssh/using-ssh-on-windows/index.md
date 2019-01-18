@@ -13,7 +13,7 @@ published: 2009-09-20
 title: Using SSH on Windows
 ---
 
-<!-- ![Using PuTTY](using-putty.png "Using PuTTY")-->
+![Using SSH on Windows](using-ssh-on-windows.png "Using SSH on Windows")
 
 ## OpenSSH
 As of late 2018, [OpenSSH](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_overview) is included with some versions of Windows.
