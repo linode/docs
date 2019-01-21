@@ -20,7 +20,7 @@ external_resources:
 
 [Laravel Forge](https://forge.laravel.com) is a tool for deploying and configuring web applications. It was developed by the makers of the [Laravel framework](https://laravel.com), but it can be used to automate the deployment of any web application that uses a PHP server.
 
-Creating a fully-functioning web server normally involves the installation of multiple components such as NGINX, MySQL, and PHP. Laravel Forge automates all of the necessary installation and configuration, allowing you to get your website up and running quickly.
+Creating a fully-functioning web server normally involves the installation of multiple components such as NGINX, MySQL, and PHP. Laravel Forge automates all of the necessary installation and configuration steps, allowing you to get your website up and running quickly.
 
 Once your server has been created, deploying updates becomes as simple and painless as pushing to your repository on GitHub. Also, you can easily manage the configuration of your website though a web interface. Finally, Forge automatically provides advanced security features, such as free SSL certificates (through [Let's Encrypt](https://letsencrypt.org/)) and automatic firewall configuration.
 
@@ -62,32 +62,32 @@ If you want to be able to quickly deploy from GitHub, GitLab, or Bitbucket, you 
 
     ![Linode Cloud Provider](adding_api_key_to_forge.png "Adding your Linode Cloud APIv4 token")
 
-1.  Enter a profile name. This can be your Linode username that your API key was generated under, or it can be any other string that will help you identify the profile. Then, enter your APIv4 key and click the **Add Credential** button.
+1.  Enter a profile name. This can be your Linode username or it can be any other string that will help you identify the profile. Then, enter your APIv4 key and click the **Add Credential** button.
 
 ## Create a Server
 
-1.  Click on the **Forge** icon in the top navigation menu. Then click on the **Linode** provider button.
+1.  Click on the **Forge** icon in the top left navigation menu. Then click on the **Linode** provider button.
 
 1.  Fill out the form that appears:
 
     ![Create a Server](create_a_server.png "The form for creating a server in Forge")
 
-    | Option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description |
+    | **Option**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
     | ------ | ----------- |
     | Credentials | Any of the Linode accounts that you have linked to your Laravel Forge account. |
-    | Name | A name for your server. Laravel Forge auto-generates a random name, but you can change it. |
+    | Name | A name for your server. Laravel Forge auto-generates a random name, but you can edit it. |
     | Region | The data center where you want your server hosted. Choose a location close to where you expect the majority of users to be. |
     | Server Size | The hardware resource plan for your server. Plans with more CPU and memory can serve more connections to your sites, and a larger storage capacity can hold bigger databases. |
-    | PHP Version | The installed PHP version. |
+    | PHP Version | The PHP version to install. |
     | Post-Provision Recipe | [Actions](https://medium.com/@taylorotwell/post-provision-recipes-on-forge-634ccb189847) that should be taken after the server is provisioned. |
-    | Database | Which database package should be installed. |
-    | Database Name | If your application needs a database, then you can name it here. By default it will be named `forge`. |
+    | Database | The database package to install. |
+    | Database Name | Your application's database name. By default it will be named `forge`. |
 
 1. Once you have finished selecting options, click **Create Server**. A pop-up dialog will show you the sudo and database passwords that have been automatically generated for you. Be sure to copy these values and store them in a secure place.
 
     ![Server Credential Pop-up Dialog](server_credential.png "The pop-up dialog which displays your new server's credentials")
 
-1.  Forge will now perform the steps necessary to create and configure a Linode based on the settings you chose earlier. The new server will appear in the **Active Servers** section, and a list of recent events representing the server's configuration will appear below it.
+1.  Forge will now perform the steps necessary to create and configure a Linode based on the settings you provided. The new server will appear in the **Active Servers** section and a list of recent events representing the server's configuration will appear below it.
 
     ![Active Servers](active_servers.png "The active servers panel")
 
@@ -109,7 +109,7 @@ If you do not want to use a domain with your website, you can instead configure 
 
 ### Add a New Site
 
-1.  Set up your DNS records for your domain. Create an *A record* assigned to your Linode's IP address. If you use Linode's name servers, review the [DNS Manager](/docs/platform/manager/dns-manager/) guide for instructions.
+1.  Set up your DNS records for your domain. [Create a Domain Zone and an *A record*](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) assigned to your Linode's IP address. If you use Linode's name servers, review the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/) guide for instructions.
 
     If you use another DNS provider, consult their documentation for instructions.
 
@@ -123,11 +123,11 @@ If you do not want to use a domain with your website, you can instead configure 
 
     ![New Site Form](add_new_site.png "The form for creating a new site on your server")
 
-    | Option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description |
+    | **Option**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
     | ------ | ----------- |
-    | Root Domain | The domain for your website. |
-    | Project Type | The type of project you are using. If you are building regular PHP, you can choose `General PHP/Laravel`. Other options include Static, HTML, Symfony, and Symfony (Dev). |
-    | Web Directory | The directory from which public files will be served. You will need to make sure your website's files are in this directory in your source code respository. |
+    | Root Domain | Your website's domain. |
+    | Project Type | Your project type. If you are building regular PHP, you can choose `General PHP/Laravel`. Other options include Static, HTML, Symfony, and Symfony (Dev). |
+    | Web Directory | The directory from which public files will be served. You will need to make sure your website's files are in this directory in your source code repository. |
 
 1.  Your new site will appear below the form in the **Active Sites** panel:
 
@@ -135,7 +135,7 @@ If you do not want to use a domain with your website, you can instead configure 
 
 ### Add a Repository
 
-1.  From the **Active Sites** panel, choose your site. The **Apps** section will appear:
+1.  From the **Active Sites** panel, click on your site. The **Apps** section will appear:
 
     ![Apps Tab](apps_tab.png "The apps section for your site")
 
@@ -149,9 +149,11 @@ If you do not use [Composer](https://getcomposer.org), leave the **Install Compo
 
 1.  Click on the **Install Repository** button. Forge will copy your source code to the server. When this finishes, visit your domain name in your browser, and you should see your site's contents.
 
-1.  If your site deployment runs into any errors, a **Server Alerts** panel will appear. Click on the information button in this panel to review these errors in detail.
+1.  If your site deployment runs into any errors, a **Server Alerts** panel will appear. Click on the information button in this panel to review the errors in detail.
 
     ![Server Alerts](server-alerts.png "The server alerts panel")
+
+1. Verify that your site displays your repository's latest changes by navigating to your site's URL. If you did not register a Domain, then navigate to your site's IP address.
 
 ### Quick Deploy
 
