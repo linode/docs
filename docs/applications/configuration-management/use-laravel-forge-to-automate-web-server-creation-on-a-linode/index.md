@@ -22,15 +22,15 @@ external_resources:
 
 Creating a fully-functioning web server normally involves the installation of multiple components such as NGINX, MySQL, and PHP. Laravel Forge automates all of the necessary installation and configuration steps, allowing you to get your website up and running quickly.
 
-Once your server has been created, deploying updates becomes as simple and painless as pushing to your repository on GitHub. Also, you can easily manage the configuration of your website though a web interface. Finally, Forge automatically provides advanced security features, such as free SSL certificates (through [Let's Encrypt](https://letsencrypt.org/)) and automatic firewall configuration.
+Once your server has been created, deploying updates becomes as clear and painless as pushing to your repository on GitHub. Also, you can easily manage the configuration of your website though a web interface. Finally, Forge automatically provides advanced security features, such as free SSL certificates (through [Let's Encrypt](https://letsencrypt.org/)) and automatic firewall configuration.
 
 ## Before You Begin
 
-1.  Sign up for a [Laravel Forge](https://forge.laravel.com/auth/register) account if you do not have one.
+1.  Sign up for a [Laravel Forge](https://forge.laravel.com/auth/register) account if you don't have one.
 
 1.  Create a Linode API key, which Laravel Forge will use to interface with your account. [Forge uses Linode's new APIv4](https://blog.laravel.com/forge-switching-to-the-new-linode-manager), and APIv4 tokens are created in the [Linode Cloud Manager](https://cloud.linode.com). Refer to the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) to learn how to create your key.
 
-1.  If you do not have a registered domain name for your website, purchase one from a domain name registrar.
+1.  If you don't have a registered domain name for your website, purchase one from a domain name registrar.
 
     {{< note >}}
 You will be able to set up a site without a domain name (by visiting your Linode's IP address directly), but you will only be able to use SSL with a domain.
@@ -81,13 +81,13 @@ If you want to be able to quickly deploy from GitHub, GitLab, or Bitbucket, you 
     | PHP Version | The PHP version to install. |
     | Post-Provision Recipe | [Actions](https://medium.com/@taylorotwell/post-provision-recipes-on-forge-634ccb189847) that should be taken after the server is provisioned. |
     | Database | The database package to install. |
-    | Database Name | Your application's database name. By default it will be named `forge`. |
+    | Database Name | Your application's database name. By default it'll be named `forge`. |
 
 1. Once you have finished selecting options, click **Create Server**. A pop-up dialog will show you the sudo and database passwords that have been automatically generated for you. Be sure to copy these values and store them in a secure place.
 
     ![Server Credential Pop-up Dialog](server_credential.png "The pop-up dialog which displays your new server's credentials")
 
-1.  Forge will now perform the steps necessary to create and configure a Linode based on the settings you provided. The new server will appear in the **Active Servers** section and a list of recent events representing the server's configuration will appear below it.
+1.  Forge will now perform the steps necessary to create and configure a Linode based on the settings you provided. The new server will appear in the **Active Servers** section, and a list of recent events representing the server's configuration will appear below it.
 
     ![Active Servers](active_servers.png "The active servers panel")
 
@@ -99,23 +99,23 @@ If you want to be able to quickly deploy from GitHub, GitLab, or Bitbucket, you 
 
     ![Email Confirmation](mail_from_forge_showing_details_created.png "An email confirmation for your new Forge-created server")
 
-## Set up your Site
+## Set Up your Site
 
-Your server has been created, but no sites have been set up on it (apart from the default site which displays your PHP settings).
+Your server has been created, but no sites have been set up on it, apart from the default site which displays your PHP settings.
 
 {{< note >}}
-If you do not want to use a domain with your website, you can instead configure the *default* site on your server. Select the default site from the **Active Sites** panel of your server's dashboard in Forge, then skip to the [Add a repository](#add-a-repository) instructions.
+If you do not want to use a domain with your website, you can configure the *default* site on your server. Select the default site from the **Active Sites** panel of your server's dashboard in Forge, then skip to the [Add a repository](#add-a-repository) instructions.
 {{< /note >}}
 
 ### Add a New Site
 
 1.  Set up your DNS records for your domain. [Create a Domain Zone and an *A record*](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) assigned to your Linode's IP address. If you use Linode's name servers, review the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/) guide for instructions.
 
-    If you use another DNS provider, consult their documentation for instructions.
+    If you use another DNS provider, check their documentation for instructions.
 
     {{< content "update-dns-at-common-name-server-authorities" >}}
 
-1.  From the **Servers** menu in the top navigation bar, choose your new server (if you do not see this menu yet, refresh your browser window):
+1.  From the **Servers** menu in the top navigation bar, choose your new server. If you don't see this menu yet, refresh your browser window:
 
     ![Servers Menu](navigation-menu-server-drop-down.png "The servers drop-down menu")
 
