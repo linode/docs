@@ -27,6 +27,7 @@ antispam
 ap
 apache2
 api
+apiserver
 appimage
 appletalk
 appserver

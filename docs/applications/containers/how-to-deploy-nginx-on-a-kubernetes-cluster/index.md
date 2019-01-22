@@ -64,27 +64,27 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
     | Protocol | Direction | Port Range | Purpose |  Used By |
     | -------- | --------- | ---------- | ------- |  ------- |
-    | TCP | Inboud | 6443* | Kubernetes API server |  All |
-    | TCP | Inboud | 2379-2380 | etcd server client API |  kube-apiserver, etcd |
-    | TCP | Inboud | 10250 | Kubelet API |  Self, Control plane |
-    | TCP | Inboud | 10251 | kube-scheduler |  Self |
-    | TCP | Inboud | 10253 | kube-controller-manager |  Self |
+    | TCP | Inbound | 6443* | Kubernetes API server |  All |
+    | TCP | Inbound | 2379-2380 | etcd server client API |  kube-apiserver, etcd |
+    | TCP | Inbound | 10250 | Kubelet API |  Self, Control plane |
+    | TCP | Inbound | 10251 | kube-scheduler |  Self |
+    | TCP | Inbound | 10253 | kube-controller-manager |  Self |
 
     **Worker nodes**
 
     | Protocol | Direction | Port Range | Purpose |  Used By |
     | -------- | --------- | ---------- | ------- |  ------- |
-    | TCP | Inboud | 10250 | Kubelet API |  Self, Control plane |
-    | TCP | Inboud | 30000-32767 | NodePort Services** |  All |
+    | TCP | Inbound | 10250 | Kubelet API |  Self, Control plane |
+    | TCP | Inbound | 30000-32767 | NodePort Services** |  All |
 
 
     {{< note >}}
-  By design, kube-proxy will always place its iptable chains first. It inserts 2 rules, KUBE-EXTERNAL-SERVICES and KUBE-FIREWALL at the top of the INPUT chain. See the [Kubernetes discussion forum](https://discuss.kubernetes.io/t/custom-iptables-rules-for-input-chain/3509) for more details.
+  By design, kube-proxy will always place its iptables chains first. It inserts 2 rules, KUBE-EXTERNAL-SERVICES and KUBE-FIREWALL at the top of the INPUT chain. See the [Kubernetes discussion forum](https://discuss.kubernetes.io/t/custom-iptables-rules-for-input-chain/3509) for more details.
     {{</ note >}}
 
 1.  You should consider using the Linode NodeBalancer service with the [Linode CCM](https://github.com/linode/linode-cloud-controller-manager).
 
-    - When using Linode NodeBalancers ensure you add iptable rulles to allow the NodeBalancer traffic: `192.168.255.0/24`.
+    - When using Linode NodeBalancers ensure you add iptables rules to allow the NodeBalancer traffic: `192.168.255.0/24`.
 
 1. To obtain persistent storage capabilities, consider using the [Linode Block Storage CSI Driver](https://github.com/linode/linode-blockstorage-csi-driver).
 
