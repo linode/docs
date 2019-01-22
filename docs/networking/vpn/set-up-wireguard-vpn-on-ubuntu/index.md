@@ -223,7 +223,7 @@ peer: iMT0RTu77sDVrX4RbXUgUBjaOqVeLYuQhwDSU+UI3G4=
         ping 192.168.2.1
         sudo wg
 
-    The last two lines of the output from runnint the `wg` command should be similar to:
+    The last two lines of the output from running the `wg` command should be similar to:
 
       {{< output >}}
     latest handshake: 1 minute, 17 seconds ago
