@@ -7,7 +7,7 @@ og_description: 'This guide will show you how to install WireGuard, a fast and s
 keywords: ['wireguard','vpn']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-14
-modified: 2018-07-09
+modified: 2019-01-22
 modified_by:
   name: Linode
 title: "Set Up WireGuard VPN on Ubuntu"
@@ -18,70 +18,51 @@ contributor:
 
 ![Set Up WireGuard VPN on Ubuntu](wireguard-vpn-ubuntu-title.jpg "Set Up WireGuard VPN on Ubuntu")
 
-[WireGuard](https://www.wireguard.com) is a simple, fast, and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and has a much smaller source code footprint. WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol and delivers lower ping times in comparison.
+[WireGuard](https://www.wireguard.com) is a simple, fast, and modern VPN which utilizes state-of-the-art cryptography. It aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec, and has a much smaller source code footprint. WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol.
 
-The WireGuard configuration is as simple to configure as SSH. A connection is established by an exchange of public keys between server and client, and only a client with its public key present in its server configuration file is considered authorized. WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as `ifconfig` and `ip`.
+The WireGuard configuration is as simple to configure as SSH. A connection is established by an exchange of public keys between server and client, and only a client with its public key present in its server configuration file is allowed to connect. WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as `ifconfig` and `ip`.
 
-Currently, WireGuard is only available on Linux. This guide will configure a simple peer connection between a server, which will be a Linode running Ubuntu 16.04, and a client. The client can be either your local computer or another Linode.
+Currently, WireGuard is only available on Linux. This guide will configure a simple peer connection between a Linode running Ubuntu 18.04, and a client. The client can be either your local computer or another Linode.
 
 {{< caution >}}
 Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent critical updates in the future.
 {{< /caution >}}
 
-## Update Kernel
 
-Wireguard requires using Ubuntu's kernel rather than the Linode kernel. Follow these steps after creating your Linode:
+## Before You Begin
 
-1.  In the Linode Manager, open the configuration profile for your Linode and find the **Boot Settings** section. Select **GRUB 2** as your kernel.
+- You will need root access to your Linode, or a user account with `sudo` privilege.
+- Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
 
-    ![Configuration Profile](wireguard-config.png)
-
-2.  Boot your Linode, then connect to it with SSH and complete the standard setup procedure in our [Getting Started](/docs/getting-started) guide.
-
-3.  Update your system:
-
-        sudo apt update && sudo apt upgrade
-
-4.  Update the kernel:
-
-        sudo apt install linux-image-virtual grub2
-
-5.  Reboot your system from the Linode Manager.
-
-6.  Install kernel headers:
-
-        sudo apt install linux-headers-$(uname -r)
 
 ## Install WireGuard
 
-1.  Install `software-properties-common`:
-
-        sudo apt install software-properties-common
-
-2.  Add the Wireguard repository to your sources list:
+1.  Add the Wireguard repository to your sources list. Apt will then automatically update the package cache.
 
         sudo add-apt-repository ppa:wireguard/wireguard
 
-3.  Install Wireguard and its dependencies:
+1.  Install Wireguard. The `wireguard` package will install all necessary dependencies.
 
-        sudo apt update
-        sudo apt install wireguard-dkms wireguard-tools
+        sudo apt install wireguard
 
-    If the steps in the previous section were completed successfully, after the installation you will see the following console output:
+    DKMS will then build the Wireguard kernel module and if successful, you'll see the following output:
 
-        wireguard:
-        Running module version sanity check.
-        - Original module
-        - No original module exists within this kernel
-        - Installation
-        - Installing to /lib/modules/4.4.0-98-generic/updates/dkms/
+    {{< output >}}
+wireguard:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/4.15.0-43-generic/updates/dkms/
 
-        depmod....
+depmod...................
 
-        DKMS: install completed.
-        Setting up wireguard-tools (0.0.20171111-wg1~xenial) ...
-        Processing triggers for libc-bin (2.23-0ubuntu9) ...
-  {{< note >}}
+DKMS: install completed.
+Setting up wireguard (0.0.20181218-wg1~bionic) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+{{< /output >}}
+
+    {{< note >}}
 If the installation completes but this output does not appear, your kernel is most likely not configured correctly (to double check, the output of `lsmod | grep wireguard` should not be blank). Refer to the previous section to troubleshoot.
 {{< /note >}}
 
@@ -94,37 +75,37 @@ If the installation completes but this output does not appear, your kernel is mo
 
     This will save both the private and public keys to your home directory; they can be viewed with `cat privatekey` and `cat publickey` respectively.
 
-2. Open `/etc/wireguard/wg0.conf` in a text editor and add the following content, replacing `<Private Key>` with the generated private key:
+1. Create the file `/etc/wireguard/wg0.conf` and add the following contents. You'll need to enter your server's private key in the `PrivateKey` field, and its IP addresses in the `Address` field.
 
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
 PrivateKey = <Private Key>
-Address = 192.168.2.1/24, fd86:ea04:1115::1/64
+Address = 203.0.113.5/24, fd86:ea04:1115::1/64
 ListenPort = 51820
 PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 SaveConfig = true
 {{< /file >}}
 
-    **Address** defines the private IPv4 and IPv6 addresses for the WireGuard server. Each peer in the VPN network should have a unique value for this field. This guide will use the 192.168.2.0/24 address block for IPv4 and the `fd86:ea04:1115::0/64` block for IPv6.
+    **Address** defines the private IPv4 and IPv6 addresses for the WireGuard server. Each peer in the VPN network should have a unique value for this field.
 
-    **ListenPort** specifies the port that WireGuard will use for incoming connections.
+    **ListenPort** specifies which port WireGuard will use for incoming connections.
 
-    **PostUp** and **PostDown** set steps to be run after the interface is turned on or off, respectively. In this case, `iptables` is used to set Linux IP Masquerade rules to allow all the clients to share the server's Internet IPv4 and IPv6 address, and clear the rules once the tunnel is down.
+    **PostUp** and **PostDown** set steps which are run after the interface is turned on or off, respectively. In this case, `iptables` is used to set Linux IP masquerade rules to allow all the clients to share the server's IPv4 and IPv6 address, and clear the rules once the tunnel is down.
 
-    **SaveConfig** tells the config file to automatically update whenever a new peer is added while the service is running.
+    **SaveConfig** tells the configuration file to automatically update whenever a new peer is added while the service is running.
 
 ## Set Up Firewall Rules
 
 1.  Allow SSH connections and WireGuard's VPN port:
 
-        ufw allow 51820/udp
-        ufw allow 22/tcp
-        ufw enable
+        sudo ufw allow 22/tcp
+        sudo ufw allow 51820/udp
+        sudo ufw enable
 
-2.  Verify the settings:
+1.  Verify the settings:
 
-        ufw status verbose
+        sudo ufw status verbose
 
 ## Start Wireguard Service
 
@@ -136,76 +117,111 @@ SaveConfig = true
 `wg-quick` is a convenient wrapper around many of the common functions in `wg`. You can turn off the wg0 interface with `wg-quick down wg0`
 {{< /note >}}
 
-2. Enable the Wireguard service to automatically restart on boot:
+1. Enable the Wireguard service to automatically restart on boot:
 
-        systemctl enable wg-quick@wg0
+        sudo systemctl enable wg-quick@wg0
 
-3.  Check if the VPN tunnel is running:
+1.  Check if the VPN tunnel is running using:
 
-        wg show
+        sudo wg show
         ifconfig wg0
+
+    Their outputs should look similar to below:
+
+    {{< output >}}
+user@ubuntu:~$ sudo wg show
+interface: wg0
+  public key: vD2blmqeKsV0OU0GCsGk7NmVth/+FLhLD1xdMX5Yu0I=
+  private key: (hidden)
+  listening port: 51820
+{{< /output >}}
+
+    {{< output >}}
+user@ubuntu:~$ ifconfig wg0
+wg0: flags=209<UP,POINTOPOINT,RUNNING,NOARP>  mtu 1420
+        inet 203.0.113.5  netmask 255.255.255.0  destination 203.0.113.5
+        inet6 fd86:ea04:1115::1  prefixlen 64  scopeid 0x0<global>
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 1000  (UNSPEC)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+{{< /output >}}
+
 
 ## Wireguard Client
 
-The process for setting up a client is essentially the same as the server. If your client uses Ubuntu, follow the instructions above. For other Linux distributions please refer to the [WireGuard docs](https://www.wireguard.com/install/) for installation instruction.
+The process for setting up a client is essentially the same as the server. If your client uses Ubuntu, follow the instructions above. See the [WireGuard docs](https://www.wireguard.com/install/) for instructions for other operating systems.
 
 1.  Generate a key pair for the client if you have not already:
 
         umask 077
         wg genkey | tee privatekey | wg pubkey > publickey
 
-2.  The only difference between the client and server is the contents of the configuration file--the client's `wg0.conf` must contain its IP addresses.
+1.  The only difference between the client and server is the contents of the configuration file--the client's `wg0.conf` must contain *its own* IP addresses.
 
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
 PrivateKey = <Output of privatekey file that contains your private key>
-Address = 192.168.2.2/24, fd86:ea04:1115::5/64
+Address = 203.0.123.12/24, fd86:ea04:1115::5/64
 {{< /file >}}
 
 ## Connect the Client and Server
 
 There are two ways to add peer information to WireGuard; this guide will demonstrate both methods.
 
-1.  The first method is to directly edit the client's `wg0.conf` file with the server's information:
+1.  The first method is to directly edit the client's `wg0.conf` file with the server's public key, public IP address, and port:
 
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Peer]
 PublicKey = <Server Public key>
 Endpoint = <Server Public IP>:51820
-AllowedIPs = 192.168.2.1/24, fd86:ea04:1115::1/64
+AllowedIPs = 203.0.123.12/24, fd86:ea04:1115::5/64
 {{< /file >}}
 
-    Use the server's public key, public IP address, and port.
-
-3.  Enable the `wg` service:
+1.  Enable the `wg` service:
 
         wg-quick up wg0
         systemctl enable wg-quick@wg0
 
-The second way of adding peer information is through the command line. This information will be added to the config file automatically because of the SaveConfig option specified earlier.
+The second way of adding peer information is by the command line. This information will be added to the config file automatically because of the SaveConfig option specified earlier.
 
-1.  Run the following command from the server, where the example IP addresses are those of the client:
+1.  Run the following command from the server. Replace the example IP addresses with those of the client:
 
-        wg set wg0 peer <Client Public Key> endpoint <Client IP address>:51820 allowed-ips 192.168.2.2/24,fd86:ea04:1115::5/64
+        sudo wg set wg0 peer <Client Public Key> endpoint <Client IP address>:51820 allowed-ips 203.0.123.12/24,fd86:ea04:1115::5/64
 
-2.  Verify the connection:
+1.  Verify the connection:
 
-        wg
+        sudo wg
 
-Regardless of which method you choose, there will be a **Peer** section in the output of this command if the setup was successful. This Peer section will be automatically added to `wg0.conf` when the service is restarted. If you would like to add this information immediately to the config file, you can run:
+    Regardless of which method you choose, there will be a **Peer** section in the output of this command if the setup was successful.
 
-    wg-quick save wg0
+    {{< output >}}
+user@localhost:~$ sudo wg
+interface: wg0
+  public key: vD2blmqeKsV0OU0GCsGk7NmVth/+FLhLD1xdMX5Yu0I=
+  private key: (hidden)
+  listening port: 51820
 
-Additional clients can be added using the same procedure.
+peer: iMT0RTu77sDVrX4RbXUgUBjaOqVeLYuQhwDSU+UI3G4=
+  endpoint: 203.0.123.12:51820
+  allowed ips: 203.0.123.12/24, fd86:ea04:1115::/64
+{{< /output >}}
+
+    This Peer section will be automatically added to `wg0.conf` when the service is restarted. If you would like to add this information immediately to the config file, you can run:
+
+        wg-quick save wg0
+
+    Additional clients can be added using the same procedure.
 
 ## Test the Connection
 
 Return to the client and ping the server:
 
     ping 192.168.2.1
-    wg
+    sudo wg
 
-The last two lines of the output of wg should be similar to:
+The last two lines of the output of `wg` should be similar to:
 
     latest handshake: 1 minute, 17 seconds ago
     transfer: 98.86 KiB received, 43.08 KiB sent
