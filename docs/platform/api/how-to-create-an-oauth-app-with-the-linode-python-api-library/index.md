@@ -517,10 +517,10 @@ Open your browser to the following URL:
 
     http://localhost:5000/
 
-You should be greeted with your new app. Select a plan, a region, and a image to deploy a linode using the Linode API Python library.
+You should be greeted with your new app. Select a plan, a region, and a image to deploy a Linode using the Linode API Python library.
 
 ## Next Steps
 
 The app you've created shows off some of the aspects of the Linode API Python library. You can use `LinodeLoginClient` to authorize your OAuth app with the appropriate scopes, and can create linodes through the use of `LinodeClient`.
 
-In extending this app, you might want to add multiple functionalities, like creating NodeBalancers from a list of available linodes, or managing domains. To achieve this goal you'll probably want to separate the login logic from the linode creation logic. One way to do this would be store the OAuth token in the session, implementing a time-based expiration mechanism to expire your tokens instead.
+In extending this app, you might want to add multiple functionalities, like creating NodeBalancers from a list of available Linodes, or managing domains. To achieve this goal you'll probably want to separate the login logic from the Linode creation logic. One way to do this would be store the OAuth token in the session, implementing a time-based expiration mechanism to expire your tokens instead.
