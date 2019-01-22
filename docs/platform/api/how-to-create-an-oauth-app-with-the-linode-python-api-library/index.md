@@ -17,9 +17,9 @@ external_resources:
 - '[Linode APIv4 Python library example app repository](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode)'
 ---
 
-Linode supports OAuth 2. OAuth 2 is an authentication protocol that allows a user to safely grant a third-party app permission to act on their behalf when dealing with a service, like Linode. This means that a user could authorize an app to make changes to their Linode account and services. An app could create or destroy Linodes, manage a NodeBalancer, or alter a domain, for example.
+Linode supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf when dealing with a service, like Linode. This means that a user could authorize an app to make changes to any of their Linode account and services that are exposed by the [Linode APIv4](https://developers.linode.com/api/v4). An app could create or destroy Linodes, manage a NodeBalancer, or alter a domain, for example.
 
-This guide will show you how to create a simple OAuth application, using [Flask](http://flask.pocoo.org/) and the [Linode Python API library](https://linode-api4.readthedocs.io/en/latest/index.html), that allows a user to log in with their Linode account and create a Linode with a StackScript. The complete code for this example is available in the [Linode APIv4 Python library example](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode) repository.
+This guide will show you how to create a simple OAuth application, using [Flask](http://flask.pocoo.org/) and the [Linode Python API library](https://linode-api4.readthedocs.io/en/latest/index.html). This app allows a user to log in with their Linode account and create a Linode with a StackScript. The complete code for this example is available in the [Linode APIv4 Python library example](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode) repository.
 
 ## Before You Begin
 
@@ -27,16 +27,29 @@ This guide will show you how to create a simple OAuth application, using [Flask]
 
 2. Ensure that Python is installed on your workstation.
 
-
 ## Obtaining a Client ID and Client Secret
 
-In order for Linode to verify the identity of your app, called a *client*, you will need to generate a set of credentials, specifically a client ID and a client secret. Log in to the [Linode Cloud Manager](https://cloud.linode.com) and navigate to your Account Profile. From there, click on the **My Apps** tab and select **Create My App**. You will be prompted to supply a label for your app and a callback URL. We will discuss the role of the callback URL in depth [later in this guide](#manage-the-oauth-2-callback-url). For now you can supply the following URL:
+In order for Linode to verify the identity of your app, called a *client*, you will need to generate a set of credentials, specifically a client ID and a client secret.
 
-    http://localhost:5000/auth_callback
+  1. Log in to the [Linode Cloud Manager](https://cloud.linode.com) and navigate to your Account Profile.
 
-Leave *Public* unchecked. Click **Submit**. A window will appear with your client secret. Copy this down somewhere secure, as once you exit this window you will not be able to retrieve the client secret again, and will be forced to generate a new one.
+      ![OAuth Account Profile](oauth-account.png)
 
-Once you exit the client secret window your app will appear as part of a list of apps. Note your client ID, as this is the last piece of information you will need to verify your app's identity.
+  1. From there, click on the **My Apps** tab and select **Create My App**.You will be prompted to supply a label for your app and a callback URL. We will discuss the role of the callback URL in depth [later in this guide](#manage-the-oauth-2-callback-url). For now you can supply the following URL:
+
+        http://localhost:5000/auth_callback
+
+      Leave *Public* unchecked and click **Submit**.
+
+      ![OAuth Account Profile](oauth-create-app.png)
+
+  1. A window will appear with your client secret. Copy this down somewhere secure, as once you exit this window you will not be able to retrieve the client secret again, and will be forced to generate a new one.
+
+      ![OAuth Account Profile](oauth-client-secret.png)
+
+  1. Once you exit the client secret window your app will appear as part of a list of apps. Note your client ID, as this is the last piece of information you will need to verify your app's identity.
+
+      ![OAuth Account Profile](oauth-client-id.png)
 
 In summary, you should have these three bits of information, with values similar to the ones provided here:
 
