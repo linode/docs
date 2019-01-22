@@ -70,7 +70,7 @@ For this project we will need to use Pip to download and install the required Py
 
 ## Configure Your App
 
-Begin by creating and opening a file called `config.py` in the text editor of your choice. Add the following variables and values, being sure to change the values to your own. The StackScript ID included in this file is for demo purposes, and can be used. The secret key is used for serializing and deserializing session data, and should be something only you know:
+Begin by creating and opening a file called `config.py` in the text editor of your choice. Add the following variables and values, being sure to change the values to your own. The StackScript ID included in this file is for demo purposes, and can be used. The secret key is used for serializing session data, and should be something only you know:
 
 {{< file "config.py" >}}
 client_id = 'ce571a8cdad1ba4a0a7d'
@@ -141,7 +141,7 @@ def index():
     )
 {{< /file >}}
 
-It is important to note that the two API queries in the above code are slightly different from one another. The `client.regions` method is a top-level method, just as it appears in the [Linode API](https://developers.linode.com/api/v4#tag/Regions). The `client.linode.types` method, on the other hand, is part of the linode group, which is a collection of methods that deal with linodes. Again, this is because linode endpoints are grouped that way in the [API](https://developers.linode.com/api/v4#tag/Linode-Types). Some methods in the Linode Python library, like `domain_create`, are top-level, like `regions`, while others, like `networking.ip_assign`, are part of a group. For more information on the top-level methods and groupings, consult the [library documentation](https://linode-api4.readthedocs.io/en/latest/linode_api4/linode_client.html#grouping).
+It is important to note that the two API queries in the above code are slightly different from one another. The `client.regions` method is a top-level method, just as it appears in the [Linode API](https://developers.linode.com/api/v4#tag/Regions). The `client.linode.types` method, on the other hand, is part of the Linode group, which is a collection of methods that deal with Linodes. Again, this is because Linode endpoints are grouped that way in the [API](https://developers.linode.com/api/v4#tag/Linode-Types). Some methods in the Linode Python library, like `domain_create`, are top-level, like `regions`, while others, like `networking.ip_assign`, are part of a group. For more information on the top-level methods and groupings, consult the [library documentation](https://linode-api4.readthedocs.io/en/latest/linode_api4/linode_client.html#grouping).
 
 In addition to querying the API, the above route also renders the `configure.html` template by passing the template the types, regions, application name, and StackScript object. The StackScript object contains a list of StackScript compatible images. We will cover templating in a later section.
 
@@ -304,7 +304,7 @@ def make_instance(token, type_id, region_id, distribution_id):
     return linode, password
 {{< /file >}}
 
-The `make_instance` function takes an OAuth access token, the type ID, the region ID, and the image (distribution) ID as parameters. It creates an instance of the LinodeClient class, and unlike the instance of LinodeClient used earlier in the guide, this one requires an OAuth token because you will be using it to create a linode. The function then creates a Linode using the `linode.instance_create` method, returning the `linode` object and the password.
+The `make_instance` function takes an OAuth access token, the type ID, the region ID, and the image (distribution) ID as parameters. It creates an instance of the LinodeClient class, and unlike the instance of LinodeClient used earlier in the guide, this one requires an OAuth token because you will be using it to create a Linode. The function then creates a Linode using the `linode.instance_create` method, returning the `linode` object and the password.
 
 Finally, if there was an error with the creation of the Linode, the `if not linode` statement will raise a runtime error.
 
@@ -401,7 +401,7 @@ The important thing to note in the above template is the Jinja2 templating tags.
     {% block content %}
     {% endblock %}
 
-As you will see, any template that extends the `base.html` template and has code between the opening and closing of the `content` block will appear within the code layed out by `base.html`.
+As you will see, any template that extends the `base.html` template and has code between the opening and closing of the `content` block will appear within the code laid out by `base.html`.
 
 Save `base.html` and create a file called `configure.html`, which will be the UI a user will see when they reach the document root endpoint (`/`). Copy in the following code:
 
@@ -412,7 +412,7 @@ Save `base.html` and create a file called `configure.html`, which will be the UI
         <div class='row'>
             <h1>Deploy <span style="color: #337ab7;">{{application_name}}</span> to a Linode</h1>
             <p>
-                This will create a brand new linode running {{application_name}} on your
+                This will create a brand new Linode running {{application_name}} on your
                 account and give you the credentials.
             </p>
         </div>
@@ -464,7 +464,7 @@ Here the template begins with two statements: `{% extends 'base.html' %}` and a 
 
 `configure.html` includes Jinja2 logic, with the inclusion of `for` statements like `{% for o in regions %}`. These statements are like `for` statements in other languages, and are used to iterate over an array or list. In this example, it is iterating over the regions that [we passed to the template from the index route](#create-an-index-route). `configure.html` also contains variables, which are denoted by double curly brackets: `{{ s.id }}`.
 
-Save `configure.html` and create another file called `error.html`. This will be the template that appears whenever there is an error in the linode deployment. Copy in the following code:
+Save `configure.html` and create another file called `error.html`. This will be the template that appears whenever there is an error in the Linode deployment. Copy in the following code:
 
 {{< file "templates/error.html" html >}}
 {% extends 'base.html' %}
@@ -481,7 +481,7 @@ Save `configure.html` and create another file called `error.html`. This will be 
 
 This template works the same way that `configure.html` does, by extending `base.html` and providing its own `content` block.
 
-Lastly, create another file called `success.html`. This file follows the pattern set by `configure.html` and `error.html`, and will present the user with a confirmation message whenever a linode is successfully created. This message includes the linode's label, group, IP address, and password:
+Lastly, create another file called `success.html`. This file follows the pattern set by `configure.html` and `error.html`, and will present the user with a confirmation message whenever a Linode is successfully created. This message includes the Linode's label, group, IP address, and password:
 
 {{< file "templates/success.html" html >}}
 {% extends 'base.html' %}
@@ -492,7 +492,7 @@ Lastly, create another file called `success.html`. This file follows the pattern
     </div>
     <div class='row'>
         <div class='boxy'>
-            <p>You can access your linode with the following command:</p>
+            <p>You can access your Linode with the following command:</p>
             <code>ssh root@{{linode.ipv4[0]}}</code>
             <br />
             <br />
@@ -523,4 +523,4 @@ You should be greeted with your new app. Select a plan, a region, and a image to
 
 The app you've created shows off some of the aspects of the Linode API Python library. You can use `LinodeLoginClient` to authorize your OAuth app with the appropriate scopes, and can create linodes through the use of `LinodeClient`.
 
-In extending this app, you might want to add multiple functionalities, like creating NodeBalancers from a list of available linodes, or managing domains. To achieve this goal you'll probably want to seperate the login logic from the linode creation logic. One way to do this would be store the OAuth token in the session, impelementing a time-based expiration mechanism to expire your tokens instead.
+In extending this app, you might want to add multiple functionalities, like creating NodeBalancers from a list of available linodes, or managing domains. To achieve this goal you'll probably want to separate the login logic from the linode creation logic. One way to do this would be store the OAuth token in the session, implementing a time-based expiration mechanism to expire your tokens instead.
