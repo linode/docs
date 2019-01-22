@@ -30,7 +30,7 @@ This guide will show you how to create a simple OAuth application, using [Flask]
 
 ## Obtaining a Client ID and Client Secret
 
-In order for Linode to verify the identity of your app, called a *client*, you will need to generate a set of credentials, specifically a client ID and a client secret. Log in to the Linode manager and navigate to your Account Profile. From there, click on the **My Apps** tab and select **Create My App**. You will be prompted to supply a label for your app and a callback URL. We will discuss the role of the callback URL in depth [later in this guide](#manage-the-oauth-2-callback-url). For now you can supply the following URL:
+In order for Linode to verify the identity of your app, called a *client*, you will need to generate a set of credentials, specifically a client ID and a client secret. Log in to the [Linode Cloud Manager](https://cloud.linode.com) and navigate to your Account Profile. From there, click on the **My Apps** tab and select **Create My App**. You will be prompted to supply a label for your app and a callback URL. We will discuss the role of the callback URL in depth [later in this guide](#manage-the-oauth-2-callback-url). For now you can supply the following URL:
 
     http://localhost:5000/auth_callback
 
