@@ -12,9 +12,6 @@ modified_by:
 title: "How to Resell Linode Services"
 contributor:
   name: Linode
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 Linode allows the reselling of its services to third-party customers. This guide is meant to walk you through the process of becoming a reseller.
