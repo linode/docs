@@ -27,7 +27,7 @@ external_resources:
 [Kubernetes](https://kubernetes.io/) is an open-source container management system that is based on [Google Borg](https://research.google.com/pubs/pub43438.html). It can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to manually set up a Kubernetes cluster on a Linode and manage the lifecycle of an NGINX service.
 
 {{< note >}}
-You can now create a Kubernetes cluster with one command using the Linode CLI. This tool uses the [Linode Kubernetes Terraform module](https://github.com/linode/terraform-linode-k8s), the [Linode CCM](https://github.com/linode/linode-cloud-controller-manager), and the [Linode CSI](https://github.com/linode/linode-blockstorage-csi-driver) to provision Kubernetes on Linodes.  See the [Kubernetes Tools](https://developers.linode.com/kubernetes/) page for installation steps. For an in-depth dive into the the Linode Kubernetes Terraform module, see its related [Community Site post](https://www.linode.com/community/questions/17611/the-linode-kubernetes-module-for-terraform).
+You can now create a Kubernetes cluster with one command using the Linode CLI. To provision Kubernetes on Linodes, this tool uses the [Linode Kubernetes Terraform module](https://github.com/linode/terraform-linode-k8s), the [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager), and the [Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) for Linode Block Storage.  See the [Kubernetes Tools](https://developers.linode.com/kubernetes/) page for installation steps. For an in-depth dive into the the Linode Kubernetes Terraform module, see its related [Community Site post](https://www.linode.com/community/questions/17611/the-linode-kubernetes-module-for-terraform).
 {{</ note >}}
 
 ## Before You Begin
@@ -56,7 +56,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
     When configuring your firewall, a good place to start is to create rules for the ports Kubernetes requires to function. This includes any inbound traffic on Master nodes and their required ports. If you have changed any custom ports, you should ensure those ports are also open. Master Nodes will have a public IP address or `192.168.0.0/16`. See the chart below for more details.
 
-    On Worker nodes, you should allow inbound Kubelet traffic. For NodePort traffic you should allow a large range from the world or `192.168.254.0/24`. This will depend on whether you are using the [Linode NodeBalancers service](https://github.com/linode/linode-cloud-controller-manager) exclusively for ingress or not. See the chart below for more details:
+    On Worker nodes, you should allow inbound Kubelet traffic. For NodePort traffice you should allow a large range from the world or if you are using the [Linode NodeBalancers service]((https://github.com/linode/linode-cloud-controller-manager)) exclusively for ingress, `192.168.255.0/24`. See the chart below for more details.
 
     The table below provides a list of the required ports for Master nodes and Worker nodes. You should also include port `22`.
 
@@ -82,11 +82,11 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
   By design, kube-proxy will always place its iptables chains first. It inserts 2 rules, KUBE-EXTERNAL-SERVICES and KUBE-FIREWALL at the top of the INPUT chain. See the [Kubernetes discussion forum](https://discuss.kubernetes.io/t/custom-iptables-rules-for-input-chain/3509) for more details.
     {{</ note >}}
 
-1.  You should consider using the Linode NodeBalancer service with the [Linode CCM](https://github.com/linode/linode-cloud-controller-manager).
+1.  You should consider using the Linode NodeBalancer service with the [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager).
 
     - When using Linode NodeBalancers ensure you add iptables rules to allow the NodeBalancer traffic: `192.168.255.0/24`.
 
-1. To obtain persistent storage capabilities, consider using the [Linode Block Storage CSI Driver](https://github.com/linode/linode-blockstorage-csi-driver).
+1. To obtain persistent storage capabilities, you can use the [Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) for Linode Block Storage.
 
 ### Disable Swap Memory
 
