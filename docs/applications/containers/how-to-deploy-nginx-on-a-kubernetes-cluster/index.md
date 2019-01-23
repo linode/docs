@@ -56,7 +56,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
     When configuring your firewall, a good place to start is to create rules for the ports Kubernetes requires to function. This includes any inbound traffic on Master nodes and their required ports. If you have changed any custom ports, you should ensure those ports are also open. Master Nodes will have a public IP address or `192.168.0.0/16`. See the chart below for more details.
 
-    On Worker nodes, you should allow inbound Kubelet traffic. For NodePort traffice you should allow a large range from the world or if you are using the [Linode NodeBalancers service]((https://github.com/linode/linode-cloud-controller-manager)) exclusively for ingress, `192.168.255.0/24`. See the chart below for more details.
+    On Worker nodes, you should allow inbound Kubelet traffic. For NodePort traffic you should allow a large range from the world or if you are using the [Linode NodeBalancers service]((https://github.com/linode/linode-cloud-controller-manager)) exclusively for ingress, `192.168.255.0/24`. See the chart below for more details.
 
     The table below provides a list of the required ports for Master nodes and Worker nodes. You should also include port `22`.
 
@@ -109,7 +109,7 @@ The `/etc/fstab` should look something like this:
 
 1.  Delete the line describing the swap partition. In this example, Line 10 with `/dev/sdb`.
 
-2.  Disable swap memory usage:
+1.  Disable swap memory usage:
 
         swapoff -a
 
@@ -119,13 +119,13 @@ To make the commands in this guide easier to understand, set up your hostname an
 
 1.  Choose a node to designate as your Kubernetes master node and SSH into it.
 
-2.  Edit `/etc/hostname`, and add:
+1.  Edit `/etc/hostname`, and add:
 
     {{< file "/etc/hostname" >}}
 kube-master
 {{< /file >}}
 
-3.  Add the following lines to `/etc/hosts`:
+1.  Add the following lines to `/etc/hosts`:
 
     {{< file "/etc/hosts" >}}
 <kube-master-private-ip>    kube-master
@@ -136,9 +136,9 @@ kube-master
 
     To make it easier to understand output and debug issues later, consider naming each hostname according to its role (`kube-worker-1`, `kube-worker-2`, etc.).
 
-4.  Perform Steps 2 and 3 on each worker node, changing the values accordingly.
+1.  Perform Steps 2 and 3 on each worker node, changing the values accordingly.
 
-5.  For the changes to take effect, restart your Linodes.
+1.  For the changes to take effect, restart your Linodes.
 
 ### Confirm Hostnames
 
@@ -154,7 +154,7 @@ If you are unable to ping any of your hosts by their hostnames or private IPs:
 
 1. SSH into the host that isn't responding.
 
-2. Enter `ifconfig`. You should see an entry for `eth0:1` that lists your private IP. If `eth0:1` isn't listed, it's possible that you deployed your Linode image before adding a private IP to the underlying host. Recreate the image and return to the beginning of the guide.
+1. Enter `ifconfig`. You should see an entry for `eth0:1` that lists your private IP. If `eth0:1` isn't listed, it's possible that you deployed your Linode image before adding a private IP to the underlying host. Recreate the image and return to the beginning of the guide.
 
 ## Install Docker and Kubernetes on Linode
 
@@ -224,13 +224,13 @@ as root:
   kubeadm join --token 921e92.d4582205da623812 <private IP>:6443 --discovery-token-ca-cert-hash sha256:bd85666b6a97072709b210ddf677245b4d79dab88d61b4a521fc00b0fbcc710c
 {{< /output >}}
 
-2.  On the master node, configure the `kubectl` tool:
+1.  On the master node, configure the `kubectl` tool:
 
         mkdir -p $HOME/.kube
         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
         sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-3.  Check on the status of the nodes with `kubectl get nodes`. Output will resemble:
+1.  Check on the status of the nodes with `kubectl get nodes`. Output will resemble:
 
         root@kube-master:~# kubectl get nodes
         name          status     roles     age       version
@@ -240,11 +240,11 @@ as root:
 
     The `--pod-network-cidr` argument used in the [Configure the Kubernetes Master Node](#configure-the-kubernetes-master-node) section defines the network range for the CNI.
 
-5.  While still on the master node run the following command to deploy the CNI to your cluster:
+1.  While still on the master node run the following command to deploy the CNI to your cluster:
 
         kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
 
-6.  To ensure Calico was set up correctly, use `kubectl get pods --all-namespaces` to view the pods created in the `kube-system` namespace:
+1.  To ensure Calico was set up correctly, use `kubectl get pods --all-namespaces` to view the pods created in the `kube-system` namespace:
 
         root@kube-master:~# kubectl get pods --all-namespaces
         NAMESPACE     NAME                                       READY     STATUS             RESTARTS   AGE
@@ -268,7 +268,7 @@ as root:
         kube-public   Active    4h
         kube-system   Active    4h
 
-7.  Run `kubectl get nodes` again to see that the master node is now running properly:
+1.  Run `kubectl get nodes` again to see that the master node is now running properly:
 
         root@kube-master:~# kubectl get nodes
         name          status    roles     age       version
@@ -280,7 +280,7 @@ as root:
 
         kubeadm join --token <some-token> kube-master:6443 --discovery-token-ca-cert-hash sha256:<some-sha256-hash>
 
-2. On the master node, use `kubectl` to see that the slave node is now ready:
+1. On the master node, use `kubectl` to see that the slave node is now ready:
 
     {{< output >}}
 root@kube-master:~# kubectl get nodes
@@ -297,11 +297,11 @@ A *deployment* is a logical reference to a pod or pods and their configurations.
 
         kubectl create deployment nginx --image=nginx
 
-2.  This creates a deployment called `nginx`. `kubectl get deployments` lists all available deployments:
+1.  This creates a deployment called `nginx`. `kubectl get deployments` lists all available deployments:
 
         kubectl get deployments
 
-3.  Use `kubectl describe deployment nginx` to view more information:
+1.  Use `kubectl describe deployment nginx` to view more information:
 
     {{< output >}}
 Name:                   nginx
@@ -337,7 +337,7 @@ Events:
 
     The `describe` command allows you to interrogate different kubernetes resources such as pods, deployments, and services at a deeper level. The output above indicates that there is a deployment called `nginx` within the default namespace. This deployment has a single replicate, and is running the docker image `nginx`. The ports, mounts, volumes and environmental variable are all unset.
 
-4.  Make the NGINX container accessible via the internet:
+1.  Make the NGINX container accessible via the internet:
 
         kubectl create service nodeport nginx --tcp=80:80
 
@@ -350,13 +350,13 @@ Events:
         kubernetes   ClusterIP   10.96.0.1     <none>        443/TCP        5h
         nginx        NodePort    10.98.24.29   <none>        80:32555/TCP   52s
 
-5.  Verify that the NGINX deployment is successful by using `curl` on the slave node:
+1.  Verify that the NGINX deployment is successful by using `curl` on the slave node:
 
         root@kube-master:~# curl kube-worker-1:32555
 
     The output will show the unrendered "Welcome to nginx!" page HTML.
 
-6.  To remove the deployment, use `kubectl delete deployment`:
+1.  To remove the deployment, use `kubectl delete deployment`:
 
         root@kube-master:~# kubectl delete deployment nginx
         deployment "nginx" deleted
