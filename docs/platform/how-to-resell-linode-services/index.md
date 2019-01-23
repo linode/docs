@@ -19,7 +19,7 @@ Linode allows the reselling of its services to third-party customers. This guide
 {{< note >}}
 While Linode does allow the reselling of its services, Linode does not currently have a special reseller program. This means that Linode does not offer discounted pricing for resellers, and does not currently have any white-box software to aid in reselling, like WHMCS plugins.
 
-However, Linode does have a referral program. For more information on Linode's referall program, read the [referall codes section](#referral-codes).
+However, Linode does have a referral program. For more information on Linode's referral program, read the [referral codes section](#referral-codes).
 {{</ note >}}
 
 ## What is a Reseller
@@ -32,7 +32,7 @@ Of course, there is nothing stopping an individual from creating a fully-fledged
 
 ## Referral Codes
 
-As mentioned above, Linode does not offer a discount on re-sold Linode services. However, Linode does offer a referral program. If you feel like Linode is a good choice for an acquaintance or customer, you can send them your referral code and/or link to recieve $20 in credit when they sign up. That credit will be applied to your account so long as the referral stays active as a customer for 90 days. To retrieve your referral code and link, navigate to your [My Profile page in the Cloud Manager and click on "Referrals"](https://cloud.linode.com/profile/referrals).
+As mentioned above, Linode does not offer a discount on re-sold Linode services. However, Linode does offer a referral program. If you feel like Linode is a good choice for an acquaintance or customer, you can send them your referral code and/or link to receive $20 in credit when they sign up. That credit will be applied to your account so long as the referral stays active as a customer for 90 days. To retrieve your referral code and link, navigate to your [My Profile page in the Cloud Manager and click on "Referrals"](https://cloud.linode.com/profile/referrals).
 
 ## Limitations of Reselling Linode Services
 
