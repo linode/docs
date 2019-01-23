@@ -6,7 +6,7 @@ description: 'Securely accessing remote filesystems with SSHFS on Linux.'
 keywords: ["sshfs", "ssh filesystem", "sshfs linux", "sshfs macos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/ssh-filesystems/','networking/ssh/using-sshfs-on-linux-and-macos-x/']
-modified: 2017-05-23
+modified: 2019-01-23
 modified_by:
   name: Angel Guarisma
 published: 2009-10-26
