@@ -56,7 +56,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
     When configuring your firewall, a good place to start is to create rules for the ports Kubernetes requires to function. This includes any inbound traffic on Master nodes and their required ports. If you have changed any custom ports, you should ensure those ports are also open. Master Nodes will have a public IP address or `192.168.0.0/16`. See the chart below for more details.
 
-    On Worker nodes, you should allow inbound Kubelet traffic. For NodePort traffic you should allow a large range from the world or if you are using the [Linode NodeBalancers service]((https://github.com/linode/linode-cloud-controller-manager)) exclusively for ingress, `192.168.255.0/24`. See the chart below for more details.
+    On Worker nodes, you should allow inbound Kubelet traffic. For NodePort traffic you should allow a large range from the world or if you are using the [Linode NodeBalancers service](https://github.com/linode/linode-cloud-controller-manager) exclusively for ingress, `192.168.255.0/24`. See the chart below for more details.
 
     The table below provides a list of the required ports for Master nodes and Worker nodes. You should also include port `22`.
 
