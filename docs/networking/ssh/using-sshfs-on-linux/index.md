@@ -25,104 +25,96 @@ SSHFS (Secure Shell FileSystem), is a tool that allows users to securely access 
 For this guide we used two Ubuntu 16.10 systems, but `sshfs` can be installed on any Linode image.
 
 
-### Install Prerequisite Package
+### Install SSHFS
 
-Before installing SSHFS we need to update the system:
+1. Before installing SSHFS, update your system:
 
-    apt-get update && apt-get upgrade
+        apt-get update && apt-get upgrade
 
-Issue the following command to install sshfs:
+1. Issue the following command to install sshfs:
 
-    apt-get install sshfs
+        apt-get install sshfs
 
 
-{{< note >}}
-The `sshfs` package is available on every package manager, use the commands specific to your distribution.
-{{< /note >}}
+    {{< note >}}
+  The `sshfs` package is available with every Linux package manager. Use the commands specific to your distribution, if not using Debian or Ubuntu.
+    {{< /note >}}
 
 ### Setting up your Linux Client
 
 If you wish to use a normal user account to mount file systems using SSHFS, you'll need to add the user to the `fuse` group first.
 
 {{< note >}}
-If you are unfamiliar with users, groups and file permissions, be sure to visit [Users and Groups](/docs/tools-reference/linux-users-and-groups) for a brief introduction.
+If you are unfamiliar with users, groups and file permissions, visit the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide for a brief introduction.
 {{< /note >}}
 
-To check if the `fuse` group exists run:
+1. To check if the `fuse` group exists run:
 
-    cat /etc/group | grep 'fuse'
+        cat /etc/group | grep 'fuse'
 
-If the group exists, execute the following command with `sudo`, substituting your user account name in place of "someuser":
+1. If the group exists, execute the following command with `sudo`, substituting your user account name in place of `username`:
 
-    sudo usermod -a -G fuse someuser
+        sudo usermod -a -G fuse username
 
-If the group does not exist it has to be created and added to the `fuse` group:
+1. If the group does not exist it has to be created and the user added to the `fuse` group:
 
-    sudo groupadd fuse
-    sudo usermod -a -G fuse user
+        sudo groupadd fuse
+        sudo usermod -a -G fuse username
 
-Log out and log back in before proceeding using a normal user account.
+    Log out and log back in before proceeding using a normal user account.
 
 ### Mounting the Remote File System
-To mount a remote file system execute the command `sshfs`. The syntax for `sshfs` is:
+You can use the command `sshfs` to mount a remote filesystem. The syntax for mounting a filesystem with `sshfs` is:
 
     sshfs [user@]host:[directory] mountpoint [options]
 
-To Mount the home directory of a user named "user" on a remote server at "usersLinode.example.com", create a directory as a destination for the mounted folder.
+1. To Mount the home directory of a user named `username` on a remote server at the IP address `192.0.2.0`, create a directory as a destination for the mounted folder.
 
-    mkdir sshfsExample
+        mkdir sshfs-dir
 
-Then we use the `sshfs` command to mount the directory from our remote server, to the directory on our local client. The syntax for `sshfs` is: `sshfs [user@]host:[directory] mountpoint [options]` Read more about `sshfs` here: [sshfs Manual](https://linux.die.net/man/1/sshfs)
+1. Then, use the `sshfs` command to mount the directory from the remote server to the directory on your local client:
 
-    sshfs user@usersLinode.example.com:/home/user ssfhsExample
+        sshfs username@192.0.2.0:/home/user ssfhs-dir
 
+1. To unmount the filesystem, use the `umount` command:
 
-You can also `sshfs` to your Linode server's IP address:
+        umount sshfs-dir
 
-    sshfs user@192.168.0.0:/home/user sshfsExample
-
-To unmount the filesystem, use the `umount` command:
-
-    umount sshfsExample
+    You can read more about `sshfs` in the [sshfs Manual](https://linux.die.net/man/1/sshfs).
 
 
 
 ### SSH Keys and Persistent Mounts
 
 To keep your server's directory mounted on your system through reboots, you have to create a persistent mount.
-Make sure you can access the remote server without entering a password, by modifying the SSH key directory. The SSH Key is stored in the remote `authorized_keys` file.
+Make sure you can access the remote server via SSH. The SSH Key is stored in the Linode's `authorized_keys` file.
 
 {{< note >}}
-If your system is older, this file may be named `authorized_keys2`. Consult `/etc/ssh/sshd_config` if you are unsure.
+If your system is older, this file may be named `authorized_keys2`. Consult your Linode's `/etc/ssh/sshd_config` if you are unsure.
 {{< /note >}}
 
 Substitute values appropriate for your server in commands that include a hostname or user account name:
 
-If the user account on your remote server doesn't already have a key in `~/.ssh`, issue this command on the remote server, and accept the defaults.
+1. If your local client's user account doesn't already have an ssh key in `~/.ssh`, issue the same command on the client system, accepting the defaults:
 
-    ssh-keygen -t rsa
+        ssh-keygen -t rsa
 
-If your local client's user account doesn't already have an ssh key in `~/.ssh`, issue the same command on the client system, accepting the defaults:
+1. Issue the following command on the client system to copy your public SSH key to the remote server:
 
-    ssh-keygen -t rsa
+        scp ~/.ssh/id_rsa.pub username@192.0.2.0:~/.ssh/authorized_keys
 
-Issue these commands on the client system to copy your public SSH key to the remote server:
+    At this point, you should be able to log into the remote server as `username` without entering a password.
 
-    scp ~/.ssh/id_rsa.pub user@usersLinode.example.com:/home/user/.ssh/uploaded_key.pub
-    ssh user@ausersLinode.example.com "echo \`cat ~/.ssh/uploaded_key.pub\` >> ~/.ssh/authorized_keys"
+1. You can force the mounted filesystem to remain persistent between reboots. This is done by including a mount directive for the remote user directory in `/etc/fstab`.
 
-At this point, you should be able to log into the remote server as "user" without entering a password.
-You can force the mounted filesystem to remain persistent between reboots. This is done by including a mount directive for the remote user directory in `/etc/fstab`.
-
-{{< file "/etc/fstab" >}}
-<sshfs#user@usersLinode.example.com>:/home/users /root/sshfsExample fuse defaults 0 0
-
-{{< /file >}}
+    {{< file "/etc/fstab" >}}
+sshfs#username@192.0.2.0:/home/users /root/sshfsExample fuse defaults 0 0
+    {{< /file >}}
 
 
-This entry would mount the home directory for "user" on the server "usersLinode.example.com" locally at `/root/sshfsExample` each time the system is booted. You may treat this entry like any other in `/etc/fstab`.
+    This entry will mount the home directory for "user" on the server "usersLinode.example.com" locally at `/root/sshfsExample` each time the system is booted. You may treat this entry like any other in `/etc/fstab`.
 
 
 ### Next Steps
 
-After completing this guide you will be able to transfer files to a remote server from your local machine, without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/docs/tools-reference/file-transfer/filezilla), and see what method you prefer.
+After completing this guide you will be able to transfer files to a remote server from your local machine without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/docs/tools-reference/file-transfer/filezilla).
