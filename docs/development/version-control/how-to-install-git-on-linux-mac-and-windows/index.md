@@ -6,7 +6,7 @@ description: 'Installing git on GNU/Linux, MacOSX, and Windows'
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','development/version-control/git-source-control-management/','development/version-control/how-to-install-git-on-mac-and-windows/']
-modified: 2017-07-03
+modified: 2019-01-24
 modified_by:
   name: Linode
 published: 2009-09-04
