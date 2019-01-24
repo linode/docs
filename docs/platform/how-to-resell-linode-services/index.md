@@ -32,7 +32,7 @@ Of course, there is nothing stopping an entity from creating a fully-fledged hos
 
 ## Referral Codes
 
-As mentioned above, Linode does not offer a discount on re-sold Linode services. However, Linode does offer a referral program. If you feel like Linode is a good choice for an acquaintance or customer, you can send them your referral code and/or link to receive $20 per signup. That credit will be applied to your account if the referral stays active as a Linode customer for 90 days. To retrieve your referral code and link, navigate to your [My Profile page in the Cloud Manager and click on "Referrals"](https://cloud.linode.com/profile/referrals).
+As mentioned above, Linode does not offer a discount on re-sold Linode services. However, Linode does offer a referral program. If you feel like Linode is a good choice for an acquaintance or customer, you can send them your referral code and/or link to receive $20 per sign up. That credit will be applied to your account if the referral stays active as a Linode customer for 90 days. To retrieve your referral code and link, navigate to your [My Profile page in the Cloud Manager and click on "Referrals"](https://cloud.linode.com/profile/referrals).
 
 ## Things Resellers Should Keep in Mind
 
