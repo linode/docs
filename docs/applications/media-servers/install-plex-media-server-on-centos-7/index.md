@@ -5,16 +5,16 @@ author:
 description: View and organize your media library with Plex on CentOS 7
 keywords: ["plex", "media", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-23
+modified: 2019-01-24
 modified_by:
-  name: Nick Brewer
+  name: Linode
 published: 2017-05-03
 title: Install Plex Media Server on CentOS 7
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 ---
 
-[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. Basic Plex features are [free](https://support.plex.tv/articles/202526943-plex-free-vs-paid/), and Plex Pass adds paid features on top of the free account.
+[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. Basic Plex features are [free](https://support.plex.tv/articles/202526943-plex-free-vs-paid/), while the paid Plex Pass adds additional features.
 
 This guide demonstrates how to set up **Plex Media Server** on a Linode running CentOS 7, and how to connect client devices. A Plex media server could benefit from large amounts of disk space, so consider using Linode's [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
@@ -32,11 +32,11 @@ This guide demonstrates how to set up **Plex Media Server** on a Linode running 
 
 ## Install and Configure Plex
 
-1.  Go to [Plex's download page](https://www.plex.tv/media-server-downloads/). Select *Linux*, click *Choose Distribution*.
+1.  Go to [Plex's download page](https://www.plex.tv/media-server-downloads/). Select *Linux*, and then click *Choose Distribution*.
 
     ![Plex download button](plex-download-button.png)
 
-1.  In the menu that appears, right-click on *CentOS 7* and copy the download link. Use cURL to download the .rpm package directly to your Linode. The example below uses the current link for CentOS at the time of writing. Be sure you install the most recent version of Plex.
+1.  In the menu that appears, right-click on *CentOS 64-bit (RPM for CentOS 7 or newer)* and copy the download link. Use `cURL` to download the .rpm package directly to your Linode. The example below uses the current link for CentOS at the time of writing. Be sure you install the most recent version of Plex.
 
         curl -O https://downloads.plex.tv/plex-media-server/1.14.1.5488-cc260c476/plexmediaserver-1.14.1.5488-cc260c476.x86_64.rpm
 
@@ -55,9 +55,9 @@ This guide demonstrates how to set up **Plex Media Server** on a Linode running 
         cd ~/
         mkdir -p plex-media/movies && mkdir plex-media/television
 
-1.  Administration of the Plex server is performed via its web interface. Before you can connect to the web interface from your workstation, you will first need to create an SSH tunnel to your Linode. Substitute `user` with the `sudo` user on your Linode, and `203.0.113.51` with its IP address.
+1.  Administration of the Plex server is performed via its web interface. Before you can connect to the web interface from your workstation, you will first need to create an SSH tunnel to your Linode. Substitute `user` with the `sudo` user on your Linode, and `192.0.2.0` with its IP address.
 
-        ssh user@203.0.113.51 -L 8888:localhost:32400
+        ssh user@192.0.2.0 -L 8888:localhost:32400
 
 1.  Go to  `http://localhost:8888/web` in a web browser and log in to Plex.
 
@@ -92,7 +92,7 @@ This guide demonstrates how to set up **Plex Media Server** on a Linode running 
 
 [DLNA](https://en.wikipedia.org/wiki/Digital_Living_Network_Alliance) is a protocol that incorporates [Universal Plug and Play](https://en.wikipedia.org/wiki/Universal_Plug_and_Play) (or UPnP) standards for digital media sharing across devices. Any DLNA device or application can have full unrestricted access to your Plex content, so disable DLNA if you won't be using it.
 
-From the Plex web interface, click the wrench icon in the upper right corner and then click **DLNA**in the left sidebar. Uncheck **Enable the DLNA server** and click **Save Changes**.
+From the Plex web interface, click the wrench icon in the upper right corner and then click **DLNA** in the left sidebar. Uncheck **Enable the DLNA server** and click **Save Changes**.
 
 [![Plex media client](plex-dlna-disable-small.png)](plex-dlna-disable.png)
 
