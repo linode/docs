@@ -46,7 +46,7 @@ To install Git on Windows you will need to download the installer from the [Git]
 
 8.  Select the default text editor for Git, then click **Next**:
 
-    ![Selec the default text editor for Git.](win-08-default-text-editor.png)
+    ![Select the default text editor for Git.](win-08-default-text-editor.png)
 
 9.  Adjust your PATH environment, then click **Next**:
 
@@ -78,7 +78,7 @@ It is strongly recommended that you keep the default settings for line ending co
 
 15.  You can launch the Git GUI from the bash shell. Type `git gui` at the command line and hit enter:
 
-    ![Launch the Git GUI by typing 'git gui' at the commnand line.](win-15-run-gui.png)
+    ![Launch the Git GUI by typing 'git gui' at the command line.](win-15-run-gui.png)
 
 16. Once you open Git you can select either **Create New**, **Clone Existing** or **Open Existing Repository**. In this example, we create new repository. Enter a directory name or click on **Browse** to navigate to a directory:
 
