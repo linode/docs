@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn how to use Postfix to send mail through an external SMTP server.'
-keywords: ["Postfix", " Debian 7", " SMTP", " Email", " Mail"]
+keywords: ["Postfix", " Debian", " SMTP", " Email", " Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
     name: Santiago Ti
