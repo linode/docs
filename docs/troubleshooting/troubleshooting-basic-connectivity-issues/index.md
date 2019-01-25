@@ -2,179 +2,340 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Troubleshooting steps to access your Linode after maintenance has been applied to your host.'
+description: 'Troubleshooting steps to help restore basic connectivity to your Linode when it is unresponsive.'
 keywords: ['linux','reboot','lish']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-01-21
-modified: 2019-01-21
+published: 2019-01-25
+modified: 2019-01-25
 modified_by:
   name: Linode
-title: "Troubleshooting Basic Connectivity Issues"
+title: "Troubleshooting Basic Connection Issues"
 ---
 
-EDITOR'S NOTE: This outline attempts to cover connection issues logically in ascending order: booting issues -> basic connectivity (routing or network interface issues) -> SSH -> other services (http, mysql, etc)
+This guide presents troubleshooting strategies for Linodes that are unresponsive to any network access. One reason that a Linode may be unresponsive is if you recently performed a distribution upgrade or other broad software updates to your Linode, as those changes can lead to unexpected problems for your core system components.
 
-EDITOR'S NOTE: Some of these sections only include commands for systemd or Debian etc. Final version of this guide should optimally include commands for all recent-ish distros.
+Or, your server may be unresponsive after maintenance was applied by Linode to your server's host (frequently, this is correlated with software/distribution upgrades performed on your deployment prior to the host maintenance). This guide is designed as a useful resource for either of these scenarios.
 
-Sometimes through the course of updating or altering a Linode you might be unable to connect to your Linode through SSH or through other services you may run. The following are steps to regain access to your Linode should you lose access to those services.
+If you can [ping](/docs/tools-reference/linux-system-administration-basics/#the-ping-command) your Linode, but you cannot access SSH or other services, this guide will not assist with troubleshooting those services. Instead, refer to the [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/troubleshooting/troubleshooting-web-servers-databases-other-services/) guides.
 
-{{< note >}}
-Linode is not responsible for the configuration or installation of software on your Linode, etc. Could link to the newly edited Support guide for more information, or a link to the TOS.
+{{< disclosure-note "Where to go for help outside this guide" >}}
+This guide explains how to use different troubleshooting commands on your Linode. These commands can produce diagnostic information and logs that may expose the root of your connection issues. For some specific examples of diagnostic information, this guide also explains the corresponding cause of the issue and presents solutions for it.
 
-Also say something like:
-Various parts of this guide involve running diagnostic troubleshooting commands on your Linode, which can produce clues about the root of your connection issues. Several parts of this guide highlight frequent causes of connection issues and the diagnostic command output they correspond to. If the diagnostic information you've gathered does not match a solution presented here, consider searching the [Linode Community Site](link) for similar issues. Or, post a new question in the Community Site and include your commands' output.
-{{< /note >}}
+If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
+
+Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/platform/billing-and-support/support/#scope-of-support) for a description of which issues Linode Support can help with.
+{{< /disclosure-note >}}
 
 ## Before You Begin
 
-There are a few core troubleshooting tools you should familiarize yourself with that will be useful when diagnosing connection problems.
+There are a few core troubleshooting tools you should familiarize yourself with that are used when diagnosing connection problems.
 
-### Using the Linode Shell (Lish)
+### The Linode Shell (Lish)
 
-[*Lish*](/docs/platform/manager/using-the-linode-shell-lish/) is a shell that provides access to your Linode's serial console. Because Lish does not establish a network connection to your Linode, you can use it when networking is down or SSH isn't available. Lish is a valuable tool
+[*Lish*](/docs/platform/manager/using-the-linode-shell-lish/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. Much of your troubleshooting for basic connection issues will be performed from the Lish console.
 
-Include instructions here for using Lish, either by linking to Lish guide or embedding them directly. Perhaps embed instructions for using the web console and link to the dedicated guide for terminal connections and other Lish usage.
+To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) guide. In particular, [using your web browser](/docs/platform/manager/using-the-linode-shell-lish/#use-a-web-browser) is a fast and simple way to access Lish.
 
-{{< note >}}
-Include note that all commands in this guide should be executed from Lish, unless SSH access is available, or otherwise specified by the guide (such as when running MTRs from your local computer).
-{{< /note >}}
+### MTR
 
-### Install MTR
+When your network traffic leaves your computer for your Linode, it travels through a series of routers that are administered by your internet service provider, by Linode's transit providers, and by the various organizations that form the [Internet's backbone](https://en.wikipedia.org/wiki/Internet_backbone). It is possible to analyze the route that your traffic takes for possible service interruptions using a tool called [MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/).
 
-MTR is a troubleshooting tool that can diagnose network routing issues that may exist between your computer and your Linode. Review Linode's MTR guide for instructions on [installing the tool](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#install-mtr) on your computer.
+MTR is similar to the [traceroute](https://en.wikipedia.org/wiki/Traceroute) tool, in that it will trace and display your traffic's route. MTR also runs several iterations of its tracing algorithim, which means that it can report statistics like average packet loss and latency over the period that the MTR test runs.
+
+Review the installation instructions in Linode's [Diagnosing Network Issues with MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#install-mtr) guide and install MTR on your computer.
 
 ## Is your Linode Running?
 
-Login to the Linode Manager and inspect the Linode's dashboard. If the Linode is powered off, turn it on.
-
-{{< note >}}
-If the Linode is running and you can access SSH, but not other services, move down to the [troubleshooting other services](#troubleshoot-other-services) section.
-{{< /note >}}
+Log in to the Linode Manager and inspect the Linode's dashboard. If the Linode is powered off, [turn it on](/docs/getting-started/#boot-your-linode).
 
 ### Inspect the Lish Console
 
-If the Linode is listed as running, open the Lish console and look for a login prompt. If a login prompt exists, try logging in with your root user credentials (or other Linux user credentials).
+If the Linode is listed as running in the Manager, or after you boot it from the Manager, open the Lish console and look for a login prompt. If a login prompt exists, try logging in with your root user credentials (or any other Linux user credentials that you previously created on the server).
 
 {{< note >}}
 The root user is available in Lish even if root user login is disabled in your SSH configuration.
 {{< /note >}}
 
-If you can login at the Lish console, move on to [checking basic network connectivity](#check-basic-network-connectivity).
+1.  If you can log in at the Lish console, move on to [diagnosing network connection issues](#diagnosing-network-connection-issues).
 
-If you do not see a login prompt, your Linode may have [basic issues with booting](#troubleshoot-booting-issues).
+    If you see a log in prompt, but you have forgotten the credentials for your Linode, follow the instructions for [resetting your root password](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/) and then attempt to log in at the Lish console again.
+
+2. If you do not see a login prompt, your Linode may have [issues with booting](#troubleshoot-booting-issues).
 
 ## Troubleshoot Booting Issues
 
-If your Linode isn't booting normally, you will not be able to rely on the Lish console as you would normally. To continue, you will need to reboot your Linode into *Rescue Mode*, which is a special recovery environment that Linode provides. Entering Rescue Mode will boot the Finnix recovery distribution, and you will be able to mount your normal Linux images from this environment.
+If your Linode isn't booting normally, you will not be able to rely on the Lish console to troubleshoot your deployment directly. To continue, you will first need to reboot your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#rescuing), which is a special recovery environment that Linode provides.
 
-Review the Rescue and Rebuild guide for instructions on [booting into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode). Then, connect to Rescue Mode via the Lish console as you would normally.
+When you boot into Rescue Mode, you are booting your Linode into the [Finnix recovery Linux distribution](https://www.finnix.org). This Finnix image includes a working network configuration, and you will be able to mount your Linode's disks from this environment, which means that you can access your files.
+
+1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode). If your Linode does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/platform/billing-and-support/support/#contacting-linode-support).
+
+1.  Connect to Rescue Mode via the Lish console as you would normally. You will not be required to enter a username or password to start using the Lish console while in Rescue Mode.
 
 ### Perform a File System Check
 
-If your Linode can't boot, then it may have experienced filesystem corruption. Review the Rescue and Rebuild guide for instructions on [running a filesystem check](/docs/troubleshooting/rescue-and-rebuild/#performing-a-file-system-check).
+If your Linode can't boot, then it may have experienced filesystem corruption.
 
-{{< caution >}}
+1.  Review the Rescue and Rebuild guide for instructions on [running a filesystem check](/docs/troubleshooting/rescue-and-rebuild/#performing-a-file-system-check).
+
+    {{< caution >}}
 Never run a filesystem check on a disk that is mounted.
 {{< /caution >}}
 
+1.  If your filesystem check reports errors that cannot be fixed, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
+
+1.  If the filesystem check reports errors that it has fixed, try rebooting your Linode under your normal [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-linode-running).
+
+1.  If the filesystem check does not report any errors, there may be another reason for your booting issues. Continue to [inspecting your system and kernel logs](#inspect-system-and-kernel-logs).
+
 ### Inspect System and Kernel Logs
 
-Rescue Mode is capable of mounting your Linux image so that you can investigate further. Furthermore, you can also *change root* within Rescue Mode, which will make Rescue Mode working environment emulate your normal Linux image. This means your files and logs will appear where you normally expect them, and you will be able to work with tools like your standard package manager and other system utilities. To proceed, review the Rescue and Rebuild guide's instructions on [changing root](/docs/troubleshooting/rescue-and-rebuild/#change-root).
+In addition to being able to mount your Linode's disks, you can also *change root* (sometimes abbreviated at *chroot*) within Rescue Mode. *Chrooting* will make Rescue Mode's working environment emulate your normal Linux distribution. This means your files and logs will appear where you normally expect them, and you will be able to work with tools like your standard package manager and other system utilities.
 
-Include instructions for how to review system (e.g. `journalctl`) and kernel logs (`dmesg`) for various distros. Suggest that users search the Linode Community site for messages they find for further troubleshooting help.
+To proceed, review the Rescue and Rebuild guide's instructions on [changing root](/docs/troubleshooting/rescue-and-rebuild/#change-root). Once you have chrooted, you can then investigate your Linode's logs for messages that may describe the cause of your booting issues.
 
-| Distribution        | System Logs           | Kernel Logs  |
-| ------------- |-------------| -----|
-| CentOS 6      | Inspect `/var/log/messages` | Run `dmesg`
-| CentOS 7+     | [Run `journalctl`](/docs/quick-answers/linux/how-to-use-journalctl/) | Run `dmesg` |
-| Debian 8+ and Ubuntu 16.04+     | [Run `journalctl`](/docs/quick-answers/linux/how-to-use-journalctl/)      | Run `dmesg` |
-| Arch | Insert commands and logs files here      | Whatever it is |
+In systemd Linux distributions (like Debian 8+, Ubuntu 16.04+, CentOS 7+, and recent releases of Arch), you can run the [`journalctl` command](/docs/quick-answers/linux/how-to-use-journalctl/) to view system and kernel logs. In these and other distributions, you may also find system log messages in the following files:
+
+-   `/var/log/messages`
+
+-   `/var/log/syslog`
+
+-   `/var/log/kern.log`
+
+-   `/var/log/dmesg`
+
+You can use the [`less` command](/docs/quick-answers/linux/how-to-use-less/) to review the contents of these files (e.g. `less /var/log/syslog`). Try pasting your messages into a search engine or searching for your messages in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
 
 ### Quick Tip for Ubuntu and Debian Systems
 
-After you have changed root, the following command may help with issues related to your packages' configuration:
+After you have chrooted inside Rescue Mode, the following command may help with issues related to your package manager's configuration:
 
     dpkg --configure -a
 
-After running this command, try rebooting your Linode into your normal configuration profile.
+After running this command, try rebooting your Linode into your normal configuration profile. If your issues persist, you may need to investigate and research your system logs further, or consider [rebuilding your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
 
-## Check Basic Network Connectivity
+## Diagnose Network Connection Issues
 
-Networking issues can have two causes: your Linode may not be responding to network requests normally, or there may be a network routing issue between you and your Linode.
+If you can boot your Linode normally and access the Lish console, you can continue investigating network issues. Networking issues may have two causes:
 
-### Check for Network Route Issues
+-   There may be a network routing problem between you and your Linode, or:
 
-EDITOR'S NOTE: include example MTR output in disclosure-note blocks to illsutrate 100% packet loss at Linode vs. packet loss along route (might be harder to generate an example for that. Maybe take from a previous ticket where we ran a report against a Linode IP, potentially from the nlnog ring network?)
+-   If the traffic is properly routed, your Linode's network configuration may be malfunctioning.
 
-To diagnose routing problems, run and analyze an MTR report from your computer to your Linode. For instructions on how to use MTR, review Linode's [MTR guide](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#analyze-mtr-reports).
+### Check for Network Route Problems
 
-If your report shows no packet loss along the route, but 100% packet loss at your Linode, that indicates an issue with your Linode's networking configuration. Move to the next section to continue troubleshooting.
+To diagnose routing problems, run and analyze an MTR report from your computer to your Linode. For instructions on how to use MTR, review Linode's [MTR guide](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#analyze-mtr-reports). It is useful to run your MTR report for 100 cycles in order to get a good sample size (note that running a report with this many cycles can take more time to complete). This recommended command includes other helpful options:
 
-If your report shows significant packet loss starting part-way through the route, there may be an issue between your internet service provider and Linode's upstream network peers. To confirm this issue, run another test originating from your Linode (by logging in with Lish and running the MTR command from the Linode) to your home computer's IP address. To find out what your local IP is, visit a website like https://www.whatismyip.com/.
+    mtr -rwbzc 100 -i 0.2 -rw 198.51.100.0 <Linode's IP address>
 
-Once you have finished generating these reports, open a Linode support ticket with the results. Linode Support will try to help further diagnose the routing issue.
+Once you have generated this report, compare it with the following example scenarios.
 
 {{< note >}}
-If you are located in China, there is a chance that your IP has been blacklisted by the GFW (Great Firewall of China). Because this is a systemic issue, Linode is no longer in the process of swapping IP addresses for affected Linodes. You can point the reader to the instructions found here: https://www.linode.com/community/questions/17192/ssh-refused
+If you are located in China, and the output of your MTR report shows *high packet loss* or an *improperly configured router*, then your IP address may have been blacklisted by the GFW (Great Firewall of China). Linode is not able to change your IP address if it has been blacklisted by the GFW. If you have this issue, review this [community post](https://www.linode.com/community/questions/17192/ssh-refused) for troubleshooting help.
 {{< /note >}}
+
+-   **High Packet Loss**
+
+        root@localhost:~# mtr --report www.google.com
+        HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+        1. 63.247.74.43                   0.0%    10    0.3   0.6   0.3   1.2   0.3
+        2. 63.247.64.157                  0.0%    10    0.4   1.0   0.4   6.1   1.8
+        3. 209.51.130.213                60.0%    10    0.8   2.7   0.8  19.0   5.7
+        4. aix.pr1.atl.google.com        60.0%    10    6.7   6.8   6.7   6.9   0.1
+        5. 72.14.233.56                  50.0%   10    7.2   8.3   7.1  16.4   2.9
+        6. 209.85.254.247                40.0%   10   39.1  39.4  39.1  39.7   0.2
+        7. 64.233.174.46                 40.0%   10   39.6  40.4  39.4  46.9   2.3
+        8. gw-in-f147.1e100.net          40.0%   10   39.6  40.5  39.5  46.7   2.2
+
+    This example report shows high persistent packet to the end of the route loss starting mid-way through the route at hop 3, which indicates an issue with the router at hop 3. If your report looks like this, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance.
+
+    {{< note >}}
+If your route only shows packet loss at certain routers, and not through to the end of the route, then it is likely that those routers are purposefully limiting ICMP responses. This is generally not a problem for your connection. Linode's MTR guide provides more context for [packet loss issues](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#verify-packet-loss).
+{{< /note >}}
+
+    If your report looks like this, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance. As well, Linode's MTR guide provides more context for [packet loss issues](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#verify-packet-loss).
+
+-  **Improperly Configured Router**
+
+        root@localhost:~# mtr --report www.google.com
+        HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+        1. 63.247.74.43                  0.0%    10    0.3   0.6   0.3   1.2   0.3
+        2. 63.247.64.157                 0.0%    10    0.4   1.0   0.4   6.1   1.8
+        3. 209.51.130.213                0.0%    10    0.8   2.7   0.8  19.0   5.7
+        4. aix.pr1.atl.google.com        0.0%    10    6.7   6.8   6.7   6.9   0.1
+        5. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+        6. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+        7. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+        8. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+        9. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+        10. ???                           0.0%    10    0.0   0.0   0.0   0.0   0.0
+
+    If your report shows question marks instead of the hostnames (or IP addresses) of the routers, and if these question marks persist to the end of the route, then the report indicates an improperly configured router. If your report looks like this, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance.
+
+    {{< note >}}
+If your route only shows question marks for certain routers, and not through to the end of the route, then it is likely that those routers are purposefully blocking ICMP responses. This is generally not a problem for your connection. Linode's MTR guide provides more information about [router configuration issues](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#an-isp-router-is-not-configured-properly).
+{{< /note >}}
+
+-  **Destination Host Networking Improperly Configured**
+
+        root@localhost:~# mtr --report www.google.com
+        HOST: localhost                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+        1. 63.247.74.43                  0.0%    10    0.3   0.6   0.3   1.2   0.3
+        2. 63.247.64.157                 0.0%    10    0.4   1.0   0.4   6.1   1.8
+        3. 209.51.130.213                0.0%    10    0.8   2.7   0.8  19.0   5.7
+        4. aix.pr1.atl.google.com        0.0%    10    6.7   6.8   6.7   6.9   0.1
+        5. 72.14.233.56                  0.0%    10    7.2   8.3   7.1  16.4   2.9
+        6. 209.85.254.247                0.0%    10   39.1  39.4  39.1  39.7   0.2
+        7. 64.233.174.46                 0.0%    10   39.6  40.4  39.4  46.9   2.3
+        8. gw-in-f147.1e100.net         100.0    10    0.0   0.0   0.0   0.0   0.0
+
+    If your report shows no or low packet loss (or non-persistent packet loss isolated to certain routers) until the end of the route, and 100% loss at your Linode, then the report indicates that your Linode's network interface is not configured correctly. If your report looks like this, move down to [confirming network configuration issues from Rescue Mode](#confirm-network-configuration-issues-from-rescue-mode).
+
+{{< note >}}
+If your report does not look like any of the previous examples, read through the [MTR guide](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for other potential scenarios.
+{{< /note >}}
+
+### Confirm Network Configuration Issues from Rescue Mode
+
+If your MTR indicates a configuration issue within your Linode, you can confirm the problem by using Rescue Mode:
+
+1.  Reboot your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode).
+
+1.  Run another MTR report from your computer to your Linode's IP address.
+
+1.  As noted earlier, Rescue Mode boots with a working network configuration. If your new MTR report does not show the same packet loss that it did before, this result confirms that your deployment's network configuration needs to be fixed. Continue to [troubleshooting network configuration issues](#troubleshoot-network-configuration-issues).
+
+1.  If your new MTR report still shows the same packet loss at your Linode, this result indicates issues outside of your configuration. [Open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance.
+
+### Open a Support Ticket with your MTR Results
+
+Before opening a support ticket, you should also generate a *reverse MTR*. A reverse MTR is a report which you run from your Linode and which targets your local IP address. To run an MTR from your Linode, open and log in to your Lish console. To find out what your local IP is, visit a website like https://www.whatismyip.com/.
+
+Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
+
+## Troubleshoot Network Configuration Issues
+
+If you have determined that your network configuration is the cause of the problem, review the following troubleshooting suggestions.
+
+If you make any changes in an attempt to fix the issue, you can test those changes with these steps:
+
+1.  Run another MTR report (or [ping](/docs/troubleshooting/troubleshooting/#can-you-ping-the-linode) the Linode) from your computer to your Linode's IP.
+
+1.  If the report shows no packet loss, but you still can't access SSH or other services, this result indicates that your networking is up again, but the other services are still down. Move onto [troubleshooting SSH](#troubleshoot-ssh) or [troubleshooting other services](#troubleshoot-other-services)
+
+1.  If the report still shows the same packet loss, review the remaining troubleshooting suggestions in this section.
+
+If the recommendations in this section do not resolve your issue, try pasting your [diagnostic commands' output](#run-diagnostic-commands) into a search engine or searching for your output in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
 
 ### Try Enabling Network Helper
 
-If your Linode's networking is down, a quick fix may be to enable Linode's [Network Helper](/docs/platform/network-helper/) tool and then reboot. Network Helper will attempt to generate the appropriate static networking configuration for your Linux distribution.
+A quick fix may be to enable Linode's [Network Helper](/docs/platform/network-helper/) tool. Network Helper will attempt to generate the appropriate static networking configuration for your Linux distribution. After you enable Network Helper, reboot your Linode for the changes take effect. If Network Helper was already enabled, continue to the remaining troubleshooting suggestions in this section.
 
--   If Network Helper was already enabled, continue to the next sections.
--   If you enable it and reboot, try running another MTR report (or [ping](/docs/troubleshooting/troubleshooting/#can-you-ping-the-linode) the Linode). If the report shows no packet loss, but you still can't access SSH or other services, this indicates that your networking is up again, but the other services are still down. Move onto [troubleshooting SSH](#troubleshoot-ssh) or [troubleshooting other services](#troubleshoot-other-services)
--   If networking is still down after enabling Network Helper, continue to the next sections.
+### Did You Upgrade to Ubuntu 18.04+ From an Earlier Version?
 
-### Run Standard Diagnostic Commands
+If you performed an inline upgrade from an earlier version of Ubuntu to Ubuntu 18.04+, you may need to enable the `systemd-networkd` service:
 
-Include instructions for running standard diagnostic commands on different distros, and include expected output. Example commands for Debian 8/9:
+    sudo systemctl enable systemd-networkd
 
-    cat /etc/network/interfaces
-    systemctl status networking.service
-    ip a
-    ip r
+Afterwards, reboot your Linode.
 
-### Errors from the networking Service
+### Run Diagnostic Commands
 
-If the output from the status of your `networking` service shows an error like `Failed to start Raise network interfaces`, review your logs for further clues:
+To collect more information about your network configuration, collect output from the diagnostic commands appropriate for your distribution:
 
-    sudo systemctl status networking.service -l
-    sudo journalctl -u networking --no-pager | tail -20
+{{< disclosure-note "Network diagnostic commands" >}}
+-   **Debian 7, Ubuntu 14.04**
+
+        sudo service network status
+        cat /etc/network/interfaces
+        ip a
+        ip r
+        sudo ifdown eth0 && sudo ifup eth0
+
+-   **Debian 8 and 9, Ubuntu 16.04**
+
+        sudo systemctl status networking.service -l
+        sudo journalctl -u networking --no-pager | tail -20
+        cat /etc/network/interfaces
+        ip a
+        ip r
+        sudo ifdown eth0 && sudo ifup eth0
+
+-   **Ubuntu 18.04**
+
+        sudo networkctl status
+        sudo systemctl status systemd-networkd -l
+        sudo journalctl -u systemd-networkd --no-pager | tail -20
+        cat /etc/systemd/network/05-eth0.network
+        ip a
+        ip r
+        sudo netplan apply
+
+-   **Arch, CoreOS**
+
+        sudo systemctl status systemd-networkd -l
+        sudo journalctl -u systemd-networkd --no-pager | tail -20
+        cat /etc/systemd/network/05-eth0.network
+        ip a
+        ip r
+
+-   **CentOS 6**
+
+        sudo service network status
+        cat /etc/sysconfig/network-scripts/ifcfg-eth0
+        ip a
+        ip r
+        sudo ifdown eth0 && sudo ifup eth0
+
+-   **CentOS 7, Fedora**
+
+        sudo systemctl status NetworkManager -l
+        sudo journalctl -u NetworkManager --no-pager | tail -20
+        sudo nmcli
+        cat /etc/sysconfig/network-scripts/ifcfg-eth0
+        ip a
+        ip r
+        sudo ifdown eth0 && sudo ifup eth0
+{{< /disclosure-note >}}
+
+### Inspect Error Messages
+
+Your commands' output may show error messages, including generic errors like `Failed to start Raise network interfaces`. There may also be more specific errors that appear. Two common errors that can appear are related to Sendmail and iptables:
 
 #### Sendmail
 
-If the output from your networking service logs show an error similar to the following, it is likely that a broken Sendmail update is at fault:
+If you find message similar to the following, it is likely that a broken Sendmail update is at fault:
 
 {{< output >}}
 /etc/network/if-up.d/sendmail: 44: .: Can't open /usr/share/sendmail/dynamic run-parts: /etc/network/if-up.d/sendmail exited with return code 2
 {{< /output >}}
 
-The sendmail issue can usually be resolved by running the following two commands:
+The Sendmail issue can usually be resolved by running the following command and restarting your Linode:
 
     sudo mv /etc/network/if-up.d/sendmail ~
     ifdown -a && ifup -a
 
-You can read more about the SendMail bug at the following link: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=873978
+{{< note >}}
+Read more about the Sendmail bug [here](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=873978).
+{{< /note >}}
 
 #### iptables
 
-Malformed rules in your iptables ruleset can sometimes cause issues for your network scripts. An error similar to the following will generally appear in your logs:
+Malformed rules in your iptables ruleset can sometimes cause issues for your network scripts. An error similar to the following can appear in your logs if this is the case:
 
 {{< output >}}
 Apr 06 01:03:17 xlauncher ifup[6359]: run-parts: failed to exec /etc/network/if- Apr 06 01:03:17 xlauncher ifup[6359]: run-parts: /etc/network/if-up.d/iptables e
 {{< /output >}}
 
-You can run the following commands to resolve this issue.
+Run the following command and restart your Linode to resolve this issue:
 
     sudo mv /etc/network/if-up.d/iptables ~
-    ifdown -a && ifup -a
 
-Please note that your firewall will be down at this point, so you will need to re-enable it manually.
+Please note that your firewall will be down at this point, so you will need to re-enable it manually. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide for help with managing iptables.
 
 ### Was your Interface Renamed?
 
-When viewing the output of the `interfaces` file, or the output from your `ip` commands, if you notice your interfaces have been renamed to something other than `eth0` (for example, `ensp`) this may be due to the latest version of systemd (226-1+ as of writing this guide). Specifically, [Predictable Network Interface Names](https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/) may be renaming your interfaces.
+In your commands' output, you might notice that your 'eth0' interface is missing and replaced with another name (for example, `ensp` or `ensp0`). This behavior can be caused by systemd's [Predictable Network Interface Names](https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/) feature.
 
 1.  Disable the use of Predictable Network Interface Names with these commands:
 
@@ -183,31 +344,58 @@ When viewing the output of the `interfaces` file, or the output from your `ip` c
 
 1.  Reboot your Linode for the changes to take effect.
 
-### Privacy Extensions for IPv6
-
-If you are only unable to connect via IPv6, then your Linode may be using an incorrect IPv6 address. Compare the global IPv6 address that appears in the output from your `ip a` command with the value shown in the [Remote Access tab](/docs/platform/manager/remote-access/) of your Linode's dashboard. If they don't match, then your distribution may be using privacy extensions to generate an incorrect address.
-
-Include instructions for how to fix this (search kb for privacy extensions)
-
 ### Review Firewall Rules
 
-If your interface is up but your networking is still down, your firewall may be blocking all connections, including basic ping requests.
+If your interface is up but your networking is still down, your firewall (which is likely implemented by the `iptables` software) may be blocking all connections, including basic ping requests. To review your current firewall ruleset, run:
 
-Include instructions for inspecting and dumping firewall rules for iptables and ip6tables. Example commands and text:
+    sudo iptables-save # displays IPv4 rules
+    sudo ip6tables-save # displays IPv6 rules
 
-    sudo iptables-save
+{{< note >}}
+Your deployment may be running FirewallD or UFW, which are frontend software packages used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
-If you are unable to determine if a specific rule is causing a problem, you can save your iptables to a backup and flush your rules:
+    sudo ufw status
+    sudo firewall-cmd --state
 
-    sudo iptables-save > /tmp/iptables.txt
-    sudo iptables -P INPUT ACCEPT
-    sudo iptables -P FORWARD ACCEPT
-    sudo iptables -P OUTPUT ACCEPT
-    sudo iptables -t nat -F
-    sudo iptables -t mangle -F
-    sudo iptables -F
-    sudo iptables -X
+Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
+{{< /note >}}
 
-Guide: https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables/
+Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections.
 
-Include links to troubleshooting firewalld and other firewall utilities.
+### Disable Firewall Rules
+
+In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling afterward it with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
+
+1.  Create a temporary backup of your current iptables:
+
+        sudo iptables-save > ~/iptables.txt
+
+1.  Set the `INPUT`, `FORWARD` and `OUTPUT` packet policies as `ACCEPT`:
+
+        sudo iptables -P INPUT ACCEPT
+        sudo iptables -P FORWARD ACCEPT
+        sudo iptables -P OUTPUT ACCEPT
+
+1.  Flush the `nat` table that is consulted when a packet that creates a new connection is encountered:
+
+        sudo iptables -t nat -F
+
+1.  Flush the `mangle` table that is used for specialized packet alteration:
+
+        sudo iptables -t mangle -F
+
+1.  Flush all the chains in the table:
+
+        sudo iptables -F
+
+1.  Delete every non-built-in chain in the table:
+
+        sudo iptables -X
+
+1.  Repeat these steps with the `ip6tables` command to flush your IPv6 rules. Be sure to assign a different name to the file you save your IPv6 rules to (e.g. `~/ip6tables.txt`).
+
+## Next Steps
+
+If you are able to restore basic networking, but you still can't access SSH or other services, refer to the [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/troubleshooting/troubleshooting-web-servers-databases-other-services/) guides.
+
+If your connection issues were the result of maintenance performed by Linode, review the [Reboot Survival Guide](/docs/uptime/reboot-survival-guide/) for methods to prepare a Linode for any future maintenance.
