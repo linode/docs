@@ -17,39 +17,39 @@ external_resources:
 - '[Linode APIv4 Python library example app repository](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode)'
 ---
 
-Linode supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf, within a specified scope, when dealing with a service, like Linode. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the [Linode APIv4](https://developers.linode.com/api/v4). An app could create or destroy Linodes, manage a NodeBalancer, or alter a domain, for example.
+Linode supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the [Linode APIv4](https://developers.linode.com/api/v4). For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.
 
-This guide will show you how to create a simple OAuth application, using [Flask](http://flask.pocoo.org/) and the [Linode Python API library](https://linode-api4.readthedocs.io/en/latest/index.html). This app allows a user to log in with their Linode account and create a Linode with a StackScript. The complete code for this example is available in the [Linode APIv4 Python library example](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode) repository.
+This guide will show you how to create a simple OAuth application using [Flask](http://flask.pocoo.org/) and the [Linode Python API library](https://linode-api4.readthedocs.io/en/latest/index.html). This app allows a user to log in with their Linode account and create a Linode with a StackScript. The complete code for this example is available in the [Linode APIv4 Python library example](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode) repository.
 
 ## Before You Begin
 
-1.  Normally, in order to create an OAuth app with Linode your server must have HTTPS enabled. The only exceptions to this rule are `localhost` addresses, which can use HTTP. As this guide is just a primer and is not intended to supply production ready code, we will be working with a local workstation, using `localhost`. If you choose to create an app for production, you will need to generate SSL certificates for HTTPS access.
+1. Normally, in order to create an OAuth app with Linode your server must have HTTPS enabled. The only exceptions to this rule are `localhost` addresses, which can use HTTP. As this guide is just a primer and is not intended to supply production ready code, we will be working with a local workstation, using `localhost`. If you choose to create an app for production, you will need to generate SSL certificates for HTTPS access.
 
-2. Ensure that Python 3 is installed on your workstation.
+1. Ensure that Python 3 is installed on your workstation.
 
 ## Obtaining a Client ID and a Client Secret
 
 In order for Linode to verify the identity of your app, called a *client*, you will need to generate a set of credentials, specifically a client ID and a client secret.
 
-  1. Log in to the [Linode Cloud Manager](https://cloud.linode.com) and navigate to your Account Profile.
+1. Log in to the [Linode Cloud Manager](https://cloud.linode.com) and navigate to your Account Profile.
 
-      ![OAuth Account Profile](oauth-account.png)
+    ![OAuth Account Profile](oauth-account.png)
 
-  1. From there, click on the **My Apps** tab and select **Create My App**.You will be prompted to supply a label for your app and a callback URL. We will discuss the role of the callback URL in depth [later in this guide](#manage-the-oauth-2-callback-url). For now you can supply the following URL:
+1. From there, click on the **My Apps** tab and select **Create My App**. You will be prompted to supply a label for your app and a callback URL. We will discuss the role of the callback URL in depth [later in this guide](#manage-the-oauth-2-callback-url). For now you can supply the following URL:
 
         http://localhost:5000/auth_callback
 
-      Leave *Public* unchecked and click **Submit**.
+    Leave *Public* unchecked and click **Submit**.
 
-      ![OAuth Account Profile](oauth-create-app.png)
+    ![OAuth Account Profile](oauth-create-app.png)
 
-  1. A window will appear with your client secret. Copy this down somewhere secure, as once you exit this window you will not be able to retrieve the client secret again, and will be forced to generate a new one.
+1. A window will appear with your client secret. Copy this down somewhere secure, as once you exit this window you will not be able to retrieve the client secret again, and will be forced to generate a new one.
 
       ![OAuth Account Profile](oauth-client-secret.png)
 
-  1. Once you exit the client secret window your app will appear as part of a list of apps. Note your client ID, as this is the last piece of information you will need to verify your app's identity.
+1. Once you exit the client secret window your app will appear as part of a list of apps. Note your client ID, as this is the last piece of information you will need to verify your app's identity.
 
-      ![OAuth Account Profile](oauth-client-id.png)
+    ![OAuth Account Profile](oauth-client-id.png)
 
 In summary, you should have these three bits of information, with values similar to the ones provided here:
 
@@ -160,7 +160,7 @@ def index():
     )
 {{< /file >}}
 
-It is important to note that the two API queries in the above code are slightly different from one another. The `client.regions` method is a top-level method, just as it appears in the [Linode API](https://developers.linode.com/api/v4#tag/Regions). The `client.linode.types` method, on the other hand, is part of the Linode group, which is a collection of methods that deal with Linodes. Again, this is because Linode endpoints are grouped that way in the [API](https://developers.linode.com/api/v4#tag/Linode-Types). Some methods in the Linode Python library, like `domain_create`, are top-level, like `regions`, while others, like `networking.ip_assign`, are part of a group. For more information on the top-level methods and groupings, consult the [library documentation](https://linode-api4.readthedocs.io/en/latest/linode_api4/linode_client.html#grouping).
+It is important to note that the two API queries in the above code are slightly different from one another. The `client.regions` method is a top-level method, just as it appears in the [Linode API](https://developers.linode.com/api/v4#tag/Regions). The `client.linode.types` method, on the other hand, is part of the Linode group, which is a collection of methods that deal with Linodes. Again, this is because Linode endpoints are grouped that way in the [API](https://developers.linode.com/api/v4#tag/Linode-Types). Some methods in the Linode Python library are top level, such as `domain_create`, while others, like `networking.ip_assign`, are part of a group. For more information on the top-level methods and groupings, consult the [library documentation](https://linode-api4.readthedocs.io/en/latest/linode_api4/linode_client.html#grouping).
 
 In addition to querying the API, the above route also renders the `configure.html` template by passing it the types, regions, application name, and StackScript object. The StackScript object contains a list of StackScript compatible images. We will cover templating in a later section.
 
@@ -200,7 +200,6 @@ Below is a list of available scopes:
 - OAuthScopes.Events
 - OAuthScopes.Volumes
 
-
 Each scope is broken into five permissions: `view`, `create`, `modify`, `delete`, and `all`. The `all` permission encompasses the other four permissions.
 {{</ note >}}
 
@@ -208,7 +207,7 @@ Each scope is broken into five permissions: `view`, `create`, `modify`, `delete`
 
 The OAuth 2 callback URL has two main responsibilities. Its first responsibility is to help prove the identity of the client application. When a user attempts to log in to Linode through OAuth, instead of redirecting the user back to the page they came from, Linode's OAuth implementation matches the client ID to the callback URL you have registered with your app on Linode's system. This ensures that a nefarious third party can't just steal the client ID, which is public, and attempt to authorize their own app with it.
 
-The callback URL's second responsibility is to kick off the process of exchanging an authorization code for an access token. This second process is done over POST, and so it doesn't require the user to physically leave the page they are returned to after they login to Linode. Now you will write the code that satisfies this second responsibility.
+The callback URL's second responsibility is to kick off the process of exchanging an authorization code for an access token. This second process is done over POST, and so it doesn't require the user to physically leave the page they are returned to after they log in to Linode. Now you will write the code that satisfies this second responsibility.
 
 In `app.py`, add the following lines:
 
@@ -255,7 +254,7 @@ When the user is returned to the callback URL, an authorization code is appended
 ...
 {{</ file >}}
 
-Then, you retrieve an instance of the LinodeLoginClient class:
+Then you retrieve an instance of the LinodeLoginClient class:
 
 {{< file "~/linode-oauth-project/app.py" python >}}
 ...
@@ -291,7 +290,7 @@ Once your app has determined that it has the correct permissions, it creates the
 ...
 {{</ file >}}
 
-Once the Linode has been created, the app expires the OAuth access token. Expiring tokens after use is a strong security measure, but if your app is performing many actions on the behalf of the user you might find that time-based expiration scheme is more suitable to your needs. The app then renders the success template by passing it the `linode` object, the password, and application name:
+Once the Linode has been created, the app expires the OAuth access token. Expiring tokens after use is a strong security measure but if your app is performing many actions on behalf of the user, you might find that time-based expiration scheme is more suitable to your needs. The app then renders the success template by passing it the `linode` object, the password, and application name:
 
 {{< file "~/linode-oauth-project/app.py" python >}}
 ...
@@ -322,7 +321,7 @@ def make_instance(token, type_id, region_id, distribution_id):
     return linode, password
 {{< /file >}}
 
-The `make_instance` function takes an OAuth access token, the type ID, the region ID, and the image (distribution) ID as parameters. It creates an instance of the LinodeClient class, and unlike the instance of LinodeClient used earlier in the guide, this one requires an OAuth token because you will be using it to create a Linode. The function then creates a Linode using the `linode.instance_create` method, returning the `linode` object and the password.
+The `make_instance` function takes an OAuth access token, the type ID, the region ID, and the image (Linux distribution) ID as parameters. It creates an instance of the LinodeClient class, and unlike the instance of LinodeClient used earlier in the guide, this one requires an OAuth token because you will be using it to create a Linode. The function then creates a Linode using the `linode.instance_create` method, returning the `linode` object and the password.
 
 Finally, if there was an error with the creation of the Linode, the `if not linode` statement will raise a runtime error.
 
@@ -535,7 +534,7 @@ Open your browser to the following URL:
 
     http://localhost:5000/
 
-You should be greeted with your new app. Select a plan, a region, and a image to deploy a Linode using the Linode API Python library.
+You should be greeted with your new app. Select a plan, a region, and an image to deploy a Linode using the Linode API Python library.
 
 ## Next Steps
 
