@@ -5,6 +5,8 @@ author:
 description: 'Troubleshooting steps to access your Linode after maintenance has been applied to your host.'
 keywords: ['linux','reboot','lish']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+deprecated: true
+deprecated_link: 'troubleshooting/troubleshooting-basic-connection-issues/'
 published: 2018-07-27
 modified: 2018-07-27
 modified_by:
