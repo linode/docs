@@ -202,4 +202,4 @@ Would be nice to eventually have these instructions in a new "How to Free Up Spa
 
 ### Database Performance Troubleshooting
 
-If your database is running but returning slowly, research how to opimize the database software for the resources your Linode has. If you run MySQL or MariaDB, read [How to Optimize MySQL Performance Using MySQLTuner](/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/).
+If your database is running but returning slowly, research how to optimize the database software for the resources your Linode has. If you run MySQL or MariaDB, read [How to Optimize MySQL Performance Using MySQLTuner](/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/).
