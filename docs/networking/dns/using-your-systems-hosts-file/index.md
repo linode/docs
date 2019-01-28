@@ -3,9 +3,9 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Mapping aliases, domains or hostnames to IP addresses using the system host file.'
-keywords: ["hosts", "hosts file", "hostname", "alias"]
+keywords: ["hosts", "hosts file", "hostname", "alias", "dnsec"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-22
+modified: 2019-01-28
 modified_by:
   name: Linode
 published: 2017-09-14

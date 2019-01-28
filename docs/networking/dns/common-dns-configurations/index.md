@@ -4,10 +4,10 @@ author:
   email: docs@linode.com
 description: 'Configurations for common DNS records.'
 og_description: 'This guide explains how to use the Linode DNS manager, to configure DNS records'
-keywords: ["dns"]
+keywords: ["dns", "dnssec"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
-modified: 2018-05-22
+modified: 2019-01-28
 modified_by:
   name: Linode
 published: 2015-01-20

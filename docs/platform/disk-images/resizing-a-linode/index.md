@@ -3,10 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to upgrading and resizing your Linode
-keywords: ["upgrading", "resizing"]
+keywords: ["upgrading", "resizing", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['resizing/','migrate-to-linode/disk-images/resizing-a-linode/']
-modified: 2017-03-02
+modified: 2019-01-28
 modified_by:
   name: Linode
 published: 2017-02-14

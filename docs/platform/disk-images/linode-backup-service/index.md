@@ -2,10 +2,10 @@
 author:
   name: Alex Fornuto
 description: 'Use the Linode Backup Service to protect and secure your data.'
-keywords: ["backup service", "linode platform", "linode backup service", "enable a backup", "manage a backup", "schedule a backup", "disable a backup", "restore from a backup", "boot from a backup"]
+keywords: ["backup service", "linode platform", "linode backup service", "enable a backup", "manage a backup", "schedule a backup", "disable a backup", "restore from a backup", "boot from a backup", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['backup-service/','platform/backup-service/', 'security/backups/linode-backup-service/','platform/linode-backup-service/']
-modified: 2018-12-20
+modified: 2019-01-28
 modified_by:
   name: Linode
 published: 2012-03-14
