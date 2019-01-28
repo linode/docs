@@ -24,6 +24,10 @@ disqusShortname="linode-1"
 
 rssLimit = 15
 
+enableGitInfo = true
+
+[frontmatter]
+lastmod = [":git"]
 
 [blackfriday]
 fractions = false
