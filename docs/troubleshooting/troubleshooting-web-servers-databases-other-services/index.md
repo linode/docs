@@ -12,7 +12,7 @@ modified_by:
 title: "Troubleshooting Web Servers, Databases, and Other Services"
 ---
 
-This guide presents troubleshooting strategies for when you can't connect to your web server, database, or other service that your Linode runs. This guide assumes that you have access to SSH. If you can't log in with SSH, review [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) and then return to this guide.
+This guide presents troubleshooting strategies for when you can't connect to your web server, database, or other services running on your Linode. This guide assumes that you have access to SSH. If you can't log in with SSH, review [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) and then return to this guide.
 
 {{< disclosure-note "Where to go for help outside this guide" >}}
 This guide explains how to use different troubleshooting commands on your Linode. These commands can produce diagnostic information and logs that may expose the root of your connection issues. For some specific examples of diagnostic information, this guide also explains the corresponding cause of the issue and presents solutions for it.
@@ -42,7 +42,7 @@ If the service isn't running, try restarting it:
 | Distribution | Command |
 | ------------ | ------- |
 | systemd systems | `sudo systemctl restart <service name>` |
-| sysvinit systems | `sudo service <service name> restart` |
+| sysVinit systems | `sudo service <service name> restart` |
 
 ### Enable the Service
 
@@ -51,13 +51,13 @@ If your system was recently rebooted, and the service didn't start automatically
 | Distribution | Command |
 | ------------ | ------- |
 | systemd systems | `sudo systemctl enable <service name>` |
-| sysvinit systems | `sudo chkconfig <service name> on` |
+| sysVinit systems | `sudo chkconfig <service name> on` |
 
 ### Check which IP Addresses and Ports your Services are Bound To
 
-Your service may be listening on an unexpected port, or it may not be bound to your public IP address (or whatever address is desirable). To view which address and ports and service is bound on, run the `netstat` command with these options:
+Your service may be listening on an unexpected port, or it may not be bound to your public IP address (or whatever address is desirable). To view which address and ports and service is bound on, run the `ss` command with these options:
 
-    sudo netstat -plntu
+    sudo ss -atpu
 
 Review the application's documentation for help with setting the address and port it should bind to.
 
@@ -67,7 +67,7 @@ One notable example is if a service is only bound to a public IPv4 address and n
 
 ### Analyze Service Logs
 
-If your service doesn't start normally, review your system logs and the logs for the service. Your system logs may be in the following locations:
+If your service doesn't start normally, review your system logs for the service. Your system logs may be in the following locations:
 
 | Distribution | System Logs |
 | ------------ | ------- |
@@ -75,7 +75,7 @@ If your service doesn't start normally, review your system logs and the logs for
 | Ubuntu 14.04, Debian 7 | `/var/log/syslog` |
 | CentOS 6 | `/var/log/messages` |
 
-Your service's log location will vary by the application, but they are often stored within `/var/log`. [The `less` command](/docs/quick-answers/linux/how-to-use-less/) is a useful tool for browsing through your logs.
+Your service's log location will vary by the application, but they are often stored in `/var/log`. [The `less` command](/docs/quick-answers/linux/how-to-use-less/) is a useful tool for browsing through your logs.
 
 Try pasting your log messages into a search engine or searching for your messages in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
 
@@ -83,11 +83,11 @@ Try pasting your log messages into a search engine or searching for your message
 
 If your service is running but your connections still fail, your firewall (which is likely implemented by the `iptables` software) may be blocking the connections. To review your current firewall ruleset, run:
 
-    sudo iptables-save # displays IPv4 rules
-    sudo ip6tables-save # displays IPv6 rules
+    sudo iptables -L # displays IPv4 rules
+    sudo ip6tables -L # displays IPv6 rules
 
 {{< note >}}
-Your deployment may be running FirewallD or UFW, which are frontend software packages used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
+Your deployment may be running FirewallD or UFW, which are frontends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
     sudo ufw status
     sudo firewall-cmd --state
@@ -95,13 +95,11 @@ Your deployment may be running FirewallD or UFW, which are frontend software pac
 Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
-For example, a rule which allows incoming HTTP traffic could look like this:
+Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. For example, a rule which allows incoming HTTP traffic could look like this:
 
 {{< output >}}
 -A INPUT -p tcp -m tcp --dport 80 -m conntrack --ctstate NEW -j ACCEPT
 {{< /output >}}
-
-Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections.
 
 ### Disable Firewall Rules
 
@@ -168,7 +166,7 @@ If your web server is responding with an error code, your troubleshooting will v
 
 -   **HTTP 404 Not Found**
 
-    The URL that a user requested could not be found by the web server. Review your web server configuraiton and make sure your website files are stored in the right location on your filesystem:
+    The URL that a user requested could not be found by the web server. Review your web server configuration and make sure your website files are stored in the right location on your filesystem:
 
     -   [Apache - Mapping URLs to Filesystem Locations](https://httpd.apache.org/docs/2.4/urlmapping.html)
 

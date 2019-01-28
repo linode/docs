@@ -124,7 +124,7 @@ If you can boot your Linode normally and access the Lish console, you can contin
 
 ### Check for Network Route Problems
 
-To diagnose routing problems, run and analyze an MTR report from your computer to your Linode. For instructions on how to use MTR, review Linode's [MTR guide](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#analyze-mtr-reports). It is useful to run your MTR report for 100 cycles in order to get a good sample size (note that running a report with this many cycles can take more time to complete). This recommended command includes other helpful options:
+To diagnose routing problems, run and analyze an MTR report from your computer to your Linode. For instructions on how to use MTR, review Linode's [MTR guide](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#analyze-mtr-reports). It is useful to run your MTR report for 100 cycles in order to get a good sample size (note that running a report with this many cycles will take more time to complete). This recommended command includes other helpful options:
 
     mtr -rwbzc 100 -i 0.2 -rw 198.51.100.0 <Linode's IP address>
 
@@ -147,7 +147,7 @@ If you are located in China, and the output of your MTR report shows *high packe
         7. 64.233.174.46                 40.0%   10   39.6  40.4  39.4  46.9   2.3
         8. gw-in-f147.1e100.net          40.0%   10   39.6  40.5  39.5  46.7   2.2
 
-    This example report shows high persistent packet to the end of the route loss starting mid-way through the route at hop 3, which indicates an issue with the router at hop 3. If your report looks like this, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance.
+    This example report shows high persistent packet loss starting mid-way through the route at hop 3, which indicates an issue with the router at hop 3. If your report looks like this, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance.
 
     {{< note >}}
 If your route only shows packet loss at certain routers, and not through to the end of the route, then it is likely that those routers are purposefully limiting ICMP responses. This is generally not a problem for your connection. Linode's MTR guide provides more context for [packet loss issues](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#verify-packet-loss).
@@ -209,19 +209,17 @@ If your MTR indicates a configuration issue within your Linode, you can confirm 
 
 ### Open a Support Ticket with your MTR Results
 
-Before opening a support ticket, you should also generate a *reverse MTR*. A reverse MTR is a report which you run from your Linode and which targets your local IP address. To run an MTR from your Linode, open and log in to your Lish console. To find out what your local IP is, visit a website like https://www.whatismyip.com/.
+Before opening a support ticket, you should also generate a *reverse MTR* report. The MTR tool is run from your Linode and targets your machine's IP address on your local network, whether you're on your home LAN, for example, or public WiFi. To run an MTR from your Linode, log in to your Lish console. To find your local IP, visit a website like https://www.whatismyip.com/.
 
 Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
 
 ## Troubleshoot Network Configuration Issues
 
-If you have determined that your network configuration is the cause of the problem, review the following troubleshooting suggestions.
-
-If you make any changes in an attempt to fix the issue, you can test those changes with these steps:
+If you have determined that your network configuration is the cause of the problem, review the following troubleshooting suggestions. If you make any changes in an attempt to fix the issue, you can test those changes with these steps:
 
 1.  Run another MTR report (or [ping](/docs/troubleshooting/troubleshooting/#can-you-ping-the-linode) the Linode) from your computer to your Linode's IP.
 
-1.  If the report shows no packet loss, but you still can't access SSH or other services, this result indicates that your networking is up again, but the other services are still down. Move onto [troubleshooting SSH](#troubleshoot-ssh) or [troubleshooting other services](#troubleshoot-other-services)
+1.  If the report shows no packet loss but you still can't access SSH or other services, this result indicates that your network connection is up again, but the other services are still down. Move onto [troubleshooting SSH](#troubleshoot-ssh) or [troubleshooting other services](#troubleshoot-other-services)
 
 1.  If the report still shows the same packet loss, review the remaining troubleshooting suggestions in this section.
 
@@ -335,7 +333,7 @@ Please note that your firewall will be down at this point, so you will need to r
 
 ### Was your Interface Renamed?
 
-In your commands' output, you might notice that your 'eth0' interface is missing and replaced with another name (for example, `ensp` or `ensp0`). This behavior can be caused by systemd's [Predictable Network Interface Names](https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/) feature.
+In your commands' output, you might notice that your `eth0` interface is missing and replaced with another name (for example, `ensp` or `ensp0`). This behavior can be caused by systemd's [Predictable Network Interface Names](https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/) feature.
 
 1.  Disable the use of Predictable Network Interface Names with these commands:
 
@@ -348,8 +346,8 @@ In your commands' output, you might notice that your 'eth0' interface is missing
 
 If your interface is up but your networking is still down, your firewall (which is likely implemented by the `iptables` software) may be blocking all connections, including basic ping requests. To review your current firewall ruleset, run:
 
-    sudo iptables-save # displays IPv4 rules
-    sudo ip6tables-save # displays IPv6 rules
+    sudo iptables -L # displays IPv4 rules
+    sudo ip6tables -L # displays IPv6 rules
 
 {{< note >}}
 Your deployment may be running FirewallD or UFW, which are frontend software packages used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
@@ -360,7 +358,7 @@ Your deployment may be running FirewallD or UFW, which are frontend software pac
 Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
-Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections.
+Firewall rulesets can vary widely. Review our [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections.
 
 ### Disable Firewall Rules
 

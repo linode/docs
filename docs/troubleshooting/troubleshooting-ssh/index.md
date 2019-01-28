@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: "Troubleshooting steps for when you can't connect to your Linode via SSH."
-keywords: ['linux','reboot','lish']
+keywords: ['linux','reboot','lish','ssh']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-25
 modified: 2019-01-25
@@ -158,7 +158,7 @@ If your service is running but your connections still fail, your firewall (which
     sudo ip6tables-save # displays IPv6 rules
 
 {{< note >}}
-Your deployment may be running FirewallD or UFW, which are frontend software packages used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
+Your deployment may be running FirewallD or UFW, which are frontends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
     sudo ufw status
     sudo firewall-cmd --state
@@ -166,19 +166,17 @@ Your deployment may be running FirewallD or UFW, which are frontend software pac
 Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
-A rule which allows incoming SSH traffic could look like this:
+Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. A rule which allows incoming SSH traffic could look like this:
 
 {{< output >}}
 -A INPUT -p tcp -m tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
 {{< /output >}}
 
-Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections.
-
 ### Disable Firewall Rules
 
 In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling afterward it with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
 
-1.  Create a temporary backup of your current iptables:
+1.  Create a temporary backup of your current iptables rules:
 
         sudo iptables-save > ~/iptables.txt
 
