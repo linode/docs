@@ -3,10 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to disks and configuration profiles
-keywords: ["disks", "config profiles"]
+keywords: ["disks", "config profiles", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['disk-images-config-profiles/','migrate-to-linode/disk-images/disk-images-and-configuration-profiles/']
-modified: 2014-06-19
+modified: 2019-01-28
 modified_by:
   name: Linode
 published: 2012-04-24
