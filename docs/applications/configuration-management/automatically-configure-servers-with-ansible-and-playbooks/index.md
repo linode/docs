@@ -279,9 +279,9 @@ This section demonstrates using a playbook to automate basic server configuratio
 
 ### Install the Stack
 
-Create a basic server setup with Apache, PHP, and a test MySQL database to use.
+Create a basic server setup with NGINX, PHP, and a test MySQL database to use.
 
-1.  The following playbook downloads the appropriate packages, turns on the Apache and MySQL services, and creates a basic database and user:
+1.  The following playbook downloads the appropriate packages, turns on the nginx and MySQL services, and creates a basic database and user:
 
     {{< file "setup_webserver.yml" yaml >}}
 ---
