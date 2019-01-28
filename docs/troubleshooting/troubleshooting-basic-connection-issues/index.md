@@ -40,7 +40,7 @@ To learn about Lish in more detail, and for instructions on how to connect to yo
 
 When your network traffic leaves your computer for your Linode, it travels through a series of routers that are administered by your internet service provider, by Linode's transit providers, and by the various organizations that form the [Internet's backbone](https://en.wikipedia.org/wiki/Internet_backbone). It is possible to analyze the route that your traffic takes for possible service interruptions using a tool called [MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/).
 
-MTR is similar to the [traceroute](https://en.wikipedia.org/wiki/Traceroute) tool, in that it will trace and display your traffic's route. MTR also runs several iterations of its tracing algorithim, which means that it can report statistics like average packet loss and latency over the period that the MTR test runs.
+MTR is similar to the [traceroute](https://en.wikipedia.org/wiki/Traceroute) tool, in that it will trace and display your traffic's route. MTR also runs several iterations of its tracing algorithm, which means that it can report statistics like average packet loss and latency over the period that the MTR test runs.
 
 Review the installation instructions in Linode's [Diagnosing Network Issues with MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#install-mtr) guide and install MTR on your computer.
 
