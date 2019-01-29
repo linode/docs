@@ -17,7 +17,7 @@ contributor:
 Linode warmly welcomes and encourages the reselling of our services to third-party customers. Anyone can resell Linode services. This guide will walk you through the process of becoming a reseller.
 
 {{< note >}}
-While Linode encourages reselling, we do not currently have a special reseller program. At this time Linode does not offer discounted pricing for resellers, nor do we directly offer white-label software, like WHMCS plugins, to aid in reselling. It is possible to create such software of your own via the Linode API; review the [custom management user interface](#custom-management-user-interface) for more detail.
+While Linode encourages reselling, we do not currently have a special reseller program. At this time Linode does not offer discounted pricing for resellers, nor do we directly offer white-label software, like WHMCS plugins, to aid in reselling. It is possible to create such software of your own via the [Linode API](#linode-api).
 
 However, Linode does have a referral program. For more information on Linode's referral program, read the [referral codes section](#referral-codes).
 {{</ note >}}
@@ -36,7 +36,7 @@ There are a variety of reasons one might want to resell Linode services. One of 
 
 ## Referral Codes
 
-As mentioned above, Linode does not offer a discount on re-sold Linode services. However, Linode does offer a referral program. If you feel like Linode is a good choice for another person, you can send them your [referral code (or referral URL)](https://cloud.linode.com/profile/referrals) to receive $20 per sign up.
+As mentioned above, Linode does not offer a discount on re-sold Linode services. However, Linode does offer a referral program. If you feel like Linode is a good choice for another person, you can send them your [referral code (or referral URL)](/docs/platform/billing-and-support/billing-and-payments-new-manager/#referral-credits) to receive $20 per sign up.
 
 The credit for your referral will be applied to your account if the referral stays active as a Linode customer for 90 days. Specifically, the referred account will need to have at least one active, billed Linode service on their account thoughout the 90 day period.
 
