@@ -22,7 +22,7 @@ disqusShortname="linode-1"
 
 #disableKinds = ["taxonomy", "taxonomyTerm"]
 
-rssLimit = 15
+rssLimit = 30
 
 
 [blackfriday]
