@@ -5,9 +5,9 @@ author:
 description: 'Shortguide for installing Git on Windows'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["windows", "git", "version"]
-modified: 2017-01-05
+modified: 2019-01-24
 modified_by:
-  name: Sam Foo
+  name: Linode
 title: "How to install Git on Windows"
 published: 2018-01-08
 headless: true
@@ -18,60 +18,72 @@ To install Git on Windows you will need to download the installer from the [Git]
 
 1. Download the most current version for your operating system by double clicking on the package name:
 
-    ![Click to download version for Windows.](1595-Git-Win-01.png)
+    ![Click to download version for Windows.](win-01-download-git.png)
 
 2.  Select **Run** to begin the installation:
 
-    ![Click Run to start the installer.](1596-Git-Win-02.png)
+    ![Click Run to start the installer.](win-02-save-git.png)
 
 3.  Click **Yes** to continue:
 
-    ![Click Yes to continue.](1597-Git-Win-03.png)
+    ![Click Yes to continue.](win-03-run-git.png)
 
 4.  Click **Next** to continue:
 
-    ![Click Next to continue.](1598-Git-Win-04.png)
+    ![Click Next to continue.](win-04-agree-license.png)
 
-5.  Click **Next** to continue:
+5.  If you need to change the installation folder, click **Browse** and select a new location. To accept the default location click on **Next**:
 
-    ![Click Next to continue.](1599-Git-Win-05.png)
+    ![Click Next for default or Browse to change.](win-05-select-folder.png)
 
-6.  If you need to change the installation folder, click **Browse** and select a new location. To accept the default location click on **Next**:
+6.  To accept the default components to be installed click **Next**. Otherwise, select the additional components to be installed before clicking the **Next** button:
 
-    ![Click Next for default or Browse to change.](1600-Git-Win-06.png)
+    ![Accept the default or select additional components.](win-06-select-components.png)
 
-7.  To accept the default components to be installed click **Next**. Otherwise, select the additional components to be installed before clicking the **Next** button:
+7.  Accept the default Start Menu folder by clicking **Next**, or use **Browse** to select a new folder location:
 
-    ![Accept the default or select additional components.](1601-Git-Win-07.png)
+    ![Select the start menu folder.](win-07-shortcut-folder.png)
 
-8.  Accept the default Start Menu folder by clicking **Next**, or use **Browse** to select a new folder location:
+8.  Select the default text editor for Git, then click **Next**:
 
-    ![Select the start menu folder.](1602-Git-Win-08.png)
+    ![Select the default text editor for Git.](win-08-default-text-editor.png)
 
-9.  Keep the default *line ending conversion* by clicking **Next**. To change the default, choose one of the two other choices before clicking **Next**:
+9.  Adjust your PATH environment, then click **Next**:
 
-    ![Select line ending conversions.](1603-Git-Win-09.png)
+    ![Adjust Git's PATH](win-09-adjust-your-path.png)
+
+10.  Choose which SSL/TLS library you'll use for HTTPS. Then, click **Next**:
+
+    ![Choose your HTTPS backend.](win-10-choose-https-backend.png)
+
+11. Keep the default *line ending conversion* by clicking **Next**. To change the default, choose one of the two other choices before clicking **Next**:
+
+    ![Select line ending conversions.](win-11-configure-line-endings.png)
 
      {{< note >}}
 It is strongly recommended that you keep the default settings for line ending conversions. Changing from the default may result in formatting problems when viewed on your Linode.
 {{< /note >}}
 
-10. The program will now begin installing:
+12.  Choose the terminal emulator you'll use, and then click **Next**:
 
-    ![Git is installing.](1604-Git-Win-10.png)
+    ![Select the terminal emulator you'll use.](win-12-terminal-emulator.png)
 
-11. Click **Finish** to exit the installer:
+13.  Configure the extra options, and then click **Next**:
 
-    ![Click Finish to exit.](1605-Git-Win-11.png)
+    ![Configure the extra options.](win-13-extra-options.png)
 
-12. Once you open Git you can select either **Create New**, **Clone Existing** or **Open Existing Repository**. In this example, we create new repository:
+14.  Check **Launch Git Bash** and complete the setup by selecting **Finish**:
 
-    ![Create New Repository.](1606-Git-Win-12.png)
+    ![Complete the setup and launch the Git bash shell](win-14-complete-setup.png)
 
-13. Enter a directory name or click on **Browse** to navigate to a directory:
+15.  You can launch the Git GUI from the bash shell. Type `git gui` at the command line and hit enter:
 
-    ![Directory for a new repository.](1607-Git-Win-13.png)
+    ![Launch the Git GUI by typing 'git gui' at the command line.](win-15-run-gui.png)
 
-14. A blank repository is created:
+16. Once you open Git you can select either **Create New**, **Clone Existing** or **Open Existing Repository**. In this example, we create new repository. Enter a directory name or click on **Browse** to navigate to a directory:
 
-    ![Blank repository.](1608-Git-Win-14.png)
+    ![Create New Repository.](win-16-create-new-project.png)
+
+17. A blank repository is created:
+
+    ![Blank repository.](win-17-new-project.png)
