@@ -19,6 +19,8 @@ external_resources:
   - '[The Puppet Forge](https://forge.puppet.com/)'
   - '[Hiera documentation](https://docs.puppet.com/hiera/)'
   - '[Facter](https://docs.puppet.com/facter/)'
+deprecated: true
+deprecated_link: 'applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/'
 ---
 
 

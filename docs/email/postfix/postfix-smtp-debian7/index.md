@@ -3,23 +3,27 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn how to use Postfix to send mail through an external SMTP server.'
-keywords: ["Postfix", " Debian 7", " SMTP", " Email", " Mail"]
+keywords: ["Postfix", " Debian", " SMTP", " Email", " Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
     name: Santiago Ti
-modified: 2014-05-30
+modified: 2019-01-24
 modified_by:
   name: Linode
 published: 2014-05-30
 title: Configure Postfix to Send Mail Using an External SMTP Server
 ---
 
+{{< note >}}
+This guide was originally written for Debian 7. It has since been tested to work with Debian 9.
+{{</ note >}}
 
 There are many reasons why you would want to configure Postfix to send email using an external SMTP provider such as Mandrill, SendGrid, Amazon SES, or any other SMTP server. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a spam list.
 
 ![Configure Postfix to Send Mail Using an External SMTP Server](external_smtp_tg.png "Configure Postfix to Send Mail Using an External SMTP Server")
 
 In this tutorial, you will learn how to install and configure a Postfix server to send email through Mandrill, or SendGrid.
+
 
 ## Updated Guide for Gmail and Google Apps
 
@@ -31,7 +35,6 @@ If you're using Gmail or Google Apps, see our [Configure Postfix to Send Mail Us
 
 Before starting this tutorial, you should have:
 
--   Debian 7 installed on your Linode
 -   Your fully qualified domain name (FQDN)
 -   All updates installed :
 
@@ -166,6 +169,10 @@ smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 The fastest way to test your configuration is to send an email to any unrelated email address, using the `mail` command:
 
     echo "body of your email" | mail -s "This is a Subject" -a "From: you@example.com" recipient@elsewhere.com
+
+You may have to install `mailutils` to use the `mail` command:
+
+    sudo apt-get install mailutils
 
 Alternatively, you can use Postfix's own sendmail implementation, by entering lines similar to those shown below:
 

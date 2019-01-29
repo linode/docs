@@ -3,31 +3,46 @@ author:
   name: Elle Krout
   email: ekrout@linode.com
 description: 'Learn how to create Chef cookbooks by creating a LAMP stack in Chef'
-keywords: ["chef", "automation", "cookbooks", "opscode", "lamp", "lamp stack", "beginner", "server automation"]
+keywords: ["chef", "automation", "cookbooks", "configuration management", "DevOps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['applications/chef/creating-your-first-chef-cookbook/']
-modified: 2018-08-06
+modified: 2019-01-17
 modified_by:
   name: Linode
 published: 2015-06-10
 title: Creating Your First Chef Cookbook
 external_resources:
  - '[Chef](http://www.chef.io)'
+ - '[About Cookbooks](https://docs.chef.io/cookbooks.html)'
+ - '[About Knife](https://docs.chef.io/knife.html)'
+ - '[About Nodes](https://docs.chef.io/nodes.html)'
 ---
 
-Cookbooks are one of the key components in Chef. They describe the *desired state* of your nodes, and allow Chef to push out the changes needed to achieve this state. Creating a cookbook can seem like an arduous task at first, given the sheer number of options provided and areas to configure, so in this guide we will walk through the creation of one of the first things people often learn to configure: A LAMP stack.
+Chef cookbooks describe the *desired state* of your nodes, and allow Chef to push out the changes needed to achieve this state. In this guide you will learn how to create a cookbook that configures A LAMP stack on a Linode.
 
 ![Creating Your First Chef Cookbook](creating-your-first-chef-cookbook.png "Creating Your First Chef Cookbook")
 
-Prior to using this guide, set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/) guide. When following that guide, **choose Ubuntu 16.04 as your Linux image for the Chef node**. This is required because the [MySQL Chef cookbook](https://supermarket.chef.io/cookbooks/mysql/) that will be used is not yet compatible with Ubuntu 18.04.
+## Before You Begin
 
-If needed, review the [Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/).
+1. Set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/) guide. When following that guide, **choose Ubuntu 16.04 as your Linux image for the Chef node you will bootstrap and manage**. This guide will use the [MySQL Chef cookbook](https://supermarket.chef.io/cookbooks/mysql/), which does not yet support Ubuntu 18.04.
 
-The examples in this tutorial require a root user account. Readers who choose to use a limited user account will need to prefix commands with sudo where required when working on the Chef client node. If you have yet to create a limited user account, follow the steps in the [Securing Your Server](/docs/security/securing-your-server/#add-a-limited-user-account) guide.
+1. Once your node is bootstrapped, you can use a Chef cookbook to secure your node. Consider using the [Users](https://supermarket.chef.io/cookbooks/users) cookbook and the [Firewall](https://supermarket.chef.io/cookbooks/firewall) cookbook for this work. While this is not required to complete this guide, it is recommended.
+
+1. You can also review [A Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/)to receive an overview on Chef concepts.
+
+1. The examples in this tutorial require a user account with sudo privileges. Readers who use a limited user account will need to prefix commands with sudo when issuing commands to the Chef client node and replace `-x root` with `-x username` where `username` is your limited user account.
+
+1. Ensure that your workstation's `/etc/hosts` file contains its own IP address and hostname and the IP address and hostname for any nodes you will interact with from the workstation. For example:
+
+    {{< file "/etc/hosts">}}
+    127.0.0.1       localhost
+    192.0.2.0       workstation
+    198.51.100.0    node-hostname
+    {{</ file >}}
 
 ## Create the Cookbook
 
-1. From your workstation, move to your `cookbooks` directory in `chef-repo`:
+1. From your workstation, move to your `chef-repo/cookbooks` directory:
 
         cd chef-repo/cookbooks
 
@@ -39,27 +54,25 @@ The examples in this tutorial require a root user account. Readers who choose to
 
         cd lamp_stack
 
-1.  List the files located in the newly-created cookbook to see that a number of directories and files have been created:
+      If you issue the `ls` command, you should see the following files and directories:
 
-        ls
+      {{< output >}}
+  Berksfile  CHANGELOG.md  chefignore  LICENSE  metadata.rb  README.md  recipes  spec  test
+    {{</ output >}}
 
-    {{< output >}}
-Berksfile  CHANGELOG.md  chefignore  LICENSE  metadata.rb  README.md  recipes  spec  test
-{{</ output >}}
+### default.rb
 
-    For more information about these directories see the [Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/).
-
-## default.rb
+Attributes are pieces of data that help the chef-client determine the current state of a node and any changes that have taken place on the node from one chef-client run to another. Attributes are gathered from the state of the node, cookbooks, roles and environments. Using these sources, an attribute list is created for each chef-client run and is applied to the node. If a `default.rb` file exists within a cookbook, it will be loaded first, but has the lowest attribute precedence.
 
 The `default.rb` file in `recipes` contains the "default" recipe resources.
 
-Because each section of the LAMP stack (Apache, MySQL, and PHP) will have its own recipe, the `default.rb` file is used to prepare your servers.
+In this example, the `lamp_stack` cookbook's `default.rb` file is used to update the node's distribution software.
 
-1.  From within your `lamp_stack` directory, navigate to the `recipes` folder:
+1.  From within the `lamp_stack` directory, navigate to the `recipes` folder:
 
         cd recipes
 
-1.  Open `default.rb` and add the Ruby command below, which will run system updates:
+1.  Open the `default.rb` file and add the following code:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipe/default.rb" ruby >}}
 #
@@ -83,21 +96,25 @@ end
 
         knife cookbook upload lamp_stack
 
-1.  Test that the recipe has been added to the chef server:
+1.  Verify that the recipe has been added to the Chef server:
 
         knife cookbook list
+
+    You should see a similar output:
+
+      {{< output >}}
+        lamp_stack         0.1.0
+      {{</ output >}}
 
 1.  Add the recipe to your chosen node's *run list*, replacing `nodename` with your node's name:
 
         knife node run_list add nodename "recipe[lamp_stack]"
 
-    Because this is the default recipe, the recipe name does not need to be defined after `lamp_stack` cookbook in the code above.
+1. From your workstation, apply the configurations defined in the cookbook by running the chef-client on your node. Replace `nodename` with the name of your node:
 
-1.  Access your chosen node and run the *chef-client*:
+        knife ssh 'name:nodename' 'sudo chef-client' -x root
 
-        chef-client
-
-    It should output a successful Chef run. If not, review your code for any errors, usually defined in the output of the `chef-client` run.
+    Your output should display a successful Chef run. If not, review your code for any errors, usually defined in the output of the `chef-client` run.
 
 ## Apache
 
@@ -139,20 +156,26 @@ end
 
     Because this is not the `default.rb` recipe, the recipe name, *apache*, must be appended to the recipe value.
 
-1.  From that **node**, run `chef-client`:
+    {{< note >}}
+  To view a list of all nodes managed by your, Chef server issue the following command from your workstation:
 
-        chef-client
+    knife node list
+    {{</ note >}}
+
+1. From your workstation, apply the configurations defined in the cookbook by running the chef-client on your node. Replace `nodename` with the name of your node:
+
+        knife ssh 'name:nodename' 'sudo chef-client' -x root
 
     If the recipe fails due to a syntax error, Chef will note it during the output.
 
 1.  After a successful `chef-client` run, check to see if Apache is running:
 
-        systemctl status apache2
-
-    It should say that `apache2` is running.
+        knife ssh 'name:nodename' 'systemctl status apache2' -x root
 
     {{< note >}}
-Repeat Steps 5-7 to upload the cookbook and run chef-client as needed through the rest of this guide to ensure your recipes are working properly and contain no errors. Remember to replace the recipe name in the run list code when adding a new recipe.
+Repeat steps 4-7 to upload each recipe to your Chef server, as you create it. Run `chef-client` on your node, as needed, throughout the rest of this guide to ensure your recipes are working properly and contain no errors. When adding a new recipe, ensure you are using its correct name in the run list.
+
+This is not the recommended workflow for a production environment. You might consider creating different [Chef environments](https://docs.chef.io/environments.html) for testing, staging, and production.
 {{< /note >}}
 
 ### Configure Virtual Hosts
@@ -163,7 +186,7 @@ This configuration is based off of the [How to Install a LAMP Stack on Ubuntu 16
 
         chef generate attribute ~/chef-repo/cookbooks/lamp_stack default
 
-1.  Within the new `default.rb`, create the default values of the cookbook:
+1.  Within the new `default.rb`, create the default values for the cookbook:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/attributes/default.rb" ruby >}}
 default["lamp_stack"]["sites"]["example.com"] = { "port" => 80, "servername" => "example.com", "serveradmin" => "webmaster@example.com" }
@@ -210,7 +233,7 @@ node["lamp_stack"]["sites"].each do |sitename, data|
 end
 {{< /file >}}
 
-1.  However, this does not create the directory itself. To do so, the `directory` resource should be used, with a `true` recursive value so all directories leading up to the `sitename` will be created. A permissions value of `0755` allows for the file owner to have full access to the directory, while group and regular users will have read and execute privileges:
+1.  Create the `document_root` directory. Declare a `directory` resource with a `true` recursive value so all directories leading up to the `sitename` will be created. A permissions value of `0755` allows for the file owner to have full access to the directory, while group and regular users will have read and execute privileges:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/apache.rb" ruby >}}
 node["lamp_stack"]["sites"].each do |sitename, data|
@@ -275,7 +298,7 @@ end
 
     The name of the template resource should be the location where the virtual host file is placed on the nodes. The `source` is the name of the template file. Mode `0644` gives the file owner read and write privileges, and everyone else read privileges. The values defined in the `variables` section are taken from the attributes file, and they are the same values that are called upon in the template.
 
-1.  The sites now need to be enabled in Apache, and the server restarted. This should *only* occur if there are changes to the virtual hosts, so the `notifies` value should be added to the `template` resource. `notifies` tells Chef when things have changed, and **only then** runs the commands:
+1.  The sites need to be enabled in Apache, and the server restarted. This should *only* occur if there are changes to the virtual hosts, so the `notifies` value should be added to the `template` resource. `notifies` tells Chef when things have changed, and **only then** runs the commands:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
 template "/etc/apache2/sites-available/#{sitename}.conf" do
@@ -294,7 +317,7 @@ end
 
     The `notifies` command names the `:action` to be committed, then the resource, and resource name in square brackets.
 
-1. `notifies` can also call on `execute` commands, which will run `a2ensite`and enable the sites we've made virtual hosts files for. Add the following `execute` command **above** the `template` resource code to create the `a2ensite` script:
+1. `notifies` can also call on `execute` commands, which will run `a2ensite`and enable the sites that have corresponding virtual hosts files. Add the following `execute` command **above** the `template` resource code to create the `a2ensite` script:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
 # [...]
@@ -458,7 +481,7 @@ Chef contains a feature known as *data bags*. Data bags store information, and c
         knife data bag create mysql rtpass.json --secret-file ~/chef-repo/.chef/encrypted_data_bag_secret
 
     {{< note >}}
-Some knife commands require that information be edited as JSON data using a text editor. Your `knife.rb` file should contain a configuration for the text editor to use for such commands. If your `knife.rb` file does not already contain this configuration, add `knife[:editor] = "/usr/bin/vim"` to the bottom of the file to set vim as the default text editor.
+Some knife commands require that information be edited as JSON data using a text editor. Your `config.rb` file should contain a configuration for the text editor to use for such commands. If your `config.rb` file does not already contain this configuration, add `knife[:editor] = "/usr/bin/vim"` to the bottom of the file to set vim as the default text editor.
 {{</ note >}}
 
     You will be asked to edit the `rtpass.json` file:
@@ -527,12 +550,6 @@ end
 
     `mysqldefault` is the name of the MySQL service for this container. The `inital_root_password` calls to the value defined in the text above, while the action creates the database and starts the MySQL service.
 
-    {{< note >}}
-When running MySQL from your nodes you will need to define the socket:
-
-    mysql -S /var/run/mysql-mysqldefault/mysqld.sock -p
-{{< /note >}}
-
 ## PHP
 
 1.  Under the recipes directory, create a new `php.rb` file. The commands below install PHP and all the required packages for working with Apache and MySQL:
@@ -599,4 +616,4 @@ end
         knife cookbook upload lamp_stack
         knife node run_list add nodename "recipe[lamp_stack],recipe[lamp_stack::apache],recipe[lamp_stack::mysql],recipe[lamp_stack::php]"
 
-You have just created a LAMP Stack cookbook. Through this guide, you should have learned to use the execute, package, service, node, directory, template, cookbook_file, and mysql_service resources within a recipe, as well as download and use LWRPs, create encrypted data bags, upload/update your cookbooks to the server, and use attributes, templates, and cookbook files, giving you a strong basis in Chef and cookbook creation for future projects.
+You have just created a LAMP Stack cookbook. Through this guide, you should have learned to use the execute, package, service, node, directory, template, cookbook_file, and mysql_service resources within a recipe, as well as download and use LWRPs, create encrypted data bags, upload/update your cookbooks to the server, and use attributes, templates, and cookbook files. This gives you a strong basis in Chef and cookbook creation for future projects.

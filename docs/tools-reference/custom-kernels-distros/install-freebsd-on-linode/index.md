@@ -5,7 +5,7 @@ author:
 description: 'FreeBSD is a free and open source operating system based on the Berkeley Software Distribution from the late 1970''s. Today FreeBSD is used all over the world.'
 keywords: ["freebsd", "bsd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-02
+modified: 2019-01-07
 modified_by:
   name: Linode
 published: 2016-03-14
@@ -70,13 +70,13 @@ Begin by creating the Linode and making some preliminary changes.
 
         curl $latest | dd of=/dev/sda
 
-    As of this guide's writing, the latest release is version 10.2. The following command will download the 10.2 release image to your Linode:
+    As of this guide's writing, the latest release is version 12.0. The following command will download the 12.0 release image to your Linode:
 
-        curl ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/10.2/FreeBSD-10.2-RELEASE-amd64-memstick.img | dd of=/dev/sda
+        curl ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/12.0/FreeBSD-12.0-RELEASE-amd64-memstick.img | dd of=/dev/sda
 
 6.  When the command finishes, reboot into your **Installer profile**.
 
-7.  Go to the **Remote Access** tab in the Linode Manager. Access your Linode using [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/) to start the installation.
+7.  Go to the **Remote Access** tab in the Linode Manager. Access your Linode using [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/) to start the installation. Note that Glish **must** be used to complete the installation of FreeBSD.
 
 ## Installing FreeBSD
 

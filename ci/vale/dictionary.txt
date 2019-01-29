@@ -27,6 +27,7 @@ antispam
 ap
 apache2
 api
+apiserver
 appimage
 appletalk
 appserver
@@ -177,12 +178,14 @@ configtest
 configurability
 containerised
 convolutional
+cookstyle
 coose
 copyfrom
 copyto
 coreutils
 corporateclean
 cpanminus
+cpu
 cqlsh
 cqlshrc
 craftbukkit
@@ -215,6 +218,7 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+databags
 datacenter
 datadir
 dataset
@@ -384,6 +388,7 @@ flamegraph
 flamegraphs
 flatpress
 flyspray
+foodcritic
 fortran
 fpm
 fragging
@@ -703,6 +708,7 @@ luminus
 lxml
 lzma
 lzopio
+macos
 magento
 maildir
 maildirs
@@ -744,6 +750,7 @@ mesos
 metabase
 metacity
 metapackage
+metaparameters
 metricbeat
 microblogs
 microservice
@@ -1006,6 +1013,7 @@ pty
 pubkey
 publickey
 puppetd
+puppetlabs
 puppetmaster
 puttygen
 pv

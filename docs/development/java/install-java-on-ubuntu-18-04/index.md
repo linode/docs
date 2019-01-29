@@ -2,138 +2,86 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: Install the Oracle Java development kit
-keywords:
-  - oracle
-  - java
-  - JDK
-  - install java
-  - ubuntu
+description: Install the Oracle Java Development Kit on Ubuntu Bionic Beaver.
+keywords: ["java", "oracle", "openjdk", "jdk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases:
-  - applications/development/install-java-on-ubuntu-18-04/
-  - development/install-java-on-ubuntu-18-04/
-modified: 2018-08-06
+aliases: ['applications/development/install-java-on-ubuntu-18-04/','development/install-java-on-ubuntu-18-04/']
+modified: 2019-01-28
 modified_by:
-  name: Phil Zona
-published: 2017-05-30T00:00:00.000Z
-title: Install Java 10 on Ubuntu 18.04
+  name: Linode
+published: 2017-05-30
+title: Install Oracle Java SE Development Kit 11 on Ubuntu
 contributor:
   name: Phil Zona
   link: 'https://github.com/pbzona'
-external_resources:
-  - '[Oracle Java](https://www.oracle.com/java/index.html)'
 audiences: ["beginner"]
 languages: ["java"]
 ---
 
-[Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Java can be used to create anything from software to basic web applications.
+[Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages and can be used to create anything from software to basic web applications. Java was originally developed at Sun Microsystems, which was bought by Oracle. For this reason, Oracle's Java platform is the most well known. However, there are other such as [IBM Runtimes](https://www.ibm.com/us-en/marketplace/support-for-runtimes), [Red Hat's Open JDK](https://developers.redhat.com/products/openjdk/overview/), and [Zulu](https://www.azul.com/products/zulu-enterprise/).
 
-In this guide you will install the Oracle Java development kit (JDK) for building Java applications. This guide will also cover OpenJDK, an open-source alternative to the Oracle Java development kit.
+With the release of version 11, Oracle has updated the JDK license to be significantly different from previous versions. Oracle JDK is now a paid commercial license, but free for development use.
+
+Oracle's [OpenJDK](https://jdk.java.net/11) is GPL licensed. With the exception of [cosmetic and packaging differences](https://blogs.oracle.com/java-platform-group/oracle-jdk-releases-for-java-11-and-later), the OpenJDK and Java SE (Standard Edition) development kits are identical. See Oracle's Java [download page and license](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) to further decide which version is appropriate for you.
+
+This guide demonstrates installing Oracle's Java Standard Edition Development Kit (Oracle JDK) on Ubuntu 18.04. Installing OpenJDK is also explained for a free and open source alternative.
+
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+- You will need root access to your Linode, or a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account) with `sudo` privileges.
 
-2. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access, and remove unnecessary network services.
+- Update your system:
 
-3. Update your system:
+        sudo apt update && sudo apt upgrade
 
-    ```
-    sudo apt update -y && sudo apt upgrade -y
-    ```
 
 ## Install Oracle JDK
 
-The Oracle JDK includes a development environment for building applications with the Java programming language. Please be aware that some elements of the Oracle JDK are proprietary, meaning that there may be licensing implications with respect to applications you develop with it.
+The Linux Uprising [Oracle Java PPA](https://launchpad.net/~linuxuprising/+archive/ubuntu/java) uses packages that include install scripts to download and install the Oracle JDK from Oracle's website. Alternatively, you can manually [download the binaries](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html).
 
-1. Add the Java PPA:
+1.  Add the PPA to Ubuntu. Apt will automatically refresh the package cache.
 
-    ```
-    sudo add-apt-repository ppa:linuxuprising/java
-    ```
+        sudo add-apt-repository ppa:linuxuprising/java
 
-    {{< note >}} This repository is _not_ maintained by Oracle. It does not contain actual Java files, but does allow us to download installers for Oracle Java software. Before using the installers, you'll be prompted to accept a license agreement, which can be found in its entirety [here](http://www.oracle.com/technetwork/java/javase/terms/license/index.html). {{< /note >}}
+1. Install the JDK. You'll be asked to agree to the licensing terms.
 
-2. Update the local package cache:
+        sudo apt install oracle-java11-installer
 
-    ```
-    sudo apt update -y
-    ```
+1.  If you want Oracle JDK as the system default, install `oracle-java11-set-default`:
 
-3. Install the metapackage:
+        sudo apt install oracle-java11-set-default
 
-    ```
-    sudo apt install oracle-java10-installer -y
-    ```
+1.  Check that the install was successful with the following command:
 
-    This package will run an installer for the Oracle JDK 10, which is the current stable release as of this publication. Two prompts will appear during installation requiring you to accept license agreements. Hit `Enter` to accept both.
+        java --version
 
-4. Verify that Java and the Java compiler have been properly installed:
+    {{< output >}}
+root@ubuntu:~# java --version
+java version "11.0.2" 2018-10-16 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.2+7-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.2+7-LTS, mixed mode)
+{{< /output >}}
 
-    ```
-    java -version
-    javac -version
-    ```
 
-    As of this publication, these commands should return the following:
+1.  Reload `/etc/profile` or log out of your system and back in to set the Java environment variables:
 
-    ```
-    java version "10.0.2" 2018-07-17
-    Java(TM) SE Runtime Environment 18.3 (build 10.0.2+13)
-    Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.2+13, mixed mode)
+        source /etc/profile
 
-    javac 10.0.2
-    ```
+    {{< output >}}
+root@ubuntu:~# echo $JAVA_HOME
+/usr/lib/jvm/java-11-oracle
+{{< /output >}}
 
-5. Since the PPA only provides an installer, and not updates for the JDK itself, you may want to delete it when you're finished in order to keep your repositories organized:
 
-    ```
-    sudo add-apt-repository -r ppa:linuxuprising/java
-    ```
+## Install Oracle OpenJDK
 
-## Set Java Home Environment
+OpenJDK includes a runtime environment and compiler which allows you to develop your own Java applications and run them on your Linode. If you only need to run Java applications which you've already downloaded, you can save some disk space by only installing the Java runtime environment. Both are available from Ubuntu's repository.
 
-Many applications include code or configurations that references the `JAVA_HOME` environment variable. This variable points them to the Java binary file, allowing them to run Java code.
+- Install OpenJDK 11:
 
-1. To set the variable for your system:
+        sudo apt install openjdk-11-jdk
 
-    ```
-    echo "JAVA_HOME=$(which java)" | sudo tee -a /etc/environment
-    ```
+- Install OpenJRE 11:
 
-2. Reload your system's environment variables:
-
-    ```
-    source /etc/environment
-    ```
-
-3. Verify the variable was set correctly:
-
-    ```
-    echo $JAVA_HOME
-    ```
-
-    This should return the path to the Java binary.
-
-## OpenJDK
-
-The above installation methods allow you to use the Oracle JDK, which is bound by licensing terms and includes proprietary components. OpenJDK provides an open-source alternative that is just as easy to install.
-
-To install OpenJDK 11:
-
-```
-sudo apt install openjdk-11-jdk -y
-```
-
-The installation will provide you with the OpenJDK, which includes a runtime environment and compiler. This allows you to develop your own Java applications and run them on your Linode.
-
-However, if you only need to run applications that you've already downloaded, you can save a bit of disk space by installing the OpenJRE (Java runtime environment):
-
-```
-sudo apt install openjdk-11-jre
-```
-
-Note that this is unnecessary if you've installed OpenJDK, since it includes the JRE.
-
-{{< caution >}} OpenJDK and Oracle Java are _not_ identical. There may be licensing, performance, and stability differences, and this should be considered carefully when developing production applications. {{< /caution >}}
+        sudo apt install openjdk-11-jre

@@ -6,9 +6,11 @@ description: 'Basic instructions to set up and configure a Puppet master and age
 keywords: ["puppet installation", "configuration change management", "server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/puppet/basic-puppet-setup-and-configuration/','websites/puppet/manage-and-automate-systems-configuration-with-puppet/','applications/puppet/set-up-puppet-master-agent/','applications/puppet/install-and-configure-puppet/']
-modified: 2017-03-08
+deprecated: true
+deprecated_link: 'applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/'
+modified: 2019-01-15
 modified_by:
-    name: Phil Zona
+    name: Linode
 published: 2015-09-17
 title: Install and Configure Puppet
 external_resources:

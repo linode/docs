@@ -14,6 +14,8 @@ modified_by:
   name: Linode
 published: 2014-09-04
 title: 'Install GitLab on Ubuntu 14.04 (Trusty Tahr)'
+deprecated: true
+deprecated_link: development/version-control/install-gitlab-on-ubuntu-18-04/
 external_resources:
  - '[GitLab Community Edition](https://www.gitlab.com/gitlab-ce/)'
  - '[GitLab Documentation](https://www.gitlab.com/documentation/)'
