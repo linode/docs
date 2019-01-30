@@ -31,26 +31,22 @@ If you're downgrading your plan, verify that your disks are using less space tha
 
 Here's how to resize your Linode:
 
-1.  Log in to the [Linode Manager](https://cloud.linode.com).
-1.  Click the **Linodes** link in the sidebar.
-1.  Select a Linode from the list.
-1.  Click the **Resize** tab. The webpage shown below appears.
+1.  Log in to the [Linode Manager](https://manager.linode.com).
+2.  Click the **Linodes** tab.
+3.  Select a Linode from the list.
+4.  Click the **Resize** tab. The webpage shown below appears.
 
-    [![The Linode resize page.](resize-tab.png)](resize-tab.png)
+    [![The Linode Manager interface.](resizing-a-linode-small.png)](resizing-a-linode.png)
 
-1.  Select a plan and click the **Submit** button. Your Linode will be powered off and moved to another host. Depending on the size of your Linode, this process can take up to one hour.
+5.  Select a plan.
+6.  Click **Resize this Linode Now**. Your Linode will be powered off and moved to another host. Depending on the size of your Linode, this process can take up to one hour.
+7.  (Optional) When the migration completes check your storage allocation meter. If you resized your Linode to a larger plan, you'll have additional un-used storage to allocate to your disks. You may want to add some of this storage to one of your disks if the internal filesystem on it is running low on free space, or just so you can use it in the future.
 
-1.  (Optional) When the migration completes check your disk storage allocation meter. If you resized your Linode to a larger plan, you'll have additional un-used storage to allocate to your disks. You may want to add some of this storage to one of your disks if the internal filesystem on it is running low on free space, or just so you can use it in the future.
+    In your Dashboard, click the **Edit** button next to the disk you'd like to allocate the extra storage to. Enter a new size in the specified range and click **Save Changes**.
 
-    Navigate to your Linode's **Settings** tab and expand the **Advanced Configurations** section to view your disk storage allocation meter. Click on the additional options elipsis (**...**) next to the disk you'd like to allocate the extra storage to and select **Resize**.
+    [![Adding storage space to an individual disk.](resize-a-disk-small.png)](resize-a-disk.png)
 
-    [![View your disk storage allocator.](disk-allocator.png)](disk-allocator.png)
-
-    The *Resize Disk* panel will appear. In the **Size** field, enter a new size in the specified range and click **Resize**.
-
-    [![Resize your disk.](resize-disk.png)](resize-disk.png)
-
-1.  Once completed, your Linode will still be powered off. Scroll to the top of the page and click on the **Offline** button and select **Power On**.
+8.  Once completed, your Linode will still be powered off. From the **Dashboard** tab, click **Boot** to turn it on.
 
 Your Linode has been successfully resized and migrated to the new host. This video goes through the resizing process in detail:
 
