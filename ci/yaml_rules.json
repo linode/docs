@@ -126,9 +126,9 @@
   },
   "modified": {
     "elements": false,
-    "required": true,
+    "required": false,
     "type": "date",
-    "description": "The date this guide was last modified. Should use the form YYYY-MM-DD."
+    "description": "(DEPRECATED: Hugo now uses the date of the last Git commit) The date this guide was last modified. Should use the form YYYY-MM-DD."
   },
   "modified_by": {
     "elements": false,
