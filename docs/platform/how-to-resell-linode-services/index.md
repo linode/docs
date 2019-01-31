@@ -6,7 +6,7 @@ description: 'How to resell Linode services using the Linode API, and how to get
 keywords: ['resell','linode','services','reseller','referral','code']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-31
-modified: 2019-01-32
+modified: 2019-01-31
 modified_by:
   name: Linode
 title: "How to Resell Linode Services"
