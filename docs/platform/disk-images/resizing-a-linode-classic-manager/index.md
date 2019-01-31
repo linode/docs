@@ -12,6 +12,9 @@ published: 2017-02-14
 title: Resizing a Linode
 hiddenguide: true
 ---
+{{< note >}}
+View the Linode Cloud Manger version of the [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) guide.
+{{</ note >}}
 
 We make it easy to upgrade or downgrade your Linode by changing plans and adding additional resources. If you're expecting a temporary burst of traffic to your website, or if you're not using your Linode as much as you thought, you can temporarily or permanently resize your Linode to a different plan.
 
