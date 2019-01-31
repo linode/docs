@@ -3,10 +3,10 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'How to resell Linode services using the Linode API, and how to get started with the Linode referral program.'
-keywords: ['resell','linode','services','reseller','referall','code']
+keywords: ['resell','linode','services','reseller','referral','code']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-01-22
-modified: 2019-01-22
+published: 2019-01-31
+modified: 2019-01-32
 modified_by:
   name: Linode
 title: "How to Resell Linode Services"
@@ -17,7 +17,7 @@ contributor:
 Linode warmly welcomes and encourages the reselling of our services to third-party customers. Anyone can resell Linode services. This guide will walk you through the process of becoming a reseller.
 
 {{< note >}}
-While Linode encourages reselling, we do not currently have a special reseller program. At this time Linode does not offer discounted pricing for resellers, nor do we directly offer white-label software, like WHMCS plugins, to aid in reselling. It is possible to create such software of your own via the [Linode API](#linode-api).
+While Linode encourages reselling, we do not currently have a special reseller program. Linode does not offer discounted pricing for resellers at this time, nor do we directly offer white-label software, like WHMCS plugins, to aid in reselling. It is possible to create such software of your own via the [Linode API](#linode-api).
 
 However, Linode does have a referral program. For more information on Linode's referral program, read the [referral codes section](#referral-codes).
 {{</ note >}}
@@ -38,7 +38,7 @@ There are a variety of reasons one might want to resell Linode services. One of 
 
 As mentioned above, Linode does not offer a discount on re-sold Linode services. However, Linode does offer a referral program. If you feel like Linode is a good choice for another person, you can send them your [referral code (or referral URL)](/docs/platform/billing-and-support/billing-and-payments-new-manager/#referral-credits) to receive $20 per sign up.
 
-The credit for your referral will be applied to your account if the referral stays active as a Linode customer for 90 days. Specifically, the referred account will need to have at least one active, billed Linode service on their account thoughout the 90 day period.
+The credit for your referral will be applied to your account if the referral stays active as a Linode customer for 90 days. Specifically, the referred account will need to have at least one active, billed Linode service on their account throughout the 90 day period.
 
 Advertising your referral code to others is not the same as reselling Linode services. When someone else uses your referral code, they create an entirely separate Linode account with their own billing.
 
@@ -84,7 +84,7 @@ Automatic payments can be made with a credit card. All Linode accounts are requi
 
 ### Does Linode Have a White-Label Interface?
 
-Lindoe does not offer a white-label interface, but you could create one via the [Linode API](https://developers.linode.com).
+Linode does not offer a white-label interface, but you could create one via the [Linode API](https://developers.linode.com).
 
 ### Can I Model my Terms of Service on Linode's ToS?
 
