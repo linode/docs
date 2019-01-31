@@ -17,9 +17,9 @@ external_resources:
  - '[Apache 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
 ---
 
-Your Apache configuration settings have a major effect on your Linode's performance. There are several tools that can be used to further inspect your Apache server's performance and make informed decisions on how to begin tuning your Apache configurations. This guide will provide an overview of some process monitoring and system resource usage tools that can be used to inspect how Apache is affecting your Linode's performance. You will also learn about important Apache modules, like the Multi-Processing modules, that will allow you to make use of Apache's power and flexibility.
-
 ![Tuning Your Apache Server](tuning-your-apache-server.png "Tuning Your Apache Server")
+
+Your Apache configuration settings have a major effect on your Linode's performance. There are several tools that can be used to further inspect your Apache server's performance and make informed decisions on how to begin tuning your Apache configurations. This guide will provide an overview of some process monitoring and system resource usage tools that can be used to inspect how Apache is affecting your Linode's performance. You will also learn about important Apache modules, like the Multi-Processing modules, that will allow you to make use of Apache's power and flexibility.
 
 ## Tools
 
@@ -27,7 +27,7 @@ Your Apache configuration settings have a major effect on your Linode's performa
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/uptime/monitoring/top-htop-iotop/) and the load-testing program [Siege](/docs/tools-reference/tools/load-testing-with-siege/). Linode's own [Longview](/docs/platform/longview/longview/) service can also help in server monitoring. A good place to start is to familiarize yourself with the RAM and CPU usage of your server.
+There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/uptime/monitoring/top-htop-iotop/) and the load-testing program [Siege](/docs/tools-reference/tools/load-testing-with-siege/). Linode's own [Longview](/docs/platform/longview/longview/) service can also help with server monitoring. A good place to start is to familiarize yourself with the RAM and CPU usage of your server.
 
 Discover usage statistics with the following variations of the `ps` command. The `ps` command is used to generate a report of the running processes on your Linode:
 
@@ -40,7 +40,7 @@ The Apache Status module, `mod_status`, provides performance information about y
 
 1.  Open your website's configuration file. This file is located at `/etc/apache2/sites-available/hostname.example.com.conf` on Debian/Ubuntu systems or `/etc/httpd/conf.d/vhost.conf` on CentOS/Fedora systems.
 
-2.  Add the following to the `<virtual_hosts>` block:
+1.  Add the following to the `<virtual_hosts>` block:
 
     {{< file "/etc/apache2/sites-available/hostname.example.com.conf (Debian/Ubuntu)" apache >}}
 <Location /server-status>
@@ -52,7 +52,7 @@ The Apache Status module, `mod_status`, provides performance information about y
     {{< /file >}}
 
 
-3.  Apache `mod_status` also offers an option called **ExtendedStatus**, which provides additional information about each request made to Apache. To enable **ExtendedStatus** edit your Apache configuration file and add the following line:
+1.  Apache `mod_status` also offers an option called **ExtendedStatus**, which provides additional information about each request made to Apache. To enable **ExtendedStatus** edit your Apache configuration file and add the following line:
 
     {{< file "/etc/apache2/apache2.conf (Debian/Ubuntu)" apache >}}
 ExtendedStatus On
@@ -63,7 +63,7 @@ ExtendedStatus On
 Enabling `ExtendedStatus` consumes additional system resources.
 {{< /note >}}
 
-4.  Restart Apache:
+1.  Restart Apache:
 
     -     Debian/Ubuntu:
 
@@ -73,7 +73,7 @@ Enabling `ExtendedStatus` consumes additional system resources.
 
             systemctl restart httpd
 
-5.  To view the generated file, download Lynx, a text-mode web browse:
+1.  To view the generated file, download Lynx, a text-mode web browse:
 
     -    Debian/Ubuntu:
 
@@ -83,19 +83,19 @@ Enabling `ExtendedStatus` consumes additional system resources.
 
             yum install lynx
 
-6.  Open the file:
+1.  Open the file:
 
         lynx http://localhost/server-status
 
 ### Apache2Buddy
 
-The Apache2Buddy script, similar to [MySQLTuner](docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/), reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, that focuses on the `MaxClients` directive, Apache2Buddy is useful. You can run the script with the following command:
+The Apache2Buddy script, similar to [MySQLTuner](/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/), reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, that focuses on the `MaxClients` directive, Apache2Buddy is useful. You can run the script with the following command:
 
     curl -sL https://raw.githubusercontent.com/richardforth/apache2buddy/master/apache2buddy.pl | sudo perl
 
 ## Multi Processing Modules
 
-Apache version 2.4 offers three Multi Processing Modules (MPM) for managing your settings. Each module creates child processes, but differ in how they handle threads.
+Apache version 2.4 offers three Multi Processing Modules (MPM) for managing your settings. Each module creates child processes, but differs in how they handle threads.
 
 {{< disclosure-note "Back up your Apache configuration file">}}
 Before making any changes to your Apache configuration, be sure to back up the configuration file:
@@ -174,7 +174,7 @@ To get information on memory usage:
 
     free -m
 
-To receive a more detailed view of the resources Apache is using, use the [`top` command](docs/uptime/monitoring/top-htop-iotop/).
+To receive a more detailed view of the resources Apache is using, use the [`top` command](/docs/uptime/monitoring/top-htop-iotop/).
 
 ### MaxConnectionsPerChild
 
