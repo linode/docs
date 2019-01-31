@@ -12,30 +12,15 @@ published: 2019-01-30
 title: How to Choose a Linode Plan
 ---
 
-Linode offers four plan tiers:
+Linode offers four plan tiers: **Nanode**, **Standard**, **Dedicated**, and **High-Memory**. Before selecting a plan, it is important to understand each plan's specifications, like CPU, transfer, storage, and RAM. An understanding of your project's own needs and requirements is also useful. Linode allows you to easily change plans at any time. View the [Resizing a Linode](docs/platform/disk-images/resizing-a-linode/) guide to learn how to change your plan type.
 
-- Nanode
-- Standard
-- High Memory
-- Dedicated
+This guide provides an overview of all Linode plan types and their corresponding use cases.
 
-Each plan incrementally increases your Linode's available CPU cores, RAM, storage, and network transfer allowance. You can change plans at any time and with no additional charge.
+## 1. Nanode
 
+The Nanode plan is great place to begin if you are new to the world of cloud hosting and are unsure of your requirements. This plan offers the basics and begins at $5 / month. With this plan you have a fully functioning server with your preferred Linux distribution. The Nanode is quick to deploy and it can be expanded to a larger plan as your demands increase.
 
-## Nanode
-
-A great introduction the world of cloud hosting, our Nanode plan gives you access to the basics. The Linode Nano is quick to deploy can be expanded as your demands increase.
-
-
-|Nanode   | Specs   |
-|---|---|
-|RAM   | 1GB    |
-|CPU   |1 CPU Core   |
-|Storage   | 25 GB SSD Storage   |
-|Transfer   | 1 TB  |
-
-
-### Nanode's are ideal for
+### Use Cases
 
 - Personal Projects
 - Portfolio websites
@@ -43,40 +28,87 @@ A great introduction the world of cloud hosting, our Nanode plan gives you acces
 - Virtual Private Network
 - Prototypes and proof-of-concept demonstrations
 
-## Standard
+### Specifications
 
-The Linode Standard plans are varied enough to cover a large range of services. Standard
-Our standard plans cover a range of resource allowances suitable for any personal or production workload you may have.
+|Nanode   | Specs   |
+|---|---|
+|RAM   | 1GB    |
+|CPU   |1 CPU Core   |
+|Storage   | 25 GB SSD Storage   |
+|Transfer   | 1 TB  |
+| Network In | 40 Gbps |
+| Network Out | 1000 Mbps |
 
+## 2. Standard
 
-### Standard Plan's are ideal for
+The Linode Standard plans begin at 2GB of RAM with 1 CPU core and go all the way up to 192GB of RAM with 32 CPU cores. These plans are designed to support a wide range of modern cloud hosting needs from personal projects to production workloads.
 
-- Game servers
-- Media servers
+### Use Cases
+
+- Web Apps and Websites
+- Game, Media, and Database servers
 - Commercial services
-- Database servers
 - Corporate Virtual Private Networks
 - Containers
 - Clusters
 - CDN Nodes
 
+### Specifications
 
-## High Memory
+|Standard   | Specs   |
+|---|---|
+|RAM   | 2GB    |
+|CPU   |1 CPU Core   |
+|Storage   | 50 GB SSD Storage   |
+|Transfer   | 2 TB  |
+| Network In | 40 Gbps |
+| Network Out | 2000 Mbps |
 
-High Memory plans increase your system's available RAM while keeping other resources (CPU, storage, etc.) roughly the same, which helps keep your costs down.
+To view a full list of Standard Plan specifications visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
 
-**Ideal for**: Data structure applications, applications which benefit from large amounts of in-memory caching, hosting large software repositories.
+## 3. Dedicated CPU
 
+Dedicated CPU plans offer entire dedicated physical CPU cores for your own Linode's use. There is no physical CPU sharing, like there is in Nanode, Standard, and High-Memory plans. This is important in scenarios that require consistent zero-latency operation, prolonged maximum capacity operation of CPU resources, and applications that need to run at peak efficiency.
 
-## Dedicated
+### Use Cases
 
-Dedicated CPU plans reserve a host machine's virtual CPU cores exclusively for your Linode's use. This is important in scenarios which require consistent zero-latency operation or prolonged maximum capacity operation of CPU resources.
+- Intense CI/CD workflows,
+- CPU intensive game servers, like Minecraft or Team Fortress
+- Media transcoding
+- Data Science and Scientific Computing
 
-**Ideal for**:  Intense CI/CD workflows, CPU intensive game servers such as Minecraft or Team Fortress, media transcoding, scientific calculation.
+### Specifications
 
+|Dedicated   | Specs   |
+|---|---|
+|RAM   | 2GB    |
+|CPU   |1 CPU Core (dedicated)   |
+|Storage   | 50 GB SSD Storage   |
+|Transfer   | 2 TB  |
+| Network In | 40 Gbps |
+| Network Out | 2000 Mbps |
 
+To view a full list of Dedicated CPU Plan specifications visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
 
-## What is a shared plan
+## 4. High Memory
 
+High Memory plans increase your system's available RAM while keeping other resources (CPU, storage, etc.) roughly the same, helping to keep your costs down and adding power where you need it.
 
-## What is a Dedicated Plan
+### Use Cases
+
+- Data structure applications
+- Applications that require large amounts of in-memory caching
+- Large software repository hosting.
+
+### Specifications
+
+|Dedicated   | Specs   |
+|---|---|
+|RAM   | 24GB    |
+|CPU   |1 CPU Core  |
+|Storage   | 20 GB SSD Storage   |
+|Transfer   | 5 TB  |
+| Network In | 40 Gbps |
+| Network Out | 5000 Mbps |
+
+To view a full list of High Memory Plan specifications visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
