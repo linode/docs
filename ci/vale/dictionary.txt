@@ -823,6 +823,7 @@ namespace
 namespaces
 nano
 nanode
+nanodes
 natively
 nbox
 ncurses
@@ -1325,6 +1326,7 @@ toolchain
 traceroute
 trackbar
 transcoder
+transcoding
 trello
 truststore
 tt
