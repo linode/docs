@@ -89,7 +89,7 @@ Enabling `ExtendedStatus` consumes additional system resources.
 
 ### Apache2Buddy
 
-The Apache2Buddy script, similar to [MySQLTuner](docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/), reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, that focuses on the `MaxClients` directive, Apache2Buddy is useful. You can run the script with the following command:
+The Apache2Buddy script, similar to [MySQLTuner](/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/), reviews your Apache setup, and makes suggestions based on your Apache process memory and overall RAM. Although it is a fairly basic program, that focuses on the `MaxClients` directive, Apache2Buddy is useful. You can run the script with the following command:
 
     curl -sL https://raw.githubusercontent.com/richardforth/apache2buddy/master/apache2buddy.pl | sudo perl
 
