@@ -5,7 +5,7 @@ author:
 description: 'Install SteamCMD, a command-line version of the Steam client, which works with games that use SteamPipe. Installing SteamCMD is a prerequisite before hosting a Steam title on your own game server.'
 keywords: ["steam", "steamcmd", "steam cmd", "games", "game server", "steam server", "steampipe"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-03-29
+modified: 2019-01-31
 modified_by:
   name: Linode
 published: 2016-02-15
@@ -17,9 +17,9 @@ external_resources:
 aliases: ['applications/game-servers/install-steamcmd-for-a-steam-game-server/']
 ---
 
-SteamCMD is a command-line version of the Steam client which works with games that use [SteamPipe](https://developer.valvesoftware.com/wiki/SteamPipe). If you intend to host a Steam title on your own game server, installing SteamCMD is a prerequisite.
-
 ![SteamCMD](Install_SteamCMD_for_a_Steam_Game_Server_smg.jpg)
+
+SteamCMD is a command-line version of the Steam client which works with games that use [SteamPipe](https://developer.valvesoftware.com/wiki/SteamPipe). If you intend to host a Steam title on your own game server, installing SteamCMD is a prerequisite.
 
 This guide is intended to get you quickly up and running with SteamCMD on your Linode. See Valve's [SteamCMD wiki page](https://developer.valvesoftware.com/wiki/SteamCMD) for more information and advanced setups.
 
@@ -39,7 +39,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     **Debian / Ubuntu**
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt update && sudo apt upgrade
 
 
 ## Secure Your Game Server
