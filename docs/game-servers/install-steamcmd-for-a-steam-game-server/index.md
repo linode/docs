@@ -154,20 +154,32 @@ Installing via the package manager allows you to more easily download updates an
 
     {{< note >}}
 On Debian you need to add the `non-free` area of the repository to your sources, because the package is available only there.
+
+To do so, edit the `/etc/apt/sources.list` file, and include `non-free` at the end of each `deb` and `deb-src` line:
+
+    deb http://mirrors.linode.com/debian stretch main non-free
+    deb-src http://mirrors.linode.com/debian stretch main non-free
+    ...
+
+Then, add the i386 architecture, update your package list, and install `steamcmd`:
+
+    sudo dpkg --add-architecture i386
+    sudo apt update
+    sudo apt-get install steamcmd
 {{< /note >}}
 
-2.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
+1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
         cd ~
         ln -s /usr/games/steamcmd steamcmd
 
 ### Manually
 
-1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries.
+1.  Newly created Linodes use 64-bit Linux operating systems. Since Steam is compiled for i386, install the appropriate libraries. For CentOS, also install `wget`.
 
     **CentOS 7**
 
-        sudo yum install glibc.i686 libstdc++.i686
+        sudo yum install glibc.i686 libstdc++.i686 wget
 
     **Debian / Ubuntu**
 
