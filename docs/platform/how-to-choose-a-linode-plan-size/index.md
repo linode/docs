@@ -12,7 +12,7 @@ published: 2019-01-30
 title: How to Choose a Linode Plan
 ---
 
-Linode offers four plan tiers: **Nanode**, **Standard**, **Dedicated**, and **High-Memory**. Before selecting a plan, it is important to understand each plan's specifications, like CPU, transfer, storage, and RAM. An understanding of your project's own needs and requirements is also useful. Linode allows you to easily change plans at any time. View the [Resizing a Linode](docs/platform/disk-images/resizing-a-linode/) guide to learn how to change your plan type.
+Linode offers four plan tiers: **Nanode**, **Standard**, **Dedicated**, and **High-Memory**. Before selecting a plan, it is important to understand each plan's specifications, like CPU, transfer, storage, and RAM. An understanding of your project's own needs and requirements is also useful. Linode allows you to easily change plans at any time. View the [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) guide to learn how to change your plan type.
 
 This guide provides an overview of all Linode plan types and their corresponding use cases.
 
