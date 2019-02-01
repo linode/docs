@@ -6,7 +6,7 @@ keywords: ["minecraft", "ubuntu", "debian"]
 description: 'This tutorial will teach you basic installation and configuration of a Minecraft server on Ubuntu and Debian'
 aliases: ['applications/game-servers/minecraft-on-debian-and-ubuntu/','game-servers/minecraft-on-debian-and-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-31
+modified: 2019-02-01
 modified_by:
   name: Linode
 published: 2015-01-28
@@ -16,6 +16,7 @@ external_resources:
  - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
  - '[Official MineCraft Install Guide](http://minecraft.gamepedia.com/Tutorials/Setting_up_a_server#Debian)'
  - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
+dedicated_cpu_link: true
 ---
 
 ![Set Up a Minecraft Server](How_to_Set_Up_a_Minecraft_Server_smg.jpg)

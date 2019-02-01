@@ -5,7 +5,7 @@ author:
 description: 'Install SteamCMD, a command-line version of the Steam client, which works with games that use SteamPipe. Installing SteamCMD is a prerequisite before hosting a Steam title on your own game server.'
 keywords: ["steam", "steamcmd", "steam cmd", "games", "game server", "steam server", "steampipe"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-31
+modified: 2019-02-01
 modified_by:
   name: Linode
 published: 2016-02-15
@@ -15,6 +15,7 @@ external_resources:
  - '[Dedicated Steam Servers for Linux](https://developer.valvesoftware.com/wiki/Dedicated_Servers_List#Linux_Dedicated_Servers)'
  - '[Steam Support: Required Ports for Steam](https://support.steampowered.com/kb_article.php)'
 aliases: ['applications/game-servers/install-steamcmd-for-a-steam-game-server/']
+dedicated_cpu_link: true
 ---
 
 ![SteamCMD](Install_SteamCMD_for_a_Steam_Game_Server_smg.jpg)

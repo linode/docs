@@ -6,7 +6,7 @@ description: Tuning your Apache server to optimize your website.
 keywords: ["configuration", "apache", "web server", "resource tuning"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/apache-tips-and-tricks/tuning-your-apache-server/']
-modified: 2019-01-31
+modified: 2019-02-01
 modified_by:
   name: Linode
 published: 2015-02-27
@@ -15,6 +15,7 @@ external_resources:
  - '[Apache Performance Tuning](https://httpd.apache.org/docs/2.4/misc/perf-tuning.html)'
  - '[Apache MPM Common Directives](http://httpd.apache.org/docs/2.4/mod/mpm_common.html)'
  - '[Apache 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
+dedicated_cpu_link: true
 ---
 
 ![Tuning Your Apache Server](tuning-your-apache-server.png "Tuning Your Apache Server")

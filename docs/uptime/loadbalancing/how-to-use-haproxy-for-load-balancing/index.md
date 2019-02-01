@@ -7,7 +7,7 @@ og_description: 'HAProxy (High Availability Proxy) is a TCP/HTTP load balancer a
 keywords: ["haproxy", "load balancing", "high availability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-30
-modified: 2017-11-01
+modified: 2019-02-01
 modified_by:
   name: Linode
 title: 'How to Use HAProxy for Load Balancing'
@@ -16,6 +16,7 @@ contributor:
   link: https://github.com/hussrj
 external_resources:
 - '[HAProxy Documentation](http://www.haproxy.org/#docs)'
+dedicated_cpu_link: true
 ---
 
 

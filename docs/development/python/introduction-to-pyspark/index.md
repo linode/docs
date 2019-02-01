@@ -6,9 +6,9 @@ description: 'Learn how to install and use PySpark on your Linode for distribute
 og_description: 'Learn how to install and use PySpark on your Linode for distributed computing. In this guide, we will use an example of counting words in a corpus to learn the PySpark API.'
 keywords: ["big data", "spark", "nltk", "mapreduce", "pyspark", "hadoop"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-02-05
+modified: 2019-01-31
 modified_by:
-  name: Sam Foo
+  name: Linode
 title: "Introduction to PySpark"
 published: 2018-02-05
 external_resources:
@@ -18,6 +18,7 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["python"]
+dedicated_cpu_link: true
 ---
 
 ![Introduction to PySpark](PySpark.jpg)
