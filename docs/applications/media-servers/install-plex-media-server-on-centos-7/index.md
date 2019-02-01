@@ -5,13 +5,14 @@ author:
 description: View and organize your media library with Plex on CentOS 7
 keywords: ["plex", "media", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-24
+modified: 2019-01-31
 modified_by:
   name: Linode
 published: 2017-05-03
 title: Install Plex Media Server on CentOS 7
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
+dedicated_cpu_link: true
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. Basic Plex features are [free](https://support.plex.tv/articles/202526943-plex-free-vs-paid/), while the paid Plex Pass adds additional features.
@@ -36,34 +37,34 @@ This guide demonstrates how to set up **Plex Media Server** on a Linode running 
 
     ![Plex download button](plex-download-button.png)
 
-1.  In the menu that appears, right-click on *CentOS 64-bit (RPM for CentOS 7 or newer)* and copy the download link. Use `cURL` to download the .rpm package directly to your Linode. The example below uses the current link for CentOS at the time of writing. Be sure you install the most recent version of Plex.
+2.  In the menu that appears, right-click on *CentOS 64-bit (RPM for CentOS 7 or newer)* and copy the download link. Use `cURL` to download the .rpm package directly to your Linode. The example below uses the current link for CentOS at the time of writing. Be sure you install the most recent version of Plex.
 
         curl -O https://downloads.plex.tv/plex-media-server/1.14.1.5488-cc260c476/plexmediaserver-1.14.1.5488-cc260c476.x86_64.rpm
 
-1.  Update your system and install Plex:
+3.  Update your system and install Plex:
 
         sudo yum update
         sudo yum install plexmediaserver*.rpm
 
-1.  Enable Plex Media Server to start on reboot and then start the server:
+4.  Enable Plex Media Server to start on reboot and then start the server:
 
         sudo systemctl enable plexmediaserver
         sudo systemctl start plexmediaserver
 
-1.  Finally, you'll create the directories that will store your Plex media. In this example we'll create library directories for `movies` and `television` within a `plex-media` directory. These will be located within your user's `/home`:
+5.  Finally, you'll create the directories that will store your Plex media. In this example we'll create library directories for `movies` and `television` within a `plex-media` directory. These will be located within your user's `/home`:
 
         cd ~/
         mkdir -p plex-media/movies && mkdir plex-media/television
 
-1.  Administration of the Plex server is performed via its web interface. Before you can connect to the web interface from your workstation, you will first need to create an SSH tunnel to your Linode. Substitute `user` with the `sudo` user on your Linode, and `192.0.2.0` with its IP address.
+6.  Administration of the Plex server is performed via its web interface. Before you can connect to the web interface from your workstation, you will first need to create an SSH tunnel to your Linode. Substitute `user` with the `sudo` user on your Linode, and `192.0.2.0` with its IP address.
 
         ssh user@192.0.2.0 -L 8888:localhost:32400
 
-1.  Go to  `http://localhost:8888/web` in a web browser and log in to Plex.
+7.  Go to  `http://localhost:8888/web` in a web browser and log in to Plex.
 
     [![Plex web interface.](plex-browser-view-small.png)](plex-browser-view.png)
 
-1.  Give your Plex server a name. Be sure to leave the **Allow me to access my media outside my home** box checked, and click **Next**:
+8.  Give your Plex server a name. Be sure to leave the **Allow me to access my media outside my home** box checked, and click **Next**:
 
     [![Plex web interface - Server Name.](plex-server-name-small.png)](plex-server-name.png)
 

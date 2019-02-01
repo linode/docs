@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2013-09-30
 title: 'Minecraft on Linode with Ubuntu 12.04'
+dedicated_cpu_link: true
 ---
 
 This guide shows you how to set up a personal Minecraft server on a Linode running Ubuntu 12.04 LTS (64 bit).

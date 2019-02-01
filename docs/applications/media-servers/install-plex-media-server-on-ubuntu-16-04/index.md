@@ -5,13 +5,14 @@ author:
 description: View and organize your media library with Plex on Ubuntu 16.04
 keywords: ["plex media server", " install plex", " plex ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-06-21
+modified: 2019-01-31
 modified_by:
   name: Nick Brewer
 published: 2017-05-03
 title: Install Plex Media Server on Ubuntu 16.04
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
+dedicated_cpu_link: true
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. This guide will show you how to set up the **Plex Media Server** on your Linode running Ubuntu 16.04 LTS, as well as how to connect to your media server from a Plex [client](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps) application. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.

@@ -6,7 +6,7 @@ description: 'This step-by-step guide shows you how to assess your MySQL databas
 keywords: ["mysql", " mysqltuner", " tune mysql", " resource tuning"]
 aliases: ['databases/mysql/tuning-your-mysql-database/','databases/mysql/mysql-performance-tuning-tutorial/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-08
+modified: 2019-02-01
 modified_by:
   name: Linode
 published: 2015-02-27
@@ -15,6 +15,7 @@ external_resources:
  - '[MySQL Documentation Library](http://dev.mysql.com/doc/index.html)'
  - '[MySQL Tuning Server Parameters](http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html)'
  - '[MySQLTuner](http://mysqltuner.com/)'
+dedicated_cpu_link: true
 ---
 
 Running MySQL at optimal settings for specific resources helps handle larger server loads and prevents server slowdown. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads, it is beneficial to tune MySQL to additional connections.
@@ -42,15 +43,15 @@ The [MySQLTuner](http://mysqltuner.com/) script assesses your MySQL installation
 
         wget http://mysqltuner.com/mysqltuner.pl
 
-1. Change the scripts permissions to be executable:
+2. Change the scripts permissions to be executable:
 
         chmod +x mysqltuner.pl
 
-1. Run the `mysqltuner.pl` script. You will be prompted to enter in your MySQL administrative login and password:
+3. Run the `mysqltuner.pl` script. You will be prompted to enter in your MySQL administrative login and password:
 
         ./mysqltuner.pl
 
-2.  The script will return results similar to the output below:
+4.  The script will return results similar to the output below:
 
     {{< output >}}
          >>  MySQLTuner 1.4.0 - Major Hayden <major@mhtx.net>

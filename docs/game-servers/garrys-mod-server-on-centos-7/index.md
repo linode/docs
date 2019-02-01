@@ -7,7 +7,7 @@ keywords: ["garry''s mod", "centos", "centos 7"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-applications/game-servers/minecraft-ubuntu12-04/','applications/game-servers/garrys-mod-server-on-centos-7/']
 published: 2015-01-21
-modified: 2016-02-25
+modified: 2019-02-01
 modified_by:
   name: Linode
 title: 'Garry''s Mod on CentOS 7'
@@ -18,6 +18,7 @@ external_resources:
 contributor:
     name: Julian Meyer
     link: https://github.com/jmeyer2k
+dedicated_cpu_link: true
 ---
 
 

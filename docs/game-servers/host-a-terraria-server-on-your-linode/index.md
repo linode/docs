@@ -7,7 +7,7 @@ og_description: 'Run a Terraria server for yourself and your friends to play on.
 keywords: ["terraria", "steam", "minecraft", "gaming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-12-21
-modified: 2017-04-03
+modified: 2019-02-01
 modified_by:
   name: Linode
 title: 'How to Setup a Terraria Linux Server'
@@ -19,6 +19,7 @@ external_resources:
  - '[Terraria Wiki: Server](http://terraria.gamepedia.com/Server)'
  - '[Terraria Wiki: Setting up a Terraria Server](http://terraria.gamepedia.com/Guide:Setting_up_a_Terraria_server)'
 aliases: ['applications/game-servers/host-a-terraria-server-on-your-linode/']
+dedicated_cpu_link: true
 ---
 
 ![Hosta a Terraria Server on Your Linode](terraria-server.png "Hosta a Terraria Server on Your Linode")

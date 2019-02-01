@@ -6,13 +6,14 @@ description: 'This guide shows you how to use Beautiful Soup with a database to 
 og_description: 'Beautiful Soup is a Python library that helps make it easy to scrape websites for data. This guide shows how to set up Beautiful Soup to collect data over an extended period of time, then export the results to a spreadsheet.'
 keywords: ['beautiful soup', 'python', 'scraping', 'tinydb', 'data']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-11
+modified: 2019-02-01
 modified_by:
-  name: Jared Kobos
+  name: Linode
 published: 2017-12-12
 contributor:
   name: Luis Cortés
 title: 'How to Scrape a Website with Beautiful Soup'
+dedicated_cpu_link: true
 ---
 
 ![How to Scrape a Website with BeautifulSoup](beautifulsoup-title-graphic.jpg "How to Scrape a Website with BeautifulSoup")
