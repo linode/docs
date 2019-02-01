@@ -24,13 +24,13 @@ Linode is not responsible for the configuration or installation of software on y
 
 ## General Troubleshooting Strategies
 
-This section highlights troubleshooting strategies that apply to every service:
+This section highlights troubleshooting strategies that apply to every service.
 
 ### Check if the Service is Running
 
 The service may not be running. Check the status of the service:
 
-| Distribution | Command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+| **Distribution** | **Command**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 | ------------ | ------- |
 | systemd systems (Arch, Ubuntu 16.04+, Debian 8+, CentOS 7+, etc) | `sudo systemctl status <service name> -l` |
 | sysvinit systems (CentOS 6, Ubuntu 14.04, Debian 7, etc) | `sudo service <service name> status` |
@@ -39,37 +39,37 @@ The service may not be running. Check the status of the service:
 
 If the service isn't running, try restarting it:
 
-| Distribution | Command |
+| **Distribution** | **Command** |
 | ------------ | ------- |
 | systemd systems | `sudo systemctl restart <service name>` |
 | sysVinit systems | `sudo service <service name> restart` |
 
 ### Enable the Service
 
-If your system was recently rebooted, and the service didn't start automatically at boot, then it may not be enabled. The output of your Enable the service to prevent this from happening in the future:
+If your system was recently rebooted, and the service didn't start automatically at boot, then it may not be enabled. Enable the service to prevent this from happening in the future:
 
-| Distribution | Command |
+| **Distribution** | **Command** |
 | ------------ | ------- |
 | systemd systems | `sudo systemctl enable <service name>` |
 | sysVinit systems | `sudo chkconfig <service name> on` |
 
-### Check which IP Addresses and Ports your Services are Bound To
+### Check your Service's Bound IP Address and Ports
 
-Your service may be listening on an unexpected port, or it may not be bound to your public IP address (or whatever address is desirable). To view which address and ports and service is bound on, run the `ss` command with these options:
+Your service may be listening on an unexpected port, or it may not be bound to your public IP address (or whatever address is desirable). To view which address and ports a service is bound on, run the `ss` command with these options:
 
     sudo ss -atpu
 
-Review the application's documentation for help with setting the address and port it should bind to.
+Review the application's documentation for help determining the address and port your service should bind to.
 
 {{< note >}}
-One notable example is if a service is only bound to a public IPv4 address and not also an IPv6 address. If a user connects to your Linode over IPv6, they will not be able to access the service.
+One notable example is if a service is only bound to a public IPv4 address and not to an IPv6 address. If a user connects to your Linode over IPv6, they will not be able to access the service.
 {{< /note >}}
 
 ### Analyze Service Logs
 
 If your service doesn't start normally, review your system logs for the service. Your system logs may be in the following locations:
 
-| Distribution | System Logs |
+| **Distribution** | **System Logs** |
 | ------------ | ------- |
 | systemd systems | [Run `journalctl`](/docs/quick-answers/linux/how-to-use-journalctl/) |
 | Ubuntu 14.04, Debian 7 | `/var/log/syslog` |
@@ -103,7 +103,7 @@ Firewall rulesets can vary widely. Review the [Control Network Traffic with ipta
 
 ### Disable Firewall Rules
 
-In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling afterward it with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
+In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
 
 1.  Create a temporary backup of your current iptables:
 
@@ -131,7 +131,7 @@ In addition to analyzing your firewall ruleset, you can also temporarily disable
 
         sudo iptables -X
 
-1.  Repeat these steps with the `ip6tables` command to flush your IPv6 rules. Be sure to assign a different name to the file you save your IPv6 rules to (e.g. `~/ip6tables.txt`).
+1.  Repeat these steps with the `ip6tables` command to flush your IPv6 rules. Be sure to assign a different name to the IPv6 rules file (e.g. `~/ip6tables.txt`).
 
 ## Troubleshoot Web Servers
 
@@ -174,7 +174,7 @@ If your web server is responding with an error code, your troubleshooting will v
 
 -   **HTTP 500, 502, 503, 504**
 
-    The web server requested a resource from a process it depends on, but the process did not respond as expected. For example, if a database query need to be performed for a web request, but the database isn't running, then a 50X code will be returned. To troubleshoot these issues, investigate the service that the web server depends on.
+    The web server requested a resource from a process it depends on, but the process did not respond as expected. For example, if a database query needs to be performed for a web request, but the database isn't running, then a 50X code will be returned. To troubleshoot these issues, investigate the service that the web server depends on.
 
 ### Troubleshoot Databases
 
