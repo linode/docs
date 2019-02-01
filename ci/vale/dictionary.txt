@@ -946,6 +946,7 @@ patroni
 pem
 pepi
 percona
+performant
 permalink
 permalinks
 pflogsumm
@@ -1324,6 +1325,7 @@ tomacat
 tomcat6
 torvalds
 toolchain
+toolchains
 traceroute
 trackbar
 transcoder
