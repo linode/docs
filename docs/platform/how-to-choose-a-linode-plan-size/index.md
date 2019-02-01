@@ -73,9 +73,9 @@ Dedicated CPU plans offer entire dedicated physical CPU cores for your own Linod
 ### Use Cases
 
 - Intense CI/CD workflows,
-- CPU intensive game servers, like Minecraft or Team Fortress
+- CPU intensive game servers, like Minecraft or Team Fortress 2
 - Media transcoding
-- Data Science and Scientific Computing
+- Data Science, Scientific Computing, and Machine Learning
 
 ### Specifications
 
@@ -96,9 +96,9 @@ High Memory plans increase your system's available RAM while keeping other resou
 
 ### Use Cases
 
-- Data structure applications
-- Applications that require large amounts of in-memory caching
-- Large software repository hosting.
+- In-memory databases
+- Applications that require large amounts of caching
+- Large software repository hosting
 
 ### Specifications
 
