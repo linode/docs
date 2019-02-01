@@ -2,21 +2,22 @@
 author:
   name: Nick Brewer
   email: nbrewer@linode.com
-description: View and organize your media library with Plex on Ubuntu 16.04
+description: View and organize your media library with Plex on Ubuntu 18.04
 keywords: ["plex media server", " install plex", " plex ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-06-21
+aliases: ['applications/media-servers/install-plex-media-server-on-ubuntu-16-04/']
+modified: 2019-01-31
 modified_by:
-  name: Nick Brewer
+  name: Linode
 published: 2017-05-03
-title: Install Plex Media Server on Ubuntu 16.04
+title: Install Plex Media Server on Ubuntu 18.04
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 ---
 
-[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. This guide will show you how to set up the **Plex Media Server** on your Linode running Ubuntu 16.04 LTS, as well as how to connect to your media server from a Plex [client](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps) application. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from anywhere. This guide will show you how to set up the **Plex Media Server** on your Linode running Ubuntu 18.04 LTS, as well as how to connect to your media server from a [Plex client](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps) application. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
-![Install Plex Media Server on Ubuntu 16.04](install-plex-media-server-on-ubuntu-16-04.png)
+![Install Plex Media Server on Ubuntu 18.04](install-plex-media-server-on-ubuntu-18-04.png)
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -38,7 +39,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Head to the Plex [Downloads](https://www.plex.tv/downloads/) page and copy the installation link for Ubuntu. Use `wget` to download the installer via the copied link:
 
-        wget https://downloads.plex.tv/plex-media-server/1.5.5.3634-995f1dead/plexmediaserver_1.5.5.3634-995f1dead_amd64.deb
+        wget https://downloads.plex.tv/plex-media-server/1.14.1.5488-cc260c476/plexmediaserver_1.14.1.5488-cc260c476_amd64.deb
 
     This example uses the current link for Ubuntu, at the time of writing. Be sure to use the up-to-date version supplied on the Plex website.
 
@@ -58,7 +59,7 @@ This section will show you how to complete your server setup and start adding me
 
 ### Initial Setup
 
-1.  Administration of the Plex server is performed via its web interface. Before you can connect to the web interface from your workstation, you will first need to create an SSH tunnel to your Linode. Substitute `user` with the `sudo` user on your Linode, and `192.0.2.1` with the IP address of the Plex server:
+1.  Administration of the Plex server is performed via its web interface. Before you can connect to the web interface from your workstation, you will first need to create an SSH tunnel to your Linode. Substitute `user` with the `sudo` user on your Linode, and `192.0.2.1` with the IP address of the Plex server. Perform this step on your workstation:
 
         ssh user@192.0.2.1 -L 8888:localhost:32400
 
@@ -66,11 +67,11 @@ This section will show you how to complete your server setup and start adding me
 
     [![Plex web interface.](plex-browser-view-small.png)](plex-browser-view.png)
 
-3.  Give your Plex server a name. Be sure to leave the **Allow me to access my media outside my home** box checked, and click **Next**:
+3.  Give your Plex server a name. Be sure to leave the **Allow me to access my media outside my home** box **checked**, and click **Next**:
 
     [![Plex web interface - Server Name.](plex-server-name-small.png)](plex-server-name.png)
 
-4.  Finally, you'll create the directories that will store your Plex media. In this example we'll create library directories for `movies` and `television` within a `plex-media` directory. These will be located within your user's `/home`:
+4.  Finally, you'll create the directories that will store your Plex media. This step is performed on your Linode. In this example we'll create library directories for `movies` and `television` within a `plex-media` directory. These will be located within your user's `/home`:
 
         cd ~/
         mkdir -p plex-media/movies && mkdir plex-media/television
@@ -85,7 +86,7 @@ This section will show you how to complete your server setup and start adding me
 
     [![Plex web interface - Library type](plex-library-type-small.png)](plex-library-type.png)
 
-3.  Navigate to the corresponding media directory that you created previously, then click **Add**:
+3.  Navigate to the corresponding media directory that you created previously, (`/home/username/plex-media/movies`) then click **Add**:
 
     [![Plex web interface - Library location](plex-library-location-small.png)](plex-library-location.png)
 
@@ -93,7 +94,7 @@ This section will show you how to complete your server setup and start adding me
 
     ![Plex web interface - additional Library](plex-additional-library.png)
 
-5.  Add your media to the appropriate directories. Be sure to review Plex's [naming conventions](https://support.plex.tv/hc/en-us/categories/200028098-Media-Preparation) for media files, to ensure that your files are identified correctly.
+5.  Add your media to the appropriate directories. Be sure to review Plex's [naming conventions](https://support.plex.tv/articles/categories/media-preparation/) for media files, to ensure that your files are identified correctly.
 
 ### Disable DLNA (Recommended)
 
@@ -107,7 +108,7 @@ Now that your server is set up, you're ready to connect to it from your Plex cli
 
 The examples provided here will use **Plex Media Player** for MacOS.
 
-1.  [Download](https://www.plex.tv/downloads/) the appropriate media player application, or install it via your device's application store.
+1.  [Download](https://www.plex.tv/apps-devices/) the appropriate media player application, or install it via your device's application store.
 
 2.  Sign in to the Plex client application using the same Plex account as your server.
 
