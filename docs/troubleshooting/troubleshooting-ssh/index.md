@@ -26,7 +26,7 @@ Linode is not responsible for the configuration or installation of software on y
 
 ## Before You Begin
 
-Before troubleshooting your SSH service, familiarize yourself with the Linode Shell:
+Before troubleshooting your SSH service, familiarize yourself with the Linode Shell.
 
 ### The Linode Shell (Lish)
 
@@ -46,13 +46,13 @@ If you reset your password and can log in with Lish, try logging in with SSH, as
 
 If your SSH connection attempts are timing out or are being immediately rejected, then your SSH daemon may not be running, or your firewall may be blocking SSH connections. This section will help troubleshoot these issues.
 
-If your connections are *not* timing out or being rejected, or if you are able to resolve these issues but you still can't access SSH because of rejected login attempts, then continue to [troubleshooting rejected SSH logins](#troubleshooting-rejected-SSH-logins).
+If your connections are *not* timing out or being rejected, or if you are able to resolve these issues but you still can't access SSH because of rejected login attempts, then continue to the [Troubleshoot Rejected SSH Logins](#troubleshoot-rejected-ssh-logins) section.
 
 ### Is SSH Running?
 
 1.  To check on the status of your SSH daemon, run:
 
-    | Distribution | Command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+    | **Distribution** | **Command**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
     | ------------ | ------- |
     | systemd systems (Arch, Ubuntu 16.04+, Debian 8+, CentOS 7+, etc) | `sudo systemctl status sshd -l` |
     | CentOS 6 | `sudo service sshd status` |
@@ -62,7 +62,7 @@ If your connections are *not* timing out or being rejected, or if you are able t
 
 1.  If the command reports the service is not running, then try restarting it:
 
-    | Distribution | Command |
+    | **Distribution** | **Command** |
     | ------------ | ------- |
     | systemd systems | `sudo systemctl restart sshd` |
     | CentOS 6 | `sudo service sshd restart` |
@@ -70,7 +70,7 @@ If your connections are *not* timing out or being rejected, or if you are able t
 
 1.  Check the status of the service again. If it's still not running, view the logs for the service:
 
-    | Distribution | Command |
+    | **Distribution** | **Command** |
     | ------------ | ------- |
     | systemd systems | `sudo journalctl -u sshd -u ssh` |
     | CentOS 6 | `less /var/log/secure` |
@@ -112,7 +112,7 @@ This error indicates that another service on your system is already using the sa
 
 -   **Bind SSH to a different port**
 
-    Follow instructions for [setting SSH's port number](#bind-ssh-to-a-port-number), and specify a different number than the one that was already in-use.
+    Follow instructions for [setting SSH's port number](#bind-ssh-to-a-port-number), and specify a different number than the one that is already in-use.
 
 -   **Stop the other service**
 
@@ -132,7 +132,7 @@ This error indicates that another service on your system is already using the sa
 
 -   **Assign a different port to the other service**
 
-    1.  Use the `netstat` command to find out what service is bound to the same port:
+    1.  Use the `netstat` command to find out what service is bound to the same port.
 
     1.  Then, change the configuration for that service to use a different port.
 
@@ -174,7 +174,7 @@ Firewall rulesets can vary widely. Review the [Control Network Traffic with ipta
 
 ### Disable Firewall Rules
 
-In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling afterward it with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
+In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
 
 1.  Create a temporary backup of your current iptables rules:
 
@@ -202,7 +202,7 @@ In addition to analyzing your firewall ruleset, you can also temporarily disable
 
         sudo iptables -X
 
-1.  Repeat these steps with the `ip6tables` command to flush your IPv6 rules. Be sure to assign a different name to the file you save your IPv6 rules to (e.g. `~/ip6tables.txt`).
+1.  Repeat these steps with the `ip6tables` command to flush your IPv6 rules. Be sure to assign a different name to the IPv6 rules file (e.g. `~/ip6tables.txt`).
 
 ## Troubleshoot Rejected SSH Logins
 
@@ -226,7 +226,7 @@ SSH can be configured to not accept passwords and instead accept public key auth
 
     grep PasswordAuthentication /etc/ssh/sshd_config
 
-If the value of the `PasswordAuthentication` is `no`, [create a keypair](/docs/security/securing-your-server/#create-an-authentication-key-pair). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
+If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/security/securing-your-server/#create-an-authentication-key-pair). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
 
 ### Is your Public Key Stored on the Server?
 
@@ -246,7 +246,7 @@ If the previous troubleshooting steps do not resolve your issues, collect more i
 
 -   View your login attempts in the log files described in step 4 of [Is SSH Running?](#is-ssh-running). In particular, you can search these logs for your local IP address, and the results will show what error messages were recorded for your logins. To find out what your local IP is, visit a website like https://www.whatismyip.com/.
 
--   Use your SSH client in verbose mode, which will show details for each part of the connection process. Verbose mode is invoked by passing the `-v` option. Passing more than one `v` increases the verbosity, up to three `v`s:
+-   Use your SSH client in verbose mode, which will show details for each part of the connection process. Verbose mode is invoked by passing the `-v` option. Passing more than one `v` increases the verbosity. You can use up to three `v`s:
 
         ssh -v username@192.0.2.4
         ssh -vv username@192.0.2.4
