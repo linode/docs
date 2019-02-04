@@ -6,7 +6,7 @@ description: 'This guide explains how to host a Half-Life 2: Deathmatch server o
 keywords: ["half-life 2", "deathmatch", "steamcmd", "host", "hl2", "multiplayer first-person shooter video game"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-08-17
-modified: 2017-08-17
+modified: 2019-02-01
 modified_by:
   name: Linode
 title: 'Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu'
@@ -19,6 +19,7 @@ external_resources:
 - '[Combine OverWiki](http://combineoverwiki.net/wiki/Half-Life_2:_Deathmatch)'
 - '[AlliedModders Wiki](https://wiki.alliedmods.net)'
 - '[Botrix](http://www.famaf.unc.edu.ar/~godin/botrix)'
+dedicated_cpu_link: true
 ---
 
 

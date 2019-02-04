@@ -7,7 +7,7 @@ og_description: 'An Elastic Stack combines Elasticsearch, Logstash, and Kibana. 
 keywords: ["ossec", "elk stack", "elk,ossec-hids"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-17
-modified: 2018-12-11
+modified: 2019-01-31
 modified_by:
   name: Linode
 title: 'Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh'
@@ -17,6 +17,7 @@ contributor:
 external_resources:
   - '[Wazuh Official Documentation](https://documentation.wazuh.com/current/index.html)'
   - '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
+dedicated_cpu_link: true
 ---
 
 ![Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh](elastic-stack-security-title.jpg "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh")
@@ -45,18 +46,18 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
 1.  Many of the steps in this guide require root privileges. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
 
-1. Your Linode should have at least [8GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
+2. Your Linode should have at least [8GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
-1. Add a domain zone, NS record, and A/AAA record for the domain you will use to access your Kibana installation. See the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your Kibana instance via your Linode's IP address, you can skip this step.
+3. Add a domain zone, NS record, and A/AAA record for the domain you will use to access your Kibana installation. See the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your Kibana instance via your Linode's IP address, you can skip this step.
 
-1. [Create an SSL Certificate](https://linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/), if you will be using SSL encryption for your domain.
+4. [Create an SSL Certificate](https://linode.com/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/), if you will be using SSL encryption for your domain.
 
-1. Install NGINX or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:
+5. Install NGINX or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:
 
       - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/)
       - [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7/)
 
-1. Configure your webserver for virtual domain hosting:
+6. Configure your webserver for virtual domain hosting:
 
       **NGINX**
 

@@ -6,7 +6,7 @@ description: 'Use NGINX as a Front-end Proxy and Software Load-Balancer.'
 keywords: ["apache", "nginx", "proxy", "load balancer", "load balancing", "web server", "http", "use nginx as proxy", "use nginx as load-balancer", "front-end proxy", "cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','websites/loadbalancing/Use-Nginx-for-Proxy-Services-and-Software-Load-Balancing/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/', 'uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer/']
-modified: 2017-03-23
+modified: 2019-02-01
 modified_by:
   name: Linode
 published: 2010-05-11
@@ -15,6 +15,7 @@ external_resources:
  - '[NGINX Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
  - '[NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+dedicated_cpu_link: true
 ---
 
 The NGINX web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because NGINX uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.

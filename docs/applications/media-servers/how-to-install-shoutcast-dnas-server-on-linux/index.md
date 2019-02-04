@@ -6,7 +6,7 @@ description: 'This tutorial will guide you through setup and configuration of a 
 keywords: ["shoutcast", " internet radio", " streaming media", " streaming audio"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['communications/media-servers/shoutcast/','applications/media-servers/shoutcast/']
-modified: 2017-06-21
+modified: 2019-01-31
 modified_by:
   name: Linode
 published: 2012-06-07
@@ -16,6 +16,7 @@ external_resources:
  - '[SHOUTcast Getting Started Guide](http://wiki.winamp.com/wiki/SHOUTcast_Getting_Started_Guide)'
  - '[SHOUTcast Broadcast Tools](http://www.shoutcast.com/broadcast-tools)'
  - '[SHOUTcast Transcoder MP3 Licensing](http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding)'
+dedicated_cpu_link: true
 ---
 
 ![How to Install A SHOUTcast DNAS Server on Linux](install-shoutcast-dnas-title.jpg "How to Install A SHOUTcast DNAS Server on Linux title graphic")
