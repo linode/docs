@@ -26,7 +26,6 @@ Start by reviewing what each specification means for your application. If you're
 | ---- | ----------- |
 | RAM | The working memory available for your server's processes. Your server stores information in memory that is needed to carry out its functions. Or, it caches data in memory for fast retrieval in the future, if it is likely that the data will be needed. Data stored in RAM is accessed faster than data stored in your Linode's disks, but it is not persistent storage. |
 | CPU | The number of CPU cores available to your server. Your software is often designed to execute its tasks across multiple CPU cores in parallel. The higher your CPU core count, the more work you can perform simultaneously.
-| vCPU        |In the context of a Linode Dedicated CPU instance, a virtual CPU is a method that allows the operating system to treat individual cores as several virtual cores. Virtual CPU's increases the performance and effeciency of applications by allowing the OS to triage processes using multiple threads. |
 | Storage | Your server's built-in persistent storage. Large databases, media libraries, and other stores of files will require more storage space. Your Linode's storage is maintained on high-performance SSDs for fast access. You can also supplement your Linode's disks with extra [Block Storage Volumes](https://www.linode.com/blockstorage). |
 | Transfer | The total amount of traffic your server can emit over the course of a month. Inbound traffic sent to your Linode does not count against your transfer quota. If you exceed your quota, your service will not be shut off; instead, an overage will be billed. Review the [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota/) guide for more information about how transfer works.
 | Network In | The maximum bandwidth for inbound traffic sent to your Linode. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your Linode and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center/) guide.
@@ -117,9 +116,14 @@ To view a full list of High Memory plan specifications, visit the [Linode Pricin
 
 ## 4. Dedicated CPU
 
-Dedicated CPU instances offer entire dedicated physical CPU cores for your own Linode's use. No other servers can run processes on the same physical cores that you're using, which means that your software can run at peak speed and efficiency.
+Dedicated CPU instances offer entire dedicated physical CPU cores for your own Linode's use. No other servers can run processes on the same physical cores that you're using, which means that your software can run at peak speed and efficiency. The Dedicated CPU instance at Linode offers a 1:1 ratio of CPU to Virtual CPU, guaranteeing the user 100% access to their Linode.
 
 Under the Nanode, Standard, and High Memory plans, your processes are scheduled on the same physical CPU cores as the processes from other servers. This shared scheduling is done in a secure and performant manner, and Linode works to minimize any competition for CPU resources between your server and other servers, but the Dedicated CPU instances offer the absolute best processing performance. With Dedicated CPUs, you can run your processes for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations.
+
+### Dedicated CPU Hyperthreading
+
+The Dedicated CPU instance at Linode utilizes Hyperthreading to help increase the effeciency of proccesses running on the instance. CPU's run instructions, or processes, CPU's with multiple cores allow multiple sequences of instructions to run simultaniously. By utilizing Hyperthreading, CPU's can emulate the multi-tasking ability of multiple cores on each physical core, allowing the core to maximize it's own performance, by effeciently multi-tasking different processes.
+
 
 ### Dedicated CPUs and the Linode API
 
@@ -141,7 +145,7 @@ Furthermore, some CPU-intensive tasks may be triggered from other events in your
 | ------------- | ----- |
 | RAM | 4GB |
 | CPU | 1 CPU Core (dedicated) |
-| vCPU    |2 Virtual CPU       | 
+| vCPU    |2 Virtual CPU       |
 | Storage | 50 GB SSD Storage |
 | Transfer | 2 TB |
 | Network In | 40 Gbps |
