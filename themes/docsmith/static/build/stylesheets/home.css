@@ -21661,6 +21661,29 @@ blockquote div.btn-copy .glyphicon.glyphicon-copy {
 .alert-banner i {
   padding: 0 15px;
 }
+.image-alert-banner {
+  font-size: 22px;
+  line-height: 0;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 0 0;
+}
+.image-alert-banner a {
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+}
+.image-alert-banner a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+.image-alert-banner i {
+  padding: 0 15px;
+}
+.image-alert-banner img {
+  max-width: 100%;
+}
 /* New Sub Menu  */
 .sub-menu-wrap {
   max-width: 1170px;
