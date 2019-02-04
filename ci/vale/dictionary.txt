@@ -145,6 +145,7 @@ chmod
 chown
 chromecast
 chroot
+chrooting
 chrooted
 citad
 cjones
@@ -828,6 +829,7 @@ nanode
 nanodes
 natively
 nbox
+ncdu
 ncurses
 neo
 neomake
@@ -1278,6 +1280,7 @@ syslog
 systemctl
 systemd
 systemname
+sysvinit
 targ
 tasksel
 taskserver
