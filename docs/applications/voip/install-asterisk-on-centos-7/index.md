@@ -6,12 +6,13 @@ description: 'Installing Asterisk on CentOS 7'
 keywords: ["asterisk 13", "centos 7", "centos", "open source", "private branch exchange", "pbx", "asterisk pbx", "sip", "session initiation protocol", "sip protocol", "IP PBX systems", "VoIP gateways"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-30
-modified: 2018-10-30
+modified: 2019-02-01
 modified_by:
     name: Linode
 title: 'How to Install Asterisk on CentOS 7'
 contributor:
     name: Nick Rahl
+dedicated_cpu_link: true
 ---
 
 
@@ -188,7 +189,7 @@ PJPROJECT is Asterisk's SIP channel driver. It should improve call clarity and p
     libpj.so (libc6,x86-64) => /lib64/libpj.so
 {{< /output >}}
 
-
+<!--
 ## Install DAHDI (Optional)
 
 DAHDI, or *Digium/Asterisk Hardware Device Interface*, is the kernel module that controls telephone interface cards. This type of card is usually used when adding Asterisk to an existing call center that uses older technology.
@@ -201,7 +202,7 @@ Since it's not possible to add physical cards to a virtual machine you probably 
 
         cd ~/build-asterisk
 
-1.  Download the latest version of DAHDI (version 2.11.1 at the time of this writing):
+1.  Download the latest version of DAHDI (version 3.0.0 at the time of this writing):
 
         wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz
 
@@ -211,7 +212,9 @@ Since it's not possible to add physical cards to a virtual machine you probably 
 
 1.  Change to the new directory:
 
-        cd dahdi-linux-complete-2.11.1+2.11.1/
+        cd dahdi-linux-complete-3.0.0+3.0.0/
+
+    If the directory cannot be found, run the `ls` command and take note of the folder name and `cd` into that directory instead.
 
 1.  Build DAHDI:
 
@@ -221,7 +224,7 @@ Since it's not possible to add physical cards to a virtual machine you probably 
 
         sudo make install
         sudo make config
-
+-->
 
 ## Install Asterisk
 
@@ -237,9 +240,9 @@ Since it's not possible to add physical cards to a virtual machine you probably 
 
         tar -zxvf asterisk-16-current.tar.gz
 
-1.  Switch to the new Asterisk directory, replacing `16.0.0` if needed:
+1.  Switch to the new Asterisk directory, replacing `16.1.1` if needed:
 
-        cd asterisk-16.0.0
+        cd asterisk-16.1.1
 
 
 ### Enable MP3 Support

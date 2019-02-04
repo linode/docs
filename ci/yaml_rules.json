@@ -53,6 +53,12 @@
     "type": "text",
     "description": "For freelancer guides only. First and last name of the freelancer who wrote the guide."
   },
+  "dedicated_cpu_link": {
+        "elements": false,
+        "required": false,
+        "type": "text",
+        "description": "Adds a banner to guide announcing Linode Dedicated CPU instances."
+  },
   "deprecated": {
     "elements": false,
     "required": false,
@@ -126,9 +132,9 @@
   },
   "modified": {
     "elements": false,
-    "required": true,
+    "required": false,
     "type": "date",
-    "description": "The date this guide was last modified. Should use the form YYYY-MM-DD."
+    "description": "(DEPRECATED: Hugo now uses the date of the last Git commit) The date this guide was last modified. Should use the form YYYY-MM-DD."
   },
   "modified_by": {
     "elements": false,

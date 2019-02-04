@@ -7,9 +7,9 @@ og_description: 'Graylog is a powerful, free, open-source log management and ana
 keywords: ["Graylog", "Install Graylog", "Graylog Debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
-modified: 2017-08-15
+modified: 2019-01-31
 modified_by:
-  name: Hitesh Jethva
+  name: Linode
 title: 'How to Install and Configure Graylog2 on Debian 9'
 contributor:
   name: Hitesh Jethva
@@ -17,6 +17,7 @@ contributor:
 external_resources:
 - '[Graylog Server Documentation](http://docs.graylog.org/en/2.3/)'
 - '[Elasticsearch](https://www.elastic.co/guide/index.html)'
+dedicated_cpu_link: true
 ---
 
 ## What is Graylog?

@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2010-04-23
 title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)'
+dedicated_cpu_link: true
 ---
 
 Asterisk is an open source telephone solution that runs over the internet instead of running through copper lines like a normal phone would. It offers a variety of features such as voice mail and conference calling, much like a land line telephone can.

@@ -6,7 +6,7 @@ keywords: ["minecraft", "ubuntu", "debian"]
 description: 'This tutorial will teach you basic installation and configuration of a Minecraft server on Ubuntu and Debian'
 aliases: ['applications/game-servers/minecraft-on-debian-and-ubuntu/','game-servers/minecraft-on-debian-and-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-10-22
+modified: 2019-02-01
 modified_by:
   name: Linode
 published: 2015-01-28
@@ -16,13 +16,14 @@ external_resources:
  - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
  - '[Official MineCraft Install Guide](http://minecraft.gamepedia.com/Tutorials/Setting_up_a_server#Debian)'
  - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
+dedicated_cpu_link: true
 ---
 
 ![Set Up a Minecraft Server](How_to_Set_Up_a_Minecraft_Server_smg.jpg)
 
 Minecraft is one of the most popular games in the world. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game.
 
-This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS. We have updated this guide to be compatible with the major release of 1.13: Update Aquatic.
+This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 9 or Ubuntu 18.04 LTS. We have updated this guide to be compatible with the major release of 1.13: Update Aquatic.
 
 ## Prerequisites
 
@@ -37,15 +38,15 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 4.  Install *OpenJDK*, an open-source implementation of Java, and the GNU Screen package.
 
     {{< note >}}
-Minecraft version 1.12 is only compatible with OpenJDK 8. If you are using OpenJDK 7 you must remove it using this command
+Minecraft version 1.13 is only compatible with OpenJDK 8. If you are using OpenJDK 7 you must remove it using this command
 `sudo apt remove openjdk-7-\*` before continuing with this guide.
 {{< /note >}}
 
-    - In Ubuntu 16.04:
+    - In Ubuntu 18.04:
 
             sudo apt install openjdk-8-jre-headless screen
 
-    - In Debian 8:
+    - In Debian 9:
 
             sudo apt install openjdk-8-jre-headless screen
 
@@ -118,7 +119,7 @@ eula=true
 
     This time the Minecraft server console will generate a lot of output as it creates required configuration files and generates the Minecraft world:
 
-        [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.12
+        [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.13
         [22:00:06] [Server thread/INFO]: Loading properties
         [22:00:06] [Server thread/INFO]: Default game type: SURVIVAL
         [22:00:06] [Server thread/INFO]: Generating keypair
