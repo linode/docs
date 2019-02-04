@@ -118,13 +118,9 @@ To view a full list of the High Memory instance plans, visit the [Linode Pricing
 
 ## 4. Dedicated CPU
 
-Dedicated CPU instances offer entire dedicated physical CPU cores for your own Linode's use. No other instances can run processes on the same physical cores that you're using, which means that your software can run at peak speed and efficiency.
+Dedicated CPU instances offer entire dedicated CPU cores for your own Linode's use. No other instances can run processes on the same cores that you're using, which means that your software can run at peak speed and efficiency.
 
-Under the Nanode, Standard, and High Memory instances, your processes are scheduled on the same physical CPU cores as the processes from other servers. This shared scheduling is done in a secure and performant manner, and Linode works to minimize competition for CPU resources between your server and other servers, but the Dedicated CPU instances provide an environment with zero competition. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations.
-
-### Dedicated CPU Hyper-threading
-
-The Dedicated CPU instance utilizes Hyper-threading to increase your performance. For each physical core provided to your Dedicated CPU instance, your Linode will have access to two vCPUs, one of which is a hyper-threaded vCPU. This hyper-threaded vCPU allows you to approximate the performance of using two separate cores.
+Under the Nanode, Standard, and High Memory instances, your processes are scheduled on the same CPU cores as the processes from other servers. This shared scheduling is done in a secure and performant manner, and Linode works to minimize competition for CPU resources between your server and other servers, but the Dedicated CPU instances provide an environment with zero competition. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations.
 
 ### Dedicated CPUs and the Linode API
 
