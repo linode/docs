@@ -6,7 +6,6 @@ description: 'This Counter Strike: Global Offensive (CS:GO) server guide contain
 keywords: ["counter strike", "counter strike global offensive", "csgo", "cs:go", "csgo server", "csgo server hosting", " steam servers", "game servers", "games", "ubuntu", "ubuntu 14.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-25
-modified: 2019-02-01
 modified_by:
     name: Linode
 title: 'Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
