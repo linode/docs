@@ -169,7 +169,7 @@ This command format works for all Lish functionality.
 The valid fingerprints for the Lish gateway boxes in our data centers are as follows:
 
 ### Atlanta
-lish-atlanta.linode.com:
+lish-atlanta.linode.com
 
     RSA 59:30:1a:0b:93:5e:3f:4b:6f:d1:96:ff:7e:9e:12:f8
     DSA 0b:90:ed:f2:a1:e0:55:5b:38:6e:5d:6e:fa:00:63:7f
