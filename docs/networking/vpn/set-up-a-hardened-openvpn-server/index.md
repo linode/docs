@@ -113,6 +113,7 @@ Replace any instances of `eth0` with the name of your network interface.
 
 # Allow traffic on the TUN interface so OpenVPN can communicate with eth0.
 -A INPUT -i tun0 -j ACCEPT
+-A FORWARD -i tun0 -j ACCEPT
 -A OUTPUT -o tun0 -j ACCEPT
 
 # Log any packets which don't fit the rules above.
