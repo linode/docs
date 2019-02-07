@@ -12,10 +12,11 @@ external_resources:
 keywords: ['nginx centos 7','elasticsearch','filebeat','metricbeat','beats','kibana','elk stack','elastic stack']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-13
-modified: 2017-12-13
+modified: 2019-01-31
 modified_by:
   name: Linode
 title: 'Monitor an NGINX Web Server Using the Elastic Stack on Centos 7'
+dedicated_cpu_link: true
 ---
 ![Monitor NGINX Logs with Elastic](Monitor_NGINX_Elastic.jpg)
 

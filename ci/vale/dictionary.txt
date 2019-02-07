@@ -145,6 +145,7 @@ chmod
 chown
 chromecast
 chroot
+chrooting
 chrooted
 citad
 cjones
@@ -156,6 +157,7 @@ clickjacking
 client1
 client2
 clojure
+cloudnet
 clozure
 cls
 cluebringer
@@ -406,6 +408,7 @@ gamepad
 gameplay
 gandi
 gatsby
+gbps
 gcc
 gcm
 geckodriver
@@ -826,6 +829,7 @@ nanode
 nanodes
 natively
 nbox
+ncdu
 ncurses
 neo
 neomake
@@ -945,6 +949,7 @@ patroni
 pem
 pepi
 percona
+performant
 permalink
 permalinks
 pflogsumm
@@ -1275,6 +1280,7 @@ syslog
 systemctl
 systemd
 systemname
+sysvinit
 targ
 tasksel
 taskserver
@@ -1323,10 +1329,12 @@ tomacat
 tomcat6
 torvalds
 toolchain
+toolchains
 traceroute
 trackbar
 transcode
 transcoder
+transcoding
 trello
 truststore
 tt

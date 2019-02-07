@@ -53,6 +53,12 @@
     "type": "text",
     "description": "For freelancer guides only. First and last name of the freelancer who wrote the guide."
   },
+  "dedicated_cpu_link": {
+        "elements": false,
+        "required": false,
+        "type": "text",
+        "description": "Adds a banner to guide announcing Linode Dedicated CPU instances."
+  },
   "deprecated": {
     "elements": false,
     "required": false,

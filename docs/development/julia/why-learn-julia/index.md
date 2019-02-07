@@ -6,7 +6,7 @@ description: Julia is a dynamically typed, functional programming language inten
 keywords: ['data science','julia','python','why learn Julia']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-11
-modified: 2018-06-11
+modified: 2019-02-01
 modified_by:
   name: Linode
 title: Why You Should Learn Julia
@@ -17,6 +17,7 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["julia"]
+dedicated_cpu_link: true
 ---
 ![Why You Should Learn Julia](Why_You_Should_Learn_Julia_smg.jpg)
 

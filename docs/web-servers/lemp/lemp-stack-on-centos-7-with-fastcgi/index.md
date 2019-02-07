@@ -38,7 +38,7 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 
         sudo yum install mariadb-server php-mysql
 
-2.  Ensure NGINX is running and and enabled to start automatically on reboot:
+2.  Ensure MariaDB is running and and enabled to start automatically on reboot:
 
         sudo systemctl start mariadb
         sudo systemctl enable mariadb
