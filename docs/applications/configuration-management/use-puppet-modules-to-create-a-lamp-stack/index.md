@@ -6,6 +6,8 @@ description: 'Learn how to efficiently use Puppet modules to manage files and se
 keywords: ["puppet", "automation", "puppet master", "puppet agent", "modules", "server automation", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['applications/puppet/create-puppet-module/','applications/configuration-management/create-puppet-module/']
+deprecated: true
+deprecated_link: 'applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/'
 modified: 2015-11-12
 modified_by:
     name: Elle Krout

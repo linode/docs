@@ -604,7 +604,7 @@ service lmtp {
 
     Locate `service auth` and configure it as shown below:
 
-    {{< file "etc/dovecot/conf.d/10-master.conf" >}}
+    {{< file "/etc/dovecot/conf.d/10-master.conf" >}}
 ...
 service auth {
   ...
@@ -628,7 +628,7 @@ service auth {
 
     In the `service auth-worker` section, uncomment the `user` line and set it to `vmail`:
 
-    {{< file "1etc/dovecot/conf.d/10-master.conf" >}}
+    {{< file "/etc/dovecot/conf.d/10-master.conf" >}}
 ...
 service auth-worker {
   ...
