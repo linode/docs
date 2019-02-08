@@ -43,7 +43,7 @@ Finally, a common strategy when setting up a new server is to start with a small
 
 ## 1. Nanode
 
-The Nanode instance is great place to begin if you are new to the world of cloud hosting and are unsure of your requirements. The Nanode offers the essentials and costs $5/month. With this instance you have a fully functioning server with your preferred Linux distribution.
+The Nanode instance is a great place to begin if you are new to the world of cloud hosting and are unsure of your requirements. The Nanode offers the essentials and costs $5/month. With this instance you have a fully functioning server with your preferred Linux distribution.
 
 ### Use Cases
 
