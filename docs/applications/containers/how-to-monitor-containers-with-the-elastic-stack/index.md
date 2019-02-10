@@ -97,6 +97,10 @@ type=rpm-md
 
         sudo yum update
 
+1.  Before installing Elasticsearch, the Java runtime must be present. On CentOS, for example, a compatible Java runtime can be installed using a headless OpenJDK package:
+
+        sudo yum install java-11-openjdk-headless
+
 1.  Install Elasticsearch, Kibana, Filebeat, and Metricbeat:
 
         sudo yum install elasticsearch kibana filebeat metricbeat
@@ -109,10 +113,12 @@ In order to properly discover and capture container metrics, each component of t
 
 By default, Elasticsearch will operate correctly as a document store for Filebeat and Metricbeat. Before starting Elasticsearch, some minor configuration changes should be made first.
 
-In the file `/etc/elasticsearch/jvm.options`, two values will be uncommented that begin with `-Xm` that instruct the JVM to allocate a specific amount of memory. The recommend value for these settings is 50% of the available system RAM. For example, on a system with 1G of RAM, these settings should be:
+In the file `/etc/elasticsearch/jvm.options`, two values should be uncommented that begin with `-Xm` that instruct the JVM to allocate a specific amount of memory. The recommend value for these settings is 50% of the available system RAM. For example, on a system with 1G of RAM, these settings should be:
 
-    -Xms512m
-    -Xmx512m
+{{< file "/etc/elasticsearch/jvm.options" yml >}}
+-Xms512m
+-Xmx512m
+{{< /file >}}
 
 With these setting in place, start the `elasticsearch` service.
 
@@ -183,6 +189,10 @@ Like Filebeat, Metricbeat should be similarly configured in order to dynamically
 
         sudo /usr/bin/metricbeat modules enable docker
 
-1.  The remainder of the configuration file will instruct Filebeat to send logs to the locally-running Elasticsearch instance, which can be left unchanged. Filebeat can not be started:
+1.  The remainder of the configuration file will instruct Metricbeat to send logs to the locally-running Elasticsearch instance, which can be left unchanged. Metricbeat can now be started:
 
-        sudo systemctl start filebeat
+        sudo systemctl start metricbeat
+
+## 
+
+![Kibana 6 Initial Configuration Page](kibana-initial-page.png "Kibana 6 Initial Configuration Page")
