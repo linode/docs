@@ -6,7 +6,7 @@ description: 'Mumble is an open-source, encrypted VoIP software. This guide inst
 keywords: ["mumble", " debian", " murmur", " gaming", " voip", " voice chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-11-09
-modified: 2015-11-09
+modified: 2019-02-01
 modified_by:
     name: Linode
 title: 'Install and Configure Mumble on Debian'
@@ -15,6 +15,7 @@ contributor:
     link: https://twitter.com/markzz989/
 external_resources:
  - '[Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page)'
+dedicated_cpu_link: true
 ---
 
 

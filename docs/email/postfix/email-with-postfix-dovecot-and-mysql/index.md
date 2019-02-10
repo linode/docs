@@ -5,7 +5,7 @@ author:
 description: 'Setting up a mail server with Postfix, Dovecot, and MySQL.'
 keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "debian", "ubuntu", "dovecot 2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-07-11
+modified: 2019-01-11
 modified_by:
   name: Linode
 published: 2013-05-13
@@ -81,8 +81,8 @@ Make a note of the certificate and key locations on the Linode. You will need th
 
 This guide uses the following package versions:
 
-* Postfix 3.1.0
-* Dovecot 2.2.22
+* Postfix 3.3.0
+* Dovecot 2.2.33.2
 * MySQL 14.14
 
 ## MySQL
@@ -288,15 +288,46 @@ smtpd_tls_security_level = may
 smtpd_sasl_security_options = noanonymous, noplaintext
 smtpd_sasl_tls_security_options = noanonymous
 
+# Authentication
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+
 # See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
 # information on enabling SSL in the smtp client.
-smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+
+# Restrictions
+smtpd_helo_restrictions =
+        permit_mynetworks,
+        permit_sasl_authenticated,
+        reject_invalid_helo_hostname,
+        reject_non_fqdn_helo_hostname
+smtpd_recipient_restrictions =
+        permit_mynetworks,
+        permit_sasl_authenticated,
+        reject_non_fqdn_recipient,
+        reject_unknown_recipient_domain,
+        reject_unlisted_recipient,
+        reject_unauth_destination
+smtpd_sender_restrictions =
+        permit_mynetworks,
+        permit_sasl_authenticated,
+        reject_non_fqdn_sender,
+        reject_unknown_sender_domain
+smtpd_relay_restrictions =
+        permit_mynetworks,
+        permit_sasl_authenticated,
+        defer_unauth_destination
+
+# See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
+# information on enabling SSL in the smtp client.
+
 myhostname = example.com
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 mydomain = example.com
 myorigin = $mydomain
-mydestination = $myhostname localhost.$mydomain
+mydestination = localhost
 relayhost =
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 mailbox_size_limit = 0
@@ -313,6 +344,31 @@ virtual_mailbox_maps = mysql:/etc/postfix/mysql-virtual-mailbox-maps.cf
 virtual_alias_maps = mysql:/etc/postfix/mysql-virtual-alias-maps.cf,
         mysql:/etc/postfix/mysql-virtual-email2email.cf
 
+# Even more Restrictions and MTA params
+disable_vrfy_command = yes
+strict_rfc821_envelopes = yes
+#smtpd_etrn_restrictions = reject
+#smtpd_reject_unlisted_sender = yes
+#smtpd_reject_unlisted_recipient = yes
+smtpd_delay_reject = yes
+smtpd_helo_required = yes
+smtp_always_send_ehlo = yes
+#smtpd_hard_error_limit = 1
+smtpd_timeout = 30s
+smtp_helo_timeout = 15s
+smtp_rcpt_timeout = 15s
+smtpd_recipient_limit = 40
+minimal_backoff_time = 180s
+maximal_backoff_time = 3h
+
+# Reply Rejection Codes
+invalid_hostname_reject_code = 550
+non_fqdn_reject_code = 550
+unknown_address_reject_code = 550
+unknown_client_reject_code = 550
+unknown_hostname_reject_code = 550
+unverified_recipient_reject_code = 550
+unverified_sender_reject_code = 550
 {{< /file >}}
 
 1.  The `main.cf` file declares the location of `virtual_mailbox_domains`, `virtual_mailbox_maps`, and `virtual_alias_maps` files. These files contain the connection information for the MySQL lookup tables created in the [MySQL](#mysql) section of this guide. Postfix will use this data to identify all domains, corresponding mailboxes, and valid users.
@@ -404,7 +460,7 @@ smtp      inet  n       -       n       -       -       smtpd
 #smtpd     pass  -       -       -       -       -       smtpd
 #dnsblog   unix  -       -       -       -       0       dnsblog
 #tlsproxy  unix  -       -       -       -       0       tlsproxy
-submission inet n       -       -       -       -       smtpd
+submission inet n       -       y      -       -       smtpd
   -o syslog_name=postfix/submission
   -o smtpd_tls_security_level=encrypt
   -o smtpd_sasl_auth_enable=yes
@@ -465,7 +521,7 @@ postmaster_address=postmaster at example.com
 
     {{< file "10-mail.conf" >}}
 ...
-mail_location = maildir:/var/mail/vhosts/%d/%n
+mail_location = maildir:/var/mail/vhosts/%d/%n/
 ...
 mail_privileged_group = mail
 ...
@@ -505,7 +561,7 @@ auth_mechanisms = plain login
 For reference, [view a complete `10-auth.conf` file](/docs/assets/1238-dovecot_10-auth.conf.txt).
 {{< /note >}}
 
-1. Edit the `/etc/dovecot/conf.d/auth-sql.conf.ext` file with authentication and storage information. Ensure your file contains the following lines and that they are uncommented:
+1. Edit the `/etc/dovecot/conf.d/auth-sql.conf.ext` file with authentication and storage information. Ensure your file contains the following lines. Make sure the `passdb` section is uncommented, that the `userdb` section that uses the `static` driver is uncommented and update with the right argument, and comment out the `userdb` section that uses the `sql` driver:
 
     {{< file "auth-sql.conf.ext" >}}
 ...
@@ -513,6 +569,11 @@ passdb {
   driver = sql
   args = /etc/dovecot/dovecot-sql.conf.ext
 }
+...
+#userdb {
+#  driver = sql
+#  args = /etc/dovecot/dovecot-sql.conf.ext
+#}
 ...
 userdb {
   driver = static
@@ -703,6 +764,10 @@ You can set up an email client to connect to your mail server. Many clients dete
 -   **Ports:** Use Port `993` for secure IMAP, Port `995` for secure POP3, and Port `587` with SSL for SMTP.
 
 See [Install SquirrelMail on Ubuntu 16.04](/docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
+
+{{< note >}}
+The Thunderbird email client will sometimes have trouble automatically detecting account settings when using Dovecot. After it fails to detect the appropriate account settings, you can set up your email account manually. Add in the appropriate information for each setting, using the above values, leaving no setting on **Auto** or **Autodetect**. Once you have entered all the information about your mail server and account, press **Done** rather **Re-Test** and Thunderbird should accept the settings and retrieve your mail.
+{{< /note >}}
 
 ## Adding New Domains, Email Addresses, and Aliases
 

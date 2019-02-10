@@ -17,6 +17,7 @@ external_resources:
  - '[Asterisk Community](http://www.asterisk.org/community)'
  - '[FreePBX Documentation](http://www.freepbx.org/support/documentation)'
  - '[FreePBX Community](http://www.freepbx.org/community)'
+dedicated_cpu_link: true
 ---
 
 Asterisk is an open-source telephone solution that runs over the Internet instead of running through copper lines. It offers a variety of features such as voicemail and conference calling, much like a landline telephone can.

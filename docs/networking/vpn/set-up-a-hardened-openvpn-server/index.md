@@ -6,7 +6,7 @@ description: 'Learn how to securely tunnel your traffic with OpenVPN and OpenSSL
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8/']
-modified: 2017-09-26
+modified: 2019-01-29
 modified_by:
   name: Linode
 published: 2015-12-09
@@ -71,6 +71,14 @@ This series assumes your VPN will operate over IPv4 only. If you instead wish to
         apt install iptables-persistent
 
 4. Add IPv4 rules: `iptables-persistent` stores its rulesets in the files `/etc/iptables/rules.v4` and `/etc/iptables/rules.v6`. Open the `rules.v4` file and replace everything in it with the information below:
+
+    {{< note >}}
+By default, Linode distribution images are built with network interfaces renamed to `eth0`. If you are using a custom distribution, verify the name of your network interface, first:
+
+    ip link show
+
+Replace any instances of `eth0` with the name of your network interface.
+    {{</ note >}}
 
     {{< file "/etc/iptables/rules.v4" >}}
 *filter

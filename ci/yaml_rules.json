@@ -5,6 +5,12 @@
     "type": "list",
     "description": "Other locations where this guide can be found. Should be an array of entries in the form /applications/big-data/using-big-data/"
   },
+  "audiences": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "An array of audiences. Could be Foundational, Beginner, Intermediate, or Expert"
+  },
   "author": {
     "elements": [
       "name",
@@ -19,6 +25,12 @@
 	  "required": false,
 	  "type": "text",
 	  "description": "In a guide written for the current Linode Manager, if a new version of the guide exists written for the new Linode Manager, use this in the original guide to embed a link to the new guide. Must use alias-style relative links (e.g. platform/manager/dns-manager-cloud-manager/)."
+  },
+  "concentrations": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "A list of development section concentrations. Case sensitive, capitalize words where appropriate. Could be one of: 'Scripting, Automation, and Build Tools', 'Web Applications', 'Unit Testing', or 'Scientific Computing and Big Data'"
   },
   "h1_title": {
     "elements": false,
@@ -40,6 +52,12 @@
     "required": false,
     "type": "text",
     "description": "For freelancer guides only. First and last name of the freelancer who wrote the guide."
+  },
+  "dedicated_cpu_link": {
+        "elements": false,
+        "required": false,
+        "type": "text",
+        "description": "Adds a banner to guide announcing Linode Dedicated CPU instances."
   },
   "deprecated": {
     "elements": false,
@@ -100,6 +118,12 @@
     "type": "text",
     "description": "If a layout other than the default is needed (i.e. for the Contribute page), specify the name of the layout here."
   },
+  "languages": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "An array of programming languages that apply to the guide. Could be JavaScript, Go, Python, etc."
+  },
   "license": {
     "elements": false,
     "required": true,
@@ -108,9 +132,9 @@
   },
   "modified": {
     "elements": false,
-    "required": true,
+    "required": false,
     "type": "date",
-    "description": "The date this guide was last modified. Should use the form YYYY-MM-DD."
+    "description": "(DEPRECATED: Hugo now uses the date of the last Git commit) The date this guide was last modified. Should use the form YYYY-MM-DD."
   },
   "modified_by": {
     "elements": false,
@@ -136,12 +160,24 @@
     "type": "list",
     "description": "List of operating systems to generate buttons"
   },
-  "promo": {
+  "promo_code_amount": {
+      "elements": false,
+	  "required": false,
+	  "type": "text",
+	  "description": "Amount to be displayed for custom promotion code message"
+    },
+  "promo_code": {
     "elements": false,
 	"required": false,
-	"type": "bool",
-	"description": "Set to false to disable DOCS10 promo code message"
+	"type": "text",
+	"description": "Name to be displayed for custom promotion code message"
   },
+  "promo_default": {
+      "elements": false,
+	  "required": false,
+	  "type": "bool",
+	  "description": "Set to false to disable DOCS10 promo code message"
+    },
   "published": {
     "elements": false,
     "required": true,

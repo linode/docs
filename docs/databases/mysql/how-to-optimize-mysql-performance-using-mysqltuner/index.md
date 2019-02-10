@@ -6,7 +6,7 @@ description: 'This step-by-step guide shows you how to assess your MySQL databas
 keywords: ["mysql", " mysqltuner", " tune mysql", " resource tuning"]
 aliases: ['databases/mysql/tuning-your-mysql-database/','databases/mysql/mysql-performance-tuning-tutorial/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-06-27
+modified: 2019-02-01
 modified_by:
   name: Linode
 published: 2015-02-27
@@ -15,6 +15,7 @@ external_resources:
  - '[MySQL Documentation Library](http://dev.mysql.com/doc/index.html)'
  - '[MySQL Tuning Server Parameters](http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html)'
  - '[MySQLTuner](http://mysqltuner.com/)'
+dedicated_cpu_link: true
 ---
 
 Running MySQL at optimal settings for specific resources helps handle larger server loads and prevents server slowdown. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads, it is beneficial to tune MySQL to additional connections.
@@ -38,12 +39,21 @@ In order to determine if your MySQL database needs to be reconfigured, it is bes
 
 The [MySQLTuner](http://mysqltuner.com/) script assesses your MySQL installation, and then outputs suggestions for increasing your server's performance and stability.
 
-1.  Download and run MySQLTuner:
+1. Download the MySQLTuner script:
 
-        curl -L http://mysqltuner.pl/ | perl
+        wget http://mysqltuner.com/mysqltuner.pl
 
-2.  It outputs your results:
+2. Change the scripts permissions to be executable:
 
+        chmod +x mysqltuner.pl
+
+3. Run the `mysqltuner.pl` script. You will be prompted to enter in your MySQL administrative login and password:
+
+        ./mysqltuner.pl
+
+4.  The script will return results similar to the output below:
+
+    {{< output >}}
          >>  MySQLTuner 1.4.0 - Major Hayden <major@mhtx.net>
          >>  Bug reports, feature requests, and downloads at http://mysqltuner.com/
          >>  Run with '--help' for additional options and output filtering
@@ -84,26 +94,26 @@ The [MySQLTuner](http://mysqltuner.com/) script assesses your MySQL installation
             Enable the slow query log to troubleshoot bad queries
         Variables to adjust:
             query_cache_limit (> 1M, or use smaller result sets)
-
+      {{</ output >}}
     MySQLTuner offers suggestions regarding how to better the database's performance. If you are wary about updating your database on your own, following MySQLTuner's suggestions is one of the safer ways to improve your database performance.
 
 ## Tuning MySQL
 When altering the MySQL configuration, be alert to the changes and how they affect your database. Even when following the instructions of programs such as [MySQLTuner](#mysqltuner), it is best to have some understanding of the process.
 
-The file you are changing is located at `/etc/mysql/my.cnf`.
+The MySQL configuration file stored in the following location: `/etc/mysql/my.cnf`.
 
 {{< note >}}
-Prior to updating the MySQL configuration, create a backup of the `my.cnf` file:
+Prior to updating your MySQL configuration, create a backup of the `my.cnf` file:
 
     cp /etc/mysql/my.cnf ~/my.cnf.backup
 
 Best practice suggests that you make small changes, one at a time, and then monitor the server after each change. You should restart MySQL after each change:
 
-For systems without systemd:
+For distributions using systemd:
 
     systemctl restart mysqld
 
-For distributions which don't use systemd:
+For distributions with different init systems:
 
     service mysql restart
 

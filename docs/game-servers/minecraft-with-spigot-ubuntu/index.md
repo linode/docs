@@ -7,13 +7,14 @@ keywords: ["minecraft", "spigot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-applications/game-servers/minecraft-ubuntu12-04/','applications/game-servers/minecraft-with-spigot-ubuntu/']
 published: 2015-04-21
-modified: 2015-04-21
+modified: 2019-02-01
 modified_by:
-  name: Elle Krout
+  name: Linode
 title: 'Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10'
 contributor:
     name: Sam Mauldin
     link: https://github.com/Sxw1212
+dedicated_cpu_link: true
 ---
 
 ![Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10](spigot-minecraft-ubuntu-title.jpg "Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10 title graphic")

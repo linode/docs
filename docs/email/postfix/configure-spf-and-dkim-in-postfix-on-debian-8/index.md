@@ -5,7 +5,7 @@ author:
 description: 'Configure SPF and DKIM in Postfix on Debian 8.'
 keywords: ["email", "postfix", "spf", "dkim", "debian 8", "opendkim", "dns", "dmarc"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-03-27
+modified: 2018-12-14
 modified_by:
     name: Linode
 published: 2016-02-03
@@ -21,6 +21,10 @@ external_resources:
  - 'The [Sender Policy Framework](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) Wikipedia pages should not be considered authoritative but do provide helpful discussion and additional references.'
  - '[DMARC Record Assistant](http://kitterman.com/dmarc/assistant.html) provides a web form to generate a DMARC record for you based on your selections.'
 ---
+
+{{< note >}}
+We have created a [new version of this guide](/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-9) to run on Debian 9.
+{{< /note >}}
 
 ![SPF and DKIM with Postfix](Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
 
@@ -356,8 +360,8 @@ SOCKET="local:/var/spool/postfix/opendkim/opendkim.sock"
 milter_default_action = accept
 # Postfix ≥ 2.6 milter_protocol = 6, Postfix ≤ 2.5 milter_protocol = 2
 milter_protocol = 6
-smtpd_milters = local:/opendkim/opendkim.sock
-non_smtpd_milters = local:/opendkim/opendkim.sock
+smtpd_milters = local:opendkim/opendkim.sock
+non_smtpd_milters = local:opendkim/opendkim.sock
 
 {{< /file >}}
 

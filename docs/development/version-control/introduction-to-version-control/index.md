@@ -13,6 +13,7 @@ published: 2013-09-18
 title: Introduction to Version Control
 external_resources:
  - '[Version Control Systems](/docs/development/version-control/)'
+audiences: ["foundational"]
 ---
 
 In the [Hosting a Website](/docs/websites/hosting-a-website/) guide, you learned how to host your website by installing and configuring a web server, database, and PHP. Now it's time to implement version control to protect your data and handle code updates smoothly. By the time you reach the end of this guide, you'll know how to use many of the version control methods and tools used by large organizations.

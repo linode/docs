@@ -6,7 +6,7 @@ description: How to configure service monitoring with Linode Managed.
 keywords: ["linode managed", "service monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linode-managed/', 'uptime/linode-managed/']
-modified: 2014-05-10
+modified: 2019-01-02
 modified_by:
   name: Zack Buhman
 published: 2013-02-12
@@ -14,6 +14,10 @@ title: Linode Managed
 ---
 
 [Linode Managed](https://www.linode.com/managed/) is a 24/7 incident response service. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, we'll monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
+
+{{< note >}}
+Linode Managed applies to all Linodes on an account and will be billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by opening up a Support ticket from both accounts requesting the transfer.
+{{< /note >}}
 
 ## Getting Started
 
@@ -105,7 +109,7 @@ Here's how to install Linode's SSH key as a non-root user:
 5.  In the *User privilege specification* section of the file, add the following line, replacing `example_user` with your user name:
 
     {{< file "/etc/sudoers" >}}
-User privilege specification example_user ALL=(ALL) NOPASSWD: ALL
+example_user ALL=(ALL) NOPASSWD: ALL
 {{< /file >}}
 
 6.  Press **Esc** to exit insert mode.

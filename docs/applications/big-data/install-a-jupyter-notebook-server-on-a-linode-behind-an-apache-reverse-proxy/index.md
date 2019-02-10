@@ -6,7 +6,7 @@ description: 'This guide shows you how to install and access a Jupyter notebook 
 keywords: ["Apache2", "Jupyter notebook", "SSL", "websocket"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2017-08-22
-modified: 2017-08-22
+modified: 2019-02-01
 modified_by:
     name: Sam Foo
 title: 'Install a Jupyter Notebook Server on a Linode Behind an Apache Reverse Proxy'
@@ -14,6 +14,7 @@ external_resources:
  - '[Jupyter Notebook Documentation](https://jupyter-notebook.readthedocs.io/en/stable/)'
  - '[Anaconda Documentation](https://docs.continuum.io/)'
  - '[Certbot](https://certbot.eff.org/)'
+dedicated_cpu_link: true
 ---
 
 Jupyter Notebook is an interactive, enhanced shell that can be run within a web browser. Notebook is popular among data scientists, and supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to configure on a Linode a public Jupyter Notebook server that will facilitate remote access to your computation needs using Apache as a reverse proxy.

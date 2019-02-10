@@ -7,7 +7,7 @@ og_description: 'Take control of your email with your own mail server. This guid
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['mailserver/']
-modified: 2018-01-23
+modified: 2019-01-07
 modified_by:
   name: Linode
 published: 2013-06-05
@@ -195,7 +195,7 @@ Make sure your SPF records are not too strict. If you accidentally exclude a leg
 
 #### Reverse DNS
 
-[Set reverse DNS](/docs/hosting-website#setting-reverse-dns) for your mail server's domain or subdomain.
+[Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns) for your mail server's domain or subdomain.
 
 The reverse DNS for your mail server must match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner."
 
@@ -220,6 +220,7 @@ Here are some of the most popular spam and virus filter services:
 - [Amavis](http://www.amavis.org) is an open source content filter for email that integrates directly with your MTA. It does some checking on its own, and can also be used in conjunction with more robust spam and virus filters.
 - [Clam AntiVirus](http://www.clamav.net/lang/en/) is a popular, free, and open-source virus scanner.
 - [SpamAssassin](http://spamassassin.apache.org) is a very popular free spam filter.
+- [Anti-Spam SMTP Proxy Server](https://sourceforge.net/projects/assp/) Anti-Spam SMTP Proxy Server implements multiple spam filters.
 
 #### What to do if your server has been blacklisted
 
@@ -244,8 +245,8 @@ Here are some of the typical mail ports:
 * `143`: IMAP
 * `993`: IMAPS (encrypted)
 * `25`: SMTP (sometimes blocked by ISPs)
-* `587`: SMTP (actually the preferred non-encrypted port for outgoing connections from mail clients)
-* `465`: SSMTP (encrypted)
+* `587`: SMTP (The preferred non-encrypted port for outgoing connections from mail clients. Use STARTTLS for encryption.)
+* `465`: SMTP (should only be used for legacy support)
 
 If you're using a firewall, be sure to edit the rules for your mail server's ports. See Linode's guide to [configuring a firewall](/docs/security/securing-your-server/#configure-a-firewall) for more information.
 

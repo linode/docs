@@ -6,7 +6,7 @@ keywords: ["minecraft", "ubuntu", "debian"]
 description: 'This tutorial will teach you basic installation and configuration of a Minecraft server on Ubuntu and Debian'
 aliases: ['applications/game-servers/minecraft-on-debian-and-ubuntu/','game-servers/minecraft-on-debian-and-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-07-30
+modified: 2019-02-01
 modified_by:
   name: Linode
 published: 2015-01-28
@@ -16,13 +16,14 @@ external_resources:
  - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
  - '[Official MineCraft Install Guide](http://minecraft.gamepedia.com/Tutorials/Setting_up_a_server#Debian)'
  - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
+dedicated_cpu_link: true
 ---
 
 ![Set Up a Minecraft Server](How_to_Set_Up_a_Minecraft_Server_smg.jpg)
 
-Minecraft is one of the most popular games in the world, with over 100 million users. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game.
+Minecraft is one of the most popular games in the world. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game.
 
-This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS. We have updated this guide to be compatible with the major release of 1.12: The World of Color Update.
+This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 9 or Ubuntu 18.04 LTS. We have updated this guide to be compatible with the major release of 1.13: Update Aquatic.
 
 ## Prerequisites
 
@@ -34,20 +35,20 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
         sudo apt update && sudo apt upgrade
 
-3.  Install *OpenJDK*, an open-source implementation of Java, and the GNU Screen package.
+4.  Install *OpenJDK*, an open-source implementation of Java, and the GNU Screen package.
 
     {{< note >}}
-Minecraft version 1.12 is only compatible with OpenJDK 8. If you are using OpenJDK 7 you must remove it using this command
+Minecraft version 1.13 is only compatible with OpenJDK 8. If you are using OpenJDK 7 you must remove it using this command
 `sudo apt remove openjdk-7-\*` before continuing with this guide.
 {{< /note >}}
 
-    - In Ubuntu 16.04:
+    - In Ubuntu 18.04:
 
-          sudo apt install openjdk-8-jre-headless screen
+            sudo apt install openjdk-8-jre-headless screen
 
-    - In Debian 8:
+    - In Debian 9:
 
-          sudo apt install openjdk-8-jre-headless screen
+            sudo apt install openjdk-8-jre-headless screen
 
 4.  Create a new user for Minecraft to run as:
 
@@ -67,7 +68,7 @@ If you have a firewall configured according to our [Securing Your Server](/docs/
 
 2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). Replace the URL in this example to match the current version:
 
-        wget https://s3.amazonaws.com/Minecraft.Download/versions/1.12/minecraft_server.1.12.jar
+        wget https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar -O minecraft_server.1.13.jar
 
     Refer to the [Minecraft server page](https://minecraft.net/en/download/server) to check for the latest release.
 
@@ -75,11 +76,8 @@ If you have a firewall configured according to our [Securing Your Server](/docs/
 
     {{< file "/home/minecraft/run.sh" sh >}}
 #!/bin/sh
-BINDIR=$(dirname "$(readlink -fn "$0")")
-cd "$BINDIR"
 
-java -Xms1024M -Xmx1536M -jar minecraft_server.1.12.jar -o true
-
+java -Xms1024M -Xmx1536M -jar minecraft_server.1.13.jar -o true
 {{< /file >}}
 
 
@@ -96,7 +94,7 @@ The `Xms` and `Xmx` flags define the minimum and maximum amount of RAM the Minec
 1.  The first time you run the Minecraft server it will create an EULA file and then exit:
 
         $ ./run.sh
-        [21:39:43] [Server thread/INFO]: Starting minecraft server version 1.12
+        [21:39:43] [Server thread/INFO]: Starting minecraft server version 1.13
         [21:39:43] [Server thread/INFO]: Loading properties
         [21:39:43] [Server thread/WARN]: server.properties does not exist
         [21:39:43] [Server thread/INFO]: Generating new properties file
@@ -121,7 +119,7 @@ eula=true
 
     This time the Minecraft server console will generate a lot of output as it creates required configuration files and generates the Minecraft world:
 
-        [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.12
+        [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.13
         [22:00:06] [Server thread/INFO]: Loading properties
         [22:00:06] [Server thread/INFO]: Default game type: SURVIVAL
         [22:00:06] [Server thread/INFO]: Generating keypair

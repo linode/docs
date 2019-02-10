@@ -6,7 +6,6 @@ description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['style-guide/','linode-writers-guide/']
-modified: 2017-12-08
 modified_by:
   name: Linode
 published: 2014-01-15
@@ -44,7 +43,6 @@ description: 'Two to three sentences describing the purpose of the guide.'
 keywords: ["list", "of", "keywords", "and key phrases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-29
-modified: 2017-11-30
 modified_by:
   name: Linode
 title: 'Guide Title'
@@ -238,7 +236,6 @@ description: 'A shortguide that shows how to install Python via Miniconda.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-23
-modified: 2018-08-23
 modified_by:
   name: Linode
 title: "Install Python with Miniconda"
@@ -266,10 +263,6 @@ To use this shortguide in another guide, use the following syntax:
 {{< file "sample_embedding_guide/index.md" >}}
 {{</* content "install_python_miniconda" */>}}
 {{< /file >}}
-
-{{< note >}}
-Headers inside the shortguide will not be visible in the table of contents in the parent document.
-{{< /note >}}
 
 #### Hide Content Through Buttons
 

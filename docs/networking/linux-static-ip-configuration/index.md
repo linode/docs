@@ -6,7 +6,7 @@ description: 'Set static IP, routes and DNS in Linux.'
 keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/configuring-static-ip-interfaces/']
-modified: 2017-11-30
+modified: 2018-01-02
 modified_by:
   name: Linode
 published: 2014-07-20
@@ -55,7 +55,7 @@ Our [Network Helper](/docs/platform/network-helper/) tool is enabled by default 
 
     [![Linode Manager: Dashboard > Configuration Profile > Edit](linode-dashboard-hilighted_small.png)](linode-dashboard-hilighted.png)
 
-2.  Under **Filesystem/Boot Helpers**  at the bottom of the page,  set **Auto-configure Networking** to **No**. Then click **Save Changes**.
+1.  Under **Filesystem/Boot Helpers**  at the bottom of the page,  set **Auto-configure Networking** to **No**. Then click **Save Changes**.
 
     [![Linode Manager: Dashboard > Configuration Profile > Edit](network-helper-hilighted_small.png)](network-helper-hilighted.png)
 
@@ -74,7 +74,7 @@ On the **Remote Access** tab of the Linode Manager, you'll see the following inf
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
 
-### Arch, CoreOS Container Linux, Ubuntu 17.10
+### Arch, CoreOS Container Linux
 
 Networking in these distributions is managed entirely by *systemd*. See `man systemd-networkd` and `man systemd-resolved` for more information.
 
@@ -242,7 +242,7 @@ iface eth0 inet6 static
   address 2001:db8:2000:aff0::2/32
 {{< /file >}}
 
-2.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.
+1.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.
 
     {{< file "/etc/resolv.conf" >}}
 nameserver 203.0.113.1
@@ -303,14 +303,14 @@ IPV6_DEFAULTGW=fe80::1
 IPV6ADDR_SECONDARIES=2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64
 {{< /file >}}
 
-2.  Then add your IPv4 gateway to the network routes file:
+1.  Then add your IPv4 gateway to the network routes file:
 
     {{< file "/etc/sysconfig/network/routes" >}}
 # Destination   Gateway                 Netmask                 Device
 default         198.51.100.1            -                       eth0
 {{< /file >}}
 
-3.  Last, set your DNS resolvers and options for netconfig, which then uses this info to modify `resolv.conf`:
+1.  Last, set your DNS resolvers and options for netconfig, which then uses this info to modify `resolv.conf`:
 
     {{< file "/etc/sysconfig/network/config" >}}
 . . .
@@ -321,10 +321,52 @@ NETCONFIG_DNS_STATIC_SEARCHLIST="members.linode.com"
 NETCONFIG_DNS_RESOLVER_OPTIONS="rotate"
 {{< /file >}}
 
+### Ubuntu 18.04
 
-### Ubuntu
+[Netplan](https://netplan.io/) is used to configure networking in Ubuntu 18.04 and later. Ubuntu Server is packaged with `systemd-networkd` as the [backend](https://netplan.io/design#design-overview) for Netplan, while NetworkManager is used as the Netplan backend in Ubuntu Desktop. The `ifupdown` package has been deprecated, and `/etc/network/interfaces` is no longer used, but it's still possible to configure static networking with `/etc/systemd/network/*.network` files.
 
-The configuration below applies to 14.04 and 16.04. See above for 17.10. Ubuntu 14.04 and 16.04 include [resolvconf](http://packages.ubuntu.com/xenial/resolvconf) in their base installation. This is an application which manages the contents of `/etc/resolv.conf`, so do not edit `resolv.conf` directly. Instead, add DNS resolver addresses and options to the network interface file as shown.
+{{< note >}}
+If you have upgraded to Ubuntu 18.04 or later from an earlier version, you may need to enable `systemd-networkd`:
+
+    systemctl enable systemd-networkd
+{{< /note >}}
+
+1.  Remove default configuration files that may interfere with static addressing:
+
+        sudo rm /etc/systemd/network/05-eth0.network
+        sudo rm /etc/netplan/01-netcfg.yaml
+
+1.  Create the configuration file for Netplan:
+
+    {{< file "/etc/netplan/01-eth0.yaml" >}}
+# This file describes the network interfaces available on your system
+# For more information, see netplan(5).
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: no
+      dhcp6: no
+      addresses:
+        - 198.51.100.5/24                         # Your Linode's public IPv4 address.
+        - 192.168.1.2/17                          # Private IPv4 address.
+        - "2001:db8:2000:aff0::2/64"              # Primary IPv6 address.
+      gateway4: 198.51.100.1                      # Primary IPv4 gateway.
+      gateway6: "fe80::1"                         # Primary IPv6 gateway.
+      nameservers:
+        search: [members.linode.com]              # Search domain.
+        addresses: [203.0.113.20,203.0.113.21]    # DNS Server IP addresses.
+{{< /file >}}
+
+1.  Apply the changes and reboot:
+
+        sudo netplan apply
+
+
+### Ubuntu 14.04, 16.04
+
+Ubuntu 14.04 and 16.04 include [resolvconf](http://packages.ubuntu.com/xenial/resolvconf) in their base installation. This is an application which manages the contents of `/etc/resolv.conf`, so do not edit `resolv.conf` directly. Instead, add DNS resolver addresses and options to the network interface file as shown.
 
 Like with Debian, systemd-networkd and systemd-resolved are both present but not enabled in Ubuntu 16.04. If you decide to enable these services to manage networking, you can not set static addresses in the file `/etc/network/interfaces` as shown below. You'll need to use the section further above for [Arch, Container Linux and Ubuntu 17.10](#arch-coreos-container-linux-ubuntu-17-10). For more information, see `man ifup`, `man ifdown`, `man interfaces 5`, `man systemd-networkd` and `man systemd-resolved`.
 
@@ -362,20 +404,27 @@ iface eth0 inet6 static
 
 To apply your changes, reboot from the Linode Manager's dashboard. Rebooting ensures that the new settings take effect without issues and that the all networking services reliably start again.
 
+If for whatever reason you prefer not to reboot, you should be able to bring your networking online using the following series of commands with most major Distributions:
+
+    sudo ip addr flush dev eth0
+    ip link set eth0 up
+    ip addr add 198.51.100.5/24 broadcast 198.51.100.255 dev eth0
+    ip route add default via 198.51.100.1
+
 ## Test Connectivity
 
 1.  Log into your Linode via SSH.
 
-2.  Use the `ip` tool to be sure the addresses you set above were applied:
+1.  Use the `ip` tool to be sure the addresses you set above were applied:
 
         root@localhost:~# ip addr | grep inet
         inet 127.0.0.1/8 scope host lo
         inet6 ::1/128 scope host
-        inet 74.207.231.122/24 brd 74.207.231.255 scope global eth0
+        inet 198.51.100.5/24 brd 198.51.100.255 scope global eth0
         inet6 2600:3c02::f03c:91ff:fe24:3a2f/64 scope global
         inet6 fe80::f03c:91ff:fe24:3a2f/64 scope link
 
-3.  Confirm that your `/etc/resolv.conf` exists and is correct. Its contents will differ according to the Linux distribution.
+1.  Confirm that your `/etc/resolv.conf` exists and is correct. Its contents will differ according to the Linux distribution.
 
         root@localhost:~# cat /etc/resolv.conf
         nameserver 8.8.8.8
@@ -383,7 +432,7 @@ To apply your changes, reboot from the Linode Manager's dashboard. Rebooting ens
         domain members.linode.com
         options rotate
 
-4.  Try pinging something to confirm you have full connectivity, both over IPv4 and IPv6.
+1.  Try pinging something to confirm you have full connectivity, both over IPv4 and IPv6.
 
         ping -c 3 google.com
         ping6 -c 3 ipv6.google.com

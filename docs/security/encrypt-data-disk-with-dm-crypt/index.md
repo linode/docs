@@ -7,13 +7,15 @@ og_description: 'dm-crypt is a transparent encryption subsystem. In this guide y
 keywords: ['dm-crypt', 'encryption', 'encrypt', 'luks']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-18
-modified: 2017-12-18
+modified: 2018-12-18
 modified_by:
   name: Linode
 title: 'How to Encrypt Your Data with dm-crypt'
 contributor:
   name: Alexandru Andrei
 ---
+
+![How to Encrypt Your Data with dm-crypt](How_to_Encrypt_Your_Data_with_dm-crypt_smg.png "How to Encrypt Your Data with dm-crypt")
 
 dm-crypt is a transparent disk encryption subsystem. In this guide you will learn how to encrypt disks, partition, swap and even use files as encrypted, and portable containers for your sensitive data.
 
@@ -170,7 +172,7 @@ Follow these steps very carefully.
 
 2.  Test a scenario where the LUKS header is accidentally overwritten:
 
-        dd if=/dev/zero of=/dev/sdX bs=128 count=1
+        dd conv=notrunc if=/dev/zero of=/dev/sdX bs=128 count=1
 
 3.  Trying to open your container will now return an error:
 

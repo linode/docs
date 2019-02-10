@@ -17,6 +17,9 @@ contributor:
 external_resources:
   - '[Nightmare.js Homepage](http://www.nightmarejs.org/)'
   - '[Nightmare.js Github Repository](https://github.com/segmentio/nightmare)'
+audiences: ["intermediate"]
+concentrations: ["Scripting, Automation, and Build Tools"]
+languages: ["javascript"]
 ---
 
 ![Use Nightmare.js to Automate Headless Browsing](nightmarejs-automate-headless-browsing-title.jpg "Use Nightmare.js to Automate Headless Browsing")

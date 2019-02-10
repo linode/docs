@@ -2,16 +2,17 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Installing Asterisk 13 on CentOS 7'
+description: 'Installing Asterisk on CentOS 7'
 keywords: ["asterisk 13", "centos 7", "centos", "open source", "private branch exchange", "pbx", "asterisk pbx", "sip", "session initiation protocol", "sip protocol", "IP PBX systems", "VoIP gateways"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-30
-modified: 2015-09-30
+modified: 2019-02-01
 modified_by:
     name: Linode
 title: 'How to Install Asterisk on CentOS 7'
 contributor:
     name: Nick Rahl
+dedicated_cpu_link: true
 ---
 
 
@@ -29,382 +30,295 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Create a CentOS 7 Linode in your closest data center (barring Atlanta, which does not currently support SIP servers). A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
+1.  Create a CentOS 7 Linode in your closest data center (barring Atlanta (us-southeast), which does not currently support SIP servers). A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
-2.  Ensure you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides to prepare your server. **Do not** complete the steps to set up a firewall.
+1.  Ensure you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
 
-3.  Edit `/etc/selinux/config` to ensure SELinux is disabled:
-
-    {{< file "/etc/selinux/config" >}}
-SELINUX=disabled
-{{< /file >}}
-
-
-4.  Update your packages:
+1.  Update your system:
 
         sudo yum update
 
-5.  Reboot your Linode:
+1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) enabled, your Linode will be back up and running in a few minutes.
 
-        reboot
+        sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 
-### Configuring iptables
+        sudo systemctl reboot
 
-iptables will be used to secure the Linode against unwanted traffic. The Linode should not have any firewall rules configured.
+## Configure firewalld
 
-1.  Check for current firewall rules:
+1.  CentOS 7 enables firewalld's `public` zone for the default interface (`eth0`). SSH and DHCPv6 services are also enabled by default. To verify your current firewalld zone:
 
-        sudo iptables -L
+        sudo firewall-cmd --get-active-zones
+        sudo firewall-cmd --permanent --list-services
 
+    That should return:
 
-    It should show an empty rule table:
+    {{< output >}}
+[user@asterisk ~]$ sudo firewall-cmd --get-active-zones
+public
+  interfaces: eth0
+{{< /output >}}
 
-        Chain INPUT (policy ACCEPT)
-        target      prot opt source                    destination
+    And:
 
-        Chain FORWARD (policy ACCEPT)
-        target      prot opt source                    destination
+    {{< output >}}
+[user@asterisk ~]$ sudo firewall-cmd --permanent --list-services
+ssh dhcpv6-client
+{{< /output >}}
 
-        Chain OUTPUT (policy ACCEPT)
-        target      prot opt source                    destination
-
-
-2.  Create `/etc/iptables.firewall.rules` using your preferred text editor. This file will be used to activate the firewall with the desired rules every time the Linode boots.
-
-    {{< file "/etc/iptables.firewall.rules" >}}
-*filter
-
-#  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
--A INPUT -i lo -j ACCEPT
--A INPUT -d 127.0.0.0/8 -j REJECT
-
-#  Accept all established inbound connections
--A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-#  Allow all outbound traffic - you can modify this to only allow certain traffic
--A OUTPUT -j ACCEPT
-
-#  Allow SSH connections
-#
-#  The -dport number should be the same port number you set in sshd_config, ie 8050
-#
--A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
-
-# SIP on UDP port 5060, 5061 for secure signaling. Used for signals such as "hang up"
--A INPUT -p udp -m udp --dport 5060 -j ACCEPT
--A INPUT -p udp -m udp --dport 5061 -j ACCEPT
-
-# IAX2- the IAX protocol - comment out if you don't plan to use IAX
-# -A INPUT -p udp -m udp --dport 4569 -j ACCEPT
-
-# IAX - old IAX protocol, uncomment if needed for legacy systems.
-# -A INPUT -p udp -m udp --dport 5036 -j ACCEPT
-
-# RTP - the media stream - you can change this in /etc/asterisk/rtp.conf
--A INPUT -p udp -m udp --dport 10000:20000 -j ACCEPT
-
-# MGCP - if you use media gateway control protocol in your configuration
--A INPUT -p udp -m udp --dport 2727 -j ACCEPT
-
-
-# Uncomment these lines if you plan to use FreePBX to manage Asterisk
-# -A INPUT -p tcp --dport 80 -j ACCEPT
-# -A INPUT -p tcp --dport 443 -j ACCEPT
-
-#  Allow ping
--A INPUT -p icmp --icmp-type echo-request -j ACCEPT
-
-#  Log iptables denied calls
--A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
-
-#  Drop all other inbound - default deny unless explicitly allowed policy
--A INPUT -j DROP
--A FORWARD -j DROP
-
-COMMIT
-
-{{< /file >}}
-
+1.  Add the SIP services.
 
     {{< note >}}
-Leave IAX commented out unless you know you need it. IAX is "Inter-Asterisk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won't need IAX or IAX2.
+All the following firewalld rules contain the `--permanent` flag to ensure the rules persist after a system reboot.
 {{< /note >}}
 
-### Start Firewall at Boot
+        sudo firewall-cmd --zone=public --permanent --add-service={sip,sips}
 
-CentOS 7 does not come with the `iptables-services` pre-installed, it will have to be installed so the firewall can load at boot.
+1.  Depending on your needs, you may want to add other related ports:
 
-1.  Install `iptables-services`, then enable and start it:
+    - MGCP - If you use media gateway control protocol in your configuration.
 
-        sudo yum install -y iptables-services
-        sudo systemctl enable iptables
-        sudo systemctl start iptables
+            sudo firewall-cmd --zone=public --permanent --add-port=2727/udp
 
-2.  Load the firewall rules:
+    - RTP - The media stream - you can change this in `/etc/asterisk/rtp.conf`.
 
-        sudo iptables-restore < /etc/iptables.firewall.rules
+            sudo firewall-cmd --zone=public --permanent --add-port=10000-20000/udp
 
-3.  Recheck the Linode’s firewall rules:
+    - If you plan to use FreePBX to manage Asterisk, add the following rule:
 
-        sudo iptables -L
+            sudo firewall-cmd --zone=public --permanent --add-service={http,https}
 
-    Your output should now look like this:
+    - IAX - If you need IAX, add the following rule. IAX is "Inter-Asterisk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won't need IAX or IAX2.
 
-        Chain INPUT (policy ACCEPT)
-        target      prot opt source                    destination
-        ACCEPT      all  --  anywhere                 anywhere
-        REJECT      all  --  anywhere                 loopback/8              reject-with icmp-port-unreachable
-        ACCEPT      all  --  anywhere                 anywhere                 state RELATED,ESTABLISHED
-        ACCEPT      tcp  --  anywhere                 anywhere                 state NEW tcp dpt:8050
-        ACCEPT      udp  --  anywhere                 anywhere                 udp dpt:sip
-        ACCEPT      udp  --  anywhere                 anywhere                 udp dpt:iax
-        ACCEPT      udp  --  anywhere                 anywhere                 udp dpts:ndmp:dnp
-        ACCEPT      udp  --  anywhere                 anywhere                 udp dpt:mgcp-callagent
-        ACCEPT      icmp --  anywhere                 anywhere                 icmp echo-request
-        LOG          all  --  anywhere                 anywhere                 limit: avg 5/min burst 5 LOG level debug prefix "iptables denied: "
-        DROP         all  --  anywhere                 anywhere
-
-        Chain FORWARD (policy ACCEPT)
-        target      prot opt source                    destination
-        DROP         all  --  anywhere                 anywhere
-
-        Chain OUTPUT (policy ACCEPT)
-        target      prot opt source                    destination
-        ACCEPT      all  --  anywhere                 anywhere
-
-4.  Save this ruleset:
-
-        /usr/libexec/iptables/iptables.init save
-
-5.  In a new terminal, make sure you can log in:
-
-        ssh exampleuser@xx.xx.xx.xxx
+            sudo firewall-cmd --zone=public --permanent --add-port=4569/udp
 
 
-## Installing Dependencies
+1.  Verify your new configuration with:
 
-A number of dependencies will be to be installed prior to installing Asterisk. To install them run:
+        sudo firewall-cmd --permanent --list-services
+        sudo firewall-cmd --permanent --list-ports
 
-    sudo yum install -y epel-release dmidecode gcc-c++ ncurses-devel libxml2-devel make wget openssl-devel newt-devel kernel-devel sqlite-devel libuuid-devel gtk2-devel jansson-devel binutils-devel
+    You should see the services and ports you just added in addition to default SSH and DCHPv6 services:
+
+    {{< output >}}
+[user@asterisk ~]$ sudo firewall-cmd --list-ports
+2727/udp 10000-20000/udp 4569/udp
+{{< /output >}}
+
+    {{< output >}}
+[user@asterisk ~]$ sudo firewall-cmd --permanent --list-services
+ssh dhcpv6-client sip sips http https
+{{< /output >}}
 
 
-### Installing PJPROJECT
+## Install PJPROJECT
 
-PJPROJECT is Asterisk's SIP channel driver. It should provide improved call clarity and performance over older drivers.
+PJPROJECT is Asterisk's SIP channel driver. It should improve call clarity and performance over older drivers.
 
-1.  As a non-root user, create a directory to work from:
+1.  Install build dependencies:
 
-        mkdir ~/build
+        sudo yum install epel-release gcc-c++ ncurses-devel libxml2-devel wget openssl-devel newt-devel kernel-devel-`uname -r` sqlite-devel libuuid-devel gtk2-devel jansson-devel binutils-devel bzip2 patch libedit libedit-devel
 
-2.  Switch to that directory:
+1.  As **a non-root user**, create a working directory for the build:
 
-        cd ~/build
+        mkdir ~/build-asterisk
 
-3.  Use `wget` to fetch the PJSIP fdriver source code:
+1.  Change to that directory:
 
-        wget http://www.pjsip.org/release/2.3/pjproject-2.3.tar.bz2
+        cd ~/build-asterisk
 
-4.  Extract it:
+1.  Use `wget` to download the PJSIP driver source code:
 
-        tar -jxvf pjproject-2.3.tar.bz2
+        wget https://www.pjsip.org/release/2.8/pjproject-2.8.tar.bz2
 
-5.  Change to the newly created directory:
+1.  Extract it:
 
-        cd pjproject-2.3
+        tar -jxvf pjproject-2.8.tar.bz2
 
-6.  Prepare the software to be compiled:
+1.  Change to the newly created directory:
+
+        cd pjproject-2.8
+
+1.  Specify the compiling flags and options:
 
         ./configure CFLAGS="-DNDEBUG -DPJ_HAS_IPV6=1" --prefix=/usr --libdir=/usr/lib64 --enable-shared --disable-video --disable-sound --disable-opencore-amr
 
-    You should not see any error messages.
-
-7.  Ensure that all dependencies are in place:
+1.  Ensure that all dependencies are in place:
 
         make dep
+
+1.  If `make dep` completes successfully, then build the plugin. It should only take a few minutes.
+
         make
 
-8.  Install the packages:
+1.  Install the packages:
 
         sudo make install
         sudo ldconfig
 
-9.  Ensure the libraries have been properly installed:
+1.  Ensure the libraries have been properly installed:
 
         sudo ldconfig -p | grep pj
 
-    You should get output that looks like:
+    You should see:
 
-        libpjsua2.so.2 (libc6,x86-64) => /lib64/libpjsua2.so.2
-        libpjsua2.so (libc6,x86-64) => /lib64/libpjsua2.so
-        libpjsua.so.2 (libc6,x86-64) => /lib64/libpjsua.so.2
-        libpjsua.so (libc6,x86-64) => /lib64/libpjsua.so
-        libpjsip.so.2 (libc6,x86-64) => /lib64/libpjsip.so.2
-        libpjsip.so (libc6,x86-64) => /lib64/libpjsip.so
-        libpjsip-ua.so.2 (libc6,x86-64) => /lib64/libpjsip-ua.so.2
-        libpjsip-ua.so (libc6,x86-64) => /lib64/libpjsip-ua.so
-        libpjsip-simple.so.2 (libc6,x86-64) => /lib64/libpjsip-simple.so.2
-        libpjsip-simple.so (libc6,x86-64) => /lib64/libpjsip-simple.so
-        libpjnath.so.2 (libc6,x86-64) => /lib64/libpjnath.so.2
-        libpjnath.so (libc6,x86-64) => /lib64/libpjnath.so
-        libpjmedia.so.2 (libc6,x86-64) => /lib64/libpjmedia.so.2
-        libpjmedia.so (libc6,x86-64) => /lib64/libpjmedia.so
-        libpjmedia-videodev.so.2 (libc6,x86-64) => /lib64/libpjmedia-videodev.so.2
-        libpjmedia-videodev.so (libc6,x86-64) => /lib64/libpjmedia-videodev.so
-        libpjmedia-codec.so.2 (libc6,x86-64) => /lib64/libpjmedia-codec.so.2
-        libpjmedia-codec.so (libc6,x86-64) => /lib64/libpjmedia-codec.so
-        libpjmedia-audiodev.so.2 (libc6,x86-64) => /lib64/libpjmedia-audiodev.so.2
-        libpjmedia-audiodev.so (libc6,x86-64) => /lib64/libpjmedia-audiodev.so
-        libpjlib-util.so.2 (libc6,x86-64) => /lib64/libpjlib-util.so.2
-        libpjlib-util.so (libc6,x86-64) => /lib64/libpjlib-util.so
-        libpj.so.2 (libc6,x86-64) => /lib64/libpj.so.2
-        libpj.so (libc6,x86-64) => /lib64/libpj.so
+        {{< output >}}
+    libpjsua2.so.2 (libc6,x86-64) => /lib64/libpjsua2.so.2
+    libpjsua2.so (libc6,x86-64) => /lib64/libpjsua2.so
+    libpjsua.so.2 (libc6,x86-64) => /lib64/libpjsua.so.2
+    libpjsua.so (libc6,x86-64) => /lib64/libpjsua.so
+    libpjsip.so.2 (libc6,x86-64) => /lib64/libpjsip.so.2
+    libpjsip.so (libc6,x86-64) => /lib64/libpjsip.so
+    libpjsip-ua.so.2 (libc6,x86-64) => /lib64/libpjsip-ua.so.2
+    libpjsip-ua.so (libc6,x86-64) => /lib64/libpjsip-ua.so
+    libpjsip-simple.so.2 (libc6,x86-64) => /lib64/libpjsip-simple.so.2
+    libpjsip-simple.so (libc6,x86-64) => /lib64/libpjsip-simple.so
+    libpjnath.so.2 (libc6,x86-64) => /lib64/libpjnath.so.2
+    libpjnath.so (libc6,x86-64) => /lib64/libpjnath.so
+    libpjmedia.so.2 (libc6,x86-64) => /lib64/libpjmedia.so.2
+    libpjmedia.so (libc6,x86-64) => /lib64/libpjmedia.so
+    libpjmedia-videodev.so.2 (libc6,x86-64) => /lib64/libpjmedia-videodev.so.2
+    libpjmedia-videodev.so (libc6,x86-64) => /lib64/libpjmedia-videodev.so
+    libpjmedia-codec.so.2 (libc6,x86-64) => /lib64/libpjmedia-codec.so.2
+    libpjmedia-codec.so (libc6,x86-64) => /lib64/libpjmedia-codec.so
+    libpjmedia-audiodev.so.2 (libc6,x86-64) => /lib64/libpjmedia-audiodev.so.2
+    libpjmedia-audiodev.so (libc6,x86-64) => /lib64/libpjmedia-audiodev.so
+    libpjlib-util.so.2 (libc6,x86-64) => /lib64/libpjlib-util.so.2
+    libpjlib-util.so (libc6,x86-64) => /lib64/libpjlib-util.so
+    libpj.so.2 (libc6,x86-64) => /lib64/libpj.so.2
+    libpj.so (libc6,x86-64) => /lib64/libpj.so
+{{< /output >}}
 
-
-### (Optional) Installing DAHDI
+<!--
+## Install DAHDI (Optional)
 
 DAHDI, or *Digium/Asterisk Hardware Device Interface*, is the kernel module that controls telephone interface cards. This type of card is usually used when adding Asterisk to an existing call center that uses older technology.
-Since it's not possible to add physical cards to a virtual machine you probably won't need the DAHDI driver installed.
 
-There is one exception: If you plan to host conference calls on your Asterisk box where more than one person can join a conference room, DAHDI also provides the required timing source for this feature to work.
-
-
-#### Install the Vanilla CentOS Kernel
-
-Since DAHDI is a kernel module it needs kernel headers in order to compile. The Linode-supplied kernel is a different version than the headers supplied in the CentOS repository, so we'll need to switch to the distribution-supplied kernel.
-
-Follow the instructions at [Run a Distribution-Supplied Kernel on a XEN Linode](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/) or [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/) before continuing with the next steps.
-
-{{< caution >}}
-You should not attempt to replace the Kernel on a system that is currently in production.
-{{< /caution >}}
+Since it's not possible to add physical cards to a virtual machine you probably won't need the DAHDI driver installed. There is one exception: if you plan to host conference calls on your Asterisk box where more than one person can join a conference room. DAHDI provides the required timing source for this feature to work.
 
 #### Build DAHDI
 
-With the new Kernel in place, you're now ready to build DAHDI.
+1.  Be sure you're in your build directory. You don't want to build DAHDI from the `pjproject-*` directory you changed into earlier.
 
-1.  Switch back to your build directory:
+        cd ~/build-asterisk
 
-        cd ~/build
-
-2.  Download the latest version of DAHDI (version 2.10.2 at the time of this writing):
+1.  Download the latest version of DAHDI (version 3.0.0 at the time of this writing):
 
         wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz
 
-3.  Untar the file:
+1.  Untar the file:
 
         tar -zxvf dahdi-linux-complete-current.tar.gz
 
-4.  Switch to the new directory:
+1.  Change to the new directory:
 
-        cd dahdi-linux-complete-2.10.2+2.10.2/
+        cd dahdi-linux-complete-3.0.0+3.0.0/
 
+    If the directory cannot be found, run the `ls` command and take note of the folder name and `cd` into that directory instead.
 
-    {{< note >}}
-Your version may be different, so substitute `2.10.2` with the version that was extracted.
-{{< /note >}}
-
-5.  Build DAHDI:
+1.  Build DAHDI:
 
         make
 
-6.  Install DAHDI:
+1.  Install DAHDI:
 
         sudo make install
         sudo make config
+-->
 
+## Install Asterisk
 
-## Installing Asterisk
+1.  Return to your build directory:
 
-We're now ready to install Asterisk 13, the current long-term support release of Asterisk.
+        cd ~/build-asterisk
 
-### Installing Asterisk from Source
+1.  Download the latest version of Asterisk 16:
 
-1.  Switch to the build directory:
+        wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz
 
-        cd ~/build
+1.  Untar the file:
 
-2.  Download the latest version of Asterisk 13:
+        tar -zxvf asterisk-16-current.tar.gz
 
-        wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
+1.  Switch to the new Asterisk directory, replacing `16.1.1` if needed:
 
-3.  Untar the file:
-
-        tar -zxvf asterisk-13-current.tar.gz
-
-4.  Switch to the new Asterisk directory, replacing `13.5.0` if needed:
-
-        cd asterisk-13.5.0
+        cd asterisk-16.1.1
 
 
 ### Enable MP3 Support
 
-To use MP3 files for Music on Hold, some dependencies will need to be installed.
-
-1.  Install Subversion:
+1.  To use MP3 files for Music on Hold, install Subversion:
 
         sudo yum install svn
 
-2.  Run:
+1.  Run the configuration script:
 
         contrib/scripts/get_mp3_source.sh
 
 
 ### Configure and Build Asterisk
 
-1.  Run the `configure` script to prepare the Asterisk source code for compiling:
+1.  In your build directory for Asterisk, run the `configure` script to prepare the Asterisk source code for compiling:
 
-        ./configure --libdir=/usr/lib64
+        ./configure --libdir=/usr/lib64 --with-jansson-bundled
 
-        If there are any missing dependencies, install them.
-
-2.  Start the build process:
+1.  Start the build process. After a short while, you should see a menu on screen allowing you to configure the features you want to build.
 
         make menuselect
 
-    After a short while, you should get a menu on screen that allows you to configure the features you want to build.
+1.  If you want to use the MP3 format with Music on Hold, you should select `Add-Ons`, then use the right arrow to move to the right-hand list. Navigate to `format_mp3` and press **Enter** to select it.
 
-3.  If you want to use the MP3 format with Music on Hold, you should select `Add-Ons`, then use the right arrow to move to the right-hand list. Navigate to `format_mp3` and press enter to select it.
+1.  Select additional core sound packages and Music on Hold packages in the left menu, and enable `.wav` format for your desired language (ie. use the `EN` package for English.).
 
-4.  Select addition sound packages and Music on Hold packs on the left menu, and enable the wav format for your desired language. (ie. use the `EN` package for English.)
+1.  Press **F12** to save and exit.
 
-5.  Press **F12** to save and exit.
+1.  Compile Asterisk. When finished, you should see a message which says Asterisk has successfully been built.
 
-6.  Compile Asterisk:
+        sudo make
 
-        make
-
-7.  Install Asterisk on the system:
+1.  Install Asterisk:
 
         sudo make install
 
-8.  Install sample configuration files:
+1.  Install sample configuration files:
 
         sudo make samples
 
-9.  Configure Asterisk to start itself automatically on boot:
+1. Configure Asterisk to start itself automatically on boot:
 
         sudo make config
 
 
-### Try it Out
+### Test Connection
 
-Congratulations! You now have a working Asterisk phone server. Let's fire up Asterisk and make sure it runs.
+You now have a working Asterisk phone server. Fire up Asterisk and make sure it runs.
 
 1.  Start Asterisk:
 
-        sudo service asterisk start
+        sudo systemctl start asterisk
 
-2.  Connect to Asterisk:
+1.  Connect to Asterisk:
 
-        asterisk -rvv
+        sudo asterisk -rvv
 
-    You should get a prompt with the current version number.
+    You should see an output similar to the following:
 
-3.  To see a list of possible commands:
+    {{< output >}}
+Asterisk 16.0.0, Copyright (C) 1999 - 2018, Digium, Inc. and others.
+Created by Mark Spencer <markster@digium.com>
+Asterisk comes with ABSOLUTELY NO WARRANTY; type 'core show warranty' for details.
+This is free software, with components licensed under the GNU General Public
+License version 2 and other licenses; you are welcome to redistribute it under
+certain conditions. Type 'core show license' for details.
+=========================================================================
+Connected to Asterisk 16.0.0 currently running on li73-122 (pid = 980)
+{{< /output >}}
+
+1.  To see a list of possible commands:
 
         core show help
 
-4.  To disconnect type:
+1.  To disconnect type:
 
         exit
 
@@ -412,8 +326,7 @@ Congratulations! You now have a working Asterisk phone server. Let's fire up Ast
 
 ## Next Steps
 
-Now that you have an Asterisk server running on your Linode, it's time to connect some phones, add extensions, and configure the various options that are available with Asterisk. For detailed instructions, check out
-the Asterisk Project's guide to [Configuring Asterisk](https://wiki.asterisk.org/wiki/display/AST/Basic+PBX+Functionality).
+Now that you have an Asterisk server running on your Linode, it's time to connect some phones, add extensions, and configure the various options that are available with Asterisk. For detailed instructions, check out the Asterisk Project's guide to [Configuring Asterisk](https://wiki.asterisk.org/wiki/display/AST/Basic+PBX+Functionality).
 
 {{< caution >}}
 When running a phone system on a remote server such as a Linode, it's always good practice to secure the signaling data with TLS and the audio portion of calls using SRTP to prevent eavesdropping. Once you have a working dial-plan, be sure to follow the [Secure Calling Guide](https://wiki.asterisk.org/wiki/display/AST/Secure+Calling) to encrypt your communications.

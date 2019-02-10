@@ -6,13 +6,15 @@ description: "Let's Encrypt is an SSL certificate authority managed by the Inter
 keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-25
-modified: 2018-05-11
+modified: 2018-12-19
 modified_by:
   name: 'Linode'
 title: "Install Let's Encrypt to Create SSL Certificates"
 contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
+deprecated: true
+deprecated_link: quick-answers/websites/secure-http-traffic-certbot/
 external_resources:
   - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 ---
@@ -21,9 +23,9 @@ external_resources:
 
 [Let's Encrypt](https://letsencrypt.org/) is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the [Automated Certificate Management Environment](https://github.com/ietf-wg-acme/acme/) (ACME) to automatically deploy free SSL certificates that are trusted by nearly all major browsers.
 
-{{< note >}}
+{{< caution >}}
 For most situations, the recommended method for installing Let's Encrypt certificates is the official [Certbot](https://certbot.eff.org/) tool. Certbot automates the process of obtaining and installing a certificate, and can also automatically update your web server configuration. The instructions in this guide install Let's Encrypt and add certificates manually, which is not necessary for most users.
-{{< /note >}}
+{{< /caution >}}
 
 ## Before you Begin
 
@@ -74,7 +76,7 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
         sudo -H ./letsencrypt-auto certonly --standalone -d example.com -d www.example.com
 
     {{< note >}}
-Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires its own certificate.
+ACME version 2 now supports wildcard certificates for subdomains by using the a DNS challenge. For more information on obtaining wildcards, visit the [Let's Encrypt documentation](https://community.letsencrypt.org/t/acme-v2-production-environment-wildcards/55578).
 {{< /note >}}
 
 2.  When prompted, specify an administrative email address. This will allow you to regain control of a lost certificate and receive urgent security notices if necessary. Press **ENTER** or **RETURN** to save.

@@ -122,7 +122,12 @@ The Linodes available in this dropdown menu all share the same region as your vo
     The volume still exists on your account and you can see it if you view the **Volumes** page:
 
     [![Volume not attached, but still exists.](bs-cloud-volume-detached-but-still-available-small.png "Volume not attached, but still exists.")](bs-cloud-volume-detached-but-still-available.png)
+{{< caution >}}
+To avoid issues with your Linode, remove this line from your `/etc/fstab/` configuration:
 
+`FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2`
+
+{{< /caution >}}
 ## How to Delete a Block Storage Volume
 
 {{< caution >}}

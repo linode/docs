@@ -20,9 +20,14 @@ pygmentsStyle = "perldoc"
 
 disqusShortname="linode-1"
 
-disableKinds = ["taxonomy", "taxonomyTerm"]
+#disableKinds = ["taxonomy", "taxonomyTerm"]
 
-rssLimit = 15
+rssLimit = 30
+
+enableGitInfo = true
+
+[frontmatter]
+lastmod = [":git", "lastmod", "date", "publishDate"]
 
 [blackfriday]
 fractions = false
@@ -33,7 +38,9 @@ section = ["HTML"]
 page = ["HTML"]
 
 [taxonomies]
-category = "categories"
+audience = "audiences"
+concentration = "concentrations"
+language = "languages"
 
 [params]
 description = "Guides and tutorials on the Linode platform, Linux basics, and software installation and configuration."
@@ -50,7 +57,7 @@ time_format_default = "Monday, January 2, 2006"
 # threshold = 80
 # includeNewer = true
 # toLower = false
-# 
+#
 # [[related.indices]]
 # name = "keywords"
 # weight = 100

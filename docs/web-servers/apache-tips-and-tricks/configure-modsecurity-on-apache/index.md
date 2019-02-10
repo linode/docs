@@ -7,7 +7,7 @@ keywords: ["apache", " mod_security"]
 og_description: 'Besides providing logging capabilities, Mod_security, as a web-detection tool, can monitor the HTTP traffic in real time in order to spot attacks. This guide shows how to load and run Mod_security on your Linode.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/apache/mod-security/','websites/apache-tips-and-tricks/modsecurity-on-apache/','web-servers/apache-tips-and-tricks/modsecurity-on-apache/']
-modified: 2017-10-27
+modified: 2018-12-19
 modified_by:
   name: Linode
 published: 2011-11-10
@@ -30,7 +30,7 @@ Although ModSecurity comes with a default configuration, this guide will use OWA
 
 Before you install ModSecurity, you will need to have Apache installed on your Linode. This guide will use a LAMP stack; for installation instructions, see the [LAMP Guides](/docs/websites/lamp/).
 
-### Ubuntu/Debian
+### Debian
 
     sudo apt install libapache2-modsecurity
 
@@ -46,6 +46,18 @@ Verify the version of ModSecurity is 2.8.0 or higher:
 When listing all mods using `apachectl -M`, ModSecurity is listed under the name `security2_module`.
 {{< /note >}}
 
+### Ubuntu
+
+    sudo apt-get install libapache2-mod-security2
+
+Restart Apache:
+
+    /etc/init.d/apache2 restart
+
+Verify the version of ModSecurity is 2.8.0 or higher:
+
+    apt-cache show libapache2-mod-security2
+
 ### CentOS
 
     yum install mod_security
@@ -56,7 +68,7 @@ Restart Apache by entering the following command:
 
 Verify the version of ModSecurity is 2.8.0 or higher:
 
-    yum info mod_fcgid
+    yum info mod_security
 
 ## OWASP ModSecurity Core Rule Set
 

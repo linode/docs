@@ -8,6 +8,7 @@ addons
 addr
 adduser
 adminpack
+adnanh
 adodb
 aes
 ahci0
@@ -26,6 +27,7 @@ antispam
 ap
 apache2
 api
+apiserver
 appimage
 appletalk
 appserver
@@ -127,6 +129,7 @@ certbot
 certcheck
 cfg
 cgi
+chainable
 changelog
 changelogs
 changeme
@@ -142,6 +145,7 @@ chmod
 chown
 chromecast
 chroot
+chrooting
 chrooted
 citad
 cjones
@@ -153,6 +157,7 @@ clickjacking
 client1
 client2
 clojure
+cloudnet
 clozure
 cls
 cluebringer
@@ -175,12 +180,14 @@ configtest
 configurability
 containerised
 convolutional
+cookstyle
 coose
 copyfrom
 copyto
 coreutils
 corporateclean
 cpanminus
+cpu
 cqlsh
 cqlshrc
 craftbukkit
@@ -213,6 +220,8 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+databags
+datacenter
 datadir
 dataset
 datasets
@@ -240,6 +249,7 @@ defragment
 deprovisioning
 descolada
 descr
+deserialize
 dest
 dev
 devel
@@ -380,6 +390,7 @@ flamegraph
 flamegraphs
 flatpress
 flyspray
+foodcritic
 fortran
 fpm
 fragging
@@ -387,14 +398,17 @@ framesets
 freedns
 friendster
 frontend
+frontmatter
 fs
 fsck
 fstab
 galera
 gamemode
+gamepad
 gameplay
 gandi
 gatsby
+gbps
 gcc
 gcm
 geckodriver
@@ -412,11 +426,13 @@ gfxmode
 gibibytes
 girocco
 gist
+gitfs
 github
 gitignore
 gitlab
 gitolite
 gitosis
+gitpython
 gitweb
 glibc
 glish
@@ -472,6 +488,7 @@ heartbleed
 heroku
 hexo
 hiera
+highstate
 hilights
 hl2
 hl2
@@ -543,6 +560,7 @@ inittab
 inode
 inotify
 insmod
+inspec
 interdomain
 interruptible
 introducer
@@ -616,6 +634,7 @@ kickbans
 kickstarter
 killall
 kinser
+kitchensalt
 klei
 kloth
 kloxo
@@ -692,6 +711,7 @@ luminus
 lxml
 lzma
 lzopio
+macos
 magento
 maildir
 maildirs
@@ -710,6 +730,7 @@ mapreduce
 mariadb
 maskname
 masterdb
+masterless
 mathematica
 mathjax
 maxconn
@@ -717,6 +738,7 @@ maxdepth
 mbit
 mbits
 mbox
+Mbps
 mbstrings
 mcrypt
 mcy
@@ -731,6 +753,7 @@ mesos
 metabase
 metacity
 metapackage
+metaparameters
 metricbeat
 microblogs
 microservice
@@ -744,6 +767,7 @@ minification
 minikube
 minimalistic
 minio
+minitest
 misconfiguration
 misconfigurations
 misconfigured
@@ -802,8 +826,10 @@ namespace
 namespaces
 nano
 nanode
+nanodes
 natively
 nbox
+ncdu
 ncurses
 neo
 neomake
@@ -819,6 +845,7 @@ netifrc
 netlify
 netloc
 netmask
+netplan
 networkd
 newgrp
 newtag
@@ -888,6 +915,8 @@ ossec
 ostemplate
 osx
 otomen
+outputter
+outputters
 overcommit
 overwatch
 ovpn
@@ -899,6 +928,7 @@ pagent
 pagespeed
 pandoc
 param
+parameterizing
 paramiko
 parallelization
 params
@@ -919,6 +949,7 @@ patroni
 pem
 pepi
 percona
+performant
 permalink
 permalinks
 pflogsumm
@@ -985,8 +1016,10 @@ psql
 psudo
 psycop2
 pty
+pubkey
 publickey
 puppetd
+puppetlabs
 puppetmaster
 puttygen
 pv
@@ -1050,6 +1083,7 @@ resolvconf
 resque
 restapi
 retpoline
+reusability
 reutilize
 richlanguage
 rimap
@@ -1066,6 +1100,7 @@ rpaf
 rpc
 rpmforge
 rsa
+rspec
 rss
 rstudio
 rsync
@@ -1125,6 +1160,7 @@ serv
 server1
 servername
 serverpassword
+serverspec
 servlet
 servlets
 setattr
@@ -1154,6 +1190,7 @@ sintra
 sitename
 slackpkg
 slavedb
+sls
 smartcard
 smartcards
 smtp
@@ -1178,6 +1215,7 @@ sparklines
 spectre
 speedtest
 spf1
+spm
 spork
 sql
 sqlplus
@@ -1223,6 +1261,7 @@ suid
 sukharev
 supervisord
 surbma
+suse
 svn
 symantec
 symfony
@@ -1241,6 +1280,7 @@ syslog
 systemctl
 systemd
 systemname
+sysvinit
 targ
 tasksel
 taskserver
@@ -1250,6 +1290,7 @@ tcp
 tcpwrappers
 teamspeak
 tensorflow
+terrahelp
 terraria
 testdb
 testfile
@@ -1264,6 +1305,7 @@ theano
 theming
 thingsboard
 tika
+timedatectl
 timeframe
 timespan
 timewait
@@ -1287,9 +1329,12 @@ tomacat
 tomcat6
 torvalds
 toolchain
+toolchains
 traceroute
 trackbar
+transcode
 transcoder
+transcoding
 trello
 truststore
 tt

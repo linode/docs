@@ -8,7 +8,7 @@ keywords: ["wercker", "docker", "development"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['development/how-to-develop-and-deploy-your-applications-using-wercker/']
 published: 2017-11-06
-modified: 2017-11-06
+modified: 2019-02-01
 modified_by:
   name: Linode
 title: 'How to Develop and Deploy Your Applications Using Wercker'
@@ -16,6 +16,8 @@ contributor:
   name: Damaso Sanoja
 external_resources:
  - '[Wercker Developer Documentation](http://devcenter.wercker.com/docs/home)'
+audiences: ["intermediate"]
+dedicated_cpu_link: true
 ---
 
 

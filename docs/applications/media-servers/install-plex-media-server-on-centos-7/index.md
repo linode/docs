@@ -3,114 +3,110 @@ author:
   name: Nick Brewer
   email: nbrewer@linode.com
 description: View and organize your media library with Plex on CentOS 7
-keywords: ["plex media server", "install plex", "plex centos"]
+keywords: ["plex", "media", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-06-21
+modified: 2019-01-31
 modified_by:
-  name: Nick Brewer
+  name: Linode
 published: 2017-05-03
 title: Install Plex Media Server on CentOS 7
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
+dedicated_cpu_link: true
 ---
 
-[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. This guide will show you how to set up the **Plex Media Server** on your Linode running CentOS 7, as well as how to connect to your media server from a Plex [client](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps) application. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. Basic Plex features are [free](https://support.plex.tv/articles/202526943-plex-free-vs-paid/), while the paid Plex Pass adds additional features.
+
+This guide demonstrates how to set up **Plex Media Server** on a Linode running CentOS 7, and how to connect client devices. A Plex media server could benefit from large amounts of disk space, so consider using Linode's [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 ![Install Plex Media Server on CentOS 7](install-plex-media-server-on-centos-7.png)
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
 
 ## Before you Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+- You will need root access to your Linode, or a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account) with `sudo` privilege.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account with `sudo` privileges.
+- Set your system's [hostname](/docs/getting-started/#set-the-hostname) and [time zone](/docs/getting-started/#set-the-timezone).
 
-3.  Ensure that your system is up to date, and install `wget`:
+- Plex requires that you create an [account](https://www.plex.tv/features/) to make use of the service, and provides additional features such as DVR capability and offline viewing if you pay for their premium [Plex Pass](https://www.plex.tv/features/plex-pass/) offering. To complete this guide, you will need a Plex account.
 
-        sudo yum update && sudo yum install wget
 
-4.  Plex requires that you create an [account](https://www.plex.tv/features/) to make use of the service, and provides additional features such as DVR capability and offline viewing if you pay for their premium [Plex Pass](https://www.plex.tv/features/plex-pass/) offering. To complete this guide, you will need a Plex account.
+## Install and Configure Plex
 
-## Install Plex
+1.  Go to [Plex's download page](https://www.plex.tv/media-server-downloads/). Select *Linux*, and then click *Choose Distribution*.
 
-1.  Head to the Plex [Downloads](https://www.plex.tv/downloads/) page and copy the installation link for CentOS. Use `wget` to download the installer via the copied link:
+    ![Plex download button](plex-download-button.png)
 
-        wget https://downloads.plex.tv/plex-media-server/1.12.3.4973-215c28d86/plexmediaserver-1.12.3.4973-215c28d86.x86_64.rpm
+2.  In the menu that appears, right-click on *CentOS 64-bit (RPM for CentOS 7 or newer)* and copy the download link. Use `cURL` to download the .rpm package directly to your Linode. The example below uses the current link for CentOS at the time of writing. Be sure you install the most recent version of Plex.
 
-    This example uses the current link for CentOS, at the time of writing. Be sure to use the up-to-date version supplied on the Plex website.
+        curl -O https://downloads.plex.tv/plex-media-server/1.14.1.5488-cc260c476/plexmediaserver-1.14.1.5488-cc260c476.x86_64.rpm
 
-2.  Use `yum` to install the Plex server:
+3.  Update your system and install Plex:
 
+        sudo yum update
         sudo yum install plexmediaserver*.rpm
 
-3.  Enable Plex Media Server to start on reboot, and then start the server:
+4.  Enable Plex Media Server to start on reboot and then start the server:
 
-        sudo systemctl enable plexmediaserver.service
-        sudo systemctl start plexmediaserver.service
+        sudo systemctl enable plexmediaserver
+        sudo systemctl start plexmediaserver
 
-
-## Configure Plex
-
-This section will show you how to complete your server setup and start adding media libraries.
-
-### Initial Setup
-
-1.  Administration of the Plex server is performed via its web interface. Before you can connect to the web interface from your workstation, you will first need to create an SSH tunnel to your Linode. Substitute `user` with the `sudo` user on your Linode, and `192.0.2.1` with the IP address of the Plex server:
-
-        ssh user@192.0.2.1 -L 8888:localhost:32400
-
-2.  Enter `http://localhost:8888/web` into your browser to view the Plex web interface, as shown below. Input your Plex account username and password to proceed with the setup process:
-
-    [![Plex web interface.](plex-browser-view-small.png)](plex-browser-view.png)
-
-3.  Give your Plex server a name. Be sure to leave the **Allow me to access my media outside my home** box checked, and click **Next**:
-
-    [![Plex web interface - Server Name.](plex-server-name-small.png)](plex-server-name.png)
-
-4.  Finally, you'll create the directories that will store your Plex media. In this example we'll create library directories for `movies` and `television` within a `plex-media` directory. These will be located within your user's `/home`:
+5.  Finally, you'll create the directories that will store your Plex media. In this example we'll create library directories for `movies` and `television` within a `plex-media` directory. These will be located within your user's `/home`:
 
         cd ~/
         mkdir -p plex-media/movies && mkdir plex-media/television
 
-### Add and Organize Media
+6.  Administration of the Plex server is performed via its web interface. Before you can connect to the web interface from your workstation, you will first need to create an SSH tunnel to your Linode. Substitute `user` with the `sudo` user on your Linode, and `192.0.2.0` with its IP address.
 
-1.  Now that you've signed into Plex, you should see the following page. Click the **Add Library** button to start setting up your media libraries:
+        ssh user@192.0.2.0 -L 8888:localhost:32400
+
+7.  Go to  `http://localhost:8888/web` in a web browser and log in to Plex.
+
+    [![Plex web interface.](plex-browser-view-small.png)](plex-browser-view.png)
+
+8.  Give your Plex server a name. Be sure to leave the **Allow me to access my media outside my home** box checked, and click **Next**:
+
+    [![Plex web interface - Server Name.](plex-server-name-small.png)](plex-server-name.png)
+
+
+## Add and Organize Media
+
+1.  Now that you've signed into Plex, you should see the following page. Click the **Add Library** button to start setting up your media libraries.
 
     [![Plex web interface - Add Library](plex-add-library-small.png)](plex-add-library.png)
 
-2.  Select your library type, and click **Next**:
+1.  Select your library type, and click **Next**.
 
     [![Plex web interface - Library type](plex-library-type-small.png)](plex-library-type.png)
 
-3.  Navigate to the corresponding media directory that you created previously, then click **Add**:
+1.  Navigate to the corresponding media directory that you created previously, then click **Add**.
 
     [![Plex web interface - Library location](plex-library-location-small.png)](plex-library-location.png)
 
-4.  You can add additional libraries by clicking the **+** symbol next to the **Libraries** list on the Plex side bar:
+1.  You can add additional libraries by clicking the **+** symbol next to the **Libraries** list on the Plex side bar:
 
     ![Plex web interface - additional Library](plex-additional-library.png)
 
-5.  Add your media to the appropriate directories. Be sure to review Plex's [naming conventions](https://support.plex.tv/hc/en-us/categories/200028098-Media-Preparation) for media files, to ensure that your files are identified correctly.
+1.  Add your media to the appropriate directories. Be sure to review Plex's [naming conventions](https://support.plex.tv/hc/en-us/categories/200028098-Media-Preparation) for media files to ensure that your files are identified correctly.
 
-### Disable DLNA (Recommended)
+## Disable DLNA (Recommended)
 
-[DLNA](https://en.wikipedia.org/wiki/Digital_Living_Network_Alliance) is a protocol that incorporates [Universal Plug and Play](https://en.wikipedia.org/wiki/Universal_Plug_and_Play) (or UPnP) standards for digital media sharing across devices. If you do not wish to make use of it, it's recommended that you disable this feature, as it is openly connectable on port `1900`. From the Plex web interface, click the wrench icon in the upper right corner, select **Server**, and navigate to the **DLNA** section. Uncheck **Enable the DLNA server**, and click **Save Changes**:
+[DLNA](https://en.wikipedia.org/wiki/Digital_Living_Network_Alliance) is a protocol that incorporates [Universal Plug and Play](https://en.wikipedia.org/wiki/Universal_Plug_and_Play) (or UPnP) standards for digital media sharing across devices. Any DLNA device or application can have full unrestricted access to your Plex content, so disable DLNA if you won't be using it.
+
+From the Plex web interface, click the wrench icon in the upper right corner and then click **DLNA** in the left sidebar. Uncheck **Enable the DLNA server** and click **Save Changes**.
 
 [![Plex media client](plex-dlna-disable-small.png)](plex-dlna-disable.png)
 
 ## Connect to your Plex Server
 
-Now that your server is set up, you're ready to connect to it from your Plex client application. Plex is supported by a number of different platforms, and you can find a full list of client applications [here](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps).
+Now that your server is set up, you're ready to connect to it from a Plex client. Plex is supported by a number of different platforms and you can find a full list of client applications [here](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps).
 
-The examples provided here will use **Plex Media Player** for MacOS.
+The examples provided here will use Plex Media Player for macOS.
 
-1.  [Download](https://www.plex.tv/downloads/) the appropriate media player application, or install it via your device's application store.
+1.  [Download](https://www.plex.tv/downloads/) the appropriate media player application or install it via your device's app store.
 
-2.  Sign in to the Plex client application using the same Plex account as your server.
+1.  Sign in to the Plex client app using the same Plex account as your server.
 
-3.  Your Plex client will have a drop down menu where you can select your server. Once it's selected, you can navigate to the library with the content that you wish to view:
+1.  Your Plex client will have a dropdown menu where you can select your server. Once it's selected, you can navigate to the library with the content that you wish to view:
 
     [![Plex media client](plex-media-client-small.png)](plex-media-client.png)

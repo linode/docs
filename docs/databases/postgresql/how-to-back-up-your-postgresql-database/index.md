@@ -58,11 +58,6 @@ PostgreSQL provides the `pg_dump` utility to simplify backing up a single databa
      - `*.sql`: plaintext dump
      - `*.tar`: tarball
 
-    {{< note >}}
-By default, PostgreSQL will ignore any errors that occur during the backup process. This can result in an incomplete backup. To prevent this, you can run the `pg_dump` command with the `-1` option. This will treat the entire backup procedure as a single transaction, which will prevent partial backups in the event of an error:
-
-    pg_dump -1 dbname > dbname.bak
-{{< /note >}}
 
 ### Remote Database
 
