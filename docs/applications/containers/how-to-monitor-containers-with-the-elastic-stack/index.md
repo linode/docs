@@ -231,7 +231,7 @@ The following example will demonstrate how Filebeat and Metricbeat automatically
 1.  In order to open a secure connection to Kibana, open an ssh tunnel to port 5601 on your Linode. A comprehensive guide to using ssh tunnels on a variety of platforms in available on our [Create an SSH Tunnel for MySQL guide](docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/), but the simplest example of doing so is to run the following command in another terminal window, which forwards port 5601 locally to port 5601 on your Linode.
 
         ssh -L 5601:localhost:5601 <user@ip-address>
-        
+
     Replace `<user@ip-address>` with the username and IP address of your Linode.
 
 1.  Browse to `http://localhost:5601` in your browser, which should display the following initial landing page for Kibana.
