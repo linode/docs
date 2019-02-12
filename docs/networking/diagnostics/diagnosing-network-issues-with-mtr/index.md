@@ -348,7 +348,7 @@ Timeouts are not necessarily an indication of packet loss. Packets still reach t
 
 ## Advanced MTR techniques
 
-Newer versions of MTR are now capable of running in TCP mode on a specified TCP port, compared to the default use of the ICMP (ping) protocol. However in most cases **this mode shouldn't be used** as TCP reports can be misleading in diagnosing inter-route issues. A TCP MTR will use SYN packets in place of ICMP pings and most internet-level routers will not respond to these, erroneously indicating loss.
+Newer versions of MTR are now capable of running in TCP mode on a specified TCP port, compared to the default use of the ICMP (ping) protocol. However, in most cases **this mode shouldn't be used** as TCP reports can be misleading in diagnosing inter-route issues. A TCP MTR will use SYN packets in place of ICMP pings, and most internet-level routers will not respond to these, erroneously indicating loss.
 
 What a TCP test is useful for is determining whether firewall rules on a router somewhere are blocking a protocol or port, perhaps because port forwarding has not been configured properly. Running a TCP test over a certain port could more clearly reveal this whereas an ICMP test may not.
 
