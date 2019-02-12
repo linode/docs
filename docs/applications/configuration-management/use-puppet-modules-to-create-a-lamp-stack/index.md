@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['applications/puppet/create-puppet-module/','applications/configuration-management/create-puppet-module/']
 deprecated: true
 deprecated_link: 'applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/'
-modified: 2015-11-12
+modified: 2019-02-04
 modified_by:
     name: Elle Krout
 published: 2015-11-12
