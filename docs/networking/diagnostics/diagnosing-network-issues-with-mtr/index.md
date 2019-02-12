@@ -348,12 +348,14 @@ Timeouts are not necessarily an indication of packet loss. Packets still reach t
 
 ## Advanced MTR techniques
 
-Newer versions of MTR are capable of running in TCP mode on a specified TCP port, instead of the ICMP (ping) protocol. In some instances network degradation will only affect certain ports or misconfigured firewall rules on a router may block a certain protocol. Running MTR over a certain port can show packet loss where the default ICMP report may not.
+Newer versions of MTR are now capable of running in TCP mode on a specified TCP port, compared to the default use of the ICMP (ping) protocol. However, in most cases **this mode shouldn't be used** as TCP reports can be misleading in diagnosing inter-route issues. A TCP MTR will use SYN packets in place of ICMP pings, and most internet-level routers will not respond to these, erroneously indicating loss.
 
-Running MTR in TCP mode will require sudo privileges on most machines:
+What a TCP test is useful for is determining whether firewall rules on a router somewhere are blocking a protocol or port, perhaps because port forwarding has not been configured properly. Running a TCP test over a certain port could more clearly reveal this whereas an ICMP test may not.
 
-    sudo mtr -P 80 -i 0.5 -rwc 50 example.com
-    sudo mtr -P 22 -i 0.5 -rwc 50 example.com
+Running MTR in TCP mode will require super-user privileges on most machines:
+
+    sudo mtr --tcp --port 80 --report --report-cycles 10 speedtest.dallas.linode.com
+    sudo mtr --tcp --port 22 --report --report-cycles 10 50.116.25.154
 
 ## Resolve Routing and Networking Issues Identified in your MTR report
 
