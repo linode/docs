@@ -169,67 +169,136 @@ This command format works for all Lish functionality.
 The valid fingerprints for the Lish gateway boxes in our data centers are as follows:
 
 ### Atlanta
+
 lish-atlanta.linode.com
+
+<!-- old keys, need to be removed when old lish-atlanta box is officially retired -->
 
     RSA 59:30:1a:0b:93:5e:3f:4b:6f:d1:96:ff:7e:9e:12:f8
     DSA 0b:90:ed:f2:a1:e0:55:5b:38:6e:5d:6e:fa:00:63:7f
     ECDSA SHA256 9V/AK2EcQFjYzm1PU3XhOJbzhwYCoqqThl2vnFxbyvg
 
+<!-- new keys for new box -->
+
+    RSA SHA256:FdFLmDO9WbaZW5RO+y2KlVyzuDge4hKzH1DR9Y8VYjM
+    ECDSA SHA256:KSIK727f5RY49FaBsFa2UhA/HyjcTaMD62FuKauSdjE
+
 ### Dallas
+
 lish-dallas.linode.com
+
+<!-- old keys, need to be removed when old lish-dallas box is officially retired -->
 
     RSA 6d:3d:b5:d0:42:1c:49:45:a6:47:29:bd:88:4e:58:d4
     DSA 58:bc:07:fa:c1:61:a4:3b:b5:00:3b:9b:6b:78:c6:c5
     ECDSA SHA256 IVXyNAH78L7KJFgfrScp948+56BTew8Z41nOkAw2kGo
 
-    RSA SHA256:kY9nTDp2xAG1HQPRfDKYUR8t6ldd51RTTDsFDDMsDT
+<!-- new keys for new box -->
+
+    RSA SHA256:kY9nTDp2xAG1HQPRfDKYUR8t6ldd51RTTDsFDDMsDTI
     ECDSA SHA256:NP/vuIdkObvvZWApVA93OOuUqRBz6PeDrvMfg9kglxA
 
 ### Frankfurt
+
 lish-frankfurt.linode.com
+
+<!-- old keys, need to be removed when old lish-frankfurt box is officially retired -->
 
     RSA 43:76:22:43:0e:01:cb:84:6a:80:b9:9b:90:34:c7:b1
     DSA 87:2d:c9:5a:76:06:e6:3d:08:70:1b:2e:a6:b4:e8:c2
     ECDSA SHA256 4F/M6SYqrukVHJJbCkzw4tw4TjRVfAY98cDKwqXT9MY
 
+<!-- new keys for new box -->
+
+    RSA SHA256:TyBXJDtYyCi1jRL4ZxAVCWsZg0+jpTv1BErAsDMQqIE
+    ECDSA SHA256:StQiYqmw7JiA45Vrchrahbv/JK5H6J7+iRDmwPRwzTU
+
 ### Fremont
+
 lish-fremont.linode.com
+
+<!-- old keys, need to be removed when old lish-fremont box is officially retired -->
 
     RSA 2c:43:0e:fc:88:f2:3a:dd:01:43:3a:fc:9f:67:9f:66
     DSA 19:30:1a:48:85:aa:78:ab:46:8d:0f:4d:00:88:e6:b7
     ECDSA SHA256 0BmmvUv/itqa1ruA4KmqzMFaY4Ijdw/YW+SoiMJT1mo
 
+<!-- new keys for new box -->
+
+    RSA SHA256:UJgQK2qaOgVBt8jMnCVOMJ0DvfYOxMcj7GlSdPPzVG8
+    ECDSA SHA256:nQg6/hsNHu20w0nEC0PP4DCFrEsNgY3PeVteHw0SzXM
+
 ### London
+
 lish-london.linode.com
+
+<!-- old keys, need to be removed when old lish-london box is officially retired -->
 
     RSA 71:27:30:cd:dc:69:7a:fe:58:4a:04:e6:6b:5f:b4:e2
     DSA ce:41:c0:48:2c:93:de:c8:d2:a9:bf:3f:97:1f:04:ad
     ECDSA SHA256 L7sQgnpnoBwRoyIYXAFBs8SdSnwtyYmhXs1p/mQDKQM
 
+<!-- new keys for new box -->
+
+    RSA SHA256:2PaY0MUmKbR59G4d7SDYB5su5acwcvXC/bTo1/S0DA4
+    ECDSA SHA256:UUcp3Wm1VdQ0cniEiJiTZ2yU6a7iZjLCBsUIq7bg9E4
+
 ### Newark
+
 lish-newark.linode.com
+
+<!-- old keys, need to be removed when old lish-newark box is officially retired -->
 
     RSA 11:2a:57:a4:f8:ca:42:b2:c0:ab:17:58:0d:0c:b7:8b
     DSA a1:e2:f5:5a:71:f9:b8:98:d9:a6:4c:65:e5:05:ea:04
     ECDSA SHA256 p+fsr503gCnyZhAG7wx5mzrvw9MIPdgzvKauScUm8wk
 
+<!-- new keys for new box -->
+
+    RSA SHA256:k/rA5QC0gboUE9ogel51dvpgzObSpFMu8Tf143ViIzI
+    ECDSA SHA256:W4Le4WDt4wCgPATFu9KqCq4eigjAj0abuZJYUDbhTY0
+
 ### Singapore
+
 lish-singapore.linode.com
+
+<!-- old keys, need to be removed when old lish-singapore box is officially retired -->
 
     RSA 06:26:d8:2a:12:8b:2f:d7:6c:54:72:5a:a7:7b:da:7b
     DSA 0c:f9:f9:d6:f3:0a:f6:bb:82:82:07:4b:51:db:e2:35
     ECDSA SHA256 LzlyP1Uj1nne2KwCkB5HlOWoHLH/7YrApZlNCn5204A
 
+<!-- new keys for new box -->
+
+    RSA SHA256:r//4/dCUjFiydsRa1g7vqO9NcUzUdXNVgVgsV5ofrug
+    ECDSA SHA256:aEuTP8kkEKBefl3Yg3hH+Y9vyrNXHWKywvs3a6Ai648
+
 ### Tokyo
+
 lish-tokyo.linode.com
+
+<!-- old keys, need to be removed when old lish-tokyo box is officially retired -->
 
     RSA af:ec:f0:b8:87:33:d5:12:04:0d:7c:bb:a6:c5:5f:be
     DSA 1d:7d:bd:5c:a1:41:29:c3:78:de:e7:0f:d3:f2:63:34
     ECDSA SHA256 XcBYWsYm4p/bZ/tfWEntUzScDlTxvzTrmd7emeRBMJc
 
+<!-- new keys for new box -->
+
+    RSA SHA256:UHujIQqUK6pqWWXBqisDupMWZG9AYOfTj+fk6ngDWU8
+    ECDSA SHA256:3WoiJTxvm4vqS4J5elOqZKyTauhs3KqNfkJ7ZqeL+Ew
+
 ### Tokyo 2
+
 lish-tokyo2.linode.com
+
+<!-- old keys, need to be removed when old lish-tokyo2 box is officially retired -->
 
     RSA 2c:60:9a:ce:cf:4b:8d:4e:8f:09:ae:e0:c2:b0:fb:b7
     DSA 2d:0f:b0:a5:d0:bd:4a:71:1a:75:dc:de:b1:06:61:a6
     ECDSA SHA256 nE/1fY3QdCXuoTBfnvQtXzwFVOnO+/gbijm4ZM9wvaY
+
+<!-- new keys for new box -->
+
+    RSA SHA256:6Wx3ELzTHhgCaeiQhgKQYoyYoGF7TS1LNapz1Bn7zL8
+    ECDSA SHA256:dQnfvEzgEJUNRtL4I8qPwMMouZaNbgFDXv4+cX8CsRQ
