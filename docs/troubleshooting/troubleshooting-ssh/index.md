@@ -36,7 +36,7 @@ To learn about Lish in more detail, and for instructions on how to connect to yo
 
 ### Forgotten your Password?
 
-If you have forgotten your Linux user's password, you will not be able to log in with Lish. You can reset the root password for your Linode with [these instructions](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/). If you are logged in as root, you can change the password of another user with the `passwd` command:
+If you have forgotten your Linux user's password, you will not be able to log in with Lish. You can reset the root password for your Linode with [these instructions](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/). If you are logged in as root, you can change the password of another user with the `passwd` command:
 
     passwd <username>
 

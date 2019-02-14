@@ -58,7 +58,7 @@ The root user is available in Lish even if root user login is disabled in your S
 
 1.  If you can log in at the Lish console, move on to the [diagnose network connection issues](#diagnose-network-connection-issues) section of this guide.
 
-    If you see a log in prompt, but you have forgotten the credentials for your Linode, follow the instructions for [resetting your root password](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/) and then attempt to log in at the Lish console again.
+    If you see a log in prompt, but you have forgotten the credentials for your Linode, follow the instructions for [resetting your root password](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/) and then attempt to log in at the Lish console again.
 
 2. If you do not see a login prompt, your Linode may have [issues with booting](#troubleshoot-booting-issues).
 
