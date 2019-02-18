@@ -140,7 +140,7 @@ Should any additional changes be made to a configuration file restart Apache:
 sudo systemctl restart httpd.service
 {{< /note >}}
 
-## MySQL
+## MariaDB
 
 ### Install and Configure
 
@@ -154,7 +154,7 @@ By default, Arch Linux provides MariaDB as a relational database solution. Maria
 
         sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
-3.  Start MySQL and set it to run at boot:
+3.  Start MariaDB and set it to run at boot:
 
         sudo systemctl start mysqld.service
         sudo systemctl enable mysqld.service
@@ -165,7 +165,7 @@ By default, Arch Linux provides MariaDB as a relational database solution. Maria
 
 ### Create a Database
 
-1.  Log into MySQL:
+1.  Log into MariaDB:
 
         mysql -u root -p
 
@@ -182,7 +182,7 @@ By default, Arch Linux provides MariaDB as a relational database solution. Maria
 
         quit
 
-With Apache and MySQL installed, you are now ready to move on to installing PHP to provide scripting support for your web application.
+With Apache and MariaDB installed, you are now ready to move on to installing PHP to provide scripting support for your web application.
 
 ## PHP
 
