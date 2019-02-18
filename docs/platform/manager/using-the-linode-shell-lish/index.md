@@ -164,9 +164,9 @@ Similarly, you can generate a view of the log using Lish:
 
 This command format works for all Lish functionality.
 
-## Lish Gateway Fingerprints
+## Lish Gateway Fingerprints and MD5s
 
-The valid fingerprints for the Lish gateway boxes in our data centers are as follows:
+The valid fingerprints for the Lish gateway boxes in our data centers and their MD5s are as follows:
 
 ### Atlanta
 
@@ -182,6 +182,12 @@ lish-atlanta.linode.com
 
     RSA SHA256:FdFLmDO9WbaZW5RO+y2KlVyzuDge4hKzH1DR9Y8VYjM
     ECDSA SHA256:KSIK727f5RY49FaBsFa2UhA/HyjcTaMD62FuKauSdjE
+    ED25519 SHA256:yVR9Wwl/4aYnZYtIvWgiavCb1CUN/J6YHshGDlPvCUs
+
+
+    MD5:26:3b:e3:f4:0e:97:ec:6b:30:1c:76:3b:3b:69:39:86  (RSA)
+    MD5:ea:2c:6f:11:3f:48:bd:12:bc:81:52:01:05:d5:17:4b  (ECDSA)
+    MD5:74:63:b9:ec:22:b1:3a:78:67:d3:f0:1c:b9:b4:ab:e9  (ED25519)
 
 ### Dallas
 
@@ -197,6 +203,11 @@ lish-dallas.linode.com
 
     RSA SHA256:kY9nTDp2xAG1HQPRfDKYUR8t6ldd51RTTDsFDDMsDTI
     ECDSA SHA256:NP/vuIdkObvvZWApVA93OOuUqRBz6PeDrvMfg9kglxA
+    ED25519 SHA256:EKxqkhsOZ+9J8w7VBdOWLiaqHR2b8A8bamKt2K8UBh8
+
+    MD5:db:9c:e3:4e:68:13:56:d3:7e:5a:eb:58:9e:49:ba:a7  (RSA)
+    MD5:0b:78:a4:39:be:41:17:63:bb:6a:f8:1e:ab:93:9f:91  (ECDSA)
+    MD5:54:c2:9a:61:d0:c2:4e:be:a5:eb:fb:7a:0b:22:12:22  (ED25519)
 
 ### Frankfurt
 
@@ -212,6 +223,11 @@ lish-frankfurt.linode.com
 
     RSA SHA256:TyBXJDtYyCi1jRL4ZxAVCWsZg0+jpTv1BErAsDMQqIE
     ECDSA SHA256:StQiYqmw7JiA45Vrchrahbv/JK5H6J7+iRDmwPRwzTU
+    ED25519 SHA256:7cyQLGYKOrMxoegTTcoi3gAetGRhA3mDtkftl4eR99U
+
+    MD5:ee:49:b2:0a:e5:13:59:37:e5:f6:12:50:ad:20:5c:e7  (RSA)
+    MD5:ba:49:5f:8e:8f:1e:46:33:11:a4:a8:8a:ac:fb:5b:46  (ECDSA)
+    MD5:03:1e:29:c8:ea:81:1a:20:f8:b5:83:a9:1d:63:a4:a8  (ED25519)
 
 ### Fremont
 
@@ -227,6 +243,11 @@ lish-fremont.linode.com
 
     RSA SHA256:UJgQK2qaOgVBt8jMnCVOMJ0DvfYOxMcj7GlSdPPzVG8
     ECDSA SHA256:nQg6/hsNHu20w0nEC0PP4DCFrEsNgY3PeVteHw0SzXM
+    ED25519 SHA256:OX3imiePFMl6d5N+IaYhGZQ07nuApcUgnd2YRbFNKH0
+
+    MD5:92:45:5d:19:1a:f2:ea:c5:82:bc:cc:13:01:36:fa:1d  (RSA)
+    MD5:83:a0:e0:ef:dc:69:47:02:7e:0c:e6:eb:15:34:96:50  (ECDSA)
+    MD5:22:f3:51:2f:4c:aa:39:3e:96:19:27:59:0f:36:cd:c7  (ED25519)
 
 ### London
 
@@ -242,6 +263,11 @@ lish-london.linode.com
 
     RSA SHA256:2PaY0MUmKbR59G4d7SDYB5su5acwcvXC/bTo1/S0DA4
     ECDSA SHA256:UUcp3Wm1VdQ0cniEiJiTZ2yU6a7iZjLCBsUIq7bg9E4
+    ED25519 SHA256:uMaAJ9emISvLbOBYMK+CVoUQ9b1LvX1FqYwaW/Vkmjc
+
+    MD5:68:57:86:77:68:1b:04:c9:82:83:74:76:de:12:9a:a4  (RSA)
+    MD5:1e:d1:51:b1:23:38:f9:ce:01:d8:db:0c:37:20:30:bb  (ECDSA)
+    MD5:64:a8:43:5a:37:f1:27:b1:b3:b5:59:28:fa:dc:b8:dd  (ED25519)
 
 ### Newark
 
@@ -257,6 +283,11 @@ lish-newark.linode.com
 
     RSA SHA256:k/rA5QC0gboUE9ogel51dvpgzObSpFMu8Tf143ViIzI
     ECDSA SHA256:W4Le4WDt4wCgPATFu9KqCq4eigjAj0abuZJYUDbhTY0
+    ED25519 SHA256:TT+wcHzOZVH6YFq+WEbhIl1U6wfioNyH3yfIz5ByZlU
+
+    MD5:91:d1:68:d1:55:e2:ec:85:5f:75:6a:97:ba:e8:a7:38  (RSA)
+    MD5:00:55:0a:6b:c0:0c:6a:f1:01:96:ab:31:25:7e:9f:a7  (ECDSA)
+    MD5:20:79:84:26:56:31:41:af:ea:86:9d:46:55:8e:b9:7e  (ED25519)
 
 ### Singapore
 
@@ -272,6 +303,11 @@ lish-singapore.linode.com
 
     RSA SHA256:r//4/dCUjFiydsRa1g7vqO9NcUzUdXNVgVgsV5ofrug
     ECDSA SHA256:aEuTP8kkEKBefl3Yg3hH+Y9vyrNXHWKywvs3a6Ai648
+    ED25519 SHA256:q1G1pBrLuhsUAnZ04SOYoxVthKYyLz+wA0hBAUVkKtE
+
+    MD5:f7:8e:8d:9c:db:e2:e4:54:a2:77:9b:fa:6d:5e:a2:b4  (RSA)
+    MD5:30:23:c8:4b:1c:93:23:ca:a5:29:79:94:e0:6b:95:f0  (ECDSA)
+    MD5:4c:d1:55:68:a1:90:6c:15:9b:af:c1:f7:27:31:68:29  (ED25519)
 
 ### Tokyo
 
@@ -287,6 +323,11 @@ lish-tokyo.linode.com
 
     RSA SHA256:UHujIQqUK6pqWWXBqisDupMWZG9AYOfTj+fk6ngDWU8
     ECDSA SHA256:3WoiJTxvm4vqS4J5elOqZKyTauhs3KqNfkJ7ZqeL+Ew
+    ED25519 SHA256:mWnf8zIboHHR324p0EuwOPCQLaJBTiS4IMCx4F4nVCM
+
+    MD5:65:30:47:ee:6d:e8:17:20:ce:bb:10:27:7e:70:d9:25  (RSA)
+    MD5:a5:02:90:36:40:8d:6e:ab:51:dd:06:c6:90:7a:12:d6  (ECDSA)
+    MD5:eb:e1:1c:9f:ad:3b:2a:cd:c8:54:58:d4:0d:23:bf:86  (ED25519)
 
 ### Tokyo 2
 
@@ -302,3 +343,8 @@ lish-tokyo2.linode.com
 
     RSA SHA256:6Wx3ELzTHhgCaeiQhgKQYoyYoGF7TS1LNapz1Bn7zL8
     ECDSA SHA256:dQnfvEzgEJUNRtL4I8qPwMMouZaNbgFDXv4+cX8CsRQ
+    ED25519 SHA256:2WP7xJlGR8OYDziGLwz1BXYomJsfJcvVu3CoRtSATjg
+
+    MD5:8c:ee:f3:62:96:23:37:47:3a:49:75:2b:62:4f:3f:d4  (RSA)
+    MD5:f6:ef:22:78:5e:0c:2b:30:ca:57:2f:d6:17:1e:b1:23  (ECDSA)
+    MD5:92:cf:28:2c:1f:db:8d:2b:00:96:2a:15:e4:a1:b5:cc  (ED25519)
