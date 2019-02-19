@@ -69,7 +69,7 @@ Granting access to settings denoted with a dollar sign ($) will allow the user t
 
 Did you forget your Linode Manager username? Recover it with the *Forgot Username* webpage. Here's how:
 
-1.  Visit the [Forgot Username](https://manager.linode.com/session/forgot/username) webpage.
+1.  Visit the [Forgot Username](https://login.linode.com/forgot/username) webpage.
 1.  Enter your email address in the **Email** field.
 1.  Click **Submit**.
 
@@ -129,7 +129,7 @@ Creating strong passwords is essential to protecting your Linode and your Linode
 
 If you want to change your password, or you forgot your password and need a new one, you can accomplish these task through the *Forgot Password* webpage. Here's how:
 
-1.  Visit the [Forgot Password](https://manager.linode.com/session/forgot/password) webpage.
+1.  Visit the [Forgot Password](https://login.linode.com/forgot/password) webpage.
 1.  Enter your username in the **Username** field.
 
     {{< note >}}
