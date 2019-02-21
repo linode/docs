@@ -144,8 +144,11 @@ Changes to a Node's Mode are applied within 60 seconds.
 -   **Accept** - allows the node to accept incoming connections so long as it is healthy.
 -   **Reject** - remove the node from rotation; discontinue health checks on this backend. Existing connections remain active.
 -   **Drain** - will only receive connections from clients whose session stickiness points to this node.
+-   **Backup** - will only accept traffic if all other nodes are down.
 
 The use-case for Drain would be to set a node to Drain a day or so in advance of taking the node down. That way existing sessions would likely have ended.
+
+Backup is a useful mode if you use frontend caching servers, such as Varnish, and want to direct traffic to the origin servers if the caching servers are down.
 
 ## X-Forwarded-For Header
 
