@@ -36,7 +36,7 @@ If you've already created an account and booted your Linode, skip ahead to [Conn
 
 If you haven't already signed up for a Linode account, start here.
 
-1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
+1.  Create a new account at the [Sign Up page](https://login.linode.com/signup).
 2.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 3.  Select a Linode plan and data center location:
 
