@@ -72,7 +72,7 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
     * Boot and shut down your Linode
     * Access [monitoring statistics](/docs/platform/longview/longview/)
-    * Update your [billing](/docs/platform/billing-and-support/billing-and-payments/) and [account](/docs/platform/manager/accounts-and-passwords/) information
+    * Update your [billing](/docs/platform/billing-and-support/billing-and-payments-new-manager/) and [account](/docs/platform/manager/accounts-and-passwords/) information
     * Add additional Linode services, like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/)
     * Open a [support](/docs/platform/billing-and-support/support/) ticket and perform other administrative tasks
 
@@ -335,4 +335,4 @@ Thu Feb 16 12:17:52 EST 2018
 Now that you've learned the basics of using the Cloud Manager and working with your Linode, secure it and your Linode account from unauthorized access. See the following guides to begin:
 
 * [Securing Your Server](/docs/security/securing-your-server/)
-* [Linode Manager Security Controls](/docs/security/linode-manager-security-controls/)
+* [Linode Manager Security Controls](/docs/security/linode-manager-security-controls-new-manager/)
