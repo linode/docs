@@ -46,14 +46,14 @@ As declared in Linode's [Terms of Service](https://www.linode.com/tos), the Lino
 
 Linode provides support related to the physical operation of your Linode virtual servers, such as: ensuring that your network traffic is properly routed to and from your Linodes' IP addresses; helping with base system performance issues that may be related to Linode's virtualization systems; and resolving potential hardware issues within Linode's infrastructure.
 
-Linode also helps with products such as NodeBalancers and Block Storage. Additionally, Linode Support can help you use Linode software such as the Linode Manager, and can help you with understanding and paying your bill.
+Linode also helps with products such as NodeBalancers and Block Storage. Additionally, Linode Support can help you use Linode software such as the Linode Cloud Manager, and can help you with understanding and paying your bill.
 
 ## Contacting Linode Support
 
-If you are not able to solve an issue with the resources listed above, you can contact Linode Support. As a reminder, application configuration and other similar topics are outside the [scope of Linode Support](#scope-of-support). The primary method for contacting Linode Support is to open a support ticket from the Linode Manager:
+If you are not able to solve an issue with the resources listed above, you can contact Linode Support. As a reminder, application configuration and other similar topics are outside the [scope of Linode Support](#scope-of-support). The primary method for contacting Linode Support is to open a support ticket from the Linode Cloud Manager:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-2.  Select the **Get Help** from the left hand menu.
+2.  Select the **Get Help** from the sidebar links.
 3.  Under **Other Ways to Get Help** select **Customer Support**.
 4.  Select the **Open New Ticket** link. The **Open a Support Ticket** menu will appear.
 5.  From the **What is this regarding?** menu, select an product related to the issue you are reporting.

@@ -26,15 +26,17 @@ StackScripts are usually Bash scripts, stored in the Linode Manager, and can be 
 
 ## Deploying from a StackScript
 
-1.  Start by clicking the **Create** button and selecting **Linode**.
+1.  Start by logging in to the [Linode Cloud Manager](https://cloud.linode.com).
+
+2.  Click the **Create** button and selecting **Linode**.
 
     ![Create a new Linode](stackscripts-create-a-linode.png "Create a new Linode")
 
-2.  Navigate to the **Create from StackScript** tab.
+3.  Navigate to the **Create from StackScript** tab.
 
     ![Navigate to Create from StackScript.](stackscripts-navigate-to-create-from-stackscript.png "Navigate to Create from Stackscript.")
 
-3.  At this point you have the option of using a a Linode StackScript, Community StackScript, or one of your own.
+4.  At this point you have the option of using a a Linode StackScript, Community StackScript, or one of your own.
 
     [![StackScript selection options.](stackscripts-selection-screen-small.png "StackScript selection options.")](stackscripts-selection-screen.png)
 
@@ -56,7 +58,7 @@ There is no default logging when using a StackScript. Output is sent to the cons
 
     ![StackScript options](stackscripts-wordpress-options.png "Stackscript options.")
 
-3.  Once you've adjusted the options, hit **Create**. You will be returned to the Linodes page, and your bell notifications will inform you when your Linode has been created.
+3.  Once you've adjusted the options, click **Create**. You will be returned to the Linodes page, and your bell notifications will inform you when your Linode has been created.
 
     ![Bell notification of new Linode creation.](stackscripts-linode-created-bell.png "Bell notification of a new Linode creation.")
 
@@ -75,7 +77,7 @@ There is no default logging when using a StackScript. Output is sent to the cons
     -   *Description* - a brief explanation of what it does.
     -   *Target Images* - Select any and all available distributions that can run this StackScript.
     -   *Script* - The body of the script itself.
-    -   *Revision Note* A brief account of the change made in this update of the StackScript. It will be set to `Initial import` by default, and you can feel free to leave or change it.
+    -   *Revision Note* - A brief account of the change made in this update of the StackScript. It will be set to `Initial import` by default, and you can feel free to leave or change it.
 
     Below is an example of a new StackScript being written:
 

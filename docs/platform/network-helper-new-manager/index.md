@@ -40,9 +40,9 @@ If you instead choose to manually configure your Linode's network interface sett
 
 When Network Helper is enabled globally, all new Linodes created on your account will have Network Helper enabled by default.
 
-1.  Click on **Account** in the left sidebar of the Linode Cloud Manager.
+1.  Click on **Account** in the sidebar of the [Linode Cloud Manager](https://cloud.linode.com).
 
-1.  Click on the **Global Settings** tab. Set the toggle slider under the **Network Helper** section to the desired setting. Blue is enabled, gray is disabled.
+1.  Click on the **Global Settings** tab. Set the switch under the **Network Helper** section to the desired setting. Blue is enabled, gray is disabled.
 
     [![The Network Helper Default Behavior option](network-helper-linode-account-settings-small.png)](network-helper-linode-account-settings.png)
 
@@ -50,17 +50,17 @@ When Network Helper is enabled globally, all new Linodes created on your account
 
 ### Single (Per-Linode)
 
-1.  Click on **Linodes** in the left sidebar of the Linode Cloud Manager.
+1.  Click on **Linodes** link in the sidebar of the Linode Cloud Manager.
 
-1.  Expand the overflow menu (the three dots at the far right) of the Linode which you want to enable Network Helper for. Then click **Settings**.
+1.  Click on the ellipsis icon (three dots) for the Linode for which you want to enable Network Helper. Then, click **Settings**.
 
     ![Navigate to the Linode's Settings page](network-helper-linode-settings-link.png)
 
-1.  Under **Advanced Configurations**, expand the overflow menu for your configuration profile and click **Edit**:
+1.  In the **Advanced Configurations** panel, click on the ellipsis icon (three dots) for your Disk Profile. From the menu, select **Edit**:
 
     [![Select the configuration profile Edit Menu](network-helper-linode-settings-page-small.png)](network-helper-linode-settings-page.png)
 
-1.  A menu will appear with that configuration profile's settings. Under the **Filesystem/Boot Helpers** section, toggle **Auto-configure networking**  to the desired setting. Blue is enabled, gray is disabled.
+1.  A menu will appear with that configuration profile's settings. Under the **Filesystem/Boot Helpers** section, toggle the **Auto-configure networking** switch  to the desired setting. Blue is enabled, gray is disabled.
 
     [![Toggle the 'auto-configure networking' box](network-helper-linode-config-profile-settings-small.png)](network-helper-linode-config-profile-settings.png)
 

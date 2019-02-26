@@ -16,7 +16,7 @@ hiddenguide: true
 This Quick Answer will show you how to resize a disk on your Linode. See our [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/) guide for additional information.
 
 1. Log in to the [Linode Cloud Manager](https://cloud.linode.com/).
-1. Click **Linodes** from the sidebar menu and select the Linode to be resized.
+1. Click **Linodes** from the sidebar links and then select the Linode to be resized.
 
     ![List of Linodes](linodes-list.png "List of all your Linodes")
 

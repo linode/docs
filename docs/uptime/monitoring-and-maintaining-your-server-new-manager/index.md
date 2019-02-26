@@ -42,13 +42,13 @@ There are several different availability monitoring tools available. Your decisi
 
 ### Configure Shutdown Watchdog
 
-Shutdown Watchdog, also known as *Lassie*, is a Linode Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Lassie is not technically an availability monitoring tool, but it can help get your Linode back online fast if it's accidentally powered off.
+Shutdown Watchdog, also known as *Lassie*, is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Lassie is not technically an availability monitoring tool, but it can help get your Linode back online fast if it's accidentally powered off.
 
 To turn Lassie on and off:
 
-1.  Log in to the [Linode Manager](https://cloud.linode.com).
-2.  Click the **Linodes** page.
-3.  Select your Linode. The Linode's dashboard appears.
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+2.  Click the **Linodes** link in the sidebar links.
+3.  Select your Linode. The Linode's details page appears.
 4.  Click the **Settings** tab. The Shutdown Watchdog settings appear, as shown below.
 
     [![Configuring Shutdown Watchdog](shutdown-watchdog-small.png)](shutdown-watchdog.png)
@@ -78,14 +78,14 @@ The Linode Manager allows you to configure *email alerts* that automatically not
 
 To turn on and customize the alerts:
 
-1.  Log in to the [Linode Manager](https://cloud.linode.com).
-2.  Click the **Linodes** page.
-3.  Select your Linode. The Linode's dashboard appears.
-4.  Click the **Settings** tab. The *Notification Thresholds* settings appear, as shown below.
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+2.  Click the **Linodes** link in the sidebar.
+3.  Select your Linode. The Linode's details page appears.
+4.  Click the **Settings** tab. The *Notification Thresholds* panel appears, as shown below.
 
     [![Configuring Linode Manager Email Alerts](notification-thresholds-small.png)](notification-thresholds.png)
 
-5.  To enable an email alert, toggle the appropriate box.
+5.  To enable an email alert, toggle the appropriate switch.
 6.  To configure the threshold for an alert, set a value in the text field.
 7.  Click **Save** to save the email alert thresholds.
 
@@ -164,8 +164,8 @@ Linux version 4.15.12-x86_64-linode105 (maker@build.linode.com) (gcc version 4.9
 {{< /output >}}
 
 3.  Log in to the [Linode Manager](https://cloud.linode.com).
-4.  Click the **Linodes** tab.
-5.  Select your Linode. The Linode's dashboard appears.
+4.  Click the **Linodes** link in the sidebar.
+5.  Select your Linode. The Linode's details page appears.
 6.  Select the active configuration profile by clicking the **Edit** link, as shown below.
 
     [![Selecting the active configuration profile](edit-configuration-menu-small.png)](edit-configuration-menu.png)

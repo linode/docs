@@ -15,7 +15,7 @@ hiddenguide: true
 ---
 ![Accounts and Passwords](Accounts_and_Passwords_smg.jpg)
 
-Maintaining your user Linode Manager accounts, passwords, and contact information is just as important as administering your Linode. This guide shows you how to control access to the Linode Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Linode Manager only, except for the section on resetting the root password.
+Maintaining your user Linode Manager accounts, passwords, and contact information is just as important as administering your Linode. This guide shows you how to control access to the Cloud Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Cloud Manager only, except for the section on resetting the root password.
 
 ## Users and Permissions
 
@@ -31,11 +31,11 @@ When you add a user, you give that individual permission to log in to the Linode
 
 Here's how to add a user to your Linode account:
 
-1.  Log in to the [Linode Manager](https://cloud.linode.com).
-2.  Click the **Account** menu on the left-hand side.
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+2.  Click the **Account** link in the sidebar.
 3.  Click the **Users** link.
     [![Click on the 'Account' link and then click 'Users'](accounts-overview-small.png "Click on the 'Account' link then click 'Users')](accounts-overview.png)
-4.  Select the **Add a User** link. The *Add a User* menu appears.
+4.  Click on **Add a User**. The *Add a User* menu appears.
     ![The 'Add a User' menu](accounts-add-a-user-menu.png "The 'Add a User' menu.")
 5.  Enter a username for the user in the **Username** field.
 6.  Enter the user's email address in the **Email** field. A password creation link will be sent to the new user's email address.
@@ -50,13 +50,14 @@ Setting permissions restricts a user's access to certain areas of the Linode Man
 
 Here's how to set a user's access permissions:
 
-1.  Click the **Account** link on the left-hand side of the panel..
+1.  Click the **Account** link in the sidebar.
 2.  Click the **Users** link.
-3.  Click on the user in the list and select the **User Permissions** tab.
+3.  Select the user from the list.
+4.  Select the **User Permissions** tab.
 
     [![Configure User permissions in the Linode Manager.](accounts-user-permissions-small.png "Configure User permissions in the Linode Manager")](accounts-user-permissions.png)
 
-4.  Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/) and frozen [Images](/docs/platform/disk-images/linode-images/), access all billing information, and cancel the entire account.
+5.  Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, and [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/) and frozen [Images](/docs/platform/disk-images/linode-images/), access all billing information, and cancel the entire account.
 
     {{< note >}}
 Granting access to settings denoted with a dollar sign ($) will allow the user to perform actions that incur billing costs, such as adding or resizing a Linode.
@@ -67,11 +68,11 @@ Granting access to settings denoted with a dollar sign ($) will allow the user t
 
 ### Recovering a Lost Username
 
-Did you forget your Linode Manager username? Recover it with the *Forgot Username* webpage. Here's how:
+Did you forget your Cloud Manager username? Recover it with the *Forgot Username* webpage. Here's how:
 
-1.  Visit the [Forgot Username](https://manager.linode.com/session/forgot/username) webpage.
-1.  Enter your email address in the **Email** field.
-1.  Click **Submit**.
+1.  Visit the [Forgot Username](https://login.linode.com/forgot/username) webpage.
+2.  Enter your email address in the **Email** field.
+3.  Click **Submit**.
 
 In a couple minutes, you'll receive an email message with any Linode Manager users that correspond to that email. If you do not receive information about any users, then you may have registered your account with a different email.
 
@@ -79,11 +80,12 @@ In a couple minutes, you'll receive an email message with any Linode Manager use
 
 You can permanently remove a user account from the Linode Manager. Here's how:
 
-1.  Click the **Account** link on the left-hand side of the Manager.
+1.  Click the **Account** link in the sidebar.
 2.  Click the **Users** tab.
-3.  Locate the user in the list and select the **Delete** link from the menu. A warning appears asking you to confirm that you want to delete the user.
+3.  Locate the user in the list and click on the ellipsis icon (three dots) to the right of the user.
+4.  Select the **Delete** link from the menu. A warning appears asking you to confirm that you want to delete the user.
     ![Use the Linode Manager to delete a User](accounts-delete-a-user.png "Use the Linode Manager to delete a User.")
-4.  Click **Delete**.
+5.  Click **Delete**.
 
 The account will be removed, and the user will no longer be able to access the Linode Manager.
 
@@ -99,9 +101,9 @@ Use the *Account & Billing* webpage to update the contact information for the Li
 
 Here's how to update the contact information and the email address on the *Account* webpage:
 
-1.  Click the **Account** link on the left-hand side of the Manager.
+1.  Click the **Account** link in the sidebar.
 1.  Click the **Account & Billing** tab.
-1.  Expand **Update Contact Information** and update the contact information and the email address for the account.
+1.  Expand the **Update Contact Information** panel and update the contact information and the email address for the account.
     [![Update your Contact Information in the Linode Manager](accounts-update-billing-info-small.png "Update your Contact Information in the Linode Manager")](accounts-update-billing-info.png)
 2.  Click **Save**.
 
@@ -115,9 +117,9 @@ Here's how to change your email address on the *My Profile* webpage:
 
 1.  Select the **My Profile** link by clicking on your username at the top of the page.
    ![Select 'My Profile' in the Linode Manager](accounts-select-my-profile.png "Select 'My Profile' in the Linode Manager.")
-2.  In the **My Profile** tab, enter your email address in the **Email** field.
+2.  In the **Display** tab, enter your email address in the **Email** field.
     [![Modify the email address associated with your user account.](accounts-my-profile-change-email-small.png "Modify the email address associated with your user account")](accounts-my-profile-change-email.png)
-3.  Click **Change Email**.
+3.  Click **Save**.
 
 Your profile's email account will be updated.
 
@@ -129,8 +131,8 @@ Creating strong passwords is essential to protecting your Linode and your Linode
 
 If you want to change your password, or you forgot your password and need a new one, you can accomplish these task through the *Forgot Password* webpage. Here's how:
 
-1.  Visit the [Forgot Password](https://manager.linode.com/session/forgot/password) webpage.
-1.  Enter your username in the **Username** field.
+1.  Visit the [Forgot Password](https://login.linode.com/forgot/password) webpage.
+2.  Enter your username in the **Username** field.
 
     {{< note >}}
   If you've forgotten your Linode Manager username, see [Recovering a Lost Username](#recovering-a-lost-username).
@@ -144,17 +146,17 @@ If you want to change your password, or you forgot your password and need a new 
 
 If you can't remember the password for the `root` user on a Linode, use the Linode Manager to reset it. Here's how:
 
-1.  Click the **Linodes** page. A list of your Linodes appears.
-1.  Select a Linode. The Linode's summary page appears.
-1.  Click **Power Off** from the status menu to turn off your Linode. Monitor your bell notifications at the top of the page for a message indicating that your Linode has shut down.
-2.
-   [![Power Off your Linode.](accounts-power-off-linode-small.png "Power Off your Linode")](accounts-power-off-linode.png)
+1.  Click the **Linodes** link in the sidebar.
+2.  Select a Linode. The Linode's details page appears.
+3.  Click **Power Off** from the status menu to turn off your Linode. Monitor your bell notifications at the top of the page for a message indicating that your Linode has shut down.
 
-2.  Click the **Settings** tab. The Settings page appears.
-3.  Under the **Reset Root Password** section, if your Linode has multiple disks, select your primary disk from the **Disk** menu.
-4.  Enter a new password for the `root` user in the **Password** field.
-5.  Click **Save**. The Linode's dashboard appears.
-6.  Click **Power On** to turn on your Linode.
+    [![Power Off your Linode.](accounts-power-off-linode-small.png "Power Off your Linode")](accounts-power-off-linode.png)
+
+4.  Click the **Settings** tab.
+5.  Under the **Reset Root Password** panel, select your primary disk from the **Disk** menu.
+6.  Enter a new password for the `root` user in the **Password** field.
+7.  Click **Save**. The Linode's dashboard appears.
+8.  Click **Power On** to turn on your Linode.
 
 Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh) for more information about connecting. If you are unable to connect with the `root` credentials via SSH, try connecting with [Lish](/docs/platform/manager/using-the-linode-shell-lish/) instead. If you are able to connect via Lish but not SSH, you may need to troubleshoot your SSH configuration and firewall rules.
 

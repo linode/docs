@@ -66,7 +66,7 @@ Sticking with the simple web application example above, the backend Linode curre
 
     If you select the HTTPS protocol, two new fields will appear where you can add your SSL certificate, chained certificates (if applicable) and a private key (which must not have passphrase protection).
 
-    Every ten seconds, NodeBalancer will request the root of the web application and look for a valid response code. With our example setup, there is only one backend node (which we will add shortly); if the backend goes down, NodeBalancer will serve a plain 503 Service Unavailable error page. This is more desirable than refusing connections or making browsers wait for a timeout.
+    Every ten seconds, the NodeBalancer will request the root of the web application and look for a valid response code. With our example setup, there is only one backend node (which we will add shortly); if the backend goes down, the NodeBalancer will serve a plain 503 Service Unavailable error page. This is more desirable than refusing connections or making browsers wait for a timeout.
 
 4.  Now we must add the single backend node to the NodeBalancer's configuration. Point this at the private IP address of your web server Linode.
 
@@ -94,7 +94,7 @@ Health checks are transmitted with a Host header (in HTTP/1.0 mode).
 
 ## Putting the NodeBalancer in Charge
 
-Your NodeBalancer is now working and is able to pass traffic to your web application. It is important to note at this point that configuring the NodeBalancer has not impacted your application's normal operations at all -- you can test NodeBalancer without your users ever knowing.
+Your NodeBalancer is now working and is able to pass traffic to your web application. It is important to note at this point that configuring the NodeBalancer has not impacted your application's normal operations at all -- you can test the NodeBalancer without your users ever knowing.
 
 Once you are satisfied that NodeBalancer is working normally, you can switch your web application's traffic over to it through DNS.
 

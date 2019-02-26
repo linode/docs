@@ -74,10 +74,10 @@ Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.
 
 To view your current balance, follow the steps below. This shows you the sum of all Linode services used so far in the month, down to the hour.
 
-1.  Log in to the [Linode Manager](http://cloud.linode.com).
-2.  Select **Account**.
+1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
+2.  Select **Account** from the sidebar links.
 3.  Select **Account & Billing**.
-4.  Under **Billing Information**, expand the **Make a Payment** section. There you can see the **Current Balance**:
+4.  Under **Billing Information**, expand the **Make a Payment** panel. There you can see the **Current Balance**:
 
     [![This customer has a $0 outstanding balance](billing-current-balance-small.png "This customer has a $0 outstanding balance.")](billing-current-balance.png)
 
@@ -91,7 +91,7 @@ What does a mid-month bill mean? Your existing active services will stay active.
 
 ## If My Linode is Powered Off, Will I Be Billed?
 
-**If your Linode is powered off you will still be billed for it.** Linode maintains your saved data and reserves your ability to use other resources like RAM and network capacity, even when your Linode is powered off. You will also be billed for any other active Linode service, such as Longview Pro or extra IP's.
+**If your Linode is powered off you will still be billed for it.** Linode maintains your saved data and reserves your ability to use other resources like RAM and network capacity, even when your Linode is powered off. You will also be billed for any other active Linode service, such as Longview Pro or extra IP addresses.
 
 If you want to stop being billed for a particular Linode service, you need to [remove](#removing-services) it from your account entirely.
 
@@ -113,10 +113,10 @@ If you overpay, credit will be applied to your account; this allows you to prepa
 
 You can use the Linode Manager to pay an outstanding balance or prepay for Linode services. Here's how:
 
-1.  Log in to the [Linode Manager](http://cloud.linode.com).
-2.  Select **Account**.
+1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
+2.  Select **Account** from the sidebar links.
 3.  Select **Account & Billing**.
-4.  Expand the **Make a Payment** box.
+4.  Expand the **Make a Payment** panel.
 5.  Enter the amount of money you would like to pay in the **Amount to Charge** field.
 6.  Enter the CVV number on the back of your credit card in the **CVV** field.
 7.  Click **Confirm Payment**.
@@ -127,10 +127,10 @@ The payment may take a few minutes to be applied to your account.
 
 All of your billing history is stored in the Linode Manager. Here's how to access it:
 
-1.  Log in to the [Linode Manager](http://cloud.linode.com).
-2.  Select **Account**.
+1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
+2.  Select **Account** from the sidebar links.
 3.  Select **Account & Billing**.
-4.  Expand the **Recent Invoices** and **Recent Payments** boxes.
+4.  Expand the **Recent Invoices** and **Recent Payments** panels.
 
 Select an invoice to view the charges for a particular month. <!-- You can also download invoices in PDF format. -->
 
@@ -138,7 +138,7 @@ Select an invoice to view the charges for a particular month. <!-- You can also 
 
 You can receive service credit by referring new users to Linode. When you refer someone who maintains at least one active Linode for 90 days, your account will be issued a $20 service credit. Here's how to find your account referral code and URL:
 
-1.  Log in to the [Linode Manager](http://cloud.linode.com).
+1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
 2.  Select the **My Profile** link by clicking on your username at the top of the page.
 3.  Select the **Referrals** tab.
 4.  The referral code and URL are listed under the **Referrals** section. You can provide the code to friends and use the URL on your website to generate referrals.
@@ -149,8 +149,8 @@ Referral service credits must be used to purchase Linode services, and cannot be
 
 Keep your credit card information up to date to prevent service interruptions. Here's how:
 
-1.  Log in to the [Linode Manager](http://cloud.linode.com).
-2.  Select **Account**.
+1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
+2.  Select **Account** from the sidebar links.
 3.  Select **Account & Billing**.
 4.  Expand the **Update Credit Card** box and enter your credit card number and the card's expiration date.
 5.  Click **Save**.
@@ -167,17 +167,17 @@ If you have an outstanding balance, you will need to make a manual payment to br
 
 Our services are provided without a contract, so you're free to remove services from your account at any time. Here's how:
 
-1.  Log in to the [Linode Manager](http://cloud.linode.com).
-2.  To remove a Linode from your account, select **Linodes**. From the Linode's menu select **Settings**. Expand the **Delete Linode** box and click **Delete**.
-3.  To remove a NodeBalancer from your account, select **NodeBalancers**. Open the menu of the NodeBalancer you would like to remove, then select **Remove**.
-4.  To remove the Linode Backup Service, select **Linodes**. Select the corresponding Linode. Under the **Backups** tab click the **Cancel Backups** button at the bottom of the page.
+1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
+2.  To remove a Linode from your account, select **Linodes** from the sidebar links. Select the Linode you would like to remove, then select the **Settings** tab. Expand the **Delete Linode** panel and click **Delete**.
+3.  To remove a NodeBalancer from your account, select **NodeBalancers** from the sidebar links. Open the menu of the NodeBalancer you would like to remove, then select **Remove**.
+4.  To remove the Linode Backup Service, select **Linodes** from the sidebar links. Select the corresponding Linode. Under the **Backups** tab click the **Cancel Backups** button at the bottom of the page.
 
 
 ## Canceling Your Account
 
 You can cancel your account and receive a refund. Here's how:
 
-1.  Log in to the [Legacy Linode Manager](http://manager.linode.com).
+1.  Log in to the [Classic Linode Manager](http://manager.linode.com).
 2.  Click the **Accounts** link.
 3.  At the bottom of the page, select the **Cancel this Account** link. The cancel account webpage appears.
 4.  If you have a prepaid service credit on your account at the time of cancellation, you are entitled to a refund, minus a $5 processing fee. To request a refund, enter a note in the text field. Note that credits from sources other than prepaying cannot be refunded.

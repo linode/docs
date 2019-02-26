@@ -20,19 +20,25 @@ This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting S
 
 ## Adding a NodeBalancer
 
-Click the NodeBalancers page, and then "Add a NodeBalancer". You must choose the same location as your back-end Linodes for a given deployment.
+Click the NodeBalancers link in the sidebar, and then **Add a NodeBalancer**. You must choose the same location as your back-end Linodes for a given deployment.
 
 [![NodeBalancer page in Linode Manager](nodebalancer-rg-add-a-nodebalancer-small.png "NodeBalancer page in Linode Manager")](nodebalancer-rg-add-a-nodebalancer.png)
 
 ## NodeBalancer Settings
 
-Here you may adjust the NodeBalancer's display label, along with the 'Client Connection Throttle.' The connection throttle limits the number of  subsequent new connections from the same client IP address.
+1.  From the NodeBalancers page, click on the NodeBalancer whose settings you would like to view.
 
-![NodeBalancer Settings page in Linode Manager](nodebalancer-rg-nodebalancer-settings.png "NodeBalancer Settings page in Linode Manager")
+1.  Click on the **Settings** tab. Here you may adjust the NodeBalancer's display label, along with the 'Client Connection Throttle.' The connection throttle limits the number of  subsequent new connections from the same client IP address.
+
+    ![NodeBalancer Settings page in Linode Manager](nodebalancer-rg-nodebalancer-settings.png "NodeBalancer Settings page in Linode Manager")
 
 ## Configuration
 
-[![NodeBalancer Configuration in Linode Manager](nodebalancer-rg-nodebalancer-config1-small.png "NodeBalancer Configuration in Linode Manager")](nodebalancer-rg-nodebalancer-config1.png)
+1.  From the NodeBalancers page, click on the NodeBalancer whose configuration you would like to view.
+
+1.  Click on the **Configurations** tab:
+
+    [![NodeBalancer Configuration in Linode Manager](nodebalancer-rg-nodebalancer-config1-small.png "NodeBalancer Configuration in Linode Manager")](nodebalancer-rg-nodebalancer-config1.png)
 
 Each NodeBalancer config adds another port that the NodeBalancer will listen on. For instance, if you wish to balance both port 80 and 81, you'll need to add two configuration profiles to your NodeBalancer.
 

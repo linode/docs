@@ -30,17 +30,19 @@ The Block Storage service is currently available in the Dallas, Fremont, Frankfu
 
 This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap space mounted as `/dev/sdb`. In this scenario, the Block Storage Volume will be available to the operating system as `/dev/disk/by-id/scsi-0Linode_Volume_EXAMPLE`, where `EXAMPLE` is a label you assign the volume in the Linode Manager. Storage volumes can be added when your Linode is already running, and will show immediately in `/dev/disk/by-id/`.
 
-### Add a Volume from the Linode Dashboard
+### Add a Volume from the Linode Detail Page
 
-1.  Go to the page of the Linode to which you want to attach a Block Storage Volume.
+1.  Click on **Linodes** in the sidebar links.
+
+1.  Go to the detail page of the Linode to which you want to attach a Block Storage Volume.
 
     [![Select a Linode from the Manager](bs-cloud-select-linode-small.png "Select a Linode from the Manager.")](bs-cloud-select-linode.png)
 
-2.  Click on the **Volumes** tab, then click **Add a Volume**:
+1.  Click on the **Volumes** tab, then click **Add a Volume**:
 
     [![Click Add a Volume](bs-cloud-add-volume-to-linode-small.png "Click 'Add a Volume.'")](bs-cloud-add-volume-to-linode.png)
 
-3.  Assign the Block Storage Volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum volume size is 10,000 GiB. When finished, click *Submit*:
+1.  Assign the Block Storage Volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum volume size is 10,000 GiB. When finished, click *Submit*:
 
     [![Create a Volume with a label.](bs-cloud-create-volume.png "Create a Volume with a label.")](bs-cloud-create-volume.png)
 
@@ -52,29 +54,29 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
     [![A Volume has been created](bs-cloud-volume-created-small.png "A Volume has been created.")](bs-cloud-volume-created.png)
 
-2.  You'll need to create a filesystem in your new volume. If your Linode is not already running, boot then SSH into your Linode and execute the following command, where `FILE_SYSTEM_PATH` is your volume's file system path:
+1.  You'll need to create a filesystem in your new volume. If your Linode is not already running, boot then SSH into your Linode and execute the following command, where `FILE_SYSTEM_PATH` is your volume's file system path:
 
         mkfs.ext4 FILE_SYSTEM_PATH
 
-3.  Once the volume has a filesystem, you can create a mountpoint for it:
+1.  Once the volume has a filesystem, you can create a mountpoint for it:
 
         mkdir /mnt/BlockStorage1
 
-4.  You can then mount the new volume:
+1.  You can then mount the new volume:
 
         mount FILE_SYSTEM_PATH /mnt/BlockStorage1
 
-5.  If you want to mount the new volume automatically every time your Linode boots, you'll want to add the following line to your **/etc/fstab** file:
+1.  If you want to mount the new volume automatically every time your Linode boots, you'll want to add the following line to your **/etc/fstab** file:
 
         FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2
 
 ### Attach a Volume from Your Account's Volume List
 
-1.  Click on the **Volumes** page of the Linode Manager to see your account's volume list:
+1.  Click on the **Volumes** link in the sidebar links to see your account's volume list:
 
     [![View your available Volumes](bs-cloud-volumes-list-small.png "View your available Volumes.")](bs-cloud-volumes-list.png)
 
-2.  Click the menu option (three dots) for the volume you want to attach to a Linode and select **Attach**:
+2.  Click the ellipsis icon (three dots) to open the menu for the volume you want to attach to a Linode and select **Attach**:
 
     [![Open volume menu.](bs-cloud-attach-volume-small.png)](bs-cloud-attach-volume.png)
 
@@ -105,9 +107,9 @@ The Linodes available in this dropdown menu all share the same region as your vo
 
 ## How to Detach a Block Storage Volume from a Linode
 
-1.  Go back to the page of the Linode which the volume is attached to. Shut down the Linode.
+1.  Go to the detail page page of the Linode which the volume is attached to. Shut down the Linode.
 
-2.  When the Linode is powered off, click on the **Volumes** tab, then click **Detach** under the volume's menu (three dots):
+2.  When the Linode is powered off, click on the **Volumes** tab, click the ellipsis icon (three dots) next to the volume you would like to detach, then click **Detach**.
 
     [![Detach a Volume from a Linode from the Volume menu.](bs-cloud-detach-volume-small.png "Detach a Volume from a Linode from the Volume menu.")](bs-cloud-detach-volume.png)
 
@@ -138,7 +140,9 @@ The removal process is irreversible, and the data will be permanently deleted.
 
 2.  Detach the volume as described [above](#how-to-detach-a-block-storage-volume-from-a-linode).
 
-3.  Click the volume's **Delete** option on the **Volumes** page.
+3.  On the **Volumes** page, click the ellipsis icon (three dots) next to the volume you would like to delete.
+
+4.  Click **Delete**.
 
     ![Delete a Volume](bs-cloud-delete-volume-small.png "Delete a Volume.")
 
@@ -148,29 +152,31 @@ Storage volumes **cannot** be sized down, only up. Keep this in mind when sizing
 
 1.  Shut down your Linode.
 
-2.  Click the **Resize** option for the volume you want to resize.
+2.  Click the ellipsis icon (three dots) next to the volume you would like to resize to bring up the volume's menu.
+
+3.  Click **Resize**.
 
     [![Select Resize from the Volume menu.](bs-cloud-resize-volume-small.png "Select Resize from the Volume menu.")](bs-cloud-resize-volume.png)
 
-3.  Enter the new volume size. The minimum size is 10 GiB and maximum is 10,000 GiB. Then click **Submit**.
+4.  Enter the new volume size. The minimum size is 10 GiB and maximum is 10,000 GiB. Then click **Submit**.
 
     ![Resize Volume menu.](bs-cloud-resize-volume-menu.png "Resize Volume menu.")
 
-4.  You'll be returned to the volume list and the notification bell in the top right of the page will notify you when the resizing is complete.
+5.  You'll be returned to the volume list and the notification bell in the top right of the page will notify you when the resizing is complete.
 
     ![Notification bell shows the Volume has been resized.](bs-cloud-volume-resized.png "Notification bell shows the Volume has been resized.")
 
-5.  Reboot your Linode.
+6.  Reboot your Linode.
 
-6.  Once your Linode has restarted, make sure the volume is unmounted for safety:
+7.  Once your Linode has restarted, make sure the volume is unmounted for safety:
 
         umount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
-7.  Assuming you have an ext2, ext3, or ext4 partition, resize it to fill the new volume size:
+8.  Assuming you have an ext2, ext3, or ext4 partition, resize it to fill the new volume size:
 
         resize2fs /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
-8.  Mount it back onto the filesystem:
+9.  Mount it back onto the filesystem:
 
         mount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1 /mnt/BlockStorage1
 
