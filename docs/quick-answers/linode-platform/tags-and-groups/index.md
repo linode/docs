@@ -6,7 +6,6 @@ description: 'How to create tags to organize your Linode services.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-22
-modified: 2019-02-22
 modified_by:
   name: Linode
 title: "Tags and Groups"
