@@ -121,7 +121,7 @@ To tag a NodeBalancer at the time of its creation:
 
 ### Tag an Existing NodeBalancer
 
-To tag an existing Linode:
+To tag an existing NodeBalancer:
 
 1.  Navigate to the NodeBalancer's details page.
 
