@@ -15,15 +15,15 @@ title: Use Public Key Authentication with SSH
 
 ![Use Public Key Authentication with SSH](use_public_key_authentication_with_ssh.png "Use Public Key Authentication with SSH")
 
-While password authentication is the default method most SSH clients use to authenticate remote servers, SSH keys are a [Public Key authentication](https://en.wikipedia.org/wiki/Key_authentication#Authentication_using_Public_Key_Cryptography) mechanism for SSH that offers a number of advantages over traditional password-based login schemes. SSH key based login is not a major target for brute-force hacking attacks, and if a server that uses SSH keys is compromised by a hacker no authorization credentials are at risk of being exposed. Another advantage is that SSH key logins take the place of traditional password based logins, and can create a password-less login experience.
+While password authentication is the default method most SSH (Secure Shell ) clients use to authenticate remote servers, SSH keys are a [Public Key authentication](https://en.wikipedia.org/wiki/Key_authentication#Authentication_using_Public_Key_Cryptography) mechanism for SSH that offers a number of advantages over traditional password-based login schemes. SSH key based login is not a major target for brute-force hacking attacks, and if a server that uses SSH keys is compromised by a hacker no authorization credentials are at risk of being exposed. Another advantage is that SSH key logins take the place of traditional password based logins, and can create a password-less login experience.
 
 This guide will explain how the SSH key login scheme works, how to generate an SSH key, and how to use those keys with your Linode.
 
 ## How SSH Keys Work
 
-SSH keys are generated in pairs: one private key, usually named `id_rsa`, and one public key, usually named `id_rsa.pub`. The private key stays on your local computer and should be kept secure, whereas the public key is placed on the server you intend to log in to.
+SSH keys are generated in pairs: one private key, usually named `id_rsa`, and one public key, usually named `id_rsa.pub`. The private key is stored on your local computer and should be kept secure, whereas a copy of the public key is placed on the server you intend to log in to.
 
-When logging in to a server using SSH, if there is a public key on file on that server, the server will create a challenge. This challenge will be crafted in such a way that only the holder of the private SSH key will be able to decipher it. This challenge-response action happens without any user interaction. If the person attempting to log in has the corresponding private key they will be safely logged in, if not then the login will either fail or fall back to a password based authentication scheme.
+When logging in to a server using SSH, if there is a public key on file on that server, the server will create a challenge. This challenge will be crafted in such a way that only the holder of the private SSH key will be able to decipher it. This challenge-response action happens without any user interaction. If the person attempting to log in has the corresponding private key they will be safely logged in, if not, then the login will either fail or fall back to a password based authentication scheme.
 
 You can optionally provide an additional level of security to your SSH keys by encrypting them with a passphrase at the time of creation. When you attempt to log in using an encrypted SSH key, you will be prompted to enter its passphrase. This is not to be confused with a password, as this passphrase only decrypts the file locally and is not transferred over the internet as a password might be. If you'd like to set up your logins so that they require no user input then creating a passphrase might not be desirable, but it is strongly recommended nevertheless.
 
@@ -69,22 +69,24 @@ f6:61:a8:27:35:cf:4c:6d:13:22:70:cf:4c:c8:a0:23 bob@linode
 
 ### Upload Your Keypair
 
-Now that you have your keys, it's time to place the public key on the Linode or other server you would like to log in to. There are a number of ways to accomplish this task.
+Now that you have your keys, it's time to place the public key on the Linode you would like to log in to. There are a number of ways to accomplish this task.
 
 #### Using ssh-copy-id
 
-`ssh-copy-id` is a utility available on some operating systems that can copy a SSH public key to a remote server over SSH. To use `ssh-copy-id` you pass it a username and the IP address of the server to which you would like to connect. For example:
+`ssh-copy-id` is a utility available on some operating systems that can copy a SSH public key to a remote server over SSH. To use `ssh-copy-id` you pass it a username and the IP address of the server to which you would like to access. For example:
 
     ssh-copy-id bob@192.0.2.0
 
 You'll see output like the following, and a prompt to enter your user's password:
 
-    /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/bob/.ssh/id_rsa.pub"
-    /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-    /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-    bob@192.0.2.0's password:
+  {{< output >}}
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/bob/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+bob@192.0.2.0's password:
+  {{</ output >}}
 
-Enter the password and the copying will complete. You can now log in to your server with SSH as you normally would. If you chose to use a passphrase when creating your SSH key, it will prompt you to enter it:
+Enter the password and the copying to the remote server will complete. You can now log in to your server with SSH as you normally would. If you chose to use a passphrase when creating your SSH key, it will prompt you to enter it:
 
     ssh bob@192.0.2.0
 
@@ -116,7 +118,9 @@ If your local system does not offer `ssh-copy-id` or `scp` you can manually add 
 
     You should see output similar to the following:
 
-        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyVGaw1PuEl98f4/7Kq3O9ZIvDw2OFOSXAFVqilSFNkHlefm1iMtPeqsIBp2t9cbGUf55xNDULz/bD/4BCV43yZ5lh0cUYuXALg9NI29ui7PEGReXjSpNwUD6ceN/78YOK41KAcecq+SS0bJ4b4amKZIJG3JWmDKljtv1dmSBCrTmEAQaOorxqGGBYmZS7NQumRe4lav5r6wOs8OACMANE1ejkeZsGFzJFNqvr5DuHdDL5FAudW23me3BDmrM9ifUzzjl1Jwku3bnRaCcjaxH8oTumt1a00mWci/1qUlaVFft085yvVq7KZbF2OPPbl+erDW91+EZ2FgEi+v1/CSJ5 bob@host
+      {{< output >}}
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyVGaw1PuEl98f4/7Kq3O9ZIvDw2OFOSXAFVqilSFNkHlefm1iMtPeqsIBp2t9cbGUf55xNDULz/bD/4BCV43yZ5lh0cUYuXALg9NI29ui7PEGReXjSpNwUD6ceN/78YOK41KAcecq+SS0bJ4b4amKZIJG3JWmDKljtv1dmSBCrTmEAQaOorxqGGBYmZS7NQumRe4lav5r6wOs8OACMANE1ejkeZsGFzJFNqvr5DuHdDL5FAudW23me3BDmrM9ifUzzjl1Jwku3bnRaCcjaxH8oTumt1a00mWci/1qUlaVFft085yvVq7KZbF2OPPbl+erDW91+EZ2FgEi+v1/CSJ5 bob@host
+      {{</ output >}}
 
     Note that the public key begins with `ssh-rsa` and ends with `username@host-name`, which in this example is `bob@host`.
 
@@ -132,13 +136,13 @@ If your local system does not offer `ssh-copy-id` or `scp` you can manually add 
 
         chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 
-1.  Paste the contents of your public key that you copied in step one on a new line at the end of the file.
+1.  Open the `authorized_kyes` file with the text editor of your choice. Then, paste the contents of your public key that you copied in step one on a new line at the end of the file.
 
         nano ~/.ssh/authorized_keys
 
     Save and close the file.
 
-1.  Now you need to make sure that your `~/.ssh` directory has the proper permissions. Run the following command to remove 'group' and 'other permissions' from the directory.
+1.  Make sure that your `~/.ssh` directory has the proper permissions. Run the following command to remove 'group' and 'other permissions' from the directory.
 
         chmod -R go= ~/.ssh
 
@@ -146,7 +150,7 @@ If your local system does not offer `ssh-copy-id` or `scp` you can manually add 
 
         chown -R bob:bob ~/.ssh
 
-    Replace both `bob`s with your username.
+    Replace both instances of `bob` with your username.
 
 1.  You can now log out and log back in in with your SSH key.
 
@@ -210,12 +214,12 @@ Do not allow the local machine to remember the passphrase in its keychain unless
 
 1.  Click the **Open** button to establish a connection. You will be prompted to enter a login name and password for the remote server.
 
-1.  Once you're logged in to the remote server, configure it to authenticate with your SSH key pair instead a user's password. Create an `.ssh` directory in your home directory on your Linode, create a blank `authorized_keys` file inside, and set their access permissions:
+1.  Once you're logged in to the remote server, configure it to authenticate with your SSH key pair instead of a user's password. Create an `.ssh` directory in your home directory on your Linode, create a blank `authorized_keys` file inside, and set their access permissions:
 
         mkdir ~/.ssh && touch ~/.ssh/authorized_keys
         chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 
-1.  Copy the public key from your local workstation to the `authorized_keys` file on your Linode. When copying from the public key file exported from PuTTY.
+1.  Copy the public key from your local workstation to the `authorized_keys` file on your Linode.
 
 1.  Exit PuTTY, then reconnect and **Load** your saved session. You'll be prompted to enter your Linode user's login name as before. However, this time you will be prompted for your private SSH key's passphrase rather then your Linode user's password. Enter the passphrase and press *Enter*.
 
@@ -223,7 +227,7 @@ Do not allow the local machine to remember the passphrase in its keychain unless
 
 Uploading a public key from Windows can also be done using [WinSCP](http://winscp.net/).
 
-1.  In the login window, enter your Linode's public IP address as the hostname as well as your non-root username and password. Click *Login* to connect.
+1.  In the login window, enter your Linode's public IP address as the hostname, your non-root username, and password. Click *Login* to connect.
 
 1.  Once connected, WinSCP will show two file tree sections. The left shows files on your local computer and the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you saved your public key in Windows. Select the public key file and click **Upload** in the toolbar above.
 
