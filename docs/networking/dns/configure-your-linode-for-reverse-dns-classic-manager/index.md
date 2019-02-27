@@ -5,7 +5,7 @@ author:
 description: 'Reverse DNS (rDNS) resolves an IP address to the designated domain name. This guide will teach you how to set it up.'
 keywords: ["reverse", "dns", "PTR"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-22
+modified: 2019-02-27
 modified_by:
   name: Linode
 published: 2015-07-09
