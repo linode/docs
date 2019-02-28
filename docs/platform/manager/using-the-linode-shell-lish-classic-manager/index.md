@@ -246,5 +246,5 @@ These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-
 
 These are the fingerprints for the Lish gateway in our Toronto data center (lish-tor1.linode.com):
 
-    RSA MD5:4a:d9:fb:43:b8:0e:7f:fd:d3:cd:fc:87:06:61:51:df
-    ECDSA SHA256:iAWnqR3XYcooliTQ7W1tiMmjsA4k1WJVItvLz4lUxQE
+    RSA 4a:d9:fb:43:b8:0e:7f:fd:d3:cd:fc:87:06:61:51:df
+    ECDSA SHA256 iAWnqR3XYcooliTQ7W1tiMmjsA4k1WJVItvLz4lUxQE
