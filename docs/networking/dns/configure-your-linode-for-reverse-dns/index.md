@@ -16,7 +16,7 @@ title: Configure Your Linode for Reverse DNS (rDNS)
 ![Configure Your Linode for Reverse DNS (rDNS)](configure-your-linode-reverse-dns.jpg)
 
 {{< note >}}
-View the Linode Classic Manager version of the [Configure Your Linode for Reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.
+You can also view the Linode Classic Manager version of the [Configure Your Linode for Reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/) guide.
 {{</ note >}}
 
 Computers uses DNS to determine the IP address associated with a domain name. *Reverse* DNS lookup does the opposite by resolving an IP address to a designated domain name. You should always set the reverse DNS, even if your Linode hosts more than one domain.
@@ -35,7 +35,7 @@ Before setting the reverse DNS for your Linode, configure your domain zone and D
 
     ![Selecting reverse DNS](rdns-edit-select.png)
 
-1. In the **Edit Reverse DNS** field, add your Linode's fully qualified domain name and click on the **Save** button. You should snow see the domain name you entered listed under the **Reverse DNS** column.
+1. In the **Edit Reverse DNS** field, add your Linode's fully qualified domain name and click on the **Save** button. You should now see the domain name you entered listed under the **Reverse DNS** column.
 
     ![Selecting reverse DNS](rdns-set-success.png)
 
