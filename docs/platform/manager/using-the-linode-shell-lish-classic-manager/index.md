@@ -13,9 +13,6 @@ published: 2009-08-04
 title: 'Using the Linode Shell (Lish)'
 ---
 
-{{< note >}}
-View the Linode Classic Manager version of the [Using the Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish-classic-manager/) guide.
-{{</ note >}}
 
 ![Using the Linode Shell (Lish)](using-the-linode-shell-lish.jpg)
 
@@ -23,7 +20,7 @@ The Linode Shell (*Lish*) provides console access to all of your Linodes. It als
 
 ## Connect to Lish
 
-There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Cloud Manager](https://cloud.linode.com) and use the Lish console in your web browser. This section explains both methods.
+There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Manager](https://manager.linode.com) and use the Lish console in your web browser. This section explains both methods.
 
  {{< note >}}
 Lish used to be accessible via a direct SSH connection to your Linode's host machine, but as of May 10, 2013, all users must connect to a Lish SSH gateway to access Lish. For more information, please see [this blog post](https://blog.linode.com/2013/04/30/lish-ssh-gateway/).
@@ -45,7 +42,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
     -   lish-tokyo2.linode.com
     -   lish-tor1.linode.com
 
-2.  Open a terminal window and enter the following command, replacing `username` with your Linode Cloud Manager username, and `location` with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
+2.  Open a terminal window and enter the following command, replacing `username` with your Linode Manager username, and `location` with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
 
         ssh username@location
 
@@ -54,7 +51,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
         ssh user@lish-newark.linode.com
 
     {{< note >}}
-Users who have been granted "Access" rights on a particular Linode will have access to that Linode’s Lish console via the gateway. Linodes that a user can't access in the Linode Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](docs/platform/manager/accounts-and-passwords-new-manager/).
+Users who have been granted "Access" rights on a particular Linode will have access to that Linode’s Lish console via the gateway. Linodes that a user can't access in the Linode Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](docs/platform/manager/accounts-and-passwords/).
 {{< /note >}}
 
 3.  Verify that the Lish SSH gateway's fingerprint is valid. [Click here](#lish-gateway-fingerprints) for more information.
@@ -80,44 +77,46 @@ After you log in, you'll have console access to your Linode. You'll be able to r
 
 You can also connect to Lish using a web browser. This is useful when you don't have access to a terminal application, or if you just need quick and easy console access from the Linode Manager.
 
-1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1. Click on the Linodes link in the sidebar and select the desired Linode.
-1. Click on the **Launch Console** link in the top right-hand corner of the Manager.
+1.  Log in to the Linode Manager.
+2.  Select a Linode.
+3.  Click on the **Remote Access** tab.
+4.  In the **Console Access** section, click **Launch Lish Console**, as shown below.
 
-    ![Launch the Lish Console](launch-console.png)
+    [![Click Lish via Browser.](lish-via-browser.png)](lish-via-browser.png)
 
-1. The Lish Web Console window appears with your Linode's console, as shown below.
+5.  The Lish Web Console window appears with your Linode's console, as shown below.
 
-    ![An example of the Lish Web Console](lish-console.png)
+    [![Ajax Lish](1283-lish_ajax.png)](1283-lish_ajax.png)
 
-1. From here, you can log in to your Linode with your root username and password, or any other username and password.
+6.  From here, you can log in to your Linode with your root username and password, or any other username and password.
 
 Now you can use the console, or exit to the Lish prompt by pressing **CTRL+A** then **D**. You cannot exit to a Lish gateway box using your web browser. To exit the session entirely, just close the Lish Web Console window.
 
 ### Add Your Public Key
 
-If you don't want to enter your password every time you connect to Lish, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh/) guide for more information.
+If you don't want to enter your password every time you connect to Lish, you can add your public SSH key to the Linode Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh/) guide for more information.
 
-1. Log in to the [Linode Cloud Manager](https://manager.linode.com).
+1.  Log in to the [Linode Manager](https://manager.linode.com).
+2.  Select the **my profile** link.
+3.  Enter your password, and then click **Authenticate**, as shown below.
 
-1. Click on your profile icon in the top right hand corner of the Manager and select **My Profile**.
+    [![Re-enter your password.](1280-manager_reauth_linodedemo.png)](1280-manager_reauth_linodedemo.png)
 
-1. Click on the **LISH** tab.
+4.  Select the **Lish Settings** tab.
+5.  Copy your public SSH key into the **Lish Keys** field, as shown below.
 
-1. Copy your public SSH key into the **SSH Public Key** field, as shown below.
+    [![Copy your SSH public key(s) into the text field.](1282-manager_lish_keys.png)](1282-manager_lish_keys.png)
 
-    ![Add your public ssh key](lish-add-public-key.png)
-
-1. Click the **Save** button. Your Lish key will be saved in the Linode Cloud Manager.
+6.  Click **Submit Keys**. Your Lish key will be saved in the Linode Manager.
 
 Now you can log in to any of the Lish gateway boxes without having to type your password.
 
-If you wish to disable Lish access for users without keys, use the **Authentication Mode** dropdown menu on the same page, and select **Allow key authentication only** then click **Save**.
+If you wish to disable Lish access for users without keys, use the **Authentication modes** dropdown menu on the same page, and then click **Save Setting**.
 
 
 ## Understanding Lish Commands
 
-The Lish shell provides access to many functions which are otherwise only accessible via the Linode Cloud Manager web-based administration tool. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
+The Lish shell provides access to many functions which are otherwise only accessible via the Linode Manager web-based administration tool. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
 
     kill            - kill stuck screen sessions
     exit            - exit from lish
@@ -157,7 +156,7 @@ You can directly connect to a Linode's console:
 
     ssh -t [manager-username]@lish-[location].linode.com [linode-name]
 
-You can also append Lish commands to the SSH command on your system prompt. For instance, to reboot your system, using your Linode Cloud Manager username, location, and the host-id for your Linode:
+You can also append Lish commands to the SSH command on your system prompt. For instance, to reboot your system, using your Linode Manager username, location, and the host-id for your Linode:
 
     ssh -t [manager-username]@lish-[location].linode.com [linode-name] reboot
 
@@ -247,5 +246,5 @@ These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-
 
 These are the fingerprints for the Lish gateway in our Toronto data center (lish-tor1.linode.com):
 
-    RSA 4a:d9:fb:43:b8:0e:7f:fd:d3:cd:fc:87:06:61:51:df
-    ECDSA SHA256 iAWnqR3XYcooliTQ7W1tiMmjsA4k1WJVItvLz4lUxQE
+    RSA MD5:4a:d9:fb:43:b8:0e:7f:fd:d3:cd:fc:87:06:61:51:df
+    ECDSA SHA256:iAWnqR3XYcooliTQ7W1tiMmjsA4k1WJVItvLz4lUxQE
