@@ -45,7 +45,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
     -   lish-tokyo2.linode.com
     -   lish-tor1.linode.com
 
-2.  Open a terminal window and enter the following command, replacing `username` with your Linode Cloud Manager username, and `location` with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
+1.  Open a terminal window and enter the following command, replacing `username` with your Linode Cloud Manager username, and `location` with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
 
         ssh username@location
 
@@ -54,11 +54,27 @@ You can connect to Lish with the SSH client of your choice. For example, you can
         ssh user@lish-newark.linode.com
 
     {{< note >}}
-Users who have been granted "Access" rights on a particular Linode will have access to that Linode’s Lish console via the gateway. Linodes that a user can't access in the Linode Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](docs/platform/manager/accounts-and-passwords-new-manager/).
+Users who have been granted "Access" rights on a particular Linode will have access to that Linode’s Lish console via the gateway. Linodes that a user can't access in the Linode Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/platform/manager/accounts-and-passwords-new-manager/).
 {{< /note >}}
 
-3.  Verify that the Lish SSH gateway's fingerprint is valid. [Click here](#lish-gateway-fingerprints) for more information.
-4.  Enter the password you use to log in to the Linode Manager. You are now at the Lish shell. A list of your Linodes appears, as shown below:
+1.  Verify that the Lish SSH gateway's fingerprint is valid by verifying the Terminal's output against the list of our [Lish Gateway Fingerprints](#lish-gateway-fingerprints). Once verified, enter *yes* to proceed.
+
+    {{< output >}}
+The authenticity of host 'lish-newark.linode.com (66.228.40.59)' can't be established.
+ECDSA key fingerprint is SHA256:57OGBNARJ1fhI+zrE3eTEeQWXVVDHRU8QHcP+BsWmN8.
+Are you sure you want to continue connecting (yes/no)?
+    {{</ output >}}
+
+    {{< disclosure-note "ECDSA host key warning">}}
+If after verifying the authenticity of the Lish SSH gateway's fingerprint, you receive a message indicating that the ECDSA host key differs from the key for the IP address, remove the cached IP address on your local machine. Ensure you replace `192.0.2.0` with the IP address indicated by the Terminal.
+
+    ssh-keygen -R 192.0.2.0
+
+Once you have removed the cached IP address, you can again attempt to SSH into the Lish gateway.
+
+    {{</ disclosure-note >}}
+
+1.  Enter the password you use to log in to the Linode Manager. You are now at the Lish shell. A list of your Linodes appears, as shown below:
 
         Linodes located in this data center:
         linode241706         Newark, NJ
@@ -71,8 +87,9 @@ Users who have been granted "Access" rights on a particular Linode will have acc
 You can add a public SSH key for Lish in the Linode Manager to automatically connect to Lish without a password. See [this section](#add-your-public-key) for more information.
 {{< /note >}}
 
-5.  At the Lish command prompt, type a Linode's name from the list. For example, typing `linode241706` will connect you to the screen console session for that Linode.
-6.  Log in to the Linode with your username and password.
+1.  At the Lish command prompt, type a Linode's name from the list. For example, typing `linode241706` will connect you to the screen console session for that Linode.
+
+1.  Log in to the Linode with your username and password.
 
 After you log in, you'll have console access to your Linode. You'll be able to restart services like `sshd`, edit firewall settings, and make other changes to your Linode. To exit your Linode's console, press **CTRL+A** then **D** to return to the host machine, and then press **CTRL+D** to return to the Lish menu. If you'd like to see the list of your Linodes again, type `list` from the gateway.
 
@@ -177,7 +194,7 @@ These are the fingerprints for the Lish gateway in our Atlanta data center (lish
 
     RSA 59:30:1a:0b:93:5e:3f:4b:6f:d1:96:ff:7e:9e:12:f8
     DSA 0b:90:ed:f2:a1:e0:55:5b:38:6e:5d:6e:fa:00:63:7f
-    ECDSA SHA256 9V/AK2EcQFjYzm1PU3XhOJbzhwYCoqqThl2vnFxbyvg
+    ECDSA SHA256:8emv5PuUgPB2GFejMYWl1f4x1yj3YqAQPAYIrBm43ZI
 
 ### Dallas
 
@@ -185,7 +202,7 @@ These are the fingerprints for the Lish gateway in our Dallas data center (lish-
 
     RSA 6d:3d:b5:d0:42:1c:49:45:a6:47:29:bd:88:4e:58:d4
     DSA 58:bc:07:fa:c1:61:a4:3b:b5:00:3b:9b:6b:78:c6:c5
-    ECDSA SHA256 IVXyNAH78L7KJFgfrScp948+56BTew8Z41nOkAw2kGo
+    ECDSA SHA256:1fL1HTGas1APIpshCu1ZWys7LI97s8eTFN3+f8zEYXA
 
 ### Frankfurt
 
@@ -193,7 +210,7 @@ These are the fingerprints for the Lish gateway in our Frankfurt data center (li
 
     RSA 43:76:22:43:0e:01:cb:84:6a:80:b9:9b:90:34:c7:b1
     DSA 87:2d:c9:5a:76:06:e6:3d:08:70:1b:2e:a6:b4:e8:c2
-    ECDSA SHA256 4F/M6SYqrukVHJJbCkzw4tw4TjRVfAY98cDKwqXT9MY
+    ECDSA SHA256:e1FxEXiZVi6n13tagd1ZAQEW/fsRqz29ez5IfWf9kxg
 
 ### Fremont
 
@@ -201,7 +218,7 @@ These are the fingerprints for the Lish gateway in our Fremont data center (lish
 
     RSA 2c:43:0e:fc:88:f2:3a:dd:01:43:3a:fc:9f:67:9f:66
     DSA 19:30:1a:48:85:aa:78:ab:46:8d:0f:4d:00:88:e6:b7
-    ECDSA SHA256 0BmmvUv/itqa1ruA4KmqzMFaY4Ijdw/YW+SoiMJT1mo
+    ECDSA SHA256:s3MVXFaTiL7Fb5oB0s9zMBk9VJsrkNxXXZfdeJG2enQ
 
 ### London
 
@@ -209,7 +226,7 @@ These are the fingerprints for the Lish gateway in our London data center (lish-
 
     RSA 71:27:30:cd:dc:69:7a:fe:58:4a:04:e6:6b:5f:b4:e2
     DSA ce:41:c0:48:2c:93:de:c8:d2:a9:bf:3f:97:1f:04:ad
-    ECDSA SHA256 L7sQgnpnoBwRoyIYXAFBs8SdSnwtyYmhXs1p/mQDKQM
+    ECDSA SHA256:mE/plOHLl+NJ7LUdW7AaMEOnhskXZxav5Em/rD6VZ5g
 
 ### Newark
 
@@ -217,7 +234,7 @@ These are the fingerprints for the Lish gateway in our Newark data center (lish-
 
     RSA 11:2a:57:a4:f8:ca:42:b2:c0:ab:17:58:0d:0c:b7:8b
     DSA a1:e2:f5:5a:71:f9:b8:98:d9:a6:4c:65:e5:05:ea:04
-    ECDSA SHA256 p+fsr503gCnyZhAG7wx5mzrvw9MIPdgzvKauScUm8wk
+    ECDSA SHA256:57OGBNARJ1fhI+zrE3eTEeQWXVVDHRU8QHcP+BsWmN8
 
 ### Singapore
 
@@ -225,7 +242,7 @@ These are the fingerprints for the Lish gateway in our Singapore data center (li
 
     RSA 06:26:d8:2a:12:8b:2f:d7:6c:54:72:5a:a7:7b:da:7b
     DSA 0c:f9:f9:d6:f3:0a:f6:bb:82:82:07:4b:51:db:e2:35
-    ECDSA SHA256 LzlyP1Uj1nne2KwCkB5HlOWoHLH/7YrApZlNCn5204A
+    ECDSA SHA256:rFYWuld4hWMbTzX+xZMuQ3kxiJ6t8A+FNQ5k889mKEA
 
 ### Tokyo
 
@@ -233,7 +250,7 @@ These are the fingerprints for the Lish gateway in our Tokyo data center (lish-t
 
     RSA af:ec:f0:b8:87:33:d5:12:04:0d:7c:bb:a6:c5:5f:be
     DSA 1d:7d:bd:5c:a1:41:29:c3:78:de:e7:0f:d3:f2:63:34
-    ECDSA SHA256 XcBYWsYm4p/bZ/tfWEntUzScDlTxvzTrmd7emeRBMJc
+    ECDSA SHA256:smE6PUuuG6tR4N8kN8UpoPx+XyVtAwxQ2dHuwoVS6eY
 
 ### Tokyo 2
 
@@ -241,11 +258,15 @@ These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-
 
     RSA 2c:60:9a:ce:cf:4b:8d:4e:8f:09:ae:e0:c2:b0:fb:b7
     DSA 2d:0f:b0:a5:d0:bd:4a:71:1a:75:dc:de:b1:06:61:a6
-    ECDSA SHA256 nE/1fY3QdCXuoTBfnvQtXzwFVOnO+/gbijm4ZM9wvaY
+    ECDSA SHA256:0sRmstQ+6lfa4KwnAIQvuZMunq8KKNmu/n4KeAcAXmg
 
 ### Toronto
 
 These are the fingerprints for the Lish gateway in our Toronto data center (lish-tor1.linode.com):
 
     RSA 4a:d9:fb:43:b8:0e:7f:fd:d3:cd:fc:87:06:61:51:df
-    ECDSA SHA256 iAWnqR3XYcooliTQ7W1tiMmjsA4k1WJVItvLz4lUxQE
+    ECDSA SHA256:iAWnqR3XYcooliTQ7W1tiMmjsA4k1WJVItvLz4lUxQE
+
+{{< note >}}
+The Toronot data center only supports RSA and DSA keys.
+{{</ note >}}
