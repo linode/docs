@@ -51,4 +51,4 @@ You will no longer receive the annual discount when you switch to Hourly billing
 
 [![Please note the annual discounts will go away when converting to Hourly.](convert-to-hourly-annual-small.png)](convert-to-hourly-annual.png)
 
-If you want to stay on the old billing system until March 31st when your account is automatically converted you are welcome to do so.
+If you want to stay on the old billing system until March 31st when your account is automatically converted, you are welcome to do so.
