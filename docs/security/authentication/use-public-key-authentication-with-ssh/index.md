@@ -25,7 +25,7 @@ Password authentication is the default method most SSH (Secure Shell) clients us
 This guide will explain how the SSH key login scheme works, how to generate an SSH key, and how to use those keys with your Linode.
 
 {{< note >}}
-If you're unfamiliar with SSH connections, review the [Getting Started with Linode](https://linode.com/docs/getting-started/#connect-to-your-linode-via-ssh) guide.
+If you're unfamiliar with SSH connections, review the [Getting Started with Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) guide.
 {{< /note >}}
 
 ## How SSH Keys Work
