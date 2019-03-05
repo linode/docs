@@ -12,7 +12,7 @@ modified_by:
 published: 2009-07-19
 title: Getting Started with Linode
 show_on_rss_feed: false
-hidden_guide: true
+hiddenguide: true
 ---
 
 ![Getting Started with Linode](getting-started.jpg "Getting Started with Linode")
