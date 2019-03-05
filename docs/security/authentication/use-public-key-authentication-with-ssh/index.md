@@ -77,7 +77,7 @@ Perform the steps in this section on your local machine.
 
 If you've already created a key pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
 
-If you accidentally lock yourself out of the SSH service on your Linode, you can still use the [Lish](/docs/networking/using-the-linode-shell-lish) console to login to your server. After you've logged in via Lia, update your `authorized_keys` file to use your new public key. This should re-establish normal SSH access.
+If you accidentally lock yourself out of the SSH service on your Linode, you can still use the [Lish](/docs/networking/using-the-linode-shell-lish) console to login to your server. After you've logged in via Lish, update your `authorized_keys` file to use your new public key. This should re-establish normal SSH access.
 {{< /caution >}}
 
         ssh-keygen -b 4096
