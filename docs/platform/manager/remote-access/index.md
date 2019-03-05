@@ -153,7 +153,7 @@ The Cloud Manager allows you to add private IP addresses for fast and secure con
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link in the sidebar.
-3.  Select a Linode. The Linode's deetail page appears.
+3.  Select a Linode. The Linode's detail page appears.
 4.  Click the **Networking** tab.
 5.  Select the **Add Private IPv4** link, as shown below.
 
