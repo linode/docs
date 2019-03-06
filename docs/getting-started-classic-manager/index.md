@@ -13,6 +13,7 @@ published: 2009-07-19
 title: Getting Started with Linode
 show_on_rss_feed: false
 hiddenguide: true
+cloud_manager_link: getting-started/
 ---
 
 ![Getting Started with Linode](getting-started.jpg "Getting Started with Linode")
