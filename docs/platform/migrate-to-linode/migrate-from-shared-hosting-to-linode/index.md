@@ -1,5 +1,4 @@
 ---
-deprecated: true
 author:
   name: Linode
   email: docs@linode.com
@@ -7,7 +6,7 @@ description: 'Migrate your website from a shared host to a Linode cloud server r
 keywords: ["shared hosting", "migrate", "website migration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['migrate-from-shared/','migrate-to-linode/migrate-from-shared-hosting/','migrate-to-linode/migrate-from-shared-hosting-to-linode/']
-modified: 2017-09-19
+modified: 2019-03-06
 modified_by:
   name: Linode
 published: 2013-10-18
@@ -25,14 +24,14 @@ The biggest change between shared hosting and Linode's cloud is that with Linode
 This guide makes three assumptions:
 
 *   You already have a Linode account.
-*   You know how to sign in to the [Linode Manager](https://manager.linode.com/).
+*   You know how to sign in to the [Linode Cloud Manager](https://cloud.linode.com/).
 *   You have a basic knowledge of how to use SSH.
 
 {{< note >}}
 Because this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you're unsure whether or not your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.
 {{< /note >}}
 
-See our [Getting Started](/docs/getting-started/) guide for more information on signing up and setting up your Linode.
+See our [Getting Started](/docs/getting-started-new-manager/) guide for more information on signing up and setting up your Linode.
 
 ## Prepare Your Domain Name to Move
 
@@ -50,7 +49,7 @@ When changing servers, however, you want a shorter TTL to make sure that when yo
 
 4.  Adjust your TTL to its shortest setting. For example, 300 seconds is equal to 5 minutes, so that's a good choice if it's available.
 
-5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager-overview/#set-the-time-to-live-or-ttl).
+5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/platform/manager/dns-manager/#set-the-time-to-live-or-ttl).
 
 ## Back Up Your Website
 
@@ -87,7 +86,7 @@ The next step is to build the software environment needed for your site to funct
 *  **MySQL:** A database server.
 *  **PHP:** A software language that allows you to create and configure dynamic website content.
 
-To install a LAMP stack on Ubuntu, follow the steps in our [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) guide.
+To install a LAMP stack on Ubuntu, follow the steps in our [How to Install a LAMP Stack on Ubuntu 18.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) guide.
 
 ## Get Your Website Live
 
@@ -121,7 +120,7 @@ A Linode can run both your web server and an [email server](/docs/email/running-
 
 The last step in your migration is to point your domain at your Linode's IP address. If you decided to shorten your TTL, make sure you've waited out the original time period.
 
-1.  Follow our instructions on [adding a domain zone](/docs/networking/dns/dns-manager-overview/#add-a-domain-zone) to create DNS records at Linode for your domain.
+1.  Follow our instructions on [adding a domain zone](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) to create DNS records at Linode for your domain.
 
 2.  If you use a third-party email service, edit the default MX records.
 
