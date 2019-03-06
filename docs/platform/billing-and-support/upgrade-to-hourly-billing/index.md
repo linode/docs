@@ -51,4 +51,4 @@ You will no longer receive the annual discount when you switch to Hourly billing
 
 [![Please note the annual discounts will go away when converting to Hourly.](convert-to-hourly-annual-small.png)](convert-to-hourly-annual.png)
 
-You have until March 31st to stay on the old billing system. After that your account will be automatically converted.
+On March 31st all prepaid accounts will be automatically coverted to to Hourly billing. 
