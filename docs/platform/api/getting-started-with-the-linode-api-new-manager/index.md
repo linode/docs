@@ -44,15 +44,15 @@ If you are building an application which will need to authenticate multiple user
 
 1.  Log in to the Cloud Manager.
 
-2.  Click on your username at the top of the screen and select **My Profile**.
+1.  Click on your username at the top of the screen and select **My Profile**.
 
     ![Select My Profile.](get-started-with-linode-api-select-my-profile.png "Select My Profile.")
 
-3.  Select the **API Tokens** tab:
+1.  Select the **API Tokens** tab:
 
     ![Select API Tokens tab in My Profile Settings.](get-started-with-linode-api-my-profile-small.png "Select the API Tokens tab in My Profile Settings.")
 
-4.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have.
+1.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have.
 
     ![Add a Personal Access Token](get-started-with-linode-api-new-token.png "Add a Personal Access Token")
 

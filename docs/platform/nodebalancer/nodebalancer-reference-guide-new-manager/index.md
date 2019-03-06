@@ -22,7 +22,7 @@ This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting S
 
 Click the NodeBalancers link in the sidebar, and then **Add a NodeBalancer**. You must choose the same location as your back-end Linodes for a given deployment.
 
-[![NodeBalancer page in Linode Manager](nodebalancer-rg-add-a-nodebalancer-small.png "NodeBalancer page in Linode Manager")](nodebalancer-rg-add-a-nodebalancer.png)
+[![NodeBalancer page in Linode Cloud Manager](nodebalancer-rg-add-a-nodebalancer-small.png "NodeBalancer page in Linode Cloud Manager")](nodebalancer-rg-add-a-nodebalancer.png)
 
 ## NodeBalancer Settings
 
@@ -30,7 +30,7 @@ Click the NodeBalancers link in the sidebar, and then **Add a NodeBalancer**. Yo
 
 1.  Click on the **Settings** tab. Here you may adjust the NodeBalancer's display label, along with the 'Client Connection Throttle.' The connection throttle limits the number of  subsequent new connections from the same client IP address.
 
-    ![NodeBalancer Settings page in Linode Manager](nodebalancer-rg-nodebalancer-settings.png "NodeBalancer Settings page in Linode Manager")
+    ![NodeBalancer Settings page in Linode Cloud Manager](nodebalancer-rg-nodebalancer-settings.png "NodeBalancer Settings page in Linode Cloud Manager")
 
 ## Configuration
 
@@ -38,7 +38,7 @@ Click the NodeBalancers link in the sidebar, and then **Add a NodeBalancer**. Yo
 
 1.  Click on the **Configurations** tab:
 
-    [![NodeBalancer Configuration in Linode Manager](nodebalancer-rg-nodebalancer-config1-small.png "NodeBalancer Configuration in Linode Manager")](nodebalancer-rg-nodebalancer-config1.png)
+    [![NodeBalancer Configuration in Linode Cloud Manager](nodebalancer-rg-nodebalancer-config1-small.png "NodeBalancer Configuration in Linode Cloud Manager")](nodebalancer-rg-nodebalancer-config1.png)
 
 Each NodeBalancer config adds another port that the NodeBalancer will listen on. For instance, if you wish to balance both port 80 and 81, you'll need to add two configuration profiles to your NodeBalancer.
 
@@ -116,9 +116,9 @@ When servicing an incoming request, if a backend node fails to connect, times ou
 
 Passive health checks can be disabled if you choose:
 
-1.  From the Linode Manager, click the **NodeBalancers** page.
-2.  Select your NodeBalancer.
-3.  Under the **Configurations** tab, scroll down and toggle the **Passive Checks** box under **Passive Checks**, then click **Save**.
+1.  From the Linode Cloud Manager, click the **NodeBalancers** page.
+1.  Select your NodeBalancer.
+1.  Under the **Configurations** tab, scroll down and toggle the **Passive Checks** box under **Passive Checks**, then click **Save**.
 
 ### Active
 
@@ -136,7 +136,7 @@ Three different Health Check Types exist:
 
 ## Nodes
 
-[![NodeBalancer Configuration in Linode Manager](nodebalancer-rg-nodebalancer-config2-small.png "NodeBalancer Configuration in Linode Manager")](nodebalancer-rg-nodebalancer-config2.png)
+[![NodeBalancer Configuration in Linode Cloud Manager](nodebalancer-rg-nodebalancer-config2-small.png "NodeBalancer Configuration in Linode Cloud Manager")](nodebalancer-rg-nodebalancer-config2.png)
 
 NodeBalancers work over the private network. Backend nodes must have a private IP configured via [static networking](/docs/networking/configuring-static-ip-interfaces).
 

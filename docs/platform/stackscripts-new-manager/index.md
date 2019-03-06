@@ -22,21 +22,21 @@ hiddenguide: true
 
 ## Introduction
 
-StackScripts are usually Bash scripts, stored in the Linode Manager, and can be accessed when you deploy a Linode. During the first boot job of the newly created disks, the StackScript will run, using any variable you may have added, and perform the scripted commands.
+StackScripts are usually Bash scripts, stored in the Linode Cloud Manager, and can be accessed when you deploy a Linode. During the first boot job of the newly created disks, the StackScript will run, using any variable you may have added, and perform the scripted commands.
 
 ## Deploying from a StackScript
 
 1.  Start by logging in to the [Linode Cloud Manager](https://cloud.linode.com).
 
-2.  Click the **Create** button and selecting **Linode**.
+1.  Click the **Create** button and selecting **Linode**.
 
     ![Create a new Linode](stackscripts-create-a-linode.png "Create a new Linode")
 
-3.  Navigate to the **Create from StackScript** tab.
+1.  Navigate to the **Create from StackScript** tab.
 
     ![Navigate to Create from StackScript.](stackscripts-navigate-to-create-from-stackscript.png "Navigate to Create from Stackscript.")
 
-4.  At this point you have the option of using a a Linode StackScript, Community StackScript, or one of your own.
+1.  At this point you have the option of using a a Linode StackScript, Community StackScript, or one of your own.
 
     [![StackScript selection options.](stackscripts-selection-screen-small.png "StackScript selection options.")](stackscripts-selection-screen.png)
 
@@ -54,11 +54,11 @@ There is no default logging when using a StackScript. Output is sent to the cons
 
     [![A search for 'wordpress.'](stackscripts-search-wordpress-small.png "A search for 'wordpress.'")](stackscripts-search-wordpress.png)
 
-2.  For this example we'll select the first search result. This brings up a panel underneath the "Select StackScript" panel where we can define the variables that will go into the StackScript. Each StackScript has a different set of variables that are used when the script is run. The WordPress StackScript requires a root password for MySQL and a database name, along with the information required for deploying any new Linode.
+1.  For this example we'll select the first search result. This brings up a panel underneath the "Select StackScript" panel where we can define the variables that will go into the StackScript. Each StackScript has a different set of variables that are used when the script is run. The WordPress StackScript requires a root password for MySQL and a database name, along with the information required for deploying any new Linode.
 
     ![StackScript options](stackscripts-wordpress-options.png "Stackscript options.")
 
-3.  Once you've adjusted the options, click **Create**. You will be returned to the Linodes page, and your bell notifications will inform you when your Linode has been created.
+1.  Once you've adjusted the options, click **Create**. You will be returned to the Linodes page, and your bell notifications will inform you when your Linode has been created.
 
     ![Bell notification of new Linode creation.](stackscripts-linode-created-bell.png "Bell notification of a new Linode creation.")
 
@@ -71,7 +71,7 @@ There is no default logging when using a StackScript. Output is sent to the cons
 
     [![Create new StackScripts button.](stackscripts-create-stackscript-small.png "Create New StackScripts button.")](stackscripts-create-stackscript.png)
 
-2.  Fill in the various sections:
+1.  Fill in the various sections:
 
     -   *Label* - How the StackScript will be identified.
     -   *Description* - a brief explanation of what it does.
@@ -115,7 +115,7 @@ echo $IPADDR $FQDN $HOSTNAME >> /etc/hosts
 
 1.  Once you've written the StackScript press **Save**. Remember, you can always edit the script later if you want to make adjustments.
 
-2.  Now you will be able to see that your new StackScript is available. It can be deployed following the same procedure as step 2 of [Using a Community StackScript](#using-a-community-stackscript)
+1.  Now you will be able to see that your new StackScript is available. It can be deployed following the same procedure as step 2 of [Using a Community StackScript](#using-a-community-stackscript)
 
     [![Our new StackScript is available.](stackscripts-new-stackscript-created-small.png "Our new StackScript is available.")](stackscripts-new-stackscript-created.png)
 

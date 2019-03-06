@@ -36,7 +36,7 @@ From there you'll set up a Linux distribution, boot your Linode, and perform som
 
 If you haven't already signed up for a Linode account, start here.
 
-1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
+1.  Create a new account at the [signup page](https://login.linode.com/signup).
 
 1.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 
@@ -95,7 +95,7 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
 
 Your Linode has a unique IP address that identifies it to other devices and users on the internet.
 
-1.  Click the **Linodes** sidebar link in the [Cloud Manager](https://cloud.linode.com/).
+1.  Click the **Linodes** link in the sidebar of the [Cloud Manager](https://cloud.linode.com/).
 
 1.  Find your Linode, click on it's name and navigate to the *Networking* tab.
 
@@ -335,4 +335,4 @@ Thu Feb 16 12:17:52 EST 2018
 Now that you've learned the basics of using the Cloud Manager and working with your Linode, secure it and your Linode account from unauthorized access. See the following guides to begin:
 
 * [Securing Your Server](/docs/security/securing-your-server/)
-* [Linode Manager Security Controls](/docs/security/linode-manager-security-controls/)
+* [Linode Manager Security Controls](/docs/security/linode-manager-security-controls-new-manager/)
