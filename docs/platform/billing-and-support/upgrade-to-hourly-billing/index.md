@@ -13,7 +13,7 @@ published: 2017-02-15
 title: 'Upgrade to Hourly Billing'
 ---
 
-This guide will show you how to upgrade your prepaid Linode account to use Hourly billing. For more information on Hourly billing, see our [Billing Guide](/docs/platform/billing-and-support/billing-and-payments/).
+This guide will show you how to upgrade your legacy prepaid billing Linode account to use Hourly billing. For more information on Hourly billing, see our [Billing Guide](/docs/platform/billing-and-support/billing-and-payments/).
 
 ## Upgrading
 
@@ -33,7 +33,6 @@ To upgrade to the Hourly billing system, follow these steps:
 
     {{< note >}}
 - Prepaid discounts will not carry over to the new system
-    - Those who remain on the prepaid billing system will not experience any changes, however newer plans and services may not be available on prepaid accounts.
 {{< /note >}}
 
 ## Possible Notices
@@ -52,4 +51,4 @@ You will no longer receive the annual discount when you switch to Hourly billing
 
 [![Please note the annual discounts will go away when converting to Hourly.](convert-to-hourly-annual-small.png)](convert-to-hourly-annual.png)
 
-If you want to stay on the old billing system, just don't click the final button.
+On March 31st all prepaid accounts will be automatically converted to to Hourly billing. 
