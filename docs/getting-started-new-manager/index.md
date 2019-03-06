@@ -36,7 +36,7 @@ From there you'll set up a Linux distribution, boot your Linode, and perform som
 
 If you haven't already signed up for a Linode account, start here.
 
-1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
+1.  Create a new account at the [signup page](https://login.linode.com/signup).
 
 1.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 
@@ -95,9 +95,9 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
 
 Your Linode has a unique IP address that identifies it to other devices and users on the internet.
 
-1.  Click the **Linodes** menu item in the [Cloud Manager's](https://cloud.linode.com/) left hand navigation.
+1.  Click the **Linodes** link in the sidebar of the [Cloud Manager](https://cloud.linode.com/).
 
-1.  Find your Linode, click on it's name and navigate to *Networking*.
+1.  Find your Linode, click on it's name and navigate to the *Networking* tab.
 
 1.  Your IPv4 and IPv6 addresses appear under the *IPv4* and *IPv6* sections.
 

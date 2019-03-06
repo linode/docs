@@ -48,11 +48,11 @@ Pricing is per Linode and varies depending upon your Linode's plan:
 
 ## Enable the Backup Service
 
-Use the Linode Manager to enable the Backup Service on a Linode. Here's how:
+Use the Linode Cloud Manager to enable the Backup Service on a Linode. Here's how:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
-1.  From the **Linodes** screen, select the Linode you want to back up.
+1.  From the **Linodes** page, select the Linode you want to back up.
 
 1.  Click the **Backups** tab.
 
@@ -64,9 +64,9 @@ The Linode Backup Service is now enabled for the selected Linode.
 
 ### Auto Enroll New Linodes in the Backup Service
 
-You can automatically enroll all new Linodes in the Backup Service. To do so, navigate to the **Account** page in the left-hand navigation, then select the **Global Settings** tab.
+You can automatically enroll all new Linodes in the Backup Service. To do so, click the **Account** link in the sidebar, then select the **Global Settings** tab.
 
-Under **Backup Auto Enrollment** click on the toggle button to enable backups on all new Linodes.
+In the **Backup Auto Enrollment** panel, click on the switch to enable backups on all new Linodes.
 
 ![Auto enroll all new Linodes in the Backup Service by navigating to the Global Settings tab in the Account settings and enabling Backups.](backups-auto-enroll.png)
 
@@ -76,7 +76,7 @@ Enabling this setting does not retroactively enroll any previously created Linod
 
 ## Manage Backups
 
-You'll manage your backups with a simple web interface in the Linode Manager. There's no software to install, and there are no commands to run. Just log in to the Linode Manager, navigate to the **Linodes** screen, select a Linode, and then click the **Backups** tab. The backups interface is shown below.
+You'll manage your backups with a simple web interface in the Linode Cloud Manager. There's no software to install, and there are no commands to run. Just log in to the Linode Cloud Manager, navigate to the **Linodes** page by clicking on the link in the sidebar, select a Linode, and then click the **Backups** tab. The backups interface is shown below.
 
 ![The Linode Backup Service interface](backups-menu.png)
 
@@ -129,7 +129,7 @@ You can make a manual backup of your Linode by taking a *snapshot*. Here's how:
 Taking a new snapshot will overwrite a previously saved snapshot.
 {{< /note >}}
 
-The Linode Backup Service initiates the manual snapshot. Creating the manual snapshot can take several minutes, depending on the size of your Linode and the amount of data you have stored on it. Other Linode Manager jobs for this Linode will not run until the snapshot job has been completed.
+The Linode Backup Service initiates the manual snapshot. Creating the manual snapshot can take several minutes, depending on the size of your Linode and the amount of data you have stored on it. Other Linode Cloud Manager jobs for this Linode will not run until the snapshot job has been completed.
 
 ## Restore from a Backup
 
@@ -149,7 +149,7 @@ To restore a backup to a different data center, first restore to a Linode in the
 
 This section covers how to restore a backup to a new Linode that does not have any disks deployed to it. The new Linode will be located in the same data center. If you instead wish to restore your backup to an existing Linode, see the [next section](#restore-to-an-existing-linode).
 
-1.  From **Linodes** page, select the Linode whose backups you intend to restore, and then click on the **Backups** tab. Select the ellipsis (three dots) next to the backup you would like to restore, and click **Deploy New Linode**.
+1.  From the **Linodes** page, select the Linode whose backups you intend to restore, and then click on the **Backups** tab. Select the **more options ellipsis** next to the backup you would like to restore, and click **Deploy New Linode**.
 
     ![Click on the ellipsis menu icon to restore to a new Linode.](backups-restore-new-linode.png)
 
@@ -165,9 +165,9 @@ You can restore a backup to any Linode located in the same data center, even if 
 If you are attempting to restore a disk to the same Linode the backup was created from, the restoration process will not delete the original disk for you. Manually delete the original disk to make room for the backup, if desired.
 {{< /note >}}
 
-1.  From **Linodes** page, select the Linode whose backups you intend to restore, and then click on the **Backups** tab. Observe the size of the backup you would like to restore, which is visible in the **Space Required** column. You will need at least this amount of unallocated disk space on the target Linode to complete the restore.
+1.  From the **Linodes** page, select the Linode whose backups you intend to restore, and then click on the **Backups** tab. Observe the size of the backup you would like to restore, which is visible in the **Space Required** column. You will need at least this amount of unallocated disk space on the target Linode to complete the restore.
 
-1.  Select the ellipsis (three dots) next to the backup you would like to restore, and click **Restore to Existing Linode**.
+1.  Select the **more options ellipsis** next to the backup you would like to restore, and click **Restore to Existing Linode**.
 
     ![Click on the ellipsis menu icon to restore to an existing Linode.](backups-restore-existing-linode.png)
 
@@ -191,9 +191,9 @@ In some cases, you will not be able to shrink your disks enough to fit the resto
 
 After the backup has been restored, the disks and configuration profiles will be available to the destination Linode you selected. Select the restored configuration profile and reboot your Linode to start up from the restored disks:
 
-1.  From the **Linodes** page, select the Linode that you restored the backup to. Navigate to the **Settings** tab and open the **Advanced Configurations** section.
+1.  From the **Linodes** page, select the Linode that you restored the backup to. Navigate to the **Settings** tab and open the **Advanced Configurations** panel.
 
-1.  Select the ellipsis icon (three dots) next to the configuration profile that was restored and select **Boot This Config**.
+1.  Select the **more options ellipsis** next to the configuration profile that was restored and select **Boot This Config**.
 
     ![Navigate to the Advanced Configurations section of your Linode's Settings tab.](backups-boot-this-config.png)
 
@@ -201,7 +201,7 @@ The Linode will start from the backup disks. Monitor the notifications area for 
 
 ## Cancel the Backup Service
 
-You can cancel the Backup Service at any time. From your Linode's dashboard, choose the **Backups** tab and click the **Cancel Backups** link at the bottom of the page. Cancelling the service will remove your saved backups from the Linode platform.
+You can cancel the Backup Service at any time. From your Linode's details page, choose the **Backups** tab and click the **Cancel Backups** link at the bottom of the page. Cancelling the service will remove your saved backups from the Linode platform.
 
 ## Limitations
 
