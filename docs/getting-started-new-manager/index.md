@@ -36,9 +36,9 @@ From there you'll set up a Linux distribution, boot your Linode, and perform som
 
 If you haven't already signed up for a Linode account, start here.
 
-1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
+1.  Create a new account at the [Sign Up page](https://login.linode.com/signup).
 
-1.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
+2.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 
 ## Create a Linode
 
