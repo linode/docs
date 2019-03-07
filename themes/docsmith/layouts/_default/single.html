@@ -26,6 +26,7 @@
             {{ .Content }}
             {{ partial "more" . }}
             {{ partial "community_link" }}
+            {{ partial "classic_manager_link" . }}
             {{ if and (getenv "HUGO_ENV") (ne .Params.comments false) }}
             {{ partial "disqus" . }}
             {{ end }}
