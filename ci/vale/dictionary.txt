@@ -1186,6 +1186,7 @@ shortname
 shoutcast
 sidekiq
 sievers
+signup
 sintra
 sitename
 slackpkg

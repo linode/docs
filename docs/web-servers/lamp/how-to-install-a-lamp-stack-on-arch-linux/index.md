@@ -19,8 +19,6 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-# Install and Configure LAMP (Linux, Apache, MySQL, PHP) on an Arch Linux Server
-
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack an Arch Linux server.
 
 Since Arch does not come in specific versions, this guide is up-to-date as of the December 2015 Arch update.
@@ -140,7 +138,7 @@ Should any additional changes be made to a configuration file restart Apache:
 sudo systemctl restart httpd.service
 {{< /note >}}
 
-## MySQL
+## MariaDB
 
 ### Install and Configure
 
@@ -154,18 +152,18 @@ By default, Arch Linux provides MariaDB as a relational database solution. Maria
 
         sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
-3.  Start MySQL and set it to run at boot:
+3.  Start MariaDB and set it to run at boot:
 
         sudo systemctl start mysqld.service
         sudo systemctl enable mysqld.service
 
-4.  Run `mysql_secure_installation`, a program that helps secure MySQL. `mysql_secure_installation` gives you the option to set your root password, disable root logins from outside localhost, remove anonymous user accounts, remove the test database and then reload the privilege tables:
+4.  Run `mysql_secure_installation`, a program that helps secure MySQL and MariaDB. `mysql_secure_installation` gives you the option to set your root password, disable root logins from outside localhost, remove anonymous user accounts, remove the test database and then reload the privilege tables:
 
         mysql_secure_installation
 
 ### Create a Database
 
-1.  Log into MySQL:
+1.  Log into MariaDB:
 
         mysql -u root -p
 
@@ -182,7 +180,7 @@ By default, Arch Linux provides MariaDB as a relational database solution. Maria
 
         quit
 
-With Apache and MySQL installed, you are now ready to move on to installing PHP to provide scripting support for your web application.
+With Apache and MariaDB installed, you are now ready to move on to installing PHP to provide scripting support for your web application.
 
 ## PHP
 

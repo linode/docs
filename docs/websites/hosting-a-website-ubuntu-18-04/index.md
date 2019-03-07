@@ -330,62 +330,6 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 Remember to remove the entries for the name-based virtual hosts from your `hosts` file when you're ready to test the DNS records.
 {{< /caution >}}
 
-## Add DNS Records
+## Next Steps
 
-Now you need to point your domain name(s) at your Linode. This process can take a while, so please allow up to 24 hours for DNS changes to be reflected throughout the Internet.
-
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-
-1.  Click the **DNS Manager** tab.
-
-1.  Select the **Add a domain zone** link. The form shown below appears:
-
-    [![Create a domain zone](910-hosting-1-small.png)](909-hosting-1.png)
-
-1.  In the **Domain** field, enter your website's domain name in the **Domain** field.
-
-1.  In the **SOA Email** field, enter the administrative contact email address for your domain.
-
-1.  Click **Yes, insert a few records to get me started**.
-
-1.  Click **Add a Master Zone**. Several DNS records will be created for your domain, as shown below:
-
-    [![The DNS records created for the domain](911-hosting-2-small.png)](912-hosting-2.png)
-
-1. Through your domain registrar (where you bought the domain), make sure that your domain name is set to use Linode's DNS. Use your domain name registrar's interface to set the name servers for your domain to the following:
-
-    - `ns1.linode.com`
-    - `ns2.linode.com`
-    - `ns3.linode.com`
-    - `ns4.linode.com`
-    - `ns5.linode.com`
-
-1.  Repeat steps 1-8 for each name-based virtual host you created earlier.
-
-You've now added DNS records for your website(s). Remember, DNS changes can take up to 48 hours to propagate through the Internet. Be patient! Once the DNS changes are completed, you will be able to access your website by typing the domain name in to your browser's address bar.
-
-## Setting Reverse DNS
-
-You're almost finished! The last step is setting reverse DNS for your domain name. Visit our guide to [learn more about reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
-
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-
-1.  Click the **Linodes** tab.
-
-1.  Select your Linode.
-
-1.  Click the **Remote Access** tab.
-
-1.  Select the **Reverse DNS** link, as shown below.
-
-    [![Select Reverse DNS link](951-hosting-3-1.png)](951-hosting-3-1.png)
-
-1.  Enter the domain in the **Hostname** field, as shown below.
-
-    [![Enter domain in Hostname field](914-hosting-4-small.png)](915-hosting-4.png)
-
-1.  Click **Look up**. A message appears, indicating that a match has been found.
-
-1.  Click **Yes**.
-
-You have set up reverse DNS for your domain name.
+Now that you have tested your website by visiting its IP address, you can create DNS records so that you can access the website via a domain name. Read our [DNS Manager guide](/docs/platform/manager/dns-manager-new-manager/) for more information on how to add DNS records for your website. After you have a domain name set up, you should also add reverse DNS. Check out our [Reverse DNS guide](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for more information on how to set up reverse DNS.

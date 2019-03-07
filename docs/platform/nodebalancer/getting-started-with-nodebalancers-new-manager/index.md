@@ -46,15 +46,15 @@ Additionally, NodeBalancer will watch each backend for failure, rerouting users 
 
 Sticking with the simple web application example above, the backend Linode currently powering it must have a private IP address. If it does not, add one now -- this will also be a good opportunity to do the same for the database server, since private network traffic is unbilled. Reboot if necessary, and configure your web application to respond on the private IP address, if it is not already.
 
-1.  Visit the NodeBalancers page in the Linode Manager and select **Add a NodeBalancer**.
+1.  Visit the NodeBalancers page in the Linode Cloud Manager and select **Add a NodeBalancer**.
 
     [![The NodeBalancer page.](nodebalancers-tab-small.png "The NodeBalancers page")](nodebalancers-tab.png)
 
-2.  For the example web application, only one NodeBalancer is needed. Add one in the same data center that your backend Linodes are located in.
+1.  For the example web application, only one NodeBalancer is needed. Add one in the same data center that your backend Linodes are located in.
 
     [![The NodeBalancer creation screen.](nodebalancers-create-choose-region-small.png "The NodeBalancer creation screen.")](nodebalancers-create-choose-region.png)
 
-3.  A NodeBalancer is configured using ports, and let's say our example web application uses only one: port 80 for regular HTTP traffic.
+1.  A NodeBalancer is configured using ports, and let's say our example web application uses only one: port 80 for regular HTTP traffic.
 
     ![Adding a port configuration to a NodeBalancer.](nodebalancers-settings.png "Adding a port configuration to a NodeBalancer")
 
@@ -66,9 +66,9 @@ Sticking with the simple web application example above, the backend Linode curre
 
     If you select the HTTPS protocol, two new fields will appear where you can add your SSL certificate, chained certificates (if applicable) and a private key (which must not have passphrase protection).
 
-    Every ten seconds, NodeBalancer will request the root of the web application and look for a valid response code. With our example setup, there is only one backend node (which we will add shortly); if the backend goes down, NodeBalancer will serve a plain 503 Service Unavailable error page. This is more desirable than refusing connections or making browsers wait for a timeout.
+    Every ten seconds, the NodeBalancer will request the root of the web application and look for a valid response code. With our example setup, there is only one backend node (which we will add shortly); if the backend goes down, the NodeBalancer will serve a plain 503 Service Unavailable error page. This is more desirable than refusing connections or making browsers wait for a timeout.
 
-4.  Now we must add the single backend node to the NodeBalancer's configuration. Point this at the private IP address of your web server Linode.
+1.  Now we must add the single backend node to the NodeBalancer's configuration. Point this at the private IP address of your web server Linode.
 
     [![Adding a backend node to a NodeBalancer.](nodebalancers-backend-nodes-small.png "Adding a backend node to a NodeBalancer")](nodebalancers-backend-nodes.png)
 
@@ -78,7 +78,7 @@ Sticking with the simple web application example above, the backend Linode curre
 
     If the backend status reports **0 up / 1 down**, check to make sure that your web application is configured to respond on the Linode's private IP address.  You do this by adding the private IP address to your /etc/hosts file on your Linode and then reboot your Linode. There might be a virtual host mismatch as well -- check the notes in the next section.
 
-5.  Now that the backend is up, go directly to your NodeBalancer's IP address in a browser. You should see your web application as the NodeBalancer proxies the traffic through.
+1.  Now that the backend is up, go directly to your NodeBalancer's IP address in a browser. You should see your web application as the NodeBalancer proxies the traffic through.
 
     [![Viewing the NodeBalancer-driven web site in a browser.](nodebalancers-hello-world.png)](nodebalancers-hello-world.png)
 
@@ -94,13 +94,13 @@ Health checks are transmitted with a Host header (in HTTP/1.0 mode).
 
 ## Putting the NodeBalancer in Charge
 
-Your NodeBalancer is now working and is able to pass traffic to your web application. It is important to note at this point that configuring the NodeBalancer has not impacted your application's normal operations at all -- you can test NodeBalancer without your users ever knowing.
+Your NodeBalancer is now working and is able to pass traffic to your web application. It is important to note at this point that configuring the NodeBalancer has not impacted your application's normal operations at all -- you can test the NodeBalancer without your users ever knowing.
 
 Once you are satisfied that NodeBalancer is working normally, you can switch your web application's traffic over to it through DNS.
 
 1.  On the NodeBalancer's overview, you can see its IP address. Take note of the IP address, to use in the A record for your domain.
 
-2.  Edit or create an A record for your website's domain name, pointing to your NodeBalancer's IP address.
+1.  Edit or create an A record for your website's domain name, pointing to your NodeBalancer's IP address.
 
     [![Adding an A Record.](nodebalancers-add-a-name-small.png "Adding an A Record")](nodebalancers-add-a-name.png)
 

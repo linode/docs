@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use the Domains section of the Linode Manger to Direct Domains to Your Linode.'
-keywords: ["dns manager", "linode dns", "linode manager dns", "dns configuration", "ttl", "domain zones", "domain name"]
+keywords: ["dns manager", "linode dns", "Linode Cloud Manager dns", "dns configuration", "ttl", "domain zones", "domain name"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/', 'networking/dns/dns-manager/','networking/dns/dns-manager-overview/']
 modified: 2018-08-24
@@ -16,14 +16,14 @@ hiddenguide: true
 
 <!-- ![DNS Manager Overview](dns-manager-overview.png) -->
 
-The *Domains* section of the Linode Manager is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the Domains section and basic domain zone setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide.
+The *Domains* section of the Linode Cloud Manager is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the Domains section and basic domain zone setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide.
 
 ## Getting Started
 
 The Domain Name System (DNS) attaches human-readable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`. This global system allows users to remember the names of websites instead of their numeric IP addresses.
 
 {{< note >}}
-All steps within this guide are completed within the **[Domains](https://cloud.linode.com/domains)** page of your Linode Manager.
+All steps within this guide are completed within the **[Domains](https://cloud.linode.com/domains)** page of your Linode Cloud Manager.
 {{< /note >}}
 
 ## DNS Set-Up Checklist
@@ -31,10 +31,10 @@ All steps within this guide are completed within the **[Domains](https://cloud.l
 DNS records are only actively hosted on accounts with at least one Linode. When setting up a domain name on your Linode, make sure you perform the following steps:
 
 1.  Register (purchase) a domain name if you haven't already.
-2.  Set your domain name to [use Linode's name servers](#use-linode-s-name-servers-with-your-domain). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
-3.  Use the DNS Manager to [add a domain zone](#add-a-domain-zone), and then start [adding some basic DNS records](#add-records).
-4.  [Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
-5.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/docs/networking/dns/common-dns-configurations/).
+1.  Set your domain name to [use Linode's name servers](#use-linode-s-name-servers-with-your-domain). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
+1.  Use the DNS Manager to [add a domain zone](#add-a-domain-zone), and then start [adding some basic DNS records](#add-records).
+1.  [Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
+1.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/docs/networking/dns/common-dns-configurations/).
 
 ## Use Linode's Name Servers with Your Domain
 
@@ -50,16 +50,16 @@ After you purchase a domain, log in to your domain registrar's control panel and
 DNS changes can take up to 24 hours to propagate throughout the internet, although the changes are usually visible within several hours.
 {{< /note >}}
 
-## The DNS Manager
+## The Domains Page
 
-Log in to the [Linode Manager](https://manager.linode.com/) and select the **Domains** link. It should resemble this:
+Log in to the [Cloud Manager](https://cloud.linode.com/) and select the **Domains** link from the sidebar. It should resemble this:
 
 ![The DNS Manger](domain-manager.png "The DNS Manager")
 
 1.  All of your domain zones are listed here. A *domain zone*, synonymous with the term "domain", is a collection of DNS records for a single domain name. Click the name of a domain zone to add or edit DNS records within that zone.
-2.  If you have a zone that can be exported from a server or another hosting provider, click **Import a Zone** to import it.
-3.  Click **Add a Domain** to create a new domain zone.
-4.  Use the links in the menu to the right of the domain zone link to edit DNS records within a zone, to check or delete a zone, to view a zone's file, or select **Clone** to duplicate an existing zone.
+1.  If you have a zone that can be exported from a server or another hosting provider, click **Import a Zone** to import it.
+1.  Click **Add a Domain** to create a new domain zone.
+1.  Use the links in the menu to the right of the domain zone link to edit DNS records within a zone, to check or delete a zone, to view a zone's file, or select **Clone** to duplicate an existing zone.
 
 ## Domain Zones
 
@@ -67,7 +67,7 @@ Before you can add any DNS records, you must create a domain zone. Think of a do
 
 ### Add a Domain Zone
 
-If you're new to Linode, or if you've just purchased a new domain name, the first step is to add a new domain zone in the DNS Manager. <!-- If you don't know what records to add, the DNS Manager can insert some basic records when you create the new domain zone. -->
+If you're new to Linode, or if you've just purchased a new domain name, the first step is to add a new domain zone in the Domains page. <!-- If you don't know what records to add, the DNS Manager can insert some basic records when you create the new domain zone. -->
 
 <!--
 This video runs through the process of adding a new domain zone:
@@ -75,11 +75,11 @@ This video runs through the process of adding a new domain zone:
 {{< youtube -GHW8aPsyPI >}}
 -->
 
-1.  From the DNS Manager tab, select **Add a Domain**:
+1.  From the **Domains** page, select **Add a Domain**:
 
     ![This page lets you add a domain zone.](domain-add-a-domain.png "This page let's you add a domain zone.")
 
-2.  If you want to add a *slave zone* instead of a master zone, click the **Slave** radio button.
+1.  If you want to add a *slave zone* instead of a master zone, click the **Slave** radio button.
 
     {{< note >}}
 In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests from the following IP addresses:
@@ -96,9 +96,9 @@ In order for Linode's DNS servers to function as slaves, your DNS master server 
     2a01:7e00::a
 {{< /note >}}
 
-3.  Enter your domain name in the **Domain** field. An example is shown above.
-4.  Enter an administrator's email address in the **SOA Email** field.
-5.  Click **Create**.
+1.  Enter your domain name in the **Domain** field. An example is shown above.
+1.  Enter an administrator's email address in the **SOA Email Address** field.
+1.  Click **Create**.
 
 <!--
 1.  If you are unfamiliar with DNS, the DNS Manager can automatically create some basic DNS records to get you started. To have it insert these records, select **Yes, insert a few records to get me started**, then select from the drop-down menu the Linode with which you want this domain zone associated.
@@ -113,11 +113,11 @@ If you selected the option to have the DNS Manager insert basic DNS records, tho
 
 When you first create a domain zone, you'll need to add some DNS records. <!-- The DNS Manager can create some basic records to get you started when you create your domain zone, --> This section explains how to add your own records.
 
-1.  Select a domain zone from within the Domains page. The following page appears:
+1.  Select a domain zone from within the Domains page. The domain's details page appears:
 
     [![This page has seven sections showing seven different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, and SRV. You can adjust the SOA record by clicking the "Settings" link in that section. The next six sections each have a corresponding link that lets you add a new record of that type. For example, to add an NS record, click the "Add a new NS record" link. There are similar links for MX, A, CNAME, TXT, and SRV records.](domain-domain-records-small.png)](domain-domain-records.png)
 
-2.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, then click **Add a [DNS] Record**.
+1.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, then click **Add a [DNS] Record**.
 
     ![This page allows you to create a new A/AAAA record.](domain-add-a-record.png)
 
@@ -125,29 +125,30 @@ When you first create a domain zone, you'll need to add some DNS records. <!-- T
 The exact form fields will vary depending on the type of DNS record you select.
 {{< /note >}}
 
-3.  Enter a hostname in the **Hostname** field.
+1.  Enter a hostname in the **Hostname** field.
 
-4.  Enter the IP address of your server in the **IP Address** field. See [this quick answer page](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) to find your Linode's IP address.
+1.  Enter the IP address of your server in the **IP Address** field. See [this quick answer page](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) to find your Linode's IP address.
 
-5.  Select a time interval from the **TTL** menu. *TTL* stands for *time to live*, and affects how long DNS records are cached by DNS resolvers before the resolver must query the authoritative name servers for new records.
+1.  Select a time interval from the **TTL** menu. *TTL* stands for *time to live*, and affects how long DNS records are cached by DNS resolvers before the resolver must query the authoritative name servers for new records.
 
-6.  Click **Save**. It can take up to 30 minutes for new DNS records to become active.
+1.  Click **Save**. It can take up to 30 minutes for new DNS records to become active.
 
 ### Edit Records
 
-You can also modify existing DNS records in the DNS Manager.
+You can also modify existing DNS records in the Domains page.
 
 1.  Select a domain zone. The DNS records for the selected domain zone will appear.
-2.  Next to the DNS record you would like to edit, select **Edit** from the menu.
+1.  Next to the DNS record you would like to edit, click on the **more options ellipsis**.
+1.  Select **Edit** from the menu.
 
     [![Select 'Edit' from the menu.](domain-edit-a-record-small.png "Select 'Edit' from the menu.")](domain-edit-a-record.png)
 
-3.  Edit the DNS record by modifying the existing values in the fields.
-4.  Click **Save**. It can take up to 30 minutes for the record to be updated.
+1.  Edit the DNS record by modifying the existing values in the fields.
+1.  Click **Save**. It can take up to 30 minutes for the record to be updated.
 
 ### Import Domain Zones with AXFR
 
-If you're migrating domains to Linode from another hosting provider and that provider allows zone transfers from its DNS server, it may be possible to import your existing domain zone and DNS records into the Linode Manager. If the import is successful, all of your existing DNS records will be available in the DNS Manager.
+If you're migrating domains to Linode from another hosting provider and that provider allows zone transfers from its DNS server, it may be possible to import your existing domain zone and DNS records into the Linode Cloud Manager. If the import is successful, all of your existing DNS records will be available in the Domains page.
 
 Here's how to import a zone file:
 
@@ -155,9 +156,9 @@ Here's how to import a zone file:
 
     ![This page lets you import a domain zone.](domain-import-a-zone.png)
 
-2.  Enter the domain name in the **Domain** field, as shown in the example above.
+1.  Enter the domain name in the **Domain** field, as shown in the example above.
 
-3.  Enter the name server in the **Remote Nameserver** field.
+1.  Enter the name server in the **Remote Nameserver** field.
 
     {{< note >}}
 The name server must allow zone transfers (AXFR) from:
@@ -168,7 +169,7 @@ The name server must allow zone transfers (AXFR) from:
     2600:3c00::5f
 {{< /note >}}
 
-4.  Click **Save**. The Linode Manager will connect to the remote name server and import your existing DNS records.
+1.  Click **Save**. The Linode Cloud Manager will connect to the remote name server and import your existing DNS records.
 
 ### Clone Domain Zones
 
@@ -178,11 +179,11 @@ Here's how to clone an existing zone:
 
 1.  From the menu of the zone you would like to clone, select **Clone**.
 
-2.  Enter the name of the new zone in the **New Domain** field.
+1.  Enter the name of the new zone in the **New Domain** field.
 
     ![Clone an existing domain zone](domain-clone-a-zone.png "Clone an existing domain zone.")
 
-3.  Click **Create**. The DNS records will then be copied from the existing zone to the new zone.
+1.  Click **Create**. The DNS records will then be copied from the existing zone to the new zone.
 
 ### Check Domain Zones
 
@@ -192,12 +193,12 @@ In order to check the status of your domain zone, from within the Domains sectio
 
 If you see a message stating that your zone looks good, then everything is working correctly. Otherwise, check that all of the DNS records in your domain zone are properly configured.
 
-
 ### View Domain Zones
 
-The DNS Manager allows you to view the contents of a domain zone file. This is especially useful should you need to import the zone to a different server, or if you wish to inspect the file.
+The Domains page allows you to view the contents of a domain zone file. This is especially useful should you need to import the zone to a different server, or if you wish to inspect the file.
 
-From the Domains section of your Linode Manager, select **Zone file** under the menu to the right of the chosen domain's name. An example of the file is provided below.
+1.  From the Domains page of the Cloud Manager, click the **more options ellipsis** next to the domain whose zone you would like to view.
+1.  Select **Zone File**.
 
 <!--
 [![This page shows a text-only dump of the DNS zone file for this domain.](1115-dns3.png)](1115-dns3.png)
@@ -207,11 +208,11 @@ From the Domains section of your Linode Manager, select **Zone file** under the 
 
 If one of your domain names has expired or if you want to start hosting it on another DNS provider, you should permanently remove the domain zone and all of its associated DNS records.
 
-Select **Remove** under the menu to the right of your chosen zone.
+1.  From the Domains page of the Cloud Manager, click the **more options ellipsis** next to the domain you'd like to remove.
+
+1.  Select **Remove** to permanently delete the zone, including all associated records. It can take up to 30 minutes for the changes to be removed.
 
 ![This menu lets you remove a DNS zone.](domain-remove-a-zone.png "This menu lets you remove a DNS zone.")
-
-Click **Remove** to permanently delete the zone, including all associated records. It can take up to 30 minutes for the changes to be removed.
 
 {{< caution >}}
 Once removed, you **MUST** delete the Linode nameserver entries from the domain at the registrar level. This is a very important step; if the entries are not removed, someone could use your domain without your permission.
@@ -225,7 +226,7 @@ To create a [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_rec
 
 The Domains section does not support addition of a subdomain on top of an existing subdomain in the same zone. For example, if you have `example.com` as a zone, with an A record for `subdomain.example.com`, you cannot create `another.subdomain.example.com` within that zone.
 
-Instead, [add](#add-a-domain-zone) the subdomain as a separate zone in the DNS Manager, and then create your additional subdomain as an A record. In the previous example, you would create a zone named `subdomain.example.com` with a record with hostname `another` inside of it.
+Instead, [add](#add-a-domain-zone) the subdomain as a separate zone in the Domains page, and then create your additional subdomain as an A record. In the previous example, you would create a zone named `subdomain.example.com` with a record with hostname `another` inside of it.
 
 To create a wildcard record on a subdomain (e.g. `*.subdomain.example.com`), create a new zone for the subdomain and then [add a wildcard record](#wildcards) to it.
 
@@ -252,10 +253,10 @@ TTL is always written out in seconds, so 24 hours = 86400 seconds.
 {{< /note >}}
 
 1.  Check the TTL on your current zone file. Typically, this will be 24 or 48 hours.
-2.  Update your current zone file 48 to 96 hours in advance (for a 24-48 hour record), taking into account any intermediate DNS servers. Lower the TTL to five minutes (300 seconds, or the lowest allowed value). Do not make any other changes at this time. If you're using Linode's Domains section, lower the TTL to 5 minutes for each entry you're going to change.
-3.  Wait out the original 48 to 96 hours.
-4.  Visit your zone file again to update your IP address and anything else needed.
-5.  The DNS changes should propagate within 30 minutes.
+1.  Update your current zone file 48 to 96 hours in advance (for a 24-48 hour record), taking into account any intermediate DNS servers. Lower the TTL to five minutes (300 seconds, or the lowest allowed value). Do not make any other changes at this time. If you're using Linode's Domains page, lower the TTL to 5 minutes for each entry you're going to change.
+1.  Wait out the original 48 to 96 hours.
+1.  Visit your zone file again to update your IP address and anything else needed.
+1.  The DNS changes should propagate within 30 minutes.
 
 ### Find Current DNS Information
 
