@@ -46,7 +46,7 @@ If you haven't already signed up for a Linode account, start here.
 
 ## Create a Linode
 
-![Create a Linode by selecting the image, the region, the plan, and creating a label and a password.](getting-started.gif)
+![Create a Linode by selecting the image, the region, the plan, and creating a label and a password.](create-a-linode.gif)
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
 
