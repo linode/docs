@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 published: 2015-07-09
 title: Configure Your Linode for Reverse DNS (rDNS)
-cloud_manager_link: networking/dns/configure-your-linode-for-reverse-dns
+cloud_manager_link: networking/dns/configure-your-linode-for-reverse-dns/
 hiddenguide: true
 ---
 
