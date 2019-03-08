@@ -39,7 +39,6 @@ You can connect to Lish with the SSH client of your choice. For example, you can
     | `lish-dallas.linode.com` | US, Dallas, TX |
     | `lish-fremont.linode.com` | US, Fremont, CA |
     | `lish-newark.linode.com` | US, Newark, NJ |
-    | `lish-tor1.linode.com` | Canada, Toronto, ON |
     | `lish-singapore.linode.com` | Asia, Singapore, SG |
     | `lish-tokyo.linode.com` | Asia, Tokyo, JP |
     | `lish-tokyo2.linode.com` or `lish-shg1.linode.com` | Asia, Tokyo, JP |
