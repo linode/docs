@@ -6,7 +6,7 @@ description: 'Learn how to use Lish as a shell for managing or rescuing your Lin
 keywords: ["Console", "Shell", "Lish", "rescue"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/','networking/using-the-linode-shell-lish/','platform/using-the-linode-shell-lish/']
-modified: 2019-02-28
+modified: 2019-04-08
 modified_by:
   name: Linode
 published: 2009-08-04
@@ -190,10 +190,6 @@ This command format works for all Lish functionality.
 
 ## Lish Gateway Fingerprints
 
-{{< note >}}
-DSA fingerprints are deprecated.
-{{</ note >}}
-
 The valid fingerprints for the Lish gateway boxes are as follows:
 
 ### Atlanta
@@ -201,7 +197,6 @@ The valid fingerprints for the Lish gateway boxes are as follows:
 These are the fingerprints for the Lish gateway in our Atlanta data center (lish-atlanta.linode.com):
 
     RSA 59:30:1a:0b:93:5e:3f:4b:6f:d1:96:ff:7e:9e:12:f8
-    DSA 0b:90:ed:f2:a1:e0:55:5b:38:6e:5d:6e:fa:00:63:7f
     ECDSA SHA256:8emv5PuUgPB2GFejMYWl1f4x1yj3YqAQPAYIrBm43ZI
     Ed25519 SHA256:7k2c442k+zqbGaraZvmqXM3MA5lCcthaR2lbrB651lg
 
@@ -210,7 +205,6 @@ These are the fingerprints for the Lish gateway in our Atlanta data center (lish
 These are the fingerprints for the Lish gateway in our Dallas data center (lish-dallas.linode.com):
 
     RSA 6d:3d:b5:d0:42:1c:49:45:a6:47:29:bd:88:4e:58:d4
-    DSA 58:bc:07:fa:c1:61:a4:3b:b5:00:3b:9b:6b:78:c6:c5
     ECDSA SHA256:1fL1HTGas1APIpshCu1ZWys7LI97s8eTFN3+f8zEYXA
     Ed25519 SHA256:Ime9h7IAxAjBvMGR+G+EnbaLWpvXO+Z7TaGHzM9g5Sc
 
@@ -219,7 +213,6 @@ These are the fingerprints for the Lish gateway in our Dallas data center (lish-
 These are the fingerprints for the Lish gateway in our Frankfurt data center (lish-frankfurt.linode.com):
 
     RSA 43:76:22:43:0e:01:cb:84:6a:80:b9:9b:90:34:c7:b1
-    DSA 87:2d:c9:5a:76:06:e6:3d:08:70:1b:2e:a6:b4:e8:c2
     ECDSA SHA256:e1FxEXiZVi6n13tagd1ZAQEW/fsRqz29ez5IfWf9kxg
     Ed25519 SHA256:vG1rnoGe7XRRY0nauJREQk75OamxCwRRpeaTDB8LpgM
 
@@ -228,8 +221,7 @@ These are the fingerprints for the Lish gateway in our Frankfurt data center (li
 These are the fingerprints for the Lish gateway in our Fremont data center (lish-fremont.linode.com):
 
     RSA 2c:43:0e:fc:88:f2:3a:dd:01:43:3a:fc:9f:67:9f:66
-    DSA 19:30:1a:48:85:aa:78:ab:46:8d:0f:4d:00:88:e6:b7
-    ECDSA SHA256:s3MVXFaTiL7Fb5oB0s9zMBk9VJsrkNxXXZfdeJG2enQ
+    ECDSA SHA256:fwuaKryHbvtKjFFviDocnMTNKWXUzfZSGPY8mgLgiNM
     Ed25519 SHA256:s3MVXFaTiL7Fb5oB0s9zMBk9VJsrkNxXXZfdeJG2enQ
 
 ### London
@@ -237,7 +229,6 @@ These are the fingerprints for the Lish gateway in our Fremont data center (lish
 These are the fingerprints for the Lish gateway in our London data center (lish-london.linode.com):
 
     RSA 71:27:30:cd:dc:69:7a:fe:58:4a:04:e6:6b:5f:b4:e2
-    DSA ce:41:c0:48:2c:93:de:c8:d2:a9:bf:3f:97:1f:04:ad
     ECDSA SHA256:mE/plOHLl+NJ7LUdW7AaMEOnhskXZxav5Em/rD6VZ5g
     Ed25519 SHA256:HXHM8/wCx7NrGsnfGpaexiBfOLKN9g0hoaL9wRaSeWg
 
@@ -276,13 +267,3 @@ These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-
     DSA 2d:0f:b0:a5:d0:bd:4a:71:1a:75:dc:de:b1:06:61:a6
     ECDSA SHA256:0sRmstQ+6lfa4KwnAIQvuZMunq8KKNmu/n4KeAcAXmg
     Ed25519 SHA256:SWEV04SJt+DDG4ov2AfDYdZRavcg4GHufNP60QRkZzk
-
-### Toronto
-
-These are the fingerprints for the Lish gateway in our Toronto data center (lish-tor1.linode.com):
-
-    RSA 4a:d9:fb:43:b8:0e:7f:fd:d3:cd:fc:87:06:61:51:df
-    ECDSA SHA256:iAWnqR3XYcooliTQ7W1tiMmjsA4k1WJVItvLz4lUxQE
-    Ed25519 SHA256:TSbQmRFaaWEHKEwgwvqQFKMfHKduPftou9/ue9K/Z2c
-
-
