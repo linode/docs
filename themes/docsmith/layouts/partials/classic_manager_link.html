@@ -1,0 +1,9 @@
+{{ with .Params.classic_manager_link }}
+<blockquote class="classic_manager_link">
+  <strong class="callout-title">The <a href="https://manager.linode.com">Linode Classic Manager</a></strong>
+  <div>If you're using the Linode Classic Manager instead of the new <a href="https://cloud.linode.com">Cloud Manager</a>, you can still view the Classic Manager version of this <a href={{ print ($.Site.BaseURL) (.) }}>{{ $.Page.Title }}</a> guide.</div>
+</blockquote>
+{{ end }}
+
+
+

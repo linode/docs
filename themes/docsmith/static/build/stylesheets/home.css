@@ -9621,6 +9621,79 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .cloud_manager_link strong {
   font-weight: bold;
 }
+.classic_manager_link {
+  padding: 15px;
+  background-color: #edf7fe;
+  border-left: 4px solid #bde2fb;
+  margin-top: 55px;
+}
+.classic_manager_link:before {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  font-size: 14px;
+  font-size: 19px;
+  font-weight: 400;
+  color: #000;
+}
+.classic_manager_link:before small,
+.classic_manager_link:before .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #777777;
+}
+.classic_manager_link:before small,
+.classic_manager_link:before .small {
+  font-size: 75%;
+}
+.classic_manager_link:before + .lead {
+  padding-top: 10px;
+}
+.classic_manager_link:before {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.classic_manager_link * {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.classic_manager_link:before {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  font-size: 14px;
+  font-size: 19px;
+  font-weight: 400;
+}
+.classic_manager_link:before small,
+.classic_manager_link:before .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #777777;
+}
+.classic_manager_link:before small,
+.classic_manager_link:before .small {
+  font-size: 75%;
+}
+.classic_manager_link:before + .lead {
+  padding-top: 10px;
+}
+.classic_manager_link a {
+  color: #0089bc;
+}
+.classic_manager_link a:hover {
+  color: #006489;
+}
+.classic_manager_link strong {
+  font-weight: bold;
+}
 .dedicated_cpu_link {
   padding: 15px;
   background-color: #eff9f5;
