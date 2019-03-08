@@ -41,7 +41,6 @@ You can connect to Lish with the SSH client of your choice. For example, you can
     | `lish-dallas.linode.com` | US, Dallas, TX |
     | `lish-fremont.linode.com` | US, Fremont, CA |
     | `lish-newark.linode.com` | US, Newark, NJ |
-    | `lish-tor1.linode.com` | Canada, Toronto, ON |
     | `lish-singapore.linode.com` | Asia, Singapore, SG |
     | `lish-tokyo.linode.com` | Asia, Tokyo, JP |
     | `lish-tokyo2.linode.com` or `lish-shg1.linode.com` | Asia, Tokyo, JP |
@@ -237,7 +236,6 @@ These are the fingerprints for the Lish gateway in our London data center (lish-
 These are the fingerprints for the Lish gateway in our Newark data center (lish-newark.linode.com):
 
     RSA 11:2a:57:a4:f8:ca:42:b2:c0:ab:17:58:0d:0c:b7:8b
-    DSA a1:e2:f5:5a:71:f9:b8:98:d9:a6:4c:65:e5:05:ea:04
     ECDSA SHA256:57OGBNARJ1fhI+zrE3eTEeQWXVVDHRU8QHcP+BsWmN8
     Ed25519 SHA256:tyelNHfgaPGbN2cppfJVr/db3/pHnItR9maW+ocAS18
 
@@ -246,7 +244,6 @@ These are the fingerprints for the Lish gateway in our Newark data center (lish-
 These are the fingerprints for the Lish gateway in our Singapore data center (lish-singapore.linode.com):
 
     RSA 06:26:d8:2a:12:8b:2f:d7:6c:54:72:5a:a7:7b:da:7b
-    DSA 0c:f9:f9:d6:f3:0a:f6:bb:82:82:07:4b:51:db:e2:35
     ECDSA SHA256:rFYWuld4hWMbTzX+xZMuQ3kxiJ6t8A+FNQ5k889mKEA
     Ed25519 SHA256:q1G1pBrLuhsUAnZ04SOYoxVthKYyLz+wA0hBAUVkKtE
 
@@ -255,7 +252,6 @@ These are the fingerprints for the Lish gateway in our Singapore data center (li
 These are the fingerprints for the Lish gateway in our Tokyo data center (lish-tokyo.linode.com):
 
     RSA af:ec:f0:b8:87:33:d5:12:04:0d:7c:bb:a6:c5:5f:be
-    DSA 1d:7d:bd:5c:a1:41:29:c3:78:de:e7:0f:d3:f2:63:34
     ECDSA SHA256:smE6PUuuG6tR4N8kN8UpoPx+XyVtAwxQ2dHuwoVS6eY
     Ed25519 SHA256:xAs8SdX91L7Xw5q9H+GGR5N9DoPGxP5RKG3aTvR60zw
 
@@ -264,6 +260,5 @@ These are the fingerprints for the Lish gateway in our Tokyo data center (lish-t
 These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-tokyo2.linode.com):
 
     RSA 2c:60:9a:ce:cf:4b:8d:4e:8f:09:ae:e0:c2:b0:fb:b7
-    DSA 2d:0f:b0:a5:d0:bd:4a:71:1a:75:dc:de:b1:06:61:a6
     ECDSA SHA256:0sRmstQ+6lfa4KwnAIQvuZMunq8KKNmu/n4KeAcAXmg
     Ed25519 SHA256:SWEV04SJt+DDG4ov2AfDYdZRavcg4GHufNP60QRkZzk
