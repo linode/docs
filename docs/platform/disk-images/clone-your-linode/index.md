@@ -27,7 +27,7 @@ This guide will show you how to clone an existing Linode.
 3.  Click **Create** at the top of the Cloud Manager and select **Linode**.
 4.  On the *Create New Linode* page, click on the **Clone from Existing** tab.
 
-     ![Select the 'Clone from Exisitng' tab to clone an existing Linode.](clone-linode-menu.png)
+     ![Select the 'Clone from Existng' tab to clone an existing Linode.](clone-linode-menu.png)
 
 5.  Under **Select Linode to Clone From**, click on the Linode you wish to clone.
 6.  Select the region for the clone.
