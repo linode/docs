@@ -2,40 +2,42 @@
 author:
   name: Nick Brewer
   email: docs@linode.com
-description: Clone your Disks to another Linode.
-keywords: ["clone", " cloning", " linode manager"]
+description: Clone your Linode to another Linode.
+keywords: ["clone", " cloning", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['migrate-to-linode/disk-images/clone-your-linode/']
-modified: 2017-02-15
+modified: 2019-03-07
 modified_by:
   name: Linode
 published: 2016-11-21
 title: 'Clone Your Linode'
 ---
+{{< note >}}
+You can view the [Classic Manager version of this guide](/docs/platform/disk-images/clone-your-linode-classic-manager/).
+{{</ note >}}
 
-This guide will show you how to clone your Linode's existing disks or configuration profiles to another Linode on your account.
+This guide will show you how to clone an existing Linode.
 
 ![Clone Your Linode](clone-your-linode.png "Clone Your Linode")
 
-{{< note >}}
-To follow the steps in this guide, you will need a Linode with enough free storage space to accommodate your cloned disks.
-{{< /note >}}
-
 ## Clone Your Linode
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Select the **Linodes** tab to list your active Linodes.
-3.  Click on the Linode you wish to clone. This will load its Dashboard.
-4.  **Recommended:** Click **Shut down** to power down the Linode. This is recommended to prevent data corruption.
-5.  Click the **Clone** tab to select the disks or configuration profiles you wish to clone. If you select a configuration profile, all of the disks attached to it will be included automatically. You can confirm this from the *Disks Attached* column.
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+2.  **Recommended**: Power off the Linode you would like to clone. This is recommended to prevent data corruption.
+3.  Click **Create** at the top of the Cloud Manager and select **Linode**.
+4.  On the *Create New Linode* page, click on the **Clone from Existing** tab.
 
-    [![Selecting configuration profiles and disks to migrate](clone-tab-small.png)](clone-tab.png "Selecting configuration profiles and disks to migrate")
+     ![Select the 'Clone from Exisitng' tab to clone an existing Linode.](clone-linode-menu.png)
 
-6.  Once you've applied your choices, hit **Select**. You'll be provided with an approximate estimate of how long it will take to clone your Linode:
+5.  Under **Select Linode to Clone From**, click on the Linode you wish to clone.
+6.  Select the region for the clone.
+7.  Select the plan for the clone.
 
-    [![Clone summary page](clone-tab-destination-small.png)](clone-tab-destination.png "Clone summary page")
+    {{< note >}}
+You will not be able to choose a plan for your clone that is smaller than the plan of the cloned Linode. For example, a 2GB Linode can not be cloned into a 1GB Nanode.
+{{</ note >}}
 
-7.  From the **Destination Linode** menu, select the Linode you want to clone to.
-8.  Click **Clone**. The receiving Linode's Dashboard will appear. Watch the *Host Job Queue* to monitor your progress.
+8.  Provide a label for your new Linode.
+9.  Click **Create**.
 
-Once the cloning process completes, your selected disks and configuration profiles will be available on the destination Linode.
+The cloning process will begin. Depending on the size of your Linode, it may take some time. You will see a status bar above the Linode you cloned with the percentage of completion. While your Linode is being cloned, your new clone will appear on the Linodes page in a powered off state. Once the cloning process is complete you will need to power on your new Linode.
