@@ -17,6 +17,10 @@ classic_manager_link: 'networking/dns/common-dns-configurations-classic-manager/
 
 ![Common DNS Configurations](common-dns-configurations-title-graphic.jpg "Common DNS Configurations")
 
+{{< note >}}
+You can [view the Classic Manager version of this guide](/docs/networking/dns/common-dns-configurations-classic-manager/).
+{{</ note >}}
+
 ## Set Up a Domain
 
 The most common DNS configuration is a single domain name on a single Linode. For this, you'll need to add *SOA* and *NS records* for all of your name servers, and *A/AAAA* records for your domain names. Use the screenshot below as a guide.
