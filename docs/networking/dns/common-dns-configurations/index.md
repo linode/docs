@@ -12,13 +12,10 @@ modified_by:
   name: Linode
 published: 2015-01-20
 title: Common DNS Configurations
+classic_manager_link: 'networking/dns/common-dns-configurations-classic-manager/'
 ---
 
 ![Common DNS Configurations](common-dns-configurations-title-graphic.jpg "Common DNS Configurations")
-
-{{< note >}}
-You can [view the Classic Manager version of this guide](/docs/networking/dns/common-dns-configurations-classic-manager/).
-{{</ note >}}
 
 ## Set Up a Domain
 

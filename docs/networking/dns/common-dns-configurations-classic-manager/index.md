@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2015-01-20
 title: Common DNS Configurations
+hiddenguide: true
 ---
 
 ![Common DNS Configurations](common-dns-configurations-title-graphic.jpg "Common DNS Configurations")
