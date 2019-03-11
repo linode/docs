@@ -543,6 +543,7 @@ iframes
 ifup
 ikiwiki
 im
+imagize
 imap
 imapd
 imaps
