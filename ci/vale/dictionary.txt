@@ -157,6 +157,7 @@ clickjacking
 client1
 client2
 clojure
+cloudflare
 cloudnet
 clozure
 cls
