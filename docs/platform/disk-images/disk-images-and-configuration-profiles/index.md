@@ -11,11 +11,8 @@ modified_by:
   name: Linode
 published: 2012-04-24
 title: Disks and Configuration Profiles
+classic_manager_link: 'platform/disk-images/disk-images-and-configuration-profiles-classic-manager/'
 ---
-
-{{< note >}}
-You can [view the Classic Manager version of this guide](/docs/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/).
-{{</ note >}}
 
 The Linode Cloud Manager allows you to create, edit, and use disks and configuration profiles with your Linodes. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
 
