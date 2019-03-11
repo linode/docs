@@ -6,16 +6,13 @@ description: 'Learn how to use Lish as a shell for managing or rescuing your Lin
 keywords: ["Console", "Shell", "Lish", "rescue"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/','networking/using-the-linode-shell-lish/','platform/using-the-linode-shell-lish/']
-modified: 2019-03-08
+modified: 2019-03-11
 modified_by:
   name: Linode
 published: 2009-08-04
 title: 'Using the Linode Shell (Lish)'
+classic_manager_link: platform/manager/using-the-linode-shell-lish-classic-manager/
 ---
-
-{{< note >}}
-View the Linode Classic Manager version of the [Using the Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish-classic-manager/) guide.
-{{</ note >}}
 
 ![Using the Linode Shell (Lish)](using-the-linode-shell-lish.jpg)
 
@@ -44,6 +41,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
     | `lish-singapore.linode.com` | Asia, Singapore, SG |
     | `lish-tokyo.linode.com` | Asia, Tokyo, JP |
     | `lish-tokyo2.linode.com` or `lish-shg1.linode.com` | Asia, Tokyo, JP |
+    | `lish-tor1.linode.com` | Canada, Toronto, ON |
     | `lish-frankfurt.linode.com` | Europe, Frankfurt, DE |
     | `lish-london.linode.com` | Europe, London, UK |
 
@@ -262,3 +260,11 @@ These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-
     RSA 2c:60:9a:ce:cf:4b:8d:4e:8f:09:ae:e0:c2:b0:fb:b7
     ECDSA SHA256:0sRmstQ+6lfa4KwnAIQvuZMunq8KKNmu/n4KeAcAXmg
     Ed25519 SHA256:SWEV04SJt+DDG4ov2AfDYdZRavcg4GHufNP60QRkZzk
+
+### Toronto
+
+These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-tokyo2.linode.com):
+
+    RSA 4a:d9:fb:43:b8:0e:7f:fd:d3:cd:fc:87:06:61:51:df
+    ECDSA SHA256:iAWnqR3XYcooliTQ7W1tiMmjsA4k1WJVItvLz4lUxQE
+    Ed25519 SHA256:TSbQmRFaaWEHKEwgwvqQFKMfHKduPftou9/ue9K/Z2c
