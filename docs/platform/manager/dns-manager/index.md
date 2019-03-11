@@ -18,6 +18,10 @@ classic_manager_link: platform/manager/dns-manager-classic-manager/
 
 The *Domains* section of the Linode Cloud Manager is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the Domains section and basic domain zone setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide.
 
+{{< note >}}
+As an added benefit to using the Cloud Manager to manage your domains, Linode employs [CloudFlare](https://cloudflare.com) to provide denial of service (DDoS) mitigation, load balancing, and increased geographic distribution for its name servers.
+{{</ note>}}
+
 ## Getting Started
 
 The Domain Name System (DNS) attaches human-readable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`. This global system allows users to remember the names of websites instead of their numeric IP addresses.
@@ -31,10 +35,10 @@ All steps within this guide are completed within the **[Domains](https://cloud.l
 DNS records are only actively hosted on accounts with at least one Linode. When setting up a domain name on your Linode, make sure you perform the following steps:
 
 1.  Register (purchase) a domain name if you haven't already.
-1.  Set your domain name to [use Linode's name servers](#use-linode-s-name-servers-with-your-domain). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
-1.  Use the DNS Manager to [add a domain zone](#add-a-domain-zone), and then start [adding some basic DNS records](#add-records).
-1.  [Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
-1.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/docs/networking/dns/common-dns-configurations/).
+2.  Set your domain name to [use Linode's name servers](#use-linode-s-name-servers-with-your-domain). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
+3.  Use the DNS Manager to [add a domain zone](#add-a-domain-zone), and then start [adding some basic DNS records](#add-records).
+4.  [Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
+5.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/docs/networking/dns/common-dns-configurations/).
 
 ## Use Linode's Name Servers with Your Domain
 
