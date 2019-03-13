@@ -3,11 +3,11 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide is a brief overview of IPv6 resources and support afforded by and available with Linode.'
-og_description: "This guide is a brief overview of IPv6 support on Linode, including how to find your Linode's IPv6 address, how to request additional addresses, and information about address pools and forwarding."
+og_description: "This guide is a brief overview of IPv6 support on Linode, including how to find your Linode's IPv6 address, how to request additional addresses, and information about address ranges and forwarding."
 keywords: ["ipv6 networking", "IP configuration"]
 aliases: ['networking/native-ipv6-networking/','networking/how-to-enable-native-ipv6-on-linux/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-02
+modified: 2019-03-12
 modified_by:
   name: Linode
 published: 2011-05-03
@@ -35,7 +35,7 @@ Please be sure to allow ICMPv6 in your [firewall](/docs/security/securing-your-s
 
 ## How to Find Your IPv6 Address
 
-To find your Linode's IPv6 address, see the [Remote Access](/docs/networking/remote-access) tab of your Linode's dashboard or use the `ip` tool:
+To find your Linode's IPv6 address, see the [Networking tab](/docs/networking/remote-access) tab of your Linode's detail page in the [Cloud Manager](https://cloud.linode.com), or use the `ip` tool:
 
     root@localhost:~# ip -6 address
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1
@@ -49,7 +49,7 @@ To find your Linode's IPv6 address, see the [Remote Access](/docs/networking/rem
 
 -  Line 3 shows the IPv6 loopback interface. This is used for IPv6 traffic within the system, similar to the 127.0.0.0/8 IPv4 address block.
 
--  Line 6 is the Linode's public IP address. You can see it's in a /64 pool.
+-  Line 6 is the Linode's public IP address. You can see it's in a /64 range.
 
 -  Line 8 is the link-local IPv6 address. An IPv6 link-local address is a unicast address that is automatically configured on any interface.
 
@@ -58,19 +58,26 @@ If your Linode does not have the correct IPv6 address or any IPv6 address at all
 
 ## Additional IPv6 Addresses
 
-You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/support). While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request. See our [static IP guide](/docs/networking/linux-static-ip-configuration) for instructions on how to do this.
+You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/support). While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the range you request. See our [static IP guide](/docs/networking/linux-static-ip-configuration) for instructions on how to do this.
 
 
-## IPv6 Pools
+## IPv6 Ranges and Pools
 
-IPv6 addresses are allocated in *pools*. The IPv6 pool sizes Linode provides and their respective quantity of IPv6 addresses are below.
+{{< note >}}
+IPv6 pools are not available in the Toronto data center. For more information, [contact support](/docs/platform/billing-and-support/support/).
+{{</ note >}}
 
-You will see where the pool is routed under *Public IP Pools* on the Linode Manager's Remote Access tab.
+IPv6 addresses are allocated in *ranges* and *pools*. The IPv6 range and pool sizes Linode provides and their respective quantity of IPv6 addresses are below.
 
-| Pool   | Number of addresses           |
+<!--You will see where the range is routed under *Public IP Pools* on the Linode Manager's Remote Access tab.-->
+
+| Range  | Number of addresses           |
 |:------:|:-----------------------------:|
 | /56    | 4,722,366,482,869,645,213,696 |
 | /64    | 18,446,744,073,709,551,616    |
+
+| Pool   | Number of addresses           |
+|:------:|:-----------------------------:|
 | /116   | 4,096                         |
 
 
