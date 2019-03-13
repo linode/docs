@@ -6,12 +6,13 @@ description: Our guide to disks and configuration profiles
 keywords: ["disks", "config profiles", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['disk-images-config-profiles/','migrate-to-linode/disk-images/disk-images-and-configuration-profiles/']
-modified: 2019-01-28
+modified: 2019-03-13
 modified_by:
   name: Linode
 published: 2012-04-24
 title: Disks and Configuration Profiles
 hiddenguide: true
+cloud_manager_link: platform/disk-images/disk-images-and-configuration-profiles/
 ---
 
 The Linode Manager allows you to create, edit, and use disks and configuration profiles with your Linodes. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
@@ -24,7 +25,7 @@ A *configuration profile* is a boot loader for your Linode. It controls general 
 
 [![Overview of disks and configuration profiles.](1740-disk-images1.png)](1740-disk-images1.png)
 
-The Linode Manager automatically creates a disk and configuration profile when you sign up for an account or create a Linode, but you can manually create as many as you want, provided you have the storage space available. The space for disks is allocated from your Linode plan's storage. You can allocate all available storage to one disk, or you can create multiple disks, as shown in the examples above and below.
+The Linode Manager automatically creates a disk and configuration profile when you sign up for an account or create a Linode, but you can manually create as many as you want, provided you have the storage space available. The space for disks is allocated from your Linode plan's storage size. You can allocate all available storage to one disk, or you can create multiple disks, as shown in the examples above.
 
 ### Finding Your Way Around
 
