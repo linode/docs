@@ -45,7 +45,7 @@ While this guide outlines the recovery tools that Linode makes available to you,
 
 ### Rescue Mode Overview
 
-To access Rescue Mode, you will need to [reboot your Linode](#booting-into-rescue-mode) from the Linode Cloud Manager and then connect via [Lish](#connecting-to-a-linode-running-in-rescue-mode) or [SSH](#starting-ssh). After you connect, you can [perform a check on your filesytem](#performing-a-file-system-check) if you suspect that it is corrupted. If you need access to a certain software package to troubleshoot your system, you can [install it](#installing-packages).
+To access Rescue Mode, you will need to [reboot your Linode](#booting-into-rescue-mode) from the Linode Cloud Manager and then connect via [Lish](#connecting-to-a-linode-running-in-rescue-mode) or [SSH](#starting-ssh). After you connect, you can [perform a check on your filesystem](#performing-a-file-system-check) if you suspect that it is corrupted. If you need access to a certain software package to troubleshoot your system, you can [install it](#installing-packages).
 
 Your disks will not be mounted by default, so [mount](#mounting-disks) them in order to access your files. Once you mount your primary filesystem, you can [*change root*](#change-root) to have Rescue Mode emulate your normal Linux distribution.
 
@@ -105,7 +105,7 @@ To connect with Lish:
 
     [![Linode Cloud Manager Lish console](cloud-manager-new-lish-window.png "Linode Cloud Manager Lish console")](cloud-manager-new-lish-window.png)
 
-Review the [Using the Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](docs/platform/manager/using-the-linode-shell-lish/#use-a-terminal-application).
+Review the [Using the Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/platform/manager/using-the-linode-shell-lish/#use-a-terminal-application).
 
 ### Starting SSH
 
@@ -244,7 +244,7 @@ If you can't rescue and resolve issues on an existing disk, you will likely need
 
 -   If you are subscribed to the [Linode Backup Service](https://www.linode.com/backups), you can [restore from an existing backup](#restoring-from-a-linode-backup) and return your Linode to a previous state.
 
--   If you aren't subcribed to the Linode Backup Service, you can copy files off an existing disk and then [use the Rebuild feature](#use-the-rebuild-feature) of the Cloud Manager to erase everything and start over again from scratch.
+-   If you aren't subscribed to the Linode Backup Service, you can copy files off an existing disk and then [use the Rebuild feature](#use-the-rebuild-feature) of the Cloud Manager to erase everything and start over again from scratch.
 
 -   If you have a backup system other than the Linode Backup Service in place, you can [rebuild your Linode](#use-the-rebuild-feature) and then restore your data from that backup service. The methods for restoring your data will vary by the kind of backup system that you use.
 
