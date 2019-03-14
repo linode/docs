@@ -13,6 +13,7 @@ modified_by:
 published: 2015-01-20
 title: Common DNS Configurations
 hiddenguide: true
+cloud_manager_link: 'networking/dns/common-dns-configurations/'
 ---
 
 ![Common DNS Configurations](common-dns-configurations-title-graphic.jpg "Common DNS Configurations")
