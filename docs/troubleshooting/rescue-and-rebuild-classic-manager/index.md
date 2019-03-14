@@ -6,11 +6,12 @@ description: 'Our guide to rescuing and rebuilding your Linode.'
 keywords: ["rescue", "rebuild"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['rescue-and-rebuild/','troubleshooting/finnix-rescue-mode/']
-modified: 2019-01-14
 modified_by:
   name: Linode
 published: 2012-05-31
 title: Rescue and Rebuild
+cloud_manager_link: troubleshooting/rescue-and-rebuild/
+hiddenguide: true
 ---
 
 ![Rescue and Rebuild](rescue-rebuild.jpg)
