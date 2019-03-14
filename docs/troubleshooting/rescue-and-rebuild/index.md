@@ -21,7 +21,7 @@ Even the best system administrators may need to deal with unplanned events in th
 
 - If you are unable to resolve your system's issues, you can [*rebuild*](#rebuilding) your Linode from a backup or start over with a fresh Linux distribution.
 
-## Guided Troubleshooting
+## Troubleshooting Resources
 
 While this guide outlines the recovery tools that Linode makes available to you, it does not provide a specific troubleshooting strategy. Our other guides offer a logical progression of steps you can follow when troubleshooting different symptoms:
 
@@ -89,7 +89,7 @@ You can assign up to 7 disks in Rescue Mode. `/dev/sdh` is always assigned to th
 
 ### Connecting to a Linode Running in Rescue Mode
 
-By default, Rescue Mode's Finnix environment does not accept SSH connections. To access your Linode when it's running in Rescue Mode, you instead need to connect via the *Lish* console.
+By default, Rescue Mode's Finnix environment does not accept SSH connections. To access your Linode when it's running in Rescue Mode, connect to it via the *Lish* console.
 
 {{< note >}}
 It is possible to enable SSH for Rescue Mode by manually starting the SSH daemon. Using SSH can provide a nicer experience and will allow you to copy files off of your server. Review the [Starting SSH](#starting-ssh) section for instructions. You will need to use Lish at least once in order to start SSH.
@@ -127,7 +127,7 @@ This root password is separate from the root password of the disk that you norma
 
         service ssh start
 
-You can now connect to the server as root [with the SSH client](#connect-to-your-linode-via-ssh) on your computer. You can also access mounted disks with an SFTP client:
+You can now connect to the server as root with the SSH client on your computer. You can also access mounted disks with an SFTP client:
 
 - For instructions on connecting with an SFTP client, see the [File Transfer reference manuals](/docs/tools-reference/file-transfer/).
 
@@ -178,7 +178,7 @@ Never run `fsck` on a mounted disk. Do not continue unless you're sure that the 
         Superblock has an invalid journal (inode 8).
         Clear<y>?
 
-    Press enter to automatically attempt to fix the problems.
+    Press **enter** to automatically attempt to fix the problems.
 
     Once the filesystem check completes, any problems detected should be fixed. Try rebooting the Linode from the Cloud Manager. If `fsck` fixed the issues, the Linode should boot normally.
 
@@ -256,7 +256,7 @@ We recommend that you follow the instructions in [Recovering from a System Compr
 
 ### Restoring from a Linode Backup
 
-If you previously enabled the [Linode Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to your Linode. Review the [Restoring from a Backup](/docs/platform/linode-backup-service/#restore-from-a-backup) section (specifically, the [Restore to an Existing Linode](/docs/platform/disk-images/linode-backup-service/#restore-to-an-existing-linode) section) of the [The Linode Backup Service](/docs/platform/disk-images/linode-backup-service/) guide for instructions.
+If you previously enabled the [Linode Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to your Linode. Review the [Restoring from a Backup](/docs/platform/disk-images/linode-backup-service/#restore-from-a-backup) section (specifically, the [Restore to an Existing Linode](/docs/platform/disk-images/linode-backup-service/#restore-to-an-existing-linode) section) of the [The Linode Backup Service](/docs/platform/disk-images/linode-backup-service/) guide for instructions.
 
 If you created backups with an application other than the Linode Backup Service, review the application's instructions to restore a backup to your Linode.
 
@@ -266,17 +266,17 @@ The Linode Cloud Manager provides a *Rebuild* feature which will perform the fol
 
 1.  Your current disks are removed.
 
-2.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of your [saved images](/docs/platform/disk-images/linode-images/).
+1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of your [saved images](/docs/platform/disk-images/linode-images/).
 
-{{< caution >}}
+    {{< caution >}}
 If you use the Rebuild feature, the data from the disks that are deleted will not be retrievable.
 
-If you'd like to deploy a new Linux distribution without erasing your existing disks, follow the instructions in the [Creating a Disk with a Linux Distribution Installed](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed) section of the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/) guide. This is a better option for those who need create a new distribution, but also need to save their existing data.
+If you'd like to deploy a new Linux distribution without erasing your existing disks, follow the instructions in the [Creating a Disk with a Linux Distribution Installed](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed) section of the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/) guide. This is a better option for those who need to create a new distribution, but also need to save their existing data.
 
 Your Linode will need to have some amount of unallocated disk space in order to provision a new distribution. If your Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to free up space or [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a higher resource tier.
-{{< /caution >}}
+    {{< /caution >}}
 
-If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.
+    If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.
 
 To use the Rebuild feature:
 
@@ -296,7 +296,7 @@ To use the Rebuild feature:
 
     [![Linode Cloud Manager Linode detail page - Rebuild tab highlighted](cloud-manager-linode-detail-page-rebuild-tab-highlighted.png "Linode Cloud Manager Linode detail page with Rebuild tab highlighted")](cloud-manager-linode-detail-page-rebuild-tab-highlighted.png)
 
-1.  Complete the Rebuild form. Select an image to deploy and enter a root password. Optionally, select one or more SSH keys.
+1.  Complete the Rebuild form. Select an image to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option will not be available).
 
 1.  Click on the **Rebuild** button after completing the form:
 
