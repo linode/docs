@@ -11,10 +11,8 @@ modified_by:
   name: Linode
 published: 2016-11-21
 title: 'Clone Your Linode'
+classic_manager_link: 'platform/disk-images/clone-your-linode-classic-manager/'
 ---
-{{< note >}}
-You can view the [Classic Manager version of this guide](/docs/platform/disk-images/clone-your-linode-classic-manager/).
-{{</ note >}}
 
 This guide will show you how to clone an existing Linode.
 
@@ -34,7 +32,7 @@ This guide will show you how to clone an existing Linode.
 7.  Select the plan for the clone.
 
     {{< note >}}
-You will not be able to choose a plan for your clone that is smaller than the plan of the cloned Linode. For example, a 2GB Linode can not be cloned into a 1GB Nanode.
+You will not be able to choose a plan for your clone that is smaller than the plan of the Linode you are cloning. For example, a 2GB Linode can not be cloned into a 1GB Nanode.
 {{</ note >}}
 
 8.  Provide a label for your new Linode.

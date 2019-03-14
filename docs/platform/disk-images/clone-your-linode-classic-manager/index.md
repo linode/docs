@@ -11,6 +11,8 @@ modified_by:
   name: Linode
 published: 2016-11-21
 title: 'Clone Your Linode'
+hiddenguide: true
+cloud_manager_link: 'platform/disk-images/clone-your-linode/'
 ---
 
 This guide will show you how to clone your Linode's existing disks or configuration profiles to another Linode on your account.
