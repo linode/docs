@@ -86,7 +86,7 @@ You can request additional IPv6 addresses at any time by opening a [support tick
 ## IPv6 Ranges and Pools
 
 {{< note >}}
-The IPv6 `\116` pool is not available in the Toronto data center.
+The IPv6 `/116` pool is not available in the Toronto data center.
 {{</ note >}}
 
 IPv6 addresses are allocated in *ranges* and *pools*. The IPv6 range and pool sizes Linode provides and their respective quantity of IPv6 addresses are listed below.
