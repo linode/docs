@@ -61,8 +61,6 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
 1.  Give your Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
 
-1.  Create a strong password for your Linode. You will use this password to SSH into your Linode.
-
 1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories:
 
     - lowercase and uppercase case letters
