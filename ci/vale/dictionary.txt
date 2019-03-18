@@ -1353,6 +1353,7 @@ ucd
 ufw
 ui
 uidl
+umount
 un
 unaliased
 unarchive
