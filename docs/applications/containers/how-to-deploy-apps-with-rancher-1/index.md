@@ -13,7 +13,7 @@ title: 'How to Deploy Apps with Rancher'
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
 deprecated: true
-deprecated_link: applications/containers/getting-started-with-rancher-basic-installation-and-setup/
+deprecated_link: applications/containers/how-to-deploy-apps-with-rancher/
 ---
 
 ## What is Rancher?

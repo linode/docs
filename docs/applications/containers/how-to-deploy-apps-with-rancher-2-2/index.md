@@ -8,7 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-14
 modified_by:
   name: Linode
-title: 'Deploy Apps with Rancher'
+title: 'Deploy Apps with Rancher 2.2'
+aliases: ['applications/containers/how-to-deploy-apps-with-rancher/']
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
   - '[Linode CCM](https://github.com/linode/linode-cloud-controller-manager)'
