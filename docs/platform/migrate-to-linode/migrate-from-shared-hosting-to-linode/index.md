@@ -37,7 +37,7 @@ See our [Getting Started](/docs/getting-started-new-manager/) guide for more inf
 
 An optional but recommended first step is to lower the *Time to Live* (TTL) setting for your domain, so the migration won't have a negative impact on your site's visitors. TTL tells DNS caching servers how long to save information about your domain. Since a DNS address' corresponding server IP address is typically not changed often, the default TTL is often about 24 hours.
 
-When changing servers, however, you want a shorter TTL to make sure that when you update your domain information, it quicly takes effect. Otherwise, your domain could resolve to your old server's IP address for up to 24 hours.
+When changing servers, however, you want a shorter TTL to make sure that when you update your domain information, it quickly takes effect. Otherwise, your domain could resolve to your old server's IP address for up to 24 hours.
 
 1.  Locate your current *nameservers* in your shared hosting provider's account control panel. If you're not sure what your nameservers are, you can find out with a [Whois Search tool](http://www.internic.net/whois.html). You will see several nameservers listed, probably all at the same company.
 
