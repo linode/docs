@@ -6,105 +6,116 @@ description: Our guide to disks and configuration profiles
 keywords: ["disks", "config profiles", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['disk-images-config-profiles/','migrate-to-linode/disk-images/disk-images-and-configuration-profiles/']
-modified: 2019-01-28
+modified: 2019-03-13
 modified_by:
   name: Linode
 published: 2012-04-24
 title: Disks and Configuration Profiles
+classic_manager_link: 'platform/disk-images/disk-images-and-configuration-profiles-classic-manager/'
+external_resources:
+  - '[Types of File Systems](https://en.wikipedia.org/wiki/File_system#Types_of_file_systems)'
 ---
 
-The Linode Manager allows you to create, edit, and use disks and configuration profiles with your Linodes. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
+The Linode Cloud Manager allows you to create, edit, and use disks and configuration profiles with your Linodes. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
 
 ## Getting Started
 
-Your Linode plan comes with persistent storage to hold your most important asset - data. This pool of storage can be broken up into individual containers called *disks*. It's easy to create, delete, resize, duplicate, and even clone disks to different Linodes.
+Your Linode plan comes with persistent storage to hold your most important asset - data. This pool of storage can be broken up into individual containers called *disks*. It's easy to create, resize, and delete disks.
 
-A *configuration profile* is a boot loader for your Linode. It controls general boot settings, including the disk your Linode will start up from, the disks that will be mounted, and the kernel that will be used. You can create multiple configuration profiles and store them in the Linode Manager.
+A *configuration profile* is a boot loader for your Linode. It controls general boot settings, including the disk your Linode will start up from, the disks that will be mounted, and the kernel that will be used. You can create multiple configuration profiles and store them in the Linode Cloud Manager.
 
 [![Overview of disks and configuration profiles.](1740-disk-images1.png)](1740-disk-images1.png)
 
-The Linode Manager automatically creates a disk and configuration profile when you sign up for an account or create a Linode, but you can manually create as many as you want, provided you have the storage space available. The space for disks is allocated from your Linode plan's storage. You can allocate all available storage to one disk, or you can create multiple disks, as shown in the examples above and below.
+The Linode Cloud Manager automatically creates a disk and configuration profile when you create a Linode, but you can manually create as many as you want, provided you have the storage space available. The space for disks is allocated from your [Linode plan's](https://www.linode.com/pricing) storage size. You can allocate all available storage to one disk, or you can create multiple disks, as shown in the diagram above.
 
 ### Finding Your Way Around
 
-All of a Linode's disks and configuration profiles are displayed on the Linode's Dashboard. You can add, edit, select, and remove items from this webpage, as shown below.
+All of a Linode's disks and configuration profiles are displayed on the Linode's detail page, under the **Settings** tab, in the **Advanced Configurations** panel. You can add, edit, and remove items from this page, as shown below.
 
-[![Overview of Linode Manager interface.](977-disk1-2-small.png)](978-disk1-1.png)
+[![Overview of Linode Manager interface.](disks-and-config-profiles-advanced-options.png)](disks-and-config-profiles-advanced-options.png)
 
-1.  These are your configuration profiles. Select one and then click **Reboot** to start your Linode with the settings and disks you have specified in the configuration profile.
-1.  Click this link to create a new configuration profile.
-1.  These are your disks. Select one to resize it or duplicate it.
-1.  Click this link to create a new disk with a Linux distribution installed.
-1.  Click this link to create a new blank disk.
-1.  This box indicates how much storage space is allocated to disks. To see how much space inside your disk is currently being used, connect to your Linode via SSH and execute the `df -m` command.
+1.  Your configuration profiles are listed in the **Configuration** table. Click on the **more options ellipsis** corresponding to a profile and then select **Boot This Config** from the dropdown menu that appears to boot your Linode under that configuration profile.
+
+1.  Click the **Add a Configuration** link to create a new configuration profile.
+
+1.  Your disks are listed in the **Disks** table. Select the corresponding **more options ellipsis** to resize, rename, imagize, or delete a disk.
+
+1.  Click the **Add a Disk** link to create a new blank disk, or a disk with a Linux distribution installed.
+
+1.  This pane indicates how much of your plan's available storage has been allocated to your disks. This does not represent how much disk space is available on any given disk that you've created. To see how much space inside your disk is currently being used, connect to your Linode via SSH and execute the `df -h` command.
 
 ## Disks
 
-Just like your desktop computer has a physical hard drive that can be partitioned into smaller virtual drives, your Linode plan's storage space can be split in to disks. Disks can be used to store anything, including files, applications, or other Linux distributions. The space allocated to disks reduces your plan's available storage space.
+Just like how your desktop computer has a physical hard drive that can be partitioned into smaller virtual drives, your Linode plan's storage space can be split into disks. Disks can be used to store anything, including files, applications, or other Linux distributions. The space allocated to disks draws from your plan's available storage space.
 
 ### Creating a Disk with a Linux Distribution Installed
 
-The Linode Manager makes it easy to create a new disk with a fresh Linux distribution installed. This is a fast and easy way to try out other distributions. Here's how to create a disk with a Linux distribution installed:
+The Linode Cloud Manager makes it easy to create a new disk with a fresh Linux distribution installed. This is a fast and easy way to try out other distributions. Here's how to create a disk with a Linux distribution installed:
 
- {{< note >}}
-A new configuration profile will automatically be created when you make a disk this way. After the disk is created, you can select the new configuration profile to boot your Linode from the new disk.
-{{< /note >}}
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+2.  Click the **Linodes** link in the sidebar.
+3.  Select a Linode. The Linode's detail page appears.
+4.  Click on the **Settings** tab and expand the **Advanced Configurations** panel.
+5.  Click on **Add a Disk**. The **Add Disk** form appears:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-1.  Click the **Linodes** tab.
-1.  Select a Linode. The Linode's dashboard appears.
-1.  Select the **Deploy an Image** link. The webpage shown below appears.
+    [![The 'Add Disk' menu.](disks-and-config-profiles-add-a-disk-image.png)](disks-and-config-profiles-add-a-disk-image.png)
 
-    [![Create a new disk with a Linux distribution.](980-disk2-small.png)](979-disk2.png)
+6.  Select **Create from Image**.
+7.  Provide a label for your disk.
+8.  Select a Linux distribution from the **Image** menu.
+9.  Enter a password for the `root` user in the **Root Password** field.
+10. Enter a size for the disk in the **Size** field. The size must be smaller than the amount of storage space remaining in your Linode plan.
+11. Click **Add**.
 
-1.  Select a Linux distribution from the **Distribution** menu.
-
-    {{< note >}}
-  You can install a customized Linux distribution on your disk by clicking on the **Deploying using StackScripts** link. Some of the most popular StackScripts do things like install Apache, configure a firewall, and set up WordPress.
-    {{< /note >}}
-
-1.  Enter a size for the disk in the **Deployment Disk Size** field. The size must be smaller than the amount of storage space remaining in your Linode plan.
-1.  By default, the new disk is set to use your existing swap disk. If you'd like to create a new swap disk, select a size from the **Swap Disk** menu.
-1.  Enter a password for the `root` user in the **Root Password** field.
-1.  Click **Deploy**.
-
-The disk will be created. Watch the *Host Job Queue* on the Dashboard to monitor the progress. When the process is complete, the disk will appear on the dashboard.
+The disk will be created. Monitor your bell notifications at the top of the Cloud Manager for progress updates on your new disk's creation. You'll need to create or modify a configuration profile to mount the new disk. For instructions, see [Configuration Profiles](#configuration-profiles).
 
 ### Creating a Blank Disk
 
 Create a blank disk if you need detachable storage space or want to download and install your own Linux distribution. Here's how:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-1.  Click the **Linodes** tab.
-1.  Select a Linode. The Linode's dashboard appears.
-1.  Select the **Create a new disk** link. The *Edit disk* webpage appears, as shown below.
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+1.  Click the **Linodes** link in the sidebar.
+1.  Select a Linode. The Linode's detail page appears.
+2.  Click on the **Settings** tab and expand the **Advanced Configurations** panel.
+3.  Click on **Add a Disk**. The **Add Disk** form appears:
 
-    [![Create a new blank disk.](982-disk3-small.png)](983-disk3.png)
+    [![The 'Add Disk' menu.](disks-and-config-profiles-add-blank-disk.png)](disks-and-config-profiles-add-blank-disk.png)
 
-1.  Enter a name for the disk in the **Label** field.
-1.  By default, **Type** is set to `ext4`. We recommend that you stick with this setting.
-1.  Enter a size for the disk in the **Deployment Disk Size** field. The size must be smaller than the amount of storage space remaining in your Linode plan.
-1.  Click **Save Changes**.
+4.  Enter a name for the disk in the **Label** field.
+5.  By default, **Filesystem** is set to `ext4`. We recommend that you stick with this setting.
+6.  Enter a size for the disk in the **Size** field. The size must be smaller than the amount of storage space remaining in your Linode plan.
+7.  Click **Add**.
 
-The disk will be created. Watch the *Host Job Queue* on the Dashboard to monitor the progress. When the process is complete, the disk will appear on the dashboard. You'll need to create or modify a configuration profile to mount the new disk. For instructions, see [Configuration Profiles](#configuration-profiles).
+The disk will be created. Monitor your bell notifications at the top of the Cloud Manager for progress updates on your new disk's creation. You'll need to create or modify a configuration profile to mount the new disk. For instructions, see [Configuration Profiles](#configuration-profiles).
 
 ### Resizing a Disk
 
-Resizing allows you to allocate more storage to a disk so you can store more files, or shrink a disk so you have more storage for the other disks in your account. Here's how to resize a disk:
+Resizing allows you to allocate more storage to a disk so you can store more files on it, or shrink a disk so you have more allocatable space for the other disks.
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-1.  Click the **Linodes** tab.
-1.  Select a Linode. The Linode's dashboard appears.
-1.  Click **Shut down** to turn your Linode off. Watch the *Host Job Queue* for confirmation that the Linode has shut down.
-1.  Select the disk you want to resize. The *Edit disk* webpage appears.
-1.  In the **New Size** field, enter a different size for the disk in megabytes.
-1.  Click **Save Changes**. The Linode's dashboard appears. Watch the *Host Job Queue* for confirmation that the disk has been resized.
-1.  Click **Boot** to turn on the Linode.
+{{< note >}}
+Resizing a disk requires you to power your Linode off, if it is currently in use by your Linode. Shrinking a disk takes longer than increasing its size.
+{{< /note >}}
 
-You have successfully resized the disk.
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+2.  Click the **Linodes** link in the sidebar.
+3.  Select a Linode. The Linode's detail page appears.
+4.  Select **Power Off** from the status dropdown menu to turn your Linode off. Monitor the progress bar at the top of the page for confirmation that your Linode has powered off.
+5.  Click on the **Settings** tab and expand the **Advanced Configurations** panel.
+6.  Click the **more options ellipsis** for the disk you would like to resize, and select **Resize**. The **Resize Disk** form appears.
+
+    [![Resize a disk.](disks-and-config-profiles-resize-a-disk.png)](disks-and-config-profiles-resize-a-disk.png)
+
+7.  In the **Size** field, enter a different size for the disk in megabytes. The maximum size available is shown beneath the field.
+8.  Click **Resize**. A progress bar will appear at the top of the page.
+9.  When resizing is complete, select **Power On** from the status menu to turn on the Linode. You have successfully resized the disk.
 
 ### Duplicating a Disk
 
+{{< note >}}
+Duplicating a disk is not yet available in the Cloud Manager, but this feature is available in the Classic Manager. See [the Classic Manager version of this guide](/docs/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/#duplicating-a-disk) for instructions on how to duplicate a disk.
+{{</ note >}}
+
+<!--
 You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#cloning-disks-and-configuration-profiles).) Here's how to duplicate a disk:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
@@ -116,58 +127,66 @@ You can create an exact copy of a disk by duplicating it. This is an effective w
 1.  Click **Boot** to turn on the Linode.
 
 The disk will be duplicated. Watch the *Host Job Queue* on the Dashboard to monitor the progress. When the process is complete, the disk will appear on the dashboard.
+-->
 
 ### Removing a Disk
 
-You can delete a disk to remove it from your Linode and reallocate its storage space to another disk. This action is permanent and cannot be undone. Here's how to delete a disk:
+You can delete a disk to remove it from your Linode and reallocate its storage space to another disk. Here's how to delete a disk:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-1.  Click the **Linodes** tab.
-1.  Select a Linode. The Linode's dashboard appears.
-1.  Click **Shut down** to turn your Linode off. Watch the *Host Job Queue* for confirmation that the Linode has shut down.
-1.  Select the **Remove** link next to the Linode you want to delete, as shown below. The disk will be deleted. Watch the *Host Job Queue* for confirmation that the disk has been duplicated.
+{{< caution >}}
+Removing a disk is permanent and cannot be undone.
+{{</ caution >}}
 
-    [![Deleting a disk](987-disk5-1-small.png)](986-disk5-1.png)
-
-1.  Click **Boot** to turn on the Linode.
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+2.  Click the **Linodes** link in the sidebar.
+3.  Select a Linode. The Linode's detail page appears.
+4.  Click **Power Off** from the status menu to turn your Linode off. Monitor the progress bar at the top of the page for confirmation that your Linode has powered off.
+5.  Click on the **Settings** tab and expand the **Advanced Configurations** panel.
+6.  Click on the **more options ellipsis** next to the disk you would like to delete and select **Delete**. Monitor your bell notifications for updates on the deletion of your disk.
+7.  Click **Power On** from the status menu to turn on the Linode.
 
 The disk will be deleted. The storage space the disk was using is now available to other disks.
 
 ## Configuration Profiles
 
-Linode's configuration profiles are similar to [GNU GRUB](http://en.wikipedia.org/wiki/GNU_GRUB), the Linux boot loader that allows you to select and boot from an operating system installed on your desktop computer. You can create different configuration profiles to build custom boot configurations with disks, kernels, and the operating system's run level.
+A Linode's configuration profiles are similar to [GNU GRUB](http://en.wikipedia.org/wiki/GNU_GRUB), the Linux boot loader that allows you to select and boot from an operating system installed on your desktop computer. You can create different configuration profiles to build boot configurations with custom disks, kernels, and OS run level settings.
 
 ### Creating a Configuration Profile
 
 Making a new configuration profile allows you to create a new and separate boot configuration for your system. You can specify boot settings and disks to mount. Here's how to create a new configuration profile:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-1.  Click the **Linodes** tab.
-1.  Select a Linode. The Linode's dashboard appears.
-1.  Select the **Create a new Configuration Profile** link. The *Configuration Profile* webpage appears, as shown below.
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+2.  Click the **Linodes** link from the sidebar.
+3.  Select a Linode. The Linode's detail page appears.
+4.  Click on the **Settings** tab and expand the **Advanced Configurations** panel.
+5.  Select the **Add a Configuration** link. The **Add Linode Configuration** form appears:
 
-    [![Creating a configuration profile](createconfprofile-small.png)](createconfprofile.png)
+    [![The Add Linode Configuration menu.](disks-and-config-profiles-add-a-config.png)](disks-and-config-profiles-add-a-config.png)
 
-1.  Enter a descriptive name for the configuration profile in the **Label** field. This name appears on the dashboard and will help you differentiate it from other configuration profiles.
-1.  You can enter comments or notes about this configuration profile in the **Notes** field.
-1.  Select a Linux kernel from the **Kernel** menu. We recommend selecting one of the current and latest kernels.
-1.  In the *Block Device Assignment* section, select a bootable disk, a swap disk (optional), and any other disks that you would like to mount at start up.
-1.  Select a bootable disk from the **root device Standard** menu.
-1. Leave the settings in the *Filesystem/Boot Helpers* section alone, unless you have a specific reason to change them.
-1. Click **Save Changes**.
+6.  Enter a descriptive name for the configuration profile in the **Label** field. This name appears on the Linode's detail page and will help you differentiate it from other configuration profiles.
+7.  You can enter comments or notes about this configuration profile in the **Comments** field.
+8.  Under **VM Mode**, select whether you would like paravirtualization or full-virtualization. This option describes how hardware commands are directed to the host operating system. Paravirtualization is recommended, and is necessary for features like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/).
+9.  Select a Linux kernel from the **Kernel** menu. We recommend selecting one of the current and latest kernels.
+10. Select the **Run Level** for your configuration profile. If you aren't sure which level to choose, choose **Run Default Level**.
+11. Set the **Memory Limit** for the configuration profile. The maximum amount of available memory is displayed below the text field.
+12. In the **Block Device Assignment** section, select a bootable disk, a swap disk (optional), and any other disks that you would like to mount at start up.
+13. Select a bootable disk from the **Root Device** menu.
+14. Leave the settings in the **Filesystem/Boot Helpers** section alone, unless you have a specific reason to change them.
+15. Click **Submit**.
 
-The configuration profile will be created and will appear on the Linode's dashboard.
+The configuration profile will be created and will appear on the Linode's detail page.
 
 ### Editing a Configuration Profile
 
 You can edit existing configuration profiles to change boot settings, set other disks to mount, and more. Here's how to edit a configuration profile:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-1.  Click the **Linodes** tab.
-1.  Select a Linode. The Linode's dashboard appears.
-1.  Select a configuration profile. The *Configuration Profile* appears.
-1.  Edit the settings as necessary.
-1.  When finished, click **Save Changes**.
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+2.  Click the **Linodes** link from the sidebar.
+3.  Select a Linode. The Linode's detail page appears.
+4.  Click on the **Settings** tab and expand the **Advanced Configurations** panel.
+5.  Click the configuration profile's **more options ellipsis** and select **Edit**. The **Edit Linode Configuration** form appears.
+6.  Edit the settings as necessary.
+7.  When finished, click **Submit**.
 
 The changes to the configuration profile have been saved. You may need to reboot your Linode to activate the changes.
 
@@ -175,27 +194,30 @@ The changes to the configuration profile have been saved. You may need to reboot
 
 You can create and store many different configuration profiles in the Linode Manager, but you can only boot your Linode from one configuration profile at a time. Here's how to select a configuration profile and boot your Linode from it:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-1.  Click the **Linodes** tab.
-1.  Select a Linode. The Linode's dashboard appears.
-1.  Click the button to select a configuration profile, as shown below.
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+2.  Click the **Linodes** link from the sidebar.
+3.  Select a Linode. The Linode's detail page appears.
+4.  Click on the **Settings** tab and expand the **Advanced Configurations** panel.
+5.  Click the more options ellipsis for the configuration profile you would like to boot from:
 
-    [![Selecting a configuration profile](993-disk7-1.png)](993-disk7-1.png)
+    [![Selecting a configuration profile](disks-and-config-profiles-boot-this-config.png)](disks-and-config-profiles-boot-this-config.png)
 
-1.  Click **Reboot** to restart your Linode using the selected configuration profile.
+6.  Select **Boot This Config**. Monitor the progress bar at the top of the page as your Linode boots with your selected profile.
 
 You have successfully selected and booted your Linode from a configuration profile.
 
 ### Removing a Configuration Profile
 
-You can remove a configuration profile from the Linode Manager at anytime. Here's how:
+You can remove a configuration profile from the Linode Cloud Manager at any time. Here's how:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-1.  Click the **Linodes** tab.
-1.  Select a Linode. The Linode's dashboard appears.
-1.  Select the **Remove** link next to the configuration profile you want to remove.
+1.  Log in to the [Linode Cloud Manager](https://manager.linode.com).
+2.  Click the **Linodes** link from the sidebar.
+3.  Select a Linode. The Linode's detail page appears.
+4.  Click on the **Settings** tab and expand the **Advanced Configurations** panel.
+5.  Click the **more options ellipsis** for the configuration profile you would like to remove.
+6.  Select the **Delete** option from the dropdown menu that appears.
 
-The configuration profile is removed from the dashboard.
+The configuration profile is removed from the Linode detail page.
 
 ## Cloning Disks and Configuration Profiles
 
@@ -205,9 +227,6 @@ You can *clone* disks and configuration profiles from one Linode to another, as 
 
 If you're wondering how you could use disks and configuration profiles, here are some ideas to get you started:
 
--   **Duplicate Server Configurations:** It takes time to configure your Linode. Preserve that hard work by [duplicating the disk](#duplicating-a-disk) to preserve all of your settings and applications in their current state. If you decide to create another Linode later, you could [clone a saved disk](#cloning-disks-and-configuration-profiles) to the new Linode in a matter of minutes, saving yourself hours of work.
 -   **Automate Server Builds:** If you run a large website that requires multiple servers, or if you just love automating things, you'll want to [automate your server builds](/docs/platform/automating-server-builds/). You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden disk* that can be cloned to multiple Linodes.
 -   **Experiment with Distributions:** New to Linux? Take different distributions out for a spin by creating a separate disk for each flavor of Linux. Once you find a distribution you like, you can delete all of the disks except the one with your favorite distribution.
 -   **Create a Software Testing Environment:** If you're a developer, you can create different disks for testing purposes. Every disk can hold a different 32- or 64-bit distribution, and every configuration profile can be set to use a different kernel. Even if you're not a developer, this is ideal for testing open source or proprietary software on different distributions.
-
-There are plenty of other ways you can use disks and configuration profiles. Use your imagination!
