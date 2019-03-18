@@ -49,7 +49,7 @@ To access your Linode when it's running in rescue mode, you'll need to use the L
 
 [![Lish console](1002-rescue1-2.png)](1002-rescue1-2.png)
 
-Now you've connected to your Linode, you can start doing stuff in rescue mode.
+Now you've connected to your Linode, you can start working in rescue mode.
 
 ### Performing a File System Check
 
@@ -88,7 +88,7 @@ By default, your disks are not mounted when your Linode boots into rescue mode. 
 
     mount -o barrier=0 /dev/sda
 
-Disks that contain a single file system will have mount points under `/media` in the rescue environment's `/etc/fstab` file. To view the directories on the disk, enter the following command: :
+Disks that contain a single file system will have mount points under `/media` in the rescue environment's `/etc/fstab` file. To view the directories on the disk, enter the following command:
 
     ls /media/sda
 
