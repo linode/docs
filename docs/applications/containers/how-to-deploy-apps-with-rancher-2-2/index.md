@@ -126,9 +126,7 @@ Rancher includes two kinds of integrations with hosting providers:
 
 -   A *node driver* allows Rancher to create and administer an unmanaged Kubernetes cluster. Rancher will directly provision your control plane and etcd nodes along with your worker nodes. Your cloud host does not manage your control plane and etcd components.
 
-    Rancher is shipped with a node driver for Linode, but it is inactive by default.
-
-To activate the Linode node driver:
+Rancher is shipped with a node driver for Linode, but it is inactive by default. To activate the Linode node driver:
 
 1.  Navigate to the **Drivers** item under the **Tools** dropdown menu in the main navigation bar:
 
