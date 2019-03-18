@@ -642,6 +642,7 @@ knowledgebase
 konversation
 kube
 kubeadm
+kubeconfig
 kubectl
 kubelet
 kubelets

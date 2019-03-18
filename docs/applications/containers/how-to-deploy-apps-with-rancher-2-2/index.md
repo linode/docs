@@ -282,7 +282,7 @@ Instead, compare your YAML file with the completed example to ensure you have in
 
 1.  If you visit the list of your Linodes in the Linode Cloud Manager, you will see the new nodes in your cluster:
 
-    ![Linode Cloud Manager - new cluster nodes](cloud-manager-linodes-provisioning.png "New cluster nodes listed in Lindoe Cloud Manager")
+    ![Linode Cloud Manager - new cluster nodes](cloud-manager-linodes-provisioning.png "New cluster nodes listed in Linode Cloud Manager")
 
     {{< note >}}
 If your nodes do not deploy as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
@@ -348,7 +348,7 @@ Rancher introduces an organizational concept called [*projects*](https://rancher
 
 1.  To view your cluster's projects, click on the cluster selection menu in Rancher's navigation bar, then hover over your cluster in the dropdown menu's **Clusters** list:
 
-    ![Rancher clsuter selection menu - list of projects](cluster-selection-menu-show-projects.png "Rancher clsuter selection menu - list of projects")
+    ![Rancher cluster selection menu - list of projects](cluster-selection-menu-show-projects.png "Rancher cluster selection menu - list of projects")
 
     A new cluster created through Rancher will have a *Default* project and a *System* project.
 
@@ -506,7 +506,7 @@ Rancher also provides an easy way to scale your app's deployments:
 
 1.  Click on the name of the WordPress app:
 
-    ![Rancher deployed apps list - WordPress app completed provioning](default-project-app-view-wordpress-provisioned-link-highlighted.png "Rancher deployed apps list - WordPress app completed provioning")
+    ![Rancher deployed apps list - WordPress app completed provisioning](default-project-app-view-wordpress-provisioned-link-highlighted.png "Rancher deployed apps list - WordPress app completed provisioning")
 
 1.  In the **Workloads** section, click on the **wordpress-wordpress** link in the **Name** column for that deployment:
 
