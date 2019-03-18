@@ -29,18 +29,18 @@ The Domains section of the Cloud Manager can automatically add all of these reco
 
 ## Configure Subdomains
 
-1.  To configure a subdomain, such as `staging.example-site-demo.com`, create an A record with the subdomain's hostname. Click **Add an A/AAA Record**.
+1.  To configure a subdomain (e.g. `staging.example-site-demo.com`), create an A record with the subdomain's hostname. Click **Add an A/AAA Record**:
 
     [![Create a new A record by first click on "Add an A/AAA Record"](common-dns-add-an-a-record.png)](common-dns-add-an-a-record.png)
 
-1.  Add the subdomain under the **Hostname** field. Point the record at the IP address of the server you want to host the subdomain:
+1.  Add the subdomain under the **Hostname** field. Assign the IP address of the server you want to host the subdomain:
 
     [![Create a new A record, following the instructions in the "Adding" section. Add the subdomain text to the "Hostname" field. For example, you could type "staging" - NOT "staging.example-site-demo.com".](common-dns-add-an-a-record-menu.png)](common-dns-add-an-a-record-menu.png)
 
 1. Click on the **Save** button to create the record.
 
     {{< disclosure-note "Multi-level Subdomains" >}}
-The Linode Cloud Manager does not support adding a subdomain of a subdomain in the same domain zone. For example, if you have `example.com` as a domain with an A record for `staging.example.com`, you cannot create `test.staging.example.com` within that same domain zone. Instead, create a new domain entry for the subdomain `staging.example.com`. Then, add an A record for `test.staging.example.com`.
+The Linode Cloud Manager does not support adding a subdomain of a subdomain in the same domain zone. For example, if you have `example.com` as a domain with an A record for `staging.example.com`, you cannot create `test.staging.example.com` within that same domain zone. Instead, create a separate domain zone for the subdomain `staging.example.com`. Then, add an A record for `test.staging.example.com` to that new zone.
 
 See the [subdomains](/docs/platform/manager/dns-manager/#subdomains) section of the [DNS manager](/docs/platform/manager/dns-manager/#subdomains) guide for more information.
     {{</ disclosure-note >}}
@@ -57,7 +57,7 @@ If you have more than one server, but only one domain name, you can point A reco
 
 ## Route Email to Third-Party Mail Services
 
-To route email to a third-party email service, create MX records that associate your mail server (for example, `mail.example-site-demo.com`) with a *hostname* provided by the third-party service. For instructions, see the website of your third-party email service.
+To route email to a third-party email service, create MX records that associate your mail server (for example, `mail.example-site-demo.com`) with a *hostname* provided by the third-party service. For more detailed instructions, see the website of your third-party email service.
 
 ## Use Wildcard DNS Records
 
