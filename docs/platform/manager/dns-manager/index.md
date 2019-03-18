@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use the Domains section of the Linode Manger to Direct Domains to Your Linode.'
+description: 'Use the Domains section of the Linode Cloud Manger to Direct Domains to Your Linode.'
 keywords: ["dns manager", "linode dns", "Linode Cloud Manager dns", "dns configuration", "ttl", "domain zones", "domain name"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/dns/dns-manager/','platform/manager/dns-manager-new-manager/','dns-guides/configuring-dns-with-the-linode-manager/','networking/dns/dns-manager-overview/','dns-manager/']
@@ -16,7 +16,7 @@ classic_manager_link: platform/manager/dns-manager-classic-manager/
 
 <!-- ![DNS Manager Overview](dns-manager-overview.png) -->
 
-The *Domains* section of the Linode Cloud Manager is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the Domains section and basic domain setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide.
+The *Domains* section of the Linode Cloud Manager is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the **Domains** section and basic domain setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide.
 
 {{< note >}}
 As an added benefit, Linode employs [Cloudflare](https://cloudflare.com) to provide denial of service (DDoS) mitigation, load balancing, and increased geographic distribution for its [name servers](/docs/networking/dns/dns-records-an-introduction/#name-servers).
@@ -27,7 +27,7 @@ As an added benefit, Linode employs [Cloudflare](https://cloudflare.com) to prov
 The Domain Name System (DNS) attaches human-readable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`. This global system allows users to remember the names of websites instead of their numeric IP addresses.
 
 {{< note >}}
-All steps in this guide are completed within the **[Domains](https://cloud.linode.com/domains)** section of your [Linode Cloud Manager](https://cloud.linode.com/).
+All steps in this guide are completed within the **[Domains](https://cloud.linode.com/domains)** section of the [Linode Cloud Manager](https://cloud.linode.com/).
 {{< /note >}}
 
 ## DNS Set-Up Checklist
@@ -38,7 +38,7 @@ DNS records are only actively hosted on accounts with at least one Linode. When 
 2.  Set your domain name to [use Linode's name servers](#use-linode-s-name-servers-with-your-domain). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
 3.  Use the DNS Manager to [add a domain](#add-a-domain), and then start [adding some basic DNS records](#add-records).
 4.  [Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
-5.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/docs/networking/dns/common-dns-configurations/).
+5.  If you have any special DNS requirements, such as when using a third-party email server, add additional DNS records [for your specific needs](/docs/networking/dns/common-dns-configurations/).
 
 ## Use Linode's Name Servers with Your Domain
 
@@ -56,22 +56,27 @@ DNS changes can take up to 24 hours to propagate throughout the internet, althou
 
 ## Create and Manage Domains
 
-You can create and manage domains from the Domains section of the Linode Cloud Manager:
+You can create and manage domains from the **Domains** section of the Linode Cloud Manager. To find this area, log in to your [Cloud Manager](https://cloud.linode.com/) account and click the **Domains** link in the sidebar:
 
-1. Log in to your [Linode Cloud Manager](https://cloud.linode.com/) account and select the **Domains** link from the sidebar.
+![The DNS Manger](dns-section.png "The DNS Manager")
 
-    ![The DNS Manger](dns-section.png "The DNS Manager")
+### DNS Manager Options Overview
 
-    The section below provides a detailed description of the available options within the Domains section of the Linode Cloud Manager:
+The section below provides a detailed description of the available options within the **Domains** section of the Linode Cloud Manager:
 
-      ![The DNS Manger](domain-manager.png "The DNS Manager")
+![The DNS Manger](domain-manager.png "The DNS Manager")
 
-    1.  All of your domains are listed under the **Domain** heading. A *domain zone* is a collection of DNS records for a single domain name. **Creating a domain, also creates its corresponding domain zone.** The term domain zone becomes synonymous with the term "domain", both in terms of use and administration
+1.  All of your domains are listed under the **Domains** table. Click the name of a domain to add or edit DNS records within that domain's zone. Before you can add any DNS records, you must add a domain.
 
-        Click the name of a domain to add or edit DNS records within that domain's zone. Before you can add any DNS records, you must add a domain.
-    1.  If you have a zone that can be exported from a server or another hosting provider, click **Import a Zone** to import it.
-    1.  Click **Add a Domain** to create a new domain zone.
-    1.  Click on the **more options ellipsis** to the right of a domain zone, to edit DNS records within a zone, to check or delete a zone, to view a zone's file, or to clone an existing zone.
+    {{< note >}}
+A *domain zone* is a collection of DNS records for a single domain name. **Creating a domain also creates its corresponding domain zone.** The term *domain zone* becomes synonymous with the term *domain*, both in terms of use and administration.
+{{< /note >}}
+
+1.  If you have a zone that can be exported from a server or another hosting provider, click **Import a Zone** to import it.
+
+1.  Click **Add a Domain** to create a new domain zone.
+
+1.  Click on the **more options ellipsis** to corresponding to a domain zone to edit DNS records within a zone, clone an existing zone, or remove a zone.
 
 ### Add a Domain
 
@@ -121,7 +126,7 @@ If you selected the option to have the DNS Manager insert basic DNS records, tho
 
 When you first create a domain, you'll need to add some DNS records. <!-- The DNS Manager can create some basic records to get you started when you create your domain zone, --> This section explains how to add your own records.
 
-1.  Select a domain from within the Domains section of the Cloud Manager. The domain's detail page appears:
+1.  Select a domain from within the **Domains** section of the Cloud Manager. The domain's detail page appears:
 
     [![This page has seven sections showing seven different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, and SRV. You can adjust the SOA record by clicking the "Settings" link in that section. The next six sections each have a corresponding link that lets you add a new record of that type. For example, to add an NS record, click the "Add a new NS record" link. There are similar links for MX, A, CNAME, TXT, and SRV records.](domain-domain-records-small.png)](domain-domain-records.png)
 
@@ -145,7 +150,7 @@ The exact form fields will vary depending on the type of DNS record you select.
 
 To modify a Domain's existing DNS records:
 
-1.  From the Domains section of the Cloud Manager, select the domain whose DNS records you'd like to edit. The DNS records for the selected domain zone will appear.
+1.  From the **Domains** section of the Cloud Manager, select the domain whose DNS records you'd like to edit. The DNS records for the selected domain zone will appear.
 
 1.  Next to the DNS record you would like to edit, click on the **more options ellipsis**.
 
@@ -163,31 +168,31 @@ A wildcard DNS record will match requests for domains that do not exist. Wildcar
 
 To create a [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_record):
 
-1. Navigate to the domains section of the Cloud Manager and click on the Domain that you'd like to add a wildcard DNS record to.
+1. Navigate to the **Domains** section of the Cloud Manager and click on the Domain that you'd like to add a wildcard DNS record to.
 
-1. Find the **A/AAAA Record** section and select **Add an A/AAA Record**.
+1. Find the **A/AAAA Record** section and select **Add an A/AAAA Record**.
 
-1. When the **Create A/AAA Record** panel appears, enter an asterisk (`*`) in the **Hostname** field and provide a valid IP address in the **IP Address** field.
+1. When the **Create A/AAAA Record** panel appears, enter an asterisk (`*`) in the **Hostname** field and provide a valid IP address in the **IP Address** field.
 
 1. Click **Save**. It can take up to 30 minutes for the record to be updated.
 
 {{< note >}}
-A wildcard must always be the furthest subdomain from the TLD (top level domain), i.e. `*.example.com`. If you would like to add a wildcard as a subdomain for a subdomain, you will need to add a new domain entry with its own domain zone and DNS records. For example, to create `*.subdomain.example.com`, you must add a domain entry for `subdomain.example.com` first, then add an A/AAA DNS record as indicated above.
+A wildcard must always be the furthest subdomain from the TLD (top level domain), i.e. `*.example.com`. If you would like to add a wildcard as a subdomain for a subdomain, you will need to add a new domain zone for that subdomain and then add the wildcard record to it. For example, to create `*.subdomain.example.com`, you must add a separate domain zone for `subdomain.example.com` first, then add an A/AAAA DNS record to that zone as indicated above.
 {{</ note >}}
 
 ### Subdomains
 
 The Linode Cloud Manager does not support the addition of a subdomain on top of an existing subdomain in the same domain zone. For example, if you have `example.com` as a domain with an A record for `subdomain.example.com`, you cannot create `another.subdomain.example.com` within that same domain zone.
 
-Instead, [add the subdomain](#add-a-domain) as a separate domain with its own domain zone and DNS records. Then add an A/AAA record for the second-level subdomain. In the previous example, you would create a domain named `subdomain.example.com`, the create an A/AAA record with hostname `another`.
+Instead, [add the subdomain](#add-a-domain) to the Cloud Manager as a separate domain with its own domain zone and DNS records. Then add an A/AAAA record for the second-level subdomain. In the previous example, you would create a domain zone named `subdomain.example.com`, the create an A/AAAA record with hostname `another` inside of it.
 
 ### Import Domains with AXFR
 
-If you're migrating domains to Linode from another hosting provider and that provider allows zone transfers from its DNS server, it may be possible to import your existing domain and its DNS records into the Linode Cloud Manager. If the import is successful, the domain along with all of its existing DNS records will be available in the Domains section of the Cloud Manager.
+If you're migrating domains to Linode from another hosting provider and that provider allows zone transfers from its DNS server, it may be possible to import your existing domain and its DNS records into the Linode Cloud Manager. If the import is successful, the domain along with all of its existing DNS records will be available in the **Domains** section of the Cloud Manager.
 
 Here's how to import a zone file:
 
-1.  Click on **Import a Zone**, from the Domains section.
+1.  From the **Domains** section, click on **Import a Zone**.
 
     ![This page lets you import a domain zone.](domain-import-a-zone.png)
 
@@ -208,11 +213,11 @@ The name server must allow zone transfers (AXFR) from the following IP addresses
 
 ### Clone DNS records
 
-The *Clone* feature allows you to copy DNS records from an existing domain in your Linode account to a new domain. Assuming you've already set up DNS records for one domain name, this is a good way to quickly create DNS records for another domain name that will be hosted on your existing Linode.
+The *Clone* feature allows you to copy DNS records from an existing domain in your Linode account to a new domain. If you've already set up DNS records for one of the services you host on your Linode account, this is a good way to quickly assign another domain to that same service.
 
 Here's how to clone DNS records for an existing domain:
 
-1.  Click on the **more options ellipsis** corresponding to the Domain whose DNS records you would like to clone and select **Clone** from the menu.
+1.  Click on the **more options ellipsis** corresponding to the domain whose DNS records you would like to clone and select **Clone** from the menu.
 
 1.  Enter the name of the new domain in the **New Domain** field.
 
@@ -224,7 +229,7 @@ Here's how to clone DNS records for an existing domain:
 
 If one of your domain names has expired or if you want to start hosting it on another DNS provider, you should permanently remove the domain and all of its associated DNS records.
 
-1.  From the Domains section of the Cloud Manager, find the domain you would like to remove and click its **more options ellipsis**.
+1.  From the **Domains** section of the Cloud Manager, find the domain you would like to remove and click its **more options ellipsis**.
 
 1.  Select **Remove** to permanently delete the domain, including all associated DNS records. It can take up to 30 minutes for the changes to take effect.
 
@@ -259,7 +264,7 @@ TTL is always written out in seconds, so 24 hours = 86400 seconds.
 1.  Check the TTL value for the DNS record you will be updating. Typically, this will be 24 or 48 hours.
 1.  Update the relevant DNS records 48 to 96 hours in advance (for a 24-48 hour record), taking into account any intermediate DNS servers. Lower the TTL to five minutes (300 seconds, or the lowest allowed value). Do not make any other changes at this time.
 1.  Wait out the original 48 to 96 hours.
-1.  Visit your domain's DNS records in the Linode Cloud manager again to update your IP address and anything else needed.
+1.  Visit your domain's DNS records in the Linode Cloud Manager again to update your IP address and anything else needed.
 1.  The DNS changes should propagate within 30 minutes.
 
 ### Find Current DNS Information
