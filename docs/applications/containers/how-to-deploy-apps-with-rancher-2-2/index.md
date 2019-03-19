@@ -148,36 +148,30 @@ The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Cont
 
 ## Deploy a Kubernetes Cluster
 
-1.  Return to the home page by hovering over the **Global** dropdown menu in the main navigation bar and then clicking the **Global** menu item:
+### Add a Node Template
 
-    ![Rancher return to the global view](navigate-back-to-global-view.gif "Navigate back to the home page by selecting the Global menu option in the main navigation bar")
+*Node templates* are used by Rancher to provision cluster nodes. When you create a node template, you can specify configuration parameters, like the region, instance type, and Linux image that should be used for any node in the cluster. You can set different templates for different clusters, which allows you to choose the right resources for your different workloads.
 
-1.  Click on the **Add Cluster** button. The **Add Cluster** form will appear. The name for our example cluster will be `example-cluster`.
+Before provisioning your cluster, you will need to add the node template it will use. To add a node template:
 
-1.  Select the Linode driver from the **From nodes in an infrastructure provider** section:
+1.  Click on your **User Avatar** icon in the upper right-hand corner and select **Node Templates**.
 
-    ![Rancher Add Cluster form - Linode node driver selected](add-cluster-form-linode-node-driver-selected.png "Linode node driver selected in the Add Cluster form")
+    ![Click on the User Avatar icon](add-node-template-profile.png "Click on your User Avatar icon in the upper right-hand corner and select Node Templates")
 
-1.  Enter a name for your cluster in the **Cluster Name** field.
+1.  On the *Node Templates* page, click on the **Add Template** button in the upper right-hand corner.
 
-1.  In the **Node Pools** section, click the **Add Node Template** button:
+1.  The *Add Node Template* dialog will appear, select Linode from the list of providers and enter in your Linode APIv4 token in the **API Token** field.
 
-    ![Rancher Add Cluster form - Add Node Template button highlighted](add-cluster-form-add-node-template-button-highlighted.png "Linode node driver selected in the Add Cluster form")
+    ![Add Node Template dialog window](add-node-template-api-token.png "Select Linode from the list of providers and enter in your Linode APIv4 token")
 
-    -   A *node pool* is Rancher's method for creating the nodes (Linodes) that form your cluster. You specify how many nodes should be in a node pool, along with the *node template* for those nodes in that pool. If Rancher later detects that one of the nodes has lost connectivity with the cluster, it will automatically create a new one.
+1. Click on the **Next:Configure Instances** button.
 
-        When configuring a node pool, you also specify which of your cluster's components operate on the nodes in the pool. For example, you can have one pool that only runs your cluster's etcd database, another pool which only runs your control plane components (the Kubernetes API server, scheduler, and controller manager), and a third pool which runs your application workloads.
-
-    -   A *node template* specifies the configuration for each node in a pool, like the region, instance type, and Linux image. You can set different templates for different pools, which allows you to choose the right resources for your different workloads.
-
-1.  A new dialog will appear that asks for your Linode APIv4 token. Enter it and then click the form's **Next: Configure Instances** button.
-
-1.  Another dialog will appear which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](/docs/quick-answers/linode-platform/tags-and-groups/) you'd like to apply to your nodes.
+1. Another dialog will appear which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](/docs/quick-answers/linode-platform/tags-and-groups/) you’d like to apply to your nodes.
 
     ![Rancher Add Node Template form - Linode options](add-node-template-linode-options.png "The Linode options in the Add Node Template form")
 
     {{< note >}}
-We recommend that you choose a Linode 2GB or higher for the nodes in a Kubernetes cluster. The Block Storage service has not been deployed to our Atlanta (US-Southeast) data center, and Block Storage Volumes will be used in this guide's example cluster, so please choose a different region.
+We recommend that you choose a Linode 2GB or higher for the nodes in a Kubernetes cluster. The Block Storage service has not been deployed to our Atlanta (US-Southeast) data center. Since this guide will use Block Storage Volumes in its example cluster, please choose a different region when creating your node template.
 {{< /note >}}
 
 1.  Enter a name for your template. This can be arbitrary, but it's helpful to call it something that will help you remember the options you set in the template form, like `newark-linode8gb-ubuntu1804`.
@@ -188,17 +182,39 @@ We recommend that you choose a Linode 2GB or higher for the nodes in a Kubernete
 
     {{< note >}}
 All other node template settings are optional and will not be used in this guide. You do not need to set a password for the nodes created through this template; Rancher will generate one automatically. As well, Rancher provides command-line access to the Kubernetes API for your cluster, so logging into your nodes generally isn't needed.
-{{< /note >}}
+    {{< /note >}}
 
-1.  You will be returned to the **Add Cluster** form. Because our node template has been set up, we can now configure a node pool for the new cluster. In the **Node Pools** section, set a value for the **Name Prefix** field. For each Linode that Rancher creates for that node pool, the Linode will be prefixed according to the name you set (e.g. if the name prefix is `example-cluster-`, then your Linodes will be named `example-cluster-1`, `example-cluster-2`, etc).
+1. You will be returned to the *Node Templates* page where your node template will be visible.
 
-1.  Set the value for the **Count** field to 3. Rancher will create 3 Linodes for the node pool.
+    ![Rancher Node Template list page](add-node-template-list.png "You will be returned to the *Node Templates* page where the node template you just created should be visible.")
+
+### Provision a Cluster
+
+1.  Return to the home page by hovering over the **Global** dropdown menu in the main navigation bar and then clicking the **Global** menu item:
+
+    ![Rancher return to the global view](navigate-back-to-global-view.gif "Navigate back to the home page by selecting the Global menu option in the main navigation bar")
+
+1.  Click on the **Add Cluster** button. The **Add Cluster** form will appear.
+
+1.  Select the Linode driver from the **From nodes in an infrastructure provider** section:
+
+    ![Rancher Add Cluster form - Linode node driver selected](add-cluster-form-linode-node-driver-selected.png "Linode node driver selected in the Add Cluster form")
+
+1.  Enter a name for your cluster in the **Cluster Name** field. The name for our example cluster will be `example-cluster`.
+
+1.  In the **Node Pools** section, under the *Template* column, you should see the node template you created in the previous section of this guide. Set a value for the **Name Prefix** field. For each Linode that Rancher creates for that node pool, the Linode will be prefixed according to the name you set (e.g. if the name prefix is `example-cluster-`, then your Linodes will be named `example-cluster-1`, `example-cluster-2`, etc.
+
+    ![Rancher Add Cluster form - Add Node Template button highlighted](add-cluster-form-add-node-template-button-highlighted.png "Linode node driver selected in the Add Cluster form")
+
+    - A *node pool* is Rancher’s method for creating the nodes (Linodes) that form your cluster. You specify how many nodes should be in a node pool, along with the node template for those nodes in that pool. If Rancher later detects that one of the nodes has lost connectivity with the cluster, it will automatically create a new one.
+
+    - When configuring a node pool, you also specify which of your cluster’s components operate on the nodes in the pool. For example, you can have one pool that only runs your cluster’s etcd database, another pool which only runs your control plane components (the Kubernetes API server, scheduler, and controller manager), and a third pool which runs your application workloads.
+
+1.  Set the value for the **Count** field to `3`. Rancher will create 3 Linodes for the node pool.
 
 1.  Toggle on the checkboxes for **etcd**, **Control Plane**, and **Worker**. In our example cluster, the nodes for this node pool will run each of these components. Your configured form should look like the following:
 
     ![Rancher Add Node Template form - single node pool configuration](add-cluster-form-3-node-all-role-pool.png "A node pool with a count of 3 that runs all cluster components")
-
-    You do not need to click on the **Add Node Pool** button. You only need to click this button if you want to add a second node pool to your cluster.
 
     {{< note >}}
 When you set up a cluster for production, avoid having a node pool that runs your workloads alongside your etcd or control plane components. An example node pool configuration which splits the etcd and control plane components from your workloads would look like the following:
@@ -206,7 +222,7 @@ When you set up a cluster for production, avoid having a node pool that runs you
 ![Rancher Add Node Template form - example production node pool configuration](add-cluster-form-example-production-node-pools.png "An example node pool configuration for a production cluster")
 
 Review Rancher's [Production Ready Cluster](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/production/) documentation for more guidance on setting up production clusters.
-{{< /note >}}
+    {{< /note >}}
 
 1.  The last part in creating your cluster is to configure Linode's CCM and CSI. In the **Cluster Options** section, toggle on the **Custom** option for the **Cloud Provider** field, then click on the **Edit as YAML** button above the section.
 
@@ -300,11 +316,11 @@ If your nodes do not deploy as expected, then you may have run into a limit on t
 
     ![Rancher cluster dashboard](cluster-dashboard-provisioning.png "Rancher cluster dashboard with placeholder graphic")
 
-1.  Note that the items in the navigation bar will change when viewing a cluster:
+1.  Note that the items in the main navigation bar will change when viewing a cluster:
 
     ![Rancher navigation bar - cluster mode](cluster-navigation-bar.png "Rancher navigation bar - cluster mode")
 
-1.  Click on the **Nodes** navigation bar item:
+1.  Click on the **Nodes** main menu item:
 
     ![Rancher cluster navigation bar - Nodes highlighted](cluster-navigation-bar-nodes-highlighted.png "Rancher cluster navigation bar - Nodes highlighted")
 
@@ -312,7 +328,7 @@ If your nodes do not deploy as expected, then you may have run into a limit on t
 
     ![Rancher cluster nodes list - provisioning](cluster-nodes-list-provisioning.png "Rancher cluster nodes list - provisioning")
 
-    When the nodes finish provisioning, the **Active** label will displayed:
+    When the nodes finish provisioning, the **Active** label will be displayed:
 
     ![Rancher cluster nodes list - active](cluster-nodes-list-active.png "Rancher cluster nodes list - active")
 
@@ -360,7 +376,7 @@ Rancher introduces an organizational concept called [*projects*](https://rancher
 
     ![Rancher cluster selection menu - Default project highlighted](cluster-selection-menu-default-project-highlighted.png "Rancher cluster selection menu - Default project highlighted")
 
-1.  The **Workloads** view for the project will appear, but it will be empty, as no apps have been deployed yet. Note also that the items in the navigation bar will change when viewing a project:
+1.  The **Workloads** view for the project will appear, but it will be empty, as no apps have been deployed yet. Also, note that the items in the navigation bar will change when viewing a project:
 
     ![Rancher navigation bar - project mode](default-project-navigation-bar.png "Rancher navigation bar - project mode")
 
@@ -390,7 +406,7 @@ To test out deploying an app on your new cluster, launch the WordPress app from 
 
     ![Rancher WordPress setup form - WordPress Settings](wordpress-app-form-wordpress-settings.png "Rancher WordPress setup form - WordPress Settings")
 
-1.  In the **Database Settings** section, enter a password for WordPress's database user. Then set **MariaDB Persistent Volume Enabled** to **True** and select the **linode-block-storage** option from the **Default StorageClass for MariaDB** dropdown menu:
+1.  In the **Database Settings** section, enter a password for WordPress' database user. Then set **MariaDB Persistent Volume Enabled** to **True** and select the **linode-block-storage** option from the **Default StorageClass for MariaDB** dropdown menu:
 
     ![Rancher WordPress setup form - Database Settings](wordpress-app-form-database-settings.png "Rancher WordPress setup form - Database Settings")
 
@@ -458,7 +474,7 @@ metadata:
 
 1.  It may take some time for Linode's DNS database to update, so if you don't see the record show up in the Cloud Manager immediately, try refreshing it after a few minutes.
 
-    After the record becomes visible in the Cloud Manager, it can also take time for the DNS change to [propagate](/docs/platform/manager/dns-manager/#wait-for-propagation) to your local ISP. After this propagating takes place, you should be able to view your WordPress app by navigating to the address you set up.
+    After the record becomes visible in the Cloud Manager, it can also take time for the DNS change to [propagate](/docs/platform/manager/dns-manager/#wait-for-propagation) to your local ISP. After the DNS change has propogated, you should be able to view your WordPress app by navigating to the address you set up.
 
 ## Scaling your Cluster and App
 
@@ -467,14 +483,14 @@ Rancher makes it easy to scale the number of nodes in your cluster and to scale 
 ### Scale your Cluster
 
 {{< caution >}}
-The example instructions in this section will add nodes to your cluster, which will add further billable services on your account. You can read these instructions without performing them on your own account if you prefer.
+The example instructions in this section will add nodes to your cluster, which will add further billable services to your account. You can read these instructions without performing them on your own account if you prefer.
 {{< /caution >}}
 
 1.  Return to the home page by hovering over the **Global** dropdown menu in the main navigation bar and then clicking the **Global** menu item:
 
     ![Rancher return to the global view](navigate-back-to-global-view.gif "Navigate back to the home page by selecting the Global menu option in the main navigation bar")
 
-1.  Your cluster will appear on the page that appears. Click on the **more options ellipsis** corresponding to the cluster and then click on the **Edit** item from the dropdown menu that appears:
+1.  Your cluster will appear on the page that appears. Click on the **more options ellipsis** corresponding to the cluster and then click on the **Edit** item from the dropdown menu:
 
     ![Rancher global list of clusters - Edit option highlighted](global-home-page-edit-cluster-highlighted.png "Rancher global list of clusters - Edit option highlighted")
 
@@ -520,7 +536,7 @@ Rancher also provides an easy way to scale your app's deployments:
 
 In addition to manually creating users that can access your Rancher application, you can also enable GitHub authentication and then invite GitHub users:
 
-1.  From the Global home page, click on the **Security** item in the navigation bar and then select **Authentication** from the dropdown menu that appears:
+1.  From the Global home page, click on the **Security** item in the navigation bar and then select **Authentication** from the dropdown menu:
 
     ![Rancher Security navigation bar item - Authentication highlighted](security-menu-authentication-highlighted.png "Rancher Security navigation bar item - Authentication highlighted")
 
