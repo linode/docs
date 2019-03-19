@@ -20,11 +20,17 @@
     "type": "dict",
     "description": "First and last names of the original guide author."
   },
+  "classic_manager_link": {
+	  "elements": false,
+	  "required": false,
+	  "type": "text",
+	  "description": "In a guide which features copy or screenshots of the new Cloud Manager, this provides a link to the older guide written for the Linode Classic Manager, if an older/classic version of the guide was previously written. The link will be included within the Linode Classic Manager banner message at the bottom of the guide. The link must be a string using the alias format (platform/example-guide-classic-manager). Both the classic_manager_link and cloud_manager_link should be used between corresponding guides to create a bi-directional link. Must use alias-style relative links (e.g. platform/manager/dns-manager-classic-manager/)."
+  },
   "cloud_manager_link": {
 	  "elements": false,
 	  "required": false,
 	  "type": "text",
-	  "description": "In a guide written for the current Linode Manager, if a new version of the guide exists written for the new Linode Manager, use this in the original guide to embed a link to the new guide. Must use alias-style relative links (e.g. platform/manager/dns-manager-cloud-manager/)."
+	  "description": "In a guide which features copy or screenshots of the Linode Classic Manager, this provides a link to a guide written for the new Cloud Manager, if a new version of the guide has been written. The link will be included within the Cloud Manager banner message at the top of the guide. The link must be a string using the alias format (platform/example-guide). Both the classic_manager_link and cloud_manager_link should be used between corresponding guides to create a bi-directional link. Must use alias-style relative links (e.g. platform/manager/dns-manager/)."
   },
   "concentrations": {
     "elements": false,

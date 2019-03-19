@@ -5,15 +5,15 @@ author:
 description: 'Create Custom Instances and Automate Deployment with StackScripts.'
 keywords: ["ami", "automation", "elasticity", "cloud", "custom instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['stackscripts/']
-modified: 2014-11-12
+aliases: ['platform/stackscripts-new-manager/','stackscripts/']
+modified: 2018-08-22
 modified_by:
-  name: Ricardo Feliciano
+  name: Linode
 published: 2011-04-05
 title: Automate Deployment with StackScripts
 external_resources:
   - '[StackScript Community Library](http://linode.com/stackscripts)'
-cloud_manager_link: platform/stackscripts-new-manager/
+classic_manager_link: platform/stackscripts-classic-manager/
 ---
 
 ![Automate Deployment with StackScripts](automate-deployment-with-stackscripts-title-graphic.jpg "Automate Deployment with StackScripts")
@@ -22,30 +22,27 @@ cloud_manager_link: platform/stackscripts-new-manager/
 
 ## Introduction
 
-StackScripts are usually Bash scripts, stored in the Linode Manager, and can be accessed when you use the **Rebuild** link from the Linode Dashboard. During the first boot job of the newly created disks, the StackScript will run, using any variable you may have added, and perform the scripted commands.
-
- {{< caution >}}
-The **Rebuild** option will destroy all existing disks and profiles.
-{{< /caution >}}
+StackScripts are usually Bash scripts, stored in the Linode Cloud Manager, and can be accessed when you deploy a Linode. During the first boot job of the newly created disks, the StackScript will run, using any variable you may have added, and perform the scripted commands.
 
 ## Deploying from a StackScript
 
-1.  We start by navigating to the Linode Dashboard. Before deploying a new disk, make sure you have enough storage space available. If not you may need to [resize](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) or [remove](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-disk) a disk. Alternately you can create a new Linode for testing purposes.
-2.  Click on the **Deploy a Linux Distribution** link.
+1.  Start by logging in to the [Linode Cloud Manager](https://cloud.linode.com).
 
-    [![Click the 'Deploy a Distribution' link.](1682-stackscripts-1.png)](1682-stackscripts-1.png)
+1.  Click the **Create** button and selecting **Linode**.
 
-3.  From here, click on **Deploying using StackScripts**.
+    ![Create a new Linode](stackscripts-create-a-linode.png "Create a new Linode")
 
-    [![Follow the 'Deploying using StackScripts' link.](1684-stackscripts-2-small.png)](1683-stackscripts-2.png)
+1.  Navigate to the **Create from StackScript** tab.
 
-4.  At this point we have the option of using a Community StackScript or one of our own.
+    ![Navigate to Create from StackScript.](stackscripts-navigate-to-create-from-stackscript.png "Navigate to Create from Stackscript.")
 
-    [![Our StackScript options.](1508-stackscripts_step3_small.png)](1503-stackscripts_step3.png)
+1.  At this point you have the option of using a a Linode StackScript, Community StackScript, or one of your own.
 
-Alternatively, you can follow along with this video, which will show you how to deploy from a StackScript:
+    [![StackScript selection options.](stackscripts-selection-screen-small.png "StackScript selection options.")](stackscripts-selection-screen.png)
 
-{{< youtube XviHHyXVH20 >}}
+<!-- Alternatively, you can follow along with this video, which will show you how to deploy from a StackScript:
+
+{{< youtube XviHHyXVH20 >}} -->
 
 ### Using a Community StackScript
 
@@ -53,37 +50,38 @@ Alternatively, you can follow along with this video, which will show you how to 
 There is no default logging when using a StackScript. Output is sent to the console.
 {{< /note >}}
 
-1.  In addition to the StackScripts created by Linode, any community member who creates a StackScript has the option to make it publicly available to other customers. As seen in the image below, you can use the drop down menu and keywords field to narrow your search to match your distribution and goal:
+1.  In addition to the StackScripts created by Linode, any community member who creates a StackScript has the option to make it publicly available to other customers. As seen in the image below, you can use the search field to narrow your search to match your distribution and goal:
 
-    [![A search.](1509-stackscripts_search_small.png)](1510-stackscripts_search.png)
+    [![A search for 'wordpress.'](stackscripts-search-wordpress-small.png "A search for 'wordpress.'")](stackscripts-search-wordpress.png)
 
-2.  For this example we'll select the first search result. This brings us to a page where we can define the variables that will go into the StackScript. In this case, the MySQL root password. The other options are standard whenever you deploy a new disk.
+1.  For this example we'll select the first search result. This brings up a panel underneath the "Select StackScript" panel where we can define the variables that will go into the StackScript. Each StackScript has a different set of variables that are used when the script is run. The WordPress StackScript requires a root password for MySQL and a database name, along with the information required for deploying any new Linode.
 
-    [![A public StackScript.](1511-stackscripts_com_example_small.png)](1512-stackscripts_com_example.png)
+    ![StackScript options](stackscripts-wordpress-options.png "Stackscript options.")
 
-3.  Once you've adjusted the options, hit **Deploy**. You will be returned to the Linode Dashboard, and a disk will be created.
+1.  Once you've adjusted the options, click **Create**. You will be returned to the Linodes page, and your bell notifications will inform you when your Linode has been created.
 
-    [![The newly created.](1521-stackscripts_disk_create_small.png)](1522-stackscripts_disk_create.png)
+    ![Bell notification of new Linode creation.](stackscripts-linode-created-bell.png "Bell notification of a new Linode creation.")
 
-4.  A new configuration profile is also created which you can select to boot. The script will be run once at initial boot.
+    ![The newly created Linode.](stackscripts-linode-created.png "The newly created Linode.")
+
 
 ### Creating a New StackScript
 
-1.  To begin creating your own StackScript, click on [Manage your StackScripts](https://manager.linode.com/stackscripts/index) From the [Linodes](https://manager.linode.com/linodes) page in the manager. Then click on **Add a new StackScript**.
+1.  To begin creating your own StackScript, navigate to the **StackScripts** page of the manager and click **Create New StackScript**.
 
-    [![The StackScripts management page.](1523-stackscripts_manage_small.png)](1524-stackscripts_manage.png)
+    [![Create new StackScripts button.](stackscripts-create-stackscript-small.png "Create New StackScripts button.")](stackscripts-create-stackscript.png)
 
-2.  Fill in the various sections:
+1.  Fill in the various sections:
 
     -   *Label* - How the StackScript will be identified.
     -   *Description* - a brief explanation of what it does.
-    -   *Distributions* - Select any and all available distributions that can run this StackScript.
+    -   *Target Images* - Select any and all available distributions that can run this StackScript.
     -   *Script* - The body of the script itself.
-    -   *Revision Note* A brief account of the change made in this update of the StackScript. It will be set to `Initial import` by default, and you can feel free to leave or change it.
+    -   *Revision Note* - A brief account of the change made in this update of the StackScript. It will be set to `Initial import` by default, and you can feel free to leave or change it.
 
     Below is an example of a new StackScript being written:
 
-    [![A StackScript being created.](1525-stackscripts_add_filled_small.png)](1526-stackscripts_add_filled.png)
+    [![A StackScript being created.](stackscripts-new-stackscript-options-small.png "A new StackScript being created.")](stackscripts-new-stackscript-options.png)
 
     Here's the code used in our example script. The comment lines explain what each section does:
 
@@ -115,11 +113,11 @@ echo $IPADDR $FQDN $HOSTNAME >> /etc/hosts
 
 {{< /file >}}
 
+1.  Once you've written the StackScript press **Save**. Remember, you can always edit the script later if you want to make adjustments.
 
-3.  Once you've written the StackScript press **Save Changes**. Remember, you can always edit the script later if you want to make adjustments.
-4.  Now you can go back to the **Deploy from StackScript** page to see that your new StackScript is available. It can be deployed following the same procedure as step 2 of [Using a Community StackScript](#using-a-community-stackscript)
+1.  Now you will be able to see that your new StackScript is available. It can be deployed following the same procedure as step 2 of [Using a Community StackScript](#using-a-community-stackscript)
 
-    [![Our new StackScript is available.](1527-stackscripts_new_small.png)](1528-stackscripts_new.png)
+    [![Our new StackScript is available.](stackscripts-new-stackscript-created-small.png "Our new StackScript is available.")](stackscripts-new-stackscript-created.png)
 
 ## StackScript Use Cases
 

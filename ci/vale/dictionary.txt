@@ -157,6 +157,7 @@ clickjacking
 client1
 client2
 clojure
+cloudflare
 cloudnet
 clozure
 cls
@@ -543,6 +544,7 @@ iframes
 ifup
 ikiwiki
 im
+imagize
 imap
 imapd
 imaps
@@ -1353,6 +1355,7 @@ ucd
 ufw
 ui
 uidl
+umount
 un
 unaliased
 unarchive

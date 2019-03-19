@@ -6,7 +6,7 @@ description: 'This guide introduces the Linode API and demonstrates several basi
 og_description: 'This guide introduces the Linode API and demonstrates several basic queries. It also covers authentication and the process of creating a new Linode through the API.'
 keywords: ["linode api", "api v4", "access token"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-29
+modified: 2018-08-20
 modified_by:
   name: Linode
 published: 2018-04-03
@@ -15,12 +15,13 @@ external_resources:
   - '[API Documentation](https://developers.linode.com/v4/introduction)'
   - '[Linode CLI](https://github.com/linode/linode-cli)'
   - '[Linode API Python Library](https://github.com/linode/python-linode-api)'
-cloud_manager_link: platform/api/getting-started-with-the-linode-api-new-manager/
+aliases: ['platform/api/getting-started-with-the-linode-api-new-manager/']
+classic_manager_link: platform/api/getting-started-with-the-linode-api-classic-manager/
 ---
 
 ## Create a Linode Using the Linode API
 
-The Linode API allows you to automate any task that can be performed by the Linode Manager, such as creating Linodes, managing IP addresses and DNS, and opening support tickets.
+The Linode API allows you to automate any task that can be performed by the Cloud Manager, such as creating Linodes, managing IP addresses and DNS, and opening support tickets.
 
 For example, this command creates a new 2GB Linode, deploys a Debian 9 image, and boots the system:
 
@@ -28,13 +29,13 @@ For example, this command creates a new 2GB Linode, deploys a Debian 9 image, an
     -H "Authorization: Bearer $TOKEN" -H "Content-type: application/json" \
     -d '{"type": "g5-standard-2", "region": "us-east", "image": "linode/debian9", "root_pass": "root_password", "label": "prod-1"}'
 
-This guide will help you get set up to run this example. Note that if you run this command, you will be create and be [charged for a 2GB Linode](/pricing).
+This guide will help you get set up to run this example. Note that if you run this command, you will create and be [charged for a 2GB Linode](/pricing).
 
 ## Get an Access Token
 
 Only authorized users can add Linodes and make changes to your account, and each request must be authenticated with an access token.
 
-The easiest way to get a token is through the [beta Linode Manager](https://cloud.linode.com).
+The easiest way to get a token is through the [Cloud Manager](https://cloud.linode.com).
 
   {{< note >}}
 If you are building an application which will need to authenticate multiple users (for example, a custom interface to Linode's infrastructure for your organization), you can set up an [OAuth authentication flow](https://developers.linode.com/v4/access) to generate tokens for each user.
@@ -42,11 +43,21 @@ If you are building an application which will need to authenticate multiple user
 
 ### Create an API Token
 
-1.  Log in to the Manager and select the **API Tokens** tab from the **My Profile** menu:
+1.  Log in to the Cloud Manager.
 
-2.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have. Privileges are cascading, so a token with *Create* access will also have *Modify* and *View* access.
+1.  Click on your username at the top of the screen and select **My Profile**.
 
-    When you have finished, click **Submit** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through the Manager after closing the popup.**
+    ![Select My Profile.](get-started-with-linode-api-select-my-profile.png "Select My Profile.")
+
+1.  Select the **API Tokens** tab:
+
+    ![Select API Tokens tab in My Profile Settings.](get-started-with-linode-api-my-profile-small.png "Select the API Tokens tab in My Profile Settings.")
+
+1.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have.
+
+    ![Add a Personal Access Token](get-started-with-linode-api-new-token.png "Add a Personal Access Token")
+
+    When you have finished, click **Submit** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through the Cloud Manager after closing the popup.**
 
 ### Authenticate Requests
 

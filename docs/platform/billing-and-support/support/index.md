@@ -5,13 +5,13 @@ author:
 description: Our guide to submitting support tickets and getting technical support.
 keywords: ["support", "tech support", "tickets", "help desk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['support/','platform/support/']
+aliases: ['platform/support/','platform/billing-and-support/support-new-manager/','support/']
 modified: 2019-01-07
 modified_by:
   name: Linode
 published: 2012-03-21
 title: Linode Support
-cloud_manager_link: platform/billing-and-support/support-new-manager
+classic_manager_link: platform/billing-and-support/support-classic-manager/
 ---
 
 Linode provides live technical support services 24 hours a day, 7 days a week. Linode Support ensures network availability, verifies that you can access your Linode, resolves performance issues with hosts, and works to fix any service-related issues you may be experiencing.
@@ -26,7 +26,15 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
     ![Linode Community Site](community-site-header.png "Linode Community Site")
 
--   **Linode Support Bot:** The Linode Support Bot can answer a number of technical, billing, and account management questions, and it learns new answers every day. If the Linode Support Bot does not know an answer, it can create a support ticket for you. This feature is available from the Linode Manager by clicking the green and white question mark button in the bottom right corner of the page. After clicking this button, a chat panel will slide in from the right side of the page:
+-   **Linode Support Bot:** The Linode Support Bot can answer a number of technical, billing, and account management questions, and it learns new answers every day. If the Linode Support Bot does not know an answer, it can create a support ticket for you.
+
+    This feature is available from the Linode Cloud Manager:
+
+    1.  Click **Get Help** in the sidebar links.
+
+    1.  Select **Linode Support Bot**.
+
+    1.  After clicking this link, a chat panel will slide in from the right side of the page:
 
     ![Accessing the Linode Support Bot from the Manager](linode-support-bot.gif "Accessing the Linode Support Bot from the Manager")
 
@@ -46,23 +54,25 @@ As declared in Linode's [Terms of Service](https://www.linode.com/tos), the Lino
 
 Linode provides support related to the physical operation of your Linode virtual servers, such as: ensuring that your network traffic is properly routed to and from your Linodes' IP addresses; helping with base system performance issues that may be related to Linode's virtualization systems; and resolving potential hardware issues within Linode's infrastructure.
 
-Linode also helps with products such as NodeBalancers and Block Storage. Additionally, Linode Support can help you use Linode software such as the Linode Manager, and can help you with understanding and paying your bill.
+Linode also helps with products such as NodeBalancers and Block Storage. Additionally, Linode Support can help you use Linode software such as the Linode Cloud Manager, and can help you with understanding and paying your bill.
 
 ## Contacting Linode Support
 
-If you are not able to solve an issue with the resources listed above, you can contact Linode Support. As a reminder, application configuration and other similar topics are outside the [scope of Linode Support](#scope-of-support). The primary method for contacting Linode Support is to open a support ticket from the Linode Manager:
+If you are not able to solve an issue with the resources listed above, you can contact Linode Support. As a reminder, application configuration and other similar topics are outside the [scope of Linode Support](#scope-of-support). The primary method for contacting Linode Support is to open a support ticket from the Linode Cloud Manager:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Select the **Support** link.
-3.  Select the **Open a new Support Ticket** link. A support ticket form will appear at the bottom of the page that loads.
-4.  Enter a summary of your issue in the **Summary** field of this form.
-5.  From the **Regarding** menu, select an option related to the issue you are reporting.
-6.  Enter a description of the problem in the **Description** field. Please provide as many details as possible.
-7.  Click **Open Ticket**.
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+1.  Select **Get Help** from the sidebar links.
+1.  Under **Other Ways to Get Help** select **Customer Support**.
+1.  Select the **Open New Ticket** link. The **Open a Support Ticket** menu will appear.
+1.  From the **What is this regarding?** menu, select an product related to the issue you are reporting.
+1.  Enter a summary of your issue in the **Summary** field of this form.
+1.  Enter a description of the problem in the **Description** field. Please provide as many details as possible.
+1.  Optionally, you may attach a file to the ticket.
+1.  Click **Open Ticket**.
 
 The Linode Support Team will respond as soon as possible.
 
-If you are having difficulty logging in to the Linode Manager and opening a support ticket, you can email Linode Support at <support@linode.com>. You can also call Linode 24 hours a day at **(609) 380-7100** (international) or **(855) 454-6633** (North America toll-free). If your call is diverted to voicemail, please leave a detailed message explaining your problem. Your call will be returned as quickly as possible.
+If you are having difficulty logging in to the Linode Cloud Manager and opening a support ticket, you can email Linode Support at <support@linode.com>. You can also call Linode 24 hours a day at **(609) 380-7100** (international) or **(855) 454-6633** (North America toll-free). If your call is diverted to voicemail, please leave a detailed message explaining your problem. Your call will be returned as quickly as possible.
 
 ## Reporting Abuse
 

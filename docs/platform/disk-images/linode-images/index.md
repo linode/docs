@@ -5,13 +5,13 @@ author:
 description: How to retain Disks with the Linode Images service
 keywords: ["linode Images", " imagize"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linode-images/','platform/linode-images/']
-modified: 2017-09-08
+aliases: ['platform/linode-images/','linode-images/','platform/disk-images/linode-images-new-manager/']
+modified: 2018-08-22
 modified_by:
   name: Linode
 published: 2014-09-25
 title: Linode Images
-cloud_manager_link: platform/disk-images/linode-images-new-manager
+classic_manager_link: platform/disk-images/linode-images-classic-manager/
 ---
 
 ![Linode Images](linode-images.jpg)
@@ -19,7 +19,7 @@ cloud_manager_link: platform/disk-images/linode-images-new-manager
 *Linode Images* allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future. Linode Images will be retained whether or not you have an active Linode on your account, which also makes them useful for long term storage of a private template that you may need in the future. There is no additional charge to store Images for Linode users, with a limit of 2GB per Image and 3 Images per account.
 
 {{< note >}}
-When saving a Linode image it is the aspects of the Linode that are on the **disk** that are saved, not any additional aspects such as IP addresses, fully qualified domain names, and MAC addresses.
+When saving a Linode image, it is the aspects of the Linode that are on the **disk** that are saved, not any additional aspects such as IP addresses, fully qualified domain names, and MAC addresses.
 {{< /note >}}
 
 ## Capturing Your Image
@@ -30,58 +30,51 @@ Linode Images captures an exact copy of your disk at the moment when the process
 While an image can be captured while your Linode is running, we would recommend shutting your Linode down first if you are running any active databases. Capturing an image that includes a running database can cause corruption or data loss in the imaged copy of the database.
 {{< /note >}}
 
-1.  Navigate to your Linode Dashboard and select the disk that you wish to freeze from the **Disks** list.
+1.  Navigate to your the Images page in the Linode Cloud Manager and select **Add an Image**.
 
-2.  On the **Edit Disk** page, click the **Create Image** button.
+    [![Select 'Add an Image'](images-add-an-image-small.png "Select 'Add an Image.')](images-add-an-image.png)
 
-    [![Edit Disk](edit-disk-image.png)](edit-disk-image.png)
+1.  In the **Create an Image** menu select the Linode and disk you would like to freeze, and provide a label. You may also add an optional description of the image. Then, click **Create**.
 
-3.  On the Image page, you can provide a label for your image. You can also write short notes about the image being captured in the Description box.
+    ![Create an Image menu](images-create-image-menu.png "Create an Image menu.")
 
-    [![Capture Image](imagize-image.png)](imagize-image.png)
+1.  Once you click the **Create** button, your image will be frozen for later use. You can view the progress under the bell notifications at the top of the page.
 
-4.  Once you click the Create Image button, your image will be frozen for later use. You can view the progress on the Dashboard under the Host Job Queue.
-
-    [![Host Job Queue](host-job-queue.png)](host-job-queue.png)
+    ![Image creation status under the bell notifications.](images-image-being-created.png "Image creation status under the bell notifications.")
 
     {{< note >}}
 Linode Images are limited to 2048MB of data per disk.  You will need to ensure that data within your disk does not exceed this size limit.
 {{< /note >}}
 
-    Once the job in the host queue has completed, your Linode's disk has been captured and stored.
+    Once the job has completed, your Linode's disk has been captured and stored.
 
 ## Managing Your Images
 
-The images captured from your Linodes are stored for future usage, and can be modified or removed at any time.  The following instructions will explain how to manage your Linode Images once they have been captured.
+The images captured from your Linodes are stored for future usage, and can be modified or removed at any time.
 
-1.  Click on the Linodes tab.
+1.  Click on the **Images** link in the sidebar.
 
-2.  Select **Manage Images** at the bottom of the page.
+    [![Manage your Images.](images-manage-images-small.png "Manage your Images.")](images-manage-images.png)
 
-3.  From this page, you can delete existing disks, and view your images quota usage.
+1.  From this page, you can delete existing disks, edit labels and descriptions, and deploy Linodes from disk images.
 
-4.  You can edit your captured disks by clicking the **Edit** button to the right of the image in question.  This will allow you to edit the image name and notes.
-
-4.  To delete a previously captured disk, simply click the **Delete** link to the right of the image in question.  You will be asked for confirmation prior to the image being deleted.
-
-    [![Images List](images-list.png)](images-list.png)
+    [![Select the Image menu.](images-edit-image-menu-small.png "Select the Image menu.")](images-edit-image-menu.png)
 
 ## Deploy From A Saved Image
 
 Deploying one of your saved images to any Linode under your account is a simple process.
 
-1.  Navigate to the Dashboard of the Linode you wish to deploy your image to.
+1.  Navigate to the **Images** page, click on the **more options ellipsis** to open the menu for the Image from which you would like to deploy, and select **Deploy New Linode**.
 
-2.  Click the **Deploy an Image** link and select your image from the drop-down list, under the **Dashboard** heading.
+    [![Select 'Deploy New Linode' from the Image menu](images-select-deploy-from-menu-small.png "Select 'Deploy New Linode' from the Image menu")](images-select-deploy-from-menu.png)
 
-    {{< note >}}
-If you are deploying a recently deleted Linode's disks (which are automatically saved) then the image will be at   the bottom of the drop down list.
-{{< /note >}}
+1.  Select your Image from *My Images* under the *Create from Image* tab.
 
-    [![Deploy an Image Link](deploy-an-image2.png)](deploy-an-image2.png)
+    [![Select your Image from the 'My Images' tab](images-create-linode-from-image-small.png)](images-create-linode-from-image.png)
 
-3.  Select your desired disk size and set your root password, then click **Deploy** to create a configuration profile with your saved disk. If this is an image you made with a root password previously, you can leave it blank to keep the old one.
 
-    [![Deploy a Distribution](deploy-a-distro.png)](deploy-a-distro.png)
+1.  Select your desired Region, Linode Plan, Label, and set your root password, then click **Create** to create a Linode with your saved image.
+
+    [![A new Linode has been created from a disk.](images-master-from-image.png "A new Linode has been created from a disk.")](images-master-from-image.png)
 
 Once you've completed these steps, your saved image will be deployed on your new Linode.
