@@ -36,7 +36,7 @@ DNS records are only actively hosted on accounts with at least one Linode. When 
 
 1.  Register (purchase) a domain name if you haven't already.
 2.  Set your domain name to [use Linode's name servers](#use-linode-s-name-servers-with-your-domain). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
-3.  Use the DNS Manager to [add a domain](#add-a-domain), and then start [adding some basic DNS records](#add-records).
+3.  Use the DNS Manager to [add a domain](#add-a-domain), and then start [adding some basic DNS records](#add-dns-records).
 4.  [Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
 5.  If you have any special DNS requirements, such as when using a third-party email server, add additional DNS records [for your specific needs](/docs/networking/dns/common-dns-configurations/).
 
