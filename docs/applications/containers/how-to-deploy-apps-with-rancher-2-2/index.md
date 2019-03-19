@@ -30,7 +30,7 @@ This guide will show how to:
 
 -   Install Rancher on a Linode
 
--   Deploy a Kubernetes cluster on Linode
+-   Deploy a Kubernetes cluster on Linode using Rancher
 
 -   Deploy an app from the Rancher app library
 
@@ -54,7 +54,7 @@ You may need to update your local Rancher installation to see the Linode node dr
 
 The Rancher web application will run on a Linode in your Cloud Manager account. Create and prepare the Linode that will run Rancher:
 
-1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Getting Started](/docs/getting-started/) guide for instructions on setting up your server. It is recommended that you create a Linode 2GB or larger size server.
+1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Getting Started](/docs/getting-started/) guide for instructions on setting up your server. It is recommended that you create a 2GB Linode or larger.
 
     {{< note >}}
 You will be able to create Kubernetes clusters in any Linode data center from the Rancher UI, even if your Rancher Linode is located in a different region.
@@ -108,7 +108,7 @@ If you are interested in setting up an SSL certificate with Rancher, you may con
 
     ![Rancher enter server URL screen](enter-server-url.png "The server URL entry form")
 
-1.  The default home page for your Rancher app will appear. This page normally displays a list of all of your Kubernetes clusters. You have not created a cluster yet, so a placeholder image is shown instead:
+1.  The default home page for your Rancher app will appear. This page normally displays a list of all of your Kubernetes clusters. Since you have not created a cluster yet, a placeholder image is shown instead:
 
     ![Rancher enter server URL screen](global-clusters-page-no-clusters.png "The server URL entry form")
 
@@ -128,7 +128,7 @@ Rancher includes two kinds of integrations with hosting providers:
 
 Rancher is shipped with a node driver for Linode, but it is inactive by default. To activate the Linode node driver:
 
-1.  Navigate to the **Drivers** item under the **Tools** dropdown menu in the main navigation bar:
+1.  Click on **Tools** from the main navigation bar and select **Drivers** from the dropdown menu.
 
     ![Rancher Drivers menu option highlighted](drivers-menu-option.png "Select the Drivers option from the Tools dropdown menu")
 
@@ -140,7 +140,7 @@ Rancher is shipped with a node driver for Linode, but it is inactive by default.
 
     ![Rancher activate Linode node driver](activate-linode-node-driver.png "Activate the Linode node driver in the Rancher interface")
 
-1.  Activating the Linode node driver will not also install the Linode CCM and CSI for your new clusters. Further instructions for enabling these features are listed in the [Deploy a Kubernetes Cluster](#deploy-a-kubernetes-cluster) section.
+1.  Activating the Linode node driver **does not** install the Linode CCM and CSI for your new clusters. Further instructions for enabling these features are listed in the [Deploy a Kubernetes Cluster](#deploy-a-kubernetes-cluster) section.
 
     {{< disclosure-note "What are the Linode CCM and CSI?" >}}
 The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Controller Manager) and [CSI](https://github.com/linode/linode-blockstorage-csi-driver) (Container Storage Interface) are Kubernetes addons published by Linode. These addons provide additional integrations with the Linode cloud platform. Specifically, you can use them to create NodeBalancers, DNS records, and Block Storage Volumes.
@@ -180,7 +180,7 @@ The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Cont
 We recommend that you choose a Linode 2GB or higher for the nodes in a Kubernetes cluster. The Block Storage service has not been deployed to our Atlanta (US-Southeast) data center, and Block Storage Volumes will be used in this guide's example cluster, so please choose a different region.
 {{< /note >}}
 
-1.  Enter a name for your template. This can be arbitrary, but it's helpful to call it something that will remember the options you set in the template form, like `newark-linode8gb-ubuntu1804`.
+1.  Enter a name for your template. This can be arbitrary, but it's helpful to call it something that will help you remember the options you set in the template form, like `newark-linode8gb-ubuntu1804`.
 
     ![Rancher Add Node Template form - template name](add-node-template-form-template-name.png "The template name field in the Add Node Template form")
 
