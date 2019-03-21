@@ -178,6 +178,7 @@ config
 configs
 configtest
 configurability
+containerd
 containerised
 convolutional
 cookstyle
@@ -1073,6 +1074,7 @@ releasever
 remi
 remmina
 remotehost
+replicaset
 replset
 repo
 repos

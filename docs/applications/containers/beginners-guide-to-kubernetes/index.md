@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode Community
+  name: Andy Stevens
   email: docs@linode.com
 description: 'A high level overview of Kubernetes cluster.'
 keywords: ['kubernetes','k8s','beginner','architecture']
@@ -17,12 +17,12 @@ external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 ---
 
-*Kubernetes*, often referred to as *k8s*, is an open source container orchestration system that helps deploy and manage containerized applications. Developed by Google starting in 2014 and written in the Go langauge, Kubernetes is quickly becoming the standard way to architect horizontally scalable applications. This guide will explain the major parts and concepts of Kubernetes.
+*Kubernetes*, often referred to as *k8s*, is an open source container orchestration system that helps deploy and manage containerized applications. Developed by Google starting in 2014 and written in the Go language, Kubernetes is quickly becoming the standard way to architect horizontally scalable applications. This guide will explain the major parts and concepts of Kubernetes.
 
 
 ## Containers
 
-Kubernetes is a container orechestration tool and therefore needs a container runtime installed to work. In practice the default container runtime for Kubernetes is [Docker](https://www.docker.com/), though other runtimes like [rkt](https://coreos.com/rkt/) and [LXD](https://linuxcontainers.org/lxd/introduction/) will also work. With the advent of the [Container Runtime Interface (CRI)](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-node/container-runtime-interface.md), which hopes to standardize the way Kubernetes interacts with containers, other options like [containerd](https://containerd.io/), [cri-o](https://cri-o.io/), and [Frakti](https://github.com/kubernetes/frakti) have also become available. This guide assumes you have a working knowledge of containers and the examples will all use Docker as the container runtime.
+Kubernetes is a container orchestration tool and therefore needs a container runtime installed to work. In practice the default container runtime for Kubernetes is [Docker](https://www.docker.com/), though other runtimes like [rkt](https://coreos.com/rkt/) and [LXD](https://linuxcontainers.org/lxd/introduction/) will also work. With the advent of the [Container Runtime Interface (CRI)](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-node/container-runtime-interface.md), which hopes to standardize the way Kubernetes interacts with containers, other options like [containerd](https://containerd.io/), [cri-o](https://cri-o.io/), and [Frakti](https://github.com/kubernetes/frakti) have also become available. This guide assumes you have a working knowledge of containers and the examples will all use Docker as the container runtime.
 
 ## Kubernetes API
 
@@ -51,7 +51,7 @@ The Kubernetes Master is a normally a separate server responsible for maintainin
 - **kube-controller-manager** is a daemon that manages the Kubernetes control loop. For more on Controllers, see the [Controllers section](#controllers).
 - **kube-scheduler** is a function that looks for newly created Pods that have no Nodes and assigns them a Node based on a host of requirements. For more information on kube-scheduler, consult the [Kubernetes kube-scheduler documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/).
 
-Additionally, the Kubernetes Master runs the database **etcd** (pronounced etsy-dee). etcd is a highly available key-value store that provides the backend database for Kubernetes.
+Additionally, the Kubernetes Master runs the database **etcd**. etcd is a highly available key-value store that provides the backend database for Kubernetes.
 
 Together kube-apiserver, kube-controller-manager, kube-scheduler, and etcd form what is known as the *control plane*. The control plane is responsible for making decisions about the cluster and pushing it toward the desired state.
 
@@ -136,7 +136,7 @@ To delete the Pod, issue the `delete` command:
 
 ### Services
 
-*Services* group identical Pods together to provide a consitent means of accessing them. For instance, you might have three Pods that are all serving a website, and all of those Pods need to be accessible on port 80. A Service can ensure that all of the Pods are accessible at that port, and can load balance traffic between those Pods. Additionally, a Service can allow your application to be accessible from the internet. Each Service is given an IP address and a corresponding local DNS entry. Additionally, Services exist across Nodes. If you have two replica Pods on one Node and an additional replica Pod on another Node, the service can include all three Pods. There are four types of Service:
+*Services* group identical Pods together to provide a consistent means of accessing them. For instance, you might have three Pods that are all serving a website, and all of those Pods need to be accessible on port 80. A Service can ensure that all of the Pods are accessible at that port, and can load balance traffic between those Pods. Additionally, a Service can allow your application to be accessible from the internet. Each Service is given an IP address and a corresponding local DNS entry. Additionally, Services exist across Nodes. If you have two replica Pods on one Node and an additional replica Pod on another Node, the service can include all three Pods. There are four types of Service:
 
 -  **ClusterIP**: exposes the Service internally to the cluster. This is the default setting for a Service.
 -  **NodePort**: exposes the Service to the internet from the IP address of the Node at the specified port number. You can only use ports in the 30000-32767 range.
@@ -275,7 +275,7 @@ For more information on Namespaces, visit the [Kubernetes Namespaces API documen
 
 ## Controllers
 
-A Controller is a control loop that continiously watchs the Kubernetes API and tries to manage the desired state of certain aspects of the cluster. There are a number of controllers. Below is a short reference of the most popular controllers you might interact with.
+A Controller is a control loop that continuously watches the Kubernetes API and tries to manage the desired state of certain aspects of the cluster. There are a number of controllers. Below is a short reference of the most popular controllers you might interact with.
 
 ### ReplicaSet
 
@@ -338,9 +338,8 @@ If you issue the `get pods` command, you will see that the Pods the ReplicaSet c
 
     NAME                      READY   STATUS        RESTARTS   AGE
    apache-replicaset-bm2pn   0/1     Terminating   0          3m54s
-   apache-replicaset-dthlp   0/1     Terminating   0          3m54s
 
-In the above example, three of the Pods have already terminated, and two are in the process of terminating.
+In the above example, four of the Pods have already terminated, and one is in the process of terminating.
 
 For more information on ReplicaSets, view the [Kubernetes ReplicaSets API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#replicaset-v1-apps).
 
@@ -475,7 +474,7 @@ Networking in Kubernetes was designed to make it simple to port existing apps fr
 
 Though the rules of the Kubernetes networking model are simple, the implementation of those rules is an advanced topic. Because Kubernetes does not come with its own implementation, it is up to the user to provide a networking model.
 
-Two of the most popular options are [Flannel](https://github.com/coreos/flannel#flannel) and [Calico](https://docs.projectcalico.org/v2.0/getting-started/kubernetes/). Flannel is a networking overlay that meets the functionality of the Kubernetes networking model, and is relatively easy to set up. Calico enables networking and networking policy through the [NetworkPolicy API](https://kubernetes.io/docs/concepts/services-networking/network-policies/) to provide simple, scalable and secure virtual networking.
+Two of the most popular options are [Flannel](https://github.com/coreos/flannel#flannel) and [Calico](https://docs.projectcalico.org/v2.0/getting-started/kubernetes/). Flannel is a networking overlay that meets the functionality of the Kubernetes networking model by supplying a layer 3 network fabric, and is relatively easy to set up. Calico enables networking and networking policy through the [NetworkPolicy API](https://kubernetes.io/docs/concepts/services-networking/network-policies/) to provide "simple, scalable and secure virtual networking." Calico is also a layer 3 network fabric.
 
 For more information on the Kubernetes networking model and ways to implement it, consult the [cluster networking documentation](https://kubernetes.io/docs/concepts/cluster-administration/networking/).
 
