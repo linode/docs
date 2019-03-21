@@ -196,6 +196,7 @@ craigslist
 crashingdaily
 createdt
 createfromstackscript
+cri
 cron
 crond
 cronie
@@ -395,6 +396,7 @@ foodcritic
 fortran
 fpm
 fragging
+frakti
 framesets
 freedns
 friendster
