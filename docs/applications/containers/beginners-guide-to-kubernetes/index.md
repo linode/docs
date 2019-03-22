@@ -91,9 +91,9 @@ Each manifest has four necessary parts:
 - Metadata about the resource.
 - Though not required by all objects, a spec which describes the desired behavior of the resource is necessary for most objects and controllers.
 
-In the case of this example, the API in use is `v1`, and the `kind` is a Pod. The metadata field is used for applying a name, labels, and annotations. Names are used to differentiate resources, while labels are used to group like resources. Labels will come into play more when defining [Services](#services) and [Deployments](#deployment). Annotations are for attaching arbitrary data to the resource.
+In the case of this example, the API in use is `v1`, and the `kind` is a Pod. The metadata field is used for applying a name, labels, and annotations. Names are used to differentiate resources, while labels are used to group like resources. Labels will come into play more when defining [Services](#services) and [Deployments](#deployments). Annotations are for attaching arbitrary data to the resource.
 
-The spec is where the desired state of the resource is defined. In this case a Pod with a single NGINX container is desired, so the `containers` field is supplied with a name, 'nginx-container', and an image, the latest version of NGINX. The image is pulled from [Docker Hub](https://hub.docker.com), as that is the default container registry for Kubernetes.
+The spec is where the desired state of the resource is defined. In this case a Pod with a single Apache container is desired, so the `containers` field is supplied with a name, 'apache-container', and an image, the latest version of Apache. The image is pulled from [Docker Hub](https://hub.docker.com), as that is the default container registry for Kubernetes.
 
 For more information on the type of fields you can supply in a Pod manifest, refer to the [Kubernetes Pod API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#pod-v1-core).
 
@@ -207,8 +207,8 @@ spec:
     emptyDir: {}
 
   containers:
-  - name: nginx
-    image: nginx
+  - name: apache-container
+    image: httpd
     volumeMounts:
     - name: apache-storage-volume
       mountPath: /data/apache-data
@@ -277,9 +277,9 @@ For more information on Namespaces, visit the [Kubernetes Namespaces API documen
 
 A Controller is a control loop that continuously watches the Kubernetes API and tries to manage the desired state of certain aspects of the cluster. There are a number of controllers. Below is a short reference of the most popular controllers you might interact with.
 
-### ReplicaSet
+### ReplicaSets
 
-As has been mentioned, Kubernetes allows an application to scale horizontally. A *ReplicaSet* is one of the controllers responsible for keeping a given number of replica Pods running. If one Pod goes down in a ReplicaSet, another will be created to replace it. In this way, Kubernetes is *self-healing*. However, for most use cases it is recommended to use a [Deployment](#deployment) instead of a ReplicaSet.
+As has been mentioned, Kubernetes allows an application to scale horizontally. A *ReplicaSet* is one of the controllers responsible for keeping a given number of replica Pods running. If one Pod goes down in a ReplicaSet, another will be created to replace it. In this way, Kubernetes is *self-healing*. However, for most use cases it is recommended to use a [Deployment](#deployments) instead of a ReplicaSet.
 
 Below is an example of a ReplicaSet:
 
@@ -343,7 +343,7 @@ In the above example, four of the Pods have already terminated, and one is in th
 
 For more information on ReplicaSets, view the [Kubernetes ReplicaSets API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#replicaset-v1-apps).
 
-### Deployment
+### Deployments
 
 A *Deployment* can manage a ReplicaSet, so it shares the ability to keep a defined number of replica pods up and running. A Deployment can also update those Pods to resemble the desired state by means of rolling updates. For example, if you wanted to update a container image to a newer version, you would create a Deployment, and the controller would update the container images one by one until the desired state is achieved. This ensures that there is no downtime when updating or altering your Pods.
 
@@ -408,7 +408,7 @@ You'll see a long list of details, of which the container image is included:
 
 For more information on Deployments, visit the [Kubernetes Deployments API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#deployment-v1-apps)
 
-### Job
+### Jobs
 
 A *Job* is a controller that manages a Pod that is created for a single, or set, of task. This is handy if you need to create a Pod that performs a single function or calculates a value. The deletion of the Job will delete the Pod.
 
@@ -474,7 +474,7 @@ Networking in Kubernetes was designed to make it simple to port existing apps fr
 
 Though the rules of the Kubernetes networking model are simple, the implementation of those rules is an advanced topic. Because Kubernetes does not come with its own implementation, it is up to the user to provide a networking model.
 
-Two of the most popular options are [Flannel](https://github.com/coreos/flannel#flannel) and [Calico](https://docs.projectcalico.org/v2.0/getting-started/kubernetes/). Flannel is a networking overlay that meets the functionality of the Kubernetes networking model by supplying a layer 3 network fabric, and is relatively easy to set up. Calico enables networking and networking policy through the [NetworkPolicy API](https://kubernetes.io/docs/concepts/services-networking/network-policies/) to provide "simple, scalable and secure virtual networking." Calico is also a layer 3 network fabric.
+Two of the most popular options are [Flannel](https://github.com/coreos/flannel#flannel) and [Calico](https://docs.projectcalico.org/v2.0/getting-started/kubernetes/). Flannel is a networking overlay that meets the functionality of the Kubernetes networking model by supplying a layer 3 network fabric, and is relatively easy to set up. Calico enables networking and networking policy through the [NetworkPolicy API](https://kubernetes.io/docs/concepts/services-networking/network-policies/) to provide simple virtual networking.
 
 For more information on the Kubernetes networking model and ways to implement it, consult the [cluster networking documentation](https://kubernetes.io/docs/concepts/cluster-administration/networking/).
 
@@ -483,5 +483,7 @@ For more information on the Kubernetes networking model and ways to implement it
 There are a number of advanced topics in Kubernetes. Below are a few you might find useful as you progress in Kubernetes:
 
 - [StatefulSets](https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/) can be used when creating stateful applications.
+- [DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) can be used to ensure each Node is running a certain Pod. This is useful for log collection, monitoring, and cluster storage.
 - [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) can automatically scale your deployments based on CPU usage.
+- [CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) can schedule [Jobs](#jobs) to run at certain times.
 - [ResourceQuotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) are helpful when working with larger groups where there is a concern that some teams might take up too many resources.
