@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-14
 modified_by:
   name: Linode
-title: 'How to Deploy Apps with Rancher 2.2'
+title: 'How to Deploy Kubernetes on Linode with Rancher 2.2'
 aliases: ['applications/containers/how-to-deploy-apps-with-rancher/']
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
@@ -89,7 +89,7 @@ After you have your Linode up and running with Docker, you can then install and 
         docker run -d -p 80:80 -p 443:443 \
           --restart=unless-stopped \
           -v /opt/rancher:/var/lib/rancher \
-          rancher/rancher:master
+          rancher/rancher:latest
 
     -   The `--restart` option ensures that the application will be restarted if the Linode is ever rebooted.
     -   The `-v` option binds the `/opt/rancher` directory on the Linode to the container so that the application can persist its data.
@@ -122,9 +122,9 @@ The main interface for navigating Rancher is via the blue navigation bar that sp
 
 Rancher includes two kinds of integrations with hosting providers:
 
--   A *cluster driver* allows Rancher to create and administer a managed Kubernetes cluster. In a managed Kubernetes cluster, the cloud host operates your cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well).
+-   A *cluster driver* allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a cloud host-launched Kubernetes cluster, the cloud host operates your cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well).
 
--   A *node driver* allows Rancher to create and administer an unmanaged Kubernetes cluster. Rancher will directly provision your control plane and etcd nodes along with your worker nodes. Your cloud host does not manage your control plane and etcd components.
+-   A *node driver* allows Rancher to create and administer a Rancher-launched Kubernetes cluster. Rancher will directly provision your control plane and etcd nodes along with your worker nodes. Your cloud host does not manage your control plane and etcd components.
 
 Rancher is shipped with a node driver for Linode, but it is inactive by default. To activate the Linode node driver:
 
@@ -140,7 +140,7 @@ Rancher is shipped with a node driver for Linode, but it is inactive by default.
 
     ![Rancher activate Linode node driver](activate-linode-node-driver.png "Activate the Linode node driver in the Rancher interface")
 
-1.  Activating the Linode node driver **does not** install the Linode CCM and CSI for your new clusters. Further instructions for enabling these features are listed in the [Deploy a Kubernetes Cluster](#deploy-a-kubernetes-cluster) section.
+1.  Activating the Linode node driver **does not** install the Linode CCM and CSI for your new clusters. Further instructions for enabling these features are listed in the [Deploy a Kubernetes Cluster](#deploy-a-kubernetes-cluster) section. You should wait until the node driver is listed as **Active** before moving on.
 
     {{< disclosure-note "What are the Linode CCM and CSI?" >}}
 The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Controller Manager) and [CSI](https://github.com/linode/linode-blockstorage-csi-driver) (Container Storage Interface) are Kubernetes addons published by Linode. These addons provide additional integrations with the Linode cloud platform. Specifically, you can use them to create NodeBalancers, DNS records, and Block Storage Volumes.
@@ -164,7 +164,7 @@ Before provisioning your cluster, you will need to add the node template it will
 
     ![Add Node Template dialog window](add-node-template-api-token.png "Select Linode from the list of providers and enter in your Linode APIv4 token")
 
-1. Click on the **Next:Configure Instances** button.
+1. Click on the **Next: Configure Instances** button.
 
 1. Another dialog will appear which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](/docs/quick-answers/linode-platform/tags-and-groups/) you’d like to apply to your nodes.
 
@@ -474,11 +474,11 @@ metadata:
 
 1.  It may take some time for Linode's DNS database to update, so if you don't see the record show up in the Cloud Manager immediately, try refreshing it after a few minutes.
 
-    After the record becomes visible in the Cloud Manager, it can also take time for the DNS change to [propagate](/docs/platform/manager/dns-manager/#wait-for-propagation) to your local ISP. After the DNS change has propogated, you should be able to view your WordPress app by navigating to the address you set up.
+    After the record becomes visible in the Cloud Manager, it can also take time for the DNS change to [propagate](/docs/platform/manager/dns-manager/#wait-for-propagation) to your local ISP. After the DNS change has propagated, you should be able to view your WordPress app by navigating to the address you set up.
 
 ## Scaling your Cluster and App
 
-Rancher makes it easy to scale the number of nodes in your cluster and to scale the number of replicas in your app's deployments.
+Rancher makes it easy to scale the number of nodes in your cluster and to scale the number of replica pods in your app's deployments.
 
 ### Scale your Cluster
 
@@ -490,7 +490,7 @@ The example instructions in this section will add nodes to your cluster, which w
 
     ![Rancher return to the global view](navigate-back-to-global-view.gif "Navigate back to the home page by selecting the Global menu option in the main navigation bar")
 
-1.  Your cluster will appear on the page that appears. Click on the **more options ellipsis** corresponding to the cluster and then click on the **Edit** item from the dropdown menu:
+1.  Your cluster will show up on the page that appears. Click on the **more options ellipsis** corresponding to the cluster and then click on the **Edit** item from the dropdown menu:
 
     ![Rancher global list of clusters - Edit option highlighted](global-home-page-edit-cluster-highlighted.png "Rancher global list of clusters - Edit option highlighted")
 
