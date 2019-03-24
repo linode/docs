@@ -77,7 +77,7 @@ Here's what you'll need to do:
         ns1.box.example.com 203.0.113.1
         ns2.box.example.com 203.0.113.1
 
-You might have noticed you're using the same IP in both entries. There are a few registrars that have a problem with this, so in case you're unlucky, you won't be able to save these settings and will have to contact their support team. Alternatively, you can skip using your box as a DNS host, and keep your registrar's DNS host. You will find all the needed records in the **System -> External DNS** tab of the administration console, once you've completed installation. 
+You might have noticed you're using the same IP in both entries. There are a few registrars that have a problem with this, so in case you're unlucky, you won't be able to save these settings and will have to contact their support team. Alternatively, you can skip using your box as a DNS host, and keep your registrar's DNS host. You will find all the needed records in the **System -> External DNS** tab of the administration console, once you've completed installation.
 
 Also note that some registrars may only require you to enter `ns1.box` as they autocomplete the rest of your hostname, `.example.com`. Carefully examine the page to see which variant you should use.
 
@@ -115,7 +115,7 @@ If you notice a reboot is needed (usually when the Linux kernel is upgraded), ty
 
 It will start to download software and after a while greet you with a *Text User Interface* (TUI), which is a way to present a more user-friendly install wizard under the limitations of a terminal. You can navigate the menus with the arrow keys and simply press `ENTER` to make the desired selections.
 
-Every step is thoroughly explained in the terminal output. 
+Every step is thoroughly explained in the terminal output.
 
 ### Install Wizard Steps
 
@@ -185,7 +185,7 @@ Since it's very likely that a Let's Encrypt TLS certificate hasn't been installe
 
     ![Control Panel - TLS Certificates Page](mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
 
-3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/networking/dns/configure-your-linode-for-reverse-dns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam, will consider it suspicious that your IP doesn't point to your domain name and sometimes even reject it. 
+3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/networking/dns/configure-your-linode-for-reverse-dns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam, will consider it suspicious that your IP doesn't point to your domain name and sometimes even reject it.
 
 ## Conclusion
 
