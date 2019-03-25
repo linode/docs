@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to billing and payments.
-keywords: ["billing", "payments"]
+keywords: ["billing", "payments","cancel account"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['billing-and-payments/','platform/billing-and-payments/','platform/billing-and-support/billing-and-payments-new-manager/']
 modified: 2018-05-17
