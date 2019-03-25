@@ -6,7 +6,7 @@ description: 'This tutorial will guide you through setup and configuration of a 
 keywords: ["shoutcast", " internet radio", " streaming media", " streaming audio"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['communications/media-servers/shoutcast/','applications/media-servers/shoutcast/']
-modified: 2019-01-31
+modified: 2019-03-25
 modified_by:
   name: Linode
 published: 2012-06-07
@@ -49,11 +49,11 @@ There are several versions of this software, so make sure you are downloading th
 
 4.  Now we can download the DNAS package. In this example, we will download the 32-bit version:
 
-        wget http://download.nullsoft.com/shoutcast/tools/sc_serv2_linux_07_31_2011.tar.gz
+        wget http://download.nullsoft.com/shoutcast/tools/sc_serv2_linux_x64-latest.tar.gz
 
 5.  Extract the SHOUTcast files to the new directory by entering the following command:
 
-        tar -xzf sc_serv2_linux_07_31_2011.tar.gz -C sc
+        tar -xzf sc_serv2_linux_x64-latest.tar.gz -C sc
 
 6.  Change the ownership from `root` to the SHOUTcast user:
 
