@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 published: 2016-09-22
 title: 'Install Alpine Linux on your Linode'
+deprecated: True
 contributor:
   name: Andrew Leap
   link: http://github.com/andyleap

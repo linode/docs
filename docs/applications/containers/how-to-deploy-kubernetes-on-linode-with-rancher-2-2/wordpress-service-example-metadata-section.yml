@@ -1,0 +1,16 @@
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: wordpress.example.com
+    field.cattle.io/publicEndpoints: '[{"addresses":["nb-23-92-23-145.newark.nodebalancer.linode.com"],"port":80,"protocol":"TCP","serviceName":"wordpress:wordpress-wordpress","allNodes":false},{"addresses":["nb-23-92-23-145.newark.nodebalancer.linode.com"],"port":443,"protocol":"TCP","serviceName":"wordpress:wordpress-wordpress","allNodes":false}]'
+  creationTimestamp: "2019-03-17T22:31:55Z"
+  labels:
+    app: wordpress-wordpress
+    chart: wordpress-2.1.10
+    heritage: Tiller
+    io.cattle.field/appId: wordpress
+    release: wordpress
+  name: wordpress-wordpress
+  namespace: wordpress
+  resourceVersion: "42804"
+  selfLink: /api/v1/namespaces/wordpress/services/wordpress-wordpress
+  uid: 77d136cd-4904-11e9-beab-f23c916b13f5

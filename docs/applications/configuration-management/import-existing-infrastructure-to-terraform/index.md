@@ -374,6 +374,140 @@ resource "linode_domain" "example_label" {
 
     For more available configuration options, visit the [Linode Domain](https://www.terraform.io/docs/providers/linode/r/domain.html) Terraform documentation.
 
+## Import a Domain Record to Terraform
+
+### Retrieve Your Domain's ID and Your Domain Record's ID
+
+Due to the way the Linode API accesses domain records, you need to provide both the Domain ID and the Domain Record ID to import a Domain Record.
+
+1. Using the Linode CLI, retrieve a list of all your domains to find the ID of the domain that includes the record you would like to manage under Terraform:
+
+        linode-cli domains list --json --pretty
+
+    You should see output like the following:
+
+    {{< output >}}
+[
+&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;"domain": "import-example.com",
+&nbsp;&nbsp;&nbsp;&nbsp;"id": 1157521,
+&nbsp;&nbsp;&nbsp;&nbsp;"soa_email": "webmaster@import-example.com",
+&nbsp;&nbsp;&nbsp;&nbsp;"status": "active",
+&nbsp;&nbsp;&nbsp;&nbsp;"type": "master"
+&nbsp;&nbsp;}
+]
+{{< /output >}}
+
+    Find the domain that contains the record you would like to import and copy down the ID. You will need this ID to import your domain record to Terraform.
+
+1.  Using the Linode CLI, retrieve a list of your domain's records to find the ID of the record you would like to manage under Terraform. Substitute `domainID` with the ID of your domain:
+
+        linode-cli domains records-list domainID --json --pretty
+
+    You should see an output like the following:
+
+    {{< output >}}
+[
+&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;"id": 12331520,
+&nbsp;&nbsp;&nbsp;&nbsp;"name": "www",
+&nbsp;&nbsp;&nbsp;&nbsp;"priority": 0,
+&nbsp;&nbsp;&nbsp;&nbsp;"target": "192.0.2.0",
+&nbsp;&nbsp;&nbsp;&nbsp;"ttl_sec": 300,
+&nbsp;&nbsp;&nbsp;&nbsp;"type": "A",
+&nbsp;&nbsp;&nbsp;&nbsp;"weight": 0
+&nbsp;&nbsp;}
+]
+{{</ output >}}
+
+    Find the ID of the record you would like to import and copy down the ID. You will need this ID to import your domain record to Terraform.
+
+### Create an Empty Resource Configuration
+
+1. Ensure you are in your [Terraform project directory](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform). Create a Terraform configuration file to manage the domain record you will import in the next section. Your file can be named anything you like, but must end in `.tf`. Add a Linode provider block with your API access token and an empty `linode_domain_record` resource configuration block to the file:
+
+    {{< file "domain_record_import.tf" >}}
+provider "linode" {
+    token = "Your API Token"
+}
+
+resource "linode_domain_record" "example_label" {}
+{{< /file >}}
+
+### Import Your Domain Record to Terraform
+
+1. Run the `import` command, supplying the `linode_domain_record` resource's label, and the domain ID and domain record ID that were retrieved in the [Retrieve Your Domain's ID and Your Record's ID](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/#retrieve-your-domain-s-id-and-your-record-s-id) section:
+
+        terraform import linode_domain_record.example_label domainID,recordID
+
+    You should see output similar to the following:
+
+    {{< output >}}
+linode_domain_record.example_label: Importing from ID "1157521,12331520"...
+linode_domain_record.example_label: Import complete!
+  Imported linode_domain_record (ID: 12331520)
+linode_domain_record.example_label: Refreshing state... (ID: 12331520)
+
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+{{< /output >}}
+
+      This command will create a `terraform.tfstate` file with information about your domain record. You will use this information to fill out your resource configuration.
+
+1. To view the information created by `terraform import`, run the show command. This command will display a list of key-value pairs representing information about the imported domain:
+
+        terraform show
+
+    You should see output like the following:
+
+    {{< output >}}
+linode_domain_record.example_label:
+  id = 12331520
+  domain_id = 1157521
+  name = www
+  port = 0
+  priority = 0
+  protocol =
+  record_type = A
+  service =
+  tag =
+  target = 104.237.148.95
+  ttl_sec = 300
+  weight = 0
+{{< /output >}}
+
+### Fill In Your Domain Record's Configuration Data
+
+As mentioned in the [Terraform’s Import Command](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/#terraform-s-import-command) section, you must manually create your resource configurations when importing existing infrastructure.
+
+1. Fill in the configuration values for the `linode_domain_record` resource block. The necessary values for the example resource configuration file were collected from the output of the `terraform show` command applied in Step 2 of the [Import Your Domain Record to Terraform](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/#import-your-domain-record-to-terraform) section.
+
+    {{< file "domain_record_import.tf" >}}
+provider "linode" {
+    token = "1a2b3c..."
+}
+
+resource "linode_domain_record" "example_label" {
+    domain_id = "1157521"
+    name = "www"
+    record_type = "A"
+    target = "192.0.2.0"
+    ttl_sec = "300"
+}
+    {{< /file >}}
+
+1. Check for errors in your configuration by running the `plan` command:
+
+        terraform plan
+
+    `terraform plan` shows you the changes that would take place if you were to apply the configurations with the `terraform apply` command. Running `terraform plan` should result in Terraform displaying that no changes are to be made.
+
+2. Once you have verified the configurations you provided in the `linode_domain_record` block, you are ready to begin managing your domain record with Terraform. Any changes or updates can be made by updating your `domain_record_import.tf` file, then verifying the changes with the `terrform plan` command, and then finally applying the changes with the `terraform apply` command.
+
+    For more available configuration options, visit the [Linode Domain Record](https://www.terraform.io/docs/providers/linode/r/domain_record.html) Terraform documentation.
+
 ## Import a Block Storage Volume to Terraform
 
 ### Retrieve Your Block Storage Volume's ID

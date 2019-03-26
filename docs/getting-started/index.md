@@ -37,7 +37,7 @@ From there you'll set up a Linux distribution, boot your Linode, and perform som
 
 If you haven't already signed up for a Linode account, start here.
 
-1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
+1.  Create a new account at the [Sign Up page](https://login.linode.com/signup).
 
 1.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 
@@ -202,7 +202,7 @@ After running a sync, it may end with a message that you should upgrade Portage 
 
 ## Set the Hostname
 
-A hostname is used to identify your Linode using an easy-to-remember name. Your Linode's hostname doesn't necessarily associate with websites or email services hosted on the system, but see our guide on using the[hosts file](/docs/networking/dns/using-your-systems-hosts-file/)if you want to assign your Linode a fully qualified domain name.
+A hostname is used to identify your Linode using an easy-to-remember name. Your Linode's hostname doesn't necessarily associate with websites or email services hosted on the system, but see our guide on using the [hosts file](/docs/networking/dns/using-your-systems-hosts-file/) if you want to assign your Linode a fully qualified domain name.
 
  Your hostname should be something unique, and should not be *www* or anything too generic. Some people name their servers after planets, philosophers, or animals. After you've made the change below, you'll need to log out and back in again to see the terminal prompt change from `localhost` to your new hostname. The command `hostname` should also show it correctly.
 
