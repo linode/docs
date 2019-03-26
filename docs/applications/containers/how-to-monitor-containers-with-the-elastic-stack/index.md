@@ -238,6 +238,22 @@ The following example will demonstrate how Filebeat and Metricbeat automatically
 
     ![Kibana 6 Landing Page](kibana-landing-page.png "Kibana 6 Landing Page")
 
+    Select the "Management" link in the lower left sidebar.
+
+1.  The following page will be displayed. Select "Index Patterns" to enter the Index Pattern configuration page.
+
+    ![Kibana 6 Management](kibana-management.png "Kibana 6 Management")
+
+1.  Index Patterns dictate how Kibana understands indices that are present in Elasticsearch. In order for some visualizations to display properly, a default index pattern must first be configured. Select `filebeat-*` on the left side of the page to configure the `filebeat-*` index pattern.
+
+    ![Kibana 6 Index Patterns](./kibana-filebeat-index.png "Kibana 6 Index Patterns")
+
+1.  Select the star icon in the upper right corner of the page to select this index pattern as the default in Kibana.
+
+    ![Kibana 6 Default Index Pattern](./kibana-filebeat-default.png "Kibana 6 Default Index Pattern")
+
+    Kibana is now properly configured with a default index pattern.
+
 1.  Because Filebeat and Metricbeat are configured to configure Elasticsearch and Kibana automatically, dashboards and index patterns are already loaded and ready to be used. Click on "Dashboard" on the left-hand sidebar, which will load the following page.
 
     ![Kibana 6 Dashboards](kibana-dashboards.png "Kibana 6 Dashboards")
@@ -277,7 +293,7 @@ The following example will demonstrate how Filebeat and Metricbeat automatically
 
 1.  Try re-issuing the previous `for ...` command to send another ten `curl` requests to the container and observe how the log histogram changes to reflect the new logs.
 
-1.  Return to the "Dashboard" item in the Kibana sidebar, and this time, search for "nginx" in the search bar.
+1.  Select the "Dashboard" item in the Kibana sidebar, and click on it a second time to enter the dashboard selection screen. Search for "nginx" in the search bar.
 
     ![Kibana 6 NGINX Dashboards](kibana-nginx-dashboards.png "Kibana 6 NGINX Dashboards")
 
