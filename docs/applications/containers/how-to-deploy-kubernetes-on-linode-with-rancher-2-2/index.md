@@ -34,7 +34,7 @@ This guide will show how to:
 
 -   Deploy a Kubernetes cluster on Linode using Rancher
 
--   Deploy an app from the Rancher app library
+-   Deploy an app from the Rancher app library to your cluster
 
 -   Take advantage of the Linode [CCM](https://github.com/linode/linode-cloud-controller-manager) and [CSI](https://github.com/linode/linode-blockstorage-csi-driver) for Kubernetes via Rancher.
 
@@ -124,7 +124,7 @@ The main interface for navigating Rancher is via the blue navigation bar that sp
 
 Rancher includes two kinds of integrations with hosting providers:
 
--   A *cluster driver* allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a cloud host-launched Kubernetes cluster, the cloud host operates your cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well).
+-   A *cluster driver* allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a host-launched Kubernetes cluster, your hosting platform operates the new cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well).
 
 -   A *node driver* allows Rancher to create and administer a Rancher-launched Kubernetes cluster. Rancher will directly provision your control plane and etcd nodes along with your worker nodes. Your cloud host does not manage your control plane and etcd components.
 
@@ -301,7 +301,7 @@ Instead, compare your YAML file with the completed example to ensure you have in
     ![Linode Cloud Manager - new cluster nodes](cloud-manager-linodes-provisioning.png "New cluster nodes listed in Linode Cloud Manager")
 
     {{< note >}}
-If your nodes do not deploy as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
+If your nodes do not not appear in the Linode Cloud Manager as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
 {{< /note >}}
 
 ### Explore the New Cluster
@@ -444,7 +444,7 @@ The default value for the **MariaDB Volume Size** field is 8GiB, but the minimum
 
     Your WordPress site should open in a new browser tab.
 
-1.  Visit the wp-login.php page on your site (e.g. at `http://nb-23-92-23-145.newark.nodebalancer.linode.com/wp-login.php`). You should be able to login with the WordPress admin username and password you specified earlier in the app's form.
+1.  Visit the wp-login.php page on your site (e.g. at `http://your-nodebalancer-name.newark.nodebalancer.linode.com/wp-login.php`). You should be able to login with the WordPress admin username and password you specified earlier in the app's form.
 
     {{< note >}}
 If you view the Volumes and NodeBalancers areas of the Linode Cloud Manager, you should see the new Volume and NodeBalancer that were created for this app. They will have random alphanumeric names like `pvc77e0c083490411e9beabf23c916b1`.
