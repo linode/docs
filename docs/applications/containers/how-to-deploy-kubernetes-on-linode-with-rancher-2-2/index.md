@@ -24,8 +24,6 @@ external_resources:
 
 Rancher also maintains a curated list of apps that offer simple configuration options and a click-to-deploy interface. If you prefer to deploy your apps from a Helm chart, you can do that too.
 
-The Rancher web application can be run from a local Mac, Windows, or Linux PC, or you can install it on a server and access it remotely.
-
 ### Guide Outline
 
 This guide will show how to:
@@ -407,6 +405,10 @@ To test out deploying an app on your new cluster, launch the WordPress app from 
 1.  The setup form for the WordPress app will appear. In the **Wordpress Settings** section, enter a username, password, and email for your WordPress admin user:
 
     ![Rancher WordPress setup form - WordPress Settings](wordpress-app-form-wordpress-settings.png "Rancher WordPress setup form - WordPress Settings")
+
+    {{< note >}}
+Avoid using symbols in the password you enter, as some symbols can cause syntax errors for this Rancher chart.
+{{< /note >}}
 
 1.  In the **Database Settings** section, enter a password for WordPress' database user. Then set **MariaDB Persistent Volume Enabled** to **True** and select the **linode-block-storage** option from the **Default StorageClass for MariaDB** dropdown menu:
 
