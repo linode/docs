@@ -24,9 +24,9 @@ The [Elastic Stack](https://www.elastic.co/products) can monitor a variety of da
 
 1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running a recent Linux distribution (such as Ubuntu 18.04 or CentOS 7), including setting the hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall (UFW) on your Ubuntu or Debian-based system or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over for the rest of this guide:
+1.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall (UFW) on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over for the rest of this guide:
 
         sudo ufw allow ssh
 
@@ -41,7 +41,7 @@ The [Elastic Stack](https://www.elastic.co/products) can monitor a variety of da
 1.   Install Docker on your Linode by following [the installation guide from the Docker project](https://docs.docker.com/).
 
 {{< note >}}
-The services in this guide bind to localhost-only, which means they are not accessible outside of the Linode from remote hosts. This ensures that Elasticsearch's REST API remains private to localhost and are not remotely accessible from the internet. If you take further steps beyond this guide to configure Elasticsearch and related components further, ensure that your firewall is in-place and correctly blocking traffic to the Elasticsearch and Kibana nodes from the internet (ports 9200 and 9300 for Elasticsearch and 5601 for Kibana) to keep them properly secured.
+The services in this guide bind to localhost-only, which means they are not accessible outside of the Linode from remote hosts. This ensures that Elasticsearch's REST API remains private to localhost and is not remotely accessible from the internet. If you take steps beyond this guide to configure Elasticsearch and related components further, ensure that your firewall is in place and correctly blocking traffic to the Elasticsearch and Kibana nodes from the internet (ports 9200 and 9300 for Elasticsearch and 5601 for Kibana) to keep them properly secured.
 {{< /note >}}
 
 ## Install Elastic Stack Components
@@ -56,23 +56,23 @@ Configure the Elastic `apt` repository and install the necessary packages and th
 
         wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 
-1.  Install the `apt-transport-https` package, which is required to retrieve `deb` packages served over HTTPS:
+2.  Install the `apt-transport-https` package, which is required to retrieve `deb` packages served over HTTPS:
 
         sudo apt-get install apt-transport-https
 
-1.  Add the APT repository information to your server's list of sources:
+3.  Add the APT repository information to your server's list of sources:
 
         echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
 
-1.  Refresh the list of available packages:
+4.  Refresh the list of available packages:
 
         sudo apt-get update
 
-1.  Before installing Elasticsearch, the Java runtime must be present. On systems such as Ubuntu 18.04 LTS, using the `default-jre-headless` package installs a compatible Java runtime:
+5.  Before installing Elasticsearch, the Java runtime must be present. On systems such as Ubuntu 18.04 LTS, using the `default-jre-headless` package installs a compatible Java runtime:
 
         sudo apt-get install default-jre-headless
 
-1.  Install Elasticsearch, Kibana, Filebeat, and Metricbeat:
+6.  Install Elasticsearch, Kibana, Filebeat, and Metricbeat:
 
         sudo apt-get install elasticsearch kibana filebeat metricbeat
 
@@ -176,13 +176,13 @@ filebeat.inputs:
   - '*'
   processors:
   - add_docker_metadata: ~
-    {{< /file >}}
+{{< /file >}}
 
 1.  Uncomment the following line and change its value to `true`, which will permit Filebeat to create associated Kibana dashboards for captured container logs:
 
     {{< file "/etc/filebeat/filebeat.yml" yml >}}
 setup.dashboards.enabled: true
-    {{< /file >}}
+{{< /file >}}
 
 1.  Finally, add the following `autodiscover` configuration to the end of the `filebeat.yml` file:
 
@@ -191,7 +191,7 @@ filebeat.autodiscover:
   providers:
     - type: docker
       hints.enabled: true
-    {{< /file >}}
+{{< /file >}}
 
 1.  Enable the `nginx` module, which will be used later in this tutorial:
 
@@ -224,11 +224,11 @@ setup.dashboards.enabled: true
 
 The following example will demonstrate how Filebeat and Metricbeat automatically capture container data which can be accessed within Kibana.
 
-1.  To begin, run a simple nginx Docker container on your Linode. The following command will run the web server in the background and expose the listening HTTP service under a random port number. The `--label` argument is a [hint](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover-hints.html) to let Filebeat automatically parse the log format of certain container types, in this case, nginx.
+1.  To begin, run a simple nginx Docker container on your Linode. The following command will run the web server in the background and expose the listening HTTP service under a random port number. The `--label` argument is a [hint](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover-hints.html) to let Filebeat automatically parse the log format of certain container types, which in this case is nginx.
 
         sudo docker run --name nginx -P -d --label co.elastic.logs/module=nginx nginx
 
-1.  In order to open a secure connection to Kibana, open an ssh tunnel to port 5601 on your Linode. A comprehensive guide to using ssh tunnels on a variety of platforms in available on our [Create an SSH Tunnel for MySQL guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/), but the simplest example of doing so is to run the following command in another terminal window, which forwards port 5601 locally to port 5601 on your Linode.
+1.  In order to open a secure connection to Kibana, open an SSH tunnel to port 5601 on your Linode. A comprehensive guide to using SSH tunnels on a variety of platforms is available in our [Create an SSH Tunnel for MySQL guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/), but the simplest method is to run the following command in new terminal window. This forwards port 5601 locally to port 5601 on your Linode.
 
         ssh -L 5601:localhost:5601 <user@ip-address>
 
@@ -266,7 +266,7 @@ The following example will demonstrate how Filebeat and Metricbeat automatically
 
     ![Kibana 6 Docker Overview](kibana-docker-overview.png "Kibana 6 Docker Overview")
 
-1.  Scrolling further down will show graphs indicating resource usage of containers over time, including CPU, memory, and network activity.
+1.  Scrolling further down will show graphs indicating container resource usage over time, including CPU, memory, and network activity.
 
     ![Kibana 6 Docker Resources](kibana-docker-resources.png "Kibana 6 Docker Resources")
 
