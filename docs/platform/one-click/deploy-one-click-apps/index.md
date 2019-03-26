@@ -9,7 +9,7 @@ published: 2019-03-26
 modified: 2019-03-26
 modified_by:
   name: Linode
-title: "Deploy One-Click Apps"
+title: "Index"
 contributor:
   name: Linode
 headless: true
