@@ -84,6 +84,10 @@ Depending on the type of app you created, the app will be accessible in differen
 
     ![Highlight of a Linode's IP address in list view.](one-click-ip-address-list.png)
 
+    Alternatively, you can find your IP address by navigating to the **Networking** tab of your Linode's detail page and copying the IP address from the IPv4 column:
+
+    ![View your IP address from the Networking tab of the Linode detail page.](one-click-networking-tab.png)
+
 Copy your IP address. For apps like WordPress, WooCommerce, and Drupal, you can navigate to the IP address in your browser to visit your installation. For game servers, connect to the IP address in-game to play on your new server.
 
 ## Adding a Domain Name for Your App
