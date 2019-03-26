@@ -16,6 +16,8 @@ external_resources:
   - '[Linode CSI](https://github.com/linode/linode-blockstorage-csi-driver)'
 ---
 
+![Rancher title graphic.](rancher_title_graphic.png)
+
 ## What is Rancher?
 
 [Rancher](http://rancher.com/) is a web application that provides an interactive and easy-to-use GUI for creating and managing Kubernetes clusters. Rancher has plugins for interacting with multiple cloud hosts, including Linode, and you can manage clusters across different hosting providers.
