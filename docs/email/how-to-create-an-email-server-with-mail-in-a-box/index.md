@@ -63,7 +63,7 @@ Make sure you select Ubuntu 18.04 as the *Operating System* (OS), as starting wi
 
 ## Configure Your Domain Name
 
-You'll have to check with your registrar, the company where you've registered your domain name, to see how you can change your nameservers and add glue records. Either search for this information on Google, the site's knowledge base, or ask their support to help you.
+You'll have to check with your registrar, the company where you've registered your domain name with, to see how you can change your nameservers, and add glue records. Either search for this information on Google, the site's knowledge base, or ask their support to help you.
 
 Here's what you'll need to do:
 
@@ -185,10 +185,10 @@ Since it's very likely that a Let's Encrypt TLS certificate hasn't been installe
 
     ![Control Panel - TLS Certificates Page](mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
 
-3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/networking/dns/configure-your-linode-for-reverse-dns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam, will consider it suspicious that your IP doesn't point to your domain name and sometimes even reject it.
+3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/networking/dns/configure-your-linode-for-reverse-dns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam, will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
 
 ## Conclusion
 
-As you can see, it's very convenient when everything for an email server is packaged in one place and automagically configured. But convenience often has a price. Mail-in-a-box's centralization - that makes it easy to manage everything - also creates a single point of failure. There is a safety net though: email servers are intelligent enough to retry sending you their data for a few days, in case your server is unavailable.
+As you can see, it's very convenient when everything for an email server is packaged in one place, and automagically configured. But convenience often has a price. Mail-in-a-box's centralization - that makes it easy to manage everything - also creates a single point of failure. There is a safety net though: email servers are intelligent enough to retry sending you their data for a few days, in case your server is unavailable.
 
-But if you can't afford the delay, you should look at ways to make your setup more reliable. A beginner friendly approach is to set up a monitoring system that will notify you quickly in case of problems. Later on, you can look into secondary (slave) nameservers, secondary MX entries, cloning and syncing Mail-in-a-Box machines, so they can take over in case of failure and floating IPs.
+But if you can't afford the delay, you should look at ways to make your setup more reliable. A beginner friendly approach is to set up a monitoring system that will notify you quickly in case of problems. Later on, you can look into secondary (slave) nameservers, secondary MX entries, cloning and syncing Mail-in-a-Box machines, so they can take over in case of failure, and floating IPs.
