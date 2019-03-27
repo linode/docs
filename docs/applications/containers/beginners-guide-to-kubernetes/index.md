@@ -17,16 +17,16 @@ external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 ---
 
-*Kubernetes*, often referred to as *k8s*, is an open source container orchestration system that helps deploy and manage containerized applications. Developed by Google starting in 2014 and written in the Go language, Kubernetes is quickly becoming the standard way to architect horizontally scalable applications. This guide will explain the major parts and concepts of Kubernetes.
+*Kubernetes*, often referred to as *k8s*, is an open source container orchestration system that helps deploy and manage containerized applications. Developed by Google starting in 2014 and written in the Go language, Kubernetes is quickly becoming the standard way to architect horizontally-scalable applications. This guide will explain the major parts and concepts of Kubernetes.
 
 
 ## Containers
 
-Kubernetes is a container orchestration tool and therefore needs a container runtime installed to work. In practice the default container runtime for Kubernetes is [Docker](https://www.docker.com/), though other runtimes like [rkt](https://coreos.com/rkt/) and [LXD](https://linuxcontainers.org/lxd/introduction/) will also work. With the advent of the [Container Runtime Interface (CRI)](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-node/container-runtime-interface.md), which hopes to standardize the way Kubernetes interacts with containers, other options like [containerd](https://containerd.io/), [cri-o](https://cri-o.io/), and [Frakti](https://github.com/kubernetes/frakti) have also become available. This guide assumes you have a working knowledge of containers and the examples will all use Docker as the container runtime.
+Kubernetes is a container orchestration tool and, therefore, needs a container runtime installed to work. In practice, the default container runtime for Kubernetes is [Docker](https://www.docker.com/), though other runtimes like [rkt](https://coreos.com/rkt/), and [LXD](https://linuxcontainers.org/lxd/introduction/) will also work. With the advent of the [Container Runtime Interface (CRI)](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-node/container-runtime-interface.md), which hopes to standardize the way Kubernetes interacts with containers, other options like [containerd](https://containerd.io/), [cri-o](https://cri-o.io/), and [Frakti](https://github.com/kubernetes/frakti) have also become available. This guide assumes you have a working knowledge of containers and the examples will all use Docker as the container runtime.
 
 ## Kubernetes API
 
-Kubernetes is built around a robust RESTful API. Every action taken in Kubernetes, be it inter-component communication or user command, interacts in some fashion with the Kubernetes API. The goal of the API is to help facilitate the desired state of the Kubernetes cluster. If you want X instances of your application running and have Y currently active, the API will take the required steps to get to X, whether this means creating or destroying resources. To create this desired state, you create *objects*, which are normally represented by YAML files called *manifests*, and apply them through the command line with the **kubectl** tool.
+Kubernetes is built around a robust RESTful API. Every action taken in Kubernetes, be it inter-component communication or user command, interacts in some fashion with the Kubernetes API. The goal of the API is to help facilitate the desired state of the Kubernetes cluster. If you want X instances of your application running and have Y currently active, the API will take the required steps to get to X, whether this means creating, or destroying resources. To create this desired state, you create *objects*, which are normally represented by YAML files called *manifests*, and apply them through the command line with the **kubectl** tool.
 
 ## kubectl
 
@@ -34,38 +34,38 @@ kubectl is a command line tool used to interact with the Kubernetes cluster. It 
 
 ## Kubernetes Master, Nodes, and Control Plane
 
-At the highest level of Kubernetes there exist two kinds of servers, a *Master* and a *Node*. These servers can be Linodes, VMs, or physical servers. Together, these servers form a *cluster*.
+At the highest level of Kubernetes, there exist two kinds of servers, a *Master* and a *Node*. These servers can be Linodes, VMs, or physical servers. Together, these servers form a *cluster*.
 
 ### Nodes
 
 Kubernetes Nodes are worker servers that run your application. The number of Nodes is determined by the user, and they are created by the user. In addition to running your application, each Node runs two processes:
 
-- **kubelet** receives PodSpec files that describe the desired state of a [Pod](#pods) from the API server, and ensures the Pods that those files represent are healthy and running on the Node.
-- **kube-proxy** is a networking proxy that proxies the UDP, TCP and SCTP networking of each Node, and provides load balancing. This is only used to connect to [Services](#services).
+- **kubelet** receives PodSpec files that describe the desired state of a [Pod](#pods) from the API server, and ensures the Pods that those files represented are healthy, and running on the Node.
+- **kube-proxy** is a networking proxy that proxies the UDP, TCP, and SCTP networking of each Node, and provides load balancing. This is only used to connect to [Services](#services).
 
 ### Kubernetes Master
 
-The Kubernetes Master is a normally a separate server responsible for maintaining the desired state of the cluster by telling the Nodes how many instances of your application it should run and where. The Kubernetes Master runs three processes:
+The Kubernetes Master is normally a separate server responsible for maintaining the desired state of the cluster. It does this by telling the Nodes how many instances of your application it should run and where. The Kubernetes Master runs three processes:
 
 - **kube-apiserver** is the front end for the Kubernetes API server.
 - **kube-controller-manager** is a daemon that manages the Kubernetes control loop. For more on Controllers, see the [Controllers section](#controllers).
-- **kube-scheduler** is a function that looks for newly created Pods that have no Nodes and assigns them a Node based on a host of requirements. For more information on kube-scheduler, consult the [Kubernetes kube-scheduler documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/).
+- **kube-scheduler** is a function that looks for newly created Pods that have no Nodes, and assigns them a Node based on a host of requirements. For more information on kube-scheduler, consult the [Kubernetes kube-scheduler documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/).
 
-Additionally, the Kubernetes Master runs the database **etcd**. etcd is a highly available key-value store that provides the backend database for Kubernetes.
+Additionally, the Kubernetes Master runs the database **etcd**. Etcd is a highly available key-value store that provides the backend database for Kubernetes.
 
-Together kube-apiserver, kube-controller-manager, kube-scheduler, and etcd form what is known as the *control plane*. The control plane is responsible for making decisions about the cluster and pushing it toward the desired state.
+Together, kube-apiserver, kube-controller-manager, kube-scheduler, and etcd form what is known as the *control plane*. The control plane is responsible for making decisions about the cluster, and pushing it toward the desired state.
 
 ## Kubernetes Objects
 
-In Kubernetes there are a number of objects that are abstractions of your Kubernetes system's desired state. These objects represent your application, its networking, and disk resources -- all of which together form your application.
+In Kubernetes, there are a number of objects that are abstractions of your Kubernetes system's desired state. These objects represent your application, its networking, and disk resources -- all of which together form your application.
 
 ### Pods
 
-In Kubernetes all containers exist within *Pods*. Pods are the smallest unit of the Kubernetes architecture, and can be viewed as a kind of wrapper for your container. Each Pod is given its own IP address with which it can interact with other Pods within the cluster.
+In Kubernetes, all containers exist within *Pods*. Pods are the smallest unit of the Kubernetes architecture, and can be viewed as a kind of wrapper for your container. Each Pod is given its own IP address with which it can interact with other Pods within the cluster.
 
-Usually a Pod contains only one container, but a Pod can contain multiple containers if those containers need to share resources. If there is more than one container in a Pod, these containers can communicate with one another via localhost.
+Usually, a Pod contains only one container, but a Pod can contain multiple containers if those containers need to share resources. If there is more than one container in a Pod, these containers can communicate with one another via localhost.
 
-Pods in Kubernetes are "mortal," which means that they are created and destroyed depending on the needs of the application. For instance, you might have a web app backend that sees a spike in CPU usage. This might cause the cluster to scale up the amount of backend Pods from two to ten, in which case eight new Pods would be created. Once the traffic subsides, the Pods might scale back to two, in which case eight pods would be destroyed.
+Pods in Kubernetes are "mortal," which means that they are created, and destroyed depending on the needs of the application. For instance, you might have a web app backend that sees a spike in CPU usage. This might cause the cluster to scale up the amount of backend Pods from two to ten, in which case eight new Pods would be created. Once the traffic subsides, the Pods might scale back to two, in which case eight pods would be destroyed.
 
 It is important to note that Pods are destroyed without respect to which Pod was created first. And, while each Pod has its own IP address, this IP address will only be available for the life-cycle of the Pod.
 
@@ -86,14 +86,14 @@ spec:
 
 Each manifest has four necessary parts:
 
-- The version of the API in use.
-- The kind of resource you'd like to define.
-- Metadata about the resource.
+- The version of the API in use
+- The kind of resource you'd like to define
+- Metadata about the resource
 - Though not required by all objects, a spec which describes the desired behavior of the resource is necessary for most objects and controllers.
 
 In the case of this example, the API in use is `v1`, and the `kind` is a Pod. The metadata field is used for applying a name, labels, and annotations. Names are used to differentiate resources, while labels are used to group like resources. Labels will come into play more when defining [Services](#services) and [Deployments](#deployments). Annotations are for attaching arbitrary data to the resource.
 
-The spec is where the desired state of the resource is defined. In this case a Pod with a single Apache container is desired, so the `containers` field is supplied with a name, 'apache-container', and an image, the latest version of Apache. The image is pulled from [Docker Hub](https://hub.docker.com), as that is the default container registry for Kubernetes.
+The spec is where the desired state of the resource is defined. In this case, a Pod with a single Apache container is desired, so the `containers` field is supplied with a name, 'apache-container', and an image, the latest version of Apache. The image is pulled from [Docker Hub](https://hub.docker.com), as that is the default container registry for Kubernetes.
 
 For more information on the type of fields you can supply in a Pod manifest, refer to the [Kubernetes Pod API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#pod-v1-core).
 
@@ -138,10 +138,10 @@ To delete the Pod, issue the `delete` command:
 
 *Services* group identical Pods together to provide a consistent means of accessing them. For instance, you might have three Pods that are all serving a website, and all of those Pods need to be accessible on port 80. A Service can ensure that all of the Pods are accessible at that port, and can load balance traffic between those Pods. Additionally, a Service can allow your application to be accessible from the internet. Each Service is given an IP address and a corresponding local DNS entry. Additionally, Services exist across Nodes. If you have two replica Pods on one Node and an additional replica Pod on another Node, the service can include all three Pods. There are four types of Service:
 
--  **ClusterIP**: exposes the Service internally to the cluster. This is the default setting for a Service.
--  **NodePort**: exposes the Service to the internet from the IP address of the Node at the specified port number. You can only use ports in the 30000-32767 range.
--  **LoadBalancer**: this will create a load balancer assigned to a fixed IP address in the cloud, so long as the cloud provider supports it. In the case of Linode, this is the responsibility of the [Linode Cloud Controller Manager](https://github.com/linode/linode-cloud-controller-manager), which will create a NodeBalancer for the cluster. This is the best way to expose your cluster to the internet.
-- **ExternalName**: maps the service to a DNS name by returning a CNAME record redirect. ExternalName is good for directing traffic to outside resources, such as a database that is hosted on another cloud.
+-  **ClusterIP**: Exposes the Service internally to the cluster. This is the default setting for a Service.
+-  **NodePort**: Exposes the Service to the internet from the IP address of the Node at the specified port number. You can only use ports in the 30000-32767 range.
+-  **LoadBalancer**: This will create a load balancer assigned to a fixed IP address in the cloud, so long as the cloud provider supports it. In the case of Linode, this is the responsibility of the [Linode Cloud Controller Manager](https://github.com/linode/linode-cloud-controller-manager), which will create a NodeBalancer for the cluster. This is the best way to expose your cluster to the internet.
+- **ExternalName**: Maps the service to a DNS name by returning a CNAME record redirect. ExternalName is good for directing traffic to outside resources, such as a database that is hosted on another cloud.
 
 Below is an example of a Service manifest:
 
@@ -379,7 +379,7 @@ You'll see a confirmation that the images have been updated:
 
     deployment.apps/apache-deployment image updated
 
-To see for yourself that the images have updated, you can grab the a Pod name from the `get pods` list:
+To see for yourself that the images have updated, you can grab the Pod name from the `get pods` list:
 
     kubectl get pods
 
@@ -410,7 +410,7 @@ For more information on Deployments, visit the [Kubernetes Deployments API docum
 
 ### Jobs
 
-A *Job* is a controller that manages a Pod that is created for a single, or set, of task. This is handy if you need to create a Pod that performs a single function or calculates a value. The deletion of the Job will delete the Pod.
+A *Job* is a controller that manages a Pod that is created for a single, or set, of task. This is handy if you need to create a Pod that performs a single function, or calculates a value. The deletion of the Job will delete the Pod.
 
 Below is an example of a Job that simply prints "Hello World!" and ends:
 
@@ -438,7 +438,7 @@ To create the Job, issue the `create` command:
 
     kubectl create -f my-job.yaml
 
-To inspect see if the job has run, or is running, issue the `get jobs` command:
+To see if the job has run, or is running, issue the `get jobs` command:
 
     kubectl get jobs
 
@@ -447,7 +447,7 @@ You should see output like the following:
     NAME          COMPLETIONS   DURATION   AGE
     hello-world   1/1           9s         8m23s
 
-To get the Pod of the job, issue the `get pods` command:
+To get the Pod of the Job, issue the `get pods` command:
 
     kubectl get pods
 
@@ -460,7 +460,7 @@ You can use the name of the Pod to inspect its output by consulting the log file
 
     kubectl get logs hello-world-4jzdm
 
-To delete the Job and its Pod, issue the `delete` command:
+To delete the Job, and its Pod, issue the `delete` command:
 
     kubectl delete job hello-world
 
@@ -468,15 +468,15 @@ To delete the Job and its Pod, issue the `delete` command:
 
 Networking in Kubernetes was designed to make it simple to port existing apps from VMs to containers, and subsequently, Pods. The basic requirements of the Kubernetes networking model are:
 
-1.  Pods can communicate with each other across Nodes without the use of [NAT](https://whatismyipaddress.com/nat).
-2.  Agents on a Node, like kubelet, can communicate with all of a Node's Pods.
+1.  Pods can communicate with each other across Nodes without the use of [NAT](https://whatismyipaddress.com/nat)
+2.  Agents on a Node, like kubelet, can communicate with all of a Node's Pods
 3.  In the case of Linux, Pods in a Node's host network can communicate to all other Pods without NAT.
 
 Though the rules of the Kubernetes networking model are simple, the implementation of those rules is an advanced topic. Because Kubernetes does not come with its own implementation, it is up to the user to provide a networking model.
 
-Two of the most popular options are [Flannel](https://github.com/coreos/flannel#flannel) and [Calico](https://docs.projectcalico.org/v2.0/getting-started/kubernetes/). Flannel is a networking overlay that meets the functionality of the Kubernetes networking model by supplying a layer 3 network fabric, and is relatively easy to set up. Calico enables networking and networking policy through the [NetworkPolicy API](https://kubernetes.io/docs/concepts/services-networking/network-policies/) to provide simple virtual networking.
+Two of the most popular options are [Flannel](https://github.com/coreos/flannel#flannel) and [Calico](https://docs.projectcalico.org/v2.0/getting-started/kubernetes/). Flannel is a networking overlay that meets the functionality of the Kubernetes networking model by supplying a layer 3 network fabric, and is relatively easy to set up. Calico enables networking, and networking policy through the [NetworkPolicy API](https://kubernetes.io/docs/concepts/services-networking/network-policies/) to provide simple virtual networking.
 
-For more information on the Kubernetes networking model and ways to implement it, consult the [cluster networking documentation](https://kubernetes.io/docs/concepts/cluster-administration/networking/).
+For more information on the Kubernetes networking model, and ways to implement it, consult the [cluster networking documentation](https://kubernetes.io/docs/concepts/cluster-administration/networking/).
 
 ## Next Steps
 
