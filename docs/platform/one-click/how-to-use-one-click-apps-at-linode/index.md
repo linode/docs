@@ -80,7 +80,7 @@ Depending on the type of app you created, the app will be accessible in differen
 
     ![Highlight of a Linode's IP address in grid view.](one-click-ip-address-grid.png)
 
-    In list view, your IP address will look liks the following:
+    In list view, your IP address will look like the following:
 
     ![Highlight of a Linode's IP address in list view.](one-click-ip-address-list.png)
 
@@ -92,7 +92,7 @@ Copy your IP address. For apps like WordPress, WooCommerce, and Drupal, you can 
 
 ## Adding a Domain Name for Your App
 
-For websites like WordPress, WooCommerce, and Drupal, it's much more desireable to have a domain name rather than using an IP address to access your app. For information on how to add a domain name to your app, visit our [DNS Manager guide](https://linode.com/docs/platform/manager/dns-manager/#add-dns-records).
+For websites like WordPress, WooCommerce, and Drupal, it's much more desirable to have a domain name rather than using an IP address to access your app. For information on how to add a domain name to your app, visit our [DNS Manager guide](https://linode.com/docs/platform/manager/dns-manager/#add-dns-records).
 
 ## Connecting to You Server Remotely
 
