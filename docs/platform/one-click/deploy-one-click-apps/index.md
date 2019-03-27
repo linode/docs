@@ -28,6 +28,6 @@ One-Click Apps allow you to easily deploy software on a Linode using the Linode 
 
 1. Viewing the **Select App** heading, select the app you would like to deploy on a Linode.
 
-    ![Select a One-Click App to deploy](one-click-apps-create.png)
+    ![Select a One-Click App to deploy](/docs/platform/one-click/deploy-one-click-apps/one-click-apps-create.png)
 
 1. Once you have selected the app, proceed to the app's **Options** heading and provide values for the required fields.
