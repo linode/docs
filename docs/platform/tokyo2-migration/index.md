@@ -20,13 +20,13 @@ In November 2016, Linode [announced and opened](https://blog.linode.com/2016/11/
 
 The Tokyo 2 data center provides access to features that are not available in Tokyo 1. These features are:
 
--  The [Block Storage Service](https://www.linode.com/blockstorage) (available starting Q3 2018).
+-  The [Block Storage Service](https://www.linode.com/blockstorage).
 -  The [newest Linode plans](https://blog.linode.com/2018/05/17/updated-linode-plans-new-larger-linodes/).
 -  Future features on Linode's product roadmap.
 
 ## When will My Linodes be Migrated?
 
-You will receive a support ticket from Linode that lists the scheduled dates and times for the migrations of your Tokyo 1 Linodes. This ticket will be sent to you at least three months in advance of the start of your first migration.
+You will receive a support ticket from Linode that lists the scheduled dates and times for the migrations of your Tokyo 1 Linodes. This ticket will be sent to you at least two months in advance of the start of your first migration.
 
 Different Linodes will be scheduled to migrate on different dates and times. The support ticket you receive will list the migration schedule for all of your Tokyo 1 Linodes. **Linode will not be able to adjust this schedule of migrations.**
 
