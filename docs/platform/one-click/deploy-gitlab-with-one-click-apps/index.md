@@ -19,7 +19,7 @@ external_resources:
 
 GitLab is a complete solution for all aspects of your software development. At its core, GitLab serves as your centralized remote Git repository. GitLab also features built-in tools that represent every task in your development workflow, from planning to testing to releasing.
 
-Self-hosting your software development with GitLab offers total control of your codebase. At the same time, its familiar interface will ease collaboration for you and your team. GitLab is the most popular self-hosted Git repository, so you'll benefit from a robust set of integrated tools and an active community.
+Self-hosting your software development with GitLab offers total control of your codebase. At the same time, its familiar interface will ease collaboration for you and your team. GitLab is the most popular self-hosted Git repository software, so you'll benefit from a robust set of integrated tools and an active community.
 
 ### Deploy a GitLab One-Click App
 
@@ -72,7 +72,7 @@ After GitLab has finished installing, you will be able to access your GitLab sit
 
     **With a Domain Name**
 
-    If you deployed your GitLab One-Click App with a domain name and it is pointing to the Linode's IP address that is hosting your GitLab instance, then you can enter the domain name in a browser window to access your GitLab site.Ensure you are using `http://`.
+    If you deployed your GitLab One-Click App with a domain name and it is pointing to the Linode's IP address that is hosting your GitLab instance, then you can enter the domain name in a browser window to access your GitLab site. Ensure you are using `http://`.
 
     For more details on registering your domain, see the [DNS Manager](/docs/platform/manager/dns-manager/) guide.
 
@@ -110,7 +110,7 @@ If you configured your GitLab One-Click App without providing a domain, you can 
 
 ### Software Included
 
-The Drupal One-Click App will install the following required software on your Linode:
+The GitLab One-Click App will install the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
