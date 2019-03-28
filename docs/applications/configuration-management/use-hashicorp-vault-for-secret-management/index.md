@@ -20,7 +20,7 @@ external_resources:
 
 ## Why Use Vault?
 
-A service such as Vault requires operational effort to run and secure. Given the added complexity of running Vault for use in an application, in what way does it add value?
+A service such as Vault requires operational effort to run securely and effectively. Given the added complexity of using Vault as part of an application, in what way does it add value?
 
 Consider a simple application that must use an API token or other secret value. How should this sensitive credential be given to the application at runtime?
 
@@ -31,17 +31,17 @@ Consider a simple application that must use an API token or other secret value. 
 Vault solves these and other problems in a number of ways:
 
 - Services and applications that run without operator interaction can authenticate to Vault using values that can be rotated, revoked, and permission-controlled.
-- Some secret engines, such as the [AWS Secret Engine](https://www.vaultproject.io/docs/secrets/aws/index.html), can generate temporary, dynamically-generated secrets to ensure that credentials expire after a time.
+- Some secret engines, such as the [AWS Secret Engine](https://www.vaultproject.io/docs/secrets/aws/index.html), can generate temporary, dynamically-generated secrets to ensure that credentials expire after a period of time.
 - Policies for users and machine accounts can be strictly controlled for specific types of access to particular paths.
 
 ## Concepts
 
 Before continuing, you should familiarize yourself with important Vault terms and concepts that will be used later in this guide.
 
-- A **token** is the the underlying mechanism that underpins access to Vault resources. Whether a user authenticates to Vault using a GitHub token or a service authenticates using an [AppRole](https://www.vaultproject.io/docs/auth/approle.html) RoleID and SecretID, all forms of authentication are eventually normalize to a **token**. Tokens are typically short-lived (that is, expire after a period of time) and have one or more *policies* attached to them.
+- A **token** is the the underlying mechanism that underpins access to Vault resources. Whether a user authenticates to Vault using a GitHub token or an application-driven service authenticates using an [AppRole](https://www.vaultproject.io/docs/auth/approle.html) RoleID and SecretID, all forms of authentication are eventually normalize to a **token**. Tokens are typically short-lived (that is, expire after a period of time or time-to-live, or `ttl`) and have one or more *policies* attached to them.
 - A Vault **policy** dictates certain actions that may be performed upon a Vault **path**. Capabilities such as the ability to read a secret, write secrets, and delete them are all examples of actions that are defined in a policy for a particular **path**.
 - **path**s in Vault are similar in form to Unix filesystem paths (like `/etc`) or URLs (such as `/blog/title`). Users and machine accounts interact with Vault over particular paths in order to retrieve secrets, change settings, or otherwise interact with a running Vault service. All Vault access is performed over a REST interface, so these paths eventually take the form of an HTTP URL. While some paths interact with the Vault service itself to manage resources such as policies or settings, many important paths serve as an endpoint to either authenticate to Vault or interact with a **secret engine**.
-- A **secret engine** is a backend used in Vault to provide secrets to Vault users. The simplest example of a **secret engine** is the [key/value backend](https://www.vaultproject.io/docs/secrets/kv/index.html), which simply returns plain text values that may be stored at particular paths. Other examples of secret backends include the [PKI backend](https://www.vaultproject.io/docs/secrets/pki/index.html), which can generate and manage TLS certificates, and the [TOTP backend](https://www.vaultproject.io/docs/secrets/totp/index.html), which can generate temporary one-time passwords for web sites that require multi-factor authentication (including the Linode Manager).
+- A **secret engine** is a backend used in Vault to provide secrets to Vault users. The simplest example of a **secret engine** is the [key/value backend](https://www.vaultproject.io/docs/secrets/kv/index.html), which simply returns plain text values that may be stored at particular paths (these secrets remain encrypted on the backend). Other examples of secret backends include the [PKI backend](https://www.vaultproject.io/docs/secrets/pki/index.html), which can generate and manage TLS certificates, and the [TOTP backend](https://www.vaultproject.io/docs/secrets/totp/index.html), which can generate temporary one-time passwords for web sites that require multi-factor authentication (including the Linode Manager).
 
 ## Installation
 
