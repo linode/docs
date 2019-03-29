@@ -81,7 +81,7 @@ After Drupal has finished installing, you will be able to access your Drupal sit
 
     If you deployed your Drupal One-Click App with a domain name and it is pointing to the Linode's IP address that is hosting your Drupal instance, then you can enter the domain name in a browser window to access your Drupal site. Ensure you are using `http://`.
 
-	  For more details on registering your domain, see the [DNS Manager](/docs/platform/manager/dns-manager/) guide.
+    For more details on registering your domain, see the [DNS Manager](/docs/platform/manager/dns-manager/) guide.
 
 1.  Once you have accessed your Drupal site via the browser, you can log in using the admin credentials you created when deploying your app. Then, begin configuring your site.
 
