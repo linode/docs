@@ -63,7 +63,7 @@ After Drupal has finished installing, you will be able to access your Drupal sit
 
 1.  Access your Drupal site:
 
-	  **With your Linode's IP Address**
+    **With your Linode's IP Address**
 
     You will be able to access your Drupal site by copying your Linode's IPv4 address and entering it in the browser of your choice. To find your Linode's IPv4 address:
 
