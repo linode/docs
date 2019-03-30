@@ -63,6 +63,10 @@ The configuration outlined in this guide is suitable for small deployments. In s
 
 1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running a recent Linux distribution (such as Ubuntu 18.04 or CentOS 7), including setting the hostname and timezone.
 
+    {{< note >}}
+Setting the full hostname correctly in `/etc/hosts` is important in this guide in order to terminate TLS on Vault correctly. Your Linode's fully-qualified name and short hostname should be present in the `/etc/hosts` file for `127.0.0.1`.
+{{< /note >}}
+
 2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 3.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall (UFW) on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over for the rest of this guide:
@@ -240,6 +244,10 @@ LimitNOFILE=65536
 WantedBy=multi-user.target
 {{< /file >}}
 
+    These systemd service options define a number of important settings to ensure that Vault runs securely and reliably. For a complete explanation of what these options achieve, [the Vault documentation](https://learn.hashicorp.com/vault/operations/ops-deployment-guide#step-3-configure-systemd) provides a summary of each.
+
+## Configuration
+
 ### Configure Vault
 
 1.  Create a configuration file for Vault with the following contents. Replace `example.com` with the domain that you retrieved certificates for from Let's Encrypt.
@@ -247,8 +255,8 @@ WantedBy=multi-user.target
     {{< file "/etc/vault.d/vault.hcl" aconf >}}
 listener "tcp" {
   address = "0.0.0.0:8200"
-  tls_cert_file = "/etc/letsencrypt/live/vault.tylerl.ninja/fullchain.pem"
-  tls_key_file = "/etc/letsencrypt/live/vault.tylerl.ninja/privkey.pem"
+  tls_cert_file = "/etc/letsencrypt/live/example.com/fullchain.pem"
+  tls_key_file = "/etc/letsencrypt/live/example.com/privkey.pem"
 }
 
 storage "file" {
@@ -258,7 +266,7 @@ storage "file" {
 
     This configuration will use the Let's Encrypt certificates created in the previous steps to terminate TLS for the Vault service. This ensures that secrets will never be transmitted in plaintext. The actual storage for Vault will be on the local filesystem at `/var/lib/vault`.
 
-### Run Vault
+### Run The Vault Service
 
 1.  Vault is now ready to run. Start the service using `systemctl`.
 
@@ -268,7 +276,160 @@ storage "file" {
 
         sudo systemctl enable vault
 
+3.  Confirm that Vault is operational by using the `vault` executable to check for the service's status. Set the `VAULT_ADDR` environment variable to `https://<let's encrypt domain>:8200`. For example, for a domain of `example.com`:
+
+        export VAULT_ADDR=https://example.com:8200
+
+4.  `vault` commands should now be sent to your local Vault instance. Confirm this with the `vault status` command:
+
+        vault status
+
+    The command should return output similar to the following.
+
+    {{< output >}}
+Key                Value
+---                -----
+Seal Type          shamir
+Initialized        false
+Sealed             true
+Total Shares       0
+Threshold          0
+Unseal Progress    0/0
+Unseal Nonce       n/a
+Version            n/a
+HA Enabled         false
+{{< /output >}}
+
+The remainder of this tutorial assumes that the environment variable `VAULT_ADDR` is set to such a hostname - one which points to localhost using a valid domain name served over TLS.
+
+### Initializing Vault
+
+At this stage, Vault is installed and running, but not yet _initialized_. The following steps will initialize the Vault backend, which sets unseal keys and returns the initial root token. Initialization occurs one time for a Vault deployment.
+
+There are two configurable options to choose when performing the initialization step. The first value is the number of key shares which controls the total number of unseal keys that Vault will generate. The second value is the key threshold, which controls how many of these unseal key shares are required before Vault will successfully unseal itself. Unsealing is required whenever Vault is restarted or otherwise brought online after being in a previously offline state.
+
+To illustrate this concept, consider a secure server in a datacenter. Because the Vault database is only decrypted in-memory, stealing or bringing the server offline for any reason will leave the only copy of Vault's database on the filesystem in encrypted form or "sealed".
+
+When starting the server again, a key share of 3 and key threshold of 2 means that 3 keys exist, but at least 2 must be provided at startup for Vault to derive its decryption key and load its database into memory for access once again.
+
+The key share count ensure that multiple keys can exist at different locations for a degree of fault tolerance and backup purposes. The key threshold count ensures that compromising one unseal key does is not sufficient to decrypt Vault data alone.
+
+1.  Choose a value for the number of key shares and key threshold. Your situation may vary, but as an example, consider a team of three human Vault operators. A key share of 3 ensures that each member holds one unseal key. A key threshold of 2 means that no single operator can lose their key and compromise the system or steal the Vault database without coordinating with another operator.
+
+2.  Using these chosen values, execute the initialization command. Be prepared to save the output that is returned from the following command, as **it will only appear this once**.
+
+        vault operator init -key-shares=3 -key-threshold=2
+
+    This command will return output similar to the following.
+    
+    {{< output >}}
+Unseal Key 1: BaR6GUWRY8hIeNyuzAn7FTa82DiIldgvEZhOKhVsl0X5
+Unseal Key 2: jzh7lji1NX9TsNVGycUudSIy/X4lczJgsCpRfm3m8Q03
+Unseal Key 3: JfdH8LqEyc4B+xLMBX6/LT9o8G/6isC2ZFfz+iNMIW/0
+
+Initial Root Token: s.YijNa8lqSDeho1tJBtY02983
+
+Vault initialized with 3 key shares and a key threshold of 2. Please securely
+distribute the key shares printed above. When the Vault is re-sealed,
+restarted, or stopped, you must supply at least 2 of these keys to unseal it
+before it can start servicing requests.
+
+Vault does not store the generated master key. Without at least 2 key to
+reconstruct the master key, Vault will remain permanently sealed!
+
+It is possible to generate new unseal keys, provided you have a quorum of
+existing unseal keys shares. See "vault operator rekey" for more information.
+{{< /output >}}
+
+3.  In a production scenario, these unseal keys should be stored in separate locations. For example, one in a password manager such as LastPass, one encrypted with gpg, and another stored offline on a USB key.
+
+4.  The `Initial Root Token` is equivalent to the "root" or superuser account for the Vault API. Record and protect this token in a similar fashion. Like the `root` account on a Unix system, this token should be used to create less-privileged accounts to use for day-to-day interactions with Vault and the root token should be used only infrequently due to its widespread privileges.
+
+### Unseal Vault
+
+After initialization, Vault will be sealed. The following unseal steps must be performed any time the `vault` service is brought down and then brought up again, such as when performing `systemctl restart vault` for any reason or restarting the host machine.
+
+1.  With `VAULT_ADDR` set appropriately, execute the unseal command.
+
+        vault operator unseal
+
+    A prompt will appear:
+
+    {{< output >}}
+Unseal Key (will be hidden):
+{{< /output >}}
+
+2.  Paste or enter one unseal key and press **Enter**. The command will finish with output similar to the following:
+
+    {{< output >}}
+Unseal Key (will be hidden):
+Key                Value
+---                -----
+Seal Type          shamir
+Initialized        true
+Sealed             true
+Total Shares       3
+Threshold          2
+Unseal Progress    1/2
+Unseal Nonce       0124ce2a-6229-fac1-0e3f-da3e97e00583
+Version            1.1.0
+HA Enabled         false
+{{< /output >}}
+
+    Notice that the output indicates that the one out of two required unseal keys have been provided.
+
+3.  Peform the `unseal` command again.
+
+        vault operator unseal
+
+4.  Enter a _different_ unseal key when the prompt appears.
+
+    {{< output >}}
+Unseal Key (will be hidden):
+{{< /output >}}
+
+5.  The resulting output should indicate that Vault is now unsealed (notice the `Sealed false` line).
+
+    {{< output >}}
+Unseal Key (will be hidden):
+Key             Value
+---             -----
+Seal Type       shamir
+Initialized     true
+Sealed          false
+Total Shares    3
+Threshold       2
+Version         1.1.0
+Cluster Name    vault-cluster-a397153e
+Cluster ID      a065557e-3ee8-9d26-4d90-b90c8d69fa5d
+HA Enabled      false
+{{< /output >}}
+
+Vault is now operational.
+
 ## Using Vault
+
+### Token Authentication
+
+When interacting with Vault over its REST API, Vault identifies and authenticates most requests by the presence of a token. Later sections in this guide will explain how to provision additional tokens, but for now, use the initial superuser root token.
+
+1.  Set the `VAULT_TOKEN` environment variable to the value of the previously-obtained root token. This token is authentication mechanism that the `vault` command will rely on for future interaction with Vault. The actual root token will be different in your environment.
+
+        export VAULT_TOKEN=s.YijNa8lqSDeho1tJBtY02983
+
+2.  Use the `vault` command to confirm that the token is valid and has the expected permissions.
+
+        vault token lookup
+
+3.  The output of this command should include the following:
+
+    {{< output >}}
+policies            [root]
+{{< /output >}}
+
+### The KV Secret Backend
+
+Vault backends are the core mechanism Vault uses to permit users to read and write secret values. The simplest backend to illustrate this functionality is the KV backend. This backend simply lets clients write key/value pairs (such as `mysecret=apikey`) that can be read later.
 
 ---
 
