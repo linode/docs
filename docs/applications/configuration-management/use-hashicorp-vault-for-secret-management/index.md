@@ -13,7 +13,10 @@ title: "Use HashiCorp Vault to Manage Secrets"
 contributor:
   name: Linode
 external_resources:
-- '[Terraform Input Variable Configuration](https://www.terraform.io/docs/configuration/variables.html)'
+- '[Vault Documentation Overview](https://www.vaultproject.io/docs/)'
+- '[Vault Reference Architecture and Best Practices](https://learn.hashicorp.com/vault/day-one/ops-reference-architecture)'
+- '[Vault Secrets Engines](https://www.vaultproject.io/docs/secrets/index.html)'
+- '[Vault Auth Methods](https://www.vaultproject.io/docs/auth/index.html)'
 ---
 
 [HashiCorp Vault](https://www.vaultproject.io/) is a secrets management tool that helps to provide secure, automated access to sensitive data. Vault meets these use cases by coupling authentication methods (such as application tokens) to secret engines (such as simple key/value pairs) using policies to control how access is granted. In this guide, you will deploy, configure, and access Vault in an example application to illustrate Vault's features and API.
@@ -593,20 +596,82 @@ myservice
 
     The root token should have sufficient rights to return a list of all secret keys under the `kv/` path.
 
----
+### Authentication Methods
 
-{{< caution >}}
-Example caution.
-{{< /caution >}}
+In practice, when services that require secret values are deployed, a token should not be distributed as part of the deployment or configuration management. Rather, services should authenticate themselves to Vault in order to acquire a token that has a limited lifetime, which ensures that credentials expire eventually and cannot be reused if they are ever leaked or disclosed.
 
-{{< output >}}
-Example textual output.
+Vault supports many types of authentication methods. For example, the Kubernetes authentication method can retrieve a token for individual pods. As a simple illustrative example, the following steps will demonstrate how to use the AppRole method.
+
+1.  Enable the AppRole authentication method using the `vault` command. Remember to perform these steps in the terminal window with the root token stored in the `VAULT_TOKEN` environment variable, otherwise Vault commands will fail.
+
+        vault auth enable approle
+
+2.  Create a named role. This will define a role that can be used to "log in" to Vault and retrieve a token with a policy associated with it. The following command creates a named role named `my-application` which creates tokens valid for 10 minutes which will have the `read-myservice` policy associated with them.
+
+        vault write auth/approle/role/my-application \
+            token_ttl=10m \
+            policies=read-myservice
+
+3.  Retrieve the RoleID of the named role, which uniquely identifies the AppRole. Note this value for later use.
+
+        vault read auth/approle/role/my-application/role-id
+
+    {{< output >}}
+Key        Value
+---        -----
+role_id    147cd412-d1c2-4d2c-c57e-d660da0b1fa8
 {{< /output >}}
 
-    {{< note >}}
-Example indented note.
-{{< /note >}}
+    In this example case, RoleID is `147cd412-d1c2-4d2c-c57e-d660da0b1fa8`. Note that your value will be different.
 
-{{< note >}}
-Example note.
-{{< /note >}}
+4.  Finally, read the secret-id of the named role, and save this value for later use as well.
+
+        vault write -f auth/approle/role/my-application/secret-id
+
+    {{< output >}}
+Key                   Value
+---                   -----
+secret_id             2225c0c3-9b9f-9a9c-a0a5-10bf06df7b25
+secret_id_accessor    30cbef6a-8834-94fe-6cf3-cf2e4598dd6a
+{{< /output >}}
+
+    In this example output, the SecretID is `2225c0c3-9b9f-9a9c-a0a5-10bf06df7b25`.
+
+5.  Use these values to generate a limited-use token by performing a `write` operation against the AppRole API. Replace the RoleID and SecretID values here with your own.
+
+        vault write auth/approle/login \
+            role_id=147cd412-d1c2-4d2c-c57e-d660da0b1fa8 \
+            secret_id=2225c0c3-9b9f-9a9c-a0a5-10bf06df7b25
+
+    The resulting output should include a new token, which in this example case is `s.coRl4UR6YL1sqw1jXhJbuZfq`
+
+    {{< output >}}
+Key                     Value
+---                     -----
+token                   s.3uu4vwFO8D1mG5S76IG04mck
+token_accessor          fi3aW4W9kZNB3FAC20HRXeoT
+token_duration          10m
+token_renewable         true
+token_policies          ["default" "read-myservice"]
+identity_policies       []
+policies                ["default" "read-myservice"]
+token_meta_role_name    my-application
+{{< /output >}}
+
+6.  Open one more terminal tab or window and login to your remote host running Vault.
+
+7.  Once again, set the `VAULT_ADDR` environment variable to the correct value to communicate with your local Vault instance.
+
+        export VAULT_ADDR=https://example.com:8200
+
+8.  Set the `VAULT_TOKEN` environment variable to this newly created token. From the previous example output, this would be the following (note that your token will be different).
+
+        export VAULT_TOKEN=s.3uu4vwFO8D1mG5S76IG04mck
+
+9.  Read the KV path that this token should be able to access.
+
+        vault kv get kv/myservice
+
+    The example should should be read and accessible.
+
+10. If you try to read this value after more than 10 minutes have elapsed, the token will have expired and reading should not be possible.
