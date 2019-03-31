@@ -276,7 +276,7 @@ storage "file" {
 
         sudo systemctl enable vault
 
-3.  Confirm that Vault is operational by using the `vault` executable to check for the service's status. Set the `VAULT_ADDR` environment variable to `https://<let's encrypt domain>:8200`. For example, for a domain of `example.com`:
+3.  Confirm that Vault is operational by using the `vault` executable to check for the service's status. Set the `VAULT_ADDR` environment variable to `https://<let's encrypt domain>:8200`. For example, using the domain `example.com`:
 
         export VAULT_ADDR=https://example.com:8200
 
@@ -308,13 +308,13 @@ At this stage, Vault is installed and running, but not yet _initialized_. The fo
 
 There are two configurable options to choose when performing the initialization step. The first value is the number of key shares which controls the total number of unseal keys that Vault will generate. The second value is the key threshold, which controls how many of these unseal key shares are required before Vault will successfully unseal itself. Unsealing is required whenever Vault is restarted or otherwise brought online after being in a previously offline state.
 
-To illustrate this concept, consider a secure server in a datacenter. Because the Vault database is only decrypted in-memory, stealing or bringing the server offline for any reason will leave the only copy of Vault's database on the filesystem in encrypted form or "sealed".
+To illustrate this concept, consider a secure server in a datacenter. Because the Vault database is only decrypted in-memory, stealing or bringing the server offline for any reason will leave the only copy of Vault's database on the filesystem in encrypted form, or "sealed".
 
 When starting the server again, a key share of 3 and key threshold of 2 means that 3 keys exist, but at least 2 must be provided at startup for Vault to derive its decryption key and load its database into memory for access once again.
 
 The key share count ensure that multiple keys can exist at different locations for a degree of fault tolerance and backup purposes. The key threshold count ensures that compromising one unseal key does is not sufficient to decrypt Vault data alone.
 
-1.  Choose a value for the number of key shares and key threshold. Your situation may vary, but as an example, consider a team of three human Vault operators. A key share of 3 ensures that each member holds one unseal key. A key threshold of 2 means that no single operator can lose their key and compromise the system or steal the Vault database without coordinating with another operator.
+1.  Choose a value for the number of key shares and key threshold. Your situation may vary, but as an example, consider a team of three people in charge of operating Vault. A key share of 3 ensures that each member holds one unseal key. A key threshold of 2 means that no single operator can lose their key and compromise the system or steal the Vault database without coordinating with another operator.
 
 2.  Using these chosen values, execute the initialization command. Be prepared to save the output that is returned from the following command, as **it will only appear this once**.
 
@@ -417,7 +417,7 @@ When interacting with Vault over its REST API, Vault identifies and authenticate
 
         export VAULT_TOKEN=s.YijNa8lqSDeho1tJBtY02983
 
-2.  Use the `vault` command to confirm that the token is valid and has the expected permissions.
+2.  Use the `token lookup` subcommand to confirm that the token is valid and has the expected permissions.
 
         vault token lookup
 
@@ -430,6 +430,168 @@ policies            [root]
 ### The KV Secret Backend
 
 Vault backends are the core mechanism Vault uses to permit users to read and write secret values. The simplest backend to illustrate this functionality is the KV backend. This backend simply lets clients write key/value pairs (such as `mysecret=apikey`) that can be read later.
+
+1.  Enable the secret backend by using the `enable` Vault subcommand.
+
+        vault secrets enable -version=2 kv
+
+2.  Write an example value to the KV backend using the `kv put` Vault subcommand.
+
+        vault kv put kv/myservice api_token=secretvalue
+
+    This command should return output similar to the following:
+    
+    {{< output >}}
+Key              Value
+---              -----
+created_time     2019-03-31T04:35:38.631167678Z
+deletion_time    n/a
+destroyed        false
+version          1
+{{< /output >}}
+
+3.  Read this value from the `kv/myservice` path.
+
+        vault kv get kv/myservice
+
+    This command should return output similar to the following:
+
+    {{< output >}}
+====== Metadata ======
+Key              Value
+---              -----
+created_time     2019-03-31T04:35:38.631167678Z
+deletion_time    n/a
+destroyed        false
+version          1
+
+====== Data ======
+Key          Value
+---          -----
+api_token    secretvalue
+{{< /output >}}
+
+4.  Many utilities and script are better-suited to process json output. Use the `-format=json` flag to do a read once more, with the results return in JSON form.
+
+        vault kv get -format=json kv/myservice
+
+    {{< highlight json >}}
+{
+  "request_id": "2734ea81-6f39-c017-4c73-2719b2018b65",
+  "lease_id": "",
+  "lease_duration": 0,
+  "renewable": false,
+  "data": {
+    "data": {
+      "api_token": "secretvalue"
+    },
+    "metadata": {
+      "created_time": "2019-03-31T04:35:38.631167678Z",
+      "deletion_time": "",
+      "destroyed": false,
+      "version": 1
+    }
+  },
+  "warnings": null
+}
+{{< /highlight >}}
+
+### Policies
+
+Up until this point, we have performed API calls to Vault with the root token. Production best practices dictate that this token should only be used rarely and most operations be performed with lesser-privileged associated with controlled policies.
+
+Policies are defined by specifying a particular path and what set of _capabilities_ are permitted by a user upon the path. In our previous commands, the path has been `kv/myservice`, so we can create a policy to only read this secret and perform no other operations, including reading or listing secrets. When no policy exists for a particular path, Vault denies operations by default.
+
+In the case of the KV backend, Vault distinguishes operations upon the stored data, which are the actual stored values, and metadata, which includes information such as version history. In this example, we will create a policy to control access to the key/value data alone.
+
+1.  Create the following Vault policy file.
+
+    {{< file "policy.hcl" aconf >}}
+path "kv/data/myservice" {
+  capabilities = ["read"]
+}
+{{< /file >}}
+
+    This simple policy will permit any token associated with it to read the secret stored at the KV secret backend path `kv/myservice`.
+
+2.  Load this policy into Vault using the `policy write` subcommand. The following command names the aforementioned policy "read-myservice".
+
+        vault policy write read-myservice policy.hcl
+
+3.  To illustrate the use of this policy, create a new token with this new policy associated with it.
+
+        vault token create -policy=read-myservice
+
+    This command should return output similar to the following.
+
+    {{< output >}}
+Key                  Value
+---                  -----
+token                s.YdpJWRRaEIgdOW4y72sSVygy
+token_accessor       07akQfzg0TDjj3YoZSGMPkHA
+token_duration       768h
+token_renewable      true
+token_policies       ["default" "read-myservice"]
+identity_policies    []
+policies             ["default" "read-myservice"]
+{{< /output >}}
+
+4.  Open another terminal window or tab and login to the same host that Vault is running on. Set the `VAULT_ADDR` to ensure that new `vault` commands point at the local instance of Vault, replacing `example.com` with your domain.
+
+        export VAULT_ADDR=https://example.com:8200
+
+5.  Set the `VAULT_TOKEN` environment variable to the new token just created by the `token create` command. Remember that your actual token will be different than the one in this example.
+
+        export VAULT_TOKEN=s.YdpJWRRaEIgdOW4y72sSVygy
+
+6.  Now attempt to read our secret in Vault at the `kv/myservice` path.
+
+        vault kv get kv/myservice
+
+    Vault should return the key/value data.
+
+    {{< output >}}
+====== Metadata ======
+Key              Value
+---              -----
+created_time     2019-03-31T04:35:38.631167678Z
+deletion_time    n/a
+destroyed        false
+version          1
+
+====== Data ======
+Key          Value
+---          -----
+api_token    secretvalue
+{{< /output >}}
+
+7.  To illustrate unpermitted operations, attempt to `list` all secrets in the KV backend.
+
+        vault kv list kv/
+
+    Vault should deny this request.
+   
+    {{< output >}}
+Error listing kv/metadata: Error making API request.
+
+URL: GET https://example.com:8200/v1/kv/metadata?list=true
+Code: 403. Errors:
+
+* 1 error occurred:
+        * permission denied
+{{< /output >}}
+
+8.  In contrast, attempt to perform the same operation in the previous terminal window that has been configured with the root token.
+
+        vault kv list kv/
+
+    {{< output >}}
+Keys
+----
+myservice
+{{< /output >}}
+
+    The root token should have sufficient rights to return a list of all secret keys under the `kv/` path.
 
 ---
 
