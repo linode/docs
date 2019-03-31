@@ -219,7 +219,7 @@ Vault v1.1.0 ('36aa8c8dd1936e10ebd7a4c1d412ae0e6f7900bd')
 
         sudo gpasswd -a vault tls
 
-2.  Create the data directory and configuration directory for `vault` with limited permisions.
+2.  Create the data directory and configuration directory for `vault` with limited permissions.
 
         sudo install -o vault -g vault -m 750 -d /var/lib/vault
         sudo install -o vault -g vault -m 750 -d /etc/vault.d
@@ -395,7 +395,7 @@ HA Enabled         false
 
     Notice that the output indicates that the one out of two required unseal keys have been provided.
 
-3.  Peform the `unseal` command again.
+3.  Perform the `unseal` command again.
 
         vault operator unseal
 
@@ -531,7 +531,7 @@ path "kv/data/myservice" {
 
     This simple policy will permit any token associated with it to read the secret stored at the KV secret backend path `kv/myservice`.
 
-2.  Load this policy into Vault using the `policy write` subcommand. The following command names the aforementioned policy "read-myservice".
+2.  Load this policy into Vault using the `policy write` subcommand. The following command names the aforementioned policy `read-myservice`.
 
         vault policy write read-myservice policy.hcl
 
@@ -582,7 +582,7 @@ Key          Value
 api_token    secretvalue
 {{< /output >}}
 
-7.  To illustrate unpermitted operations, attempt to `list` all secrets in the KV backend.
+7.  To illustrate forbidden operations, attempt to `list` all secrets in the KV backend.
 
         vault kv list kv/
 
