@@ -6,7 +6,7 @@ description: Our guide to upgrading and resizing your Linode
 keywords: ["upgrading", "resizing", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['migrate-to-linode/disk-images/resizing-a-linode/','resizing/']
-modified: 2019-01-31
+modified: 2019-03-28
 modified_by:
   name: Linode
 published: 2017-02-14
@@ -41,7 +41,16 @@ Here's how to resize your Linode:
 
 1.  Select a plan and click the **Submit** button. Your Linode will be powered off and moved to another host. Depending on the size of your Linode, this process can take up to one hour.
 
-1.  (Optional) When the migration completes check your disk storage allocation meter. If you resized your Linode to a larger plan, you'll have additional un-used storage to allocate to your disks. You may want to add some of this storage to one of your disks if the internal filesystem on it is running low on free space, or just so you can use it in the future.
+    Your Linode's main disk will automatically be resized if the following two criteria are met:
+
+    1. The destination plan has a larger amount of disk space than the current plan. For example, if you are upgrading from a 2 GB to a 4 GB Linode plan.
+    1. The Linode's disk configuration is simple:
+        - 1 disk of type `ext 4` or `ext 3` and 1 disk of type `swap` **OR**
+        - 1 disk of type `ext 4` or `ext 3`
+
+    If your Linode does not fulfill the above criteria, you will have to manually reallocate un-used storage to your disks, if desired. See the following step for instructions.
+
+1.  (Optional) When the migration completes, check your disk storage allocation meter. If you resized your Linode to a larger plan and the main disk was not automatically resized, you'll have additional un-used storage to allocate to your disks. You may want to add some of this storage to one of your disks if the internal filesystem on it is running low on free space, or just so you can use it in the future.
 
     Navigate to your Linode's **Settings** tab and expand the **Advanced Configurations** section to view your disk storage allocation meter. Click on the **more options** link (...) next to the disk you'd like to allocate the extra storage to and select **Resize**.
 
