@@ -476,6 +476,7 @@ h4x0r123
 hackage
 hadoop
 halls3
+hapis
 haproxy
 hardcoded
 hardcopy
@@ -1134,6 +1135,7 @@ sasl2
 saslauth
 saslauthd
 sasldb
+savas
 sbackup
 sbin
 sbopkg
