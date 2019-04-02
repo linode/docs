@@ -28,7 +28,7 @@ Configuring WireGuard is as simple as configuring SSH. A connection is establish
 ### WireGuard Options
 
 {{< note >}}
-We recommend that you have your WireGuard client's public key available before deploying a WireGuard server. If you deploy a WireGuard server without your client's public key, you will need to [connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) and manually update and enable the `wg0.conf` file. For details on manually configuring your WireGuard server's configuration file, see the [Configure Wiregard Server](/docs/networking/vpn/set-up-wireguard-vpn-on-ubuntu/#configure-wireguard-server) section of our WireGuard guide.
+We recommend that you have your WireGuard client's public key available before deploying a WireGuard server. If you deploy a WireGuard server without your client's public key, you will need to [connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) and manually update and enable the `wg0.conf` file. For details on manually configuring your WireGuard server's configuration file, see the [Configure WireGuard Server](/docs/networking/vpn/set-up-wireguard-vpn-on-ubuntu/#configure-wireguard-server) section of our WireGuard guide.
 {{</ note >}}
 
 | **Field** | **Description** |
