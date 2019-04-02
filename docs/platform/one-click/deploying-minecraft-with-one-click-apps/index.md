@@ -32,11 +32,40 @@ You can configure your Minecraft Server App by providing values for the followin
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **Drupal admin password** | Password for your Drupal admin profile. *Required*. |
-| **Drupal admin username** | Username for your Drupal admin user. *Required*. |
-| **E-Mail for your Drupal account** | E-Mail address for your Drupal admin user. *Required*. |
 | **Your SSH public key** | Your SSH public key. *Advanced Configuration* |
-| **Domain** | Domain for your Drupal site. Note, if you have not added DNS records for your Drupal site's domain, read our [DNS Manager](/docs/platform/manager/dns-manager/) guide for more information. *Advanced Configuration* |
+| **World Name** | The world name and it's corresponding file name. *Advanced Configuration* |
+| **Message of the Day** | Text that is displayed whenever a player logs on to the server. *Advanced Configuration* |
+| **Flight Enabled** | Allows flight if there is a mod installed that allows flying. Has no effect on creative mode flight. *Advanced Configuration* |
+| **Nether World Enabled** | Enables the Nether world. *Advanced Configuration* |
+| **Player Achievements Enabled** | Whenever a player unlocks an achievement, it is broadcast to all logged in players. *Advanced Configuration* |
+| **Maximum Players** | Maximum amount of players allowed on the server. *Advanced Configuration* |
+| **Player Ide Timeout Limit** | If not set to *disabled*, the amount of time in minutes a player can be idle before being kicked off of the server. *Advanced Configuration* |
+| **Difficulty Level** | The game difficulty. *Advanced Configuration* |
+| **Hardcore Mode Enabled** | If set to `true`, the difficulty will be set to Hard. Additionally, on death the player won't respawn and will be limited to spectator mode. *Advanced Configuration* |
+| **PvP Enabled** | Enables player versus player comabt on the server. *Advanced Configuration* |
+| **Force Game Mode Enabled** | Forces players to join the server's default game mode. False allows players to join with their previous game mode. True forces the default game mode.
+| **World Type** | Type of world to generate. *Default* = standard, *flat* = featureless and flat, *largebiomes* = larger biomes, *amplified* = larger height limit. *Advanced Configuration* |
+| **World Seed** | A random seed used by the world generation algorithm to create a unique world. For example: qazwsx123. *Advanced Configuration* |
+| **Spawn Animals Enabled** | Determines if animals (sheep, chickens, squid, etc.) will spawn. *Advanced Configuration* |
+| **Spawn Monsters Enabled** | Determines if monsters (creepers, skeletons, spiders, etc.) will spawn. *Advanced Configuration* |
+| **Spawn NPCs Enabled** | Determines if villagers will spawn. *Advanced Configuration* |
+| **Game Mode** | The game mode of the server. *Survival* is the default game mode, *creative* allows for flight and unlimited resources, *adventure* prevents players from destroying blocks, and *spectator* will grant the ability to fly but will prevent any player interaction on the server. *Advanced Configuration* |
+| **Structure Generation Enabled** | Enables the ability to generate structures like villages and mineshafts. *Advanced Configuration* |
+| **Maximum Build Height** | Maximum height at which players can place blocks. World generation may exceed this limit. *Advanced Configuration* |
+| **Maximum World Size** | Maximum radius of the world, in blocks. *Advanced Configuration* |
+| **View Distance** | The distance a player can see, measured in chunks (16 block cubes). For example, `10` will enable the user to see 10 chunks in any direction. |
+| **Command Block Enabled** | Enables the placement of command blocks through the /give command. *Advanced Configuration* |
+| **Querying Enabled** | Enables GameSpy4. Used to obtain information about the server. *Advanced Configuration* |
+| **Enable RCON** | Enable remote access (RCON) to the Minecraft server to run commands. *Advanced Configuration* |
+| **RCON Password** | The RCON password. *Advanced Configuration* |
+| **RCON Port** | The port used for RCON. *Advanced Configuration* |
+| **Maximum Tick Time** | The maximum amount of milliseconds a single tick can take before the server considers itself frozen or crashed and will shut down. *Advanced Configuration* |
+| **Network Compression Threshold** | The threshold at which bytes are compressed. *Advanced Configuration* |
+| **Op-permission Level** | Sets the permission level for operators (ops) when using the `/op` command. *Advanced Configuration* |
+| **Port Number** | The server's listening port number. *Advanced Configuration* |
+| **Snooper Enabled** | Whether the server sends stats to [https://snoop.minecraft.net](https://snoop.minecraft.net). *Advanced Configuration* |
+| **Use Native Transport Enabled** | Improve server performance by optimizing sent and received packets. *Advanced Configuration* |
+
 
 ### Linode Options
 
@@ -44,17 +73,17 @@ After providing the app specific options, provide configurations for your Linode
 
 | **Configuration** | **Description** |
 |:--------------|:------------|
-| **Select an Image** | Debian 9 is currently the only image supported by Drupal One-Click Apps. *Required* |
-| **Region** | Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region. *Required* |
-| **Linode Plan** | Select a Linode plan. Drupal is an extremely flexible CMS that can be supported on any size Linode, but we suggest you deploy your Drupal app on a Linode plan that reflects how much content you plan on featuring as well as how much traffic you expect for your site. For small websites, a 1GB Nanode is sufficient. *Required* |
-| **Linode Label** | Give your Linode a label. This is a name to help you easily identify it within the Cloud Manager’s Dashboard. |
-| **Root Password** | Create a root password for your Linode in the Root Password field. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. *Required* |
+| **Select an Image** | Debian 9 is currently the only image supported by Minecraft One-Click Apps, and it is pre-selected on the Linode creation page. *Required*. |
+| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
+| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your MineCraft App should be sized based on the amount of traffic you expect to see on your server. We recommend 1GB of RAM for every 15 players maximum on your server. For example, If you are expecting a small group of players (between 1-15), you should be okay with a Nanode. Up to 30 players, a 2GB Linode, and so on. *Required*. |
+| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
+| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
-When you've provided all required Linode Options, click on the **Create** button. **Your Drupal app will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
+When you've provided all required Linode Options, click on the **Create** button. **MineCraft should install between 5-10 minutes after your Linode has successfully provisioned.**.
 
 ### Getting Started After Deployment
 
-After Drupal has finished installing, you will be able to access your Drupal site by copying your Linode's IPv4 address and entering it in the browser of your choice. To find your Linode's IPv4 address:
+After Minecraft has finished installing, you will be able to access your Minecraft server by copying your Linode's IPv4 address and entering it in in the Multiplayer menu. To find your Linode's IPv4 address:
 
 1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
 
@@ -64,20 +93,27 @@ After Drupal has finished installing, you will be able to access your Drupal sit
 
 4. Under the **IPv4** heading, you will find your IPv4 address listed under the **Address** column.
 
-5. Copy and paste the IPv4 address into a browser window. You should see the Drupal welcome page appear.
+5. Copy your IPv4 address. In Minecraft, click on **Multiplayer**, then click **Add Server**.
 
-    Once you have accessed your Drupal site via the browser, you can log in to your Drupal site using the admin credentials you created when deploying your One-Click Drupal App and begin configuring your site.
+6. Enter a name for your server in the **Server Name** box. This name will show up on the *Play Multiplayer* server selection screen.
 
-    ![Log in to your Drupal site.](drupal-log-in.png)
+7. Paste your IP address in the **Server Address** field and click **Done**:
+
+    ![Paste your IP address in the Server Address field.](minecraft-one-click-edit-server-info.png)
+
+8. Once your server is ready to play on, the status indicator will show a series of green bars.
+
+    ![A Minecraft server that is ready to accept connections](minecraft-one-click-server-selection-screen.png)
+
+    If there is a red X over the status bars, or it says 'old', then your Linode has not finished installing Minecraft. Wait a few minutes, then hit **Refresh**.
 
 ### Software Included
 
-The Drupal One-Click App will install the following required software on your Linode:
+The Minecraft One-Click App will install the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
-| **MySQL Server** | Database |
-| **PHP 7** | Drupal is written in PHP and requires PHP to operate. |
-| **Apache HTTP Server** | Web Server used to serve the Drupal site|
-| **Drush** | A command line shell for Drupal |
-| **Drupal 8** | Content management system |
+| **Minecraft 1.13** | Game server |
+| **Linux GSM** | A command line tool for the deployment and management of Linux game servers. |
+| **UFW** | Firewall utility. Port 25575 will allow outgoing and incoming traffic. |
+| **Fail2ban** | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
