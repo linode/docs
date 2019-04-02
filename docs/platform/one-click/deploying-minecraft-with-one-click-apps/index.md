@@ -13,7 +13,7 @@ title: "Deploy a Minecraft Server with One-Click Apps"
 contributor:
   name: Linode
 external_resources:
-
+- '[Minecraft Wiki](https://minecraft.gamepedia.com/Minecraft_Wiki)'
 ---
 
 ## Minecraft One-Click App
@@ -42,7 +42,7 @@ You can configure your Minecraft Server App by providing values for the followin
 | **Player Ide Timeout Limit** | If not set to *disabled*, the amount of time in minutes a player can be idle before being kicked off of the server. *Advanced Configuration* |
 | **Difficulty Level** | The game difficulty. *Advanced Configuration* |
 | **Hardcore Mode Enabled** | If set to `true`, the difficulty will be set to Hard. Additionally, on death the player won't respawn and will be limited to spectator mode. *Advanced Configuration* |
-| **PvP Enabled** | Enables player versus player comabt on the server. *Advanced Configuration* |
+| **PvP Enabled** | Enables player versus player combat on the server. *Advanced Configuration* |
 | **Force Game Mode Enabled** | Forces players to join the server's default game mode. False allows players to join with their previous game mode. True forces the default game mode.
 | **World Type** | Type of world to generate. *Default* = standard, *flat* = featureless and flat, *largebiomes* = larger biomes, *amplified* = larger height limit. *Advanced Configuration* |
 | **World Seed** | A random seed used by the world generation algorithm to create a unique world. For example: qazwsx123. *Advanced Configuration* |
