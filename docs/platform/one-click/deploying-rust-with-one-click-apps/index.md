@@ -13,6 +13,7 @@ title: "Deploy Rust with One-Click Apps"
 contributor:
   name: Linode
 external_resources:
+- '[Rust Dedicated Server Wiki](https://developer.valvesoftware.com/wiki/Rust_Dedicated_Server)'
 ---
 
 ## Rust One-Click App
