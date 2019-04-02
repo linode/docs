@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2016-08-23
 title: Remote Access
+cloud_manager_link: platform/manager/remote-access/
 ---
 
 The Remote Access section of the Linode Manager contains important network settings for your Linode. Use this tab to find your IP address, set the reverse DNS, configure IP failover, and swap IP addresses with another Linode. You can also access the Linode Shell (Lish) console to remotely connect to your Linode and troubleshoot problems.
@@ -76,6 +77,10 @@ To reset reverse DNS to the Linode domain, which will be something like **li12-3
 You'll see a confirmation message that the reverse DNS has been reset.
 
 ## Configuring IP Failover
+
+{{< note >}}
+This feature is not yet supported in the Toronto data center.
+{{</ note >}}
 
 *IP failover* is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability/) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:
 

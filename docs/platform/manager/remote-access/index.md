@@ -11,11 +11,8 @@ modified_by:
   name: Phil Zona
 published: 2016-08-23
 title: Remote Access
+classic_manager_link: platform/manager/remote-access-classic-manager/
 ---
-
-{{< note >}}
-You can view the [Classic Manager version of this guide](/docs/platform/manager/remote-access-classic-manager/).
-{{</ note >}}
 
 The Networking tab of the Linode detail page in the [Cloud Manager](https://cloud.linode.com) contains important network settings for your Linode. Use this tab to find your IP address, set the reverse DNS, configure IP sharing (called IP failover in the Classic Manager), and swap IP addresses with another Linode. You can also access the Linode Shell (Lish) console to remotely connect to your Linode and troubleshoot problems.
 
@@ -75,9 +72,9 @@ The reverse DNS will be reset.
 
 ## Configuring IP Sharing
 
-{{< caution >}}
+{{< note >}}
 This feature is not yet supported in the Toronto data center.
-{{</ caution >}}
+{{</ note >}}
 
 *IP sharing*, called IP failover in the Classic Manager, is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability/) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:
 
