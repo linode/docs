@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Deploy GitLab on Linode using One-Click Apps.'
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['gitlab','one-click apps','version control','git']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-27
 modified: 2019-03-27
@@ -31,32 +31,32 @@ You can configure your GitLab App by providing values for the following fields:
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **Domain** | Your GitLab site's domain name. This domain will also be used by Postfix to send mail. If you do not have a domain name, you can leave this field blank. Postfix will use your Linode's default Reverse DNS to send email instead, i.e. `gitlab@li926-227.members.linode.com`.  *Advanced Configuration*. |
-| **SSH public key** | Your SSH public key. The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode. *Advanced Configuration*. |
+| **Domain** | Your GitLab site's domain name. This domain will also be used by Postfix to send mail. Setting a value for this field will not automatically set up DNS for your app, so be sure to follow the DNS instructions in the [Access your GitLab Site](#access-your-gitlab-site) section. If you do not have a domain name, you can leave this field blank and Postfix will use your Linode's default Reverse DNS to send email instead (i.e. `gitlab@li926-227.members.linode.com`).  *Advanced Configuration*. |
+| **SSH public key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode. *Advanced Configuration*. |
 
 ### Linode Options
 
 After providing the app specific options, provide configurations for your Linode server:
 
-| **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Debian 9 is currently the only image supported by the GitLab One-Click App. *Required* |
-| **Region** | Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region. *Required* |
-| **Linode Plan** | Select a Linode plan. We recommend that you use, at minimum, an **8GB Linode plan** for your GitLab server. For more information on GitLab's system requirements see their [official documentation](https://docs.gitlab.com/ee/install/requirements.html).  *Required* |
-| **Linode Label** | Give your Linode a label. This is a name to help you easily identify it within the Cloud Manager’s Dashboard. |
-| **Root Password** | Create a root password for your Linode in the Root Password field. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. *Required* |
+| **Configuration** | **Description**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+|--------------|------------|
+| **Select an Image** | Debian 9 is currently the only image supported by the GitLab One-Click App, and it is pre-selected on the Linode creation page. *Required*. |
+| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
+| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). We recommend that you use, at minimum, an **8GB Linode plan** for your GitLab server. For more information on GitLab's system requirements see their [official documentation](https://docs.gitlab.com/ee/install/requirements.html). If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
+| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
+| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
 When you've provided all required Linode Options, click on the **Create** button. **Your GitLab app will complete installation anywhere between 3-7 minutes after your Linode has finished provisioning**.
 
-## Getting Started After Deployment
+## Getting Started after Deployment
 
-### Access Your GitLab Site
+### Access your GitLab Site
 
 After GitLab has finished installing, you will be able to access your GitLab site over `http://` with your Linode's IPv4 address or the domain name entered when deploying your GitLab One-Click App.
 
-1. Access your GitLab instance.
+1. Access your GitLab instance:
 
-    **With Your Linode's IP Address**
+    **With your Linode's IP Address**
 
     You will be able to access your GitLab site by copying your Linode's IPv4 address and entering it in the browser of your choice. To find your Linode's IPv4 address:
 
@@ -66,15 +66,19 @@ After GitLab has finished installing, you will be able to access your GitLab sit
 
     1. Navigate to the **Networking** tab.
 
-    1. Under the **IPv4** heading, you will find your IPv4 address listed under the **Address** column.
+    1. Your IPv4 address will be listed under the **Address** column in the **IPv4** table.
 
     1. Copy and paste the IPv4 address into a browser window. Ensure you are using `http://`.
 
     **With a Domain Name**
 
-    If you deployed your GitLab One-Click App with a domain name and it is pointing to the Linode's IP address that is hosting your GitLab instance, then you can enter the domain name in a browser window to access your GitLab site. Ensure you are using `http://`.
+    If you deployed your GitLab One-Click App with a value set for the **Domain** field, you will need to separately set up DNS for your app. Specifically, you'll need to create an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) associated with the IPv4 address for your Linode. Review the [DNS Manager](/docs/platform/manager/dns-manager/) guide for instructions on setting up DNS records.
 
-    For more details on registering your domain, see the [DNS Manager](/docs/platform/manager/dns-manager/) guide.
+    Once your DNS records are created (and the changes have [propagated to your internet service provider](/docs/platform/manager/dns-manager/#wait-for-propagation)), you can then enter the domain name in a browser window to access your GitLab site. Ensure you are using `http://` when visiting your site.
+
+    {{< note >}}
+For more general information about how DNS works, review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.
+{{< /note >}}
 
 1. Once you have accessed your GitLab site, you will be brought to GitLab's password reset screen. Provide a secure password for the administrator's account:
 
@@ -82,31 +86,33 @@ After GitLab has finished installing, you will be able to access your GitLab sit
 
 1. You will be redirected to the login screen. Enter `root` as the username and the password you just created to log in. You can now begin creating GitLab repositories, users, and more. See [GitLab's official documentation](https://docs.gitlab.com/ee/university/training/topics/getting_started.html) for more information.
 
-### Add a Domain After Deploying Your GitLab Instance
+### Add a Domain after Deploying your GitLab Instance
 
-If you configured your GitLab One-Click App without providing a domain, you can set one up after the app has been deployed.
+If you configured your GitLab One-Click App without providing a domain, you can configure one after the app has been deployed. Begin by setting up DNS for your domain:
 
-1. Ensure you have added a domain record for your domain by following the steps in the [DNS Manager](/docs/platform/manager/dns-manager/) guide.
+1.  Create an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) associated with the IPv4 address for your Linode. Review the [DNS Manager](/docs/platform/manager/dns-manager/) guide for instructions on setting up DNS records.
 
-    Once you have completed those steps, you will need to update your GitLab instance's `/etc/gitlab/gitlab.rb` file with the domain name. This will ensure that any emails sent to users by the GitLab instance will use your site's domain.
+1.  Wait for your new DNS records to [propagate to your internet service provider](/docs/platform/manager/dns-manager/#wait-for-propagation).
 
-1. [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
+After setting up DNS, you will need to update your GitLab instance's `/etc/gitlab/gitlab.rb` file with your domain name. This will ensure that any emails sent to users by the GitLab instance will use your site's domain.
 
-1. With a text editor of your choice, open the `/etc/gitlab/gitlab.rb` file and modify the value of `external_url`. Ensure you replace `http://example.com` with your domain.:
+1.  [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
+
+1.  With a text editor of your choice ([nano](/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/), for example), open the `/etc/gitlab/gitlab.rb` file and modify the value of `external_url`. Ensure you replace `http://example.com` with your domain:
 
     {{< file "/etc/gitlab/gitlab.rb" >}}
-    ## GitLab URL
-    ##! URL on which GitLab will be reachable.
-    ##! For more details on configuring external_url see:
-    ##! https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab
-    external_url 'http://example.com'
-    {{< /file >}}
+## GitLab URL
+##! URL on which GitLab will be reachable.
+##! For more details on configuring external_url see:
+##! https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab
+external_url 'http://example.com'
+{{< /file >}}
 
-1. Issue the following command to enable your new configuration:
+1.  Issue the following command to enable your new configuration:
 
         gitlab-ctl reconfigure
 
-1. Navigate to the domain in a browser window and verify that you are directed to your GitLab instance.
+1.  Navigate to the domain in a browser window and verify that you are directed to your GitLab instance.
 
 ### Software Included
 
@@ -114,7 +120,7 @@ The GitLab One-Click App will install the following required software on your Li
 
 | **Software** | **Description** |
 |:--------------|:------------|
-| **GitLab** | Remote Git repository software. |
-| **Postfix** | Postfix is a free and open-source mail transfer agent that routes and delivers electronic mail. |
-| **UFW** | Firewall utility. Ports 22/tcp, 80/tcp, 443/tcp, 25, 587, and 110 for IPv4 and IPv6 will allow outgoing and incoming traffic. |
-| **Fail2ban** | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
+| [**GitLab**](https://about.gitlab.com/) | Remote Git repository software. |
+| [**Postfix**](http://www.postfix.org/) | Postfix is a free and open-source mail transfer agent that routes and delivers electronic mail. |
+| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 22/tcp, 80/tcp, 443/tcp, 25, 587, and 110 for IPv4 and IPv6 will allow outgoing and incoming traffic. |
+| [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
