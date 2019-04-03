@@ -34,16 +34,16 @@ You can configure your CS:GO App by providing values for the following fields:
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **Steam Token** | A Steam game server login token. This is required to publicly list your server. To get a Steam Token, visit the [Steam Game Server Account Management](https://steamcommunity.com/dev/managegameservers) page. |
+| **Game Server Login Token** | A Steam game server login token. This is required to publicly list your server. To get a Steam Token, visit the [Steam Game Server Account Management](https://steamcommunity.com/dev/managegameservers) page. |
 | **RCON Password** | Password for RCON, which allows CS:GO administrators to remotely execute commands on the server. Password must be at least 6 characters and contain each of the following characters: uppercase, lowercase, numeric, and special character. *Required*. |
 | **Your SSH public key** | Your SSH public key. *Advanced Configuration* |
-| **MOTD** | The message of the day text that is displayed whenever a player logs on to the server. *Advanced Configuration* |
+| **Message of the Day** | The message of the day text that is displayed whenever a player logs on to the server. *Advanced Configuration* |
 | **CS:GO Server Password** | The password for the CS:GO server if you want to make it password protected. Password must be at least 6 characters and contain each of the following characters: uppercase, lowercase, numeric, and special character. *Advanced Configuration* |
-| **autoteambalance** | Auto team balance automatically balances the number of players on a team. *Advanced Configuration* |
-| **roundtime** | Round time is the time per round, in minutes. *Advanced Configuration* |
-| **maxrounds** | Max rounds is the maximum amount of rounds before the map changes. *Advanced Configuration* |
-| **buyanywhere** | Buy anywhere allows teams to buy from outside zones. *Advanced Configuration* |
-| **friendlyfire** | Friendly fire allows teammates to damage and kill each other. *Advanced Configuration* |
+| **Team Balance Enabled** | Auto team balance automatically balances the number of players on a team. *Advanced Configuration* |
+| **Round Time Limit** | Round time is the time per round, in minutes. *Advanced Configuration* |
+| **Maximum Rounds** | Max rounds is the maximum amount of rounds before the map changes. *Advanced Configuration* |
+| **Buy Anywhere** | Buy anywhere allows teams to buy from outside zones. *Advanced Configuration* |
+| **Friendly Fire Enabled** | Friendly fire allows teammates to damage and kill each other. *Advanced Configuration* |
 
 
 ### Linode Options
