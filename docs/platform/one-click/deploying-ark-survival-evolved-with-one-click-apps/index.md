@@ -56,7 +56,7 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ### Getting Started After Deployment
 
-After Ark: Survival Evolved has finished installing, you will be able to access your server by copying your Linode's IPv4 address and entering it into your favorite servers list on Steam. To find your Linode's IPv4 address and add to the Steam:
+After Ark: Survival Evolved has finished installing, you will be able to access your server by copying your Linode's IPv4 address and entering it into your favorite servers list on Steam. To find your Linode's IPv4 address and add it to the Steam favorites:
 
 1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
 
