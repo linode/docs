@@ -32,8 +32,8 @@ You can configure your ARK: Survival Evolved App by providing values for the fol
 
 | **Field** | **Description** |
 |:--------------|:------------|
+| **RCON Password** | The password for RCON, which allows you to remotely issue commands on the server. *Required*. |
 | **Your SSH public key** | Your SSH public key. *Advanced Configuration* |
-| **RCON Password** | The password for RCON, which allows you to remotely issue commands on the server. *Advanced Configuration* |
 | **Server Name** | Your server's name. *Advanced Configuration* |
 | **Message of the Day** | The message of the day text that is displayed whenever a player logs on to the server. *Advanced Configuration* |
 | **Hardcore Mode Enabled** | Enables Hardcore mode. Resets a player to level 1 after dying. *Advanced Configuration* |
