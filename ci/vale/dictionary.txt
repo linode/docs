@@ -1354,6 +1354,7 @@ txt
 txz
 ucd
 ufw
+udp
 ui
 uidl
 umount
