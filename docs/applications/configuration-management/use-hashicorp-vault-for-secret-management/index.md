@@ -338,7 +338,7 @@ The key share count ensure that multiple keys can exist at different locations f
         vault operator init -key-shares=3 -key-threshold=2
 
     This command will return output similar to the following.
-    
+
     {{< output >}}
 Unseal Key 1: BaR6GUWRY8hIeNyuzAn7FTa82DiIldgvEZhOKhVsl0X5
 Unseal Key 2: jzh7lji1NX9TsNVGycUudSIy/X4lczJgsCpRfm3m8Q03
@@ -457,7 +457,7 @@ Vault backends are the core mechanism Vault uses to permit users to read and wri
         vault kv put kv/myservice api_token=secretvalue
 
     This command should return output similar to the following:
-    
+
     {{< output >}}
 Key              Value
 ---              -----
@@ -587,7 +587,7 @@ api_token    secretvalue
         vault kv list kv/
 
     Vault should deny this request.
-   
+
     {{< output >}}
 Error listing kv/metadata: Error making API request.
 
