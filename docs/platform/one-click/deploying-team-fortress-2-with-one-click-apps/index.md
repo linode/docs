@@ -32,6 +32,7 @@ You can configure your Team Fortress 2 App by providing values for the following
 
 | **Field** | **Description** |
 |:--------------|:------------|
+| **RCON Password** | The password for RCON, which allows you to remotely issue commands on the server. *Required*. |
 | **Your SSH public key** | Your SSH public key. *Advanced Configuration* |
 | **Message of the Day** | Message of the day. Text displayed whenever a player logs on to the server. *Advanced Configuration* |
 | **Server Password** | The password for the server if you want to make the server password protected. *Advanced Configuration* |
@@ -39,7 +40,6 @@ You can configure your Team Fortress 2 App by providing values for the following
 | **Team Balance Enabled** | Automatically balance the number of players on a team. *Advanced Configuration* |
 | **Maximum Rounds** | The maximum amount of rounds before the map changes. *Advanced Configuration* |
 | **Round Time Limit** | The time per round, in minutes. *Advanced Configuration* |
-| **RCON Password** | The password for RCON, which allows you to remotely issue commands on the server. |
 
 
 ### Linode Options
