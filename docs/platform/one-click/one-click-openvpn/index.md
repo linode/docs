@@ -42,13 +42,13 @@ After providing the app specific options, provide configurations for your Linode
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
-When you've provided all required Linode Options, click on the **Create** button. **OpenVPN will take anywhere from 2-5 minutes to install after your Linode has provisioned.**.
+When you've provided all required Linode Options, click on the **Create** button. **OpenVPN will take anywhere from 2-5 minutes to install after your Linode has provisioned**.
 
 ## Getting Started After Deployment
 
 Your VPN's administrative web interface will be available via a web browser at `https://192.0.2.2:943/admin/`, where `192.0.2.2` represents the IPv4 address of your new Linode instance. Your IPv4 address can be found under the **Networking** tab on your new Linode's detail page.
 
-The client web interface for your VPN is located at `https://192.02.2:943/`, where your Linode's IP address should again take the place of the `192.0.2.2` example address. The client interface includes links to download the OpenVPN client software for your computer.
+The client web interface for your VPN is located at `https://192.02.2:943/`, where your Linode's IP address should take the place of the `192.0.2.2` example address. The client interface includes links to download the OpenVPN client software for your computer.
 
 The username you should use to log in to your OpenVPN server is `openvpn`. The password for connecting to the VPN is the password you supplied in the One-Click App creation form.
 
