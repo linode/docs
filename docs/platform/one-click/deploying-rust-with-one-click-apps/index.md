@@ -34,10 +34,10 @@ You can configure your Rust App by providing values for the following fields:
 
 | **Field** | **Description** |
 |:--------------|:------------|
+| **RCON Password** | The password for RCON. *Required*. |
 | **Your SSH public key** | Your SSH public key. *Advanced Configuration* |
 | **Server Hostname** | The name of your Rust server. *Advanced Configuration* |
 | **Server Description** | Your server's description. Use `\n` to create a new line. *Advanced Configuration* |
-| **RCON Password** | The password for RCON. *Advanced Configuration* |
 | **Maximum Players** | The maximum number of players allowed on a server at one time. *Advanced Configuration* |
 | **Level** | Sets the type of the map to generate. Options are Procedural Map, Barren, Hapis Island, Savas Island. *Advanced Configuration**.
 | **World Size** | The size of the world map. Default is 3000, minimum is 1000, maximum is 8000. *Advanced Configuration* |
