@@ -34,7 +34,7 @@ You can configure your CS:GO App by providing values for the following fields:
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **Game Server Login Token** | A Steam game server login token. This is required to publicly list your server. To get a Steam Token, visit the [Steam Game Server Account Management](https://steamcommunity.com/dev/managegameservers) page. |
+| **Game Server Login Token** | A Steam game server login token. This is required to publicly list your server. To get a Steam Token, visit the [Steam Game Server Account Management](https://steamcommunity.com/dev/managegameservers) page. *Required*. |
 | **RCON Password** | Password for RCON, which allows CS:GO administrators to remotely execute commands on the server. Password must be at least 6 characters and contain each of the following characters: uppercase, lowercase, numeric, and special character. *Required*. |
 | **Your SSH public key** | Your SSH public key. *Advanced Configuration* |
 | **Message of the Day** | The message of the day text that is displayed whenever a player logs on to the server. *Advanced Configuration* |
