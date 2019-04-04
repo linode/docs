@@ -17,7 +17,11 @@ external_resources:
 
 ## OpenVPN One-Click App
 
-OpenVPN is a popular software package which creates encrypted tunnels for secure data transfer. You can use OpenVPN to securely route all of your computer's connections through a Linode instance that you control. This can be useful if you want to hide your local IP address from the websites and services you connect to, or if you are browsing the web while on an unsecured public network.
+OpenVPN is a widely trusted, free, and open-source VPN (virtual private network) application that creates encrypted tunnels for secure data transfer between computers that are not on the same local network. Your traffic is encrypted by OpenVPN using [OpenSSL](https://www.openssl.org/). You can use OpenVPN to:
+
+- Connect your computer to the public Internet through a dedicated OpenVPN server. By encrypting your traffic and routing it through an OpenVPN server that you control, you can protect yourself from network attacks when using public Wi-Fi.
+
+- Connect your computer to services that you don't want to expose to the public Internet. Keep your sensitive applications isolated on your servers' private networking and use OpenVPN to access them remotely.
 
 ## Deploy OpenVPN with One-Click Apps
 
