@@ -34,7 +34,7 @@ You can configure your Rust App by providing values for the following fields:
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **RCON Password** | The password for your remote console, which allows you to issue commands on the ARK server *Required*. |
+| **RCON Password** | The password for your remote console, which allows you to issue commands on the Rust server *Required*. |
 | **SSH Key** | Your SSH public key. *Advanced Options* |
 | **Server Hostname** | The name of your Rust server. *Advanced Options* |
 | **Server Description** | Your server's description. Use `\n` to create a new line. *Advanced Options* |
