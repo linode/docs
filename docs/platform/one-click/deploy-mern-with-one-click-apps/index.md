@@ -41,7 +41,7 @@ All of these technologies are well-established, offer robust feature sets, and a
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **MongoDB admin password** | The administrative password for your MongoDB database. *Required*. |
+| **MongoDB Admin Password** | The administrative password for your MongoDB database. *Required*. |
 
 ### Linode Options
 
