@@ -60,7 +60,13 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ### Getting Started After Deployment
 
-After Terraria has finished installing, you will be able to access your server by copying your Linode's IPv4 address and connecting to it within the game. To find your Linode's IPv4 address and connect to it:
+After Terraria has finished installing, you will be able to access your server by copying your Linode's IPv4 address and connecting to it within the game.
+
+{{< caution >}}
+You must disable Steam Guard to connect to your Terraria server, or else you may be locked out of your account and will need to reset your password. To disable Steam Guard, navigate to the Steam Preferences menu, then open the **Account** pane. Click on **Manage Steam Guard Account Security**, then click on **Turn Steam Guard off**.
+{{</ caution >}}
+
+To find your Linode's IPv4 address and connect to it:
 
 1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
 
