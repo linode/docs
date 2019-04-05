@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Deploy a ARK: Survival Evolved Server on Linode using One-Click Apps.'
-keywords: ['ark','one-click', 'server']
+keywords: ['ark','survival evolved','one-click apps', 'server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-03
 modified: 2019-03-03
@@ -12,6 +12,8 @@ modified_by:
 title: "Deploy an ARK: Survival Evolved Server with One-Click Apps"
 contributor:
   name: Linode
+external_resources:
+ - '[The Official ARK: Survival Evolved Wiki](https://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'
 ---
 
 ## Ark: Survival Evolved One-Click App
@@ -28,25 +30,25 @@ The [ARK Options](#ark-options) section of this guide provides details on all av
 
 ### ARK Options
 
-You can configure your ARK: Survival Evolved App by providing values for the following fields:
+You can configure your ARK One-Click App by providing values for the following fields:
 
-| **Field** | **Description** |
-|:--------------|:------------|
-| **RCON Password** | The password for your remote console, which allows you to remotely issue commands on the ARK server. *Required*. |
-| **SSH Key** | Your SSH public key. *Advanced Configuration* |
-| **Server Name** | Your ARK server's name. *Advanced Configuration* |
-| **Message of the Day** | The message of the day text that is displayed whenever a player logs on to the server. *Advanced Configuration* |
-| **Server Password** | Your ARK server's password. *Advanced Configuration* |
-| **Hardcore Mode Enabled** | Enables Hardcore mode. Resets a player to level 1 after dying. *Advanced Configuration* |
-| **XP Multiplier** | Increases or decreases the amount of experience awarded for various actions. *Advanced Configuration* |
-| **Server PvE** | Disables player vs player combat and enables player vs environment combat. *Advanced Configuration* |
+| **Field**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
+|-----------|-----------------|
+| **RCON Password** | Your password for [RCON](https://developer.valvesoftware.com/wiki/Source_RCON_Protocol), a protocol which allows ARK administrators to remotely execute commands on the game server. *Required*. |
+| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Configuration*. |
+| **Server Name** | Your ARK server's name. *Advanced Configuration*. |
+| **Message of the Day** | A message that is displayed whenever a player logs on to the server. *Advanced Configuration*. |
+| **Server Password** | Your ARK server's password, if you want the game server to be password protected. *Advanced Configuration*. |
+| **Hardcore Mode Enabled** | Enables Hardcore mode, which resets a player to level 1 after dying. *Advanced Configuration*. |
+| **XP Multiplier** | Increases or decreases the amount of experience awarded for various actions. *Advanced Configuration*. |
+| **Server PvE** | Disables player vs player combat and enables player vs environment combat. *Advanced Configuration*. |
 
 ### Linode Options
 
 After providing the app specific options, provide configurations for your Linode server:
 
 | **Configuration** | **Description** |
-|:--------------|:------------|
+|-------------------|-----------------|
 | **Select an Image** | Debian 9 is currently the only image supported by ARK: Survival Evolved One-Click Apps, and it is pre-selected on the Linode creation page. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your ARK server should be sized based on the amount of traffic you are expecting on your server as well as the game play performance you are looking for. We recommend using a 8GB Linode as the smallest plan to ensure good performance of your game server. A 8GB Dedicated plan will provide better game performance as well. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
@@ -55,11 +57,11 @@ After providing the app specific options, provide configurations for your Linode
 
 When you've provided all required Linode Options, click on the **Create** button. **ARK should install between 5-15 minutes after your Linode has successfully provisioned**.
 
-### Getting Started After Deployment
+## Getting Started After Deployment
 
-Ensure that you have [installed Steam](https://store.steampowered.com/about/) on your personal computer and installed the ARK:Survival Evolve game to your Steam account before getting started with this section.
+Ensure that you have [installed Steam](https://store.steampowered.com/about/) on your personal computer and bought the ARK: Survival Evolve game on your Steam account before getting started with this section.
 
-After the Ark: Survival Evolved Server One-Click App has finished installing, you will be able to access your server by copying your Linode's IPv4 address and entering it into your favorite servers list on [Steam](https://store.steampowered.com/about/). To find your Linode's IPv4 address and add it to your Steam favorites:
+After the Ark: Survival Evolved Server One-Click App has finished installing, you will be able to access your server by copying your Linode's IPv4 address and entering it into the favorite servers list in your computer's Steam client:
 
 1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
 
@@ -67,15 +69,13 @@ After the Ark: Survival Evolved Server One-Click App has finished installing, yo
 
 1. Navigate to the **Networking** tab.
 
-1. Under the **IPv4** heading, you will find your IPv4 address listed under the **Address** column.
-
-1. Copy the IPv4 address into a browser window.
+1. Your IPv4 address will be listed under the **Address** column in the **IPv4** table. Copy the address.
 
 1. On your personal computer, open Steam. Click on **View > Servers**, then click on the **Favorites** tab.
 
     ![The Steam favorite servers dialog box.](ark-one-click-steam-favorite-servers.png)
 
-1. Click on **Add a Server**, then paste in your Linode's IP address. Click on **Add This Adddress to Favorites**.
+1. Click on **Add a Server**, then paste in your Linode's IP address. Click on **Add This Address to Favorites**.
 
     ![Add your server to your list of favorite servers.](ark-one-click-add-server.png)
 
@@ -91,7 +91,7 @@ The ARK: Survival Evolved One-Click App will install the following required soft
 
 | **Software** | **Description** |
 |:--------------|:------------|
-| **ARK: Survival Evolved** | Game server |
-| **Linux GSM** | A command line tool for the deployment and management of Linux game servers. |
-| **UFW** | Firewall utility. Ports 27015/udp, 7777:7778/udp and 27020/tcp will allow outgoing and incoming traffic. |
-| **Fail2ban** | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
+| [**ARK: Survival Evolved**](https://store.steampowered.com/app/346110/ARK_Survival_Evolved/) | Game server. |
+| [**Linux GSM**](https://linuxgsm.com) | A command line tool for the deployment and management of Linux game servers. |
+| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Port 7777, unless otherwise specified, will allow outgoing and incoming tcp and udp traffic. |
+| [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
