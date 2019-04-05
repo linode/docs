@@ -30,7 +30,7 @@ The [LAMP Stack Options](#lamp-stack-options) section of this guide provides det
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **MySQL root password** | The root password for your LAMP stack's MySQL database. This is not the same as your Linode's root password. *Required*. |
+| **MySQL Root Password** | The root password for your LAMP stack's MySQL database. This is not the same as your Linode's root password. *Required*. |
 
 ### Linode Options
 
