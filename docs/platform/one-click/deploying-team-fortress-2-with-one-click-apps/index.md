@@ -9,16 +9,16 @@ published: 2019-04-04
 modified: 2019-03-04
 modified_by:
   name: Linode
-title: "Deploy a Team Fortress 2 server with One-Click Apps"
+title: "Deploy a Team Fortress 2 Server with One-Click Apps"
 contributor:
   name: Linode
 ---
 
 ## Team Fortress 2 One-Click App
 
-Team Fortress 2 (TF2) is a team-based multiplayer first-person shooter. In TF2, you and your team choose from 9 unique classes and play against an enemy team in a variety of game modes. These modes include capture the flag, king of the hill, and even a battle pitting your team against a robotic horde.
+Team Fortress 2 (TF2) is a team-based multiplayer first-person shooter game. In TF2, you and your team choose from 9 unique classes and play against an enemy team in a variety of game modes. These modes include capture the flag, king of the hill, and even a battle pitting your team against a robotic horde.
 
-Setting up a personal game server puts you in control of what game modes and maps you use, as well as a variety of other settings to customize your experience.
+Setting up a personal game server puts you in control of the game modes and maps you use, as well as a variety of other settings to customize your experience.
 
 ### Deploy a Team Fortress 2 One-Click App
 
@@ -32,14 +32,14 @@ You can configure your Team Fortress 2 App by providing values for the following
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **RCON Password** | The password for RCON, which allows you to remotely issue commands on the server. *Required*. |
-| **Your SSH public key** | Your SSH public key. *Advanced Configuration* |
-| **Message of the Day** | Message of the day. Text displayed whenever a player logs on to the server. *Advanced Configuration* |
-| **Server Password** | The password for the server if you want to make the server password protected. *Advanced Configuration* |
-| **Game Server Login Token** | A Steam game server login token. This is required to publicly list your server. To get a Steam Token, visit the [Steam Game Server Account Management](https://steamcommunity.com/dev/managegameservers) page. *Advanced Configuration* |
-| **Team Balance Enabled** | Automatically balance the number of players on a team. *Advanced Configuration* |
-| **Maximum Rounds** | The maximum amount of rounds before the map changes. *Advanced Configuration* |
-| **Round Time Limit** | The time per round, in minutes. *Advanced Configuration* |
+| **RCON Password** | The password for the remote console, which allows you to issue commands on the TF2 server. *Required*. |
+| **SSH Key** | Your SSH public key. *Advanced Options* |
+| **Message of the Day** | Message of the day. Text displayed whenever a player logs on to the server. *Advanced Options* |
+| **Server Password** | The password for the TF2 server. Configuring a TF2 server password will require users of your game server to provide this password. *Advanced Options* |
+| **Game Server Login Token** | A Steam game server login token. This is required to publicly list your server. To get a Steam Token, visit the [Steam Game Server Account Management](https://steamcommunity.com/dev/managegameservers) page. *Advanced Options* |
+| **Team Balance Enabled** | Automatically balance the number of players on a team. *Advanced Options* |
+| **Maximum Rounds** | The maximum amount of rounds before the map changes. *Advanced Options* |
+| **Round Time Limit** | The time per round, in minutes. *Advanced Options* |
 
 
 ### Linode Options
@@ -58,7 +58,9 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ### Getting Started After Deployment
 
-After Team Fortress 2 has finished installing, you will be able to access your server by copying your Linode's IPv4 address and connecting to it within the game. To find your Linode's IPv4 address and connect to it:
+Ensure that you have installed Team Fortress 2 to your computer before getting started with this section. You can install Team Fortress 2 from [Steam's Web Store](https://store.steampowered.com/app/440/Team_Fortress_2/).
+
+After the Team Fortress 2 Server One-Click App has finished deploying to your Linode, you will be able to access your server by copying your Linode's IPv4 address and connecting to it within the game installed on your computer. To find your Linode's IPv4 address and connect to it:
 
 1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
 
@@ -70,9 +72,9 @@ After Team Fortress 2 has finished installing, you will be able to access your s
 
 5. Copy the IPv4 address.
 
-6. Open Team Fortress 2, then open the developer's console by pressing the back tick key (**`**).
+6. Open Team Fortress 2 on your computer, then open the developer's console by pressing the back tick key (**`**).
 
-7. Type `connect 192.0.2.155`, where 192.0.2.155 is the IP address of your Linode, and then click **Submit**.
+7. Type `connect 192.0.2.155`. Replace 192.0.2.155 with the IP address of your Linode, and then click **Submit**.
 
     ![The Team Fortress 2 developer's console.](one-click-tf2-developers-console.png)
 
