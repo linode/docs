@@ -5,7 +5,7 @@ author:
 description: 'Deploy an OpenVPN Server on Linode with One-Click Apps.'
 keywords: ['vpn','openvpn','tunnel',one-click app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-04-04
+published: 2019-04-05
 modified_by:
   name: Linode
 title: "Deploy OpenVPN Access Server with One-Click Apps"
