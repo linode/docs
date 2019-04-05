@@ -407,6 +407,7 @@ fstab
 galera
 gamemode
 gamepad
+gamepedia
 gameplay
 gandi
 gatsby
