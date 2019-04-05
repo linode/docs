@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy a WooCommerce Server on Linode with One-Click Apps.'
+description: 'Use One-Click Apps to deploy a Linode running WordPress and the popular eCommerce plugin, WooCommerce.'
 keywords: ['woocommerce','wordpress','one-click apps','ecommerce','e-commerce','cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-02
@@ -21,7 +21,7 @@ external_resources:
 ---
 ## WooCommerce One-Click App
 
-[WooCommerce](https://woocommerce.com/) is a popular eCommerce plugin for WordPress that can power online storefronts for small-to-large businesses. A variety of [themes for WooCommerce](https://woocommerce.com/product-category/themes/storefront-child-theme-themes/) are available so you can create a store that looks the way you want it to. WooCommerce can also be customized through a library of [extensions](https://woocommerce.com/product-category/woocommerce-extensions/), like a [PayPal checkout](https://woocommerce.com/products/woocommerce-gateway-paypal-checkout/) integration or [Google ads](https://woocommerce.com/products/google-ads/) for your store. The WooCommerce plugin is free, but some themes and extensions have a cost.
+[WooCommerce](https://woocommerce.com/) is a popular open source eCommerce plugin for WordPress that can power online storefronts to sell both digital and physical products for small-to-large businesses. A variety of [themes for WooCommerce](https://woocommerce.com/product-category/themes/storefront-child-theme-themes/) are available so you can create a store that looks the way you want it to.  WooCommerce takes payments via major credit cards, bank transfers, [PayPal](https://woocommerce.com/products/woocommerce-gateway-paypal-checkout/), and other providers like [Stripe](https://woocommerce.com/products/stripe/). The WooCommerce plugin is free, but some themes and extensions have a cost.
 
 ## Deploy WooCommerce with One-Click Apps
 
@@ -31,11 +31,11 @@ external_resources:
 
 | **Field** | **Description** |
 |--------------|------------|
-| **Website Title** | The title that will appear at the top of your WooCommerce site. *Required*. |
 | **Admin Username** | Username for your WordPress admin user. WooCommerce is managed through the [WordPress administrative interface](https://codex.wordpress.org/Administration_Screens). *Required*. |
 | **Admin Password** | Password for your WordPress admin user. *Required*. |
 | **Email Address** | Email address for your WordPress admin user. *Required*. |
-| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Configuration*. |
+| **Website Title** | The title that will appear at the top of your WooCommerce site. *Advanced Options*. |
+| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Options*. |
 
 ### Linode Options
 
