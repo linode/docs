@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Deploy a Terraria server on Linode using One-Click Apps.'
-keywords: ['terraria','one-click', 'server']
+keywords: ['terraria','one-click app', 'game server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-05
 modified: 2019-04-05
@@ -12,6 +12,8 @@ modified_by:
 title: "Deploy a Terraria Server with One-Click Apps"
 contributor:
   name: Linode
+external_resources:
+ - '[The Official Terraria Wiki](https://terraria.gamepedia.com/Terraria_Wiki)'
 ---
 
 ## Terraria One-Click App
@@ -28,20 +30,20 @@ The [Terraria Options](#terraria-options) section of this guide provides details
 
 ### Terraria Options
 
-You can configure your Terraria App by providing values for the following fields:
+You can configure your Terraria One-Click App by providing values for the following fields:
 
 | **Field** | **Description** |
-|:--------------|:------------|
-| **Steam Username** | Your Steam username. SteamGuard must be turned off. *Required*. |
+|-----------|-----------------|
+| **Steam Username** | Your [Steam username](https://store.steampowered.com). [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) must be turned off. *Required*. |
 | **Steam Password** | Your Steam password. *Required*. |
-| **Your SSH public key** | Your SSH public key. *Advanced Configuration*. |
-| **World Name** | The name of the world. *Advanced Configuration*. |
+| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Configuration*. |
+| **World Name** | The name of the Terraria virtual [world](https://terraria.gamepedia.com/World). *Advanced Configuration*. |
 | **Server Password** | The server's password, if you would like to make the server password protected. *Advanced Configuration*. |
 | **Message of the Day** | The message of the day text that is displayed whenever a player logs on to the server. *Advanced Configuration*. |
 | **Difficulty Level** | The world difficulty level. *Advanced Configuration*. |
-| **Maximum Players** | The maximum amount of players allowed on the server. A number from 1 - 255. *Advanced Configuration*. |
-| **Port** | The server's listening port number. *Advanced Configuration*. |
-| **Seed** | A random seed used by the world generation algorithm to create a unique world. For example: qazwsx123. *Advanced Configuration*. |
+| **Maximum Players** | The maximum amount of players allowed on the server. A number from 1-255. *Advanced Configuration*. |
+| **Port** | The port number that the game server listens on. *Advanced Configuration*. |
+| **Seed** | A [random seed](https://terraria.gamepedia.com/World_Seed) used by the world generation algorithm to create a unique world. For example: `qazwsx123`. *Advanced Configuration*. |
 
 
 ### Linode Options
@@ -49,8 +51,8 @@ You can configure your Terraria App by providing values for the following fields
 After providing the app specific options, provide configurations for your Linode server:
 
 | **Configuration** | **Description** |
-|:--------------|:------------|
-| **Select an Image** | Debian 9 is currently the only image supported by Terraria One-Click Apps, and it is pre-selected on the Linode creation page. *Required*. |
+|-------------------|-----------------|
+| **Select an Image** | Debian 9 is currently the only image supported by the Terraria One-Click App, and it is pre-selected on the Linode creation page. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Your Terraria server should be sized based on the amount of traffic you are expecting on your server as well as the game play performance you are looking for. We recommend using a 8GB Linode as the smallest plan to ensure good performance of your game server. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
@@ -58,12 +60,12 @@ After providing the app specific options, provide configurations for your Linode
 
 When you've provided all required Linode Options, click on the **Create** button. **Terraria should install between 5-15 minutes after your Linode has successfully provisioned.**.
 
-### Getting Started After Deployment
+## Getting Started after Deployment
 
-After Terraria has finished installing, you will be able to access your server by copying your Linode's IPv4 address and connecting to it within the game.
+After Terraria has finished installing, you will be able to access your server by copying your Linode's IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com) and then connecting to it within the game.
 
 {{< caution >}}
-You must disable Steam Guard to connect to your Terraria server, or else you may be locked out of your account and will need to reset your password. To disable Steam Guard, navigate to the Steam Preferences menu, then open the **Account** pane. Click on **Manage Steam Guard Account Security**, then click on **Turn Steam Guard off**.
+You must disable Steam Guard to connect to your Terraria server. If you don't disable Steam Guard, you may be locked out of your account and will need to reset your password. To disable Steam Guard, navigate to the Steam Preferences menu, then open the **Account** pane. Click on **Manage Steam Guard Account Security**, then click on **Turn Steam Guard off**.
 {{</ caution >}}
 
 To find your Linode's IPv4 address and connect to it:
@@ -74,9 +76,9 @@ To find your Linode's IPv4 address and connect to it:
 
 3. Navigate to the **Networking** tab.
 
-4. Under the **IPv4** heading, you will find your IPv4 address listed under the **Address** column.
+4. Your IPv4 address will be listed under the **Address** column in the **IPv4** table.
 
-5. Note the IPv4 address.
+5. Copy the IPv4 address.
 
 6. Open Terraria, then click **Multiplayer**.
 
@@ -99,8 +101,8 @@ To find your Linode's IPv4 address and connect to it:
 The Terraria One-Click App will install the following required software on your Linode:
 
 | **Software** | **Description** |
-|:--------------|:------------|
-| **Terraria** | Game server |
-| **Linux GSM** | A command line tool for the deployment and management of Linux game servers. |
-| **UFW** | Firewall utility. Port 7777, unless otherwise specified, will allow outgoing and incoming tcp and udp traffic. |
-| **Fail2ban** | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
+|--------------|-----------------|
+| [**Terraria**](https://terraria.org) | Game server. |
+| [**Linux GSM**](https://linuxgsm.com) | A command line tool for the deployment and management of Linux game servers. |
+| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Port 7777, unless otherwise specified, will allow outgoing and incoming tcp and udp traffic. |
+| [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
