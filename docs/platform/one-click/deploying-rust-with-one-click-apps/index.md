@@ -35,7 +35,7 @@ You can configure your Rust App by providing values for the following fields:
 | **Field** | **Description** |
 |:--------------|:------------|
 | **RCON Password** | The password for your remote console, which allows you to issue commands on the Rust server *Required*. |
-| **SSH Key** | Your SSH public key. *Advanced Options* |
+| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Options* |
 | **Server Hostname** | The name of your Rust server. *Advanced Options* |
 | **Server Description** | Your server's description. Use `\n` to create a new line. *Advanced Options* |
 | **Maximum Players** | The maximum number of players allowed on a server at one time. Default is 50, minimum is 10, maximum is 100. *Advanced Options* |
@@ -59,7 +59,7 @@ After providing the app specific options, provide configurations for your Linode
 
 When you've provided all required Linode Options, click on the **Create** button. **Rust should install between 5-15 minutes after your Linode has successfully provisioned**.
 
-### Getting Started After Deployment
+## Getting Started After Deployment
 
 Ensure that you have installed Rust to your computer before getting started with this section. You can install Rust from [Steam's Web Store](https://store.steampowered.com/).
 
@@ -85,9 +85,9 @@ After the Rust One-Click App has finished deploying to your Linode, you will be 
 
 The Rust One-Click App will install the following required software on your Linode:
 
-| **Software** | **Description** |
+| **Software**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
 |:--------------|:------------|
-| **Rust Server** | Game server. |
-| **Linux GSM** | A command line tool for the deployment and management of Linux game servers. |
-| **UFW** | Firewall utility. Ports 28015 and 28016 will allow outgoing and incoming traffic. |
-| **Fail2ban** | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
+| [**Rust Server**](https://store.steampowered.com/app/252490/Rust/) | Game server. |
+| [**LinuxGSM**](https://linuxgsm.com) | A command line tool for the deployment and management of Linux game servers. |
+| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Port 7777, unless otherwise specified, will allow outgoing and incoming tcp and udp traffic. |
+| [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
