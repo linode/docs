@@ -59,7 +59,7 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ## Getting Started After Deployment
 
-Ensure that you have [installed Steam](https://store.steampowered.com/about/) on your personal computer and bought the ARK: Survival Evolve game on your Steam account before getting started with this section.
+Ensure that you have [installed Steam](https://store.steampowered.com/about/) on your personal computer and bought the ARK: Survival Evolved game on your Steam account before getting started with this section.
 
 After the Ark: Survival Evolved Server One-Click App has finished installing, you will be able to access your server by copying your Linode's IPv4 address and entering it into the favorite servers list in your computer's Steam client:
 
@@ -92,6 +92,6 @@ The ARK: Survival Evolved One-Click App will install the following required soft
 | **Software** | **Description** |
 |:--------------|:------------|
 | [**ARK: Survival Evolved**](https://store.steampowered.com/app/346110/ARK_Survival_Evolved/) | Game server. |
-| [**Linux GSM**](https://linuxgsm.com) | A command line tool for the deployment and management of Linux game servers. |
+| [**LinuxGSM**](https://linuxgsm.com) | A command line tool for the deployment and management of Linux game servers. |
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Port 7777, unless otherwise specified, will allow outgoing and incoming tcp and udp traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
