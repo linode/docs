@@ -57,7 +57,7 @@ After providing the app specific options, provide configurations for your Linode
 
 When you've provided all required Linode Options, click on the **Create** button. **Your Team Fortress 2 app should install between 5-15 minutes after your Linode has successfully provisioned**.
 
-### Getting Started After Deployment
+## Getting Started after Deployment
 
 Ensure that you have installed Team Fortress 2 to your computer before getting started with this section. You can install Team Fortress 2 from [Steam's Web Store](https://store.steampowered.com/app/440/Team_Fortress_2/).
 
@@ -87,7 +87,7 @@ The Team Fortress 2 One-Click App will install the following required software o
 
 | **Software** | **Description** |
 |:--------------|:------------|
-| **Team Fortress 2** | Game server |
-| **Linux GSM** | A command line tool for the deployment and management of Linux game servers. |
-| **UFW** | Firewall utility. Ports 27014:27050/tcp, 3478:4380/udp, 27000:27030/udp, and 26901 will allow outgoing and incoming traffic. |
-| **Fail2ban** | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
+| [**Team Fortress 2**](http://www.teamfortress.com/) | Game server. |
+| [**LinuxGSM**](https://linuxgsm.com) | A command line tool for the deployment and management of Linux game servers. |
+| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Ports 27014:27050/tcp, 3478:4380/udp, 27000:27030/udp, and 26901 will allow outgoing and incoming traffic. |
+| [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
