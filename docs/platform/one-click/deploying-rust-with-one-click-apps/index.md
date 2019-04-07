@@ -59,7 +59,7 @@ After providing the app specific options, provide configurations for your Linode
 
 When you've provided all required Linode Options, click on the **Create** button. **Rust should install between 5-15 minutes after your Linode has successfully provisioned**.
 
-## Getting Started After Deployment
+## Getting Started after Deployment
 
 Ensure that you have installed Rust to your computer before getting started with this section. You can install Rust from [Steam's Web Store](https://store.steampowered.com/).
 
