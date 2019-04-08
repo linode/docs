@@ -87,6 +87,7 @@ bashrc
 bc
 berkshelf
 binlog
+biomes
 bitbucket
 bitrate
 blocklists
@@ -371,6 +372,7 @@ fediverse
 fetchmail
 fetchmailrc
 ff02
+fi
 fiiiile
 file1
 filebeat
@@ -406,6 +408,7 @@ fstab
 galera
 gamemode
 gamepad
+gamepedia
 gameplay
 gandi
 gatsby
@@ -476,6 +479,7 @@ h4x0r123
 hackage
 hadoop
 halls3
+hapis
 haproxy
 hardcoded
 hardcopy
@@ -652,6 +656,7 @@ kubernetes
 kubespray
 lambdabunker
 laravel
+largebiomes
 launchd
 lbmethod
 lda
@@ -764,6 +769,7 @@ microservices
 microsystems
 microweb
 minecraft
+mineshafts
 miniconda
 miniconda3
 minification
@@ -778,6 +784,7 @@ mitigations
 mkdir
 mnesia
 moby
+moddable
 modsecurity
 mongodb
 monit
@@ -1083,6 +1090,7 @@ resharding
 resilvering
 resolv
 resolvconf
+respawn
 resque
 restapi
 retpoline
@@ -1134,6 +1142,7 @@ sasl2
 saslauth
 saslauthd
 sasldb
+savas
 sbackup
 sbin
 sbopkg
@@ -1353,7 +1362,9 @@ tw
 txt
 txz
 ucd
+udp
 ufw
+udp
 ui
 uidl
 umount

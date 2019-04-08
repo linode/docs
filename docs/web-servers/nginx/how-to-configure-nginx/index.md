@@ -54,7 +54,7 @@ http {
 
 ## The http Block
 
-The `http` block contains directives for handling web traffic. These directives are often referred to as *universal* because they are passed on to to all website configurations NGINX serves. See [the NGINX docs](https://nginx.org/en/docs/http/ngx_http_core_module.html) for a list of available directives for the `http` block.
+The `http` block contains directives for handling web traffic. These directives are often referred to as *universal* because they are passed on to all website configurations NGINX serves. See [the NGINX docs](https://nginx.org/en/docs/http/ngx_http_core_module.html) for a list of available directives for the `http` block.
 
 {{< file "/etc/nginx/nginx.conf" nginx >}}
 http {
