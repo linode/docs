@@ -87,6 +87,7 @@ bashrc
 bc
 berkshelf
 binlog
+biomes
 bitbucket
 bitrate
 blocklists
@@ -407,6 +408,7 @@ fstab
 galera
 gamemode
 gamepad
+gamepedia
 gameplay
 gandi
 gatsby
@@ -654,6 +656,7 @@ kubernetes
 kubespray
 lambdabunker
 laravel
+largebiomes
 launchd
 lbmethod
 lda
@@ -766,6 +769,7 @@ microservices
 microsystems
 microweb
 minecraft
+mineshafts
 miniconda
 miniconda3
 minification
@@ -780,6 +784,7 @@ mitigations
 mkdir
 mnesia
 moby
+moddable
 modsecurity
 mongodb
 monit
@@ -1085,6 +1090,7 @@ resharding
 resilvering
 resolv
 resolvconf
+respawn
 resque
 restapi
 retpoline
