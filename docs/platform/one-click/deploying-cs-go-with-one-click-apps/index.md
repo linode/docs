@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy a Counter-Strike: Global Offensive on Linode using One-Click Apps.'
+description: 'Deploy a Counter-Strike: Global Offensive server on Linode using One-Click Apps.'
 keywords: ['counter-strike','cs', 'go','one-click']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-28
