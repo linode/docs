@@ -371,6 +371,7 @@ fediverse
 fetchmail
 fetchmailrc
 ff02
+fi
 fiiiile
 file1
 filebeat
