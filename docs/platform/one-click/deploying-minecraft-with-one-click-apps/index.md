@@ -79,7 +79,7 @@ After providing the app specific options, provide configurations for your Linode
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
-When you've provided all required Linode Options, click on the **Create** button. **MineCraft should install between 5-10 minutes after your Linode has successfully provisioned.**.
+When you've provided all required Linode Options, click on the **Create** button. **MineCraft should install between 5-10 minutes after your Linode has successfully provisioned**.
 
 ## Getting Started after Deployment
 
