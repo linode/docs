@@ -5,7 +5,6 @@ author:
 description: Linode is retiring our Tokyo 1 data center, and this guide shows how to migrate to our new Tokyo 2 location.
 keywords: ["tokyo 1", "tokyo 2", "migrate", "migration", "migrating", "data center"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-31
 modified_by:
   name: Linode
 published: 2018-12-31
@@ -26,9 +25,9 @@ The Tokyo 2 data center provides access to features that are not available in To
 
 ## When will My Linodes be Migrated?
 
-You will receive a support ticket from Linode that lists the scheduled dates and times for the migrations of your Tokyo 1 Linodes. This ticket will be sent to you at least two months in advance of the start of your first migration.
+The [Linode Classic Manager](https://http://manager.linode.com) will display the scheduled dates and times for the migrations of your Tokyo 1 Linodes. If you visit the Classic Manager before this schedule is set by Linode, the information will not be displayed.
 
-Different Linodes will be scheduled to migrate on different dates and times. The support ticket you receive will list the migration schedule for all of your Tokyo 1 Linodes. **Linode will not be able to adjust this schedule of migrations.**
+When your migration schedule first becomes visible in the Classic Manager, you will receive a support ticket from Linode to let you know. This ticket will be sent to you at least two months in advance of the start of your first migration. Your different Linodes will be scheduled to migrate on different dates and times. **Linode will not be able to adjust this schedule of migrations.**
 
 You are able to move your servers to Tokyo 2 before the scheduled migration dates. We recommend that all customers move their servers early. Moving early will help you better control the uptime of your services.
 
@@ -36,20 +35,24 @@ You are able to move your servers to Tokyo 2 before the scheduled migration date
 
 If your Tokyo 1 Linode is enrolled in the [Linode Backup Service](https://www.linode.com/backups), it will remain enrolled in the service after the migration. However, the saved backups and snapshots that have been created for your Linode prior to the migration **will not move** to the new Tokyo 2 facility. Instead, your Linode will start creating new scheduled backups after it is migrated to the Tokyo 2 date center (according to its [backup schedule](/docs/platform/disk-images/linode-backup-service/#schedule-backups)).
 
+{{< note >}}
+Before migrating, we recommend that you create at least one backup **separate from the Linode Backup Service** for each of your Tokyo 1 Linodes. The [Backing Up your Data](https://linode.com/docs/security/backups/backing-up-your-data/) guide has suggestions for alternative ways to back up your Linode.
+{{< /note >}}
+
 ## What are My Options for Migrating?
 
 There are three different options for moving your servers to the Tokyo 2 data center. The first two of these methods can be followed before the scheduled migration deadlines for your Linodes.
 
-Regardless of which option you choose, **all of your Tokyo 1 Linodes' IP addresses will change** when moving to the new location. This includes all public and private IPv4 addresses, as well as public and link-local IPv6 addresses. When the schedule for your Linodes' migrations is set, new IP addresses in the Tokyo 2 data center will be reserved in advance for each of your Tokyo 1 Linodes. These reserved addresses will be listed in the same support ticket that lists the schedule for your migrations.
+Regardless of which option you choose, **all of your Tokyo 1 Linodes' IP addresses will change** when moving to the new location. This includes all public and private IPv4 addresses, as well as public and link-local IPv6 addresses. When the schedule for your Linodes' migrations is set, new IP addresses in the Tokyo 2 data center will be reserved in advance for each of your Tokyo 1 Linodes. These reserved addresses will be listed for each Linode under the [Remote Access tab](/docs/platform/manager/remote-access/) of the Linode's dashboard.
 
 Later sections in this guide describe how to update your [network interface configuration](#update-your-network-configuration) and [DNS records](#update-dns-records) to use the new IPs.
 
 ### Option 1: Migrate Early
 
-When you receive the support ticket which lists your migration times, you will also see a new banner appear in the dashboard of each of your Tokyo 1 Linodes. This banner will give you the option to initiate an early migration of your Linode to Tokyo 2.
+When you receive the support ticket which announces your Tokyo 1 Linodes' migrations, you will also see a new banner appear in the dashboard of each of your Tokyo 1 Linodes. This banner will give you the option to initiate an early migration of your Linode to Tokyo 2.
 
 {{< note >}}
-The early migration banner will actually appear on your Tokyo 1 Linodes' dashboards before you receive the support ticket for your scheduled migrations. You will be able to perform a migration as soon as you see this banner. However, new IPs in the Tokyo 2 data center will not be reserved for your Linode until you receive the support ticket.
+The early migration banner will actually appear on your Tokyo 1 Linodes' dashboards before you receive the support ticket which announces the migrations. You will be able to perform a migration as soon as you see this banner. However, new IPs in the Tokyo 2 data center will not be reserved for your Linode until you receive the support ticket.
 
 This means that if you migrate before you receive your ticket, you will not know what your new IP addresses will be before you start the migration. Once you start the early migration, your new Tokyo 2 IP addresses will become visible in the [Remote Access tab](/docs/platform/manager/remote-access/) of the Linode's dashboard.
 {{< /note >}}
