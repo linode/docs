@@ -180,7 +180,6 @@ You can cancel your account and receive a refund. Here's how:
 1.  Log in to the [Classic Linode Manager](http://manager.linode.com).
 1.  Click the **Accounts** link.
 1.  At the bottom of the page, select the **Cancel this Account** link. The cancel account webpage appears.
-1.  If you have a prepaid service credit on your account at the time of cancellation, you are entitled to a refund, minus a $5 processing fee. To request a refund, enter a note in the text field. Note that credits from sources other than prepaying cannot be refunded.
 1.  Select the confirmation checkbox.
 1.  Click the **Cancel this Account Immediately** checkbox.
 
@@ -189,7 +188,3 @@ Your account will be canceled and all of your services will be deactivated.
 {{< note >}}
 You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Cloud Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the [Removing Services](#removing-services) section for more information.
 {{< /note >}}
-
-## Prepaid Billing
-
-If you created your account before hourly billing was first available and have not converted to hourly billing, your account uses prepaid billing. Review the legacy [Prepaid Billing](/docs/platform/billing-and-support/prepaid-billing-and-payments-legacy/) guide for more information on how your bills and invoices are prepared.
