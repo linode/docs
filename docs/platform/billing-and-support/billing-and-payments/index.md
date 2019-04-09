@@ -95,6 +95,10 @@ What does a mid-month bill mean? Your existing active services will stay active.
 
 If you want to stop being billed for a particular Linode service, you need to [remove](#removing-services) it from your account entirely.
 
+## European Union Value-Added Tax (VAT)
+
+Linode must levy on its non-business (i.e., private) EU customers a value-added tax (VAT) based on their monthly charges. Review our [Value-Added Taxes and your Linode Account](/docs/platform/billing-and-payments/european-union-vat-linode) for more information about this topic.
+
 ## Payment Methods
 
 We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
