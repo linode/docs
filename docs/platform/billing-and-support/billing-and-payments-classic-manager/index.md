@@ -94,6 +94,10 @@ What does a mid-month bill mean? Your existing active services will stay active.
 
 If you want to stop being billed for a particular Linode service, you need to [remove](#removing-services) it from your account entirely.
 
+## European Union Value-Added Tax (VAT)
+
+Review our [Value-Added Taxes and your Linode Account](/docs/platform/billing-and-support/european-union-vat-linode-classic-manager/) guide for more information about this topic.
+
 ## Network Transfer Quota
 
 Your *network transfer quota* represents the total monthly amount of traffic your services can use as part of your Linode plans' basic pricing. It is possible to use more traffic than your account's monthly transfer quota, and this will incur [overages](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work). For more information on your transfer quota, review the [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota) guide.

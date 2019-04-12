@@ -5,32 +5,26 @@ author:
 description: "Explains the European Union value-added tax (VAT) and how to add a registration number to your account."
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "taxes", "eu", "european union"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-06
 modified_by:
   name: Linode
 published: 2019-04-09
 title: Value-Added Taxes and your Linode Account
+classic_manager_link: platform/billing-and-support/european-union-vat-linode-classic-manager/
 ---
 
-## What is the European Union Value-Added Tax (EU VAT)?
+## What is the European Union Value Added Tax?
 
-Because of the European Union’s Sixth Directive, which regulates taxation on goods and services transacted within the borders of its member countries, Linode must levy on its non-business (i.e., private) EU customers a value-added tax (VAT) based on their monthly charges.
+The European Union and its member states (EU) impose a value added tax (VAT) on the sale of certain electronically supplied goods and services within the European Economic Area. Linode customers who are subject to EU VAT can [review these charges](#review-your-charges) on their monthly invoices or by navigating to the **Account** tab in the [Linode Cloud Manager](https://cloud.linode.com).
 
-## Who Pays EU VAT?
+Customers that wish to provide Linode with a valid VAT identification number (VAT ID) may do so by [updating their contact information](#adding-an-eu-vat-id-to-your-linode-account). Such customers will not be charged with EU VAT in subsequent invoices once their VAT ID is verified.
 
-The EU designates Linode as an [*Electronically Supplied Services*](https://ec.europa.eu/taxation_customs/individuals/buying-goods-services-online-personal-use/buying-services/electronically-supplied-services_en) (ESS) *simplified VAT registration regime*, and thus is compelled to collect the revenue from customers.
-
-Our EU non-business customers can [review these charges](#review-your-charges) by visiting their billing page and checking their monthly invoice. All VAT taxes Linode collects will be forwarded to the EU’s tax authority of the respective country.
-
-Businesses (i.e., not private individuals) registered with and within the EU can enter their VAT ID on the billing page. Once your VAT number has been verified, Linode will not apply VAT charges to subsequent monthly invoices.
-
-Please note, however, that the EU may enjoin such registered businesses to manually account for this tax. If you are an EU resident and your Linode billing page doesn’t display a [VAT ID field](#add-eu-vat-registration-number-to-your-linode-account) for input, please open a [support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support). We’ll help you as soon as possible.
-
-Linode’s [pricing plans](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) do **NOT** include EU VAT charges.
-
-## What Will the EU Charge?
+## Summary of EU VAT Rates
 
 The table below lists the VAT rates as of January 1, 2015 for residents of respective countries.
+
+{{< note >}}
+Please note, Linode’s [pricing plans](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) do **NOT** include EU VAT charges.
+{{</ note >}}
 
 | **Country** | **Value-Added Tax (VAT)** |
 | ------- | ---------------------:|
@@ -63,10 +57,6 @@ The table below lists the VAT rates as of January 1, 2015 for residents of respe
 | Spain | 21%                   |
 | Austria | 25%                   |
 
-{{< note >}}
-Linode’s [pricing plans](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) do **NOT** include EU VAT charges.
-{{</ note >}}
-
 ### Exclusions
 
 - Andorra
@@ -82,19 +72,23 @@ Linode’s [pricing plans](/docs/platform/billing-and-support/billing-and-paymen
 - Faroe Islands and Greenland (Denmark)
 - Åland Islands (Finland)
 
-## Add EU VAT Registration Number to your Linode Account
+## Adding an EU VAT ID to your Linode Account
 
-If your business has an EU VAT Registration Number, add it to your account via the [Linode CLI](https://github.com/linode/linode-cli) or the [Linode Cloud Manager](https://cloud.linode.com):
+Valid VAT IDs may be added to your account via the [Linode CLI](https://github.com/linode/linode-cli) or the [Linode Cloud Manager](https://cloud.linode.com).
+
+{{< note >}}
+If you are using the Linode Classic Manager, review the [classic manager version of this guide](/docs/platform/billing-and-support/european-union-vat-linode-classic-manager/#adding-an-eu-vat-id-to-your-linode-account) for alternative instructions.
+{{< /note >}}
 
 **Linode CLI**
 
 Install the Linode CLI to your local computer and generate a Personal Access Token before using the Linode CLI. See [Using the Linode CLI](/docs/platform/api/using-the-linode-cli/) for more information.
 
-1. Add or update your account with an EU VAT Registration Number:
+1. Add or update your account with a valid VAT ID:
 
         linode-cli account update --tax_id FRXX999999999
 
-    Replace `FRXX999999999` with your VAT Registration Number.
+    Replace `FRXX999999999` with your VAT ID.
 
 1. Verify that the account was updated:
 
@@ -102,7 +96,7 @@ Install the Linode CLI to your local computer and generate a Personal Access Tok
 
 **Linode Cloud Manager**
 
-To add or update your account with an EU VAT Registration Number:
+To add or update your account with a VAT ID:
 
 1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
@@ -110,7 +104,7 @@ To add or update your account with an EU VAT Registration Number:
 
 1. Expand the **Update Contact Information** panel under the **Billing Info** tab.
 
-1. Enter your EU VAT Registration Number in the **Tax ID** field.
+1. Enter your EU VAT ID in the **Tax ID** field.
 
 1. Click on the **Save** button at the bottom of the **Update Contact Information** panel.
 
@@ -120,6 +114,8 @@ You can check your monthly invoice charges with the Linode CLI or by visiting th
 
 {{< note >}}
 See the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for more information.
+
+If you are using the Linode Classic Manager, review the [classic manager version of this guide](/docs/platform/billing-and-support/european-union-vat-linode-classic-manager/#review-your-charges) for alternative instructions.
 {{< /note >}}
 
 **Linode CLI**
@@ -130,15 +126,13 @@ See the [Billing and Payments](/docs/platform/billing-and-support/billing-and-pa
 
 1. The Linode CLI's output will resemble the following:
 
-    {{< output >}}
-    ┌──────────┬─────────────────────┬───────────────────┬───────┐
-    │ id_______| date________________│ label_____________│ total │
-    ├──────────┼─────────────────────┼───────────────────┼───────┤
-    │ 10876642 │ 2018-06-01T04:16:26 │ Invoice #10876642 │ 10.00 │
-    │ 11170325 │ 2018-07-01T05:22:53 │ Invoice #11170325 │ 10.00 │
-    │ 11332537 │ 2018-08-01T04:10:34 │ Invoice #11332537 │ 10.00 │
-    └──────────┴─────────────────────┴───────────────────┴───────┘
-    {{</ output >}}
+        ┌──────────┬─────────────────────┬───────────────────┬───────┐
+        │ id_______| date________________│ label_____________│ total │
+        ├──────────┼─────────────────────┼───────────────────┼───────┤
+        │ 10876642 │ 2018-06-01T04:16:26 │ Invoice #10876642 │ 10.00 │
+        │ 11170325 │ 2018-07-01T05:22:53 │ Invoice #11170325 │ 10.00 │
+        │ 11332537 │ 2018-08-01T04:10:34 │ Invoice #11332537 │ 10.00 │
+        └──────────┴─────────────────────┴───────────────────┴───────┘
 
 1. Find the `id` for the specific invoice you would like to view and replace `10876642` with your invoice's `id`:
 
@@ -146,7 +140,7 @@ See the [Billing and Payments](/docs/platform/billing-and-support/billing-and-pa
 
 **Linode Cloud Manager**
 
-1. Log in to the Linode Cloud Manager.
+1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
 1. Navigate to the **Account** link in the sidebar.
 

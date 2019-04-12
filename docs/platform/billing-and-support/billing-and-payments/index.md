@@ -97,7 +97,7 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 ## European Union Value-Added Tax (VAT)
 
-Linode must levy on its non-business (i.e., private) EU customers a value-added tax (VAT) based on their monthly charges. Review our [Value-Added Taxes and your Linode Account](/docs/platform/billing-and-support/european-union-vat-linode/) for more information about this topic.
+Review our [Value-Added Taxes and your Linode Account](/docs/platform/billing-and-support/european-union-vat-linode/) guide for more information about this topic.
 
 ## Payment Methods
 
