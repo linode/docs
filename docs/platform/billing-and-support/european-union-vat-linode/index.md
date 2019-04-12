@@ -2,13 +2,13 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Explains the European Union value-added tax (VAT) and how to add a registration number to your account."
+description: "Explains the European Union value added tax (VAT) and how to add a registration number to your account."
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "taxes", "eu", "european union"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2019-04-09
-title: Value-Added Taxes and your Linode Account
+title: Value Added Taxes and your Linode Account
 classic_manager_link: platform/billing-and-support/european-union-vat-linode-classic-manager/
 ---
 
@@ -26,7 +26,7 @@ The table below lists the VAT rates as of January 1, 2015 for residents of respe
 Please note, Linode’s [pricing plans](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) do **NOT** include EU VAT charges.
 {{</ note >}}
 
-| **Country** | **Value-Added Tax (VAT)** |
+| **Country** | **Value Added Tax (VAT)** |
 | ------- | ---------------------:|
 | Austria | 20%                   |
 | Belgium | 21%                   |
