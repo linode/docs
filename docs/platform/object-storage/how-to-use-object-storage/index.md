@@ -134,7 +134,7 @@ To delete a bucket, issue the `rb` command:
     The file will now be accessible at the URL `http://my-example-bucket.beta.linodeobjects.com/example.txt`.
 
     {{< note >}}
-The `--acl-public` flag is used to make the object publically accessible, meaning that you will be able to access the object from its URL. By default, all objects are set to private. To make a public file private, or a private file public, use the `setacl` command and supply the corresponding flag.
+The `--acl-public` flag is used to make the object publicly accessible, meaning that you will be able to access the object from its URL. By default, all objects are set to private. To make a public file private, or a private file public, use the `setacl` command and supply the corresponding flag.
 
 For instance, if you want to make a public file private, you would supply the `--acl-private` flag:
 
@@ -289,7 +289,7 @@ You can also create a static website using Object Storage and s3cmd. For more in
 
 ## Cyberduck
 
-Cyberduck is a tool that allows for a wide range of file transer protocols, including S3.
+Cyberduck is a tool that allows for a wide range of file transfer protocols, including S3.
 
 ### Install and Configure
 
@@ -303,7 +303,7 @@ To download Cyberduck, you can [visit their website](https://cyberduck.io/), or 
 
     ![Open Cyberduck and click on 'Open Connection' to open the connection menu.](object-storage-cyberduck-open-connection.png)
 
-3.  For the Server addess, enter `beta.linodeobjects.com`.
+3.  For the Server address, enter `beta.linodeobjects.com`.
 
 4.  Enter your access key in the Access Key ID field, and your secret key in the Secret Access Key field.
 
@@ -329,7 +329,7 @@ To delete the bucket using Cyberduck, right click on the bucket and select **Del
 
     ![Click on the 'Action' button to use the file upload dialog.](object-storage-cyberduck-upload-menu.png)
 
-2.  To make your objects publically accessible, meaning that you can access them from the object's URL, you need to set the proper READ permissions. Right click on the object and select **Info**.
+2.  To make your objects publicly accessible, meaning that you can access them from the object's URL, you need to set the proper READ permissions. Right click on the object and select **Info**.
 
 3.  Click on the **Permissions** tab.
 
