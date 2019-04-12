@@ -35,3 +35,4 @@ swap:
   uris: URIs
   Cuda: CUDA
   gpu: GPU
+  markdown: Markdown

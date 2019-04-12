@@ -85,7 +85,7 @@ def hello_word():
 {{< /file >}}
 
 
-5.  The `setup.cfg` file lets PyPI know the README is a markdown file:
+5.  The `setup.cfg` file lets PyPI know the README is a Markdown file:
 
     {{< file "setup.cfg" >}}
 [metadata]
