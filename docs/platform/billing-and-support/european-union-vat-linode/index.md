@@ -110,7 +110,7 @@ To add or update your account with a VAT ID:
 
 ## Review your Charges
 
-You can check your monthly invoice charges with the Linode CLI or by visiting the billing page in the Linode Cloud Manager.
+You can check your monthly invoice charges with the [Linode CLI](https://github.com/linode/linode-cli) or by visiting the billing page in the [Linode Cloud Manager](https://cloud.linode.com).
 
 {{< note >}}
 See the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for more information.
@@ -119,6 +119,8 @@ If you are using the Linode Classic Manager, review the [classic manager version
 {{< /note >}}
 
 **Linode CLI**
+
+Install the Linode CLI to your local computer and generate a Personal Access Token before using the Linode CLI. See [Using the Linode CLI](/docs/platform/api/using-the-linode-cli/) for more information.
 
 1. View a list of your invoices:
 
