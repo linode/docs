@@ -14,7 +14,7 @@ classic_manager_link: platform/billing-and-support/european-union-vat-linode-cla
 
 ## What is the European Union Value Added Tax?
 
-The European Union and its member states (EU) impose a value added tax (VAT) on the sale of certain electronically supplied goods and services within the European Economic Area. Linode customers who are subject to EU VAT can [review these charges](#review-your-charges) on their monthly invoices or by navigating to the **Account** tab in the [Linode Cloud Manager](https://cloud.linode.com).
+The European Union and its member states (EU) impose a value added tax (VAT) on the sale of certain electronically supplied goods and services within the European Economic Area. Linode customers who are subject to EU VAT can [review these charges](#review-your-charges) on their monthly invoices by navigating to the **Account** tab in the [Linode Cloud Manager](https://cloud.linode.com).
 
 Customers that wish to provide Linode with a valid VAT identification number (VAT ID) may do so by [updating their contact information](#adding-an-eu-vat-id-to-your-linode-account). Such customers will not be charged with EU VAT in subsequent invoices once their VAT ID is verified.
 
