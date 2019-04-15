@@ -9,7 +9,8 @@ modified_by:
   name: Linode
 published: 2019-04-09
 title: Tax Information
-classic_manager_link: platform/billing-and-support/european-union-vat-linode-classic-manager/
+aliases: ['platform/billing-and-support/european-union-vat-linode/']
+classic_manager_link: platform/billing-and-support/tax-information-classic-manager/
 ---
 
 ## Value Added Tax in the European Union
@@ -29,7 +30,7 @@ Please note, Linode’s [pricing plans](/docs/platform/billing-and-support/billi
 Valid VAT IDs may be added to your account via the [Linode Cloud Manager](https://cloud.linode.com) or the [Linode CLI](https://github.com/linode/linode-cli).
 
 {{< note >}}
-If you are using the Linode Classic Manager, review the [classic manager version of this guide](/docs/platform/billing-and-support/european-union-vat-linode-classic-manager/#adding-an-eu-vat-id-to-your-linode-account) for alternative instructions.
+If you are using the Linode Classic Manager, review the [classic manager version of this guide](/docs/platform/billing-and-support/tax-information-classic-manager/#adding-an-eu-vat-id-to-your-linode-account) for alternative instructions.
 {{< /note >}}
 
 **Linode Cloud Manager**
@@ -67,7 +68,7 @@ You can check your monthly invoice charges by visiting the billing page in the [
 {{< note >}}
 See the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for more information.
 
-If you are using the Linode Classic Manager, review the [classic manager version of this guide](/docs/platform/billing-and-support/european-union-vat-linode-classic-manager/#review-your-charges) for alternative instructions.
+If you are using the Linode Classic Manager, review the [classic manager version of this guide](/docs/platform/billing-and-support/tax-information-classic-manager/#review-your-charges) for alternative instructions.
 {{< /note >}}
 
 **Linode Cloud Manager**

@@ -88,15 +88,15 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 
 What does a mid-month bill mean? Your existing active services will stay active. However, you must pay the mid-month bill before you can activate additional Linode services. Once your payment is processed, you may continue adding new services.
 
+## Tax Information
+
+Review our [Tax Information](/docs/platform/billing-and-support/tax-information-classic-manager/) guide for information about which taxes Linode may charge.
+
 ## If My Linode is Powered Off, Will I Be Billed?
 
 **If your Linode is powered off you will still be billed for it.** Linode maintains your saved data and reserves your ability to use other resources like RAM and network capacity, even when your Linode is powered off. You will also be billed for any other active Linode service, such as Longview Pro or extra IP's.
 
 If you want to stop being billed for a particular Linode service, you need to [remove](#removing-services) it from your account entirely.
-
-## European Union Value-Added Tax (VAT)
-
-Review our [Value-Added Taxes and your Linode Account](/docs/platform/billing-and-support/european-union-vat-linode-classic-manager/) guide for more information about this topic.
 
 ## Network Transfer Quota
 

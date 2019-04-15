@@ -9,7 +9,8 @@ modified_by:
   name: Linode
 published: 2019-04-09
 title: Tax Information
-cloud_manager_link: platform/billing-and-support/european-union-vat-linode/
+aliases: ['platform/billing-and-support/european-union-vat-linode-classic-manager/']
+cloud_manager_link: platform/billing-and-support/tax-information/
 hiddenguide: true
 ---
 
