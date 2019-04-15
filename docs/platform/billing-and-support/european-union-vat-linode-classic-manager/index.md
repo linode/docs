@@ -8,70 +8,22 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2019-04-09
-title: Value Added Taxes and your Linode Account
+title: Tax Information
 cloud_manager_link: platform/billing-and-support/european-union-vat-linode/
 hiddenguide: true
 ---
 
-## What is the European Union Value Added Tax?
+## Value Added Tax in the European Union
 
 The European Union and its member states (EU) impose a value added tax (VAT) on the sale of certain electronically supplied goods and services within the European Economic Area. Linode customers who are subject to EU VAT can [review these charges](#review-your-charges) on their monthly invoices by navigating to the **Account** page in the [Linode Classic Manager](https://manager.linode.com).
 
 Customers that wish to provide Linode with a valid VAT identification number (VAT ID) may do so by [updating their contact information](#adding-an-eu-vat-id-to-your-linode-account). Such customers will not be charged with EU VAT in subsequent invoices once their VAT ID is verified.
 
-## Summary of EU VAT Rates
-
-The table below lists the VAT rates as of January 1, 2015 for residents of respective countries.
+VAT rates in the EU range from 5% to 27%. More information about your EU VAT rate can be found [here](https://ec.europa.eu/taxation_customs/business/vat_en).
 
 {{< note >}}
 Please note, Linode’s [pricing plans](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) do **NOT** include EU VAT charges.
 {{</ note >}}
-
-| **Country** | **Value Added Tax (VAT)** |
-| ------- | ---------------------:|
-| Austria | 20%                   |
-| Belgium | 21%                   |
-| Bulgaria | 20%                   |
-| Croatia | 25%                   |
-| Cyprus | 19%                   |
-| Czech Republic | 21%                   |
-| Denmark | 25%                   |
-| Estonia | 20%                   |
-| Finland | 24%                   |
-| France & Monaco | 20%                   |
-| Germany | 19%                   |
-| Great Britain & Northern Ireland | 20%                   |
-| Greece | 24%                   |
-| Hungary | 27%                   |
-| Ireland (Eire) | 23%                   |
-| Italy | 22%                   |
-| Latvia | 21%                   |
-| Lithuania | 21%                   |
-| Luxembourg | 17%                   |
-| Malta | 18%                   |
-| Netherlands | 21%                   |
-| Poland | 23%                   |
-| Portugal | 23%                   |
-| Romania | 19%                   |
-| Slovakia | 20%                   |
-| Slovenia | 22%                   |
-| Spain | 21%                   |
-| Austria | 25%                   |
-
-### Exclusions
-
-- Andorra
-- The Channel Islands (United Kingdom)
-- Gibraltar
-- Mount Athos
-- San Marino
-- Vatican City
-- Ceuta, Melilla and the Canary Islands (Spain)
-- The communes of Livigno, Campione d'Italia and the Italian waters of Lake Lugano (Italy)
-- Büsingen and the Isle of Heligoland (Germany)
-- Guadeloupe, Martinique, Réunion, St. Pierre and Miquelon, and French Guiana (France)
-- Faroe Islands and Greenland (Denmark)
-- Åland Islands (Finland)
 
 ## Adding an EU VAT ID to your Linode Account
 
