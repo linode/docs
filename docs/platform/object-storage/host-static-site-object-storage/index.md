@@ -22,24 +22,24 @@ Object Storage is currently in a closed early access Beta, and as such you may n
 Additionally, because Object Storage is in Beta, there may be breaking changes to how you access and manage Object Storage. This guide will be updated to reflect these changes if and when they occur.
 {{</ note >}}
 
-Static site generators are a popular solution for creating simple, fast, flexible, and attractive websites. You create your site content using markdown, an easy-to-learn and light-weight markup language and the static site generator handles converting your markdown files into static HTML files.
+Static site generators are a popular solution for creating simple, fast, flexible, and attractive websites. You create your site content using markdown, an easy-to-learn and light-weight markup language, and the static site generator handles converting your markdown files into static HTML files.
 
-Using Object Storage to host your static site means you do not have to worry about maintaining your site's infrastructure as you might when hosting a site on a traditional server. It is no longer necessary to perform typical server maintenance tasks, like software and package upgrades, web server configuration, and security upkeep. Object storage provides an HTTP REST gateway to objects, which means a unique URL over HTTP is available for every bucket object. Once your static site is built, making it available publicly over the internet is as easy uploading files to an Object Storage bucket.
+Using Object Storage to host your static site means you do not have to worry about maintaining your site's infrastructure as you might when hosting a site on a traditional server. It is no longer necessary to perform typical server maintenance tasks, like software and package upgrades, web server configuration, and security upkeep. Object storage provides an HTTP REST gateway to objects, which means a unique URL over HTTP is available for every object. Once your static site is built, making it available publicly over the internet is as easy uploading files to an Object Storage bucket.
 
 At a high-level, the required steps to host a static site using Object Storage are:
 
 1. Install the static site generator of your choice to your local computer.
-1. Create the desired content and build the site.
-1. Upload the static files to your Object storage bucket to make the content publicly available over the internet.
+2. Create the desired content and build the site.
+3. Upload the static files to your Object storage bucket to make the content publicly available over the internet.
 
-This guide will use [Hugo](https://gohugo.io/) to demonstrate how to create a static site and host it on Linode's Object Storage. However, there are many static site generators to choose from --[Jekyll](https://jekyllrb.com/) and [Gatsby](https://www.gatsbyjs.org/) are other popular choices. The general steps outlined in this guide can be applied to host any static site on Linode's Object Storage. For more information on choosing a static site generator, see the [How to Choose a Static Site Generator](/docs/websites/static-sites/how-to-choose-static-site-generator/) guide.
+This guide will use [Hugo](https://gohugo.io/) to demonstrate how to create a static site and host it on Linode's Object Storage. However, there are many static site generators to choose from -- [Jekyll](https://jekyllrb.com/) and [Gatsby](https://www.gatsbyjs.org/) are other popular choices. The general steps outlined in this guide can be applied to host any static site on Linode's Object Storage. For more information on choosing a static site generator, see the [How to Choose a Static Site Generator](/docs/websites/static-sites/how-to-choose-static-site-generator/) guide.
 
 ## Before You Begin
 
-1. Ensure you have read the How to Use Object Storage guide to familiarize yourself with Object Storage on Linode. Be sure you have completed the following steps outlined in that guide:
+1. Ensure you have read the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage) guide to familiarize yourself with Object Storage on Linode. Be sure you have completed the following steps outlined in that guide:
 
     - Created your Object Storage access and secret keys.
-    - Installed [s3cmd CLI](https://s3tools.org/download).
+    - Installed and configure [s3cmd CLI](https://s3tools.org/download).
 
 1. [Install and configure Git](https://linode.com/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/#install-and-configure-git) on your local computer.
 
@@ -121,7 +121,7 @@ In this section, you will use the [Hugo CLI](https://gohugo.io/commands/) (comma
 
     Front matter is a powerful Hugo feature that provides a mechanism for passing data that is attached to a specific piece of content to Hugo's rendering engine. Hugo accepts front matter in TOML, YAML, and JSON formats. In this example, there is YAML front matter for the title, date, and draft state of the markdown file.
 
-    Set your desired value for `title`. Then, set the `draft` state to `false` and add your content below the `---` in markdown syntax. The example below contains updated front matter with some example markdown. To learn markdown, consult [Hugo's suggested reading list](https://gohugo.io/content-management/formats/).:
+    Set your desired value for `title`. Then, set the `draft` state to `false` and add your content below the `---` in markdown syntax. The example below contains updated front matter with some example markdown. To learn markdown, consult [Hugo's suggested reading list](https://gohugo.io/content-management/formats/):
 
     {{< file "/home/user/example-site/content/posts/my-first-post.md" >}}
 ---
@@ -167,15 +167,15 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
     {{</ output >}}
 
-    The output will provide a url to preview your site. Copy and paste the url into a browser to access the site. In the above example Hugo's web server url is `http://localhost:1313/`.
+    The output will provide a URL to preview your site. Copy and paste the URL into a browser to access the site. In the above example Hugo's web server URL is `http://localhost:1313/`.
 
 1. When you are happy with your site's content you can *build* your site. This means Hugo will generate your site's static HTML files and store them in a `public` directory that it will create. The static files that are generated by Hugo are the files that you will upload to your Object Storage bucket to make your site accessible via the internet.
 
-          hugo -v
+        hugo -v
 
     View the contents of your site's `public` directory:
 
-          ls public
+        ls public
 
     Your output should resemble the following example. When you built the site, the markdown file you created and edited in steps 6 & 7 was used to generate its corresponding static HTML file in the `public/posts/my-first-post/index.html` directory.
 
@@ -190,11 +190,11 @@ Press Ctrl+C to stop
 
         git status
 
-  1. Stage all your files to be committed:
+  2. Stage all your files to be committed:
 
         git add -A
 
-  1. Commit all your changes and add a meaningful commit message:
+  3. Commit all your changes and add a meaningful commit message:
 
         git commit -m 'Add my first post.'
 
@@ -205,11 +205,15 @@ Press Ctrl+C to stop
 
 Before proceeding with this section ensure that you have already created your Object Storage access and secret keys and have installed the s3cmd CLI.
 
-1. Create a new Object Storage bucket:
+1. Create a new Object Storage bucket, appending `s3://` to the beginning of the bucket's name:
 
-        s3cmd mb my-bucket
+        s3cmd mb s3://my-bucket
 
-1. Initialize your Object Storage bucket as a website. You must tell your bucket which file to server as the index page and the error page for your static site. This is done with the `--ws-index` and `--ws-error` options. In our Hugo example, the site's index file is `index.html` and the error file is `404.html`. Whenever a user visits your static site's URL, the Object Storage service will serve the `index.html` page. If a site visitor tries to access an invalid path, they will be presented with the `404.html` page.
+    {{< note >}}
+Buckets names must be unique within the Object Storage cluster. You might find the bucket name `my-bucket` is already in use, in which case you will need to choose a new bucket name.
+{{</ note >}}
+
+1. Initialize your Object Storage bucket as a website. You must tell your bucket which files to serve as the index page and the error page for your static site. This is done with the `--ws-index` and `--ws-error` options. In our Hugo example, the site's index file is `index.html` and the error file is `404.html`. Whenever a user visits your static site's URL, the Object Storage service will serve the `index.html` page. If a site visitor tries to access an invalid path, they will be presented with the `404.html` page.
 
         s3cmd ws-create --ws-index=index.html --ws-error=404.html s3://my-bucket
 
@@ -223,10 +227,10 @@ Before proceeding with this section ensure that you have already created your Ob
 
         s3cmd ws-info s3://my-bucket
 
-    You should see a similar output. Be sure to take not of your Object Storage bucket's URL:
+    You should see a similar output. Be sure to take note of your Object Storage bucket's URL:
 
     {{< output >}}
-      Bucket s3://ss-6/: Website configuration
+      Bucket s3://my-bucket/: Website configuration
 Website endpoint: http://my-bucket.alpha-website.linodeobjects.com/
 Index document:   index.html
 Error document:   404.html
