@@ -159,11 +159,11 @@ To get a list of all objects in a bucket, issue the `ls` command with the name o
 
     linode-cli obj ls my-example-bucket
 
-To create a static website from a bucket, issue the `ws-create` command.
+To create a static website from a bucket, issue the `ws-create` command, including the `--ws-index` and `--ws-error` flags:
 
-    linode-cli obj ws-create my-example-bucket
+    linode-cli obj ws-create my-example-bucket --ws-index=index.html --ws-error=404.html
 
-For more information on hosting static websites from Linode Object Storage, see our guide.
+For more information on hosting static websites from Linode Object Storage, see our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
 For a complete list of commands available with the Object Storage plugin, issue use the `--help` flag:
 
@@ -213,6 +213,20 @@ You will be prompted to agree to the terms and conditions.
 It is not necessary to supply a GPG key when configuring s3cmd, though it will allow you to store and retrieve encrypted files. If you do not wish to configure GPG encryption, you can leave the `Encryption password` and `Path to GPG program` fields blank.
 {{</ note >}}
 
+    When you are done, enter `Y` to save your configuration.
+
+    {{< note >}}
+s3cmd offers a number of additional configuration options that are not presented as prompts by the `s3cmd --configure` command. One of those options is `website_endpoint`, which instructs s3cmd on how to construct an appropriate URL for a bucket that is hosting a static site, similar to the `S3 Endpoint` in the above configuration. This step is optional, but will ensure that any commands that contain your static site's URL will output the right text. To edit this configuration file, open the `~/s3.cfg` file on your local computer:
+
+    nano ~/.s3cfg
+
+Scroll down until you find the `website_endpoint`, then add the following value:
+
+    http://%(bucket)s.beta-website.linodeobjects.com/
+
+
+{{</ note >}}
+
 You are now ready to use s3cmd to create a bucket in Object Storage.
 
 ### Create a Bucket
@@ -231,7 +245,7 @@ To remove a bucket, you can use the `rb` command:
 
         echo 'Hello World!' > example.txt
 
-1.  Now, transfer the text file object to your bucket using s3cmd's `put` command, replacing `my-example-bucket` with the label of the bucket you gave in the last section:
+2.  Now, transfer the text file object to your bucket using s3cmd's `put` command, replacing `my-example-bucket` with the label of the bucket you gave in the last section:
 
         s3cmd put example.txt s3://my-example-bucket -P
 
@@ -281,11 +295,15 @@ To upload an entire directory of files, you can use the the `sync` command, whic
 
         s3cmd sync . s3://my-example-bucket -P
 
-    {{< note >}}
+{{< note >}}
 The period in the above command instructs s3cmd to upload the current directory. If you do not want to first navigate to the directory you wish to upload, you can supply a path to the directory instead of the period.
 {{</ note >}}
 
-You can also create a static website using Object Storage and s3cmd. For more information on hosting a static website with Object Storage, read our guide.
+You can also create a static website using Object Storage and s3cmd. To create a website from a bucket, issue the `ws-create` command:
+
+    s3cmd ws-create --ws-index=index.html --ws-error=404.html s3://my-example-bucket
+
+For more information on hosting a static website with Object Storage, read our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
 ## Cyberduck
 
