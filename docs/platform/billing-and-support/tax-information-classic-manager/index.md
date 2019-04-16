@@ -16,14 +16,12 @@ hiddenguide: true
 
 ## Value Added Tax in the European Union
 
-The European Union and its member states (EU) impose a value added tax (VAT) on the sale of certain electronically supplied goods and services within the European Economic Area. Linode customers who are subject to EU VAT can [review these charges](#review-your-charges) on their monthly invoices by navigating to the **Account** tab in the [Linode Classic Manager](https://manager.linode.com).
+Linode customers who are subject to EU VAT can [review these charges](#review-your-charges) on their monthly invoices by navigating to the **Account** tab in the [Linode Classic Manager](https://manager.linode.com).
 
 Customers that wish to provide Linode with a valid VAT identification number (VAT ID) may do so by [updating their contact information](#adding-an-eu-vat-id-to-your-linode-account). Such customers will not be charged with EU VAT in subsequent invoices once their VAT ID is verified. You can also specify a VAT ID in our account signup form when you first create your Linode account.
 
-VAT rates in the EU range from 5% to 27%. More information about your EU VAT rate can be found [here](https://ec.europa.eu/taxation_customs/business/vat_en).
-
 {{< note >}}
-Please note, Linode’s [pricing plans](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) do **NOT** include EU VAT charges.
+Information about your EU VAT rate can be found [here](https://ec.europa.eu/taxation_customs/business/vat_en). Please note, Linode’s [pricing plans](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) do **NOT** include EU VAT charges.
 {{</ note >}}
 
 ## Adding an EU VAT ID to your Linode Account
