@@ -25,7 +25,7 @@ The Tokyo 2 data center provides access to features that are not available in To
 
 ## When will My Linodes be Migrated?
 
-The [Linode Classic Manager](https://http://manager.linode.com) will display the scheduled dates and times for the migrations of your Tokyo 1 Linodes. If you visit the Classic Manager before this schedule is set by Linode, the information will not be displayed.
+The [Linode Classic Manager](https://manager.linode.com) will display the scheduled dates and times for the migrations of your Tokyo 1 Linodes. If you visit the Classic Manager before this schedule is set by Linode, the information will not be displayed.
 
 When your migration schedule first becomes visible in the Classic Manager, you will receive a support ticket from Linode to let you know. This ticket will be sent to you at least two months in advance of the start of your first migration. Your different Linodes will be scheduled to migrate on different dates and times. **Linode will not be able to adjust this schedule of migrations.**
 
