@@ -77,11 +77,11 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
     ![The Create a Bucket menu.](object-storage-create-a-bucket.png)
 
-2.  Add a label for your bucket. Bucket labels need to be unique within the cluster. If the label of your bucket is already in use, you will have to choose a different label.
+1.  Add a label for your bucket. Bucket labels need to be unique within the cluster. If the label of your bucket is already in use, you will have to choose a different label.
 
-3.  Choose a cluster for the bucket to reside in.
+1.  Choose a cluster for the bucket to reside in.
 
-4.  Click **Submit**.
+1.  Click **Submit**.
 
 You are now ready to upload objects to your bucket.
 
@@ -149,6 +149,16 @@ For instance, if you want to make a public file private, you would supply the `-
 
         linode-cli obj rm my-example-bucket example.txt
 
+### Create a Static Site
+
+To create a static website from a bucket, issue the `ws-create` command, including the `--ws-index` and `--ws-error` flags:
+
+    linode-cli obj ws-create my-example-bucket --ws-index=index.html --ws-error=404.html
+
+The `ws-create` command accepts two flags, `--ws-index` and `--ws-error`, which specify which objects the bucket should use to serve the static site's index page and error page, respectively. Also, note that to access your static site you will need a different URL than generic Object Storage. Static sites are available at the `beta-website` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.beta-website.linodeobjects.com`.
+
+For more information on hosting static websites from Linode Object Storage, see our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+
 ### Other Commands
 
 To get a list of all available buckets, issue the `ls` command:
@@ -158,12 +168,6 @@ To get a list of all available buckets, issue the `ls` command:
 To get a list of all objects in a bucket, issue the `ls` command with the name of a bucket:
 
     linode-cli obj ls my-example-bucket
-
-To create a static website from a bucket, issue the `ws-create` command, including the `--ws-index` and `--ws-error` flags:
-
-    linode-cli obj ws-create my-example-bucket --ws-index=index.html --ws-error=404.html
-
-For more information on hosting static websites from Linode Object Storage, see our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
 For a complete list of commands available with the Object Storage plugin, issue use the `--help` flag:
 
@@ -245,7 +249,7 @@ To remove a bucket, you can use the `rb` command:
 
         echo 'Hello World!' > example.txt
 
-2.  Now, transfer the text file object to your bucket using s3cmd's `put` command, replacing `my-example-bucket` with the label of the bucket you gave in the last section:
+1.  Now, transfer the text file object to your bucket using s3cmd's `put` command, replacing `my-example-bucket` with the label of the bucket you gave in the last section:
 
         s3cmd put example.txt s3://my-example-bucket -P
 
@@ -289,25 +293,29 @@ The URL for the object that s3cmd provides is one of two valid ways to access yo
 
         s3cmd ls s3://my-example-bucket
 
-### Other Commands
-
-To upload an entire directory of files, you can use the the `sync` command, which will automatically sync all new or changed files. Navigate to the directory you would like to sync, then enter the following:
-
-        s3cmd sync . s3://my-example-bucket -P
-
-{{< note >}}
-The period in the above command instructs s3cmd to upload the current directory. If you do not want to first navigate to the directory you wish to upload, you can supply a path to the directory instead of the period.
-{{</ note >}}
+### Create a Static Site
 
 You can also create a static website using Object Storage and s3cmd. To create a website from a bucket, issue the `ws-create` command:
 
     s3cmd ws-create --ws-index=index.html --ws-error=404.html s3://my-example-bucket
 
+The `ws-create` command accepts two flags, `--ws-index` and `--ws-error`, which specify which objects the bucket should use to serve the static site's index page and error page, respectively. Also, note that to access your static site you will need a different URL than generic Object Storage. Static sites are available at the `beta-website` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.beta-website.linodeobjects.com`.
+
 For more information on hosting a static website with Object Storage, read our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+
+### Other Commands
+
+To upload an entire directory of files, you can use the the `sync` command, which will automatically sync all new or changed files. Navigate to the directory you would like to sync, then enter the following:
+
+    s3cmd sync . s3://my-example-bucket -P
+
+{{< note >}}
+The period in the above command instructs s3cmd to upload the current directory. If you do not want to first navigate to the directory you wish to upload, you can supply a path to the directory instead of the period.
+{{</ note >}}
 
 ## Cyberduck
 
-Cyberduck is a tool that allows for a wide range of file transfer protocols, including S3.
+Cyberduck is a tool that facilitates file transfer over FTP and SFTP, and a number APIs, including S3.
 
 ### Install and Configure
 
@@ -317,15 +325,15 @@ To download Cyberduck, you can [visit their website](https://cyberduck.io/), or 
 
 1.  Once you have Cyberduck installed, open the program and click on **Open Connection**.
 
-2.  At the top of the Open Connection dialog, select **Amazon S3** from the dropdown menu.
+1.  At the top of the Open Connection dialog, select **Amazon S3** from the dropdown menu.
 
     ![Open Cyberduck and click on 'Open Connection' to open the connection menu.](object-storage-cyberduck-open-connection.png)
 
-3.  For the Server address, enter `beta.linodeobjects.com`.
+1.  For the Server address, enter `beta.linodeobjects.com`.
 
-4.  Enter your access key in the Access Key ID field, and your secret key in the Secret Access Key field.
+1.  Enter your access key in the Access Key ID field, and your secret key in the Secret Access Key field.
 
-5.  Click **Connect**.
+1.  Click **Connect**.
 
 You are now ready to create a bucket in Object Storage.
 
@@ -347,24 +355,38 @@ To delete the bucket using Cyberduck, right click on the bucket and select **Del
 
     ![Click on the 'Action' button to use the file upload dialog.](object-storage-cyberduck-upload-menu.png)
 
-2.  To make your objects publicly accessible, meaning that you can access them from the object's URL, you need to set the proper READ permissions. Right click on the object and select **Info**.
+1.  To make your objects publicly accessible, meaning that you can access them from the object's URL, you need to set the proper READ permissions. Right click on the object and select **Info**.
 
-3.  Click on the **Permissions** tab.
+1.  Click on the **Permissions** tab.
 
-4.  Click the gear icon at the bottom of the window and select **Everyone**.
+1.  Click the gear icon at the bottom of the window and select **Everyone**.
 
     ![Open the file permissions prompt by right clicking on the file and selecting.](object-storage-cyberduck-object-permissions.png)
 
-5.  A new entry for *Everyone* will appear in the Access Control List. Next to *Everyone*, under *Permissions* column heading, select **READ** from the drop down menu.
+1.  A new entry for *Everyone* will appear in the Access Control List. Next to *Everyone*, under *Permissions* column heading, select **READ** from the drop down menu.
 
     ![Set the permissions for 'Everyone' to READ.](object-storage-cyberduck-object-permissions2.png)
 
     Your object is now accessible via the internet, at the URL `http://my-example-bucket.beta.linodeobjects.com/example.txt`, where `my-example-bucket` is the name of your bucket, and `example.txt` is the name of your object.
 
-6.  To download an object, right click on the object and select **Download**, or click **Download As** if you'd like to specify the location of the download.
+1.  To download an object, right click on the object and select **Download**, or click **Download As** if you'd like to specify the location of the download.
 
-7.  To delete an object, right click the object name and select **Delete**.
+1.  To delete an object, right click the object name and select **Delete**.
+
+### Create a Static Site
+
+1.  To create a static site from your bucket, select a bucket, then right click on that bucket or select the **Action** button at the top of the menu.
+
+1.  Click on **Info**, and then select the **Distribution (CDN)** tab.
+
+1.  Check the box that reads **Enable Website Configuration (HTTP) Distribution**:
+
+    ![Check the box labeled 'Enable Website Configuration (HTTP) Distribution'](object-storage-cyberduck-enable-static-site.png)
+
+    You will now be able to access your bucket as a static site. Note that to access your static site you will need a different URL than generic Object Storage. Static sites are available at the `beta-website` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.beta-website.linodeobjects.com`.
+
+    For more information on hosting a static website with Object Storage, read our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
 ## Next Steps
 
-One of the most popular use cases for Object Storage is static website hosting. You might check out our guide on How to Host a Static Site with Object Storage. Additionally, there are S3 bindings available for a number of programming languages, including the popular [Boto](https://github.com/boto/boto3) library for Python, that allow you to interact with Object Storage programmatically.
+There are S3 bindings available for a number of programming languages, including the popular [Boto](https://github.com/boto/boto3) library for Python, that allow you to interact with Object Storage programmatically.
