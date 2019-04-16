@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: "Explains the European Union value added tax (VAT) and how to add a registration number to your account."
-keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "taxes", "tax information", "usd", "vat id", "eu", "european union"]
+keywords: ["accounts", "vat", "linode manager", "linode classic manager", "manager", "taxes", "tax information", "usd", "vat id", "eu", "european union"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
