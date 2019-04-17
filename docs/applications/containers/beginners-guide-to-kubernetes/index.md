@@ -40,7 +40,7 @@ At the highest level of Kubernetes, there exist two kinds of servers, a *Master*
 
 Kubernetes Nodes are worker servers that run your application. The number of Nodes is determined by the user, and they are created by the user. In addition to running your application, each Node runs two processes:
 
-- **kubelet** receives PodSpec files that describe the desired state of a [Pod](#pods) from the API server, and ensures the Pods that those files represented are healthy, and running on the Node.
+- **kubelet** receives descriptions of the desired state of a [Pod](#pods) from the API server, and ensures the Pod is healthy, and running on the Node.
 - **kube-proxy** is a networking proxy that proxies the UDP, TCP, and SCTP networking of each Node, and provides load balancing. This is only used to connect to [Services](#services).
 
 ### Kubernetes Master
@@ -221,7 +221,7 @@ There are a number of different Volume types you could create in addition to `em
 
 ### Namespaces
 
-Namespaces are virtual clusters that exist within the Kubernetes cluster that help to group and organize objects. Every cluster has at least three namespaces: `default`, `kube-system`, and `kube-public`. When interacting with the cluster it is important to know which Namespace the object your are looking for is in, as many commands will default to only showing you what exists in the `default` namespace. Resources created without an explicit namespace will be added to the `default` namespace.
+Namespaces are virtual clusters that exist within the Kubernetes cluster that help to group and organize objects. Every cluster has at least three namespaces: `default`, `kube-system`, and `kube-public`. When interacting with the cluster it is important to know which Namespace the object you are looking for is in, as many commands will default to only showing you what exists in the `default` namespace. Resources created without an explicit namespace will be added to the `default` namespace.
 
 Namespaces consist of alphanumeric characters, dashes (`-`), and periods (`.`).
 
@@ -390,7 +390,7 @@ To see for yourself that the images have updated, you can grab the Pod name from
     apache-deployment-574c8c4874-nn7dl   1/1     Running   0          8m36s
     apache-deployment-574c8c4874-pndgp   1/1     Running   0          8m33s
 
-Issue the `describe` command to view the all of the available details of the Pod:
+Issue the `describe` command to view all of the available details of the Pod:
 
     kubectl describe pod apache-deployment-574c8c4874-pndgp
 
@@ -410,7 +410,7 @@ For more information on Deployments, visit the [Kubernetes Deployments API docum
 
 ### Jobs
 
-A *Job* is a controller that manages a Pod that is created for a single, or set, of task. This is handy if you need to create a Pod that performs a single function, or calculates a value. The deletion of the Job will delete the Pod.
+A *Job* is a controller that manages a Pod that is created for a single, or set, of tasks. This is handy if you need to create a Pod that performs a single function, or calculates a value. The deletion of the Job will delete the Pod.
 
 Below is an example of a Job that simply prints "Hello World!" and ends:
 
@@ -451,7 +451,7 @@ To get the Pod of the Job, issue the `get pods` command:
 
     kubectl get pods
 
-You should see a output like the following:
+You should see an output like the following:
 
     NAME                               READY   STATUS             RESTARTS   AGE
     hello-world-4jzdm                  0/1     Completed          0          9m44s
