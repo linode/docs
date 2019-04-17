@@ -30,7 +30,7 @@ The easiest way to install the CLI is through [Pip](https://pypi.org/project/pip
 
         pip install linode-cli --upgrade
 
-1.  You need a Personal Access Token to use the CLI. Use the [beta Linode Manager](https://cloud.linode.com/profile/tokens) to obtain a token.
+1.  You need a Personal Access Token to use the CLI. Use the [Linode Cloud Manager](https://cloud.linode.com/profile/tokens) to obtain a token.
 
 1.  The first time you run any command, you will be prompted with the CLI's configuration script. Paste your access token (which will then be used by default for all requests made through the CLI) at the prompt. You will be prompted to choose defaults for Linodes created through the CLI (region, type, and image). These are optional, and can be overridden for individual commands. Update these defaults at any time by running `linode-cli configure`:
 
