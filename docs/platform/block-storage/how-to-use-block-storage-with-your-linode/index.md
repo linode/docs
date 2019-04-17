@@ -71,7 +71,7 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
         FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2
 
 
-{{< note >}}
+    {{< note >}}
 If you plan on detaching the volume regularly or moving it between other Linodes, you may want to consider adding the flags `noatime` and `nofail` to the **/etc/fstab** entry. 
 
 * `noatime` - This will save space and time by preventing writes made to the filesystem for data being read on the volume. 
@@ -81,7 +81,7 @@ Example:
        
     FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults,noatime,nofail 0 2
 
-{{</ note >}}
+    {{</ note >}}
 
 ### Attach a Volume from Your Account's Volume List
 
