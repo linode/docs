@@ -39,6 +39,10 @@ The transfer quota only considers traffic on your Linodes' public addresses. Tra
 
 All inbound traffic to your Linodes is free and will not count against your quota--only traffic that your Linodes emit on their public addresses is counted.
 
+{{< note >}}
+Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your transfer quota, so you can use your default IPv6 address as if it were a private IP address.
+{{</ note >}}
+
 ## Transfer Resets, Proration, and Overages
 
 Your transfer quota is reset at the beginning of each month.
