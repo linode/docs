@@ -17,49 +17,74 @@ external_resources:
 ---
 
 {{< note >}}
-Object Storage is currently in a closed early access Beta, and as such you may not have access to Object Storage through the Cloud Manager or other tools. To gain access to the Early Access Program (EAP), visit the Linode EAP page.
-
-Additionally, because Object Storage is in Beta, there may be breaking changes to how you access and manage Object Storage. This guide will be updated to reflect these changes if and when they occur.
+Object Storage is currently in a closed early access Beta. You may not have access to Object Storage through the Cloud Manager or other tools. Additionally, there may be breaking changes to how you access and manage Object Storage while it is in beta. This guide will be updated to reflect these changes if and when they occur. To gain access to the Early Access Program (EAP), visit the Linode EAP page.
 {{</ note >}}
 
+Linode's Object Storage is a globally-available, S3- and Swift-compatible method for storing and accessing data. Object Storage differs from traditional hierarchical data storage (as in a Linode's disk) and [Block Storage Volumes](https://www.linode.com/docs/platform/block-storage/). Under Object Storage, files (also called *objects*) are stored in flat data structures (referred to as *buckets*) alongside their own rich metadata.
 
-Linode's Object Storage is a globally available, S3 and Swift compatible method for storing and accessing data. Object Storage differs from traditional hierarchical data storage and [Block Storage](https://www.linode.com/docs/platform/block-storage/) in that files, called *objects*, are stored in flat data structures, called *buckets*, alongside their own rich metadata. Additionally, **Object Storage does not require the use of a Linode**. Instead, Object Storage gives each object its own public URL with which you can access your data. This makes Object Storage great for sharing and storing massive amounts of unstructured data, like images, documents, archives, streaming media assets, and file backups.
+Additionally, **Object Storage does not require the use of a Linode.** Instead, Object Storage gives each object a unique URL with which you can access your data. An object can be publicly accessible, or you can set it to be private and only visible to you. This makes Object Storage great for sharing and storing unstructured data like images, documents, archives, streaming media assets, and file backups, and the amount of data you store can range from small collections of files up to massive libraries of information. Lastly, Linode Object Storage has the built-in ability to host a [static website](/docs/websites/static-sites/how-to-choose-static-site-generator/).
 
-Below you will find instructions on how to connect to Object Storage, and how to upload and access objects.
+Below you will find instructions on how to connect to Object Storage, and how to upload and access objects:
 
-## Create Object Storage Access Keys
+1.  First, you'll need to [create a *key pair*](#create-an-object-storage-key-pair) to access the service.
 
-The first step towards using Object Storage is to create a set of access keys. These keys will act as a kind of password for Object Storage. To retrieve a set of access keys:
+1.  Then, you'll use [choose from a variety of available first-party and third-party tools](#object-storage-tools) to access and use the service.
 
-1.  Login to the [Linode Cloud Manager](https://cloud.linode.com).
+## Object Storage Key Pair
+
+The first step towards using Object Storage is to create a pair of keys for the service. This pair is composed of an *access key* and a *secret key*:
+
+-   The access key allows you to access any objects that you set to have private read permissions.
 
     {{< note >}}
-Object Storage is not available in the Classic Manager.
+To use your access key when viewing a private object, you first need to generate a *signed* URL for the object. The signed URL is much like the standard URL for your object, but some extra URL parameters are appended to it, including the access key. Instructions for generating a signed URL can be found for each of the tools outlined in this guide.
+{{< /note >}}
+
+-   Your secret key is used together with your access key to authenticate the various Object Storage tools with your Linode account. You should not share the secret key.
+
+    {{< note >}}
+Each Object Storage key pair on your Linode account has complete access to all of the buckets on your account.
+{{< /note >}}
+
+### Generate a Key Pair
+
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+
+    {{< note >}}
+Object Storage is not available in the Linode Classic Manager.
 {{</ note >}}
 
-1.  Navigate to the *My Profile* page by clicking on your username at the top of the screen and selecting **My Profile**. On mobile, the link is the sidebar navigation.
+1.  Navigate to the **My Profile** page by clicking on your username at the top of the screen and selecting the **My Profile** option in the dropdown menu that appears. On mobile devices, the **My Profile** link is in the sidebar navigation.
 
     ![Navigate to the 'My Profile' page by clicking on your username](object-storage-my-profile-link.png)
 
-1.  Click on the **API Tokens** tab, then scroll down to the *Object Storage Keys* pane.
+1.  Click on the **API Tokens** tab, then scroll down to the **Object Storage Keys** table.
 
     ![Click on the 'API Tokens' tab.](object-storage-api-keys-tab.png)
 
-1.  Click on **Create an Object Storage Key**. The *Create an Object Storage Key* menu appears.
+1.  Click on **Create an Object Storage Key**. The **Create an Object Storage Key** menu will appear.
 
     ![The 'Create an Object Storage Key' menu.](object-storage-create-key.png)
 
-1.  Enter a label for the keys. This label will be how you reference your keys in the Linode Cloud Manager. Then, click **Submit**.
+1.  Enter a label for the key pair. This label will be how you reference your key pair in the Linode Cloud Manager. Then, click **Submit**.
 
-1.  A window will appear that contains your access key and your secret key. Write these down somewhere secure, as **you will not be able to retrieve your secret key again once you close the window**.
+1.  A window will appear that contains your access key and your secret key. Write these down somewhere secure. The access key will be visible in the Linode Cloud Manager, but **you will not be able to retrieve your secret key again once you close the window.**
 
     ![Your access key and secret key.](object-storage-acces-keys.png)
 
-    You are now have the credentials needed to connect to Object Storage.
+    You now have the credentials needed to connect to Linode Object Storage.
 
 ## Object Storage Tools
 
-There are a number of tools that are available to help manage Object Storage. Currently, you can use the Linode Cloud Manager to create buckets. If you're looking for a command line utility, the [Linode CLI](#linode-cli) has an Object Storage plugin, and [s3cmd](#s3cmd) is another powerful command line utility. [Cyberduck](#cyberduck) is graphical utility available for Windows and macOS if you prefer a GUI tool. The following sections will outline how to download and install these tools, and how to manage Object Storage with them.
+There are a number of tools that are available to help manage Linode Object Storage. This guide explains how to install and use the following options:
+
+-   The [Linode Cloud Manager](#cloud-manager) can be used to create buckets (you are currently not able to upload objects to a bucket from the Cloud Manager).
+
+-   The [Linode CLI](#linode-cli) has an Object Storage plugin and can be used to create and remove buckets, add and remove objects, and convert a bucket into a static site from the command line.
+
+-   [s3cmd](#s3cmd) is another powerful command line utility that can be used with any S3-compatible object storage service, including Linode's. s3cmd has all the abilities of the Object Storage plugin for the Linode-CLI, plus other functions like syncing entire directories up to a bucket.
+
+-   [Cyberduck](#cyberduck) is a graphical utility available for Windows and macOS and is a great option if you prefer a GUI tool.
 
 ## Cloud Manager
 
@@ -69,35 +94,37 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
 1.  If you have not already, log in the [Linode Cloud Manager](https://cloud.linode.com).
 
-1.  Click on **Object Storage** in the sidebar links.
+1.  Click on the **Object Storage** link in the sidebar.
 
     ![The Object Storage menu.](object-storage-add-a-bucket.png)
 
-1.  Click on **Add a Bucket**. The **Create a Bucket** menu appears.
+1.  Click on **Add a Bucket**. The **Create a Bucket** menu will appear.
 
     ![The Create a Bucket menu.](object-storage-create-a-bucket.png)
 
-1.  Add a label for your bucket. Bucket labels need to be unique within the cluster. If the label of your bucket is already in use, you will have to choose a different label.
+1.  Add a label for your bucket. A bucket's label need to be unique within the cluster that it lives in, and this includes buckets of the same name on different Linode accounts. If the label you enter is already in use, you will have to choose a different label.
 
-1.  Choose a cluster for the bucket to reside in.
+1.  Choose a cluster location for the bucket to reside in.
 
-1.  Click **Submit**.
-
-You are now ready to upload objects to your bucket.
+1.  Click **Submit**. You are now ready to upload objects to your bucket using one of the other tools outlined in this guide.
 
 ## Linode CLI
 
-The Linode Command Line Interface (CLI) is a command line utility that allows you complete control over your Linode account. With the Object Storage plugin you can create and remove buckets, upload objects, and more.
+The Linode Command Line Interface (CLI) is a command line utility that allows you complete control over your Linode account. With the Object Storage plugin, you can also create and remove buckets, upload objects, and more.
 
-### Install and Configure
+### Install and Configure the CLI
 
 1.  Download the Linode CLI, or, if you have already downloaded it, make sure it has been upgraded to the latest version:
 
         pip install linode-cli --upgrade
 
-1.  Download the Object Storage plugin for the Linode CLI by [clicking on this link](http://alpha.linodeobjects.com/lnl-demo/cli_plugin_internal_obj-1.0.4-py2.py3-none-any.whl?Signature=Ua2KJFkXw50XwISDl%2BLIOLffSlQ%3D&Expires=1555914280&AWSAccessKeyId=4X9DR4N2LFRROT8EUS6H).
+1.  Download the Object Storage plugin for the CLI:
 
-1.  Navigate to the directory where the plugin has been downloaded, and install the Object Storage plugin:
+        wget -O cli_plugin_internal_obj-1.0.4-py2.py3-none-any.whl http://alpha.linodeobjects.com/lnl-demo/cli_plugin_internal_obj-1.0.4-py2.py3-none-any.whl\?Signature\=Ua2KJFkXw50XwISDl%2BLIOLffSlQ%3D\&Expires\=1555914280\&AWSAccessKeyId\=4X9DR4N2LFRROT8EUS6H
+
+    Alternatively, you can [click on this link](http://alpha.linodeobjects.com/lnl-demo/cli_plugin_internal_obj-1.0.4-py2.py3-none-any.whl?Signature=Ua2KJFkXw50XwISDl%2BLIOLffSlQ%3D&Expires=1555914280&AWSAccessKeyId=4X9DR4N2LFRROT8EUS6H).
+
+1.  In the same directory that you downloaded the plugin to, install the Object Storage plugin:
 
         pip install cli_plugin_internal_obj-1.0.4-py2.py3-none-any.whl
 
@@ -111,9 +138,9 @@ The Linode Command Line Interface (CLI) is a command line utility that allows yo
 
     You will be prompted to enter in your Object Storage access key and secret key. Once you've entered your credentials, you will be ready to create buckets and upload objects.
 
-### Create a Bucket
+### Create a Bucket with the CLI
 
-To create a bucket with the Linode CLI, issue the `mb` command. Bucket names need to be unique within the cluster. If the name of your bucket is already in use, you will have to choose a different name:
+To create a bucket with the Linode CLI, issue the `mb` command. Bucket names need to be unique within the same cluster, including buckets on other Linode accounts. If the name of your bucket is already in use, you will have to choose a different name:
 
     linode-cli obj mb my-example-bucket
 
@@ -121,13 +148,15 @@ To delete a bucket, issue the `rb` command:
 
     linode-cli obj rb my-example-bucket
 
-### Upload, Download, and Delete an Object
+If your bucket has objects in it, you will not be able to immediately delete it from the Linode CLI. Instead, remove the objects first, then delete the bucket. The s3cmd tool has commands for deleting all objects from a bucket, and it can also force-delete a bucket with objects in it.
+
+### Upload, Download, and Delete an Object with the CLI
 
 1.  As an example object, create a text file and fill it with some example text.
 
         echo 'Hello World!' > example.txt
 
-1.  To upload an object to a bucket using the Linode CLI, issue the `put` command by supplying the object name as the first parameter and the bucket name as the second:
+1.  To upload an object to a bucket using the Linode CLI, issue the `put` command. Supply the object name as the first parameter and the bucket name as the second:
 
         linode-cli obj put --acl-public example.txt my-example-bucket
 
@@ -141,25 +170,35 @@ For instance, if you want to make a public file private, you would supply the `-
     linode-cli obj setacl --acl-private my-example-bucket example.txt
 {{</ note >}}
 
-1.  To download an object, issue the `get` command by supplying the name of the bucket as the first parameter and the name of the file as the second:
+1.  To download an object, issue the `get` command. Supply the name of the bucket as the first parameter and the name of the file as the second:
 
         linode-cli obj get my-example-bucket example.txt
 
-1.  To delete an object, issue the `rm` or `del` command by supplying the name of the bucket as the first parameter and the name of the object as the second:
+1.  To delete an object, issue the `rm` or `del` command. Supply the name of the bucket as the first parameter and the name of the object as the second:
 
         linode-cli obj rm my-example-bucket example.txt
 
-### Create a Static Site
+### Create a Static Site with the CLI
 
-To create a static website from a bucket, issue the `ws-create` command, including the `--ws-index` and `--ws-error` flags:
+To create a static website from a bucket:
 
-    linode-cli obj ws-create my-example-bucket --ws-index=index.html --ws-error=404.html
+1.  Issue the `ws-create` command, including the `--ws-index` and `--ws-error` flags:
 
-The `ws-create` command accepts two flags, `--ws-index` and `--ws-error`, which specify which objects the bucket should use to serve the static site's index page and error page, respectively. Also, note that to access your static site you will need a different URL than generic Object Storage. Static sites are available at the `beta-website` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.beta-website.linodeobjects.com`.
+        linode-cli obj ws-create my-example-bucket --ws-index=index.html --ws-error=404.html
+
+    The `--ws-index` and `--ws-error` flags specify which objects the bucket should use to serve the static site's index page and error page, respectively.
+
+1.  You will need to separately upload the `index.html` and `404.html` files (or however you have named the index and error pages) to your bucket:
+
+        echo 'Index page' > index.html
+        echo 'Error page' > 404.html
+        linode-cli obj put index.html 404.html my-example-bucket
+
+1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `beta-website` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.beta-website.linodeobjects.com`.
 
 For more information on hosting static websites from Linode Object Storage, see our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
-### Other Commands
+### Other CLI Commands
 
 To get a list of all available buckets, issue the `ls` command:
 
@@ -169,16 +208,16 @@ To get a list of all objects in a bucket, issue the `ls` command with the name o
 
     linode-cli obj ls my-example-bucket
 
-For a complete list of commands available with the Object Storage plugin, issue use the `--help` flag:
+For a complete list of commands available with the Object Storage plugin, use the `--help` flag:
 
     linode-cli obj --help
 
 
 ## s3cmd
 
-s3cmd is a command line utility that you can use for any S3 compatible Object Storage.
+s3cmd is a command line utility that you can use for any S3-compatible Object Storage.
 
-### Install and Configure
+### Install and Configure s3cmd
 
 1.  s3cmd can be downloaded using `apt` on Debian and Ubuntu, and [Homebrew](https://brew.sh/) on macOS. To download s3cmd using Homebrew, run the following command:
 
@@ -217,7 +256,7 @@ You will be prompted to agree to the terms and conditions.
 It is not necessary to supply a GPG key when configuring s3cmd, though it will allow you to store and retrieve encrypted files. If you do not wish to configure GPG encryption, you can leave the `Encryption password` and `Path to GPG program` fields blank.
 {{</ note >}}
 
-    When you are done, enter `Y` to save your configuration.
+1.  When you are done, enter `Y` to save your configuration.
 
     {{< note >}}
 s3cmd offers a number of additional configuration options that are not presented as prompts by the `s3cmd --configure` command. One of those options is `website_endpoint`, which instructs s3cmd on how to construct an appropriate URL for a bucket that is hosting a static site, similar to the `S3 Endpoint` in the above configuration. This step is optional, but will ensure that any commands that contain your static site's URL will output the right text. To edit this configuration file, open the `~/s3.cfg` file on your local computer:
@@ -233,9 +272,9 @@ Scroll down until you find the `website_endpoint`, then add the following value:
 
 You are now ready to use s3cmd to create a bucket in Object Storage.
 
-### Create a Bucket
+### Create a Bucket with s3cmd
 
-You can create a bucket with s3cmd issuing the following `mb` command, replacing `my-example-bucket` with the name of the bucket you would like to create. Bucket names must be unique within the cluster. If you choose a name for your bucket that someone else has already created, you will have to choose a different name:
+You can create a bucket with s3cmd issuing the following `mb` command, replacing `my-example-bucket` with the name of the bucket you would like to create. Bucket names need to be unique within the same cluster, including buckets on other Linode accounts. If you choose a name for your bucket that someone else has already created, you will have to choose a different name:
 
     s3cmd mb s3://my-example-bucket
 
@@ -243,7 +282,13 @@ To remove a bucket, you can use the `rb` command:
 
     s3cmd rb s3://my-example-bucket
 
-### Upload, Download, and Delete an Object
+{{< caution >}}
+To delete all files in a bucket, include the `--recursive` (or `-r`) option *and* the `--force` (or `-f`) option. Use caution when using this command:
+
+    s3cmd rb -r -f s3://my-example-bucket/
+{{< /caution >}}
+
+### Upload, Download, and Delete an Object with s3cmd
 
 1.  As an example object, create a text file and fill it with some example text.
 
@@ -263,9 +308,9 @@ If you chose to enable encryption when configuring s3cmd, you can store encrypte
     s3cmd put -e encrypted_example.txt s3://my-example-bucket
 {{</ note >}}
 
-    The object will be uploaded to your bucket, and s3cmd will provide a public URL for the object:
+1.  The object will be uploaded to your bucket, and s3cmd will provide a public URL for the object:
 
-        upload: 'eample.txt' -> 's3://my-example-bucket/example.txt'  [1 of 1]
+        upload: 'example.txt' -> 's3://my-example-bucket/example.txt'  [1 of 1]
         13 of 13   100% in    0s   485.49 B/s  done
         Public URL of the object is: http://beta.linodeobjects.com/my-example-bucket/example.txt
 
@@ -283,7 +328,13 @@ The URL for the object that s3cmd provides is one of two valid ways to access yo
 
 1.  To delete a file, you can issue the `rm` command:
 
-         s3cmd rm example.txt s3://my-example-bucket
+         s3cmd rm s3://my-example-bucket/example.txt
+
+    {{< caution >}}
+To delete all files in a bucket, include the `--recursive` (or `-r`) option. Use caution when using this command:
+
+    s3cmd rm -r s3://my-example-bucket/
+{{< /caution >}}
 
 1.  To list all available buckets, issue the `ls` command:
 
@@ -293,21 +344,33 @@ The URL for the object that s3cmd provides is one of two valid ways to access yo
 
         s3cmd ls s3://my-example-bucket
 
-### Create a Static Site
+### Create a Static Site with s3cmd
 
-You can also create a static website using Object Storage and s3cmd. To create a website from a bucket, issue the `ws-create` command:
+You can also create a static website using Object Storage and s3cmd:
 
-    s3cmd ws-create --ws-index=index.html --ws-error=404.html s3://my-example-bucket
+1.  To create a website from a bucket, issue the `ws-create` command:
 
-The `ws-create` command accepts two flags, `--ws-index` and `--ws-error`, which specify which objects the bucket should use to serve the static site's index page and error page, respectively. Also, note that to access your static site you will need a different URL than generic Object Storage. Static sites are available at the `beta-website` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.beta-website.linodeobjects.com`.
+        s3cmd ws-create --ws-index=index.html --ws-error=404.html s3://my-example-bucket
+
+    The `--ws-index` and `--ws-error` flags specify which objects the bucket should use to serve the static site's index page and error page, respectively.
+
+1.  You will need to separately upload the `index.html` and `404.html` files (or however you have named the index and error pages) to your bucket:
+
+        echo 'Index page' > index.html
+        echo 'Error page' > 404.html
+        s3cmd put index.html 404.html s3://my-example-bucket
+
+1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `beta-website` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.beta-website.linodeobjects.com`.
 
 For more information on hosting a static website with Object Storage, read our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
-### Other Commands
+### Other s3cmd Commands
 
 To upload an entire directory of files, you can use the the `sync` command, which will automatically sync all new or changed files. Navigate to the directory you would like to sync, then enter the following:
 
     s3cmd sync . s3://my-example-bucket -P
+
+This can be useful for uploading the contents of a static site to your bucket.
 
 {{< note >}}
 The period in the above command instructs s3cmd to upload the current directory. If you do not want to first navigate to the directory you wish to upload, you can supply a path to the directory instead of the period.
@@ -315,13 +378,13 @@ The period in the above command instructs s3cmd to upload the current directory.
 
 ## Cyberduck
 
-Cyberduck is a tool that facilitates file transfer over FTP and SFTP, and a number APIs, including S3.
+Cyberduck is a desktop application that facilitates file transfer over FTP, SFTP, and a number of other protocols, including S3.
 
-### Install and Configure
+### Install and Configure Cyberduck
 
-To download Cyberduck, you can [visit their website](https://cyberduck.io/), or you can download it on macOS via [Homebrew](https://brew.sh/):
+1.  To download Cyberduck, you can [visit their website](https://cyberduck.io/), or you can download it on macOS via [Homebrew](https://brew.sh/):
 
-    brew install cyberduck
+        brew install cyberduck
 
 1.  Once you have Cyberduck installed, open the program and click on **Open Connection**.
 
@@ -331,13 +394,13 @@ To download Cyberduck, you can [visit their website](https://cyberduck.io/), or 
 
 1.  For the Server address, enter `beta.linodeobjects.com`.
 
-1.  Enter your access key in the Access Key ID field, and your secret key in the Secret Access Key field.
+1.  Enter your access key in the **Access Key ID** field, and your secret key in the **Secret Access Key** field.
 
 1.  Click **Connect**.
 
 You are now ready to create a bucket in Object Storage.
 
-### Create a Bucket
+### Create a Bucket with Cyberduck
 
 To create a bucket in Cyberduck:
 
@@ -345,11 +408,11 @@ To create a bucket in Cyberduck:
 
     ![Right click or click 'Action', then click 'New Folder'](object-storage-cyberduck-create-bucket.png)
 
-1.  Enter your bucket's name and then click **Create**. Bucket names must be unique within the cluster. If the name of your bucket is already in use, you will have to choose a different name.
+1.  Enter your bucket's name and then click **Create**. Bucket names need to be unique within the same cluster, including buckets on other Linode accounts. If the name of your bucket is already in use, you will have to choose a different name.
 
 To delete the bucket using Cyberduck, right click on the bucket and select **Delete**.
 
-### Upload, Download, and Delete an Object
+### Upload, Download, and Delete an Object with Cyberduck
 
 1.  To upload objects with Cyberduck, you can simply drag and drop the object, or directory of objects, to the bucket you'd like to upload them to, and Cyberduck will do the rest. Alternatively, you can click on the **Action** button and select **Upload** from the menu:
 
@@ -373,9 +436,11 @@ To delete the bucket using Cyberduck, right click on the bucket and select **Del
 
 1.  To delete an object, right click the object name and select **Delete**.
 
-### Create a Static Site
+### Create a Static Site with Cyberduck
 
-1.  To create a static site from your bucket, select a bucket, then right click on that bucket or select the **Action** button at the top of the menu.
+To create a static site from your bucket:
+
+1.  Select a bucket, then right click on that bucket or select the **Action** button at the top of the menu.
 
 1.  Click on **Info**, and then select the **Distribution (CDN)** tab.
 
@@ -383,7 +448,9 @@ To delete the bucket using Cyberduck, right click on the bucket and select **Del
 
     ![Check the box labeled 'Enable Website Configuration (HTTP) Distribution'](object-storage-cyberduck-enable-static-site.png)
 
-    You will now be able to access your bucket as a static site. Note that to access your static site you will need a different URL than generic Object Storage. Static sites are available at the `beta-website` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.beta-website.linodeobjects.com`.
+1.  You will need to separately upload the `index.html` and `404.html` files (or however you have named the index and error pages) to your bucket. Follow the instructions from the [Upload, Download, and Delete an Object with Cyberduck](#upload-download-and-delete-an-object-with-cyberduck) section to upload these files.
+
+1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `beta-website` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.beta-website.linodeobjects.com`.
 
     For more information on hosting a static website with Object Storage, read our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
