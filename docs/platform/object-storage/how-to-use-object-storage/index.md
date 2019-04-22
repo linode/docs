@@ -283,7 +283,7 @@ To remove a bucket, you can use the `rb` command:
     s3cmd rb s3://my-example-bucket
 
 {{< caution >}}
-To delete all files in a bucket, include the `--recursive` (or `-r`) option *and* the `--force` (or `-f`) option. Use caution when using this command:
+To delete a bucket that has files in it, include the `--recursive` (or `-r`) option *and* the `--force` (or `-f`) option. Use caution when using this command:
 
     s3cmd rb -r -f s3://my-example-bucket/
 {{< /caution >}}
@@ -331,9 +331,9 @@ The URL for the object that s3cmd provides is one of two valid ways to access yo
          s3cmd rm s3://my-example-bucket/example.txt
 
     {{< caution >}}
-To delete all files in a bucket, include the `--recursive` (or `-r`) option. Use caution when using this command:
+To delete all files in a bucket, include the `--recursive` (or `-r`) option *and* the `--force` (or `-f`) option. Use caution when using this command:
 
-    s3cmd rm -r s3://my-example-bucket/
+    s3cmd rm -r -f s3://my-example-bucket/
 {{< /caution >}}
 
 1.  To list all available buckets, issue the `ls` command:
