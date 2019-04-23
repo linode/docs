@@ -53,7 +53,7 @@ To create an API token:
 
 8.  Click **Submit**.
 
-Your access token will appear on the screen. Copy this down somewhere safe, as once you click **OK** you will not be able to retreive the token again, and will need to create a new one.
+Your access token will appear on the screen. Copy this down somewhere safe, as once you click **OK** you will not be able to retrieve the token again, and will need to create a new one.
 
 Once you have your API token, it's time to create your secret.
 
@@ -73,7 +73,7 @@ Once you have your API token, it's time to create your secret.
 
     For example, if you want to use the Newark, NJ, USA data center, you would use `us-east` as your region.
 
-1.  Create the secret by piping in the following secret manifest to the `kubectl create` command. Isse the following here document:
+1.  Create the secret by piping in the following secret manifest to the `kubectl create` command. Issue the following here document:
 
         cat <<EOF | kubectl create -f -
 
