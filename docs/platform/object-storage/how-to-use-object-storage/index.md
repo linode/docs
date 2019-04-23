@@ -26,9 +26,9 @@ Additionally, **Object Storage does not require the use of a Linode.** Instead, 
 
 Below you will find instructions on how to connect to Object Storage, and how to upload and access objects:
 
-1.  First, you'll need to [create a *key pair*](#create-an-object-storage-key-pair) to access the service.
+1.  First, you'll need to create a [*key pair*](#object-storage-key-pair) to access the service.
 
-1.  Then, you'll use [choose from a variety of available first-party and third-party tools](#object-storage-tools) to access and use the service.
+1.  Then, you'll use choose from a variety of available [first-party and third-party tools](#object-storage-tools) to access and use the service.
 
 ## Object Storage Key Pair
 
