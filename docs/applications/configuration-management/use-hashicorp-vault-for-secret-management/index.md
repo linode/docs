@@ -36,7 +36,7 @@ Consider a simple application that must use an API token or other secret value. 
 Vault solves these and other problems in a number of ways, including:
 
 - Services and applications that run without operator interaction can authenticate to Vault using values that can be rotated, revoked, and permission-controlled.
-- Some secret engines, such as the [AWS Secret Engine](https://www.vaultproject.io/docs/secrets/aws/index.html), can generate temporary, dynamically-generated secrets to ensure that credentials expire after a period of time.
+- Some [secrets engines](https://www.vaultproject.io/docs/secrets/index.html) can generate temporary, dynamically-generated secrets to ensure that credentials expire after a period of time.
 - Policies for users and machine accounts can be strictly controlled for specific types of access to particular paths.
 
 ## Concepts
