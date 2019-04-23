@@ -116,7 +116,7 @@ Once you have the Block Storage CSI driver installed, you are ready to provision
 
 ## Create a Persistent Volume Claim
 
-A *Persistent Volume Claim* (PVC), is a user generated request for storage. To create a PVC, create a manifest file with the following YAML:
+A *Persistent Volume Claim* (PVC) consumes a Block Storage Volume. To create a PVC, create a manifest file with the following YAML:
 
 {{< file "pvc.yaml" yaml >}}
 apiVersion: v1
