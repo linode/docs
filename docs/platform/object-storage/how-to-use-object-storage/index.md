@@ -102,7 +102,7 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
     ![The Create a Bucket menu.](object-storage-create-a-bucket.png)
 
-1.  Add a label for your bucket. A bucket's label need to be unique within the cluster that it lives in, and this includes buckets of the same name on different Linode accounts. If the label you enter is already in use, you will have to choose a different label.
+1.  Add a label for your bucket. A bucket's label needs to be unique within the cluster that it lives in, and this includes buckets of the same name on different Linode accounts. If the label you enter is already in use, you will have to choose a different label.
 
 1.  Choose a cluster location for the bucket to reside in.
 
