@@ -119,6 +119,7 @@ caddy
 caddyfile
 cakey
 calc
+campione
 captcha
 carootcert
 celeryd
@@ -658,6 +659,7 @@ lambdabunker
 laravel
 largebiomes
 launchd
+livigno
 lbmethod
 lda
 ldap
@@ -715,6 +717,7 @@ lsyncd
 lua
 lubuntu
 lucene
+lugano
 luminus
 lxml
 lzma
@@ -736,6 +739,7 @@ mandriva
 manyof
 mapreduce
 mariadb
+marino
 maskname
 masterdb
 masterless
@@ -754,6 +758,7 @@ md5
 md5sum
 mdev
 mediawiki
+melilla
 memcached
 memcrashed
 menuentry
