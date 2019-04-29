@@ -6,7 +6,7 @@ description: 'This how-to guide shows you how to configure the Vim text editor a
 keywords: ["vim", " editor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-08-21
-modified: 2017-08-22
+modified: 2019-04-17
 modified_by:
   name: 'Linode'
 title: 'Introduction To Vim Customization'
@@ -87,7 +87,7 @@ filetype off
 syntax on
 
 " For plug-ins to load correctly.
-filetype plug-in indent on
+filetype plugin indent on
 
 " Turn off modelines
 set modelines=0

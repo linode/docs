@@ -6,7 +6,7 @@ description: The Linode CLI provides a simplified interface to the Linode API. T
 og_description: The Linode CLI provides a simplified interface to the Linode API. This guide shows how to install the CLI and describes how to perform basic tasks from the command line.
 keywords: ["linode api", "linode cli", "python cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-29
+modified: 2019-03-05
 modified_by:
   name: Linode
 published: 2018-06-29
@@ -30,7 +30,7 @@ The easiest way to install the CLI is through [Pip](https://pypi.org/project/pip
 
         pip install linode-cli --upgrade
 
-1.  You need a Personal Access Token to use the CLI. Use the [beta Linode Manager](https://cloud.linode.com/profile/tokens) to obtain a token.
+1.  You need a Personal Access Token to use the CLI. Use the [Linode Cloud Manager](https://cloud.linode.com/profile/tokens) to obtain a token.
 
 1.  The first time you run any command, you will be prompted with the CLI's configuration script. Paste your access token (which will then be used by default for all requests made through the CLI) at the prompt. You will be prompted to choose defaults for Linodes created through the CLI (region, type, and image). These are optional, and can be overridden for individual commands. Update these defaults at any time by running `linode-cli configure`:
 
@@ -115,6 +115,7 @@ ap-south	sg
 eu-central	de
 ap-northeast	jp
 ap-northeast-1a	jp
+ca-east         ca
 {{< /highlight >}}
 
     linode-cli regions list --text --delimiter ";"
@@ -130,6 +131,7 @@ ap-south;sg
 eu-central;de
 ap-northeast;jp
 ap-northeast-1a;jp
+ca-east;ca
 {{< /highlight >}}
 
 ## Examples
