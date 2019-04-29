@@ -6,7 +6,7 @@ description: The Linode CLI provides a simplified interface to the Linode API. T
 og_description: The Linode CLI provides a simplified interface to the Linode API. This guide shows how to install the CLI and describes how to perform basic tasks from the command line.
 keywords: ["linode api", "linode cli", "python cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-29
+modified: 2019-03-05
 modified_by:
   name: Linode
 published: 2018-06-29
@@ -115,6 +115,7 @@ ap-south	sg
 eu-central	de
 ap-northeast	jp
 ap-northeast-1a	jp
+ca-east         ca
 {{< /highlight >}}
 
     linode-cli regions list --text --delimiter ";"
@@ -130,6 +131,7 @@ ap-south;sg
 eu-central;de
 ap-northeast;jp
 ap-northeast-1a;jp
+ca-east;ca
 {{< /highlight >}}
 
 ## Examples

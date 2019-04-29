@@ -7,7 +7,7 @@ description: 'This guide will help you set up your first Linode.'
 og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['getting-started-new-manager/']
-modified: 2019-03-05
+modified: 2019-03-08
 modified_by:
   name: Linode
 published: 2018-11-05
@@ -43,7 +43,7 @@ If you haven't already signed up for a Linode account, start here.
 
 ## Create a Linode
 
-![Create a Linode by selecting the image, the region, the plan, and creating a label and a password.](create-a-linode.gif)
+![Create a Linode by selecting the image, the region, the plan, and creating a label and a password.](getting-started.gif)
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
 
