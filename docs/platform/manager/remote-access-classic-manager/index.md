@@ -12,6 +12,7 @@ modified_by:
 published: 2016-08-23
 title: Remote Access
 cloud_manager_link: platform/manager/remote-access/
+hiddenguide: true
 ---
 
 The Remote Access section of the Linode Manager contains important network settings for your Linode. Use this tab to find your IP address, set the reverse DNS, configure IP failover, and swap IP addresses with another Linode. You can also access the Linode Shell (Lish) console to remotely connect to your Linode and troubleshoot problems.
