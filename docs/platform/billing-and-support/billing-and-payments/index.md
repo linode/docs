@@ -41,7 +41,7 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 
 ### High Memory Plans
 
-| Service      | Hourly Rate | Monthly | Backups Hourly Rate | Backups Monthly
+| Service      | Hourly Rate | Monthly Cap | Backups Hourly Rate | Backups Monthly
 |:-------------|:------------|:--------|:--------------------|:---------------
 | Linode 24GB  | $0.09/hr    | $60/mo  | $0.0075/hr          | $5/mo
 | Linode 48GB  | $0.18/hr    | $120/mo | $0.015/hr           | $10/mo
@@ -88,6 +88,10 @@ Here, you can keep track of your outstanding balance. In the example above, the 
 You may receive a mid-month bill from Linode if you reach a certain threshold of Linode services used within a single month. For many users, this amount will be **$50.00**, although your account history with Linode can adjust that amount. In general, a history of on-time payments to Linode will increase the threshold amount.
 
 What does a mid-month bill mean? Your existing active services will stay active. However, you must pay the mid-month bill before you can activate additional Linode services. Once your payment is processed, you may continue adding new services.
+
+## Tax Information
+
+Review our [Tax Information](/docs/platform/billing-and-support/tax-information/) guide for information about which taxes Linode may charge.
 
 ## If My Linode is Powered Off, Will I Be Billed?
 
