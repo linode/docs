@@ -172,11 +172,15 @@ Storage Volumes **cannot** be sized down, only up. Keep this in mind when sizing
 
         umount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
-1.  Assuming you have an ext2, ext3, or ext4 partition, resize it to fill the new Volume size:
+1.  Assuming you have an ext2, ext3, or ext4 partition,first run a file system check:  
+
+	    e2fsck -f /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
+	    
+1.  Then resize it to fill the new Volume size:
 
         resize2fs /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
-1.  Mount it back onto the filesystem:
+1.  Mount your volume back onto the filesystem:
 
         mount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1 /mnt/BlockStorage1
 
