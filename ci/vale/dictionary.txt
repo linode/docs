@@ -132,6 +132,7 @@ certcheck
 cfg
 cgi
 cgroup
+cgroupfs
 chainable
 changelog
 changelogs
