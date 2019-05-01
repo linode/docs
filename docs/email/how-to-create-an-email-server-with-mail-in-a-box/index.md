@@ -63,7 +63,7 @@ Make sure you select Ubuntu 18.04 as the *Operating System* (OS), as starting wi
 
 ## Configure Your Domain Name
 
-You'll have to check with your registrar, the company where you've registered your domain name with, to see how you can change your nameservers, and add glue records. Either search for this information on Google, the site's knowledge base, or ask their support to help you.
+You'll have to check with your registrar, the company where you've registered your domain name with, to see how you can change your nameservers and add glue records. Either search for this information on Google, the site's knowledge base, or ask their support to help you.
 
 Here's what you'll need to do:
 
@@ -77,7 +77,7 @@ Here's what you'll need to do:
         ns1.box.example.com 203.0.113.1
         ns2.box.example.com 203.0.113.1
 
-You might have noticed you're using the same IP in both entries. There are a few registrars that have a problem with this, so in case you're unlucky, you won't be able to save these settings and will have to contact their support team. Alternatively, you can skip using your box as a DNS host, and keep your registrar's DNS host. You will find all the needed records in the **System -> External DNS** tab of the administration console, once you've completed installation.
+You might have noticed you're using the same IP in both entries. There are a few registrars that have a problem with this, so you may not be able to save these settings and will have to contact their support team. Alternatively, you can skip using your box as a DNS host, and keep your registrar's DNS host. You will find all the needed records in the **System -> External DNS** tab of the administration console, once you've completed installation.
 
 Also note that some registrars may only require you to enter `ns1.box` as they autocomplete the rest of your hostname, `.example.com`. Carefully examine the page to see which variant you should use.
 
@@ -93,7 +93,7 @@ You should see your nameservers at the end of the output:
     example.com.		300	IN	NS	ns2.box.example.com.
     dig: couldn't get address for 'ns1.box.example.com': no more
 
-At this point you can continue. If you don't see the required data, then come back later and check - again. If after one hour it's still missing, then contact your registrar's support team.
+At this point you can continue. If you don't see the required data, then come back later and check again. If after one hour it's still missing, then contact your registrar's support team.
 
 ## Install Mail-in-a-Box
 
@@ -185,10 +185,10 @@ Since it's very likely that a Let's Encrypt TLS certificate hasn't been installe
 
     ![Control Panel - TLS Certificates Page](mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
 
-3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/networking/dns/configure-your-linode-for-reverse-dns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam, will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
+3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/networking/dns/configure-your-linode-for-reverse-dns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam and will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
 
 ## Conclusion
 
-As you can see, it's very convenient when everything for an email server is packaged in one place, and automagically configured. But convenience often has a price. Mail-in-a-box's centralization - that makes it easy to manage everything - also creates a single point of failure. There is a safety net though: email servers are intelligent enough to retry sending you their data for a few days, in case your server is unavailable.
+As you can see, it's very convenient when everything for an email server is packaged in one place and automatically configured. But convenience often has a price. Mail-in-a-box's centralization - that makes it easy to manage everything - also creates a single point of failure. There is a safety net though: email servers are intelligent enough to retry sending you their data for a few days, in case your server is unavailable.
 
-But if you can't afford the delay, you should look at ways to make your setup more reliable. A beginner friendly approach is to set up a monitoring system that will notify you quickly in case of problems. Later on, you can look into secondary (slave) nameservers, secondary MX entries, cloning and syncing Mail-in-a-Box machines, so they can take over in case of failure, and floating IPs.
+If you can't afford the delay, you should look at ways to make your setup more reliable. A beginner friendly approach is to set up a monitoring system that will notify you quickly in case of problems. Later on, you can look into secondary (slave) nameservers, secondary MX entries, cloning and syncing Mail-in-a-Box machines, and floating IPs.
