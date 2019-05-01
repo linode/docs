@@ -131,6 +131,7 @@ certbot
 certcheck
 cfg
 cgi
+cgroup
 chainable
 changelog
 changelogs
@@ -181,6 +182,7 @@ config
 configs
 configtest
 configurability
+containerd
 containerised
 convolutional
 cookstyle

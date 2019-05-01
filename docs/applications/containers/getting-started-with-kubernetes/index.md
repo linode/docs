@@ -5,7 +5,7 @@ author:
 description: 'Use kubeadm to deploy a cluster on Linode and get started with Kubernetes.'
 keywords: ['kubernetes','orchestration','docker','container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-04-300
+published: 2019-04-30
 modified: 2019-04-30
 modified_by:
   name: Linode
@@ -143,7 +143,7 @@ Complete the steps outlined in this section on all three Linodes.
 
         sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 
-1. Add the required GPG key to your apt-sources keyring to authenticate the Kubernetes related packges you will install:
+1. Add the required GPG key to your apt-sources keyring to authenticate the Kubernetes related packages you will install:
 
         curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
@@ -230,7 +230,7 @@ kubeadm join 192.0.2.0:6443 --token udb8fn.nih6n1f1aijmbnx5 \
 
 ### Inspect the Master Node with Kubectl
 
-After completing the previous section, your Kubernetes master node is ready with all the necessary components to manage a cluster. To gain a better understanding of all the parts that make up the master's control plane, this section will walk you through inspecting your master node. If you have not yet reviewed the [A Beginner's Guide to Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/), it will be helpful to do so prior to continuing with this section as it relies on the understanding of basic Kubernetes concepts.
+After completing the previous section, your Kubernetes master node is ready with all the necessary components to manage a cluster. To gain a better understanding of all the parts that make up the master's control plane, this section will walk you through inspecting your master node. If you have not yet reviewed the A Beginner's Guide to Kubernetes, it will be helpful to do so prior to continuing with this section as it relies on the understanding of basic Kubernetes concepts.
 
 1. View the current state of all nodes in your cluster. At this stage, the only node you should expect to see is the master node, since worker nodes have yet to be bootstrapped. A `STATUS` of `Ready` indicates that the master node contains all necessary components, including the pod network add-on, to start managing clusters.
 
