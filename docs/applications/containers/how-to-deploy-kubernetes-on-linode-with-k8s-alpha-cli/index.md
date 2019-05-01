@@ -21,11 +21,11 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 ## What is the k8s-alpha CLI?
 
-The Linode [k8s-alpha CLI](https://developers.linode.com/kubernetes/) is a plugin for the [Linode CLI](https://github.com/linode/linode-cli) that offers quick, single-command deployments of Kubernetes clusters on your Linode account. When you have it installed, creating a cluster can be as simple as the following command:
+The Linode [k8s-alpha CLI](https://developers.linode.com/kubernetes/) is a plugin for the [Linode CLI](https://github.com/linode/linode-cli) that offers quick, single-command deployments of Kubernetes clusters on your Linode account. When you have it installed, creating a cluster can be as simple as:
 
     linode-cli k8s-alpha create example-cluster
 
-The clusters that it creates are pre-configured with useful Linode integrations, like our [CCM](https://github.com/linode/linode-cloud-controller-manager), [CSI](https://github.com/linode/linode-blockstorage-csi-driver), and [ExternalDNS](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md) plugins. Nodes in your clusters will also be labeled with the Linode Region and Linode Type, which can also be used by Kubernetes controllers for the purposes of scheduling pods.
+The clusters that it creates are pre-configured with useful Linode integrations, like our [CCM](https://github.com/linode/linode-cloud-controller-manager), [CSI](https://github.com/linode/linode-blockstorage-csi-driver), and [ExternalDNS](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md) plugins. As well, the Kubernetes [metrics-server](https://github.com/kubernetes-incubator/metrics-server) is pre-installed, so you can run `kubectl top`. Nodes in your clusters will also be labeled with the Linode Region and Linode Type, which can also be used by Kubernetes controllers for the purposes of scheduling pods.
 
 {{< disclosure-note "What are Linode's CCM, CSI, and ExternalDNS plugins?" >}}
 The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Controller Manager), [CSI](https://github.com/linode/linode-blockstorage-csi-driver) (Container Storage Interface), and [ExternalDNS](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md) plugins are Kubernetes addons published by Linode. You can use them to create NodeBalancers, Block Storage Volumes, and DNS records through your Kubernetes manifests.
