@@ -31,9 +31,7 @@ This guide will show you how to clone one of your Linode’s existing [disks and
 
 1.  Under **Select Linode to Clone From**, click on the Linode you wish to clone.
 
-1.  Select the region for the clone.
-
-1.  Select the plan for the clone.
+1.  Select the region and plan for the clone.
 
   {{< note >}}
 You will not be able to choose a plan for your clone that is smaller than the plan of the Linode you are cloning. For example, a 2GB Linode can not be cloned into a 1GB Nanode.
