@@ -46,5 +46,5 @@ You will not be able to choose a plan for your clone that is smaller than the pl
 1. While your Linode is being cloned, your new clone will appear on the Linodes page in a powered off state. Once the cloning process is complete you will need to manually power on your new Linode.
 
   {{< note >}}
-You may want to swap your IP address from the Linode you originally created to your cloned Linode in order to have your clone function over the network without making any configuration changes. To complete this, you'd just need to follow this [guide](/docs/platform/manager/remote-access/#swapping-ip-addresses).  
-{{</ note >}}
+You may want to swap your IP address from the Linode you originally created to your cloned Linode in order to have your clone function over the network without making any configuration changes. To complete this, you'd just need to follow this [guide](/docs/platform/manager/remote-access/#swapping-ip-addresses).
+{{</ note >}}"
