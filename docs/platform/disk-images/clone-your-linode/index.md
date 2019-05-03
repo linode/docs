@@ -29,7 +29,7 @@ This guide will show you how to clone one of your Linode’s existing [disks and
 
     ![Select the 'Clone from Existing' tab to clone an existing Linode.](clone-linode-menu.png)
 
-1. Under **Select Linode to Clone From**, click on the Linode you wish to clone.
+1. Under **Select Linode to Clone From**,click on the Linode you wish to clone.
 
 1. Select the region and plan for the clone.
 
