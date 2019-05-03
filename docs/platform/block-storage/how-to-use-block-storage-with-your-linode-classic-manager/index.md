@@ -143,6 +143,24 @@ Storage volumes **cannot** be sized down, only up. Keep this in mind when sizing
 
         mount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1 /mnt/BlockStorage1
 
+## How to Transfer a Volume to a New Linode
+
+1. Follow the steps to safely detach your volume as mentioned [above]
+(#how-to-detach-a-block-storage-volume-from-a-linode).
+
+1.  Select the label of the Linode you want to attach the volume to. Then click **Attach**:
+
+    [![Linode Manager add volume](bs-volume-attach-small.png)](bs-volume-attach.png)
+
+1.   The Volume already has a filesystem on it, so we just need to create a mountpoint for the new Linode, provided it hasn't already been created:
+
+        mkdir /mnt/BlockStorage1
+
+1.   Mount the new Volume, where FILE_SYSTEM_PATH is your Volume’s file system path:
+
+        FILE_SYSTEM_PATH /mnt/BlockStorage1
+
+
 ## Where to Go From Here?
 
 Need ideas for what to do with space? We have several guides which walk you through installing software that would make a great pairing with large storage volumes:
