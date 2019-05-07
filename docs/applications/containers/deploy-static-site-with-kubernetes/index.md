@@ -5,8 +5,8 @@ author:
 description: 'This guide will show you how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy the container image on a Kubernetes cluster running on Linode'
 keywords: ['kubernetes','docker','docker hub','hugo', 'static site']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-05-01
-modified: 2019-05-01
+published: 2019-05-07
+modified: 2019-05-07
 modified_by:
   name: Linode
 title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
@@ -111,18 +111,17 @@ You can now begin to add content to your Hugo site. In this section you will add
     {{< file "/home/username/example-site/content/posts/my-first-post.md" >}}
 ---
 title: "My First Post"
-date: 2019-04-11T11:25:11-04:00
+date: 2019-05-07T11:25:11-04:00
 draft: false
 ---
 
-# Host a Static Site on Linode Object Storage
+# Kubernetes Objects
 
-There are many benefits to using a static site generator. Here is a list of a few of them:
+In Kubernetes, there are a number of objects that are abstractions of your Kubernetes system’s desired state. These objects represent your application, its networking, and disk resources – all of which together form your application. Kubernetes objects can describe:
 
-- Run your own website without having to manage a Linode.
-- You don't need to worry about running a web server like Apache or NGINX.
-- Static website performance is typically very fast.
-- Use Git to version control your static website's content.
+- Which containerized applications are running on the cluster
+- Application resources
+- Policies that should be applied to the application
 {{</ file >}}
 
     {{< disclosure-note "About front matter" >}}
