@@ -20,6 +20,7 @@ allmasquerade
 amavis
 amavisd
 amd64
+ananke
 anonymize
 anonymizing
 ansible

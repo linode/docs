@@ -304,7 +304,7 @@ In this section, you will create namespace, deployment, and service manifest fil
 
 ### Create the Namespace
 
-[Namespaces](Link to Beginner's Guide to Kubernetes) provide a powerful way to logically partition your Kubernetes cluster and isolate components and resources to avoid collisions across the cluster. A common use-case is to encapsulate dev/testing/production environments with namespaces so that they can each utilize the same resource names across each stage of development.
+Namespaces provide a powerful way to logically partition your Kubernetes cluster and isolate components and resources to avoid collisions across the cluster. A common use-case is to encapsulate dev/testing/production environments with namespaces so that they can each utilize the same resource names across each stage of development.
 
 Namespaces add a layer of complexity to a cluster that may not always be necessary. It is important to keep this in mind when formulating the architecture for a project's application. This example will create a namespace for demonstration purposes, but it is not a requirement. One situation where a namespace would be beneficial, in the context of this guide, would be if you were a developer and wanted to manage Hugo sites for several clients with a single Kubernetes cluster.
 
@@ -349,7 +349,7 @@ The service will group together all pods for the Hugo site, expose the same port
 The Hugo site's service manifest file will use the NodePort method to get external traffic to the Hugo site service. NodePort opens a specific port on all the Nodes and any traffic that is sent to this port is forwarded to the service. Kubernetes will choose the port to open on the nodes if you do not provide one in your service manifest file. It is recommended to let Kubernetes handle the assignment. Kubernetes will choose a port in the default range, `30000-32767`.
 
 {{< note >}}
-The k8s-alpha CLI creates clusters that are pre-configured with useful Linode service integrations, like the Linode Cloud Controller Manager (CCM) which provides acces to Linode's load balancer service, [NodeBalancers](https://www.linode.com/nodebalancers). In order to use Linode's NodeBalancers, you can use the [LoadBalancer service type](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), instead of NodePort, in your Hugo site's service maniest file. See the [link to CCM guide]() guide for more details.
+The k8s-alpha CLI creates clusters that are pre-configured with useful Linode service integrations, like the Linode Cloud Controller Manager (CCM) which provides access to Linode's load balancer service, [NodeBalancers](https://www.linode.com/nodebalancers). In order to use Linode's NodeBalancers, you can use the [LoadBalancer service type](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), instead of NodePort, in your Hugo site's service manifest file. See the [link to CCM guide]() guide for more details.
 {{</ note >}}
 
 1. Create the manifest file for your service with the following content.
@@ -390,7 +390,7 @@ hugo-site   NodePort   10.108.110.6   <none>        80:30304/TCP   1d
 
 ### Create the Deployment
 
-A deployment is a controller that helps manage the state of your pods. The Hugo site deployment will define how many pods shoud be kept up and running with the Hugo site service and which container image should be used.
+A deployment is a controller that helps manage the state of your pods. The Hugo site deployment will define how many pods should be kept up and running with the Hugo site service and which container image should be used.
 
 1. Create the manifest file for your Hugo site's deployment. Copy the following contents to your file.
 
