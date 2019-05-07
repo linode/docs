@@ -9,7 +9,7 @@ published: 2019-05-01
 modified: 2019-05-01
 modified_by:
   name: Linode
-title: "Create and Deploy Docker Container Images on Kubernetes"
+title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
 contributor:
   name: Linode
 ---
