@@ -23,7 +23,7 @@ Linode offers several pathways for users to easily deploy a Kubernetes cluster. 
 
 {{< note >}}
 This guide's example instructions will result in the creation of three billable Linodes. Information on how to tear down the Linodes are provided at the end of the guide. Interacting with the Linodes via the command line will provide the most opportunity for learning, however, this guide is written so that users can also benefit by reading along.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -33,6 +33,10 @@ This guide's example instructions will result in the creation of three billable 
     - Two Linodes to use as the Worker Nodes each with 1GB RAM and 1 CPU core.
 
 1. Follow the [Getting Started](/docs/getting-started) and the [Securing Your Server](/docs/security/securing-your-server/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
+
+{{< note >}}
+When following the [Getting Started](/docs/getting-started) guide, make sure that each Linode is using a different hostname. Not following this guideline will leave you unable to join some or all nodes to the cluster in a later step.
+{{< /note >}}
 
 1. Disable swap memory on your Linodes. Kubernetes requires that you disable swap memory on any cluster nodes to prevent the Kubernetes scheduler (kube-scheduler) from ever sending a pod to a node that has run out of CPU/memory or reached its designated CPU/memory limit.
 
@@ -111,7 +115,7 @@ After entering the `usermod` command, you will need to close your SSH session an
 
 1.  Check that the installation was successful by running the built-in "Hello World" program:
 
-        docker run hello-world
+        sudo docker run hello-world
 
 1. Setup the Docker daemon to use [systemd](/docs/quick-answers/linux-essentials/what-is-systemd/) as the cgroup driver, instead of the default cgroupfs. This is a recommended step so that Kubelet and Docker are both using the same cgroup manager. This will make it easier for Kubernetes to know which resources are available on your cluster's nodes.
 
