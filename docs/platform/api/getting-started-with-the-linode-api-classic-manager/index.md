@@ -12,7 +12,7 @@ modified_by:
 published: 2018-04-03
 title: Getting Started with the Linode API
 external_resources:
-  - '[API Documentation](https://developers.linode.com/v4/introduction)'
+  - '[API Documentation](https://developers.linode.com/api/v4/)'
   - '[Linode CLI](https://github.com/linode/linode-cli)'
   - '[Linode API Python Library](https://github.com/linode/python-linode-api)'
 cloud_manager_link: platform/api/getting-started-with-the-linode-api/
@@ -35,10 +35,10 @@ This guide will help you get set up to run this example. Note that if you run th
 
 Only authorized users can add Linodes and make changes to your account, and each request must be authenticated with an access token.
 
-The easiest way to get a token is through the [beta Linode Manager](https://cloud.linode.com).
+The easiest way to get a token is through the [Linode Cloud Manager](https://cloud.linode.com).
 
   {{< note >}}
-If you are building an application which will need to authenticate multiple users (for example, a custom interface to Linode's infrastructure for your organization), you can set up an [OAuth authentication flow](https://developers.linode.com/v4/access) to generate tokens for each user.
+If you are building an application which will need to authenticate multiple users (for example, a custom interface to Linode's infrastructure for your organization), you can set up an [OAuth authentication flow](https://developers.linode.com/api/v4/) to generate tokens for each user.
 {{< /note >}}
 
 ### Create an API Token
@@ -133,7 +133,7 @@ If you prefer a smaller number of items per page, you can override the default v
 
 ### Filter Results
 
-The API also supports filtering lists of results. Filters are passed using the `X-Filter` header and use JSON format. You can filter on almost any field that appears in a response object and the [API documentation](https://developers.linode.com/v4/introduction) specifies which fields are filterable.
+The API also supports filtering lists of results. Filters are passed using the `X-Filter` header and use JSON format. You can filter on almost any field that appears in a response object and the [API documentation](https://developers.linode.com/api/v4/) specifies which fields are filterable.
 
 The following query uses the `deprecated` and `vendor` fields to return all current Debian images:
 
@@ -177,4 +177,4 @@ More complex searches are possible through the use of logical operators. Use `or
 
     curl https://api.linode.com/v4/images/ -H "{"+or": [{"vendor":"Debian"}, {"vendor":"Ubuntu"}]}"
 
-See the [Linode API documentation](https://developers.linode.com/v4/filtering) for a full list of supported operators.
+See the [Linode API documentation](https://developers.linode.com/api/v4/) for a full list of supported operators.
