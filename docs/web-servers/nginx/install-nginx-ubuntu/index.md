@@ -32,7 +32,7 @@ Currently, the best way to install NGINX on Ubuntu 18.04 is to use the version i
 
 ### Add Basic Site
 
-NGINX site-specific configuration files are kept in `/etc/nginx/sites-available` and symlinked into  `/etc/nginx/sites-enabled/`. Generally you will want to create a separate original file in the `sites-available` directory for each domain or subdomain you will be hosting, which have a symlink in the `sites-enabled` directory.
+NGINX site-specific configuration files are kept in `/etc/nginx/sites-available` and symlinked into  `/etc/nginx/sites-enabled/`. Generally you will want to create a separate original file in the `sites-available` directory for each domain or subdomain you will be hosting, and then set up a symlink in the `sites-enabled` directory.
 
 1.  Copy the default configuration file. Replace `example.com` with your website's domain name or your Linode's public IP address.
 
