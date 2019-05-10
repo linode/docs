@@ -15,19 +15,33 @@ external_resources:
 - '[Container Storage Interface (CSI) Spec](https://github.com/container-storage-interface/spec/blob/master/spec.md)'
 ---
 
-The [Linode Block Storage Container Storage Interface (CSI) driver](https://github.com/linode/linode-blockstorage-csi-driver) allows container orchestration systems like Kubernetes to use Block Storage Volumes to persist data. A [Block Storage Volume](https://www.linode.com/docs/platform/block-storage/) is a storage volume that can be attached to any Linode to provide additional storage. In the case of the CSI, this feature is necessary for some applications like databases, object stores, or file stores, that have data that should persist despite a Pod's lifecycle.
+## What is the Linode Block Storage CSI Driver?
 
-The Block Storage CSI is automatically installed for you when installing Kubernetes via the Linode CLI or the [Linode Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.1). This guide will show you how to manually install the Block Storage CSI.
+The [Container Storage Interface](https://github.com/container-storage-interface/spec/blob/master/spec.md) (CSI) defines a standard that storage providers can use to expose block and file storage systems to container orchestration systems. Linode's Block Storage CSI driver follows this specification to allow container orchestration systems, like Kubernetes, to use [Block Storage Volumes](https://www.linode.com/docs/platform/block-storage/) to persist data despite a Pod's lifecycle. A Block Storage Volume can be attached to any Linode to provide additional storage.
 
 ## Before You Begin
 
-This guide assumes you have a working Kubernetes installation.
+- This guide assumes you have a working Kubernetes cluster running on Linode. You can deploy a Kubernetes cluster on Linode in the following ways:
 
-The Block Storage CSI only works with Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
+    1. Use [Linode's k8s-alpha CLI]() to deploy a Kubernetes cluster via the command line.
 
-    kubectl version
+    1. Deploy a cluster using Terraform and the [Linode Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.1).
 
-## Create a Kubernetes Secret
+    1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode ]() guide to do this.
+
+    {{< note >}}
+  - If using the k8s-alpha CLI or the Linode Kubernetes Terraform installer methods to deploy a cluster, you can skip the [Installing the CSI Driver](#installing-the-csi-driver) section of this guide, since it will be automatically installed when you deploy a cluster.
+
+    Move on to the [Attach a Pod to the Persistent Volume Claim]() section to learn how to consume a Block Storage volume as part of your deployment.
+
+    {{</ note >}}
+
+- The Block Storage CSI supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
+
+        kubectl version
+
+## Installing the CSI Driver
+### Create a Kubernetes Secret
 
 A secret in Kubernetes is any token, password, or credential that you want Kubernetes to store for you. In the case of the Block Storage CSI, you'll want to store an API token, and for convenience, the region you would like your Block Storage Volume to be placed in.
 
@@ -39,19 +53,19 @@ To create an API token:
 
 1.  Log into the [Linode Cloud Manager](https://cloud.linode.com).
 
-2.  Navigate to your account profile by clicking on your username at the top of the page and selecting **My Profile**. On mobile screen resolutions, this link is in the sidebar navigation.
+1.  Navigate to your account profile by clicking on your username at the top of the page and selecting **My Profile**. On mobile screen resolutions, this link is in the sidebar navigation.
 
-3.  Click on the **API Tokens** tab.
+1.  Click on the **API Tokens** tab.
 
-4.  Click on **Add a Personal Access Token**. The *Add Personal Access Token* menu appears.
+1.  Click on **Add a Personal Access Token**. The *Add Personal Access Token* menu appears.
 
-5.  Provide a label for the token. This is how you will reference your token within the Cloud Manager.
+1.  Provide a label for the token. This is how you will reference your token within the Cloud Manager.
 
-6.  Set an expiration date for the token with the **Expiry** dropdown.
+1.  Set an expiration date for the token with the **Expiry** dropdown.
 
-7.  Set your permissions for the token. You will need Read/Write access for Volumes, and Read/Write access for Linodes.
+1.  Set your permissions for the token. You will need Read/Write access for Volumes, and Read/Write access for Linodes.
 
-8.  Click **Submit**.
+1.  Click **Submit**.
 
 Your access token will appear on the screen. Copy this down somewhere safe, as once you click **OK** you will not be able to retrieve the token again, and will need to create a new one.
 
@@ -104,7 +118,7 @@ You should see output similar to the following:
 
 You are now ready to install the Block Storage CSI driver.
 
-## Install the Block Storage CSI Driver
+### Apply CSI Driver to your Cluster
 
 To install the Block Storage CSI driver, use the `apply` command and specify the following URL:
 
@@ -115,6 +129,12 @@ The above file concatenates a few files needed to run the Block Storage CSI driv
 Once you have the Block Storage CSI driver installed, you are ready to provision a Persistent Volume Claim.
 
 ## Create a Persistent Volume Claim
+
+{{< caution >}}
+The instructions in this section will create a Block Storage volume billable resource on your Linode account. A single volume can range from 10 GiB to 10,000 GiB in size and costs $0.10/GiB per month or $0.00015/GiB per hour. If you do not want to keep using the Block Storage volume that you create, be sure to delete it when you have finished the guide.
+
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+{{</ caution >}}
 
 A *Persistent Volume Claim* (PVC) consumes a Block Storage Volume. To create a PVC, create a manifest file with the following YAML:
 
@@ -183,7 +203,7 @@ spec:
         claimName: pvc-example
 {{</ file >}}
 
-    This Pod will run the `owncloud/server` Docker container. Because ownCloud stores its files in the `/mnt/data/files` directory, this `owncloud-pod.yaml` manifest instructs the ownCloud container to create a mount point at that file path for your PVC.
+    This Pod will run the `owncloud/server` Docker container image. Because ownCloud stores its files in the `/mnt/data/files` directory, this `owncloud-pod.yaml` manifest instructs the ownCloud container to create a mount point at that file path for your PVC.
 
     In the `volumes` section of the `owncloud-pod.yaml`, it is important to set the `claimName` to the exact name you've given your PersistentVolumeClaim in its manifest's metadata. In this case, the name is `pvc-example`.
 
@@ -228,6 +248,12 @@ spec:
     targetPort: 8080
   type: NodePort
 {{</ file >}}
+
+    {{< note >}}
+The service manifest file will use the `NodePort` method to get external traffic to the ownCloud service. NodePort opens a specific port on all cluster Nodes and any traffic that is sent to this port is forwarded to the service. Kubernetes will choose the port to open on the nodes if you do not provide one in your service manifest file. It is recommended to let Kubernetes handle the assignment. Kubernetes will choose a port in the default range, `30000-32767`.
+
+Alternatively, you could use the `LoadBalancer` service type, instead of NodePort, which will create Linode NodeBalancers that will direct traffic to the ownCloud Pods. Linode's Cloud Controller Manager (CCM) is responsible for provisioning the Linode NodeBalancers. For more details, see the [Kubernetes Cloud Controller Manager for Linode](https://github.com/linode/linode-cloud-controller-manager/blob/master/README.md) repository.
+    {{</ note >}}
 
 1.  Create the service in Kubernetes by using the `create` command and passing in the `owncloud-service.yaml` file you created in the previous step:
 
@@ -283,8 +309,23 @@ spec:
 
         kubectl delete pod owncloud
 
-        kubectl create -f owncloud.yaml
+        kubectl create -f owncloud-pod.yaml
 
     Once your Pod has finished provisioning you can log back in to ownCloud and view the file you previously uploaded.
 
-You have successfully create a Block Storage Volume tied to a Persistent Volume Claim and have mounted it with a container in a Pod.
+You have successfully
+You have successfully created a Block Storage Volume tied to a Persistent Volume Claim and have mounted it with a container in a Pod.
+
+## Delete a Persistent Volume Claim
+
+To delete the Block Storage volume created in this guide:
+
+1. First, delete the ownCloud Pod:
+
+        kubectl delete pods owncloud
+
+1.  Then, delete the persistent volume claim:
+
+        kubectl delete pvc pvc-example
+
+- To delete your
