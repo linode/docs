@@ -231,7 +231,7 @@ row = 0
     The **Headlines** variable is a list of titles for the columns in the spreadsheet. The **row** variable tracks the current spreadsheet
 row.
 
-2.  Use `xlswriter` to open a workbook and add a worksheet to receive the data.
+2.  Use `xlsxwriter` to open a workbook and add a worksheet to receive the data.
 
     {{< file "craigslist.py" python >}}
 workbook = xlsxwriter.Workbook('motorcycle.xlsx')
