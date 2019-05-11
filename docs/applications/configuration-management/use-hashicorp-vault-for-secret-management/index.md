@@ -64,7 +64,7 @@ The configuration outlined in this guide is suitable for small deployments. In s
 
 ### Before you Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running a recent Linux distribution (such as Ubuntu 18.04 or CentOS 7), including setting the hostname and timezone.
+1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode and set the hostname and timezone.
 
     {{< note >}}
 Setting the full hostname correctly in `/etc/hosts` is important in this guide in order to terminate TLS on Vault correctly. Your Linode's fully-qualified name and short hostname should be present in the `/etc/hosts` file before continuing.
@@ -72,10 +72,10 @@ Setting the full hostname correctly in `/etc/hosts` is important in this guide i
 
 2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-3.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall (UFW) on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over for the rest of this guide.
+3.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall on your system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over for the rest of this guide.
 
     {{< note >}}
-By default, most firewalls permit ssh access (port 22) by default. The HTTP port (80) will need to be open (at least temporarily) for Let's Encrypt requests to succeed.
+By default, most firewalls permit ssh access on port 22 by default. The HTTP port, 80, will need to be open (at least temporarily) for Let's Encrypt requests to succeed.
 {{< /note >}}
 
     {{< note >}}
@@ -142,7 +142,7 @@ gpg:               imported: 1
 {{</ output >}}
 
     {{< note >}}
-If an error occurs with the error message `keyserver receive failed: Syntax error in URI`, simply try re-running the `gpg` command again.
+If an error occurs with the error message `keyserver receive failed: Syntax error in URI`, simply try rerunning the `gpg` command again.
 {{< /note >}}
 
     {{< note >}}
@@ -325,7 +325,7 @@ At this stage, Vault is installed and running, but not yet _initialized_. The fo
 
 There are two configurable options to choose when performing the initialization step. The first value is the number of key shares which controls the total number of unseal keys that Vault will generate. The second value is the key threshold, which controls how many of these unseal key shares are required before Vault will successfully unseal itself. Unsealing is required whenever Vault is restarted or otherwise brought online after being in a previously offline state.
 
-To illustrate this concept, consider a secure server in a datacenter. Because the Vault database is only decrypted in-memory, stealing or bringing the server offline for any reason will leave the only copy of Vault's database on the filesystem in encrypted form, or "sealed".
+To illustrate this concept, consider a secure server in a data center. Because the Vault database is only decrypted in-memory, stealing or bringing the server offline for any reason will leave the only copy of Vault's database on the filesystem in encrypted form, or "sealed".
 
 When starting the server again, a key share of 3 and key threshold of 2 means that 3 keys exist, but at least 2 must be provided at startup for Vault to derive its decryption key and load its database into memory for access once again.
 
