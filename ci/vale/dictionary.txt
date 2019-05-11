@@ -181,6 +181,7 @@ config
 configs
 configtest
 configurability
+containerd
 containerised
 convolutional
 cookstyle
@@ -198,6 +199,7 @@ craigslist
 crashingdaily
 createdt
 createfromstackscript
+cri
 cron
 crond
 cronie
@@ -398,6 +400,7 @@ foodcritic
 fortran
 fpm
 fragging
+frakti
 framesets
 freedns
 friendster
@@ -1088,6 +1091,7 @@ releasever
 remi
 remmina
 remotehost
+replicaset
 replset
 repo
 repos
