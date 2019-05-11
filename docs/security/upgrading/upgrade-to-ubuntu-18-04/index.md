@@ -103,13 +103,13 @@ Prompt=lts
 
 {{< /file >}}
 
-3.  You're now ready to begin the upgrade to Ubuntu 18.04 LTS. Since Ubuntu encourages upgrades for LTS distributions to `.1` (like `18.04.1`), use the `-d` option to force it to recognize the new version:
+1.  You're now ready to begin the upgrade to Ubuntu 18.04 LTS.
 
-        do-release-upgrade -d
+        do-release-upgrade
 
     Follow the on-screen instructions to complete the installation process.
 
-4.  Because Linode offers internal package mirrors for Ubuntu, you may see some combination of the following messages:
+2.  Because Linode offers internal package mirrors for Ubuntu, you may see some combination of the following messages:
 
     * **No valid mirror found**
 
