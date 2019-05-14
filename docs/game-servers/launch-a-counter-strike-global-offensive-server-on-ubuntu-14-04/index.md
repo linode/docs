@@ -6,15 +6,16 @@ description: 'This Counter Strike: Global Offensive (CS:GO) server guide contain
 keywords: ["counter strike", "counter strike global offensive", "csgo", "cs:go", "csgo server", "csgo server hosting", " steam servers", "game servers", "games", "ubuntu", "ubuntu 14.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-25
-modified: 2019-02-01
 modified_by:
     name: Linode
 title: 'Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 14.04'
 contributor:
     name: Sam Mauldin
-aliases: ['applications/game-servers/csgo-server-debian-ubuntu/','applications/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/']
+aliases: ['applications/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/']
 external_resources:
- - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
+  - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
+deprecated: true
+deprecated_link: 'game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04/'
 dedicated_cpu_link: true
 ---
 
@@ -164,4 +165,4 @@ These settings are changed in the launch command.
 
 ### RCON
 
-When logged into the server, you can open the RCON console with the backtick button (<code>`</code>), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/docs/game-servers/team-fortress2-on-debian-and-ubuntu/#rcon).
+When logged into the server, you can open the RCON console with the backtick button (`` ` ``), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/docs/game-servers/team-fortress2-on-debian-and-ubuntu/#rcon).

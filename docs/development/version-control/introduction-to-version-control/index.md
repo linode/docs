@@ -36,7 +36,7 @@ Version control (also referred to as *revision control* or *source control*) is 
 
 Version control is also a great tool for individuals who need to work on the same files at the same time. With version control, they can *check out* the repository and then *commit* the changes when they're finished. If two individuals have modified the same file, the version control system can usually *merge* the changes, unless there's a *conflict*, in which case the user will need to manually combine the changes or favor one change over the other.
 
-Version control also makes it easy to track changes. You can see who committed code, and why. And if you start working on a new version of your website or application, you can *branch* a copy of your code to a separate area. (The branch can later be modified back into the *truck*.) In short, version control is cheap insurance against human errors and unforeseeable disasters. You should be using it!
+Version control also makes it easy to track changes. You can see who committed code, and why. And if you start working on a new version of your website or application, you can *branch* a copy of your code to a separate area. (The branch can later be modified back into the *trunk*.) In short, version control is cheap insurance against human errors and unforeseeable disasters. You should be using it!
 
 ### Evaluating Version Control Systems
 

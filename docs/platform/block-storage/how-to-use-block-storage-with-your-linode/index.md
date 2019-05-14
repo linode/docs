@@ -70,6 +70,19 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
         FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2
 
+
+    {{< note >}}
+If you plan on detaching the volume regularly or moving it between other Linodes, you may want to consider adding the flags `noatime` and `nofail` to the **/etc/fstab** entry.
+
+* `noatime` - This will save space and time by preventing writes made to the filesystem for data being read on the volume.
+*  `nofail`  - If the volume is not attached, this will allow your server to boot/reboot normally without hanging at dependency failures if the volume is not attached.
+
+Example:
+
+    FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults,noatime,nofail 0 2
+
+    {{</ note >}}
+
 ### Attach a Volume from Your Account's Volume List
 
 1.  Click on the **Volumes** link in the sidebar to see your account's Volume list:
@@ -172,11 +185,15 @@ Storage Volumes **cannot** be sized down, only up. Keep this in mind when sizing
 
         umount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
-1.  Assuming you have an ext2, ext3, or ext4 partition, resize it to fill the new Volume size:
+1.  Assuming you have an ext2, ext3, or ext4 partition,first run a file system check:
+
+        e2fsck -f /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
+
+1.  Then resize it to fill the new Volume size:
 
         resize2fs /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
-1.  Mount it back onto the filesystem:
+1.  Mount your volume back onto the filesystem:
 
         mount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1 /mnt/BlockStorage1
 

@@ -133,7 +133,7 @@ server {
 
     -  NGINX is listening on port `80` for incoming connections to `example.com` or `www.example.com`.
 
-    -  The site is served out of `/var/www/html/example.com/public_html` and its index page (`index.html`) is a simple `.html` file. If your index page will use PHP like WordPress does, substitute `index.html` for `index.php`.
+    -  The site is served out of `/var/www/html/example.com/public_html` and its index page (`index.html`) is a simple `.html` file. **If your index page will use PHP like WordPress does, substitute `index.html` for `index.php`.**
 
     -  `try_files` tells NGINX to verify that a requested file or directory [actually exists](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files) in the site's root filesystem before further processing the request. If it does not, a `404` is returned.
 

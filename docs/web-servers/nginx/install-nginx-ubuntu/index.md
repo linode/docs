@@ -32,41 +32,35 @@ Currently, the best way to install NGINX on Ubuntu 18.04 is to use the version i
 
 ### Add Basic Site
 
-NGINX site-specific configuration files are kept in `/etc/nginx/conf.d/`. Generally you will want a separate file in this directory for each domain or subdomain you will be hosting.
+NGINX site-specific configuration files are kept in `/etc/nginx/sites-available` and symlinked into  `/etc/nginx/sites-enabled/`. Generally you will want to create a separate original file in the `sites-available` directory for each domain or subdomain you will be hosting, and then set up a symlink in the `sites-enabled` directory.
 
 1.  Copy the default configuration file. Replace `example.com` with your website's domain name or your Linode's public IP address.
 
-        sudo cp /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/example.com.conf
+        sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/example.com
 
-2.  Disable the default configuration file by adding `.disabled` to the filename:
+2.  Disable the default configuration file by removing the symlink in `/etc/nginx/sites-enabled/`:
 
-        sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
+        unlink /etc/nginx/sites-enabled/default
 
 3.  Open your site's configuration file in a text editor. Replace `example.com` in the `server_name` directive with your site's domain name or IP address. If you already have content ready to serve (such as a WordPress installation or static files) replace the path in the `root` directive with the path to your site's content:
 
-    {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
+    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 server {
     listen       80;
-    server_name  example.com;
+    server_name  example.com
 
-    #charset koi8-r;
-    #access_log  /var/log/nginx/host.access.log  main;
+        root /var/www/example.com;
+        index index.html;
 
-    location / {
-        root   /usr/share/nginx/html;
-        index  index.html index.htm;
-    }
-
-    #error_page  404              /404.html;
-
-    # redirect server error pages to the static page /50x.html
-    #
-    error_page   500 502 503 504  /50x.html;
-    location = /50x.html {
-        root   /usr/share/nginx/html;
-    }
+        location / {
+                try_files $uri $uri/ =404;
+      }
 }
 {{< /file >}}
+
+4.   Set up a new symlink to the `/etc/nginx/sites-enabled/` directory to enable your configuration:
+
+        sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 
 ### Test NGINX
 
