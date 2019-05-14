@@ -187,7 +187,7 @@ The example Hugo site was initialized as a local Git repository in the previous 
 
         git status
 
-1. Stage all your files to be comitted:
+1. Stage all your files to be committed:
 
         git add -A
 
