@@ -27,6 +27,10 @@ This guide will show you how to package a Hugo static site in a Docker container
 
 Hugo is written in [Go](https://golang.org/) and is known for being extremely fast to compile sites, even very large ones. It is well-supported, [well-documented](https://gohugo.io/documentation/), and has an [active community](https://discourse.gohugo.io/). Some useful Hugo features include [*shortcodes*](https://gohugo.io/content-management/shortcodes/), which are an easy way to include predefined templates inside of your Markdown, and built-in [*LiveReload*](https://gohugo.io/getting-started/usage/#livereload) web server, which allows you to preview your site changes locally as you make them.
 
+{{< note >}}
+This guide was written using version 1.14 of Kubectl.
+{{< /note >}}
+
 ## Before You Begin
 
 1. Create a Kubernetes cluster with one worker node. This can be done in two ways:
@@ -211,6 +215,7 @@ A Dockerfile contains the steps needed to build a Docker image. The Docker image
 FROM ubuntu:latest as HUGOINSTALL
 
 # Install Hugo.
+RUN apt-get update
 RUN apt-get install hugo
 
 # Copy the contents of the current working directory to the hugo-site
@@ -231,7 +236,7 @@ COPY --from=HUGOINSTALL /hugo-site/public/ /usr/share/nginx/html/
 EXPOSE 80
     {{</ file >}}
 
-1. Add a `.dockerignore` file to your Hugo repository. It is important to ensure that your images are as small as possible to reduce the tame it takes to build, pull, push and deploy the container. The `.dockerignore` file excludes files and directories that are not necessary for the function of your container or that may contain sensitive information that you do not want to included in the image. Since the Docker image will build the static Hugo site files, you can ignore the `public/` directory. You can also exclude any Git related files and directories because they are not needed on the running container.
+1. Add a `.dockerignore` file to your Hugo repository. It is important to ensure that your images are as small as possible to reduce the time it takes to build, pull, push and deploy the container. The `.dockerignore` file excludes files and directories that are not necessary for the function of your container or that may contain sensitive information that you do not want to included in the image. Since the Docker image will build the static Hugo site files, you can ignore the `public/` directory. You can also exclude any Git related files and directories because they are not needed on the running container.
 
         echo -e "public/\n.git/\n.gitmodules/\n.gitignore" >> .dockerignore
 
@@ -309,7 +314,7 @@ Namespaces add a layer of complexity to a cluster that may not always be necessa
 
 1. Create a directory to store your Hugo site's manifest files.
 
-        mkdir clientx/k8s-hugo/
+        mkdir -p clientx/k8s-hugo/
 
 1. Create the manifest file for your Hugo site's namespace with the following content:
 
@@ -357,8 +362,8 @@ The k8s-alpha CLI creates clusters that are pre-configured with useful Linode se
 apiVersion: v1
 kind: Service
 metadata:
-  name: hugo-site
-  namespace: clientx-hugo-site
+  name: :hugo-site
+  namespace: hugo-site
 spec:
   selector:
     app: hugo-site
@@ -394,13 +399,16 @@ A deployment is a controller that helps manage the state of your pods. The Hugo 
 1. Create the manifest file for your Hugo site's deployment. Copy the following contents to your file.
 
       {{< file "clientx/k8s-hugo/deployment.yaml">}}
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hugo-site
-  namespace: clientx-hugo-site
+  namespace: hugo-site
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: hugo-site
   template:
     metadata:
       labels:
@@ -423,7 +431,7 @@ spec:
 
 1. Create the deployment for your hugo site:
 
-        kubectl create -f clientx/k8s-hugo/deployment-hugo.yaml
+        kubectl create -f clientx/k8s-hugo/deployment.yaml
 
 1. View the Hugo site's deployment:
 
