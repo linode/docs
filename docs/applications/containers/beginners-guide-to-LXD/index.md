@@ -186,9 +186,9 @@ Would you like to create a new local network bridge? (yes/no) [default=yes]:
 What should the new bridge be called? [default=lxdbr0]:
 What IPv4 address should be used? (CIDR subnet notation, “auto” or “none”) [default=auto]:
 What IPv6 address should be used? (CIDR subnet notation, “auto” or “none”) [default=auto]:
-Would you like LXD to be available over the network? (yes/no) [default=no]: 
+Would you like LXD to be available over the network? (yes/no) [default=no]:
 Would you like stale cached images to be updated automatically? (yes/no) [default=yes]
-Would you like a YAML "lxd init" preseed to be printed? (yes/no) [default=no]: 
+Would you like a YAML "lxd init" preseed to be printed? (yes/no) [default=no]:
 {{< /output >}}
 
 ## Apache Web Server with LXD
@@ -285,7 +285,7 @@ The first two columns for the alias and fingerprint provide an identifier that c
 {{< /note >}}
 The output snippet shows the container images Ubuntu versions 18.04 LTS, 18.10 and 19.04. When creating a container we can just specify the short alias. For example, `ubuntu:b` means that the repository is `ubuntu` and the container image has the short alias `b` (for _bionic_, the codename of Ubuntu 18.04 LTS).
 
-*  Get more information about a container image: 
+*  Get more information about a container image:
 
         sudo lxc image info ubuntu:b
 
@@ -386,7 +386,7 @@ The `sudo` command provides a login to the existing account `ubuntu`.
         sudo lxc delete mycontainer
 
     {{< note >}}
-A container needs to first be stopped, before it gets deleted. 
+A container needs to first be stopped, before it gets deleted.
 {{< /note >}}
 
 ## Troubleshooting
@@ -427,4 +427,4 @@ In this example, we are members of the `lxd` group and we just need to log out a
 
 ## Next Steps
 
-If you plan to use a single website, then a single proxy device to the website container will suffice. If you plan to use multiple websites, you may install virtual hosts inside the website container. If, instead you would like to setup multiple websites on their own container, then you will need to set up [a reverse proxy](https://www.linode.com/docs/web-servers/nginx/use-nginx-reverse-proxy/) in a container. In that case, the proxy device would direct to the reverse proxy container to direct the connections to the individual websites containers. 
+If you plan to use a single website, then a single proxy device to the website container will suffice. If you plan to use multiple websites, you may install virtual hosts inside the website container. If, instead you would like to setup multiple websites on their own container, then you will need to set up [a reverse proxy](https://www.linode.com/docs/web-servers/nginx/use-nginx-reverse-proxy/) in a container. In that case, the proxy device would direct to the reverse proxy container to direct the connections to the individual websites containers.
