@@ -89,6 +89,7 @@ berkshelf
 binlog
 biomes
 bitbucket
+bitnami
 bitrate
 blocklists
 blockwise
@@ -619,6 +620,7 @@ jpg
 jre
 js
 json
+jsonpath
 julialang
 jumpbox
 jupyter
@@ -914,6 +916,7 @@ oftc
 ohai
 ok
 oldstable
+oldfashioned
 oneof
 ons
 opencart
