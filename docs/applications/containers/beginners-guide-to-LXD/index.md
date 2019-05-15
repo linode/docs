@@ -401,7 +401,7 @@ When you run any `lxc` command, you get the following error:
 Error: Get http://unix.socket/1.0: dial unix /var/snap/lxd/common/lxd/unix.socket: connect: connection refused
 {{< /output >}}
 
-This happens when the LXD service is not currently running. By default, the LXD service is running as soon as it is configured succesfully. See [Initialize LXD](#initialize-lxd) to configure LXD.
+This happens when the LXD service is not currently running. By default, the LXD service is running as soon as it is configured successfully. See [Initialize LXD](#initialize-lxd) to configure LXD.
 
 ### Error "unix.socket: connect: permission denied"
 
