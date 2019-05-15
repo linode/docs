@@ -51,7 +51,7 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 LXD is available as a Debian package in the long-term support (LTS) versions of Ubuntu, such as Ubuntu 18.04 LTS. For other versions of Ubuntu and other distributions, LXD is available as a snap package. Snap packages are universal packages because there is a single package file that works on any supported Linux distributions. See the [More Information](#more-information) section for more details on what a snap package is, what Linux distributions are supported, and how to set it up.
 
-1.  Verify that snap support is successfully installed. The following command either shows that there are no snap packages installed, or that some are.
+1.  Verify that snap support is installed correctly. The following command either shows that there are no snap packages installed, or that some are.
 
         snap list
 
@@ -221,7 +221,7 @@ This section will create a container, install the Apache web server, and add the
 
         exit
 
-7.  Add a LXD **proxy device** to redirect connections from the internet to port 80 (HTTP) on the server to port 80 at this container. 
+7.  Add a LXD **proxy device** to redirect connections from the internet to port 80 (HTTP) on the server to port 80 at this container.
 
         sudo lxc config device add web myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:localhost:80
 
