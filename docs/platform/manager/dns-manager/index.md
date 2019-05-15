@@ -22,6 +22,10 @@ The *Domains* section of the Linode Cloud Manager is a comprehensive DNS managem
 Linode's DNS service employs [Cloudflare](https://cloudflare.com) to provide denial of service (DDoS) mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/networking/dns/dns-records-an-introduction/#name-servers). These factors make our service reliable, fast, and a great choice for your DNS needs.
 {{</ note>}}
 
+{{< note >}}
+To use the Linode DNS Manager to serve your domains you must have an active Linode on your account. If you remove all active Linodes your domains will no longer be served.
+{{</ note >}}
+
 ## Getting Started
 
 The Domain Name System (DNS) attaches human-readable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`. This global system allows users to remember the names of websites instead of their numeric IP addresses.
