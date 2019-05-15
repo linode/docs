@@ -44,7 +44,7 @@ The components of a Kubernetes application--deployments, services, ingresses, an
 |---------------------|-------------|
 | [Chart.yaml](https://helm.sh/docs/developing_charts/#the-chart-yaml-file) | General information about the chart, including the chart name, a version number, and a description. |
 | [LICENSE](https://helm.sh/docs/developing_charts/#chart-license-readme-and-notes) | A plain-text file with licensing information for the chart and for the applications installed by the chart. *Optional*. |
-| [README.md](https://helm.sh/docs/developing_charts/#chart-license-readme-and-notes) | A Markdown file with instructions that a user of a chart may want to know when installing and and using the chart, including a description of the app that the chart installs and the template values that can be set by the user. *Optional*. |
+| [README.md](https://helm.sh/docs/developing_charts/#chart-license-readme-and-notes) | A Markdown file with instructions that a user of a chart may want to know when installing and using the chart, including a description of the app that the chart installs and the template values that can be set by the user. *Optional*. |
 | [requirements.yaml](https://helm.sh/docs/developing_charts/#managing-dependencies-with-requirements-yaml) | A listing of the charts that this chart depends on. This list will specify the chart name version number for each dependency, as well as the repository URL that the chart can be retrieved from. *Optional*. |
 | [values.yaml](https://helm.sh/docs/developing_charts/#values-files) | Default values for the variables in your manifests' templates. |
 | [charts/](https://helm.sh/docs/developing_charts/#managing-dependencies-manually-via-the-charts-directory) | A directory which stores chart dependencies that you manually copy into your project, instead of linking to them from the `requirements.yaml` file. |
@@ -149,7 +149,7 @@ serviceaccount "tiller" created
 clusterrolebinding "tiller" created
 {{< /output >}}
 
-1.  Initalize Tiller on the cluster:
+1.  Initialize Tiller on the cluster:
 
         helm init --service-account tiller --history-max 200
 
@@ -223,7 +223,7 @@ If you don't own a domain name and won't continue to use the Ghost website after
 
         helm install -f ghost-config.yaml stable/ghost
 
-1.  The `install` command returns immediately and does not wait until the app's cluster objects are ready. You will see output like the following snippet, which shows that the app's pods are still in the Pending state. The text displayed is generated from the contents of the chart's `templates/NOTES.txt` file:
+1.  The `install` command returns immediately and does not wait until the app's cluster objects are ready. You will see output like the following snippet, which shows that the app's pods are still in the "Pending" state. The text displayed is generated from the contents of the chart's `templates/NOTES.txt` file:
 
     {{< disclosure-note "Full output of helm install" >}}
     NAME:   oldfashioned-cricket
@@ -294,7 +294,7 @@ If you don't own a domain name and won't continue to use the Ghost website after
 
 ### Access your App
 
-1.  Run the `helm status` command again and observe the Service section:
+1.  Run the `helm status` command again and observe the "Service" section:
 
         ==> v1/Service
         NAME                TYPE          CLUSTER-IP      EXTERNAL-IP     PORT(S)       AGE
@@ -323,7 +323,7 @@ If you don't own a domain name and won't continue to use the Ghost website after
 
         echo Password: $(kubectl get secret --namespace default oldfashioned-cricket-ghost -o jsonpath="{.data.ghost-password}" | base64 --decode)
 
-1.  You haven't yet set up DNS for your site yet, but you can instead access the admin interface by visiting the `ghost` URL on your LoadBalancer IP address (e.g. `http://104.237.148.15/ghost`). Visit this page in your browser and then enter your email and password. You should be granted access to the administrative interface.
+1.  You haven't set up DNS for your site yet, but you can instead access the admin interface by visiting the `ghost` URL on your LoadBalancer IP address (e.g. `http://104.237.148.15/ghost`). Visit this page in your browser and then enter your email and password. You should be granted access to the administrative interface.
 
 1.  Set up DNS for your app. You can do this by creating an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) guide for instructions.
 
@@ -347,7 +347,7 @@ ghostBlogTitle: Example Site Name
 
 Upgrades (and even deletions) can be rolled back if something goes wrong:
 
-1.  Run the `helm ls` command and observe the number under the REVISION column for your release:
+1.  Run the `helm ls` command and observe the number under the "REVISION" column for your release:
 
         NAME      	REVISION	UPDATED                 	STATUS  	CHART      	APP VERSION	NAMESPACE
         oldfashioned-cricket	2       	Tue Apr 16 10:02:58 2019	DEPLOYED	ghost-6.7.7	2.19.4     	default
