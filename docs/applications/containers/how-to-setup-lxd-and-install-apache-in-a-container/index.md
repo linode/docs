@@ -3,23 +3,24 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'LXD is a container hypervisor that manages Linux Containers. Compared to other uses of Linux Containers, LXD manages system containers which each work just like typical servers. This guide shows how to install and setup LXD 3, run an Apache Web server in a system container and expose it to the Internet.'
-keywords: ["container", "lxd", "lxc", "apache", "virtual machine"]
+keywords: ["container", "lxd", "lxc", "apache", "virtual machine", "virtualization"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-1
 modified: 2019-05-1
 modified_by:
   name: Linode
-title: 'How to Install LXD and Setup an Apache Webserver in a container'
+title: "A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container"
 contributor:
   name: Simos Xenitellis
   link: https://blog.simos.info/
 external_resources:
-  - '[What are the snap packages](https://docs.snapcraft.io/getting-started/3876)'
+  - '[What are snap packages](https://docs.snapcraft.io/getting-started/3876)'
   - '[Installing snapd](https://docs.snapcraft.io/installing-snapd/6735)'
   - '[LXD Introduction](https://linuxcontainers.org/lxd/)'
   - '[Blog post series on LXD 2.0](https://stgraber.org/2016/03/11/lxd-2-0-blog-post-series-012/)'
   - '[LXD support community](https://discuss.linuxcontainers.org/)'
   - '[Try LXD Online](https://linuxcontainers.org/lxd/try-it/)'
+  - '[NGINX Reverse Proxy Settings](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
 ---
 
 ![Access an Apache Web Server Inside a LXD Container](apache-lxd-banner-image.jpg)
@@ -46,11 +47,11 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
         sudo apt update && sudo apt upgrade
 
-## Configure the snap package support
+## Configure the Snap Package Support
 
-LXD is available as a Debian package in the long-term support (LTS) versions of Ubuntu, such as Ubuntu 18.04 LTS. For other versions of Ubuntu and other distributions, LXD is available as a snap package. Snap packages are universal packages because there is a single package file that works on any supported Linux distributions. See the [More Information](#more-information) for more details on what is a snap package, what Linux distributions are supported and how to setup.
+LXD is available as a Debian package in the long-term support (LTS) versions of Ubuntu, such as Ubuntu 18.04 LTS. For other versions of Ubuntu and other distributions, LXD is available as a snap package. Snap packages are universal packages because there is a single package file that works on any supported Linux distributions. See the [More Information](#more-information) section for more details on what a snap package is, what Linux distributions are supported, and how to set it up.
 
-1.  Verify that snap support is successfully installed. The following command either shows that there are no snap packages installed, or that some are installed. 
+1.  Verify that snap support is successfully installed. The following command either shows that there are no snap packages installed, or that some are.
 
         snap list
 
@@ -70,47 +71,47 @@ contact:   https://github.com/lxc/lxd/issues
 license:   Apache-2.0
 description: |
   **LXD is a system container manager**
-  
+
   With LXD you can run hundreds of containers of a variety of Linux
   distributions, apply resource limits, pass in directories, USB devices
   or GPUs and setup any network and storage you want.
-  
+
   LXD containers are lightweight, secure by default and a great
   alternative to running Linux virtual machines.
-  
-  
+
+
   **Run any Linux distribution you want**
-  
+
   Pre-made images are available for Ubuntu, Alpine Linux, ArchLinux,
   CentOS, Debian, Fedora, Gentoo, OpenSUSE and more.
-  
+
   A full list of available images can be [found
   here](https://images.linuxcontainers.org)
-  
+
   Can't find the distribution you want? It's easy to make your own images
   too, either using our `distrobuilder` tool or by assembling your own image
   tarball by hand.
-  
-  
+
+
   **Containers at scale**
-  
+
   LXD is network aware and all interactions go through a simple REST API,
   making it possible to remotely interact with containers on remote
   systems, copying and moving them as you wish.
-  
+
   Want to go big? LXD also has built-in clustering support,
   letting you turn dozens of servers into one big LXD server.
-  
-  
+
+
   **Configuration options**
-  
+
   Supported options for the LXD snap (`snap set lxd KEY=VALUE`):
    - criu.enable: Enable experimental live-migration support [default=false]
    - daemon.debug: Increases logging to debug level [default=false]
    - daemon.group: Group of users that can interact with LXD [default=lxd]
    - ceph.builtin: Use snap-specific ceph configuration [default=false]
    - openvswitch.builtin: Run a snap-specific OVS daemon [default=false]
-  
+
   [Documentation](https://lxd.readthedocs.io)
 snap-id: J60k4JY0HppjwOjW8dZdYc8obXKxujRu
 channels:
@@ -136,7 +137,7 @@ channels:
 lxd 3.12 from Canonical✓ installed
 {{< /output >}}
 
-You can verify that the snap package has been installed by running `snap list` again. The `core` snap package is a prerequisite for any system with snap package support. When you install your first snap package, `core` is installed and shared among all other snap packages that will get installed in the future. 
+You can verify that the snap package has been installed by running `snap list` again. The `core` snap package is a prerequisite for any system with snap package support. When you install your first snap package, `core` is installed and shared among all other snap packages that will get installed in the future.
 
         snap list
 
@@ -155,7 +156,7 @@ lxd   3.12     10601  stable    canonical✓  -
 
 2.  Start a new SSH session for this change to take effect. For example, log out and log in again.
 
-3.  Verify the available free disk space: 
+3.  Verify the available free disk space:
 
         df -h /
 
@@ -163,40 +164,77 @@ lxd   3.12     10601  stable    canonical✓  -
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda         49G  2.0G   45G   5% /
 {{< /output >}}
-In this case there are 45GB of free disk space. LXD requires at least 15GB of space for the storage needs of containers. We will allocate 15GB of space for LXD, leaving 30GB of free space for the needs server. 
+In this case there are 45GB of free disk space. LXD requires at least 15GB of space for the storage needs of containers. We will allocate 15GB of space for LXD, leaving 30GB of free space for the needs server.
 
 4.  Run `lxd init` to initialize LXD:
 
         sudo lxd init
 
-    You will be prompted several times during the initialization process. Choose the defaults for all options. 
+    You will be prompted several times during the initialization process. Choose the defaults for all options.
 
-        sudo lxd init
 
     {{< output >}}
 Would you like to use LXD clustering? (yes/no) [default=no]:
-Do you want to configure a new storage pool? (yes/no) [default=yes]: 
-Name of the new storage pool [default=default]: 
-Name of the storage backend to use (btrfs, ceph, dir, lvm, zfs) [default=zfs]: 
-Create a new ZFS pool? (yes/no) [default=yes]: 
-Would you like to use an existing block device? (yes/no) [default=no]: 
+Do you want to configure a new storage pool? (yes/no) [default=yes]:
+Name of the new storage pool [default=default]:
+Name of the storage backend to use (btrfs, ceph, dir, lvm, zfs) [default=zfs]:
+Create a new ZFS pool? (yes/no) [default=yes]:
+Would you like to use an existing block device? (yes/no) [default=no]:
 Size in GB of the new loop device (1GB minimum) [default=15GB]:
-Would you like to connect to a MAAS server? (yes/no) [default=no]: 
-Would you like to create a new local network bridge? (yes/no) [default=yes]: 
-What should the new bridge be called? [default=lxdbr0]: 
-What IPv4 address should be used? (CIDR subnet notation, “auto” or “none”) [default=auto]: 
-What IPv6 address should be used? (CIDR subnet notation, “auto” or “none”) [default=auto]: 
+Would you like to connect to a MAAS server? (yes/no) [default=no]:
+Would you like to create a new local network bridge? (yes/no) [default=yes]:
+What should the new bridge be called? [default=lxdbr0]:
+What IPv4 address should be used? (CIDR subnet notation, “auto” or “none”) [default=auto]:
+What IPv6 address should be used? (CIDR subnet notation, “auto” or “none”) [default=auto]:
 Would you like LXD to be available over the network? (yes/no) [default=no]: 
-Would you like stale cached images to be updated automatically? (yes/no) [default=yes] 
+Would you like stale cached images to be updated automatically? (yes/no) [default=yes]
 Would you like a YAML "lxd init" preseed to be printed? (yes/no) [default=no]: 
 {{< /output >}}
+
+## Apache Web Server with LXD
+
+This section will create a container, install the Apache web server, and add the appropriate `iptables` rules in order to expose post 80.
+
+1.  Launch a new container:
+
+        sudo lxc launch ubuntu:18.04 web
+
+2.  Update the package list in the container.
+
+        sudo lxc exec web -- apt update
+
+3.  Install the Apache in the LXD container.
+
+        sudo lxc exec web -- apt install apache2
+
+4.  Get a shell in the LXD container.
+
+        sudo lxc exec web -- sudo --user ubuntu --login
+
+5.  Edit the default web page for Apache to make a reference that it runs inside a LXD container.
+
+        sudo nano /var/www/html/index.html
+
+     Change the line `It works!` (line number 224) to `It works inside a LXD container!`. Then, save and exit.
+
+6.  Exit back to the host. We have made all the necessary changes to the container.
+
+        exit
+
+7.  Add a LXD **proxy device** to redirect connections from the internet to port 80 (HTTP) on the server to port 80 at this container. 
+
+        sudo lxc config device add web myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:localhost:80
+
+6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
+
+    [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
 
 ## Common LXD Commands
 
-1.  List all containers:
+*  List all containers:
 
-        lxc list
+        sudo lxc list
 
     {{< output >}}
 To start your first container, try: lxc launch ubuntu:18.04
@@ -206,9 +244,9 @@ To start your first container, try: lxc launch ubuntu:18.04
 +------+-------+------+------+------+-----------+
 {{< /output >}}
 
-2. List all available repositories of container images:
+* List all available repositories of container images:
 
-        lxc remote list
+        sudo lxc remote list
 
     {{< output >}}
 +-----------------+------------------------------------------+---------------+-------------+--------+--------+
@@ -223,11 +261,11 @@ To start your first container, try: lxc launch ubuntu:18.04
 | ubuntu-daily    | https://cloud-images.ubuntu.com/daily    | simplestreams | none        | YES    | YES    |
 +-----------------+------------------------------------------+---------------+-------------+--------+--------+
 {{< /output >}}
-The repository `ubuntu` has container images of Ubuntu versions. The `images` repository has container images of a large number of different Linux distributions. The `ubuntu-daily` has daily container images to be used for testing purposes. The `local` repository is the LXD server that we have just installed. It is not public, and can be used to store our own container images. 
+The repository `ubuntu` has container images of Ubuntu versions. The `images` repository has container images of a large number of different Linux distributions. The `ubuntu-daily` has daily container images to be used for testing purposes. The `local` repository is the LXD server that we have just installed. It is not public, and can be used to store our own container images.
 
-2.  List all available container images from a repository:
+*  List all available container images from a repository:
 
-        lxc image list ubuntu:
+        sudo lxc image list ubuntu:
 
     {{< output >}}
 +------------------+--------------+--------+-----------------------------------------------+---------+----------+-------------------------------+
@@ -247,9 +285,9 @@ The first two columns for the alias and fingerprint provide an identifier that c
 {{< /note >}}
 The output snippet shows the container images Ubuntu versions 18.04 LTS, 18.10 and 19.04. When creating a container we can just specify the short alias. For example, `ubuntu:b` means that the repository is `ubuntu` and the container image has the short alias `b` (for _bionic_, the codename of Ubuntu 18.04 LTS).
 
-3.  Get more information about a container image: 
+*  Get more information about a container image: 
 
-        lxc image info ubuntu:b
+        sudo lxc image info ubuntu:b
 
     {{< output >}}
 Fingerprint: 5b72cf46f628b3d60f5d99af48633539b2916993c80fc5a2323d7d841f66afbe
@@ -287,9 +325,9 @@ Auto update: disabled
 {{< /output >}}
 The output shows the details of the container image, including all the available aliases. For Ubuntu 18.04 LTS, we can specify either `b` (for `bionic`, the codename of Ubuntu 18.04 LTS) or any other alias.
 
-4.  Launch a new container with the name `mycontainer`:
+*  Launch a new container with the name `mycontainer`:
 
-        lxc launch ubuntu:18.04 mycontainer
+        sudo lxc launch ubuntu:18.04 mycontainer
 
     {{< output >}}
 Creating mycontainer
@@ -297,9 +335,9 @@ Starting mycontainer
 {{< /output >}}
 
 
-5.  Check the list of containers to make sure the new container is running:
+*  Check the list of containers to make sure the new container is running:
 
-        lxc list
+        sudo lxc list
 
     {{< output >}}
 +-------------+---------+-----------------------+---------------------------+------------+-----------+
@@ -309,18 +347,18 @@ Starting mycontainer
 +-------------+---------+-----------------------+---------------------------+------------+-----------+
 {{< /output >}}
 
-6.  Execute basic commands in `mycontainer`:
+*  Execute basic commands in `mycontainer`:
 
-        lxc exec mycontainer -- apt update
-        lxc exec mycontainer -- apt upgrade
+        sudo lxc exec mycontainer -- apt update
+        sudo lxc exec mycontainer -- apt upgrade
 
     {{< note >}}
 The characters `--` instruct the `lxc` command not to parse any more command-line parameters.
 {{< /note >}}
 
-7.  Open a shell session within `mycontainer`:
+*  Open a shell session within `mycontainer`:
 
-        lxc exec mycontainer -- sudo --login --user ubuntu
+        sudo lxc exec mycontainer -- sudo --login --user ubuntu
 
     {{< output >}}
 To run a command as administrator (user "root"), use "sudo <command>".
@@ -335,22 +373,21 @@ The Ubuntu container images have by default a non-root account with username `ub
 The `sudo` command provides a login to the existing account `ubuntu`.
 {{< /note >}}
 
-8.  View the container logs:
+*  View the container logs:
 
-        lxc info mycontainer --show-log
+        sudo lxc info mycontainer --show-log
 
-9.  Stop the container:
+*  Stop the container:
 
-        lxc stop mycontainer
+        sudo lxc stop mycontainer
 
-10.  Remove the container:
+*  Remove the container:
 
-        lxc delete mycontainer
+        sudo lxc delete mycontainer
 
     {{< note >}}
 A container needs to first be stopped, before it gets deleted. 
 {{< /note >}}
-
 
 ## Troubleshooting
 
@@ -358,25 +395,25 @@ A container needs to first be stopped, before it gets deleted.
 
 When you run any `lxc` command, you get the following error:
 
-        lxc list
+        sudo lxc list
 
     {{< output >}}
 Error: Get http://unix.socket/1.0: dial unix /var/snap/lxd/common/lxd/unix.socket: connect: connection refused
 {{< /output >}}
 
-This happens when the LXD service is not currently running. By default, the LXD service is running as soon as it is configured succesfully. See [Initialize LXD](#initialize-lxd) to configure LXD. 
+This happens when the LXD service is not currently running. By default, the LXD service is running as soon as it is configured succesfully. See [Initialize LXD](#initialize-lxd) to configure LXD.
 
 ### Error "unix.socket: connect: permission denied"
 
 When you run any `lxc` command, you get the following error:
 
-        lxc list
+        sudo lxc list
 
     {{< output >}}
 Error: Get http://unix.socket/1.0: dial unix /var/snap/lxd/common/lxd/unix.socket: connect: permission denied
 {{< /output >}}
 
-This happens when your limited user account is not a member of the `lxd` group, or you did not log out and log in again so that the new group membership to the `lxd` group gets updated. 
+This happens when your limited user account is not a member of the `lxd` group, or you did not log out and log in again so that the new group membership to the `lxd` group gets updated.
 
 If your user account is `ubuntu`, the following command shows whether you are a member of the `lxd` group:
 
@@ -388,44 +425,6 @@ ubuntu : ubuntu sudo lxd
 
 In this example, we are members of the `lxd` group and we just need to log out and log in again. If you are not a member of the `lxd` group, see [Initialize LXD](#initialize-lxd) on how to make your limited account a member of the `lxd` group.
 
-## Apache Web Server with LXD
-
-This section will create a container, install the Apache web server, and add the appropriate `iptables` rules in order to expose post 80.
-
-1.  Launch a new container:
-
-        lxc launch ubuntu:18.04 web
-
-2.  Update the package list in the container.
-
-        lxc exec web -- apt update
-
-3.  Install the Apache in the LXD container.
-
-        lxc exec web -- apt install apache2
-
-4.  Get a shell in the LXD container. 
-
-        lxc exec web -- sudo --user ubuntu --login
-
-5.  Edit the default web page for Apache to make a reference that it runs inside a LXD container. 
-
-        sudo nano /var/www/html/index.html 
-
-     Change the line `It works!` (line number 224) to `It works inside a LXD container!`. Then, save and exit.
-
-6.  Exit back to the host. We have made all the necessary changes to the container. 
-
-        exit
- 
-7.  Add a LXD **proxy device** to redirect connections from the internet to port 80 (HTTP) on the server to port 80 at this container. 
-
-        lxc config device add web myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:localhost:80
-
-6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
-
-    [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
-
 ## Next Steps
 
-If you plan to use a single website, then a single proxy device to the website container will suffice. If you plan to use multiple websites, you may install virtual hosts inside the website container. If, instead you would like to setup multiple websites on their own container, then you will need to set up [a reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) in a container. In that case, the proxy device would direct to the reverse proxy container to direct the connections to the individual websites containers. 
+If you plan to use a single website, then a single proxy device to the website container will suffice. If you plan to use multiple websites, you may install virtual hosts inside the website container. If, instead you would like to setup multiple websites on their own container, then you will need to set up [a reverse proxy](https://www.linode.com/docs/web-servers/nginx/use-nginx-reverse-proxy/) in a container. In that case, the proxy device would direct to the reverse proxy container to direct the connections to the individual websites containers. 
