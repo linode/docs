@@ -23,11 +23,11 @@ The [Container Storage Interface](https://github.com/container-storage-interface
 
 - This guide assumes you have a working Kubernetes cluster running on Linode. You can deploy a Kubernetes cluster on Linode in the following ways:
 
-    1. Use [Linode's k8s-alpha CLI]() to deploy a Kubernetes cluster via the command line.
+    1. Use [Linode's k8s-alpha CLI](https://developers.linode.com/kubernetes/) to deploy a Kubernetes cluster via the command line.
 
     1. Deploy a cluster using Terraform and the [Linode Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.1).
 
-    1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode ]() guide to do this.
+    1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode ](docs/applications/containers/getting-started-with-kubernetes/) guide to do this.
 
     {{< note >}}
   - If using the k8s-alpha CLI or the Linode Kubernetes Terraform installer methods to deploy a cluster, you can skip the [Installing the CSI Driver](#installing-the-csi-driver) section of this guide, since it will be automatically installed when you deploy a cluster.
@@ -81,7 +81,7 @@ Once you have your API token, it's time to create your secret.
 
         read -p "Linode Region of Cluster: " LINODE_REGION
 
-    You can retrieve a full list of regions by using the [Linode CLI](https://linode.com/docs/platform/api/using-the-linode-cli/):
+    You can retrieve a full list of regions by using the [Linode CLI](/docs/platform/api/using-the-linode-cli/):
 
         linode-cli regions list
 
@@ -259,7 +259,7 @@ Alternatively, you could use the `LoadBalancer` service type, instead of NodePor
 
         kubectl create -f owncloud-service.yaml
 
-1.  To retrieve the port your ownCloud Pod is listening on, use the `describe` command on your newly created Service:
+1.  To retrieve the port that the ownCloud Pod is listening on, use the `describe` command on the newly created Service:
 
         kubectl describe service owncloud
 
@@ -282,7 +282,7 @@ Alternatively, you could use the `LoadBalancer` service type, instead of NodePor
 
     Find the `NodePort`. In this example the port is `30068`.
 
-1.  Now you need to find out which Node your Pod is running on. Use the `describe` command on your Pod to find the IP address of your Node:
+1.  Now you need to find out which Node your Pod is running on. Use the `describe` command on the Pod to find the IP address of the Node:
 
         kubectl describe pod owncloud
 
@@ -301,17 +301,17 @@ Alternatively, you could use the `LoadBalancer` service type, instead of NodePor
 
     The IP address of the Node in this example is `192.0.2.155`. Your ownCloud Pod in this example would be accessible from `http://192.9.2.155:30068`.
 
-1.  Navigate to the URL of your Node, including the NodePort you looked up in a previous step. You will be presented with the ownCloud log in page. You can log in with the username `admin` and the password `admin`.
+1.  Navigate to the URL of the Node, including the NodePort you looked up in a previous step. You will be presented with the ownCloud log in page. You can log in with the username `admin` and the password `admin`.
 
 1.  Upload a file. You will use this file to test the Persistent Volume Claim.
 
-1.  Your Persistent Storage Claim has been created and is using your Block Storage Volume. To prove this point, you can delete your ownCloud Pod and recreate it, and the Persistent Storage Claim will continue to house your data:
+1.  The Persistent Storage Claim has been created and is using your Block Storage Volume. To prove this point, you can delete the ownCloud Pod and recreate it, and the Persistent Storage Claim will continue to house your data:
 
         kubectl delete pod owncloud
 
         kubectl create -f owncloud-pod.yaml
 
-    Once your Pod has finished provisioning you can log back in to ownCloud and view the file you previously uploaded.
+    Once the Pod has finished provisioning you can log back in to ownCloud and view the file you previously uploaded.
 
 You have successfully
 You have successfully created a Block Storage Volume tied to a Persistent Volume Claim and have mounted it with a container in a Pod.
@@ -328,4 +328,3 @@ To delete the Block Storage volume created in this guide:
 
         kubectl delete pvc pvc-example
 
-- To delete your
