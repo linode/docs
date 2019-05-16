@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will show you how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy the container image on a Kubernetes cluster running on Linode'
+description: 'This guide will show you how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy the container image on a Kubernetes cluster running on Linode.'
 keywords: ['kubernetes','docker','docker hub','hugo', 'static site']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-07
@@ -484,4 +484,9 @@ To avoid being further billed for your Kubernetes cluster, tear down your cluste
 
             linode-cli k8s-alpha delete example-cluster
 
+## Next Steps
 
+Now that you are familiar with basic Kubernetes concepts, like configuring pods, grouping resources, and deploying services, you can deploy a Kubernetes cluster on Linode for production use by using the steps in the following guides:
+
+  - [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/)
+  - [How to Deploy Kubernetes on Linode with Rancher 2.2](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/)
