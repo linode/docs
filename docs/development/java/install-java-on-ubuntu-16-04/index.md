@@ -102,10 +102,8 @@ In April 2019, Oracle Java downloads now require logging into an Oracle account 
 
 Due to the new Oracle agreement and login requirements The PPA to install Oracle JDK 8 is Discontinued. Official note from the PPA:
 
-{{< note >}}
-The new Oracle Technology Network License Agreement for Oracle Java SE is substantially different from prior Oracle JDK licenses. The new license permits certain uses, such as personal use and development use, at no cost -- but other uses authorized under prior Oracle JDK licenses may no longer be available. Please review the terms carefully before downloading and using this product. An FAQ is available [from Oracle](https://www.oracle.com/technetwork/java/javase/overview/oracle-jdk-faqs.html).
+    The new Oracle Technology Network License Agreement for Oracle Java SE is substantially different from prior Oracle JDK licenses. The new license permits certain uses, such as personal use and development use, at no cost -- but other uses authorized under prior Oracle JDK licenses may no longer be available. Please review the terms carefully before downloading and using this product. An FAQ is available [from Oracle](https://www.oracle.com/technetwork/java/javase/overview/oracle-jdk-faqs.html).
 
-Oracle Java downloads now require logging in to an Oracle account to download Java updates, like the latest Oracle Java 8u211 / Java SE 8u212. Because of this I cannot update the PPA with the latest Java (and the old links were broken by Oracle).
+    Oracle Java downloads now require logging in to an Oracle account to download Java updates, like the latest Oracle Java 8u211 / Java SE 8u212. Because of this I cannot update the PPA with the latest Java (and the old links were broken by Oracle).
 
-For this reason, THIS PPA IS DISCONTINUED (unless I find some way around this limitation).
-{{< /note >}}
+    For this reason, THIS PPA IS DISCONTINUED (unless I find some way around this limitation).
