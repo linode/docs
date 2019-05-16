@@ -173,7 +173,7 @@ Complete the steps outlined in this section on all three Linodes.
 
 After installing the Kubernetes related tooling on all your Linodes, you are ready to set up the Kubernetes control plane on the master node. The control plane is responsible for allocating resources to your cluster, maintaining the health of your cluster, and ensuring that it meets the minimum requirements you designate for the cluster.
 
-The primary components of the control plane are the kube-apiserver, kube-controller-manager, kube-scheduler, and etcd. kubeadm provides a way to easily initialize the Kubernetes master node with all the necessary control plane components. For more information on each of control plane component see the Beginner's Guide to Kubernetes.
+The primary components of the control plane are the kube-apiserver, kube-controller-manager, kube-scheduler, and etcd. kubeadm provides a way to easily initialize the Kubernetes master node with all the necessary control plane components. For more information on each of control plane component see the [Beginner's Guide to Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/).
 
 In addition to the baseline control plane components, there are several *addons*, that can be installed on the master node to access additional cluster features. You will need to install a networking and network policy provider add on that will implement [Kubernetes' network model](https://kubernetes.io/docs/concepts/cluster-administration/networking/) on the cluster's pod network.
 
@@ -331,9 +331,7 @@ kube-node-2   Ready    <none>   1d22h   v1.14.1
 
 ## Next Steps
 
-Now that you have a Kubernetes cluster up and running, you can begin experimenting with the various ways to configure pods, group resources, deploy services and expose them to the public internet.
-
-To help you get started with this, move on to follow along with the [Deploy a Static Site on Linode using Kubernetes guide](/docs/applications/containers/deploy-static-site-with-kubernetes/).
+Now that you have a Kubernetes cluster up and running, you can begin experimenting with the various ways to configure pods, group resources, and deploy services that are exposed to the public internet. To help you get started with this, move on to follow along with the [Deploy a Static Site on Linode using Kubernetes](/docs/applications/containers/deploy-container-image-to-kubernetes/) guide.
 
 ## Tear Down Your Cluster
 

@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will show you how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy the container image on a Kubernetes cluster running on Linode'
+description: 'This guide will show you how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy the container image on a Kubernetes cluster running on Linode.'
 keywords: ['kubernetes','docker','docker hub','hugo', 'static site']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-07
@@ -245,7 +245,7 @@ EXPOSE 80
 
         echo -e "public/\n.git/\n.gitmodules/\n.gitignore" >> .dockerignore
 
-1. Follow the steps 2 - 4 in the [Version Control the Site with Git](/docs/applications/containers/deploy-static-site-with-kubernetes/#version-control-the-site-with-git) section to add any new files created in this section to your local git repository.
+1. Follow the steps 2 - 4 in the [Version Control the Site with Git](/docs/applications/containers/deploy-container-image-to-kubernetes/#version-control-the-site-with-git) section to add any new files created in this section to your local git repository.
 
 ### Build the Docker Image
 
@@ -358,7 +358,7 @@ The service will group together all pods for the Hugo site, expose the same port
 The Hugo site's service manifest file will use the NodePort method to get external traffic to the Hugo site service. NodePort opens a specific port on all the Nodes and any traffic that is sent to this port is forwarded to the service. Kubernetes will choose the port to open on the nodes if you do not provide one in your service manifest file. It is recommended to let Kubernetes handle the assignment. Kubernetes will choose a port in the default range, `30000-32767`.
 
 {{< note >}}
-The k8s-alpha CLI creates clusters that are pre-configured with useful Linode service integrations, like the Linode Cloud Controller Manager (CCM) which provides access to Linode's load balancer service, [NodeBalancers](https://www.linode.com/nodebalancers). In order to use Linode's NodeBalancers you can use the [LoadBalancer service type](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) instead of NodePort in your Hugo site's service manifest file. See the [link to CCM guide]() guide for more details.
+The k8s-alpha CLI creates clusters that are pre-configured with useful Linode service integrations, like the Linode Cloud Controller Manager (CCM) which provides access to Linode's load balancer service, [NodeBalancers](https://www.linode.com/nodebalancers). In order to use Linode's NodeBalancers you can use the [LoadBalancer service type](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) instead of NodePort in your Hugo site's service manifest file. For more details, see the [Kubernetes Cloud Controller Manager for Linode](https://github.com/linode/linode-cloud-controller-manager) GitHub repository.
 {{</ note >}}
 
 1. Create the manifest file for your service with the following content.
@@ -430,7 +430,7 @@ spec:
       - The deployment's object `spec` states that the deployment should have 3 replica pods. This means at any given time the cluster will have 3 pods that run the Hugo site service.
       - The `template` field provides all the information needed to create actual pods.
       - The label `app: hugo-site` helps the deployment know which service pods to target.
-      - The `container` field states that any containers connected to this deployment should use the Hugo site image `mydockerhubusername/hugo-site:v1` that was created in the [Build the Docker Image](/docs/applications/containers/deploy-static-site-with-kubernetes/#build-the-docker-image) section of this guide.
+      - The `container` field states that any containers connected to this deployment should use the Hugo site image `mydockerhubusername/hugo-site:v1` that was created in the [Build the Docker Image](/docs/applications/containers/deploy-container-image-to-kubernetes/#build-the-docker-image) section of this guide.
       - `imagePullPolicy: Always` means that the container image will be pulled every time the pod is started.
       - `containerPort: 80` states the port number to expose on the pod's IP address. The system does not rely on this field to expose the container port, instead, it provides information about the network connections a container uses.
 
@@ -484,4 +484,9 @@ To avoid being further billed for your Kubernetes cluster, tear down your cluste
 
             linode-cli k8s-alpha delete example-cluster
 
+## Next Steps
 
+Now that you are familiar with basic Kubernetes concepts, like configuring pods, grouping resources, and deploying services, you can deploy a Kubernetes cluster on Linode for production use by using the steps in the following guides:
+
+  - [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/)
+  - [How to Deploy Kubernetes on Linode with Rancher 2.2](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/)

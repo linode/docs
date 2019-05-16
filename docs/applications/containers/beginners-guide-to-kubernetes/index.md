@@ -2,7 +2,7 @@
 author:
   name: Andy Stevens
   email: docs@linode.com
-description: 'A high level overview of Kubernetes cluster.'
+description: 'An introduction to Kubernetes concepts and components.'
 keywords: ['kubernetes','k8s','beginner','architecture']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-21
@@ -18,7 +18,6 @@ external_resources:
 ---
 
 *Kubernetes*, often referred to as *k8s*, is an open source container orchestration system that helps deploy and manage containerized applications. Developed by Google starting in 2014 and written in the Go language, Kubernetes is quickly becoming the standard way to architect horizontally-scalable applications. This guide will explain the major parts and concepts of Kubernetes.
-
 
 ## Containers
 
@@ -478,12 +477,19 @@ Two of the most popular options are [Flannel](https://github.com/coreos/flannel#
 
 For more information on the Kubernetes networking model, and ways to implement it, consult the [cluster networking documentation](https://kubernetes.io/docs/concepts/cluster-administration/networking/).
 
-## Next Steps
+## Advanced Topics
 
 There are a number of advanced topics in Kubernetes. Below are a few you might find useful as you progress in Kubernetes:
 
-- [StatefulSets](https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/) can be used when creating stateful applications.
-- [DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) can be used to ensure each Node is running a certain Pod. This is useful for log collection, monitoring, and cluster storage.
-- [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) can automatically scale your deployments based on CPU usage.
-- [CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) can schedule [Jobs](#jobs) to run at certain times.
-- [ResourceQuotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) are helpful when working with larger groups where there is a concern that some teams might take up too many resources.
+  - [StatefulSets](https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/) can be used when creating stateful applications.
+  - [DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) can be used to ensure each Node is running a certain Pod. This is useful for log collection, monitoring, and cluster storage.
+  - [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) can automatically scale your deployments based on CPU usage.
+  - [CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) can schedule [Jobs](#jobs) to run at certain times.
+  - [ResourceQuotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) are helpful when working with larger groups where there is a concern that some teams might take up too many resources.
+
+## Next Steps
+
+Now that you are familiar with Kubernetes concepts and components, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/applications/containers/getting-started-with-kubernetes/) guide. This guide provides a hands-on activity to continue learning about Kubernetes. If you would like to deploy a Kubernetes cluster on Linode for production use, we recommend using one of the following methods, instead:
+
+  - [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/)
+  - [How to Deploy Kubernetes on Linode with Rancher 2.2](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/)
