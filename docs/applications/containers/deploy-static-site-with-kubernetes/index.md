@@ -68,7 +68,7 @@ Development of your Hugo site and Docker image will take place locally on your p
 
 ### Initialize the Hugo Site
 
-In this section, you will use the [Hugo CLI](https://gohugo.io/commands/) (command line interface) to create your Hugo site and initialize a Hugo theme. Hugo's CLI provides several useful commands for common tasks needed to build, configure, and interact with your Hugo site.
+In this section you will use the [Hugo CLI](https://gohugo.io/commands/) (command line interface) to create your Hugo site and initialize a Hugo theme. Hugo's CLI provides several useful commands for common tasks needed to build, configure, and interact with your Hugo site.
 
 1. Create a new Hugo site on your local computer. This command will create a folder named `example-site` and scaffold [Hugo's directory structure](https://gohugo.io/getting-started/directory-structure/) inside it:
 
@@ -181,7 +181,7 @@ Press Ctrl+C to stop
 
 ### Version Control the Site with Git
 
-The example Hugo site was initialized as a local Git repository in the previous section. You can now version control all content, theme and configuration files with Git. Once you have used Git to track your local Hugo site files, you can easily push them to a remote Git repository, like [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/). Storing your Hugo site files on a remote Git repository opens up many possibilities for collaboration and automating Docker image builds. This guide will not cover automated builds, but you can learn more about it on [Docker's official documentation](https://docs.docker.com/docker-hub/builds/).
+The example Hugo site was initialized as a local Git repository in the previous section. You can now version control all content, theme, and configuration files with Git. Once you have used Git to track your local Hugo site files, you can easily push them to a remote Git repository, like [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/). Storing your Hugo site files on a remote Git repository opens up many possibilities for collaboration and automating Docker image builds. This guide will not cover automated builds, but you can learn more about it on [Docker's official documentation](https://docs.docker.com/docker-hub/builds/).
 
 1. Add a `.gitignore` file to your Git repository. Any files or directories added to the `.gitignore` file will not be tracked by Git. The Docker image you will create in the next section will handle building your static site files. For this reason it is not necessary to track the `public` directory and its content.
 
@@ -197,7 +197,7 @@ The example Hugo site was initialized as a local Git repository in the previous 
 
 1. Commit all your changes and add a meaningful commit message:
 
-        git commit -m 'Add content, theme and config files.'
+        git commit -m 'Add content, theme, and config files.'
 
     {{< note >}}
 Any time you complete work related to one logical change to the Hugo site, you should make sure you commit the changes to your Git repository. Keeping your commits attached to small changes makes it easier to understand the changes and to roll back to previous commits, if necessary. See the [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide for more information.
@@ -236,7 +236,7 @@ COPY --from=HUGOINSTALL /hugo-site/public/ /usr/share/nginx/html/
 EXPOSE 80
     {{</ file >}}
 
-1. Add a `.dockerignore` file to your Hugo repository. It is important to ensure that your images are as small as possible to reduce the time it takes to build, pull, push and deploy the container. The `.dockerignore` file excludes files and directories that are not necessary for the function of your container or that may contain sensitive information that you do not want to included in the image. Since the Docker image will build the static Hugo site files, you can ignore the `public/` directory. You can also exclude any Git related files and directories because they are not needed on the running container.
+1. Add a `.dockerignore` file to your Hugo repository. It is important to ensure that your images are as small as possible to reduce the time it takes to build, pull, push, and deploy the container. The `.dockerignore` file excludes files and directories that are not necessary for the function of your container or that may contain sensitive information that you do not want to included in the image. Since the Docker image will build the static Hugo site files, you can ignore the `public/` directory. You can also exclude any Git related files and directories because they are not needed on the running container.
 
         echo -e "public/\n.git/\n.gitmodules/\n.gitignore" >> .dockerignore
 
@@ -288,7 +288,7 @@ You can push your local Hugo site's Git repository to GitHub in order to set up 
 
 Hosting your Hugo site's image on Docker Hub will enable you to use the image in a Kubernetes cluster deployment. You will also be able to share the image with collaborators and the rest of the Docker community.
 
-1. Log in to your Docker Hub account via the command line on your local computer. Enter your username and password when prompted.
+1. Log into your Docker Hub account via the command line on your local computer. Enter your username and password when prompted.
 
         docker login
 
@@ -302,7 +302,7 @@ Hosting your Hugo site's image on Docker Hub will enable you to use the image in
 
 ## Configure your Kubernetes Cluster
 
-This section will use kubectl to configure and manage your Kubernetes cluster. If your cluster was deployed using kubeadm, you will need to log into your master node to execute the kubectl commands in this section. If, instead, you used the k8s-alpha cli you can run all commands from your local computer.
+This section will use kubectl to configure and manage your Kubernetes cluster. If your cluster was deployed using kubeadm, you will need to log into your master node to execute the kubectl commands in this section. If, instead, you used the k8s-alpha CLI you can run all commands from your local computer.
 
 In this section, you will create namespace, deployment, and service manifest files for your Hugo site deployment and apply them to your cluster with kubectl. Each manifest file creates different resources on the Kubernetes API that are used to create and the Hugo site's pods on the worker nodes.
 
@@ -325,7 +325,7 @@ metadata:
   name: hugo-site
       {{</ file >}}
 
-      - The manifest file declares the version of the API in use, the kind of resource that is being defined and metadata about the resource. All manifest files should provide this information.
+      - The manifest file declares the version of the API in use, the kind of resource that is being defined, and metadata about the resource. All manifest files should provide this information.
       - The key-value pair `name: hugo-site` defines the namespace object's unique name.
 
 1. Create the namespace from the `ns-hugo-site.yaml` manifest.
@@ -353,7 +353,7 @@ The service will group together all pods for the Hugo site, expose the same port
 The Hugo site's service manifest file will use the NodePort method to get external traffic to the Hugo site service. NodePort opens a specific port on all the Nodes and any traffic that is sent to this port is forwarded to the service. Kubernetes will choose the port to open on the nodes if you do not provide one in your service manifest file. It is recommended to let Kubernetes handle the assignment. Kubernetes will choose a port in the default range, `30000-32767`.
 
 {{< note >}}
-The k8s-alpha CLI creates clusters that are pre-configured with useful Linode service integrations, like the Linode Cloud Controller Manager (CCM) which provides access to Linode's load balancer service, [NodeBalancers](https://www.linode.com/nodebalancers). In order to use Linode's NodeBalancers, you can use the [LoadBalancer service type](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), instead of NodePort, in your Hugo site's service manifest file. See the [link to CCM guide]() guide for more details.
+The k8s-alpha CLI creates clusters that are pre-configured with useful Linode service integrations, like the Linode Cloud Controller Manager (CCM) which provides access to Linode's load balancer service, [NodeBalancers](https://www.linode.com/nodebalancers). In order to use Linode's NodeBalancers you can use the [LoadBalancer service type](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) instead of NodePort in your Hugo site's service manifest file. See the [link to CCM guide]() guide for more details.
 {{</ note >}}
 
 1. Create the manifest file for your service with the following content.
@@ -448,7 +448,7 @@ hugo-site   3/3     3            3           1d
 
 After creating all required manifest files to configure your Hugo site's Kubernetes cluster, you should be able to view the site using a worker node's IP address and its exposed port.
 
-1. Get your worker node's external IP address. Copy down the `EXTERNAL-IP`value for any worker node in the cluster:
+1. Get your worker node's external IP address. Copy down the `EXTERNAL-IP` value for any worker node in the cluster:
 
         kubectl get nodes -o wide
 
