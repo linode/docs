@@ -27,11 +27,11 @@ external_resources:
 
 ## What is LXD?
 
-[LXD](https://linuxcontainers.org/lxd/) (pronounced "Lex-Dee") is a system container manager build on top of LXC (Linux Containers) that is currently supported by Canonical. The goal of LXD is to provide an experience similar to a virtual machine but through containerization rather than hardware virtualization. Compared to Docker for delivering applications, LXD offers nearly full operating-system functionality with additional features such as snapshots, live migrations and storage management.
+[LXD](https://linuxcontainers.org/lxd/) (pronounced "Lex-Dee") is a system container manager build on top of LXC (Linux Containers) that is currently supported by Canonical. The goal of LXD is to provide an experience similar to a virtual machine but through containerization rather than hardware virtualization. Compared to Docker for delivering applications, LXD offers nearly full operating-system functionality with additional features such as snapshots, live migrations, and storage management.
 
-The main benefits of LXD are the high density of containers that it can support and the performance it delivers compared to virtual machines. A computer with 2GB RAM can adequately support half a dozen containers. In addition, LXD officially supports the [container images of major Linux distributions](https://us.images.linuxcontainers.org/). We can choose the Linux distribution and version to run in the container.
+The main benefits of LXD are the support of high density containers and the performance it delivers compared to virtual machines. A computer with 2GB RAM can adequately support half a dozen containers. In addition, LXD officially supports the [container images of major Linux distributions](https://us.images.linuxcontainers.org/). We can choose the Linux distribution and version to run in the container.
 
-This guide covers how to install and setup LXD 3 on a Linode, and how to setup an Apache Web server in a container.
+This guide covers how to install and setup LXD 3 on a Linode and how to setup an Apache Web server in a container.
 
 {{< note >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD system containers.
@@ -164,7 +164,7 @@ lxd   3.12     10601  stable    canonical✓  -
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda         49G  2.0G   45G   5% /
 {{< /output >}}
-In this case there are 45GB of free disk space. LXD requires at least 15GB of space for the storage needs of containers. We will allocate 15GB of space for LXD, leaving 30GB of free space for the needs server.
+In this case there is 45GB of free disk space. LXD requires at least 15GB of space for the storage needs of containers. We will allocate 15GB of space for LXD, leaving 30GB of free space for the needs of the server.
 
 4.  Run `lxd init` to initialize LXD:
 
@@ -261,7 +261,7 @@ To start your first container, try: lxc launch ubuntu:18.04
 | ubuntu-daily    | https://cloud-images.ubuntu.com/daily    | simplestreams | none        | YES    | YES    |
 +-----------------+------------------------------------------+---------------+-------------+--------+--------+
 {{< /output >}}
-The repository `ubuntu` has container images of Ubuntu versions. The `images` repository has container images of a large number of different Linux distributions. The `ubuntu-daily` has daily container images to be used for testing purposes. The `local` repository is the LXD server that we have just installed. It is not public, and can be used to store our own container images.
+The repository `ubuntu` has container images of Ubuntu versions. The `images` repository has container images of a large number of different Linux distributions. The `ubuntu-daily` has daily container images to be used for testing purposes. The `local` repository is the LXD server that we have just installed. It is not public and can be used to store your own container images.
 
 *  List all available container images from a repository:
 
@@ -283,7 +283,7 @@ The repository `ubuntu` has container images of Ubuntu versions. The `images` re
     {{< note >}}
 The first two columns for the alias and fingerprint provide an identifier that can be used to specify the container image when launching it.
 {{< /note >}}
-The output snippet shows the container images Ubuntu versions 18.04 LTS, 18.10 and 19.04. When creating a container we can just specify the short alias. For example, `ubuntu:b` means that the repository is `ubuntu` and the container image has the short alias `b` (for _bionic_, the codename of Ubuntu 18.04 LTS).
+The output snippet shows the container images Ubuntu versions 18.04 LTS, 18.10, and 19.04. When creating a container we can just specify the short alias. For example, `ubuntu:b` means that the repository is `ubuntu` and the container image has the short alias `b` (for _bionic_, the codename of Ubuntu 18.04 LTS).
 
 *  Get more information about a container image:
 
@@ -323,7 +323,7 @@ Aliases:
 Cached: no
 Auto update: disabled
 {{< /output >}}
-The output shows the details of the container image, including all the available aliases. For Ubuntu 18.04 LTS, we can specify either `b` (for `bionic`, the codename of Ubuntu 18.04 LTS) or any other alias.
+The output shows the details of the container image including all the available aliases. For Ubuntu 18.04 LTS, we can specify either `b` (for `bionic`, the codename of Ubuntu 18.04 LTS) or any other alias.
 
 *  Launch a new container with the name `mycontainer`:
 
@@ -386,7 +386,7 @@ The `sudo` command provides a login to the existing account `ubuntu`.
         sudo lxc delete mycontainer
 
     {{< note >}}
-A container needs to first be stopped, before it gets deleted.
+A container needs to be stopped before it can be deleted.
 {{< /note >}}
 
 ## Troubleshooting
@@ -427,4 +427,4 @@ In this example, we are members of the `lxd` group and we just need to log out a
 
 ## Next Steps
 
-If you plan to use a single website, then a single proxy device to the website container will suffice. If you plan to use multiple websites, you may install virtual hosts inside the website container. If, instead you would like to setup multiple websites on their own container, then you will need to set up [a reverse proxy](https://www.linode.com/docs/web-servers/nginx/use-nginx-reverse-proxy/) in a container. In that case, the proxy device would direct to the reverse proxy container to direct the connections to the individual websites containers.
+If you plan to use a single website, then a single proxy device to the website container will suffice. If you plan to use multiple websites, you may install virtual hosts inside the website container. If instead you would like to setup multiple websites on their own container, then you will need to set up [a reverse proxy](https://www.linode.com/docs/web-servers/nginx/use-nginx-reverse-proxy/) in a container. In that case, the proxy device would direct to the reverse proxy container to direct the connections to the individual websites containers.
