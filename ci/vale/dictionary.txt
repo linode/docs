@@ -20,6 +20,7 @@ allmasquerade
 amavis
 amavisd
 amd64
+ananke
 anonymize
 anonymizing
 ansible
@@ -89,6 +90,7 @@ berkshelf
 binlog
 biomes
 bitbucket
+bitnami
 bitrate
 blocklists
 blockwise
@@ -131,6 +133,8 @@ certbot
 certcheck
 cfg
 cgi
+cgroup
+cgroupfs
 chainable
 changelog
 changelogs
@@ -619,6 +623,7 @@ jpg
 jre
 js
 json
+jsonpath
 julialang
 jumpbox
 jupyter
@@ -914,6 +919,7 @@ oftc
 ohai
 ok
 oldstable
+oldfashioned
 oneof
 ons
 opencart
