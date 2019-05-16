@@ -12,7 +12,12 @@ modified_by:
 title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
 contributor:
   name: Linode
+external_resources:
+- '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
+- '[Official Hugo Documentation](https://gohugo.io/getting-started/installing/)'
+- '[Official Docker Documentation](https://docs.docker.com/docker-hub/builds/)'
 ---
+
 ## Kubernetes and Docker
 
 Kubernetes is a system that automates the deployment, scaling, and management of containerized applications. Containerizing an application requires a base image that can be used to create an instance of a container. Once an application's image exists, you can push it to a centralized container registry that Kubernetes can use to deploy container instances in a cluster's pods.
@@ -34,9 +39,9 @@ This guide was written using version 1.14 of Kubectl.
 ## Before You Begin
 
 1. Create a Kubernetes cluster with one worker node. This can be done in two ways:
-    1. Deploy a Kubernetes cluster using kubeadm.
+    1. Deploy a Kubernetes cluster using [kubeadm](/docs/applications/containers/getting-started-with-kubernetes/).
         - You will need to deploy two Linodes. One will serve as the master node and the other will serve as a worker node.
-    1. Deploy a Kubernetes cluster using k8s-alpha CLI.
+    1. Deploy a Kubernetes cluster using [k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/).
 
 1. [Create a GitHub account](https://github.com/join) if you don't already have one.
 
@@ -478,3 +483,5 @@ To avoid being further billed for your Kubernetes cluster, tear down your cluste
     - using the k8s-alpha CLI, issue the following command from your computer to delete the cluster:
 
             linode-cli k8s-alpha delete example-cluster
+
+

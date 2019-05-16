@@ -48,7 +48,7 @@ When following the [Getting Started](/docs/getting-started) guide, make sure tha
 
     To learn more about managing compute resources for containers, see the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/).
 
-1. Read the Beginners Guide to Kubernetes to familiarize yourself with the major components and concepts of Kubernetes. The current guide assumes a working knowledge of common Kubernetes concepts and terminology.
+1. Read the [Beginners Guide to Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/) to familiarize yourself with the major components and concepts of Kubernetes. The current guide assumes a working knowledge of common Kubernetes concepts and terminology.
 
 ## Build a Kubernetes Cluster
 ### Kubernetes Cluster Architecture
@@ -234,7 +234,7 @@ kubeadm join 192.0.2.0:6443 --token udb8fn.nih6n1f1aijmbnx5 \
 
 ### Inspect the Master Node with Kubectl
 
-After completing the previous section, your Kubernetes master node is ready with all the necessary components to manage a cluster. To gain a better understanding of all the parts that make up the master's control plane, this section will walk you through inspecting your master node. If you have not yet reviewed the A Beginner's Guide to Kubernetes, it will be helpful to do so prior to continuing with this section as it relies on the understanding of basic Kubernetes concepts.
+After completing the previous section, your Kubernetes master node is ready with all the necessary components to manage a cluster. To gain a better understanding of all the parts that make up the master's control plane, this section will walk you through inspecting your master node. If you have not yet reviewed the [Beginner's Guide to Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/), it will be helpful to do so prior to continuing with this section as it relies on the understanding of basic Kubernetes concepts.
 
 1. View the current state of all nodes in your cluster. At this stage, the only node you should expect to see is the master node, since worker nodes have yet to be bootstrapped. A `STATUS` of `Ready` indicates that the master node contains all necessary components, including the pod network add-on, to start managing clusters.
 
@@ -333,7 +333,7 @@ kube-node-2   Ready    <none>   1d22h   v1.14.1
 
 Now that you have a Kubernetes cluster up and running, you can begin experimenting with the various ways to configure pods, group resources, deploy services and expose them to the public internet.
 
-To help you get started with this, move on to follow along with the Deploy a Static Site on Linode using Kubernetes guide.
+To help you get started with this, move on to follow along with the [Deploy a Static Site on Linode using Kubernetes guide](/docs/applications/containers/deploy-static-site-with-kubernetes/).
 
 ## Tear Down Your Cluster
 

@@ -49,9 +49,9 @@ To get started with Rancher, review our [How to Deploy Kubernetes on Linode with
 
 If you haven't used Kubernetes before, we recommend reading through our introductory guides on the subject:
 
--   [Beginner's Guide to Kubernetes](): this guide explains the concepts and architecture of Kubernetes.
+-   [Beginner's Guide to Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/): this guide explains the concepts and architecture of Kubernetes.
 
--   [Getting Started with Kubernetes - Basic Installation and Setup](): this guide shows how to create a Kubernetes cluster manually. While you wouldn't normally set your clusters up in this way, doing it once can help provide a better understanding for how a cluster's components fit together.
+-   [Getting Started with Kubernetes - Basic Installation and Setup](/docs/applications/containers/getting-started-with-kubernetes/): this guide shows how to create a Kubernetes cluster manually. While you wouldn't normally set your clusters up in this way, doing it once can help provide a better understanding for how a cluster's components fit together.
 
 ## Before You Begin
 
@@ -286,10 +286,6 @@ When you delete a cluster with the k8s-alpha CLI, its connection information wil
 
 Now that you have a cluster up and running, you're ready to start deploying apps to it. Review our other Kubernetes guides for help with deploying software and managing your cluster:
 
--   [link to Helm guide]()
+-   [Installing Apps on Kubernetes with Helm](/docs/applications/containers/how-to-install-apps-on-kubernetes-with-helm/)
+-    [Linode Container Storage Interface](/docs/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/)
 
--   [link to CSI guide]()
-
--   [link to CCM guide]()
-
--   [any other guide links]()

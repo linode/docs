@@ -23,16 +23,16 @@ The [Container Storage Interface](https://github.com/container-storage-interface
 
 - This guide assumes you have a working Kubernetes cluster running on Linode. You can deploy a Kubernetes cluster on Linode in the following ways:
 
-    1. Use [Linode's k8s-alpha CLI](https://developers.linode.com/kubernetes/) to deploy a Kubernetes cluster via the command line.
+    1. Use [Linode's k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) to deploy a Kubernetes cluster via the command line.
 
     1. Deploy a cluster using Terraform and the [Linode Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.1).
 
-    1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode ]() guide to do this.
+    1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode ](http://localhost:1313/docs/applications/containers/getting-started-with-kubernetes/) guide to do this.
 
     {{< note >}}
   - If using the k8s-alpha CLI or the Linode Kubernetes Terraform installer methods to deploy a cluster, you can skip the [Installing the CSI Driver](#installing-the-csi-driver) section of this guide, since it will be automatically installed when you deploy a cluster.
 
-    Move on to the [Attach a Pod to the Persistent Volume Claim]() section to learn how to consume a Block Storage volume as part of your deployment.
+    Move on to the [Attach a Pod to the Persistent Volume Claim](#attach-a-pod-to-the-persistent-volume-claim) section to learn how to consume a Block Storage volume as part of your deployment.
 
     {{</ note >}}
 
