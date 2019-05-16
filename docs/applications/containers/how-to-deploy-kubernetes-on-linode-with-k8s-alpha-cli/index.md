@@ -33,7 +33,7 @@ The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Cont
 
 The k8s-alpha CLI will create two kinds of nodes on your account:
 
--   Master nodes will run the components of your Kubernetes [control plane](https://kubernetes.io/docs/concepts/#kubernetes-control-plane) and will also run [etcd](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/).
+-   Master nodes will run the components of your Kubernetes [control plane](https://kubernetes.io/docs/concepts/#kubernetes-control-plane), and will also run [etcd](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/).
 
 -   Worker nodes will run your workloads.
 
@@ -69,7 +69,7 @@ The k8s-alpha CLI is bundled with the Linode CLI, and using it requires the inst
 
 -   [Terraform](#install-terraform): The k8s-alpha CLI creates clusters by defining a resource *plan* in Terraform and then having Terraform create those resources. If you're interested in how Terraform works, you can review our [Beginner's Guide to Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/), but doing so is not required to use the k8s-alpha CLI.
 
--   [kubectl](#install-kubectl): kubectl is the client software for Kubernetes, and it is used to interact with your cluster's Kubernetes API.
+-   [kubectl](#install-kubectl): kubectl is the client software for Kubernetes, and it is used to interact with your Kubernetes cluster's API.
 
 -   [SSH agent](#configure-your-ssh-agent): Terraform will rely on public-key authentication to connect to the Linodes that it creates, and you will need to configure your SSH agent on your computer with the keys that Terraform should use.
 
@@ -118,7 +118,7 @@ Visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/inst
 
 ### Configure your SSH Agent
 
-Your SSH key pair is stored in your home directory (or another location), but the k8s-alpha CLI's Terraform implementation will not be able to reference your keys yet. To communicate your keys to Terraform, you'll first start the `ssh-agent` process. `ssh-agent` will cache your private keys for other processes, including keys that are passphrase-protected.
+Your SSH key pair is stored in your home directory (or another location), but the k8s-alpha CLI's Terraform implementation will not be able to reference your keys without first communicating your keys to Terraform. To communicate your keys to Terraform, you'll first start the `ssh-agent` process. `ssh-agent` will cache your private keys for other processes, including keys that are passphrase-protected.
 
 **Linux:** Run the following command; if you stored your private key in another location, update the path that's passed to `ssh-add` accordingly:
 
@@ -169,7 +169,7 @@ Although `kubectl` should be used in all cases possible to interact with nodes i
 Your Terraform configurations will be stored under `~/.k8s-alpha-linode/`
 {{< /note >}}
 
-1.  Enter yes at the `Enter a value:` prompt. The Terraform plan will be applied over the next few minutes.
+1.  Enter `yes` at the `Enter a value:` prompt. The Terraform plan will be applied over the next few minutes.
 
     {{< note >}}
 You may see an error like the following:
@@ -234,7 +234,7 @@ The following optional arguments are available:
 
           Enter a value:
 
-1.  Enter yes at the `Enter a value:` prompt. The nodes in your cluster will be deleted over the next few minutes.
+1.  Enter `yes` at the `Enter a value:` prompt. The nodes in your cluster will be deleted over the next few minutes.
 
 1.  You should also login to the [Linode Cloud Manager](https://cloud.linode.com) and confirm that any Volumes and NodeBalancers created by any of your cluster app deployments.
 
@@ -266,7 +266,7 @@ To switch to another context, use the `use-context` subcommand and pass the valu
 
     kubectl config use-context example-cluster-2-kacDTg9RmZK@example-cluster-2
 
-All kubectl commands that issue will now apply to the cluster you chose.
+All kubectl commands that you issue will now apply to the cluster you chose.
 
 ### Remove a Cluster's Context
 
