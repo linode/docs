@@ -245,7 +245,7 @@ EXPOSE 80
 
         echo -e "public/\n.git/\n.gitmodules/\n.gitignore" >> .dockerignore
 
-1. Follow the steps 2 - 4 in the [Version Control the Site with Git](/docs/applications/containers/deploy-static-site-with-kubernetes/#version-control-the-site-with-git) section to add any new files created in this section to your local git repository.
+1. Follow the steps 2 - 4 in the [Version Control the Site with Git](/docs/applications/containers/deploy-container-image-to-kubernetes/#version-control-the-site-with-git) section to add any new files created in this section to your local git repository.
 
 ### Build the Docker Image
 
@@ -430,7 +430,7 @@ spec:
       - The deployment's object `spec` states that the deployment should have 3 replica pods. This means at any given time the cluster will have 3 pods that run the Hugo site service.
       - The `template` field provides all the information needed to create actual pods.
       - The label `app: hugo-site` helps the deployment know which service pods to target.
-      - The `container` field states that any containers connected to this deployment should use the Hugo site image `mydockerhubusername/hugo-site:v1` that was created in the [Build the Docker Image](/docs/applications/containers/deploy-static-site-with-kubernetes/#build-the-docker-image) section of this guide.
+      - The `container` field states that any containers connected to this deployment should use the Hugo site image `mydockerhubusername/hugo-site:v1` that was created in the [Build the Docker Image](/docs/applications/containers/deploy-container-image-to-kubernetes/#build-the-docker-image) section of this guide.
       - `imagePullPolicy: Always` means that the container image will be pulled every time the pod is started.
       - `containerPort: 80` states the port number to expose on the pod's IP address. The system does not rely on this field to expose the container port, instead, it provides information about the network connections a container uses.
 
