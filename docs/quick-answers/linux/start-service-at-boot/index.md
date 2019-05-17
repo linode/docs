@@ -61,6 +61,11 @@ WantedBy=multi-user.target
 
     This defines a simple service. The critical part is the `ExecStart` directive, which specifies the command that will be run to start the service.
 
+4.  Copy the unit file to `/etc/systemd/system` and give it permissions:
+
+        sudo cp myservice.service /etc/systemd/system/myservice.service
+        sudo chmod 644 /etc/systemd/system/myservice.service
+
     For more information about the unit file and its available configuration options, see the [systemd documentation](https://www.freedesktop.org/wiki/Software/systemd/).
 
 ## Start and Enable the Service
