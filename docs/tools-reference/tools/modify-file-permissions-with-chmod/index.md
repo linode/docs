@@ -99,7 +99,7 @@ The `-R` option applies the modification to the permissions recursively to the d
 
 Another method for setting permissions is through octal notation.
 
-Here is example of a file permission that is equivalent to `chmod u=rwx,go=rx`.
+Here is example of a file permission that is equivalent to `chmod u=rwx,g=rx,o=`.
 
     chmod 750 ~/group-project.txt
 
