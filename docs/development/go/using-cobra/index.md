@@ -1,6 +1,6 @@
 ---
-author: Mihalis Tsoukalos
-  name: Linode Community
+author:
+  name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
 description: 'Using Cobra to create powerful command line utilities in Go.'
 keywords: ["go", "golang", "cobra", "programming", "cli"]
@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-29
 modified_by:
   name: Linode
-title: 'Guide Title'
+title: 'Using Cobra and Go to Create Command Line Utilities'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
@@ -19,18 +19,18 @@ external_resources:
 
 ## Before You Begin
 
-You will need to have a recent version of Go installed on your computer in order
-to follow the presented commands. Any Go version newer than 1.7 will do but it is considered a
-good practice to have the latest version of Go installed. You can check your Go version
+You will need to install a recent version of Go on your computer in order to follow the presented commands. Any Go version newer than 1.7 will do but it is considered a good practice to have the latest version of Go installed. You can check your Go version
 by executing `go version`.
+
+If you still need to install Go, you can follow our guide for Ubuntu installation [here](https://www.linode.com/docs/development/go/install-go-on-ubuntu/).
 
 {{< note >}}
 This guide is written for a non-root user. Depending on your installation, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Using the Cobra Go package
+## Using the Cobra Go Package
 
-Cobra is a very handy and popular Go package that allows you to develop command line utilities with commands, subcommands, aliases, configuration files, etc. If you have ever used `hugo`, `docker` or `kubectl` you will understand immediately what Cobra does as all these tools where developed using Cobra.
+Cobra is a very handy and popular Go package that allows you to develop command line utilities with commands, subcommands, aliases, configuration files,etc. If you have ever used `hugo`, `docker` or `kubectl` you will have some idea of what Cobra does as all of these tools were developed using Cobra as a part of their foundation.
 
 This guide is going to implement four scenarios:
 
@@ -41,42 +41,45 @@ This guide is going to implement four scenarios:
 
 ## Installing Cobra
 
-It is required that you install Cobra – you can install it by executing the
+It is required that you install Cobra before beginning – you can install it by executing the
 following command:
 
-    $ go get github.com/spf13/cobra/cobra
+    go get github.com/spf13/cobra/cobra
 
 Cobra comes with its own command line utility named `cobra`, which is usually installed
 on `~/go/bin/cobra`. Although it is possible to create command line utilities without
-using the `cobra` utility, it would really take more time and effort to do so.
+using the `cobra` utility, cobra helps to save time by reducing the overhead and complexity often required to execute these tasks.
 
-Should you wish to learn more about the commands supported by `cobra`, you should execute
+If you wish to learn more about the commands supported by `cobra`, you should execute
 `~/go/bin/cobra` without any command line parameters:
 
-        $ ~/go/bin/cobra
-        Cobra is a CLI library for Go that empowers applications.
-        This application is a tool to generate the needed files
-        to quickly create a Cobra application.
+    ~/go/bin/cobra
 
-        Usage:
-          cobra [command]
+{{< output >}}
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.
 
-        Available Commands:
-          add         Add a command to a Cobra Application
-          help        Help about any command
-          init        Initialize a Cobra Application
+Usage:
+cobra [command]
 
-        Flags:
-          -a, --author string    author name for copyright attribution (default "YOUR NAME")
-              --config string    config file (default is $HOME/.cobra.yaml)
-          -h, --help             help for cobra
-          -l, --license string   name of license for the project
-              --viper            use Viper for configuration (default true)
+Available Commands:
+add         Add a command to a Cobra Application
+help        Help about any command
+init        Initialize a Cobra Application
 
-        Use "cobra [command] --help" for more information about a command.
+Flags:
+-a, --author string    author name for copyright attribution (default "YOUR NAME")
+--config string    config file (default is $HOME/.cobra.yaml)
+-h, --help             help for cobra
+-l, --license string   name of license for the project
+--viper            use Viper for configuration (default true)
+
+Use "cobra [command] --help" for more information about a command.
+{{< /output >}}
 
 All Cobra projects follow the same development cycle. You first use the `cobra` tool to initialize
-a project, then you create commands and subcommands and then you make the desired changes to the
+a project, then you create commands and subcommands and finally you make the desired changes to the
 generated Go source files in order to support the desired functionality.
 
 {{< note >}}
@@ -85,57 +88,76 @@ after executing `cobra init <project_name>` to create a new Cobra project, you w
 need to change to the new directory.
 {{< /note >}}
 
-## A utility with first level commands
+## A Utility With First Level Commands
 
 In this section you will learn how to develop the skeleton of a simple command
 line utility with three commands, named `insert`, `delete` and `list`.
 
-### The initial structure
+### The Initial Structure
 
-So, in order to create our first command line utility, which is going to be called `three`,
+In order to create our first command line utility, which is going to be called `three`,
 we will need to execute the following commands:
 
-    $ ~/go/bin/cobra init three
-        $ cd ~/go/src/three
-        $ ~/go/bin/cobra add insert
-        $ ~/go/bin/cobra add delete
-        $ ~/go/bin/cobra add list
+    ~/go/bin/cobra init three
+    cd ~/go/src/three
+    ~/go/bin/cobra add insert
+    ~/go/bin/cobra add delete
+    ~/go/bin/cobra add list
 
 The `cobra add` command creates new commands along with the required files.
 
 The directory structure and the files in the `three` directory can be seen from the
 output of the `tree(1)` command:
 
-    $ tree
-    .
-    ├── LICENSE
-    ├── cmd
-    │   ├── delete.go
-    │   ├── insert.go
-    │   ├── list.go
-    │   └── root.go
-    └── main.go
+    tree
+{{< output >}}
+.
+├── LICENSE
+├── cmd
+│   ├── delete.go
+│   ├── insert.go
+│   ├── list.go
+│   └── root.go
+└── main.go
 
-    1 directory, 6 files
+1 directory, 6 files
+{{< /output >}}
+
+{{< note >}}
+`Tree` is not installed by default on many distributions. You can install it manually using your package manager, or skip the steps that use it if you feel comfortable with your understanding of your directory structure. If you're using the `apt` package manager, tree can be installed with the following command:
+
+    sudo apt install tree
+{{< /note >}}
 
 If you try to interact with `three` at this point, you will get the following kind of output:
 
-    $ go run main.go insert
-    insert called
-        $ go run main.go delete
+    go run main.go insert
+{{< output >}}
+insert called
+{{< /output >}}
+
+    go run main.go delete
+{{< output >}}
     delete called
-        $ go run main.go list
+{{< /output >}}
+
+    go run main.go list
+{{< output >}}
     list called
-        $ go run main.go doesNotExist
+{{< /output >}}
+
+    go run main.go doesNotExist
+{{< output >}}
     Error: unknown command "doesNotExist" for "three"
     Run 'three --help' for usage.
     unknown command "doesNotExist" for "three"
     exit status 1
+{{< /output >}}
 
 Therefore, currently all desired commands are supported but have no functionality
 because their implementation is minimal.
 
-### Looking at the Go code
+### Looking at the Go Code
 
 The automatically generated implementation of the `delete` command can be found
 at `./cmd/delete.go` and is currently as follows:
@@ -198,7 +220,7 @@ the `Run` field of the `deleteCmd` structure variable.
 
 The other two commands have similar implementations.
 
-### Changing the implementation of a command
+### Changing the Implementation of a Command
 
 After making the desired changes and removing the code comments, the implementation of
 the `delete` command will be as follows:
@@ -231,7 +253,7 @@ use of Cobra, the implementation of the `delete` command will stop here.
 You can experiment on your own by trying to change the default implementation of
 the `insert` and `list` commands.
 
-## A utility with first and second level commands
+## A Utility With First and Second Level Commands
 
 In this section you will learn how to add subcommands to existing commands – subcommands
 are commands that are associated with specific commands only. In this case we are going
@@ -239,23 +261,23 @@ to implement the `all` subcommand for the `delete` and `list` commands of the ut
 that we created in the previous section. The `insert` command does not need such as a
 functionality.
 
-### The initial structure
+### The Initial Structure
 
 Once again, our own utility will begin by using the `cobra` utility and executing the
 following commands:
 
-    $ ~/go/bin/cobra init three_all
-        $ cd ~/go/src/three_all
-        $ ~/go/bin/cobra add insert
-        $ ~/go/bin/cobra add delete
-        $ ~/go/bin/cobra add list
+    ~/go/bin/cobra init three_all
+    cd ~/go/src/three_all
+    ~/go/bin/cobra add insert
+    ~/go/bin/cobra add delete
+    ~/go/bin/cobra add list
 
-### Implementing a subcommand
+### Implementing a Subcommand
 
-In this part we are going to add the `all` subcommand. In order to create the `all`
-subcommand for the `delete` command you will need to execute the following:
+In this section we are going to add the `all` subcommand. In order to create the `all`
+subcommand to the `delete` command you will need to execute the following:
 
-    $ ~/go/bin/cobra add all -p 'deleteCmd'
+    ~/go/bin/cobra add all -p 'deleteCmd'
 
 In this case, you should use the internal representation of the `delete` command,
 which is `deleteCmd`. The fact that `all` is a subcommand of `delete` is defined
@@ -270,20 +292,22 @@ func init() {
 However, if you try to create the `all` subcommand for `list` you will get
 the following error message:
 
-        $ ~/go/bin/cobra add all -p 'listCmd'
+    ~/go/bin/cobra add all -p 'listCmd'
+{{< output >}}
         Error: /Users/mtsouk/go/src/three_all/cmd/all.go already exists
+{{< /output >}}
 
 There is a trick that can help you bypass that. You can rename the existing `./cmd/add.go` file
 to whatever you want as long as it is unique. However, a rational filename would be
 `./cmd/delete_all.go`:
 
-    $ mv cmd/all.go cmd/delete_all.go
+    mv cmd/all.go cmd/delete_all.go
 
 Now, you can execute the following command without getting any error messages:
 
-    $ ~/go/bin/cobra add all -p 'listCmd'
+    ~/go/bin/cobra add all -p 'listCmd'
 
-For everything to be correct and avoid conflicts in command names, you will need to
+For everything to function correctly and to avoid conflicts in command names, you will need to
 either change the name of the `all` subcommand in `./cmd/all.go` or in `./cmd/delete_all.go`.
 In this case, the change will happen in `./cmd/delete_all.go`:
 
@@ -307,37 +331,55 @@ var delete_allCmd = &cobra.Command{
 func init() {
         deleteCmd.AddCommand(delete_allCmd)
 }
-{{< /file >}} 
+{{< /file >}}
 
 So the internal name of the `all` subcommand for `delete` is now `delete_allCmd`.
 
-### Using subcommands
+### Using Subcommands
 
 In this subsection we are going to test the commands and subcommands that we
 have created previously:
 
-    $ go run main.go delete
-    delete called
-        $ go run main.go delete all
-        all in delete was called!
-        $ go run main.go list
-    list called
-        $ go run main.go list all
-    all called
-        $ go run main.go insert all
-    insert called
-        $ go run main.go insert
-    insert called
+    go run main.go delete
+{{< output >}}
+delete called
+{{< /output >}}
+
+    go run main.go delete all
+{{< output >}}
+all in delete was called!
+{{< /output >}}
+
+    go run main.go list
+{{< output >}}
+list called
+{{< /output >}}
+
+    go run main.go list all
+{{< output >}}
+all called
+{{< /output >}}
+
+    go run main.go insert all
+{{< output >}}
+insert called
+{{< /output >}}
+
+    go run main.go insert
+{{< output >}}
+insert called
+{{< /output >}}
 
 The `all` subcommand is considered a command line argument to the `insert` command,
 which is the reason that you get that output from `go run main.go insert all`.
 
-### The directory structure of the source code
+### The Directory Structure of the Source Code
 
 The `tree(1)` utility will reveal the directory structure of the final version
 of the utility:
 
-    $ tree
+    tree
+{{< output >}}
     .
     ├── LICENSE
     ├── cmd
@@ -350,23 +392,24 @@ of the utility:
     └── main.go
 
     1 directory, 8 files
+{{< /output >}}
 
-## A utility with command line flags
+## A Utility With Command Line Flags
 
 This time, we are going to create a command line utility with a global flag and
 a flag that is connected to a specific command only.
 
-### The initial structure
+### The Initial Structure
 
 We are going to create the initial version of the utility, which is called `my_flags`,
 as follows:
 
-    $ ~/go/bin/cobra init my_flags
-        $ cd ~/go/src/my_flags
-        $ ~/go/bin/cobra add count
-        $ ~/go/bin/cobra add version
+    ~/go/bin/cobra init my_flags
+    cd ~/go/src/my_flags
+    ~/go/bin/cobra add count
+    ~/go/bin/cobra add version
 
-### Implementing flags
+### Implementing Flags
 
 The general idea here is that global flags are defined in `./cmd/root.go` whereas
 flags associated with specific commands are defined and handled inside the implementation
@@ -412,8 +455,7 @@ func initConfig() {
 }
 {{< /file >}}
 
-The name of the global command line flag is `developer`, is created in the `init()` function and
-is accessed in the `initConfig()` function. However, `developer` can also be accessed from
+The name of the global command line flag is `developer`, created in the `init()` function and accessed in the `initConfig()` function. However, `developer` can also be accessed from
 the other Go source files of the utility. The default value of `developer` is `Unknown Developer!`.
 
 In order to add a flag to the `count` command, we will need to change the `./cmd/count.go`
@@ -460,11 +502,12 @@ The `count` flag has a default value of `10`.
 In the previous code you can also see how to access the `developer` flag that was defined in
 `./cmd/root.go`.
 
-### Testing the utility
+### Testing the Utility
 
 In this subsection we are going to test the implementation of flags in the `my_flags` utility:
 
-    $ go run main.go
+    go run main.go
+{{< output >}}
         A longer description.
 
         Usage:
@@ -480,28 +523,44 @@ In this subsection we are going to test the implementation of flags in the `my_f
           -h, --help               help for my_flags
 
         Use "my_flags [command] --help" for more information about a command.
-        $ go run main.go count
+{{< /output >}}
+
+    go run main.go count
+{{< output >}}
         Developer: Unknown Developer!
         count called
         0 1 2 3 4 5 6 7 8 9
         From count command - Developer: Unknown Developer!
-        $ go run main.go count --number 15
+{{< /output >}}
+
+    go run main.go count --number 15
+{{< output >}}
         Developer: Unknown Developer!
         count called
+
         0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
         From count command - Developer: Unknown Developer!
-        $ go run main.go count --number 15 --developer "Mihalis Tsoukalos"
+{{< /output >}}
+
+    go run main.go count --number 15 --developer "Mihalis Tsoukalos"
+{{< output >}}
         Developer: Mihalis Tsoukalos
         count called
         0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
         From count command - Developer: Mihalis Tsoukalos
-        $ go run main.go version
+{{< /output >}}
+
+    go run main.go version
+{{< output >}}
         Developer: Unknown Developer!
         version called
-        $ go run main.go version --developer "Mihalis Tsoukalos"
+        go run main.go version --developer "Mihalis Tsoukalos"
         Developer: Mihalis Tsoukalos
         version called
-        $ go run main.go version --count 20
+{{< /output >}}
+
+    go run main.go version --count 20
+{{< output >}}
         Error: unknown flag: --count
         Usage:
           my_flags version [flags]
@@ -514,13 +573,15 @@ In this subsection we are going to test the implementation of flags in the `my_f
 
         unknown flag: --count
         exit status 1
+{{< /output >}}
 
-### The directory structure of the source code
+### The Directory Structure of the Source Code
 
 The `tree(1)` utility will reveal the directory structure of the final version
 of the utility:
 
-    $ tree
+    tree
+{{< output >}}
         .
         ├── LICENSE
         ├── cmd
@@ -530,24 +591,25 @@ of the utility:
         └── main.go
 
         1 directory, 5 files
+{{< /output >}}
 
-## Creating command aliases
+## Creating Command Aliases
 
 In this last section of this guide, we are going to create a utility where some of
 its commands have aliases. This is extremely handy when you want to call long commands
 using shorter names.
 
-### The initial structure
+### The Initial Structure
 
 As expected, the initial version of the utility, which is going to be called `my_aliases`,
 will be created using the `cobra` utility:
 
-    $ ~/go/bin/cobra init my_aliases
-        $ cd ~/go/src/my_aliases
-        $ ~/go/bin/cobra add delete
-        $ ~/go/bin/cobra add version
+    ~/go/bin/cobra init my_aliases
+    cd ~/go/src/my_aliases
+    ~/go/bin/cobra add delete
+    ~/go/bin/cobra add version
 
-### Implementing the aliases of a command
+### Implementing the Aliases of a Command
 
 We are going to implement aliases for the `delete` command only. The final implementation
 of the `delete` command as found in `./cmd/delete.go` will be as follows:
@@ -580,17 +642,25 @@ A single Go statement is needed for defining the two aliases of the `delete` com
 – this is the line that begins with `Aliases`, which is a String slice. You can add as
 many values as you wish to that String slice.
 
-### Testing command aliases
+### Testing Command Aliases
 
 If everything is correct, the following three commands will be equivalent
 and generate the same output:
 
-    $ go run main.go delete
+    go run main.go delete
+{{< output >}}
     delete called
-        $ go run main.go dlt
+{{< /output >}}
+
+    go run main.go dlt
+{{< output >}}
     delete called
-        $ go run main.go del
+{{< /output >}}
+
+    go run main.go del
+{{< output >}}
     delete called
+{{< /output >}}
 
 {{< note >}}
 Although all three aliases are equivalent and execute the same code, the
