@@ -410,7 +410,7 @@ To test out deploying an app on your new cluster, launch the WordPress app from 
 Avoid using symbols in the password you enter, as some symbols can cause syntax errors for this Rancher chart.
 {{< /note >}}
 
-1.  In the **Database Settings** section, enter a password for WordPress' database user. Then set **MariaDB Persistent Volume Enabled** to **True** and select the **linode-block-storage** option from the **Default StorageClass for MariaDB** dropdown menu:
+1.  In the **Database Settings** section, enter a password for WordPress' database user. Then set **MariaDB Persistent Volume Enabled** to **True**, and select the The **Use the default class** option from the **Default StorageClass for MariaDB** dropdown menu:
 
     ![Rancher WordPress setup form - Database Settings](wordpress-app-form-database-settings.png "Rancher WordPress setup form - Database Settings")
 
@@ -445,6 +445,14 @@ The default value for the **MariaDB Volume Size** field is 8GiB, but the minimum
     ![Rancher app detail view - NodeBalancer HTTP endpoint highlighted](wordpress-app-http-nodebalancer-endpoint-highlighted.png "Rancher app detail view - NodeBalancer HTTP endpoint highlighted")
 
     Your WordPress site should open in a new browser tab.
+
+{{< note >}}
+This feature is not currently fully supported for our Toronto data center. To use the provided link, you just need to change "toronto1" in the provided URLs to "tor1". A full working URL will appear as follows:
+
+`http://nb-192-0-2-0.tor1.nodebalancer.linode.com`
+
+{{< /note >}}
+
 
 1.  Visit the wp-login.php page on your site (e.g. at `http://your-nodebalancer-name.newark.nodebalancer.linode.com/wp-login.php`). You should be able to login with the WordPress admin username and password you specified earlier in the app's form.
 
@@ -526,6 +534,7 @@ Rancher also provides an easy way to scale your app's deployments:
 
     ![Rancher deployed apps list - WordPress app completed provisioning](default-project-app-view-wordpress-provisioned-link-highlighted.png "Rancher deployed apps list - WordPress app completed provisioning")
 
+
 1.  In the **Workloads** section, click on the **wordpress-wordpress** link in the **Name** column for that deployment:
 
     ![Rancher WordPress workloads - deployment name highlighted](wordpress-app-wordpress-workload-link-highlighted.png "Rancher WordPress workloads - deployment name highlighted")
@@ -535,6 +544,9 @@ Rancher also provides an easy way to scale your app's deployments:
     ![Rancher WordPress deployment detail view - config scale highlighted](wordpress-workload-config-scale-highlighted.png "Rancher WordPress deployment detail view - config scale highlighted")
 
 1.  A second pod will appear in the **Pods** section on this page, and there will be an **Updating** label at the top of the page. You may see a series of warning messages about the new pod not being available. Eventually, the new pod will be labelled as **Running**.
+
+
+{{< note >}} Although rancher does support the ability to interact directly with individual storage volumes without a running application,this feature is not available at this time. The scaling method described in this section of the guide will apply complete replication of your application and volumes. {{< /note >}}
 
 ## Set Up GitHub Authentication
 
