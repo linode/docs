@@ -161,6 +161,10 @@ The Cloud Manager allows you to add private IP addresses for fast and secure con
 
 If you'd like to add more than one private IP address to your Linode, please [contact support](/docs/platform/billing-and-support/support/).
 
+{{< note >}}
+Though Private IP addresses can help to reduce your exposure to risk, they are still visible to other Linodes in the data center with you. Depending on your security needs, you may want to add additional [firewall rules](https://linode.com/docs/security/firewalls/) to account for your new IP.
+{{< /note >}}
+
 ## Adding Public IP Addresses
 
 You can use the Linode Manager to add additional public IP addresses to your account. However, due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/platform/billing-and-support/support/) with your justification.
