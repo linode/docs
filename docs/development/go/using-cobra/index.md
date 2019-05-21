@@ -30,7 +30,7 @@ This guide is written for a non-root user. Depending on your installation, some 
 
 ## Using the Cobra Go Package
 
-Cobra is a very handy and popular Go package that allows you to develop command line utilities with commands, subcommands, aliases, configuration files,etc. If you have ever used `hugo`, `docker` or `kubectl` you will have some idea of what Cobra does as all of these tools were developed using Cobra as a part of their foundation.
+Cobra is a very handy and popular Go package that allows you to develop command line utilities with commands, subcommands, aliases, configuration files, etc. If you have ever used `hugo`, `docker` or `kubectl` you will have some idea of what Cobra does as all of these tools were developed using Cobra as a part of their foundation.
 
 This guide is going to implement four scenarios:
 
@@ -41,13 +41,13 @@ This guide is going to implement four scenarios:
 
 ## Installing Cobra
 
-It is required that you install Cobra before beginning – you can install it by executing the
+You must install Cobra before beginning – you can install it by executing the
 following command:
 
     go get github.com/spf13/cobra/cobra
 
 Cobra comes with its own command line utility named `cobra`, which is usually installed
-on `~/go/bin/cobra`. Although it is possible to create command line utilities without
+in `~/go/bin/cobra`. Although it is possible to create command line utilities without
 using the `cobra` utility, cobra helps to save time by reducing the overhead and complexity often required to execute these tasks.
 
 If you wish to learn more about the commands supported by `cobra`, you should execute
@@ -79,7 +79,7 @@ Use "cobra [command] --help" for more information about a command.
 {{< /output >}}
 
 All Cobra projects follow the same development cycle. You first use the `cobra` tool to initialize
-a project, then you create commands and subcommands and finally you make the desired changes to the
+a project, then you create commands and subcommands, and finally you make the desired changes to the
 generated Go source files in order to support the desired functionality.
 
 {{< note >}}
@@ -91,7 +91,7 @@ need to change to the new directory.
 ## A Utility With First Level Commands
 
 In this section you will learn how to develop the skeleton of a simple command
-line utility with three commands, named `insert`, `delete` and `list`.
+line utility with three commands named `insert`, `delete`, and `list`.
 
 ### The Initial Structure
 
@@ -258,7 +258,7 @@ the `insert` and `list` commands.
 In this section you will learn how to add subcommands to existing commands – subcommands
 are commands that are associated with specific commands only. In this case we are going
 to implement the `all` subcommand for the `delete` and `list` commands of the utility
-that we created in the previous section. The `insert` command does not need such as a
+that we created in the previous section. The `insert` command does not need such a
 functionality.
 
 ### The Initial Structure
@@ -303,7 +303,7 @@ to whatever you want as long as it is unique. However, a rational filename would
 
     mv cmd/all.go cmd/delete_all.go
 
-Now, you can execute the following command without getting any error messages:
+Now you can execute the following command without getting any error messages:
 
     ~/go/bin/cobra add all -p 'listCmd'
 
@@ -396,7 +396,7 @@ of the utility:
 
 ## A Utility With Command Line Flags
 
-This time, we are going to create a command line utility with a global flag and
+This time we are going to create a command line utility with a global flag and
 a flag that is connected to a specific command only.
 
 ### The Initial Structure
@@ -458,7 +458,7 @@ func initConfig() {
 The name of the global command line flag is `developer`, created in the `init()` function and accessed in the `initConfig()` function. However, `developer` can also be accessed from
 the other Go source files of the utility. The default value of `developer` is `Unknown Developer!`.
 
-In order to add a flag to the `count` command, we will need to change the `./cmd/count.go`
+In order to add a flag to the `count` command we will need to change the `./cmd/count.go`
 file – its final version will be as follows:
 
 {{< file "./cmd/count.go" go >}}
@@ -495,8 +495,7 @@ func init() {
 }
 {{< /file >}}
 
-The name of the local command line flag that is associated with the `count` command is `number`,
-is created in the `init()` function and is accessed in the implementation of the `count` command.
+The name of the local command line flag that is associated with the `count` command is `number`. It is created in the `init()` function and is accessed in the implementation of the `count` command.
 The `count` flag has a default value of `10`.
 
 In the previous code you can also see how to access the `developer` flag that was defined in
@@ -595,7 +594,7 @@ of the utility:
 
 ## Creating Command Aliases
 
-In this last section of this guide, we are going to create a utility where some of
+In this last section of this guide we are going to create a utility where some of
 its commands have aliases. This is extremely handy when you want to call long commands
 using shorter names.
 
@@ -612,7 +611,7 @@ will be created using the `cobra` utility:
 ### Implementing the Aliases of a Command
 
 We are going to implement aliases for the `delete` command only. The final implementation
-of the `delete` command as found in `./cmd/delete.go` will be as follows:
+of the `delete` command, as found in `./cmd/delete.go`, will be as follows:
 
 {{< file "./cmd/delete.go" go >}}
 package cmd
