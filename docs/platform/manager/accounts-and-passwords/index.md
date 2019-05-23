@@ -89,6 +89,17 @@ You can permanently remove a user account from the Linode Cloud Manager. Here's 
 
 The account will be removed, and the user will no longer be able to access the Linode Cloud Manager.
 
+### Changing a Username
+
+You can update a username, including your own, from the Linode Cloud Manager.
+
+1.  Click the **Account** link in the sidebar.
+1.  Click the **Users** tab.
+1.  Locate the user in the list and click on their current username.
+1.  Enter a new username in the **Username** field.
+    ![Use the Linode Cloud Manager to Update a Username](accounts-update-a-username.png "Use the Linode Cloud Manager to Update a Username.")
+1.  Click **Save**.
+
 ## Email Addresses and Contact Information
 
 Linode uses the contact information on file in your account to notify and bill you. Keep this information current to prevent service interruptions. It's especially important to keep your email address current.
