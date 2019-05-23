@@ -281,6 +281,37 @@ Using a *firewall* to block unwanted inbound traffic to your Linode provides a h
 
 *   [UFW](/docs/security/firewalls/configure-firewall-with-ufw/) provides an iptables frontend for Debian and Ubuntu.
 
+## Common Lockout Recovery Steps
+
+If for whatever reason you find yourself locked out of your Linode after putting your security controls into place, there are still a number of ways that you can regain access to your Linode.
+
+* Access your Linode through our out-of-band [Lish console](https://www.linode.com/docs/platform/manager/using-the-linode-shell-lish/) to regain access to the internals of your Linode without relying on SSH.
+
+* If you need to re-enable password authentication and/or root login over ssh to your Linode, you can do this by reversing the following sections of this file to reflect these changes
+
+    {{< file "/etc/ssh/sshd_config" aconf >}}
+# Authentication:
+...
+PermitRootLogin yes
+...
+PasswordAuthentication yes
+{{< /file >}}
+
+    From there, you just need to restart SSH.
+
+    If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+)
+
+        sudo systemctl restart sshd
+
+    If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
+
+        sudo service sshd restart
+
+* If you need to remove your public key from your Linode, you can enter the following command:
+
+        rm ~/.ssh/authorized_keys
+
+    You can then replace your key by re-following the [Create an Authentication Key-pair](/docs/security/securing-your-server/#create-an-authentication-key-pair) section of this guide.
 
 ## Next Steps
 
