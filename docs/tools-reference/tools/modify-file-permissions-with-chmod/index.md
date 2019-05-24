@@ -122,7 +122,7 @@ Binary | Octal | Permission
   110  |   6   |   rw-
   111  |   7   |   rwx
 
-Each digit is independent of the other two. Therefore, `750` means the current user can read, write, and execute while the group and others cannot write.
+Each digit is independent of the other two. Therefore, `750` means the current user can read, write, and execute, the group cannot write, and others cannot read, write, or execute.
 
 `744`, which is a typical default permission, allows read, write, and execute permissions for the owner, and read permissions for the group and "world" users.
 
