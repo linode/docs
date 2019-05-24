@@ -169,8 +169,8 @@ The Linode Manager allows you to add private IP addresses for fast and secure co
 If you'd like to add more than one private IP address to your Linode, please [contact support](/docs/platform/billing-and-support/support/).
 
 {{< note >}}
-Though Private IP addresses can help to reduce your exposure to risk, they are still visible to other Linodes in the data center with you. Depending on your security needs, you may want to add additional [firewall rules](https://linode.com/docs/security/firewalls/) to account for your new IP.
-{{< /note >}}
+Private IPs in the same data center can communicate over the private network. This means a Linode's private IP address is accessible to all Linodes in a data center. It is recommended to set up firewall rules for your Linode to secure its network traffic. See our [firewall guides](/docs/security/firewalls/) for details on setting up firewall rules.
+{{</ note >}}
 
 ## Adding Public IP Addresses
 
