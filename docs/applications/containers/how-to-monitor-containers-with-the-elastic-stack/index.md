@@ -22,11 +22,11 @@ The [Elastic Stack](https://www.elastic.co/products) can monitor a variety of da
 
 ## Before you Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running a recent Linux distribution (such as Ubuntu 18.04 or CentOS 7), including setting the hostname and timezone.
+1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running a recent Linux distribution (such as Ubuntu 18.04 LTS or CentOS 7), including setting the hostname and timezone.
 
 1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall (UFW) on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over for the rest of this guide:
+1.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall (UFW) on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over SSH for the rest of this guide:
 
         sudo ufw allow ssh
 
@@ -34,14 +34,14 @@ The [Elastic Stack](https://www.elastic.co/products) can monitor a variety of da
 
         sudo apt update && sudo apt upgrade
 
-    While on rpm-based systems such as CentOS, use:
+    For rpm-based systems such as CentOS, use:
 
         sudo yum update
 
 1.   Install Docker on your Linode by following [the installation guide from the Docker project](https://docs.docker.com/).
 
 {{< note >}}
-The services in this guide bind to localhost-only, which means they are not accessible outside of the Linode from remote hosts. This ensures that Elasticsearch's REST API remains private to localhost and is not remotely accessible from the internet. If you take steps beyond this guide to configure Elasticsearch and related components further, ensure that your firewall is in place and correctly blocking traffic to the Elasticsearch and Kibana nodes from the internet (ports 9200 and 9300 for Elasticsearch and 5601 for Kibana) to keep them properly secured.
+The services in this guide bind to localhost only, which means they are not accessible outside of the Linode from remote hosts. This ensures that Elasticsearch's REST API remains private to localhost and is not remotely accessible from the internet. If you take steps beyond this guide to configure Elasticsearch and related components further, ensure that your firewall is in place and correctly blocking traffic to the Elasticsearch and Kibana nodes from the internet (ports 9200 and 9300 for Elasticsearch and 5601 for Kibana) to keep them properly secured.
 {{< /note >}}
 
 ## Install Elastic Stack Components
@@ -115,57 +115,57 @@ In order to properly discover and capture container metrics, each component of t
 
 ### Elasticsearch
 
-In the file `/etc/elasticsearch/jvm.options`, two values should be uncommented that begin with `-Xm` that instruct the JVM to allocate a specific amount of memory. The recommend value for these settings is 50% of the available system RAM. For example, on a system with 1G of RAM, these settings should be:
+In the file `/etc/elasticsearch/jvm.options` two values that begin with `-Xm` should be uncommented. These settings instruct the JVM to allocate a specific amount of memory. The recommend value for these settings is 50% of the available system RAM. For example, on a system with 1G of RAM, these settings should be:
 
 {{< file "/etc/elasticsearch/jvm.options" yml >}}
 -Xms512m
 -Xmx512m
 {{< /file >}}
 
-Before starting Elasticsearch, install some necessary plugins to process geoip and user-agent data.
+1.  Before starting Elasticsearch, install some necessary plugins to process geoip and user-agent data.
 
-    sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-user-agent
-    sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-geoip
+        sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-user-agent
+        sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-geoip
 
-With these setting in place, start the `elasticsearch` service.
+1.  With these setting in place, start the `elasticsearch` service.
 
-    sudo systemctl start elasticsearch
+        sudo systemctl start elasticsearch
 
-Wait for a short period of time for Elasticsearch to start, then check that Elasticsearch is responding over the REST API:
+1.  Wait for a short period of time for Elasticsearch to start, then check that Elasticsearch is responding over the REST API:
 
-    curl http://localhost:9200
+        curl http://localhost:9200
 
-A response similar to the following should return:
+    You should see output similar to the following:
 
-    {
-      "name" : "iQEk_-M",
-      "cluster_name" : "elasticsearch",
-      "cluster_uuid" : "tQeLgbKrTNOp2AoqdmTItw",
-      "version" : {
-        "number" : "6.5.4",
-        "build_flavor" : "default",
-        "build_type" : "deb",
-        "build_hash" : "d2ef93d",
-        "build_date" : "2018-12-17T21:17:40.758843Z",
-        "build_snapshot" : false,
-        "lucene_version" : "7.5.0",
-        "minimum_wire_compatibility_version" : "5.6.0",
-        "minimum_index_compatibility_version" : "5.0.0"
-      },
-      "tagline" : "You Know, for Search"
-    }
+        {
+          "name" : "iQEk_-M",
+          "cluster_name" : "elasticsearch",
+          "cluster_uuid" : "tQeLgbKrTNOp2AoqdmTItw",
+          "version" : {
+                "number" : "6.5.4",
+                "build_flavor" : "default",
+                "build_type" : "deb",
+                "build_hash" : "d2ef93d",
+                "build_date" : "2018-12-17T21:17:40.758843Z",
+                "build_snapshot" : false,
+                "lucene_version" : "7.5.0",
+                "minimum_wire_compatibility_version" : "5.6.0",
+                "minimum_index_compatibility_version" : "5.0.0"
+          },
+          "tagline" : "You Know, for Search"
+        }
 
-Elasticsearch should now be ready to index documents.
+    Elasticsearch is ready to index documents.
 
 ### Kibana
 
-Most of Kibana's default settings are suitable for the purposes of this guide. No configuration changes are necessary, so start the `kibana` service now.
+Most of Kibana's default settings are suitable for the purposes of this guide. No configuration changes are necessary; start the `kibana` service.
 
     sudo systemctl start kibana
 
 ### Filebeat
 
-In order for Filebeat to capture started containers dynamically, the `docker` input should be used. This alleviates the need to specify Docker log file paths and instead permits Filebeat to discover containers when they start.
+Use the `docker` input to enable Filebeat to capture started containers dynamically. This alleviates the need to specify Docker log file paths and instead permits Filebeat to discover containers when they start.
 
 1.  Add the following near the top of the Filebeat configuration file to instruct the `filebeat` daemon to capture Docker container logs. These lines should be entered under the configuration key `filebeat.inputs`:
 
@@ -197,15 +197,15 @@ filebeat.autodiscover:
 
         sudo /usr/bin/filebeat modules enable nginx
 
-1.  The remainder of the configuration file will instruct Filebeat to send logs to the locally-running Elasticsearch instance, which can be left unchanged. Filebeat can now be started:
+1.  The remainder of the configuration file will instruct Filebeat to send logs to the locally-running Elasticsearch instance, which can be left unchanged. Start Filebeat:
 
         sudo systemctl start filebeat
 
 ### Metricbeat
 
-Like Filebeat, Metricbeat should be similarly configured in order to dynamically discover running containers to monitor.
+Like Filebeat, configure Metricbeat similarly to dynamically discover running containers to monitor.
 
-1.  Metricbeat uses a module in order to collect container metrics. Issue the following command to enable the `docker` and `nginx` modules:
+1.  Metricbeat uses a module to collect container metrics. Issue the following command to enable the `docker` and `nginx` modules:
 
         sudo /usr/bin/metricbeat modules enable docker
         sudo /usr/bin/metricbeat modules enable nginx
@@ -214,7 +214,7 @@ Like Filebeat, Metricbeat should be similarly configured in order to dynamically
 
     {{< file "/etc/metricbeat/metricbeat.yml" yml >}}
 setup.dashboards.enabled: true
-    {{< /file >}}
+{{< /file >}}
 
 1.  The remainder of the configuration file will instruct Metricbeat to send logs to the locally-running Elasticsearch instance, which can be left unchanged. Metricbeat can now be started:
 
@@ -222,51 +222,54 @@ setup.dashboards.enabled: true
 
 ## Visualizing Container Logs and Metrics
 
-The following example will demonstrate how Filebeat and Metricbeat automatically capture container data which can be accessed within Kibana.
+The following example demonstrates how Filebeat and Metricbeat automatically capture container data which can be accessed within Kibana.
 
-1.  To begin, run a simple nginx Docker container on your Linode. The following command will run the web server in the background and expose the listening HTTP service under a random port number. The `--label` argument is a [hint](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover-hints.html) to let Filebeat automatically parse the log format of certain container types, which in this case is nginx.
+1.  To begin, run a simple nginx Docker container on your Linode.
 
         sudo docker run --name nginx -P -d --label co.elastic.logs/module=nginx nginx
 
-1.  In order to open a secure connection to Kibana, open an SSH tunnel to port 5601 on your Linode. A comprehensive guide to using SSH tunnels on a variety of platforms is available in our [Create an SSH Tunnel for MySQL guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/), but the simplest method is to run the following command in new terminal window. This forwards port 5601 locally to port 5601 on your Linode.
+    - This command will run the web server in the background and expose the listening HTTP service under a random port number.
+    - The `--label` argument is a [hint](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover-hints.html) to let Filebeat automatically parse the log format of certain container types, which in this case is nginx.
+
+1.  To open a secure connection to Kibana, open an SSH tunnel to port 5601 on your Linode.
 
         ssh -L 5601:localhost:5601 <user@ip-address>
 
-    Replace `<user@ip-address>` with the username and IP address of your Linode.
+    - Replace `<user@ip-address>` with the username and IP address of your Linode.
+    - This forwards port 5601 locally to port 5601 on your Linode.
+    - A comprehensive guide to using SSH tunnels on a variety of platforms is available in our [Create an SSH Tunnel for MySQL guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/).
 
-1.  Browse to `http://localhost:5601` in your browser, which should display the following initial landing page for Kibana.
+1.  Browse to `http://localhost:5601` in your browser, which will display the following initial landing page for Kibana.
 
     ![Kibana 6 Landing Page](kibana-landing-page.png "Kibana 6 Landing Page")
 
-    Select the "Management" link in the lower left sidebar.
-
-1.  The following page will be displayed. Select "Index Patterns" to enter the Index Pattern configuration page.
+1.  Click the **Management** link in the lower left sidebar. The following page will be displayed. Then, click **Index Patterns** to enter the Index Pattern configuration page.
 
     ![Kibana 6 Management](kibana-management.png "Kibana 6 Management")
 
-1.  Index Patterns dictate how Kibana understands indices that are present in Elasticsearch. In order for some visualizations to display properly, a default index pattern must first be configured. Select `filebeat-*` on the left side of the page to configure the `filebeat-*` index pattern.
+1.  Index Patterns dictate how Kibana understands indices that are present in Elasticsearch. In order for some visualizations to display properly, a default index pattern must first be configured. Select **filebeat-\*** on the left side of the page to configure the filebeat-* index pattern.
 
     ![Kibana 6 Index Patterns](./kibana-filebeat-index.png "Kibana 6 Index Patterns")
 
-1.  Select the star icon in the upper right corner of the page to select this index pattern as the default in Kibana.
+1.  Click the **star icon** in the upper right corner of the page to set this index pattern as the default in Kibana.
 
     ![Kibana 6 Default Index Pattern](./kibana-filebeat-default.png "Kibana 6 Default Index Pattern")
 
     Kibana is now properly configured with a default index pattern.
 
-1.  Because Filebeat and Metricbeat are configured to configure Elasticsearch and Kibana automatically, dashboards and index patterns are already loaded and ready to be used. Click on "Dashboard" on the left-hand sidebar, which will load the following page.
+1.  Filebeat and Metricbeat are setup to configure Elasticsearch and Kibana automatically, so dashboards and index patterns are loaded and ready to be used. Click on **Dashboard** in the left-hand sidebar, which displays the following page.
 
     ![Kibana 6 Dashboards](kibana-dashboards.png "Kibana 6 Dashboards")
 
-1.  From the Search bar, enter "containers" to find pre-populated dashboards for system containers. Click on the "[Metricbeat Docker] Overview" link.
+1.  In the Search bar, type "container" to display pre-populated dashboards for system containers. Click on the **[Metricbeat Docker] Overview** link.
 
     ![Kibana 6 Container Dashboards](kibana-container-dashboards.png "Kibana 6 Container Dashboards")
 
-1.  The "[Metricbeat Docker] Overview" dashboard will load, which shows several aspects of currently-running container metrics. In the following screenshot, the dashboard displays a list of running containers, the total number of running, paused, and stopped containers, as well as metrics about container resource consumption.
+1.  The **[Metricbeat Docker] Overview** dashboard will load, which shows several aspects of currently-running container metrics. The dashboard displays a list of running containers, the total number of running, paused, and stopped containers, as well as metrics about container resource consumption.
 
     ![Kibana 6 Docker Overview](kibana-docker-overview.png "Kibana 6 Docker Overview")
 
-1.  Scrolling further down will show graphs indicating container resource usage over time, including CPU, memory, and network activity.
+    Scrolling further down, it also shows graphs indicating container resource usage over time, including CPU, memory, and network activity.
 
     ![Kibana 6 Docker Resources](kibana-docker-resources.png "Kibana 6 Docker Resources")
 
@@ -274,7 +277,7 @@ The following example will demonstrate how Filebeat and Metricbeat automatically
 
         docker ps
 
-    The output of this command should look similar to the following:
+    You should see output similar to the following:
 
         CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                   NAMES
         3f0c6d284f1f        nginx               "nginx -g 'daemon of…"   23 minutes ago      Up 23 minutes       0.0.0.0:32769->80/tcp   nginx
@@ -285,19 +288,21 @@ The following example will demonstrate how Filebeat and Metricbeat automatically
 
         for i in $(seq 1 10) ; do curl localhost:<port> ; done
 
-1.  At this point a number of logs should be present in Kibana from this container. Select "Discover" from the left-hand sidebar in the Kibana web interface, which should link to the following screen.
+1.  Now a number of logs are present in Kibana for this container. Click **Discover** in the left-hand sidebar in Kibana. It displays the following screen.
 
     ![Kibana 6 Discover](kibana-discover.png "Kibana 6 Discover")
 
-1.  The histogram near the top of the page indicates the total number of container logs over time, while the table below the graph contains the contents of individual log contents. Clicking on the arrows to the left of each log's timestamp will display the information for each captured log.
+    - The histogram near the top of the page indicates the total number of container logs over time.
+    - The table below the graph contains the contents of individual log contents.
+    - Clicking on the arrows to the left of each log's timestamp will display the information for each captured log.
 
 1.  Try re-issuing the previous `for ...` command to send another ten `curl` requests to the container and observe how the log histogram changes to reflect the new logs.
 
-1.  Select the "Dashboard" item in the Kibana sidebar, and click on it a second time to enter the dashboard selection screen. Search for "nginx" in the search bar.
+1.  Click **Dashboard** in the left-hand sidebar, then click it a second time to enter the dashboard selection screen. Search for "nginx" in the search bar.
 
     ![Kibana 6 NGINX Dashboards](kibana-nginx-dashboards.png "Kibana 6 NGINX Dashboards")
 
-1.  Click on the "[Filebeat Nginx] Access and error logs" dashboard, which will display a dashboard with a number of visualizations regarding nginx activity.
+1.  Click on the **[Filebeat Nginx] Access and error logs** link, which will display a dashboard with a number of visualizations regarding nginx activity.
 
     ![Kibana 6 NGINX Metricbeat](kibana-nginx-metricbeat.png "Kibana 6 NGINX Metricbeat")
 
