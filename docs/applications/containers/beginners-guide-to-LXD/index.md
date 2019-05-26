@@ -41,7 +41,7 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 1.  Complete the [Getting Started](/docs/getting-started/) guide. Select a Linode with at least 2GB of RAM memory, such as the Linode 2GB. Specify the Ubuntu 19.04 distribution. You may specify a different Linux distribution, as long as there is support for **snap packages (snapd)**; see the [More Information](#more-information) for more details.
 
-2.  This guide will use `sudo` wherever possible. Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a limited (non-root) user account, harden SSH access, and remove unnecessary network services.
+2.  This guide will use `sudo` wherever necessary. Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a limited (non-root) user account, harden SSH access, and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -153,8 +153,11 @@ lxd   3.12     10601  stable    canonical✓  -
 1.  Add your non-root Unix user to the `lxd` group:
 
         sudo usermod -a -G lxd username
+    {{< note >}}
+By adding the non-root Unix user account to the `lxd` group, you are able to run any `lxc` commands without prepending `sudo`. Without this addition, you would have needed to prepend `sudo` to each `lxc` command.
+{{< /note >}}
 
-2.  Start a new SSH session for this change to take effect. For example, log out and log in again.
+2.  Start a new SSH session for the previous change to take effect. For example, log out and log in again.
 
 3.  Verify the available free disk space:
 
@@ -197,19 +200,19 @@ This section will create a container, install the Apache web server, and add the
 
 1.  Launch a new container:
 
-        sudo lxc launch ubuntu:18.04 web
+        lxc launch ubuntu:18.04 web
 
 2.  Update the package list in the container.
 
-        sudo lxc exec web -- apt update
+        lxc exec web -- apt update
 
 3.  Install the Apache in the LXD container.
 
-        sudo lxc exec web -- apt install apache2
+        lxc exec web -- apt install apache2
 
 4.  Get a shell in the LXD container.
 
-        sudo lxc exec web -- sudo --user ubuntu --login
+        lxc exec web -- sudo --user ubuntu --login
 
 5.  Edit the default web page for Apache to make a reference that it runs inside a LXD container.
 
@@ -223,7 +226,7 @@ This section will create a container, install the Apache web server, and add the
 
 7.  Add a LXD **proxy device** to redirect connections from the internet to port 80 (HTTP) on the server to port 80 at this container.
 
-        sudo lxc config device add web myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:localhost:80
+        lxc config device add web myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:localhost:80
 
 6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
 
@@ -234,7 +237,7 @@ This section will create a container, install the Apache web server, and add the
 
 *  List all containers:
 
-        sudo lxc list
+        lxc list
 
     {{< output >}}
 To start your first container, try: lxc launch ubuntu:18.04
@@ -246,7 +249,7 @@ To start your first container, try: lxc launch ubuntu:18.04
 
 * List all available repositories of container images:
 
-        sudo lxc remote list
+        lxc remote list
 
     {{< output >}}
 +-----------------+------------------------------------------+---------------+-------------+--------+--------+
@@ -265,7 +268,7 @@ The repository `ubuntu` has container images of Ubuntu versions. The `images` re
 
 *  List all available container images from a repository:
 
-        sudo lxc image list ubuntu:
+        lxc image list ubuntu:
 
     {{< output >}}
 +------------------+--------------+--------+-----------------------------------------------+---------+----------+-------------------------------+
@@ -287,7 +290,7 @@ The output snippet shows the container images Ubuntu versions 18.04 LTS, 18.10, 
 
 *  Get more information about a container image:
 
-        sudo lxc image info ubuntu:b
+        lxc image info ubuntu:b
 
     {{< output >}}
 Fingerprint: 5b72cf46f628b3d60f5d99af48633539b2916993c80fc5a2323d7d841f66afbe
@@ -327,7 +330,7 @@ The output shows the details of the container image including all the available 
 
 *  Launch a new container with the name `mycontainer`:
 
-        sudo lxc launch ubuntu:18.04 mycontainer
+        lxc launch ubuntu:18.04 mycontainer
 
     {{< output >}}
 Creating mycontainer
@@ -337,7 +340,7 @@ Starting mycontainer
 
 *  Check the list of containers to make sure the new container is running:
 
-        sudo lxc list
+        lxc list
 
     {{< output >}}
 +-------------+---------+-----------------------+---------------------------+------------+-----------+
@@ -349,8 +352,8 @@ Starting mycontainer
 
 *  Execute basic commands in `mycontainer`:
 
-        sudo lxc exec mycontainer -- apt update
-        sudo lxc exec mycontainer -- apt upgrade
+        lxc exec mycontainer -- apt update
+        lxc exec mycontainer -- apt upgrade
 
     {{< note >}}
 The characters `--` instruct the `lxc` command not to parse any more command-line parameters.
@@ -358,7 +361,7 @@ The characters `--` instruct the `lxc` command not to parse any more command-lin
 
 *  Open a shell session within `mycontainer`:
 
-        sudo lxc exec mycontainer -- sudo --login --user ubuntu
+        lxc exec mycontainer -- sudo --login --user ubuntu
 
     {{< output >}}
 To run a command as administrator (user "root"), use "sudo <command>".
@@ -375,15 +378,15 @@ The `sudo` command provides a login to the existing account `ubuntu`.
 
 *  View the container logs:
 
-        sudo lxc info mycontainer --show-log
+        lxc info mycontainer --show-log
 
 *  Stop the container:
 
-        sudo lxc stop mycontainer
+        lxc stop mycontainer
 
 *  Remove the container:
 
-        sudo lxc delete mycontainer
+        lxc delete mycontainer
 
     {{< note >}}
 A container needs to be stopped before it can be deleted.
@@ -395,7 +398,7 @@ A container needs to be stopped before it can be deleted.
 
 When you run any `lxc` command, you get the following error:
 
-        sudo lxc list
+        lxc list
 
     {{< output >}}
 Error: Get http://unix.socket/1.0: dial unix /var/snap/lxd/common/lxd/unix.socket: connect: connection refused
@@ -407,7 +410,7 @@ This happens when the LXD service is not currently running. By default, the LXD 
 
 When you run any `lxc` command, you get the following error:
 
-        sudo lxc list
+        lxc list
 
     {{< output >}}
 Error: Get http://unix.socket/1.0: dial unix /var/snap/lxd/common/lxd/unix.socket: connect: permission denied
