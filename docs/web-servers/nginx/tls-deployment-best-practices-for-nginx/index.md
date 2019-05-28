@@ -45,7 +45,6 @@ server {
     listen         80;
     server_name    example.com www.example.com;
     return         301 https://example.com$request_uri;
-    return         301 https://www.example.com$request_uri;
     }
 
 server {
@@ -58,11 +57,11 @@ server {
 
     The [return ](https://nginx.org/en/docs/http/ngx_http_rewrite_module.html#return) directives will be what handles the redirects. Whether to include directives for both `example.com` or `www.example.com`, depends on which domain your certificate was issued for, if not both. (The [NGINX docs](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#taxing-rewrites) explain why you should use `return 301` instead of `rewrite`).
 
-2.  Reload NGINX:
+1.  Reload NGINX:
 
         nginx -s reload
 
-3.  Go to your site's domain or IP address in a web browser, specifying `http://`. You should be redirected to HTTPS.
+2.  Go to your site's domain or IP address in a web browser, specifying `http://`. You should be redirected to HTTPS.
 
 ## HTTP Strict Transport Security (HSTS)
 
@@ -263,7 +262,6 @@ server {
     listen              [::]:80;
     server_name         example.com www.example.com;
     return 301          https://example.com$request_uri;
-    return 301          https://www.example.com$request_uri;
     }
 
 server {
