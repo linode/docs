@@ -30,7 +30,7 @@ Hadoop is an open-source Apache project that allows creation of parallel process
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/getting-started/) guide to create three (3) Linodes. They'll be referred to throughout this guide as **node-master**, **node1** and **node2**. It's recommended that you set the hostname of each Linode to match this naming convention.
+1.  Follow the [Getting Started](/docs/getting-started/) guide to create three (3) Linodes. They'll be referred to throughout this guide as **node-master**, **node1**, and **node2**. It's recommended that you set the hostname of each Linode to match this naming convention.
 
     Run the steps in this guide from the **node-master** unless otherwise specified.
 
@@ -50,23 +50,23 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Architecture of a Hadoop Cluster
 
-Before configuring the master and slave nodes, it's important to understand the different components of a Hadoop cluster.
+Before configuring the master and worker nodes, it's important to understand the different components of a Hadoop cluster.
 
 A **master node** keeps knowledge about the distributed file system, like the `inode` table on an `ext3` filesystem, and schedules resources allocation. **node-master** will handle this role in this guide, and host two daemons:
 
 *   The **NameNode**: manages the distributed file system and knows where stored data blocks inside the cluster are.
-*   The **ResourceManager**: manages the YARN jobs and takes care of scheduling and executing processes on slave nodes.
+*   The **ResourceManager**: manages the YARN jobs and takes care of scheduling and executing processes on worker nodes.
 
-**Slave nodes** store the actual data and provide processing power to run the jobs. They'll be **node1** and **node2**, and will host two daemons:
+**Worker nodes** store the actual data and provide processing power to run the jobs. They'll be **node1** and **node2**, and will host two daemons:
 
-*   The **DataNode** manages the actual data physically stored on the node; it's named, `NameNode`.
+*   The **DataNode** manages the physical data stored on the node; it's named, `NameNode`.
 *   The **NodeManager** manages execution of tasks on the node.
 
 ## Configure the System
 
 ### Create Host File on Each Node
 
-For each node to communicate with its names, edit the `/etc/hosts` file to add the IP address of the three servers. Don't forget to replace the sample IP with your IP:
+For each node to communicate with each other by name, edit the `/etc/hosts` file to add the IP address of the three servers. Don't forget to replace the sample IP with your IP:
 
 {{< file "/etc/hosts" >}}
 192.0.2.1    node-master
@@ -83,20 +83,24 @@ The master node will use an ssh-connection to connect to other nodes with key-pa
 
         ssh-keygen -b 4096
 
-2.  Copy the key to the other nodes. It's good practice to also copy the key to the **node-master** itself, so that you can also use it as a DataNode if needed. Type the following commands, and enter the `hadoop` user's password when asked. If you are prompted whether or not to add the key to known hosts, enter `yes`:
+1.  View the **node-master** public key so you can copy it to each of the worker nodes.
 
-        ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node-master
-        ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node1
-        ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node2
+        less /home/hadoop/.ssh/id_rsa.pub
+
+1.  In each node, make a new file `master.pub` in `/home/hadoop/.ssh`, paste in, and save this key.
+
+1.  Then copy it into the authorized key store.
+
+        $ cat ~/.ssh/master.pub >> ~/.ssh/authorized_keys
 
 ### Download and Unpack Hadoop Binaries
 
-Login to **node-master** as the `hadoop` user, download the Hadoop tarball from [Hadoop project page](https://hadoop.apache.org/), and unzip it:
+Log into **node-master** as the `hadoop` user, download the Hadoop tarball from [Hadoop project page](https://hadoop.apache.org/), and unzip it:
 
     cd
-    wget http://apache.mindstudios.com/hadoop/common/hadoop-2.8.1/hadoop-2.8.1.tar.gz
-    tar -xzf hadoop-2.8.1.tar.gz
-    mv hadoop-2.8.1 hadoop
+    wget http://apache.cs.utah.edu/hadoop/common/current/hadoop-3.1.2.tar.gz
+    tar -xzf hadoop-3.1.2.tar.gz
+    mv hadoop-3.1.2 hadoop
 
 ### Set Environment Variables
 
@@ -104,9 +108,14 @@ Login to **node-master** as the `hadoop` user, download the Hadoop tarball from 
 
     {{< file "/home/hadoop/.profile" shell >}}
 PATH=/home/hadoop/hadoop/bin:/home/hadoop/hadoop/sbin:$PATH
-
 {{< /file >}}
 
+1.  Add Hadoop to your PATH for the shell. Edit `.bashrc` and add the following lines:
+
+    {{< file "/home/hadoop/.bashrc" shell >}}
+export HADOOP_HOME=/home/hadoop/hadoop
+export PATH=${PATH}:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
+{{< /file >}}
 
 ## Configure the Master Node
 
@@ -177,22 +186,29 @@ Edit `hdfs-site.conf`:
 {{< /file >}}
 
 
-The last property, `dfs.replication`, indicates how many times data is replicated in the cluster. You can set `2` to have all the data duplicated on the two nodes. Don't enter a value higher than the actual number of slave nodes.
+The last property, `dfs.replication`, indicates how many times data is replicated in the cluster. You can set `2` to have all the data duplicated on the two nodes. Don't enter a value higher than the actual number of worker nodes.
 
 ### Set YARN as Job Scheduler
 
-1.  In `~/hadoop/etc/hadoop/`, rename `mapred-site.xml.template` to `mapred-site.xml`:
+Edit the `mapred-site.xml` file, setting yarn as the default framework for MapReduce operations:
 
-        cd ~/hadoop/etc/hadoop
-        mv mapred-site.xml.template mapred-site.xml
-
-2.  Edit the file, setting yarn as the default framework for MapReduce operations:
-
-    {{< file "~/hadoop/etc/hadoop/mapred-site.xml" xml >}}
+{{< file "~/hadoop/etc/hadoop/mapred-site.xml" xml >}}
 <configuration>
     <property>
             <name>mapreduce.framework.name</name>
             <value>yarn</value>
+    </property>
+    <property>
+            <name>yarn.app.mapreduce.am.env</name>
+            <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+    </property>
+    <property>
+            <name>mapreduce.map.env</name>
+            <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+    </property>
+    <property>
+            <name>mapreduce.reduce.env</name>
+            <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
     </property>
 </configuration>
 
@@ -224,11 +240,11 @@ Edit `yarn-site.xml`:
 {{< /file >}}
 
 
-### Configure Slaves
+### Configure Workers
 
-The file `slaves` is used by startup scripts to start required daemons on all nodes. Edit `~/hadoop/etc/hadoop/slaves` to be:
+The file `workers` is used by startup scripts to start required daemons on all nodes. Edit `~/hadoop/etc/hadoop/workers` to be:
 
-{{< file "~/hadoop/etc/hadoop/slaves" resource >}}
+{{< file "~/hadoop/etc/hadoop/workers" resource >}}
 node1
 node2
 
@@ -246,7 +262,7 @@ A YARN job is executed with two kind of resources:
 -  An *Application Master* (AM) is responsible for monitoring the application and coordinating distributed executors in the cluster.
 - Some executors that are created by the AM actually run the job. For a MapReduce jobs, they'll perform map or reduce operation, in parallel.
 
-Both are run in *containers* on slave nodes. Each slave node runs a *NodeManager* daemon that's responsible for container creation on the node. The whole cluster is managed by a *ResourceManager* that schedules container allocation on all the slave-nodes, depending on capacity requirements and current charge.
+Both are run in *containers* on worker nodes. Each worker node runs a *NodeManager* daemon that's responsible for container creation on the node. The whole cluster is managed by a *ResourceManager* that schedules container allocation on all the worker-nodes, depending on capacity requirements and current charge.
 
 Four types of resource allocations need to be configured properly for the cluster to work. These are:
 
@@ -337,7 +353,7 @@ For 2GB nodes, a working configuration may be:
 
 ## Duplicate Config Files on Each Node
 
-1.  Copy the hadoop binaries to slave nodes:
+1.  Copy the hadoop binaries to worker nodes:
 
         cd /home/hadoop/
         scp hadoop-*.tar.gz node1:/home/hadoop
@@ -349,13 +365,13 @@ For 2GB nodes, a working configuration may be:
 
 3.  Unzip the binaries, rename the directory, and exit **node1** to get back on the node-master:
 
-        tar -xzf hadoop-2.8.1.tar.gz
-        mv hadoop-2.8.1 hadoop
+        tar -xzf hadoop-3.1.2.tar.gz
+        mv hadoop-3.1.2 hadoop
         exit
 
 4.  Repeat steps 2 and 3 for **node2**.
 
-5.  Copy the Hadoop configuration files to the slave nodes:
+5.  Copy the Hadoop configuration files to the worker nodes:
 
         for node in node1 node2; do
             scp ~/hadoop/etc/hadoop/* $node:/home/hadoop/hadoop/etc/hadoop/;
@@ -379,7 +395,7 @@ This section will walk through starting HDFS on NameNode and DataNodes, and moni
 
         start-dfs.sh
 
-    It'll start **NameNode** and **SecondaryNameNode** on node-master, and **DataNode** on **node1** and **node2**, according to the configuration in the `slaves` config file.
+    It'll start **NameNode** and **SecondaryNameNode** on node-master, and **DataNode** on **node1** and **node2**, according to the configuration in the `workers` config file.
 
 2.  Check that every process is running with the `jps` command on each node. You should get on **node-master** (PID will be different):
 
@@ -392,7 +408,7 @@ This section will walk through starting HDFS on NameNode and DataNodes, and moni
         19728 DataNode
         19819 Jps
 
-3.  To stop HDFS on master and slave nodes, run the following command from **node-master**:
+3.  To stop HDFS on master and worker nodes, run the following command from **node-master**:
 
         stop-dfs.sh
 
@@ -406,7 +422,7 @@ This section will walk through starting HDFS on NameNode and DataNodes, and moni
 
         hdfs dfsadmin -help
 
-2.  You can also automatically use the friendlier web user interface. Point your browser to http://node-master-IP:50070 and you'll get a user-friendly monitoring console.
+2.  You can also automatically use the friendlier web user interface. Point your browser to http://node-master-IP:9870 and you'll get a user-friendly monitoring console.
 
 ![Screenshot of HDFS Web UI](hadoop-3-hdfs-webui-wide.png "Screenshot of HDFS Web UI")
 
@@ -487,19 +503,19 @@ Yarn jobs are packaged into `jar` files and submitted to YARN for execution with
 
 1.  Submit a job with the sample jar to YARN. On **node-master**, run:
 
-        yarn jar ~/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar wordcount "books/*" output
+        yarn jar ~/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.2.jar wordcount "books/*" output
 
     The last argument is where the output of the job will be saved - in HDFS.
 
 2.  After the job is finished, you can get the result by querying HDFS with `hdfs dfs -ls output`. In case of a success, the output will resemble:
 
         Found 2 items
-        -rw-r--r--   1 hadoop supergroup          0 2017-10-11 14:09 output/_SUCCESS
-        -rw-r--r--   1 hadoop supergroup     269158 2017-10-11 14:09 output/part-r-00000
+        -rw-r--r--   2 hadoop supergroup          0 2019-05-31 17:21 output/_SUCCESS
+        -rw-r--r--   2 hadoop supergroup     789726 2019-05-31 17:21 output/part-r-00000
 
 3.  Print the result with:
 
-        hdfs dfs -cat output/part-r-00000
+        hdfs dfs -cat output/part-r-00000 | less
 
 ## Next Steps
 
