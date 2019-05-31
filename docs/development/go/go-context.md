@@ -32,35 +32,34 @@ This guide is written for a non-root user. Depending on your configuration, some
 
 ## About the context package
 
-The main purpose of the `context` package is to define the `Context` type and
-support *cancellation*. This happens because there are times where you want to
-abandon what you are doing but it an elegant way. However, it would be very helpful
-to be able to include some extra information about your cancelling decisions and propagate
-the information in a standard and portable way. The `context` package defines the
-`context.Context` type that can carry deadlines and cancellation signals between processes.
+The `context` package supports both the handling of multiple concurrent operations
+and the passing of (typically request-scoped) contextual data in key-value pairs.
 
 If you take a look at the source code of the `context` package, you will realize that its
-implementation is pretty simple — even the implementation of the `Context` type is pretty
-simple, yet the `context` package is very important.
+implementation is pretty simple. The `context` package defines the `Context` type, which is
+a Go *interface* with four methods, named `Deadline()`, `Done()`, `Err()`, and `Value()`:
 
-The `Context` type is a Go *interface* with four methods, named `Deadline()`, `Done()`,
-`Err()`, and `Value()`. The good news is that you do not need to implement all of these
-functions of the `Context` interface – you just need to declare and modify a `Context`
-variable using functions such as `context.WithCancel()`, `context.WithDeadline()` and
-`context.WithTimeout()`.
+{{< file "context.go" go >}}
+type Context interface {
+	Deadline() (deadline time.Time, ok bool)
+	Done() <-chan struct{}
+	Err() error
+	Value(key interface{}) interface{}
+}
+{{< /file >}}
 
-The source code of the `context` package includes the following information:
+The developer just needs to declare and modify a `Context` variable using functions
+such as `context.WithCancel()`, `context.WithDeadline()` and `context.WithTimeout()`.
 
-{{< note >}}
-// The WithCancel, WithDeadline, and WithTimeout functions take a
-// Context (the parent) and return a derived Context (the child) and a
-// CancelFunc. Calling the CancelFunc cancels the child and its
-// children, removes the parent's reference to the child, and stops
-// any associated timers. Failing to call the CancelFunc leaks the
-// child and its children until the parent is canceled or the timer
-// fires. The go vet tool checks that CancelFuncs are used on all
-// control-flow paths.
-{{< /note >}}
+When creating goroutines, the parent goroutine keeps a reference to each child goroutine
+that is helpful to the garbage collector. However, if the child goroutine ends without
+the parent knowing about it there will be a memory leakage until the parent is canceled
+as well.
+
+All these three functions return a derived `Context` (the child) and a `CancelFunc` function.
+The calling of the `CancelFunc` function removes the parent's reference to the child, and
+stops any associated timers, which means that the Go garbage collector is free to garbage
+collect the children goroutines that do not have a parent goroutine associated with them.
 
 ## A simple example
 
@@ -69,7 +68,7 @@ The first code example will be relatively simple and illustrate the use of the
 
 ### Explaining the Go code of the Example
 
-The Go code of `simple.go` is as follows:
+The code of `simple.go` is as follows:
 
 {{< file "./simple.go" go >}}
 package main
@@ -82,8 +81,14 @@ import (
         "time"
 )
 
+// The f1 function creates and executes a goroutine
+// The time.Sleep() call simulates the time it would take a real goroutine
+// to do its job - in this case it is 4 seconds. If the c1 context calls
+// the Done() function in less than 4 seconds, the goroutine will not have
+// enough time to finish.
 func f1(t int) {
         c1 := context.Background()
+		// WithCancel returns a copy of parent context with a new Done channel
         c1, cancel := context.WithCancel(c1)
         defer cancel()
 
@@ -94,7 +99,7 @@ func f1(t int) {
 
         select {
         case <-c1.Done():
-                fmt.Println("f1():", c1.Err())
+                fmt.Println("f1() Done:", c1.Err())
                 return
         case r := <-time.After(time.Duration(t) * time.Second):
                 fmt.Println("f1():", r)
@@ -114,7 +119,7 @@ func f2(t int) {
 
         select {
         case <-c2.Done():
-                fmt.Println("f2():", c2.Err())
+                fmt.Println("f2() Done:", c2.Err())
                 return
         case r := <-time.After(time.Duration(t) * time.Second):
                 fmt.Println("f2():", r)
@@ -135,7 +140,7 @@ func f3(t int) {
 
         select {
         case <-c3.Done():
-                fmt.Println("f3():", c3.Err())
+                fmt.Println("f3() Done:", c3.Err())
                 return
         case r := <-time.After(time.Duration(t) * time.Second):
                 fmt.Println("f3():", r)
@@ -172,13 +177,14 @@ in order to initialize an empty `Context`. The other function that can create an
 
 Notice that the `cancel` variable in `f1()`, which is a function, is one of the return values of
 `context.CancelFunc()`. The `context.WithCancel()` function uses an existing `Context` and creates a
-child of it with cancellation. The `context.WithCancel()` function also retuns a `Done` channel
+child of it with cancellation. The `context.WithCancel()` function also returns a `Done` channel
 that can be closed, either when the `cancel()` function is called, as shown in the preceding code,
 or when the `Done` channel of the parent context is closed.
 
 {{< note >}}
-One of the return values of `Context.Done()` is a Go channel, because otherwise you would not have
-been able to use it in a `select` statement.
+One of the return values of `Context.Done()` is a Go channel, which means that you will have to
+use a `select` statement to work with. Although `select` looks like `switch`, `select` allows a
+goroutine to wait on multiple communications operations.
 {{< /note >}}
 
 On the other hand the `cancel` variable in `f2()` comes from `context.WithTimeout()`.
@@ -199,19 +205,20 @@ the first parameter of a function.
 
 ### Using simple.go
 
-Executing `simple.go` with a delay period of *4 seconds* will generate the following kind of output:
+Executing `simple.go` with a delay period of *3 seconds* will generate the following kind of output:
 
-    go run simple.go 4
+    go run simple.go 3
 {{< output >}}
-Delay: 4
-f1(): 2019-05-29 08:39:48.219616 +0300 EEST m=+4.004039510
-f2(): context deadline exceeded
-f3(): 2019-05-29 08:39:56.224505 +0300 EEST m=+12.009254674
+go run simple.go 3
+Delay: 3
+f1(): 2019-05-31 19:29:38.664568 +0300 EEST m=+3.004314767
+f2(): 2019-05-31 19:29:41.664942 +0300 EEST m=+6.004810929
+f3(): 2019-05-31 19:29:44.668795 +0300 EEST m=+9.008786881
 {{< /output >}}
 
 The long lines of the output are the return values of the `time.After()` function calls.
 They denote normal operation of the program. The point here is that the operation of the
-program is cancelled when there are delays in its execution.
+program is canceled when there are delays in its execution.
 
 If you use a bigger delay (*10 seconds*), which is executed as a call to `time.Sleep()`, you
 will get the following kind of output:
@@ -219,9 +226,9 @@ will get the following kind of output:
     go run simple.go 10
 {{< output >}}
 Delay: 10
-f1(): context canceled
-f2(): context canceled
-f3(): context canceled
+f1() Done: context canceled
+f2() Done: context canceled
+f3() Done: context canceled
 {{< /output >}}
 
 The calls to `time.Sleep()` simulate a program that is slow or an operation that takes too
@@ -263,6 +270,8 @@ type myData struct {
         err error
 }
 
+// In packages that use contexts, convention is to pass them as
+// the first argument to a function.
 func connect(c context.Context) error {
         defer w.Done()
         data := make(chan myData, 1)
@@ -286,7 +295,7 @@ func connect(c context.Context) error {
         case <-c.Done():
                 tr.CancelRequest(req)
                 <-data
-                fmt.Println("The request was cancelled!")
+                fmt.Println("The request was canceled!")
                 return c.Err()
         case ok := <-data:
                 err := ok.err
@@ -302,6 +311,8 @@ func connect(c context.Context) error {
                         fmt.Println("Error select:", err)
                         return err
                 }
+				// Although fmt.Printf() is used here, server processes
+				// use the log.Printf() function instead.
                 fmt.Printf("Server Response: %s\n", realHTTPData)
         }
         return nil
@@ -359,7 +370,7 @@ when you declare that you want a delay of `0` seconds, as in the following examp
 {{< output >}}
 Delay: 0
 Connecting to https://www.linode.com/
-The request was cancelled!
+The request was canceled!
 Exiting...
 {{< /output >}}
 
@@ -379,9 +390,11 @@ Notice that `http://localhost:8001` uses a custom made HTTP server that returns
 a small amount of data. However, nothing prohibits you from trying commands such
 as `go run http.go https://www.linode.com/ 10` .
 
-## Another use of Context
+## Using Contexts as key-value stores
 
-In this section of the guide you are going to learn how to pass values in a `Context`.
+In this section of the guide you are going to learn how to pass values in a `Context`
+and use it as a key-value store. This is a case where we do not pass values into contexts
+in order to provide further information about why they where canceled.
 
 The `more.go` program illustrates the use of the `context.TODO()` function as well
 as the use of the `context.WithValue()` function.
@@ -421,8 +434,8 @@ func main() {
 }
 {{< /file >}}
 
-This time we create a context using the `context.TODO()` function instead
-of the `context.Background()` function. Although both functions return a non-nil,
+This time we create a context using `context.TODO()` instead of `context.Background()`.
+Although both functions return a non-nil,
 empty `Context`, their purposes differ. You should never pass a `nil` context – use
 the `context.TODO()` function to create a suitable context – and remember that
 the `context.TODO()` function should be used when you are not sure about the
