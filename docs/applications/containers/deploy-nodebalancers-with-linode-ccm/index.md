@@ -16,7 +16,7 @@ The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-clo
 
 ## Before You Begin
 
-When using the CCM for the first time, this guide suggests that you create a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state. Instead, for a completely automated install, this guide suggests that you use the [Linode CLI's k8s-alpha command line tooling](https://developers.linode.com/kubernetes/). The Linode CLI's k8s-alpha command line tool utilizes Terraform to fully boostrap a Kubernetes cluster on Linode, including the [Linode Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) plugin, the Linode CCM plugin, and the [ExternalDNS plugin](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md).
+When using the CCM for the first time, this guide suggests that you create a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state. Instead, for a completely automated install, this guide suggests that you use the [Linode CLI's k8s-alpha command line tool](https://developers.linode.com/kubernetes/). The Linode CLI's k8s-alpha command line tool utilizes Terraform to fully boostrap a Kubernetes cluster on Linode, including the [Linode Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) plugin, the Linode CCM plugin, and the [ExternalDNS plugin](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md).
 
 For more information on creating a Kubernetes cluster with the Linode CLI, review our [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide.
 
@@ -86,5 +86,17 @@ There are a number of settings, called annotations, that you can use to further 
 | `throttle` | `0`-`20` (`0` disables the throttle) | `20` | Client Connection Throttle. This limits the number of new connections per second from the same client IP. |
 | `protocol` | `tcp`, `http`, `https` | `tcp` | Specifies the protocol for the NodeBalancer. The protocol is overwritten to `https` if the `linode-loadbalancer-tls-ports` annotation is in use. |
 | `tls`| Example value: `[ { "tls-secret-name": "prod-app-tls", "port": 443}, {"tls-secret-name": "dev-app-tls", "port": 8443} ]` | None | A JSON array that specifies which ports use TLS and their corresponding secrets. The secret type should be `kubernetes.io/tls`. |
-| `check-type` | `none`, `connection`, `http`, `http_body` | None | The type of health check to perform on your Pods to ensure that they are serving requests. |
-| `check-path` | string | None | The URL path in use
+| `check-type` | `none`, `connection`, `http`, `http_body` | None | The type of health check to perform on your Nodes to ensure that they are serving requests. |
+| `check-path` | string | None | The URL path that the NodeBalancer will use to check on the health of the back-end Nodes. |
+| `check-body` | string | None | The text that must be present in the body of the page used for health checks. |
+| `check-interval` | integer | None | The duration, in seconds, between health checks. |
+| `check-timeout` | integer (a value between 1-30) | None | Duration, in seconds, to wait for a health check to suceed before it is considered a failure. |
+| `check-attempts` | integer (a value between 1-30) | None | Number of health checks to perform before removing a back-end Node from service. |
+| `check-passive` | boolean | `false` | When `true`, `5xx` status codes will cause the health check to fail. |
+
+### A Note about the linode-loadbalancer-tls Annotation
+
+In Kubernetes, you can store secret information in a Secret object. This is useful for storing things like passwords and API tokens. In the case of the Linode CCM, it is useful for storing TLS certificates and keys. The `linode-loadbalancer-tls` annotation requires TLS certificates and keys be stored as Kubernetes Secrets. To create the secret, you can issue the following command, being sure to substitute $SECRET_NAME for the name you'd like to give to your secret, $KEY_FILE for the name of the TLS key file name, and $CERT_FILE for the name of the TLS certificate file:
+
+    kubectl create secret tls $SECRET_NAME --key $KEY_FILE --cert $CERT_FILE
+
