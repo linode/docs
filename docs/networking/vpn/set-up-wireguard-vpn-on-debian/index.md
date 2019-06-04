@@ -43,7 +43,7 @@ Do not use WireGuard for critical applications. The project is still undergoing 
         apt update
         apt install wireguard-dkms wireguard-tools
 
-    DKMS will then build the WireGuard kernel module. If successful, you'll see the following output:
+    DKMS (Dynamic Kernel Module Support) will then build the WireGuard kernel module. If successful, you'll see the following output:
 
     {{< output >}}
 wireguard:
@@ -79,8 +79,8 @@ If the installation completes but the output does not appear, your kernel is mos
 PrivateKey = <Private Key>
 Address = 192.168.2.1/24, fd86:ea04:1115::1/64
 ListenPort = 51820
-PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -$
-PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING$
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING
 SaveConfig = true
 {{< /file >}}
 
