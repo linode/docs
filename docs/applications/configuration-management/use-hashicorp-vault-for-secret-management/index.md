@@ -21,7 +21,7 @@ external_resources:
 
 [HashiCorp Vault](https://www.vaultproject.io/) is a secrets management tool that helps to provide secure, automated access to sensitive data. Vault meets these use cases by coupling authentication methods (such as application tokens) to secret engines (such as simple key/value pairs) using policies to control how access is granted. In this guide, you will install, configure, and access Vault in an example deployment to illustrate Vault's features and API.
 
-This guide will use the latest version of Vault at the time of writing, which is 1.1.0.
+This guide will use the latest version of Vault, which is 1.1.0 at the time of this writing.
 
 ### Why Use Vault?
 
@@ -45,7 +45,7 @@ Before continuing, you should familiarize yourself with important Vault terms an
 
 - A **token** is the the underlying mechanism that underpins access to Vault resources. Whether a user authenticates to Vault using a GitHub token or an application-driven service authenticates using an [AppRole](https://www.vaultproject.io/docs/auth/approle.html) RoleID and SecretID, all forms of authentication are eventually normalized to a **token**. Tokens are typically short-lived (that is, expire after a period or time-to-live, or `ttl`) and have one or more *policies* attached to them.
 - A Vault **policy** dictates certain actions that may be performed upon a Vault **path**. Capabilities such as the ability to read a secret, write secrets, and delete them are all examples of actions that are defined in a policy for a particular **path**.
-- **path**s in Vault are similar in form to Unix filesystem paths (like `/etc`) or URLs (such as `/blog/title`). Users and machine accounts interact with Vault over particular paths in order to retrieve secrets, change settings, or otherwise interact with a running Vault service. All Vault access is performed over a REST interface, so these paths eventually take the form of an HTTP URL. While some paths interact with the Vault service itself to manage resources such as policies or settings, many paths serve as an endpoint to either authenticate to Vault or interact with a **secret engine**.
+- A **path** in Vault is similar in form to a Unix filesystem path (like `/etc`) or a URL (such as `/blog/title`). Users and machine accounts interact with Vault over particular paths in order to retrieve secrets, change settings, or otherwise interact with a running Vault service. All Vault access is performed over a REST interface, so these paths eventually take the form of an HTTP URL. While some paths interact with the Vault service itself to manage resources such as policies or settings, many paths serve as an endpoint to either authenticate to Vault or interact with a **secret engine**.
 - A **secret engine** is a backend used in Vault to provide secrets to Vault users. The simplest example of a **secret engine** is the [key/value backend](https://www.vaultproject.io/docs/secrets/kv/index.html), which simply returns plain text values that may be stored at particular paths (these secrets remain encrypted on the backend). Other examples of secret backends include the [PKI backend](https://www.vaultproject.io/docs/secrets/pki/index.html), which can generate and manage TLS certificates, and the [TOTP backend](https://www.vaultproject.io/docs/secrets/totp/index.html), which can generate temporary one-time passwords for web sites that require multi-factor authentication (including the Linode Manager).
 
 ## Installation
@@ -56,7 +56,7 @@ These installation steps will:
 
 - Procure a TLS certificate to ensure that all communications between Vault and clients are encrypted.
 - Configure Vault for local filesystem storage.
-- Install the `vault` binary and setup the operating system to operate Vault as a service.
+- Install the `vault` binary and set up the operating system to operate Vault as a service.
 
 {{< note >}}
 The configuration outlined in this guide is suitable for small deployments. In situations that call for highly-available or fault-tolerant services, consider running more than one Vault instance with a highly-available storage backend such as [Consul](https://www.vaultproject.io/docs/configuration/storage/consul.html).
@@ -67,26 +67,22 @@ The configuration outlined in this guide is suitable for small deployments. In s
 1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running a recent Linux distribution (such as Ubuntu 18.04 or CentOS 7), including setting the hostname and timezone.
 
     {{< note >}}
-Setting the full hostname correctly in `/etc/hosts` is important in this guide in order to terminate TLS on Vault correctly. Your Linode's fully-qualified name and short hostname should be present in the `/etc/hosts` file before continuing.
+Setting the full hostname correctly in `/etc/hosts` is important in this guide in order to terminate TLS on Vault correctly. Your Linode's fully qualified domain name and short hostname should be present in the `/etc/hosts` file before continuing.
 {{< /note >}}
 
 2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-3.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall (UFW) on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over for the rest of this guide.
+3.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. Consider reviewing Vault's [Production Hardening](https://www.vaultproject.io/guides/operations/production) recommendations if this will be used in a production environment.
 
     {{< note >}}
-By default, most firewalls permit ssh access (port 22) by default. The HTTP port (80) will need to be open (at least temporarily) for Let's Encrypt requests to succeed.
-{{< /note >}}
-
-    {{< note >}}
-Vault listens on port 8200 by default. Your firewall will, by default, most likely block this port from remote access.
+When configuring a firewall, keep in mind that Vault listens on port 8200 by default and Let's Encrypt utilizes ports 80 (HTTP) and 443 (HTTPS).
 {{< /note >}}
 
 4.  Ensure your system is up to date. On Debian-based systems, use:
 
         sudo apt update && sudo apt upgrade
 
-    While on rpm-based systems such as CentOS, use:
+    While on rpm-based systems, such as CentOS, use:
 
         sudo yum update
 
@@ -142,7 +138,7 @@ gpg:               imported: 1
 {{</ output >}}
 
     {{< note >}}
-If an error occurs with the error message `keyserver receive failed: Syntax error in URI`, simply try re-running the `gpg` command again.
+If an error occurs with the error message `keyserver receive failed: Syntax error in URI`, simply try rerunning the `gpg` command again.
 {{< /note >}}
 
     {{< note >}}
@@ -190,7 +186,7 @@ If you receive an error that indicates `unzip` is missing from your system, inst
 
         sudo mv vault /usr/local/bin
 
-3.  Reset any permissions and mode on the executable.
+3.  Reset the ownership and permissions on the executable.
 
         sudo chown root:root /usr/local/bin/vault
         sudo chmod 755 /usr/local/bin/vault
@@ -215,7 +211,7 @@ Vault v1.1.0 ('36aa8c8dd1936e10ebd7a4c1d412ae0e6f7900bd')
 
         sudo useradd --system -d /etc/vault.d -s /bin/nologin vault
 
-2.  Add the `vault` user to the previously-created `tls` group, which will grant the user the ability to read Let's Encrypt certificates.
+2.  Add the `vault` user to the previously created `tls` group, which will grant the user the ability to read Let's Encrypt certificates.
 
         sudo gpasswd -a vault tls
 
@@ -261,13 +257,13 @@ LimitNOFILE=65536
 WantedBy=multi-user.target
 {{< /file >}}
 
-    These systemd service options define a number of important settings to ensure that Vault runs securely and reliably. For a complete explanation of what these options achieve, [the Vault documentation](https://learn.hashicorp.com/vault/operations/ops-deployment-guide#step-3-configure-systemd) provides a summary of each.
+    These systemd service options define a number of important settings to ensure that Vault runs securely and reliably. Review the [Vault documentation](https://learn.hashicorp.com/vault/operations/ops-deployment-guide#step-3-configure-systemd) for a complete explanation of what these options achieve.
 
 ## Configuration
 
 ### Configure Vault
 
-1.  Create a configuration file for Vault with the following contents. Replace `example.com` with the domain that you retrieved certificates for from Let's Encrypt.
+1.  Create a configuration file for Vault with the following contents, replacing `example.com` with the domain used in your Let's Encrypt certificates.
 
     {{< file "/etc/vault.d/vault.hcl" aconf >}}
 listener "tcp" {
@@ -293,15 +289,15 @@ storage "file" {
 
         sudo systemctl enable vault
 
-3.  Confirm that Vault is operational by using the `vault` executable to check for the service's status. Set the `VAULT_ADDR` environment variable to `https://<let's encrypt domain>:8200`. For example, using the domain `example.com`:
+3.  Confirm that Vault is operational by using the `vault` executable to check for the service's status. Set the `VAULT_ADDR` environment variable to `https://example.com:8200`, replacing `example.com` with your own domain:
 
         export VAULT_ADDR=https://example.com:8200
 
-4.  `vault` commands should now be sent to your local Vault instance. Confirm this with the `vault status` command:
+4.  `vault` commands should now be sent to your local Vault instance. To confirm this, run the `vault status` command:
 
         vault status
 
-    The command should return output similar to the following.
+    The command should return output similar to the following:
 
     {{< output >}}
 Key                Value
@@ -321,11 +317,11 @@ The remainder of this tutorial assumes that the environment variable `VAULT_ADDR
 
 ### Initializing Vault
 
-At this stage, Vault is installed and running, but not yet _initialized_. The following steps will initialize the Vault backend, which sets unseal keys and returns the initial root token. Initialization occurs one time for a Vault deployment.
+At this stage, Vault is installed and running, but not yet _initialized_. The following steps will initialize the Vault backend, which sets unseal keys and returns the initial root token. Initialization occurs only one time for a Vault deployment.
 
-There are two configurable options to choose when performing the initialization step. The first value is the number of key shares which controls the total number of unseal keys that Vault will generate. The second value is the key threshold, which controls how many of these unseal key shares are required before Vault will successfully unseal itself. Unsealing is required whenever Vault is restarted or otherwise brought online after being in a previously offline state.
+There are two configurable options to choose when performing the initialization step. The first value is the number of key shares, which controls the total number of unseal keys that Vault will generate. The second value is the key threshold, which controls how many of these unseal key shares are required before Vault will successfully unseal itself. Unsealing is required whenever Vault is restarted or otherwise brought online after being in a previously offline state.
 
-To illustrate this concept, consider a secure server in a datacenter. Because the Vault database is only decrypted in-memory, stealing or bringing the server offline for any reason will leave the only copy of Vault's database on the filesystem in encrypted form, or "sealed".
+To illustrate this concept, consider a secure server in a data center. Because the Vault database is only decrypted in-memory, stealing or bringing the server offline for any reason will leave the only copy of Vault's database on the filesystem in encrypted form, or "sealed".
 
 When starting the server again, a key share of 3 and key threshold of 2 means that 3 keys exist, but at least 2 must be provided at startup for Vault to derive its decryption key and load its database into memory for access once again.
 
@@ -333,11 +329,11 @@ The key share count ensure that multiple keys can exist at different locations f
 
 1.  Choose a value for the number of key shares and key threshold. Your situation may vary, but as an example, consider a team of three people in charge of operating Vault. A key share of 3 ensures that each member holds one unseal key. A key threshold of 2 means that no single operator can lose their key and compromise the system or steal the Vault database without coordinating with another operator.
 
-2.  Using these chosen values, execute the initialization command. Be prepared to save the output that is returned from the following command, as **it will only appear this once**.
+2.  Using these chosen values, execute the initialization command. Be prepared to save the output that is returned from the following command, as **it is only viewable once**.
 
         vault operator init -key-shares=3 -key-threshold=2
 
-    This command will return output similar to the following.
+    This command will return output similar to the following:
 
     {{< output >}}
 Unseal Key 1: BaR6GUWRY8hIeNyuzAn7FTa82DiIldgvEZhOKhVsl0X5
@@ -358,13 +354,13 @@ It is possible to generate new unseal keys, provided you have a quorum of
 existing unseal keys shares. See "vault operator rekey" for more information.
 {{< /output >}}
 
-3.  In a production scenario, these unseal keys should be stored in separate locations. For example, one in a password manager such as LastPass, one encrypted with gpg, and another stored offline on a USB key. Doing so ensures that compromising one storage location is not sufficient to recover a sufficient number of unseal keys to decrypt the Vault database.
+3.  In a production scenario, these unseal keys should be stored in separate locations. For example, store one in a password manager such as LastPass, encrypted one with gpg, and store another offline on a USB key. Doing so ensures that compromising one storage location is not sufficient to recover the number of unseal keys required to decrypt the Vault database.
 
-4.  The `Initial Root Token` is equivalent to the "root" or superuser account for the Vault API. Record and protect this token in a similar fashion. Like the `root` account on a Unix system, this token should be used to create less-privileged accounts to use for day-to-day interactions with Vault and the root token should be used only infrequently due to its widespread privileges.
+4.  The `Initial Root Token` is equivalent to the "root" or superuser account for the Vault API. Record and protect this token in a similar fashion. Like the `root` account on a Unix system, this token should be used to create less-privileged accounts to use for day-to-day interactions with Vault and the root token should be used infrequently due to its widespread privileges.
 
 ### Unseal Vault
 
-After initialization, Vault will be sealed. The following unseal steps must be performed any time the `vault` service is brought down and then brought up again, such as when performing `systemctl restart vault` for any reason or restarting the host machine.
+After initialization, Vault will be sealed. The following unseal steps must be performed any time the `vault` service is brought down and then brought up again, such as when performing `systemctl restart vault` or restarting the host machine.
 
 1.  With `VAULT_ADDR` set appropriately, execute the unseal command.
 
@@ -428,7 +424,7 @@ Vault is now operational.
 
 ### Token Authentication
 
-When interacting with Vault over its REST API, Vault identifies and authenticates most requests by the presence of a token. Later sections in this guide will explain how to provision additional tokens, but for now, use the initial superuser root token.
+When interacting with Vault over its REST API, Vault identifies and authenticates most requests by the presence of a token. While the initial root token can be used for now, the [Policies](#policies) section of this guide explains how to provision additional tokens.
 
 1.  Set the `VAULT_TOKEN` environment variable to the value of the previously-obtained root token. This token is the authentication mechanism that the `vault` command will rely on for future interaction with Vault. The actual root token will be different in your environment.
 
@@ -446,7 +442,7 @@ policies            [root]
 
 ### The KV Secret Backend
 
-Vault backends are the core mechanism Vault uses to permit users to read and write secret values. The simplest backend to illustrate this functionality is the [KV backend](https://www.vaultproject.io/docs/secrets/kv/index.html). This backend simply lets clients write key/value pairs (such as `mysecret=apikey`) that can be read later.
+Vault backends are the core mechanism Vault uses to permit users to read and write secret values. The simplest backend to illustrate this functionality is the [KV backend](https://www.vaultproject.io/docs/secrets/kv/index.html). This backend lets clients write key/value pairs (such as `mysecret=apikey`) that can be read later.
 
 1.  Enable the secret backend by using the `enable` Vault subcommand.
 
@@ -488,7 +484,7 @@ Key          Value
 api_token    secretvalue
 {{< /output >}}
 
-4.  Many utilities and script are better-suited to process json output. Use the `-format=json` flag to do a read once more, with the results return in JSON form.
+4.  Many utilities and script are better suited to process json output. Use the `-format=json` flag to do a read once more, with the results return in JSON form.
 
         vault kv get -format=json kv/myservice
 
@@ -515,9 +511,9 @@ api_token    secretvalue
 
 ### Policies
 
-Up until this point, we have performed API calls to Vault with the root token. Production best practices dictate that this token should only be used rarely and most operations be performed with lesser-privileged associated with controlled policies.
+Up until this point, we have performed API calls to Vault with the root token. Production best practices dictate that this token should rarely be used and most operations should be performed with lesser-privileged tokens associated with controlled policies.
 
-Policies are defined by specifying a particular path and what set of _capabilities_ are permitted by a user upon the path. In our previous commands, the path has been `kv/myservice`, so we can create a policy to only read this secret and perform no other operations, including reading or listing secrets. When no policy exists for a particular path, Vault denies operations by default.
+Policies are defined by specifying a particular path and the set of _capabilities_ that are permitted by a user upon the path. In our previous commands, the path has been `kv/myservice`, so we can create a policy to only read this secret and perform no other operations, including reading or listing secrets. When no policy exists for a particular path, Vault denies operations by default.
 
 In the case of the KV backend, Vault distinguishes operations upon the stored data, which are the actual stored values, and metadata, which includes information such as version history. In this example, we will create a policy to control access to the key/value data alone.
 
@@ -612,7 +608,7 @@ myservice
 
 ### Authentication Methods
 
-In practice, when services that require secret values are deployed, a token should not be distributed as part of the deployment or configuration management. Rather, services should authenticate themselves to Vault in order to acquire a token that has a limited lifetime, which ensures that credentials expire eventually and cannot be reused if they are ever leaked or disclosed.
+In practice, when services that require secret values are deployed, a token should not be distributed as part of the deployment or configuration management. Rather, services should authenticate themselves to Vault in order to acquire a token that has a limited lifetime. This ensures that credentials eventually expire and cannot be reused if they are ever leaked or disclosed.
 
 Vault supports many types of authentication methods. For example, the Kubernetes authentication method can retrieve a token for individual pods. As a simple illustrative example, the following steps will demonstrate how to use the [AppRole](https://www.vaultproject.io/docs/auth/approle.html) method.
 
@@ -674,7 +670,7 @@ policies                ["default" "read-myservice"]
 token_meta_role_name    my-application
 {{< /output >}}
 
-6.  Open one more terminal tab or window and login to your remote host running Vault.
+6.  Open one more terminal tab or window and log in to your remote host running Vault.
 
 7.  Once again, set the `VAULT_ADDR` environment variable to the correct value to communicate with your local Vault instance.
 
@@ -690,4 +686,4 @@ token_meta_role_name    my-application
 
     The example should should be read and accessible.
 
-10. If you read this value using this Vault token after more than 10 minutes have elapsed, the token will have expired and any read operations using the token should be denied. Performing another `vault write auth/approle/login` operation as in step 5 can generate new tokens to use.
+10. If you read this value using this Vault token after more than 10 minutes have elapsed, the token will have expired and any read operations using the token should be denied. Performing another `vault write auth/approle/login` operation (detailed in step 5) can generate new tokens to use.
