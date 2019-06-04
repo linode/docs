@@ -219,6 +219,7 @@ csum
 csv
 ctools
 ctrl
+cuda
 cyberduck
 cyg
 cygwin
@@ -721,6 +722,7 @@ logwatch
 longview
 lookups
 loopback
+lspci
 lsd
 lst
 lsyncd
@@ -901,6 +903,7 @@ noninteractive
 nonprivileged
 nonrecursive
 nosync
+noveau
 novell
 npm
 npmjs
@@ -1140,6 +1143,7 @@ rubygems
 ruleset
 rulesets
 rundir
+runfile
 runlevels
 runtime
 runtimes

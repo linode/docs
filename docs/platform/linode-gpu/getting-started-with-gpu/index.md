@@ -8,9 +8,11 @@ license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: []
 published: 2019-05-22
 title: Getting Started With GPU Linodes
+modified_by:
+  name: Linode
 ---
 
-The following guide will help you to get your dedicated GPU up and running on a number of popular distributions. In all cases where possible, this guide will use [NVIDIA's CUDA Tookit](https://developer.nvidia.com/cuda-toolkit) to install the necessary NVIDIA driver.  For distributions like Debian 9 in which `CUDA` is not officially supported, the guide will show you how to manually install the NVIDIA driver only.
+The following guide will help you to get your dedicated GPU up and running on a number of popular distributions. In all cases where possible, this guide will use [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) to install the necessary NVIDIA driver.  For distributions like Debian 9 in which `CUDA` is not officially supported, the guide will show you how to manually install the NVIDIA driver only.
 
 ## Before You Begin
 
@@ -28,7 +30,7 @@ The following guide will help you to get your dedicated GPU up and running on a 
 {{< /output >}}
 
     {{< note >}}
-Depending on your distribution, you may need to install lspci manually first. On current Redhat and RHEL operating systems, you can install this utility with the following command:
+Depending on your distribution, you may need to install lspci manually first. On current RedHat and RHEL operating systems, you can install this utility with the following command:
 
     yum install pciutils
 {{< /note >}}
@@ -60,7 +62,7 @@ Issue a reboot to make sure you can use the missing kernel headers.
 
 ## Installing with CUDA
 
- This section of the guide will highlight how to install your gpu driver using [NVIDIA's Cuda Toolkit](https://developer.nvidia.com/cuda-toolkit), currently fully supported on CentOS 7,OpenSUSE, and other popular distributions. Optionally, you can also choose to install the full toolkit in it's entirety to gain access to a set of tools that will empower you to create GPU-accelerated applications.
+ This section of the guide will highlight how to install your GPU driver using [NVIDIA's Cuda Toolkit](https://developer.nvidia.com/cuda-toolkit), currently fully supported on CentOS 7,OpenSUSE, and other popular distributions. Optionally, you can also choose to install the full toolkit in it's entirety to gain access to a set of tools that will empower you to create GPU-accelerated applications.
 
 1. Download the latest version of the installer from [CUDA's Downloads Page](https://developer.nvidia.com/cuda-downloads). From the "Select Target Platform" box, you want to select Linux, x86_64, the distribution you're using, the version number, and the installer type as "runfile (local)". Select the Download button to download the installer file on to your device and upload it to your GPU Linode. In our case, we used [Wget](https://www.linode.com/docs/quick-answers/linux/how-to-use-wget/) to download the file directly to our Linode.
 
