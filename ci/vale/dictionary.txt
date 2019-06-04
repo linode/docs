@@ -903,7 +903,7 @@ noninteractive
 nonprivileged
 nonrecursive
 nosync
-noveau
+nouveau
 novell
 npm
 npmjs
