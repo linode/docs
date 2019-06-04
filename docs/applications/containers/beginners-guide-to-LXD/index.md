@@ -226,7 +226,11 @@ This section will create a container, install the Apache web server, and add the
 
 7.  Add a LXD **proxy device** to redirect connections from the internet to port 80 (HTTP) on the server to port 80 at this container.
 
-        lxc config device add web myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:localhost:80
+
+        sudo lxc config device add web myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:80
+{{< note >}}
+In recent versions of LXD, you need to specify an IP address (such as *127.0.0.1*) instead of a hostname (such as _localhost_). If your container already has a proxy device that uses hostnames, you can edit the container configuration to replace with IP addresses by running `lxc config edit web`.
+{{< /note >}}
 
 6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
 
