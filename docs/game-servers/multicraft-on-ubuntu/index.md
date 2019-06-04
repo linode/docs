@@ -20,7 +20,7 @@ dedicated_cpu_link: true
 ![Installing Multicraft on Ubuntu](Installing_Multicraft_on_Ubuntu_smg.jpg)
 
 
-[Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide will help you install Multicraft on a Linode running Ubuntu 14.04.
+[Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide will help you install Multicraft on a Linode running Ubuntu 18.04 LTS.
 
 {{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -32,11 +32,11 @@ Multicraft for Linux depends on several software packages in order to run.
 
 1.  Update your system:
 
-        apt-get update; apt-get upgrade -y
+        sudu apt-get update && sudo apt-get upgrade
 
 2.  Install Apache2, SQLite, Java, PHP, and related packages:
 
-        apt-get install -y apache2 sqlite php5 php5-sqlite php5-gd openjdk-7-jre-headless
+        sudo apt-get install -y apache2 sqlite php7.2 php7.2-sqlite php7.2-gd default-jre-headless
 
 3.  In Apache's configuration file, under the `<Directory /var/www/>` section, change the `AllowOverride` value to `all`.
 
@@ -135,7 +135,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
         wget https://s3.amazonaws.com/Minecraft.Download/versions/1.8.1/minecraft_server.1.8.1.jar
 
-3.  Back in the Multicraft web interface, click on `Servers`, then `Create Server`. Fill in the options as you see fit, but be sure to add `minecraft_server.1.8.1.jar` (or your downloaded version) in the `JAR File` field:
+3.  In your local web browser, navigate to `http://12.34.56.78/multicraft/install.php`, replacing `12.34.56.78` with your Linode's IP address or domain name. Click on `Servers`, then `Create Server`. Fill in the options as you see fit, but be sure to add `minecraft_server.1.8.1.jar` (or your downloaded version) in the `JAR File` field:
 
     [![Multicraft Server Settings.](multicraft-server-settings_small.png)](multicraft-server-settings.png)
 
