@@ -25,9 +25,9 @@ This guide will show you how to clone one of your Linode’s existing [disks and
 
 1. Click **Create** at the top of the Cloud Manager and select **Linode**.
 
-1. In the **Create New Linode** form, click on the **Clone from Existing** tab:
+1. In the **Create New Linode** form, click on the **My Images** tab and then the **Clone Linode** tab:
 
-    ![Select the 'Clone from Existing' tab to clone an existing Linode.](clone-linode-menu.png)
+    ![Select the 'Clone Linode' tab to clone an existing Linode.](clone-linode-menu.png)
 
 1. Under **Select Linode to Clone From**,click on the Linode you wish to clone.
 
@@ -47,4 +47,4 @@ You will not be able to choose a plan for your clone that is smaller than the pl
 
   {{< note >}}
 You may want to swap your IP address from the Linode you originally created to your cloned Linode in order to have your clone function over the network without making any configuration changes. To complete this, you'd just need to follow this [guide](/docs/platform/manager/remote-access/#swapping-ip-addresses).
-{{</ note >}}"
+{{</ note >}}
