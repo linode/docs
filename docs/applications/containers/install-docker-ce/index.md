@@ -47,6 +47,12 @@ sub   4096R/F273FCD8 2017-02-22
 
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
+    {{< note >}}
+For Ubuntu 19.04 if you get an `E: Package 'docker-ce' has no installation candidate` error this is because the stable version of docker for is not yet available. Therefore, you will need to use the edge / test repository.
+{{< /note >}}
+
+        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable edge test"
+
 6.  Update your package index and install Docker CE:
 
         sudo apt update
