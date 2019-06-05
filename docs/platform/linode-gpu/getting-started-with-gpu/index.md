@@ -6,13 +6,17 @@ description: 'Getting Started With GPU Linodes.'
 keywords: ["", "grub"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: []
-published: 2019-05-22
+published: 2019-06-05
 title: Getting Started With GPU Linodes
 modified_by:
   name: Linode
 ---
 
-The following guide will help you to get your dedicated GPU up and running on a number of popular distributions. In all cases where possible, this guide will use [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) to install the necessary NVIDIA driver.  For distributions like Debian 9 in which `CUDA` is not officially supported, the guide will show you how to manually install the NVIDIA driver only.
+The following guide will help you to get your dedicated GPU up and running on a number of popular distributions. In all cases where possible, this guide will use [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) to install the necessary NVIDIA driver.
+
+{{< note >}}
+For distributions like Debian 9 in which CUDA is not officially supported, visit the [Manual Install](#manual-install) section after completing the [Before You Begin](#before-you-begin) section to install the NVIDIA driver only.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -35,16 +39,18 @@ Depending on your distribution, you may need to install lspci manually first. On
     yum install pciutils
 {{< /note >}}
 
+1. [Install the dependencies](#install-dependencies) that NVIDIA's drivers may rely on.
+
 ## Install Dependencies
 
-Some dependencies may need to be installed prior to installing your driver. Listed below are the steps for installing these packages on many popular distributions:
+Some dependencies may need to be installed prior to installing your driver. Listed below are the commands for installing these packages on many popular distributions:
 
-### Ubuntu 18
+### Ubuntu 18.10
 
     sudo apt-get install build-essential
 
 ### Debian 9
-
+S
     sudo apt-get install build-essential
     sudo apt-get install linux-headers-`uname -r`
 
@@ -57,20 +63,42 @@ Some dependencies may need to be installed prior to installing your driver. List
     zypper install gcc
     zypper install kernel-source
 
-Issue a reboot to make sure you can use the missing kernel headers.
+{{< note >}}
+After running these commands, reboot your Linode from the [Cloud Manager](https://cloud.linode.com) to make sure you can use the missing kernel headers.
+{{< /note >}}
 
 
 ## Installing with CUDA
 
- This section of the guide will highlight how to install your GPU driver using [NVIDIA's Cuda Toolkit](https://developer.nvidia.com/cuda-toolkit), currently fully supported on CentOS 7,OpenSUSE, and other popular distributions. Optionally, you can also choose to install the full toolkit in it's entirety to gain access to a set of tools that will empower you to create GPU-accelerated applications.
+ This section of the guide will highlight how to install your GPU driver using [NVIDIA's Cuda Toolkit](https://developer.nvidia.com/cuda-toolkit). The CUDA toolkit is currently fully supported on CentOS 7, OpenSUSE, and other popular distributions.
 
-1. Download the latest version of the installer from [CUDA's Downloads Page](https://developer.nvidia.com/cuda-downloads). From the "Select Target Platform" box, you want to select Linux, x86_64, the distribution you're using, the version number, and the installer type as "runfile (local)". Select the Download button to download the installer file on to your device and upload it to your GPU Linode. In our case, we used [Wget](https://www.linode.com/docs/quick-answers/linux/how-to-use-wget/) to download the file directly to our Linode.
+ Optionally, you can also choose to install the full toolkit.  The full toolkit will provide access to a set of tools that will empower you to create GPU-accelerated applications.
+
+1. Vist the [CUDA Downloads Page](https://developer.nvidia.com/cuda-downloads). The **Select Target Platform** section will show a collection of green buttons that you will select from. When you finish this form, the page will present a download link for the installer. Use these values to complete the form:
+
+    | Prompt | Selection |
+    |--------|-----------|
+    | Operating System | Linux |
+    | Architecture | x86_64 |
+    | Distribution | Your Linode's distribution |
+    | Version | Your distribution's version |
+    | Installer type | runfile (local) |
+
+    An example completed form will look like:
+
+    ![CUDA Downloads Page - Select Target Platform](cuda-downloads-select-target-platform.png "CUDA Downloads Page - Select Target Platform")
+
+1.  A **Download Installer** section will appear below the **Select Target Platform** section. The green **Download** button in this section will link to the installer file. Copy this link to your computer's clipboard:
+
+    ![Copy Download Link](copy-cuda-installer-download-link.png "Right click to copy the download link for the installer")
+
+1.  On your Linode, enter the `wget` command and paste in the download link you copied. This example shows the syntax for the command, but you should make sure to use the download link appropriate for your Linode:
 
         wget https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.168_418.67_linux.run
 
-1. Run your version of the installer script on your Linode to begin the installation process:
+1. After wget completes, run your version of the installer script on your Linode to begin the installation process:
 
-        sudo sh cuda_10.1.168_418.67_linux.run
+        sudo sh cuda_*_linux.run
 
     {{< note >}}
 The installer will take a few moments to run before generating any output. A full install will take several minutes to fully complete.
@@ -78,7 +106,9 @@ The installer will take a few moments to run before generating any output. A ful
 
 1. Read and accept the License Agreement.
 
-1. Choose to install the CUDA Toolkit in it's entirety or partially. To use your GPU, you only need to install the driver, however the CUDA toolkit has additional functionality that may be useful depending on your use case. To only install the driver, uncheck all options directly below the Driver option. This would result in your screen resembling the following:
+1. Choose to install the CUDA Toolkit in its entirety or partially. To use your GPU, you only need to install the driver. However, the CUDA toolkit has additional functionality that may be useful depending on your use case.
+
+    To only install the driver, uncheck all options directly below the Driver option. This would result in your screen resembling the following:
 
     ![Cuda Installer](cuda-installer.png "Cuda Installer")
 
@@ -88,7 +118,7 @@ Installation on CentOS and RHEL operating systems will fail following this as th
 
 {{< /note >}}
 
-1. Once the installation has completed, use `nvidia-smi` to make sure that you're currently using your NVIDIA GPU with it's associated driver:
+1. Once the installation has completed, run the `nvidia-smi` command to make sure that you're currently using your NVIDIA GPU with its associated driver:
 
         nvidia-smi
 
@@ -113,26 +143,46 @@ Installation on CentOS and RHEL operating systems will fail following this as th
 +-----------------------------------------------------------------------------+
 {{< /output >}}
 
-    In the output above, we can see that our Driver is installed and functioning correctly, the version of CUDA attributed to it, and other useful statistics.
+    In the output above, we can see that our driver is installed and functioning correctly, the version of CUDA attributed to it, and other useful statistics.
 
 ## Manual Install
 
-This section will walk you through the process of downloading and installing the latest NVIDIA driver on Debian 9. This process can be completed similarly on a Distro of your choice if needed:
+This section will walk you through the process of downloading and installing the latest NVIDIA driver on Debian 9. This process can also be completed similarly on another distro of your choice if needed:
 
-1. Find the latest Driver from NVIDIA's [Driver Downloads Page](https://www.nvidia.com/Download/index.aspx?lang=en-us).
+1. Visit NVIDIA's [Driver Downloads Page](https://www.nvidia.com/Download/index.aspx?lang=en-us).
 
-1. Make sure that the options from the drop-down menus reflect the following:
+1. Make sure that the options from the drop-down menus reflect the following values:
+
+    | Prompt | Selection |
+    |--------|-----------|
+    | Product Type | Quadro |
+    | Product Series | Quadro RTX Series |
+    | Product | Quadro RTX 8000 |
+    | Operating System | Linux 64-bit |
+    | Download Type | Optimal Driver for Enterprise (ODE) |
+    | Download Type | Linux Long Lived Driver |
+    | Language | English (US) |
+
+    The form will look as follows when completed:
 
     ![Driver Download](driver.png "Driver Download")
 
-1. Select "Search", "Download", and download the Linux driver that appears on the following screen to your Linode.
+1. Click the **Search** button, and a page will appear that shows information about the driver. Click the green **Download** button on this page. The file will not download to your computer; instead, you will be taken to another download confirmation page.
 
-1. Run the script to install the driver. Follow the prompts as necessary:
+1. Copy the link for the driver installer script from the green **Download** button on this page:
 
-        sudo bash NVIDIA-Linux-x86_64-430.14.run
+    ![Copy Download Link](copy-driver-download-link.png "Right click to copy the download link for the installer")
+
+1.  On your Linode, enter the `wget` command and paste in the download link you copied. This example shows the syntax for the command, but you should make sure to use the download link you copied from NVIDIA's site:
+
+        wget http://us.download.nvidia.com/XFree86/Linux-x86_64/430.14/NVIDIA-Linux-x86_64-430.14.run
+
+1. After wget completes, run your version of the installer script on your Linode. Follow the prompts as necessary:
+
+        sudo bash NVIDIA-Linux-x86_64-*.run
 
 1. Select `OK` and `Yes` for all prompts as they appear.
 
-1. Once the installer has completed, use `nvidia-smi` to make sure that you're currently using your NVIDIA GPU with it's associated driver:
+1. Once the installer has completed, use `nvidia-smi` to make sure that you're currently using your NVIDIA GPU with its associated driver:
 
         nvidia-smi
