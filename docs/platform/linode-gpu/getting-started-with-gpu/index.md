@@ -34,7 +34,7 @@ For distributions like Debian 9 in which CUDA is not officially supported, visit
 {{< /output >}}
 
     {{< note >}}
-Depending on your distribution, you may need to install lspci manually first. On current RedHat and RHEL operating systems, you can install this utility with the following command:
+Depending on your distribution, you may need to install lspci manually first. On current CentOS, Fedora, and other RHEL-derived operating systems, you can install this utility with the following command:
 
     yum install pciutils
 {{< /note >}}
