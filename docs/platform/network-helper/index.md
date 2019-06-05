@@ -72,7 +72,7 @@ When Network Helper is enabled globally, all new Linodes created on your account
 
 The specific files Network Helper modifies varies by distribution.
 
-### Arch
+### Arch & Ubuntu (18.04 LTS and later)
 
 Network Helper configures `/etc/systemd/network/05-eth0.network`.
 
@@ -80,7 +80,7 @@ Network Helper configures `/etc/systemd/network/05-eth0.network`.
 
 Network Helper configures `/etc/sysconfig/network-scripts/ifcfg-eth0`.
 
-### Debian & Ubuntu
+### Debian & Ubuntu (versions before 18.04 LTS)
 
 Network helper configures `/etc/network/interfaces` and `/etc/resolv.conf`.
 
@@ -90,7 +90,7 @@ Network Helper configures `/etc/conf.d/net` and `/etc/resolv.conf`.
 
 ### OpenSUSE
 
-Network Helper configures `/etc/sysconfig/network/ifcfg-eth0`, `/etc/sysconfig/network/routes` and `/etc/resolv.conf`.
+Network Helper configures `/etc/sysconfig/network/ifcfg-eth0`, `/etc/sysconfig/network/routes`, and `/etc/resolv.conf`.
 
 ### Slackware
 
@@ -163,7 +163,7 @@ nameserver 72.14.188.5
 {{< /file >}}
 
 
-In addition to network interface file file (again, specific to this Debian example), Network Helper will create:
+In addition to the network interface file (again, specific to this Debian example), Network Helper will create:
 
 - A copy of the interface and resolver file as the distribution provided it: `.interfaces.linode-orig` and `/etc/.resolv.conf.linode-orig`. Note that Network Helper does not modify `/etc/resolv.conf` on all of our distributions.
 

@@ -16,6 +16,8 @@ contributor:
   link: https://github.com/pbzona
 external_resources:
  - '[Oracle Java](https://www.oracle.com/java/index.html)'
+ - '[Read the FAQ](https://www.oracle.com/technetwork/java/javase/overview/oracle-jdk-faqs.html)'
+ - '[from Oracle](https://www.oracle.com/technetwork/java/javase/overview/oracle-jdk-faqs.html)'
 audiences: ["beginner"]
 
 languages: ["java"]
@@ -37,48 +39,42 @@ In this guide, we'll install the Oracle Java development kit for building Java a
 
         sudo apt-get update && sudo apt-get upgrade
 
-## Install Oracle JDK
+## Install OpenJDK
 
-The Oracle JDK, includes a development environment for building applications with the Java programming language. Please be aware that some elements of the Oracle JDK are proprietary, meaning that there may be licensing implications with respect to applications you develop with it.
+The OpenJDK, includes an open-source runtime environment and compiler. This allows you to develop your own Java applications and run them on your Linode.
 
-1.  Install the `software-properties-common` package if you don't already have it. This provides an easier way to add new repositories:
-
-        sudo apt-get install software-properties-common
-
-2.  Add the Java PPA:
-
-        sudo add-apt-repository ppa:webupd8team/java
-
-    {{< note >}}
-This repository is *not* maintained by Oracle. It does not contain actual Java files, but does allow us to download installers for Oracle Java software. Before using the installers, you'll be prompted to accept a license agreement, which can be found in its entirety [here](http://www.oracle.com/technetwork/java/javase/terms/license/index.html).
+{{< note >}}
+This "Main" repository is maintained by Canonical, the company that maintains Ubuntu.
 {{< /note >}}
 
-3.  Update the local package cache:
+1.  Install the "Main" repository with apt:
 
         sudo apt-get update
 
-4.  Install the metapackage:
+2.  Install OpenJDK 8:
 
-        sudo apt-get install oracle-java8-installer
+        sudo apt-get install openjdk-8-jdk
 
-    This package will run an installer for The Oracle JDK 8, which is the current stable release. You may also replace `java8` in the package name with `java7` or `java9` to install different versions, although these releases are not recommended for development.
+    This package will run an installer for The OpenJDK 8, which is the latest LTS version available for Ubuntu 16.04 release.
 
-5.  Verify that Java and the Java compiler have been properly installed:
+3.  Verify that Java and the Java compiler have been properly installed:
 
         java -version
         javac -version
 
     As of this publication, these commands should return the following:
 
-        java version "1.8.0_131"
-        Java(TM) SE Runtime Environment (build 1.8.0_131-b11)
-        Java HotSpot(TM) 64-Bit Server VM (build 25.131-b11, mixed mode)
+        java version "1.8.0_212"
+        OpenJDK Runtime Environment (build 1.8.0_212-8u212-b03-0ubuntu1.16.04.1-b03)
+        OpenJDK 64-Bit Server VM (build 25.212-b03, mixed mode)
 
-        javac 1.8.0_131
+        javac 1.8.0_212
 
-6.  Since the PPA only provides an installer, and not updates for the JDK itself, you may want to delete it when you're finished in order to keep your repositories organized:
+However, if you only need to run applications that you’ve already downloaded, you can save a bit of disk space by installing the OpenJRE (Java runtime environment):
 
-        sudo add-apt-repository -r ppa:webupd8team/java
+    sudo apt-get install openjdk-8-jre
+
+Note that this is unnecessary if you’ve installed OpenJDK, since it includes the JRE.
 
 ## Set Java Home Environment
 
@@ -98,22 +94,16 @@ Many applications include code or configuration that references the `JAVA_HOME` 
 
     This should return the path to the Java binary.
 
-## OpenJDK
-
-The above installation methods allow you to use the Oracle JDK, which is be bound by licensing terms and includes proprietary components. OpenJDK provides an open-source alternative that is just as easy to install.
-
-To install OpenJDK:
-
-    sudo apt-get install openjdk-8-jdk
-
-The installation will provide you with the OpenJDK, which includes a runtime environment and compiler. This allows you to develop your own Java applications and run them on your Linode.
-
-However, if you only need to run applications that you've already downloaded, you can save a bit of disk space by installing the OpenJRE (Java runtime environment):
-
-    sudo apt-get install openjdk-8-jre
-
-Note that this is unnecessary if you've installed OpenJDK, since it includes the JRE.
+## Oracle JDK
 
 {{< caution >}}
-OpenJDK and Oracle Java are *not* identical. There may be licensing, performance, and stability differences, and this should be considered carefully when developing production applications.
+In April 2019, Oracle Java downloads now require logging into an Oracle account to download and update Java 8 due to a change in the Oracle JDK licensing terms. [Read the FAQ](https://www.oracle.com/technetwork/java/javase/overview/oracle-jdk-faqs.html) for more details.
 {{< /caution >}}
+
+Due to the new Oracle agreement and login requirements The PPA to install Oracle JDK 8 is Discontinued. Official note from the PPA:
+
+    The new Oracle Technology Network License Agreement for Oracle Java SE is substantially different from prior Oracle JDK licenses. The new license permits certain uses, such as personal use and development use, at no cost -- but other uses authorized under prior Oracle JDK licenses may no longer be available. Please review the terms carefully before downloading and using this product. An FAQ is available [from Oracle](https://www.oracle.com/technetwork/java/javase/overview/oracle-jdk-faqs.html).
+
+    Oracle Java downloads now require logging in to an Oracle account to download Java updates, like the latest Oracle Java 8u211 / Java SE 8u212. Because of this I cannot update the PPA with the latest Java (and the old links were broken by Oracle).
+
+    For this reason, THIS PPA IS DISCONTINUED (unless I find some way around this limitation).
