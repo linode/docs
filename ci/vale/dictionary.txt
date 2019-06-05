@@ -1064,6 +1064,7 @@ python3
 pythonic
 qmail
 qmgr
+quadro
 qualys
 quickconnect
 quicklisp
