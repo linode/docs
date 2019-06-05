@@ -70,11 +70,11 @@ After running these commands, reboot your Linode from the [Cloud Manager](https:
 
 ## Installing with CUDA
 
- This section of the guide will highlight how to install your GPU driver using [NVIDIA's Cuda Toolkit](https://developer.nvidia.com/cuda-toolkit). The CUDA toolkit is currently fully supported on CentOS 7, OpenSUSE, and other popular distributions.
+ This section of the guide will highlight how to install your GPU driver using [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit). The CUDA toolkit is currently fully supported on CentOS 7, OpenSUSE, and other popular distributions.
 
  Optionally, you can also choose to install the full toolkit.  The full toolkit will provide access to a set of tools that will empower you to create GPU-accelerated applications.
 
-1. Vist the [CUDA Downloads Page](https://developer.nvidia.com/cuda-downloads). The **Select Target Platform** section will show a collection of green buttons that you will select from. When you finish this form, the page will present a download link for the installer. Use these values to complete the form:
+1. Visit the [CUDA Downloads Page](https://developer.nvidia.com/cuda-downloads). The **Select Target Platform** section will show a collection of green buttons that you will select from. When you finish this form, the page will present a download link for the installer. Use these values to complete the form:
 
     | Prompt | Selection |
     |--------|-----------|
