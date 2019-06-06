@@ -56,7 +56,7 @@ After running these commands, reboot your Linode from the [Cloud Manager](https:
     sudo apt-get install build-essential
 
 ### Debian 9
-S
+
     sudo apt-get install build-essential
     sudo apt-get install linux-headers-`uname -r`
 
