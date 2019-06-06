@@ -12,11 +12,13 @@ modified_by:
   name: Linode
 ---
 
-The following guide will help you to get your dedicated GPU up and running on a number of popular distributions. In all cases where possible, this guide will use [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) to install the necessary NVIDIA driver.
+The following guide will help you to get your dedicated GPU up and running on a number of popular distributions. To prepare your Linode, you should install NVIDIA's proprietary drivers. In all cases where possible, this guide will use [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) to install the necessary NVIDIA driver.
 
-{{< note >}}
 For distributions like Debian 9 in which CUDA is not officially supported, visit the [Manual Install](#manual-install) section after completing the [Before You Begin](#before-you-begin) section to install the NVIDIA driver only.
-{{< /note >}}
+
+{{< disclosure-note "Why do NVIDIA's drivers need to be installed?" >}}
+NVIDIA's proprietary drivers are closed-source, and Linode has chosen  not to bundle them with the Linux images available in the Linode Cloud Manager. While some operating systems are packaged with the open source [Nouveau](https://nouveau.freedesktop.org/wiki/) driver, the proprietary driver will provide optimal performance for your GPU-accelerated applications.
+{{< /disclosure-note >}}
 
 ## Before You Begin
 
@@ -43,9 +45,13 @@ Depending on your distribution, you may need to install lspci manually first. On
 
 ## Install Dependencies
 
-Some dependencies may need to be installed prior to installing your driver. Listed below are the commands for installing these packages on many popular distributions:
+Some dependencies may need to be installed prior to installing your driver. Listed below are the commands for installing these packages on many popular distributions.
 
-### Ubuntu 18.10
+{{< note >}}
+After running these commands, reboot your Linode from the [Cloud Manager](https://cloud.linode.com). The commands install missing kernel headers needed by NVIDIA's driver, and rebooting will ensure that they will be available.
+{{< /note >}}
+
+### Ubuntu 18
 
     sudo apt-get install build-essential
 
@@ -62,10 +68,6 @@ S
 ### OpenSUSE
     zypper install gcc
     zypper install kernel-source
-
-{{< note >}}
-After running these commands, reboot your Linode from the [Cloud Manager](https://cloud.linode.com) to make sure you can use the missing kernel headers.
-{{< /note >}}
 
 
 ## Installing with CUDA
@@ -159,13 +161,12 @@ This section will walk you through the process of downloading and installing the
     | Product Series | Quadro RTX Series |
     | Product | Quadro RTX 8000 |
     | Operating System | Linux 64-bit |
-    | Download Type | Optimal Driver for Enterprise (ODE) |
     | Download Type | Linux Long Lived Driver |
     | Language | English (US) |
 
     The form will look as follows when completed:
 
-    ![Driver Download](driver.png "Driver Download")
+    ![NVIDIA Drivers Download Form](nvidia-drivers-download-form.png "NVIDIA Drivers Download Form")
 
 1. Click the **Search** button, and a page will appear that shows information about the driver. Click the green **Download** button on this page. The file will not download to your computer; instead, you will be taken to another download confirmation page.
 
