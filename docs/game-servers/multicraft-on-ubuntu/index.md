@@ -32,13 +32,21 @@ Multicraft for Linux depends on several software packages in order to run.
 
 1.  Update your system:
 
-        sudu apt-get update && sudo apt-get upgrade
+        apt-get update && sudo apt-get upgrade
 
-2.  Install Apache2, SQLite, Java, PHP, and related packages:
+1.  Install Apache2 and SQLite:
 
-        sudo apt-get install -y apache2 sqlite php7.2 php7.2-sqlite php7.2-gd default-jre-headless
+        apt-get install apache2 sqlite
 
-3.  In Apache's configuration file, under the `<Directory /var/www/>` section, change the `AllowOverride` value to `all`.
+1.  Install PHP, SQLite, and related packages:
+
+        apt-get install php7.2 php7.2-sqlite php7.2-gd
+
+1.  Install Java:
+
+        apt-get install openjdk-8-jdk
+
+1.  In Apache's configuration file, under the `<Directory /var/www/>` section, change the `AllowOverride` value to `all`.
 
     {{< file "/etc/apache2/apache2.conf" apache >}}
 <Directory /var/www/>
@@ -88,40 +96,44 @@ Multicraft for Linux depends on several software packages in order to run.
 
 1.  In your local web browser, navigate to `http://12.34.56.78/multicraft/install.php`, replacing `12.34.56.78` with your Linode's IP address or domain name. Click on `Start Installation`:
 
-    [![Multicraft Installer.](multicraft-init_small.png)](multicraft-init.png)
+    [![Multicraft Installer.](multicraft-init_small-1804.png)](multicraft-init-1804.png)
 
 2.  Multicraft will check your requirements. If you completed the steps above without issue, your page should reflect the results show below:
 
-    [![Multicraft Requirements Check.](multicraft-reqs_small.png)](multicraft-reqs.png)
+    [![Multicraft Requirements Check.](multicraft-reqs_small-1804.png)](multicraft-reqs-1804.png)
 
     Click `Continue`.
 
 3.  Multicraft will attempt to copy the default `config.php` file into place. If successful, click `Continue`:
 
-    [![Multicraft Configuration File Transfer.](multicraft-config_small.png)](multicraft-config.png)
+    [![Multicraft Configuration File Transfer.](multicraft-config_small-1804.png)](multicraft-config-1804.png)
 
-4.  On the next page, click on `Initialize Database`. Afterwards, click `Continue`:
+4.  On the next page, click on `Initialize Database`.
 
-    [![Multicraft Database Creation.](multicraft-db_small.png)](multicraft-db.png)
+    [![Multicraft Database Initialization.](multicraft-db-initialize_small-1804.png)](multicraft-db-initialize-1804.png)
 
-5.  The next page will attempt to connect to the panel database. You should see the message `Connection successful`. You can now click on the `Login` button and sign in with the username and password `admin`.
+5.  Afterwards, click `Continue`:
 
-    [![Multicraft Panel Database Connection.](multicraft-panel_small.png)](multicraft-panel.png)
+    [![Multicraft Database Creation.](multicraft-db_small-1804.png)](multicraft-db-1804.png)
 
-6.  After logging in you will be directed back to the previous page, where you can now click on `Continue`. The next page will allow you to configure your basic settings. When done, click `Save`.
+6.  The next page will attempt to connect to the panel database. You should see the message `Connection successful`. You can now click on the `Login` button and sign in with the username and password `admin`.
 
-7.  On the daemon configuration page, you will find a start command to initiate the Multicraft Daemon. Copy the command into your terminal:
+    [![Multicraft Panel Database Connection.](multicraft-panel_small-1804.png)](multicraft-panel-1804.png)
+
+7.  After logging in you will be directed back to the previous page, where you can now click on `Continue`. The next page will allow you to configure your basic settings. When done, click `Save`.
+
+8.  On the daemon configuration page, you will find a start command to initiate the Multicraft Daemon. Copy the command into your terminal:
 
         /home/minecraft/multicraft/bin/multicraft -v start
-        Multicraft 1.8.2 - Minecraft Server Manager Daemon
+        Multicraft 2.3.1 - Minecraft Server Manager Daemon
         Loading configuration from /home/minecraft/multicraft/multicraft.conf
         Starting daemon
 
-8.  Back in your browser, click on `Refresh`. You should see the daemon in a green box. Click `Continue`:
+9.  Back in your browser, click on `Refresh`. You should see the daemon in the detected daemons list. Click `Continue`:
 
-    [![Multicraft Daemon Configuration.](multicraft-daemon_small.png)](multicraft-daemon.png)
+    [![Multicraft Daemon Configuration.](multicraft-daemon_small-1804.png)](multicraft-daemon-1804.png)
 
-9.  Your configuration of the Multicraft control panel is now complete. As per the instructions on the page, delete the `install.php` file from your terminal:
+10.  Your configuration of the Multicraft control panel is now complete. As per the instructions on the page, delete the `install.php` file from your terminal:
 
         rm /var/www/html/multicraft/install.php
 
@@ -131,30 +143,18 @@ Multicraft for Linux depends on several software packages in order to run.
 
         cd /home/minecraft/multicraft/jar/
 
-2.  Download the latest version of the Minecraft server (1.8.1 at the time of this publication) from the Minecraft [Download](https://minecraft.net/download) page:
+1.  Download the latest version of the Minecraft server (1.14.2 at the time of this publication) from the Minecraft [Download](https://minecraft.net/download) page:
 
-        wget https://s3.amazonaws.com/Minecraft.Download/versions/1.8.1/minecraft_server.1.8.1.jar
+        wget https://launcher.mojang.com/v1/objects/808be3869e2ca6b62378f9f4b33c946621620019/server.jar
 
-3.  In your local web browser, navigate to `http://12.34.56.78/multicraft/install.php`, replacing `12.34.56.78` with your Linode's IP address or domain name. Click on `Servers`, then `Create Server`. Fill in the options as you see fit, but be sure to add `minecraft_server.1.8.1.jar` (or your downloaded version) in the `JAR File` field:
+1.  In your local web browser, navigate to `http://12.34.56.78/multicraft/`, replacing `12.34.56.78` with your Linode's IP address or domain name. Click on `Servers`.
 
-    [![Multicraft Server Settings.](multicraft-server-settings_small.png)](multicraft-server-settings.png)
+1.  At this time you must accept the Multicraft EULA. A pop-up window will appear. By clicking Close you are indicating your agreement to the EULA here: `http://www.multicraft.org/eula.txt`. Click Close.
 
-4.  The first time you attempt to start the Minecraft server it will fail. By checking the Console view, you should see the following output:
+       [![Multicraft EULA.](multicraft-eula-popup.png)](multicraft-eula-popup.png)
 
-        ...
-        04.02 22:24:38 [Server] INFO [22:24:38] [Server thread/INFO]: Stopping server
-        04.02 22:24:38 [Server] INFO [22:24:38] [Server thread/INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.
-        04.02 22:24:38 [Server] INFO [22:24:38] [Server thread/WARN]: Failed to load eula.txt
-        ...
+1.  Click `Create Server`. Fill in the options as you see fit, but be sure to add `server.jar` (or your downloaded version) in the `JAR File` field:
 
-5.  After reading the End User License Agreement, open the file `eula.txt` in your terminal and change the value of `eula` to `true`:
-
-    {{< file "/home/minecraft/multicraft/servers/server1/eula.txt" aconf >}}
-#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).
-#Wed Feb 04 22:24:38 UTC 2015
-eula=true
-
-{{< /file >}}
-
+    [![Multicraft Server Settings.](multicraft-server-settings_small-1804.png)](multicraft-server-settings-1804.png)
 
     You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server).
