@@ -6,7 +6,7 @@ description: 'Learn how to use Lish as a shell for managing or rescuing your Lin
 keywords: ["Console", "Shell", "Lish", "rescue"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/','networking/using-the-linode-shell-lish/','platform/using-the-linode-shell-lish/']
-modified: 2019-03-11
+modified: 2019-06-07
 modified_by:
   name: Linode
 published: 2009-08-04
@@ -263,7 +263,7 @@ These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-
 
 ### Toronto
 
-These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-tokyo2.linode.com):
+These are the fingerprints for the Lish gateway in our Toronto data center (lish-tor1.linode.com):
 
     RSA 4a:d9:fb:43:b8:0e:7f:fd:d3:cd:fc:87:06:61:51:df
     ECDSA SHA256:iAWnqR3XYcooliTQ7W1tiMmjsA4k1WJVItvLz4lUxQE
