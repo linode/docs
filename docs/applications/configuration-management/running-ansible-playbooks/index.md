@@ -121,7 +121,7 @@ The following playbooks are for learning purposes only, and will not result in a
 
 ### Prerequisites
 
-- This example can be configured using two separate Linodes on Debian 9, one which will serve as a master node with an [Authentication Key Pair](https://www.linode.com/docs/security/securing-your-server/#create-an-authentication-key-pair) pre-generated and [Ansible](http://localhost:1313/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) pre-installed. Your second Linode should have no initial configuration tasks performed. We will add our public encryption key from our master node using playbooks so that we can complete all configuration tasks through our master node.
+- This example can be configured using two separate Linodes on Debian 9, one which will serve as a master node with an [Authentication Key Pair](https://www.linode.com/docs/security/securing-your-server/#create-an-authentication-key-pair) pre-generated and [Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) pre-installed. Your second Linode should have no initial configuration tasks performed. We will add our public encryption key from our master node using playbooks so that we can complete all configuration tasks through our master node.
 
 - Because Ansible playbooks are idempotent and can be run repeatedly without error, the **user** task checks that a user exists and that the password on file (which the system stores hashed) matches the hash you are supplying. Therefore you cannot (and should not) just put in a plaintext password, you must pre-hash it.
 
