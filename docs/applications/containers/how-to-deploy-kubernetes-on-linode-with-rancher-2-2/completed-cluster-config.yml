@@ -8,8 +8,8 @@ addons: |-
     name: linode
     namespace: kube-system
   stringData:
-    token: "..."
-    region: "..."
+    token: “…”
+    region: “…”
   ---
 addon_job_timeout: 30
 authentication:
@@ -25,7 +25,7 @@ ignore_docker_version: true
 #
 ingress:
   provider: "nginx"
-kubernetes_version: "v1.13.4-rancher1-2"
+kubernetes_version: "v1.13.5-rancher1-3"
 monitoring:
   provider: "metrics-server"
 #
@@ -68,6 +68,7 @@ network:
 services:
   etcd:
     backup_config:
+      enabled: true
       interval_hours: 12
       retention: 6
     creation: "12h"
@@ -75,7 +76,7 @@ services:
       heartbeat-interval: 500
       election-timeout: 5000
     retention: "72h"
-    snapshot: true
+    snapshot: false
   kube-api:
     always_pull_images: false
     pod_security_policy: false
@@ -100,4 +101,4 @@ enable_cluster_monitoring: false
 enable_network_policy: false
 local_cluster_auth_endpoint:
   enabled: true
-name: "example-cluster"
+name: “example-cluster”
