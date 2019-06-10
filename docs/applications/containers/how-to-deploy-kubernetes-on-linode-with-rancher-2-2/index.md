@@ -252,7 +252,7 @@ addons: |-
 
 1.  Insert your Linode APIv4 token in the `token` field from this snippet. Also, enter the label for your node template's data center in the `region` field. This label should be lower-case (e.g. `us-east` instead of `US-East`).
 
-1.  Scroll down in the editor to the `services` section. Remove the `kube-api` sub-section and replace it with the following snippet:
+1.  Scroll down in the editor to the `services` section. Remove the `kube-api` sub-section and replace it with the example snippet. When editing the file, ensure you do not accidentally remove any other sections above or below the snippet.
 
     {{< file >}}
   kube-api:
@@ -270,8 +270,6 @@ addons: |-
     extra_args:
       cloud-provider: "external"
 {{< /file >}}
-
-      Be careful that you do not remove anything above or below this sub-section.
 
 1.  After you finish with both of these steps, your YAML should resemble [this completed snippet](completed-cluster-config.yml).
 
