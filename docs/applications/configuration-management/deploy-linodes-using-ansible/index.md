@@ -46,6 +46,8 @@ The steps outlined in this guide require [Ansible version 2.8](https://github.co
 
 - Genearate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/) guide if you do not already have one.
 
+- [Create an authentication Key-pair](/docs/security/securing-your-server/#create-an-authentication-key-pair) if your computer does not already have one.
+
 ## Configure Ansible
 
 The Ansible configuration file is used to adjust Ansible's default system settings. Ansible will search for a configuration file in the directories listed below, in the order specified, and apply the first configuration values it finds:
@@ -61,9 +63,9 @@ In this section, you will create an Ansible configuration file and add options t
 When storing your Ansible configuration file, ensure that its corresponding directory does not have world-writable permissions. This could pose a security risk that allows malicious users to use Ansible to exploit your local system and remote infrastructure. At minimum, the directory should restrict access to particular users and groups. For example, you can create an `ansible` group, only add privileged users to the `ansible` group, and update the Ansible configuration file's directory to have `764` permissions. See the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide for more information on permissions.
 {{</ caution >}}
 
-1. Create a directory to hold all your Ansible related files:
+1. In your home directory, create a directory to hold all your Ansible related files and move into the directory:
 
-        mkdir development
+        mkdir development && cd development
 
 1. Create the Ansible configuration file, `ansible.cfg` in the `development` directory and add the `host_key_checking` and `enable_plugins` options.
 
@@ -85,13 +87,9 @@ You can now begin to create Linode instances using Ansible. In this section, you
 
 ### Create your Linode Playbook
 
-1. Create a directory to store your Ansible Playbooks:
+1. Ensure you are in the `development` directory that you created in the [Configure Ansible](/docs/applications/configuration-management/deploy-linodes-using-ansible/#create-a-linode-instance) section:
 
-        mkdir ~/development
-
-1. Expose your Linode access token in your shell environment. Replace the value of `mylinodetoken` with your own token.
-
-        export LINODE_TOKEN='mylinodetoken'
+        cd ~/development
 
 1. Using your preferred text editor, create the `Create Linode` Playbook file and include the following values:
 
@@ -99,7 +97,7 @@ You can now begin to create Linode instances using Ansible. In this section, you
 - name: Create Linode
   hosts: localhost
   vars_files:
-      - /home/username/development/group_vars/example_group/vars
+      - ./group_vars/example_group/vars
   tasks:
   - name: Create a new Linode.
     linode_v4:
@@ -143,7 +141,7 @@ In the previous section, you created the Create Linode Playbook to deploy Linode
 
 1. Create the variables file and populate it with the example variables. You can replace the values with your own.
 
-    {{< file "~/development/group_vars/example_group/vars.yml">}}
+    {{< file "~/development/group_vars/example_group/vars">}}
 ssh_keys: >
         ['ssh-rsa AAAAB3N..5bYqyRaQ== user@mycomputer', '~/.ssh/id_rsa.pub']
 label: simple-linode-
@@ -194,15 +192,15 @@ My.ANS1BLEvault-c00lPassw0rd
 Encryption successful
       {{</ output >}}
 
-1. Copy the generated output and add it to your `vars.yml` file.
+1. Copy the generated output and add it to your `vars` file.
 
 1. Encrypt the value of your access token. Replace the value of `86210...1e1c6bd` with your own access token.
 
         ansible-vault encrypt_string '86210...1e1c6bd' --name 'token'
 
-1. Copy the generated output and it to the bottom of your `vars.yml` file.
+1. Copy the generated output and it to the bottom of your `vars` file.
 
-    The final `vars.yml` file should resemble the example below:
+    The final `vars` file should resemble the example below:
 
     {{< file "~/development/group_vars/example_group/vars.yml">}}
 ssh_keys: >
@@ -231,7 +229,7 @@ token: !vault |
 
 You are now ready to run the Create Linode Playbook. When you run the Playbook, a 1 GB Nanode will be deployed in the Newark data center.
 
-1. Run your playbook to create your Linode instances.
+1. Run your playbook to create your Linode instances. Ensure you are in the `development` directory when running the command.
 
         ansible-playbook ~/development/linode_create.yml
 
@@ -317,7 +315,7 @@ types:
 
   - Retrieve your Linode instance's IPv4 address:
 
-            ansible-inventory -i ansible/linode.yml --graph --vars | grep 'ipv4\|simple-linode'
+            ansible-inventory -i ~/development/linode.yml --graph --vars | grep 'ipv4\|simple-linode'
 
         Your output will resemble the following:
 
@@ -364,7 +362,7 @@ types:
 - name: Delete Linode
   hosts: localhost
   vars_files:
-    - /home/lsalazar/ansible/group_vars/crazy_cool_group/vars
+    - ./group_vars/example_group/vars
   tasks:
   - name: Delete your Linode Instance.
     linode_v4:
@@ -374,5 +372,5 @@ types:
 
 1. Run the Delete Linode Playbook:
 
-        ansible-playbook linode_delete.yml
+        ansible-playbook ~/development/linode_delete.yml
 
