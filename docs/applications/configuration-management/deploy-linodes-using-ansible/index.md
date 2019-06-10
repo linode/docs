@@ -76,7 +76,7 @@ enable_plugins = linode
       {{</ file >}}
 
       - `host_key_checking = False` will allow Ansible to SSH into hosts without having to accept the remote server's host key. This will disable host key checking globally.
-      - `vault_password_file = ./development/vault-pass` is used to specify a Vault password file to use whenever Ansible Vault requires a password. Ansible Vault offers several options for password management. To learn more password management, read Ansible's [Providing Vault Passwords](https://docs.ansible.com/ansible/latest/user_guide/vault.html#providing-vault-passwords) documentation. Note: remember to replace `username` with your username.
+      - `vault_password_file = /home/username/development/vault-pass` is used to specify a Vault password file to use whenever Ansible Vault requires a password. Ansible Vault offers several options for password management. To learn more password management, read Ansible's [Providing Vault Passwords](https://docs.ansible.com/ansible/latest/user_guide/vault.html#providing-vault-passwords) documentation. Note: remember to replace `username` with your username.
       - `enable_plugins = linode` enables the Linode dynamic inventory plugin.
 
 ## Create a Linode Instance
@@ -206,7 +206,7 @@ Encryption successful
 
     {{< file "~/development/group_vars/example_group/vars">}}
 ssh_keys: >
-        ['ssh-rsa AAAAB3N..5bYqyRaQ== user@mycomputer', '~/.ssh/id_rsa.pub']
+        ['ssh-rsa AAAAB3N..5bYqyRaQ== user@mycomputer']
 label: simple-linode-
 password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
