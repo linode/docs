@@ -17,6 +17,7 @@ ajp
 aker
 alives
 allmasquerade
+alphanumerics
 amavis
 amavisd
 amd64
@@ -543,6 +544,7 @@ icinga
 icingacli
 icmp
 icmpv6
+idempotence
 ident
 identrust
 idlist
