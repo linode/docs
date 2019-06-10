@@ -72,7 +72,7 @@ When storing your Ansible configuration file, ensure that its corresponding dire
       {{< file "~/development/ansible.cfg">}}
 [defaults]
 host_key_checking = False
-VAULT_PASSWORD_FILE = /home/username/development/vault-pass
+VAULT_PASSWORD_FILE = ./vault-pass
 [inventory]
 enable_plugins = linode
       {{</ file >}}
@@ -143,7 +143,7 @@ In the previous section, you created the Create Linode Playbook to deploy Linode
 
     {{< file "~/development/group_vars/example_group/vars">}}
 ssh_keys: >
-        ['ssh-rsa AAAAB3N..5bYqyRaQ== user@mycomputer']
+        ['ssh-rsa AAAAB3N..5bYqyRaQ== user@mycomputer', '~/.ssh/id_rsa.pub']
 label: simple-linode-
     {{</ file >}}
 
@@ -204,7 +204,7 @@ Encryption successful
 
     {{< file "~/development/group_vars/example_group/vars">}}
 ssh_keys: >
-        ['ssh-rsa AAAAB3N..5bYqyRaQ== user@mycomputer']
+        ['ssh-rsa AAAAB3N..5bYqyRaQ== user@mycomputer', '~/.ssh/id_rsa.pub']
 label: simple-linode-
 password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
