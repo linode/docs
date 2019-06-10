@@ -330,17 +330,6 @@ types:
 192.0.2.0 simple-linode-29
           {{</ file >}}
 
-  - Add the inventory option to the `ansible.cfg` file.
-
-          {{< file "~/development/ansible.cfg">}}
-[defaults]
-host_key_checking = False
-VAULT_PASSWORD_FILE = ~/development/vault-pass
-inventory = /etc/hosts
-[inventory]
-enable_plugins = linode
-          {{</ file >}}
-
 1. Verify that you can communicate with your grouped inventory by pinging the Linodes. The ping command will use the dynamic inventory plugin configuration file to target `example_group`. The `u root` option will run the command as root on the Linode hosts.
 
         ansible -m ping example_group -i ~/development/linode.yml -u root
