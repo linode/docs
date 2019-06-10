@@ -252,20 +252,9 @@ addons: |-
 
 1.  Insert your Linode APIv4 token in the `token` field from this snippet. Also, enter the label for your node template's data center in the `region` field. This label should be lower-case (e.g. `us-east` instead of `US-East`).
 
-1.  Scroll down in the editor to the `services` section. Remove the existing `services` section and replace it with this snippet:
+1.  Scroll down in the editor to the `services` section. Remove the `kube-api` sub-section and replace it with the following snippet:
 
     {{< file >}}
-services:
-  etcd:
-    backup_config:
-      interval_hours: 12
-      retention: 6
-    creation: "12h"
-    extra_args:
-      heartbeat-interval: 500
-      election-timeout: 5000
-    retention: "72h"
-    snapshot: true
   kube-api:
     always_pull_images: false
     pod_security_policy: false
@@ -281,6 +270,8 @@ services:
     extra_args:
       cloud-provider: "external"
 {{< /file >}}
+
+      Be careful that you do not remove anything above or below this sub-section.
 
 1.  After you finish with both of these steps, your YAML should resemble [this completed snippet](completed-cluster-config.yml).
 
