@@ -44,7 +44,7 @@ The steps outlined in this guide require [Ansible version 2.8](https://github.co
 
         pip install linode_api4
 
-- Genearate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/) guide if you do not already have one.
+- Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/) guide if you do not already have one.
 
 - [Create an authentication Key-pair](/docs/security/securing-your-server/#create-an-authentication-key-pair) if your computer does not already have one.
 
@@ -57,7 +57,7 @@ The Ansible configuration file is used to adjust Ansible's default system settin
 - `~/.ansible.cfg` in the home directory
 - `/etc/ansible/ansible.cfg`
 
-In this section, you will create an Ansible configuration file and add options to disable host key checking and to whitelist the Linode inventory plugin. The Ansible configuration file will be located in your home directory, however, it could exist in any of the locations listed above. See [Ansible's official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#common-options) for a full list of available configuration settings.
+In this section, you will create an Ansible configuration file and add options to disable host key checking and to whitelist the Linode inventory plugin. The Ansible configuration file will be located in a development directory that you create, however, it could exist in any of the locations listed above. See [Ansible's official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#common-options) for a full list of available configuration settings.
 
 {{< caution >}}
 When storing your Ansible configuration file, ensure that its corresponding directory does not have world-writable permissions. This could pose a security risk that allows malicious users to use Ansible to exploit your local system and remote infrastructure. At minimum, the directory should restrict access to particular users and groups. For example, you can create an `ansible` group, only add privileged users to the `ansible` group, and update the Ansible configuration file's directory to have `764` permissions. See the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide for more information on permissions.
@@ -72,13 +72,13 @@ When storing your Ansible configuration file, ensure that its corresponding dire
       {{< file "~/development/ansible.cfg">}}
 [defaults]
 host_key_checking = False
-vault_password_file = ./development/vault-pass
+VAULT_PASSWORD_FILE = /home/username/development/vault-pass
 [inventory]
 enable_plugins = linode
       {{</ file >}}
 
       - `host_key_checking = False` will allow Ansible to SSH into hosts without having to accept the remote server's host key. This will disable host key checking globally.
-      - `vault_password_file = ./development/vault-pass` is used to specify a Vault password file to use whenever Ansible Vault requires a password. Ansible Vault offers several options for password management. To learn more password management, read Ansible's [Providing Vault Passwords](https://docs.ansible.com/ansible/latest/user_guide/vault.html#providing-vault-passwords) documentation.
+      - `vault_password_file = /home/username/development/vault-pass` is used to specify a Vault password file to use whenever Ansible Vault requires a password. Ansible Vault offers several options for password management. To learn more password management, read Ansible's [Providing Vault Passwords](https://docs.ansible.com/ansible/latest/user_guide/vault.html#providing-vault-passwords) documentation. Note: remember to replace `username` with your username.
       - `enable_plugins = linode` enables the Linode dynamic inventory plugin.
 
 ## Create a Linode Instance
@@ -115,7 +115,7 @@ You can now begin to create Linode instances using Ansible. In this section, you
     {{</ file >}}
 
     - The Playbook `my_linode` contains the `Create Linode` play, which will be executed on `hosts: localhost`. This means the Ansible playbook will execute on the local system and use it as a vehicle to deploy the remote Linode instances.
-    - The `vars_files` key provides the location of a local file that contains variable values to populate in the play. The value of any variables defined in the vars file will substitute any Jinja template variables used in the Playbook. Jinja template variables are any vars between `{{ my_var }}`.
+    - The `vars_files` key provides the location of a local file that contains variable values to populate in the play. The value of any variables defined in the vars file will substitute any Jinja template variables used in the Playbook. Jinja template variables are any vars between `{{ my_var }}`. Note: remember to replace `username` with your username.
     - The `Create a new Linode` task calls the `linode_v4` module and provides all required module parameters as arguments, plus additional arguments to configure the Linode's deployment. For details on each parameter, see the [linode_v4 Module Parameters](#linode-v4-module-parameters) section.
 
         {{< note >}}
@@ -143,11 +143,11 @@ In the previous section, you created the Create Linode Playbook to deploy Linode
 
     {{< file "~/development/group_vars/example_group/vars">}}
 ssh_keys: >
-        ['ssh-rsa AAAAB3N..5bYqyRaQ== user@mycomputer', '~/.ssh/id_rsa.pub']
+        ['ssh-rsa AAAAB3N..5bYqyRaQ== user@mycomputer']
 label: simple-linode-
     {{</ file >}}
 
-    - The `ssh_keys` example passes a list of two public SSH keys. The first provides the string value of the key, while the second provides a local public key file location.
+    - The `ssh_keys` example passes a list of public SSH keys. You can pass either the string values of the keys as a comma delimited list or the public key file location.
 
         {{< disclosure-note "Configure your SSH Agent" >}}
 If your SSH Keys are passphrase-protected, you should add the keys to your SSH Agent so that Ansible does not hang when running Playbooks on the remote Linode. The following instructions are for Linux systems:
@@ -202,9 +202,9 @@ Encryption successful
 
     The final `vars` file should resemble the example below:
 
-    {{< file "~/development/group_vars/example_group/vars.yml">}}
+    {{< file "~/development/group_vars/example_group/vars">}}
 ssh_keys: >
-        ['ssh-rsa AAAAB3N..5bYqyRaQ== user@mycomputer', '~/.ssh/id_rsa.pub']
+        ['ssh-rsa AAAAB3N..5bYqyRaQ== user@mycomputer']
 label: simple-linode-
 password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
@@ -227,7 +227,7 @@ token: !vault |
 
 ### Run the Ansible Playbook
 
-You are now ready to run the Create Linode Playbook. When you run the Playbook, a 1 GB Nanode will be deployed in the Newark data center.
+You are now ready to run the Create Linode Playbook. When you run the Playbook, a 1 GB Nanode will be deployed in the Newark data center. Note: you want to run the following commands from the directory where your Ansible config file is located.
 
 1. Run your playbook to create your Linode instances. Ensure you are in the `development` directory when running the command.
 
@@ -328,6 +328,17 @@ types:
           {{< file "/etc/hosts">}}
 127.0.0.1       localhost
 192.0.2.0 simple-linode-29
+          {{</ file >}}
+
+  - Add the inventory option to the `ansible.cfg` file.
+
+          {{< file "~/development/ansible.cfg">}}
+[defaults]
+host_key_checking = False
+VAULT_PASSWORD_FILE = /home/username/development/vault-pass
+inventory = ./etc/hosts
+[inventory]
+enable_plugins = linode
           {{</ file >}}
 
 1. Verify that you can communicate with your grouped inventory by pinging the Linodes. The ping command will use the dynamic inventory plugin configuration file to target `example_group`. The `u root` option will run the command as root on the Linode hosts.
