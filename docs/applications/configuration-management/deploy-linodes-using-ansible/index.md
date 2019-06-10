@@ -78,7 +78,7 @@ enable_plugins = linode
       {{</ file >}}
 
       - `host_key_checking = False` will allow Ansible to SSH into hosts without having to accept the remote server's host key. This will disable host key checking globally.
-      - `vault_password_file = /home/username/development/vault-pass` is used to specify a Vault password file to use whenever Ansible Vault requires a password. Ansible Vault offers several options for password management. To learn more password management, read Ansible's [Providing Vault Passwords](https://docs.ansible.com/ansible/latest/user_guide/vault.html#providing-vault-passwords) documentation. Note: remember to replace `username` with your username.
+      - `VAULT_PASSWORD_FILE = ./vault-pass` is used to specify a Vault password file to use whenever Ansible Vault requires a password. Ansible Vault offers several options for password management. To learn more password management, read Ansible's [Providing Vault Passwords](https://docs.ansible.com/ansible/latest/user_guide/vault.html#providing-vault-passwords) documentation.
       - `enable_plugins = linode` enables the Linode dynamic inventory plugin.
 
 ## Create a Linode Instance
@@ -115,7 +115,7 @@ You can now begin to create Linode instances using Ansible. In this section, you
     {{</ file >}}
 
     - The Playbook `my_linode` contains the `Create Linode` play, which will be executed on `hosts: localhost`. This means the Ansible playbook will execute on the local system and use it as a vehicle to deploy the remote Linode instances.
-    - The `vars_files` key provides the location of a local file that contains variable values to populate in the play. The value of any variables defined in the vars file will substitute any Jinja template variables used in the Playbook. Jinja template variables are any vars between `{{ my_var }}`. Note: remember to replace `username` with your username.
+    - The `vars_files` key provides the location of a local file that contains variable values to populate in the play. The value of any variables defined in the vars file will substitute any Jinja template variables used in the Playbook. Jinja template variables are any vars between `{{ my_var }}`.
     - The `Create a new Linode` task calls the `linode_v4` module and provides all required module parameters as arguments, plus additional arguments to configure the Linode's deployment. For details on each parameter, see the [linode_v4 Module Parameters](#linode-v4-module-parameters) section.
 
         {{< note >}}
@@ -147,7 +147,7 @@ ssh_keys: >
 label: simple-linode-
     {{</ file >}}
 
-    - The `ssh_keys` example passes a list of public SSH keys. You can pass either the string values of the keys as a comma delimited list or the public key file location.
+    - The `ssh_keys` example passes a list of two public SSH keys. The first provides the string value of the key, while the second provides a local public key file location.
 
         {{< disclosure-note "Configure your SSH Agent" >}}
 If your SSH Keys are passphrase-protected, you should add the keys to your SSH Agent so that Ansible does not hang when running Playbooks on the remote Linode. The following instructions are for Linux systems:
@@ -227,9 +227,9 @@ token: !vault |
 
 ### Run the Ansible Playbook
 
-You are now ready to run the Create Linode Playbook. When you run the Playbook, a 1 GB Nanode will be deployed in the Newark data center. Note: you want to run the following commands from the directory where your Ansible config file is located.
+You are now ready to run the Create Linode Playbook. When you run the Playbook, a 1 GB Nanode will be deployed in the Newark data center. Note: you want to run Ansible commands from the directory where your `ansible.cfg` file is located.
 
-1. Run your playbook to create your Linode instances. Ensure you are in the `development` directory when running the command.
+1. Run your playbook to create your Linode instances.
 
         ansible-playbook ~/development/linode_create.yml
 
@@ -263,7 +263,7 @@ You are now ready to run the Create Linode Playbook. When you run the Playbook, 
 
 ## The Linode Dynamic Inventory Plugin
 
-Ansible uses *inventories* to manage different hosts that make up your infrastructure. This allows you to execute tasks on specific parts of your infrastructure. By default, Ansible will look in `/etc/ansible/hosts` for inventory, however, you can designate a different location for your inventory file and use multiple inventory files that represent your infrastructure. To support infrastructures that shifts over time, Ansible offers the ability to track inventory from dynamic sources, like cloud providers. The Ansible dynamic inventory plugin for Linode can be used to source your inventory from Linode's API v4. In this section, you will use the Linode plugin to source your Ansible deployed Linode inventory.
+Ansible uses *inventories* to manage different hosts that make up your infrastructure. This allows you to execute tasks on specific parts of your infrastructure. By default, Ansible will look in `/etc/ansible/hosts` for inventory, however, you can designate a different location for your inventory file and use multiple inventory files that represent your infrastructure. To support infrastructures that shift over time, Ansible offers the ability to track inventory from dynamic sources, like cloud providers. The Ansible dynamic inventory plugin for Linode can be used to source your inventory from Linode's API v4. In this section, you will use the Linode plugin to source your Ansible deployed Linode inventory.
 
 {{< note >}}
 The dynamic inventory plugin for Linode was enabled in the Ansible configuration file created in the [Configure Ansible](#configure-ansible) section of this guide.
@@ -281,7 +281,7 @@ groups:
   - example_group
 types:
   - g6-nanode-1
-      {{</ file >}}
+{{</ file >}}
 
       - The configuration file will create an inventory for any Linodes on your account that are in the `us-east` region, part of the `example_group` group and of type `g6-nanode-1`. Any Linodes that are not part of the `example_group` group, but that fulfill the `us-east` region and `g6-nanode-type` type will be displayed as ungrouped. All other Linodes will be excluded from the dynamic inventory. For more information on all supported parameters, see the [Plugin Parameters](#plugin-parameters) section.
 
@@ -335,8 +335,8 @@ types:
           {{< file "~/development/ansible.cfg">}}
 [defaults]
 host_key_checking = False
-VAULT_PASSWORD_FILE = /home/username/development/vault-pass
-inventory = ./etc/hosts
+VAULT_PASSWORD_FILE = ~/development/vault-pass
+inventory = /etc/hosts
 [inventory]
 enable_plugins = linode
           {{</ file >}}
