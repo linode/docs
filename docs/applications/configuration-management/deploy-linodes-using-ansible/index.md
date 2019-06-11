@@ -6,10 +6,10 @@ description: 'In this guide you learn how to deploy and manage Linodes using Ans
 keywords: ['ansible','Linode module','dynamic inventory','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-06-04
-modified: 2019-06-04
+modified: 2019-06-10
 modified_by:
   name: Linode
-title: "Deploy Linodes Using Ansible and the linode_v4 Module"
+title: "How to use the Linode Ansible Module to Deploy Linodes"
 contributor:
   name: Linode
 external_resources:
@@ -17,7 +17,7 @@ external_resources:
 ---
 Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](https://developers.linode.com/api/v4/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/applications/configuration-management/automatically-configure-servers-with-ansible-and-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
 
-In this guide you learn how to:
+In this guide you will learn how to:
 
 * Deploy and manage Linodes using Ansible and the `linode_v4` module.
 * Create an Ansible inventory for your Linode infrastructure using the dynamic inventory plugin for Linode.
@@ -25,7 +25,7 @@ In this guide you learn how to:
 {{< caution >}}
 This guide’s example instructions will create a [1 GB Nanode](https://www.linode.com/pricing) billable resource on your Linode account. If you do not want to keep using the Nanode that you create, be sure to [delete the resource](#delete-your-resources) when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account.
+If you remove the resource afterward, you will only be billed for the hour(s) that the resources were present on your account.
 {{</ caution >}}
 
 ## Before You Begin
@@ -57,13 +57,13 @@ The Ansible configuration file is used to adjust Ansible's default system settin
 - `~/.ansible.cfg` in the home directory
 - `/etc/ansible/ansible.cfg`
 
-In this section, you will create an Ansible configuration file and add options to disable host key checking and to whitelist the Linode inventory plugin. The Ansible configuration file will be located in a development directory that you create, however, it could exist in any of the locations listed above. See [Ansible's official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#common-options) for a full list of available configuration settings.
+In this section, you will create an Ansible configuration file and add options to disable host key checking, and to whitelist the Linode inventory plugin. The Ansible configuration file will be located in a development directory that you create, however, it could exist in any of the locations listed above. See [Ansible's official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#common-options) for a full list of available configuration settings.
 
 {{< caution >}}
 When storing your Ansible configuration file, ensure that its corresponding directory does not have world-writable permissions. This could pose a security risk that allows malicious users to use Ansible to exploit your local system and remote infrastructure. At minimum, the directory should restrict access to particular users and groups. For example, you can create an `ansible` group, only add privileged users to the `ansible` group, and update the Ansible configuration file's directory to have `764` permissions. See the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide for more information on permissions.
 {{</ caution >}}
 
-1. In your home directory, create a directory to hold all your Ansible related files and move into the directory:
+1. In your home directory, create a directory to hold all of your Ansible related files and move into the directory:
 
         mkdir development && cd development
 
@@ -83,7 +83,7 @@ enable_plugins = linode
 
 ## Create a Linode Instance
 
-You can now begin to create Linode instances using Ansible. In this section, you will create an Ansible Playbook that can deploy Linodes.
+You can now begin creating Linode instances using Ansible. In this section, you will create an Ansible Playbook that can deploy Linodes.
 
 ### Create your Linode Playbook
 
@@ -115,14 +115,14 @@ You can now begin to create Linode instances using Ansible. In this section, you
     {{</ file >}}
 
     - The Playbook `my_linode` contains the `Create Linode` play, which will be executed on `hosts: localhost`. This means the Ansible playbook will execute on the local system and use it as a vehicle to deploy the remote Linode instances.
-    - The `vars_files` key provides the location of a local file that contains variable values to populate in the play. The value of any variables defined in the vars file will substitute any Jinja template variables used in the Playbook. Jinja template variables are any vars between `{{ my_var }}`.
+    - The `vars_files` key provides the location of a local file that contains variable values to populate in the play. The value of any variables defined in the vars file will substitute any Jinja template variables used in the Playbook. Jinja template variables are any variables between curly brackets, like: `{{ my_var }}`.
     - The `Create a new Linode` task calls the `linode_v4` module and provides all required module parameters as arguments, plus additional arguments to configure the Linode's deployment. For details on each parameter, see the [linode_v4 Module Parameters](#linode-v4-module-parameters) section.
 
         {{< note >}}
   Usage of `groups` is deprecated, but still supported by Linode's API v4. The [Linode dynamic inventory module](#linode-dynamic-inventory-module) requires groups to generate an Ansible inventory and will be used later in this guide.
         {{</ note >}}
 
-    - The`register` keyword defines a variable name, `my_linode` that will store `linode_v4` module return data. For instance, you could reference the `my_linode` variable later in your Playbook to complete other actions using data about your Linode. This keyword is not required to deploy a Linode instance, but represents a common way to declare and use variables in Ansible Playbooks. For example, the task in the snippet below will use Ansible's [debug module](https://docs.ansible.com/ansible/2.4/debug_module.html) and the `my_linode` variable to print out a message with the Linode instance's ID and IPv4 address during Playbook execution.
+    - The`register` keyword defines a variable name, `my_linode` that will store `linode_v4` module return data. For instance, you could reference the `my_linode` variable later in your Playbook to complete other actions using data about your Linode. This keyword is not required to deploy a Linode instance, but represents a common way to declare and use variables in Ansible Playbooks. The task in the snippet below will use Ansible's [debug module](https://docs.ansible.com/ansible/2.4/debug_module.html) and the `my_linode` variable to print out a message with the Linode instance's ID and IPv4 address during Playbook execution.
 
         {{< file >}}
 ...
@@ -133,7 +133,7 @@ You can now begin to create Linode instances using Ansible. In this section, you
 
 ### Create the Variables File
 
-In the previous section, you created the Create Linode Playbook to deploy Linode instances and made use of Jinja template variables. In this section, you will create the variables file to provide values to those template variables.
+In the previous section, you created the *Create Linode Playbook* to deploy Linode instances and made use of Jinja template variables. In this section, you will create the variables file to provide values to those template variables.
 
 1. Create the directory to store your Playbook's variable files. The directory is structured to group your variable files by inventory group. This directory structure supports the use of file level encryption that Ansible Vault can detect and parse. Although it is not relevant to this guide's example, it will be used as a best practice.
 
@@ -150,13 +150,13 @@ label: simple-linode-
     - The `ssh_keys` example passes a list of two public SSH keys. The first provides the string value of the key, while the second provides a local public key file location.
 
         {{< disclosure-note "Configure your SSH Agent" >}}
-If your SSH Keys are passphrase-protected, you should add the keys to your SSH Agent so that Ansible does not hang when running Playbooks on the remote Linode. The following instructions are for Linux systems:
+If your SSH Keys are passphrase-protected, you should add the keys to your SSH agent so that Ansible does not hang when running Playbooks on the remote Linode. The following instructions are for Linux systems:
 
 1. Run the following command; if you stored your private key in another location, update the path that’s passed to ssh-add accordingly:
 
         eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa
 
-    If you start a new terminal, you will need to run the commands in this step again before having access to the keys stored in your SSH Agent.
+    If you start a new terminal, you will need to run the commands in this step again before having access to the keys stored in your SSH agent.
         {{</ disclosure-note >}}
 
     - `label` provides a label prefix that will be concatenated with a random number. This occurs when the Create Linode Playbook's Jinja templating for the `label` argument is parsed (`label: "{{ label }}{{ 100 |random }}"`).
@@ -198,7 +198,7 @@ Encryption successful
 
         ansible-vault encrypt_string '86210...1e1c6bd' --name 'token'
 
-1. Copy the generated output and it to the bottom of your `vars` file.
+1. Copy the generated output and append it to the bottom of your `vars` file.
 
     The final `vars` file should resemble the example below:
 
@@ -256,14 +256,14 @@ You are now ready to run the Create Linode Playbook. When you run the Playbook, 
 | `image` | string | The Image ID to deploy the Linode disk from. Official Linode Images start with `linode/`, while your private images start with `private/`. For example, use `linode/ubuntu18.04` to deploy a Linode instance with the Ubuntu 18.04 image. This is a required parameter only when creating Linode instances.</br></br> To view a list of all available Linode images, issue the following command: </br></br>`curl https://api.linode.com/v4/images`.|
 | `label` | string, *required* | The Linode instance label. The label is used by the module as the main determiner for idempotence and must be a unique value.</br></br> Linode labels have the following constraints:</br></br> &bull; Must start with an alpha character.</br>&bull; May only consist of alphanumeric characters, dashes (-), underscores (_) or periods (.).</br> &bull; Cannot have two dashes (--), underscores (__) or periods (..) in a row. |
 | `region` | string | The region where the Linode will be located. This is a required parameter only when creating Linode instances.</br></br> To view a list of all available regions, issue the following command: </br></br>`curl https://api.linode.com/v4/regions`. |
-| `root_pass` | string | The password for the root user. If not specified, one will be generated. This generated password will be available in the task success JSON.</br></br> The root password must conform to the following constraints: </br></br> &bull; May only use alphanumerics, punctuation, spaces, and tabs.</br>&bull; Must contain at least two of the following characters classes: upper-case letters, lower-case letters, digits, punctuation. |
+| `root_pass` | string | The password for the root user. If not specified, will be generated. This generated password will be available in the task success JSON.</br></br> The root password must conform to the following constraints: </br></br> &bull; May only use alphanumerics, punctuation, spaces, and tabs.</br>&bull; Must contain at least two of the following characters classes: upper-case letters, lower-case letters, digits, punctuation. |
 | `state` | string, *required* | The desired instance state. The accepted values are `absent` and `present`. |
 | `tags` | list | The user-defined labels attached to Linodes. Tags are used for grouping Linodes in a way that is relevant to the user. |
 | `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) and its [pricing](https://www.linode.com/pricing#all). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
 
 ## The Linode Dynamic Inventory Plugin
 
-Ansible uses *inventories* to manage different hosts that make up your infrastructure. This allows you to execute tasks on specific parts of your infrastructure. By default, Ansible will look in `/etc/ansible/hosts` for inventory, however, you can designate a different location for your inventory file and use multiple inventory files that represent your infrastructure. To support infrastructures that shift over time, Ansible offers the ability to track inventory from dynamic sources, like cloud providers. The Ansible dynamic inventory plugin for Linode can be used to source your inventory from Linode's API v4. In this section, you will use the Linode plugin to source your Ansible deployed Linode inventory.
+Ansible uses *inventories* to manage different hosts that make up your infrastructure. This allows you to execute tasks on specific parts of your infrastructure. By default, Ansible will look in `/etc/ansible/hosts` for an inventory, however, you can designate a different location for your inventory file and use multiple inventory files that represent your infrastructure. To support infrastructures that shift over time, Ansible offers the ability to track inventory from dynamic sources, like cloud providers. The Ansible dynamic inventory plugin for Linode can be used to source your inventory from Linode's API v4. In this section, you will use the Linode plugin to source your Ansible deployed Linode inventory.
 
 {{< note >}}
 The dynamic inventory plugin for Linode was enabled in the Ansible configuration file created in the [Configure Ansible](#configure-ansible) section of this guide.
@@ -308,9 +308,9 @@ types:
 1. Before you can communicate with your Linode instances using the dynamic inventory plugin, you will need to add your Linode's IPv4 address and label to your `/etc/hosts` file.
 
     The Linode Dynamic Inventory Plugin assumes that the Linodes in your account have labels that correspond to hostnames that are in your resolver search path, `/etc/hosts`. This means you will have to create an entry in your `/etc/hosts` file to map the Linode's IPv4 address to its hostname.
-
-    A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists to support using a public IP, private IP or hostname. This change will enable the inventory plugin to be used with infrastructure that does not have DNS hostnames or hostnames that match Linode labels.
-
+  {{< note >}}
+A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists to support using a public IP, private IP or hostname. This change will enable the inventory plugin to be used with infrastructure that does not have DNS hostnames or hostnames that match Linode labels.
+{{</note>}}
     To add your deployed Linode instance to the `/etc/hosts` file:
 
   - Retrieve your Linode instance's IPv4 address:
