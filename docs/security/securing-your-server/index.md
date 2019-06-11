@@ -204,6 +204,8 @@ You may want to leave password authentication enabled if you connect to your Lin
 
         sudo service sshd restart
 
+    For more advanced SSH features, see our guide: [Use Advanced OpenSSH Features to Harden Access to Your Linode](docs/security/advanced-ssh-server-security/).
+
 ### Use Fail2Ban for SSH Login Protection
 
 [*Fail2Ban*](http://www.fail2ban.org/wiki/index.php/Main_Page) is an application that bans IP addresses from logging into your server after too many failed login attempts. Since legitimate logins usually take no more than three tries to succeed (and with SSH keys, no more than one), a server being spammed with unsuccessful logins indicates attempted malicious access.
