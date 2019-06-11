@@ -57,7 +57,7 @@ If your output contains `generic` in the version tag, then you are probably runn
 
 1.  Scroll to the *Boot Settings* section.
 
-1.  Select **Latest 64 bit** from the *Kernel* dropdown and click **Submit** to save the changes.
+1.  Select **Latest 64 bit** from the *Kernel* dropdown and click **Submit** to save the changes (if you need a 32-bit kernel, select **Latest 32 bit**).
 
 1.  Reboot the Linode to boot into the new kernel and verify the kernel version:
 
