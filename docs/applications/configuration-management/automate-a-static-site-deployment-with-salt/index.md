@@ -34,7 +34,7 @@ Setting up these mechanisms offers an array of benefits:
 
 ## Development and Deployment Workflow
 
-The static site generator used in this guide is [Hugo](https://gohugo.io), a fast framework written in Go. Static site generators compile [markdown](https://en.wikipedia.org/wiki/Markdown) or other content files into HTML files. This guide can easily be adapted to other frameworks.
+The static site generator used in this guide is [Hugo](https://gohugo.io), a fast framework written in Go. Static site generators compile [Markdown](https://en.wikipedia.org/wiki/Markdown) or other content files into HTML files. This guide can easily be adapted to other frameworks.
 
 Two Git repositories will be created: one will track changes to the Hugo site, and the other will track Salt's configuration files. Remote repositories will be created for both on GitHub.
 
@@ -482,7 +482,7 @@ The Salt minion's formula needs to be updated in order to serve the Hugo site. S
 
 -   Install Git and clone the Hugo site repository from GitHub.
 
--   Install Hugo and build the HTML files from the markdown content.
+-   Install Hugo and build the HTML files from the Markdown content.
 
 -   Update the NGINX configuration to serve the built site.
 
@@ -993,7 +993,7 @@ Hook rules were not satisfied.⏎
 
         hugo new post/test-post.md
 
-1.  This command creates a new partially filled in markdown document in `content/post/`. Open this file in your editor, remove the `draft: true` line from the [*frontmatter*](https://gohugo.io/content-management/front-matter/), and add some body text:
+1.  This command creates a new partially filled in Markdown document in `content/post/`. Open this file in your editor, remove the `draft: true` line from the [*frontmatter*](https://gohugo.io/content-management/front-matter/), and add some body text:
 
     {{< file "example-hugo-site/content/post/test-post.md" >}}
 ---

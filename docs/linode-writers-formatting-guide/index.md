@@ -28,7 +28,7 @@ We only accept new guides and authors through our guide submission process. To a
 
 ## General Layout
 
-Linode Guides & Tutorials are written in [Markdown](https://en.wikipedia.org/wiki/Markdown). Our documentation site uses [Hugo](https://gohugo.io), a static site generator. Hugo-specific markdown formatting notes are given [further below](#markdown-formatting).
+Linode Guides & Tutorials are written in [Markdown](https://en.wikipedia.org/wiki/Markdown). Our documentation site uses [Hugo](https://gohugo.io), a static site generator. Hugo-specific Markdown formatting notes are given [further below](#markdown-formatting).
 
 ### Header
 
@@ -209,7 +209,7 @@ If you wish to provide links to external sites for the user to review after goin
 
 ### Extend Markdown Using Shortguides
 
-Using shortcodes, it is possible to extend a markdown file with another. For common tasks such as basic software installation, consider using the `content` shortcode. This allows our library to maintain consistent and up to date installation instructions for frequently used tools such as Python, MySQL, and Docker.
+Using shortcodes, it is possible to extend a Markdown file with another. For common tasks such as basic software installation, consider using the `content` shortcode. This allows our library to maintain consistent and up to date installation instructions for frequently used tools such as Python, MySQL, and Docker.
 
 Markdown files intended to be inserted into multiple guides are called shortguides. To create a shortguide, create a directory with the name of your shortguide anywhere within `docs/`, and then create an index.md within the directory for your content (e.g. `example-shortguide-name/index.md`).
 
@@ -270,7 +270,7 @@ Adding `os: ["mac", "linux", "windows"]` to the front matter inserts a jQuery sc
 
 The shortcode should contain two parameters: filepath and operating system.
 
-For example, `{{</* content "how-to-install-git-mac" mac */>}}` will insert a markdown snippet that will only be visible when the Mac button is in the active state.
+For example, `{{</* content "how-to-install-git-mac" mac */>}}` will insert a Markdown snippet that will only be visible when the Mac button is in the active state.
 
 ### Files and File Excerpts
 
