@@ -260,7 +260,7 @@ Buckets names must be unique within the Object Storage cluster. You might find t
 
     {{< output >}}
       Bucket s3://my-bucket/: Website configuration
-Website endpoint: http://my-bucket.alpha-website.linodeobjects.com/
+Website endpoint: http://us-east.linodeobjects.com/
 Index document:   index.html
 Error document:   404.html
     {{</ output >}}
