@@ -2,14 +2,14 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: "How to use Linode's Object Storage."
+description: "Get started using Linode's Object Storage."
 keywords: ['object','storage','bucket']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-12
 modified: 2019-04-12
 modified_by:
   name: Linode
-title: "How to Use Object Storage"
+title: "How to Use Linode Object Storage"
 contributor:
   name: Linode
 external_resources:
