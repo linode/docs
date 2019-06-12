@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting Started with Linode GPU Instances.'
-keywords: ["", "grub"]
+keywords: ["GPU", "AI", "Machine Learning", "Video Encoding", "Linode GPU"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: []
 published: 2019-06-05
@@ -38,7 +38,7 @@ Linode has chosen not to bundle NVIDIA's proprietary closed-source drivers with 
 {{< /output >}}
 
     {{< note >}}
-Depending on your distribution, you may need to install lspci manually first. On current CentOS, Fedora, and other RHEL-derived operating systems, you can install this utility with the following command:
+Depending on your distribution, you may need to install lspci manually first. On current CentOS and Fedora systems, you can install this utility with the following command:
 
     sudo yum install pciutils
 {{< /note >}}
@@ -124,7 +124,7 @@ The installer will take a few moments to run before generating any output.
 
     {{< note >}}
 
-Installation on CentOS and RHEL operating systems will fail following this step, because the installer requires a reboot to fully remove the default Nouveau driver. If you are running either of these operating systems, reboot the Linode, run the installer again, and your installation will be successful.
+Installation on CentOS and Fedora will fail following this step, because the installer requires a reboot to fully remove the default Nouveau driver. If you are running either of these operating systems, reboot the Linode, run the installer again, and your installation will be successful.
 
 {{< /note >}}
 
