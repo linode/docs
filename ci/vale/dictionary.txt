@@ -1061,6 +1061,7 @@ pyspark
 pytest
 python3
 pythonic
+pytorch
 qmail
 qmgr
 qualys
