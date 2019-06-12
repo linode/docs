@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Getting Started With Linode GPU Instances.'
+description: 'Getting Started with Linode GPU Instances.'
 keywords: ["", "grub"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: []
 published: 2019-06-05
-title: Getting Started With Linode GPU Instances
+title: Getting Started with Linode GPU Instances
 modified_by:
   name: Linode
 ---
@@ -19,7 +19,7 @@ When using distributions that are not fully supported by CUDA, like Debian 9, yo
 For details on the CUDA Toolkit's full feature set, see the [official documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#introduction).
 
 {{< disclosure-note "Why do NVIDIA's drivers need to be installed?" >}}
-Linode has chosen not to bundle NIVIDIA's proprietary closed-source drivers with its standard Linux distribution images. While some operating systems are packaged with the open source [Nouveau](https://nouveau.freedesktop.org/wiki/) driver, the NIVIDIA proprietary driver will provide optimal performance for your GPU-accelerated applications.
+Linode has chosen not to bundle NVIDIA's proprietary closed-source drivers with its standard Linux distribution images. While some operating systems are packaged with the open source [Nouveau](https://nouveau.freedesktop.org/wiki/) driver, the NVIDIA proprietary driver will provide optimal performance for your GPU-accelerated applications.
 {{< /disclosure-note >}}
 
 ## Before You Begin
@@ -30,7 +30,7 @@ Linode has chosen not to bundle NIVIDIA's proprietary closed-source drivers with
 
         lspci -vnn | grep NVIDIA
 
-    You should see a similar output confirming that your Linode is currently running a NVIDIA GPU:
+    You should see a similar output confirming that your Linode is currently running a NVIDIA GPU. The example output was generated on Ubuntu 18.04. Your output may vary depending on your distribution.
 
     {{< output >}}
 00:03.0 VGA compatible controller [0300]: NVIDIA Corporation TU102GL [Quadro RTX 6000/8000] [10de:1e30] (rev a1) (prog-if 00 [VGA controller])
@@ -40,7 +40,7 @@ Linode has chosen not to bundle NIVIDIA's proprietary closed-source drivers with
     {{< note >}}
 Depending on your distribution, you may need to install lspci manually first. On current CentOS, Fedora, and other RHEL-derived operating systems, you can install this utility with the following command:
 
-    yum install pciutils
+    sudo yum install pciutils
 {{< /note >}}
 
 1. Move on to the next section to [install the dependencies](#install-dependencies) that NVIDIA's drivers rely on.
@@ -51,7 +51,7 @@ Prior to installing the driver, you should install the required dependencies. Li
 
 1. Find your Linode's distribution from the list below and install the NVIDIA driver's dependencies:
 
-    ### Ubuntu 18
+    ### Ubuntu 18.04
 
         sudo apt-get install build-essential
 
@@ -74,7 +74,7 @@ Prior to installing the driver, you should install the required dependencies. Li
 
 ## NVIDIA Driver Installation
 
-After installing the required dependencies for your Linux distribution, you are ready to install the NVIDIA driver. If you are using Ubuntu 18, CentOS 7, and OpenSUSE, proceed to the [Install with CUDA](#install-with-cuda) section. If you are using Debian 9, proceed to the [Install Manually](#install-manually) section.
+After installing the required dependencies for your Linux distribution, you are ready to install the NVIDIA driver. If you are using Ubuntu 18.04, CentOS 7, and OpenSUSE, proceed to the [Install with CUDA](#install-with-cuda) section. If you are using Debian 9, proceed to the [Install Manually](#install-manually) section.
 ### Install with CUDA
 
  In this section, you will install your GPU driver using [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).
