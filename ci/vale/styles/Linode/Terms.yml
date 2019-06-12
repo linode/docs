@@ -3,13 +3,13 @@ message: Use '%s' instead of '%s'.
 level: error
 ignorecase: true
 swap:
-  '(?:LetsEncrypt|Let''s Encrypt)': Let's Encrypt
-  '(?:ReHat|RedHat)': RedHat
-  'Mac ?OS ?X': Mac OS X
-  'mongoDB': MongoDB
-  'node[.]?js': Node.js
-  'Post?gr?e(?:SQL)': PostgreSQL
-  'java[ -]?scripts?': JavaScript
+  "(?:LetsEncrypt|Let's Encrypt)": Let's Encrypt
+  "(?:ReHat|RedHat)": RedHat
+  "Mac ?OS ?X": Mac OS X
+  "mongoDB": MongoDB
+  "node[.]?js": Node.js
+  "Post?gr?e(?:SQL)": PostgreSQL
+  "java[ -]?scripts?": JavaScript
   automattic: Automattic
   centOS: CentOS
   cloudflare: Cloudflare
@@ -18,7 +18,7 @@ swap:
   gentoo: Gentoo
   homebrew: Homebrew
   linode cli: Linode CLI
-  linode manager:  Linode Manager
+  linode manager: Linode Manager
   linode: Linode
   longview: Longview
   macOS: macOS
@@ -34,3 +34,5 @@ swap:
   urls: URLs
   uris: URIs
   markdown: Markdown
+  Cuda: CUDA
+  gpu: GPU
