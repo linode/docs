@@ -68,4 +68,4 @@ CUDA Is a parallel computing platform and programming model that allows you to i
 
 CUDA is the technology that powers some other well known tools like [Tensorflow](#machine-learning-and-ai).
 
-If you're interested in using CUDA on your GPU Linode, we can recommend referencing NVIDIA's [Library of Documentation](https://docs.nvidia.com/cuda/) or this [Introduction to Cuda](https://devblogs.nvidia.com/easy-introduction-cuda-c-and-c/) for more information.
+If you're interested in using CUDA on your GPU Linode, we can recommend referencing NVIDIA's [Library of Documentation](https://docs.nvidia.com/cuda/) or this [Introduction to CUDA](https://devblogs.nvidia.com/easy-introduction-cuda-c-and-c/) for more information.
