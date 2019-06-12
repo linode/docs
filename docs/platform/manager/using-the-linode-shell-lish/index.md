@@ -38,12 +38,14 @@ You can connect to Lish with the SSH client of your choice. For example, you can
     | `lish-dallas.linode.com` | US, Dallas, TX |
     | `lish-fremont.linode.com` | US, Fremont, CA |
     | `lish-newark.linode.com` | US, Newark, NJ |
+    | `lish-mum1.linode.com` | Mumbai, India |
     | `lish-singapore.linode.com` | Asia, Singapore, SG |
     | `lish-tokyo.linode.com` | Asia, Tokyo, JP |
     | `lish-tokyo2.linode.com` or `lish-shg1.linode.com` | Asia, Tokyo, JP |
     | `lish-tor1.linode.com` | Canada, Toronto, ON |
     | `lish-frankfurt.linode.com` | Europe, Frankfurt, DE |
     | `lish-london.linode.com` | Europe, London, UK |
+
 
 
 1.  Open a terminal window and enter the following command, replacing `username` with your Linode Cloud Manager username, and `location` with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
@@ -228,6 +230,14 @@ These are the fingerprints for the Lish gateway in our London data center (lish-
     RSA 71:27:30:cd:dc:69:7a:fe:58:4a:04:e6:6b:5f:b4:e2
     ECDSA SHA256:mE/plOHLl+NJ7LUdW7AaMEOnhskXZxav5Em/rD6VZ5g
     Ed25519 SHA256:HXHM8/wCx7NrGsnfGpaexiBfOLKN9g0hoaL9wRaSeWg
+
+### Mumbai
+
+These are the fingerprints for the Lish gateway in our Mumbai data center (lish-mum1.linode.com):
+
+    RSA 5:57:72:e0:79:a6:48:13:2b:8a:cd:1e:35:7c:c1:a2:ed 
+    ECDSA SHA256:uWVLSBPZ0E72VawrP4yWsW3YYHPM9b7A/seeEy7GG0c
+    Ed25519 SHA256:5VkP3/dLsfrKic9p6y9QnFq4sKa92RBzxGJrsX5/dBQ
 
 ### Newark
 
