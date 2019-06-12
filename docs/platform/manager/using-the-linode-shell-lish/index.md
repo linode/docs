@@ -1,4 +1,4 @@
----
+\---
 author:
   name: Linode
   email: docs@linode.com
@@ -235,7 +235,7 @@ These are the fingerprints for the Lish gateway in our London data center (lish-
 
 These are the fingerprints for the Lish gateway in our Mumbai data center (lish-mum1.linode.com):
 
-    RSA 5:57:72:e0:79:a6:48:13:2b:8a:cd:1e:35:7c:c1:a2:ed 
+    RSA 5:57:72:e0:79:a6:48:13:2b:8a:cd:1e:35:7c:c1:a2:ed
     ECDSA SHA256:uWVLSBPZ0E72VawrP4yWsW3YYHPM9b7A/seeEy7GG0c
     Ed25519 SHA256:5VkP3/dLsfrKic9p6y9QnFq4sKa92RBzxGJrsX5/dBQ
 
