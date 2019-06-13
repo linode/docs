@@ -16,6 +16,18 @@ modified_by:
 
 GPUs (Graphical Processing Units) are specialized hardware originally created to manipulate computer graphics and image processing. GPUs are designed to process large blocks of data in parallel making them excellent for compute intensive tasks that require thousands of simultaneous threads. Because a GPU has significantly more logical cores than a standard CPU, it can perform computations that process large amounts of data in parallel, more efficiently. This means GPUs accelerate the large calculations that are required by big data, video encoding, AI, and machine learning.
 
+### The Linode GPU Instance
+Linode GPU Instances are NVIDIA Quadro RTX 6000 GPU cards with Tensor, ray tracing (RT), and CUDA cores.
+
+### The Most Common Use Case on Linode GPU
+The most common use case for a GPU is for graphics processing. Transforming the large set of pixels or vertices with a shader or simulating realistic lighting via ray tracing are massive parallel processing tasks. The NVIDIA RTX 6000 of the Linode GPU Instance makes light work of both of these jobs.
+
+New shading enhancements include mesh shading models for vertex, tessellation, and geometry stages in the graphics pipeline; Variable Rate Shading to dynamically control shading rate; Texture-Space Shading which utilizes a private memory held texture space; and Multi-View Rendering allowing for rendering multiple views in a single pass.
+
+Ray tracing is a computationally intensive process that simulates lights in a scene and renders the reflections, refractions, shadows, and indirect lighting. It's impossible to do on GPUs in real-time without hardware-based ray tracing acceleration. The Linode GPU Instances offer you real-time ray tracing capabilities using a single GPU.
+
+Read more about the NVIDIA RTX 6000 [here](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf).
+
 ## Use Cases
 ### Machine Learning and AI
 
@@ -25,7 +37,7 @@ AI (Artificial Intelligence) is a broad concept that describes technology design
 
 Below is a list of common tools used for machine learning and AI that can be installed on a Linode GPU instance:
 
-- [TensorFlow](https://www.tensorflow.org) - a free, open-source, machine learning framework and deep learning library. Tensorflow was originally developed by [Google](google.com) for internal use and later fully released to the public under the Apache License.
+- [TensorFlow](https://www.tensorflow.org) - a free, open-source, machine learning framework, and deep learning library. Tensorflow was originally developed by [Google](google.com) for internal use and later fully released to the public under the Apache License.
 
 - [PyTorch](https://pytorch.org/) - a machine learning library for Python that uses the popular GPU optimized [Torch](https://en.wikipedia.org/wiki/Torch_(machine_learning)) framework.
 
@@ -60,8 +72,16 @@ Video Encoding is the process of taking a video file's original source format an
 
 CUDA (Compute Unified Device Architecture) is a parallel computing platform and API that allows you to interact more directly with the GPU for general purpose computing. In practice, this means that a developer can write code in C, C++, or many other supported languages utilizing  their GPU to create their own tools and programs.
 
-If you're interested in using CUDA on your GPU Linode, see NVIDIA's [Library of Documentation](https://docs.nvidia.com/cuda/) or an [Introduction to Cuda](https://devblogs.nvidia.com/easy-introduction-cuda-c-and-c/) for more information.
+If you're interested in using CUDA on your GPU Linode, see the following resources:
 
-### Getting Started with Linode GPU
+ -  [NVIDIA's Library of Documentation](https://docs.nvidia.com/cuda/)
 
-If you are ready to get started with Linode GPU we wrote a guide that walks you through deploying a Linode GPU instance, and installing the GPU drivers so that you can best utilize the machine for the use cases you've read in this guide. Read it [here](/docs/platform/why-linode-gpu/docs/platform/linode-gpu/getting-started-with-gpu/).
+ -  [Introduction to CUDA](https://devblogs.nvidia.com/easy-introduction-cuda-c-and-c/)
+
+ -  [NVIDIA's CUDA exercise repository](https://github.com/csc-training/CUDA/tree/master/exercises)
+
+### Where to Go from Here
+
+If you are ready to get started with Linode GPU, we wrote a guide that walks you through deploying a Linode GPU Instance and installing the GPU drivers so that you can best utilize the use cases you've read in this guide. Read it [here]().
+
+To see the extensive array of available Docker container apps available, check out [NVIDIA's site](https://ngc.nvidia.com/catalog/landing). Note: To access some of these projects you need an NGC account.
