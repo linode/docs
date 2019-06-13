@@ -53,17 +53,6 @@ GPUs can help give Big Data systems the additional computational capabilities th
 
 -   [Apache Storm](https://storm.apache.org/) - a distributed computation system that processes streaming data in real time.
 
-### Graphics Processing
-
-One of the most traditional use cases for a GPU is graphics processing. Transforming a large set of pixels or vertices with a shader or simulating realistic lighting via ray tracing are massive parallel processing tasks. Ray tracing is a computationally intensive process that simulates lights in a scene and renders the reflections, refractions, shadows, and indirect lighting. It's impossible to do on GPUs in real-time without hardware-based ray tracing acceleration. The Linode GPU Instances offers real-time ray tracing capabilities using a single GPU.
-
-New to the NVIDIA RTX 600 are the following shading enhancements:
-
-- Mesh shading models for vertex, tessellation, and geometry stages in the graphics pipeline
-- Variable Rate Shading to dynamically control shading rate
-- Texture-Space Shading which utilizes a private memory held texture space
-- Multi-View Rendering allowing for rendering multiple views in a single pass.
-
 ### Video Encoding
 
 Video Encoding is the process of taking a video file's original source format and converting it to another format that is viewable on a different device or using a different tool. This resource intensive task can be greatly accelerated using the power of GPUs.
@@ -81,6 +70,17 @@ If you're interested in using CUDA on your GPU Linode, see the following resourc
  -  [Introduction to CUDA](https://devblogs.nvidia.com/easy-introduction-cuda-c-and-c/)
 
  -  [NVIDIA's CUDA exercise repository](https://github.com/csc-training/CUDA/tree/master/exercises)
+
+### Graphics Processing
+
+One of the most traditional use cases for a GPU is graphics processing. Transforming a large set of pixels or vertices with a shader or simulating realistic lighting via ray tracing are massive parallel processing tasks. Ray tracing is a computationally intensive process that simulates lights in a scene and renders the reflections, refractions, shadows, and indirect lighting. It's impossible to do on GPUs in real-time without hardware-based ray tracing acceleration. The Linode GPU Instances offers real-time ray tracing capabilities using a single GPU.
+
+New to the NVIDIA RTX 600 are the following shading enhancements:
+
+- Mesh shading models for vertex, tessellation, and geometry stages in the graphics pipeline
+- Variable Rate Shading to dynamically control shading rate
+- Texture-Space Shading which utilizes a private memory held texture space
+- Multi-View Rendering allowing for rendering multiple views in a single pass.
 
 ## Where to Go from Here
 
