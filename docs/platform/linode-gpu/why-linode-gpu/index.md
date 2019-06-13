@@ -7,7 +7,7 @@ keywords: ["GPU","Linode GPU", "How to use GPU", "Machine Learning", "AI", "Deep
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: []
 published: 2019-06-12
-title: Linode GPU Use Cases
+title: Use Cases for Linode GPU Instances
 modified_by:
   name: Linode
 ---
@@ -84,6 +84,6 @@ If you're interested in using CUDA on your GPU Linode, see the following resourc
 
 ## Where to Go from Here
 
-If you are ready to get started with Linode GPU, our [Getting Started with Linode GPU Instances] guide walks you through deploying a Linode GPU Instance and installing the GPU drivers so that you can best utilize the use cases you've read in this guide.
+If you are ready to get started with Linode GPU, our [Getting Started with Linode GPU Instances](/docs/platform/linode-gpu/getting-started-with-gpu/) guide walks you through deploying a Linode GPU Instance and installing the GPU drivers so that you can best utilize the use cases you've read in this guide.
 
-To see the extensive array of available Docker container apps available, check out [NVIDIA's site](https://ngc.nvidia.com/catalog/landing). Note: To access some of these projects you need an NGC account.
+To see the extensive array of Docker container applications available, check out [NVIDIA's site](https://ngc.nvidia.com/catalog/landing). Note: To access some of these projects you need an NGC account.
