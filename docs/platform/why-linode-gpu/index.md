@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use Cases for Linode GPU Instances'
-keywords: ["", "grub"]
+keywords: ["GPU","Linode GPU", "How to use GPU", "Machine Learning", "AI", "Deep Learning", "grub"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: []
 published: 2019-06-12
@@ -25,9 +25,9 @@ AI (Artificial Intelligence) is a broad concept that describes technology design
 
 Below is a list of common tools used for machine learning and AI that can be installed on a Linode GPU instance:
 
-- [tensorflow](https://www.tensorflow.org) - a free, open-source, machine learning framework and deep learning library. Tensorflow was originally developed by [Google](google.com) for internal use and later fully released to the public under the Apache License.
+- [TensorFlow](https://www.tensorflow.org) - a free, open-source, machine learning framework and deep learning library. Tensorflow was originally developed by [Google](google.com) for internal use and later fully released to the public under the Apache License.
 
-- [pytorch](https://pytorch.org/) - a machine learning library for Python that uses the popular GPU optimized [Torch](https://en.wikipedia.org/wiki/Torch_(machine_learning)) framework.
+- [PyTorch](https://pytorch.org/) - a machine learning library for Python that uses the popular GPU optimized [Torch](https://en.wikipedia.org/wiki/Torch_(machine_learning)) framework.
 
 - [Apache Mahout](https://mahout.apache.org/) - a scalable library of machine learning algorithms, and a distributed linear algebra framework designed to let mathematicians, statisticians, and data scientists quickly implement their own algorithms.
 
@@ -56,9 +56,12 @@ Video Encoding is the process of taking a video file's original source format an
 
  -  [FFmpeg](https://developer.nvidia.com/ffmpeg) - a popular open-source multimedia manipulation framework that supports a large number of video formats.
 
-
 ### General Purpose Computing using CUDA
 
-CUDA (Compute Unified Device Architecture) is a parallel computing platform and application programming interface that allows you to interact more directly with your GPU for general purpose computing. In practice, this means that a developer can write code in C, C++, or many other supported languages to utilize their GPU to create their own tools and programs.
+CUDA (Compute Unified Device Architecture) is a parallel computing platform and API that allows you to interact more directly with the GPU for general purpose computing. In practice, this means that a developer can write code in C, C++, or many other supported languages utilizing  their GPU to create their own tools and programs.
 
 If you're interested in using CUDA on your GPU Linode, see NVIDIA's [Library of Documentation](https://docs.nvidia.com/cuda/) or an [Introduction to Cuda](https://devblogs.nvidia.com/easy-introduction-cuda-c-and-c/) for more information.
+
+### Getting Started with Linode GPU
+
+If you are ready to get started with Linode GPU we wrote a guide that walks you through deploying a Linode GPU instance, and installing the GPU drivers so that you can best utilize the machine for the use cases you've read in this guide. Read it [here](/docs/platform/why-linode-gpu/docs/platform/linode-gpu/getting-started-with-gpu/).
