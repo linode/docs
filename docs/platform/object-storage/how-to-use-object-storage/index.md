@@ -80,9 +80,7 @@ There are a number of tools that are available to help manage Linode Object Stor
 
 -   The [Linode Cloud Manager](#cloud-manager) can be used to create buckets (you are currently not able to upload objects to a bucket from the Cloud Manager).
 
--   The [Linode CLI](#linode-cli) has an Object Storage plugin and can be used to create and remove buckets, add and remove objects, and convert a bucket into a static site from the command line.
-
--   [s3cmd](#s3cmd) is another powerful command line utility that can be used with any S3-compatible object storage service, including Linode's. s3cmd has all the abilities of the Object Storage plugin for the Linode-CLI, plus other functions like syncing entire directories up to a bucket.
+-   [s3cmd](#s3cmd) is a powerful command line utility that can be used with any S3-compatible object storage service, including Linode's. s3cmd can be used to create and remove buckets, add and remove objects, convert a bucket into a static site from the command line, plus other functions like syncing entire directories up to a bucket.
 
 -   [Cyberduck](#cyberduck) is a graphical utility available for Windows and macOS and is a great option if you prefer a GUI tool.
 
