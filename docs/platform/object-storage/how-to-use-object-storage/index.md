@@ -54,10 +54,6 @@ Each Object Storage key pair on your Linode account has complete access to all o
 Object Storage is not available in the Linode Classic Manager.
 {{</ note >}}
 
-1.  Navigate to the **My Profile** page by clicking on your username at the top of the screen and selecting the **My Profile** option in the dropdown menu that appears. On mobile devices, the **My Profile** link is in the sidebar navigation.
-
-    ![Navigate to the 'My Profile' page by clicking on your username](object-storage-my-profile-link.png)
-
 1.  Click on the **Object Storage** link in the sidebar, click the **Access Keys** tab, and then click the **Create an Access Key** link.
 
     ![Click on the 'Access Keys' tab.](object-storage-access-keys-tab.png)
