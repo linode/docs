@@ -232,6 +232,7 @@ dahdi
 databags
 datacenter
 datadir
+datagram
 dataset
 datasets
 datasource
@@ -459,6 +460,8 @@ gnulinux
 gnutls
 gogs
 golang
+goroutine
+goroutines
 goto
 gpc
 gpg

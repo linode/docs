@@ -138,22 +138,20 @@ func main() {
 }
 {{< /file >}}
 
-The first part of the `main()` function works with the command line arguments of the
-program and has nothing to do with TCP. The implementation of the TCP client begins
+ - The first part of the `main()` function gathers command line arguments and makes sure that `host:port` was sent. This argument is then put into the `CONNECT` variable to be used in the `net.Dial()` call. The implementation of the TCP client begins
 with a call to `net.Dial()` that allows you to connect to the desired TCP server.
 The second parameter of `net.Dial()` has two virtual parts. The first part is the hostname
 or the IP address of the TCP server and the second part is the port number the TCP server
 listens to.
 
-The program reads user input using `bufio.NewReader(os.Stdin)` and `ReadString()`, which
+ - The program reads user input using `bufio.NewReader(os.Stdin)` and `ReadString()`, which
 is sent to the TCP server over the network using `Fprintf()`.
 
-Last, the TCP client reads the response of the TCP server using another `bufio` reader and
+ - Last, the TCP client reads the response of the TCP server using another `bufio` reader and
 the `bufio.NewReader(c).ReadString('\n')` statement. The `error` variable is ignored here for
 reasons of simplicity only.
 
-There exists an endless `for` loop in the program that will terminate when you send the
-word `STOP` to the TCP server.
+ - This is an endless `for` loop that will only terminate when you send the word `STOP` to the TCP server.
 
 ## A TCP Server
 
@@ -217,17 +215,17 @@ func main() {
 }
 {{< /file >}}
 
-The `net.Listen()` function, which is what makes that program a TCP server, returns
+ - The `net.Listen()` function, which is what makes that program a TCP server, returns
 a `Listener` variable, which is a generic network listener for stream-oriented protocols.
 
-Notice that it is only after a successful call to `Accept()` that the TCP server can
+ - Notice that it is only after a successful call to `Accept()` that the TCP server can
 begin interacting with TCP clients. The current implementation of the TCP server can
 only serve the first TCP client that connects to it because the `Accept()` call
 is outside of the `for` loop. Later in this guide you will see the implementation of
 a concurrent TCP server that can serve multiple TCP clients using goroutines.
 
-The TCP server uses regular File I/O functions for interacting with TCP clients.
-That interaction takes place inside the `for` loop. As soon as the TCP server
+ - The TCP server uses regular File I/O functions for interacting with TCP clients.
+That interaction takes place inside the endless `for` loop. Like the TCP client, as soon as the TCP server
 receives the word `STOP` from the TCP client, it will terminate.
 
 ### Using the TCP Client and Server
@@ -338,18 +336,19 @@ func main() {
 }
 {{< /file >}}
 
-The UDP client uses regular File I/O functions for interacting with the UDP server
+ - The UDP client uses regular File I/O functions for interacting with the UDP server
 and it will terminate when you send the `STOP` message to the UDP server. This is
 not part of the UDP protocol but it is good for a client to have a way to exit.
 
-The connection to the UDP server happens with the use of the `net.DialUDP()` function.
-The `net.ResolveUDPAddr()` function returns an address of UDP end point, which is
+ - The `net.ResolveUDPAddr()` function returns an address of UDP end point, which is
 a `UDPAddr` Go structure.
+
+ - The connection to the UDP server happens with the use of the `net.DialUDP()` function.
 
 ## A UDP Server
 
 In this section of the guide, we are going to see how to develop an UDP server in Go.
-What this UDP server does is returning random numbers to its UDP clients.
+What this UDP server does is return random numbers to its UDP clients.
 
 ### Looking at the Go code of the UDP Server
 
@@ -415,18 +414,18 @@ func main() {
 }
 {{< /file >}}
 
-The `net.ListenUDP()` function tells the application to listen for incoming UDP
+ - The `net.ListenUDP()` function tells the application to listen for incoming UDP
 connections, which are served inside the `for` loop. This is the function call
 that makes the program a UDP server.
 
-The `ReadFromUDP()` and `WriteToUDP()` functions are used for reading data from a UDP
+ - The `ReadFromUDP()` and `WriteToUDP()` functions are used for reading data from a UDP
 connection and writing data to a UDP connection, respectively. A byte slice named
-`data` is used for writing the desired data and another one named `buffer` for reading
+`data` is used for writing the desired data and another one named `buffer` is used for reading
 purposes.
 
-As UDP is a stateless protocol, each UDP client is served and then the connection closes
-automatically. The UDP server program will exit when it receives the `STOP` keyword
-from any UDP client. Otherwise the `for` loop will make the program to keep waiting for
+ - As UDP is a stateless protocol, each UDP client is served and then the connection closes
+automatically. The UDP server program will only exit when it receives the `STOP` keyword
+from any UDP client. Otherwise the program to keep waiting for
 more UDP connections from other clients.
 
 ### Using the UDP Client and Server
@@ -456,11 +455,11 @@ Exiting UDP server!
 
 ## A Concurrent TCP Server
 
-In this section you will see the implementation of a concurrent TCP server in Go.
-The good thing with concurrent TCP servers is that they can serve multiple clients.
-In Go, this is usually done by creating a separate *goroutine* for serving each TCP client.
+This section demonstrates the implementation of a concurrent TCP server in Go.
+The benefit of concurrent TCP servers is that they can serve multiple clients.
+In Go, this is usually done by creating a separate goroutine for serving each TCP client.
 
-The created TCP server keeps a counter that counts the number of TCP clients it has served
+This example TCP server keeps a count of the number of TCP clients it has served
 so far. The counter increases by one each time a new TCP client connects to the TCP server.
 The current value of that counter is returned to each TCP client.
 
@@ -529,15 +528,15 @@ func main() {
 }
 {{< /file >}}
 
-Each TCP client is served by a separate goroutine that executes the `handleConnection()`
+ - Each TCP client is served by a separate goroutine that executes the `handleConnection()`
 function. This means that while a TCP client is served, the TCP server is free to
 interact with more TCP clients, which are connected using the `Accept()` function.
 
-Although the `Accept()` function can be executed multiple times, the `net.Listen()`
-function needs to be executed only once.
+ - Although the `Accept()` function can be executed multiple times, the `net.Listen()`
+function needs to be executed only once and so it remains outside of the endless for loop.
 
-As it happens with most TCP/IP servers, the `for` loop in the `main()` function never
-ends because TCP/IP servers usually run all the time. However, if a `handleConnection()`
+ - As it happens with most TCP/IP servers, the `for` loop in the `main()` function is endless
+because TCP/IP servers usually run nonstop. However, if the `handleConnection()`
 function receives the `STOP` message, the goroutine that runs it will exit and the related
 TCP connection will close.
 
@@ -570,14 +569,11 @@ the TCP server using `tcpC.go`:
 ->: TCP client exiting...
 {{< /output >}}
 
-As this is the second TCP client, the return value from the TCP server will be `2`
-from now on on all TCP clients.
+As this is the second TCP client, the return value from the TCP server has updated to `2`
+and will continue to increase by one for all future TCP clients.
 
 The output on the TCP server side will be as follows:
 {{< output >}}
 .Hello!
 .Hello!
-{{ < /output >}}
-
-
-
+{{< /output >}}
