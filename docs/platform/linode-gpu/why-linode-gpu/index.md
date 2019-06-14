@@ -75,7 +75,7 @@ If you're interested in using CUDA on your GPU Linode, see the following resourc
 
 One of the most traditional use cases for a GPU is graphics processing. Transforming a large set of pixels or vertices with a shader or simulating realistic lighting via ray tracing are massive parallel processing tasks. Ray tracing is a computationally intensive process that simulates lights in a scene and renders the reflections, refractions, shadows, and indirect lighting. It's impossible to do on GPUs in real-time without hardware-based ray tracing acceleration. The Linode GPU Instances offers real-time ray tracing capabilities using a single GPU.
 
-New to the NVIDIA RTX 600 are the following shading enhancements:
+New to the NVIDIA RTX 6000 are the following shading enhancements:
 
 - Mesh shading models for vertex, tessellation, and geometry stages in the graphics pipeline
 - Variable Rate Shading to dynamically control shading rate
