@@ -30,145 +30,148 @@ Deploy three Linodes running Ubuntu 18.04 with the following system requirements
 
 Follow the [Getting Started](/docs/getting-started) and the [Securing Your Server](/docs/security/securing-your-server/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
 
-*Note:* When following the [Getting Started](/docs/getting-started) guide, make sure that each Linode is using a different hostname. Not following this guideline will leave you unable to join some or all nodes to the cluster in a later step.
+{{< note >}}
+When following the [Getting Started](/docs/getting-started) guide, make sure that each Linode is using a different hostname. Not following this guideline will leave you unable to join some or all nodes to the cluster in a later step.
+{{< /note >}}
 
-Disable swap memory on your Linodes and verify.
+1.  Disable swap memory on your Linodes and verify.
 
-    sudo swapoff -a
-    cat /proc/meminfo | grep 'SwapTotal'
+        sudo swapoff -a
+        cat /proc/meminfo | grep 'SwapTotal'
 
 **Install Docker**
 
-Remove older installations of docker.
+1.  Remove older installations of docker.
 
-    sudo apt remove docker docker-engine docker.io
+        sudo apt remove docker docker-engine docker.io
 
-Make sure you have the necessary packages to allow the use of Docker’s repository:
+1.  Make sure you have the necessary packages to allow the use of Docker’s repository:
 
-    sudo apt install apt-transport-https ca-certificates curl software-properties-common
+        sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
-Add Docker’s GPG key and verify
+1.  Add Docker’s GPG key and verify
 
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo apt-key fingerprint 0EBFCD88
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        sudo apt-key fingerprint 0EBFCD88
 
-Add the `stable` Docker repository:
+1.  Add the `stable` Docker repository:
 
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-Update your package index and install Docker CE:
+1.  Update your package index and install Docker CE:
 
-    sudo apt update
-    sudo apt install docker-ce
+        sudo apt update
+        sudo apt install docker-ce
 
-Add your limited Linux user account to the `docker` group. Replace `$USER` with your username:
+1.  Add your limited Linux user account to the `docker` group. Replace `$USER` with your username:
 
-    sudo usermod -aG docker $USER
+        sudo usermod -aG docker $USER
 
-*Note:*
+{{< note >}}
 After entering the `usermod` command, you will need to close your SSH session and open a new one for this change to take effect.
+{{< /note >}}
 
-Check that the installation was successful by running the built-in “Hello World” program:
+1.  Check that the installation was successful by running the built-in “Hello World” program:
 
-    sudo docker run hello-world
+        sudo docker run hello-world
 
-Setup the Docker daemon to use [systemd](/docs/quick-answers/linux-essentials/what-is-systemd/) as the cgroup driver, instead of the default cgroupfs.
+1.  Setup the Docker daemon to use [systemd](/docs/quick-answers/linux-essentials/what-is-systemd/) as the cgroup driver, instead of the default cgroupfs.
 
-    sudo bash -c 'cat > /etc/docker/daemon.json <<EOF
-    {
-      "exec-opts": ["native.cgroupdriver=systemd"],
-      "log-driver": "json-file",
-      "log-opts": {
-        "max-size": "100m"
-      },
-      "storage-driver": "overlay2"
-     }
-    EOF'
+        sudo bash -c 'cat > /etc/docker/daemon.json <<EOF
+        {
+          "exec-opts": ["native.cgroupdriver=systemd"],
+          "log-driver": "json-file",
+          "log-opts": {
+            "max-size": "100m"
+          },
+          "storage-driver": "overlay2"
+         }
+        EOF'
 
-Create a systemd directory for Docker:
+1.  Create a systemd directory for Docker:
 
-    sudo mkdir -p /etc/systemd/system/docker.service.d
+        sudo mkdir -p /etc/systemd/system/docker.service.d
 
-Restart Docker:
+1.  Restart Docker:
 
-    sudo systemctl daemon-reload
-    sudo systemctl restart docker
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
 
 **Install kubeadm, kubelet, and kubectl**
 
-Update the system and install the required dependencies for installation:
+1.  Update the system and install the required dependencies for installation:
 
-    sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+        sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 
-Add the required GPG key to your apt-sources keyring to authenticate the Kubernetes related packages you will install:
+1.  Add the required GPG key to your apt-sources keyring to authenticate the Kubernetes related packages you will install:
 
-    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
-Add Kubernetes to the package manager’s list of sources:
+1.  Add Kubernetes to the package manager’s list of sources:
 
-    sudo bash -c "cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-    deb https://apt.kubernetes.io/ kubernetes-xenial main
-    EOF"
+        sudo bash -c "cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+        deb https://apt.kubernetes.io/ kubernetes-xenial main
+        EOF"
 
-Update apt, install kubeadm, kubelet, and kubectl, and hold the installed packages at their installed versions:
+1.  Update apt, install kubeadm, kubelet, and kubectl, and hold the installed packages at their installed versions:
 
-    sudo apt-get update
-    sudo apt-get install -y kubelet kubeadm kubectl
-    sudo apt-mark hold kubelet kubeadm kubectl
+        sudo apt-get update
+        sudo apt-get install -y kubelet kubeadm kubectl
+        sudo apt-mark hold kubelet kubeadm kubectl
 
-Verify that kubeadm, kubelet, and kubectl have installed by retrieving their version information. Each command should return version information about each package.
+1.  Verify that kubeadm, kubelet, and kubectl have installed by retrieving their version information. Each command should return version information about each package.
 
-    kubeadm version
-    kubelet --version
-    kubectl version
+        kubeadm version
+        kubelet --version
+        kubectl version
 
 **Set up the Kubernetes Control Plane**
 
-Initialize kubeadm on the master node.
+1.  Initialize kubeadm on the master node.
 
-    sudo kubeadm init --pod-network-cidr=10.2.0.0/16
+        sudo kubeadm init --pod-network-cidr=10.2.0.0/16
 
-Copy the `admin.conf` configuration file to your limited user account.
+1.  Copy the `admin.conf` configuration file to your limited user account.
 
-    mkdir -p $HOME/.kube
-    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+        mkdir -p $HOME/.kube
+        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+        sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-Install the necessary Calico manifests to your master node and apply them using kubectl.
+1.  Install the necessary Calico manifests to your master node and apply them using kubectl.
 
-    kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
-    kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+        kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
+        kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 
 **Inspect the Master Node with kubectl**
 
-View the current state of all nodes in your cluster.
+1.  View the current state of all nodes in your cluster.
 
-    kubectl get nodes
+        kubectl get nodes
 
-Inspect the available [namespaces](https://deploy-preview-2397--nostalgic-ptolemy-b01ab8.netlify.com/applications/containers/beginners-guide-to-kubernetes/#namespaces) in your cluster.
+1.  Inspect the available [namespaces](https://deploy-preview-2397--nostalgic-ptolemy-b01ab8.netlify.com/applications/containers/beginners-guide-to-kubernetes/#namespaces) in your cluster.
 
-    kubectl get namespaces
+        kubectl get namespaces
 
-View all resources available in the `kube-system` namespace.
+1.  View all resources available in the `kube-system` namespace.
 
-    kubectl get all -n kube-system
+        kubectl get all -n kube-system
 
 **Join a Worker Node to the Cluster**
 
-SSH into the Linode that will be used as a worker node in the Kubernetes cluster.
+1.  SSH into the Linode that will be used as a worker node in the Kubernetes cluster.
 
-    ssh username@192.0.2.1
+        ssh username@192.0.2.1
 
-Join the node to your cluster using kubeadm. Ensure you replace `192.0.2.0:6443` with the IP address for your master node along with its Kubernetes API server’s port number, `udb8fn.nih6n1f1aijmbnx5` with your bootstrap token, and `sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26` with your CA key hash.
+1.  Join the node to your cluster using kubeadm. Ensure you replace `192.0.2.0:6443` with the IP address for your master node along with its Kubernetes API server’s port number, `udb8fn.nih6n1f1aijmbnx5` with your bootstrap token, and `sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26` with your CA key hash.
 
-    sudo kubeadm join 192.0.2.0:6443 --token udb8fn.nih6n1f1aijmbnx5 \
-    --discovery-token-ca-cert-hash sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26
+        sudo kubeadm join 192.0.2.0:6443 --token udb8fn.nih6n1f1aijmbnx5 \
+        --discovery-token-ca-cert-hash sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26
 
-Repeat the steps outlined above on the second worker node to bootstrap it to the cluster.
+1.  Repeat the steps outlined above on the second worker node to bootstrap it to the cluster.
 
-SSH into the master node and verify the worker nodes have joined the cluster:
+    SSH into the master node and verify the worker nodes have joined the cluster:
 
-    kubectl get nodes
+        kubectl get nodes
 {{< /disclosure-note >}}
 
 Linode offers several pathways for users to easily deploy a Kubernetes cluster. If you prefer the command line, you can create a Kubernetes cluster with one command using the [Linode CLI's k8s-alpha plugin](https://developers.linode.com/kubernetes/), and [Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/). Or, if you prefer a full featured GUI, [Linode's Rancher integration](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/) enables you to deploy and manage Kubernetes clusters with a simple web interface. The Linode Kubernetes Engine, currently under development with an early access beta version on its way this summer, allows you to spin up a Kubernetes cluster with Linode handling the management and maintenance of your control plane. These are all great options for production ready deployments.
