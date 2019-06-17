@@ -172,6 +172,13 @@ After entering the `usermod` command, you will need to close your SSH session an
     SSH into the master node and verify the worker nodes have joined the cluster:
 
         kubectl get nodes
+
+{{< file "~/.ssh/config" >}}
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+{{< /file >}}
 {{< /disclosure-note >}}
 
 Linode offers several pathways for users to easily deploy a Kubernetes cluster. If you prefer the command line, you can create a Kubernetes cluster with one command using the [Linode CLI's k8s-alpha plugin](https://developers.linode.com/kubernetes/), and [Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/). Or, if you prefer a full featured GUI, [Linode's Rancher integration](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/) enables you to deploy and manage Kubernetes clusters with a simple web interface. The Linode Kubernetes Engine, currently under development with an early access beta version on its way this summer, allows you to spin up a Kubernetes cluster with Linode handling the management and maintenance of your control plane. These are all great options for production ready deployments.
