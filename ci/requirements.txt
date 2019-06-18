@@ -3,5 +3,5 @@ scrapy==1.5.1
 pytest>=3.3.0
 tabulate>=0.8.2
 python-frontmatter>=0.4.2
-twisted==18.4.0
+twisted==19.2.1
 attrs>=17.4.0
