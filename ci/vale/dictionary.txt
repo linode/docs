@@ -1207,6 +1207,7 @@ sfproject
 sfroot
 sftp
 sha256
+shader
 shadowsocks
 sharded
 sharding
