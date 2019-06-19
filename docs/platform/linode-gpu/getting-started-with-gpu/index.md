@@ -43,7 +43,7 @@ Depending on your distribution, you may need to install lspci manually first. On
     sudo yum install pciutils
 {{< /note >}}
 
-1. Move on to the next section to [install the dependencies](#install-dependencies) that NVIDIA's drivers rely on.
+1. Move on to the next section to [install the dependencies](#install-nvidia-driver-dependencies) that NVIDIA's drivers rely on.
 
 ## Install NVIDIA Driver Dependencies
 
