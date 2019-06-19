@@ -143,9 +143,13 @@ Furthermore, some CPU-intensive tasks may be triggered from other events in your
 | -------- | ----- |
 | RAM | 4GB |
 | vCPU    | 2 vCPUs |
-| Storage | 25 GB SSD Storage |
+| Storage | 80 GB SSD Storage |
 | Transfer | 4 TB |
 | Network In | 40 Gbps |
 | Network Out | 4000 Mbps |
 
 To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
+
+
+
+
