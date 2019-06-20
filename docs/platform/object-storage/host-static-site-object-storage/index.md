@@ -53,7 +53,7 @@ This guide will use [Hugo](https://gohugo.io/) to demonstrate how to create a st
 
 ## Before You Begin
 
-1. Read the [How to Use Object Storage]() guide to familiarize yourself with Object Storage on Linode. Specifically, be sure that you have:
+1. Read the [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide to familiarize yourself with Object Storage on Linode. Specifically, be sure that you have:
 
     - Created your Object Storage access and secret keys.
     - Installed and configure the [s3cmd tool](https://s3tools.org/download).
