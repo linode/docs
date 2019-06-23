@@ -14,7 +14,7 @@ modified_by:
 
 This guide will help you get your Linode GPU Instance up and running on a number of popular distributions. To prepare your Linode, you will need to install NVIDIA's proprietary drivers using [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).
 
-When using distributions that are not fully supported by CUDA, like Debian 9, you can install the NVIDIA driver without the CUDA toolkit. To only install the NVIDIA driver, complete the [Before You Begin](#before-you-begin) section and then, move on to the [Manual Install](#manual-install) section of this guide.
+When using distributions that are not fully supported by CUDA, like Debian 9, you can install the NVIDIA driver without the CUDA toolkit. To only install the NVIDIA driver, complete the [Before You Begin](#before-you-begin) section and then move on to the [Manual Install](#install-manually) section of this guide.
 
 For details on the CUDA Toolkit's full feature set, see the [official documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#introduction).
 
@@ -43,7 +43,7 @@ Depending on your distribution, you may need to install lspci manually first. On
     sudo yum install pciutils
 {{< /note >}}
 
-1. Move on to the next section to [install the dependencies](#install-dependencies) that NVIDIA's drivers rely on.
+1. Move on to the next section to [install the dependencies](#install-nvidia-driver-dependencies) that NVIDIA's drivers rely on.
 
 ## Install NVIDIA Driver Dependencies
 
