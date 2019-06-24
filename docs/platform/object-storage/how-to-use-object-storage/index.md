@@ -17,7 +17,9 @@ external_resources:
 ---
 
 {{< note >}}
-Object Storage is currently in a closed early access Beta. You may not have access to Object Storage through the Cloud Manager or other tools. Additionally, there may be breaking changes to how you access and manage Object Storage while it is in beta. This guide will be updated to reflect these changes if and when they occur. To gain access to the Early Access Program (EAP), visit the Linode EAP page.
+Object Storage is currently in a closed early access Beta, and you may not have access to Object Storage through the Cloud Manager or other tools. To gain access to the Early Access Program (EAP), open up a Customer Support ticket noting that you'd like to be included in the program, or e-mail objbeta@linode.com
+
+Additionally, because Object Storage is in Beta, there may be breaking changes to how you access and manage Object Storage. This guide will be updated to reflect these changes if and when they occur.
 {{</ note >}}
 
 Linode's Object Storage is a globally-available, S3- and Swift-compatible method for storing and accessing data. Object Storage differs from traditional hierarchical data storage (as in a Linode's disk) and [Block Storage Volumes](https://www.linode.com/docs/platform/block-storage/). Under Object Storage, files (also called *objects*) are stored in flat data structures (referred to as *buckets*) alongside their own rich metadata.
