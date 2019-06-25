@@ -60,6 +60,10 @@ Object Storage is not available in the Linode Classic Manager.
 
     ![Click on the 'Access Keys' tab.](object-storage-access-keys-tab.png)
 
+    {{< note >}}
+The Kubernetes option that appears in this screenshot is in development, and [public access is coming soon](https://welcome.linode.com/kubernetes/).
+{{< /note >}}
+
 1.  The **Create an Access Key** menu will appear.
 
     ![The 'Create an Access Key' menu.](object-storage-create-key.png)
@@ -93,6 +97,10 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 1.  Click on the **Object Storage** link in the sidebar, and then click on **Add a Bucket**.
 
     ![The Object Storage menu.](object-storage-add-a-bucket.png)
+
+    {{< note >}}
+The Kubernetes option that appears in this screenshot is in development, and [public access is coming soon](https://welcome.linode.com/kubernetes/).
+{{< /note >}}
 
 1.  The **Create a Bucket** menu will appear.
 
