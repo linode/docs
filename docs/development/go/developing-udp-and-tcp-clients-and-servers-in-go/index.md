@@ -2,102 +2,89 @@
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'Developing UDP and TCP Clients and Servers in Go.'
+description: 'Create a TCP and UDP client and server using the Go programming language.'
 keywords: ["go", "golang", "server", "client", "TCP", "UDP", "programming", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-05-30
+published: 2019-06-26
 modified_by:
   name: Linode
-title: 'Programming UDP and TCP servers and clients in Go'
+title: 'Create a TCP and UDP Client and Server using Go'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
 external_resources:
   - '[Go](https://www.golang.com)'
 ---
+Go is a compiled, statically typed programming language developed by Google. Many modern applications, including [Docker](/docs/applications/containers/introduction-to-docker/), [Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/), and [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/), are written in Go. Go packages allow developers to organize and reuse Go code in a simple and maintainable manner.
+
+In this guide, you will use the `net` package, which is a part of [Go's standard library](https://golang.org/pkg/#stdlib), to create TCP and UDP servers and clients. This guide is meant to provide instructional examples to help you become more familiar with the Go programming language.
+
+## Scope of this Guide
+
+Throughout this guide you will create the following:
+
+- A TCP server and client. The TCP server accepts incoming messages from a TCP client and responds with the current date and time.
+- A UDP server and client. The UDP server accepts incoming messages from a UDP client and responds with a random number.
+- A concurrent TCP server that accepts incoming messages from several TCP clients and responds with the number of clients currently connected to it.
 
 ## Before You Begin
 
-You will need to install a recent version of Go on your computer in order to follow the
-presented commands. Any Go version newer than 1.8 will do but it is considered a good
-practice to have the latest version of Go installed. You can check your Go version
-by executing `go version`.
+1. If you are not familiar with using Go packages, review the [Getting Started with Go Packages](/docs/development/go/getting-started-with-go-packages/) guide.
 
-If you still need to install Go, you can follow our guide for Ubuntu installation
-[here](https://www.linode.com/docs/development/go/install-go-on-ubuntu/).
+1. Install Go on your computer if it is not already installed. You can follow our guide [How to Install Go on Ubuntu](/docs/development/go/install-go-on-ubuntu/) for installation steps.
 
-{{< note >}}
-This guide is written for a non-root user. Depending on the TCP/IP port numbers that you are going to choose for the TCP server and the UDP server, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+    This guide requires Go version 1.8 or higher. It is considered good practice to have the [latest version of Go](https://golang.org/dl/) installed. You can check your Go version by executing the following command:
 
-## About TCP/IP
-
-**TCP** stands for Transmission Control Protocol and its principal characteristic
-is that it is a reliable protocol by design. If there is no proof of a packet delivery,
-TCP will resend that particular packet. Among other things, a TCP packet can be used
-for establishing connections, transferring data, sending acknowledgements, and closing
-connections.
-
-**IP** stands for Internet Protocol. The main characteristic of IP is that it is not a
-reliable protocol by nature. IP encapsulates the data that travels over a TCP/IP
-network because it is responsible for delivering packets from the source host
-to the destination host according to the IP addresses. IP has to find an addressing
-method to send the packet to its destination effectively.
-
-**UDP** (User Datagram Protocol) is based on IP, which means that it is also
-unreliable. Generally speaking, the UDP protocol is simpler than the TCP protocol mainly
-because UDP is not reliable by design. As a result, UDP messages can be lost, duplicated,
-or arrive out of order. Furthermore, UDP packets can arrive faster than the recipient can
-process them. So, UDP is used when speed is more important than reliability!
-
-A TCP client can be reasonably generic whereas a TCP server cannot be generic because
-it has to perform a specific task. The same unofficial rule applies to UDP clients
-and servers.
-
-## The net Go Package
-
-The `net` package of the Go library is what will be used for creating TCP/IP servers and clients.
-
-The parameters of the `net.Listen()` function define the kind of server that you are going to create.
-The first parameter of the `net.Listen()` function defines the type of network that will be used,
-while the second parameter defines the server address as well as the port number the server will
-listen to. Valid values for the first parameter are `tcp`, `tcp4` (IPv4-only), `tcp6` (IPv6-only),
-`udp`, `udp4` (IPv4-only), `udp6` (IPv6-only), `ip`, `ip4` (IPv4-only), `ip6` (IPv6-only),
-`Unix` (Unix sockets), `Unixgram` and `Unixpacket`.
-
-Apart from the `net.Listen()` function, there exist `net.ListenUDP()` and `net.ListenTCP()`, which
-are for creating UDP and TCP servers, respectively. These two functions should be paired with
-`net.ResolveUDPAddr()` and `net.ResolveTCPAddr()`, respectively.
-
-Similarly, the parameters of the `net.Dial()`, `net.DialTCP()` and `net.DialUDP()` specify the
-kind of client you are going to create. The `net.Dial()` function is the most generic one because
-it can create all kinds of network clients whereas `net.DialTCP()` and `net.DialUDP()` can
-create TCP and UDP clients, respectively.
-
-The TCP part of this guide will use the generic functions whereas the UDP part will use
-`net.ResolveUDPAddr()`, `net.ListenUDP()` and `net.DialUDP()`.
+        go version
 
 {{< note >}}
-All versions of `net.Dial()` and `net.Listen()` return data types that implement the
-`io.Reader` and `io.Writer` interfaces. This means that you can use regular File I/O
-functions to send and receive data from a TCP/IP connection if you want.
+This guide is written for a non-root user. Depending on the TCP/IP port number that you use when running the TCP and UDP servers, you may need to prefix commands with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
+
+## Protocol Definitions
+
+| **Protocol** | **Definition** |
+| ------------ | -------------- |
+| *TCP (Transmission Control Protocol)* | TCP's principal characteristic is that it is a reliable protocol by design. If there is no proof of a packet's delivery, TCP will resend the packet. Some of the tasks TCP packets can be used for are establishing connections, transferring data, sending acknowledgements, and closing connections. |
+| *IP (Internet Protocol)* | The IP protocol adheres to the end-to-end principle, which places all network intelligence in the end nodes and not in the intermediary nodes. This design favors a reduction in network complexity over reliability. For this reason, the Internet Protocol does not guarantee a reliable delivery of packets over a network. Instead, IP works together with TCP to reliably deliver packets over a network. |
+| *UDP (User Datagram Protocol):* | UDP provides a simpler implementation of the transport layer protocol that, while less reliable than TCP, is much faster. UDP does not provide error checking, correction or packet retransmission, which makes it very fast. When speed is more important than reliability, UDP is generally chosen over TCP. UDP is commonly used for online gaming, video chatting, and other real-time applications. |
+
+## The net Package
+
+Go's [`net` package](https://golang.org/pkg/net/) provides a portable interface for network I/O, including TCP/IP, UDP, domain name resolution, and Unix domain sockets. You will use this package to create TCP and UDP servers and clients in this guide.
+
+### net Package Functions
+Use the table below as a quick reference for some of the `net` package functions used throughout this guide. To view all types and functions included in the `net` package, see [Golang's official documentation](https://golang.org/pkg/net/).
 
 {{< note >}}
-If you ever want to test a TCP/IP application, either a server or a client, you might
-find the `nc(1)` command line utility very handy.
+All versions of `net.Dial()` and `net.Listen()` return data types that implement the [`io.Reader`](https://golang.org/pkg/io/#Reader) and [`io.Writer`](https://golang.org/pkg/io/#Writer) interfaces. This means that you can use regular [File I/O](https://golang.org/pkg/io/) functions to send and receive data from a TCP/IP connections.
 {{< /note >}}
 
-## A TCP Client
 
-In this section of the guide, we are going to see how to develop a generic TCP client in Go.
-The utility will allow you to interact with any TCP server.
+| **Type** | **Function** |
+| ------------ | -------- |
+| [**type Listener**](https://golang.org/pkg/net/#Listener) | **`func Listen(network, address string) (Listener, error)`**</br></br> &nbsp;&nbsp; &bull; The `network` parameter defines the type of network to use and accepts values `tcp`, `tcp4` (IPv4-only), `tcp6` (IPv6-only), `unix` (Unix sockets), or `unixpacket`.</br></br> &nbsp;&nbsp;  &bull; The `address` parameter defines the server address and port number that the server will listen on. |
+| [**type UDPConn**](https://golang.org/pkg/net/#UDPConn) | **`func ListenUDP(network string, laddr *UDPAddr) (*UDPConn, error)`**</br></br> &nbsp;&nbsp;  &bull; Used to create UDP servers.</br></br> &nbsp;&nbsp;  &bull; The `network` parameter must be a UDP network name.</br></br> &nbsp;&nbsp;  &bull; The `laddr` parameter defines the server address and port number that the server will listen on.</br></br> **`func DialUDP(network string, laddr, raddr *UDPAddr) (*UDPConn, error)`**</br></br> &nbsp;&nbsp;  &bull; Used to specify the kind of client you will create.</br></br> &nbsp;&nbsp;  &bull; The `network` parameter must be a UDP network name.</br></br> &nbsp;&nbsp;  &bull; The `laddr` is the listening address (server). If `laddr` is nil, a local address is automatically chosen.</br></br> &nbsp;&nbsp;  &bull; `raddr` is the response address (client). If the IP field of `raddr` is nil or an unspecified IP address, the local system is assumed.  |
+| [**type UDPAddr**](https://golang.org/pkg/net/#UDPAddr) | **`func ResolveUDPAddr(network, address string) (*UDPAddr, error)`**</br></br> &nbsp;&nbsp;  &bull; This function returns the address of a UDP end point.</br></br> &nbsp;&nbsp;  &bull; The `network` parameter must be a UDP network name.</br></br> &nbsp;&nbsp;  &bull; The `address` parameter has the form `host:port`. The host must be a an IP address, or a host name that can be resolved to IP addresses.  |
+| [**type TCPAddr**](https://golang.org/pkg/net/#TCPAddr) | **`func ResolveTCPAddr(network, address string) (*TCPAddr, error)`**</br></br> &nbsp;&nbsp;  &bull; This function returns the address of a TCP end point.</br></br> &nbsp;&nbsp;  &bull; The `network` parameter must be a TCP network name.</br></br> &nbsp;&nbsp;  &bull; The `address` parameter has the form `host:port`. The host must be a an IP address, or a host name that can be resolved to IP addresses.  |
+| [**type Conn**](https://golang.org/pkg/net/#Conn) | **`func Dial(network, address string) (Conn, error)`**</br></br> &nbsp;&nbsp;  &bull; This function connects to the address on the named network.</br></br> &nbsp;&nbsp;  &bull; The `network` parameter can be `tcp`, `tcp4` (IPv4-only), `tcp6` (IPv6-only), `udp`, `udp4` (IPv4-only), `udp6` (IPv6-only), `ip`, `ip4` (IPv4-only), `ip6` (IPv6-only), `unix`, `unixgram` and `unixpacket`.</br></br> &nbsp;&nbsp;  &bull; When using TCP or UDP networks, the `address` parameter has the form `host:port`. The host must be a an IP address, or a host name that can be resolved to IP addresses.  |
+| [**type TCPConn**](https://golang.org/pkg/net/#Conn) | **`func DialTCP(network string, laddr, raddr *TCPAddr) (*TCPConn, error)`**</br></br> &nbsp;&nbsp;  &bull; This function connects to the address on the TCP networks.</br></br> &nbsp;&nbsp;  &bull; The `network` parameter must be a TCP network name.</br></br> &nbsp;&nbsp;  &bull; The `laddr` is the listening address (server). If `laddr` is nil, a local address is automatically chosen.</br></br> &nbsp;&nbsp;  &bull; `raddr` is the response address (client). If the IP field of `raddr` is nil or an unspecified IP address, the local system is assumed.  |
 
-### Looking at the Go code of the TCP client
+## Create a TCP Client and Server
 
-The Go code of the TCP client is the following:
+In this section, you will create a generic TCP client and server using Go. After creating the client and server, you will run them to test their connection with each other.
 
-{{< file "./tcpC.go" go >}}
+{{< note >}}
+The [netcat command line utility](https://en.wikipedia.org/wiki/Netcat) can be used to test TCP/IP client and server connections.
+{{< /note >}}
+
+### Create the TCP Client
+
+The TCP client that you will create in this section will allow you to interact with any TCP server.
+
+1. In your current working directory, create a file named `tcpC.go` with the following content:
+
+    {{< file "./tcpC.go" go >}}
 package main
 
 import (
@@ -136,34 +123,23 @@ func main() {
                 }
         }
 }
-{{< /file >}}
+    {{< /file >}}
 
- - The first part of the `main()` function gathers command line arguments and makes sure that `host:port` was sent. This argument is then put into the `CONNECT` variable to be used in the `net.Dial()` call. The implementation of the TCP client begins
-with a call to `net.Dial()` that allows you to connect to the desired TCP server.
-The second parameter of `net.Dial()` has two virtual parts. The first part is the hostname
-or the IP address of the TCP server and the second part is the port number the TCP server
-listens to.
+ - This file creates the `main` package, which declares the `main()` function. The function will use the imported packages to create a TCP client.
+ - The `main()` function gathers command line arguments in the `arguments` variable and makes sure that a value for `host:port` was sent.
+ - The `CONNECT` variable stores the value of `arguments[1]`to be used in the `net.Dial()` call.
+ - A call to `net.Dial()` begins the implementation of the TCP client and will connect you to the desired TCP server. The second parameter of `net.Dial()` has two parts; the first is the hostname or the IP address of the TCP server and the second is the port number the TCP server listens on.
+ - `bufio.NewReader(os.Stdin)` and `ReadString()` is used to read user input. Any user input is sent to the TCP server over the network using `Fprintf()`.
+ - `bufio` reader and the `bufio.NewReader(c).ReadString('\n')` statement read the TCP server's response. The `error` variable is ignored here for simplicity.
+ - The entire `for` loop that is used to read user input will only terminate when you send the `STOP` command to the TCP server.
 
- - The program reads user input using `bufio.NewReader(os.Stdin)` and `ReadString()`, which
-is sent to the TCP server over the network using `Fprintf()`.
+### Create the TCP Server
 
- - Last, the TCP client reads the response of the TCP server using another `bufio` reader and
-the `bufio.NewReader(c).ReadString('\n')` statement. The `error` variable is ignored here for
-reasons of simplicity only.
+You are now ready to create the TCP server. The TCP server will return the current date and time to the TCP client using a single network packet.
 
- - This is an endless `for` loop that will only terminate when you send the word `STOP` to the TCP server.
+1. In your current working directory, create a file named `tcpS.go` with the following content:
 
-## A TCP Server
-
-In this section of the guide, we are going to see how to develop a TCP server in Go.
-What this TCP server does is returning the current date and time to the TCP client
-in a single network packet.
-
-### Looking at the Go code of the TCP server
-
-The implementation of the TCP server contains the following Go code:
-
-{{< file "./tcpS.go" go >}}
+    {{< file "./tcpS.go" go >}}
 package main
 
 import (
@@ -213,74 +189,81 @@ func main() {
                 c.Write([]byte(myTime))
         }
 }
-{{< /file >}}
+    {{< /file >}}
+  - This file creates the `main` package, which declares the `main()` function. The function will use the imported packages to create a TCP server.
+  - The `main()` function gathers command line arguments in the `arguments` variable and includes error handling.
+  - The `net.Listen()` function makes the program a TCP server. This functions returns a `Listener` variable, which is a generic network listener for stream-oriented protocols.
+  - It is only after a successful call to `Accept()` that the TCP server can begin to interact with TCP clients.
+  - The current implementation of the TCP server can only serve the first TCP client that connects to it, because the `Accept()` call is outside of the `for` loop. In the [Create a Concurrent TCP Server](#create-a-concurrent-tcp-server) section of this guide, you will see a TCP server implementation that can serve multiple TCP clients using Goroutines.
+  - The TCP server uses regular File I/O functions to interact with TCP clients. This interaction takes place inside the `for` loop. Similarly to the TCP client, when the TCP server receives the `STOP` command from the TCP client, it will terminate.
 
- - The `net.Listen()` function, which is what makes that program a TCP server, returns
-a `Listener` variable, which is a generic network listener for stream-oriented protocols.
+### Test the TCP Client and Server
 
- - Notice that it is only after a successful call to `Accept()` that the TCP server can
-begin interacting with TCP clients. The current implementation of the TCP server can
-only serve the first TCP client that connects to it because the `Accept()` call
-is outside of the `for` loop. Later in this guide you will see the implementation of
-a concurrent TCP server that can serve multiple TCP clients using goroutines.
+You can now test your TCP client and server. You will need to execute the TCP server first so that the TCP client has somewhere it can connect to.
 
- - The TCP server uses regular File I/O functions for interacting with TCP clients.
-That interaction takes place inside the endless `for` loop. Like the TCP client, as soon as the TCP server
-receives the word `STOP` from the TCP client, it will terminate.
+1. Run your TCP server. From the directory containing the `tcpS.go` file, run the following command:
 
-### Using the TCP Client and Server
+        go run tcpS.go 1234
 
-You will need to execute the TCP server first for the TCP client to have somewhere to
-connect to:
+    The server will listen on port number `1234`. You will not see any output as a result of this command.
 
-    go run tcpS.go 1234
+1. Open a second shell session to execute the TCP client and to interact with the TCP server. Run the following command:
 
-That particular server listens to port number `1234`.
+        go run tcpC.go 127.0.0.1:1234
 
-Then you can execute the TCP client and interact with the TCP server:
+    {{< note >}}
+If the TCP server is not running on the expected TCP port, you will get the following error message from `tcpC.go`:
 
-    go run tcpC.go 127.0.0.1:1234
-{{< output >}}
+    dial tcp [::1]:1234: connect: connection refused
+
+    {{</ note >}}
+
+
+1. You will see a `>>` prompt waiting for you to enter some text. Type in `Hello!` to receive a response from the TCP server:
+
+        Hello!
+
+    You should see a similar output:
+
+    {{< output >}}
 >> Hello!
 ->: 2019-05-23T19:43:21+03:00
+    {{</ output >}}
+
+1. Send the `STOP` command to exit the TCP client and server:
+
+        STOP
+
+    You should see a similar output in the client:
+
+    {{< output >}}
 >> STOP
 ->: TCP client exiting...
-{{< /output >}}
+    {{< /output >}}
 
-The output on the TCP server side will be as follows:
+    The output on the TCP server side will resemble the following:
 
-{{< output >}}
+    {{< output >}}
 -> Hello!
 Exiting TCP server!
-{{< /output >}}
-
-If a TCP server is not running on the desired TCP port, you will get the following
-kind of error message from `tcpC.go`:
-
-        go run tcpC.go localhost:1234
-{{< output >}}
-        dial tcp [::1]:1234: connect: connection refused
-{{< /output >}}
+    {{< /output >}}
 
 {{< note >}}
-Notice that the TCP server waits before writing back to the TCP client whereas
-the client writes first before trying to get an answer from the TCP server.
-This is part of the official or unofficial protocol that governs a TCP or
-a UDP connection. In this case we have an unofficial protocol that is based on TCP
-and is both defined and implemented by us.
+The TCP server waits before writing back to the TCP client, whereas the client writes to the TCP server first and then waits to receive an answer.
+This behavior is part of the protocol definition that governs a TCP or a UDP connection. In this example, you have implemented an unofficial protocol that is based on TCP.
 {{< /note >}}
 
-## A UDP Client
+## Create a UDP Client and Server
 
-As it happened with the TCP client, a UDP client can be generic and can communicate
-with multiple UDP servers whereas a UDP server cannot be as generic because it has to
-implement a certain functionality.
+In this section, you will create a UDP client and server. After creating the client and server, you will run them both to test their connection with each other. A UDP client can be generic and can communicate with multiple UDP servers. On the other hand, a UDP server cannot be completely generic, because it typically implements a specific functionality. In the case of our UDP server example, it will return random numbers to UDP clients that connect to it.
 
-### Looking at the Go code of the UDP Client
+### Create the UDP Client
 
-The Go code of the UDP client is the following:
+The UDP client that you will create in this section will allow you to interact with any UDP server.
 
-{{< file "./udpC.go" go >}}
+1. In your current working directory, create a file named `udpC.go` with the following content:
+
+      {{< file "./udpC.go" go >}}
 package main
 
 import (
@@ -334,26 +317,23 @@ func main() {
                 fmt.Printf("Reply: %s\n", string(buffer[0:n]))
         }
 }
-{{< /file >}}
+      {{< /file >}}
 
- - The UDP client uses regular File I/O functions for interacting with the UDP server
-and it will terminate when you send the `STOP` message to the UDP server. This is
-not part of the UDP protocol but it is good for a client to have a way to exit.
+    - This file creates the `main` package, which declares the `main()` function. The function will use the imported packages to create a UDP client.
+    - The `main()` function gathers command line arguments in the `arguments` variable and includes error handling.
+    - Regular File I/O functions are used by the UDP client to interact with the UDP server. The client will terminate when you send the `STOP` command to the UDP server. This is not part of the UDP protocol, but is used in the example to provide the client with a way to exit.
+    - A UDP end point address is returned by the `net.ResolveUDPAddr()` function. The UDP end point is of type `UDPAddr` and contains IP and port information.
+    - The connection to the UDP server is established with the use of the `net.DialUDP()` function.
+    - `bufio.NewReader(os.Stdin)` and `ReadString()` is used to read user input.
+    - The `ReadFromUDP()` function reads a packet from the server connection and will return if it encounters an error.
 
- - The `net.ResolveUDPAddr()` function returns an address of UDP end point, which is
-a `UDPAddr` Go structure.
+### Create the UDP Server
 
- - The connection to the UDP server happens with the use of the `net.DialUDP()` function.
+You are now ready to create the UDP server. You will write the UDP server code to respond to any connected client with random numbers.
 
-## A UDP Server
+1. In your current working directory, create a file named `udps.go` with the following content:
 
-In this section of the guide, we are going to see how to develop an UDP server in Go.
-What this UDP server does is return random numbers to its UDP clients.
-
-### Looking at the Go code of the UDP Server
-
-
-{{< file "./udpS.go" go >}}
+    {{< file "./udpS.go" go >}}
 package main
 
 import (
@@ -412,62 +392,65 @@ func main() {
                 }
         }
 }
-{{< /file >}}
+    {{< /file >}}
 
- - The `net.ListenUDP()` function tells the application to listen for incoming UDP
-connections, which are served inside the `for` loop. This is the function call
-that makes the program a UDP server.
+    - This file creates the `main` package, which declares the `main()` function. The function will use the imported packages to create a UDP server.
+    - The `main()` function gathers command line arguments in the `arguments` variable and includes error handling.
+    - The `net.ListenUDP()` function tells the application to listen for incoming UDP connections, which are served inside the `for` loop. This is the function call that makes the program a UDP server.
+    - The `ReadFromUDP()` and `WriteToUDP()` functions are used to read data from a UDP connection and write data to a UDP connection, respectively. A byte slice is stored in the `data` variable and used to write the desired data. The `buffer` variable also stores a byte slice and is used to read data.
+    - Since UDP is a stateless protocol, each UDP client is served and then the connection closes automatically. The UDP server program will only exit when it receives the `STOP` keyword from a UDP client. Otherwise, the server program will continue to wait for more UDP connections from other clients.
 
- - The `ReadFromUDP()` and `WriteToUDP()` functions are used for reading data from a UDP
-connection and writing data to a UDP connection, respectively. A byte slice named
-`data` is used for writing the desired data and another one named `buffer` is used for reading
-purposes.
+### Test the UDP Client and Server
 
- - As UDP is a stateless protocol, each UDP client is served and then the connection closes
-automatically. The UDP server program will only exit when it receives the `STOP` keyword
-from any UDP client. Otherwise the program to keep waiting for
-more UDP connections from other clients.
+You can now test your UDP client and server. You will need to execute the UDP server first so that the UDP client has somewhere it can connect to.
 
-### Using the UDP Client and Server
+1. Run your UDP server. From the directory containing the `udpS.go` file, run the following command:
 
-You will need to execute the UDP server first:
+        go run udpS.go 1234
 
-    go run udpS.go 1234
+    The server will listen on port number `1234`. You will not see any output as a result of this command.
 
-Then you can execute the UDP client and interact with the UDP server:
+1. Open a second shell session to execute the UDP client and to interact with the UDP server. Run the following command:
 
-    go run udpC.go 127.0.0.1:1234
-{{< output >}}
+        go run udpC.go 127.0.0.1:1234
+
+1. You will see a `>>` prompt waiting for you to enter some text. Type in `Hello!` to receive a response from the UDP server:
+
+        Hello!
+
+    You should see a similar output:
+
+    {{< output >}}
 The UDP server is 127.0.0.1:1234
 >> Hello!
 Reply: 82
+    {{</ output >}}
+
+1. Send the `STOP` command to exit the UDP client and server:
+
+    You should see a similar output on the client side:
+
+    {{< output >}}
 >> STOP
 Exiting UDP client!
-{{< /output >}}
+    {{< /output >}}
 
-The output on the UDP server side will be as follows:
-{{< output >}}
--> Hello!
-data: 82
+    The output on the UDP server side will be as follows:
+
+    {{< output >}}
 -> STOP
 Exiting UDP server!
-{{< /output >}}
+    {{< /output >}}
 
-## A Concurrent TCP Server
+## Create a Concurrent TCP Server
 
-This section demonstrates the implementation of a concurrent TCP server in Go.
-The benefit of concurrent TCP servers is that they can serve multiple clients.
-In Go, this is usually done by creating a separate goroutine for serving each TCP client.
+This section demonstrates the implementation of a concurrent TCP server. The benefit of a concurrent TCP server is that it can serve multiple clients. In Go, this is accomplished by creating a separate Goroutine to serve each TCP client.
 
-This example TCP server keeps a count of the number of TCP clients it has served
-so far. The counter increases by one each time a new TCP client connects to the TCP server.
-The current value of that counter is returned to each TCP client.
+The example TCP server keeps a running count of the number of TCP clients it has served so far. The counter increases by one each time a new TCP client connects to the TCP server. The current value of that counter is returned to each TCP client.
 
-### Looking at the Go code of the concurrent TCP Server
+1. In your current working directory, create a file named `concTCP.go` with the following content:
 
-The Go code of the concurrent TCP server is the following:
-
-{{< file "./concTCP.go" go >}}
+      {{< file "./concTCP.go" go >}}
 package main
 
 import (
@@ -526,54 +509,73 @@ func main() {
                 count++
         }
 }
-{{< /file >}}
+      {{< /file >}}
 
- - Each TCP client is served by a separate goroutine that executes the `handleConnection()`
-function. This means that while a TCP client is served, the TCP server is free to
-interact with more TCP clients, which are connected using the `Accept()` function.
+    - This file creates the main package, which declares the `handleConnection()` and `main()` functions.
+    - The `main()` function will use the imported packages to create a concurrent TCP server. It gathers command line arguments in the `arguments` variable and includes error handling.
+    - Each TCP client is served by a separate Goroutine that executes the `handleConnection()` function. This means that while a TCP client is served, the TCP server is free to interact with more TCP clients. TCP clients are connected using the `Accept()` function.
+    - Although the `Accept()` function can be executed multiple times, the `net.Listen()` function needs to be executed only once. For this reason the `net.Listen()` function remains outside of the `for` loop.
+    - The `for` loop in the `main()` function is endless because TCP/IP servers usually run nonstop. However, if the `handleConnection()` function receives the `STOP` message, the Goroutine that runs it will exit and the related TCP connection will close.
 
- - Although the `Accept()` function can be executed multiple times, the `net.Listen()`
-function needs to be executed only once and so it remains outside of the endless for loop.
+### Test the Concurrent TCP Server
 
- - As it happens with most TCP/IP servers, the `for` loop in the `main()` function is endless
-because TCP/IP servers usually run nonstop. However, if the `handleConnection()`
-function receives the `STOP` message, the goroutine that runs it will exit and the related
-TCP connection will close.
+In this section, you will test the concurrent TCP server using the [netcat](https://en.wikipedia.org/wiki/Netcat) command line utility.
 
-### Using the concurrent TCP Server
+1. Run your concurrent TCP server. From the directory containing the `concTCP.go` file, run the following command:
 
-You will need to execute the TCP server first:
+        go run concTCP.go 1234
 
-    go run concTCP.go 1234
+    The command creates a TCP server that listens on port number `1234`. You can use any port number, however, ensure it is not already in use and that you have the required privileges. Reference the list of [well-known TCP and UDP ports](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports), if needed.
 
-That particular TCP server listens to port number `1234` but you can use
-any port number you want provided that it is not already in use and that
-you have the required privileges.
+1. Use netcat to establish a connection with the TCP server. By default, netcat will establish a TCP connection with a remote host on the specified port number.
 
-Then you can execute `nc(1)` and interact with the TCP server:
+        nc 127.0.0.1 1234
 
-    nc 127.0.0.1 1234
-{{< output >}}
+1. After issuing the previous command, you will not see any change in your output. Type `Hello!` to send a packet to the TCP server:
+
+        Hello!
+
+    The TCP server will return the number of current client connections as its response. Since this is your first connection established with the TCP server, you should expect an output of `1`.
+
+    {{< output >}}
 Hello!
 1
-{{< /output >}}
+    {{< /output >}}
 
-While the `nc` client is connected to the TCP server, you can also connect to
-the TCP server using `tcpC.go`:
+    If you'd like, you can open a new shell session and use netcat to establish a second connection with the TCP server by repeating Step 2. When you send the server a second `Hello!`, you should receive a response of `2` this time.
 
-    go run tcpC.go 127.0.0.1:1234
-{{< output >}}
+1. You can also connect to the TCP server using the TCP client you created in the [Create the TCP Client](#create-the-tcp-client) section of the guide. Ensure you are in the directory containing the `tcpC.go` file and issue the following command:
+
+        go run tcpC.go 127.0.0.1:1234
+
+1. You will see a `>>` prompt waiting for you to enter some text. Type in `Hello!` to receive a response from the TCP server:
+
+        Hello!
+
+    You should see a similar output indicating `3` client connections:
+
+    {{< output >}}
 >> Hello!
-->: 2
+->: 3
+    {{</ output >}}
+
+1. Send the `STOP` command to exit the TCP client:
+
+    You should see a similar output on the client:
+
+      {{< output >}}
 >> STOP
 ->: TCP client exiting...
-{{< /output >}}
+      {{</ output >}}
 
-As this is the second TCP client, the return value from the TCP server has updated to `2`
-and will continue to increase by one for all future TCP clients.
+      The output on the TCP server side will be as follows:
 
-The output on the TCP server side will be as follows:
-{{< output >}}
+      {{< output >}}
 .Hello!
 .Hello!
-{{< /output >}}
+.Hello!
+      {{< /output >}}
+
+    {{< note >}}
+From the shell session running the TCP server, type **CTRL-c** to interrupt program execution and then, **CTRL-D** to close all client connections and to stop the TCP server.
+    {{</ note >}}
