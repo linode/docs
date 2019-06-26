@@ -17,7 +17,7 @@ external_resources:
 ---
 
 {{< note >}}
-Object Storage is currently in a closed early access Beta, and you may not have access to Object Storage through the Cloud Manager or other tools. To gain access to the Early Access Program (EAP), open up a Customer Support ticket noting that you'd like to be included in the program, or e-mail objbeta@linode.com
+Object Storage is currently in a closed early access Beta, and you may not have access to Object Storage through the Cloud Manager or other tools. To gain access to the Early Access Program (EAP), open up a Customer Support ticket noting that you'd like to be included in the program, or e-mail objbeta@linode.com -- beta access is completely free.
 
 Additionally, because Object Storage is in Beta, there may be breaking changes to how you access and manage Object Storage. This guide will be updated to reflect these changes if and when they occur.
 {{</ note >}}
@@ -60,15 +60,15 @@ Object Storage is not available in the Linode Classic Manager.
 
     ![Click on the 'Access Keys' tab.](object-storage-access-keys-tab.png)
 
-1.  The **Create an Access Key** menu will appear.
+2.  The **Create an Access Key** menu will appear.
 
     ![The 'Create an Access Key' menu.](object-storage-create-key.png)
 
-1.  Enter a label for the key pair. This label will be how you reference your key pair in the Linode Cloud Manager. Then, click **Submit**.
+3.  Enter a label for the key pair. This label will be how you reference your key pair in the Linode Cloud Manager. Then, click **Submit**.
 
-1.  A window will appear that contains your access key and your secret key. Write these down somewhere secure. The access key will be visible in the Linode Cloud Manager, but **you will not be able to retrieve your secret key again once you close the window.**
+4.  A window will appear that contains your access key and your secret key. Write these down somewhere secure. The access key will be visible in the Linode Cloud Manager, but **you will not be able to retrieve your secret key again once you close the window.**
 
-    ![Your access key and secret key.](object-storage-acces-keys.png)
+    ![Your access key and secret key.](object-storage-access-keys.png)
 
     You now have the credentials needed to connect to Linode Object Storage.
 
@@ -94,15 +94,15 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
     ![The Object Storage menu.](object-storage-add-a-bucket.png)
 
-1.  The **Create a Bucket** menu will appear.
+2.  The **Create a Bucket** menu will appear.
 
     ![The Create a Bucket menu.](object-storage-create-a-bucket.png)
 
-1.  Add a label for your bucket. A bucket's label needs to be unique within the cluster that it lives in, and this includes buckets of the same name on different Linode accounts. If the label you enter is already in use, you will have to choose a different label.
+3.  Add a label for your bucket. A bucket's label needs to be unique within the cluster that it lives in, and this includes buckets of the same name on different Linode accounts. If the label you enter is already in use, you will have to choose a different label.
 
-1.  Choose a cluster location for the bucket to reside in.
+4.  Choose a cluster location for the bucket to reside in.
 
-1.  Click **Submit**. You are now ready to upload objects to your bucket using one of the other tools outlined in this guide.
+5.  Click **Submit**. You are now ready to upload objects to your bucket using one of the other tools outlined in this guide.
 
 ## s3cmd
 
