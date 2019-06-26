@@ -140,7 +140,7 @@ The steps in this section can be completed from either your local machine or fro
 
 This section demonstrates some common features of a Jupyter Notebook that can be rendered as HTML on a Jekyll blog. There are four types of outputs from a Jupyter Notebook cell covered here: MathJex through LaTeX in Markdown, an HTML table, console output, and graphs from a plotting function. The Iris dataset will be used as an example to generate the output in this guide.
 
-1.  Open the notebook of interest, or use the code below to create an example notebook. Run all of the relevant cells so that the output you want to display on your Jekyll blog is visible on the page. Navigate to `File > Download As > Markdown (.md)`. The markdown file will save to the default `Downloads` folder of the browser.
+1.  Open the notebook of interest, or use the code below to create an example notebook. Run all of the relevant cells so that the output you want to display on your Jekyll blog is visible on the page. Navigate to `File > Download As > Markdown (.md)`. The Markdown file will save to the default `Downloads` folder of the browser.
 
     ![Jupyter Menu](jupyter_menu.png "Jupyter Menu")
 
@@ -175,11 +175,11 @@ sns.pairplot(x_vars=["petal-length"], y_vars=["petal-width"], data=iris, hue="cl
 {{< /file >}}
 
 
-3.  Inside the `_posts` folder of the Jekyll project, create a new markdown file called `YYYY-MM-DD-example-post.md`. If the date format is incorrect, the post may not be displayed on the blog:
+3.  Inside the `_posts` folder of the Jekyll project, create a new Markdown file called `YYYY-MM-DD-example-post.md`. If the date format is incorrect, the post may not be displayed on the blog:
 
         touch YYYY-MM-DD-example-post.md
 
-4.  The markdown file should begin with three dashes and contain headers which provide information for Jekyll to populate the post with the appropriate page data. The date must be in the format specified. The hours, minutes, seconds, and timezone adjustment are optional:
+4.  The Markdown file should begin with three dashes and contain headers which provide information for Jekyll to populate the post with the appropriate page data. The date must be in the format specified. The hours, minutes, seconds, and timezone adjustment are optional:
 
     {{< file "YYYY-MM-DD-example-post.md" yaml >}}
 ---
@@ -193,7 +193,7 @@ categories:
 {{< /file >}}
 
 
-5.  Copy the contents of the markdown file exported from Jupyter into the new post.
+5.  Copy the contents of the Markdown file exported from Jupyter into the new post.
 
     To do this from the command line, use:
 
@@ -253,11 +253,11 @@ margin-bottom: 0; }
 
 ### Add an Image in Jekyll
 
-Adding an image through markdown requires having the images stored in the project directory.
+Adding an image through Markdown requires having the images stored in the project directory.
 
 1.  Move all of the images exported from Jupyter into the `/assets/images` folder.
 
-2.  Modify the references to images within the markdown to the appropriate path. Wrap the path in two curly braces and double quotes.
+2.  Modify the references to images within the Markdown to the appropriate path. Wrap the path in two curly braces and double quotes.
 
     {{< file "YYYY-MM-DD-example-post.md" >}}
 ![png]({{ "/assets/images/example_notebook_5_0.png" }})

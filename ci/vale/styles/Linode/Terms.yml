@@ -38,3 +38,4 @@ swap:
   stackscript: StackScript
   typescript: TypeScript
   pulumi: Pulumi
+  markdown: Markdown
