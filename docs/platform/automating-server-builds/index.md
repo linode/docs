@@ -73,8 +73,9 @@ Knife Linode is based on Linode's deprecated APIv3.
 The Linode Module from Ansible is based on Linode's deprecated APIv3.
     {{</ note >}}
 
-    - [Learn How to Install Ansible and Run Playbooks](/docs/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/)
-    - [Automatically Configure Servers with Ansible and Playbooks](/docs/applications/configuration-management/automatically-configure-servers-with-ansible-and-playbooks/)
+    - [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/)
+    - [Automate Server Configuration with Ansible Playbooks](/docs/applications/configuration-management/running-ansible-playbooks/)
+    - [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/)
 
 - **Salt:** Salt (also referred to as SaltStack) is a Python-based configuration management and orchestration system. Salt uses a master/client model in which a dedicated Salt master server manages one or more Salt minion servers. To learn more about Salt, see the following guides:
 
