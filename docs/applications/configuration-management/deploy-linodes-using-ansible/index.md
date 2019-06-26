@@ -34,7 +34,7 @@ If you remove the resource afterward, you will only be billed for the hour(s) th
 The steps outlined in this guide require [Ansible version 2.8](https://github.com/ansible/ansible/releases/tag/v2.8.0).
 {{</ note >}}
 
-- Install Ansible on your computer. Use the steps in the [Install Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) section of the [Getting Started Wih Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/) guide.
+- Install Ansible on your computer. Use the steps in the [Install Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/) guide.
 
 - Ensure you have Python version 2.7 or higher installed on your computer. Issue the following command to check your system's Python version:
 
