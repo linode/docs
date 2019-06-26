@@ -24,21 +24,23 @@ external_resources:
 
 ## What is Hadoop?
 
-Hadoop is an open-source Apache project that allows creation of parallel processing applications on large data sets, distributed across networked nodes. It's composed of the **Hadoop Distributed File System (HDFS™)** that handles scalability and redundancy of data across nodes, and **Hadoop YARN**: a framework for job scheduling that executes data processing tasks on all nodes.
+Hadoop is an open-source Apache project that allows creation of parallel processing applications on large data sets, distributed across networked nodes. It is composed of the **Hadoop Distributed File System (HDFS™)** that handles scalability and redundancy of data across nodes, and **Hadoop YARN**, a framework for job scheduling that executes data processing tasks on all nodes.
 
 ![How to Install and Set Up a 3-Node Hadoop Cluster](hadoop-1-logo.png "How to Install and Set Up a 3-Node Hadoop Cluster")
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/getting-started/) guide to create three (3) Linodes. They'll be referred to throughout this guide as **node-master**, **node1**, and **node2**. It's recommended that you set the hostname of each Linode to match this naming convention.
+1.  Follow the [Getting Started](/docs/getting-started/) guide to create three (3) Linodes. They'll be referred to throughout this guide as **node-master**, **node1**, and **node2**. It is recommended that you set the hostname of each Linode to match this naming convention.
 
     Run the steps in this guide from the **node-master** unless otherwise specified.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to harden the three servers. Create a normal user for the install, and a user called `hadoop` for any Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
+1.  [Add a Private IP Address](/docs/platform/manager/remote-access/#adding-private-ip-addresses) to each Linode so that your Cluster can communicate with an additional layer of security.
 
-3.  Install the JDK using the appropriate guide for your distribution, [Debian](/docs/development/java/install-java-on-debian/), [CentOS](/docs/development/java/install-java-on-centos/) or [Ubuntu](/docs/development/java/install-java-on-ubuntu-16-04/), or grab the latest JDK from Oracle.
+1.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to harden each of the three servers. Create a normal user for the install, and a user called `hadoop` for any Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
 
-4.  The steps below use example IPs for each node. Adjust each example according to your configuration:
+1. Install the JDK using the appropriate guide for your distribution, [Debian](/docs/development/java/install-java-on-debian/), [CentOS](/docs/development/java/install-java-on-centos/) or [Ubuntu](/docs/development/java/install-java-on-ubuntu-16-04/), or grab the latest JDK from Oracle.
+
+1.  The steps below use example IPs for each node. Adjust each example according to your configuration:
 
     -  **node-master**: 192.0.2.1
     -  **node1**: 192.0.2.2
@@ -54,8 +56,8 @@ Before configuring the master and worker nodes, it's important to understand the
 
 A **master node** keeps knowledge about the distributed file system, like the `inode` table on an `ext3` filesystem, and schedules resources allocation. **node-master** will handle this role in this guide, and host two daemons:
 
-*   The **NameNode**: manages the distributed file system and knows where stored data blocks inside the cluster are.
-*   The **ResourceManager**: manages the YARN jobs and takes care of scheduling and executing processes on worker nodes.
+*   The **NameNode** manages the distributed file system and knows where stored data blocks inside the cluster are.
+*   The **ResourceManager** manages the YARN jobs and takes care of scheduling and executing processes on worker nodes.
 
 **Worker nodes** store the actual data and provide processing power to run the jobs. They'll be **node1** and **node2**, and will host two daemons:
 
@@ -66,7 +68,7 @@ A **master node** keeps knowledge about the distributed file system, like the `i
 
 ### Create Host File on Each Node
 
-For each node to communicate with each other by name, edit the `/etc/hosts` file to add the IP address of the three servers. Don't forget to replace the sample IP with your IP:
+For each node to communicate with each other by name, edit the `/etc/hosts` file to add the private IP addresses of the three servers. Don't forget to replace the sample IP with your IP:
 
 {{< file "/etc/hosts" >}}
 192.0.2.1    node-master
@@ -77,21 +79,23 @@ For each node to communicate with each other by name, edit the `/etc/hosts` file
 
 ### Distribute Authentication Key-pairs for the Hadoop User
 
-The master node will use an ssh-connection to connect to other nodes with key-pair authentication, to manage the cluster.
+The master node will use an ssh connection to connect to other nodes with key-pair authentication. This will allow the master node to actively manage the cluster.
 
 1.  Login to **node-master** as the `hadoop` user, and generate an ssh-key:
 
         ssh-keygen -b 4096
 
-1.  View the **node-master** public key so you can copy it to each of the worker nodes.
+     When generating this key, leave the password field blank so your hadoop user can communicate unprompted.
+
+1.  View the **node-master** public key and copy it to your clipboard to use with each of your worker nodes.
 
         less /home/hadoop/.ssh/id_rsa.pub
 
-1.  In each node, make a new file `master.pub` in `/home/hadoop/.ssh`, paste in, and save this key.
+1.  In each Linode, make a new file `master.pub` in the `/home/hadoop/.ssh` directory. Paste your public key into this file and save your changes.
 
-1.  Then copy it into the authorized key store.
+1.  Copy your key file into the authorized key store.
 
-        $ cat ~/.ssh/master.pub >> ~/.ssh/authorized_keys
+        cat ~/.ssh/master.pub >> ~/.ssh/authorized_keys
 
 ### Download and Unpack Hadoop Binaries
 
@@ -127,7 +131,7 @@ Configuration will be done on **node-master** and replicated to other nodes.
 
         update-alternatives --display java
 
-    Take the value of the current link and remove the trailing `/bin/java`. For example on Debian, the link is `/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java`, so `JAVA_HOME` should be `/usr/lib/jvm/java-8-openjdk-amd64/jre`.
+    Take the value of the *current link* and remove the trailing `/bin/java`. For example on Debian, the link is `/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java`, so `JAVA_HOME` should be `/usr/lib/jvm/java-8-openjdk-amd64/jre`.
 
     If you installed java from Oracle, `JAVA_HOME` is the path where you unzipped the java archive.
 
@@ -135,7 +139,7 @@ Configuration will be done on **node-master** and replicated to other nodes.
 
         export JAVA_HOME=${JAVA_HOME}
 
-    with your actual java installation path. For example on a Debian with open-jdk-8:
+    with your actual java installation path. On a Debian 9 Linode with open-jdk-8 this will be as follows:
 
     {{< file "~/hadoop/etc/hadoop/hadoop-env.sh" shell >}}
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
@@ -146,7 +150,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 
 ### Set NameNode Location
 
-On each node update `~/hadoop/etc/hadoop/core-site.xml` you want to set the NameNode location to **node-master** on port `9000`:
+Update your `~/hadoop/etc/hadoop/core-site.xml` file to set the NameNode location to **node-master** on port `9000`:
 
 {{< file "~/hadoop/etc/hadoop/core-site.xml" xml >}}
 <?xml version="1.0" encoding="UTF-8"?>
@@ -217,7 +221,7 @@ Edit the `mapred-site.xml` file, setting yarn as the default framework for MapRe
 
 ### Configure YARN
 
-Edit `yarn-site.xml`:
+Edit `yarn-site.xml`, which contains the configuration options for YARN. In the `value` field for the `yarn.resourcemanager.hostname`, replace `203.0.113.0` with the public IP address of **node-master**:
 
 {{< file "~/hadoop/etc/hadoop/yarn-site.xml" xml >}}
 <configuration>
@@ -228,7 +232,7 @@ Edit `yarn-site.xml`:
 
     <property>
             <name>yarn.resourcemanager.hostname</name>
-            <value>node-master</value>
+            <value>203.0.113.0</value>
     </property>
 
     <property>
@@ -326,7 +330,7 @@ For 2GB nodes, a working configuration may be:
 {{< /file >}}
 
 
-    The last property disables virtual-memory checking and can prevent containers from being allocated properly on JDK8.
+    The last property disables virtual-memory checking which can prevent containers from being allocated properly with JDK8 if enabled.
 
 
 2.  Edit `/home/hadoop/hadoop/etc/hadoop/mapred-site.xml` and add the following lines:
@@ -395,7 +399,7 @@ This section will walk through starting HDFS on NameNode and DataNodes, and moni
 
         start-dfs.sh
 
-    It'll start **NameNode** and **SecondaryNameNode** on node-master, and **DataNode** on **node1** and **node2**, according to the configuration in the `workers` config file.
+    This will start **NameNode** and **SecondaryNameNode** on node-master, and **DataNode** on **node1** and **node2**, according to the configuration in the `workers` config file.
 
 2.  Check that every process is running with the `jps` command on each node. You should get on **node-master** (PID will be different):
 
@@ -442,8 +446,8 @@ Let's use some textbooks from the [Gutenberg project](https://www.gutenberg.org/
 
         cd /home/hadoop
         wget -O alice.txt https://www.gutenberg.org/files/11/11-0.txt
-        wget -O holmes.txt https://www.gutenberg.org/ebooks/1661.txt.utf-8
-        wget -O frankenstein.txt https://www.gutenberg.org/ebooks/84.txt.utf-8
+        wget -O holmes.txt https://www.gutenberg.org/files/1661/1661-0.txt
+        wget -O frankenstein.txt https://www.gutenberg.org/files/84/84-0.txt
 
 3.  Put the three books through HDFS, in the `books`directory:
 
