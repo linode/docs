@@ -79,8 +79,8 @@ If the installation completes but the output does not appear, your kernel is mos
 PrivateKey = <Private Key>
 Address = 192.168.2.1/24, fd86:ea04:1115::1/64
 ListenPort = 51820
-PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING
-PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 SaveConfig = true
 {{< /file >}}
 
@@ -226,6 +226,9 @@ peer: I8s7YGMuUbPvStb686JjxfUAa/tzqZhcLDgiqRKlbWs=
 1. Return to the client and ping the server:
 
         ping 192.168.2.1
+
+    Once you've successfully established the ability to ping the server from the client, run the following command:
+
         sudo wg
 
     The last two lines of the output from running the `wg` command should be similar to:
@@ -235,7 +238,7 @@ peer: I8s7YGMuUbPvStb686JjxfUAa/tzqZhcLDgiqRKlbWs=
     transfer: 98.86 KiB received, 43.08 KiB sent
         {{</ output >}}
 
-    This indicates that you now have a private connection between the server and client. You can also ping the client from the server to verify that the connection works both ways.
+    This indicates that you now have a private connection between the server and client. If you did not successfully ping the server from the client you will not see these lines. You can also ping the client from the server to verify that the connection works both ways.
 
 
 ## Next steps
