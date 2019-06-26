@@ -1048,6 +1048,7 @@ psycop2
 pty
 pubkey
 publickey
+pulumi
 puppetd
 puppetlabs
 puppetmaster
@@ -1193,6 +1194,7 @@ sendmail
 seo
 serv
 server1
+serverless
 servername
 serverpassword
 serverspec

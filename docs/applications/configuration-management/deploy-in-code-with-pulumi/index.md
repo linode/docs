@@ -2,8 +2,8 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Basic instructions to set install Pulumi and create a configured NodeBalancer through code.'
-keywords: ["pulumi", "configuration management", "javascript", "python"]
+description: 'Learn how to install Pulumi, import the Linode module for Pulumi, and write your first Pulumi programs.'
+keywords: ["pulumi", "configuration management", "infrastructure as code", "iac", "javascript", "python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
@@ -37,7 +37,7 @@ In this guide you will learn how to:
 
 1. [Create a free Pulumi account](https://app.pulumi.com/signup).
 
-1. Create a new Debian 9 Linode. Follow our [Getting Started](/docs/getting-started/) to deploy the Linode, and then follow the [Securing Your Server](/docs/security/securing-your-server/) guide. Be sure to create a [limited  Linux user with sudo privileges](/docs/security/securing-your-server/#add-a-limited-user-account) on your server. All commands in this guide are to be run from a sudo user.
+1. Create a new Debian 9 Linode. Follow our [Getting Started](/docs/getting-started/) guide to deploy the Linode, and then follow the [Securing Your Server](/docs/security/securing-your-server/) guide. Be sure to create a [limited  Linux user with sudo privileges](/docs/security/securing-your-server/#add-a-limited-user-account) on your server. All commands in this guide are to be run from a sudo user.
 
 1. Install Pulumi on your Linode using their installation script:
 
@@ -51,7 +51,7 @@ In this guide you will learn how to:
 
             PATH=$PATH:/home/username/.pulumi/bin
 
-1. Install [node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/):
+1. Install [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/):
 
         sudo apt-get install curl software-properties-common
         curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
@@ -146,7 +146,7 @@ const instance = new linode.Instance("my-instance", {
 exports.instanceLabel = instance.label;
 {{< /file >}}
 
-The file requires two JavaScript packages unique to Pulumi: Pulumi's SDK, and Pulumi's Linode integration. [Pulumi's API Reference Documentation](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/) serves as a reference for the JavaScript you'll see here. It also includes a library of several additional options that enable you to create configurations more specific to your use case.
+The file requires two JavaScript modules unique to Pulumi: Pulumi's SDK, and Pulumi's Linode integration. [Pulumi's API Reference Documentation](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/) serves as a reference for the JavaScript you'll see here. It also includes a library of several additional options that enable you to create configurations more specific to your use case.
 
 In this case, your file is only creating a single Nanode instance in the Newark data center running Ubuntu 18.04.
 
