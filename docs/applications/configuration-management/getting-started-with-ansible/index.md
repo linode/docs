@@ -52,18 +52,18 @@ This guide introduces the basics of installing Ansible and preparing your enviro
 * Create two Linodes to manage with Ansible and establish a basic connection between the control node and your managed nodes. The managed nodes will be referred to as `node-1`, and `node-2` throughout the guide.
 
     {{< note >}}
-The examples in this guide provide a manual method to establish a basic connection between your control node and managed nodes as a way to introduce the basics of Ansible. If you would like to learn how to use Ansible's [Linode module](https://docs.ansible.com/ansible/latest/modules/linode_v4_module.html) to automate deploying and managing Linodes, see the [How to use the Linode Ansible Module to Deploy Linodes](docs/applications/configuration-management/deploy-linodes-using-ansible/). The guide assumes familiarity with Ansible modules, Playbooks, and dynamic inventories.
+The examples in this guide provide a manual method to establish a basic connection between your control node and managed nodes as a way to introduce the basics of Ansible. If you would like to learn how to use Ansible's [Linode module](https://docs.ansible.com/ansible/latest/modules/linode_v4_module.html) to automate deploying and managing Linodes, see the [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/). The guide assumes familiarity with Ansible modules, Playbooks, and dynamic inventories.
     {{</ note >}}
 
 ## Before You Begin
 
 {{< caution >}}
-This guide's example instructions will create three billable Linodes on your account. If you do not want to keep using the example Linodes that you create, be sure to [delete them](#delete-a-cluster) when you have finished the guide.
+This guide's example instructions will create up to three billable Linodes on your account. If you do not want to keep using the example Linodes that you create, be sure to [delete them](#delete-a-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{< /caution >}}
 
-1. [Create three Linodes](/docs/getting-started/#create-a-linode) running Debian 9 to use as your Ansible **managed nodes**. The examples in this guide can also be followed using a single node, if preferred.
+1. [Create three Linodes](/docs/getting-started/#create-a-linode) running Debian 9. One will be the **control node** and two you will use as your Ansible **managed nodes**. The examples in this guide can also be followed using a single managed node, if preferred.
 
 1. Ansible uses the SSH protocol to securely log into managed nodes and apply your Playbook configurations. Create an SSH key-pair on the control node to use for authentication. This guide assumes your public and private SSH key-pair is stored in `~/home/.ssh/id_rsa.pub` and `~/home/.ssh/is_rsa`.
 

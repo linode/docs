@@ -1260,6 +1260,7 @@ src
 srv
 sshd
 sshfs
+sshpass
 ssi
 ssl
 stackscript
