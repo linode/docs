@@ -235,6 +235,7 @@ dahdi
 databags
 datacenter
 datadir
+datagram
 dataset
 datasets
 datasource
@@ -462,6 +463,8 @@ gnulinux
 gnutls
 gogs
 golang
+goroutine
+goroutines
 goto
 gpc
 gpg
@@ -864,6 +867,7 @@ neomake
 neovim
 netblocks
 netboot
+netcat
 netconfig
 netdev
 netfilter
