@@ -1,0 +1,19 @@
+---
+author:
+  name: Linode
+  email: docs@linode.com
+description: 'Shortguide that displays the definition for Job.'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: 2018-08-03
+modified_by:
+  name: Heather Zoppetti
+published: 2019-06-27
+title: Job Definition
+keywords: []
+headless: true
+show_on_rss_feed: false
+---
+
+### Job
+
+A Job is a controller that manages a Pod that is created for a single, or set of tasks. This is handy if you need to create a Pod that performs a single function, or calculates a value. The deletion of the Job will delete the Pod.

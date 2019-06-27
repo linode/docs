@@ -1,0 +1,19 @@
+---
+author:
+  name: Linode
+  email: docs@linode.com
+description: 'Shortguide that displays the definition for Volumes.'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: 2018-08-03
+modified_by:
+  name: Heather Zoppetti
+published: 2019-06-27
+title: Volumes Definition
+keywords: []
+headless: true
+show_on_rss_feed: false
+---
+
+### Volumes
+
+A [Volume](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#volume-v1-core) in Kubernetes is a way to share file storage between containers in a Pod. Kubernetes Volumes differ from Docker volumes because they exist inside the Pod rather than inside the container.
