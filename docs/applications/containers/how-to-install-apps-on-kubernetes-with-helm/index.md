@@ -9,7 +9,7 @@ published: 2019-03-26
 modified_by:
   name: Linode
 title: 'How to Install Apps on Kubernetes with Helm'
-Concentrations: "Kubernetes"
+concentrations: "Kubernetes"
 external_resources:
   - '[Helm Documentation](https://helm.sh/docs/)'
   - '[Helm Security on Bitnami Engineering](https://engineering.bitnami.com/articles/helm-security.html)'
