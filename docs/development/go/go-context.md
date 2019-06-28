@@ -14,15 +14,12 @@ contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
 external_resources:
-  - '[Go](https://www.golang.com)'
+  - '[The Go Programming Language Website](https://www.golang.com)'
 ---
 
 ## Before You Begin
 
-You will need to install a recent version of Go on your computer in order to follow the
-presented commands. Any Go version newer than 1.8 will do but it is considered a good
-practice to have the latest version of Go installed. You can check your Go version
-by executing `go version`.
+You will need to install a recent version of Go on your computer in order to follow the presented commands. Any Go version newer than 1.8 will do but it is considered a good practice to have the latest version of Go installed. You can check your Go version by executing `go version`.
 
 If you still need to install Go, you can follow our guide for Ubuntu installation [here](https://www.linode.com/docs/development/go/install-go-on-ubuntu/).
 
@@ -32,12 +29,9 @@ This guide is written for a non-root user. Depending on your configuration, some
 
 ## About the context package
 
-The `context` package supports both the handling of multiple concurrent operations
-and the passing of (typically request-scoped) contextual data in key-value pairs.
+The `context` package supports both the handling of multiple concurrent operations and the passing of (typically request-scoped) contextual data in key-value pairs.
 
-If you take a look at the source code of the `context` package, you will realize that its
-implementation is pretty simple. The `context` package defines the `Context` type, which is
-a Go *interface* with four methods, named `Deadline()`, `Done()`, `Err()`, and `Value()`:
+If you take a look at the source code of the `context` package, you will realize that its implementation is pretty simple. The `context` package defines the `Context` type, which is a Go *interface* with four methods, named `Deadline()`, `Done()`, `Err()`, and `Value()`:
 
 {{< file "context.go" go >}}
 type Context interface {
@@ -48,23 +42,15 @@ type Context interface {
 }
 {{< /file >}}
 
-The developer just needs to declare and modify a `Context` variable using functions
-such as `context.WithCancel()`, `context.WithDeadline()` and `context.WithTimeout()`.
+The developer will need to declare and modify a `Context` variable using functions such as `context.WithCancel()`, `context.WithDeadline()` and `context.WithTimeout()`.
 
-When creating goroutines, the parent goroutine keeps a reference to each child goroutine
-that is helpful to the garbage collector. However, if the child goroutine ends without
-the parent knowing about it there will be a memory leakage until the parent is canceled
-as well.
+All three of these functions return a derived `Context` (the child) and a `CancelFunc` function. Calling the `CancelFunc` function removes the parent's reference to the child and stops any associated timers. This means that the Go garbage collector is free to garbage collect the child goroutines that no longer have associated parent goroutines.
 
-All these three functions return a derived `Context` (the child) and a `CancelFunc` function.
-The calling of the `CancelFunc` function removes the parent's reference to the child, and
-stops any associated timers, which means that the Go garbage collector is free to garbage
-collect the children goroutines that do not have a parent goroutine associated with them.
+For garbage collection, the parent goroutine needs to keep a reference to each child goroutine. If a child goroutine ends without the parent knowing about it, then a memory leak occurs until the parent is canceled as well.
 
 ## A simple example
 
-The first code example will be relatively simple and illustrate the use of the
-`context.Context` type with the help of `simple.go`.
+This first code example is relatively simple and illustrates the use of the `context.Context` type with the help of `simple.go`.
 
 ### Explaining the Go code of the Example
 
@@ -167,40 +153,25 @@ func main() {
 }
 {{< /file >}}
 
-The program contains four functions including the `main()` function. Functions `f1()`,
-`f2()` and `f3()` require just one parameter, which is a time delay, because everything
-else is defined inside the function.
+ - The program contains four functions including the `main()` function. Functions `f1()`, `f2()`, and `f3()` each require just one parameter, which is a time delay, because everything else they need is defined inside their functions.
 
-The first thing to remember is that you need to call the `context.Background()` function
-in order to initialize an empty `Context`. The other function that can create an empty
-`Context` is `context.TODO()` and is going to be presented later in this guide.
+ - In this example we call the `context.Background()` function to initialize an empty `Context`. The other function that can create an empty `Context` is `context.TODO()` which will be presented later in this guide.
 
-Notice that the `cancel` variable in `f1()`, which is a function, is one of the return values of
+ - Notice that the `cancel` variable, a function, in `f1()` is one of the return values of
 `context.CancelFunc()`. The `context.WithCancel()` function uses an existing `Context` and creates a
-child of it with cancellation. The `context.WithCancel()` function also returns a `Done` channel
-that can be closed, either when the `cancel()` function is called, as shown in the preceding code,
-or when the `Done` channel of the parent context is closed.
+child with cancellation. The `context.WithCancel()` function also returns a `Done` channel that can be closed, either when the `cancel()` function is called, as shown in the preceding code, or when the `Done` channel of the parent context is closed.
 
-{{< note >}}
-One of the return values of `Context.Done()` is a Go channel, which means that you will have to
-use a `select` statement to work with. Although `select` looks like `switch`, `select` allows a
-goroutine to wait on multiple communications operations.
+    {{< note >}}
+One of the return values of `Context.Done()` is a Go channel, which means that you will have to use a `select` statement to work with. Although `select` looks like `switch`, `select` allows a goroutine to wait on multiple communications operations.
 {{< /note >}}
 
-On the other hand the `cancel` variable in `f2()` comes from `context.WithTimeout()`.
-This function showcases the use of the `context.WithTimeout()` function, which requires
-two parameters: a `Context` parameter and a `time.Duration` parameter. When the timeout
-period expires, the `cancel()` function is called automatically.
+ - The `cancel` variable in `f2()` comes from `context.WithTimeout()`. `context.WithTimeout()` requires
+two parameters: a `Context` parameter and a `time.Duration` parameter. When the timeout period expires, the `cancel()` function is called automatically.
 
-Last, the `cancel` variable in `f3()` comes from `context.WithDeadline()`. The `f3()` function
-illustrates the use of the `context.WithDeadline()` function that requires two parameters:
-a `Context` variable and a `time` in the future that signifies the deadline of the operation.
-When the deadline passes, the `cancel()` function is called automatically.
+ - The `cancel` variable in `f3()` comes from `context.WithDeadline()`. `context.WithDeadline()` requires two parameters: a `Context` variable and a `time` in the future that signifies the deadline of the operation. When the deadline passes, the `cancel()` function is called automatically.
 
-{{< note >}}
-Notice that contexts should not be stored in structures – they should be passed as
-separate parameters to functions. It is considered a good practice to pass them as
-the first parameter of a function.
+    {{< note >}}
+Notice that contexts should not be stored in structures – they should be passed as separate parameters to functions. It is considered a good practice to pass them as the first parameter of a function.
 {{< /note >}}
 
 ### Using simple.go
@@ -216,12 +187,9 @@ f2(): 2019-05-31 19:29:41.664942 +0300 EEST m=+6.004810929
 f3(): 2019-05-31 19:29:44.668795 +0300 EEST m=+9.008786881
 {{< /output >}}
 
-The long lines of the output are the return values of the `time.After()` function calls.
-They denote normal operation of the program. The point here is that the operation of the
-program is canceled when there are delays in its execution.
+The long lines of the output are the return values from the `time.After()` function. They denote normal operation of the program. The point here is that the operation of the program is canceled when there are delays in its execution.
 
-If you use a bigger delay (*10 seconds*), which is executed as a call to `time.Sleep()`, you
-will get the following kind of output:
+If you use a bigger delay (*10 seconds*), which is executed as a call to `time.Sleep()`, you will get the following kind of output:
 
     go run simple.go 10
 {{< output >}}
@@ -231,15 +199,13 @@ f2() Done: context canceled
 f3() Done: context canceled
 {{< /output >}}
 
-The calls to `time.Sleep()` simulate a program that is slow or an operation that takes too
-much time to finish. Production code does not usually have such `time.Sleep()` function calls.
+The calls to `time.Sleep()` simulate a program that is slow or an operation that takes too much time to finish. Production code does not usually have such `time.Sleep()` function calls.
 
 ## Using Context for HTTP
 
 In this section of the guide you will learn how to timeout HTTP connections on the client side.
 
-The presented utility, which is called `http.go`, requires two command line arguments,
-which are the URL to connect to and the allowed delay value in seconds.
+The presented utility, which is called `http.go`, requires two command line arguments, which are the URL to connect to and the allowed delay value in seconds.
 
 ### Explaining the Go Code of the Example
 
@@ -347,26 +313,21 @@ func main() {
 }
 {{< /file >}}
 
-The timeout period is defined by the `context.WithTimeout()` method in `main()`.
-The `connect()` function that is executed as a goroutine will either terminate
-normally or when the `cancel()` function is executed. 
+ - The timeout period is defined by the `context.WithTimeout()` method in `main()`.
 
-{{< note >}}
-It is considered a good practice to use `context.Background()` in the `main()` function,
-the `init()` function of a package or at tests.
+ - The `connect()` function that is executed as a goroutine will either terminate normally or when the `cancel()` function is executed.
+
+    {{< note >}}
+It is considered a good practice to use `context.Background()` in the `main()` function, the `init()` function of a package or at tests.
 {{< /note >}}
 
-The `connect()` function is used for connecting to the desired URL. The `connect()`
-function also starts a goroutine before the `select` block takes control in order
-to either wait for web data as returned by the goroutine or for a timeout with
-the help of the `Context` variable.
+ - The `connect()` function is used for connecting to the desired URL. The `connect()` function also starts a goroutine before the `select` block takes control in order to either wait for web data as returned by the goroutine or for a timeout with the help of the `Context` variable.
 
 ### Using http.go
 
-If the desired delay is too small, then `http.go` will timeout. One such example is
-when you declare that you want a delay of `0` seconds, as in the following example:
+If the desired delay is too small, then `http.go` will timeout. One such example is when you declare that you want a delay of `0` seconds, as in the following example:
 
-        go run http.go https://www.linode.com/ 0
+    go run http.go https://www.linode.com/ 0
 {{< output >}}
 Delay: 0
 Connecting to https://www.linode.com/
@@ -374,10 +335,9 @@ The request was canceled!
 Exiting...
 {{< /output >}}
 
-If the timeout period is long enough, then the output from `http.go` will be similar
-to the following:
+If the timeout period is sufficient, then the output from `http.go` will be similar to the following:
 
-        go run http.go http://localhost:8001 10
+    go run http.go http://localhost:8001 10
 {{< output >}}
 Delay: 1
 Connecting to http://localhost:8001
@@ -386,18 +346,15 @@ Server Response: Serving: /
 Exiting...
 {{< /output >}}
 
-Notice that `http://localhost:8001` uses a custom made HTTP server that returns
-a small amount of data. However, nothing prohibits you from trying commands such
-as `go run http.go https://www.linode.com/ 10` .
+Notice that `http://localhost:8001` uses a custom made HTTP server that returns a small amount of data. However, nothing prohibits you from trying commands such as:
+
+    go run http.go https://www.linode.com/ 10
 
 ## Using Contexts as key-value stores
 
-In this section of the guide you are going to learn how to pass values in a `Context`
-and use it as a key-value store. This is a case where we do not pass values into contexts
-in order to provide further information about why they where canceled.
+In this section of the guide you will pass values in a `Context` and use it as a key-value store. This is a case where we do not pass values into contexts in order to provide further information about why they where canceled.
 
-The `more.go` program illustrates the use of the `context.TODO()` function as well
-as the use of the `context.WithValue()` function.
+The `more.go` program illustrates the use of the `context.TODO()` function as well as the use of the `context.WithValue()` function.
 
 ### Explaining the Go Code
 
@@ -434,29 +391,19 @@ func main() {
 }
 {{< /file >}}
 
-This time we create a context using `context.TODO()` instead of `context.Background()`.
-Although both functions return a non-nil,
-empty `Context`, their purposes differ. You should never pass a `nil` context – use
-the `context.TODO()` function to create a suitable context – and remember that
-the `context.TODO()` function should be used when you are not sure about the
-`Context` that you want to use.
+ - This time we create a context using `context.TODO()` instead of `context.Background()`. Although both functions return a non-nil, empty `Context`, their purposes differ. You should never pass a `nil` context – use the `context.TODO()` function to create a suitable context. Use the `context.TODO()` function when you are not sure about the `Context` that you want to use.
 
-The `context.TODO()` function signifies that we intend to use an operation context,
-without being sure about it yet. The good thing is that `TODO()` is recognized by
-static analysis tools, which allows them to determine whether a `context.Context` variable
-is propagated correctly in a program or not.
+ - The `context.TODO()` function signifies that we intend to use an operation context, without being sure about it yet. The good thing is that `TODO()` is recognized by static analysis tools, which allows them to determine whether a `context.Context` variable is propagated correctly in a program or not.
 
-The `context.WithValue()` function that is used in `main()` offers a way to associate
-a value with a `Context`.
+ - The `context.WithValue()` function that is used in `main()` offers a way to associate a value with a `Context`.
 
-The `searchKey()` function retrieves a value from a `Context` variable and checks
-whether that value exists or not.
+ - The `searchKey()` function retrieves a value from a `Context` variable and checks whether that value exists or not.
 
 ### Using more.go
 
 Executing `more.go` will generate the following output:
 
-    go run moreContext.go
+    go run more.go
 {{< output >}}
 found value: mySecretValue
 key not found: notThere
@@ -465,17 +412,10 @@ key not found: notThere
 
 ### Propagation over HTTP
 
-In order to share a common context among multiple processes, you will need
-to propagate that context on your own.
+In order to share a common context among multiple processes, you will need to propagate that context on your own.
 
-The logic of this technique is based on the Go code of `more.go`. The `context.WithValue()`
-function can be used for adding your data into a context that you will need to serialize
-and send over HTTP. Then, you will need to decode the data, get the context and use
-`context.Value()` to check whether the desired key and the desired values are in place or not.
+The logic of this technique is based on the Go code of `more.go`. First use the `context.WithValue()` function to add your data into a context, serialize and send over HTTP, decode the data, get the context, and finally use `context.Value()` to check whether the desired key and desired values are in place or not.
 
 {{< note >}}
-The `http.Request` type has the `Context()` method that returns the context of the request
-and the `WithContext()` method that according to the Go documentation
-*returns a shallow copy of r with its context changed to ctx*. You can learn more about
-both methods at https://golang.org/pkg/net/http/.
+The `http.Request` type has the `Context()` method that returns the context of the request and the `WithContext()` method that according to the Go documentation *returns a shallow copy of r with its context changed to ctx*. You can learn more about both methods at https://golang.org/pkg/net/http/.
 {{< /note >}}
