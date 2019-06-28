@@ -176,9 +176,11 @@ Notice that contexts should not be stored in structures – they should be passe
 
 ### Using simple.go
 
-Executing `simple.go` with a delay period of *3 seconds* will generate the following kind of output:
+Execute `simple.go` with a delay period of *3 seconds*:
 
     go run simple.go 3
+
+It will generate the following kind of output:
 {{< output >}}
 go run simple.go 3
 Delay: 3
@@ -189,9 +191,11 @@ f3(): 2019-05-31 19:29:44.668795 +0300 EEST m=+9.008786881
 
 The long lines of the output are the return values from the `time.After()` function. They denote normal operation of the program. The point here is that the operation of the program is canceled when there are delays in its execution.
 
-If you use a bigger delay (*10 seconds*), which is executed as a call to `time.Sleep()`, you will get the following kind of output:
+If you use a bigger delay (*10 seconds*), which is executed as a call to `time.Sleep()`:
 
     go run simple.go 10
+
+You will get the following kind of output:
 {{< output >}}
 Delay: 10
 f1() Done: context canceled
@@ -204,6 +208,18 @@ The calls to `time.Sleep()` simulate a program that is slow or an operation that
 ## Using Context for HTTP
 
 In this section of the guide you will learn how to timeout HTTP connections on the client side.
+
+{{< note >}}
+This example makes a request to a local web server. A suitable, simple web server is available via Python and can be started with the following commands:
+
+Python 3.X
+
+    python3 -m http.server
+
+Python 2.X
+
+    python -m SimpleHTTPServer
+{{< /note >}}
 
 The presented utility, which is called `http.go`, requires two command line arguments, which are the URL to connect to and the allowed delay value in seconds.
 
@@ -277,8 +293,8 @@ func connect(c context.Context) error {
                         fmt.Println("Error select:", err)
                         return err
                 }
-				// Although fmt.Printf() is used here, server processes
-				// use the log.Printf() function instead.
+		// Although fmt.Printf() is used here, server processes
+		// use the log.Printf() function instead.
                 fmt.Printf("Server Response: %s\n", realHTTPData)
         }
         return nil
@@ -328,6 +344,8 @@ It is considered a good practice to use `context.Background()` in the `main()` f
 If the desired delay is too small, then `http.go` will timeout. One such example is when you declare that you want a delay of `0` seconds, as in the following example:
 
     go run http.go https://www.linode.com/ 0
+
+The output is as follows:
 {{< output >}}
 Delay: 0
 Connecting to https://www.linode.com/
@@ -335,18 +353,33 @@ The request was canceled!
 Exiting...
 {{< /output >}}
 
-If the timeout period is sufficient, then the output from `http.go` will be similar to the following:
+If the timeout period is sufficient, say 10 seconds.
 
-    go run http.go http://localhost:8001 10
-{{< output >}}
-Delay: 1
-Connecting to http://localhost:8001
-Server Response: Serving: /
+    go run http.go http://localhost:8000 10
 
-Exiting...
-{{< /output >}}
+Then the output from `http.go` will be similar to the following:
 
-Notice that `http://localhost:8001` uses a custom made HTTP server that returns a small amount of data. However, nothing prohibits you from trying commands such as:
+    Delay: 1
+    Connecting to http://localhost:8000
+    Server Response: Serving: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+    <html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Directory listing for /</title>
+    </head>
+    <body>
+    <h1>Directory listing for /</h1>
+    <hr>
+    <ul>
+    <li><a href="http.go">http.go</a></li>
+    <li><a href="more.go">more.go</a></li>
+    <li><a href="simple.go">simple.go</a></li>
+    </ul>
+    <hr>
+    </body>
+    </html>
+
+Notice that `http://localhost:8000` uses a custom made HTTP server that returns a small amount of data. However, nothing prohibits you from trying commands such as:
 
     go run http.go https://www.linode.com/ 10
 
@@ -401,9 +434,11 @@ func main() {
 
 ### Using more.go
 
-Executing `more.go` will generate the following output:
+Execute `more.go` with the following command:
 
     go run more.go
+
+It will generate the following output:
 {{< output >}}
 found value: mySecretValue
 key not found: notThere
