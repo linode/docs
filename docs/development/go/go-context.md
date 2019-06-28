@@ -35,10 +35,10 @@ If you take a look at the source code of the `context` package, you will realize
 
 {{< file "context.go" go >}}
 type Context interface {
-	Deadline() (deadline time.Time, ok bool)
-	Done() <-chan struct{}
-	Err() error
-	Value(key interface{}) interface{}
+    Deadline() (deadline time.Time, ok bool)
+    Done() <-chan struct{}
+    Err() error
+    Value(key interface{}) interface{}
 }
 {{< /file >}}
 
@@ -74,7 +74,7 @@ import (
 // enough time to finish.
 func f1(t int) {
         c1 := context.Background()
-		// WithCancel returns a copy of parent context with a new Done channel
+        // WithCancel returns a copy of parent context with a new Done channel
         c1, cancel := context.WithCancel(c1)
         defer cancel()
 
@@ -293,8 +293,8 @@ func connect(c context.Context) error {
                         fmt.Println("Error select:", err)
                         return err
                 }
-		// Although fmt.Printf() is used here, server processes
-		// use the log.Printf() function instead.
+                // Although fmt.Printf() is used here, server processes
+                // use the log.Printf() function instead.
                 fmt.Printf("Server Response: %s\n", realHTTPData)
         }
         return nil
