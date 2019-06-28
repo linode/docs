@@ -12,6 +12,7 @@ modified_by:
 title: "A Beginner's Guide to Kubernetes"
 contributor:
   name: Linode
+concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'

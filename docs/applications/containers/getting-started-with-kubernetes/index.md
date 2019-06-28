@@ -12,6 +12,7 @@ modified_by:
 title: "Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode"
 contributor:
   name: Linode
+Concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes: Configuration Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/)'
 - '[Kubernetes: Cluster Administration Overview](https://kubernetes.io/docs/concepts/cluster-administration/cluster-administration-overview/)'
