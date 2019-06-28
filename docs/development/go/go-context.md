@@ -1,4 +1,3 @@
-
 ---
 author:
   name: Mihalis Tsoukalos
