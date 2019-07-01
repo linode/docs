@@ -15,6 +15,23 @@ contributor:
 external_resources:
   - '[The Go Programming Language Website](https://www.golang.com)'
 ---
+[Go](https://golang.org/) is a compiled, statically typed programming language developed by Google. Many modern applications, including Docker, Kubernetes, and Caddy, are written in Go.
+
+Running a go command is as simple as:
+
+    go run [filename]
+
+The context package provides contextual information that a goroutine may need such as how long it should run and how and when it should end. It can also pass informational key-value pairs for use down the call chain.
+
+In this guide you will learn:
+
+ - How the [context package](/docs/development/go/go-context/#about-the-context-package) works.
+
+ - Work through a [simple example](/docs/development/go/go-context/#a-simple-example) that demonstrate the main `context.Context` features.
+
+ - [Use context for http](/docs/development/go/go-context/#using-context-for-http) requests.
+
+ - [Use context as a key-value store](/docs/development/go/go-context/#using-contexts-as-key-value-stores).
 
 ## Before You Begin
 
@@ -28,9 +45,9 @@ This guide is written for a non-root user. Depending on your configuration, some
 
 ## About the context package
 
-The `context` package supports both the handling of multiple concurrent operations and the passing of (typically request-scoped) contextual data in key-value pairs.
+The context package supports both the handling of multiple concurrent operations and the passing of (typically request-scoped) contextual data in key-value pairs.
 
-If you take a look at the source code of the `context` package, you will realize that its implementation is pretty simple. The `context` package defines the `Context` type, which is a Go *interface* with four methods, named `Deadline()`, `Done()`, `Err()`, and `Value()`:
+If you take a look at the source code of the context package, you will realize that its implementation is pretty simple. The context package defines the `Context` type, which is a Go interface with four methods, named `Deadline()`, `Done()`, `Err()`, and `Value()`:
 
 {{< file "context.go" go >}}
 type Context interface {
@@ -41,11 +58,11 @@ type Context interface {
 }
 {{< /file >}}
 
-The developer will need to declare and modify a `Context` variable using functions such as `context.WithCancel()`, `context.WithDeadline()` and `context.WithTimeout()`.
+ - The developer will need to declare and modify a Context variable using functions such as `context.WithCancel()`, `context.WithDeadline()` and `context.WithTimeout()`.
 
-All three of these functions return a derived `Context` (the child) and a `CancelFunc` function. Calling the `CancelFunc` function removes the parent's reference to the child and stops any associated timers. This means that the Go garbage collector is free to garbage collect the child goroutines that no longer have associated parent goroutines.
+ - All three of these functions return a derived Context (the child) and a `CancelFunc` function. Calling the `CancelFunc` function removes the parent's reference to the child and stops any associated timers. This means that the Go garbage collector is free to garbage collect the child goroutines that no longer have associated parent goroutines.
 
-For garbage collection, the parent goroutine needs to keep a reference to each child goroutine. If a child goroutine ends without the parent knowing about it, then a memory leak occurs until the parent is canceled as well.
+ - For garbage collection, the parent goroutine needs to keep a reference to each child goroutine. If a child goroutine ends without the parent knowing about it, then a memory leak occurs until the parent is canceled as well.
 
 ## A simple example
 
@@ -154,10 +171,10 @@ func main() {
 
  - The program contains four functions including the `main()` function. Functions `f1()`, `f2()`, and `f3()` each require just one parameter, which is a time delay, because everything else they need is defined inside their functions.
 
- - In this example we call the `context.Background()` function to initialize an empty `Context`. The other function that can create an empty `Context` is `context.TODO()` which will be presented later in this guide.
+ - In this example we call the `context.Background()` function to initialize an empty Context. The other function that can create an empty Context is `context.TODO()` which will be presented later in this guide.
 
  - Notice that the `cancel` variable, a function, in `f1()` is one of the return values of
-`context.CancelFunc()`. The `context.WithCancel()` function uses an existing `Context` and creates a
+`context.CancelFunc()`. The `context.WithCancel()` function uses an existing Context and creates a
 child with cancellation. The `context.WithCancel()` function also returns a `Done` channel that can be closed, either when the `cancel()` function is called, as shown in the preceding code, or when the `Done` channel of the parent context is closed.
 
     {{< note >}}
@@ -165,9 +182,9 @@ One of the return values of `Context.Done()` is a Go channel, which means that y
 {{< /note >}}
 
  - The `cancel` variable in `f2()` comes from `context.WithTimeout()`. `context.WithTimeout()` requires
-two parameters: a `Context` parameter and a `time.Duration` parameter. When the timeout period expires, the `cancel()` function is called automatically.
+two parameters: a Context parameter and a `time.Duration` parameter. When the timeout period expires, the `cancel()` function is called automatically.
 
- - The `cancel` variable in `f3()` comes from `context.WithDeadline()`. `context.WithDeadline()` requires two parameters: a `Context` variable and a `time` in the future that signifies the deadline of the operation. When the deadline passes, the `cancel()` function is called automatically.
+ - The `cancel` variable in `f3()` comes from `context.WithDeadline()`. `context.WithDeadline()` requires two parameters: a Context variable and a `time` in the future that signifies the deadline of the operation. When the deadline passes, the `cancel()` function is called automatically.
 
     {{< note >}}
 Notice that contexts should not be stored in structures – they should be passed as separate parameters to functions. It is considered a good practice to pass them as the first parameter of a function.
@@ -336,7 +353,7 @@ func main() {
 It is considered a good practice to use `context.Background()` in the `main()` function, the `init()` function of a package or at tests.
 {{< /note >}}
 
- - The `connect()` function is used for connecting to the desired URL. The `connect()` function also starts a goroutine before the `select` block takes control in order to either wait for web data as returned by the goroutine or for a timeout with the help of the `Context` variable.
+ - The `connect()` function is used for connecting to the desired URL. The `connect()` function also starts a goroutine before the `select` block takes control in order to either wait for web data as returned by the goroutine or for a timeout with the help of the Context variable.
 
 ### Using http.go
 
@@ -384,7 +401,7 @@ Notice that `http://localhost:8000` uses a custom made HTTP server that returns 
 
 ## Using Contexts as key-value stores
 
-In this section of the guide you will pass values in a `Context` and use it as a key-value store. This is a case where we do not pass values into contexts in order to provide further information about why they where canceled.
+In this section of the guide you will pass values in a Context and use it as a key-value store. This is a case where we do not pass values into contexts in order to provide further information about why they where canceled.
 
 The `more.go` program illustrates the use of the `context.TODO()` function as well as the use of the `context.WithValue()` function.
 
@@ -423,13 +440,13 @@ func main() {
 }
 {{< /file >}}
 
- - This time we create a context using `context.TODO()` instead of `context.Background()`. Although both functions return a non-nil, empty `Context`, their purposes differ. You should never pass a `nil` context – use the `context.TODO()` function to create a suitable context. Use the `context.TODO()` function when you are not sure about the `Context` that you want to use.
+ - This time we create a context using `context.TODO()` instead of `context.Background()`. Although both functions return a non-nil, empty Context, their purposes differ. You should never pass a nil context –-- use the `context.TODO()` function to create a suitable context. Use the `context.TODO()` function when you are not sure about the Context that you want to use.
 
  - The `context.TODO()` function signifies that we intend to use an operation context, without being sure about it yet. The good thing is that `TODO()` is recognized by static analysis tools, which allows them to determine whether a `context.Context` variable is propagated correctly in a program or not.
 
- - The `context.WithValue()` function that is used in `main()` offers a way to associate a value with a `Context`.
+ - The `context.WithValue()` function that is used in `main()` offers a way to associate a value with a Context`.
 
- - The `searchKey()` function retrieves a value from a `Context` variable and checks whether that value exists or not.
+ - The `searchKey()` function retrieves a value from a Context variable and checks whether that value exists or not.
 
 ### Using more.go
 
