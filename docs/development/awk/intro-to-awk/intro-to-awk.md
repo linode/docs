@@ -24,9 +24,14 @@ This guide is written for a non-root user. Depending on your configuration, some
 
 ## An Introduction to AWK
 
-The name AWK is derived from the family names of its three authors: Alfred Aho,
-Peter Weinberger and Brian Kernighan and is a handy *pattern matching* programming
-language that is *Turing-complete*.
+The name AWK is derived from the family names of its three authors:
+[Alfred Aho](https://en.wikipedia.org/wiki/Alfred_Aho),
+[Peter Weinberger](https://en.wikipedia.org/wiki/Peter_J._Weinberger) and
+[Brian Kernighan](https://en.wikipedia.org/wiki/Brian_Kernighan)
+and is a handy *pattern matching* programming language that is *Turing-complete*, which
+means that AWK is a fully featured programming language. AWK is often mentioned in the
+same sentence with `sed`, which is another tradition UNIX command line tool. However,
+`sed` is more appropriate for one line UNIX shell commands.
 
 AWK allows you to do analysis, extraction and reporting of data and supports arrays,
 associative arrays, functions, variables, loops and regular expressions.
@@ -36,21 +41,26 @@ The biggest difference between the various variants and the original version of 
 is that they support a larger set of built-in functions and variables.
 
 {{< note >}}
-AWK reads its input line by line and automatically splits each line into fields
-without altering the original input.
+Input is read either for the standard input or from files specified as command line
+arguments. Input is read one record at a time – by default each line defines a new
+record. After a record is read, it is automatically split into fields. AWK does not
+alter the original input.
 {{< /note >}}
 
 ### The various versions of AWK
 
-There exist two AWK versions: `gawk` and `mawk`.
+There exist three AWK versions: `gawk`, `mawk` and `pawk`.
 
 The first `gawk` version was introduced back in 1986. Michael Brennan wrote
 another AWK variant named `mawk` and Nelson H.F. Beebe programmed `pawk`. Gawk
 is the most powerful and popular version of AWK and is the one that is going
-to be used in this guide.
+to be used in this guide. `pawk` is not being [maintained](ftp://ftp.math.utah.edu/pub/pawk/)
+any more.
 
 You can find more information about `gawk` in [here](https://www.gnu.org/software/gawk/)
 and about `mwak` [here](https://invisible-island.net/mawk/).
+
+If you want to find out the version of AWK you are using, you can execute `awk -V`.
 
 ## The Hello World program in AWK
 
@@ -102,15 +112,19 @@ you can execute `hw` as a regular UNIX command:
 Hello World!
 {{< /output >}}
 
+{{< note >}}
+The name `hw` is a matter of personal preference. It could have been anything you like
+as long as it has the execute permission. Additionally, the ``#!/usr/bin/awk -f`` line
+defines the starting of the script execution and it allows us to choose the correct shell or
+in this case the correct program that will be used for executing the commands and statements
+that follow.
+{{< /note >}}
+
 ## Variables in AWK
 
 AWK supports two kinds of variables, predefined and user defined ones. Predefined
 variables are defined by AWK itself whereas user defined variables, which are case
-sensitive, are defined by the developer. Notice that AWK automatically initializes
-user defined variables to the **empty string**, which is zero if you convert a variable
-to a number. You are free to convert a string to a number and vice versa as long as
-the string can be converted to a valid number. Last, it is allowed to change the kind
-of value that a variable can hold in your AWK code.
+sensitive, are defined by the developer.
 
 ### Predefined Variables
 
@@ -129,7 +143,8 @@ most important ones are the following:
 - The `NR` variable is used for keeping track of the total number of records that have been read so far.
 - The `FNR` variable is used for keeping the total number of records that have been read from the current input file only.
 - The `IGNORECASE` variable is used for telling AWK to ignore case in all of its comparisons or regular expressions.
-- The `ARGC` and `ARGC` variables hold the command line arguments of an AWK program.
+- The `ARGC` variables holds the number of command line arguments.
+- The `ARGV` variable holds the actual command line arguments of an AWK program.
 
 ### User Defined Variables in AWK
 
@@ -146,12 +161,21 @@ executed, which just prints the current value of `n` converted to number.
 If you provide some input to it, either a filename or user input from the console, you
 will get some output from the AWK code.
 
+Notice that AWK automatically initializes user defined variables to the **empty string**,
+which is zero if you convert a variable to a number. You are free to convert a string
+to a number and vice versa as long as the string can be converted to a valid number –
+this also means that AWK is not a type safe programming language, which can generate bugs.
+Last, it is allowed to change the kind of value that a variable can hold in your AWK code.
+
 ## AWK Basics
 
 In this section of the guide you will learn more about the basics of AWK. AWK has support
 for **arrays** and **associative arrays**. It also supports functions and user
 defined functions. AWK programs can have various types of blocks (*patterns*) like
 `BEGIN` and `END` that are executed at the time that is specified by AWK.
+
+A pattern in AWK controls the execution of rules – a rule is executed when its pattern is
+a match for the current input record.
 
 ### Arrays and Associative Arrays in AWK
 
@@ -180,8 +204,8 @@ BEGIN {
 
 	print "Adding two elements and deleting a[0]";
 
-	a["One"] = "OneOne";
-	a["Two"] = "TwoTwo";
+	a["One"] = "One_value";
+	a["Two"] = "Two_value";
 	delete a[0];
 
 	for (i in a)
@@ -194,7 +218,9 @@ BEGIN {
 {{< /file >}}
 
 Notice that elements `a["1"]` and `a[1]` are exactly the same thing and that are
-pointing to the same array element. The output of `arrays.awk` will clarify its code:
+pointing to the same array element. You will learn about the `for` loop in a while.
+
+The output of `arrays.awk` will clarify its code:
 
     awk -f arrays.awk
 {{< output >}}
@@ -205,8 +231,8 @@ Index: 1 with value: 2
 Adding two elements and deleting a[0]
 Index: 2 with value: 3
 Index: 3 with value: 4
-Index: Two with value: TwoTwo
-Index: One with value: OneOne
+Index: Two with value: Two_value
+Index: One with value: One_value
 Index: 1 with value: 2
 a[1] = a["1"] = 2
 {{< /output >}}
