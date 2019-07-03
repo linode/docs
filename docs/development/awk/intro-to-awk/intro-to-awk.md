@@ -567,20 +567,32 @@ printed just before the AWK finished its job.
 
 Executing countLines.awk will generate the following kind of output:
 
-	awk -f countLines.awk countLines.awk
+	awk -f countLines.awk data.txt
 {{< output >}}
-Processing: countLines.awk
-Read 9 records in total
+Processing: data.txt
+Read 7 records in total
 {{< /output >}}
+
+The context of `data.txt` are the following:
+
+{{< file "data.txt" text >}}
+one
+two
+three
+4
+
+6
+seven not eight
+{{< /file >}}
 
 If you give `countLines.awk` multiple files to process, you will get the following kind
 of output:
 
-	awk -f countLines.awk countLines.awk rand.awk
+	awk -f countLines.awk data.txt text
 {{< output >}}
-Processing: countLines.awk
-Processing: rand.awk
-Read 27 records in total
+Processing: data.txt
+Processing: text
+Read 12 records in total
 {{< /output >}}
 
 ### Counting Characters
