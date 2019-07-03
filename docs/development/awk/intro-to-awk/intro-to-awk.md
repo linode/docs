@@ -573,7 +573,7 @@ Processing: data.txt
 Read 7 records in total
 {{< /output >}}
 
-The context of `data.txt` are the following:
+The contents of `data.txt` are the following:
 
 {{< file "data.txt" text >}}
 one
