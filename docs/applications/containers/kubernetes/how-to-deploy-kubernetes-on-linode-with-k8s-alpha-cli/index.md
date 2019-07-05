@@ -44,15 +44,15 @@ These nodes will all exist as billable services on your account. You can specify
 
 Another easy way to create clusters is with [Rancher](https://rancher.com). Rancher is a web application that provides a GUI interface for cluster creation and for management of clusters. Rancher also provides easy interfaces for deploying and scaling apps on your clusters, and it has a built-in catalog of curated apps to choose from.
 
-To get started with Rancher, review our [How to Deploy Kubernetes on Linode with Rancher 2.2](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/) guide. Rancher is capable of importing clusters that were created outside of it, so you can still use it even if you create your clusters through the k8s-alpha CLI or some other means.
+To get started with Rancher, review our [How to Deploy Kubernetes on Linode with Rancher 2.2](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/) guide. Rancher is capable of importing clusters that were created outside of it, so you can still use it even if you create your clusters through the k8s-alpha CLI or some other means.
 
 ### Beginners Resources
 
 If you haven't used Kubernetes before, we recommend reading through our introductory guides on the subject:
 
--   [Beginner's Guide to Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/): this guide explains the concepts and architecture of Kubernetes.
+-   [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes/): this guide explains the concepts and architecture of Kubernetes.
 
--   [Getting Started with Kubernetes - Basic Installation and Setup](/docs/applications/containers/getting-started-with-kubernetes/): this guide shows how to create a Kubernetes cluster manually. While you wouldn't normally set your clusters up in this way, doing it once can help provide a better understanding for how a cluster's components fit together.
+-   [Getting Started with Kubernetes - Basic Installation and Setup](/docs/applications/containers/kubernetes/getting-started-with-kubernetes/): this guide shows how to create a Kubernetes cluster manually. While you wouldn't normally set your clusters up in this way, doing it once can help provide a better understanding for how a cluster's components fit together.
 
 ## Before You Begin
 
@@ -287,6 +287,6 @@ When you delete a cluster with the k8s-alpha CLI, its connection information wil
 
 Now that you have a cluster up and running, you're ready to start deploying apps to it. Review our other Kubernetes guides for help with deploying software and managing your cluster:
 
--   [Installing Apps on Kubernetes with Helm](/docs/applications/containers/how-to-install-apps-on-kubernetes-with-helm/)
+-   [Installing Apps on Kubernetes with Helm](/docs/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/)
 -    [Linode Container Storage Interface](/docs/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/)
 
