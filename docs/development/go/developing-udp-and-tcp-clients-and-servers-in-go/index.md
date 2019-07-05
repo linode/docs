@@ -15,7 +15,7 @@ contributor:
 external_resources:
   - '[Go](https://www.golang.com)'
 ---
-Go is a compiled, statically typed programming language developed by Google. Many modern applications, including [Docker](/docs/applications/containers/introduction-to-docker/), [Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/), and [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/), are written in Go. Go packages allow developers to organize and reuse Go code in a simple and maintainable manner.
+Go is a compiled, statically typed programming language developed by Google. Many modern applications, including [Docker](/docs/applications/containers/introduction-to-docker/), [Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes/), and [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/), are written in Go. Go packages allow developers to organize and reuse Go code in a simple and maintainable manner.
 
 In this guide, you will use the `net` package, which is a part of [Go's standard library](https://golang.org/pkg/#stdlib), to create TCP and UDP servers and clients. This guide is meant to provide instructional examples to help you become more familiar with the Go programming language.
 
