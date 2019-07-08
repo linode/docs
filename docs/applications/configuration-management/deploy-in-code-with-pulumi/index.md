@@ -89,7 +89,7 @@ Now that you have everything you need to begin using Pulumi, you can create a ne
 A Pulumi [project](https://pulumi.io/reference/project/) is the folder structure which contains your Pulumi programs. Specifically, a project is any folder which contains a `Pulumi.yaml` metadata file.
 {{< /note >}}
 
-1. Pulumi requires an empty directory for each new project, so first you'll need create one and make it your working directory:
+1. Pulumi requires an empty directory for each new project, so first you'll need to create one and make it your working directory:
 
         cd ~/ && mkdir pulumi && cd pulumi
 
