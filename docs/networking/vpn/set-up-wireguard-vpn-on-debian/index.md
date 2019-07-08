@@ -2,12 +2,12 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Wireguard encripts your traffic quickly and safely, this guide will show you how to set up Wireguard VPN server and clients on Debian.'
+description: 'WireGuard encrypts your traffic quickly and safely. This guide will show you how to set up a Wireguard VPN server and client on Debian.'
 og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
 keywords: ['wireguard','vpn','debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-05-23
-modified: 2019-05-23
+published: 2019-07-08
+modified: 2019-07-08
 modified_by:
   name: Linode
 title: "Set Up WireGuard VPN on Debian"
@@ -15,35 +15,58 @@ contributor:
   name: Linode
 ---
 
-[WireGuard](https://www.wireguard.com) is a simple, fast, and secure VPN that utilizes state-of-the-art cryptography. With a small source code footprint, it aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec. WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol.
+## What is WireGuard?
 
-The WireGuard configuration is as simple as setting up SSH. A connection is established by an exchange of public keys between server and client. Only a client that has its public key in its corresponding server configuration file is allowed to connect. WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as `ifconfig` and `ip`.
+[WireGuard](https://www.wireguard.com) is a simple, fast, and secure VPN that utilizes state-of-the-art cryptography. With a small source code footprint, it aims to be faster and leaner than other VPN protocols such as [OpenVPN](https://en.wikipedia.org/wiki/OpenVPN) and [IPSec](https://en.wikipedia.org/wiki/IPsec). WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol.
 
-Currently, WireGuard is only available on Linux. This guide will configure a simple peer connection between a Linode running Debian 9, and a client. The client can be either your local computer or another Linode.
+WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as [`ifconfig`](https://en.wikipedia.org/wiki/Ifconfig) and `ip`. Currently, WireGuard is only available on Linux.
+
+Configuring WireGuard is as simple as setting up SSH. A connection is established by an exchange of public keys between server and client. Only a client that has its public key in its corresponding server configuration file is allowed to connect. A WireGuard server's configuration file resembles the following example:
+
+  {{< file "/etc/wireguard/wg0.conf" conf >}}
+[Interface]
+PrivateKey = <Private Key>
+Address = 192.168.2.1/24, fd86:ea04:1115::1/64
+ListenPort = 51820
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+SaveConfig = true
+
+[Peer]
+PublicKey = <Client Public Key>
+AllowedIPs = 192.168.2.2/24, fd86:ea04:1115::0/64
+  {{< /file >}}
+
+In this guide you will learn how to:
+
+* [Configure a WireGuard server](#configure-wireguard-server) on a Linode running Debian 9.
+* [Configure a WireGuard client](#configure-wireguard-client) on your local computer or another Linode.
+* [Establish a simple peer connection](#connect-the-client-and-server) between your WireGuard server and client.
 
 {{< caution >}}
-Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent critical updates in the future.
+Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent major updates in the future.
 {{< /caution >}}
 
 
 ## Before You Begin
 
-- You will need root access to your Linode, or a user account with `sudo` privilege.
+- [Deploy a Linode](/docs/getting-started/#create-a-linode) running Debian 9.
+- [Add a limited user account](/docs/security/securing-your-server/#add-a-limited-user-account) with `sudo` privileges to your Linode.
 - Set your system's [hostname](/docs/getting-started/#set-the-hostname).
 
 ## Install WireGuard
 
-1.  Add the WireGuard repository to your sources list. Apt will then automatically update the package cache.
+1.  Add the WireGuard repository to your sources list. Apt will automatically update the package cache.
 
         echo "deb http://deb.debian.org/debian/ unstable main" > /etc/apt/sources.list.d/unstable-wireguard.list
         printf 'Package: *\nPin: release a=unstable\nPin-Priority: 150\n' > /etc/apt/preferences.d/limit-unstable
 
-1.  Update your packages and install WireGuard and WireGuard tools.
+1.  Update your packages and install WireGuard and WireGuard tools. DKMS (Dynamic Kernel Module Support) will build the WireGuard kernel module.
 
         apt update
         apt install wireguard-dkms wireguard-tools
 
-    DKMS (Dynamic Kernel Module Support) will then build the WireGuard kernel module. If successful, you'll see the following output:
+    If successful, you'll see the following output:
 
     {{< output >}}
 wireguard:
@@ -59,10 +82,6 @@ DKMS: install completed.
 Processing triggers for libc-bin (2.24-11+deb9u4) ...
 {{< /output >}}
 
-    {{< note >}}
-If the installation completes but the output does not appear, your kernel is most likely not configured correctly. To double check, issue the `lsmod | grep wireguard` command. Its output should not be blank. Refer to the previous section to troubleshoot.
-{{< /note >}}
-
 ## Configure WireGuard Server
 
 1.  Navigate to the `/etc/wireguard` directory and generate a private and public key pair for the WireGuard server:
@@ -72,7 +91,7 @@ If the installation completes but the output does not appear, your kernel is mos
 
     This will save both the private and public keys; they can be viewed with `cat privatekey` and `cat publickey` respectively.
 
-1.  Create the file `/etc/wireguard/wg0.conf` and add the contents indicated below. You'll need to enter your server's private key in the `PrivateKey` field, and its private IP addresses in the `Address` field.
+1.  Create the file `/etc/wireguard/wg0.conf` and add the contents indicated below. You'll need to enter your server's private key in the `PrivateKey` field, and its private IP addresses in the `Address` field. Refer to the list below the example for more details.
 
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
@@ -84,19 +103,23 @@ PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING 
 SaveConfig = true
 {{< /file >}}
 
-   - **PrivateKey** the server's private key generated above.
+   - **PrivateKey** the server's private key generated in above.
 
-   - **Address** defines the private IPv4 and IPv6 addresses for the WireGuard server. Each peer in the VPN network should have a unique value for this field. Typical values are 10.0.0.1/24, 192.168.1.1/24, or 192.168.2.1/24. Note: this is not the same as a private IP address that Linode can assign to your Linode instance.
+   - **Address** defines the private IPv4 and IPv6 addresses for the WireGuard server. Each peer in the VPN network should have a unique value for this field. Typical values are `10.0.0.1/24`, `192.168.1.1/24`, or `192.168.2.1/24`. This is not the same as a private IP address that Linode can assign to your Linode instance.
 
-   - **ListenPort** specifies which port WireGuard will use for incoming connections. The default is 51820. What you set here you will need to reference in your firewall settings later.
+   - **ListenPort** specifies which port WireGuard will use for incoming connections. The default is `51820`. What you set here you will need to reference in your firewall settings later.
 
    - **PostUp** and **PostDown** defines steps to be run after the interface is turned on or off, respectively. In this case, `iptables` is used to set Linux IP masquerade rules to allow all the clients to share the server's IPv4 and IPv6 address. The rules will then be cleared once the tunnel is down.
 
    - **SaveConfig** tells the configuration file to automatically update whenever a new peer is added while the service is running.
 
-## Set Up Firewall Rules
+### Set Up Firewall Rules
 
-1.  Allow SSH connections and WireGuard's VPN port. You may need to install **ufw** before running these commands. Use `sudo apt-get install ufw` if needed.
+1. Install UFW:
+
+        sudo apt-get install ufw
+
+1.  Allow SSH connections and WireGuard's VPN port:
 
         sudo ufw allow 22/tcp
         sudo ufw allow 51820/udp
@@ -107,7 +130,7 @@ SaveConfig = true
         sudo ufw status verbose
 
 
-## Start the WireGuard Service
+### Start the WireGuard Service
 
 1. Start WireGuard:
 
@@ -135,7 +158,7 @@ interface: wg0
   listening port: 51820
 {{< /output >}}
 
-    You may need to install **net-tools** to run ifconfig. Use `sudo apt-get install net-tools` if needed.
+    You may need to install [net-tools](https://tracker.debian.org/pkg/net-tools) to run `ifconfig`. Use `sudo apt-get install net-tools` if needed.
 
         sudo ifconfig wg0
 
@@ -154,17 +177,30 @@ wg0: flags=209<UP,POINTOPOINT,RUNNING,NOARP>  mtu 1420
 {{< /output >}}
 
 
-## WireGuard Client
+## Configure WireGuard Client
 
-The process for setting up a client is similar to setting up the server. When using Debian as your client's operating system, the only difference between the client and the server is the configuration file. If your client uses Debian, follow the steps provided in the above sections and in this section. For installation instructions on other operating systems, see the [WireGuard docs](https://www.wireguard.com/install/).
+The process for setting up a client is similar to setting up the WireGuard server. When using Debian as your client's operating system, the only difference between the client and the server is the configuration file. In this section, you will configure a WireGuard client on Debian 9.
 
-The difference between the client and the server's configuration file, `wg0.conf`, is it must contain its own IP addresses and does not contain the `ListenPort`, `PostUP`, `PostDown`, or `SaveConfig` values.
+{{< note >}}
+For installation instructions on other operating systems, see the [WireGuard docs](https://www.wireguard.com/install/).
+{{</ note >}}
 
-{{< file "/etc/wireguard/wg0.conf" conf >}}
+1. Follow the steps in the [Install WireGuard](#install-wireguard) section of the guide.
+
+1. Once you have installed WireGuard, follow the steps in the [Configure WireGuard Server](#configure-wireguard-server) section. Replace the example configuration file with the example file below.
+
+    {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
 PrivateKey = <Client Private Key>
 Address = 192.168.2.2/24, fd86:ea04:1115::5/64
-{{< /file >}}
+    {{< /file >}}
+
+    The difference between the client and the server's configuration file, `wg0.conf`, is it contains **its own** IP addresses and does not contain the `ListenPort`, `PostUP`, `PostDown`, or `SaveConfig` values.
+
+
+1. [Set up Firewall rules](#set-up-firewall-rules) on your WireGuard client.
+
+1. [Start the WireGuard Service](#start-the-wireguard-service).
 
 ## Connect the Client and Server
 
@@ -221,7 +257,7 @@ peer: I8s7YGMuUbPvStb686JjxfUAa/tzqZhcLDgiqRKlbWs=
 
     Additional clients can be added using the same procedure.
 
-## Test the Connection
+### Test the Connection
 
 1. Return to the client and ping the server:
 
