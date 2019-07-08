@@ -119,6 +119,7 @@ bzrtools
 c2s
 cabd
 cacert
+cacheable
 caddy
 caddyfile
 cakey
@@ -126,6 +127,7 @@ calc
 campione
 captcha
 carootcert
+ccm
 celeryd
 centos
 centos7
@@ -214,6 +216,7 @@ cronjobs
 crontab
 crt
 crypto
+csi
 csr
 css
 csum
@@ -789,6 +792,7 @@ microservice
 microservices
 microsystems
 microweb
+middleware
 minecraft
 mineshafts
 miniconda
@@ -1109,6 +1113,7 @@ remi
 remmina
 remotehost
 replicaset
+replicationcontrollers
 replset
 repo
 repos
