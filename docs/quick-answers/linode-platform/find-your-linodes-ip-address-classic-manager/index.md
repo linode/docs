@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 published: 2017-09-21
 title: Find Your Linode's IP Address
+cloud_manager_link: quick-answers/linode-platform/find-your-linodes-ip-address/
 hiddenguide: true
 ---
 
