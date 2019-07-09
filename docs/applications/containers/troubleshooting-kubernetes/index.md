@@ -22,12 +22,13 @@ I can't really think of all the common problems that could might appear, so I've
 
 Troubleshooting issues with Kubernetes can be complex, and it can be difficult to account for all the possible error conditions you may see. This guide will try to equip you with the core tools that can be useful when troubleshooting and will introduce some situations that you may find yourself in.
 
-If your issue is not covered by this guide, we also recommend researching and posting in the [Linode Community Questions](https://www.linode.com/community/questions/) site, where other Linode users can offer advice.
+If your issue is not covered by this guide, we also recommend researching and posting in the [Linode Community Questions](https://www.linode.com/community/questions/) site and `#linode` on the [Kubernetes Slack Channel](http://slack.k8s.io/), where other Linode users can offer advice.
 
-In this guide:
+In this guide we will:
 
 -   [Refer to the most-frequently used commands](#general-troubleshooting-strategies) when troubleshooting a cluster and find out where your Kubernetes logs are stored.
 -   [Review some common issues](#troubleshooting-examples) that can appear on your cluster.
+
 
 ## General Troubleshooting Strategies
 
@@ -48,6 +49,11 @@ Use the [`get` command](https://kubernetes.io/docs/reference/generated/kubectl/k
 
         # Show pods in the `kube-system` namespace
         kubectl get pods --namespace kube-system
+
+    {{< note >}}
+If you've set up Kubernetes using most automated solutions like Linode's Kubernetes Engine, [k8's Alpha CLI](https://www.linode.com/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/), or [Rancher](http://localhost:1313/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/), you'll see [csi-linode](https://github.com/linode/linode-blockstorage-csi-driver) and [ccm-linode](https://github.com/linode/linode-cloud-controller-manager) pods in the `kube-system` namespace. This is normal as long as they're in the running status.
+{{< /note >}}
+
 
 -   You can specify the [`-o` flag](https://kubernetes.io/docs/reference/kubectl/overview/#output-options) to return the resources as YAML or JSON. The Kubernetes API's complete description for the returned resources will be shown:
 
@@ -71,6 +77,7 @@ Use the [`get` command](https://kubernetes.io/docs/reference/generated/kubectl/k
 
         # Get all pods that are not in the kube-system namespace
         kubectl get pods --field-selector metadata.namespace!=kube-system
+
 
 ### kubectl describe
 
@@ -120,20 +127,28 @@ Enter `exit` to later leave this shell.
 
 ### Viewing Master and Worker Logs
 
-The locations of logs on your master nodes are:
+If you have set up Kubernetes using a method that does not include [**systemd**](https://linode.com/docs/quick-answers/linux-essentials/what-is-systemd/), the location of logs on your master nodes are in most cases as follows:
 
 - `/var/log/kube-apiserver.log` - [API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
 - `/var/log/kube-scheduler.log` - [Scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/ )
 - `/var/log/kube-controller-manager.log` - [Replication controller manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
 
-    {{< note >}}
-You will not be able to directly access your master nodes if you are using Linode's LKE service.
-{{< /note >}}
-
 On your worker nodes:
 
 - `/var/log/kubelet.log` - [Kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
 - `/var/log/kube-proxy.log` - [Kube proxy](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)
+
+If you do have systemd implemented, then the above logs will not be accessible and you'll need to access kubelet logs using `journalctl` instead. Below is an example command for accessing kubelet logs through journalctl:
+
+    journalctl --unit kubelet
+
+In some cases, the information you find from kubelet may prompt you to look into individual container logs for more information. When using Docker as a container runtime, you can find information on all running containers with the `docker ps` command. For example, to find the container running your API server, enter the following:
+
+    docker ps | grep apiserver
+
+Then, using the container ID that appears, enter `docker logs` to view the logs for your API server:
+
+    docker logs CONTAINER_ID
 
 ## Troubleshooting Examples
 
