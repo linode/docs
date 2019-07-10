@@ -20,9 +20,27 @@ external_resources:
 
 I can't really think of all the common problems that could might appear, so I've set up a few to start, and I'm imagining that the list could be expanded over time. We should consider advertising to Support that we would welcome JIRA tickets with recommendations to get addeed to the list, if they start to see certain problems more often. -->
 
-Troubleshooting issues with Kubernetes can be complex, and it can be difficult to account for all the possible error conditions you may see. This guide will try to equip you with the core tools that can be useful when troubleshooting and will introduce some situations that you may find yourself in.
+Troubleshooting issues with Kubernetes can be complex, and it can be difficult to account for all the possible error conditions you may see. This guide will try to equip you with the core tools that can be useful when troubleshooting, and it will introduce some situations that you may find yourself in.
 
-If your issue is not covered by this guide, we also recommend researching and posting in the [Linode Community Questions](https://www.linode.com/community/questions/) site and `#linode` on the [Kubernetes Slack Channel](http://slack.k8s.io/), where other Linode users can offer advice.
+{{< disclosure-note "Where to go for help outside this guide" >}}
+If your issue is not covered by this guide, we also recommend researching and posting in the [Linode Community Questions](https://www.linode.com/community/questions/) site and in `#linode` on the [Kubernetes Slack](http://slack.k8s.io/), where other Linode users (and the Kubernetes community) can offer advice.
+
+If you are running a cluster on Linode's managed LKE service, and you are experiencing an issue related to your master/control plane components, you can report these issues to Linode by [contacting Linode Support](/docs/platform/billing-and-support/support/). Examples in this category include:
+
+-   Kubernetes' API server not running. If kubectl does not respond as expected, this can indicate problems with the API server.
+
+-   The CCM, CSI, Calico, or kube-dns pods are not running.
+
+-   Annotations on LoadBalancer services aren’t functioning.
+
+-   PersistentVolumes are not re-attaching.
+
+Please note that the kube-apiserver and etcd pods will not be visible for LKE clusters, and this is expected. Issues outside of the scope of Linode Support include:
+
+-   Problems with the control plane of clusters not managed by` LKE.
+
+-   Problems with applications deployed on Kubernetes.
+{{< /disclosure-note >}}
 
 In this guide we will:
 
@@ -51,7 +69,7 @@ Use the [`get` command](https://kubernetes.io/docs/reference/generated/kubectl/k
         kubectl get pods --namespace kube-system
 
     {{< note >}}
-If you've set up Kubernetes using most automated solutions like Linode's Kubernetes Engine, [k8's Alpha CLI](https://www.linode.com/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/), or [Rancher](http://localhost:1313/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/), you'll see [csi-linode](https://github.com/linode/linode-blockstorage-csi-driver) and [ccm-linode](https://github.com/linode/linode-cloud-controller-manager) pods in the `kube-system` namespace. This is normal as long as they're in the running status.
+If you've set up Kubernetes using automated solutions like Linode's Kubernetes Engine, [k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/), or [Rancher](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/), you'll see [csi-linode](https://github.com/linode/linode-blockstorage-csi-driver) and [ccm-linode](https://github.com/linode/linode-cloud-controller-manager) pods in the `kube-system` namespace. This is normal as long as they're in the Running status.
 {{< /note >}}
 
 
@@ -127,28 +145,42 @@ Enter `exit` to later leave this shell.
 
 ### Viewing Master and Worker Logs
 
-If you have set up Kubernetes using a method that does not include [**systemd**](https://linode.com/docs/quick-answers/linux-essentials/what-is-systemd/), the location of logs on your master nodes are in most cases as follows:
+If the Kubernetes API server isn't working normally, then you may not be able to use `kubectl` to troubleshoot. When this happens, or if you are experiencing other more fundamental issues with your cluster, you can instead log directly into your nodes and view the logs present on your filesystem.
+
+#### Non-systemd systems
+
+If your nodes do not run [systemd](/docs/quick-answers/linux-essentials/what-is-systemd/), the location of logs on your master nodes should be:
 
 - `/var/log/kube-apiserver.log` - [API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
 - `/var/log/kube-scheduler.log` - [Scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/ )
 - `/var/log/kube-controller-manager.log` - [Replication controller manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
+
+    {{< note >}}
+You will not be able to directly access the master nodes of your cluster if you are using Linode's LKE service.
+{{< /note >}}
 
 On your worker nodes:
 
 - `/var/log/kubelet.log` - [Kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
 - `/var/log/kube-proxy.log` - [Kube proxy](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)
 
-If you do have systemd implemented, then the above logs will not be accessible and you'll need to access kubelet logs using `journalctl` instead. Below is an example command for accessing kubelet logs through journalctl:
+#### systemd systems
+
+If your nodes run systemd, you can access the logs that kubelet generates with journalctl:
 
     journalctl --unit kubelet
 
-In some cases, the information you find from kubelet may prompt you to look into individual container logs for more information. When using Docker as a container runtime, you can find information on all running containers with the `docker ps` command. For example, to find the container running your API server, enter the following:
+Logs for your other Kubernetes software components can be found through your container runtime. When using Docker, you can use the `docker ps` and `docker logs` commands to investigate. For example, to find the container running your API server, enter the following:
 
     docker ps | grep apiserver
 
-Then, using the container ID that appears, enter `docker logs` to view the logs for your API server:
+The output will display a list of information separated by tabs:
 
-    docker logs CONTAINER_ID
+    2f4e6242e1a2    cfdda15fbce2    "kube-apiserver --au…"  2 days ago  Up 2 days   k8s_kube-apiserver_kube-apiserver-k8s-trouble-1-master-1_kube-system_085b2ab3bd6d908bde1af92bd25e5aaa_0
+
+The first entry (in this example: `2f4e6242e1a2`) will be an alphanumeric string, and it is the ID for the container. Copy this string and pass it to `docker logs` to view the logs for your API server:
+
+    docker logs ${CONTAINER_ID}
 
 ## Troubleshooting Examples
 
@@ -200,5 +232,5 @@ If one of your pods requests more memory or CPU than is available on your worker
 If your cluster has insufficient resources for a new pod, you will need to:
 
 -   Reduce the number of other pods/depoloyments/applications running on your cluster,
--   [Resize the Linode instances](https://linode.com/docs/platform/disk-images/resizing-a-linode/) that represent your worker nodes to a higher-tier plan, or
+-   [Resize the Linode instances](/docs/platform/disk-images/resizing-a-linode/) that represent your worker nodes to a higher-tier plan, or
 -   Add a new worker node to your cluster.
