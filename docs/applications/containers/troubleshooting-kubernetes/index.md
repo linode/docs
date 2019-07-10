@@ -170,7 +170,7 @@ If your nodes run systemd, you can access the logs that kubelet generates with j
 
     journalctl --unit kubelet
 
-Logs for your other Kubernetes software components can be found through your container runtime. When using Docker, you can use the `docker ps` and `docker logs` commands to investigate. For example, to find the container running your API server, enter the following:
+Logs for your other Kubernetes software components can be found through your container runtime. When using Docker, you can use the `docker ps` and `docker logs` commands to investigate. For example, to find the container running your API server:
 
     docker ps | grep apiserver
 
