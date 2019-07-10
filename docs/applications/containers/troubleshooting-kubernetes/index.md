@@ -37,7 +37,7 @@ If you are running a cluster on Linode's managed LKE service, and you are experi
 
 Please note that the kube-apiserver and etcd pods will not be visible for LKE clusters, and this is expected. Issues outside of the scope of Linode Support include:
 
--   Problems with the control plane of clusters not managed by` LKE.
+-   Problems with the control plane of clusters not managed by LKE.
 
 -   Problems with applications deployed on Kubernetes.
 {{< /disclosure-note >}}
@@ -231,6 +231,6 @@ If one of your pods requests more memory or CPU than is available on your worker
 
 If your cluster has insufficient resources for a new pod, you will need to:
 
--   Reduce the number of other pods/depoloyments/applications running on your cluster,
+-   Reduce the number of other pods/deployments/applications running on your cluster,
 -   [Resize the Linode instances](/docs/platform/disk-images/resizing-a-linode/) that represent your worker nodes to a higher-tier plan, or
 -   Add a new worker node to your cluster.
