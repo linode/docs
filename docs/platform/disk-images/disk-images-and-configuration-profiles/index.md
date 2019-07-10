@@ -6,7 +6,7 @@ description: Our guide to disks and configuration profiles
 keywords: ["disks", "config profiles", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['disk-images-config-profiles/','migrate-to-linode/disk-images/disk-images-and-configuration-profiles/']
-modified: 2019-03-13
+modified: 2019-07-09
 modified_by:
   name: Linode
 published: 2012-04-24
@@ -220,10 +220,10 @@ The configuration profile is removed from the Linode detail page.
 
 ## Cloning Disks and Configuration Profiles
 
-You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes. To clone an entire Linode, which is an easy way to migrate your Linode to a different data center, see our [Clone Your Linode guide](/docs/platform/disk-images/clone-your-linode/).
+You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes. To clone an entire Linode, which is a simple alternative to migrating your Linode to a different data center, see our [Clone Your Linode guide](/docs/platform/disk-images/clone-your-linode/).
 
 {{< note >}}
-We recommend that you power off your Linode first, and keep it powered off until the disk has finished being cloned.
+We recommend that you power off your Linode first, and keep it powered off until your disks have completed the cloning process.
 {{< /note >}}
 
 1.  Log in to the [Linode Cloud Manager](https://manager.linode.com).
@@ -240,40 +240,38 @@ We recommend that you power off your Linode first, and keep it powered off until
 
     [![Select Clone Option On A Disk](disks-and-config-menu-clone.png)](disks-and-config-menu-clone.png)
 
-1.  On this page you can chose which disks and configuration profiles you wish to clone by checking their boxes. Click the **Disks** tab to see and select those. As you make selections you will see them appear on the right panel below the word **Selected**.
+1.  On the following page you can choose which disks and configuration profiles you wish to clone by checking their boxes.
 
-    [![Select a Disk to Clone](disks-and-config-select-disks.png)](disks-and-config-select-disks.png)
-
-    Click the **Configuration Profiles** tab to see and select those. As you make selections you will see them appear on the right panel below the word **Selected**.
+    Click the **Configuration Profiles** tab to see and select your Configuration Profiles. As you make selections you will see them appear on the right panel below the word **Selected**. If you select a configuration profile, all of the disks associated with that profile will automatically be selected.
 
     [![Select a Configuration Profile to Clone](disks-and-config-select-profile.png)](disks-and-config-select-profile.png)
 
-    If you select a profile, all the disks associated with that profile will automatically be selected.
+    Click the **Disks** tab to see and select your disks. As you make selections you will see them appear on the right panel below the word **Selected**.
+
+    [![Select a Disk to Clone](disks-and-config-select-disks.png)](disks-and-config-select-disks.png)
+
+    If you already have a configuration profile selected, the disks associated with that profile will be pre-selected when viewing the Disks tab.
 
     [![Selecting a Configuration Profile Selects All Disks](disks-and-config-profile-selects-all.png)](disks-and-config-profile-selects-all.png)
 
-1.  On the right select the Destination Linode for your clone. If you've selected individual disks, you can select the current Linode or any other Linode on your account. If you've selected a configuration profile you cannot select the current Linode, but you can select any other Linode on your account.
+1.  On the right of the page, select the **Destination** Linode for your clone. If you're cloning any configuration profiles, you cannot select the current Linode as a destination, but any other Linode on your account will be available as an option. If you're cloning only a disk or disks, you can select both the current Linode any other Linode on your account.
 
     [![Select a Destination Linode](disks-and-config-select-linode.png)](disks-and-config-select-linode.png)
-
-    If you previously selected the current Linode and then selected a configuration profile, the Clone button will become disabled until you select a new Linode.
-
-    [![Clone Button is Disabled for Configuration Profile to Same Linode](disks-and-config-clone-disabled.png)](disks-and-config-clone-disabled.png)
 
 1.  Click the **Clone** button to begin the cloning process.
     [![Click the Clone Button](disks-and-config-clone-button.png)](disks-and-config-clone-button.png)
 
-    If your destination Linode is not big enough for your copy, you will get a warning.
+    If your **Destination** Linode is not large enough for your clone, you will see a warning and be unable to continue until the Linode has the required space available.
     [![Size Error Message](disks-and-config-size-error.png)](disks-and-config-size-error.png)
 
     {{< note >}}
-If you need to make room on your destination Linode you can resize it to be larger, or delete disks. If you need to resize it, be sure to uncheck the box that automatically resizes the disks or they will expand to fill up the extra space that you are trying to create.
+If you need to make room on your destination Linode you can [resize it to a larger plan](https://www.linode.com/docs/platform/disk-images/resizing-a-linode/), [resize your disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to a smaller size, or [delete disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-disk) to free up available space. If you decide to resize your Linode to a larger plan, be sure to uncheck the box that automatically resizes your disks or they will expand to fill up the extra space that you are trying to create.
 {{< /note >}}
 
-1.  Once the clone process begins, you are returned to the **Advanced** tab and a progress bar appears at the top of the screen.
+1.  Once the cloning process begins, you are returned to the **Advanced** tab and a progress bar appears at the top of the screen.
     [![Copying Progress Bar](disks-and-config-status-bar.png)](disks-and-config-status-bar.png)
 
-1.  When the copy is complete, your new disk or configuration appears in the panel on the **Advanced** page.
+1.  When the cloning process is complete, your new disk or configuration appears in the panel of the Linode's **Advanced** tab.
     [![Disk Copying Complete](disks-and-config-clone-complete.png)](disks-and-config-clone-complete.png)
 
 ## Potential Uses
