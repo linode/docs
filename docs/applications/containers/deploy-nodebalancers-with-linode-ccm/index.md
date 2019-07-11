@@ -38,8 +38,10 @@ Be sure to replace `$LINODE_API_TOKEN` with a valid Linode API token, and replac
 
 To view a list of regions, you can use the [Linode CLI](/docs/platform/api/using-the-linode-cli/), or you can view the [Regions API endpoint](https://api.linode.com/v4/regions).
 
+If you are not using macOS, you can copy the `ccm-linode-template.yaml` file and change the values of the `data.apiToken` and `data.region` fields manually.
+
 {{< note >}}
-To manually add the Linode CCM to your cluster, you must start your kubelets, controller-manager, and apiserver with the `--cloud-provider=external`. For more information, visit the [CCM repository README](https://github.com/linode/linode-cloud-controller-manager#generating-a-manifest-for-deployment).
+To manually add the Linode CCM to your cluster, you must start your kubelets, controller-manager, and apiserver with the `--cloud-provider=external` flag. For more information, visit the [CCM repository README](https://github.com/linode/linode-cloud-controller-manager#generating-a-manifest-for-deployment).
 {{</ note >}}
 
 ## Using the CCM
