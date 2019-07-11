@@ -24,32 +24,22 @@ This guide will explain how to:
 Using the Linode Cloud Controller Manager to create NodeBalancers will create billable resources on your Linode account. Be sure to follow the instructions at the end of the guide if you would like to delete these resources from your account.
 {{</ caution >}}
 
-{{< quick-start-note >}}
-test text
-
-## h2
-
-some more exmaple text
-
-### h3
-
-and final text
-{{</ quick-start-note >}}
-
 ## Before You Begin
 
 You should have a working knowledge of Kubernetes before attempting the instructions found in this guide. For more information about Kubernetes, consult our [Kubernetes Beginner's Guide](/docs/applications/containers/beginners-guide-to-kubernetes/) and our [Getting Started with Kubernetes](/docs/applications/containers/getting-started-with-kubernetes/) guide.
 
 When using the CCM for the first time, it's highly suggested that you create a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state. For a completely automated install, you can use the [Linode CLI's k8s-alpha command line tool](https://developers.linode.com/kubernetes/). The Linode CLI's k8s-alpha command line tool utilizes [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) to fully boostrap a Kubernetes cluster on Linode. It includes the [Linode Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) plugin, the Linode CCM plugin, and the [ExternalDNS plugin](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md). For more information on creating a Kubernetes cluster with the Linode CLI, review our [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide.
 
-If you'd like to add the CCM to a cluster by hand, you can use the `generate-manifest.sh` file in the `deploy` folder of the CCM repository to generate a CCM manifest file that you can later apply to your cluster. Use the following command:
+If you'd like to add the CCM to a cluster by hand, and you are using macOS, you can use the `generate-manifest.sh` file in the `deploy` folder of the CCM repository to generate a CCM manifest file that you can later apply to your cluster. Use the following command:
 
     ./generate-manifest.sh $LINODE_API_TOKEN us-east
 
 Be sure to replace `$LINODE_API_TOKEN` with a valid Linode API token, and replace `us-east` with the region of your choosing.
 
+To view a list of regions, you can use the [Linode CLI](/docs/platform/api/using-the-linode-cli/), or you can view the [Regions API endpoint](https://api.linode.com/v4/regions).
+
 {{< note >}}
-You must start your kubelets, controller-manager, and apiserver with the `--cloud-provider=external` flag in order to use the Linode CCM. For more information, visit the [CCM repository README](https://github.com/linode/linode-cloud-controller-manager#generating-a-manifest-for-deployment).
+To manually add the Linode CCM to your cluster, you must start your kubelets, controller-manager, and apiserver with the `--cloud-provider=external`. For more information, visit the [CCM repository README](https://github.com/linode/linode-cloud-controller-manager#generating-a-manifest-for-deployment).
 {{</ note >}}
 
 ## Using the CCM
@@ -125,12 +115,12 @@ There are a number of settings, called annotations, that you can use to further 
 | `throttle` | `0`-`20` (`0` disables the throttle) | `20` | Client Connection Throttle. This limits the number of new connections per second from the same client IP. |
 | `protocol` | `tcp`, `http`, `https` | `tcp` | Specifies the protocol for the NodeBalancer. The protocol is overwritten to `https` if the `linode-loadbalancer-tls-ports` annotation is in use. |
 | `tls`| Example value: `[ { "tls-secret-name": "prod-app-tls", "port": 443} ]` | None | A JSON array (formatted as a string) that specifies which ports use TLS and their corresponding secrets. The secret type should be `kubernetes.io/tls`. Fore more information, see the [TLS Encryption section](#tls-encryption). |
-| `check-type` | `none`, `connection`, `http`, `http_body` | None | The type of health check to perform on your Nodes to ensure that they are serving requests. |
+| `check-type` | `none`, `connection`, `http`, `http_body` | None | The type of health check to perform on your Nodes to ensure that they are serving requests. `connection` checks for a valid TCP handshake, `http` checks for a `2xx` or `3xx` response code, `http_body` checks for a certain string within the response body of the healthcheck URL. |
 | `check-path` | string | None | The URL path that the NodeBalancer will use to check on the health of the back-end Nodes. |
-| `check-body` | string | None | The text that must be present in the body of the page used for health checks. |
+| `check-body` | string | None | The text that must be present in the body of the page used for health checks. For use with a `check-type` of `http_body`. |
 | `check-interval` | integer | None | The duration, in seconds, between health checks. |
-| `check-timeout` | integer (a value between 1-30) | None | Duration, in seconds, to wait for a health check to suceed before it is considered a failure. |
-| `check-attempts` | integer (a value between 1-30) | None | Number of health checks to perform before removing a back-end Node from service. |
+| `check-timeout` | integer (a value between `1`-`30`) | None | Duration, in seconds, to wait for a health check to suceed before it is considered a failure. |
+| `check-attempts` | integer (a value between `1`-`30`) | None | Number of health checks to perform before removing a back-end Node from service. |
 | `check-passive` | boolean | `false` | When `true`, `5xx` status codes will cause the health check to fail. |
 
 ## TLS Encryption
@@ -222,9 +212,41 @@ spec:
 
 Note that here the NodeBalancer created by the Service is terminating the TLS encryption and proxying that to port 80 on the nginx Pod. If you had a Pod that listened on port `443`, you would set the `targetPort` to that value.
 
-### Troubleshooting
+## Session Affinity
 
-Currently the CCM only supports `https` ports within the manifest when the `linode-loadbalancer-protocol` is set to `https`, meaning that for regular `http` traffic you'll need to create an additional Service and NodeBalancer. For example, if you had the following in the Service manifest:
+`kube-proxy` will always attempt to proxy traffic to a random backend Pod. To ensure that traffic is directed to the same Pod, you can use the `sessionAffinity` mechanism. When set to `clientIP`, `sessionAffinity` will ensure that all traffic from the same IP will be directed to the same Pod:
+
+{{< file "session-affinity.yaml" yaml >}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  labels:
+    app: nginx
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 100
+{{</ file >}}
+
+You can set the timeout for the session by using the `spec.sessionAffinityConfig.clientIP.timeoutSeconds` field.
+
+## Troubleshooting
+
+If your are having problems with the CCM, such as the NodeBalancer not being created, you can check the CCM's error logs. First, you'll need to find the name of the CCM Pod in the `kube-system` namespaces:
+
+    kubcetl get pods -n kube-system
+
+The Pod will be named `ccm-linode-` with a few extra characters at the end, like `ccm-linode-jrvj2`. Once you have the Pod name, you can view its logs. The `--tail=n` flag is used to return the last `n` lines, where `n` is the number of your choosing. The below example returns the last 100 lines:
+
+    kubectl logs ccm-linode-jrvj2 -n kube-system --tail=100
+
+{{< note >}}
+Currently the CCM only supports `https` ports within a manifest's spec when the `linode-loadbalancer-protocol` is set to `https`, meaning that for regular `http` traffic you'll need to create an additional Service and NodeBalancer. For example, if you had the following in the Service manifest:
 
 {{< file "unsupported-nginx-service.yaml" yaml >}}
 ...
@@ -245,13 +267,4 @@ The NodeBalancer would not be created and you would find the an error similar to
 
     ERROR: logging before flag.Parse: E0708 16:57:19.999318       1 service_controller.go:219] error processing service default/nginx-service (will retry): failed to ensure load balancer for service default/nginx-service: [400] [configs[0].protocol] The SSL private key and SSL certificate must be provided when using 'https'
     ERROR: logging before flag.Parse: I0708 16:57:19.999466       1 event.go:221] Event(v1.ObjectReference{Kind:"Service", Namespace:"default", Name:"nginx-service", UID:"5d1afc22-a1a1-11e9-ad5d-f23c919aa99b", APIVersion:"v1", ResourceVersion:"1248179", FieldPath:""}): type: 'Warning' reason: 'CreatingLoadBalancerFailed' Error creating load balancer (will retry): failed to ensure load balancer for service default/nginx-service: [400] [configs[0].protocol] The SSL private key and SSL certificate must be provided when using 'https'
-
-To your are having problems with the CCM, you can check your error logs. First, you'll need to find the name of the CCM Pod in the `kube-system` namespaces:
-
-    kubcetl get pods -n kube-system
-
-The Pod will be named `ccm-linode-` with a few extra characters at the end, like `ccm-linode-jrvj2`. Once you have the Pod name, you can view its logs:
-
-    kubectl logs ccm-linode-jrvj2 -n kube-system --tail=100
-
-There will be a number of messages that state
+{{</ note >}}
