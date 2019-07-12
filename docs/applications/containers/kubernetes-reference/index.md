@@ -5,8 +5,7 @@ author:
 description: 'A reference for Kubernetes terminology.'
 keywords: ['kubernetes','k8s','definitions']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-06-27
-modified: 2019-06-27
+published: 2019-07-12
 modified_by:
   name: Linode
 title: "Kubernetes Reference Guide"

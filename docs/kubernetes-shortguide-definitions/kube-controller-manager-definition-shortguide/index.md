@@ -6,7 +6,7 @@ description: 'Shortguide that displays the definition for kube-controller-manage
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Heather Zoppetti
-published: 2019-06-27
+published: 2019-07-12
 title: kube-controller-manager Definition
 keywords: []
 headless: true
