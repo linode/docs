@@ -15,4 +15,4 @@ show_on_rss_feed: false
 
 ## REST
 
-REST stands for **RE**presentational **S**tate **T**ransfer. It is an architectural style for network based software that requires stateless, cacheable, client-server communication via a uniform interface between components. The HTTP protocol is most often used in RESTful applications.
+REST stands for REpresentational State Transfer. It is an architectural style for network based software that requires stateless, cacheable, client-server communication via a uniform interface between components. The HTTP protocol is most often used in RESTful applications.
