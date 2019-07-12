@@ -15,4 +15,4 @@ show_on_rss_feed: false
 
 ### Master Server
 
-The Kubernetes Master is normally a separate server in a Kuberntes cluster responsible for maintaining the desired state of the cluster. It does this by telling the nodes how many instances of your application it should run and where.
+The Kubernetes Master is normally a separate server in a Kubernetes cluster responsible for maintaining the desired state of the cluster. It does this by telling the nodes how many instances of your application it should run and where.

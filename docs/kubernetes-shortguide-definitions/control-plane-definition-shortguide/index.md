@@ -15,4 +15,4 @@ show_on_rss_feed: false
 
 ### Control Plane
 
-kube-apiserver, kube-controller-manager, kube-scheduler, and etcd form what is known as the Control Plane of a Kubernetes cluster. The Control Plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.
+kube-apiserver, kube-controller-manager, kube-scheduler, and etcd form what is known as the [Control Plane](https://kubernetes.io/docs/concepts/#kubernetes-control-plane) of a Kubernetes cluster. The Control Plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.

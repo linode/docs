@@ -15,4 +15,4 @@ show_on_rss_feed: false
 
 ### kubeadm
 
-A cloud provider-agnostic tool that automates many of the tasks required to get a cluster up and running. Users of kubeadm can run a few simple commands on individual servers to turn them into a Kubernetes cluster consisting of a master node and worker nodes.
+[kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) is a cloud provider-agnostic tool that automates many of the tasks required to get a cluster up and running. Users of kubeadm can run a few simple commands on individual servers to turn them into a Kubernetes cluster consisting of a master node and worker nodes.
