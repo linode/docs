@@ -36,9 +36,9 @@ Hadoop is an open-source Apache project that allows creation of parallel process
 
 1.  [Add a Private IP Address](/docs/platform/manager/remote-access/#adding-private-ip-addresses) to each Linode so that your Cluster can communicate with an additional layer of security.
 
-1.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to harden each of the three servers. Create a normal user for the install, and a user called `hadoop` for any Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
+1.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to harden each of the three servers. Create a normal user for the Hadoop installation, and a user called `hadoop` for the Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
 
-1. Install the JDK using the appropriate guide for your distribution, [Debian](/docs/development/java/install-java-on-debian/), [CentOS](/docs/development/java/install-java-on-centos/) or [Ubuntu](/docs/development/java/install-java-on-ubuntu-16-04/), or grab the latest JDK from Oracle.
+1. Install the JDK using the appropriate guide for your distribution, [Debian](/docs/development/java/install-java-on-debian/), [CentOS](/docs/development/java/install-java-on-centos/) or [Ubuntu](/docs/development/java/install-java-on-ubuntu-16-04/), or install the latest JDK from Oracle.
 
 1.  The steps below use example IPs for each node. Adjust each example according to your configuration:
 
@@ -54,7 +54,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Before configuring the master and worker nodes, it's important to understand the different components of a Hadoop cluster.
 
-A **master node** keeps knowledge about the distributed file system, like the `inode` table on an `ext3` filesystem, and schedules resources allocation. **node-master** will handle this role in this guide, and host two daemons:
+A **master node** maintains knowledge about the distributed file system, like the `inode` table on an `ext3` filesystem, and schedules resources allocation. **node-master** will handle this role in this guide, and host two daemons:
 
 *   The **NameNode** manages the distributed file system and knows where stored data blocks inside the cluster are.
 *   The **ResourceManager** manages the YARN jobs and takes care of scheduling and executing processes on worker nodes.
@@ -79,13 +79,13 @@ For each node to communicate with each other by name, edit the `/etc/hosts` file
 
 ### Distribute Authentication Key-pairs for the Hadoop User
 
-The master node will use an ssh connection to connect to other nodes with key-pair authentication. This will allow the master node to actively manage the cluster.
+The master node will use an SSH connection to connect to other nodes with key-pair authentication. This will allow the master node to actively manage the cluster.
 
-1.  Login to **node-master** as the `hadoop` user, and generate an ssh-key:
+1.  Login to **node-master** as the `hadoop` user, and generate an SSH key:
 
         ssh-keygen -b 4096
 
-     When generating this key, leave the password field blank so your hadoop user can communicate unprompted.
+     When generating this key, leave the password field blank so your Hadoop user can communicate unprompted.
 
 1.  View the **node-master** public key and copy it to your clipboard to use with each of your worker nodes.
 
@@ -123,11 +123,11 @@ export PATH=${PATH}:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin
 
 ## Configure the Master Node
 
-Configuration will be done on **node-master** and replicated to other nodes.
+Configuration will be performed on **node-master** and replicated to other nodes.
 
 ### Set JAVA_HOME
 
-1.  Get your Java installation path. If you installed open-jdk from your package manager, you can get the path with the command:
+1.  Find your Java installation path. This is known as `JAVA_HOME`. If you installed open-jdk from your package manager, you can find the path with the command:
 
         update-alternatives --display java
 
@@ -167,7 +167,7 @@ Update your `~/hadoop/etc/hadoop/core-site.xml` file to set the NameNode locatio
 
 ### Set path for HDFS
 
-Edit `hdfs-site.conf`:
+Edit `hdfs-site.conf` to resemble the following configuration:
 
 {{< file "~/hadoop/etc/hadoop/hdfs-site.xml" xml >}}
 <configuration>
@@ -194,7 +194,7 @@ The last property, `dfs.replication`, indicates how many times data is replicate
 
 ### Set YARN as Job Scheduler
 
-Edit the `mapred-site.xml` file, setting yarn as the default framework for MapReduce operations:
+Edit the `mapred-site.xml` file, setting YARN as the default framework for MapReduce operations:
 
 {{< file "~/hadoop/etc/hadoop/mapred-site.xml" xml >}}
 <configuration>
@@ -246,7 +246,7 @@ Edit `yarn-site.xml`, which contains the configuration options for YARN. In the 
 
 ### Configure Workers
 
-The file `workers` is used by startup scripts to start required daemons on all nodes. Edit `~/hadoop/etc/hadoop/workers` to be:
+The file `workers` is used by startup scripts to start required daemons on all nodes. Edit `~/hadoop/etc/hadoop/workers` to include both of the nodes:
 
 {{< file "~/hadoop/etc/hadoop/workers" resource >}}
 node1
@@ -357,13 +357,13 @@ For 2GB nodes, a working configuration may be:
 
 ## Duplicate Config Files on Each Node
 
-1.  Copy the hadoop binaries to worker nodes:
+1.  Copy the Hadoop binaries to worker nodes:
 
         cd /home/hadoop/
         scp hadoop-*.tar.gz node1:/home/hadoop
         scp hadoop-*.tar.gz node2:/home/hadoop
 
-2.  Connect to **node1** via ssh. A password isn't required, thanks to the ssh keys copied above:
+2.  Connect to **node1** via SSH. A password isn't required, thanks to the SSH keys copied above:
 
         ssh node1
 
@@ -401,13 +401,13 @@ This section will walk through starting HDFS on NameNode and DataNodes, and moni
 
     This will start **NameNode** and **SecondaryNameNode** on node-master, and **DataNode** on **node1** and **node2**, according to the configuration in the `workers` config file.
 
-2.  Check that every process is running with the `jps` command on each node. You should get on **node-master** (PID will be different):
+2.  Check that every process is running with the `jps` command on each node. On **node-master**, you should see the following (the PID number will be different):
 
         21922 Jps
         21603 NameNode
         21787 SecondaryNameNode
 
-    and on **node1** and **node2**:
+    And on **node1** and **node2** you should see the following:
 
         19728 DataNode
         19819 Jps
@@ -426,7 +426,7 @@ This section will walk through starting HDFS on NameNode and DataNodes, and moni
 
         hdfs dfsadmin -help
 
-2.  You can also automatically use the friendlier web user interface. Point your browser to http://node-master-IP:9870 and you'll get a user-friendly monitoring console.
+2.  You can also automatically use the friendlier web user interface. Point your browser to http://node-master-IP:9870, where node-master-IP is the IP address of your node-master, and you'll get a user-friendly monitoring console.
 
 ![Screenshot of HDFS Web UI](hadoop-3-hdfs-webui-wide.png "Screenshot of HDFS Web UI")
 
@@ -471,7 +471,7 @@ There are many commands to manage your HDFS. For a complete list, you can look a
 
 ## Run YARN
 
-HDFS is a distributed storage system, it doesn't provide any services for running and scheduling tasks in the cluster. This is the role of the YARN framework. The following section is about starting, monitoring, and submitting jobs to YARN.
+HDFS is a distributed storage system, and doesn't provide any services for running and scheduling tasks in the cluster. This is the role of the YARN framework. The following section is about starting, monitoring, and submitting jobs to YARN.
 
 ### Start and Stop YARN
 
@@ -497,15 +497,15 @@ HDFS is a distributed storage system, it doesn't provide any services for runnin
 
     To get all available parameters of the `yarn` command, see [Apache YARN documentation](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html).
 
-2.  As with HDFS, YARN provides a friendlier web UI, started by default on port `8088` of the Resource Manager. Point your browser to http://node-master-IP:8088 and browse the UI:
+2.  As with HDFS, YARN provides a friendlier web UI, started by default on port `8088` of the Resource Manager. Point your browser to http://node-master-IP:8088, where node-master-IP is the IP address of your node-master, and browse the UI:
 
     ![Screenshot of YARN Web UI](hadoop-4-yarn-webui-wide.png "Screenshot of YARN Web UI")
 
 ### Submit MapReduce Jobs to YARN
 
-Yarn jobs are packaged into `jar` files and submitted to YARN for execution with the command `yarn jar`. The Hadoop installation package provides sample applications that can be run to test your cluster. You'll use them to run a word count on the three books previously uploaded to HDFS.
+YARN jobs are packaged into `jar` files and submitted to YARN for execution with the command `yarn jar`. The Hadoop installation package provides sample applications that can be run to test your cluster. You'll use them to run a word count on the three books previously uploaded to HDFS.
 
-1.  Submit a job with the sample jar to YARN. On **node-master**, run:
+1.  Submit a job with the sample `jar` to YARN. On **node-master**, run:
 
         yarn jar ~/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.2.jar wordcount "books/*" output
 
