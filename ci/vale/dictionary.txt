@@ -17,6 +17,7 @@ ajp
 aker
 alives
 allmasquerade
+alphanumerics
 amavis
 amavisd
 amd64
@@ -101,6 +102,7 @@ bootable
 bootloader
 bootup
 bootups
+boto
 bounceback
 brackley
 bram
@@ -124,6 +126,7 @@ calc
 campione
 captcha
 carootcert
+ccm
 celeryd
 centos
 centos7
@@ -212,6 +215,7 @@ cronjobs
 crontab
 crt
 crypto
+csi
 csr
 css
 csum
@@ -219,6 +223,7 @@ csv
 ctools
 ctrl
 ctx
+cuda
 cyberduck
 cyg
 cygwin
@@ -233,6 +238,7 @@ dahdi
 databags
 datacenter
 datadir
+datagram
 dataset
 datasets
 datasource
@@ -460,6 +466,8 @@ gnulinux
 gnutls
 gogs
 golang
+goroutine
+goroutines
 goto
 gpc
 gpg
@@ -544,6 +552,7 @@ icinga
 icingacli
 icmp
 icmpv6
+idempotence
 ident
 identrust
 idlist
@@ -720,6 +729,7 @@ logwatch
 longview
 lookups
 loopback
+lspci
 lsd
 lst
 lsyncd
@@ -860,6 +870,7 @@ neomake
 neovim
 netblocks
 netboot
+netcat
 netconfig
 netdev
 netfilter
@@ -900,6 +911,7 @@ noninteractive
 nonprivileged
 nonrecursive
 nosync
+nouveau
 novell
 npm
 npmjs
@@ -1062,6 +1074,7 @@ python3
 pythonic
 qmail
 qmgr
+quadro
 qualys
 quickconnect
 quicklisp
@@ -1139,6 +1152,7 @@ rubygems
 ruleset
 rulesets
 rundir
+runfile
 runlevels
 runtime
 runtimes
@@ -1201,6 +1215,7 @@ sfproject
 sfroot
 sftp
 sha256
+shader
 shadowsocks
 sharded
 sharding
@@ -1253,6 +1268,7 @@ src
 srv
 sshd
 sshfs
+sshpass
 ssi
 ssl
 stackscript

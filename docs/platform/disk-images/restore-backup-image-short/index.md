@@ -22,7 +22,7 @@ Restoring a backup will create a new [configuration profile](/docs/platform/disk
 {{< note >}}
 The size of the disk(s) created by the restore process will only be slightly larger than the total size of the files restored. This means that the disk(s) created will be 'full'.
 
-Some applications, like databases, need some amount of free unused space inside the disk in order to run. As a result, you may want to [increase your disk(s) size](/docs/platform/disk-images/resizing-a-linode/) after the restore process is completed.
+Some applications, like databases, need some amount of free unused space inside the disk in order to run. As a result, you may want to [increase your disk(s) size](/docs/quick-answers/linode-platform/resize-a-linode-disk-classic-manager/) after the restore process is completed.
 {{< /note >}}
 
 ### Restore to a New Linode

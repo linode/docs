@@ -42,34 +42,29 @@ For example, if the address `198.51.100.5` is assigned to the interface `eth0:3`
 
 **DNS Resolution**
 
-Your DNS resolver addresses are listed under the [**Remote Access** tab of the Linode Manager](/docs/platform/manager/remote-access/), though of course you are free to use any resolvers you choose.
+Your DNS resolver addresses are listed under the [**Networking**](/docs/platform/manager/remote-access/) tab of the Linode detail page in the [Cloud Manager](https://cloud.linode.com/dashboard), though of course you are free to use any resolvers you choose.
 
 However, unless you have a specific reason for doing so, you should *not* change your Linode's nameservers by editing `/etc/resolv.conf`. Depending on your distribution, `resolv.conf` may be overwritten by a networking service such as NetworkManager or systemd-resolved. Resolver options are usually set in the network interface's configuration file.
 
 
 ## Disable Network Helper
 
-Our [Network Helper](/docs/platform/network-helper/) tool is enabled by default for new Linodes. It automatically configures static IPv4 addresses, routing, and DNS on each bootup of your Linode. When manually setting static addressing, Network Helper must be *disabled* so it doesn't overwrite your changes on the next reboot.
-
-1.  From the Linode Manager's **Dashboard**, choose **Edit** for the desired configuration profile.
-
-    [![Linode Manager: Dashboard > Configuration Profile > Edit](linode-dashboard-hilighted_small.png)](linode-dashboard-hilighted.png)
-
-1.  Under **Filesystem/Boot Helpers**  at the bottom of the page,  set **Auto-configure Networking** to **No**. Then click **Save Changes**.
-
-    [![Linode Manager: Dashboard > Configuration Profile > Edit](network-helper-hilighted_small.png)](network-helper-hilighted.png)
-
+Our [Network Helper](/docs/platform/network-helper/) tool is enabled by default for new Linodes. It automatically configures static IPv4 addresses, routing, and DNS on each bootup of your Linode. When manually setting static addressing, Network Helper must be *disabled* so it doesn't overwrite your changes on the next reboot. You can disable Network Helper either *globally* for all of the Linodes on your account, or for individual Linodes, by following the [Network Helper Settings](https://linode.com/docs/platform/network-helper/#network-helper-settings) section of our network helper guide.
 
 ## Configure Static Addressing
 
-On the **Remote Access** tab of the Linode Manager, you'll see the following information for your Linode. Use this information to configure your Linode's network settings as shown below.
+To find the networking information for each of your Linodes in your Linode Manager, click on the **Linodes** tab to the left of the page, select the Linode you'll be configuring, then click on the **Networking** towards the top.
+
+[![Linode Manager / Networking Tab](linode_demo_steps.png)](linode_demo_steps.png)
+
+You'll see the following information for your Linode. Use this information to configure your Linode's network settings as shown below.
 
 *   IPv4 and IPv6 addresses (both private and public)
 *   IPv4 gateway
 *   IPv6 gateway
 *   DNS resolvers (if you want to use Linode's)
 
-[![Linode Manager / Remote Access](1711-remote_access_ips_small.png)](1710-remote_access_ips.png)
+[![Linode Manager / Remote Access](linode_demo.png)](linode_demo.png)
 
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
@@ -214,7 +209,7 @@ IPV6ADDR_SECONDARIES="2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64"
 
 Debian 7 through 9 all use *ifup* and *ifdown* to manage networking. In that configuration, Debian is one distribution where it's safe to directly edit `/etc/resolve.conf` because nothing will overwrite your changes if you reboot or restart networking services.
 
-Though systemd-networkd and systemd-resolved are both present in Debian 8 and 9, they're not enabled. If you decide to enable these systemd services to manage networking, you can not set static addresses in the file `/etc/network/interfaces` as shown below. You'll need to use the section further above for [Arch, Container Linux and Ubuntu 17.10](/docs/networking/linux-static-ip-configuration/#arch-coreos-container-linux-ubuntu-17-10). For more information, see `man ifup`, `man ifdown`, `man interfaces 5`, `man systemd-networkd` and `man systemd-resolved`.
+Though systemd-networkd and systemd-resolved are both present in Debian 8 and 9, they're not enabled. If you decide to enable these systemd services to manage networking, you can not set static addresses in the file `/etc/network/interfaces` as shown below. You'll need to use the section further above for [Arch and Container Linux](/docs/networking/linux-static-ip-configuration/#arch-coreos-container-linux). For more information, see `man ifup`, `man ifdown`, `man interfaces 5`, `man systemd-networkd` and `man systemd-resolved`.
 
 1.  Edit your configuration file to add the appropriate information:
 
@@ -280,7 +275,7 @@ dns_servers_eth0="203.0.113.1
 
 ### OpenSUSE
 
-Networking in OpenSUSE is managed by *wicked* and *netconfig*. In addition to directly editing the network configuration files shown below, you can also use [YaST](https://en.opensuse.org/Portal:YaST). See OpenSUSE's [networking documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.basicnet.html) for more information.
+Networking in OpenSUSE is managed by *wicked* and *netconfig*. In addition to directly editing the network configuration files shown below, you can also use [YaST](https://en.opensuse.org/Portal:YaST). See OpenSUSE's [networking documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.network.html) for more information.
 
 1.  Modify the interface's config file:
 
@@ -368,7 +363,7 @@ network:
 
 Ubuntu 14.04 and 16.04 include [resolvconf](http://packages.ubuntu.com/xenial/resolvconf) in their base installation. This is an application which manages the contents of `/etc/resolv.conf`, so do not edit `resolv.conf` directly. Instead, add DNS resolver addresses and options to the network interface file as shown.
 
-Like with Debian, systemd-networkd and systemd-resolved are both present but not enabled in Ubuntu 16.04. If you decide to enable these services to manage networking, you can not set static addresses in the file `/etc/network/interfaces` as shown below. You'll need to use the section further above for [Arch, Container Linux and Ubuntu 17.10](#arch-coreos-container-linux-ubuntu-17-10). For more information, see `man ifup`, `man ifdown`, `man interfaces 5`, `man systemd-networkd` and `man systemd-resolved`.
+Like with Debian, systemd-networkd and systemd-resolved are both present but not enabled in Ubuntu 16.04. If you decide to enable these services to manage networking, you can not set static addresses in the file `/etc/network/interfaces` as shown below. You'll need to use the section further above for [Arch and Container Linux](/docs/networking/linux-static-ip-configuration/#arch-coreos-container-linux). For more information, see `man ifup`, `man ifdown`, `man interfaces 5`, `man systemd-networkd` and `man systemd-resolved`.
 
 {{< file "/etc/network/interfaces" >}}
 . . .

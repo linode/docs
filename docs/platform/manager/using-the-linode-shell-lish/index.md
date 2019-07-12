@@ -1,4 +1,4 @@
----
+ ---
 author:
   name: Linode
   email: docs@linode.com
@@ -6,7 +6,7 @@ description: 'Learn how to use Lish as a shell for managing or rescuing your Lin
 keywords: ["Console", "Shell", "Lish", "rescue"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/','networking/using-the-linode-shell-lish/','platform/using-the-linode-shell-lish/']
-modified: 2019-03-11
+modified: 2019-06-20
 modified_by:
   name: Linode
 published: 2009-08-04
@@ -38,12 +38,13 @@ You can connect to Lish with the SSH client of your choice. For example, you can
     | `lish-dallas.linode.com` | US, Dallas, TX |
     | `lish-fremont.linode.com` | US, Fremont, CA |
     | `lish-newark.linode.com` | US, Newark, NJ |
+    | `lish-mum1.linode.com` | Mumbai, India |
     | `lish-singapore.linode.com` | Asia, Singapore, SG |
-    | `lish-tokyo.linode.com` | Asia, Tokyo, JP |
     | `lish-tokyo2.linode.com` or `lish-shg1.linode.com` | Asia, Tokyo, JP |
     | `lish-tor1.linode.com` | Canada, Toronto, ON |
     | `lish-frankfurt.linode.com` | Europe, Frankfurt, DE |
     | `lish-london.linode.com` | Europe, London, UK |
+
 
 
 1.  Open a terminal window and enter the following command, replacing `username` with your Linode Cloud Manager username, and `location` with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
@@ -229,6 +230,14 @@ These are the fingerprints for the Lish gateway in our London data center (lish-
     ECDSA SHA256:mE/plOHLl+NJ7LUdW7AaMEOnhskXZxav5Em/rD6VZ5g
     Ed25519 SHA256:HXHM8/wCx7NrGsnfGpaexiBfOLKN9g0hoaL9wRaSeWg
 
+### Mumbai
+
+These are the fingerprints for the Lish gateway in our Mumbai data center (lish-mum1.linode.com):
+
+    RSA 5:57:72:e0:79:a6:48:13:2b:8a:cd:1e:35:7c:c1:a2:ed
+    ECDSA SHA256:uWVLSBPZ0E72VawrP4yWsW3YYHPM9b7A/seeEy7GG0c
+    Ed25519 SHA256:5VkP3/dLsfrKic9p6y9QnFq4sKa92RBzxGJrsX5/dBQ
+
 ### Newark
 
 These are the fingerprints for the Lish gateway in our Newark data center (lish-newark.linode.com):
@@ -245,14 +254,6 @@ These are the fingerprints for the Lish gateway in our Singapore data center (li
     ECDSA SHA256:rFYWuld4hWMbTzX+xZMuQ3kxiJ6t8A+FNQ5k889mKEA
     Ed25519 SHA256:q1G1pBrLuhsUAnZ04SOYoxVthKYyLz+wA0hBAUVkKtE
 
-### Tokyo
-
-These are the fingerprints for the Lish gateway in our Tokyo data center (lish-tokyo.linode.com):
-
-    RSA af:ec:f0:b8:87:33:d5:12:04:0d:7c:bb:a6:c5:5f:be
-    ECDSA SHA256:smE6PUuuG6tR4N8kN8UpoPx+XyVtAwxQ2dHuwoVS6eY
-    Ed25519 SHA256:xAs8SdX91L7Xw5q9H+GGR5N9DoPGxP5RKG3aTvR60zw
-
 ### Tokyo 2
 
 These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-tokyo2.linode.com):
@@ -263,7 +264,7 @@ These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-
 
 ### Toronto
 
-These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-tokyo2.linode.com):
+These are the fingerprints for the Lish gateway in our Toronto data center (lish-tor1.linode.com):
 
     RSA 4a:d9:fb:43:b8:0e:7f:fd:d3:cd:fc:87:06:61:51:df
     ECDSA SHA256:iAWnqR3XYcooliTQ7W1tiMmjsA4k1WJVItvLz4lUxQE
