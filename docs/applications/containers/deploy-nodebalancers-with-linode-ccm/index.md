@@ -21,12 +21,12 @@ This guide will explain how to:
 - Use the NodeBalancer to terminate TLS encryption.
 
 {{< caution >}}
-Using the Linode Cloud Controller Manager to create NodeBalancers will create billable resources on your Linode account. Be sure to follow the instructions at the end of the guide if you would like to delete these resources from your account.
+Using the Linode Cloud Controller Manager to create NodeBalancers will create billable resources on your Linode account. A NodeBalancer costs $10 a month. Be sure to follow the instructions at the end of the guide if you would like to delete these resources from your account.
 {{</ caution >}}
 
 ## Before You Begin
 
-You should have a working knowledge of Kubernetes before attempting the instructions found in this guide. For more information about Kubernetes, consult our [Kubernetes Beginner's Guide](/docs/applications/containers/beginners-guide-to-kubernetes/) and our [Getting Started with Kubernetes](/docs/applications/containers/getting-started-with-kubernetes/) guide.
+You should have a working knowledge of Kubernetes and familiarty with the `kubcetl` command line tool before attempting the instructions found in this guide. For more information about Kubernetes, consult our [Kubernetes Beginner's Guide](/docs/applications/containers/beginners-guide-to-kubernetes/) and our [Getting Started with Kubernetes](/docs/applications/containers/getting-started-with-kubernetes/) guide.
 
 When using the CCM for the first time, it's highly suggested that you create a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state. For a completely automated install, you can use the [Linode CLI's k8s-alpha command line tool](https://developers.linode.com/kubernetes/). The Linode CLI's k8s-alpha command line tool utilizes [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) to fully boostrap a Kubernetes cluster on Linode. It includes the [Linode Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) plugin, the Linode CCM plugin, and the [ExternalDNS plugin](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md). For more information on creating a Kubernetes cluster with the Linode CLI, review our [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide.
 
@@ -48,7 +48,7 @@ To manually add the Linode CCM to your cluster, you must start your kubelets, co
 
 To use the CCM, you must have a collection of Pods that need to be load balanced, usually from a Deployment. For this example, you will create a Deployment that deploys three nginx Pods, and then create a Service to expose those Pods to the internet using the Linode CCM.
 
-1.  Create a Deployment manifest, describing the desired state of the three nginx containers:
+1.  Create a Deployment manifest, describing the desired state of the three replica nginx containers:
 
     {{< file "nginx-deployment.yaml" yaml >}}
 apiVersion: apps/v1
@@ -74,7 +74,11 @@ spec:
         - containerPort: 80
 {{</ file >}}
 
-1.  Create a Service for the Deployment:
+1.  Use the `create` command to apply the manifest:
+
+        kubectl create -f nginx-deployment.yaml
+
+2.  Create a Service for the Deployment:
 
     {{< file "nginx-service.yaml" yaml >}}
 apiVersion: v1
@@ -100,9 +104,9 @@ spec:
 The above Service manifest includes a few important key concepts.
 
 - The first is the `spec.type` of `LoadBalancer`. This LoadBalancer type is what is responsible for telling the Linode CCM to create a Linode NodeBalancer, and will provide the Deployment it services a public facing IP address with which to access the nginx Pods.
-- There is additional information being passed to the CCM in the form of metadata annotations, which are discussed in the next section.
+- There is additional information being passed to the CCM in the form of metadata annotations (`service.beta.kubernetes.io/linode-loadbalancer-throttle` in the example above), which are discussed in the next section.
 
-Use the `create` command to create the Service and the NodeBalancer:
+Use the `create` command to create the Service, and in turn, the NodeBalancer:
 
     kubcetl create -f nginx-service.yaml
 
@@ -239,7 +243,7 @@ You can set the timeout for the session by using the `spec.sessionAffinityConfig
 
 ## Troubleshooting
 
-If your are having problems with the CCM, such as the NodeBalancer not being created, you can check the CCM's error logs. First, you'll need to find the name of the CCM Pod in the `kube-system` namespaces:
+If you are having problems with the CCM, such as the NodeBalancer not being created, you can check the CCM's error logs. First, you'll need to find the name of the CCM Pod in the `kube-system` namespaces:
 
     kubcetl get pods -n kube-system
 
@@ -269,4 +273,20 @@ The NodeBalancer would not be created and you would find the an error similar to
 
     ERROR: logging before flag.Parse: E0708 16:57:19.999318       1 service_controller.go:219] error processing service default/nginx-service (will retry): failed to ensure load balancer for service default/nginx-service: [400] [configs[0].protocol] The SSL private key and SSL certificate must be provided when using 'https'
     ERROR: logging before flag.Parse: I0708 16:57:19.999466       1 event.go:221] Event(v1.ObjectReference{Kind:"Service", Namespace:"default", Name:"nginx-service", UID:"5d1afc22-a1a1-11e9-ad5d-f23c919aa99b", APIVersion:"v1", ResourceVersion:"1248179", FieldPath:""}): type: 'Warning' reason: 'CreatingLoadBalancerFailed' Error creating load balancer (will retry): failed to ensure load balancer for service default/nginx-service: [400] [configs[0].protocol] The SSL private key and SSL certificate must be provided when using 'https'
+
+Removing the `http` port would allow you to create the NodeBalancer.
 {{</ note >}}
+
+## Delete a NodeBalancer
+
+To delete a NodeBalancer and the Service that it represents, you can use the Service manifest file you used to create the NodeBalancer. Simply use the `delete` command and supply your file name with the `f` flag:
+
+    kubectl delete -f nginx-service.yaml
+
+Similarly, you can delete the Service by name:
+
+    kubectl delete service nginx-service
+
+## Next Steps
+
+To further take advantage of Linode products through Kubernetes, check out our guide on how to use the [Linode Container Storage Interface (CSI)](/docs/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/), which allows you to create persistent volumes backed by Linode Block Storage.
