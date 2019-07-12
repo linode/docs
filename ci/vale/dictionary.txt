@@ -126,6 +126,7 @@ calc
 campione
 captcha
 carootcert
+ccm
 celeryd
 centos
 centos7
@@ -214,6 +215,7 @@ cronjobs
 crontab
 crt
 crypto
+csi
 csr
 css
 csum
