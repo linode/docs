@@ -59,7 +59,7 @@ If you intend to repeat this process regularly, consider [using rsync](/docs/sec
 
 FileZilla is a popular free and open source FTP, FTPS, and SFTP client which has a GUI but can also take CLI arguments. In contrast to to SCP, SFTP can list directory contents, create or delete files, and resume interrupted file transfers.
 
-See our [FileZilla guide](https://linode.com/docs/tools-reference/file-transfer/filezilla/) for more information.
+See our [FileZilla guide](/docs/tools-reference/file-transfer/filezilla/) for more information.
 
 ### Downloading Data from a Database
 
