@@ -117,3 +117,7 @@ On another Linode, make an exact copy of your current web server. The Linode bac
 Once the configuration is sent to the backend, users will be balanced over the two Linodes and each will be monitored for health. This configuration is very easy to work with, as upgrades can be rolled out to each backend without disrupting service and backends can be taken in and out of rotation at will.
 
 This is just the beginning; NodeBalancers are extremely flexible and cater to a lot of needs. From here, the API can be used to add many backends. Multiple ports on one backend can be balanced for complex setups. Additionally, new tools like *memcached* can be introduced to the application to allow session stickiness to become irrelevant.
+
+# Limitations
+
+Nodebalancers do have a maximum connection limit of 10,000 concurrent connections.
