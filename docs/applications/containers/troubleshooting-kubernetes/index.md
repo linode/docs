@@ -20,7 +20,7 @@ external_resources:
 
 I can't really think of all the common problems that could might appear, so I've set up a few to start, and I'm imagining that the list could be expanded over time. We should consider advertising to Support that we would welcome JIRA tickets with recommendations to get addeed to the list, if they start to see certain problems more often. -->
 
-Troubleshooting issues with Kubernetes can be complex, and it can be difficult to account for all the possible error conditions you may see. This guide will try to equip you with the core tools that can be useful when troubleshooting, and it will introduce some situations that you may find yourself in.
+Troubleshooting issues with Kubernetes can be complex, and it can be difficult to account for all the possible error conditions you may see. This guide tries to equip you with the core tools that can be useful when troubleshooting, and it introduces some situations that you may find yourself in.
 
 {{< disclosure-note "Where to go for help outside this guide" >}}
 If your issue is not covered by this guide, we also recommend researching and posting in the [Linode Community Questions](https://www.linode.com/community/questions/) site and in `#linode` on the [Kubernetes Slack](http://slack.k8s.io/), where other Linode users (and the Kubernetes community) can offer advice.
@@ -73,12 +73,12 @@ If you've set up Kubernetes using automated solutions like Linode's Kubernetes E
 {{< /note >}}
 
 
--   You can specify the [`-o` flag](https://kubernetes.io/docs/reference/kubectl/overview/#output-options) to return the resources as YAML or JSON. The Kubernetes API's complete description for the returned resources will be shown:
+-   Use the [`-o` flag](https://kubernetes.io/docs/reference/kubectl/overview/#output-options) to return the resources as YAML or JSON. The Kubernetes API's complete description for the returned resources will be shown:
 
         # Get pods as YAML API objects
         kubectl get pods -o yaml
 
--   The returned resources can be sorted with the `--sort-by` flag:
+-   Sort the returned resources with the `--sort-by` flag:
 
         # Sort by name
         kubectl get pods --sort-by=.metadata.name
@@ -103,7 +103,7 @@ Use the [`describe` command](https://kubernetes.io/docs/reference/generated/kube
 
     kubectl describe nodes
 
-You pass the name of a resource to get a report for just that object:
+Pass the name of a resource to get a report for just that object:
 
     kubectl describe pods ghost-0
 
@@ -115,7 +115,7 @@ Use the [`logs` command](https://kubernetes.io/docs/reference/generated/kubectl/
 
     kubectl logs mariadb-0
 
--   You can use the `--selector` (`-l`) flag to print logs from all pods that match a selector:
+-   Use the `--selector` (`-l`) flag to print logs from all pods that match a selector:
 
         kubectl logs -l app=ghost
 
