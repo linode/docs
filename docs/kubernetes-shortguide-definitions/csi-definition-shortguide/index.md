@@ -2,9 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that displays the definition for csi.'
+description: 'Shortguide that displays the definition for the Container Storage Interface specification.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
 modified_by:
   name: Heather Zoppetti
 published: 2019-06-27
@@ -16,4 +15,6 @@ show_on_rss_feed: false
 
 ### Container Storage Interface
 
-The [Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) for Linode Block Storage enables container orchestrators such as Kubernetes to manage the life-cycle of persistent storage claims.
+The Container Storage Interface (CSI) specification provides a common storage interface for container orchestrators like Kubernetes (and others, like Mesos). The interface is used by an orchestrator to attach storage volumes to containers and to manage the lifecycle of those volumes.
+
+The objective of this specification is to allow cloud computing platforms to develop a single storage plugin that works with any container orchestrator. Linode has authored a [CSI driver](https://github.com/linode/linode-blockstorage-csi-driver) for Linode's Block Storage service, which makes Block Storage Volumes available to your containers.

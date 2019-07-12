@@ -4,7 +4,6 @@ author:
   email: docs@linode.com
 description: 'Shortguide that displays the definition for Linode NodeBalancer.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
 modified_by:
   name: Heather Zoppetti
 published: 2019-06-27
@@ -16,4 +15,4 @@ show_on_rss_feed: false
 
 ### Linode NodeBalancer
 
-NodeBalancers are highly-available, managed, cloud based, "load balancers as a service". They intelligently route incoming requests to backend Linodes to help your application cope with load, and to increase your application's availability.
+NodeBalancers are highly-available, managed, cloud based "load balancers as a service". They intelligently route incoming requests to backend Linodes to help your application cope with load, and to increase your application's availability.

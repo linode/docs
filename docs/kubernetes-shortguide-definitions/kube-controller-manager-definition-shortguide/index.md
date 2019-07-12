@@ -4,7 +4,6 @@ author:
   email: docs@linode.com
 description: 'Shortguide that displays the definition for kube-controller-manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
 modified_by:
   name: Heather Zoppetti
 published: 2019-06-27
@@ -16,4 +15,4 @@ show_on_rss_feed: false
 
 ### kube-controller-manager
 
-The [kube-controller-manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) is a daemon that manages the Kubernetes control loop. It watches the shared state of the cluster through the apiserver.
+The [kube-controller-manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) is a daemon that manages the Kubernetes control loop. It watches the shared state of the cluster through the Kubernetes API server.

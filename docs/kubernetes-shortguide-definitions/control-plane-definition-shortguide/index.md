@@ -2,9 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that displays the definition for control plane.'
+description: 'Shortguide that displays the definition for Control Plane.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
 modified_by:
   name: Heather Zoppetti
 published: 2019-06-27
@@ -14,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Control plane
+### Control Plane
 
-kube-apiserver, kube-controller-manager, kube-scheduler, and etcd form what is known as the control plane. The control plane is responsible for making decisions about the cluster, and pushing it toward the desired state.
+kube-apiserver, kube-controller-manager, kube-scheduler, and etcd form what is known as the Control Plane of a Kubernetes cluster. The Control Plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.

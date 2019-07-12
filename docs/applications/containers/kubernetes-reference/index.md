@@ -17,7 +17,7 @@ external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 ---
 
-This is a reference for common, frequently used Kubernetes terminology.
+This is a reference for common Kubernetes terminology.
 
 {{< content "calico-definition-shortguide" >}}
 

@@ -4,7 +4,6 @@ author:
   email: docs@linode.com
 description: 'Shortguide that displays the definition for kubelet.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
 modified_by:
   name: Heather Zoppetti
 published: 2019-06-27
@@ -16,4 +15,4 @@ show_on_rss_feed: false
 
 ### kubelet
 
-An agent that receives descriptions of the desired state of a Pod from the API server, and ensures the Pod is healthy, and running on the Node.
+[kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) is an agent that receives descriptions of the desired state of a Pod from the API server and ensures the Pod is healthy and running on its node.

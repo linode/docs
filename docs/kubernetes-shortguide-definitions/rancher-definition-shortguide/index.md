@@ -4,7 +4,6 @@ author:
   email: docs@linode.com
 description: 'Shortguide that displays the definition for Rancher.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-08-03
 modified_by:
   name: Heather Zoppetti
 published: 2019-06-27
