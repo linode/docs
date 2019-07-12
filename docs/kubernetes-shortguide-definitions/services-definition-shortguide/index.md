@@ -13,7 +13,7 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Services
+## Services
 
 [Services](https://kubernetes.io/docs/concepts/services-networking/service/) group identical Pods together to provide a consistent means of accessing them. Each service is given an IP address and a corresponding DNS entry. Services exist across nodes. There are four types of Services:
 

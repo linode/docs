@@ -13,7 +13,7 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Linode Cloud Controller Manager
+## Linode Cloud Controller Manager
 
 The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager) creates a fully supported Kubernetes experience on Linode:
 

@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Namespaces
+## Namespaces
 
 [Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) are virtual clusters that exist within the Kubernetes cluster that help to group and organize Kubernetes API objects. Every cluster has at least three Namespaces: default, kube-system, and kube-public. When interacting with the cluster it is important to know which Namespace the object you are looking for is in, as many commands will default to only showing you what exists in the default Namespace. Resources created without an explicit Namespace will be added to the default Namespace.

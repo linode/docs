@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Cluster
+## Cluster
 
 A group of servers containing at least one master node and one or more worker nodes.

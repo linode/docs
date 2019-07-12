@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### kube-proxy
+## kube-proxy
 
 The [kube-proxy](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) is a networking proxy that proxies the UDP, TCP, and SCTP networking of each node, and provides load balancing. This is only used to connect to Services.

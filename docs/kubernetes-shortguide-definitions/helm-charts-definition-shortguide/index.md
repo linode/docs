@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Helm Charts
+## Helm Charts
 
 The software packaging format for Helm. A [Helm chart](https://helm.sh/docs/developing_charts/) specifies a file and directory structure for packaging your Kubernetes manifests.

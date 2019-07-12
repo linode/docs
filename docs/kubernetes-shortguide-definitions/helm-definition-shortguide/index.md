@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Helm
+## Helm
 
 [Helm](https://helm.sh) is a tool that assists with installing and managing applications on Kubernetes clusters. It is often referred to as “the package manager for Kubernetes,” and it provides functions that are similar to a package manager for an operating system.

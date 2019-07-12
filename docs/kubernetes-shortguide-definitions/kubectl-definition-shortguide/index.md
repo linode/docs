@@ -13,7 +13,7 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### kubectl
+## kubectl
 
 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) is a command line tool used to interact with the Kubernetes cluster. It offers a host of features, including:
 

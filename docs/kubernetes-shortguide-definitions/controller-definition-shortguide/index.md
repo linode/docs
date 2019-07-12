@@ -13,7 +13,7 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Controller
+## Controller
 
 A Kubernetes Controller is a control loop that continuously watches the Kubernetes API and tries to manage the desired state of certain aspects of the cluster. Examples of different Controllers include:
 

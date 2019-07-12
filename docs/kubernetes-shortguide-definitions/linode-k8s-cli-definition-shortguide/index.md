@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Linode k8s-alpha CLI
+## Linode k8s-alpha CLI
 
 The [Linode k8s-alpha CLI](https://developers.linode.com/kubernetes/) is a plugin for the Linode CLI that offers quick, single-command deployments of Kubernetes clusters on your Linode account.

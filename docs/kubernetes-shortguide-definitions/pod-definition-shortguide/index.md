@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Pod
+## Pod
 
 A [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/) is the smallest deployable unit of computing in the Kubernetes architecture. A Pod is a group of one or more containers with shared resources and a specification for how to run these containers. Each Pod has its own IP address in the cluster. Pods are "mortal," which means that they are created and destroyed depending on the needs of the application

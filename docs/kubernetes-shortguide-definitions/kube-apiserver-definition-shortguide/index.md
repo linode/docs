@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### kube-apiserver
+## kube-apiserver
 
 The [kube-apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) is the front end for the Kubernetes API server. Validates and configures data for Kubernetes' API objects including Pods, Services, Deployments, and more.

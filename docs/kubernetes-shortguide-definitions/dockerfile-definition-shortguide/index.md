@@ -13,7 +13,7 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Dockerfile
+## Dockerfile
 
 A [Dockerfile](https://docs.docker.com/engine/reference/builder/) contains all commands, in their required order of execution, needed to build a given Docker image. For example, a Dockerfile might contain instructions for:
 

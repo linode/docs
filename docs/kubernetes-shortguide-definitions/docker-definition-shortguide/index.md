@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Docker
+## Docker
 
 [Docker](https://www.docker.com/) is a tool that allows quick deployment of apps in containers using operating system level virtualization. While Kubernetes supports several container runtimes, Docker is a very popular option.

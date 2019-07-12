@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Kubernetes Manifests
+## Kubernetes Manifests
 
 Files, often written in YAML, used to create, modify, and delete Kubernetes resources such as Pods, Deployments, and Services.

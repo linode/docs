@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Volumes
+## Volumes
 
 A [Volume](https://kubernetes.io/docs/concepts/storage/volumes/) in Kubernetes is a way to share file storage between containers in a Pod. Kubernetes Volumes differ from Docker volumes because they exist inside the Pod rather than inside the container.

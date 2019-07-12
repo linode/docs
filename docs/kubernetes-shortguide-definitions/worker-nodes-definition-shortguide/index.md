@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Worker Nodes
+## Worker Nodes
 
 Worker nodes in a Kubernetes cluster are servers that run your applications' Pods. The number of nodes in your cluster is determined by the cluster administrator.

@@ -13,6 +13,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-### Helm Client
+## Helm Client
 
 The Helm client software issues commands to your cluster that can install new applications, upgrade them, and delete them. You run the client software on your computer, in your CI/CD environment, or anywhere else you’d like.
