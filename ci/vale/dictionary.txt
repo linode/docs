@@ -12,6 +12,7 @@ adnanh
 adodb
 aes
 ahci0
+Aho
 ahvz
 ajp
 aker
@@ -644,6 +645,7 @@ keepalived
 keras
 kerberos
 kerberos5
+Kernighan
 keychain
 keyfiles
 keygen
@@ -1513,6 +1515,7 @@ websocket
 webtatic
 webupd8
 weechat
+Weinberger
 welcometext
 wercker
 werkzug

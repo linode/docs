@@ -39,7 +39,7 @@ Input is read either from standard input or from files specified as command line
 
 There are many versions of AWK available, the most widely used are: `gawk`, `mawk`, and `nawk`.
 
- - `gawk` or GNU-AWK, was introduced back in 1986.  `gawk` is a powerful and popular version of AWK that is included in some Linux distributions as their defualt AWK implementation. Find more information about `gawk` in [here](https://www.gnu.org/software/gawk/).
+ - `gawk` or GNU-AWK, was introduced back in 1986.  `gawk` is a powerful and popular version of AWK that is included in some Linux distributions as their default AWK implementation. Find more information about `gawk` in [here](https://www.gnu.org/software/gawk/).
 
  - Michael Brennan wrote another AWK variant named `mawk`. Find more information about `mwak` [here](https://invisible-island.net/mawk/).
 
