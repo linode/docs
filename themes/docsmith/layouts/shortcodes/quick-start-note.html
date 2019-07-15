@@ -1,0 +1,18 @@
+<blockquote class="hidden-content quick-start">
+    <span onclick="dataLayer.push({'event': 'quick-start-toggle'});">
+        <!-- arrow-down-circle.svg - Feather icon set | MIT License | https://feathericons.com -->
+        <img class="toggle-hidden-content-icon" src="{{ relURL "media/images/arrow-down-circle.svg" }}" />
+            <h2 class="quick-start-h2" id="{{ anchorize ($.Page.Title) }}">{{ $.Page.Title }} - Quick Start</h2>
+    </span>
+    <div class="hidden-content-body">
+        <div class="height-preservation-wrapper">
+            <p>Follow the steps in this section to jump right in. If you want a deeper dive, continue on to the rest of the guide.
+            </p>
+            {{ .Inner | markdownify }}
+            <hr>
+            <p class="feedback--prompt">Was this Quick Start helpful?</p>
+            <button class="btn feedback yes" onclick="dataLayer.push({'event': 'quickstart-helpful-yes'});">Yes</button>
+            <button class="btn feedback no" onclick="dataLayer.push({'event': 'quickstart-helpful-no'});">No</button>
+        </div>
+    </div>
+</blockquote>
