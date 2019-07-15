@@ -10,7 +10,6 @@ modified: 2019-07-15
 modified_by:
   name: Linode
 title: 'Choosing a Distribution'
-external_resources:
 ---
 
 ## What is a Distribution?
