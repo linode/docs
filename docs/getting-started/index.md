@@ -41,29 +41,6 @@ If you haven't already signed up for a Linode account, start here.
 
 1.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 
-## Choosing a Distribution
-
-**Distributions** or *"Distros"* can be described as different operating system versions built on top of the underlying Linux Kernel to support a variety of use-cases and preferences. Since all distributions are built on top of Linux, most are extremely similar and can be used universally. The primary difference between most Distros will be found in the specifics. [Ubuntu](https://ubuntu.com/), for example, is arguably the most popular for it's ease of use and the ability to take care of smaller configuration tasks for you by default. [Arch Linux](https://www.archlinux.org/) on the other hand does not provide this simplicity in favor of more control so that you can fine tune the way that your system functions.
-
-Below is a list of Distributions that we currently provide and a very brief description of each:
-
-| Distribution | Description |
-|------|-------|
-| [Alpine](https://alpinelinux.org/) | Lightweight distribution popular with [Docker](https://www.docker.com/) and security minded users |
-| [Arch](https://www.archlinux.org/) | Powerful and Detail oriented, empowers more advanced users to fine tune their configuration |
-[CentOS](https://www.centos.org) | Widely popular in professional and business settings while still being accessible to the average user |
-[CoreOS](https://coreos.com/) |  Container-focused distribution, designed for clustered deployments |
-[Debian](https://www.debian.org/) | One of the oldest distributions in use, popular, steady, and reliable. Regularly updated and maintained |
-[Fedora](https://getfedora.org/) | Implements bleeding edge software. Fedora is similar though more advanced than CentOS and great for users who want to use the newest of new and don't mind an added layer of complexity  |
-[Gentoo](https://www.gentoo.org/) | Advanced distribution designed for power users who want more control over their configuration and are comfortable compiling everything from source |
-[Slackware](http://www.slackware.com/) | The oldest actively maintained distribution. One of the most UNIX-like Linux distributions available |
-[Ubuntu](https://ubuntu.com/) | Arguably the most popular Linux distribution, widely regarded for it's ease of use |
-[OpenSUSE](https://www.opensuse.org/) | Provides powerful tools specific to system administration tasks |
-
-{{< note >}}
-Though this list covers most popular distributions, creating a Linode using a distribution that we do not provide is absolutely possible. Feel free to follow our [Custom Distribution Guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) for more information.
-{{< /note >}}
-
 ## Create a Linode
 ![Create a Linode by selecting the image, the region, the plan, and creating a label and a password.](getting-started.gif)
 
@@ -71,13 +48,11 @@ Though this list covers most popular distributions, creating a Linode using a di
 
 1.  At the top of the page, click **Create** and select **Linode**.
 
-1.  Select the Distribution, One Click App, or Image you would like to use.
+1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [One Click App](/docs/platform/one-click/how-to-use-one-click-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
 
     {{< note >}}
-Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress.
+Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress. You can read more about Stackscripts and how they work [here](/docs/platform/stackscripts/)
 {{< /note >}}
-
-
 
 1.  Choose the region where you would like your Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
