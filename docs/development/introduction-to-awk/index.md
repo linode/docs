@@ -373,7 +373,7 @@ The use of the `rand()` function is illustrated in the following example.
     {{< file "rand.awk" awk >}}
 BEGIN {
     for (i=0; i<=10; i++)
-	    rnd[i] = 0;
+        rnd[i] = 0;
 
     while (i < 500) {
         n = int(rand()*10);
@@ -382,7 +382,7 @@ BEGIN {
     }
 
     for (i=0; i<10; i++)
-	    print i, "Occurred", rnd[i], "times";
+        print i, "Occurred", rnd[i], "times";
 }
 {{< /file >}}
 
