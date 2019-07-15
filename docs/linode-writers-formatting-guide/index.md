@@ -411,7 +411,7 @@ List definitions in a table with the definition-table shortcode:
 Put your table data here.</br>
 &#123;&#123;&lt; /definition-table &gt;&#125;&#125;
 
-{{< definition-table "table definition-table">}}
+{{< definition-table>}}
 | Parameter | Data type/Status | Usage |
 | --------- | -------- | ------|
 | `access_token` | string, *required* | Your Linode API v4 access token. The token should have permission to read and write Linodes. The token can also be specified by exposing the `LINODE_ACCESS_TOKEN` environment variable. |
