@@ -14,7 +14,7 @@ title: NodeBalancer Reference Guide
 classic_manager_link: platform/nodebalancer/nodebalancer-reference-guide-classic-manager/
 ---
 
-![NodeBalancer Reference Guide](NodeBalancer_Reference_Guide_smg.jpg)
+![NodeBalancer Reference Guide](nodebalancer-reference-guide.png "NodeBalancer Reference Guide")
 
 This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting Started Guide](/docs/platform/nodebalancer/getting-started-with-nodebalancers) for practical examples.
 

@@ -14,7 +14,7 @@ title: Getting Started with NodeBalancers
 classic_manager_link: platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/
 ---
 
-![Getting Started with NodeBalancers](Getting-Started-with-NodeBalancers-smg.jpg)
+![Getting Started with NodeBalancers](getting-started-with-nodebalancers.png "Getting Started with NodeBalancers")
 
 Nearly all applications that are built using Linodes can benefit from load balancing, and load balancing itself is the key to expanding an application to larger numbers of users. Linode now provides NodeBalancers, which can ease the deployment and administration of a load balancer.
 

@@ -16,7 +16,7 @@ external_resources:
 classic_manager_link: platform/stackscripts-classic-manager/
 ---
 
-![Automate Deployment with StackScripts](automate-deployment-with-stackscripts-title-graphic.jpg "Automate Deployment with StackScripts")
+![Automate Deployment with StackScripts](automate-deployment-with-stackscripts.png "Automate Deployment with StackScripts")
 
 [StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of our default Linux distribution images. Linodes deployed with a StackScript run the script as part of the first boot process. This guide explains how StackScripts work, and offer several examples of how to use them.
 

@@ -15,6 +15,8 @@ external_resources:
   - '[Helm Security on Bitnami Engineering](https://engineering.bitnami.com/articles/helm-security.html)'
 ---
 
+![Install Apps on Kubernetes with Helm](install-apps-kubernetes-helm.png "Install Apps on Kubernetes with Helm")
+
 ## What is Helm?
 
 [Helm](https://helm.sh) is a tool that assists with installing and managing applications on Kubernetes clusters. It is often referred to as "the package manager for Kubernetes," and it provides functions that are similar to a package manager for an operating system:
