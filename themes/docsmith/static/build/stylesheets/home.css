@@ -10777,6 +10777,12 @@ body.modal-open,
   font-size: 16px;
   color: #747474;
 }
+.definition-table > tbody > tr > td {
+  vertical-align: top;
+}
+.definition-table > tbody > tr > td > li {
+  font-size: 14px;
+}
 table.lntable tbody {
   display: table;
   width: inherit;
@@ -22044,6 +22050,9 @@ h1.contribute {
 #article-body .disclosure-note .glyphicon.glyphicon-copy {
   font-size: 1.6rem;
   color: #a6a6a6;
+}
+#article-body .definition-table li {
+  font-size: 14px;
 }
 blockquote div.btn-copy > .copy-code {
   padding-top: 0.01rem;
