@@ -12,7 +12,7 @@ published: 2015-02-27
 title: Reboot Survival Guide
 ---
 
-![Reboot Survival Guide](Reboot_Survival_Guide_smg.jpg)
+![Reboot Survival Guide](reboot-survival-guide.png "Reboot Survival Guide")
 
 Although constant server uptime is optimal, downtime is inevitable. Cloud infrastructure and RAID arrays offer resilience, but all servers rely on physical hardware, which eventually need maintenance. Hardware aside, kernel updates and other software patches can mean rebooting to ensure your system is secure and up-to-date.
 

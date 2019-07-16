@@ -14,6 +14,7 @@ title: 'Manage a Docker Cluster with Kubernetes'
 contributor:
   name: Damaso Sanoja
   link: https://twitter.com/damasosanoja
+concentrations: ["Kubernetes"]
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
   - '[Calico Documentation](https://docs.projectcalico.org/v2.0/getting-started/kubernetes/)'

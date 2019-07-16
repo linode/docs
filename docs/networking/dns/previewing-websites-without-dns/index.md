@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2014-01-16
 title: Previewing Websites Without DNS
+classic_manager_link: networking/dns/previewing-websites-without-dns-classic-manager/
 ---
 
 ![Previewing Websites without DNS](Previewing_Websites_Without_DNS_smg.jpg)
@@ -21,14 +22,14 @@ A hosts file is used to map specific hostnames to IP addresses, and takes preced
 
 ## Find Your Linode's IP Address
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** tab.
 3.  Select your Linode.
-4.  Click the **Remote Access** tab. The webpage shown below appears.
+4.  Click the **Networking** tab. The webpage shown below appears.
 
-    [![Select a data center.](1534-linode-manager-6-1-small.png)](1535-linode-manager-6-1.png)
+    [![Networking Tab.](networking_ips.png)](networking_ips.png)
 
-5.  Copy the addresses in the Public IPs section. In this example, the Linode's IPv4 address is `96.126.108.183` and its IPv6 address is `2600:3c03::f03c:91ff:fedf:d693`.
+5.  Copy the addresses in the Public IP sections. In this example, the Linode's IPv4 address is `45.56.111.42` and its IPv6 address is `2600:3c03::f03c:91ff:fe7e:9675`.
 
 ## Edit Your Hosts File
 
