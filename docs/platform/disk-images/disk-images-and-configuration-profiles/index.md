@@ -220,7 +220,9 @@ The configuration profile is removed from the Linode detail page.
 
 ## Cloning Disks and Configuration Profiles
 
-You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes. To clone an entire Linode, which is a simple alternative to migrating your Linode to a different data center, see our [Clone Your Linode guide](/docs/platform/disk-images/clone-your-linode/).
+You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes.
+
+To clone an entire Linode, see our [Clone Your Linode guide](/docs/platform/disk-images/clone-your-linode/). Cloning a Linode is a simple alternative to migrating your Linode to a different data center.
 
 {{< note >}}
 We recommend that you power off your Linode first, and keep it powered off until your disks have completed the cloning process.
@@ -234,15 +236,15 @@ We recommend that you power off your Linode first, and keep it powered off until
 
 1.  Click on the **Advanced** tab.
 
-1.  Click the **more options ellipsis** for the Linode's disk you wish to clone.
+1.  Click the **more options ellipsis** for the Linode's configuration profile or disk that you wish to clone.
 
 1.  Select the **Clone** option from the dropdown menu that appears.
 
     [![Select Clone Option On A Disk](disks-and-config-menu-clone.png)](disks-and-config-menu-clone.png)
 
-1.  On the following page you can choose which disks and configuration profiles you wish to clone by checking their boxes.
+1.  On the Clone detail page, you can choose which disks and configuration profiles you wish to clone by checking their boxes.
 
-    Click the **Configuration Profiles** tab to see and select your Configuration Profiles. As you make selections you will see them appear on the right panel below the word **Selected**. If you select a configuration profile, all of the disks associated with that profile will automatically be selected.
+    Click the **Configuration Profiles** tab to view and select your configuration profiles. As you make selections you will see them appear on **Selected **panel. If you select a configuration profile, all of the disks associated with that profile will automatically be selected.
 
     [![Select a Configuration Profile to Clone](disks-and-config-select-profile.png)](disks-and-config-select-profile.png)
 
@@ -254,7 +256,7 @@ We recommend that you power off your Linode first, and keep it powered off until
 
     [![Selecting a Configuration Profile Selects All Disks](disks-and-config-profile-selects-all.png)](disks-and-config-profile-selects-all.png)
 
-1.  On the right of the page, select the **Destination** Linode for your clone. If you're cloning any configuration profiles, you cannot select the current Linode as a destination, but any other Linode on your account will be available as an option. If you're cloning only a disk or disks, you can select both the current Linode any other Linode on your account.
+1.  Select the destination Linode for your clone using the **Destination** dropdown menu. If you're cloning any configuration profiles, you cannot select the current Linode as a destination, but any other Linode on your account will be available as an option. If you're cloning only a disk or disks, you can select both the current Linode or any other Linode on your account.
 
     [![Select a Destination Linode](disks-and-config-select-linode.png)](disks-and-config-select-linode.png)
 
