@@ -12,6 +12,7 @@ title: 'How to Deploy Kubernetes on Linode with the k8s-alpha CLI'
 external_resources:
   - '[Linode Kubernetes Tools](https://developers.linode.com/kubernetes/)'
 ---
+![Deploy Kubernetes on Linode with the k8s-alpha CLI](deploy-kubernetes-with-k8s-cli.png "Deploy Kubernetes on Linode with the k8s-alpha CLI")
 
 {{< caution >}}
 This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [delete it](#delete-a-cluster) when you have finished the guide.
