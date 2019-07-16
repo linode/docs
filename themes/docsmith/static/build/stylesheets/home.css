@@ -10740,10 +10740,6 @@ body.modal-open,
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
 }
-table {
-  display: block;
-  overflow-x: auto;
-}
 .table > thead > tr > th {
   color: white;
   font-family: "Lato", sans-serif;
@@ -21975,10 +21971,10 @@ h1.contribute {
 #doc-sidebar-container #doc-sidebar-toc .toc-long ul > li > ul > li > ul {
   display: none;
 }
-/* Adapted from
+/* Adapted from 
  https://bootsnipp.com/snippets/featured/share-on-social-networks
  Author: joao12ferreira
- MIT license.
+ MIT license. 
  */
 .social-share > a {
   padding: 6px 10px 6px 10px;
