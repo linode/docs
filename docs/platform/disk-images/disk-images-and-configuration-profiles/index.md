@@ -6,7 +6,7 @@ description: Our guide to disks and configuration profiles
 keywords: ["disks", "config profiles", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['disk-images-config-profiles/','migrate-to-linode/disk-images/disk-images-and-configuration-profiles/']
-modified: 2019-03-13
+modified: 2019-07-09
 modified_by:
   name: Linode
 published: 2012-04-24
@@ -109,13 +109,12 @@ Resizing a disk requires you to power your Linode off, if it is currently in use
 8.  Click **Resize**. A progress bar will appear at the top of the page.
 9.  When resizing is complete, select **Power On** from the status menu to turn on the Linode. You have successfully resized the disk.
 
-### Duplicating a Disk
+<!--### Duplicating a Disk
 
 {{< note >}}
 Duplicating a disk is not yet available in the Cloud Manager, but this feature is available in the Classic Manager. See [the Classic Manager version of this guide](/docs/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/#duplicating-a-disk) for instructions on how to duplicate a disk.
 {{</ note >}}
 
-<!--
 You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#cloning-disks-and-configuration-profiles).) Here's how to duplicate a disk:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
@@ -221,7 +220,61 @@ The configuration profile is removed from the Linode detail page.
 
 ## Cloning Disks and Configuration Profiles
 
-You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes, or migrate your Linode to a different data center. See our guide on [cloning your Linode](/docs/platform/disk-images/clone-your-linode/) for more information.
+You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes.
+
+To clone an entire Linode, see our [Clone Your Linode guide](/docs/platform/disk-images/clone-your-linode/). Cloning a Linode is a simple alternative to migrating your Linode to a different data center.
+
+{{< note >}}
+We recommend that you power off your Linode first, and keep it powered off until your disks have completed the cloning process.
+{{< /note >}}
+
+1.  Log in to the [Linode Cloud Manager](https://manager.linode.com).
+
+1.  Click the **Linodes** link from the sidebar.
+
+1.  Select a Linode. The Linode's detail page appears.
+
+1.  Click on the **Advanced** tab.
+
+1.  Click the **more options ellipsis** for the Linode's configuration profile or disk that you wish to clone.
+
+1.  Select the **Clone** option from the dropdown menu that appears.
+
+    [![Select Clone Option On A Disk](disks-and-config-menu-clone.png)](disks-and-config-menu-clone.png)
+
+1.  On the Clone detail page, you can choose which disks and configuration profiles you wish to clone by checking their boxes.
+
+    Click the **Configuration Profiles** tab to view and select your configuration profiles. As you make selections you will see them appear on **Selected **panel. If you select a configuration profile, all of the disks associated with that profile will automatically be selected.
+
+    [![Select a Configuration Profile to Clone](disks-and-config-select-profile.png)](disks-and-config-select-profile.png)
+
+    Click the **Disks** tab to see and select your disks. As you make selections you will see them appear on the right panel below the word **Selected**.
+
+    [![Select a Disk to Clone](disks-and-config-select-disks.png)](disks-and-config-select-disks.png)
+
+    If you already have a configuration profile selected, the disks associated with that profile will be pre-selected when viewing the Disks tab.
+
+    [![Selecting a Configuration Profile Selects All Disks](disks-and-config-profile-selects-all.png)](disks-and-config-profile-selects-all.png)
+
+1.  Select the destination Linode for your clone using the **Destination** dropdown menu. If you're cloning any configuration profiles, you cannot select the current Linode as a destination, but any other Linode on your account will be available as an option. If you're cloning only a disk or disks, you can select both the current Linode or any other Linode on your account.
+
+    [![Select a Destination Linode](disks-and-config-select-linode.png)](disks-and-config-select-linode.png)
+
+1.  Click the **Clone** button to begin the cloning process.
+    [![Click the Clone Button](disks-and-config-clone-button.png)](disks-and-config-clone-button.png)
+
+    If your **Destination** Linode is not large enough for your clone, you will see a warning and be unable to continue until the Linode has the required space available.
+    [![Size Error Message](disks-and-config-size-error.png)](disks-and-config-size-error.png)
+
+    {{< note >}}
+If you need to make room on your destination Linode you can [resize it to a larger plan](https://www.linode.com/docs/platform/disk-images/resizing-a-linode/), [resize your disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to a smaller size, or [delete disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-disk) to free up available space. If you decide to resize your Linode to a larger plan, be sure to uncheck the box that automatically resizes your disks or they will expand to fill up the extra space that you are trying to create.
+{{< /note >}}
+
+1.  Once the cloning process begins, you are returned to the **Advanced** tab and a progress bar appears at the top of the screen.
+    [![Copying Progress Bar](disks-and-config-status-bar.png)](disks-and-config-status-bar.png)
+
+1.  When the cloning process is complete, your new disk or configuration appears in the panel of the Linode's **Advanced** tab.
+    [![Disk Copying Complete](disks-and-config-clone-complete.png)](disks-and-config-clone-complete.png)
 
 ## Potential Uses
 
