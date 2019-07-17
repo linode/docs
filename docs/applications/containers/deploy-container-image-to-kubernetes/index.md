@@ -12,6 +12,7 @@ modified_by:
 title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
 contributor:
   name: Linode
+concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 - '[Official Hugo Documentation](https://gohugo.io/getting-started/installing/)'

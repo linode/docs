@@ -33,7 +33,7 @@ The steps in this guide require root privileges. Log in as the root user with `s
 
 2.  Locate your database directory. It should be `/var/lib/mysql/` on most systems but if that directory doesn't exist, examine `/etc/mysql/my.cnf` for a path to the data directory.
 
-3.  Create a directory to store your backups. This guide will use `/opt/backups` but you can alter this to suit your needs:
+3.  Create a directory to store your backups. This guide will use `/opt/db-backups` but you can alter this to suit your needs:
 
         mkdir /opt/db-backups
 

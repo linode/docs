@@ -90,49 +90,53 @@ if (query) {
 
 })(jQuery);
 
-$(function() {
-    $('.disclosure-note').each(function() {
-        $(this).css("cursor", "pointer")
-            .click(function() { toggleNoteDisclosure($(this)) });
-        $(this).children('div').first()
-            .css("height", '2.8em')
-            .css("opacity", .5);
-    });
+//shortcodes disclosure-note and quick-start-note rely on this JS
+$(function () {
+  $('.hidden-content').each(function () {
+    $(this).css("cursor", "pointer")
+      .click(function () { toggleHiddenContent($(this)) });
+    $(this).children('div').first()
+      .css("height", '2.8em')
+      .css("opacity", .5);
+  });
+  $('.btn').click(function () {
+    $('.btn.feedback').attr("disabled", "true");
+  });
 });
 
-function toggleNoteDisclosure(disclosureNote) {
-    disclosureNoteTitle = disclosureNote.children('span').first();
-    arrowIcon = disclosureNoteTitle.children('img.disclosure-icon').first();
-    disclosableDiv = disclosureNoteTitle.next('div')
-    if (disclosureNote.hasClass('disclosed')) {
-        disclosableDiv.animate(
-            {
-                height: '2.8em',
-                opacity: .5
-            }, 
-            200,
-            function() {
-                disclosureNoteTitle.css("cursor", "pointer")
-                    .unbind('click');
-                disclosureNote.css("cursor", "pointer")
-                    .unbind('click').click(function() { toggleNoteDisclosure($(this)); });
-            });
-    }
-    else {
-        disclosableDiv.animate(
-            {
-                height: disclosableDiv.children('.height-preservation-wrapper').first().height(),
-                opacity: 1
-            }, 
-            200,
-            function() {
-                disclosureNote.css("cursor", "default")
-                    .unbind('click');
-                disclosureNoteTitle.css("cursor", "pointer")
-                    .unbind('click').click(function() { toggleNoteDisclosure($(this).parent()); });
-            });
-    }
-    disclosureNote.toggleClass('disclosed');
+function toggleHiddenContent(hiddenContent) {
+  hiddenContentTitle = hiddenContent.children('span').first();
+  arrowIcon = hiddenContentTitle.children('img.toggle-hidden-content-icon').first();
+  hideableDiv = hiddenContentTitle.next('div')
+  if (hiddenContent.hasClass('unhidden')) {
+    hideableDiv.animate(
+      {
+        height: '2.8em',
+        opacity: .5
+      },
+      200,
+      function () {
+        hiddenContentTitle.css("cursor", "pointer")
+          .unbind('click');
+        hiddenContent.css("cursor", "pointer")
+          .unbind('click').click(function () { toggleHiddenContent($(this)); });
+      });
+  }
+  else {
+    hideableDiv.animate(
+      {
+        height: hideableDiv.children('.height-preservation-wrapper').first().height(),
+        opacity: 1
+      },
+      200,
+      function () {
+        hiddenContent.css("cursor", "default")
+          .unbind('click');
+        hiddenContentTitle.css("cursor", "pointer")
+          .unbind('click').click(function () { toggleHiddenContent($(this).parent()); });
+      });
+  }
+  hiddenContent.toggleClass('unhidden');
 }
 (function($) {
 

@@ -15,7 +15,7 @@ contributor:
 external_resources:
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 ---
-Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](https://developers.linode.com/api/v4/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/applications/configuration-management/automatically-configure-servers-with-ansible-and-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
+Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](https://developers.linode.com/api/v4/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/applications/configuration-management/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
 
 In this guide you will learn how to:
 
@@ -34,7 +34,7 @@ If you remove the resource afterward, you will only be billed for the hour(s) th
 The steps outlined in this guide require [Ansible version 2.8](https://github.com/ansible/ansible/releases/tag/v2.8.0).
 {{</ note >}}
 
-- Install Ansible on your computer. Use the steps in the [Installing Ansible](https://www.linode.com/docs/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/#installing-ansible) section of the [Learn How to Install Ansible and Run Playbooks](/docs/applications/configuration-management/learn-how-to-install-ansible-and-run-playbooks/) guide.
+- Install Ansible on your computer. Use the steps in the [Install Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/) guide.
 
 - Ensure you have Python version 2.7 or higher installed on your computer. Issue the following command to check your system's Python version:
 

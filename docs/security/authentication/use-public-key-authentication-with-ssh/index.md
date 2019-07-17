@@ -20,7 +20,7 @@ Password authentication is the default method most SSH (Secure Shell) clients us
 
 -   If a server that uses SSH keys is compromised by a hacker, no authorization credentials are at risk of being exposed.
 
--   Because a password isn't required at login, you are able to able to log in to servers from within scripts or automation tools that you need to run unattended. For example, you can set up periodic updates for your servers with a configuration management tool like [Ansible](/docs/applications/configuration-management/automatically-configure-servers-with-ansible-and-playbooks/), and you can run those updates without having to be physically present.
+-   Because a password isn't required at login, you are able to able to log in to servers from within scripts or automation tools that you need to run unattended. For example, you can set up periodic updates for your servers with a configuration management tool like [Ansible](/docs/applications/configuration-management/running-ansible-playbooks/), and you can run those updates without having to be physically present.
 
 This guide will explain how the SSH key login scheme works, how to generate an SSH key, and how to use those keys with your Linode.
 

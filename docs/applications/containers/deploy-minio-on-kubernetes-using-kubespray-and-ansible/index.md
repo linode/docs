@@ -11,6 +11,7 @@ modified: 2018-02-23
 modified_by:
   name: Linode
 title: 'Deploy Minio on Kubernetes using Kubespray and Ansible'
+concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)'
 - '[Minio](https://www.minio.io/)'

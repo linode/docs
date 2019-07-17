@@ -38,7 +38,7 @@ Linux requires an initialization system during its boot and startup process. At 
 Below is a simplified overview of the entire Linux boot and startup process:
 
 1. The system powers up.
-1  The BIOS does minimal hardware initialization and hands over control to the boot loader.
+   The BIOS does minimal hardware initialization and hands over control to the boot loader.
 1. The boot loader calls the kernel.
 1. The kernel loads an initial RAM disk that loads the system drives and then looks for the root file system.
 1. Once the kernel is set up, it begins the systemd initialization system.

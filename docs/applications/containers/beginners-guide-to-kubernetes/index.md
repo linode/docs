@@ -12,10 +12,12 @@ modified_by:
 title: "A Beginner's Guide to Kubernetes"
 contributor:
   name: Linode
+concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 ---
+![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
 *Kubernetes*, often referred to as *k8s*, is an open source container orchestration system that helps deploy and manage containerized applications. Developed by Google starting in 2014 and written in the Go language, Kubernetes is quickly becoming the standard way to architect horizontally-scalable applications. This guide will explain the major parts and concepts of Kubernetes.
 

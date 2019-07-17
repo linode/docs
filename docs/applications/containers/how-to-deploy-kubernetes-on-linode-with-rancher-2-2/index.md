@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 title: 'How to Deploy Kubernetes on Linode with Rancher 2.2'
 aliases: ['applications/containers/how-to-deploy-apps-with-rancher/', 'applications/containers/how-to-deploy-apps-with-rancher-2-2/']
+concentrations: ["Kubernetes"]
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
   - '[Linode CCM](https://github.com/linode/linode-cloud-controller-manager)'
