@@ -10740,6 +10740,10 @@ body.modal-open,
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
 }
+.table {
+  display: block;
+  overflow-x: auto;
+}
 .table > thead > tr > th {
   color: white;
   font-family: "Lato", sans-serif;
@@ -21234,6 +21238,8 @@ div.library-tile .tile-title + .lead {
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
+  display: block;
+  overflow-x: auto;
 }
 #article-body table:not([class]) > thead > tr > th,
 #article-body table:not([class]) > tbody > tr > th,
