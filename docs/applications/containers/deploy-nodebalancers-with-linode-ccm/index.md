@@ -28,7 +28,11 @@ Using the Linode Cloud Controller Manager to create NodeBalancers will create bi
 
 You should have a working knowledge of Kubernetes and familiarty with the `kubcetl` command line tool before attempting the instructions found in this guide. For more information about Kubernetes, consult our [Kubernetes Beginner's Guide](/docs/applications/containers/beginners-guide-to-kubernetes/) and our [Getting Started with Kubernetes](/docs/applications/containers/getting-started-with-kubernetes/) guide.
 
-When using the CCM for the first time, it's highly suggested that you create a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state. For a completely automated install, you can use the [Linode CLI's k8s-alpha command line tool](https://developers.linode.com/kubernetes/). The Linode CLI's k8s-alpha command line tool utilizes [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) to fully boostrap a Kubernetes cluster on Linode. It includes the [Linode Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) plugin, the Linode CCM plugin, and the [ExternalDNS plugin](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md). For more information on creating a Kubernetes cluster with the Linode CLI, review our [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide.
+When using the CCM for the first time, it's highly suggested that you create a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state. For a completely automated install, you can use the [Linode CLI's k8s-alpha command line tool](https://developers.linode.com/kubernetes/). The Linode CLI's k8s-alpha command line tool utilizes [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) to fully boostrap a Kubernetes cluster on Linode. It includes the [Linode Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) plugin, the [Linode CCM plugin](https://github.com/linode/linode-cloud-controller-manager), and the [ExternalDNS plugin](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md). For more information on creating a Kubernetes cluster with the Linode CLI, review our [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide.
+
+{{< note >}}
+To manually add the Linode CCM to your cluster, you must start `kubelet` with the `--cloud-provider=external` flag. `kube-apiserver` and `kube-controller-manager` must NOT supply the `--cloud-provider` flag. For more information, visit the [upstream Cloud Controller documentation](https://kubernetes.io/docs/tasks/administer-cluster/running-cloud-controller/).
+{{</ note >}}
 
 If you'd like to add the CCM to a cluster by hand, and you are using macOS, you can use the `generate-manifest.sh` file in the `deploy` folder of the CCM repository to generate a CCM manifest file that you can later apply to your cluster. Use the following command:
 
@@ -39,10 +43,6 @@ Be sure to replace `$LINODE_API_TOKEN` with a valid Linode API token, and replac
 To view a list of regions, you can use the [Linode CLI](/docs/platform/api/using-the-linode-cli/), or you can view the [Regions API endpoint](https://api.linode.com/v4/regions).
 
 If you are not using macOS, you can copy the `ccm-linode-template.yaml` file and change the values of the `data.apiToken` and `data.region` fields manually.
-
-{{< note >}}
-To manually add the Linode CCM to your cluster, you must start your kubelets, controller-manager, and apiserver with the `--cloud-provider=external` flag. For more information, visit the [CCM repository README](https://github.com/linode/linode-cloud-controller-manager#generating-a-manifest-for-deployment).
-{{</ note >}}
 
 ## Using the CCM
 
@@ -101,14 +101,14 @@ spec:
   sessionAffinity: None
 {{</ file >}}
 
-The above Service manifest includes a few important key concepts.
+    The above Service manifest includes a few important key concepts.
 
-- The first is the `spec.type` of `LoadBalancer`. This LoadBalancer type is what is responsible for telling the Linode CCM to create a Linode NodeBalancer, and will provide the Deployment it services a public facing IP address with which to access the nginx Pods.
-- There is additional information being passed to the CCM in the form of metadata annotations (`service.beta.kubernetes.io/linode-loadbalancer-throttle` in the example above), which are discussed in the next section.
+    - The first is the `spec.type` of `LoadBalancer`. This LoadBalancer type is what is responsible for telling the Linode CCM to create a Linode NodeBalancer, and will provide the Deployment it services a public facing IP address with which to access the nginx Pods.
+    - There is additional information being passed to the CCM in the form of metadata annotations (`service.beta.kubernetes.io/linode-loadbalancer-throttle` in the example above), which are discussed in the [next section](#annotations).
 
-Use the `create` command to create the Service, and in turn, the NodeBalancer:
+1.  Use the `create` command to create the Service, and in turn, the NodeBalancer:
 
-    kubcetl create -f nginx-service.yaml
+        kubcetl create -f nginx-service.yaml
 
 You can log in to the [Linode Cloud Manager](https://cloud.linode.com) to view your newly created NodeBalancer.
 
@@ -119,7 +119,7 @@ There are a number of settings, called annotations, that you can use to further 
 | Annotation (suffix) | Values | Default Value | Description |
 |---------------------|--------|---------------|-------------|
 | `throttle` | `0`-`20` (`0` disables the throttle) | `20` | Client Connection Throttle. This limits the number of new connections per second from the same client IP. |
-| `protocol` | `tcp`, `http`, `https` | `tcp` | Specifies the protocol for the NodeBalancer. The protocol is overwritten to `https` if the `linode-loadbalancer-tls-ports` annotation is in use. |
+| `protocol` | `tcp`, `http`, `https` | `tcp` | Specifies the protocol for the NodeBalancer. |
 | `tls`| Example value: `[ { "tls-secret-name": "prod-app-tls", "port": 443} ]` | None | A JSON array (formatted as a string) that specifies which ports use TLS and their corresponding secrets. The secret type should be `kubernetes.io/tls`. Fore more information, see the [TLS Encryption section](#tls-encryption). |
 | `check-type` | `none`, `connection`, `http`, `http_body` | None | The type of health check to perform on your Nodes to ensure that they are serving requests. `connection` checks for a valid TCP handshake, `http` checks for a `2xx` or `3xx` response code, `http_body` checks for a certain string within the response body of the healthcheck URL. |
 | `check-path` | string | None | The URL path that the NodeBalancer will use to check on the health of the back-end Nodes. |
@@ -286,6 +286,24 @@ To delete a NodeBalancer and the Service that it represents, you can use the Ser
 Similarly, you can delete the Service by name:
 
     kubectl delete service nginx-service
+
+## Updating the CCM
+
+The easiest way to update the Linode CCM is to edit the DaemonSet that creates the Linode CCM Pod. To do so, you can run the `edit` command.
+
+    kubectl edit daemonset ccm-linode -n kube-system
+
+The CCM Daemonset manifest will appear in vim. Press `i` to enter insert mode. Navigate to `spec.template.spec.image` and change the field's value to the desired version tag. For instance, if you had the following image:
+
+    image: linode/linode-cloud-controller-manager:v0.2.2
+
+You could update the image to `v0.2.3` by changing the image tag:
+
+    image: linode/linode-cloud-controller-manager:v0.2.3
+
+For a complete list of CCM version tags, visit the [CCM DockerHub page](https://hub.docker.com/r/linode/linode-cloud-controller-manager/tags).
+
+Press escape to exit insert mode, then type `:wq` and press enter to save your changes. A new Pod will be created with the new image, and the old Pod will be deleted.
 
 ## Next Steps
 
