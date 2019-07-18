@@ -6,10 +6,10 @@ description: 'Use kubeadm to deploy a cluster on Linode and get started with Kub
 keywords: ['kubernetes','orchestration','docker','container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-30
-modified: 2019-04-30
 modified_by:
   name: Linode
 title: "Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode"
+aliases: ['applications/containers/getting-started-with-kubernetes']
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]

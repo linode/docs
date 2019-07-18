@@ -6,10 +6,10 @@ description: 'An introduction to Kubernetes concepts and components.'
 keywords: ['kubernetes','k8s','beginner','architecture']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-03
-modified: 2019-07-03
 modified_by:
   name: Linode
 title: "A Beginner's Guide to Kubernetes"
+aliases: ['applications/containers/beginners-guide-to-kubernetes']
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
