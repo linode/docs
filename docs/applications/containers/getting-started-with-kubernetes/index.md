@@ -35,9 +35,9 @@ This guide's example instructions will result in the creation of three billable 
 
 1. Follow the [Getting Started](/docs/getting-started) and the [Securing Your Server](/docs/security/securing-your-server/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
 
-{{< note >}}
-When following the [Getting Started](/docs/getting-started) guide, make sure that each Linode is using a different hostname. Not following this guideline will leave you unable to join some or all nodes to the cluster in a later step.
-{{< /note >}}
+    {{< note >}}
+    When following the [Getting Started](/docs/getting-started) guide, make sure that each Linode is using a different hostname. Not    following this guideline will leave you unable to join some or all nodes to the cluster in a later step.
+    {{< /note >}}
 
 1. Disable swap memory on your Linodes. Kubernetes requires that you disable swap memory on any cluster nodes to prevent the Kubernetes scheduler (kube-scheduler) from ever sending a pod to a node that has run out of CPU/memory or reached its designated CPU/memory limit.
 
