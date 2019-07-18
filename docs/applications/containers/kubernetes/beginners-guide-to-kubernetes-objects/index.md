@@ -18,6 +18,8 @@ external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 ---
 
+![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
+
 In Kubernetes, there are a number of objects that are abstractions of your Kubernetes system's desired state. These objects represent your application, its networking, and disk resources -- all of which together form your application. This is the third guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series that explains the major parts and concepts of Kubernetes.
 
 In this guide you will learn:
