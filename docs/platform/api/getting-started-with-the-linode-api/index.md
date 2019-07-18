@@ -12,7 +12,7 @@ modified_by:
 published: 2018-04-03
 title: Getting Started with the Linode API
 external_resources:
-  - '[API Documentation](https://developers.linode.com/api/v4/introduction)'
+  - '[API Documentation](https://developers.linode.com/api/v4/)'
   - '[Linode CLI](https://github.com/linode/linode-cli)'
   - '[Linode API Python Library](https://github.com/linode/python-linode-api)'
 aliases: ['platform/api/getting-started-with-the-linode-api-new-manager/']
