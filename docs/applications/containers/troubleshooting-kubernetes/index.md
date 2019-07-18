@@ -9,6 +9,7 @@ published: 2019-07-01
 modified_by:
   name: Linode
 title: "Troubleshooting Kubernetes"
+concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Documentation - Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)'
 ---
