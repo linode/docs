@@ -17,6 +17,9 @@ external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 ---
+
+![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
+
 This is the fifth guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series that explains the major parts and concepts of Kubernetes.
 
 In this guide you will learn:
