@@ -6,10 +6,10 @@ description: 'This guide will show you how to package a Hugo static site in a Do
 keywords: ['kubernetes','docker','docker hub','hugo', 'static site']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-07
-modified: 2019-05-07
 modified_by:
   name: Linode
 title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
+aliases: ['applications/containers/deploy-container-image-to-kubernetes']
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
