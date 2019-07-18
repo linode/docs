@@ -507,6 +507,7 @@ hasn
 hba
 hd0
 hdfs
+healthcheck
 heartbleed
 heroku
 hexo
