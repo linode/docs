@@ -18,7 +18,7 @@ contributor:
 
 Infrastructure as code (IaC) is a development and operations methodology that allows server deployments and software configuration to be represented as code. This methodology reduces the chance for human error, makes complex systems more manageable, eases collaboration on systems engineering projects, and offers a number of other benefits.
 
-Terraform is an IaC tool that focuses on creating, modifying, and destroying servers, instead of managing the software on those servers. Terraform offers plugins to interface with different hosting providers, and an official Linode plugin is available. This guide will show how to get started with Terraform and Linode.
+Terraform is an IaC tool that focuses on creating, modifying, and destroying servers, instead of managing the software on those servers. Terraform offers plugins to interface with different hosting providers, and an [official Linode plugin](https://www.terraform.io/docs/providers/linode/index.html) is available. This guide will show how to get started with Terraform and Linode.
 
 Linodes created with Terraform can be further configured with container systems like Docker, or with configuration management software like Salt, Puppet, Ansible, or Chef.
 
@@ -42,30 +42,30 @@ Any Personal Access Tokens generated from the previous Linode Manager are API v3
 
 ## Install Terraform
 
-If you're using macOS, you can install Terraform via [Homebrew](https://brew.sh/) by running the following command:
+The installation steps in this section are for Linux operating systems. To install Terraform on a different operating system, like macOS, see [Terraform's downloads](https://www.terraform.io/downloads.html) page. Once installed, skip to [Building with the Terraform Provider](#building-with-the-linode-provider).
 
-    brew install terraform
-
-You can then skip to [Building with the Terraform Provider](#building-with-the-linode-provider"). If you are using Linux, or would rather not install Terraform with Homebrew, follow the instructions below.
+{{< note >}}
+The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12).
+{{</ note >}}
 
 1.  Make a Terraform project directory in your home directory and then navigate to it:
 
         mkdir ~/terraform
         cd ~/terraform
 
-2.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html). Example `wget` commands are listed using the latest version available at time of publishing (0.11.9). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
+2.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html). Example `wget` commands are listed using the latest version available at time of publishing (0.12.5). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
 
     -   The 64-bit Linux `.zip` archive
 
-            wget https://releases.hashicorp.com/terraform/0.11.9/terraform_0.11.9_linux_amd64.zip
+            wget https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_linux_amd64.zip
 
     -   The SHA256 checksums file
 
-            wget https://releases.hashicorp.com/terraform/0.11.9/terraform_0.11.9_SHA256SUMS
+            wget https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_SHA256SUMS
 
     -   The checksum signature file
 
-            wget https://releases.hashicorp.com/terraform/0.11.9/terraform_0.11.9_SHA256SUMS.sig
+            wget https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_SHA256SUMS.sig
 
 
 ### Verify the Download
@@ -112,7 +112,7 @@ Primary key fingerprint: 91A6 E7F8 5D05 C656 30BE  F189 5185 2D87 348F FC4C
     The output should show the file's name as given in the `terraform*SHA256SUMS` file:
 
     {{< output >}}
-terraform_0.11.9_linux_amd64.zip: OK
+terraform_0.12.5_linux_amd64.zip: OK
 {{< /output >}}
 
 ### Configure the Terraform Environment
