@@ -1,0 +1,340 @@
+---
+author:
+  name: Linode Community
+  email: docs@linode.com
+description: 'Use the Linode API to Deploy and Manage a Linode Kubernetes Engine (LKE) Cluster.'
+keywords: ['list','of','keywords','and key phrases']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2019-08-05
+modified: 2019-08-05
+modified_by:
+  name: Linode
+title: "Use the Linode API to Deploy and Manage a Linode Kubernetes Engine (LKE) Cluster"
+contributor:
+  name: Linode
+---
+## What is the Linode Kubernetes Engine (LKE)?
+
+The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and simple pricing with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), Nodebalancers (load balancers), and Block Storage (Volumes) services. Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
+
+You can easily deploy a LKE cluster in several ways, via the [Linode Cloud Manager](link to LKE Cloud Manager guide), the Linode API or the [Linode CLI](link to Linode CLI guide). These Linode provided interfaces to LKE can be used to create, delete, and update the structural elements of your cluster, like the number of nodes that make a cluster's node pool, the region where your node pool is deployed, the Linode plan type, and the Kubernetes version deployed to your cluster's Master node and worker nodes. The [Kubernetes API](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) and [kubectl](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubectl) are the primary ways you will interact with your LKE cluster once it's been created. These tools can be used to configure, deploy, inspect, and secure your Kubernetes workloads, deploy applications, create services, configuring storage and networking, and defining controllers.
+
+This guide will cover using the Linode API to:
+
+* [Create a LKE cluster](#create-a-lke-cluster)
+* [Connect kubectl to your LKE cluster](#connect-to-your-lke-cluster)
+* [Inspect your LKE cluster](#inspect-your-lke-cluster)
+* [Modify an existing LKE cluster](#modify-your-lke-cluster)
+* [Delete a LKE cluster](#delete-a-lke-cluster)
+
+## Before you Begin
+
+1. [Familiarize yourself with the Linode Kubernetes Engine service](Link to new site's LKE page or guide describing the service). This information will help you understand the benefits and limitations of LKE.
+
+1. [Create an API Token](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/#create-an-api-token). You will need this to access the LKE service.
+
+1. [Install kubectl](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/#install-kubectl) on your computer. You will used kubectl to interact with your cluster once its deployed.
+
+1. If you are new to Kubernetes, refer to our guide series, [A Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes/), to learn about general Kubernetes concepts. This guide assumes a general understanding of core Kubernetes concepts.
+
+## Create a LKE Cluster
+
+| **Required fields** | **Description** |
+| ------- | -------|
+| `region` | The data center region where your cluster will be deployed. Currently, `us-east` is the only available region for LKE clusters. |
+| `label` | A human readable name to identify your cluster.
+| `node_pools` | The configurations for the Linodes that make up your LKE cluster. |
+
+1. To create an LKE Cluster using the Linode API, issue the example command. The example displays all possible request body fields.
+
+        curl -H "Content-Type: application/json" \
+             -H "Authorization: Bearer $TOKEN" \
+             -X POST -d '{
+                "label": "cluster12345",
+                "region": "us-east",
+                "version": "1.14",
+                "tags": ["ecomm", "blogs"],
+                "node_pools": [
+                  { "type": "g6-standard-2", "count": 2},
+                  { "type": "g6-standard-4", "count": 3}
+                ]
+             }' https://api.linode.com/v4/lke/clusters
+
+
+    You will receive a similar response:
+
+    {{< output >}}
+{"version": "1.14", "updated": "2019-08-02T17:17:49", "region": "us-east", "tags": ["ecomm", "blogs"], "label": "cluster12345", "id": 456, "created": "2019-08-02T17:17:49", "status": "ready"}%
+    {{</ output >}}
+
+1. Make note of your cluster's ID, as you will need it to continue to interact with your cluster in the next sections. In the example above, the cluster ID is `"id": 456`. You can also access your cluster's ID by [listing all LKE Clusters](#list-lke-clusters) on your account.
+
+    {{< note >}}
+Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
+    {{</ note >}}
+
+### Connect to your LKE Cluster
+
+Now that your LKE cluster is created, you can access and manage your cluster using kubectl on your computer. This will give you the ability to interact with the Kubernetes API and create and manage [Kubernetes objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/).
+
+To communicate with your LKE cluster, kubectl requires a copy of your cluster's [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/). In this section, you will access the contents of your cluster's kubeconfig using the API and set up kubectl to communicate with your LKE cluster.
+
+1. Access your LKE cluster's kubeconfig file. Ensure you replace `12345` with your cluster's `clusterId`.
+
+          curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/lke/clusters/12345/kubeconfig
+
+    The API returns a base64 encoded string representing your kubeconfig. This is a useful format for automated pipelines. Copy the `kubeconfig` field's value from the response body, since you will need it in the next step. Your output will resemble the following:
+    {{< output >}}
+{"kubeconfig": "YXBpVmVyc2lvbjogdjEKY2x1c3RlcnM6Ci0gY2x1c3RlcjoKICAgIGNlcnRpZmljYXRlLWF1dGhvcml0eS1kYXRhOiBMUzB0TFMxQ1JVZEpUaUJEUlZKVVNVWkpRMEZVUlMwdExTMHRDazFKU1VONVJFTkRRV0pEWjBGM1NVSkJaMGxDUVVSQlRrSm5hM0ZvYTJsSE9YY3dRa0ZSYzBaQlJFRldUVkpOZDBWUldVUldVVkZFUlhkd2NtUlhTbXdLWTIwMWJHUkhWbnBOUWpSWVJGUkZOVTFFWjNkTmFrVXpUVlJqTVUxV2IxaEVWRWsx ... 0TFMwdExRbz0K"}%
+    {{</ output >}}
+
+1. The kubectl command-line tool uses kubeconfig files to find the information it needs to choose a cluster and communicate with the API server of a cluster. To connect to your LKE cluster using kubectl, save the base64 kubeconfig to an environment variable:
+
+        KUBE_VAR='YXBpVmVyc2lvbjogdjEK ... 0TFMwdExRbz0'
+
+1. Navigate to your computer's `~.kube` directory. This is where kubectl looks for kubeconfig files, by default.
+
+        cd ~/.kube
+
+1. Decode the contents of `$KUBE_VAR` and save it to a yaml file.
+
+        echo $KUBE_VAR | base64 -D > cluster12345-config.yaml
+
+1. Set kubectl to use your cluster as its current context. Replace the context name, with your cluster's name. You can find this value in your kubeconfig file, stored in the `current-context` field.
+
+        kubectl config --kubeconfig=cluster12345-config.yaml use-context kubernetes-admin@kubernetes
+
+1. Add the kubeconfig file to your `$KUBECONFIG` environment variable.
+
+        export KUBECONFIG=cluster12345-config.yaml
+
+1. Verify that your cluster is selected as kubectl's current context:
+
+        kubectl config get-contexts
+
+1. View the contents of the configuration:
+
+        kubectl config view
+
+    {{< note >}}
+You can also access a decoded version of your kubeconfig file, via the [Linode Cloud Manager](Include link to cloud manager doc).
+    {{</ note >}}
+
+1. View all nodes in your LKE cluster using kubectl:
+
+        kubectl get nodes
+
+      Your output will resemble the following example, but will vary depending on your own cluster's configurations.
+
+      {{< output >}}
+NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               STATUS   ROLES    AGE     VERSION
+lke166-193-5d44703cd092   Ready    none   2d22h   v1.14.0
+lke166-194-5d44703cd780   Ready    none   2d22h   v1.14.0
+lke166-195-5d44703cd691   Ready    none   2d22h   v1.14.0
+lke166-196-5d44703cd432   Ready    none   2d22h   v1.14.0
+lke166-197-5d44703cd211   Ready    none   2d22h   v1.14.0
+      {{</ output >}}
+
+    Now that you are connected to your LKE cluster, you can begin using kubectl to deploy applications, [inspect and manage](/docs/applications/containers/kubernetes/troubleshooting-kubernetes/#kubectl-get) cluster resources, and [view logs](/docs/applications/containers/kubernetes/troubleshooting-kubernetes/#viewing-master-and-worker-logs).
+
+
+## Inspect your LKE Cluster
+
+You can access information about your LKE cluster's structural configuration using the API.
+
+### List LKE Clusters
+
+1. To view a list of all your LKE clusters, issue the following command. This command gives you access to your cluster's ID.
+
+          curl -H "Authorization: Bearer $TOKEN" \
+             https://api.linode.com/v4/lke/clusters
+
+    Your output will display the number of clusters deployed to your account and general details about your LKE clusters:
+
+        {"results": 2, "data": [{"updated": "2019-08-02T17:17:49", "region": "us-east", "id": 166, "version": "1.13", "label": "cluster-lsalazar-1", "status": "ready", "created": "2019-08-02T17:17:49", "tags": []}, {"updated": "2019-08-05T17:00:04", "region": "us-east", "id": 167, "version": "1.13", "label": "cluster-lsalazar-2", "status": "ready", "created": "2019-08-05T17:00:04", "tags": []}], "pages": 1, "page": 1}%
+
+### View a LKE Cluster
+
+Once you have accessed your LKE cluster's ID, you can view details about that cluster.
+
+| **Required fields** | **Description** |
+| ------- | -------|
+| `clusterId` | ID of the LKE cluster to lookup.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+
+1. To view your LKE cluster, issue the following command. Ensure you replace `12345` with your cluster's `clusterId`.
+
+        curl -H "Authorization: Bearer $TOKEN" \
+             https://api.linode.com/v4/lke/clusters/12345
+
+    Your output will resemble the following:
+
+    {{< output >}}
+    {"created": "2019-08-02T17:17:49", "updated": "2019-08-02T17:17:49", "version": "1.13", "tags": [], "label": "cluster-lsalazar-1", "id": 166, "region": "us-east", "status": "ready"}%
+    {{</ output >}}
+
+### List a Cluster's Node Pools
+
+Every LKE cluster contains at least one node pool. Each node pool is made up of one or more Linodes (nodes). You will need your clusters `id`, to list your LKE clusters node pools.
+
+| **Required fields** | **Description** |
+| ------- | -------|
+| `clusterId` | ID of the LKE cluster to lookup.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+
+1. To list your cluster's node pools, issue the following command:
+
+        curl -H "Authorization: Bearer $TOKEN" \
+            https://api.linode.com/v4/lke/clusters/12345/pools
+
+    Your output will include information on the number of nodes each node pool contains, the node pool's Linode type, id, and status.
+
+    {{< output >}}
+{"pages": 1, "page": 1, "data": [{"count": 2, "id": 193, "type": "g6-standard-2", "linodes": [{"id": "", "status": "not_ready"}, {"id": "13841933", "status": "ready"}]}, {"count": 3, "id": 194, "type": "g6-standard-4", "linodes": [{"id": "13841934", "status": "ready"}, {"id": "13841935", "status": "ready"}, {"id": "13841932", "status": "ready"}]}], "results": 2}%
+    {{</ output >}}
+
+### View a Node Pool
+
+| **Required fields** | **Description** |
+| ------- | -------|
+| `clusterId` | ID of the LKE cluster to lookup.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+| `poolId` | ID of the LKE node pool to lookup.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+
+Once you have a node pool's ID, you can view details about the node pool.
+
+1. To view a specific node pool, issue the following command. Replace `12345` with your cluster's `clusterId` and `456` with the node pool's `poolId`.
+
+        curl -H "Authorization: Bearer $TOKEN" \
+             https://api.linode.com/v4/lke/clusters/12345/pools/456
+
+    The output will provide information about the number of nodes in the node pool, the node pool's id, and type. You will also retrieve information about each individual node in the node pool, including the Linode's ID and status.
+
+    {{< output >}}
+    {"count": 2, "id": 193, "type": "g6-standard-2", "linodes": [{"id": "09876543", "status": "not_ready"}, {"id": "34567890", "status": "ready"}]}%
+    {{</ output >}}
+
+    If desired, you can use your node pool's Linode ID(s) to retrieve more details about each node in the pool. Ensure you replace `09876543` with your Linode's `id`.
+
+        curl -H "Authorization: Bearer $TOKEN" \
+             https://api.linode.com/v4/linode/instances/09876543
+
+      {{< note >}}
+Although you have access to your cluster's nodes, it is recommended that you only interact with your nodes via LKE provided interfaces, like LKE API endpoints, or the Kubernetes API and kubectl.
+        {{</ note >}}
+
+## Modify your LKE Cluster
+
+Currently, you can modify two aspects of your LKE cluster; an LKE cluster's label and an LKE cluster's node pools. In this section you will learn how to modify each of these parts of your cluster.
+
+### Update your LKE Cluster
+| **Required fields** | **Description** |
+| ------- | -------|
+| `clusterId` | ID of the LKE cluster to lookup.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+
+1. To update your LKE cluster's label, issue the following command. Ensure you replace `12345` with your cluster's `clusterId`
+
+        curl -H "Content-Type: application/json" \
+             -H "Authorization: Bearer $TOKEN" \
+             -X PUT -d '{
+                "label": "updated-cluster-name"
+             }' https://api.linode.com/v4/lke/clusters/12345
+
+    Your response should resemble the following:
+
+    {{< output >}}
+{"created": "2019-08-02T17:17:49", "updated": "2019-08-05T19:11:19", "version": "1.13", "tags": [], "label": "updated-cluster-name", "id": 12345, "region": "us-east", "status": "ready"}%
+    {{</ output >}}
+
+### Add a Node Pool to your LKE Cluster
+
+| **Required fields** | **Description** |
+| ------- | -------|
+| `clusterId` | ID of the LKE cluster to lookup.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+
+You can add a node pool to an existing LKE cluster at any point.
+
+1. To add a node pool to an exisiting LKE cluster:
+
+        curl -H "Content-Type: application/json" \
+             -H "Authorization: Bearer $TOKEN" \
+             -X POST -d '{
+               "type": "g6-standard-1",
+               "count": 5
+             }' https://api.linode.com/v4/lke/clusters/12345/pools
+
+    Your output will resemble the following:
+
+    {{< output >}}
+    {"count": 5, "id": 196, "type": "g6-standard-1", "linodes": [{"id": "", "status": "not_ready"}, {"id": "", "status": "not_ready"}, {"id": "", "status": "not_ready"}, {"id": "", "status": "not_ready"}, {"id": "", "status": "not_ready"}]}%
+    {{</ output >}}
+
+      {{< note >}}
+Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
+    {{</ note >}}
+
+### Resize your LKE Node Pool
+
+You can resize a LKE cluster's node pool to add or decrease its number of nodes or change its plan type. When a node pool's type is changed, the nodes in the pool will be replaced in a rolling fashion.
+
+{{< note >}}
+You cannot modify an existing node pool's plan type. If you would like your LKE cluster to use a different node pool plan type, you can create a new node pool with the same number of nodes to replace the current node pool.
+{{</ note >}}
+
+| **Required fields** | **Description** |
+| ------- | -------|
+| `clusterId` | ID of the LKE cluster to lookup.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+| `poolId` | ID of the LKE node pool to lookup.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+| `count` | The number of Linodes in the node pool.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+
+1. To update your node pool, issue the following command. Replace `12345` with your cluster's `clusterId` and `456` with your node pool's `poolId`.
+
+        curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -X PUT -d '{
+              "type": "g6-standard-4",
+              "count": 6
+            }' https://api.linode.com/v4/lke/clusters/12345/pools/456
+
+      {{< note >}}
+Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
+    {{</ note >}}
+
+### Delete a Node Pool from a LKE Cluster
+
+| **Required fields** | **Description** |
+| ------- | -------|
+| `clusterId` | ID of the LKE cluster to lookup.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+| `poolId` | ID of the LKE node pool to lookup.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+
+When you delete a node pool you also delete the Linodes (nodes) and routes to them. Any Pods running on those nodes are evicted and rescheduled. If the deleted Pods have specific node selectors, the Pods might remain in an unschedulable condition if no other node in the cluster satisfies the criteria.
+
+1. To delete a node pool from a LKE node pool:
+
+    {{< caution >}}
+This step is permanent and will result in the loss of data.
+    {{</ caution >}}
+
+        curl -H "Authorization: Bearer $TOKEN" \
+             -X DELETE \
+             https://api.linode.com/v4/lke/clusters/12345/pools/456
+
+## Delete a LKE Cluster
+
+Deleting a LKE cluster will delete the **Master node**, all **worker nodes**, and all **NodeBallancers** created by the cluster. However, it will **not delete any Volumes** created by the LKE cluster.
+
+1. To delete a LKE Cluster, issue the following command:
+
+    {{< caution >}}
+This step is permanent and will result in the loss of data.
+    {{</ caution >}}
+
+        curl -H "Authorization: Bearer $TOKEN" \
+             -X DELETE \
+             https://api.linode.com/v4/lke/clusters/12345
+
+## Where to Go From Here?
+
+Now that you have created a LKE cluster, you can continue with the following guides to start creating and deploying workloads to your cluster:
+
+* [How to Install Apps on Kubernetes with Helm](/docs/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/)
+* [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/applications/containers/kubernetes/deploy-container-image-to-kubernetes/)
+* [Troubleshooting Kubernetes](/docs/applications/containers/kubernetes/troubleshooting-kubernetes/)
