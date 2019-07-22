@@ -70,6 +70,10 @@ The k8s-alpha CLI is bundled with the Linode CLI, and using it requires the inst
 
 -   [Terraform](#install-terraform): The k8s-alpha CLI creates clusters by defining a resource *plan* in Terraform and then having Terraform create those resources. If you're interested in how Terraform works, you can review our [Beginner's Guide to Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/), but doing so is not required to use the k8s-alpha CLI.
 
+    {{< note >}}
+The k8s-alpha CLI requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12).
+    {{</ note >}}
+
 -   [kubectl](#install-kubectl): kubectl is the client software for Kubernetes, and it is used to interact with your Kubernetes cluster's API.
 
 -   [SSH agent](#configure-your-ssh-agent): Terraform will rely on public-key authentication to connect to the Linodes that it creates, and you will need to configure your SSH agent on your computer with the keys that Terraform should use.
