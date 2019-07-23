@@ -45,7 +45,7 @@ Any Personal Access Tokens generated from the previous Linode Manager are API v3
 The installation steps in this section are for Linux operating systems. To install Terraform on a different operating system, like macOS, see [Terraform's downloads](https://www.terraform.io/downloads.html) page. Once installed, skip to [Building with the Terraform Provider](#building-with-the-linode-provider).
 
 {{< note >}}
-The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12).
+The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12). The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
 {{</ note >}}
 
 1.  Make a Terraform project directory in your home directory and then navigate to it:
