@@ -26,12 +26,12 @@ This guide is the parent to the five-part series of Beginner's Guides to Kuberne
 
 See the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series of guides here:
 
- - [Beginner's Guide to Kubernetes: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/)
+ - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/)
 
- - [Beginner's Guide to Kubernetes: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/)
+ - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/)
 
- - [Beginner's Guide to Kubernetes: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/)
+ - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/)
 
- - [Beginner's Guide to Kubernetes: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/)
+ - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/)
 
- - [Beginner's Guide to Kubernetes: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-conclusion/)
+ - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-conclusion/)

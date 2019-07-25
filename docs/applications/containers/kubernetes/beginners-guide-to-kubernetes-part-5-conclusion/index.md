@@ -9,7 +9,7 @@ published: 2019-07-03
 modified: 2019-07-03
 modified_by:
   name: Linode
-title: "A Beginner's Guide to Kubernetes: Conclusion"
+title: "A Beginner's Guide to Kubernetes, Part 5: Conclusion"
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
