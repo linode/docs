@@ -21,17 +21,13 @@ aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-obje
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
-In Kubernetes, there are a number of objects that are abstractions of your Kubernetes system's desired state. These objects represent your application, its networking, and disk resources -- all of which together form your application. This is the third guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series that explains the major parts and concepts of Kubernetes.
+{{< note >}}
+This is the third guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+{{< /note >}}
 
-In this guide you will learn:
+In Kubernetes, there are a number of objects that are abstractions of your Kubernetes system's desired state. These objects represent your application, its networking, and disk resources -- all of which together form your application.
 
- - [About the Pods](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/#pods)
-
- - [About Services](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/#services)
-
- - [About the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/#volumes)
-
- - [About the Namespaces](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/#namespaces)
+In this guide you will learn about [Pods](#pods), [Services](#services), [Volumes](#volumes), and [Namespaces](#namespaces).
 
 ## Pods
 
@@ -249,14 +245,14 @@ For more information on Namespaces, visit the [Kubernetes Namespaces API documen
 
 ## Next Steps
 
-See the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series of guides for more:
+To continue in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series, visit part 4:
 
- - [Beginner's Guide to Kubernetes: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/)
+ - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/)
 
- - [Beginner's Guide to Kubernetes: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/)
+ - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
 
- - [Beginner's Guide to Kubernetes: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/) (You Are Here)
+ - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/) (You Are Here)
 
- - [Beginner's Guide to Kubernetes: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/)
+ - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/)
 
- - [Beginner's Guide to Kubernetes: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-conclusion/)
+ - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)

@@ -21,15 +21,13 @@ aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-mast
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
-At the highest level of Kubernetes, there exist two kinds of servers, a *Master* and a *Node*. These servers can be Linodes, VMs, or physical servers. Together, these servers form a *cluster* and are controlled by the services that make up the *Control Plane*. This is the second guide the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series that explains the major parts and concepts of Kubernetes.
+{{< note >}}
+This is the second guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+{{< /note >}}
 
-In this guide you will learn:
+At the highest level of Kubernetes, there exist two kinds of servers, a *Master* and a *Node*. These servers can be Linodes, VMs, or physical servers. Together, these servers form a *cluster* and are controlled by the services that make up the *Control Plane*.
 
- - [About the Master Server](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/#kubernetes-master)
-
- - [About Nodes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/#nodes)
-
- - [About the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/#the-control-plane)
+In this guide you will learn about [the Master server](#kubernetes-master), cluster [nodes](#nodes), and the Kubernetes [Control Plane](#the-control-plane).
 
 ## Kubernetes Master
 
@@ -53,14 +51,14 @@ Together, kube-apiserver, kube-controller-manager, kube-scheduler, and etcd form
 
 ## Next Steps
 
-See the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series of guides for more:
+To continue in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series, visit part 3:
 
- - [Beginner's Guide to Kubernetes: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/)
+ - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/)
 
- - [Beginner's Guide to Kubernetes: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/) (You Are Here)
+ - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/) (You Are Here)
 
- - [Beginner's Guide to Kubernetes: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/)
+ - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/)
 
- - [Beginner's Guide to Kubernetes: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/)
+ - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/)
 
- - [Beginner's Guide to Kubernetes: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-conclusion/)
+ - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)

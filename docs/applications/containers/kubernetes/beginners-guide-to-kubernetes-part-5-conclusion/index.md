@@ -21,13 +21,11 @@ aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-conc
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
-This is the fifth guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series that explains the major parts and concepts of Kubernetes.
+{{< note >}}
+This is the fifth guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+{{< /note >}}
 
-In this guide you will learn:
-
- - [About Networking](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/#networking)
-
- - [About Advanced Topics](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/#advanced-topics)
+In this guide you will learn about [networking](#networking) in Kubernetes and about [advanced Kubernetes topics](#advanced-topics).
 
 ## Networking
 
@@ -59,19 +57,9 @@ There are a number of advanced topics in Kubernetes. Below are a few you might f
 
 ## Next Steps
 
-Now that you are familiar with Kubernetes concepts and components, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/applications/containers/kubernetes/getting-started-with-kubernetes/) guide. This guide provides a hands-on activity to continue learning about Kubernetes. If you would like to deploy a Kubernetes cluster on Linode for production use, we recommend using one of the following methods, instead:
+Now that you are familiar with Kubernetes concepts and components, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/applications/containers/kubernetes/getting-started-with-kubernetes/) guide. This guide provides a hands-on activity to continue learning about Kubernetes.
+
+If you would like to deploy a Kubernetes cluster on Linode for production use, we recommend using one of the following methods instead. These methods are also a much faster way to get a cluster running, and they will also integrate your cluster with some useful Linode plugins:
 
   - [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/)
   - [How to Deploy Kubernetes on Linode with Rancher 2.2](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/)
-
-See the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series of guides for more:
-
- - [Beginner's Guide to Kubernetes: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/)
-
- - [Beginner's Guide to Kubernetes: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/)
-
- - [Beginner's Guide to Kubernetes: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/)
-
- - [Beginner's Guide to Kubernetes: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/)
-
- - [Beginner's Guide to Kubernetes: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-conclusion/) (You Are Here)
