@@ -88,14 +88,14 @@ NGINX is a free, open-source, high-performance HTTP server and reverse proxy, as
 
     {{< file "/etc/nginx/sites-enabled/flaskapp" nginx >}}
 server {
-	listen 80;
-	server_name 172.104.28.209;
+    listen 80;
+    server_name 172.104.28.209;
 
-	location / {
-		proxy_pass http://127.0.0.1:8000;
-		proxy_set_header Host $host;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	}
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
 }
 {{< /file >}}
 
@@ -209,7 +209,7 @@ root@localhost:/home/Flask-on-Linode# gunicorn -w 3 flask_app:app
 {{< /output >}}
 
     {{< note >}}
-You can specify the amount of workers you want Gunicorn to use with the `-w` flag. A good rule of thumb to determine worker count is double your CPU core's and add 1. For a Nanode with 1 CPU core thats 3 workers.
+You can specify the amount of workers you want Gunicorn to use with the `-w` flag. A good rule of thumb to determine worker count is double your CPU core's and add 1. For a Nanode with 1 CPU core that's 3 workers.
 {{< /note >}}
 
 **Your Application is now live!! You should be able to navigate to it by entering your Linodes IP into a web browser.**
