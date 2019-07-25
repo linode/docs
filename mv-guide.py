@@ -125,18 +125,18 @@ def move_guides(paths):
         abs_path = os.path.abspath(path)
         if content_dir not in abs_path:
             exit_script(
-                f"Path '{path}' (absolute path: '{abs_path}') is not in your docs content directory.")
+                f"Path '{path}' ({abs_path}) is not in your docs content directory.")
 
     # check that all arguments (except for the last one) exist and are directories
     for path in paths[:-1]:
         if not os.path.isdir(os.path.abspath(path)):
             exit_script(
-                f"Path '{path}' (absolute path: {os.path.abspath(path)}) does not exist or is not a directory.")
+                f"Path '{path}' ({os.path.abspath(path)}) does not exist or is not a directory.")
 
     # If the last argument is a file that already exists
     if os.path.isfile(paths[-1]):
         exit_script(
-            f"Path '{path}' (absolute path: {os.path.abspath(path)}) cannot be a file.")
+            f"Path '{path}' ({os.path.abspath(path)}) cannot be a file.")
 
     # If the last argument is a directory that already exists
     elif os.path.isdir(paths[-1]):
@@ -150,7 +150,7 @@ def move_guides(paths):
 
     else:
         exit_script(
-            f"Path '{path}' (absolute path: {os.path.abspath(path)}) does not exist.")
+            f"Path '{paths[-1]}' ({os.path.abspath(paths[-1])}) does not exist.")
 
     try:
         sh.git("add", "-A")
