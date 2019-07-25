@@ -19,6 +19,11 @@ def exit_script(custom_message):
     print("usage: mv-guide.py source target")
     print("       mv-guide.py source ... directory")
     print("source and directory arguments must be directories.")
+    print()
+    print("This command can:")
+    print("- Rename the path of a guide or section.")
+    print("- Move several guides or sections to another section that already exists.")
+    print("The command will add aliases from your guides' and sections' old locations, \nand it will stage all changes when finished.")
     sys.exit(1)
 
 
