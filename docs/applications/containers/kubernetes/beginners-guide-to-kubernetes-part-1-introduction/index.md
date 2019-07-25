@@ -21,15 +21,13 @@ aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-intr
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
-*Kubernetes*, often referred to as *k8s*, is an open source container orchestration system that helps deploy and manage containerized applications. Developed by Google starting in 2014 and written in the [Go](http://golang.org) language, Kubernetes is quickly becoming the standard way to architect horizontally-scalable applications. This is the first guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series that explains the major parts and concepts of Kubernetes.
+{{< note >}}
+This is the first guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+{{< /note >}}
 
-In this guide you will learn:
+*Kubernetes*, often referred to as *k8s*, is an open source container orchestration system that helps deploy and manage containerized applications. Developed by Google starting in 2014 and written in the [Go](http://golang.org) language, Kubernetes is quickly becoming the standard way to architect horizontally-scalable applications.
 
- - [About containers and orchestration](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/#containers)
-
- - [About the Kubernetes API](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/#kubernetes-api)
-
- - [About the kubectl](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/#kubectl)
+In this guide you will learn about [containers and orchestration](#containers), [the Kubernetes API](#kubernetes-api), and [kubectl](#kubectl).
 
 ## Containers
 
@@ -57,14 +55,14 @@ For more information on the types of commands and resources you can use with kub
 
 ## Next Steps
 
-See the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series of guides for more:
+To continue in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series, visit part 2:
 
- - [Beginner's Guide to Kubernetes: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/) (You Are Here)
+ - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/) (You Are Here)
 
- - [Beginner's Guide to Kubernetes: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/)
+ - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
 
- - [Beginner's Guide to Kubernetes: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/)
+ - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/)
 
- - [Beginner's Guide to Kubernetes: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/)
+ - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/)
 
- - [Beginner's Guide to Kubernetes: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-conclusion/)
+ - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)

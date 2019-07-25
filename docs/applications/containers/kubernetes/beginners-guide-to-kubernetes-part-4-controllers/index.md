@@ -21,15 +21,13 @@ aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-cont
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
-A Controller is a control loop that continuously watches the Kubernetes API and tries to manage the desired state of certain aspects of the cluster. There are a number of controllers. Below is a short reference of the most popular controllers you might interact with. This is the fourth guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series that explains the major parts and concepts of Kubernetes.
+{{< note >}}
+This is the fourth guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+{{< /note >}}
 
-In this guide you will learn:
+A Controller is a control loop that continuously watches the Kubernetes API and tries to manage the desired state of certain aspects of the cluster. There are a number of controllers. Below is a short reference of the most popular controllers you might interact with.
 
- - [About ReplicaSets](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/#replicasets)
-
- - [About Deployments](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/#deployments)
-
- - [About Jobs](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/#jobs)
+In this guide you will learn about [ReplicaSets](#replicasets), [Deployments](#deployments), and [Jobs](#jobs).
 
 ## ReplicaSets
 
@@ -224,14 +222,16 @@ To delete the Job, and its Pod, issue the `delete` command:
 
 ## Next Steps
 
-See the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/) series of guides for more:
+There are other controllers not listed in this guide that you may find useful. Visit the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/#kubernetes-objects) for more information.
 
- - [Beginner's Guide to Kubernetes: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-introduction/)
+To continue in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series, visit part 5:
 
- - [Beginner's Guide to Kubernetes: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/)
+ - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/)
 
- - [Beginner's Guide to Kubernetes: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/)
+ - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
 
- - [Beginner's Guide to Kubernetes: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/) (You Are Here)
+ - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/)
 
- - [Beginner's Guide to Kubernetes: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-conclusion/)
+ - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/) (You Are Here)
+
+ - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)
