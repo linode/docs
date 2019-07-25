@@ -59,6 +59,16 @@ This guide assumes you will transfer your project to your Linode's `\home` direc
 
         git clone https://github.com/abalarin/Flask-on-Linode.git
 
+    {{< output >}}
+root@localhost:/home# git clone https://github.com/abalarin/Flask-on-Linode.git
+Cloning into 'Flask-on-Linode'...
+remote: Enumerating objects: 79, done.
+remote: Counting objects: 100% (79/79), done.
+remote: Compressing objects: 100% (57/57), done.
+remote: Total 79 (delta 26), reused 66 (delta 16), pack-reused 0
+Unpacking objects: 100% (79/79), done.
+Checking connectivity... done.
+{{< /output >}}
 
 #### Retrieving App From Your Local Machine
 1.  From your local machine SCP your project into your Linode's Home directory. Replace the example IP address with your Linode’s IP address and `flask_app` with the name of your projects root directory:
@@ -113,9 +123,27 @@ You should now be in your applications root directory on your Linode. We are goi
 
         sudo apt install python3-pip
 
-3. Install Flask Packages/libraries. If you are using the [Example Flask Blog Application](https://github.com/abalarin/Flask-on-Linode.git) then the packages should be located in [`/home/Flask-on-Linode/flask_app/requirements.txt`](https://github.com/abalarin/Flask-on-Linode/blob/master/flask_app/requirements.txt):
+3. Navigate into your projects root directory, if you are using the [Example Flask Blog Application](https://github.com/abalarin/Flask-on-Linode.git) it would be:
 
-        pip3 install -r requirements.txt
+        cd /home/Flask-on-Linode
+
+4. Install Flask Packages/libraries. If you are using the [Example Flask Blog Application](https://github.com/abalarin/Flask-on-Linode.git) then the packages should be located in [`/home/Flask-on-Linode/flask_app/requirements.txt`](https://github.com/abalarin/Flask-on-Linode/blob/master/flask_app/requirements.txt):
+
+        pip3 install -r flask_app/requirements.txt
+    {{< output >}}
+root@localhost:/home/Flask-on-Linode# pip3 install -r flask_app/requirements.txt
+Collecting flask-sqlalchemy (from -r flask_app/requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/08/ca/582442cad71504a1514a2f053006c8bb128844133d6076a4df17117545fa/Flask_SQLAlchemy-2.4.0-py2.py3-none-any.whl
+Collecting sqlalchemy (from -r flask_app/requirements.txt (line 2))
+  Downloading https://files.pythonhosted.org/packages/55/98/56b7155bab287cd0c78dee26258835db36e91f2efef41f125ed6f6f1f334/SQLAlchemy-1.3.6.tar.gz (5.9MB)
+    100% |████████████████████████████████| 5.9MB 218kB/s
+Collecting flask-security (from -r flask_app/requirements.txt (line 3))
+  Downloading https://files.pythonhosted.org/packages/88/47/4908a5040120768ff4fb2465c7eeafeb9239c27d2919bd67c4ccc1b43e14/Flask_Security-3.0.0-py2.py3-none-any.whl (68kB)
+    100% |████████████████████████████████| 71kB 8.7MB/s
+Collecting flask-wtf (from -r flask_app/requirements.txt (line 4))
+  Downloading https://files.pythonhosted.org/packages/60/3a/58c629472d10539ae5167dc7c1fecfa95dd7d0b7864623931e3776438a24/Flask_WTF-0.14.2-py2.py3-none-any.whl
+...
+{{< /output >}}
 
 ### Configure Environment Variables
 Most Applications will need some kind of configuration. There are different settings you might want to change depending on the application environment like toggling the debug mode, setting the secret key, database URI configuration, etc., see the [Flask Configuration docs](https://flask.palletsprojects.com/en/1.1.x/config/) for more details.
@@ -194,7 +222,7 @@ Supervisor is a client/server system that allows its users to monitor and contro
 
         sudo apt install supervisor
 
-2. Create a Supervisor program:
+2. Create a Supervisor script, you can replace any instances of `flaskapp` with the name of your application:
 
         sudo nano /etc/supervisor/conf.d/flaskapp.conf
 
@@ -210,7 +238,7 @@ stderr_logfile=/var/log/flaskapp/flaskapp.err.log
 stdout_logfile=/var/log/flaskapp/flaskapp.out.log
 {{< /file >}}
 
-3. Create the log files we listed in the above example of a Supervisor program for Gunicorn to write to:
+3. Create the log files we listed in the above example of a Supervisor program for Gunicorn to write to. Make sure to replace `flaskapp` if it was modified in the Supervisor script above:
 
         sudo mkdir /var/log/flaskapp
         touch /var/log/flaskapp/flaskapp.out.log
