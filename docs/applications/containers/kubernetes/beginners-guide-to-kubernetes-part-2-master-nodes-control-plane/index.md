@@ -9,7 +9,7 @@ published: 2019-07-03
 modified: 2019-07-03
 modified_by:
   name: Linode
-title: "A Beginner's Guide to Kubernetes: Master, Nodes, and the Control Plane"
+title: "A Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane"
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
