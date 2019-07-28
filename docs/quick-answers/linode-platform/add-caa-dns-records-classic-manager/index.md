@@ -14,7 +14,8 @@ title: Add CAA Records in the Linode Manager
 external_resources:
  - '[CAA Records, DNSimple](https://support.dnsimple.com/articles/caa-record/)'
  - '[RFC 6844: DNS Certification Authority Authorization (CAA) Resource Record](https://tools.ietf.org/html/rfc6844)'
-classic_manager_link: /quick-answers/linode-platform/add-caa-dns-records-classic-manager/
+cloud_manager_link: /quick-answers/linode-platform/add-caa-dns-records/
+hiddenguide: true
 ---
 
 Certification Authority Authorization (CAA) is a type of DNS record that allows the owner of a domain to specify which certificate authority (or authorities) are allowed to issue SSL/TLS certificates for their domain(s). This quick answer shows you how to set up CAA records on your Linode.
@@ -52,6 +53,6 @@ Certification Authority Authorization (CAA) is a type of DNS record that allows 
 
 ## Add Multiple CAA Records
 
-Multiple CAA records must be added individually. If your site `example.com` was issued a TLS certificate by Let's Encrypt, but your subdomain `store.example.com` uses a Symantec certificate, you would need two different CAA records. A reporting URL for the *iodef* tag would also need its own record. Those three would look something like this:
+Multiple CAA records must be added individually. If your site `example.com` was issued a TLS certificate by Let's Encrypt, but your subdomain `shop.example.com` uses a Symantec certificate, you would need two different CAA records. A reporting URL for the *iodef* tag would also need its own record. Those three would look something like this:
 
 ![Multiple CAA records](multiple-caa-records.png)
