@@ -32,6 +32,12 @@ The Linode provider relies on Linode's [APIv4](https://developers.linode.com/api
 
 The Linode provider can be used to create Linode instances, Images, domain records, Block Storage Volumes, StackScripts, and other resources. Terraform's [official Linode provider documentation](https://www.terraform.io/docs/providers/linode/index.html) details each resource that can be managed.
 
+{{< note >}}
+[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+
+The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
+{{</ note >}}
+
 ## Infrastructure as Code
 
 Terraform's representation of your resources in configuration files is referred to as *Infrastructure as Code* (IAC). The benefits of this methodology and of using Terraform include:

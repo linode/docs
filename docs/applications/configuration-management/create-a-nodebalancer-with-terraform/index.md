@@ -34,6 +34,12 @@ If you would like to stop billing for the resources created in this guide, [remo
 
 1.  You should have Terraform installed in your development environment, and have a working knowledge of Terraform resource configuration and the [Linode provider](https://www.terraform.io/docs/providers/linode/index.html). For more information on how to install and use Terraform, check out our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
 
+    {{< note >}}
+[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+
+The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
+    {{</ note >}}
+
 1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain a token.
 
 1.  Create a `terraform_nodebalancer` directory on your computer for the Terraform project you will create in this guide. All files you create in this guide should be placed in this directory, and you should run all commands from this directory. This new project should not be created inside another Terraform project directory, including the one you may have made when previously following [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/).
