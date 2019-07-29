@@ -11,7 +11,7 @@ modified_by:
 published: 2016-05-20
 title: 'Install MongoDB on Ubuntu 16.04 (Xenial)'
 external_resources:
- - '[Official MongoDB Documentation](https://docs.mongodb.org/v3.2/)'
+ - '[Official MongoDB Documentation](https://docs.mongodb.com/v4.0/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](http://docs.mongodb.org/ecosystem/drivers/)'
 ---
@@ -42,17 +42,17 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Add the MongoDB Repository
 
-The `mongodb-server` package from the Ubuntu repository includes version 2.6. However, this version reached end of life in October 2016, so it should not be used in production environments. The most current version available is 3.2 and, as of this writing, the default Ubuntu repositories do not contain an updated package.
+The `mongodb-server` package from the Ubuntu repository includes version 2.6. However, this version reached end of life in October 2016, so it should not be used in production environments. The most current version available is 4.0 and, as of this writing, the default Ubuntu repositories do not contain an updated package.
 
 Because the Ubuntu repositories don't contain a current version, we'll need to use the MongoDB repository.
 
 1.  Import the MongoDB public GPG key for package signing:
 
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
 
 2.  Add the MongoDB repository to your `sources.list.d` directory:
 
-        echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+        echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
 
 3.  Update your repositories. This allows `apt` to read from the newly added MongoDB repo:
 
@@ -175,7 +175,7 @@ Successfully added user: {
 
         quit()
 
-For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://docs.mongodb.org/v3.2/security).
+For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://docs.mongodb.org/v4.0/security).
 
 ## Manage Data and Collections
 
@@ -197,7 +197,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
         db.createCollection("exampleCollection", {capped: false})
 
-    If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/v3.2/reference/method/db.createCollection/).
+    If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/v4.0/reference/method/db.createCollection/).
 
     {{< note >}}
 Collection names should not include certain punctuation such as hyphens. However, exceptions may not be raised until you attempt to use or modify the collection. For more information, refer to MongoDB's [naming restrictions](https://docs.mongodb.com/manual/reference/limits/#naming-restrictions).
