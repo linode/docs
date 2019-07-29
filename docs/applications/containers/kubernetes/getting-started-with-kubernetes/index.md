@@ -248,7 +248,7 @@ NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STATUS&nbsp;&nbsp;&nbsp;  RO
 kube-master   Ready&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;master&nbsp;&nbsp;&nbsp;   1h&nbsp;&nbsp;&nbsp;&nbsp;v1.14.1
     {{</ output >}}
 
-1. Inspect the available [namespaces](https://deploy-preview-2397--nostalgic-ptolemy-b01ab8.netlify.com/applications/containers/beginners-guide-to-kubernetes/#namespaces) in your cluster.
+1. Inspect the available [namespaces](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#namespaces) in your cluster.
 
         kubectl get namespaces
 
