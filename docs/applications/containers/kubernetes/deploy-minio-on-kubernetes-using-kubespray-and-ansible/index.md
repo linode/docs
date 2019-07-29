@@ -7,10 +7,10 @@ og_description: 'Minio is an open source S3 compatible object store that can be 
 keywords: ['ansible', 'kubernetes', 'cluster', 's3', 'aws']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-02-23
-modified: 2018-02-23
 modified_by:
   name: Linode
 title: 'Deploy Minio on Kubernetes using Kubespray and Ansible'
+aliases: ['applications/containers/deploy-minio-on-kubernetes-using-kubespray-and-ansible/']
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)'

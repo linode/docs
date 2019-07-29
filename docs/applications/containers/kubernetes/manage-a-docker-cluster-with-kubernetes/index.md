@@ -7,10 +7,10 @@ og_description: 'Kubernetes makes it easy to manage containers across multiple s
 keywords: ["Kubernetes", "cluster", "docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-02-28
-modified: 2018-02-28
 modified_by:
   name: Linode
 title: 'Manage a Docker Cluster with Kubernetes'
+aliases: ['applications/containers/manage-a-docker-cluster-with-kubernetes/']
 contributor:
   name: Damaso Sanoja
   link: https://twitter.com/damasosanoja
@@ -38,7 +38,7 @@ To complete this guide you will need three Linodes running Ubuntu 16.04 LTS, eac
 
 ## Before You Begin
 
-This article requires that you first complete our [How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster](https://linode.com/docs/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/) guide and follow the procedures described there to configure one master node and two worker nodes.
+This article requires that you first complete our [How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster](https://linode.com/docs/applications/containers/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/) guide and follow the procedures described there to configure one master node and two worker nodes.
 
 Set the hostnames of the three Linodes as follows:
 
