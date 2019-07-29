@@ -9,6 +9,7 @@ published: 2019-03-26
 modified_by:
   name: Linode
 title: 'How to Install Apps on Kubernetes with Helm'
+aliases: ['applications/containers/how-to-install-apps-on-kubernetes-with-helm/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Helm Documentation](https://helm.sh/docs/)'
