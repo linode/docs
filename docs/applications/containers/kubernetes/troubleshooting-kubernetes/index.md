@@ -5,7 +5,7 @@ author:
 description: 'Learn frequently-used troubleshooting commands for Kubernetes and review common Kubernetes issues.'
 keywords: ['kubernetes','cluster','troubleshooting','k8s','kubectl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-01
+published: 2019-07-29
 modified_by:
   name: Linode
 title: "Troubleshooting Kubernetes"
