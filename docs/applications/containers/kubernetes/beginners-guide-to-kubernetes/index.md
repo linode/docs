@@ -9,7 +9,7 @@ published: 2019-07-29
 modified_by:
   name: Linode
 title: "A Beginner's Guide to Kubernetes"
-aliases: ['applications/containers/beginners-guide-to-kubernetes']
+aliases: ['applications/containers/beginners-guide-to-kubernetes/']
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]

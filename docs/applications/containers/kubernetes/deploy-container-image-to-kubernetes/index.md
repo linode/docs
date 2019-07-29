@@ -9,7 +9,7 @@ published: 2019-05-07
 modified_by:
   name: Linode
 title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
-aliases: ['applications/containers/deploy-container-image-to-kubernetes']
+aliases: ['applications/containers/deploy-container-image-to-kubernetes/']
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]

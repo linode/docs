@@ -12,7 +12,7 @@ title: "Troubleshooting Kubernetes"
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Documentation - Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)'
-aliases: ['applications/containers/troubleshooting-kubernetes']
+aliases: ['applications/containers/troubleshooting-kubernetes/']
 ---
 
 <!-- EDITOR'S NOTE: This guide is split into two halves:
