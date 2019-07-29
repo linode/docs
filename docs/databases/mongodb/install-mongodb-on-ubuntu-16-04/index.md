@@ -52,7 +52,7 @@ Because the Ubuntu repositories don't contain a current version, we'll need to u
 
 2.  Add the MongoDB repository to your `sources.list.d` directory:
 
-        echo "deb [ arch=amd64,arm64,ppc64el,s390x ] http://repo.mongodb.com/apt/ubuntu xenial/mongodb-enterprise/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-enterprise.list
+        echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
 
 3.  Update your repositories. This allows `apt` to read from the newly added MongoDB repo:
 
