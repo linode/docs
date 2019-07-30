@@ -866,6 +866,7 @@ nano
 nanode
 nanodes
 natively
+nawk
 nbox
 ncdu
 ncurses
