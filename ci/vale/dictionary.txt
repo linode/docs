@@ -766,6 +766,7 @@ masterdb
 masterless
 mathematica
 mathjax
+mawk
 maxconn
 maxdepth
 mbit
