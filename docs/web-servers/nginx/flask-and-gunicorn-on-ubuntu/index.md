@@ -43,7 +43,7 @@ In this guide we will setup the following for our Application to communicate wit
 You have done a decent amount of development on your Flask Application on your local development environment and are ready to deploy it to a production environment.
 
 {{< note >}}
-This guide assumes you will transfer your project to your Linode's `\home` directory. It doesn't necessarily matter where your project is located so long as you are cognizant of your projects location when configuring deployment and running commands.
+This guide assumes you will transfer your project to your Linode's `/home` directory. It doesn't necessarily matter where your project is located so long as you are cognizant of your projects location when configuring deployment and running commands.
 {{< /note >}}
 
 #### Retrieving App From Source Control
@@ -194,7 +194,7 @@ Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX. It's a pre-fork 
 
         pip3 install gunicorn
 
-2. Run Gunicorn from your Application's root directory or a directory up from your Application's entry point. In the below example we are telling Gunicorn to look for the WSGI instance named **app** in the **flask_app** directory. In our example project this WSGI instance named **app** is located in [`\home\Flask-on-Linode\flask_app\__init__.py`](https://github.com/abalarin/Flask-on-Linode/blob/master/flask_app/__init__.py).
+2. Run Gunicorn from your Application's root directory or a directory up from your Application's entry point. In the below example we are telling Gunicorn to look for the WSGI instance named **app** in the **flask_app** directory. In our example project this WSGI instance named **app** is located in [`/home/Flask-on-Linode/flask_app/__init__.py`](https://github.com/abalarin/Flask-on-Linode/blob/master/flask_app/__init__.py).
 
         gunicorn -w 3 flask_app:app
 
@@ -238,7 +238,7 @@ stderr_logfile=/var/log/flaskapp/flaskapp.err.log
 stdout_logfile=/var/log/flaskapp/flaskapp.out.log
 {{< /file >}}
 
-3. Create the log files we listed in the above example of a Supervisor program for Gunicorn to write to. Make sure to replace `flaskapp` if it was modified in the Supervisor script above:
+3. Create the log files we listed in the above example of a Supervisor program for Gunicorn to write too. Make sure to replace `flaskapp` if it was modified in the Supervisor script above:
 
         sudo mkdir /var/log/flaskapp
         touch /var/log/flaskapp/flaskapp.out.log
