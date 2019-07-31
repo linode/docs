@@ -23,7 +23,7 @@ The taxes that Linode collects will appear on your invoices, and you can [review
 Information about your EU VAT rate can be found [here](https://ec.europa.eu/taxation_customs/business/vat_en). Please note, Linode’s [pricing plans](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) do **NOT** include EU VAT charges.
 {{< /note >}}
 
-## Can I Prevent Linode's Tax Collection?
+## Can Linode's Tax Collection Be Disabled?
 
 Customers may choose to provide Linode with a valid VAT identification number (VAT ID) or GST identification number (GST ID). Such customers will not be charged with VAT or GST in subsequent invoices once their VAT or GST ID is verified.
 
@@ -34,7 +34,7 @@ For the remainder of this guide, your VAT or GST ID will be referred to as your 
 You can [update your contact information](#add-a-tax-id-to-your-linode-account) at any time to apply your tax ID to your Linode account. You can also specify a tax ID in our account signup form when you first create your Linode account.
 
 {{< note >}}
-If you have other kinds of documents that grant your organization a tax-exempt status, or if you have any questions about Linode's tax collection, please [contact Linode Support](/docs/platform/billing-and-support/support/#contacting-linode-support).
+If you have other documents which state that your organization's services with Linode should not be taxed, please [contact Linode Support](/docs/platform/billing-and-support/support/#contacting-linode-support).
 {{< /note >}}
 
 ## Add a Tax ID to your Linode Account
@@ -118,6 +118,10 @@ Install the Linode CLI to your local computer and generate a Personal Access Tok
         linode-cli account invoice-items 10876642
 
 ## FAQ
+
+-   **What is Linode's EU VAT number?**
+
+    Linode's EU VAT number is `EU372008859`.
 
 -   **How is my tax location determined?**
 
