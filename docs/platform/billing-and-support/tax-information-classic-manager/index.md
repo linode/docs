@@ -14,7 +14,7 @@ cloud_manager_link: platform/billing-and-support/tax-information/
 hiddenguide: true
 ---
 
-##  Which Taxes are Collected by Linode?
+## Which Taxes are Collected by Linode?
 
 Linode collects the European Union's Value Added Tax (VAT) for customers that are subject to it. Starting on September 1st, 2019, Linode will also collect Australia and India's Goods and Services Tax (GST) for customers in those countries.
 
@@ -49,7 +49,7 @@ Your tax ID may be added to your account via the [Linode Classic Manager](https:
 1. Navigate to the **Contact Info** tab that appears under the **Account** tab.
 
 1. The **Contact Information** form will appear. Enter your tax ID in the **Tax ID** field.
-<!-- The field is still labelled VAT Number in Classic Manager as of July 30, but that's going to be updated. -->
+<!-- The field is still labelled VAT Number in Classic Manager as of July 30, but that's going to be updated to "Tax ID". -->
 
 1. Click on the **Save Changes** button at the bottom of the form.
 
