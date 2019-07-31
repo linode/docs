@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Explains the European Union value added tax (VAT) and how to add a registration number to your account."
-keywords: ["accounts", "vat", "linode manager", "linode classic manager", "manager", "taxes", "tax information", "usd", "vat id", "eu", "european union"]
+description: "Describes which taxes Linode collects and how to add a tax identification number to your account."
+keywords: ["accounts", "vat", "linode manager", "linode classic manager", "manager", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
@@ -14,19 +14,33 @@ cloud_manager_link: platform/billing-and-support/tax-information/
 hiddenguide: true
 ---
 
-## Value Added Tax in the European Union
+## Which Taxes are Collected by Linode?
 
-Linode customers who are subject to EU VAT can [review these charges](#review-your-charges) on their monthly invoices by navigating to the **Account** tab in the [Linode Classic Manager](https://manager.linode.com).
+Linode collects the European Union's Value Added Tax (VAT) for customers that are subject to it. Starting on September 1st, 2019, Linode will also collect Australia and India's Goods and Services Tax (GST) for customers in those countries.
 
-Customers that wish to provide Linode with a valid VAT identification number (VAT ID) may do so by [updating their contact information](#adding-an-eu-vat-id-to-your-linode-account). Such customers will not be charged with EU VAT in subsequent invoices once their VAT ID is verified. You can also specify a VAT ID in our account signup form when you first create your Linode account.
+The taxes that Linode collects will appear on your invoices, and you can [review these charges](#review-your-charges) by navigating to the **Account** tab in the [Linode Classic Manager](https://manager.linode.com).
 
 {{< note >}}
 Information about your EU VAT rate can be found [here](https://ec.europa.eu/taxation_customs/business/vat_en). Please note, Linode’s [pricing plans](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) do **NOT** include EU VAT charges.
-{{</ note >}}
+{{< /note >}}
 
-## Adding an EU VAT ID to your Linode Account
+## What Should I Do If My Services are Non-Taxable?
 
-Valid VAT IDs may be added to your account via the [Linode Classic Manager](https://manager.linode.com). To add or update your account with a VAT ID:
+If you are a registered business, you may choose to provide Linode with a valid VAT identification number (VAT ID) or GST identification number (GST ID). Such customers will not be charged with VAT or GST in subsequent invoices once their VAT or GST ID is verified.
+
+{{< note >}}
+For the remainder of this guide, your VAT or GST ID will be referred to as your *tax ID*.
+{{< /note >}}
+
+You can [update your contact information](#add-a-tax-id-to-your-linode-account) at any time to apply your tax ID to your Linode account. You can also specify a tax ID in our account signup form when you first create your Linode account.
+
+{{< note >}}
+If you have documents which state that your organization's services with Linode should not be taxed, please [contact Linode Support](/docs/platform/billing-and-support/support-classic-manager/#contacting-linode-support).
+{{< /note >}}
+
+## Add a Tax ID to your Linode Account
+
+Your tax ID may be added to your account via the [Linode Classic Manager](https://manager.linode.com). To add or update your account with a tax ID:
 
 1. Log in to the [Linode Classic Manager](https://manager.linode.com).
 
@@ -34,7 +48,8 @@ Valid VAT IDs may be added to your account via the [Linode Classic Manager](http
 
 1. Navigate to the **Contact Info** tab that appears under the **Account** tab.
 
-1. The **Contact Information** form will appear. Enter your EU VAT ID in the **VAT Number** field.
+1. The **Contact Information** form will appear. Enter your tax ID in the **Tax ID** field.
+<!-- The field is still labelled VAT Number in Classic Manager as of July 30, but that's going to be updated to "Tax ID". -->
 
 1. Click on the **Save Changes** button at the bottom of the form.
 
@@ -57,6 +72,10 @@ See the [Billing and Payments](/docs/platform/billing-and-support/billing-and-pa
 1. In the detail page for a given invoice, click on the corresponding **Download Printable Invoice** button at the bottom of the page to download a PDF version of the invoice.
 
 ## FAQ
+
+-   **What is Linode's EU VAT number?**
+
+    Linode's EU VAT number is `EU372008859`.
 
 -   **How is my tax location determined?**
 
