@@ -23,7 +23,7 @@ The taxes that Linode collects will appear on your invoices, and you can [review
 Information about your EU VAT rate can be found [here](https://ec.europa.eu/taxation_customs/business/vat_en). Please note, Linode’s [pricing plans](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) do **NOT** include EU VAT charges.
 {{< /note >}}
 
-## What Should I do If My Services are Non-Taxable?
+## What Should I Do If My Services are Non-Taxable?
 
 If you are a registered business, you may choose to provide Linode with a valid VAT identification number (VAT ID) or GST identification number (GST ID). Such customers will not be charged with VAT or GST in subsequent invoices once their VAT or GST ID is verified.
 
