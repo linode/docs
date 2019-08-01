@@ -186,7 +186,7 @@ You may be prompted to make a menu selection when the Grub package is updated on
 
 After running a sync, it may end with a message that you should upgrade Portage using a `--oneshot` emerge command. If so, run the Portage update. Then update the rest of the system:
 
-    emerge --uDN @world
+    emerge -uDU --keep-going --with-bdeps=y @world
 
 ### OpenSUSE
 
