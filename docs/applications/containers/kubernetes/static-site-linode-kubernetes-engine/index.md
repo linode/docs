@@ -97,7 +97,7 @@ You will use [DockerHub](https://hub.docker.com/) to store your Docker image. If
 
 ### Install Hugo
 
-A *static site generator* (SSG) is usually a command line tool that takes text files written in a markup language like [Markdown](https://daringfireball.net/projects/markdown/), applys a stylized template to their content, and produces valid HTML, CSS, and JavaScript files. Static sites are prized for their simplicity and speed, as they do not generally have to interact with a database. The Linode documentation website, and this guide, employ Hugo, a powerful and fast SSG written in the Go programming language, but you can choose one that best suits your needs by reading our [How to Choose a Static Site Generator guide](/docs/websites/static-sites/how-to-choose-static-site-generator/). The steps in this guide are generally the same across SSGs: install a static site generator, create some content in a text file, and then generate your site's HTML through a build process.
+A *static site generator* (SSG) is usually a command line tool that takes text files written in a markup language like [Markdown](https://daringfireball.net/projects/markdown/), applies a stylized template to their content, and produces valid HTML, CSS, and JavaScript files. Static sites are prized for their simplicity and speed, as they do not generally have to interact with a database. The Linode documentation website, and this guide, employ Hugo, a powerful and fast SSG written in the Go programming language, but you can choose one that best suits your needs by reading our [How to Choose a Static Site Generator guide](/docs/websites/static-sites/how-to-choose-static-site-generator/). The steps in this guide are generally the same across SSGs: install a static site generator, create some content in a text file, and then generate your site's HTML through a build process.
 
 To download and install Hugo, you can use a package manager.
 
@@ -155,7 +155,7 @@ For more information on downloading Hugo, you can visit the official [Hugo websi
 
 LKE provides Kubernetes configuration files for each cluster. These files are used to set the *[context](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#context)* of `kubectl`. Contexts give `kubectl` instructions for which Kubernetes cluster it should interact with. Follow the below instructions to download the configuration file for your cluster and set it as the context for `kubectl`.
 
-1.  On the *Kubernets Clusters* page, click on the meatball menu (three dots) to the right of the cluster you just created, and select **Download kubeconfig**. This will prompt a download for a file named `kubeconfig.yaml`.
+1.  On the *Kubernetes Clusters* page, click on the meatball menu (three dots) to the right of the cluster you just created, and select **Download kubeconfig**. This will prompt a download for a file named `kubeconfig.yaml`.
 
     !["Click on the hamburger menu icon to download the 'kubeconfig' file."](lke-static-site-download-kubeconfig.png)
 
@@ -558,7 +558,7 @@ You can also use the manifest file you created to delete the Service:
 
 To remove the LKE Cluster and the associated Nodes from your account, navigate to the [Linode Cloud Manager](https://cloud.linode.com).
 
-1.  In the lefthand navigation menu, click on **Kubernetes**.
+1.  In the left-hand navigation menu, click on **Kubernetes**.
 
 2.  Click on the meatball icon (three dots) next to the cluster you would like to delete, and select **Delete**.
 
