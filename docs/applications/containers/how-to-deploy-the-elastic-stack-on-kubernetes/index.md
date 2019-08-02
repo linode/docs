@@ -161,7 +161,7 @@ Before visualizing pod logs, Kibana must be configured with an index pattern for
 
 1.  The Discover tab provides a realtime view of logs as they are ingested by Elasticsearch from your Kubernetes cluster. The histogram provides a view of log volume over time, which by default spans for the last 15 minutes. The sidebar on the left side of the user interface displays various fields parsed from json fields sent by Filebeat to Elasticsearch.
 
-1.  Use the "Filters" box to search only for logs arriving from Kibana pods by filtering for `kubernetes.container.name : "kibana"`. Note that when selecting the textbox, field names and values are auto-populated. Select the "Update" button to apply the search filter.
+1.  Use the "Filters" box to search only for logs arriving from Kibana pods by filtering for `kubernetes.container.name : "kibana"`. Note that when selecting the text box, field names and values are auto-populated. Select the "Update" button to apply the search filter.
 
     ![Kibana Filter](kibana-kibana-filter.png "Kibana filter")
 
@@ -169,7 +169,7 @@ Before visualizing pod logs, Kibana must be configured with an index pattern for
 
     ![Kibana Open Log Event](kibana-expand-log.png "Kibana Open Log Event")
 
-1.  Scroll down to view the entire log document in Kibana. Observe the fields provided by Filebeat, including the `message` field, which contains the stdout/stderr output from the container, as well as the kubernetes node and pod name in fields prefixed with `kubernetes.`.
+1.  Scroll down to view the entire log document in Kibana. Observe the fields provided by Filebeat, including the `message` field, which contains standard out and standard error messages from the container, as well as the kubernetes node and pod name in fields prefixed with `kubernetes.`.
 
     ![Kibana Log Document](kibana-expanded-log.png "Kibana Log Document")
 
@@ -212,7 +212,7 @@ podAnnotations:
 
         helm upgrade --values kibana-values.yml --wait --timeout=600 kibana elastic/kibana
 
-1.  Note that triggering a rolling pod update of Kibana will cause the previous `port-forward` to lose track of running pods. Terminate the previous Kibana `port-forward` command in the backgrounded terminal with `Ctrl-C` and start the command again:
+1.  Note that triggering a rolling pod update of Kibana will cause the previous `port-forward` to lose track of running pods. Terminate the previous Kibana `port-forward` command in the background terminal with `Ctrl-C` and start the command again:
 
         kubectl port-forward svc/kibana-kibana 5601:5601
 
@@ -288,4 +288,4 @@ Your `docker run` command should use an image tag matching the version of Metric
 
 ## Next Steps
 
-From this point onward, any additional workloads started in Kubernetes will be processed by Filebeat and Metricbeat in order to collect logs and metrics for later introspection within Kibana. As Kubernetes nodes are added or removed, the Filebeat and Metricbeat `DaemonSet`s will autoscale to monitor nodes as they join the Kubernetes cluster.
+From this point onward, any additional workloads started in Kubernetes will be processed by Filebeat and Metricbeat in order to collect logs and metrics for later introspection within Kibana. As Kubernetes nodes are added or removed, the Filebeat and Metricbeat `DaemonSet`s will automatically scale out pods to monitor nodes as they join the Kubernetes cluster.
