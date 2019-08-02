@@ -52,6 +52,7 @@ authy
 autocompletion
 autoconfiguration
 autoconfigure
+autodiscover
 autohosting
 autojoin
 autojump
