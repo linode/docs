@@ -6,6 +6,8 @@ description: 'Learn how to install components of the Elastic Stack like Elastics
 keywords: ["elastic", "elasticsearch", "kibana", "filebeat", "metricbeat", "kubernetes", "k8s", "elk", "helm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-01
+modified_by:
+  name: Linode
 title: 'How to Deploy the Elastic Stack on Kubernetes'
 external_resources:
   - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
