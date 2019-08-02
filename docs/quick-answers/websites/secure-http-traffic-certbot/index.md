@@ -12,7 +12,7 @@ modified_by:
 published: 2018-06-27
 title: Secure HTTP Traffic with Certbot
 external_resources:
-  - '[Certbot Official Dcomentation](https://certbot.eff.org/docs/)'
+  - '[Certbot Official Documentation](https://certbot.eff.org/docs/)'
 ---
 
 ## What is Certbot?

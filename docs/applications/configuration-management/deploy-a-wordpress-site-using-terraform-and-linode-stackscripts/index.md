@@ -17,6 +17,8 @@ external_resources:
 - '[Terraform Input Variables](https://www.terraform.io/intro/getting-started/variables.html)'
 ---
 
+![Deploy a WordPress Site Using Terraform and Linode StackScripts](deploy-wordpress-using-terraform-linode-stackscripts.png "Deploy a WordPress Site Using Terraform and Linode StackScripts")
+
 Linode's Terraform provider supports [StackScripts](/docs/platform/stackscripts/). StackScripts allow you to automate the deployment of custom software on top of Linode's default Linux images, or on any of your [saved custom images](/docs/platform/disk-images/linode-images/). You can create your own StackScripts, use a StackScript created by Linode, or use a Community StackScript.
 
 In this guide you will learn how to use a Community StackScript to deploy WordPress on a Linode using Terraform.
@@ -28,6 +30,12 @@ Following this guide will result in the creation of [billable Linode resources](
 ## Before You Begin
 
 1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
+
+    {{< note >}}
+[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+
+The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
+    {{</ note >}}
 
 1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain one.
 

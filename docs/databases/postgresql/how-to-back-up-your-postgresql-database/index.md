@@ -96,7 +96,7 @@ You may want to set up a cron job so that your database will be backed up automa
 4.  Add the following line to the end of the crontab:
 
     {{< file crontab >}}
-0 * * * 0 pg_dump -U postgres dbname > ~/postgres/backups/dbname.bak
+0 0 * * 0 pg_dump -U postgres dbname > ~/postgres/backups/dbname.bak
 {{< /file >}}
 
 5.  Save and exit from the editor. Your database will be backed up at midnight every Sunday. To change the time or frequency of the updates, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide.

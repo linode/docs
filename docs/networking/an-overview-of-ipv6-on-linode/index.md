@@ -71,7 +71,7 @@ You can find your Linode's IPv6 address using the Linode Cloud Manager or the `i
 
 -  Line 3 shows the IPv6 loopback interface, `::1/128`. This is used for IPv6 traffic within the system, similar to the `127.0.0.0/8` IPv4 address block.
 
--  Line 6 is the Linode's public IP address, `600:3c02::f03c:91ff:fe24:3a2f/64`. You can see it's in a `/64` range.
+-  Line 6 is the Linode's public IP address, `2600:3c02::f03c:91ff:fe24:3a2f/64`. You can see it's in a `/64` range.
 
 -  Line 8 is the link-local IPv6 address, `fe80::f03c:91ff:fe24:3a2f/64`. An IPv6 link-local address is a unicast address that is automatically configured on any interface.
 
