@@ -33,7 +33,6 @@ You can configure your Team Fortress 2 App by providing values for the following
 | **Field** | **Description** |
 |:--------------|:------------|
 | **RCON Password** | The password for the remote console, which allows you to issue commands on the TF2 server. *Required*. |
-| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Options*. |
 | **Server Name** | Your Team Fortress 2 server's name. *Advanced Options*. |
 | **Message of the Day** | Message of the day. Text displayed whenever a player logs on to the server. *Advanced Options* |
 | **Server Password** | The password for the TF2 server. Configuring a TF2 server password will require users of your game server to provide this password. *Advanced Options* |

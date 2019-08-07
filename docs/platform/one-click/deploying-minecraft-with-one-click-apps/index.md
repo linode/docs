@@ -32,7 +32,6 @@ You can configure your Minecraft Server App by providing values for the followin
 
 | **Field**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
 |:--------------|:------------|
-| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Configuration*. |
 | **World Name** | The world name and it's corresponding file name. *Advanced Configuration*. |
 | **Message of the Day** | Text that is displayed whenever a player logs on to the server. *Advanced Configuration*. |
 | **Flight Enabled** | Allows flight if there is a mod installed that supports flying. This configuration has no effect on creative mode flight. *Advanced Configuration*. |
