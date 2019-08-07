@@ -42,7 +42,7 @@ When a One-Click App is deployed, a new Linode is created and the appropriate so
 
     ![Fill out the required Options fields, which are marked with an asterisk.](one-click-wordpress-config-options.png)
 
-    You can fill out additional options by clicking on **Show Advanced Options**. For the WordPress example, these options are the site's title and a field for an [SSH key](/docs/security/authentication/use-public-key-authentication-with-ssh/). If you enter an SSH key, you will be able to use it later to log in to your Linode ([via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh)).
+    You can fill out additional options by clicking on **Show Advanced Options**. For the WordPress example, this option is the site's title.
 
 1.  The **Select an Image** section displays that Debian is pre-selected. This is the underlying operating system that your Linode will run.
 
