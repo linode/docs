@@ -19,7 +19,7 @@ external_resources:
 ## Introduction
 
 The study of TCP, UDP and UNIX socket connections is very important for every
-UNIX and network administrator because it allows you to monitor your Linux system's status. Written by Alexey Kuznetosv to replace the famous `netstat` utility , the more capabale `ss` (socket statistics) utility allows you to monitor TCP, UDP, and UNIX sockets. The purpose of this guide is to help you learn the `ss` utility and use is as productively as possible.
+UNIX and network administrator because it allows you to monitor your Linux system's status. Written by Alexey Kuznetosv to replace the famous `netstat` utility , the more capable `ss` (socket statistics) utility allows you to monitor TCP, UDP, and UNIX sockets. The purpose of this guide is to help you learn the `ss` utility and use is as productively as possible.
 
 {{< note >}}
 Running `ss` without using the `sudo` utility will result in different output. Practically, this means that running `ss` without root privileges will show the results available to the current user only. If you are not familiar with the `sudo` command,
@@ -48,7 +48,7 @@ The `ss(8)` binary supports many command line options, including the following:
 | `-6` | The `-6` command line option tells `ss` to display IPv6 connections only. |
 | `-f FAMILY` | The `-f` tells `ss` to display sockets of type `FAMILY`. The supported values are `unix`, `inet`, `inet6` and `netlink`. |
 | `-s` | The `-s` option displays useful statistics about the current connections. |
-| `-o` | The `-o` option displays timer information. There are five types of timers: `on`, which is either a TCP retrans timer, a TCP early retrans timer, or a tail loss probe timer; `keepalive`, which is the TCP keep alive timer; `timewait`, which is the timewait stage timer; `persist`, which is the zero window probe timer; and `unknown`, which is a timere that is none of the other timers. |
+| `-o` | The `-o` option displays timer information. There are five types of timers: `on`, which is either a TCP retrans timer, a TCP early retrans timer, or a tail loss probe timer; `keepalive`, which is the TCP keep alive timer; `timewait`, which is the timewait stage timer; `persist`, which is the zero window probe timer; and `unknown`, which is a timer that is none of the other timers. |
 | `-n` | The `-n` option tells `ss` to disable the resolving of service names. |
 | `-r` | The `-r` option tells `ss` to enable DNS resolving in the output, which is turned off by default. |
 | `-m` | The `-m` parameter tells `ss` to display socket memory usage information. |
@@ -417,7 +417,7 @@ UNCONN&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;
 
 The following `ss` command will list all TCP sockets that are in the ESTABLISHED state, use HTTP or HTTPS on the local machine and belong to the 2.86.7/24 network and display their timers:
 
-	ss -o state established '( sport = :http or sport = :https )' dst 2.86.7/24
+    ss -o state established '( sport = :http or sport = :https )' dst 2.86.7/24
 
 {{< output >}}
 Netid&nbsp;&nbsp;Recv-Q&nbsp;&nbsp;Send-Q&nbsp;&nbsp;Local Address:Port&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Peer Address:Port
