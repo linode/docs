@@ -246,7 +246,7 @@ The `hosts` file creates static associations between IP addresses and hostnames 
 203.0.113.10 hostname.example.com hostname
 {{< /file >}}
 
-You may also want to add an entry for your Linode's IPv6 address:
+Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will not work without this entry:
 
   {{< file "/etc/hosts" conf >}}
 127.0.0.1 localhost.localdomain localhost
