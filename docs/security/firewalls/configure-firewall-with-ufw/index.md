@@ -103,15 +103,15 @@ Along with allowing or denying based solely on port, UFW also allows you to allo
 
 To allow connections from an IP address:
 
-    sudo ufw allow from 123.45.67.89
+    sudo ufw allow from 198.51.100.0
 
 To allow connections from a specific subnet:
 
-    sudo ufw allow from 123.45.67.89/24
+    sudo ufw allow from 198.51.100.0/24
 
 To allow a specific IP address/port combination:
 
-    sudo ufw allow from 123.45.67.89 to any port 22 proto tcp
+    sudo ufw allow from 198.51.100.0 to any port 22 proto tcp
 
 `proto tcp` can be removed or switched to `proto udp` depending upon your needs, and all instances of `allow` can be changed to `deny` as needed.
 
