@@ -6,7 +6,7 @@ description: 'How to Manage Secrets with Terraform'
 keywords: ['terraform','secrets','secrets management','backend','hcl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
-modified: 2018-12-12
+modified: 2019-08-09
 modified_by:
   name: Linode
 title: "Secrets Management with Terraform"
@@ -44,7 +44,7 @@ variable "token" {
 }
 
 provider "linode" {
-    token = "${var.token}"
+    token = var.token
 }
 {{< /file >}}
 
