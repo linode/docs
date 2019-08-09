@@ -24,11 +24,8 @@ Some of the commands in this guide will require the use of two terminal windows 
 
 {{< note >}}
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
 
-{{< note >}}
-Port numbers 0-1024 are restricted and can only be used with root privileges, which means that
-you should use the `sudo` command for creating TCP/IP *servers* that use port numbers 0-1024.
+Port numbers 0-1024 are restricted and can only be used with root privileges, which means that you should use the `sudo` command for creating TCP/IP *servers* that use port numbers 0-1024.
 This rule does not apply to TCP/IP *clients* that use port numbers 0-1024.
 {{< /note >}}
 
@@ -38,7 +35,7 @@ As `netcat` is not installed by default, you will most likely need to install `n
 your Linux machine using your favourite package manager.
 
 {{< note >}}
-The `netcat(1)` binary usually has an alias named `nc(1)`, which is what will be used
+The `netcat` binary usually has an alias named `nc`, which is what will be used
 in this guide because it is shorter. Usually both commands point to the same binary file.
 {{< /note >}}
 
@@ -68,7 +65,7 @@ This version of `netcat` was written by a person known as *Hobbit*.
 
 ## Command Line Options
 
-`netcat` commands have the `netcat [options] host port` generic form. The `nc(1)` binary
+`netcat` commands have the `netcat [options] host port` generic form. The `nc` binary
 supports the following command line options:
 
 | **Option** | **Usage** |
@@ -96,8 +93,7 @@ supports the following command line options:
 | `-t` | The `-t` option is used for enabling telnet negotiation. |
 
 
-The remainder of this guide will demonstrate the most important of these commands.
-However, nothing can replace experimenting with `netcat` on your own.
+The remainder of this guide will demonstrate the most important of these commands. That being said, `netcat` is a versatile tool, and there's a large opportunity for experimenting on your own.
 
 ## Using netcat as a Client
 
@@ -115,7 +111,7 @@ SSH-2.0-OpenSSH_7.9p1 Debian-10
 In the given example, `nc` tries to connect to TCP port number 22 of the `localhost` - notice
 that TCP port number 22 is used by SSH, which is what triggers the provided output.
 
-Notice that as the `-u` option is not used, `nc` will use the TCP protocol.
+Also notice that as the `-u` option is not used, `nc` will use the TCP protocol by default.
 
 ## Using netcat as a Server
 
@@ -197,9 +193,7 @@ In this section you will find a number of use cases and examples for `nc`.
 
 ### Using netcat for Port Scanning
 
-Netcat can be used for port scanning as a naive version of `nmap` with the `-z` option. The command that follows
-scans the `localhost`, which has an IP address of `127.0.0.1`, using a range of port numbers
-from 1 to 30 (`1-30`):
+Netcat can be used for port scanning as a naive version of [nmap](https://nmap.org/) with the `-z` option. The command that follows scans the `localhost`, which has an IP address of `127.0.0.1`, using a range of port numbers from 1 to 30 (`1-30`):
 
     netcat -z -vv -n 127.0.0.1 1-30
 {{< output >}}
@@ -248,7 +242,7 @@ output, which is verified by the following output:
 
 Therefore, the use of `-v` makes `nc` to display open TCP ports only.
 
-If you do not use any of `-v` or `-vv`, the previous command will return no output:
+If you do not use `-v` or `-vv`, the previous command will return no output:
 
     nc -z -n 127.0.0.1 1-30
 {{< output >}}
@@ -256,9 +250,7 @@ If you do not use any of `-v` or `-vv`, the previous command will return no outp
 
 ### Using netcat for Transferring Files
 
-The unique characteristics of `netcat` can be revealed when performing actions that
-other utilities cannot even imagine of doing! One of those rare things that `netcat` can do
-is file transferring:
+One of the features of `netcat` is that it is capable of transferring files:
 
     cat access.log | nc -vv -l -p 4567
 {{< output >}}
@@ -276,7 +268,7 @@ localhost [127.0.0.1] 4567 (?) open
 ^C sent 0, rcvd 362148
 {{< /output >}}
 
-You will need to press Control+C for the TCP connection to close.
+You will need to press `Control+C` for the TCP connection to close.
 
 ### Using netcat for Making any Process a Server
 
@@ -293,16 +285,16 @@ bash: line 2: asd: command not found
 Here you tell `nc` to accept incoming TCP connections on TCP port number `12345`. When
 a connection is accepted, `nc` will execute `/bin/bash`, which means that it will give
 you shell access on the machine. After a client successfully connects, every input line
-will be executed as a shell command using `/bin/bash`! If the command cannot be found,
+will be executed as a shell command using `/bin/bash`. If the command cannot be found,
 the client will get no output and an error message will be generated on the server side.
 Otherwise, the output of the command will be sent to the client. To test this functionality, in another terminal window create a `nc` client and type in the following command:
 
     nc localhost 12345
 
-{{< note >}}
-Notice that his capability of `netcat` can introduce security threats on your Linux machine
-when used improperly so be extremely careful with it.
-{{< /note >}}
+{{< caution >}}
+This capability of `netcat` can introduce security threats on your Linux machine
+when used improperly. It is advised that you exercise caution if using this feature.
+{{< /caution  >}}
 
 ### Executing a Command After Connecting
 
@@ -320,10 +312,10 @@ connect to [127.0.0.1] from localhost [127.0.0.1] 33788
 Try executing `nc 127.0.0.1 1234` on another terminal on your local machine to get the
 output of `ls -l`.
 
-{{< note >}}
-Notice that his capability of `netcat` can introduce security threats on your Linux machine
-when used improperly so be extremely careful with it.
-{{< /note >}}
+{{< caution >}}
+This capability of `netcat` can introduce security threats on your Linux machine
+when used improperly. It is advised that you exercise caution if using this feature.
+{{< /caution >}}
 
 ### Using netcat as a Simple Web Server
 
@@ -346,7 +338,7 @@ Host: localhost:4567
 Connection: Keep-Alive
 {{< /output >}}
 
-Additionally, on the `wget` part, we will have the following, which are the contents
+Additionally, when using `wget`, we will receive the following output, which reflects the contents
 of the `index.html` page:
 
     wget -qO- http://localhost:4567/
@@ -399,7 +391,7 @@ Connection: close
 &lt;/html&gt;
 {{< /output >}}
 
-A better way to execute that command is the following:
+A better way to execute this command is the following:
 
     echo -en "GET / HTTP/1.0\n\n\n" | netcat www.linode.com 80
 
@@ -428,9 +420,7 @@ encrypted.
 
 ### Using netcat for Creating a Chat Server
 
-Creating a chat server with `nc` for two machines to communicate with each other is trivial.
-One of the machines will be the server and the other machine will be the client. On the server
-part you will need to execute the following:
+Creating a basic chat server with `nc` for two machines to communicate with each other is completed in two commands. One of the machines will function as the server and the other machine will be the client. On the server you will need to execute the following:
 
     nc -vv -l 127.0.0.1 -p 1234
 
@@ -440,7 +430,7 @@ connect to [127.0.0.1] from localhost [127.0.0.1] 60608
 Hello!
 {{< /output >}}
 
-On the chat client part you will need to execute the following:
+And on the client:
 
     nc -vv 127.0.0.1 1234
 
@@ -453,8 +443,7 @@ safer and quicker. Otherwise, you should use the IP address of the server in bot
 
 ### Transferring Entire Directories Using netcat
 
-You already know how to transfer single files using `netcat`. This section will explain how to transfer entire directories using
-`netcat`. Imagine that you wish to transfer the `var` directory that resides under
+ This section will explain how to transfer entire directories using `netcat`. Imagine that you wish to transfer the `var` directory that resides under
 your home directory. You can do that as follows:
 
     tar -cvf - ~/var | nc -vv -l 127.0.0.1 -p 1234
@@ -462,11 +451,11 @@ your home directory. You can do that as follows:
 {{< output >}}
 listening on [any] 1234 ...
 tar: Removing leading `/' from member names
-/home/mtsouk/var/
-/home/mtsouk/var/slide.tar.ORG
+/home/username/var/
+/home/username/var/slide.tar.ORG
 {{< /output >}}
 
-The previous command creates a TCP server that listens on TCP port number 1234
+This creates a TCP server that listens on TCP port number 1234
 on the host with the `127.0.0.1` IP address. Generally speaking, using `127.0.0.1`
 as the server IP address is more secure than using one of the real IP addresses of
 your Linux machine provided that both the server and the client are on the same
@@ -478,15 +467,15 @@ After that you will need to execute the following command on the client side:
     nc 127.0.0.1 1234 | tar -xvf -
 
 {{< output >}}
-home/mtsouk/var/
-home/mtsouk/var/slide.tar.ORG
-home/mtsouk/var/after.tshark
-home/mtsouk/var/test.pcap
-home/mtsouk/var/sys09725827.php
-home/mtsouk/var/test.php
-home/mtsouk/var/u5EJqp.php
-home/mtsouk/var/http.pcap
-home/mtsouk/var/sketch.zip
+home/username/var/
+home/username/var/slide.tar.ORG
+home/username/var/after.tshark
+home/username/var/test.pcap
+home/username/var/sys09725827.php
+home/username/var/test.php
+home/username/var/u5EJqp.php
+home/username/var/http.pcap
+home/username/var/sketch.zip
 {{< /output >}}
 
 When the client connects, the `nc` server will also print the following output:
@@ -494,20 +483,20 @@ When the client connects, the `nc` server will also print the following output:
 {{< output >}}
 listening on [any] 1234 ...
 tar: Removing leading `/' from member names
-/home/mtsouk/var/
-/home/mtsouk/var/slide.tar.ORG
+/home/username/var/
+/home/username/var/slide.tar.ORG
 connect to [127.0.0.1] from localhost [127.0.0.1] 60632
-/home/mtsouk/var/after.tshark
-/home/mtsouk/var/test.pcap
-/home/mtsouk/var/sys09725827.php
-/home/mtsouk/var/test.php
-/home/mtsouk/var/u5EJqp.php
-/home/mtsouk/var/http.pcap
-/home/mtsouk/var/sketch.zip
+/home/username/var/after.tshark
+/home/username/var/test.pcap
+/home/username/var/sys09725827.php
+/home/username/var/test.php
+/home/username/var/u5EJqp.php
+/home/username/var/http.pcap
+/home/username/var/sketch.zip
  sent 3645440, rcvd 0
 {{< /output >}}
 
-You will need to press Control+C for the TCP connection to close.
+You will need to press `Control+C` for the TCP connection to close.
 
 ### Testing the Network Speed Using netcat
 
@@ -526,7 +515,7 @@ user	0m0.230s
 sys	0m1.190s
 {{< /output >}}
 
-On the client machine, you should execute the following command and press Control+C
+On the client machine, you should execute the following command and press `Control+C`
 after the desired amount of time to end the connection:
 
     time yes | nc.traditional -vv -n 127.0.0.1 2222 >/dev/null
@@ -541,12 +530,4 @@ user	0m0.456s
 sys	0m3.109s
 {{< /output >}}
 
-Now that you know it took 5.482s to transfer 2090926080 bytes, you can calculate the
-network speed. As the `nc` server starts first, you should the numbers found in the
-`nc` client.
-
-## Summary
-
-`netcat` can do so many things that learning to use it is a must for every power UNIX
-user. You will just need to experiment a little in order to understand and use the full power
-of `netcat`.
+Now that you know it took 5.482s to transfer 2090926080 bytes, you can calculate the network speed. As the `nc` server starts first, you should use the numbers found in the `nc` client.
