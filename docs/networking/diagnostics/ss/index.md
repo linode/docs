@@ -18,8 +18,8 @@ external_resources:
 
 ## Introduction
 
-The study of TCP, UDP and UNIX socket connections is very important for every
-UNIX and network administrator because it allows you to monitor your Linux system's status. Written by Alexey Kuznetosv to replace the famous `netstat` utility , the more capable `ss` (socket statistics) utility allows you to monitor TCP, UDP, and UNIX sockets. The purpose of this guide is to help you learn the `ss` utility and use is as productively as possible.
+The study of socket connections is important for every
+UNIX and network administrator because it allows you to better understand your Linux system's status. Written by Alexey Kuznetosv to replace the famous `netstat` utility , the more capable `ss` (socket statistics) utility allows you to monitor TCP, UDP, and UNIX sockets. The purpose of this guide is to help you learn the `ss` utility and to use it as productively as possible.
 
 {{< note >}}
 Running `ss` without using the `sudo` utility will result in different output. Practically, this means that running `ss` without root privileges will show the results available to the current user only. If you are not familiar with the `sudo` command,
@@ -69,12 +69,13 @@ find the `ss` executable inside `/bin`.
 If for some reason `ss` is not installed on your Linux system, you should install the `iproute2`
 package using your favorite package manager.
 
-## Basic Usage
+## Examples
+
+### Basic Usage
 
 The simplest way to use `ss` is without any command line parameters. When `ss` is
 used without any command line arguments, it prints all TCP, UDP and socket connections.
-The list might get big on busy machines, which means that the output might not be so
-useful – the output of `wc(1)`, (a word count utility), shows that the list is long yet manageable:
+The list might get big on busy machines, which means that it can become more difficult to parse – the output of `wc(1)`, (a word count utility), shows that the list is long yet manageable:
 
     ss | wc
 
@@ -82,7 +83,7 @@ useful – the output of `wc(1)`, (a word count utility), shows that the list is
      94     750    7926
 {{< /output >}}
 
-If you also use the `-a` parameter to show all listening and non-listening sockets, the output will be much richer:
+If you also use the `-a` parameter to show all listening and non-listening sockets, the output will be much higher:
 
     ss -a | wc
 
@@ -90,7 +91,7 @@ If you also use the `-a` parameter to show all listening and non-listening socke
     224    1682   19562
 {{< /output >}}
 
-## Listing Sockets
+### Listing Sockets
 
 ### TCP
 
@@ -117,9 +118,9 @@ listens to as well as the port number that is used - you can connect the name of
 service with a numeric value by looking at the `/etc/services` file. The last column, `Peer Address:Port`, is useful when there is an active connection
 because it shows the address and port number of the client machine, though here it is without any real values for TCP connections that are in the
 `LISTEN` state.
-At the `-r` option is not used, you only see IP addresses in the output.
+As the `-r` option is not used, you only see IP addresses in the output.
 
-Notice that running `ss -t` without `–a` will display established TCP connections only:
+Running `ss -t` without `–a` will display established TCP connections only:
 
     ss -t
 
@@ -151,8 +152,7 @@ UNCONN&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;
 UNCONN&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::ntp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::*
 {{< /output >}}
 
-Notice that running `ss -u` without `–a` will display established UDP connections only,
-which in this case there are none:
+Running `ss -u` without `–a` will display established UDP connections only. In this case there are no established UDP connections:
 
     ss -u
 
@@ -160,7 +160,7 @@ which in this case there are none:
 Recv-Q Send-Q&nbsp;&nbsp;Local Address:Port&nbsp;&nbsp;Peer Address:Port
 {{< /output >}}
 
-## Display Statistics
+### Display Statistics
 
 You can display statistics about the current connections using the `-s` option:
 
@@ -179,7 +179,7 @@ INET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11
 FRAG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 &nbsp;&nbsp;0
 {{< /output >}}
 
-## Filter by TCP State
+### Filter by TCP State
 
 `ss` allows you to filter its output by state using the `state` and `exclude` keywords
 followed by a state identifier. The `state` keyword displays output that matches the
@@ -199,8 +199,6 @@ The use of `exclude` is illustrated in the next example:
 
     ss -t4 exclude established
 
-The `-t4` command option returns IPv4 TCP connections.
-
 {{< output >}}
 State&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recv-Q&nbsp;&nbsp;Send-Q&nbsp;&nbsp;Local Address:Port&nbsp;&nbsp;&nbsp;Peer Address:Port
 LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;127.0.0.1:mysql&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*:*
@@ -209,7 +207,9 @@ LISTEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1
 TIME-WAIT&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;109.74.193.253:smtp&nbsp;&nbsp;103.89.91.73:55668
 {{< /output >}}
 
-## Filter Output by IP Address and Port Number
+The `-t4` command option returns IPv4 TCP connections.
+
+### Filter Output by IP Address and Port Number
 
 The more you filter the output of `ss`, the more accurate and relevant information you will receive. There exist two `ss` options that allow
 you to include connections from certain IP addresses and port numbers.
@@ -255,7 +255,7 @@ The following command is equivalent to the previous command:
 
     ss -at '( dport = :80 or dport = :443 or sport = :80 or sport = :443 )'
 
-## Display Timer Information
+### Display Timer Information
 
 The `-o` option displays timer information:
 
@@ -266,9 +266,9 @@ State&nbsp;&nbsp;Recv-Q&nbsp;&nbsp;Send-Q&nbsp;&nbsp;Local Address:Port&nbsp;&nb
 ESTAB&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;109.74.193.253:22&nbsp;&nbsp;&nbsp;2.86.7.61:55137     timer:(keepalive,72min,0)
 {{< /output >}}
 
-## Enable IP Address Resolving
+### Enable IP Address Resolving
 
-The `-r` parameter enable IP address resolving, which returns the domain names of the IP addresses:
+The `-r` parameter enables IP address resolving, which returns the domain names of the IP addresses:
 
     ss -r -t
 
@@ -278,10 +278,12 @@ ESTAB&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;168&nbsp;&nbsp;&nbsp
 ESTAB&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;li140-253.members.linode.com:https&nbsp;&nbsp;::ffff:216.244.66.228:37668
 {{< /output >}}
 
+{{< note >}}
 A side effect of the `-r` command line option is that it slows the execution of
 the `ss` command due to the DNS lookups that need to be performed.
+{{< /note >}}
 
-## Display Detailed Socket Information
+### Display Detailed Socket Information
 
 The `-e` option tells `ss` to display detailed socket information. The `-e` option
 is illustrated in the following example:
@@ -293,7 +295,7 @@ State&nbsp;&nbsp;Recv-Q&nbsp;&nbsp;Send-Q&nbsp;&nbsp;Local Address:Port&nbsp;&nb
 ESTAB&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;109.74.193.253:ssh&nbsp;&nbsp;2.86.7.61:62897&nbsp;&nbsp;&nbsp;&nbsp;timer:(keepalive,54min,0) ino:10195329 sk:11e <->
 {{< /output >}}
 
-## Show a Connection's UNIX Process
+### Show a Connection's UNIX Process
 
 The `-p` option displays the process ID(s) and the process name of a connection:
 
@@ -305,7 +307,7 @@ ESTAB&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;204&nbsp;&nbsp;&nbsp
 ESTAB&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;51&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::ffff:109.74.193.253:https&nbsp;&nbsp;::ffff:176.9.146.74:57536&nbsp;&nbsp;users:(("apache2",pid=30871,fd=29))
 {{< /output >}}
 
-## Find Related Processes
+### Find Related Processes
 
 The following command shows SSH-related processes on the current machine:
 
@@ -318,7 +320,7 @@ ESTAB&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;109.74.193.253:ssh&
 LISTEN&nbsp;&nbsp;0&nbsp;&nbsp;128&nbsp;&nbsp;:::ssh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;users:(("sshd",pid=812,fd=4))
 {{< /output >}}
 
-## Find Which Process is Using a Given Port Number
+### Find Which Process is Using a Given Port Number
 
 With the help of `ss` and `grep(1)`, you can discover which process is using
 a given port number:
@@ -329,7 +331,7 @@ a given port number:
 tcp&nbsp;&nbsp;LISTEN&nbsp;&nbsp;0&nbsp;&nbsp;128&nbsp;&nbsp;:::80&nbsp;:::*&nbsp;&nbsp;users:(("apache2",pid=8772,fd=4),("apache2",pid=8717,fd=4),("apache2",pid=8715,fd=4),("apache2",pid=8714,fd=4),("apache2",pid=8713,fd=4),("apache2",pid=8712,fd=4),("apache2",pid=8711,fd=4),("apache2",pid=8709,fd=4))
 {{< /output >}}
 
-As Apache user multiple children, you get a list of processes for port number `80`.
+As Apache uses multiple child processes, you receive a list of processes for port number `80`.
 
 The next command will do exactly the same thing without using `grep(1)`:
 
@@ -340,7 +342,7 @@ Netid&nbsp;&nbsp;State&nbsp;&nbsp;&nbsp;Recv-Q&nbsp;&nbsp;Send-Q&nbsp;&nbsp;Loca
 tcp&nbsp;&nbsp;&nbsp;&nbsp;LISTEN&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;128&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::http&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;users:(("apache2",pid=8715,fd=4),("apache2",pid=8714,fd=4),("apache2",pid=8713,fd=4),("apache2",pid=8712,fd=4),("apache2",pid=8711,fd=4),("apache2",pid=8709,fd=4))
 {{< /output >}}
 
-## Find Open Ports Above Port Number 1024
+### Find Open Ports Above Port Number 1024
 
 `ss` supports ranges when working with port numbers. This feature is illustrated in
 the following example that finds open port above port number 1024:
@@ -352,9 +354,10 @@ State&nbsp;&nbsp;&nbsp;Recv-Q&nbsp;&nbsp;Send-Q&nbsp;&nbsp;Local Address:Port&nb
 LISTEN&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;127.0.0.1:mysql&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*:*
 {{< /output >}}
 
-Notice that the previous command can be also written as `ss -t -a sport '> :1024'`.
+{{< note >}} The `ss -t -a sport \> :1024` command can be also written as `ss -t -a sport '> :1024'`.
+{{< /note >}}
 
-## Search for Specific TCP Characteristics
+### Search for Specific TCP Characteristics
 
 The following command shows all TCP connections that use IPv4 that are in
 listening state, as well as the name of the process using the socket without
@@ -369,7 +372,7 @@ LISTEN&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;128&nbsp;&nbsp;&nbs
 LISTEN&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*:25&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*:*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;users:(("smtpd",pid=9011,fd=6),("master",pid=1245,fd=13))
 {{< /output >}}
 
-## Show All TCP Connections Related to SSH
+### Show All TCP Connections Related to SSH
 
 The following command shows all SSH related connections and sockets:
 
@@ -382,7 +385,7 @@ ESTAB&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&
 LISTEN&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;128&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::ssh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:::*
 {{< /output >}}
 
-## Show Sockets in a Listening State
+### Show Sockets in a Listening State
 
 The following command shows TCP sockets in listening (`-l`) state:
 
@@ -413,7 +416,7 @@ UNCONN&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;
 UNCONN&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*:ntp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*:*
 {{< /output >}}
 
-## Advanced Filtering with ss
+### Advanced Filtering with ss
 
 The following `ss` command will list all TCP sockets that are in the ESTABLISHED state, use HTTP or HTTPS on the local machine and belong to the 2.86.7/24 network and display their timers:
 
@@ -439,7 +442,7 @@ Apart from the [standard TCP state names](https://tools.ietf.org/rfc/rfc793.txt)
 - `connected`: For the not closed and not listening states.
 - `synchronized`: For connected and not SYN-SENT states.
 
-## Using AWK to Process ss Output
+### Using AWK to Process ss Output
 
 The following command displays a summary of all sockets based on their state:
 
@@ -470,8 +473,3 @@ The last command will create a summary of all IPv6 TCP connections that are in
 the `CONNECTED` state:
 
     ss -t6 state connected | awk '{print $1}' | grep -v State | sort | uniq -c | sort -nr
-
-## Summary
-
-`ss` is a powerful tool that can help you troubleshoot your TCP/IP networks so it would
-be good to experiment with it and add it to your arsenal of tools.
