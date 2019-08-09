@@ -172,8 +172,9 @@ PermitRootLogin no
 
 2.  **Disable SSH password authentication.** This requires all users connecting via SSH to use key authentication. Depending on the Linux distribution, the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading `#`.
 
+
     {{< file "/etc/ssh/sshd_config" aconf >}}
-    # Change to no to disable tunnelled clear text passwords
+# Change to no to disable tunnelled clear text passwords
 PasswordAuthentication no
 
 {{< /file >}}
