@@ -7,9 +7,9 @@ og_description: 'This guide serves as a starting point from which to secure your
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
-modified: 2018-09-19
+modified: 2019-08-19
 modified_by:
-  name: Jared Kobos
+  name: Linode
 published: 2012-02-17
 title: How to Secure Your Server
 ---
@@ -250,6 +250,9 @@ You will likely be administering your server primarily through an SSH connection
 
 However, some services are unnecessary and should be removed unless you have a specific need for them. Some examples could be [Exim](https://www.exim.org/), [Apache](https://httpd.apache.org/) and [RPC](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call).
 
+{{< note >}}
+If you are using the [Apache](https://httpd.apache.org/) web server as part of your configuration, it is recommended in most cases to disable `Directory Listing` as this setting is enabled by default and can pose a security risk. For more information, see [Apache's Documentation](https://cwiki.apache.org/confluence/display/HTTPD/DirectoryListings).
+{{< /note >}}
 
 ### Uninstall the Listening Services
 
