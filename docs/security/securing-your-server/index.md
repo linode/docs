@@ -7,9 +7,9 @@ og_description: 'This guide serves as a starting point from which to secure your
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
-modified: 2019-08-19
+modified: 2018-09-19
 modified_by:
-  name: Linode
+  name: Jared Kobos
 published: 2012-02-17
 title: How to Secure Your Server
 ---
@@ -178,21 +178,23 @@ PasswordAuthentication no
 
 {{< /file >}}
 
-
-    {{< note >}}
+{{< note >}}
 You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.
 {{< /note >}}
 
-3.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.*
+3.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.* Depending on the Linux distribution, the line `AddressFamily` may need to be added, or uncommented by removing the leading `#`
 
     Use the option:
 
     *   `AddressFamily inet` to listen only on IPv4.
     *   `AddressFamily inet6` to listen only on IPv6.
 
-    The `AddressFamily` option is usually not in the `sshd_config` file by default. Add it to the end of the file:
+    {{< file "/etc/ssh/sshd_config" aconf >}}
+# Port 22
+AddressFamily inet
 
-        echo 'AddressFamily inet' | sudo tee -a /etc/ssh/sshd_config
+{{< /file >}
+
 
 4.  Restart the SSH service to load the new configuration.
 
@@ -248,9 +250,6 @@ You will likely be administering your server primarily through an SSH connection
 
 However, some services are unnecessary and should be removed unless you have a specific need for them. Some examples could be [Exim](https://www.exim.org/), [Apache](https://httpd.apache.org/) and [RPC](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call).
 
-{{< note >}}
-If you are using the [Apache](https://httpd.apache.org/) web server as part of your configuration, it is recommended in most cases to disable `Directory Listing` as this setting is enabled by default and can pose a security risk. For more information, see [Apache's Documentation](https://cwiki.apache.org/confluence/display/HTTPD/DirectoryListings).
-{{< /note >}}
 
 ### Uninstall the Listening Services
 
