@@ -263,9 +263,9 @@ Forward all IPv4 traffic on port 80 to port 8080 on host 172.31.4.2 (masquerade 
 
     sudo firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080 to-addr=172.31.4.2'
 
-To list your current Rich Rules:
+To list your current Rich Rules that you set in the public zone:
 
-    sudo firewall-cmd --list-rich-rules
+    sudo firewall-cmd --zone=public --list-rich-rules
 
 ### iptables Direct Interface
 
