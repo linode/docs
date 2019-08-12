@@ -120,7 +120,7 @@ If you wish to give VPN users access to services listening on your Linode's loca
     - The option *"Have clients use the same DNS servers as the Access Server host"* should be set to **Yes**.
 
     {{< note >}}
-Alternatively, you can manually set DNS resolvers of your choice which are pushed to VPN clients. Set the option *"Have clients use these DNS servers"* to **Yes** and add a primary and secondary server.
+Alternatively, you can manually set DNS resolvers of your choice which are pushed to VPN clients. Set the option *"Have clients use these DNS servers"*  to **Yes** and add a primary and secondary server.
 {{< /note >}}
 
     Once you've applied your changes, click **Save Settings** at the bottom of the page. You will be prompted to **Update Running Server** to push your new configuration to the OpenVPN server.
