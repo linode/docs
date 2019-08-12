@@ -193,7 +193,7 @@ You may want to leave password authentication enabled if you connect to your Lin
 # Port 22
 AddressFamily inet
 
-{{< /file >}
+{{< /file >}}
 
 
 4.  Restart the SSH service to load the new configuration.
