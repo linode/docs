@@ -5,7 +5,7 @@ description: 'This guide will show how to install and configure an OpenVPN acces
 keywords: ["openvpn", "vpn"]
 aliases: ['networking/vpn/openvpn-access-server/','networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-01
+modified: 2019-08-12
 modified_by:
     name: Linode
 published: 2015-04-30
@@ -23,9 +23,9 @@ OpenVPN Access Server requires a paid license to use more than two connected dev
 ## Before You Begin
 
 - Ensure that you have not already installed OpenVPN before starting this guide.
-- Ensure that you have root access to your Linode or a user account with `sudo` privilege. For information about creating a user account with `sudo` privilege, see [Add a Limited User Account](https://www.linode.com/docs/security/securing-your-server/#add-a-limited-user-account).
-- Update your system. For more information, see [Install Software Updates](https://www.linode.com/docs/getting-started/#install-software-updates).
-- Allow TCP traffic through port `943` and UDP through port `1194` on your firewall. For more information, see [Add Rules](https://www.linode.com/docs/security/firewalls/configure-firewall-with-ufw/#add-rules).
+- Ensure that you have root access to your Linode or a user account with `sudo` privilege. For information about creating a user account with `sudo` privilege, see [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account).
+- Update your system. For more information, see [Install Software Updates](/docs/getting-started/#install-software-updates).
+- Allow TCP traffic through port `943` and UDP through port `1194` on your firewall. For more information, see [Add Rules](/docs/security/firewalls/configure-firewall-with-ufw/#add-rules).
 
 
 ## Install OpenVPN Access Server
