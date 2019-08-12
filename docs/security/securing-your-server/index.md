@@ -258,10 +258,6 @@ If you are using the [Apache](https://httpd.apache.org/) web server as part of y
 
 How to remove the offending packages will differ depending on your distribution's package manager.
 
-**Arch**
-
-    sudo pacman -Rs package_name
-
 **CentOS**
 
     sudo yum remove package_name
