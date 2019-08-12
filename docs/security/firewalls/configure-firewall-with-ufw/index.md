@@ -22,7 +22,7 @@ UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in A
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Creating a Firewall section--this guide is an introduction to using UFW, which is a separate method of controlling a firewall than iptables commands.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the [Configure a Firewall](/docs/security/securing-your-server/#configure-a-firewall) section in [How to Secure Your Server](/docs/security/securing-your-server/) guide. This guide is an introduction to using UFW, which is a separate method of controlling a firewall than iptables commands. This guide lists the commands for Arch Linux, Debian or Ubuntu distributions only. However, you can use the relevant commands for the outlined tasks on various Linux distributions.
 
 3.  Update your system.
 
