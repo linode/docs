@@ -379,6 +379,7 @@ fb4c
 fcgi
 fcgiwrap
 fcrontab
+fd
 fdisk
 fdriver
 fe70
@@ -878,6 +879,7 @@ netdev
 netfilter
 netflow
 netfs
+netid
 netifrc
 netlify
 netloc
@@ -1097,6 +1099,7 @@ readwrite
 realtime
 reconnections
 recursing
+recv
 red5
 reddit
 redhat

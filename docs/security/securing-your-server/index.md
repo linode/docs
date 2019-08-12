@@ -178,21 +178,23 @@ PasswordAuthentication no
 
 {{< /file >}}
 
-
-    {{< note >}}
+{{< note >}}
 You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.
 {{< /note >}}
 
-3.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.*
+3.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.* Depending on the Linux distribution, the line `AddressFamily` may need to be added, or uncommented by removing the leading `#`
 
     Use the option:
 
     *   `AddressFamily inet` to listen only on IPv4.
     *   `AddressFamily inet6` to listen only on IPv6.
 
-    The `AddressFamily` option is usually not in the `sshd_config` file by default. Add it to the end of the file:
+    {{< file "/etc/ssh/sshd_config" aconf >}}
+# Port 22
+AddressFamily inet
 
-        echo 'AddressFamily inet' | sudo tee -a /etc/ssh/sshd_config
+{{< /file >}}
+
 
 4.  Restart the SSH service to load the new configuration.
 
@@ -255,10 +257,6 @@ If you are using the [Apache](https://httpd.apache.org/) web server as part of y
 ### Uninstall the Listening Services
 
 How to remove the offending packages will differ depending on your distribution's package manager.
-
-**Arch**
-
-    sudo pacman -Rs package_name
 
 **CentOS**
 
