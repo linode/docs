@@ -18,7 +18,7 @@ external_resources:
 
 ## What is AWK?
 
-AWK is a [*Turing-complete*](https://en.wikipedia.org/wiki/Turing_completeness) *pattern matching* programming language. The name AWK is derived from the family names of its three authors:[Alfred Aho](https://en.wikipedia.org/wiki/Alfred_Aho), [Peter Weinberger](https://en.wikipedia.org/wiki/Peter_J._Weinberger) and [Brian Kernighan](https://en.wikipedia.org/wiki/Brian_Kernighan). AWK is often associated with [sed](https://www.gnu.org/software/sed/manual/sed.html), which is a UNIX command line tool. However, sed is more appropriate for one line UNIX shell commands and is typically used only for text processing.
+AWK is a [*Turing-complete*](https://en.wikipedia.org/wiki/Turing_completeness) *pattern matching* programming language. The name AWK is derived from the family names of its three authors: [Alfred Aho](https://en.wikipedia.org/wiki/Alfred_Aho), [Peter Weinberger](https://en.wikipedia.org/wiki/Peter_J._Weinberger) and [Brian Kernighan](https://en.wikipedia.org/wiki/Brian_Kernighan). AWK is often associated with [sed](https://www.gnu.org/software/sed/manual/sed.html), which is a UNIX command line tool. However, sed is more appropriate for one line UNIX shell commands and is typically used only for text processing.
 
 AWK is great for data reporting, analysis, and extraction and supports arrays, associative arrays, functions, variables, loops, and regular expressions. Current Linux systems use [improved versions](https://en.wikipedia.org/wiki/AWK#Versions_and_implementations) of the original AWK utility. The main enhancement to these AWK variants is support for a larger set of built-in functions and variables. The most widely used variants of AWK are: [Gawk](https://www.gnu.org/software/gawk/), [Mawk](https://invisible-island.net/mawk/), and [Nawk](https://linux.die.net/man/1/nawk).
 
@@ -26,29 +26,37 @@ AWK is great for data reporting, analysis, and extraction and supports arrays, a
 This guide uses the Gawk version of AWK.
 {{< /note >}}
 
-There are many practical uses of AWK, for example, you can use AWK and the [history](https://en.wikipedia.org/wiki/History_(command)) command to find your top 10 most frequently issued commands:
+There are many practical uses of AWK. For example, you can use AWK and the [history](https://en.wikipedia.org/wiki/History_(command)) command to find your top 10 most frequently issued commands:
 
     history | awk '{CMD[$2]++;count++;} END {for (a in CMD)print CMD[a] " "CMD[a]/count*100 " % " a;} ' | grep -v "./" | column -c3 -s " " -t | sort -rn | head -n10
 
-This guide assumes familiarity with programming language concepts and is meant provide an overview of some basic elements of the AWK programming language. In this guide you will learn:
+This guide assumes familiarity with programming language concepts and is meant to provide an overview of some basic elements of the AWK programming language. In this guide you will learn:
 
-* [How to write and execute AWK programs](#the-hello-world-program-in-awk)
+* [How to write and execute AWK programs](#hello-world-command-line)
 * [The basics of the AWK programming language](#awk-basics)
 * [Practical uses of AWK](#practical-examples)
 
 ## AWK Basics
 
-In this section, you will learn basics of the AWK programming language, including how to execute AWK from the command line with one off commands and by storing AWK code in files. You will also learn how to create and use variables, arrays, and functions. Finally, this section covers AWK special patterns, like `BEGIN` and `END`. A pattern in AWK controls the execution of *rules* and a rule is executed when its pattern is a match for the current [input record](https://www.gnu.org/software/gawk/manual/html_node/Records.html#Records).
+In this section you will learn basics of the AWK programming language, including: 
+
+* How to execute AWK from the command line with one-off commands and by storing AWK code in files.
+* Creating and using variables, arrays, and functions.
+* Special patterns, like `BEGIN` and `END`. 
+
+{{< note >}}
+A pattern in AWK controls the execution of *rules* and a rule is executed when its pattern is a match for the current [input record](https://www.gnu.org/software/gawk/manual/html_node/Records.html#Records).
+{{< /note >}}
 
 ### Run an AWK Program
 
 A program in AWK can be written via the command line or by executing a file containing the program. If you want to reuse your code, it is better to store it in a file. AWK reads input from standard input or from files specified as command line arguments. Input is divided into individual *records* and *fields*. By default, new lines are parsed as a record and whitespace is parsed as a field. After a record is read, it is split into fields. AWK does not alter the original input.
 
-The next two sections will walk you through creating a *Hello World!* program that you will run, both as a one of program on the command line, and as reusable code saved in a file.
+The next two sections will walk you through creating a *Hello World!* program that you will run, both as a one-off program on the command line, and as reusable code saved in a file.
 
 #### Hello World! - Command Line
 
-When an AWK program contains the `BEGIN` pattern without another special pattern, AWK will not expect any further command line input and exit. Typically, when an AWK program is executed on the command line, without the `BEGIN` special pattern, AWK will continue to expect input until you exit by typing **CTRL-D**. The example *Hello World!* program below, will print and immediately exit.
+When an AWK program contains the `BEGIN` pattern without another special pattern, AWK will not expect any further command line input and exit. Typically, when an AWK program is executed on the command line, without the `BEGIN` special pattern, AWK will continue to expect input until you exit by typing **CTRL-D**. The example *Hello World!* program below will print and immediately exit.
 
 1.  Execute the command as follows:
 
@@ -73,7 +81,7 @@ BEGIN { print "Hello World!" }
 
 1.  On the command line, run the `helloworld.awk` program. The `-f` option tells AWK to expect a source file as the program to run.
 
-        awk -f hw.awk
+        awk -f helloworld.awk
 
 1.  The output will be as follows:
 
@@ -107,7 +115,7 @@ Hello World!
 
 ### Variables in AWK
 
-AWK supports built-in and user defined. Built-in variables native to AWK, whereas user defined variables are ones you define.
+AWK supports built-in and user defined variables. Built-in variables are native to AWK, whereas user defined variables are ones you define.
 
 #### Built-in Variables
 
@@ -122,7 +130,7 @@ AWK has many built-in variables that are automatically initialized. Some of the 
 | `FNR` | Stores the total number of records that have been read from the current input file. |
 | `IGNORECASE` | Tells AWK whether or not to ignore case in all of its comparisons or regular expressions. If `IGNORECASE` stores a non-zero or null value, then AWK will ignore case. |
 | `ARGC` | Holds the number of command line arguments. |
-| `ARCV` | Stores the actual command line arguments of an AWK program. |
+| `ARGV` | Stores the actual command line arguments of an AWK program. |
 
 #### User Defined Variables
 
@@ -143,7 +151,7 @@ BEGIN {
 
     To run this file, switch back to the command line and execute the following command:
 
-        awk -f inventory-shipped.awk
+        awk -f count.awk
 
     Your output should display:
 
@@ -153,7 +161,7 @@ BEGIN {
 
 ### Special Patterns
 
-AWK uses patterns to control how a rule should be executed against an input record. The two main categories of patterns in AWK are *regular expressions* and *expressions*.  [Regular expressions](https://www.gnu.org/software/gawk/manual/html_node/Regexp.html#Regexp) use a special format to target specific sets of strings, while expressions encompass various ways to target patterns in AWK, like comparison expressions that may utilize regular expressions. Special patterns in AWK include reserved keywords that perform special actions within your AWK programs. The sections below discuss the special patterns, `BEGIN`, `END`, `BEGINFILE`, and `ENDFILE`.
+AWK uses patterns to control how a rule should be executed against an input record. The two main categories of patterns in AWK are *regular expressions* and *expressions*.  [Regular expressions](https://www.gnu.org/software/gawk/manual/html_node/Regexp.html#Regexp) use a special format to target specific sets of strings, while expressions encompass various ways to target patterns in AWK, like comparison expressions that may utilize regular expressions. Special patterns in AWK include reserved keywords that perform special actions within your AWK programs. The sections below discuss the special patterns `BEGIN`, `END`, `BEGINFILE`, and `ENDFILE`.
 
 #### BEGIN and END
 
@@ -161,7 +169,7 @@ AWK uses patterns to control how a rule should be executed against an input reco
 
 Although it is not required to use `BEGIN` and `END` at the beginning and end of your AWK programs, it is considered good practice to do so. Additionally, you can include multiple `BEGIN` and `END` blocks in one program.
 
-If an AWK program uses only `BEGIN` rules without any other code, the program terminates without reading any of the specified input. However, if an AWK program contains only `END` rules without any additional code, all the specified input is read in case the `END` rule needs to reference the [`FNR` or `NR` variables](#built-in-variables).
+If an AWK program uses only `BEGIN` rules without any other code, the program terminates without reading any of the specified input. However, if an AWK program contains only `END` rules without any additional code, all the specified input is read. This is necessary in case the `END` rule references the [`FNR` and `NR` variables](#built-in-variables).
 
 #### BEGINFILE and ENDFILE
 
@@ -169,11 +177,11 @@ If an AWK program uses only `BEGIN` rules without any other code, the program te
 `BEGINFILE` and `ENDFILE` only work with `gawk`.
 {{< /note >}}
 
-Two other patterns with special functionality are `BEGINFILE` and `ENDFILE`. `BEGINFILE` is executed before AWK reads the first record from a file whereas `ENDFILE` is executed after AWK is done with the last record of a file.
+Two other patterns with special functionality are `BEGINFILE` and `ENDFILE`. `BEGINFILE` is executed before AWK reads the first record from a file, whereas `ENDFILE` is executed after AWK is done with the last record of a file.
 
-`ENDFILE` is convenient for recovering from I/O errors during processing. The AWK program can pass control to `ENDFILE`, instead of stopping abnormally, and set the `ERRNO` variable to describe the error that occurred. AWK clears the `ERRNO` variable before it starts processing the next file. Similarly, the [`nextfile` statement](https://www.gnu.org/software/gawk/manual/html_node/Nextfile-Statement.html#Nextfile-Statement), when used inside `BEGINFILE`, allows gawk to move to the next data file instead of exiting with a fatal error and without executing the `ENDFILE` block.
+`ENDFILE` is convenient for recovering from I/O errors during processing. The AWK program can pass control to `ENDFILE`, and instead of stopping abnormally it sets the `ERRNO` variable to describe the error that occurred. AWK clears the `ERRNO` variable before it starts processing the next file. Similarly, the [`nextfile` statement](https://www.gnu.org/software/gawk/manual/html_node/Nextfile-Statement.html#Nextfile-Statement) -- when used inside `BEGINFILE` -- allows gawk to move to the next data file instead of exiting with a fatal error and without executing the `ENDFILE` block.
 
-1.  As an example, create a file name `beginfile.awk`:
+1.  As an example, create a file named `beginfile.awk`:
 
     {{< file "beginfile.awk" awk >}}
 BEGIN {
@@ -207,7 +215,7 @@ END {
 
 1.  Execute the file with the following command:
 
-        gawk -f beginfile.awk hw.awk beginfile.awk givenLine.awk doesNotExist
+        gawk -f hw.awk beginfile.awk givenLine.awk doesNotExist
 
 1.  The output will be similar to the following example. The program does not stop abnormally when it does not find an input file and provides a useful error message.
 
@@ -254,7 +262,7 @@ END {
 {{< /file >}}
 
   - The program uses the value of the [`ARGC` built-in variable](#built-in-variables) to control how many times to loop through each separate block of code. The result will vary depending on how many command line arguments you pass to AWK when executing the program.
-  - The `for` loop after the `END` special pattern, will print numbers from 0 - 9.
+  - The `for` loop after the `END` special pattern will print numbers from 0 - 9.
 
 1.  Execute the `loops.awk` input program with the following command:
 
@@ -271,9 +279,9 @@ ARGV[0] = awk
 
 ### Arrays
 
-AWK does not require array indices to be consecutive integers; strings and numbers may be used. This is because AWK uses string keys internally to represent an array's indices and so, arrays in AWK are more like associative arrays that store a collection of pairs. Unlike other programming languages, you do not need to declare an array and its size before using it and new pairs can be added at any time. The file below serves to illustrate the behavior of arrays in AWK.
+AWK does not require array indices to be consecutive integers. Instead, strings and numbers may be used. This is because AWK uses string keys internally to represent an array's indices, and so arrays in AWK are more like associative arrays that store a collection of pairs. Unlike other programming languages, you do not need to declare an array and its size before using it, and new pairs can be added at any time. The file below serves to illustrate the behavior of arrays in AWK.
 
-1.  Create the file `arrays.awk`.
+1.  Create the file `arrays.awk`:
 
     {{< file "arrays.awk" awk >}}
 BEGIN {
@@ -301,8 +309,8 @@ BEGIN {
   - The program creates the `a[]` array and initializes it with four separate numeric values.
   - The `for` block will loop through the array and print the current index and value.
   - It then adds two new elements to array `a[]` that use string indices instead of numbers.
-  - The program demonstrates how to delete an element from an array by deleting the `a[0]` element.
-  - Finally, the program's `if` statement evaluates if `a["1"]` and `a[1]` are equivalent. Since AWK stores all array elements as string keys, both indices point to the same array element and the code in the if statement executes.
+  - It demonstrates how to delete an element from an array by deleting the `a[0]` element.
+  - Finally, the `if` statement evaluates if `a["1"]` and `a[1]` are equivalent. Since AWK stores all array elements as string keys, both indices point to the same array element and the code in the `if` statement executes.
 
 2. Run the program with the following command:
 
@@ -351,7 +359,7 @@ BEGIN {
   - The `rand.awk` program uses the `rand()` function to generate a random number and stores it in the `n` variable. By default, `rand()` returns a random number between 0 and 1. To generate numbers larger than 1, the program multiplies the returned random number by 10.
   - AWK's `int()` function rounds the result of the `rand()` function to the nearest integer.
 
-1.  Execute the `rand.awk` with the following command:
+1.  Execute the `rand.awk` program with the following command:
 
         awk -f rand.awk
 
@@ -414,9 +422,7 @@ This section of the guide provides a variety of practical examples to further de
 ### Printing
 #### Printing a Given Line from a File
 
-AWK can help you print a given line from a text file.
-
-1.  Create and save the `givenLine.awk` file:
+1.  To use AWK to print a given line from a text file, create and save the `givenLine.awk` file:
 
     {{< file "givenLine.awk" awk >}}
 {
@@ -428,17 +434,17 @@ AWK can help you print a given line from a text file.
   - This program will print out the record that corresponds to the value passed to the `line` variable. The program will require input either from the command line or from a file.
   - You should pass the value of the `line` variable to the AWK program as a command line argument using the `-v` option.
 
-1.  Execute `givenLine.awk` program. The program will print out the first line found in the `myFunction.awk` program written in the previous section. You could similarly pass it any text file.
+1.  By executing the `givenLine.awk` program as follows, it will print out the first line found in the `myFunction.awk` program written in the previous section. (You could similarly pass it any text file.)
 
         awk -v line=1 -f givenLine.awk myFunction.awk
 
-1.  The output will resemble the following:
+    The output will resemble the following:
 
     {{< output >}}
 function isnum(x) { return(x==x+0) }
 {{< /output >}}
 
-1.  Execute `givenLine.awk` again passing line 4:
+1.  Execute `givenLine.awk` again, passing line 4:
 
         awk -v line=4 -f givenLine.awk myFunction.awk
 
@@ -485,9 +491,9 @@ You can also execute the contents of `field1and3.awk` on the command line and pa
 ### Counting
 #### Counting Lines
 
-The example AWK program will count the number of lines that are found in the given text file(s).
+The following example AWK program will count the number of lines that are found in the given text file(s).
 
- FNR stores the total number of records that have been read from the current input file.
+ `FNR` stores the total number of records that have been read from the current input file.
 
 1.  Create and save the `countLines.awk` file:
 
@@ -564,7 +570,7 @@ The following AWK code uses the variable `n` to count the number of lines that c
 
 1.  Execute the example code and pass `dataFile.txt` as input:
 
-        awk '/three/ { n++ }; END { print n+0 }' file.txt
+        awk '/three/ { n++ }; END { print n+0 }' dataFile.txt
 
 
 3.  The output will look as follows:
@@ -575,7 +581,7 @@ The following AWK code uses the variable `n` to count the number of lines that c
 
 #### Counting Characters
 
-In this example, the `countChars.awk` file calculates the number of characters found in an input files.
+In this example, the `countChars.awk` file calculates the number of characters found in an input file.
 
 1.  Create and save the file `countChars.awk`:
 
@@ -640,9 +646,9 @@ END {
 }
 {{< /file >}}
 
-- `wordFreq.awk` uses a for loop to traverse the an input file and add each record to the `freq[]` array.
-- The `tolower()` built-in string function is used to ensure the program does not count the same word multiple times based on differences in case, i.e. seven and Seven are not counted as different words.
-- Before the program exits, the `END` block prints out each word and its frequency with the input file.
+    - `wordFreq.awk` uses a for loop to traverse through an input file and add each record to the `freq[]` array.
+    - The `tolower()` built-in string function is used to ensure the program does not count the same word multiple times based on differences in case, e.g., seven and Seven are not counted as different words.
+    - Before the program exits, the `END` block prints out each word and its frequency with the input file.
 
 1.  Create and save the file `wordFreq.txt` to use as an input file.
 
@@ -659,7 +665,7 @@ one three five
         awk -f wordFreq.awk wordFreq.txt | sort -k3rn
 
     {{< note >}}
-The `sort -k3rn` command is used to sort the output of `wordFreq.awk`based on a numeric sort in reverse order.
+The `sort -k3rn` command is used to sort the output of `wordFreq.awk` based on a numeric sort in reverse order.
     {{< /note >}}
 
 1.  The output will resemble the following:
@@ -679,16 +685,16 @@ four : 1
 
         docker images | grep -v REPOSITORY | awk '{print $1}' | xargs -L1 docker pull
 
-  - In this example, AWK is just a piece of the entire command. AWK does the job of extracting the first field from the result of executing the `docker images`command.
+  - In this example, AWK is just a piece of the entire command. AWK does the job of extracting the first field from the result of executing the `docker images` command.
 
 ### Finding
 #### Finding the Top-10 Commands of your Command History
 
-1.  Use The following shell command to find you top 10 most used commands by piping the output of `history` to AWK as input:
+1.  Use The following shell command to find your top 10 most used commands by piping the output of `history` to AWK as input:
 
         history | awk '{CMD[$2]++;count++;} END {for (a in CMD)print CMD[a] " "CMD[a]/count*100 " % " a;} ' | grep -v "./" | column -c3 -s " " -t | sort -rn | head -n10
 
-  - First, the command executes `history` command to be used as AWK's input.
+  - First, the command executes the `history` command to be used as AWK's input.
 
   - This is processed by a complex `awk` command that calculates the number of times each command appears in `history` by considering the second field of each record. This is the field that corresponds to the previously issued commands. These values are stored in the `CMD[]` associative array.
 
@@ -715,7 +721,7 @@ four : 1
 
 #### Finding the Number of Records that Appear More than Once
 
-This program's logic is  utilizes the behavior of AWK associative arrays. The associative array's keys are the entire lines of the passed input. This means that if a line appears more than once, it will be found in the associative array and will have a value that is different from the default, which is `0`.
+This program's logic utilizes the behavior of AWK associative arrays. The associative array's keys are the entire lines of the passed input. This means that if a line appears more than once, it will be found in the associative array and will have a value that is different from the default, which is `0`.
 
 1.  Create and save the file `nDuplicates.awk`:
 
