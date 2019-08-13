@@ -38,11 +38,11 @@ This guide assumes familiarity with programming language concepts and is meant t
 
 ## AWK Basics
 
-In this section you will learn basics of the AWK programming language, including: 
+In this section you will learn basics of the AWK programming language, including:
 
 * How to execute AWK from the command line with one-off commands and by storing AWK code in files.
 * Creating and using variables, arrays, and functions.
-* Special patterns, like `BEGIN` and `END`. 
+* Special patterns, like `BEGIN` and `END`.
 
 {{< note >}}
 A pattern in AWK controls the execution of *rules* and a rule is executed when its pattern is a match for the current [input record](https://www.gnu.org/software/gawk/manual/html_node/Records.html#Records).
