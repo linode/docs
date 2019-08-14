@@ -1,4 +1,5 @@
 abc
+abell
 absecon
 abspath
 aconf
@@ -728,6 +729,7 @@ lookups
 loopback
 lspci
 lsd
+lsof
 lst
 lsyncd
 lua
@@ -918,6 +920,7 @@ ns2
 nsd4
 ntop
 ntopng
+ntp
 ntpd
 nullval
 num

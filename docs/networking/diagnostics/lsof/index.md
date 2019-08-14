@@ -195,7 +195,7 @@ using the `-a` flag. This provides you enhanced filtering capabilities. Take the
 
     sudo lsof -Pni -u www-data
 
-The above command would print out all network connections (`-i`), supressing network number conversion (`-n`) and the conversion of port numbers to port names (`-P`), and it would *also* print out all files pertaining to the `www-data` user, without combining the two options into one logical statement.
+The above command would print out all network connections (`-i`), suppressing network number conversion (`-n`) and the conversion of port numbers to port names (`-P`), and it would *also* print out all files pertaining to the `www-data` user, without combining the two options into one logical statement.
 
 The following command combines these two options with the `-a` logical AND option and finds all open sockets belonging to the `www-data` user:
 
@@ -422,7 +422,7 @@ Other possible states of a TCP connection are `CLOSED`, `SYN-SENT`, `SYN-RECEIVE
 
 ### Finding Information on a Given Protocol
 
-The next `lsof` command shows open UDP files that use the ntp (Network Time Protocol) port only:
+The next `lsof` command shows open UDP files that use the NTP (Network Time Protocol) port only:
 
     sudo lsof -i UDP:ntp
 
