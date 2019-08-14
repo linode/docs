@@ -16,6 +16,8 @@ external_resources:
 - '[Minecraft Wiki](https://minecraft.gamepedia.com/Minecraft_Wiki)'
 ---
 
+![Deploy a Minecraft Server with One-Click Apps](deploy-a-minecraft-server-with-oneclick-apps.png "Deploy a Minecraft Server with One-Click Apps")
+
 ## Minecraft One-Click App
 
 With over 100 million users around the world, [Minecraft](https://www.minecraft.net/en-us/) is the most popular online game of all time. You and other players are free to build and explore in a 3D generated world made up of millions of mineable blocks. Collect resources by leveling mountains, taming forests, and venturing out to sea. Choose a home from the varied list of biomes like ice worlds, flower plains, and jungles. Build ancient castles or modern mega cities, and fill them with redstone circuit contraptions and villagers. Fight off nightly invasions of Skeletons, Zombies, and explosive Creepers, or adventure to the End and the Nether to summon the fabled End Dragon and the chaotic Wither. If that is not enough, Minecraft is also highly moddable and customizable. You decide the rules when hosting your own Minecraft server for you and your friends to play together in this highly addictive game.

@@ -15,6 +15,9 @@ contributor:
 external_resources:
 - '[S3cmd usage and command reference](https://s3tools.org/usage)'
 ---
+
+![How to Use Linode Object Storage](how-to-use-linode-object-storage.png "How to Use Linode Object Storage")
+
 {{< note >}}
 Object Storage is currently in a closed early access Beta, and you may not have access to Object Storage through the Cloud Manager or other tools. To gain access to the Early Access Program (EAP), open up a Customer Support ticket noting that you'd like to be included in the program, or e-mail objbeta@linode.com -- beta access is completely free.
 

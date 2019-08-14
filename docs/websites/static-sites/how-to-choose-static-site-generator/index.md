@@ -13,6 +13,8 @@ published: 2018-03-14
 title: 'How to Choose a Static Site Generator'
 ---
 
+![How to Choose a Static Site Generator](how-to-choose-a-static-site-generator.png "How to Choose a Static Site Generator")
+
 ## What is a Static Site?
 
 A static website is made of pre-built pages with content that doesn't change between user visits. Because each page is delivered to the browser the same way every time, static pages are often much faster than pages with dynamic content that rely on the server to process each request for each page load.

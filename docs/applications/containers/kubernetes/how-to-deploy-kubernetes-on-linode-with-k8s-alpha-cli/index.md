@@ -14,7 +14,7 @@ concentrations: ["Kubernetes"]
 external_resources:
   - '[Linode Kubernetes Tools](https://developers.linode.com/kubernetes/)'
 ---
-![Deploy Kubernetes on Linode with the k8s-alpha CLI](deploy-kubernetes-with-k8s-cli.png "Deploy Kubernetes on Linode with the k8s-alpha CLI")
+![How to Deploy Kubernetes on Linode with the k8s-alpha CLI](how-to-deploy-kubernetes-on-linode.png "How to Deploy Kubernetes on Linode with the k8s-alpha CLI")
 
 {{< caution >}}
 This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [delete it](#delete-a-cluster) when you have finished the guide.
@@ -295,4 +295,3 @@ Now that you have a cluster up and running, you're ready to start deploying apps
 
 -   [Installing Apps on Kubernetes with Helm](/docs/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/)
 -    [Linode Container Storage Interface](/docs/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/)
-

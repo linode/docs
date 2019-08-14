@@ -16,7 +16,7 @@ external_resources:
 - '[WireGuard Conceptual Overview](https://www.wireguard.com/#conceptual-overview)'
 - '[WireGuard man page](https://manpages.debian.org/unstable/wireguard-tools/wg.8.en.html)'
 ---
-![Deploy WireGuard with One-Click Apps](wireguard-one-click-apps.png)
+![Deploy WireGuard with One-Click Apps](deploy-wireguard-with-oneclick-apps.png "Deploy WireGuard with One-Click Apps")
 
 ## WireGuard One-Click App
 

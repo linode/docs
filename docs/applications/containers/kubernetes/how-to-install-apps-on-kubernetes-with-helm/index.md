@@ -16,7 +16,7 @@ external_resources:
   - '[Helm Security on Bitnami Engineering](https://engineering.bitnami.com/articles/helm-security.html)'
 ---
 
-![Install Apps on Kubernetes with Helm](install-apps-kubernetes-helm.png "Install Apps on Kubernetes with Helm")
+![How to Install Apps on Kubernetes with Helm](how-to-install-apps-on-kubernetes-with-helm.png "How to Install Apps on Kubernetes with Helm")
 
 ## What is Helm?
 
