@@ -177,12 +177,11 @@ Our services are provided without a contract, so you're free to remove services 
 
 You can cancel your account and receive a refund. Here's how:
 
-1.  Log in to the [Classic Linode Manager](http://manager.linode.com).
+1.  Log in to the [Cloud Manager](http://cloud.linode.com).
 1.  Click the **Accounts** link.
-1.  At the bottom of the page, select the **Cancel this Account** link. The cancel account webpage appears.
+1.  In the **Contact Information** box on the right, select the **Close Account** link. The cancel account webpage appears.
 1.  If you have a prepaid service credit on your account at the time of cancellation, you are entitled to a refund, minus a $5 processing fee. To request a refund, enter a note in the text field. Note that credits from sources other than prepaying cannot be refunded.
-1.  Select the confirmation checkbox.
-1.  Click the **Cancel this Account Immediately** checkbox.
+1.  Click the **Close Account** button.
 
 Your account will be canceled and all of your services will be deactivated.
 
