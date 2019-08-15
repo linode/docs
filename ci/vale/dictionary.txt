@@ -739,6 +739,7 @@ lubuntu
 lucene
 lugano
 luminus
+lxd
 lxml
 lzma
 lzopio

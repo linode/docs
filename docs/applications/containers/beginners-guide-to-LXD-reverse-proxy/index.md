@@ -7,6 +7,8 @@ keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtu
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-13
 modified: 2019-08-13
+modified_by:
+  name: Linode
 title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Many Websites in Containers"
 contributor:
   name: Simos Xenitellis
@@ -57,7 +59,7 @@ If the version is not 3.3 or later, update to the latest version by installing t
     sudo lxd.migrate
 {{</ note >}}
 
-2. This guide will use the hostnames `apache1.example.com` and `nginx.example.com` for the two example websites. Replace these names with hostnames that you own and setup their DNS entries to point them to the IP address of the server that you created. For help with DNS see our [DNS Manager Guide](docs/platform/manager/dns-manager/).
+2. This guide will use the hostnames `apache1.example.com` and `nginx.example.com` for the two example websites. Replace these names with hostnames that you own and setup their DNS entries to point them to the IP address of the server that you created. For help with DNS see our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
 
 ## Creating the Containers
 
