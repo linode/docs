@@ -6,7 +6,7 @@ description: 'Securely accessing remote filesystems with SSHFS on Linux.'
 keywords: ["sshfs", "ssh filesystem", "sshfs linux", "sshfs macos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/ssh-filesystems/','networking/ssh/using-sshfs-on-linux-and-macos-x/']
-modified: 2019-01-24
+modified: 2019-08-16
 modified_by:
   name: Linode
 published: 2009-10-26
@@ -31,7 +31,7 @@ This guide will assume you have two systems set up:
 
 Limited Linux users (non-`root`) with the same username should also exist on both systems. If you have not already set up a limited user, review the [How to Secure your Server](/docs/security/securing-your-server/#add-a-limited-user-account) guide.
 
-The username for this limited user is assumed to be `username`. Replace all instances of `username` in this guide with your limited user's name. As well, the IP address of the remote system is assumed to be `192.0.2.4`, so replace all instances of this IP with your remote system's address.
+The username for this limited user is assumed to be `example_user`. Replace all instances of `example_user` in this guide with your limited user's name. As well, the IP address of the remote system is assumed to be `192.0.2.4`, so replace all instances of this IP with your remote system's address.
 
 {{< note >}}
 `sshfs` can be installed on any Linode distribution, so you can adapt this guide if you are not using Ubuntu.
@@ -63,14 +63,14 @@ If you are unfamiliar with users, groups, and file permissions, visit the [Users
 
         cat /etc/group | grep 'fuse'
 
-1. If the group exists, execute the following command with `sudo`, substituting your user account name in place of `username`:
+1. If the group exists, execute the following command with `sudo`, substituting your user account name in place of `example_user`:
 
-        sudo usermod -a -G fuse username
+        sudo usermod -a -G fuse example_user
 
 1. If the group does not exist it has to be created and the user added to the `fuse` group:
 
         sudo groupadd fuse
-        sudo usermod -a -G fuse username
+        sudo usermod -a -G fuse example_user
 
 1. Log out from the client system and log back in to activate the group membership.
 
@@ -90,7 +90,7 @@ You can read more about `sshfs` in the [sshfs manual](https://linux.die.net/man/
 
 1. Mount the home directory of the remote system's user to the new directory on your client system:
 
-        sshfs username@192.0.2.4:/home/username sshfs-dir
+        sshfs example_user@192.0.2.4:/home/example_user sshfs-dir
 
 1. List the contents of the mounted directory. You should see the content of the folder that was mounted on the remote system:
 
@@ -122,7 +122,7 @@ If you accidentally lock yourself out of your Linode, use Lish to update your au
 
 1. From the client system, copy your new public SSH key to the remote user's `authorized_keys` file:
 
-        scp ~/.ssh/id_rsa.pub username@192.0.2.4:~/.ssh/authorized_keys
+        ssh-copy-id example_user@192.0.2.4
 
     {{< note >}}
 If your system is older, this file may be named `authorized_keys2`. [Consult](https://www.ssh.com/ssh/sshd_config/#sec-AuthorizedKeysFile-location) your Linode's `/etc/ssh/sshd_config` if you are unsure:
@@ -130,16 +130,16 @@ If your system is older, this file may be named `authorized_keys2`. [Consult](ht
     grep authorized_keys /etc/ssh/sshd_config
 {{< /note >}}
 
-1. At this point, you should be able to log into the remote server as `username` without entering a password. Confirm this:
+1. At this point, you should be able to log into the remote server as `example_user` without entering a password. Confirm this:
 
-        ssh username@192.0.2.4
+        ssh example_user@192.0.2.4
 
 ### Update fstab
 
 1. On a new line, add a mount directive to your `/etc/fstab` file which matches the following syntax:
 
     {{< file "/etc/fstab" >}}
-username@192.0.2.4:/home/username /home/username/sshfs-dir  fuse.sshfs noauto,x-systemd.automount,_netdev,follow_symlinks,identityfile=/home/username/.ssh/id_rsa,allow_other,default_permissions,reconnect 0 0
+example_user@192.0.2.4:/home/example_user /home/example_user/sshfs-dir  fuse.sshfs noauto,x-systemd.automount,_netdev,follow_symlinks,identityfile=/home/example_user/.ssh/id_rsa,allow_other,default_permissions,reconnect 0 0
 {{< /file >}}
 
     {{< note >}}
@@ -148,7 +148,7 @@ You will need to use `sudo` privileges to edit this file from your limited user.
 
 1. Reboot your system. Then, list the contents of the mounted directory. You should see the content of the folder that was mounted on the remote system:
 
-        ls -al /home/username/sshfs-dir
+        ls -al /home/example_user/sshfs-dir
 
 ## Next Steps
 
