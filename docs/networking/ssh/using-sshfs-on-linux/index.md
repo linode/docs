@@ -122,7 +122,7 @@ If you accidentally lock yourself out of your Linode, use Lish to update your au
 
 1. From the client system, copy your new public SSH key to the remote user's `authorized_keys` file:
 
-        ssh-copy-id example_user@192.0.2.4
+        ssh-copy-id -i ~/.ssh/id_rsa.pub example_user@192.0.2.4
 
     {{< note >}}
 If your system is older, this file may be named `authorized_keys2`. [Consult](https://www.ssh.com/ssh/sshd_config/#sec-AuthorizedKeysFile-location) your Linode's `/etc/ssh/sshd_config` if you are unsure:
