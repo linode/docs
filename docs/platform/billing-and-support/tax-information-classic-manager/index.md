@@ -26,10 +26,10 @@ Information about your EU VAT rate can be found [here](https://ec.europa.eu/taxa
 
 ## What Should I Do If My Services are Non-Taxable?
 
-If you are a registered business, you may choose to provide Linode with a valid VAT identification number (VAT ID) or GST identification number (GST ID). Such customers will not be charged with VAT or GST in subsequent invoices once their VAT or GST ID is verified.
+If you are a registered business, you may choose to provide Linode with a valid VAT identification number (*VAT ID*) or GST identification number (*GST ID*, also referred to as an *ABN* in Australia and a *GSTIN* in India). Such customers will not be charged with VAT or GST in subsequent invoices once their VAT or GST ID is verified.
 
 {{< note >}}
-For the remainder of this guide, your VAT or GST ID will be referred to as your *tax ID*.
+For the remainder of this guide, your VAT ID, GST ID, ABN, or GSTIN will be referred to as your *tax ID*.
 {{< /note >}}
 
 You can [update your contact information](#add-a-tax-id-to-your-linode-account) at any time to apply your tax ID to your Linode account. You can also specify a tax ID in our account signup form when you first create your Linode account.
