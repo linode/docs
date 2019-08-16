@@ -46,9 +46,9 @@ If you are not using macOS, you can copy the `ccm-linode-template.yaml` file and
 
 ## Using the CCM
 
-To use the CCM, you must have a collection of Pods that need to be load balanced, usually from a Deployment. For this example, you will create a Deployment that deploys three nginx Pods, and then create a Service to expose those Pods to the internet using the Linode CCM.
+To use the CCM, you must have a collection of Pods that need to be load balanced, usually from a [Deployment](/docs/applications/containers/kubernetes-reference/#deployment). For this example, you will create a Deployment that deploys three NGINX Pods, and then create a Service to expose those Pods to the internet using the Linode CCM.
 
-1.  Create a Deployment manifest, describing the desired state of the three replica nginx containers:
+1.  Create a Deployment manifest, describing the desired state of the three replica NGINX containers:
 
     {{< file "nginx-deployment.yaml" yaml >}}
 apiVersion: apps/v1
@@ -103,12 +103,12 @@ spec:
 
     The above Service manifest includes a few important key concepts.
 
-    - The first is the `spec.type` of `LoadBalancer`. This LoadBalancer type is what is responsible for telling the Linode CCM to create a Linode NodeBalancer, and will provide the Deployment it services a public facing IP address with which to access the nginx Pods.
+    - The first is the `spec.type` of `LoadBalancer`. This LoadBalancer type is what is responsible for telling the Linode CCM to create a Linode NodeBalancer, and will provide the Deployment it services a public facing IP address with which to access the NGINX Pods.
     - There is additional information being passed to the CCM in the form of metadata annotations (`service.beta.kubernetes.io/linode-loadbalancer-throttle` in the example above), which are discussed in the [next section](#annotations).
 
 1.  Use the `create` command to create the Service, and in turn, the NodeBalancer:
 
-        kubcetl create -f nginx-service.yaml
+        kubectl create -f nginx-service.yaml
 
 You can log in to the [Linode Cloud Manager](https://cloud.linode.com) to view your newly created NodeBalancer.
 
@@ -216,7 +216,7 @@ spec:
   type: LoadBalancer
 {{< /file >}}
 
-Note that here the NodeBalancer created by the Service is terminating the TLS encryption and proxying that to port 80 on the nginx Pod. If you had a Pod that listened on port `443`, you would set the `targetPort` to that value.
+Note that here the NodeBalancer created by the Service is terminating the TLS encryption and proxying that to port 80 on the NGINX Pod. If you had a Pod that listened on port `443`, you would set the `targetPort` to that value.
 
 ## Session Affinity
 
@@ -291,7 +291,7 @@ Similarly, you can delete the Service by name:
 
 The easiest way to update the Linode CCM is to edit the DaemonSet that creates the Linode CCM Pod. To do so, you can run the `edit` command.
 
-    kubectl edit daemonset ccm-linode -n kube-system
+    kubectl edit ds -n kube-system ccm-linode
 
 The CCM Daemonset manifest will appear in vim. Press `i` to enter insert mode. Navigate to `spec.template.spec.image` and change the field's value to the desired version tag. For instance, if you had the following image:
 
@@ -302,6 +302,10 @@ You could update the image to `v0.2.3` by changing the image tag:
     image: linode/linode-cloud-controller-manager:v0.2.3
 
 For a complete list of CCM version tags, visit the [CCM DockerHub page](https://hub.docker.com/r/linode/linode-cloud-controller-manager/tags).
+
+{{< caution >}}
+The CCM Daemonset manifest may list `latest` as the image version tag. This may or may not be pointed at the latest version. To ensure the latest version, it is recommended to first check the [CCM DockerHub page](https://hub.docker.com/r/linode/linode-cloud-controller-manager/tags), then use the most recent release.
+{{</ caution>}}
 
 Press escape to exit insert mode, then type `:wq` and press enter to save your changes. A new Pod will be created with the new image, and the old Pod will be deleted.
 
