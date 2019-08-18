@@ -137,8 +137,13 @@ The Linodes available in this dropdown menu all share the same region as your Vo
     The Volume still exists on your account and you can see it if you view the **Volumes** page:
 
     [![Volume not attached, but still exists.](bs-cloud-volume-detached-but-still-available-small.png "Volume not attached, but still exists.")](bs-cloud-volume-detached-but-still-available.png)
+
 {{< caution >}}
-To avoid issues with your Linode, remove this line from your `/etc/fstab/` configuration:
+If a volume is currently mounted, detaching it while the Linode is powered on could cause data loss or an unexpected reboot. You can unmount the volume for safe live-detaching using the `umount` command:
+
+    umount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
+
+To avoid additional issues with your Linode, remove the detached volume's line from your `/etc/fstab/` configuration:
 
 `FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2`
 
