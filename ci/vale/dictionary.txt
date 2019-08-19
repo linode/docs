@@ -12,6 +12,7 @@ adnanh
 adodb
 aes
 ahci0
+Aho
 ahvz
 ajp
 aker
@@ -646,6 +647,7 @@ keepalived
 keras
 kerberos
 kerberos5
+Kernighan
 keychain
 keyfiles
 keygen
@@ -766,6 +768,7 @@ masterdb
 masterless
 mathematica
 mathjax
+mawk
 maxconn
 maxdepth
 mbit
@@ -865,6 +868,7 @@ nano
 nanode
 nanodes
 natively
+nawk
 nbox
 ncdu
 ncurses
@@ -1519,6 +1523,7 @@ websocket
 webtatic
 webupd8
 weechat
+Weinberger
 welcometext
 wercker
 werkzug
