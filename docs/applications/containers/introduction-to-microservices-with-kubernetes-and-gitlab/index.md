@@ -68,7 +68,7 @@ The architecture of a Kubernetes Microservices Application will also include the
 Now that we know what a Microservices Application is and have a basic understanding of how it works, let's deploy a Microservices application that we can use to further understand these concepts in more depth.
 
 {{< caution >}}
-The Helm chart used in this guide will create a Nodebalancer and 5 Block Storage volumes (90 GB total) on your account, which if applied will be reflected on any future bills for the hours that they're active.
+The Helm chart used in this guide will create a NodeBalancer and 5 Block Storage volumes (90 GB total) on your account, which if applied will be reflected on any future bills for the hours that they're active.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](http://localhost:1313/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{< /caution >}}
