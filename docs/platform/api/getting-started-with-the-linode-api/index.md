@@ -19,6 +19,8 @@ aliases: ['platform/api/getting-started-with-the-linode-api-new-manager/']
 classic_manager_link: platform/api/getting-started-with-the-linode-api-classic-manager/
 ---
 
+![Getting Started with the Linode API](getting-started-with-the-linode-api.png "Getting Started with the Linode API")
+
 ## Create a Linode Using the Linode API
 
 The Linode API allows you to automate any task that can be performed by the Cloud Manager, such as creating Linodes, managing IP addresses and DNS, and opening support tickets.
