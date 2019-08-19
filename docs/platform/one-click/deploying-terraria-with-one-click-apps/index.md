@@ -36,7 +36,6 @@ You can configure your Terraria One-Click App by providing values for the follow
 |-----------|-----------------|
 | **Steam Username** | Your [Steam username](https://store.steampowered.com). [Steam Guard](https://support.steampowered.com/kb_article.php?ref=4020-ALZM-5519) must be turned off. *Required*. |
 | **Steam Password** | Your Steam password. *Required*. |
-| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Configuration*. |
 | **World Name** | The name of the Terraria virtual [world](https://terraria.gamepedia.com/World). *Advanced Configuration*. |
 | **Server Password** | The server's password, if you would like to make the server password protected. *Advanced Configuration*. |
 | **Message of the Day** | The message of the day text that is displayed whenever a player logs on to the server. *Advanced Configuration*. |

@@ -12,6 +12,7 @@ adnanh
 adodb
 aes
 ahci0
+Aho
 ahvz
 ajp
 aker
@@ -379,6 +380,7 @@ fb4c
 fcgi
 fcgiwrap
 fcrontab
+fd
 fdisk
 fdriver
 fe70
@@ -645,6 +647,7 @@ keepalived
 keras
 kerberos
 kerberos5
+Kernighan
 keychain
 keyfiles
 keygen
@@ -765,6 +768,7 @@ masterdb
 masterless
 mathematica
 mathjax
+mawk
 maxconn
 maxdepth
 mbit
@@ -864,6 +868,7 @@ nano
 nanode
 nanodes
 natively
+nawk
 nbox
 ncdu
 ncurses
@@ -878,6 +883,7 @@ netdev
 netfilter
 netflow
 netfs
+netid
 netifrc
 netlify
 netloc
@@ -1097,6 +1103,7 @@ readwrite
 realtime
 reconnections
 recursing
+recv
 red5
 reddit
 redhat
@@ -1516,6 +1523,7 @@ websocket
 webtatic
 webupd8
 weechat
+Weinberger
 welcometext
 wercker
 werkzug

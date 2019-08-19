@@ -16,6 +16,8 @@ contributor:
   name: Damaso Sanoja
 ---
 
+![Use Terraform to Provision Linode Environments](use-terraform-to-provision-linode-environments.png "Use Terraform to Provision Linode Environments")
+
 Infrastructure as code (IaC) is a development and operations methodology that allows server deployments and software configuration to be represented as code. This methodology reduces the chance for human error, makes complex systems more manageable, eases collaboration on systems engineering projects, and offers a number of other benefits.
 
 Terraform is an IaC tool that focuses on creating, modifying, and destroying servers, instead of managing the software on those servers. Terraform offers plugins to interface with different hosting providers, and an [official Linode plugin](https://www.terraform.io/docs/providers/linode/index.html) is available. This guide will show how to get started with Terraform and Linode.
@@ -461,7 +463,7 @@ root_pass ="YOUR_ROOT_PASSWORD"
     {{< file "~/terraform/linode-terraform-template.tf" aconf >}}
 # Linode Provider definition
 provider "linode" {
-  token = "${var.token}"
+  token = var.token
 }
 
 # Example Web Server
@@ -469,11 +471,11 @@ resource "linode_instance" "terraform-web" {
         image = "linode/centos7"
         label = "Terraform-Web-Example"
         group = "Terraform"
-        region = "${var.region}"
+        region = var.region
         type = "g6-standard-1"
         swap_size = 1024
-        authorized_keys = [ "${var.authorized_keys}" ]
-        root_pass = "${var.root_pass}"
+        authorized_keys = [var.authorized_keys]
+        root_pass = var.root_pass
 }
 
 # Example Database Server
@@ -481,11 +483,11 @@ resource "linode_instance" "terraform-db" {
         image = "linode/ubuntu18.04"
         label = "Terraform-Db-Example"
         group = "Terraform"
-        region = "${var.region}"
+        region = var.region
         type = "g6-standard-1"
         swap_size = 1024
-        authorized_keys = [ "${var.authorized_keys}" ]
-        root_pass = "${var.root_pass}"
+        authorized_keys = [var.authorized_keys]
+        root_pass = var.root_pass
 }
 {{< /file >}}
 
@@ -571,25 +573,25 @@ The module structure is flexible, so you can use as many Terraform files as need
 # Web Server
 resource "linode_instance" "terraform-web" {
         image = "linode/ubuntu18.04"
-        label = "${var.webserver_label}"
+        label = var.webserver_label
         group = "Terraform"
-        region = "${var.region}"
+        region = var.region
         type = "g6-standard-1"
         swap_size = 1024
-        authorized_keys = "${var.authorized_keys}"
-        root_pass = "${var.root_pass}"
+        authorized_keys = var.authorized_keys
+        root_pass = var.root_pass
 }
 
 # Database Server
 resource "linode_instance" "terraform-db" {
         image = "linode/centos7"
-        label = "${var.dbserver_label}"
+        label = var.dbserver_label
         group = "Terraform"
-        region = "${var.region}"
-        type = "${var.db_type}"
+        region = var.region
+        type = var.db_type
         swap_size = 1024
-        authorized_keys = "${var.authorized_keys}"
-        root_pass = "${var.root_pass}"
+        authorized_keys = var.authorized_keys
+        root_pass = var.root_pass
 }
 {{< /file >}}
 

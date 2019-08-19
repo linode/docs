@@ -54,7 +54,7 @@ Create a file named `nodebalancer.tf` in your Terraform project directory. You w
 
 {{< file "nodebalancer.tf" >}}
 provider "linode" {
-    token = "${var.token}"
+    token = var.token
 }
 {{< /file >}}
 
@@ -69,7 +69,7 @@ Create a NodeBalancer resource in the `nodebalancer.tf` file:
 
 resource "linode_nodebalancer" "example-nodebalancer" {
     label = "examplenodebalancer"
-    region = "${var.region}"
+    region = var.region
 }
 
 ...
@@ -85,7 +85,7 @@ In addition to the NodeBalancer resource, you must supply at least one NodeBalan
 ...
 
 resource "linode_nodebalancer_config" "example-nodebalancer-config" {
-    nodebalancer_id = "${linode_nodebalancer.example-nodebalancer.id}"
+    nodebalancer_id = linode_nodebalancer.example-nodebalancer.id
     port = 80
     protocol = "http"
     check = "http_body"
@@ -117,11 +117,11 @@ The third part of setting up a NodeBalancer in Terraform is creating the NodeBal
 ...
 
 resource "linode_nodebalancer_node" "example-nodebalancer-node" {
-    count = "${var.node_count}"
-    nodebalancer_id = "${linode_nodebalancer.example-nodebalancer.id}"
-    config_id = "${linode_nodebalancer_config.example-nodebalancer-config.id}"
+    count = var.node_count
+    nodebalancer_id = linode_nodebalancer.example-nodebalancer.id
+    config_id = linode_nodebalancer_config.example-nodebalancer-config.id
     label = "example-node-${count.index + 1}"
-    address = "${element(linode_instance.example-instance.*.private_ip_address, count.index)}:80"
+    address = "element(linode_instance.example-instance.*.private_ip_address, count.index):80"
     mode = "accept"
 }
 
@@ -142,15 +142,15 @@ Now that you have the NodeBalancer configured, you need to supply it with a Lino
 ...
 
 resource "linode_instance" "example-instance" {
-    count  = "${var.node_count}"
+    count  = var.node_count
     label  = "example-instance-${count.index + 1}"
     group = "nodebalancer-example"
     tags = ["nodebalancer-example"]
-    region = "${var.region}"
+    region = var.region
     type = "g6-nanode-1"
     image = "linode/ubuntu18.10"
-    authorized_keys = ["${chomp(file(var.ssh_key))}"]
-    root_pass = "${random_string.password.result}"
+    authorized_keys = ["chomp(file(var.ssh_key))}]
+    root_pass = random_string.password.result
     private_ip = true
 
     provisioner "remote-exec" {
@@ -169,7 +169,8 @@ resource "linode_instance" "example-instance" {
         connection {
             type = "ssh"
             user = "root"
-            password = "${random_string.password.result}"
+            password = random_string.password.result
+            host = "self.ipv4"
         }
     }
 }
@@ -194,8 +195,8 @@ The last step that you'll take in creating `nodebalancer.tf` is adding an output
 {{< file "nodebalancer.tf" >}}
 ...
 
-output "NodeBalancer IP Address" {
-    value = "${linode_nodebalancer.example-nodebalancer.0.ipv4}"
+output "nodebalancer_ip_address" {
+    value = linode_nodebalancer.example-nodebalancer.ipv4
 }
 {{< /file >}}
 
@@ -211,7 +212,7 @@ variable "token" {
 }
 
 variable "region" {
-    description = "The datacenter where your NodeBalancer and Nodes will reside. E.g., 'us-east'."
+    description = "The data center where your NodeBalancer and Nodes will reside. E.g., 'us-east'."
     default = "us-west"
 }
 

@@ -16,7 +16,7 @@ external_resources:
 - '[WireGuard Conceptual Overview](https://www.wireguard.com/#conceptual-overview)'
 - '[WireGuard man page](https://manpages.debian.org/unstable/wireguard-tools/wg.8.en.html)'
 ---
-![Deploy WireGuard with One-Click Apps](wireguard-one-click-apps.png)
+![Deploy WireGuard with One-Click Apps](deploy-wireguard-with-oneclick-apps.png "Deploy WireGuard with One-Click Apps")
 
 ## WireGuard One-Click App
 
@@ -48,7 +48,6 @@ If you do not have the values for these fields, you can leave them empty. After 
 
 | **Field**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
 |-----------|-----------------|
-| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Configuration*. |
 | **Port** | Set your WireGuard server's listening port number. The default is: `51820`. *Advanced Configuration*. |
 | **Tunnel IP** | Your WireGuard server's tunnel IP address and subnet in CIDR notation. The default is: `10.0.1.1/24`. This is not the same as a private IP address that Linode can assign to your Linode instance; instead, this address is managed by the network that WireGuard creates. *Advanced Configuration*. |
 | **WireGuard Public Key (Client)** | Your WireGuard client's public key. *Advanced Configuration*. |

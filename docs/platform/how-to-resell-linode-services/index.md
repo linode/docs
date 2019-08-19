@@ -14,6 +14,8 @@ contributor:
   name: Linode
 ---
 
+![How to Resell Linode Services](how-to-resell-linode-services.png "How to Resell Linode Services")
+
 Linode warmly welcomes and encourages the reselling of our services to third-party customers. Anyone can resell Linode services. This guide will walk you through the process of becoming a reseller.
 
 {{< note >}}

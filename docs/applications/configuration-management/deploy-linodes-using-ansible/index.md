@@ -15,6 +15,9 @@ contributor:
 external_resources:
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 ---
+
+![How to use the Linode Ansible Module to Deploy Linodes](how-to-use-the-linode-ansible-module-to-deploy-linodes.png "How to use the Linode Ansible Module to Deploy Linodes")
+
 Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](https://developers.linode.com/api/v4/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/applications/configuration-management/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
 
 In this guide you will learn how to:
@@ -373,4 +376,3 @@ A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists
 1. Run the Delete Linode Playbook:
 
         ansible-playbook ~/development/linode_delete.yml
-
