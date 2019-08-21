@@ -5,7 +5,7 @@ author:
 description: 'Introduction to Microservices With Kubernetes and Gitlab'
 keywords: ['kubernetes','k8s', 'Gitlab', 'Git', 'definitions']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-08-05
+published: 2019-08-21
 modified_by:
   name: Linode
 title: "Introduction to Microservices With Kubernetes and Gitlab"
@@ -15,9 +15,16 @@ external_resources:
 - '[Gitlab](https://about.gitlab.com/https://about.gitlab.com/)'
 - '[Kubernetes](https://kubernetes.io/)'
 - '[Helm](https://helm.sh/)'
+- '[Troubleshooting Gitlab](https://docs.gitlab.com/charts/troubleshooting/index.html)'
 
 ---
-The following guide is the first part of a three-part series which will go into detail regarding what Microservices are, the advantages and disadvantages of a Microservices Architecture over the more traditional Monolithic application, and finally we'll deploy [Gitlab](https://about.gitlab.com/) as a microservices application in [Kubernetes](https://kubernetes.io/) which we can use in later sections to see a high level overview of what microservice applications on Kubernetes are doing under the hood.
+This guide is the first part of a three-part series on using microservices with Kubernetes and Gitlab. Parts two and three will give a high level overview of what microservice applications on Kubernetes are doing under the hood.
+
+In this guide you will:
+
+ - Learn [what are Microservices](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#what-are-microservices).
+ - Learn the [advantages](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#advantages) and [disadvantages](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#disadvantages) of a Microservices Architecture over the more traditional Monolithic application.
+ - [Deploy](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#deploying-gitlab-as-a-microservices-application) [Gitlab](https://about.gitlab.com/) as a microservices application in [Kubernetes](https://kubernetes.io/).
 
 ## Before You Begin
 
@@ -87,13 +94,15 @@ If you'd like to see the Monolithic version of the Gitlab application, follow ou
 
 ### Installing Gitlab with Helm
 
-1. To deploy Gitlab as a Microservices application, we'll be using a Helm chart. You can read more about this chart on [Gitlab's Charts Page](https://docs.gitlab.com/charts/). Before proceeding, make sure to update Helm to ensure that you have a full list of available charts.
-
-        helm repo update
+1. To deploy Gitlab as a Microservices application, we'll be using a Helm chart. You can read more about this chart on [Gitlab's Charts Page](https://docs.gitlab.com/charts/).
 
 1. The Gitlab repo needs to be added:
 
         helm repo add gitlab https://charts.gitlab.io/
+
+1. Before proceeding, make sure to update Helm to ensure that you have a full list of available charts and updates.
+
+        helm repo update
 
 1. Enter the following command on your control node to begin the installation process, replacing `mydomain.com` with your domain name, the IP address affiliated with your domain following `externalIP`, and `myemail@website.com` with an email address you'd like to use to generate a free SSL certificate using [Let's Encrypt](https://letsencrypt.org/).
 
@@ -144,22 +153,58 @@ gitlab-unicorn-694748c5c9-w47tl                        0/2     Init:2/3         
 
     The Helm chart will create a [NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), which will be used to add an additional layer of high availability to our application.
 
+1. Domain propagation will take a few minutes to successfully resolve to your new IP address following this change, and the `gitlab-runner` microservice may crash since it relies on this resolution. You'll want to periodically check this service to make sure it hasn't failed. See the [Troubleshooting section](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#troubleshooting) for tips on how to resolve Pods in statuses other than `Running`.
+
+        kubectl get pods | grep gitlab-runner
+
 1. Navigate to the [NodeBalancer](https://cloud.linode.com/nodebalancers) section of the Cloud Manager, and find the IP address of this new resource. The label of the NodeBalancer will be a randomly generated 32 character string, with your worker nodes pre-configured as Backend Linodes.
 
-1. Once you have the IP address of your new NodeBalancer, you will need to manually set up A records for the following subdomains to resolve to this IP for the Helm chart to successfully complete your installation:
+1. If you have a domain set-up to point to one of your worker nodes as instructed above, as your containers come up you should see A records made automatically for each of the subdomains. They should point to your NodeBalancer. If not, you can create them manually.
 
   -  minio.example.com
   -  gitlab.example.com
   -  registry.example.com
 
-1. Domain propagation will take a few minutes to successfully resolve to your new IP address following this change, and the `gitlab-runner` microservice may crash since it relies on this resolution. You'll want to periodically check this service to make sure it hasn't failed.
-
-        kubectl get pods | grep gitlab-runner
-
-1. If gitlab-runner is in the `CrashLoopbackOff` status, it has most likely timed out before your domains have resolved, and you'll need to delete the pod once domain propagation is completed for the service to restart and confirm your domain is working. You can do this by replacing the randomly generated string following `gitlab-gitlab-runner-` with the string that appeared in the previous command:
-
-        kubectl delete pods gitlab-gitlab-runner-dd97f84b-zplq9
-
 1. Finally, once all services have initialized, you can navigate to `gitlab.example.com` using the domain name that you configured earlier, and after a few moments, you'll see a login screen for your new Microservices Application.
 
 ![Gitlab Login](gitlablogin.png)
+
+## Troubleshooting
+
+### Gitlab-runner in CrashLoopbackOff Status
+
+If gitlab-runner is in the `CrashLoopbackOff` status, it has most likely timed out before your domains have resolved, and you'll need to delete the pod once domain propagation is completed for the service to restart and confirm your domain is working. You can do this by replacing the randomly generated string following `gitlab-gitlab-runner-` with the string that appeared in the previous command:
+
+    kubectl delete pods gitlab-gitlab-runner-dd97f84b-zplq9
+
+### Pods Stuck in Initialization Status
+
+Other Pods, such as Sidekiq, Unicorn, or other Rails based containers may be stuck in initialization status. This is usually due to them waiting on the dependencies container.
+
+1. Check the logs of the given Pod. If you see something like the following it's an indication that the migrations haven't completed:
+
+    {{< output >}}
+Checking database connection and schema version
+WARNING: This version of GitLab depends on gitlab-shell 8.7.1, ...
+Database Schema
+Current version: 0
+Codebase version: 20190301182457
+{{</ output >}}
+
+1. Find the migrations job:
+
+        kubectl get job -lapp=migrations
+
+1. Find the Pod run by the Job:
+
+        kubectl get pod -ljob-name=job-name
+
+1. Look at the `STATUS` column. If it's `Completed` then the job should pass checks and the container should start shortly. If it's `Running` check the logs and address any errors:
+
+        kubectl logs pod-name
+
+### UPGRADE FAILED: "$name" has no deployed releases
+
+If you get this error when trying to deploy the helm chart after you failed to deploy it once before, you should first purge the failed installation:
+
+    helm delete --purge deploymentname
