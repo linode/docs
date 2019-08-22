@@ -15,11 +15,11 @@ contributor:
 ---
 ## What is the Linode Kubernetes Engine (LKE)?
 
-The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and simple pricing with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), Nodebalancers (load balancers), and Block Storage (Volumes) services. Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
+The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [Nodebalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) (load balancers), and [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) (Volumes) services. Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
 
-You can easily deploy a LKE cluster in several ways, via the [Linode Cloud Manager](link to LKE Cloud Manager guide), the Linode API or the [Linode CLI](link to Linode CLI guide). These Linode provided interfaces to LKE can be used to create, delete, and update the structural elements of your cluster, like the number of nodes that make a cluster's node pool, the region where your node pool is deployed, the Linode plan type, and the Kubernetes version deployed to your cluster's Master node and worker nodes. The [Kubernetes API](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) and [kubectl](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubectl) are the primary ways you will interact with your LKE cluster once it's been created. These tools can be used to configure, deploy, inspect, and secure your Kubernetes workloads, deploy applications, create services, configuring storage and networking, and define controllers.
+You can easily deploy a LKE cluster in several ways, via the [Linode Cloud Manager](link to LKE Cloud Manager guide), the Linode API or the [Linode CLI](link to Linode CLI guide). These Linode provided interfaces to LKE can be used to create, delete, and update the structural elements of your cluster, like the number of nodes that make a cluster's node pool, the region where your node pool is deployed, the Linode plan type, and the Kubernetes version deployed to your cluster's Master node and worker nodes. The [Kubernetes API](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) and [kubectl](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubectl) are the primary ways you will interact with your LKE cluster once it's been created. These tools can be used to configure, deploy, inspect, and secure your Kubernetes workloads, deploy applications, create services, configure storage and networking, and define controllers.
 
-This guide will cover how to use the Linode API tok:
+This guide will cover how to use the Linode API to:
 
 * [Create a LKE cluster](#create-a-lke-cluster)
 * [Connect kubectl to your LKE cluster](#connect-to-your-lke-cluster)
@@ -84,14 +84,20 @@ To communicate with your LKE cluster, kubectl requires a copy of your cluster's 
         curl -H "Authorization: Bearer $TOKEN" \
           https://api.linode.com/v4/lke/clusters/12345/kubeconfig
 
-    The API returns a base64 encoded string representing your kubeconfig. This is a useful format for automated pipelines. Copy the `kubeconfig` field's value from the response body, since you will need it in the next step. Your output will resemble the following:
+The API returns a base64 encoded string representing your kubeconfig. This is a useful format for automated pipelines. Copy the `kubeconfig` field's value from the response body, since you will need it in the next step. Your output will resemble the following:
+
     {{< output >}}
 {"kubeconfig": "YXBpVmVyc2lvbjogdjEKY2x1c3RlcnM6Ci0gY2x1c3RlcjoKICAgIGNlcnRpZmljYXRlLWF1dGhvcml0eS1kYXRhOiBMUzB0TFMxQ1JVZEpUaUJEUlZKVVNVWkpRMEZVUlMwdExTMHRDazFKU1VONVJFTkRRV0pEWjBGM1NVSkJaMGxDUVVSQlRrSm5hM0ZvYTJsSE9YY3dRa0ZSYzBaQlJFRldUVkpOZDBWUldVUldVVkZFUlhkd2NtUlhTbXdLWTIwMWJHUkhWbnBOUWpSWVJGUkZOVTFFWjNkTmFrVXpUVlJqTVUxV2IxaEVWRWsx ... 0TFMwdExRbz0K"}%
     {{</ output >}}
 
+{{< note >}}
+Make sure you only copy the long string in quotes following `"kubeconfig":` in your output. Do not copy the curly braces or anything outside of them. You will receive an error if you use the full output in later steps.
+{{< /note >}}
+
+
 1. The kubectl command-line tool uses kubeconfig files to find the information it needs to choose a cluster and communicate with the API server of a cluster. To connect to your LKE cluster using kubectl, save the base64 kubeconfig to an environment variable:
 
-        KUBE_VAR='YXBpVmVyc2lvbjogdjEK ... 0TFMwdExRbz0'
+        KUBE_VAR='YXBpVmVyc2lvbjogdjEK ... 0TFMwdExRbz0K'
 
 1. Navigate to your computer's `~/.kube` directory. This is where kubectl looks for kubeconfig files, by default.
 
