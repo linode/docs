@@ -57,7 +57,7 @@ When Network Helper is enabled globally, all new Linodes created on your account
 
     ![Navigate to the Linode's Settings page](network-helper-linode-settings-link.png)
 
-1.  In the **Advanced Configurations** panel, click on the **more options ellipsis** for your Disk Profile. From the menu, select **Edit**:
+1.  From the Linode's Dashboard screen, click the tab labeled **Advanced**.  Next, click on the **more options ellipsis** for your Disk Profile. From the menu, select **Edit**:
 
     [![Select the configuration profile Edit Menu](network-helper-linode-settings-page-small.png)](network-helper-linode-settings-page.png)
 
