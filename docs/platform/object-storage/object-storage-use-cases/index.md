@@ -19,7 +19,7 @@ Object Storage is a method of storing data that offers a number of advantages ov
 
 In contrast, Object Storage stores data, called *objects*, in containers, called *buckets*, and each object is given a unique identifier with which it is internally accessed. In this way, the physical location of the object does not need to be known. These objects are stored alongside rich, configurable metadata that can be used to describe any number of arbitrary properties about the object. Each object has its own URL, so accessing the data is often as simple as issuing an HTTP request, either by visiting the object in a browser or retrieving it through the command line. Object Storage scales easily because all of the objects are stored in a flat, scalable name space, and its performance does not degrade as the size of the stored data grows. And, Object Storage does not require a host server in order to be used.
 
-With that said, there are limitations to Object Storage. Objects in Object Storage can not be modified at the block level and must be rewritten in their entirety every time a change is made. This makes any scenario where many successive read/write operations, similar to the needs of databases or transactional data, a poor choice for Object Storage. As a rule of thumb Object Storage shines when files do not need to be updated frequently.
+With that said, there are limitations to Object Storage. Objects in Object Storage cannot be modified at the block level and must be rewritten in their entirety every time a change is made. This makes any scenario with many successive read/write operations, similar to the needs of databases or transactional data, a poor choice for Object Storage. As a rule of thumb Object Storage shines when files do not need to be updated frequently.
 
 Below are some of the more popular use cases for Object Storage.
 
@@ -27,7 +27,7 @@ Below are some of the more popular use cases for Object Storage.
 
 ### Static Site Hosting
 
-Because Object Storage buckets provide HTTP access to objects, it's easy to set up a bucket to serve static websites. A static website is a website that does not require a server-side processing language like PHP to render the content. And because a static site does not require each page to be processed with every request, static sites are usually very quick to load. For more information on setting up a static site on Object Storage, read our [Host a Static Site on Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide. For more on static site generators in general, visit our [How to Choose a Static Site Generator](/docs/websites/static-sites/how-to-choose-static-site-generator/) guide.
+Because Object Storage buckets provide HTTP access to objects, it's easy to set up a bucket to serve static websites. A static website is a website that does not require a server-side processing language like PHP to render the content. And because a static site do not require each page to be processed with every request, they are usually very quick to load. For more information on setting up a static site on Object Storage, read our [Host a Static Site on Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide. For more on static site generators in general, visit our [How to Choose a Static Site Generator](/docs/websites/static-sites/how-to-choose-static-site-generator/) guide.
 
 ### Website Files
 
