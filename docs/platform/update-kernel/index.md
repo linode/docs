@@ -50,9 +50,7 @@ If your output contains `generic` in the version tag, then you are probably runn
 
 ## Update Your Linode Kernel with Linode's Cloud Manager
 
-1.  Select the Linode from the *Dashboard*
-
-1.  Click the **Settings** tab and expand the **Advanced Configurations** section.
+1.  Select the Linode from the *Dashboard* and click the **Advanced** tab.
 
 1. Find your current *Configuration*, click on the corresponding ellipses (**...**) menu and select **Edit**.
 
