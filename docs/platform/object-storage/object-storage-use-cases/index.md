@@ -15,11 +15,11 @@ contributor:
 
 ## What is Object Storage?
 
-Object Storage is a method of storing data that differs in a number of ways from Block Storage. To understand the benefits of Object Storage, you must first understand Block Storage. Block Storage splits files into small *blocks* of data, and each block's physical location is written to a table. This table is then queried whenever a file is accessed so that the system knows where to find the location of the requested data. This is fine for most storage needs, but because Block Storage has to query a table to retrieve data, the process can become sluggish as the number of files and the size of the data being stored, and the table, grows to a much larger scale. Minimal metadata about the contents of the file is stored alongside this data; in general, descriptive metadata must be stored in a separate file or database, which could create additional overhead. Lastly, in order to use a Block Storage volume it must be attached to a host server.
+Object Storage is a method of storing data that differs in a number of ways from Block Storage. Block Storage splits files into small *blocks* of data. Minimal metadata about the contents of the file is stored alongside this data; in general, descriptive metadata must be stored in a separate file or database. In order to use a Block Storage volume it must be attached to a host server, where it acts like a hard drive.
 
-In contrast, Object Storage stores data, called *objects*, in containers, called *buckets*, and each object is given a unique identifier with which it is internally accessed. In this way, the physical location of the object does not need to be known. These objects are stored alongside rich, configurable metadata that can be used to describe any number of arbitrary properties about the object. Each object has its own URL, so accessing the data is often as simple as issuing an HTTP request, either by visiting the object in a browser or retrieving it through the command line. Object Storage scales easily because all of the objects are stored in a flat, scalable name space, and its performance does not degrade as the size of the stored data grows. And, Object Storage does not require a host server in order to be used.
+In contrast, Object Storage stores data, called *objects*, in containers, called *buckets*, and each object is given a unique identifier with which it is internally accessed. In this way, the physical location of the object does not need to be known. These objects are stored alongside rich, configurable metadata that can be used to describe any number of arbitrary properties about the object. Each object has its own URL, so accessing the data is often as simple as issuing an HTTP request, either by visiting the object in a browser or retrieving it through the command line. Object Storage scales easily because all of the objects are stored in a flat, scalable name space. And, Object Storage does not require a host server in order to be used.
 
-With that said, there are limitations to Object Storage. Objects in Object Storage cannot be modified at the block level and must be rewritten in their entirety every time a change is made. This makes any scenario with many successive read/write operations, similar to the needs of databases or transactional data, a poor choice for Object Storage. As a rule of thumb Object Storage shines when files do not need to be updated frequently.
+With that said, there are limitations to Object Storage. Objects in Object Storage cannot be modified at the block level, as with Block Storage, and must be rewritten in their entirety every time a change is made. This makes any scenario with many successive read/write operations, similar to the needs of databases or transactional data, a poor choice for Object Storage. Additionally, Object Storage traffic runs over HTTP, so it does not benefit from the I/O speeds of a mounted Block Storage volume. As a rule of thumb Object Storage shines when files do not need to be updated frequently.
 
 Below are some of the more popular use cases for Object Storage.
 
@@ -39,7 +39,7 @@ Similar to hosting website files, hosting software applications on Object Storag
 
 ### Unstructured Data
 
-Unstructured data is any data that does not fit into a traditional database. Object Storage excels at storing large amounts of unstructured data. With the ability to configure custom metadata for each piece of unstructured data, it is easy to extrapolate useful information from each object and to retrieve for objects with similar metadata.
+Unstructured data is any data that does not fit into a traditional database. Object Storage excels at storing large amounts of unstructured data. With the ability to configure custom metadata for each piece of unstructured data, it is easy to extrapolate useful information from each object and to retrieve objects with similar metadata.
 
 #### Image, Video, Audio, and Documents
 
@@ -59,7 +59,7 @@ Object Storage is significantly cheaper than Block Storage, and while Object Sto
 
 ### Backups
 
-Databases and other critical data can be easily backed up to Object Storage using a command line client for easier automation. Objects within Object Storage are normally replicated three times, providing resiliency should an error occur with the underlying hardware.
+Databases and other critical data can be easily backed up to Object Storage using a command line client for easier automation. Objects within Object Storage are normally replicated three times, providing resiliency should an error occur with the underlying hardware. Additionally, buckets can be versioned, so that you never lose access to older backups.
 
 ### Private File Storage
 
