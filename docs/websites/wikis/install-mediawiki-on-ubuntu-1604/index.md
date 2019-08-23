@@ -47,9 +47,9 @@ The name of the directory beneath the `public_html/` will determine the path to 
 
 Mediawiki needs to communicate with a database to store information. Create a database and a user with a secure password, then grant all privileges on the new database to the user.
 
-1.  Log in to MySQL's SQL shell:
+1.  Log in using the MySQL root password:
 
-        sudo mysql -u root
+        sudo mysql -u root -p
 
 1.  Create a database and a user with permissions for it. In this example, the database is called `my_wiki`, the user `media_wiki`, and password `password`. Be sure to enter your own password. This should be different from the root password for MySQL:
 
