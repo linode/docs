@@ -12,11 +12,11 @@ modified_by:
 title: "Deploy NodeBalancers with the Linode Cloud Controller Manager"
 ---
 
-The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager) allows Kubernetes to deploy [Linode NodeBalancers](/docs/platform/nodebalancer/) whenever a Service of the "LoadBalancer" type is created. This provides the Kubernetes cluster with a reliable way of exposing resources to the public internet. The CCM handles the creation and deletion of the NodeBalancer, and correctly identifies the resources, and their networking, that the NodeBalancer will service.
+The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager) allows Kubernetes to deploy [Linode NodeBalancers](/docs/platform/nodebalancer/) whenever a Service of the "LoadBalancer" type is created. This provides the Kubernetes cluster with a reliable way of exposing resources to the public internet. The CCM handles the creation and deletion of the NodeBalancer, and correctly identifies the resources, and their networking, the NodeBalancer will service.
 
 This guide will explain how to:
 
-- Create a service with the type "LoadBalancer".
+- Create a service with the type "LoadBalancer."
 - Use annotations to control the functionality of the NodeBalancer.
 - Use the NodeBalancer to terminate TLS encryption.
 
@@ -48,7 +48,7 @@ If you are not using macOS, you can copy the `ccm-linode-template.yaml` file and
 
 To use the CCM, you must have a collection of Pods that need to be load balanced, usually from a [Deployment](/docs/applications/containers/kubernetes-reference/#deployment). For this example, you will create a Deployment that deploys three NGINX Pods, and then create a Service to expose those Pods to the internet using the Linode CCM.
 
-1.  Create a Deployment manifest, describing the desired state of the three replica NGINX containers:
+1.  Create a Deployment manifest describing the desired state of the three replica NGINX containers:
 
     {{< file "nginx-deployment.yaml" yaml >}}
 apiVersion: apps/v1
@@ -101,9 +101,9 @@ spec:
   sessionAffinity: None
 {{</ file >}}
 
-    The above Service manifest includes a few important key concepts.
+    The above Service manifest includes a few key concepts.
 
-    - The first is the `spec.type` of `LoadBalancer`. This LoadBalancer type is what is responsible for telling the Linode CCM to create a Linode NodeBalancer, and will provide the Deployment it services a public facing IP address with which to access the NGINX Pods.
+    - The first is the `spec.type` of `LoadBalancer`. This LoadBalancer type is responsible for telling the Linode CCM to create a Linode NodeBalancer, and will provide the Deployment it services a public facing IP address with which to access the NGINX Pods.
     - There is additional information being passed to the CCM in the form of metadata annotations (`service.beta.kubernetes.io/linode-loadbalancer-throttle` in the example above), which are discussed in the [next section](#annotations).
 
 1.  Use the `create` command to create the Service, and in turn, the NodeBalancer:
@@ -114,14 +114,14 @@ You can log in to the [Linode Cloud Manager](https://cloud.linode.com) to view y
 
 ## Annotations
 
-There are a number of settings, called annotations, that you can use to further customize the functionality of your NodeBalaner. Each annotation should be included in the `annotations` section of the Service manifest file's metadata, and all of the annotations are prefixed with `service.beta.kubernetes.io/linode-loadbalancer-`.
+There are a number of settings, called annotations, that you can use to further customize the functionality of your NodeBalancer. Each annotation should be included in the `annotations` section of the Service manifest file's metadata, and all of the annotations are prefixed with `service.beta.kubernetes.io/linode-loadbalancer-`.
 
 | Annotation (suffix) | Values | Default Value | Description |
 |---------------------|--------|---------------|-------------|
-| `throttle` | `0`-`20` (`0` disables the throttle) | `20` | Client Connection Throttle. This limits the number of new connections per second from the same client IP. |
+| `throttle` | `0`-`20` (`0` disables the throttle) | `20` | Client Connection Throttle. This limits the number of new connections-per-second from the same client IP. |
 | `protocol` | `tcp`, `http`, `https` | `tcp` | Specifies the protocol for the NodeBalancer. |
 | `tls`| Example value: `[ { "tls-secret-name": "prod-app-tls", "port": 443} ]` | None | A JSON array (formatted as a string) that specifies which ports use TLS and their corresponding secrets. The secret type should be `kubernetes.io/tls`. Fore more information, see the [TLS Encryption section](#tls-encryption). |
-| `check-type` | `none`, `connection`, `http`, `http_body` | None | The type of health check to perform on your Nodes to ensure that they are serving requests. `connection` checks for a valid TCP handshake, `http` checks for a `2xx` or `3xx` response code, `http_body` checks for a certain string within the response body of the healthcheck URL. |
+| `check-type` | `none`, `connection`, `http`, `http_body` | None | The type of health check to perform on Nodes to ensure that they are serving requests. `connection` checks for a valid TCP handshake, `http` checks for a `2xx` or `3xx` response code, `http_body` checks for a certain string within the response body of the healthcheck URL. |
 | `check-path` | string | None | The URL path that the NodeBalancer will use to check on the health of the back-end Nodes. |
 | `check-body` | string | None | The text that must be present in the body of the page used for health checks. For use with a `check-type` of `http_body`. |
 | `check-interval` | integer | None | The duration, in seconds, between health checks. |
@@ -129,15 +129,17 @@ There are a number of settings, called annotations, that you can use to further 
 | `check-attempts` | integer (a value between `1`-`30`) | None | Number of health checks to perform before removing a back-end Node from service. |
 | `check-passive` | boolean | `false` | When `true`, `5xx` status codes will cause the health check to fail. |
 
+To learn more about checks, please see our reference guide to [NodeBalancer health checks](/docs/platform/nodebalancer/nodebalancer-reference-guide/#health-checks).
+
 ## TLS Encryption
 
 This section will describe how to set up TLS termination for a Service so that the Service can be accessed over `https`.
 
 ### Generating a TLS type Secret
 
-Kubernetes allows you to store secret information in a Secret object for use within your cluster. This is useful for storing things like passwords and API tokens. In the context of the Linode CCM, Secrets are useful for storing TLS certificates and keys. The `linode-loadbalancer-tls` annotation requires TLS certificates and keys to be stored as Kubernetes Secrets with the type of `tls`. Follow the next steps to create a valid `tls` type Secret:
+Kubernetes allows you to store secret information in a Secret object for use within your cluster. This is useful for storing things like passwords and API tokens. In the context of the Linode CCM, Secrets are useful for storing Transport Layer Security (TLS) certificates and keys. The `linode-loadbalancer-tls` annotation requires TLS certificates and keys to be stored as Kubernetes Secrets with the type of `tls`. Follow the next steps to create a valid `tls` type Secret:
 
-1.  Use a program like [OpenSSL](https://www.openssl.org/) to generate a TLS key and certificate. Be sure to change the `CN` and `O` values to those of your own website domain.
+1.  Generate a TLS key and certificate using a TLS toolkit like [OpenSSL](https://www.openssl.org/). Be sure to change the `CN` and `O` values to those of your own website domain.
 
         openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.crt -subj "/CN=mywebsite.com/O=mywebsite.com"
 
@@ -247,12 +249,12 @@ If you are having problems with the CCM, such as the NodeBalancer not being crea
 
     kubcetl get pods -n kube-system
 
-The Pod will be named `ccm-linode-` with a few extra characters at the end, like `ccm-linode-jrvj2`. Once you have the Pod name, you can view its logs. The `--tail=n` flag is used to return the last `n` lines, where `n` is the number of your choosing. The below example returns the last 100 lines:
+The Pod will be named `ccm-linode-` with five random characters at the end, like `ccm-linode-jrvj2`. Once you have the Pod name, you can view its logs. The `--tail=n` flag is used to return the last `n` lines, where `n` is the number of your choosing. The below example returns the last 100 lines:
 
     kubectl logs ccm-linode-jrvj2 -n kube-system --tail=100
 
 {{< note >}}
-Currently the CCM only supports `https` ports within a manifest's spec when the `linode-loadbalancer-protocol` is set to `https`, meaning that for regular `http` traffic you'll need to create an additional Service and NodeBalancer. For example, if you had the following in the Service manifest:
+Currently the CCM only supports `https` ports within a manifest's spec when the `linode-loadbalancer-protocol` is set to `https`. For regular `http` traffic, you'll need to create an additional Service and NodeBalancer. For example, if you had the following in the Service manifest:
 
 {{< file "unsupported-nginx-service.yaml" yaml >}}
 ...
@@ -269,7 +271,7 @@ spec:
 ...
 {{</ file >}}
 
-The NodeBalancer would not be created and you would find the an error similar to the following in your logs:
+The NodeBalancer would not be created and you would find an error similar to the following in your logs:
 
     ERROR: logging before flag.Parse: E0708 16:57:19.999318       1 service_controller.go:219] error processing service default/nginx-service (will retry): failed to ensure load balancer for service default/nginx-service: [400] [configs[0].protocol] The SSL private key and SSL certificate must be provided when using 'https'
     ERROR: logging before flag.Parse: I0708 16:57:19.999466       1 event.go:221] Event(v1.ObjectReference{Kind:"Service", Namespace:"default", Name:"nginx-service", UID:"5d1afc22-a1a1-11e9-ad5d-f23c919aa99b", APIVersion:"v1", ResourceVersion:"1248179", FieldPath:""}): type: 'Warning' reason: 'CreatingLoadBalancerFailed' Error creating load balancer (will retry): failed to ensure load balancer for service default/nginx-service: [400] [configs[0].protocol] The SSL private key and SSL certificate must be provided when using 'https'
