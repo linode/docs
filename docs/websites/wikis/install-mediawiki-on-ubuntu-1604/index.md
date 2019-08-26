@@ -11,6 +11,8 @@ modified_by:
   name: Linode
 published: 2009-09-30
 title: Install MediaWiki on Ubuntu 16.04
+deprecated: true
+deprecated_link: 'websites/wikis/install-mediawiki-on-ubuntu-1804/'
 external_resources:
  - '[MediaWiki Wiki](http://www.mediawiki.org/wiki/MediaWiki)'
  - '[What is Media Wiki](https://www.mediawiki.org/wiki/Manual:What_is_MediaWiki%3F)'
