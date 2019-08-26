@@ -211,6 +211,7 @@ Talking more about the `printf` command is beyond the scope of this guide.
 The scripting language of bash offers a plethora of operators that allow you to work with all kinds of files including regular files and directories – each operator returns either `true` or `false` depending on the result of the performed test. The list includes the following operators, which should all be followed by a path to a UNIX file:
 
 | Command | Description |
+|---------|-------------|
 | `-a` | File exists. |
 | `-b` | File exists and is a block special file. |
 | `-c` | File exists and is a character special file. |
