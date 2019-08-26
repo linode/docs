@@ -353,7 +353,7 @@ A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists
 | --------- | -------- | ------|
 | `access_token` | string, *required* | Your Linode API v4 access token. The token should have permission to read and write Linodes. The token can also be specified by exposing the `LINODE_ACCESS_TOKEN` environment variable. |
 | `plugin` | string, *required* | The plugin name. The value must always be `linode` in order to use the dynamic inventory plugin for Linode. |
-| `regions` | list | The Linode region with which to populate the inventory. For example, `us-east` is possible value for this parameter.</br></br> To view a list of all available Linode images, issue the following command: </br></br>`curl https://api.linode.com/v4/images`.  |
+| `regions` | list | The Linode region with which to populate the inventory. For example, `us-east` is possible value for this parameter.</br></br> To view a list of all available regions, issue the following command: </br></br>`curl https://api.linode.com/v4/regions`.  |
 | `types` | list | The Linode type with which to populate the inventory. For example, `g6-nanode-1` is a possible value for this parameter.</br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
 | `groups` | list | The Linode group with which to populate the inventory. Please note, group labelling is deprecated but still supported. The encouraged method for marking instances is to use tags. This parameter must be provided to use the Linode dynamic inventory module. |
 
