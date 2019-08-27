@@ -39,7 +39,7 @@ In a climate where owning one's own data is more and more attractive, hosting yo
 
 ### Storage for Media Library Applications
 
-There are a few media library applications, most noteably Plex, that offer media streaming functionality to internet enabled devices. The media libraries these applications serve can quickly grow in size depending on the number of movie and audio files they house. Using a Block Storage Volume that can grow with the needs of the library is a great use case.
+There are a few media library applications, most notably Plex, that offer media streaming functionality to internet enabled devices. The media libraries these applications serve can quickly grow in size depending on the number of movie and audio files they house. Using a Block Storage Volume that can grow with the needs of the library is a great use case.
 
 ### Ephemeral Storage
 
