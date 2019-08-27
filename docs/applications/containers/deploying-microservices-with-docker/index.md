@@ -48,7 +48,7 @@ This section uses Dockerfiles to configure Docker images. For more information a
 
         mkdir flask-microservice
 
-2. Create the directory structure for the microservice components within the new directory:
+2. Create a directory structure for the microservice components within the new directory:
 
         cd flask-microservice
         mkdir nginx postgres web
@@ -269,7 +269,7 @@ services:
      - redis
      - postgres
 
-   # Link the redis and postgres containers together so that they can talk to one another
+   # Link the redis and postgres containers together so they can talk to one another
    links:
      - redis
      - postgres
@@ -278,7 +278,7 @@ services:
    environment:
      FLASK_DEBUG: 1
 
-   # Deploy with 3 replicas in the case of failure of one of the containers (only in Docker Swarm)
+   # Deploy with three replicas in the case one of the containers fails (only in Docker Swarm)
    deploy:
      mode: replicated
      replicas: 3
@@ -374,7 +374,7 @@ Containers should be:
 
     The Flask microservice is an ideal example of this. The entire microservice can be brought up or down using Docker Compose. No additional configuration is necessary after the containers are running, which makes it easy to modify the application.
 
-2.  **Disposable**: Ideally, any single container within a larger application should be able to fail without impacting the performance of the application. Using a `restart: on-failure` option in the `docker-compose.yml` file, as well as having a replica count, makes it possible for some containers in the example microservice to fail gracefully while still serving the web application with no degradation to the end user.
+2.  **Disposable**: Ideally, any single container within a larger application should be able to fail without impacting the performance of the application. Using a `restart: on-failure` option in the `docker-compose.yml` file, as well as having a replica count, makes it possible for some containers in the example microservice to fail gracefully while still serving the web application – with no degradation to the end user.
 
     {{< note >}}
 The replica count directive will only be effective when this configuration is deployed as part of a [Docker Swarm](/docs/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/), which is not covered in this guide.
@@ -384,7 +384,7 @@ The replica count directive will only be effective when this configuration is de
 
 4.  **Quick to stop**: Validate that a `docker kill --signal=SIGINT {APPNAME}` stops the application gracefully. This, along with a restart condition and a replica condition, will ensure that when containers fail, they will be brought back online efficiently.
 
-5. **Lightweight**: Use the smallest base container that provides all of the utilities that are needed to build and run your application. Many Docker images are based on [Alpine Linux](https://alpinelinux.org/about/), a light and simple Linux distribution that takes up only 5MB in a Docker image. Using a small distro saves network and operational overhead and greatly increases container performance. The example application uses alpine images where applicable (NGINX, Redis, and PostgreSQL), and uses a python-slim base image for the Gunicorn / Flask application.
+5. **Lightweight**: Use the smallest base container that provides all of the utilities needed to build and run your application. Many Docker images are based on [Alpine Linux](https://alpinelinux.org/about/), a light and simple Linux distribution that takes up only 5MB in a Docker image. Using a small distro saves network and operational overhead, and greatly increases container performance. The example application uses alpine images where applicable (NGINX, Redis, and PostgreSQL), and a python-slim base image for the Gunicorn / Flask application.
 
 6.  **Stateless**: Since they are ephemeral, containers typically shouldn't maintain state. An application's state should be stored in a separate, persistent data volume, as is the case with the microservice's PostgreSQL data store. The Redis key-value store does maintain data within a container, but this data is not application-critical; the Redis store will fail back gracefully to the database should the container not be able to respond.
 
