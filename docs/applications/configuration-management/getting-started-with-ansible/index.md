@@ -65,7 +65,7 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 1. [Create three Linodes](/docs/getting-started/#create-a-linode) running Debian 9. One will be the **control node** and two you will use as your Ansible **managed nodes**. The examples in this guide can also be followed using a single managed node, if preferred.
 
-1. Ansible uses the SSH protocol to securely log into managed nodes and apply your Playbook configurations. Create an SSH key-pair on the control node to use for authentication. This guide assumes your public and private SSH key-pair is stored in `~/home/.ssh/id_rsa.pub` and `~/home/.ssh/id_rsa`.
+1. Ansible uses the SSH protocol to securely log into managed nodes and apply your Playbook configurations. Create an SSH key-pair on the control node to use for authentication. This guide assumes your public and private SSH key-pair is stored in `~/.ssh/id_rsa.pub` and `~/.ssh/id_rsa`.
 
         ssh-keygen -t rsa -b 4096
 
