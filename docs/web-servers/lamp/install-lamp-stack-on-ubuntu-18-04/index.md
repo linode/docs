@@ -5,9 +5,9 @@ author:
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on Ubuntu 18.04 Long Term Support (LTS).'
 keywords: ["install lamp ubuntu 18.04", "apache install", "mysql install", "php", "ubuntu 18.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-04
+modified: 2019-08-27
 modified_by:
-  name: Edward Angert
+  name: Linode
 published: 2018-06-04
 title: 'How to Install a LAMP Stack on Ubuntu 18.04'
 external_resources:
@@ -102,7 +102,20 @@ The `MaxKeepAliveRequests` setting controls the maximum number of requests durin
 </IfModule>
 {{< /file >}}
 
-1.  Disable the event module and enable prefork:
+1.  Enable the firewall to allow web traffic. This guide lists the commands to enable web traffic if you configured UFW on your server.
+
+    a. Check the ports that are enabled for `Apache Full` Profile:
+
+          sudo ufw app info "Apache Full"
+
+       Ports `80` and `443` should be listed as enabled for `Apache Full` profile.
+
+    b. To allow incoming HTTP and HTTPS traffic for `Apache Full` profile:
+
+          sudo ufw allow in "Apache Full"     
+
+
+1. Disable the event module and enable prefork:
 
         sudo a2dismod mpm_event
         sudo a2enmod mpm_prefork
@@ -151,6 +164,14 @@ The `ServerAlias` directive allows you to include multiple domain names or subdo
     {{< note >}}
 Make sure that you do not put a space after the comma between `public_html` and `logs` because it will create a folder named `{public_html,` and will cause an error when you will reload Apache.
 {{< /note >}}
+
+1.  Assign ownership of `public_html` directory to the `$USER` environment variable:
+
+          sudo chown -R $USER:$USER /var/www/html/example.com/public_html
+
+1. Check that the permissions are correct:
+
+          sudo chmod -R 755 /var/www/html/example.com/public_html       
 
 1.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
 
@@ -255,7 +276,7 @@ In this section, you'll create a test page that shows whether Apache can render 
 
     // Check connection - if it fails, output will include the error message
     if (!$conn) {
-        die('<p>Connection failed: <p>' . mysqli_connect_error());
+        die('<p>Connection failed: </p>' . mysqli_connect_error());
     }
     echo '<p>Connected successfully</p>';
     ?>
