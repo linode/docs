@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'LXD is a container hypervisor that manages Linux Containers. Compared to other uses of Linux Containers, LXD manages system containers which each work just like typical servers. This guide shows how to setup a reverse proxy in LXD 3 so that it is possible to host many websites in LXD system containers.'
+description: 'LXD is a container hypervisor that manages Linux Containers. Compared to other uses of Linux Containers, LXD manages system containers which each work just like typical servers. This guide shows how to set up a reverse proxy in LXD 3 so that it is possible to host many websites in LXD system containers.'
 keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtual machine", "virtualization"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-13
@@ -26,7 +26,13 @@ external_resources:
 
 ## Introduction
 
-[LXD](https://linuxcontainers.org/lxd/) (pronounced "Lex-Dee") is a system container manager build on top of Linux Containers (LXC) and is supported by [Canonical](https://canonical.com). The goal of LXD is to provide an experience similar to a virtual machine but through containerization rather than hardware virtualization. Compared to Docker for delivering applications, LXD offers nearly full operating-system functionality with additional features such as snapshots, live migrations, and storage management.
+[LXD](https://linuxcontainers.org/lxd/) (pronounced "Lex-Dee") is a system container manager build on top of Linux Containers (LXC) supported by [Canonical](https://canonical.com). The goal of LXD is to provide an experience similar to a virtual machine but through containerization rather than hardware virtualization. Compared to Docker for delivering applications, LXD offers nearly full operating-system functionality with additional features such as snapshots, live migrations, and storage management.
+
+A reverse proxy is a server that sits between internal applications and external clients, forwarding client requests to the appropriate server. While many common applications, such as Node.js, are able to function as servers on their own, they may lack a number of advanced load balancing, security, and acceleration features.
+
+Using NGINX and Apache as reverse proxies enable you to add these features to any application.
+
+
 
 In this guide you will:
 
@@ -44,7 +50,7 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 ### Before You Begin
 
-1.  Complete the [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/docs/applications/containers/beginners-guide-to-lxd/) guide. At the end, the guide instructs you to create a container called `web` with the Apache web server for testing purposes. Remove this container by running the following commands.
+1.  Complete [A Beginner's Guide to LXD: Setting Up an Apache Web Server In a Container](/docs/applications/containers/beginners-guide-to-lxd/). The guide instructs you to create a container called `web` with the Apache web server for testing purposes. Remove this container by running the following commands.
 
         lxc stop web
         lxc delete web
@@ -54,16 +60,16 @@ For this guide LXD version 3.3 or later is needed. Check the version with the fo
 
     lxd --version
 
-If the version is not 3.3 or later, update to the latest version by installing the snap package as instructed in the [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/docs/applications/containers/beginners-guide-to-lxd/) guide and then use the following command:
+If the version is not 3.3 or later, update to the latest version by installing the snap package as instructed in [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/docs/applications/containers/beginners-guide-to-lxd/) and use the following command:
 
     sudo lxd.migrate
 {{</ note >}}
 
-2. This guide will use the hostnames `apache1.example.com` and `nginx.example.com` for the two example websites. Replace these names with hostnames that you own and setup their DNS entries to point them to the IP address of the server that you created. For help with DNS see our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
+2. This guide will use the hostnames `apache1.example.com` and `nginx.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
 
 ## Creating the Containers
 
-1.  Create two containers called `apache1` and `nginx1`, one with the Apache web server and another with the NGINX web server, respectively. For any additional websites, you can create new containers with your favorite web server software.
+1.  Create two containers called `apache1` and `nginx1`, one with the Apache web server and another with the NGINX web server, respectively. For any additional websites, you may create new containers with your chosen web server software.
 
         lxc launch ubuntu:18.04 apache1
         lxc launch ubuntu:18.04 nginx1
@@ -90,13 +96,13 @@ If the version is not 3.3 or later, update to the latest version by installing t
 +---------+---------+---------------------+-----------------------------------------------+------------+-----------+
 {{< /output >}}
 
-    There are three containers, all in the *RUNNING* state, and each has their own private IP address. Take note of the IP addresses (both IPv4 and IPv6) for the container `proxy`. You will need them when you configure the `proxy` container in a later section.
+    There are three containers, all in the *RUNNING* state – each with their own private IP address. Take note of the IP addresses (both IPv4 and IPv6) for the container `proxy`. You will need them to configure the `proxy` container in a later section.
 
-    You have created the containers. In the following sections, you will setup the web server software in the `apache1` and `nginx1` containers. Then, you will setup the `proxy` container so that the web servers are accessible from the Internet.
+    Now that the containers have been created, the following steps will detail how to set up the web server software in the `apache1` and `nginx1` containers, and the `proxy` container so that the web servers are accessible from the internet.
 
 ### Configuring the Apache Web Server Container
 
-When using a reverse proxy in front of a web server, the web server does not know the IP addresses of visitors. The web server only sees the IP address of the reverse proxy. However, each web server has a way to identify the real remote IP address of a visitor. For Apache, this is performed with the Remote IP Apache module. For the module to work, the reverse proxy must be configured to pass the information regarding the remote IP addresses.
+When using a reverse proxy in front of a web server, the web server does not know the IP addresses of visitors. The web server only sees the IP address of the reverse proxy. However, each web server has a way to identify the real remote IP address of a visitor. For Apache, this is performed with the Remote IP Apache module. For the module to work, the reverse proxy must be configured to pass the remote IP address' information.
 
 1.  Start a shell in the `apache1` container.
 
@@ -117,10 +123,10 @@ RemoteIPHeader X-Real-IP
 RemoteIPTrustedProxy 10.10.10.28 fd42:67a4:b462:6ae2:216:3eff:fe00:252e
 {{</ file >}}
 
-    You can use the `nano` text editor, by running the command `sudo nano /etc/apache2/conf-available/remoteip.conf`. Note, these are the IP addresses of the `proxy` container shown earlier, for both IPv4 and IPv6. Replace these with the IPs from your `lxc list` output.
+    You can use the `nano` text editor by running the command `sudo nano /etc/apache2/conf-available/remoteip.conf`. Note, these are the IP addresses of the `proxy` container shown earlier, for both IPv4 and IPv6. Replace these with the IPs from your `lxc list` output.
 
     {{< note >}}
-Instead of specifying the IP addresses, you can also use the hostname, `proxy.lxd`. However, the RemoteIP Apache module is peculiar when using the hostname and will use only one of the two IP addresses (either IPv4 or IPv6), which means that the Apache web server will not know the real source IP address for some connections. By listing explicitly both IPv4 and IPv6 addresses, you can be certain that RemoteIP will successfully accept the source IP information from all connections of the reverse proxy.
+Instead of specifying the IP addresses, you can also use the hostname `proxy.lxd`. However, the RemoteIP Apache module is peculiar when using the hostname and will use only one of the two IP addresses (either IPv4 or IPv6), which means the Apache web server will not know the real source IP address for some connections. By listing explicitly both IPv4 and IPv6 addresses, you can be certain that RemoteIP will successfully accept the source IP information from all connections of the reverse proxy.
 {{< /note >}}
 
 1. Enable the new `remoteip.conf` configuration.
@@ -147,7 +153,7 @@ systemctl restart apache2
 
         sudo nano /var/www/html/index.html
 
-    Change the line "It works!" (line number 224) to "It works inside a LXD container!". Then, save and exit.
+    Change the line "It works!" (line number 224) to "It works inside a LXD container!" Save and exit.
 
 1. Restart the Apache web server.
 
@@ -157,11 +163,11 @@ systemctl restart apache2
 
         exit
 
-You have created and configured the Apache web server. The server is not yet accessible from the Internet. It will become accessible after you configure the `proxy` container in a following section.
+You have created and configured the Apache web server, but the server is not yet accessible from the Internet. It will become accessible after you configure the `proxy` container in a later section.
 
 ### Creating the NGINX Web Server Container
 
-Just like Apache, when using a reverse proxy in front of a web server, NGINX does not know the IP addresses of visitors. It only sees the IP address of the reverse proxy instead. Each web server software has a way to identify the real remote IP address of a visitor and in the case of the NGINX web server, this is performed with the Real IP module. For the module to work, the reverse proxy is configured accordingly to pass the information regarding the remote IP addresses.
+Like Apache, NGINX does not know the IP addresses of visitors when using a reverse proxy in front of a web server. It only sees the IP address of the reverse proxy instead. Each NGINX web server software can identify the real remote IP address of a visitor with the Real IP module. For the module to work, the reverse proxy must be configured accordingly to pass the information regarding the remote IP addresses.
 
 1.  Start a shell in the `nginx1` container.
 
@@ -182,7 +188,7 @@ real_ip_header    X-Real-IP;
 set_real_ip_from  proxy.lxd;
 {{</ file >}}
 
-    You can use the `nano` text editor, by running the command `sudo nano /etc/nginx/conf.d/real-ip.conf`.
+    You can use the `nano` text editor by running the command `sudo nano /etc/nginx/conf.d/real-ip.conf`.
 
     {{< note >}}
 You have specified the hostname of the reverse proxy, `proxy.lxd`. Each LXD container gets automatically a hostname, which is the name of the container plus the suffix `.lxd`. By specifying the `set_real_ip_from` field with `proxy.lxd`, you are instructing the NGINX web server to accept the real IP address information for each connection, as long as that connection originates from `proxy.lxd`. The real IP address information will be found in the HTTP header `X-Real-IP` in each connection.
@@ -192,7 +198,7 @@ You have specified the hostname of the reverse proxy, `proxy.lxd`. Each LXD cont
 
         sudo nano /var/www/html/index.nginx-debian.html
 
-    Change the line "Welcome to nginx!" (line number 14) to "Welcome to nginx running in a LXD system container!". Then, save and exit.
+    Change the line "Welcome to nginx!" (line number 14) to "Welcome to nginx running in a LXD system container!". Save and exit.
 
 1. Restart the NGINX web server.
 
@@ -202,11 +208,11 @@ You have specified the hostname of the reverse proxy, `proxy.lxd`. Each LXD cont
 
         exit
 
-You have created and configured the NGINX web server. The server is not accessible yet from the Internet. It will become accessible after you configure the `proxy` container in the next section.
+You have created and configured the NGINX web server, but the server is not accessible yet from the Internet. It will become accessible after you configure the `proxy` container in the next section.
 
 ## Setting up the Reverse Proxy
 
-In this section you will configure the container `proxy`. You will install NGINX and setup it up as a reverse proxy, and add the appropriate LXD *proxy device* in order to expose both ports 80 and 443 of the reverse proxy to the Internet.
+In this section you will configure the container `proxy`. You will install NGINX and set it up as a reverse proxy, then add the appropriate LXD *proxy device* in order to expose both ports 80 and 443 to the internet.
 
 1. Add LXD **proxy devices** to redirect connections from the internet to ports 80 (HTTP) and 443 (HTTPS) on the server to the respective ports at the `proxy` container.
 
@@ -230,7 +236,7 @@ Device myport443 added to proxy
 | `proxy_protocol=true` | Request to enable the PROXY protocol so that the reverse proxy will get the originating IP address from the proxy device. |
 
     {{< note >}}
-If you want to remove a proxy device, you can use `lxc config device remove`. If you want to remove the device above called `myport80` you would do it by running the following command:
+If you want to remove a proxy device, use `lxc config device remove`. If you want to remove the above device `myport80`, run the following command:
 
     lxc config device remove proxy myport80
 
@@ -253,9 +259,9 @@ Where proxy is the name of the container, and myport80 is the name of the device
 
         logout
 
-### Setting up the Apache Web Server in the Reverse Proxy
+### Direct Traffic to the Apache Web Server From the Reverse Proxy
 
-The reverse proxy container is running and the NGINX package has been installed. To work as a reverse proxy, we add the appropriate website configuration so that NGINX can identify (with `server_name` below) the appropriate hostname, and then pass (with `proxy_pass` below) the connection to the appropriate LXD container.
+The reverse proxy container is running and the NGINX package has been installed. To work as a reverse proxy, add the appropriate website configuration so that NGINX can identify (with `server_name` below) the appropriate hostname, and then pass (with `proxy_pass` below) the connection to the appropriate LXD container.
 
 1.  Start a shell in the `proxy` container.
 
@@ -281,17 +287,17 @@ server {
 }
 {{</ file >}}
 
-    You can run `sudo nano /etc/nginx/sites-available/apache1.example.com` to open up a text editor to add the configuration. Note, in this case you only need to edit the `server_name` to be the hostname of the website.
+    You can run `sudo nano /etc/nginx/sites-available/apache1.example.com` to open up a text editor and add the configuration. Note, in this case you only need to edit the `server_name` to be the hostname of the website.
 
 3.  Enable the website.
 
         sudo ln -s /etc/nginx/sites-available/apache1.example.com /etc/nginx/sites-enabled/
 
-4.  Restart the NGINX reverse proxy. By restarting the service, NGINX will read and apply the new site instructions that you have just added into `/etc/nginx/sites-enabled`.
+4.  Restart the NGINX reverse proxy. By restarting the service, NGINX will read and apply the new site instructions just added to `/etc/nginx/sites-enabled`.
 
         sudo systemctl reload nginx
 
-5.  Exit from the proxy container and return back to the host.
+5.  Exit the proxy container and return back to the host.
 
         logout
 
@@ -300,12 +306,12 @@ server {
     [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
     {{< note >}}
-If you look at the Apache access.log file (default file `/var/log/apache2/access.log`), you will notice that it still shows the private IP address of the `proxy` container instead of the real IP address. This issue is specific to the Apache web server and has to do with the way that the server prints the logs. Other software that you install on the web server will be able to use the real IP. To fix this though the Apache logs, see the section [Troubleshooting](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
+If you look at the Apache access.log file (default file `/var/log/apache2/access.log`), it will still show the private IP address of the `proxy` container instead of the real IP address. This issue is specific to the Apache web server and has to do with how the server prints the logs. Other software on the web server will be able to use the real IP. To fix this through the Apache logs, see the section [Troubleshooting](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
 {{< /note >}}
 
-### Setting up the NGINX Web Server in the Reverse Proxy
+### Direct Traffic to the NGINX Web Server From the Reverse Proxy
 
-The reverse proxy container is running and the `NGINX` package has been installed. To work as a reverse proxy, you will add the appropriate website configuration so that `NGINX` can identify (with `server_name` below) the appropriate hostname, and then pass (with `proxy_pass` below) the connection to the appropriate LXD container with the actual web server software.
+The reverse proxy container is running and the `NGINX` package has been installed. To work as a reverse proxy, you will add the appropriate website configuration so `NGINX` can identify (with `server_name` below) the appropriate hostname, and then pass (with `proxy_pass` below) the connection to the appropriate LXD container with the actual web server software.
 
 1.  Start a shell in the `proxy` container.
 
@@ -341,7 +347,7 @@ server {
 
         sudo systemctl reload nginx
 
-5.  Exit from the proxy container and return back to the host.
+5.  Exit the proxy container and return back to the host.
 
         logout
 
@@ -371,15 +377,15 @@ server {
      Reading package lists... Done
 {{< /output >}}
 
-1.  Install the following packages to add support to creating Let's Encrypt certificates and auto-configuring the NGINX reverse proxy to use these certificates. These two packages are pulled from the repository that we have just added.
+1.  Install the following two packages to a) support the creation of Let's Encrypt certificates; and b) auto-configure the NGINX reverse proxy to use Let's Encrypt certificates. The packages are pulled from the newly-created repository.
 
         sudo apt-get install certbot python-certbot-nginx
 
     {{< note >}}
-We are now configuring the reverse proxy to act also as a *TLS Termination Proxy*. Any HTTPS configuration is only found in the `proxy` container. By doing so, we do not need to perform any tasks inside the web server containers relating to certificates and Let's Encrypt.
+This configures the reverse proxy to also act as a *TLS Termination Proxy*. Any HTTPS configuration is only found in the `proxy` container. By doing so, it is not necessary to perform any tasks inside the web server containers relating to certificates and Let's Encrypt.
 {{< /note >}}
 
-1.  Run `certbot` as root with the `--nginx` parameter in order to perform the auto-configuration of Let's Encrypt for the first website. You will be asked to supply a valid email address to be used to send you urgent renewal and security notices. You will then be asked to accept the Terms of Service and subsequently whether you want to let the Electronic Frontier Foundation to keep in touch with you. Next, you are asked which website you are activating HTTPS for. Finally, you are asked whether you want to setup a facility that automatically redirects HTTP connections to HTTPS connections.
+1.  Run `certbot` as root with the `--nginx` parameter in order to perform the auto-configuration of Let's Encrypt for the first website. You will be asked to supply a valid email address for urgent renewal and security notices. You will then be asked to accept the Terms of Service and whether you would like to be contacted by the Electronic Frontier Foundation in the future. Next, you will provide the website for which you are activating HTTPS. Finally, you can choose to set up a facility that automatically redirects HTTP connections to HTTPS connections.
 
         sudo certbot --nginx
 
@@ -510,7 +516,7 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 {{< /output >}}
 
-1.  After you have added all websites, perform a dry run in order to test the renewal of the certificates. Note in the dry run that all your websites are updating successfully. By doing so, you can be confident that the automated facility will be able to update the certificates for you without further effort from you.
+1.  After adding all websites, perform a dry run in order to test the renewal of the certificates. Check that all websites are updating successfully to ensure the automated facility will update the certificates without further effort.
 
         sudo certbot renew --dry-run
 
@@ -572,7 +578,7 @@ IMPORTANT NOTES:
 The `certbot` package adds a *systemd timer* in order to activate the automated renewal of Let's Encrypt certificates. You can view the details of this timer by running `systemctl list-timers`.
 {{< /note >}}
 
-1. The certbot tool edits and changes the NGINX configuration files of your websites. In doing so, currently certbot does not obey our initial `listen` directive (`listen 80 proxy_protocol;`) and does not add the `proxy_protocol` parameter to the newly added `listen 443 ssl;` lines. You need to edit the configuration files for each website and append "proxy_protocol" to each "listen 443 ssl;" line.
+1. The certbot tool edits and changes the NGINX configuration files of your websites. In doing so, certbot does not obey initial `listen` directive (`listen 80 proxy_protocol;`) and does not add the `proxy_protocol` parameter to the newly added `listen 443 ssl;` lines. You must edit the configuration files for each website and append "proxy_protocol" to each "listen 443 ssl;" line.
 
         sudo nano /etc/nginx/sites-enabled/apache1.example.com
         sudo nano /etc/nginx/sites-enabled/nginx1.example.com
@@ -583,7 +589,7 @@ listen [::]:443 ssl proxy_protocol; # managed by Certbot
 {{< /output >}}
 
     {{< note >}}
-Each website configuration file has two pairs of `listen` directives, HTTP and HTTPS respectively. The first is the original pair for HTTP we have added in a previous section. The second pair is the one added by certbot for HTTPS. These are pairs because they they cover both IPv4 and IPv6. The notation `[::]` refers to IPv6. When adding the parameter `proxy_protocol`, add it before the `;` on each line as shown above.
+Each website configuration file has two pairs of `listen` directives: HTTP and HTTPS, respectively. The first is the original pair for HTTP that was added in a previous section. The second pair was added by certbot for HTTPS. These are pairs because they they cover both IPv4 and IPv6. The notation `[::]` refers to IPv6. When adding the parameter `proxy_protocol`, add it before the `;` on each line as shown above.
 {{< /note >}}
 
 1.  Restart NGINX.
@@ -605,15 +611,15 @@ An error occurred during a connection to apache1.example.com. SSL received a rec
     Please contact the website owners to inform them of this problem.
 {{< /output >}}
 
-This error is caused when NGINX reverse proxy in the `proxy` container does not have the `proxy_protocol` parameter in the `listen 443` directives. Without the parameter, the reverse proxy does not consume the *PROXY protocol* information before it performs the HTTPS work. Mistakenly, it passes the PROXY protocol information to the HTTPS module, hence the *record too long* error.
+This error is caused when the NGINX reverse proxy in the `proxy` container does not have the `proxy_protocol` parameter in the `listen 443` directives. Without the parameter, the reverse proxy does not consume the *PROXY protocol* information before it performs the HTTPS work. It mistakenly passes the PROXY protocol information to the HTTPS module, hence the *record too long* error.
 
 Follow the instructions in the previous section and add `proxy_protocol` to all `listen 443` directives. Finally, restart NGINX.
 
 ### Error "Unable to connect" or "This site can’t be reached"
 
-When you attempt to connect to the website from your local computer and you get the error *Unable to connect* or *This site can't be reached*, then it is likely that the proxy devices have not been configured.
+When you attempt to connect to the website from your local computer and receive *Unable to connect* or *This site can't be reached* errors, it is likely the proxy devices have not been configured.
 
-1.  Run the following command on the host to verify whether LXD is listening and is able to accept connections to ports 80 (HTTP) and 443 (HTTPS).
+1.  Run the following command on the host to verify whether LXD is listening and able to accept connections to ports 80 (HTTP) and 443 (HTTPS).
 
         sudo ss -ltp '( sport = :http || sport = :https )'
 
@@ -622,10 +628,10 @@ The `ss` command is similar to `netstat` and `lsof`. It shows information about 
 * `-l`, to display the listening sockets,
 * `-t`, to display only TCP sockets,
 * `-p`, to show which processes use those sockets,
-* `( sport = :http || sport = :https )`, to show only ports 80 and 443 (HTTP and HTTPS respectively).
+* `( sport = :http || sport = :https )`, to show only ports 80 and 443 (HTTP and HTTPS, respectively).
 {{< /note >}}
 
-In the following output we can verify that both ports 80 and 443 (HTTP and HTTPS respectively) are in the *LISTEN* state. In the last column we verify that the process which is listening, is `lxd` itself.
+In the following output we can verify that both ports 80 and 443 (HTTP and HTTPS, respectively) are in the *LISTEN* state. In the last column we verify that the process listening is `lxd` itself.
 
 {{< output >}}
 State     Recv-Q  Send-Q   Local Address:Port   Peer Address:Port
@@ -633,13 +639,13 @@ LISTEN    0       128                  *:http              *:*       users:(("lx
 LISTEN    0       128                  *:https             *:*       users:(("lxd",pid=1349,fd=7),("lxd",pid=1349,fd=5))
 {{< /output >}}
 
-If you see a process listed other than `lxd`, then you need to stop that service and restart the `proxy` container. By restarting the `proxy` container, LXD will apply the proxy devices again.
+If you see a process listed other than `lxd`, stop that service and restart the `proxy` container. By restarting the `proxy` container, LXD will apply the proxy devices again.
 
 ### The Apache access.log Shows the IP Address of the Proxy Container
 
-You have set up the `apache1` container and you have verified that it is accessible from the Internet. You check the logs at `/var/log/apache2/access.log` and you notice that it still shows the private IP address of the `proxy` container, either the IPv4 or the IPv6 private IP addresses (*10.x.x.x* and ). What went wrong?
+You have set up the `apache1` container and verified that it is accessible from the internet. But the logs at `/var/log/apache2/access.log` still show the private IP address of the `proxy` container, either the IPv4 or the IPv6 private IP addresses (*10.x.x.x* and ). What went wrong?
 
-The default log formats for the printing of the access logs in Apache only print the IP address of the host of the last hop (i.e. the proxy server). This is the **%h** format specifier as shown below.
+The default log formats for printing access logs in Apache only print the IP address of the host of the last hop (i.e. the proxy server). This is the **%h** format specifier as shown below.
 
 {{< output >}}
 LogFormat "%v:%p %h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" vhost_combined
@@ -647,7 +653,7 @@ LogFormat "%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combine
 LogFormat "%h %l %u %t \"%r\" %>s %O" common
 {{< /output >}}
 
-The **%h** must be manually replaced with the **%a** format specifier, which prints the value as returned by the RemoteIP Apache module.
+The **%h** must be manually replaced with the **%a** format specifier, which prints the value as returned by the real RemoteIP Apache module.
 
 {{< output >}}
 LogFormat "%v:%p %a %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" vhost_combined
@@ -659,10 +665,10 @@ LogFormat "%a %l %u %t \"%r\" %>s %O" common
 
     sudo nano /etc/apache2/apache2.conf
 
-2.  Then, reload the Apache web server service.
+2. Reload the Apache web server service.
 
     sudo systemctl reload apache2
 
 ## Next Steps
 
-You have setup a reverse proxy to host many websites on the same server and have installed each website in a separate container. You can install static or dynamic websites in the containers. For dynamic websites you may need additional configuration; check the respective documentation for the setup using a reverse proxy. In addition, you may also use NGINX as a reverse proxy for non-HTTP(S) services.
+You have set up a reverse proxy to host many websites on the same server and installed each website in a separate container. You can install static or dynamic websites in the containers. For dynamic websites, you may need additional configuration; check the respective documentation for setup using a reverse proxy. In addition, you may also use NGINX as a reverse proxy for non-HTTP(S) services.
