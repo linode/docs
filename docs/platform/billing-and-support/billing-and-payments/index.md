@@ -182,13 +182,13 @@ Our services are provided without a contract, so you're free to remove services 
 
 ## Canceling Your Account
 
-You can cancel your account and receive a refund. Here's how:
+You can cancel your account at any time. Please note that when you cancel your account, any uninvoiced balance remaining on your account will be charged to your account's credit card. If you have any positive credit on your account at time of cancellation, then that credit will be used to pay for your uninvoiced balance.
 
-1.  Log in to the [Classic Linode Manager](http://manager.linode.com).
-1.  Click the **Accounts** link.
-1.  At the bottom of the page, select the **Cancel this Account** link. The cancel account webpage appears.
-1.  Select the confirmation checkbox.
-1.  Click the **Cancel this Account Immediately** checkbox.
+1.  Log into [Cloud Manager](https://cloud.linode.com).
+1.  Click the **Accounts** link in the sidebar.
+1.  On the right of the page, select the **Close Account** link.
+1.  A confirmation form will appear. Enter your Linode username in the first field and enter any comments you'd like to leave in the second field.
+1.  Click the **Close Account** button to complete your account cancellation.
 
 Your account will be canceled and all of your services will be deactivated.
 
