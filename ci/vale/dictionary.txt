@@ -16,6 +16,7 @@ Aho
 ahvz
 ajp
 aker
+alexey
 alives
 allmasquerade
 alphanumerics
@@ -678,6 +679,7 @@ kubelet
 kubelets
 kubernetes
 kubespray
+kuznetosv
 lambdabunker
 laravel
 largebiomes
@@ -807,6 +809,7 @@ minification
 minikube
 minimalistic
 minio
+minisockets
 minitest
 misconfiguration
 misconfigurations
@@ -1135,6 +1138,7 @@ respawn
 resque
 restapi
 retpoline
+retrans
 reusability
 reutilize
 richlanguage
