@@ -3,7 +3,7 @@ author:
   name: Ryan Syracuse
   email: rsyracuse@linode.com
 description: 'Getting Started with Dedicated CPU'
-keywords: ["lamp", "migrate", "website migration"]
+keywords: ["cpu", "dedicated cpu", "getting started"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-08-23
 modified_by:
