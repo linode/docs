@@ -28,6 +28,8 @@ external_resources:
 
 [LXD](https://linuxcontainers.org/lxd/) (pronounced "Lex-Dee") is a system container manager build on top of Linux Containers (LXC) and is supported by [Canonical](https://canonical.com). The goal of LXD is to provide an experience similar to a virtual machine but through containerization rather than hardware virtualization. Compared to Docker for delivering applications, LXD offers nearly full operating-system functionality with additional features such as snapshots, live migrations, and storage management.
 
+![Diagram of LXD reverse proxy and web servers](reverse-proxy-lxd-diagram.png "Diagram of LXD reverse proxy and web servers")
+
 In this guide you will:
 
  - [Install and configure containers](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/#creating-the-containers) for both NGINX and Apache web servers.
