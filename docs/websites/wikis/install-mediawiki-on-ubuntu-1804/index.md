@@ -6,44 +6,40 @@ description: 'A guide for getting started with the popular MediaWiki engine for 
 keywords: ["mediawiki", "wiki", "web-applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-applications/wikis/mediawiki/','websites/wikis/mediawiki-engine/']
-modified: 2019-08-23
+modified: 2019-08-24
 modified_by:
   name: Linode
 published: 2009-09-30
-title: Install MediaWiki on Ubuntu 16.04
-deprecated: true
-deprecated_link: '/websites/wikis/install-mediawiki-on-ubuntu-1804/'
+title: Install MediaWiki on Ubuntu 18.04
 external_resources:
  - '[MediaWiki Wiki](http://www.mediawiki.org/wiki/MediaWiki)'
  - '[What is Media Wiki](https://www.mediawiki.org/wiki/Manual:What_is_MediaWiki%3F)'
  - '[Media Wiki Extensions Blog](https://phabricator.wikimedia.org/source/extensions/browse/)'
 ---
 
-![mediawiki Banner](MediaWiki.jpg)
 
 MediaWiki is a popular, free wiki software package. It's the same software Wikipedia uses. It is fully dynamic and runs on a LAMP stack, taking advantage of the PHP language and the MySQL database backend. With easy installation and configuration, MediaWiki is a good solution when you need a familiar, full-featured, dynamic wiki engine.
 
-This guide assumes that you already have a working [LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04) running on Ubuntu. Your web accessible `DocumentRoot` should be located in `/var/www/html/example.com/public_html/`. You should be connected to your server via SSH and logged in as root.
+This guide assumes that you already have a working [LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04) running on Ubuntu. Your web accessible `DocumentRoot` should be located in `/var/www/html/example.com/public_html/`. You should be connected to your server via SSH and logged in as root.
 
 ## Download and Unpack MediaWiki
 
-1.  Change your working directory to Apache's `DocumentRoot` and download the latest release of MediaWiki. As of this writing, the latest stable release of MediaWiki is version 1.29.0.
+1.  Change your working directory to Apache's `DocumentRoot` and download the latest release of MediaWiki. As of this writing, the latest stable release of MediaWiki is version 1.33.0.
 
         cd /var/www/html/example.com/
-        sudo curl -O https://releases.wikimedia.org/mediawiki/1.29/mediawiki-1.29.0.tar.gz
+        sudo curl -O https://releases.wikimedia.org/mediawiki/1.33/mediawiki-1.33.0.tar.gz
 
 You will want to check for the latest version of this software regularly and upgrade to avoid allowing your site to become vulnerable to known security bugs. You can find the download location for the latest release by visiting the [MediaWiki homepage](http://www.mediawiki.org/wiki/MediaWiki).
 
 2.  Decompress the package:
 
-        sudo tar -xvf mediawiki-1.29.0.tar.gz
+        sudo tar -xvf mediawiki-1.33.0.tar.gz
 
-3.  Move the uncompressed `mediawiki-1.29.0` directory into your site's `public_html/` folder, renaming the directory to `mediawiki/` in the process.
+3.  Move the uncompressed `mediawiki-1.33.0` directory into your site's `public_html/` folder, renaming the directory to `mediawiki/` in the process.
 
-        sudo mv mediawiki-1.29.0/ public_html/mediawiki/
+        sudo mv mediawiki-1.33.0/ public_html/mediawiki/
 
 The name of the directory beneath the `public_html/` will determine the path to your wiki. In this case, the wiki would be located at `example.com/mediawiki/`. You can copy the wiki to any publicly accessible location in the `public_html/` hierarchy.
-
 
 ### Configure MySQL
 
