@@ -13,7 +13,7 @@ published: 2018-05-04
 title: Boot a Linode from a Block Storage Volume
 ---
 
-![How to Use Block Storage with Your Linode](block-storage-title-graphic.png)
+![Boot from a Block Storage Volume](block-storage-title-graphic.png)
 
 <!-- ![Boot a Linode from a Block Storage Volume](boot-linode-block-storage-title.png "Boot a Linode from a Block Storage Volume Title Graphic") -->
 
