@@ -30,9 +30,9 @@ external_resources:
 
 A reverse proxy is a server that sits between internal applications and external clients, forwarding client requests to the appropriate server. While many common applications, such as Node.js, are able to function as servers on their own, they may lack a number of advanced load balancing, security, and acceleration features.
 
-Using NGINX and Apache as reverse proxies enable you to add these features to any application.
+This guide explains the creation of a reverse proxy in an LXD container in order to host multiple websites, each in their own additional containers. You will utilize NGINX and Apache web servers, while also relying on NGINX as a reverse proxy.
 
-
+Please refer to the following diagram to understand the reverse proxy created in this guide.
 
 ![Diagram of LXD reverse proxy and web servers](reverse-proxy-lxd-diagram.png "Diagram of LXD reverse proxy and web servers")
 
