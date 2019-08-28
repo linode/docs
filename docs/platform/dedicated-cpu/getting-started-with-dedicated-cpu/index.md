@@ -16,10 +16,7 @@ This guide will serve as a brief introduction into what a Dedicated CPU Linode i
 
 ## What is a Dedicated CPU Linode?
 
-Normally when creating a Linode via our standard plan, you are paying for access to virtualized CPU cores, which in reality are allocated to you from a host's physical CPU. While a standard plan is designed to be both secure and to maximize performance, the reality of a shared virtualized environment is that your processes are scheduled to use the same physical CPU cores as other customers, which equates to a level of competition that can result in higher _CPU steal_, or a higher wait time from the underlying hypervisor to the physical CPU.
-
-Dedicated CPU Linodes would have access to entire physical CPU cores, and would be exempt from any competition for CPU resources and potential problems that could come up for this reason. With a Dedicated CPU Linode, no other Linodes will be able to have any processes on the same cores that you're using, and depending on your workload, you can experience an increase in performance.
-
+A dedicated CPU Linode gives you access to entire physical CPU cores accessible only by your Linode.
 While a standard plan is a good fit for most use cases, a Dedicated CPU Linode can be recommended for a number of workloads related to high and constant CPU processing. A few of these are as follows:
 
 - [CI/CD](https://www.linode.com/docs/development/ci/introduction-ci-cd/) toolchains and build servers
