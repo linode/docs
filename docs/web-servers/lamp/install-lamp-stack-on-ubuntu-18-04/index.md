@@ -75,7 +75,7 @@ If you prefer not to install the bundled packages via Tasksel, you can instead i
 
 ### Apache
 
-1. The `KeepAlive` setting allows Apache to better utilize server-side memory, reducing latency for users on the hosted site. `KeepAlive` will make a website faster if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request.
+1. The `KeepAlive` setting allows Apache to better utilize server-side memory, reducing latency for users on the hosted site. `KeepAlive` makes a website faster if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request.
 
     Open the `apache2.conf` Apache config file and adjust the `KeepAlive` setting:
 
