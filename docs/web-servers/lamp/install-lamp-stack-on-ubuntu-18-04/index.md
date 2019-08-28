@@ -106,13 +106,13 @@ The `MaxKeepAliveRequests` setting controls the maximum number of requests durin
 
     a. Check the ports that are enabled for `Apache Full` Profile:
 
-          sudo ufw app info "Apache Full"
+        sudo ufw app info "Apache Full"
 
        Ports `80` and `443` should be listed as enabled for `Apache Full` profile.
 
     b. To allow incoming HTTP and HTTPS traffic for `Apache Full` profile:
 
-          sudo ufw allow in "Apache Full"     
+        sudo ufw allow in "Apache Full"     
 
 
 1. Disable the event module and enable prefork:
@@ -152,7 +152,7 @@ You can set up virtual hosts several ways, and the following steps outline the r
 {{< /file >}}
 
     {{< note >}}
-The file example above has all comment sections removed for brevity. Keep or remove the commented areas as you see fit.
+    The file example above has all comment sections removed for brevity. Keep or remove the commented areas as you see fit.
 
 The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
 {{< /note >}}
@@ -167,11 +167,11 @@ Make sure that you do not put a space after the comma between `public_html` and 
 
 1.  Assign ownership of `public_html` directory to the `$USER` environment variable:
 
-          sudo chown -R $USER:$USER /var/www/html/example.com/public_html
+        sudo chown -R $USER:$USER /var/www/html/example.com/public_html
 
 1. Check that the permissions are correct:
 
-          sudo chmod -R 755 /var/www/html/example.com/public_html       
+        sudo chmod -R 755 /var/www/html/example.com/public_html       
 
 1.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
 
