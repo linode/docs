@@ -112,7 +112,7 @@ The `MaxKeepAliveRequests` setting controls the maximum number of requests durin
 
     b. To allow incoming HTTP and HTTPS traffic for `Apache Full` profile:
 
-        sudo ufw allow in "Apache Full"     
+        sudo ufw allow in "Apache Full"
 
 
 1. Disable the event module and enable prefork:
@@ -171,7 +171,7 @@ Make sure that you do not put a space after the comma between `public_html` and 
 
 1. Check that the permissions are correct:
 
-        sudo chmod -R 755 /var/www/html/example.com/public_html       
+        sudo chmod -R 755 /var/www/html/example.com/public_html
 
 1.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
 
