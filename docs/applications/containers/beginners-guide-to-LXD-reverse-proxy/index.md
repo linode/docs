@@ -67,7 +67,7 @@ If the version is not 3.3 or later, update to the latest version by installing t
     sudo lxd.migrate
 {{</ note >}}
 
-2. This guide will use the hostnames `apache1.example.com` and `nginx.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
+2. This guide will use the hostnames `apache1.example.com` and `nginx1.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
 
 ## Creating the Containers
 
@@ -621,9 +621,9 @@ Follow the instructions in the previous section and add `proxy_protocol` to all 
 
 When you attempt to connect to the website from your local computer and receive *Unable to connect* or *This site can't be reached* errors, it is likely the proxy devices have not been configured.
 
-1.  Run the following command on the host to verify whether LXD is listening and able to accept connections to ports 80 (HTTP) and 443 (HTTPS).
+Run the following command on the host to verify whether LXD is listening and is able to accept connections to ports 80 (HTTP) and 443 (HTTPS).
 
-        sudo ss -ltp '( sport = :http || sport = :https )'
+    sudo ss -ltp '( sport = :http || sport = :https )'
 
 {{< note >}}
 The `ss` command is similar to `netstat` and `lsof`. It shows information about network connections. In this case, we use it to verify whether there is a service on ports 80 and 443, and which service it is.
@@ -645,9 +645,9 @@ If you see a process listed other than `lxd`, stop that service and restart the 
 
 ### The Apache access.log Shows the IP Address of the Proxy Container
 
-You have set up the `apache1` container and verified that it is accessible from the internet. But the logs at `/var/log/apache2/access.log` still show the private IP address of the `proxy` container, either the IPv4 or the IPv6 private IP addresses (*10.x.x.x* and ). What went wrong?
+You have set up the `apache1` container and verified that it is accessible from the internet. But the logs at `/var/log/apache2/access.log` still show the private IP address of the `proxy` container, either the private IPv4 (*10.x.x.x*) or the private IPv6 addresses. What went wrong?
 
-The default log formats for printing access logs in Apache only print the IP address of the host of the last hop (i.e. the proxy server). This is the **%h** format specifier as shown below.
+The default log formats for printing access logs in Apache only print the IP address of the host of the last hop (i.e. the proxy server). This is the `%h` format specifier as shown below.
 
 {{< output >}}
 LogFormat "%v:%p %h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" vhost_combined
@@ -655,7 +655,7 @@ LogFormat "%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combine
 LogFormat "%h %l %u %t \"%r\" %>s %O" common
 {{< /output >}}
 
-The **%h** must be manually replaced with the **%a** format specifier, which prints the value as returned by the real RemoteIP Apache module.
+The `%h` must be manually replaced with the `%a` format specifier, which prints the value as returned by the real RemoteIP Apache module.
 
 {{< output >}}
 LogFormat "%v:%p %a %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" vhost_combined
@@ -665,11 +665,11 @@ LogFormat "%a %l %u %t \"%r\" %>s %O" common
 
 1.  Run the following command in the `apache1` container to edit the configuration file `httpd.conf` and perform the change from `%h` to `%a`.
 
-    sudo nano /etc/apache2/apache2.conf
+        sudo nano /etc/apache2/apache2.conf
 
 2. Reload the Apache web server service.
 
-    sudo systemctl reload apache2
+        sudo systemctl reload apache2
 
 ## Next Steps
 
