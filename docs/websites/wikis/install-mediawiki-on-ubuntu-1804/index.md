@@ -6,10 +6,9 @@ description: 'A guide for getting started with the popular MediaWiki engine for 
 keywords: ["mediawiki", "wiki", "web-applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-applications/wikis/mediawiki/','websites/wikis/mediawiki-engine/']
-modified: 2019-08-24
 modified_by:
   name: Linode
-published: 2009-09-30
+published: 2019-08-28
 title: Install MediaWiki on Ubuntu 18.04
 external_resources:
  - '[MediaWiki Wiki](http://www.mediawiki.org/wiki/MediaWiki)'

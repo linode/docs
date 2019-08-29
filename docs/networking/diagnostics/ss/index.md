@@ -5,7 +5,7 @@ author:
 description: 'An introduction to the ss utility.'
 keywords: ["UNIX", "shell", "AWK", "ss", "TCP/IP", "network", "socket"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-07-19
+published: 2019-08-28
 modified_by:
   name: Linode
 title: 'Learning to Use the ss Tool to its Full Potential'

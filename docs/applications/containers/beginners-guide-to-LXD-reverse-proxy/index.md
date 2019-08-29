@@ -5,8 +5,7 @@ author:
 description: 'LXD is a container hypervisor that manages Linux Containers. Compared to other uses of Linux Containers, LXD manages system containers which each work just like typical servers. This guide shows how to set up a reverse proxy in LXD 3 so that it is possible to host many websites in LXD system containers.'
 keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtual machine", "virtualization"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-08-13
-modified: 2019-08-13
+published: 2019-08-28
 modified_by:
   name: Linode
 title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Many Websites in Containers"
