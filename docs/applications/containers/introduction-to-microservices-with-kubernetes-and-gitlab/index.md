@@ -22,8 +22,8 @@ This guide is the first part of a three-part series on using microservices with 
 
 In this guide you will:
 
- - Learn [what are Microservices](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#what-are-microservices).
- - Learn the [advantages](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#advantages) and [disadvantages](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#disadvantages) of a Microservices Architecture over the more traditional Monolithic application.
+ - Learn [what are microservices](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#what-are-microservices).
+ - Learn the [advantages](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#advantages) and [disadvantages](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#disadvantages) of a microservices architecture over the more traditional Monolithic application.
  - [Deploy](/docs/applications/containers/introduction-to-microservices-with-kubernetes-and-gitlab/#deploying-gitlab-as-a-microservices-application) [Gitlab](https://about.gitlab.com/) as a microservices application in [Kubernetes](https://kubernetes.io/).
 
 ## Before You Begin
@@ -38,44 +38,46 @@ In this guide you will:
 
 The term *Microservices Application Architecture* is used to describe a method of building large-scale applications through a number of smaller, interlocking, loosely bound services and components. Every one of these services are referred to as a **microservice** since they are a smaller modular service that together build a larger application.
 
-Consider the architecture of a large online shop or retailer. Previously, the most common option for a large scale application would be to use a *Monolithic Application Architecture*, or a large Multitier architecture which deploys an entire application as a single tier or unit. Below is a diagram portraying the Monolithic version of  this architecture for the online shop:
+Consider the architecture of a large online shop or retailer. Previously, the most common option for a large scale application would be to use a *Monolithic Application Architecture*, or a large Multitier architecture, which deploys an entire application as a single tier or unit. Below is a diagram portraying the Monolithic version of this architecture for the online shop:
 
 ![Monolithic Application](Monilithic.png)
 
- The *Microservices Application Architecture* is in contrast to the more traditional *Monolithic Application Architecture* that deploys the entire application as a single tier or unit. Below is a diagram portraying the same application for our online shop using our Microservices Application Architecture:
+ The *Microservices Application Architecture* is in contrast to the more traditional *Monolithic Application Architecture* that deploys the entire application as a single tier or unit. Below is a diagram portraying the same application for our online shop using our microservices application architecture:
 
 ![Microservice Application](microservice.png)
 
-We can see that the Microservices application is significantly more divided between several of these different microservices, and builds the same application in a more segmented fashion.
+We can see that the microservices application segments the same application for our online shop by dividing it between several different microservices.
 
-While the Microservices architecture is a more modern solution than Monolithic architecture, it is important to note that this does not necessarily make it the ideal solution for every use case, and the benefits are best seen in very large applications.  It can be more difficult to initially set up or transfer over to a microservices architecture, for example, since microservices add a few extra layers of complexity to your configuration usually requiring that containers communicate through an internal API. When considering whether or not to use a Microservice architecture for your use case, it's important to keep in mind a number of factors. Below is a list of common advantages and disadvantages of a Microservice Application on Kubernetes in comparison to a Monolithic approach:
+While the microservices architecture is a more modern solution than Monolithic architecture, it is important to note that this does not necessarily make it the ideal solution for every use case. The benefits are best seen in very large applications.  It can be difficult to initially set up or transfer existing architecture to a microservices architecture since, for example, microservices add extra layers of complexity to a configuration (usually requiring containers to communicate through an internal API). When considering whether or not to use a Microservice architecture for your use case, it's important to keep in mind a number of factors.
+
+Below are common advantages and disadvantages of a microservice application on Kubernetes in comparison to a Monolithic approach:
 
 ### Advantages
 
--   Each service has the potential to be scaled and claim resources independently. This means that the overall resources that your application requires can potentially be significantly reduced overall, and gives each component an independent lifecycle.
+-   Each service has the potential to be scaled and claim resources independently. This means that the overall resources your application requires can potentially be significantly reduced, with each component given an independent lifecycle.
 -   Having multiple independent services means that if one breaks, it is not as likely to bring down your entire application. This will usually increase your application's overall fault tolerance. When relying on third parties, it can help to mitigate potential issues that may be outside of your direct control.
-- Independent services are often easier to understand as smaller pieces than a large overarching monolithic app.  Developers have the ability to work on a specific service or services without being as dependent on the configuration of the application as a whole, often saving development time for large scale applications and allowing developers to choose a language of their choice for any given component.
+- Independent services are often easier to understand as smaller pieces than a large overarching monolithic app.  Developers in microservices architecture can work on a specific service or services without being as dependent on the configuration of the application as a whole; this often saves development time for large scale applications and allows developers to choose a language of their choice for any given component.
 
 ### Disadvantages
 
-- Nearly all of the benefits of a microservices application increase in tandem with the size of the application as a whole. If the application itself is small, the additional services that a microservices application requires can create a situation where your application becomes more difficult to understand instead of decreasing the complexity with little additional benefit.
-- Migrating from a different form of architecture to a Microservices architecture can be time consuming and difficult. This may not make it justified as a short term solution for a legacy application.
+- Nearly all of the benefits of a microservices application increase in tandem with the size of the application as a whole. If the application itself is small, the added complexity of a microservices application may come with little additional benefit.
+- Migrating from a different form of architecture to a microservices architecture can be time-consuming and difficult, and potentially not justifiable as a short-term solution for legacy applications.
 - Each instance of a service must be configured and monitored independently.
-- Microservice applications often implement newer technology that may not be well understood by members of a team.
+- Microservice applications often implement newer technology that may not be well understood by team members.
 
 
 ## Why Microservices on Kubernetes?
 
-[Kubernetes](https://kubernetes.io/) is a powerful modern container orchestration tool that brings a number of additional advantages to a microservices application. Since microservices are best run in containers, Kubernetes handles much of the  creation of and communication between your hardware and the microservices that reside within. Kubernetes can automatically re-create microservices when a failure is detected, and automatically scale your infrastructure to meet any demands on your application and it's individual corresponding microservices. Kubernetes also has the added benefit of supporting the replication of your microservices applications, making your application highly available as a whole, or even just in it's most necessary parts.
+[Kubernetes](https://kubernetes.io/) is a powerful modern container orchestration tool that brings a number of additional advantages to a microservices application. Since microservices are best run in containers, Kubernetes handles much of the creation of and communication between your hardware and the microservices that reside within. Kubernetes can automatically recreate microservices when a failure is detected, and automatically scale your infrastructure to meet any demands on your application and it's individual corresponding microservices. Kubernetes also has the added benefit of supporting the replication of your microservices applications, making your application highly available as a whole, or even just in it's most necessary parts.
 
-The architecture of a Kubernetes Microservices Application will also include the addition of replication for individual services within [pods](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#pods).
+The architecture of a Kubernetes microservices application will also include the addition of replication for individual services within [pods](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#pods).
 
 ## Deploying Gitlab as a Microservices Application
 
-Now that we know what a Microservices Application is and have a basic understanding of how it works, let's deploy a Microservices application that we can use to further understand these concepts in more depth.
+Now that we have a basic understanding of microservices applications and how they work, let's deploy a microservices application that we can use to further comprehend these concepts in more depth.
 
 {{< caution >}}
-The Helm chart used in this guide will create a NodeBalancer and 5 Block Storage volumes (90 GB total) on your account, which if applied will be reflected on any future bills for the hours that they're active.
+The Helm chart used in this guide will create a NodeBalancer and five Block Storage volumes (90 GB total) on your account, which, if applied, will be reflected on any future bills for the hours they are active.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](http://localhost:1313/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{< /caution >}}
@@ -84,8 +86,8 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
         linode-cli k8s-alpha create kentucky --node-type g6-standard-1 --nodes 2 --master-type g6-standard-2 --region us-east --ssh-public-key $HOME/.ssh/id_rsa.pub
 
-- You must have a domain that you own and control with a [A record](https://www.linode.com/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) pointing towards one of your worker nodes.
-- [Helm](https://helm.sh/) Must be installed on your cluster. You can follow the steps in the installation section of our [Installing Apps with Helm](https://www.linode.com/docs/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) guide to complete this.
+- You must have a domain that you own and control with an [A record](https://www.linode.com/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) pointing towards one of your worker nodes.
+- [Helm](https://helm.sh/) must be installed on your cluster. You can follow the steps in the installation section of our [Installing Apps with Helm](https://www.linode.com/docs/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) guide to complete this.
 
 {{< note >}}
 If you'd like to see the Monolithic version of the Gitlab application, follow our guide for [Deploying Gitlab as a One-Click Application](/docs/platform/one-click/deploy-gitlab-with-one-click-apps/)
@@ -94,7 +96,7 @@ If you'd like to see the Monolithic version of the Gitlab application, follow ou
 
 ### Installing Gitlab with Helm
 
-1. To deploy Gitlab as a Microservices application, we'll be using a Helm chart. You can read more about this chart on [Gitlab's Charts Page](https://docs.gitlab.com/charts/).
+1. To deploy Gitlab as a microservices application, we'll be using a Helm chart. You can read more about this chart on [Gitlab's Charts page](https://docs.gitlab.com/charts/).
 
 1. The Gitlab repo needs to be added:
 
@@ -104,11 +106,11 @@ If you'd like to see the Monolithic version of the Gitlab application, follow ou
 
         helm repo update
 
-1. Enter the following command on your control node to begin the installation process, replacing `mydomain.com` with your domain name, the IP address affiliated with your domain following `externalIP`, and `myemail@website.com` with an email address you'd like to use to generate a free SSL certificate using [Let's Encrypt](https://letsencrypt.org/).
+1. Enter the following command on your control node to begin the installation process. Replace `mydomain.com` with your domain name, the IP address affiliated with your domain following `externalIP`, and `myemail@website.com` with an email address you'd like to use to generate a free SSL certificate using [Let's Encrypt](https://letsencrypt.org/).
 
         helm upgrade --install gitlab gitlab/gitlab   --timeout 600 --set global.hosts.domain=mydomain.com --set global.hosts.externalIP=203.0.113.0 --set certmanager-issuer.email=myemail@website.com
 
-1. This will begin the installation process,which we can watch and monitor using kubectl:
+1. This will begin the installation process, which we can watch and monitor using kubectl:
 
         kubectl get pods
 
@@ -157,31 +159,31 @@ gitlab-unicorn-694748c5c9-w47tl                        0/2     Init:2/3         
 
         kubectl get pods | grep gitlab-runner
 
-1. Navigate to the [NodeBalancer](https://cloud.linode.com/nodebalancers) section of the Cloud Manager, and find the IP address of this new resource. The label of the NodeBalancer will be a randomly generated 32 character string, with your worker nodes pre-configured as Backend Linodes.
+1. Navigate to the [NodeBalancer](https://cloud.linode.com/nodebalancers) section of the Cloud Manager and find the IP address of this new resource. The label of the NodeBalancer will be a randomly generated 32 character string, with your worker nodes pre-configured as backend Linodes.
 
-1. If you have a domain set-up to point to one of your worker nodes as instructed above, as your containers come up you should see A records made automatically for each of the subdomains. They should point to your NodeBalancer. If not, you can create them manually.
+1. If you have a domain set-up to point to one of your worker nodes as instructed above, you should see A records made automatically for each of the subdomains as your containers come up. They should point to your NodeBalancer. If not, you can create them manually.
 
   -  minio.example.com
   -  gitlab.example.com
   -  registry.example.com
 
-1. Finally, once all services have initialized, you can navigate to `gitlab.example.com` using the domain name that you configured earlier, and after a few moments, you'll see a login screen for your new Microservices Application.
+1. Finally, once all services have initialized, you can navigate to `gitlab.example.com` using the domain name that you configured earlier, and after a few moments, you'll see a login screen for your new microservices application.
 
 ![Gitlab Login](gitlablogin.png)
 
 ## Troubleshooting
 
-### Gitlab-runner in CrashLoopbackOff Status
+### Gitlab Runner in CrashLoopbackOff Status
 
-If gitlab-runner is in the `CrashLoopbackOff` status, it has most likely timed out before your domains have resolved, and you'll need to delete the pod once domain propagation is completed for the service to restart and confirm your domain is working. You can do this by replacing the randomly generated string following `gitlab-gitlab-runner-` with the string that appeared in the previous command:
+If Gitlab Runner is in the `CrashLoopbackOff` status, it has most likely timed out before your domains have resolved. You will need to delete the Pod once domain propagation is complete in order for the service to restart and confirm your domain is working. You can do this by replacing the randomly generated string following `gitlab-gitlab-runner-` with the string that appeared in the previous command:
 
     kubectl delete pods gitlab-gitlab-runner-dd97f84b-zplq9
 
 ### Pods Stuck in Initialization Status
 
-Other Pods, such as Sidekiq, Unicorn, or other Rails based containers may be stuck in initialization status. This is usually due to them waiting on the dependencies container.
+Other Pods, such as Sidekiq, Unicorn, or other Rails-based containers may be stuck in initialization status. This is usually due to them waiting on the dependencies container.
 
-1. Check the logs of the given Pod. If you see something like the following it's an indication that the migrations haven't completed:
+1. Check the logs of the given Pod. If you see something like the following, it's an indication that the migrations have not been completed:
 
     {{< output >}}
 Checking database connection and schema version
@@ -205,6 +207,11 @@ Codebase version: 20190301182457
 
 ### UPGRADE FAILED: "$name" has no deployed releases
 
-If you get this error when trying to deploy the helm chart after you failed to deploy it once before, you should first purge the failed installation:
+If you get this error when trying to deploy the Helm chart after you failed to deploy it once before, you should first purge the failed installation:
 
     helm delete --purge deploymentname
+
+
+##Join Our Community
+
+[Find answers, ask questions, and help others.](https://www.linode.com/community/questions/)
