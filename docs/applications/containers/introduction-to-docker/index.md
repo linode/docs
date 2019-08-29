@@ -40,7 +40,7 @@ Each Docker container is created from an image. You pull images from a Docker re
 
 ## Dockerfiles
 
-A `dockerfile` is a text file that contains the necessary commands to assemble an image. Once a Dockerfile is written, the administrator uses the `docker build` command to create an image based on the commands within the file. The commands and information within the `dockerfile` can be configured to use specific software versions and dependencies to ensure consistent and stable deployments.
+A `Dockerfile` is a text file that contains the necessary commands to assemble an image. Once a Dockerfile is written, the administrator uses the `docker build` command to create an image based on the commands within the file. The commands and information within the `Dockerfile` can be configured to use specific software versions and dependencies to ensure consistent and stable deployments.
 
 A Dockerfile uses the following commands for building the images:
 
@@ -58,7 +58,7 @@ A Dockerfile uses the following commands for building the images:
 
 Not every command must be used. Below is a working Dockerfile example, using only the `MAINTAINER`, `FROM`, and `RUN` commands:
 
-{{< file "dockerfile" docker >}}
+{{< file "Dockerfile" docker >}}
 MAINTAINER NAME EMAIL
 FROM ubuntu:latest
 RUN apt-get -y update && apt-get -y upgrade && apt-get install -y build-essential

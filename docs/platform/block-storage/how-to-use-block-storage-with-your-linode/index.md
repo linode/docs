@@ -14,8 +14,6 @@ title: How to Use Block Storage with Your Linode
 classic_manager_link: platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/
 ---
 
-![How to Use Block Storage with Your Linode](block-storage-title-graphic.png)
-
 Linode’s Block Storage service allows you to attach additional storage Volumes to your Linode. A single Volume can range from 10 GiB to 10,000 GiB in size and costs $0.10/GiB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to eight Volumes can be attached to a single Linode, be it new or already existing, so you do not need to recreate your server to add a Block Storage Volume.
 
 The Block Storage service is currently available in the Dallas, Fremont, Frankfurt, London, Newark, Tokyo, Toronto, Mumbai, and Singapore data centers.
@@ -137,8 +135,13 @@ The Linodes available in this dropdown menu all share the same region as your Vo
     The Volume still exists on your account and you can see it if you view the **Volumes** page:
 
     [![Volume not attached, but still exists.](bs-cloud-volume-detached-but-still-available-small.png "Volume not attached, but still exists.")](bs-cloud-volume-detached-but-still-available.png)
+
 {{< caution >}}
-To avoid issues with your Linode, remove this line from your `/etc/fstab/` configuration:
+If a volume is currently mounted, detaching it while the Linode is powered on could cause data loss or an unexpected reboot. You can unmount the volume for safe live-detaching using the `umount` command:
+
+    umount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
+
+To avoid additional issues with your Linode, remove the detached volume's line from your `/etc/fstab/` configuration:
 
 `FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2`
 

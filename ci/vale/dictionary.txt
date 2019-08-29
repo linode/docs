@@ -16,6 +16,7 @@ Aho
 ahvz
 ajp
 aker
+alexey
 alives
 allmasquerade
 alphanumerics
@@ -509,6 +510,7 @@ hasn
 hba
 hd0
 hdfs
+healthcheck
 heartbleed
 heroku
 hexo
@@ -677,6 +679,7 @@ kubelet
 kubelets
 kubernetes
 kubespray
+kuznetosv
 lambdabunker
 laravel
 largebiomes
@@ -742,6 +745,7 @@ lubuntu
 lucene
 lugano
 luminus
+lxd
 lxml
 lzma
 lzopio
@@ -806,6 +810,7 @@ minification
 minikube
 minimalistic
 minio
+minisockets
 minitest
 misconfiguration
 misconfigurations
@@ -1134,6 +1139,7 @@ respawn
 resque
 restapi
 retpoline
+retrans
 reusability
 reutilize
 richlanguage
@@ -1429,6 +1435,7 @@ unencrypted
 unexported
 unformatted
 unicast
+uninvoiced
 uniq
 unmanaged
 unmerged
