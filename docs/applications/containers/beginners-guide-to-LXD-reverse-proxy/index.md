@@ -2,13 +2,13 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'LXD is a container hypervisor that manages Linux Containers. Compared to other uses of Linux Containers, LXD manages system containers which each work just like typical servers. This guide shows how to set up a reverse proxy in LXD 3 so that it is possible to host many websites in LXD system containers.'
+description: 'This guide explains how to create a reverse proxy in an LXD container in order to host multiple websites, each in their own additional containers. You will utilize NGINX and Apache web servers, while also relying on NGINX as a reverse proxy.'
 keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtual machine", "virtualization"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-28
 modified_by:
   name: Linode
-title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Many Websites in Containers"
+title: "Set Up a Reverse Proxy in an LXD Container to Host Multiple Websites"
 contributor:
   name: Simos Xenitellis
   link: https://blog.simos.info/
