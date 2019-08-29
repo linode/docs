@@ -6,10 +6,9 @@ description: 'A guide for getting started with the popular MediaWiki engine for 
 keywords: ["mediawiki", "wiki", "web-applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-applications/wikis/mediawiki/','websites/wikis/mediawiki-engine/']
-modified: 2019-08-24
 modified_by:
   name: Linode
-published: 2009-09-30
+published: 2019-08-28
 title: Install MediaWiki on Ubuntu 18.04
 external_resources:
  - '[MediaWiki Wiki](http://www.mediawiki.org/wiki/MediaWiki)'
@@ -29,7 +28,7 @@ This guide assumes that you already have a working [LAMP stack](/docs/web-server
         cd /var/www/html/example.com/
         sudo curl -O https://releases.wikimedia.org/mediawiki/1.33/mediawiki-1.33.0.tar.gz
 
-You will want to check for the latest version of this software regularly and upgrade to avoid allowing your site to become vulnerable to known security bugs. You can find the download location for the latest release by visiting the [MediaWiki homepage](http://www.mediawiki.org/wiki/MediaWiki).
+    You will want to check for the latest version of this software regularly and upgrade to avoid allowing your site to become vulnerable to known security bugs. You can find the download location for the latest release by visiting the [MediaWiki homepage](http://www.mediawiki.org/wiki/MediaWiki).
 
 2.  Decompress the package:
 
@@ -39,7 +38,7 @@ You will want to check for the latest version of this software regularly and upg
 
         sudo mv mediawiki-1.33.0/ public_html/mediawiki/
 
-The name of the directory beneath the `public_html/` will determine the path to your wiki. In this case, the wiki would be located at `example.com/mediawiki/`. You can copy the wiki to any publicly accessible location in the `public_html/` hierarchy.
+    The name of the directory beneath the `public_html/` will determine the path to your wiki. In this case, the wiki would be located at `example.com/mediawiki/`. You can copy the wiki to any publicly accessible location in the `public_html/` hierarchy.
 
 ### Configure MySQL
 

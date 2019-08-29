@@ -5,8 +5,7 @@ author:
 description: 'Deploy NodeBalancers with the Linode Cloud Controller Manager.'
 keywords: ['ccm','cloud','controller','manager','kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-04-25
-modified: 2019-04-25
+published: 2019-08-28
 modified_by:
   name: Linode
 title: "Deploy NodeBalancers with the Linode Cloud Controller Manager"
