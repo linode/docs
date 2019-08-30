@@ -15,7 +15,7 @@ contributor:
 
 ## What is Object Storage?
 
-Object Storage is a method of storing data that differs in a number of ways from Block Storage. Block Storage splits files into small *blocks* of data. Minimal metadata about the contents of the file is stored alongside this data; in general, descriptive metadata must be stored in a separate file or database. In order to use a Block Storage volume it must be attached to a host server, where it acts like a hard drive.
+Object Storage is a method of storing data that differs in a number of ways from [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). Block Storage splits files into small *blocks* of data. Minimal metadata about the contents of the file is stored alongside this data; in general, descriptive metadata must be stored in a separate file or database. In order to use a Block Storage volume it must be attached to a host server, where it acts like a hard drive.
 
 In contrast, Object Storage stores data, called *objects*, in containers, called *buckets*, and each object is given a unique identifier with which it is accessed. In this way, the physical location of the object does not need to be known. These objects are stored alongside rich, configurable metadata that can be used to describe any number of arbitrary properties about the object. Each object has its own URL, so accessing the data is often as simple as issuing an HTTP request, either by visiting the object in a browser or retrieving it through the command line.
 
@@ -43,7 +43,7 @@ Similar to hosting website files, hosting software applications on Object Storag
 
 ### Unstructured Data
 
-Unstructured data is any data that does not fit into a traditional database. Object Storage excels at storing large amounts of unstructured data. With the ability to configure custom metadata for each piece of unstructured data, it is easy to extrapolate useful information from each object and to retrieve objects with similar metadata. Examples of unstructured data include [images, video, audio, and documents](#images-video-audio-and-documents) and [Big Data](#big-data).
+Unstructured data is any data that does not fit into a traditional database. Object Storage excels at storing large amounts of unstructured data. With the ability to configure custom metadata for each piece of unstructured data, it is easy to extrapolate useful information from each object and to retrieve objects with similar metadata. Examples of unstructured data include [images, video, audio, documents,](#images-video-audio-and-documents) and [Big Data](#big-data).
 
 ### Images, Video, Audio, and Documents
 
@@ -55,14 +55,17 @@ Big Data typically describes data sets that are so large and so diverse that it 
 
 ### Artifact Storage
 
-As more and more of the development life cycle becomes automated and tested, more and more artifacts are generated in the process. Object Storage is a great solution for developers looking to store all these artifacts, such as the bulk collection of logs. Sharing these artifacts is as simple as as sharing a URL. If you'd rather these logs stay private, you can also distribute an access key for them.
+As more and more of the development life cycle becomes automated and tested, more and more artifacts are generated in the process. Object Storage is a great solution for developers looking to store all these artifacts, such as the bulk collection of logs. Sharing these artifacts is as simple as sharing a URL. If you'd rather these logs stay private, you can also distribute an access key for them.
 
 ### Cold Storage
 
-Object Storage is significantly cheaper than Block Storage. While Object Storage does incur a cost when retrieving data, the cost benefit for infrequently accessed data is something that should not be glossed over. As well, the outbound data transfer for Linode Object Storage is part of your Linode account's [total transfer pool](/docs/platform/billing-and-support/network-transfer-quota/), which can further reduce costs if you are running Linode instances too.
+Object Storage is in the majority of cases significantly cheaper than Block Storage. While Object Storage can incur a cost when retrieving data, the cost benefit for infrequently accessed data can provide you with an overall cost reduction when compared to similar methods.
 
 Similarly, Object Storage has benefits over [tape storage](https://en.wikipedia.org/wiki/Tape_drive). Tape storage is frequently used for archival purposes, but the read times that come with tape storage are many times more than what you'll find with Object Storage. Special considerations have to be made when transferring tape drive data, such as the ability to ship drives safely across a country. With Object Storage, this data is available through HTTP from anywhere in the world.
 
+{{< note >}}
+The outbound data transfer for Linode Object Storage is part of your Linode account's [total transfer pool](/docs/platform/billing-and-support/network-transfer-quota/), which will reduce or completely eliminate transfer costs for object storage if you are running Linode instances too. When you have expended your allotted transfer pool, you will be billed at a rate of $0.02 per GB for outbound transfers.
+{{< /note >}}
 ### Backups
 
 Databases and other critical data can be easily backed up to Object Storage using a command line client for easier automation. Objects within Object Storage are normally replicated three times, providing resiliency should an error occur with the underlying hardware. Additionally, buckets can be versioned, so that you never lose access to older backups.
