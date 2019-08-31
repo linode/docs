@@ -223,7 +223,7 @@ After configuring your control node, you can communicate with your managed nodes
 
 ## Next Steps
 
-1. Now that you've installed and configured Ansible, you can begin to use Playbooks to manage your Linodes' configurations. Our [Using Ansible Playbooks for Configuration Management](/docs/applications/configuration-management/running-ansible-playbooks/) guide will demonstrate a basic web server set up using an Ansible Playbook.
+1. Now that you've installed and configured Ansible, you can begin to use Playbooks to manage your Linodes' configurations. Our [Automate Server Configuration with Ansible Playbooks](/docs/applications/configuration-management/running-ansible-playbooks/) guide will demonstrate a basic web server set up using an Ansible Playbook.
 
 1. You can also reference a number of [example playbooks](https://github.com/ansible/ansible-examples) on Ansible's GitHub account to a see a variety of implementations.
 
