@@ -29,6 +29,10 @@ Databases require quick read/write operations and, with the ever increasing dema
 
 Block Storage Volumes can be unmounted just as easily as they are mounted, meaning that it's possible to create hot-swappable drives with Block Storage. This is useful if you need to perform the same kind of tasks across a fleet of servers with the same data.
 
+{{< caution >}}
+While Block Storage is perfectly capable of hot swapping, it is important to follow the set of directions outlined in our [Using Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode) guide, or there is a risk of data loss.
+{{< /caution >}}
+
 ### Container Storage
 
 Containers, like those created with Docker or Kubernetes Pods, can benefit from having some type of persistent storage. This helps to keep the container size down, and makes it easy to maintain data despite the lifecycle of the container or Pod. If you are using Docker, you can use the [Docker Volume Driver for Linode](https://github.com/linode/docker-volume-linode) to create a Docker volume from a Block Storage Volume. Similarly, if you are using Kubernetes you can use the [Container Storage Interface (CSI) Driver for Linode Block Storage](https://github.com/linode/linode-blockstorage-csi-driver) to create a Block Storage Volume backed Persistent Volume Claim.
@@ -40,6 +44,10 @@ In a climate where ownership over one's own data is an important need for many i
 ### Storage for Media Library Applications
 
 There are a few media library applications, most notably [Plex](https://www.plex.tv/), that offer media streaming functionality to internet enabled devices. The media libraries these applications serve can quickly grow in size depending on the number of movie and audio files they house. Using a Block Storage Volume can provide you with storage capable of growing with the needs of your library.
+
+{{< note >}}
+For more information on using Plex with a block storage volume, see our [Using a Block Storage Volume with Plex](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode) guide.
+{{< /note >}}
 
 ### Ephemeral Storage
 
