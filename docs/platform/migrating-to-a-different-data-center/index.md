@@ -33,7 +33,7 @@ Migrating your Linode to a new datacenter will result in a number of changes tha
 
 ## Migrating to a New Data Center
 
-![migrationdc.gif](migrate-dc.gif)
+![migrationdc.gif](migrationdc.gif)
 
 1. Log in to the [Cloud Manager](https://www.cloud.linode.com)
 
