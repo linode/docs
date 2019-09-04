@@ -79,7 +79,7 @@ Ingress objects in Kubernetes allow for name based virtual hosting and HTTP rout
 
 ### Free and Open Source
 
-Kubernetes is free and open source software (FOSS). While initially developed by Google, Kubernetes has been democratized and is now under the charter of the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/). Kubernetes is actively developed and maintained, with a number of high-profile companies championing its cause, all but ensuring it will have a long and impactful tenure as the de-facto container orchestration solution.
+Kubernetes is free and open source software (FOSS). While initially developed by Google, Kubernetes has been democratized and is now under the charter of the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/). Kubernetes is actively developed and maintained, with a number of high-profile companies championing its cause, all but ensuring it will have a long and influential tenure as the de-facto container orchestration solution.
 
 ### Scalability
 
