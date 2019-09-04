@@ -15,7 +15,7 @@ contributor:
 
 ## What is Kubernetes
 
-Kubernetes is a container orchestration system that was initially designed by Google to help scale containerized applications in the cloud. Kubernetes can manage the lifecycle of containers, creating and destroying them depending on the needs of the application, as well as providing a host of other features. In the past few years Kubernetes has become one of the most talked about concepts in cloud based application development, and the rise of Kubernetes signals a shift in the way that applications are developed and deployed. There are many reasons that developers should seek out Kubernetes solutions. Below are a sampling of advantages and use cases that Kubernetes posseses.
+Kubernetes is a container orchestration system that was initially designed by Google to help scale containerized applications in the cloud. Kubernetes can manage the lifecycle of containers, creating and destroying them depending on the needs of the application, as well as providing a host of other features. In the past few years Kubernetes has become one of the most talked about concepts in cloud based application development, and the rise of Kubernetes signals a shift in the way that applications are developed and deployed. There are many reasons that developers should seek out Kubernetes solutions. Below are a sampling of advantages and use cases that Kubernetes possesses.
 
 For a more in-depth explanation of Kubernetes concepts, see our five-part [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes/).
 
@@ -35,11 +35,11 @@ There are some caveats to this point. Many Cloud infrastructure providers suppor
 
 ### Microservice Architecture
 
-In contrast to monolithic applications whose constituant parts are not reusable and modular, Kubernetes encourages application developers to write code as microservices. Microservices are an application architecture that prescribes dividing code into independent, reusable, loosely coupled parts called services. These services run in separate containers that can be scaled depending on the needs of the application. Their small size and loose coupling make them easy to test and deploy in rapid fashion.
+In contrast to monolithic applications whose constituent parts are not reusable and modular, Kubernetes encourages application developers to write code as microservices. Microservices are an application architecture that prescribes dividing code into independent, reusable, loosely coupled parts called services. These services run in separate containers that can be scaled depending on the needs of the application. Their small size and loose coupling make them easy to test and deploy in rapid fashion.
 
 ### Optimized Resource Usage
 
-Kubernetes determines which backend nodes a container should run on based on available resources. By using Kubernetes you can rest assured that all of your compute resources are distributed efficiently across the cluster, ultimtately providing a cost savings by reducing the number of necessary backend ends.
+Kubernetes determines which backend nodes a container should run on based on available resources. By using Kubernetes you can rest assured that all of your compute resources are distributed efficiently across the cluster, ultimately providing a cost savings by reducing the number of necessary backend ends.
 
 ### Zero Downtime with Rolling Deployments
 
@@ -47,7 +47,7 @@ It's easy to create a Pod, the atomic unit of Kubernetes that contains a contain
 
 ### Self-Healing
 
-For many reasons, containers can fail. Kubernetes keeps deployments healthy by restarting containers that have failed, killing and replacing unresponsive containers according to user-defined healthchecks, and re-creating containers that were on a failed backend Node across other available Nodes. This helps to mitigate what is a common pain point of the application upkeep process.
+For many reasons, containers can fail. Kubernetes keeps deployments healthy by restarting containers that have failed, killing and replacing unresponsive containers according to user-defined health checks, and re-creating containers that were on a failed backend Node across other available Nodes. This helps to mitigate what is a common pain point of the application upkeep process.
 
 ### Service Discoverability
 
@@ -79,11 +79,11 @@ Ingress objects in Kubernetes allow for name based virtual hosting and HTTP rout
 
 ### Free and Open Source
 
-Kubernetes is free and open source software (FOSS). While initially developed by Google, Kubernetes has been democratized and is now under the charter of the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/). Kubernetes is actively developed and maintained, with a number of high-profile companies championing its cause, all but ensuring it will have a long and impactful tenure as the de-facto container orchestration solution.
+Kubernetes is free and open source software (FOSS). While initially developed by Google, Kubernetes has been democratized and is now under the charter of the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/). Kubernetes is actively developed and maintained, with a number of high-profile companies championing its cause, all but ensuring it will have a long and impactfull tenure as the de-facto container orchestration solution.
 
 ### Scalability
 
-Kubernetes makes it easy to horizontally scale the number of containers in use depending on the needs of the application. You can change this number from the command line, or you can use the [Horiztonal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to change the number of containers based on usage metrics.
+Kubernetes makes it easy to horizontally scale the number of containers in use depending on the needs of the application. You can change this number from the command line, or you can use the [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to change the number of containers based on usage metrics.
 
 ## Additional Use Cases
 
