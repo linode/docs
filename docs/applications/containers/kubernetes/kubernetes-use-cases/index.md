@@ -71,7 +71,7 @@ Kubernetes provides a Jobs object for completing single tasks, such deploying a 
 
 ### Secrets Management
 
-One of the hurdles in container creation is the inclusion of secrets, tokens, and passwords. You simply don't want these sensitive values in your container images, especially if your containers are stored in a public registry like DockerHub. Kubernetes helps to aleviate this burden by providing Secrets objects, an `etcd` database-backed secrets management solution. With Secrets, you can store sensitive data and later expose that data, for example, via environmental variables to the container, keeping the value out of the container's code.
+One of the hurdles in container creation is the inclusion of secrets, tokens, and passwords. You simply don't want these sensitive values in your container images, especially if your containers are stored in a public registry like DockerHub. Kubernetes helps to alleviate this burden by providing Secrets objects, an `etcd` database-backed secrets management solution. With Secrets, you can store sensitive data and later expose that data, for example, via environmental variables to the container, keeping the value out of the container's code.
 
 ### Declarative DNS Management
 
@@ -79,7 +79,7 @@ Ingress objects in Kubernetes allow for name based virtual hosting and HTTP rout
 
 ### Free and Open Source
 
-Kubernetes is free and open source software (FOSS). While initially developed by Google, Kubernetes has been democratized and is now under the charter of the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/). Kubernetes is actively developed and maintained, with a number of high-profile companies championing its cause, all but ensuring it will have a long and impactfull tenure as the de-facto container orchestration solution.
+Kubernetes is free and open source software (FOSS). While initially developed by Google, Kubernetes has been democratized and is now under the charter of the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/). Kubernetes is actively developed and maintained, with a number of high-profile companies championing its cause, all but ensuring it will have a long and impactful tenure as the de-facto container orchestration solution.
 
 ### Scalability
 
