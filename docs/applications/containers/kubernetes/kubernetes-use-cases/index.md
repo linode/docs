@@ -15,7 +15,11 @@ contributor:
 
 ## What is Kubernetes
 
-Kubernetes is a container orchestration system that was initially designed by Google to help scale containerized applications in the cloud. Kubernetes can manage the lifecycle of containers, creating and destroying them depending on the needs of the application, as well as providing a host of other features. In the past few years Kubernetes has become one of the most talked about concepts in cloud based application development, and the rise of Kubernetes signals a shift in the way that applications are developed and deployed. There are many reasons that developers should seek out Kubernetes solutions. Below are a sampling of advantages and use cases that Kubernetes possesses.
+Kubernetes is a container orchestration system that was initially designed by Google to help scale containerized applications in the cloud. Kubernetes can manage the lifecycle of containers, creating and destroying them depending on the needs of the application, as well as providing a host of other features. In the past few years Kubernetes has become one of the most talked about concepts in cloud based application development, and the rise of Kubernetes signals a shift in the way that applications are developed and deployed.
+
+In general, Kubernetes is formed by a *cluster* of servers, called Nodes, each running Kubernetes processes and communicating with one another. The *Master Node* is made up of a collection of processes that help enact and maintain the desired state of the Kubernetes cluster, while the *Worker Nodes* are the servers responsible for running the actual containers. *Managed Kubernetes* solutions often refer to the management of the Kubernetes Master Node and the ability to automatically add Worker Nodes to the Kubernetes cluster. Usually, this means that the Master Node is provided for free to the consumer, so not only is Managed Kubernetes a time saver, but it also saves on cost.
+
+There are many reasons that developers should seek out Kubernetes solutions. Below are a sampling of advantages and use cases that Kubernetes possesses.
 
 For a more in-depth explanation of Kubernetes concepts, see our five-part [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes/).
 
