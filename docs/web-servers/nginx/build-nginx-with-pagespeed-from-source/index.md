@@ -5,7 +5,7 @@ author:
 description: 'Compile NGINX to use the PageSpeed module.'
 keywords: ["nginx","pagespeed","optimization"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604/']
+aliases: ['web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604/','web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1804/']
 published: 2019-02-01
 modified: 2018-02-12
 modified_by:
@@ -47,12 +47,12 @@ This guide will show how to compile both NGINX and PageSpeed. If you would prefe
 
 **Filesystem Locations**: When you compile NGINX from source, the entire installation, including configuration files, is located at `/usr/local/nginx/nginx/`. This is in contrast to an installation from a package manager, which places its configuration files in `/etc/nginx/`.
 
-**Built-in Modules**: When you compile NGINX from source, no additional modules are included unless explicitly specified, which means that HTTPS is not supported by default. Below you can see the output of `nginx -V` using the PageSpeed automated install command on Ubuntu 16.04 with no additional modules or options specified.
+**Built-in Modules**: When you compile NGINX from source, no additional modules are included unless explicitly specified, which means that HTTPS is not supported by default. Below you can see the output of `nginx -V` using the PageSpeed automated install command on Ubuntu 18.04 with no additional modules or options specified.
 
 {{< output >}}
 root@localhost:~# /usr/local/nginx/sbin/nginx -V
-nginx version: nginx/1.13.8
-built by gcc 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.5)
+nginx version: nginx/1.17.3
+built by gcc 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1)
 configure arguments: --add-module=/root/incubator-pagespeed-ngx-latest-stable
 {{< /output >}}
 
@@ -60,11 +60,11 @@ Contrast this output with the same command run on the same Ubuntu system but wit
 
 {{< output >}}
 root@localhost:~# nginx -V
-nginx version: nginx/1.13.8
-built by gcc 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3)
-built with OpenSSL 1.0.1f 6 Jan 2014 (running with OpenSSL 1.0.2g  1 Mar 2016)
+nginx version: nginx/1.17.3
+built by gcc 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1)
+built with OpenSSL 1.1.1  11 Sep 2018
 TLS SNI support enabled
-configure arguments: --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-compat --with-file-aio --with-threads --with-http_addition_module --with-http_auth_request_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_ssl_module --with-http_stub_status_module --with-http_sub_module --with-http_v2_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-cc-opt='-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fPIC' --with-ld-opt='-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -pie'
+configure arguments: --add-module=/root/incubator-pagespeed-ngx-latest-stable --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-http_ssl_module --with-http_v2_module
 {{< /output >}}
 
 
@@ -80,11 +80,11 @@ The automated installation script will install several compilation tools needed 
 
     **CentOS/Fedora**
 
-        yum install openssl-devel
+        sudo yum install openssl-devel
 
     **Ubuntu/Debian**
 
-        apt install libssl-dev
+        sudo apt install libssl-dev
 
 2.  Run the [Automated Install](https://www.modpagespeed.com/doc/build_ngx_pagespeed_from_source) bash command to start the installation:
 
@@ -97,12 +97,19 @@ The automated installation script will install several compilation tools needed 
 
         --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-http_ssl_module --with-http_v2_module
 
-4.  Next you'll be asked if you want to build NGINX. You'll be shown the destination directories for logs, configuration files and binaries. If these look correct, answer *Y* to continue.
+4. You'll be asked if you want to configure nginx with the options that you added, answer *Y* to continue.
+    {{< output >}}
+  ./configure --add-module=/home/sudouser/incubator-pagespeed-ngx-latest-stable --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-http_ssl_module --with-http_v2_module
+Does this look right? [Y/n] y
+
+{{< /output >}}
+
+5. Next you'll be asked if you want to build NGINX. You'll be shown the destination directories for logs, configuration files and binaries. If these look correct, answer *Y* to continue.
 
     {{< output >}}
 Configuration summary
   + using system PCRE library
-  + using OpenSSL library: /usr/bin/openssl
+  + using system OpenSSL library
   + using system zlib library
 
   nginx path prefix: "/etc/nginx"
@@ -120,6 +127,7 @@ Configuration summary
   nginx http scgi temporary files: "/var/cache/nginx/scgi_temp"
 
 Build nginx? [Y/n]
+
 {{< /output >}}
 
 5.  If the build was successful, you'll see the following message:
@@ -133,6 +141,7 @@ manage starting and stopping the nginx service.  See:
 
 You'll also need to configure ngx_pagespeed if you haven't yet:
   https://developers.google.com/speed/pagespeed/module/configuration
+
 {{< /output >}}
 
 6.  When you want to update NGINX, back up your configuration files and repeat steps two through four above to build with the new source version.
@@ -199,12 +208,13 @@ You can use NGINX's binary to control the process directly without making a star
 
 1.  Since the compiled options specified above are different than the source's defaults, some additional configuration is necessary. Replace *example.com* in the following commands with your Linode's public IP address or domain name:
 
-        useradd --no-create-home nginx
-        mkdir -p /var/cache/nginx/client_temp
-        mkdir /etc/nginx/conf.d/
-        mkdir /var/www/example.com
-        chown nginx:nginx /var/www/example.com
-        mv /etc/nginx/nginx.conf.default /etc/nginx/nginx.conf.backup-default
+        sudo useradd --no-create-home nginx
+        sudo mkdir -p /var/cache/nginx/client_temp
+        sudo mkdir /etc/nginx/conf.d/
+        sudo mkdir /var/www/
+        sudo mkdir /var/www/example.com
+        sudo chown nginx:nginx /var/www/example.com
+        sudo mv /etc/nginx/nginx.conf.default /etc/nginx/nginx.conf.backup-default
 
 2.  In NGINX terminology, a *Server Block* equates to a website (similar to the *Virtual Host* in Apache terminology). Each NGINX site's configuration should be in its own file with the name formatted as `example.com.conf`, located at `/etc/nginx/conf.d/`.
 
@@ -225,7 +235,29 @@ server {
 }
 {{< /file >}}
 
-3.  Start NGINX:
+3. Ensure that the firewall allows access to the nginx service. If you configured the firewall with `ufw` then do the following:
+
+      a.  Check the application configurations that `ufw` is aware of, by typing:
+
+        sudo ufw app list
+
+      b.   Enable `Nginx HTTP` from the list:
+
+        sudo ufw allow 'Nginx HTTP'
+
+      c.   Verify the change by typing:
+        {{< output >}}
+    Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere
+Nginx HTTP                 ALLOW       Anywhere
+OpenSSH (v6)               ALLOW       Anywhere (v6)
+Nginx HTTP (v6)            ALLOW       Anywhere (v6)
+    {{< /output >}}
+
+4.  Start NGINX:
 
     **systemd**:
 
@@ -235,7 +267,7 @@ server {
 
         /usr/sbin/nginx
 
-4.  Verify NGINX is working by going to your site's domain or IP address in a web browser. You should see the NGINX welcome page:
+5.  Verify NGINX is working by going to your site's domain or IP address in a web browser. You should see the NGINX welcome page:
 
     ![NGINX welcome page](nginx-welcome.png "NGINX welcome page")
 
@@ -244,8 +276,8 @@ server {
 
 1.  Create PageSpeed's cache location and change its ownership to the `nginx` user and group:
 
-        mkdir /var/cache/ngx_pagespeed/
-        chown nginx:nginx /var/cache/ngx_pagespeed/
+        sudo mkdir /var/cache/ngx_pagespeed/
+        sudo chown nginx:nginx /var/cache/ngx_pagespeed/
 
 2.  Add the PageSpeed directives to your site configuration's `server` block as shown below.
 
@@ -281,6 +313,10 @@ server {
 
         /usr/sbin/nginx/ -s reload
 
+    Or restart nginx:
+
+        systemctl restart nginx
+
 5.  Test PageSpeed is running and NGINX is successfully serving pages. Substitute *example.com* in the cURL command with your Linode's domain name or IP address.
 
         curl -I -X GET example.com
@@ -289,13 +325,12 @@ server {
 
     {{< output >}}
 HTTP/1.1 200 OK
-Server: nginx/1.13.8
+Server: nginx/1.17.3
 Content-Type: text/html
 Transfer-Encoding: chunked
 Connection: keep-alive
-Vary: Accept-Encoding
-Date: Tue, 23 Jan 2018 16:50:23 GMT
-X-Page-Speed: 1.12.34.3-0
+Date: Sat, 07 Sep 2019 07:16:44 GMT
+X-Page-Speed: 1.13.35.2-0
 Cache-Control: max-age=0, no-cache
 {{< /output >}}
 
