@@ -256,7 +256,7 @@ To add a new monitored service to Linode Managed:
     | URL | If you selected **URL** for the **Monitor Type** field, enter a URL for a webpage that you'd like to monitor. If you selected **TCP Connection**, enter the domain or IP address and, optionally, a port number (separated by a colon) in the **TCP** field. |
     | Response Body Match (optional) | A string that Linode Managed will check for in the URL or TCP response. If not present, then an alert will be generated for the service. |
     | Instructions/Notes | Any notes or additional information about this service. The more information we have about the service and how it's configured, the more quickly we will be able to resolve any issues that may arise. |
-    | Credentials (optional) | Any [credentials]((#adding-service-credentials)) that may need to be used to troubleshoot the service. You can select and save more than one credential for a service. |
+    | Credentials (optional) | Any [credentials](#adding-service-credentials) that may need to be used to troubleshoot the service. You can select and save more than one credential for a service. |
 
 1.  Fill out the form and click the **Add** button.
 
