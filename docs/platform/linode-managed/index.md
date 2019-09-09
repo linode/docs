@@ -61,9 +61,9 @@ Linode generates and assigns a unique public/private keypair to your account's M
 
 1.  Navigate to the **SSH Access** tab.
 
-    [![The Linode Managed credential interface.](1196-managed_credential3.png)](1196-managed_credential3.png)
-
 1.  Linode's public key is displayed under this tab, and a **Copy to clipboard** button will appear next to it. Click on this button to copy it.
+
+    [![Linode Managed Public SSH Key](managed-public-ssh-key.png "Linode Managed Public SSH Key")](managed-public-ssh-key.png)
 
 1.  After you've copied the key, you can install it on your server, either [under your root user](#installing-as-root) or [under another user](#installing-as-another-user). If you install it under another user, be sure to also update your [Linode's Managed SSH settings](#specifying-linode-ssh-settings) to reflect that user.
 
@@ -308,6 +308,6 @@ If you decide to remove or stop using a monitored service on your Linode, you sh
 
 1.  Find the service that you want to remove and click on the corresponding **more options ellipsis**. Select the **Delete** option from the menu that appears.
 
-2.  A confirmation dialog will appear. Click the **Delete** button on this dialog to confirm.
+1.  A confirmation dialog will appear. Click the **Delete** button on this dialog to confirm.
 
 Linode Managed will stop monitoring the service.

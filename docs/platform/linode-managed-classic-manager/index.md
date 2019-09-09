@@ -113,8 +113,8 @@ example_user ALL=(ALL) NOPASSWD: ALL
 
 6.  Press **Esc** to exit insert mode.
 7.  Type `:wq` to save and quit the file.
-8.  Add the [Managed public key](/docs/platform/linode-managed/#adding-the-public-key) to the `/home/user/.ssh/authorized_keys` file for this user.
-9.  Add this user to the [Account Credentials](/docs/platform/linode-managed/#adding-service-credentials) list.
+8.  Add the [Managed public key](#adding-the-public-key) to the `/home/user/.ssh/authorized_keys` file for this user.
+9.  Add this user to the [Account Credentials](#adding-service-credentials) list.
 
     {{< note >}}
 Make sure this user is not in any groups that are in `/etc/sudoers`, as this may override the passwordless sudo setting.
