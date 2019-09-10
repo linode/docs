@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-16
 modified_by:
   name: Linode
-title: 'How to Use lsof'
+title: 'How to List Open Files with lsof'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
@@ -19,9 +19,9 @@ external_resources:
 
 ## Introduction
 
-Lsof was created by [Victor A. Abell](https://people.freebsd.org/~abe/) and is a utility that lists open files. As everything in Linux can be considered a file, this means that `lsof` can gather information on the majority of activity on your Linode, including network interfaces and network connections. `lsof` will output a list of all open files and the processes that opened them.
+`lsof` was created by [Victor A. Abell](https://people.freebsd.org/~abe/) and is a utility that lists open files. As everything in Linux can be considered a file, this means that `lsof` can gather information on the majority of activity on your Linode, including network interfaces and network connections. `lsof` by default will output a list of all open files and the processes that opened them.
 
-The two main drawbacks of `lsof` are that it can only display information about the local machine (`localhost`), and that it requires administrative privileges to print all available data. Additionally, you usually do not execute `lsof` without any command line parameters because it outputs a large amount of data that can be difficult to parse. This happens because `lsof` will natively list all open files belonging to all active processes – for example, the output of `wc(1)` (a word count utility) when applied to `lsof` on a test machine shows the size of the output is extremely large:
+The two main drawbacks of `lsof` are that it can only display information about the local machine (`localhost`), and that it requires administrative privileges to print all available data. Additionally, you usually do not execute `lsof` without any command line parameters because it outputs a large amount of data that can be difficult to parse. This happens because `lsof` will natively list all open files belonging to all active processes – for example, the output of `wc(1)` (a word count utility) when applied to `lsof` on a test instance shows the size of the output is extremely large:
 
     sudo lsof | wc
 
@@ -37,7 +37,7 @@ the results available to the current user. If you are not familiar with the `sud
 see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-On most major distributions, `lsof` will come pre-installed and you begin using it immediately. If for any reason it is not found, you can install `lsof` using your preferred package manager.
+On most major distributions, `lsof` will come pre-installed and you can begin using it immediately. If for any reason it is not found, you can install `lsof` using your preferred package manager.
 
 ## Command Line Options
 
@@ -216,8 +216,7 @@ apache2&nbsp;&nbsp;27829&nbsp;&nbsp;www-data&nbsp;&nbsp;6u&nbsp;&nbsp;IPv6&nbsp;
 {{< /output >}}
 
 {{< note >}}
-You are allowed to place the `-a` option wherever you like is an `lsof` command as it
-will still cause the ANDing of all selection options.
+You are allowed to place the `-a` option wherever you like as `lsof` will still detect the relevant options.
 {{< /note >}}
 
 ## Using Regular Expressions
@@ -381,7 +380,7 @@ sshd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;22361&nbsp;&nbsp;mtsouk&nbsp;&nbsp;3u&nbsp;&nb
 ### Determine Which Program Listens to a TCP port
 
 One of the most frequent uses of `lsof` is determining which program listens to a given TCP port.
-The following command will print TCP process that are in the `LISTEN` state by using the `-s` option to provide a protocol and protocol state:
+The following command will print TCP processes that are in the `LISTEN` state by using the `-s` option to provide a protocol and protocol state:
 
     sudo lsof -nP -i TCP -s TCP:LISTEN
 
@@ -469,18 +468,18 @@ servers or when you are interested in the actual IP address.
 
 ### Find Network Connections From or To an External Host
 
-The following command finds all network connections coming from or going to `ppp-2-86-23-29.home.otenet.gr`:
+The following command finds all network connections coming from or going to `ppp-2-86-23-29.home.example.com`:
 
-    sudo lsof -i @ppp-2-86-23-29.home.otenet.gr
+    sudo lsof -i @ppp-2-86-23-29.home.example.com
 
 {{< output >}}
-sshd&nbsp;&nbsp;22352&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;3u&nbsp;&nbsp;IPv4 8613370&nbsp;&nbsp;0t0&nbsp;&nbsp;TCP&nbsp;&nbsp;li140-253.members.linode.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
-sshd&nbsp;&nbsp;22361&nbsp;&nbsp;mtsouk&nbsp;&nbsp;3u&nbsp;&nbsp;IPv4 8613370&nbsp;&nbsp;0t0&nbsp;&nbsp;TCP&nbsp;&nbsp;li140-253.members.linode.com:ssh->ppp-2-86-23-29.home.otenet.gr:60032 (ESTABLISHED)
+sshd&nbsp;&nbsp;22352&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;&nbsp;3u&nbsp;&nbsp;IPv4 8613370&nbsp;&nbsp;0t0&nbsp;&nbsp;TCP&nbsp;&nbsp;li140-253.members.linode.com:ssh->ppp-2-86-23-29.home.example.com:60032 (ESTABLISHED)
+sshd&nbsp;&nbsp;22361&nbsp;&nbsp;mtsouk&nbsp;&nbsp;3u&nbsp;&nbsp;IPv4 8613370&nbsp;&nbsp;0t0&nbsp;&nbsp;TCP&nbsp;&nbsp;li140-253.members.linode.com:ssh->ppp-2-86-23-29.home.example.com:60032 (ESTABLISHED)
 {{< /output >}}
 
 You can also specify the range of ports that interest you as follows:
 
-    sudo lsof -i @ppp-2-86-23-29.home.otenet.gr:200-250
+    sudo lsof -i @ppp-2-86-23-29.home.example.com:200-250
 
 ### Determine Which Processes are Accessing a Given File
 
@@ -506,8 +505,8 @@ a file, you can use the `-t` option to suppress header lines:
 25158
 {{< /output >}}
 
-A process ID can be used for easily killing a process using the `kill(1)` command,
-which is something that should be executed with great care.
+A process ID can commonly be used for easily killing a process using the `kill(1)` command,
+however this is something that should only be executed with great care.
 
 ### List Open Files Under a Given Directory
 
