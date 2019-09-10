@@ -19,18 +19,9 @@ external_resources:
 
 ## Introduction
 
-Lsof was created by [Victor A. Abell](https://people.freebsd.org/~abe/) and is a utility that, at its root,
-lists open files. However, because everything in UNIX is a file, `lsof` can do much more. `lsof` can also deal with network interfaces and display
-information about network connections.
+Lsof was created by [Victor A. Abell](https://people.freebsd.org/~abe/) and is a utility that lists open files. As everything in Linux can be considered a file, this means that `lsof` can gather information on the majority of activity on your Linode, including network interfaces and network connections. `lsof` will output a list of all open files and the processes that opened them.
 
-This article will present various practical `lsof` usages with the confidence that they will
-help you during systems and network troubleshooting.
-
-The two main drawbacks of `lsof` are that it can only display information about the local
-machine (`localhost`), and that it needs administrative privileges to print all available data. Usually,
-you do not execute `lsof` without any command line parameters because you will find its output
-crowded and difficult to read. This happens because `lsof` will natively list all open files
-belonging to all active processes – the output of `wc(1)`, (a word count utility), shows that the list is pretty long:
+The two main drawbacks of `lsof` are that it can only display information about the local machine (`localhost`), and that it requires administrative privileges to print all available data. Additionally, you usually do not execute `lsof` without any command line parameters because it outputs a large amount of data that can be difficult to parse. This happens because `lsof` will natively list all open files belonging to all active processes – for example, the output of `wc(1)` (a word count utility) when applied to `lsof` on a test machine shows the size of the output is extremely large:
 
     sudo lsof | wc
 
@@ -46,17 +37,16 @@ the results available to the current user. If you are not familiar with the `sud
 see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-If not already installed, you can install `lsof` on your Linux system using your
-favorite package manager.
+On most major distributions, `lsof` will come pre-installed and you begin using it immediately. If for any reason it is not found, you can install `lsof` using your preferred package manager.
 
 ## Command Line Options
 
-The `lsof(8)` binary supports a plethora of command line options, including the following:
+The `lsof(8)` binary supports a large number of command line options, including the following:
 
 | **Option** | **Description** |
 | ---------- | --------------- |
 | `-h` and `-?` | Both options present a help screen. Please note that you will need to properly escape the `?` character for `-?` to work. |
-| `-a` | This option tells `lsof` to logically AND all provided options. |
+| `-a` | This option tells `lsof` to logically ADD all provided options. |
 | `-b` | This option tells `lsof` to avoid kernel functions that might block the returning of results. This is a very specialized option. |
 | `-l` | If converting a user ID to a login name is working improperly or slowly, you can disable it using the `-l` parameter. |
 | `–P` | The `-P` option prevents the conversion of port numbers to port names for network files. |
@@ -129,7 +119,7 @@ shows the process ID of the command.
 - The `USER` column displays the name of the
 user that owns the process.
 - The `TID` column shows the task ID. A blank `TID` indicates a
-process.
+process. Note that this column will not appear in the output of many `lsof` commands.
 - The `FD` column stands for file descriptor. Its values can be `cwd`, `txt`, `mem`, and
 `mmap`.
 - The `TYPE` column displays the type of the file: regular file, directory, socket, etc.
@@ -190,7 +180,7 @@ ntpd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;848&nbsp;&nbsp;ntp&nbsp;&nbsp;&nbs
 
 ## Logically ADD All Options
 
-In this section of the guide you will learn how to logically AND the existing options
+In this section of the guide you will learn how to logically ADD the existing options
 using the `-a` flag. This provides you enhanced filtering capabilities. Take the following command as an example:
 
     sudo lsof -Pni -u www-data
@@ -535,8 +525,8 @@ avahi-dae&nbsp;&nbsp;669&nbsp;&nbsp;avahi&nbsp;&nbsp;rtd&nbsp;&nbsp;DIR&nbsp;&nb
 
 ### List Files that are Opened by a Specific User
 
-This is a very practical option because it allows you to locate the files opened by
-any user including web and database users.
+Another option is to locate the files opened by
+any user, including web and database users.
 
 The following command lists all open files opened by the `www-data` user:
 
@@ -591,11 +581,11 @@ Use the ``-h'' option to get more help information.
 
 ### Kill All Processes Owned by a User
 
-The following command *brutally* kills all processes owned by the `www-data` user:
+The following command will kill all of the processes owned by the `www-data` user:
 
 {{< caution >}}
 Please be careful when combining `lsof` with the `kill(1)` command. Do not try to
-test similar commands on a live server – use a Docker image of something similar.
+test similar commands on a live server unless you are absolutely certain you will not experience issues – for testing purposes you can use a disposable Docker image or something similar.
 {{</ caution >}}
 
     sudo kill -9 `lsof -t -u www-data`
@@ -650,7 +640,4 @@ command displays the lines that contain the `TCP` or the `UDP` word in them.
 
 ## Summary
 
-`lsof` can do many more things than the ones presented here because there exist
-a large number of ways that you can combine its command line options. All you have
-to do is experiment and you will soon be able to solve many of your networking
-problems using `lsof`.
+`lsof` is a powerful diagnostic tool capable of a significant number of ways that you can combine its command line options to troubleshoot various issues administrators can find themselves facing. As this guide has only provided a few examples of how to use this tool, additional options can be combined for various effects that can be specifically suited to your needs.
