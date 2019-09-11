@@ -97,7 +97,7 @@ Backups are stored on a separate system in the same data center as your Linode. 
 -   **Last week's backup:** Automatically initiated weekly within the backup window, on the day you select. Between 8 and 14 days old.
 -   **Manual Snapshot:** A user-initiated snapshot that stays the same until another snapshot is initiated.
 
-The daily and weekly backups are automatically erased when a new backup is performed. The Linode Backup Service does not keep automated backups older than 8 - 14 days.
+The daily and weekly backups are automatically erased when a new backup is performed. The Linode Backup Service does not keep automated backups older than 14 days.
 
 ## Schedule Backups
 
