@@ -39,7 +39,7 @@ In many cases, the CI/CD pipeline can become resource-intensive if many new code
 
 ### Game Servers
 
-Dependening on the intensity of demands they place on your Linode, [game servers](/docs/game-servers/) may benefit from a Dedicated CPU. Modern multiplayer games need to coordinate with a high number of clients, and require syncing entire game worlds for each player. If CPU resources are not available, then players will experience issues like stuttering and lag. Below is a short list of popular games that may benefit from a Dedicated CPU:
+Depending on the intensity of demands they place on your Linode, [game servers](/docs/game-servers/) may benefit from a Dedicated CPU. Modern multiplayer games need to coordinate with a high number of clients, and require syncing entire game worlds for each player. If CPU resources are not available, then players will experience issues like stuttering and lag. Below is a short list of popular games that may benefit from a Dedicated CPU:
 
 - [ARK: Survival Evolved](/docs/platform/one-click/deploying-ark-survival-evolved-with-one-click-apps/)
 - [Rust](/docs/platform/one-click/deploying-rust-with-one-click-apps/)
@@ -94,4 +94,4 @@ Below is a list of common tools used for machine learning and AI that can be ins
 
 ## Where to Go From Here
 
-If you're ready to get started with a Dedicated CPU Linode, our [Getting Started With Dedicated CPU](/docs/platform/dedicated-cpu/getting-started-with-dedicated-cpu/index.md) guide will walk you through the process of an initial installation. Additionally, see our [Pricing Page](https://www.linode.com/pricing) for a rundown of both hourly and monthly costs.
+If you're ready to get started with a Dedicated CPU Linode, our [Getting Started With Dedicated CPU](/docs/platform/dedicated-cpu/getting-started-with-dedicated-cpu/) guide will walk you through the process of an initial installation. Additionally, see our [Pricing Page](https://www.linode.com/pricing) for a rundown of both hourly and monthly costs.
