@@ -60,8 +60,6 @@ After your MERN One-click App has finished installing, you can:
 
 - [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh). You will need your Linode's root password to proceed.
 
-- Install the [MERN CLI](http://mern.io/documentation.html) (command line interface) a utility that provides code generation and scaffolding capabilities.
-
 - Consult the following guides to learn more about working with the various components of the MERN stack:
 
     - [Build Database Clusters with MongoDB](/docs/databases/mongodb/build-database-clusters-with-mongodb/)
