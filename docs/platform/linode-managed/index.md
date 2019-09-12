@@ -53,7 +53,7 @@ To investigate any alerts we receive for your services, the Linode Support team 
 
 ### Adding the Public Key
 
-Linode generates and assigns a unique public/private keypair to your account's Managed service. This keypair will be used by Linode Support to log into your server whenever an issue needs to be investigated. To locate your Linode Managed public key:
+Linode generates and assigns a unique public/private keypair to your account's Managed service. This keypair will be used by Linode Support to log into your server whenever an issue needs to be investigated. You can locate your Linode Managed public key through the following steps:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
@@ -86,6 +86,12 @@ If you followed the instructions in the [Securing Your Server](/docs/securing-yo
 1.  Open the `authorized_keys` file in a text editor (for example, [nano](/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/)):
 
         nano /root/.ssh/authorized_keys
+
+    {{< note >}}
+The `/root/.ssh/` directory may not exist yet. If this is the case, you must create the directory using the following command before opening the `authorized_keys` file:
+
+     mkdir /root/.ssh/
+{{< /note >}}
 
 1.  Paste Linode's public key in a new line in the file.
 
@@ -134,7 +140,7 @@ example_user ALL=(ALL) NOPASSWD: ALL
         nano /home/example_user/.ssh/authorized_keys
 
     {{< note >}}
-The `.ssh/` directory may not exist yet. If so, create it:
+The `/home/example_user/.ssh/` directory may not exist yet. If so, create it with the following command before opening the `authorized_keys` file:
 
     mkdir -p /home/example_user/.ssh/
 {{< /note >}}
@@ -165,7 +171,7 @@ To access these settings:
 
 1.  Click the **Managed** link in the sidebar.
 
-1.  Select the **SSH Access** tab. Your Linodes and their Managed SSH settings will appear in table below:
+1.  Select the **SSH Access** tab. Your Linodes and their Managed SSH settings will appear in the table below:
 
     [![Linode Managed SSH Settings](managed-ssh-settings.png "Linode Managed SSH Settings")](managed-ssh-settings.png)
 
