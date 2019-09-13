@@ -280,7 +280,11 @@ Networking in OpenSUSE is managed by *wicked* and *netconfig*. In addition to di
 1.  Modify the interface's config file:
 
     {{< file "/etc/sysconfig/network/ifcfg-eth0" >}}
-BOOTPROTO=static
+BOOTPROTO=dhcp
+STARTMODE=auto
+
+IPV6_AUTOCONF=yes
+
 NAME=eth0
 
 # Your primary public IP address and gateway.
@@ -431,4 +435,3 @@ If for whatever reason you prefer not to reboot, you should be able to bring you
 
         ping -c 3 google.com
         ping6 -c 3 ipv6.google.com
-
