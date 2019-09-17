@@ -17,24 +17,88 @@ contributor:
 
 Kubernetes is a container orchestration system that was initially designed by Google to help scale containerized applications in the cloud. Kubernetes can manage the lifecycle of containers, creating and destroying them depending on the needs of the application, as well as providing a host of other features. In the past few years Kubernetes has become one of the most talked about concepts in cloud based application development, and the rise of Kubernetes signals a shift in the way that applications are developed and deployed.
 
-In general, Kubernetes is formed by a *cluster* of servers, called Nodes, each running Kubernetes processes and communicating with one another. The *Master Node* is made up of a collection of processes that help enact and maintain the desired state of the Kubernetes cluster, while the *Worker Nodes* are the servers responsible for running the actual containers. *Managed Kubernetes* solutions often refer to the management of the Kubernetes Master Node and the ability to automatically add Worker Nodes to the Kubernetes cluster. Usually, this means that the Master Node is provided for free to the consumer, so not only is Managed Kubernetes a time saver, but it also saves on cost.
-
-There are many reasons that developers should seek out Kubernetes solutions. Below are a sampling of advantages and use cases that Kubernetes possesses.
+In general, Kubernetes is formed by a *cluster* of servers, called Nodes, each running Kubernetes agent processes and communicating with one another. The *Master Node* is made up of a collection of processes called the *control plane* that help enact and maintain the desired state of the Kubernetes cluster, while *Worker Nodes* are responsible for running the containers that form your applications and services.
 
 For a more in-depth explanation of Kubernetes concepts, see our five-part [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes/).
 
+### What is Managed Kubernetes
+
+*Managed Kubernetes* solutions are concerned with the management of one or more parts of a Kubernetes cluster. Because a cluster is formed from a number of different components, there are several different kinds of managed Kubernetes products, and each will solve different problems.
+
+{{< disclosure-note "Why use a managed Kubernetes solution?" >}}
+Kubernetes can make managing containers and microservices easier, but Kubernetes itself also requires some administrative overhead. This includes:
+
+- Performing updates to the Kubernetes control plane and agent software,
+- Monitoring the health of those components, and
+- Monitoring the health of the underlying hardware systems.
+
+Managed Kubernetes solutions will help offload some or all of this work.
+{{< /disclosure-note >}}
+
+Here's a few common categories:
+
+-   **Hosted, managed Kubernetes**
+
+    Several cloud computing companies offer products which provision clusters on their platform. The control plane and Master Nodes for these clusters are entirely managed by the platform, which means that all maintenance and updates for the control plane software are carried out by the platform, and the platform monitors the health of the Master Nodes and performs repairs as needed.
+
+    The platform will provide interfaces for the customer to provision cloud instances that serve as Worker Nodes. These instances are pre-configured with Kubernetes' agent software and are automatically joined to your cluster.
+
+    The customer generally assumes responsibility for deploying and maintaining their applications on the cluster. The Master Nodes are often provided at no cost, and the customer only pays for the Worker Nodes they provision.
+
+    {{< note >}}
+The upcoming Linode Kubernetes Engine (LKE) is an example of this category.
+{{< /note >}}
+
+-   **Software-as-a-service Kubernetes**
+
+    Other companies offer *Kubernetes-as-a-service (KaaS)* products. These are cloud-based applications which assist in the provisioning and ongoing software maintenance of clusters. However, they do not necessarily provide the server instances which will act as your cluster's nodes. A frequent use-case for these products is using Kubernetes on on-premise servers:
+
+    - The customer will create or build servers in their on-premise facility. The customer will usually need to complete some prerequisite instructions to prepare their servers for use with the KaaS application.
+
+    - The KaaS application will connect to the customer's servers and form a cluster from them, where some servers are designated as Master Nodes and others as Worker Nodes. The KaaS product will install the appropriate Kubernetes control plane and agent software.
+
+    - The KaaS application will continue to monitor the on-premise cluster and will perform software maintenance on them over time. The customer will need to perform repairs for any hardware issues on the cluster nodes.
+
+    In this arrangement, the customer is reponsible for the cost of the cluster nodes, but much of the administration complexity for Kubernetes is offloaded to the KaaS application.
+
+    It's also possible to use some KaaS applications with other cloud infrastructure platforms. The KaaS application will provision a cluster that's formed from cloud instances on the platform, and the customer will pay that platform for all of the nodes in the cluster.
+
+-   **Kubernetes management applications**
+
+    In addition to cloud-based KaaS applications, there are some Kubernetes management applications that you can install and run on your own infrastructure. These provide a number of the same features as their cloud-hosted counterparts, including:
+
+    - Monitoring of node and cluster health
+
+    - Cluster software updater
+
+    - Cluster creation tools
+
+    While a customer will install and run these applications on their servers, the companies that author these applications may also offer support similar to cloud KaaS offerings.
+
+    {{< note >}}
+An example application in this category is [Rancher](https://rancher.com) from Rancher Labs.
+{{< /note >}}
+
 ## Advantages
+
+There are many reasons that developers should seek out Kubernetes solutions. Below are a sampling of advantages and use cases that Kubernetes possesses.
 
 ### Declarative in Nature
 
-Kubernetes is declarative: describe to Kubernetes the desired state of the cluster and Kubernetes will ensure that this state is always fulfilled. If you want five containers running at any given time, all you need to do is create a Deployment and set the number of replicas to five. And, each set of instructions is rendered in human-readable YAML.
+Kubernetes is declarative: describe to Kubernetes the desired state of the cluster and Kubernetes will ensure that this state is always fulfilled. If you want five containers running at any given time, all you need to do is create a Deployment and set the number of replicas to five. And, each set of instructions is rendered in human-readable YAML, which results in further benefits:
+
+- **Version control of your infrastructure.** Because the resources in your cluster are declared in code, you can track changes to that code over time in version control systems like Git.
+
+- **Minimization of human error.** Kubernetes' analysis of your configuration files will produce the same results every time it creates your declared resources.
+
+- **Better collaboration among team members.** Your configuration files can be tracked in a version control system, so your team members can all contribute to the same centralized code-base and work on your Kubernetes services together.
 
 ### Portable, Cloud Agnostic Codebase
 
-Kubernetes can run on virtually any public cloud, on-premise hardware, or even bare metal. Developing applications for Kubernetes means that code is replicable, allowing you to select the infrastructure of your choosing.
+Kubernetes can run on virtually any public cloud, on-premise hardware, or even bare metal. Developing applications for Kubernetes means that code can be redeployed multiple times, allowing you to select the infrastructure of your choosing.
 
 {{< note >}}
-There are some caveats to this point. Many Cloud infrastructure providers support Kubernetes, but there is no guarantee that they support all of the features of Kubernetes. For instance, not every cloud provider offers load balancing as a feature, so not every provider will support Services of the type `LoadBalancer`.
+There are some caveats to this point. Many cloud infrastructure providers support Kubernetes, but there is no guarantee that they support all of the features of Kubernetes. For example, not every cloud provider offers [load balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing)) as a feature, so a Kubernetes cluster on those providers will not support [Services of the type `LoadBalancer`](https://kubernetes.io/docs/concepts/services-networking/#loadbalancer).
 {{</ note >}}
 
 ### Microservice Architecture
@@ -43,11 +107,13 @@ In contrast to monolithic applications whose constituent parts are not reusable 
 
 ### Optimized Resource Usage
 
-Kubernetes determines which backend nodes a container should run on based on available resources. By using Kubernetes you can rest assured that all of your compute resources are distributed efficiently across the cluster, ultimately providing a cost savings by reducing the number of necessary backend ends.
+Kubernetes determines which Worker Nodes a container should run on based on available resources. By using Kubernetes you can rest assured that all of your compute resources are utilized efficiently across the cluster. As a result, you may be able to reduce the number of cloud instances or servers you operate, which can lead to cost savings.
 
 ### Zero Downtime with Rolling Deployments
 
-It's easy to create a Pod, the atomic unit of Kubernetes that contains a container. But what happens when you need to update a Pod with a new container image? Kubernetes will create additional Pods with the newer image and assure that they are running and healthy before destroying the old Pods. Kubernetes will also roll back any changes should the newer containers fail. In this way there is limited downtime, ensuring a strong user experience.
+Pods are the atomic unit of computing in Kubernetes, and they are responsible for running your application's containers. Pods are easy to deploy, but what happens when the code for your application and its container images has been updated by your team? To update your application running in your cluster, you'll need a way to update its Pods with the new container images.
+
+Kubernetes offers a solution with [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), which will create additional Pods with the newer image and assure that they are running and healthy and then destroy the old Pods. Kubernetes will also roll back any changes should the newer containers fail. In this way there is limited downtime, ensuring a strong user experience.
 
 ### Self-Healing
 
@@ -55,15 +121,17 @@ For many reasons, containers can fail. Kubernetes keeps deployments healthy by r
 
 ### Service Discoverability
 
-It's important that all services have a predictable way of communicating with one another. However, within Kubernetes, containers are created and destroyed many times over, so a particular service may not exist permanently at a particular location. This traditionally meant that some kind of service registry would need to be created or adapted to the application logic to keep track of each container's location. Kubernetes makes service discovery simple by providing IP addresses for each Pod and a DNS name for each set of Pods, and providing load-balancing between Pods in a set. This creates an environment where the service discovery can be abstracted away from the container level.
+It's important that all services have a predictable way of communicating with one another. However, within Kubernetes, containers are created and destroyed many times over, so a particular service may not exist permanently at a particular location. This traditionally meant that some kind of service registry would need to be created or adapted to the application logic to keep track of each container's location.
 
-### Multi Container Services
+Kubernetes has a native [Service](https://kubernetes.io/docs/concepts/services-networking/service/) concept which groups your Pods and simplifies service discovery. Kubernetes will provide IP addresses for each Pod, assign a DNS name for each set of Pods, and then load-balance the traffic to the Pods in a set. This creates an environment where the service discovery can be abstracted away from the container level.
 
-In Kubernetes a Pod contains a container, but a Pod can contain multiple containers as well. This makes adding a loosely coupled, reusable sidecar container for something like logging or a service mesh easy, and allows the coupled containers to share an IP address.
+### Multi-Container Pods
+
+Kubernetes [Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod/) often run a single container, but they are capable of running multiple containers as well. This makes adding a loosely coupled, reusable "sidecar" container to a Pod easy. These sidecar containers serve to enhance the primary container running in a Pod; frequent use-cases including adding [logging](https://kubernetes.io/docs/concepts/cluster-administration/logging/) or a [service mesh](https://en.wikipedia.org/wiki/Service_mesh). These coupled containers will share an IP address with the primary container.
 
 ### Network Policy as Part of Application Deployment
 
-By default, all Pods in Kubernetes can communicate with each other. Kubernetes also allows developers to declaratively apply networking policies, allowing the developer to restrict access to certain Pods or Namespaces. Basic network policy restrictions can be enforced by simply providing the name of Pods or Namespaces that you would like to give certain Pods egress and ingress capabilities to.
+By default, all Pods in Kubernetes can communicate with each other. A cluster administrator can declaratively apply networking policies, and these policies can restrict access to certain Pods or Namespaces. Basic network policy restrictions can be enforced by simply providing the name of Pods or Namespaces that you would like to give certain Pods egress and ingress capabilities to.
 
 ### Persistent Storage
 
