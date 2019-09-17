@@ -59,7 +59,7 @@ The upcoming Linode Kubernetes Engine (LKE) is an example of this category.
 
     - The KaaS application will continue to monitor the on-premise cluster and will perform software maintenance on them over time. The customer will need to perform repairs for any hardware issues on the cluster nodes.
 
-    In this arrangement, the customer is reponsible for the cost of the cluster nodes, but much of the administration complexity for Kubernetes is offloaded to the KaaS application.
+    In this arrangement, the customer is responsible for the cost of the cluster nodes, but much of the administration complexity for Kubernetes is offloaded to the KaaS application.
 
     It's also possible to use some KaaS applications with other cloud infrastructure platforms. The KaaS application will provision a cluster that's formed from cloud instances on the platform, and the customer will pay that platform for all of the nodes in the cluster.
 
@@ -69,11 +69,11 @@ The upcoming Linode Kubernetes Engine (LKE) is an example of this category.
 
     - Monitoring of node and cluster health
 
-    - Cluster software updater
+    - Cluster software updates
 
     - Cluster creation tools
 
-    While a customer will install and run these applications on their servers, the companies that author these applications may also offer support similar to cloud KaaS offerings.
+    While a customer will install and run these management applications on their own servers, the companies that author these applications may also offer support similar to cloud KaaS offerings.
 
     {{< note >}}
 An example application in this category is [Rancher](https://rancher.com) from Rancher Labs.
@@ -85,7 +85,7 @@ There are many reasons that developers should seek out Kubernetes solutions. Bel
 
 ### Declarative in Nature
 
-Kubernetes is declarative: describe to Kubernetes the desired state of the cluster and Kubernetes will ensure that this state is always fulfilled. If you want five containers running at any given time, all you need to do is create a Deployment and set the number of replicas to five. And, each set of instructions is rendered in human-readable YAML, which results in further benefits:
+Kubernetes is declarative: describe to Kubernetes the desired state of the cluster and Kubernetes will ensure that this state is always fulfilled. If you want five containers running at any given time, all you need to do is create a [Deployment](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#deployments) and set the number of replicas to five. And, each set of instructions is rendered in human-readable YAML, which results in further benefits:
 
 - **Version control of your infrastructure.** Because the resources in your cluster are declared in code, you can track changes to that code over time in version control systems like Git.
 
@@ -111,9 +111,9 @@ Kubernetes determines which Worker Nodes a container should run on based on avai
 
 ### Zero Downtime with Rolling Deployments
 
-Pods are the atomic unit of computing in Kubernetes, and they are responsible for running your application's containers. Pods are easy to deploy, but what happens when the code for your application and its container images has been updated by your team? To update your application running in your cluster, you'll need a way to update its Pods with the new container images.
+[Pods](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#pods) are the atomic unit of computing in Kubernetes, and they are responsible for running your application's containers. Pods are easy to deploy, but what happens when the code for your application and its container images has been updated by your team? To update your application running in your cluster, you'll need a way to update its Pods with the new container images.
 
-Kubernetes offers a solution with [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), which will create additional Pods with the newer image and assure that they are running and healthy and then destroy the old Pods. Kubernetes will also roll back any changes should the newer containers fail. In this way there is limited downtime, ensuring a strong user experience.
+Kubernetes offers a solution with [Deployments](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#deployments), which will create additional Pods with the newer image and assure that they are running and healthy and then destroy the old Pods. Kubernetes will also roll back any changes should the newer containers fail. In this way there is limited downtime, ensuring a strong user experience.
 
 ### Self-Healing
 
@@ -123,11 +123,11 @@ For many reasons, containers can fail. Kubernetes keeps deployments healthy by r
 
 It's important that all services have a predictable way of communicating with one another. However, within Kubernetes, containers are created and destroyed many times over, so a particular service may not exist permanently at a particular location. This traditionally meant that some kind of service registry would need to be created or adapted to the application logic to keep track of each container's location.
 
-Kubernetes has a native [Service](https://kubernetes.io/docs/concepts/services-networking/service/) concept which groups your Pods and simplifies service discovery. Kubernetes will provide IP addresses for each Pod, assign a DNS name for each set of Pods, and then load-balance the traffic to the Pods in a set. This creates an environment where the service discovery can be abstracted away from the container level.
+Kubernetes has a native [Service](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#services) concept which groups your Pods and simplifies service discovery. Kubernetes will provide IP addresses for each Pod, assign a DNS name for each set of Pods, and then load-balance the traffic to the Pods in a set. This creates an environment where the service discovery can be abstracted away from the container level.
 
 ### Multi-Container Pods
 
-Kubernetes [Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod/) often run a single container, but they are capable of running multiple containers as well. This makes adding a loosely coupled, reusable "sidecar" container to a Pod easy. These sidecar containers serve to enhance the primary container running in a Pod; frequent use-cases including adding [logging](https://kubernetes.io/docs/concepts/cluster-administration/logging/) or a [service mesh](https://en.wikipedia.org/wiki/Service_mesh). These coupled containers will share an IP address with the primary container.
+Kubernetes [Pods](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#pods) often run a single container, but they are capable of running multiple containers as well. This makes adding a loosely coupled, reusable "sidecar" container to a Pod easy. These sidecar containers serve to enhance the primary container running in a Pod; frequent use-cases including adding [logging](https://kubernetes.io/docs/concepts/cluster-administration/logging/) or a [service mesh](https://en.wikipedia.org/wiki/Service_mesh). These coupled containers will share an IP address with the primary container.
 
 ### Network Policy as Part of Application Deployment
 
@@ -135,19 +135,21 @@ By default, all Pods in Kubernetes can communicate with each other. A cluster ad
 
 ### Persistent Storage
 
-While Kubernetes provides a storage solution, called a Volume, that allows data to outlive the lifecycle of a container, the data is still tied to the longevity of the Pod. However, Kubernetes also provides a mechanism for storing data in cloud storage, like the [Linode Container Storage Interface (CSI)](/docs/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/), which allows for data to be stored on a Linode Block Storage Volume. Even if a Pod that's attached to the Block Storage Volume is destroyed, the data will persist.
+While Kubernetes provides a storage solution, called a [Volume](https://kubernetes.io/docs/concepts/storage/), that allows data to outlive the lifecycle of a container, the data is still tied to the longevity of the Pod. However, Kubernetes also provides a mechanisms for [storing persistent data in cloud storage](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). In particular, the [Container Storage Interface (CSI)](https://kubernetes.io/docs/concepts/storage/volumes/#csi) specification standard allows Kubernetes to create storage volumes on any cloud platform which supports the CSI.
+
+For example, the [Linode Container Storage Interface (CSI)](/docs/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/), makes it easy for you to create and attach Linode Block Storage Volumes to your Pods. Even if a Pod that's attached to the Block Storage Volume is destroyed, the data will persist.
 
 ### Cron Jobs
 
-Kubernetes provides a Jobs object for completing single tasks, such deploying a script. But, it also provides CronJob objects that can complete a task at a certain time, just like the the jobs you might find in a `crontab` file. This is particularly useful because it provides a declarative way to schedule cron jobs from within a cluster.
+Kubernetes provides a [Jobs](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#jobs) object for completing single tasks, like running a one-off script. But, it also provides [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) objects that can complete a task at a certain time, just like the [the jobs you might find in a `crontab` file](/docs/tools-reference/tools/schedule-tasks-with-cron/). This is particularly useful because it provides a declarative way to schedule cron jobs from within a cluster.
 
 ### Secrets Management
 
-One of the hurdles in container creation is the inclusion of secrets, tokens, and passwords. You simply don't want these sensitive values in your container images, especially if your containers are stored in a public registry like DockerHub. Kubernetes helps to alleviate this burden by providing Secrets objects, an `etcd` database-backed secrets management solution. With Secrets, you can store sensitive data and later expose that data, for example, via environmental variables to the container, keeping the value out of the container's code.
+One of the hurdles in container creation is the inclusion of secrets, tokens, and passwords. You simply don't want these sensitive values in your container images, especially if your containers are stored in a public registry like [DockerHub](https://hub.docker.com). Kubernetes helps to alleviate this burden by providing [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) objects, an `etcd` database-backed secrets management solution. With Secrets, you can store sensitive data and later expose that data (for example, via environmental variables to the container), keeping the value out of the container's code.
 
 ### Declarative DNS Management
 
-Ingress objects in Kubernetes allow for name based virtual hosting and HTTP routing in a straightforward, declarative manner. This means that Kubernetes is capable of directing multiple domains and URL paths to different Services. For instance, `domain1.com` and `domain2.com` can be hosted within the same cluster and target different services, and the URL paths `/first-service` and `/second-service` can be routed to the service `service1` and to `service2`, respectively.
+[Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) objects in Kubernetes allow for name based virtual hosting and HTTP routing in a straightforward, declarative manner. This means that Kubernetes is capable of directing multiple domains and URL paths to different Services. For instance, `domain1.com` and `domain2.com` can be hosted within the same cluster and target different services, and the URL paths `/first-service` and `/second-service` can be routed to the service `service1` and to `service2`, respectively.
 
 ### Free and Open Source
 
@@ -161,8 +163,12 @@ Kubernetes makes it easy to horizontally scale the number of containers in use d
 
 ### Testing Platform
 
-With Kubernetes it's easy to create virtual clusters that exactly mirror your production needs. These virtual clusters are called [Namespaces](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#namespaces). You could easily create a separate testing cluster and use `kubectl` contexts to switch between testing and production. But, you could also create Namespaces for testing, staging, and production, and run them all on the same hardware. With [ResourceQuotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) you can easily limit the CPU and memory resource allocation of the namespace, ensuring that every namespace has exactly what it needs to run without stealing resources from other namespaces.
+With Kubernetes it's easy to create physical or virtual clusters that exactly mirror your production needs:
+
+- You could create a separate testing cluster and use [`kubectl` contexts](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) to switch between testing and production.
+
+- Virtual clusters are called [Namespaces](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#namespaces). You can create Namespaces for testing, staging, and production, and run them all on the same hardware. With [ResourceQuotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) you can easily limit the CPU and memory resource allocation of the Namespace, ensuring that every Namespace has exactly what it needs to run without stealing resources from other Namespaces.
 
 ### CI/CD Pipelines
 
-A common integration for Kubernetes is setting up a continuous integration / continuous delivery pipeline. Kubernetes offers the predictability of containers with the ease of service discovery to test, build, and deploy quickly.
+A common integration for Kubernetes is setting up a continuous integration/continuous delivery (CI/CD) pipeline. Kubernetes offers the predictability of containers with the ease of service discovery to test, build, and deploy quickly.
