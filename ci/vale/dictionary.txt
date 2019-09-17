@@ -1328,6 +1328,7 @@ sukharev
 supervisord
 surbma
 suse
+swappable
 svn
 symantec
 symfony
@@ -1455,6 +1456,7 @@ untracked
 untruncated
 untrusted
 unversioned
+upsize
 uri
 uris
 url
