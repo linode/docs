@@ -26,7 +26,7 @@ The main subject of this guide is the *basic data types* of Go. This list includ
 Go comes with a very rich, well-tested and handy standard library. The list of the most important Go packages includes the following:
 
 | Package name | Description |
-------------------------------
+|--------------|-------------|
 | `io` | Used for performing primitive I/O operations. |
 | `bufio` | Used for executing buffered I/O. |
 | `os` | The package offers a **platform-independent** interface to OS functionality. |
