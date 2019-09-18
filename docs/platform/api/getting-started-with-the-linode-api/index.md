@@ -83,7 +83,7 @@ Specify the type, region, and image for the new Linode.
 
 1.  Repeat this procedure to choose a type:
 
-        curl https://api.linode.com/v4/linode/types/
+        curl https://api.linode.com/v4/images/ | json_pp
 
 1.  Choose a region:
 
