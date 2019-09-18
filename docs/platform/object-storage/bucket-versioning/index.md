@@ -32,7 +32,7 @@ You should familiarize yourself with the basics of Linode Object Storage by read
 Bucket versioning works by saving separate versions of objects in a bucket. When bucket versioning is enabled, an object that is uploaded to a bucket won't overwrite a previous copy of that object. Instead, each version of the object is given a different ID number and saved. When attempting to view the object over HTTP or to download the object without supplying a version ID, the latest version of the object is returned. If you delete an object with bucket versioning enabled, a delete marker is inserted into the bucket to report that the object has been deleted, but the bucket will retain all previous versions of the object. Any further retrieval operations will return the most recent version of an object.
 
 {{< caution >}}
-Every version of an object counts towards the monthly billable storage quota. While saving a few revisions is probably not worriesome, large version controlled buckets with many thousands of objects will see a noticeable increase in storage space demands, and should be monitored carefully.
+Every version of an object counts towards the monthly billable storage quota. While saving a few revisions is probably not something to worry about, large version controlled buckets with many thousands of objects will see a noticeable increase in storage space demands, and should be monitored carefully.
 {{</ caution >}}
 
 ### Cyberduck
@@ -47,7 +47,7 @@ Cyberduck is a graphical interface application that supports a wide variety of f
 
     ![The "Info" settings menu.](bucket-versioning-cyberduck-bucket-info2.png)
 
-3.  Next to *Versioning*, check the checkbox labeld **Bucket Versioning**.
+3.  Next to *Versioning*, check the checkbox labeled **Bucket Versioning**.
 
     ![Select the S3 menu heading to view the S3 specific bucket settings.](bucket-versioning-cyberduck-bucket-info3.png)
 
