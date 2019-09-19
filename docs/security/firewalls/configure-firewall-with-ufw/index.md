@@ -24,6 +24,10 @@ UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in A
 
 2.  Ensure that you complete the sections of [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the [Configure a Firewall](/docs/security/securing-your-server/#configure-a-firewall) section in [How to Secure Your Server](/docs/security/securing-your-server/) guide. This guide is an introduction to using UFW, which is a separate method of controlling a firewall than iptables commands. The guide lists the commands for Arch Linux, Debian or Ubuntu distributions only. However, you can use the relevant commands for the outlined tasks on various Linux distributions.
 
+{{< note >}}
+If you are running Docker, by default Docker directly manipulates  iptables. Any UFW rules that you specify will not apply to Docker containers.
+{{< /note >}}
+
 3.  Update your system.
 
     **Arch Linux**
