@@ -214,6 +214,12 @@
     "type": "bool",
     "description": "If false, publishing or updates to this guide will not be shown in the RSS feed."
   },
+  "show_social_image_in_article": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If false, any social media image set with the image frontmatter field will not be displayed in the guide."
+  },
   "slug": {
     "elements": false,
     "required": false,
