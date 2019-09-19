@@ -33,7 +33,7 @@
         {{ end }}
 
         {{ else }}
-        <meta property="og:image" content="{{ "media/images/default_social_image.png" | relURL }}">
+        <meta property="og:image" content="{{ "media/images/default_social_image.png" | absURL }}">
         {{ end }}
 
         {{ with .Params.twitter }}
