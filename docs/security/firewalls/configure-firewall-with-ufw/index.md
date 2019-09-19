@@ -16,6 +16,10 @@ title: How to Configure a Firewall with UFW
 
 UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in Arch Linux, Debian or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
 
+{{< note >}}
+If you are running Docker, by default Docker directly manipulates iptables. Any UFW rules that you specify does not apply to Docker containers..
+{{< /note >}}
+
 ![How to Configure a Firewall with UFW](ufw_tg.png "How to Configure a Firewall with UFW")
 
 ## Before You Begin
@@ -23,10 +27,6 @@ UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in A
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
 2.  Ensure that you complete the sections of [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the [Configure a Firewall](/docs/security/securing-your-server/#configure-a-firewall) section in [How to Secure Your Server](/docs/security/securing-your-server/) guide. This guide is an introduction to using UFW, which is a separate method of controlling a firewall than iptables commands. The guide lists the commands for Arch Linux, Debian or Ubuntu distributions only. However, you can use the relevant commands for the outlined tasks on various Linux distributions.
-
-{{< note >}}
-If you are running Docker, by default Docker directly manipulates  iptables. Any UFW rules that you specify will not apply to Docker containers.
-{{< /note >}}
 
 3.  Update your system.
 
