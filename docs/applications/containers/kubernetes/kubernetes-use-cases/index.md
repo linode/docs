@@ -15,7 +15,7 @@ contributor:
 
 ## What is Kubernetes
 
-Kubernetes is a container orchestration system that was initially designed by Google to help scale containerized applications in the cloud. Kubernetes can manage the lifecycle of containers, creating and destroying them depending on the needs of the application, as well as providing a host of other features. In the past few years Kubernetes has become one of the most talked about concepts in cloud based application development, and the rise of Kubernetes signals a shift in the way that applications are developed and deployed.
+Kubernetes is a container orchestration system that was initially designed by Google to help scale containerized applications in the cloud. Kubernetes can manage the lifecycle of containers, creating and destroying them depending on the needs of the application, as well as providing a host of other features. In the past few years Kubernetes has become one of the most discussed concepts in cloud based application development, and the rise of Kubernetes signals a shift in the way that applications are developed and deployed.
 
 In general, Kubernetes is formed by a *cluster* of servers, called Nodes, each running Kubernetes agent processes and communicating with one another. The *Master Node* is made up of a collection of processes called the *control plane* that help enact and maintain the desired state of the Kubernetes cluster, while *Worker Nodes* are responsible for running the containers that form your applications and services.
 
@@ -23,7 +23,7 @@ For a more in-depth explanation of Kubernetes concepts, see our five-part [Begin
 
 ### What is Managed Kubernetes
 
-*Managed Kubernetes* solutions are concerned with the management of one or more parts of a Kubernetes cluster. Because a cluster is formed from a number of different components, there are several different kinds of managed Kubernetes products, and each will solve different problems.
+*Managed Kubernetes* solutions are concerned with the management of one or more parts of a Kubernetes cluster. Because a cluster is formed from a number of different components, there are many different kinds of managed Kubernetes products, and each will solve a different set of problems.
 
 {{< disclosure-note "Why use a managed Kubernetes solution?" >}}
 Kubernetes can make managing containers and microservices easier, but Kubernetes itself also requires some administrative overhead. This includes:
@@ -37,7 +37,7 @@ Managed Kubernetes solutions will help offload some or all of this work.
 
 Here's a few common categories:
 
--   **Hosted, managed Kubernetes**
+-   **Hosted, Managed Kubernetes**
 
     Several cloud computing companies offer products which provision clusters on their platform. The control plane and Master Nodes for these clusters are entirely managed by the platform, which means that all maintenance and updates for the control plane software are carried out by the platform, and the platform monitors the health of the Master Nodes and performs repairs as needed.
 
@@ -49,9 +49,9 @@ Here's a few common categories:
 The upcoming Linode Kubernetes Engine (LKE) is an example of this category.
 {{< /note >}}
 
--   **Software-as-a-service Kubernetes**
+-   **Software-as-a-Service Kubernetes**
 
-    Other companies offer *Kubernetes-as-a-service (KaaS)* products. These are cloud-based applications which assist in the provisioning and ongoing software maintenance of clusters. However, they do not necessarily provide the server instances which will act as your cluster's nodes. A frequent use-case for these products is using Kubernetes on on-premise servers:
+    Other companies offer *Kubernetes-as-a-Service (KaaS)* products. These are cloud-based applications which assist in the provisioning and ongoing software maintenance of clusters. However, they do not necessarily provide the server instances which will act as your cluster's nodes. A frequent use-case for these products is using Kubernetes with on-premise servers:
 
     - The customer will create or build servers in their on-premise facility. The customer will usually need to complete some prerequisite instructions to prepare their servers for use with the KaaS application.
 
@@ -81,7 +81,7 @@ An example application in this category is [Rancher](https://rancher.com) from R
 
 ## Advantages
 
-There are many reasons that developers should seek out Kubernetes solutions. Below are a sampling of advantages and use cases that Kubernetes possesses.
+There are many reasons that developers would choose to use Kubernetes as a solution. Below is a short list of advantages and common use cases for implementing Kubernetes.
 
 ### Declarative in Nature
 
@@ -111,9 +111,9 @@ Kubernetes determines which Worker Nodes a container should run on based on avai
 
 ### Zero Downtime with Rolling Deployments
 
-[Pods](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#pods) are the atomic unit of computing in Kubernetes, and they are responsible for running your application's containers. Pods are easy to deploy, but what happens when the code for your application and its container images has been updated by your team? To update your application running in your cluster, you'll need a way to update its Pods with the new container images.
+[Pods](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#pods) are the smallest unit of computing in Kubernetes, responsible for running your application's containers. Like many features of Kubernetes, pods have the additional capability of increasing your applications overall uptime when compared to other solutions. For example, consider the process that takes place when the code for your application and its container images has been updated by your team. To update your application running in your cluster, you'll need a way to update its Pods with the new container images.
 
-Kubernetes offers a solution with [Deployments](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#deployments), which will create additional Pods with the newer image and assure that they are running and healthy and then destroy the old Pods. Kubernetes will also roll back any changes should the newer containers fail. In this way there is limited downtime, ensuring a strong user experience.
+Kubernetes offers a solution with [Deployments](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#deployments), which will create additional Pods with the newer image and assure that they are running and healthy before destroying the old Pods. Kubernetes will also roll back any changes should the newer containers fail. In this way there is limited downtime, ensuring a strong user experience.
 
 ### Self-Healing
 
@@ -141,7 +141,7 @@ For example, the [Linode Container Storage Interface (CSI)](/docs/applications/c
 
 ### Cron Jobs
 
-Kubernetes provides a [Jobs](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#jobs) object for completing single tasks, like running a one-off script. But, it also provides [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) objects that can complete a task at a certain time, just like the [the jobs you might find in a `crontab` file](/docs/tools-reference/tools/schedule-tasks-with-cron/). This is particularly useful because it provides a declarative way to schedule cron jobs from within a cluster.
+Kubernetes provides a [Jobs](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#jobs) object for completing single tasks, like running a one-off script. For regular scheduled tasks, Kubernetes also provides [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) objects that can complete a task at a certain time, just like the [the jobs you might find in a `crontab` file](/docs/tools-reference/tools/schedule-tasks-with-cron/). This is particularly useful because it provides a declarative way to schedule cron jobs from within a cluster.
 
 ### Secrets Management
 
@@ -151,13 +151,13 @@ One of the hurdles in container creation is the inclusion of secrets, tokens, an
 
 [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) objects in Kubernetes allow for name based virtual hosting and HTTP routing in a straightforward, declarative manner. This means that Kubernetes is capable of directing multiple domains and URL paths to different Services. For instance, `domain1.com` and `domain2.com` can be hosted within the same cluster and target different services, and the URL paths `/first-service` and `/second-service` can be routed to the service `service1` and to `service2`, respectively.
 
-### Free and Open Source
-
-Kubernetes is free and open source software (FOSS). While initially developed by Google, Kubernetes has been democratized and is now under the charter of the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/). Kubernetes is actively developed and maintained, with a number of high-profile companies championing its cause, all but ensuring it will have a long and influential tenure as the de-facto container orchestration solution.
-
 ### Scalability
 
 Kubernetes makes it easy to horizontally scale the number of containers in use depending on the needs of the application. You can change this number from the command line, or you can use the [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to change the number of containers based on usage metrics.
+
+### Free and Open Source
+
+Kubernetes is free and open source software (FOSS). While initially developed by Google, Kubernetes has been democratized and is now under the charter of the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/). Kubernetes is actively developed and maintained, with a number of high-profile companies championing its cause, all but ensuring it will have a long and influential tenure as the de-facto container orchestration solution.
 
 ## Additional Use Cases
 
