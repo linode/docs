@@ -238,6 +238,14 @@
     "type": "text",
     "description": "Short version of title to be displayed in a front page icon."
   },
+  "twitter": {
+    "elements": [
+      "card"
+    ],
+    "required": false,
+    "type": "dict",
+    "description": "Determines which type of Twitter card summary to display when sharing a guide."
+  },
   "type": {
     "elements": false,
     "required": false,
