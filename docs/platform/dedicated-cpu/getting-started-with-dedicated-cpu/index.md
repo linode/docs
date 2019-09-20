@@ -9,10 +9,10 @@ modified: 2019-08-23
 modified_by:
   name: Linode
 published: 2019-08-23
-title: Getting Started with Dedicated CPU
+title: Getting Started with Dedicated CPUs
 ---
 
-This guide will serve as a brief introduction into what a Dedicated CPU Linode is and how to add one to your Linode account. For more specific information regarding CPU use cases, see our [Dedicated CPU Use Case Guide](placeholder).
+This guide will serve as a brief introduction into what a Dedicated CPU Linode is and how to add one to your Linode account. Review our [Use Cases for Dedicated CPUs](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/) guide for more information about the tasks that work well on this instance type.
 
 ## What is a Dedicated CPU Linode?
 
@@ -28,7 +28,7 @@ While a Standard Linode is a good fit for most use cases, a Dedicated CPU Linode
 - [Machine learning](/docs/applications/big-data/how-to-move-machine-learning-model-to-production/)
 
     {{< note >}}
-For more information on Dedicated CPU use cases, see our [Dedicated CPU Use Case Guide](placeholder).
+For more information on Dedicated CPU use cases, see our [Use Cases for Dedicated CPU Instances](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/).
 {{< /note >}}
 
 ## Deploying a Dedicated CPU Linode

@@ -9,7 +9,7 @@ modified: 2019-08-28
 modified_by:
   name: Linode
 published: 2019-09-05
-title: Dedicated CPU Use Cases
+title: Use Cases for Linode Dedicated CPU Instances
 ---
 
 ## Why Dedicated CPU
