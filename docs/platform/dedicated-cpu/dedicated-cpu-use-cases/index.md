@@ -2,7 +2,7 @@
 author:
   name: Ryan Syracuse
   email: rsyracuse@linode.com
-description: 'Dedicated CPU use cases.'
+description: 'A collection of computing tasks that are best served by dedicated CPU cores, and why they work better on a Dedicated CPU instance.'
 keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:

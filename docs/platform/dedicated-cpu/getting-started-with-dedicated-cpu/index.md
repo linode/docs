@@ -2,7 +2,7 @@
 author:
   name: Ryan Syracuse
   email: rsyracuse@linode.com
-description: 'Getting Started with Dedicated CPU'
+description: 'How to set up a Dedicated CPU Linode on your account, and a brief overview of what purpose they serve.'
 keywords: ["cpu", "dedicated cpu", "getting started", "cpu steal", "steal"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
