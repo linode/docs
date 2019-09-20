@@ -5,10 +5,9 @@ author:
 description: 'Dedicated CPU use cases.'
 keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-08-28
 modified_by:
   name: Linode
-published: 2019-09-05
+published: 2019-09-20
 title: Use Cases for Linode Dedicated CPU Instances
 ---
 
