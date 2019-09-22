@@ -65,6 +65,7 @@ automattic
 automount
 autorelabel
 autorun
+autoscaler
 autoscaling
 autossh
 autostart
@@ -286,6 +287,7 @@ dircaps
 directadmin
 dired
 direnv
+discoverability
 disqus
 distro
 distros
