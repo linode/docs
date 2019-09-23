@@ -12,32 +12,29 @@ published: 2015-02-05
 title: Installing McMyAdmin for Minecraft on Debian
 external_resources:
  - '[McMyAdmin Home Page](https://mcmyadmin.com/)'
- - '[McMyAdmin Settings Reference](http://wiki.cubecoders.com/wiki/3/mcmyadmin-settings-reference)'
 aliases: ['applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
 dedicated_cpu_link: true
 ---
 
 ![Installing McMyAdmin for Minecraft on Debian](Installing_McMyAdmin_for_Minecraft_on_Debian_smg.png "Installing McMyAdmin for Minecraft on Debian")
 
-[McMyAdmin](https://mcmyadmin.com/) is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 7 or 8. Be aware that to actually play on a Minecraft server you must also have the game client from [minecraft.net](https://minecraft.net/).
+[McMyAdmin](https://mcmyadmin.com/) is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 9. Be aware that to actually play on a Minecraft server you must also have the game client from [minecraft.net](https://minecraft.net/).
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall* section yet--this guide includes firewall rules specifically for a Minecraft server.
+2.  Update your system.
 
-3.  Update your system.
+        apt-get update && sudo apt-get upgrade
 
-        sudo apt-get update && sudo apt-get upgrade
+## Configure iptables
 
-## Configure a Firewall
-
-Now see [Securing Your Server](/docs/security/securing-your-server/) again and complete the section on iptables for your Linux distribution **using the rulesets below**:
+1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the following rulesets into the respective files.
 
 **IPv4**
 
-{{< file "iptables" >}}
+{{< file "/tmp/v4" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -77,7 +74,7 @@ By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default M
 
 If you choose *not* to use IPv6 on your Minecraft server, then it needs only basic IPv6 firewall rules.
 
-{{< file "iptables" >}}
+{{< file "/tmp/v6" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -98,13 +95,22 @@ If you choose *not* to use IPv6 on your Minecraft server, then it needs only bas
 COMMIT
 {{< /file >}}
 
+2.Import the rulesets into immediate use:
+
+        iptables-restore < /tmp/v4
+        ip6tables-restore < /tmp/v6
+
+3.To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
+
 ## Install Prerequisite Software
 
-1.  Install the Java Runtime Environment, OpenJDK:
+1. This guide will use ```sudo``` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-        sudo apt-get install openjdk-7-jre
+2.  Install the Java Runtime Environment, OpenJDK:
 
-2.  [Mono](http://www.mono-project.com/) is an open source implementation of the .NET framework. CubeCoders Limited, the company behind McMyAdmin, packages its own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
+        sudo apt-get install openjdk-8-jre
+
+3.  [Mono](http://www.mono-project.com/) is an open source implementation of the .NET framework. CubeCoders Limited, the company behind McMyAdmin, packages its own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
 
         cd /usr/local
         sudo wget http://mcmyadmin.com/Downloads/etc.zip
@@ -116,15 +122,16 @@ This section should be completed as your standard user, **not** as root. McMyAdm
 
 1.  Create the installation directory and change location to it.
 
-        mkdir ~/mcmyadmin && cd ~/mcmyadmin
+        sudo mkdir ~/McMyAdmin && cd ~/McMyAdmin
 
 2.  Download the McMyAdmin installer. You will want to double check its [Download](https://www.mcmyadmin.com/#/download) page to be sure you're grabbing the latest version.
 
-        wget http://mcmyadmin.com/Downloads/MCMA2_glibc26_2.zip
+        sudo wget http://mcmyadmin.com/Downloads/MCMA2_glibc26_2.zip
 
 3.  Extract the archive and delete the original zip file.
 
-        unzip MCMA2_glibc26_2.zip; rm MCMA2_glibc26_2.zip
+        sudo unzip MCMA2_glibc26_2.zip
+        sudo rm MCMA2_glibc26_2.zip
 
 4.  Start the initial configuration of McMyAdmin. Replace `PASSWORD` with a strong password which you want for admin access to McMyAdmin's web interface.
 
@@ -133,23 +140,15 @@ This section should be completed as your standard user, **not** as root. McMyAdm
     This will return the output:
 
         The updater will download and install McMyAdmin to the current directory:
-        /home/your_user/mcmyadmin).
+        /home/your_user/McMyAdmin).
 
         Continue? [y/n] :
 
     Answer `y`. The installer will run and return you to the command prompt. If everything is as it should be, the only warning you'll see will be for a missing configuration file. As the output says, that would be normal since McMyAdmin was just started for the first time.
 
-5.  Install screen, if it is not already installed.
+5. Change into the McMyAdmin installation directory and start the program.
 
-        sudo apt-get install screen
-
-6.  Start a screen session for the McMyAdmin client.
-
-        screen -S mcma
-
-7.  Change into the McMyAdmin installation directory and start the program.
-
-        cd ~/mcmyadmin; ./MCMA2_Linux_x86_64
+        cd ~/McMyAdmin; ./MCMA2_Linux_x86_64
 
     If successful, the last three lines of the output will be:
 
