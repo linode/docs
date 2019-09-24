@@ -29,6 +29,9 @@ dedicated_cpu_link: true
         apt-get update && sudo apt-get upgrade
 
 ## Configure iptables
+{{< note >}}
+You will have to configure the iptables as a root user–this guide includes firewall rules specifically for a Minecraft server. Do **not** proceed to [Securing Your Server](/docs/security/securing-your-server) guide yet. 
+{{< /note >}}
 
 1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the following rulesets into the respective files.
 
