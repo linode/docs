@@ -35,9 +35,9 @@ You will have to configure the iptables as a root user–this guide includes fir
 
 1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the following rulesets into the respective files.
 
-**IPv4**
+    **IPv4**
 
-{{< file "/tmp/v4" >}}
+    {{< file "/tmp/v4" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -71,13 +71,13 @@ You will have to configure the iptables as a root user–this guide includes fir
 COMMIT
 {{< /file >}}
 
-**IPv6**
+    **IPv6**
 
-By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availability, thus including players whose ISPs or hardware don't support IPv6.
+    By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availability, thus including players whose ISPs or hardware don't support IPv6.
 
-If you choose *not* to use IPv6 on your Minecraft server, then it needs only basic IPv6 firewall rules.
+    If you choose *not* to use IPv6 on your Minecraft server, then it needs only basic IPv6 firewall rules.
 
-{{< file "/tmp/v6" >}}
+    {{< file "/tmp/v6" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -98,12 +98,12 @@ If you choose *not* to use IPv6 on your Minecraft server, then it needs only bas
 COMMIT
 {{< /file >}}
 
-2.Import the rulesets into immediate use:
+2. Import the rulesets into immediate use:
 
         iptables-restore < /tmp/v4
         ip6tables-restore < /tmp/v6
 
-3.To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
+3.  To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
 
 ## Install Prerequisite Software
 
@@ -175,7 +175,11 @@ To exit McMyAdmin and return to the command line, enter `/quit`.
 
     ![McMyAdmin Configuration Page](mcmyadmin-config-page.png)
 
-4.  Select *Start Server* and accept the Minecraft Server EULA.
+4.  Select *Start Server* and accept the Minecraft Server EULA (End User Licensing Agreement).
+
+    {{< note >}}
+If you are not prompted to accept the EULA in McMyAdmin, you can find the EULA at `~/McMyAdmin/Minecraft/eula.txt`. Change the value of `eula=false` to `eula=true`.
+{{</ note >}}
 
     ![McMyAdmin Status Page](mymyadmin-status-page.png)
 
