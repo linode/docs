@@ -20,6 +20,10 @@ external_resources:
 
 A good use case for an LKE cluster is serving   a static site. A [container](/docs/applications/containers/kubernetes/kubernetes-reference/#container) image for a static site can be written in less than ten lines, and only one container image is needed, so it's less complicated to deploy a static site on Kubernetes than some other applications with multiple components. These reasons also make deploying a static site a great example to follow when learning Kubernetes.
 
+{{< caution >}}
+Following the instructions in this guide will create billable resources on your account in the form of Linodes and NodeBalancers. You will be billed an hourly rate for the time that these resources exist on your account. If you do not wish to continue the use of these resources after you finished the following instructions, be sure to follow the tear-down section at the end of this guide.
+{{</ caution >}}
+
 ## In this Guide
 
 This guide will show you how to:
