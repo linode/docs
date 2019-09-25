@@ -13,14 +13,14 @@ contributor:
   name: Linode
 ---
 
-Tthe act of deleting objects in a bucket can take a significant amount time. While deleting a few objects might not take that long, when the objects number in the thousands or even millions the time required to complete the delete operations can easily become unmanageable. It's best when deleting a substantial amount of objects to use what are known as *lifecycle policies*.
+While deleting a few objects in an Object Storage bucket might not take that long, when the objects number in the thousands or even millions the time required to complete the delete operations can easily become unmanageable. It's best when deleting a substantial amount of objects to use what are known as *lifecycle policies*.
 
-A lifecycle policy is a set of rules that govern the deletion of objects after a given amount of time. For instance, a lifecycle policy can be created that deletes objects every thirty days, or once a week. Beyond simply deleting every object in a bucket, depending on the tool used lifecycle policies are capable of deleting older versions of objects in buckets that have bucket versioning enabled.
+A lifecycle policy is a set of rules that govern the deletion of objects after a given amount of time. For instance, a lifecycle policy can be created that deletes objects every thirty days, or once a week. This is useful for cases where the data in a bucket becomes outdated, such as when collecting activity logs. Beyond simply deleting every object in a bucket, depending on the tool used lifecycle policies are capable of deleting older versions of objects in buckets that have bucket versioning enabled.
 
-Lifecycle policies are enacted starting at midnight of the Object Storage cluster's local time, not relative to the object's creation date. This means that if you set a lifecycle policy of one day, the objects will be deleted the next midnight, regardless of the time of the object's creation.
+Lifecycle policies are enacted starting at midnight of the Object Storage cluster's local time. This means that if you set a lifecycle policy of one day, the objects will be deleted the midnight after they become 24 hours old.
 
 {{< note >}}
-There is a chance that a lifecycle policy will not delete all of the files in a bucket the first time the lifecycle policy is enacted. This is especially true for buckets with upwards of a million objects. In cases like these, *most* of the objects are normally deleted, and any further objects are typically deleted during the next iteration of the lifecycle policy's rules.
+There is a chance that a lifecycle policy will not delete all of the files in a bucket the first time the lifecycle policy is enacted. This is especially true for buckets with upwards of a million objects. In cases like these, *most* of the objects are deleted, and any further objects are typically deleted during the next iteration of the lifecycle policy's rules.
 {{</ note >}}
 
 This guide will show you how to create and delete lifecycle policies with the [s3cmd command line interface](https://s3tools.org/s3cmd) (CLI) and the [Cyberduck graphical user interface](https://cyberduck.io/) (GUI).
@@ -35,7 +35,7 @@ s3cmd allows users to set and manage lifecycle policies from the command line. B
 
 ### Creating a Lifecycle Policy File
 
-In S3 a lifecycle policy is represented by an XML file. This XML file can be created in the file editor of your choosing. Consider the following lifecycle policy file:
+In S3-compatible Object Storage, a lifecycle policy is represented by an XML file. This XML file can be created in the file editor of your choosing. Consider the following lifecycle policy file:
 
 {{< file "lifecycle_policy.xml" xml >}}
 <LifecycleConfiguration>
@@ -50,9 +50,9 @@ In S3 a lifecycle policy is represented by an XML file. This XML file can be cre
 </LifecycleConfiguration>
 {{< /file >}}
 
-The above lifecycle policy deletes all objects in the bucket at the end of every day. Each lifecycle policy file needs a `LifecycleConfiguration` block and a a nested `Rule` block. The `Rule` block must contain `Prefix`, `Status`, and `Expiration` blocks, and it's also a good idea to include an `ID` block.
+The above lifecycle policy deletes all objects in the bucket after one day. Each lifecycle policy file needs a `LifecycleConfiguration` block and a nested `Rule` block. The `Rule` block must contain `Prefix`, `Status`, and `Expiration` blocks, and it's also a good idea to include an `ID` block.
 
-- The `ID` block defines a name for the lifecycle policy rule. These must be unique to each rule.
+- The `ID` block defines a name for the lifecycle policy rule. This must be unique.
 - The `Prefix` is a string of characters. This string is used to select objects for deletion with the same matching prefix. For example, objects that begin with `error_report-` could be targeted for deletion by providing this prefix. This `Prefix` can be empty if you'd like to delete all files in a bucket.
 - The `Status` is a string value describing the status of the lifecycle policy. To enable the policy, set this value to `Enabled`, to disable the policy set the value to `Disabled`.
 - The `Expiration` block contains the `Days` block. The `Days` block is a the number of days before this rule will be enacted. In the above example, the `Days` is set to `1`, meaning that the objects in the bucket will be deleted after one day.
@@ -84,7 +84,7 @@ A lifecycle policy file can contain one `LifecycleConfiguration` block, but the 
         <Prefix>error</Prefix>
         <Status>Enabled</Status>
         <Expiration>
-            <Days>1</Days>
+            <Days>7</Days>
         </Expiration>
     </Rule>
     <Rule>
@@ -142,7 +142,7 @@ You'll see a confirmation that the lifecycle policy was deleted:
 
 ## Cyberduck
 
-Cyberduck allows less control over lifecycle polices than the s3cmd command line tool. In particular, this means that Cyberduck does not allow setting a lifecycle policy to remove outdated versions of objects, and limits the length of the lifecycle policy to commonly used time spans. Below you will learn how to set a lifecycle policy using Cyberduck.
+Cyberduck allows less control over lifecycle polices than the s3cmd command line tool. In particular, this means that Cyberduck does not allow setting a lifecycle policy to remove outdated versions of objects in buckets with versioning enabled, and limits the length of the lifecycle policy to commonly used time spans. Below you will learn how to set a lifecycle policy using Cyberduck.
 
 ### Enable a Lifecycle Policy
 
