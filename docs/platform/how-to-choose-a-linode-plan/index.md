@@ -39,7 +39,7 @@ The different Linode instance types represent different balances of the above re
 
 At the same time, different kinds of applications have different resource requirements. Some applications may need to store a lot of data but require less processing power, some may need more memory than CPU, and some may be especially CPU-intensive. As a result, certain instance types can better serve certain applications. When creating your instances, consider what resources your application needs and then compare it with the resources specified by each of the instance types. The following sections include common use cases for each type, and one of these may resemble your needs.
 
-Finally, a common strategy when setting up a new server is to start with a smaller instance and then resize your Linode if needed. At a minimum, you will need to choose a plan that offers enough disk space to store your data. You can then [monitor](/docs/uptime/monitoring-and-maintaining-your-server-new-manager/) the CPU,    GPU, memory, and network usage of your application to determine if you need more of those resources.
+Finally, a common strategy when setting up a new server is to start with a smaller instance and then resize your Linode if needed. At a minimum, you will need to choose a plan that offers enough disk space to store your data. For more information, see [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/). You can then [monitor](/docs/uptime/monitoring-and-maintaining-your-server-new-manager/) the CPU,    GPU, memory, and network usage of your application to determine if you need more of those resources.
 
 ## 1. Nanode
 

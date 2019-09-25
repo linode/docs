@@ -97,9 +97,13 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
 ### Create an Authentication Key-pair
 
+{{< note >}}
+As of Autumn 2018, [OpenSSH](https://www.openssh.com/) has been added to Windows 10, simplifying the process for securing SSH. **Windows 10** in this guide assumes OpenSSH has been installed as part of this update, while **Earlier Windows Versions** would apply to earlier versions.
+{{< /note >}}
+
 1.  This is done on your local computer, **not** your Linode, and will create a 4096-bit RSA key-pair. During creation, you will be given the option to encrypt the private key with a passphrase. This means that it cannot be used without entering the passphrase, unless you save it to your local desktop's keychain manager. We suggest you use the key-pair with a passphrase, but you can leave this field blank if you don't want to use one.
 
-    **Linux / OS X**
+    **Linux / OS X / Windows 10**
 
     {{< caution >}}
 If you've already created an RSA key-pair, this command will overwrite it, potentially locking you out of other systems. If you've already created a key-pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
@@ -107,9 +111,9 @@ If you've already created an RSA key-pair, this command will overwrite it, poten
 
         ssh-keygen -b 4096
 
-    Press **Enter** to use the default names `id_rsa` and `id_rsa.pub` in `/home/your_username/.ssh` before entering your passphrase.
+    Press **Enter** to use the default names `id_rsa` and `id_rsa.pub` before entering your passphrase. On Linux and OS X, these files will be saved in the `/home/your_username/.ssh` directory. On Windows, they will be saved in `C:\Users\MyUserName\.ssh`
 
-    **Windows**
+    **Earlier Windows Versions**
 
     This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/security/authentication/use-public-key-authentication-with-ssh/#windows-operating-system).
 
@@ -135,9 +139,17 @@ If you've already created an RSA key-pair, this command will overwrite it, poten
 `ssh-copy-id` is available in [Homebrew](http://brew.sh/) if you prefer it over SCP. Install with `brew install ssh-copy-id`.
 {{< /note >}}
 
-    **Windows**
+    **Windows 10**
 
-    - **Option 1**: This can be done using [WinSCP](http://winscp.net/). In the login window, enter your Linode's public IP address as the hostname, and your non-root username and password. Click *Login* to connect.
+    On your Linode (while signed in as your limited user):
+
+        mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
+
+    From your local computer:
+
+        scp C:\Users\MyUserName\.ssh/id_rsa.pub example_user@203.0.113.100:~/.ssh/authorized_keys
+    **Earlier Windows Versions**
+    - **Option 1:** This can be done using [WinSCP](http://winscp.net/). In the login window, enter your Linode's public IP address as the hostname, and your non-root username and password. Click *Login* to connect.
 
         Once WinSCP has connected, you'll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you've saved your public key, select the public key file, and click *Upload* in the toolbar above.
 

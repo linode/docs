@@ -16,13 +16,7 @@ contributor:
 
 ![How to Resell Linode Services](how-to-resell-linode-services.png "How to Resell Linode Services")
 
-Linode warmly welcomes and encourages the reselling of our services to third-party customers. Anyone can resell Linode services. This guide will walk you through the process of becoming a reseller.
-
-{{< note >}}
-While Linode encourages reselling, we do not currently have a special reseller program. Linode does not offer discounted pricing for resellers at this time, nor do we directly offer white-label software, like WHMCS plugins, to aid in reselling. It is possible to create such software of your own via the [Linode API](#linode-api).
-
-However, Linode does have a referral program. For more information on Linode's referral program, read the [referral codes section](#referral-codes).
-{{</ note >}}
+Linode warmly welcomes and encourages the reselling of our services to third-party customers. Anyone can resell Linode services. We offer discounted pricing for resellers. If you are interested in discounted pricing, please contact `partnership@linode.com`. This guide will walk you through the process of becoming a reseller.
 
 ## What is a Reseller
 
