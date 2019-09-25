@@ -147,7 +147,7 @@ For more information on downloading Hugo, you can visit the official [Hugo websi
 
 1.  In your browser, navigate to the [Linode Cloud Manager](https://cloud.linode.com)
 
-1.  Click the **Create** button that appears on the left-hand side of  the top navigation. Then, select the Kubernetes option from the dropdown menu that appears:
+1.  Click the **Create** button that appears on the left-hand side of the top navigation. Then, select the Kubernetes option from the dropdown menu that appears:
 
     [![The Kubernetes option the Cloud Manager's Create dropdown](lke-static-site-create-cluster.png "The Kubernetes option the Cloud Manager's Create dropdown")](lke-static-site-create-cluster.png)
 
@@ -230,19 +230,19 @@ These instructions will persist the context for users of the Bash terminal. They
 
         mkdir configs
 
-3.  Copy your `kubeconfig.yaml` file to the `$HOME/.kube/configs` directory. You can give this file a different name to help distinguish it from other `kubeconfig.yaml` files. In the example below the file has been renamed `static-site.yaml`:
+1. Copy your `kubeconfig.yaml` file to the `$HOME/.kube/configs` directory. You can give this file a different name to help distinguish it from other `kubeconfig.yaml` files. In the example below the file has been renamed `static-site.yaml`:
 
         cp ~/Downloads/kubeconfig.yaml $HOME/.kube/configs/static-site.yaml
 
-4.  Open up your Bash profile (`~/.bash_profile`) in the text editor of your choice and add your configuration file to the `$KUBECONFIG` PATH variable.
+1.  Open up your Bash profile (`~/.bash_profile`) in the text editor of your choice and add your configuration file to the `$KUBECONFIG` PATH variable.
 
     If an `export KUBECONFIG` line is already present in the file, append to the end of this line as follows; if it is not present, and this line to the end of your file:
 
         export KUBECONFIG:$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/static-site.yaml
 
-5.  Close your terminal window and open a new window to receive the changes to the `$KUBECONFIG` variable.
+1.  Close your terminal window and open a new window to receive the changes to the `$KUBECONFIG` variable.
 
-6.  Use the `config get-contexts` command for `kubectl` to view the available cluster contexts:
+1.  Use the `config get-contexts` command for `kubectl` to view the available cluster contexts:
 
         kubectl config get-contexts
 
@@ -291,13 +291,13 @@ In this section you will create a static site on your workstation using Hugo.
 Git submodules allow you to include one Git repository within another, each maintaining their own version history. To view a collection of Hugo themes, visit the [Hugo theme collection](https://themes.gohugo.io/).
 {{< /note >}}
 
-5.  In the text editor of your choice, open the `config.toml` file and add the following line to the end:
+1.  In the text editor of your choice, open the `config.toml` file and add the following line to the end:
 
         theme = "ananke"
 
     This line instructs Hugo to search for a folder named `ananke` in the `themes` directory and applies the templating it finds to the static site.
 
-6.  Add an example first post to your Hugo site:
+1.  Add an example first post to your Hugo site:
 
         hugo new posts/first_post.md
 
@@ -509,7 +509,7 @@ In this section you will create a [Deployment](/docs/applications/containers/kub
 
         cd ..
 
-2.  Create a new directory to house your Kubernetes [manifests](/docs/applications/containers/kubernetes/kubernetes-reference/#kubernetes-manifests), and move into that directory:
+1.  Create a new directory to house your Kubernetes [manifests](/docs/applications/containers/kubernetes/kubernetes-reference/#kubernetes-manifests), and move into that directory:
 
         mkdir manifests && cd manifests
 
