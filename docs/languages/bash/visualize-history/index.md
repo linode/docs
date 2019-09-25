@@ -2,13 +2,13 @@
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'Analyzing your command history files.'
+description: 'An Overview of Popular Data Visualization Tools'
 keywords: ["UNIX", "shell", "bash", "Visualization", "R", "Python", "Perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-07
 modified_by:
   name: Linode
-title: 'Visualizing your UNIX command history.'
+title: 'An Overview of Popular Data Visualization Tools'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
@@ -24,6 +24,9 @@ In this guide we are going to learn how to analyze user commands taken from one 
 {{< note >}}
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
+
+## Create Your Data Set
+
 
 ## About the data
 
@@ -126,7 +129,7 @@ Apart from the number of history entries that contain a command, you can also se
 
 In this section we are going to use a script written in Perl. The Perl script expects a single argument, which must be the directory that holds all history files that you want to process.
 
-    {{< file "./length.pl" perl >}}
+{{< file "./length.pl" perl >}}
 #!/usr/bin/perl -w
 
 use strict;
@@ -169,10 +172,10 @@ exit 0;
 sub process_file {
     my $file = shift;
     my $line = "";
-    
+
     open (HISTORYFILE, "< $file")
         || die "Cannot open $file: $!\n";
-    
+
     while (defined($line = <HISTORYFILE>)) {
         chomp $line;
         next if ( ! defined($line) );
@@ -184,7 +187,7 @@ sub check_category {
     my $command = shift;
     chomp $command;
     my $length = length($command);
-    
+
     if ( $length <= 2 ) { $CAT1 ++; }
     elsif ( $length <= 5 ) { $CAT2 ++; }
     elsif ( $length <= 10 ) { $CAT3 ++; }
@@ -235,17 +238,17 @@ In the second part of this guide, you are going to learn how to visualize the hi
 
 This is a screenshoot from [R Studio](https://www.rstudio.com/products/rstudio/download/), which is a GUI for R, that shows a graphical representation of `categories.txt` as a *pie chart* as well as the R commands used for creating it. Generally speaking R is excellent at visualizing data!
 
-[![A Pie Chart]pie_chart_small.png “A Pie Chart.”)](pie_chart.png)
+![Pie Chart](pie_chart.png)
 
 Similarly, this is a screenshoot from R Studio that shows a graphical representation of `top10` as a *bar plot* as well as the R commands used for creating it.
 
-[![Top 10]top_10_small.png “Top 10.”)](top_10.png)
+![Top 10](top_10.png)
 
 ### Creating a Word Cloud
 
 In this section we are going to create a Word Cloud for the commands. The Word Cloud is going to be created using Python 3 and some handy Python 3 packages.
 
-    {{< file "./wordCloud.py" python >}}
+{{< file "./wordCloud.py" python >}}
 #!/usr/bin/env python3
 
 import pandas as pd
@@ -273,13 +276,13 @@ plt.savefig('./word_cloud.png', dpi=1000)
 
 The Python 3 script uses the `pandas`, `matplotlib` and `wordcloud` libraries, which should be installed for the script to run, processes the `h1` history file and generates no output on the terminal. However, it creates a PNG image named `word_cloud.png`. The generated image will look similar to the following.
 
-[![Word Cloud](word_cloud_small.png “Word Cloud.”)](word_cloud.png)
+![Word Cloud](word_cloud.png)
 
 ### Using D3.js
 
 [D3.js](https://d3js.org/) is a very popular visualization library written in JavaScript. This part of the guide will use D3.js to visualize history files - the output will also be a pie chart. The tricky point with D3.js is that for D3.js to process its data, the data should be in JSON format. The `cToJSON.go` command line utility will be used for creating a summary of one or more history files, finding out the 10 most popular commands and converting that output into the JSON format.
 
-    {{< file "./cToJSON.go" go >}}
+{{< file "./cToJSON.go" go >}}
 package main
 
 import (
@@ -393,7 +396,7 @@ Although we could have used the JSON capabilities of Go, `cToJSON.go` creates pl
 
 Now, we are ready to process the data using D3.js. The D3.js code is embedded into an HTML file named `pieChart.html`, which has the following contents:
 
-    {{< file "./pieChart.html" javascript >}}
+{{< file "./pieChart.html" javascript >}}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -423,8 +426,8 @@ Now, we are ready to process the data using D3.js. The D3.js code is embedded in
 
   <script src="https://d3js.org/d3.v3.min.js"></script>
   <script type="text/javascript">
-  
-  var DATA = [ 
+
+  var DATA = [
       {"command":"ll","count":1832},
       {"command":"git","count":1567},
       {"command":"cd","count":982},
@@ -501,7 +504,9 @@ Now, we are ready to process the data using D3.js. The D3.js code is embedded in
 
 Due to the security constraints that apply when trying to load files from the local machine on a web browser, the data is hardcoded in `pieChart.html` and kept in the `DATA` variable – if you are running your own web server, you can store your data there and load it using JavaScript, which means that you can have dynamic output. If you open `pieChart.html` on your favorite web browser, you will see the output of the presented image.
 
-[![A Pie Chart]js_pie_chart_small.png “A Pie Chart.”)](js_pie_chart.png)
+
+
+![JS Pie Chart](js_pie_chart.png)
 
 A good exercise for the reader would be to extract all `git` related commands from your history files, and analyze and visualize them.
 
