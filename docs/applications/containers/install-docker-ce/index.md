@@ -16,7 +16,7 @@ show_on_rss_feed: false
 
 <!-- Install Docker CE using the official Docker repositories. -->
 
-These steps install Docker Community Edition (CE) using the official Ubuntu repositories. To install on another distribution, see the official [installation page](https://docs.docker.com/install/).
+These steps install Docker Community Edition (CE) using the official Ubuntu repositories. To install on another distribution, or to install on Mac or Windows, see the official [installation page](https://docs.docker.com/install/).
 
 1.  Remove any older installations of Docker that may be on your system:
 
