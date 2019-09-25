@@ -17,6 +17,8 @@ While deleting a few objects in an Object Storage bucket might not take that lon
 
 A lifecycle policy is a set of rules that govern the deletion of objects after a given amount of time. For instance, a lifecycle policy can be created that deletes objects every thirty days, or once a week. This is useful for cases where the data in a bucket becomes outdated, such as when collecting activity logs. Beyond simply deleting every object in a bucket, depending on the tool used lifecycle policies are capable of deleting older versions of objects in buckets that have bucket versioning enabled.
 
+Similarly, objects that are part of failed multipart uploads, (the mechanism by which large files are uploaded), stay within Object Storage buckets, counting towards your total Object Storage costs. Lifecycle policies are a great way to clear out stale multipart uploads.
+
 Lifecycle policies are enacted starting at midnight of the Object Storage cluster's local time. This means that if you set a lifecycle policy of one day, the objects will be deleted the midnight after they become 24 hours old.
 
 {{< note >}}
