@@ -110,20 +110,14 @@ COMMIT
         sudo iptables-restore < /tmp/v4
         sudo ip6tables-restore < /tmp/v6
 
-3.View the rules that you set:
+3. View the rules that you set:
 
-<<<<<<< HEAD
-3.  To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
-=======
         sudo iptables -L -nv
         sudo ip6tables -L -nv
 
-4.To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
->>>>>>> added the prereq step
+4. To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
 
 ## Install Prerequisite Software
-
-1. This guide will use ```sudo``` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 2.  Install the Java Runtime Environment, OpenJDK:
 
@@ -185,19 +179,12 @@ To exit McMyAdmin and return to the command line, enter `/quit`.
 
     ![McMyAdmin Configuration Page](mcmyadmin-config-page.png)
 
-<<<<<<< HEAD
 4.  Select *Start Server* and accept the Minecraft Server EULA (End User Licensing Agreement).
 
     {{< note >}}
 If you are not prompted to accept the EULA in McMyAdmin, you can find the EULA at `~/McMyAdmin/Minecraft/eula.txt`. Change the value of `eula=false` to `eula=true`.
 {{</ note >}}
 
-=======
-5.  Select *Start Server* and accept the Minecraft Server EULA.
-    {{< note >}}
-If you are not prompted to accept the EULA in McMyAdmin, you can find the EULA at `~/McMyAdmin/Minecraft/eula.txt`. Change the value of `eula=false` to `eula=true`.
-{{< /note >}}
->>>>>>> added the prereq step
     ![McMyAdmin Status Page](mymyadmin-status-page.png)
 
     ![McMyAdmin Server Started](mcmyadmin-server-running.png)
