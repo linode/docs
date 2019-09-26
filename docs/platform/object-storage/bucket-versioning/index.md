@@ -21,7 +21,13 @@ Object Storage is currently in a closed early access Beta, and you may not have 
 Additionally, because Object Storage is in Beta, there may be breaking changes to how you access and manage Object Storage. This guide will be updated to reflect these changes if and when they occur.
 {{</ note >}}
 
-Linode Object Storage allows for bucket versioning so that you can retain different versions of your objects within buckets. This makes it easy to save older versions of objects, as well as quickly revert to an object's previous state. This guide will show you how to version buckets using the AWS command line interface (CLI), as well as the graphical user interface (GUI) Cyberduck.
+Linode Object Storage allows for bucket versioning so that you can retain different versions of your objects within buckets. This makes it easy to save older versions of objects, as well as quickly revert to an object's previous state.
+
+In This Guide:
+
+- You will learn [about Bucket Versioning](/docs/platform/object-storage/bucket-versioning/#bucket-versioning).
+- How to use the [graphical user interface (GUI) Cyberduck](/docs/platform/object-storage/bucket-versioning/#cyberduck) to version buckets.
+- How to version buckets using the [AWS command line interface (CLI)](/docs/platform/object-storage/bucket-versioning/#aws-cli).
 
 ## Before You Begin
 
@@ -199,7 +205,7 @@ This is version 2 of the file.
 
 3.  To download a previous version of an object, use the `get-object` command and supply the `version-id` of the earliest copy of the object:
 
-        aws s3api get-object --endpoint=http://us-east-1.linodeobjects.com --bucket=bucket-versioning-example2 --key=test.txt --version-id=4ACJQUNQ1ORV2oZ1SRE7l2M7nTjD1pv test_old.txt
+        aws s3api get-object --endpoint=http://us-east-1.linodeobjects.com --bucket=bucket-versioning-example --key=test.txt --version-id=4ACJQUNQ1ORV2oZ1SRE7l2M7nTjD1pv test_old.txt
 
     Be sure to include and output filename for the downloaded object as the last parameter. In the above command the output file is named `test_old.txt`.
 
@@ -212,10 +218,11 @@ This is version 2 of the file.
             "ETag": "\"9a7b64c98b066602b21f869ae7cd673a\"",
             "VersionId": "4ACJQUNQ1ORV2oZ1SRE7l2M7nTjD1pv",
             "ContentType": "binary/octet-stream",
-            "Metadata": {}
+            "Metadata": {
+                "version-id": "r71GBm28-B2ynT89nAdAEIpXXZwUtqr"
+            }
         }
 
     Open the downloaded file and confirm that the first version of the file was downloaded properly.
 
-1.  To restore to a previous version of an object using the AWS CLI, you can download the version you want to restore to and then re-upload that file. Alternatively, if there is only one newer version of the object, you can delete the newer version of the object and Object Storage will automatically server the next most recent version.
-
+1.  To restore to a previous version of an object using the AWS CLI, you can download the version you want to restore to and then re-upload that file. Alternatively, if there is only one newer version of the object, you can delete the newer version of the object and Object Storage will automatically serve the next most recent version.
