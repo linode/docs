@@ -24,14 +24,21 @@ dedicated_cpu_link: true
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Update your system.
+2. [Mono](http://www.mono-project.com/) is an open source implementation of the .NET framework. CubeCoders Limited, the company behind McMyAdmin, packages its own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
 
-        apt-get update && sudo apt-get upgrade
+        cd /usr/local
+        apt-get install unzip
+        wget http://mcmyadmin.com/Downloads/etc.zip
+        unzip etc.zip; sudo rm etc.zip
+
+
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet–this guide includes firewall rules specifically for a Minecraft server.
+
+3.  Update your system.
+
+        sudo apt-get update && sudo apt-get upgrade
 
 ## Configure iptables
-{{< note >}}
-You will have to configure the iptables as a root user–this guide includes firewall rules specifically for a Minecraft server. Do **not** proceed to [Securing Your Server](/docs/security/securing-your-server) guide yet.
-{{< /note >}}
 
 1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the following rulesets into the respective files.
 
@@ -100,10 +107,19 @@ COMMIT
 
 2. Import the rulesets into immediate use:
 
-        iptables-restore < /tmp/v4
-        ip6tables-restore < /tmp/v6
+        sudo iptables-restore < /tmp/v4
+        sudo ip6tables-restore < /tmp/v6
 
+3.View the rules that you set:
+
+<<<<<<< HEAD
 3.  To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
+=======
+        sudo iptables -L -nv
+        sudo ip6tables -L -nv
+
+4.To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
+>>>>>>> added the prereq step
 
 ## Install Prerequisite Software
 
@@ -112,12 +128,6 @@ COMMIT
 2.  Install the Java Runtime Environment, OpenJDK:
 
         sudo apt-get install openjdk-8-jre
-
-3.  [Mono](http://www.mono-project.com/) is an open source implementation of the .NET framework. CubeCoders Limited, the company behind McMyAdmin, packages its own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
-
-        cd /usr/local
-        sudo wget http://mcmyadmin.com/Downloads/etc.zip
-        sudo unzip etc.zip; sudo rm etc.zip
 
 ## Install and Start McMyAdmin
 
@@ -175,12 +185,19 @@ To exit McMyAdmin and return to the command line, enter `/quit`.
 
     ![McMyAdmin Configuration Page](mcmyadmin-config-page.png)
 
+<<<<<<< HEAD
 4.  Select *Start Server* and accept the Minecraft Server EULA (End User Licensing Agreement).
 
     {{< note >}}
 If you are not prompted to accept the EULA in McMyAdmin, you can find the EULA at `~/McMyAdmin/Minecraft/eula.txt`. Change the value of `eula=false` to `eula=true`.
 {{</ note >}}
 
+=======
+5.  Select *Start Server* and accept the Minecraft Server EULA.
+    {{< note >}}
+If you are not prompted to accept the EULA in McMyAdmin, you can find the EULA at `~/McMyAdmin/Minecraft/eula.txt`. Change the value of `eula=false` to `eula=true`.
+{{< /note >}}
+>>>>>>> added the prereq step
     ![McMyAdmin Status Page](mymyadmin-status-page.png)
 
     ![McMyAdmin Server Started](mcmyadmin-server-running.png)
