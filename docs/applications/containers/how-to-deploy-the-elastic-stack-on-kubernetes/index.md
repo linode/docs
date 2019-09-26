@@ -2,43 +2,67 @@
 author:
   name: Tyler Langlois
   email: ty@tjll.net
-description: 'Learn how to install components of the Elastic Stack like Elasticsearch and Kibana on Kubernetes.'
-keywords: ["elastic", "elasticsearch", "kibana", "filebeat", "metricbeat", "kubernetes", "k8s", "elk", "helm"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: "Learn how to install components of the Elastic Stack like Elasticsearch and Kibana on Kubernetes."
+keywords:
+  [
+    "elastic",
+    "elasticsearch",
+    "kibana",
+    "filebeat",
+    "metricbeat",
+    "kubernetes",
+    "k8s",
+    "elk",
+    "helm",
+  ]
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2019-08-01
 modified_by:
   name: Linode
-title: 'How to Deploy the Elastic Stack on Kubernetes'
+title: "How to Deploy the Elastic Stack on Kubernetes"
 external_resources:
-  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
+  - "[Elastic Documentation](https://www.elastic.co/guide/index.html)"
 ---
 
 ## What is the Elastic Stack?
 
-[The Elastic Stack](https://www.elastic.co/elk-stack) is a collection of open source projects that help collect and visualize a wide variety of data sources. Elasticsearch can store and aggregate data such as log files, container metrics, and more.
+[The Elastic Stack](https://www.elastic.co/elk-stack) is a collection of open source projects from Elastic that help collect and visualize a wide variety of data sources. Elasticsearch can store and aggregate data such as log files, container metrics, and more. The products in the stack include: Elasticsearch, Logstash, Kibana, and now Beats.
 
-In this guide, you will deploy a number of [Helm](https://helm.sh) charts in a [Kubernetes](https://kubernetes.io/) cluster in order to set up components of the Elastic Stack. At the end of this guide, you will have a deployment installed and configured that you can further use for application logs or monitoring Kubernetes itself.
+In this guide:
+
+- You will configure and deploy a number of [Helm](https://helm.sh) charts in a [Kubernetes](https://kubernetes.io/) cluster in order to set up components of the Elastic Stack.
+- Configure Kibana.
+- Install Metricbeat.
+
+At the end of this guide, you will have a deployment installed and configured that you can further use for application logs or monitoring Kubernetes itself.
 
 {{< caution >}}
-This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete the cluster when you have finished the guide.
+This guide's example instructions will create the following billable resources on your Linode account: four (4) Linodes and three (3) Block Storage volumes. If you do not want to keep using the example cluster that you create, be sure to delete the cluster Linodes and volumes when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{< /caution >}}
 
 ## Before You Begin
 
-1.   [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
+1.  [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
 
-1.   Follow the [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide to set up a Kubernetes cluster. This guide will use a three node cluster. You should use this guide instead of manual installation via a method such as `kubeadmin`, as the k8s-alpha tool will setup support for persistent volume claims. Node sizes are important when configuring Elasticsearch, and this guide assumes Linode 4GB instances.
+1.  Follow the [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide to set up a Kubernetes cluster. This guide will use a three node + master node cluster. You can use the following linode k8s-alpha CLI command to create your cluster:
 
-    This guide also assumes that your cluster has [role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) enabled. This feature became available in Kubernetes 1.6. It is enabled on clusters created via the `k8s-alpha` Linode CLI.
+        linode-cli k8s-alpha create example-cluster --node-type g6-standard-2 --nodes 3 --master-type g6-standard-2 --region us-east --ssh-public-key ~/.ssh/id_rsa.pub
 
-1.   You should also make sure that your Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
+
+    - You should use this guide instead of manual installation via a method such as `kubeadmin`, as the k8s-alpha tool will setup support for persistent volume claims.
+
+    - Node sizes are important when configuring Elasticsearch, and this guide assumes 4GB Linode instances.
+
+    - This guide also assumes that your cluster has [role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) enabled. This feature became available in Kubernetes 1.6. It is enabled on clusters created via the `k8s-alpha` Linode CLI.
+
+1.  You should also make sure that your Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
 
         kubectl config get-contexts
 
 1.  Set up Helm in your Kubernetes cluster by following the [How to Install Apps on Kubernetes with Helm
-](/docs/applications/containers/how-to-install-apps-on-kubernetes-with-helm/) guide and stop following the steps in this guide upon reaching the [Use Helm Charts to Install Apps](/docs/applications/containers/how-to-install-apps-on-kubernetes-with-helm/#use-helm-charts-to-install-apps) section.
+    ](/docs/applications/containers/how-to-install-apps-on-kubernetes-with-helm/) guide and stop following the steps in this guide upon reaching the [Use Helm Charts to Install Apps](/docs/applications/containers/how-to-install-apps-on-kubernetes-with-helm/#use-helm-charts-to-install-apps) section.
 
 ## Configure Helm
 
@@ -59,7 +83,7 @@ After following the prerequisites for this guide, you should have a Kubernetes c
     This command should return results similar to the following. Note that your exact version numbers may be different.
 
         NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-        elastic/elasticsearch   7.3.0           7.3.0           Official Elastic helm chart for Elasticsearch
+        elastic/elasticsearch   7.3.2           7.3.2           Official Elastic helm chart for Elasticsearch
 
 Your Helm environment is now prepared to install official Elasticsearch charts into your kubernetes cluster.
 
@@ -84,17 +108,17 @@ Before installing the chart, ensure that resources are set appropriately. By def
 1.  You should see a response similar to the following:
 
         {
-          "name" : "elasticsearch-master-0",
+          "name" : "elasticsearch-master-1",
           "cluster_name" : "elasticsearch",
           "cluster_uuid" : "o66WYOm5To2znbZ0kOkDUw",
           "version" : {
-            "number" : "7.1.1",
+            "number" : "7.3.2",
             "build_flavor" : "default",
             "build_type" : "docker",
-            "build_hash" : "7a013de",
-            "build_date" : "2019-05-23T14:04:00.380842Z",
+            "build_hash" : "1c1faf1",
+            "build_date" : "2019-09-06T14:40:30.409026Z",
             "build_snapshot" : false,
-            "lucene_version" : "8.0.0",
+            "lucene_version" : "8.1.0",
             "minimum_wire_compatibility_version" : "6.8.0",
             "minimum_index_compatibility_version" : "6.0.0-beta1"
           },
@@ -115,9 +139,11 @@ In order to start processing data, deploy the `filebeat` chart to your Kubernete
 
         curl http://localhost:9200/_cat/indices
 
-1.  At least one `filebeat` index should be present, similar to the following:
+    At least one `filebeat` index should be present, and output should be similar to the following:
 
+    {{< output >}}
         green open filebeat-7.1.1-2019.06.25-000001 _7Rw8LkvTeKpJPly7cpzNw 1 1 9886 0 5.7mb 2.8mb
+    {{< /output >}}
 
 ### Install Kibana
 
@@ -149,7 +175,7 @@ Before visualizing pod logs, Kibana must be configured with an index pattern for
 
     ![Kibana Index Patterns Page](kibana-index-patterns-initial.png "Kibana Index Patterns Page")
 
-1.  From this page, enter "filebeat-*" into the "Index pattern" text box, then select the "Next step" button.
+1.  From this page, enter "filebeat-\*" into the "Index pattern" text box, then select the "Next step" button.
 
     ![Kibana Create Index Pattern](kibana-index-patterns-create.png "Kibana Create Index Pattern")
 
@@ -184,15 +210,16 @@ At this point, the Elastic stack is functional and provides an interface to visu
 1.  Create a values file for Filebeat. This configuration will add the ability to provide [autodiscover hints](https://www.elastic.co/guide/en/beats/filebeat/master/configuration-autodiscover-hints.html). Instead of changing the Filebeat configuration each time parsing differences are encountered, autodiscover hints permit fragments of Filebeat configuration to be defined at the pod level dynamically so that applications can instruct Filebeat as to how their logs should be parsed.
 
     {{< file "filebeat-values.yml" yaml >}}
+
 ---
+
 filebeatConfig:
-  filebeat.yml: |
-    filebeat.autodiscover:
-      providers:
-        - type: kubernetes
-          hints.enabled: true
-    output.elasticsearch:
-      hosts: '${ELASTICSEARCH_HOSTS:elasticsearch-master:9200}'
+filebeat.yml: |
+filebeat.autodiscover:
+providers: - type: kubernetes
+hints.enabled: true
+output.elasticsearch:
+hosts: '\${ELASTICSEARCH_HOSTS:elasticsearch-master:9200}'
 {{< /file >}}
 
 1.  Upgrade the `filebeat` deployment to use this new configuration file:
@@ -204,10 +231,12 @@ filebeatConfig:
 1.  Next, create a Kibana values file to append annotations to the Kibana `Deployment` that will indicate that Filebeat should parse certain fields as json values. This configuration file will instruct Filebeat to parse the `message` field as json and store the parsed object underneath the `kibana.` field.
 
     {{< file "kibana-values.yml" yaml >}}
+
 ---
+
 podAnnotations:
-  co.elastic.logs/processors.decode_json_fields.fields: message
-  co.elastic.logs/processors.decode_json_fields.target: kibana
+co.elastic.logs/processors.decode_json_fields.fields: message
+co.elastic.logs/processors.decode_json_fields.target: kibana
 {{< /file >}}
 
 1.  Upgrade the `kibana` Helm release in your Kubernetes cluster, passing this file as an argument for the Chart values.
@@ -268,11 +297,12 @@ Before following these steps, ensure that the `port-forward` command to expose K
 
 1.  Run the following command on your local machine. This will communicate with Kibana over `127.0.0.1:5601` to import default Dashboards that will be populated by data from Metricbeat.
 
-        docker run --net="host" docker.elastic.co/beats/metricbeat:7.3.0 setup --dashboards
+            docker run --net="host" docker.elastic.co/beats/metricbeat:7.3.0 setup --dashboards
 
-    {{< note >}}
-Your `docker run` command should use an image tag matching the version of Metricbeat deployed to your Kubernetes cluster. You can find this version by issuing the following command: `helm get values --all metricbeat | grep imageTag`
-{{< /note >}}
+        {{< note >}}
+
+    Your `docker run` command should use an image tag matching the version of Metricbeat deployed to your Kubernetes cluster. You can find this version by issuing the following command: `helm get values --all metricbeat | grep imageTag`
+    {{< /note >}}
 
 1.  Open a browser window to http://localhost:5601 and navigate to the "Dashboards" page.
 
@@ -290,4 +320,4 @@ Your `docker run` command should use an image tag matching the version of Metric
 
 ## Next Steps
 
-From this point onward, any additional workloads started in Kubernetes will be processed by Filebeat and Metricbeat in order to collect logs and metrics for later introspection within Kibana. As Kubernetes nodes are added or removed, the Filebeat and Metricbeat `DaemonSet`s will automatically scale out pods to monitor nodes as they join the Kubernetes cluster.
+From this point onward, any additional workloads started in Kubernetes will be processed by Filebeat and Metricbeat in order to collect logs and metrics for later introspection within Kibana. As Kubernetes nodes are added or removed, the Filebeat and Metricbeat `DaemonSets` will automatically scale out pods to monitor nodes as they join the Kubernetes cluster.
