@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-14
 modified_by:
   name: Linode
-title: 'How to Deploy Kubernetes on Linode with Rancher 2.2'
-aliases: ['applications/containers/how-to-deploy-apps-with-rancher/', 'applications/containers/how-to-deploy-apps-with-rancher-2-2/', 'applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
+title: 'How to Deploy Kubernetes on Linode with Rancher 2.3'
+aliases: ['applications/containers/how-to-deploy-apps-with-rancher/', 'applications/containers/how-to-deploy-apps-with-rancher-2-3/', 'applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
@@ -111,37 +111,13 @@ If you are interested in setting up an SSL certificate with Rancher, you may con
 
 1.  The default home page for your Rancher app will appear. This page normally displays a list of all of your Kubernetes clusters. Since you have not created a cluster yet, a placeholder image is shown instead:
 
-    ![Rancher enter server URL screen](global-clusters-page-no-clusters.png "The server URL entry form")
+    ![Rancher enter server URL screen](Rancher1.png "The server URL entry form")
 
     {{< note >}}
 The main interface for navigating Rancher is via the blue navigation bar that spans the top of the page. The items in this navigation bar will change when you view different parts of the application.
 {{< /note >}}
 
 1.  Before you can create your first cluster, you will need to enable Linode's integration with Rancher. Proceed to the [Activate the Linode Node Driver for Rancher](#activate-the-linode-node-driver-for-rancher) section.
-
-### Activate the Linode Node Driver for Rancher
-
-Rancher includes two kinds of integrations with hosting providers:
-
--   A *cluster driver* allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a host-launched Kubernetes cluster, your hosting platform operates the new cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well).
-
--   A *node driver* allows Rancher to create and administer a Rancher-launched Kubernetes cluster. Rancher will directly provision your control plane and etcd nodes along with your worker nodes. Your cloud host does not manage your control plane and etcd components.
-
-Rancher is shipped with a node driver for Linode, but it is inactive by default. To activate the Linode node driver:
-
-1.  Click on **Tools** from the main navigation bar and select **Drivers** from the dropdown menu.
-
-    ![Rancher Drivers menu option highlighted](drivers-menu-option.png "Select the Drivers option from the Tools dropdown menu")
-
-1.  Click on the **Node Drivers** tab:
-
-    ![Rancher Node Drivers tab highlighted](node-drivers-tab-highlighted.png "Click on the Node Drivers tab")
-
-1.  Scroll down to Linode's driver. Click the corresponding **more options ellipsis** and click on the **Activate** item in the dropdown menu that appears:
-
-    ![Rancher activate Linode node driver](activate-linode-node-driver.png "Activate the Linode node driver in the Rancher interface")
-
-1.  Activating the Linode node driver **does not** install the Linode CCM and CSI for your new clusters. Further instructions for enabling these features are listed in the [Deploy a Kubernetes Cluster](#deploy-a-kubernetes-cluster) section. You should wait until the node driver is listed as **Active** before moving on.
 
     {{< disclosure-note "What are the Linode CCM and CSI?" >}}
 The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Controller Manager) and [CSI](https://github.com/linode/linode-blockstorage-csi-driver) (Container Storage Interface) are Kubernetes addons published by Linode. These addons provide additional integrations with the Linode cloud platform. Specifically, you can use them to create NodeBalancers, DNS records, and Block Storage Volumes.
@@ -197,9 +173,9 @@ All other node template settings are optional and will not be used in this guide
 
 1.  Click on the **Add Cluster** button. The **Add Cluster** form will appear.
 
-1.  Select the Linode driver from the **From nodes in an infrastructure provider** section:
+1.  Select the Linode driver from the **With RKE and new nodes in an infrastructure provider** section:
 
-    ![Rancher Add Cluster form - Linode node driver selected](add-cluster-form-linode-node-driver-selected.png "Linode node driver selected in the Add Cluster form")
+    ![Rancher Add Cluster form - Linode node driver selected](linodecluster.png "Linode node driver selected in the Add Cluster form")
 
 1.  Enter a name for your cluster in the **Cluster Name** field. The name for our example cluster will be `example-cluster`.
 
@@ -233,43 +209,43 @@ Review Rancher's [Production Ready Cluster](https://rancher.com/docs/rancher/v2.
 
     ![Rancher Add Cluster form - YAML editor](add-cluster-yaml-editor.png "YAML editor for the Add Cluster form")
 
-1.  Insert the following snippet **before the first line in the editor** (above the `addon_job_timeout` declaration):
+1.  Locate the **rancher_kubernetes_engine_config** line in your editor. Directly underneath, insert the following snippet (above the `addon_job_timeout` declaration):
 
     {{< file >}}
-addons_include:
-  - https://linode.github.io/rancher-ui-driver-linode/releases/v0.2.0/linode-addons.yml
-addons: |-
-  ---
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: linode
-    namespace: kube-system
-  stringData:
-    token: "..."
-    region: "..."
-  ---
+  addons_include:
+    - https://linode.github.io/rancher-ui-driver-linode/releases/v0.3.0/linode-addons.yml
+  addons: |-
+    ---
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: linode
+      namespace: kube-system
+    stringData:
+      token: "..."
+      region: "..."
+    ---
 {{< /file >}}
 
 1.  Insert your Linode APIv4 token in the `token` field from this snippet. Also, enter the label for your node template's data center in the `region` field. This label should be lower-case (e.g. `us-east` instead of `US-East`).
 
 1.  Scroll down in the editor to the `services` section. Remove the `kube-api` sub-section and replace it with the example snippet. When editing the file, ensure you do not accidentally remove any other sections above or below the snippet.
 
-    {{< file >}}
-  kube-api:
-    always_pull_images: false
-    pod_security_policy: false
-    service_node_port_range: "30000-32767"
-    extra_args:
-      feature-gates: "PersistentLocalVolumes=true,VolumeScheduling=true,CSINodeInfo=true,CSIDriverRegistry=true,BlockVolume=true,CSIBlockVolume=true"
-  kubelet:
-    fail_swap_on: false
-    extra_args:
-      cloud-provider: "external"
-      feature-gates: "PersistentLocalVolumes=true,VolumeScheduling=true,CSINodeInfo=true,CSIDriverRegistry=true,BlockVolume=true,CSIBlockVolume=true"
-  kube-controller:
-    extra_args:
-      cloud-provider: "external"
+{{< file >}}
+    kube-api:
+      always_pull_images: false
+      pod_security_policy: false
+      service_node_port_range: "30000-32767"
+      extra_args:
+        feature-gates: "PersistentLocalVolumes=true,VolumeScheduling=true,CSINodeInfo=true,CSIDriverRegistry=true,BlockVolume=true,CSIBlockVolume=true"
+    kubelet:
+      fail_swap_on: false
+      extra_args:
+        cloud-provider: "external"
+        feature-gates: "PersistentLocalVolumes=true,VolumeScheduling=true,CSINodeInfo=true,CSIDriverRegistry=true,BlockVolume=true,CSIBlockVolume=true"
+    kube-controller:
+      extra_args:
+        cloud-provider: "external"
 {{< /file >}}
 
 1.  After you finish with both of these steps, your YAML should resemble [this completed snippet](completed-cluster-config.yml).
@@ -402,7 +378,7 @@ Avoid using symbols in the password you enter, as some symbols can cause syntax 
 
 1.  In the **Database Settings** section, enter a password for WordPress' database user. Then set **MariaDB Persistent Volume Enabled** to **True**, and select the **Use the default class** option from the **Default StorageClass for MariaDB** dropdown menu:
 
-    ![Rancher WordPress setup form - Database Settings](wordpress-app-form-database-settings.png "Rancher WordPress setup form - Database Settings")
+    ![Rancher WordPress form - Database Settings](wordpress-app-form-database-settings.png "Rancher WordPress setup form - Database Settings")
 
     These settings will result in your database deployment keeping its data in a Linode Block Storage Volume.
 
