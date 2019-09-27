@@ -14,7 +14,7 @@ contributor:
   name: Linode
 external_resources:
 - '[GitLab''s Official Documentation](https://docs.gitlab.com/ee/README.html)'
-- '[GitLab''s NGINX Configurations](https://github.com/linode/docs/pull/2231)'
+- '[GitLab''s NGINX Configurations](https://docs.gitlab.com/omnibus/settings/nginx.html)'
 audiences: ["intermediate"]
 ---
 
