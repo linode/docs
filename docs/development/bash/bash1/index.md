@@ -192,24 +192,24 @@ VAR2="4"
 
 if [ $VAR1 == 4 ]
 then
-	echo Equal!
+    echo Equal!
 fi
 
 if [ "$VAR1" == 4 ]
 then
-	echo Equal!
+    echo Equal!
 else
-	echo Not equal!
+    echo Not equal!
 fi
 
 if [ "$VAR1" == $VAR2 ]
 then
-	echo Equal!
+    echo Equal!
 elif [ "$VAR1" == $VAR1 ]
 then
-	echo Tricky Equal!
+    echo Tricky Equal!
 else
-	echo Not equal!
+    echo Not equal!
 fi
 {{< /file >}}
 
@@ -248,9 +248,9 @@ The related bash shell script is called `env.sh` and is as follows:
 
 # Read
 if [[ -z "${PATH}" ]]; then
-  echo "PATH is empty!"
+    echo "PATH is empty!"
 else
-  echo "PATH: $PATH"
+    echo "PATH: $PATH"
 fi
 
 # Change
@@ -260,9 +260,9 @@ echo "PATH: $PATH"
 # Delete
 export PATH=""
 if [[ -z "${PATH}" ]]; then
-  echo "PATH is empty!"
+    echo "PATH is empty!"
 else
-  echo "PATH: $PATH"
+    echo "PATH: $PATH"
 fi
 
 # Create
@@ -385,7 +385,7 @@ echo "The first argument is: $1"
 
 if [ -x $0 ]
 then
-	echo "$0" file exists!
+    echo "$0" file exists!
 fi
 {{< /file >}}
 
@@ -415,9 +415,9 @@ In the previous section you learned how to pass command line arguments to a bash
 
 if [ "$#" -lt 2 ]
 then
-	echo Need more arguments than $#!
+    echo Need more arguments than $#!
 else
-	echo "Thanks for the $# arguments!"
+    echo "Thanks for the $# arguments!"
 fi
 {{< /file >}}
 
@@ -481,7 +481,7 @@ esac
 
 case  1:${NUM:--} in
 (1:*[!0-9]*|1:0*[89]*)
-  ! echo NAN
+    ! echo NAN
 ;;
 ($((NUM<81))*)
     echo "$NUM smaller than 80"
@@ -583,27 +583,27 @@ whether a given file or directory actually exists. This is idea is illustrated i
 
 if [[ $# -le 0 ]]
 then
-	echo Not enough arguments!
+    echo Not enough arguments!
 fi
 
 for arg in "$@"
 do
-	# Does it actually exist?
-	if [[ -e "$arg" ]]
-	then
-		echo -n "$arg exists "
-	fi
+    # Does it actually exist?
+    if [[ -e "$arg" ]]
+    then
+        echo -n "$arg exists "
+    fi
 
-	# Is it a file or Is it a directory?
-	if [ -f "$arg" ]
-	then
-		echo "and is a regular file!"
-	elif [ -d "$arg" ]
-	then
-		echo "and is a regular directory!"
-	else
-		echo "and is neither a regular file nor a regular directory!"
-	fi
+    # Is it a file or Is it a directory?
+    if [ -f "$arg" ]
+    then
+        echo "and is a regular file!"
+    elif [ -d "$arg" ]
+    then
+        echo "and is a regular directory!"
+    else
+        echo "and is neither a regular file nor a regular directory!"
+    fi
 done
 {{< /file >}}
 
@@ -635,30 +635,30 @@ The following bash script will accept one command line argument, which is a stri
 
 if [[ $# -le 1 ]]
 then
-	echo Usage: $0 string files!
+    echo Usage: $0 string files!
 fi
 
 string=$1
 for arg in "${@:2}"
 do
-	# Does it actually exist?
-	if [[ ! -e "$arg" ]]
-	then
-		echo "* Skipping ${arg}"
-		continue
-	fi
-	# Is it a regular file?
-	if [ -f "$arg" ]
-	then
-		ti=`grep ${string} ${arg} | wc -l`
-		ti=$(($ti + 0))
-		if [[ $ti -gt 0 ]]
-		then
-			echo ${arg}
-		fi
-	else
-		echo "* $arg is not a regular file!"
-	fi
+    # Does it actually exist?
+    if [[ ! -e "$arg" ]]
+    then
+        echo "* Skipping ${arg}"
+        continue
+    fi
+    # Is it a regular file?
+    if [ -f "$arg" ]
+    then
+        ti=`grep ${string} ${arg} | wc -l`
+        ti=$(($ti + 0))
+        if [[ $ti -gt 0 ]]
+        then
+            echo ${arg}
+        fi
+    else
+        echo "* $arg is not a regular file!"
+    fi
 done
 {{< /file >}}
 
