@@ -2,39 +2,58 @@
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'An Overview of Popular Data Visualization Tools'
-keywords: ["UNIX", "shell", "bash", "Visualization", "R", "Python", "Perl"]
+description: 'An overview of popular open source data visualization packages for R, Python, and JavaScript.'
+keywords: ["Visualization", "R", "Python", "Perl", "pandas"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-09-07
+published: 2019-09-27
 modified_by:
   name: Linode
-title: 'An Overview of Popular Data Visualization Tools'
+title: 'An Overview of Open Source Data Visualization Tools'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
-external_resources:
-  - '[GNU Bash](https://www.gnu.org/software/bash/)'
-  - '[Z Shell](https://www.zsh.org/)'
 ---
+Creating graphic visualizations for a data set is a powerful way to derive meaning from vast amounts of information. It provides a way to extract meaningful relationships between different aspects of your data depending on how the data is mapped and which graphic representations are chosen. Data visualization is a common practice in many sectors, including various scientific disciplines, business settings, the government sector, and education.
 
-## Introduction
+There are many open source tools available to create sophisticated data visualizations for complex data sets. This guide will provide an introductory exploration of data analysis and 2D graphics rendering packages that can be used with [R](https://www.r-project.org/other-docs.html), [Python](https://docs.python.org/3/), and [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) to generate data visualizations.
 
-In this guide we are going to learn how to analyze user commands taken from one or more bash shell history files or from history files of other shells converted to the bash history file format. Moreover, this guide will show how to visualize the generated results and the history files.
+In this guide you will complete the following steps:
 
-{{< note >}}
-This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+* [Three different data sets to use for your visualizations](/docs/languages/bash/visualize-history/#create-your-data-sets)
+* [A pie chart visualization using R and RStudio](/docs/languages/bash/visualize-history/#visualize-your-data-with-rstudio)
+* [A word cloud using Python and the pandas library](/docs/languages/bash/visualize-history/#create-a-word-cloud-using-python)
+* [A web browser based pie chart visualization using JavaScript and the D3.js package](/docs/languages/bash/visualize-history/#visualize-data-using-d3-js)
 
-## Create Your Data Set
+### Before You Begin
 
+Ensure you have the following programs and packages installed on your computer:
 
-## About the data
+1. The [R](http://cran.cnr.berkeley.edu/) programming language
+1. The [RStudio Desktop](https://rstudio.com/products/rstudio/download/#download) application
+1. [Python 3.7.0](https://www.python.org/downloads/) or higher
+    1. [pandas](https://pypi.org/project/pandas/) Python package
+    1. [Matplotlib](https://pypi.org/project/matplotlib/) Python package
+    1. [wordcloud](https://pypi.org/project/wordcloud/) Python package
+1. The [Golang](https://golang.org/doc/install) programming langauge
 
-### Bash history file format
+{{< disclosure-note "Assumptions">}}
+This guide assumes you have some basic familiarity with the following concepts and skills:
 
-The format of the history file of bash shell is as follows:
+1. Basic programming principles and data structures
+1. Are able to read code written in Go, Python, HTML, CSS, and JavaScript
+{{</ disclosure-note >}}
+
+## Create Your Data Sets
+
+In this section, you will create a data set using the contents of your [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) history file and optionally, your [Zsh](https://en.wikipedia.org/wiki/Z_shell) history file. You will then, create a third data set using a Perl script that will extract information from the first two data sets. In the [Visualize Your Data]() section of the guide, you will use these various data sets to create corresponding visualizations.
+
+### Data Set 1 - Bash History File
+A Bash history file stores all commands executed in your command line interpreter. View your 10 most recently executed commands with the following command:
 
     head ~/.bash_history
+
+  Your output should resemble the following:
+
 {{< output >}}
 git commit -a -m "Fixed Constants links"
 git push
@@ -48,88 +67,23 @@ git push
 cat ~/.lenses/lenses-cli.yml
 {{< /output >}}
 
-As you can see, bash history files just contain the entire shell command and do not keep information about the time or the date a command was executed – this is not a problem, just an observation.
+Create a new directory named `data-sets`to store your data and copy your Bash history file to the directory:
 
-### The Zsh history file format
+    mkdir data-sets && cp ~/.bash_history data-sets/data-1
 
-The format of the history file of Z shell is as follows:
+### Data Set 2 - Zsh History File
 
-    head ~/.zsh_history
-{{< output >}}
-: 1532951196:0;git commit -a -m "Changed .gitignore"
-: 1532951224:0;git diff mt/pipeline-ref
-: 1532951326:0;g co -
-: 1532951341:0;g checkout -
-: 1532951732:0;vi pipeline-yaml_5b5744d40428631d7a8940a9.md
-: 1532951755:0;git diff master
-: 1532951848:0;git commit -a -m "Deleted a line"
-: 1532952856:0;git checkout -b mt/glossary-fix
-: 1532952932:0;git commit -a -m "Deleted the secret entry"
-: 1532952945:0;git commit -a -m "Deleted the repository entry"
-{{< /output >}}
+If you are using the Zsh shell interpreter, you can use its history file as a second data set. Zsh's history file format includes data that you will need to exclude from your data set. Use [AWK](/docs/development/introduction-to-awk/) to clean up your Zsh history file and save the output to a new file in the `data-sets` directory:
 
-As this is not the same to the format of the history file that we will be using in this guide, we will need to clean it up using the following command:
+    awk -F ";" '{$1=""; print $0}' ~/.zsh_history | sed -e "s/^[ \t]*//" -e "/^$/d" > data-sets/data-2
 
-    awk -F ";" '{$1=""; print $0}' ~/.zsh_history | sed "s/^[ \t]*//" | head
-{{< output >}}
-git commit -a -m "Changed .gitignore"
-git diff mt/pipeline-ref
-g co -
-g checkout -
-vi pipeline-yaml_5b5744d40428631d7a8940a9.md
-git diff master
-git commit -a -m "Deleted a line"
-git checkout -b mt/glossary-fix
-git commit -a -m "Deleted the secret entry"
-git commit -a -m "Deleted the repository entry"
-{{< /output >}}
+### Data Set 3 - Perl Script
 
-The `sed` command removes any spaces or tab characters from the beginning of a line.
+To create your third data set, you will use a Perl script that categorizes the contents of your data set files. The categorization is based on the word count for each line of text in your data files or, in other words, the length of each command stored in your Bash and Zsh history files. The script creates 5 categories of command lengths; 1 - 2 words, 3 - 5 words, 6 - 10 words, 11 - 15 words, and 16 or more words.
 
-You should save the output of the previous command in order to use it in the rest of the guide. This can be done as follows:
+1. Create a file named `command_length.pl` in your home directory with the following content:
 
-    awk -F ";" '{$1=""; print $0}' ~/.zsh_history | sed "s/^[ \t]*//" > h4
-
-The previous command saves the output in a file named `h4` – you can use any filename you want.
-
-## Analyzing History Files
-
-The files that are going to be examined and analyzed are the following:
-
-    wc history-files/*
-{{< output >}}
-     504    1760   14169 history-files/h1
-   10000   28863  193034 history-files/h2
-    1947    3641   26381 history-files/h3
-   11143   39945  298548 history-files/h4
-   23594   74209  532132 total
-{{< /output >}}
-
-### Finding the most popular commands
-
-This part of the guide will present an AWK program that shows the 10 most popular commands with the help of some traditional UNIX command line utilities:
-
-    cat history-files/* | awk '{CMD[$1]++;count++;} END {for (a in CMD)print CMD[a] " "CMD[a]/count*100 " % " a;} ' | grep -v "./" | column -c3 -s " " -t | sort -rn | head -10
-{{< output >}}
-3756  15.9193     %  ll
-1566  6.63728     %  git
-1160  4.9165      %  df
-1119  4.74273     %  cd
-1095  4.64101     %  w
-926   3.92473     %  brew
-917   3.88658     %  unison
-902   3.82301     %  sync
-759   3.21692     %  grep
-733   3.10672     %  vi
-{{< /output >}}
-
-Apart from the number of history entries that contain a command, you can also see the percentage of any command. The previous output will be processed later on by R so you can save it as `top10`.
-
-### Categorizing by Command Length
-
-In this section we are going to use a script written in Perl. The Perl script expects a single argument, which must be the directory that holds all history files that you want to process.
-
-{{< file "./length.pl" perl >}}
+    {{< file "~/command_length.pl" perl >}}
 #!/usr/bin/perl -w
 
 use strict;
@@ -151,14 +105,12 @@ Thanatos
 }
 
 ($directory) = @ARGV;
-print "The following text files found in directory $directory:\n";
 opendir(BIN, $directory)
     || die "Error opening directory $directory: $!\n";
 
 while (defined ($filename = readdir BIN) ) {
     # The following command does not process . and ..
     next if( $filename =~ /^\.\.?$/ );
-    print $filename."\n";
     process_file($directory."/".$filename);
 }
 
@@ -194,95 +146,150 @@ sub check_category {
     elsif ( $length <= 15 ) { $CAT4 ++; }
     else { $CAT5 ++; }
 }
-{{< /file >}}
+    {{< /file >}}
 
-The output of `length.pl` will resemble the following:
+1. Run the Perl script. The script expects a single argument; the directory that holds all data files that you want to process. The file's output will be saved in a new file `command_categories.txt`. The `command_categories.txt` file will be used later in this guide to create visualizations using R.
 
-    ./length.pl history-files
-{{< output >}}
-The following text files found in directory history-files:
-h2
-h4
-h3
-h1
-Category1       5514
-Category2       2381
-Category3       2624
-Category4       2021
-Category5       11055
-{{< /output >}}
+        ./command_length.pl data-sets > ~/command_categories.txt
 
-The last 5 lines of the previous output will be saved as `categories.txt` and will be used in a while by R. Additionally, a header line was added to `categories.txt` – you can easily modify the Perl script to print just the desired output. So, the final version of `categories.txt` will be as follows:
+    {{< note >}}
+Your Perl script must be executable in order to run. To add these permissions, execute the following command:
 
-    cat categories.txt
-{{< output >}}
+    chmod +x command_length.pl
+    {{</ note >}}
+
+    Open the `.command_length.pl` file to view the categorizations created by your Perl script. Your file should resemble the following example:
+
+    {{< file "command_categories.txt">}}
 "Category Name" "Number of Times"
-Category1       5514
-Category2       2381
-Category3       2624
-Category4       2021
-Category5       11055
-{{< /output >}}
+Category1 5514
+Category2 2381
+Category3 2624
+Category4 2021
+Category5 11055
+    {{</ file >}}
 
-{{< note >}}
-You can create your own categories, according to your own specific needs by modifying the presented Perl script.
-{{< /note >}}
+You now have three sources of data that you can use to explore data visualization tools in the next sections.
 
-## Visualizing History Files
+- `~/data-sets/data-1`
+- `~/data-stes/data-2`
+- `~/command_length.pl`
 
-In the second part of this guide, you are going to learn how to visualize the history files or their summaries.
+## Create Visualizations for your Data
 
-### Using R
+In this section you will use the data sets you created in the previous section to generate visualizations for them.
 
-[R](https://www.r-project.org/) comes with a very capable programming language as far as visualization and statistical analysis are concerned. In this section we are going to analyze the contents of `categories.txt` using R and visualize the most popular commands (`top10`).
+### Visualize your Data with R and RStudio
 
-This is a screenshoot from [R Studio](https://www.rstudio.com/products/rstudio/download/), which is a GUI for R, that shows a graphical representation of `categories.txt` as a *pie chart* as well as the R commands used for creating it. Generally speaking R is excellent at visualizing data!
+[R](https://www.r-project.org/about.html) is a specialized programming language used for statistical computing and graphics. It is especially good for  creating high quality graphs, like [density plots](https://en.wikipedia.org/wiki/Density_estimation), [line charts](https://en.wikipedia.org/wiki/Line_chart), [pie charts](https://en.wikipedia.org/wiki/Pie_chart), and [scatter plots](https://en.wikipedia.org/wiki/Scatter_plot). [RStudio](https://rstudio.com/) is an integrated development environment (IDE) for R that includes debugging and plotting tools that make it easy to write, debug, and run R scripts.
 
-![Pie Chart](pie_chart.png)
+In this section, you will use the `command_categories.txt` file created in the [Data Set 3 - Perl Script](/docs/languages/bash/visualize-history/#data-set-3-perl-script) section and RStudio to create a pie chart and simple spreadsheet of your data.
 
-Similarly, this is a screenshoot from R Studio that shows a graphical representation of `top10` as a *bar plot* as well as the R commands used for creating it.
+1. Open RStudio Desktop and create a data frame. In R, a data frame is a table similar to a two-dimensional array.
 
-![Top 10](top_10.png)
+        DATA <- read.table("~/command_categories.txt", header=TRUE)
 
-### Creating a Word Cloud
+    - This command will read the `command_categories.txt` file that was created in the [Data Set 3 - Perl Script](/docs/languages/bash/visualize-history/#data-set-3-perl-script) section of the guide, create a data frame from it that is stored in the `DATA` variable.
 
-In this section we are going to create a Word Cloud for the commands. The Word Cloud is going to be created using Python 3 and some handy Python 3 packages.
+    - The `header=TRUE` argument indicates that the file's first row contains variable names for column values. This means that `Category Name` and `Number of Times` will be used as variable names for the two columns of values in `command_categories.txt`.
 
-{{< file "./wordCloud.py" python >}}
+1. Next, create a pie chart visualization for each column of values using R's `pie()` function. The function's first argument, `DATA$Number.of.Times` and `DATA$Category.Name`, provides the x-vector numeric values to use when creating the pie chart visualization. The second argument, `DATA$Category.Name`, provides the labels for each pie slice.
+
+        pie(DATA$Number.of.Times, DATA$Category.Name)
+
+    RStudio will display a pie chart visualization of your data in the **Plots and Files** window similar to the following:
+
+    ![Pie Chart](pie-chart-panes.png)
+
+1. Visualize your data in a spreadsheet style format using R's `View()` function.
+
+        View(DATA, "Command Lengths")
+
+    RStudio will display a spreadsheet style viewer in a new window pane tab.
+
+    ![Spreadsheet](spreadsheet-panes.png)
+
+Explore [R's graphics package](https://www.rdocumentation.org/packages/graphics/versions/3.6.1) to discover additional functions you can use to create more complex visualizations for your data with RStudio.
+
+### Create a Word Cloud using Python
+
+Word clouds depict text data using varying font size and color to visually demonstrate the frequency and relative importance of each word. A common application for word clouds is to visualize tag or keyword relevancy. In this section you will use Python3 and your Bash and Zsh history files to generate a [*word cloud*](https://en.wikipedia.org/wiki/Tag_cloud) of all your shell commands. The Python packages listed below are commonly used in programs for data analysis and scientific computing and you will use them to generate your word cloud.
+
+- [pandas](https://pypi.org/project/pandas/): this package provides data structures that make it easier to work with various types of data, including [tabular data](https://en.wikipedia.org/wiki/Table_(information)), ordered and unordered [time series data](https://en.wikipedia.org/wiki/Time_series), and [arbitrary matrix data](https://en.wikipedia.org/wiki/Random_matrix).
+- [Matplotlib](https://pypi.org/project/matplotlib/): a plotting library that generate 2D graphics
+- [wordcloud](https://pypi.org/project/wordcloud/): allows you to generate word clouds
+
+1. Create a file named `create_wordcloud.py` in your home directory with the following content:
+
+    {{< file "~/create_wordcloud.py" python >}}
 #!/usr/bin/env python3
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import sys
+import os
 from wordcloud import WordCloud, STOPWORDS
+from random import randrange
 
-data = pd.read_table('./history-files/h1', header = None, names=["CMD"])
+path = sys.argv[1]
 
-skipWords = []
-skipWords.extend(STOPWORDS)
+if os.path.exists(path):
+    print("Creating word cloud for file: " + path)
 
-words = ''.join(data['CMD'])
+    data = pd.read_table(path, header = None, names=["CMD"], encoding = "iso-8859-1")
 
-w = WordCloud(
-                       stopwords=set(skipWords),
-                       background_color='gray',
-                       width=4000,
-                       height=2000
-                      ).generate(words)
+    skipWords = []
+    skipWords.extend(STOPWORDS)
 
-plt.imshow(w)
-plt.axis("off")
-plt.savefig('./word_cloud.png', dpi=1000)
-{{< /file >}}
+    words = ''.join(data['CMD'])
 
-The Python 3 script uses the `pandas`, `matplotlib` and `wordcloud` libraries, which should be installed for the script to run, processes the `h1` history file and generates no output on the terminal. However, it creates a PNG image named `word_cloud.png`. The generated image will look similar to the following.
+    w = WordCloud(
+            stopwords=set(skipWords),
+            background_color='gray',
+            width=4000,
+            height=2000
+            ).generate(words)
+    filename = "word_cloud_" + str(randrange(100)) + ".png"
+    print("Your wordcloud's filename is: " + filename)
 
-![Word Cloud](word_cloud.png)
+    plt.imshow(w)
+    plt.axis("off")
+    plt.savefig(filename, dpi=1000)
 
-### Using D3.js
+else:
+    print("File" + path +  "does not exist")
+    {{< /file >}}
 
-[D3.js](https://d3js.org/) is a very popular visualization library written in JavaScript. This part of the guide will use D3.js to visualize history files - the output will also be a pie chart. The tricky point with D3.js is that for D3.js to process its data, the data should be in JSON format. The `cToJSON.go` command line utility will be used for creating a summary of one or more history files, finding out the 10 most popular commands and converting that output into the JSON format.
+1. Run your Python script and pass the path of one of your data set files as an argument. The script will read the contents of the file using panda's `read_table()` function and convert the it into a data frame with a column name of `CMD`. It will then use the data in the `CMD` column to create a concatenated string representation of the data that can be passed to wordcloud to generate a `.png` wordcloud image.
 
-{{< file "./cToJSON.go" go >}}
+        ./create_wordcloud.py ~/data-sets/data-1
+
+    You should see a similar output from the Python script:
+
+    {{< output >}}
+Creating word cloud for file: /Users/username/data-sets/data-2
+Your wordcloud's filename is: word_cloud_58.png
+    {{</ output>}}
+
+1. Open the `word_cloud_58.png` image file to view your word cloud.
+
+      ![Word Cloud](word_cloud.png)
+
+You could use a similar process to create a word cloud visualization for any text you want to analyze.
+
+### Visualize Data using D3.js
+
+D3.js is a JavaScript library that helps you visualize JSON formatted data using HTML, SVG, and CSS. In this section you will us D3.js to create and embed a pie chart visualization into a web page.
+
+To convert your data set into JSON, you will create a [Golang](https://golang.org/) command line utility that generates JSON formatted plain text output. For more complex data sets, you might consider creating a similar command line utility using Golang's [json package](https://golang.org/pkg/encoding/json/).
+
+- The utility expects file paths to your Bash and Zsh data sets as arguments.
+- It will then read the files and find the 10 most popular commands and output it as JSON formatted data.
+- Several [Golang standard library packages](https://golang.org/pkg/) are used in the utility to perform operations liking reading files, using regular expressions, and sorting collections.
+
+1. Create a file named `cToJSON.go` in your home directory with the following content:
+
+    {{< file "./cToJSON.go" go >}}
 package main
 
 import (
@@ -376,10 +383,13 @@ func main() {
 }
 {{< /file >}}
 
-Although we could have used the JSON capabilities of Go, `cToJSON.go` creates plain text output that is in JSON format, mainly because the JSON format that is used is pretty simple and you have no JSON parsing to do.
+1. Run the command line utility and pass in the paths to each command history data set:
 
-    go run cToJSON.go history-files/h3 history-files/h1 history-files/h4
-{{< output >}}
+        go run cToJSON.go data-set/data-1 data-set/data-2
+
+      Your output should resemble the following:
+
+      {{< output >}}
 [
 {"command":"ll","count":1832},
 {"command":"git","count":1567},
@@ -392,11 +402,17 @@ Although we could have used the JSON capabilities of Go, `cToJSON.go` creates pl
 {"command":"sync","count":440},
 {"command":"ls","count":421},
 ];
-{{< /output >}}
+    {{< /output >}}
 
-Now, we are ready to process the data using D3.js. The D3.js code is embedded into an HTML file named `pieChart.html`, which has the following contents:
+    You are now ready to create your pie chart visualization and embed it into a web page using D3.js
 
-{{< file "./pieChart.html" javascript >}}
+1. Create an HTML file named `pieChart.html` and copy and paste the following content. The `DATA` variable on line 31 contains the JSON data that was created by the `cToJSON.go` script in the previous step. Remove the JSON data in the example and replace it with your own JSON data.
+
+    {{< note >}}
+In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. Web browser security constraints exist that restrict how a document or script loaded from one origin can interact with a resource from another origin. However, you may consider using the [d3-fetch module](https://github.com/d3/d3-fetch/blob/v1.1.2/README.md#json) to fetch your JSON data from a specific URL.
+    {{</ note >}}
+
+      {{< file "~/pieChart.html" javascript >}}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -437,7 +453,8 @@ Now, we are ready to process the data using D3.js. The D3.js code is embedded in
       {"command":"ssh","count":474},
       {"command":"rm","count":471},
       {"command":"sync","count":440},
-      {"command":"ls","count":421} ];
+      {"command":"ls","count":421}
+      ];
 
     var width  = 600;
         height = 600;
@@ -502,16 +519,14 @@ Now, we are ready to process the data using D3.js. The D3.js code is embedded in
 </html>
 {{< /file >}}
 
-Due to the security constraints that apply when trying to load files from the local machine on a web browser, the data is hardcoded in `pieChart.html` and kept in the `DATA` variable – if you are running your own web server, you can store your data there and load it using JavaScript, which means that you can have dynamic output. If you open `pieChart.html` on your favorite web browser, you will see the output of the presented image.
+1. Navigate to your preferred browser and enter the HTML file's absolute path to view the pie chart. For a macOS user that has stored the HTML file in their home directory, the path would resemble the following: `/Users/username/pieChart.html`
 
+    ![JS Pie Chart](js_pie_chart.png)
 
+## Next Steps
 
-![JS Pie Chart](js_pie_chart.png)
+Now that you are familiar with some data visualization tools and simple techniques, you can begin to explore more sophisticated approaches using the same tools explored in this guide. Here are a few ideas you can consider:
 
-A good exercise for the reader would be to extract all `git` related commands from your history files, and analyze and visualize them.
-
-## Summary
-
-Once you have processed and visualized all your data, you can use the results in order to understand the behavior and the needs of your users and in some cases discover security threats. Additionally, as most techniques can be automated and executed as `cron(8)` jobs, you can get your reports on your machine automatically.
-
-What matters is that even if in 10 or more years the available tools might be different and more advanced, the techniques and the principles will be the same. At the end of the day, experimentation is the key to better visualizations so start trying new and old visualization tools and techniques as soon as possible!
+- Create a new data set by extracting all `git` related commands from your history files, and analyze and visualize them.
+- Automate some of the techniques discussed in this guide using [Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) jobs to generate your data sets automatically.
+- Explore the [Python for Data Science](http://wavedatalab.github.io/datawithpython/index.html) eBook's [data visualization](http://wavedatalab.github.io/datawithpython/visualize.html) section for a deeper dive into using pandas.
