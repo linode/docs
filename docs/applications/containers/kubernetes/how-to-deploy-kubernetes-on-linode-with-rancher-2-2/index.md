@@ -109,7 +109,7 @@ If you are interested in setting up an SSL certificate with Rancher, you may con
 
     ![Rancher enter server URL screen](enter-server-url.png "The server URL entry form")
 
-1.  The default home page for your Rancher app will appear. This page normally displays a list of all of your Kubernetes clusters. Since you have not created a cluster yet, a placeholder image is shown instead:
+1.  The default home page for your Rancher app will appear. This page normally displays a list of all of your Kubernetes clusters. Since you have not created a cluster yet, you will not see any clusters listed.
 
     ![Rancher enter server URL screen](Rancher1.png "The server URL entry form")
 
@@ -117,7 +117,31 @@ If you are interested in setting up an SSL certificate with Rancher, you may con
 The main interface for navigating Rancher is via the blue navigation bar that spans the top of the page. The items in this navigation bar will change when you view different parts of the application.
 {{< /note >}}
 
-1.  Before you can create your first cluster, you will need to enable Linode's integration with Rancher. Proceed to the [Activate the Linode Node Driver for Rancher](#activate-the-linode-node-driver-for-rancher) section.
+### The Linode Node Driver for Rancher
+
+Rancher includes two kinds of integrations with hosting providers:
+
+-   A [*cluster driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a host-launched Kubernetes cluster, your hosting platform operates the new cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well).
+
+-   A [*node driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/node-drivers/) allows Rancher to create and administer a Rancher-launched Kubernetes cluster. Rancher will directly provision your control plane and etcd nodes along with your worker nodes. Your cloud host does not manage your control plane and etcd components.
+
+Rancher is shipped with a node driver for Linode that is activated by default. No further steps are required to use Linode's node driver. To access the Linode node driver within Rancher's UI:
+
+1.  Click on **Tools** from the main navigation bar and select **Drivers** from the dropdown menu.
+
+    ![Rancher Drivers menu option highlighted](drivers-menu-option.png "Select the Drivers option from the Tools dropdown menu")
+
+1.  Click on the **Node Drivers** tab:
+
+    ![Rancher Node Drivers tab highlighted](node-drivers-tab-highlighted.png "Click on the Node Drivers tab")
+
+    You will see the Linode node driver and any other active or inactive node drivers.
+
+    ![Linode node driver activated by default](linode-node-driver-active.png "Linode node driver is activated by default")
+
+    {{< note >}}
+The Linode node driver **does not** install the Linode CCM and CSI for your new clusters. Further instructions for enabling these features are listed in the [Deploy a Kubernetes Cluster](#deploy-a-kubernetes-cluster) section. You should wait until the node driver is listed as **Active** before moving on.
+    {{</ note >}}
 
     {{< disclosure-note "What are the Linode CCM and CSI?" >}}
 The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Controller Manager) and [CSI](https://github.com/linode/linode-blockstorage-csi-driver) (Container Storage Interface) are Kubernetes addons published by Linode. These addons provide additional integrations with the Linode cloud platform. Specifically, you can use them to create NodeBalancers, DNS records, and Block Storage Volumes.
@@ -127,7 +151,7 @@ The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Cont
 
 ### Add a Node Template
 
-*Node templates* are used by Rancher to provision cluster nodes. When you create a node template, you can specify configuration parameters, like the region, instance type, and Linux image that should be used for any node in the cluster. You can set different templates for different clusters, which allows you to choose the right resources for your different workloads.
+[*Node templates*](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) are used by Rancher to provision cluster nodes. When you create a node template, you can specify configuration parameters, like the region, instance type, and Linux image that should be used for any node in the cluster. You can set different templates for different clusters, which allows you to choose the right resources for your different workloads.
 
 Before provisioning your cluster, you will need to add the node template it will use. To add a node template:
 
@@ -137,18 +161,22 @@ Before provisioning your cluster, you will need to add the node template it will
 
 1.  On the *Node Templates* page, click on the **Add Template** button in the upper right-hand corner.
 
-1.  The *Add Node Template* dialog will appear, select Linode from the list of providers and enter in your Linode APIv4 token in the **API Token** field.
+1. The *Add Node Template* dialog will appear, select Linode from the list of providers.
 
-    ![Add Node Template dialog window](add-node-template-api-token.png "Select Linode from the list of providers and enter in your Linode APIv4 token")
+1. In the *Access Token* section of the dialog, create a [Cloud Credential](https://rancher.com/docs/rancher/v2.x/en/user-settings/cloud-credentials/) to store your Linode APIv4 token. In the **Name** field, provide a descriptive name for the token and add your Linode APIv4 token in the *Access Token* field.
 
-1. Click on the **Next: Configure Instances** button.
+      ![Add a cloud credential](add-cloud-credential.png)
+
+1. Click on the **Create** button.
 
 1. Another dialog will appear which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](/docs/quick-answers/linode-platform/tags-and-groups/) you’d like to apply to your nodes.
 
     ![Rancher Add Node Template form - Linode options](add-node-template-linode-options.png "The Linode options in the Add Node Template form")
 
     {{< note >}}
-We recommend that you choose a Linode 2GB or higher for the nodes in a Kubernetes cluster. The Block Storage service has not been deployed to our Atlanta (US-Southeast) data center. Since this guide will use Block Storage Volumes in its example cluster, please choose a different region when creating your node template.
+We recommend that you choose a Linode 2GB or higher for the nodes in a Kubernetes cluster.
+
+The Block Storage service has not been deployed to our Atlanta (US-Southeast) data center. Since this guide will use Block Storage Volumes in its example cluster, please choose a different region when creating your node template.
 {{< /note >}}
 
 1.  Enter a name for your template. This can be arbitrary, but it's helpful to call it something that will help you remember the options you set in the template form, like `newark-linode8gb-ubuntu1804`.
@@ -222,16 +250,20 @@ Review Rancher's [Production Ready Cluster](https://rancher.com/docs/rancher/v2.
       name: linode
       namespace: kube-system
     stringData:
-      token: "..."
+      token: password
       region: "..."
     ---
 {{< /file >}}
 
-1.  Insert your Linode APIv4 token in the `token` field from this snippet. Also, enter the label for your node template's data center in the `region` field. This label should be lower-case (e.g. `us-east` instead of `US-East`).
+    {{< note >}}
+Cloud credentials are only used by node templates if there are fields marked as `password`. In order to use the Linode APIv4 token cloud credential that you created in step 4 of the [Add a Node Template](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/#add-a-node-template) section of the guide, keep the example snippet's `token` field value of `password`.
+    {{</ note >}}
+
+1.  Enter the label for your node template's data center in the `region` field. This label should be lower-case (e.g. `us-east` instead of `US-East`).
 
 1.  Scroll down in the editor to the `services` section. Remove the `kube-api` sub-section and replace it with the example snippet. When editing the file, ensure you do not accidentally remove any other sections above or below the snippet.
 
-{{< file >}}
+    {{< file >}}
     kube-api:
       always_pull_images: false
       pod_security_policy: false
@@ -246,7 +278,7 @@ Review Rancher's [Production Ready Cluster](https://rancher.com/docs/rancher/v2.
     kube-controller:
       extra_args:
         cloud-provider: "external"
-{{< /file >}}
+    {{< /file >}}
 
 1.  After you finish with both of these steps, your YAML should resemble [this completed snippet](completed-cluster-config.yml).
 
@@ -362,11 +394,11 @@ To test out deploying an app on your new cluster, launch the WordPress app from 
 
     ![Rancher project navigation bar - Apps highlighted](default-project-navigation-bar-apps-highlighted.png "Rancher project navigation bar - Apps highlighted")
 
-1.  The **Apps** view for your project will appear, but it will show a placeholder image because no apps have been deployed yet. Click on this view's **Launch** button.
+1.  The **Apps** view for your project will appear, but it will show a placeholder text because no apps have been deployed yet. Click on this view's **Launch** button.
 
-1.  A list of apps will appear. Scroll down to the WordPress app and click its **View Details** button:
+1.  A list of apps will appear. Scroll down to the WordPress app and click on it:
 
-    ![WordPress app in Rancher app library catalog](app-catalog-list-wordpress.png "WordPress app in Rancher app library catalog")
+    ![WordPress app in Rancher app library catalog](select-wordpress-app.png "WordPress app in Rancher app library catalog")
 
 1.  The setup form for the WordPress app will appear. In the **Wordpress Settings** section, enter a username, password, and email for your WordPress admin user:
 

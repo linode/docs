@@ -21,7 +21,7 @@ rancher_kubernetes_engine_config:
       name: linode
       namespace: kube-system
     stringData:
-      token: "..."
+      token: password
       region: "..."
     ---
   addon_job_timeout: 30
