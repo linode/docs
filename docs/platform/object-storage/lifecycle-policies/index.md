@@ -33,7 +33,7 @@ You should familiarize yourself with Linode Object Storage by reading the [How t
 
 ## s3cmd
 
-s3cmd allows users to set and manage lifecycle policies from the command line. Below you will find instructions on how to create and manage lifecycle policies using s3cmd.
+s3cmd allows users to set and manage lifecycle policies from the command line. Below you will find instructions on how to create and manage lifecycle policies to delete objects, previous versions of objects, and failed multipart uploads using s3cmd.
 
 ### Creating a Lifecycle Policy File
 
@@ -59,7 +59,9 @@ The above lifecycle policy deletes all objects in the bucket after one day. Each
 - The `Status` is a string value describing the status of the lifecycle policy. To enable the policy, set this value to `Enabled`, to disable the policy set the value to `Disabled`.
 - The `Expiration` block contains the `Days` block. The `Days` block is a the number of days before this rule will be enacted. In the above example, the `Days` is set to `1`, meaning that the objects in the bucket will be deleted after one day.
 
-There also exists another block not mentioned in the above example, the `NoncurrentVersionExpiration` block, and its child, `NoncurrentDays`. This block is meant to control the lifecycle of objects with multiple older versions, and should only be used with buckets that have bucket versioning enabled. Using `NoncurrentVersionExpiration` will delete objects that are not the newest, most current version. Below is an example of how to use `NoncurrentVersionExpiration`.
+There also exists another couple of blocks not mentioned in the above example, the `NoncurrentVersionExpiration` block, and its child, `NoncurrentDays`, and `AbortIncompleteMultipartUpload`, and its child, `DaysAfterInitiation`.
+
+`NoncurrentVersionExpiration` is meant to control the lifecycle of objects with multiple older versions, and should only be used with buckets that have bucket versioning enabled. Using `NoncurrentVersionExpiration` will delete objects that are not the newest, most current version. Below is an example of how to use `NoncurrentVersionExpiration`.
 
 {{< file "lifecycle_policy_noncurrent_versions.xml" xml >}}
 <LifecycleConfiguration>
@@ -73,6 +75,24 @@ There also exists another block not mentioned in the above example, the `Noncurr
         <NoncurrentVersionExpiration>
             <NoncurrentDays>1</NoncurrentDays>
         </NoncurrentVersionExpiration>
+    </Rule>
+</LifecycleConfiguration>
+{{</ file >}}
+
+`AbortIncompleteMultipartUpload` works similarly to `NoncurrentVersionExpiration`, however instead of deleting previous versions of objects it deletes failed multipart uploads. The following will delete failed multipart uploads three days after they were initiated:
+
+{{< file "lifecycle_policy_multipart_upload.xml" xml >}}
+<LifecycleConfiguration>
+    <Rule>
+        <ID>delete-prior-versions</ID>
+        <Prefix></Prefix>
+        <Status>Enabled</Status>
+        <Expiration>
+            <Days>1</Days>
+        </Expiration>
+        <AbortIncompleteMultipartUpload>
+            <DaysAfterInitiation>3</DaysAfterInitiation>
+        </AbortIncompleteMultipartUpload>
     </Rule>
 </LifecycleConfiguration>
 {{</ file >}}
@@ -144,7 +164,7 @@ You'll see a confirmation that the lifecycle policy was deleted:
 
 ## Cyberduck
 
-Cyberduck allows less control over lifecycle polices than the s3cmd command line tool. In particular, this means that Cyberduck does not allow setting a lifecycle policy to remove outdated versions of objects in buckets with versioning enabled, and limits the length of the lifecycle policy to commonly used time spans. Below you will learn how to set a lifecycle policy using Cyberduck.
+Cyberduck allows less control over lifecycle polices than the s3cmd CLI. In particular, this means that Cyberduck does not allow setting a lifecycle policy to remove outdated versions of objects in buckets with versioning enabled, nor does it allow for the deletion of multipart uploads, and limits the length of the lifecycle policy to commonly used time spans. Below you will learn how to set a lifecycle policy using Cyberduck.
 
 ### Enable a Lifecycle Policy
 
