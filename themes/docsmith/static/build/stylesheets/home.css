@@ -9854,7 +9854,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   padding: 0 10px;
 }
 .terminal code {
-  white-space: pre-line;
+  white-space: pre;
 }
 pre.terminal code::-moz-selection {
   background-color: #B2D7FF;
