@@ -36,12 +36,12 @@ Among other things, you will learn about:
 - [How to work with files and directories](#working-with-files-and-directories)
 
 {{< note >}}
-This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to propely execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## The bash Executable
 
-The bash shell is an exectuable file. The executable file for the bash shell can be usually found inside `/bin` – its full
+The bash shell is an executable file. The executable file for the bash shell can be usually found inside `/bin` – its full
 path is `/bin/bash`. Please keep this file path in mind as it will be used in all
 bash scripts.
 
@@ -71,7 +71,7 @@ For the `hello_world.sh` script to become executable, you will need to run one
 of the following two commands:
 
     chmod +x hello_world.sh
-	chmod 755 hello_worldw.sh
+    chmod 755 hello_worldw.sh
 
 After that the file permissions of `hello_world.sh` will be similar to the following:
 
