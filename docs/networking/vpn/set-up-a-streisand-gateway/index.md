@@ -86,7 +86,7 @@ As of this writing, it is not possible to run Streisand on a Windows computer. I
 
     *  On macOS:
 
-            sudo python2.7 -m ensurepip            
+            sudo python2.7 -m ensurepip
 
 ## Install and Run Streisand
 

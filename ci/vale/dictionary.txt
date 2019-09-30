@@ -929,6 +929,7 @@ nonprivileged
 nonrecursive
 nosync
 nouveau
+novaclient
 novell
 npm
 npmjs
@@ -1001,6 +1002,7 @@ passwdcolumn
 passwdfile
 passwordless
 patroni
+pbr
 pem
 pepi
 percona
