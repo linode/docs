@@ -42,7 +42,7 @@ Streisand uses open-source platform [Ansible](https://www.ansible.com/) to autom
 
 4.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have.
 {{< note >}}
-Select **Read/Write** access when setting up a Streisand gateway because you will be creating a new Streisand Linode server.
+Choose **Read/Write** access when setting up a Streisand gateway because you will be creating a new Streisand Linode server.
 {{< /note >}}
 
     ![Add a Personal Access Token](get-started-with-linode-api-new-token.png "Add a Personal Access Token")
