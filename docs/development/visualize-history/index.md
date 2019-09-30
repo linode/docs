@@ -19,10 +19,10 @@ There are many open source tools available to create sophisticated data visualiz
 
 In this guide you will complete the following steps:
 
-* [Three different data sets to use for your visualizations](/docs/languages/bash/visualize-history/#create-your-data-sets)
-* [A pie chart visualization using R and RStudio](/docs/languages/bash/visualize-history/#visualize-your-data-with-rstudio)
-* [A word cloud using Python and the pandas library](/docs/languages/bash/visualize-history/#create-a-word-cloud-using-python)
-* [A web browser based pie chart visualization using JavaScript and the D3.js package](/docs/languages/bash/visualize-history/#visualize-data-using-d3-js)
+* [Three different data sets to use for your visualizations](/docs/development/visualize-history/#create-your-data-sets)
+* [A pie chart visualization using R and RStudio](/docs/development/visualize-history/#visualize-your-data-with-rstudio)
+* [A word cloud using Python and the pandas library](/docs/development/visualize-history/#create-a-word-cloud-using-python)
+* [A web browser based pie chart visualization using JavaScript and the D3.js package](/docs/development/visualize-history/#visualize-data-using-d3-js)
 
 ### Before You Begin
 
@@ -34,7 +34,7 @@ Ensure you have the following programs and packages installed on your computer:
     1. [pandas](https://pypi.org/project/pandas/) Python package
     1. [Matplotlib](https://pypi.org/project/matplotlib/) Python package
     1. [wordcloud](https://pypi.org/project/wordcloud/) Python package
-1. The [Golang](https://golang.org/doc/install) programming langauge
+1. The [Golang](https://golang.org/doc/install) programming language
 
 {{< disclosure-note "Assumptions">}}
 This guide assumes you have some basic familiarity with the following concepts and skills:
@@ -183,13 +183,13 @@ In this section you will use the data sets you created in the previous section t
 
 [R](https://www.r-project.org/about.html) is a specialized programming language used for statistical computing and graphics. It is especially good for  creating high quality graphs, like [density plots](https://en.wikipedia.org/wiki/Density_estimation), [line charts](https://en.wikipedia.org/wiki/Line_chart), [pie charts](https://en.wikipedia.org/wiki/Pie_chart), and [scatter plots](https://en.wikipedia.org/wiki/Scatter_plot). [RStudio](https://rstudio.com/) is an integrated development environment (IDE) for R that includes debugging and plotting tools that make it easy to write, debug, and run R scripts.
 
-In this section, you will use the `command_categories.txt` file created in the [Data Set 3 - Perl Script](/docs/languages/bash/visualize-history/#data-set-3-perl-script) section and RStudio to create a pie chart and simple spreadsheet of your data.
+In this section, you will use the `command_categories.txt` file created in the [Data Set 3 - Perl Script](/docs/development/visualize-history/#data-set-3-perl-script) section and RStudio to create a pie chart and simple spreadsheet of your data.
 
 1. Open RStudio Desktop and create a data frame. In R, a data frame is a table similar to a two-dimensional array.
 
         DATA <- read.table("~/command_categories.txt", header=TRUE)
 
-    - This command will read the `command_categories.txt` file that was created in the [Data Set 3 - Perl Script](/docs/languages/bash/visualize-history/#data-set-3-perl-script) section of the guide, create a data frame from it that is stored in the `DATA` variable.
+    - This command will read the `command_categories.txt` file that was created in the [Data Set 3 - Perl Script](/docs/development/visualize-history/#data-set-3-perl-script) section of the guide, create a data frame from it that is stored in the `DATA` variable.
 
     - The `header=TRUE` argument indicates that the file's first row contains variable names for column values. This means that `Category Name` and `Number of Times` will be used as variable names for the two columns of values in `command_categories.txt`.
 
@@ -268,7 +268,7 @@ else:
 
     {{< output >}}
 Creating word cloud for file: /Users/username/data-sets/data-2
-Your wordcloud's filename is: word_cloud_58.png
+Your word cloud's filename is: word_cloud_58.png
     {{</ output>}}
 
 1. Open the `word_cloud_58.png` image file to view your word cloud.
@@ -381,7 +381,7 @@ func main() {
     }
     fmt.Println("];")
 }
-{{< /file >}}
+    {{< /file >}}
 
 1. Run the command line utility and pass in the paths to each command history data set:
 
