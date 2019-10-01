@@ -92,7 +92,7 @@ Similarly, to **deny** traffic on a certain port (in this example, 111) you woul
 
     sudo ufw deny 111
 
-To farther fine-tune your rules, you can also allow packets based on TCP or UDP. The following will allow TCP packets on port 80:
+To further fine-tune your rules, you can also allow packets based on TCP or UDP. The following will allow TCP packets on port 80:
 
     sudo ufw allow 80/tcp
     sudo ufw allow http/tcp
