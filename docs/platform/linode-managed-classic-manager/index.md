@@ -10,7 +10,6 @@ modified_by:
 published: 2013-02-12
 cloud_manager_link: platform/linode-managed/
 title: Linode Managed
-cloud_manager_link: platform/linode-managed/
 hiddenguide: true
 ---
 
