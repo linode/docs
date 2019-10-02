@@ -95,7 +95,7 @@ After you have your Linode up and running with Docker, you can then install and 
     -   The `--restart` option ensures that the application will be restarted if the Linode is ever rebooted.
     -   The `-v` option binds the `/opt/rancher` directory on the Linode to the container so that the application can persist its data.
 
-1.  Visit your Linode's IP address in your browser. Your browser will display an SSL certificate warning, but you can bypass it.
+1.  Once Docker has finished starting up the container, visit your Linode's IP address in your browser. Your browser will display an SSL certificate warning, but you can bypass it.
 
     {{< note >}}
 If you are interested in setting up an SSL certificate with Rancher, you may consider also creating an NGINX container with an SSL certificate that proxies traffic to the Rancher container.
