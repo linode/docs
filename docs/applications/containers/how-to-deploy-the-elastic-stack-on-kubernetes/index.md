@@ -50,7 +50,7 @@ This guide uses Kubernetes services which are private by default. Local listener
 
 1.  [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
 
-1.  Follow the [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide to set up a Kubernetes cluster. This guide will use a three node + master node cluster. You can use the following linode k8s-alpha CLI command to create your cluster:
+1.  Follow the [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide to set up a Kubernetes cluster. This guide will use a three node + master node cluster. You can use the following Linode k8s-alpha CLI command to create your cluster:
 
         linode-cli k8s-alpha create example-cluster --node-type g6-standard-2 --nodes 3 --master-type g6-standard-2 --region us-east --ssh-public-key ~/.ssh/id_rsa.pub
 
