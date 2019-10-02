@@ -9,7 +9,7 @@ published: 2019-03-14
 modified_by:
   name: Linode
 title: 'How to Deploy Kubernetes on Linode with Rancher 2.3'
-aliases: ['applications/containers/how-to-deploy-apps-with-rancher/', 'applications/containers/how-to-deploy-apps-with-rancher-2-3/', 'applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
+aliases: ['applications/containers/how-to-deploy-apps-with-rancher/', 'applications/containers/how-to-deploy-apps-with-rancher-2-3/', 'applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/', 'applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
