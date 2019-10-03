@@ -18,6 +18,8 @@ external_resources:
 - '[GitLab SSL Configuration](https://docs.gitlab.com/omnibus/settings/ssl.html#lets-encrypt-integration)'
 ---
 
+![Install GitLab with Docker](install-gitlab-with-docker.png "Install GitLab with Docker")
+
 [GitLab](https://gitlab.com/) is a free Git repository management application, like GitHub or Bitbucket, that you can run on your own Linode. This guide will show you how to install GitLab using the official GitLab Docker image.
 
 The GitLab application has a number of services it depends on, including PostgreSQL, Nginx, and Redis. A major benefit of using Docker to install GitLab is that these dependencies are isolated to a single easy-to-update and self-contained image.

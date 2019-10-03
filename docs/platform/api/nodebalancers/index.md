@@ -16,6 +16,8 @@ external_resources:
   - '[Getting Started with NodeBalancers](https://linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers/)'
 ---
 
+![Configure NodeBalancers with the Linode API](configure-nodebalancers-with-the-linode-api.png "Configure NodeBalancers with the Linode API")
+
 [NodeBalancers](https://www.linode.com/nodebalancers) can be used to provide high availability load balancing for almost any type of website or service hosted on a Linode. This guide will demonstrate how to use the Linode API to create a NodeBalancer with two back end nodes.
 
 You will need a Personal Access Token for the Linode API to complete the steps in this guide. The easiest way to get an access token is by visiting the beta [Linode Manager](https://cloud.linode.com/profile/tokens); for more information, as well as a basic introduction to using the Linode API, see our guide on [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/).

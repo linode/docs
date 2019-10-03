@@ -16,13 +16,11 @@ title: Getting Started with Varnish Cache
 external_resources:
  - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
 ---
-
+![Getting Started with Varnish Cache](getting-started-with-varnish-cache.png "Getting Started with Varnish Cache")
 
 Does your server need to handle lots of traffic? Caching is one of the best ways to maximize the output of your Linode. But what is caching, exactly?
 
 The idea behind caching is that your server shouldn't have to regenerate the same dynamic content from scratch every time it's accessed. Save your Linode's resources by putting a caching proxy like Varnish in front of your web service to accelerate responses to HTTP requests and reduce server workload.
-
-![Getting Started with Varnish Cache](varnish_tg.png "Getting Started with Varnish Cache")
 
 Varnish works by handling requests before they make it to your backend; whether your backend is Apache, nginx, or any other web server. If it doesn't have a request cached, it will forward the request to your backend and then cache its output. You can then store these cached requests in memory, so they're retrieved by and delivered to clients much faster than they would be from disk.
 

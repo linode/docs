@@ -6,7 +6,7 @@ description: 'How to Manage Secrets with Terraform'
 keywords: ['terraform','secrets','secrets management','backend','hcl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
-modified: 2018-12-12
+modified: 2019-08-09
 modified_by:
   name: Linode
 title: "Secrets Management with Terraform"
@@ -21,6 +21,12 @@ external_resources:
 ---
 
 Terraform is an Infrastructure as Code (IaC) tool that allows you to write declarative code to manage your infrastructure. In order to implement IaC with Terraform it is necessary to supply secrets, such as server passwords and API tokens, within your code. This guide will discuss methods for securing those secrets within Terraform.
+
+{{< note >}}
+[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+
+The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
+{{</ note >}}
 
 ## Keeping Secrets Out of .tf Files
 
@@ -38,7 +44,7 @@ variable "token" {
 }
 
 provider "linode" {
-    token = "${var.token}"
+    token = var.token
 }
 {{< /file >}}
 

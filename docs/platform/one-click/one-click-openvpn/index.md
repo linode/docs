@@ -32,7 +32,6 @@ OpenVPN is a widely trusted, free, and open-source VPN (virtual private network)
 | **Field** | **Description** |
 |:--------------|:------------|
 | **VPN Password** | The password you'll use when connecting to your VPN. *Required*. |
-| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Configuration*. |
 
 ### Linode Options
 

@@ -97,7 +97,7 @@ In this section, you will download and install the Chef Workstation package, whi
 
 1.  Install Chef Workstation:
 
-        dpkg -i chef-workstation_*.deb
+        sudo dpkg -i chef-workstation_*.deb
 
 1.  Remove the installation file:
 

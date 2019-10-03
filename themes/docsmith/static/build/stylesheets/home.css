@@ -9309,12 +9309,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .community strong {
   font-weight: bolder;
 }
-#article-body .disclosure-note {
+#article-body .hidden-content {
   padding: 15px;
   background-color: #edf7fe;
   border-left: 4px solid #bde2fb;
 }
-#article-body .disclosure-note:before {
+#article-body .hidden-content:before {
   font-family: "Lato", sans-serif;
   font-weight: 300;
   line-height: 1.1;
@@ -9326,29 +9326,29 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-weight: 400;
   color: #000;
 }
-#article-body .disclosure-note:before small,
-#article-body .disclosure-note:before .small {
+#article-body .hidden-content:before small,
+#article-body .hidden-content:before .small {
   font-weight: normal;
   line-height: 1;
   color: #777777;
 }
-#article-body .disclosure-note:before small,
-#article-body .disclosure-note:before .small {
+#article-body .hidden-content:before small,
+#article-body .hidden-content:before .small {
   font-size: 75%;
 }
-#article-body .disclosure-note:before + .lead {
+#article-body .hidden-content:before + .lead {
   padding-top: 10px;
 }
-#article-body .disclosure-note:before {
+#article-body .hidden-content:before {
   display: inline-block;
   margin-bottom: 10px;
 }
-#article-body .disclosure-note * {
+#article-body .hidden-content * {
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
 }
-#article-body .disclosure-note:before {
+#article-body .hidden-content:before {
   font-family: "Lato", sans-serif;
   font-weight: 300;
   line-height: 1.1;
@@ -9359,48 +9359,129 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-size: 17px;
   font-weight: 400;
 }
-#article-body .disclosure-note:before small,
-#article-body .disclosure-note:before .small {
+#article-body .hidden-content:before small,
+#article-body .hidden-content:before .small {
   font-weight: normal;
   line-height: 1;
   color: #777777;
 }
-#article-body .disclosure-note:before small,
-#article-body .disclosure-note:before .small {
+#article-body .hidden-content:before small,
+#article-body .hidden-content:before .small {
   font-size: 75%;
 }
-#article-body .disclosure-note:before + .lead {
+#article-body .hidden-content:before + .lead {
   padding-top: 10px;
 }
-#article-body .disclosure-note a {
+#article-body .hidden-content a {
   color: #0089bc;
 }
-#article-body .disclosure-note a:hover {
+#article-body .hidden-content a:hover {
   color: #006489;
 }
-#article-body .disclosure-note strong {
+#article-body .hidden-content strong {
   font-weight: bold;
 }
-#article-body .disclosure-note img.disclosure-icon {
+#article-body .hidden-content img.toggle-hidden-content-icon {
   display: inline-block;
   height: 1.5em;
   margin: -0.1em 0 0 0;
+  vertical-align: text-bottom;
   -webkit-transition: .2s linear;
   transition: .2s linear;
   -webkit-transform: scaleY(1);
           transform: scaleY(1);
 }
-#article-body .disclosure-note .disclosure-note-content {
+#article-body .hidden-content .hidden-content-body {
   overflow: hidden;
   margin-top: 10px;
 }
-#article-body .disclosure-note table:not([class]) > thead > tr > th {
+#article-body .hidden-content table:not([class]) > thead > tr > th {
   background: transparent;
 }
-#article-body .disclosure-note table:not([class]) > tbody > tr:nth-of-type(odd) {
+#article-body .hidden-content table:not([class]) > tbody > tr:nth-of-type(odd) {
   background: #fff;
 }
-#article-body .disclosure-note.disclosed img.disclosure-icon {
+#article-body .hidden-content.quick-start {
+  padding: 15px;
+  background-color: #efefef;
+  border-left: 4px solid #d6d6d6;
+}
+#article-body .hidden-content.quick-start:before {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #000;
+}
+#article-body .hidden-content.quick-start:before small,
+#article-body .hidden-content.quick-start:before .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #777777;
+}
+#article-body .hidden-content.quick-start:before small,
+#article-body .hidden-content.quick-start:before .small {
+  font-size: 75%;
+}
+#article-body .hidden-content.quick-start:before + .lead {
+  padding-top: 10px;
+}
+#article-body .hidden-content.quick-start:before {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+#article-body .hidden-content.quick-start * {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+#article-body .hidden-content.quick-start:before {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-size: 17px;
+  font-weight: 400;
+}
+#article-body .hidden-content.quick-start:before small,
+#article-body .hidden-content.quick-start:before .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #777777;
+}
+#article-body .hidden-content.quick-start:before small,
+#article-body .hidden-content.quick-start:before .small {
+  font-size: 75%;
+}
+#article-body .hidden-content.quick-start:before + .lead {
+  padding-top: 10px;
+}
+#article-body .hidden-content.quick-start a {
+  color: #0089bc;
+}
+#article-body .hidden-content.quick-start a:hover {
+  color: #006489;
+}
+#article-body .hidden-content.quick-start h2.quick-start-h2 {
+  display: inline;
+  font-size: 21px;
+  margin: -0.1em 0 0 0.5em;
+}
+#article-body .hidden-content.quick-start .btn {
+  padding: .5em 1.5em;
+}
+#article-body .hidden-content.quick-start .btn.feedback.no {
+  margin-left: 1em;
+}
+#article-body .hidden-content.unhidden img.toggle-hidden-content-icon {
   -webkit-transition: .2s linear;
   transition: .2s linear;
   -webkit-transform: scaleY(-1);
@@ -10659,6 +10740,10 @@ body.modal-open,
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
 }
+.table {
+  display: block;
+  overflow-x: auto;
+}
 .table > thead > tr > th {
   color: white;
   font-family: "Lato", sans-serif;
@@ -10695,6 +10780,12 @@ body.modal-open,
   display: block;
   font-size: 16px;
   color: #747474;
+}
+.definition-table > tbody > tr > td {
+  vertical-align: top;
+}
+.definition-table > tbody > tr > td > li {
+  font-size: 14px;
 }
 table.lntable tbody {
   display: table;
@@ -16673,6 +16764,274 @@ blockquote strong {
 .light-blue blockquote ul > li {
   color: #747474;
 }
+.light-grey {
+  background-color: #efefef;
+  color: #fff;
+}
+.light-grey .lead a {
+  font-weight: 300;
+}
+.light-grey h1 > a,
+.light-grey h2 > a,
+.light-grey h3 > a,
+.light-grey h4 > a,
+.light-grey h5 > a,
+.light-grey h6 > a,
+.light-grey p > a,
+.light-grey em > a,
+.light-grey li > a,
+.light-grey td > a,
+.light-grey address > a,
+.light-grey .span > a {
+  -webkit-transition: 0.2s color;
+  transition: 0.2s color;
+}
+.light-grey h1 > a:hover,
+.light-grey h2 > a:hover,
+.light-grey h3 > a:hover,
+.light-grey h4 > a:hover,
+.light-grey h5 > a:hover,
+.light-grey h6 > a:hover,
+.light-grey p > a:hover,
+.light-grey em > a:hover,
+.light-grey li > a:hover,
+.light-grey td > a:hover,
+.light-grey address > a:hover,
+.light-grey .span > a:hover,
+.light-grey h1 > a:active,
+.light-grey h2 > a:active,
+.light-grey h3 > a:active,
+.light-grey h4 > a:active,
+.light-grey h5 > a:active,
+.light-grey h6 > a:active,
+.light-grey p > a:active,
+.light-grey em > a:active,
+.light-grey li > a:active,
+.light-grey td > a:active,
+.light-grey address > a:active,
+.light-grey .span > a:active {
+  text-decoration: none;
+}
+.light-grey .nav li > a {
+  text-decoration: none;
+}
+.light-grey.separated {
+  border-bottom-color: #c9c9c9;
+}
+.light-grey h1,
+.light-grey .h1,
+.light-grey h2,
+.light-grey .h2,
+.light-grey h3,
+.light-grey .h3,
+.light-grey h4,
+.light-grey .h4,
+.light-grey h5,
+.light-grey .h5,
+.light-grey h6,
+.light-grey .h6 {
+  color: #000;
+}
+.light-grey.jumbotron h1,
+.light-grey.jumbotron .h1 {
+  color: #bfbfbf;
+}
+.light-grey.jumbotron h2,
+.light-grey.jumbotron .h2,
+.light-grey.jumbotron h3,
+.light-grey.jumbotron .h3,
+.light-grey.jumbotron h4,
+.light-grey.jumbotron .h4,
+.light-grey.jumbotron h5,
+.light-grey.jumbotron .h5,
+.light-grey.jumbotron h6,
+.light-grey.jumbotron .h6 {
+  color: #fff;
+}
+.light-grey h1 > a:link,
+.light-grey h2 > a:link,
+.light-grey h3 > a:link,
+.light-grey h4 > a:link,
+.light-grey h5 > a:link,
+.light-grey h6 > a:link,
+.light-grey p > a:link,
+.light-grey em > a:link,
+.light-grey li > a:link,
+.light-grey td > a:link,
+.light-grey address > a:link,
+.light-grey .span > a:link,
+.light-grey h1 > a:visited,
+.light-grey h2 > a:visited,
+.light-grey h3 > a:visited,
+.light-grey h4 > a:visited,
+.light-grey h5 > a:visited,
+.light-grey h6 > a:visited,
+.light-grey p > a:visited,
+.light-grey em > a:visited,
+.light-grey li > a:visited,
+.light-grey td > a:visited,
+.light-grey address > a:visited,
+.light-grey .span > a:visited,
+.light-grey h1 > a:active,
+.light-grey h2 > a:active,
+.light-grey h3 > a:active,
+.light-grey h4 > a:active,
+.light-grey h5 > a:active,
+.light-grey h6 > a:active,
+.light-grey p > a:active,
+.light-grey em > a:active,
+.light-grey li > a:active,
+.light-grey td > a:active,
+.light-grey address > a:active,
+.light-grey .span > a:active {
+  color: #0089bc;
+}
+.light-grey h1 > a:hover,
+.light-grey h2 > a:hover,
+.light-grey h3 > a:hover,
+.light-grey h4 > a:hover,
+.light-grey h5 > a:hover,
+.light-grey h6 > a:hover,
+.light-grey p > a:hover,
+.light-grey em > a:hover,
+.light-grey li > a:hover,
+.light-grey td > a:hover,
+.light-grey address > a:hover,
+.light-grey .span > a:hover {
+  color: #005170;
+}
+.light-grey h1 > a .glyphicon.tile,
+.light-grey h2 > a .glyphicon.tile,
+.light-grey h3 > a .glyphicon.tile,
+.light-grey h4 > a .glyphicon.tile,
+.light-grey h5 > a .glyphicon.tile,
+.light-grey h6 > a .glyphicon.tile,
+.light-grey p > a .glyphicon.tile,
+.light-grey em > a .glyphicon.tile,
+.light-grey li > a .glyphicon.tile,
+.light-grey td > a .glyphicon.tile,
+.light-grey address > a .glyphicon.tile,
+.light-grey .span > a .glyphicon.tile {
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  color: #000;
+}
+.light-grey h1 > a .glyphicon.tile:hover,
+.light-grey h2 > a .glyphicon.tile:hover,
+.light-grey h3 > a .glyphicon.tile:hover,
+.light-grey h4 > a .glyphicon.tile:hover,
+.light-grey h5 > a .glyphicon.tile:hover,
+.light-grey h6 > a .glyphicon.tile:hover,
+.light-grey p > a .glyphicon.tile:hover,
+.light-grey em > a .glyphicon.tile:hover,
+.light-grey li > a .glyphicon.tile:hover,
+.light-grey td > a .glyphicon.tile:hover,
+.light-grey address > a .glyphicon.tile:hover,
+.light-grey .span > a .glyphicon.tile:hover,
+.light-grey h1 > a .glyphicon.tile:active,
+.light-grey h2 > a .glyphicon.tile:active,
+.light-grey h3 > a .glyphicon.tile:active,
+.light-grey h4 > a .glyphicon.tile:active,
+.light-grey h5 > a .glyphicon.tile:active,
+.light-grey h6 > a .glyphicon.tile:active,
+.light-grey p > a .glyphicon.tile:active,
+.light-grey em > a .glyphicon.tile:active,
+.light-grey li > a .glyphicon.tile:active,
+.light-grey td > a .glyphicon.tile:active,
+.light-grey address > a .glyphicon.tile:active,
+.light-grey .span > a .glyphicon.tile:active {
+  color: #d9d9d9;
+}
+.light-grey ul.nav-sidebar > li.active > a {
+  color: #000;
+}
+.light-grey ul.nav-sidebar > li.header > a {
+  color: #626262;
+  font-weight: 800;
+}
+.light-grey ul.nav-sidebar > li > a {
+  color: #ffffff;
+  -webkit-transition: 0.1s all;
+  transition: 0.1s all;
+}
+.light-grey ul.nav-sidebar > li > a:hover {
+  color: #000;
+}
+.light-grey ul.dropdown-menu > li > a:link {
+  -webkit-transition: none;
+  transition: none;
+  text-decoration: none;
+}
+.light-grey ul.dropdown-menu > li > a:hover {
+  color: #fff;
+}
+.light-grey.subnav {
+  opacity: 0.96;
+}
+.light-grey.subnav .navbar-brand {
+  color: #000;
+}
+@media screen and (min-width: 768px) {
+}
+.light-grey.subnav .navbar-brand a {
+  text-decoration: none;
+  color: #000;
+}
+.light-grey.subnav li > a {
+  color: #aaa;
+}
+.light-grey.subnav li > a.active {
+  color: #000;
+}
+.light-grey.subnav li > a:hover {
+  color: #e6e6e6;
+}
+@media screen and (min-width: 768px) {
+}
+.light-grey.subnav .navbar-toggle {
+  color: #000;
+}
+.light-grey.subnav .navbar-toggle:hover {
+  background-color: transparent;
+}
+.light-grey.subnav .navbar-collapse {
+  border-top-color: #e7e6e6;
+}
+.light-grey.subnav .subnav-divider {
+  border-bottom: 1px solid #e7e6e6;
+}
+.light-grey .sidebar strong {
+  color: #000;
+}
+.light-grey .sidebar a strong {
+  color: #0089bc;
+}
+.light-grey .sidebar a strong:link,
+.light-grey .sidebar a strong:visited,
+.light-grey .sidebar a strong:active {
+  color: #0089bc;
+}
+.light-grey .sidebar a strong:hover {
+  color: #005170;
+}
+.light-grey cite.bubble strong {
+  color: #414141;
+}
+.light-grey cite.bubble a:link,
+.light-grey cite.bubble a:visited,
+.light-grey cite.bubble a:active {
+  color: #0089bc;
+}
+.light-grey cite.bubble a:hover {
+  color: #005170;
+}
+.light-grey blockquote {
+  color: #747474;
+}
+.light-grey blockquote p,
+.light-grey blockquote ul > li {
+  color: #747474;
+}
 .red {
   background-color: #d7594c;
   color: #fff;
@@ -20879,6 +21238,8 @@ div.library-tile .tile-title + .lead {
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
+  display: block;
+  overflow-x: auto;
 }
 #article-body table:not([class]) > thead > tr > th,
 #article-body table:not([class]) > tbody > tr > th,
@@ -21695,6 +22056,9 @@ h1.contribute {
 #article-body .disclosure-note .glyphicon.glyphicon-copy {
   font-size: 1.6rem;
   color: #a6a6a6;
+}
+#article-body .definition-table li {
+  font-size: 14px;
 }
 blockquote div.btn-copy > .copy-code {
   padding-top: 0.01rem;

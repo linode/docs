@@ -6,7 +6,7 @@ description: 'A look into Terraform''s primary components, features, and configu
 keywords: ['terraform', 'orchestration', 'linode provider']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-21
-modified: 2018-12-21
+modified: 2019-08-07
 modified_by:
   name: Linode
 title: "A Beginner's Guide to Terraform"
@@ -31,6 +31,10 @@ The Linode provider relies on Linode's [APIv4](https://developers.linode.com/api
 {{< /note >}}
 
 The Linode provider can be used to create Linode instances, Images, domain records, Block Storage Volumes, StackScripts, and other resources. Terraform's [official Linode provider documentation](https://www.terraform.io/docs/providers/linode/index.html) details each resource that can be managed.
+
+{{< note >}}
+[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+{{</ note >}}
 
 ## Infrastructure as Code
 
@@ -101,13 +105,14 @@ resource "linode_instance" "example_instance" {
 resource "linode_domain" "example_domain" {
     domain = "example.com"
     soa_email = "example@example.com"
+    type = "master"
 }
 
 resource "linode_domain_record" "example_domain_record" {
-    domain_id = "${linode_domain.example_domain.id}"
+    domain_id = linode_domain.example_domain.id
     name = "www"
     record_type = "A"
-    target = "${linode_instance.example_instance.ip_address}"
+    target = linode_instance.example_instance.ip_address
 }
 {{< /file >}}
 
@@ -125,16 +130,16 @@ Input variables can also be used for non-sensitive data. The following example f
 
 {{< file "example.tf" >}}
 provider "linode" {
-    token = "${var.token}"
+    token = var.token
 }
 
 resource "linode_instance" "example_instance" {
     label = "example_instance_label"
     image = "linode/ubuntu18.04"
-    region = "${var.region}"
+    region = var.region
     type = "g6-standard-1"
-    authorized_keys = ["${var.ssh_key}"]
-    root_pass = "${var.root_pass}"
+    authorized_keys = [var.ssh_key]
+    root_pass = var.root_pass
 }
 
 variable "token" {}

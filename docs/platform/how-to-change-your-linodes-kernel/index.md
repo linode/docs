@@ -12,6 +12,7 @@ modified_by:
 published: 2015-06-29
 title: How to Change your Linode's Kernel
 ---
+![How to Change Your Linode's Kernel](change-your-linodes-kernel.png "How to Change Your Linode's Kernel")
 
 This guide is about changing your Linode's kernel to an upstream kernel, a Linode kernel, or a kernel that you compile from source. For information on updating your Linode's current kernel, check out the [How to Update your Linode's Existing Kernel](/docs/platform/update-kernel/) guide.
 
@@ -45,9 +46,7 @@ The different kinds of kernels you can use offer different benefits:
 
 ## How to Switch your Kernel
 
-1.  Select the Linode from the *Dashboard*
-
-1.  Click the **Settings** tab and expand the **Advanced Configurations** section.
+1.  Select the Linode from the *Dashboard* and click the **Advanced** tab.
 
 1. Find your current *Configuration*, click on the corresponding ellipses (**...**) menu and select **Edit**.
 
