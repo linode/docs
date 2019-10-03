@@ -63,17 +63,6 @@ tcp        0      0 li140-253.members.l:ssh 185.232.67.121:43556    TIME_WAIT
 tcp        0      0 li140-253.members.:smtp 37.252.14.141:64553     SYN_RECV
 tcp        0      0 li140-253.members.l:ssh 37.252.14.141:43860     SYN_RECV
 tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
-tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
-tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
-tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
-tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
-tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
-tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
-tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
-tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
-tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
-tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
-tcp        0      0 li140-253.members.:smtp 37.252.14.141:44909     SYN_RECV
 tcp        0      0 li140-253.members.l:ssh ppp-2-86-7-61.hom:54757 ESTABLISHED
 tcp        0      0 li140-253.members.l:ssh 37.252.14.141:62736     SYN_RECV
 tcp6       0      0 li140-253.members.:http 37.252.14.141:63805     SYN_RECV
