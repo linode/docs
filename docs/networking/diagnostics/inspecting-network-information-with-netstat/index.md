@@ -14,6 +14,7 @@ contributor:
   link: https://www.mtsoukalos.eu/
 external_resources:
   - '[netstat](http://netstat.net/)'
+aliases: ['networking/diagnostics/inspecting-network-connections-with-netstat/']
 ---
 
 The `netstat` command line utility shows information about the network status of a workstation or server. `netstat` is available on Unix-like and Windows operating systems, with some differences in its usage between these systems.
