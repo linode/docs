@@ -1,4 +1,5 @@
 abc
+abell
 absecon
 abspath
 aconf
@@ -12,9 +13,11 @@ adnanh
 adodb
 aes
 ahci0
+Aho
 ahvz
 ajp
 aker
+alexey
 alives
 allmasquerade
 alphanumerics
@@ -62,6 +65,7 @@ automattic
 automount
 autorelabel
 autorun
+autoscaler
 autoscaling
 autossh
 autostart
@@ -119,6 +123,7 @@ bzrtools
 c2s
 cabd
 cacert
+cacheable
 caddy
 caddyfile
 cakey
@@ -126,6 +131,7 @@ calc
 campione
 captcha
 carootcert
+ccm
 celeryd
 centos
 centos7
@@ -214,12 +220,14 @@ cronjobs
 crontab
 crt
 crypto
+csi
 csr
 css
 csum
 csv
 ctools
 ctrl
+ctx
 cuda
 cyberduck
 cyg
@@ -279,6 +287,7 @@ dircaps
 directadmin
 dired
 direnv
+discoverability
 disqus
 distro
 distros
@@ -375,6 +384,7 @@ fb4c
 fcgi
 fcgiwrap
 fcrontab
+fd
 fdisk
 fdriver
 fe70
@@ -503,6 +513,7 @@ hasn
 hba
 hd0
 hdfs
+healthcheck
 heartbleed
 heroku
 hexo
@@ -641,6 +652,7 @@ keepalived
 keras
 kerberos
 kerberos5
+Kernighan
 keychain
 keyfiles
 keygen
@@ -670,6 +682,7 @@ kubelet
 kubelets
 kubernetes
 kubespray
+kuznetosv
 lambdabunker
 laravel
 largebiomes
@@ -728,6 +741,7 @@ lookups
 loopback
 lspci
 lsd
+lsof
 lst
 lsyncd
 lua
@@ -735,6 +749,7 @@ lubuntu
 lucene
 lugano
 luminus
+lxd
 lxml
 lzma
 lzopio
@@ -762,6 +777,7 @@ masterless
 mathematica
 mathjax
 matplotlib
+mawk
 maxconn
 maxdepth
 mbit
@@ -790,6 +806,7 @@ microservice
 microservices
 microsystems
 microweb
+middleware
 minecraft
 mineshafts
 miniconda
@@ -798,6 +815,7 @@ minification
 minikube
 minimalistic
 minio
+minisockets
 minitest
 misconfiguration
 misconfigurations
@@ -860,6 +878,7 @@ nano
 nanode
 nanodes
 natively
+nawk
 nbox
 ncdu
 ncurses
@@ -874,6 +893,7 @@ netdev
 netfilter
 netflow
 netfs
+netid
 netifrc
 netlify
 netloc
@@ -910,6 +930,7 @@ nonprivileged
 nonrecursive
 nosync
 nouveau
+novaclient
 novell
 npm
 npmjs
@@ -919,6 +940,7 @@ ns2
 nsd4
 ntop
 ntopng
+ntp
 ntpd
 nullval
 num
@@ -981,6 +1003,7 @@ passwdcolumn
 passwdfile
 passwordless
 patroni
+pbr
 pem
 pepi
 percona
@@ -1053,6 +1076,7 @@ psycop2
 pty
 pubkey
 publickey
+pulumi
 puppetd
 puppetlabs
 puppetmaster
@@ -1092,6 +1116,7 @@ readwrite
 realtime
 reconnections
 recursing
+recv
 red5
 reddit
 redhat
@@ -1110,6 +1135,7 @@ remi
 remmina
 remotehost
 replicaset
+replicationcontrollers
 replset
 repo
 repos
@@ -1121,6 +1147,7 @@ respawn
 resque
 restapi
 retpoline
+retrans
 reusability
 reutilize
 richlanguage
@@ -1198,6 +1225,7 @@ sendmail
 seo
 serv
 server1
+serverless
 servername
 serverpassword
 serverspec
@@ -1305,6 +1333,7 @@ sukharev
 supervisord
 surbma
 suse
+swappable
 svn
 symantec
 symfony
@@ -1415,6 +1444,7 @@ unencrypted
 unexported
 unformatted
 unicast
+uninvoiced
 uniq
 unmanaged
 unmerged
@@ -1431,6 +1461,7 @@ untracked
 untruncated
 untrusted
 unversioned
+upsize
 uri
 uris
 url
@@ -1509,6 +1540,7 @@ websocket
 webtatic
 webupd8
 weechat
+Weinberger
 welcometext
 wercker
 werkzug

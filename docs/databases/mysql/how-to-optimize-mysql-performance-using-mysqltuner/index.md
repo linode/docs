@@ -41,7 +41,7 @@ The [MySQLTuner](http://mysqltuner.com/) script assesses your MySQL installation
 
 1. Download the MySQLTuner script:
 
-        wget http://mysqltuner.com/mysqltuner.pl
+        wget https://raw.githubusercontent.com/major/MySQLTuner-perl/master/mysqltuner.pl
 
 2. Change the scripts permissions to be executable:
 

@@ -17,6 +17,8 @@ external_resources:
 dedicated_cpu_link: true
 ---
 
+![Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 18.04](launch-a-counter-strike-global-offensive-1804.png "Launch a Counter Strike: Global Offensive server on Ubuntu 18.04")
+
 [Counter Strike: Global Offensive](http://store.steampowered.com/app/730) (CS:GO) is a first-person shooter by Valve. Hosting your own server gives you full control over your game and game modes, so you can play the exact flavor of CS:GO you want. This guide contains instructions on how to download the dedicated server and launch the game server.
 
 <!-- ![Launch a Counter Strike GO server on Ubuntu 14.04](launch-a-cs-go-server-on-ubuntu-14-04.png) -->

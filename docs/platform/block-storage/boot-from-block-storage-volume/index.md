@@ -13,6 +13,8 @@ published: 2018-05-04
 title: Boot a Linode from a Block Storage Volume
 ---
 
+![Boot from a Block Storage Volume](block-storage-title-graphic.png)
+
 <!-- ![Boot a Linode from a Block Storage Volume](boot-linode-block-storage-title.png "Boot a Linode from a Block Storage Volume Title Graphic") -->
 
 Linode’s Block Storage service allows you to attach additional storage volumes to your Linode. In addition to storing files and media, you can also use a Block Storage Volume as a boot disk. This can provide a low-cost way to maintain an image that can be quickly attached to a new Linode and booted up when needed.

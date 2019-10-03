@@ -28,7 +28,7 @@ Chef cookbooks describe the *desired state* of your nodes, and allow Chef to pus
 
 1. Once your node is bootstrapped, you can use a Chef cookbook to secure your node. Consider using the [Users](https://supermarket.chef.io/cookbooks/users) cookbook and the [Firewall](https://supermarket.chef.io/cookbooks/firewall) cookbook for this work. While this is not required to complete this guide, it is recommended.
 
-1. You can also review [A Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/)to receive an overview on Chef concepts.
+1. You can also review [A Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/) to receive an overview on Chef concepts.
 
 1. The examples in this tutorial require a user account with sudo privileges. Readers who use a limited user account will need to prefix commands with sudo when issuing commands to the Chef client node and replace `-x root` with `-x username` where `username` is your limited user account.
 

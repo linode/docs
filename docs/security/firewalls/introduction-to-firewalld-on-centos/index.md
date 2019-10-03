@@ -57,11 +57,13 @@ FirewallD is included by default with CentOS 7 but it's inactive. Controlling it
     Example output:
 
         firewalld.service - firewalld - dynamic firewall daemon
-           Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled)
-           Active: active (running) since Wed 2015-09-02 18:03:22 UTC; 1min 12s ago
-         Main PID: 11954 (firewalld)
-           CGroup: /system.slice/firewalld.service
-                   └─11954 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
+         Loaded: loaded (/usr/lib/systemd/system/firewalld.service; enabled; vendor preset: enabled)
+         Active: active (running) since Thu 2019-08-08 15:11:24 IST; 23h ago
+           Docs: man:firewalld(1)
+         Main PID: 2577 (firewalld)
+         CGroup: /system.slice/firewalld.service
+                 └─2577 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
+
 
 4.  To reload a FirewallD configuration:
 
@@ -127,15 +129,20 @@ To get all configurations for a specific zone:
 
 Example output:
 
-    public (default, active)
-      interfaces: ens160
+    public (active)
+      target: default
+      icmp-block-inversion: no
+      interfaces: eth0
       sources:
-      services: dhcpv6-client http ssh
+      services: ssh dhcpv6-client http
       ports: 12345/tcp
+      protocols:
       masquerade: no
       forward-ports:
+      source-ports:
       icmp-blocks:
       rich rules:
+
 
 To get all configurations for all zones:
 
@@ -143,27 +150,36 @@ To get all configurations for all zones:
 
 Example output:
 
-    block
-      interfaces:
-      sources:
-      services:
-      ports:
-      masquerade: no
-      forward-ports:
-      icmp-blocks:
-      rich rules:
+    trusted
+     target: ACCEPT
+     icmp-block-inversion: no
+     interfaces:
+     sources:
+     services:
+     ports:
+     protocols:
+     masquerade: no
+     forward-ports:
+     source-ports:
+     icmp-blocks:
+     rich rules:
 
-      ...
+    ...
 
     work
+      target: default
+      icmp-block-inversion: no
       interfaces:
       sources:
-      services: dhcpv6-client ipp-client ssh
+      services: ssh dhcpv6-client
       ports:
+      protocols:
       masquerade: no
       forward-ports:
+      source-ports:
       icmp-blocks:
       rich rules:
+
 
 ### Working with Services
 
@@ -197,9 +213,9 @@ To forward a port to **a different server**:
 
         sudo firewall-cmd --zone=public --add-masquerade
 
-2.  Add the forward rule. This example forwards traffic from local port 80 to port 8080 on *a remote server* located at the IP address: 123.456.78.9.
+2.  Add the forward rule. This example forwards traffic from local port 80 to port 8080 on *a remote server* located at the IP address: 198.51.100.0.
 
-        sudo firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=123.456.78.9
+        sudo firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=198.51.100.0
 
 To remove the rules, substitute `--add` with `--remove`. For example:
 
@@ -247,25 +263,25 @@ Rich rules syntax is extensive but fully documented in the [firewalld.richlangua
 
 Here are some common examples:
 
-Allow all IPv4 traffic from host 192.168.0.14.
+Allow all IPv4 traffic from host 192.0.2.0.
 
-    sudo firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address=192.168.0.14 accept'
+    sudo firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address=192.0.2.0 accept'
 
-Deny IPv4 traffic over TCP from host 192.168.1.10 to port 22.
+Deny IPv4 traffic over TCP from host 192.0.2.0 to port 22.
 
-    sudo firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address="192.168.1.10" port port=22 protocol=tcp reject'
+    sudo firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address="192.0.2.0" port port=22 protocol=tcp reject'
 
-Allow IPv4 traffic over TCP from host 10.1.0.3 to port 80, and forward it locally to port 6532.
+Allow IPv4 traffic over TCP from host 192.0.2.0 to port 80, and forward it locally to port 6532.
 
-    sudo firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 source address=10.1.0.3 forward-port port=80 protocol=tcp to-port=6532'
+    sudo firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 source address=192.0.2.0 forward-port port=80 protocol=tcp to-port=6532'
 
-Forward all IPv4 traffic on port 80 to port 8080 on host 172.31.4.2 (masquerade should be active on the zone).
+Forward all IPv4 traffic on port 80 to port 8080 on host 198.51.100.0 (masquerade should be active on the zone).
 
-    sudo firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080 to-addr=172.31.4.2'
+    sudo firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080 to-addr=198.51.100.0'
 
-To list your current Rich Rules:
+To list your current Rich Rules in the public zone:
 
-    sudo firewall-cmd --list-rich-rules
+    sudo firewall-cmd --zone=public --list-rich-rules
 
 ### iptables Direct Interface
 

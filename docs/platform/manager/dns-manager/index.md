@@ -14,6 +14,8 @@ title: DNS Manager
 classic_manager_link: platform/manager/dns-manager-classic-manager/
 ---
 
+![DNS Manager](dns-manager.png "DNS Manager")
+
 <!-- ![DNS Manager Overview](dns-manager-overview.png) -->
 
 The *Domains* section of the Linode Cloud Manager is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the **Domains** section and basic domain setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide.

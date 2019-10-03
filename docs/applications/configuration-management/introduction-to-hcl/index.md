@@ -19,6 +19,12 @@ HCL is a configuration language authored by [HashiCorp](https://www.hashicorp.co
 
 This guide provides an introduction to HCL syntax and some commonly used HCL terminology.
 
+{{< note >}}
+[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+
+The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
+{{</ note >}}
+
 ## HCL Syntax Overview
 
 HashiCorp's configuration syntax is easy to read and write. It was created to have a more clearly visible and defined structure when compared with other well known configuration languages, like YAML.

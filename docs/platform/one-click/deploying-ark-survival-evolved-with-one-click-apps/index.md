@@ -35,7 +35,6 @@ You can configure your ARK One-Click App by providing values for the following f
 | **Field**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
 |-----------|-----------------|
 | **RCON Password** | Your password for [RCON](https://developer.valvesoftware.com/wiki/Source_RCON_Protocol), a protocol which allows ARK administrators to remotely execute commands on the game server. *Required*. |
-| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Configuration*. |
 | **Server Name** | Your ARK server's name. *Advanced Configuration*. |
 | **Message of the Day** | A message that is displayed whenever a player logs on to the server. *Advanced Configuration*. |
 | **Server Password** | Your ARK server's password, if you want the game server to be password protected. *Advanced Configuration*. |

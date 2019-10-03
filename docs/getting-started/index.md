@@ -42,17 +42,16 @@ If you haven't already signed up for a Linode account, start here.
 1.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 
 ## Create a Linode
-
 ![Create a Linode by selecting the image, the region, the plan, and creating a label and a password.](getting-started.gif)
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
 
 1.  At the top of the page, click **Create** and select **Linode**.
 
-1.  Select the image you would like to use. You can choose a standard Linux image from the list or you can select a previously created image from the *Images* menu item.
+1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [One Click App](/docs/platform/one-click/how-to-use-one-click-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
 
     {{< note >}}
-Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress.
+Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide.](/docs/platform/stackscripts/)
 {{< /note >}}
 
 1.  Choose the region where you would like your Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
@@ -187,7 +186,7 @@ You may be prompted to make a menu selection when the Grub package is updated on
 
 After running a sync, it may end with a message that you should upgrade Portage using a `--oneshot` emerge command. If so, run the Portage update. Then update the rest of the system:
 
-    emerge --uDN @world
+    emerge -uDU --keep-going --with-bdeps=y @world
 
 ### OpenSUSE
 
@@ -247,7 +246,7 @@ The `hosts` file creates static associations between IP addresses and hostnames 
 203.0.113.10 hostname.example.com hostname
 {{< /file >}}
 
-You may also want to add an entry for your Linode's IPv6 address:
+Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will not work without this entry:
 
   {{< file "/etc/hosts" conf >}}
 127.0.0.1 localhost.localdomain localhost
