@@ -250,16 +250,12 @@ Review Rancher's [Production Ready Cluster](https://rancher.com/docs/rancher/v2.
       name: linode
       namespace: kube-system
     stringData:
-      token: password
+      token: "..."
       region: "..."
     ---
 {{< /file >}}
 
-    {{< note >}}
-Cloud credentials are only used by node templates if there are fields marked as `password`. In order to use the Linode APIv4 token cloud credential that you created in step 4 of the [Add a Node Template](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/#add-a-node-template) section of the guide, keep the example snippet's `token` field value of `password`.
-    {{</ note >}}
-
-1.  Enter the label for your node template's data center in the `region` field. This label should be lower-case (e.g. `us-east` instead of `US-East`).
+1. Insert your Linode APIv4 token in the `token` field from this snippet. Also, enter the label for your node template’s data center in the `region` field. This label should be lower-case (e.g. `us-east` instead of `US-East`).
 
 1.  Scroll down in the editor to the `services` section. Remove the `kube-api` sub-section and replace it with the example snippet. When editing the file, ensure you do not accidentally remove any other sections above or below the snippet.
 
