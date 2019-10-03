@@ -18,7 +18,7 @@ external_resources:
 
 ## Introduction
 
-This guide is an introduction to bash shell programming. Bash shell programming is a useful skill to have for a Linux user, as it allows you to take programmatic control over the Linux operating system. The bash shell provides a number of concepts common to many other programming languages, so if you know another language then you should be able to pick up bash with relative ease.
+This guide is an introduction to bash shell programming. Bash shell programming empowers Linux users to take programmatic control over the Linux operating system. The bash shell provides a number of concepts common to many other programming languages, so if you know another language then you should be able to pick up bash with relative ease.
 
 ## In This Guide
 
@@ -39,13 +39,15 @@ Among other things, you will learn about:
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## The bash Executable
+## Bash Basics
+
+### The bash Executable
 
 The bash shell is an executable file. The executable file for the bash shell can be usually found inside `/bin` – its full
-path is `/bin/bash`. Please keep this file path in mind as it will be used in all
+path being `/bin/bash`. Please keep this file path in mind as it will be used in all
 bash scripts.
 
-## Bash Scripts
+### Bash Scripts
 
 The following code is the "Hello World" program written in `bash(1)`:
 
@@ -55,8 +57,8 @@ The following code is the "Hello World" program written in `bash(1)`:
 echo "Hello World!"
 {{< /file >}}
 
-The first line is required for the bash script to become autonomous and be executed
-as a command. The `#!` characters are called a *shebang*, and instruct Linux to use following command as the file interpreter. The `.sh` file extension is not required but it is good to have it in
+The first line is required for the bash script to become autonomous and executable
+as a command. The `#!` characters are called a *shebang*, and instruct Linux to use following path as the file interpreter. The `.sh` file extension is not required but it is good to have it in
 order to inform people that this is a shell script and not a binary file.
 
 Notice that `echo` is a bash shell built-in command that outputs text. All shells have their own built-in
@@ -71,11 +73,11 @@ For the `hello_world.sh` script to become executable, you will need to run one
 of the following two commands:
 
     chmod +x hello_world.sh
-    chmod 755 hello_worldw.sh
+    chmod 755 hello_world.sh
 
 After that the file permissions of `hello_world.sh` will be similar to the following:
 
-    ls -l hello_worldw.sh
+    ls -l hello_world.sh
 
 {{< output >}}
 -rwxr-xr-x 1 mtsouk  staff  32 Aug  1 20:09 hello_world.sh
@@ -83,7 +85,7 @@ After that the file permissions of `hello_world.sh` will be similar to the follo
 
 {{< note >}}
 You will need to give all bash scripts of this guide the execute file permission
-in order to be able to execute them as regular UNIX commands.
+in order to be able to execute them as regular UNIX commands. For more information on file permissions, see our [Linux Users and Groups Guide](/docs/tools-reference/linux-users-and-groups/).
 {{< /note >}}
 
 Executing `hello_world.sh` will generate the following output:
@@ -106,7 +108,7 @@ also supports multi line comments, but they are not used as often, so it would b
 better to use multiple single line comments when you want to write bigger comment blocks.
 {{< /note >}}
 
-## Defining and Using Variables
+### Defining and Using Variables
 
 The programming language of the bash shell has support for variables. Variables, like in math, have values that can be declared in a program and later changed or passed around to different functions. Variables
 are illustrated in `vars.sh`, which is as follows:
@@ -145,7 +147,7 @@ and I work from /home/mtsouk/
 /home/mtsouk/
 {{< /output >}}
 
-## Getting User Input
+### Getting User Input
 
 The bash shell offers the `read` command for getting user input. However, this is
 rarely used because it makes bash shell scripts less autonomous as it depends on user interaction. Nevertheless, the
@@ -179,7 +181,7 @@ The second `read` is different than the first, because it accepts two variable v
 The sections on [Environment Variables](#using-unix-environment-variables) and [Command Line Arguments](#command-line-arguments) show alternative ways of retrieving user input that
 is more common in the UNIX world than the `read` command.
 
-## The if statement
+### The if statement
 
 The bash shell supports `if` statements using a unique syntax, which
 is illustrated in `whatIf.sh`:
@@ -235,62 +237,7 @@ Not equal!
 The `if` statement is used extensively in bash scripts, which means that you are going to
 see it many times in this guide.
 
-## Using UNIX Environment Variables
-
-In this section of the guide you will learn how to read a UNIX environment variable,
-change its value, delete it, and create a new one. This is a very popular way of
-getting user input or reading the setup of the current user.
-
-The related bash shell script is called `env.sh` and is as follows:
-
-{{< file "env.sh" bash >}}
-#!/bin/bash
-
-# Read
-if [[ -z "${PATH}" ]]; then
-    echo "PATH is empty!"
-else
-    echo "PATH: $PATH"
-fi
-
-# Change
-PATH=${PATH}:/tmp
-echo "PATH: $PATH"
-
-# Delete
-export PATH=""
-if [[ -z "${PATH}" ]]; then
-    echo "PATH is empty!"
-else
-    echo "PATH: $PATH"
-fi
-
-# Create
-MYPATH="/bin:/sbin:/usr/bin"
-echo "MYPATH: ${MYPATH}"
-{{< /file >}}
-
-Notice that `PATH` environment variable is automatically available to the bash script. You can view it's current value in the output of the first `if` statement. The `-z` operator
-tests whether a variable has a length of zero or not and can be pretty handy when
-checking if an environment variable is set or not.
-
-Executing `env.sh` will create the following kind of output:
-
-    ./env.sh
-
-{{< output >}}
-PATH: /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/X11/bin
-PATH: /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/X11/bin:/tmp
-PATH is empty!
-MYPATH: /bin:/sbin:/usr/bin
-{{< /output >}}
-
-{{< note >}}
-Notice that all changes to environment variables that take place inside a bash
-script will be lost when that bash script ends because they have a local scope.
-{{< /note >}}
-
-## Loops
+### Loops
 
 The bash shell has support for loops, which are illustrated in this section
 of the guide using the code of `loops.sh`:
@@ -336,6 +283,13 @@ done
 echo
 {{< /file >}}
 
+{{< note >}}
+
+The bash scripting language offers support for the `break` statement for exiting a loop, and the `continue` statement
+for skipping the current iteration.
+
+{{< /note >}}
+
 The `loops.sh` example begins with three `for` loops. These loops will iterate over values in a series, here represented by the `numbers` list variable or a range like `{1..4}`, and complete the block of code after the `do` command for each value. In a set of four values a loop will iterate four times. Notice that the third `for` loop processes the output of `./c*.sh`, which is equivalent to the output of the `ls ./c*.sh` command – this is a pretty handy way of selecting and processing files from the Linux filesystem.
 
 Similarly, the `while` statement and the `until` statement will continually loop so long as the conditional statement is true (while), or until the statement becomes true (until). The `-le` and `-gt` operators used in the `while` and `until` loops are used strictly to compare numbers, and mean "less than or equal to" and "greater than," respectively.
@@ -354,13 +308,71 @@ List
 0 1 2 3 4 5
 {{< /output >}}
 
-The bash scripting language offers support for the `break` and `continue` statements
-for exiting a loop and for skipping the current iteration, respectively.
+{{< note >}}
+The `./case.sh` and `./cla.sh` scripts will be created in later sections of this guide.
+{{< /note >}}
 
-## Command Line Arguments
+## Using UNIX Environment Variables
+
+In this section of the guide you will learn how to read a UNIX environment variable,
+change its value, delete it, and create a new one. This is a very popular way of
+getting user input or reading the setup of the current user.
+
+The related bash shell script is called `env.sh` and is as follows:
+
+{{< file "env.sh" bash >}}
+#!/bin/bash
+
+# Read
+if [[ -z "${PATH}" ]]; then
+    echo "PATH is empty!"
+else
+    echo "PATH: $PATH"
+fi
+
+# Change
+PATH=${PATH}:/tmp
+echo "PATH: $PATH"
+
+# Delete
+export PATH=""
+if [[ -z "${PATH}" ]]; then
+    echo "PATH is empty!"
+else
+    echo "PATH: $PATH"
+fi
+
+# Create
+MYPATH="/bin:/sbin:/usr/bin"
+echo "MYPATH: ${MYPATH}"
+{{< /file >}}
+
+Notice that the `PATH` environment variable is automatically available to the bash script. You can view it's current value in the output of the first `if` statement. The `-z` operator
+tests whether a variable has a length of zero or not and can be pretty handy when
+checking if an environment variable is set or not.
+
+Executing `env.sh` will create the following output:
+
+    ./env.sh
+
+{{< output >}}
+PATH: /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/X11/bin
+PATH: /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin:/opt/X11/bin:/tmp
+PATH is empty!
+MYPATH: /bin:/sbin:/usr/bin
+{{< /output >}}
+
+{{< note >}}
+Notice that all changes to environment variables that take place inside a bash
+script will be lost when that bash script ends because they have a local scope.
+{{< /note >}}
+
+## Bash and Command Line Arguments
+
+### Command Line Arguments
 
 The easiest and most common way to pass your own data to scripts is the use of command
-line arguments. For instance, regard the following command:
+line arguments. For instance, review the following command:
 
     ./cla.sh 1 2 3
 
@@ -406,7 +418,7 @@ The first argument is: 1
 ./cla.sh file exists!
 {{< /output >}}
 
-## Checking the Number of Command Line Arguments
+### Checking the Number of Command Line Arguments
 
 In the previous section you learned how to pass command line arguments to a bash script. The following bash script, which is named `nCla.sh`, requires that you pass at least two command line arguments to it:
 
@@ -442,7 +454,44 @@ output:
 Need more arguments than 0!
 {{< /output >}}
 
-## The case Statement
+### Combining Commands in bash Scripts
+
+Bash has the additional capability of executing a combination of commands. This capability is illustrated in
+`combine.sh`:
+
+{{< file "combine.sh" bash >}}
+#!/bin/bash
+
+total=0
+for n in ./*.sh
+do
+    ti=`grep while ${n} | wc -l`
+    ti=$(($ti + 0))
+    if [[ $ti -gt 0 ]]
+    then
+        total=$(($total+$ti))
+    fi
+done
+
+echo "Total:" $total
+{{< /file >}}
+
+The `for` loop in this example iterates over every bash script file in the current working directory.
+The initial value of `ti` is taken from the output of a command with two parts. The first part uses
+`grep` to look for the `while` word in the file that is being processed and the
+second part counts the number of times that the `while` word was found in the
+current file. The `total=$(($total+$ti))` statement is needed for adding the value of `ti` to
+the value of `total`. Additionally, the `ti=$(($ti + 0))` statement is used for
+converting the value of `ti` from string to integer. Last,  before exiting, `combine.sh` prints the total number of times the
+`while` word was found in all processed files.
+
+    ./combine.sh
+
+{{< output >}}
+Total: 2
+{{< /output >}}
+
+## The Case Statement
 
 The bash scripting language supports the `case` statement. A case statement provides a number of possible values for a variable and maps code blocks to those values. For example, the case statement included in `case.sh` script below defines a number of possible outputs depending on the number provided as a command line argument:
 
@@ -506,12 +555,12 @@ expression verifies that the input is a valid positive integer number with the
 help of an `if` statement.
 
 From the presented code you can understand that branches in `case` statements do
-not offer direct support for numeric ranges, which makes the code pretty complex.
-If you find the code difficult to understand, you can always use multiple `if`
+not offer direct support for numeric ranges, which makes the code more complex.
+If you find the code difficult to understand, you may also use multiple `if`
 statements instead of a `case` block.
 
 `case.sh` illustrates two ways of supporting ranges in a `case` statement. The first
-one uses regular expressions (which are divided by the OR operator, which is a pipe `|`), whereas the second one offers ranges but in an unusual way.
+one uses regular expressions (which are divided by the OR operator, a pipe `|`), whereas the second offers ranges through a different approach.
 Each expression such as `(NUM<81)` is evaluated and if it is `true`, the code in the
 respective branch is executed. Notice that the order of the branches is significant because
 only the code from the first match will be executed.
@@ -535,47 +584,12 @@ Zero!
 0 smaller than 80
 {{< /output >}}
 
-## Combining Commands in bash Scripts
 
-The greatness of UNIX comes not from the execution of single commands but from
-the execution of a combination of commands. This capability is illustrated in
-`combine.sh`:
+## File and Directory Basics
 
-{{< file "combine.sh" bash >}}
-#!/bin/bash
+### Working with Files and Directories
 
-total=0
-for n in ./*.sh
-do
-    ti=`grep while ${n} | wc -l`
-    ti=$(($ti + 0))
-    if [[ $ti -gt 0 ]]
-    then
-        total=$(($total+$ti))
-    fi
-done
-
-echo "Total:" $total
-{{< /file >}}
-
-The `for` loop in this example iterates over every bash script file in the current working directory.
-The initial value of `ti` is taken from the output of a command with two parts. The first part uses
-`grep` to look for the `while` word in the file that is being processed and the
-second part counts the number of times that the `while` word was found in the
-current file. The `total=$(($total+$ti))` statement is needed for adding the value of `ti` to
-the value of `total`. Additionally, the `ti=$(($ti + 0))` statement is used for
-converting the value of `ti` from string to integer. Last,  Before exiting, `combine.sh` prints the total number of times the
-`while` word was found in all processed files.
-
-    ./combine.sh
-
-{{< output >}}
-Total: 2
-{{< /output >}}
-
-## Working with Files and Directories
-
-The single most important operation that you are going to need to perform is specifying
+One often important operation that you may find yourself needing to perform is specifying
 whether a given file or directory actually exists. This is idea is illustrated in `files.sh`:
 
 {{< file "files.sh" bash >}}
@@ -622,11 +636,6 @@ Executing `files.sh` will generate the following output:
 aFile exists and is a regular file!
 /dev/stdin exists and is neither a regular file nor a regular directory!
 {{< /output >}}
-
-In part 2 of the bash scripting guides you will learn more about working with files and
-directories with the bash scripting language.
-
-## Finding all text files that match a given string
 
 The following bash script will accept one command line argument, which is a string you'd like to find, and then a list of files that will be searched for that given string. If there is a match, then the filename of the file will appear on the screen.
 
@@ -678,6 +687,9 @@ loops.sh
 ./combine.sh
 * Skipping doesNotExist
 {{< /output >}}
+
+In part 2 of the bash scripting guides you will learn more about working with files and
+directories with the bash scripting language.
 
 ## Summary
 
