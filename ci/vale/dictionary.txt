@@ -107,6 +107,7 @@ bounceback
 brackley
 bram
 bs4
+bufio
 bugtracker
 buildbot
 bukkit
@@ -406,6 +407,7 @@ flatpress
 flyspray
 foodcritic
 fortran
+fmt
 fpm
 fragging
 frakti
@@ -417,6 +419,7 @@ frontmatter
 fs
 fsck
 fstab
+func
 galera
 gamemode
 gamepad
@@ -1038,6 +1041,7 @@ preprocessing
 prerotate
 prerouting
 prestashop
+Printf
 pritunl
 procfile
 procmail
