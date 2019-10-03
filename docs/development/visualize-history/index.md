@@ -19,10 +19,10 @@ There are many open source tools available to create sophisticated data visualiz
 
 In this guide you will complete the following steps:
 
-* [Three different data sets to use for your visualizations](/docs/development/visualize-history/#create-your-data-sets)
-* [A pie chart visualization using R and RStudio](/docs/development/visualize-history/#visualize-your-data-with-rstudio)
-* [A word cloud using Python and the pandas library](/docs/development/visualize-history/#create-a-word-cloud-using-python)
-* [A web browser based pie chart visualization using JavaScript and the D3.js package](/docs/development/visualize-history/#visualize-data-using-d3-js)
+* [Create three different data sets to use for your visualizations](/docs/development/visualize-history/#create-your-data-sets).
+* [Visualize your data using R and RStudio as a pie chart](/docs/development/visualize-history/#visualize-your-data-with-rstudio).
+* [Create a word cloud using Python and the pandas library](/docs/development/visualize-history/#create-a-word-cloud-using-python).
+* [Develop a web browser based pie chart visualization using JavaScript and the D3.js package](/docs/development/visualize-history/#visualize-data-using-d3-js).
 
 ### Before You Begin
 
@@ -45,7 +45,7 @@ This guide assumes you have some basic familiarity with the following concepts a
 
 ## Create Your Data Sets
 
-In this section, you will create a data set using the contents of your [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) history file and optionally, your [Zsh](https://en.wikipedia.org/wiki/Z_shell) history file. You will then, create a third data set using a Perl script that will extract information from the first two data sets. In the [Visualize Your Data]() section of the guide, you will use these various data sets to create corresponding visualizations.
+In this section, you will create a data set using the contents of your [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) history file and optionally, your [Zsh](https://en.wikipedia.org/wiki/Z_shell) history file. You will then create a third data set using a Perl script that will extract information from the first two data sets. In the [Create Visualizations for your Data](/docs/development/visualize-history/#create-visualizations-for-your-data) section of the guide, you will use these various data sets to create corresponding visualizations.
 
 ### Data Set 1 - Bash History File
 A Bash history file stores all commands executed in your command line interpreter. View your 10 most recently executed commands with the following command:
@@ -158,7 +158,7 @@ Your Perl script must be executable in order to run. To add these permissions, e
     chmod +x command_length.pl
     {{</ note >}}
 
-    Open the `.command_length.pl` file to view the categorizations created by your Perl script. Your file should resemble the following example:
+    Open the `.command_categories.txt` file to view the categorizations created by your Perl script. Your file should resemble the following example:
 
     {{< file "command_categories.txt">}}
 "Category Name" "Number of Times"
@@ -173,7 +173,7 @@ You now have three sources of data that you can use to explore data visualizatio
 
 - `~/data-sets/data-1`
 - `~/data-stes/data-2`
-- `~/command_length.pl`
+- `~/command_categories.txt`
 
 ## Create Visualizations for your Data
 
@@ -189,13 +189,17 @@ In this section, you will use the `command_categories.txt` file created in the [
 
         DATA <- read.table("~/command_categories.txt", header=TRUE)
 
-    - This command will read the `command_categories.txt` file that was created in the [Data Set 3 - Perl Script](/docs/development/visualize-history/#data-set-3-perl-script) section of the guide, create a data frame from it that is stored in the `DATA` variable.
+    - This command will read the `command_categories.txt` file that was created in the [Data Set 3 - Perl Script](/docs/development/visualize-history/#data-set-3-perl-script) section of the guide and create a data frame from it that is stored in the `DATA` variable.
 
     - The `header=TRUE` argument indicates that the file's first row contains variable names for column values. This means that `Category Name` and `Number of Times` will be used as variable names for the two columns of values in `command_categories.txt`.
 
-1. Next, create a pie chart visualization for each column of values using R's `pie()` function. The function's first argument, `DATA$Number.of.Times` and `DATA$Category.Name`, provides the x-vector numeric values to use when creating the pie chart visualization. The second argument, `DATA$Category.Name`, provides the labels for each pie slice.
+1. Next, create a pie chart visualization for each column of values using R's `pie()` function.
 
         pie(DATA$Number.of.Times, DATA$Category.Name)
+
+    - The function's first argument, `DATA$Number.of.Times` and `DATA$Category.Name`, provides the x-vector numeric values to use when creating the pie chart visualization.
+
+    - The second argument, `DATA$Category.Name`, provides the labels for each pie slice.
 
     RStudio will display a pie chart visualization of your data in the **Plots and Files** window similar to the following:
 
@@ -213,11 +217,11 @@ Explore [R's graphics package](https://www.rdocumentation.org/packages/graphics/
 
 ### Create a Word Cloud using Python
 
-Word clouds depict text data using varying font size and color to visually demonstrate the frequency and relative importance of each word. A common application for word clouds is to visualize tag or keyword relevancy. In this section you will use Python3 and your Bash and Zsh history files to generate a [*word cloud*](https://en.wikipedia.org/wiki/Tag_cloud) of all your shell commands. The Python packages listed below are commonly used in programs for data analysis and scientific computing and you will use them to generate your word cloud.
+Word clouds depict text data using varying font sizes and colors to visually demonstrate the frequency and relative importance of each word. A common application for word clouds is to visualize tag or keyword relevancy. In this section you will use Python3 and your Bash and Zsh history files to generate a [*word cloud*](https://en.wikipedia.org/wiki/Tag_cloud) of all your shell commands. The Python packages listed below are commonly used in programs for data analysis and scientific computing and you will use them to generate your word cloud.
 
 - [pandas](https://pypi.org/project/pandas/): this package provides data structures that make it easier to work with various types of data, including [tabular data](https://en.wikipedia.org/wiki/Table_(information)), ordered and unordered [time series data](https://en.wikipedia.org/wiki/Time_series), and [arbitrary matrix data](https://en.wikipedia.org/wiki/Random_matrix).
-- [Matplotlib](https://pypi.org/project/matplotlib/): a plotting library that generate 2D graphics
-- [wordcloud](https://pypi.org/project/wordcloud/): allows you to generate word clouds
+- [Matplotlib](https://pypi.org/project/matplotlib/): a plotting library that generates 2D graphics.
+- [wordcloud](https://pypi.org/project/wordcloud/): allows you to generate word clouds.
 
 1. Create a file named `create_wordcloud.py` in your home directory with the following content:
 
@@ -260,7 +264,7 @@ else:
     print("File" + path +  "does not exist")
     {{< /file >}}
 
-1. Run your Python script and pass the path of one of your data set files as an argument. The script will read the contents of the file using panda's `read_table()` function and convert the it into a data frame with a column name of `CMD`. It will then use the data in the `CMD` column to create a concatenated string representation of the data that can be passed to wordcloud to generate a `.png` wordcloud image.
+1. Run your Python script and pass the path of one of your data set files as an argument. The script will read the contents of the file using panda's `read_table()` function and convert it into a data frame with a column name of `CMD`. It will then use the data in the `CMD` column to create a concatenated string representation of the data that can be passed to wordcloud to generate a `.png` wordcloud image.
 
         ./create_wordcloud.py ~/data-sets/data-1
 
@@ -282,10 +286,6 @@ You could use a similar process to create a word cloud visualization for any tex
 D3.js is a JavaScript library that helps you visualize JSON formatted data using HTML, SVG, and CSS. In this section you will us D3.js to create and embed a pie chart visualization into a web page.
 
 To convert your data set into JSON, you will create a [Golang](https://golang.org/) command line utility that generates JSON formatted plain text output. For more complex data sets, you might consider creating a similar command line utility using Golang's [json package](https://golang.org/pkg/encoding/json/).
-
-- The utility expects file paths to your Bash and Zsh data sets as arguments.
-- It will then read the files and find the 10 most popular commands and output it as JSON formatted data.
-- Several [Golang standard library packages](https://golang.org/pkg/) are used in the utility to perform operations liking reading files, using regular expressions, and sorting collections.
 
 1. Create a file named `cToJSON.go` in your home directory with the following content:
 
@@ -383,6 +383,10 @@ func main() {
 }
     {{< /file >}}
 
+    - The utility expects file paths to your Bash and Zsh data sets as arguments.
+    - It will then read the files and find the 10 most popular commands and output it as JSON formatted data.
+    - Several [Golang standard library packages](https://golang.org/pkg/) are used in the utility to perform operations liking reading files, using regular expressions, and sorting collections.
+
 1. Run the command line utility and pass in the paths to each command history data set:
 
         go run cToJSON.go data-set/data-1 data-set/data-2
@@ -409,7 +413,7 @@ func main() {
 1. Create an HTML file named `pieChart.html` and copy and paste the following content. The `DATA` variable on line 31 contains the JSON data that was created by the `cToJSON.go` script in the previous step. Remove the JSON data in the example and replace it with your own JSON data.
 
     {{< note >}}
-In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. Web browser security constraints exist that restrict how a document or script loaded from one origin can interact with a resource from another origin. However, you may consider using the [d3-fetch module](https://github.com/d3/d3-fetch/blob/v1.1.2/README.md#json) to fetch your JSON data from a specific URL.
+In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. Web browser security constraints restrict how a document or script loaded from one origin can interact with a resource from another origin. However, you may consider using the [d3-fetch module](https://github.com/d3/d3-fetch/blob/v1.1.2/README.md#json) to fetch your JSON data from a specific URL.
     {{</ note >}}
 
       {{< file "~/pieChart.html" javascript >}}
@@ -429,10 +433,10 @@ In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. 
         width: 600px;
         height: 600px;
       }
-        #chart .label{
-          fill: #404040;
-          font-size: 12px;
-        }
+      #chart .label{
+        fill: #404040;
+        font-size: 12px;
+      }
     </style>
   </head>
 
@@ -477,9 +481,9 @@ In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. 
                 .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
     var ticks = svg.selectAll("line")
-                  .data(pieData)
-                  .enter()
-                  .append("line");
+                   .data(pieData)
+                   .enter()
+                   .append("line");
 
     ticks.attr("x1", 0)
          .attr("x2", 0)
@@ -491,9 +495,9 @@ In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. 
          });
 
     var labels = svg.selectAll("text")
-                  .data(pieData)
-                  .enter()
-                  .append("text");
+                    .data(pieData)
+                    .enter()
+                    .append("text");
 
     labels.attr("class", "label")
           .attr("transform", function(d) {
@@ -510,11 +514,11 @@ In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. 
           });
 
     var path = svg.selectAll("path")
-             .data(pieData)
-             .enter()
-             .append("path")
-             .attr("fill", function(d, i) { return color(i); })
-             .attr("d", arc);
+                  .data(pieData)
+                  .enter()
+                  .append("path")
+                  .attr("fill", function(d, i) { return color(i); })
+                  .attr("d", arc);
   </script>
 </html>
 {{< /file >}}
@@ -527,6 +531,6 @@ In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. 
 
 Now that you are familiar with some data visualization tools and simple techniques, you can begin to explore more sophisticated approaches using the same tools explored in this guide. Here are a few ideas you can consider:
 
-- Create a new data set by extracting all `git` related commands from your history files, and analyze and visualize them.
+- Create a new data set by extracting all `git` related commands from your history files; analyze and visualize them.
 - Automate some of the techniques discussed in this guide using [Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) jobs to generate your data sets automatically.
 - Explore the [Python for Data Science](http://wavedatalab.github.io/datawithpython/index.html) eBook's [data visualization](http://wavedatalab.github.io/datawithpython/visualize.html) section for a deeper dive into using pandas.
