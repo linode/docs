@@ -491,7 +491,7 @@ tunl0     1480        0      0      0 0             0      0      0      0 O
 
 ## Network Protocols
 
-Use the `-s` option to see network statistics on a per-protocol basiss:
+Use the `-s` option to see network statistics on a per-protocol basis:
 
     netstat -s
 
