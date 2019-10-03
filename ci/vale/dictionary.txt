@@ -619,6 +619,7 @@ javac
 javascript
 jdbc
 jdk
+Jellyfin
 jenkinsfile
 jetpack
 jez
