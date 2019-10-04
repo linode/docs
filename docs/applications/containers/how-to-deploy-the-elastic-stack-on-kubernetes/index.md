@@ -192,15 +192,19 @@ Before visualizing pod logs, Kibana must be configured with an index pattern for
 
 1.  The Discover page provides a realtime view of logs as they are ingested by Elasticsearch from your Kubernetes cluster. The histogram provides a view of log volume over time, which by default, spans the last 15 minutes. The sidebar on the left side of the user interface displays various fields parsed from json fields sent by Filebeat to Elasticsearch.
 
-1.  Use the **Filters** box to search only for logs arriving from Kibana pods by filtering for `kubernetes.container.name : "kibana"`. Note: when selecting the text box, field names and values are auto-populated. Click the **Update** button to apply the search filter.
+1.  Use the **Filters** box to search only for logs arriving from Kibana pods by filtering for `kubernetes.container.name : "kibana"`. Click the **Update** button to apply the search filter.
 
-    ![Kibana Filter](kibana-kibana-filter.png "Kibana filter")
+     {{< note >}}
+When searching in the filters box, field names and values are auto-populated.
+{{< /note >}}
+
+     ![Kibana Filter](kibana-kibana-filter.png "Kibana filter")
 
 1.  In order to expand a log event, click the arrow next to an event in the user interface.
 
     ![Kibana Open Log Event](kibana-expand-log.png "Kibana Open Log Event")
 
-1.  Scroll down to view the entire log document in Kibana. Observe the fields provided by Filebeat, including the `message` field, which contains standard out and standard error messages from the container, as well as the kubernetes node and pod name in fields prefixed with `kubernetes.`.
+1.  Scroll down to view the entire log document in Kibana. Observe the fields provided by Filebeat, including the `message` field, which contains standard out and standard error messages from the container, as well as the kubernetes node and pod name in fields prefixed with `kubernetes`.
 
     ![Kibana Log Document](kibana-expanded-log.png "Kibana Log Document")
 
@@ -232,7 +236,7 @@ hosts: '\${ELASTICSEARCH_HOSTS:elasticsearch-master:9200}'
 
 1.  Once this command completes, Filebeat's `DaemonSet` will have successfully updated all running pods.
 
-1.  Next, create a Kibana values file to append annotations to the Kibana `Deployment` that will indicate that Filebeat should parse certain fields as json values. This configuration file will instruct Filebeat to parse the `message` field as json and store the parsed object underneath the `kibana.` field.
+1.  Next, create a Kibana values file to append annotations to the Kibana `Deployment` that will indicate that Filebeat should parse certain fields as json values. This configuration file will instruct Filebeat to parse the `message` field as json and store the parsed object underneath the `kibana` field.
 
     {{< file "kibana-values.yml" yaml >}}
 
@@ -243,7 +247,7 @@ co.elastic.logs/processors.decode_json_fields.fields: message
 co.elastic.logs/processors.decode_json_fields.target: kibana
 {{< /file >}}
 
-1.  Upgrade the `kibana` Helm release in your Kubernetes cluster, passing this file as an argument for the Chart values.
+1.  Upgrade the Kibana Helm release in your Kubernetes cluster, passing this file as an argument for the Chart values.
 
         helm upgrade --values kibana-values.yml --wait --timeout=600 kibana elastic/kibana
 
@@ -349,7 +353,7 @@ Your commands should use the same version of Metricbeat deployed to your Kuberne
 
     ![Kibana Dashboards Link](kibana-dashboards-button.png "Kibana Dashboards Link")
 
-1.  In the search box, enter "kubernetes" and press `Enter`. Select the *[Metricbeat Kubernetes] Overview ECS* dashboard.
+1.  In the search box, enter "kubernetes" and press `Enter`. Select the **[Metricbeat Kubernetes] Overview ECS** dashboard.
 
     ![Kibana Dashboards](kibana-dashboards-search.png "Kibana Dashboards")
 
