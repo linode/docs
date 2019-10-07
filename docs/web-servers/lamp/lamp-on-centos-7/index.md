@@ -131,7 +131,11 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
         sudo chcon -t httpd_sys_content_t /var/www/html/example.com -R
         sudo chcon -t httpd_sys_rw_content_t /var/www/html/example.com -R
 
-4.  Enable Apache to start at boot, and restart the service for the above changes to take place:
+4.  When SELinux is working in enforcing it restricts Apache web server to establish the network connections. To resolve this issue you will configure SELinux Boolean to allow Apache web server for network connections:
+
+        sudo setsebool -P httpd_can_network_connect on
+
+5.  Enable Apache to start at boot, and restart the service for the above changes to take place:
 
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
