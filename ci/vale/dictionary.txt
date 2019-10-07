@@ -193,6 +193,7 @@ config
 configs
 configtest
 configurability
+connectionless
 containerd
 containerised
 convolutional
@@ -898,6 +899,7 @@ netlify
 netloc
 netmask
 netplan
+netstat
 networkd
 newgrp
 newtag
