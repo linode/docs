@@ -23,11 +23,11 @@ Linode Managed applies to all Linodes on an account and will be billed at a rate
 
 To sign up for Linode Managed:
 
-1. Log into the [Linode Cloud Manager](https://cloud.linode.com) and click the **Managed** link in the sidebar.
+1. Log into the [Linode Manager](https://manager.linode.com) and click the **Account** link in the sidebar.
 
-1. Click the **Upgrade to Managed** button on this page, and a confirmation dialog will appear. This dialog describes the total cost of the service for your account.
+1. Navigate to the **Settings** tab and click the **Add Linode Managed** button at the bottom of this page. A confirmation dialog will appear that describes the total cost of the service for your account.
 
-1. Click the **Enable Managed** button in this confirmation dialog to enable the service for your account.
+1. Click the **Add Linode Managed** button in this confirmation dialog to enable the service for your account.
 
 ### Initial Configuration Checklist
 
