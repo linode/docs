@@ -35,7 +35,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 2.  Update your system:
 
-        sudo apt update && sudo apt upgrade
+        sudo apt update && sudo apt upgrade && sudo apt dist-upgrade
 
 ## Installation
 
