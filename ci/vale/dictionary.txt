@@ -111,6 +111,7 @@ bounceback
 brackley
 bram
 bs4
+bufio
 bugtracker
 buildbot
 bukkit
@@ -417,6 +418,7 @@ flatpress
 flyspray
 foodcritic
 fortran
+fmt
 fpm
 fragging
 frakti
@@ -428,6 +430,7 @@ frontmatter
 fs
 fsck
 fstab
+func
 galera
 gamemode
 gamepad
@@ -777,6 +780,7 @@ masterdb
 masterless
 mathematica
 mathjax
+matplotlib
 mawk
 maxconn
 maxdepth
@@ -1062,6 +1066,7 @@ preprocessing
 prerotate
 prerouting
 prestashop
+Printf
 pritunl
 procfile
 procmail
@@ -1564,6 +1569,7 @@ wkhtmltopdf
 wll
 wlp6s0
 wmem
+wordcloud
 wordcount
 wordpress
 worker1
