@@ -146,6 +146,10 @@ server {
 
     -  The `fastcgi_param` directives contain the [location](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#variables) (relative to the site's root directory) and file [naming convention](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_index) of PHP scripts to be served when called by NGINX.
 
+4.  To check the NGINX configuration file syntax by simply typing a command:
+
+        sudo nginx -t
+
 ## Test the LEMP Stack
 
 1.  Restart PHP and reload the NGINX configuration:
