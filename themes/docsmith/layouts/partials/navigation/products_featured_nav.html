@@ -1,0 +1,10 @@
+{{ partial "navigation/col_top" . }}
+  {{ $urlPre := "https://linode.com/wp-json/menus/v1/menus" }}
+  {{ $menuItems := getJSON $urlPre "/submenu-products-featured" }}
+  <h6 class="sub-menu__header">Featured</h6>
+  {{ if $menuItems }}
+    {{ range $menuItems.items }}
+       <li class="sub-menu__li sub-menu__header-li"><a href="{{ .url }}" class="header__link sub-menu__link sub-menu__header-link sub-menu__header-link--w-icon" role="menuitem"><img src="{{ .icon }}" class="sub-menu__icon" alt="{{ .title }}" /><span class="sub-menu__body"><span class="sub-menu__title">{{ .title }}</span><span class="sub-menu__description">{{ .description }}</span></span></a></li>
+    {{ end }}
+  {{ end }}
+{{ partial "navigation/col_bottom" . }}
