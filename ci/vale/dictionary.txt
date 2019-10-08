@@ -55,6 +55,7 @@ authy
 autocompletion
 autoconfiguration
 autoconfigure
+autodiscover
 autohosting
 autojoin
 autojump
@@ -111,6 +112,7 @@ bounceback
 brackley
 bram
 bs4
+bufio
 bugtracker
 buildbot
 bukkit
@@ -193,6 +195,7 @@ config
 configs
 configtest
 configurability
+connectionless
 containerd
 containerised
 convolutional
@@ -416,6 +419,7 @@ flatpress
 flyspray
 foodcritic
 fortran
+fmt
 fpm
 fragging
 frakti
@@ -427,6 +431,7 @@ frontmatter
 fs
 fsck
 fstab
+func
 galera
 gamemode
 gamepad
@@ -776,6 +781,7 @@ masterdb
 masterless
 mathematica
 mathjax
+matplotlib
 mawk
 maxconn
 maxdepth
@@ -898,6 +904,7 @@ netlify
 netloc
 netmask
 netplan
+netstat
 networkd
 newgrp
 newtag
@@ -929,6 +936,7 @@ nonprivileged
 nonrecursive
 nosync
 nouveau
+novaclient
 novell
 npm
 npmjs
@@ -1001,6 +1009,7 @@ passwdcolumn
 passwdfile
 passwordless
 patroni
+pbr
 pem
 pepi
 percona
@@ -1058,6 +1067,7 @@ preprocessing
 prerotate
 prerouting
 prestashop
+Printf
 pritunl
 procfile
 procmail
@@ -1560,6 +1570,7 @@ wkhtmltopdf
 wll
 wlp6s0
 wmem
+wordcloud
 wordcount
 wordpress
 worker1

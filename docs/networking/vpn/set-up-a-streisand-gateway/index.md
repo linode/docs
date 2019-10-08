@@ -26,19 +26,28 @@ However, the configuration process is time-consuming, especially for those with 
 
 ## Before You Begin
 
-Streisand uses open-source platform [Ansible](https://www.ansible.com/) to automate much of the process that creates and configures a Linode. This means, unlike normal VPN setup, you should **not** create a Linode before beginning this guide, or go through the usual steps of connecting to and securing your server. All of the commands will be run from your local machine. You will, however, need the API key from your Linode account:
+Streisand uses open-source platform [Ansible](https://www.ansible.com/) to automate much of the process that creates and configures a Linode. This means, unlike normal VPN setup, you should **not** create a Linode before beginning this guide, or go through the usual steps of connecting to and securing your server. All of the commands will be run from your local machine. You will, however, need the API key from your Linode account.
 
-1.  Open the Linode Manager and select "My Profile" in the upper right corner of the screen next to your account name. You will need to re-authenticate before viewing this section.
+### Create an API Token
 
-2.  Select the "API Keys" tab on the far right of the menu.
+1.  Log in to the Cloud Manager.
 
-    ![Linode API Menu](linode_api_menu.png)
+2.  Click on your username at the top of the screen and select **My Profile**.
 
-3.  Provide a label for your API key if desired, and choose when the key should expire. When you have finished, click "Create API Key."
+    ![Select My Profile.](get-started-with-linode-api-select-my-profile.png "Select My Profile.")
 
-    ![API Key](api_key.png)
+3.  Select the **API Tokens** tab:
 
-4. Record the generated key! Please note: You will not be able to view the full key after closing or reloading the page.
+    ![Select API Tokens tab in My Profile Settings.](get-started-with-linode-api-my-profile-small.png "Select the API Tokens tab in My Profile Settings.")
+
+4.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have.
+{{< note >}}
+Select **Read/Write** access when setting up a Streisand gateway because you will be creating a new Streisand Linode server.
+{{< /note >}}
+
+    ![Add a Personal Access Token](get-started-with-linode-api-new-token.png "Add a Personal Access Token")
+
+    When you have finished, click **Submit** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through the Cloud Manager after closing the popup.**
 
 ## Install Ansible and its Dependencies
 
@@ -69,7 +78,7 @@ As of this writing, it is not possible to run Streisand on a Windows computer. I
 4.  Install `pip`, a package manager for Python.
     *  On Debian or Ubuntu:
 
-            sudo apt-get install python-paramiko python-pip python-pycurl python-dev build-essential
+            sudo apt-get install python-pip
 
     *  On Fedora:
 
@@ -77,20 +86,7 @@ As of this writing, it is not possible to run Streisand on a Windows computer. I
 
     *  On macOS:
 
-            sudo easy_install pip
-            sudo easy_install pycurl
-
-5. Use `pip` to install the Linode Python libraries:
-
-        sudo pip install linode-python
-
-6.  Install Ansible. If you are using Linux, use `pip` for this as well:
-
-        sudo pip install ansible markupsafe
-
-    On macOS, you can use [Homebrew](http://www.homebrew.com) instead:
-
-        brew install ansible
+            sudo python2.7 -m ensurepip
 
 ## Install and Run Streisand
 
@@ -98,9 +94,17 @@ You are now ready to run Streisand.
 
 1.  Clone the repository from Github:
 
-        git clone https://github.com/jlund/streisand.git && cd streisand
+        git clone https://github.com/StreisandEffect/streisand.git && cd streisand
 
-2.  Run Streisand:
+2.  Run the installer for Ansible and its dependencies. The installer will detect missing packages, and print the commands needed to install them. (Ignore the Python 2.7 DEPRECATION warning; ignore the warning from python-novaclient that pbr 5.1.3 is incompatible.)
+
+        ./util/venv-dependencies.sh ./venv
+
+3.  Activate the Ansible packages that were installed.
+
+        source ./venv/bin/activate
+
+3.  Run Streisand:
 
         ./streisand
 
