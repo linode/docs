@@ -1,5 +1,5 @@
 [context.deploy-preview.environment]
-HUGO_VERSION = "0.40.2"
+HUGO_VERSION = "0.52"
 
 [context.deploy-preview]
 command = "hugo --buildDrafts --buildFuture --baseURL $DEPLOY_PRIME_URL && echo '/docs/* /:splat' >> public/_redirects"
