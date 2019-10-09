@@ -15,7 +15,7 @@ Jellyfin is an open source media library management and streaming platform, simi
 
 In this guide you will complete the following:
 
-- [Install and cofigure Jellyfin on a Linode](/docs/applications/media-servers/how-to-install-jellyfin/#install-jellyfin)
+- [Install and configure Jellyfin on a Linode](/docs/applications/media-servers/how-to-install-jellyfin/#install-jellyfin)
 - [Create a Reverse Proxy for Jellyfin](/docs/applications/media-servers/how-to-install-jellyfin/#create-a-reverse-proxy-for-jellyfin)
 
 ## Before you Begin
