@@ -13,9 +13,10 @@ title: How to Install Jellyfin on Linux
 ---
 Jellyfin is an open source media library management and streaming platform, similar to [Plex](https://www.plex.tv/). This document will guide you through the process of installing and configuring **Jellyfin** on your Linode running Ubuntu 18.04.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](https://www.linode.com/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+In this guide you will complete the following:
+
+- [Install and cofigure Jellyfin on a Linode](/docs/applications/media-servers/how-to-install-jellyfin/#install-jellyfin)
+- [Create a Reverse Proxy for Jellyfin](/docs/applications/media-servers/how-to-install-jellyfin/#create-a-reverse-proxy-for-jellyfin)
 
 ## Before you Begin
 
@@ -26,6 +27,10 @@ This guide is written for a non-root user. Commands that require elevated privil
 3. Run the following command to upgrade your packages:
 
         sudo apt-get update && sudo apt-get upgrade
+
+    {{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](https://www.linode.com/docs/tools-reference/linux-users-and-groups/) guide.
+    {{< /note >}}
 
 ## Install Jellyfin
 
