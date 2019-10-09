@@ -1,0 +1,14 @@
+<div class="utility-nav__container">
+  <nav
+    id="utility-nav"
+    role="menu"
+    class="utility-nav"
+    aria-expanded="false"
+  >
+  {{ $urlPre := "https://linode.com/wp-json/menus/v1/menus" }}
+  {{ $menuItems := getJSON $urlPre "/header-utility" }}
+  {{ if $menuItems }}
+    {{ range $menuItems.items }}<a href="{{ .url }}" target="_blank" class="header__link utility-nav__link" role="menuitem">{{ .title }}</a>{{ end }}
+  {{ end }}
+  </nav>
+</div>
