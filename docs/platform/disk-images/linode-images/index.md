@@ -38,6 +38,10 @@ While an image can be captured while your Linode is running, we would recommend 
 
     ![Create an Image menu](images-create-image-menu.png "Create an Image menu.")
 
+    {{< caution >}}
+CoreOS disk images are in RAW format. Images made from CoreOS disks will not be able to be used to deploy new Linodes.
+{{< /caution >}}
+
 1.  Once you click the **Create** button, your image will be frozen for later use. You can view the progress under the bell notifications at the top of the page.
 
     ![Image creation status under the bell notifications.](images-image-being-created.png "Image creation status under the bell notifications.")
@@ -71,6 +75,9 @@ Deploying one of your saved images to any Linode under your account is a simple 
 
     [![Select your Image from the 'My Images' tab](images-create-linode-from-image-small.png)](images-create-linode-from-image.png)
 
+    {{< caution >}}
+You cannot deploy an image that was created from a RAW disk format. Attempting to do so will result in a failure.
+{{< /caution >}}
 
 1.  Select your desired Region, Linode Plan, Label, and set your root password, then click **Create** to create a Linode with your saved image.
 
