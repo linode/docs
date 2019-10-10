@@ -52,11 +52,11 @@ If the prospect of managing your own mail server is too daunting, you should con
 
 There are several third-party mail services available:
 
-- [Fastmail](https://www.fastmail.fm)
-- [Google Apps](http://www.google.com/intl/en/enterprise/apps/business/) uses the familiar Gmail interface. Check out our guide to [using Google Apps with your Linode](/docs/email/google-mail).
-- [Office 365](https://login.microsoftonline.com/) is the successor to Outlook.com and can support custom domains for email, amongst other services.
+- [Fastmail](https://www.fastmail.com)
+- [Google Apps](http://www.google.com/intl/en/enterprise/apps/business/) uses the familiar Gmail interface. Check out our guide to [using Google Apps with your Linode](/docs/email/using-google-apps-for-email/).
+- [Office 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
-If you decide to use an outside mail service, you will still need to set up [DNS](/docs/networking/dns/dns-manager) for your mail and use the settings provided by the third-party mail service.
+If you decide to use an outside mail service, you will still need to set up [DNS](/docs/platform/manager/dns-manager/) for your mail and use the settings provided by the third-party mail service.
 
 ## How Mail Servers Work
 
@@ -92,7 +92,7 @@ Here are the most popular MTA services available:
 - [Courier Mail Server](http://www.courier-mta.org) comes with Courier-IMAP, which is the popular part of the Courier mail server suite, but Courier-MTA also includes mail relaying features. It's a simpler MTA but somewhat limited.
 - [Exim](http://www.exim.org) is modern and oriented towards flexibility. It's secure, but not quite as security-oriented as Postfix. It's very customizable, but is one of the most complex MTAs to configure.
 - [Postfix](http://www.postfix.org) is part of Linode's [recommended mail server build](/docs/email/postfix/email-with-postfix-dovecot-and-mysql). It's modern, security-oriented, and very flexible. It is slightly simpler to set up than Exim.
-- [Qmail](http://www.qmail.org/top.html) is a modern MTAs and supports [Maildir-style](https://en.wikipedia.org/wiki/Maildir) directories. Qmail has not received an update since 2007, but remains very popular.
+- [Qmail](http://cr.yp.to/qmail.html) is a modern MTAs and supports [Maildir-style](https://en.wikipedia.org/wiki/Maildir) directories. Qmail has not received an update since 2007, but remains very popular.
 - [Sendmail](http://www.sendmail.com/sm/open_source/) is a legacy MTA that has a large following and good support.
 - [Zimbra](http://www.zimbra.com) is an all-in-one mail service. Zimbra offers a simple install, but few configurable options.
 
@@ -102,7 +102,7 @@ MDAs move email from the MTA's queue to individual mailbox directories within yo
 
 These are some of the most popular MDAs available:
 
-- [Cyrus's MDA](http://www.cyrusimap.org/index.php) is part of the Cyrus IMAP/POP3 server. Cyrus is a modern, security-oriented IMAP/POP3 server designed to run on servers where users do not log in directly.
+- [Cyrus's MDA](https://www.cyrusimap.org) is part of the Cyrus IMAP/POP3 server. Cyrus is a modern, security-oriented IMAP/POP3 server designed to run on servers where users do not log in directly.
 - [Deliver](http://linux.die.net/man/8/deliver) is a simple Linux mail delivery utility that is configured in the Imapd configuration files by default.
 - [Dovecot's LDA](http://wiki2.dovecot.org/LDA) and [Dovecot's LMTP server](http://wiki2.dovecot.org/LMTP) are part of the Dovecot IMAP/POP3 server. Dovecot is a lightweight, modern, and configurable mail server.
 - [maildrop](http://www.courier-mta.org/maildrop/) is Courier's MDA. Courier is an all-in-one mail server.
@@ -119,9 +119,9 @@ Here are the most popular IMAP and POP3 servers available:
 
 - [Citadel](http://www.citadel.org) is an all-in-one mail service that includes mail, calendars, instant messaging, mailing lists, and other collaboration tools. It's open source and geared towards small and medium-sized organizations. Linode has  guides for [Citadel on Ubuntu 12.04](/docs/email/citadel/email-with-citadel-on-ubuntu-12-04-lts-precise-pangolin/) and [Citadel on Debian 6](/docs/email/citadel/email-with-citadel-on-debian-6-squeeze/).
 - [Courier](http://www.courier-mta.org) has a very popular IMAP server called [Courier IMAP](http://www.courier-mta.org/imap/). It's an all-in-one mail server software suite, but Courier IMAP can be installed by itself if that's the only part you need.
-- [Cyrus](http://www.cyrusimap.org/index.php) is a modern, security-oriented IMAP/POP3 server designed to work on sealed servers where users do not log in directly.
+- [Cyrus](https://www.cyrusimap.org) is a modern, security-oriented IMAP/POP3 server designed to work on sealed servers where users do not log in directly.
 - [DBMail](http://www.dbmail.org) is an open source project that stores mail in databases instead of flat files.
-- [Dovecot](http://www.dovecot.org) is a lightweight, modern, and configurable mail server, and is part of our [recommended mail server build](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/).
+- [Dovecot](http://dovecot.org) is a lightweight, modern, and configurable mail server, and is part of our [recommended mail server build](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/).
 - [Xmail](http://www.xmailserver.org) is a full-featured POP3 server, but does not support IMAP.
 - [Zimbra](http://www.zimbra.com) is an all-in-one mail service that's much simpler to install than other options, but less customizable.
 
@@ -191,7 +191,7 @@ If your Linode is the only mail server you use, you should be able to use the ex
 example.com     86400   TXT     "v=spf1 a ~all"
 {{< /output >}}
 
-Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. Visit [openspf.org](http://www.openspf.org/SPF_Record_Syntax) to learn how SPF records work and how to construct one that works for your setup. Their [examples](http://www.openspf.org/FAQ/Examples) are also helpful.
+Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. Visit [openspf.org](http://www.open-spf.org/SPF_Record_Syntax/) to learn how SPF records work and how to construct one that works for your setup. Their [examples](http://www.open-spf.org/FAQ/Examples/) are also helpful.
 
 #### Reverse DNS
 
@@ -252,7 +252,7 @@ If you're using a firewall, be sure to edit the rules for your mail server's por
 
 ### Webmail
 
-Webmail is a type of mail client that can be installed on your server and accessed from a web browser. It allows your users to access their email from your website (example: `http://example.com/mail`) anywhere they have access to the internet. Running a web server is a prerequisite for running a webmail client, so follow the [Hosting a Website](/docs/hosting-website) guide if you want to run webmail on your Linode, in addition to installing a mail server.
+Webmail is a type of mail client that can be installed on your server and accessed from a web browser. It allows your users to access their email from your website (example: `http://example.com/mail`) anywhere they have access to the internet. Running a web server is a prerequisite for running a webmail client, so follow the [Hosting a Website](/docs/websites/set-up-web-server-host-website/) guide if you want to run webmail on your Linode, in addition to installing a mail server.
 
 Here are some of the most popular webmail clients:
 
