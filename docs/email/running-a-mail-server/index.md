@@ -191,7 +191,7 @@ If your Linode is the only mail server you use, you should be able to use the ex
 example.com     86400   TXT     "v=spf1 a ~all"
 {{< /output >}}
 
-Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. Visit [openspf.org](http://www.open-spf.org/SPF_Record_Syntax/) to learn how SPF records work and how to construct one that works for your setup. Their [examples](http://www.open-spf.org/FAQ/Examples/) are also helpful.
+Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. Visit [open-spf.org](http://www.open-spf.org/SPF_Record_Syntax/) to learn how SPF records work and how to construct one that works for your setup. Their [examples](http://www.open-spf.org/FAQ/Examples/) are also helpful.
 
 #### Reverse DNS
 
