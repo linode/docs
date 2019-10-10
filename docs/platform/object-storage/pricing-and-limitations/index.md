@@ -29,7 +29,7 @@ Currently, Object Storage accounts are capped at 10 terabytes of storage, or 100
 
 ## Transfer Quotas
 
-Object Storage adds 1 terabyte of outbound data transfer to your data transfer pool. You are not charged for uploading objects (inbound traffic) to Object Storage. Any further outbound data is charged at a rate of $0.01 a gigbyte. For more information on network transfer pools, review our [Netowrk Transfer Quota guide](https://linode.com/docs/platform/billing-and-support/network-transfer-quota/).
+Object Storage adds 1 terabyte of outbound data transfer to your data transfer pool. You are not charged for uploading objects (inbound traffic) to Object Storage. Any further outbound data is charged at a rate of $0.01 a gigabyte. For more information on network transfer pools, review our [Network Transfer Quota guide](https://linode.com/docs/platform/billing-and-support/network-transfer-quota/).
 
 {{< note >}}
 The 1 terabyte of transfer from Object Storage is not prorated. If you use Object Storage at any point during the month you 1 terabyte of transfer will be added to your pool.
