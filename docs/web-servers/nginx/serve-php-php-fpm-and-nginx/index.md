@@ -119,15 +119,14 @@ server {
     - The `fastcgi_pass` location must match the `listen =` value in `/etc/php/7.0/fpm/pool.d/www.conf`. It is preferable for performance reasons for PHP-FPM to listen on a UNIX socket instead of a TCP address. Only change this if you require PHP-FPM use network connections.
     - Using `$document_root` in the `SCRIPT_FILENAME` parameter instead of an absolute path is preferred by [NGINX's documentation](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#fastcgi-path-in-script-filename).
 
-    Here's a variation of the `location` block above. This includes an `if` statement which disallows the FPM to process files in the `/uploads/` directory. This is a security measure which prevents people from being able to upload `.php` files to your server or application which the FastCGI process manager would then execute.
-
-    This only applicable if you allow users to upload or submit files to your site. Change the name of the directory from `uploads` to whatever suits your need.
+    If your web application provides file uploads, add security measure by forbid PHP files on directory contain file uploads. Here, we use `try_files` to instruct NGINX to filter requests on `/uploads` directory. See [NGINX's documentation](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php) for alternative methods.
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
+  location ~^ /uploads/ {
+    try_files $uri =404;
+  }
+
   location ~* \.php$ {
-    if ($uri !~ "^/uploads/") {
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        }
     include         fastcgi_params;
     fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
     fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
