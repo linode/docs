@@ -23,7 +23,7 @@ Flask is a light-weight web framework for Python that includes several utilities
 
 This guide will walk you through the steps to deploy a Flask application to a production environment running on a Linode. Your production environment will use [NGINX](http://localhost:1313/docs/web-servers/nginx/nginx-installation-and-basic-setup/) as the web server and reverse proxy, [Gunicorn](https://gunicorn.org/) as the web server gateway interface (WSGI) application server, and [Supervisor](http://supervisord.org/) for monitoring and auto-reloading Gunicorn should it go down. This guide will not cover creating a Flask application or related Python concepts.
 
-In this guide we will complete the following:
+In this guide you will complete the following:
 
 - [Copy an existing Flask application from a local development environment to a production environment](#copy-your-flask-app-to-your-linode)
 - [Install and configure NGINX](#install-and-configure-nginx)
@@ -55,11 +55,11 @@ This guide assumes you are familiar with the following concepts and skills:
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for [updating your system's software](/docs/getting-started/#install-software-updates), setting your Linode's [hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access) and [remove unnecessary network services](/docs/security/securing-your-server/#configure-a-firewall).
+1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access) and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
 
 ## Copy Your Flask App to Your Linode
 
-After creating your Flask application in your local development environment, you are now ready to deploy it to a production environment. You will need to copy your local Flask application code to your Linode. You can accomplish this by either cloning your GitHub project to your Linode using Git or using the secure copy method to directly transfer your application files to your Linode. This section will provide steps for both options.
+After creating your Flask application in your local development environment, you are now ready to deploy it to a production environment. You will need to copy your local Flask application code to your Linode. You can accomplish this by either [cloning your GitHub project to your Linode](/docs/web-servers/nginx/flask-and-gunicorn-on-ubuntu/#clone-your-app-from-source-control) using Git or by using the [secure copy method](/docs/web-servers/nginx/flask-and-gunicorn-on-ubuntu/#secure-copy-your-app-from-a-local-machine) to directly transfer your application files to your Linode. This section will provide steps for both options.
 
 {{< note >}}
 This guide's examples will transfer your Flask application files to your Linode's `/home` directory. If you prefer, you can store your application files in a different directory, however, ensure you run the examples using your own app's directory location.
@@ -143,13 +143,13 @@ server {
 
         sudo nginx -s reload
 
-5. Navigate to your Linode's IP address in a web browser. You should see a similar NGINX Gateway error. This error appears because you have not yet set up the WSGI application server. You will set up your application server in the [Deploy Your Application](#deploy-your-application) section of the guide.
+5. Navigate to your Linode's IP address in a web browser. You should see a similar NGINX Gateway error. This error appears because you have not set up the WSGI application server yet. You will set up your application server in the [Deploy Your Application](#deploy-your-application) section of the guide.
 
     ![502Gateway](badgatewayerr.png)
 
 ### Install Python and Packages
 
-To run your Flask application, you will need to install Python, Flask, pip3 and any other required package dependencies to your Linode.
+To run your Flask application, you will need to install Python, Flask, pip3 and any other required package dependencies on your Linode.
 
 {{< note >}}
 This guide was created using Python 3.6.8
@@ -192,10 +192,10 @@ Collecting flask-wtf (from -r flask_app/requirements.txt (line 4))
 ### Configure Flask
 Depending on your Flask application's environment, there are different settings you may need to configure, like toggling the debug mode, setting the secret key, setting the database URI, etc. For more information on Flask's available configuration options see Flask's [configuration docs](https://flask.palletsprojects.com/en/1.1.x/config/#builtin-configuration-values).
 
-In this section, you will create a JSON file to store your environment configurations and then load the configurations to your Flask app. The configuration created in this section is a basic example of some Flask environment variables you might include in your application.
+In this section, you will create a JSON file to store your environment configurations and then load that configuration into your Flask app. The configuration created in this section is a basic example of some Flask environment variables you might include in your application.
 
 {{< caution >}}
-You should keep sensitive configuration file values **outside of source control**. If you source control your configuration file containing sensitive values in a remote repository, then soemone could access them and compromise your Linode or application.
+You should keep sensitive configuration files **outside of source control**. If you source control your configuration file, which contains sensitive values, in a remote repository, then someone could access it and use that information to compromise your Linode or application.
 {{< /caution >}}
 
 1.  Create a JSON configuration file with the text editor of your choice:
@@ -261,7 +261,7 @@ root@localhost:/home/Flask-on-Linode# gunicorn -w 3 flask_app:app
 {{< /output >}}
 
     {{< note >}}
-You can specify the amount of workers you want Gunicorn to use with the `--workers` flag. A good rule of thumb to determine [worker](http://docs.gunicorn.org/en/stable/design.html#server-model) count is to double your system's CPU core's and add 1. For a Nanode with 1 CPU core you should use 3 workers.
+You can specify the amount of workers you want Gunicorn to use with the `--workers` flag. A good rule of thumb to determine [worker](http://docs.gunicorn.org/en/stable/design.html#server-model) count is to double your system's CPU cores and add 1. For a Nanode with 1 CPU core you should use 3 workers.
 {{< /note >}}
 
 1. After running Gunicorn, your Flask application should be live and available over the internet. Open a web browser and enter your Linode's IP address to access your application. If you used the example Flask blog application, you should see the following:
@@ -307,7 +307,7 @@ stdout_logfile=/var/log/flask_app/flask_app.out.log
 
         sudo supervisorctl reload
 
-    You should see a similiar output:
+    You should see a similar output:
     {{< output >}}
 Restarted supervisord
     {{< /output >}}
