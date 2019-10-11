@@ -6,7 +6,7 @@ description: 'In this guide you will learn how to use a Community StackScript to
 keywords: ['terraform','stackscripts','wordpress','orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
-modified: 2018-12-12
+modified: 2019-08-08
 modified_by:
   name: Linode
 title: "Deploy a WordPress Site Using Terraform and Linode StackScripts"
@@ -31,6 +31,10 @@ Following this guide will result in the creation of [billable Linode resources](
 
 1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
 
+    {{< note >}}
+[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+    {{</ note >}}
+
 1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain one.
 
 1.  If you have not already, [assign Linode's name servers](/docs/platform/manager/dns-manager/#use-linode-s-name-servers-with-your-domain) to your domain at your domain name's registrar.
@@ -51,12 +55,12 @@ Terraform defines the elements of your Linode infrastructure inside of configura
 
       {{< file "~/terraform/main.tf">}}
 provider "linode" {
-    token = "${var.token}"
+    token = var.token
 }
 
 resource "linode_sshkey" "my_wordpress_linode_ssh_key" {
     label = "my_ssh_key"
-    ssh_key = "${chomp(file("~/.ssh/id_rsa.pub"))}"
+    ssh_key = chomp(file("~/.ssh/id_rsa.pub"))
 }
 
 resource "random_string" "my_wordpress_linode_root_password" {
@@ -65,34 +69,42 @@ resource "random_string" "my_wordpress_linode_root_password" {
 }
 
 resource "linode_instance" "my_wordpress_linode" {
-    image = "${var.image}"
-    label = "${var.label}"
-    region = "${var.region}"
-    type = "${var.type}"
-    authorized_keys = [ "${linode_sshkey.my_wordpress_linode_ssh_key.ssh_key}" ]
-    root_pass = "${random_string.my_wordpress_linode_root_password.result}"
-    stackscript_id = "${var.stackscript_id}"
-    stackscript_data = "${var.stackscript_data}"
+    image = var.image
+    label = var.label
+    region = var.region
+    type = var.type
+    authorized_keys = [ linode_sshkey.my_wordpress_linode_ssh_key.ssh_key ]
+    root_pass = random_string.my_wordpress_linode_root_password.result
+    stackscript_id = var.stackscript_id
+    stackscript_data = {
+       "ssuser" = var.stackscript_data["ssuser"]
+       "hostname" = var.stackscript_data["hostname"]
+       "website" = var.stackscript_data["website"]
+       "dbuser" = var.stackscript_data["dbuser"]
+       "db_password" = var.stackscript_data["db_password"]
+       "sspassword" = var.stackscript_data["sspassword"]
+       "dbuser_password" = var.stackscript_data["dbuser_password"]
+    }
 }
 
 resource "linode_domain" "my_wordpress_domain" {
-    domain = "${var.domain}"
-    soa_email = "${var.soa_email}"
+    domain = var.domain
+    soa_email = var.soa_email
     type = "master"
  }
 
 resource "linode_domain_record" "my_wordpress_domain_www_record" {
-    domain_id = "${linode_domain.my_wordpress_domain.id}"
+    domain_id = linode_domain.my_wordpress_domain.id
     name = "www"
-    record_type = "${var.a_record}"
-    target = "${linode_instance.my_wordpress_linode.ipv4[0]}"
+    record_type = var.a_record
+    target = "linode_instance.my_wordpress_linode.ipv4"
 }
 
 resource "linode_domain_record" "my_wordpress_domain_apex_record" {
-    domain_id = "${linode_domain.my_wordpress_domain.id}"
+    domain_id = linode_domain.my_wordpress_domain.id
     name = ""
-    record_type = "${var.a_record}"
-    target = "${linode_instance.my_wordpress_linode.ipv4[0]}"
+    record_type = var.a_record
+    target = "linode_instance.my_wordpress_linode.ipv4"
 }
 {{</ file >}}
 
@@ -108,7 +120,7 @@ Let's take a closer look at each block in the configuration file:
 
     {{< file >}}
 provider "linode" {
-    token = "${var.token}"
+    token = var.token
 }
 {{</ file >}}
 
@@ -117,11 +129,11 @@ provider "linode" {
     {{< file >}}
 resource "linode_sshkey" "my_wordpress_linode_ssh_key" {
     label = "my_ssh_key"
-    ssh_key = "${chomp(file("~/.ssh/id_rsa.pub"))}"
+    ssh_key = chomp(file("~/.ssh/id_rsa.pub"))
 }
 {{</ file >}}
 
-    `ssh_key = "${chomp(file("~/.ssh/id_rsa.pub"))}"` uses Terraform's built-in `file()` function to provide a local file path to the public SSH key's location. The `chomp()` built-in function removes trailing new lines from the SSH key.
+    `ssh_key = chomp(file("~/.ssh/id_rsa.pub"))` uses Terraform's built-in `file()` function to provide a local file path to the public SSH key's location. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
     {{< note >}}
 If you do not already have SSH keys, follow the steps in the *Create an Authentication Key-pair* section of the [Securing Your Server Guide](/docs/security/securing-your-server/#create-an-authentication-key-pair).
@@ -140,14 +152,22 @@ resource "random_string" "my_wordpress_linode_root_password" {
 
     {{< file >}}
 resource "linode_instance" "my_wordpress_linode" {
-    image = "${var.image}"
-    label = "${var.label}"
-    region = "${var.region}"
-    type = "${var.type}"
-    authorized_keys = [ "${linode_sshkey.my_wordpress_linode_ssh_key.ssh_key}" ]
-    root_pass = "${random_string.my_wordpress_linode_root_password.result}"
-    stackscript_id = "${var.stackscript_id}"
-    stackscript_data = "${var.stackscript_data}"
+    image = var.image
+    label = var.label
+    region = var.region
+    type = var.type
+    authorized_keys = [ linode_sshkey.my_wordpress_linode_ssh_key.ssh_key ]
+    root_pass = random_string.my_wordpress_linode_root_password.result
+    stackscript_id = var.stackscript_id
+    stackscript_data = {
+       "ssuser" = var.stackscript_data["ssuser"]
+       "hostname" = var.stackscript_data["hostname"]
+       "website" = var.stackscript_data["website"]
+       "dbuser" = var.stackscript_data["dbuser"]
+       "db_password" = var.stackscript_data["db_password"]
+       "sspassword" = var.stackscript_data["sspassword"]
+       "dbuser_password" = var.stackscript_data["dbuser_password"]
+    }
 }
 {{</ file >}}
 
@@ -167,23 +187,23 @@ resource "linode_instance" "my_wordpress_linode" {
 
     {{< file >}}
 resource "linode_domain" "my_wordpress_domain" {
-    domain = "${var.domain}"
-    soa_email = "${var.soa_email}"
+    domain = var.domain
+    soa_email = var.soa_email
     type = "master"
  }
 
 resource "linode_domain_record" "my_wordpress_domain_www_record" {
-    domain_id = "${linode_domain.my_wordpress_domain.id}"
+    domain_id = linode_domain.my_wordpress_domain.id
     name = "www"
-    record_type = "${var.a_record}"
-    target = "${linode_instance.linode_id.ipv4[0]}"
+    record_type = var.a_record
+    target = "linode_instance.linode_id.ipv4"
 }
 
 resource "linode_domain_record" "my_wordpress_domain_apex_record" {
-    domain_id = "${linode_domain.my_wordpress_domain.id}"
+    domain_id = linode_domain.my_wordpress_domain.id
     name = ""
-    record_type = "${var.a_record}"
-    target = "${linode_instance.my_wordpress_linode.ipv4[0]}"
+    record_type = var.a_record
+    target = "linode_instance.my_wordpress_linode.ipv4"
 }
 {{</ file >}}
 
@@ -270,12 +290,6 @@ Terraform will automatically load any file named `terraform.tfvars` and use its 
     {{< file "~/terraform/terraform.tfvars">}}
 label = "wp-linode"
 stackscript_id = "81736"
-stackscript_data = {
-  ssuser = "username"
-  hostname = "wordpress"
-  website = "example.com"
-  dbuser = "wpuser"
-}
 domain = "example.com"
 soa_email = "user@email.com"
 {{</ file >}}
@@ -285,11 +299,18 @@ soa_email = "user@email.com"
     {{< file "~/terraform/secrets.tfvars">}}
 token = "my-linode-api4-token"
 stackscript_data = {
-  sspassword = "my-secure-password"
-  db_password = "another-secure-password"
-  dbuser_password = "a-third-secure-password"
+  "ssuser" = "username"
+  "hostname" = "wordpress"
+  "website" = "example.com"
+  "dbuser" = "wpuser"
+  "sspassword" = "my-secure-password"
+  "db_password" = "another-secure-password"
+  "dbuser_password" = "a-third-secure-password"
 }
 {{</ file >}}
+    {{< note >}}
+In Terraform 0.12, variables with map and object values will use the last value found and override previous values. This is different from previous versions of Terraform, which would merge map values instead of overriding them. For this reason the `stackscript_data` map and its values are defined in a single variable definitions file.
+    {{</ note >}}
 
     {{< note >}}
 It is helpful to reference Terraform's [Linode provider](https://www.terraform.io/docs/providers/linode/) documentation and the [Linode APIv4 documentation](https://developers.linode.com/api/v4) for assistance in determining appropriate values for Linode resources.

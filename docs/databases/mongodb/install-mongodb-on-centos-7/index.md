@@ -11,7 +11,7 @@ modified_by:
 published: 2016-12-30
 title: 'Install MongoDB on CentOS 7'
 external_resources:
- - '[Official MongoDB Documentation](https://docs.mongodb.org/v3.2/)'
+ - '[Official MongoDB Documentation](https://docs.mongodb.org/v4.0/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](http://docs.mongodb.org/ecosystem/drivers/)'
 ---
@@ -42,17 +42,17 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Add the MongoDB Repository
 
-The most current stable version of MongoDB is 3.2 and, as of this writing, the default CentOS 7 repository does not contain a package for it. Instead, we'll need to use the MongoDB repository.
+The most current stable version of MongoDB is 4.0 and, as of this writing, the default CentOS 7 repository does not contain a package for it. Instead, we'll need to use the MongoDB repository.
 
-Create a new file, `/etc/yum.repos.d/mongodb-org-3.2.repo`, so that you can install the latest release using `yum`. Add the following contents to the file:
+Create a new file, `/etc/yum.repos.d/mongodb-org-4.0.repo`, so that you can install the latest release using `yum`. Add the following contents to the file:
 
-{{< file "/etc/yum.repos.d/mongodb-org-3.2.repo" >}}
-[mongodb-org-3.2]
+{{< file "/etc/yum.repos.d/mongodb-org-4.0.repo" >}}
+[mongodb-org-4.0]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.0/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
 
 {{< /file >}}
 
@@ -113,7 +113,7 @@ Issue the following commands to increase your open file and process limits for M
     echo "mongod     soft    nofiles   64000" >> /etc/security/limits.conf
     echo "mongod     soft    nproc     64000" >> /etc/security/limits.conf
 
-These are the [recommended](https://docs.mongodb.com/v3.2/reference/ulimit/#recommended-ulimit-settings) settings, but you may need to adjust them depending upon your individual usage. See the [MongoDB Documentation](https://docs.mongodb.com/v3.2/reference/ulimit/) for more information.
+These are the [recommended](https://docs.mongodb.com/v4.0/reference/ulimit/#recommended-ulimit-settings) settings, but you may need to adjust them depending upon your individual usage. See the [MongoDB Documentation](https://docs.mongodb.com/v4.0/reference/ulimit/) for more information.
 
 ## Start and Stop MongoDB
 
@@ -183,7 +183,7 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
         quit()
 
-For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://docs.mongodb.org/v3.2/security).
+For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://docs.mongodb.org/v4.0/security).
 
 ## Manage Data and Collections
 
@@ -205,7 +205,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
         db.createCollection("exampleCollection", {capped: false})
 
-    If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/v3.2/reference/method/db.createCollection/).
+    If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/v4.0/reference/method/db.createCollection/).
 
     {{< note >}}
 Collection names should not include certain punctuation such as hyphens. However, exceptions may not be raised until you attempt to use or modify the collection. For more information, refer to MongoDB's [naming restrictions](https://docs.mongodb.com/manual/reference/limits/#naming-restrictions).

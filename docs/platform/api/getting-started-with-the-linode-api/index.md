@@ -19,6 +19,8 @@ aliases: ['platform/api/getting-started-with-the-linode-api-new-manager/']
 classic_manager_link: platform/api/getting-started-with-the-linode-api-classic-manager/
 ---
 
+![Getting Started with the Linode API](getting-started-with-the-linode-api.png "Getting Started with the Linode API")
+
 ## Create a Linode Using the Linode API
 
 The Linode API allows you to automate any task that can be performed by the Cloud Manager, such as creating Linodes, managing IP addresses and DNS, and opening support tickets.
@@ -75,17 +77,17 @@ Specify the type, region, and image for the new Linode.
 
 1.  Review the list of available images:
 
-        curl https://api.linode.com/v4/images/
+        curl https://api.linode.com/v4/images/ | json_pp
 
     Choose one of the images from the resulting list and make a note of the `id` field.
 
 1.  Repeat this procedure to choose a type:
 
-        curl https://api.linode.com/v4/linode/types/
+        curl https://api.linode.com/v4/linode/types/ | json_pp
 
 1.  Choose a region:
 
-        curl https://api.linode.com/v4/regions
+        curl https://api.linode.com/v4/regions | json_pp
 
 ## Build the Final Query
 
@@ -101,7 +103,7 @@ Replace the values in the command below with your chosen type, region, and image
 
 If a results list contains more than 100 items, the response will be split into multiple pages. Each response will include the total number of pages and the current page. To view additional pages, add a `page` parameter to the end of the URL. For example, querying the available kernels produces more than 200 results:
 
-    curl https://api.linode.com/v4/linode/kernels
+    curl https://api.linode.com/v4/linode/kernels | json_pp
 
 
   {{< highlight json "linenos=table,hl_lines=2 25" >}}
@@ -135,11 +137,11 @@ If a results list contains more than 100 items, the response will be split into 
 
 The `pages` field indicates that the results are divided into three pages. View the second page:
 
-    curl https://api.linode.com/v4/linode/kernels?page=2
+    curl https://api.linode.com/v4/linode/kernels | json_pp page=2
 
 If you prefer a smaller number of items per page, you can override the default value with the `page_size` parameter:
 
-    curl https://api.linode.com/v4/linode/kernels?page_size=50
+    curl https://api.linode.com/v4/linode/kernels | json_pp page_size=50
 
 ### Filter Results
 
@@ -147,7 +149,7 @@ The API also supports filtering lists of results. Filters are passed using the `
 
 The following query uses the `deprecated` and `vendor` fields to return all current Debian images:
 
-    curl https://api.linode.com/v4/images/ -H 'X-Filter: { "vendor": "Debian", "deprecated": false}'
+    curl https://api.linode.com/v4/images/ -H 'X-Filter: { "vendor": "Debian", "deprecated": false}' | json_pp
 
   {{< highlight json "linenos=table" >}}
 {
@@ -185,6 +187,6 @@ The following query uses the `deprecated` and `vendor` fields to return all curr
 
 More complex searches are possible through the use of logical operators. Use `or` to return a list of all Debian and Ubuntu images:
 
-    curl https://api.linode.com/v4/images/ -H "{"+or": [{"vendor":"Debian"}, {"vendor":"Ubuntu"}]}"
+    curl https://api.linode.com/v4/images/ -H "{"+or": [{"vendor":"Debian"}, {"vendor":"Ubuntu"}]}" | json_pp
 
 See the [Linode API documentation](https://developers.linode.com/api/v4/) for a full list of supported operators.

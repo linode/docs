@@ -50,6 +50,10 @@ If you receive a failure message or the popup shown below, you should visit the 
 
 ### Manual Configuration (All Distributions)
 
+{{< note >}}
+You cannot configure the location of a socket for the Longview client.
+{{< /note >}}
+
 To enable the MySQL Longview app manually, follow these steps on your Linode via SSH:
 
 1.  Create a new MySQL user with minimal privileges for Longview. Run the following queries on your database as the root MySQL user to create the new user:

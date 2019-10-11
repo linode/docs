@@ -236,11 +236,11 @@ systemd's `system-analyze` command provide several other useful analyze and debu
 
 When you enable the timer, systemd will hook the timer unit into the specified places and ensure it starts on boot. Enable the timer unit with following command:
 
-    systemctl start my-db-backup.timer
+    systemctl enable my-db-backup.timer
 
 When you start the timer unit, systemd will start it right away. To do this, issue the following command:
 
-    systemctl enable my-db-backup.timer
+    systemctl start my-db-backup.timer
 
 ## systemd Tools
 

@@ -21,7 +21,7 @@ contributor:
 
 The WireGuard configuration is as simple as setting up SSH. A connection is established by an exchange of public keys between server and client. Only a client that has its public key in its corresponding server configuration file is allowed to connect. WireGuard sets up standard network interfaces (such as `wg0` and `wg1`), which behave much like the commonly found `eth0` interface. This makes it possible to configure and manage WireGuard interfaces using standard tools such as `ifconfig` and `ip`.
 
-Currently, WireGuard is only available on Linux. This guide will configure a simple peer connection between a Linode running Ubuntu 18.04, and a client. The client can be either your local computer or another Linode.
+This guide will configure a simple peer connection between a Linode running Ubuntu 18.04, and a client. The client can be either your local computer or another Linode.
 
 {{< caution >}}
 Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent critical updates in the future.
@@ -165,7 +165,7 @@ The process for setting up a client is similar to setting up the server. When us
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
 PrivateKey = <Output of privatekey file that contains your private key>
-Address = 203.0.123.12/24, fd86:ea04:1115::5/64
+Address = 203.0.113.12/24, fd86:ea04:1115::5/64
 {{< /file >}}
 
 ## Connect the Client and Server
@@ -178,7 +178,7 @@ There are two ways to add peer information to WireGuard; this guide will demonst
 [Peer]
 PublicKey = <Server Public key>
 Endpoint = <Server Public IP>:51820
-AllowedIPs = 203.0.123.12/24, fd86:ea04:1115::5/64
+AllowedIPs = 203.0.113.12/24, fd86:ea04:1115::5/64
 {{< /file >}}
 
 1.  Enable the `wg` service:
@@ -190,7 +190,7 @@ AllowedIPs = 203.0.123.12/24, fd86:ea04:1115::5/64
 
     Run the following command from the server. Replace the example IP addresses with those of the client:
 
-        sudo wg set wg0 peer <Client Public Key> endpoint <Client IP address>:51820 allowed-ips 203.0.123.12/24,fd86:ea04:1115::5/64
+        sudo wg set wg0 peer <Client Public Key> endpoint <Client IP address>:51820 allowed-ips 203.0.113.12/24,fd86:ea04:1115::5/64
 
 1.  Verify the connection. This command can be run from the client or the server:
 
@@ -206,8 +206,8 @@ interface: wg0
   listening port: 51820
 
 peer: iMT0RTu77sDVrX4RbXUgUBjaOqVeLYuQhwDSU+UI3G4=
-  endpoint: 203.0.123.12:51820
-  allowed ips: 203.0.123.12/24, fd86:ea04:1115::/64
+  endpoint: 203.0.113.12:51820
+  allowed ips: 203.0.113.12/24, fd86:ea04:1115::/64
 {{< /output >}}
 
     This Peer section will be automatically added to `wg0.conf` when the service is restarted. If you would like to add this information immediately to the config file, you can run:
@@ -220,7 +220,7 @@ peer: iMT0RTu77sDVrX4RbXUgUBjaOqVeLYuQhwDSU+UI3G4=
 
 1. Return to the client and ping the server:
 
-        ping 192.168.2.1
+        ping 192.0.2.1
         sudo wg
 
     The last two lines of the output from running the `wg` command should be similar to:

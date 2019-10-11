@@ -1,0 +1,56 @@
+<div class="header__wrapper" id="header">
+  <header class="header">
+    <div class="utility-nav__wrapper">
+      {{ partial "navigation/utility_nav" . }}
+    </div>
+    <div class="primary-nav__wrapper">
+      <div class="primary-nav__container">
+        <div class="primary-nav__inner">
+          <div class="logo">
+            <a aria-current="page" class="logo__link" href="https://linode.com">
+              {{ partial "logo" . }}
+            </a>
+          </div>
+          <div>
+            {{ partial "navigation/primary_nav" . }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menus__wrapper" id="mobile-menus">
+      <form
+        role="search"
+        method="get"
+        class="header-search-form"
+        action="https://linode.com/"
+      >
+        <label class="header-search-form__label">
+          <span class="search-form__placeholder visually-hidden">
+            Search Linode:
+          </span>
+          <input
+            type="search"
+            class="search-form__search-field"
+            placeholder="Search Linode"
+          />
+        </label>
+        <input
+          type="submit"
+          class="search-submit visually-hidden"
+          value="Search"
+        />
+      </form>
+      <div class="primary-mobilenav__wrapper">
+          {{ partial "navigation/primary_mobile_nav" . }}
+      </div>
+      <div class="utility-mobilenav__wrapper">
+          {{ partial "navigation/utility_mobile_nav" . }}
+      </div>
+      <div class="mobile-sign-up">
+        <a href="https://login.linode.com/signup" target="_self" class="mobile-sign-up__button">
+          Sign Up
+        </a>
+      </div>
+    </div>
+  </header>
+</div>

@@ -36,7 +36,6 @@ You can configure your WordPress App by providing values for the following field
 | **Admin Password** | Password for your WordPress admin user. *Required*. |
 | **E-Mail Address** | E-Mail address for your WordPress admin user. *Required*. |
 | **Website Title** | Your WordPress site's title. *Advanced Configuration*. |
-| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the /root/.ssh/authorized_keys file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Configuration*. |
 
 ### Linode Options
 

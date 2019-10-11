@@ -7,7 +7,7 @@ og_description: 'Go is a statically typed, compiled programming language develop
 keywords: ["Go", "Go Programming", "Golang", "Ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-29
-modified: 2018-01-29
+modified: 2019-08-22
 modified_by:
   name: Linode
 title: 'How to Install Go on Ubuntu'
@@ -19,25 +19,25 @@ languages: ["go"]
 
 ## What is Go?
 
-[Go](https://golang.org/) is a compiled, statically typed programming language developed by Google. Many modern applications, including Docker, Kubernetes, and Caddy, are written in Go.
+[Go](https://golang.org/) is a compiled, statically typed programming language developed by Google. Many modern applications such as Docker, Kubernetes, and Caddy are written in Go.
 
 ## Install Go
 
-1. Use `curl` or `wget` to download the current binary for Go from the official [download page](https://golang.org/dl/). As of this writing, the current version is 1.9.3. Check the download page for updates, and replace `1.9.3` with the most recent stable version if necessary.
+1. Use `curl` or `wget` to download the current binary for Go from the official [download page](https://golang.org/dl/). As of this writing, the current version is 1.12.9. Check the download page for updates, and replace `1.12.9` with the most recent stable version if necessary.
 
-        curl -O https://storage.googleapis.com/golang/go1.9.3.linux-amd64.tar.gz
+        curl -O https://storage.googleapis.com/golang/go1.12.9.linux-amd64.tar.gz
 
 2. Verify the `.tar` file using `sha256sum`:
 
-        sha256sum go1.9.3.linux-amd64.tar.gz
+        sha256sum go1.12.9.linux-amd64.tar.gz
 
     {{< output >}}
-a4da5f4c07dfda8194c4621611aeb7ceaab98af0b38bfb29e1be2ebb04c3556c  go1.9.3.linux-amd64.tar.gz
+aac2a6efcc1f5ec8bdc0db0a988bb1d301d64b6d61b7e8d9e42f662fbb75a2b9b  go1.12.9.linux-amd64.tar.gz
 {{< /output >}}
 
 3. Extract the tarball:
 
-        tar -xvf go1.9.3.linux-amd64.tar.gz
+        tar -xvf go1.12.9.linux-amd64.tar.gz
 
 4. Adjust the permissions and move the `go` directory to `/usr/local`:
 

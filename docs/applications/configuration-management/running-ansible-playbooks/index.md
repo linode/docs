@@ -120,7 +120,7 @@ When creating a limited user account you are required to create a host login pas
 
 1. Create a password hash using passlib. Replace `myPlainTextPassword` with the password you'd like to use to access your Linode.
 
-        sudo python -c "from passlib.hash import sha512_crypt; print sha512_crypt.encrypt('myPlainTextPassword')"
+        sudo python -c "from passlib.hash import sha512_crypt; print (sha512_crypt.encrypt('myPlainTextPassword'))"
 
     A similar output will appear displaying a hash of your password:
     {{< output >}}

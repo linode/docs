@@ -66,11 +66,15 @@ This section takes you through the process of creating a new guide using the top
 
         git checkout -b nginx-on-debian
 
-4.  From the root of the `docs` repo, run the following command. Specify the location and title of your guide; the example nginx guide should be located in `web-servers/nginx`. This will create a markdown file populated with YAML front matter:
+4.  From the root of the Docs repository, run the following command. Specify the location and title of your guide; the example nginx guide should be located in `web-servers/nginx`. This will create a markdown file populated with YAML front matter:
 
         hugo new web-servers/nginx/how-to-install-nginx-on-debian/index.md --kind content
 
-    This will create a subdirectory with the guide's intended url, with an `index.md` file inside that will hold the guide's contents. Any images should be added inside this directory as well.
+    This will create a subdirectory with the guide's intended url, with an `index.md` file inside that will hold the guide's contents:
+
+        /Users/your-macbook-user/linode-docs/docs/web-servers/nginx/how-to-install-nginx-on-debian/index.md created
+
+    Any images should be added inside this directory as well. Note that the guide is created under a `docs/` subdirectory that's within the Docs repository; all guides will be under this subdirectory. The root of the Docs repository itself contains related information: Hugo's configuration file, theme information, unit testing information, etc.
 
 5.  Start the Hugo server:
 
@@ -106,7 +110,7 @@ Images should be placed in the guide's subdirectory and linked using their filen
 
 1.  Commit your changes to your local branch:
 
-        git add how-to-install-nginx-on-debian.md
+        git add docs/web-servers/nginx/how-to-install-nginx-on-debian/
         git commit -m "Initial draft of guide"
 
 2.  Push the local branch to your fork:

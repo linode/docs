@@ -15,6 +15,8 @@ external_resources:
   - '[Backing Up Your Data](/docs/security/backups/backing-up-your-data/)'
 ---
 
+![Introduction to Backups](introduction-to-backups.png "Introduction to Backups")
+
 ## Why Should You Back Up Your Data?
 
 A *backup* can refer to anything from a copy of an important file to a snapshot of a full disk. Many desktop applications and operating systems automatically create backups of your data. In contrast, Linode is a flexible platform where you have full control over which operating systems and applications are installed, which means that no backup system is installed by default.
