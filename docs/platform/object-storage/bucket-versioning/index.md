@@ -5,7 +5,7 @@ author:
 description: 'How to use bucket versioning with Linode Object Storage to track and saves changes to your objects.'
 keywords: ['object','storage','bucket','version','versioning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-09-11
+published: 2019-10-14
 modified_by:
   name: Linode
 title: "Bucket Versioning with Linode Object Storage"
