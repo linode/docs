@@ -94,7 +94,7 @@ Checking connectivity... done.
 
 ### Secure Copy your App From a Local Machine
 
-1.  From your local machine, secure copy (SCP) your project into your Linode's `/home` directory. Replace the example IP address with your Linode’s IP address and `flask_app` with the name of your projects root directory:
+1.  From your local machine, secure copy (SCP) your project into your Linode's `/home` directory. Replace the example IP address with your Linode’s IP address and `flask_app` with the name of your project's root directory:
 
         scp -r flask_app_project/ user@192.0.2.0:/home
 
@@ -143,7 +143,7 @@ server {
 
         sudo nginx -s reload
 
-5. Navigate to your Linode's IP address in a web browser. You should see a similar NGINX Gateway error. This error appears because you have not set up the WSGI application server yet. You will set up your application server in the [Deploy Your Application](#deploy-your-application) section of the guide.
+5. Navigate to your Linode's IP address in a web browser. You should see a similar NGINX Gateway error. This error appears because you have not set up the WSGI application server yet. You will set up your application server in the [Install and Configure Gunicorn](#install-and-configure-gunicorn) section of the guide.
 
     ![502Gateway](badgatewayerr.png)
 
@@ -195,7 +195,7 @@ Depending on your Flask application's environment, there are different settings 
 In this section, you will create a JSON file to store your environment configurations and then load that configuration into your Flask app. The configuration created in this section is a basic example of some Flask environment variables you might include in your application.
 
 {{< caution >}}
-You should keep sensitive configuration files **outside of source control**. If you source control your configuration file, which contains sensitive values, in a remote repository, then someone could access it and use that information to compromise your Linode or application.
+You should keep sensitive configuration files **outside of source control**. If you source control your configuration file, which contains sensitive values, in a remote repository, then someone could access it and use that information to compromise your Linode or application. To keep your configuration file out of your Git repository, add it to your `.gitignore` file.
 {{< /caution >}}
 
 1.  Create a JSON configuration file with the text editor of your choice:
