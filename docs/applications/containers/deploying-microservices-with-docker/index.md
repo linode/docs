@@ -14,7 +14,7 @@ contributor:
   name: Bob Strecansky
   link: https://twitter.com/bobstrecansky
 external_resources:
-- '[Github Repository for Example Microservice](https://github.com/bobstrecansky/flask-microservice)'
+- '[Github Repository for Example Microservice](https://github.com/bobstrecansky/docker-nginx-flask-redis-postgres)'
 - '[Using Containers to Build a Microservices Architecture](https://medium.com/aws-activate-startup-blog/using-containers-to-build-a-microservices-architecture-6e1b8bacb7d1)'
 ---
 
