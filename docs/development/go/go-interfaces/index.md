@@ -41,9 +41,9 @@ The `Read()` method takes a byte slice as input, which will be filled with data 
 
 The definition of `io.Writer` is the following:
 
-	type Writer interface {
-	    Write(p []byte) (n int, err error)
-	}
+    type Writer interface {
+        Write(p []byte) (n int, err error)
+    }
 
 The `Write()` method takes a byte slice, which contains the data that you want to write, as input and returns the number of bytes written and an `error` variable.
 
@@ -84,14 +84,6 @@ func (s square) Perimeter() float64 {
     return 4 * s.X
 }
 
-func (s circle) Area() float64 {
-    return s.R * s.R * math.Pi
-}
-
-func (s circle) Perimeter() float64 {
-    return 2 * s.R * math.Pi
-}
-
 func (s Nothing) Area() float64 {
     return 0
 }
@@ -100,17 +92,25 @@ func (s Nothing) Perimeter() float64 {
     return 0
 }
 
+func (s circle) Area() float64 {
+    return s.R * s.R * math.Pi
+}
+
+func (s circle) Perimeter() float64 {
+    return 2 * s.R * math.Pi
+}
+
 func Calculate(x Shape) {
-    c, ok := x.(circle)
+    isCircle, ok := x.(circle)
     if ok {
-        fmt.Println("Is a circle!", c)
+        fmt.Println("Is a circle!", isCircle)
     } else {
         fmt.Printf("%T cannot be converted to circle!\n", x)
     }
 
-    v, ok := x.(square)
+    isSquare, ok := x.(square)
     if ok {
-        fmt.Println("Is a square:", v)
+        fmt.Println("Is a square:", isSquare)
     }
 
     fmt.Println(x.Area())
@@ -118,14 +118,14 @@ func Calculate(x Shape) {
 }
 
 func main() {
-    x := square{X: 10}
-    fmt.Println("Perimeter:", x.Perimeter())
-    Calculate(x)
-    y := circle{R: 5}
-    Calculate(y)
+    aSquare := square{X: 10}
+    fmt.Println("Perimeter:", aSquare.Perimeter())
+    Calculate(aSquare)
+    aCircle := circle{R: 5}
+    Calculate(aCircle)
 
-    n := Nothing{}
-    Calculate(n)
+    empty := Nothing{}
+    Calculate(empty)
 }
 {{< /file >}}
 
@@ -202,11 +202,11 @@ func compute(x AandB) {
 }
 
 func main() {
-    c := C{10}
-    compute(c)
+    circle := C{10}
+    compute(circle)
 
-    var k AandB = c
-    compute(k)
+    var kAandB AandB = circle
+    compute(kAandB)
 }
 {{< /file >}}
 
@@ -253,25 +253,25 @@ type Rectangle struct {
 }
 
 func tellInterface(x interface{}) {
-    switch v := x.(type) {
+    switch aType := x.(type) {
     case Square:
         fmt.Println("This is a Square!")
     case Circle:
-        fmt.Printf("%v is a Circle!\n", v)
+        fmt.Printf("%v is a Circle!\n", aType)
     case Rectangle:
         fmt.Println("This is a Rectangle!")
     default:
-        fmt.Printf("Unknown type %T!\n", v)
+        fmt.Printf("Unknown type %T!\n", aType)
     }
 }
 
 func main() {
-    x := Circle{R: 15}
-    tellInterface(x)
-    y := Rectangle{X: 2, Y: 1}
-    tellInterface(y)
-    z := Square{X: 3}
-    tellInterface(z)
+    circle := Circle{R: 15}
+    tellInterface(circle)
+    rectangle := Rectangle{X: 2, Y: 1}
+    tellInterface(rectangle)
+    square := Square{X: 3}
+    tellInterface(square)
     tellInterface("Hello World!")
     tellInterface(-12)
 }
@@ -306,16 +306,16 @@ func returnNumber() interface{} {
 }
 
 func main() {
-    x := returnNumber()
+    anInt := returnNumber()
     // This will fail:
-    // x++
-    number := x.(int)
+    // anInt++
+    number := anInt.(int)
     number++
     fmt.Println(number)
 
-    v, ok := x.(int64)
+    value, ok := anInt.(int64)
     if ok {
-        fmt.Println("Type assertion successful: ", v)
+        fmt.Println("Type assertion successful: ", value)
     } else {
         fmt.Println("Type assertion failed!")
     }
