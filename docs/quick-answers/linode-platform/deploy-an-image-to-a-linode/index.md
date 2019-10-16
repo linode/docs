@@ -12,7 +12,7 @@ title: Deploy an Image to a Linode
 classic_manager_link: quick-answers/linode-platform/deploy-an-image-to-a-linode-classic-manager/
 ---
 
-When you first create a Linode, you also generally deploy a Linux distribution or other image to it. It is also possible to deploy additional images and Linux distributions to your Linode that will exist alongside your first image, and you can switch between these extra images by rebooting your Linode. This QuickAnswer will show you how to deploy an additional image.
+When you first create a Linode, you also generally [deploy a Linux distribution or other image](/docs/getting-started/#create-a-linode) to it. It is also possible to deploy additional images and Linux distributions to your Linode that will exist alongside your first image, and you can switch between these extra images by rebooting your Linode. This QuickAnswer will show you how to deploy an additional image.
 
 {{< note >}}
 In order to deploy additional images, your Linode will need some unallocated space for those new images. When following the steps below, if you find that you don't have sufficient unallocated space, then you have two options:
@@ -61,7 +61,7 @@ In order to boot your Linode under the new image, you'll need a [configuration p
 
     [![Add a Configuration link](add-a-configuration-link.png "Add a Configuration link")](add-a-configuration-link.png)
 
-1. The **Add Linode Configuration** form will appear. Enter values for these  fields:
+1. The **Add Linode Configuration** form will appear. Enter values for these fields:
 
     | Field | Value |
     |-------|-------------|
@@ -71,7 +71,7 @@ In order to boot your Linode under the new image, you'll need a [configuration p
     | /dev/sda | Choose the disk for the new image/Linux distribution that you deployed. |
     | /dev/sdb | Choose your swap disk. |
 
-    For all the standard distributions that Linode offers, the other fields can remain unchanged from their default values. For custom images, you may need to update other parts of the configuration profile; review the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and [Install a Custom Distribution on a Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) articles for further guidance.
+    For all of the standard distribution images that Linode offers, the other fields can remain unchanged from their default values. For custom images, you may need to update other parts of the configuration profile; review the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and [Install a Custom Distribution on a Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) articles for further guidance.
 
 ## Next Steps
 
