@@ -13,10 +13,10 @@ modified_by:
 published: 2014-04-09
 title: 'Creating a MongoDB Replication Set on CentOS 6.4'
 external_resources:
- - '[MongoDB](http://www.mongodb.org/)'
- - '[db.collection.insert()](http://docs.mongodb.org/manual/reference/method/db.collection.insert/)'
- - '[Getting Started with the mongo Shell](http://docs.mongodb.org/manual/tutorial/getting-started-with-the-mongo-shell/)'
- - '[Replication Introduction](http://docs.mongodb.org/manual/core/replication-introduction/)'
+ - '[MongoDB](https://www.mongodb.com/)'
+ - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
+ - '[Getting Started with the mongo Shell](https://docs.mongodb.com/manual/tutorial/getting-started-with-the-mongo-shell/)'
+ - '[Replication Introduction](https://docs.mongodb.com/manual/core/replication-introduction/)'
 ---
 
 MongoDB is an open-source non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
