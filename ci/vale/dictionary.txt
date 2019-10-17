@@ -101,6 +101,7 @@ bitrate
 blocklists
 blockwise
 bluehost
+bookinfo
 boolstyle
 boonex
 bootable
@@ -556,6 +557,7 @@ hybla
 hyperefficient
 hypervisor
 hypervisors
+Istio
 i386
 iaas
 icann
@@ -1073,6 +1075,7 @@ pritunl
 procfile
 procmail
 procs
+productpage
 prosodyctl
 proto
 proxied

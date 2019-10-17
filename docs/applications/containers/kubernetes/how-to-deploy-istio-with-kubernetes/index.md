@@ -19,7 +19,7 @@ external_resources:
 
 [Istio](https://istio.io) is a service mesh, or a network of microservices, that can handle tasks such as load balancing, service-to-service authentication, monitoring, etc. It does this by deploying sidecar proxies to intercept network data, which causes little disruption to your current application.
 
-Istio is also a platform with it's own API and feature set that can help you run a distributed microservice architecture. Istio is a tool that you can deploy with few to no code changes to your applications allowing you to harness it's power without disrupting your development cycle. In conjuction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.
+Istio is also a platform with it's own API and feature set that can help you run a distributed microservice architecture. Istio is a tool that you can deploy with few to no code changes to your applications allowing you to harness it's power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.
 
 In this guide:
 
@@ -69,11 +69,11 @@ Follow the instructions in [How to Install Apps on Kubernetes with Helm](https:/
 
 ## Install Istio
 
-For Linux or MacOS users, use curl to pull the Istio project files. You will want to do this even though you will use Helm charts to deploy Istio to our cluster because you want to get the sample `Bookinfo` application that comes with bundled with this installation.
+For Linux or macOS users, use curl to pull the Istio project files. You will want to do this even though you will use Helm charts to deploy Istio to our cluster because you want to get the sample `Bookinfo` application that comes with bundled with this installation.
 
     curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.3.3 sh -
 
-If you are using Windows, you will need to go to Istio's [Github repo](https://github.com/istio/istio/releases) to find the download. Here you will find the latest releases for Windows, Linux, and MacOS.
+If you are using Windows, you will need to go to Istio's [Github repo](https://github.com/istio/istio/releases) to find the download. Here you will find the latest releases for Windows, Linux, and macOS.
 
 {{< note >}}
 This will create a new directory `istio-1.3.3` wherever you use this command. Therefore, if you don't want this directory to be in your home directory, first move to the directory where you want it to be and then use the command.
