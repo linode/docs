@@ -13,6 +13,7 @@ title: 'Install an Odoo 11 Stack on Ubuntu 16.04'
 contributor:
   name: Damaso Sanoja
   link: https://twitter.com/damasosanoja
+aliases: ['websites/cms/install-an-odoo-11-stack-on-ubuntu-16-04/']
 external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/11.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/11.0)'
