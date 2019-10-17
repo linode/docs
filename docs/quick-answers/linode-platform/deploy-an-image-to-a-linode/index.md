@@ -12,10 +12,10 @@ title: Deploy an Image to a Linode
 classic_manager_link: quick-answers/linode-platform/deploy-an-image-to-a-linode-classic-manager/
 ---
 
-When you first create a Linode, you also generally [deploy a Linux distribution or other image](/docs/getting-started/#create-a-linode) to it. It is also possible to deploy additional images and Linux distributions to your Linode that will exist alongside your first image, and you can switch between these extra images by rebooting your Linode. This QuickAnswer will show you how to deploy an additional image.
+When you first create a Linode, you generally [deploy a Linux distribution or other image](/docs/getting-started/#create-a-linode) to it upon creation. However, it is also possible to deploy additional images and Linux distributions to your Linode that will exist alongside your first image. Additionally, you can switch between these extra images by rebooting your Linode. This QuickAnswer guide will show you how to deploy an additional image.
 
 {{< note >}}
-In order to deploy additional images, your Linode will need some unallocated space for those new images. When following the steps below, if you find that you don't have sufficient unallocated space, then you have two options:
+To deploy additional images, your Linode will need some unallocated space for those new images. When following the steps below, if you find that you don't have sufficient unallocated space, then you have two options:
 
 - [Resize/shrink other disks](/docs/quick-answers/linode-platform/resize-a-linode-disk/) on your Linode to make some room.
 - [Upgrade your Linode](/docs/platform/disk-images/resizing-a-linode/) to a plan that offers more disk space.
@@ -55,7 +55,7 @@ Your new Linux distribution or image will often require a swap disk in order to 
 
 ## Create a Configuration Profile
 
-In order to boot your Linode under the new image, you'll need a [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) that is associated with the image:
+To boot your Linode with the new image, you'll need a [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) that is associated with the image:
 
 1. Navigate to the **Advanced** tab for your Linode and find the **Configuration** panel underneath it. Click the **Add a Configuration** link on this panel:
 
@@ -66,16 +66,16 @@ In order to boot your Linode under the new image, you'll need a [configuration p
     | Field | Value |
     |-------|-------------|
     | Label | A name for the configuration profile. |
-    | Comments | Enter any comments that may help your remember the purpose  for your new configuration profile, or any other notes you'd like to record. |
+    | Comments | Enter any comments that may help you remember the purpose for your new configuration profile, or any other notes you'd like to record. |
     | Select a Kernel | Select the **GRUB 2** option. |
     | /dev/sda | Choose the disk for the new image/Linux distribution that you deployed. |
     | /dev/sdb | Choose your swap disk. |
 
-    For all of the standard distribution images that Linode offers, the other fields can remain unchanged from their default values. For custom images, you may need to update other parts of the configuration profile; review the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and [Install a Custom Distribution on a Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) articles for further guidance.
+    For all of Linode's standard distribution images, the other fields can retain their default values. For custom images, you may need to update other parts of the configuration profile; review the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and [Install a Custom Distribution on a Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) articles for further guidance.
 
 ## Next Steps
 
-To reboot under the new image, navigate to the **Configuration** panel under the **Advanced** tab for your Linode. Select the **more options ellipsis** for your new profile and click the **Boot This Config** option in the dropdown menu that appears:
+To reboot with the new image, navigate to the **Configuration** panel under the **Advanced** tab for your Linode. Select the **more options ellipsis** for your new profile and click the **Boot This Config** option in the dropdown menu that appears:
 
 [![Boot This Config option](boot-this-config-option.png "Boot This Config option")](boot-this-config-option.png)
 
