@@ -1,13 +1,12 @@
 ---
 author:
-  name: Elle Krout
-  email: ekrout@linode.com
+  name: Linode  
 description: 'This guide shows how to set up Fail2Ban, a log-parsing application, to monitor system logs and detect automated attacks on your Linode.'
 og_description: 'Fail2ban monitors system logs for symptoms of an automated attack, bans the IP and alerts you of the attach through email. This guide helps you set up Fail2ban to thwart automated system attacks and further secure your server.'
 keywords: ["fail2ban", "ip whitelisting", "jail.local"]
 aliases: ['tools-reference/tools/using-fail2ban-to-block-network-probes/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-08-23
+modified: 2019-08-15
 modified_by:
   name: Linode
 published: 2015-10-12
@@ -236,11 +235,18 @@ You will also need to adjust the `action` setting, which defines what actions oc
 
 ### Other Jail Configuration
 
-Beyond the basic settings address above, `jail.local` also contains various jail configurations for a number of common services, including SSH. By default, only SSH is enabled.
+Beyond the basic settings address above, `jail.local` also contains various jail configurations for a number of common services, including SSH, and iptables. By default, only SSH is enabled and the action is to ban the offending host/IP address by modifying the iptables firewall rules.
 
 An average jail configuration will resemble the following:
 
 {{< file "/etc/fail2ban/jail.local" >}}
+# Default banning action (e.g. iptables, iptables-new,
+# iptables-multiport, shorewall, etc) It is used to define
+# action_* variables. Can be overridden globally or per
+# section within jail.local file
+banaction = iptables-multiport
+banaction_allports = iptables-allports
+
 [ssh]
 
 enabled  = true
@@ -252,6 +258,8 @@ maxretry = 6
 {{< /file >}}
 
 
+-   `banaction`: Determines the action to use when the threshold is reached. If you have configured the firewall to use firewalld set the value to `firewallcmd-ipset` and if you have configured the firewall to use UFW set the value to `ufw`.
+-   `banaction_allports`: Blocks a remote IP in every port. If you have configured the firewall to use firewalld set the value to `firewallcmd-ipset`.
 -   `enabled`: Determines whether or not the filter is turned on.
 -   `port`: The port Fail2ban should be referencing in regards to the service. If using the default port, then the service name can be placed here. If using a non-traditional port, this should be the port number. For example, if you moved your SSH port to 3456, you would replace `ssh` with `3456`.
 -   `filter`: The name of the file located in `/etc/fail2ban/filter.d` that contains the failregex information used to parse log files appropriately. The `.conf` suffix need not be included.

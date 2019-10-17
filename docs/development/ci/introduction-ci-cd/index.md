@@ -17,6 +17,8 @@ external_resources:
 audiences: ["foundational", "beginner"]
 ---
 
+![Introduction to Continuous Integration/Continuous Delivery (CI/CD)](introduction-to-continuous-integration-continuous-delivery.png "Introduction to Continuous Integration/Continuous Delivery")
+
 ## What is Continuous Integration?
 
 In software development, **integration** is the process of incorporating changes like refactored code, new features, or bug fixes into the existing codebase.

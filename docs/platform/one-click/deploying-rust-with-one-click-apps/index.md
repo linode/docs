@@ -35,7 +35,6 @@ You can configure your Rust App by providing values for the following fields:
 | **Field** | **Description** |
 |:--------------|:------------|
 | **RCON Password** | The password for your remote console, which allows you to issue commands on the Rust server *Required*. |
-| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Options* |
 | **Server Hostname** | The name of your Rust server. *Advanced Options* |
 | **Server Description** | Your server's description. Use `\n` to create a new line. *Advanced Options* |
 | **Maximum Players** | The maximum number of players allowed on a server at one time. Default is 50, minimum is 10, maximum is 100. *Advanced Options* |

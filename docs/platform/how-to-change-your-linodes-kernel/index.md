@@ -46,9 +46,7 @@ The different kinds of kernels you can use offer different benefits:
 
 ## How to Switch your Kernel
 
-1.  Select the Linode from the *Dashboard*
-
-1.  Click the **Settings** tab and expand the **Advanced Configurations** section.
+1.  Select the Linode from the *Dashboard* and click the **Advanced** tab.
 
 1. Find your current *Configuration*, click on the corresponding ellipses (**...**) menu and select **Edit**.
 

@@ -34,7 +34,7 @@ The purpose of this guide is to show you how to set up htaccess configuration (.
 
         sudo apt-get update && sudo apt-get upgrade
 
-4.  Complete the Apache section in the [Install a Lamp Stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) to install Apache on your Linode.
+4.  Complete the Apache section in the [Install a Lamp Stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) to install Apache on your Linode.
 
 {{< note >}}
 Throughout this guide, replace each instance of `testuser` with your custom user account. Replace each occurrence of `example.com` with the IP address or Fully Qualified Domain Name (FQDN) of your Linode.
@@ -109,11 +109,11 @@ Subdirectories can inherit settings from .htaccess files in their parent directo
     {{< file "/var/www/html/example.com/public_html" >}}
 order allow,deny
 
-# This will deny the IP 172.15.23.9
-deny from 172.15.23.9
+# This will deny the IP 192.0.2.9
+deny from 192.0.2.9
 
-# This will deny all IP's from 172.15.23.0 through 172.15.23.255
-deny from 172.15.23
+# This will deny all IP's from 192.0.2.0 through 192.0.2.255
+deny from 192.0.2
 
 {{< /file >}}
 
@@ -130,20 +130,24 @@ order deny,allow
 # Denies all IP's
 Deny from all
 
-# This will allow the IP 172.15.23.9
-allow from 172.15.23.9
+# This will allow the IP 192.0.2.9
+allow from 192.0.2.9
 
-# This will allow all IP's from 172.15.23.0 through 172.15.23.255
-allow from 172.15.23
+# This will allow all IP's from 192.0.2.0 through 192.0.2.255
+allow from 192.0.2
 
 {{< /file >}}
 
 
 ## Handle Redirects
 
-You can redirect traffic using .htaccess configuration. In the below example, you'll update the .htaccess file for the root directory of your website to redirect a visitor to `http://example.com/test2/index.html` if they try to visit `http://example.com/main.html`.
+You can redirect traffic using .htaccess configuration. In the below example, you'll update the .htaccess file for the root directory of your website to redirect a visitor to `http://example.com/test1/index.html` if they try to visit `http://example.com/main.html`.
 
-1.  Create a test html file to redirect to:
+{{< note >}}
+Ensure that your website has a landing page, in the following steps replace each instance of `main.html` with the landing page of your website.
+{{< /note >}}
+
+1.  Create a test html file to redirect a visitor to `http://example.com/test1/index.html`:
 
         mkdir test1
         sudo touch test1/index.html
@@ -169,7 +173,7 @@ Redirect 301 /main.html /test1/index.html
 
 The first parameter after the 'Redirect' command is the HTTP status code. Specifying a status code is helpful for letting the browser know that the page has been moved to a new location. If you leave this parameter blank, it defaults to a 302 code indicating that the redirect is temporary. Specifying 301 makes it clear that the page at the requested location has permanently moved to a new location.
 
-The next parameter is the Unix path to the file that is requested in the URL. This parameter requires that it is a Unix path and not a URL. The path should be the location of the .htaccess file where the redirect configuration is set up. The final parameter indicates where you want the visitor to be redirected. In this case, the traffic is being redirected to `/test2/index.html`; for this second parameter a Unix path or HTTP URL is acceptable.
+The next parameter is the Unix path to the file that is requested in the URL. This parameter requires that it is a Unix path and not a URL. The path should be the location of the .htaccess file where the redirect configuration is set up. The final parameter indicates where you want the visitor to be redirected. In this case, the traffic is being redirected to `/test1/index.html`; for this second parameter a Unix path or HTTP URL is acceptable.
 
 4.  Navigate to `example.com/main.html` in a browser. You should see the url redirect to `example.com/test1/index.html` in the address bar, and your test html file should be displayed.
 
@@ -177,7 +181,7 @@ The next parameter is the Unix path to the file that is requested in the URL. Th
 
 When a visitor attempts to access a page or resource that doesn't exist (for example by following a broken link or typing an incorrect URL,) the server will respond with a 404 error code. It is important that users receive feedback explaining the error. By default, Apache will display an error page in the event of a 404 error.  However, most sites provide a customized error page. You can use .htaccess settings to let Apache know what error page you would like displayed whenever a user attempts to access a nonexistent page.
 
-1.  This will redirect all requests for nonexistent documents to a page in the project root directory called `404.html.  Open the .htaccess file and add the following line:
+1.  This will redirect all requests for nonexistent documents to a page in the project root directory called `404.html`.  Open the `.htaccess` file and add the following line:
 
     {{< file "/var/www/html/example.com/public_html/.htaccess" >}}
 ErrorDocument 404 /404.html

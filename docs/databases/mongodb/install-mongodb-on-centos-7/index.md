@@ -115,6 +115,7 @@ Issue the following commands to increase your open file and process limits for M
 
 These are the [recommended](https://docs.mongodb.com/manual/reference/ulimit/#recommended-ulimit-settings) settings, but you may need to adjust them depending upon your individual usage. See the [MongoDB Documentation](https://docs.mongodb.com/manual/reference/ulimit/) for more information.
 
+
 ## Start and Stop MongoDB
 
 To start, restart, or stop the MongoDB service, issue the appropriate command from the following:
@@ -185,6 +186,7 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
 For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://docs.mongodb.com/manual/security).
 
+
 ## Manage Data and Collections
 
 Much of MongoDB's popularity comes from its ease of integration. Interactions with databases are done via JavaScript methods, but [drivers for other languages](https://docs.mongodb.com/ecosystem/drivers/) are available. This section will demonstrate a few basic features, but we encourage you to do further research based on your specific use case.
@@ -206,6 +208,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
         db.createCollection("exampleCollection", {capped: false})
 
     If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/manual/reference/method/db.createCollection/).
+
 
     {{< note >}}
 Collection names should not include certain punctuation such as hyphens. However, exceptions may not be raised until you attempt to use or modify the collection. For more information, refer to MongoDB's [naming restrictions](https://docs.mongodb.com/manual/reference/limits/#naming-restrictions).

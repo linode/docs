@@ -38,7 +38,7 @@ Linux requires an initialization system during its boot and startup process. At 
 Below is a simplified overview of the entire Linux boot and startup process:
 
 1. The system powers up.
-1  The BIOS does minimal hardware initialization and hands over control to the boot loader.
+   The BIOS does minimal hardware initialization and hands over control to the boot loader.
 1. The boot loader calls the kernel.
 1. The kernel loads an initial RAM disk that loads the system drives and then looks for the root file system.
 1. Once the kernel is set up, it begins the systemd initialization system.
@@ -236,11 +236,11 @@ systemd's `system-analyze` command provide several other useful analyze and debu
 
 When you enable the timer, systemd will hook the timer unit into the specified places and ensure it starts on boot. Enable the timer unit with following command:
 
-    systemctl start my-db-backup.timer
+    systemctl enable my-db-backup.timer
 
 When you start the timer unit, systemd will start it right away. To do this, issue the following command:
 
-    systemctl enable my-db-backup.timer
+    systemctl start my-db-backup.timer
 
 ## systemd Tools
 

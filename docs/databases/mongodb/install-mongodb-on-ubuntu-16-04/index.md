@@ -42,17 +42,17 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Add the MongoDB Repository
 
-The `mongodb-server` package from the Ubuntu repository includes version 2.6. However, this version reached end of life in October 2016, so it should not be used in production environments. The most current version available is 3.2 and, as of this writing, the default Ubuntu repositories do not contain an updated package.
+The `mongodb-server` package from the Ubuntu repository includes version 2.6. However, this version reached end of life in October 2016, so it should not be used in production environments. The most current version available is 4.0 and, as of this writing, the default Ubuntu repositories do not contain an updated package.
 
 Because the Ubuntu repositories don't contain a current version, we'll need to use the MongoDB repository.
 
 1.  Import the MongoDB public GPG key for package signing:
 
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
 
 2.  Add the MongoDB repository to your `sources.list.d` directory:
 
-        echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+        echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
 
 3.  Update your repositories. This allows `apt` to read from the newly added MongoDB repo:
 
@@ -177,6 +177,7 @@ Successfully added user: {
 
 For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://docs.mongodb.com/manual/security).
 
+
 ## Manage Data and Collections
 
 Much of MongoDB's popularity comes from its ease of integration. Interactions with databases are done via JavaScript methods, but [drivers for other languages](https://docs.mongodb.com/ecosystem/drivers/) are available. This section will demonstrate a few basic features, but we encourage you to do further research based on your specific use case.
@@ -196,6 +197,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 3.  Create a new *collection* called `exampleCollection`:
 
         db.createCollection("exampleCollection", {capped: false})
+
 
     If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/manual/reference/method/db.createCollection/).
 

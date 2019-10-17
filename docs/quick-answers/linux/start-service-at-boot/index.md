@@ -131,3 +131,23 @@ May 02 15:03:07 localhost systemd[1]: Starting Example systemd service....
 May 02 15:03:07 localhost bash[2973]: Looping...
 May 02 15:03:37 localhost bash[2973]: Looping...
 {{< /output >}}
+
+## Troubleshooting
+
+- "Example service started at ..." line does not appear in the output of the status command. The `systemd-cat` output is not reliable because of a race condition. As a workaround update the `test_service.sh` file as follows:
+{{< file "test_service.sh" bash >}}
+info=/tmp/myservice-systemd-cat-pipe-info
+mkfifo "$info"
+trap "exec 3>&-; rm $info" EXIT
+systemd-cat -p info < "$info" &
+exec 3>"$info"
+
+DATE=`date '+%Y-%m-%d %H:%M:%S'`
+echo "Example service started at ${DATE}" | systemd-cat -p info
+
+while :
+do
+echo "Looping...";
+sleep 30;
+done
+{{< /file >}}  

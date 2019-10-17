@@ -80,6 +80,7 @@ You may also configure DNS records for each host rather than using hosts file en
 
 ## Set Up MongoDB Authentication
 
+
 In this section you'll create a key file that will be used to secure authentication between the members of your replica set. While in this example you'll be using a key file generated with `openssl`, MongoDB recommends using an [X.509 certificate](https://docs.mongodb.com/manual/core/security-x.509/) to secure connections between production systems.
 
 ### Create an Administrative User

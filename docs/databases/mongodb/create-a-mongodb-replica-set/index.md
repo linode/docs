@@ -213,6 +213,7 @@ At this stage, your replica set is fully functional and ready to use. The steps 
 
     However, changing the overall read preference can have benefits in some cases. For more information, see the official [MongoDB documentation](https://docs.mongodb.com/manual/core/read-preference/).
 
+
 4.  Before running the command in the previous step, any read operations, including simple ones like `show dbs` and `show collections` would fail with an error. Now that you've enabled reading, switch to the `exampleDB` database:
 
         use exampleDB

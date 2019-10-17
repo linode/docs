@@ -1,4 +1,4 @@
-{{ with .Pages }}
+{{ with .Pages.ByTitle }}
 {{ $filtered := where . "Params.hiddenguide" "!=" true }}
 {{ $class := cond (eq (len $.Sections) 0) "primary"  "neutral" }}
 <section class="{{ $class }}">
@@ -22,27 +22,46 @@
   </div>
 </section>
 {{ end }}
-{{ $sections :=  where .Sections ".Params.show_in_lists" "==" true  }}
+{{ $sections :=  where .Sections.ByTitle ".Params.show_in_lists" "==" true  }}
 {{ with $sections }}
 <section class="primary some-space">
   <div class="container">
     {{ range . }}
-    {{ $pages := where .Pages ".Params.deprecated" "!=" true }}
+    {{ $pages := where .Pages.ByTitle ".Params.deprecated" "!=" true }}
+    {{ $pages := $pages | intersect (where .Pages.ByTitle ".Params.hiddenguide" "!=" true) }}
     {{ if gt (len $pages) 0 }}
     <div class="row-content">
       <div class="col-sm-12">
         <h2 class="h3"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
         <ul class="list-group article-list">
-          {{ $pages := where .Pages ".Params.deprecated" "!=" true }}
-          {{ $pages := $pages | intersect (where .Pages ".Params.hiddenguide" "!=" true) }}
           {{ range $pages }}
           <li class="list-group-item library-article-item"><h3 class="h5"><a href="{{ .Permalink }}">{{ .Title }}{{ if .Params.has_video }}&nbsp;<i class="fa fa-youtube-play"></i>{{ end }}</a></h3></li>
           {{ end }}
         </ul>
       </div>
     </div>
-    {{ end }}
-    {{ end }}
+    {{ end }} {{/* end if */}}
+
+    {{ $section_title := .Title }}
+    {{ $subsections := .Sections }}
+    {{ range $subsections }}
+    {{ $subsection_pages := where .Pages.ByTitle ".Params.deprecated" "!=" true }}
+    {{ $subsection_pages := $subsection_pages | intersect (where .Pages.ByTitle ".Params.hiddenguide" "!=" true) }}
+    {{ if gt (len $subsection_pages) 0 }}
+    <div class="row-content">
+      <div class="col-sm-12">
+        <h2 class="h3"><a href="{{ .Permalink }}">{{ $section_title }} &#8250; {{ .Title }}</a></h2>
+        <ul class="list-group article-list">
+          {{ range $subsection_pages }}
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="{{ .Permalink }}">{{ .Title }}{{ if .Params.has_video }}&nbsp;<i class="fa fa-youtube-play"></i>{{ end }}</a></h3></li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+    {{ end }} {{/* end if */}}
+    {{ end }} {{/* end range of subsections */}}
+
+    {{ end }} {{/* end range of sections */}}
   </div>
 </section>
 {{ end }}
