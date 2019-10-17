@@ -2,6 +2,10 @@
 
 This guide describes how to write and submit a guide for the Linode docs. If you would like to write on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
 
+## Fixing an issue
+
+If you want to start contributing by finding an existing issue to work on, go to https://github.com/linode/docs/issues and look for issues with the label ```help wanted``` issue. Read through the comments and make sure there is not an open pull request against the issue and that nobody has left a comment saying they are working on the issue recently (3 days is a good rule). Leave a comment saying that you would like to work on the issue.
+
 ## Fork the Linode Library
 
 All of our guides are stored in the [github.com/linode/docs](https://github.com/linode/docs) repository. You will need to clone this repository to your local computer.
