@@ -62,7 +62,7 @@ Each Object Storage key pair on your Linode account has complete access to all o
 
 ### Generate a Key Pair
 
-1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+1.  Log into the [Linode Cloud Manager](https://cloud.linode.com).
 
     {{< note >}}
 Object Storage is not available in the Linode Classic Manager.
@@ -102,7 +102,7 @@ There are a number of tools that are available to help manage Linode Object Stor
 
 The Cloud Manager provides a web interface for creating buckets. To create a bucket:
 
-1.  If you have not already, log in the [Linode Cloud Manager](https://cloud.linode.com).
+1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the **Object Storage** link in the sidebar, and then click on **Add a Bucket**.
 
@@ -129,7 +129,7 @@ Bucket labels need to be unique within the same cluster, including buckets on ot
 
 ### Upload Objects to a Bucket
 
-1.  If you have not already, log in the [Linode Cloud Manager](https://cloud.linode.com).
+1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the **Object Storage** link in the sidebar. You will see a list of all your buckets. Click on the bucket you'd like to begin uploading objects to.
 
@@ -147,13 +147,13 @@ You can drag and drop multiple files to the **Upload Files Pane** at one time.
 
     ![Upload an object to your bucket using the file browser](upload-with-file-browser.png)
 
-    When the upload has completed, your object will be visible on the **Objects Listing Page**.
+1.  When the upload has completed, your object will be visible on the **Objects Listing Page**.
 
     ![Successful upload of your object](successful-object-upload.png)
 
 ### View Bucket Objects
 
-1.  If you have not already, log in the [Linode Cloud Manager](https://cloud.linode.com).
+1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the **Object Storage** link in the sidebar. You will see a list of all your buckets. Click on the bucket whose objects you'd like to view.
 
@@ -167,13 +167,13 @@ You can drag and drop multiple files to the **Upload Files Pane** at one time.
 
     ![Open a bucket's object](open-an-object.png)
 
-    A browser window will open your object's unique URL and display your object. In the example, the browser displays a `.png` image.
+1. A browser window will open your object's unique URL and display your object. In the example, the browser displays a `.png` image.
 
     ![View your uploaded object in your browser](object-displayed-in-browser.png)
 
 ### Delete Objects from a Bucket
 
-1.  If you have not already, log in the [Linode Cloud Manager](https://cloud.linode.com).
+1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the **Object Storage** link in the sidebar. You will see a list of all your buckets. Click on the bucket whose objects you'd like to delete.
 
@@ -187,7 +187,7 @@ You can drag and drop multiple files to the **Upload Files Pane** at one time.
 
     ![Delete an object from your bucket](delete-object.png)
 
-1. A dialog box will appear prompting you to confirm if you'd like to delete the object. Click **Delete** to proceed. Once the object has been deleted, it will no longer be visible on the **Objects Listing page**.
+1. A dialog box will appear prompting you to confirm if you'd like to delete the object. Click **Delete** to proceed. Once the object has been deleted, it will no longer be visible on the **Objects Listing Page**.
 
 ### Delete a Bucket
 
@@ -195,7 +195,7 @@ You can drag and drop multiple files to the **Upload Files Pane** at one time.
 You can only delete an empty Object Storage bucket. See the [Delete Objects from a Bucket](#delete-objects-from-a-bucket) section for information on deleting a bucket's objects using the Cloud Manager.
 {{</ note >}}
 
-1.  If you have not already, log in the [Linode Cloud Manager](https://cloud.linode.com).
+1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click on the **Object Storage** link in the sidebar. You will see a list of all your buckets.
 
@@ -207,7 +207,7 @@ You can only delete an empty Object Storage bucket. See the [Delete Objects from
 
     ![Confirm deleting your Object Storage bucket](confirm-bucket-delete.png)
 
-    Once the bucket has been deleted, it will no longer be visible on the **Buckets Listing page**.
+    Once the bucket has been deleted, it will no longer be visible on the **Buckets Listing Page**.
 
 ## Linode CLI
 
