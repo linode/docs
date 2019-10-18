@@ -50,7 +50,12 @@ This guide assumes that you are running Apache 2.4 or higher on Debian 8 or Ubun
     ErrorLog /var/www/html/example.com/log/error.log
     CustomLog /var/www/html/example.com/log/access.log combined
 </VirtualHost>
-
+<VirtualHost *:443>
+ServerName www.example.com
+DocumentRoot /var/www/html/example.com/public_html/
+RewriteEngine on
+RewriteRule ^(/.*)$ https://%{HTTP_HOST}$1 [redirect=301]
+</VirtualHost>
 {{< /file >}}
 
 
