@@ -143,7 +143,7 @@ Each kind of content type provides a  different set of options for you to config
 
 ## Create a Reverse Proxy for Jellyfin
 
-Jellyfin primarily works as a web frontend for your media. That means you'll generally want to proxy the default Jellyfin websocket to requests. Jellyfin supports a [large number of server software solutions](https://jellyfin.readthedocs.io/en/latest/administrator-docs/reverse-proxy/) for this purpose, though in this guide, the example will be [Apache](http://httpd.apache.org/).
+Jellyfin primarily works as a web frontend for your media. That means you'll generally want to proxy the default Jellyfin websocket to requests. Jellyfin supports a [large number of server software solutions](https://jellyfin.org/docs/general/administration/reverse-proxy.html#apache) for this purpose, though in this guide, the example will be [Apache](http://httpd.apache.org/).
 
 1. Install Apache with the following command:
 
