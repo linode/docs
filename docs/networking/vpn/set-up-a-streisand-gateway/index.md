@@ -90,7 +90,7 @@ As of this writing, it is not possible to run Streisand on a Windows computer. I
 
 ## Install and Run Streisand
 
-You are now ready to run Streisand.
+You are now ready to run Streisand. Be aware of the fact, that certain feature options (tor bridge, V2–ray, et cetera) may conflict with each other. You will only find out about that at the end, when Streisand gives you an error message. Then re-run streisand with options chosen accordingly.
 
 1.  Clone the repository from Github:
 
