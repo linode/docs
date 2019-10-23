@@ -353,11 +353,11 @@ function articleHeadersChangedVisibility() {
     $('body').scrollspy('refresh')
 }
 
-// Hugo's .TableOfContents shortcode 
+// Hugo's .TableOfContents shortcode
 // (which relies on the Blackfriday markdown
 // renderer to compile the table of contents)
-// does not include headers from embedded 
-// shortguides. buildNav() rebuilds the nav, 
+// does not include headers from embedded
+// shortguides. buildNav() rebuilds the nav,
 // including embedded shortguides.
 function buildNav() {
     function addListTagsForHeaderToNav(parentList, currentHeaderElement, previousHeaderElement) {
@@ -366,12 +366,12 @@ function buildNav() {
         }
         var currentHeaderLevel = headerLevel(currentHeaderElement);
         var previousHeaderLevel = headerLevel(previousHeaderElement);
-    
+
         function anchorElement(headerElement) {
             return $("<a />").attr("href", "#" + headerElement.prop('id'))
                 .text($(headerElement.contents()[0]).text());
         }
-    
+
         if (currentHeaderLevel === previousHeaderLevel) {
             var li = $("<li></li>").appendTo(parentList);
             anchorElement(currentHeaderElement).appendTo(li);
@@ -390,12 +390,12 @@ function buildNav() {
             var li = $("<li></li>").appendTo(parentList);
             anchorElement(currentHeaderElement).appendTo(li);
         }
-    
+
         return parentList;
     }
 
     var parentList = $('#TableOfContents > ul');
-    // All of .TableOfContent's elements were embedded in 
+    // All of .TableOfContent's elements were embedded in
     // #TableOfContents > ul > li
     parentList.children('li:first').empty();
 
@@ -418,7 +418,7 @@ function buildNav() {
             var $body = $(document.body);
 
             // The y position of the sticky nav element
-            var scrollSpyOffset = 20;
+            var scrollSpyOffset = 80;
 
             $body.scrollspy({
                 target: tocElemID,
@@ -450,5 +450,29 @@ function buildNav() {
         }
 
     }
+
+    window.onload = function() {
+        var scrollSpyOffset = 80;
+        var headerLinks = document.getElementsByClassName('header-link');
+        for (var i = 0; i < headerLinks.length; i++) {
+          headerLinks[i].addEventListener('click', function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    // Add 1 to push the scroll position past the scrollspy threshold
+                    // for the header. Otherwise, the header prior to the target would be
+                    // highlighted in the nav at the end of the scroll animation.
+                    $('html,body').animate({
+                        scrollTop: target.offset().top - scrollSpyOffset + 1
+                    }, 1000);
+                    /* Change the hash location in URL */
+                    window.location.hash = this.hash;
+                    return false;
+                }
+            }
+          });
+        }
+      }
 
 })(jQuery);
