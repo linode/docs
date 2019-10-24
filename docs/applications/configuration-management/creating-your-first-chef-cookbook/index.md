@@ -6,7 +6,7 @@ description: 'Learn how to create Chef cookbooks by creating a LAMP stack in Che
 keywords: ["chef", "automation", "cookbooks", "configuration management", "DevOps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['applications/chef/creating-your-first-chef-cookbook/']
-modified: 2019-01-17
+modified: 2019-10-24
 modified_by:
   name: Linode
 published: 2015-06-10
@@ -82,13 +82,15 @@ In this example, the `lamp_stack` cookbook's `default.rb` file is used to update
 #
 
 execute "update-upgrade" do
-  command "sudo apt-get update && sudo apt-get upgrade -y"
+  command "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' upgrade"
   action :run
 end
 
 {{< /file >}}
 
     Recipes are comprised of a series of *resources*. In this case, the *execute* resource is used, which calls for a command to be executed once. The `apt-get update && apt-get upgrade -y` commands are defined in the `command` section, and the `action` is set to `:run` the commands.
+
+    The extra variables and flags passed to the `upgrade` command are there to suppress the GRUB configuration menu, which can cause Chef to hang waiting for user input.
 
     This is one of the simpler Chef recipes to write, and a good way to start out. Any other startup procedures that you deem important can be added to the file by mimicking the above code pattern.
 
@@ -375,7 +377,7 @@ end
 
 With the virtual hosts files configured and your website enabled, configure Apache to efficiently run on your servers. Do this by enabling and configuring a multi-processing module (MPM), and editing `apache2.conf`.
 
-The MPMs are all located in the `mods_available` directory of Apache. In this example the `event` MPM will be used, located at `/etc/apache2/mods-available/mpm_event.conf`. If we were planning on deploying to nodes of varying size we would create a template file to replace the original, which would allow for more customization of specific variables. In this instance, a *cookbook file* will be used to edit the file.
+The MPMs are all located in the `mods_available` directory of Apache. In this example the `prefork` MPM will be used, located at `/etc/apache2/mods-available/mpm_prefork.conf`. If we were planning on deploying to nodes of varying size we would create a template file to replace the original, which would allow for more customization of specific variables. In this instance, a *cookbook file* will be used to edit the file.
 
 Cookbook files are static documents that are run against the document in the same locale on your servers. If any changes are made, the cookbook file makes a backup of the original file and replaces it with the new one.
 
@@ -384,19 +386,16 @@ Cookbook files are static documents that are run against the document in the sam
         mkdir -p ~/chef-repo/cookbooks/lamp_stack/files/default/
         cd ~/chef-repo/cookbooks/lamp_stack/files/default/
 
-1.  Create a file called `mpm_event.conf` and copy the MPM event configuration into it, changing any needed values:
+1.  Create a file called `mpm_prefork.conf` and copy the MPM event configuration into it, changing any needed values:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/files/default/mpm_event.conf" aconf >}}
-<IfModule mpm_event_module>
-        StartServers        2
-        MinSpareThreads     6
-        MaxSpareThreads     12
-        ThreadLimit         64
-        ThreadsPerChild     25
-        MaxRequestWorkers   25
-        MaxConnectionsPerChild  3000
+<IfModule mpm_prefork_module>
+        StartServers            4
+        MinSpareServers         3
+        MaxSpareServers         40
+        MaxRequestWorkers       200
+        MaxConnectionsPerChild  10000
 </IfModule>
-
 {{< /file >}}
 
 1.  Return to `apache.rb`, and use the `cookbook_file` resource to call the file we just created. Because the MPM will need to be enabled, we'll use the `notifies` command again, this time to execute `a2enmod mpm_event`. Add the `execute` and `cookbook_file` resources to the `apache.rb` file prior to the final `end` tag:
@@ -407,15 +406,15 @@ Cookbook files are static documents that are run against the document in the sam
 node["lamp_stack"]["sites"].each do |sitename, data|
   # [...]
 
-  execute "enable-event" do
-    command "a2enmod mpm_event"
+  execute "enable-prefork" do
+    command "a2enmod mpm_prefork"
     action :nothing
   end
 
-  cookbook_file "/etc/apache2/mods-available/mpm_event.conf" do
-    source "mpm_event.conf"
+  cookbook_file "/etc/apache2/mods-available/mpm_prefork.conf" do
+    source "mpm_prefork.conf"
     mode "0644"
-    notifies :run, "execute[enable-event]"
+    notifies :run, "execute[enable-prefork]"
   end
 end
 {{< /file >}}
@@ -550,6 +549,24 @@ end
 
     `mysqldefault` is the name of the MySQL service for this container. The `inital_root_password` calls to the value defined in the text above, while the action creates the database and starts the MySQL service.
 
+1.  The version of MySQL the `mysql` cookbook installation creates uses a sock file at a non-standard location, so you must declare this location in order to interact with MySQL from the command line. To do this, create a cookbook file called `my.cnf` with the following configuration:
+
+    {{< file "~/chef-repo/cookbooks/lamp_stack/files/default/my.cnf" >}}
+[client]
+socket=/run/mysql-mysqldefault/mysqld.sock
+{{</ file >}}
+
+1.  Open `mysql.rb` again, and add the following lines to the end of the file:
+
+    {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/mysql.rb" ruby >}}
+# [...]
+
+cookbook_file "/etc/my.cnf" do
+  source "my.cnf"
+  mode "0644"
+end
+{{< /file >}}
+
 ## PHP
 
 1.  Under the recipes directory, create a new `php.rb` file. The commands below install PHP and all the required packages for working with Apache and MySQL:
@@ -564,6 +581,10 @@ package "php-pear" do
 end
 
 package "php-mysql" do
+  action :install
+end
+
+package "libapache2-mod-php" do
   action :install
 end
 {{< /file >}}
@@ -615,5 +636,40 @@ end
 
         knife cookbook upload lamp_stack
         knife node run_list add nodename "recipe[lamp_stack],recipe[lamp_stack::apache],recipe[lamp_stack::mysql],recipe[lamp_stack::php]"
+
+## Testing Your Installation
+
+1.  To ensure that the Apache service has been successfully installed and running, you can execute the following command, substituting `node_name` for the name of your node:
+
+        knife ssh 'name:node_name' 'systemctl status apache2' -x root
+
+    Additionally, you can visit your server's domain name in your browser. If it is working, you should see an empty index page (as you have not uploaded any files to your server yet.)
+
+1.  To check on the status of PHP, you'll need to upload a file to your server to make sure it's being rendered correctly. A simple PHP file that you can create is a PHP info file. Create a file called `info.php` in the same directory as the other cookbook files you've created:
+
+    {{< file "~/chef-repo/cookbooks/lamp_stack/files/default/info.php" php >}}
+<?php phpinfo(); ?>
+{{</ file >}}
+
+    Modify your `php.rb` file and add the following to the end of the file, replacing `example.com` your website's domain name:
+
+    {{< file "~/chef-repo/cookbooks/lamp_stack/" ruby >}}
+cookbook_file "/var/www/html/example.com/public_html/info.php" do
+  source "info.php"
+end
+{{</ file >}}
+
+    Upload your cookbook to your Chef server, and then run `chef-client` on your node, replacing `node_name` with the name of your node:
+
+        knife cookbook upload lamp_stack
+        knife ssh 'name:node_name' 'sudo chef-client' -x root
+
+    Visit `example.com/info.php` in your browser. You should see a page that houses information about your PHP settings.
+
+1.  To test your MySQL installation, you can check on the status of MySQL using `systmectl`. Issue the following command to ensure the MySQL service is running correctly:
+
+        knife ssh 'name:node_name' 'systemctl status mysql-mysqldefault' -u root
+
+    `chef-client` is not designed to accept user input, and as such using commands like `mysqladmin status` that require a password can cause Chef to hang. If you need to be able to interact with MySQL client directly, consider logging in to your server directly.
 
 You have just created a LAMP Stack cookbook. Through this guide, you should have learned to use the execute, package, service, node, directory, template, cookbook_file, and mysql_service resources within a recipe, as well as download and use LWRPs, create encrypted data bags, upload/update your cookbooks to the server, and use attributes, templates, and cookbook files. This gives you a strong basis in Chef and cookbook creation for future projects.

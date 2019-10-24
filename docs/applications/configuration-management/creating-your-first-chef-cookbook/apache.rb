@@ -15,46 +15,46 @@ node["lamp_stack"]["sites"].each do |sitename, data|
 	end
 
 	execute "enable-sites" do
-          command "a2ensite #{sitename}"
-          action :nothing
-        end
+    command "a2ensite #{sitename}"
+    action :nothing
+  end
 
-        template "/etc/apache2/sites-available/#{sitename}.conf" do
-          source "virtualhosts.erb"
-          mode "0644"
-          variables(
-            :document_root => document_root,
-            :port => data["port"],
-            :serveradmin => data["serveradmin"],
-            :servername => data["servername"]
-          )
+  template "/etc/apache2/sites-available/#{sitename}.conf" do
+    source "virtualhosts.erb"
+    mode "0644"
+    variables(
+      :document_root => document_root,
+      :port => data["port"],
+      :serveradmin => data["serveradmin"],
+      :servername => data["servername"]
+    )
 	  notifies :run, "execute[enable-sites]"
 	  notifies :restart, "service[apache2]"
-        end
+  end
 
 	directory "/var/www/html/#{sitename}/public_html" do
-          action :create
-        end
+    action :create
+  end
 
-       directory "/var/www/html/#{sitename}/logs" do
-         action :create
-       end
+  directory "/var/www/html/#{sitename}/logs" do
+    action :create
+  end
 
-       #Apache Configuration
+  #Apache Configuration
 
 	execute "keepalive" do
 	  command "sed -i 's/KeepAlive On/KeepAlive Off/g' /etc/apache2/apache2.conf"
 	  action :run
 	end
 
-	execute "enable-event" do
-	  command "a2enmod mpm_event"
-	  action :nothing
-	end
+  execute "enable-prefork" do
+    command "a2enmod mpm_prefork"
+    action :nothing
+  end
 
-	cookbook_file "/etc/apache2/mods-available/mpm_event.conf" do
-	  source "mpm_event.conf"
-	  mode "0644"
-	  notifies :run, "execute[enable-event]"
-	end	
+  cookbook_file "/etc/apache2/mods-available/mpm_prefork.conf" do
+    source "mpm_prefork.conf"
+    mode "0644"
+    notifies :run, "execute[enable-prefork]"
+  end
 end
