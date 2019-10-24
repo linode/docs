@@ -538,6 +538,7 @@ Mar  8 18:01:27 host postfix/virtual[4418]: E2C7528420: to=<email1@example.com>,
 14. Next up is Dovecot. First, update the `mail_location` in `/etc/dovecot/conf.d/10-mail.conf`:
 
     {{< file "/etc/dovecot/conf.d/10-mail.conf" >}}
+mail_location = maildir:~ #update mail_location    
 passdb {
   driver = passwd-file
   args = username_format=%u /etc/dovecot/users
