@@ -22,47 +22,7 @@ All services are billed automatically at the end of the month. If you used a ser
 
 ## Linode Cloud Hosting and Backups
 
-### Standard Plans
-
-| Service      | Hourly Rate | Monthly Cap | Backups Hourly Rate | Backups Monthly
-|:-------------|:------------|:--------|:--------------------|:---------------
-| Linode 1GB   | $0.0075/hr  | $5/mo   | $0.003/hr           | $2/mo
-| Linode 2GB   | $0.015/hr   | $10/mo  | $0.004/hr           | $2.50/mo
-| Linode 4GB   | $0.03/hr    | $20/mo  | $0.008/hr           | $5/mo
-| Linode 8GB   | $0.06/hr    | $40/mo  | $0.015/hr           | $10/mo
-| Linode 16GB  | $0.12/hr    | $80/mo  | $0.03/hr            | $20/mo
-| Linode 32GB  | $0.24/hr    | $160/mo | $0.06/hr            | $40/mo
-| Linode 64GB  | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
-| Linode 96GB   | $0.72/hr   |  $480/mo | $0.18/hr           | $120/mo  |
-| Linode 128GB  | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
-| Linode 192GB  | $1.44/hr    | $960/mo | $0.36/hr            | $240/mo
-
-Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#standard)
-
-### High Memory Plans
-
-| Service      | Hourly Rate | Monthly Cap | Backups Hourly Rate | Backups Monthly
-|:-------------|:------------|:--------|:--------------------|:---------------
-| Linode 24GB  | $0.09/hr    | $60/mo  | $0.0075/hr          | $5/mo
-| Linode 48GB  | $0.18/hr    | $120/mo | $0.015/hr           | $10/mo
-| Linode 90GB  | $0.36/hr    | $240/mo | $0.03/hr            | $20/mo
-| Linode 150GB | $0.72/hr    | $480/mo | $0.06/hr            | $40/mo
-| Linode 300GB | $1.44/hr    | $960/mo | $0.12/hr            | $80/mo
-
-Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#high_memory)
-
-### Additional Linode Services
-
-| Service          | Hourly Rate | Monthly
-|:-----------------|:------------|:-------
-| Additional IP    | $0.0015/hr  | $1/mo
-| Linode Managed   | $0.15/hr    | $100/mo
-| NodeBalancer     | $0.03/hr    | $20/mo
-| Longview Pro 3   | $0.03/hr    | $20/mo
-| Longview Pro 10  | $0.06/hr    | $40/mo
-| Longview Pro 40  | $0.15/hr    | $100/mo
-| Longview Pro 100 | $0.30/hr    | $200/mo
-
+Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing)
 
 {{< note >}}
 A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [transfer overage](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work) charge beyond the monthly cap.
