@@ -65,7 +65,7 @@ Keep your credit card information up to date to prevent service interruptions. H
 
 Your credit card information will be updated.
 
-  [![Update your credit card information.](billing-change-card-small.png "Update your credit card.")](billing-change-card.png)
+  [![Update your credit card information.](billing-change-card.png "Update your credit card.")](billing-change-card.png)
 
  {{< note >}}
 If you have an outstanding balance, you will need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
