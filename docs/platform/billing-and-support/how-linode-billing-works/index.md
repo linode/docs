@@ -13,7 +13,7 @@ published: 2014-02-28
 title: How Linode Billing Works
 ---
 
-We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/docs/platform/billing-and-support/support/).
+We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works. To learn how to manage your billing in the Cloud Manager see the [Manage Billing in Cloud Manager](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) guide. If you have a question that isn't answered in either guide, please feel free to [contact support](/docs/platform/billing-and-support/support/).
 
 ## How Hourly Billing Works
 
@@ -53,7 +53,7 @@ Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.
 
 **If your Linode is powered off you will still be billed for it.** Linode maintains your saved data and reserves your ability to use other resources like RAM and network capacity, even when your Linode is powered off. You will also be billed for any other active Linode service, such as Longview Pro or extra IP addresses.
 
-If you want to stop being billed for a particular Linode service, you need to [remove](#removing-services) it from your account entirely.
+If you want to stop being billed for a particular Linode service, you need to [remove](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#removing-services) it from your account entirely.
 
 ## Referral Credits
 

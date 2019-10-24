@@ -11,8 +11,16 @@ modified_by:
   name: Linode
 published: 2014-02-28
 title: Billing and Payments
+deprecated: true
 classic_manager_link: platform/billing-and-support/billing-and-payments-classic-manager/
 ---
+
+{{< note >}}
+This guide has been updated and split into two:
+
+- [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/)
+- [Manage Billing in Cloud Manager](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/)
+{{< /note >}}
 
 We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/docs/platform/billing-and-support/support/).
 
