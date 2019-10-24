@@ -19,7 +19,7 @@ Packer is a Haschicorp maintained open source tool that is used to create machin
 In this guide you will complete the following steps:
 
 * Install Packer on your computer
-* Create a Packer template
+* Create a Packer image template. Optionally, the template will execute system configurations using Packer's Ansible provisioner.
 * Generate a Linode Image from your Packer template
 * Deploy a Linode from your stored Packer image
 
@@ -27,19 +27,19 @@ In this guide you will complete the following steps:
 
 1. Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/) guide if you do not already have one.
 
-1. [Create an authentication Key-pair](https://www.linode.com/docs/security/securing-your-server/#create-an-authentication-key-pair) if your computer does not already have one.
+1. [Create an authentication key-pair](https://www.linode.com/docs/security/securing-your-server/#create-an-authentication-key-pair) if your computer does not already have one.
 
-1. Install Ansible on your computer. Use the steps in the [Install Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/) guide.
+1. Install Ansible on your computer ans familiarize yourself with basic Ansible concepts (optional). Use the steps in the [Install Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/) guide.
 
 1. Ensure you have access to [curl](https://en.wikipedia.org/wiki/CURL) on your computer.
 
 ## The Linode Packer Builder
 
-The Linode Packer builder can be used to create a Linode image that can be redeployed to other Linodes. You can share your image template across your team to ensure everyone works with a uniform development and testing environment. This process will help your team maintain an [immutable infrastructure](/docs/development/ci/what-is-immutable-infrastructure/) within your [continuous delivery](/docs/development/ci/introduction-ci-cd/#what-is-continuous-delivery) model.
+In Packer's ecosystem, *builders* are responsible for deploying machine instances and generating redeployable images from them. The Linode Packer builder can be used to create a Linode image that can be redeployed to other Linodes. You can share your image template across your team to ensure everyone is using a uniform development and testing environment. This process will help your team maintain an [immutable infrastructure](/docs/development/ci/what-is-immutable-infrastructure/) within your [continuous delivery](/docs/development/ci/introduction-ci-cd/#what-is-continuous-delivery) pipeline.
 
 The Linode Packer builder works in the following way:
 
-* You create a template to define the type of image you want to build
+* You create a template to define the type of image you want Packer to build
 * Packer uses the template to build the image on a temporary Linode
 * A snapshot of the built image is taken and stored as a private [Linode image](/docs/platform/disk-images/linode-images/)
 * The temporary Linode is deleted
@@ -65,6 +65,10 @@ The Linode Packer builder works in the following way:
     * The checksum signature file
 
             wget https://releases.hashicorp.com/packer/1.4.4/packer_1.4.4_SHA256SUMS.sig
+
+    {{< note >}}
+For more installation methods, see [Packer's official documentation](https://www.packer.io/intro/getting-started/install.html).
+    {{</ note >}}
 
 ### Verify the Download
 
@@ -144,7 +148,7 @@ Available commands are:
 
 ## Use the Linode Packer Builder
 
-Now that Packer is installed on your local system, you can create a Packer *template*. A template is a a JSON formated file that contains the configurations needed to build a machine image. In this section you will create a template that uses the Linode Packer Builder to create an image using Debian 9 as its base distribution. The template will also configure your system image with a new limited user account, and a public SSH key from your local computer. The additional system configuration will be completed using Packer's Ansible provisioner and an example Ansible Playbook.
+Now that Packer is installed on your local system, you can create a Packer *template*. A template is a a JSON formated file that contains the configurations needed to build a machine image. In this section you will create a template that uses the Linode Packer builder to create an image using Debian 9 as its base distribution. The template will also configure your system image with a new limited user account, and a public SSH key from your local computer. The additional system configuration will be completed using Packer's Ansible [*provisioner*](https://www.packer.io/docs/provisioners/index.html) and an example Ansible Playbook. A Packer provisioner is a built-in third-party integration that further configures a machine instance during the boot process and prior to taking the machine's snapshot.
 
 {{< note >}}
 The steps in this section will incur charges related to deploying a [1GB Nanode](https://www.linode.com/products/nanodes/). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](docs/platform/billing-and-support/billing-and-payments/) guide for details about [hourly billing](/docs/platform/billing-and-support/billing-and-payments/#how-hourly-billing-works).
@@ -220,13 +224,13 @@ If you would rather not use a provisioner in your Packer template, you can use t
         {{< note >}}
 You can use multiple builders in a single template file. This process is known as a [parallel build](https://www.packer.io/intro/getting-started/parallel-builds.html) which allows you to create multiple images for multiple platforms from a single template.
         {{</ note >}}
-      * **provisioners**: (*optional*) with a provisioner you can further configure your system by completing common system administration tasks, like adding users, installing and configuring software, and more. The example uses Packer's built-in Ansible provider and executes the tasks defined in the local `limited_user_account.yml` playbook. This means your Linode image will also contain anything executed by the Playbook on your Nanode.  Packer supports several other [provisioners](https://www.packer.io/docs/provisioners/index.html), like Chef, Salt, and shell scripts.
+      * **provisioners**: (*optional*) with a provisioner you can further configure your system by completing common system administration tasks, like adding users, installing and configuring software, and more. The example uses Packer's built-in Ansible provider and executes the tasks defined in the local `limited_user_account.yml` playbook. This means your Linode image will also contain anything executed by the playbook on your Nanode.  Packer supports several other [provisioners](https://www.packer.io/docs/provisioners/index.html), like Chef, Salt, and shell scripts.
 
 ### Create your Ansible Playbook (Optional)
 
 In the previous section you created a Packer template that makes use of an Ansible Playbook to add system configurations to your image. Prior to building your image, you will need to create the referenced `limited_user_account.yml` Playbook. You will complete those steps in this section. If you chose not to use the Ansible provider, you can skip this section.
 
-1. The example Ansible Playbook makes use of the Ansible's [user module](https://docs.ansible.com/ansible/latest/modules/user_module.html). This module requires that a hashed value be used for its `password` parameter. Use the `mkpasswd` utility to generate a hashed password that you will use in the next step.
+1. The example Ansible Playbook makes use of Ansible's [user module](https://docs.ansible.com/ansible/latest/modules/user_module.html). This module requires that a hashed value be used for its `password` parameter. Use the `mkpasswd` utility to generate a hashed password that you will use in the next step.
 
         mkpasswd --method=sha-512
 
@@ -237,7 +241,7 @@ Password:
 $6$aISRzCJH4$nNJ/9ywhnH/raHuVCRu/unE7lX.L9ragpWgvD0rknlkbAw0pkLAwkZqlY.ahjj/AAIKo071LUB0BONl.YMsbb0
           {{</ output >}}
 
-1. In your `packer` directory, create a file with the following content. Ensure you replace the value of the `password` paremeter with your own hashed password:
+1. In your `packer` directory, create a file with the following content. Ensure you replace the value of the `password` parameter with your own hashed password:
 
     {{< file "~/packer/limited_user_account.yml">}}
 ---
@@ -258,7 +262,7 @@ $6$aISRzCJH4$nNJ/9ywhnH/raHuVCRu/unE7lX.L9ragpWgvD0rknlkbAw0pkLAwkZqlY.ahjj/AAIK
                   line="{{ NORMAL_USER_N
     {{</ file >}}
 
-    * This Playbook will created a limited user named `my-user-name`. You can replace that value of `NORMAL_USER_NAME` with any system username you'd like to create. It will then add a public SSH key stored on your local computer. If the public key you'd like to use is stored in a location other than `~/.ssh/id_rsa.pub`, you can update that value. Finally, the Playbook adds the new system user to the `sudoers` file.
+    * This Playbook will created a limited user account named `my-user-name`. You can replace the value of `NORMAL_USER_NAME` with any system username you'd like to create. It will then add a public SSH key stored on your local computer. If the public key you'd like to use is stored in a location other than `~/.ssh/id_rsa.pub`, you can update that value. Finally, the Playbook adds the new system user to the `sudoers` file.
 
 ### Create your Linode Image
 
@@ -271,7 +275,7 @@ You should now have your completed template file and your Ansible Playbook file 
       If successful, you will see the following:
 
       {{< output >}}
-  Template validated successfully.
+Template validated successfully.
       {{</ output >}}
 
       {{< note >}}
@@ -319,7 +323,7 @@ Build 'linode' finished.
 --> linode: Linode image: my-private-packer-image (private/7550080)
       {{</ output >}}
 
-      The output will provide you with your new private image's Id. In the example output the image Id is `private/7550080`. This image is now available on your Linode account to use as you desire. As an example, in the next section you will use this newly created image to deploy a 1 GB Nanode using Linode's API v4.
+      The output will provide you with your new private image's ID. In the example output the image ID is `private/7550080`. This image is now available on your Linode account to use as you desire. As an example, in the next section you will use this newly created image to deploy a new 1 GB Nanode using Linode's API v4.
 
 ### Deploy a Linode with your New Image
 
@@ -342,6 +346,10 @@ Build 'linode' finished.
       {{< output >}}
 {"id": 17882092, "created": "2019-10-23T22:47:47", "group": "", "specs": {"gpus": 0, "transfer": 1000, "memory": 1024, "disk": 25600, "vcpus": 1}, "label": "my-example-linode", "updated": "2019-10-23T22:47:47", "watchdog_enabled": true, "image": null, "ipv4": ["192.0.2.0"], "ipv6": "2600:3c03::f03c:92ff:fe98:6d9a/64", "status": "provisioning", "tags": [], "region": "us-east", "backups": {"enabled": false, "schedule": {"window": null, "day": null}}, "hypervisor": "kvm", "type": "g6-nanode-1", "alerts": {"cpu": 90, "network_in": 10, "transfer_quota": 80, "io": 10000, "network_out": 10}}%
       {{</ output >}}
+
+      If you used the Ansible provisioner, once your Linode is deployed, you should be able to SSH into your newly deployed Linode using the limited user account you created with the Ansible playbook and your public SSH key. Your Linode's IPv4 address will be available in the API response returned after creating the Linode.
+
+        ssh my-user-name@192.0.2.0
 
 ## Next Steps
 
