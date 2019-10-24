@@ -39,20 +39,15 @@ Here's how to resize your Linode:
 
     [![The Linode resize page.](resize-tab.png)](resize-tab.png)
 
+1.  You can automatically resize your primary disk by selecting the **Auto Resize Disk** checkbox. This option is not available if you are resizing to a smaller plan and have a disk greater in size than the target plan allows. In that case, you must delete resize your disk before selecting a new plan. Additionally, your disks must be of type `ext 4`,`ext 3`, or `swap`.
+
+    [![Automatically resize your main disk by checking the resize checkbox.](resize-auto-checkbox.png)](resize-auto-checkbox.png)
+
 1.  Select a plan and click the **Submit** button. Your Linode will be powered off and moved to another host. Depending on the size of your Linode, this process can take up to one hour.
-
-    Your Linode's main disk will automatically be resized if the following two criteria are met:
-
-    1. The destination plan has a larger amount of disk space than the current plan. For example, if you are upgrading from a 2 GB to a 4 GB Linode plan.
-    1. The Linode's disk configuration is simple:
-        - 1 disk of type `ext 4` or `ext 3` and 1 disk of type `swap` **OR**
-        - 1 disk of type `ext 4` or `ext 3`
-
-    If your Linode does not fulfill the above criteria, you will have to manually reallocate un-used storage to your disks, if desired. See the following step for instructions.
 
 1.  (Optional) When the migration completes, check your disk storage allocation meter. If you resized your Linode to a larger plan and the main disk was not automatically resized, you'll have additional un-used storage to allocate to your disks. You may want to add some of this storage to one of your disks if the internal filesystem on it is running low on free space, or just so you can use it in the future.
 
-    Navigate to your Linode's **Settings** tab and expand the **Advanced Configurations** section to view your disk storage allocation meter. Click on the **more options** link (...) next to the disk you'd like to allocate the extra storage to and select **Resize**.
+    Navigate to your Linode's **Advanced** tab to view your disk storage allocation meter. Click on the **more options** link (...) next to the disk you'd like to allocate the extra storage to and select **Resize**.
 
     [![View your disk storage allocator.](disk-allocator.png)](disk-allocator.png)
 

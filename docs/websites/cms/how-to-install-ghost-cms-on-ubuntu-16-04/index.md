@@ -116,7 +116,7 @@ Install Ghost 1.0.0 using the Ghost-CLI tool.
 
         ghost install
 
-6. Answer each question as prompted. For more information about each question, visit the [Ghost documentation](https://docs.ghost.org/docs/cli-install#section-prompts):
+6. Answer each question as prompted. For more information about each question, visit the [Ghost documentation](https://ghost.org/docs/install/ubuntu/#install-questions):
 
     {{< output >}}
 ? Enter your blog URL: https://example.com

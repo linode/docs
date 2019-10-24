@@ -5,7 +5,7 @@ author:
 description: 'Use UFW (Uncomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux; this guide contains instructions for setting up default rules, adding/removing rules, setting up logging, and some advanced features.'
 keywords: ["ufw", "uncomplicated firewall", "ubuntu ufw", "linux ufw", "ufw tutorial", "ubuntu firewall", "iptables", "networking", "firewalls", "filtering", "firewall setup", "ubuntu", "debian", "arch"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-09-17
+modified: 2019-08-12
 modified_by:
   name: Linode
 published: 2015-11-17
@@ -16,13 +16,17 @@ title: How to Configure a Firewall with UFW
 
 UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in Arch Linux, Debian or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
 
+{{< note >}}
+If you are running Docker, by default Docker directly manipulates iptables. Any UFW rules that you specify do not apply to Docker containers.
+{{< /note >}}
+
 ![How to Configure a Firewall with UFW](ufw_tg.png "How to Configure a Firewall with UFW")
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Creating a Firewall section--this guide is an introduction to using UFW, which is a separate method of controlling a firewall than iptables commands.
+2.  Ensure that you complete the sections of [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the [Configure a Firewall](/docs/security/securing-your-server/#configure-a-firewall) section in [How to Secure Your Server](/docs/security/securing-your-server/) guide. This guide is an introduction to using UFW, which is a separate method of controlling a firewall than iptables commands. The guide lists the commands for Arch Linux, Debian or Ubuntu distributions only. However, you can use the relevant commands for the outlined tasks on various Linux distributions.
 
 3.  Update your system.
 
@@ -88,7 +92,7 @@ Similarly, to **deny** traffic on a certain port (in this example, 111) you woul
 
     sudo ufw deny 111
 
-To farther fine-tune your rules, you can also allow packets based on TCP or UDP. The following will allow TCP packets on port 80:
+To further fine-tune your rules, you can also allow packets based on TCP or UDP. The following will allow TCP packets on port 80:
 
     sudo ufw allow 80/tcp
     sudo ufw allow http/tcp
@@ -103,15 +107,15 @@ Along with allowing or denying based solely on port, UFW also allows you to allo
 
 To allow connections from an IP address:
 
-    sudo ufw allow from 123.45.67.89
+    sudo ufw allow from 198.51.100.0
 
 To allow connections from a specific subnet:
 
-    sudo ufw allow from 123.45.67.89/24
+    sudo ufw allow from 198.51.100.0/24
 
 To allow a specific IP address/port combination:
 
-    sudo ufw allow from 123.45.67.89 to any port 22 proto tcp
+    sudo ufw allow from 198.51.100.0 to any port 22 proto tcp
 
 `proto tcp` can be removed or switched to `proto udp` depending upon your needs, and all instances of `allow` can be changed to `deny` as needed.
 

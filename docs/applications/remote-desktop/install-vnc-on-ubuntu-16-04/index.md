@@ -11,6 +11,8 @@ modified_by:
   name: Jared Kobos
 published: 2016-06-21
 title: 'Install VNC on Ubuntu 16.04'
+deprecated: true
+deprecated_link: 'applications/remote-desktop/install-vnc-on-ubuntu-18-04/'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
  - '[RealVNC](https://www.realvnc.com/)'

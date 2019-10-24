@@ -14,6 +14,8 @@ contributor:
   name: Linode
 ---
 
+![How to Use Linode's One-Click Apps](how-to-use-linode-oneclick-apps.png "How to Use Linode's One-Click Apps")
+
 One-Click Apps help you easily deploy and configure software on a Linode from a list of various apps that are built into the Linode [Cloud Manager](https://cloud.linode.com), without the hassle of using the command line. Of course, you'll still have full access to your Linode if you want to log in to your server and have a more hands-on approach later on.
 
 When a One-Click App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide. One-Click Apps does not install software to already-existing Linodes in your account. This guide presents instructions for where to find One-Click Apps in the Cloud Manager and how deploy WordPress blogs, WooCommerce stores, your favorite game servers, and more.
@@ -42,7 +44,7 @@ When a One-Click App is deployed, a new Linode is created and the appropriate so
 
     ![Fill out the required Options fields, which are marked with an asterisk.](one-click-wordpress-config-options.png)
 
-    You can fill out additional options by clicking on **Show Advanced Options**. For the WordPress example, these options are the site's title and a field for an [SSH key](/docs/security/authentication/use-public-key-authentication-with-ssh/). If you enter an SSH key, you will be able to use it later to log in to your Linode ([via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh)).
+    You can fill out additional options by clicking on **Show Advanced Options**. For the WordPress example, this option is the site's title.
 
 1.  The **Select an Image** section displays that Debian is pre-selected. This is the underlying operating system that your Linode will run.
 

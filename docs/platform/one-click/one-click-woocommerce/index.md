@@ -35,7 +35,6 @@ external_resources:
 | **Admin Password** | Password for your WordPress admin user. *Required*. |
 | **Email Address** | Email address for your WordPress admin user. *Required*. |
 | **Website Title** | The title that will appear at the top of your WooCommerce site. *Advanced Options*. |
-| **SSH Key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode, and you will be able to use it to login as root over SSH. *Advanced Options*. |
 
 ### Linode Options
 

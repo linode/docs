@@ -6,7 +6,7 @@ description: 'Create a Terraform module that deploys a Linode instance from a St
 keywords: ['terraform','resource','modules','provider']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
-modified: 2018-12-12
+modified: 2019-08-08
 modified_by:
   name: Linode
 title: "Create a Terraform Module"
@@ -24,6 +24,10 @@ In this guide you will create a *Linode StackScripts* module. This module will d
 ## Before You Begin
 
 1. Install Terraform on your local computer using the steps found in the **Install Terraform** section of the [Use Terraform to Provision Linode Environments](https://linode.com/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide. Your Terraform project directory should be named `linode_stackscripts`.
+
+    {{< note >}}
+[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+    {{</ note >}}
 
 2. Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain a token.
 
@@ -85,31 +89,43 @@ In this section, you will create the `linodes` module which will be in charge of
         mv terraform linode_stackscripts
         cd linode_stackscripts
 
+    {{< note>}}
+You may need to edit your `~/.profile` directory to include the `~/linode_stackscripts` directory in your PATH.
+
+    echo 'export PATH="$PATH:$HOME/linode_stackscripts"' >> ~/.profile
+    source ~/.profile
+    {{</ note >}}
+
 1. Create the `modules` and `linodes` subdirectories:
 
         mkdir -p modules/linodes
 
 1. Using your preferred text editor, create a `main.tf` file in `modules/linodes/` with the following resources:
 
-      {{< file "linode_stackscripts/modules/linodes/main.tf">}}
+      {{< file "~/linode_stackscripts/modules/linodes/main.tf" >}}
 locals {
-    key ="${var.key}"
+    key = var.key
 }
 
 resource "linode_sshkey" "main_key" {
-    label = "${var.key_label}"
-    ssh_key = "${chomp(file(local.key))}"
+    label = var.key_label
+    ssh_key = chomp(file(local.key))
 }
 
 resource "linode_instance" "linode_id" {
-    image = "${var.image}"
-    label = "${var.label}"
-    region = "${var.region}"
-    type = "${var.type}"
-    authorized_keys = [ "${linode_sshkey.main_key.ssh_key}" ]
-    root_pass = "${var.root_pass}"
-    stackscript_id = "${var.stackscript_id}"
-    stackscript_data = "${var.stackscript_data}"
+    image = var.image
+    label = var.label
+    region = var.region
+    type = var.type
+    authorized_keys = [ linode_sshkey.main_key.ssh_key ]
+    root_pass = var.root_pass
+    stackscript_id = var.stackscript_id
+    stackscript_data = {
+       "my_password" = var.stackscript_data["my_password"]
+       "my_userpubkey" = var.stackscript_data["my_userpubkey"]
+       "my_hostname" = var.stackscript_data["my_hostname"]
+       "my_username" = var.stackscript_data["my_username"]
+    }
 }
 {{</ file >}}
 
@@ -119,18 +135,18 @@ resource "linode_instance" "linode_id" {
 
       {{< file >}}
 locals {
-    key ="${var.key}"
+    key = var.key
 }
 
 resource "linode_sshkey" "main_key" {
-    label = "${var.key_label}"
-    ssh_key = "${chomp(file(local.key))}"
+    label = var.key_label
+    ssh_key = chomp(file(local.key))
 }
 {{</ file >}}
 
       - The `locals` stanza declares a local variable `key` whose value will be provided by an input variable.
 
-      - The `linode_sshkey` resource will create Linode SSH Keys tied to your Linode account. These keys can be reused for future Linode deployments once the resource has been created. `ssh_key = "${chomp(file(local.key))}"` uses Terraform’s built-in function `file()` to provide a local file path to the public SSH key’s location. The location of the file path is the value of the local variable `key`. The `chomp()` built-in function removes trailing new lines from the SSH key.
+      - The `linode_sshkey` resource will create Linode SSH Keys tied to your Linode account. These keys can be reused for future Linode deployments once the resource has been created. `ssh_key = chomp(file(local.key))` uses Terraform’s built-in function `file()` to provide a local file path to the public SSH key’s location. The location of the file path is the value of the local variable `key`. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
         {{< note >}}
 If you do not already have SSH keys, follow the steps in the **Create an Authentication Key-pair** section of the [Securing Your Server Guide](/docs/security/securing-your-server/#create-an-authentication-key-pair).
@@ -138,14 +154,19 @@ If you do not already have SSH keys, follow the steps in the **Create an Authent
 
       {{< file >}}
 resource "linode_instance" "linode_id" {
-    image = "${var.image}"
-    label = "${var.label}"
-    region = "${var.region}"
-    type = "${var.type}"
-    authorized_keys = [ "${linode_sshkey.main_key.ssh_key}" ]
-    root_pass = "${var.root_pass}"
-    stackscript_id = "${var.stackscript_id}"
-    stackscript_data = "${var.stackscript_data}"
+    image = var.image
+    label = var.label
+    region = var.region
+    type = var.type
+    authorized_keys = [ linode_sshkey.main_key.ssh_key ]
+    root_pass = var.root_pass
+    stackscript_id = var.stackscript_id
+    stackscript_data = {
+       "my_password" = var.stackscript_data["my_password"]
+       "my_userpubkey" = var.stackscript_data["my_userpubkey"]
+       "my_hostname" = var.stackscript_data["my_hostname"]
+       "my_username" = var.stackscript_data["my_username"]
+    }
 }
 {{</ file >}}
 
@@ -159,7 +180,7 @@ resource "linode_instance" "linode_id" {
 
 1. Create the `variables.tf` file to define your resource's required variables:
 
-      {{< file "linode_stackscripts/modules/linodes/variables.tf">}}
+      {{< file "~/linode_stackscripts/modules/linodes/variables.tf">}}
 variable "key" {
   description = "Public SSH Key's path."
 }
@@ -204,6 +225,7 @@ variable "stackscript_id" {
 variable "stackscript_data" {
   description = "Map of required StackScript UDF data."
   type = "map"
+  default = {}
 }
 {{</ file >}}
 
@@ -219,7 +241,7 @@ variable "stackscript_data" {
 
       {{< file "~/linode_stackscripts/modules/linodes/outputs.tf" >}}
 output "sshkey_linode" {
-  value = "${linode_sshkey.main_key.ssh_key}"
+  value = linode_sshkey.main_key.ssh_key
 }
 {{</ file >}}
 
@@ -239,11 +261,11 @@ In this section you will create the StackScripts module. This module creates a `
 
       {{< file "~/linode_stackscripts/modules/stackscripts/main.tf">}}
 resource "linode_stackscript" "default" {
-  label = "${var.stackscript_label}"
-  description = "${var.description}"
-  script = "${var.stackscript}"
-  images = [ "${var.stackscript_image}" ]
-  rev_note = "${var.rev_note}"
+  label = var.stackscript_label
+  description = var.description
+  script = var.stackscript
+  images = var.stackscript_image
+  rev_note = var.rev_note
 }
 {{</ file >}}
 
@@ -265,7 +287,6 @@ variable "stackscript" {
 }
 variable "stackscript_image" {
   description = " A list of Image IDs representing the Images that this StackScript is compatible for deploying with."
-  type = "list"
 }
 variable "rev_note" {
   description = "This field allows you to add notes for the set of revisions made to this StackScript."
@@ -276,7 +297,7 @@ variable "rev_note" {
 
     {{< file "~/linode_stackscripts/modules/stackscripts/output.tf" >}}
 output "stackscript_id" {
-  value = "${linode_stackscript.default.id}"
+  value = linode_stackscript.default.id
 }
 {{</ file >}}
 
@@ -290,32 +311,37 @@ The root module will call the `linode` and `stackscripts` modules, satisfy their
 
 1. Ensure you are in the `linode_stackscripts` directory and create the `main.tf` file:
 
-    {{< file "linode_stackscripts/main.tf">}}
+    {{< file "~/linode_stackscripts/main.tf">}}
 provider "linode" {
-    token = "${var.token}"
+    token = var.token
 }
 
 module "stackscripts" {
     source = "./modules/stackscripts"
-    stackscript_label = "${var.stackscript_label}"
-    description = "${var.description}"
-    stackscript = "${var.stackscript}"
-    stackscript_image = [ "${var.stackscript_image}" ]
-    rev_note = "${var.rev_note}"
+    stackscript_label = var.stackscript_label
+    description = var.description
+    stackscript = var.stackscript
+    stackscript_image = var.stackscript_image
+    rev_note = var.rev_note
 }
 
 module "linodes" {
     source = "./modules/linodes"
-    key = "${var.key}"
-    key_label = "${var.key_label}"
-    image = "${var.image}"
-    label = "${var.label}"
-    region = "${var.region}"
-    type = "${var.type}"
-    root_pass = "${var.root_pass}"
-    authorized_keys = [ "${module.linodes.sshkey_linode}" ]
-    stackscript_id = "${module.stackscripts.stackscript_id}"
-    stackscript_data = "${var.stackscript_data}"
+    key = var.key
+    key_label = var.key_label
+    image = var.image
+    label = var.label
+    region = var.region
+    type = var.type
+    root_pass = var.root_pass
+    authorized_keys = [ module.linodes.sshkey_linode ]
+    stackscript_id = module.stackscripts.stackscript_id
+    stackscript_data = {
+       "my_password" = var.stackscript_data["my_password"]
+       "my_userpubkey" = var.stackscript_data["my_userpubkey"]
+       "my_hostname" = var.stackscript_data["my_hostname"]
+       "my_username" = var.stackscript_data["my_username"]
+    }
 }
 {{</ file >}}
 
@@ -325,7 +351,7 @@ module "linodes" {
 
     {{< file >}}
 provider "linode" {
-    token = "${var.token}"
+    token = var.token
 }
 {{</ file >}}
 
@@ -334,11 +360,11 @@ provider "linode" {
     {{< file >}}
 module "stackscripts" {
     source = "./modules/stackscripts"
-    stackscript_label = "${var.stackscript_label}"
-    description = "${var.description}"
-    stackscript = "${var.stackscript}"
-    stackscript_image = [ "${var.stackscript_image}" ]
-    rev_note = "${var.rev_note}"
+    stackscript_label = var.stackscript_label
+    description = var.description
+    stackscript = var.stackscript
+    stackscript_image = var.stackscript_image
+    rev_note = var.rev_note
 }
 {{</ file >}}
 
@@ -347,21 +373,26 @@ module "stackscripts" {
     {{< file >}}
 module "linodes" {
     source = "./modules/linodes"
-    key = "${var.key}"
-    key_label = "${var.key_label}"
-    image = "${var.image}"
-    label = "${var.label}"
-    group = "${var.group}"
-    region = "${var.region}"
-    type = "${var.type}"
-    root_pass = "${var.root_pass}"
-    authorized_keys = [ "${module.linodes.sshkey_linode}" ]
-    stackscript_id = "${module.stackscripts.stackscript_id}"
-    stackscript_data = "${var.stackscript_data}"
+    key = var.key
+    key_label = var.key_label
+    image = var.image
+    label = var.label
+    group = var.group
+    region = var.region
+    type = var.type
+    root_pass = var.root_pass
+    authorized_keys = [ module.linodes.sshkey_linode ]
+    stackscript_id = module.stackscripts.stackscript_id
+    stackscript_data = {
+       "my_password" = var.stackscript_data["my_password"]
+       "my_userpubkey" = var.stackscript_data["my_userpubkey"]
+       "my_hostname" = var.stackscript_data["my_hostname"]
+       "my_username" = var.stackscript_data["my_username"]
+    }
 }
 {{</ file >}}
 
-    This stanza creates an instance of the `linodes` module and then instantiates the resources you defined in the module. Notice that `authorized_keys = [ "${module.linodes.sshkey_id}" ]` and `stackscript_id = "${module.stackscripts.stackscript_id}"` both access values exposed as output variables by the `linodes` and `stackscripts` modules. Any module's exposed output variables can be referenced in your root module's `main.tf` file.
+    This stanza creates an instance of the `linodes` module and then instantiates the resources you defined in the module. Notice that `authorized_keys = [ module.linodes.sshkey_id ]` and `stackscript_id = "module.stackscripts.stackscript_id"` both access values exposed as output variables by the `linodes` and `stackscripts` modules. Any module's exposed output variables can be referenced in your root module's `main.tf` file.
 
 1. Create the `variables.tf` file to declare the input variables required by the module instances:
 
@@ -425,6 +456,11 @@ variable "root_pass" {
 variable "stackscript_data" {
   description = "Map of required StackScript UDF data."
   type = "map"
+  default = {}
+}
+
+variable "stackscript_id" {
+  description = "Hold the stackscript id output value."
 }
 {{</ file >}}
 
@@ -432,7 +468,7 @@ variable "stackscript_data" {
 
     {{< file "~/linode_stackscripts/outputs.tf" >}}
 output "stackscript_id" {
-  value = "${module.stackscripts.stackscript_id}"
+  value = module.stackscripts.stackscript_id
 }
 {{</ file >}}
 
@@ -444,10 +480,6 @@ output "stackscript_id" {
 key = "~/.ssh/id_rsa.pub"
 key_label = "my-ssh-key"
 label = "my-linode"
-stackscript_data {
-  my_username = "username"
-  my_hostname = "linode-hostname"
-}
 stackscript_id = "base-ubuntu-deployment"
 stackscript_label = "base-ubuntu-deployment"
 description = "A base deployment for Ubuntu 18.04 that creates a limited user account."
@@ -470,7 +502,7 @@ user_add_pubkey "$MY_USERNAME" "$MY_USERPUBKEY"
 ssh_disable_root
 goodstuff
 EOF
-stackscript_image = "linode/ubuntu18.04"
+stackscript_image = ["linode/ubuntu18.04"]
 rev_note = "First revision of my StackScript created with the Linode Terraform provider."
 {{</ file >}}
 
@@ -485,13 +517,19 @@ rev_note = "First revision of my StackScript created with the Linode Terraform p
     {{< file "~/linode_stackscripts/secrets.tfvars">}}
 token = "my-linode-api-token"
 root_pass = "my-secure-root-password"
-stackscript_data {
-  my_password = "my-limited-users-password"
-  my_userpubkey = "my-public-ssh-key"
+stackscript_data = {
+  "my_password" = "my-limited-users-password"
+  "my_userpubkey" = "my-public-ssh-key"
+  "my_username" = "username"
+  "my_hostname" = "linode-hostname"
 }
 {{</ file >}}
 
     This file contains all sensitive data needed for your Linode deployment. Ensure you replace all values with your own secure passwords and your Linode account's APIv4 token. This file should never be tracked in version control software and should be listed in your `.gitignore` file if using [GitHub](https://github.com/).
+
+    {{< note >}}
+In Terraform 0.12, variables with map and object values will use the last value found and override previous values. This is different from previous versions of Terraform, which would merge map values instead of overriding them. For this reason the `stackscript_data` map and its values are defined in a single variable definitions file.
+    {{</ note >}}
 
     {{< note >}}
   There are several other options available for secrets management with Terraform. For more information on this subject, see [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform).

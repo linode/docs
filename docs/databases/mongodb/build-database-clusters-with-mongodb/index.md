@@ -27,6 +27,7 @@ There are two broad categories of scaling strategies for data. *Vertical scaling
 
 The commands and filepaths in this guide are based on those used in Ubuntu 16.04 (Xenial). However, the configuration is the same for any system running MongoDB 4.2. To use this guide with a Linode running CentOS 7, for example, simply adjust the distro-specific commands and configuration files accordingly.
 
+
 ## Before You Begin
 
 1.  To follow along with this guide, you will need at least six Linodes. Their functions will be explained in the next section. Follow our guides to [install MongoDB](/docs/databases/mongodb/) on each Linode you want to use in your cluster.
@@ -437,6 +438,7 @@ Before we enable sharding for a collection, we'll need to decide on a *sharding 
 **Hash-based sharding** distributes data by using a hash function on your shard key for a more even distribution of data among the shards. Suppose again that you have a collection of customers and addresses. In a hash-based sharding setup, you may choose a customer ID number, for example, as the shard key. This number is transformed by a hash function, and the results of the hashing are what determines which shard the data is stored on. Hash-based sharding is a good strategy in situations where your application will mostly perform write operations, or if your application needs only to run simple read queries like looking up only a few specific customers at a time.
 
 This is not intended to be a comprehensive guide to choosing a sharding strategy. Before making this decision for a production cluster, be sure to analyze your dataset, computing resources, and the queries your application will run. For more information, refer to [MongoDB's documentation on sharding](https://docs.mongodb.com/manual/sharding/).
+
 
 ### Enable Sharding at Collection Level
 

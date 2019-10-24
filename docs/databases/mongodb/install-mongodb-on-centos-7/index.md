@@ -185,6 +185,7 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
 For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://docs.mongodb.com/manual/security).
 
+
 ## Manage Data and Collections
 
 Much of MongoDB's popularity comes from its ease of integration. Interactions with databases are done via JavaScript methods, but [drivers for other languages](https://docs.mongodb.com/ecosystem/drivers/) are available. This section will demonstrate a few basic features, but we encourage you to do further research based on your specific use case.

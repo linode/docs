@@ -5,12 +5,14 @@ author:
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 16.04 Long Term Support (LTS) system.'
 keywords: ["install lamp ubuntu 16.04", "apache install", "mysql install", "php 7.0", " ubuntu 16.04 "]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/lamp/install-lamp-on-ubuntu-16-04/','web-servers/lamp/install-lamp-on-ubuntu-16-04/']
+aliases: ['websites/lamp/install-lamp-on-ubuntu-16-04/','web-servers/lamp/install-lamp-on-ubuntu-18-04/']
 modified: 2017-07-28
 modified_by:
   name: Edward Angert
 published: 2016-04-28
 title: 'How to Install a LAMP Stack on Ubuntu 16.04'
+deprecated: true
+deprecated_link: '/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'

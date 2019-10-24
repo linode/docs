@@ -14,7 +14,7 @@ title: Manage Block Storage Volumes with the Linode API
 external_resources:
   - '[API Documentation](https://developers.linode.com/api/v4)'
 ---
-
+![Manage Block Storage Volumes with the Linode API](manage-block-storage-volumes-with-the-linode-api.png "Manage Block Storage Volumes with the Linode API")
 <!--- ![Block Storage Volues with the Linode API](api-block-storage-smp.png) --->
 
 The Linode API allows you to create, delete, attach, detach, clone, and resize Block Storage Volumes.
