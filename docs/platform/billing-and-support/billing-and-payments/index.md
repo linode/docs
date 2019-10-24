@@ -76,12 +76,20 @@ To view your current balance, follow the steps below. This shows you the sum of 
 
 1.  Log in to the [Linode Cloud Manager](http://cloud.linode.com).
 1.  Select **Account** from the sidebar links.
-1.  Select **Account & Billing**.
-1.  Under **Billing Information**, expand the **Make a Payment** panel. There you can see the **Current Balance**:
+1.  On the right side you will see your **Billing Information** panel.
 
-    [![This customer has a $0 outstanding balance](billing-current-balance-small.png "This customer has a $0 outstanding balance.")](billing-current-balance.png)
+    [![This customer has a $63.52 uninvoiced balance and $0 due](billing-amount-due-and-uninvoiced-balance.png "This customer has a $63.52 uninvoiced balance and $0 due")](billing-amount-due-and-uninvoiced-balance.png)
 
-Here, you can keep track of your outstanding balance. In the example above, the customer has not accrued a balance for Linode services in the month so far. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
+    This displays the following:
+
+    | Field | Description |
+    |:------|:------------|
+    | Credit Card | The last four digits of the credit card you have on file. |
+    | Expiration Date | The expiration date for the credit card on file. If it's expired, this will be displayed as well. |
+    | Amount Due | The current invoiced balance. |
+    | Uninvoiced Balance | The accrued balance that has not yet been invoiced for the month. |
+
+    Here, you can keep track of your outstanding balance. In the example above, the customer has accrued a $63.52 balance for Linode services this month so far, but it has not been invoiced yet. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
 
 ## Mid-Month Billing
 
@@ -121,6 +129,9 @@ You can use the Cloud Manager to pay an outstanding balance or prepay for Linode
 1.  Select **Account** from the sidebar links.
 1.  Select **Account & Billing**.
 1.  Expand the **Make a Payment** panel.
+
+    [![The Make a Payment Panel](billing-make-a-payment-panel.png "The Make a Payment Panel.")](billing-make-a-payment-panel.png)
+
 1.  Enter the amount of money you would like to pay in the **Amount to Charge** field.
 1.  Enter the CVV number on the back of your credit card in the **CVV** field.
 1.  Click **Confirm Payment**.
