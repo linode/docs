@@ -123,7 +123,7 @@ You'll be prompted to enter your AWS access key and AWS secret access key, but y
 
 To use bucket versioning with the AWS CLI:
 
-1.  Turn on bucket versioning with the `put-bucket-versioning` command. Supply the Linode Object Storage endpoint and bucket name to the this command. In the below example, the bucket is named `bucket-versioning-example`:
+1.  Turn on bucket versioning with the `put-bucket-versioning` command. Supply the Linode Object Storage endpoint and bucket name to the command. In the below example, the bucket is named `bucket-versioning-example`:
 
         aws s3api put-bucket-versioning --endpoint=http://us-east-1.linodeobjects.com --bucket=bucket-versioning-example --versioning-configuration Status=Enabled
 
