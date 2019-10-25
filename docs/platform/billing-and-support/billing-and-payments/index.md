@@ -14,7 +14,7 @@ title: Billing and Payments
 classic_manager_link: platform/billing-and-support/billing-and-payments-classic-manager/
 ---
 
-We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/docs/platform/billing-and-support/support/).
+We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact Support](/docs/platform/billing-and-support/support/).
 
 ## How Hourly Billing Works
 
@@ -27,7 +27,7 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 {{< note >}}
 A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [transfer overage](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work) charge beyond the monthly cap.
 
-Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/platform/billing-and-support/support/) with your justification.
+Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact Support](/docs/platform/billing-and-support/support/) with your justification.
 {{< /note >}}
 
 ## Viewing Current Balance
@@ -40,14 +40,7 @@ To view your current balance, follow the steps below. This shows you the sum of 
 
     [![This customer has a $63.52 uninvoiced balance and $0 due](billing-amount-due-and-uninvoiced-balance.png "This customer has a $63.52 uninvoiced balance and $0 due")](billing-amount-due-and-uninvoiced-balance.png)
 
-    This displays the following:
-
-    | Field | Description |
-    |:------|:------------|
-    | Credit Card | The last four digits of the credit card you have on file. |
-    | Expiration Date | The expiration date for the credit card on file. If it's expired, this will be displayed as well. |
-    | Amount Due | The current invoiced balance. |
-    | Uninvoiced Balance | The accrued balance that has not yet been invoiced for the month. |
+    `Amount Due` is the current invoiced balance and `Uninvoiced Balance` is the accrued balance that has not yet been invoiced for the month.
 
     Here, you can keep track of your outstanding balance. In the example above, the customer has accrued a $63.52 balance for Linode services this month so far, but it has not been invoiced yet. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
 
@@ -69,14 +62,14 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
+We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact Support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
 
 <!-- The following video will show you how to make a payment via PayPal:
 
 {{< youtube 9BG6CGsIZwc >}} -->
 
 {{< note >}}
-PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card.
+PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card. PayPal cannot be used for automatic monthly payments. If you wish to pay your balance with PayPal, you'll need to log into [Cloud Manager](http://cloud.linode.com) and submit a manual payment.
 {{< /note >}}
 
 If you overpay, credit will be applied to your account; this allows you to prepay if desired. Service credit is always used before charging the credit card on file for ongoing service.
