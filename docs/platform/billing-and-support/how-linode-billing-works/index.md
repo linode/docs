@@ -5,11 +5,9 @@ author:
 description: Our guide to Linode Billing.
 keywords: ["billing", "payments"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['billing-and-payments/','platform/billing-and-payments/','platform/billing-and-support/billing-and-payments-new-manager/']
-modified: 2018-05-17
 modified_by:
   name: Linode
-published: 2014-02-28
+published: 2019-10-25
 title: How Linode Billing Works
 ---
 
@@ -18,6 +16,10 @@ We've done our best to create straightforward billing and payment policies. Stil
 ## How Hourly Billing Works
 
 All services are billed automatically at the end of the month. If you used a service for the entirety of the past month, you'll be billed the **monthly cap** amount for that service. If you used a service for only part of the past month, you'll be billed at the **hourly** rate for that service. If your usage during any given month hits the monthly cap for the service, hourly billing stops. You'll never be billed more than the monthly cap for any service, excluding network [transfer overages](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work). In other words, if you've used a service for the entire month, you'll have a predictable amount on your bill.
+
+{{< note >}}
+Review the [Viewing Current Balance](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#viewing-current-balance) section of the Manage Billing in Cloud Manager guide to monitor your balance throughout the month.
+{{< /note >}}
 
 ## Mid-Month Billing
 
@@ -29,12 +31,10 @@ What does a mid-month bill mean? Your existing active services will stay active.
 
 We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office](http://www.linode.com/contact). Please [contact Support](/docs/platform/billing-and-support/support/) before paying with check or money order. Note that we do not accept bank/wire transfers.
 
-<!-- The following video will show you how to make a payment via PayPal:
-
-{{< youtube 9BG6CGsIZwc >}} -->
+PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card. PayPal cannot be used for automatic monthly payments. If you wish to pay your balance with PayPal, you'll need to log into [Cloud Manager](http://cloud.linode.com) and submit a manual payment.
 
 {{< note >}}
-PayPal payments can only be made **after** an account is opened with an initial payment from a credit or debit card. PayPal cannot be used for automatic monthly payments. If you wish to pay your balance with PayPal, you'll need to log into [Cloud Manager](http://cloud.linode.com) and submit a manual payment.
+Review the [Making a Payment](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#making-a-payment) section of the Manage Billing in Cloud Manager guide for instructions when submitting a manual payment. Review the [Updating Credit Card Information](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#updating-credit-card-information) section to update your credit card on file.
 {{< /note >}}
 
 If you overpay, credit will be applied to your account; this allows you to prepay if desired. Service credit is always used before charging the credit card on file for ongoing service.
@@ -43,11 +43,17 @@ If you overpay, credit will be applied to your account; this allows you to prepa
 
 Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing)
 
-{{< note >}}
-A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [transfer overage](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work) charge beyond the monthly cap.
+A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [transfer overage](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work) charge beyond the monthly cap.s
 
-Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact Support](/docs/platform/billing-and-support/support/) with your justification.
-{{< /note >}}
+Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification in order to add extra public IPv4 addresses to an instance. If you need access to additional IPv4 addresses, please [contact Support](/docs/platform/billing-and-support/support/) with your justification.
+
+## Object Storage
+
+Review our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide for information on Object Storage pricing and how Object Storage interacts with your account's network transfer pool.
+
+## Network Transfer
+
+Review our [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota/) guide for complete information and examples of how Linode bills for network transfer.
 
 ## If My Linode is Powered Off, Will I Be Billed?
 

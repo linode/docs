@@ -5,11 +5,9 @@ author:
 description: Our guide to managing your bill in Cloud Manager.
 keywords: ["billing", "payments","cancel account"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['billing-and-payments/','platform/billing-and-payments/','platform/billing-and-support/billing-and-payments-new-manager/']
-modified: 2018-05-17
 modified_by:
   name: Linode
-published: 2014-02-28
+published: 2019-10-25
 title: Manage Billing in Cloud Manager
 ---
 
@@ -25,7 +23,7 @@ To view your current balance, follow the steps below. This shows you the sum of 
 
     [![This customer has a $63.52 uninvoiced balance and $0 due](billing-amount-due-and-uninvoiced-balance.png "This customer has a $63.52 uninvoiced balance and $0 due")](billing-amount-due-and-uninvoiced-balance.png)
 
-    `Amount Due` is the current invoiced balance and `Uninvoiced Balance` is the accrued balance that has not yet been invoiced for the month.
+    **Amount Due** is the current invoiced balance and **Uninvoiced Balance** is the accrued balance that has not yet been invoiced for the month.
 
     Here, you can keep track of your outstanding balance. In the example above, the customer has accrued a $63.52 balance for Linode services this month so far, but it has not been invoiced yet. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
 
@@ -54,16 +52,14 @@ Keep your credit card information up to date to prevent service interruptions. H
 1.  Select **Account** from the sidebar links.
 1.  Select **Account & Billing**.
 1.  Expand the **Update Credit Card** box and enter your credit card number and the card's expiration date.
-1.  Click **Save**.
+1.  Click **Save**. Your credit card information will be updated.
 
-Your credit card information will be updated.
+    [![Update your credit card information.](billing-change-card.png "Update your credit card.")](billing-change-card.png)
 
-  [![Update your credit card information.](billing-change-card.png "Update your credit card.")](billing-change-card.png)
-
- {{< note >}}
+    {{< note >}}
 If you have an outstanding balance, you will need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
 {{< /note >}}
- {{< note >}}
+    {{< note >}}
 A $1.00 authorization hold may be placed on your credit card by your banking institution when our payment processor tests the validity of the card. This is normal behavior and does not result in a charge on your card.
 {{< /note >}}
 
