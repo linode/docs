@@ -13,7 +13,7 @@ published: 2014-02-28
 title: Manage Billing in Cloud Manager
 ---
 
-We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how to make payments, update your billing information, and remove services. To learn how billing works see the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/) guide. If you have a question that isn't answered in either guide, please feel free to [contact support](/docs/platform/billing-and-support/support/).
+We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how to make payments, update your billing information, and remove services. To learn how billing works see the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/platform/billing-and-support/support/).
 
 ## Viewing Current Balance
 
@@ -25,14 +25,7 @@ To view your current balance, follow the steps below. This shows you the sum of 
 
     [![This customer has a $63.52 uninvoiced balance and $0 due](billing-amount-due-and-uninvoiced-balance.png "This customer has a $63.52 uninvoiced balance and $0 due")](billing-amount-due-and-uninvoiced-balance.png)
 
-    This displays the following:
-
-    | Field | Description |
-    |:------|:------------|
-    | Credit Card | The last four digits of the credit card you have on file. |
-    | Expiration Date | The expiration date for the credit card on file. If it's expired, this will be displayed as well. |
-    | Amount Due | The current invoiced balance. |
-    | Uninvoiced Balance | The accrued balance that has not yet been invoiced for the month. |
+    `Amount Due` is the current invoiced balance and `Uninvoiced Balance` is the accrued balance that has not yet been invoiced for the month.
 
     Here, you can keep track of your outstanding balance. In the example above, the customer has accrued a $63.52 balance for Linode services this month so far, but it has not been invoiced yet. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
 
