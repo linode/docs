@@ -24,11 +24,17 @@ All services are billed automatically at the end of the month. If you used a ser
 
 Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing)
 
-{{< note >}}
 A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [transfer overage](/docs/platform/billing-and-support/network-transfer-quota/#how-overages-work) charge beyond the monthly cap.
 
-Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact Support](/docs/platform/billing-and-support/support/) with your justification.
-{{< /note >}}
+Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification in order to add extra public IPv4 addresses to an instance. If you need access to additional IPv4 addresses, please [contact Support](/docs/platform/billing-and-support/support/) with your justification.
+
+## Object Storage
+
+Review our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide for information on Object Storage pricing and how Object Storage interacts with your account's network transfer pool.
+
+## Network Transfer
+
+Review our [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota/) guide for complete information and examples of how Linode bills for network transfer.
 
 ## Viewing Current Balance
 
@@ -40,7 +46,7 @@ To view your current balance, follow the steps below. This shows you the sum of 
 
     [![This customer has a $63.52 uninvoiced balance and $0 due](billing-amount-due-and-uninvoiced-balance.png "This customer has a $63.52 uninvoiced balance and $0 due")](billing-amount-due-and-uninvoiced-balance.png)
 
-    `Amount Due` is the current invoiced balance and `Uninvoiced Balance` is the accrued balance that has not yet been invoiced for the month.
+    **Amount Due** is the current invoiced balance and **Uninvoiced Balance** is the accrued balance that has not yet been invoiced for the month.
 
     Here, you can keep track of your outstanding balance. In the example above, the customer has accrued a $63.52 balance for Linode services this month so far, but it has not been invoiced yet. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
 
@@ -121,16 +127,14 @@ Keep your credit card information up to date to prevent service interruptions. H
 1.  Select **Account** from the sidebar links.
 1.  Select **Account & Billing**.
 1.  Expand the **Update Credit Card** box and enter your credit card number and the card's expiration date.
-1.  Click **Save**.
+1.  Click **Save**. Your credit card information will be updated.
 
-Your credit card information will be updated.
+    [![Update your credit card information.](billing-change-card.png "Update your credit card.")](billing-change-card.png)
 
-  [![Update your credit card information.](billing-change-card.png "Update your credit card.")](billing-change-card.png)
-
- {{< note >}}
+    {{< note >}}
 If you have an outstanding balance, you will need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
 {{< /note >}}
- {{< note >}}
+    {{< note >}}
 A $1.00 authorization hold may be placed on your credit card by your banking institution when our payment processor tests the validity of the card. This is normal behavior and does not result in a charge on your card.
 {{< /note >}}
 
