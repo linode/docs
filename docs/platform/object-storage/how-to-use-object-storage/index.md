@@ -88,7 +88,7 @@ Object Storage is not available in the Linode Classic Manager.
 
 There are a number of tools that are available to help manage Linode Object Storage. This guide explains how to install and use the following options:
 
--   The [Linode Cloud Manager](#cloud-manager) can be used to create buckets (you are currently not able to upload objects to a bucket from the Cloud Manager).
+-   The [Linode Cloud Manager](#cloud-manager) can be used to create buckets, and upload and delete objects, as well as create access keys for use with the S3 compatible clients.
 
 -   The [Linode CLI](#linode-cli) has an Object Storage plugin and can be used to create and remove buckets, add and remove objects, and convert a bucket into a static site from the command line.
 
