@@ -64,7 +64,7 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/download.html) and copy the URL from the **Minimal installation CD, 64-bit Intel/AMD** link.
 
-[Boot your Linode into rescue mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with the installer disk mounted as `/dev/sda`. Once in rescue mode, run the following command, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html). This example installs NixOS 19.03:
+[Boot your Linode into rescue mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with the installer disk mounted as `/dev/sda`. Once in rescue mode, run the following command, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html). This example installs NixOS 19.09:
 
     # Bind the URL you grabbed from the download page to a bash variable
     iso=<URL for nixos download>
@@ -73,7 +73,7 @@ In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/d
     update-ca-certificates
 
     # Download the ISO and write it to the installer disk
-    curl $iso | dd of=/dev/sdc
+    curl $iso | dd of=/dev/sda
 
 ## Install NixOS
 
@@ -82,6 +82,10 @@ In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/d
 In your Linode's dashboard, boot into your *Installer* configuration profile. Since the installer image isn't configured to support SSH or the LISH console, connect to your Linode using [GLISH](/docs/networking/use-the-graphic-shell-glish).
 
 ### Set up the Install Environment
+
+Use sudo to become the root user for interactive use:
+
+    sudo -i
 
 Mount the NixOS disk to which you are installing the distro as `/mnt`:
 
@@ -171,6 +175,13 @@ Most of Linode's default images have had systemd's predictable interface names d
 
     networking.usePredictableInterfaceNames = false;
 
+We will also need to change the name of the interface that DHCP is used on. We will need to replace contents of the existing block around `networking.useDHCP` with the following.
+
+    networking.useDHCP = false; # Disable DHCP globally as we will not need it.
+    # Disable DHCP at the interface level as the interface will not exist
+    # networking.interfaces.enp0s5.useDHCP = true;
+
+
 ### Install Diagnostic Tools
 
 These tools are included on most Linode images, and are frequently used by Linode support when troubleshooting networking and host level issues. Add the following to your configuration to ensure these tools are installed:
@@ -223,7 +234,13 @@ After installation, Longview can be set up for your NixOS instance. Add the foll
 
     services.longview = {
       enable = true;
-      apiKey = "01234567-89AB-CDEF-0123456789ABCDEF";
+      apiKeyFile = "/var/lib/longview/apiKeyFile";
     };
 
-Replace `apiKey` with the one you got from [Longview](https://manager.linode.com/longview/add).
+You will then have to create the directory and file from the above configuration and write your longview api key to the file.
+
+    sudo mkdir /var/lib/longview
+    export longview_key="01234567-89AB-CDEF-0123456789ABCDEF" # This is an example, fill with your own key
+    echo $longview_key > /var/lib/longview/apiKeyFile | sudo tee /var/lib/longview/apiKeyFile
+
+Replace the value of `longview_key` above with with the one you got from [Longview](https://manager.linode.com/longview/add).
