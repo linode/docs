@@ -15,7 +15,7 @@ contributor:
 ---
 ## What is Packer?
 
-Packer is a Haschicorp maintained open source tool that is used to create machine images. A machine image provides the operating system, applications, application configurations, and data files that a virtual machine instance will run once it's deployed.  Using a single source configuration, you can generate identical machine images. Packer can be used in conjunction with common configuration management tools, like Chef, Puppet, or Ansible to install software to your Linode and include those configurations into your image.
+Packer is a HashiCorp maintained open source tool that is used to create machine images. A machine image provides the operating system, applications, application configurations, and data files that a virtual machine instance will run once it's deployed.  Using a single source configuration, you can generate identical machine images. Packer can be used in conjunction with common configuration management tools, like Chef, Puppet, or Ansible to install software to your Linode and include those configurations into your image.
 
 In this guide you will complete the following steps:
 
@@ -59,7 +59,7 @@ The Linode Packer builder works in the following way:
         mkdir ~/packer
         cd ~/packer
 
-1. Download the precompilied binary for your system from the Packer website. Example `wget` commands are listed using the latest version available at time of publishing (1.4.4). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
+1. Download the precompiled binary for your system from the Packer website. Example `wget` commands are listed using the latest version available at time of publishing (1.4.4). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
 
     * The 64-bit Linux `.zip` archive
 
@@ -155,7 +155,7 @@ Available commands are:
 
 ## Use the Linode Packer Builder
 
-Now that Packer is installed on your local system, you can create a Packer *template*. A template is a JSON formated file that contains the configurations needed to build a machine image. In this section you will create a template that uses the Linode Packer builder to create an image using Debian 9 as its base distribution. The template will also configure your system image with a new limited user account, and a public SSH key from your local computer. The additional system configuration will be completed using Packer's Ansible [*provisioner*](https://www.packer.io/docs/provisioners/index.html) and an example Ansible Playbook. A Packer provisioner is a built-in third-party integration that further configures a machine instance during the boot process and prior to taking the machine's snapshot.
+Now that Packer is installed on your local system, you can create a Packer *template*. A template is a JSON formatted file that contains the configurations needed to build a machine image. In this section you will create a template that uses the Linode Packer builder to create an image using Debian 9 as its base distribution. The template will also configure your system image with a new limited user account, and a public SSH key from your local computer. The additional system configuration will be completed using Packer's Ansible [*provisioner*](https://www.packer.io/docs/provisioners/index.html) and an example Ansible Playbook. A Packer provisioner is a built-in third-party integration that further configures a machine instance during the boot process and prior to taking the machine's snapshot.
 
 {{< note >}}
 The steps in this section will incur charges related to deploying a [1GB Nanode](https://www.linode.com/products/nanodes/). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](docs/platform/billing-and-support/billing-and-payments/) guide for details about [hourly billing](/docs/platform/billing-and-support/billing-and-payments/#how-hourly-billing-works).
