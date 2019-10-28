@@ -522,8 +522,8 @@ virtual_gid_maps = static:5000
 11. Change the ownership of the `/var/mail` directory and everything below it to the `vmail` user and group:
 
         chown -R vmail:vmail /var/mail
-        
-Great! Now the proper folders actually exist for mail delivery, and the user that owns those folders matches the one we told Postfix to use when writing new mail to the server.
+
+    Great! Now the proper folders actually exist for mail delivery, and the user that owns those folders matches the one we told Postfix to use when writing new mail to the server.
 
 12. Restart Postfix.
 13. Try sending yourself a test message. Check `/var/log/mail.log`; you should see something like this:
