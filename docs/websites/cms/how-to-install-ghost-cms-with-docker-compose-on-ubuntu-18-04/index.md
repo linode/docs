@@ -146,7 +146,7 @@ services:
 
 The Docker Compose file relies on a customized NGINX image. This image will be packaged with the appropriate server block settings.
 
-1.  Create a new `nginx` directory for this image:
+1.  Create a new `nginx` directory for this image in the `ghost` directory:
 
         mkdir nginx
 
