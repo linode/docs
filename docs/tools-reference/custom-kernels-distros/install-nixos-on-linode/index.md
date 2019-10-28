@@ -237,7 +237,7 @@ After installation, Longview can be set up for your NixOS instance. Add the foll
       apiKeyFile = "/var/lib/longview/apiKeyFile";
     };
 
-You will then have to create the directory and file from the above configuration and write your longview api key to the file.
+You will then have to create the directory and file from the above configuration and write your Longview api key to the file.
 
     sudo mkdir /var/lib/longview
     export longview_key="01234567-89AB-CDEF-0123456789ABCDEF" # This is an example, fill with your own key
