@@ -522,8 +522,8 @@ virtual_gid_maps = static:5000
 11. Change the ownership of the `/var/mail` directory and everything below it to the `vmail` user and group:
 
         chown -R vmail:vmail /var/mail
-
-    Great! Now the proper folders actually exist for mail delivery, and the user that owns those folders matches the one we told Postfix to use when writing new mail to the server.
+        
+Great! Now the proper folders actually exist for mail delivery, and the user that owns those folders matches the one we told Postfix to use when writing new mail to the server.
 
 12. Restart Postfix.
 13. Try sending yourself a test message. Check `/var/log/mail.log`; you should see something like this:
@@ -538,7 +538,7 @@ Mar  8 18:01:27 host postfix/virtual[4418]: E2C7528420: to=<email1@example.com>,
 14. Next up is Dovecot. First, update the `mail_location` in `/etc/dovecot/conf.d/10-mail.conf`:
 
     {{< file "/etc/dovecot/conf.d/10-mail.conf" >}}
-mail_location = maildir:~ #update mail_location    
+mail_location = maildir:~ #update mail_location
 passdb {
   driver = passwd-file
   args = username_format=%u /etc/dovecot/users
