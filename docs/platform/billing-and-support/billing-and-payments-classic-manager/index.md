@@ -37,7 +37,7 @@ All services are billed automatically at the end of the month. If you used a ser
 | Linode 128GB  | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
 | Linode 192GB  | $1.44/hr    | $960/mo | $0.36/hr            | $240/mo
 
-Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#standard)
+Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing)
 
 ### High Memory Plans
 
@@ -49,7 +49,7 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 | Linode 150GB | $0.72/hr    | $480/mo | $0.06/hr            | $40/mo
 | Linode 300GB | $1.44/hr    | $960/mo | $0.12/hr            | $80/mo
 
-Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#high_memory)
+Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing/high-memory)
 
 ### Additional Linode Services
 

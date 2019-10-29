@@ -29,7 +29,7 @@ The steps in this guide require root privileges unless otherwise noted. Be sure 
 
 1.  To connect to your ARK server, you must have a copy of the [ARK](http://www.playark.com/) game client.
 
-2.  In keeping with the [system requirements](http://ark.gamepedia.com/Dedicated_Server_Setup#Hardware) for an ARK server, we recommend using our **8GB** plan or a [high memory Linode](https://www.linode.com/pricing#high-memory) when following these steps.
+2.  In keeping with the [system requirements](http://ark.gamepedia.com/Dedicated_Server_Setup#Hardware) for an ARK server, we recommend using our **8GB** plan or a [high memory Linode](https://www.linode.com/pricing/high-memory) when following these steps.
 
 3.  Update your Linode's software:
 

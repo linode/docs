@@ -19,7 +19,7 @@ We make it easy to upgrade or downgrade your Linode by changing plans and adding
 ![Resizing a Linode](resizing_a_linode.png "Resizing a Linode")
 
 {{< note >}}
-Linodes can be resized to a smaller or larger plan. A [standard](https://www.linode.com/pricing#standard) plan can also be converted to a [high memory](https://www.linode.com/pricing#high-memory) plan, or vice versa.
+Linodes can be resized to a smaller or larger plan. A [standard](https://www.linode.com/products/standard-linodes) plan can also be converted to a [high memory](https://www.linode.com/pricing/high-memory) plan, or vice versa.
 {{< /note >}}
 
 ## Resizing Your Linode
