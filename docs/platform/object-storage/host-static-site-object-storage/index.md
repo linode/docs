@@ -21,7 +21,7 @@ external_resources:
 ![Host a Static Site using Linode Object Storage](host-a-static-site-using-linode-object-storage.png "Host a Static Site using Linode Object Storage")
 
 {{< note >}}
-[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with objects stored in Object Storage buckets will be billed. For more information, see our [Object Storage Pricing and Limitations](https://www.linode.com/docs/platform/object-storage/pricing-and-limitations/) guide.
+[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with objects stored in Object Storage buckets will be billed. For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
 {{</ note >}}
 
 ## Why Host a Static Site on Object Storage?
