@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2011-05-03
 title: An Overview of IPv6 on Linode
+h1_title: A Guide for Understanding IPv6 on Linode
 external_resources:
  - '[Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)'
  - '[IPv6 Chart](https://www.ripe.net/support/training/material/lir-training-course/LIR-Training-Handbook-Appendices/IPv6Chart_2015.pdf)'
@@ -77,31 +78,27 @@ You can find your Linode's IPv6 address using the Linode Cloud Manager or the `i
 
 If your Linode does not have the correct IPv6 address or any IPv6 address at all, you should verify that you have router advertisements enabled and IPv6 privacy extensions disabled. Your Linode will need to accept router advertisements for SLAAC to function. These settings are properly configured by default in our supported distributions.
 
-
 ## Additional IPv6 Addresses
 
 You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support). While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the range you request. See our [static IP guide](/docs/networking/linux-static-ip-configuration) for instructions on how to do this.
 
-
-## IPv6 Ranges and Pools
+## IPv6 Ranges, Blocks, and Pools
 
 {{< note >}}
-The IPv6 `/116` pool is not available in the Toronto data center.
+The IPv6 `/116` block address pool is not available in the Toronto or Mumbai data centers.
 {{</ note >}}
 
-IPv6 addresses are allocated in *ranges* and *pools*. The IPv6 range and pool sizes Linode provides and their respective quantity of IPv6 addresses are listed below.
+IPv6 addresses are allocated in **blocks**. These are indicated with a slash `/` followed by a number in base 10, the length of the network prefix in bits, which translates to the number of available addreses in the **pool**. For example, the block `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like 2001:db8:1234::/48 the **range** of addresses is 2001:db8:1234:0000:0000:0000:0000:0000 to 2001:db8:1234:ffff:ffff:ffff:ffff:ffff.
+
+The IPv6 blocks and their respective quantity of IPv6 addresses that Linode provides are listed below.
 
 <!--You will see where the range is routed under *Public IP Pools* on the Linode Manager's Remote Access tab.-->
 
-| **Range**  | **Number of addresses**           |
-|:------:|:-----------------------------:|
+| **Block** | **Number of Addresses in Pool** |
+|:------:|:-------------------------------:|
 | /56    | 4,722,366,482,869,645,213,696 |
 | /64    | 18,446,744,073,709,551,616    |
-
-| **Pool**   | **Number of addresses**           |
-|:------:|:-----------------------------:|
 | /116   | 4,096                         |
-
 
 ## IPv6 Forwarding
 
