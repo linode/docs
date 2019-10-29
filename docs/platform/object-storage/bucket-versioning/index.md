@@ -16,9 +16,7 @@ external_resources:
 ---
 
 {{< note >}}
-[Linode Object Storage](/docs/platform/object-storage/) is currently in a closed early access Beta, and you may not have access to Object Storage through the Cloud Manager or other tools. To request access to the Early Access Program (EAP), [open up a Customer Support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) or e-mail objbeta@linode.com. Beta access is completely free.
-
-Because Object Storage is in Beta, there may be breaking changes to how you access and manage Object Storage. This guide will be updated to reflect these changes if and when they occur. To view the changes that happen to this guide over time, visit the [source text for it on GitHub](https://github.com/linode/docs/blob/master/docs/platform/object-storage/bucket-versioning/index.md).
+[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with objects stored in Object Storage buckets will be billed. For more information, see our [Object Storage Pricing and Limitations](https://www.linode.com/docs/platform/object-storage/pricing-and-limitations/) guide.
 {{</ note >}}
 
 Linode Object Storage allows for bucket versioning so that you can retain different versions of your objects within buckets. This makes it easy to save older versions of objects, as well as quickly revert to an object's previous state.

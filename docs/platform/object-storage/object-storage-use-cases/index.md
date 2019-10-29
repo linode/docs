@@ -13,6 +13,10 @@ contributor:
   name: Linode
 ---
 
+{{< note >}}
+[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with objects stored in Object Storage buckets will be billed. For more information, see our [Object Storage Pricing and Limitations](https://www.linode.com/docs/platform/object-storage/pricing-and-limitations/) guide.
+{{</ note >}}
+
 ## What is Object Storage?
 
 Object Storage is a method of storing data that differs in a number of ways from [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). Block Storage splits files into small *blocks* of data. Minimal file metadata is stored alongside this data and, in general, descriptive metadata must be stored in a separate file or database. In order to use a Block Storage volume it must be attached to a host server, where it acts like a hard drive.
