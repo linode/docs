@@ -44,7 +44,7 @@ In this guide you will learn:
 
 ## Enable Object Storage
 
-Object Storage is not enabled by default. All that is required to enable Object Storage is to create a bucket or an access key. To cancel Object Storage, see the [Cancel Object Storage](#cancel-object-storage).
+Object Storage is not enabled by default. All that is required to enable Object Storage is to create a bucket or an access key. To cancel Object Storage, see the [Cancel Object Storage](#cancel-object-storage) section.
 
 ## Object Storage Key Pair
 
@@ -590,7 +590,7 @@ To create a static site from your bucket:
 
     ![Cancel Object Storage](object-storage-cancel-object-storage.png)
 
-1.  Click *Cancel Object Storage*. A prompt will appear asking you to confirm the cancellation. If you still have active buckets, you will be prompted to delete them.
+1.  Click **Cancel Object Storage**. A prompt will appear asking you to confirm the cancellation. If you still have active buckets, you will be prompted to delete them.
 
 ## Next Steps
 
