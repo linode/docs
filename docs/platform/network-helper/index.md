@@ -42,7 +42,7 @@ When Network Helper is enabled globally, all new Linodes created on your account
 
 1.  Click on **Account** in the sidebar of the [Linode Cloud Manager](https://cloud.linode.com).
 
-1.  Click on the **Settings** tab. Set the switch under the **Network Helper** section to the desired setting. Blue is enabled, gray is disabled.
+1.  Click on the **Settings** tab. Set the switch under the **Network Helper** section to the desired setting; blue is enabled, gray is disabled.
 
     [![The Network Helper Default Behavior option](network-helper-linode-account-settings.png)](network-helper-linode-account-settings.png)
 
@@ -52,15 +52,15 @@ When Network Helper is enabled globally, all new Linodes created on your account
 
 1.  Click on **Linodes** link in the sidebar of the Linode Cloud Manager.
 
-1.  Click on the **more options ellipsis** for the Linode for which you want to enable Network Helper. Then, click **Settings**.
+1.  Click on the **more options ellipsis** corresponding to the Linode for which you want to enable Network Helper. Then, click **Settings**.
 
     ![Navigate to the Linode's Settings page](network-helper-linode-settings-link.png)
 
-1.  From the Linode's Dashboard screen, click the tab labeled **Advanced**.  Next, click on the **more options ellipsis** for your Disk Profile under *Configuration*. From the menu, select **Edit**:
+1.  Navigate to the tab labeled **Advanced**.  From the **Configuration** pane, click on your Disk Profile's **more options ellipsis** and select **Edit**.
 
     [![Select the configuration profile Edit Menu](network-helper-linode-settings-page.png)](network-helper-linode-settings-page.png)
 
-1.  A menu will appear with that configuration profile's settings. Under the **Filesystem/Boot Helpers** section, toggle the **Auto-configure networking** switch  to the desired setting. Blue is enabled, gray is disabled.
+1.  A menu will appear with that configuration profile's settings. Under the **Filesystem/Boot Helpers** section, toggle the **Auto-configure networking** switch to the desired setting; blue is enabled, gray is disabled.
 
     [![Toggle the 'auto-configure networking' box](network-helper-linode-config-profile-settings.png)](network-helper-linode-config-profile-settings.png)
 
@@ -69,6 +69,14 @@ When Network Helper is enabled globally, all new Linodes created on your account
 ## What Files are Modified
 
 The specific files Network Helper modifies varies by distribution.
+
+{{< note >}}
+Network Helper is not supported on the CoreOS distribution
+{{</ note >}}
+
+### Alpine
+
+Network Helper configures `/etc/network/interfaces`.
 
 ### Arch & Ubuntu (18.04 LTS and later)
 
