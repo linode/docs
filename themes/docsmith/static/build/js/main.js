@@ -434,11 +434,23 @@ function buildNav() {
 })(jQuery);
 
 $(window).on('load', function() {
-    /* smooth scrolling sections */
     var scrollSpyOffset = SidebarScroll.scrollSpyOffset;
 
-    // Select all anchor links
-    // (that aren't just empty anchor links, e.g. <a href="#">)
+    // Check if the page is visited with an anchor link specified
+    // Check if the link corresponds to an element on the page
+    // If it does, scroll up a bit from it (by an amount equal
+    // to the scrollSpyOffset) so that it doesn't appear under
+    // the top nav.
+    if(window.location.hash && $(window.location.hash).length) {
+        this.console.log(window.location.hash);
+        var scrollLocation = $(window.location.hash).offset().top;
+        $(window).scrollTop(scrollLocation-scrollSpyOffset+1);
+    }
+
+    /* smooth scrolling sections */
+
+    // Select all anchor links (that aren't just empty
+    // anchor links, e.g. <a href="#">).
     // Add smooth click functionality to selected links
     $('a[href*=\\#]:not([href=\\#])').click(function() {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
