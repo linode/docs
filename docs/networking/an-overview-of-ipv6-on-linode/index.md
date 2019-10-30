@@ -82,19 +82,19 @@ If your Linode does not have the correct IPv6 address or any IPv6 address at all
 
 You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support). While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the range you request. See our [static IP guide](/docs/networking/linux-static-ip-configuration) for instructions on how to do this.
 
-## IPv6 Ranges, Blocks, and Pools
+## IPv6 Prefixes and Pools
 
 {{< note >}}
-The IPv6 `/116` block address pool is not available in the Toronto or Mumbai data centers.
+The IPv6 `/116` prefix is not available in the Toronto or Mumbai data centers.
 {{</ note >}}
 
-IPv6 addresses are allocated in **blocks**. These are indicated with a slash `/` followed by a number in base 10, the length of the network prefix in bits, which translates to the number of available addresses in the **pool**. For example, the block `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like 2001:db8:1234::/48 the **range** of addresses is 2001:db8:1234:0000:0000:0000:0000:0000 to 2001:db8:1234:ffff:ffff:ffff:ffff:ffff.
+IPv6 addresses are allocated in blocks. These are indicated with a slash `/` followed by a number in base 10, the length of the network **prefix** in bits, which translates to the number of available addresses in the **pool**. For example, the prefix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like 2001:db8:1234::/48 the block of addresses is 2001:db8:1234:0000:0000:0000:0000:0000 to 2001:db8:1234:ffff:ffff:ffff:ffff:ffff.
 
-The IPv6 blocks and their respective quantity of IPv6 addresses that Linode provides are listed below.
+The IPv6 prefixes and their respective quantity of IPv6 addresses that Linode provides are listed below.
 
 <!--You will see where the range is routed under *Public IP Pools* on the Linode Manager's Remote Access tab.-->
 
-| **Block** | **Number of Addresses in Pool** |
+| Prefix | Number of Addresses in Pool |
 |:------:|:-------------------------------:|
 | /56    | 4,722,366,482,869,645,213,696 |
 | /64    | 18,446,744,073,709,551,616    |
