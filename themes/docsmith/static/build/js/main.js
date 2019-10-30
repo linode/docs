@@ -407,72 +407,54 @@ function buildNav() {
 }
 
 (function($) {
-
     buildNav();
 
     SidebarScroll = {
+        scrollSpyOffset: 80,
+
         init: function() {
-            var tocElemID = '#doc-sidebar';
-
-            /* activate scrollspy menu */
-            var $body = $(document.body);
-
-            // The y position of the sticky nav element
-            var scrollSpyOffset = 80;
-
-            $body.scrollspy({
-                target: tocElemID,
-                offset: scrollSpyOffset
-            });
-
             /*  scrollspy Table of contents, adapted from https://www.bootply.com/100983
                 license: MIT
                 author: bootply.com
              */
-            /* smooth scrolling sections */
-            $('a[href*=\\#]:not([href=\\#])').click(function() {
-                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                    if (target.length) {
-                        // Add 1 to push the scroll position past the scrollspy threshold
-                        // for the header. Otherwise, the header prior to the target would be
-                        // highlighted in the nav at the end of the scroll animation.
-                        $('html,body').animate({
-                            scrollTop: target.offset().top - scrollSpyOffset + 1
-                        }, 1000);
-                        /* Change the hash location in URL */
-                        window.location.hash = this.hash;
-                        return false;
-                    }
-                }
+            var tocElemID = '#doc-sidebar';
+
+            /* activate scrollspy menu */
+            var body = $('body');
+
+            // The y position of the sticky nav element
+            var scrollSpyOffset = this.scrollSpyOffset;
+
+            body.scrollspy({
+                target: tocElemID,
+                offset: scrollSpyOffset
             });
         }
-
     }
-
-    window.onload = function() {
-        var scrollSpyOffset = 80;
-        var headerLinks = document.getElementsByClassName('header-link');
-        for (var i = 0; i < headerLinks.length; i++) {
-          headerLinks[i].addEventListener('click', function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    // Add 1 to push the scroll position past the scrollspy threshold
-                    // for the header. Otherwise, the header prior to the target would be
-                    // highlighted in the nav at the end of the scroll animation.
-                    $('html,body').animate({
-                        scrollTop: target.offset().top - scrollSpyOffset + 1
-                    }, 1000);
-                    /* Change the hash location in URL */
-                    window.location.hash = this.hash;
-                    return false;
-                }
-            }
-          });
-        }
-      }
-
 })(jQuery);
+
+$(window).on('load', function() {
+    /* smooth scrolling sections */
+    var scrollSpyOffset = SidebarScroll.scrollSpyOffset;
+
+    // Select all anchor links
+    // (that aren't just empty anchor links, e.g. <a href="#">)
+    // Add smooth click functionality to selected links
+    $('a[href*=\\#]:not([href=\\#])').click(function() {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                // Add 1 to push the scroll position past the scrollspy threshold
+                // for the header. Otherwise, the header prior to the target would be
+                // highlighted in the nav at the end of the scroll animation.
+                $('html,body').animate({
+                    scrollTop: target.offset().top - scrollSpyOffset + 1
+                }, 1000);
+                /* Change the hash location in URL */
+                window.location.hash = this.hash;
+                return false;
+            }
+        }
+    });
+});
