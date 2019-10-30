@@ -442,7 +442,6 @@ $(window).on('load', function() {
     // to the scrollSpyOffset) so that it doesn't appear under
     // the top nav.
     if(window.location.hash && $(window.location.hash).length) {
-        this.console.log(window.location.hash);
         var scrollLocation = $(window.location.hash).offset().top;
         $(window).scrollTop(scrollLocation-scrollSpyOffset+1);
     }
