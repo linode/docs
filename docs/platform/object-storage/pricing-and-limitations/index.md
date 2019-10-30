@@ -37,7 +37,7 @@ Object Storage adds 1 terabyte of outbound data transfer to your data transfer p
 
 ## Rate Limiting
 
-Users accessing Object Storage resources are limited to 750 requests per second, per IP address.
+Users accessing Object Storage resources are limited to 750 requests per second, per bucket.
 
 {{< note >}}
 The rate limits for Object Storage may be subject to change. This document will be updated to include any future changes.
