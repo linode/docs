@@ -1031,6 +1031,7 @@ phonebook
 php
 php5
 php7
+phpinfo
 phpmyadmin
 phusion
 pid
