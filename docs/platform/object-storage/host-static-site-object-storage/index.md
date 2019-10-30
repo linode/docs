@@ -267,7 +267,7 @@ Error document:   404.html
     {{</ output >}}
 
     {{< note >}}
-The Linode Object Storage early access Beta provides SSL enabled by default. This means you can access your Object Storage bucket using `https`, as well.
+Linode Object Storage provides SSL enabled by default. This means you can access your Object Storage bucket using `https`, as well.
 {{</ note >}}
 
 1. Use s3cmd's `sync` command to upload the contents of your static site's `public` directory to your Object Storage bucket. This step will make your site available publicly on the Internet. Ensure you are in your site's root directory on your computer (e.g. `/home/username/example-site`):

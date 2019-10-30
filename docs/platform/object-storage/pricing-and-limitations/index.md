@@ -33,7 +33,7 @@ If you need to increase the storage limit, the object limit, or the bucket limit
 
 ## Transfer Quotas
 
-Object Storage adds 1 terabyte of outbound data transfer to your data transfer pool. This 1 terabyte of transfer data is prorated. If you use Object Storage for half of a month, only 500 gigabytes of transfer data will be added to your monthly transfer pool. At this time, all outbound data, including data transfer to a Linode in the same data center, is billable. You are not charged for uploading objects (inbound traffic) to Object Storage. Any further outbound data is charged at a rate of $0.02 a gigabyte. For more information on network transfer pools, review our [Network Transfer Quota guide](https://linode.com/docs/platform/billing-and-support/network-transfer-quota/).
+Object Storage adds 1 terabyte of outbound data transfer to your data transfer pool. This 1 terabyte of transfer data is prorated. If you use Object Storage for half of a month, only 500 gigabytes of transfer data will be added to your monthly transfer pool. At this time, all outbound data, including data transfer to a Linode in the same data center, is billable. You are not charged for uploading objects (inbound traffic) to Object Storage, with the exception that  uploading a object to Object Storage from a Linode over IPv4 is billable, as that is considered outbound traffic on your Linode. Any further outbound data is charged at a rate of $0.02 a gigabyte. For more information on network transfer pools, review our [Network Transfer Quota guide](https://linode.com/docs/platform/billing-and-support/network-transfer-quota/).
 
 ## Rate Limiting
 
