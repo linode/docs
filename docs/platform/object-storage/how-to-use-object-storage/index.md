@@ -42,6 +42,10 @@ In this guide you will learn:
 
    - [Cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck)
 
+## Enable Object Storage
+
+Object Storage is not enabled by default. All that is required to enable Object Storage is to create a bucket or an access key. To cancel Object Storage, see the [Cancel Object Storage](#cancel-object-storage).
+
 ## Object Storage Key Pair
 
 The first step towards using Object Storage is to create a pair of keys for the service. This pair is composed of an *access key* and a *secret key*:
@@ -69,6 +73,10 @@ Object Storage is not available in the Linode Classic Manager.
 1.  Click on the **Object Storage** link in the sidebar, click the **Access Keys** tab, and then click the **Create an Access Key** link.
 
     ![Click on the 'Access Keys' tab.](object-storage-access-keys-tab.png)
+
+1.  A prompt will appear asking you to confirm that you'd like to enable Object Storage. Click **Enable Object Storage**.
+
+    ![Enable Object Storage](object-storage-enable-object-storage.png)
 
 2.  The **Create an Access Key** menu will appear.
 
@@ -105,6 +113,8 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 1.  Click on the **Object Storage** link in the sidebar, and then click on **Add a Bucket**.
 
     ![The Object Storage menu.](object-storage-add-a-bucket.png)
+
+    If you have not created an access key or a bucket before, you will be prompted to enable Object Storage.
 
 1.  The **Create a Bucket** menu will appear.
 
@@ -161,13 +171,11 @@ You can drag and drop multiple files to the **Upload Files Pane** at one time.
 
     ![View all of your bucket's objects](view-your-objects.png)
 
-1. Click on the ellipsis menu corresponding to the object you'd like to view. Then, select **Open**.
+1. Click on the ellipsis menu corresponding to the object you'd like to view. Then, select **Download**.
 
-    ![Open a bucket's object](open-an-object.png)
+    ![Download a bucket's object](object-storage-download-object.png)
 
-1. A browser window will open your object's unique URL and display your object. In the example, the browser displays a `.png` image.
-
-    ![View your uploaded object in your browser](object-displayed-in-browser.png)
+1. The object will be downloaded to your local computer.
 
 ### Delete Objects from a Bucket
 
@@ -183,7 +191,7 @@ You can drag and drop multiple files to the **Upload Files Pane** at one time.
 
 1. Click on the ellipsis menu corresponding to the object you'd like to delete. Then, select **Delete**.
 
-    ![Delete an object from your bucket](delete-object.png)
+    ![Delete an object from your bucket](object-storage-delete-object.png)
 
 1. A dialog box will appear prompting you to confirm if you'd like to delete the object. Click **Delete** to proceed. Once the object has been deleted, it will no longer be visible on the **Objects Listing Page**.
 
@@ -573,6 +581,16 @@ To create a static site from your bucket:
 1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.website-us-east-1.linodeobjects.com`.
 
     For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+
+## Cancel Object Storage
+
+1.  To cancel Object Storage, you must first delete all of your buckets. To delete a bucket, the bucket must be empty. For buckets that contain large amounts of objects, consider employing [lifecycle policies](/docs/platform/object-storage/lifecycle-policies/) to delete the objects.
+
+1.  Once you've deleted all of your buckets, navigate to the **Account** page in the left-hand navigation. Click on the *Settings* tab. In the menu, you should see a setting for Object Storage:
+
+    ![Cancel Object Storage](object-storage-cancel-object-storage.png)
+
+1.  Click *Cancel Object Storage*. A prompt will appear asking you to confirm the cancellation. If you still have active buckets, you will be prompted to delete them.
 
 ## Next Steps
 
