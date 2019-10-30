@@ -76,6 +76,17 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
 1.  Be sure to bookmark the [Linode Status page](https://status.linode.com/) or [subscribe](/docs/platform/linode-status-page/) to our system status updates by email.
 
+## Network Helper
+
+[Network Helper](/docs/platform/network-helper/) is a host-side service which automatically sets a static IPv4 address and gateway for your Linode. It is enabled by default. However, it can be [enabled and disabled globally](/docs/platform/network-helper/#global), and [per-Linode](/docs/platform/network-helper/#single-per-linode).
+
+- If you **disable** Network Helper globally on your account, and you want it enabled for a single Linode, you will need to enable it for that Linode.
+- If you **enable** Network Helper globally, every new Linode you create will have it enabled upon creation; you can disable it for single Linodes if desired.
+
+{{< note >}}
+If Network Helper is unable to determine the operating system during boot, or if you boot an unsupported operating system, Network Helper will not attempt to write any new configuration files. See the [Network Helper](/docs/platform/network-helper/) guide to learn which distributions it supports. Be aware that Network Helper configures only IPv4 addressing; your Linode’s IPv6 address is assigned by SLAAC.
+{{< /note >}}
+
 ## Connect to Your Linode via SSH
 
 Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
