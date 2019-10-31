@@ -82,6 +82,8 @@ mail <username@example.com>
 
 Your system will need a functioning [Mail Transfer Agent](/docs/email/) to be able to send email.
 
+{{< content "email-warning-shortguide" >}}
+
 ## Configure Log Rotation Intervals
 
 To rotate logs every week, set the following configuration directive:
