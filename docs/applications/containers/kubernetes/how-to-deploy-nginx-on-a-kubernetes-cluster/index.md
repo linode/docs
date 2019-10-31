@@ -14,7 +14,7 @@ contributor:
   link: https://github.com/snarik
 og_description: 'Kubernetes can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an NGINX service.'
 deprecated: true
-deprecated_link: 'applications/containers/getting-started-with-kubernetes/'
+deprecated_link: 'applications/containers/kubernetes/getting-started-with-kubernetes/'
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes](https://kubernetes.io/)'
