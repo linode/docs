@@ -24,6 +24,7 @@ There are many reasons why you would want to configure Postfix to send email usi
 
 In this tutorial, you will learn how to install and configure a Postfix server to send email through Mandrill, or SendGrid.
 
+{{< content "email-warning-shortguide" >}}
 
 ## Updated Guide for Gmail and Google Apps
 

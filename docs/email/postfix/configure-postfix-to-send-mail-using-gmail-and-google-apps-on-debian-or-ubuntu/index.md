@@ -19,6 +19,8 @@ Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client 
 
 In this guide, you will learn how to install and configure a Postfix server on Debian or Ubuntu to send email through Gmail and Google Apps. For information on configuring Postfix with other external SMTP servers, see our [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7/) guide.
 
+{{< content "email-warning-shortguide" >}}
+
 ## Before You Begin
 
 1.  Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides and ensure that the Linode's [hostname is set](/docs/getting-started#getting-started#setting-the-hostname).

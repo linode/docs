@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode  
+  name: Linode
 description: 'This guide shows how to set up Fail2Ban, a log-parsing application, to monitor system logs and detect automated attacks on your Linode.'
 og_description: 'Fail2ban monitors system logs for symptoms of an automated attack, bans the IP and alerts you of the attach through email. This guide helps you set up Fail2ban to thwart automated system attacks and further secure your server.'
 keywords: ["fail2ban", "ip whitelisting", "jail.local"]
@@ -218,6 +218,8 @@ maxretry = 3
 -   `maxretry`: How many attempts can be made to access the server from a single IP before a ban is imposed. The default is set to 3.
 
 ### Email Alerts
+
+{{< content "email-warning-shortguide" >}}
 
 To receive email when fail2ban is triggered, adjust the email settings:
 
