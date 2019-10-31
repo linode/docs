@@ -27,7 +27,7 @@ The [Container Storage Interface](https://github.com/container-storage-interface
 
     1. Deploy a cluster using Terraform and the [Linode Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.1).
 
-    1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/applications/containers/getting-started-with-kubernetes/) guide to do this.
+    1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/applications/containers/kubernetes/getting-started-with-kubernetes/) guide to do this.
 
     {{< note >}}
   - If using the k8s-alpha CLI or the Linode Kubernetes Terraform installer methods to deploy a cluster, you can skip the [Installing the CSI Driver](#installing-the-csi-driver) section of this guide, since it will be automatically installed when you deploy a cluster.
