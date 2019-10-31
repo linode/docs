@@ -15,4 +15,4 @@ show_on_rss_feed: false
 
 ## Cluster
 
-A group of servers containing at least one master node and one or more worker nodes.
+A group of servers with at least one master node and one or more worker nodes.
