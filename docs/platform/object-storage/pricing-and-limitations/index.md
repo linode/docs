@@ -25,7 +25,7 @@ Linode Object Storage has a prorated minimum monthly cost of $5, which includes 
 
 ## Storage Limitations
 
-Currently, Object Storage accounts are limited 10 terabytes of storage, or 100,000 objects, whichever comes first. Accounts can have up to 25 buckets.
+Currently, Object Storage accounts are limited to 10 terabytes of storage per cluster, or 100,000 objects per cluster, whichever comes first. Separate clusters have separate limits, so it is possible to store 10 terabytes worth of objects in one cluster and 10 terabytes worth of objects in another.  In the future, individual clusters may have separate storage maximums, and this guide will be updated to include those limits. Accounts can have up to 25 buckets per cluster.
 
 {{< note >}}
 If you need to increase the storage limit, the object limit, or the bucket limit, please [open up a Customer Support ticket](https://www.linode.com/docs/platform/billing-and-support/support/#contacting-linode-support).
