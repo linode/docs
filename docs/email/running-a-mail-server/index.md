@@ -23,7 +23,7 @@ If you do, you'll have control over your domain's email, but you'll also have to
 
 ### Sending Email on Linode
 
-In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after $date.
+In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019.
 
 If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/platform/manager/dns-manager/#add-dns-records) and (2) [rDNS records](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the following basic information:
 
