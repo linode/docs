@@ -107,6 +107,8 @@ deb http://apt-longview.linode.com/ xenial main
         sudo apt-get update
         sudo apt-get install linode-longview
 
+7.  Return to your Longview client's overview page. It can take several minutes for data to start showing in the Manager but once it does, you’ll see the graphs and charts populating with your Linode’s metrics.
+
 ### Longview Client Labels
 
 If you are monitoring multiple systems with Longview, you should relabel the clients in the Linode Manager to the system's hostname, or some other name which is easier to identify than the default client ID.
@@ -272,7 +274,11 @@ If your Linode has a firewall, it must allow communication with Longview's aggre
 
     sudo ufw show added
 
-If the output of those commands show no rules for the Longview domain, you must add them. See our [firewall documentation](/docs/security/firewalls/) for more information.
+If the output of those commands show no rules for the Longview domain, you must add them. A sample iptables rule would be the following:
+
+    iptables -A OUTPUT -p tcp --dport 443 -d longview.linode.com -j ACCEPT
+
+See our [firewall documentation](/docs/security/firewalls/) for more information.
 
 ### Verify API key
 

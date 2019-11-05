@@ -163,6 +163,8 @@ If you've added the credentials to MySQL and it still doesn't work, double-check
 
 If you receive the error `Unable to connect to the database, no credentials found`, this indicates that you need to add a MySQL user for Longview, and make sure the Longview configuration file has the appropriate credentials. See the [manual configuration](#manual-configuration-all-distributions) section for details.
 
+You may also encounter the error message `Unable to connect to the database: Authentication plugin 'sha256_password' cannot be loaded: /usr/lib/x86_64-linux-gnu/mariadb18/plugin/sha256_password.so: cannot open shared object file: No such file or directory`. If this is the case, follow the above instructions for manual configuration.
+
 ### Unable to Connect to the Database
 
 This error will state `Unable to connect to the database:` and then a specific reason. This type of error could occur if the password isn't correct, for example. The list of errors that could cause this issue is pretty long, so you may want to reference the [MySQL documentation](http://dev.mysql.com/doc/refman/5.5/en/error-messages-client.html) if you need help understanding a specific error message.
