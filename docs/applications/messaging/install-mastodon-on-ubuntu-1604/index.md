@@ -68,6 +68,8 @@ When Certbot is run, you generally pass a command with the [`--deploy-hook` opti
 
 1. Mastodon sends email notifications to users for different events, like when a user first signs up, or when someone else requests to follow them. You will need to supply an SMTP server which will be used to send these messages.
 
+    {{< content "email-warning-shortguide" >}}
+
     One option is to install your own mail server using the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide. You can install such a mail server on the same Linode as your Mastodon server, or on a different one. If you follow this guide, be sure to create a `notifications@example.com` email address which you will later use for notifications. If you install your mail server on the same Linode as your Mastodon deployment, you can use your Let's Encrypt certificate in `/etc/letsencrypt/live/example.com/` for the mail server too.
 
     If you would rather not self-host an email server, you can use a third-party SMTP service. The instructions in this guide will also include settings for using [Mailgun](https://www.mailgun.com/) as your SMTP provider.

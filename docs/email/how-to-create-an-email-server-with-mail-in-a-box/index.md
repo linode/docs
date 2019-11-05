@@ -37,6 +37,8 @@ If you chose to host your own email server, but after reading through [Running a
 
 The preconfigured box of software is also fairly security-conscious and you can read more about it here: [Security features enabled in Mail-in-a-Box](https://github.com/mail-in-a-box/mailinabox/blob/master/security.md)
 
+{{< content "email-warning-shortguide" >}}
+
 ## Before You Begin
 
 1. Make sure your domain name registrar allows you to use *custom nameservers* and set *glue records*.

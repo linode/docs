@@ -33,6 +33,8 @@ You can configure your GitLab App by providing values for the following fields:
 |:--------------|:------------|
 | **Domain** | Your GitLab site's domain name. This domain will also be used by Postfix to send mail. Setting a value for this field will not automatically set up DNS for your app, so be sure to follow the DNS instructions in the [Access your GitLab Site](#access-your-gitlab-site) section. If you do not have a domain name, you can leave this field blank and Postfix will use your Linode's default Reverse DNS to send email instead (i.e. `gitlab@li926-227.members.linode.com`).  *Advanced Configuration*. |
 
+{{< content "email-warning-shortguide" >}}
+
 ### Linode Options
 
 After providing the app specific options, provide configurations for your Linode server:

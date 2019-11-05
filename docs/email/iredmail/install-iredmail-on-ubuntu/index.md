@@ -23,6 +23,8 @@ Running your own mail server has many benefits. It allows you to manage the size
 
 ![Installing iRedMail on your Linode](iredmail_tg.png "Installing iRedMail on your Linode")
 
+{{< content "email-warning-shortguide" >}}
+
 ## Prerequisites
 
 Before beginning this guide you should have:

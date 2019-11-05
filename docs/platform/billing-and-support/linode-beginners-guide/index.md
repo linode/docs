@@ -31,6 +31,8 @@ Since you have full root access to your Linode, you're free to choose between a 
 
 ## How can I send and receive email with my Linode?
 
+{{< content "email-warning-shortguide" >}}
+
 If you'd prefer to leave the management of your email to a third party, you may follow our [Google Apps guide](/docs/email/google-mail/). Those desiring to operate their own mail server will find these guides helpful:
 
 -   [Postfix Guides](/docs/email/postfix/) - Information on using the highly popular Postfix MTA (mail transfer agent).
