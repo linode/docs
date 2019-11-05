@@ -22,7 +22,7 @@ PgAdmin is a free, open-source PostgreSQL database administration GUI for Micros
 
 ## Install pgAdmin
 
-Visit the [pgAdmin download page](https://www.pgadmin.org/download/windows4.php) to obtain the most recent version of the program. Save the installer to your desktop and launch it. You'll be greeted with the following screen; click "Next" to continue.
+Visit the [pgAdmin download page](https://www.pgadmin.org/download/pgadmin-4-windows/) to obtain the most recent version of the program. Save the installer to your desktop and launch it. You'll be greeted with the following screen; click "Next" to continue.
 
 [![pgAdmin on Windows installer welcome dialog](364-pgadmin-windows-install-1.png)](364-pgadmin-windows-install-1.png)
 

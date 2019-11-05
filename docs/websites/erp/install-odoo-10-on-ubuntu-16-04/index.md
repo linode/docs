@@ -12,6 +12,7 @@ modified_by:
 title: 'Install Odoo 10 on Ubuntu 16.04'
 contributor:
   name: Damaso Sanoja
+aliases: ['websites/cms/install-odoo-10-on-ubuntu-16-04/']
 external_resources:
  - '[Odoo User Documentation](https://www.odoo.com/documentation/user/10.0/)'
  - '[Odoo Developer Documentation](https://www.odoo.com/documentation/10.0)'

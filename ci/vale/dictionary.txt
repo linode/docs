@@ -396,6 +396,7 @@ fediverse
 fetchmail
 fetchmailrc
 ff02
+ffff
 fi
 fiiiile
 file1

@@ -21,6 +21,17 @@ This guide offers an overview of installing a mail server on your Linode. It cov
 
 If you do, you'll have control over your domain's email, but you'll also have to deal with the hassles associated with setting up a complex environment of software. Using a third-party mail service is easier, but you'll sacrifice control and flexibility. In this section, we consider the benefits and drawbacks to running your own mail server, as well as how to choose an [external mail service](#external-mail-services), if you decide to go that route.
 
+### Sending Email on Linode
+
+In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019.
+
+If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/platform/manager/dns-manager/#add-dns-records) and (2) [rDNS records](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the following basic information:
+
+- Which Linode(s) will be used for mailing?
+- Do your mailing practices conform with 'Section 3. Prohibited Usage' of our [ToS](https://www.linode.com/tos/), and are they [CAN-SPAM](https://www.ftc.gov/tips-advice/business-center/guidance/can-spam-act-compliance-guide-business) compliant?
+
+Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
+
 ### Benefits
 
 If you want or need full control of your email, running your own mail server might be ideal solution. Doing so allows you to store your own email, access the mail server's logs, and access the raw email files in a user's mailbox.
