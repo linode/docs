@@ -88,7 +88,7 @@ You can request additional IPv6 addresses at any time by opening a [support tick
 The IPv6 `/116` prefix is not available in the Toronto or Mumbai data centers.
 {{</ note >}}
 
-IPv6 addresses are allocated in blocks. These are indicated with a slash `/` followed by a number in base 10, the length of the network **prefix** in bits. This translates to the number of available addresses in the **pool**. For example, the prefix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like 2001:db8:1234::/48 the block of addresses is 2001:db8:1234:0000:0000:0000:0000:0000 to 2001:db8:1234:ffff:ffff:ffff:ffff:ffff.
+IPv6 addresses are allocated in blocks. These are indicated with a slash `/` followed by a number in base 10, the length of the network **prefix** in bits. This translates to the number of available addresses in the **pool**. For example, the prefix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like `2001:db8:1234::/48` the block of addresses is `2001:db8:1234:0000:0000:0000:0000:0000` to `2001:db8:1234:ffff:ffff:ffff:ffff:ffff`.
 
 The IPv6 prefixes and their respective quantity of IPv6 addresses that Linode provides are listed below.
 
