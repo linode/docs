@@ -37,7 +37,7 @@ The process for launching a getty may differ depending on your distribution.
 
 ## Access Glish
 
-1.  From your Linode Dashboard, find the linode you want to access and click on the dropdown menu on the right with the ... icon, then select launch console.
+1.  From your Linode Dashboard, find the Linode you want to access and click on the dropdown menu on the right with the ... icon, then select launch console.
 
     A pop-up window will open, select the Glish tab in the pop-up window.
 
