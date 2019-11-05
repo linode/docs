@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Istio is a service mesh and a platform with it&#39;s own API and feature set that can help you run a distributed microservice architechture. Istio is a tool that you can deploy with few to no code changes to your application allowing you to harness it&#39;s power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.'
+description: 'Istio is a service mesh and a platform with its own API and feature set that can help you run a distributed microservice architecture. Istio is a tool that you can deploy with few to no code changes to your application allowing you to harness its power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.'
 keywords: ['kuberenetes','istio','container','helm', 'k8s']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05
@@ -20,7 +20,7 @@ external_resources:
 
 [Istio](https://istio.io) is a service mesh, or a network of microservices, that can handle tasks such as load balancing, service-to-service authentication, monitoring, etc. It does this by deploying sidecar proxies to intercept network data, which causes little disruption to your current application.
 
-Istio is also a platform with it's own API and feature set that can help you run a distributed microservice architecture. Istio is a tool that you can deploy with few to no code changes to your applications allowing you to harness it's power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.
+Istio is also a platform with its own API and feature set that can help you run a distributed microservice architecture. Istio is a tool that you can deploy with few to no code changes to your applications allowing you to harness its power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.
 
 In this guide:
 
