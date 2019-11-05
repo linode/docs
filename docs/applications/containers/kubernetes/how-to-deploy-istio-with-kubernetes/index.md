@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Istio is a service mesh and a platform with it\'s own API and feature set that can help you run a distributed microservice architechture. Istio is a tool that you can deploy with few to no code changes to your application allowing you to harness it\'s power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.'
+description: 'Istio is a service mesh and a platform with it&#39;s own API and feature set that can help you run a distributed microservice architechture. Istio is a tool that you can deploy with few to no code changes to your application allowing you to harness it&#39;s power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.'
 keywords: ['kuberenetes','istio','container','helm', 'k8s']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05
@@ -677,7 +677,7 @@ destinationrule.networking.istio.io/details created
 
         kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000 &
 
-1. If you're not using your local maching as your control node, create a new SSH tunnel from your local machine to your Linode with the following command so that you can access the localhost of your Linode, entering your credentials as prompted:
+1. If you're not using your local matching as your control node, create a new SSH tunnel from your local machine to your Linode with the following command so that you can access the localhost of your Linode, entering your credentials as prompted:
 
 
         ssh -L 3000:localhost:3000 <username>@<ipaddress>

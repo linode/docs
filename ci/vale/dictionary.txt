@@ -626,6 +626,7 @@ iso
 isoformat
 isp
 issuewild
+istioctl
 iterable
 itk
 java6
