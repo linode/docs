@@ -10,7 +10,6 @@ published: 2019-09-27
 modified_by:
   name: Linode
 title: 'Introduction to Bash Shell Scripting'
-aliases: ['development/bash/bash1/']
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
