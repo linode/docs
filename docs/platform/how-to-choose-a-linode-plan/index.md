@@ -91,7 +91,7 @@ Standard instances start with 2GB of RAM and 1 vCPU and can go all the way up to
 | Network In | 40 Gbps |
 | Network Out | 2000 Mbps |
 
-To view a full list of the Standard instance plans, visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
+To view a full list of the Standard instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
 
 ## 3. High Memory
 
@@ -114,7 +114,7 @@ The kinds of data you might store in one of these applications includes: informa
 | Network In | 40 Gbps |
 | Network Out | 5000 Mbps |
 
-To view a full list of the High Memory instance plans, visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
+To view a full list of the High Memory instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
 
 ## 4. Dedicated CPU
 
@@ -148,7 +148,7 @@ Furthermore, some CPU-intensive tasks may be triggered from other events in your
 | Network In | 40 Gbps |
 | Network Out | 4000 Mbps |
 
-To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
+To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
 
 ## 5. GPU Instances
 
@@ -174,4 +174,4 @@ GPU instances are the only plan that give you access to [NVIDIA Quadro RTX 6000 
 | Network In | 40 Gbps |
 | Network Out | 100000 Mbps |
 
-To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
+To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.

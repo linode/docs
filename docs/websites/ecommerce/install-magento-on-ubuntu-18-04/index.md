@@ -25,7 +25,7 @@ external_resources:
 
 In this guide you'll learn how to install Magento on Ubuntu 18.04\. Magento Community Edition (CE) is a free, open-source e-commerce platform. It's one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and large developer community.
 
-Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic. For more memory-intensive Magento setups, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory).
+Considering the resources some Magento plugins demand, we strongly recommend that you have at least a **Linode 4GB**. You'll need to allocate up to 2GB of memory for PHP and Magento; running Magento on a smaller Linode may result in server crashes or unreliability under medium to heavy traffic. For more memory-intensive Magento setups, we recommend using a [high memory Linode](https://www.linode.com/pricing/high-memory).
 
 {{< note >}} This guide explains how to install the latest Magento release at the time of publication. For the Community Edition, this will be version 2.2.x. If you plan to use data, themes, and extensions from an older Magento site, be sure to check for compatibility issues between the two versions. {{< /note >}}
 
