@@ -92,15 +92,11 @@ This will create a new directory `istio-1.3.3` wherever you use this command. Th
 
 1.  Check that you have the repo with the following command:
 
-        helm repo list
+        helm repo list | grep istio.io
 
 1.  The output should be similar to the following:
 
     {{< output >}}
-NAME    	URL
-stable  	https://kubernetes-charts.storage.googleapis.com
-local   	http://127.0.0.1:8879/charts
-elastic 	https://helm.elastic.co
 istio.io	https://storage.googleapis.com/istio-release/releases/1.3.2/charts/
 {{< /output >}}
 
@@ -109,6 +105,44 @@ istio.io	https://storage.googleapis.com/istio-release/releases/1.3.2/charts/
         helm install --name istio-init --namespace istio-system istio.io/istio-init
 
     This also creates a pod namespace called `istio-system` which you will continue to use for the remainder of this guide.
+
+     {{< output >}}
+NAME:   istio-init
+LAST DEPLOYED: Fri Oct 18 10:24:24 2019
+NAMESPACE: istio-system
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/ClusterRole
+NAME                     AGE
+istio-init-istio-system  0s
+
+==> v1/ClusterRoleBinding
+NAME                                        AGE
+istio-init-admin-role-binding-istio-system  0s
+
+==> v1/ConfigMap
+NAME          DATA  AGE
+istio-crd-10  1     0s
+istio-crd-11  1     0s
+istio-crd-12  1     0s
+
+==> v1/Job
+NAME                     COMPLETIONS  DURATION  AGE
+istio-init-crd-10-1.3.2  0/1          0s        0s
+istio-init-crd-11-1.3.2  0/1          0s        0s
+istio-init-crd-12-1.3.2  0/1          0s        0s
+
+==> v1/Pod(related)
+NAME                           READY  STATUS             RESTARTS  AGE
+istio-init-crd-10-1.3.2-d4gdf  0/1    ContainerCreating  0         0s
+istio-init-crd-11-1.3.2-h8l58  0/1    ContainerCreating  0         0s
+istio-init-crd-12-1.3.2-v9777  0/1    ContainerCreating  0         0s
+
+==> v1/ServiceAccount
+NAME                        SECRETS  AGE
+istio-init-service-account  1        0s
+{{< /output >}}
 
 1.  Verify that all CRDs were successfully installed by running the following command:
 
@@ -120,9 +154,202 @@ istio.io	https://storage.googleapis.com/istio-release/releases/1.3.2/charts/
 23
 {{< /output >}}
 
+       If the number is less, you may need to wait a few moments for the resources to finish being created.
+
 1.  Install the Helm chart for Istio. There are [many installation options available](https://istio.io/docs/reference/config/installation-options/) for Istio. For this guide you are setting the Grafana option to use the visualization later.
 
         helm install --name istio --namespace istio-system istio.io/istio --set grafana.enabled=true
+
+     {{< disclosure-note "Full output of helm install" >}}
+{{< output >}}
+NAME:   istio
+LAST DEPLOYED: Fri Oct 18 10:28:40 2019
+NAMESPACE: istio-system
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/ClusterRole
+NAME                                     AGE
+istio-citadel-istio-system               43s
+istio-galley-istio-system                43s
+istio-grafana-post-install-istio-system  43s
+istio-mixer-istio-system                 43s
+istio-pilot-istio-system                 43s
+istio-reader                             43s
+istio-sidecar-injector-istio-system      43s
+prometheus-istio-system                  43s
+
+==> v1/ClusterRoleBinding
+NAME                                                    AGE
+istio-citadel-istio-system                              43s
+istio-galley-admin-role-binding-istio-system            43s
+istio-grafana-post-install-role-binding-istio-system    43s
+istio-mixer-admin-role-binding-istio-system             43s
+istio-multi                                             43s
+istio-pilot-istio-system                                43s
+istio-sidecar-injector-admin-role-binding-istio-system  43s
+prometheus-istio-system                                 43s
+
+==> v1/ConfigMap
+NAME                                                                DATA  AGE
+istio                                                               2     43s
+istio-galley-configuration                                          1     44s
+istio-grafana                                                       2     43s
+istio-grafana-configuration-dashboards-citadel-dashboard            1     44s
+istio-grafana-configuration-dashboards-galley-dashboard             1     43s
+istio-grafana-configuration-dashboards-istio-mesh-dashboard         1     44s
+istio-grafana-configuration-dashboards-istio-performance-dashboard  1     43s
+istio-grafana-configuration-dashboards-istio-service-dashboard      1     44s
+istio-grafana-configuration-dashboards-istio-workload-dashboard     1     44s
+istio-grafana-configuration-dashboards-mixer-dashboard              1     44s
+istio-grafana-configuration-dashboards-pilot-dashboard              1     44s
+istio-grafana-custom-resources                                      2     44s
+istio-security-custom-resources                                     2     43s
+istio-sidecar-injector                                              2     43s
+prometheus                                                          1     43s
+
+==> v1/Deployment
+NAME                    READY  UP-TO-DATE  AVAILABLE  AGE
+grafana                 0/1    1           0          42s
+istio-citadel           1/1    1           1          42s
+istio-galley            0/1    1           0          42s
+istio-ingressgateway    0/1    1           0          42s
+istio-pilot             0/1    1           0          42s
+istio-policy            0/1    1           0          42s
+istio-sidecar-injector  0/1    1           0          42s
+istio-telemetry         1/1    1           1          42s
+prometheus              0/1    1           0          42s
+
+==> v1/Pod(related)
+NAME                                     READY  STATUS             RESTARTS  AGE
+grafana-575c7c4784-ffq79                 0/1    ContainerCreating  0         42s
+istio-citadel-746b4cc66c-2zq2d           1/1    Running            0         42s
+istio-galley-668765c7dc-r7w49            0/1    ContainerCreating  0         42s
+istio-ingressgateway-76ff5cf54b-n5xzl    0/1    Running            0         42s
+istio-pilot-7b6f4b4498-pfcm5             0/2    ContainerCreating  0         42s
+istio-policy-8449665784-xzn7m            0/2    ContainerCreating  0         42s
+istio-sidecar-injector-7488c45bcb-mzfgz  0/1    Running            0         42s
+istio-telemetry-56595ccd89-qxtb7         2/2    Running            1         42s
+prometheus-5679cb4dcd-8fsf4              0/1    ContainerCreating  0         42s
+
+==> v1/Role
+NAME                      AGE
+istio-ingressgateway-sds  43s
+
+==> v1/RoleBinding
+NAME                      AGE
+istio-ingressgateway-sds  43s
+
+==> v1/Service
+NAME                    TYPE          CLUSTER-IP      EXTERNAL-IP      PORT(S)                                                                                                                                     AGE
+grafana                 ClusterIP     10.111.223.85   <none>           3000/TCP                                                                                                                                    43s
+istio-citadel           ClusterIP     10.96.57.68     <none>           8060/TCP,15014/TCP                                                                                                                          42s
+istio-galley            ClusterIP     10.111.114.219  <none>           443/TCP,15014/TCP,9901/TCP                                                                                                                  43s
+istio-ingressgateway    LoadBalancer  10.104.28.12    104.237.148.149  15020:31189/TCP,80:31380/TCP,443:31390/TCP,31400:31400/TCP,15029:30450/TCP,15030:32554/TCP,15031:30659/TCP,15032:32716/TCP,15443:32438/TCP  43s
+istio-pilot             ClusterIP     10.97.46.215    <none>           15010/TCP,15011/TCP,8080/TCP,15014/TCP                                                                                                      42s
+istio-policy            ClusterIP     10.104.45.158   <none>           9091/TCP,15004/TCP,15014/TCP                                                                                                                42s
+istio-sidecar-injector  ClusterIP     10.110.88.188   <none>           443/TCP,15014/TCP                                                                                                                           42s
+istio-telemetry         ClusterIP     10.103.18.40    <none>           9091/TCP,15004/TCP,15014/TCP,42422/TCP                                                                                                      42s
+prometheus              ClusterIP     10.105.19.61    <none>           9090/TCP                                                                                                                                    42s
+
+==> v1/ServiceAccount
+NAME                                    SECRETS  AGE
+istio-citadel-service-account           1        43s
+istio-galley-service-account            1        43s
+istio-grafana-post-install-account      1        43s
+istio-ingressgateway-service-account    1        43s
+istio-mixer-service-account             1        43s
+istio-multi                             1        43s
+istio-pilot-service-account             1        43s
+istio-security-post-install-account     1        43s
+istio-sidecar-injector-service-account  1        43s
+prometheus                              1        43s
+
+==> v1alpha2/attributemanifest
+NAME        AGE
+istioproxy  41s
+kubernetes  41s
+
+==> v1alpha2/handler
+NAME           AGE
+kubernetesenv  41s
+prometheus     41s
+
+==> v1alpha2/instance
+NAME                  AGE
+attributes            41s
+requestcount          41s
+requestduration       41s
+requestsize           41s
+responsesize          41s
+tcpbytereceived       41s
+tcpbytesent           41s
+tcpconnectionsclosed  41s
+tcpconnectionsopened  41s
+
+==> v1alpha2/rule
+NAME                     AGE
+kubeattrgenrulerule      41s
+promhttp                 41s
+promtcp                  41s
+promtcpconnectionclosed  41s
+promtcpconnectionopen    41s
+tcpkubeattrgenrulerule   41s
+
+==> v1alpha3/DestinationRule
+NAME             AGE
+istio-policy     42s
+istio-telemetry  42s
+
+==> v1beta1/ClusterRole
+NAME                                      AGE
+istio-security-post-install-istio-system  43s
+
+==> v1beta1/ClusterRoleBinding
+NAME                                                   AGE
+istio-security-post-install-role-binding-istio-system  43s
+
+==> v1beta1/MutatingWebhookConfiguration
+NAME                    AGE
+istio-sidecar-injector  41s
+
+==> v1beta1/PodDisruptionBudget
+NAME                    MIN AVAILABLE  MAX UNAVAILABLE  ALLOWED DISRUPTIONS  AGE
+istio-galley            1              N/A              0                    44s
+istio-ingressgateway    1              N/A              0                    44s
+istio-pilot             1              N/A              0                    44s
+istio-policy            1              N/A              0                    44s
+istio-sidecar-injector  1              N/A              0                    44s
+istio-telemetry         1              N/A              0                    44s
+
+==> v2beta1/HorizontalPodAutoscaler
+NAME                  REFERENCE                        TARGETS        MINPODS  MAXPODS  REPLICAS  AGE
+istio-ingressgateway  Deployment/istio-ingressgateway  <unknown>/80%  1        5        1         42s
+istio-pilot           Deployment/istio-pilot           <unknown>/80%  1        5        1         41s
+istio-policy          Deployment/istio-policy          <unknown>/80%  1        5        1         42s
+istio-telemetry       Deployment/istio-telemetry       <unknown>/80%  1        5        1         42s
+
+
+NOTES:
+Thank you for installing Istio.
+
+Your release is named Istio.
+
+To get started running application with Istio, execute the following steps:
+1. Label namespace that application object will be deployed to by the following command (take default namespace as an example)
+
+$ kubectl label namespace default istio-injection=enabled
+$ kubectl get namespace -L istio-injection
+
+2. Deploy your applications
+
+$ kubectl apply -f <your-application>.yaml
+
+For more information on running Istio, visit:
+https://istio.io/
+
+{{< /output >}}
+{{< /disclosure-note >}}
 
 1.  Verify that the Istio services and Grafana are running with this command:
 
@@ -165,21 +392,24 @@ istio-telemetry-56595ccd89-jcc9s          2/2     Running     5          4m54s
 prometheus-5679cb4dcd-pbg6m               1/1     Running     0          4m53s
 {{< /output >}}
 
-1.  Before moving on, be sure that all pods are in the `Running` Status. If you need to troubleshoot, you can check a specific pod by using, remembering that you set the namespace to `istio-system`:
+1.  Before moving on, be sure that all pods are in the `Running` or `Completed` status.
 
-        kubectl describe pods pod_name -n pod_namespace
+{{< note >}}
+If you need to troubleshoot, you can check a specific pod by using `kubectl`, remembering that you set the namespace to `istio-system`:
 
-    And check the logs by using:
+    kubectl describe pods pod_name -n pod_namespace
 
-        kubectl logs pod_name -n pod_namespace
+And check the logs by using:
 
+    kubectl logs pod_name -n pod_namespace
+{{< /note >}}
 ### Set up Envoy Proxies
 
 1.  Istio's service mesh runs by employing *sidecar proxies*. You will enable them by injecting them into the containers with the following command:
 
         kubectl label namespace default istio-injection=enabled
 
-    Notice that this is using the `default` namespace which is where you will be deploying the `Bookinfo` application.
+    Notice that this command is using the `default` namespace which is where you will be deploying the `Bookinfo` application.
 
     {{< note >}}
 This deployment uses automatic sidecar injection. Automatic injection can be disabled and [manual injection](https://istio.io/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection) enabled during installation via `istioctl`. If you disabled automatic injection during installation, use the following command to modify the `bookinfo.yaml` file before deploying the application:
@@ -210,7 +440,7 @@ The Bookinfo app is a sample application that comes packaged with Istio. It feat
 - `reviews` is written in Java and contains book reviews and calls `ratings`.
 - `ratings` is written in Node.js and contains book ratings. There are three versions of this microservice in the application. A different version is called each time the page is refreshed.
 
-1.  Navigate to the directory where you installed Istio.
+1.  Navigate to the directory where you [installed Istio](#install-istio).
 
 1.  The `bookinfo.yaml` file is the application manifest. It specifies all the service and deployment objects for the application. Here is just the `productpage` section of this file, feel free to look at the entire file:
 
@@ -307,7 +537,7 @@ reviews       ClusterIP   10.106.21.117   <none>        9080/TCP   2m59s
 
         kubectl get pods
 
-1.  The expected output should look similar:
+1.  The expected output should look similar, with all pods running:
 
     {{< output >}}
 NAME                              READY   STATUS    RESTARTS   AGE
@@ -318,6 +548,10 @@ reviews-v1-5c5b7b9f8d-6xljj       2/2     Running   0          4m41s
 reviews-v2-569796655b-x2n4v       2/2     Running   0          4m30s
 reviews-v3-844bc59d88-pwl6b       2/2     Running   0          4m30s
 {{< /output >}}
+
+    {{< note >}}
+If you do not see all pods running right away, you may need to wait a few moments for them to complete the initialization process.
+{{< /note >}}
 
 1.  Check that the `Bookinfo` application is running by issuing the following command which will pull the title tag and contents from the `/productpage` from the `ratings` pod:
 
@@ -417,31 +651,6 @@ istio-ingressgateway   LoadBalancer   10.97.218.128   23.92.23.198   15020:30376
 
     If `EXTERNAL-IP` has a value, then your cluster supports external load balancers and you can [open a gateway using that method](#open-a-gateway-with-the-external-load-balancer), if it's value is `<none>` or stays in `<pending>` then your environment does not provide an external load balancer for the ingress gateway. If this is the case, you will need to [open a gateway using the node port](#open-a-gateway-with-the-node-port).
 
-#### Open a Gateway with the External Load Balancer
-
-1.  Set the ingress ports:
-
-        export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-        export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
-        export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].port}')
-        export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
-
-1.  Test to make sure the ingress port is open with the following curl command:
-
-        curl -s http://$GATEWAY_URL/productpage | grep -o "<title>.*</title>"
-
-#### Open a Gateway with the Node Port
-
-1.  Set the ingress ports:
-
-        export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
-        export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
-        export INGRESS_HOST=$(kubectl get po -l istio=ingressgateway -n istio-system -o jsonpath='{.items[0].status.hostIP}')
-        export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
-
-1.  Test to make sure the ingress port is open with the following curl command:
-
-        curl -s http://$GATEWAY_URL/productpage | grep -o "<title>.*</title>"
 
 ### Apply Default Destination Rules
 
@@ -468,7 +677,12 @@ destinationrule.networking.istio.io/details created
 
         kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000 &
 
-1. Visit this site in your web browser:
+1. If you're not using your local maching as your control node, create a new SSH tunnel from your local machine to your Linode with the following command so that you can access the localhost of your Linode, entering your credentials as prompted:
+
+
+        ssh -L 3000:localhost:3000 <username>@<ipaddress>
+
+    Once this is completed, or if your control node is your local machine, visit the following site in your web browser:
 
         http://localhost:3000/dashboard/db/istio-mesh-dashboard
 
@@ -499,3 +713,11 @@ destinationrule.networking.istio.io/details created
     ![Istio Product Service Detail Dashboard](istio-product-page-service-detail.png)
 
 1.  Feel free to explore the other Grafana dashboards for more metrics and data. You can access all the dashboards from the dropdown menu at the top left of the screen.
+
+## Removing Clusters and Deployments
+
+If you at any time need to remove the resources created when following this guide, enter the following commands, confirming any prompts that appear:
+
+    helm delete istio-init
+    helm delete istio
+    linode-cli k8s-alpha delete istio-cluster
