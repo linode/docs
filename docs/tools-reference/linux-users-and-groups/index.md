@@ -134,7 +134,7 @@ Therefore the `visudo` command should be used to edit the sudoers file. At a com
 Below is the portion of the sudoers file that shows the users with sudo access.
 
 {{< caution >}}
-The following `sudoers` excerpt below allows users listed on `sudoers` to execute any command using `sudo` to any Linodes as any users. This privilege specification can cause system breakage if users don't know what they are doing. Never add users to `sudoers` if they are untrusted. If you'd like to restrict what users can do with `sudo`, refer to `sudoers(5)` man page for proper syntax.
+The following `sudoers` excerpt allows the listed users to execute any command using `sudo`, which gives the user full control of a system. Never add users to `sudoers` if they are untrusted. You can optionally restrict what users can do with `sudo`; refer to the `sudoers(5)` man page for this restricted usage syntax.
 {{< /caution >}}
 
     # User privilege specification
