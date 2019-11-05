@@ -2,20 +2,20 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Packer to build a reusable Linode Image.'
+description: 'Packer is a HashiCorp maintained open source tool that is used to create machine images. Using a single source configuration, you can generate identical machine images. Packer can then be used to install those images to your Linode.'
 keywords: ['packer','image','immutable infrastructure','continuous delivery']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-10-21
+published: 2019-11-05
 modified_by:
   name: Linode
-title: "How to Use the Linode Packer Builder to Create Images"
-h1_title: "Use the Linode Packer Builder to Create Images"
+title: "How to Use the Linode Packer Builder | Linode"
+h1_title: "Using the Linode Packer Builder to Create Images"
 contributor:
   name: Linode
 ---
 ## What is Packer?
 
-Packer is a HashiCorp maintained open source tool that is used to create machine images. A machine image provides the operating system, applications, application configurations, and data files that a virtual machine instance will run once it's deployed.  Using a single source configuration, you can generate identical machine images. Packer can be used in conjunction with common configuration management tools, like Chef, Puppet, or Ansible to install software to your Linode and include those configurations into your image.
+Packer is a HashiCorp maintained open source tool that is used to create machine images. A machine image provides the operating system, applications, application configurations, and data files that a virtual machine instance will run once it's deployed. Using a single source configuration, you can generate identical machine images. Packer can be used in conjunction with common configuration management tools like Chef, Puppet, or Ansible to install software to your Linode and include those configurations into your image.
 
 In this guide you will complete the following steps:
 
