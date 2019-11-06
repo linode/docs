@@ -159,6 +159,10 @@ You can drag and drop multiple files to the **Upload Files Pane** at one time.
 
     ![Successful upload of your object](successful-object-upload.png)
 
+    {{< note >}}
+Single files are limited to a size of 5GB each, though larger files can be uploaded as multipart uploads. [s3cmd](#s3cmd) and [cyberduck](#cyberduck) will do this for you automatically if a file exceeds this limit.
+{{< /note >}}
+
 ### View Bucket Objects
 
 1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
