@@ -12,6 +12,8 @@ modified_by:
   name: Linode
 ---
 
+![Getting Started with Linode GPU Instances](getting-started-with-linode-gpu-instances.png "Getting Started with Linode GPU Instances")
+
 This guide will help you get your Linode GPU Instance up and running on a number of popular distributions. To prepare your Linode, you will need to install NVIDIA's proprietary drivers using [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).
 
 When using distributions that are not fully supported by CUDA, like Debian 9, you can install the NVIDIA driver without the CUDA toolkit. To only install the NVIDIA driver, complete the [Before You Begin](#before-you-begin) section and then move on to the [Manual Install](#install-manually) section of this guide.

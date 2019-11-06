@@ -39,7 +39,7 @@ The different Linode instance types represent different balances of the above re
 
 At the same time, different kinds of applications have different resource requirements. Some applications may need to store a lot of data but require less processing power, some may need more memory than CPU, and some may be especially CPU-intensive. As a result, certain instance types can better serve certain applications. When creating your instances, consider what resources your application needs and then compare it with the resources specified by each of the instance types. The following sections include common use cases for each type, and one of these may resemble your needs.
 
-Finally, a common strategy when setting up a new server is to start with a smaller instance and then resize your Linode if needed. At a minimum, you will need to choose a plan that offers enough disk space to store your data. You can then [monitor](/docs/uptime/monitoring-and-maintaining-your-server-new-manager/) the CPU,    GPU, memory, and network usage of your application to determine if you need more of those resources.
+Finally, a common strategy when setting up a new server is to start with a smaller instance and then resize your Linode if needed. At a minimum, you will need to choose a plan that offers enough disk space to store your data. For more information, see [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/). You can then [monitor](/docs/uptime/monitoring-and-maintaining-your-server-new-manager/) the CPU,    GPU, memory, and network usage of your application to determine if you need more of those resources.
 
 ## 1. Nanode
 
@@ -91,7 +91,7 @@ Standard instances start with 2GB of RAM and 1 vCPU and can go all the way up to
 | Network In | 40 Gbps |
 | Network Out | 2000 Mbps |
 
-To view a full list of the Standard instance plans, visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
+To view a full list of the Standard instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
 
 ## 3. High Memory
 
@@ -114,7 +114,7 @@ The kinds of data you might store in one of these applications includes: informa
 | Network In | 40 Gbps |
 | Network Out | 5000 Mbps |
 
-To view a full list of the High Memory instance plans, visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
+To view a full list of the High Memory instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
 
 ## 4. Dedicated CPU
 
@@ -148,7 +148,7 @@ Furthermore, some CPU-intensive tasks may be triggered from other events in your
 | Network In | 40 Gbps |
 | Network Out | 4000 Mbps |
 
-To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
+To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
 
 ## 5. GPU Instances
 
@@ -174,4 +174,4 @@ GPU instances are the only plan that give you access to [NVIDIA Quadro RTX 6000 
 | Network In | 40 Gbps |
 | Network Out | 100000 Mbps |
 
-To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing#all) page.
+To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.

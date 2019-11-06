@@ -14,7 +14,7 @@ contributor:
   name: Linode
 external_resources:
 - '[GitLab''s Official Documentation](https://docs.gitlab.com/ee/README.html)'
-- '[GitLab''s NGINX Configurations](https://github.com/linode/docs/pull/2231)'
+- '[GitLab''s NGINX Configurations](https://docs.gitlab.com/omnibus/settings/nginx.html)'
 audiences: ["intermediate"]
 ---
 
@@ -55,6 +55,8 @@ Before installing GitLab you should consider how many users will collaborate on 
         sudo apt-get install -y postfix
 
     When prompted, select *Internet Site* and press **Enter**. Use your server's external DNS for *mail name* and press **Enter**.
+
+    {{< content "email-warning-shortguide" >}}
 
 1. Add the GitLab package repository:
 

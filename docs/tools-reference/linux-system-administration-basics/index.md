@@ -677,6 +677,8 @@ Follow these steps to [create and host a sub-domain](/docs/networking/dns/common
 
 We provide a number of guides that cover [email-related topics](/docs/email/). In this section, we'll explain how to choose an email setup that fits your needs and how to configure your Linode to send email.
 
+{{< content "email-warning-shortguide" >}}
+
 ### Choose an Email Solution
 
 There are two major components that are required for email functionality. The most important part is the SMTP server or "Mail Transfer Agent." The MTA, as it is often called, sends mail from one server to another. The second part of an email system is a server that permits users to access and download that mail from the server to their own machine. Typically these servers use a protocol such as POP3 or IMAP to provide remote access to the mailbox.

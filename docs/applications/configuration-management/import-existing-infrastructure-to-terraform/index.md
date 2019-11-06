@@ -6,7 +6,7 @@ description: 'This guide will describe how to import existing Linode infrastruct
 keywords: ['terraform','configuration management','import']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-17
-modified: 2018-12-17
+modified: 2019-08-07
 modified_by:
   name: Linode
 title: "Import Existing Infrastructure to Terraform"
@@ -18,6 +18,10 @@ external_resources:
 ---
 
 Terraform is an orchestration tool that uses declarative code to build, change, and version infrastructure that is made up of server instances and services. You can use [Linode's official Terraform provider](https://www.terraform.io/docs/providers/linode/index.html) to interact with Linode services. Existing Linode infrastructure can be imported and brought under Terraform management. This guide will describe how to import existing Linode infrastructure into Terraform using the official Linode provider plugin.
+
+{{< note >}}
+[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+{{</ note >}}
 
 ## Before You Begin
 
@@ -109,93 +113,103 @@ your Terraform state and will henceforth be managed by Terraform.
 
     You should see an output similar to the following:
 
-    {{< output >}}
-linode_instance.example_label:
-  id = 11426126
-  alerts.# = 1
-  alerts.0.cpu = 90
-  alerts.0.io = 10000
-  alerts.0.network_in = 10
-  alerts.0.network_out = 10
-  alerts.0.transfer_quota = 80
-  backups.# = 1
-  boot_config_label = My Debian 9 Disk Profile
-  config.# = 1
-  config.0.comments =
-  config.0.devices.# = 1
-  config.0.devices.0.sda.# = 1
-  config.0.devices.0.sda.0.disk_id = 24170011
-  config.0.devices.0.sda.0.disk_label = Debian 9 Disk
-  config.0.devices.0.sda.0.volume_id = 0
-  config.0.devices.0.sdb.# = 1
-  config.0.devices.0.sdb.0.disk_id = 24170012
-  config.0.devices.0.sdb.0.disk_label = 512 MB Swap Image
-  config.0.devices.0.sdb.0.volume_id = 0
-  config.0.devices.0.sdc.# = 0
-  config.0.devices.0.sdd.# = 0
-  config.0.devices.0.sde.# = 0
-  config.0.devices.0.sdf.# = 0
-  config.0.devices.0.sdg.# = 0
-  config.0.devices.0.sdh.# = 0
-  config.0.helpers.# = 1
-  config.0.helpers.0.devtmpfs_automount = true
-  config.0.helpers.0.distro = true
-  config.0.helpers.0.modules_dep = true
-  config.0.helpers.0.network = true
-  config.0.helpers.0.updatedb_disabled = true
-  config.0.kernel = linode/grub2
-  config.0.label = My Debian 9 Disk Profile
-  config.0.memory_limit = 0
-  config.0.root_device = /dev/root
-  config.0.run_level = default
-  config.0.virt_mode = paravirt
-  disk.# = 2
-  disk.0.authorized_keys.# = 0
-  disk.0.filesystem = ext4
-  disk.0.id = 24170011
-  disk.0.image =
-  disk.0.label = Debian 9 Disk
-  disk.0.read_only = false
-  disk.0.root_pass =
-  disk.0.size = 50688
-  disk.0.stackscript_data.% = 0
-  disk.0.stackscript_id = 0
-  disk.1.authorized_keys.# = 0
-  disk.1.filesystem = swap
-  disk.1.id = 24170012
-  disk.1.image =
-  disk.1.label = 512 MB Swap Image
-  disk.1.read_only = false
-  disk.1.root_pass =
-  disk.1.size = 512
-  disk.1.stackscript_data.% = 0
-  disk.1.stackscript_id = 0
-  group = Terraform
-  ip_address = 192.0.2.2
-  ipv4.# = 1
-  ipv4.1835604989 = 192.0.2.2
-  ipv6 = 2600:3c03::f03c:91ff:fef6:3ebe/64
-  label = terraform-import
-  private_ip = false
-  region = us-east
-  specs.# = 1
-  specs.0.disk = 51200
-  specs.0.memory = 2048
-  specs.0.transfer = 2000
-  specs.0.vcpus = 1
-  status = running
-  swap_size = 512
-  type = g6-standard-1
-  watchdog_enabled = true
-{{< /output >}}
+        resource "linode_instance" "example_label" {
+            backups           = [
+                {
+                    enabled  = null
+                    schedule = null
+                },
+            ]
+            boot_config_label = "My Debian 9 Disk Profile"
+            id                = "15375361"
+            ip_address        = "97.107.128.70"
+            ipv4              = [
+                "97.107.128.70",
+            ]
+            ipv6              = "2600:3c03::f03c:91ff:fee3:8deb/64"
+            label             = "terraform-import"
+            private_ip        = false
+            region            = "us-east"
+            specs             = [
+                {
+                    disk     = 51200
+                    memory   = 2048
+                    transfer = 2000
+                    vcpus    = 1
+                },
+            ]
+            status            = "running"
+            swap_size         = 512
+            tags              = []
+            type              = "g6-standard-1"
+            watchdog_enabled  = true
+
+            alerts {
+                cpu            = 90
+                io             = 10000
+                network_in     = 10
+                network_out    = 10
+                transfer_quota = 80
+            }
+
+            config {
+                kernel       = "linode/grub2"
+                label        = "My Debian 9 Disk Profile"
+                memory_limit = 0
+                root_device  = "/dev/sda"
+                run_level    = "default"
+                virt_mode    = "paravirt"
+
+                devices {
+                    sda {
+                        disk_id    = 31813343
+                        disk_label = "Debian 9 Disk"
+                        volume_id  = 0
+                    }
+
+                    sdb {
+                        disk_id    = 31813344
+                        disk_label = "512 MB Swap Image"
+                        volume_id  = 0
+                    }
+                }
+
+                helpers {
+                    devtmpfs_automount = true
+                    distro             = true
+                    modules_dep        = true
+                    network            = true
+                    updatedb_disabled  = true
+                }
+            }
+
+            disk {
+                authorized_keys  = []
+                authorized_users = []
+                filesystem       = "ext4"
+                id               = 31813343
+                label            = "Debian 9 Disk"
+                read_only        = false
+                size             = 50688
+                stackscript_data = (sensitive value)
+                stackscript_id   = 0
+            }
+            disk {
+                authorized_keys  = []
+                authorized_users = []
+                filesystem       = "swap"
+                id               = 31813344
+                label            = "512 MB Swap Image"
+                read_only        = false
+                size             = 512
+                stackscript_data = (sensitive value)
+                stackscript_id   = 0
+            }
+
+            timeouts {}
+        }
 
     You will use this information in the next section.
-
-    {{< note >}}
-There is a current bug in the Linode Terraform provider that causes the Linode's `root_device` configuration to display an import value of `/dev/root`, instead of `/dev/sda`. This is visible in the example output above: `config.0.root_device = /dev/root`. However, the correct disk, `/dev/sda`, is in fact targeted. For this reason, when running the `terraform plan` or the `terraform apply` commands, the output will display `config.0.root_device: "/dev/root" => "/dev/sda"`.
-
-You can follow the corresponding [GitHub issue](https://github.com/terraform-providers/terraform-provider-linode/issues/10) for more details.
-{{< /note >}}
 
 ### Fill In Your Linode's Configuration Data
 
@@ -213,24 +227,24 @@ resource "linode_instance" "example_label" {
     region = "us-east"         #region
     type = "g6-standard-1"     #type
     config {
-        label = "My Debian 9 Disk Profile"     #config.0.label
-        kernel = "linode/grub2"                #config.0.kernel
-        root_device = "/dev/sda"               #config.0.root_device
+        label = "My Debian 9 Disk Profile"     #config.label
+        kernel = "linode/grub2"                #config.kernel
+        root_device = "/dev/sda"               #config.root_device
         devices {
-            sda = {
-                disk_label = "Debian 9 Disk"    #config.0.devices.0.sda.0.disk_label
+            sda {
+                disk_label = "Debian 9 Disk"    #config.devices.sda.disk_label
             }
-            sdb = {
-                disk_label = "512 MB Swap Image" #config.0.devices.0.sdb.0.disk_label
+            sdb {
+                disk_label = "512 MB Swap Image" #config.devices.sdb.disk_label
             }
         }
     }
     disk {
-        label = "Debian 9 Disk"      #disk.0.label
-        size = "50688"               #disk.0.size
+        label = "Debian 9 Disk"      #disk.label (filesystem = "ext4")
+        size = "50688"               #disk.size
     }
     disk {
-        label = "512 MB Swap Image"  #disk.1.label
+        label = "512 MB Swap Image"  #disk.1.label (filesystem = "swap")
         size = "512"                 #disk.1.size
     }
 }
@@ -241,7 +255,7 @@ If your Linode uses more than two disks (for instance, if you have attached a [B
 {{< /note >}}
 
     {{< note >}}
-If you have more than one [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/), you must choose which profile to boot from with the `boot_config_label` argument. For example:
+If you have more than one [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/), you must choose which profile to boot from with the `boot_config_label` key. For example:
 
     resource "linode_instance" "example_label" {
         boot_config_label = "My Debian 9 Disk Profile"
@@ -254,11 +268,15 @@ If you have more than one [configuration profile](/docs/platform/disk-images/dis
 
     `terraform plan` shows you the changes that would take place if you were to apply the configurations with a `terraform apply`. Running `terraform plan` is a good way to determine if the configuration you provided is exact enough for Terraform to take over the management of your Linode.
 
-    {{< note >}}
+    {{< caution >}}
   Running `terraform plan` will display any changes that will be applied to your existing infrastructure based on your configuration file(s). However, you will **not be notified** about the **addition and removal of disks** with `terraform plan`. For this reason, it is vital that the values you include in your `linode_instance` resource configuration block match the values generated from running the `terraform show` command.
-    {{</ note >}}
+    {{</ caution >}}
 
-1. Once you have verified the configurations you provided in the `linode_instance` resource block, you are ready to begin managing your Linode instance with Terraform. Any changes or updates can be made by updating your `linode_instance_import.tf` file, then verifying the changes with the `terrform plan` command, and then finally applying the changes with the `terraform apply` command.
+1. Once you have verified the configurations you provided in the `linode_instance` resource block, you are ready to begin managing your Linode instance with Terraform. Any changes or updates can be made by:
+
+      - updating your `linode_instance_import.tf` file
+      - verifying the changes with the `terrform plan` command
+      - applying the changes with the `terraform apply` command
 
     For more available configuration options, visit the [Linode Instance](https://www.terraform.io/docs/providers/linode/r/instance.html) Terraform documentation.
 
@@ -326,21 +344,19 @@ your Terraform state and will henceforth be managed by Terraform.
 
     You should see output like the following:
 
-    {{< output >}}
-linode_domain.example_label:
-  id = 1157521
-  description =
-  domain = import-example.com
-  expire_sec = 0
-  group =
-  master_ips.# = 0
-  refresh_sec = 0
-  retry_sec = 0
-  soa_email = webmaster@import-example.com
-  status = active
-  ttl_sec = 0
-  type = master
-{{< /output >}}
+        resource "linode_domain" "example_label" {
+            domain      = "import-example.com"
+            expire_sec  = 0
+            id          = "1157521"
+            master_ips  = []
+            refresh_sec = 0
+            retry_sec   = 0
+            soa_email   = "webmaster@import-example.com"
+            status      = "active"
+            tags        = []
+            ttl_sec     = 0
+            type        = "master"
+        }
 
 ### Fill In Your Domain's Configuration Data
 
@@ -361,7 +377,7 @@ resource "linode_domain" "example_label" {
     {{< /file >}}
 
     {{< note >}}
-  If your Domain `type` is `slave` then you'll need to include a `master_ips` argument with values set to the IP addresses that represent the Master DNS for your domain.
+  If your Domain `type` is `slave` then you'll need to include a `master_ips` key with values set to the IP addresses that represent the Master DNS for your domain.
     {{< /note >}}
 
 1. Check for errors in your configuration by running the `plan` command:
@@ -462,21 +478,17 @@ your Terraform state and will henceforth be managed by Terraform.
 
     You should see output like the following:
 
-    {{< output >}}
-linode_domain_record.example_label:
-  id = 12331520
-  domain_id = 1157521
-  name = www
-  port = 0
-  priority = 0
-  protocol =
-  record_type = A
-  service =
-  tag =
-  target = 104.237.148.95
-  ttl_sec = 300
-  weight = 0
-{{< /output >}}
+        resource "linode_domain_record" "example_label" {
+            domain_id   = 1068029
+            id          = "12331520"
+            name        = "www"
+            port        = 80
+            priority    = 10
+            record_type = "A"
+            target      = "192.0.2.0"
+            ttl_sec     = 300
+            weight      = 5
+        }
 
 ### Fill In Your Domain Record's Configuration Data
 
@@ -495,6 +507,9 @@ resource "linode_domain_record" "example_label" {
     record_type = "A"
     target = "192.0.2.0"
     ttl_sec = "300"
+    port = 80
+    priority = 10
+    weight = 5
 }
     {{< /file >}}
 
@@ -573,16 +588,18 @@ your Terraform state and will henceforth be managed by Terraform.
 
     You should see output like the following:
 
-    {{< output >}}
-linode_volume.example_label:
-  id = 17045
-  filesystem_path = /dev/disk/by-id/scsi-0Linode_Volume_import-example
-  label = import-example
-  linode_id = 11426126
-  region = us-east
-  size = "20"
-  status = active
-{{< /output >}}
+        resource "linode_volume" "example_label" {
+            filesystem_path = "/dev/disk/by-id/scsi-0Linode_Volume_test-volume"
+            id              = "17045"
+            label           = "import-example"
+            linode_id       = 11426126
+            region          = "us-east"
+            size            = 20
+            status          = "active"
+            tags            = []
+
+            timeouts {}
+        }
 
 ### Fill In Your Volume's Configuration Data
 
@@ -773,54 +790,56 @@ your Terraform state and will henceforth be managed by Terraform.
 
     You should see output like the following:
 
-    {{< output >}}
-linode_nodebalancer.example_nodebalancer_label:
-  id = 40721
-  client_conn_throttle = 0
-  created = 2018-11-16T20:21:03Z
-  hostname = nb-192-0-2-3.newark.nodebalancer.linode.com
-  ipv4 = 192.0.2.3
-  ipv6 = 2600:3c03:1::68ed:945f
-  label = terraform-example
-  region = us-east
-  transfer.% = 3
-  transfer.in = 0.013627052307128906
-  transfer.out = 0.0015048980712890625
-  transfer.total = 0.015131950378417969
-  updated = 2018-11-16T20:21:03Z
+        # linode_nodebalancer.example_nodebalancer_label:
+        resource "linode_nodebalancer" "example_nodebalancer_label" {
+            client_conn_throttle = 0
+            created              = "2019-08-07T15:22:46Z"
+            hostname             = "nb-23-92-23-94.newark.nodebalancer.linode.com"
+            id                   = "40721"
+            ipv4                 = "23.92.23.94"
+            ipv6                 = "2600:3c03:1::175c:175e"
+            label                = "terraform-import"
+            region               = "us-east"
+            tags                 = []
+            transfer             = {
+                "in"    = "0.011997222900390625"
+                "out"   = "0.000457763671875"
+                "total" = "0.012454986572265625"
+            }
+            updated              = "2019-08-07T15:22:46Z"
+        }
 
-linode_nodebalancer_config.example_nodebalancer_config_label:
-  id = 35876
-  algorithm = roundrobin
-  check = none
-  check_attempts = 2
-  check_body =
-  check_interval = 5
-  check_passive = true
-  check_path =
-  check_timeout = 3
-  cipher_suite = recommended
-  node_status.% = 2
-  node_status.down = 0
-  node_status.up = 1
-  nodebalancer_id = 40721
-  port = 80
-  protocol = http
-  ssl_commonname =
-  ssl_fingerprint =
-  ssl_key =
-  stickiness = table
+        # linode_nodebalancer_config.example_nodebalancer_config_label:
+        resource "linode_nodebalancer_config" "example_nodebalancer_config_label" {
+            algorithm       = "roundrobin"
+            check           = "none"
+            check_attempts  = 2
+            check_interval  = 5
+            check_passive   = true
+            check_timeout   = 3
+            cipher_suite    = "recommended"
+            id              = "44520"
+            node_status     = {
+                "down" = "0"
+                "up"   = "1"
+            }
+            nodebalancer_id = 50629
+            port            = 80
+            protocol        = "http"
+            stickiness      = "table"
+        }
 
-linode_nodebalancer_node.example_nodebalancer_node_label:
-  id = 327539
-  address = 192.168.214.37:80
-  config_id = 35876
-  label = terraform-import
-  mode = accept
-  nodebalancer_id = 40721
-  status = UP
-  weight = 100
-{{< /output >}}
+        # linode_nodebalancer_node.example_nodebalancer_node_label:
+        resource "linode_nodebalancer_node" "example_nodebalancer_node_label" {
+            address         = "192.168.214.37:80"
+            config_id       = 35876
+            id              = "419783"
+            label           = "terraform-import"
+            mode            = "accept"
+            nodebalancer_id = 50629
+            status          = "UP"
+            weight          = 100
+        }
 
 ### Fill In Your NodeBalancer's Configuration Data
 
@@ -828,7 +847,7 @@ As mentioned in the [Terraform’s Import Command](/docs/applications/configurat
 
 1. Fill in the configuration values for all three NodeBalancer resource configuration blocks. The necessary values for the example resource configuration file were collected from the output of the `terraform show` command applied in Step 4 of the [Import Your NodeBalancer, NodeBalancer Configuration, and NodeBalancer Nodes to Terraform](/docs/applications/configuration-management/import-existing-infrastructure-to-terraform/#import-your-nodebalancer-nodebalancer-configuration-and-nodebalancer-nodes-to-terraform) section:
 
-{{< file "linode_nodebalancer_example.tf" >}}
+    {{< file "linode_nodebalancer_example.tf" >}}
 provider "linode" {
     token = "1a2b3c..."
 }
@@ -848,7 +867,7 @@ resource "linode_nodebalancer_node" "nodebalancer_node_import" {
     nodebalancer_id = "40721"
     config_id = "35876"
 }
-{{< /file >}}
+    {{< /file >}}
 
 1. Check for errors in your configuration by running the `plan` command:
 

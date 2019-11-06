@@ -31,6 +31,8 @@ Since you have full root access to your Linode, you're free to choose between a 
 
 ## How can I send and receive email with my Linode?
 
+{{< content "email-warning-shortguide" >}}
+
 If you'd prefer to leave the management of your email to a third party, you may follow our [Google Apps guide](/docs/email/google-mail/). Those desiring to operate their own mail server will find these guides helpful:
 
 -   [Postfix Guides](/docs/email/postfix/) - Information on using the highly popular Postfix MTA (mail transfer agent).
@@ -98,7 +100,9 @@ You may use our [speed test](http://www.linode.com/speedtest/) page to check lat
 
 ## Can I transfer my Linode to another data center?
 
-Yes! Any time you'd like to transfer your Linode, you may open a ticket via the "Support" tab in the Linode Manager to request a DC migration. Your disks and configuration profiles will move with your Linode, although your IP addresses will need to change. Once we stage your migration, you'll see a "migration pending" link in the Linode Manager, which you may use at your convenience to migrate your Linode.
+Yes! Any time you'd like to transfer your Linode, you can proceed with a migration from the **Advanced** tab for any Linode within the [Linode Cloud Manager](https://cloud.linode.com). For more information, see our [Data Center Migration Guide](/docs/platform/migrating-to-a-different-data-center/).
+
+ A migration will result in some changes that will be displayed in a caution message for your review before officially beginning the migration process. Your disks and configuration profiles will move with your Linode, although your IP addresses will need to change. We strongly recommend reviewing this  caution message carefully before proceeding for a list of all changes that you can expect.
 
 ## Where can I learn about Linux basics?
 

@@ -37,7 +37,7 @@ All services are billed automatically at the end of the month. If you used a ser
 | Linode 128GB  | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
 | Linode 192GB  | $1.44/hr    | $960/mo | $0.36/hr            | $240/mo
 
-Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#standard)
+Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing)
 
 ### High Memory Plans
 
@@ -49,7 +49,7 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 | Linode 150GB | $0.72/hr    | $480/mo | $0.06/hr            | $40/mo
 | Linode 300GB | $1.44/hr    | $960/mo | $0.12/hr            | $80/mo
 
-Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#high_memory)
+Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing/high-memory)
 
 ### Additional Linode Services
 
@@ -165,6 +165,9 @@ Your credit card information will be updated.
 
  {{< note >}}
 If you have an outstanding balance, you will need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
+{{< /note >}}
+ {{< note >}}
+A $1.00 authorization hold may be placed on your credit card by your banking institution when our payment processor tests the validity of the card. This is normal behavior and does not result in a charge on your card.
 {{< /note >}}
 
 ## Removing Services

@@ -1,4 +1,5 @@
 abc
+abell
 absecon
 abspath
 aconf
@@ -12,10 +13,12 @@ adnanh
 adodb
 aes
 ahci0
+Aho
 ahvz
 ajp
 aker
 alef
+alexey
 alives
 allmasquerade
 alphanumerics
@@ -53,6 +56,7 @@ authy
 autocompletion
 autoconfiguration
 autoconfigure
+autodiscover
 autohosting
 autojoin
 autojump
@@ -63,6 +67,7 @@ automattic
 automount
 autorelabel
 autorun
+autoscaler
 autoscaling
 autossh
 autostart
@@ -108,6 +113,7 @@ bounceback
 brackley
 bram
 bs4
+bufio
 bugtracker
 buildbot
 bukkit
@@ -120,6 +126,7 @@ bzrtools
 c2s
 cabd
 cacert
+cacheable
 caddy
 caddyfile
 cakey
@@ -127,6 +134,7 @@ calc
 campione
 captcha
 carootcert
+ccm
 celeryd
 centos
 centos7
@@ -188,6 +196,7 @@ config
 configs
 configtest
 configurability
+connectionless
 containerd
 containerised
 convolutional
@@ -215,12 +224,14 @@ cronjobs
 crontab
 crt
 crypto
+csi
 csr
 css
 csum
 csv
 ctools
 ctrl
+ctx
 cuda
 cyberduck
 cyg
@@ -281,6 +292,7 @@ dircaps
 directadmin
 dired
 direnv
+discoverability
 disqus
 distro
 distros
@@ -377,6 +389,7 @@ fb4c
 fcgi
 fcgiwrap
 fcrontab
+fd
 fdisk
 fdriver
 fe70
@@ -385,6 +398,7 @@ fediverse
 fetchmail
 fetchmailrc
 ff02
+ffff
 fi
 fiiiile
 file1
@@ -408,6 +422,7 @@ flatpress
 flyspray
 foodcritic
 fortran
+fmt
 fpm
 fragging
 frakti
@@ -419,6 +434,7 @@ frontmatter
 fs
 fsck
 fstab
+func
 galera
 gamemode
 gamepad
@@ -506,6 +522,7 @@ hasn
 hba
 hd0
 hdfs
+healthcheck
 heartbleed
 heroku
 hexo
@@ -618,6 +635,7 @@ javac
 javascript
 jdbc
 jdk
+Jellyfin
 jenkinsfile
 jetpack
 jez
@@ -644,6 +662,7 @@ keepalived
 keras
 kerberos
 kerberos5
+Kernighan
 keychain
 keyfiles
 keygen
@@ -673,6 +692,7 @@ kubelet
 kubelets
 kubernetes
 kubespray
+kuznetosv
 lambdabunker
 laravel
 largebiomes
@@ -731,6 +751,7 @@ lookups
 loopback
 lspci
 lsd
+lsof
 lst
 lsyncd
 lua
@@ -738,6 +759,7 @@ lubuntu
 lucene
 lugano
 luminus
+lxd
 lxml
 lzma
 lzopio
@@ -764,6 +786,8 @@ masterdb
 masterless
 mathematica
 mathjax
+matplotlib
+mawk
 maxconn
 maxdepth
 mbit
@@ -792,6 +816,7 @@ microservice
 microservices
 microsystems
 microweb
+middleware
 minecraft
 mineshafts
 miniconda
@@ -800,6 +825,7 @@ minification
 minikube
 minimalistic
 minio
+minisockets
 minitest
 misconfiguration
 misconfigurations
@@ -862,6 +888,7 @@ nano
 nanode
 nanodes
 natively
+nawk
 nbox
 ncdu
 ncurses
@@ -876,11 +903,13 @@ netdev
 netfilter
 netflow
 netfs
+netid
 netifrc
 netlify
 netloc
 netmask
 netplan
+netstat
 networkd
 newgrp
 newtag
@@ -912,6 +941,7 @@ nonprivileged
 nonrecursive
 nosync
 nouveau
+novaclient
 novell
 npm
 npmjs
@@ -921,6 +951,7 @@ ns2
 nsd4
 ntop
 ntopng
+ntp
 ntpd
 nullval
 num
@@ -983,6 +1014,7 @@ passwdcolumn
 passwdfile
 passwordless
 patroni
+pbr
 pem
 pepi
 percona
@@ -1040,6 +1072,7 @@ preprocessing
 prerotate
 prerouting
 prestashop
+Printf
 pritunl
 procfile
 procmail
@@ -1055,6 +1088,7 @@ psycop2
 pty
 pubkey
 publickey
+pulumi
 puppetd
 puppetlabs
 puppetmaster
@@ -1094,6 +1128,7 @@ readwrite
 realtime
 reconnections
 recursing
+recv
 red5
 reddit
 redhat
@@ -1112,6 +1147,7 @@ remi
 remmina
 remotehost
 replicaset
+replicationcontrollers
 replset
 repo
 repos
@@ -1123,6 +1159,7 @@ respawn
 resque
 restapi
 retpoline
+retrans
 reusability
 reutilize
 richlanguage
@@ -1200,6 +1237,7 @@ sendmail
 seo
 serv
 server1
+serverless
 servername
 serverpassword
 serverspec
@@ -1307,6 +1345,7 @@ sukharev
 supervisord
 surbma
 suse
+swappable
 svn
 symantec
 symfony
@@ -1417,6 +1456,7 @@ unencrypted
 unexported
 unformatted
 unicast
+uninvoiced
 uniq
 unmanaged
 unmerged
@@ -1433,6 +1473,7 @@ untracked
 untruncated
 untrusted
 unversioned
+upsize
 uri
 uris
 url
@@ -1512,6 +1553,7 @@ websocket
 webtatic
 webupd8
 weechat
+Weinberger
 welcometext
 wercker
 werkzug
@@ -1534,6 +1576,7 @@ wkhtmltopdf
 wll
 wlp6s0
 wmem
+wordcloud
 wordcount
 wordpress
 worker1

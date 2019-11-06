@@ -15,6 +15,9 @@ contributor:
 external_resources:
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 ---
+
+![How to use the Linode Ansible Module to Deploy Linodes](how-to-use-the-linode-ansible-module-to-deploy-linodes.png "How to use the Linode Ansible Module to Deploy Linodes")
+
 Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](https://developers.linode.com/api/v4/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/applications/configuration-management/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
 
 In this guide you will learn how to:
@@ -259,7 +262,7 @@ You are now ready to run the Create Linode Playbook. When you run the Playbook, 
 | `root_pass` | string | The password for the root user. If not specified, will be generated. This generated password will be available in the task success JSON.</br></br> The root password must conform to the following constraints: </br></br> &bull; May only use alphanumerics, punctuation, spaces, and tabs.</br>&bull; Must contain at least two of the following characters classes: upper-case letters, lower-case letters, digits, punctuation. |
 | `state` | string, *required* | The desired instance state. The accepted values are `absent` and `present`. |
 | `tags` | list | The user-defined labels attached to Linodes. Tags are used for grouping Linodes in a way that is relevant to the user. |
-| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) and its [pricing](https://www.linode.com/pricing#all). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
+| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) and its [pricing](https://www.linode.com/pricing/). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
 
 ## The Linode Dynamic Inventory Plugin
 
@@ -350,7 +353,7 @@ A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists
 | --------- | -------- | ------|
 | `access_token` | string, *required* | Your Linode API v4 access token. The token should have permission to read and write Linodes. The token can also be specified by exposing the `LINODE_ACCESS_TOKEN` environment variable. |
 | `plugin` | string, *required* | The plugin name. The value must always be `linode` in order to use the dynamic inventory plugin for Linode. |
-| `regions` | list | The Linode region with which to populate the inventory. For example, `us-east` is possible value for this parameter.</br></br> To view a list of all available Linode images, issue the following command: </br></br>`curl https://api.linode.com/v4/images`.  |
+| `regions` | list | The Linode region with which to populate the inventory. For example, `us-east` is possible value for this parameter.</br></br> To view a list of all available regions, issue the following command: </br></br>`curl https://api.linode.com/v4/regions`.  |
 | `types` | list | The Linode type with which to populate the inventory. For example, `g6-nanode-1` is a possible value for this parameter.</br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
 | `groups` | list | The Linode group with which to populate the inventory. Please note, group labelling is deprecated but still supported. The encouraged method for marking instances is to use tags. This parameter must be provided to use the Linode dynamic inventory module. |
 
@@ -373,4 +376,3 @@ A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists
 1. Run the Delete Linode Playbook:
 
         ansible-playbook ~/development/linode_delete.yml
-

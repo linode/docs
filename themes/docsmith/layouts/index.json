@@ -1,5 +1,5 @@
 {{- $.Scratch.Add "index" slice -}}
 {{- range where .Site.Pages "Type" "not in"  (slice "page" "json") -}}
-{{- $.Scratch.Add "index" (dict "objectID" .UniqueID "title" .Title "ref" .RelPermalink "keywords" .Params.keywords "deprecated" .Params.deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify )) -}}
+{{- $.Scratch.Add "index" (dict "objectID" .UniqueID "title" .Title "ref" .RelPermalink "modified" .Lastmod.Unix "published" (time .Params.published).Unix "keywords" .Params.keywords "deprecated" .Params.deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify )) -}}
 {{- end -}}
 {{- $.Scratch.Get "index" | jsonify -}}

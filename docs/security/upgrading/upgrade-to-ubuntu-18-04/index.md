@@ -28,6 +28,10 @@ The upgrade may be incomplete or your system may be corrupted if your internet c
 
 {{< /caution >}}
 
+{{< note >}}
+If you are upgrading from Ubuntu 17.04 you must first upgrade to Ubuntu 17.10.
+{{< /note >}}
+
 ## Prepare to Upgrade to Ubuntu 18.04
 
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.

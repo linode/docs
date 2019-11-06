@@ -32,7 +32,8 @@ You can configure your GitLab App by providing values for the following fields:
 | **Field** | **Description** |
 |:--------------|:------------|
 | **Domain** | Your GitLab site's domain name. This domain will also be used by Postfix to send mail. Setting a value for this field will not automatically set up DNS for your app, so be sure to follow the DNS instructions in the [Access your GitLab Site](#access-your-gitlab-site) section. If you do not have a domain name, you can leave this field blank and Postfix will use your Linode's default Reverse DNS to send email instead (i.e. `gitlab@li926-227.members.linode.com`).  *Advanced Configuration*. |
-| **SSH public key** | Your SSH [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/). The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode. *Advanced Configuration*. |
+
+{{< content "email-warning-shortguide" >}}
 
 ### Linode Options
 
