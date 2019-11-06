@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05
 modified_by:
   name: Linode
-title: 'Learning Go Functions, Loops, and Errors - A Tutorial | Linode'
+title: 'Learning Go Functions, Loops, and Errors - A Tutorial'
 h1_title: 'A Tutorial for Learning Go Functions, Loops, and Errors'
 contributor:
   name: Mihalis Tsoukalos
@@ -400,7 +400,7 @@ func main() {
 }
 {{< /file >}}
 
-The `getPointer()` function takes a pointer argument to a `float64`, which is defined as `varToPointer *float64`, where `returnPointer()` returns a pointer to an `int`, which is declared as `*int`. A future Go guide will delve further into pointers in Go.
+The `getPointer()` function takes a pointer argument to a `float64`, which is defined as `varToPointer *float64`, where `returnPointer()` returns a pointer to an `int`, which is declared as `*int`.
 
 The output of `fPointers.go` will resemble the following:
 
@@ -549,4 +549,4 @@ strconv.Atoi: parsing "43W": invalid syntax
 
 ## Summary
 
-In this guide you learned the basics about the Go programming language, how to execute programs, how to write loops, various functions, and how to handle errors. The next Go guide will talk about the standard Go library, working with command line arguments and the basic Go data types.
+In this guide you learned the basics about the Go programming language, how to execute programs, how to write loops, various functions, and how to handle errors.
