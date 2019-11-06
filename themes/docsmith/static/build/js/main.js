@@ -90,49 +90,53 @@ if (query) {
 
 })(jQuery);
 
-$(function() {
-    $('.disclosure-note').each(function() {
-        $(this).css("cursor", "pointer")
-            .click(function() { toggleNoteDisclosure($(this)) });
-        $(this).children('div').first()
-            .css("height", '2.8em')
-            .css("opacity", .5);
-    });
+//shortcodes disclosure-note and quick-start-note rely on this JS
+$(function () {
+  $('.hidden-content').each(function () {
+    $(this).css("cursor", "pointer")
+      .click(function () { toggleHiddenContent($(this)) });
+    $(this).children('div').first()
+      .css("height", '2.8em')
+      .css("opacity", .5);
+  });
+  $('.btn').click(function () {
+    $('.btn.feedback').attr("disabled", "true");
+  });
 });
 
-function toggleNoteDisclosure(disclosureNote) {
-    disclosureNoteTitle = disclosureNote.children('span').first();
-    arrowIcon = disclosureNoteTitle.children('img.disclosure-icon').first();
-    disclosableDiv = disclosureNoteTitle.next('div')
-    if (disclosureNote.hasClass('disclosed')) {
-        disclosableDiv.animate(
-            {
-                height: '2.8em',
-                opacity: .5
-            }, 
-            200,
-            function() {
-                disclosureNoteTitle.css("cursor", "pointer")
-                    .unbind('click');
-                disclosureNote.css("cursor", "pointer")
-                    .unbind('click').click(function() { toggleNoteDisclosure($(this)); });
-            });
-    }
-    else {
-        disclosableDiv.animate(
-            {
-                height: disclosableDiv.children('.height-preservation-wrapper').first().height(),
-                opacity: 1
-            }, 
-            200,
-            function() {
-                disclosureNote.css("cursor", "default")
-                    .unbind('click');
-                disclosureNoteTitle.css("cursor", "pointer")
-                    .unbind('click').click(function() { toggleNoteDisclosure($(this).parent()); });
-            });
-    }
-    disclosureNote.toggleClass('disclosed');
+function toggleHiddenContent(hiddenContent) {
+  hiddenContentTitle = hiddenContent.children('span').first();
+  arrowIcon = hiddenContentTitle.children('img.toggle-hidden-content-icon').first();
+  hideableDiv = hiddenContentTitle.next('div')
+  if (hiddenContent.hasClass('unhidden')) {
+    hideableDiv.animate(
+      {
+        height: '2.8em',
+        opacity: .5
+      },
+      200,
+      function () {
+        hiddenContentTitle.css("cursor", "pointer")
+          .unbind('click');
+        hiddenContent.css("cursor", "pointer")
+          .unbind('click').click(function () { toggleHiddenContent($(this)); });
+      });
+  }
+  else {
+    hideableDiv.animate(
+      {
+        height: hideableDiv.children('.height-preservation-wrapper').first().height(),
+        opacity: 1
+      },
+      200,
+      function () {
+        hiddenContent.css("cursor", "default")
+          .unbind('click');
+        hiddenContentTitle.css("cursor", "pointer")
+          .unbind('click').click(function () { toggleHiddenContent($(this).parent()); });
+      });
+  }
+  hiddenContent.toggleClass('unhidden');
 }
 (function($) {
 
@@ -202,6 +206,48 @@ function toggleNoteDisclosure(disclosureNote) {
             this.href = u.toString();
         });
     }
+
+    // navigation toggle
+    $('.primary-nav__link.dropdown').each(function() {
+        $(this).on('click', function() {
+            var SubMenuAttr = $(this).attr('data-submenu');
+            var targetSubMenu = $('#header').find("#"+SubMenuAttr)
+            targetSubMenu.siblings('.sub-menu').addClass('visually-hidden visibility-hidden');
+            targetSubMenu.toggleClass('visually-hidden visibility-hidden');
+            setTimeout(function() {
+                if (targetSubMenu.hasClass('visually-hidden')) {
+                    $('body').removeClass('oh');
+                }
+                else if (!targetSubMenu.siblings('.sub-menu').hasClass('visually-hidden')) {
+                    $('body').removeClass('oh');
+                }
+                else {
+                    $('body').addClass('oh');
+                }
+            }, 50)
+        })
+    })
+
+    $('#header').on('click', function(e) {
+        if (!$(e.target).hasClass('primary-nav__link') && !$(e.target).parents('.sub-menu').length > 0) {
+            $('.sub-menu').addClass('visually-hidden visibility-hidden');
+            $('body').removeClass('oh');
+        }
+    })
+
+    // mobile navigation toggle
+    $('.header__link.mobile').on('click', function() {
+        var mm = $('#mobile-menus');
+        mm.toggleClass('active');
+        $('.header-mobile-icon svg').toggle();
+        if (mm.hasClass('active')) {
+            $('body').addClass('m-oh')
+        }
+        else {
+            $('body').removeClass('m-oh');
+        }
+    })
+
 
 })(jQuery);
 
@@ -307,11 +353,11 @@ function articleHeadersChangedVisibility() {
     $('body').scrollspy('refresh')
 }
 
-// Hugo's .TableOfContents shortcode 
+// Hugo's .TableOfContents shortcode
 // (which relies on the Blackfriday markdown
 // renderer to compile the table of contents)
-// does not include headers from embedded 
-// shortguides. buildNav() rebuilds the nav, 
+// does not include headers from embedded
+// shortguides. buildNav() rebuilds the nav,
 // including embedded shortguides.
 function buildNav() {
     function addListTagsForHeaderToNav(parentList, currentHeaderElement, previousHeaderElement) {
@@ -320,12 +366,12 @@ function buildNav() {
         }
         var currentHeaderLevel = headerLevel(currentHeaderElement);
         var previousHeaderLevel = headerLevel(previousHeaderElement);
-    
+
         function anchorElement(headerElement) {
             return $("<a />").attr("href", "#" + headerElement.prop('id'))
                 .text($(headerElement.contents()[0]).text());
         }
-    
+
         if (currentHeaderLevel === previousHeaderLevel) {
             var li = $("<li></li>").appendTo(parentList);
             anchorElement(currentHeaderElement).appendTo(li);
@@ -344,12 +390,12 @@ function buildNav() {
             var li = $("<li></li>").appendTo(parentList);
             anchorElement(currentHeaderElement).appendTo(li);
         }
-    
+
         return parentList;
     }
 
     var parentList = $('#TableOfContents > ul');
-    // All of .TableOfContent's elements were embedded in 
+    // All of .TableOfContent's elements were embedded in
     // #TableOfContents > ul > li
     parentList.children('li:first').empty();
 
@@ -361,48 +407,66 @@ function buildNav() {
 }
 
 (function($) {
-
     buildNav();
 
     SidebarScroll = {
+        scrollSpyOffset: 80,
+
         init: function() {
-            var tocElemID = '#doc-sidebar';
-
-            /* activate scrollspy menu */
-            var $body = $(document.body);
-
-            // The y position of the sticky nav element
-            var scrollSpyOffset = 20;
-
-            $body.scrollspy({
-                target: tocElemID,
-                offset: scrollSpyOffset
-            });
-
             /*  scrollspy Table of contents, adapted from https://www.bootply.com/100983
                 license: MIT
                 author: bootply.com
              */
-            /* smooth scrolling sections */
-            $('a[href*=\\#]:not([href=\\#])').click(function() {
-                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                    if (target.length) {
-                        // Add 1 to push the scroll position past the scrollspy threshold
-                        // for the header. Otherwise, the header prior to the target would be
-                        // highlighted in the nav at the end of the scroll animation.
-                        $('html,body').animate({
-                            scrollTop: target.offset().top - scrollSpyOffset + 1
-                        }, 1000);
-                        /* Change the hash location in URL */
-                        window.location.hash = this.hash;
-                        return false;
-                    }
-                }
+            var tocElemID = '#doc-sidebar';
+
+            /* activate scrollspy menu */
+            var body = $('body');
+
+            // The y position of the sticky nav element
+            var scrollSpyOffset = this.scrollSpyOffset;
+
+            body.scrollspy({
+                target: tocElemID,
+                offset: scrollSpyOffset
             });
         }
+    }
+})(jQuery);
 
+$(window).on('load', function() {
+    var scrollSpyOffset = SidebarScroll.scrollSpyOffset;
+
+    // Check if the page is visited with an anchor link specified
+    // Check if the link corresponds to an element on the page
+    // If it does, scroll up a bit from it (by an amount equal
+    // to the scrollSpyOffset) so that it doesn't appear under
+    // the top nav.
+    if(window.location.hash && $(window.location.hash).length) {
+        this.console.log(window.location.hash);
+        var scrollLocation = $(window.location.hash).offset().top;
+        $(window).scrollTop(scrollLocation-scrollSpyOffset+1);
     }
 
-})(jQuery);
+    /* smooth scrolling sections */
+
+    // Select all anchor links (that aren't just empty
+    // anchor links, e.g. <a href="#">).
+    // Add smooth click functionality to selected links
+    $('a[href*=\\#]:not([href=\\#])').click(function() {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                // Add 1 to push the scroll position past the scrollspy threshold
+                // for the header. Otherwise, the header prior to the target would be
+                // highlighted in the nav at the end of the scroll animation.
+                $('html,body').animate({
+                    scrollTop: target.offset().top - scrollSpyOffset + 1
+                }, 1000);
+                /* Change the hash location in URL */
+                window.location.hash = this.hash;
+                return false;
+            }
+        }
+    });
+});

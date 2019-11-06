@@ -78,7 +78,7 @@ These hostnames are only given as examples, but we'll use these names throughout
 
 ## Set Up MongoDB Authentication
 
-In this section you'll create a key file that will be used to secure authentication between the members of your replica set. While in this example you'll be using a key file generated with `openssl`, MongoDB recommends using an [X.509 certificate](https://docs.mongodb.com/v3.2/core/security-x.509/) to secure connections between production systems.
+In this section you'll create a key file that will be used to secure authentication between the members of your replica set. While in this example you'll be using a key file generated with `openssl`, MongoDB recommends using an [X.509 certificate](https://docs.mongodb.com/v4.0/core/security-x.509/) to secure connections between production systems.
 
 ### Generate a Key file
 
@@ -211,7 +211,7 @@ At this stage, your replica set is fully functional and ready to use. The steps 
 
     This command enables secondary member read operations on a per-connection basis, so be sure to disconnect before you deploy your replica set into production. By default, read queries are not allowed on secondary members to avoid problems with your application retrieving stale data. This can become an issue when your database is undergoing more complex queries at a higher load, but because of the relatively simple test data we wrote, this is not an issue here.
 
-    However, changing the overall read preference can have benefits in some cases. For more information, see the official [MongoDB documentation](https://docs.mongodb.com/v3.2/core/read-preference/).
+    However, changing the overall read preference can have benefits in some cases. For more information, see the official [MongoDB documentation](https://docs.mongodb.com/v4.0/core/read-preference/).
 
 4.  Before running the command in the previous step, any read operations, including simple ones like `show dbs` and `show collections` would fail with an error. Now that you've enabled reading, switch to the `exampleDB` database:
 

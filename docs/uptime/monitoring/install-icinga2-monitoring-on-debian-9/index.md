@@ -29,6 +29,8 @@ Icinga 2 can be configured to monitor internal systems' state and check the load
 
 This guide shows how to install and configure the latest version of Icinga 2 web monitoring tool on Debian 9 to monitor network infrastructure.
 
+{{< content "email-warning-shortguide" >}}
+
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for creating a Linode with Debian 9, and setting your Linode's hostname and timezone.

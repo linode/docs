@@ -22,7 +22,7 @@ external_resources:
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Ubuntu 14.04 LTS (Trusty Tahr).
 
-We recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) with this guide.
+We recommend using a [high memory Linode](https://www.linode.com/pricing/high-memory) with this guide.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -193,4 +193,3 @@ You'll now be able to log in again using `mysql -u root -p`.
     You will be asked for the MySQL root user's name and password. The output will show two areas of interest: General recommendations and Variables to adjust.
 
 MySQL Tuner is an excellent starting point to optimize a MySQL server, but it would be prudent to perform additional research for configurations tailored to the application(s) utilizing MySQL on your Linode.
-

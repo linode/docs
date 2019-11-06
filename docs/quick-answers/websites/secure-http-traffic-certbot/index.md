@@ -12,7 +12,7 @@ modified_by:
 published: 2018-06-27
 title: Secure HTTP Traffic with Certbot
 external_resources:
-  - '[Certbot Official Dcomentation](https://certbot.eff.org/docs/)'
+  - '[Certbot Official Documentation](https://certbot.eff.org/docs/)'
 ---
 
 ## What is Certbot?
@@ -23,7 +23,7 @@ For most operating system and web server configurations, Certbot creates signed 
 
 ## Before You Begin
 
-Make sure you have a Fully Qualified Domain Name (FQDN) with a DNS A/AAA record pointing to the domain's Public IP address. Consult [Add DNS Records](/docs/websites/hosting-a-website/#add-dns-records) for more information.
+Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) DNS records that point to your Linode's public [IPv4 and IPv6 addresses](/docs/getting-started/#find-your-linode-s-ip-address). Consult our [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/platform/manager/dns-manager/) guides for help with setting up a domain.
 
 {{< note >}}
 If you're using Apache, change each instance of `nginx` to `apache` in the following sections.

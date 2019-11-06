@@ -16,7 +16,7 @@ external_resources:
 classic_manager_link: platform/stackscripts-classic-manager/
 ---
 
-![Automate Deployment with StackScripts](automate-deployment-with-stackscripts-title-graphic.jpg "Automate Deployment with StackScripts")
+![Automate Deployment with StackScripts](automate-deployment-with-stackscripts.png "Automate Deployment with StackScripts")
 
 [StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of our default Linux distribution images. Linodes deployed with a StackScript run the script as part of the first boot process. This guide explains how StackScripts work, and offer several examples of how to use them.
 
@@ -265,7 +265,7 @@ The UDF tags are explained in the table below:
 |manyof   | A comma separated list of values| Optional
 
 
-Below is an example implementation of the UDF variables. Note that the UDF tags are commented out to prevent execution errors, as the stackscript system parses the tags without removing them:
+Below is an example implementation of the UDF variables. Note that the UDF tags are commented out to prevent execution errors, as the StackScript system parses the tags without removing them:
 
 {{< file "StackScript" bash >}}
 # [...]

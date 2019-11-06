@@ -1,0 +1,10 @@
+{{ partial "navigation/col_top" . }}
+  {{ $urlPre := "https://linode.com/wp-json/menus/v1/menus" }}
+  {{ $menuItems := getJSON $urlPre "/submenu-mobile-primary" }}
+  <h6 class="sub-menu__header"></h6>
+  {{ if $menuItems }}
+    {{ range $menuItems.items }}
+      <li class="sub-menu__li sub-menu__header-li"><a href="{{ .url }}" class="header__link sub-menu__header-link mobile__link">{{ .title }}</a></li>
+    {{ end }}
+  {{ end }}
+{{ partial "navigation/col_bottom" . }}

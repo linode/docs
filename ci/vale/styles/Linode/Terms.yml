@@ -35,4 +35,7 @@ swap:
   uris: URIs
   Cuda: CUDA
   gpu: GPU
+  stackscript: StackScript
+  typescript: TypeScript
+  pulumi: Pulumi
   markdown: Markdown

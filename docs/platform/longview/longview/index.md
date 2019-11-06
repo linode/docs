@@ -294,7 +294,9 @@ If you clone a Linode which has Longview installed, you may encounter the follow
 Multiple clients appear to be posting data with this API key. Please check your clients' configuration.
 {{< /output >}}
 
-This is caused by both Linodes posting data using the same Longview key. To resolve it, reinstall Longview on the cloned system using the instructions [above](#install-the-longview-client). This will give the new Linode's system a Longview API key independent from the system which it was cloned from.
+This is caused by both Linodes posting data using the same Longview key. To resolve it, uninstall & then reinstall Longview on the cloned system using the instructions [above](#install-the-longview-client). This will give the new Linode's system a Longview API key independent from the system which it was cloned from.
+
+NOTE, the GUID shown in the Linode Manager Longview installation URL is not the same as the Linode Longview key.
 
 ### Contact Support
 

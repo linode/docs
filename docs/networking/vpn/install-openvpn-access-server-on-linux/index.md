@@ -5,7 +5,7 @@ description: 'This guide will show how to install and configure an OpenVPN acces
 keywords: ["openvpn", "vpn"]
 aliases: ['networking/vpn/openvpn-access-server/','networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-01
+modified: 2019-08-12
 modified_by:
     name: Linode
 published: 2015-04-30
@@ -22,10 +22,10 @@ OpenVPN Access Server requires a paid license to use more than two connected dev
 
 ## Before You Begin
 
-- You should not already have OpenVPN installed before starting this guide.
-- You will need root access to your Linode or a user account with `sudo` privilege.
-- Update your system.
-- Allow TCP traffic through port `943` and UDP through port `1194` on your firewall.
+- Ensure that you have not already installed OpenVPN before starting this guide.
+- Ensure that you have root access to your Linode or a user account with `sudo` privilege. For information about creating a user account with `sudo` privilege, see [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account).
+- Update your system. For more information, see [Install Software Updates](/docs/getting-started/#install-software-updates).
+- Allow TCP traffic through port `943` and UDP through port `1194` on your firewall. For more information, see [Add Rules](/docs/security/firewalls/configure-firewall-with-ufw/#add-rules).
 
 
 ## Install OpenVPN Access Server
@@ -115,10 +115,12 @@ If you wish to give VPN users access to services listening on your Linode's loca
 
     - The option *"Should client Internet traffic be routed through the VPN?"* should be set to **Yes**.
 
-1. To avoid [DNS leaking](https://www.dnsleaktest.com/what-is-a-dns-leak.html), modify the DNS resolver settings. Click **DNS Settings** in the left sidebar, select **Have clients use the same DNS servers as the Access Server host**.
+1. To avoid [DNS leaking](https://www.dnsleaktest.com/what-is-a-dns-leak.html), modify the DNS resolver settings. Go to **VPN Settings** and in the **DNS Settings** section:
+
+    - The option *"Have clients use the same DNS servers as the Access Server host"* should be set to **Yes**.
 
     {{< note >}}
-Alternatively, you can manually set DNS resolvers of your choice which are pushed to VPN clients. Select **Have clients use these DNS servers** and add a primary and secondary server.
+Alternatively, you can manually set DNS resolvers of your choice which are pushed to VPN clients. Set the option *"Have clients use these DNS servers"*  to **Yes** and add a primary and secondary server.
 {{< /note >}}
 
     Once you've applied your changes, click **Save Settings** at the bottom of the page. You will be prompted to **Update Running Server** to push your new configuration to the OpenVPN server.

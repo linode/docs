@@ -15,7 +15,7 @@ title: Common DNS Configurations
 classic_manager_link: 'networking/dns/common-dns-configurations-classic-manager/'
 ---
 
-![Common DNS Configurations](common-dns-configurations-title-graphic.jpg "Common DNS Configurations")
+![Common DNS Configurations](common-dns-configurations.png "Common DNS Configurations")
 
 ## Set Up a Domain
 

@@ -65,13 +65,13 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 1. [Create three Linodes](/docs/getting-started/#create-a-linode) running Debian 9. One will be the **control node** and two you will use as your Ansible **managed nodes**. The examples in this guide can also be followed using a single managed node, if preferred.
 
-1. Ansible uses the SSH protocol to securely log into managed nodes and apply your Playbook configurations. Create an SSH key-pair on the control node to use for authentication. This guide assumes your public and private SSH key-pair is stored in `~/home/.ssh/id_rsa.pub` and `~/home/.ssh/is_rsa`.
+1. Ansible uses the SSH protocol to securely log into managed nodes and apply your Playbook configurations. Create an SSH key-pair on the control node to use for authentication. This guide assumes your public and private SSH key-pair is stored in `~/.ssh/id_rsa.pub` and `~/.ssh/id_rsa`.
 
         ssh-keygen -t rsa -b 4096
 
-2.  Copy the key to `node-1`. Replace `192.0.2.0` with your managed Linode's ip address.
+2.  Copy the key to `node-1`. Replace `203.0.113.0` with your managed Linode's ip address.
 
-        ssh-copy-id root@192.0.2.0
+        ssh-copy-id root@203.0.113.0
 
     Repeat this procedure for each remaining node.
 
@@ -174,14 +174,14 @@ Ansible keeps track of its managed nodes using an [inventory file](http://docs.a
 
 Following the example below, you will add your three Linodes to the `/etc/ansible/hosts` inventory file in two separate groups. The nodes can be listed using a name that can be resolved by DNS or an IP address.
 
-1. Add your nodes to the default inventory file. Replace `192.0.2.0` and `192.0.2.1` with the public IP address or domain name of each of your nodes.
+1. Add your nodes to the default inventory file. Replace `203.0.113.0` and `203.0.113.1` with the public IP address or domain name of each of your nodes.
 
     {{< file "/etc/ansible/hosts" ini >}}
 [nginx]
-192.0.2.0
+203.0.113.0
 
 [wordpress]
-192.0.2.1
+203.0.113.1
     {{< /file >}}
 
     Each bracketed label denotes an Ansible [group](http://docs.ansible.com/ansible/latest/intro_inventory.html#hosts-and-groups). Grouping your nodes by function will make it easier to run commands against the correct set of nodes.
@@ -191,7 +191,7 @@ The `/etc/ansible` directory will not exist by default in some environments. If 
 
     mkdir /etc/ansible/
 
-If you are using a non-standard SSH port on your nodes, include the port after a colon on the same line within your hosts file (`192.0.2.1:2222`).
+If you are using a non-standard SSH port on your nodes, include the port after a colon on the same line within your hosts file (`203.0.113.1:2222`).
     {{< /note >}}
 
 ## Connect to your Managed Nodes
@@ -223,7 +223,7 @@ After configuring your control node, you can communicate with your managed nodes
 
 ## Next Steps
 
-1. Now that you've installed and configured Ansible, you can begin to use Playbooks to manage your Linodes' configurations. Our [Using Ansible Playbooks for Configuration Management](/docs/applications/configuration-management/running-ansible-playbooks/) guide will demonstrate a basic web server set up using an Ansible Playbook.
+1. Now that you've installed and configured Ansible, you can begin to use Playbooks to manage your Linodes' configurations. Our [Automate Server Configuration with Ansible Playbooks](/docs/applications/configuration-management/running-ansible-playbooks/) guide will demonstrate a basic web server set up using an Ansible Playbook.
 
 1. You can also reference a number of [example playbooks](https://github.com/ansible/ansible-examples) on Ansible's GitHub account to a see a variety of implementations.
 

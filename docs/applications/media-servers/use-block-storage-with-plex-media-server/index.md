@@ -15,6 +15,8 @@ external_resources:
 dedicated_cpu_link: true
 ---
 
+![Use a Block Storage Volume with Plex Media Server](use-a-block-storage-volume-with-plex-media-server.png "Use a Block Storage Volume with Plex Media Server")
+
 ## What is Plex?
 
 Plex is a media server that allows you to store your media on a remote server and stream it to your devices. This guide shows how to attach a Block Storage Volume to an existing Linode in order to meet the demands of a growing media library.

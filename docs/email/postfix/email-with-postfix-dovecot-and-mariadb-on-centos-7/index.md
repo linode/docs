@@ -24,6 +24,8 @@ In this guide, you'll learn how to set up a secure virtual user mail server with
 
 For a different Linux distribution or different mail server, review our [email tutorials](/docs/email/).
 
+{{< content "email-warning-shortguide" >}}
+
 ## Before You Begin
 
 1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.

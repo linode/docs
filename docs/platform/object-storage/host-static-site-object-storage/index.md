@@ -17,10 +17,11 @@ external_resources:
 - '[s3cmd Options and Commands](https://s3tools.org/usage)'
 - '[s3cmd Sync How-To](https://s3tools.org/s3cmd-sync)'
 ---
-{{< note >}}
-Object Storage is currently in a closed early access Beta, and you may not have access to Object Storage through the Cloud Manager or other tools. To gain access to the Early Access Program (EAP), open up a Customer Support ticket noting that you'd like to be included in the program, or e-mail objbeta@linode.com -- beta access is completely free.
 
-Additionally, because Object Storage is in Beta, there may be breaking changes to how you access and manage Object Storage. This guide will be updated to reflect these changes if and when they occur.
+![Host a Static Site using Linode Object Storage](host-a-static-site-using-linode-object-storage.png "Host a Static Site using Linode Object Storage")
+
+{{< note >}}
+[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with objects stored in Object Storage buckets will be billed. For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
 {{</ note >}}
 
 ## Why Host a Static Site on Object Storage?
@@ -266,7 +267,7 @@ Error document:   404.html
     {{</ output >}}
 
     {{< note >}}
-The Linode Object Storage early access Beta provides SSL enabled by default. This means you can access your Object Storage bucket using `https`, as well.
+Linode Object Storage provides SSL enabled by default. This means you can access your Object Storage bucket using `https`, as well.
 {{</ note >}}
 
 1. Use s3cmd's `sync` command to upload the contents of your static site's `public` directory to your Object Storage bucket. This step will make your site available publicly on the Internet. Ensure you are in your site's root directory on your computer (e.g. `/home/username/example-site`):
