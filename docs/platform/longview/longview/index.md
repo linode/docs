@@ -7,10 +7,11 @@ og_description: "Learn how to use Longview, Linode's system data graphing servic
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['longview/', 'uptime/longview/']
-modified: 2018-11-20
+modified: 2019-11-05
 modified_by:
   name: Linode
 title: What is Longview and How to Use it
+h1_title: Understanding Linode Longview
 published: 2013-03-27
 ---
 
