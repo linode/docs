@@ -2,14 +2,14 @@
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'In this guide, you will build off of what you have already learned and put together more complex Bash scripts for common operations used by Linux system administrators, like creating interactive Bash scripts with menu options, scripts that generate nicely formatted output of your data, and working with files and directories in your scripts. Each section will provide a brief introduction to each concept and command with a few examples that you can run to better understand its function.'
+description: 'In this guide, you will put together more complex Bash scripts for common operations used by Linux system administrators like creating interactive Bash scripts with menu options, scripts that generate formatted output of your data, and scripts that work with files and directories.'
 keywords: ["shell", "bash", "printf", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05
 modified_by:
   name: Linode
 title: 'An Intermediate Guide to Bash Scripting'
-h1_title: 'Intermediate: Continuing with Bash Scripting'
+h1_title: 'Continuing with Bash Scripting'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
@@ -17,7 +17,7 @@ external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
 ---
 
-In the previous guide of this series, [Beginners: Getting Started with Bash Scripting](/docs/development/bash/intro-bash-shell-scripting/), you learned Bash basics, like creating and using variables, getting user input, using environment variables, and more. In this guide, you will build off of what you have already learned and put together more complex Bash scripts for common operations used by Linux system administrators, like creating interactive Bash scripts with menu options, scripts that generate nicely formatted output of your data, and working with files and directories in your scripts. Each section will provide a brief introduction to each concept and command with a few examples that you can run to better understand its function.
+In the previous guide of this series, [Getting Started with Bash Scripting](/docs/development/bash/intro-bash-shell-scripting/), you learned Bash basics, like creating and using variables, getting user input, using environment variables, and more. In this guide, you will build off what you have already learned and put together more complex Bash scripts for common operations used by Linux system administrators like creating interactive Bash scripts with menu options, scripts that generate formatted output of your data, and scripts that work with files and directories. Each section will provide a brief introduction to each concept and commands with a few examples that you can run to better understand its function.
 
 In this guide, you will learn about:
 
@@ -70,7 +70,7 @@ fi
 
 while read -r line
 do
-  echo "$line"
+    echo "$line"
 done < "${file}"
 {{< /file >}}
 
@@ -94,11 +94,11 @@ With both you are working with reality, a material just as hard as wood.
 
         ./input.sh
 
-    Enter some text after the prompt and you will see it echoed back to you in the terminal.
+    Enter some text after the prompt followed by *enter* and you will see it echoed back to you in the terminal. Use **CTRL+D** to end the script.
 
 ## Create Menus with the Select Statement
 
-You can use the `select` statement to create menu systems in your bash scripts that users can interact with. When you combine `select` with the `case` statement you can create more sophisticated menu options. This section will provide three examples that use `select` to create menus. If you are not familiar with the `case` statement, you can refer to our [Introduction to Bash Shell Scripting](/docs/development/bash/bash1/#the-case-statement) guide.
+You can use the `select` statement to create menu systems in your bash scripts that users can interact with. When you combine `select` with the `case` statement you can create more sophisticated menu options. This section will provide three examples that use `select` to create menus. If you are not familiar with the `case` statement, you can refer to our [Getting Started with Bash Shell Scripting](/docs/development/bash/intro-bash-shell-scripting/#the-case-statement) guide.
 
 The general format for the `select` statement is the following:
 
@@ -197,7 +197,7 @@ You are now exiting this script.
 
 ### Create a Menu that Includes a Submenu
 
-The third example, `submen.sh`, uses all the previously covered concepts and enhances them by adding a submenu with a new series of options for the user to select. The script will read all files in the current working directory and display them to the user as selectable options. Once the user selects a file, a submenu will appear prompting the user to select an action to perform on the previously selected file. The submenu allows a user to delete a file, display the file's contents, or to simply exit the script.
+The third example, `submenu.sh`, uses all the previously covered concepts and enhances them by adding a submenu with a new series of options for the user to select. The script will read all files in the current working directory and display them to the user as selectable options. Once the user selects a file, a submenu will appear prompting the user to select an action to perform on the previously selected file. The submenu allows a user to delete a file, to display the file's contents, or to simply exit the script.
 
 {{< file "submenu.sh" bash >}}
 #!/bin/bash
@@ -307,9 +307,9 @@ linux-gnu
 
 * `%d`: printing a value as an integer
 
-        printf "%s\n" "0x29A"
+        printf "%d\n" "0xF9"
     {{< output >}}
-666
+249
     {{</ output >}}
 
 * `%x`: printing a value as a hexadecimal number with lower case `a-f`. You could similarly use an upper case `X` to print the hexadecimal value with upper case `A-F`
@@ -329,13 +329,13 @@ linux-gnu
     {{</ output >}}
 
 {{< note >}}
-The `-v var` option causes the output of `printf` to be assigned to a variable instead of being printed to the standard output. In the example below, the result of the `printf` format specifier and argument will be stored in a varialble named `myvar`. To view the result, the example echoes the value of `$myvar`.
+The `-v var` option causes the output of `printf` to be assigned to a variable instead of being printed to the standard output. In the example below, the result of the `printf` format specifier and argument will be stored in a variable named `myvar`. To view the result, the example echoes the value of `$myvar`.
 
-    printf -v myvar "%d\n" "0x29A"
+    printf -v myvar "%d\n" "0xF9"
     echo $myvar
 
   {{< output >}}
-666
+249
   {{</ output >}}
 {{</ note >}}
 
@@ -352,32 +352,32 @@ The example script below makes use of `printf` to create a readable and nicely f
 
 for i in $( seq 1 10 )
 do
-     printf "%04d\t" "$i"
+    printf "%04d\t" "$i"
 done
 echo
 
 for i in $( seq 1 10 )
 do
-     printf "%x\t" "$i"
+    printf "%x\t" "$i"
 done
 echo
 
 for i in $( seq 1 10 )
 do
-     printf "%X\t" "$i"
+    printf "%X\t" "$i"
 done
 echo
 
 for i in $( seq 10 15 )
 do
-     printf "%04d\t is %X\t in HEX.\n" "$i" "$i"
+    printf "%04d\t is %X\t in HEX.\n" "$i" "$i"
 done
 
 for i in $( seq 5 10 )
 do
-     printf "%.10s is %X in HEX.\n" "$i............." "$i"
+    printf "%.10s is %X in HEX.\n" "$i............." "$i"
 done
-    {{< /file >}}
+{{< /file >}}
 
 1. Copy and paste the contents of `printf.sh` into a new file and save it.
 
@@ -407,7 +407,7 @@ done
 
 ## File and Directory Test Operators
 
-Bash offers file and directory test operators that return a boolean value based on each operator's specific test criteria. These operators can be used in your Bash scripts to present different behavior depending on the state of a file or directory. A list of all test operators is included in the expandable note, "File and Directory Test Operators" below.
+Bash offers file and directory test operators that return a boolean value based on each operator's specific test criteria. These operators can be used in your Bash scripts to present different behaviors depending on the state of a file or directory. A list of all test operators is included in the expandable note, "File and Directory Test Operators" below.
 
 The general format for file and directory test operators is the following:
 
@@ -438,7 +438,7 @@ The example below tests if your `/etc/passwd` file exists. If the file exists, y
 | `-r` | File exists and is readable. |
 | `-S` | File exists and is socket. |
 | `-s` | File exists and has a nonzero size. |
-| `-u` | File exists and its [set user ID flag](docs/tools-reference/tools/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) is set. |
+| `-u` | File exists and its [set user ID flag](/docs/tools-reference/tools/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) is set. |
 | `-w` | File exists and is writable by the current user. |
 | `-x` | File exists and is executable by the current user. |
 
@@ -446,7 +446,7 @@ The example below tests if your `/etc/passwd` file exists. If the file exists, y
 
 ### Use File and Directory Test Operators in a Script
 
-The example script, `file-operators.sh`, takes file or directory locations as arguments and returns information about each type of file that is passed to it. The script makes use of file and directory test operators to generate this information. The first `if` statement tests to ensure you have passed the script arguments. The `for` loop then goes on to test if the arguments are files that actually exist and then continues through a series of statements to test the file or directory for other criteria.
+The example script, `file-operator.sh`, takes file or directory locations as arguments and returns information about each type of file that is passed to it. The script makes use of file and directory test operators to generate this information. The first `if` statement tests to ensure you have passed the script arguments. The `for` loop then goes on to test if the arguments are files that actually exist and then continues through a series of statements to test the file or directory for other criteria.
 
 {{< note >}}
 You can use `[]` and `[[]]` commands instead of using the `if` conditional statement to create file conditions. The script makes use of this format on lines 26 - 40.
@@ -457,43 +457,43 @@ You can use `[]` and `[[]]` commands instead of using the `if` conditional state
 
 if [[ $# -le 0 ]]
 then
-     echo "You did not pass any files as arguments to the script."
-     echo "Usage:" "$0" "my-file-1 my-file-2"
-     exit
+    echo "You did not pass any files as arguments to the script."
+    echo "Usage:" "$0" "my-file-1 my-file-2"
+    exit
 fi
 
 for arg in "$@"
 do
-     # Does it actually exist?
-     if [[ ! -e "$arg" ]]
-     then
-          echo "* Skipping ${arg}"
-          continue
-     fi
+    # Does it actually exist?
+    if [[ ! -e "$arg" ]]
+    then
+        echo "* Skipping ${arg}"
+        continue
+    fi
 
-     # Is it a regular file?
-     if [ -f "$arg" ]
-     then
-           echo "* $arg is a regular file!"
-     else
-           echo "* $arg is not a regular file!"
-     fi
+    # Is it a regular file?
+    if [ -f "$arg" ]
+    then
+        echo "* $arg is a regular file!"
+    else
+        echo "* $arg is not a regular file!"
+    fi
 
-     [ -b "$arg" ] && echo "* $arg is a block device."
-     [ -d "$arg" ] && echo "* $arg is a directory."
-     [ ! -d "$arg" ] && echo "* $arg is not a directory."
+    [ -b "$arg" ] && echo "* $arg is a block device."
+    [ -d "$arg" ] && echo "* $arg is a directory."
+    [ ! -d "$arg" ] && echo "* $arg is not a directory."
 
-     [ -x "$arg" ] && echo "* $arg is executable."
-     [ ! -x "$arg" ] && echo "* $arg is not executable."
+    [ -x "$arg" ] && echo "* $arg is executable."
+    [ ! -x "$arg" ] && echo "* $arg is not executable."
 
-     [[ -h "$arg" ]] && echo "* $arg is a symbolic link."
-     [ ! -h "$arg" ] && echo "* $arg is not a symbolic link."
+    [[ -h "$arg" ]] && echo "* $arg is a symbolic link."
+    [ ! -h "$arg" ] && echo "* $arg is not a symbolic link."
 
-     [[ -s "$arg" ]] && echo "* $arg has nonzero size."
-     [ ! -s "$arg" ] && echo "* $arg has zero size."
+    [[ -s "$arg" ]] && echo "* $arg has nonzero size."
+    [ ! -s "$arg" ] && echo "* $arg has zero size."
 
-     [[ -r "$arg" && -d "$arg" ]] && echo "* $arg is a readable directory."
-     [[ -r "$arg" && -f "$arg" ]] && echo "* $arg is a readable regular file."
+    [[ -r "$arg" && -d "$arg" ]] && echo "* $arg is a readable directory."
+    [[ -r "$arg" && -f "$arg" ]] && echo "* $arg is a readable regular file."
 done
 {{< /file >}}
 
@@ -530,7 +530,7 @@ done
 
 ## Read Files and Searching Directories
 
-This section will present a few utility scripts that can be adopted and expanded on to perform common operations on files and directories, like reading the contents of a text file by line, word, or character. These scripts make use of several of the concepts and techniques covered in this guide and in the [Introduction to Bash Shell Scripting](/docs/development/bash/bash1/) guide.
+This section will present a few utility scripts that can be adopted and expanded on to perform common operations on files and directories, like reading the contents of a text file by line, word, or character. These scripts make use of several of the concepts and techniques covered in this guide and in the [Getting Started with Bash Shell Scripting](/docs/development/bash/intro-bash-shell-scripting/) guide.
 
 ### Read a File Line by Line
 
@@ -541,16 +541,16 @@ The example file, `line-by-line.sh`, expects a file passed to it as an argument.
 
 if [[ $# -le 0 ]]
 then
-     echo "You did not pass any files as arguments to the script."
-     echo "Usage:" "$0" "my-file"
-	   exit
+    echo "You did not pass any files as arguments to the script."
+    echo "Usage:" "$0" "my-file"
+    exit
 fi
 
 file=$1
 
 if [ ! -f "$file" ]
 then
-     echo "File does not exist!"
+    echo "File does not exist!"
 fi
 
 while IFS='' read -r line || [[ -n "$line" ]]; do
@@ -583,21 +583,21 @@ The example bash script, `word-by-word.sh` expects a file to be passed as an arg
 
 if [[ $# -le 0 ]]
 then
-     echo "You did not pass any files as arguments to the script."
-     echo "Usage:" "$0" "my-file"
-	   exit
+    echo "You did not pass any files as arguments to the script."
+    echo "Usage:" "$0" "my-file"
+    exit
 fi
 
 file=$1
 
 if [ ! -f "$file" ]
 then
-	   echo "File does not exist!"
+    echo "File does not exist!"
 fi
 
 for word in $(cat "${file}")
 do
-     echo "$word"
+    echo "$word"
 done
 {{< /file >}}
 
@@ -645,20 +645,20 @@ The example bash script, `char-by-char.sh` expects a file to be passed as an arg
 
 if [[ $# -le 0 ]]
 then
-     echo "You did not pass any files as arguments to the script."
-     echo "Usage:" "$0" "my-file"
-     exit
+    echo "You did not pass any files as arguments to the script."
+    echo "Usage:" "$0" "my-file"
+    exit
 fi
 
 file=$1
 
 if [ ! -f "$file" ]
 then
-	   echo "File does not exist!"
+    echo "File does not exist!"
 fi
 
 while read -r -n1 char; do
-      echo "$char"
+    echo "$char"
 done < "${file}"
 {{< /file >}}
 
@@ -692,9 +692,9 @@ The bash script, `search.sh` will search a directory for files and directories t
 
 if [[ $# -le 1 ]]
 then
-     echo "You did not pass any files as arguments to the script."
-     echo "Usage:" "$1" "my-file"
-	   exit
+    echo "You did not pass any files as arguments to the script."
+    echo "Usage:" "$1" "my-file"
+    exit
 fi
 
 dir=$2
@@ -702,19 +702,19 @@ string=$1
 
 if [ ! -d "$dir" ]
 then
-     echo "Directory" "$dir" "does not exist!"
-     exit
+    echo "Directory" "$dir" "does not exist!"
+    exit
 fi
 
 for i in $(find "$dir" -name "$string*");
 do
-      if [ -d "$i" ]
-      then
-           echo "$i" "[Directory]"
-      elif [ -f "$i" ]
-      then
-           echo "$i" "[File]"
-      fi
+    if [ -d "$i" ]
+    then
+       echo "$i" "[Directory]"
+    elif [ -f "$i" ]
+    then
+        echo "$i" "[File]"
+    fi
 done
 {{< /file >}}
 
@@ -746,7 +746,7 @@ The table lists and describes reserved exit codes. You should not use any of the
 | --------- | ------------- |
 | `0` | Successful execution |
 | `1` | General failure |
-| `2` | Incorrect usage of Bash builtin commands, by using invalid options, or missing arguments |
+| `2` | Incorrect usage of Bash built-in commands, by using invalid options, or missing arguments |
 | `126` | Command found, but is not executable |
 | `127` | Command not found |
 | `128+n` | Command terminated on a fatal signal `n`. The final exit code will be `128` plus the corresponding termination signal number. For example, a script that is terminated using the `kill` signal will have an exit code of `137` (128+9).|
@@ -755,9 +755,9 @@ The table lists and describes reserved exit codes. You should not use any of the
 
 {{</ disclosure-note >}}
 
-### Learning the exit code of a shell command
+### Learning the Exit Code of a Shell Command
 
-You can understand whether a bash command was executed successfully or not by accessing the exit code of the command. The built-in Bash variable `$?` stores the exit (return) status of the previously executed command. The example below issues the long format list files (`ls -l`) command against your `/tmp` directory and redirects standard output and standard error to `/dev/null` in order to suppress any output. Without any direct output there is no way of knowing if the command executed successfully of failed. To circumvent this scenario you can `echo` the value of the `$?` variable to view the command's exit status.
+You can understand whether a bash command was executed successfully or not by accessing the exit code of the command. The built-in Bash variable `$?` stores the exit (return) status of the previously executed command. The example below issues the long format list files (`ls -l`) command against your `/tmp` directory and redirects standard output and standard error to `/dev/null` in order to suppress any output. Without any direct output there is no way of knowing if the command executed successfully or failed. To circumvent this scenario you can `echo` the value of the `$?` variable to view the command's exit status.
 
 1. Execute the following example command. You should not see any output, however, the command should have executed successfully.
 
@@ -775,7 +775,7 @@ You can understand whether a bash command was executed successfully or not by ac
 
 1. Issue the long form list files command against a directory that does not exist
 
-      ls -l /doesNotExist 2>/dev/null 1>/dev/null
+        ls -l /doesNotExist 2>/dev/null 1>/dev/null
 
 1. Find the value of `$?` to determine if your command executed successfully or not.
 
@@ -804,9 +804,9 @@ set -e
 
 if [[ $# -le 0 ]]
 then
-     echo "You did not pass any file paths as arguments to the script."
-     echo "Usage:" "$0" "my-new-file-path"
-	   exit
+    echo "You did not pass any file paths as arguments to the script."
+    echo "Usage:" "$0" "my-new-file-path"
+    exit
 fi
 
 fpath=$1
@@ -815,8 +815,8 @@ echo "About to create file: " "$fpath"
 
 if [ -e "$fpath" ]
 then
-     echo "${fpath}" "already exists!"
-     exit
+    echo "${fpath}" "already exists!"
+    exit
 fi
 
 echo "Creating and writing to the file: " "$fpath"
@@ -856,7 +856,7 @@ About to create and write to the file:  /dev/new-file
 Another handy way to use the `set` command is by enabling the `-x` option. This option displays commands and arguments before they're executed, which makes this a great option for debugging scripts.
 
 {{< note >}}
-Any output generated by the `set -x` execution trace will be preceded by a `+` character. This value is stored in the builtin variable, `PS4`.
+Any output generated by the `set -x` execution trace will be preceded by a `+` character. This value is stored in the built-in variable, `PS4`.
 {{</ note >}}
 
 The example script below, `debug-set-example.sh`, contains identical code to the example in the previous section, however, it makes use of `set -x` in order to print out all commands before they're executed.
@@ -868,9 +868,9 @@ set -xe
 
 if [[ $# -le 0 ]]
 then
-     echo "You did not pass any file paths as arguments to the script."
-     echo "Usage:" "$0" "my-new-file-path"
-	   exit
+    echo "You did not pass any file paths as arguments to the script."
+    echo "Usage:" "$0" "my-new-file-path"
+    exit
 fi
 
 fpath=$1
@@ -879,8 +879,8 @@ echo "About to create file: " "$fpath"
 
 if [ -e "$fpath" ]
 then
-     echo "${fpath}" "already exists!"
-     exit
+    echo "${fpath}" "already exists!"
+    exit
 fi
 
 echo "Creating and writing to the file: " "$fpath"
