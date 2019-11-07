@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05
 modified_by:
   name: Linode
-title: "How to Use the Linode Packer Builder | Linode"
+title: "How to Use the Linode Packer Builder"
 h1_title: "Using the Linode Packer Builder to Create Images"
 contributor:
   name: Linode
