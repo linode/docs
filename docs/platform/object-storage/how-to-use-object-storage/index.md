@@ -53,7 +53,7 @@ The first step towards using Object Storage is to create a pair of keys for the 
 -   The access key allows you to access any objects that you set to have private read permissions.
 
     {{< note >}}
-To use your access key when viewing a private object, you first need to generate a *signed* URL for the object. The signed URL is much like the standard URL for your object, but some extra URL parameters are appended to it, including the access key. Instructions for generating a signed URL can be found for each of the tools outlined in this guide.
+To use your access key when viewing a private object, you first need to generate a *signed* URL for the object. The signed URL is much like the standard URL for your object, but some extra URL parameters are appended to it, including the access key. Instructions for generating a signed URL can be found for [s3cmd](#create-a-signed-url-with-s3cmd) and the [Linode CLI](#create-a-signed-url-with-the-cli), outlined in this guide.
 {{< /note >}}
 
 -   Your secret key is used together with your access key to authenticate the various Object Storage tools with your Linode account. You should not share the secret key.
@@ -286,6 +286,14 @@ For instance, if you want to make a public file private, you would supply the `-
 
         linode-cli obj rm my-example-bucket example.txt
 
+### Create a Signed URL with the CLI
+
+Creating a **signed URL** will allow you to create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with the CLI, use the following syntax:
+
+    linode-cli obj signurl my-example-bucket example.txt +300
+
+The output of the command will be a url that can be used for a set period of time to access your object, even if your ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link will remain active, or five minutes total. Once this time has passed, your link will expire and can no longer be used.
+
 ### Create a Static Site with the CLI
 
 To create a static website from a bucket:
@@ -464,6 +472,14 @@ To delete all files in a bucket, include the `--recursive` (or `-r`) option *and
 1.  To list all objects in a bucket, issue the `ls` command and supply a bucket:
 
         s3cmd ls s3://my-example-bucket
+
+### Create a Signed URL with s3cmd
+
+Creating a **signed URL** will allow you to create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with s3cmd, use the following syntax:
+
+    s3cmd signurl s3://my-example-bucket/example.txt +300
+
+The output of the command will be a url that can be used for a set period of time to access your object, even if your ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link will remain active, or five minutes total. Once this time has passed, your link will expire and can no longer be used.
 
 ### Create a Static Site with s3cmd
 
