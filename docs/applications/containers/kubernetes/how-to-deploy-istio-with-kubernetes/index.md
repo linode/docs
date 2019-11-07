@@ -679,7 +679,7 @@ destinationrule.networking.istio.io/details created
 
         ssh -L 3000:localhost:3000 <username>@<ipaddress>
 
-    Once this is completed, visit the followin URL in your web browser to access your *Mesh Dashboard*:
+    Once this is completed, visit the following URL in your web browser to access your *Mesh Dashboard*:
 
         http://localhost:3000/dashboard/db/istio-mesh-dashboard
 
