@@ -21,12 +21,12 @@ In the previous guide of this series, [Getting Started with Bash Scripting](/doc
 
 In this guide, you will learn about:
 
-* [Standard Streams](/docs/development/bash/bash-scripting-2/#standard-streams)
-* [Creating menus with the select statement](/docs/development/bash/bash-scripting-2/#create-menus-with-the-select-statement)
-* [Using the printf command to format the output of your scripts](/docs/development/bash/bash-scripting-2/#introduction-to-the-printf-command)
-* [Using file and directory test operators to control the flow of your scripts](/docs/development/bash/bash-scripting-2/#file-and-directory-test-operators)
-* [Reading files and searching directories in your scripts](/docs/development/bash/bash-scripting-2/#read-files-and-searching-directories)
-* [Bash exit codes](/docs/development/bash/bash-scripting-2/#bash-exit-codes)
+* [Standard Streams](#standard-streams)
+* [Creating menus with the select statement](#create-menus-with-the-select-statement)
+* [Using the printf command to format the output of your scripts](#introduction-to-the-printf-command)
+* [Using file and directory test operators to control the flow of your scripts](#file-and-directory-test-operators)
+* [Reading files and searching directories in your scripts](#read-files-and-searching-directories)
+* [Bash exit codes](#bash-exit-codes)
 
 ## Before You Begin
 
