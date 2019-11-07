@@ -173,7 +173,7 @@ Firewall rulesets can vary widely. Review the [Control Network Traffic with ipta
 {{< /output >}}
 
 
-In some cases, [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page), a tool used for automating the creation of firewall rules to block IP addresses may be responsible for creating rules that result in in a lost connection. If you see firewall chains in place prefixed with `f2b` or `fail2ban`, see our [fail2ban guide](/docs/security/using-fail2ban-for-security/#lockout-recovery) for troubleshooting this service.
+In some cases, [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page), a tool used for automating the creation of firewall rules to block IP addresses, may be responsible for creating rules that result in a lost connection. If you see firewall chains in place prefixed with `f2b` or `fail2ban`, see our [fail2ban guide](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/#lockout-recovery) for troubleshooting this service.
 
 ### Disable Firewall Rules
 
