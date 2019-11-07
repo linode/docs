@@ -5,7 +5,7 @@ author:
 description: 'Istio is a service mesh and a platform with its own API and feature set that can help you run a distributed microservice architecture. Istio is a tool that you can deploy with few to no code changes to your application allowing you to harness its power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.'
 keywords: ['kuberenetes','istio','container','helm', 'k8s']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-05
+published: 2019-11-07
 modified_by:
   name: Linode
 title: "How to Deploy Istio with Kubernetes"
@@ -18,13 +18,13 @@ external_resources:
 - '[Istio Troubleshooting](https://istio.io/docs/ops/troubleshooting/)'
 ---
 
-[Istio](https://istio.io) is a service mesh, or a network of microservices, that can handle tasks such as load balancing, service-to-service authentication, monitoring, etc. It does this by deploying sidecar proxies to intercept network data, which causes little disruption to your current application.
+[Istio](https://istio.io) is a service mesh, or a network of microservices, that can handle tasks such as load balancing, service-to-service authentication, monitoring, and more. It does this by deploying sidecar proxies to intercept network data, which causes minimal disruption to your current application.
 
-Istio is also a platform with its own API and feature set that can help you run a distributed microservice architecture. Istio is a tool that you can deploy with few to no code changes to your applications allowing you to harness its power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.
+The Istio platform provides its own API and feature set to help you run a distributed microservice architecture. You can deploy Istio with few to no code changes to your applications allowing you to harness its power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.
 
-In this guide:
+In this guide you will complete the following tasks:
 
-- Setup a [Kubernetes Cluster](#setup-your-kubernetes-cluster), [Helm, and Tiller](#install-helm-and-tiller)
+- [Create a Kubernetes Cluster](#create-your-kubernetes-cluster) and [Install Helm, and Tiller](#install-helm-and-tiller)
 - [Install Istio with Helm Charts](#install-helm-charts)
 - [Setup Envoy Proxies](#set-up-envoy-proxies)
 - [Install the Istio Bookinfo App](#install-the-istio-bookinfo-app)
@@ -38,18 +38,20 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 ## Before You Begin
 
-Familiarize yourself with Kubernetes with our series [A Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes/) and [Advantaged of Using Kubernetes](/docs/applications/containers/kubernetes/kubernetes-use-cases/).
+Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes/) and [Advantages of Using Kubernetes](/docs/applications/containers/kubernetes/kubernetes-use-cases/).
 
-## Setup Your Kubernetes Cluster
+## Create Your Kubernetes Cluster
 
-There are many ways to setup a Kubernetes cluster. This guide will use the Linode k8s-alpha CLI. To set it up, see the
-[How to Deploy Kubernetes on Linode with the k8s-alpha CLI](https://www.linode.com/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) and follow the steps up until the Create a Cluster section.
+There are many ways to create a Kubernetes cluster. This guide will use the Linode k8s-alpha CLI.
 
-1.  For this guide you will need 3 worker nodes and one master. Now that you have the Linode k8s-alpha CLI ready you can easily deploy a cluster using the following command:
+1. To set it up the Linode k8s-alpha CLI, see the
+[How to Deploy Kubernetes on Linode with the k8s-alpha CLI](https://www.linode.com/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide and stop before the "Create a Cluster" section.
+
+1. Now that your Linode K8s-alpha CLI is set up, You are ready to create your Kubernetes cluster. You will need **3 worker nodes** and **one master** for this guide. Create your cluster using the following command:
 
         linode-cli k8s-alpha create istio-cluster --node-type g6-standard-2 --nodes 3 --master-type g6-standard-2 --region us-east --ssh-public-key $HOME/.ssh/id_rsa.pub
 
-1.  After the cluster is created you should see output that ends similar to this:
+1.  After the cluster is created you should see output with a similar success message:
 
     {{< output >}}
 Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
@@ -62,22 +64,22 @@ kubectl get pods --all-namespaces
 Come hang out with us in #linode on the Kubernetes Slack! http://slack.k8s.io/
 {{</ output >}}
 
-1.  If you visit the [Linode Cloud Manager](https://cloud.linode.com/), you will see your newly created cluster nodes on the Linodes page.
+1.  If you visit the [Linode Cloud Manager](https://cloud.linode.com/), you will see your newly created cluster nodes on the Linodes listing page.
 
 ### Install Helm and Tiller
 
-Follow the instructions in [How to Install Apps on Kubernetes with Helm](https://www.linode.com/docs/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) to install Helm and Tiller to your cluster. Stop before the section on Using Helm Charts to Install Apps.
+Follow the instructions in the [How to Install Apps on Kubernetes with Helm](https://www.linode.com/docs/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) guide to install Helm and Tiller on your cluster. Stop before the section on "Using Helm Charts to Install Apps".
 
 ## Install Istio
 
-For Linux or macOS users, use curl to pull the Istio project files. You will want to do this even though you will use Helm charts to deploy Istio to our cluster because you want to get the sample `Bookinfo` application that comes with bundled with this installation.
+- For Linux or macOS users, use curl to pull the Istio project files. Even though you will use Helm charts to deploy Istio to your cluster, pulling the Istio project files will give you access to the sample `Bookinfo` application that comes bundled with this installation.
 
-    curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.3.3 sh -
+        curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.3.3 sh -
 
-If you are using Windows, you will need to go to Istio's [Github repo](https://github.com/istio/istio/releases) to find the download. Here you will find the latest releases for Windows, Linux, and macOS.
+- If you are using Windows, you will need to go to Istio's [Github repo](https://github.com/istio/istio/releases) to find the download. There you will find the latest releases for Windows, Linux, and macOS.
 
 {{< note >}}
-This will create a new directory `istio-1.3.3` wherever you use this command. Therefore, if you don't want this directory to be in your home directory, first move to the directory where you want it to be and then use the command.
+Issuing the `curl` command will create a new directory, `istio-1.3.3`, in your current working directory. Ensure you move into the directory where you'd like to store your Istio project files before issuing the `curl` command.
 {{< /note >}}
 
 ### Install Helm Charts
@@ -90,21 +92,19 @@ This will create a new directory `istio-1.3.3` wherever you use this command. Th
 
         helm repo update
 
-1.  Check that you have the repo with the following command:
+1.  Verify that you have the repo:
 
         helm repo list | grep istio.io
 
-1.  The output should be similar to the following:
+    The output should be similar to the following:
 
     {{< output >}}
 istio.io	https://storage.googleapis.com/istio-release/releases/1.3.2/charts/
-{{< /output >}}
+    {{< /output >}}
 
-1.  Install Istio's [Custom Resource Definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) with the helm chart:
+1.  Install Istio's [Custom Resource Definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) (CRD) with the helm chart. This command also creates a pod namespace called `istio-system` which you will continue to use for the remainder of this guide.
 
         helm install --name istio-init --namespace istio-system istio.io/istio-init
-
-    This also creates a pod namespace called `istio-system` which you will continue to use for the remainder of this guide.
 
      {{< output >}}
 NAME:   istio-init
@@ -144,11 +144,11 @@ NAME                        SECRETS  AGE
 istio-init-service-account  1        0s
 {{< /output >}}
 
-1.  Verify that all CRDs were successfully installed by running the following command:
+1.  Verify that all CRDs were successfully installed:
 
         kubectl get crds | grep 'istio.io' | wc -l
 
-1.  You should see the following output:
+    You should see the following output:
 
     {{< output >}}
 23
@@ -156,11 +156,11 @@ istio-init-service-account  1        0s
 
        If the number is less, you may need to wait a few moments for the resources to finish being created.
 
-1.  Install the Helm chart for Istio. There are [many installation options available](https://istio.io/docs/reference/config/installation-options/) for Istio. For this guide you are setting the Grafana option to use the visualization later.
+1.  Install the Helm chart for Istio. There are [many installation options available](https://istio.io/docs/reference/config/installation-options/) for Istio. For this guide, the command enables Grafana, which you will use later to visualize your cluster's data.
 
         helm install --name istio --namespace istio-system istio.io/istio --set grafana.enabled=true
 
-     {{< disclosure-note "Full output of helm install" >}}
+     {{< disclosure-note "Full output of the Helm chart Istio installation" >}}
 {{< output >}}
 NAME:   istio
 LAST DEPLOYED: Fri Oct 18 10:28:40 2019
@@ -351,11 +351,11 @@ https://istio.io/
 {{< /output >}}
 {{< /disclosure-note >}}
 
-1.  Verify that the Istio services and Grafana are running with this command:
+1.  Verify that the Istio services and Grafana are running:
 
         kubectl get svc -n istio-system
 
-1.  The output should be similar to this:
+    The output should be similar to the following:
 
     {{< output >}}
 NAME                     TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)                                                                                                                                      AGE
@@ -370,11 +370,11 @@ istio-telemetry          ClusterIP      10.103.224.18    <none>         9091/TCP
 prometheus               ClusterIP      10.96.246.56     <none>         9090/TCP                                                                                                                                     4m6s
 {{</ output >}}
 
-1.  You can also see the pods running by using this command:
+1.  You can also see the pods that are running by using this command:
 
         kubectl get pods -n istio-system
 
-1.  The output will look similar to this:
+    The output will look similar to this:
 
     {{< output >}}
 NAME                                      READY   STATUS      RESTARTS   AGE
@@ -394,7 +394,7 @@ prometheus-5679cb4dcd-pbg6m               1/1     Running     0          4m53s
 
 1.  Before moving on, be sure that all pods are in the `Running` or `Completed` status.
 
-{{< note >}}
+    {{< note >}}
 If you need to troubleshoot, you can check a specific pod by using `kubectl`, remembering that you set the namespace to `istio-system`:
 
     kubectl describe pods pod_name -n pod_namespace
@@ -402,26 +402,25 @@ If you need to troubleshoot, you can check a specific pod by using `kubectl`, re
 And check the logs by using:
 
     kubectl logs pod_name -n pod_namespace
-{{< /note >}}
+    {{< /note >}}
+
 ### Set up Envoy Proxies
 
-1.  Istio's service mesh runs by employing *sidecar proxies*. You will enable them by injecting them into the containers with the following command:
+1.  Istio's service mesh runs by employing *sidecar proxies*. You will enable them by injecting them into the containers. This command is using the `default` namespace which is where you will be deploying the `Bookinfo` application.
 
         kubectl label namespace default istio-injection=enabled
-
-    Notice that this command is using the `default` namespace which is where you will be deploying the `Bookinfo` application.
 
     {{< note >}}
 This deployment uses automatic sidecar injection. Automatic injection can be disabled and [manual injection](https://istio.io/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection) enabled during installation via `istioctl`. If you disabled automatic injection during installation, use the following command to modify the `bookinfo.yaml` file before deploying the application:
 
-    kubectl apply -f <(istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml)
+    kubectl apply -f <(istioctl kube-inject -f ~/istio-1.3.3/samples/bookinfo/platform/kube/bookinfo.yaml)
 {{< /note >}}
 
-1.  Verify that it applied the `enabled` label to the `default` namespace with the following command:
+1.  Verify that the `ISTIO-INJECTION` was `enabled` for the `default` namespace:
 
         kubectl get namespace -L istio-injection
 
-1.  You will get similar output:
+    You will get a similar output:
 
     {{< output >}}
 NAME           STATUS   AGE    ISTIO-INJECTION
@@ -442,9 +441,9 @@ The Bookinfo app is a sample application that comes packaged with Istio. It feat
 
 1.  Navigate to the directory where you [installed Istio](#install-istio).
 
-1.  The `bookinfo.yaml` file is the application manifest. It specifies all the service and deployment objects for the application. Here is just the `productpage` section of this file, feel free to look at the entire file:
+1.  The `bookinfo.yaml` file is the application manifest. It specifies all the service and deployment objects for the application. Here is just the `productpage` section of this file; feel free to browse the entire file:
 
-    {{< file "samples/bookinfo/platform/kube/bookinfo.yaml" >}}
+    {{< file "~/istio-1.3.3/samples/bookinfo/platform/kube/bookinfo.yaml" >}}
 ...
 
 apiVersion: v1
@@ -497,9 +496,9 @@ spec:
 
 1.  Start the `Bookinginfo` application with the following command:
 
-        kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+        kubectl apply -f ~/istio-1.3.3/samples/bookinfo/platform/kube/bookinfo.yaml
 
-1.  The following output results:
+    The following output results:
 
     {{< output >}}
 service/details created
@@ -522,7 +521,7 @@ deployment.apps/productpage-v1 created
 
         kubectl get services
 
-1.  The output will look similar to the following:
+    The output will look similar to the following:
 
     {{< output >}}
     NAME          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
@@ -537,7 +536,7 @@ reviews       ClusterIP   10.106.21.117   <none>        9080/TCP   2m59s
 
         kubectl get pods
 
-1.  The expected output should look similar, with all pods running:
+    The expected output should look similar, with all pods running:
 
     {{< output >}}
 NAME                              READY   STATUS    RESTARTS   AGE
@@ -553,11 +552,11 @@ reviews-v3-844bc59d88-pwl6b       2/2     Running   0          4m30s
 If you do not see all pods running right away, you may need to wait a few moments for them to complete the initialization process.
 {{< /note >}}
 
-1.  Check that the `Bookinfo` application is running by issuing the following command which will pull the title tag and contents from the `/productpage` from the `ratings` pod:
+1.  Check that the `Bookinfo` application is running. This command will pull the title tag and contents from the `/productpage` running on the `ratings` pod:
 
         kubectl exec -it $(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}') -c ratings -- curl productpage:9080/productpage | grep -o "<title>.*</title>"
 
-1.  The expected output will look like this:
+    The expected output will look like this:
 
     {{< output >}}
 &lt;title&gt;Simple Bookstore App&lt;/title&gt;
@@ -565,11 +564,11 @@ If you do not see all pods running right away, you may need to wait a few moment
 
 ### Open the Istio Gateway
 
-1.  If you noticed above when checking the services, none had external IPs. This is because Kubernetes services are private by default, you will need to open a gateway in order to access the app from the web browser. To do this you will use an Istio Gateway.
+When checking the services in the previous section, you may have noticed none had external IPs. This is because Kubernetes services are private by default. You will need to open a gateway in order to access the app from the web browser. To do this you will use an Istio Gateway.
 
-    Here are the contents of the `bookinfo-gateway.yaml` file.
+Here are the contents of the `bookinfo-gateway.yaml` file that you will use to open the gateway:
 
-    {{< file "samples/bookinfo/networking/bookinfo-gateway.yaml" >}}
+{{< file "~/istio-1.3.3/samples/bookinfo/networking/bookinfo-gateway.yaml" >}}
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -613,52 +612,51 @@ spec:
           number: 9080
 {{< /file >}}
 
-  - In the `Gateway` section you are setting `server` and specifying the `port` and `protocol` that will be opened through the gateway. Note that the `name` must match Istio's [named service ports standardization scheme](https://istio.io/docs/setup/additional-setup/requirements/).
+  - The `Gateway` section sets up the `server` and specifies the `port` and `protocol` that will be opened through the gateway. Note that the `name` must match Istio's [named service ports standardization scheme](https://istio.io/docs/setup/additional-setup/requirements/).
   - In the `Virtual Service` section, the `http` field defines how HTTP traffic will be routed, and the `destination` field says where requests are routed.
 
 1.  Apply the ingress gateway with the following command:
 
-        kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+        kubectl apply -f ~/istio-1.3.3/samples/bookinfo/networking/bookinfo-gateway.yaml
 
-1.  You should see the following output:
+    You should see the following output:
 
     {{< output >}}
 gateway.networking.istio.io/bookinfo-gateway created
 virtualservice.networking.istio.io/bookinfo created
 {{< /output >}}
 
-1.  Confirm the gateway is open:
+1.  Confirm that the gateway is open:
 
         kubectl get gateway
 
-1.  The output:
+    You should see the following output:
 
     {{< output >}}
 NAME               AGE
 bookinfo-gateway   1m
 {{< /output >}}
 
-1.  Determine if your Kubernetes cluster supports external load balancers:
+1. Access your ingress gateway's external IP. This IP will correspond to the value listed under `EXTERNAL-IP`.
 
         kubectl get svc istio-ingressgateway -n istio-system
 
-1.  The output should look similar to this:
+    The output should resemble the following. In the example, the external IP is `192.0.2.0`. You will need this IP address in the next section to access your Bookinfo app.
 
     {{< output >}}
 NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)                                                                                                                                      AGE
-istio-ingressgateway   LoadBalancer   10.97.218.128   23.92.23.198   15020:30376/TCP,80:31380/TCP,443:31390/TCP,31400:31400/TCP,15029:31358/TCP,15030:30826/TCP,15031:30535/TCP,15032:31728/TCP,15443:31970/TCP   21h
+istio-ingressgateway   LoadBalancer   10.97.218.128   192.0.2.0   15020:30376/TCP,80:31380/TCP,443:31390/TCP,31400:31400/TCP,15029:31358/TCP,15030:30826/TCP,15031:30535/TCP,15032:31728/TCP,15443:31970/TCP   21h
 {{< /output >}}
-
-    If `EXTERNAL-IP` has a value, then your cluster supports external load balancers and you can [open a gateway using that method](#open-a-gateway-with-the-external-load-balancer), if it's value is `<none>` or stays in `<pending>` then your environment does not provide an external load balancer for the ingress gateway. If this is the case, you will need to [open a gateway using the node port](#open-a-gateway-with-the-node-port).
-
 
 ### Apply Default Destination Rules
 
-1.  Destination rules specify named service subsets and give them routing rules to control traffic to the different instances of your services. Apply the destination rules with the following command:
+Destination rules specify named service subsets and give them routing rules to control traffic to the different instances of your services.
 
-        kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
+1. Apply destination rules to your cluster:
 
-1.  The output will appear as follows:
+        kubectl apply -f ~/istio-1.3.3/samples/bookinfo/networking/destination-rule-all.yaml
+
+    The output will appear as follows:
 
     {{< output >}}
 destinationrule.networking.istio.io/productpage created
@@ -667,34 +665,35 @@ destinationrule.networking.istio.io/ratings created
 destinationrule.networking.istio.io/details created
 {{< /output >}}
 
-1.  You can view all the rules with this command:
+1.  To view all the applied rules issue the following command:
 
         kubectl get destinationrules -o yaml
 
 ## Visualizations with Grafana
 
-1.  In a terminal window that you can leave open, run this command to open the port for Grafana:
+1.  In a new terminal window that you can leave running, open the port for Grafana:
 
         kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000 &
 
-1. If you're not using your local matching as your control node, create a new SSH tunnel from your local machine to your Linode with the following command so that you can access the localhost of your Linode, entering your credentials as prompted:
-
+1. Create an SSH tunnel from your local machine to your Linode so that you can access the localhost of your Linode, entering your credentials as prompted:
 
         ssh -L 3000:localhost:3000 <username>@<ipaddress>
 
-    Once this is completed, or if your control node is your local machine, visit the following site in your web browser:
+    Once this is completed, visit the followin URL in your web browser to access your *Mesh Dashboard*:
 
         http://localhost:3000/dashboard/db/istio-mesh-dashboard
 
-1.  You will see the *Mesh Dashboard*.
+    {{< note >}}
+ In this example, you will use an SSH tunnel to access your cluster's running Grafana service. You could set up an ingress gateway for your Grafana service in the same way you did for the Bookinfo app. Those steps are not covered in this guide.
+    {{</ note >}}
+
+1.  You will see the Mesh Dashboard. There will be no data available yet.
 
     ![Istio Dashboard](istio-dashboard.png)
 
-    Notice that there's no data available yet.
+1.  Send data by visiting a product page, replacing `192.0.2.0` with the value for your ingress gateway's external IP:
 
-1.  Send data by visiting a product page, replacing `$GATEWAY_URL` with the value for yours:
-
-        http://$GATEWAY_URL/productpage
+        http://192.0.2.0/productpage
 
     Refresh the page a few times to generate some traffic.
 
