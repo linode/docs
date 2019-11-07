@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05
 modified_by:
   name: Linode
-title: "How to Deploy Istio with Kubernetes | Linode"
+title: "How to Deploy Istio with Kubernetes"
 h1_title: "Deploying Istio with Kubernetes"
 contributor:
   name: Linode
