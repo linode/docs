@@ -2,8 +2,9 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-keywords: ['list','of','keywords','and key phrases']
+description: "Octant is a web-based dashboard for your Kubernetes clusters, and it includes visual graphs of your cluster objects' relationships. This guide will explore Octant's interface, and it will show how Octant can make troubleshooting Kubernetes easier."
+og_description: "Octant is a web-based dashboard for your Kubernetes clusters, and it includes visual graphs of your cluster objects' relationships. This guide will explore Octant's interface, and it will show how Octant can make troubleshooting Kubernetes easier."
+keywords: ['octant','kubernetes','cluster','graph','dashboard','troubleshoot']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-06
 modified_by:
