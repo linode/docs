@@ -172,6 +172,9 @@ Firewall rulesets can vary widely. Review the [Control Network Traffic with ipta
 -A INPUT -p tcp -m tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
 {{< /output >}}
 
+
+In some cases, [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page), a tool used for automating the creation of firewall rules to block IP addresses, may be responsible for creating rules that result in a lost connection. If you see firewall chains in place prefixed with `f2b` or `fail2ban`, see our [fail2ban guide](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/#lockout-recovery) for troubleshooting this service.
+
 ### Disable Firewall Rules
 
 In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
