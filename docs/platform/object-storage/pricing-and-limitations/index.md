@@ -27,7 +27,7 @@ Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabyte
 
 Currently, Object Storage accounts are limited to 10 terabytes of storage per cluster, or 100,000 objects per cluster, whichever comes first. Separate clusters have separate limits, so it is possible to store 10 terabytes worth of objects in one cluster and 10 terabytes worth of objects in another.  In the future, individual clusters may have separate storage maximums, and this guide will be updated to include those limits. Accounts can have up to 25 buckets per cluster.
 
-Individual files stored in object storage are limited to a size of 5GB each, though objects over this size can be uploaded as multipart uploads. [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) and [cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck) will do this automatically as part of the uploading process.
+Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitaed with multipart uploads. [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) and [cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck) will do this for you automatically if a file exceeds this limit as part of the uploading process.
 
 {{< note >}}
 If you need to increase the storage limit, the object limit, or the bucket limit, please [open up a Customer Support ticket](https://www.linode.com/docs/platform/billing-and-support/support/#contacting-linode-support).

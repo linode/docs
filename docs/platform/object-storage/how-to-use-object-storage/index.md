@@ -160,7 +160,7 @@ You can drag and drop multiple files to the **Upload Files Pane** at one time.
     ![Successful upload of your object](successful-object-upload.png)
 
     {{< note >}}
-Single files are limited to a size of 5GB each, though larger files can be uploaded as multipart uploads. [s3cmd](#s3cmd) and [cyberduck](#cyberduck) will do this for you automatically if a file exceeds this limit.
+Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](#s3cmd) and [cyberduck](#cyberduck) will do this for you automatically if a file exceeds this limit as part of the uploading process.
 {{< /note >}}
 
 ### View Bucket Objects
