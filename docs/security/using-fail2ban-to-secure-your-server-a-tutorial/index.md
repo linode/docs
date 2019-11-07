@@ -1,8 +1,8 @@
 ---
 author:
   name: Linode
-description: 'This guide shows how to set up Fail2Ban, a log-parsing application, to monitor system logs and detect automated attacks on your Linode.'
-og_description: 'Fail2ban monitors system logs for symptoms of an automated attack, bans the IP and alerts you of the attach through email. This guide helps you set up Fail2ban to thwart automated system attacks and further secure your server.'
+description: 'This guide shows you how to set up Fail2Ban, a log-parsing application, to monitor system logs and detect automated attacks on your Linode.'
+og_description: 'Fail2ban monitors system logs for symptoms of an automated attack, bans the IP and alerts you of the attack through email. This guide helps you set up Fail2ban to thwart automated system attacks and further secure your server.'
 keywords: ["fail2ban", "ip whitelisting", "jail.local"]
 aliases: ['tools-reference/tools/using-fail2ban-to-block-network-probes/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,7 +10,8 @@ modified: 2019-08-15
 modified_by:
   name: Linode
 published: 2015-10-12
-title: Use Fail2ban to Secure Your Server
+title: Using Fail2ban to Secure Your Server - A Tutorial
+h1_title: A Tutorial for Using Fail2ban to Secure Your Server
 ---
 
 ## What is Fail2Ban
@@ -398,3 +399,40 @@ The output should be:
     `- Jail list:   sshd
 
 For additional information about `fail2ban-client` commands, see the [Fail2ban wiki](http://www.fail2ban.org/wiki/index.php/Commands).
+
+## Lockout Recovery
+
+In the event that you find yourself locked out of your Linode due to fail2ban, you can still gain access by using our out-of-band [Lish Console](https://www.linode.com/docs/platform/manager/using-the-linode-shell-lish/).
+
+From here, you can view your firewall rules to ensure that it is fail2ban that blocked your IP, and not something else. To do this, enter the following command:
+
+    iptables -n -L
+
+Look for your IP address in the `source` column of any fail2ban chains (always prefixed by `f2b` or `fail2ban`) to confirm whether or not you were blocked by the fail2ban service:
+
+{{< output >}}
+Chain f2b-sshd (1 references)
+target     prot opt source               destination
+REJECT     all  --  203.0.113.0        0.0.0.0/0            reject-with icmp-e
+{{< /output >}}
+
+To remove your IP address from a [jail](#configure-jail-local-settings), you can use the following command, replacing `203.0.113.0` and `jailname` with the IP address and name of the jail that you'd like to unban:
+
+     fail2ban-client set jailname unbanip 203.0.113.0
+
+{{< note >}}
+
+If you can't remember your jail name, then you can always use the following command to list all jails:
+
+    fail2ban-client status
+
+{{< /note >}}
+
+If you find that you would like to stop using your fail2ban service at any time, you can enter the following:
+
+    fail2ban-client stop
+
+CentOS 7 and Fedora will additionally require two extra commands to be fully stopped and disabled:
+
+    systemctl stop fail2ban
+    systemctl disable fail2ban
