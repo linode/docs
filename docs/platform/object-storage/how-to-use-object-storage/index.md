@@ -288,7 +288,7 @@ For instance, if you want to make a public file private, you would supply the `-
 
 ### Create a Signed URL with the CLI
 
-Creating a **signed URL** will allow you to create a link to objects with limited permissions and a time limit to access. To create a signed URL on a preexisting object with the CLI, use the following syntax:
+Creating a **signed URL** will allow you to create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with the CLI, use the following syntax:
 
     linode-cli obj signurl my-example-bucket example.txt +300
 
@@ -475,9 +475,9 @@ To delete all files in a bucket, include the `--recursive` (or `-r`) option *and
 
 ### Create a Signed URL with s3cmd
 
-Creating a **signed URL** will allow you to create a link to objects with limited permissions and a time limit to access. To create a signed URL on a preexisting object with the CLI, use the following syntax:
+Creating a **signed URL** will allow you to create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with s3cmd, use the following syntax:
 
-    linode-cli obj signurl my-example-bucket example.txt +300
+    s3cmd signurl example.txt s3://my-example-bucket +300
 
 The output of the command will be a url that can be used for a set period of time to access your object, even if your ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link will remain active, or five minutes total. Once this time has passed, your link will expire and can no longer be used.
 
