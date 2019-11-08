@@ -3,6 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Use cases for Linode Object Storage'
+image: use-cases-for-linode-obj-storage.png
 keywords: ['object','storage','s3','use','case']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-26
