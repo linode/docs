@@ -26,7 +26,7 @@ If you don't have Homebrew installed, visit the [Homebrew](https://brew.sh) home
 
 **Linux:**
 
-1.  Download the latest Kubernetes release:
+1.  Download the latest kubectl release:
 
         curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 
