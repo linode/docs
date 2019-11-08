@@ -288,7 +288,7 @@ You can specify the amount of workers you want Gunicorn to use with the `--worke
     {{< file "/etc/supervisor/conf.d/flask_app.conf" supervisor >}}
 [program:flask_app]
 directory=/home/flask_app_project
-command=gunicorn3 -workers=3 flask_app:app
+command=gunicorn3 --workers=3 flask_app:app
 autostart=true
 autorestart=true
 stopasgroup=true
