@@ -19,11 +19,11 @@ audiences: ["beginner"]
 languages: ["javascript"]
 ---
 
-[Node.js](https://nodejs.org/) is a cross-platform runtime environment for server-side JavaScript applications. Node.js uses [V8](https://developers.google.com/v8/), Google's JavaScript engine, which is also found in Chromium and Chrome. Depending on the use case, Node.js can supplement or replace traditional web servers and tools such as Apache, nginx, or PHP.
+[Node.js](https://nodejs.org/) is a cross-platform runtime environment for server-side JavaScript applications. Node.js uses [V8](https://v8.dev/), Google's JavaScript engine, which is also found in Chromium and Chrome. Depending on the use case, Node.js can supplement or replace traditional web servers and tools such as Apache, nginx, or PHP.
 
 ![A Node.js Installation Crash Course](nodejs-installation-crash-course.png "A Node.js Installation Crash Course")
 
-Node.js can be installed and maintained multiple ways across the various platforms offered. [Multiple releases](https://github.com/nodejs/node#release-types) of Node.js are available, along with multiple versions within the [LTS branch](https://github.com/nodejs/LTS/#example). The decision about which of these versions to install can quickly become confusing, so this guide lists the main choices for installing Node.js on Linux, and some basic reasons why you may or may not want to use a certain method.
+Node.js can be installed and maintained multiple ways across the various platforms offered. [Multiple releases](https://github.com/nodejs/node#release-types) of Node.js are available, along with multiple versions within the [LTS branch](https://github.com/nodejs/Release). The decision about which of these versions to install can quickly become confusing, so this guide lists the main choices for installing Node.js on Linux, and some basic reasons why you may or may not want to use a certain method.
 
 ## Package Manager
 
@@ -50,11 +50,11 @@ The [NodeSource repository](https://github.com/nodesource/distributions) is a co
 
 ## Node Version Manager
 
-[NVM](https://github.com/creationix/nvm) is a separate project from Node.js and is one of the more common installation methods. NVM is installed using an [installation script](https://github.com/creationix/nvm#install-script) and it's primary benefit is easy management of Node.js versions, including updating to newer releases and migrating your Node packages.
+[NVM](https://github.com/nvm-sh/nvm) is a separate project from Node.js and is one of the more common installation methods. NVM is installed using an [installation script](https://github.com/nvm-sh/nvm#install--update-script) and its primary benefit is easy management of Node.js versions, including updating to newer releases and migrating your Node packages.
 
 ## Official Binary Installer
 
-Installers for all available platforms can be found at [nodejs.org](https://nodejs.org/en/download/.) A benefit of using the official installer is that [GPG checksums](https://github.com/nodejs/node#verifying-binaries) are offered to verify the installer's integrity.
+Installers for all available platforms can be found at [nodejs.org](https://nodejs.org/en/download/). A benefit of using the official installer is that [GPG checksums](https://github.com/nodejs/node#verifying-binaries) are offered to verify the installer's integrity.
 
 ## Build from Source
 
@@ -62,7 +62,7 @@ Compiling from source code is the most advanced installation method, though it c
 
 ## Node Package Manager (NPM)
 
-A typical installation of Node.js includes the [Node Package Manager](https://github.com/npm/npm) (NPM). However, an exception is any Linux-distro-supplied version of Node.js which would need the package `npm` installed. NPM is a package manager for Node.js packages in the NPM repository. You can find extensive NPM documentation at [npmjs.com](https://docs.npmjs.com/).
+A typical installation of Node.js includes the [Node Package Manager](https://github.com/npm/cli) (NPM). However, an exception is any Linux-distro-supplied version of Node.js which would need the package `npm` installed. NPM is a package manager for Node.js packages in the NPM repository. You can find extensive NPM documentation at [npmjs.com](https://docs.npmjs.com/).
 
 ## Making a Quick Decision (the tl:dr)
 
