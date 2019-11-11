@@ -2,13 +2,14 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to Support a Static Site with Linode Kubernetes Engine.'
-keywords: ['static','site','generator','ss','ssg','lke','kubernetes']
+description: 'How to Deploy a Static Site on Linode Kubernetes Engine.'
+keywords: ['kubernetes','kubernetes tutorial','docker kubernetes','docker and kubernetes', 'static site generator','hugo static site']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-25
 modified_by:
   name: Linode
-title: "How to Support a Static Site with Linode Kubernetes Engine"
+title: "How to Deploy a Static Site on Linode Kubernetes Engine"
+h1_title: "Deploy a Static Site on Linode Kubernetes Engine"
 contributor:
   name: Linode
 external_resources:
