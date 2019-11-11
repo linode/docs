@@ -270,13 +270,13 @@ Below is an example implementation of the UDF variables. Note that the UDF tags 
 {{< file "StackScript" bash >}}
 # [...]
 # <UDF name="var1" Label="A question" default="" example="Enter something here." />
-# ENVIRONMENT_VAR1=
+\# ENVIRONMENT_VAR1=
 # <UDF name="var2" Label="Pick one of" oneOf="foo,bar" example="Enter something here." />
-# ENVIRONMENT_VARNAME=
+\# ENVIRONMENT_VARNAME=
 # <UDF name="var3" Label="A question" oneOf="foo,bar" default="foo" />
-# ENVIRONMENT_VARIABLE=
+\# ENVIRONMENT_VARIABLE=
 # <UDF name="var4" Label="Pick several from" manyOf="foo,bar" default="foo,bar" />
-# ENVIRONMENT_VARIABLE_NAME=
+\# ENVIRONMENT_VARIABLE_NAME=
 # [...]
 {{< /file >}}
 
