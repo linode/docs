@@ -151,7 +151,7 @@ For more information on downloading Hugo, you can visit the official [Hugo websi
 
     [![The Kubernetes option the Cloud Manager's Create dropdown](lke-static-site-create-cluster.png "The Kubernetes option the Cloud Manager's Create dropdown")](lke-static-site-create-cluster.png)
 
-1.  A new page which displays the cluster creeation form will appear. Under *Region*, select a region for your cluster.
+1.  A new page which displays the cluster creation form will appear. Under *Region*, select a region for your cluster.
 
     [![Select a region for your LKE cluster](lke-static-site-select-region.png "Select a region for your LKE cluster"](lke-static-site-select-region.png)
 
@@ -372,7 +372,7 @@ Press Ctrl+C to stop
 
         ls public
 
-1.  You can build the site at any time from your source markdown content files, so it's common practice to keep built files out of a Git repository. This practice keeps the size of the repository to a minimum.
+1.  You can build the site at any time from your source Markdown content files, so it's common practice to keep built files out of a Git repository. This practice keeps the size of the repository to a minimum.
 
     You can instruct Git to ignore certain files within a repository by adding them to a `.gitignore` file. Add the `public/` directory to your `.gitignore` file to exclude these files from the repository:
 
