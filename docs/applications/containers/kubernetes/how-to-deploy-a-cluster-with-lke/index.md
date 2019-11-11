@@ -9,6 +9,8 @@ description: 'How to deploy a cluster with Linode Kubernetes Engine.'
 keywords: ["kubernetes", "linode kubernetes engine", "cluster", "lke"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-11
+modified_by:
+  name: Linode
 title: 'How to Deploy a Cluster with Linode Kubernetes Engine'
 h1_title: Deploy a Cluster with Linode Kubernetes Engine
 external_resources:
@@ -21,7 +23,7 @@ Additionally, because LKE is in Beta, there may be breaking changes to how you a
 {{< /note >}}
 
 ## What is the Linode Kubernetes Engine (LKE)
-The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [Nodebalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) (load balancers), and [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) (Volumes) services. Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
+The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) (load balancers), and [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) (Volumes) services. Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
 
 {{< disclosure-note "Additional LKE features">}}
 * **etcd Backups** : A snapshot of your cluster's metadata is backed up continuously, so your cluster is automatically restored in the event of a failure.
@@ -96,7 +98,7 @@ You will need to install the kubectl client to your computer before proceeding. 
 
 ### Access and Download your kubeconfig
 
-Anytime after your cluster is created you can download its *kubeconfig*. The kubeconfig is a yaml file that will allow you to use kubectl to communicate with your cluster. Here is an example kubeconfig file:
+Anytime after your cluster is created you can download its *kubeconfig*. The kubeconfig is a YAML file that will allow you to use kubectl to communicate with your cluster. Here is an example kubeconfig file:
 
 {{< file "example-cluster-kubeconfig.yaml" yaml >}}
 apiVersion: v1
@@ -147,7 +149,7 @@ If your kubectl commands are not returning the resources and information you exp
 
       You are now ready to manage your cluster using kubectl. For more information about using kubectl, see Kubernetes' [Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) guide. You can also refer to Kubernetes' [Configure Access to Multiple Clusters](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) guide for more information on managing multiple clusters with kubectl.
 
-{{< disclosure-note "Downlaod and view your Kubeconfig from the cluster's details page">}}
+{{< disclosure-note "Download and view your Kubeconfig from the cluster's details page">}}
 You can also download the `kubeconfig` from the Kubernetes cluster's details page.
 
 1. Viewing your Kubernetes listing page, click on the cluster for which you'd like to download a kubeconfig file.
@@ -202,7 +204,7 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
     ![Select a plan size for your new node pool](new-node-pool-select-plan.png "Select a plan size for your new node pool.")
 
-1. Under **Number of Linodes**, input the number of Linode worker nodes you'd like to add to the pool in the textbox; you can also use the arrow keys to increment or decrement this number. Click the **Add Node Pool** button.
+1. Under **Number of Linodes**, input the number of Linode worker nodes you'd like to add to the pool in the text box; you can also use the arrow keys to increment or decrement this number. Click the **Add Node Pool** button.
 
     ![Add a new node pool to your cluster](add-new-node-pool.png "Add a new node pool to your cluster.")
 
