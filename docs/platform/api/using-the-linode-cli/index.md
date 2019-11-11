@@ -1,4 +1,11 @@
 ---
+author:
+  name: Linode
+  email: docs@linode.com
+keywords: ["linode cli", " command line interface", " man pages", " api key"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['cli/','platform/linode-cli/']
+description: 'The Linode Command Line Interface (CLI) is an open-source command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript, and more from the command line on any computer, without logging into the Linode Manager.'
 modified: 2016-06-20
 modified_by:
   name: Alex Fornuto
@@ -11,15 +18,7 @@ external_resources:
  - '[Linode API Key](/docs/platform/api/api-key)'
 ---
 
-The Linode Command Line Interface (**CLI**) is an [open-source](https://github.com/linode/cli) command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript and more from the command line on any computer, without logging in to the [Linode Manager](---
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'An introduction to the Linode command line interface.'
-keywords: ["linode cli", " command line interface", " man pages", " api key"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['cli/','platform/linode-cli/']
-modified:https://manager.linode.com/) graphical user interface.
+The Linode Command Line Interface (**CLI**) is an [open-source](https://github.com/linode/cli) command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript and more from the command line on any computer, without logging in to the [Linode Manager](https://manager.linode.com/) graphical user interface.
 
 Your Linode [API key](/docs/platform/api/api-key/) is required for the CLI to function.
 
@@ -33,7 +32,7 @@ You can install the Linode CLI on any Mac OS X or Linux computer. You can instal
 
 Prerequisites:
 
--   [Homebrew](http://brew.sh)
+- [Homebrew](http://brew.sh)
 
 First, update Homebrew:
 
