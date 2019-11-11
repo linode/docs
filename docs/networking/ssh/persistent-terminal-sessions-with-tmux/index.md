@@ -65,7 +65,7 @@ There are three ways to issue commands to tmux:
   Most tmux tasks can be accomplished using any of these three methods.
 
 {{< note >}}
-You can change the prefix key by editing the `.tmux.config` file. For the remainder of this guide, **Prefix** will be used to refer to either the default **CTRL+b** or the combination you have chosen in your configuration file.
+You can change the prefix key by editing the `~/.tmux.conf` file. For the remainder of this guide, **Prefix** will be used to refer to either the default **CTRL+b** or the combination you have chosen in your configuration file.
 {{< /note >}}
 
 ## Manage tmux Windows
@@ -114,7 +114,7 @@ It's also possible to type shorter versions of a command, for example: "new-se".
 | **Prefix** + **)**  | Switch to the next session  |
 | **Prefix** + **s**  | Display an interactive session list  |
 | `tmux ls`  | List all available sessions  |
-| `tmux attach -t 0`  | Zoom in on the active pane. Press the same combination again to exit zoom mode  |
+| **Prefix** + **L**  | Switch to the ‘last’ (previously used) session. Use the same combination again to return back  |
 | `tmux kill-server`  | Destroy all sessions and kill all processes  |
 
 ## Create a tmux Configuration File
