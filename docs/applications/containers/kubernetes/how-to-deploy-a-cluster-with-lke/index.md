@@ -6,6 +6,7 @@ contributor:
   name: Linode
   link: https://linode.com
 description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode Cloud Manager. The Cloud Manager provides interfaces for selecting hardware resources for your cluster's node pools, and you can modify these after cluster creation."
+og_description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode Cloud Manager. The Cloud Manager provides interfaces for selecting hardware resources for your cluster's node pools, and you can modify these after cluster creation."
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-11
@@ -185,12 +186,14 @@ These instructions will persist the context for users of the Bash terminal. They
 
         mkdir configs
 
-1. Copy your `kubeconfig.yaml` file to the `$HOME/.kube/configs` directory:
+1. Copy your `kubeconfig.yaml` file to the `$HOME/.kube/configs` directory.
 
         cp ~/Downloads/kubeconfig.yaml $HOME/.kube/configs/kubeconfig.yaml
 
     {{< note >}}
 Alter the above line with the location of the Downloads folder on your computer.
+
+Optionally, you can give the copied file a different name to help distinguish it from other files in the `configs` directory.
 {{< /note >}}
 
 1.  Open up your Bash profile (e.g. `~/.bash_profile`) in the text editor of your choice and add your configuration file to the `$KUBECONFIG` PATH variable.
@@ -298,7 +301,7 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
 Now that you have a running LKE cluster, you can start deploying workloads to it. Refer to our other guides to learn more:
 
- - [How to Support a Static Site with Linode Kubernetes Engine]()
+ - [How to Deploy a Static Site on Linode Kubernetes Engine](/docs/applications/containers/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)
  - [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/applications/containers/kubernetes/deploy-container-image-to-kubernetes/)
  - [Troubleshooting Kubernetes Guide](/docs/applications/containers/kubernetes/troubleshooting-kubernetes/)
  - [See all our Kubernetes guides](/docs/applications/containers/kubernetes/)
