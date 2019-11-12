@@ -16,7 +16,7 @@ show_on_rss_feed: false
 
 <!-- Install Docker CE using the official Docker repositories. -->
 
-These steps install Docker Community Edition (CE) using the official Ubuntu repositories. To install on another distribution, see the official [installation page](https://docs.docker.com/install/).
+These steps install Docker Community Edition (CE) using the official Ubuntu repositories. To install on another distribution, or to install on Mac or Windows, see the official [installation page](https://docs.docker.com/install/).
 
 1.  Remove any older installations of Docker that may be on your system:
 
@@ -48,7 +48,7 @@ sub   4096R/F273FCD8 2017-02-22
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
     {{< note >}}
-For Ubuntu 19.04 if you get an `E: Package 'docker-ce' has no installation candidate` error this is because the stable version of docker for is not yet available. Therefore, you will need to use the edge / test repository.
+For Ubuntu 19.04, if you get an `E: Package 'docker-ce' has no installation candidate` error, this is because the stable version of docker is not yet available. Therefore, you will need to use the edge / test repository.
 {{< /note >}}
 
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable edge test"
