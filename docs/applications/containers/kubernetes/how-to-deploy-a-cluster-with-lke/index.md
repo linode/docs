@@ -185,7 +185,7 @@ These instructions will persist the context for users of the Bash terminal. They
 
         mkdir configs
 
-1. Copy your `kubeconfig.yaml` file to the `$HOME/.kube/configs` directory. You can give this file a different name to help distinguish it from other `kubeconfig.yaml` files. In the example below the file has been renamed `static-site.yaml`:
+1. Copy your `kubeconfig.yaml` file to the `$HOME/.kube/configs` directory:
 
         cp ~/Downloads/kubeconfig.yaml $HOME/.kube/configs/kubeconfig.yaml
 
@@ -195,7 +195,7 @@ Alter the above line with the location of the Downloads folder on your computer.
 
 1.  Open up your Bash profile (e.g. `~/.bash_profile`) in the text editor of your choice and add your configuration file to the `$KUBECONFIG` PATH variable.
 
-    If an `export KUBECONFIG` line is already present in the file, append to the end of this line as follows; if it is not present, and this line to the end of your file:
+    If an `export KUBECONFIG` line is already present in the file, append to the end of this line as follows; if it is not present, add this line to the end of your file:
 
         export KUBECONFIG:$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/kubeconfig.yaml
 
