@@ -31,26 +31,41 @@ This guide demonstrates installing Oracle's Java Standard Edition Development Ki
 
 - You will need root access to your Linode, or a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account) with `sudo` privileges.
 
-- Update your system:
+- Connect to your Linode using a remote desktop sharing system such as a VNC. For more information, see [Install VNC on Ubuntu 18.04](/docs/applications/remote-desktop/install-vnc-on-ubuntu-18-04/) guide.
 
-        sudo apt update && sudo apt upgrade
+- Create an Oracle account and download Oracle JDK 11 .tar.gz [archive] (https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html). Ensure that the Oracle JDK version is the same as the oracle-java11-installer-local [package version] (https://launchpad.net/~linuxuprising/+archive/ubuntu/java/+packages).
 
 
 ## Install Oracle JDK
 
-The Linux Uprising [Oracle Java PPA](https://launchpad.net/~linuxuprising/+archive/ubuntu/java) uses packages that include install scripts to download and install the Oracle JDK from Oracle's website. Alternatively, you can manually [download the binaries](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html).
+The Linux Uprising [Oracle Java PPA](https://launchpad.net/~linuxuprising/+archive/ubuntu/java) uses packages that include install scripts to install the Oracle JDK.
+
+1.  Update your system:
+
+        sudo apt update && sudo apt upgrade
+
+1.  Check that SHA256 checksum of the binary you downloaded matches the [checksum](https://www.oracle.com/webfolder/s/digest/11-0-5-checksum.html):
+
+        cd Downloads/
+        sha256sum jdk-11.0.5_linux-x64*
+
+1.  Create a `/var/cache/oracle-jdk11-installer-local/` folder, and copy the Oracle JDK 11 .tar.gz from `Downloads` folder to this folder.
+
+        sudo mkdir -p /var/cache/oracle-jdk11-installer-local/
+        sudo cp jdk-11.0.5_linux-x64_bin.tar.gz /var/cache/oracle-jdk11-installer-local/
 
 1.  Add the PPA to Ubuntu. Apt will automatically refresh the package cache.
 
         sudo add-apt-repository ppa:linuxuprising/java
+        sudo apt-get update
 
-1. Install the JDK. You'll be asked to agree to the licensing terms.
+1.  Install the oracle JDK.
 
-        sudo apt install oracle-java11-installer
+        sudo apt install oracle-java11-installer-local
 
-1.  If you want Oracle JDK as the system default, install `oracle-java11-set-default`:
+1.  If you want Oracle JDK as the system default, install `oracle-java11-set-default-local`:
 
-        sudo apt install oracle-java11-set-default
+        sudo apt install oracle-java11-set-default-local
 
 1.  Check that the install was successful with the following command:
 
@@ -58,9 +73,9 @@ The Linux Uprising [Oracle Java PPA](https://launchpad.net/~linuxuprising/+archi
 
     {{< output >}}
 root@ubuntu:~# java --version
-java version "11.0.2" 2018-10-16 LTS
-Java(TM) SE Runtime Environment 18.9 (build 11.0.2+7-LTS)
-Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.2+7-LTS, mixed mode)
+java version "11.0.5" 2019-10-15 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.5+10-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.5+10-LTS, mixed mode)
 {{< /output >}}
 
 
