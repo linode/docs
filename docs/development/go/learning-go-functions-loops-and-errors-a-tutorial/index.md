@@ -36,7 +36,7 @@ This guide was written with Go version 1.13.
 
 ## Before You Begin
 
-1.  You will need Go installed on your computer. To get it, go to [Go's offical download page](https://golang.org/dl/) and get the installer for your operating system, or you can install it from source. Follow the installation instructions for your operating system.
+1.  You will need Go installed on your computer. To get it, go to [Go's official download page](https://golang.org/dl/) and get the installer for your operating system, or you can install it from source. Follow the installation instructions for your operating system.
 
 1.  Add `/usr/local/go/bin` to the `PATH` environment variable:
 
