@@ -44,9 +44,17 @@ These nodes will all exist as billable services on your account. You can specify
 
 ### Alternatives for Creating Clusters
 
+
+#### Rancher
 Another easy way to create clusters is with [Rancher](https://rancher.com). Rancher is a web application that provides a GUI interface for cluster creation and for management of clusters. Rancher also provides easy interfaces for deploying and scaling apps on your clusters, and it has a built-in catalog of curated apps to choose from.
 
 To get started with Rancher, review our [How to Deploy Kubernetes on Linode with Rancher 2.2](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/) guide. Rancher is capable of importing clusters that were created outside of it, so you can still use it even if you create your clusters through the k8s-alpha CLI or some other means.
+
+#### Linode Kubernetes Engine (LKE)
+
+The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes.
+
+When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers. To get started with LKE, review our [Deploy a Cluster with Linode Kubernetes Engine](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/) guide.
 
 ### Beginners Resources
 
