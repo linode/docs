@@ -5,7 +5,7 @@ author:
 description: 'Packer is a HashiCorp maintained open source tool that is used to create machine images. Using a single source configuration, you can generate identical machine images. Packer can then be used to install those images to your Linode.'
 keywords: ['packer','image','immutable infrastructure','continuous delivery']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-05
+published: 2019-11-12
 modified_by:
   name: Linode
 title: "How to Use the Linode Packer Builder"
@@ -32,7 +32,7 @@ In this guide you will complete the following steps:
 
 1. Install Ansible on your computer and familiarize yourself with basic Ansible concepts (optional). Using the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/) guide, follow the steps in the [Install Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) section.
 
-1. Ensure you have access to [curl](https://en.wikipedia.org/wiki/CURL) on your computer.
+1. Ensure you have access to [cURL](https://en.wikipedia.org/wiki/CURL) on your computer.
 
 {{< disclosure-note "Assumptions" >}}
 This guide assumes you have an environment variable setup for your APIv4 TOKEN to make curl calls. To do this run this command replacing the sample token string with your own API token:
