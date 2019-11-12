@@ -60,11 +60,11 @@ This guide will show you how to:
 Specifically, follow the [Create an LKE Cluster](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#create-an-lke-cluster) and [Connect to your LKE Cluster with kubectl](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#connect-to-your-lke-cluster-with-kubectl) sections.
         {{< /note >}}
 
-    - To create a cluster from the Linode API, review the [Deploy and Manage an LKE Cluster with the Linode API]() guide.
+- To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/) tutorial.
 
-        {{< note >}}
-Specifically, follow the [Create an LKE Cluster]() and [Connect to your LKE Cluster with kubectl]() sections.
-        {{</note>}}
+    {{< note >}}
+Specifically, follow the [Create an LKE Cluster](/docs/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/#create-an-lke-cluster) section.
+{{< /note >}}
 
 ### Install kubectl
 
