@@ -5,7 +5,7 @@ author:
 description: 'An introduction to the popular open source Go programming language. This guide is a quick introduction on how to execute Go code, how to use loops, how to create functions, and how to handle errors.'
 keywords: ["Go", "Golang", "functions", "loops"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-05
+published: 2019-11-12
 modified_by:
   name: Linode
 title: 'Learning Go Functions, Loops, and Errors - A Tutorial'
@@ -21,14 +21,14 @@ external_resources:
 
 ## Introduction
 
-[Go](https://golang.com) is a popular open source programming language. It's a modern generic purpose programming language that was officially announced at the end of 2009, was begun as an internal Google project, and was inspired by many other programming languages including C, Pascal, Alef, and Oberon. Its spiritual fathers were Robert Griesemer, Ken Thomson, and Rob Pike who designed Go as a language for professional programmers that want to build reliable, robust, and efficient software. Apart from its syntax and its standard functions, Go comes with a rich standard library.
+[Go](https://golang.com) is a popular open source programming language. It's a modern generic purpose programming language that began as an internal Google project and was officially announced at the end of 2009. Go was inspired by many other programming languages including C, Pascal, Alef, and Oberon. Its spiritual fathers were Robert Griesemer, Ken Thomson, and Rob Pike, who all designed Go as a language for professional programmers that want to build reliable, robust, and efficient software. Apart from its syntax and its standard functions, Go comes with a rich standard library.
 
-In This guide:
+In this guide you will find:
 
-- A quick introduction on [how to execute Go code](#executing-go-code),
-- how to [use loops](#loops-in-go),
-- how to [create functions](#functions-in-go),
-- and how to [handle errors](#errors-in-go).
+- A quick introduction on [how to execute Go code](#executing-go-code)
+- How to [use loops](#loops-in-go)
+- How to [create functions](#functions-in-go)
+- How to [handle errors](#errors-in-go)
 
 {{< note >}}
 This guide was written with Go version 1.13.
@@ -36,7 +36,7 @@ This guide was written with Go version 1.13.
 
 ## Before You Begin
 
-1.  You will need Go installed on your computer. To get it, go to [Go's download page](https://golang.org/dl/) and get the installer for your operating system, or you can install it from source. Follow the instructions for installation for your operating system.
+1.  You will need Go installed on your computer. To get it, go to [Go's offical download page](https://golang.org/dl/) and get the installer for your operating system, or you can install it from source. Follow the installation instructions for your operating system.
 
 1.  Add `/usr/local/go/bin` to the `PATH` environment variable:
 
@@ -50,7 +50,7 @@ Although Go is not perfect, it has many advantages, including the following:
 
 - It is a modern programming language that was made by experienced developers for developers.
 - The code is easy to read.
-- Go keeps concepts orthogonal because a few orthogonal features work better that many overlapping ones.
+- Go keeps concepts orthogonal, or simple, because a few orthogonal features work better that many overlapping ones.
 - The compiler prints practical warnings and error messages that help you solve the actual problem.
 - It has support for Procedural, Concurrent, and Distributed Programming.
 - Go supports Garbage Collection so you do not have to deal with memory allocation and deallocation.
@@ -63,7 +63,7 @@ Although Go is not perfect, it has many advantages, including the following:
 
 ## Executing Go code
 
-There are two kinds of Go programs, autonomous programs that are executable and Go libraries. Go does not care about an autonomous program's file name as long as the package name is `main` and there is a single `main()` function in it because the `main()` function is where the program execution begins. As a result, you cannot have multiple `main()` functions in the files of a single project.
+There are two kinds of Go programs: autonomous programs that are executable, and Go libraries. Go does not care about an autonomous program's file name as long as the package name is `main` and there is a single `main()` function in it, because the `main()` function is where the program execution begins. As a result, you cannot have multiple `main()` functions in the files of a single project.
 
 ### A Simple Go program
 
@@ -83,9 +83,9 @@ func main() {
 
 All Go code is delivered within Go packages and for executable programs the name of the package should be `main`. Package declarations begin with the `package` keyword. Executable programs should have a function named `main()` without any function parameters. Function definitions begin with the `func` keyword. Go packages might include `import` statements for importing Go packages. However, Go demands that you use some functionality from each one of the packages that you import. Note that there is a way to bypass this rule, however, it is considered a bad practice to do this.
 
-The `helloworld.go` file above imports the `fmt` package only and uses the `fmt.Println()` function from that package. Note that all exported package functions begin with an uppercase letter. This follows the Go rule: if you export something outside the current package, that should begin with an uppercase letter. This rule applies even if the field of the Go structure or the global variable is included in a Go package.
+The `helloworld.go` file above imports the `fmt` package and uses the `fmt.Println()` function from that package. Note that all exported package functions begin with an uppercase letter. This follows the Go rule: if you export something outside the current package, that should begin with an uppercase letter. This rule applies even if the field of the Go structure or the global variable is included in a Go package.
 
-Additionally, Go statements do not *need* to end with a semicolon. However, you are free to use semicolons if you wish. Add a note and link to formatting curly braces below. With all this information in mind, execute `helloworld.go` with the `go run` command:
+Additionally, Go statements do not *need* to end with a semicolon. However, you are free to use semicolons if you wish. For more information on formatting with curly braces, [see the section below](/docs/development/go/learning-go-functions-loops-and-errors-a-tutorial/#how-to-format-curly-braces-in-go). With all this information in mind, execute `helloworld.go` with the `go run` command:
 
     go run helloworld.go
 {{< output >}}
@@ -351,9 +351,9 @@ func main() {
 }
 {{< /file >}}
 
-The `...` operator used as a prefix to a type like `...int` is called the *pack operator* whereas the *unpack operator* appends a *slice* like `sliceOfNumbers...`. A slice is a Go data type that is essentially an abstraction of an array of unspecified length. Each variadic function cannot use the pack operator more than once. The `oneByOne()` function accepts a single `string` and a variable number of integer arguments using the `sliceOfNumbers` slice. The `varFunc` function accepts a single argument and just calls the `fmt.Println()` function.
+The `...` operator used as a prefix to a type like `...int` is called the *pack operator*, whereas the *unpack operator* appends a *slice* like `sliceOfNumbers...`. A slice is a Go data type that is essentially an abstraction of an array of unspecified length. Each variadic function can use the pack operator once. The `oneByOne()` function accepts a single `string` and a variable number of integer arguments using the `sliceOfNumbers` slice. The `varFunc` function accepts a single argument and just calls the `fmt.Println()` function.
 
-Another note about slices. The second call to `oneByOne()` is using a slice. Any changes you make to that slice inside the variadic function will persist after the function exits because this is how slices work in Go.
+Another note about slices: the second call to `oneByOne()` is using a slice. Any changes you make to that slice inside the variadic function will persist after the function exits because this is how slices work in Go.
 
 The output of `variadic.go` will be as follows:
 
@@ -501,7 +501,7 @@ Notice that the values of `square1` and `square2` are not connected even though 
 
 *Errors* and *error handling* are two important topics in Go. Go puts so much importance on error messages that it has a dedicated data type for errors, aptly named `error`. This also means that you can easily create your own error messages if you find that what Go gives you is not adequate. You will most likely need to create and handle your own errors when you are developing your own Go packages.
 
-Please note that recognizing an error condition is one task while deciding how to react to an error condition is another. Therefore, some error conditions might require that you immediately stop the execution of the program whereas in other error situations you might just print a warning message and continue.
+Please note that recognizing an error condition is one task, deciding how to react to an error condition is another. Therefore, some error conditions might require that you immediately stop the execution of the program whereas in other error situations you might just print a warning message and continue.
 
 {{< file "./errors.go" go >}}
 package main
@@ -535,7 +535,7 @@ func main() {
 }
 {{< /file >}}
 
-The `strconv.Atoi()` function tries to convert a string into an integer, provided that the string is a valid integer and returns two things, an integer value and an `error` variable. If the `error` variable is `nil`, then the conversion was successful and you get a valid integer. The `_` character tells Go to ignore one, as in this case, or more of the return values of a function.
+The `strconv.Atoi()` function tries to convert a string into an integer, provided that the string is a valid integer, and returns two things, an integer value and an `error` variable. If the `error` variable is `nil`, then the conversion was successful and you get a valid integer. The `_` character tells Go to ignore one, as in this case, or more of the return values of a function.
 
 Most of the time, you need to check whether an error variable is equal to `nil` and then act accordingly. This kind of Go code is very popular in Go programs and you will see it and use it multiple times. What is also presented here is the `errors.New()` function that allows you to create a custom error message and `errors.Error()` function that allows you to convert an `error` variable into a `string` variable.
 
