@@ -2,10 +2,11 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to Deploy a Static Site on Linode Kubernetes Engine.'
+description: 'Learn how to deploy a static site on LKE. After creating a cluster on LKE, this guide will walk through how to: author a static site with Hugo; build the site in a Docker image; push the image to Docker Hub; and deploy that image to your cluster.'
+og_description: 'Learn how to deploy a static site on LKE. After creating a cluster on LKE, this guide will walk through how to: author a static site with Hugo; build the site in a Docker image; push the image to Docker Hub; and deploy that image to your cluster.'
 keywords: ['kubernetes','kubernetes tutorial','docker kubernetes','docker and kubernetes', 'static site generator','hugo static site']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-09-25
+published: 2019-11-12
 modified_by:
   name: Linode
 title: "How to Deploy a Static Site on Linode Kubernetes Engine"
@@ -17,12 +18,18 @@ external_resources:
 aliases: ['applications/containers/kubernetes/static-site-linode-kubernetes-engine/']
 ---
 
+{{< note >}}
+Linode Kubernetes Engine (LKE) is currently in Private Beta, and you may not have access to LKE through the Cloud Manager or other tools. To request access to the Private Beta, [sign up here](https://welcome.linode.com/lkebeta/). Beta access awards you $100/month in free credits for the duration of the beta, which is automatically applied to your account when an LKE cluster is in use. Additionally, you will have access to the `Linode Green Light` community, a new program connecting beta users with our product and engineering teams.
+
+Additionally, because LKE is in Beta, there may be breaking changes to how you access and manage LKE. This guide will be updated to reflect these changes if and when they occur.
+{{< /note >}}
+
 *Linode Kubernetes Engine (LKE)* allows you to easily create, scale, and manage Kubernetes clusters to meet your application's demands, reducing the often complicated cluster set-up process to just a few clicks. Linode manages your Kubernetes master Node, and you select how many Linodes you want to add as worker Nodes to your cluster.
 
 A good use case for an LKE cluster is serving a static site. A [container](/docs/applications/containers/kubernetes/kubernetes-reference/#container) image for a static site can be written in less than ten lines, and only one container image is needed, so it's less complicated to deploy a static site on Kubernetes than some other applications with multiple components. These reasons also make deploying a static site a great example to follow when learning Kubernetes.
 
 {{< caution >}}
-Following the instructions in this guide will create billable resources on your account in the form of Linodes and NodeBalancers. You will be billed an hourly rate for the time that these resources exist on your account. If you do not wish to continue the use of these resources after you finished the following instructions, be sure to follow the tear-down section at the end of this guide.
+Following the instructions in this guide will create billable resources on your account in the form of Linodes and NodeBalancers. You will be billed an hourly rate for the time that these resources exist on your account. If you do not wish to continue the use of these resources after you finished the following instructions, be sure to follow the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) at the end of this guide.
 {{</ caution >}}
 
 ## In this Guide
@@ -39,52 +46,33 @@ This guide will show you how to:
 
 You should have a working knowledge of Kubernetes' key concepts, including master and worker Nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/).
 
-As well, you will need to prepare your workstation with some prerequisite software. If you already have these, skip down to the [Create a Cluster with LKE](#create-a-cluster-with-lke) section that follows:
+As well, you will need to prepare your workstation with some prerequisite software:
 
 - [Install kubectl](#install-kubectl) (your client's version should be at least 1.13)
 - [Install Git](#install-git)
 - [Install Docker](#install-docker)
-- [Sign up for a DockerHub Account](#sign-up-for-a-dockerhub-account)
+- [Sign up for a Docker Hub Account](#sign-up-for-a-docker-hub-account)
 - [Install Hugo](#install-hugo)
+
+Finally, you will need to create a cluster on LKE, if you do not already have one:
+
+- To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/) guide.
+
+    {{< note >}}
+Specifically, follow the [Create an LKE Cluster](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#create-an-lke-cluster) and [Connect to your LKE Cluster with kubectl](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#connect-to-your-lke-cluster-with-kubectl) sections.
+{{< /note >}}
+
+- To create a cluster from the Linode API, review the [Deploy and Manage an LKE Cluster with the Linode API]() guide.
+
+    {{< note >}}
+Specifically, follow the [Create an LKE Cluster]() and [Connect to your LKE Cluster with kubectl]() sections.
+{{</note>}}
 
 ### Install kubectl
 
 You should have `kubectl` installed on your local workstation. `kubectl` is the command line interface for Kubernetes, and allows you to remotely connect to your Kubernetes cluster to perform tasks.
 
-If you don't have `kubectl` yet, install it via a package manager:
-
--  On **Ubuntu** or **Debian**:
-
-        sudo apt-get update && sudo apt-get install -y apt-transport-https
-        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-        echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-        sudo apt-get update
-        sudo apt-get install -y kubectl
-
--  On **CentOS**, **RedHat**, or **Fedora**:
-
-        cat <<EOF > /etc/yum.repos.d/kubernetes.repo
-        [kubernetes]
-        name=Kubernetes
-        baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-        enabled=1
-        gpgcheck=1
-        repo_gpgcheck=1
-        gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-        EOF
-        yum install -y kubectl
-
--  On **macOS**, use [Homebrew](https://brew.sh/):
-
-        brew install kubernetes-cli
-
--  On **Windows**, use [Chocolatey](https://chocolatey.org/):
-
-        choco install kubernetes-cli
-
-{{< note >}}
-For additional installation instructions, like how to install `kubectl` via `cURL`, visit the [official installation instructions](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
-{{< /note >}}
+{{< content "how-to-install-kubectl" >}}
 
 ### Install Git
 
@@ -94,15 +82,15 @@ To perform some of the commands in this guide you will need to have Git installe
 
 {{< content "install-docker-ce" >}}
 
-### Sign up for a DockerHub Account
+### Sign up for a Docker Hub Account
 
-You will use [DockerHub](https://hub.docker.com/) to store your Docker image. If you don't already have a DockerHub account, create one now.
+You will use [Docker Hub](https://hub.docker.com/) to store your Docker image. If you don't already have a Docker Hub account, create one now.
 
 ### Install Hugo
 
 A *static site generator* (SSG) is usually a command line tool that takes text files written in a markup language like [Markdown](https://daringfireball.net/projects/markdown/), applies a stylized template to their content, and produces valid HTML, CSS, and JavaScript files. Static sites are prized for their simplicity and speed, as they do not generally have to interact with a database.
 
-The Linode documentation website, and this guide, employ Hugo. Hugo is a powerful and fast SSG written in the Go programming language, but you can choose one that best suits your needs by reading our [How to Choose a Static Site Generator guide](/docs/websites/static-sites/how-to-choose-static-site-generator/).
+The Linode documentation website, and this guide, employ [Hugo](https://gohugo.io). Hugo is a powerful and fast SSG written in the Go programming language, but you can choose one that best suits your needs by reading our [How to Choose a Static Site Generator guide](/docs/websites/static-sites/how-to-choose-static-site-generator/).
 
 The steps in this guide are generally the same across SSGs: install a static site generator, create some content in a text file, and then generate your site's HTML through a build process.
 
@@ -125,149 +113,6 @@ To download and install Hugo, you can use a package manager.
         choco install hugo
 
 For more information on downloading Hugo, you can visit the official [Hugo website](https://gohugo.io/getting-started/installing/).
-
-## Create a Cluster with LKE
-
-1.  First, check the version number of your workstation's `kubectl` installation by issuing the `version` command from your terminal:
-
-        kubectl version --output yaml
-
-    You should see output similar to the following:
-
-        clientVersion:
-          buildDate: "2019-06-06T01:44:30Z"
-          compiler: gc
-          gitCommit: 5e53fd6bc17c0dec8434817e69b04a25d8ae0ff0
-          gitTreeState: clean
-          gitVersion: v1.14.3
-          goVersion: go1.12.5
-          major: "1"
-          minor: "14"
-          platform: darwin/amd64
-
-1.  Take note of the `GitVersion` displayed in your output. You will use it to select an appropriate Kubernetes version for your LKE cluster. In the above example, the value is `v1.14.3`, but yours may be different.
-
-1.  In your browser, navigate to the [Linode Cloud Manager](https://cloud.linode.com)
-
-1.  Click the **Create** button that appears on the left-hand side of the top navigation. Then, select the Kubernetes option from the dropdown menu that appears:
-
-    [![The Kubernetes option the Cloud Manager's Create dropdown](lke-static-site-create-cluster.png "The Kubernetes option the Cloud Manager's Create dropdown")](lke-static-site-create-cluster.png)
-
-1.  A new page which displays the cluster creation form will appear. Under *Region*, select a region for your cluster.
-
-    [![Select a region for your LKE cluster](lke-static-site-select-region.png "Select a region for your LKE cluster"](lke-static-site-select-region.png)
-
-1.  The next section is labeled *Add Node Pools*. A *Node Pool* is a predefined number of worker Nodes of the same plan type that make up the cluster. A cluster must have at least one Node Pool and one Node in that Pool.
-
-    [![Add a Node to the Node Pool](lke-static-site-add-node-pool.png "Add a Node to the Node Pool")](lke-static-site-add-node-pool.png)
-
-    Under the Linode types, select the type of Linodes you would like to add to your pool. This guide suggests that you employ **2GB Linodes**. Select the number of Linodes you'd like in your pool. This guide suggests you begin with **one worker Node**.
-
-    When you are done adding Nodes and Node Pools, click the **Add Node Pool** button.
-
-1.  Supply a name for your cluster in the **Cluster Label** field.
-
-1.  Select a version of Kubernetes from the **Version** dropdown list. This version should be within one minor version of your `kubectl` installation, which you determined at the beginning of this section.
-
-    {{< note >}}
-For example, a `kubectl` client whose version is 1.13 is compatible with Kubernetes clusters of versions 1.12, 1.13, or 1.14.
-{{< /note >}}
-
-1.  Add any optional tags to the cluster. [Tags are used to organize Linode resources](/docs/quick-answers/linode-platform/tags-and-groups/) in the Cloud Manager and in the Linode API, and they do not impact the performance of the cluster.
-
-1.  A **Cluster Summary** table will appear next to the cluster creation form. This table summarizes your selections and shows the total cost of your cluster. When you have completed the form, click the **Create** button at the bottom of this summary.
-
-    [![Once you have configured your cluster, click the Create button](lke-static-site-create.png "Once you have configured your cluster, click the Create button")](lke-static-site-create.png)
-
-1.  A new page will appear that shows a dashboard for your new cluster. If you navigate to the **Linodes** link in the sidebar, you will also see the worker Nodes from your Node Pool appear, though this make take a few minutes.
-
-## Connect to your Cluster with kubectl
-
-LKE provides Kubernetes configuration files ([*kubeconfig* files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)) for each cluster. These files are used to set the *[context](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#context)* of the `kubectl` utility on your workstation. Contexts give `kubectl` instructions for which Kubernetes cluster it should interact with.
-
-To download the configuration file for your cluster and set it as the context for `kubectl`:
-
-1.  Click the **Kubernetes** link in the sidebar. A new page with a table which lists your clusters will appear.
-
-1.  Click on the **more options ellipsis** to the right of the cluster you just created, and select the **Download kubeconfig** option from the dropdown menu that appears. This will prompt a download for a file named `kubeconfig.yaml`:
-
-    [![Click on the more options menu icon to download the Kubeconfig file](lke-static-site-download-kubeconfig.png "Click on the more options menu icon to download the Kubeconfig file")](lke-static-site-download-kubeconfig.png)
-
-1.  Open a terminal window and execute the following command, being sure to supply the proper path to your `kubeconfig.yaml` file:
-
-        kubectl config --kubeconfig=~/Downloads/kubeconfig.yaml use-context kubernetes-admin@kubernetes
-
-    This will set the context to your LKE cluster for the life of the terminal session.
-
-1.  You are now ready to interact with your cluster using `kubectl`. You can test the ability to interact with the cluster by retrieving a list of Pods in the `kube-system` namespace:
-
-        kubectl get pods -n kube-system
-
-    You should see output like the following:
-
-    {{< output >}}
-NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;READY&nbsp;&nbsp;&nbsp;STATUS&nbsp;&nbsp;&nbsp;RESTARTS&nbsp;&nbsp;&nbsp;AGE
-calico-node-sjsd9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1/1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Running&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20h
-coredns-86c58d9df4-2m62k&nbsp;&nbsp;0/1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pending&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20h
-coredns-86c58d9df4-gzspx&nbsp;&nbsp;0/1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pending&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20h
-csi-linode-controller-0&nbsp;&nbsp;&nbsp;0/3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pending&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20h
-kube-proxy-gh458&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1/1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Running&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20h
-{{</ output >}}
-
-### Persist the Kubeconfig Context
-
-If you create a new terminal, it will not have access to the context that you specified using the previous instructions. This context information can be made persistent between new terminals by using the [`KUBECONFIG` environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable).
-
-{{< note >}}
-If you are using Windows, review the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) for how to persist your context.
-{{< /note >}}
-
-These instructions will persist the context for users of the Bash terminal. They will be similar for users of other terminals:
-
-1.  Navigate to the `$HOME/.kube` directory:
-
-        cd $HOME/.kube
-
-1.  Create a directory called `configs` within `$HOME/.kube`. You will use this directory to store your `kubeconfig.yaml` files.
-
-        mkdir configs
-
-1. Copy your `kubeconfig.yaml` file to the `$HOME/.kube/configs` directory. You can give this file a different name to help distinguish it from other `kubeconfig.yaml` files. In the example below the file has been renamed `static-site.yaml`:
-
-        cp ~/Downloads/kubeconfig.yaml $HOME/.kube/configs/static-site.yaml
-
-1.  Open up your Bash profile (`~/.bash_profile`) in the text editor of your choice and add your configuration file to the `$KUBECONFIG` PATH variable.
-
-    If an `export KUBECONFIG` line is already present in the file, append to the end of this line as follows; if it is not present, and this line to the end of your file:
-
-        export KUBECONFIG:$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/static-site.yaml
-
-1.  Close your terminal window and open a new window to receive the changes to the `$KUBECONFIG` variable.
-
-1.  Use the `config get-contexts` command for `kubectl` to view the available cluster contexts:
-
-        kubectl config get-contexts
-
-    You should see output similar to the following:
-
-    {{< output >}}
-CURRENT&nbsp;&nbsp;NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLUSTER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AUTHINFO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NAMESPACE
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kubernetes-admin@kubernetes&nbsp;&nbsp;kubernetes&nbsp;&nbsp;kubernetes-admin
-{{</ output >}}
-
-1.  If your context is not already selected, (denoted by an asterisk in the `current` column), switch to this context using the `config use-context` command. Supply the full name of the cluster (including the authorized user and the cluster):
-
-        kubectl config use-context kubernetes-admin@kubernetes
-
-    You should see output like the following:
-
-    {{< output >}}
-Switched to context "kubernetes-admin@kubernetes".
-{{</ output>}}
-
-1.  You are now ready to interact with your cluster using `kubectl`. You can test the ability to interact with the cluster by retrieving a list of Pods in the `kube-system` namespace:
-
-        kubectl get pods -n kube-system
 
 ## Create a Static Site Using Hugo
 
@@ -436,7 +281,7 @@ public/
 This file, similar to the `.gitignore` file you created in the previous section, allows you to ignore certain files within the working directory that you would like to leave out of the container. Because you want the container to be the smallest size possible, the `.dockerignore` file will include the `public/` folder and some hidden folders that Git creates.
 {{< /note >}}
 
-1.  Run the Docker `build` command. Replace `mydockerhubusername` with your DockerHub username. The period at the end of the command tells Docker to use the current directory as its build context.
+1.  Run the Docker `build` command. Replace `mydockerhubusername` with your Docker Hub username. The period at the end of the command tells Docker to use the current directory as its build context.
 
         docker build -t mydockerhubusername/lke-example:v1 .
 
@@ -484,17 +329,17 @@ b4a7b959a6c7        mydockerhubusername/lke-example:v1         "nginx -g 'daemon
 
         docker stop b4a7b959a6c7
 
-### Upload the Image to DockerHub
+### Upload the Image to Docker Hub
 
-1.  Now that you have a working container image, you can push that image to DockerHub. First, log in to DockerHub from your workstation's terminal:
+1.  Now that you have a working container image, you can push that image to Docker Hub. First, log in to Docker Hub from your workstation's terminal:
 
         docker login
 
-1.  Next, push the image, with version tag, to DockerHub, using the `push` command:
+1.  Next, push the image, with version tag, to Docker Hub, using the `push` command:
 
         docker push mydockerhubusername/lke-example:v1
 
-    You can now view your image on DockerHub as a *repository*. To view all of your repositories, navigate to the [DockerHub repository listing page](https://cloud.docker.com/repository/list).
+    You can now view your image on Docker Hub as a *repository*. To view all of your repositories, navigate to the [Docker Hub repository listing page](https://cloud.docker.com/repository/list).
 
 1.  Lastly, add the `Dockerfile` and `.dockerignore` file to your Git repository:
 
@@ -545,8 +390,8 @@ spec:
 {{</ file >}}
 
     - In this example the number of replica Pods is set to `3` on **line 8**. This value can be changed to meet the needs of your website.
-    - The `spec.containers.image` field on **line 19** should be changed to match the name of the container image you pushed to DockerHub. Be sure to include the proper version tag at the end of the container name.
-    - `imagePullPolicy: Always` on **line 20** ensures that each time a Pod is created, the most recent version of the container image will be pulled from DockerHub.
+    - The `spec.containers.image` field on **line 19** should be changed to match the name of the container image you pushed to Docker Hub. Be sure to include the proper version tag at the end of the container name.
+    - `imagePullPolicy: Always` on **line 20** ensures that each time a Pod is created, the most recent version of the container image will be pulled from Docker Hub.
 
 1.  Once you have a Deployment manifest, you can apply the deployment to the LKE cluster with `kubectl`:
 
