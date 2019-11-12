@@ -16,6 +16,7 @@ title: 'Deploy and Manage a Cluster with Linode Kubernetes Engine - A Tutorial'
 h1_title: A Tutorial for Deploying and Managing a Cluster with Linode Kubernetes Engine
 external_resources:
  - '[Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'
+aliases: ['applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/']
 ---
 {{< note >}}
 Linode Kubernetes Engine (LKE) is currently in Private Beta, and you may not have access to LKE through the Cloud Manager or other tools. To request access to the Private Beta, [sign up here](https://welcome.linode.com/lkebeta/). Beta access awards you $100/month in free credits for the duration of the beta, which is automatically applied to your account when an LKE cluster is in use. Additionally, you will have access to the `Linode Green Light` community, a new program connecting beta users with our product and engineering teams.
@@ -35,16 +36,16 @@ The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration en
 
 In this guide you will learn:
 
- - [How to create a Kubernetes cluster using the Linode Kubernetes Engine.](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#create-an-lke-cluster)
+ - [How to create a Kubernetes cluster using the Linode Kubernetes Engine.](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster)
 
- - [How to modify your cluster.](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#modify-a-cluster-s-node-pools)
+ - [How to modify your cluster.](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#modify-a-cluster-s-node-pools)
 
- - [How to delete your cluster.](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#delete-a-cluster)
+ - [How to delete your cluster.](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster)
 
  - [Next Steps after deploying your cluster.](#next-steps)
 
 {{< caution >}}
-This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#delete-a-cluster) when you have finished the guide.
+This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account.
 {{< /caution >}}
