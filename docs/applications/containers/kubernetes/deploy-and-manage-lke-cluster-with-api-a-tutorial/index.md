@@ -32,7 +32,7 @@ The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration en
 
 You can easily deploy an LKE cluster in several ways:
 
-- Via the [Linode Cloud Manager](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/)
+- Via the [Linode Cloud Manager](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
 - With the Linode API (as presented in this guide)
 
     {{< note >}}
@@ -167,7 +167,7 @@ The YAML file that you decode to (`cluster12345-config.yaml` here) can have any 
         kubectl config view
 
     {{< note >}}
-You can also access a decoded version of your kubeconfig file in the [Linode Cloud Manager](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#access-and-download-your-kubeconfig).
+You can also access a decoded version of your kubeconfig file in the [Linode Cloud Manager](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig).
 {{</ note >}}
 
 1. View all nodes in your LKE cluster using kubectl:

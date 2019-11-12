@@ -54,10 +54,10 @@ This guide will show you how to:
 
 * Finally, you will need to create a cluster on LKE, if you do not already have one:
 
-    - To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/) guide.
+    - To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
 
         {{< note >}}
-Specifically, follow the [Create an LKE Cluster](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#create-an-lke-cluster) and [Connect to your LKE Cluster with kubectl](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#connect-to-your-lke-cluster-with-kubectl) sections.
+Specifically, follow the [Create an LKE Cluster](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster) and [Connect to your LKE Cluster with kubectl](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl) sections.
         {{< /note >}}
 
 - To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/) tutorial.
@@ -485,4 +485,4 @@ If you would rather not continue using the cluster you just created, review the 
 
     1.  You will be prompted to enter the name of the cluster to confirm the action. Enter the cluster name and click **Delete**.
 
--  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/#persist-the-kubeconfig-context).
+-  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).
