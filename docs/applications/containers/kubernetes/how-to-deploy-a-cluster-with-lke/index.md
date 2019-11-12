@@ -12,8 +12,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-11
 modified_by:
   name: Linode
-title: 'How to Deploy a Cluster with Linode Kubernetes Engine'
-h1_title: Deploy a Cluster with Linode Kubernetes Engine
+title: 'Deploy and Manage a Cluster with Linode Kubernetes Engine - A Tutorial'
+h1_title: A Tutorial for Deploying and Managing a Cluster with Linode Kubernetes Engine
 external_resources:
  - '[Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'
 ---
