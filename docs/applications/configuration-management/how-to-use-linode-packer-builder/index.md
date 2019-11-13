@@ -3,42 +3,51 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Packer is a HashiCorp maintained open source tool that is used to create machine images. Using a single source configuration, you can generate identical machine images. Packer can then be used to install those images to your Linode.'
-keywords: ['packer','image','immutable infrastructure','continuous delivery']
+og_description: 'Packer is a HashiCorp maintained open source tool that is used to create machine images. Using a single source configuration, you can generate identical machine images. Packer can then be used to install those images to your Linode.'
+keywords: ['packer hashicorp','hashicorp packer','image','machine image','immutable infrastructure','continuous delivery','ansible','ansible playbook','hashicorp terraform','hashicorp']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-12
 modified_by:
   name: Linode
 title: "How to Use the Linode Packer Builder"
-h1_title: "Using the Linode Packer Builder to Create Images"
+h1_title: "Use the Linode Packer Builder to Create Linode Images"
 contributor:
   name: Linode
 ---
+
 ## What is Packer?
 
 Packer is a HashiCorp maintained open source tool that is used to create machine images. A machine image provides the operating system, applications, application configurations, and data files that a virtual machine instance will run once it's deployed. Using a single source configuration, you can generate identical machine images. Packer can be used in conjunction with common configuration management tools like Chef, Puppet, or Ansible to install software to your Linode and include those configurations into your image.
 
 In this guide you will complete the following steps:
 
-* Install Packer on your computer.
-* Create a Packer image template. Optionally, the template will execute system configurations using Packer's Ansible provisioner.
-* Generate a Linode Image from your Packer template.
-* Deploy a Linode from your stored Packer image.
+* [Install Packer](#install-packer-on-ubuntu-18-04) on your computer.
+* [Create a Packer image template](#create-your-template). Optionally, the template will execute system configurations using Packer's Ansible provisioner.
+* [Generate a Linode Image](#create-your-linode-image) from your Packer template.
+* [Deploy a Linode](#deploy-a-linode-with-your-new-image) from your stored Packer image.
 
 ## Before You Begin
 
-1. Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](https://linode.com/docs/platform/api/getting-started-with-the-linode-api/) guide if you do not already have one.
-
-1. [Create an authentication key-pair](https://www.linode.com/docs/security/securing-your-server/#create-an-authentication-key-pair) if your computer does not already have one.
-
-1. Install Ansible on your computer and familiarize yourself with basic Ansible concepts (optional). Using the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/) guide, follow the steps in the [Install Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) section.
-
 1. Ensure you have access to [cURL](https://en.wikipedia.org/wiki/CURL) on your computer.
 
-{{< disclosure-note "Assumptions" >}}
-This guide assumes you have an environment variable setup for your APIv4 TOKEN to make curl calls. To do this run this command replacing the sample token string with your own API token:
+1. Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/) guide if you do not already have one.
 
-    export TOKEN='<SAMPLETOKENSTRING>'
-{{< /disclosure-note >}}
+    {{< note >}}
+The example cURL commands in this guide will refer to a `$TOKEN` environment variable. For example:
+
+    curl -H "Authorization: Bearer $TOKEN" \
+        https://api.linode.com/v4/images
+
+To set this variable up in your terminal, run:
+
+    export TOKEN='<your-Linode-APIv4-token>'
+
+If you do not do this, you will need to alter these commands so that your API token is inserted wherever `$TOKEN` appears.
+{{< /note >}}
+
+1. [Create an authentication key-pair](/docs/security/securing-your-server/#create-an-authentication-key-pair) if your computer does not already have one.
+
+1. Install Ansible on your computer and familiarize yourself with basic Ansible concepts (optional). Using the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/) guide, follow the steps in the [Install Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) section.
 
 ## The Linode Packer Builder
 
@@ -52,14 +61,16 @@ The Linode Packer builder works in the following way:
 * The temporary Linode is deleted.
 * You can then reuse the private Linode image as desired, for example, by using your image to create Linode instances with [Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/).
 
-## Install Packer on Ubuntu 18.04
+## Install Packer
+
+The following instructions will install Packer on Ubuntu 18.04 from a downloaded binary. For more installation methods, including installing on other operating systems or compiling from source, see [Packer's official documentation](https://www.packer.io/intro/getting-started/install.html).
 
 1. Make a Packer project directory in your home directory and then navigate to it:
 
         mkdir ~/packer
         cd ~/packer
 
-1. Download the precompiled binary for your system from the Packer website. Example `wget` commands are listed using the latest version available at time of publishing (1.4.4). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
+1. Download the precompiled binary for your system from the Packer website. Example `wget` commands are listed using the latest version available at time of publishing (1.4.4). You should inspect the links on the [download page](https://www.packer.io/downloads.html) to see if a newer version is available and update the `wget` commands to use those URLs instead:
 
     * The 64-bit Linux `.zip` archive
 
@@ -72,10 +83,6 @@ The Linode Packer builder works in the following way:
     * The checksum signature file
 
             wget https://releases.hashicorp.com/packer/1.4.4/packer_1.4.4_SHA256SUMS.sig
-
-    {{< note >}}
-For more installation methods including installing on other operating systems and compiling from source, see [Packer's official documentation](https://www.packer.io/intro/getting-started/install.html).
-    {{</ note >}}
 
 ### Verify the Download
 
@@ -93,7 +100,7 @@ gpg: key 51852D87348FFC4C: public key "HashiCorp Security <security@hashicorp.co
 gpg: no ultimately trusted keys found
 gpg: Total number processed: 1
 gpg:               imported: 1
-      {{</ output >}}
+{{</ output >}}
 
 1. Verify the checksum file’s GPG signature:
 
@@ -132,10 +139,14 @@ packer_1.4.4_linux_amd64.zip: OK
 If you receive an error that indicates `unzip` is missing from your system, install the `unzip` package and try again.
     {{</ note >}}
 
-1. Edit your `~./profile` to include the `~/packer` directory in your PATH. Then, reload the Bash profile:
+1. Edit your `~./profile` shell configuration file to include the `~/packer` directory in your PATH. Then, reload the Bash profile:
 
         echo 'export PATH="$PATH:$HOME/packer"' >> ~/.profile
         source ~/.profile
+
+    {{< note >}}
+If you use a different shell, your shell configuration may have a different file name.
+{{< /note >}}
 
 1. Verify Packer can run by calling it with no options or arguments:
 
@@ -155,7 +166,9 @@ Available commands are:
 
 ## Use the Linode Packer Builder
 
-Now that Packer is installed on your local system, you can create a Packer *template*. A template is a JSON formatted file that contains the configurations needed to build a machine image. In this section you will create a template that uses the Linode Packer builder to create an image using Debian 9 as its base distribution. The template will also configure your system image with a new limited user account, and a public SSH key from your local computer. The additional system configuration will be completed using Packer's Ansible [*provisioner*](https://www.packer.io/docs/provisioners/index.html) and an example Ansible Playbook. A Packer provisioner is a built-in third-party integration that further configures a machine instance during the boot process and prior to taking the machine's snapshot.
+Now that Packer is installed on your local system, you can create a Packer *template*. A template is a JSON formatted file that contains the configurations needed to build a machine image.
+
+In this section you will create a template that uses the Linode Packer builder to create an image using Debian 9 as its base distribution. The template will also configure your system image with a new limited user account, and a public SSH key from your local computer. The additional system configuration will be completed using Packer's Ansible [*provisioner*](https://www.packer.io/docs/provisioners/index.html) and an example Ansible Playbook. A Packer provisioner is a built-in third-party integration that further configures a machine instance during the boot process and prior to taking the machine's snapshot.
 
 {{< note >}}
 The steps in this section will incur charges related to deploying a [1GB Nanode](https://www.linode.com/products/nanodes/). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for details about [hourly billing](/docs/platform/billing-and-support/billing-and-payments/#how-hourly-billing-works).
@@ -163,7 +176,7 @@ The steps in this section will incur charges related to deploying a [1GB Nanode]
 
 ### Access Linode and Private Images
 
-The Linode Packer Builder requires a Linode Image ID to deploy a disk from. To access official Linode images and private images, you can curl the Linode API. This guide's example will use the image `linode/debian9`, but you can replace it with any other image you prefer.
+The Linode Packer Builder requires a Linode Image ID to deploy a disk from. This guide's example will use the image `linode/debian9`, but you can replace it with any other image you prefer. To list the official Linode images and your account's private images, you can curl the Linode API:
 
     curl -H "Authorization: Bearer $TOKEN" \
         https://api.linode.com/v4/images
@@ -333,7 +346,7 @@ Build 'linode' finished.
 
 ### Deploy a Linode with your New Image
 
-1. Issue the following curl command to deploy a 1GB Nanode to the us-east datacenter using your new Image to your Linode account. Ensure you replace `private/7550080` with your own Linode Image's Id and assign your own `root_pass` and `label`.
+1. Issue the following curl command to deploy a 1GB Nanode to the us-east data center using your new Image to your Linode account. Ensure you replace `private/7550080` with your own Linode Image's ID and assign your own `root_pass` and `label`.
 
         curl -H "Content-Type: application/json" \
           -H "Authorization: Bearer $TOKEN" \
@@ -349,18 +362,19 @@ Build 'linode' finished.
 
     You should receive a similar response from the API:
 
-      {{< output >}}
+    {{< output >}}
 {"id": 17882092, "created": "2019-10-23T22:47:47", "group": "", "specs": {"gpus": 0, "transfer": 1000, "memory": 1024, "disk": 25600, "vcpus": 1}, "label": "my-example-linode", "updated": "2019-10-23T22:47:47", "watchdog_enabled": true, "image": null, "ipv4": ["192.0.2.0"], "ipv6": "2600:3c03::f03c:92ff:fe98:6d9a/64", "status": "provisioning", "tags": [], "region": "us-east", "backups": {"enabled": false, "schedule": {"window": null, "day": null}}, "hypervisor": "kvm", "type": "g6-nanode-1", "alerts": {"cpu": 90, "network_in": 10, "transfer_quota": 80, "io": 10000, "network_out": 10}}%
-      {{</ output >}}
+    {{</ output >}}
 
-      If you used the Ansible provisioner, once your Linode is deployed, you should be able to SSH into your newly deployed Linode using the limited user account you created with the Ansible playbook and your public SSH key. Your Linode's IPv4 address will be available in the API response returned after creating the Linode.
+1.  If you used the Ansible provisioner, once your Linode is deployed, you should be able to SSH into your newly deployed Linode using the limited user account you created with the Ansible playbook and your public SSH key. Your Linode's IPv4 address will be available in the API response returned after creating the Linode.
 
         ssh my-user-name@192.0.2.0
 
 ## Next Steps
 
-If you'd like to learn how to use Terraform to deploy Linodes using your Packer created image, you can follow our beginner's Terraform guides to get started:
+If you'd like to learn how to use Terraform to deploy Linodes using your Packer created image, you can follow our Terraform guides to get started:
 
 * [A Beginner's Guide to Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/)
+* [Create a Terraform Module](/docs/applications/configuration-management/create-terraform-module/)
 * [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)
 * [Introduction to HashiCorp Configuration Language (HCL)](/docs/applications/configuration-management/introduction-to-hcl/)
