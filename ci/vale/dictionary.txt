@@ -17,6 +17,7 @@ Aho
 ahvz
 ajp
 aker
+alef
 alexey
 alives
 allmasquerade
@@ -266,6 +267,7 @@ dbfiles
 dbname
 dbserver
 dcs
+deallocation
 deathmatch
 debconf
 declaratively
@@ -493,6 +495,7 @@ greenbone
 greylist
 greylisting
 griefing
+griesemer
 groot
 grsecurity
 gsa
@@ -1502,6 +1505,7 @@ v4
 v6
 vagrantfile
 validator
+variadic
 varnishlog
 vcs
 vdev
