@@ -45,7 +45,7 @@ To set this variable up in your terminal, run:
 If you do not do this, you will need to alter these commands so that your API token is inserted wherever `$TOKEN` appears.
 {{< /note >}}
 
-1. [Create an authentication key-pair](/docs/security/securing-your-server/#create-an-authentication-key-pair) if your computer does not already have one.
+1. [Create an SSH authentication key-pair](/docs/security/securing-your-server/#create-an-authentication-key-pair) if your computer does not already have one. Your SSH public key will be added to your image via an Ansible module.
 
 1. Install Ansible on your computer and familiarize yourself with basic Ansible concepts (optional). Using the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/) guide, follow the steps in the [Install Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#install-ansible) section.
 
