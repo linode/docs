@@ -118,7 +118,7 @@ The mail server's virtual users and passwords are stored in a MySQL database. Do
 
         FLUSH PRIVILEGES;
 
-1.  Switch to the new `mailsever` database:
+1.  Switch to the new `mailserver` database:
 
         USE mailserver;
 
@@ -171,15 +171,24 @@ Now that the database and tables have been created, add some data to MySQL.
 Note which `id` corresponds to which domain, the `id` value is necessary for the next two steps.
 {{< /note >}}
 
-1.  Add email addresses to the `virtual_users` table. The `domain_id` value references the `virtual_domain` table's `id` value. Replace the email address values with the addresses that you wish to configure on the mailserver. Replace the `password` values with strong passwords.
+2.  Add email addresses to the `virtual_users` table. The `domain_id` value references the `virtual_domain` table's `id` value. Replace the email address values with the addresses that you wish to configure on the mailserver. Replace the `password` values with strong passwords.
 
         INSERT INTO `mailserver`.`virtual_users`
           (`id`, `domain_id`, `password` , `email`)
         VALUES
           ('1', '1', ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email1@example.com'),
           ('2', '1', ENCRYPT('password', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))), 'email2@example.com');
+          
+{{< note >}}NOTE! ENCRYPT() function is depricated in MySQL 8.0!{{< /note >}}
+If you are using MySQL >= 8.0 you must use below SQL statment:
 
-1.  An email alias will forward all email from one email address to another. To set up an email alias, add it to the `virtual_aliases` table:
+        INSERT INTO `mailserver`.`virtual_users`
+          (`id`, `domain_id`, `password` , `email`)
+        VALUES
+          ('1', '1', TO_BASE64(UNHEX(SHA2('password', 512))), 'email1@example.com'),
+          ('2', '1', TO_BASE64(UNHEX(SHA2('password', 512))), 'email2@example.com');
+
+3.  An email alias will forward all email from one email address to another. To set up an email alias, add it to the `virtual_aliases` table:
 
         INSERT INTO `mailserver`.`virtual_aliases`
           (`id`, `domain_id`, `source`, `destination`)
@@ -593,7 +602,10 @@ driver = mysql
 ...
 connect = host=127.0.0.1 dbname=mailserver user=mailuser password=mailuserpass
 ...
+#For MySql < 8.0 (5.7, 5.6, etc)
 default_pass_scheme = SHA512-CRYPT
+#For Mysql > 8.0
+default_pass_scheme = SHA512
 ...
 password_query = SELECT email as user, password FROM virtual_users WHERE email='%u';
 ...
