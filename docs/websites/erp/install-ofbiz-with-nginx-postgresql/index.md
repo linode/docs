@@ -171,7 +171,7 @@ Next time when OFBiz is started (`./gradlew ofbiz`), interface for each plugins'
 
 ## Serve OFBiz with NGINX
 
-OFBiz instances can be served by using reverse proxy. Here we will use NGINX, which is suitable for this task (fast, lightweight, etc.). For more details of NGINX configurations refer to [Getting Started with NGINX guide series](docs/web-servers/nginx/nginx-installation-and-basic-setup/).
+OFBiz instances can be served by using reverse proxy. Here we will use NGINX, which is suitable for this task (fast, lightweight, etc.). For more details of NGINX configurations refer to [Getting Started with NGINX guide series](/docs/web-servers/nginx/nginx-installation-and-basic-setup/).
 
 For this guide we use [upstream NGINX repo](http://nginx.org/en/linux_packages.html). Subsitute configuration files location when appropriate.
 
