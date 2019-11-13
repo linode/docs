@@ -272,7 +272,7 @@ Prior to commit, set your username and email address to use for Git. Refer to [G
 
 ## PostgreSQL
 
-By default, OFBiz use embedded Derby as database backend. For production enviroments however, an external database is recommended. For this guide, we will use PostgreSQL. Feel free to adapt this guide if you wish to use different database (such as MySQL/MariaDB)
+By default, OFBiz use embedded Derby as database backend. For production environments however, an external database is recommended. For this guide, we will use PostgreSQL. Feel free to adapt this guide if you wish to use different database (such as MySQL/MariaDB)
 
 ### Install PostgreSQL
 
