@@ -52,7 +52,7 @@ This guide will show you how to:
     - [Sign up for a Docker Hub Account](#sign-up-for-a-docker-hub-account)
     - [Install Hugo](#install-hugo)
 
-* Finally, you will need to create a cluster on LKE, if you do not already have one:
+- Finally, you will need to create a cluster on LKE, if you do not already have one:
 
     - To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
 
@@ -60,9 +60,9 @@ This guide will show you how to:
 Specifically, follow the [Create an LKE Cluster](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster) and [Connect to your LKE Cluster with kubectl](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl) sections.
         {{< /note >}}
 
-- To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/) tutorial.
+    - To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/) tutorial.
 
-    {{< note >}}
+        {{< note >}}
 Specifically, follow the [Create an LKE Cluster](/docs/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/#create-an-lke-cluster) section.
 {{< /note >}}
 
