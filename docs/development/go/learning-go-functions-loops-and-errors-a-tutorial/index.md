@@ -94,7 +94,7 @@ func main() {
   All exported package functions begin with an uppercase letter. This follows the Go rule: if you export something outside the current package, it should begin with an uppercase letter. This rule applies even if the field of the Go structure or the global variable is included in a Go package.
     {{</ note >}}
 
-* Go statements do not *need* to end with a semicolon. However, you are free to use semicolons if you wish. For more information on formatting with curly braces, [see the section below](/docs/development/go/learning-go-functions-loops-and-errors-a-tutorial/#how-to-format-curly-braces-in-go).
+* Go statements do not *need* to end with a semicolon. However, you are free to use semicolons if you wish. For more information on formatting with curly braces, [see the section below](#formatting-curly-braces).
 
 1. Now that you better understand the `helloworld.go` program, execute it with the `go run` command:
 
@@ -154,7 +154,7 @@ func main()
 
 * This error message is generated because Go requires the use of semicolons as statement terminators in many contexts and the compiler automatically inserts the required semicolons when it thinks that they are necessary. Putting the opening curly brace (`{`) on its own line makes the Go compiler look for a semicolon at the end of the previous line (`func main()`), which is the cause of the error message.
 
-* There is only one way to format curly braces in Go; **the opening curly brace must not appear on it's own line**. Additionally, you must use curly braces even if a code block contains a single Go statement, like in the body of a `for` loop. You can see an example of this in the [first version of the `helloworld.go`](/#a-simple-go-program) program or in the [Loops in Go](#loops-in-go) section.
+* There is only one way to format curly braces in Go; **the opening curly brace must not appear on it's own line**. Additionally, you must use curly braces even if a code block contains a single Go statement, like in the body of a `for` loop. You can see an example of this in the [first version of the `helloworld.go`](#a-simple-go-program) program or in the [Loops in Go](#loops-in-go) section.
 
 ### The Assignment Operator and Short Variable Declarations
 
