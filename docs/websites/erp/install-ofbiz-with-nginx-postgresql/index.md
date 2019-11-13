@@ -115,7 +115,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 
         $ ./gradlew ofbiz &> /dev/null & disown
 
-    Alternatively, start OFBiz on the background:
+    Alternatively:
 
         $ ./gradlew ofbizBackground
 
@@ -173,7 +173,7 @@ Next time when OFBiz is started (`./gradlew ofbiz`), interface for each plugins'
 
 OFBiz instances can be served by using reverse proxy. Here we will use NGINX, which is suitable for this task (fast, lightweight, etc.). For more details of NGINX configurations refer to [Getting Started with NGINX guide series](/docs/web-servers/nginx/nginx-installation-and-basic-setup/).
 
-For this guide we use [upstream NGINX repo](http://nginx.org/en/linux_packages.html). Subsitute configuration files location when appropriate.
+For this guide we use [upstream NGINX repo](http://nginx.org/en/linux_packages.html).
 
 1.  Since we're about to edit OFBiz source code, which is version-controlled by Git, create and switch to separate branch (`production`) to store customizations. This branch will be based on mainline branch (`trunk`), which will be kept unchanged/pristine. Further edits to OFBiz code will be on `production` branch:
 
@@ -494,7 +494,7 @@ WantedBy=multi-user.target
 
         $ git pull
 
-4.  Rebase `production` branch againt newly-updated trunk:
+4.  Update `production` branch by rebase it against `trunk`:
 
         $ git checkout production
         $ git rebase trunk

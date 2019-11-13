@@ -12,6 +12,7 @@ adminpack
 adnanh
 adodb
 aes
+against
 ahci0
 Aho
 ahvz
@@ -270,6 +271,7 @@ debconf
 declaratively
 deduplication
 defragment
+delegators
 deprovisioning
 descolada
 descr
@@ -347,6 +349,7 @@ email2email
 ender
 enix
 env
+environments
 envs
 epel
 erb
@@ -590,6 +593,7 @@ impor
 incentivized
 inet
 inet6
+informations
 ini
 initializer
 initramfs
@@ -1124,6 +1128,7 @@ readme
 readonly
 readwrite
 realtime
+rebase
 reconnections
 recursing
 recv
