@@ -2,12 +2,13 @@
 author:
     name: Linode
     email: docs@linode.com
-modified: 2019-11-06
+modified: 2019-11-13
 modified_by:
     name: Linode
+published: 2019-11-13
 contributor:
     name: Bagas Sanjaya
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)' 
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: "Install Apache OFBiz with NGINX and PostgreSQL"
 description: 'Apache OFBiz is an open-source, flexible ERP solution by Apache, written in Java. It allows developers to extend and enhance it, thanks to its common architecture framework. This guide covers installing OFBiz from Git repo, so upgrading and maintenance will be easier. The setup will also use NGINX (as reverse proxy) and PostgreSQL (for database backend).'
 keywords: ["OFBiz", "Apache OFBiz"]
@@ -339,7 +340,7 @@ To configure the entity engine to use PostgreSQL:
         <group-map group-name="org.apache.ofbiz.olap" datasource-name="localpostgresolap"/>
         <group-map group-name="org.apache.ofbiz.tenant" datasource-name="localpostgrestenant"/>
     </delegator>
-   <delegator name="default-no-eca" entity-model-reader="main" entity-group-reader="main" entity-eca-reader="main" entity-eca-enabled="false" distributed-cache-clear-enabled="false">
+    <delegator name="default-no-eca" entity-model-reader="main" entity-group-reader="main" entity-eca-reader="main" entity-eca-enabled="false" distributed-cache-clear-enabled="false">
         <group-map group-name="org.apache.ofbiz" datasource-name="localpostgres"/>
         <group-map group-name="org.apache.ofbiz.olap" datasource-name="localpostgresolap"/>
         <group-map group-name="org.apache.ofbiz.tenant" datasource-name="localpostgrestenant"/>
@@ -352,7 +353,7 @@ To configure the entity engine to use PostgreSQL:
 ...
 {{< /file >}}
 
-3.  Add [PostgreSQL JDBC driver](https://jdbc.postgresql.org) as build-time dependency to `build.gradle`. Substitute the version number with latest driver version on its website:
+3.  Add [PostgreSQL JDBC driver](https://jdbc.postgresql.org) as build-time dependency to `build.gradle`:
 
     {{< file "build.gradle" gradle >}}
 dependencies {
@@ -360,7 +361,7 @@ dependencies {
     implementation 'org.postgresql:postgresql:42.2.8'
     ...
 }
-{{< /file >}} 
+{{< /file >}}
 
 
 ### Database Setup
@@ -373,7 +374,7 @@ dependencies {
 SCRAM SHA-256 password authentication method is supported on PostgreSQL 10 or later. If you use version 9.6 or earlier, you have to use MD5 password authentication method instead.
 {{< /note >}}
 
-    Edit client authentication configuration file (`pg_hba.conf`) and change authentication method for all network-based local connections to SCRAM SHA-256: 
+    Edit client authentication configuration file (`pg_hba.conf`) and change authentication method for all network-based local connections to SCRAM SHA-256:
 
     {{< file "/var/lib/pgsql/11/data/pg_hba.conf" conf >}}
 ...
