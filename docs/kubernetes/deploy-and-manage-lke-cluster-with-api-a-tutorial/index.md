@@ -33,7 +33,7 @@ The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration en
 
 You can easily deploy an LKE cluster in several ways:
 
-- Via the [Linode Cloud Manager](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
+- Via the [Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
 - With the Linode API (as presented in this guide)
 
     {{< note >}}
@@ -48,7 +48,7 @@ These Linode-provided interfaces can be used to create, delete, and update the s
 - The hardware resources for each node in your node pools.
 - The Kubernetes version deployed to your cluster's Master node and worker nodes.
 
-The [Kubernetes API](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) and [kubectl](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubectl) are the primary ways you will interact with your LKE cluster once it's been created. These tools can be used to configure, deploy, inspect, and secure your Kubernetes workloads, deploy applications, create services, configure storage and networking, and define controllers.
+The [Kubernetes API](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) and [kubectl](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/#kubectl) are the primary ways you will interact with your LKE cluster once it's been created. These tools can be used to configure, deploy, inspect, and secure your Kubernetes workloads, deploy applications, create services, configure storage and networking, and define controllers.
 
 ### In this Guide
 
@@ -68,7 +68,17 @@ This guide will cover how to use the Linode API to:
 
 1. [Install kubectl](#install-kubectl) on your computer. You will use kubectl to interact with your cluster once it's deployed.
 
-1. If you are new to Kubernetes, refer to our [A Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes/) series to learn about general Kubernetes concepts. This guide assumes a general understanding of core Kubernetes concepts.
+1. If you are new to Kubernetes, refer to our [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series to learn about general Kubernetes concepts. This guide assumes a general understanding of core Kubernetes concepts.
+
+### Enable Network Helper
+
+In order to use the Linode Kubernetes Engine, you will need to have *Network Helper* enabled globally on your account. Network Helper is a Linode-provided service that automatically sets a static network configuration for your Linode when it boots. To enable this global account setting, follow [these instructions](/docs/platform/network-helper/#global).
+
+If you don't want to use Network Helper on some Linodes that are not part of your LKE clusters, the service can also be disabled on a per-Linode basis; see instructions [here](/docs/platform/network-helper/#single-per-linode).
+
+{{< note >}}
+If you have already deployed an LKE cluster and did not enable Network Helper, you can [add a new node pool](#add-node-pools) with the same type, size, and count as your initial node pool. Once your new node pool is ready, you can then [delete the original node pool](#delete-a-cluster).
+{{</ note >}}
 
 ### Install kubectl
 
@@ -113,7 +123,7 @@ Each Linode account has a limit to the number of Linode resources they can deplo
 
 ### Connect to your LKE Cluster
 
-Now that your LKE cluster is created, you can access and manage your cluster using kubectl on your computer. This will give you the ability to interact with the Kubernetes API, and to create and manage [Kubernetes objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/) in your cluster.
+Now that your LKE cluster is created, you can access and manage your cluster using kubectl on your computer. This will give you the ability to interact with the Kubernetes API, and to create and manage [Kubernetes objects](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/) in your cluster.
 
 To communicate with your LKE cluster, kubectl requires a copy of your cluster's [*kubeconfig*](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/). In this section, you will access the contents of your kubeconfig using the Linode API and then set up kubectl to communicate with your LKE cluster.
 
@@ -168,7 +178,7 @@ The YAML file that you decode to (`cluster12345-config.yaml` here) can have any 
         kubectl config view
 
     {{< note >}}
-You can also access a decoded version of your kubeconfig file in the [Linode Cloud Manager](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig).
+You can also access a decoded version of your kubeconfig file in the [Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig).
 {{</ note >}}
 
 1. View all nodes in your LKE cluster using kubectl:
@@ -186,7 +196,7 @@ lke166-196-5d44703cd432   Ready    none   2d22h   v1.14.0
 lke166-197-5d44703cd211   Ready    none   2d22h   v1.14.0
 {{</ output >}}
 
-    Now that you are connected to your LKE cluster, you can begin using kubectl to deploy applications, [inspect and manage](/docs/applications/containers/kubernetes/troubleshooting-kubernetes/#kubectl-get) cluster resources, and [view logs](/docs/applications/containers/kubernetes/troubleshooting-kubernetes/#kubectl-logs).
+    Now that you are connected to your LKE cluster, you can begin using kubectl to deploy applications, [inspect and manage](/docs/kubernetes/troubleshooting-kubernetes/#kubectl-get) cluster resources, and [view logs](/docs/kubernetes/troubleshooting-kubernetes/#kubectl-logs).
 
 ### Persist the Kubeconfig Context
 
@@ -438,6 +448,6 @@ This step is permanent and will result in the loss of data.
 
 Now that you have created an LKE cluster, you can start deploying workloads to it. Review these guides for further help:
 
-* [How to Install Apps on Kubernetes with Helm](/docs/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/)
-* [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/applications/containers/kubernetes/deploy-container-image-to-kubernetes/)
-* [Troubleshooting Kubernetes](/docs/applications/containers/kubernetes/troubleshooting-kubernetes/)
+* [How to Install Apps on Kubernetes with Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm/)
+* [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/kubernetes/deploy-container-image-to-kubernetes/)
+* [Troubleshooting Kubernetes](/docs/kubernetes/troubleshooting-kubernetes/)
