@@ -97,14 +97,14 @@ resource "linode_domain_record" "my_wordpress_domain_www_record" {
     domain_id = linode_domain.my_wordpress_domain.id
     name = "www"
     record_type = var.a_record
-    target = "linode_instance.my_wordpress_linode.ipv4"
+    target = linode_instance.my_wordpress_linode.ip_address
 }
 
 resource "linode_domain_record" "my_wordpress_domain_apex_record" {
     domain_id = linode_domain.my_wordpress_domain.id
     name = ""
     record_type = var.a_record
-    target = "linode_instance.my_wordpress_linode.ipv4"
+    target = linode_instance.my_wordpress_linode.ip_address
 }
 {{</ file >}}
 
@@ -196,14 +196,14 @@ resource "linode_domain_record" "my_wordpress_domain_www_record" {
     domain_id = linode_domain.my_wordpress_domain.id
     name = "www"
     record_type = var.a_record
-    target = "linode_instance.linode_id.ipv4"
+    target = linode_instance.my_wordpress_linode.ip_address
 }
 
 resource "linode_domain_record" "my_wordpress_domain_apex_record" {
     domain_id = linode_domain.my_wordpress_domain.id
     name = ""
     record_type = var.a_record
-    target = "linode_instance.my_wordpress_linode.ipv4"
+    target = linode_instance.my_wordpress_linode.ip_address
 }
 {{</ file >}}
 
