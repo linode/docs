@@ -10,7 +10,8 @@ modified: 2019-01-28
 modified_by:
   name: Linode
 published: 2017-05-30
-title: Install Oracle Java SE Development Kit 11 on Ubuntu
+title: How To Install Oracle Java SE Development Kit 11 on Ubuntu 18.04
+h1_title: Installing Oracle Java SE Development Kit 11 on Ubuntu 18.04
 contributor:
   name: Phil Zona
   link: 'https://github.com/pbzona'
