@@ -34,7 +34,7 @@ This guide demonstrates installing Oracle's Java Standard Edition Development Ki
 
 - Connect to your Linode using a remote desktop sharing system such as a VNC. For more information, see [Install VNC on Ubuntu 18.04](/docs/applications/remote-desktop/install-vnc-on-ubuntu-18-04/) guide.
 
-- Create an Oracle account and download Oracle JDK 11 .tar.gz [archive] (https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html). Ensure that the Oracle JDK version is the same as the oracle-java11-installer-local [package version] (https://launchpad.net/~linuxuprising/+archive/ubuntu/java/+packages).
+- [Create an Oracle account](https://profile.oracle.com/myprofile/account/create-account.jspx) and download the Oracle JDK 11 .tar.gz [archive] (https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html). Ensure that the Oracle JDK version is the same as the oracle-java11-installer-local [package version] (https://launchpad.net/~linuxuprising/+archive/ubuntu/java/+packages).
 
 
 ## Install Oracle JDK
