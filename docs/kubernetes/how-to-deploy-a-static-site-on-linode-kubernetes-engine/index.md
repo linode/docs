@@ -26,7 +26,7 @@ Because LKE is in Beta, there may be breaking changes to how you access and mana
 
 *Linode Kubernetes Engine (LKE)* allows you to easily create, scale, and manage Kubernetes clusters to meet your application's demands, reducing the often complicated cluster set-up process to just a few clicks. Linode manages your Kubernetes master node, and you select how many Linodes you want to add as worker nodes to your cluster.
 
-Deploying a static site using an LKE cluster is a great example to follow when learning Kubernetes. A [container](/docs/applications/containers/kubernetes/kubernetes-reference/#container) image for a static site can be written in less than ten lines, and only one container image is needed, so it's less complicated to deploy a static site on Kubernetes than some other applications that require multiple components.
+Deploying a static site using an LKE cluster is a great example to follow when learning Kubernetes. A [container](/docs/kubernetes/kubernetes-reference/#container) image for a static site can be written in less than ten lines, and only one container image is needed, so it's less complicated to deploy a static site on Kubernetes than some other applications that require multiple components.
 
 {{< caution >}}
 Following the instructions in this guide will create billable resources on your account in the form of Linodes and NodeBalancers. You will be billed an hourly rate for the time that these resources exist on your account. Be sure to follow the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) at the end of this guide if you do not wish to continue using these resources.
@@ -54,16 +54,16 @@ This guide will show you how to:
 
 - Finally, you will need to create a cluster on LKE, if you do not already have one:
 
-    - To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
+    - To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
 
         {{< note >}}
-Specifically, follow the [Create an LKE Cluster](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster) and [Connect to your LKE Cluster with kubectl](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl) sections.
+Specifically, follow the [Create an LKE Cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster) and [Connect to your LKE Cluster with kubectl](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl) sections.
         {{< /note >}}
 
-    - To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/) tutorial.
+    - To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/) tutorial.
 
         {{< note >}}
-Specifically, follow the [Create an LKE Cluster](/docs/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/#create-an-lke-cluster) section.
+Specifically, follow the [Create an LKE Cluster](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/#create-an-lke-cluster) section.
 {{< /note >}}
 
 ### Install kubectl
@@ -348,13 +348,13 @@ b4a7b959a6c7        mydockerhubusername/lke-example:v1         "nginx -g 'daemon
 
 ## Deploying the Container to LKE
 
-In this section, you will create a [Deployment](/docs/applications/containers/kubernetes/kubernetes-reference/#deployment) from the container you created in the previous section, and a [Service](/docs/applications/containers/kubernetes/kubernetes-reference/#services) to load balance the deployment.
+In this section, you will create a [Deployment](/docs/kubernetes/kubernetes-reference/#deployment) from the container you created in the previous section, and a [Service](/docs/kubernetes/kubernetes-reference/#services) to load balance the deployment.
 
 1.  Begin by navigating to a location outside of your static site directory. You will not need your static site directory for the remainder of this guide.
 
         cd ..
 
-1.  Create a new directory to house your Kubernetes [manifests](/docs/applications/containers/kubernetes/kubernetes-reference/#kubernetes-manifests), and move into that directory:
+1.  Create a new directory to house your Kubernetes [manifests](/docs/kubernetes/kubernetes-reference/#kubernetes-manifests), and move into that directory:
 
         mkdir manifests && cd manifests
 
@@ -415,7 +415,7 @@ static-site-deployment-cdb88b5bb-lzdvh&nbsp;&nbsp;1/1&nbsp;&nbsp;&nbsp;&nbsp;&nb
     Specifically, the Service manifest that will be used in this guide will trigger the creation of a Linode [NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/).
 
     {{< note >}}
-The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/applications/containers/kubernetes/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Deploying NodeBalancers with the Linode CCM guide](/docs/applications/containers/deploy-nodebalancers-with-linode-ccm/).
+The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/kubernetes/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Deploying NodeBalancers with the Linode CCM guide](/docs/applications/containers/deploy-nodebalancers-with-linode-ccm/).
 {{< /note >}}
 
 1.  Name the file `static-site-service.yaml`, save it to your `manifests` directory, and enter the contents of this snippet:
@@ -485,4 +485,4 @@ If you would rather not continue using the cluster you just created, review the 
 
     1.  You will be prompted to enter the name of the cluster to confirm the action. Enter the cluster name and click **Delete**.
 
--  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).
+-  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).
