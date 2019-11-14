@@ -36,21 +36,31 @@ The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration en
 
 In this guide you will learn:
 
- - [How to create a Kubernetes cluster using the Linode Kubernetes Engine.](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster)
+ - [How to create a Kubernetes cluster using the Linode Kubernetes Engine.](#create-an-lke-cluster)
 
- - [How to modify your cluster.](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#modify-a-cluster-s-node-pools)
+ - [How to modify your cluster.](#modify-a-cluster-s-node-pools)
 
- - [How to delete your cluster.](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster)
+ - [How to delete your cluster.](#delete-a-cluster)
 
  - [Next Steps after deploying your cluster.](#next-steps)
 
 {{< caution >}}
-This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](/docs/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster) when you have finished the guide.
+This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account.
 {{< /caution >}}
 
 ## Before You Begin
+
+### Enable Network Helper
+
+In order to use the Linode Kubernetes Engine, you will need to have *Network Helper* enabled globally on your account. Network Helper is a Linode-provided service that automatically sets a static network configuration for your Linode when it boots. To enable this global account setting, follow [these instructions](/docs/platform/network-helper/#global).
+
+If you don't want to use Network Helper on some Linodes that are not part of your LKE clusters, the service can also be disabled on a per-Linode basis; see instructions [here](/docs/platform/network-helper/#single-per-linode).
+
+{{< note >}}
+If you have already deployed an LKE cluster and did not enable Network Helper, you can [add a new node pool](#add-node-pools) with the same type, size, and count as your initial node pool. Once your new node pool is ready, you can then [delete the original node pool](#delete-a-cluster).
+{{</ note >}}
 
 ### Install kubectl
 
@@ -70,7 +80,7 @@ LKE is not available in the Linode Classic Manager
 
     ![Create a Kubernetes Cluster Screen](create-lke-cluster.png "Create a Kubernetes Cluster screen.")
 
-1. The **Create a Kubernetes Cluster** page will appear. Select the region where you would like your cluster to reside. In general, it's best to choose a location that's closest to you. [Use our speedtest page](https://www.linode.com/speedtest) to find the best region for your current location.
+1. The **Create a Kubernetes Cluster** page will appear. Select the region where you would like your cluster to reside.
 
     ![Select your cluster's region](select-cluster-region.png "Select your cluster's region.")
 
@@ -164,7 +174,7 @@ It is common practice to store your kubeconfig files in `~/.kube` directory. By 
         kubectl get nodes
 
     {{< note >}}
-If your kubectl commands are not returning the resources and information you expect, then your client may be assigned to the wrong cluster context. Visit our [Troubleshooting Kubernetes](/docs/applications/containers/kubernetes/troubleshooting-kubernetes/#troubleshooting-examples) guide to learn how to switch cluster contexts.
+If your kubectl commands are not returning the resources and information you expect, then your client may be assigned to the wrong cluster context. Visit our [Troubleshooting Kubernetes](/docs/kubernetes/troubleshooting-kubernetes/#troubleshooting-examples) guide to learn how to switch cluster contexts.
 {{</ note >}}
 
       You are now ready to manage your cluster using kubectl. For more information about using kubectl, see Kubernetes' [Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) guide.
@@ -302,7 +312,7 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
 Now that you have a running LKE cluster, you can start deploying workloads to it. Refer to our other guides to learn more:
 
- - [How to Deploy a Static Site on Linode Kubernetes Engine](/docs/applications/containers/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)
- - [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/applications/containers/kubernetes/deploy-container-image-to-kubernetes/)
- - [Troubleshooting Kubernetes Guide](/docs/applications/containers/kubernetes/troubleshooting-kubernetes/)
- - [See all our Kubernetes guides](/docs/applications/containers/kubernetes/)
+ - [How to Deploy a Static Site on Linode Kubernetes Engine](/docs/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)
+ - [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/kubernetes/deploy-container-image-to-kubernetes/)
+ - [Troubleshooting Kubernetes Guide](/docs/kubernetes/troubleshooting-kubernetes/)
+ - [See all our Kubernetes guides](/docs/kubernetes/)
