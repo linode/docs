@@ -121,7 +121,7 @@ resource "linode_nodebalancer_node" "example-nodebalancer-node" {
     nodebalancer_id = linode_nodebalancer.example-nodebalancer.id
     config_id = linode_nodebalancer_config.example-nodebalancer-config.id
     label = "example-node-${count.index + 1}"
-    address = "element(linode_instance.example-instance.*.private_ip_address, count.index):80"
+    address = "${element(linode_instance.example-instance.*.private_ip_address, count.index)}:80"
     mode = "accept"
 }
 
@@ -149,7 +149,7 @@ resource "linode_instance" "example-instance" {
     region = var.region
     type = "g6-nanode-1"
     image = "linode/ubuntu18.10"
-    authorized_keys = ["chomp(file(var.ssh_key))}]
+    authorized_keys = [chomp(file(var.ssh_key))]
     root_pass = random_string.password.result
     private_ip = true
 
@@ -170,7 +170,7 @@ resource "linode_instance" "example-instance" {
             type = "ssh"
             user = "root"
             password = random_string.password.result
-            host = "self.ipv4"
+            host = self.ip_address
         }
     }
 }
