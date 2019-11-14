@@ -4,7 +4,7 @@ This guide describes how to write and submit a guide for the Linode docs. If you
 
 ## Fixing an issue
 
-If you want to start contributing by finding an existing issue to work on, go to https://github.com/linode/docs/issues and look for issues with the label ```help wanted``` issue. Read through the comments and make sure there is not an open pull request against the issue and that nobody has left a comment saying they are working on the issue recently (3 days is a good rule). Leave a comment saying that you would like to work on the issue.
+If you want to start contributing by helping us correct existing issues, go to our [GitHub issues page](https://github.com/linode/docs/issues) and look for issues with the label ```help wanted```. Read through the comments and make sure there is not an open pull request against the issue, and that nobody has left a comment stating that they are working on the issue (3 days without activity is a good rule of thumb). Leave a comment stating that you would like to work on the issue.
 
 ## Fork the Linode Library
 
