@@ -19,13 +19,13 @@ external_resources:
 
 ## What is Octant?
 
-Octant is a web application that talks to your Kubernetes clusters and provides an easy-to-read dashboard for the objects in your clusters. A marquee feature of Octant is its abililty to show your objects and their relations in a graph format:
+Octant is a web application that talks to your Kubernetes clusters and provides an easy-to-read dashboard for the objects in your clusters. A marquee feature of Octant is its ability to show your objects and their relations in a graph format:
 
 ![Octant Resource Viewer Graph Example](octant-resource-viewer-graph-intro-example.png)
 
 Octant aims to be developer-centric. It is designed to help application developers (who may not be familiar with Kubernetes) better understand how their applications are deployed and troubleshoot issues when they arise.
 
-### In this Guide
+### In This Guide
 
 This guide will explore a few ways to use Octant with some example software deployments:
 
@@ -39,7 +39,7 @@ This guide assumes familiarity with the Kubernetes concepts outlined in Linode's
 
 ## Before you Begin
 
-The examples in this guide have been tested on a cluster running on Linode with Linode's [CCM](/docs/applications/containers/kubernetes/kubernetes-reference/#linode-cloud-controller-manager) and [CSI](/docs/applications/containers/kubernetes/kubernetes-reference/#container-storage-interface) plugins installed. If you would like to install these examples as well, a cluster made with [k8s-alpha CLI](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) will meet these criteria.
+The examples in this guide have been tested on a cluster running with Linode with Linode's [CCM](/docs/applications/containers/kubernetes/kubernetes-reference/#linode-cloud-controller-manager) and [CSI](/docs/applications/containers/kubernetes/kubernetes-reference/#container-storage-interface) plugins installed. If you would like to install these examples as well, a cluster made with [k8s-alpha CLI](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) will meet these criteria.
 
 {{< caution >}}
 These examples will create billable services. To stop billing for these services after reading the guide, be sure to read the tear-down instructions at the end of each section. If you created a new cluster for this guide, you can remove the cluster's Nodes from the [Linode Cloud Manager](https://cloud.linode.com).
@@ -76,9 +76,11 @@ Alternative installation instructions are available in the project's [README](ht
 
         octant
 
-1. If it starts succesfully, you should see a message similar to:
+1. If it starts successfully, you should see a message similar to:
 
     {{< output >}}
+...
+
 Dashboard is available at http://127.0.0.1:7777
 {{< /output >}}
 
@@ -88,11 +90,11 @@ If it does not start successfully, check that you can connect to your cluster wi
     kubectl get pods
 {{< /note >}}
 
-1. Load the dashboard address (e.g. `http://127.0.0.1:7777`) in your browser. You should see the Octant dashboard.
+1. The dashboard may load automatically in your browser, or you can load the dashboard address (e.g. `http://127.0.0.1:7777`) in your browser if it does not. You should see the Octant dashboard.
 
 ## Navigating the Interface
 
-The interfaces that Octant provides are meant to be a complement, and not a replacement for kubectl. When using Octant, you may find that you sometimes need to return to kubectl to perform certan actions. Still, the Octant dashboard will serve as a helpful overview when inspecting your cluster.
+The interfaces that Octant provides are meant to be a complement, and not a replacement, for kubectl. When using Octant, you may find that you sometimes need to return to kubectl to perform certan actions. Still, the Octant dashboard will serve as a helpful overview when inspecting your cluster.
 
 {{< note >}}
 The cluster objects visible in the following screenshots were created by installing the [Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) for the [Ghost](https://ghost.org) blogging software. The [How to Install Apps on Kubernetes with Helm](/docs/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) guide outlines how to install this software.
@@ -102,7 +104,7 @@ The cluster objects visible in the following screenshots were created by install
 
     [![Octant Cluster Overview](octant-cluster-overview.png)](octant-cluster-overview.png)
 
-    The left navigation will display a heirarchy of the objects that can be viewed, and the right column will display your objects. In the right corner of the top navigation, you can quickly switch between your workstation's cluster contexts. The top navigation also allows you to change betweeen cluster namespaces, and to filter your objects by label.
+    The left navigation will display a hierarchy of the objects that can be viewed, and the right column will display your objects. In the right corner of the top navigation, you can quickly switch between your workstation's cluster contexts. The top navigation also allows you to change between cluster namespaces, and to filter your objects by label.
 
 - Consider the Services item in the left navigation. When clicked on, only your Services will appear in a table to the right:
 
@@ -122,7 +124,7 @@ The cluster objects visible in the following screenshots were created by install
 Multiple labels can be selected at the same time.
 {{< /note >}}
 
-- This filter will persist across all other views. For examplle, if you navigate to the Pods view, only Pods with the `release:my-blog` label will be shown. To clear your filters, click the **clear filters** link under the filter dropdown in the top navigation:
+- This filter will persist across all other views. For example, if you navigate to the Pods view, only Pods with the `release:my-blog` label will be shown. To clear your filters, click the **clear filters** link under the filter dropdown in the top navigation:
 
     [![Octant Filter Menu - Clear Filters](octant-clear-filters.png)](octant-clear-filters.png)
 
@@ -176,7 +178,7 @@ To get a better sense of how Octant can assist with troubleshooting software dep
 
 Your colleague Nathan is learning Kubernetes, and he's deploying a "Hello World" Node.js application as a way of testing his knowledge. You offer to install the application on your cluster to follow along with his work.
 
-### Install the Nodejs Application
+### Install the Node.js Application
 
 1. Nathan has uploaded a Docker image for the application to Docker Hub under the name `nmelehan/hello-world:1.0`. He also tells you that the Kubernetes manifest for the application is hosted here: [release-1.0.yaml](release-1.0.yaml). Download the file and apply it to your cluster with kubectl:
 
@@ -201,7 +203,7 @@ deployment.apps/hello-world-deployment created
 
     The three green dots indicate that three Pods were created that match the selector for the Service. Clicking on each will navigate to that Pod's detail view.
 
-### Update the Nodejs Application
+### Update the Node.js Application
 
 1. Nathan tells you that he has updated the application to return "Hello Octant" instead of "Hello World", and he notes that the new Docker Hub image is named `nmelehan/hello-world:2.0`. The new Kubernetes manifest is here: [release-2.0.yaml](release-2.0.yaml). Download the manifest and apply it to your cluster with kubectl:
 
