@@ -17,6 +17,7 @@ Aho
 ahvz
 ajp
 aker
+alef
 alexey
 alives
 allmasquerade
@@ -101,6 +102,7 @@ bitrate
 blocklists
 blockwise
 bluehost
+bookinfo
 boolstyle
 boonex
 bootable
@@ -265,6 +267,7 @@ dbfiles
 dbname
 dbserver
 dcs
+deallocation
 deathmatch
 debconf
 declaratively
@@ -492,6 +495,7 @@ greenbone
 greylist
 greylisting
 griefing
+griesemer
 groot
 grsecurity
 gsa
@@ -557,6 +561,7 @@ hybla
 hyperefficient
 hypervisor
 hypervisors
+Istio
 i386
 iaas
 icann
@@ -625,6 +630,7 @@ iso
 isoformat
 isp
 issuewild
+istioctl
 iterable
 itk
 java6
@@ -1074,6 +1080,7 @@ pritunl
 procfile
 procmail
 procs
+productpage
 prosodyctl
 proto
 proxied
@@ -1128,6 +1135,7 @@ recursing
 recv
 red5
 reddit
+redeployable
 redhat
 redir
 redis
@@ -1497,6 +1505,7 @@ v4
 v6
 vagrantfile
 validator
+variadic
 varnishlog
 vcs
 vdev

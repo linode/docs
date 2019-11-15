@@ -44,25 +44,21 @@ Finally, you will need to locate your Postfix log. On most CentOS systems, this 
 
 In this section, you will install and configure Pflogsumm.
 
-1.  Move to the `/usr/local` directory:
+1.  Use **wget** to download Pflogsumm at `/usr/local` directory:
 
-        sudo cd /usr/local/
+        sudo wget -O http://jimsun.linxnet.com/downloads/pflogsumm-1.1.3.tar.gz /usr/local/pflogsumm-1.1.3.tar.gz
 
-2.  Use **curl** to download Pflogsumm:
+2.  Expand the files:
 
-        sudo curl -O http://jimsun.linxnet.com/downloads/pflogsumm-1.1.3.tar.gz
+        sudo tar -xzf /usr/local/pflogsumm-1.1.3.tar.gz
 
-3.  Expand the files:
+3.  Rename the Pflogsumm directory:
 
-        sudo tar -xzf pflogsumm-1.1.3.tar.gz
+        sudo mv /usr/local/pflogsumm-1.1.3 /usr/local/pflogsumm
 
-4.  Rename the Pflogsumm directory:
+4.  Make the Pflogsumm directory executable:
 
-        sudo mv pflogsumm-1.1.3 pflogsumm
-
-5.  Make the Pflogsumm directory executable:
-
-        sudo chmod +x pflogsumm/pflogsumm.pl
+        sudo chmod a+x /usr/local/pflogsumm/pflogsumm.pl
 
 ## Testing
 
