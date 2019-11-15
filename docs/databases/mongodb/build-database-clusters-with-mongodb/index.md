@@ -6,11 +6,12 @@ description: 'Configure MongoDB for use in clustered environments.'
 keywords: ["mongodb", "nosql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['databases/mongodb/clusters/']
-modified: 2017-02-27
+modified: 2019-11-15
 modified_by:
-  name: Phil Zona
+  name: Linode
 published: 2010-09-30
-title: Build Database Clusters with MongoDB
+title: How To Build Database Clusters with MongoDB
+h1_title: Building Database Clusters with MongoDB
 external_resources:
  - '[MongoDB Documentation for Replica Sets](https://docs.mongodb.com/manual/reference/replica-configuration/)'
  - '[MongoDB Documentation for Master-Slave Replication](https://docs.mongodb.com/manual/core/master-slave/)'
