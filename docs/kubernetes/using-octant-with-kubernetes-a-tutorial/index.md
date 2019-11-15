@@ -35,12 +35,12 @@ This guide will explore a few ways to use Octant with some example software depl
 - A [troubleshooting thought experiment](#troubleshooting-with-octant) will show how Octant can make discovering issues in your cluster easier.
 
 {{< note >}}
-This guide assumes familiarity with the Kubernetes concepts outlined in Linode's [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/). If you have never set up a Kubernetes cluster before, it's also recommended that you do so to get the most out of this guide. The [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide describes a one-line command for generating a cluster.
+This guide assumes familiarity with the Kubernetes concepts outlined in Linode's [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes). If you have never set up a Kubernetes cluster before, it's also recommended that you do so to get the most out of this guide. The [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide describes a one-line command for generating a cluster.
 {{< /note >}}
 
 ## Before you Begin
 
-The examples in this guide have been tested on a cluster running with Linode with Linode's [CCM](/docs/applications/containers/kubernetes/kubernetes-reference/#linode-cloud-controller-manager) and [CSI](/docs/applications/containers/kubernetes/kubernetes-reference/#container-storage-interface) plugins installed. If you would like to install these examples as well, a cluster made with [k8s-alpha CLI](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) will meet these criteria.
+The examples in this guide have been tested on a cluster running with Linode with Linode's [CCM](/docs/kubernetes/kubernetes-reference/#linode-cloud-controller-manager) and [CSI](/docs/kubernetes/kubernetes-reference/#container-storage-interface) plugins installed. If you would like to install these examples as well, a cluster made with [k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) will meet these criteria.
 
 {{< caution >}}
 These examples will create billable services. To stop billing for these services after reading the guide, be sure to read the tear-down instructions at the end of each section. If you created a new cluster for this guide, you can remove the cluster's Nodes from the [Linode Cloud Manager](https://cloud.linode.com).
@@ -95,10 +95,10 @@ If it does not start successfully, check that you can connect to your cluster wi
 
 ## Navigating the Interface
 
-The interfaces that Octant provides are meant to be a complement, and not a replacement, for kubectl. When using Octant, you may find that you sometimes need to return to kubectl to perform certan actions. Still, the Octant dashboard will serve as a helpful overview when inspecting your cluster.
+The interfaces that Octant provides are meant to be a complement, and not a replacement, for kubectl. When using Octant, you may find that you sometimes need to return to kubectl to perform certain actions. Still, the Octant dashboard will serve as a helpful overview when inspecting your cluster.
 
 {{< note >}}
-The cluster objects visible in the following screenshots were created by installing the [Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) for the [Ghost](https://ghost.org) blogging software. The [How to Install Apps on Kubernetes with Helm](/docs/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) guide outlines how to install this software.
+The cluster objects visible in the following screenshots were created by installing the [Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) for the [Ghost](https://ghost.org) blogging software. The [How to Install Apps on Kubernetes with Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) guide outlines how to install this software.
 {{< /note >}}
 
 - When first viewing the dashboard, a list of all of your cluster objects will be shown:
@@ -251,6 +251,10 @@ The Deployment keeps the older ReplicaSet and Pods running in place until the ne
 
         kubectl logs hello-world-deployment-7b69c98754-f4zk5 --previous=true
 
+    {{< note >}}
+Replace the Pod name above with the name of yours.
+{{< /note >}}
+
     {{< output >}}
 /usr/src/app/server.js:7
   res.send('Hello Octant);
@@ -271,7 +275,7 @@ SyntaxError: Invalid or unexpected token
 
         kubectl apply -f release-3.0.yaml
 
-1. If you return to the external IP for the application in your browser, it should now display "Hello Octant".  As well, the cells in Octant's Resource Viewer graph should all be colored green.
+1. If you return to the external IP for the application in your browser, it should now display "Hello Octant". The cells in Octant's Resource Viewer graph should all be colored green as well.
 
 ### Troubleshooting Example Tear-Down
 
