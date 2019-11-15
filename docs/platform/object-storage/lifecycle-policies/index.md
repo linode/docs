@@ -110,7 +110,7 @@ Other actions can also be specified in a rule:
     {{< file "lifecycle_policy_multipart_upload.xml" xml >}}
 <LifecycleConfiguration>
     <Rule>
-        <ID>delete-prior-versions</ID>
+        <ID>delete-incomplete-multipart-uploads</ID>
         <Prefix></Prefix>
         <Status>Enabled</Status>
         <AbortIncompleteMultipartUpload>
