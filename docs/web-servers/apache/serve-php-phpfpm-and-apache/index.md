@@ -240,7 +240,7 @@ Timeout value on `ProxySet` directive must match `max_execution_time` value on `
 
     Now try to visit the script from uploads URL. Apache should return `403 Forbidden` page:
 
-    ![403 Forbidden error on PHP uploads URL](404-error-on-uploads-PHP-request.png)
+    ![403 Forbidden error on PHP uploads URL](403-error-on-uploads-PHP-request.png)
 
 9.  Once all done, delete the test script as it contains system configurations, which should not be known to untrusted users:
 
