@@ -5,11 +5,12 @@ author:
 description: 'Install MongoDB for document-oriented data storage on CentOS 7.'
 keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-12-30
+modified: 2019-11-15
 modified_by:
-  name: Phil Zona
+  name: Linode
 published: 2016-12-30
-title: 'Install MongoDB on CentOS 7'
+title: 'How To Install MongoDB on CentOS 7'
+h1_title: 'Installing MongoDB on CentOS 7'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](https://www.mongodb.com/)'

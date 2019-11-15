@@ -9,7 +9,8 @@ modified: 2016-12-30
 modified_by:
   name: Phil Zona
 published: 2016-05-20
-title: 'Install MongoDB on Ubuntu 16.04 (Xenial)'
+title: 'How To Install MongoDB on Ubuntu 16.04 (Xenial)'
+h1_title: 'Installing MongoDB on Ubuntu 16.04 (Xenial)'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
