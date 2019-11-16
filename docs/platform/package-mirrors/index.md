@@ -51,7 +51,7 @@ For a Ubuntu system follow the instructions below:
 
     <http://mirrors.linode.com/ubuntu/>
 
-3.  Do not modify lines containing the address <http://security.ubuntu.com/ubuntu/>.
+3.  Do not modify lines containing the address <http://security.ubuntu.com/ubuntu/>. These lines contain security updates for packages.
 
 4.  Save and exit the `sources.list` file.
 
@@ -67,7 +67,7 @@ For a Debian system follow the instructions below:
 
     <http://mirrors.linode.com/debian/>
 
-3.  Do not modify lines containing the address <http://security.debian.org/>.
+3.  Do not modify lines containing the address <http://security.debian.org/>. These lines contains security updates for packages.
 
 4.  Save and exit the `sources.list` file.
 
