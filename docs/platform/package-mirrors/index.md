@@ -75,7 +75,7 @@ For a Debian system follow the instructions below:
 
 For a CentOS system follow the instructions below:
 
-1.  Edit the `fastestmirror.conf` file with the following command:
+1.  By default, `yum` will try using fastest mirror available. This need to be disabled to use Linode mirror. Edit the `fastestmirror.conf` file with the following command:
 
         sudo nano /etc/yum/pluginconf.d/fastestmirror.conf
 
