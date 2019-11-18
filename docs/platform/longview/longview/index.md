@@ -7,7 +7,6 @@ og_description: "Learn how to use Longview, Linode's system data graphing servic
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['longview/', 'uptime/longview/']
-modified: 2019-11-05
 modified_by:
   name: Linode
 title: What is Longview and How to Use it
@@ -108,7 +107,7 @@ deb http://apt-longview.linode.com/ xenial main
         sudo apt-get update
         sudo apt-get install linode-longview
 
-7.  Return to your Longview client's overview page. It can take several minutes for data to start showing in the Manager but once it does, you’ll see the graphs and charts populating with your Linode’s metrics.
+7.  Return to your Longview client's overview page in the Linode Manager. It can take several minutes for data to start showing in the Manager. Once it does, you’ll see the graphs and charts populating with your Linode’s metrics.
 
 ### Longview Client Labels
 
@@ -261,25 +260,39 @@ Restart the Longview client in debug mode for increased logging verbosity.
 
 ### Firewall Rules
 
-If your Linode has a firewall, it must allow communication with Longview's aggregation host at `longview.linode.com`. You can view your firewall rules with one of the commands below, depending on the firewall controller used by your Linux distribution.
+If your Linode has a firewall, it must allow communication with Longview's aggregation host at `longview.linode.com`. You can view your firewall rules with one of the commands below, depending on the firewall controller used by your Linux distribution:
 
-**firewalld**
+-   **firewalld**
 
-    sudo firewall-cmd --list-all
+        sudo firewall-cmd --list-all
 
-**iptables**
+    {{< note >}}
+Review our [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/) guide for more help with FirewallD.
+{{< /note >}}
 
-    sudo iptables -S
+-   **iptables**
 
-**ufw**
+        sudo iptables -S
 
-    sudo ufw show added
+    {{< note >}}
+Review our [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide for more help with iptables.
+{{< /note >}}
 
-If the output of those commands show no rules for the Longview domain, you must add them. A sample iptables rule would be the following:
+-   **ufw**
+
+        sudo ufw show added
+
+    {{< note >}}
+Review our [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) guide for more help with UFW.
+{{< /note >}}
+
+If the output of those commands show no rules for the Longview domain (or for `96.126.119.66`, which is the IP for the Longview domain), you must add them. A sample iptables rule that allows outbound HTTPS traffic to Longview would be the following:
 
     iptables -A OUTPUT -p tcp --dport 443 -d longview.linode.com -j ACCEPT
 
-See our [firewall documentation](/docs/security/firewalls/) for more information.
+{{< note >}}
+If you use iptables, you should also make sure to persist any of your firewall rule changes. Otherwise, your changes will not be enforced if your Linode is rebooted. Review the [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables/#introduction-to-iptables-persistent) section of our iptables guide for help with this.
+{{< /note >}}
 
 ### Verify API key
 

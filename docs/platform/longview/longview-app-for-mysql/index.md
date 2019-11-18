@@ -6,12 +6,11 @@ description: Longview App for MySQL
 keywords: ["Longview", " MySQL", " statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['longview/longview-for-mysql/']
-modified: 2019-11-05
 modified_by:
   name: Linode
 published: 2013-11-06
-title: How to use the Longview for MySQL App
-h1_title: Using the Longview for MySQL App on Linode
+title: How to Use the Longview for MySQL App
+h1_title: Use the Longview for MySQL App on Linode
 ---
 
 Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.
@@ -162,9 +161,21 @@ If you've added the credentials to MySQL and it still doesn't work, double-check
 
 ### Unable to Connect to the Database, No Credentials Found
 
-If you receive the error `Unable to connect to the database, no credentials found`, this indicates that you need to add a MySQL user for Longview, and make sure the Longview configuration file has the appropriate credentials. See the [manual configuration](#manual-configuration-all-distributions) section for details.
+-   You may receive this error:
 
-You may also encounter the error message `Unable to connect to the database: Authentication plugin 'sha256_password' cannot be loaded: /usr/lib/x86_64-linux-gnu/mariadb18/plugin/sha256_password.so: cannot open shared object file: No such file or directory`. If this is the case, follow the above instructions for manual configuration.
+    {{< output >}}
+Unable to connect to the database, no credentials found.
+{{< /output >}}
+
+    This indicates that you need to add a MySQL user for Longview, and make sure the Longview configuration file has the appropriate credentials. See the [manual configuration](#manual-configuration-all-distributions) section for details.
+
+-   You may also encounter this error message:
+
+    {{< output>}}
+Unable to connect to the database: Authentication plugin 'sha256_password' cannot be loaded: /usr/lib/x86_64-linux-gnu/mariadb18/plugin/sha256_password.so: cannot open shared object file: No such file or directory.
+{{< /output >}}
+
+    If this is the case, follow the above instructions for [manual configuration](#manual-configuration-all-distributions).
 
 ### Unable to Connect to the Database
 
