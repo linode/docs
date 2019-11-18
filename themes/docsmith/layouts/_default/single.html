@@ -23,6 +23,11 @@
             {{ partial "deprecated" . }}
             {{ partial "cloud_manager_link" . }}
             {{ partial "dedicated_cpu_link" . }}
+            {{ if not (eq .Params.show_social_image_in_article false) }}
+            {{ with .Params.image }}
+            <img src="{{ . }}" alt="Marquee image for {{ $.Params.title }}" title="Marquee image for {{ $.Params.title }}" />
+            {{ end }}
+            {{ end }}
             {{ .Content }}
             {{ partial "more" . }}
             {{ partial "community_link" }}

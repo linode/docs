@@ -214,6 +214,12 @@
     "type": "bool",
     "description": "If false, publishing or updates to this guide will not be shown in the RSS feed."
   },
+  "show_social_image_in_article": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If false, any social media image set with the image frontmatter field will not be displayed in the guide."
+  },
   "slug": {
     "elements": false,
     "required": false,
@@ -231,6 +237,14 @@
     "required": false,
     "type": "text",
     "description": "Short version of title to be displayed in a front page icon."
+  },
+  "twitter": {
+    "elements": [
+      "card"
+    ],
+    "required": false,
+    "type": "dict",
+    "description": "Determines which type of Twitter card summary to display when sharing a guide."
   },
   "type": {
     "elements": false,
