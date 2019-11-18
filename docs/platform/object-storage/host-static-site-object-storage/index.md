@@ -293,6 +293,18 @@ It may take a minute or two after your s3cmd sync completes for the page to appe
 
 ## (Optional) Next Steps
 
-After uploading your static site to Linode Object Storage, you may want to use a custom domain for your site. To do this, you can add a CNAME entry to your domain's DNS records that aliases it to your Object Storage bucket's website URL. To learn about managing DNS records on Linode, see the [DNS Manager](/docs/platform/manager/dns-manager/) and [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guides.
+After uploading your static site to Linode Object Storage, you may want to use a custom primary domain for your site. To do this, you can add a CNAME entry to your domain's DNS records that aliases it to your Object Storage bucket's website URL. For example, if you have `www.mydomain.tld`, your CNAME entry will look like:
+
+        www.mydomain.tld										CNAME	www.mydomain.tld.website-us-east-1.linodeobjects.com
+
+Alternatively, you can freely create a custom subdomain that does not need to match the name of your bucket. For example, if your bucket is named `my-new-bucket`, you could freely create a subdomain as a CNAME like the following:
+
+        subdomain.mydomain.tld										CNAME	www.my-new-bucket.us-east-1.linodeobjects.com
+
+To learn about managing DNS records on Linode, see the [DNS Manager](/docs/platform/manager/dns-manager/) and [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guides.
+
+{{< note >}}
+SSL functionality does not work when using a custom domain, since the certificate is only valid for the website endpoint, not your custom domain. You will see a certificate warning thrown if you proceed to access your custom domain via `https`.
+{{< /note >}}
 
 As noted before, it's possible to trigger automatic deployments to the Object Storage service when you push new content updates to GitHub or GitLab. This is done by leveraging a CI/CD (continuous integration/continuous delivery) tool like [Travis CI](https://travis-ci.org). Essentially, you would build your Hugo site within the Travis environment and then run the `s3cmd sync` command from it to your bucket.
