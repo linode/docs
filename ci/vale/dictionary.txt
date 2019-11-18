@@ -1320,7 +1320,9 @@ stalkyard
 stallman
 starttls
 statusbar
+stdin
 stderr
+stdout
 steamlab
 stopwait
 stopword
