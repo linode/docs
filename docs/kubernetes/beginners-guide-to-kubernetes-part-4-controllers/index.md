@@ -21,7 +21,7 @@ aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-part
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
 {{< note >}}
-This is the fourth guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+This is the fourth guide in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 
 A Controller is a control loop that continuously watches the Kubernetes API and tries to manage the desired state of certain aspects of the cluster. There are a number of controllers. Below is a short reference of the most popular controllers you might interact with.
@@ -223,14 +223,14 @@ To delete the Job, and its Pod, issue the `delete` command:
 
 There are other controllers not listed in this guide that you may find useful. Visit the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/#kubernetes-objects) for more information.
 
-To continue in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series, visit part 5:
+To continue in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series, visit part 5:
 
- - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/)
+ - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/)
 
- - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
+ - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
 
- - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/)
+ - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/)
 
- - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/) (You Are Here)
+ - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/) (You Are Here)
 
- - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)
+ - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)

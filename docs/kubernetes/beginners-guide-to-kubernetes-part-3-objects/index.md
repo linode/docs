@@ -21,7 +21,7 @@ aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-part
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
 {{< note >}}
-This is the third guide in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+This is the third guide in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 
 In Kubernetes, there are a number of objects that are abstractions of your Kubernetes system's desired state. These objects represent your application, its networking, and disk resources -- all of which together form your application.
@@ -60,7 +60,7 @@ Each manifest has four necessary parts:
 - Metadata about the resource
 - Though not required by all objects, a spec which describes the desired behavior of the resource is necessary for most objects and controllers.
 
-In the case of this example, the API in use is `v1`, and the `kind` is a Pod. The metadata field is used for applying a name, labels, and annotations. Names are used to differentiate resources, while labels are used to group like resources. Labels will come into play more when defining [Services](#services) and [Deployments](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/#deployments). Annotations are for attaching arbitrary data to the resource.
+In the case of this example, the API in use is `v1`, and the `kind` is a Pod. The metadata field is used for applying a name, labels, and annotations. Names are used to differentiate resources, while labels are used to group like resources. Labels will come into play more when defining [Services](#services) and [Deployments](/docs/kubernetes/beginners-guide-to-kubernetes-controllers/#deployments). Annotations are for attaching arbitrary data to the resource.
 
 The spec is where the desired state of the resource is defined. In this case, a Pod with a single Apache container is desired, so the `containers` field is supplied with a name, 'apache-container', and an image, the latest version of Apache. The image is pulled from [Docker Hub](https://hub.docker.com), as that is the default container registry for Kubernetes.
 
@@ -244,14 +244,14 @@ For more information on Namespaces, visit the [Kubernetes Namespaces API documen
 
 ## Next Steps
 
-To continue in the [Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes) series, visit part 4:
+To continue in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series, visit part 4:
 
- - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/)
+ - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/)
 
- - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
+ - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
 
- - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/) (You Are Here)
+ - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/) (You Are Here)
 
- - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/)
+ - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/)
 
- - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)
+ - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)
