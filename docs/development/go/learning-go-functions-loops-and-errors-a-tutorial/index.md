@@ -5,7 +5,7 @@ author:
 description: 'An introduction to the popular open source Go programming language. This guide is a quick introduction on how to execute Go code, how to use loops, how to create functions, and how to handle errors.'
 keywords: ["Go", "Golang", "functions", "loops"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-11-12
+published: 2019-11-13
 modified_by:
   name: Linode
 title: 'Learning Go Functions, Loops, and Errors - A Tutorial'
@@ -21,9 +21,10 @@ external_resources:
 
 ## Introduction
 
-[Go](https://golang.com) is a popular open source programming language. It's a modern generic purpose programming language that began as an internal Google project and was officially announced at the end of 2009. Go was inspired by many other programming languages including C, Pascal, Alef, and Oberon. Its spiritual fathers were Robert Griesemer, Ken Thomson, and Rob Pike, who all designed Go as a language for professional programmers that want to build reliable, robust, and efficient software. Apart from its syntax and its standard functions, Go comes with a rich standard library.
+[Go](https://golang.com) is a modern, open source, and general-purpose programming language that began as an internal Google project and was officially announced at the end of 2009. Go was inspired by many other programming languages including C, Pascal, Alef, and Oberon. Its spiritual fathers were Robert Griesemer, Ken Thomson, and Rob Pike, who all designed Go as a language for professional programmers that want to build reliable, robust, and efficient software. Apart from its syntax and its standard functions, Go comes with a rich standard library.
 
-In this guide you will find:
+### In this Guide
+This guide will cover the following topics:
 
 - A quick introduction on [how to execute Go code](#executing-go-code)
 - How to [use loops](#loops-in-go)
@@ -50,11 +51,11 @@ Although Go is not perfect, it has many advantages, including the following:
 
 - It is a modern programming language that was made by experienced developers for developers.
 - The code is easy to read.
-- Go keeps concepts orthogonal, or simple, because a few orthogonal features work better that many overlapping ones.
+- Go keeps concepts orthogonal, or simple, because a few orthogonal features work better than many overlapping ones.
 - The compiler prints practical warnings and error messages that help you solve the actual problem.
-- It has support for Procedural, Concurrent, and Distributed Programming.
-- Go supports Garbage Collection so you do not have to deal with memory allocation and deallocation.
-- Go can be used to build Web applications and provides a simple Web server for testing purposes.
+- It has support for [procedural](https://en.wikipedia.org/wiki/Procedural_programming), [concurrent](https://en.wikipedia.org/wiki/Concurrent_computing), and [distributed programming](https://en.wikipedia.org/wiki/Distributed_computing).
+- Go supports [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) so you do not have to deal with memory allocation and deallocation.
+- Go can be used to build web applications and it provides a simple web server for testing purposes.
 - The standard Go library offers many packages that simplify the work of the developer.
 - It uses static linking by default, which means that the produced binary files can be easily transferred to other machines with the same OS and architecture. As a consequence, once a Go program is compiled successfully and the executable file is generated, the developer does not need to worry about dependencies and library versions.
 - The code is portable, especially among UNIX machines.
@@ -63,7 +64,7 @@ Although Go is not perfect, it has many advantages, including the following:
 
 ## Executing Go code
 
-There are two kinds of Go programs: autonomous programs that are executable, and Go libraries. Go does not care about an autonomous program's file name as long as the package name is `main` and there is a single `main()` function in it, because the `main()` function is where the program execution begins. As a result, you cannot have multiple `main()` functions in the files of a single project.
+There are two kinds of Go programs: autonomous programs that are executable, and Go libraries. Go does not care about an autonomous program's file name. What matters is that the package name is `main` and that there is a single `main()` function in it. This is because the `main()` function is where program execution begins. As a result, you cannot have multiple `main()` functions in the files of a single project.
 
 ### A Simple Go program
 
@@ -81,35 +82,51 @@ func main() {
 }
 {{< /file >}}
 
-All Go code is delivered within Go packages and for executable programs the name of the package should be `main`. Package declarations begin with the `package` keyword. Executable programs should have a function named `main()` without any function parameters. Function definitions begin with the `func` keyword. Go packages might include `import` statements for importing Go packages. However, Go demands that you use some functionality from each one of the packages that you import. Note that there is a way to bypass this rule, however, it is considered a bad practice to do this.
+* All Go code is delivered within Go packages. For executable programs, the package name should be `main`. Package declarations begin with the `package` keyword.
 
-The `helloworld.go` file above imports the `fmt` package and uses the `fmt.Println()` function from that package. Note that all exported package functions begin with an uppercase letter. This follows the Go rule: if you export something outside the current package, that should begin with an uppercase letter. This rule applies even if the field of the Go structure or the global variable is included in a Go package.
+* Executable programs should have a function named `main()` without any function parameters. Function definitions begin with the `func` keyword.
 
-Additionally, Go statements do not *need* to end with a semicolon. However, you are free to use semicolons if you wish. For more information on formatting with curly braces, [see the section below](/docs/development/go/learning-go-functions-loops-and-errors-a-tutorial/#how-to-format-curly-braces-in-go). With all this information in mind, execute `helloworld.go` with the `go run` command:
+* Go packages might include `import` statements for importing Go packages. However, Go demands that you use some functionality from each one of the packages that you import. There is a way to bypass this rule, however, it is considered a bad practice to do this.
 
-    go run helloworld.go
+    The `helloworld.go` file above imports the `fmt` package and uses the `fmt.Println()` function from that package.
+
+    {{< note >}}
+  All exported package functions begin with an uppercase letter. This follows the Go rule: if you export something outside the current package, it should begin with an uppercase letter. This rule applies even if the field of the Go structure or the global variable is included in a Go package.
+    {{</ note >}}
+
+* Go statements do not *need* to end with a semicolon. However, you are free to use semicolons if you wish. For more information on formatting with curly braces, [see the section below](#formatting-curly-braces).
+
+1. Now that you better understand the `helloworld.go` program, execute it with the `go run` command:
+
+        go run helloworld.go
+
+    You will see the following output:
 {{< output >}}
 Hello World!
 {{< /output >}}
 
-This is the simplest of two ways that you can execute Go code. The `go run` command compiles the code and creates a temporary executable file that is automatically executed and then it deletes that temporary executable file. This is similar to using a scripting programming language.
+    This is the simplest of two ways that you can execute Go code. The `go run` command compiles the code and creates a temporary executable file that is automatically executed and then it deletes that temporary executable file. This is similar to using a scripting programming language.
 
-The second method is to use the command `go build <source-file-to-compile>`:
+1. The second method to execute Go code is to use the `build` command. Run the following command to use this method:
 
-    go build helloworld.go
+        go build helloworld.go
 
-The result of that command is a binary executable file that you have to manually execute. This method is similar to the way you execute C code on a UNIX machine. The executable file is named after the Go source filename, which means that in this case the result will be an executable file named `helloworld`. Go creates *statically linked executable files* that have no dependencies to external libraries. In this case, executing `helloworld` will create the following output:
+    The result of that command is a binary executable file that you have to manually execute. This method is similar to the way you execute C code on a UNIX machine. The executable file is named after the Go source filename, which means that in this case the result will be an executable file named `helloworld`. Go creates *statically linked executable files* that have no dependencies to external libraries.
 
-    ./helloworld
+1. Execute the `helloworld` file:
+
+        ./helloworld
+
+    You will see the following output:
 {{< output >}}
 Hello World!
 {{< /output >}}
 
-{{< note >}}
-The `go run` command is what is usually used while experimenting and developing new Go projects. However, if you need to transfer an executable file to another system with the same architecture, you have to use `go build` first.
-{{< /note >}}
+    {{< note >}}
+The `go run` command is usually used while experimenting and developing new Go projects. However, if you need to transfer an executable file to another system with the same architecture, you should use `go build`.
+    {{< /note >}}
 
-### How to Format Curly Braces in Go
+### Formatting Curly Braces
 
 The following version of the "Hello World" program will not compile:
 
@@ -126,26 +143,28 @@ func main()
 }
 {{< /file >}}
 
-If you try to execute the program above, you will get the following error message from the Go compiler:
+1. Execute the program above, and observer the error message generated by the compiler:
 
-    go run curly.go
+        go run curly.go
 {{< output >}}
 # command-line-arguments
 ./curly.go:7:6: missing function body
 ./curly.go:8:1: syntax error: unexpected semicolon or newline before {
 {{< /output >}}
 
-The official explanation for this error message is that Go requires the use of semicolons as statement terminators in many contexts and the compiler automatically inserts the required semicolons when it thinks that they are necessary. Putting the opening curly brace (`{`) in its own line makes the Go compiler look for a semicolon at the end of the previous line (`func main()`), which is the cause of the error message.
+* This error message is generated because Go requires the use of semicolons as statement terminators in many contexts and the compiler automatically inserts the required semicolons when it thinks that they are necessary. Putting the opening curly brace (`{`) on its own line makes the Go compiler look for a semicolon at the end of the previous line (`func main()`), which is the cause of the error message.
 
-Therefore, there is only one way to format curly braces in Go. The opening brace must not appear on it's own line. However, you must use curly braces even if a code block, such as the body of a `for` loop, contains a single Go statement. This is not illustrated in `curly.go` but is demonstrated below in the [Loops in Go](#loops-in-go) section.
+* There is only one way to format curly braces in Go; **the opening curly brace must not appear on it's own line**. Additionally, you must use curly braces even if a code block contains a single Go statement, like in the body of a `for` loop. You can see an example of this in the [first version of the `helloworld.go`](#a-simple-go-program) program or in the [Loops in Go](#loops-in-go) section.
 
-## About := and =
+### The Assignment Operator and Short Variable Declarations
 
-Go supports the `:=` and `=` operators. However, they are used in different situations. `:=` is part of the *short variable declarations clause*. With `:=` you can declare a variable and assign a value to it at the same time. The type of the variable is *inferred* from the given value.
+* Go supports assignment (`=`) operators and short variable declarations (`:=`).
+* With `:=` you can declare a variable and assign a value to it at the same time. The type of the variable is *inferred* from the given value.
+* You can use `=` in two cases. First, to assign a new value to an existing variable and second, to declare a new variable, provided that you also give its type.
 
-`=` is the assignment operator. You can use `=` in two cases. First, to assign a new value to an existing variable and second, to declare a new variable, provided that you also give its type. For example, `var aVariable int = 10`, is equivalent to `aVariable := 10` assuming `aVariable` is an `int`.
+    For example, `var aVariable int = 10`, is equivalent to `aVariable := 10` assuming `aVariable` is an `int`.
 
-Note that when you specifically want to control the type of a variable, it is safer to use `var` and `=` instead of just `:=`.
+* When you specifically want to control a variable's type, it is safer to declare the variable and its type using `var` and then assign a value to it using `=`.
 
 ## Loops in Go
 
@@ -202,16 +221,23 @@ func main() {
 }
 {{< /file >}}
 
-There are two types of `for` loops in Go. Traditional `for` loops that use a control variable initialization, condition, and afterthought; and those that iterate over the elements of a Go data type such as an [array](https://golang.org/doc/effective_go.html#arrays) or a [map](https://golang.org/doc/effective_go.html#maps) using the `range` keyword. Go has no direct support for `while` loops. If you want to use a `while` loop, you can emulate it with a `for` loop.
+* There are two types of `for` loops in Go. Traditional `for` loops that use a control variable initialization, condition, and afterthought; and those that iterate over the elements of a Go data type such as an [array](https://golang.org/doc/effective_go.html#arrays) or a [map](https://golang.org/doc/effective_go.html#maps) using the `range` keyword.
 
-In their simplest form, `for` loops allow you to iterate a predefined number of times, for as long as a condition is valid, or according to a value that is calculated at the beginning of the `for` loop. Such values include the size of a [slice](https://blog.golang.org/go-slices-usage-and-internals) or an array, or the number of keys on a map. However, `range` is more often used for accessing all the elements of a slice, an array, or a map because you do not need to know the object's cardinality in order to process its elements one by one. For simplicity, this example uses an array, and a later example will use a slice.
+* Go has no direct support for `while` loops. If you want to use a `while` loop, you can emulate it with a `for` loop.
 
-You can completely exit a `for` loop using the `break` keyword. The `break` keyword also allows you to create a `for` loop without an exit condition because the exit condition can be included in the code block of the `for` loop. You are also allowed to have multiple exit conditions in a `for` loop. Additionally, you can skip a single iteration of a for loop using the `continue` keyword.
+* In their simplest form, `for` loops allow you to iterate, a predefined number of times, for as long as a condition is valid, or according to a value that is calculated at the beginning of the `for` loop. Such values include the size of a [slice](https://blog.golang.org/go-slices-usage-and-internals) or an array, or the number of keys on a map. However, `range` is more often used for accessing all the elements of a slice, an array, or a map because you do not need to know the object's cardinality in order to process its elements one by one. For simplicity, this example uses an array, and a later example will use a slice.
 
-Executing `loops.go` will generate the following output:
+* You can completely exit a `for` loop using the `break` keyword. The `break` keyword also allows you to create a `for` loop without an exit condition because the exit condition can be included in the code block of the `for` loop. You are also allowed to have multiple exit conditions in a `for` loop.
 
-    go run loops.go
-{{< output >}}
+* You can skip a single iteration of a for loop using the `continue` keyword.
+
+1. Execute the `loops.go` program:
+
+        go run loops.go
+
+    You will see the following output:
+
+    {{< output >}}
 1 2 3 4 5 6 7 8 9 11 12 13 14 15 16 17 18
 10 9 8 7 6 5 4 3 2 1 0
 0 1 2 3 4 5 6 7 8 9 10 11
@@ -220,7 +246,7 @@ index: 1 value:  1
 index: 2 value:  -1
 index: 3 value:  2
 index: 4 value:  -2
-{{< /output >}}
+    {{< /output >}}
 
 ## Functions in Go
 
@@ -293,16 +319,25 @@ func main() {
 }
 {{< /file >}}
 
-The `main()` function takes no arguments and returns no arguments. Once the special function `main()` exits, the program automatically ends. The `doubleSquare()` function requires a single `int` parameter and returns two `int` values, which is defined as `(int, int)`. Notice that all function arguments must have a name – [variadic functions](#variadic-functions) are the only exception to this rule. If a function returns a single value, you do not need to put parenthesis around its type.
+* The `main()` function takes no arguments and returns no arguments. Once the special function `main()` exits, the program automatically ends.
 
-Note that because `namedMinMax()` has named return values in its signature, the `min` and `max` parameters are **automatically returned** in the order in which they were put in the function definition. Therefore, the function does not need to explicitly return any variables or values in its return statement at the end, and does not. `minMax()` function has the same functionality as `namedMinMax()` but it explicitly returns its values demonstrating that both ways are valid.
+* The `doubleSquare()` function requires a single `int` parameter and returns two `int` values, which is defined as `(int, int)`.
 
-Both `square` and `double` variables in `main()` are assigned an *anonymous function*. However, nothing stops you from changing the value of `square`, `double`, or any other variable that holds the result of an anonymous function, afterwards, which means that both variables may have a different value in the future.
+* All function arguments must have a name – [variadic functions](#variadic-functions) are the only exception to this rule.
 
-The output of `functions.go` will resemble the following:
+* If a function returns a single value, you do not need to put parenthesis around its type.
 
-    go run functions.go
-{{< output >}}
+* Because `namedMinMax()` has named return values in its signature, the `min` and `max` parameters are **automatically returned** in the order in which they were put in the function definition. Therefore, the function does not need to explicitly return any variables or values in its return statement at the end, and does not. `minMax()` function has the same functionality as `namedMinMax()` but it explicitly returns its values demonstrating that both ways are valid.
+
+* Both `square` and `double` variables in `main()` are assigned an *anonymous function*. However, nothing stops you from changing the value of `square`, `double`, or any other variable that holds the result of an anonymous function, afterwards. This means that both variables may have a different value in the future.
+
+1. Execute the `functions.go` program.
+
+        go run functions.go
+
+    Your output will resemble the following:
+
+    {{< output >}}
 The square of 10 is 100
 The double of 10 is 20
 20 100
@@ -311,7 +346,7 @@ The double of 10 is 20
 -10 -1
 -10 -1
 -10 -1
-{{< /output >}}
+    {{< /output >}}
 
 ### Variadic functions
 
@@ -351,14 +386,22 @@ func main() {
 }
 {{< /file >}}
 
-The `...` operator used as a prefix to a type like `...int` is called the *pack operator*, whereas the *unpack operator* appends a *slice* like `sliceOfNumbers...`. A slice is a Go data type that is essentially an abstraction of an array of unspecified length. Each variadic function can use the pack operator once. The `oneByOne()` function accepts a single `string` and a variable number of integer arguments using the `sliceOfNumbers` slice. The `varFunc` function accepts a single argument and just calls the `fmt.Println()` function.
 
-Another note about slices: the second call to `oneByOne()` is using a slice. Any changes you make to that slice inside the variadic function will persist after the function exits because this is how slices work in Go.
+* The `...` operator used as a prefix to a type like `...int` is called the *pack operator*, whereas the *unpack operator* appends a *slice* like `sliceOfNumbers...`. A slice is a Go data type that is essentially an abstraction of an array of unspecified length.
 
-The output of `variadic.go` will be as follows:
+* Each variadic function can use the pack operator once. The `oneByOne()` function accepts a single `string` and a variable number of integer arguments using the `sliceOfNumbers` slice.
 
-    go run variadic.go
-{{< output >}}
+* The `varFunc` function accepts a single argument and just calls the `fmt.Println()` function.
+
+* Another note about slices: the second call to `oneByOne()` is using a slice. Any changes you make to that slice inside the variadic function will persist after the function exits because this is how slices work in Go.
+
+1. Execute the `variadic.go` program:
+
+        go run variadic.go
+
+    The output will resemble the following
+
+    {{< output >}}
 [12 3 b]
 Adding numbers...
 0 1     1 2     2 3     3 4     4 5     5 -1     6 10
@@ -366,7 +409,7 @@ Sum: 24
 Adding numbers...
 0 1     1 2     2 3
 [-1000 2 3]
-{{< /output >}}
+    {{< /output >}}
 
 ### Functions and pointer variables
 
@@ -400,17 +443,20 @@ func main() {
 }
 {{< /file >}}
 
-The `getPointer()` function takes a pointer argument to a `float64`, which is defined as `varToPointer *float64`, where `returnPointer()` returns a pointer to an `int`, which is declared as `*int`.
+* The `getPointer()` function takes a pointer argument to a `float64`, which is defined as `varToPointer *float64`, where `returnPointer()` returns a pointer to an `int`, which is declared as `*int`.
 
-The output of `fPointers.go` will resemble the following:
+1. Execute the `fPointers.go` program:
 
-    go run fPointers.go
-{{< output >}}
+        go run fPointers.go
+
+    The output will resemble the following:
+
+    {{< output >}}
 146.8944
 144
 sq value: 100
 sq memory address: 0xc00001a0b8
-{{< /output >}}
+    {{< /output >}}
 
 ### Functions with Functions as Parameters
 
@@ -440,18 +486,25 @@ func main() {
 }
 {{< /file >}}
 
-The `funFun()` function accepts two parameters, a function parameter named `functionName` and an `int` value. The `functionName` parameter should be a function that takes one `int` argument and returns an `int` value.
+* The `funFun()` function accepts two parameters, a function parameter named `functionName` and an `int` value. The `functionName` parameter should be a function that takes one `int` argument and returns an `int` value.
 
-The first `fmt.Println()` call in `main()` uses `funFun()` with `doubleIt` without any parentheses as its first parameter, the second `fmt.Println()` call uses `funFun()` with `squareIt` as its first parameter. In the last `fmt.Println()` statement the implementation of the function parameter is defined inside the call to `funFun()` using an anonymous function.
+* The first `fmt.Println()` call in `main()` uses `funFun()` and passes the `doubleIt` function, without any parentheses, as its first parameter.
 
-Executing `fArgF.go` will generate the following output:
+* The second `fmt.Println()` call uses `funFun()` with `squareIt` as its first parameter.
 
-    go run fArgF.go
-{{< output >}}
+* In the last `fmt.Println()` statement the implementation of the function parameter is defined inside the call to `funFun()` using an anonymous function.
+
+1. Execute the `fArgF.go` program:
+
+        go run fArgF.go
+
+    The output will resemble the following:
+
+    {{< output >}}
 function1: 24
 function2: 144
 Inline 1728
-{{< /output >}}
+    {{< /output >}}
 
 ### Functions Returning Functions
 
@@ -483,25 +536,30 @@ func main() {
 }
 {{< /file >}}
 
-`squareFunction()` returns an anonymous function with the `func() int` signature. As `squareFunction()` is called two times, you will need to use two separate variables, `square1` and `square2` to keep the two return values.
+* `squareFunction()` returns an anonymous function with the `func() int` signature.
 
-Executing `fRetF.go` will generate the following output:
+* As `squareFunction()` is called two times, you will need to use two separate variables, `square1` and `square2` to keep the two return values.
 
-    go run fRetF.go
-{{< output >}}
+1. Execute the `fRetF.go` program:
+
+        go run fRetF.go
+
+    Your output will resemble the following:
+
+    {{< output >}}
 First Call to square1: 1
 Second Call to square1: 4
 First Call to square2: 1
 Third Call to square1: 9
-{{< /output >}}
+    {{< /output >}}
 
-Notice that the values of `square1` and `square2` are not connected even though they both came from `squareFunction()`.
+    Notice that the values of `square1` and `square2` are not connected even though they both came from `squareFunction()`.
 
 ## Errors in Go
 
 *Errors* and *error handling* are two important topics in Go. Go puts so much importance on error messages that it has a dedicated data type for errors, aptly named `error`. This also means that you can easily create your own error messages if you find that what Go gives you is not adequate. You will most likely need to create and handle your own errors when you are developing your own Go packages.
 
-Please note that recognizing an error condition is one task, deciding how to react to an error condition is another. Therefore, some error conditions might require that you immediately stop the execution of the program whereas in other error situations you might just print a warning message and continue.
+Recognizing an error condition is one task, while deciding how to react to an error condition is another task. Therefore, some error conditions might require that you immediately stop the execution of the program, whereas in other error situations, you might just print a warning message and continue.
 
 {{< file "./errors.go" go >}}
 package main
@@ -535,18 +593,23 @@ func main() {
 }
 {{< /file >}}
 
-The `strconv.Atoi()` function tries to convert a string into an integer, provided that the string is a valid integer, and returns two things, an integer value and an `error` variable. If the `error` variable is `nil`, then the conversion was successful and you get a valid integer. The `_` character tells Go to ignore one, as in this case, or more of the return values of a function.
+* The `strconv.Atoi()` function tries to convert a string into an integer, provided that the string is a valid integer, and returns two things, an integer value and an `error` variable. If the `error` variable is `nil`, then the conversion was successful and you get a valid integer. The `_` character tells Go to ignore one, as in this case, or more of the return values of a function.
 
-Most of the time, you need to check whether an error variable is equal to `nil` and then act accordingly. This kind of Go code is very popular in Go programs and you will see it and use it multiple times. What is also presented here is the `errors.New()` function that allows you to create a custom error message and `errors.Error()` function that allows you to convert an `error` variable into a `string` variable.
+* Most of the time, you need to check whether an error variable is equal to `nil` and then act accordingly. This kind of Go code is very popular in Go programs and you will see it and use it multiple times.
 
-Executing `errors.go` will resemble the following output:
+* Also presented here is the `errors.New()` function that allows you to create a custom error message and `errors.Error()` function that allows you to convert an `error` variable into a `string` variable.
 
-    go run errors.go
-{{< output >}}
+1. Execute the `errors.go` program:
+
+        go run errors.go
+
+    Your output will resemble the following:
+
+    {{< output >}}
 !!
 strconv.Atoi: parsing "43W": invalid syntax
-{{< /output >}}
+    {{< /output >}}
 
 ## Summary
 
-In this guide you learned the basics about the Go programming language, how to execute programs, how to write loops, various functions, and how to handle errors.
+In this guide you learned the basics about the Go programming language, how to execute programs, how to write loops, how to handle errors, and you saw examples for various function types.
