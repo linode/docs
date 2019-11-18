@@ -16,6 +16,7 @@ external_resources:
 - '[Istio](https://istio.io)'
 - '[Istio Mesh Security](https://istio.io/docs/ops/security/)'
 - '[Istio Troubleshooting](https://istio.io/docs/ops/troubleshooting/)'
+aliases: ['applications/containers/kubernetes/how-to-deploy-istio-with-kubernetes/']
 ---
 
 [Istio](https://istio.io) is a service mesh, or a network of microservices, that can handle tasks such as load balancing, service-to-service authentication, monitoring, and more. It does this by deploying sidecar proxies to intercept network data, which causes minimal disruption to your current application.
