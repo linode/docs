@@ -13,6 +13,8 @@ aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes/','a
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
+twitter:
+  card: summary_large_image
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
