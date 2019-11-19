@@ -99,13 +99,13 @@ const nightmare = Nightmare({show: true});
 
 nightmare
     .goto('https://www.linode.com/docs')
-    .insert('#gsc-i-id1', 'ubuntu')
-    .click('input.gsc-search-button-v2')
-    .wait('#search-results')
+    .insert('.ais-SearchBox-input', 'ubuntu')
+    .click('.ais-SearchBox-submit')
+    .wait('.ais-Hits-list')
     .evaluate(function() {
             let searchResults = [];
 
-            const results =  document.querySelectorAll('h6.library-search-result-title a');
+            const results =  document.querySelectorAll('a.c-search__result__link');
             results.forEach(function(result) {
                     let row = {
                                     'title':result.innerText,
