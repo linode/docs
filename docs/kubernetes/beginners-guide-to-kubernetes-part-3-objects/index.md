@@ -85,7 +85,7 @@ To quickly view which Node the Pod exists on, issue the `get pods` command with 
 
 To retrieve information about the Pod, issue the `describe` command:
 
-    kubcetl describe pod apache-pod
+    kubectl describe pod apache-pod
 
 You should see output like the following:
 
@@ -155,7 +155,7 @@ To retrieve more information about your Service, issue the `describe` command:
 
 To delete the Service, issue the delete command:
 
-    kubcetl delete service apache-service
+    kubectl delete service apache-service
 
 ## Volumes
 
@@ -205,7 +205,7 @@ metadata:
 
 To create the Namespace, issue the `create` command:
 
-    kubcetl create -f my-namespace.yaml
+    kubectl create -f my-namespace.yaml
 
 Below is an example of a Pod with a Namespace:
 

@@ -8,9 +8,11 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-18
 modified_by:
   name: Linode
-title: "Manage Objects with Lifecycle Policies"
+title: "How To Manage Objects with Lifecycle Policies"
+h1_title: "Managing Objects with Lifecycle Policies"
 contributor:
   name: Linode
+aliases: ['platform/object-storage/lifecycle-policies/']
 ---
 
 {{< note >}}
@@ -110,7 +112,7 @@ Other actions can also be specified in a rule:
     {{< file "lifecycle_policy_multipart_upload.xml" xml >}}
 <LifecycleConfiguration>
     <Rule>
-        <ID>delete-prior-versions</ID>
+        <ID>delete-incomplete-multipart-uploads</ID>
         <Prefix></Prefix>
         <Status>Enabled</Status>
         <AbortIncompleteMultipartUpload>

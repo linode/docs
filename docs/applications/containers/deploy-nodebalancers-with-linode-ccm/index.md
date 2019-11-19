@@ -25,7 +25,7 @@ Using the Linode Cloud Controller Manager to create NodeBalancers will create bi
 
 ## Before You Begin
 
-You should have a working knowledge of Kubernetes and familiarity with the `kubcetl` command line tool before attempting the instructions found in this guide. For more information about Kubernetes, consult our [Kubernetes Beginner's Guide](/docs/applications/containers/beginners-guide-to-kubernetes/) and our [Getting Started with Kubernetes](/docs/applications/containers/getting-started-with-kubernetes/) guide.
+You should have a working knowledge of Kubernetes and familiarity with the `kubectl` command line tool before attempting the instructions found in this guide. For more information about Kubernetes, consult our [Kubernetes Beginner's Guide](/docs/applications/containers/beginners-guide-to-kubernetes/) and our [Getting Started with Kubernetes](/docs/applications/containers/getting-started-with-kubernetes/) guide.
 
 When using the CCM for the first time, it's highly suggested that you create a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state. For a completely automated install, you can use the [Linode CLI's k8s-alpha command line tool](https://developers.linode.com/kubernetes/). The Linode CLI's k8s-alpha command line tool utilizes [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) to fully bootstrap a Kubernetes cluster on Linode. It includes the [Linode Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) plugin, the [Linode CCM plugin](https://github.com/linode/linode-cloud-controller-manager), and the [ExternalDNS plugin](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md). For more information on creating a Kubernetes cluster with the Linode CLI, review our [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide.
 
@@ -246,7 +246,7 @@ You can set the timeout for the session by using the `spec.sessionAffinityConfig
 
 If you are having problems with the CCM, such as the NodeBalancer not being created, you can check the CCM's error logs. First, you'll need to find the name of the CCM Pod in the `kube-system` namespaces:
 
-    kubcetl get pods -n kube-system
+    kubectl get pods -n kube-system
 
 The Pod will be named `ccm-linode-` with five random characters at the end, like `ccm-linode-jrvj2`. Once you have the Pod name, you can view its logs. The `--tail=n` flag is used to return the last `n` lines, where `n` is the number of your choosing. The below example returns the last 100 lines:
 
