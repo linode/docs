@@ -193,6 +193,7 @@ com2sec
 comodo
 completekey
 conda
+confidental
 config
 configs
 configtest
@@ -312,6 +313,7 @@ dockerfile
 dockerfiles
 dockerize
 dockerized
+dogtag
 dokku
 domain1
 domain2
