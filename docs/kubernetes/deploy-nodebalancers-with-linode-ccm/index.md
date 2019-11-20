@@ -46,7 +46,7 @@ If you are not using macOS, you can copy the `ccm-linode-template.yaml` file and
 
 ## Using the CCM
 
-To use the CCM, you must have a collection of Pods that need to be load balanced, usually from a [Deployment](/docs/applications/containers/kubernetes-reference/#deployment). For this example, you will create a Deployment that deploys three NGINX Pods, and then create a Service to expose those Pods to the internet using the Linode CCM.
+To use the CCM, you must have a collection of Pods that need to be load balanced, usually from a [Deployment](/docs/kubernetes/kubernetes-reference/#deployment). For this example, you will create a Deployment that deploys three NGINX Pods, and then create a Service to expose those Pods to the internet using the Linode CCM.
 
 1.  Create a Deployment manifest describing the desired state of the three replica NGINX containers:
 
