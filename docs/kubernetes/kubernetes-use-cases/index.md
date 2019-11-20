@@ -138,7 +138,7 @@ By default, all Pods in Kubernetes can communicate with each other. A cluster ad
 
 While Kubernetes provides a storage solution, called a [Volume](https://kubernetes.io/docs/concepts/storage/), that allows data to outlive the lifecycle of a container, the data is still tied to the longevity of the Pod. However, Kubernetes also provides a mechanisms for [storing persistent data in cloud storage](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). In particular, the [Container Storage Interface (CSI)](https://kubernetes.io/docs/concepts/storage/volumes/#csi) specification standard allows Kubernetes to create storage volumes on any cloud platform which supports the CSI.
 
-For example, the [Linode Container Storage Interface (CSI)](/docs/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/), makes it easy for you to create and attach Linode Block Storage Volumes to your Pods. Even if a Pod that's attached to the Block Storage Volume is destroyed, the data will persist.
+For example, the [Linode Container Storage Interface (CSI)](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/), makes it easy for you to create and attach Linode Block Storage Volumes to your Pods. Even if a Pod that's attached to the Block Storage Volume is destroyed, the data will persist.
 
 ### Cron Jobs
 

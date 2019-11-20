@@ -71,7 +71,7 @@ Use the [`get` command](https://kubernetes.io/docs/reference/generated/kubectl/k
         kubectl get pods --namespace kube-system
 
     {{< note >}}
-If you've set up Kubernetes using automated solutions like Linode's Kubernetes Engine, [k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/), or [Rancher](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/), you'll see [csi-linode](https://github.com/linode/linode-blockstorage-csi-driver) and [ccm-linode](https://github.com/linode/linode-cloud-controller-manager) pods in the `kube-system` namespace. This is normal as long as they're in the Running status.
+If you've set up Kubernetes using automated solutions like Linode's Kubernetes Engine, [k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/), or [Rancher](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/), you'll see [csi-linode](https://github.com/linode/linode-blockstorage-csi-driver) and [ccm-linode](https://github.com/linode/linode-cloud-controller-manager) pods in the `kube-system` namespace. This is normal as long as they're in the Running status.
 {{< /note >}}
 
 

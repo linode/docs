@@ -273,4 +273,4 @@ When you delete a cluster with the k8s-alpha CLI, its connection information wil
 Now that you have a cluster up and running, you're ready to start deploying apps to it. Review our other Kubernetes guides for help with deploying software and managing your cluster:
 
 -   [Installing Apps on Kubernetes with Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm/)
--    [Linode Container Storage Interface](/docs/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/)
+-    [Linode Container Storage Interface](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/)
