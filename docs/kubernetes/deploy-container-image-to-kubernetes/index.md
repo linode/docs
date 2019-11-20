@@ -490,4 +490,4 @@ To avoid being further billed for your Kubernetes cluster, tear down your cluste
 Now that you are familiar with basic Kubernetes concepts, like configuring pods, grouping resources, and deploying services, you can deploy a Kubernetes cluster on Linode for production use by using the steps in the following guides:
 
   - [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/)
-  - [How to Deploy Kubernetes on Linode with Rancher 2.2](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/)
+  - [How to Deploy Kubernetes on Linode with Rancher](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/)
