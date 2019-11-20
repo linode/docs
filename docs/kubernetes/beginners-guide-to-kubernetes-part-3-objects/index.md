@@ -60,7 +60,7 @@ Each manifest has four necessary parts:
 - Metadata about the resource
 - Though not required by all objects, a spec which describes the desired behavior of the resource is necessary for most objects and controllers.
 
-In the case of this example, the API in use is `v1`, and the `kind` is a Pod. The metadata field is used for applying a name, labels, and annotations. Names are used to differentiate resources, while labels are used to group like resources. Labels will come into play more when defining [Services](#services) and [Deployments](/docs/kubernetes/beginners-guide-to-kubernetes-controllers/#deployments). Annotations are for attaching arbitrary data to the resource.
+In the case of this example, the API in use is `v1`, and the `kind` is a Pod. The metadata field is used for applying a name, labels, and annotations. Names are used to differentiate resources, while labels are used to group like resources. Labels will come into play more when defining [Services](#services) and [Deployments](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#deployments). Annotations are for attaching arbitrary data to the resource.
 
 The spec is where the desired state of the resource is defined. In this case, a Pod with a single Apache container is desired, so the `containers` field is supplied with a name, 'apache-container', and an image, the latest version of Apache. The image is pulled from [Docker Hub](https://hub.docker.com), as that is the default container registry for Kubernetes.
 

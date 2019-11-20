@@ -36,15 +36,15 @@ The Kubernetes Master is normally a separate server responsible for maintaining 
 
 Kubernetes Nodes are worker servers that run your application(s). The number of Nodes is determined by the user, and they are created by the user. In addition to running your application, each Node runs two processes:
 
-- **kubelet** receives descriptions of the desired state of a [Pod](/docs/kubernetes/beginners-guide-to-kubernetes-objects/#pods) from the API server, and ensures the Pod is healthy, and running on the Node.
-- **kube-proxy** is a networking proxy that proxies the UDP, TCP, and SCTP networking of each Node, and provides load balancing. This is only used to connect to [Services](/docs/kubernetes/beginners-guide-to-kubernetes-objects/#services).
+- **kubelet** receives descriptions of the desired state of a [Pod](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#pods) from the API server, and ensures the Pod is healthy, and running on the Node.
+- **kube-proxy** is a networking proxy that proxies the UDP, TCP, and SCTP networking of each Node, and provides load balancing. This is only used to connect to [Services](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#services).
 
 ## The Control Plane
 
 Together, kube-apiserver, kube-controller-manager, kube-scheduler, and etcd form what is known as the *control plane*. The control plane is responsible for making decisions about the cluster, and pushing it toward the desired state. kube-apiserver, kube-controller-manager, and kube-scheduler are processes and etcd is a database; all four are run by the Kubernetes Master.
 
  - **kube-apiserver** is the front end for the Kubernetes API server.
- - **kube-controller-manager** is a daemon that manages the Kubernetes control loop. For more on Controllers, see the [Beginner's Guide to Kubernetes: Controllers](/docs/kubernetes/beginners-guide-to-kubernetes-controllers/).
+ - **kube-controller-manager** is a daemon that manages the Kubernetes control loop. For more on Controllers, see the [Beginner's Guide to Kubernetes: Controllers](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/).
  - **kube-scheduler** is a function that looks for newly created Pods that have no Nodes, and assigns them a Node based on a host of requirements. For more information on kube-scheduler, consult the [Kubernetes kube-scheduler documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/).
  - **Etcd** is a highly available key-value store that provides the backend database for Kubernetes. It stores and replicates the entirety of the Kubernetes cluster state. It's written in Go and uses the [Raft protocol](https://raft.github.io/) which means it maintains identical logs of state changing commands across nodes and coordinates the order in which these state changes occur.
 

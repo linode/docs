@@ -48,7 +48,7 @@ These nodes will all exist as billable services on your account. You can specify
 #### Rancher
 Another easy way to create clusters is with [Rancher](https://rancher.com). Rancher is a web application that provides a GUI interface for cluster creation and for management of clusters. Rancher also provides easy interfaces for deploying and scaling apps on your clusters, and it has a built-in catalog of curated apps to choose from.
 
-To get started with Rancher, review our [How to Deploy Kubernetes on Linode with Rancher 2.2](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/) guide. Rancher is capable of importing clusters that were created outside of it, so you can still use it even if you create your clusters through the k8s-alpha CLI or some other means.
+To get started with Rancher, review our [How to Deploy Kubernetes on Linode with Rancher](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/) guide. Rancher is capable of importing clusters that were created outside of it, so you can still use it even if you create your clusters through the k8s-alpha CLI or some other means.
 
 #### Linode Kubernetes Engine (LKE)
 
