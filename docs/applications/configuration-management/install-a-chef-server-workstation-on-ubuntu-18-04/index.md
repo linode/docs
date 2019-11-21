@@ -9,7 +9,8 @@ published: 2018-08-06
 modified: 2019-01-17
 modified_by:
   name: Linode
-title: 'Install a Chef Server Workstation on Ubuntu 18.04'
+title: 'How To Install a Chef Server Workstation on Ubuntu 18.04'
+h1_title: 'Installing a Chef Server Workstation on Ubuntu 18.04'
 ---
 
 [Chef](http://www.chef.io) is a Ruby based configuration management tool used to define infrastructure as code. This enables users to automate the management of many *nodes* and maintain consistency across those nodes. *Recipes* declare the desired state for managed nodes and are created on a user's *workstation* using the *Chef Workstation* package. Your recipes are distributed across nodes via a *Chef server*. A *Chef client*, installed on each node, is in charge of applying the recipe to its corresponding node.
