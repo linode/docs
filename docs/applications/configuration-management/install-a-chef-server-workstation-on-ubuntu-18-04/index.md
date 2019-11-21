@@ -183,10 +183,6 @@ The workstation is used to create, download, and edit cookbooks and other relate
 1. Generate a new Chef cookbook:
 
         chef generate cookbook my_cookbook
-1.  Generate the `chef-repo` and move into the newly-created directory:
-
-        chef generate app chef-repo
-        cd chef-repo
 
 ### Configure Knife
 
