@@ -5,7 +5,7 @@ author:
 description: 'How to use bucket versioning with Linode Object Storage to track and saves changes to your objects.'
 keywords: ['object','storage','bucket','version','versioning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-10-14
+published: 2019-11-22
 modified_by:
   name: Linode
 title: "Bucket Versioning with Linode Object Storage"
@@ -100,6 +100,42 @@ You may have to click the **Refresh** button in Cyberduck's toolbar to see the h
     {{< note >}}
 Each file has its own permissions. If you'd like to view objects via HTTP, then you'll need to manually set the permissions for each object to *Everyone* each time you upload or revert to a different version of the object, as described in the [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#upload-download-and-delete-an-object-with-cyberduck) guide.
 {{</ note >}}
+
+#### Delete Versioned Objects
+
+You can use Cyberduck to manually delete an object and all of its versions that are stored in a bucket. The steps covered in this section are only useful if you have a few objects and a few corresponding versions in a bucket.
+
+{{< note >}}
+If your bucket has complex directory hierarchies or if it contains more than a few objects and object versions, you should use [lifecycle policies](/docs/platform/object-storage/lifecycle-policies/#enable-a-lifecycle-policy) to delete unwanted versions of your objects.
+
+You may also consider writing a [utility script](https://gist.github.com/wknapik/191619bfa650b8572115cd07197f3baf) that uses the aws cli to iterate over and delete all of a bucket's objects, versions, and delete markers.
+{{</ note >}}
+
+1. Viewing all of your buckets, double-click on the bucket whose objects you'd like to delete.
+
+    [![Viewing all of your buckets, double-click on the bucket whose objects you'd like to delete.](select-bucket-to-delete.png)](select-bucket-to-delete.png)
+
+1. Viewing all of your bucket's objects and their versions, ensure your bucket has *Show Hidden Files* enabled. In Cyberduck's menu bar, click on **View** and select **Show Hidden Files**. A check will be displayed next to the option when it's enabled.
+
+    [![Viewing all of your bucket's objects, ensure your bucket has *Show Hidden Files* enabled.](verify-show-hidden-files.png)](verify-show-hidden-files.png)
+
+1. Bulk delete all of the bucket's objects. This can be done by clicking and dragging to select all of your bucket's objects. Then, right click on the objects and select **delete** from the menu.
+
+    {{< note >}}
+  If you delete an object with bucket versioning enabled, a delete marker is inserted into the bucket to report that the object has been deleted.
+    {{</ note >}}
+
+    [![Bulk delete all the bucket's objects. This can be done by clicking and dragging to select all of your bucket's objects.](delete-versioned-objects.gif)](delete-versioned-objects.gif)
+
+1. After your initial bulk delete, you will see two remaining greyed out items. They correspond the latest version of the object you deleted and its delete marker. Follow the same step as above to delete the remaining object and its marker. Once this is completed, your bucket should be empty.
+
+1. (Optional) Navigate back to Cyberduck's buckets listing page.
+
+1. (Optional) Right click on the bucket you would like to delete and select **delete** from the menu.
+
+    [![Bulk delete all the bucket's objects. This can be done by clicking and dragging to select all of your bucket's objects.](delete-bucket.png)](delete-bucket.png)
+
+    Your bucket and all its versioned objects should now be deleted.
 
 ### AWS CLI
 
