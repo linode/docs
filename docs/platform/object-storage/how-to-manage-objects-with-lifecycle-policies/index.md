@@ -12,6 +12,7 @@ title: "How To Manage Objects with Lifecycle Policies"
 h1_title: "Managing Objects with Lifecycle Policies"
 contributor:
   name: Linode
+aliases: ['platform/object-storage/lifecycle-policies/']
 ---
 
 {{< note >}}

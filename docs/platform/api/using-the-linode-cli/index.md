@@ -12,7 +12,7 @@ modified_by:
 published: 2014-01-27
 title: Linode CLI
 deprecated: true
-deprecated_link: 'platform/api/using-the-linode-cli/'
+deprecated_link: 'platform/api/linode-cli/'
 external_resources:
  - '[Github Linode CLI](https://github.com/linode/cli)'
  - '[Linode API Key](/docs/platform/api/api-key)'
