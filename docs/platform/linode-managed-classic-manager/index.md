@@ -21,7 +21,7 @@ Linode Managed applies to all Linodes on an account and will be billed at a rate
 
 ## Getting Started
 
-First, you'll need to [sign up for Linode Managed](https://www.linode.com/managed/). Once Linode Managed is enabled for your account, you'll see the **Managed** tab when you log in to the Linode Manager, as shown below. You'll use this interface to interact with Linode Managed and monitor your servers.
+First, you'll need to [sign up for Linode Managed](https://www.linode.com/products/managed/). Once Linode Managed is enabled for your account, you'll see the **Managed** tab when you log in to the Linode Manager, as shown below. You'll use this interface to interact with Linode Managed and monitor your servers.
 
 [![The Linode Managed interface.](1198-managed_overview.png)](1198-managed_overview.png)
 
