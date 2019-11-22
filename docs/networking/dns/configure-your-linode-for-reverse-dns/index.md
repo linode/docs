@@ -9,7 +9,7 @@ aliases: ['networking/Setting-Up-Reverse-DNS-Lookup/','dns-guides/configuring-dn
 modified_by:
   name: Linode
 published: 2015-07-09
-updated: 2019-11-21
+modified: 2019-11-21
 title: Configure Your Linode for Reverse DNS (rDNS)
 classic_manager_link: networking/dns/configure-your-linode-for-reverse-dns-classic-manager/
 ---
