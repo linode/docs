@@ -38,9 +38,9 @@ s3://acl-example/ (bucket):
    ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
 {{</ output >}}
 
-The cannonical ID of the owner of the bucket is the long string of letters, dashes, and numbers found in the line labeled `ACL`, which in this case is `a0000000-000a-0000-0000-00d0ff0f0000`.
+The canonical ID of the owner of the bucket is the long string of letters, dashes, and numbers found in the line labeled `ACL`, which in this case is `a0000000-000a-0000-0000-00d0ff0f0000`.
 
-Alternatively, if a bucket has objects within it and has already been set to public (with a command like `s3cmd setacl s3://bucket-name --acl-public`), but has not been set to serve static websites, you can retrieve the cannonical ID by curling the bucket and retrieving the Owner ID field from the returned XML:
+Alternatively, if a bucket has objects within it and has already been set to public (with a command like `s3cmd setacl s3://bucket-name --acl-public`), but has not been set to serve static websites, you can retrieve the canonical ID by curling the bucket and retrieving the Owner ID field from the returned XML:
 
     curl acl-example.us-east-1.linodeobjects.com
 
@@ -66,7 +66,7 @@ This will result in the following output:
       </Contents>
     </ListBucketResult>
 
-In the above output, the cannonical ID is `a0000000-000a-0000-0000-00d0ff0f0000`.
+In the above output, the canonical ID is `a0000000-000a-0000-0000-00d0ff0f0000`.
 
 ## ACLs vs Bucket Policies
 
@@ -102,13 +102,13 @@ The more granular permissions are as follows:
 |**write_acp**| Users can change the ACL applied to the bucket.|
 |**full_control**| Users have read and write access over both objects and ACLs.|
 
-To apply these more granular permissions for a specific user with s3cmd, use the following `setacl` command with the `--acl-grant` flag. Substitute `acl-example` with the name of the bucket (and the object, if necessary), `PERMISSION` with a permission from the above table, and `CANNONICAL_ID` with the cannonical ID of the user to which you would like to grant permissions.
+To apply these more granular permissions for a specific user with s3cmd, use the following `setacl` command with the `--acl-grant` flag. Substitute `acl-example` with the name of the bucket (and the object, if necessary), `PERMISSION` with a permission from the above table, and `CANONICAL_ID` with the canonical ID of the user to which you would like to grant permissions.
 
-    s3cmd setacl s3://acl-example --acl-grant=PERMISSION:CANNONICAL_ID
+    s3cmd setacl s3://acl-example --acl-grant=PERMISSION:CANONICAL_ID
 
 To revoke a specific permission, you can use the `setacl` command with the `acl-revoke` flag:
 
-    s3cmd setacl s3://acl-example --acl-revoke=PERMISSION:CANNONICAL_ID
+    s3cmd setacl s3://acl-example --acl-revoke=PERMISSION:CANONICAL_ID
 
 To view the current ACLs applied to a bucket or object, use the `info` command, replacing `acl-example` with the name of your bucket (and object, if necessary):
 
@@ -150,7 +150,7 @@ Bucket policies can offer a finer control over the types of permissions you can 
 }
 {{</ file >}}
 
-This policy allows the user with the cannonical ID `a0000000-000a-0000-0000-00d0ff0f0000`, known here as the "principal", to interact with the bucket, known as the "resource". The permissions, which are the ability to upload objects to a bucket (`s3:PutObject`) and the ability to retrieve objects from a bucket (`s3:GetObject`), are defined in the "action" section. The "resource" that is listed (`bucket-policy-example`) is the only bucket the user will have access too.
+This policy allows the user with the canonical ID `a0000000-000a-0000-0000-00d0ff0f0000`, known here as the "principal", to interact with the bucket, known as the "resource". The permissions, which are the ability to upload objects to a bucket (`s3:PutObject`) and the ability to retrieve objects from a bucket (`s3:GetObject`), are defined in the "action" section. The "resource" that is listed (`bucket-policy-example`) is the only bucket the user will have access too.
 
 The principal, a.k.a. the user, must have the prefix of `arn:aws:iam:::`, just as the resource, a.k.a. the bucket, must have the prefix of `arn:aws:s3:::`. The `Action` and `Principal.AWS` fields of the bucket policy are arrays, so you can easily add additional users and permissions to the bucket policy, separating them by a comma.
 
@@ -177,5 +177,3 @@ s3://bucket-policy-example/ (bucket):
 {{</ output >}}
 
 Note that the policy is available in the output.
-
-
