@@ -108,7 +108,7 @@ You can use Cyberduck to manually delete an object and all of its versions that 
 {{< note >}}
 If your bucket has complex directory hierarchies or if it contains more than a few objects and object versions, you should use [lifecycle policies](/docs/platform/object-storage/lifecycle-policies/#enable-a-lifecycle-policy) to delete unwanted versions of your objects.
 
-You may also consider writing a [utility script](https://gist.github.com/wknapik/191619bfa650b8572115cd07197f3baf) that uses the aws cli to iterate over and delete all of a bucket's objects, versions, and delete markers.
+You may also consider writing a [utility script](https://gist.github.com/wknapik/191619bfa650b8572115cd07197f3baf) that uses the AWS CLI to iterate over and delete all of a bucket's objects, versions, and delete markers.
 {{</ note >}}
 
 1. Viewing all of your buckets, double-click on the bucket whose objects you'd like to delete.
