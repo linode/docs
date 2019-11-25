@@ -212,7 +212,7 @@ These instructions will persist the context for users of the Bash terminal. They
 
     If an `export KUBECONFIG` line is already present in the file, append to the end of this line as follows; if it is not present, add this line to the end of your file:
 
-        export KUBECONFIG:$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/cluster12345-config.yaml
+        export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/cluster12345-config.yaml
 
     {{< note >}}
 Alter the `$HOME/.kube/configs/cluster12345-config.yaml` path in the above line with the name of the file you decoded to in the previous section.
