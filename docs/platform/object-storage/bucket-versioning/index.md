@@ -106,7 +106,7 @@ Each file has its own permissions. If you'd like to view objects via HTTP, then 
 You can use Cyberduck to manually delete an object and all of its versions that are stored in a bucket. The steps covered in this section are only useful if you have a few objects and a few corresponding versions in a bucket.
 
 {{< note >}}
-If your bucket has complex directory hierarchies or if it contains more than a few objects and object versions, you should use [lifecycle policies](/docs/platform/object-storage/lifecycle-policies/#enable-a-lifecycle-policy) to delete unwanted versions of your objects.
+If your bucket has complex directory hierarchies or if it contains more than a few objects and object versions, you should use [lifecycle policies](/docs/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/#enable-a-lifecycle-policy) to delete unwanted versions of your objects.
 
 You may also consider writing a [utility script](https://gist.github.com/wknapik/191619bfa650b8572115cd07197f3baf) that uses the AWS CLI to iterate over and delete all of a bucket's objects, versions, and delete markers.
 {{</ note >}}
