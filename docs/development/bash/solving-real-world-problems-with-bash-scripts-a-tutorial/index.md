@@ -2,13 +2,15 @@
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'An introduction to bash shell programming - part 3'
+description: 'This guide presents some of the advanced capabilities of the bash shell by showing practical and fully functional bash scripts. It also illustrates how you can work with dates and times in bash scripts and how to write and use functions in bash.'
+og_description: 'This guide presents some of the advanced capabilities of the bash shell by showing practical and fully functional bash scripts. It also illustrates how you can work with dates and times in bash scripts and how to write and use functions in bash.'
 keywords: ["UNIX", "shell", "bash", "Linux", "programming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-30
 modified_by:
   name: Linode
-title: 'Solving Real World Problems With Bash Scripts'
+title: 'Solving Real World Problems With Bash Scripts - A Tutorial'
+h1_title: A Tutorial for Solving Real World Problems with Bash Scripts
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
@@ -18,10 +20,19 @@ external_resources:
 
 ## Introduction
 
-The purpose of this guide is to present some of the advanced capabilities of the bash shell by showing practical and fully functional bash scripts and by illustrating how you can work with dates and times in bash scripts and how to write and use functions in bash.
+This guide presents some of the advanced capabilities of the bash shell by showing practical and fully functional bash scripts. It also illustrates how you can work with dates and times in bash scripts and how to write and use functions in bash.
+
+### In This Guide
+You will learn how to use bash scripts:
+
+- [Using functions](#using-bash-functions-as-shell-commands),
+- [using dates and times](#using-dates-and-times-in-bash-scripts),
+- [rotating log files](#rotating-log-files),
+- [to solve other real world problems](#bash-scripts-for-administrators), and
+- [in additional examples](#additional-examples).
 
 {{< note >}}
-This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Functions in bash shell
@@ -53,8 +64,11 @@ mySum="$(f2 10 -2)"
 echo mySum = $mySum
 {{< /file >}}
 
+Run the script with the following command:
 
     ./functions.sh
+
+The output will look like this:
 
 {{< output >}}
 Hello from f1!
@@ -63,15 +77,23 @@ mySum = 3
 mySum = 8
 {{< /output >}}
 
-Notice that if you want to check whether a function parameter exists or not, you can use a `if [ -z "$1" ]` statement.
+{{< note >}}
+If you want to check whether a function parameter exists or not, you can use the statement:
+
+    if [ -z "$1" ]
+{{< /note >}}
 
 ### Using bash Functions as Shell Commands
 
-This is a trick that allows you to use bash functions as shell commands. You can execute the above code as `. ./functions.sh` (please notice the dot in front of the text file). After than you can use `f1` as a regular command in the terminal where you executed `. ./my_function.sh`. You will also be able to use the `f2` command with two integers of your choice to quickly calculate a sum. If you want that function to be globally available, you can put its implementation to a bash configuration file that is automatically executed by bash each time a new bash session begins. A good place to put that function implementation would be `~/.bash_profile`.
+This is a trick that allows you to use bash functions as shell commands. You can execute the above code as
+
+    . ./functions.sh
+
+Notice the dot in front of the text file. After that you can use `f1` as a regular command in the terminal where you executed `. ./my_function.sh`. You will also be able to use the `f2` command with two integers of your choice to quickly calculate a sum. If you want that function to be globally available, you can put its implementation to a bash configuration file that is automatically executed by bash each time a new bash session begins. A good place to put that function implementation would be `~/.bash_profile`.
 
 ## Working with Dates and Times
 
-Bash allows you to work with dates and times using traditional UNIX utilities such as `date(1)`. The main problem when working with dates and times is getting or using the format you really want – this is a problem of using `date(1)` with the correct parameters and has nothing to do with bash scripting per se. Using `date(1)` as `date +[something]` means that we want to use a custom format – this is signified by the use of `+` in the command line argument of `date(1)`.
+Bash allows you to work with dates and times using traditional UNIX utilities such as `date(1)`. The main difficulty many programmers run into when working with dates and times is getting or using the correct format. This is a matter of using `date(1)` with the correct parameters and has nothing to do with bash scripting per se. Using `date(1)` as `date +[something]` means that we want to use a custom format – this is signified by the use of `+` in the command line argument of `date(1)`.
 
 A good way to create unique filenames is to use UNIX epoch time or, if you want your filename to be more descriptive, a date-time combination. The unique nature of the filename is derived from a focus on a higher level of detail in defining your output. If done correctly, you will never have the exact same time value even if you execute the script multiple times on the same UNIX machine.
 
@@ -134,9 +156,11 @@ rm "$f".*
 
 If you want an even more unique filename, you can also use nanoseconds when defining the behaviour of your script.
 
-The output of `dateTime.sh` will resemble the following:
+Run the `dateTime` script:
 
     ./dateTime.sh
+
+The output of `dateTime.sh` will resemble the following:
 
 {{< output >}}
 Fri Aug 30 13:05:09 EST 2019
@@ -161,13 +185,15 @@ This section will present some bash scripts that are generally helpful for UNIX 
 
 ### Watching Free Disk Space
 
-The bash script that follows watches the free space of your hard disks and warns you when that free space is below a given threshold – the value  of the threshold is given by the user as a command line argument. Notice that if the program gets no command line argument, a default value is given to the threshold.
+The bash script that follows watches the free space of your hard disks and warns you when that free space drops below a given threshold – the value of the threshold is given by the user as a command line argument. Notice that if the program gets no command line argument, a default value is used as the threshold.
 
 {{< file "freeDisk.sh" bash >}}
 #!/bin/bash
 
+# default value to use if none specified
 PERCENT=30
 
+# test for command line arguement
 if [[ $# -le 0 ]]
 then
     printf "Using default value for threshold!\n"
@@ -192,13 +218,17 @@ do
 done
 {{< /file >}}
 
-The `sed s/%//g` command is used for omitting the percent sign from the output of `df -Ph`. Also, `awk(1)` is used for extracting the desired fields from output of the `df(1)` command.
+- The `sed s/%//g` command is used for omitting the percent sign from the output of `df -Ph`.
+- `df` is the command to report file system disk space usage, while the options `-Ph` specify `POSIX` output and `human-readable`, meaning, print sizes in powers of 1024.
+- `awk(1)` is used for extracting the desired fields from output of the `df(1)` command.
+
+Run `./freeDisk.sh` with this command:
+
+    ./freeDisk.sh
 
 The output of `freeDisk.sh` will resemble the following:
 
-
 {{< output >}}
-./freeDisk.sh
 Using default value for threshold!
 Threshold = 30
 WARNING: The partition "/dev/root" has used 61% of total available space - Date: Wed Aug 28 21:14:51 EEST 2019
@@ -208,7 +238,7 @@ WARNING: The partition "/dev/root" has used 61% of total available space - Date:
 This script and others like it can be easily executed as cron jobs and automate tasks the UNIX way.
 {{< /note >}}
 
-Notice that the code of `freeDisk.sh` looks relatively complex. This mainly happens because bash is not as good at working with the conversion between strings and numeric values – more than half of the code is for initializing the `PERCENT` variable correctly.
+Notice that the code of `freeDisk.sh` looks relatively complex. This is because bash is not good at the conversion between strings and numeric values – more than half of the code is for initializing the `PERCENT` variable correctly.
 
 ### Rotating Log Files
 
@@ -238,19 +268,23 @@ then
 fi
 {{< /file >}}
 
-Please note that the path to the log file `/home/mtsouk/connections.data` will not exist by default, and you'll need to either use a log file that already exists like `kern.log` on some Linux systems, or replace it with a new one.
+- Note that the path to the log file `/home/mtsouk/connections.data` will not exist by default. You'll need to either use a log file that already exists like `kern.log` on some Linux systems, or replace it with a new one.
 
-Additionally, the value of `MAXSIZE` can be a value of your choice, and the script can be edited to suit the needs of your own configuration – you can even make changes to the existing code and provide the `MAXSIZE` value as a command line argument to the program.
+- Additionally, the value of `MAXSIZE` can be a value of your choice, and the script can be edited to suit the needs of your own configuration – you can even make changes to the existing code and provide the `MAXSIZE` value as a command line argument to the program.
 
-The output of `rotate.sh` when it has reached the threshold defined by `MAXSIZE` will resemble the following:
+- The `du` command is used to estimate the file space usage. It's use to track the files and directories that are consuming excessive space on the hard disk. The `-b` option tells this command to print the size in bytes.
+
+Run the `rotate` script with the following command:
 
     ./rotate.sh
+
+The output of `rotate.sh` when it has reached the threshold defined by `MAXSIZE` will resemble the following:
 
 {{< output >}}
 Rotating!
 {{< /output >}}
 
-After that, there will be the following two files on the Linux system:
+After running, two files will be created on the system. You can see them with this command:
 
     ls -l connections.data*
 {{< output >}}
@@ -262,7 +296,7 @@ If you want to make `rotate.sh` more generic, you can provide the name of the lo
 
 ### Monitoring the Number of TCP Connections
 
-The presented bash script calculates the number of TCP connections at the current machine and prints that on the screen along with date and time related information.
+The presented bash script calculates the number of TCP connections on the current machine and prints that on the screen along with date and time related information.
 
 {{< file "tcpConnect.sh" bash >}}
 #!/bin/bash
@@ -273,9 +307,15 @@ T=$(date +"%H %M")
 printf "%s %s %s\n" "$C" "$D" "$T"
 {{< /file >}}
 
-The main reason for using the full path of `netstat(1)` when calling it is to make the script as secure as possible - if you do not provide the full path then the script will search all the directories of the `PATH` variable to find that executable file. Apart from the number of connections (defined by the `C` variable), the script prints the month, day of the month, hour of the day and minutes of the hour. If you want, you can also print the year and seconds.
+- The main reason for using the full path of `netstat(1)` when calling it is to make the script as secure as possible.
+- If you do not provide the full path then the script will search all the directories of the `PATH` variable to find that executable file.
+- Apart from the number of established connections (defined by the `C` variable), the script prints the month, day of the month, hour of the day, and minutes of the hour. If you want, you can also print the year and seconds.
+
+Execute the `tcpConnect` script with the following command:
 
     ./tcpConnect.sh
+
+The output will be similar to the following:
 
 {{< output >}}
 8 08 28 16 22
@@ -318,11 +358,17 @@ done
 sort -n <(printf "%s\n" "${n[@]}")
 {{< /file >}}
 
-The presented technique uses an *array* to store all integer values before sorting them. All numeric values are given as command line arguments to the script. The sorting part is done using `sort -n`, which sorts things numerically. If you want to deal with strings, then you should omit the `-n` flag. The `printf` command after `sort -n` prints every element of the array in a separate line whereas the `<` character tells `sort -n` to use the output of `printf` as input. Last, the script tests whether each command line argument is a valid integer before adding it to the `n` array.
+- The presented technique uses an *array* to store all integer values before sorting them.
+- All numeric values are given as command line arguments to the script.
+- The script tests whether each command line argument is a valid integer before adding it to the `n` array.
+- The sorting part is done using `sort -n`, which sorts the array numerically. If you want to deal with strings, then you should omit the `-n` option.
+- The `printf` command, after `sort -n`, prints every element of the array in a separate line whereas the `<` character tells `sort -n` to use the output of `printf` as input.
 
-The output of `sort.sh` will resemble the following:
+Run the `sort` script with the following command:
 
     ./sort.sh 100 a 1.1 1 2 3 -1
+
+The output of `sort.sh` will resemble the following:
 
 {{< output >}}
 a is not a valid integer!
@@ -359,9 +405,11 @@ done
 printf "It took you $num guesses.\n"
 {{< /file >}}
 
-The output of `guess.sh` will resemble the following:
+Run the `guess` script:
 
     ./guess.sh
+
+The output of `guess.sh` will resemble the following:
 
 {{< output >}}
 ./guess.sh - Guess a number between 1 and 20
@@ -375,9 +423,9 @@ Enter guess: 6
 It took you 4 guesses.
 {{< /output >}}
 
-### Calculating letter frequencies
+### Calculating Letter Frequencies
 
-The presented bash script will calculate the number of times each letter appears on a file.
+The following bash script will calculate the number of times each letter appears on a file.
 
 {{< file "freqL.sh" bash >}}
 #!/bin/bash
@@ -395,11 +443,16 @@ do
 done < "$filename" | grep '[[:alpha:]]' | sort | uniq -c | sort -nr
 {{< /file >}}
 
-The script reads the input file character by character, prints each character and processes the output using the `grep`, `sort` and `uniq` commands in order to count the frequency of each character. The `[:alpha:]` pattern used by `grep(1)` matches all alphabetic characters and is equivalent to `A-Za-z`. If you also want to include numeric characters in the output, you should use `[:alnum:]` instead.
+- The script reads the input file character by character, prints each character, and processes the output using the `grep`, `sort`, and `uniq` commands to count the frequency of each character.
+- The `[:alpha:]` pattern used by `grep(1)` matches all alphabetic characters and is equivalent to `A-Za-z`.
+- If you also want to include numeric characters in the output, you should use `[:alnum:]` instead.
+- Additionally, if you want the output to be sorted alphabetically instead of numerically, you can execute `freqL.sh` and then process its output using the `sort -k2,2` command.
 
-The output of `freqL.sh` will resemble the following:
+Run the `freqL` script:
 
     ./freqL.sh text
+
+The output of `freqL.sh` will resemble the following:
 
 {{< output >}}
    2 b
@@ -411,12 +464,8 @@ The output of `freqL.sh` will resemble the following:
 {{< /output >}}
 
 {{< note >}}
-
-The file `text` will not exist by default. We recommend using a pre-existing text file to test this script, or you can create the `text` file using a text editor of your choice.
-
+The file `text` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `text` file using a text editor of your choice.
 {{< /note >}}
-
-Last, if you want the output to be sorted alphabetically instead of numerically, you should execute `freqL.sh` and then process its output using the `sort -k2,2` command.
 
 ### Timing Out read Operations
 
@@ -458,11 +507,15 @@ do
 done
 {{< /file >}}
 
-The timeout of the `read` operation is given as a command line argument to the script, an integer representing the number of seconds that will pass before the script will "time out" and exit. The `case` block is what handles the available options. Notice that what you are going to do in each case is up to you – the presented code uses simple commands to illustrate the technique.
+- The timeout of the `read` operation is given as a command line argument to the script, an integer representing the number of seconds that will pass before the script will "time out" and exit.
+- The `case` block is what handles the available options.
+- Notice that what you are going to do in each case is up to you – the presented code uses simple commands to illustrate the technique.
 
-The output of `timeOut.sh` will resemble the following:
+Run the `timeOut` script:
 
     ./timeOut.sh 10
+
+The output of `timeOut.sh` will resemble the following:
 
 {{< output >}}
 Do you want to Quit(Y/N): Please choose Y or N!
@@ -481,7 +534,7 @@ Timing out - user response took too long!
 
 The presented utility, which is named `t2s.sh`, will read a text file and convert each tab to the specified number of space characters. Notice that the presented script replaces each tab character with 4 spaces but you can change that value in the code or even get it as command line argument.
 
-{{< file "t2s.sh" bash >}}
+{{< file "tabs2spaces.sh" bash >}}
 #!/bin/bash
 
 for f in "$@"
@@ -497,25 +550,27 @@ do
 done
 {{< /file >}}
 
-The script uses the `expand(1)` utility that does the job of converting tabs to spaces for us. `expand(1)` writes its results to standard output – the script saves that output and replaces the current file with the new output, which means that the original file will change. Although `t2s.sh` does not use any fancy techniques or code, it does the job pretty well.
+- The script uses the `expand(1)` utility that does the job of converting tabs to spaces for us.
+- `expand(1)` writes its results to standard output – the script saves that output and replaces the current file with the new output, which means that the original file will change.
+- Although `tabs2spaces.sh` does not use any fancy techniques or code, it does the job pretty well.
 
-The output of `t2s.sh` will resemble the following:
+Run the `tabs2spaces` script:
 
-    ./t2s.sh textfile
+    ./tabs2spaces.sh textfile
+
+The output of `tabs2spaces.sh` will resemble the following:
 
 {{< output >}}
 Converting textfile.
 {{< /output >}}
 
 {{< note >}}
-
-The file `textfile` will not exist by default. We recommend using a pre-existing text file to test this script, or you can create the `textfile` file using a text editor of your choice.
-
+The file `textfile` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `textfile` file using a text editor of your choice.
 {{< /note >}}
 
 ### Counting files
 
-The presented script will look into a predefined list of directories and count the number of files that exist in each directory and its subdirectories. If that number is above a threshold, then the script will generate a warning message.
+The following script will look into a predefined list of directories and count the number of files that exist in each directory and its subdirectories. If that number is above a threshold, then the script will generate a warning message.
 
 {{< file "./countFiles.sh" bash >}}
 #!/bin/bash
@@ -552,11 +607,13 @@ while read -d ':' dir; do
 done <<< "$DIRECTORIES:"
 {{< /file >}}
 
-The counting of the files is done with the `find $dir -type f | wc -l` command.
+The counting of the files is done with the `find $dir -type f | wc -l` command. You can read more about the find command in [our guide](/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/).
 
-The output of `countFiles.sh` will resemble the following, giving you an accurate date and time as configured on your Linode:
+Run the `countFiles` script:
 
     ./countFiles.sh 100
+
+The output of `countFiles.sh` will resemble the following, giving you an accurate date and time as configured on your Linode:
 
 {{< output >}}
 WARNING: Large number of files in /bin: 118!
@@ -567,4 +624,4 @@ WARNING: Large number of files in /srv/www/www.mtsoukalos.eu/logs: 106!
 
 ## Summary
 
-The bash scripting language is a powerful programming language that can save you time and energy when applied effectively. If you have lots of useful bash scripts, then you can automate things by creating cron jobs that execute your bash scripts. It is up to the developer to decide whether they prefer to use bash or a different scripting language such as perl, ruby, or python.
+The bash scripting language is a powerful programming language that can save you time and energy when applied effectively. If you have a lot of useful bash scripts, then you can automate things by creating cron jobs that execute your bash scripts. It is up to the developer to decide whether they prefer to use bash or a different scripting language such as perl, ruby, or python.
