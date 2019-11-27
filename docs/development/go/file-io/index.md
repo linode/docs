@@ -68,7 +68,7 @@ func main() {
 }
 {{< /file >}}
 
-All the work here is done by the powerful `os.Stat()` function. If the call to `os.Stat()` is successful, then the error value will be `nil`, which practically means that the given path exists. Notice that if the given path exists, the program generates no output according to the UNIX philosophy.
+All the work here is done by the powerful `os.Stat()` function. If the call to `os.Stat()` is successful, then the error value will be `nil`, which confirms that the given path exists. Notice that if the given path exists, the program generates no output according to the UNIX philosophy.
 
 Executing `doesItExist.go` will resemble the following output:
 
@@ -113,7 +113,7 @@ func main() {
 }
 {{< /file >}}
 
-After getting information about the mode of the file using `Mode()`, you need to call the `IsRegular()` function to determine whether the given path belongs to a regular file or not. Examining the return value of `IsRegular()` will tell you what you want to know.
+After getting information about the mode of the file using `Mode()`, you need to call the `IsRegular()` function to determine whether the given path belongs to a regular file or not. If the path is a regular file, the output of `IsRegular()` will give you this information.
 
 Executing `isFile.go` will resemble the following output:
 
@@ -122,7 +122,10 @@ Executing `isFile.go` will resemble the following output:
 /bin/ls is a regular file!
 {{< /output >}}
 
+
+{{< note >}}
 Most of the examples in this guide will not test whether the file that is going to be read exists in order to minimize the amount of code – the `os.Open()` function does some of this work but in a less elegant way. However, on production code all necessary tests should be performed in order to avoid crashes and bugs in your software.
+{{< /note >}}
 
 ## Reading Files in Go
 
@@ -271,8 +274,8 @@ func wordByWord(file string) error {
             return err
         }
 
-        re := regexp.MustCompile("[^\\s]+")
-        words := re.FindAllString(line, -1)
+        r := regexp.MustCompile("[^\\s]+")
+        words := r.FindAllString(line, -1)
         for i := 0; i < len(words); i++ {
             fmt.Println(words[i])
         }
@@ -704,6 +707,12 @@ func main() {
 {{< /file >}}
 
 If you execute `cat.go` without any command line arguments, then the utility will just copy from standard input to standard output using the `io.Copy(os.Stdout, os.Stdin)` statement. However, if there are command-line arguments, then the program will process them all in the same order that they were given using the `printFile()` function.
+
+{{< note >}}
+
+Command Line arguments when using `cat.go` will only be file paths. `cat.go` does not support the arguments you'd see with the traditional `cat` command, only the core functionality.
+
+{{< /note >}}
 
 The output of `cat.go` will resemble the following:
 
