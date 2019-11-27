@@ -24,9 +24,9 @@ Linode Object Storage allows users to share access to objects and buckets throug
 
 ## Before You Begin
 
--  This guide will use the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [How to Use Object Storage](https://www.linode.com/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-s3cmd) guide.
+-  This guide will use the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-s3cmd) guide.
 
--  You'll need the canonical ID of every user you wish to grant additional permissions to. To find the canonical ID, issue the following command, targeting a bucket on the account of the user you would like to grant access to (you will need to configure s3cmd to use this user's access tokens). For example, if you would like the user Tux to be able to access your bucket, you will first need to run the following command on a bucket owned by Tux as Tux. Replace `acl-example` with the name of the bucket:
+-  You'll need the canonical ID of every user you wish to grant additional permissions to. The users can either run this command and share their canonical ID with you, or you can run this command yourself if you have use of their access tokens (you will need to cofigure s3cmd to use their access tokens instead of your own). In either case, replace `acl-example` with the name of the bucket:
 
         s3cmd info s3://acl-example
 
@@ -80,7 +80,7 @@ ACLs offer permissions with much larger scopes than bucket policies. If you are 
 
 Additionally, object policies are created through applying a written bucket policy file to the bucket. This file cannot exceed 20KB in size. If you have a policy with a lengthy list of policy rules, you may want to look into ACLs instead.
 
-ACLs and bucket policies can be used at the same time. When this happens, any rule that limits access to an Object Storage resource will override a rule that grants access. For instance, if an ACL allows a user access to a bucket, but an bucket policy denies that user access, the user will not be able to access that bucket.
+ACLs and bucket policies can be used at the same time. When this happens, any rule that limits access to an Object Storage resource will override a rule that grants access. For instance, if an ACL allows a user access to a bucket, but a bucket policy denies that user access, the user will not be able to access that bucket.
 
 ## ACLs
 
@@ -128,7 +128,8 @@ s3://acl-bucket-example/ (bucket):
    Payer:     BucketOwner
    Expiration Rule: none
    Policy:    none
-   CORS:      b'<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><CORSRule><AllowedMethod>GET</AllowedMethod><AllowedMethod>PUT</AllowedMethod><AllowedMethod>DELETE</AllowedMethod><AllowedMethod>HEAD</AllowedMethod><AllowedMethod>POST</AllowedMethod><AllowedOrigin>*</AllowedOrigin><AllowedHeader>*</AllowedHeader></CORSRule></CORSConfiguration>'
+   CORS:      b'&lt;CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"&gt;&lt;CORSRule&gt;&lt;AllowedMethod&gt;GET&lt;/AllowedMethod&gt;&lt;AllowedMethod&gt;PUT&lt;/AllowedMethod&gt;&lt;AllowedMethod&gt;DELETE&lt;/AllowedMethod&gt;&lt;AllowedMethod&gt;HEAD&lt;/AllowedMethod&gt;&lt;AllowedMethod&gt;POST&lt;/AllowedMethod&gt;&lt;AllowedOrigin&gt;*&lt;/AllowedOrigin&gt;&lt;AllowedHeader&gt;*&lt;/AllowedHeader&gt;&lt;/CORSRule&gt;&lt;/CORSConfiguration&gt;'
+   ACL:       *anon*: READ
    ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
    URL:       http://us-east-1.linodeobjects.com/acl-example/
 {{</ output >}}
@@ -151,7 +152,8 @@ Bucket policies can offer a finer control over the types of permissions you can 
     },
     "Action": [
       "s3:PutObject",
-      "s3:GetObject"
+      "s3:GetObject",
+      "s3:ListBucket"
     ],
     "Resource": [
       "arn:aws:s3:::bucket-policy-example/*"
@@ -183,7 +185,7 @@ s3://bucket-policy-example/ (bucket):
    Location:  default
    Payer:     BucketOwner
    Expiration Rule: none
-   Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-test/*"\n    ]\n  }]\n}'
+   Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-example/*"\n    ]\n  }]\n}'
    CORS:      none
    ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
 {{</ output >}}
