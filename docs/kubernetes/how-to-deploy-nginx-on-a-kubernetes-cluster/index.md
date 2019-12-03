@@ -37,7 +37,7 @@ You can now create a Kubernetes cluster with one command using the Linode CLI. T
 
 You will need:
 
-* Two or more Linodes with [Private IPs](/docs/networking/remote-access#adding-private-ip-addresses)
+* Two or more Linodes with [Private IPs](/docs/platform/manager/remote-access/#adding-private-ip-addresses)
 * Each Linode should have a 64-bit distribution of either:
     - Ubuntu 16.04+
     - Debian 9
@@ -53,7 +53,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
 1.  Create two Linodes with at least 2GB memory within the same data center.
 
-1.  For each node, go into the Remote Access tab of your Linode Manager and add a [private IP](/docs/networking/remote-access#adding-private-ip-addresses). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
+1.  For each node, go into the Remote Access tab of your Linode Manager and add a [private IP](/docs/platform/manager/remote-access/#adding-private-ip-addresses). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
 
 1.  Configure a firewall with [UFW](/docs/security/firewalls/configure-firewall-with-ufw/) or [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) to ensure only the two nodes can communicate with each other.
 
@@ -239,7 +239,7 @@ as root:
         name          status     roles     age       version
         kube-master   NotReady   master    1m        v1.8.1
 
-    The master node is listed as `NotReady` because the cluster does not have a Container Networking Interface ([CNI](https://github.com/containernetworking/cni/blob/master/spec.md)). CNI is a spec for a of container based network interface. In this guide, we will be using Calico. Alternatively, you can use [Flannel](https://raw.githubusercontent.com/coreos/flannel/v0.9.0/Documentation/kube-flannel.yml) or another CNI for similar results.
+    The master node is listed as `NotReady` because the cluster does not have a Container Networking Interface ([CNI](https://github.com/containernetworking/cni/blob/master/SPEC.md)). CNI is a spec for a of container based network interface. In this guide, we will be using Calico. Alternatively, you can use [Flannel](https://raw.githubusercontent.com/coreos/flannel/v0.9.0/Documentation/kube-flannel.yml) or another CNI for similar results.
 
     The `--pod-network-cidr` argument used in the [Configure the Kubernetes Master Node](#configure-the-kubernetes-master-node) section defines the network range for the CNI.
 

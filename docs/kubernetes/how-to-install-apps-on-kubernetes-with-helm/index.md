@@ -32,7 +32,7 @@ external_resources:
 
 The components of a Kubernetes application--deployments, services, ingresses, and other objects--are listed in manifest files (in the YAML file format). Kubernetes does not tell you how you should organize those files, though the Kubernetes documentation does offer a general set of [best practices](https://kubernetes.io/docs/concepts/configuration/overview/#general-configuration-tips).
 
-[Helm *charts*](https://helm.sh/docs/developing_charts/#the-chart-repository-guide) are the software packaging format for Helm. A chart specifies a file and directory structure that you follow when packaging your manifests. The structure looks as follows:
+[Helm *charts*](https://helm.sh/docs/topics/chart_repository/) are the software packaging format for Helm. A chart specifies a file and directory structure that you follow when packaging your manifests. The structure looks as follows:
 
     chart-name/
       Chart.yaml
@@ -208,7 +208,7 @@ Run `helm repo list` to see which repositories are registered with your client.
 
 ### Install the Chart
 
-The [`helm install` command](https://helm.sh/docs/helm/#helm-install) is used to install a chart by name. It can be run without any other options, but some charts expect you to pass in configuration values for the chart:
+The [`helm install` command](https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package) is used to install a chart by name. It can be run without any other options, but some charts expect you to pass in configuration values for the chart:
 
 1.  Create a file named `ghost-config.yaml` on your computer from this snippet:
 
