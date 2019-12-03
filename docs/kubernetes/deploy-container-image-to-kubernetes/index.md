@@ -368,7 +368,7 @@ The k8s-alpha CLI creates clusters that are pre-configured with useful Linode se
 apiVersion: v1
 kind: Service
 metadata:
-  name: : hugo-site
+  name: hugo-site
   namespace: hugo-site
 spec:
   selector:
