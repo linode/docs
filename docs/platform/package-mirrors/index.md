@@ -29,8 +29,7 @@ Linode offers public package mirrors for Ubuntu, Debian, and CentOS. When you in
 - <http://singapore.mirrors.linode.com/>
 - <http://syd1.mirrors.linode.com/>
 - <http://tor1.mirrors.linode.com/>
-- <http://tokyo.mirrors.linode.com/>
-- <http://tokyo2.mirrors.linode.com/>
+- <http://shinagawa.mirrors.linode.com/>
 
 
 ## Package Mirror Settings
