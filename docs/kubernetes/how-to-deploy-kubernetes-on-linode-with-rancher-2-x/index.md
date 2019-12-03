@@ -47,7 +47,7 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 ### If You Already Run Rancher
 
-If you already run Rancher and would like to start creating clusters on Linode, you can skip to the [Activate the Linode Node Driver](#activate-the-linode-node-driver-for-rancher) and [Deploy a Kubernetes Cluster](#deploy-a-kubernetes-cluster) sections. The [Deploy an App](#deploy-an-app-from-the-rancher-app-library) section will show how you can take advantage of the Linode CCM and CSI.
+If you already run Rancher and would like to start creating clusters on Linode, you can skip to the [The Linode Node Driver](#the-linode-node-driver-for-rancher) and [Deploy a Kubernetes Cluster](#deploy-a-kubernetes-cluster) sections. The [Deploy an App](#deploy-an-app-from-the-rancher-app-library) section will show how you can take advantage of the Linode CCM and CSI.
 
 You may need to update your local Rancher installation to see the Linode node driver as an option.
 
@@ -67,7 +67,7 @@ You will also need to generate an API token and prepare a domain zone:
 
 1.  Rancher will need a Linode APIv4 token from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide to get a token.
 
-1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/platform/manager/dns-manager/#domain-zones) guide.
+1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/platform/manager/dns-manager/#create-and-manage-domains) guide.
 
     {{< note >}}
 If you haven't purchased a domain name, then you can read along with the DNS section of this guide without implementing it in your own cluster.
@@ -376,7 +376,7 @@ Rancher introduces an organizational concept called [*projects*](https://rancher
 
 ## Deploy an App from the Rancher App Library
 
-Rancher provides a library of apps which offer easy setup through Rancher's UI. The apps in this curated library are based on existing [*Helm charts*](https://helm.sh/docs/developing_charts/).
+Rancher provides a library of apps which offer easy setup through Rancher's UI. The apps in this curated library are based on existing [*Helm charts*](https://helm.sh/docs/topics/charts/).
 
 A Helm chart is a popular format for describing Kubernetes resources. Rancher extends the Helm chart format with some additional configuration files, and this extended packaging is referred to as a [*Rancher chart*](https://rancher.com/docs/rancher/v2.x/en/catalog/custom/#chart-types). The additional information in the Rancher chart format is used to create interactive forms for configuring the app through the Rancher UI.
 

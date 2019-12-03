@@ -77,7 +77,7 @@ In order to use the Linode Kubernetes Engine, you will need to have *Network Hel
 If you don't want to use Network Helper on some Linodes that are not part of your LKE clusters, the service can also be disabled on a per-Linode basis; see instructions [here](/docs/platform/network-helper/#single-per-linode).
 
 {{< note >}}
-If you have already deployed an LKE cluster and did not enable Network Helper, you can [add a new node pool](#add-node-pools) with the same type, size, and count as your initial node pool. Once your new node pool is ready, you can then [delete the original node pool](#delete-a-cluster).
+If you have already deployed an LKE cluster and did not enable Network Helper, you can [add a new node pool](#add-a-node-pool-to-your-lke-cluster) with the same type, size, and count as your initial node pool. Once your new node pool is ready, you can then [delete the original node pool](#delete-a-node-pool-from-an-lke-cluster).
 {{</ note >}}
 
 ### Install kubectl

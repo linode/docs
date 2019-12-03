@@ -9,6 +9,7 @@ published: 2019-08-28
 modified_by:
   name: Linode
 title: "Deploy NodeBalancers with the Linode Cloud Controller Manager"
+aliases: ['applications/containers/deploy-nodebalancers-with-linode-ccm/']
 ---
 
 The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager) allows Kubernetes to deploy [Linode NodeBalancers](/docs/platform/nodebalancer/) whenever a Service of the "LoadBalancer" type is created. This provides the Kubernetes cluster with a reliable way of exposing resources to the public internet. The CCM handles the creation and deletion of the NodeBalancer, and correctly identifies the resources, and their networking, the NodeBalancer will service.
@@ -25,9 +26,9 @@ Using the Linode Cloud Controller Manager to create NodeBalancers will create bi
 
 ## Before You Begin
 
-You should have a working knowledge of Kubernetes and familiarity with the `kubectl` command line tool before attempting the instructions found in this guide. For more information about Kubernetes, consult our [Kubernetes Beginner's Guide](/docs/applications/containers/beginners-guide-to-kubernetes/) and our [Getting Started with Kubernetes](/docs/applications/containers/getting-started-with-kubernetes/) guide.
+You should have a working knowledge of Kubernetes and familiarity with the `kubcetl` command line tool before attempting the instructions found in this guide. For more information about Kubernetes, consult our [Kubernetes Beginner's Guide](/docs/kubernetes/beginners-guide-to-kubernetes/) and our [Getting Started with Kubernetes](/docs/kubernetes/getting-started-with-kubernetes/) guide.
 
-When using the CCM for the first time, it's highly suggested that you create a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state. For a completely automated install, you can use the [Linode CLI's k8s-alpha command line tool](https://developers.linode.com/kubernetes/). The Linode CLI's k8s-alpha command line tool utilizes [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) to fully bootstrap a Kubernetes cluster on Linode. It includes the [Linode Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) plugin, the [Linode CCM plugin](https://github.com/linode/linode-cloud-controller-manager), and the [ExternalDNS plugin](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md). For more information on creating a Kubernetes cluster with the Linode CLI, review our [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide.
+When using the CCM for the first time, it's highly suggested that you create a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state. For a completely automated install, you can use the [Linode CLI's k8s-alpha command line tool](https://developers.linode.com/kubernetes/). The Linode CLI's k8s-alpha command line tool utilizes [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) to fully bootstrap a Kubernetes cluster on Linode. It includes the [Linode Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) plugin, the [Linode CCM plugin](https://github.com/linode/linode-cloud-controller-manager), and the [ExternalDNS plugin](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md). For more information on creating a Kubernetes cluster with the Linode CLI, review our [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide.
 
 {{< note >}}
 To manually add the Linode CCM to your cluster, you must start `kubelet` with the `--cloud-provider=external` flag. `kube-apiserver` and `kube-controller-manager` must NOT supply the `--cloud-provider` flag. For more information, visit the [upstream Cloud Controller documentation](https://kubernetes.io/docs/tasks/administer-cluster/running-cloud-controller/).
@@ -45,7 +46,7 @@ If you are not using macOS, you can copy the `ccm-linode-template.yaml` file and
 
 ## Using the CCM
 
-To use the CCM, you must have a collection of Pods that need to be load balanced, usually from a [Deployment](/docs/applications/containers/kubernetes-reference/#deployment). For this example, you will create a Deployment that deploys three NGINX Pods, and then create a Service to expose those Pods to the internet using the Linode CCM.
+To use the CCM, you must have a collection of Pods that need to be load balanced, usually from a [Deployment](/docs/kubernetes/kubernetes-reference/#deployment). For this example, you will create a Deployment that deploys three NGINX Pods, and then create a Service to expose those Pods to the internet using the Linode CCM.
 
 1.  Create a Deployment manifest describing the desired state of the three replica NGINX containers:
 
@@ -312,4 +313,4 @@ Press escape to exit insert mode, then type `:wq` and press enter to save your c
 
 ## Next Steps
 
-To further take advantage of Linode products through Kubernetes, check out our guide on how to use the [Linode Container Storage Interface (CSI)](/docs/applications/containers/deploy-volumes-with-the-linode-block-storage-csi-driver/), which allows you to create persistent volumes backed by Linode Block Storage.
+To further take advantage of Linode products through Kubernetes, check out our guide on how to use the [Linode Container Storage Interface (CSI)](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/), which allows you to create persistent volumes backed by Linode Block Storage.
