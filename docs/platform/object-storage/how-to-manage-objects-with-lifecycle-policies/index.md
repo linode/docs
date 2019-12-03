@@ -130,7 +130,7 @@ Objects that are part of failed multipart uploads (the mechanism by which large 
 
 More than one action can be specified in a single rule. For example, you may want to both expire the current version of an object after a set number of days and also remove old versions of it after another period of time. The following policy will delete the current version of an object after 10 days and remove any noncurrent versions of an object 3 days after they are demoted from the current version:
 
-{{< file "lifecycle_policy_multipart_upload.xml" xml >}}
+{{< file "lifecycle_policy_multiple_actions.xml" xml >}}
 <LifecycleConfiguration>
     <Rule>
         <ID>delete-prior-versions</ID>
