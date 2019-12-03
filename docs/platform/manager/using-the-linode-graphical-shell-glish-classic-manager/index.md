@@ -11,7 +11,8 @@ modified_by:
   name: Linode
 published: 2015-08-28
 title: 'Using the Linode Graphical Shell (Glish)'
-classic_manager_link: platform/manager/using-the-linode-graphical-shell-glish-classic-manager/
+cloud_manager_link: platform/manager/using-the-linode-graphical-shell-glish/
+hiddenguide: true
 ---
 
 ![Using the Linode Graphical Shell Glish](using-linode-glish-title.jpg "Using the Linode Graphical Shell Glish title graphic")
@@ -38,17 +39,19 @@ The process for launching a getty may differ depending on your distribution.
 
 ## Access Glish
 
-1.  From your Linode Dashboard, select the Linode you want to access.
+1.  From your Linode Dashboard, click on the **Remote Access** Tab. Under **Console Access**, click on the "Launch Graphical Web Console" link:
 
-2.  Click the **more options ellipsis** corresponding to the Linode and select **Launch Console**.    
+    [![Glish access link.](glish-link_small.png)](glish-link.png)
 
-3.  Select the **Glish** tab in the pop-up window that appears.
+    A new window will pop up:
 
-4.  You will need to install a desktop environment. On our Debian example Linode, we're using Xfce4:
+    [![Glish at the Debian login prompt.](glish-debian-prompt_small.png)](glish-debian-prompt.png)
+
+2.  You will need to install a desktop environment. On our Debian example Linode, we're using Xfce4:
 
         sudo apt-get install xfce4
 
-5.  After installation, launch your desktop environment from the Glish console:
+3.  After installation, launch your desktop environment from the Glish console:
 
         startxfce4
 
