@@ -34,7 +34,7 @@ You can now create a Kubernetes cluster with one command using the Linode CLI. T
 
 ## System Requirements
 
-To complete this guide you will need three Linodes running Ubuntu 16.04 LTS, each with at least 4GB of RAM. Before beginning this guide, you should also use the Linode Manager to generate a [private IP address](https://linode.com/docs/networking/remote-access#adding-private-ip-addresses) for each Linode.
+To complete this guide you will need three Linodes running Ubuntu 16.04 LTS, each with at least 4GB of RAM. Before beginning this guide, you should also use the Linode Manager to generate a [private IP address](/docs/platform/manager/remote-access/#adding-private-ip-addresses) for each Linode.
 
 ## Before You Begin
 

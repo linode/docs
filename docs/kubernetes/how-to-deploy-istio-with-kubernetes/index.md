@@ -14,8 +14,8 @@ contributor:
   name: Linode
 external_resources:
 - '[Istio](https://istio.io)'
-- '[Istio Mesh Security](https://istio.io/docs/ops/security/)'
-- '[Istio Troubleshooting](https://istio.io/docs/ops/troubleshooting/)'
+- '[Istio Mesh Security](https://istio.io/docs/ops/configuration/security/)'
+- '[Istio Troubleshooting](https://istio.io/docs/ops/diagnostic-tools/)'
 aliases: ['applications/containers/kubernetes/how-to-deploy-istio-with-kubernetes/']
 ---
 

@@ -217,7 +217,7 @@ kubeadm join 192.0.2.0:6443 --token udb8fn.nih6n1f1aijmbnx5 \
     --discovery-token-ca-cert-hash sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26
       {{</ output >}}
 
-      The `kubeadm join` command will be used in the [Join a Worker Node to the Cluster](/docs/kubernetes/getting-started-with-kubernetes/#join-a-worker-node-to-the-cluster) section of this guide to bootstrap the worker nodes to the Kubernetes cluster. This command should be kept handy for later use. Below is a description of the required options you will need to pass in with the `kubeadm join` command:
+      The `kubeadm join` command will be used in the [Join a Worker Node to the Cluster](#join-a-worker-node-to-the-cluster) section of this guide to bootstrap the worker nodes to the Kubernetes cluster. This command should be kept handy for later use. Below is a description of the required options you will need to pass in with the `kubeadm join` command:
       - The master node's IP address and the Kubernetes API server's port number. In the example output, this is `192.0.2.0:6443`. The Kubernetes API server's port number is `6443` by default on all Kubernetes installations.
       - A bootstrap token. The bootstrap token has a 24-hour TTL (time to live). A new bootstrap token can be generated if your current token expires.
       - A CA key hash. This is used to verify the authenticity of the data retrieved from the Kubernetes API server during the bootstrap process.
@@ -283,7 +283,7 @@ Now that your Kubernetes master node is set up, you can join worker nodes to you
 
 1. The worker node's kubelet is now able to connect to the Kubernetes API server using the node's established identity.
 
-Before continuing, you will need to make sure that you know your Kubernetes API server's IP address, that you have a bootstrap token, and a CA key hash. This information was provided when kubeadm was initialized on the master node in the [Set up the Kubernetes Control Plane](/docs/kubernetes/getting-started-with-kubernetes/#set-up-the-kubernetes-control-plane) section of this guide. If you no longer have this information, you can regenerate the necessary information from the master node.
+Before continuing, you will need to make sure that you know your Kubernetes API server's IP address, that you have a bootstrap token, and a CA key hash. This information was provided when kubeadm was initialized on the master node in the [Set up the Kubernetes Control Plane](#set-up-the-kubernetes-control-plane) section of this guide. If you no longer have this information, you can regenerate the necessary information from the master node.
 
 {{< disclosure-note "Regenerate a Bootstrap Token" >}}
 These commands should be issued from your master node.
