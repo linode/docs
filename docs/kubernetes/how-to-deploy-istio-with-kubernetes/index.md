@@ -14,8 +14,8 @@ contributor:
   name: Linode
 external_resources:
 - '[Istio](https://istio.io)'
-- '[Istio Mesh Security](https://istio.io/docs/ops/security/)'
-- '[Istio Troubleshooting](https://istio.io/docs/ops/troubleshooting/)'
+- '[Istio Mesh Security](https://istio.io/docs/ops/configuration/security/)'
+- '[Istio Troubleshooting](https://istio.io/docs/ops/diagnostic-tools/)'
 aliases: ['applications/containers/kubernetes/how-to-deploy-istio-with-kubernetes/']
 ---
 
@@ -39,14 +39,14 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 ## Before You Begin
 
-Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kubernetes](/docs/applications/containers/kubernetes/beginners-guide-to-kubernetes/) and [Advantages of Using Kubernetes](/docs/applications/containers/kubernetes/kubernetes-use-cases/).
+Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) and [Advantages of Using Kubernetes](/docs/kubernetes/kubernetes-use-cases/).
 
 ## Create Your Kubernetes Cluster
 
 There are many ways to create a Kubernetes cluster. This guide will use the Linode k8s-alpha CLI.
 
 1. To set it up the Linode k8s-alpha CLI, see the
-[How to Deploy Kubernetes on Linode with the k8s-alpha CLI](https://www.linode.com/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide and stop before the "Create a Cluster" section.
+[How to Deploy Kubernetes on Linode with the k8s-alpha CLI](https://www.linode.com/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide and stop before the "Create a Cluster" section.
 
 1. Now that your Linode K8s-alpha CLI is set up, You are ready to create your Kubernetes cluster. You will need **3 worker nodes** and **one master** for this guide. Create your cluster using the following command:
 
@@ -69,7 +69,7 @@ Come hang out with us in #linode on the Kubernetes Slack! http://slack.k8s.io/
 
 ### Install Helm and Tiller
 
-Follow the instructions in the [How to Install Apps on Kubernetes with Helm](https://www.linode.com/docs/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) guide to install Helm and Tiller on your cluster. Stop before the section on "Using Helm Charts to Install Apps".
+Follow the instructions in the [How to Install Apps on Kubernetes with Helm](https://www.linode.com/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) guide to install Helm and Tiller on your cluster. Stop before the section on "Using Helm Charts to Install Apps".
 
 ## Install Istio
 

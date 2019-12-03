@@ -40,9 +40,9 @@ This guide was written using version 1.14 of Kubectl.
 ## Before You Begin
 
 1. Create a Kubernetes cluster with one worker node. This can be done in two ways:
-    1. Deploy a Kubernetes cluster using [kubeadm](/docs/applications/containers/kubernetes/getting-started-with-kubernetes/).
+    1. Deploy a Kubernetes cluster using [kubeadm](/docs/kubernetes/getting-started-with-kubernetes/).
         - You will need to deploy two Linodes. One will serve as the master node and the other will serve as a worker node.
-    1. Deploy a Kubernetes cluster using [k8s-alpha CLI](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/).
+    1. Deploy a Kubernetes cluster using [k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/).
 
 1. [Create a GitHub account](https://github.com/join) if you don't already have one.
 
@@ -246,7 +246,7 @@ EXPOSE 80
 
         echo -e "public/\n.git/\n.gitmodules/\n.gitignore" >> .dockerignore
 
-1. Follow the steps 2 - 4 in the [Version Control the Site with Git](/docs/applications/containers/kubernetes/deploy-container-image-to-kubernetes/#version-control-the-site-with-git) section to add any new files created in this section to your local git repository.
+1. Follow the steps 2 - 4 in the [Version Control the Site with Git](#version-control-the-site-with-git) section to add any new files created in this section to your local git repository.
 
 ### Build the Docker Image
 
@@ -431,7 +431,7 @@ spec:
       - The deployment's object `spec` states that the deployment should have 3 replica pods. This means at any given time the cluster will have 3 pods that run the Hugo site service.
       - The `template` field provides all the information needed to create actual pods.
       - The label `app: hugo-site` helps the deployment know which service pods to target.
-      - The `container` field states that any containers connected to this deployment should use the Hugo site image `mydockerhubusername/hugo-site:v1` that was created in the [Build the Docker Image](/docs/applications/containers/kubernetes/deploy-container-image-to-kubernetes/#build-the-docker-image) section of this guide.
+      - The `container` field states that any containers connected to this deployment should use the Hugo site image `mydockerhubusername/hugo-site:v1` that was created in the [Build the Docker Image](#build-the-docker-image) section of this guide.
       - `imagePullPolicy: Always` means that the container image will be pulled every time the pod is started.
       - `containerPort: 80` states the port number to expose on the pod's IP address. The system does not rely on this field to expose the container port, instead, it provides information about the network connections a container uses.
 
@@ -489,5 +489,5 @@ To avoid being further billed for your Kubernetes cluster, tear down your cluste
 
 Now that you are familiar with basic Kubernetes concepts, like configuring pods, grouping resources, and deploying services, you can deploy a Kubernetes cluster on Linode for production use by using the steps in the following guides:
 
-  - [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/)
-  - [How to Deploy Kubernetes on Linode with Rancher 2.2](/docs/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/)
+  - [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/)
+  - [How to Deploy Kubernetes on Linode with Rancher](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/)
