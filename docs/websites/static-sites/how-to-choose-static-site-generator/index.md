@@ -33,11 +33,11 @@ While a static site generator doesn't need a complex backend and database, it do
 
 Many static site generators have pre-built themes for easy blogging. This allows bloggers to write in a distraction-free environment, while still having the option to format text using Markdown.
 
-Static sites can also be used for documentation. For example, Linode's documentation library is built using [Hugo](https://gohugo.io). Check out the source Markdown file for this guide [on GitHub](https://github.com/linode/docs/blob/master/docs/websites/static-sites/how-to-choose-static-site-generator.md) to see what it looks like before Hugo applies our custom theme.
+Static sites can also be used for documentation. For example, Linode's documentation library is built using [Hugo](https://gohugo.io). Check out the source Markdown file for this guide [on GitHub](https://github.com/linode/docs/blob/master/docs/websites/static-sites/how-to-choose-static-site-generator/index.md) to see what it looks like before Hugo applies our custom theme.
 
 Personal or event websites (portfolios, wedding sites, and campaign pages) are also easy to set up using a static site generator.
 
-Many websites are built using static site generators, including this [list of Jekyll sites](https://github.com/jekyll/jekyll/wiki/Sites), these [Hugo examples](https://gohugo.io/showcase/), and the [Gatsby site showcase](https://github.com/gatsbyjs/gatsby#showcase).
+Many websites are built using static site generators, including this [list of Jekyll sites](https://github.com/jekyll/jekyll/wiki/Sites), these [Hugo examples](https://gohugo.io/showcase/), and the [Gatsby site showcase](https://www.gatsbyjs.org/showcase/).
 
 ## Compare Features
 
