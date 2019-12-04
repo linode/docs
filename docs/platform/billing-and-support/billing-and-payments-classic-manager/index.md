@@ -187,7 +187,7 @@ You can cancel your account and receive a refund. Here's how:
 1.  Log in to the [Linode Manager](http://manager.linode.com).
 2.  Click the **Accounts** tab.
 3.  At the bottom of the page, select the **Cancel this Account** link. The cancel account webpage appears.
-4.  If you have a prepaid service credit on your account at the time of cancellation, you are entitled to a refund, minus a $5 processing fee. To request a refund, enter a note in the text field. Note that credits from sources other than prepaying cannot be refunded.
+4.  If you have a credit on your account at the time of cancellation, and this credit is from an overpayment you have made to the account, you are entitled to a refund, minus a $5 processing fee. To request a refund, enter a note in the text field. Note that credits from sources other than prepaying cannot be refunded.
 5.  Select the confirmation checkbox.
 6.  Click the **Cancel this Account Immediately** checkbox.
 
