@@ -288,7 +288,7 @@ You can specify the amount of workers you want Gunicorn to use with the `--worke
     {{< file "/etc/supervisor/conf.d/flask_app.conf" supervisor >}}
 [program:flask_app]
 directory=/home/flask_app_project
-command=gunicorn3 -workers=3 flask_app:app
+command=gunicorn3 --workers=3 flask_app:app
 autostart=true
 autorestart=true
 stopasgroup=true
@@ -315,8 +315,8 @@ Restarted supervisord
     {{< note >}}
 Your application should now be accessible again via your Linode's IP. If you are unable to access your application or receive a bad gateway error, Gunicorn is likely not running. Check your log files to further investigate the issue.
 
-    cat /var/log/flaskapp/flaskapp.err.log
-    cat /var/log/flaskapp/flaskapp.out.log
+    cat /var/log/flask_app/flask_app.err.log
+    cat /var/log/flask_app/flask_app.out.log
     {{</ note >}}
 
     Your Flask application is now deployed to your production environment and available to anyone for viewing. You can follow a similar workflow to deploy any Flask application to a Linode.
