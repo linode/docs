@@ -23,7 +23,7 @@ Linode Object Storage offers affordable and full-featured cloud storage for unst
 
 Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabytes of storage. This flat rate is prorated, so if you use Object Storage for a fraction of the month you will be charged a fraction of the cost. For example, if you have Object Storage enabled for half of the month and use up to 250 gigabytes of storage you will be billed $2.50 at the end of the month. Each additional gigabyte of storage over the first 250 gigabytes will cost $0.02, and this usage is also prorated based on usage time.
 
-Object Storage can be viewed similarly to a subscription service. Once enabled, you will be billed at the flat rate regardless of whether or not there are active buckets on your account.
+Object Storage is similar to a subscription service. **Once enabled, you will be billed at the flat rate regardless of whether or not there are active buckets on your account.** [Cancelling Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#cancel-object-storage) will stop billing for this flat rate.
 
 {{< note >}}
 For more information on enabling Object Storage, cancelling Object Storage, and more, see our [How To Guide](/docs/platform/object-storage/how-to-use-object-storage/#enable-object-storage).

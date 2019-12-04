@@ -44,7 +44,11 @@ In this guide you will learn:
 
 ## Enable Object Storage
 
-Object Storage is not enabled by default. All that is required to enable Object Storage is to create a bucket or an access key. To cancel Object Storage, see the [Cancel Object Storage](#cancel-object-storage) section.
+Object Storage is not enabled for a Linode account by default. All that is required to enable Object Storage is to create a bucket or an Object Storage access key. To cancel Object Storage, see the [Cancel Object Storage](#cancel-object-storage) section.
+
+{{< note >}}
+Billing for Object Storage will start when it is enabled on your account, **regardless of how it is enabled**. For example, if you enable the service by creating an access key, but you have not yet created a bucket, the $5 monthly flat rate (prorated) for Object Storage will be charged for your account. [Cancelling Object Storage](#cancel-object-storage) will stop billing for it.
+{{< /note >}}
 
 ## Object Storage Key Pair
 
@@ -607,7 +611,7 @@ To create a static site from your bucket:
 1.  To cancel Object Storage, you must first delete all of your buckets. To delete a bucket, the bucket must be empty. For buckets that contain large amounts of objects, consider employing [lifecycle policies](/docs/platform/object-storage/lifecycle-policies/) to delete the objects.
 
     {{< caution >}}
-Without active buckets, your account will still be billed at a prorated flat rate of $5 per month until the service itself is cancelled. Make sure that you complete each step of this section to fully cancel the Object Storage service to no longer be billed. For more information, see our [Pricing and Limitations Guide](/docs/platform/object-storage/pricing-and-limitations/).
+If you have removed all of your buckets, but you have not also cancelled the Object Storage service, your account will continued to be billed at a flat rate of $5 per month (prorated) for the service. Make sure that you complete each step of this section to fully cancel the Object Storage service and to stop billing for it. For more information, see our [Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
 {{< /caution >}}
 
 1.  Once you've deleted all of your buckets, navigate to the **Account** page in the left-hand navigation. Click on the *Settings* tab. In the menu, you should see a setting for Object Storage:
