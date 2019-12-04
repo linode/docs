@@ -5,11 +5,11 @@ author:
 description: 'Install MongoDB for document-oriented data storage on Ubuntu 16.04 (Xenial).'
 keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-12-30
 modified_by:
-  name: Phil Zona
+  name: Linode
 published: 2016-05-20
-title: 'Install MongoDB on Ubuntu 16.04 (Xenial)'
+title: 'How To Install MongoDB on Ubuntu 16.04 (Xenial)'
+h1_title: 'Installing MongoDB on Ubuntu 16.04 (Xenial)'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
@@ -177,7 +177,6 @@ Successfully added user: {
 
 For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://docs.mongodb.com/manual/security).
 
-
 ## Manage Data and Collections
 
 Much of MongoDB's popularity comes from its ease of integration. Interactions with databases are done via JavaScript methods, but [drivers for other languages](https://docs.mongodb.com/ecosystem/drivers/) are available. This section will demonstrate a few basic features, but we encourage you to do further research based on your specific use case.
@@ -199,7 +198,6 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
         db.createCollection("exampleCollection", {capped: false})
 
     If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/manual/reference/method/db.createCollection/).
-
 
     {{< note >}}
 Collection names should not include certain punctuation such as hyphens. However, exceptions may not be raised until you attempt to use or modify the collection. For more information, refer to MongoDB's [naming restrictions](https://docs.mongodb.com/manual/reference/limits/#naming-restrictions).
