@@ -197,10 +197,14 @@ Tasks related to Linode instances are performed with `linode-cli linodes [ACTION
 1.  Rebuild a Linode:
 
         linode-cli linodes rebuild $linode_id --image linode/debian9 --root_pass
-        
+
 1. Rebuild a Linode, adding a populated authorized_keys file:
 
-        linode-cli linodes rebuild $linode_id --image linode/debian9 --root_pass --authorized_keys "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN4f0uMlX/9kH/6yRuHQw8m8qd5niKV9fTDQh90N0wMe"
+        linode-cli linodes rebuild $linode_id --image linode/debian9 --root_pass --authorized_keys "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEC+DOVfw+8Jsw1IPrYCcU9/HCuKayCsV8bXjsHqX/Zq email@example.com"
+
+    If your key exists on your filesystem, you can also substitute its value in the CLI command with `cat`. For example:
+
+        linode-cli linodes rebuild $linode_id --image linode/debian9 --root_pass --authorized_keys "$(cat ~/.ssh/id_rsa.pub)"
 
 Many other actions are available. Use `linode-cli linodes --help` for a complete list.
 
