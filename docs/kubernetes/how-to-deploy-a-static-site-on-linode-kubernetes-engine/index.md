@@ -42,7 +42,7 @@ This guide will show you how to:
 
 ## Before You Begin
 
-- You should have a working knowledge of Kubernetes' key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/) series.
+- You should have a working knowledge of Kubernetes' key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series.
 
 - You will also need to prepare your workstation with some prerequisite software:
 
@@ -415,7 +415,7 @@ static-site-deployment-cdb88b5bb-lzdvh&nbsp;&nbsp;1/1&nbsp;&nbsp;&nbsp;&nbsp;&nb
     Specifically, the Service manifest that will be used in this guide will trigger the creation of a Linode [NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/).
 
     {{< note >}}
-The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/kubernetes/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Deploying NodeBalancers with the Linode CCM guide](/docs/applications/containers/deploy-nodebalancers-with-linode-ccm/).
+The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/kubernetes/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Deploying NodeBalancers with the Linode CCM guide](/docs/kubernetes/deploy-nodebalancers-with-linode-ccm/).
 {{< /note >}}
 
 1.  Name the file `static-site-service.yaml`, save it to your `manifests` directory, and enter the contents of this snippet:

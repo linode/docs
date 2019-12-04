@@ -77,7 +77,7 @@ In order to use the Linode Kubernetes Engine, you will need to have *Network Hel
 If you don't want to use Network Helper on some Linodes that are not part of your LKE clusters, the service can also be disabled on a per-Linode basis; see instructions [here](/docs/platform/network-helper/#single-per-linode).
 
 {{< note >}}
-If you have already deployed an LKE cluster and did not enable Network Helper, you can [add a new node pool](#add-node-pools) with the same type, size, and count as your initial node pool. Once your new node pool is ready, you can then [delete the original node pool](#delete-a-cluster).
+If you have already deployed an LKE cluster and did not enable Network Helper, you can [add a new node pool](#add-a-node-pool-to-your-lke-cluster) with the same type, size, and count as your initial node pool. Once your new node pool is ready, you can then [delete the original node pool](#delete-a-node-pool-from-an-lke-cluster).
 {{</ note >}}
 
 ### Install kubectl
@@ -212,7 +212,7 @@ These instructions will persist the context for users of the Bash terminal. They
 
     If an `export KUBECONFIG` line is already present in the file, append to the end of this line as follows; if it is not present, add this line to the end of your file:
 
-        export KUBECONFIG:$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/cluster12345-config.yaml
+        export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/cluster12345-config.yaml
 
     {{< note >}}
 Alter the `$HOME/.kube/configs/cluster12345-config.yaml` path in the above line with the name of the file you decoded to in the previous section.

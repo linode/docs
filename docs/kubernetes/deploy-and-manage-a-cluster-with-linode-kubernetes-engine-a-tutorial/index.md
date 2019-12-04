@@ -45,7 +45,7 @@ In this guide you will learn:
  - [Next Steps after deploying your cluster.](#next-steps)
 
 {{< caution >}}
-This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster) when you have finished the guide.
+This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](#delete-a-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account.
 {{< /caution >}}
@@ -211,7 +211,7 @@ Optionally, you can give the copied file a different name to help distinguish it
 
     If an `export KUBECONFIG` line is already present in the file, append to the end of this line as follows; if it is not present, add this line to the end of your file:
 
-        export KUBECONFIG:$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/kubeconfig.yaml
+        export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/kubeconfig.yaml
 
 1.  Close your terminal window and open a new window to receive the changes to the `$KUBECONFIG` variable.
 

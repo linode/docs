@@ -16,7 +16,7 @@ aliases: ['platform/object-storage/lifecycle-policies/']
 ---
 
 {{< note >}}
-[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with objects stored in Object Storage buckets will be billed. For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
+[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with the Object Storage service enabled on their account will be billed. For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
 {{</ note >}}
 
 While deleting a few objects in an Object Storage bucket might not take that long, when the objects number in the thousands or even millions the time required to complete the delete operations can easily become unmanageable. When deleting a substantial amount of objects, it's best to use *lifecycle policies*. These policies can be represented in XML; here's an (incomplete) snippet of an action that will delete objects after 1 day:
@@ -130,7 +130,7 @@ Objects that are part of failed multipart uploads (the mechanism by which large 
 
 More than one action can be specified in a single rule. For example, you may want to both expire the current version of an object after a set number of days and also remove old versions of it after another period of time. The following policy will delete the current version of an object after 10 days and remove any noncurrent versions of an object 3 days after they are demoted from the current version:
 
-{{< file "lifecycle_policy_multipart_upload.xml" xml >}}
+{{< file "lifecycle_policy_multiple_actions.xml" xml >}}
 <LifecycleConfiguration>
     <Rule>
         <ID>delete-prior-versions</ID>
