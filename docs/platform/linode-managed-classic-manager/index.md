@@ -13,7 +13,7 @@ title: Linode Managed
 hiddenguide: true
 ---
 
-[Linode Managed](https://www.linode.com/managed/) is a 24/7 incident response service. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, we'll monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
+[Linode Managed](https://www.linode.com/products/managed/) is a 24/7 incident response service. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, we'll monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
 
 {{< note >}}
 Linode Managed applies to all Linodes on an account and will be billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by opening up a Support ticket from both accounts requesting the transfer.
@@ -21,7 +21,7 @@ Linode Managed applies to all Linodes on an account and will be billed at a rate
 
 ## Getting Started
 
-First, you'll need to [sign up for Linode Managed](https://www.linode.com/managed/). Once Linode Managed is enabled for your account, you'll see the **Managed** tab when you log in to the Linode Manager, as shown below. You'll use this interface to interact with Linode Managed and monitor your servers.
+First, you'll need to [sign up for Linode Managed](https://www.linode.com/products/managed/). Once Linode Managed is enabled for your account, you'll see the **Managed** tab when you log in to the Linode Manager, as shown below. You'll use this interface to interact with Linode Managed and monitor your servers.
 
 [![The Linode Managed interface.](1198-managed_overview.png)](1198-managed_overview.png)
 
