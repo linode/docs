@@ -6,11 +6,12 @@ description: 'Learn how to create Chef cookbooks by creating a LAMP stack in Che
 keywords: ["chef", "automation", "cookbooks", "configuration management", "DevOps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['applications/chef/creating-your-first-chef-cookbook/']
-modified: 2019-10-24
+modified: 2019-12-03
 modified_by:
   name: Linode
 published: 2015-06-10
-title: Creating Your First Chef Cookbook
+title: How to Create Your First Chef Cookbook
+h1_title: Creating Your first Chef Cookbook
 external_resources:
  - '[Chef](http://www.chef.io)'
  - '[About Cookbooks](https://docs.chef.io/cookbooks.html)'
@@ -32,11 +33,12 @@ Chef cookbooks describe the *desired state* of your nodes, and allow Chef to pus
 
 1. The examples in this tutorial require a user account with sudo privileges. Readers who use a limited user account will need to prefix commands with sudo when issuing commands to the Chef client node and replace `-x root` with `-x username` where `username` is your limited user account.
 
-1. Ensure that your workstation's `/etc/hosts` file contains its own IP address and hostname and the IP address and hostname for any nodes you will interact with from the workstation. For example:
+1. Ensure that your workstation's `/etc/hosts` file contains its own IP address, the Chef server's IP address and fully qualified domain name, and the IP address and hostname for any nodes you will interact with from the workstation. For example:
 
     {{< file "/etc/hosts">}}
     127.0.0.1       localhost
     192.0.2.0       workstation
+    192.0.1.0       www.example.com
     198.51.100.0    node-hostname
     {{</ file >}}
 
@@ -57,7 +59,7 @@ Chef cookbooks describe the *desired state* of your nodes, and allow Chef to pus
       If you issue the `ls` command, you should see the following files and directories:
 
       {{< output >}}
-  Berksfile  CHANGELOG.md  chefignore  LICENSE  metadata.rb  README.md  recipes  spec  test
+Berksfile  CHANGELOG.md  chefignore  LICENSE  metadata.rb  README.md  recipes  spec  test
     {{</ output >}}
 
 ### default.rb
@@ -105,8 +107,9 @@ end
     You should see a similar output:
 
       {{< output >}}
-        lamp_stack         0.1.0
-      {{</ output >}}
+Uploading lamp_stack   [0.1.0]
+Uploaded 1 cookbook.
+{{</ output >}}
 
 1.  Add the recipe to your chosen node's *run list*, replacing `nodename` with your node's name:
 
@@ -229,7 +232,7 @@ end
 
 1.  Within the `node` resource, define a document root. This root will be used to define the public HTML files, and any log files that will be generated:
 
-    {{< file "~/chef-repo/cookbooks/lamp_stack/apache.rb" ruby >}}
+    {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
 node["lamp_stack"]["sites"].each do |sitename, data|
   document_root = "/var/www/html/#{sitename}"
 end
@@ -237,7 +240,7 @@ end
 
 1.  Create the `document_root` directory. Declare a `directory` resource with a `true` recursive value so all directories leading up to the `sitename` will be created. A permissions value of `0755` allows for the file owner to have full access to the directory, while group and regular users will have read and execute privileges:
 
-    {{< file "~/chef-repo/cookbooks/lamp_stack/apache.rb" ruby >}}
+    {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
 node["lamp_stack"]["sites"].each do |sitename, data|
   document_root = "/var/www/html/#{sitename}"
 
@@ -274,6 +277,8 @@ end
 1.  Return to the `apache.rb` recipe. In the space after the `directory` resource, use the `template` resource to call upon the template file just created:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
+# [...]
+
 #Virtual Hosts Files
 
 node["lamp_stack"]["sites"].each do |sitename, data|
@@ -388,7 +393,7 @@ Cookbook files are static documents that are run against the document in the sam
 
 1.  Create a file called `mpm_prefork.conf` and copy the MPM event configuration into it, changing any needed values:
 
-    {{< file "~/chef-repo/cookbooks/lamp_stack/files/default/mpm_event.conf" aconf >}}
+    {{< file "~/chef-repo/cookbooks/lamp_stack/files/default/mpm_prefork.conf" aconf >}}
 <IfModule mpm_prefork_module>
         StartServers            4
         MinSpareServers         3
@@ -433,7 +438,7 @@ execute "keepalive" do
   action :run
 end
 
-execute "enable-event" do
+execute "enable-prefork" do
 
 # [...]
 {{< /file >}}
@@ -453,7 +458,7 @@ execute "enable-event" do
 1.  From the main directory of your LAMP stack cookbook, open the `metadata.rb` file and add a dependency to the MySQL cookbook:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/metadata.rb" >}}
-depends          'mysql', '~> 8.5.1'
+depends          'mysql', '~> 8.6.0'
 
 {{< /file >}}
 
@@ -473,7 +478,7 @@ Chef contains a feature known as *data bags*. Data bags store information, and c
 
         openssl rand -base64 512 > ~/chef-repo/.chef/encrypted_data_bag_secret
 
-1.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` (an example can be found in the [Setting Up Chef](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/#add-the-rsa-private-keys) guide), or through the use of a recipe and cookbook file.
+1.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` from the node (an example can be found in the [Setting Up Chef](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/#add-the-rsa-private-keys) guide), or through the use of a recipe and cookbook file.
 
 1.  On the workstation, create a `mysql` data bag that will contain the file `rtpass.json` for the root password:
 
@@ -643,7 +648,7 @@ end
 
         knife ssh 'name:node_name' 'systemctl status apache2' -x root
 
-    Additionally, you can visit your server's domain name in your browser. If it is working, you should see an empty index page (as you have not uploaded any files to your server yet.)
+    Additionally, you can visit your server's domain name in your browser. If it is working, you should see a Chef server page that will instruct you on how to set up the Management Console (as you have not uploaded any files to your server yet.)
 
 1.  To check on the status of PHP, you'll need to upload a file to your server to make sure it's being rendered correctly. A simple PHP file that you can create is a PHP info file. Create a file called `info.php` in the same directory as the other cookbook files you've created:
 
@@ -653,7 +658,7 @@ end
 
     Modify your `php.rb` file and add the following to the end of the file, replacing `example.com` your website's domain name:
 
-    {{< file "~/chef-repo/cookbooks/lamp_stack/" ruby >}}
+    {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/php.rb" ruby >}}
 cookbook_file "/var/www/html/example.com/public_html/info.php" do
   source "info.php"
 end

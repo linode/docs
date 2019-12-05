@@ -6,7 +6,7 @@ description: 'Instructions on how to configure a Chef server and a virtual works
 keywords: ["chef", "configuration management", "server automation", "chef server", "chef workstation", "chef-client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
-modified: 2019-01-17
+modified: 2019-12-03
 modified_by:
   name: Linode
 title: 'Install a Chef Server Workstation on Ubuntu 18.04'
@@ -43,7 +43,7 @@ The Chef server is the hub of interaction between all workstations and nodes und
 
 1.  Download the [latest Chef server core](https://downloads.chef.io/chef-server/#ubuntu):
 
-        wget https://packages.chef.io/files/stable/chef-server/12.18.14/ubuntu/18.04/chef-server-core_12.18.14-1_amd64.deb
+        wget https://packages.chef.io/files/stable/chef-server/13.1.13/ubuntu/18.04/chef-server-core_13.1.13-1_amd64.deb
 
 1.  Install the server:
 
@@ -77,6 +77,10 @@ In order to link workstations and nodes to the Chef server, create an administra
 
         sudo chef-server-ctl org-create ORG_NAME "ORG_FULL_NAME" --association_user USER_NAME --filename ~/.chef/ORG_NAME.pem
 
+    {{< note >}}
+`ORG_NAME` must be in all lower case.
+{{</ note >}}
+
     To view a list of all organizations on your Chef server, use the following command:
 
         sudo chef-server-ctl org-list
@@ -107,10 +111,11 @@ In this section, you will download and install the Chef Workstation package, whi
 
         chef generate repo chef-repo
 
-1. Ensure that your workstation's `/etc/hosts` file maps its IP address to your workstation's hostname. For example:
+1. Ensure that your workstation's `/etc/hosts` file maps its IP address to your Chef server's fully qualified domain name and workstation hostnames. For example:
 
     {{< file "/etc/hosts">}}
 127.0.0.1 localhost
+192.0.1.0 example.com
 192.0.2.0 workstation
 ...
     {{</ file >}}
@@ -174,8 +179,8 @@ The workstation is used to create, download, and edit cookbooks and other relate
     It should output:
 
     {{< output >}}
-        On branch master
-        nothing to commit, working directory clean
+On branch master
+nothing to commit, working directory clean
     {{</ output >}}
 
 ## Generate your First Cookbook
@@ -183,10 +188,6 @@ The workstation is used to create, download, and edit cookbooks and other relate
 1. Generate a new Chef cookbook:
 
         chef generate cookbook my_cookbook
-1.  Generate the `chef-repo` and move into the newly-created directory:
-
-        chef generate app chef-repo
-        cd chef-repo
 
 ### Configure Knife
 
@@ -241,6 +242,16 @@ Bootstrapping a node installs the Chef client on the node and validates the node
 If you encounter any `401 Unauthorized` errors ensure that your `ORGANIZATION.pem` file has `700` permissions. See [Chef's troubleshooting](https://docs.chef.io/errors.html) guide for further information on diagnosing authentication errors.
 {{</ note >}}
 
+1. Update the `/etc/hosts` file on the *node* to identify the node, Chef server's domain name, and the workstation.
+
+    {{< file "/etc/hosts">}}
+127.0.0.1 localhost
+198.51.100.0 node-hostname
+192.0.2.0 workstation
+192.0.1.0 example.com
+...
+    {{</ file >}}
+
 1. From your *workstation*, navigate to your `~/chef-repo/.chef` directory:
 
         cd ~/chef-repo/.chef
@@ -253,7 +264,7 @@ If you encounter any `401 Unauthorized` errors ensure that your `ORGANIZATION.pe
 
     - **As a user with sudo privileges**, change `username` to a node user, `password` to the user's password and `nodename` to the desired name for the client node. You can leave this off if you would like the name to default to your node's hostname:
 
-            knife bootstrap 192.0.2.0 -x username -P password --sudo --node-name nodename
+            knife bootstrap 192.0.2.0 -x username -P password --use-sudo-password --node-name nodename
 
     - **As a user with key-pair authentication**, change `username` to a node user, and `nodename` to the desired name for the client node. You can leave this off if you would like the name to default to your client node's hostname:
 
@@ -269,6 +280,7 @@ If you encounter any `401 Unauthorized` errors ensure that your `ORGANIZATION.pe
 
     {{< file "/etc/hosts">}}
 127.0.0.1 localhost
+192.0.1.0 example.com
 192.0.2.0 workstation
 198.51.100.0 node-hostname
 ...

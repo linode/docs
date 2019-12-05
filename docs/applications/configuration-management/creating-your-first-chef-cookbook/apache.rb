@@ -7,14 +7,14 @@ end
 # Virtual Hosts Files
 
 node["lamp_stack"]["sites"].each do |sitename, data|
-	document_root = "/var/www/html/#{sitename}"
+  document_root = "/var/www/html/#{sitename}"
 
-	directory document_root do
-          mode "0755"
-          recursive true
+  directory document_root do
+    mode "0755"
+    recursive true
 	end
 
-	execute "enable-sites" do
+  execute "enable-sites" do
     command "a2ensite #{sitename}"
     action :nothing
   end
@@ -28,11 +28,11 @@ node["lamp_stack"]["sites"].each do |sitename, data|
       :serveradmin => data["serveradmin"],
       :servername => data["servername"]
     )
-	  notifies :run, "execute[enable-sites]"
-	  notifies :restart, "service[apache2]"
+    notifies :run, "execute[enable-sites]"
+    notifies :restart, "service[apache2]"
   end
 
-	directory "/var/www/html/#{sitename}/public_html" do
+  directory "/var/www/html/#{sitename}/public_html" do
     action :create
   end
 
@@ -42,10 +42,10 @@ node["lamp_stack"]["sites"].each do |sitename, data|
 
   #Apache Configuration
 
-	execute "keepalive" do
-	  command "sed -i 's/KeepAlive On/KeepAlive Off/g' /etc/apache2/apache2.conf"
-	  action :run
-	end
+  execute "keepalive" do
+    command "sed -i 's/KeepAlive On/KeepAlive Off/g' /etc/apache2/apache2.conf"
+    action :run
+  end
 
   execute "enable-prefork" do
     command "a2enmod mpm_prefork"
