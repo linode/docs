@@ -193,12 +193,14 @@ The bash script that follows watches the free space of your hard disks and warns
 # default value to use if none specified
 PERCENT=30
 
-# test for command line arguement
+# test for command line arguement is present
 if [[ $# -le 0 ]]
 then
     printf "Using default value for threshold!\n"
+# test if argument is an integer
+# if it is, use that as percent, if not use default
 else
-    if [ $1 -eq $1 2>/dev/null ]
+    if [[ $1 =~ ^-?[0-9]+([0-9]+)?$ ]]
     then
         PERCENT=$1
     fi
@@ -336,6 +338,7 @@ The presented example will show how you can sort integer values in bash using th
 {{< file "sort.sh" bash >}}
 #!/bin/bash
 
+# test that at least one argument was passed
 if [[ $# -le 0 ]]
 then
     printf "Not enough arguments!\n"
@@ -346,7 +349,7 @@ count=1
 
 for arg in "$@"
 do
-    if [ $arg -eq $arg 2>/dev/null ]
+    if [[ $arg =~ ^-?[0-9]+([0-9]+)?$ ]]
     then
         n[$count]=${arg}
         let "count += 1"
@@ -386,13 +389,15 @@ This section will present a simple guessing game written in `bash(1)`. The logic
 
 {{< file "guess.sh" bash >}}
 #!/bin/bash
+NUMGUESS=0
 
 echo "$0 - Guess a number between 1 and 20"
 
 (( secret = RANDOM % 20 + 1 ))
 
-while (( guess != secret )); do
-    num=$((${num} + 1))
+while [[ guess -ne secret ]]
+do
+    (( NUMGUESS = NUMGUESS + 1 ))
     read -p "Enter guess: " guess
 
     if (( guess < $secret )); then
@@ -402,7 +407,7 @@ while (( guess != secret )); do
     fi
 done
 
-printf "It took you $num guesses.\n"
+printf "Yes! You guessed it in $NUMGUESS guesses.\n"
 {{< /file >}}
 
 Run the `guess` script:
@@ -420,7 +425,7 @@ Try higher...
 Enter guess: 7
 Try lower...
 Enter guess: 6
-It took you 4 guesses.
+Yes! You guessed it in 4 guesses.
 {{< /output >}}
 
 ### Calculating Letter Frequencies
@@ -450,7 +455,7 @@ done < "$filename" | grep '[[:alpha:]]' | sort | uniq -c | sort -nr
 
 Run the `freqL` script:
 
-    ./freqL.sh text
+    ./freqL.sh text.txt
 
 The output of `freqL.sh` will resemble the following:
 
@@ -464,7 +469,7 @@ The output of `freqL.sh` will resemble the following:
 {{< /output >}}
 
 {{< note >}}
-The file `text` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `text` file using a text editor of your choice.
+The file `text.txt` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `text.txt` file using a text editor of your choice.
 {{< /note >}}
 
 ### Timing Out read Operations
@@ -487,7 +492,7 @@ while :
 do
   ((VARIABLE = VARIABLE + 1))
   read -t $TIMEOUT -p "Do you want to Quit(Y/N): "
-  if [ $VARIABLE -gt 0 ]; then
+  if [ $VARIABLE -gt $TIMEOUT ]; then
     echo "Timing out - user response took too long!"
     break
   fi
@@ -499,7 +504,6 @@ do
     ;;
   [nN]*)
     echo "Do not quit!"
-    break
     ;;
   *) echo "Please choose Y or N!"
      ;;
@@ -556,16 +560,16 @@ done
 
 Run the `tabs2spaces` script:
 
-    ./tabs2spaces.sh textfile
+    ./tabs2spaces.sh textfile.txt
 
 The output of `tabs2spaces.sh` will resemble the following:
 
 {{< output >}}
-Converting textfile.
+Converting textfile.txt.
 {{< /output >}}
 
 {{< note >}}
-The file `textfile` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `textfile` file using a text editor of your choice.
+The file `textfile.txt` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `textfile.txt` file using a text editor of your choice.
 {{< /note >}}
 
 ### Counting files
@@ -577,18 +581,15 @@ The following script will look into a predefined list of directories and count t
 
 DIRECTORIES="/bin:/home/mtsouk/code:/srv/www/www.mtsoukalos.eu/logs:/notThere"
 
+# Count the number of arguments passed in
 if [[ $# -le 0 ]]
 then
-    printf "Not enough arguments!\n"
-    exit
-fi
-
-if [ $1 -eq $1 2>/dev/null ]
-then
-    COUNT=$1
-else
     echo "Using default value for COUNT!"
-    COUNT=50
+else
+    if [[ $1 =~ ^-?[0-9]+([0-9]+)?$ ]]
+    then
+        COUNT=$1
+    fi
 fi
 
 while read -d ':' dir; do
@@ -613,7 +614,7 @@ Run the `countFiles` script:
 
     ./countFiles.sh 100
 
-The output of `countFiles.sh` will resemble the following, giving you an accurate date and time as configured on your Linode:
+The output of `countFiles.sh` will resemble the following:
 
 {{< output >}}
 WARNING: Large number of files in /bin: 118!
