@@ -9,6 +9,7 @@
 > Linode maintains a library of tutorials hosted at https://www.linode.com/docs/. The guides serve as an easy to follow reference for Linux, web servers, development, and more.
 
 ### Quickstart
+0. README.md updated by Kong P. Chen
 
 1. Fork and clone this repository.
 
