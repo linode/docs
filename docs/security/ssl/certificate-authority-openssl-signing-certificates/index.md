@@ -9,7 +9,7 @@ published: 2019-11-26
 contributor:
   name: Bagas Sanjaya
 description: 'Signing certificates with your CA.'
-keywords: ["ssl", "tls", "certificate authority", "ca"]
+keywords: ["ssl", "tls", "certificate authority", "signing certificates"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'Certificate Authority with OpenSSL - Part 3: Signing Certificates'
 external_resources:

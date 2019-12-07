@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Revoke certificates with Online Certificate Status Protocol.'
-keywords: ['ssl', 'tls', 'certificate authority', 'ca', 'ocsp']
+keywords: ['ssl', 'tls', 'certificate authority', 'online certificate status protocol', 'ocsp']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-04
 modified: 2019-12-04

@@ -9,7 +9,7 @@ modified_by:
 contributor:
   name: Bagas Sanjaya
 description: 'Introduction to Certificate Authority and generating root pair for your own CA.'
-keywords: ["ssl", "tls", "certificate authority", "ca"]
+keywords: ["ssl", "tls", "certificate authority", "root ca", "root pair"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'Certificate Authority with OpenSSL - Part 1: Introduction and Root Pair'
 external_resources:

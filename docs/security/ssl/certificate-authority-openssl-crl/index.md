@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Revoke certificates by CRL'
-keywords: ['ssl','tls','certificate authority','ca','crl']
+keywords: ['ssl','tls','certificate authority','certificate revocation lists','crl']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-27
 modified: 2019-11-27
