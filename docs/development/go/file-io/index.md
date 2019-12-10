@@ -24,12 +24,20 @@ external_resources:
 The subject of this guide is performing file input and output operations in Go.
 
 {{< note >}}
-This guide is written for a non-root user. However, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. However, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## In This Guide
 
-In this guide guide you will learn how to read files in Go, read text files in various ways, check whether a file or a directory exists, how to create new files and write data to them and how to implement a simple version of the `cat(1)` command line utility in Go. All you need to follow this guide is to have Go and your favorite text editor installed on your Linode machine.
+In this guide guide you will learn:
+
+- How to read files in Go
+- How to read text files in various ways
+- How to check whether a file or a directory exists
+- How to create new files and write data to them
+- How to implement a simple version of the `cat(1)` command line utility in Go
+
+All you need to follow this guide is to have Go and your favorite text editor installed on your Linode machine.
 
 Notice that for the purposes of this guide, a text file named `data.txt` with the following contents will be used:
 
@@ -43,7 +51,7 @@ Three
 
 ## Checking if a Path Exists
 
-In order to read a file, you will need to open it first. In order to be able to open it, the file must exist at the given path and be an actual file and not a directory. The code of this section will check if *the given path* exists.
+In order to read a file, you will need to open it first. In order to be able to open a file, it must exist at the given path and be an actual file, not a directory. The code of this section will check if *the given path* exists.
 
 {{< file "./doesItExist.go" go >}}
 package main
@@ -83,7 +91,7 @@ The fact that a path does exist does not necessarily mean that it is a regular f
 
 ## Checking if a Path is a Regular File
 
-There exist a special function in the Go standard library that checks whether a path belongs to a file or not – this is going to be illustrated in the code example of this section.
+There exist a special function in the Go standard library, `IsRegular()`, that checks whether a path belongs to a file or not. This function is illustrated in the below example.
 
 {{< file "./isFile.go" go >}}
 package main
@@ -124,12 +132,12 @@ Executing `isFile.go` will resemble the following output:
 
 
 {{< note >}}
-Most of the examples in this guide will not test whether the file that is going to be read exists in order to minimize the amount of code – the `os.Open()` function does some of this work but in a less elegant way. However, on production code all necessary tests should be performed in order to avoid crashes and bugs in your software.
+Most of the examples in this guide will not test whether the file that is going to be read exists in order to minimize the amount of code. The `os.Open()` function does some of this work, but in a less elegant way. However, on production code all necessary tests should be performed in order to avoid crashes and bugs in your software.
 {{< /note >}}
 
 ## Reading Files in Go
 
-Reading files in Go is a simple task. Notice that Go treats both text and binary files the same – it is up to you to interpret the contents of a file. One of the many ways to read a file is presented in `readFile.go`.
+Reading files in Go is a simple task. Go treats both text and binary files the same, and it is up to you to interpret the contents of a file. One of the many ways to read a file, `ReadFull()`, is presented in the `readFile.go` file below.
 
 {{< file "./readFile.go" go >}}
 package main
@@ -165,7 +173,7 @@ func main() {
 }
 {{< /file >}}
 
-The `io.ReadFull()` function reads from the reader of an open file and puts the data into a *byte slice* with 8 places. The `io.WriteString()` function is used for sending data to standard output (`os.Stdout`) that is also a file as far as UNIX is concerned. The read operation is executed only once – if you want to read an entire file, you will need to use a `for` loop, which is illustrated in other examples of this guide.
+The `io.ReadFull()` function reads from the reader of an open file and puts the data into a *byte slice* with 8 places. The `io.WriteString()` function is used for sending data to standard output (`os.Stdout`), which is also a file as far as UNIX is concerned. The read operation is executed only once. If you want to read an entire file, you will need to use a `for` loop, which is illustrated in other examples of this guide.
 
 Executing `readFile.go` will generate the following output:
 
@@ -228,7 +236,7 @@ func main() {
 }
 {{< /file >}}
 
-The functionality of the program can be found in the `lineByLine()` function. After making sure that you can open the given filename, you create a new reader using `bufio.NewReader()`. Then, you use that reader with `bufio.ReadString()` in order to read the input file line by line. The trick is done by the parameter of `bufio.ReadString()`, which is a character that tells `bufio.ReadString()` to keep reading until that character is found. Constantly calling `bufio.ReadString()` when that parameter is the *newline character* results in reading the input file line by line. The `for` loop in the `main()` function is for being able to process multiple command line arguments.
+The core functionality of the program can be found in the `lineByLine()` function. After ensuring the filename can be opened, the function create a new reader using `bufio.NewReader()`. Then, the function uses that reader with `bufio.ReadString()` in order to read the input file line by line. This is accomplished by passing the *newline character* parameter to `bufio.ReadString()`. `bufio.ReadString()` will continue to read the file until that character is found. Constantly calling `bufio.ReadString()` when that parameter is the newline character results in reading the input file line by line. The `for` loop in the `main()` function exists to help to process multiple command line arguments.
 
 Executing `lByL.go` will generate the following kind of output:
 
@@ -242,7 +250,7 @@ Three
 
 ### Reading a Text File Word by Word
 
-The presented code shows how you can read a text file word by word.
+The following code shows how you can read a text file word by word.
 
 {{< file "./wByW.go" go >}}
 package main
@@ -299,7 +307,7 @@ func main() {
 }
 {{< /file >}}
 
-The functionality of the program can be found in the `wordByWord()` function. Initially the text file is read line by line. Then a regular expression, which is stored in the `r` variable, is used for finding out the words in the current line and store them in the `words` variable. After that, a `for` loop is used for iterating over the contents of `words` and print them on the screen before continuing with the next line of the input file.
+The core functionality of the program can be found in the `wordByWord()` function. Initially the text file is read line by line. Then a regular expression, which is stored in the `r` variable, is used for determining the words in the current line. Thos words and stored in the `words` variable. After that, a `for` loop is used for iterating over the contents of `words` and print them on the screen before continuing with the next line of the input file.
 
 Executing `wByW.go` will generate the following kind of output:
 
@@ -314,7 +322,7 @@ Three
 
 ### Reading a file character by character
 
-The presented code shows how you can read a text file character by character.
+The following code shows how you can read a text file character by character.
 
 {{< file "./cByC.go" go >}}
 package main
@@ -368,7 +376,7 @@ func main() {
 }
 {{< /file >}}
 
-The `charByChar()` function does all the work. Once again, the input file is ready line by line and a `for` loop with `range` iterates over the characters of each line.
+The `charByChar()` function does all the work. Once again, the input file is ready line by line. Within a `for` loop, `range` iterates over the characters of each line.
 
 Executing `cByC.go` will generate the following kind of output:
 
@@ -433,7 +441,7 @@ func main() {
 }
 {{< /file >}}
 
-All the work is done by the `IsDir()` function – if it is a directory, then it will return `true`.
+All the work is done by the `IsDir()` function. If it is a directory, then it will return `true`.
 
 Executing `isDirectory.go` will generate the following kind of output:
 
@@ -478,7 +486,7 @@ func main() {
 }
 {{< /file >}}
 
-It is really important to make sure that the file you are going to create does not already exist because otherwise you might overwrite an existing file and therefore lose its data – `os.Create()` will truncate the destination file if it already exists. The `IsNotExist()` function returns `true` if a file or directory does not exist – this is indicated by the contents of the `error` variable that is passed as an argument to `IsNotExist()`. The `error` variable was returned by a previous call to `os.Stat()`.
+It is really important to make sure that the file you are going to create does not already exist, otherwise you might overwrite an existing file and therefore lose its data. `os.Create()` will truncate the destination file if it already exists. The `IsNotExist()` function returns `true` if a file or directory does not exist. This is indicated by the contents of the `error` variable that is passed as an argument to `IsNotExist()`. The `error` variable was returned by a previous call to `os.Stat()`.
 
 Executing `createFile.go` will generate the following output:
 
@@ -529,7 +537,7 @@ A successful execution of `writeFile.go` will generate no output - in this case 
 
 ### Appending Data to a File
 
-You will now learn how to append data to a file, which means writing data at the end of the file without deleting existing data.
+You will now learn how to append data to a file, which means adding data to the end of the file without deleting existing data.
 
 {{< file "./append.go" go >}}
 package main
@@ -559,9 +567,9 @@ func main() {
 }
 {{< /file >}}
 
-The desired task is taken care of by the `os.O_APPEND` flag of the `os.OpenFile()` function that tells Go to write at the end of the file. Additionally, the `os.O_CREATE` flag will make `os.OpenFile()` to create the file if it does not exist, which is pretty handy. Apart from that, the information is written to the file using `fmt.Fprintf()`.
+The actual appending is taken care of by the `os.O_APPEND` flag of the `os.OpenFile()` function. This flag tells Go to write at the end of the file. Additionally, the `os.O_CREATE` flag will make `os.OpenFile()` create the file if it does not exist, which is pretty handy. Apart from that, the information is written to the file using `fmt.Fprintf()`.
 
-The `append.go` program generates no output when executed successfully – in this case it was executed as `go run append.go "123" /tmp/data.txt`. However, the contents of `/tmp/data.txt` will not be the same:
+The `append.go` program generates no output when executed successfully. In this example, it was executed as `go run append.go "123" /tmp/data.txt`. However, the contents of `/tmp/data.txt` will not be the same:
 
     cat /tmp/data.txt
 {{< output >}}
@@ -651,7 +659,7 @@ func main() {
 }
 {{< /file >}}
 
-The good thing with `fileCopy.go` is that it allows you to set the size of the buffer that will be used during the copy process – as it happens in Go, that buffer is implemented using a *byte slice* named `buf`. The copy takes place in the `Copy()` function that keeps reading the input file using the required amount of `Read()` calls and writes it using the required amount of `Write()` calls. The `Copy()` function performs lots of tests to make sure that the source file exists and is a regular file and that the destination file does not exist.
+`fileCopy.go` allows you to set the size of the buffer that will be used during the copy process. In this Go program, the buffer is implemented using a *byte slice* named `buf`. The copy takes place in the `Copy()` function, which keeps reading the input file using the required amount of `Read()` calls, and writes it using the required amount of `Write()` calls. The `Copy()` function performs lots of tests to make sure that the source file exists and is a regular file and that the destination file does not exist.
 
 The output of `fileCopy.go` will resemble the following:
 
@@ -662,7 +670,7 @@ Copying /tmp/data.txt to /tmp/newText
 
 ### Implementing cat in Go
 
-In this section we will implement the core functionality of the `cat(1)` command line utility in Go.
+In this section we will implement the core functionality of the `cat(1)` command line utility in Go. The `cat(1)` utility is used to print the contents of a file to a terminal window.
 
 {{< file "./cat.go" go >}}
 package main
@@ -726,4 +734,4 @@ Three
 
 ## Summary
 
-File I/O is a huge subject that cannot be covered in a single guide. However, now that you know the basics of file input output in Go, you are free to begin experimenting and writing your own system utilities.
+File I/O is a huge subject that cannot be covered in a single guide. However, now that you know the basics of file input and output in Go, you are free to begin experimenting and writing your own system utilities.
