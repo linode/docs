@@ -93,6 +93,10 @@ If you have already deployed an LKE cluster and did not enable Network Helper, y
 | `node_pools` | The collections of Linodes that serve as the worker nodes in your LKE cluster. |
 | `version` | The desired version of Kubernetes for this cluster. |
 
+{{< note >}}
+While in Private Beta, LKE is only available in the Dallas data center, and worker nodes can be created for all [Standard](/docs/platform/how-to-choose-a-linode-plan/#2-standard), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory Plans](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory). This will expand in the future.
+{{< /note >}}
+
 1. To create an LKE Cluster, send a `POST` request to the `/lke/clusters` endpoint. The example below displays all possible request body parameters. Note that `tags` is an optional parameter.
 
         curl -H "Content-Type: application/json" \

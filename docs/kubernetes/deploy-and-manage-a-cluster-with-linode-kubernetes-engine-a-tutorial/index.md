@@ -88,6 +88,10 @@ LKE is not available in the Linode Classic Manager
 
     ![Select your cluster's resources](select-cluster-resources.png "Select your cluster's resources.")
 
+    {{< note >}}
+While in Private Beta, LKE is only available in the Dallas data center, and worker nodes can be created for all [Standard](/docs/platform/how-to-choose-a-linode-plan/#2-standard), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory Plans](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory). This will expand in the future.
+{{< /note >}}
+
 1. Under **Number of Linodes**, input the number of Linode worker nodes you would like to add to your Node Pool. These worker nodes will have the hardware resources selected from the **Add Node Pools** section.
 
     ![Select the number of Linode worker nodes](select-number-linodes.png "Select the number of Linode worker nodes.")
