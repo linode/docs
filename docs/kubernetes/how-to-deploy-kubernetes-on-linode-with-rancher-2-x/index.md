@@ -375,7 +375,7 @@ Rancher introduces an organizational concept called [*projects*](https://rancher
 
 Rancher provides a library of apps which offer easy setup through Rancher's UI. The apps in this curated library are based on existing [*Helm charts*](https://helm.sh/docs/topics/charts/).
 
-A Helm chart is a popular format for describing Kubernetes resources. Rancher extends the Helm chart format with some additional configuration files, and this extended packaging is referred to as a [*Rancher chart*](https://rancher.com/docs/rancher/v2.x/en/catalog/custom/#chart-types). The additional information in the Rancher chart format is used to create interactive forms for configuring the app through the Rancher UI.
+A Helm chart is a popular format for describing Kubernetes resources. Rancher extends the Helm chart format with some additional configuration files, and this extended packaging is referred to as a [*Rancher chart*](https://rancher.com/docs/rancher/v2.x/en/catalog/custom/#custom-helm-chart-repository). The additional information in the Rancher chart format is used to create interactive forms for configuring the app through the Rancher UI.
 
 {{< note >}}
 It is possible to enable [more app catalogs](https://rancher.com/docs/rancher/v2.x/en/catalog/) than just Rancher's curated library, including a catalog of stable Helm charts. These other apps will not feature Rancher's easy setup forms and will instead require manual entry of configuration options.

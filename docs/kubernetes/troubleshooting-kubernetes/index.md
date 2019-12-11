@@ -224,7 +224,7 @@ If one of your pods requests more memory or CPU than is available on your worker
 
     If you run the `kubectl describe` command on your pod, the Events section may list a `FailedScheduling` event, along with a message like `Failed for reason PodExceedsFreeCPU and possibly others`. You can run `kubectl describe nodes` to view [information about the allocated resources](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#my-pods-are-pending-with-event-message-failedscheduling) for each node.
 
--   The pod may continually crash. For example, the [Ghost](https://ghost.org) pod specified by [Ghost's Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) will show the following error in its logs when not enough memory is available:
+-   The pod may continually crash. For example, the [Ghost](https://ghost.org) pod specified by [Ghost's Helm chart](https://hub.helm.sh/charts/bitnami/ghost) will show the following error in its logs when not enough memory is available:
 
         kubectl logs ghost --tail=5
         1) SystemError
