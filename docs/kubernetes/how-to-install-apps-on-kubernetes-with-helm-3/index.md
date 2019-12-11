@@ -128,17 +128,17 @@ Install the [Helm client software](https://github.com/helm/helm/releases) on you
 
 >   **Linux** - Run the client installer script that Helm provides:
 >
->       curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
->        chmod 700 get_helm.sh
->        ./get_helm.sh
+>     curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
+>     chmod 700 get_helm.sh
+>     ./get_helm.sh
 >
 >   **macOS** - Use [Homebrew](https://brew.sh) to install:
 >
->        brew install helm
+>     brew install helm
 >
 >   **Windows** - Use [Chocolatey](https://chocolatey.org) to install:
 >
->        choco install kubernetes-helm
+>     choco install kubernetes-helm
 
 ## Use Helm Charts to Install Apps
 
