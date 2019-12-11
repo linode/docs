@@ -97,7 +97,7 @@ The Helm client software issues commands to your cluster. You run the client sof
 ## Before You Begin
 
 {{< note >}}
-The Linode Kuberenetes Engine (LKE) is now in Private Beta. If you are in the beta, you can use LKE to stand up your Kubernetes cluster if you wish. Sign up for the beta [here](https://welcome.linode.com/lkebeta/).
+The Linode Kubernetes Engine (LKE) is now in Private Beta. If you are in the beta, you can use LKE to stand up your Kubernetes cluster if you wish. Sign up for the beta [here](https://welcome.linode.com/lkebeta/).
 {{</ note >}}
 
 1.   [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
