@@ -162,7 +162,7 @@ end
     Because this is not the `default.rb` recipe, the recipe name, *apache*, must be appended to the recipe value.
 
     {{< note >}}
-  To view a list of all nodes managed by your, Chef server issue the following command from your workstation:
+  To view a list of all nodes managed by your Chef server, issue the following command from your workstation:
 
     knife node list
     {{</ note >}}
@@ -178,7 +178,7 @@ end
         knife ssh 'name:nodename' 'systemctl status apache2' -x root
 
     {{< note >}}
-Repeat steps 4-7 to upload each recipe to your Chef server, as you create it. Run `chef-client` on your node, as needed, throughout the rest of this guide to ensure your recipes are working properly and contain no errors. When adding a new recipe, ensure you are using its correct name in the run list.
+Repeat steps 4-7 to upload each recipe to your Chef server as you create it. Run `chef-client` on your node as needed throughout the rest of this guide to ensure your recipes are working properly and contain no errors. When adding a new recipe, ensure you are using its correct name in the run list.
 
 This is not the recommended workflow for a production environment. You might consider creating different [Chef environments](https://docs.chef.io/environments.html) for testing, staging, and production.
 {{< /note >}}
@@ -187,7 +187,7 @@ This is not the recommended workflow for a production environment. You might con
 
 This configuration is based off of the [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) guide.
 
-1.  Because multiple websites may need to be configured, use Chef's attributes feature to define certain aspects of the virtual hosts file(s). The ChefDK has a built-in command to generate the attributes directory and `default.rb` file within a cookbook. Replace `~/chef-repo/cookbooks/lamp_stack` with your cookbook's path:
+1.  Because multiple websites may need to be configured, use Chef's attributes feature to define certain aspects of the virtual host file(s). The ChefDK has a built-in command to generate the attributes directory and `default.rb` file within a cookbook. Replace `~/chef-repo/cookbooks/lamp_stack` with your cookbook's path:
 
         chef generate attribute ~/chef-repo/cookbooks/lamp_stack default
 
@@ -199,7 +199,7 @@ default["lamp_stack"]["sites"]["example.com"] = { "port" => 80, "servername" => 
 
     The prefix `default` defines that these are the normal values to be used in the `lamp_stack` where the site `example.com` will be called upon. This can be seen as a hierarchy: Under the cookbook itself are the site(s), which are then defined by their URL.
 
-    The following values in the array (defined by curly brackets (`{}`)) are the values that will be used to configure the virtual hosts file. Apache will be set to listen on port `80` and use the listed values for its server name, and administrator email.
+    The following values in the array (defined by curly brackets (`{}`)) are the values that will be used to configure the virtual host file. Apache will be set to listen on port `80` and use the listed values for its server name, and administrator email.
 
     Should you have more than one available website or URL (for example, `example.org`), this syntax should be mimicked for the second URL:
 
@@ -222,7 +222,7 @@ service "apache2" do
 end
 
 
-# Virtual Hosts Files
+# Virtual Host Files
 
 node["lamp_stack"]["sites"].each do |sitename, data|
 end
@@ -252,7 +252,7 @@ node["lamp_stack"]["sites"].each do |sitename, data|
 end
 {{< /file >}}
 
-1.  The template feature will be used to generate the needed virtual hosts files. Within the `chef-repo` directory run the `chef generate template` command with the path to your cookbook and template file name defined:
+1.  The template feature will be used to generate the needed virtual host files. Within the `chef-repo` directory run the `chef generate template` command with the path to your cookbook and template file name defined:
 
         chef generate template ~/chef-repo/cookbooks/lamp_stack virtualhosts
 
@@ -279,7 +279,7 @@ end
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
 # [...]
 
-#Virtual Hosts Files
+#Virtual Host Files
 
 node["lamp_stack"]["sites"].each do |sitename, data|
   document_root = "/var/www/html/#{sitename}"
@@ -324,7 +324,7 @@ end
 
     The `notifies` command names the `:action` to be committed, then the resource, and resource name in square brackets.
 
-1. `notifies` can also call on `execute` commands, which will run `a2ensite`and enable the sites that have corresponding virtual hosts files. Add the following `execute` command **above** the `template` resource code to create the `a2ensite` script:
+1. `notifies` can also call on `execute` commands, which will run `a2ensite`and enable the sites that have corresponding virtual host files. Add the following `execute` command **above** the `template` resource code to create the `a2ensite` script:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
 # [...]
@@ -345,7 +345,7 @@ template "/etc/apache2/sites-available/#{sitename}.conf" do
 
 {{< /file >}}
 
-    The `action :nothing` directive means the resource will wait to be called on. Add a new `notifies` line above the previoues `notifies` line to the `template` resource code to use it:
+    The `action :nothing` directive means the resource will wait to be called on. Add a new `notifies` line above the previous `notifies` line to the `template` resource code to use it:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
 # [...]
@@ -359,7 +359,7 @@ end
 # [...]
 {{< /file >}}
 
-1. The paths referenced in the virtual hosts files need to be created. Once more, this is done with the `directory` resource, and should be added before the final `end` tag:
+1. The paths referenced in the virtual host files need to be created. Once more, this is done with the `directory` resource, and should be added before the final `end` tag:
 
     {{< file "~/chef-repo/cookbooks/lamp_stack/recipes/apache.rb" ruby >}}
 # [...]
@@ -380,7 +380,7 @@ end
 
 ### Apache Configuration
 
-With the virtual hosts files configured and your website enabled, configure Apache to efficiently run on your servers. Do this by enabling and configuring a multi-processing module (MPM), and editing `apache2.conf`.
+With the virtual host files configured and your website enabled, configure Apache to efficiently run on your servers. Do this by enabling and configuring a multi-processing module (MPM), and editing `apache2.conf`.
 
 The MPMs are all located in the `mods_available` directory of Apache. In this example the `prefork` MPM will be used, located at `/etc/apache2/mods-available/mpm_prefork.conf`. If we were planning on deploying to nodes of varying size we would create a template file to replace the original, which would allow for more customization of specific variables. In this instance, a *cookbook file* will be used to edit the file.
 
