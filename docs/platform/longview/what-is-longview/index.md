@@ -13,7 +13,7 @@ title: "What is Linode Longview"
 h1_title: "Understanding Linode Longview"
 contributor:
   name: Linode
-classic_manager_link: platform/longview/longview/
+classic_manager_link: platform/longview/longview-classic-manager/
 ---
 ![Our guide to installing and using Linode Longview.](longview_smg.png "Our guide to installing and using Linode Longview.")
 
@@ -126,7 +126,7 @@ Dec 10 22:35:11 li322-60.members.linode.com systemd[1]: Started SYSV: Longview s
   It can take several minutes for data to load and display in the Cloud Manager but once it does, you’ll see the graphs and charts populating with your Linode’s metrics.
     {{</ note >}}
 
-      ![Linode Cloud Manager Longview Clients Overview metrics](longview-client-overview.png "Linode Cloud Manager Longview Clients Overview metrics")
+    ![Linode Cloud Manager Longview Clients Overview metrics](longview-client-overview.png "Linode Cloud Manager Longview Clients Overview metrics")
 
 ### Manually Install the Longview Agent with yum or apt
 
@@ -235,7 +235,7 @@ Dec 10 22:35:11 li322-60.members.linode.com systemd[1]: Started SYSV: Longview s
   It can take several minutes for data to load and display in the Cloud Manager but once it does, you’ll see the graphs and charts populating with your Linode’s metrics.
     {{</ note >}}
 
-      ![Linode Cloud Manager Longview Clients Overview metrics](longview-client-overview.png "Linode Cloud Manager Longview Clients Overview metrics"
+    ![Linode Cloud Manager Longview Clients Overview metrics](longview-client-overview.png "Linode Cloud Manager Longview Clients Overview metrics")
 
 ## Longview's Data Explained
 
@@ -288,7 +288,7 @@ The Installation tab provides quick instructions on how to install the Longview 
 *Longview Free* updates every 5 minutes and provides twelve hours of data history. Longview Pro gives you data resolution at 60 second intervals, and you can view a complete history of your Linode’s data instead of only the previous 30 minutes.
 
 {{< note >}}
-Longview Pro is not yet available in the Linode Cloud Manager. Longview for Cloud Manager is still being actively developed to reach parity with Linode's Classic Manager. This guide will be updated as development work continues. See the Cloud Manager's [changelog]((https://developers.linode.com/changelog/cloud-manager/)) for the latest information on Cloud Manager releases.
+Longview Pro is not yet available in the Linode Cloud Manager. Longview for Cloud Manager is still being actively developed to reach parity with Linode's Classic Manager. This guide will be updated as development work continues. See the Cloud Manager's [changelog](https://developers.linode.com/changelog/cloud-manager/) for the latest information on Cloud Manager releases.
 {{</ note >}}
 
 ## Troubleshooting
