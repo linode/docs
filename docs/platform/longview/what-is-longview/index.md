@@ -5,7 +5,7 @@ author:
 description: 'This guide shows how to install and use Linode Longview. Longview is Linode’s system data graphing service. It tracks metrics for CPU, memory, and network bandwidth, both aggregate and per-process, and it provides real-time graphs that can help expose performance problems.'
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/longview/longview']
+aliases: ['platform/longview/longview/']
 published: 2019-12-09
 modified_by:
   name: Linode
@@ -15,6 +15,8 @@ contributor:
   name: Linode
 classic_manager_link: platform/longview/longview/
 ---
+![Our guide to installing and using Linode Longview.](longview_smg.png "Our guide to installing and using Linode Longview.")
+
 Longview is Linode’s system data graphing service. It tracks metrics for CPU, memory, and network bandwidth, both aggregate and per-process, and it provides real-time graphs that can help expose performance problems.
 
 The Longview client is [open source](https://github.com/linode/longview) and provides an agent that can be installed on any Linux distribution–including systems not hosted by Linode. However, Linode only offers technical support for **CentOS**, **Debian**, and **Ubuntu**.
@@ -31,10 +33,10 @@ Longview does not currently support CentOS 8.
 
 This guide provides an overview of Linode Longview. You will learn how to:
 
-* Install the Longview Client
-* Access and view your Longview Client's data and graphs
-* Troubleshoot your Longview Client instance
-* Uninstall the Longview Client
+* [Install the Longview Client](#install-linode-longview)
+* [Access and view your Longview Client's data and graphs](#longview-s-data-explained)
+* [Troubleshoot your Longview Client instance](#troubleshooting)
+* [Uninstall the Longview Client](#uninstall-the-longview-client)
 
 ## Before you Begin
 
@@ -55,7 +57,7 @@ In this section, you will create a Longview Client instance in the Linode Cloud 
 1. An entry will appear displaying your Longview Client instance along with its auto-generated label, its current status, installation instructions, and API key. Its status will display as *Waiting for data*, since you have not yet installed the Longview agent on a running Linode.
 
     {{< note >}}
-The displayed `curl` command will be used in the [next section](#install-the-longview-agent) to install the Longview agent on the desired Linode.
+The displayed `curl` command will be used in the [next section](#install-the-longview-agent) to install the Longview agent on the desired Linode. The long string appended to the url `https://lv.linode.com/` is your Longview Client instance's GUID (globally unique identifier).
     {{</ note >}}
 
       ![Linode Cloud Manager Longview Clients list](longview-clients-list.png "Linode Cloud Manager Longview Clients list")
@@ -71,6 +73,10 @@ The displayed `curl` command will be used in the [next section](#install-the-lon
         su - root
 
 1. Switch back to the Linode Cloud Manager in your browser, copy the Longview Client instance's `curl` command, and paste it into your Terminal window. Press **Enter** to execute the command. The installation will take a few minutes to complete.
+
+    {{< note >}}
+Ensure you replace the example `curl` command below with your own Longview Client instance's GUID.
+    {{</ note >}}
 
         curl -s https://lv.linode.com/05AC7F6F-3B10-4039-9DEE09B0CC382A3D | sudo bash
 
@@ -168,7 +174,7 @@ deb http://apt-longview.linode.com/ stretch main
 
         sudo mkdir /etc/linode/
 
-1.  Copy the API key from the **Installation** tab of your Longview client's [detailed view](#longview-client-detailed-view) in the Linode Cloud Manager. Put the key into a file, replacing the key in the command below with your own.
+1.  Copy the API key from the **Installation** tab of your Longview client's [detailed view](#access-your-longview-client-s-detailed-view) in the Linode Cloud Manager. Put the key into a file, replacing the key in the command below with your own.
 
         echo '266096EE-CDBA-0EBB-23D067749E27B9ED' | sudo tee /etc/linode/longview.key
 
@@ -239,33 +245,43 @@ This section will provide an overview of the data and graphs available to you in
 
 1. To view a Longview Client's detailed graphs and metrics, log into the [Linode Cloud Manager](https://cloud.linode.com/dashboard) and click on the **Longview** link in the sidebar.
 
+    ![Access Longview in the Cloud Manager](access-longview.png "Access Longview in the Cloud Manager")
+
 1. Viewing the Longview Clients listing page, click on the **View Details** button corresponding to the client whose Linode's system statistics you'd like to view.
+
+    ![View details for your Longview Client instance](longview-listing-view-details.png "View details for your Longview Client instance")
 
 1. You will be brought to your Longview client's **Overview** tab where you can view all the data and graphs corresponding to your Linode.
 
-    To learn more about the Data available in a Longview Client's Overview page, see the [Longview's Data Explained]() section.
+    To learn more about the Data available in a Longview Client's Overview page, see the [Overview](#overview) section.
 
 1. From here you can click on any of your Longview Client instance's tabs to view more related information.
 
+    {{< note >}}
+If your Linode has NGINX, Apache, or MySQL installed you will see a corresponding tab appear containing related system data.
+    {{</ note >}}
+
 ### Overview
 
-The Overview tab shows all of your system’s most important statistics in one place. You can hover your cursor over any of your graphs to view details about specific data points.
+The Overview tab shows all of your system’s most important statistics in one place. You can hover your cursor over any of your graphs in the **Resource Allocation History** section to view details about specific data points.
 
-  ![Cloud Manager Longview Client's overview page](longview-overview-detail.png "Cloud Manager Longview Client's overview page")
+  ![Cloud Manager Longview Client's overview page](longview-overview-details.png "Cloud Manager Longview Client's overview page")
 
+1. Basic information about the system, including the operating system name and version, processor speed, uptime, and available updates. This area also includes your system's top active processes.
+1. The time resolution for the graphs displayed in the Resource Allocation History section. The available options are *Past 30 Minutes* and *Past 12 hours*.
 1. Percentage of CPU time spent in wait (on disk), in user space, and in kernel space.
 1. Total amount of RAM being used, as well as the amount of memory in cache, in buffers, and in swap.
 1. Amount of network data that has been transferred to and from your system.
-1. Basic information about the system, including the operating system name and version, processor speed, uptime, and available updates.
-1. Average CPU load.
-1. Top active processes on the system.
 1. Disk I/O. This is the amount of data being read from, or written to, the system’s disk storage.
+1. Average CPU load.
 1. Listening network services along with their related process, owner, protocol, port, and IP.
-1. Current active ssh connections to the Linode.
+1. A list of current active connections to the Linode.
 
 ### Installation
 
-The Installation tab provides quick instructions on how to install the Longview agent on your Linode and the Longview client instance's API key.
+The Installation tab provides quick instructions on how to install the Longview agent on your Linode and also displays the Longview client instance's API key.
+
+  ![Longview's installation tab](longview-installation.png "Longview's installation tab")
 
 ## Longview Plan Details
 
@@ -376,7 +392,7 @@ If you use iptables, you should also make sure to persist any of your firewall r
 
 The API key given in the Linode Cloud Manager should match that on your system in `/etc/linode/longview.key`.
 
-1. In the Linode Cloud Manager, the API key is located in the **Overview** tab of your Longview client instance's [detailed view](access-your-longview-client-s-detailed-view).
+1. In the Linode Cloud Manager, the API key is located in the **Installation** tab of your Longview Client instance's [detailed view](#access-your-longview-client-s-detailed-view).
 
 1.  SSH into your Linode. The Longview key is located at `/etc/linode/longview.key`. Use `cat` to view the contents of that file and compare it to what's shown in the Linode Cloud Manager:
 
@@ -408,7 +424,7 @@ This is caused by both Linodes posting data using the same Longview key. To reso
     >
     >     sudo rm -rf /opt/linode/longview
 
-1. Add a new [Linode Longview Client instance](/#add-the-longview-client). This will create a new Longview API key independent from the system which it was cloned from.
+1. Add a new [Linode Longview Client instance](#add-the-longview-client). This will create a new Longview API key independent from the system which it was cloned from.
 
     {{< note >}}
   The GUID provided in the Longview Client's installation URL is not the same as the Longview API key.
@@ -424,7 +440,11 @@ If you still need assistance after performing these checks, please open a [suppo
 
 1.  Log into the [Linode Cloud Manager](https://cloud.linode.com/dashboard) and click on the **Longview** link in the sidebar.
 
+      ![Access Longview in the Cloud Manager](access-longview.png "Access Longview in the Cloud Manager")
+
 2.  Click the **ellipsis** button corresponding to the Longview Client instance you'd like to remove and select **delete**.
+
+      ![Delete your Longview Client](delete-longview.png "Delete your Longview Client")
 
 4.  Next, remove the Longview agent from the operating system you want to stop monitoring. SSH into your Linode.
 
