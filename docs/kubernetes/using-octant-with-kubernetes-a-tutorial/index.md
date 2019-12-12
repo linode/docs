@@ -98,7 +98,7 @@ If it does not start successfully, check that you can connect to your cluster wi
 The interfaces that Octant provides are meant to be a complement, and not a replacement, for kubectl. When using Octant, you may find that you sometimes need to return to kubectl to perform certain actions. Still, the Octant dashboard will serve as a helpful overview when inspecting your cluster.
 
 {{< note >}}
-The cluster objects visible in the following screenshots were created by installing the [Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) for the [Ghost](https://ghost.org) blogging software. The [How to Install Apps on Kubernetes with Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) guide outlines how to install this software.
+The cluster objects visible in the following screenshots were created by installing the [Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) for the [Ghost](https://ghost.org) blogging software. The [How to Install Apps on Kubernetes with Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) guide outlines how to install this software. Please note that this guide uses Helm 2 and not Helm 3 to install the software.
 {{< /note >}}
 
 - When first viewing the dashboard, a list of all of your cluster objects will be shown:
@@ -181,7 +181,7 @@ Your colleague Nathan is learning Kubernetes, and he's deploying a "Hello World"
 
 ### Install the Node.js Application
 
-1. Nathan has uploaded a Docker image for the application to Docker Hub under the name `nmelehan/hello-world:1.0`. He also tells you that the Kubernetes manifest for the application is hosted here: [release-1.0.yaml](release-1.0.yaml). Download the file and apply it to your cluster with kubectl:
+1. Nathan has uploaded a Docker image for the application to Docker Hub under the name `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v1`. He also tells you that the Kubernetes manifest for the application is hosted here: [release-1.0.yaml](release-1.0.yaml). Download the file and apply it to your cluster with kubectl:
 
         kubectl apply -f release-1.0.yaml
 
@@ -191,6 +191,10 @@ Your colleague Nathan is learning Kubernetes, and he's deploying a "Hello World"
 service/hello-world-service created
 deployment.apps/hello-world-deployment created
 {{< /output >}}
+
+    {{< note >}}
+The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-1.tar.gz). Inspecting these files is not necessary for the tutorial.
+{{< /note >}}
 
 1. To learn about how the application is structured on your cluster, you view it in Octant. When visiting the Services tab, you find the new `hello-world-service` object:
 
@@ -206,7 +210,7 @@ deployment.apps/hello-world-deployment created
 
 ### Update the Node.js Application
 
-1. Nathan tells you that he has updated the application to return "Hello Octant" instead of "Hello World", and he notes that the new Docker Hub image is named `nmelehan/hello-world:2.0`. The new Kubernetes manifest is here: [release-2.0.yaml](release-2.0.yaml). Download the manifest and apply it to your cluster with kubectl:
+1. Nathan tells you that he has updated the application to return "Hello Octant" instead of "Hello World", and he notes that the new Docker Hub image is named `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v2`. The new Kubernetes manifest is here: [release-2.0.yaml](release-2.0.yaml). Download the manifest and apply it to your cluster with kubectl:
 
         kubectl apply -f release-2.0.yaml
 
@@ -216,6 +220,10 @@ deployment.apps/hello-world-deployment created
 service/hello-world-service unchanged
 deployment.apps/hello-world-deployment configured
 {{< /output >}}
+
+    {{< note >}}
+The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-2.tar.gz). Inspecting these files is not necessary for the tutorial.
+{{< /note >}}
 
 1. If you visit the external IP for the application in your browser again, it will still display the same "Hello World" message. If you return to the Resource Viewer graph for the `hello-world-service` Service in Octant, you'll see that it has been updated:
 
@@ -229,11 +237,11 @@ The Deployment keeps the older ReplicaSet and Pods running in place until the ne
 
 1. To investigate why the new Pod is unhealthy, click on the orange Pod cell in the graph, and then click on the orange dot in the right-hand panel that appears (highlighted above).
 
-1. The detail view for the Pod will appear. Scroll down to the **Events** table at the bottom. A `Failed to pull image "nmelehan/hello-world:2.0a"` message should appear in the table:
+1. The detail view for the Pod will appear. Scroll down to the **Events** table at the bottom. A `Failed to pull image "linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v2a"` message should appear in the table:
 
     [![Octant Pod Events - Hello World 2.0](octant-pod-hello-world-2_0-events.png)](octant-pod-hello-world-2_0-events.png)
 
-1. The name for the Pod's image has a typo and should be corrected. On your workstation, open the release-2.0.yaml manifest and update **line 32** so that it refers to `nmelehan/hello-world:2.0` instead of `nmelehan/hello-world:2.0a`. Save the file, then apply the change to your cluster:
+1. The name for the Pod's image has a typo and should be corrected. On your workstation, open the release-2.0.yaml manifest and update **line 32** so that it refers to `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v2` instead of `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v2a`. Save the file, then apply the change to your cluster:
 
         kubectl apply -f release-2.0.yaml
 
@@ -271,9 +279,13 @@ SyntaxError: Invalid or unexpected token
     at bootstrapNodeJSCore (internal/bootstrap/node.js:623:3)
 {{< /output >}}
 
-1. Nathan's code contains the missing quote syntax error reported in these logs, and you let him know what should be fixed. He responds that he's uploaded a `nmelehan/hello-world:3.0` image to Docker Hub and tells you to apply his updated manifest here: [release-3.0.yaml](release-3.0.yaml). Download the file and apply it to your cluster with kubectl:
+1. Nathan's code contains the missing quote syntax error reported in these logs, and you let him know what should be fixed. He responds that he's uploaded a `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v3` image to Docker Hub and tells you to apply his updated manifest here: [release-3.0.yaml](release-3.0.yaml). Download the file and apply it to your cluster with kubectl:
 
         kubectl apply -f release-3.0.yaml
+
+    {{< note >}}
+The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-3.tar.gz). Inspecting these files is not necessary for the tutorial.
+{{< /note >}}
 
 1. If you return to the external IP for the application in your browser, it should now display "Hello Octant". The cells in Octant's Resource Viewer graph should all be colored green as well.
 

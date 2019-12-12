@@ -29,6 +29,6 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: nmelehan/hello-world:v1
+          image: linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v1
           ports:
             - containerPort: 80
