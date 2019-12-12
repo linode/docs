@@ -307,7 +307,7 @@ func main() {
 }
 {{< /file >}}
 
-The core functionality of the program can be found in the `wordByWord()` function. Initially the text file is read line by line. Then a regular expression, which is stored in the `r` variable, is used for determining the words in the current line. Thos words and stored in the `words` variable. After that, a `for` loop is used for iterating over the contents of `words` and print them on the screen before continuing with the next line of the input file.
+The core functionality of the program can be found in the `wordByWord()` function. Initially the text file is read line by line. Then a regular expression, which is stored in the `r` variable, is used for determining the words in the current line. Those words are stored in the `words` variable. After that, a `for` loop is used for iterating over the contents of `words` and print them on the screen before continuing with the next line of the input file.
 
 Executing `wByW.go` will generate the following kind of output:
 
