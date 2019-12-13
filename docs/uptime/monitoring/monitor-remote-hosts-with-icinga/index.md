@@ -11,7 +11,6 @@ modified: 2017-12-19
 modified_by:
   name: Linode
 title: 'Monitor Remote Hosts with Icinga'
-expiryDate: 2019-12-28
 contributor:
   name: Matt Vass
   link: mailto:linuxboxgo@gmail.com
