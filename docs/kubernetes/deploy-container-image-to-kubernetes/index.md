@@ -218,7 +218,7 @@ A Dockerfile contains the steps needed to build a Docker image. The Docker image
     {{< note >}}
 The following Dockerfile uses Ubuntu to install Hugo. However, Ubuntu may not have the most up to date Hugo package. If this is the case, you could also create a Dockerfile based on Arch Linux or another Linux distribution that has a more up to date Hugo package.
     {{< /note >}}
-    
+
     {{< file "Dockerfile">}}
 #Install the container's OS.
 FROM ubuntu:latest as HUGOINSTALL
