@@ -1371,7 +1371,6 @@ syslog
 systemctl
 systemd
 systemname
-sysv
 sysvinit
 targ
 tasksel
