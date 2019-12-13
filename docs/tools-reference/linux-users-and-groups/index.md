@@ -12,7 +12,7 @@ modified_by:
 published: 2009-08-31
 title: Linux Users and Groups
 external_resources:
- - '[User Account and Group Management @ UWISC''s Center for Computer Aided Engineering](http://www.cae.wisc.edu/linaccounts)'
+ 
  - '[Users and Groups Administration in Linux @ DebianAdmin](http://www.debianadmin.com/users-and-groups-administration-in-linux.html)'
  - '[Online Chmod Calculator](http://www.onlineconversion.com/html_chmod_calculator.htm)'
 ---
