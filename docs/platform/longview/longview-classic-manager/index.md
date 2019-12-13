@@ -10,6 +10,7 @@ aliases: ['longview/', 'uptime/longview/']
 modified_by:
   name: Linode
 title: What is Longview and How to Use it
+hiddenguide: true
 h1_title: Understanding Linode Longview
 cloud_manager_link: 'platform/longview/what-is-longview/'
 published: 2013-03-27
