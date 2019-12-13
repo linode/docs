@@ -12,7 +12,7 @@ published: 2017-06-16
 title: How to Use Block Storage with Your Linode
 cloud_manager_link: platform/block-storage/how-to-use-block-storage-with-your-linode/
 hiddenguide: true
-aliases: ['platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/']
+aliases: ['platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/','linode/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/']
 ---
 
 ![How to Use Block Storage with Your Linode](block-storage-title-graphic.png)
