@@ -28,7 +28,7 @@ In this guide, you will find the following information about bash scripts:
 - [using functions](#using-bash-functions-as-shell-commands)
 - [using dates and times](#using-dates-and-times-in-bash-scripts)
 - [rotating log files](#rotating-log-files)
-- [soliving other real world problems](#bash-scripts-for-administrators)
+- [solving other real world problems](#bash-scripts-for-administrators)
 - [additional examples](#additional-examples)
 
 {{< note >}}
