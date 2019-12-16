@@ -11,7 +11,6 @@ modified: 2017-12-12
 modified_by:
   name: Linode
 title: 'Install Icinga 2 Monitoring on Debian 9'
-expiryDate: 2019-12-12
 contributor:
   name: Matt Vass
   link: mailto:linuxboxgo@gmail.com
