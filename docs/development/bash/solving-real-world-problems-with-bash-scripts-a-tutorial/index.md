@@ -23,13 +23,13 @@ external_resources:
 This guide presents some of the advanced capabilities of the bash shell by showing practical and fully functional bash scripts. It also illustrates how you can work with dates and times in bash scripts and how to write and use functions in bash.
 
 ### In This Guide
-You will learn how to use bash scripts:
+In this guide, you will find the following information about bash scripts:
 
-- [Using functions](#using-bash-functions-as-shell-commands),
-- [using dates and times](#using-dates-and-times-in-bash-scripts),
-- [rotating log files](#rotating-log-files),
-- [to solve other real world problems](#bash-scripts-for-administrators), and
-- [in additional examples](#additional-examples).
+- [using functions](#using-bash-functions-as-shell-commands)
+- [using dates and times](#using-dates-and-times-in-bash-scripts)
+- [rotating log files](#rotating-log-files)
+- [soliving other real world problems](#bash-scripts-for-administrators)
+- [additional examples](#additional-examples)
 
 {{< note >}}
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
