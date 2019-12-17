@@ -82,15 +82,19 @@ LKE is not available in the Linode Classic Manager
 
 1. The **Create a Kubernetes Cluster** page will appear. Select the region where you would like your cluster to reside.
 
+    {{< note >}}
+While in [Private Beta](https://welcome.linode.com/lkebeta/), LKE is only available in the Dallas data center. Cluster region availability will expand when LKE goes into generally availability (GA).
+    {{</ note >}}
+
     ![Select your cluster's region](select-cluster-region.png "Select your cluster's region.")
 
 1. In the **Add Node Pools** section, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
 
-    ![Select your cluster's resources](select-cluster-resources.png "Select your cluster's resources.")
-
     {{< note >}}
-While in Private Beta, LKE is only available in the Dallas data center, and worker nodes can be created for all [Standard](/docs/platform/how-to-choose-a-linode-plan/#2-standard), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory Plans](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory). This will expand in the future.
-{{< /note >}}
+Currently, the available plan types for LKE worker nodes are [Standard](/docs/platform/how-to-choose-a-linode-plan/#2-standard), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory) plans.
+    {{< /note >}}
+
+    ![Select your cluster's resources](select-cluster-resources.png "Select your cluster's resources.")
 
 1. Under **Number of Linodes**, input the number of Linode worker nodes you would like to add to your Node Pool. These worker nodes will have the hardware resources selected from the **Add Node Pools** section.
 
