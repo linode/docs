@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "This guide shows how to install and use Linode Longview."
+description: "This guide shows how to install and use Linode Longview. "
 og_description: "Learn how to use Longview, Linode's system data graphing service."
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,7 +10,9 @@ aliases: ['longview/', 'uptime/longview/']
 modified_by:
   name: Linode
 title: What is Longview and How to Use it
+hiddenguide: true
 h1_title: Understanding Linode Longview
+cloud_manager_link: 'platform/longview/what-is-longview/'
 published: 2013-03-27
 ---
 

@@ -31,7 +31,7 @@ For more information on enabling Object Storage, cancelling Object Storage, and 
 
 ## Storage Limitations
 
-Currently, Object Storage accounts are limited to 10 terabytes of storage per cluster, or 1 million objects per cluster, whichever comes first. Separate clusters have separate limits, so it is possible to store 10 terabytes worth of objects in one cluster and 10 terabytes worth of objects in another.  In the future, individual clusters may have separate storage maximums, and this guide will be updated to include those limits. Accounts can have up to 25 buckets per cluster.
+Currently, Object Storage accounts are limited to 50 terabytes of storage per cluster, or 50 million objects per cluster, whichever comes first. Separate clusters have separate limits, so it is possible to store 50 terabytes worth of objects in one cluster and 50 terabytes worth of objects in another.  In the future, individual clusters may have separate storage maximums, and this guide will be updated to include those limits. Accounts can have up to 1000 buckets per cluster.
 
 Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) and [cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck) will do this for you automatically if a file exceeds this limit as part of the uploading process.
 
