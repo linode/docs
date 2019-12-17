@@ -297,7 +297,9 @@ You now have a working Asterisk phone server. Fire up Asterisk and make sure it 
 
         sudo systemctl start asterisk
 
-    To ensure that asterisk service starts even after a reboot, enable the service ```sudo systemctl enable asterisk```
+1. To ensure that asterisk service starts even after a reboot, enable the service:
+
+        sudo systemctl enable asterisk
 
 1.  Connect to Asterisk:
 
