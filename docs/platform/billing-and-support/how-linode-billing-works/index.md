@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to Linode Billing.
 keywords: ["billing", "payments"]
+aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/', '/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
