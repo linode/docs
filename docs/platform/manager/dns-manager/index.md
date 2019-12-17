@@ -18,14 +18,14 @@ classic_manager_link: platform/manager/dns-manager-classic-manager/
 
 <!-- ![DNS Manager Overview](dns-manager-overview.png) -->
 
-The *Domains* section of the Linode Cloud Manager is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the **Domains** section and basic domain setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide.
+The *Domains* section of the [Linode Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the **Domains** section and basic domain setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide.
 
 {{< note >}}
 Linode's DNS service employs [Cloudflare](https://cloudflare.com) to provide denial of service (DDoS) mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/networking/dns/dns-records-an-introduction/#name-servers). These factors make our service reliable, fast, and a great choice for your DNS needs.
 {{</ note>}}
 
 {{< note >}}
-To use the Linode DNS Manager to serve your domains you must have an active Linode on your account. If you remove all active Linodes your domains will no longer be served.
+To use the Linode DNS Manager to serve your domains, you must have an active Linode on your account. If you remove all active Linodes, your domains will no longer be served.
 {{</ note >}}
 
 ## Getting Started
@@ -62,20 +62,24 @@ DNS changes can take up to 24 hours to propagate throughout the internet, althou
 
 ## Create and Manage Domains
 
-You can create and manage domains from the **Domains** section of the Linode Cloud Manager. To find this area, log in to your [Cloud Manager](https://cloud.linode.com/) account and click the **Domains** link in the sidebar:
+The Linode DNS Manager allows you to create and manage domains. The DNS manager can be accessed from the **Domains** section of the Linode Cloud Manager. To find this area, log in to your [Cloud Manager](https://cloud.linode.com/) account and click the **Domains** link in the sidebar.
 
-![The DNS Manger](dns-section.png "The DNS Manager")
+![The DNS Manger](access-domains-section.png "The DNS Manager")
 
 ### DNS Manager Options Overview
 
 The section below provides a detailed description of the available options within the **Domains** section of the Linode Cloud Manager:
 
-![The DNS Manger](domain-manager.png "The DNS Manager")
+![The DNS Manger](domains-overview.png "The DNS Manager")
 
-1.  All of your domains are listed under the **Domains** table. Click the name of a domain to add or edit DNS records within that domain's zone. Before you can add any DNS records, you must add a domain.
+1.  All of your domains are listed under the **Domains** heading. To access your Domain's DNS records, click the name of a Domain.
+
+    Click the name of a domain to add or edit its DNS records. When you add a domain, the Cloud Manager will automatically create a zone file for your Domain.  Before you can add any DNS records, you must [add a domain](#add-a-domain).
 
     {{< note >}}
-A *domain zone* is a collection of DNS records for a single domain name. **Creating a domain also creates its corresponding domain zone.** The term *domain zone* becomes synonymous with the term *domain*, both in terms of use and administration.
+A *domain zone* is a collection of DNS records for a single domain name. **Creating a domain also creates its corresponding domain zone.** [Linode's APIv4](developers.linode.com/api/v4/), which is the backbone of the Cloud Manager, will validate the created zone file for any errors.
+
+The term *domain zone* becomes synonymous with the term *domain*, both in terms of use and administration.
 {{< /note >}}
 
 1.  If you have a zone that can be exported from a server or another hosting provider, click **Import a Zone** to import it.
@@ -136,7 +140,7 @@ When you first create a domain, you'll need to add some DNS records. <!-- The DN
 
     [![This page has seven sections showing seven different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, and SRV. You can adjust the SOA record by clicking the "Settings" link in that section. The next six sections each have a corresponding link that lets you add a new record of that type. For example, to add an NS record, click the "Add a new NS record" link. There are similar links for MX, A, CNAME, TXT, and SRV records.](domain-domain-records-small.png)](domain-domain-records.png)
 
-1.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, then click **Add a [X] Record**. The example below shows how to add an A/AAAA record.
+1.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, then click **Add a Record**. The example below shows how to add an A/AAAA record.
 
     ![This page allows you to create a new A/AAAA record.](domain-add-a-record.png)
 
@@ -244,6 +248,28 @@ If one of your domain names has expired or if you want to start hosting it on an
 {{< caution >}}
 Once removed, you **MUST** delete the Linode nameserver entries from the domain at the registrar level. This is a very important step; if the entries are not removed, someone could use your domain without your permission.
 {{< /caution >}}
+
+### Transfer a Domain Zone
+
+Linode's DNS servers allow Domain zone transfers to non-Linode DNS servers that you designate and trust. This feature can be used to transfer a Domain zone to another hosting provider's DNS servers. To enable this capability, you will need to alter your Domain's SOA record. This section will cover these steps.
+
+  {{< caution >}}
+Granting another server access to zone information is potentially dangerous. Do not add any IP addresses that you do not know or trust.
+  {{</ caution >}}
+
+1. From the **Domains** section of the Cloud Manager, find the domain for which you would like to enable Domain zone transfer and click on the entry to access its Domain records
+
+1. Viewing your Domain's records, under the **SOA Record** section, click on the **more options ellipsis** corresponding to your Domain's SOA records and select **Edit**.
+
+    ![Edit SOA records](edit-soa-record.png "Edit your SOA records")
+
+1. In the **Edit SOA Record** pane, find the **Domain Transfers** form field and enter in a comma separated list of IP addresses corresponding to the DNS servers you'd like to give access to your Domain's zone file.
+
+1. When you've completed your update, click on **Save**.
+
+    {{< note >}}
+When the DNS servers no longer need access to your Domain's zone file, remove the IP address from the **Domain Transfers** field.
+    {{</ note >}}
 
 ## Troubleshoot DNS Records
 
