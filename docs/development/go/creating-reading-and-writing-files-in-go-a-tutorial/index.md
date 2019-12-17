@@ -2,13 +2,14 @@
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'File I/O in Go.'
+description: 'Learn various file I/O operations in Go.'
 keywords: ["Go", "File", "UNIX", "Input", "Output", "Golang"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-06
 modified_by:
   name: Linode
-title: 'Creating, reading and writing files in Go'
+title: 'Creating, Reading and Writing Files in Go - A Tutorial'
+h1_title: 'Creating, Reading and Writing Files in Go'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
@@ -21,7 +22,7 @@ external_resources:
 
 ## Introduction
 
-The subject of this guide is performing file input and output operations in Go.
+This guide provides examples related to performing common file input and output operations in Go.
 
 {{< note >}}
 This guide is written for a non-root user. However, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -29,25 +30,28 @@ This guide is written for a non-root user. However, some commands might require 
 
 ## In This Guide
 
-In this guide guide you will learn:
+In this guide guide you will learn how to:
 
-- How to read files in Go
-- How to read text files in various ways
-- How to check whether a file or a directory exists
-- How to create new files and write data to them
-- How to implement a simple version of the `cat(1)` command line utility in Go
+- [Read files in Go](#reading-files-in-go)
+- [Check whether a file or a directory exists](#checking-if-a-path-exists)
+- [Create new files](#creating-a-new-file)
+- [Write data to files](#writing-data-to-a-file)
+- [Implement a simple version of the `cat(1)` command line utility in Go](#implementing-cat-in-go)
 
-All you need to follow this guide is to have Go and your favorite text editor installed on your Linode machine.
+## Before You Begin
 
-Notice that for the purposes of this guide, a text file named `data.txt` with the following contents will be used:
+- To follow this guide you need to have [Go installed on your computer](/docs/development/go/install-go-on-ubuntu/) and access to your preferred text editor.
 
-    cat /tmp/data.txt
-{{< output >}}
+- For the purposes of this guide, a text file named `data.txt` with the following contents will be used:
+
+        cat /tmp/data.txt
+
+    {{< output >}}
 1 2
 One Two
 
 Three
-{{< /output >}}
+    {{< /output >}}
 
 ## Checking if a Path Exists
 
