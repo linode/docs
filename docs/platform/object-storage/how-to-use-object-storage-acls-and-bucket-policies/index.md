@@ -46,7 +46,7 @@ The bucket referred to in this section is an arbitrary bucket on the target user
 
     - The users you're granting or restricting access to can run this command on one of their buckets and share their canonical ID with you, or:
 
-    - You can run this command yourself if you have use of their access tokens (you will need to cofigure s3cmd to use their access tokens instead of your own).
+    - You can run this command yourself if you have use of their access tokens (you will need to configure s3cmd to use their access tokens instead of your own).
 
 1. Run the above command, replacing `other-users-bucket` with the name of the bucket. You'll see output similar to the following:
 
@@ -62,7 +62,7 @@ ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
 
 1. The canonical ID of the owner of the bucket is the long string of letters, dashes, and numbers found in the line labeled `ACL`, which in this case is `a0000000-000a-0000-0000-00d0ff0f0000`.
 
-1. Alternatively, you *may* be able to retrieve the canonical ID by `curl`ing a bucket and retrieving the Owner ID field from the returned XML. This method is an option when both of these conditions are true:
+1. Alternatively, you *may* be able to retrieve the canonical ID by curling a bucket and retrieving the Owner ID field from the returned XML. This method is an option when both of these conditions are true:
 
     - The bucket has objects within it and has already been set to public (with a command like `s3cmd setacl s3://other-users-bucket --acl-public`).
     - The bucket has not been set to serve static websites.
