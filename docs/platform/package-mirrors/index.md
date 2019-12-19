@@ -24,11 +24,12 @@ Linode offers public package mirrors for Ubuntu, Debian, and CentOS. When you in
 - <http://frankfurt.mirrors.linode.com/>
 - <http://fremont.mirrors.linode.com/>
 - <http://london.mirrors.linode.com/>
+- <http://mum1.mirrors.linode.com/>
 - <http://newark.mirrors.linode.com/>
 - <http://singapore.mirrors.linode.com/>
+- <http://syd1.mirrors.linode.com/>
 - <http://tor1.mirrors.linode.com/>
-- <http://tokyo.mirrors.linode.com/>
-- <http://tokyo2.mirrors.linode.com/>
+- <http://shinagawa.mirrors.linode.com/>
 
 
 ## Package Mirror Settings
@@ -49,7 +50,7 @@ For a Ubuntu system follow the instructions below:
 
     <http://mirrors.linode.com/ubuntu/>
 
-3.  Do not modify lines containing the address <http://security.ubuntu.com/ubuntu/>.
+3.  Do not modify lines containing the address <http://security.ubuntu.com/ubuntu/>. These lines contain security updates for packages.
 
 4.  Save and exit the `sources.list` file.
 
@@ -65,7 +66,7 @@ For a Debian system follow the instructions below:
 
     <http://mirrors.linode.com/debian/>
 
-3.  Do not modify lines containing the address <http://security.debian.org/>.
+3.  Do not modify lines containing the address <http://security.debian.org/>. These lines contains security updates for packages.
 
 4.  Save and exit the `sources.list` file.
 
@@ -73,7 +74,7 @@ For a Debian system follow the instructions below:
 
 For a CentOS system follow the instructions below:
 
-1.  Edit the `fastestmirror.conf` file with the following command:
+1.  By default, `yum` will try using fastest mirror available. This need to be disabled to use Linode's mirror. Edit the `fastestmirror.conf` file with the following command:
 
         sudo nano /etc/yum/pluginconf.d/fastestmirror.conf
 

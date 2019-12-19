@@ -215,6 +215,9 @@ Any time you complete work related to one logical change to the Hugo site, you s
 A Dockerfile contains the steps needed to build a Docker image. The Docker image provides the minimum set up and configuration necessary to deploy a container that satisfies its specific use case. The Hugo site's minimum Docker container configuration requirements are an operating system, Hugo, the Hugo site's content files, and the NGINX web server.
 
 1. In your Hugo site's root directory, create and open a file named `Dockerfile` using the text editor of your choice. Add the following content to the file. You can read the Dockerfile comments to learn what each command will execute in the Docker container.
+    {{< note >}}
+The following Dockerfile uses Ubuntu to install Hugo. However, Ubuntu may not have the most up to date Hugo package. If this is the case, you could also create a Dockerfile based on Arch Linux or another Linux distribution that has a more up to date Hugo package.
+    {{< /note >}}
 
     {{< file "Dockerfile">}}
 #Install the container's OS.
@@ -368,7 +371,7 @@ The k8s-alpha CLI creates clusters that are pre-configured with useful Linode se
 apiVersion: v1
 kind: Service
 metadata:
-  name: : hugo-site
+  name: hugo-site
   namespace: hugo-site
 spec:
   selector:

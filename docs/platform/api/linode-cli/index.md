@@ -5,6 +5,7 @@ author:
 description: The Linode CLI provides a simplified interface to the Linode API. This guide shows how to install the CLI and describes how to perform basic tasks from the command line.
 og_description: The Linode CLI provides a simplified interface to the Linode API. This guide shows how to install the CLI and describes how to perform basic tasks from the command line.
 keywords: ["linode api", "linode cli", "python cli"]
+aliases: ["/platform/api/using-the-linode-cli/", "cli/", "/platform/linode-cli/"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-03-05
 modified_by:
@@ -197,6 +198,14 @@ Tasks related to Linode instances are performed with `linode-cli linodes [ACTION
 1.  Rebuild a Linode:
 
         linode-cli linodes rebuild $linode_id --image linode/debian9 --root_pass
+
+1. Rebuild a Linode, adding a populated authorized_keys file:
+
+        linode-cli linodes rebuild $linode_id --image linode/debian9 --root_pass --authorized_keys "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEC+DOVfw+8Jsw1IPrYCcU9/HCuKayCsV8bXjsHqX/Zq email@example.com"
+
+    If your key exists on your filesystem, you can also substitute its value in the CLI command with `cat`. For example:
+
+        linode-cli linodes rebuild $linode_id --image linode/debian9 --root_pass --authorized_keys "$(cat ~/.ssh/id_rsa.pub)"
 
 Many other actions are available. Use `linode-cli linodes --help` for a complete list.
 

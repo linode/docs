@@ -16,7 +16,7 @@ external_resources:
 ---
 
 {{< note >}}
-[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with objects stored in Object Storage buckets will be billed. For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
+[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with the Object Storage service enabled on their account will be billed. For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
 {{</ note >}}
 
 Linode Object Storage allows for bucket versioning so that you can retain different versions of your objects within buckets. This makes it easy to save older versions of objects, as well as quickly revert to an object's previous state.

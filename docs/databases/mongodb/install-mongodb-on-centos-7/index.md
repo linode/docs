@@ -5,11 +5,11 @@ author:
 description: 'Install MongoDB for document-oriented data storage on CentOS 7.'
 keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-12-30
 modified_by:
-  name: Phil Zona
+  name: Linode
 published: 2016-12-30
-title: 'Install MongoDB on CentOS 7'
+title: 'How To Install MongoDB on CentOS 7'
+h1_title: 'Installing MongoDB on CentOS 7'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](https://www.mongodb.com/)'
@@ -184,7 +184,6 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
         quit()
 
 For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://docs.mongodb.com/manual/security).
-
 
 ## Manage Data and Collections
 
