@@ -38,17 +38,25 @@ The process for launching a getty may differ depending on your distribution.
 
 ## Access Glish
 
-1.  From your Linode Dashboard, select the Linode you want to access.
+1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+2. Click on the Linodes link in the sidebar and select the desired Linode.
+3. Click on the **Launch Console** link in the top right-hand corner of the Manager.
 
-2.  Click the **more options ellipsis** corresponding to the Linode and select **Launch Console**.    
+    ![Launch the Lish Console](launch-console.png)
 
-3.  Select the **Glish** tab in the pop-up window that appears.
+4. The Lish Web Console window appears with your Linode's console, as shown below.
 
-4.  You will need to install a desktop environment. On our Debian example Linode, we're using Xfce4:
+    ![An example of the Lish Web Console](lish-console.png).    
+
+5.  Select the **Glish** tab.
+
+    ![An example of the Gish Web Console](glish-console.png).
+
+6.  You will need to install a desktop environment. On our Debian example Linode, we're using Xfce4:
 
         sudo apt-get install xfce4
 
-5.  After installation, launch your desktop environment from the Glish console:
+7.  After installation, launch your desktop environment from the Glish console:
 
         startxfce4
 
