@@ -48,7 +48,7 @@ The process for launching a getty may differ depending on your distribution.
 
     ![An example of the Lish Web Console](lish-console.png).    
 
-5.  Select the **Glish** tab.
+5. Select the **Glish** tab.
 
     ![An example of the Gish Web Console](glish-console.png).
 
