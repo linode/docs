@@ -91,7 +91,7 @@ The example illustrates some (but not all) of the ways a struct can be created:
 
 - When the variable `nathan` is defined, it is not assigned a value. Go will assign the default zero value to any fields that are not given values. For a string, the zero value is the empty string, which is why a blank space appears to the left of the `0` in the first line of the output.
 
-- One way to create a struct is to use a struct literal, as shown on line 16. When using a struct literal, you supply a comma-delimited list of the field names and the values they should be assigned.
+- One way to create a struct is to use a struct literal, as shown on line 15. When using a struct literal, you supply a comma-delimited list of the field names and the values they should be assigned.
 
 - When using a struct literal in this way, you do not need to specify all of the fields, as shown on line 18. Because the employeeID for `heather` was not defined, it takes on the zero value (for an integer, this is `0`).
 
@@ -168,7 +168,7 @@ My name is Mihalis and my employee ID is 1910234
 
 ### Public and Private Fields
 
-In order to be able to use a struct and its fields outside of the Go package that the struct type is defined, both the struct name and the desired field names must begin with an uppercase letter. Therefore, if a struct has some field names that begin with a lowercase letter, then these particular fields will be *private* to the Go package that the struct is defined. This is a global Go rule that also applies to functions and variables.
+In order to be able to use a struct and its fields outside of the Go package where the struct type is defined, both the struct name and the desired field names must begin with an uppercase letter. Therefore, if a struct has some field names that begin with a lowercase letter, then these particular fields will be *private* to the Go package that the struct is defined. This is a global Go rule that also applies to functions and variables.
 
 To illustrate, consider these two Go files:
 
