@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs">
+    {{ range $index, $tabs := .Params }}
+    {{ if ne $index 0 }}
+    <li>
+    {{else}}
+    <li class="active" style="margin-top:10px">
+    {{ end }}
+    <a data-toggle="tab" data-target="#tab-{{ $tabs | urlize }}" aria-controls="tab-{{ $tabs | urlize }}">{{ $tabs }}</a></li>
+    {{ end }}
+</ul>
+{{ .Inner }}

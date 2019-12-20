@@ -4152,6 +4152,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
+.tab-content {
+  margin-top: 20px;
+}
 .navbar {
   position: relative;
   min-height: 57px;

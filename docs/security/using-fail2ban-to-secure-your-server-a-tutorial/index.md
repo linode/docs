@@ -34,7 +34,10 @@ Fail2ban is intended to be used in conjunction with an already-hardened server a
 
 Follow the [Getting Started](/docs/getting-started) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/security/securing-your-server) guide before beginning.
 
-### CentOS 7
+{{< tabNav "CentOS 7" "Debian" "Fedora" "Ubuntu" >}}
+{{</ tabNav >}}
+{{< tabContent >}}
+{{< tab name="CentOS 7" active="true" >}}
 
 1.  Ensure your system is up to date and install the EPEL repository:
 
@@ -55,13 +58,13 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
         systemctl start sendmail
         systemctl enable sendmail
 
-    {{< note >}}
+{{< note >}}
 Should you encounter the error that there is "*no directory /var/run/fail2ban to contain the socket file /var/run/fail2ban/fail2ban.sock*", create the directory manually:
 
     mkdir /var/run/fail2ban
-{{< /note >}}
-
-### Debian
+{{</ note >}}
+{{</ tab >}}
+{{< tab name="Debian" >}}
 
 1.  Ensure your system is up to date:
 
@@ -77,15 +80,17 @@ Should you encounter the error that there is "*no directory /var/run/fail2ban to
 
         apt-get install sendmail-bin sendmail
 
-    {{< note >}}
+{{< note >}}
 The current version of Sendmail in Debian Jessie has an [upstream bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=293017) which causes the following errors when installing `sendmail-bin`. The installation will hang for a minute, but then complete.
 
-    Creating /etc/mail/sendmail.cf...
-    ERROR: FEATURE() should be before MAILER() MAILER('local') must appear after FEATURE('always_add_domain')
-    ERROR: FEATURE() should be before MAILER() MAILER('local') must appear after FEATURE('allmasquerade')
-{{< /note >}}
-
-### Fedora
+{{< output >}}
+Creating /etc/mail/sendmail.cf...
+ERROR: FEATURE() should be before MAILER() MAILER('local') must appear after FEATURE('always_add_domain')
+ERROR: FEATURE() should be before MAILER() MAILER('local') must appear after FEATURE('allmasquerade')
+{{</ output >}}
+{{</ note >}}
+{{</ tab >}}
+{{< tab name="Fedora" >}}
 
 1.  Update your system:
 
@@ -106,7 +111,8 @@ The current version of Sendmail in Debian Jessie has an [upstream bug](https://b
         systemctl start sendmail
         systemctl enable sendmail
 
-### Ubuntu
+{{< /tab >}}
+{{< tab name="Ubuntu" >}}
 
 1.  Ensure your system is up to date:
 
@@ -126,6 +132,9 @@ The current version of Sendmail in Debian Jessie has an [upstream bug](https://b
 
         ufw allow ssh
         ufw enable
+
+{{</ tab >}}
+{{</ tabContent >}}
 
 ## Configure Fail2ban
 

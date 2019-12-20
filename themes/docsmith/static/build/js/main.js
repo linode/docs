@@ -248,6 +248,12 @@ function toggleHiddenContent(hiddenContent) {
         }
     })
 
+    // tabs
+    $(document).ready(function(){
+        $(".nav-tabs a").click(function(){
+            $(this).tab('show');
+        });
+    });
 
 })(jQuery);
 

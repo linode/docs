@@ -1,0 +1,8 @@
+{{- $name := .Get "name" -}}
+{{ with .Get "active" }}
+<div class="tab-pane fade in active" id="tab-{{ $name | urlize }}" aria-labelledby="tab-{{ $name | urlize }}">
+{{ else }}
+<div class="tab-pane fade" id="tab-{{ $name | urlize }}" aria-labelledby="tab-{{ $name | urlize }}">
+{{ end }}
+    {{ .Inner | markdownify }}
+</div>
