@@ -46,11 +46,11 @@ The process for launching a getty may differ depending on your distribution.
 
 4. The Lish Web Console window appears with your Linode's console, as shown below.
 
-    ![An example of the Lish Web Console](lish-console.png).    
+    ![An example of the Lish Web Console](lish-console.png)
 
 5. Select the **Glish** tab.
 
-    ![An example of the Gish Web Console](glish-console.png).
+    ![An example of the Gish Web Console](glish-console.png)
 
 6.  You will need to install a desktop environment. On our Debian example Linode, we're using Xfce4:
 
