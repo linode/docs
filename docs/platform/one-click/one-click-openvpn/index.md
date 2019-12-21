@@ -53,7 +53,7 @@ Your VPN's administrative web interface will be available via a web browser at `
 
 The client web interface for your VPN is located at `https://192.0.2.2:943/`, where your Linode's IP address should take the place of the `192.0.2.2` example address. The client interface includes links to download the OpenVPN client software for your computer.
 {{< note >}}
-The OpenVPN Access Server does not come with an HTTP (insecure) webserver daemon. Hence, it is important that you use `https` in the address. If you use `http` in the address, the server does not respond.
+The OpenVPN Access Server does not come with an HTTP (insecure) web server daemon. Hence, it is important that you use `https` in the address. If you use `http` in the address, the server does not respond.
 {{< /note >}}
 
 The username you should use to log in to your OpenVPN server is `openvpn`. The password for connecting to the VPN is the password you supplied in the One-Click App creation form.
