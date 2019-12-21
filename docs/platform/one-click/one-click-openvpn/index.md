@@ -51,7 +51,10 @@ When you've provided all required Linode Options, click on the **Create** button
 
 Your VPN's administrative web interface will be available via a web browser at `https://192.0.2.2:943/admin/`, where `192.0.2.2` represents the IPv4 address of your new Linode instance. Your IPv4 address can be found under the **Networking** tab on your new Linode's detail page.
 
-The client web interface for your VPN is located at `https://192.02.2:943/`, where your Linode's IP address should take the place of the `192.0.2.2` example address. The client interface includes links to download the OpenVPN client software for your computer.
+The client web interface for your VPN is located at `https://192.0.2.2:943/`, where your Linode's IP address should take the place of the `192.0.2.2` example address. The client interface includes links to download the OpenVPN client software for your computer.
+{{< note >}}
+The OpenVPN Access Server does not come with an HTTP (insecure) webserver daemon. Hence, it is important that you use `https` in the address. If you use `http` in the address, the server does not respond.
+{{< /note >}}
 
 The username you should use to log in to your OpenVPN server is `openvpn`. The password for connecting to the VPN is the password you supplied in the One-Click App creation form.
 
