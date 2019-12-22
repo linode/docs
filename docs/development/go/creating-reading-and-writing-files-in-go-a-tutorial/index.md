@@ -30,7 +30,7 @@ This guide is written for a non-root user. However, some commands might require 
 
 ## In This Guide
 
-In this guide you will learn how to:
+In this guide, you will learn how to:
 
 - [Read files in Go](#reading-files-in-go)
 - [Check whether a file or a directory exists](#checking-if-a-path-exists)
