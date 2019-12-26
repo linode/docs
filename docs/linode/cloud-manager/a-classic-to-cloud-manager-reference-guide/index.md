@@ -16,7 +16,7 @@ contributor:
 ---
 
 ## Introduction
-Linode's Classic Manager is being retired at the end of Janury 2020. At that time all users will be migrated to the new [Cloud Manager](https://cloud.linode.com/). This guide will help ease that transition by pointing out some of the features that you may need help finding and highlighting some settings that might make your overall Cloud Manager experience better.
+Linode's Classic Manager is being retired at the end of January 2020. At that time all users will be migrated to the new [Cloud Manager](https://cloud.linode.com/). This guide will help ease that transition by pointing out some of the features that you may need help finding and highlighting some settings that might make your overall Cloud Manager experience better.
 
 ## Where Can I Find...?
 When switching to a new platform, it can be frustrating learning how to find the tools you are used to using. Here are some common things that you might have trouble finding in the new Cloud Manager.
@@ -28,7 +28,7 @@ In Classic Manager, Disks were located on the Linode Dashboard tab. In the Cloud
 
 1.  Then click the **Advanced** tab. The disks are located in the **Disks** panel. Here you can add a disk, or for each individual disk, you can click the **more options ellipses** to get a drop down menu which will allow you do choose options such as `Rename`, `Resize`, `Imagize`, `Clone`, and `Delete`.
 
-    ![Location of Cloud Manager Disks](classic-to-cloud-cloud-manager-disks.png "Location of Clound Manager Disks")
+    ![Location of Cloud Manager Disks](classic-to-cloud-cloud-manager-disks.png "Location of Cloud Manager Disks")
 
 ### Find Volumes
 In Classic Manager, Manage Volumes was found in the Linodes screen. In Cloud Manager, Volumes are their own top-level menu item in the sidebar.
@@ -56,7 +56,7 @@ In Classic Manager, DNS Manager is where you can control your domains. In Cloud 
 ![Cloud Manager Domains](classic-to-cloud-cloud-manager-domains.png "Cloud Manager Domains")
 
 ## Compact Mode
-Cloud Manager by default uses more whitespace on the screen. However, there is a *Compact Mode* which compresses this extra space and allows more information to be displayed on the screen. This setting is located at the bottom lefthand corner of the screen in the gear icon. This is also where you can toggle on *Dark Mode*.
+Cloud Manager by default uses more whitespace on the screen. However, there is a *Compact Mode* which compresses this extra space and allows more information to be displayed on the screen. This setting is located at the bottom left hand corner of the screen in the gear icon. This is also where you can toggle on *Dark Mode*.
 
 ![Compact Mode Enabled](classic-to-cloud-compact-mode.png "Cloud Manager Compact Mode Enabled")
 
@@ -65,7 +65,7 @@ You can download and print an invoice in both Classic and Cloud Managers.
 
 In Classic Manager this is found at the bottom of an invoice. You must open an invoice to see this link.
 
-In Cloud Manager you can download a printable PDF of your invoice from the list of invoices or from within an invdividual invoice.
+In Cloud Manager you can download a printable PDF of your invoice from the list of invoices or from within an individual invoice.
 
 1.  Navigate to your Account by clicking on Account in the sidebar.
 
@@ -93,18 +93,18 @@ Importing your Display Groups is a **one-time** operation. If you don't have any
 {{< /note >}}
 
 ## Manage Email Event Notifications
-You can manage your email event notifcations in both Classic and Cloud manager. These notifications will alert you when new events such as booting, shutting down, or updates to a Linode occur on your account.
+You can manage your email event notifications in both Classic and Cloud manager. These notifications will alert you when new events such as booting, shutting down, or updates to a Linode occur on your account.
 
 In Classic Manager this was done in **Notifications** under **my profile**. In Cloud Manager this is done in **Settings** under **Profile**.
 
 ![Cloud Manager Notification Settings](classic-to-cloud-cloud-manager-email-notifications.png "Cloud Manager Notification Settings")
 
 ## Delete a Public IP Address
-You can delete Public IP addressess in both Classic and Cloud managers. In Classic Manager, this was done under the **Remote Access** tab in the Linode you wished to modify. In Cloud Manager it is done in the **Networking** tab.
+You can delete Public IP addresses in both Classic and Cloud managers. In Classic Manager, this was done under the **Remote Access** tab in the Linode you wished to modify. In Cloud Manager it is done in the **Networking** tab.
 
 1.  Click **Linodes** from the sidebar menu.
 
-1.  Choose the Linode you wish to modify to enter the Linode detail screen. Then click on the **Networking** tab. Your IPv4 and IPv6 addressess will be listed here.
+1.  Choose the Linode you wish to modify to enter the Linode detail screen. Then click on the **Networking** tab. Your IPv4 and IPv6 addresses will be listed here.
 
 1.  Next to the public IPv4 address you wish to delete, click **more options ellipses**. Select the option to **Delete IP** from the drop down menu.
 
@@ -113,7 +113,7 @@ You can delete Public IP addressess in both Classic and Cloud managers. In Class
 1.  A confirmation popup will appear asking if you are sure. Confirm.
 
     {{< note >}}
-You must have at least one public IP on a Linode. If you attempt to delete the last public IP on a Linode you will recieve an error message *after* you confirm the deletion.
+You must have at least one public IP on a Linode. If you attempt to delete the last public IP on a Linode you will receive an error message *after* you confirm the deletion.
 {{< /note >}}
 
 ## API Keys/Personal Access Tokens
