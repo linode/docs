@@ -133,7 +133,6 @@ API Keys from Classic Manager do not transfer. Therefore, if you have keys gener
 
 See the following guides for more features of Cloud Manager:
 
- - Search in Cloud Manager
  - [Cloud Manager Events and Activity](/platform/manager/cloud-manager-events/)
  - [Longview in Cloud Manager](/platform/longview/what-is-longview/)
 
