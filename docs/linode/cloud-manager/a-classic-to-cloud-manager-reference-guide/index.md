@@ -133,7 +133,7 @@ API Keys from Classic Manager do not transfer. Therefore, if you have keys gener
 
 See the following guides for more features of Cloud Manager:
 
- - [Cloud Manager Events and Activity](/linode/cloud-manager/what-are-the-cloud-manager-events-and-activity-feeds/)
+ - [What are the Cloud Manager Events and Activity Feeds](/linode/cloud-manager/what-are-the-cloud-manager-events-and-activity-feeds/)
  - [Longview in Cloud Manager](/platform/longview/what-is-longview/)
 
  If you still need help finding features in or using Cloud Manager, please contact [Linode Support](/platform/billing-and-support/support/).
