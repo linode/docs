@@ -221,7 +221,7 @@ If you have used the Display Groups feature in the Classic Manager, you can impo
 
     ![Cloud Manager import display groups as tags](tags-import-groups.png "Import display groups from the Classic Manager with the 'Import Display Groups' button in Account Settings")
 
-1.  Click the button that say **Import Display Groups**. A form will appear that lists your Display Groups and asks you to confirm the import action. To proceed, click the **Import Display Groups Now** button in this form.
+1.  A form will appear that lists your Display Groups and asks you to confirm the import action. To proceed, click the **Import Display Groups Now** button in this form.
 
     {{< note >}}
 Importing your Display Groups is a **one-time** operation. If you don't have any Display Groups configured in the Classic Manager this feature will not appear in the Cloud Manager.
