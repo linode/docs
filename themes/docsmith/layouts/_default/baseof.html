@@ -84,8 +84,37 @@
                 ]
             });
         </script>
-
-	    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+        <script type="text/javascript">
+        // Delighted survey integration.
+        // Reads current url path and passes it as a query parameter to delighted.
+        // This enables us to correlate a survey response to a guide.
+        function delightedSurvey(){
+              var path = window.location.pathname;
+              var encodedPath = encodeURIComponent( path );
+              var survey = "https://delighted.com/t/iVc7nAYL?referrer=" + encodedPath;
+              var windowWidth = $( window ).width();
+              function delightedMobile(){
+                $( "#community-paragraph" ).append( "{{ partial "mobile_feedback" }}" );
+                $( "#delighted-mobile" ).attr( "href", survey );
+              }
+              //mobile support onload
+              if ( windowWidth < 767 ) {
+                    delightedMobile();
+                  }
+              //mobile support responsive
+              $(window).resize(function() {
+                  windowWidth = $(this).width();
+                  if ( (windowWidth < 767) && (!$("h2").hasClass("delighted-mobile")) ) {
+                    delightedMobile();
+                  } else if ( windowWidth > 768 ) {
+                      $( ".delighted-mobile" ).remove();
+                  }
+              });
+              $( "#delighted" ).attr( "action", survey );
+            }
+            $( document ).ready( delightedSurvey );
+        </script>
+	      <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.0"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.0/dist/instantsearch-theme-algolia.min.css">
