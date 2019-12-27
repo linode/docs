@@ -20,14 +20,14 @@ Tasks performed using the Linode Cloud Manager or other account specific tools l
  - And [how to find an individual Linode's activity feed](#linode-activity-feed).
 
 {{< note >}}
-The Events Page will be limited to information tied into User Permissions as set by for each individual user on an account. For more information, see our [Accounts and Passwords](https://www.linode.com/docs/platform/manager/accounts-and-passwords/#users-and-permissions) guide.
+The Events Page will be limited to information tied into User Permissions as set for each individual user on an account. For more information, see our [Accounts and Passwords](https://www.linode.com/docs/platform/manager/accounts-and-passwords/#users-and-permissions) guide.
 {{< /note >}}
 
 ## Event's Page
 
 Your account's [Events Page](https://cloud.linode.com/events) is a history, or a log, of all activity pertaining to your Linode Account. This includes changes to all billable resources, domains using our DNS Manager, StackScripts, and other events that take place affecting your account, like opening a new support ticket.
 
-1. The [Events Page](https://cloud.linode.com/events) can be found by logging into the Cloud Manager and selecting the bell icon at the top right of the page. This will list the most recent events on your account, along with a brief descriptor for any event that has taken place, a rounded amount of time to give you an idea of how long ago it occurred, and in some cases show the user who initiated the event.
+1. The [Events Page](https://cloud.linode.com/events) can be found by logging into the Cloud Manager and selecting the bell icon at the top right of the page. This will list the most recent events on your account. Each event will contain a brief descriptor of the event, a rounded amount of time to give you an idea of how long ago it occurred, and in some cases will show the user who initiated the event.
 
     ![cloud-manager-event.png](cloud-manager-event.png)
 
@@ -41,7 +41,7 @@ Your account's [Events Page](https://cloud.linode.com/events) is a history, or a
 
 The Linode Activity Feed is similar to your Account's [Events Page](#Events-Page). However, this is a filtered list only relevant to the specific Linode you're observing.
 
-1. First, log into the Linode Cloud Manager and select **Linodes** from the sidebar menu, and click on the Linode you'd like to observe events for.
+1. To access a Linode's Activity Feed, first log into the Linode Cloud Manager and select **Linodes** from the sidebar menu, and click on the Linode you'd like to observe events for.
 
 1. On the Summary page you will see a brief Activity feed. Additionally, you can click on the **View More Activity** link to see a list of all of your Linode's activity in more detail. (You can also access this page by clicking on the **Activity** tab).
 
