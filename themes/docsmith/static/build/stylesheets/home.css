@@ -21971,11 +21971,12 @@ h1.contribute {
   margin-top: 10px;
   max-width: 100%;
 }
+#doc-sidebar-container .toc-inner-long {
+  overflow-y: auto;
+  height: 500px;
+}
 #doc-sidebar-container #doc-sidebar-toc li.active > a {
   color: #005170;
-}
-#doc-sidebar-container #doc-sidebar-toc .toc-long ul > li > ul > li > ul {
-  display: none;
 }
 /* Adapted from 
  https://bootsnipp.com/snippets/featured/share-on-social-networks
