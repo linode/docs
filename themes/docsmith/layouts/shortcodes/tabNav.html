@@ -1,11 +1,12 @@
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" role="tablist">
     {{ range $index, $tabs := .Params }}
     {{ if ne $index 0 }}
-    <li>
+    <li class="nav-item">
+    <a role="tab" data-toggle="tab" data-target="#tab-{{ $tabs | urlize }}" aria-controls="tab-{{ $tabs | urlize }}" aria-expanded="false">{{ $tabs }}</a></li>
     {{else}}
-    <li class="active" style="margin-top:10px">
+    <li class="nav-item active" style="margin-top:10px">
+    <a role="tab" data-toggle="tab" data-target="#tab-{{ $tabs | urlize }}" aria-controls="tab-{{ $tabs | urlize }}" aria-expanded="true">{{ $tabs }}</a></li>
     {{ end }}
-    <a data-toggle="tab" data-target="#tab-{{ $tabs | urlize }}" aria-controls="tab-{{ $tabs | urlize }}">{{ $tabs }}</a></li>
     {{ end }}
 </ul>
 {{ .Inner }}
