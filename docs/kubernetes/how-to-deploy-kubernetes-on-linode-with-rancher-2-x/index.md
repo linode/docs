@@ -264,13 +264,10 @@ Review Rancher's [Production Ready Cluster](https://rancher.com/docs/rancher/v2.
       always_pull_images: false
       pod_security_policy: false
       service_node_port_range: "30000-32767"
-      extra_args:
-        feature-gates: "PersistentLocalVolumes=true,VolumeScheduling=true,CSINodeInfo=true,CSIDriverRegistry=true,BlockVolume=true,CSIBlockVolume=true"
     kubelet:
       fail_swap_on: false
       extra_args:
         cloud-provider: "external"
-        feature-gates: "PersistentLocalVolumes=true,VolumeScheduling=true,CSINodeInfo=true,CSIDriverRegistry=true,BlockVolume=true,CSIBlockVolume=true"
     kube-controller:
       extra_args:
         cloud-provider: "external"
