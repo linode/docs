@@ -734,7 +734,7 @@ ssl_key = </etc/ssl/private/dovecot.pem
 4.  Disable plain-text authentication. In `/etc/dovecot/conf.d/10-auth.conf`, set the following line:
 
     {{< file "/etc/dovecot/conf.d/10-auth.conf" >}}
-disable\_plaintext\_auth = yes
+disable_plaintext_auth = yes
 
 {{< /file >}}
 
