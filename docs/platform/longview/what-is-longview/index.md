@@ -285,11 +285,29 @@ The Installation tab provides quick instructions on how to install the Longview 
 
 ## Longview Plan Details
 
-*Longview Free* updates every 5 minutes and provides twelve hours of data history. Longview Pro gives you data resolution at 60 second intervals, and you can view a complete history of your Linode’s data instead of only the previous 30 minutes.
+*Longview Free* updates every 5 minutes and provides twelve hours of data history. *Longview Pro* gives you data resolution at 60 second intervals, and you can view a complete history of your Linode’s data instead of only the previous 30 minutes.
+
+There are four different Longview Pro plan tiers you can choose from. Each plan varies in the amount of clients that will be monitored by Longview.
 
 {{< note >}}
-Longview Pro is not yet available in the Linode Cloud Manager. Longview for Cloud Manager is still being actively developed to reach parity with Linode's Classic Manager. This guide will be updated as development work continues. See the Cloud Manager's [changelog](https://developers.linode.com/changelog/cloud-manager/) for the latest information on Cloud Manager releases.
+Currently, it is not possible to have both *Longview Free* and *Longview Pro* clients. If you have active Longview clients under the Longview Free plan tier, when you switch to a Longview Pro plan, all of your currently active clients will be counted towards your new Longview Pro plan's client count.
 {{</ note >}}
+
+To change your plan level or to view the different Longview Pro plans that are available, follow these steps:
+
+1. Access your Longview account-wide plan details, log into the [Linode Cloud Manager](https://cloud.linode.com/dashboard) and click on the **Longview** link in the sidebar.
+
+    ![Access Longview in the Cloud Manager](access-longview.png "Access Longview in the Cloud Manager")
+
+1. Viewing the Longview Clients listing page, click on the **Plan Details** tab.
+
+    ![Access the Longview plan details page](longview-plan-details.png "Access the Longview plan details page")
+
+1. On the Longview Plan Details page, you can view all available Longview plans and verify the plan you are currently subscribed to.
+
+     ![Access the Longview plan details page](longview-plan-details-page.png "Access the Longview plan details page")
+
+1. If you would like to change your current plan, select your preferred plan and click on the **Change Plan** button. You will see the page update to denote your current Longview plan.
 
 ## Troubleshooting
 
