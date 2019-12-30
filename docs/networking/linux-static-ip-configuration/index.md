@@ -144,7 +144,7 @@ PREFIX0=24
 IPADDR1=198.51.100.10
 PREFIX1=24
 
-# Add a private IPv6 address.
+# Add a private IPv4 address.
 IPADDR2=192.0.2.6
 PREFIX2=17
 
@@ -193,7 +193,7 @@ PREFIX0=24
 IPADDR1=198.51.100.10
 PREFIX1=24
 
-# Add a private IPv6 address.
+# Add a private IPv4 address.
 IPADDR2=192.0.2.6
 PREFIX2=17
 
