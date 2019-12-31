@@ -61,7 +61,7 @@ For example, if you create a Linode on the first of the month, then your pool wi
 
 ### How Overages Work
 
-If you use all available bandwidth in your network transfer pool, you can continue to use your Linodes normally, **but you will be charged $0.02 for each additional GB** at the end of your billing cycle.
+If you use all available bandwidth in your network transfer pool, you can continue to use your Linodes normally, **but you will be charged $0.01 for each additional GB** at the end of your billing cycle.
 
 ### How to Mitigate Overages
 
