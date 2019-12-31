@@ -22820,6 +22820,34 @@ body.m-oh {
 .sub-menu {
   height: calc(100vh - 106px);
 }
+.weglot-container * {
+  font-size: 13px;
+  font-weight: 600;
+}
+.wgcurrent {
+  border-width: 0 !important;
+}
+.wg-flags.flag-1 a:before {
+  border-radius: 4px !important;
+  overflow: hidden;
+}
+.wg-drop.country-selector a {
+  height: 35px !important;
+  margin-right: -23px;
+}
+.wg-drop.country-selector {
+  margin-left: 8px;
+  margin-right: -15px;
+}
+.wg-drop.country-selector .wgcurrent:after {
+  display: none !important;
+}
+.wg-drop.country-selector:not(.closed) ul {
+  margin-left: -1px;
+}
+.wg-flags.flag-1 a:before {
+  background-image: url(/docs/media/images/weglot-flag-list-with-american-flag.png) !important;
+}
 /* Background */
 .chroma {
   background-color: #eeeedd;

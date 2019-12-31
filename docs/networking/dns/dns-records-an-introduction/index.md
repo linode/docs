@@ -47,6 +47,10 @@ You'll need to specify name servers on your domain registrar's website. They'll 
 
 The next aspect of DNS management is specifying DNS records, which match domain names to IP addresses. The DNS records are then automatically bundled up into a zone file, which is what allows connecting devices to look up the correct IP address for your domain. If you decide to use Linode's name servers, our DNS Manager will help you create a default zone file. It contains records similar to the following:
 
+{{< note >}}
+You can also use trailing dots in domain names (for example, `example.com.`), which will make the name fully-qualified.
+{{< /note >}}
+
     ; example.com [448369]
     $TTL 86400
     @   IN  SOA ns1.linode.com. admin.example.com. 2013062147 14400 14400 1209600 86400

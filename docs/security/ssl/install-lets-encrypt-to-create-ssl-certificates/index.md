@@ -76,7 +76,7 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
         sudo -H ./letsencrypt-auto certonly --standalone -d example.com -d www.example.com
 
     {{< note >}}
-ACME version 2 now supports wildcard certificates for subdomains by using the a DNS challenge. For more information on obtaining wildcards, visit the [Let's Encrypt documentation](https://community.letsencrypt.org/t/acme-v2-production-environment-wildcards/55578).
+ACME version 2 now supports wildcard certificates for subdomains by using the DNS challenge. For more information on obtaining wildcards, visit the [Let's Encrypt documentation](https://community.letsencrypt.org/t/acme-v2-production-environment-wildcards/55578).
 {{< /note >}}
 
 2.  When prompted, specify an administrative email address. This will allow you to regain control of a lost certificate and receive urgent security notices if necessary. Press **ENTER** or **RETURN** to save.
