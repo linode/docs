@@ -32,9 +32,9 @@ external_resources:
 ### New for Helm 3
 Here are the biggest changes for Helm 3. For a complete list and more details, [see the FAQ](https://helm.sh/docs/faq/).
 
-- The biggest change in Helm 3 was the removal of Tiller. With role-based access controls (RBAC) enabled by default in Kubernetes 1.6+, Tiller became unnecessary and was removed.
+- The most notable change in Helm 3 was the removal of Tiller. With role-based access controls (RBAC) enabled by default in Kubernetes 1.6+, Tiller became unnecessary and was removed.
 
-- Upgrading a chart is better than ever. Helm 3 introduces a 3-way merge patch, an improvement over Helm 2's 2-way approach. Helm is now able to consider the old manifest, the current state, and the new instead of just the most recent manifest and the proposed changes which sometimes led to not being able to roll back changes.
+- Upgrading a chart is better than ever. Helm 3 introduces a 3-way merge patch, an improvement over Helm 2's 2-way approach. Helm is now able to consider the old manifest, the current state, and the new manifest, instead of just the most recent manifest and the proposed changes. The 3-way merge patch helps to ensure that a user can roll back changes regardless of how they're applied.
 
 - Release names in Helm 3 are scoped to the namespace and have a `sh.helm.release.v1` prefix.
 
@@ -75,7 +75,7 @@ The components of a Kubernetes application--deployments, services, ingresses, an
 
 | File or Directory   | Description |
 |---------------------|-------------|
-| [Chart.yaml](https://helm.sh/docs/topics/charts/#the-chart-yaml-file) | General information about the chart, including the chart name, a version number, and a description. Charts can be of two types, application or library. Set this with the `type` field. Application is the default. You can also set a chart to be deprecated with the optional `deprecated` field. Note the `apiVersion` field for Helm 3 will be v2. v1 charts can still be installed by Helm 3 but the dependencies field is located in a separate requirements.yaml file for v1 charts. Note also that the `appVersion` field is different from the `version` field. Where `version` references the chart version and `appVersion` references the application version. |
+| [Chart.yaml](https://helm.sh/docs/topics/charts/#the-chart-yaml-file) | General information about the chart, including the chart name, a version number, and a description. Charts can be of two types, application or library. Set this with the `type` field. Application is the default. You can also set a chart to be deprecated with the optional `deprecated` field. Note the `apiVersion` field for Helm 3 will be v2. v1 charts can still be installed by Helm 3 but the dependencies field is located in a separate requirements.yaml file for v1 charts. Note also that the `appVersion` field is different from the `version` field, where `version` references the chart version and `appVersion` references the application version. |
 | [LICENSE](https://helm.sh/docs/topics/charts/#chart-license-readme-and-notes) | A plain-text file with licensing information for the chart and for the applications installed by the chart. *Optional*. |
 | [README.md](https://helm.sh/docs/topics/charts/#chart-license-readme-and-notes) | A Markdown file with instructions that a user of a chart may want to know when installing and using the chart, including a description of the app that the chart installs and the template values that can be set by the user. *Optional*. |
 | [templates/NOTES.txt](https://helm.sh/docs/topics/chart_template_guide/notes_files/) | A plain-text file which will print to a user's terminal when they install the chart. This text can be used to display post-installation instructions or other information that a user may want to know. *Optional*. |
@@ -88,7 +88,7 @@ The components of a Kubernetes application--deployments, services, ingresses, an
 
 When you tell Helm to install a chart, you can specify variable values to be inserted into the chart's manifest templates. Helm will then compile those templates into manifests that can be applied to your cluster. When it does this, it creates a new *release*.
 
-You can install a chart to the same cluster more than once. Each time you tell Helm to install a chart, it creates another release for that chart. A release can be upgraded when a new version of a chart is available, or even when you just want to supply new variable values to the chart. Helm tracks each upgrade to your release, and it allows you to roll back an upgrade. A release can be easily deleted from your cluster, and you can even roll back release deletions.
+You can install a chart to the same cluster more than once. Each time you tell Helm to install a chart, it creates another release for that chart. A release can be [upgraded](#upgrade-your-app) when a new version of a chart is available, or even when you just want to supply new variable values to the chart. Helm tracks each upgrade to your release, and it allows you to [roll back an upgrade](#roll-back-a-release). A release can be easily [deleted](#delete-a-release) from your cluster, and you can even roll back release deletions when configured to do so in advanced.
 
 ### Helm Client
 
@@ -118,7 +118,7 @@ This guide's example instructions will also result in the creation of a Block St
 
         kubectl config use-context your-cluster-name
 
-1.  It is beneficial to have a registered domain name for this guide's example app, but it is not required.
+1.  It is beneficial to have a registered [domain name](/docs/networking/dns/dns-records-an-introduction/) for this guide's example app, but it is not required.
 
 ## Install Helm
 
@@ -177,7 +177,7 @@ The [`helm install` command](https://helm.sh/docs/intro/using_helm/#helm-install
 
 1.  Create a file named `ghost-values.yaml` on your computer for this snippet:
 
-    {{< file "ghost-config.yaml" >}}
+    {{< file "ghost-values.yaml" >}}
 ghostHost: "ghost.example.com"
 ghostEmail: "email@example.com"
 ghostUsername: "admin"
@@ -259,7 +259,7 @@ ghost-1576075187	default  	1       	2019-12-11 09:39:50.168546 -0500 EST	deploye
   echo Password: $(kubectl get secret --namespace default ghost-1576075187 -o jsonpath="{.data.ghost-password}" | base64 --decode)
 {{< /output >}}
 
-1.  If you haven't set up DNS for your site yet, you can instead access the admin interface by visiting the `ghost` URL on your LoadBalancer IP address (e.g. `http://104.237.148.66/ghost`). Visit this page in your browser and then enter your email and password. You should be granted access to the administrative interface.
+1.  If you haven't set up DNS for your site yet, you can instead access the admin interface by visiting the `ghost` URL on your LoadBalancer IP address (e.g. `http://104.237.148.66/ghost`). Visit this page in your browser and then follow the steps to complete admin account creation. You should be granted access to the administrative interface.
 
 1.  To set up DNS for your app, create an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](https://www.linode.com/docs/platform/manager/dns-manager/) guide for instructions.
 
@@ -269,7 +269,7 @@ The `upgrade` command can be used to upgrade an existing release to a new versio
 
 1.  In your computer's `ghost-values.yaml` file, add a line for the title of the website:
 
-    {{< file "ghost-config.yaml" >}}
+    {{< file "ghost-values.yaml" >}}
 ghostHost: "ghost.example.com"
 ghostEmail: "email@example.com"
 ghostUsername: "admin"
@@ -299,17 +299,21 @@ ghost-1576075187	default  	2       	2019-12-11 11:54:49.136865 -0500 EST	deploye
 
 ## Delete a Release
 
-1.  Use the `delete` command with the name of a release to delete it:
+{{< caution >}}
+By default, Helm 3 does not keep any information about deleted releases, which will prevent you from rolling back. If you suspect that you may need to [rollback](#roll-back-a-release) your release following deletion, you will need to use the `--keep-history` flag.
+{{< /caution >}}
 
-        helm delete ghost-1576075187
+1.  Use the `uninstall` command with the name of a release to delete it:
+
+        helm uninstall ghost-1576075187
 
     You should also confirm in the [Linode Cloud Manager](https://cloud.linode.com) that the Volumes and NodeBalancer created for the app are removed as well.
 
     {{< note >}}
-Helm 3 does not keep any information about deleted releases.
+In Helm 2, deletions were performed using the `delete` command. This can still be entered to perform the same task, however in helm 3 `delete` aliases to `uninstall`.
 {{< /note >}}
 
-1.  If you wish to keep a history of past releases, you will want to use the `uninstall` command instead. This is a change from Helm 2.
+1.  If you wish to keep a history of past releases, you will want to use the `--keep-history` flag. This is a change from Helm 2.
 
         helm uninstall --keep-history
 
