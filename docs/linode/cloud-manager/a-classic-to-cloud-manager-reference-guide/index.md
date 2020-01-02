@@ -55,6 +55,24 @@ In Classic Manager, DNS Manager is where you can control your domains. In Cloud 
 
 ![Cloud Manager Domains](classic-to-cloud-cloud-manager-domains.png "Cloud Manager Domains")
 
+### Reboot Your Linode
+
+Rebooting your Linode is one of the most basic tasks you may want to perform. But it's location has changed from where it was found in Classic Manager.
+
+You can reboot a Linode in two places. First, in the list of Linodes, click the **More Options Ellipses** and select *Reboot*.
+
+![Cloud Manager Linode List Menu Reboot Option](classic-to-cloud-manager-linode-list-reboot-menu.png "Cloud Manager Linode List Menu Reboot Option")
+
+If you have more than one *[Configuration Profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles)*, a panel will appear to allow you to select which Configuration to boot. Select a Config and click the **Submit** button. Otherwise, a confirmation dialog will appear.
+
+![Cloud Manager Reboot Detail Panel](classic-to-cloud-reboot-detail-panel.png "Cloud Manager Reboot Detail Panel")
+
+You can also reboot your Linode from within any Linode detail screen by clicking on the **Status Icon**. A drop down menu will appear, select *Reboot*.
+
+![Cloud Manager Linode Detail Menu Reboot Option](classic-to-cloud-manager-linode-detail-reboot-menu.png "Cloud Manager Linode Detail Menu Reboot Option")
+
+Again, if you have more than one *Configuration Profile*, a panel will appear to allow you to select which Configuration to boot. Select a Config and click the **Submit** button. Otherwise, a confirmation dialog will appear.
+
 ## Compact Mode
 Cloud Manager by default uses more whitespace on the screen. However, there is a *Compact Mode* which compresses this extra space and allows more information to be displayed on the screen. This setting is located at the bottom left hand corner of the screen in the gear icon. This is also where you can toggle on *Dark Mode*.
 
