@@ -45,16 +45,24 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 ### Prepare your Linode
 
+1.  Log into the [Cloud Manager](https://cloud.linode.com) and create a Linode. For this example, since you are going to install Debian 8, perhaps choose Debian 9 so it's easy to see that your installation is successful. You can use a Nanode for this guide.
+
+1.  After the Linode is finished provisioning, power it down.
+
+1.  Click the **Resize** tab and uncheck the **Auto Resize Disk** option at the bottom of the screen.
+
+1.  Next, click the **Advanced** tab and resize the main disk so you have some room for new disks; you'll want to free 2100 MB for this example.
+
 1.  [Create two raw, unformatted disk images](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) from the Linode's Dashboard:
 
     * A disk labeled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 100MB in size, giving us plenty of room for the Debian network installer.
     * A disk labeled **Boot**. If you *don't* plan to complete the next section on Linode Manager compatibility, this can take up the rest of the free space available on your Linode.
 
     {{< caution >}}
-**Important**: If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.
+If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.
 {{< /caution >}}
 
-2.  [Create two configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** dropdown menu:
+1.  [Create two configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** dropdown menu:
 
     **Installer profile**
 
@@ -75,46 +83,46 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 1.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/platform/manager/using-the-linode-shell-lish/).
 
-2.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer, but you can replace the URL in the first command with the location of the image you want to install:
+1.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer, but you can replace the URL in the first command with the location of the image you want to install:
 
     {{< note >}}
 As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
 {{< /note >}}
 
-        wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
+        wget http://ftp.debian.org/debian/dists/jessie/main/installer-amd64/current/images/netboot/mini.iso
         dd if=mini.iso of=/dev/sda
 
     {{< note >}}
 If you would prefer to write the installer directly to the disk as it downloads, use:
 
-    curl http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
+    curl http://ftp.debian.org/debian/dists/jessie/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
 {{< /note >}}
 
-3.  Reboot into your *Installer* configuration profile, and open the [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/) graphical console from the **Remote Access** tab in your Linode's Dashboard. You'll see your distribution's installer, and you can begin the install process.
+1.  Empty the cache so that you have enough space to unpack and install the image.
 
-4.  During your installer's partitioning/installation phase, be sure to instruct it to use the `/dev/sda` volume. Most installers will create separate root and swap partitions, but you can adjust this as needed.
+        sync; echo 3 > /proc/sys/vm/drop_caches
+
+1.  Close the Lish window and go back to Cloud Manager. Reboot into your *Installer* configuration profile and open the [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/) graphical console. You'll see your distribution's installer, and you can begin the install process.
+
+1.  During your installer's partitioning/installation phase, be sure to instruct it to use the `/dev/sda` volume. Most installers will create separate root and swap partitions, but you can adjust this as needed.
 
     {{< note >}}
 Some installers offer an option to place `/boot` on a separate partition. If you intend to make use of the steps in the [second part](#linode-manager-compatibility) of this guide for Linode Manager compatibility, it's important that your `/boot` directory is located on the same partition as your root filesystem.
 {{< /note >}}
 
-5.  Once the installation completes, reboot into your *Boot* profile and open the Glish console. You will have access to a login prompt:
+1.  Once the installation completes, close the Glish window and return to the Cloud Manager. Reboot into your *Boot* profile and open the Glish console. You will have access to a login prompt:
 
-    [![Custom Distro Glish](custom-distro-glish-small.png)](custom-distro-glish.png)
+    ![Glish Console Prompt](install-custom-distro-glish-console.png "Glish Console Prompt")
 
 ### Configure Grub for Lish Access
 
-At this point you can connect to your Linode via SSH or the Glish graphical console, however you will not be able to connect to your Linode using the Lish serial console. To fix this, update the following settings in your `/etc/default/grub` file:
+At this point you can connect to your Linode via SSH or the Glish graphical console. However, you will not be able to connect to your Linode using the Lish serial console. To fix this, update the following settings in your `/etc/default/grub` file:
 
 {{< file "/etc/default/grub" >}}
 GRUB_TIMEOUT=10
-GRUB_CMDLINE_LINUX="console=ttyS0,19200n8"
-GRUB_TERMINAL=serial
-GRUB_DISABLE_LINUX_UUID=true
-GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
-
+GRUB_CMDLINE_LINUX_DEFAULT=""
+GRUB_CMDLINE_LINUX="console=ttyS0,19200n8 net.ifnames=0"
 {{< /file >}}
-
 
 Once you've finished editing `grub`, issue the appropriate command to apply your changes to your Grub configuration:
 
@@ -138,7 +146,7 @@ If you're still not able to access your Linode via Lish after updating your GRUB
 
 If you've followed the steps so far, you should have a working custom distribution with raw disks, using the *direct disk* boot option. While this setup is functional, it's not compatible with several features of the Linode Manager that require the ability to mount your filesystem, such as:
 
-*  **Disk Resizing:** Since the Linode Manager cannot determine the amount of *used* storage space on a raw disk, it can only increase the size. The Linode Manager cannot be used to make a raw disk smaller, and it cannot resize the filesystem on the disk - this would need to be done manually.
+*  **Disk Resizing:** Since the Linode Cloud Manager cannot determine the amount of *used* storage space on a raw disk, it can only **increase** the size. The Linode Cloud Manager cannot be used to make a raw disk smaller, and it cannot resize the filesystem on the disk - this would need to be done manually.
 
 *  **Backups:** The Linode Backup Service needs to be able to mount your filesystem, and does not support partitioned disks.
 
@@ -146,13 +154,19 @@ If you've followed the steps so far, you should have a working custom distributi
 
 This section covers how to move your custom installation over to an **ext4** formatted disk so it can take advantage of these tools.
 
+{{< note >}}
+These features are not available even if you formatted the disk to *ext4* during installation because *direct disk* was selected during disk creation.
+{{</ note >}}
+
 ### Prepare your Linode
 
-1.  [Create a new ext4 disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk). The new disk should be large enough to accommodate the root filesystem that was created on your raw disk. You can make this as large as you'd like, but you should leave enough space for a separate swap partition. For our example, we'll name this disk *Boot-New*.
+1.  Create some room for two new disks. One will be formatted *ext4* to move the file system to and one will be for *swap*. To make more room, consider deleting the initial distribution that was created during Linode creation.
 
-2.  From the **Create a new Disk** page, create a swap disk by choosing *swap* for the disk type. The size of this disk will depend upon your needs, but it's recommended that you make it between 256-512MB to start. We'll label this disk *Swap*.
+1.  [Create a new ext4 disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk). The new disk should be large enough to accommodate the root filesystem that was created on your raw disk (2000 MB). You can make this as large as you'd like, but you should leave enough space for a separate swap partition. For this example, we'll name this disk *Boot-New*.
 
-3.  [Create a new configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) with a name of your choice. For this example, we'll call the new profile *Installer-New* and it will use the following options:
+1.  Create the second new disk and choose *swap* for the disk type. The size of this disk will depend upon your needs, but it's recommended that you make it between 256-512MB to start. We'll label this disk *Swap*.
+
+1.  [Create a new configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) with a name of your choice. For this example, we'll call the new profile *Installer-New* and it will use the following options:
 
     **Installer-New profile**
 
@@ -164,23 +178,31 @@ This section covers how to move your custom installation over to an **ext4** for
 
 ### Update your fstab
 
-You should still be booted into your *Boot* profile using direct disk boot. Before you update your `/etc/fstab` file, make sure you know the current root partition of your custom distro. You can use the `lsblk` command to confirm which partition has `/` as its mount point:
+1.  You should still be booted into your *Boot* profile using direct disk boot; if not, boot into it now.
 
-    root@custom-kvm:~# lsblk
-    NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-    fd0      2:0    1    4K  0 disk
-    sda      8:0    0  7.8G  0 disk
-    └─sda1   8:1    0  7.5G  0 part /
-    sr0     11:0    1 1024M  0 rom
+1.  Before you update your `/etc/fstab` file, make sure you know the current root partition of your custom distro. You can use the `lsblk` command to confirm which partition has `/` as its mount point:
 
-In this case, we can see that the `/dev/sda1` partition is the location of our root filesystem. Next, update your `/etc/fstab` file to match the following:
+    {{< output >}}
+root@custom-kvm:~# lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+fd0      2:0    1    4K  0 disk
+sda      8:0    0  7.8G  0 disk
+└─sda1   8:1    0  7.5G  0 part /
+sr0     11:0    1 1024M  0 rom
+{{</ output >}}
 
-    # <file system> <mount point>   <type>  <options>       <dump>  <pass>
-    proc        /proc        proc    defaults                       0 0
-    /dev/sda   /            ext4    noatime,errors=remount-ro      0 1
-    /dev/sdb   none         swap    sw
+    In this case, you can see that the `/dev/sda1` partition is the location of your root filesystem.
 
-Depending upon your distribution, it may use different parameters for your root disk under the "options" section. These can be adjusted as needed. Note that we're using `/dev/sda` instead of the `sda1` root partition that was identified previously.
+1.  Next, update your `/etc/fstab` file to match the following:
+
+    {{< output >}}
+# &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;                  &lt;dump&gt;  &lt;pass&gt;
+    proc        /proc           proc    defaults                    0       0
+    /dev/sda    /               ext4    noatime,errors=remount-ro   0       1
+    /dev/sdb    none            swap    sw
+{{</ output >}}
+
+    Depending upon your distribution, it may use different parameters for your root disk under the "options" section. These can be adjusted as needed. Note that you're using `/dev/sda` instead of the `sda1` root partition that was identified previously.
 
 ### Configure Grub
 
@@ -193,12 +215,12 @@ Depending upon your distribution, it may use different parameters for your root 
         root@custom-kvm:~# ls -la /boot/grub/grub.cfg
         -r--r--r-- 1 root root 5235 Dec 28 08:05 /boot/grub/grub.cfg
 
-2.  If the Grub config is located under `/boot/grub2` instead, create a symlink to provide the correct configuration to the bootloader:
+1.  If the Grub config is located under `/boot/grub2` instead, create a symlink to provide the correct configuration to the bootloader:
 
         mkdir /boot/grub
         ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
 
-3.  Update your `grub.cfg` file, replacing all instances of `/dev/sda1` with `/dev/sda`. Note that this command will need to be adjusted if your root filesystem is located on a partition other than `/dev/sda1`:
+1.  Update your `grub.cfg` file, replacing all instances of `/dev/sda1` with `/dev/sda`. Note that this command will need to be adjusted if your root filesystem is located on a partition other than `/dev/sda1`:
 
         sed -i -e 's$/dev/sda1$/dev/sda$g' /boot/grub/grub.cfg
 
