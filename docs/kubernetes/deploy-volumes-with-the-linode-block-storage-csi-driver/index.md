@@ -22,6 +22,8 @@ The [Container Storage Interface](https://github.com/container-storage-interface
 
 ## Before You Begin
 
+{{< content "k8s-alpha-deprecation-shortguide" >}}
+
 - This guide assumes you have a working Kubernetes cluster running on Linode. You can deploy a Kubernetes cluster on Linode in the following ways:
 
     1. Use [Linode's k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) to deploy a Kubernetes cluster via the command line.
@@ -31,11 +33,11 @@ The [Container Storage Interface](https://github.com/container-storage-interface
     1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) guide to do this.
 
     {{< note >}}
-  - If using the k8s-alpha CLI or the Linode Kubernetes Terraform installer methods to deploy a cluster, you can skip the [Installing the CSI Driver](#installing-the-csi-driver) section of this guide, since it will be automatically installed when you deploy a cluster.
+- If using the k8s-alpha CLI or the Linode Kubernetes Terraform installer methods to deploy a cluster, you can skip the [Installing the CSI Driver](#installing-the-csi-driver) section of this guide, since it will be automatically installed when you deploy a cluster.
 
     Move on to the [Attach a Pod to the Persistent Volume Claim](#attach-a-pod-to-the-persistent-volume-claim) section to learn how to consume a Block Storage volume as part of your deployment.
 
-    {{</ note >}}
+{{</ note >}}
 
 - The Block Storage CSI supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
 

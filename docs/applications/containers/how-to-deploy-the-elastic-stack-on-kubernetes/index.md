@@ -45,10 +45,12 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 ## Before You Begin
 
 {{< note >}}
-This guide uses Kubernetes services which are private by default. Local listeners are opened which allow you to access the services on your local browser, however, web servers and NodeBalancers are out scope for this guide. Due to this, you should complete the steps of this guide from your local computer or from a computer that you will give you access the web browser. If you wish to be able to access these services from a public domain, please see our guide on [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/).
+This guide uses Kubernetes services which are private by default. Local listeners are opened which allow you to access the services on your local browser, however, web servers and NodeBalancers are out scope for this guide. Due to this, you should complete the steps of this guide from your local computer or from a computer that will give you access to the web browser. If you wish to be able to access these services from a public domain, please see our guide on [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/).
 {{< /note >}}
 
 1.  [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
+
+     {{< content "k8s-alpha-deprecation-shortguide" >}}
 
 1.  Follow the [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide to set up a Kubernetes cluster. This guide will use a three node + master node cluster. You can use the following Linode k8s-alpha CLI command to create your cluster:
 

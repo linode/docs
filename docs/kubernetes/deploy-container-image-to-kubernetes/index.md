@@ -44,6 +44,8 @@ This guide was written using version 1.14 of Kubectl.
         - You will need to deploy two Linodes. One will serve as the master node and the other will serve as a worker node.
     1. Deploy a Kubernetes cluster using [k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/).
 
+    {{< content "k8s-alpha-deprecation-shortguide" >}}
+
 1. [Create a GitHub account](https://github.com/join) if you don't already have one.
 
 1. [Create a Docker Hub account](https://hub.docker.com/signup) if you don't already have one.
