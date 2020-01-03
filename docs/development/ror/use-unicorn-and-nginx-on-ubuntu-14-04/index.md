@@ -9,7 +9,7 @@ aliases: ['websites/ror/use-unicorn-and-nginx-on-ubuntu-14-04/']
 published: 2016-03-30
 modified: 2016-03-30
 deprecated: true
-deprecated_link: 'development/ror/use-unicorn-and-nginx-on-ubuntu-18-04'
+deprecated_link: '/development/ror/use-unicorn-and-nginx-on-ubuntu-18-04'
 modified_by:
     name: Alex Fornuto
 title: 'Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04'
