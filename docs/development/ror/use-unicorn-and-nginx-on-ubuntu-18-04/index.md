@@ -2,20 +2,15 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Use Unicorn and Nginx to Configure a Ruby on Rails Stack on Ubuntu 14.04 '
-keywords: ["ruby on rails", "unicorn rails", "ruby on rails ubuntu 14.04", " nginx", "reverse proxy", "ubuntu 14.04"]
+description: 'Use Unicorn and Nginx to Configure a Ruby on Rails Stack on Ubuntu 18.04 '
+keywords: ["ruby on rails", "unicorn rails", "ruby on rails ubuntu 18.04", " nginx", "reverse proxy", "ubuntu 18.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/ror/use-unicorn-and-nginx-on-ubuntu-14-04/']
-published: 2016-03-30
-modified: 2016-03-30
-deprecated: true
-deprecated_link: 'development/ror/use-unicorn-and-nginx-on-ubuntu-18-04'
+aliases: ['websites/ror/use-unicorn-and-nginx-on-ubuntu-18-04/']
+published: 2020-01-03
+modified: 2020-01-03
 modified_by:
-    name: Alex Fornuto
-title: 'Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04'
-contributor:
-    name: Vaibhav Rajput
-    link: https://twitter.com/rootaux
+    name: Linode
+title: 'Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 18.04'
 external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'
 audiences: ["beginner"]
@@ -23,11 +18,9 @@ concentrations: ["Web Applications"]
 languages: ["ruby"]
 ---
 
-Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 14.04.
+Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 18.04.
 
 Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be accessed by users directly we will be using nginx as the reverse proxy that will buffer requests and response between users and Rails application.
-
-![Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04](use_unicorn_and_nginx_to_configure_ruby_on_rails_apps_on_ubuntu_14_04.png "Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04")
 
 ## Before You Begin
 
@@ -37,32 +30,63 @@ Before starting this guide, make sure that  you have read through and completed 
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1.  Before you install any package, ensure that your hostname is correct:
+-  Before you install any package, ensure that your hostname is correct:
 
         hostname
         hostname -f
 
-2.  Make sure your system is up to date:
+-  Make sure your system is up to date:
 
         sudo apt-get update && apt-get upgrade
+
+## Install Node.js
+   Some of the features in Rails, such as the Asset Pipeline, depend on a JavaScript Runtime and Node.js provides this functionality.
+
+1.  Install Node.js using a PPA (personal package archive) maintained by NodeSource:
+
+        curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
+
+2.  Run the script:
+
+        sudo bash nodesource_setup.sh
+
+3.  Install the Node.js package:
+
+        sudo apt-get install nodejs
+
+4.  Check the version of Node.js:
+
+        nodejs -v
+
+## Install Yarn
+
+1. Configure the repository to install Yarn using Debian package repository:
+
+        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+2. Install Yarn:
+
+        sudo apt update && sudo apt install yarn
+
 
 ## Install Ruby
 
 1.  Install Ruby dependencies:
 
-        sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs
+        sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev libsqlite3-dev
 
-2.  Download the latest version of Ruby. At the time of writing this article, the current, most recent and stable version is 2.3, but you can check for the latest version [here](https://www.ruby-lang.org/en/downloads/):
+2.  Download the latest version of Ruby. At the time of writing this article, the current, most recent and stable version is 2.7, but you can check for the latest version [here](https://www.ruby-lang.org/en/downloads/):
 
-        wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.0.tar.gz
+        wget https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.0.tar.gz
 
 3.  Unpack the tarball:
 
-        tar -xzvf ruby-2.3.0.tar.gz
+        tar -xzvf ruby-2.7.0.tar.gz
 
 4.  Move to the extracted directory:
 
-        cd ruby-2.3.0
+        cd ruby-2.7.0
 
 5.  Configure and install Ruby from source:
 
