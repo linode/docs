@@ -104,6 +104,8 @@ The Linode Kubernetes Engine (LKE) is now in Private Beta. If you are in the bet
 
 1.   You should have a Kubernetes cluster running prior to starting this guide. One quick way to get a cluster up is with Linode's [`k8s-alpha` CLI command](https://developers.linode.com/kubernetes/). This guide's examples only require a cluster with one worker node. We recommend that you create cluster nodes that are at the Linode 4GB tier (g6-standard-2) or higher.
 
+    {{< content "k8s-alpha-deprecation-shortguide" >}}
+
     This guide also assumes that your cluster has [role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) enabled. This feature became available in Kubernetes 1.6. It is enabled on clusters created via the `k8s-alpha` Linode CLI.
 
     {{< note >}}
