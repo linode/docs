@@ -17,6 +17,7 @@ swap:
   fedora: Fedora
   gentoo: Gentoo
   homebrew: Homebrew
+  kubcetl: kubectl
   linode cli: Linode CLI
   linode manager: Linode Manager
   linode: Linode
