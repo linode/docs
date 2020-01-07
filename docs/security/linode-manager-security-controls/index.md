@@ -21,7 +21,7 @@ The [Linode Cloud Manager](https://cloud.linode.com) is the gateway to all of yo
 
 This guide documents several of the Linode Cloud Manager's features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, the Linode Cloud Manager's built-in security tools can help.
 
-Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, and then [configure security event notifications](#security-event-notifications) for your Linode account. You'll also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
+Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, and then [configure security event notifications](/docs/platform/manager/keep-your-linode-account-safe-classic-manager/#linode-event-notifications) for your Linode account. You'll also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
 
 ## Two-Factor Authentication
 
