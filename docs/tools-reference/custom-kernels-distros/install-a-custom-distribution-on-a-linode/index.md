@@ -51,7 +51,7 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 1.  Click the **Resize** tab and uncheck the **Auto Resize Disk** option at the bottom of the screen.
 
-1.  Next, click the **Advanced** tab and resize the main disk so you have some room for new disks; you'll want to free 2100 MB for the debian 9 disk we used in this example.
+1.  Next, click the **Advanced** tab and resize the main disk so you have some room for new disks; you'll want to free 2100 MB for the Debian 9 disk we used in this example.
 
     {{< note >}}
 Depending on the distribution you install first, you may need to resize your disk to a size slightly larger than 2100 MB. You can always check how much space your disk is actively using and would therefore require by entering the `df -h` command when it's mounted.
