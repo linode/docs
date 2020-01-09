@@ -152,7 +152,7 @@ Should you need us to disable your Two-Factor Authentication, the following info
 
 ## Manage Trusted Devices
 
-Whenever you log into the Cloud Manager from a new device or computer, you can choose to _Trust this computer for 30 days_. This means device will not be prompted for a username or password for 30 days. The Cloud Manager displays a list of all trusted devices for your account and gives you the ability to untrust any device on the list. To view and manage your account's trusted devices:
+Whenever you log into the Cloud Manager from a new device or computer, you can choose to _Trust this computer for 30 days_. This means device will not be prompted for a username or password for 30 days. The Cloud Manager displays a list of all trusted devices for your account and gives you the ability to *untrust* any device on the list. Your account's associated email address will also be notified whenever a new device is trusted. To view and manage your account's trusted devices:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Select the **My Profile** link by clicking on your username at the top of the page:
