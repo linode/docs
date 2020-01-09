@@ -230,7 +230,7 @@ Logs are available at [https://console.cloud.google.com/gcr/builds/50c714e8-0127
 In this section you will create a new Linode, make new disks and configurations for the image, and import the image. You will be importing your image onto a *raw* disk with the *direct disk* boot option.
 
 {{< note >}}
-This will result in a woking custom installation; however, it will not support advanced features such as disk resizing within Cloud Manager or Backup Service by default.
+This will result in a working custom installation; however, it will not support advanced features such as disk resizing within Cloud Manager or Backup Service by default.
 
 To enable these features:
 
@@ -242,7 +242,7 @@ To enable these features:
 
 1.  Log into the [Cloud Manager](https://cloud.linode.com). Create a new Linode by clicking Create at the top of the screen and selecting Linode.
 
-1.  Create a Linode by selecting a distribution, region, and plan; assign a lable and root password; and add an SSH key and add-ons if desired.
+1.  Create a Linode by selecting a distribution, region, and plan; assign a label and root password; and add an SSH key and add-ons if desired.
 
     {{< note >}}
 When selecting a plan, if you want to enable the advanced features like resizing within Cloud Manager and Backup Service, choose one that will be large enough to hold twice the size of entire expanded image that you exported, not just the compressed tar file. You can always resize down to a smaller plan later.
@@ -264,7 +264,7 @@ When selecting a plan, if you want to enable the advanced features like resizing
 
     ![Linode Create New Raw Disk](migrate-gcp-to-linode-new-raw-disk.png "Linode Create New Raw Disk")
 
-    Give it a lable like "New Google", for filesystem, select `raw`, and for size, enter a size that will accomodate the entire extracted image. Click the **Add** button.
+    Give it a label like "New Google", for filesystem, select `raw`, and for size, enter a size that will accommodate the entire extracted image. Click the **Add** button.
 
 1.  Click **Add a Configuration** and setup a new Linode Configuration with the following settings:
 
@@ -325,7 +325,7 @@ You disabled the Google services from calling out before creating and migrating 
 
 ## Optional: Transfer Disk to ext4
 
-As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the proceedures in the Linode Manager Compatibility section of the [Install a Custom Distribution on a Linode guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/#linode-manager-compatibility).
+As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Linode Manager Compatibility section of the [Install a Custom Distribution on a Linode guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/#linode-manager-compatibility).
 
 ## Cleaning Up
 
