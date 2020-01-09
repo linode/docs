@@ -256,7 +256,7 @@ When selecting a plan, if you want to enable the advanced features like resizing
 
 ### Create New Disks and Configurations
 
-1.  Click the **Advanced** tab. You are now going to create new disks and boot configurations.
+1.  Click the **Disks/Configs** tab. You are now going to create new disks and boot configurations.
 
 1.  Under the **Disks** panel click the more options ellipses next to the main disk and select **Resize** from the drop down menu. Resize this disk to make room for your new image (or twice the size for the optional advanced options).
 
