@@ -154,7 +154,3 @@ This is useful for groups that need to grant all team members access to the Clas
 The [Linode API](https://www.linode.com/api/) is a programmatic interface for many of the features available in the Classic Manager. For this reason, the Classic Manager provides two security controls for your account's API key. First, you can generate a new API key if you suspect that your existing key has been compromised. And if you're not using the API key, you can remove access to it altogether.
 
 See the [API Key](/docs/platform/api/api-key/) article for details.
-
-### Force Password Expirations
-
-Your company's policy may require users to change their passwords after a fixed interval of time. The Classic Manager can be configured to require password resets every 1, 3, 6, or 12 months. For more information, see the documentation on [Passwords in the Classic Manager](/docs/platform/accounts-and-passwords/#passwords).
