@@ -251,7 +251,3 @@ If you've completed this guide, you've proactively taken steps to protect your L
 ### Configure User Accounts
 
 Organizations that have multiple individuals accessing the same Cloud Manager account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain areas of the control panel. This is useful for groups that need to grant all team members access to the Cloud Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information. For more information, see our guide on [Accounts and Passwords](/docs/platform/accounts-and-passwords).
-
-### Force Password Expirations
-
-Some organizations have policies that require users to change their passwords every so often. The Linode Cloud Manager can be configured to force users to change their passwords every 1, 3, 6, or 12 months.
