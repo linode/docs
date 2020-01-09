@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-20
 modified_by:
   name: Linode
-title: 'Moving from Linode''s Classic Manager to Cloud Manager Reference Guide"'
+title: 'An Overview of Linode''s Cloud Manager for Classic Manager Users'
 h1_title: 'An Overview of Linode''s Cloud Manager for Classic Manager Users'
 contributor:
   name: Linode
@@ -43,15 +43,15 @@ The Linodes section of Cloud Manager allows you to create and manage your Linode
 - Access to Linode's [Backup service](/docs/platform/disk-images/linode-backup-service/#enable-the-backup-service)
 - An [Activity Feed](/docs/linode/cloud-manager/what-are-the-cloud-manager-events-and-activity-feeds), that displays any relevant events related to this Linode
 - Settings that allow you to update your Linode's label, [reset your Linode's root password](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/), [manage system usage email notifications](docs/uptime/monitoring-and-maintaining-your-server/#configure-linode-cloud-manager-email-alerts), [manage Watchdog](docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) (Linode's automatic reboot feature), and delete your Linode
-- Advanced configurations to [create disks and configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/)
+- An area to manage and [create disks and configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/)
 - [Cross data center migrations](/docs/platform/migrating-to-a-different-data-center/)
 
 ### Find Your Disks
-In Classic Manager, Disks were located in the Linode Dashboard tab. In the Cloud Manager, Disks are now in the Advanced tab of the Linode.
+In Classic Manager, Disks were located in the Linode Dashboard tab. In the Cloud Manager, Disks are now in the **Disks/Configs** tab of the Linode.
 
 1.  Click **Linodes** in the sidebar menu and select the one you wish to see your disks for.
 
-1.  Then click the **Advanced** tab. The disks are located in the **Disks** panel. Here you can add a disk, or for each individual disk, you can click the **more options ellipses** to get a drop down menu which will allow you do choose options such as `Rename`, `Resize`, `Imagize`, `Clone`, and `Delete`.
+1.  Then click the **Disks/Configs** tab. The disks are located in the **Disks** panel. Here you can add a disk, or for each individual disk, you can click the **more options ellipses** to get a drop down menu which will allow you do choose options such as `Rename`, `Resize`, `Imagize`, `Clone`, and `Delete`.
 
     ![Location of Cloud Manager Disks](classic-to-cloud-cloud-manager-disks.png "Location of Cloud Manager Disks")
 
@@ -230,6 +230,10 @@ If you have used the Display Groups feature in the Classic Manager, you can impo
     {{< note >}}
 Importing your Display Groups is a **one-time** operation. If you don't have any Display Groups configured in the Classic Manager this feature will not appear in the Cloud Manager.
 {{< /note >}}
+
+### Password Management
+
+The Cloud Manager does not support forcing password expirations. Forcing password resets on a schedule is [bad practice from a security perspective](https://pages.nist.gov/800-63-FAQ/#q-b05). Current security research indicates that forced password changes do more harm than good. If you want to force password resets for users of your Linode account, we recommend using a password manager for this purpose.
 
 ## My Profile
 
