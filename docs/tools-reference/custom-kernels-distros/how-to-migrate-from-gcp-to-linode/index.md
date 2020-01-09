@@ -73,7 +73,7 @@ ip_forwarding_daemon = false
 ### Create a GCP Object Storage Bucket
 When you create the image to export you will use a GCP object storage bucket to store it temporarily.
 
-1.  In the Google Cloud Platform dashboord, on the left side menu under *Storage*, click **Storage**.
+1.  In the Google Cloud Platform dashboard, on the left side menu under *Storage*, click **Storage**.
 
 1.  Create an object storage bucket.
 
