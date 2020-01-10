@@ -295,11 +295,11 @@ It may take a minute or two after your s3cmd sync completes for the page to appe
 
 After uploading your static site to Linode Object Storage, you may want to use a custom primary domain for your site. To do this, you can add a CNAME entry to your domain's DNS records that aliases it to your Object Storage bucket's website URL. For example, if you have `www.mydomain.tld`, your CNAME entry will look like:
 
-        www.mydomain.tld										CNAME	www.mydomain.tld.website-us-east-1.linodeobjects.com
+        www.mydomain.tld										CNAME	my-new-bucket.website-us-east-1.linodeobjects.com
 
 Alternatively, you can freely create a custom subdomain that does not need to match the name of your bucket. For example, if your bucket is named `my-new-bucket`, you could freely create a subdomain as a CNAME like the following:
 
-        subdomain.mydomain.tld										CNAME	www.my-new-bucket.us-east-1.linodeobjects.com
+        subdomain.mydomain.tld										CNAME	my-new-bucket.us-east-1.linodeobjects.com
 
 To learn about managing DNS records on Linode, see the [DNS Manager](/docs/platform/manager/dns-manager/) and [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guides.
 
