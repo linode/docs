@@ -13,11 +13,11 @@ contributor:
   name: Linode
 ---
 
-The Linode Cloud Manager now includes a new search bar at the top of the dashboard which can be used to search for a large number of active services on your account, including Linodes, Volumes, NodeBalancers, Domains, Tags, and more.
+The Linode Cloud Manager now includes a new search tool at the top of the dashboard which can be used to search for a large number of active services on your account, including Linodes, Volumes, NodeBalancers, Domains, Tags, and more.
 
-![searchbar](searchbar.png)
+![searchtool](searchbar.png)
 
-In this guide, we'll go over some of the more advanced capabilities of this search bar that you and your team can leverage to find and access your resources in the best way possible for a number of  use cases.
+In this guide, we'll go over some of the more advanced capabilities of this search tool that you and your team can leverage to find and access your resources in the best way possible for a number of  use cases.
 
 ## Standard Search
 
@@ -29,7 +29,7 @@ While this kind of search is fine if you only have a few resources, when a highe
 
 ## Keywords
 
-The search bar can also be used to search for specific keywords. A list of common keywords and their definitions can be seen below:
+The search tool can also be used to search for specific keywords. A list of common keywords and their definitions can be seen below:
 
 | Keyword   | Definition   |
 |:--------------|:------------|
@@ -86,7 +86,7 @@ In addition most operators include a number of aliases that you can use as an al
 
 ## Combining it All
 
-The more robust functionality of the search bar can be used in combination with other features. For example, you can see all of the advanced features outlined in this guide in a single query:
+The more robust functionality of the search tool can be used in combination with other features. For example, you can see all of the advanced features outlined in this guide in a single query:
 
     type:linode AND -group:production || (type:NodeBalancer && tag:mytag)
 
