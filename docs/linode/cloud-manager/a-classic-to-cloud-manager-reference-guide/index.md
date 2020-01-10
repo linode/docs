@@ -185,7 +185,7 @@ The **Account** section of Cloud Manager allows you to manage your account's bil
 You can manage the following account and billing settings in the Account section of Cloud Manager:
 
 - [Update contact information](/docs/platform/manager/accounts-and-passwords/#updating-contact-information) and [credit card information](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#updating-credit-card-information)
-- [Make a payment with a credit card or Paypal](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#making-a-payment)
+- [Make a payment with a credit card or PayPal](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#making-a-payment)
 - View account promotion credits
 - [View recent invoices and payments](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history)
 - [Add new users and manage exiting user's profiles and permissions](/docs/platform/manager/accounts-and-passwords/#users-and-permissions)
