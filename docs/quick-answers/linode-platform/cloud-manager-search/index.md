@@ -39,6 +39,7 @@ The search bar can also be used to search for specific keywords. A list of commo
 | region | The region for your resources, such as `us-east`. For a full list, see the return values for our [API or CLI](https://developers.linode.com/api/v4/regions)  |
 | IP | The IP address of your resource  |
 | created | The date of your resource's creation |
+| status | Same values as the `status` field in our API. See our (API Documentation)[https://developers.linode.com/api/v4/linode-instances-linode-id] for all possible inputs. |
 
 Syntax for using keywords will always be the keyword itself, appended by a colon, and then a string defined by the keyword to limit your search. For example, to search for all images on your account, you would enter the following:
 
@@ -83,9 +84,9 @@ In addition most operators include a number of aliases that you can use as an al
 |  **tags**   | **tag** and **group** |
 |   **label** | **name** and **title** |
 
-
 ## Combining it All
 
 The more robust functionality of the search bar can be used in combination with other features. For example, you can see all of the advanced features outlined in this guide in a single query:
 
     type:linode AND -group:production || (type:NodeBalancer && tag:mytag)
+
