@@ -30,7 +30,7 @@ The Linode Cloud Manager automatically creates a disk and configuration profile 
 
 ### Finding Your Way Around
 
-All of a Linode's disks and configuration profiles are displayed on the Linode's detail page, under the **Advanced**.
+All of a Linode's disks and configuration profiles are displayed on the Linode's detail page, under the **Disks/Configs** tab.
 
 [![Overview of Linode Manager interface.](disks-and-config-profiles-advanced-options.png)](disks-and-config-profiles-advanced-options.png)
 
@@ -55,7 +55,7 @@ The Linode Cloud Manager makes it easy to create a new disk with a fresh Linux d
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link in the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
-4.  Click on the **Advanced** tab.
+4.  Click on the **Disks/Configs** tab.
 5.  Click on **Add a Disk**. The **Add Disk** form appears:
 
     [![The 'Add Disk' menu.](disks-and-config-profiles-add-a-disk-image.png)](disks-and-config-profiles-add-a-disk-image.png)
@@ -76,7 +76,7 @@ Create a blank disk if you need detachable storage space or want to download and
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Click the **Linodes** link in the sidebar.
 1.  Select a Linode. The Linode's detail page appears.
-2.  Click on the **Advanced** tab.
+2.  Click on the **Disks/Configs** tab.
 3.  Click on **Add a Disk**. The **Add Disk** form appears:
 
     [![The 'Add Disk' menu.](disks-and-config-profiles-add-blank-disk.png)](disks-and-config-profiles-add-blank-disk.png)
@@ -100,7 +100,7 @@ Resizing a disk requires you to power your Linode off, if it is currently in use
 2.  Click the **Linodes** link in the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
 4.  Select **Power Off** from the status dropdown menu to turn your Linode off. Monitor the progress bar at the top of the page for confirmation that your Linode has powered off.
-5.  Click on the **Advanced** tab.
+5.  Click on the **Disks/Configs** tab.
 6.  Click the **more options ellipsis** for the disk you would like to resize, and select **Resize**. The **Resize Disk** form appears.
 
     [![Resize a disk.](disks-and-config-profiles-resize-a-disk.png)](disks-and-config-profiles-resize-a-disk.png)
@@ -140,7 +140,7 @@ Removing a disk is permanent and cannot be undone.
 2.  Click the **Linodes** link in the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
 4.  Click **Power Off** from the status menu to turn your Linode off. Monitor the progress bar at the top of the page for confirmation that your Linode has powered off.
-5.  Click on the **Advanced** tab.
+5.  Click on the **Disks/Configs** tab.
 6.  Click on the **more options ellipsis** next to the disk you would like to delete and select **Delete**. Monitor your bell notifications for updates on the deletion of your disk.
 7.  Click **Power On** from the status menu to turn on the Linode.
 
@@ -157,7 +157,7 @@ Making a new configuration profile allows you to create a new and separate boot 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link from the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
-4.  Click on the **Advanced** tab.
+4.  Click on the **Disks/Configs** tab.
 5.  Select the **Add a Configuration** link. The **Add Linode Configuration** form appears:
 
     [![The Add Linode Configuration menu.](disks-and-config-profiles-add-a-config.png)](disks-and-config-profiles-add-a-config.png)
@@ -182,7 +182,7 @@ You can edit existing configuration profiles to change boot settings, set other 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link from the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
-4.  Click on the **Advanced** tab.
+4.  Click on the **Disks/Configs** tab.
 5.  Click the configuration profile's **more options ellipsis** and select **Edit**. The **Edit Linode Configuration** form appears.
 6.  Edit the settings as necessary.
 7.  When finished, click **Submit**.
@@ -196,7 +196,7 @@ You can create and store many different configuration profiles in the Linode Man
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link from the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
-4.  Click on the **Advanced** tab.
+4.  Click on the **Disks/Configs** tab.
 5.  Click the more options ellipsis for the configuration profile you would like to boot from:
 
     [![Selecting a configuration profile](disks-and-config-profiles-boot-this-config.png)](disks-and-config-profiles-boot-this-config.png)
@@ -212,7 +212,7 @@ You can remove a configuration profile from the Linode Cloud Manager at any time
 1.  Log in to the [Linode Cloud Manager](https://manager.linode.com).
 2.  Click the **Linodes** link from the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
-4.  Click on the **Advanced** tab.
+4.  Click on the **Disks/Configs** tab.
 5.  Click the **more options ellipsis** for the configuration profile you would like to remove.
 6.  Select the **Delete** option from the dropdown menu that appears.
 
@@ -234,7 +234,7 @@ We recommend that you power off your Linode first, and keep it powered off until
 
 1.  Select a Linode. The Linode's detail page appears.
 
-1.  Click on the **Advanced** tab.
+1.  Click on the **Disks/Configs** tab.
 
 1.  Click the **more options ellipsis** for the Linode's configuration profile or disk that you wish to clone.
 
@@ -270,10 +270,10 @@ We recommend that you power off your Linode first, and keep it powered off until
 If you need to make room on your destination Linode you can [resize it to a larger plan](https://www.linode.com/docs/platform/disk-images/resizing-a-linode/), [resize your disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to a smaller size, or [delete disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-disk) to free up available space. If you decide to resize your Linode to a larger plan, be sure to uncheck the box that automatically resizes your disks or they will expand to fill up the extra space that you are trying to create.
 {{< /note >}}
 
-1.  Once the cloning process begins, you are returned to the **Advanced** tab and a progress bar appears at the top of the screen.
+1.  Once the cloning process begins, you are returned to the **Disks/Configs** tab and a progress bar appears at the top of the screen.
     [![Copying Progress Bar](disks-and-config-status-bar.png)](disks-and-config-status-bar.png)
 
-1.  When the cloning process is complete, your new disk or configuration appears in the panel of the Linode's **Advanced** tab.
+1.  When the cloning process is complete, your new disk or configuration appears in the panel of the Linode's **Disks/Configs** tab.
     [![Disk Copying Complete](disks-and-config-clone-complete.png)](disks-and-config-clone-complete.png)
 
 ## Potential Uses
