@@ -52,13 +52,13 @@ Enable two-factor authentication to start using it with your Linode account.
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Select the **My Profile** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
+   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile'")
 
 1.  Select the **Password & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, toggle the **Disabled** switch so that it reads **Enabled** to enable Two-Factor Authentication.
 1.  A new form (depicted below) will appear. Write down the **Secret Key** and store it in a safe place:
 
-    ![The key and QR code for two-factor authentication.](security-tfa-settings-small.png "The key and QR code for two-factor authentication")](security-tfa-settings.png)
+    ![The key and QR code for two-factor authentication.](security-tfa-settings.png "The key and QR code for two-factor authentication.")
 
 
 1.  On your smartphone, open Authy.
@@ -152,7 +152,7 @@ Should you need us to disable your Two-Factor Authentication, the following info
 
 ## Manage Trusted Devices
 
-Whenever you log into the Cloud Manager from a new device or computer, you can choose to _Trust this computer for 30 days_. This means device will not be prompted for a username or password for 30 days. The Cloud Manager displays a list of all trusted devices for your account and gives you the ability to *untrust* any device on the list. Your account's associated email address will also be notified whenever a new device is trusted. To view and manage your account's trusted devices:
+Whenever you log into the Cloud Manager from a new device or computer, you can choose to _Trust this computer for 30 days_. This means your device will not be prompted for a username or password for 30 days. The Cloud Manager displays a list of all trusted devices for your account and gives you the ability to *untrust* any device on the list. Your account's associated email address will also be notified whenever a new device is trusted. To view and manage your account's trusted devices:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Select the **My Profile** link by clicking on your username at the top of the page:
