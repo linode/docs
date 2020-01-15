@@ -12,7 +12,7 @@ modified_by:
 title: "When and Why to Use Docker"
 external_resources:
 - '[Docker](https://www.docker.com)'
-- '[Docker Hub](hub.docker.com)'
+- '[Docker Hub](https://hub.docker.com)'
 - '[When Not to Use Docker](http://www.channelfutures.com/open-source/when-not-use-docker-understanding-limitations-containers)'
 - '[5 Security Concerns When Using Docker](https://www.oreilly.com/ideas/five-security-concerns-when-using-docker)'
 - '[8 Docker Security Rules to Live By](https://www.infoworld.com/article/3154711/security/8-docker-security-rules-to-live-by.html)'
