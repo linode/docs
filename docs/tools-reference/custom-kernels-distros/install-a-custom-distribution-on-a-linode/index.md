@@ -51,7 +51,11 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 1.  Click the **Resize** tab and uncheck the **Auto Resize Disk** option at the bottom of the screen.
 
-1.  Next, click the **Disks/Configs** tab and resize the main disk so you have some room for new disks; you'll want to free 2100 MB for this example.
+1.  Next, click the **Disks/Configs** tab and resize the main disk so you have some room for new disks; you'll want to free 2100 MB for the Debian 9 disk we used in this example.
+
+    {{< note >}}
+Depending on the distribution you install first, you may need to resize your disk to a size slightly larger than 2100 MB. You can always check how much space your disk is actively using and would therefore require by entering the `df -h` command when it's mounted.
+{{< /note >}}
 
 1.  [Create two raw, unformatted disk images](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) from the Linode's Dashboard:
 
@@ -83,7 +87,7 @@ If you intend to continue to the next section on [Linode Manager Compatibility](
 
 1.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/platform/manager/using-the-linode-shell-lish/).
 
-1.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer, but you can replace the URL in the first command with the location of the image you want to install:
+1.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer, but you can replace the URL in the following command with the location of the image you want to install:
 
     {{< note >}}
 As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
