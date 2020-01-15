@@ -250,7 +250,7 @@ Buckets names must be unique within the Object Storage cluster. You might find t
 1. The command will return the following message:
 
       {{< output >}}
-    Bucket 's3://my-bucket/': website configuration created.
+Bucket 's3://my-bucket/': website configuration created.
       {{</ output >}}
 
 1. Display information about your Object Storage's website configuration to obtain your site's URL:
@@ -260,8 +260,8 @@ Buckets names must be unique within the Object Storage cluster. You might find t
 1. You should see a similar output. Be sure to take note of your Object Storage bucket's URL:
 
     {{< output >}}
-      Bucket s3://my-bucket/: Website configuration
-Website endpoint: http://website-us-east-1.linodeobjects.com/
+Bucket s3://my-bucket/: Website configuration
+Website endpoint: http://my-bucket.website-us-east-1.linodeobjects.com/
 Index document:   index.html
 Error document:   404.html
     {{</ output >}}
