@@ -122,7 +122,7 @@ The Linode Cloud Manager allows you to generate a new secret key for your two-fa
 1.  Select the **Password & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, click **Reset two-factor authentication**, as shown below.
 
-    ![Reset two-factor authentication.](security-reset-tfa-small.png "Reset two-factor authentication.")](security-reset-tfa.png)
+    ![Reset two-factor authentication.](security-reset-tfa.png "Reset two-factor authentication.")
 
 A new secret key and barcode will be generated for your account and displayed on the screen. Follow the instructions in the [Enabling Two-Factor Authentication](#enabling) section to add the new key to your smartphone.
 
