@@ -250,7 +250,7 @@ Buckets names must be unique within the Object Storage cluster. You might find t
 1. The command will return the following message:
 
       {{< output >}}
-    Bucket 's3://my-bucket/': website configuration created.
+Bucket 's3://my-bucket/': website configuration created.
       {{</ output >}}
 
 1. Display information about your Object Storage's website configuration to obtain your site's URL:
@@ -260,15 +260,27 @@ Buckets names must be unique within the Object Storage cluster. You might find t
 1. You should see a similar output. Be sure to take note of your Object Storage bucket's URL:
 
     {{< output >}}
-      Bucket s3://my-bucket/: Website configuration
-Website endpoint: http://website-us-east-1.linodeobjects.com/
+Bucket s3://my-bucket/: Website configuration
+Website endpoint: http://my-bucket.website-us-east-1.linodeobjects.com/
 Index document:   index.html
 Error document:   404.html
     {{</ output >}}
 
+    - Even if s3cmd is configured to point to Linode Object Storage, this command may return a Website endpoint that looks similar to: `http://my-bucket.s3-website-default.amazonaws.com/`.
+    - This is because there is a hardcoded value for this in the `.s3cfg` configuration file that creates this string.
+    - You can change this by editing this file in a text editor and change the line for `website_endpoint` to the following:
+
+        {{< file ".s3cfg" text >}}
+website_endpoint = http://%(bucket)s.website-us-east-1.linodeobjects.com
+{{</ file >}}
+
+    - Change `us-east-1` to match the region where your bucket is hosted.
+
     {{< note >}}
 Linode Object Storage provides SSL enabled by default. This means you can access your Object Storage bucket using `https`, as well.
 {{</ note >}}
+
+
 
 1. Use s3cmd's `sync` command to upload the contents of your static site's `public` directory to your Object Storage bucket. This step will make your site available publicly on the Internet. Ensure you are in your site's root directory on your computer (e.g. `/home/username/example-site`):
 
