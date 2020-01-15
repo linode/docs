@@ -175,9 +175,12 @@ The owner of the bucket will always have the `full_control` permission.
 
 ## Bucket Policies
 
-Bucket policies can offer finer control over the types of permissions you can grant to a user. Below is an example bucket policy written in JSON:
+Bucket policies can offer finer control over the types of permissions you can grant to a user.
 
-{{< file "bucket_policy_example.txt" json >}}
+### Basic Access Policy
+Below is an example bucket policy written in JSON:
+
+{{< file "bucket_policy_example.json" json >}}
 {
   "Version": "2012-10-17",
   "Statement": [{
@@ -217,13 +220,128 @@ For a full list of of available actions, visit the [Ceph bucket policy documenta
 
 The `Action` and `Principal.AWS` fields of the bucket policy are arrays, so you can easily add additional users and permissions to the bucket policy, separating them by a comma. To grant permissions to all users, you can supply a wildcard (`*`) to the `Principal.AWS` field.
 
-If you instead wanted to deny access to the user, you could change the `Effect` field to `Deny`.
+### Subdirectory Access Policy
+You can also define a finer level of control over the level of access to your bucket's directory structure using policy rules.
+
+{{< file "bucket-policy-directories.json" json >}}
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+      },
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+      },
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::bucket-policy-example/test/*"
+      ]
+    }
+  ]
+}
+{{</ file >}}
+
+This example shows how you can grant read-only access to a user by allowing them to list buckets and get objects from the bucket only from the `test` directory. However, they will not be able to perform any other actions.
+
+### Denying Access by IP Address
+If you wanted to deny access to a user by IP address, you can change the `Effect` field from `Allow` to `Deny` and supply an IP address in a condition.
+
+{{< file "bucket-policy-deny.json" json >}}
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Deny",
+    "Principal": "*",
+    "Action": "s3:*",
+    "Resource": "arn:aws:s3:::bucket-policy-example/*",
+    "Condition": {
+      "NotIpAddress": {
+        "aws:SourceIp": "172.104.2.4"
+      }
+    }
+  }]
+}
+{{</ file >}}
+
+### Combining Rules
+Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Therefore, if you wanted to enact several of the above rules together, instead of enabling them one at a time, you would need to combine them into a single file with each rule listed as items in the `Statements` array.
+
+{{< file "bucket-policy-combo.json" json >}}
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Principal": {
+      "AWS": [
+        "arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"
+      ]
+    },
+    "Action": [
+      "s3:PutObject",
+      "s3:GetObject",
+      "s3:ListBucket"
+    ],
+    "Resource": [
+      "arn:aws:s3:::bucket-policy-example/*"
+    ]
+  },
+  {
+    "Effect": "Allow",
+    "Principal": {
+      "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+    },
+    "Action": [
+      "s3:ListBucket"
+    ],
+    "Resource": [
+      "arn:aws:s3:::*"
+    ]
+  },
+  {
+    "Effect": "Allow",
+    "Principal": {
+      "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+    },
+    "Action": [
+      "s3:GetObject"
+    ],
+    "Resource": [
+      "arn:aws:s3:::bucket-policy-example/test/*"
+    ]
+  },
+  {
+    "Effect": "Deny",
+    "Principal": "*",
+    "Action": "s3:*",
+    "Resource": "arn:aws:s3:::bucket-policy-example/*",
+    "Condition": {
+      "NotIpAddress": {
+        "aws:SourceIp": "172.104.2.4"
+      }
+    }
+  }]
+}
+{{</ file >}}
 
 ### Enable a Bucket Policy
 
 To enable the bucket policy, use the `setpolicy` s3cmd command, supplying the file name of the bucket policy as the first argument, and the S3 bucket address as the second argument:
 
-    s3cmd setpolicy bucket_policy_example.txt s3://bucket-policy-example
+    s3cmd setpolicy bucket_policy_example.json s3://bucket-policy-example
 
 To ensure that it has been applied correctly, you can use the `info` command:
 
