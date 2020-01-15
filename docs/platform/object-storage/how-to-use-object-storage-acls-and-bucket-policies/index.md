@@ -71,6 +71,8 @@ ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
 
         curl other-users-bucket.us-east-1.linodeobjects.com
 
+    {{< content "object-storage-cluster-shortguide" >}}
+
 1. This will result in the following output:
 
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
