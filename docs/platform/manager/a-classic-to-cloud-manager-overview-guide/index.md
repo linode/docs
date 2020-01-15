@@ -169,12 +169,12 @@ In Classic Manager, access to StackScripts was found under the Linodes tab. In C
 
 ## Images
 
-The Images section of Cloud Manager give you access to Linode Images which allow you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future.
+The Images section of Cloud Manager gives you access to Linode Images which allow you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future.
 
 To get started using Images with Cloud Manager, see [Linode Images](/docs/platform/disk-images/linode-images/).
 
 ### Find Images
-In Classic Manager, access to managing images was found in the Linodes tab. In Cloud Manager, Images are their own top-level menu item in the sidebar.
+In Classic Manager, access to image management was found in the Linodes tab. In Cloud Manager, Images are their own top-level menu item in the sidebar.
 
 ![Cloud Manager Images](classic-to-cloud-cloud-manager-images.png "Cloud Manager Images")
 
