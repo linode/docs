@@ -45,9 +45,9 @@ Migrating your Linode to a new data center will result in a number of changes th
 
 1. Select the Linode you'd like to migrate.
 
-1. Click on the **Advanced** tab at the top of the page.
+1. Click on the **Disks/Configs** tab at the top of the page.
 
-1. On the **Advanced Configurations** page, scroll down to the **Configure Migration** section and click on the **Click here to get started** link.
+1. On the **Disks/Configs** page, scroll down to the **Configure Migration** section and click on the **Click here to get started** link.
 
 1. On the **Migrate** detail page, make sure you read and understand the "Caution" message before clicking on the **Accept** checkbox. Select the data center region you'd like the Linode to be migrated to.
 
