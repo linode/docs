@@ -45,13 +45,13 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 ### Prepare your Linode
 
-1.  Log into the [Cloud Manager](https://cloud.linode.com) and create a Linode. For this example, since you are going to install Debian 8, perhaps choose Debian 9 so it's easy to see that your installation is successful. You can use a Nanode for this guide.
+1.  Log into the [Cloud Manager](https://cloud.linode.com) and create a Linode. You can use a Nanode for this guide.
 
 1.  After the Linode is finished provisioning, power it down.
 
 1.  Click the **Resize** tab and uncheck the **Auto Resize Disk** option at the bottom of the screen.
 
-1.  Next, click the **Advanced** tab and resize the main disk so you have some room for new disks; you'll want to free 2100 MB for this example.
+1.  Next, click the **Disks/Configs** tab and resize the main disk so you have some room for new disks; you'll want to free 2100 MB for this example.
 
 1.  [Create two raw, unformatted disk images](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) from the Linode's Dashboard:
 
