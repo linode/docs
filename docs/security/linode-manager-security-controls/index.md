@@ -52,13 +52,13 @@ Enable two-factor authentication to start using it with your Linode account.
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Select the **My Profile** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
+   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile'")
 
 1.  Select the **Password & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, toggle the **Disabled** switch so that it reads **Enabled** to enable Two-Factor Authentication.
 1.  A new form (depicted below) will appear. Write down the **Secret Key** and store it in a safe place:
 
-    [![The key and QR code for two-factor authentication.](security-tfa-settings-small.png "The key and QR code for two-factor authentication")](security-tfa-settings.png)
+    ![The key and QR code for two-factor authentication.](security-tfa-settings.png "The key and QR code for two-factor authentication.")
 
 
 1.  On your smartphone, open Authy.
@@ -117,12 +117,12 @@ The Linode Cloud Manager allows you to generate a new secret key for your two-fa
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Select the **My Profile** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
+   ![Select 'My Profile'](security-my-profile.png "Select My Profile")
 
 1.  Select the **Password & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, click **Reset two-factor authentication**, as shown below.
 
-    [![Reset two-factor authentication.](security-reset-tfa-small.png "Reset two-factor authentication.")](security-reset-tfa.png)
+    ![Reset two-factor authentication.](security-reset-tfa.png "Reset two-factor authentication.")
 
 A new secret key and barcode will be generated for your account and displayed on the screen. Follow the instructions in the [Enabling Two-Factor Authentication](#enabling) section to add the new key to your smartphone.
 
@@ -133,7 +133,7 @@ You can disable two-factor authentication for your Linode account at any time. H
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Select the **My Profile** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
+   ![Select 'My Profile'](security-my-profile.png "Select My Profile")
 
 1.  Select the **Password & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, toggle the **Enabled** switch to disable two-factor Authentication.
@@ -149,6 +149,21 @@ Should you need us to disable your Two-Factor Authentication, the following info
 
 1. An image of the front and back of the payment card currently associated with your account, which clearly shows the last 6 digits, expiration date, and cardholder name.
 1. An image of the front and back of a matching government-issued photo ID.
+
+## Manage Trusted Devices
+
+Whenever you log into the Cloud Manager from a new device or computer, you can choose to _Trust this computer for 30 days_. This means your device will not be prompted for a username or password for 30 days. The Cloud Manager displays a list of all trusted devices for your account and gives you the ability to *untrust* any device on the list. Your account's associated email address will also be notified whenever a new device is trusted. To view and manage your account's trusted devices:
+
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+1.  Select the **My Profile** link by clicking on your username at the top of the page:
+
+      ![Select 'My Profile'](security-my-profile.png "Select 'My Profile")
+
+1.  Select the **Password & Authentication** tab and navigate to the  **Trusted Devices** section.
+
+      ![View trusted devices](trusted-devices.png "View trusted devices")
+
+    You can view all your account's trusted devices and *untrust* any device, as needed. Any device that is untrusted, will be prompted to re-enter their username and password when attempting to log into your Cloud Manager account.
 
 <!--
 ## IP Address Whitelisting

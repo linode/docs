@@ -1392,6 +1392,7 @@ testparam
 testuser
 tetris
 tf
+tfa
 tgz
 thawte
 theano
@@ -1481,6 +1482,7 @@ unschedulable
 untar
 untracked
 untruncated
+untrust
 untrusted
 unversioned
 upsize
