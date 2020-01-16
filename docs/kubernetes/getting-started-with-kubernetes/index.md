@@ -18,15 +18,24 @@ external_resources:
 - '[Kubernetes: Cluster Administration Overview](https://kubernetes.io/docs/concepts/cluster-administration/cluster-administration-overview/)'
 - '[Kubernetes: Securing a Cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/)'
 ---
-Linode offers several pathways for users to easily deploy a Kubernetes cluster. If you prefer the command line, you can create a Kubernetes cluster with one command using the [Linode CLI's k8s-alpha plugin](https://developers.linode.com/kubernetes/), and [Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/). Or, if you prefer a full featured GUI, [Linode's Rancher integration](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/) enables you to deploy and manage Kubernetes clusters with a simple web interface. The Linode Kubernetes Engine, currently under development with an early access beta version on its way this summer, allows you to spin up a Kubernetes cluster with Linode handling the management and maintenance of your control plane. These are all great options for production ready deployments.
 
-{{< content "k8s-alpha-deprecation-shortguide" >}}
+[Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/) is a cloud provider agnostic tool that automates many of the tasks required to get a cluster up and running. Users of kubeadm can run a few simple commands on individual servers to turn them into a Kubernetes cluster consisting of a master node and worker nodes.
 
-[Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/) is a cloud provider agnostic tool that automates many of the tasks required to get a cluster up and running. Users of kubeadm can run a few simple commands on individual servers to turn them into a Kubernetes cluster consisting of a master node and worker nodes. This guide will walk you through installing kubeadm and using it to deploy a Kubernetes cluster on Linode. While the kubeadm approach requires more manual steps than other Kubernetes cluster creation pathways offered by Linode, this solution will be covered as way to dive deeper into the various components that make up a Kubernetes cluster and the ways in which they interact with each other to provide a scalable and reliable container orchestration mechanism.
+This guide will walk you through installing kubeadm and using it to deploy a Kubernetes cluster on Linode. While the kubeadm approach requires more manual steps than other Kubernetes cluster creation pathways offered by Linode, this solution will be covered as way to dive deeper into the various components that make up a Kubernetes cluster and the ways in which they interact with each other to provide a scalable and reliable container orchestration mechanism.
 
 {{< note >}}
 This guide's example instructions will result in the creation of three billable Linodes. Information on how to tear down the Linodes are provided at the end of the guide. Interacting with the Linodes via the command line will provide the most opportunity for learning, however, this guide is written so that users can also benefit by reading along.
 {{< /note >}}
+
+### Alternatives for Creating Clusters
+
+While kubeadm automates several cluster-provisioning tasks, there are other even faster methods for creating a cluster, all of which are great options for production ready deployments:
+
+- The [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/), currently in beta, allows you to spin up a Kubernetes cluster from the [Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) or the [Linode API](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/), and Linode will handle the management and maintenance of your control plane. To register for the beta, [please complete our signup form](https://welcome.linode.com/lkebeta/).
+
+- If you prefer a full featured GUI, [Linode's Rancher integration](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/) enables you to deploy and manage Kubernetes clusters with a simple web interface.
+
+{{< content "k8s-alpha-deprecation-shortguide" >}}
 
 ## Before You Begin
 
