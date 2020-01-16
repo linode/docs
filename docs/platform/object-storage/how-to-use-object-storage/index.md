@@ -135,6 +135,8 @@ Bucket labels need to be unique within the same cluster, including buckets on ot
 &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
 {{< /note >}}
 
+    {{< content "object-storage-cluster-shortguide" >}}
+
 1.  Choose a cluster location for the bucket to reside in.
 
 1.  Click **Submit**. You are now ready to [upload objects to your bucket](#upload-objects-to-a-bucket).
@@ -259,6 +261,8 @@ Bucket labels need to be unique within the same cluster, including buckets on ot
 &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must start with a lowercase letter or number</br>
 &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
 {{< /note >}}
+
+{{< content "object-storage-cluster-shortguide" >}}
 
 To delete a bucket, issue the `rb` command:
 
@@ -415,6 +419,8 @@ Bucket labels need to be unique within the same cluster, including buckets on ot
 &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
 {{< /note >}}
 
+{{< content "object-storage-cluster-shortguide" >}}
+
 To remove a bucket, you can use the `rb` command:
 
     s3cmd rb s3://my-example-bucket
@@ -561,6 +567,8 @@ Bucket labels need to be unique within the same cluster, including buckets on ot
 &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must start with a lowercase letter or number</br>
 &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
 {{< /note >}}
+
+    {{< content "object-storage-cluster-shortguide" >}}
 
 To delete the bucket using Cyberduck, right click on the bucket and select **Delete**.
 

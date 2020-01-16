@@ -28,6 +28,8 @@ Using the Linode Cloud Controller Manager to create NodeBalancers will create bi
 
 You should have a working knowledge of Kubernetes and familiarity with the `kubcetl` command line tool before attempting the instructions found in this guide. For more information about Kubernetes, consult our [Kubernetes Beginner's Guide](/docs/kubernetes/beginners-guide-to-kubernetes/) and our [Getting Started with Kubernetes](/docs/kubernetes/getting-started-with-kubernetes/) guide.
 
+{{< content "k8s-alpha-deprecation-shortguide" >}}
+
 When using the CCM for the first time, it's highly suggested that you create a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state. For a completely automated install, you can use the [Linode CLI's k8s-alpha command line tool](https://developers.linode.com/kubernetes/). The Linode CLI's k8s-alpha command line tool utilizes [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) to fully bootstrap a Kubernetes cluster on Linode. It includes the [Linode Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) plugin, the [Linode CCM plugin](https://github.com/linode/linode-cloud-controller-manager), and the [ExternalDNS plugin](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md). For more information on creating a Kubernetes cluster with the Linode CLI, review our [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide.
 
 {{< note >}}

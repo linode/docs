@@ -21,7 +21,7 @@ The [Linode Cloud Manager](https://cloud.linode.com) is the gateway to all of yo
 
 This guide documents several of the Linode Cloud Manager's features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, the Linode Cloud Manager's built-in security tools can help.
 
-Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, and then [configure security event notifications](#security-event-notifications) for your Linode account. You'll also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
+Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, and then [configure security event notifications](/docs/platform/manager/keep-your-linode-account-safe-classic-manager/#linode-event-notifications) for your Linode account. You'll also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
 
 ## Two-Factor Authentication
 
@@ -52,13 +52,13 @@ Enable two-factor authentication to start using it with your Linode account.
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Select the **My Profile** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
+   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile'")
 
 1.  Select the **Password & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, toggle the **Disabled** switch so that it reads **Enabled** to enable Two-Factor Authentication.
 1.  A new form (depicted below) will appear. Write down the **Secret Key** and store it in a safe place:
 
-    [![The key and QR code for two-factor authentication.](security-tfa-settings-small.png "The key and QR code for two-factor authentication")](security-tfa-settings.png)
+    ![The key and QR code for two-factor authentication.](security-tfa-settings.png "The key and QR code for two-factor authentication.")
 
 
 1.  On your smartphone, open Authy.
@@ -117,12 +117,12 @@ The Linode Cloud Manager allows you to generate a new secret key for your two-fa
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Select the **My Profile** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
+   ![Select 'My Profile'](security-my-profile.png "Select My Profile")
 
 1.  Select the **Password & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, click **Reset two-factor authentication**, as shown below.
 
-    [![Reset two-factor authentication.](security-reset-tfa-small.png "Reset two-factor authentication.")](security-reset-tfa.png)
+    ![Reset two-factor authentication.](security-reset-tfa.png "Reset two-factor authentication.")
 
 A new secret key and barcode will be generated for your account and displayed on the screen. Follow the instructions in the [Enabling Two-Factor Authentication](#enabling) section to add the new key to your smartphone.
 
@@ -133,7 +133,7 @@ You can disable two-factor authentication for your Linode account at any time. H
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Select the **My Profile** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
+   ![Select 'My Profile'](security-my-profile.png "Select My Profile")
 
 1.  Select the **Password & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, toggle the **Enabled** switch to disable two-factor Authentication.
@@ -149,6 +149,21 @@ Should you need us to disable your Two-Factor Authentication, the following info
 
 1. An image of the front and back of the payment card currently associated with your account, which clearly shows the last 6 digits, expiration date, and cardholder name.
 1. An image of the front and back of a matching government-issued photo ID.
+
+## Manage Trusted Devices
+
+Whenever you log into the Cloud Manager from a new device or computer, you can choose to _Trust this computer for 30 days_. This means your device will not be prompted for a username or password for 30 days. The Cloud Manager displays a list of all trusted devices for your account and gives you the ability to *untrust* any device on the list. Your account's associated email address will also be notified whenever a new device is trusted. To view and manage your account's trusted devices:
+
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+1.  Select the **My Profile** link by clicking on your username at the top of the page:
+
+      ![Select 'My Profile'](security-my-profile.png "Select 'My Profile")
+
+1.  Select the **Password & Authentication** tab and navigate to the  **Trusted Devices** section.
+
+      ![View trusted devices](trusted-devices.png "View trusted devices")
+
+    You can view all your account's trusted devices and *untrust* any device, as needed. Any device that is untrusted, will be prompted to re-enter their username and password when attempting to log into your Cloud Manager account.
 
 <!--
 ## IP Address Whitelisting
@@ -251,7 +266,3 @@ If you've completed this guide, you've proactively taken steps to protect your L
 ### Configure User Accounts
 
 Organizations that have multiple individuals accessing the same Cloud Manager account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain areas of the control panel. This is useful for groups that need to grant all team members access to the Cloud Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information. For more information, see our guide on [Accounts and Passwords](/docs/platform/accounts-and-passwords).
-
-### Force Password Expirations
-
-Some organizations have policies that require users to change their passwords every so often. The Linode Cloud Manager can be configured to force users to change their passwords every 1, 3, 6, or 12 months.

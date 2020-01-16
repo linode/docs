@@ -60,5 +60,6 @@ Now that you are familiar with Kubernetes concepts and components, you can follo
 
 If you would like to deploy a Kubernetes cluster on Linode for production use, we recommend using one of the following methods instead. These methods are also a much faster way to get a cluster running, and they will also integrate your cluster with some useful Linode plugins:
 
-  - [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/)
   - [How to Deploy Kubernetes on Linode with Rancher](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/)
+  - [Use the Linode Terraform Provider](https://www.terraform.io/docs/providers/linode/index.html)
+  - [Try the Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)

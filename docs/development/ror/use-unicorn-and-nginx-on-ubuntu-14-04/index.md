@@ -8,6 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/ror/use-unicorn-and-nginx-on-ubuntu-14-04/']
 published: 2016-03-30
 modified: 2016-03-30
+deprecated: true
+deprecated_link: '/development/ror/use-unicorn-and-nginx-on-ubuntu-18-04'
 modified_by:
     name: Alex Fornuto
 title: 'Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04'
@@ -96,7 +98,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     {{< file "/home/username/example/config/unicorn.rb" aconf >}}
 # set path to the application
-app_dir git File.expand_path("../..", __FILE__)
+app_dir = File.expand_path("../..", __FILE__)
 shared_dir = "#{app_dir}/shared"
 working_directory app_dir
 

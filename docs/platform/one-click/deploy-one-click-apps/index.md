@@ -22,7 +22,7 @@ One-Click Apps allow you to easily deploy software on a Linode using the Linode 
 
 1. Log in to your [Linode Cloud Manager](https://cloud.linode.com) account.
 
-1. From the Linode dashboard, click on the **Create** button in the top left-hand side of the screen and select **Linode** from the dropdown menu.
+1. From the Linode dashboard, click on the **Create** button in the top right-hand side of the screen and select **Linode** from the dropdown menu.
 
 1. The Linode creation page will appear. Select the **One-Click** tab.
 

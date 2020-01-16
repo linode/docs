@@ -101,7 +101,7 @@ You may have to click the **Refresh** button in Cyberduck's toolbar to see the h
 Each file has its own permissions. If you'd like to view objects via HTTP, then you'll need to manually set the permissions for each object to *Everyone* each time you upload or revert to a different version of the object, as described in the [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#upload-download-and-delete-an-object-with-cyberduck) guide.
 {{</ note >}}
 
-#### Delete Versioned Objects
+#### Delete Versioned Objects in Cyberduck
 
 You can use Cyberduck to manually delete an object and all of its versions that are stored in a bucket. The steps covered in this section are only useful if you have a few objects and a few corresponding versions in a bucket.
 
@@ -290,3 +290,31 @@ This is version 2 of the file.
     Open the downloaded file and confirm that the first version of the file was downloaded properly.
 
 1.  To restore to a previous version of an object using the AWS CLI, you can download the version you want to restore to and then re-upload that file. Alternatively, if there is only one newer version of the object, you can delete the newer version of the object and Object Storage will automatically serve the next most recent version.
+
+#### Delete Versioned Objects with AWS CLI
+
+To delete an object version using the AWS CLI, use this command:
+
+    aws s3api delete-object --endpoint=http://us-east-1.linodeobjects.com --bucket=bucket-versioning-example --key=test.txt  --version-id=4ACJQUNQ1ORV2oZ1SRE7l2M7nTjD1pv
+
+This command will not give you any output. To see the results, run the `list-object-versions` command again.
+
+{{< output >}}
+{
+    "Versions": [
+        {
+            "ETag": "\"38b0d2ff1c03df82aea67222983d337e\"",
+            "Size": 6,
+            "StorageClass": "STANDARD",
+            "Key": "test.txt",
+            "VersionId": "cdw7Lz4CPdm3wAJwBIJ6NhOUDqZo-Y7",
+            "IsLatest": true,
+            "LastModified": "2019-09-18T11:51:33.070Z",
+            "Owner": {
+                "DisplayName": "a9354920-007a-4480-9271-06d3ff7f8426",
+                "ID": "a9354920-007a-4480-9271-06d3ff7f8426"
+            }
+        }
+    ]
+}
+{{</ output >}}

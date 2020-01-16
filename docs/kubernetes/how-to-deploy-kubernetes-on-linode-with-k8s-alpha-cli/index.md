@@ -24,6 +24,8 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 ## What is the k8s-alpha CLI?
 
+{{< content "k8s-alpha-deprecation-shortguide" >}}
+
 The Linode [k8s-alpha CLI](https://developers.linode.com/kubernetes/) is a plugin for the [Linode CLI](https://github.com/linode/linode-cli) that offers quick, single-command deployments of Kubernetes clusters on your Linode account. When you have it installed, creating a cluster can be as simple as:
 
     linode-cli k8s-alpha create example-cluster
@@ -272,5 +274,5 @@ When you delete a cluster with the k8s-alpha CLI, its connection information wil
 
 Now that you have a cluster up and running, you're ready to start deploying apps to it. Review our other Kubernetes guides for help with deploying software and managing your cluster:
 
--   [Installing Apps on Kubernetes with Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm/)
+-   [Installing Apps on Kubernetes with Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/)
 -    [Linode Container Storage Interface](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/)

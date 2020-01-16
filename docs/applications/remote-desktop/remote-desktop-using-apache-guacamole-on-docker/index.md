@@ -8,7 +8,7 @@ keywords: ["remote desktop", "Apache Guacamole", "TeamViewer", "VNC", "Chrome OS
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-08
 modified_by:
-  name: Sam Foo
+  name: Linode
 published: 2017-11-17
 title: 'Virtual Cloud Desktop Using Apache Guacamole'
 external_resources:
@@ -19,6 +19,21 @@ external_resources:
 ![Virtual Cloud Desktop Using Apache Guacamole](Apache_Guacamole.jpg)
 
 Apache Guacamole is an HTML5 application useful for accessing a remote desktop through RDP, VNC, and other protocols. You can create a virtual cloud desktop where applications can be accessed through a web browser. This guide will cover the installation of Apache Guacamole through Docker, then access a remote desktop environment hosted on a Linode.
+
+## Before You Begin
+
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+
+3.  Update your system.
+
+        sudo apt-get update && sudo apt-get upgrade
+
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< /note >}}
+
 
 ## Install Docker
 The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
@@ -125,26 +140,6 @@ MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alter
 
         exit
 
-## Guacamole in Browser
-
-1.  Start guacd in Docker:
-
-        docker run --name example-guacd -d guacamole/guacd
-
-2.  Link containers so Guacamole can verify credentials stored in the MySQL database:
-
-        docker run --name example-guacamole --link example-guacd:guacd --link example-mysql:mysql -e MYSQL_DATABASE='guacamole_db' -e MYSQL_USER='guacamole_user' -e MYSQL_PASSWORD='guacamole_user_password' -d -p 127.0.0.1:8080:8080 guacamole/guacamole
-
-    {{< note >}}
-To see all running and non-running Docker containers:
-
-    docker ps -a
-{{< / note >}}
-
-3.  If `example-guacamole`, `example-guacd`, and `example-mysql` are all running, navigate to `localhost:8080/guacamole/`. The default login credentials are `guacadmin` and password `guacadmin`. This should be changed as soon as possible.
-
-    ![Guacamole Login](guac_login.png)
-
 ## VNC Server on a Linode
 
 Before sharing a remote desktop, a desktop environment and VNC server must be installed on a Linode. This guide will use Xfce because it is lightweight and doesn't excessively consume system resources.
@@ -193,19 +188,43 @@ metacity &
 nautilus &
 {{< / file >}}
 
+## Guacamole in Browser
+
+1.  Start guacd in Docker:
+
+        docker run --name example-guacd -d guacamole/guacd
+
+2.  Link containers so Guacamole can verify credentials stored in the MySQL database:
+
+        docker run --name example-guacamole --link example-guacd:guacd --link example-mysql:mysql -e MYSQL_DATABASE=guacamole_db -e MYSQL_USER=guacamole_user -e MYSQL_PASSWORD=guacamole_user_password -d -p 127.0.0.1:8080:8080 guacamole/guacamole
+
+    {{< note >}}
+To see all running and non-running Docker containers:
+
+    docker ps -a
+{{< / note >}}
+
+3.  Before connecting to the VNC server, create an SSH tunnel replacing `user` and `example.com` with the Linode's user and public IP.
+
+        ssh -L 5901:localhost:5901 -N -f -l user example.com
+
+4.  Connect to the VNC server and if `example-guacamole`, `example-guacd`, and `example-mysql` are all running, navigate to `localhost:8080/guacamole/`. The default login credentials are `guacadmin` and password `guacadmin`. This should be changed as soon as possible.
+
+    ![Guacamole Login](guac_login.png)
+
+{{< note >}}
+After you connect to the VNC server if you are not able to open the default browser such as the `Debian Sensible Browser` and see `Failed to Execute Default Web Browser. Input/Output error`, then try installing a different browser such as `FireFox` or others.
+{{< /note >}}
+
 ## New Connection in Guacamole
 
 VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how to navigate the browser interface and add a new connection.
 
-1.  Before connecting to the VNC server, create an SSH tunnel replacing `user` and `example.com` with the Linode's user and public IP.
-
-        ssh -L 5901:localhost:5901 -N -f -l user example.com
-
-2.  In the Guacamole dashboard, click the top right drop down menu and select *Settings*. Under *Connections*, press the *New Connection* button.
+1.  In the Guacamole dashboard, click the top right drop down menu and select *Settings*. Under *Connections*, press the *New Connection* button.
 
     ![Guacamole Settings](guac_settings.png)
 
-3.  Under **Edit Connection**, choose a name. Under **Parameters**, the hostname is the public IP of the Linode. The port is 5900 plus the display number - in this case, port 5901. Enter the 8 character password.
+2.  Under **Edit Connection**, choose a name. Under **Parameters**, the hostname is the public IP of the Linode. The port is 5900 plus the display number - in this case, port 5901. Enter the 8 character password.
 
     ![Guacamole VNC Configuration](guac_vnc_config.png)
 
@@ -215,17 +234,16 @@ VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how
 If you have multiple displays running on the same Linode, increment the port number for each display: 5902, 5903, etc. If your remote displays are hosted on different Linodes, each display should still use port 5901.
 {{< / note >}}
 
-4.  From the top right drop down menu, click *Home*. The new connection is now available.
+3.  From the top right drop down menu, click *Home*. The new connection is now available.
 
     **CTRL** + **ALT** + **SHIFT** - Opens menu for clipboard, keyboard/mouse settings, and the navigation menu.
 
     ![Guacamole Drop Down](guac_menu.png)
 
-5.  Press back on the browser to return to the *Home* menu.
+4.  Press back on the browser to return to the *Home* menu.
 
-6.  Additional connections can be made, and simultaneous connections can be made in new browser tabs.
+5.  Additional connections can be made, and simultaneous connections can be made in new browser tabs.
 
     ![Guacamole Recent Connections](guac_recent.png)
 
 This guide aimed to streamline the installation process through Docker and demonstrate remote desktop with Apache Guacamole as quickly as possible. There are many features such as screen recording, two factor authentication with Duo, file transfer via SFTP, and much more. As an Apache Incubator project, expect to see further developments in the near future.
-
