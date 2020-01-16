@@ -30,7 +30,17 @@ This guide shows how to build and deploy an example microservice using Docker an
 
 ## Before You Begin
 
-You will need a Linode with Docker and Docker Compose installed to complete this guide.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+
+3.  Update your system.
+
+        sudo apt-get update && sudo apt-get upgrade
+
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< /note >}}
 
 ### Install Docker
 
@@ -234,7 +244,7 @@ def resetcounter():
     {{< file "web/requirements.txt" text >}}
 flask
 gunicorn
-psycopg2
+psycopg2-binary
 redis
 {{</ file >}}
 
