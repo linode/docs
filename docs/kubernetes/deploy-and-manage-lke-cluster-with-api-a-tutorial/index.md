@@ -454,6 +454,6 @@ This step is permanent and will result in the loss of data.
 
 Now that you have created an LKE cluster, you can start deploying workloads to it. Review these guides for further help:
 
-* [How to Install Apps on Kubernetes with Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm/)
+* [How to Install Apps on Kubernetes with Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/)
 * [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/kubernetes/deploy-container-image-to-kubernetes/)
 * [Troubleshooting Kubernetes](/docs/kubernetes/troubleshooting-kubernetes/)

@@ -2,17 +2,20 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to install apps on your K8s cluster with Helm, a popular package management system for Kubernetes.'
+description: 'Learn how to install apps on your K8s cluster with Helm 2, a popular package management system for Kubernetes.'
 keywords: ["helm", "kubernetes", "container", "k8s"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-26
 modified_by:
   name: Linode
-title: 'How to Install Apps on Kubernetes with Helm'
-aliases: ['applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/','applications/containers/how-to-install-apps-on-kubernetes-with-helm/']
+title: 'How to Install Apps on Kubernetes with Helm 2'
+h1_title: 'Installing Apps on Kubernetes with Helm 2'
+aliases: ['applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/','applications/containers/how-to-install-apps-on-kubernetes-with-helm/', 'how-to-install-apps-on-kubernetes-with-helm']
+deprecated: true
+deprecated_link: 'kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/'
 concentrations: ["Kubernetes"]
 external_resources:
-  - '[Helm Documentation](https://helm.sh/docs/)'
+  - '[Helm 2 Documentation](https://v2.helm.sh/docs/)'
   - '[Helm Security on Bitnami Engineering](https://engineering.bitnami.com/articles/helm-security.html)'
 ---
 
@@ -46,14 +49,14 @@ The components of a Kubernetes application--deployments, services, ingresses, an
 
 | File or Directory   | Description |
 |---------------------|-------------|
-| [Chart.yaml](https://helm.sh/docs/developing_charts/#the-chart-yaml-file) | General information about the chart, including the chart name, a version number, and a description. |
-| [LICENSE](https://helm.sh/docs/developing_charts/#chart-license-readme-and-notes) | A plain-text file with licensing information for the chart and for the applications installed by the chart. *Optional*. |
-| [README.md](https://helm.sh/docs/developing_charts/#chart-license-readme-and-notes) | A Markdown file with instructions that a user of a chart may want to know when installing and using the chart, including a description of the app that the chart installs and the template values that can be set by the user. *Optional*. |
-| [requirements.yaml](https://helm.sh/docs/developing_charts/#managing-dependencies-with-requirements-yaml) | A listing of the charts that this chart depends on. This list will specify the chart name version number for each dependency, as well as the repository URL that the chart can be retrieved from. *Optional*. |
-| [values.yaml](https://helm.sh/docs/developing_charts/#values-files) | Default values for the variables in your manifests' templates. |
-| [charts/](https://helm.sh/docs/developing_charts/#managing-dependencies-manually-via-the-charts-directory) | A directory which stores chart dependencies that you manually copy into your project, instead of linking to them from the `requirements.yaml` file. |
-| [templates/](https://helm.sh/docs/developing_charts/#templates-and-values) | Your Kubernetes manifests are stored in the `templates/` directory.  Helm will interpret your manifests using the [Go templating language](https://golang.org/pkg/text/template/) before applying them to your cluster. You can use the template language to insert variables into your manifests, and users of your chart will be able to enter their own values for those variables. |
-| [templates/NOTES.txt](https://helm.sh/docs/developing_charts/#chart-license-readme-and-notes) | A plain-text file which will print to a user's terminal when they install the chart. This text can be used to display post-installation instructions or other information that a user may want to know. *Optional*. |
+| [Chart.yaml](https://v2.helm.sh/docs/developing_charts/#the-chart-yaml-file) | General information about the chart, including the chart name, a version number, and a description. |
+| [LICENSE](https://v2.helm.sh/docs/developing_charts/#chart-license-readme-and-notes) | A plain-text file with licensing information for the chart and for the applications installed by the chart. *Optional*. |
+| [README.md](https://v2.helm.sh/docs/developing_charts/#chart-license-readme-and-notes) | A Markdown file with instructions that a user of a chart may want to know when installing and using the chart, including a description of the app that the chart installs and the template values that can be set by the user. *Optional*. |
+| [requirements.yaml](https://v2.helm.sh/docs/developing_charts/#managing-dependencies-with-requirements-yaml) | A listing of the charts that this chart depends on. This list will specify the chart name version number for each dependency, as well as the repository URL that the chart can be retrieved from. *Optional*. |
+| [values.yaml](https://v2.helm.sh/docs/developing_charts/#values-files) | Default values for the variables in your manifests' templates. |
+| [charts/](https://v2.helm.sh/docs/developing_charts/#managing-dependencies-manually-via-the-charts-directory) | A directory which stores chart dependencies that you manually copy into your project, instead of linking to them from the `requirements.yaml` file. |
+| [templates/](https://v2.helm.sh/docs/developing_charts/#templates-and-values) | Your Kubernetes manifests are stored in the `templates/` directory.  Helm will interpret your manifests using the [Go templating language](https://golang.org/pkg/text/template/) before applying them to your cluster. You can use the template language to insert variables into your manifests, and users of your chart will be able to enter their own values for those variables. |
+| [templates/NOTES.txt](https://v2.helm.sh/docs/developing_charts/#chart-license-readme-and-notes) | A plain-text file which will print to a user's terminal when they install the chart. This text can be used to display post-installation instructions or other information that a user may want to know. *Optional*. |
 
 ### Releases
 
@@ -116,7 +119,7 @@ Install the Helm client software on your computer:
 Tiller's default installation instructions will attempt to install it without adequate permissions on a cluster with RBAC enabled, and it will fail. Alternative instructions are available which grant Tiller the appropriate permissions:
 
 {{< note >}}
-The following instructions provide Tiller to the `cluster-admin` role, which is a privileged Kubernetes API user for your cluster. This is a potential security concern. [Other access levels](https://helm.sh/docs/using_helm/#role-based-access-control) for Tiller are possible, like restricting Tiller and the charts it installs [to a single namespace](https://helm.sh/docs/using_helm/#example-deploy-tiller-in-a-namespace-restricted-to-deploying-resources-only-in-that-namespace). The [Bitnami Engineering blog](https://engineering.bitnami.com/articles/helm-security.html) has an article which further explores security in Helm.
+The following instructions provide Tiller to the `cluster-admin` role, which is a privileged Kubernetes API user for your cluster. This is a potential security concern. [Other access levels](https://v2.helm.sh/docs/using_helm/#role-based-access-control) for Tiller are possible, like restricting Tiller and the charts it installs [to a single namespace](https://v2.helm.sh/docs/using_helm/#example-deploy-tiller-in-a-namespace-restricted-to-deploying-resources-only-in-that-namespace). The [Bitnami Engineering blog](https://engineering.bitnami.com/articles/helm-security.html) has an article which further explores security in Helm.
 {{< /note >}}
 
 1.   Create a file on your computer named `rbac-config.yaml` with the following snippet:
@@ -191,7 +194,7 @@ This guide will use the [Ghost](https://ghost.org) publishing platform as the ex
 Run `helm repo list` to see which repositories are registered with your client.
 {{< /note >}}
 
-1.  Run the [`search` command](https://helm.sh/docs/using_helm/#helm-search-finding-charts) with a keyword to search for a chart by name:
+1.  Run the [`search` command](https://v2.helm.sh/docs/using_helm/#helm-search-finding-charts) with a keyword to search for a chart by name:
 
         helm search ghost
 
@@ -208,7 +211,7 @@ Run `helm repo list` to see which repositories are registered with your client.
 
 ### Install the Chart
 
-The [`helm install` command](https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package) is used to install a chart by name. It can be run without any other options, but some charts expect you to pass in configuration values for the chart:
+The [`helm install` command](https://v2.helm.sh/docs/using_helm/#helm-install-installing-a-package) is used to install a chart by name. It can be run without any other options, but some charts expect you to pass in configuration values for the chart:
 
 1.  Create a file named `ghost-config.yaml` on your computer from this snippet:
 
