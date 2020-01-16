@@ -1,11 +1,13 @@
-
 ---
 author:
   name: The Linux Gamer
+contributor:
+  name: Gardiner Bryant
+  link: http://youtube.com/thelinuxgamer
 description: 'Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media, this guide walks you through installing it on a Linode'
 keywords: ["Jellyfin", "Media Server", "PLEX"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-08-07
+modified: 2020-01-16
 modified_by:
   name: Linode
 published: 2019-08-07
