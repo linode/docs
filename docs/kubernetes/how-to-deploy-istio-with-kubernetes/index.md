@@ -34,7 +34,7 @@ In this guide you will complete the following tasks:
 {{< caution >}}
 This guide’s example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](https://www.linode.com/docs/platform/billing-and-support/billing-and-payments/)  guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/)  guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{</ caution >}}
 
 ## Before You Begin
@@ -47,12 +47,8 @@ Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kub
 
 There are many ways to create a Kubernetes cluster. This guide will use the Linode k8s-alpha CLI.
 
-{{< note >}}
-The k8s-alpha CLI is planned to be deprecated in the near future and is reaching it's EOL. While it is still currently available to use, we recommend using alternative tools like [Terraform](https://www.terraform.io/docs/providers/linode/index.html), [LKE]()
-{{< /note >}}
-
 1. To set it up the Linode k8s-alpha CLI, see the
-[How to Deploy Kubernetes on Linode with the k8s-alpha CLI](https://www.linode.com/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide and stop before the "Create a Cluster" section.
+[How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide and stop before the "Create a Cluster" section.
 
 1. Now that your Linode K8s-alpha CLI is set up, You are ready to create your Kubernetes cluster. You will need **3 worker nodes** and **one master** for this guide. Create your cluster using the following command:
 
@@ -75,7 +71,7 @@ Come hang out with us in #linode on the Kubernetes Slack! http://slack.k8s.io/
 
 ### Install Helm
 
-Follow the instructions in the [How to Install Apps on Kubernetes with Helm](https://www.linode.com/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/) guide to install Helm on your cluster. Stop before the section on "Using Helm Charts to Install Apps".
+Follow the instructions in the [How to Install Apps on Kubernetes with Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/) guide to install Helm on your cluster. Stop before the section on "Using Helm Charts to Install Apps".
 
 ## Install Istio
 
