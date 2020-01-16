@@ -14,5 +14,5 @@ show_on_rss_feed: false
 ---
 
 {{< caution >}}
-The k8s-alpha CLI is approaching it's EOL and will be officially deprecated on March 31st, 2020. While you can still utilize it before this date, we recommend using alternatives like [Terraform](https://www.terraform.io/docs/providers/linode/index.html), [Rancher](https://www.linode.com/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/), or the managed [Linode Kubernetes Engine](https://www.linode.com/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) instead where possible.
+The k8s-alpha CLI is approaching its EOL and will be officially deprecated on March 31st, 2020. While you can still utilize it before this date, we recommend using alternatives like [Terraform](https://www.terraform.io/docs/providers/linode/index.html), [Rancher](https://www.linode.com/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/), or the managed [Linode Kubernetes Engine](https://www.linode.com/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) instead where possible.
 {{< /caution >}}
