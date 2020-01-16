@@ -47,10 +47,6 @@ Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kub
 
 There are many ways to create a Kubernetes cluster. This guide will use the Linode k8s-alpha CLI.
 
-{{< note >}}
-The k8s-alpha CLI is planned to be deprecated in the near future and is reaching it's EOL. While it is still currently available to use, we recommend using alternative tools like [Terraform](https://www.terraform.io/docs/providers/linode/index.html), [LKE]()
-{{< /note >}}
-
 1. To set it up the Linode k8s-alpha CLI, see the
 [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide and stop before the "Create a Cluster" section.
 
