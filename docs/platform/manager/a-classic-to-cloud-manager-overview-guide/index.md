@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide provides an overview of Linode''s Cloud Manager for users who are more familiar with the Classic Manager. You will find information about each section of the Cloud Manager, specific features that you may need help finding, and settings that might make your overall Cloud Manager experience.'
-og_description: 'This guide provides an overview of Linode''s Cloud Manager for users who are more familiar with the Classic Manager. You will find information about each section of the Cloud Manager, specific features that you may need help finding, and settings that might make your overall Cloud Manager experience.'
+og_description: 'This guide provides an overview of Linode''s Cloud Manager for users who are more familiar with the Classic Manager. You will find information about each section of the Cloud Manager, specific features that you may need help finding, and settings that will improve your overall Cloud Manager experience.'
 keywords: ["classic manager","cloud manager","linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-20
