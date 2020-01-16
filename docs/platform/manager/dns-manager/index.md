@@ -263,7 +263,7 @@ Linode's DNS servers allow Domain zone transfers to non-Linode DNS servers that 
 Granting another server access to zone information is potentially dangerous. Do not add any IP addresses that you do not know or trust.
   {{</ caution >}}
 
-1. From the **Domains** section of the Cloud Manager, find the domain for which you would like to enable Domain zone transfer and click on the entry to access its Domain records
+1. From the **Domains** section of the Cloud Manager, find the domain for which you would like to enable Domain zone transfer and click on the entry to access its Domain records.
 
 1. Viewing your Domain's records, under the **SOA Record** section, click on the **more options ellipsis** corresponding to your Domain's SOA records and select **Edit**.
 
