@@ -98,7 +98,7 @@ If it does not start successfully, check that you can connect to your cluster wi
 The interfaces that Octant provides are meant to be a complement, and not a replacement, for kubectl. When using Octant, you may find that you sometimes need to return to kubectl to perform certain actions. Still, the Octant dashboard will serve as a helpful overview when inspecting your cluster.
 
 {{< note >}}
-The cluster objects visible in the following screenshots were created by installing the [Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) for the [Ghost](https://ghost.org) blogging software. The [How to Install Apps on Kubernetes with Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm/) guide outlines how to install this software. Please note that this guide uses Helm 2 and not Helm 3 to install the software.
+The cluster objects visible in the following screenshots were created by installing the [Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) for the [Ghost](https://ghost.org) blogging software. The [How to Install Apps on Kubernetes with Helm 2](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-2/) guide outlines how to install this software. Please note that this guide uses Helm 2 and not Helm 3 to install the software.
 {{< /note >}}
 
 - When first viewing the dashboard, a list of all of your cluster objects will be shown:
