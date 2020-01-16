@@ -132,8 +132,8 @@ Cloud Manager does not include the **Check Zone** and **Zone File** features, si
 
 - Once your Domain and corresponding Zone File is created, you can use the `dig` command to further verify that each domain record contains the information you expect, for example:
 
-      dig example.com
-      dig example.com MX
+        dig example.com
+        dig example.com MX
 
     See the [Use dig to Perform Manual DNS Queries](/docs/networking/dns/use-dig-to-perform-manual-dns-queries/) guide for more details on the `dig` command.
 
