@@ -11,6 +11,7 @@ modified_by:
 published: 2014-01-15
 title: Linode Writer's Formatting Guide
 show_on_rss_feed: false
+type: "guide"
 external_resources:
  - '[GitHub Beginners Guide](/docs/github-guide)'
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
@@ -24,7 +25,7 @@ This guide provides templates and guidelines to use when creating or updating a 
 
 Updates, improvements, and bug fixes to Linode documentation are always welcome through [GitHub](https://github.com/linode/docs) via pull requests (PRs) or issues.
 
-We only accept new guides and authors through our guide submission process. To apply, please fill out the form on our [contribute page](/docs/contribute/).
+Through our Write For Linode program, authors can contribute new guides and be paid for their work. We ask that interested authors apply to the program with one or more writing samples so that we can evaluate your work. To learn more about the program and to complete an application, please visit our Write For Linode [program page](https://www.linode.com/lp/write-for-linode/).
 
 ## General Layout
 

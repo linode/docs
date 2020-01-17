@@ -62,4 +62,4 @@ If you would like to deploy a Kubernetes cluster on Linode for production use, w
 
   - [How to Deploy Kubernetes on Linode with Rancher](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/)
   - [Use the Linode Terraform Provider](https://www.terraform.io/docs/providers/linode/index.html)
-  - [Try the Linode Kubernetes Engine](https://www.linode.com/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
+  - [Try the Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)

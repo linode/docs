@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: 'How to Install Apps on Kubernetes with Helm 3'
 h1_title: 'Installing Apps on Kubernetes with Helm 3'
-aliases: ['applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/','applications/containers/how-to-install-apps-on-kubernetes-with-helm/']
+aliases: ['kubernetes/how-to-install-apps-on-kubernetes-with-helm/','applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/','applications/containers/how-to-install-apps-on-kubernetes-with-helm/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Helm Documentation](https://helm.sh/docs/)'
