@@ -126,11 +126,15 @@ For more information on Cloud Manager's DNS Manager, see the following guides:
 
 ### Zone Files
 
-Cloud Manager does not include the **Check Zone** and **Zone File** features, since it automatically ensures that your Domain's zone file does not contain any errors:
+Cloud Manager does not include the **Check Zone** and **Zone File** features, since it automatically ensures that your Domain's zone file does not contain any errors.
+
+{{< note >}}
+This Cloud Manager and API v4 functionality is currently under active development.
+{{</ note >}}
 
 - When creating a Zone File for a Domain, the [Linode API v4](https://developers.linode.com/api/v4) checks for any errors that may exist. If an error is found, the Cloud Manager will respond with the corresponding error. This means that the Cloud Manager will not allow you to create an invalid zone file.
 
-- Once your Domain and corresponding Zone File is created, you can use the `dig` command to further verify that each domain record contains the information you expect, for example:
+- Once your Domain and corresponding Zone File is created, you can use the `dig` command to further verify that each domain record contains the information you expect. It will take a few moments before a newly created domain record will show up when issuing the `dig` command.
 
         dig example.com
         dig example.com MX
