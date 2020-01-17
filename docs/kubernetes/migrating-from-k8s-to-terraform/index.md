@@ -8,7 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-14
 modified_by:
   name: Linode
-title: "Migrating From k8s to Terraform"
+title: "How to Migrate From k8s-alpha CLI to Terraform"
+h1_title: "Migrating From k8s-alpha CLI to Terraform"
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
@@ -18,42 +19,45 @@ external_resources:
 - '[Using Terraform to Provision Linode Environments](https://www.linode.com/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)'
 ---
 
-## k8s Deprecation
+The [k8s-alpha CLI](https://www.linode.com/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) is deprecated. On **March 31st, 2020**, it will be **removed** from the [linode-cli](https://github.com/linode/linode-cli). After March 31, 2020, you will no longer be able to create or manage clusters created by the linode-cli, however, you will still be able to successfully manage your clusters using [Terraform](https://www.terraform.io/).
 
-On **March 31st, 2020**, the [k8s-alpha CLI](https://www.linode.com/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) will be **removed and deprecated** from the linode-cli. Once this deprecation date has passed, you will no longer be able to create or manage clusters created by the linode-cli, however you  can still successfully manage your clusters using [Terraform](https://www.terraform.io/) directly to the same effect.
+## In This Guide
+You will use Terraform to continue to manage and support clusters created using the k8s-alpha CLI following the EOL date and beyond. You will learn how to:
 
-In this guide, we'll focus on how you can use Terraform to continue managing and supporting clusters created using the k8s-alpha CLI following the EOL date and beyond. You will learn how to:
+- [Manage clusters]() created with the k8s-alpha CLI following it's deprecation.
+- [Create clusters]() using Terraform.
+- [Delete clusters]() using Terraform.
 
-- Manage clusters created with the k8s-alpha CLI following it's deprecation.
-- Create Clusters using Terraform
-- Delete Clusters using Terraform
+## Manage k8s-alpha Clusters
 
-## Manage Clusters created with k8s-alpha CLI
-
-The k8s-alpha CLI is based on Terraform, and as a result creates a number of Terraform configuration files whenever creating a cluster using it. Any of these terraform files can be found within the `.k8s-alpha` directory. You can change into this directory using the following syntax:
+The k8s-alpha CLI is based on Terraform. As a result, it creates a number of Terraform configuration files whenever it creates a cluster. These terraform files are found within the `.k8s-alpha-linode` directory. You can change into this directory using the following syntax:
 
     cd $HOME/.k8s-alpha-linode
 
 If you list the contents of this directory, you will see a subdirectory for each of the clusters you've created with the k8s-alpha CLI. For any of your clusters, contents of these subdirectories will be as follows:
 
-- `example-cluster.conf`
-- `example-cluster_new.conf`
-- `terraform.tfstate.d`
-- `cluster.tf`
-- `.terraform`
+{{< output >}}
+drwxr-xr-x  5 username  staff   160 Dec 11 08:10 .terraform
+-rw-r--r--  1 username  staff   705 Dec 11 08:10 cluster.tf
+-rw-r--r--  1 username  staff  5456 Dec 11 08:14 example-cluster.conf
+-rw-r--r--  1 username  staff  5488 Dec 11 08:16 example-cluster_new.conf
+drwxr-xr-x  3 username  staff    96 Dec 11 08:10 terraform.tfstate.d
+{{</ output >}}
 
-Both of the `.conf` files are kubeconfig files for this cluster, `terraform.tfstate.d`  is a terraform state directory, `.terraform` is a hidden directory which contains terraform configuration files, and `cluster.tf` contains the terraform module file. The most important file to take note of is `cluster.tf` which will allow you to scale, upgrade, or delete your cluster.
+- Both of the `.conf` files are kubeconfig files for this cluster.
+-  `terraform.tfstate.d` is a terraform state directory.
+- `.terraform` is a hidden directory which contains terraform configuration files.
+- `cluster.tf` contains the terraform module file. This is the most important file here because it will allow you to scale, upgrade, or delete your cluster.
 
 {{< note >}}
 For more information regarding these files and directories and their contents, see our [Beginner's Guide to Terraform](/applications/configuration-management/beginners-guide-to-terraform/)
 {{< /note >}}
 
-## Scaling Your Cluster
+### Scale Your Cluster
 
-To scale your cluster, we'll want to edit `cluster-tf` with a code editor of your choice. The contents will be similar to the following:
+To scale your cluster, edit `cluster.tf` with the text editor of your choice. The contents will be similar to the following:
 
-{{< file "rbac-config.yaml" >}}
-
+{{< file "cluster.tf" >}}
 variable "server_type_node" {
   default = "g6-standard-2"
 }
@@ -89,7 +93,7 @@ module "k8s" {
 
 {{< /file >}}
 
-To scale your cluster, you can change the value of the "nodes" variable. To resize the number of nodes from `3` to `5`, you would just need to make the following edit and save your changes:
+To scale your cluster, edit the value of the `nodes` variable. For example, to resize the number of nodes from `3` to `5`, make the following edit and save your changes:
 
     variable "nodes" {
     default = 5
@@ -127,7 +131,7 @@ mycluster-node-5 	Ready	<none>   4m52s   v1.13.6
 {{< /output >}}
 
 
-## Upgrading Your Cluster
+### Upgrade Your Cluster
 
 You may have noticed that the Terraform module `cluster.tf` refers to a specific branch and git commit hash referencing a remote Terraform module on GitHub. The following section will outline how to upgrade your cluster to the latest version of this module.
 
@@ -158,12 +162,12 @@ Depending on the changes that have been configured, you may or may not see the u
 
 ## Deleting a Cluster
 
-To destroy a cluster, you just need to navigate to the directory containing your cluster's files, and enter the `terraform destroy` command:
+To destroy a cluster, navigate to the directory containing your cluster's files, and enter the `terraform destroy` command:
 
     cd ~/.k8s-alpha-linode/mycluster
     terraform destroy
 
-Terraform will then  prompt you to confirm the action, and on confirmation will proceed to destroy all associated resources. If this process is interrupted for any reason, you can run the command again at any time to complete the process.
+Terraform will then prompt you to confirm the action, and on confirmation will proceed to destroy all associated resources. If this process is interrupted for any reason, you can run the command again at any time to complete the process.
 
 ## Creating a Cluster
 
