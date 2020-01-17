@@ -59,7 +59,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
     When configuring your firewall, a good place to start is to create rules for the ports Kubernetes requires to function. This includes any inbound traffic on Master nodes and their required ports. If you have changed any custom ports, you should ensure those ports are also open. Master Nodes will have a public IP address or `192.168.0.0/16`. See the chart below for more details.
 
-    On Worker nodes, you should allow inbound Kubelet traffic. For NodePort traffic you should allow a large range from the world or if you are using the [Linode NodeBalancers service](https://github.com/linode/linode-cloud-controller-manager) exclusively for ingress, `192.168.255.0/24`. See the chart below for more details.
+    On Worker nodes, you should allow inbound kubelet traffic. For NodePort traffic you should allow a large range from the world or if you are using the [Linode NodeBalancers service](https://github.com/linode/linode-cloud-controller-manager) exclusively for ingress, `192.168.255.0/24`. See the chart below for more details.
 
     The table below provides a list of the required ports for Master nodes and Worker nodes. You should also include port `22`.
 
@@ -69,7 +69,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
     | -------- | --------- | ---------- | ------- |  ------- |
     | TCP | Inbound | 6443* | Kubernetes API server |  All |
     | TCP | Inbound | 2379-2380 | etcd server client API |  kube-apiserver, etcd |
-    | TCP | Inbound | 10250 | Kubelet API |  Self, Control plane |
+    | TCP | Inbound | 10250 | kubelet API |  Self, Control plane |
     | TCP | Inbound | 10251 | kube-scheduler |  Self |
     | TCP | Inbound | 10253 | kube-controller-manager |  Self |
 
@@ -77,7 +77,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
     | Protocol | Direction | Port Range | Purpose |  Used By |
     | -------- | --------- | ---------- | ------- |  ------- |
-    | TCP | Inbound | 10250 | Kubelet API |  Self, Control plane |
+    | TCP | Inbound | 10250 | kubelet API |  Self, Control plane |
     | TCP | Inbound | 30000-32767 | NodePort Services** |  All |
 
 
@@ -217,7 +217,7 @@ To start using your cluster, you need to run (as a regular user):
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-You should now deploy a pod network to the cluster.
+You should now deploy a Pod network to the cluster.
 Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
   http://kubernetes.io/docs/admin/addons/
 
@@ -247,7 +247,7 @@ as root:
 
         kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
 
-1.  To ensure Calico was set up correctly, use `kubectl get pods --all-namespaces` to view the pods created in the `kube-system` namespace:
+1.  To ensure Calico was set up correctly, use `kubectl get pods --all-namespaces` to view the Pods created in the `kube-system` namespace:
 
         root@kube-master:~# kubectl get pods --all-namespaces
         NAMESPACE     NAME                                       READY     STATUS             RESTARTS   AGE
@@ -294,7 +294,7 @@ kube-worker-1   ready     <none>    2m        v1.8.1
 
 ## Deploy NGINX on the Kubernetes Cluster
 
-A *deployment* is a logical reference to a pod or pods and their configurations.
+A *deployment* is a logical reference to a Pod or Pods and their configurations.
 
 1.  From your master node `kubectl create` an nginx deployment:
 
@@ -338,13 +338,13 @@ Events:
   Normal  ScalingReplicaSet  1m    deployment-controller  Scaled up replica set nginx-68fcbc9696 to 1
 {{< /output >}}
 
-    The `describe` command allows you to interrogate different kubernetes resources such as pods, deployments, and services at a deeper level. The output above indicates that there is a deployment called `nginx` within the default namespace. This deployment has a single replicate, and is running the docker image `nginx`. The ports, mounts, volumes and environmental variable are all unset.
+    The `describe` command allows you to interrogate different Kubernetes resources such as Pods, deployments, and services at a deeper level. The output above indicates that there is a deployment called `nginx` within the default namespace. This deployment has a single replicate, and is running the docker image `nginx`. The ports, mounts, volumes and environmental variable are all unset.
 
 1.  Make the NGINX container accessible via the internet:
 
         kubectl create service nodeport nginx --tcp=80:80
 
-    This creates a public facing service on the host for the NGINX deployment. Because this is a nodeport deployment, kubernetes will assign this service a port on the host machine in the `32000`+ range.
+    This creates a public facing service on the host for the NGINX deployment. Because this is a nodeport deployment, Kubernetes will assign this service a port on the host machine in the `32000`+ range.
 
     Try to `get` the current services:
 

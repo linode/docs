@@ -31,13 +31,13 @@ If you are running a cluster on Linode's managed LKE service, and you are experi
 
 -   Kubernetes' API server not running. If kubectl does not respond as expected, this can indicate problems with the API server.
 
--   The CCM, CSI, Calico, or kube-dns pods are not running.
+-   The CCM, CSI, Calico, or kube-dns Pods are not running.
 
 -   Annotations on LoadBalancer services aren’t functioning.
 
 -   PersistentVolumes are not re-attaching.
 
-Please note that the kube-apiserver and etcd pods will not be visible for LKE clusters, and this is expected. Issues outside of the scope of Linode Support include:
+Please note that the kube-apiserver and etcd Pods will not be visible for LKE clusters, and this is expected. Issues outside of the scope of Linode Support include:
 
 -   Problems with the control plane of clusters not managed by LKE.
 
@@ -58,7 +58,7 @@ To troubleshoot issues with your cluster, you may need to [directly view the log
 
 ### kubectl get
 
-Use the [`get` command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) to list different kinds of resources in your cluster (`nodes`, `pods`, `services`, etc). The output will show the status for each resource returned. For example, this output shows that a pod is in the `CrashLoopBackOff` status, which means it should be investigated further:
+Use the [`get` command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) to list different kinds of resources in your cluster (`nodes`, `pods`, `services`, etc). The output will show the status for each resource returned. For example, this output shows that a Pod is in the `CrashLoopBackOff` status, which means it should be investigated further:
 
     kubectl get pods
     NAME              READY     STATUS             RESTARTS   AGE
@@ -113,21 +113,21 @@ You can also use the `--selector` (`-l`) flag to filter the returned resources, 
 
 ### kubectl logs
 
-Use the [`logs` command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs) to print logs collected by a pod:
+Use the [`logs` command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs) to print logs collected by a Pod:
 
     kubectl logs mariadb-0
 
--   Use the `--selector` (`-l`) flag to print logs from all pods that match a selector:
+-   Use the `--selector` (`-l`) flag to print logs from all Pods that match a selector:
 
         kubectl logs -l app=ghost
 
--   If a pod's container was killed and restarted, you can view the previous container's logs with the `--previous` or `-p` flag:
+-   If a Pod's container was killed and restarted, you can view the previous container's logs with the `--previous` or `-p` flag:
 
         kubectl logs -p ghost-0
 
 ### kubectl exec
 
-You can run arbitrary commands on a pod's container by passing them to kubectl's [`exec` command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec):
+You can run arbitrary commands on a Pod's container by passing them to kubectl's [`exec` command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec):
 
     kubectl exec mariadb-0 -- ps aux
 
@@ -136,7 +136,7 @@ The full syntax for the command is:
     kubectl exec ${POD_NAME} -c ${CONTAINER_NAME} -- ${CMD} ${ARG1} ${ARG2} ... ${ARGN}
 
 {{< note >}}
-The `-c` flag is optional, and is only needed when the specified pod is running more than one container.
+The `-c` flag is optional, and is only needed when the specified Pod is running more than one container.
 {{< /note >}}
 
 It is possible to run an interactive shell on an existing pod/container. Pass the `-it` flags to `exec` and run the shell:
@@ -218,20 +218,20 @@ This is a reference to the total number of Linode resources that can exist on yo
 
 ### Insufficient CPU or Memory
 
-If one of your pods requests more memory or CPU than is available on your worker nodes, then one of these scenarios may happen:
+If one of your Pods requests more memory or CPU than is available on your worker nodes, then one of these scenarios may happen:
 
--  The pod will remain in the Pending state, because the scheduler cannot find a node to run it on. This will be visible when running `kubectl get pods`.
+-  The Pod will remain in the Pending state, because the scheduler cannot find a node to run it on. This will be visible when running `kubectl get pods`.
 
-    If you run the `kubectl describe` command on your pod, the Events section may list a `FailedScheduling` event, along with a message like `Failed for reason PodExceedsFreeCPU and possibly others`. You can run `kubectl describe nodes` to view [information about the allocated resources](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#my-pods-are-pending-with-event-message-failedscheduling) for each node.
+    If you run the `kubectl describe` command on your Pod, the Events section may list a `FailedScheduling` event, along with a message like `Failed for reason PodExceedsFreeCPU and possibly others`. You can run `kubectl describe nodes` to view [information about the allocated resources](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#my-pods-are-pending-with-event-message-failedscheduling) for each node.
 
--   The pod may continually crash. For example, the [Ghost](https://ghost.org) pod specified by [Ghost's Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) will show the following error in its logs when not enough memory is available:
+-   The Pod may continually crash. For example, the [Ghost](https://ghost.org) Pod specified by [Ghost's Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) will show the following error in its logs when not enough memory is available:
 
         kubectl logs ghost --tail=5
         1) SystemError
 
         Message: You are recommended to have at least 150 MB of memory available for smooth operation. It looks like you have ~58 MB available.
 
-If your cluster has insufficient resources for a new pod, you will need to:
+If your cluster has insufficient resources for a new Pod, you will need to:
 
 -   Reduce the number of other pods/deployments/applications running on your cluster,
 -   [Resize the Linode instances](/docs/platform/disk-images/resizing-a-linode/) that represent your worker nodes to a higher-tier plan, or

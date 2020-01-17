@@ -310,7 +310,7 @@ Hosting your Hugo site's image on Docker Hub will enable you to use the image in
 
 This section will use kubectl to configure and manage your Kubernetes cluster. If your cluster was deployed using kubeadm, you will need to log into your master node to execute the kubectl commands in this section. If, instead, you used the k8s-alpha CLI you can run all commands from your local computer.
 
-In this section, you will create namespace, deployment, and service manifest files for your Hugo site deployment and apply them to your cluster with kubectl. Each manifest file creates different resources on the Kubernetes API that are used to create and the Hugo site's pods on the worker nodes.
+In this section, you will create namespace, deployment, and service manifest files for your Hugo site deployment and apply them to your cluster with kubectl. Each manifest file creates different resources on the Kubernetes API that are used to create and the Hugo site's Pods on the worker nodes.
 
 ### Create the Namespace
 
