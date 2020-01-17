@@ -3,7 +3,7 @@ author:
   name: Phil Zona
   email: docs@linode.com
 description: 'Introduction to high availability concepts'
-keywords: ["high availability", "hosting", "website", "failover"]
+keywords: ["high availability", "hosting", "website", "failover", "ssd ha"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-07-12
 modified: 2016-07-12
