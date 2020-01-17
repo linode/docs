@@ -10,6 +10,10 @@ package "php-mysql" do
   action :install
 end
 
+package "libapache2-mod-php" do
+  action :install
+end
+
 cookbook_file "/etc/php/7.0/cli/php.ini" do
   source "php.ini"
   mode "0644"
