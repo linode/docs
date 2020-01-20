@@ -27,7 +27,9 @@ Specifically it is implemented with PHP and Symfony but the important software d
 
 - Install and set up a fresh copy of [Symfony](https://symfony.com/doc/current/best_practices.html)
 
-- Familiarize yourself with the concept of [fixtures](https://symfony.com/doc/master/bundles/DoctrineFixturesBundle/index.html)
+- Familiarize yourself with the concepts of [fixtures](https://symfony.com/doc/master/bundles/DoctrineFixturesBundle/index.html) and [migrations](https://symfony.com/doc/master/bundles/DoctrineMigrationsBundle/index.html)
+
+> For further details please visit [programarivm/zebra](https://github.com/programarivm/zebra) which is a GitHub repository where the present methodology has been implemented.
 
 ## Fixture-Driven Development
 
@@ -252,4 +254,54 @@ In UserFixtures.php line 15:
 
 ## Conclusion
 
-The objective of the present methodology is to encourage developers to write a suite of fixtures to be loaded in a testing database, this way there is no need to use production data for development purposes. The fixtures are written when designing the database.
+The objective of the present methodology is to encourage developers to write a suite of fixtures to be loaded in a testing database, this way there is no need to use production data for development purposes.
+
+The fixtures are written when designing the database.
+
+The first fixture-development cycle described above was quite simple; in future cycles the `User` entity may resemble the following:
+
+```php
+<?php
+
+namespace App\DataFixtures;
+
+use App\Entity\User;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+class UserFixtures extends Fixture
+{
+    const N = 20;
+
+    private $encoder;
+
+    private $faker;
+
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+        $this->faker = Factory::create();
+        $this->faker->addProvider(new \Faker\Provider\Internet($this->faker));
+    }
+
+    public function load(ObjectManager $manager)
+    {
+        for ($i = 0; $i < self::N; $i++) {
+            $user = new User();
+            $user->setUsername($this->faker->username)
+                ->setEmail($this->faker->email)
+                ->setPassword($this->encoder->encodePassword(
+                    $user,
+                    $this->faker->password
+                ));
+            $manager->persist($user);
+            $this->addReference("user-$i", $user);
+        }
+
+        $manager->flush();
+    }
+}
+```
+For further details please visit [programarivm/zebra](https://github.com/programarivm/zebra) which is a GitHub repository where the present methodology has been implemented.
