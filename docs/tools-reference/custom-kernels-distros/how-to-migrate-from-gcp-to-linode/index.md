@@ -70,7 +70,7 @@ Using the GCP object storage service will incur additional charges outside of th
 
 ### Prepare Your GCP Instance
 
-Now that you have completed the prerequiste steps, you are ready to prepare your GCP instance for its migration to Linode. This will require creating a root password, turning off Google daemons, and creating and exporting a GCP image.
+Now that you have completed the prerequisite steps, you are ready to prepare your GCP instance for its migration to Linode. This will require creating a root password, turning off Google daemons, and creating and exporting a GCP image.
 
 #### Root Password
 GCP instances don't have root or user passwords setup by default, you will create these so that you can log into your machine after you migrate it.
@@ -102,7 +102,7 @@ Before continuing with the preparation to migrate, you should inspect your GCP i
 At minimum, you will migrate your GCP instance's boot disk. On a Linux system, without a custom boot disk configured, this is likely `/dev/sda1`.
     {{</ note >}}
 
-1. To inspect your GCP instance's disks, [ssh into your gcp instance](https://cloud.google.com/compute/docs/instances/connecting-to-instance#gcetools) and issue the following command to view disk size on each mounted disk:
+1. To inspect your GCP instance's disks, [ssh into your GCP instance](https://cloud.google.com/compute/docs/instances/connecting-to-instance#gcetools) and issue the following command to view disk size on each mounted disk:
 
     {{< note >}}
   The usable disk space that is reported by `df` reflects only 90 percent of full capacity.
