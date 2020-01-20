@@ -132,7 +132,7 @@ mycluster-node-5 	Ready	 &lt;none&gt;   4m52s   v1.13.6
 
 ### Upgrade a Cluster
 
-You may have noticed that the Terraform module, `cluster.tf`, refers to a specific branch and git commit hash referencing a remote Terraform module on GitHub. The following section will outline how to upgrade your cluster to the latest version of this module.
+You may have noticed that the Terraform module, `cluster.tf`, refers to a specific branch or git commit hash referencing a remote Terraform module on GitHub. The following section will outline how to upgrade your cluster to the latest version of this module.
 
 For example, your `source` variable may have a value that points to the git branch ref `for-cli`. To perform an upgrade this must point to the latest commit history hash.
 
