@@ -416,6 +416,17 @@ If, for example, your GCP disk image's size is 10GB, ensure that you resize the 
 If you are having trouble with ssh starting, you may have to run the following command to start the service from Lish:
 
     sudo service ssh start
+
+You may also need to update your SSH server's configuration file to temporarily allow password authentication. Your GCP instance may have been configured to disallow password authentication and it may not have your computer's SSH keys stored.
+
+1. Open your SSH server's configuration file with your preferred text editor:
+
+         sudo nano /etc/ssh/sshd_config
+
+1. Find the `PasswordAuthentication` configuration and set its value to `yes`:
+
+          PasswordAuthentication yes
+
 See the [SSH guide](/docs/troubleshooting/troubleshooting-ssh/) for more SSH troubleshooting tips.
     {{</ note >}}
 
