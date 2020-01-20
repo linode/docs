@@ -17,6 +17,13 @@ swap:
   fedora: Fedora
   gentoo: Gentoo
   homebrew: Homebrew
+  Kubeadm: kubeadm
+  Kubectl: kubectl
+  Kubelet: kubelet
+  kubernetes: Kubernetes
+  Kube Controller Manager: kube-controller-Manager
+  Kube Proxy: kube-proxy
+  Kube Scheduler: kube-scheduler
   linode cli: Linode CLI
   linode manager: Linode Manager
   linode: Linode
@@ -27,6 +34,7 @@ swap:
   nodebalancer: NodeBalancer
   nodebalancers: NodeBalancers
   openSUSE: OpenSUSE
+  pod: Pod
   slackware: Slackware
   ubuntu: Ubuntu
   wordpress: WordPress
