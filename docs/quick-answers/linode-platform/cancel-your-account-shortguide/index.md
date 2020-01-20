@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Shortguide that displays the instructions to cancel your account in the Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 20202-01-20
+modified: 2020-01-20
 modified_by:
   name: Heather Zoppetti
 published: 2020-01-20
