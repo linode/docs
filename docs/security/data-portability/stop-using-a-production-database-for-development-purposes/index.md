@@ -47,9 +47,7 @@ Once the entire process is completed and therefore the database designed, you en
 
 ## Add a Fixture
 
-Let's assume we are starting the database design process completely from scratch and the very first fixture needs to be added.
-
-A good idea might be to write the following fixtures in `src/DataFixtures/UserFixtures.php`
+Let's assume we are starting the database design process completely from scratch and the very first fixture needs to be added. A good idea might be to write the following fixtures in `src/DataFixtures/UserFixtures.php`
 
 ```php
 <?php
@@ -98,9 +96,7 @@ This is an equivalent to making a test fail in a TDD methodology.
 
 ## Write Some Code in the Entity Layer
 
-So, the entity layer must be refactored with the purpose of just making the previous fixtures to be loaded.
-
-A minimal `src/Entity/User.php` file is written to achieve this goal.
+So, the entity layer must be refactored with the purpose of just making the previous fixtures to be loaded. A minimal `src/Entity/User.php` file is written to achieve this goal.
 
 ```php
 <?php
@@ -258,7 +254,7 @@ The objective of the present methodology is to encourage developers to write a s
 
 The fixtures are written when designing the database.
 
-The first fixture-development cycle described above was quite simple; in future cycles the `User` entity may resemble the following:
+The first fixture-development cycle described above was quite simple but at some point in future cycles the `User` entity may resemble the following.
 
 ```php
 <?php
@@ -304,4 +300,34 @@ class UserFixtures extends Fixture
     }
 }
 ```
+
+```
+mysql> select * from user;
++----+------------------+-----------------------------+---------------------------------------------------------------------------------------------------+
+| id | username         | email                       | password                                                                                          |
++----+------------------+-----------------------------+---------------------------------------------------------------------------------------------------+
+|  1 | demarcus.koch    | cristal.hagenes@treutel.com | $argon2id$v=19$m=65536,t=4,p=1$LmX8EoXrkemR8VLIO1ZcTA$5UC0tWn+6fJEma/neKcitgpELZlPTAcL9wC6O1nNfn8 |
+|  2 | ablanda          | floy73@marks.com            | $argon2id$v=19$m=65536,t=4,p=1$Iq5mhGD4M5bYEvRcszqdsA$9sJExnkdKO2QMR8PA+DFZ+OL8EvCkvJ1WdhkUMuELN8 |
+|  3 | ernesto.wolf     | zstanton@hotmail.com        | $argon2id$v=19$m=65536,t=4,p=1$0mV3Wg6DADHoA8XjXu555w$RljkrrtDABBOTkQSNNmBOKA16e2jAcwRnBs6qjOIPhQ |
+|  4 | bwhite           | gsmith@gmail.com            | $argon2id$v=19$m=65536,t=4,p=1$7u2ecWB6IedLaMHY+bhb6g$72VHnkYwZw458orExJvvEaoZMLcHoL4f6upn+73qJZ8 |
+|  5 | dorris28         | vgrimes@hotmail.com         | $argon2id$v=19$m=65536,t=4,p=1$4+sjf5jOIkNPrgagmsCoMw$qxDBCxNy16ODcPAoDjbo0AgS2TnM/QGxo8kEIqWugSI |
+|  6 | xrodriguez       | ledner.verla@franecki.com   | $argon2id$v=19$m=65536,t=4,p=1$YhR3tHoopKSJNhehtZ4sIg$jxxKrrT9R6Weg4IbcSEdHn1WQoNmT2/OYuRfTaGTjjY |
+|  7 | rcronin          | ngutkowski@yahoo.com        | $argon2id$v=19$m=65536,t=4,p=1$TKtVQCp4chLWbhiGR+/axA$TbmnyuEmWIdtq5yNzPbjOlYeQNH3tFa612+LYwVxc3Y |
+|  8 | wunsch.edwardo   | freda16@wiza.com            | $argon2id$v=19$m=65536,t=4,p=1$Pp9AtCXw/XB6/Z5FiFH3aA$X420Ix4JAGcRu0x2gJdoToVeXSSFlZU33BeDR13/gOQ |
+|  9 | jacobi.broderick | ortiz.declan@gmail.com      | $argon2id$v=19$m=65536,t=4,p=1$31b2sF9Gt7WfAdpdLGofLg$PV/T4vCb9NUwprkKCS1N/MFSopHXFLiaGSxRMS/TtKw |
+| 10 | halie.beier      | dsimonis@haley.com          | $argon2id$v=19$m=65536,t=4,p=1$FW5MHfVG7evZan5uEEZhUA$S/tlt4LocrW998oDrW3K5k/LE5JUY0ioFMxgICg0pC4 |
+| 11 | ortiz.corine     | ostoltenberg@yahoo.com      | $argon2id$v=19$m=65536,t=4,p=1$Vr2hEI+PH6QPBY1elab5cg$wTM9Tkd4IcAyF9Eo0Oxec/ejlC/LgZg5oRtp39gICSQ |
+| 12 | uklocko          | emelia.donnelly@hyatt.org   | $argon2id$v=19$m=65536,t=4,p=1$4TvtIIJ1Lf4vHEjnZ+qubg$kOin2zZ40wWCRn3Wkn9U2X9ijmpQJ69duk/Yfh4WnOg |
+| 13 | williamson.willy | ikeeling@tillman.com        | $argon2id$v=19$m=65536,t=4,p=1$UdUPCVJFIM2xLtIHMW8iqg$ucx9nuPuS92GXfU1WQGew8YjTBhlJURk7vgzwIZadXk |
+| 14 | schoen.tristin   | thompson.zion@mante.com     | $argon2id$v=19$m=65536,t=4,p=1$DvvUHieQhWKFLNZ98NzWJw$QMd3G6zhW9uEPttwXpMk6DMvkr4TrDdFEBLgv3GpV3w |
+| 15 | collier.xavier   | emelie.padberg@yahoo.com    | $argon2id$v=19$m=65536,t=4,p=1$hGH8E+gf6fz8IoNJHaFiGA$M6euacVeiTgT5cVHvPctx3cTInWCRfk5b2rX50imOwg |
+| 16 | maxine.purdy     | ibednar@herman.info         | $argon2id$v=19$m=65536,t=4,p=1$VrFDOh6XF7bsXkUNyGYHzg$is+BNG3ZyxE0IEazy6ZNmdV/9n3omhgRXpQY4aH63OA |
+| 17 | anabelle50       | jmoen@gmail.com             | $argon2id$v=19$m=65536,t=4,p=1$ad/+ztC2VYgoFncfnKvd7w$Swqo2Wg0lHqObIEMRdkI4lwjAIDTG9hy1J30pUa8MGs |
+| 18 | titus.damore     | qlowe@hotmail.com           | $argon2id$v=19$m=65536,t=4,p=1$1hUK0xzB1iykjHtGx3cRpA$A/sXhRQwnnzSJ46NFW2te9xO84qs+WW5Y4wFQGdeSL8 |
+| 19 | amy.cronin       | kaitlyn66@toy.biz           | $argon2id$v=19$m=65536,t=4,p=1$RTzEBBGF+vrL8heH9I2CMw$bMSFOkbCapen1+3+feJmWQ/77hdjiHShrjbVudTxN9s |
+| 20 | darryl64         | friedrich00@feeney.com      | $argon2id$v=19$m=65536,t=4,p=1$dYpnao4o5MXhLEgzY82Q5A$hZ+4JR7/2ZjW2WLG1HJa8mTNFnBWLrYmDj4SuuhWCwc |
++----+------------------+-----------------------------+---------------------------------------------------------------------------------------------------+
+20 rows in set (0.00 sec)
+```
+
 For further details please visit [programarivm/zebra](https://github.com/programarivm/zebra) which is a GitHub repository where the present methodology has been implemented.
