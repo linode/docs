@@ -50,7 +50,7 @@ Unless otherwise stated, all commands will be executed from the `kube-master`.
 
 ## Kubernetes Pods
 
-A [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) is a group of one or more tightly coupled containers that share resources such as storage and network. Containers inside a pod are started, stopped, and replicated as a group.
+A [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) is a group of one or more tightly coupled containers that share resources such as storage and network. Containers inside a Pod are started, stopped, and replicated as a group.
 
 ![Kubernetes Cluster](kubernetes-cluster.png)
 
@@ -99,7 +99,7 @@ spec:
     nginx-server   1         1         1            1           13s
     ```
 
-4.  Check that your pod is present:
+4.  Check that your Pod is present:
 
         kubectl get pods
 
@@ -147,7 +147,7 @@ Kubernetes makes it easy to scale deployments to add or remove replicas.
 
 ### Rolling Upgrades
 
-Managing pods with a Deployment allows you to make use of **rolling upgrades**. A rolling upgrade is a mechanism that allows you to update your application version without any downtime. Kubernetes ensures that at least 25% of your Pods are available at all times and creates new pods before deleting the old ones.
+Managing Pods with a Deployment allows you to make use of **rolling upgrades**. A rolling upgrade is a mechanism that allows you to update your application version without any downtime. Kubernetes ensures that at least 25% of your Pods are available at all times and creates new Pods before deleting the old ones.
 
 1.  Upgrade your containers' NGINX version from 1.13 to 1.13.8:
 
@@ -179,7 +179,7 @@ deployment "nginx-server" successfully rolled out
 
         kubectl set image deployment/nginx-server nginx=nginx:1.18.
 
-5.  Check your current pods:
+5.  Check your current Pods:
 
         kubectl get pods -o wide
 
@@ -191,9 +191,9 @@ nginx-server-76976d4555-ws4vf   1/1       Running            0          3m      
 nginx-server-7ddd985dd6-mpn9h   0/1       ImagePullBackOff   0          2m        192.168.180.16   kube-worker-1
     ```
 
-    The pod `nginx-server-7ddd985dd6-mpn9h` is trying to upgrade to an nonexistent version of NGINX.
+    The Pod `nginx-server-7ddd985dd6-mpn9h` is trying to upgrade to an nonexistent version of NGINX.
 
-6.  Get more details about the error by inspecting this pod:
+6.  Get more details about the error by inspecting this Pod:
 
         kubectl describe pod nginx-server-7ddd985dd6-mpn9h
 
@@ -218,7 +218,7 @@ nginx-server-7ddd985dd6-mpn9h   0/1       ImagePullBackOff   0          2m      
 
 ## Kubernetes Services
 
-You now have a deployment running three pods of an NGINX application. In order to expose the pods to the internet, you need to create a **service**. In Kubernetes a service is an abstraction that allows pods to be accessible at all times. Services automatically handle IP changes, updates, and scaling, so once the service is enabled your application will be available as long as a running pod remains active.
+You now have a deployment running three Pods of an NGINX application. In order to expose the Pods to the internet, you need to create a **service**. In Kubernetes a service is an abstraction that allows Pods to be accessible at all times. Services automatically handle IP changes, updates, and scaling, so once the service is enabled your application will be available as long as a running Pod remains active.
 
 1.  Configure a test service:
 
@@ -350,11 +350,11 @@ In order to use your namespaces you need to define the **context** where you wan
 
         kubectl config view
 
-7.  Pods within a namespace are not visible to other namespaces. Check this by listing your pods:
+7.  Pods within a namespace are not visible to other namespaces. Check this by listing your Pods:
 
         kubectl get pods
 
-    The message "No resources found" appears because you have no pods or deployments created in this namespace. You still can view these objects with the `--all-namespaces` flag:
+    The message "No resources found" appears because you have no Pods or deployments created in this namespace. You still can view these objects with the `--all-namespaces` flag:
 
         kubectl get services --all-namespaces
 
@@ -392,11 +392,11 @@ spec:
 
         kubectl create -f my-app.yaml --record
 
-3.  If you need to find a particular pod within your cluster, rather than listing all of the pods it is usually more efficient to search by label with the `-l` option:
+3.  If you need to find a particular Pod within your cluster, rather than listing all of the Pods it is usually more efficient to search by label with the `-l` option:
 
         kubectl get pods --all-namespaces -l app=nginx
 
-    Only the pods in the `default` and `development` namespace are listed because they have the label `nginx` included in their definition.
+    Only the Pods in the `default` and `development` namespace are listed because they have the label `nginx` included in their definition.
 
 ## Kubernetes Nodes
 
@@ -429,11 +429,11 @@ Kubernetes offers a very straightforward solution for taking nodes offline safel
 
         kubectl config use-context kubernetes-admin@kubernetes
 
-2.  Check your pods:
+2.  Check your Pods:
 
         kubectl get pods -o wide
 
-3.  Prevent new pods creation on the node `kube-worker-2`:
+3.  Prevent new Pods creation on the node `kube-worker-2`:
 
         kubectl cordon kube-worker-2
 
@@ -452,7 +452,7 @@ kube-worker-2    Ready,SchedulingDisabled   <none>    4h        v1.9.2
 
         kubectl scale deployment nginx-server --replicas=10
 
-6.  List your pods again:
+6.  List your Pods again:
 
         kubectl get pods -o wide
 
@@ -470,9 +470,9 @@ kube-worker-2    Ready,SchedulingDisabled   <none>    4h        v1.9.2
     nginx-server-b9bc6c6b5-ztgmr   1/1       Running   0          11s       192.168.188.147   kube-worker-1
     ```
 
-    There are ten pods in total but new pods were created only in the first node.
+    There are ten Pods in total but new Pods were created only in the first node.
 
-7.  Tell `kube-worker-2` to drain its running pods:
+7.  Tell `kube-worker-2` to drain its running Pods:
 
         kubectl drain kube-worker-2 --ignore-daemonsets
 
@@ -486,7 +486,7 @@ kube-worker-2    Ready,SchedulingDisabled   <none>    4h        v1.9.2
     node "kube-worker-2" drained
     ```
 
-8.  Check the effect of this command on your pods:
+8.  Check the effect of this command on your Pods:
 
         kubectl get pods -o wide
 
