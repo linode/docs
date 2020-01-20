@@ -344,7 +344,7 @@ Events:
 
         kubectl create service nodeport nginx --tcp=80:80
 
-    This creates a public facing service on the host for the NGINX deployment. Because this is a nodeport deployment, kubernetes will assign this service a port on the host machine in the `32000`+ range.
+    This creates a public facing service on the host for the NGINX deployment. Because this is a nodeport deployment, Kubernetes will assign this service a port on the host machine in the `32000`+ range.
 
     Try to `get` the current services:
 

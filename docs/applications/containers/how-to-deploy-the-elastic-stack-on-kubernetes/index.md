@@ -10,7 +10,7 @@ keywords:
     "kibana",
     "filebeat",
     "metricbeat",
-    "kubernetes",
+    "Kubernetes",
     "k8s",
     "elk",
     "helm",
@@ -92,7 +92,7 @@ After following the prerequisites for this guide, you should have a Kubernetes c
         NAME                    CHART VERSION   APP VERSION     DESCRIPTION
         elastic/elasticsearch   7.3.2           7.3.2           Official Elastic helm chart for Elasticsearch
 
-Your Helm environment is now prepared to install official Elasticsearch charts into your kubernetes cluster.
+Your Helm environment is now prepared to install official Elasticsearch charts into your Kubernetes cluster.
 
 ## Install Charts
 

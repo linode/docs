@@ -56,7 +56,7 @@ A [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) is a g
 
 ### Create a Deployment
 
-[Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) are high-level objects that can manage pod creation and allow the use of features such as declarative scaling and rolling-upgrade.
+[Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) are high-level objects that can manage Pod creation and allow the use of features such as declarative scaling and rolling-upgrade.
 
 1.  In a text editor, create `nginx.yaml` and add the following content:
 
