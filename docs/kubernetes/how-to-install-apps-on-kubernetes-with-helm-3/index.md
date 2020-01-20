@@ -236,13 +236,13 @@ ghost-1576075187	default  	1       	2019-12-11 09:39:50.168546 -0500 EST	deploye
 
 ### Access Your App
 
-1.  Navigate to the NoadBalancer that was created in [Cloud Manager](https://cloud.linode.com) and find the IP address.
+1.  Navigate to the NodeBalancer that was created in [Cloud Manager](https://cloud.linode.com) and find the IP address.
 
     ![Find the IP address of the NodeBalancer in Cloud Manager](helm-3-nodebalancer-ip-address.png "Find the IP address of the NodeBalancer in Cloud Manager")
 
 1.  The LoadBalancer that was created for the app will be displayed. Because this example uses a cluster created with Linode's `k8s-alpha` CLI (which pre-installs the [Linode CCM](https://github.com/linode/linode-cloud-controller-manager)), the LoadBalancer will be implemented as a [Linode NodeBalancer](https://www.linode.com/nodebalancers).
 
-1.  Copy the value under the `IP Address` column for the NoadBalancer and then paste it into your web browser. You should see the Ghost website:
+1.  Copy the value under the `IP Address` column for the NodeBalancer and then paste it into your web browser. You should see the Ghost website:
 
     ![Ghost home page](helm-3-ghost-homepage.png "Ghost home page")
 
