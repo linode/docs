@@ -22619,6 +22619,11 @@ body.m-oh {
   color: #32363b;
   opacity: 1;
 }
+.search-form__search-field::-moz-placeholder {
+  font-size: 14px;
+  color: #32363b;
+  opacity: 1;
+}
 .search-form__search-field::-ms-input-placeholder {
   font-size: 14px;
   color: #32363b;
