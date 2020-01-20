@@ -13,7 +13,7 @@ title: 'Stop Using a Production Database for Development Purposes'
 
 Whether it is because of tight deadlines or budget constraints, it's not too uncommon that software development teams will end up using real production data instead of sample data for development purposes.
 
-However if working locally with a copy of the production database your data is at risk of being sent through email, Skype, or shared on cloud-based platforms such as Slack or Discord, just to name a few.
+In a worst-case scenario if working locally with a copy of the production database your data is at risk of being sent through email, Skype, or shared on cloud-based platforms such as Slack or Discord, just to name a few.
 
 Remember, this is not the right thing to do since it comes with a number of threats which might even propagate through your DevOps infrastructure.
 
@@ -250,7 +250,7 @@ In UserFixtures.php line 15:
 
 ## Conclusion
 
-The objective of the present methodology is to encourage developers to write a suite of fixtures to be loaded in a testing database, this way there is no need to use production data for development purposes.
+The objective of the present secure methodology is to encourage developers to write a suite of fixtures to be loaded in a testing database, this way there is no need to use production data for development purposes.
 
 The fixtures are written when designing the database.
 
