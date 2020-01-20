@@ -5,10 +5,10 @@ author:
 description: 'This quick answer guide shows you how to change your account email address both in the Linode Cloud Manager and by using the Linode API.'
 keywords: ["ip address", "ip addresses", "address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-09-21
+modified: 2020-01-20
 modified_by:
   name: Linode
-published: 2017-09-21
+published: 2020-01-20
 title: How to Change Your Email Address
 h1_title: Changing Your Email Address
 ---
