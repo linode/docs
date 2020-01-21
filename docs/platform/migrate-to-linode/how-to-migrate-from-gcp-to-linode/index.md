@@ -94,7 +94,7 @@ If your data is stored in a database, you will likely need to perform a *databas
 
         rsync -avzh /path/to/source_folder example_user@linode_ip_address:/path/to/destination_folder
 
-- If you have uploaded a database dump file to your new Linode, you will also need to *restore* the dump file so that your database software can use the data normally. The database guides linked to in the [Create a Snapshot of your GCP Data](/#create-a-snapshot-of-your-gcp-data) section include instructions for restoring those files.
+- If you have uploaded a database dump file to your new Linode, you will also need to *restore* the dump file so that your database software can use the data normally. The database guides linked to in the [Create a Snapshot of your GCP Data](#create-a-snapshot-of-your-gcp-data) section include instructions for restoring those files.
 
 ### Test the New Environment
 
@@ -234,7 +234,7 @@ sda      8:0    0  10G  0 disk
 └─sda1   8:1    0  10G  0 part /
     {{</ output >}}
 
-    In this example, the you will create a disk image for `/dev/sda1` and you will need, at minimum, 10GB of storage. For more details related to Linode plan size considerations see the [Create a Linode](/docs/tools-reference/custom-kernels-distros/how-to-migrate-from-gcp-to-linode/#create-a-linode) section.
+    In this example, you will create a disk image for `/dev/sda1` and you will need, at minimum, 10GB of storage. For more details related to Linode plan size considerations see the [Create a Linode](#create-a-linode) section.
 
 #### Turn Off Google Daemons
 Before you migrate the instance, turn off the daemons that communicate with Google servers. If you don't do this, once you move to Linode, these services will continually try to access Google servers and fail if the daemons are still running.
