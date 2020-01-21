@@ -105,7 +105,7 @@ Issuing the `curl` command will create a new directory, `istio-1.4.2`, in your c
 istio.io	https://storage.googleapis.com/istio-release/releases/1.4.2/charts/
     {{< /output >}}
 
-1.  Install Istio's [Custom Resource Definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) (CRD) with the helm chart. This command also creates a pod namespace called `istio-system` which you will continue to use for the remainder of this guide.
+1.  Install Istio's [Custom Resource Definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) (CRD) with the helm chart. This command also creates a Pod namespace called `istio-system` which you will continue to use for the remainder of this guide.
 
         helm install istio-init istio.io/istio-init
 
@@ -180,7 +180,7 @@ kubernetes               ClusterIP      10.96.0.1        <none>           443/TC
 prometheus               ClusterIP      10.108.217.19    <none>           9090/TCP                                                                                                                                     3m35s
 {{</ output >}}
 
-1.  You can also see the pods that are running by using this command:
+1.  You can also see the Pods that are running by using this command:
 
         kubectl get pods
 
@@ -202,10 +202,10 @@ istio-telemetry-bb59599bd-bnzpv         2/2     Running     3          5m13s
 prometheus-fcdfd6cb5-6cjz2              1/1     Running     0          5m13s
 {{< /output >}}
 
-1.  Before moving on, be sure that all pods are in the `Running` or `Completed` status.
+1.  Before moving on, be sure that all Pods are in the `Running` or `Completed` status.
 
     {{< note >}}
-If you need to troubleshoot, you can check a specific pod by using `kubectl`, remembering that you set the namespace to `istio-system`:
+If you need to troubleshoot, you can check a specific Pod by using `kubectl`, remembering that you set the namespace to `istio-system`:
 
     kubectl describe pods pod_name -n pod_namespace
 
@@ -350,11 +350,11 @@ ratings                  ClusterIP      10.110.206.217   <none>                 
 reviews                  ClusterIP      10.98.21.141     <none>                 9080/TCP
 {{< /output >}}
 
-1.  Check that the pods are all up:
+1.  Check that the Pods are all up:
 
         kubectl get pods
 
-    The expected output should look similar, with all pods running:
+    The expected output should look similar, with all Pods running:
 
     {{< output >}}
 NAME                                    READY   STATUS      RESTARTS   AGE
@@ -379,10 +379,10 @@ reviews-v3-844bc59d88-bwl2t             2/2     Running     0          74s
 {{< /output >}}
 
     {{< note >}}
-If you do not see all pods running right away, you may need to wait a few moments for them to complete the initialization process.
+If you do not see all Pods running right away, you may need to wait a few moments for them to complete the initialization process.
 {{< /note >}}
 
-1.  Check that the `Bookinfo` application is running. This command will pull the title tag and contents from the `/productpage` running on the `ratings` pod:
+1.  Check that the `Bookinfo` application is running. This command will pull the title tag and contents from the `/productpage` running on the `ratings` Pod:
 
         kubectl exec -it $(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}') -c ratings -- curl productpage:9080/productpage | grep -o "<title>.*</title>"
 

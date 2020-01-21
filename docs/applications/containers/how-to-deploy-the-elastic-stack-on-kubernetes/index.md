@@ -10,7 +10,7 @@ keywords:
     "kibana",
     "filebeat",
     "metricbeat",
-    "kubernetes",
+    "Kubernetes",
     "k8s",
     "elk",
     "helm",
@@ -92,15 +92,15 @@ After following the prerequisites for this guide, you should have a Kubernetes c
         NAME                    CHART VERSION   APP VERSION     DESCRIPTION
         elastic/elasticsearch   7.3.2           7.3.2           Official Elastic helm chart for Elasticsearch
 
-Your Helm environment is now prepared to install official Elasticsearch charts into your kubernetes cluster.
+Your Helm environment is now prepared to install official Elasticsearch charts into your Kubernetes cluster.
 
 ## Install Charts
 
 ### Install Elasticsearch
 
-Before installing the chart, ensure that resources are set appropriately. By default, the `elasticsearch` chart allocates 1G of memory to the JVM heap and sets Kubernetes resource requests and limits to 2G. Using a Linode 4GB instance is compatible with these defaults, but if you are using a different instance type, you will need to provide different values to the chart at install time in order to ensure that running pods are within the resource constraints of the node sizes you have chosen.
+Before installing the chart, ensure that resources are set appropriately. By default, the `elasticsearch` chart allocates 1G of memory to the JVM heap and sets Kubernetes resource requests and limits to 2G. Using a Linode 4GB instance is compatible with these defaults, but if you are using a different instance type, you will need to provide different values to the chart at install time in order to ensure that running Pods are within the resource constraints of the node sizes you have chosen.
 
-1.  Install the `elasticsearch` chart. This command will wait to complete until all pods are started and ready:
+1.  Install the `elasticsearch` chart. This command will wait to complete until all Pods are started and ready:
 
         helm install --name elasticsearch --wait --timeout=600 elastic/elasticsearch
 
@@ -136,7 +136,7 @@ Note that your specific version numbers and dates may be different in this json 
 
 ### Install Filebeat
 
-In order to start processing data, deploy the `filebeat` chart to your Kubernetes cluster. This will collect all pod logs and store them in Elasticsearch, after which they can be searched and used in visualizations within Kibana.
+In order to start processing data, deploy the `filebeat` chart to your Kubernetes cluster. This will collect all Pod logs and store them in Elasticsearch, after which they can be searched and used in visualizations within Kibana.
 
 1.  Deploy the `filebeat` chart. No custom `values.yaml` file should be necessary:
 
@@ -166,7 +166,7 @@ Kibana will provide a frontend to Elasticsearch and the data collected by Filebe
 
 ## Configure Kibana
 
-Before visualizing pod logs, Kibana must be configured with an index pattern for Filebeat's indices.
+Before visualizing Pod logs, Kibana must be configured with an index pattern for Filebeat's indices.
 
 1.  With the previous `port-forward` command running in another terminal window, open your browser and navigate to http://localhost:5601
 
@@ -196,7 +196,7 @@ Before visualizing pod logs, Kibana must be configured with an index pattern for
 
 1.  The Discover page provides a realtime view of logs as they are ingested by Elasticsearch from your Kubernetes cluster. The histogram provides a view of log volume over time, which by default, spans the last 15 minutes. The sidebar on the left side of the user interface displays various fields parsed from json fields sent by Filebeat to Elasticsearch.
 
-1.  Use the **Filters** box to search only for logs arriving from Kibana pods by filtering for `kubernetes.container.name : "kibana"`. Click the **Update** button to apply the search filter.
+1.  Use the **Filters** box to search only for logs arriving from Kibana Pods by filtering for `kubernetes.container.name : "kibana"`. Click the **Update** button to apply the search filter.
 
      {{< note >}}
 When searching in the filters box, field names and values are auto-populated.
@@ -208,7 +208,7 @@ When searching in the filters box, field names and values are auto-populated.
 
     ![Kibana Open Log Event](kibana-expand-log.png "Kibana Open Log Event")
 
-1.  Scroll down to view the entire log document in Kibana. Observe the fields provided by Filebeat, including the `message` field, which contains standard out and standard error messages from the container, as well as the kubernetes node and pod name in fields prefixed with `kubernetes`.
+1.  Scroll down to view the entire log document in Kibana. Observe the fields provided by Filebeat, including the `message` field, which contains standard out and standard error messages from the container, as well as the Kubernetes node and Pod name in fields prefixed with `kubernetes`.
 
     ![Kibana Log Document](kibana-expanded-log.png "Kibana Log Document")
 
@@ -218,7 +218,7 @@ When searching in the filters box, field names and values are auto-populated.
 
 At this point, the Elastic stack is functional and provides an interface to visualize and create dashboards for your logs from Kubernetes. This section will explain how to further configure the various components of the stack for greater visibility into your Kubernetes environment.
 
-1.  Create a values file for Filebeat. This configuration will add the ability to provide [autodiscover hints](https://www.elastic.co/guide/en/beats/filebeat/master/configuration-autodiscover-hints.html). Instead of changing the Filebeat configuration each time parsing differences are encountered, autodiscover hints permit fragments of Filebeat configuration to be defined at the pod level dynamically so that applications can instruct Filebeat as to how their logs should be parsed.
+1.  Create a values file for Filebeat. This configuration will add the ability to provide [autodiscover hints](https://www.elastic.co/guide/en/beats/filebeat/master/configuration-autodiscover-hints.html). Instead of changing the Filebeat configuration each time parsing differences are encountered, autodiscover hints permit fragments of Filebeat configuration to be defined at the Pod level dynamically so that applications can instruct Filebeat as to how their logs should be parsed.
 
     {{< file "filebeat-values.yml" yaml >}}
 
@@ -238,7 +238,7 @@ hosts: '\${ELASTICSEARCH_HOSTS:elasticsearch-master:9200}'
 
         helm upgrade --values filebeat-values.yml --wait --timeout=600 filebeat elastic/filebeat
 
-1.  Once this command completes, Filebeat's `DaemonSet` will have successfully updated all running pods.
+1.  Once this command completes, Filebeat's `DaemonSet` will have successfully updated all running Pods.
 
 1.  Next, create a Kibana values file to append annotations to the Kibana `Deployment` that will indicate that Filebeat should parse certain fields as json values. This configuration file will instruct Filebeat to parse the `message` field as json and store the parsed object underneath the `kibana` field.
 
@@ -255,7 +255,7 @@ co.elastic.logs/processors.decode_json_fields.target: kibana
 
         helm upgrade --values kibana-values.yml --wait --timeout=600 kibana elastic/kibana
 
-1.  Note, triggering a rolling pod update of Kibana will cause the previous `port-forward` to lose track of running pods. Terminate the previous Kibana `port-forward` command in the background terminal with `Ctrl-C` and start the command again:
+1.  Note, triggering a rolling Pod update of Kibana will cause the previous `port-forward` to lose track of running Pods. Terminate the previous Kibana `port-forward` command in the background terminal with `Ctrl-C` and start the command again:
 
         kubectl port-forward svc/kibana-kibana 5601:5601
 
@@ -285,7 +285,7 @@ co.elastic.logs/processors.decode_json_fields.target: kibana
 
 ## Metricbeat
 
-In addition to collecting logs with Filebeat, Metricbeat can collect pod and node metrics in order to visualize information such as resource utilization.
+In addition to collecting logs with Filebeat, Metricbeat can collect Pod and node metrics in order to visualize information such as resource utilization.
 
 ### Install Metricbeat
 
@@ -365,8 +365,8 @@ Your commands should use the same version of Metricbeat deployed to your Kuberne
 
     ![Kibana Kubernetes Dashboards](kibana-kubernetes.png "Kibana Kubernetes Dashboards")
 
-1.  You can explore the various visualizations on this page in order to view metrics about *pods*, *nodes*, and the overall health of the Kubernetes cluster.
+1.  You can explore the various visualizations on this page in order to view metrics about *Pods*, *nodes*, and the overall health of the Kubernetes cluster.
 
 ## Next Steps
 
-From this point onward, any additional workloads started in Kubernetes will be processed by Filebeat and Metricbeat in order to collect logs and metrics for later introspection within Kibana. As Kubernetes nodes are added or removed, the Filebeat and Metricbeat `DaemonSets` will automatically scale out pods to monitor nodes as they join the Kubernetes cluster.
+From this point onward, any additional workloads started in Kubernetes will be processed by Filebeat and Metricbeat in order to collect logs and metrics for later introspection within Kibana. As Kubernetes nodes are added or removed, the Filebeat and Metricbeat `DaemonSets` will automatically scale out Pods to monitor nodes as they join the Kubernetes cluster.

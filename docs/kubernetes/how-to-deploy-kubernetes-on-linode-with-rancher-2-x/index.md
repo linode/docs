@@ -327,7 +327,7 @@ If your nodes do not not appear in the Linode Cloud Manager as expected, then yo
 
     ![Rancher cluster dashboard](cluster-dashboard.png "Rancher cluster dashboard")
 
-### Load the Kubectl Command Line
+### Load the kubectl Command Line
 
 In addition to managing your cluster via Rancher's interactive UI, Rancher also provides command-line access to your cluster's Kubernetes API:
 
@@ -419,7 +419,7 @@ The default value for the **MariaDB Volume Size** field is 8GiB, but the minimum
 
 1.  Click the **Launch** button at the bottom of the form.
 
-1.  You will be directed back to the project's **Apps** view, where your new WordPress app will be listed. The listing will show a red bar with the number 2 below it. 2 represents the number of pods in the app, and the red color indicates that they are not available yet.
+1.  You will be directed back to the project's **Apps** view, where your new WordPress app will be listed. The listing will show a red bar with the number 2 below it. 2 represents the number of Pods in the app, and the red color indicates that they are not available yet.
 
 1.  Click on the name of the app:
 
@@ -480,7 +480,7 @@ metadata:
 
 ## Scaling your Cluster and App
 
-Rancher makes it easy to scale the number of nodes in your cluster and to scale the number of replica pods in your app's deployments.
+Rancher makes it easy to scale the number of nodes in your cluster and to scale the number of replica Pods in your app's deployments.
 
 ### Scale your Cluster
 
@@ -533,7 +533,7 @@ Rancher also provides an easy way to scale your app's deployments:
 
     ![Rancher WordPress deployment detail view - config scale highlighted](wordpress-workload-config-scale-highlighted.png "Rancher WordPress deployment detail view - config scale highlighted")
 
-1.  A second pod will appear in the **Pods** section on this page, and there will be an **Updating** label at the top of the page. You may see a series of warning messages about the new pod not being available. Eventually, the new pod will be labelled as **Running**.
+1.  A second Pod will appear in the **Pods** section on this page, and there will be an **Updating** label at the top of the page. You may see a series of warning messages about the new Pod not being available. Eventually, the new Pod will be labelled as **Running**.
 
 
 {{< note >}}
