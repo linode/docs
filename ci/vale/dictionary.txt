@@ -446,6 +446,7 @@ gandi
 gatsby
 gbps
 gcc
+gcloud
 gcm
 geckodriver
 gem1
