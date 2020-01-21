@@ -76,7 +76,7 @@ The following table provides a list of the Kubernetes tooling you will need to i
  | <abbr title="The Control Plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.">Control Plane</abbr>| x |  |
 
  {{< note >}}
- A series of services that form Kubernetes master structure that allow it to control the cluster. Kubeadm allows the control plane services to run as containers on the master node. The control plane will be created when you initialize kubeadm later in this guide.
+ A series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane will be created when you initialize kubeadm later in this guide.
  {{< /note >}}
 
 ### Install the Container Runtime: Docker
