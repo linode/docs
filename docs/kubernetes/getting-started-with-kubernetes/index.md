@@ -68,12 +68,12 @@ A Kubernetes cluster consists of a master node and worker nodes. The master node
 The following table provides a list of the Kubernetes tooling you will need to install on your master and worker nodes in order to meet the minimum requirements for a functioning Kubernetes cluster as described above.
 
 | Tool | Master Node | Worker Nodes |
- | --------- | :---------: | :----------: |
- | <abbr title="This tool provides a simple way to create a Kubernetes cluster by automating the tasks required to get a cluster up and running. New Kubernetes users with access to a cloud hosting provider, like Linode, can use kubeadm to build out a playground cluster. kubeadm is also used as a foundation to create more mature Kubernetes deployment tooling.">kubeadm</abbr>| x | x |
- | <abbr title="A container runtime is responsible for running the containers that make up a cluster's pods. This guide will use Docker as the container runtime.">Container Runtime</abbr> | x | x |
- | <abbr title="kubelet ensures that all pod containers running on a node are healthy and meet the specifications for a pod's desired behavior.">kubelet</abbr> | x | x |
- | <abbr title="A command line tool used to manage a Kubernetes cluster.">kubectl</abbr>| x | x |
- | <abbr title="The Control Plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.">Control Plane</abbr>| x |  |
+| --------- | :---------: | :----------: |
+| <abbr title="This tool provides a simple way to create a Kubernetes cluster by automating the tasks required to get a cluster up and running. New Kubernetes users with access to a cloud hosting provider, like Linode, can use kubeadm to build out a playground cluster. kubeadm is also used as a foundation to create more mature Kubernetes deployment tooling.">kubeadm</abbr>| x | x |
+| <abbr title="A container runtime is responsible for running the containers that make up a cluster's pods. This guide will use Docker as the container runtime.">Container Runtime</abbr> | x | x |
+| <abbr title="kubelet ensures that all pod containers running on a node are healthy and meet the specifications for a pod's desired behavior.">kubelet</abbr> | x | x |
+| <abbr title="A command line tool used to manage a Kubernetes cluster.">kubectl</abbr>| x | x |
+| <abbr title="The Control Plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.">Control Plane</abbr>| x |  |
 
  {{< note >}}
  A series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane will be created when you initialize kubeadm later in this guide.
