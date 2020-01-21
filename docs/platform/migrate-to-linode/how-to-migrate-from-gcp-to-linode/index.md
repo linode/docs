@@ -1,12 +1,11 @@
 ---
 author:
-  name: Linode
+  name: Linode Community
   email: docs@linode.com
-description: 'This guide will help you migrate GCP instances to Linode by exporting raw images from Google and importing them to your Linode.'
-og_description: 'This guide will help you migrate GCP instances to Linode by exporting raw images from Google and importing them to your Linode.'
-keywords: ["migrate","GCP","linode","migrate from GCP","migrate to linode"]
+description: 'This guide will provide best practices when migrating GCP instances to Linode.'
+keywords: ['migrate','Google Cloud Platform','GCP','Linode']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-12-20
+published: 2020-01-21
 modified_by:
   name: Linode
 title: 'How to Migrate from Google Cloud Platform to Linode'
@@ -14,25 +13,126 @@ h1_title: 'Migrating a Google Cloud Platform VM Instance to Linode'
 contributor:
   name: Linode
 ---
-This guide will walk you through the steps needed to migrate a Google Cloud Platform (GCP) VM instance to Linode. While there are several ways you can approach migrating your GCP instance to Linode, in this guide you will create a disk image of your primary boot disk, export it to GCP's object storage, and then import the disk image to your new Linode.
+
+This guide describes the recommended strategy for migrating your services from a Google Cloud Platform (GCP) VM instance to Linode. The specific steps you’ll need to carry out will vary depending on the software you use, but the high-level outline is generally the same regardless of the nature of your service. The Migrate to Linode section offers other guides which describe migrating particular services in more detail.
+
+## Deciding on a Migration Strategy
+
+There are three general strategies for migrating from another hosting provider:
+
+1.  **Migration Strategy 1: Manually Install Each Service Individually - Recommended Method**
+
+    -  Create a Linode, deploy a Linode-provided Linux image to it, and copy over only the configuration and data relevant to your services. This results in a Linux environment that is guaranteed to boot normally on the Linode platform.
+
+        Re-installing your services can take time, but any issues that come up when setting up your applications are usually easier to troubleshoot than low-level configuration problems. This is the recommended strategy when migrating.
+
+1. **Migration Strategy 2: Use Configuration Management and Orchestration - Recommended Method**
+
+    - If you use configuration management and orchestration tools, like Ansible, Salt, Chef, and Terraform, you can use the same tools to deploy a new Linode instance. You can use your existing configuration management files as a foundation to deploy Linode instances with the same configurations used by your GCP instance.
+
+        We have an extensive [configuration management section](/docs/applications/configuration-management/) in our Guides and Tutorials library that you can use to get started with your preferred tool.
+
+1.  **Migration Strategy 3: Transfer your Disk Images - Not Recommended**
+
+    -  Create a Linode and perform a full clone of your existing disks from your GCP instance to the Linode. This will create an exact copy of your disks on the Linode platform. This strategy is not recommended because low-level system configuration files can be different on different hosting providers.
+
+        These differences can prevent your Linode from booting normally. It is possible to adjust these settings sufficiently to allow your Linode to run normally, but getting the right values for these settings can be difficult, and it can be difficult to troubleshoot when they are incorrect. However, if you are confident in using this method, you can proceed to the Transfer your GCP disks to Linode section of this guide.
+
+## Migration Strategy 1: Manual Migration Strategy
+
+### Deploy a New Linode
+
+There are two considerations when creating a new Linode: which data center the Linode should reside in, and which hardware resource plan the Linode should run under.
+
+1.  **Data Center Location**
+
+    -  To choose a data center location, run speed tests to the different regions that Linode offers from the [speedtest page](/speedtest/). This page allows you to download a 100MB file from each location. Compare the speed of each download to determine the bandwidth between your location and the data center.
+
+        You can also run [MTR tests](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to the speed test servers at each location (e.g. `speedtest.dallas.linode.com`). These tests will report latency between your location and the data center--a lower latency is more desirable.
+
+1.  **Plan Size**
+
+    -  To determine which plan to choose, review the [Linode Pricing page](/pricing#all). At a minimum, choose a plan which offers enough storage capacity for the data you store on your current GCP VM instance.
+
+        CPU and RAM allocations are also important since a service with a higher workload/higher traffic will require more of each. If you're not sure what your workload will require, start with a smaller Linode and then [resize your plan](/docs/platform/disk-images/resizing-a-linode/) up or down as needed.
+
+### Deploy a Linux Distribution to your Linode
+
+Determine the Linux distribution your current GCP instance uses and deploy that to your new Linode. If your current deployment uses an older version of a Linux distribution, deploy the newest version available for your new Linode to ensure the latest security enhancements and software availability.
+
+For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/getting-started/) guide. It is also recommended that you follow the [How to Secure Your Server](/docs/security/securing-your-server/) guide once you have deployed your new image.
+
+### Install Software on your Linode
+
+1. Install the same software stack that is present on your GCP instance onto your new Linode. You can use your GCP instance's package manager to retrieve a list of all installed packages. For example, if you are using Debian or Ubuntu you can issue the following command:
+
+        apt list --installed
+
+1. Once you have identified the software you would like to migrate to your Linode, you can reference our [Guides & Tutorials](/docs/) to learn how to set up your system's software on your new Linode.
+
+    For example, if your GCP instance is used to run a WordPress site, you should [install WordPress](/docs/websites/cms/install-wordpress-ubuntu-18-04/), [PHP, MySQl, and Apache](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) or [Nginx](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) (web server) on your Linode instance.
+
+### Create a Snapshot of your GCP Data
+
+Locate and backup the data on your GCP instance by [creating a snapshot](https://cloud.google.com/compute/docs/disks/create-snapshots). Identify:
+
+- Which software configuration settings should be preserved (e.g. web server, virtual host information, database connection settings, and which files contain these settings, etc.).
+
+- Where your data is stored on disk (e.g. as files in a directory, in a database process, etc.).
+
+If your data is stored in a database, you will likely need to perform a *database dump*. This will result in a file on disk that encapsulates your database data and can be copied over the network as a normal file:
+
+-  [Use mysqldump to Back Up MySQL or MariaDB](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/)
+-  [Create Physical Backups of your MariaDB or MySQL Databases](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/)
+-  [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/)
+
+### Use rsync to Transfer Your GCP Data to Your Linode
+
+- Transfer your data to your Linode using a network transfer tool like `rsync`. The [Introduction to rsync](/docs/tools-reference/tools/introduction-to-rsync/) guide is a good place to become more familiar with this tool.
+
+    For example, the following command will upload files from `/path/to/source_folder` on the current host to `/path/to/destination_folder` on the new Linode. Run this command from your current GCP instance. Replace `example_user` with the Linux user on your Linode, and `linode_ip_address` with your Linode's IP address:
+
+        rsync -avzh /path/to/source_folder example_user@linode_ip_address:/path/to/destination_folder
+
+- If you have uploaded a database dump file to your new Linode, you will also need to *restore* the dump file so that your database software can use the data normally. The database guides linked to in the [Create a Snapshot of your GCP Data](/#create-a-snapshot-of-your-gcp-data) section include instructions for restoring those files.
+
+### Test the New Environment
+
+When you have finished setting up your software and restoring your data, test the installation to make sure it works normally. At this point, you have not yet updated DNS records to point to your Linode deployment, but there are still methods for [previewing your services without DNS](/docs/networking/dns/previewing-websites-without-dns/).
+
+Take this time to perform load testing on your new service. [ApacheBench](https://en.wikipedia.org/wiki/ApacheBench) is a popular benchmarking tool for web services. If you discover that the hardware resource plan you chose originally is not enough when completing these load tests, then [resize your plan](/docs/platform/disk-images/resizing-a-linode/) and continue testing.
+
+When you have finished testing, move on to the last step in migrating: updating your DNS records.
+
+## Migration Strategy 2: Use Configuration Management and Orchestration Tools
+
+If you are managing your GCP instance with configuration management and orchestration tools, you can use the same tools to manage your Linode. This means you can use configuration management tools to execute a migration from GCP to Linode. At a high-level this process would entail
+
+- Using an orchestration tool, like Terraform, to [deploy a Linode instance(s)](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) of the required size and region. See the [Deploy a New Linode](#deploy-a-new-linode) section of this guide for tips on choosing a Linode data center and plan size.
+
+- Using a configuration management tool, like Ansible, to [install system software and perform system configurations](/docs/applications/configuration-management/getting-started-with-ansible/). In many cases, you could use the same configuration management files to configure your Linode. For example, if you were using an [Ansible Playbook](/docs/applications/configuration-management/running-ansible-playbooks/) to deploy and configure a LAMP stack on your GCP instance, you can likely use the same Playbook to manage your Linode instance.
+
+- [Migrating any additional GCP instance data to your new Linode instance using rsync](#use-rsync-to-transfer-your-gcp-data-to-your-linode).
+
+- [Testing your new Linode environment](#test-the-new-environment).
+
+    {{< note >}}
+The following configuration management and orchestration tools support Linode:
+
+Configuration management tools: [Ansible](/docs/applications/configuration-management/getting-started-with-ansible/), [Salt](/docs/applications/configuration-management/beginners-guide-to-salt/), [Chef](/docs/applications/configuration-management/beginners-guide-chef/), and [Puppet](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/)
+
+Orchestration tools: [Pulumi](/docs/applications/configuration-management/deploy-in-code-with-pulumi/), [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/), [Ansible](/docs/applications/configuration-management/getting-started-with-ansible/)
+    {{</ note >}}
+
+## Migration Strategy 3: Transfer your Disk Images
+
+### GCP Prerequisites
+
+This section contains all of the preparation steps that you will need to complete on the Google Cloud Platform and on your GCP instance in order to migrate your disk images to Linode. At a high-level, you will disable Google specific daemons running on your GCP instance, create and export an image of your instance, and store the image in a GCP object storage bucket.
 
 {{< note >}}
-Alternatively, you can transfer your GCP instance's data to a new Linode using the command line utility, Rsync. See our [Best Practices when Migrating to Linode](/docs/platform/migrate-to-linode/best-practices-when-migrating-to-linode/#use-rsync-to-transfer-your-data-to-your-linode) guide for best practices when using Rsync.
+While it is possible to migrate a GCP disk image to Linode, due to differences in low-level system configurations between GCP and Linode, you may encounter some unexpected results that require additional troubleshooting steps. Continue with this method only if you are confident in your understanding of the Google Cloud Platform, [GCP IAM roles](https://cloud.google.com/iam/docs/understanding-roles), and [GCP disks and images](https://cloud.google.com/solutions/image-management-best-practices).
 {{</ note >}}
-
-## In This Guide
-You will complete the following steps to migrate your GCP VM instance to Linode:
-
-- [Prepare your GCP instance](#prepare-your-gcp-instance) for export.
-- [Create and Export an Image](#create-and-export-image).
-- [Prepare your Linode](#prepare-your-linode) for image import.
-- [Import your image](#import-the-image).
-- [Optional: transfer your disk to allow](#optional-transfer-disk-to-ext4) for advance features.
-- [Cleaning Up](#cleaning-up)
-
-## GCP Prerequisites
-
-This section contains all of the preparation steps that you will need to complete on the Google Cloud Platform and on your GCP instance in order to migrate it to Linode. At a high-level, you will disable Google specific daemons running on your GCP instance, create and export an image of your instance, and store the image in a GCP object storage bucket.
 
 ### Install and Set Up gcloud
 
@@ -248,7 +348,7 @@ You may need to respond to some command-line prompts before the image is exporte
 
         https://storage.googleapis.com/lin-docs-test-bucket/migrate-gcp-img.tar.gz
 
-## Prepare Your Linode
+### Prepare Your Linode
 In this section you will create a new Linode, add a new disk and configuration profile in order to boot the Linode from your GCP instance's image, import the GCP image to your Linode, and finally, boot your Linode using your GCP instance's image.
 
 {{< note >}}
@@ -367,15 +467,40 @@ You disabled the Google services from calling out before creating and migrating 
     sudo dpkg -r google-cloud-sdk
     sudo dpkg -r google-cloud-packages-archive-keyring
 
-## Optional: Transfer Disk to ext4
+### Optional: Transfer Disk to ext4
 
 As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Linode Manager Compatibility section of the [Install a Custom Distribution on a Linode guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/#linode-manager-compatibility).
 
-## Cleaning Up
+### Cleaning Up
 
 When you're done:
 
+- [Test your new Linode environment](#test-the-new-environment) as outlined in the Migration Strategy 1 section of this guide.
 - [Delete the original disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-disk) that was created when you first deployed the Linode. If you chose to transfer your disk to ext4, delete the raw disk you created to import the GCP image.
 - [Resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a smaller plan or resize your remaining ext4 disk or raw disk to take up the rest of the storage space.
 - [Delete the Configurations for the original Linode](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-configuration-profile) when it was created. Optionally, delete the configuration for the raw disk if you created a new one for the ext4 boot disk.
 - [Enable Shutdown Watchdog](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
+
+## Additional Migration Considerations
+
+### Migrating DNS Records
+
+To direct your visitors to your Linode, associate your domain with [your new Linode's IP](/docs/networking/remote-access/#network-access). There are two options for moving your DNS records:
+
+-  Use Linode's fast, stable [DNS hosting](/dns-manager/) which is free as long as you have one active Linode on your account.
+
+-  Continue to use your current nameserver authority and update your DNS records with your new Linode's IP address. You should check with your current provider to see if there are any costs for their DNS services. If you are using your domain name registrar's nameservers, then they are generally free.
+
+{{< content "use-linode-name-servers" >}}
+
+### Alternative: Use Your Current Nameservers
+
+If you'd like to continue with your current nameservers, update all of the DNS records that are assigned to your old host's IP address to use your new Linode's IP. Contact your nameserver authority for instructions on how to update your DNS records.
+
+{{< content "update-dns-at-common-name-server-authorities" >}}
+
+After DNS propagation has finished, [set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for your domain. This is especially important if you are running a mail server.
+
+## Next Steps
+
+After completing the steps above, your service should be fully migrated to Linode. It is a good idea to wait a few days before cancelling your shared hosting service to make sure that everything is running smoothly, and to confirm that you don't need to obtain more files from your shared host.
