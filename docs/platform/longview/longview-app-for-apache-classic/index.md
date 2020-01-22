@@ -31,7 +31,7 @@ Prerequisites:
 
 If Apache is installed and running when you install the Longview client, the Apache App should enable and configure itself automatically.
 
-If you already have Longview installed, and later want to install Apache and enable the Longview App for it, you may find that Apache is not automatically detected on initial setup. If this is the case, you can run Longview through its automatic configuration sequence again. In most cases,this will result in longview finding everything it needs to get the Apache App started. And don't worry - your old Longview data will stay safe. To run the automatic Longview configuration, first make sure that Apache is running, and then run the following command on your Linode via SSH:
+If you already have Longview installed, and later want to install Apache and enable the Longview App for it, you may find that Apache is not automatically detected on initial setup. If this is the case, you can run Longview through its automatic configuration sequence again. In most cases,this will result in Longview finding everything it needs to get the Apache App started. And don't worry - your old Longview data will stay safe. To run the automatic Longview configuration, first make sure that Apache is running, and then run the following command on your Linode via SSH:
 
     dpkg-reconfigure -phigh linode-longview
 
@@ -41,7 +41,7 @@ For most people, Longview should be able to configure itself automatically, and 
     [ ok ] Stopping Longview Agent: longview.
     Checking Apache configuration...
     Found Apache status page at http://127.0.0.1/server-status?auto (default URL)
-    [ ok ] Starting Longview Agent: longview.
+    [ ok ] Starting Longview Agent: Longview.
     update-rc.d: using dependency based boot sequencing
 {{</ output >}}
 
