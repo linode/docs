@@ -150,7 +150,7 @@ With a [version enabled bucket](/docs/platform/object-storage/bucket-versioning)
             aws s3api list-object-version --endpoint=http://us-east-1.linodeobjects.com --bucket=your-bucket-name
 
         {{< note >}}
-If you don't have the AWS CLI, instruction for how to install it can be found at the beginning of the [Bucket Versioning with Linode Object Storage](/docs/platform/object-storage/bucket-versioning) guide.
+If you don't have the AWS CLI, instructions for how to install it can be found in the [Bucket Versioning with Linode Object Storage](/docs/platform/object-storage/bucket-versioning/#aws-cli) guide.
     {{</ note>}}
 
 - You can remove these expired delete markers with a lifecycle policy using a `ExpiredObjectDeleteMarker`.
@@ -173,7 +173,7 @@ If you don't have the AWS CLI, instruction for how to install it can be found at
 </LifecycleConfiguration>
 {{</ file >}}
 
-    - By setting the `ExpiredObjectDeleteMarker` block to `true`, you are telling this policy to remove these expired *delete markers* after the number of specified `NoncurrentDays`.
+    - By setting the `ExpiredObjectDeleteMarker` block to `true`, you are telling this policy to remove these expired delete markers after the number of specified `NoncurrentDays`.
 
 #### Multiple Actions in One Rule
 
