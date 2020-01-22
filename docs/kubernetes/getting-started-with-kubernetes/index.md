@@ -73,10 +73,10 @@ The following table provides a list of the Kubernetes tooling you will need to i
 | <abbr title="A container runtime is responsible for running the containers that make up a cluster's pods. This guide will use Docker as the container runtime.">Container Runtime</abbr> | x | x |
 | <abbr title="kubelet ensures that all pod containers running on a node are healthy and meet the specifications for a pod's desired behavior.">kubelet</abbr> | x | x |
 | <abbr title="A command line tool used to manage a Kubernetes cluster.">kubectl</abbr>| x | x |
-| <abbr title="The Control Plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.">Control Plane</abbr>| x |  |
+| <abbr title="The control plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.">Control Plane</abbr>| x |  |
 
  {{< note >}}
- A series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane will be created when you initialize kubeadm later in this guide.
+ The control plane is a series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane will be created when you initialize kubeadm later in this guide.
  {{< /note >}}
 
 ### Install the Container Runtime: Docker
@@ -187,7 +187,7 @@ Complete the steps outlined in this section on all three Linodes.
 
 After installing the Kubernetes related tooling on all your Linodes, you are ready to set up the Kubernetes control plane on the master node. The control plane is responsible for allocating resources to your cluster, maintaining the health of your cluster, and ensuring that it meets the minimum requirements you designate for the cluster.
 
-The primary components of the control plane are the <abbr title="The kube-apiserver is the front end for the Kubernetes API server. Validates and configures data for Kubernetes’ API objects including Pods, Services, Deployments, and more.">kube-apiserver</abbr>, <abbr title="The kube-controller-manager is a daemon that manages the Kubernetes control loop. It watches the shared state of the cluster through the Kubernetes API server.">kube-controller-manager</abbr>, kube-scheduler, and etcd. You can easily initialize the Kubernetes master node with all the necessary control plane components using kubeadm. For more information on each of control plane component see the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/).
+The primary components of the control plane are the <abbr title="The kube-apiserver is the front end for the Kubernetes API server. It validates and configures data for Kubernetes’ API objects including Pods, Services, Deployments, and more.">kube-apiserver</abbr>, <abbr title="The kube-controller-manager is a daemon that manages the Kubernetes control loop. It watches the shared state of the cluster through the Kubernetes API server.">kube-controller-manager</abbr>, kube-scheduler, and etcd. You can easily initialize the Kubernetes master node with all the necessary control plane components using kubeadm. For more information on each of control plane component see the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/).
 
 In addition to the baseline control plane components, there are several *addons*, that can be installed on the master node to access additional cluster features. You will need to install a networking and network policy provider add on that will implement [Kubernetes' network model](https://kubernetes.io/docs/concepts/cluster-administration/networking/) on the cluster's Pod network.
 
