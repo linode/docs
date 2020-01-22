@@ -35,7 +35,6 @@ This guide provides an overview of Linode Longview. You will learn how to:
 
 * [Install the Longview Client](#install-linode-longview)
 * [Access and view your Longview Client's data and graphs](#longview-s-data-explained)
-* [Troubleshoot your Longview Client instance](#troubleshooting)
 * [Uninstall the Longview Client](#uninstall-the-longview-client)
 
 ## Before you Begin
@@ -268,7 +267,7 @@ The Overview tab shows all of your system’s most important statistics in one p
   ![Cloud Manager Longview Client's overview page](longview-overview-details.png "Cloud Manager Longview Client's overview page")
 
 1. Basic information about the system, including the operating system name and version, processor speed, uptime, and available updates. This area also includes your system's top active processes.
-1. The time resolution for the graphs displayed in the Resource Allocation History section. The available options are *Past 30 Minutes* and *Past 12 hours*.
+1. The time resolution for the graphs displayed in the Resource Allocation History section.
 1. Percentage of CPU time spent in wait (on disk), in user space, and in kernel space.
 1. Total amount of RAM being used, as well as the amount of memory in cache, in buffers, and in swap.
 1. Amount of network data that has been transferred to and from your system.
@@ -315,176 +314,7 @@ The Installation tab provides quick instructions on how to install the Longview 
 
   ![Longview's installation tab](longview-installation.png "Longview's installation tab")
 
-## Longview Plan Details
 
-*Longview Free* updates every 5 minutes and provides twelve hours of data history. *Longview Pro* gives you data resolution at 60 second intervals, and you can view a complete history of your Linode’s data instead of only the previous 30 minutes.
-
-There are four different Longview Pro plan tiers you can choose from. Each plan varies in the amount of clients that will be monitored by Longview.
-
-{{< note >}}
-Currently, it is not possible to have both *Longview Free* and *Longview Pro* clients. If you have active Longview clients under the Longview Free plan tier, when you switch to a Longview Pro plan, all of your currently active clients will be counted towards your new Longview Pro plan's client count.
-{{</ note >}}
-
-To change your plan level or to view the different Longview Pro plans that are available, follow these steps:
-
-1. Access your Longview account-wide plan details, log into the [Linode Cloud Manager](https://cloud.linode.com/dashboard) and click on the **Longview** link in the sidebar.
-
-    ![Access Longview in the Cloud Manager](access-longview.png "Access Longview in the Cloud Manager")
-
-1. Viewing the Longview Clients listing page, click on the **Plan Details** tab.
-
-    ![Access the Longview plan details page](longview-plan-details.png "Access the Longview plan details page")
-
-1. On the Longview Plan Details page, you can view all available Longview plans and verify the plan you are currently subscribed to.
-
-     ![Access the Longview plan details page](longview-plan-details-page.png "Access the Longview plan details page")
-
-1. If you would like to change your current plan, select your preferred plan and click on the **Change Plan** button. You will see the page update to denote your current Longview plan.
-
-## Troubleshooting
-
-If you're experiencing problems with the Longview client, follow these steps to help determine the cause.
-
-### Basic Diagnostics
-
-Ensure that:
-
-1.  Your system is [fully updated](/docs/getting-started/#install-software-updates).
-
-    {{< note >}}
-  Longview requires Perl 5.8 or later.
-    {{</ note >}}
-
-2.  The Longview client is running. You can verify with one of the two commands below, depending on your distribution's initialization system:
-
-    > **CentOS, Debian, and Ubuntu**
-    >
-    >     sudo systemctl status longview   # For distributions with systemd.
-
-    >  **Other Distributions**
-    >
-    >     sudo service longview status     # For distributions without systemd.
-
-    If the Longview client is not running, start it with one of the following commands, depending on your distribution's init system:
-
-    > **CentOS, Debian, and Ubuntu**
-    >
-    >     sudo systemctl start longview
-
-    >  **Other Distributions**
-    >
-    >     sudo service longview start
-
-    If the service fails to start, check Longview's log for errors. The log file is located in `/var/log/linode/longview.log`.
-
-### Debug Mode
-
-Restart the Longview client in debug mode for increased logging verbosity.
-
-1.  First stop the Longview client:
-
-    > **CentOS, Debian, and Ubuntu**
-    >
-    >     sudo systemctl stop longview   # For distributions with systemd.
-
-    >  **Other Distributions**
-    >
-    >     sudo service longview stop     # For distributions without systemd.
-
-2.  Then restart Longview with the `debug` flag:
-
-        sudo /etc/init.d/longview debug
-
-3.  When you're finished collecting information, repeat the first two steps to stop Longview and restart it again without the debug flag.
-
-    If Longview does not close properly, find the process ID and kill the process:
-
-        ps aux | grep longview
-        sudo kill $PID
-
-### Firewall Rules
-
-If your Linode has a firewall, it must allow communication with Longview's aggregation host at `longview.linode.com` (IPv4: `96.126.119.66`). You can view your firewall rules with one of the commands below, depending on the firewall controller used by your Linux distribution:
-
-  > **firewalld**
-  >
-  >     sudo firewall-cmd --list-all
-  >
-  >  {{< note >}}
-Review our [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/) guide for more help with FirewallD.
-    {{< /note >}}
-
-  >**iptables**
-  >
-  >     sudo iptables -S
-  >
-   {{< note >}}
-Review our [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide for more help with iptables.
-    {{< /note >}}
-
->  **ufw**
->
->     sudo ufw show added
->
->    {{< note >}}
- Review our [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) guide for more help with UFW.
-    {{< /note >}}
-
-If the output of those commands show no rules for the Longview domain (or for `96.126.119.66`, which is the IP for the Longview domain), you must add them. A sample iptables rule that allows outbound HTTPS traffic to Longview would be the following:
-
-    iptables -A OUTPUT -p tcp --dport 443 -d longview.linode.com -j ACCEPT
-
-{{< note >}}
-If you use iptables, you should also make sure to persist any of your firewall rule changes. Otherwise, your changes will not be enforced if your Linode is rebooted. Review the [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables/#introduction-to-iptables-persistent) section of our iptables guide for help with this.
-{{< /note >}}
-
-### Verify API key
-
-The API key given in the Linode Cloud Manager should match that on your system in `/etc/linode/longview.key`.
-
-1. In the Linode Cloud Manager, the API key is located in the **Installation** tab of your Longview Client instance's [detailed view](#access-your-longview-client-s-detailed-view).
-
-1.  SSH into your Linode. The Longview key is located at `/etc/linode/longview.key`. Use `cat` to view the contents of that file and compare it to what's shown in the Linode Cloud Manager:
-
-        cat /etc/linode/longview.key
-
-    The two should be the same. If they are not, paste the key from the Linode Cloud Manager into `longview.key`, overwriting anything already there.
-
-### Cloned Keys
-
-If you clone a Linode which has Longview installed, you may encounter the following error:
-
-{{< output >}}
-Multiple clients appear to be posting data with this API key. Please check your clients' configuration.
-{{< /output >}}
-
-This is caused by both Linodes posting data using the same Longview key. To resolve it:
-
-1. Uninstall the Longview agent on the cloned system.
-
-    > **CentOS**:
-    >
-    >     sudo yum remove linode-longview
-
-    > **Debian or Ubuntu**:
-    >
-    >     sudo apt-get remove linode-longview
-
-    > **Other Distributions**:
-    >
-    >     sudo rm -rf /opt/linode/longview
-
-1. Add a new [Linode Longview Client instance](#add-the-longview-client). This will create a new Longview API key independent from the system which it was cloned from.
-
-    {{< note >}}
-  The GUID provided in the Longview Client's installation URL is not the same as the Longview API key.
-    {{</ note >}}
-
-1. [Install the Longview Agent](#install-the-longview-agent) on the cloned Linode.
-
-### Contact Support
-
-If you still need assistance after performing these checks, please open a [support ticket](/docs/platform/support/#contacting-linode-support).
 
 ## Uninstall the Longview Client
 
@@ -514,3 +344,10 @@ If you still need assistance after performing these checks, please open a [suppo
     >
     >     sudo rm -rf /opt/linode/longview
 
+## Next Steps
+
+- [See our Longview Pricing and Plans Guide](/docs/platform/longview/pricing/)
+- [Set up Longview for NGINX](/docs/platform/longview/longview-app-for-nginx/)
+- [Set up Longview for Apache](/docs/platform/longview/longview-app-for-apache/)
+- [Set up Longview for MySQL](/docs/platform/longview/longview-app-for-mysql/)
+- [Longview Troubleshooting](/docs/platform/longview/longview-troubleshooting/)
