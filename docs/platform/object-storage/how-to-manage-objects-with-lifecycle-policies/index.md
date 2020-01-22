@@ -128,6 +128,53 @@ Other actions can also be specified in a rule:
 Objects that are part of failed multipart uploads (the mechanism by which large files are uploaded) stay within Object Storage buckets, counting towards your total Object Storage costs. s3cmd will automatically initiate a multipart upload when a file is larger than 15MB. Lifecycle policies are a great way to clear out stale multipart uploads.
 {{< /disclosure-note >}}
 
+#### Removing Expired Delete Markers
+
+With a [version enabled bucket](/docs/platform/object-storage/bucket-versioning), dealing with expired delete markers can be a headache. Knowing what they are and how to remove them is essential. Every object in a version enabled bucket has a current version and zero or more non-current versions. The current version may be the actual object or it could be a delete marker that may or may not be expired.
+
+![Expired Delete Markers](expired-delete-markers.png "Expired Delete Markers")
+
+- When you delete an object and specify the `version-id`, no delete marker is created.
+
+- When you delete an object but do *NOT* specify the `version-id`, a delete marker is created.
+
+    - The last version is made to be *non-current*
+    - The delete marker is now the *current version*.
+
+- Say you then delete the remaining non-current versions of that object, by whatever means, lifecycle policy, direct delete by `version-id`, etc., you will be left with the delete marker, which is now *expired* because it has zero non-current objects.
+
+- If you try to delete your bucket, but Object Storage won't let you even though it looks empty, it may be because it has one or more of these `expired delete markers`.
+
+    - You can see them with the following AWS CLI command as shown in the [Bucket Versioning with Linode Object Storage guide](/docs/platform/object-storage/bucket-versioning/#aws-cli):
+
+            aws s3api list-object-version --endpoint=http://us-east-1.linodeobjects.com --bucket=your-bucket-name
+
+        {{< note >}}
+If you don't have the AWS CLI, instruction for how to install it can be found at the beginning of the [Bucket Versioning with Linode Object Storage](/docs/platform/object-storage/bucket-versioning) guide.
+    {{</ note>}}
+
+- You can remove these expired delete markers with a lifecycle policy using a `ExpiredObjectDeleteMarker`.
+
+    {{< file "lcp_expired_delete_markers.xml" xml >}}
+<LifecycleConfiguration>
+    <Rule>
+        <ID>Remove Expired Delete Markers</ID>
+        <Filter>
+          <Prefix></Prefix>
+        </Filter>
+        <Status>Enabled</Status>
+        <Expiration>
+           <ExpiredObjectDeleteMarker>true</ExpiredObjectDeleteMarker>
+        </Expiration>
+        <NoncurrentVersionExpiration>
+            <NoncurrentDays>1</NoncurrentDays>
+        </NoncurrentVersionExpiration>
+    </Rule>
+</LifecycleConfiguration>
+{{</ file >}}
+
+    - By setting the `ExpiredObjectDeleteMarker` block to `true`, you are telling this policy to remove these expired *delete markers* after the number of specified `NoncurrentDays`.
+
 #### Multiple Actions in One Rule
 
 More than one action can be specified in a single rule. For example, you may want to both expire the current version of an object after a set number of days and also remove old versions of it after another period of time. The following policy will delete the current version of an object after 10 days and remove any noncurrent versions of an object 3 days after they are demoted from the current version:
@@ -185,8 +232,9 @@ In order to apply a lifecycle policy to a bucket with s3cmd, you need to upload 
 
 You should see output like the following:
 
-    s3://lifecycle-policy-example/: Lifecycle Policy updated
-
+{{< output >}}
+s3://lifecycle-policy-example/: Lifecycle Policy updated
+{{</ output >}}
 
 Once the lifecycle policy has been uploaded, objects will be deleted according to the policy set in place.
 
@@ -198,17 +246,19 @@ To view a lifecycle policy after it has been uploaded to a bucket, use the `getl
 
 You should see the contents of the XML file that was uploaded:
 
-    <?xml version="1.0" ?>
-    <LifecycleConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-      <Rule>
-        <ID>delete-all</ID>
-        <Prefix/>
-        <Status>Enabled</Status>
-        <Expiration>
-          <Days>1</Days>
-        </Expiration>
-      </Rule>
-    </LifecycleConfiguration>
+{{< output >}}
+&lt;?xml version="1.0" ?&gt;
+&lt;LifecycleConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"&gt;
+    &lt;Rule&gt;
+        &lt;ID&gt;delete-all&lt;/ID&gt;
+        &lt;Prefix/&gt;
+        &lt;Status&gt;Enabled&lt;/Status&gt;
+        &lt;Expiration&gt;
+            &lt;Days&gt;1&lt;/Days&gt;
+        &lt;/Expiration&gt;
+    &lt;/Rule&gt;
+&lt;/LifecycleConfiguration&gt;
+{{</ output >}}
 
 #### Deleting a Lifecycle Policy
 
@@ -218,7 +268,9 @@ To delete a lifecycle policy that you've uploaded, effectively disabling it, use
 
 You'll see a confirmation that the lifecycle policy was deleted:
 
-    s3://lifecycle-example/: Lifecycle Policy deleted
+{{< output >}}
+s3://lifecycle-example/: Lifecycle Policy deleted
+{{</ output >}}
 
 ### Cyberduck
 
