@@ -56,7 +56,7 @@ For more information regarding these files and directories and their contents, s
 
 ### Scale a Cluster
 
-1.  To scale your cluster, edit `cluster.tf` with the text editor of your choice. The contents will be similar to the following:
+1.  Open `cluster.tf` with the text editor of your choice. The contents will be similar to the following:
 
     {{< file "cluster.tf" >}}
 variable "server_type_node" {
