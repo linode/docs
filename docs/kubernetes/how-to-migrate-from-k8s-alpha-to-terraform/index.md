@@ -20,10 +20,10 @@ external_resources:
 - '[Using Terraform to Provision Linode Environments](https://www.linode.com/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)'
 ---
 
-The [k8s-alpha CLI](https://www.linode.com/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) is deprecated. On **March 31st, 2020**, it will be **removed** from the [linode-cli](https://github.com/linode/linode-cli). After March 31, 2020, you will no longer be able to create or manage clusters created by the k8s-alpha CLI plugin, however, you will still be able to successfully manage your clusters using [Terraform](https://www.terraform.io/).
+The [k8s-alpha CLI](https://www.linode.com/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) is deprecated. On **March 31st, 2020**, it will be **removed** from the [linode-cli](https://github.com/linode/linode-cli). After March 31, 2020, you will no longer be able to create or manage clusters created by the k8s-alpha CLI plugin, however, you will still be able to successfully manage your clusters using the [Kubernetes Terraform installer for Linode Instances](https://github.com/linode/terraform-linode-k8s).
 
 ## In This Guide
-You will use Terraform to continue to manage and support clusters created using the k8s-alpha CLI plugin following the EOL date and beyond. You will learn how to:
+You will use the Kubernetes Terraform installer for Linode Instances to continue to manage and support clusters created using the k8s-alpha CLI plugin following the EOL date and beyond. You will learn how to:
 
 - [Manage clusters](#manage-k8s-alpha-clusters) created with the k8s-alpha CLI following it's deprecation.
 - [Delete clusters](#delete-a-cluster) using Terraform.
@@ -31,7 +31,7 @@ You will use Terraform to continue to manage and support clusters created using 
 
 ## Manage k8s-alpha Clusters
 
-The k8s-alpha CLI plugin was based on Terraform. As a result, it created a number of Terraform configuration files whenever it created a cluster. These Terraform files are found within the `.k8s-alpha-linode` directory. You can change into this directory using the following syntax:
+The k8s-alpha CLI plugin was based on [Terraform](https://www.terraform.io). As a result, it created a number of Terraform configuration files whenever it created a cluster. These Terraform files are found within the `.k8s-alpha-linode` directory. You can change into this directory using the following syntax:
 
     cd $HOME/.k8s-alpha-linode
 
@@ -132,7 +132,7 @@ mycluster-node-5 	Ready	 &lt;none&gt;   4m52s   v1.13.6
 
 ### Upgrade a Cluster
 
-You may have noticed that the Terraform module, `cluster.tf`, refers to a specific branch or git commit hash referencing a remote Terraform module on GitHub. The following section will outline how to upgrade your cluster to the latest version of this module.
+You may have noticed that the Terraform module file, `cluster.tf`, refers to a specific branch or git commit hash referencing the remote Kubernetes Terraform installer for Linode Instances module on GitHub. The following section will outline how to upgrade your cluster to the latest version.
 
 For example, your `source` variable may have a value that points to the git branch ref `for-cli`. To perform an upgrade this must point to the latest commit history hash.
 
@@ -148,16 +148,16 @@ For example, your `source` variable may have a value that points to the git bran
 source = "git::https://github.com/linode/terraform-linode-k8s.git?ref=5e68ff7beee9c36aa4a4f5599f3973f753b1cd9e"
 {{< /file >}}
 
-1.  To apply these changes, re-init the modules by running the following command:
+1.  To apply these changes, re-initialize the module by running the following command:
 
         terraform init
 
-1.  Once this has completed, run terraform apply:
+1.  Once this has completed, apply your changes with the following command:
 
         terraform apply
 
     {{< note >}}
-Depending on the changes that have been configured, you may or may not see the upgrade perform actions. For example, in this case, because the only change was to the kubernetes version, no actions were taken.
+Depending on the changes that have been configured, you may or may not see the upgrade perform actions. For example, in this case, because the only change was to the Kubernetes version, no actions were taken.
 {{< /note >}}
 
 ### Delete a Cluster
@@ -171,7 +171,7 @@ Terraform will prompt you to confirm the action, and on confirmation will procee
 
 ## Create a Cluster
 
-1.  Create a new directory to house its configuration files in the `~/.k8s-alpha-linode` directory. In this example the cluster name is `mynewcluster`:
+1.  Create a new directory to house the new cluster's configuration files in the `~/.k8s-alpha-linode` directory. In this example the cluster name is `mynewcluster`:
 
         cd ~/.k8s-alpha-linode
         mkdir mynewcluster
