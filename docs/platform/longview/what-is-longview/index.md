@@ -279,7 +279,7 @@ The Overview tab shows all of your system’s most important statistics in one p
 ### Processes
 The Processes tab will list all running processes currently on your Linode, along with additional statistics including the UID of the user that has ownership of the process, the Max Count of duplicate processes, average I/O per process, average CPU percentage used per process, and average memory consumption per process. Additionally, at the top left of the page, you'll see a search bar you can use to filter the chart by the name of the process or the user that owns them.
 
-Also included on this page, you'll see access to a number of graphs which will display a history of resource consumption by any selected individual process. Graphable historical values include CPU usage, RAM, the "count" of duplicate processes that are or were opened, and disk I/O. Additionally, the length of time you're observing with these graphs can be set in the dropdown menu found at the top right of the page.
+Also included on this page, you'll see access to a number of graphs which will display a history of resource consumption by any selected individual process. Hisotrical values located on your graphs include CPU usage, RAM, the "count" of duplicate processes that are or were opened, and disk I/O. Additionally, the length of time you're observing with these graphs can be set in the dropdown menu found at the top right of the page and vary depending on your version of longview.
 
 To change which process your charts are currently observing, you just need to click on any process that's listed in the chart.
 
@@ -292,7 +292,7 @@ The network tab will give you access to charts you can use to sort traffic analy
 ![network-overview](network-overview.png)
 
 {{< note >}}
-The information gained from the network tab can only go as far back as the date that longview was added.
+The information gained from the network tab can only go as far back as the date that Longview was added.
 {{< /note >}}
 
 ### Disks
@@ -306,7 +306,7 @@ Longview does not gather data on swap disks.
 {{< /note >}}
 
 ### NGINX, Apache, and MySQL(Optional)
-Longview also includes support for both NGINX and Apache webservers, as the MySQL database. When Longview detects that either is running on your Linode, the tabs will appear within the longview section of your Cloud Manager. For more information on these optional tabs, and for troubleshooting steps if you need them, see our guides for, [Longview for Nginx](/docs/platform/longview/longview-app-for-nginx/)  [Longview for Apache](/docs/platform/longview/longview-app-for-apache/), and [Longview for MySQL](docs/platform/longview/longview-app-for-mysql/) .
+Longview also includes support for both NGINX and Apache webservers, as the MySQL database. When Longview detects that either is running on your Linode, the tabs will appear within the Longview section of your Cloud Manager. For more information on these optional tabs, and for troubleshooting steps if you need them, see our guides for, [Longview for Nginx](/docs/platform/longview/longview-app-for-nginx/)  [Longview for Apache](/docs/platform/longview/longview-app-for-apache/), and [Longview for MySQL](/docs/platform/longview/longview-app-for-mysql/) .
 
 ### Installation
 
