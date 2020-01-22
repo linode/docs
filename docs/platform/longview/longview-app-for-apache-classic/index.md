@@ -30,7 +30,7 @@ Prerequisites:
 
 If Apache is installed and running when you install the Longview client, the Apache App should enable and configure itself automatically.
 
-If you already have Longview installed, and later want to install Apache and enable the Longview App for it, you may find that Apache is not automatically detected on initial setup. If this is the case, you can run Longview through its automatic configuration sequence again. In most cases, this will result in longview finding everything it needs to get the Apache App started. And don't worry - your old Longview data will stay safe. To run the automatic Longview configuration, first make sure that Apache is running, and then run the following command on your Linode via SSH:
+If you already have Longview installed, and later want to install Apache and enable the Longview App for it, you may find that Apache is not automatically detected on initial setup. If this is the case, you can run Longview through its automatic configuration sequence again. In most cases,this will result in longview finding everything it needs to get the Apache App started. And don't worry - your old Longview data will stay safe. To run the automatic Longview configuration, first make sure that Apache is running, and then run the following command on your Linode via SSH:
 
     dpkg-reconfigure -phigh linode-longview
 
@@ -100,17 +100,17 @@ You should now be able to see Longview data for Apache. If that's not the case, 
 
 To see the output for the Longview Apache App:
 
-1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com/).
-2.  Select the **Longview** sidebar.
+1.  Log in to the [Linode Manager](https://manager.linode.com/).
+2.  Select the **Longview** tab.
 3.  Select the **Apache** tab.
 
 Click the image for a full-size view.
 
-[![The Longview Apache App.](longview_apache_stats.png)](1452-longview_apache_stats.png)
+[![The Longview Apache App.](1453-longview_apache_stats_sm.png)](1452-longview_apache_stats.png)
 
-You'll see the current version of Apache listed on the upper left hand side of the page.
+You'll see the current version of Apache listed on the upper right.
 
-Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/what-is-longview/#longview-s-data-explained). The next sections cover the Longview Apache App in detail.
+Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/longview/#longview-s-data-explained). The next sections cover the Longview Apache App in detail.
 
 ### Requests
 
@@ -137,19 +137,19 @@ The **Workers** graph shows all of the Apache workers at the selected time. The 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
+The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/platform/longview/longview/#overview).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
+The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/platform/longview/longview/#overview).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/platform/longview/what-is-longview/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/platform/longview/longview/#disks).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/platform/longview/what-is-longview/#processes).
+The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/platform/longview/longview/#process-explorer).
 
 ## Troubleshooting
 

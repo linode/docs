@@ -13,20 +13,20 @@ title: How to Use the Longview for MySQL App
 h1_title: Use the Longview for MySQL App on Linode
 ---
 
-Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Cloud Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.
+Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.
 
 ## Installing
 
 Prerequisites:
 
 -   Install and start [MySQL](/docs/databases/mysql/)
--   Install the [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview)
+-   Install the [Longview client](/docs/platform/longview/longview/#installing-the-client)
 
 ### Debian and Ubuntu Automatic Configuration
 
 If MySQL is installed and running when you install the Longview client, the MySQL App should enable and configure itself automatically.
 
-If you already have Longview installed, you may find that MySQL is not automatically detected on initial setup. If this is the case, you can run Longview through its automatic configuration sequence again. In most cases, it will find everything it needs to get the MySQL App started. And don't worry - your old Longview data will stay safe. To run the automatic Longview configuration, first make sure that MySQL is running, and then run the following command on your Linode via SSH:
+If you already have Longview installed, and later want to install MySQL and enable the Longview App for it, you can run Longview through its automatic configuration sequence again. In most cases, it will find everything it needs to get the MySQL App started. And don't worry - your old Longview data will stay safe. To run the automatic Longview configuration, first make sure that MySQL is running, and then run the following command on your Linode via SSH:
 
     dpkg-reconfigure -phigh linode-longview
 
@@ -84,17 +84,17 @@ You should now be able to see Longview data for MySQL. If that's not the case, p
 
 To see the output for the Longview MySQL App:
 
-1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com/).
-2.  Select the **Longview** sidebar.
+1.  Log in to the [Linode Manager](https://manager.linode.com/).
+2.  Select the **Longview** tab.
 3.  Select the **MySQL** tab.
 
 Click the image for a full-size view.
 
-[![The Longview MySQL App.](longview_mysql_stats.png)](longview_mysql_stats.png)
+[![The Longview MySQL App.](1458-longview_mysql_stats_sm.png)](1457-longview_mysql_stats.png)
 
-You'll see the current version of MySQL listed on the upper left-hand corner.
+You'll see the current version of MySQL listed on the upper right.
 
-Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/what-is-longview/#longview-s-data-explained). The next sections cover the Longview MySQL App in detail.
+Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/longview/#longview-s-data-explained). The next sections cover the Longview MySQL App in detail.
 
 ### Queries
 
@@ -116,21 +116,29 @@ The **Slow Queries** graph shows the number of slow MySQL queries at the selecte
 
 The **Aborted** graph shows the number of aborted MySQL connections and clients at the selected time.
 
+### Max Connections
+
+Longview displays the maximum number of MySQL connections.
+
+### Queries in Cache
+
+Longview shows the current number of queries in MySQL's cache.
+
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
+The **CPU** graph shows the percentage of your Linode's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/platform/longview/longview/#overview).
 
-### RAM
+### Memory
 
-The **RAM** graph shows the amount of RAM or memory being used by MySQL at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
+The **Memory** graph shows the amount of RAM being used by MySQL at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/platform/longview/longview/#overview).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/platform/longview/what-is-longview/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/platform/longview/longview/#disks).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Processes tab](/docs/platform/longview/what-is-longview/#processes).
+The **Process Count** graph shows the total number of processes on your Linode spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/platform/longview/longview/#process-explorer).
 
 # Troubleshooting
 
