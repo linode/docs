@@ -48,7 +48,7 @@ Objects stored in Linode object storage are generally accessible using this form
 
 - Replace `my-example-bucket` with your bucket name, `us-east-1` with the cluster where your bucket is hosted, and `example.txt` with the object you wish to access.
 
-- This asssumes that the object is publically accessible. For more on object permissions, see the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
+- This assumes that the object is publicly accessible. For more on object permissions, see the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
 
 ## Signed URLs
 
