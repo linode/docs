@@ -14,7 +14,7 @@ headless: true
 show_on_rss_feed: false
 ---
 
-If you want to change your password, or you forgot your password and need a new one, you can accomplish these task through the *Forgot Password* webpage. Here's how:
+If you want to change your password, or you forgot your password and need a new one, you can accomplish these tasks through the *Forgot Password* webpage. Here's how:
 
 1.  Visit the [Forgot Password](https://login.linode.com/forgot/password) webpage.
 1.  Enter your username in the **Username** field.
