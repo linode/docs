@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: "This guide describes the process of troubleshooting Longview"
-og_description: "Learn how to troubleshhoot Longview, Linode's system data graphing service."
+og_description: "Learn how to troubleshoot Linode's Longview service."
 keywords: ["system monitoring", "longview", "metrics", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['longview/', 'uptime/longview/']
@@ -11,23 +11,20 @@ modified_by:
   name: Linode
 title: Longview Troubleshooting
 h1_title: Linode Longview Troubleshooting
-cloud_manager_link: 'platform/longview/what-is-longview/'
 published: 2020-01-22
 ---
 
-In the following guide, we'll go over basic troubleshooting steps to help diagnose and resolve any issues that may arise with Longview. If you're experiencing problems with the Longview client, follow these steps to help determine the cause.
+This guide discusses basic troubleshooting steps to help you diagnose and resolve any issues you may encounter while using Longview. If you're experiencing problems with the Longview client, follow the steps outlined in this guide to help determine the cause.
 
 ## Basic Diagnostics
 
-Ensure that:
-
-1.  Your system is [fully updated](/docs/getting-started/#install-software-updates).
+1.  Ensure that your system is [fully updated](/docs/getting-started/#install-software-updates).
 
     {{< note >}}
   Longview requires Perl 5.8 or later.
     {{</ note >}}
 
-2.  The Longview client is running. You can verify with one of the two commands below, depending on your distribution's initialization system:
+2.  Verify that the Longview client is running. Use the command that is appropriate for your distribution's initialization system:
 
     > **CentOS, Debian, and Ubuntu**
     >
@@ -37,7 +34,7 @@ Ensure that:
     >
     >     sudo service longview status     # For distributions without systemd.
 
-    If the Longview client is not running, start it with one of the following commands, depending on your distribution's init system:
+    If the Longview client is not running, start it with the command appropriate for your distribution's initialization system:
 
     > **CentOS, Debian, and Ubuntu**
     >
@@ -114,7 +111,7 @@ If you use iptables, you should also make sure to persist any of your firewall r
 
 The API key given in the Linode Cloud Manager should match that on your system in `/etc/linode/longview.key`.
 
-1. In the Linode Cloud Manager, the API key is located in the **Installation** tab of your Longview Client instance's [detailed view](#access-your-longview-client-s-detailed-view).
+1. In the Linode Cloud Manager, the API key is located in the **Installation** tab of your Longview Client instance's [detailed view](/docs/platform/longview/what-is-longview/#access-your-longview-client-s-detailed-view).
 
 1.  SSH into your Linode. The Longview key is located at `/etc/linode/longview.key`. Use `cat` to view the contents of that file and compare it to what's shown in the Linode Cloud Manager:
 
@@ -146,13 +143,13 @@ This is caused by both Linodes posting data using the same Longview key. To reso
     >
     >     sudo rm -rf /opt/linode/longview
 
-1. Add a new [Linode Longview Client instance](#add-the-longview-client). This will create a new Longview API key independent from the system which it was cloned from.
+1. Add a new [Linode Longview Client instance](/docs/platform/longview/what-is-longview/#add-the-longview-client). This will create a new Longview API key independent from the system which it was cloned from.
 
     {{< note >}}
   The GUID provided in the Longview Client's installation URL is not the same as the Longview API key.
     {{</ note >}}
 
-1. [Install the Longview Agent](#install-the-longview-agent) on the cloned Linode.
+1. [Install the Longview Agent](/docs/platform/longview/what-is-longview/#install-the-longview-agent) on the cloned Linode.
 
 ## Contact Support
 
