@@ -347,4 +347,4 @@ The Installation tab provides quick instructions on how to install the Longview 
 - [Set up Longview for NGINX](/docs/platform/longview/longview-app-for-nginx/)
 - [Set up Longview for Apache](/docs/platform/longview/longview-app-for-apache/)
 - [Set up Longview for MySQL](/docs/platform/longview/longview-app-for-mysql/)
-- [Longview Troubleshooting](/docs/platform/longview/longview-troubleshooting/)
+- [Troubleshoot Linode Longview](/docs/platform/longview/troubleshooting-linode-longview/)

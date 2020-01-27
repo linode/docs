@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['longview/', 'uptime/longview/']
 modified_by:
   name: Linode
-title: Longview Troubleshooting
-h1_title: Linode Longview Troubleshooting
+title: Troubleshooting Linode Longview
+h1_title: Troubleshoot Linode Longview
 published: 2020-01-22
 ---
 
