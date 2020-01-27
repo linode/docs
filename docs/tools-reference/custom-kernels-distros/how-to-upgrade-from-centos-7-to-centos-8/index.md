@@ -21,7 +21,7 @@ h1_title: "Upgrading from CentOS 7 to CentOS 8"
 - Default packet filtering with [nftables](https://en.wikipedia.org/wiki/Nftables).
 - Improved security with [OpenSSL 1.1.1](https://www.openssl.org/news/openssl-1.1.1-notes.html) which includes TSL 1.3.
 
-When upgrading from CentOS 7 to CentOS 8, the cleanest path to migration is to spin up a new installation and move your data. While Red Hat provides an upgrade tool for upgrading to RHEL 8, this has been unsucessful for CentOS usage. Therefore, upgrading in place is not recommended. This guide will show you how to make the clean install and migration process as quick and easy as possible.
+When upgrading from CentOS 7 to CentOS 8, the cleanest path to migration is to spin up a new installation and move your data. While Red Hat provides an upgrade tool for upgrading to RHEL 8, this has been unsuccessful for CentOS usage. Therefore, upgrading in place is not recommended. This guide will show you how to make the clean install and migration process as quick and easy as possible.
 
 ## In This Guide
 This guide will walk you through the steps to migrate from CentOS 7 to CentOS 8 by:
@@ -66,13 +66,13 @@ For this guide you will need a backup of your existing CentOS 7 installation. Yo
 
 1.  Click **Backups** tab and click the **More Options Ellipses** next to the backup you created and select **Restore to Existing Linode** from the drop down menu.
 
-    ![Restore Backup to Existing Linode](upgrade-centos8-restore-to-existing.png "Restort Backup to Existing Linode")
+    ![Restore Backup to Existing Linode](upgrade-centos8-restore-to-existing.png "Restore Backup to Existing Linode")
 
 1.  Select the current Linode and leave the box for **Overwrite Linode** unchecked. Then click the **Restore** button.
 
     ![Restore to Existing Linode Panel](upgrade-centos8-restore-backup-panel.png "Restore to Existing Linode Panel")
 
-1.  This will create two new disks, one for the main disk and one swap, and a new cofiguration profile. All will have *Restore* at the beginning of their names.
+1.  This will create two new disks, one for the main disk and one swap, and a new configuration profile. All will have *Restore* at the beginning of their names.
 
     ![New Disks Created After Restore](upgrade-centos8-new-disks-after-restore.png "New Disks Created After Restore")
 
@@ -133,9 +133,9 @@ sdc    8:32   0 24.5G  0 disk /media
 
         cp -r /home/media/home/username/MyFiles /home/username/MyFiles
 
-  - The `-r` option tells this to copy directories recurisvely. Omit this if you only want to copy one directory without its child directories, or if you are copying single files.
+  - The `-r` option tells this to copy directories recursively. Omit this if you only want to copy one directory without its child directories, or if you are copying single files.
   - The first location is the source on the mounted drive.
-  - The second loation is the destination on your new installation.
+  - The second location is the destination on your new installation.
 
 1.  Unmount the disk when you are finished copying your files:
 
