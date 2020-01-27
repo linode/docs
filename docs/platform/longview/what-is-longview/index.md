@@ -13,17 +13,12 @@ title: "What is Linode Longview"
 h1_title: "Understanding Linode Longview"
 contributor:
   name: Linode
-classic_manager_link: platform/longview/longview-classic-manager/
 ---
 ![Our guide to installing and using Linode Longview.](longview_smg.png "Our guide to installing and using Linode Longview.")
 
 Longview is Linode’s system data graphing service. It tracks metrics for CPU, memory, and network bandwidth, both aggregate and per-process, and it provides real-time graphs that can help expose performance problems.
 
 The Longview client is [open source](https://github.com/linode/longview) and provides an agent that can be installed on any Linux distribution–including systems not hosted by Linode. However, Linode only offers technical support for **CentOS**, **Debian**, and **Ubuntu**.
-
-{{< note >}}
-Longview for Cloud Manager is still being actively developed to reach parity with Linode's Classic Manager. This guide will be updated as development work continues. See the Cloud Manager's changelog for the latest information on [Cloud Manager releases](https://developers.linode.com/changelog/cloud-manager/).
-{{</ note >}}
 
 {{< note >}}
 Longview does not currently support CentOS 8.
@@ -70,6 +65,8 @@ The displayed `curl` command will be used in the [next section](#install-the-lon
 1. Change to the `root` user.
 
         su - root
+
+1. Using your system's package manager update your Linux distribution's packages. See our [Getting Started](/docs/getting-started/#install-software-updates) guide for details on updating your Linode distribution's software.
 
 1. Switch back to the Linode Cloud Manager in your browser, copy the Longview Client instance's `curl` command, and paste it into your Terminal window. Press **Enter** to execute the command. The installation will take a few minutes to complete.
 
@@ -252,7 +249,7 @@ This section will provide an overview of the data and graphs available to you in
 
 1. You will be brought to your Longview client's **Overview** tab where you can view all the data and graphs corresponding to your Linode.
 
-    To learn more about the Data available in a Longview Client's Overview page, see the [Overview](#overview) section.
+    To learn more about the data available in a Longview Client's Overview page, see the [Overview](#overview) section.
 
 1. From here you can click on any of your Longview Client instance's tabs to view more related information.
 
@@ -262,7 +259,7 @@ If your Linode has NGINX, Apache, or MySQL installed you will see a correspondin
 
 ### Overview
 
-The Overview tab shows all of your system’s most important statistics in one place. You can hover your cursor over any of your graphs in the **Resource Allocation History** section to view details about specific data points.
+The Overview tab shows all of your system’s most important statistics in one place. In the **Resource Allocation History** section, you can hover your cursor over any of your graphs to view details about specific data points.
 
   ![Cloud Manager Longview Client's overview page](longview-overview-details.png "Cloud Manager Longview Client's overview page")
 
@@ -277,17 +274,17 @@ The Overview tab shows all of your system’s most important statistics in one p
 1. A list of current active connections to the Linode.
 
 ### Processes
-The Processes tab will list all running processes currently on your Linode, along with additional statistics including the UID of the user that has ownership of the process, the Max Count of duplicate processes, average I/O per process, average CPU percentage used per process, and average memory consumption per process. Additionally, at the top left of the page, you'll see a search bar you can use to filter the chart by the name of the process or the user that owns them.
+The Processes tab will list all running processes currently on your Linode, along with additional statistics including the UID of the user that has ownership of the process, the Max Count of duplicate processes, average I/O per process, average CPU percentage used per process, and average memory consumption per process. Additionally, at the top left of the page, you'll see a search bar you can use to filter the chart by the name of the process or the user that owns it.
 
-Also included on this page, you'll see access to a number of graphs which will display a history of resource consumption by any selected individual process. Historical values located on your graphs include CPU usage, RAM, the "count" of duplicate processes that are or were opened, and disk I/O. Additionally, the length of time you're observing with these graphs can be set in the dropdown menu found at the top right of the page and vary depending on your version of longview.
+You'll also see a number of graphs which display a history of resource consumption for the selected individual process. Historical values located on your graphs include CPU usage, RAM, the "count" of duplicate processes that are or were opened, and disk I/O. Additionally, the length of time you're observing with these graphs can be set in the dropdown menu found at the top right of the page and vary depending on your version of longview.
 
-To change which process your charts are currently observing, you just need to click on any process that's listed in the chart.
+To change which process your charts are currently observing, click on any process that's listed in the chart.
 
 ![processes-overview](processes-overview.png)
 
 ### Network
 
-The network tab will give you access to charts you can use to sort traffic analytics by network interface available on your Linode. To see a wider range of data than the default of 30 minutes, select the dropdown menu to the top right of the page and select a range of your choice.
+The network tab gives you access to charts you can use to sort traffic analytics by network interface available on your Linode. To see a wider range of data than the default of 30 minutes, select the dropdown menu to the top right of the page and select a range of your choice.
 
 ![network-overview](network-overview.png)
 
@@ -297,7 +294,7 @@ The information gained from the network tab can only go as far back as the date 
 
 ### Disks
 
-The disks tab will include information on disk I/O, disk space usage, and inode usage over time. To see a wider range of data than the default of 30 minutes, select the dropdown menu to the top right of the page and select a range of your choice.
+The disks tab includes information on disk I/O, disk space usage, and [inode](https://en.wikipedia.org/wiki/Inode) usage over time. To see a wider range of data than the default of 30 minutes, select the dropdown menu to the top right of the page and select a range of your choice.
 
 ![disks-overview](disks-overview.png)
 
@@ -306,7 +303,7 @@ Longview does not gather data on swap disks.
 {{< /note >}}
 
 ### NGINX, Apache, and MySQL(Optional)
-Longview also includes support for both NGINX and Apache webservers, as the MySQL database. When Longview detects that either is running on your Linode, the tabs will appear within the Longview section of your Cloud Manager. For more information on these optional tabs, and for troubleshooting steps if you need them, see our guides for, [Longview for Nginx](/docs/platform/longview/longview-app-for-nginx/)  [Longview for Apache](/docs/platform/longview/longview-app-for-apache/), and [Longview for MySQL](/docs/platform/longview/longview-app-for-mysql/) .
+Longview also includes support for both NGINX and Apache webservers, as well as the MySQL database. When Longview detects that either is running on your Linode, the tabs will appear within the Longview section of your Cloud Manager. For more information on these optional tabs and for troubleshooting steps, see our guides for, [Longview for Nginx](/docs/platform/longview/longview-app-for-nginx/),  [Longview for Apache](/docs/platform/longview/longview-app-for-apache/), and [Longview for MySQL](/docs/platform/longview/longview-app-for-mysql/) .
 
 ### Installation
 
