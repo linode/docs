@@ -19,34 +19,57 @@ external_resources:
 
 Longview for Apache is a Longview App. The Longview Apache tab appears in the Linode Cloud Manager when Longview detects that you have Apache installed on your Linode. With the Longview Apache App, you'll be able to view statistics for Apache on your Linode. It can help you keep track of Apache's settings, workers and requests, system resource consumption, and other information.
 
-## Installing
+## In this Guide:
 
-Prerequisites:
+This guide discusses Linode Longview for Apache. The guide covers the following topics:
 
--   Install and start [Apache](/docs/web-servers/apache/)
--   Install the [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview)
+- [Configuring Linode Longview for Apache](#debian-and-ubuntu-automatic-configuration).
+- [Interacting with the Apache data provided by Longview in the Linode Cloud Manager](#viewing-statistics).
+- [Troubleshooting Linode Longview for Apache](#troubleshooting).
+
+## Before you Begin
+
+In order to use the Longview App for Apache, ensure you have completed the following things:
+
+-  A Linode with [Apache installed and running]((/docs/web-servers/apache/)).
+-  Create a [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
+-  Install the [Longview Agent](/docs/platform/longview/what-is-longview/#install-the-longview-agent) on your Linode.
 
 ### Debian and Ubuntu Automatic Configuration
 
 If Apache is installed and running when you install the Longview client, the Apache App should enable and configure itself automatically.
 
-If you already have Longview installed, and later want to install Apache and enable the Longview App for it, you may find that Apache is not automatically detected on initial setup. If this is the case, you can run Longview through its automatic configuration sequence again. In most cases, this will result in Longview finding everything it needs to get the Apache App started. And don't worry - your old Longview data will stay safe. To run the automatic Longview configuration, first make sure that Apache is running, and then run the following command on your Linode via SSH:
+If you already have Longview installed, and later want to install Apache and enable the Longview App for it, you may find that Apache is not automatically detected on initial setup. When this happens, you can run Longview through its automatic configuration sequence again. In most cases, this will result in Longview finding everything it needs to get the Apache App started. And don't worry - your old Longview data will stay safe. To run the automatic Longview configuration:
 
-    dpkg-reconfigure -phigh linode-longview
+1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
 
-For most people, Longview should be able to configure itself automatically, and you will receive output something like this:
+1. Ensure that Apache is running using your distribution's initialization system.
 
-{{< output >}}
-    [ ok ] Stopping Longview Agent: longview.
-    Checking Apache configuration...
-    Found Apache status page at http://127.0.0.1/server-status?auto (default URL)
-    [ ok ] Starting Longview Agent: longview.
-    update-rc.d: using dependency based boot sequencing
-{{</ output >}}
+    > **CentOS, Debian, and Ubuntu**
+    >
+    >     sudo systemctl status apache2   # For distributions with systemd.
 
-Once you see this successful message, the Longview Apache App should automatically start collecting Apache data. Refresh the Longview Apache tab in the Linode Manager to start viewing your stats.
+    >  **Other Distributions**
+    >
+    >     sudo service apache2 status     # For distributions without systemd.
 
-If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
+1. Reconfigure the Apache Longview App:
+
+        dpkg-reconfigure -phigh linode-longview
+
+    For most people, Longview should be able to configure itself automatically, and you will receive output something like this:
+
+    {{< output >}}
+[ ok ] Stopping Longview Agent: longview.
+Checking Apache configuration...
+Found Apache status page at http://127.0.0.1/server-status?auto (default URL)
+[ ok ] Starting Longview Agent: longview.
+update-rc.d: using dependency based boot sequencing
+    {{</ output >}}
+
+    Once you see this successful message, the Longview Apache App should automatically start collecting Apache data. Refresh Longview in the Linode Cloud Manager to start viewing your Apache stats for your Longview Client instance.
+
+    If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 [![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1451-longview_apache_popup_crop.png)](1451-longview_apache_popup_crop.png)
 
@@ -54,13 +77,20 @@ If you receive a failure message or the popup shown below, you should visit the 
 
 To enable the Apache Longview app manually, follow these steps on your Linode via SSH:
 
-1.  Make sure **mod\_status** is enabled for Apache (it should be by default). You can follow the [apache.org](http://httpd.apache.org/docs/2.2/mod/mod_status.html) instructions at the link. Or, on Debian and Ubuntu systems, run this command:
+1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
+
+1.  Make sure **mod\_status** is enabled for Apache (it should be by default). You can follow the instructions list in the [apache.org](https://httpd.apache.org/docs/2.4/mod/mod_status.html) site. Or, on Debian and Ubuntu systems, run this command:
 
         sudo a2enmod status
 
-2.  Your `httpd.conf` file (or the file where you enabled mod\_status; `status.conf` is another common location) should look like the following:
+1. Update your Apache configuration file to include the block in the example file below. Depending on your Linux distribution and version, your Apache configuration file may be stored in one of the following locations:
 
-    {{< file "httpd.conf" apache >}}
+    - /etc/apache2/httpd.conf
+    - /etc/apache2/apache2.conf
+    - /etc/httpd/httpd.conf
+    - /etc/httpd/conf/httpd.conf
+
+    {{< file "httpd.conf or apache2.conf" apache >}}
 <IfModule mod_status.c>
     ExtendedStatus On
     <Location /server-status>
@@ -71,28 +101,34 @@ To enable the Apache Longview app manually, follow these steps on your Linode vi
 
 {{< /file >}}
 
-3.  Edit `/etc/linode/longview.d/Apache.conf` to look like the following:
+1.  Edit `/etc/linode/longview.d/Apache.conf` to look like the following:
 
     {{< file "/etc/linode/longview.d/Apache.conf" apache >}}
 location http://127.0.0.1/server-status?auto
 
 {{< /file >}}
 
-4.  Restart Apache:
+1.  Restart Apache:
 
-    Debian and Ubuntu:
+    >**Debian and Ubuntu**:
+    >
+    >     sudo systemctl restart apache2
 
-        service apache2 restart
+    >**Other Distributions**:
+    >
+    >     sudo apachectl restart
 
-    CentOS and Fedora:
+1.  Restart Longview:
 
-        apachectl restart
+    > **CentOS, Debian, and Ubuntu**
+    >
+    >     sudo systemctl restart longview
 
-5.  Restart Longview:
+    >  **Other Distributions**
+    >
+    >     sudo service longview restart
 
-        service longview restart
-
-6.  Refresh the Longview Apache tab in the Linode Manager.
+1.  Refresh the Longview in your Linode Cloud Manager.
 
 You should now be able to see Longview data for Apache. If that's not the case, proceed to the [Troubleshooting](#troubleshooting) section at the end of this article.
 
@@ -104,13 +140,11 @@ To see the output for the Longview Apache App:
 2.  Select the **Longview** sidebar.
 3.  Select the **Apache** tab.
 
-Click the image for a full-size view.
+    ![The Longview Apache App.](longview_apache_stats.png)
 
-[![The Longview Apache App.](longview_apache_stats.png)](1452-longview_apache_stats.png)
+    You'll see the current version of Apache listed on the upper left hand side of the page.
 
-You'll see the current version of Apache listed on the upper left hand side of the page.
-
-Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/what-is-longview/#longview-s-data-explained). The next sections cover the Longview Apache App in detail.
+    Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. The next sections cover the Longview Apache App in detail.
 
 ### Requests
 
@@ -137,7 +171,7 @@ The **Workers** graph shows all of the Apache workers at the selected time. The 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
+The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
 
 ### Memory
 
@@ -149,11 +183,11 @@ The **Disk IO** graph shows the amount of input to and output from the disk caus
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/platform/longview/what-is-longview/#processes).
+The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Processes tab](/docs/platform/longview/what-is-longview/#processes).
 
 ## Troubleshooting
 
-If you don't see Longview data for Apache, you'll instead get an error on the page and instructions on how to fix it. As a general tip, you can check the `/var/log/linode/longview.log` file for errors as well. You should also compare your mod\_status configuration file (typically `httpd.conf` or `status.conf`) to the example shown in Step 2 of the [Manual Configuration (All Distributions)](#manual-configuration-all-distributions) section of this article.
+If you don't see Longview data for Apache, you'll instead get an error on the page and instructions on how to fix it. As a general tip, you can check the `/var/log/linode/longview.log` file for errors as well. You should also compare your mod\_status configuration file to the example shown in Step 2 of the [Manual Configuration (All Distributions)](#manual-configuration-all-distributions) section of this article.
 
 By default Longview uses port 80 for its automatic configuration. In the event you are experiencing problems you may need to edit the `/etc/apache2/ports.conf` file to use port 8080 or another non-standard port.
 
@@ -179,58 +213,58 @@ If you choose:
 -   **\<Yes\>**: the Longview tool will attempt to enable mod\_status, set the status page location, and restart Apache. This option is easier, but has the potential to disrupt your current Apache configuration. If you choose yes, and the configuration is successful, you should see output like the following:
 
     {{< output >}}
-        [ ok ] Stopping Longview Agent: longview.
-        Checking Apache configuration...
-        Enabling module status.
-        To activate the new configuration, you need to run:
-          service apache2 restart
-        [....] Reloading web server config: . ok
-        Apache mod_status enabled
-        [ ok ] Starting Longview Agent: longview.
-        update-rc.d: using dependency based boot sequencing
+[ ok ] Stopping Longview Agent: longview.
+Checking Apache configuration...
+Enabling module status.
+To activate the new configuration, you need to run:
+  service apache2 restart
+[....] Reloading web server config: . ok
+Apache mod_status enabled
+[ ok ] Starting Longview Agent: longview.
+update-rc.d: using dependency based boot sequencing
     {{</ output >}}
 
-Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
+    Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
 
-If instead you receive a failure message, such as:
+    If instead you receive a failure message, such as:
 
-  {{< output >}}
-    [FAIL] Reloading web server config: apache2 failed!
-  {{</ output >}}
+    {{< output >}}
+[FAIL] Reloading web server config: apache2 failed!
+    {{</ output >}}
 
-You will need to double-check your Apache installation, and then do a [manual configuration](#manual-configuration-all-distributions).
+    You will need to double-check your Apache installation, and then do a [manual configuration](#manual-configuration-all-distributions).
 
 ### Unable to Access Local Server Status for Apache
 
-More specifically, the error will state `Unable to access local server status for Apache at <http://example.com/example?auto>: <error>:`. This error occurs when either:
+This error will state `Unable to access local server status for Apache at <http://example.com/example?auto>: <error>:`. This error occurs when either:
 
 1.  Apache's `mod_status` setting is disabled or has been changed from the default location.
 
 2.  An Apache virtual host configuration is interfering with web requests to the `mod_status` location.
 
- {{< note >}}
+    {{< note >}}
 This error occurs when Longview attempts to check the status page `location` listed in `/etc/linode/longview.d/Apache.conf`, or the default page at `127.0.0.1/server-status?auto`, but receives a non-200 HTTP response code. Basically, it means that the status page Longview is expecting is not being returned by the server.
-{{< /note >}}
+    {{< /note >}}
 
 To fix this, follow these steps:
 
 1.  Make sure Apache is running:
 
-    Debian and Ubuntu:
+    >**Debian and Ubuntu**:
+    >
+    >     sudo systemctl restart apache2
 
-        service apache2 restart
+    >**Other Distributions**:
+    >
+    >     sudo apachectl restart
 
-    CentOS and Fedora:
+2.  Make sure `mod_status` is enabled. See the [Apache website](https://httpd.apache.org/docs/2.4/mod/mod_status.html#page-header) for details. You can also check the output of the following command:
 
-        apachectl restart
+        apachectl -M
 
-2.  Make sure `mod_status` is enabled. See the [Apache website](http://httpd.apache.org/docs/2.2/mod/mod_status.html#enable) for details. You can also check the output of the following command:
+3.  Check the location for `mod_status`. The default location on Debian and Ubuntu systems is `http://127.0.0.1/server-status?auto` on localhost. In the Apache configuration file, this is designated with the lines:
 
-        apachectl -M | grep status
-
-3.  Check the location for `mod_status`. The default location on Debian and Ubuntu systems is `http://127.0.0.1/server-status?auto` on localhost. In the Apache configuration file (typically `httpd.conf` or `status.conf`), this is designated with the lines:
-
-    {{< file "httpd.conf" apache >}}
+    {{< file "httpd.conf or apache2.conf" apache >}}
 <Location /server-status>
     SetHandler server-status
 
@@ -247,8 +281,8 @@ location http://localhost/whm-server-status?auto
 
 {{< /file >}}
 
+4.  Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview in the Linode Cloud Manager to verify that it's working now.
 
-4.  Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
 5.  If you're not using the default location, you need to create a new file, `/etc/linode/longview.d/Apache.conf`, and set the `location` variable to match what you set in the Apache configuration file:
 
     {{< file "/etc/linode/longview.d/Apache.conf" apache >}}
@@ -260,18 +294,18 @@ location http://127.0.0.1/custom/location/path
 
         curl http://127.0.0.1/server-status?auto
 
-    Observe the output. If the output looks like something other than a simple status page, then you'll have to fix your Apache virtual host configuration.
+    Observe the output. If the output looks like something other than a simple status page, then you'll have to fix your [Apache virtual host](/docs/web-servers/apache-tips-and-tricks/) configuration.
 
 
 7.  Restart Longview:
 
         service longview restart
 
-8.  Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
+8.  Refresh the Longview in the Linode Cloud Manager to verify that it's working now.
 
 ### The Apache Status Page Doesn't Look Right
 
-More specifically, the error will state `The Apache status page doesn't look right. Check <http://example.com/example?auto> and investigate any redirects for misconfiguration.` This error occurs when Longview is able to reach the `mod_status` page, but doesn't receive the expected content.
+This error will state `The Apache status page doesn't look right. Check <http://example.com/example?auto> and investigate any redirects for misconfiguration.` This error occurs when Longview is able to reach the `mod_status` page, but doesn't receive the expected content.
 
  {{< note >}}
 This error occurs when Longview attempts to check the status page, and receives a 200 HTTP response code, but can't scrape the expected status content from the page. That is, the page exists on your Linode, but it doesn't have the right content. If, for example, Longview was to check your website's home page, you would get this error.
@@ -282,7 +316,7 @@ To resolve this issue, follow these steps:
 1.  Visit the URL shown in the error. See if it directs or redirects you to a page that isn't the Apache status page.
 2.  Update your Apache and Longview settings so that they specify the same location:
 
-    -   The **\<Location \>** line in `httpd.conf` or `status.conf`
+    -   The **\<Location \>** line in your Apache configuration file
     -   The **location** line in `/etc/linode/longview.d/Apache.conf`
 
     If neither of these is set, the default location of `http://127.0.0.1/server-status?auto` on localhost will be used.
@@ -290,15 +324,21 @@ To resolve this issue, follow these steps:
 3.  Make sure there aren't any Apache redirects or other settings that are affecting this page.
 4.  Restart Longview:
 
-        service longview restart
+    > **CentOS, Debian, and Ubuntu**
+    >
+    >     sudo systemctl restart longview
 
-5.  Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
+    >  **Other Distributions**
+    >
+    >     sudo service longview restart
+
+5.  Refresh the Longview in the Linode Cloud Manager to verify that it's working now.
 
 ### Missing Graphs: Enable ExtendedStatus
 
 If some of your Apache graphs are missing, you may see the error `Enable ExtendedStatus in your Apache configuration for throughput and request graphs.`
 
-This indicates that you need to add the following line to your Apache configuration file (typically `httpd.conf` or `status.conf`) in the `<IfModule mod_status.c>` section:
+This indicates that you need to add the following line to your Apache configuration file in the `<IfModule mod_status.c>` section:
 
 {{< file "httpd.conf" apache >}}
 ExtendedStatus On
@@ -308,13 +348,13 @@ ExtendedStatus On
 
 When you've finished modifying the configuration file, restart Apache:
 
-Debian and Ubuntu:
+  >**Debian and Ubuntu**:
+  >
+  >     sudo systemctl restart apache2
 
-    service apache2 restart
-
-CentOS and Fedora:
-
-    apachectl restart
+  >**Other Distributions**:
+  >
+  >     sudo apachectl restart
 
 ### Apache Tab is Missing
 
