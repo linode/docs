@@ -13,7 +13,7 @@ contributor:
   name: Linode
 ---
 
-Longview is free for all customers for up to ten clients. You also have the option to purchase **Longview Pro** which includes additional analytics for an added cost. Longview's free version updates every 5 minutes and provides twelve hours of data history. Longview Pro gives you data resolution at 60 second intervals, and you can view a complete history of your Linode’s data instead of only the previous 30 minutes.
+Longview is free for all customers for up to ten clients. You also have the option to purchase **Longview Pro** which includes additional analytics for an added cost. Longview's free version updates every 5 minutes and provides twelve hours of data history. Longview Pro gives you data resolution at 60 second intervals, and you can view a complete history of your Linode’s data instead of only the previous 12 hours.
 
 There are four different Longview Pro plan tiers you can choose from. Each plan varies in the amount of clients that will be monitored by Longview.
 
@@ -50,5 +50,5 @@ To change your plan level or to view all available Longview Pro plans, follow th
 1. If you would like to change your current plan, select your preferred plan and click on the **Change Plan** button. You will see the page update to denote your current Longview plan.
 
     {{< note >}}
-When you change your plan, your Linode's data will temporarily be in a transitional state. Any irregularities in your Linode's displayed Longview data will clear up shortly.
+If you change your plan, your Linode's data will temporarily be in a transitional state. Any irregularities in your Linode's displayed Longview data will clear up shortly.
     {{</ note >}}

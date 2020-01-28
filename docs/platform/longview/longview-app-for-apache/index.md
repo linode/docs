@@ -137,7 +137,7 @@ You should now be able to see Longview data for Apache. If that's not the case, 
 To see the output for the Longview Apache App:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com/).
-2.  Select the **Longview** sidebar.
+2.  Select the **Longview** link in the sidebar.
 3.  Select the **Apache** tab.
 
     ![The Longview Apache App.](longview_apache_stats.png)
@@ -210,7 +210,7 @@ This indicates that Longview can't locate the Apache status page. In turn, this 
 If you choose:
 
 -   **\<No\>**: the Longview tool will quit, and you can do a [manual configuration](#manual-configuration-all-distributions). This is the safer option.
--   **\<Yes\>**: the Longview tool will attempt to enable mod\_status, set the status page location, and restart Apache. This option is easier, but has the potential to disrupt your current Apache configuration. If you choose yes, and the configuration is successful, you should see output like the following:
+-   **\<Yes\>**: the Longview tool will attempt to enable `mod\_status`, set the status page location, and restart Apache. This option is easier, but has the potential to disrupt your current Apache configuration. If you choose yes, and the configuration is successful, you should see output like the following:
 
     {{< output >}}
 [ ok ] Stopping Longview Agent: longview.
@@ -290,7 +290,7 @@ location http://127.0.0.1/custom/location/path
 
 {{< /file >}}
 
-6.  Determine if an Apache virtual host configuration is interfering with requests to the mod_status location. Use a tool like `curl` or `wget` to request the server status location:
+6.  Determine if an Apache virtual host configuration is interfering with requests to the `mod_status` location. Use a tool like `curl` or `wget` to request the server status location:
 
         curl http://127.0.0.1/server-status?auto
 
