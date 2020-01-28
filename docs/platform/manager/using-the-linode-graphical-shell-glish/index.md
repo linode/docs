@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2015-08-28
 title: 'Using the Linode Graphical Shell (Glish)'
-classic_manager_link: platform/manager/using-the-linode-graphical-shell-glish-classic-manager/
+
 ---
 
 ![Using the Linode Graphical Shell Glish](using-linode-glish-title.jpg "Using the Linode Graphical Shell Glish title graphic")

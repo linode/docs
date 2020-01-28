@@ -12,7 +12,7 @@ modified_by:
 published: 2014-02-28
 title: Billing and Payments
 deprecated: true
-classic_manager_link: platform/billing-and-support/billing-and-payments-classic-manager/
+
 ---
 
 {{< note >}}

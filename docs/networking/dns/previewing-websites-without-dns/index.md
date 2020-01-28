@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2014-01-16
 title: Previewing Websites Without DNS
-classic_manager_link: networking/dns/previewing-websites-without-dns-classic-manager/
+
 ---
 
 ![Previewing Websites without DNS](Previewing_Websites_Without_DNS_smg.jpg)

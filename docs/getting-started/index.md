@@ -18,7 +18,7 @@ type: "guide"
 weight: 10
 icon: "book"
 show_on_rss_feed: false
-classic_manager_link: getting-started-classic-manager/
+
 ---
 
 ![Getting Started with Linode](getting-started.jpg "Getting Started with Linode")

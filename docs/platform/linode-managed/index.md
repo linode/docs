@@ -9,7 +9,7 @@ aliases: ['linode-managed/', 'uptime/linode-managed/']
 modified_by:
   name: Linode
 published: 2019-09-04
-classic_manager_link: platform/linode-managed-classic-manager/
+
 title: Linode Managed
 ---
 

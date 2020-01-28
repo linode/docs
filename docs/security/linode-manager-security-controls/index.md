@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2013-05-02
 title: Linode Cloud Manager Security Controls
-classic_manager_link: platform/manager/keep-your-linode-account-safe-classic-manager/
+
 ---
 
 The [Linode Cloud Manager](https://cloud.linode.com) is the gateway to all of your Linode products and services, and you should take steps to protect it from unauthorized access.

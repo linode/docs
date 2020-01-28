@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2009-08-04
 title: 'Using the Linode Shell (Lish)'
-classic_manager_link: platform/manager/using-the-linode-shell-lish-classic-manager/
+
 ---
 
 ![Using the Linode Shell (Lish)](using-the-linode-shell-lish.jpg)

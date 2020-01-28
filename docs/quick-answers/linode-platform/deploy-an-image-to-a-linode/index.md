@@ -9,7 +9,7 @@ modified_by:
   name: Linode
 published: 2019-10-11
 title: Deploy an Image to a Linode
-classic_manager_link: quick-answers/linode-platform/deploy-an-image-to-a-linode-classic-manager/
+
 ---
 
 When you first create a Linode, you generally [deploy a Linux distribution or other image](/docs/getting-started/#create-a-linode) to it upon creation. However, it is also possible to deploy additional images and Linux distributions to your Linode that will exist alongside your first image. Additionally, you can switch between these extra images by rebooting your Linode. This QuickAnswer guide will show you how to deploy an additional image.

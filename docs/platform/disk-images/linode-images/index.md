@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2014-09-25
 title: Linode Images
-classic_manager_link: platform/disk-images/linode-images-classic-manager/
+
 ---
 
 ![Linode Images](linode-images.jpg)

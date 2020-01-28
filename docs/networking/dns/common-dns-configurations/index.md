@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2015-01-20
 title: Common DNS Configurations
-classic_manager_link: 'networking/dns/common-dns-configurations-classic-manager/'
+
 ---
 
 ![Common DNS Configurations](common-dns-configurations.png "Common DNS Configurations")

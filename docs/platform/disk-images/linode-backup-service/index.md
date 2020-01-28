@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2018-12-20
 title: 'The Linode Backup Service'
-classic_manager_link: platform/disk-images/linode-backup-service-classic-manager/
+
 ---
 
 ![The Linode Backup Service](The_Linode_Backup_Service_smg.jpg)
