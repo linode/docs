@@ -79,7 +79,7 @@ Before creating your Flask App, you will set up your MongoDB database to store t
 
         mongoimport --db linodeStreetTrees --collection linodeStreetTrees --file ~/stadia-maps/linodeStreetTrees.geojson
 
-1. Connect to your mongoDB database to verify that all the data was imported as expected. By default, MongoDB will use port `27017` for database connections.
+1. Connect to your MongoDB database to verify that all the data was imported as expected. By default, MongoDB will use port `27017` for database connections.
 
         mongo mongodb://localhost:27017/linodeStreetTrees
 
