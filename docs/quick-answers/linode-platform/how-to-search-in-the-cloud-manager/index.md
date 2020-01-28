@@ -3,19 +3,21 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to Leverage the Advanced Search Function of the Linode Cloud Manager.'
+og_description: 'How to Leverage the Advanced Search Function of the Linode Cloud Manager.'
 keywords: ['search','advanced search','keywords','cloud manager']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-08
 modified_by:
   name: Linode
-title: "Searching in the Cloud Manager"
+title: "How to Search in the Cloud Manager"
+h1_title: "Searching in the Cloud Manager"
 contributor:
   name: Linode
 ---
 
 The Linode Cloud Manager includes a search tool at the top of the dashboard which can be used to search for a large number of active services on your account, including Linodes, Volumes, NodeBalancers, Domains, Tags, and more.
 
-![searchtool](searchbar.png)
+![Cloud Manager Search Bar](searchbar.png "Clound Manager Search Bar")
 
 This guide will cover the capabilities of this search tool so that you and your team can leverage it to find and access your resources quickly and efficiently.
 
