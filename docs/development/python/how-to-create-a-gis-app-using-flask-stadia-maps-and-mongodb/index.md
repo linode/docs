@@ -14,7 +14,7 @@ contributor:
   name: Leslie Salazar
   link: https://twitter.com/leslitasalazar?s=03
 ---
-Geographic Information system (GIS) based applications require a beautiful mapping experience for users. Stadia Maps provides digital mapping that you can easily and affordably integrate into your web or mobile applications. They offer hosted map tiles, offline map tiles, static maps, and a few other [core products](https://stadiamaps.com/products/). If you would like to test their services, you can use a local development environment along with their free tier plan. For more details on pricing and service limits, see their [pricing plans](https://stadiamaps.com/pricing/).
+Geographic Information system (GIS) based applications require a beautiful mapping experience for users. [Stadia Maps](https://stadiamaps.com/) provides digital mapping that you can easily and affordably integrate into your web or mobile applications. They offer hosted map tiles, offline map tiles, static maps, and a few other [core products](https://stadiamaps.com/products/). If you would like to test their services, you can use a local development environment along with their free tier plan. For more details on pricing and service limits, see their [pricing plans](https://stadiamaps.com/pricing/).
 
 ## In this Guide
 
@@ -44,7 +44,7 @@ This guide was written using Python version 3.7.
 
 1. [Install MongoDB](https://docs.mongodb.com/manual/installation/#tutorial-installation) following the link's instructions. This installation will also give you access to the [mongoimport](https://docs.mongodb.com/manual/reference/program/mongoimport/) command line tool.
 
-1. You can optionally [install Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) an open source package and environment management system. Conda lets you easily switch between development environments that have different Python versions and packages installed. This is a great way to isolate your development environment and keep your system's global Python version and packages untouched.
+1. We recommend [Installing Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html), an open source package and environment management system. Conda lets you easily switch between development environments that have different Python versions and packages installed. While this isn't a strict requirement for setting up your GIS application, it is a great way to isolate your development environment and keep your system's global Python version and packages untouched.
 
 ## Setup Your Development Environment
 In this section, you will prepare your development environment by creating your project directories, activating your conda environment, installing the required Python packages, and importing your GeoJSON data to your MongoDB database.
@@ -77,7 +77,7 @@ Before creating your Flask App, you will set up your MongoDB database to store t
 
 1. Open a new terminal window and use the `mongoimport` command line tool to import your GeoJSON data to your database. The import will create a database and collection named `linodeStreetTrees` and will use the data stored in the `linodeStreetTrees.geojson` file to create your collection's documents. In MongoDB, databases hold collections of documents. Collections are analogous to tables in relational databases. Documents store data records of field-value pairs in BSON format, a binary representation of JSON.
 
-        mongoimport --db linodeStreetTrees --collection linodeStreetTrees --file /Users/exampleuser/stadia-maps/linodeStreetTrees.geojson
+        mongoimport --db linodeStreetTrees --collection linodeStreetTrees --file ~/stadia-maps/linodeStreetTrees.geojson
 
 1. Connect to your mongodb database to verify that all the data was imported as expected. By default, MongoDB will use port `27017` for database connections.
 
@@ -120,6 +120,7 @@ from flask_session import Session
 from geojson import Point
 from flask_pymongo import PyMongo
 from bson.json_util import dumps
+import json
     {{</ file >}}
 
 1. Below your import statements, add the Python code to set up the Flask app and connect to your MongoDB database. The code creates an instance of the `Flask` class, connects to your MongoDB server and `linodeStreetTrees` database running on port `27017`. Finally, an instance of the `PyMongo` class is created, which manages connections from MongoDB to your Flask app.
@@ -131,6 +132,7 @@ from flask_session import Session
 from geojson import Point
 from flask_pymongo import PyMongo
 from bson.json_util import dumps
+import json
 
 app=Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/linodeStreetTrees"
@@ -142,12 +144,12 @@ mongo = PyMongo(app)
     The final block of code provides a way for Python to handle both script execution and importing. Finally, if the conditional evaluates to `true`, it will execute Flask's `run()` method to run your app.
 
     {{< file "~/stadia-maps/app.py" python >}}
-
 from flask import Flask, request, render_template
 from flask_session import Session
 from geojson import Point
 from flask_pymongo import PyMongo
 from bson.json_util import dumps
+import json
 
 app=Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/linodeStreetTrees"
@@ -155,12 +157,14 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    street_trees_points = dumps(mongo.db.linodeStreetTrees.find({}, {'_id': False}))
+    street_trees_points_query = dumps(mongo.db.linodeStreetTrees.find({}, {'_id': False}))
+    street_trees_points = json.loads(street_trees_points_query)
     return render_template('base.html', street_trees_points=street_trees_points)
 
 if __name__ == '__main__':
     app.debug=True
     app.run()
+
     {{</ file >}}
 
 ### Create your Template File
