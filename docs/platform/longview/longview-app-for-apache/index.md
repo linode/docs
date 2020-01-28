@@ -2,15 +2,16 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Longview App for Apache
+description: Using the Linode Longview App for Nginx
 keywords: ["Longview", " Apache", " statistics", " mod\\_status"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['longview/longview-for-apache/']
+aliases: ['longview/longview-for-apache/', 'platform/longview/longview-app-for-apache/']
 modified: 2018-12-26
 modified_by:
   name: Linode
 published: 2013-11-04
-title: Longview App for Apache
+title: What is the Linode Longview App for Nginx
+h1_title: Using the Linode Longview App for Apache
 external_resources:
  - '[cPanel Products News](https://news.cpanel.com/category/products/)'
  - '[cPanel Security News](https://news.cpanel.com/category/security/)'
@@ -144,7 +145,7 @@ To see the output for the Longview Apache App:
 
     You'll see the current version of Apache listed on the upper left hand side of the page.
 
-    Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. The next sections cover the Longview Apache App in detail.
+    Mouse over a data point to see the exact numbers for that time. With [Longview Pro](docs/platform/longview/pricing/), you can view older time periods for your data. The next sections cover the Longview Apache App in detail.
 
 ### Requests
 
@@ -290,7 +291,7 @@ location http://127.0.0.1/custom/location/path
 
 {{< /file >}}
 
-6.  Determine if an Apache virtual host configuration is interfering with requests to the `mod_status` location. Use a tool like `curl` or `wget` to request the server status location:
+6.  Determine if an Apache virtual host configuration is interfering with requests to the `mod_status location. Use a tool like `curl` or `wget` to request the server status location:
 
         curl http://127.0.0.1/server-status?auto
 
