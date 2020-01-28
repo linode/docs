@@ -782,6 +782,7 @@ maitis
 managesieve
 mandriva
 manyof
+mapbox
 mapreduce
 mariadb
 marino
@@ -1317,6 +1318,7 @@ ssi
 ssl
 stackscript
 stackscripts
+stadia
 stalkyard
 stallman
 starttls

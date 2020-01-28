@@ -171,7 +171,7 @@ if __name__ == '__main__':
 
 In this section you will create your Flask app's template. Flask templates are used to render the front end portion of your app. You can make use of the [Jinja templating language for Python](https://jinja.palletsprojects.com/en/2.10.x/) to add additional functionality to your templates.
 
-In this example, the `base.html` template connects to Stadia Maps to retrieve their vector map tiles and renders them on your site's index page. Stadia Map's implementation relies on [Mapbox GL Javascript library](https://docs.mapbox.com/mapbox-gl-js/api/). The template accesses your database's data and uses it to render marker's on your map with the help of Mapbox GL and Stadia Maps. This example utilizes [Stadia Map's boiler plate vector maps example](https://docs.stadiamaps.com/vector/) as a foundation. The example file is heavily commented, which you can use to better understand each section of the file.
+In this example, the `base.html` template connects to Stadia Maps to retrieve their vector map tiles and renders them on your site's index page. Stadia Map's implementation relies on the [Mapbox GL JavaScript library](https://docs.mapbox.com/mapbox-gl-js/api/). The template accesses your database's data and uses it to render marker's on your map with the help of Mapbox GL and Stadia Maps. This example utilizes [Stadia Map's boiler plate vector maps example](https://docs.stadiamaps.com/vector/) as a foundation. The example file is heavily commented, which you can use to better understand each section of the file.
 
 1. Create a file named `base.html` in your root project's `templates` directory with the example file content.
 
