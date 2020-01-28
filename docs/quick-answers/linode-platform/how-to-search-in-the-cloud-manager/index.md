@@ -17,7 +17,7 @@ contributor:
 
 The Linode Cloud Manager includes a search tool at the top of the dashboard which can be used to search for a large number of active services on your account, including Linodes, Volumes, NodeBalancers, Domains, Tags, and more.
 
-![Cloud Manager Search Bar](searchbar.png "Clound Manager Search Bar")
+![Cloud Manager Search Bar](searchbar.png "Cloud Manager Search Bar")
 
 This guide will cover the capabilities of this search tool so that you and your team can leverage it to find and access your resources quickly and efficiently.
 
