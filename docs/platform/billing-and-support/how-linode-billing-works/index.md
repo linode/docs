@@ -40,6 +40,7 @@ Review the [Making a Payment](/docs/platform/billing-and-support/manage-billing-
 
 If you overpay, credit will be applied to your account; this allows you to prepay if desired. Service credit is always used before charging the credit card on file for ongoing service.
 
+
 ## Linode Cloud Hosting and Backups
 
 Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing)
@@ -76,3 +77,7 @@ Referral service credits must be used to purchase Linode services, and cannot be
 ## Tax Information
 
 Review our [Tax Information](/docs/platform/billing-and-support/tax-information/) guide for information about which taxes Linode may charge.
+
+## Refunds
+
+If you are unsatisfied with your service for any reason, you can cancel your account within the first seven days and request a full refund, no questions asked. 
