@@ -5,7 +5,8 @@ author:
 description: Using the Linode Longview App for MySQL
 keywords: ["Longview", " MySQL", " statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['longview/longview-for-mysql/']
+aliases: ['longview/longview-for-mysql/', 'platform/longview/longview-app-for-mysql/']
+modified: 2020-01-28
 modified_by:
   name: Linode
 published: 2013-11-06
@@ -15,12 +16,19 @@ h1_title: Using the Linode Longview App for MySQL
 
 Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Cloud Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.
 
-## Installing
+## In this Guide
+This guide discusses Linode Longview for NGINX. The guide covers the following topics:
 
-Prerequisites:
+- [Configuring Linode Longview for MySQL](#debian-and-ubuntu-automatic-configuration).
+- [Interacting with the MySQL data provided by Longview in the Linode Cloud Manager](#viewing-statistics).
+- [Troubleshooting Linode Longview for MySQL](#troubleshooting).
 
--   Install and start [MySQL](/docs/databases/mysql/)
--   Install the [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview)
+## Before you Begin
+In order to use the Longview App for Apache, ensure you have completed the following things:
+
+- A Linode with [MySQL installed and running](/docs/databases/mysql/).
+- Create a [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
+- Install the [Longview Agent](/docs/platform/longview/what-is-longview/#install-the-longview-agent) on your Linode.
 
 ### Debian and Ubuntu Automatic Configuration
 
