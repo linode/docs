@@ -5,7 +5,7 @@ author:
 description: Our guide to the remote access area of the Linode Manager.
 keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['remote-access/','networking/remote-access/']
+aliases: ['networking/remote-access/','remote-access/','platform/manager/remote-access-classic-manager-classic-manager/']
 modified: 2019-03-05
 modified_by:
   name: Phil Zona

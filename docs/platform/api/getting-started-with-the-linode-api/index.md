@@ -15,7 +15,7 @@ external_resources:
   - '[API Documentation](https://developers.linode.com/api/v4/)'
   - '[Linode CLI](https://github.com/linode/linode-cli)'
   - '[Linode API Python Library](https://github.com/linode/python-linode-api)'
-aliases: ['platform/api/getting-started-with-the-linode-api-new-manager/']
+aliases: ['platform/api/getting-started-with-the-linode-api-classic-manager-classic-manager/','platform/api/getting-started-with-the-linode-api-new-manager/']
 
 ---
 
