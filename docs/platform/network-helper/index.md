@@ -10,7 +10,7 @@ published: 2014-12-08
 modified_by:
   name: Linode
 title: Network Helper
-aliases: ['platform/network-helper-new-manager/']
+aliases: ['platform/network-helper-new-manager/','platform/network-helper-classic-manager/']
 
 ---
 

@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 published: 2019-02-11
 title: Reset the Root Password on your Linode
-aliases: ['quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/']
+aliases: ['quick-answers/linode-platform/reset-the-root-password-on-your-linode-classic-manager/','quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/']
 
 ---
 

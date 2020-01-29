@@ -5,7 +5,7 @@ author:
 description: Our guide to submitting support tickets and getting technical support.
 keywords: ["support", "tech support", "tickets", "help desk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/support/','platform/billing-and-support/support-new-manager/','support/']
+aliases: ['platform/billing-and-support/support-classic-manager/','platform/billing-and-support/support-new-manager/','platform/support/','support/']
 modified: 2019-01-07
 modified_by:
   name: Linode
