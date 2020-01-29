@@ -25,7 +25,7 @@ The [k8s-alpha CLI](https://www.linode.com/docs/kubernetes/how-to-deploy-kuberne
 ## In This Guide
 You will use the Kubernetes Terraform installer for Linode Instances to continue to manage and support clusters created using the k8s-alpha CLI plugin following the EOL date and beyond. You will learn how to:
 
-- [Manage clusters](#manage-k8s-alpha-clusters) created with the k8s-alpha CLI following it's deprecation.
+- [Manage clusters](#manage-k8s-alpha-clusters) created with the k8s-alpha CLI following its deprecation.
 - [Delete clusters](#delete-a-cluster) using Terraform.
 - [Create clusters](#create-a-cluster) using Terraform.
 
