@@ -175,7 +175,7 @@ The `--history-max` option prevents Helm's historical record of the objects it t
         For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
         Happy Helming!
 
-1.  The pod for Tiller will be running in the `kube-system` namespace:
+1.  The Pod for Tiller will be running in the `kube-system` namespace:
 
         kubectl get pods --namespace kube-system | grep tiller
         tiller-deploy-b6647fc9d-vcdms                1/1       Running   0          1m
@@ -230,7 +230,7 @@ If you don't own a domain name and won't continue to use the Ghost website after
 
         helm install -f ghost-config.yaml stable/ghost
 
-1.  The `install` command returns immediately and does not wait until the app's cluster objects are ready. You will see output like the following snippet, which shows that the app's pods are still in the "Pending" state. The text displayed is generated from the contents of the chart's `templates/NOTES.txt` file:
+1.  The `install` command returns immediately and does not wait until the app's cluster objects are ready. You will see output like the following snippet, which shows that the app's Pods are still in the "Pending" state. The text displayed is generated from the contents of the chart's `templates/NOTES.txt` file:
 
     {{< disclosure-note "Full output of helm install" >}}
     NAME:   oldfashioned-cricket

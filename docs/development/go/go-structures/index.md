@@ -371,7 +371,7 @@ The output of `pointers.go` will be:
 
 {{< output >}}
 {Nathan 8124011}
-{Nathan 8124011}
+{Nathan 1012843}
 {{< /output >}}
 
 Alternatively, using this code in the `main` function instead will produce identical results:
@@ -682,7 +682,7 @@ func main() {
 
     var myRecord Record
     err := loadFromJSON(filename, &myRecord)
-    fmt.Println("JSON file loaded into struct":)
+    fmt.Println("JSON file loaded into struct:")
     if err == nil {
         fmt.Println(myRecord)
     } else {
@@ -698,7 +698,7 @@ func main() {
         },
     }
 
-    fmt.Println("struct saved to JSON":)
+    fmt.Println("struct saved to JSON:")
     saveToJSON(os.Stdout, myRecord)
 }
 {{< /file >}}
@@ -742,4 +742,4 @@ Executing `json.go` and processing the data found in `record.json` will generate
 
 ## Next Steps
 
-Structs are a versatile Go data type because they allow you to create new types by combining existing data types. If you confident in the topics covered in this tutorial, try exploring our [other guides on the Go language](/docs/development/go/).
+Structs are a versatile Go data type because they allow you to create new types by combining existing data types. If you feel confident in the topics covered in this tutorial, try exploring our [other guides on the Go language](/docs/development/go/).

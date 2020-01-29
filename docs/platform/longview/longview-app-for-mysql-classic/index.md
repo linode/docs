@@ -5,12 +5,12 @@ author:
 description: Longview App for MySQL
 keywords: ["Longview", " MySQL", " statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['longview/longview-for-mysql/']
 modified_by:
   name: Linode
 published: 2013-11-06
-title: How to Use the Longview for MySQL App
+title: How to Use the Longview for MySQL App - Classic Manager
 h1_title: Use the Longview for MySQL App on Linode
+hiddenguide: true
 ---
 
 Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.

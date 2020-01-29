@@ -229,7 +229,7 @@ The commands in this section should be executed from the `kubernetes-master` Lin
 
 ### Create a Persistent Volume
 
-Persistent Volumes(PV) are an abstraction in Kubernetes that represents a unit of storage provisioned in the cluster. A `PersistentVolumeClaim`(PVC) will allow a pod to consume the storage set aside by a PV. This section creates a PV of 15Gi ([gibibytes](https://en.wikipedia.org/wiki/Binary_prefix)) then allow Minio to claim 10Gi of space.
+Persistent Volumes(PV) are an abstraction in Kubernetes that represents a unit of storage provisioned in the cluster. A `PersistentVolumeClaim`(PVC) will allow a Pod to consume the storage set aside by a PV. This section creates a PV of 15Gi ([gibibytes](https://en.wikipedia.org/wiki/Binary_prefix)) then allow Minio to claim 10Gi of space.
 
 1.  On the Kubernetes master node, create a file called `minio-volume.yaml` with the following YAML below. Replace `username` on the `hostPath` with the appropriate path.
 

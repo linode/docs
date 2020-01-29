@@ -446,6 +446,7 @@ gandi
 gatsby
 gbps
 gcc
+gcloud
 gcm
 geckodriver
 gem1
@@ -782,6 +783,7 @@ maitis
 managesieve
 mandriva
 manyof
+mapbox
 mapreduce
 mariadb
 marino
@@ -841,6 +843,7 @@ moby
 moddable
 modsecurity
 mongodb
+mongoimport
 monit
 moolenaar
 motd
@@ -1317,6 +1320,7 @@ ssi
 ssl
 stackscript
 stackscripts
+stadia
 stalkyard
 stallman
 starttls
@@ -1552,6 +1556,7 @@ webapps
 webcit
 webdata1
 webdriver
+weblish
 webmail
 webmin
 webpages

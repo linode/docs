@@ -180,7 +180,7 @@ Now that you have a PVC, you can attach it to a Pod.
 
 Now you need to instruct a Pod to use the Persistent Volume Claim. For this example, you will create a Pod that is running an [ownCloud](https://owncloud.org/) container, which will use the PVC.
 
-To create a pod that will use the PVC:
+To create a Pod that will use the PVC:
 
 1.  Create a manifest file for the Pod and give it the following YAML:
 
@@ -330,4 +330,3 @@ To delete the Block Storage volume created in this guide:
 1.  Then, delete the persistent volume claim:
 
         kubectl delete pvc pvc-example
-

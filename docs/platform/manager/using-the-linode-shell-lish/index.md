@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Learn how to use Lish as a shell for managing or rescuing your Linode.'
-keywords: ["Console", "Shell", "Lish", "rescue"]
+keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['using-lish-the-linode-shell/','troubleshooting/using-lish-the-linode-shell/','networking/using-the-linode-shell-lish/','platform/using-the-linode-shell-lish/']
 modified: 2019-06-20
@@ -40,6 +40,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
     | `lish-newark.linode.com` | US, Newark, NJ |
     | `lish-mum1.linode.com` | Mumbai, India |
     | `lish-singapore.linode.com` | Asia, Singapore, SG |
+    | `lish-syd1.linode.com` | Sydney, Australia |
     | `lish-tokyo2.linode.com` or `lish-shg1.linode.com` | Asia, Tokyo, JP |
     | `lish-tor1.linode.com` | Canada, Toronto, ON |
     | `lish-frankfurt.linode.com` | Europe, Frankfurt, DE |
@@ -261,6 +262,15 @@ These are the fingerprints for the Lish gateway in our Singapore data center (li
     ECDSA SHA256:rFYWuld4hWMbTzX+xZMuQ3kxiJ6t8A+FNQ5k889mKEA
     Ed25519 SHA256:q1G1pBrLuhsUAnZ04SOYoxVthKYyLz+wA0hBAUVkKtE
     Ed25519 MD5:4c:d1:55:68:a1:90:6c:15:9b:af:c1:f7:27:31:68:29
+
+### Sydney
+
+These are the fingerprints for the Lish gateway in our Sydney data center (lish-syd1.linode.com):
+
+    RSA 31:89:80:92:aa:c0:2f:12:f6:2d:20:3a:27:88:ea:ba
+    ECDSA SHA256:whZwcrXeixljj6ZrrRYzLc6UguvkNqKmtXz+JrMSI9w
+    Ed25519 SHA256:NhA76h4AHunCS+MIne1BKkiJUZyCsbkslvx9MI5Yd70
+    Ed25519 MD5:32:1d:95:a1:96:a4:86:6e:d0:45:70:72:fc:c6:07:c8
 
 ### Tokyo 2
 

@@ -24,6 +24,8 @@ external_resources:
 [Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with the Object Storage service enabled on their account will be billed. For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
 {{</ note >}}
 
+{{< content "object-storage-cancellation-shortguide" >}}
+
 ## Why Host a Static Site on Object Storage?
 
 [Static site generators](/docs/websites/static-sites/how-to-choose-static-site-generator/) are a popular solution for creating simple, fast, flexible, and attractive websites that are easy to update. You can contribute new pages and content to a static site in two steps:
