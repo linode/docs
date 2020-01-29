@@ -9,6 +9,7 @@ modified_by:
     name: Linode
 published: 2015-12-02
 title: GitHub Beginner's Guide
+aliases: ['github-guide/']
 ---
 
 ![GitHub Beginner's Guide](github-beginners-guide.png "GitHub Beginner's Guide")
