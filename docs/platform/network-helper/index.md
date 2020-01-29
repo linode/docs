@@ -11,7 +11,6 @@ modified_by:
   name: Linode
 title: Network Helper
 aliases: ['platform/network-helper-new-manager/']
-classic_manager_link: platform/network-helper-classic-manager/
 ---
 
 ![Network Helper](network-helper-title-graphic.jpg "Network Helper")

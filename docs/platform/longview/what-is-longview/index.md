@@ -13,7 +13,6 @@ title: "What is Linode Longview"
 h1_title: "Understanding Linode Longview"
 contributor:
   name: Linode
-classic_manager_link: platform/longview/longview-classic-manager/
 ---
 ![Our guide to installing and using Linode Longview.](longview_smg.png "Our guide to installing and using Linode Longview.")
 

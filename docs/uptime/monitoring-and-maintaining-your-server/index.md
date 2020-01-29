@@ -12,7 +12,6 @@ modified_by:
   name: Linode
 published: 2012-08-22
 title: Monitoring and Maintaining Your Server
-classic_manager_link: uptime/monitoring-and-maintaining-your-server-classic-manager/
 ---
 
 ![Monitoring and Maintaining Your Server](monitor-and-maintain-your-server.png "Monitoring and Maintaining Your Server")

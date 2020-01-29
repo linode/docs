@@ -11,7 +11,6 @@ modified_by:
   name: Linode
 published: 2015-02-12
 title: Getting Started with NodeBalancers
-classic_manager_link: platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/
 ---
 
 ![Getting Started with NodeBalancers](getting-started-with-nodebalancers.png "Getting Started with NodeBalancers")

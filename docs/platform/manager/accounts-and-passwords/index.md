@@ -11,7 +11,6 @@ modified_by:
   name: Linode
 published: 2012-04-03
 title: Accounts and Passwords
-classic_manager_link: platform/manager/accounts-and-passwords-classic-manager/
 ---
 ![Accounts and Passwords](Accounts_and_Passwords_smg.jpg)
 

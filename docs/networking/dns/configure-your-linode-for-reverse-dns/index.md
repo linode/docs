@@ -11,7 +11,6 @@ modified_by:
 published: 2015-07-09
 modified: 2019-11-21
 title: Configure Your Linode for Reverse DNS (rDNS)
-classic_manager_link: networking/dns/configure-your-linode-for-reverse-dns-classic-manager/
 ---
 
 ![Configure Your Linode for Reverse DNS (rDNS)](configure-your-linode-reverse-dns.jpg)

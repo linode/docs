@@ -13,7 +13,6 @@ published: 2011-04-05
 title: Automate Deployment with StackScripts
 external_resources:
   - '[StackScript Community Library](http://linode.com/stackscripts)'
-classic_manager_link: platform/stackscripts-classic-manager/
 ---
 
 ![Automate Deployment with StackScripts](automate-deployment-with-stackscripts.png "Automate Deployment with StackScripts")

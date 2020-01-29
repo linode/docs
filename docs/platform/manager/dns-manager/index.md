@@ -11,7 +11,6 @@ modified_by:
   name: Linode
 published: 2009-07-16
 title: DNS Manager
-classic_manager_link: platform/manager/dns-manager-classic-manager/
 ---
 
 ![DNS Manager](dns-manager.png "DNS Manager")
