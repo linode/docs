@@ -273,7 +273,7 @@ We recommend that you power off your Linode first, and keep it powered off until
 If you need to make room on your destination Linode you can [resize it to a larger plan](https://www.linode.com/docs/platform/disk-images/resizing-a-linode/), [resize your disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to a smaller size, or [delete disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-disk) to free up available space. If you decide to resize your Linode to a larger plan, be sure to uncheck the box that automatically resizes your disks or they will expand to fill up the extra space that you are trying to create.
 {{< /note >}}
 
-1.  Once the cloning process begins, you are returned to the **Advanced** tab and a progress bar appears at the top of the screen.
+1.  Once the cloning process begins, you are returned to the **Disks/Configs** tab and a progress bar appears at the top of the screen.
     [![Copying Progress Bar](disks-and-config-status-bar.png)](disks-and-config-status-bar.png)
 
 1.  When the cloning process is complete, your new disk or configuration appears in the Linode's **Disks/Configs** tab.
