@@ -79,4 +79,4 @@ Review our [Tax Information](/docs/platform/billing-and-support/tax-information/
 
 ## Refunds
 
-If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#canceling-your-account) within the first seven days and request a full refund, no questions asked.
+If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#cancelling-your-account) within the first seven days and request a full refund, no questions asked.
