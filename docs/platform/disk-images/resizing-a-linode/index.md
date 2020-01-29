@@ -5,7 +5,7 @@ author:
 description: Our guide to upgrading and resizing your Linode
 keywords: ["upgrading", "resizing", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['migrate-to-linode/disk-images/resizing-a-linode/','resizing/']
+aliases: ['migrate-to-linode/disk-images/resizing-a-linode/','platform/disk-images/resizing-a-linode-classic-manager/','resizing/']
 modified: 2019-03-28
 modified_by:
   name: Linode

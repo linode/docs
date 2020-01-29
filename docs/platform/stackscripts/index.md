@@ -5,7 +5,7 @@ author:
 description: 'Create Custom Instances and Automate Deployment with StackScripts.'
 keywords: ["ami", "automation", "elasticity", "cloud", "custom instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/stackscripts-new-manager/','stackscripts/']
+aliases: ['stackscripts/','platform/stackscripts-new-manager/','platform/stackscripts-classic-manager/']
 modified: 2018-08-22
 modified_by:
   name: Linode

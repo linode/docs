@@ -5,7 +5,7 @@ author:
 description: 'Use the Domains section of the Linode Cloud Manger to Direct Domains to Your Linode.'
 keywords: ["dns manager", "linode dns", "Linode Cloud Manager dns", "dns configuration", "ttl", "domain zones", "domain name"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['networking/dns/dns-manager/','platform/manager/dns-manager-new-manager/','dns-guides/configuring-dns-with-the-linode-manager/','networking/dns/dns-manager-overview/','dns-manager/']
+aliases: ['networking/dns/dns-manager/','platform/manager/dns-manager-classic-manager/','dns-manager/','networking/dns/dns-manager-overview/','platform/manager/dns-manager-new-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
 modified: 2018-08-24
 modified_by:
   name: Linode

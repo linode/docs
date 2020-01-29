@@ -10,7 +10,7 @@ modified_by:
   name: Linode
 title: "Resize a Linode Disk"
 show_on_rss_feed: false
-aliases: ['quick-answers/linode-platform/resize-a-linode-disk-new-manager/']
+aliases: ['quick-answers/linode-platform/resize-a-linode-disk-new-manager/','quick-answers/linode-platform/resize-a-linode-disk-classic-manager/']
 ---
 This Quick Answer will show you how to resize a disk on your Linode. See our [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/) guide for additional information.
 

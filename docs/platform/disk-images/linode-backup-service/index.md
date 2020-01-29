@@ -4,7 +4,7 @@ author:
 description: 'Use the Linode Backup Service to protect and secure your data.'
 keywords: ["backup service", "linode platform", "linode backup service", "enable a backup", "manage a backup", "schedule a backup", "disable a backup", "restore from a backup", "boot from a backup"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/disk-images/linode-backup-service-new-manager/','security/backups/linode-backup-service/','platform/linode-backup-service/','backup-service/','platform/backup-service/']
+aliases: ['security/backups/linode-backup-service/','platform/disk-images/linode-backup-service-new-manager/','backup-service/','platform/backup-service/','platform/disk-images/linode-backup-service-classic-manager/','platform/linode-backup-service/']
 modified: 2018-12-20
 modified_by:
   name: Linode
