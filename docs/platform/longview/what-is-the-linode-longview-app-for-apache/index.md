@@ -32,7 +32,7 @@ This guide discusses Linode Longview for Apache. The guide covers the following 
 
 In order to use the Longview App for Apache, ensure you have completed the following things:
 
--  A Linode with [Apache installed and running]((/docs/web-servers/apache/)).
+-  A Linode with [Apache installed and running](/docs/web-servers/apache/).
 -  Create a [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
 -  Install the [Longview Agent](/docs/platform/longview/what-is-longview/#install-the-longview-agent) on your Linode.
 
@@ -145,7 +145,7 @@ To see the output for the Longview Apache App:
 
     You'll see the current version of Apache listed on the upper left hand side of the page.
 
-    Mouse over a data point to see the exact numbers for that time. With [Longview Pro](docs/platform/longview/pricing/), you can view older time periods for your data. The next sections cover the Longview Apache App in detail.
+    Mouse over a data point to see the exact numbers for that time. With [Longview Pro](/docs/platform/longview/pricing/), you can view older time periods for your data. The next sections cover the Longview Apache App in detail.
 
 ### Requests
 

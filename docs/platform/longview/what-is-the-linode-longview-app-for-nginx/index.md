@@ -137,7 +137,7 @@ To see the output for the Longview Nginx App:
 
     You'll see the current version of NGINX listed on the upper left-hand side of the page.
 
-    Mouse over a data point to see the exact numbers for that time. With [Longview Pro](docs/platform/longview/pricing/), you can view older time periods for your data. The next sections cover the Longview Nginx App in detail.
+    Mouse over a data point to see the exact numbers for that time. With [Longview Pro](/docs/platform/longview/pricing/), you can view older time periods for your data. The next sections cover the Longview Nginx App in detail.
 
 ### Requests
 
