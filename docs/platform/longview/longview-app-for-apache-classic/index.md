@@ -5,7 +5,6 @@ author:
 description: Longview App for Apache
 keywords: ["Longview", " Apache", " statistics", " mod\\_status"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['longview/longview-for-apache/']
 modified: 2018-12-26
 modified_by:
   name: Linode

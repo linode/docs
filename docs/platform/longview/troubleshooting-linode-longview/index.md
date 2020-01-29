@@ -6,7 +6,6 @@ description: "This guide describes the process of troubleshooting Longview"
 og_description: "Learn how to troubleshoot Linode's Longview service."
 keywords: ["system monitoring", "longview", "metrics", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['longview/', 'uptime/longview/']
 modified_by:
   name: Linode
 title: Troubleshooting Linode Longview

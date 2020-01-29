@@ -12,6 +12,7 @@ modified_by:
 published: 2013-11-04
 title: What is the Linode Longview App for Apache
 h1_title: Using the Linode Longview App for Apache
+classic_manager_link: platform/longview/longview-app-for-apache-classic
 external_resources:
  - '[cPanel Products News](https://news.cpanel.com/category/products/)'
  - '[cPanel Security News](https://news.cpanel.com/category/security/)'
