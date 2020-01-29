@@ -191,7 +191,7 @@ In some cases, you will not be able to shrink your disks enough to fit the resto
 
 After the backup has been restored, the disks and configuration profiles will be available to the destination Linode you selected. Select the restored configuration profile and reboot your Linode to start up from the restored disks:
 
-1.  From the **Linodes** page, select the Linode that you restored the backup to. Navigate to the **Disk/Configs** tab.
+1.  From the **Linodes** page, select the Linode that you restored the backup to. Navigate to the **Disks/Configs** tab.
 
 1.  Select the **more options ellipsis** next to the configuration profile that was restored and select **Boot This Config**.
 
