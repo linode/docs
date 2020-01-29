@@ -100,7 +100,7 @@ You may use our [speed test](http://www.linode.com/speedtest/) page to check lat
 
 ## Can I transfer my Linode to another data center?
 
-Yes! Any time you'd like to transfer your Linode, you can proceed with a migration from the **Advanced** tab for any Linode within the [Linode Cloud Manager](https://cloud.linode.com). For more information, see our [Data Center Migration Guide](/docs/platform/migrating-to-a-different-data-center/).
+Yes! Any time you'd like to transfer your Linode, you can proceed with a migration from the **Disks/Configs** tab for any Linode within the [Linode Cloud Manager](https://cloud.linode.com). For more information, see our [Data Center Migration Guide](/docs/platform/migrating-to-a-different-data-center/).
 
  A migration will result in some changes that will be displayed in a caution message for your review before officially beginning the migration process. Your disks and configuration profiles will move with your Linode, although your IP addresses will need to change. We strongly recommend reviewing this  caution message carefully before proceeding for a list of all changes that you can expect.
 

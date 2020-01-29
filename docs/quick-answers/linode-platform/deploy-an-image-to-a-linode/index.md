@@ -27,7 +27,7 @@ To deploy additional images, your Linode will need some unallocated space for th
 
 1.  Click on the row corresponding to your Linode. A dashboard for your Linode will appear.
 
-1.  Click on the **Advanced** tab from this page, and find the **Disks** panel that appears below it.
+1.  Click on the **Disks/Configs** tab from this page, and find the **Disks** panel that appears below it.
 
     [![Add a Disk link](add-a-disk-link.png "Add a Disk link")](add-a-disk-link.png)
 
@@ -49,7 +49,7 @@ To deploy additional images, your Linode will need some unallocated space for th
 
 Your new Linux distribution or image will often require a swap disk in order to boot. If you already have a swap disk on your Linode from a previous image deployment (visible under the **Disks** panel), you can reuse that same disk with your new image. Otherwise, you can create a new swap disk:
 
-1. Revisit the **Disks** panel under the **Advanced** tab for your Linode. Click the **Add a Disk** link.
+1. Revisit the **Disks** panel under the **Disks/Configs** tab for your Linode. Click the **Add a Disk** link.
 
 1. In the **Add Disk** form that appears, choose the **swap** option from the **Filesystem** dropdown menu. Then enter a label and size (usually 128MB, 256MB, or 512MB). Click the **Add** button to complete the form.
 
@@ -57,7 +57,7 @@ Your new Linux distribution or image will often require a swap disk in order to 
 
 To boot your Linode with the new image, you'll need a [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) that is associated with the image:
 
-1. Navigate to the **Advanced** tab for your Linode and find the **Configuration** panel underneath it. Click the **Add a Configuration** link on this panel:
+1. Navigate to the **Disks/Configs** tab for your Linode and find the **Configuration** panel underneath it. Click the **Add a Configuration** link on this panel:
 
     [![Add a Configuration link](add-a-configuration-link.png "Add a Configuration link")](add-a-configuration-link.png)
 
@@ -75,7 +75,7 @@ To boot your Linode with the new image, you'll need a [configuration profile](/d
 
 ## Next Steps
 
-To reboot with the new image, navigate to the **Configuration** panel under the **Advanced** tab for your Linode. Select the **more options ellipsis** for your new profile and click the **Boot This Config** option in the dropdown menu that appears:
+To reboot with the new image, navigate to the **Configuration** panel under the **Disks/Configs** tab for your Linode. Select the **More Options Ellipsis** for your new profile and click the **Boot This Config** option in the dropdown menu that appears:
 
 [![Boot This Config option](boot-this-config-option.png "Boot This Config option")](boot-this-config-option.png)
 
