@@ -6,7 +6,7 @@ description: 'How to use two-factor authentication and other security controls i
 og_description: 'This guide describes the security features of the Linode Cloud Manager, including two-factor authentication, IP address whitelisting, API access controls, forced password expiration, and more.'
 keywords: ["two-factor authentication", "password", "security", "Linode Cloud Manager", "token"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/linode-manager-security-controls/','security/linode-manager-security-controls-new-manager/','platform/manager/keep-your-linode-account-safe-classic-manager-classic-manager/','linode-manager-security/','platform/manager/keep-your-linode-account-safe/']
+aliases: ['security/linode-manager-security-controls/','linode-manager-security/','security/linode-manager-security-controls-new-manager/','platform/manager/keep-your-linode-account-safe/' ]
 modified: 2019-01-08
 modified_by:
   name: Linode

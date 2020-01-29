@@ -5,7 +5,7 @@ author:
 description: 'Our guide to rescuing and rebuilding your Linode.'
 keywords: ["rescue", "rebuild"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['troubleshooting/rescue-and-rebuild-classic-manager-classic-manager/','troubleshooting/finnix-rescue-mode/','rescue-and-rebuild/']
+aliases: ['rescue-and-rebuild/','troubleshooting/finnix-rescue-mode/']
 modified_by:
   name: Linode
 published: 2012-05-31

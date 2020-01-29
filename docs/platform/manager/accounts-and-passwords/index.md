@@ -5,7 +5,7 @@ author:
 description: Our guide to managing accounts and passwords.
 keywords: ["accounts", "passwords", "Linode Cloud Manager", "manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/manager/accounts-and-passwords-new-manager/','platform/accounts-and-passwords/','accounts-and-passwords/','platform/manager/accounts-and-passwords-classic-manager-classic-manager/']
+aliases: ['platform/manager/accounts-and-passwords-new-manager/','accounts-and-passwords/','platform/accounts-and-passwords/']
 modified: 2018-08-23
 modified_by:
   name: Linode

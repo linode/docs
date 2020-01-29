@@ -5,7 +5,7 @@ author:
 description: Our guide to disks and configuration profiles
 keywords: ["disks", "config profiles", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','platform/disk-images/disk-images-and-configuration-profiles-classic-manager-classic-manager/','disk-images-config-profiles/']
+aliases: ['disk-images-config-profiles/','migrate-to-linode/disk-images/disk-images-and-configuration-profiles/']
 modified: 2019-07-09
 modified_by:
   name: Linode
