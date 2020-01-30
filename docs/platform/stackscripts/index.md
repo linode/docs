@@ -39,10 +39,6 @@ StackScripts are usually Bash scripts, stored in the Linode Cloud Manager, and c
 
     [![StackScript selection options.](stackscripts-selection-screen-small.png "StackScript selection options.")](stackscripts-selection-screen.png)
 
-<!-- Alternatively, you can follow along with this video, which will show you how to deploy from a StackScript:
-
-{{< youtube XviHHyXVH20 >}} -->
-
 ### Using a Community StackScript
 
 {{< note >}}
