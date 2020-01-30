@@ -216,7 +216,7 @@ For more details, see the [Understanding the Cloud Manager Events and Activity F
 The **My Profile** section of Cloud Manager provides access to various settings related to your Linode account's profile. This area of Cloud Manager contains access to the following features and settings:
 
 - [Changing your account's associated email address](/docs/platform/manager/accounts-and-passwords/#changing-your-email-address) and timezone
-- [Resetting your Account password](/docs/platform/manager/accounts-and-passwords/#changing-or-resetting-your-linode-cloud-manager-password) managing trusted devices
+- [Resetting your Account password](/docs/platform/manager/accounts-and-passwords/#changing-or-resetting-your-linode-cloud-manager-password)
 - [Enabling two-factor authentication](/docs/security/linode-manager-security-controls/#enable-two-factor-authentication)
 - Managing trusted devices
 - [Adding and managing public SSH keys](/docs/security/authentication/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager)
