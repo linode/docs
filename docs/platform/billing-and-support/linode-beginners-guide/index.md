@@ -116,4 +116,4 @@ For those just getting started with Linux systems, we've created a series of gui
 
 ## Where can I get help with something not covered here?
 
-We always recommend consulting our excellent [user community](https://forum.linode.com) first when faced with a question that doesn't seem to be addressed in our documentation. There is also an active community of users available to help on [IRC](https://www.linode.com/chat). If you get stuck you may also open a [support](https://www.linode.com/contact) ticket from the "Get Help" sidebar in the Cloud Manager.
+We always recommend consulting our excellent [user community](https://www.linode.com/community/questions/) first when faced with a question that doesn't seem to be addressed in our documentation. There is also an active community of users available to help on [IRC](https://www.linode.com/chat). If you get stuck you may also open a [support](https://www.linode.com/contact) ticket from the "Get Help" sidebar in the Cloud Manager.
