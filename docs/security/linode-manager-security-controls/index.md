@@ -6,7 +6,7 @@ description: 'How to use two-factor authentication and other security controls i
 og_description: 'This guide describes the security features of the Linode Cloud Manager, including two-factor authentication, IP address whitelisting, API access controls, forced password expiration, and more.'
 keywords: ["two-factor authentication", "password", "security", "Linode Cloud Manager", "token"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/linode-manager-security-controls/','linode-manager-security/','security/linode-manager-security-controls-new-manager/','platform/manager/keep-your-linode-account-safe/' ]
+aliases: ['security/linode-manager-security-controls/','linode-manager-security/','security/linode-manager-security-controls-new-manager/','platform/manager/keep-your-linode-account-safe/', '/docs/platform/manager/keep-your-linode-account-safe-classic-manager/' ]
 modified: 2019-01-08
 modified_by:
   name: Linode
@@ -20,7 +20,7 @@ The [Linode Cloud Manager](https://cloud.linode.com) is the gateway to all of yo
 
 This guide documents several of the Linode Cloud Manager's features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, the Linode Cloud Manager's built-in security tools can help.
 
-Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, and then [configure security event notifications](/docs/platform/manager/keep-your-linode-account-safe-classic-manager/#linode-event-notifications) for your Linode account. You'll also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
+Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, and then [configure security event notifications](/docs/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/#manage-email-event-notifications) for your Linode account. You'll also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
 
 ## Two-Factor Authentication
 
