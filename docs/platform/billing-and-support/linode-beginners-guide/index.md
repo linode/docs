@@ -59,7 +59,7 @@ First, you might want to give the [Linode Backup Service](http://www.linode.com/
 
 -   [Introduction to Rsync](/docs/tools-reference/tools/introduction-to-rsync/) - Using `rsync` to mirror files to another server.
 -   [Using Rdiff-backup with SSHFS](/docs/security/backups/using-rdiff-backup-with-sshfs/) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
--   [Duplicating a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#duplicating-a-disk) - Creating an exact copy of a disk in the Linode Manager.
+-   [Duplicating a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#duplicating-a-disk) - Creating an exact copy of a disk in the Cloud Manager.
 -   [Copying a Disk Over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/) - How to download an exact binary image of your Linode's disk over SSH.
 
 ## How can I install software on my Linode?
@@ -68,17 +68,17 @@ Please refer to our guide on [Linux package management](/docs/tools-reference/li
 
 ## How do I add another IP address?
 
-You may add an additional public IP address from the "Remote Access" tab in the Linode Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
+You may add an [additional public IP address](/docs/platform/manager/remote-access/#adding-public-ip-addresses) from the **Networking** tab for each Linode in the Linode Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
 
 {{< note >}}
-We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the "Support" tab of the Linode Manager explaining the reason for the new IP.
+We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the [Support Tickets](https://cloud.linode.com/support/tickets) section of the Cloud Manager Manager explaining the reason for the new IP.
 {{< /note >}}
 
-If you'd like to take advantage of our private networking feature, you may add a private IP to your Linode from the "Remote Access" tab of the Linode Manager. Private IP addresses are not publicly accessible, although they are accessible from other Linodes in the same data center. Although we take measures to prevent others from intercepting your private IP traffic, you may still wish to configure a firewall to allow access from only the Linodes that you operate.
+If you'd like to take advantage of our private networking feature, you may add a private IP to your Linode from the **Networking** tab for each Linode in the Cloud Manager. Private IP addresses are not publicly accessible, although they are accessible from other Linodes in the same data center. Although we take measures to prevent others from intercepting your private IP traffic, you may still wish to configure a firewall to allow access from only the Linodes that you operate.
 
 ## How do I set the reverse DNS for an IP address?
 
-You may use the "Reverse DNS" link on the "Remote Access" tab in the Linode Manager. Please note that the value you specify needs to match an A record or CNAME in DNS pointing to your Linode's IP address. It may take up to 48 hours for reverse DNS updates to take effect.
+To [set rDNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/), you can use the **More Options** ellipsis next to your Linode's IPv4 address from the **Networking** tab in the Linode Cloud Manager. Please note that the value you specify needs to match an A record or CNAME in DNS pointing to your Linode's IP address. It may take up to 48 hours for reverse DNS updates to take effect.
 
 ## Why does my Linode keep crashing?
 
@@ -88,11 +88,11 @@ If an application is crashing, be sure to check its error logs. These are typica
 
 ## Why is my connection to my Linode slow or broken?
 
-First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to and from your Linode, and submit them via the "Support" tab in the Linode Manager. You may need to use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) if you're having problems reaching your Linode via normal networking.
+First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to and from your Linode, and [submit them](/docs/platform/billing-and-support/support/#contacting-linode-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) if you're having problems reaching your Linode via normal networking.
 
 ## How can I upgrade or downgrade my Linode?
 
-Resizing your Linode is automated via the "Resize" tab in the Linode Manager, pending availability for the plan you wish to move to in your data center. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For more information, refer to our guide on [resizing a Linode](/docs/platform/disk-images/resizing-a-linode/)
+Resizing your Linode is automated via the **Resize** tab for your Linode in the Cloud Manager, pending availability for the plan you wish to move to in your data center. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For more information, refer to our guide on [resizing a Linode](/docs/platform/disk-images/resizing-a-linode/)
 
 ## How can I test downloads speeds from different data centers?
 
@@ -116,4 +116,4 @@ For those just getting started with Linux systems, we've created a series of gui
 
 ## Where can I get help with something not covered here?
 
-We always recommend consulting our excellent [user community](https://forum.linode.com) first when faced with a question that doesn't seem to be addressed in our documentation. There is also an active community of users available to help on [IRC](https://www.linode.com/chat). If you get stuck you may also open a [support](https://www.linode.com/contact) ticket from the "Support" tab in the Linode Manager.
+We always recommend consulting our excellent [user community](https://forum.linode.com) first when faced with a question that doesn't seem to be addressed in our documentation. There is also an active community of users available to help on [IRC](https://www.linode.com/chat). If you get stuck you may also open a [support](https://www.linode.com/contact) ticket from the "Get Help" sidebar in the Cloud Manager.
