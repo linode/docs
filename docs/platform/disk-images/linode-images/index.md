@@ -5,13 +5,12 @@ author:
 description: How to retain Disks with the Linode Images service
 keywords: ["linode Images", " imagize"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/linode-images/','linode-images/','platform/disk-images/linode-images-new-manager/']
+aliases: ['linode-images/','platform/disk-images/linode-images-new-manager/','platform/disk-images/linode-images-classic-manager/','platform/linode-images/']
 modified: 2018-08-22
 modified_by:
   name: Linode
 published: 2014-09-25
 title: Linode Images
-classic_manager_link: platform/disk-images/linode-images-classic-manager/
 ---
 
 ![Linode Images](linode-images.jpg)

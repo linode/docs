@@ -5,13 +5,12 @@ author:
 description: Our guide to the remote access area of the Linode Manager.
 keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['remote-access/','networking/remote-access/']
+aliases: ['remote-access/','networking/remote-access/','platform/manager/remote-access-classic-manager/']
 modified: 2019-03-05
 modified_by:
   name: Phil Zona
 published: 2016-08-23
 title: Remote Access
-classic_manager_link: platform/manager/remote-access-classic-manager/
 ---
 
 The Networking tab of the Linode detail page in the [Cloud Manager](https://cloud.linode.com) contains important network settings for your Linode. Use this tab to find your IP address, set the reverse DNS, configure IP sharing (called IP failover in the Classic Manager), and swap IP addresses with another Linode. You can also access the Linode Shell (Lish) console to remotely connect to your Linode and troubleshoot problems.
