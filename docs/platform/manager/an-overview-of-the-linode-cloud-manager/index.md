@@ -2,34 +2,29 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide provides an overview of Linode''s Cloud Manager for users who are more familiar with the Classic Manager. You will find information about each section of the Cloud Manager, specific features that you may need help finding, and settings that might make your overall Cloud Manager experience.'
-og_description: 'This guide provides an overview of Linode''s Cloud Manager for users who are more familiar with the Classic Manager. You will find information about each section of the Cloud Manager, specific features that you may need help finding, and settings that will improve your overall Cloud Manager experience.'
+description: 'This guide provides an overview of the Linode Cloud Manager. You will find information about each section of the Cloud Manager, specific features that you may need help finding, and settings that might make your overall Cloud Manager experience better.'
+og_description: 'This guide provides an overview of the Linode Cloud Manager. You will find information about each section of the Cloud Manager, specific features that you may need help finding, and settings that might make your overall Cloud Manager experience better.'
 keywords: ["classic manager","cloud manager","linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['platform/manager/a-classic-to-cloud-manager-overview-guide/']
 published: 2019-12-20
+modified: 2020-01-29
 modified_by:
   name: Linode
-title: 'An Overview of Linode''s Cloud Manager for Classic Manager Users'
-h1_title: 'An Overview of Linode''s Cloud Manager for Classic Manager Users'
+title: 'An Overview of the Linode Cloud Manager'
+h1_title: 'An Overview of the Linode Cloud Manager'
 contributor:
   name: Linode
 ---
-Linode's Classic Manager will be [retired on January 31, 2020](https://www.linode.com/2019/11/18/notice-legacy-linode-manager-users/). At that time, all users will be migrated to the new [Cloud Manager](https://cloud.linode.com/) when logging in to manage your infrastructure on Linode.
 
-There have been substantial updates to Cloud Manager since it was introduced back in 2014. Cloud Manager has many new features, including an updated look-and-feel, modern user-interface, mobile support, and easy access to our recently released products. It’s also implemented solely atop our [public APIv4](https://developers.linode.com/api/v4).
-
-[Development work for Cloud Manager](https://github.com/linode/manager/) will continue beyond January 31, 2020. As always, your feedback for Cloud Manager or any other aspect of our platform is welcome at feedback@linode.com.
-
-{{< note >}}
-We will continue to support APIv3 and the APIv3-based CLI beyond January 31, 2020.
-{{</ note >}}
+The [Linode Cloud Manager](https://cloud.linode.com/) provides a user-friendly interface to manage your infrastructure, user accounts, billing and payments, and to open and track support tickets. You can easily create Linode instances, managed Kubernetes clusters, add backups to your Linodes, deploy One-Click Apps, track event notifications, create Object Storage buckets, and more. The Cloud Manager is implemented solely atop our [public APIv4](https://developers.linode.com/api/v4), which gives you access to all our latest products and services.
 
 ## In this Guide
 
-If you are a Classic Manager user, this guide will provide an overview of the features and services available in Linode's Cloud Manager. Some of the topics that will be discussed are:
+This guide provides an overview of the features and services available in Linode's Cloud Manager. Some of the topics that will be discussed are:
 
 - An introduction to each section of the Cloud Manager, including links to related guides throughout our documentation library.
-- Specific features that you may need help finding due to differences in location between Classic Manager and Cloud Manager
+- The location of commonly used Cloud Manager features.
 - Settings that might make your overall Cloud Manager experience better
 
 ## Linodes
@@ -47,7 +42,8 @@ The Linodes section of Cloud Manager allows you to create and manage your Linode
 - [Cross data center migrations](/docs/platform/migrating-to-a-different-data-center/)
 
 ### Find Your Disks
-In Classic Manager, Disks were located in the Linode Dashboard tab. In the Cloud Manager, Disks are now in the **Disks/Configs** tab of the Linode.
+
+You can find your Linode's disks in the **Disks/Configs** tab of the Linode's detail page.
 
 1.  Click the **Linodes** link in the sidebar menu and select the Linode whose disks you'd like to see.
 
@@ -67,14 +63,14 @@ You can reboot a Linode from two places within the Cloud manager.
 
     ![Cloud Manager Reboot Detail Panel](classic-to-cloud-reboot-detail-panel.png "Cloud Manager Reboot Detail Panel")
 
-1. You can also reboot your Linode from within any Linode detail screen by clicking on the **Status Icon**. A drop down menu will appear, select *Reboot*.
+1. You can also reboot your Linode from within any Linode details page by clicking on the **Status Icon**. A drop down menu will appear, select *Reboot*.
 
     ![Cloud Manager Linode Detail Menu Reboot Option](classic-to-cloud-manager-linode-detail-reboot-menu.png "Cloud Manager Linode Detail Menu Reboot Option")
 
     Again, if you have more than one *Configuration Profile*, a panel will appear to allow you to select which Configuration to boot. Select a Config and click the **Submit** button. Otherwise, a confirmation dialog will appear.
 
 ### Delete a Public IP Address
-You can delete public IP addresses in both Classic and Cloud managers. In Classic Manager, this was done under the **Remote Access** tab from the Linode you wished to modify. In Cloud Manager it is done in the **Networking** tab.
+You can delete a public IP addresses within the Cloud Manager from the **Networking** tab in a Linode's details page.
 
 1.  Click **Linodes** from the sidebar menu.
 
@@ -94,18 +90,9 @@ You must have at least one public IP on a Linode. If you attempt to delete the l
 
 The **Volumes** section of Cloud Manager gives you access to Linode's [Block Storage](https://www.linode.com/products/block-storage/) service. To learn how to create, and manage Block Storage volumes using Cloud Manager, see our [How to Use Block Storage with Your Linode](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) guide.
 
-### Find Volumes
-In Classic Manager, Volumes were found within a Linode's Dashboard tab. In Cloud Manager, Volumes are their own top-level menu item in the sidebar.
-
-![Cloud Manager Volumes](classic-to-cloud-cloud-manager-volumes.png "Cloud Manager Volumes")
-
-{{< note >}}
-In Cloud Manager, you can also access Volumes from a [Linode's detail page](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#add-a-volume-from-the-linode-detail-page).
-{{</ note >}}
-
 ## Object Storage
 
-The **Object Storage** section of Cloud Manager gives you access to Linode’s [Object Storage service](https://www.linode.com/products/object-storage/) which is a globally-available, S3-compatible method for storing and accessing data. The Object Storage service is not available in Classic Manager.
+The **Object Storage** section of Cloud Manager gives you access to Linode’s [Object Storage service](https://www.linode.com/products/object-storage/) which is a globally-available, S3-compatible method for storing and accessing data.
 
 To learn how to begin using Object Storage, view our [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide. To access all available Object Storage guides, see the [Object Storage section](/docs/platform/object-storage/) of our documentation site.
 
@@ -114,7 +101,7 @@ To learn how to begin using Object Storage, view our [How to Use Linode Object S
 Linode's [NodeBalancers service](https://www.linode.com/products/nodebalancers/) provides load balancing for your applications and services ensuring that they are highly available for users. To learn how to get started with NodeBalancers using Cloud Manager, see our [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/#additional-nodebalancers-and-features) guide.
 
 ## Domains (DNS Manager)
-The DNS Manager allows you to control and manage your domains. In Cloud Manager, the DNS Manager is located in the **Domains** link in the sidebar.
+The DNS Manager allows you to control and manage your domains. You can access the DNS Manager by navigating to the **Domains** link in the Cloud Manager's sidebar.
 
 ![Cloud Manager Domains](classic-to-cloud-cloud-manager-domains.png "Cloud Manager Domains")
 
@@ -126,10 +113,10 @@ For more information on Cloud Manager's DNS Manager, see the following guides:
 
 ### Zone Files
 
-Cloud Manager does not include the **Check Zone** and **Zone File** features, since it automatically ensures that your Domain's zone file does not contain any errors.
+The Cloud Manager automatically ensures that your Domain's zone file does not contain any errors when a Domain Record is created or updated.
 
 {{< note >}}
-This Cloud Manager and API v4 functionality is currently under active development.
+This Cloud Manager and [API v4](https://developers.linode.com/api/v4) functionality is currently under active development.
 {{</ note >}}
 
 - When creating a Zone File for a Domain, the [Linode API v4](https://developers.linode.com/api/v4) checks for any errors that may exist. If an error is found, the Cloud Manager will respond with the corresponding error. This means that the Cloud Manager will not allow you to create an invalid zone file.
@@ -145,17 +132,17 @@ This Cloud Manager and API v4 functionality is currently under active developmen
 
 The **Longview** section of Cloud Manager gives you access to Linode’s system data graphing service. It tracks metrics for CPU, memory, and network bandwidth, both aggregate and per-process, and it provides real-time graphs that can help expose performance problems. The Longview service offers both [free and paid plan tiers](/docs/platform/longview/what-is-longview/#longview-plan-details).
 
-Longview is still being actively developed to reach parity with Classic Manager. To get started using Longview in Cloud Manager, see the [Understanding Linode Longview](/docs/platform/longview/what-is-longview/) guide.
+To get started using Longview, see the [Understanding Linode Longview](/docs/platform/longview/what-is-longview/) guide.
 
 ## One-Click Apps
 
-The **One-Click Apps** section of Cloud Manager gives you access to apps that make it easy to deploy and configure software on a Linode. Some popular One-Click Apps are [WordPress](/docs/platform/one-click/deploying-wordpress-with-one-click-apps/), [Minecraft](/docs/platform/one-click/deploying-minecraft-with-one-click-apps/), and [GitLab](/docs/platform/one-click/deploy-gitlab-with-one-click-apps/). We are actively adding new and useful One-Click apps. When a One-Click App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide. One-Click Apps are not available in Classic Manager.
+The **One-Click Apps** section of Cloud Manager gives you access to apps that make it easy to deploy and configure software on a Linode. Some popular One-Click Apps are [WordPress](/docs/platform/one-click/deploying-wordpress-with-one-click-apps/), [Minecraft](/docs/platform/one-click/deploying-minecraft-with-one-click-apps/), and [GitLab](/docs/platform/one-click/deploy-gitlab-with-one-click-apps/). We are actively adding new and useful One-Click apps. When a One-Click App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide.
 
 See [How to Use Linode's One-Click Apps](/docs/platform/one-click/how-to-use-one-click-apps-at-linode/) to get started using One-Click Apps in Cloud Manager.
 
 ## Kubernetes
 
-The Kubernetes section of Cloud Manager gives you access to our managed Kubernetes service, the Linode Kubernetes Engine (LKE). LKE is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes. LKE is not available in Classic Manager.
+The Kubernetes section of Cloud Manager gives you access to our managed Kubernetes service, the Linode Kubernetes Engine (LKE). LKE is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes.
 
 To get started using LKE, see our [Tutorial for Deploying and Managing a Cluster with Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
 
@@ -165,22 +152,11 @@ To get started using LKE, see our [Tutorial for Deploying and Managing a Cluster
 
 To get started using StackScripts in Cloud Manager, see the [Automate Deployment with StackScripts](/docs/platform/stackscripts/) guide.
 
-### Find StackScripts
-
-In Classic Manager, access to StackScripts was found under the Linodes tab. In Cloud Manager, StackScripts are their own top-level menu item in the sidebar.
-
-![Cloud Manager StackScripts](classic-to-cloud-cloud-manager-stackscripts.png "Cloud Manager StackScripts")
-
 ## Images
 
 The Images section of Cloud Manager gives you access to Linode Images which allow you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future.
 
 To get started using Images with Cloud Manager, see [Linode Images](/docs/platform/disk-images/linode-images/).
-
-### Find Images
-In Classic Manager, access to image management was found in the Linodes tab. In Cloud Manager, Images are their own top-level menu item in the sidebar.
-
-![Cloud Manager Images](classic-to-cloud-cloud-manager-images.png "Cloud Manager Images")
 
 ## Account (Management and Billing)
 
@@ -200,7 +176,7 @@ You can manage the following account and billing settings in the Account section
 
 ### Find Credit Remaining
 
-In the Cloud Manager, to find the amount of available credit that you have:
+To find the amount of available credit that you have:
 
 1. Click on the **Account** link from the sidebar menu.
 
@@ -209,7 +185,7 @@ In the Cloud Manager, to find the amount of available credit that you have:
 ![Credits Listed under Current Balance](classic-to-cloud-credits-applied.png "Credits Listed Under Current Balance")
 
 ### Printing an Invoice
-In Cloud Manager you can download a printable PDF of your invoice from your list of invoices or from within an individual invoice.
+You can download a printable PDF of your billing invoice from your list of invoices or from within an individual invoice.
 
 1.  Navigate to your Account by clicking on **Account** in the sidebar.
 
@@ -221,31 +197,26 @@ In Cloud Manager you can download a printable PDF of your invoice from your list
 
     ![Cloud Manager Download Invoice from Detail View](classic-to-cloud-download-invoice-from-detail.png "Cloud Manager Download Invoice from Detail View")
 
-### Import Display Groups
-If you have used the Display Groups feature in the Classic Manager, you can import your Display Groups to the Cloud Manager as [tags](/docs/quick-answers/linode-platform/tags-and-groups/):
-
-1.  Navigate to the **Account** page in the sidebar links menu, then click on the **Settings** tab.
-
-1.  Expand the panel labeled **Import Display Groups as Tags** and then click **Import Display Groups**:
-
-    ![Cloud Manager Import Display Groups](classic-to-cloud-cloud-import-display-groups.png "Cloud Manager Import Display Groups")
-
-1.  A form will appear that lists your Display Groups and asks you to confirm the import action. To proceed, click the **Import Display Groups Now** button in this form.
-
-    {{< note >}}
-Importing your Display Groups is a **one-time** operation. If you don't have any Display Groups configured in the Classic Manager this feature will not appear in the Cloud Manager.
-{{< /note >}}
-
 ### Password Management
 
 The Cloud Manager does not support forcing password expirations. Forcing password resets on a schedule is [bad practice from a security perspective](https://pages.nist.gov/800-63-FAQ/#q-b05). Current security research indicates that forced password changes do more harm than good. If you want to force password resets for users of your Linode account, we recommend using a password manager for this purpose.
+
+## Tags
+
+Linode’s Cloud Manager and [API v4](https://developers.linode.com/api/v4) allow you to create tags to help organize and group your Linode resources. Tags can be applied to [Linodes](#linodes), [Block Storage Volumes](#volumes), [NodeBalancers](#nodebalancers), and [Domains](#domains-dns-manager). See the [Tags and Groups](/docs/quick-answers/linode-platform/tags-and-groups/) guide to learn how to create, apply, and search for tags.
+
+## Events and Activity Feeds
+
+Tasks performed using the Linode Cloud Manager or other account specific tools like Linode’s [CLI](/docs/platform/api/linode-cli/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
+
+For more details, see the [Understanding the Cloud Manager Events and Activity Feeds](/docs/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/) guide.
 
 ## My Profile
 
 The **My Profile** section of Cloud Manager provides access to various settings related to your Linode account's profile. This area of Cloud Manager contains access to the following features and settings:
 
 - [Changing your account's associated email address](/docs/platform/manager/accounts-and-passwords/#changing-your-email-address) and timezone
-- [Resetting your Account password](/docs/platform/manager/accounts-and-passwords/#changing-or-resetting-your-linode-cloud-manager-password) managing trusted devices
+- [Resetting your Account password](/docs/platform/manager/accounts-and-passwords/#changing-or-resetting-your-linode-cloud-manager-password)
 - [Enabling two-factor authentication](/docs/security/linode-manager-security-controls/#enable-two-factor-authentication)
 - Managing trusted devices
 - [Adding and managing public SSH keys](/docs/security/authentication/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager)
@@ -256,7 +227,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 - Enable email alerts for account activity
 
 ### API Keys / API Tokens
-API Keys from Classic Manager do not transfer. This means that if you have keys generated in Classic, you will not see them in Cloud Manager. In Cloud Manager, API Keys are called API Tokens (personal access tokens) and can be used for a variety of different uses.
+API Tokens (personal access tokens) are used in token-based authentication to provide users or programming scripts with different levels of access to your Linode account's resources and services via the [Linode API v4](https://developers.linode.com/api/v4). You can create and manage your API tokens using the Cloud Manager.
 
 1.  To generate a new personal access token, navigate to your profile by clicking on your username and select **My Profile** from the drop down menu. Then click on the **API Tokens** tab.
 
@@ -268,18 +239,24 @@ API Keys from Classic Manager do not transfer. This means that if you have keys 
 
 1.  When you have finished, click **Submit** to generate a new Personal Access Token. Copy the token and save it to a secure location before closing the popup. **You will not be able to view this token through the Cloud Manager after closing the popup.**
 
+### OAuth Apps
+
+The Cloud Manager supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the [Linode APIv4](https://developers.linode.com/api/v4/). For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.
+
+To learn how to get started with OAuth Apps see the [How To Create an OAuth App with the Linode Python API Library](/docs/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/) guide. For details on the Linode API v4's OAuth workflow see the [Linode API v4 documentation](https://developers.linode.com/api/v4/#o-auth).
+
 ### Manage Email Event Notifications
 
 Email event notifications alert you when new events such as booting, shutting down, or updates to a Linode occur on your account. You can enable or disable email event notifications using the Cloud Manager.
 
-In Classic Manager email events notifications were managed in the **Notifications** tab under **my profile**. In Cloud Manager this is done in the **Settings** tab from [**My Profile**](https://cloud.linode.com/profile/display).
+You can manage your event notifications in the **Settings** tab from the [**My Profile**](https://cloud.linode.com/profile/display) section of the Cloud Manager.
 
 ![Cloud Manager Notification Settings](classic-to-cloud-cloud-manager-email-notifications.png "Cloud Manager Notification Settings")
 
 ## User Interface Enhancements
 
 ### Compact Mode and Dark Mode
-Cloud Manager by default uses more whitespace on the screen. However, there is a *Compact Mode* which compresses this extra space and allows more information to be displayed on the screen. This setting is located at the bottom left hand corner of the screen when the gear icon is clicked. This is also where you can toggle on *Dark Mode*.
+Cloud Manager provides three different UI themes that you can toggle on and off depending on your preference. By default, **Normal** mode will be selected. You can also choose **Compact Mode** which compresses any extra screen space and allows more information to be displayed on the screen. This setting is located at the bottom left hand corner of the screen when the gear icon is clicked. This is also where you can toggle on *Dark Mode*, which changes your UI's color scheme. **Light** mode is selected by default.
 
 ![Compact Mode Enabled](classic-to-cloud-compact-mode.png "Cloud Manager Compact Mode Enabled")
 
@@ -288,12 +265,3 @@ Cloud Manager by default uses more whitespace on the screen. However, there is a
 The Linode Cloud Manager has been built with accessibility in mind. Currently, the Cloud Manager is actively being developed to achieve [WCAG 2.0 Level AA](https://www.w3.org/TR/WCAG20/).
 
 We have received a lot of helpful feedback from our users regarding accessibility. While we have addressed a lot of your feedback, this is still a work in progress and will be iterated upon with time. Please contact feedback@linode.com with any comments or requests regarding accessibility.
-
-## Next Steps
-
-See the following guides for more features of Cloud Manager:
-
- - [What are the Cloud Manager Events and Activity Feeds](/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/)
- - [Longview in Cloud Manager](/platform/longview/what-is-longview/)
-
- If you still need help finding features in or using Cloud Manager, please contact [Linode Support](/platform/billing-and-support/support/).
