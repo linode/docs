@@ -5,12 +5,11 @@ author:
 description: Clone your Linode to another Linode.
 keywords: ["clone", " cloning", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['migrate-to-linode/disk-images/clone-your-linode/']
+aliases: ['migrate-to-linode/disk-images/clone-your-linode/','platform/disk-images/clone-your-linode-classic-manager/']
 modified_by:
   name: Linode
 published: 2019-03-18
 title: 'Clone Your Linode'
-classic_manager_link: 'platform/disk-images/clone-your-linode-classic-manager/'
 ---
 
 This guide will show you how to clone one of your Linode’s existing [disks and configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/) to a new Linode on your account.

@@ -5,7 +5,7 @@ author:
 description: 'Create Custom Instances and Automate Deployment with StackScripts.'
 keywords: ["ami", "automation", "elasticity", "cloud", "custom instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/stackscripts-new-manager/','stackscripts/']
+aliases: ['stackscripts/','platform/stackscripts-new-manager/','platform/stackscripts-classic-manager/']
 modified: 2018-08-22
 modified_by:
   name: Linode
@@ -13,7 +13,6 @@ published: 2011-04-05
 title: Automate Deployment with StackScripts
 external_resources:
   - '[StackScript Community Library](http://linode.com/stackscripts)'
-classic_manager_link: platform/stackscripts-classic-manager/
 ---
 
 ![Automate Deployment with StackScripts](automate-deployment-with-stackscripts.png "Automate Deployment with StackScripts")
@@ -39,10 +38,6 @@ StackScripts are usually Bash scripts, stored in the Linode Cloud Manager, and c
 1.  At this point you have the option of using a a Linode StackScript, Community StackScript, or one of your own.
 
     [![StackScript selection options.](stackscripts-selection-screen-small.png "StackScript selection options.")](stackscripts-selection-screen.png)
-
-<!-- Alternatively, you can follow along with this video, which will show you how to deploy from a StackScript:
-
-{{< youtube XviHHyXVH20 >}} -->
 
 ### Using a Community StackScript
 
