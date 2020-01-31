@@ -21830,6 +21830,12 @@ li.library-article-item:nth-child(odd) {
   margin-bottom: 8px;
   width: 100%;
 }
+.signup-top a {
+  color: #2d8ec6;
+}
+.signup-top a:hover {
+  color: #005170;
+}
 @media only screen and (min-width: 1200px) {
   .signup-top > div.row > div:first-child {
     padding-top: 4px;
