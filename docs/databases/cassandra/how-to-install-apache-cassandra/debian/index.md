@@ -5,8 +5,8 @@ author:
 description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Debian 9.'
 keywords: ["cassandra", " apache cassandra", " centos 7", "Debian 9", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 20120-01-30
-modified: 20120-01-30
+published: 2020-01-30
+modified: 2020-01-30
 modified_by:
   name: Linode
 title: "How to Install Apache Cassandra on Debian 10"
