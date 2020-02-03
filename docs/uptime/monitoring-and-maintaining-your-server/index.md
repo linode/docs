@@ -6,13 +6,12 @@ description: This guide introduces concepts and tools for monitoring and maintai
 og_description: This guide introduces concepts and tools for monitoring and maintaining your server.
 keywords: ["lassie", "monitor", "monitoring", "maintaining", "maintenance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['monitoring-and-maintaining/','uptime/monitoring-and-maintaining-your-server-new-manager/']
+aliases: ['monitoring-and-maintaining/','uptime/monitoring-and-maintaining-your-server-classic-manager/','uptime/monitoring-and-maintaining-your-server-new-manager/']
 modified: 2018-08-21
 modified_by:
   name: Linode
 published: 2012-08-22
 title: Monitoring and Maintaining Your Server
-classic_manager_link: uptime/monitoring-and-maintaining-your-server-classic-manager/
 ---
 
 ![Monitoring and Maintaining Your Server](monitor-and-maintain-your-server.png "Monitoring and Maintaining Your Server")
