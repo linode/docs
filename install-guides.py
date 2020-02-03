@@ -23,8 +23,8 @@ finalSourceCentOS = source + "/" + "how-to-install-x-on-centos"
 
 # Build destination for remaining subdirectories
 destinationUbuntu = currentDirectory + "/docs/" + firstargument + "/"+ endDir + "-ubuntu"
-destinationDebian = currentDirectory + "/docs/" + firstargument + "/"+ endDir + "-ubuntu"
-destinationCentOS = currentDirectory + "/docs/" + firstargument + "/"+ endDir + "-ubuntu"
+destinationDebian = currentDirectory + "/docs/" + firstargument + "/"+ endDir + "-debian"
+destinationCentOS = currentDirectory + "/docs/" + firstargument + "/"+ endDir + "-centos"
 
 print("Will move these directories:\n" + finalSourceUbuntu + "\n" + finalSourceDebian + "\n" + finalSourceCentOS + "\n")
 print("To this destination:\n" + destinationUbuntu + "\n" + destinationDebian + "\n" + destinationCentOS + "\n")
