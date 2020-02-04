@@ -6,7 +6,7 @@ description: "A text passage which will appear below the title of the section on
 keywords: ["keyword1", "keyword2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
-title: How to Use One-Time Passwords for Two-Factor Authentication with SSH
+title: Two-Factor Authentication with SSH
 show_in_lists: true
 ---
 

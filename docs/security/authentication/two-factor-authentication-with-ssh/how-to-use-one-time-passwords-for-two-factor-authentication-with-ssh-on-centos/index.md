@@ -2,8 +2,9 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Google Authenticator on a CentOS 7 to enable two-factor authentication for SSH connections.'
+description: 'Use Google Authenticator on to enable two-factor authentication for SSH connections on CentOS 7.'
 keywords: ["two factor authentication", "ssh", "google authenticator", "centos"]
+aliases: ['security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified_by:
@@ -16,10 +17,9 @@ external_resources:
 - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
 - '[Linux PAM Documentation](http://www.linux-pam.org/)'
 ---
+!['Header Image: Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS7'](two-factor-authentication-centos-title.png)
 
-In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH on CentOS 7.
-
-No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from being compromised. By default, you will need a password to log in, and you may also configure an authentication key-pair for even greater security. However, another option exists to complement these methods: [time-based one-time passwords](https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm) (*TOTPs*).
+In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH on CentOS 7. No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from being compromised. By default, you will need a password to log in, and you may also configure an authentication key-pair for even greater security. However, another option exists to complement these methods: [time-based one-time passwords](https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm) (*TOTPs*).
 
 TOTPs allow you to enable two-factor authentication for SSH with single-use passwords that change every 30 seconds. By combining this method with a regular password or publickey (or both), you can add an extra layer of security, further ensuring your server is sufficiently protected.
 
@@ -30,6 +30,10 @@ This guide will explain how to install the necessary software, configure your sy
 1.  This guide is meant to be used with a Linode running CentOS 7. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
 
 2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services). This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/security/securing-your-server/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
+
+    {{< note >}}
+If you plan on [combining two-factor and public key authentication](#combine-two-factor-and-public-key-authentication-optional), ensure you [upload your computer's public key](/docs/security/securing-your-server/#create-an-authentication-key-pair) to your Linode's [standard user account](/docs/security/securing-your-server/#add-a-limited-user-account) before beginning the steps in this guide.
+    {{</ note >}}
 
 3.  You will need a smartphone or another client device with an authenticator application such as [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) or [Authy](https://www.authy.com/). Many other options exist, and this guide should be compatible with nearly all of them.
 
@@ -143,7 +147,7 @@ auth    required      pam_google_authenticator.so
 
     The first line tells PAM to authenticate with a normal Unix user password before other methods. The second line specifies an additional method of authentication, which in this case, is the TOTP software we installed earlier.
 
-2.  Edit `/etc/ssh/sshd_config` to include the following lines, replacing `example-user` with any system user for which you'd like to enable two-factor authentication. Comments (preceded by #) are included here, but should not be added to your actual configuration file:
+1.  Edit `/etc/ssh/sshd_config` to include the following lines, replacing `example-user` with any system user for which you'd like to enable two-factor authentication. Comments (preceded by #) are included here, but should not be added to your actual configuration file:
 
     {{< file "/etc/ssh/sshd_config" >}}
 # This line already exists in the file, and should be changed from 'no' to 'yes'
@@ -164,13 +168,15 @@ Match User example-user
 If you want to enforce two-factor authentication globally, you can use the `AuthenticationMethods` directive by itself, outside of a `Match User` block. However, this should not be done until two-factor credentials have been provided to all users.
 {{< /note >}}
 
-3.  Restart the SSH daemon to apply these changes:
+1.  Restart the SSH daemon to apply these changes:
 
         sudo systemctl restart sshd
 
     Two-factor authentication is now enabled. When you connect to your Linode via SSH, the authentication process will proceed as shown in the diagram.
 
-![Two-factor authentication with SSH login.](two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
+    ![Two-factor authentication with SSH login.](two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
+
+1. Open a new terminal session and test your configuration by connecting to your Linode via SSH. You will be prompted to enter in your standard user account's password and then, you wil be prompted to enter in a `Verification Code`. Open your authorization app, select the account you created in the [Generate a Key](#generate-a-key) section and enter in the password that is displayed. You should authenticate successfully and gain access to your Linode.
 
 {{< note >}}
 If your SSH client disconnects before you can enter your two-factor token, check if PAM is enabled for SSH. You can do this by editing `/etc/ssh/sshd_config`: look for `UsePAM` and set it to `yes`. Don't forget to restart the SSH daemon.
