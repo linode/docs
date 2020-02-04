@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use Google Authenticator to enable two-factor authentication for SSH connections.'
 keywords: ["two factor authentication", "ssh", "google authenticator", "ubuntu", "debian"]
-aliases: ['security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/']
+aliases: ['security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-11-18
 modified_by:
