@@ -14,7 +14,7 @@ contributor:
   link: https://github.com/WebBamboo/
 external_resources:
 - '[VueJS](https://vuejs.org/)'
-- '[Github Repository of the guide](https://github.com/WebBamboo/)'
+- '[Example files of the guide](how-to-build-and-use-vuejs-components.tar.gz)'
 audiences: ["beginner"]
 languages: ["javascript"]
 ---
@@ -31,7 +31,7 @@ The goal of this guide is explaining to users new to VueJS what are components a
  - What are slots
  - What are component events
 
-You can download the files for this guide in this Git Repository
+You can [download the files for this guide here](how-to-build-and-use-vuejs-components.tar.gz)
 
 ## What are VueJS components
 In VueJS components are a way to create custom VueJS instances which can easily be reused in your code. In order to properly explain what VueJS components are we will build a very simple “rating-counter” component and I will explain each part.
