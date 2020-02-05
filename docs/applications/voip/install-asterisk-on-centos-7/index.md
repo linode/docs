@@ -262,7 +262,7 @@ Since it's not possible to add physical cards to a virtual machine you probably 
 
         ./configure --libdir=/usr/lib64 --with-jansson-bundled
 
-1.  Start the build process. After a short while, you should see a menu on screen allowing you to configure the features you want to build. This also produce generic binaries instead of native architecture optimized binaries.
+1.  Start the build process. After a short while, you should see a menu on screen allowing you to configure the features you want to build. This also produces generic binaries instead of native architecture optimized binaries.
 
         make menuselect --disable BUILD_NATIVE menuselect.makeopts
 
