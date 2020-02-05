@@ -2,14 +2,14 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Getting started with MariaDB on CentOS 7'
+description: 'Getting started with MariaDB on CentOS 8'
 keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-08-21
+modified: 2020-02-04
 modified_by:
     name: Linode
-published: 2015-08-21
-title: 'How to Install MariaDB on CentOS 7'
+published: 2020-02-04
+title: 'How to Install MariaDB on CentOS 8'
 external_resources:
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[MySQL Reference Manuals](https://dev.mysql.com/doc/)'
@@ -20,9 +20,7 @@ external_resources:
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.
 
-![How to Install MariaDB on CentOS 7](how-to-install-mariadb-on-centos-7.png)
-
-MariaDB replaced MySQL as the default database system in the CentOS 7 repositories. Though installing MySQL into CentOS 7 is not difficult (see our [MySQL CentOS 7 guide](/docs/databases/mysql/how-to-install-mysql-on-centos-7/) for instructions), if you simply need a database MariaDB is recommended for official support and a minimal chance of incompatibilities with other repository software.
+MariaDB replaced MySQL as the default database system in the CentOS 8 repositories. Though installing MySQL into CentOS 8 is not particularly difficult, if you simply need a database MariaDB is recommended for official support and a minimal chance of incompatibilities with other repository software.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.

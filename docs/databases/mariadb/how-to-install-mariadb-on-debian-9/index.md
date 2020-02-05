@@ -1,28 +1,26 @@
 ---
 author:
-    name: Linode
-    email: docs@linode.com
-description: 'Getting started with MariaDB on CentOS 7'
-keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
+  name: Linode Community
+  email: docs@linode.com
+description: 'This guide shows how to install and configure the MariaDB database server on Debian 9.'
+og_description: 'MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 9.'
+keywords: ["mariadb", "Debian 9", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-08-21
+aliases: ['databases/mariadb/mariadb-setup-debian/']
+modified: 2020-01-31
+contributor:
+    name: Ryan Syracuse
 modified_by:
-    name: Linode
-published: 2015-08-21
-title: 'How to Install MariaDB on CentOS 7'
+  name: Linode
+published: 2020-01-31
+title: How to Set Up MariaDB on Debian 9
 external_resources:
- - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
- - '[MySQL Reference Manuals](https://dev.mysql.com/doc/)'
- - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
- - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
- - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
+ - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
+ - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
+ - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
 ---
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.
-
-![How to Install MariaDB on CentOS 7](how-to-install-mariadb-on-centos-7.png)
-
-MariaDB replaced MySQL as the default database system in the CentOS 7 repositories. Though installing MySQL into CentOS 7 is not difficult (see our [MySQL CentOS 7 guide](/docs/databases/mysql/how-to-install-mysql-on-centos-7/) for instructions), if you simply need a database MariaDB is recommended for official support and a minimal chance of incompatibilities with other repository software.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -41,31 +39,17 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 2.  Update your system:
 
-        sudo yum update
-
+        sudo apt update
 
 ## Install and Start MariaDB
 
-    sudo yum install mariadb-server
-
-Enable MariaDB to start on boot and then start the service:
-
-    sudo systemctl enable mariadb
-    sudo systemctl start mariadb
+    sudo apt install mariadb-server
 
 MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/docs/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel/), which also applies to MariaDB.
 
 {{< note >}}
 Allowing unrestricted access to MariaDB on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MariaDB to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 {{< /note >}}
-
-## Harden MariaDB Server
-
-1.  Run the `mysql_secure_installation` script to address several security concerns in a default MariaDB installation:
-
-        sudo mysql_secure_installation
-
-You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
 ## Using MariaDB
 
@@ -77,7 +61,7 @@ The standard tool for interacting with MariaDB is the `mariadb` client, which in
 
         mysql -u root -p
 
-2.  When prompted, enter the root password you assigned when the `mysql_secure_installation` script was run.
+2.  When prompted for login credentials, hit enter. By default MariaDB will authenticate you via the **unix_socket plugin** and credentials are not required.
 
     You'll then be presented with a welcome header and the MariaDB prompt as shown below:
 
@@ -115,6 +99,25 @@ The standard tool for interacting with MariaDB is the `mariadb` client, which in
         For server side help, type 'help contents'
 
         MariaDB [(none)]>
+
+## Harden MariaDB Server
+
+1. After accessing MariaDB as the root user of your database, enable the **mysql_native_password**
+plugin to enable root password authentication:
+
+        USE mysql;
+        UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+        FLUSH PRIVILEGES;
+        exit;
+
+
+
+1.  Run the `mysql_secure_installation` script to address several security concerns in a default MariaDB installation:
+
+        sudo mysql_secure_installation
+
+You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
+
 
 ### Create a New MariaDB User and Database
 1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password:
