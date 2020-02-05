@@ -262,9 +262,9 @@ Since it's not possible to add physical cards to a virtual machine you probably 
 
         ./configure --libdir=/usr/lib64 --with-jansson-bundled
 
-1.  Start the build process. After a short while, you should see a menu on screen allowing you to configure the features you want to build.
+1.  Start the build process. After a short while, you should see a menu on screen allowing you to configure the features you want to build. This also produces generic binaries instead of native architecture optimized binaries.
 
-        make menuselect
+        make menuselect --disable BUILD_NATIVE menuselect.makeopts
 
 1.  If you want to use the MP3 format with Music on Hold, you should select `Add-Ons`, then use the right arrow to move to the right-hand list. Navigate to `format_mp3` and press **Enter** to select it.
 
