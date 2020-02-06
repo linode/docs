@@ -99,7 +99,7 @@ Processing triggers for libc-bin (2.24-11+deb9u4) ...
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
 PrivateKey = <Private Key>
-Address = 192.168.2.1/24, fd86:ea04:1115::1/64
+Address = 10.0.0.1/24, fd86:ea04:1115::1/64
 ListenPort = 51820
 PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
@@ -170,7 +170,7 @@ interface: wg0
     {{< output >}}
 user@debian:/# ifconfig wg0
 wg0: flags=209<UP,POINTOPOINT,RUNNING,NOARP>  mtu 1420
-        inet 192.168.2.1  netmask 255.255.255.0  destination 192.168.2.1
+        inet 10.0.0.1  netmask 255.255.255.0  destination 10.0.0.1
         inet6 fd86:ea04:1115::1  prefixlen 64  scopeid 0x0<global>
         unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 1  (UNSPEC)
         RX packets 0  bytes 0 (0.0 B)
@@ -195,7 +195,7 @@ For installation instructions on other operating systems, see the [WireGuard doc
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
 PrivateKey = <Client Private Key>
-Address = 192.168.2.2/24, fd86:ea04:1115::5/64
+Address = 10.0.0.2/24, fd86:ea04:1115::5/64
     {{< /file >}}
 
     The difference between the client and the server's configuration file, `wg0.conf`, is it contains **its own** IP addresses and does not contain the `ListenPort`, `PostUP`, `PostDown`, or `SaveConfig` values.
@@ -215,7 +215,7 @@ Address = 192.168.2.2/24, fd86:ea04:1115::5/64
 [Peer]
 PublicKey = <Server Public key>
 Endpoint = <Server Public IP>:51820
-AllowedIPs = 192.168.2.2/24, fd86:ea04:1115::0/64
+AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::0/64
 {{< /file >}}
 
 1.  Edit the `wg0.conf` file on the server to add the client's public key and allowed IPs.
@@ -223,7 +223,7 @@ AllowedIPs = 192.168.2.2/24, fd86:ea04:1115::0/64
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Peer]
 PublicKey = <Client Public Key>
-AllowedIPs = 192.168.2.2/24, fd86:ea04:1115::0/64
+AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::0/64
 {{< /file >}}
 
 1.  Restart the `wg` service on both the server and the client:
@@ -234,7 +234,7 @@ AllowedIPs = 192.168.2.2/24, fd86:ea04:1115::0/64
 
     Run the following command from the server. Replace the example IP addresses with those of the client:
 
-        sudo wg set wg0 peer <Client Public Key> allowed-ips 203.0.123.12/24,fd86:ea04:1115::5/64
+        sudo wg set wg0 peer <Client Public Key> allowed-ips 10.0.0.2/24,fd86:ea04:1115::5/64
 
 1.  Verify the connection. The following command can be run from both the client or the server:
 
@@ -245,13 +245,13 @@ AllowedIPs = 192.168.2.2/24, fd86:ea04:1115::0/64
     {{< output >}}
 user@debian:/# sudo wg
 interface: wg0
-  public key: Nrl2nVQxSwrKrvz6jQcrsziuVRPWT9N1Q8/yaQkAXUg=
+  public key: vD2blmqeKsV0OU0GCsGk7NmVth/+FLhLD1xdMX5Yu0I=
   private key: (hidden)
   listening port: 51820
 
-peer: I8s7YGMuUbPvStb686JjxfUAa/tzqZhcLDgiqRKlbWs=
-  endpoint: 173.255.226.233:59850
-  allowed ips: 192.168.2.0/24, fd86:ea04:1115::/64
+peer: iMT0RTu77sDVrX4RbXUgUBjaOqVeLYuQhwDSU+UI3G4=
+  endpoint: 10.0.0.2:51820
+  allowed ips: 10.0.0.2/24, fd86:ea04:1115::/64
 {{< /output >}}
 
     This Peer section will be automatically added to `wg0.conf` when the service is restarted. If you would like to add this information immediately to the config file, you can run:
@@ -264,7 +264,7 @@ peer: I8s7YGMuUbPvStb686JjxfUAa/tzqZhcLDgiqRKlbWs=
 
 1. Return to the client and ping the server:
 
-        ping 192.168.2.1
+        ping 10.0.0.1
 
     Once you've successfully established the ability to ping the server from the client, run the following command:
 
