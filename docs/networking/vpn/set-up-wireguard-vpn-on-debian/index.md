@@ -26,7 +26,7 @@ Configuring WireGuard is as simple as setting up SSH. A connection is establishe
   {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
 PrivateKey = <Private Key>
-Address = 192.168.2.1/24, fd86:ea04:1115::1/64
+Address = 10.0.0.1/24, fd86:ea04:1115::1/64
 ListenPort = 51820
 PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
@@ -34,7 +34,7 @@ SaveConfig = true
 
 [Peer]
 PublicKey = <Client Public Key>
-AllowedIPs = 192.168.2.2/24, fd86:ea04:1115::0/64
+AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::0/64
   {{< /file >}}
 
 In this guide you will learn how to:
