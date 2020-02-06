@@ -330,7 +330,7 @@ The response body provides information about the number of nodes in the node poo
 If desired, you can use your node pool's Linode ID(s) to get more details about each node in the pool. Send a `GET` request  to the `/linode/indstances/{linodeId}` endpoint. In this example, ensure you replace `13841932` with your Linode's ID.
 
     curl -H "Authorization: Bearer $TOKEN" \
-        https://api.linode.com/v4/linode/instances/13841932
+        https://api.linode.com/v4beta/linode/instances/13841932
 
 Although you have access to your cluster's nodes, it is recommended that you only interact with your nodes via the Linode's LKE interfaces (like the LKE endpoints in Linode's API, or the Kubernetes section in the Linode Cloud Manager), or via the Kubernetes API and kubectl.
 {{< /note >}}
