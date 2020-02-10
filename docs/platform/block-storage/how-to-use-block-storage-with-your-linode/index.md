@@ -200,6 +200,27 @@ Storage Volumes **cannot** be sized down, only up. Keep this in mind when sizing
 
         mount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1 /mnt/BlockStorage1
 
+## How to Transfer a Volume to a New Linode
+
+1. Follow the steps to safely detach your volume as mentioned [above]
+(#how-to-detach-a-block-storage-volume-from-a-linode).
+
+1.   Click the **more options ellipsis** to open the menu for the Volume you want to attach to a Linode and select **Attach**:
+
+     [![Open Volume menu.](bs-cloud-attach-volume-small.png)](bs-cloud-attach-volume.png)
+
+1.   Since the Volume already has a filesystem on it, create a mountpoint for the new Linode, provided it hasn't already been created:
+
+        mkdir /mnt/BlockStorage1
+
+1.   Mount the new Volume, where FILE_SYSTEM_PATH is your Volume’s file system path:
+
+        mount FILE_SYSTEM_PATH /mnt/BlockStorage1
+
+1.  If you want to mount the new Volume automatically every time your Linode boots, you'll want to add the following line to your **/etc/fstab** file:
+
+        FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2
+
 ## How to Transfer Block Storage Data Between Data Centers
 
 Block Storage volumes cannot be directly migrated to a different Data Center. This section will show you how to transfer a volume's data to a different data center.
