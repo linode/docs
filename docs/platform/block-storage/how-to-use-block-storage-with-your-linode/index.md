@@ -215,7 +215,11 @@ Storage Volumes **cannot** be sized down, only up. Keep this in mind when sizing
 
 1.   Mount the new Volume, where FILE_SYSTEM_PATH is your Volume’s file system path:
 
-        FILE_SYSTEM_PATH /mnt/BlockStorage1
+        mount FILE_SYSTEM_PATH /mnt/BlockStorage1
+
+1.  If you want to mount the new Volume automatically every time your Linode boots, you'll want to add the following line to your **/etc/fstab** file:
+
+        FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2
 
 ## How to Transfer Block Storage Data Between Data Centers
 
