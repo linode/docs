@@ -21,7 +21,7 @@ external_resources:
    - '[The Cassandra Query Language (CQL)](http://cassandra.apache.org/doc/latest/cql/index.html)'
 ---
 
-After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running CentOS 8. This tutorial will cover basic configuration options, as well as harden database security.
+After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running CentOS 8. This tutorial will cover basic configuration options, as well as how to harden and secure your database.
 
 {{< note >}}
  In order to successfully execute the commands in this guide, you will need to run them as the `root` user, or log in using an account with root privileges, prefixing each command with `sudo`.
@@ -161,7 +161,7 @@ permissions_validity_in_ms: 0
 1.  Create a new superuser. Replace the brackets as well as the content inside with the applicable information:
 
 
-        CREATE ROLE [new_superuser] WITH PASSWORD = '[secure_password]' AND SUPERUSER = true AND LOGIN = true;
+        CREATE ROLE '[new_superuser]' WITH PASSWORD = '[secure_password]' AND SUPERUSER = true AND LOGIN = true;
 
 1. Log out by typing `exit`.
 
@@ -176,7 +176,7 @@ permissions_validity_in_ms: 0
 
 1.  Grant all permissions to the new superuser account. Replace the brackets and contents inside with your superuser account username:
 
-        GRANT ALL PERMISSIONS ON ALL KEYSPACES TO [superuser];
+        GRANT ALL PERMISSIONS ON ALL KEYSPACES TO '[superuser]';
 
 1.  Log out by typing `exit`.
 
@@ -206,7 +206,6 @@ You can find a sample file containing all the configuration options in the examp
     {{</ note >}}
 
     {{< file "~/.cassandra/cqlshrc" aconf >}}
-. . .
 
 ;; Options that are common to both COPY TO and COPY FROM
 
@@ -238,7 +237,6 @@ float_precision = 5
 ;; The encoding used for characters
 encoding = utf8
 
-. . .
 {{< /file >}}
 
 
