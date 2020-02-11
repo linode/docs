@@ -35,12 +35,13 @@ In this guide you will:
 
 ## Before You Begin
 
-To run the examples in this guide, your workstation or server will need to have Go installed, and the `go` CLI will need to be set in your terminal's PATH:
-
-- If you use Ubuntu, follow our [How to Install Go on Ubuntu](/docs/development/go/install-go-on-ubuntu/) guide.
-- Follow the [Getting Started](https://golang.org/doc/install) guide on Golang's website to install on other operating systems.
+{{< content "before-you-begin-install-go-shortguide" >}}
 
 An introductory-level knowledge of Go is assumed by this guide. If you're just getting started with Go, check out our [Learning Go Functions, Loops, and Errors](/docs/development/go/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
+
+{{< note >}}
+This guide was written with Go version 1.13.
+{{< /note >}}
 
 ## A Simple Struct
 
