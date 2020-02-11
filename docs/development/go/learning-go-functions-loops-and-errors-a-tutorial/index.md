@@ -2,7 +2,7 @@
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'An introduction to the popular open source Go programming language. This guide is a quick introduction on how to execute Go code, how to use loops, how to create functions, and how to handle errors.'
+description: 'Learn how to use loops, how to create functions, and how to handle errors in the Go language.'
 keywords: ["Go", "Golang", "functions", "loops"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-13
@@ -19,152 +19,21 @@ external_resources:
   - '[A Tour of Go](https://tour.golang.org/welcome/1)'
 ---
 
-## Introduction
+After you've learned the syntax of a simple "Hello World" script in Go, you'll likely want to start making more complicated programs. This guide will introduce language constructs that help with structuring your programs, including:
 
-[Go](https://golang.com) is a modern, open source, and general-purpose programming language that began as an internal Google project and was officially announced at the end of 2009. Go was inspired by many other programming languages including C, Pascal, Alef, and Oberon. Its spiritual fathers were Robert Griesemer, Ken Thomson, and Rob Pike, who all designed Go as a language for professional programmers that want to build reliable, robust, and efficient software. Apart from its syntax and its standard functions, Go comes with a rich standard library.
-
-### In this Guide
-This guide will cover the following topics:
-
-- A quick introduction on [how to execute Go code](#executing-go-code)
 - How to [use loops](#loops-in-go)
 - How to [create functions](#functions-in-go)
 - How to [handle errors](#errors-in-go)
 
+## Before You Begin
+
+If you're just starting with Go, we recommend reading our [Getting Started with Go](/docs/development/go/intro-to-go/) guide first.
+
+{{< content "before-you-begin-install-go-shortguide" >}}
+
 {{< note >}}
 This guide was written with Go version 1.13.
 {{< /note >}}
-
-## Before You Begin
-
-1.  You will need Go installed on your computer. To get it, go to [Go's official download page](https://golang.org/dl/) and get the installer for your operating system, or you can install it from source. Follow the installation instructions for your operating system.
-
-1.  Add `/usr/local/go/bin` to the `PATH` environment variable:
-
-        export PATH=$PATH:/usr/local/go/bin
-
-    You may need to restart your shell for this change to apply.
-
-### The Advantages of Go
-
-Although Go is not perfect, it has many advantages, including the following:
-
-- It is a modern programming language that was made by experienced developers for developers.
-- The code is easy to read.
-- Go keeps concepts orthogonal, or simple, because a few orthogonal features work better than many overlapping ones.
-- The compiler prints practical warnings and error messages that help you solve the actual problem.
-- It has support for [procedural](https://en.wikipedia.org/wiki/Procedural_programming), [concurrent](https://en.wikipedia.org/wiki/Concurrent_computing), and [distributed programming](https://en.wikipedia.org/wiki/Distributed_computing).
-- Go supports [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) so you do not have to deal with memory allocation and deallocation.
-- Go can be used to build web applications and it provides a simple web server for testing purposes.
-- The standard Go library offers many packages that simplify the work of the developer.
-- It uses static linking by default, which means that the produced binary files can be easily transferred to other machines with the same OS and architecture. As a consequence, once a Go program is compiled successfully and the executable file is generated, the developer does not need to worry about dependencies and library versions.
-- The code is portable, especially among UNIX machines.
-- Go can be used for writing UNIX systems software.
-- It supports Unicode by default which means that you do not need any extra code for printing characters from multiple human languages or symbols.
-
-## Executing Go code
-
-There are two kinds of Go programs: autonomous programs that are executable, and Go libraries. Go does not care about an autonomous program's file name. What matters is that the package name is `main` and that there is a single `main()` function in it. This is because the `main()` function is where program execution begins. As a result, you cannot have multiple `main()` functions in the files of a single project.
-
-### A Simple Go program
-
-This is the Go version of the *Hello World* program:
-
-{{< file "./helloworld.go" go >}}
-package main
-
-import (
-    "fmt"
-)
-
-func main() {
-    fmt.Println("Hello World!")
-}
-{{< /file >}}
-
-* All Go code is delivered within Go packages. For executable programs, the package name should be `main`. Package declarations begin with the `package` keyword.
-
-* Executable programs should have a function named `main()` without any function parameters. Function definitions begin with the `func` keyword.
-
-* Go packages might include `import` statements for importing Go packages. However, Go demands that you use some functionality from each one of the packages that you import. There is a way to bypass this rule, however, it is considered a bad practice to do this.
-
-    The `helloworld.go` file above imports the `fmt` package and uses the `fmt.Println()` function from that package.
-
-    {{< note >}}
-  All exported package functions begin with an uppercase letter. This follows the Go rule: if you export something outside the current package, it should begin with an uppercase letter. This rule applies even if the field of the Go structure or the global variable is included in a Go package.
-    {{</ note >}}
-
-* Go statements do not *need* to end with a semicolon. However, you are free to use semicolons if you wish. For more information on formatting with curly braces, [see the section below](#formatting-curly-braces).
-
-1. Now that you better understand the `helloworld.go` program, execute it with the `go run` command:
-
-        go run helloworld.go
-
-    You will see the following output:
-{{< output >}}
-Hello World!
-{{< /output >}}
-
-    This is the simplest of two ways that you can execute Go code. The `go run` command compiles the code and creates a temporary executable file that is automatically executed and then it deletes that temporary executable file. This is similar to using a scripting programming language.
-
-1. The second method to execute Go code is to use the `build` command. Run the following command to use this method:
-
-        go build helloworld.go
-
-    The result of that command is a binary executable file that you have to manually execute. This method is similar to the way you execute C code on a UNIX machine. The executable file is named after the Go source filename, which means that in this case the result will be an executable file named `helloworld`. Go creates *statically linked executable files* that have no dependencies to external libraries.
-
-1. Execute the `helloworld` file:
-
-        ./helloworld
-
-    You will see the following output:
-{{< output >}}
-Hello World!
-{{< /output >}}
-
-    {{< note >}}
-The `go run` command is usually used while experimenting and developing new Go projects. However, if you need to transfer an executable file to another system with the same architecture, you should use `go build`.
-    {{< /note >}}
-
-### Formatting Curly Braces
-
-The following version of the "Hello World" program will not compile:
-
-{{< file "./curly.go" go >}}
-package main
-
-import (
-    "fmt"
-)
-
-func main()
-{
-    fmt.Println("Hello World!")
-}
-{{< /file >}}
-
-1. Execute the program above, and observer the error message generated by the compiler:
-
-        go run curly.go
-{{< output >}}
-# command-line-arguments
-./curly.go:7:6: missing function body
-./curly.go:8:1: syntax error: unexpected semicolon or newline before {
-{{< /output >}}
-
-* This error message is generated because Go requires the use of semicolons as statement terminators in many contexts and the compiler automatically inserts the required semicolons when it thinks that they are necessary. Putting the opening curly brace (`{`) on its own line makes the Go compiler look for a semicolon at the end of the previous line (`func main()`), which is the cause of the error message.
-
-* There is only one way to format curly braces in Go; **the opening curly brace must not appear on it's own line**. Additionally, you must use curly braces even if a code block contains a single Go statement, like in the body of a `for` loop. You can see an example of this in the [first version of the `helloworld.go`](#a-simple-go-program) program or in the [Loops in Go](#loops-in-go) section.
-
-### The Assignment Operator and Short Variable Declarations
-
-* Go supports assignment (`=`) operators and short variable declarations (`:=`).
-* With `:=` you can declare a variable and assign a value to it at the same time. The type of the variable is *inferred* from the given value.
-* You can use `=` in two cases. First, to assign a new value to an existing variable and second, to declare a new variable, provided that you also give its type.
-
-    For example, `var aVariable int = 10`, is equivalent to `aVariable := 10` assuming `aVariable` is an `int`.
-
-* When you specifically want to control a variable's type, it is safer to declare the variable and its type using `var` and then assign a value to it using `=`.
 
 ## Loops in Go
 
