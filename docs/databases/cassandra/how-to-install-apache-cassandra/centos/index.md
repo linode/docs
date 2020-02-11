@@ -161,7 +161,7 @@ permissions_validity_in_ms: 0
 1.  Create a new superuser. Replace the brackets as well as the content inside with the applicable information:
 
 
-        CREATE ROLE '[new_superuser]' WITH PASSWORD = '[secure_password]' AND SUPERUSER = true AND LOGIN = true;
+        CREATE ROLE [new_superuser] WITH PASSWORD = '[secure_password]' AND SUPERUSER = true AND LOGIN = true;
 
 1. Log out by typing `exit`.
 
