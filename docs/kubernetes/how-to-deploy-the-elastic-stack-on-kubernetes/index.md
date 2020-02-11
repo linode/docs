@@ -22,6 +22,7 @@ modified_by:
 title: "How to Deploy the Elastic Stack on Kubernetes"
 external_resources:
   - "[Elastic Documentation](https://www.elastic.co/guide/index.html)"
+aliases: ['applications/containers/how-to-deploy-the-elastic-stack-on-kubernetes/']
 ---
 
 ## What is the Elastic Stack?
@@ -30,9 +31,9 @@ external_resources:
 
 In this guide:
 
-- You will [configure and deploy](/docs/applications/containers/how-to-deploy-the-elastic-stack-on-kubernetes/#configure-helm) a number of [Helm](https://helm.sh) [charts](/docs/applications/containers/how-to-deploy-the-elastic-stack-on-kubernetes/#install-charts) in a [Kubernetes](https://kubernetes.io/) cluster in order to set up components of the Elastic Stack.
-- [Configure and run Kibana](/docs/applications/containers/how-to-deploy-the-elastic-stack-on-kubernetes/#configure-kibana) in the web browser.
-- [Install Metricbeat](/docs/applications/containers/how-to-deploy-the-elastic-stack-on-kubernetes/#metricbeat) and deploy dashboards to Kibana to explore Kubernetes cluster data.
+- You will [configure and deploy](#configure-helm) a number of [Helm](https://helm.sh) [charts](#install-charts) in a [Kubernetes](https://kubernetes.io/) cluster in order to set up components of the Elastic Stack.
+- [Configure and run Kibana](#configure-kibana) in the web browser.
+- [Install Metricbeat](#metricbeat) and deploy dashboards to Kibana to explore Kubernetes cluster data.
 
 At the end of this guide, you will have a deployment installed and configured that you can further use for application logs or monitoring Kubernetes itself.
 
@@ -50,7 +51,7 @@ This guide uses Kubernetes services which are private by default. Local listener
 
 1.  [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
 
-1.  Follow the [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide to set up a Kubernetes cluster.
+1.  Follow the [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide to set up a Kubernetes cluster.
 
     {{< content "k8s-alpha-deprecation-shortguide" >}}
 
@@ -69,7 +70,7 @@ This guide uses Kubernetes services which are private by default. Local listener
         kubectl config get-contexts
 
 1.  Set up Helm in your Kubernetes cluster by following the [How to Install Apps on Kubernetes with Helm
-    ](/docs/applications/containers/how-to-install-apps-on-kubernetes-with-helm/) guide and stop following the steps in this guide upon reaching the [Use Helm Charts to Install Apps](/docs/applications/containers/how-to-install-apps-on-kubernetes-with-helm/#use-helm-charts-to-install-apps) section.
+    ](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/) guide and stop following the steps in this guide upon reaching the [Use Helm Charts to Install Apps](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#use-helm-charts-to-install-apps) section.
 
 ## Configure Helm
 
@@ -85,14 +86,16 @@ After following the prerequisites for this guide, you should have a Kubernetes c
 
 1.  Search for the official `elasticsearch` chart to confirm Helm has been configured correctly. Note that this chart released by Elastic differs from the chart bundled with the default installation of Helm.
 
-        helm search elasticsearch --version 7
+        helm search hub elasticsearch
 
-    This command should return results similar to the following. Note that your exact version numbers may be different.
+    This command should return all the charts available for `elasticsearch` in the hub. The one we want is listed below. Note that your exact version numbers may be different.
 
-        NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-        elastic/elasticsearch   7.3.2           7.3.2           Official Elastic helm chart for Elasticsearch
+    {{< output >}}
+NAME                                              CHART VERSION   APP VERSION   DESCRIPTION
+https://hub.helm.sh/charts/elastic/elasticsearch  7.5.2        	  7.5.2      	Official Elastic helm chart for Elasticsearch
+{{</ output >}}
 
-Your Helm environment is now prepared to install official Elasticsearch charts into your Kubernetes cluster.
+    Your Helm environment is now prepared to install official Elasticsearch charts into your Kubernetes cluster.
 
 ## Install Charts
 
@@ -100,9 +103,24 @@ Your Helm environment is now prepared to install official Elasticsearch charts i
 
 Before installing the chart, ensure that resources are set appropriately. By default, the `elasticsearch` chart allocates 1G of memory to the JVM heap and sets Kubernetes resource requests and limits to 2G. Using a Linode 4GB instance is compatible with these defaults, but if you are using a different instance type, you will need to provide different values to the chart at install time in order to ensure that running Pods are within the resource constraints of the node sizes you have chosen.
 
-1.  Install the `elasticsearch` chart. This command will wait to complete until all Pods are started and ready:
+1.  Install the `elasticsearch` chart:
 
-        helm install --name elasticsearch --wait --timeout=600 elastic/elasticsearch
+        helm install elasticsearch elastic/elasticsearch
+
+1.  You should see an output like this:
+
+    {{< output >}}
+NAME: elasticsearch
+LAST DEPLOYED: Mon Feb 10 09:58:12 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Watch all cluster members come up.
+  $ kubectl get pods --namespace=default -l app=elasticsearch-master -w
+2. Test cluster health using Helm test.
+  $ helm test elasticsearch
+{{</ output >}}
 
 1.  A three-node Elasticsearch cluster is now configured and available locally to the Kubernetes cluster. To confirm this, first port-forward a local port to the Elasticsearch service. You should leave this command running in a terminal window or tab in in the background for the remainder of this tutorial.
 
@@ -114,23 +132,25 @@ Before installing the chart, ensure that resources are set appropriately. By def
 
 1.  You should see a response similar to the following:
 
-        {
-          "name" : "elasticsearch-master-0",
-          "cluster_name" : "elasticsearch",
-          "cluster_uuid" : "o66WYOm5To2znbZ0kOkDUw",
-          "version" : {
-            "number" : "7.3.2",
-            "build_flavor" : "default",
-            "build_type" : "docker",
-            "build_hash" : "1c1faf1",
-            "build_date" : "2019-09-06T14:40:30.409026Z",
-            "build_snapshot" : false,
-            "lucene_version" : "8.1.0",
-            "minimum_wire_compatibility_version" : "6.8.0",
-            "minimum_index_compatibility_version" : "6.0.0-beta1"
-          },
-          "tagline" : "You Know, for Search"
-        }
+    {{< output >}}
+{
+    "name" : "elasticsearch-master-0",
+    "cluster_name" : "elasticsearch",
+    "cluster_uuid" : "o66WYOm5To2znbZ0kOkDUw",
+    "version" : {
+    "number" : "7.5.2",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "8bec50e1e0ad29dad5653712cf3bb580cd1afcdf",
+    "build_date" : "2019-09-06T14:40:30.409026Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.3.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+    },
+    "tagline" : "You Know, for Search"
+}
+{{</ output >}}
 
 Note that your specific version numbers and dates may be different in this json response. Elasticsearch is operational, but not receiving or serving any data.
 
@@ -140,7 +160,21 @@ In order to start processing data, deploy the `filebeat` chart to your Kubernete
 
 1.  Deploy the `filebeat` chart. No custom `values.yaml` file should be necessary:
 
-        helm install --name filebeat --wait --timeout=600 elastic/filebeat
+        helm install filebeat elastic/filebeat
+
+1.  You should see a response similar to the following:
+
+    {{< output >}}
+NAME: filebeat
+LAST DEPLOYED: Mon Feb 10 11:17:18 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+1. Watch all containers come up.
+  $ kubectl get pods --namespace=default -l app=filebeat-filebeat -w
+{{</ output >}}
 
 1.  Confirm that Filebeat has started to index documents into Elasticsearch by sending a request to the locally-forwarded Elasticsearch service port:
 
@@ -149,7 +183,7 @@ In order to start processing data, deploy the `filebeat` chart to your Kubernete
     At least one `filebeat` index should be present, and output should be similar to the following:
 
     {{< output >}}
-        green open filebeat-7.3.12-2019.09.30-000001 peGIaeQRQq-bfeSG3s0RWA 1 1 9886 0 5.7mb 2.8mb
+green open filebeat-7.3.12-2019.09.30-000001 peGIaeQRQq-bfeSG3s0RWA 1 1 9886 0 5.7mb 2.8mb
     {{< /output >}}
 
 ### Install Kibana
@@ -158,7 +192,18 @@ Kibana will provide a frontend to Elasticsearch and the data collected by Filebe
 
 1.  Deploy the `kibana` chart:
 
-        helm install --name kibana --wait --timeout=600 elastic/kibana
+        helm install kibana elastic/kibana
+
+1.  You should see a response similar to the following:
+
+    {{< output >}}
+NAME: kibana
+LAST DEPLOYED: Mon Feb 10 11:20:02 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+{{</ output >}}
 
 1.  Port-forward the `kibana-kibana` service in order to access Kibana locally. Leave this command running in the background as well for the remainder of this tutorial.
 
@@ -236,7 +281,7 @@ hosts: '\${ELASTICSEARCH_HOSTS:elasticsearch-master:9200}'
 
 1.  Upgrade the `filebeat` deployment to use this new configuration file:
 
-        helm upgrade --values filebeat-values.yml --wait --timeout=600 filebeat elastic/filebeat
+        helm upgrade --values filebeat-values.yml filebeat elastic/filebeat
 
 1.  Once this command completes, Filebeat's `DaemonSet` will have successfully updated all running Pods.
 
@@ -253,7 +298,7 @@ co.elastic.logs/processors.decode_json_fields.target: kibana
 
 1.  Upgrade the Kibana Helm release in your Kubernetes cluster, passing this file as an argument for the Chart values.
 
-        helm upgrade --values kibana-values.yml --wait --timeout=600 kibana elastic/kibana
+        helm upgrade --values kibana-values.yml kibana elastic/kibana
 
 1.  Note, triggering a rolling Pod update of Kibana will cause the previous `port-forward` to lose track of running Pods. Terminate the previous Kibana `port-forward` command in the background terminal with `Ctrl-C` and start the command again:
 
@@ -291,7 +336,21 @@ In addition to collecting logs with Filebeat, Metricbeat can collect Pod and nod
 
 1.  Deploy the `metricbeat` chart.
 
-        helm install --name metricbeat --wait --timeout=600 elastic/metricbeat
+        helm install metricbeat elastic/metricbeat
+
+1.  You should see output similar to the following:
+
+    {{< output >}}
+NAME: metricbeat
+LAST DEPLOYED: Mon Feb 10 11:32:12 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+1. Watch all containers come up.
+  $ kubectl get pods --namespace=default -l app=metricbeat-metricbeat -w
+{{</ output >}}
 
 1.  Confirm that Metricbeat has started to index documents into Elasticsearch by sending a request to the locally-forwarded Elasticsearch service port:
 
@@ -299,7 +358,9 @@ In addition to collecting logs with Filebeat, Metricbeat can collect Pod and nod
 
 1.  At least one `metricbeat` index should be present, similar to the following:
 
-        green open metricbeat-7.3.2-2019.09.30-000001 N75uVk_hTpmVbDKZE0oeIw 1 1   455  0   1.1mb 567.9kb
+    {{< output >}}
+green open metricbeat-7.3.2-2019.09.30-000001 N75uVk_hTpmVbDKZE0oeIw 1 1   455  0   1.1mb 567.9kb
+{{</ output >}}
 
 ### Load Dashboards
 
@@ -319,15 +380,15 @@ Your commands should use the same version of Metricbeat deployed to your Kuberne
 
 1.  Get the Metricbeat package.
 
-        wget https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.3.2-linux-x86_64.tar.gz
+        wget https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.5.2-linux-x86_64.tar.gz
 
 1.  Unzip the package.
 
-        tar xvzf metricbeat-7.3.2-linux-x86_64.tar.gz
+        tar xvzf metricbeat-7.5.2-linux-x86_64.tar.gz
 
 1.  Navigate to the directory.
 
-        cd metricbeat-7.3.2-linux-x86_64
+        cd metricbeat-7.5.2-linux-x86_64
 
 1.  Setup the dashboards.
 
@@ -337,15 +398,15 @@ Your commands should use the same version of Metricbeat deployed to your Kuberne
 
 1.  Get the Metricbeat package.
 
-        wget https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.3.2-darwin-x86_64.tar.gz
+        wget https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.5.2-darwin-x86_64.tar.gz
 
 1.  Unzip the package.
 
-        tar xvzf metricbeat-7.3.2-darwin-x86_64.tar.gz
+        tar xvzf metricbeat-7.5.2-darwin-x86_64.tar.gz
 
 1.  Navigate to the directory.
 
-        cd metricbeat-7.3.2-darwin-x86_64
+        cd metricbeat-7.5.2-darwin-x86_64
 
 1.  Setup the dashboards.
 

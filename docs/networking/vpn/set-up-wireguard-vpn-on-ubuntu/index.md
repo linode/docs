@@ -81,7 +81,7 @@ If the installation completes but the output does not appear, your kernel is mos
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
 PrivateKey = <Private Key>
-Address = 203.0.113.5/24, fd86:ea04:1115::1/64
+Address = 10.0.0.1/24, fd86:ea04:1115::1/64
 ListenPort = 51820
 PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
@@ -143,7 +143,7 @@ interface: wg0
     {{< output >}}
 user@ubuntu:~$ ifconfig wg0
 wg0: flags=209<UP,POINTOPOINT,RUNNING,NOARP>  mtu 1420
-        inet 203.0.113.5  netmask 255.255.255.0  destination 203.0.113.5
+        inet 10.0.0.1 netmask 255.255.255.0  destination 10.0.0.1
         inet6 fd86:ea04:1115::1  prefixlen 64  scopeid 0x0<global>
         unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 1000  (UNSPEC)
         RX packets 0  bytes 0 (0.0 B)
@@ -167,12 +167,18 @@ The process for setting up a client is similar to setting up the server. When us
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Interface]
 PrivateKey = <Output of privatekey file that contains your private key>
-Address = 203.0.113.12/24, fd86:ea04:1115::5/64
+Address = 10.0.0.2/24, fd86:ea04:1115::5/64
 {{< /file >}}
 
 ## Connect the Client and Server
 
 There are two ways to add peer information to WireGuard; this guide will demonstrate both methods.
+
+{{< note >}}
+Stop the interface with `sudo wg-quick down wg0` on both the client and the server.
+{{< /note >}}
+
+### Method 1
 
 1.  The first method is to directly edit the client's `wg0.conf` file with the server's public key, public IP address, and port:
 
@@ -180,13 +186,15 @@ There are two ways to add peer information to WireGuard; this guide will demonst
 [Peer]
 PublicKey = <Server Public key>
 Endpoint = <Server Public IP>:51820
-AllowedIPs = 203.0.113.12/24, fd86:ea04:1115::5/64
+AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::5/64
 {{< /file >}}
 
-1.  Enable the `wg` service:
+1.  Enable the `wg` service on both the client and server:
 
         wg-quick up wg0
         systemctl enable wg-quick@wg0
+
+### Method 2
 
 1.  The second way of adding peer information is using the command line. This information will be added to the config file automatically because of the `SaveConfig` option specified in the Wireguard server's configuration file.
 
@@ -208,8 +216,8 @@ interface: wg0
   listening port: 51820
 
 peer: iMT0RTu77sDVrX4RbXUgUBjaOqVeLYuQhwDSU+UI3G4=
-  endpoint: 203.0.113.12:51820
-  allowed ips: 203.0.113.12/24, fd86:ea04:1115::/64
+  endpoint: 10.0.0.2:51820
+  allowed ips: 10.0.0.2/24, fd86:ea04:1115::/64
 {{< /output >}}
 
     This Peer section will be automatically added to `wg0.conf` when the service is restarted. If you would like to add this information immediately to the config file, you can run:
@@ -222,7 +230,7 @@ peer: iMT0RTu77sDVrX4RbXUgUBjaOqVeLYuQhwDSU+UI3G4=
 
 1. Return to the client and ping the server:
 
-        ping 192.0.2.1
+        ping 10.0.0.1
         sudo wg
 
     The last two lines of the output from running the `wg` command should be similar to:
