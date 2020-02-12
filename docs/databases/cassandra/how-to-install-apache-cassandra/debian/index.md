@@ -9,8 +9,8 @@ published: 2020-01-30
 modified: 2020-01-30
 modified_by:
   name: Linode
-title: "How to Install Apache Cassandra on Debian 10"
-h1_title: "Install Apache Cassandra on Debian 10"
+title: "How to Install Apache Cassandra on Debian 9"
+h1_title: "Install Apache Cassandra on Debian 9"
 contributor:
   name: Linode
 external_resources:
@@ -34,7 +34,7 @@ After completing this guide, you will have a single-node, production-ready insta
 
 ## Install Cassandra and Supporting Applications
 
-In this section, you will update your Linux system software, install package dependencies, Java, and Cassandra.
+In this section, you will install package dependencies, Java, Cassandra, and update your Linux system software.
 
 1. Update your system's software packages:
 
@@ -175,7 +175,7 @@ permissions_validity_in_ms: 0
 
 1. Log back in with the new superuser account and replace the username and password with your new credentials:
 
-        cqlsh -u new-super-user -p my-scecure-password
+        cqlsh -u new-super-user -p my-secure-password
 
 1. Remove the elevated permissions from the Cassandra account:
 
@@ -207,7 +207,7 @@ Do not complete this section as the root user. Before proceeding, fully evaluate
         sudo mkdir ~/.cassandra
         sudo vim ~/.cassandra/cqlshrc
 
-1.  Copy any sections below that you wish to add to your configuration. Ensure you replace any values in brackets with your own desired values. Details for this file can be found in the [Configuring cqlsh From a File](https://docs.datastax.com/en/archived/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html) guide on the [DataStax](https://www.datastax.com/) site.
+1.  Copy any sections below that you wish to add to your configuration, and ensure you replace the `superuser` and `password` value in brackets with your own values. Details for this file can be found in the [Configuring cqlsh From a File](https://docs.datastax.com/en/archived/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html) guide on the [DataStax](https://www.datastax.com/) site.
 
     {{< file "~/.cassandra/cqlshrc" aconf >}}
 . . .

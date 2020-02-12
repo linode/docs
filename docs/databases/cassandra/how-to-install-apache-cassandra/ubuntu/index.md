@@ -196,7 +196,8 @@ Do not complete this section as the root user. Before proceeding, fully evaluate
         sudo mkdir ~/.cassandra
         sudo vim ~/.cassandra/cqlshrc
 
-1.  Copy any sections below that you wish to add to your configuration. Ensure you replace any values in brackets with your own desired values. Details for this file can be found in the [Configuring cqlsh From a File](https://docs.datastax.com/en/archived/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html) guide on the [DataStax](https://www.datastax.com/) site.
+1.  Copy any sections below that you wish to add to your configuration, and ensure you replace the `superuser` and `password` value in brackets with your own values. Details for this file can be found in the [Configuring cqlsh From a File](https://docs.datastax.com/en/archived/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html) guide on the [DataStax](https://www.datastax.com/) site.
+
 
     {{< file "~/.cassandra/cqlshrc" aconf >}}
 . . .
