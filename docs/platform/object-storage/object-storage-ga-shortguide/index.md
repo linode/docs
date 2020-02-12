@@ -15,5 +15,5 @@ show_on_rss_feed: false
 ---
 
 {{< note >}}
-[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark and Frankfurt data centers! Starting November 1, 2019, all customers with the Object Storage service enabled on their account will be billed. For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
+[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark and Frankfurt data centers! For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
 {{</ note >}}
