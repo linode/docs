@@ -305,7 +305,7 @@ Creating a **signed URL** will allow you to create a link to objects with limite
 
     linode-cli obj signurl my-example-bucket example.txt +300
 
-The output of the command will be a url that can be used for a set period of time to access your object, even if your ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link will remain active, or five minutes total. Once this time has passed, your link will expire and can no longer be used.
+The output of the command will be a URL that can be used for a set period of time to access your object, even if your ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link will remain active, or five minutes total. Once this time has passed, your link will expire and can no longer be used.
 
 ### Create a Static Site with the CLI
 
@@ -499,7 +499,7 @@ Creating a **signed URL** will allow you to create a link to objects with limite
 
     s3cmd signurl s3://my-example-bucket/example.txt +300
 
-The output of the command will be a url that can be used for a set period of time to access your object, even if your ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link will remain active, or five minutes total. Once this time has passed, your link will expire and can no longer be used.
+The output of the command will be a URL that can be used for a set period of time to access your object, even if your ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link will remain active, or five minutes total. Once this time has passed, your link will expire and can no longer be used.
 
 ### Create a Static Site with s3cmd
 
