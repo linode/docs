@@ -22,7 +22,7 @@ external_resources:
 
 ## In This Guide
 
-You'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running CentOS 8, using NGINX, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
+You'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running CentOS 8, using NGINX, MariaDB, Node.js, NPM, and Ghost-CLI. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -40,83 +40,32 @@ Replace each instance of `example.com` in this guide with your site’s domain n
 
         sudo yum update
 
+1.  Set your system to SELinux permissive mode:
+
+        sudo setenforce 0
+        sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
+
 1. Add `EPEL repository`:
 
         sudo dnf -y install epel-release
 
 ## Install Prerequisites
 
-### Install and Configure NGINX
+### Install and Configure MariaDB
 
-NGINX will be used as a reverse proxy for your Ghost application:
+1. Download and install MariaDB:
 
-1.  Install NGINX:
-
-    sudo dnf install @nginx
-
-1.  Create a configuration file for Ghost at `/etc/nginx/conf.d/ghost.conf`:
-
-    {{< file "/etc/nginx/conf.d/ghost.conf" >}}
-server {
-    listen 80;
-    listen [::]:80;
-
-    server_name example.com;
-    root /var/www/ghost/example.com/system/nginx-root;
-
-    location / {
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $http_host;
-        proxy_pass http://127.0.0.1:2368;
-
-    }
-
-    location ~ /.well-known {
-        allow all;
-    }
-
-    client_max_body_size 50m;
-}
-{{</ file >}}
-
-1.  Open the firewall for traffic:
-
-        sudo firewall-cmd --zone=public --permanent --add-service=http
-        sudo firewall-cmd --zone=public --permanent --add-service=https
-        sudo firewall-cmd --reload
-
-### Install and Configure MySQL
-
-1. Download and install MySQL:
-
-        sudo dnf install @mysql
+        sudo dnf module install mariadb
 
 1.  Set MySQL to start on reboot:
 
-        sudo systemctl enable --now mysqld
+        sudo systemctl enable --now mariadb
 
-1. Log into MySQL:
+1.  Secure the MySQL installation:
 
-        sudo mysql
+        mysql_secure_installation
 
-1.  Create a user `ghost` for your new site. Replace `StrongPassword` with a real password:
-
-        CREATE USER ghost@localhost IDENTIFIED BY "StrongPassword";
-
-1.  Create a database for your new site:
-
-        CREATE DATABASE  ghost;
-
-1.  Grant your new user privileges:
-
-        GRANT ALL ON ghost.* TO ghost@localhost;
-
-1.  Flush privileges and exit:
-
-        FLUSH PRIVILEGES;
-        quit
+    This will have you set a root password and ask you a series of questions. Answer yes to all questions.
 
 ### Install Node.js and NPM
 
@@ -127,11 +76,93 @@ Download and install Node.js:
     sudo dnf -y install @nodejs
     sudo npm install pm2 -g
 
+### Install and Configure NGINX
+
+NGINX will be used as a reverse proxy for your Ghost application:
+
+1.  Install NGINX:
+
+        sudo dnf install @nginx
+
+1.  Navigate to the directory where you will create some configuration files.
+
+        cd /etc/nginx/
+
+1.  Create the directories for your Ghost configuration files:
+
+        sudo mkdir sites-available
+        sudo mkdir sites-enabled
+
+1.  Create a configuration file for Ghost at `/etc/nginx/sites-available/ghost`, replace `example.com` with your site's domain:
+
+    {{< file "/etc/nginx/sites-available/ghost" >}}
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    server_name example.com www.example.com;
+    root /var/www/ghost;
+
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_pass http://127.0.0.1:2368;
+    }
+
+    client_max_body_size 50m;
+}
+{{</ file >}}
+
+1.  Create a symlink from `sites-available` to `sites-enabled`:
+
+        sudo ln -s /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost
+
+1.  Update the NGINX config `/etc/nginx/nginx.conf` file by adding an include for the configuration file you just made, a directive for `server_names_hash_bucket_size`, and comment out the entire `server` block:
+
+    {{< file "/etc/nginx/nginx.conf" >}}
+...
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+
+    server_names_hash_bucket_size 64;
+
+# server {
+#    listen  80 default_server {
+#        ...
+#    }
+#}
+...
+{{</ file >}}
+
+1.  Open the firewall for traffic:
+
+        sudo firewall-cmd --zone=public --permanent --add-service=http
+        sudo firewall-cmd --zone=public --permanent --add-service=https
+        sudo firewall-cmd --reload
+
+1.  You can test your NGINX configuration with this command:
+
+        sudo nginx -t
+
+1.  Start the service with the following commands:
+
+        sudo systemctl enable nginx
+        sudo systemctl start nginx
+
+1.  Verify that it's running:
+
+        sudo systemctl status nginx
+
 ## Install and Configure Ghost
 
 ### Install Ghost-CLI
 
-Ghost-CLI is a command line interface (CLI) tool that makes installing and updating Ghost easy. It sets up the database, configures NGINX as a reverse proxy, enables TLS/SSL security using Let's Encrypt CA, automatically renews your SSL, and initializes Ghost as a systemd service.
+Ghost-CLI is a command line interface (CLI) tool that makes installing and updating Ghost easy. For CentOS, it will set up the database and initialize Ghost as a systemd service.
 
 Install Ghost-CLI:
 
@@ -158,11 +189,6 @@ Installing Ghost in the `/root` or `/home/{user}` folder won’t work and result
 
         cd /var/www/ghost
 
-1.  Make the directory for your blog then change into that directory:
-
-        sudo mkdir example.com
-        cd example.com
-
 1.  Ensure that the directory is empty to avoid file conflicts:
 
         ls -a
@@ -181,6 +207,8 @@ For local installs we recommend using `ghost install local` instead.
 {{</ output >}}
 
 It will ask you if you would like to continue anyway, answer yes.
+
+The installer also gets a little confused at our installing MariaDB instead of MySQL. It appears to error with a note that it is skipping MySQL and asks if you want to continue anyway, answer yes.
 {{</ note >}}
 
 1. Answer each question as prompted. For more information about each question, visit the [Ghost documentation](https://ghost.org/docs/install/ubuntu/#install-questions):
@@ -193,14 +221,25 @@ It will ask you if you would like to continue anyway, answer yes.
 ? Enter your Ghost database name: exampleGhost
 Configuring Ghost
 Setting up instance
-
++ sudo useradd --system --user-group ghost
++ sudo chown -R ghost:ghost /var/www/ghost/content
 Setting up "ghost" system user
 ? Do you wish to set up "ghost" mysql user? yes
-? Do you wish to set up Nginx? yes
-? Do you wish to set up SSL? yes
-? Enter your email (used for Let's Encrypt notifications) user@example.com
+Nginx is not installed. Skipping Nginx setup.
+i Setting up Nginx [ skipped ]
+Nginx setup task was skipped, skipping SSL setup
+i Setting up SSL [ skipped ]
 ? Do you wish to set up Systemd? yes
+Creating systemd service file at /var/www/ghost/system/files/ghost_example-com.service
++ sudo ln -sf /var/www/ghost/system/files/ghost_example-com.service /lib/systemd/system/ghost_example-com.service
++ sudo systemctl daemon-reload
+Setting up Systemd
++ sudo systemctl is-active ghost_example-com
 ? Do you want to start Ghost? yes
++ sudo systemctl start ghost_example-com
++ sudo systemctl is-enabled ghost_example-com
++ sudo systemctl enable ghost_example-com --quiet
+Starting Ghost
 {{< /output >}}
 
 1. After installation is complete, run `ghost ls` to view running Ghost processes:
