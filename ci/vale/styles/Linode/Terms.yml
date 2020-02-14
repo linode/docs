@@ -48,3 +48,4 @@ swap:
   pulumi: Pulumi
   markdown: Markdown
   vuejs: VueJS
+  vue: Vue

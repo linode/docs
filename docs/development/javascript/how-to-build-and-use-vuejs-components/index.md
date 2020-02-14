@@ -225,7 +225,7 @@ new Vue({
 
 Load the file in your browser and start clicking the buttons. You'll now see a label at the top of the page that counts up the total from each of your components:
 
-![Component binded props](component-props-vbind.png)
+![Component with bound data properties](component-props-vbind.png "Component with bound data properties")
 
 Let's break down the updated parts of the file:
 
