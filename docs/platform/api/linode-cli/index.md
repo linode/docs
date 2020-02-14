@@ -299,7 +299,7 @@ Many other actions are available. Use `linode-cli linodes --help` for a complete
 
         linode-cli lke pool-delete $cluster_id $pool_id
 
-1.  View the Kubeconfig file for the Kuberenetes Cluster:
+1.  View the Kubeconfig file for the Kubernetes Cluster:
 
         linode-cli lke kubeconfig-view $cluster_id
 
