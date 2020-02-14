@@ -92,7 +92,7 @@ This configuration is sufficient to get you started. For more advanced options a
 
 ### LAMP Stack
 
-Other sites, such as [WordPress](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/), need a database in addition to a web server. This combination is known as a **stack**. WordPress is often used with the extremely popular LAMP stack (Linux, Apache, MariaDB and PHP). To install a LAMP stack manually, find the guide for your distribution in our [LAMP](/docs/web-servers/lamp/) section.
+Other sites, such as [WordPress](/docs/websites/cms/install-wordpress-ubuntu-18-04/), need a database in addition to a web server. This combination is known as a **stack**. WordPress is often used with the extremely popular LAMP stack (Linux, Apache, MariaDB and PHP). To install a LAMP stack manually, find the guide for your distribution in our [LAMP](/docs/web-servers/lamp/) section.
 
 If you are using WordPress, another option is to use Docker. All of the components needed to run WordPress, along with WordPress itself, are bundled into a container that can be deployed with single command. Official Docker images are also available for other CMS platforms including [Ghost](https://hub.docker.com/_/ghost/) and [Joomla](https://hub.docker.com/_/joomla/). <!--- See our [WordPress on Docker](/docs/quick-answers/install-wordpress-using-docker/) guide for details. ---->
 
@@ -104,56 +104,73 @@ If none of these application stacks fit your situation, review our [Websites](/d
 
 Test your website(s) before you add DNS records and make the site available publicly on your domain. Enter your Linode's public IP address in the address bar of a web browser. You should see your website displayed. When you are confident that the site is functioning correctly, proceed to the next section.
 
-## Add DNS Records
+### Add a Domain
 
-In order to point your domain name at your Linode, you will have to add DNS records. DNS changes can take up to 24 hours to propagate across the internet.
+If you're new to Linode, or if you've just purchased a new domain name, the first step is to add a new domain in the **Domains** section of the Cloud Manager. If you don't know what DNS records to add, the DNS Manager can insert some basic records when you create the new domain.
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+{{< note >}}
+Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](/docs/platform/manager/dns-manager/) guide.
+{{</ note >}}
 
-2.  Click the **DNS Manager** tab.
+1.  From the **Domains** section, click on **Add a Domain**. The **Add a New Domain** panel will appear where you can fill out the form fields with your domain's information.
 
-3.  Select the **Add a domain zone** link. The form shown below appears.
+    ![This page lets you add a new domain](add-new-domain.png "This page let's you add a new domain.")
 
-    [![Create a domain zone](910-hosting-1-small.png "Create a Domain zone.")](909-hosting-1.png)
+1. If you want to add a *slave zone* instead of a master zone, click the **Slave** radio button.
 
-4.  In the **Domain** field, enter your website's domain name in the **Domain** field.
+    {{< note >}}
+In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests from the following IP addresses:
 
-5.  In the **SOA Email** field, enter the administrative contact email address for your domain.
+    104.237.137.10
+    65.19.178.10
+    75.127.96.10
+    207.192.70.10
+    109.74.194.10
+    2600:3c00::a
+    2600:3c01::a
+    2600:3c02::a
+    2600:3c03::a
+    2a01:7e00::a
+{{< /note >}}
 
-6.  Select the **Yes, insert a few records to get me started** button.
+1.  Enter your domain name in the **Domain** field. An example is shown above.
+1.  Enter an administrator's email address in the **SOA Email Address** field.
+1.  If you are unfamiliar with DNS, the DNS Manager can automatically create some basic DNS records to get you started. To have it insert these records, select **Yes, insert a few records to get me started**, then select from the drop-down menu the Linode with which you want this domain zone associated.
 
-7.  Click **Add a Master Zone**. Several DNS records will be created for your domain, as shown below.
+    ![Create default DNS records when adding a new domain.](create-default-records.png "Create default DNS records when adding a new domain.")
 
-    [![The DNS records created for the domain](911-hosting-2-small.png "The DNS records created for the domain")](912-hosting-2.png)
+     Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **No, I want the zone empty**.
 
-8. Through your domain registrar (where you bought the domain), make sure that your domain name is set to use Linode's DNS. Use your domain name registrar's interface to set the name servers for your domain to the following:
+1.  Click **Create**. If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible on the Domains detail page. The created records should include SOA, NS, MX, and A/AAA.
 
-    - `ns1.linode.com`
-    - `ns2.linode.com`
-    - `ns3.linode.com`
-    - `ns4.linode.com`
-    - `ns5.linode.com`
+    If you elected to keep the zone empty, you can start adding DNS records now. The Domain detail page will contain an SOA and NS record for the domain. Skip to the [Add DNS Records](#add-dns-records) section for instructions.
 
-DNS changes can take up to 48 hours to propagate through the Internet. Once the changes are completed, you will be able to access your website by typing the domain name into your browser's address bar.
+### Add DNS Records
+
+When you first create a domain, you'll need to add some DNS records. <!-- The DNS Manager can create some basic records to get you started when you create your domain zone, --> This section explains how to add your own records.
+
+1.  Select a domain from within the **Domains** section of the Cloud Manager. The domain's detail page appears:
+
+    ![This page has seven sections showing eight different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, SRV, AND CAA.](domain-details-page-no-records.png)
+
+1.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, then click **Add a Record**. The example below shows how to add an A/AAAA record.
+
+    ![This page allows you to create a new A/AAAA record.](domain-add-a-record.png)
+
+    {{< note >}}
+The exact form fields will vary depending on the type of DNS record you select.
+{{< /note >}}
+
+1.  Enter a hostname in the **Hostname** field.
+
+1.  Enter the IP address of your server in the **IP Address** field. See [this quick answer page](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) to find your Linode's IP address.
+
+1.  Select a time interval from the **TTL** menu. *TTL* stands for *time to live*, and affects how long DNS records are cached by DNS resolvers. When the designated time to live is reached, the resolver must query the authoritative name servers for new records.
+
+1.  Click **Save**. It can take up to 30 minutes for new DNS records to become active.
 
 ## Set Reverse DNS
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+Computers use DNS to determine the IP address associated with a domain name. Reverse DNS lookup does the opposite by resolving an IP address to a designated domain name. You should always set the reverse DNS, even if your Linode hosts more than one domain.
 
-2.  Click the **Linodes** tab.
-
-3.  Select your Linode.
-
-4.  Click the **Remote Access** tab.
-
-5.  Select the **Reverse DNS** link, as shown below.
-
-    [![Select Reverse DNS link](951-hosting-3-1.png "Select Reverse DNS link")](951-hosting-3-1.png)
-
-6.  Enter the domain in the **Hostname** field, as shown below.
-
-    [![Enter domain in Hostname field](914-hosting-4-small.png "Enter domain in Hostname field")](915-hosting-4.png)
-
-7.  Click **Look up**. A message appears, indicating that a match has been found.
-
-8.  Click **Yes**.
+For more information about how to configure a reverse DNS, see [Configure Your Linode for Reverse DNS (rDNS)](/docs/networking/dns/configure-your-linode-for-reverse-dns/)

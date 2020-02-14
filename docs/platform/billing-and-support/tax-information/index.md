@@ -9,8 +9,7 @@ modified_by:
   name: Linode
 published: 2019-04-09
 title: Tax Information
-aliases: ['platform/billing-and-support/european-union-vat-linode/']
-classic_manager_link: platform/billing-and-support/tax-information-classic-manager/
+aliases: ['platform/billing-and-support/tax-information-classic-manager/','platform/billing-and-support/european-union-vat-linode/', 'platform/billing-and-support/european-union-vat-linode-classic-manager/']
 ---
 
 ##  Which Taxes are Collected by Linode?

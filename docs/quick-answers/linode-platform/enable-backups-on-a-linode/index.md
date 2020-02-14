@@ -23,7 +23,3 @@ This QuickAnswer will show you how to enable the [Linode Backup Service](https:/
 5.  Review the pro-rated total, then click **Complete Order**.
 
 The Linode Backup Service is now enabled for the selected Linode.
-
-You can also follow along with this video to enable the Backup Service on your Linode:
-
-{{< youtube X1J1OigQre0>}}

@@ -5,13 +5,12 @@ author:
 description: Our guide to upgrading and resizing your Linode
 keywords: ["upgrading", "resizing", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['migrate-to-linode/disk-images/resizing-a-linode/','resizing/']
+aliases: ['migrate-to-linode/disk-images/resizing-a-linode/','platform/disk-images/resizing-a-linode-classic-manager/','resizing/']
 modified: 2019-03-28
 modified_by:
   name: Linode
 published: 2017-02-14
 title: Resizing a Linode
-classic_manager_link: platform/disk-images/resizing-a-linode-classic-manager/
 ---
 
 We make it easy to upgrade or downgrade your Linode by changing plans and adding additional resources. If you're expecting a temporary burst of traffic to your website, or if you're not using your Linode as much as you thought, you can temporarily or permanently resize your Linode to a different plan.

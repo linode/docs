@@ -37,6 +37,16 @@ Your account's [Events Page](https://cloud.linode.com/events) is a history, or a
 
     ![events.png](events.png)
 
+### Manage Email Event Notifications
+
+Email event notifications alert you when new events such as booting, shutting down, or updates to a Linode occur on your account. You can enable or disable email event notifications using the Cloud Manager.
+
+1. Click on your user icon at the top-right hand corner of the Cloud Manager and select [**My Profile**](https://cloud.linode.com/profile/display).
+
+1. Select the **Settings** tab. Under the **Notifications** section, toggle the **Email Alerts** button to your desired setting.
+
+    ![Cloud Manager Notification Settings](classic-to-cloud-cloud-manager-email-notifications.png "Cloud Manager Notification Settings")
+
 ## Linode Activity Feed
 
 The Linode Activity Feed is similar to your Account's [Events Page](#Events-Page). However, this is a filtered list only relevant to the specific Linode you're observing.

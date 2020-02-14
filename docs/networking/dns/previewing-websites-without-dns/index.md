@@ -5,13 +5,12 @@ author:
 description: 'A guide to testing a website for a domain before the DNS records are adjusted.'
 keywords: ["dns", " website", " preview"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['dns-guides/preview-websites/']
+aliases: ['dns-guides/preview-websites/','networking/dns/previewing-websites-without-dns-classic-manager/']
 modified: 2018-05-22
 modified_by:
   name: Linode
 published: 2014-01-16
 title: Previewing Websites Without DNS
-classic_manager_link: networking/dns/previewing-websites-without-dns-classic-manager/
 ---
 
 ![Previewing Websites without DNS](Previewing_Websites_Without_DNS_smg.jpg)
