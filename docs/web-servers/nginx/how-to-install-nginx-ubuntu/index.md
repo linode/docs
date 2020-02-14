@@ -6,13 +6,15 @@ description: 'NGINX is an open source web server with powerful load balancing, r
 og_description: 'NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. This guide demonstrates how to install NGINX on Ubuntu 18.04.'
 keywords: ["nginx", "load balancing", "ubuntu", "ubuntu 18", "web server", "static content", "install nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-04-16
+modified: 2020-02-14
 modified_by:
   name: Linode
 published: 2018-04-16
-title: Install NGINX on Ubuntu 18.04
+title: How to Install NGINX on Ubuntu 18.04 LTS
+h1_title: Installing NGINX on Ubuntu 18.04 LTS
 external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
+aliases: ['web-servers/nginx/install-nginx-ubuntu/']
 ---
 
 ![Install NGINX on Ubuntu 18](install-nginx-ubuntu-smg.jpg)
@@ -21,16 +23,46 @@ external_resources:
 
 NGINX is an open source web server with powerful load balancing, reverse proxy, and caching features. It was [initially designed](https://www.nginx.com/resources/glossary/nginx/) to solve scaling and concurrency problems with existing web servers. Its event-based, asynchronous architecture has made it one of the most popular and best-performing web servers available.
 
+## Before You Begin
+
+1.  Set up your Linode in the [Getting Started](/docs/getting-started/) and [Securing your Server](/docs/security/securing-your-server/) guides.
+
+1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/platform/manager/dns-manager/) guide.
+
+    - Don't forget to update your `/etc/hosts` file with the public IP and your site's fully qualified domain name as explained in the [Update Your System's hosts File](http://localhost:1313/docs/getting-started/#update-your-system-s-hosts-file) section of the Getting Started guide.
+
+{{< content "limited-user-note-shortguide" >}}
+
 ## Install NGINX
 
-Currently, the best way to install NGINX on Ubuntu 18.04 is to use the version included in Ubuntu's repositories:
+Currently, the best way to install NGINX on Ubuntu 18.04 LTS is to use the version included in Ubuntu's repositories:
 
     sudo apt update
     sudo apt install nginx
 
-## Configure NGINX
+## Add a Basic Site
 
-### Add Basic Site
+1.  Create a new directory for your site.
+
+        sudo mkdir /var/www/example.com
+
+1.  This is where you can add your site files. For now, let's just say "hello". Create a new file, `/var/www/example.com/index.html` in the text editor of your choice. Replace `example.com` with your website’s domain name or your Linode’s public IP address.
+
+    {{< file "/var/www/example.com/index.html" html >}}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Basic Website</title>
+    </head>
+    <body>
+        <header>
+            <h1>Hello World!</h1>
+        </header>
+    </body>
+</html>
+{{</ file >}}
+
+## Configure NGINX
 
 NGINX site-specific configuration files are kept in `/etc/nginx/sites-available` and symlinked into  `/etc/nginx/sites-enabled/`. Generally you will want to create a separate original file in the `sites-available` directory for each domain or subdomain you will be hosting, and then set up a symlink in the `sites-enabled` directory.
 
@@ -38,27 +70,28 @@ NGINX site-specific configuration files are kept in `/etc/nginx/sites-available`
 
         sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/example.com
 
-2.  Disable the default configuration file by removing the symlink in `/etc/nginx/sites-enabled/`:
+1.  Disable the default configuration file by removing the symlink in `/etc/nginx/sites-enabled/`:
 
-        unlink /etc/nginx/sites-enabled/default
+        sudo unlink /etc/nginx/sites-enabled/default
 
-3.  Open your site's configuration file in a text editor. Replace `example.com` in the `server_name` directive with your site's domain name or IP address. If you already have content ready to serve (such as a WordPress installation or static files) replace the path in the `root` directive with the path to your site's content:
+1.  Open your site's configuration file in the text editor of your choice. Replace `example.com` in the `server_name` directive with your site's domain name or IP address:
 
     {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 server {
-    listen       80;
-    server_name  example.com
+    listen       80  default_server;
+    listen [::]:80   default_server;
+    server_name      example.com;
 
-        root /var/www/example.com;
-        index index.html;
+    root /var/www/example.com;
+    index index.html;
 
-        location / {
-                try_files $uri $uri/ =404;
-      }
+    location / {
+        try_files $uri $uri/ =404;
+    }
 }
 {{< /file >}}
 
-4.   Set up a new symlink to the `/etc/nginx/sites-enabled/` directory to enable your configuration:
+1.   Set up a new symlink to the `/etc/nginx/sites-enabled/` directory to enable your configuration:
 
         sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 
@@ -68,11 +101,11 @@ server {
 
         sudo nginx -t
 
-2.  Reload the configuration:
+1.  Reload the configuration:
 
         sudo nginx -s reload
 
-3.  Navigate to your Linode's domain name or IP address in a browser. You should see the NGINX default page displayed (or your own content, if you specified the path in the previous section).
+1.  Navigate to your Linode's domain name or IP address in a browser. You should see your simple page displayed.
 
 ## Advanced Configuration
 
