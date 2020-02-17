@@ -97,11 +97,15 @@ your chances to notice or even prevent man-in-the-middle attacks (y/n)
     This makes your token a true one-time password, preventing the same password from being used twice. For example, if you set this to "no," and your password was intercepted while you logged in, someone may be able to gain entry to your server by entering it before the time expires. We **strongly recommend** answering `y`.
 
     {{< output >}}
-By default, tokens are good for 30 seconds and in order to compensate for
-possible time-skew between the client and the server, we allow an extra
-token before and after the current time. If you experience problems with poor
-time synchronization, you can increase the window from its default
-size of 1:30min to about 4min. Do you want to do so (y/n)
+By default, a new token is generated every 30 seconds by the mobile app.
+In order to compensate for possible time-skew between the client and the server,
+we allow an extra token before and after the current time. This allows for a
+time skew of up to 30 seconds between authentication server and client. If you
+experience problems with poor time synchronization, you can increase the window
+from its default size of 3 permitted codes (one previous code, the current
+code, the next code) to 17 permitted codes (the 8 previous codes, the current
+code, and the 8 next codes). This will permit for a time skew of up to 4 minutes
+between client and server. Do you want to do so (y/n)
     {{</ output >}}
 
     This setting accounts for time syncing issues across devices. Unless you have reason to believe that your phone or device may not sync properly, answer `n`.
