@@ -169,7 +169,7 @@ Make sure that you do not put a space after the comma between `public_html` and 
 
         sudo chown -R $USER:$USER /var/www/html/example.com/public_html
 
-1. Check that the permissions are correct:
+1. Set the permissions for the `public_html` directory:
 
         sudo chmod -R 755 /var/www/html/example.com/public_html
 
