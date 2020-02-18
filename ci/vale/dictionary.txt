@@ -88,6 +88,7 @@ backtick
 backticks
 backupninja
 bampton
+barebones
 base64
 basearch
 bashdoor
@@ -993,6 +994,7 @@ otomen
 outputter
 outputters
 overcommit
+overengineer
 overwatch
 ovpn
 owadb
@@ -1543,6 +1545,8 @@ vmstat
 vnc
 vset
 vswap
+vue
+vuejs
 vz
 vznetaddbr
 walkthrough
