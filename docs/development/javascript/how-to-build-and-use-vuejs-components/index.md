@@ -61,7 +61,7 @@ As this will be a simple VueJS application, the first thing we have to do is inc
 
 -   As we are in the development stage of the application, we will use the development version of the VueJS library. This line is copied into line 1 of the HTML snippet.
 
-After the VueJS library is included, a `div` with `id` set to `app` is created on lines 3-4. On lines 6-8, a barebones VueJS app is created and linked to this element.
+After the VueJS library is included, a `div` with `id` set to `app` is created on lines 3-4. On lines 6-10, a barebones VueJS app is created and linked to this element.
 
 So far this new app does nothing at all, but we will use it for the skeleton of our example application.
 
@@ -71,7 +71,7 @@ The component we’ll be developing is a simple reusable rating counter that wil
 
 ### Define the Component
 
-In your `ratingcounter.html`, update the second `<script>` section (currently on lines 6-8 of your file) to include the `Vue.component()` function from lines 7-18 of this snippet:
+In your `ratingcounter.html`, update the second `<script>` section (currently on lines 6-10 of your file) to include the `Vue.component()` function from lines 7-18 of this snippet:
 
 {{< file "ratingcounter.html" html >}}
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -229,15 +229,15 @@ Load the file in your browser and start clicking the buttons. You'll now see a l
 
 Let's break down the updated parts of the file:
 
-- The parent app's data is set on lines 28-33. The app now keeps track of an object called `parentHeader`.
+- The parent app's data is set on lines 29-34. The app now keeps track of an object called `parentHeader`.
 
 - The data from this object is rendered on line 4.
 
-- On lines 12, we've added another prop to the component, called `parent`.
+- On line 13, we've added another prop to the component, called `parent`.
 
-- On lines 5-7, the value for this prop is assigned with the `v-bind:parent` attribute. By using the [`v-bind` syntax](https://vuejs.org/v2/api/#v-bind), you’re telling VueJS to bind the `parent` attribute of the component to whichever data property you supply, in this case the `parentHeader` object.
+- On lines 6-8, the value for this prop is assigned with the `v-bind:parent` attribute. By using the [`v-bind` syntax](https://vuejs.org/v2/api/#v-bind), you’re telling VueJS to bind the `parent` attribute of the component to whichever data property you supply, in this case the `parentHeader` object.
 
-- On lines 20 and 22, the on-click actions for each button will increment or decrement the `globalCount` property of the `parent` prop, which corresponds to the `globalCount` property of the `parentHeader` object in your app's data.
+- On lines 21 and 23, the on-click actions for each button will increment or decrement the `globalCount` property of the `parent` prop, which corresponds to the `globalCount` property of the `parentHeader` object in your app's data.
 
 - Because props are reactive, changing this data from the component will cascade the changes back to the parent, and to all other components that reference it.
 
@@ -463,7 +463,7 @@ When loaded in a browser, the file will look like:
 
 -   You can see that within our `rating-counter` component (on lines 26-29) there are now two slots. This time they have name attributes as well: `title` and `subtitle`.
 
--   This takes care of the creation of the named slots, but how do we use them? You can reference a named slot by using the `<template v-slot:slotname></template` syntax within your parent component. The content inside the `<template>` tags will then be inserted where the `<slot>` with the same name appears in your component's template.
+-   This takes care of the creation of the named slots, but how do we use them? You can reference a named slot by using the `<template v-slot:slotname></template>` syntax within your parent component. The content inside the `<template>` tags will then be inserted where the `<slot>` with the same name appears in your component's template.
 
 ## Using Component Events
 
@@ -506,9 +506,9 @@ When loaded in a browser, the file will look like:
 
 The example is similar to the previous examples, but we've only left what is essential to the events:
 
-- In the `v-on:click` event of our component (line 19), you can see that this time we're using VueJS's [`$emit` method](https://vuejs.org/v2/api/#vm-emit) instead of changing variables manually. The `$emit()` method takes a custom event name as an argument (`increment` in this example).
+- In the `v-on:click` event of our component (line 13), you can see that this time we're using VueJS's [`$emit` method](https://vuejs.org/v2/api/#vm-emit) instead of changing variables manually. The `$emit()` method takes a custom event name as an argument (`increment` in this example).
 
-- This fires an empty 'increment' event, which our parent is subscribed to on line 7. Notice the `v-on:increment="parentHeader.globalCount++"` attribute; this is our event subscriber.
+- This fires an empty `increment` event, which our parent is subscribed to on line 7. Notice the `v-on:increment="parentHeader.globalCount++"` attribute; this is our event subscriber.
 
 - The subscriber can call a method of the VueJS app, or in this example, just directly use the increment JavaScript `++` operator to increase the counter.
 
