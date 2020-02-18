@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Google Authenticator on to enable two-factor authentication for SSH connections on CentOS 7.'
-og_description: 'Use Google Authenticator on to enable two-factor authentication for SSH connections on CentOS 7.'
+description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on CentOS 7.'
+og_description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on CentOS 7.'
 keywords: ["two factor authentication", "ssh", "google authenticator", "centos"]
 aliases: ['security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

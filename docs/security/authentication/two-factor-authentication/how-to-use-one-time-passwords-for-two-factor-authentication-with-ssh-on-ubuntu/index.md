@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Google Authenticator on to enable two-factor authentication for SSH connections on Ubuntu 18.04 LTS'
-og_description: 'Use Google Authenticator on to enable two-factor authentication for SSH connections on Ubuntu 18.04 LTS'
+description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Ubuntu 18.04 LTS'
+og_description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Ubuntu 18.04 LTS'
 keywords: ["two factor authentication", "ssh", "google authenticator", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
