@@ -92,7 +92,7 @@ To delete a ReplicaSet, issue the `delete replicaset` command:
 If you issue the `get pods` command, you will see that the Pods the ReplicaSet created are in the process of terminating:
 
     NAME                      READY   STATUS        RESTARTS   AGE
-   apache-replicaset-bm2pn   0/1     Terminating   0          3m54s
+    apache-replicaset-bm2pn   0/1     Terminating   0          3m54s
 
 In the above example, four of the Pods have already terminated, and one is in the process of terminating.
 
