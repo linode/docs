@@ -74,7 +74,7 @@ The outbound data transfer for Linode Object Storage is part of your Linode acco
 
 ### Backups
 
-Databases and other critical data can be backed up to Object Storage with little effort using a command line client for easier automation. Objects within Object Storage are normally replicated three times, providing resiliency should an error occur with the underlying hardware. Additionally, buckets can be versioned so you never lose access to older backups.
+Databases and other critical data can be backed up to Object Storage with little effort using a command line client for easier automation. Objects within Object Storage are replicated and resilient to underlying hardware errors. Additionally, buckets can be versioned so you never lose access to older backups.
 
 ### Private File Storage
 

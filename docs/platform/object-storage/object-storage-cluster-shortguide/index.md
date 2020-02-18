@@ -15,5 +15,5 @@ show_on_rss_feed: false
 ---
 
 {{< note >}}
-A *cluster* is defined as all buckets hosted by a unique URL; for example: `us-east-1.linodeobjects.com` or `us-east-2.linodeobjects.com`.
+A *cluster* is defined as all buckets hosted by a unique URL; for example: `us-east-1.linodeobjects.com`, `us-east-2.linodeobjects.com`, or `eu-central-1.linodeobjects.com`.
 {{</ note >}}
