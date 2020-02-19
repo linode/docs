@@ -99,6 +99,7 @@ biomes
 bitbucket
 bitnami
 bitrate
+bitwarden
 blocklists
 blockwise
 bluehost
