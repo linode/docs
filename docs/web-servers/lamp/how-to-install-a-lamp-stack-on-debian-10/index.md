@@ -256,7 +256,7 @@ If you plan on using your LAMP stack to host a WordPress server, install additio
 
 In this section, you'll create a test page that shows whether Apache can render PHP and connect to the MariaDB database. This can be helpful in locating the source of an error if one of the elements of your LAMP stack is not communicating with the others.
 
-1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `webuser` and `password` to match the information entered in the **Create a MariaDB Database** section above:
+1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `webuser` and `password` to match the information entered in the [Set Up a MariaDB Database](#set-up-a-mariadb-database) section above:
 
      {{< file "/var/www/html/example.com/public_html/phptest.php" php >}}
 <html>

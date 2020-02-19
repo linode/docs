@@ -1,16 +1,16 @@
 ---
 author:
-    name: Linode
+    name: Joel Kruger
     email: docs@linode.com
-description: 'Install a LAMP stack on a CentOS 8 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
-keywords: ["LAMP", "CentOS", "CentOS 8", "apache", "mysql", "php", "centos lamp"]
+description: 'Create a LAMP stack on a CentOS 7 Linode.'
+keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-19
+modified: 2020-02-20
 modified_by:
-    name: Linode
+    name: Edward Angert
 published: 2015-12-01
-title: Install a LAMP Stack on CentOS 8
-h1_title: How to Install a LAMP Stack on CentOS 8
+title: LAMP on CentOS 7
+aliases: ['websites/lamp/lamp-server-on-centos-7/','websites/lamp/lamp-on-centos-7/', 'web-servers/lamp/lamp-on-centos-7/']
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -18,7 +18,9 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on a CentOS 8 Linode.
+![LAMP on CentOS 7](lamp-on-centos-7-title-graphic.jpg "LAMP on CentOS 7")
+
+A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on a CentOS 7 Linode.
 
 ## Before You Begin
 
@@ -124,7 +126,7 @@ IncludeOptional sites-enabled/*.conf
 
 ### Configure SELinux to Allow HTTP
 
-SELinux is enabled by default on CentOS 8 Linodes. Its default setting is to restrict Apache's access to directories until explicit permissions are granted.
+SELinux is enabled by default on CentOS 7 Linodes. Its default setting is to restrict Apache's access to directories until explicit permissions are granted.
 
 Without these steps, Apache will not start and may give the following error:
 
@@ -156,7 +158,7 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
 
 ### Configure FirewallD to Allow HTTP Connections
 
-FirewallD is enabled for CentOS 8 Linodes, but HTTP is not included in the default set of services.
+FirewallD is enabled for CentOS 7 Linodes, but HTTP is not included in the default set of services.
 
 1. View the default set of services:
 
@@ -245,13 +247,6 @@ Ensure that all lines noted above are uncommented. A commented line begins with 
 
         sudo mkdir /var/log/php
         sudo chown apache /var/log/php
-
-    {{< note >}}
-You may need to enable and start the `php-fpm.service`. This service provides an alternative PHP FastCGI implementation.
-
-    sudo systemctl enable php-fpm.service
-    sudo systemctl start php-fpm.service
-    {{</ note >}}
 
 4.  Reload Apache:
 
