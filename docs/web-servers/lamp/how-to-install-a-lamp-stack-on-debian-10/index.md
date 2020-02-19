@@ -19,11 +19,6 @@ external_resources:
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on Debian 10 (Buster).
 
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-{{< /note >}}
-
 ## Before You Begin
 
 Prior to installing your LAMP stack ensure that:
@@ -39,6 +34,10 @@ Prior to installing your LAMP stack ensure that:
 
         sudo apt-get update && sudo apt-get upgrade
 
+    {{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< /note >}}
+
 ## Apache
 
 ### Install and Configure Apache
@@ -49,6 +48,12 @@ Prior to installing your LAMP stack ensure that:
 
 
 1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 2GB Linode:
+
+    {{< note >}}
+As a best practice, you should create a backup of your Apache configuration file, before making any configuration changes to your Apache installation. To make a backup in your home directory:
+
+    cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+{{< /note >}}
 
     {{< file "/etc/apache2/mods-available/mpm_prefork.conf" aconf >}}
 # prefork MPM
@@ -105,8 +110,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
 1.  Create directories for your websites and websites' logs, replacing `example.com` with your own domain name:
 
-        sudo mkdir -p /var/www/html/example.com/public_html
-        sudo mkdir /var/www/html/example.com/logs
+        sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
     Repeat the process if you intend on hosting multiple websites on your Linode.
 
@@ -120,7 +124,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
      ServerAdmin webmaster@example.com
      ServerName example.com
      ServerAlias www.example.com
-     DocumentRoot /var/www/html/example.com/public_html/
+     DocumentRoot /var/www/html/example.com/public_html
      ErrorLog /var/www/html/example.com/logs/error.log
      CustomLog /var/www/html/example.com/logs/access.log combined
 </VirtualHost>
@@ -139,7 +143,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
      ServerAdmin webmaster@example.org
      ServerName example.org
      ServerAlias www.example.org
-     DocumentRoot /var/www/html/example.org/public_html/
+     DocumentRoot /var/www/html/example.org/public_html
      ErrorLog /var/www/html/example.org/logs/error.log
      CustomLog /var/www/html/example.org/logs/access.log combined
 </VirtualHost>
@@ -153,8 +157,10 @@ There can be as many virtual hosts files as needed to support the amount of doma
         sudo a2ensite example.org.conf
 
     {{< note >}}
-Should you need to disable a site, you can use `a2dissite example.com`.
-{{< /note >}}
+If you need to disable a site, you can use issue the following command:
+
+    sudo a2dissite example.com
+    {{< /note >}}
 
 1.  Restart Apache:
 
@@ -185,7 +191,7 @@ Next, you can create a database and grant your users permissions to use database
 
 1.  Log in to MariaDB:
 
-        mysql -u root -p
+        sudo mysql -u root -p
 
     Enter MariaDB's root password when prompted.
 
@@ -231,18 +237,20 @@ max_input_time = 30
 Ensure that all values are uncommented, by making sure they do not start with a semicolon (**;**).
 {{< /note >}}
 
-1.  Create the log directory for PHP and give the Apache user ownership:
+1.  Create the log directory for PHP and give ownership to the Apache user (`www-data`):
 
         sudo mkdir /var/log/php
         sudo chown www-data /var/log/php
 
     {{< note >}}
-    If you plan on using your LAMP stack to host a WordPress server, install additional PHP modules: `sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc`
+If you plan on using your LAMP stack to host a WordPress server, install additional PHP modules: `sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc`
     {{< /note >}}
 
 1.  Restart Apache:
 
         sudo systemctl restart apache2
+
+1. Visit your site's domain (or IP address). You should see Apache's default welcome page. Your LAMP stack should be installed and is ready to host your site files.
 
 ## Optional: Test and Troubleshoot the LAMP Stack
 
