@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows how to install and configure the MariaDB database server on Ubuntu 18.04 LTS.'
-og_description: 'MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Ubuntu 18.04 LTS.'
+description: 'This guide shows how to install and configure the MariaDB server on Ubuntu 18.04 LTS.'
+og_description: 'MariaDB is a robust, scalable, and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Ubuntu 18.04 LTS.'
 keywords: ["mariadb", "Ubuntu 18.04", "ubuntu", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['databases/mariadb/mariadb-setup-ubuntu-18.04/']
@@ -36,13 +36,13 @@ This guide is written for a non-root user. Commands that require elevated privil
         hostname
         hostname -f
 
-    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
 1.  Update your system:
 
         sudo apt update
 
-## Install and Start MariaDB
+## Install and Setup MariaDB
 
     sudo apt install mariadb-server
 
@@ -52,13 +52,13 @@ MariaDB will bind to localhost (127.0.0.1) by default. For information on connec
 Allowing unrestricted access to MariaDB on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/mysql/my.cnf`. If you decide to bind MariaDB to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 {{< /note >}}
 
-## Using MariaDB
+### MariaDB Client
 
 The standard tool for interacting with MariaDB is the `mariadb` client, which installs with the `mariadb-server` package. The MariaDB client is used through a terminal.
 
 ### Root Login
 
-1.  To log in to MariaDB as the root user:
+1.  Log into MariaDB as the root user:
 
         sudo mysql -u root -p
 
@@ -108,13 +108,13 @@ For server side help, type 'help contents'
 MariaDB [(none)]>
 {{</output >}}
 
-## Harden MariaDB Server
+### Securing the Installation
 
 1. After accessing MariaDB as the root user of your database, enable the **mysql_native_password**
 plugin to enable root password authentication:
 
         USE mysql;
-        UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+        UPDATE user SET plugin='mysql_native_password' WHERE user='root';
         FLUSH PRIVILEGES;
         exit;
 
@@ -124,8 +124,10 @@ plugin to enable root password authentication:
 
 You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
+## Using MariaDB
 
 ### Create a New MariaDB User and Database
+
 1.  Login to the database again. This time, if you set a password above, enter it at the prompt.
 
         sudo mysql -u root -p
@@ -175,7 +177,7 @@ You will be given the choice to change the MariaDB root password, remove anonymo
 
 1.  Add some data:
 
-        INSERT INTO customers (first_name, last_name) values ('John', 'Doe');
+        INSERT INTO customers (first_name, last_name) VALUES ('John', 'Doe');
 
 1.  View the data:
 
@@ -198,22 +200,41 @@ You will be given the choice to change the MariaDB root password, remove anonymo
 
 If you forget your root MariaDB password, it can be reset.
 
-1.  Stop the current MariaDB server instance, then restart it with an option to not ask for a password:
+1.  Stop the current MariaDB server instance.
 
         sudo systemctl stop mariadb
-        sudo mysqld_safe --skip-grant-tables &
 
-1.  Reconnect to the MariaDB server with the MariaDB root account:
+1.  Then execute the following command which will allow the database to start without loading the grant tables or networking.
+
+        sudo systemctl set-environment MYSQLD_OPTS="--skip-grant-tables --skip-networking"
+
+1.  Restart MariaDB:
+
+        sudo systemctl start mariadb
+
+1.  Login to the MariaDB server with the root account, this time without supplying a password:
 
         sudo mysql -u root
 
 1.  Use the following commands to reset root's password. Replace `password` with a strong password:
 
-        use mysql;
-        UPDATE user SET PASSWORD=PASSWORD("password") WHERE USER='root';
         FLUSH PRIVILEGES;
+        UPDATE mysql.user SET password = PASSWORD('password') WHERE user = 'root';
+
+1.  Update the authentication methods for the root password:
+
+        UPDATE mysql.user SET authentication_string = '' WHERE user = 'root';
+        UPDATE mysql.user SET plugin = '' WHERE user = 'root';
         exit;
+
+1.  Revert the environment settings to allow the database to start with grant tables and networking:
+
+        sudo systemctl unset-environment MYSQLD_OPTS
 
 1.  Then restart MariaDB:
 
-        sudo systemctl start mariadb
+        sudo systemctl restart mariadb
+
+1.  You should now be able to log into the database with your new root password:
+
+        sudo mysql -u root -p
