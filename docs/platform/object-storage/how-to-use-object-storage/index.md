@@ -94,6 +94,18 @@ Object Storage is not available in the Linode Classic Manager.
 
     You now have the credentials needed to connect to Linode Object Storage.
 
+## Bucket Names
+
+Bucket names, also referred to as labels, need to be unique within the same cluster, including buckets on other users' Linode accounts. This also means if you reserve a bucket name in one cluster, it is not automatically reserved in another. For example, if you have `my-bucket.us-east-1.linode.com` and want `my-bucket.eu-central-1.linode.com` you must manually reserve them both. They are separate clusters and not garanteed. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:
+
+- Cannot be formatted as IP addresses.
+- Must be between 3 and 63 characters in length.
+- Can only contain lower-case characters, numbers, periods, and dashes.
+- Must start with a lowercase letter or number.
+- Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.).
+
+{{< content "object-storage-cluster-shortguide" >}}
+
 ## Object Storage Tools
 
 There are a number of tools that are available to help manage Linode Object Storage. This guide explains how to install and use the following options:
@@ -124,20 +136,11 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
     ![The Create a Bucket menu.](object-storage-create-a-bucket.png)
 
-1.  Add a label for your bucket.
-
-    {{< note >}}
-Bucket labels need to be unique within the same cluster, including buckets on other users' Linode accounts. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot be formatted as IP addresses</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must be between 3 and 63 characters in length</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Can only contain lower-case characters, numbers, periods, and dashes</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must start with a lowercase letter or number</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
-{{< /note >}}
-
-    {{< content "object-storage-cluster-shortguide" >}}
+1.  Add a label for your bucket. See the [Bucket Name](#bucket-names) section for rules on naming your bucket.
 
 1.  Choose a cluster location for the bucket to reside in.
+
+    {{< content "object-storage-cluster-shortguide" >}}
 
 1.  Click **Submit**. You are now ready to [upload objects to your bucket](#upload-objects-to-a-bucket).
 
@@ -249,20 +252,9 @@ Now you are ready to create buckets and upload objects.
 
 ### Create a Bucket with the CLI
 
-To create a bucket with the Linode CLI, issue the `mb` command.
+To create a bucket with the Linode CLI, issue the `mb` command. See the [Bucket Name](#bucket-names) section for rules on naming your bucket.
 
     linode-cli obj mb my-example-bucket
-
-{{< note >}}
-Bucket labels need to be unique within the same cluster, including buckets on other users' Linode accounts. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot be formatted as IP addresses</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must be between 3 and 63 characters in length</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Can only contain lower-case characters, numbers, periods, and dashes</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must start with a lowercase letter or number</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
-{{< /note >}}
-
-{{< content "object-storage-cluster-shortguide" >}}
 
 To delete a bucket, issue the `rb` command:
 
@@ -412,20 +404,9 @@ You are now ready to use s3cmd to create a bucket in Object Storage.
 
 ### Create a Bucket with s3cmd
 
-You can create a bucket with s3cmd issuing the following `mb` command, replacing `my-example-bucket` with the label of the bucket you would like to create.
+You can create a bucket with s3cmd issuing the following `mb` command, replacing `my-example-bucket` with the label of the bucket you would like to create. See the [Bucket Name](#bucket-names) section for rules on naming your bucket.
 
     s3cmd mb s3://my-example-bucket
-
-{{< note >}}
-Bucket labels need to be unique within the same cluster, including buckets on other users' Linode accounts. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot be formatted as IP addresses</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must be between 3 and 63 characters in length</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Can only contain lower-case characters, numbers, periods, and dashes</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must start with a lowercase letter or number</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
-{{< /note >}}
-
-{{< content "object-storage-cluster-shortguide" >}}
 
 To remove a bucket, you can use the `rb` command:
 
@@ -566,20 +547,9 @@ To create a bucket in Cyberduck:
 
     ![Right click or click 'Action', then click 'New Folder'](object-storage-cyberduck-create-bucket.png)
 
-1.  Enter your bucket's label and then click **Create**.
+1.  Enter your bucket's label and then click **Create**. See the [Bucket Name](#bucket-names) section for rules on naming your bucket.
 
-    {{< note >}}
-Bucket labels need to be unique within the same cluster, including buckets on other users' Linode accounts. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot be formatted as IP addresses</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must be between 3 and 63 characters in length</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Can only contain lower-case characters, numbers, periods, and dashes</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must start with a lowercase letter or number</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
-{{< /note >}}
-
-    {{< content "object-storage-cluster-shortguide" >}}
-
-To delete the bucket using Cyberduck, right click on the bucket and select **Delete**.
+1.  To delete the bucket using Cyberduck, right click on the bucket and select **Delete**.
 
 ### Upload, Download, and Delete an Object with Cyberduck
 
