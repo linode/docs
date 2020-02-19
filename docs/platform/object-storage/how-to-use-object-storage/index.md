@@ -96,7 +96,7 @@ Object Storage is not available in the Linode Classic Manager.
 
 ## Bucket Names
 
-Bucket names, also referred to as labels, need to be unique within the same cluster, including buckets on other users' Linode accounts. This also means if you reserve a bucket name in one cluster, it is not automatically reserved in another. For example, if you have `my-bucket.us-east-1.linode.com` and want `my-bucket.eu-central-1.linode.com` you must manually reserve them both. They are separate clusters and not garanteed. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:
+Bucket names, also referred to as labels, need to be unique within the same cluster, including buckets on other users' Linode accounts. This also means if you reserve a bucket name in one cluster, it is not automatically reserved in another. For example, if you have `my-bucket.us-east-1.linode.com` and want `my-bucket.eu-central-1.linode.com` you must manually reserve them both. They are separate clusters and not guaranteed. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:
 
 - Cannot be formatted as IP addresses.
 - Must be between 3 and 63 characters in length.
