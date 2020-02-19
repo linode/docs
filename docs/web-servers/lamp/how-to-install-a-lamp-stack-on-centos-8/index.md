@@ -2,14 +2,15 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Create a LAMP stack on a CentOS 8 Linode.'
+description: 'Install a LAMP stack on a CentOS 8 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
 keywords: ["LAMP", "CentOS", "CentOS 8", "apache", "mysql", "php", "centos lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-06-21
 modified_by:
     name: Linode
 published: 2015-12-01
-title: LAMP on CentOS 8
+title: Install a LAMP Stack on CentOS 8
+h1_title: How to Install a LAMP Stack on CentOS 8
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -17,27 +18,24 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-
-A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows how to install a LAMP stack on a CentOS 8 Linode.
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-{{< /note >}}
+A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on a CentOS 8 Linode.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#set-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides. Ensure that the Linode's [hostname is set](/docs/getting-started#set-the-hostname).
 
-    To check your hostname, run:
+    Check your Linode's hostname. The first command should show your short hostname and the second should show your fully qualified domain name (FQDN).
 
         hostname
         hostname -f
 
-    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
-
 2.  Update your system:
 
         sudo yum update
+
+    {{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< /note >}}
 
 ## Apache
 
@@ -47,10 +45,15 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo yum install httpd
 
-2.  Edit `httpd.conf` and add the code below to turn off KeepAlive and adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
+1. Enable Apache to start at boot and start the Apache service:
+
+        sudo systemctl enable httpd.service
+        sudo systemctl start httpd.service
+
+2.  Create a `httpd-mpm.conf` file and add the code in the example to turn off KeepAlive and adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {{< note >}}
-Before changing any configuration files, it is advised that you make a backup of the file. To make a backup:
+As a best practice, you should create a backup of your Apache configuration file, before making any configuration changes to your Apache installation. To make a backup in your home directory:
 
     cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 {{< /note >}}
@@ -68,29 +71,48 @@ KeepAlive Off
 
 {{< /file >}}
 
-    These settings can also be added to a separate file if so desired. The file must be located in the `conf.module.d` or `conf.d` directories, and must end in `.conf`.
-
 ### Configure Name-based Virtual Hosts
 
 There are different ways to set up virtual hosts; however, the method below is recommended.
 
-1.  Within the `conf.d` directory create a file named `example.com.conf` to store your virtual host configurations. The example below is a template for website `example.com`; change the necessary values for your domain:
+1. Edit Apache's configuration file to let it know to look for virtual host files in the `/etc/httpd/sites-enabled` directory. Add the example line to the bottom of your `httpd.conf` file:
 
-    {{< file "/etc/httpd/conf.d/example.com.conf" aconf >}}
+      {{< file "/etc/httpd/conf/httpd.conf" apache>}}
+IncludeOptional sites-enabled/*.conf
+      {{</ file >}}
+
+1. Navigate to your `/var/www/html/example.com` directory if you are not already there:
+
+        cd /var/www/html/example.com
+
+1. Create a configuration for your virtual host. Copy the basic settings in the example below and paste them into the virtual host file you just created. Replace all instances of `example.com` with your domain name:
+
+    {{< file "/etc/httpd/sites-availabe/example.com.conf" apache>}}
 <Directory /var/www/html/example.com/public_html>
-        Require all granted
+    Require all granted
 </Directory>
 <VirtualHost *:80>
-    ServerAdmin webmaster@example.com
     ServerName example.com
-    ServerAlias www.example.com
-    DocumentRoot /var/www/html/example.com/public_html/
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html/example.com/public_html
     ErrorLog /var/www/html/example.com/logs/error.log
     CustomLog /var/www/html/example.com/logs/access.log combined
+    <files xmlrpc.php>
+      order allow,deny
+      deny from all
+    </files>
 </VirtualHost>
+    {{</ file>}}
 
-{{< /file >}}
+1.  Save the changes to the virtual host configuration file by pressing **CTRL+X** and then pressing **Y**. Press **ENTER** to confirm.
 
+1. Create a symbolic link from your virtual hosts file in the `sites-available` directory to the `sites-enabled` directory. Replace `example.com.conf` with the name of your own virtual hosts file.
+
+        sudo ln -s /etc/httpd/sites-available/example.com.conf /etc/httpd/sites-enabled/example.com.conf
+
+1.  Reload to apply your new configuration:
+
+        sudo systemctl reload httpd.service
 
     Additional domains can be added to the `example.com.conf` file as needed.
 
@@ -104,7 +126,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 
 ### Configure SELinux to Allow HTTP
 
-SELinux is enabled by default on CentOS 7 Linodes. Its default setting is to restrict Apache's access to directories until explicit permissions are granted.
+SELinux is enabled by default on CentOS 8 Linodes. Its default setting is to restrict Apache's access to directories until explicit permissions are granted.
 
 Without these steps, Apache will not start and may give the following error:
 
@@ -134,21 +156,29 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
 
-    Visit your domain or public IP to test the Apache server and view the default Apache page.
-
 ### Configure FirewallD to Allow HTTP Connections
 
-FirewallD is enabled for CentOS 8 Linodes, but HTTP is not included in the default set of services:
+FirewallD is enabled for CentOS 8 Linodes, but HTTP is not included in the default set of services.
 
-    sudo firewall-cmd --zone=public --list-services
+1. View the default set of services:
+
+        sudo firewall-cmd --zone=public --list-services
 {{< output >}}
 ssh dhcpv6-client
 {{< /output >}}
 
-To allow connections to Apache, add HTTP as a service:
+1. To allow connections to Apache, add HTTP as a service:
 
-    sudo firewall-cmd --zone=public --add-service=http --permanent
-    sudo firewall-cmd --zone=public --add-service=http
+        sudo firewall-cmd --zone=public --add-service=http --permanent
+        sudo firewall-cmd --zone=public --add-service=http
+
+    Visit your domain or public IP to test the Apache server and view the default Apache page.
+
+    {{< note >}}
+Rename Apache's default welcome page. This file will take precedence over other files other configurations.
+
+    sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.bk
+    {{</ note >}}
 
 ## MariaDB
 
@@ -218,9 +248,16 @@ Ensure that all lines noted above are uncommented. A commented line begins with 
         sudo mkdir /var/log/php
         sudo chown apache /var/log/php
 
+    {{< note >}}
+You may need to enable and start the `php-fpm.service`. This service provides an alternative PHP FastCGI implementation.
+
+    sudo systemctl enable php-fpm.service
+    sudo systemctl start php-fpm.service
+    {{</ note >}}
+
 4.  Reload Apache:
 
-        sudo systemctl reload httpd
+        sudo systemctl reload httpd.service
 
 ## Optional: Test and Troubleshoot the LAMP Stack
 
@@ -228,7 +265,7 @@ In this section, you'll create a test page that shows whether Apache can render 
 
 1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `webuser` and `password` to match the information entered in the **Create a MariaDB Database** section above:
 
-{{< file "/var/www/html/example.com/public_html/phptest.php" php >}}
+    {{< file "/var/www/html/example.com/public_html/phptest.php" php >}}
 <html>
 <head>
 <title>PHP Test</title>
@@ -251,9 +288,9 @@ In this section, you'll create a test page that shows whether Apache can render 
     echo '<p>Connected successfully</p>';
     ?>
     </body>
-    </html>
+</html>
 
-{{< /file >}}
+    {{< /file >}}
 
 1.  Navigate to `example.com/phptest.php` from your local machine. If the components of your LAMP stack are working correctly, the browser will display a "Connected successfully" message. If not, the output will be an error message.
 

@@ -17,7 +17,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-Setting up a LAMP (Linux, Apache, MariaDB, PHP) stack on your server will allow for the creation and hosting of websites and web applications. This guide shows you how to install a LAMP stack on Debian 10 (Buster).
+A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on Debian 10 (Buster).
 
 
 {{< note >}}
@@ -28,15 +28,14 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Prior to installing your LAMP stack ensure that:
 
--   You have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
--   You have a hostname and *fully-qualified domain name* (FQDN) configured on your Linode. To ensure this is set run:
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides. Ensure that the Linode's [hostname is set](/docs/getting-started#set-the-hostname).
+
+    Check your Linode's hostname. The first command should show your short hostname and the second should show your fully qualified domain name (FQDN).
 
         hostname
         hostname -f
 
-    The first command should output your hostname, with the second providing your FQDN.
-
--   Your Linode's repositories and packages are up-to-date:
+2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
