@@ -134,7 +134,7 @@ It’s also possible to manually install Longview for CentOS, Debian, and Ubuntu
 
     > **CentOS**:
     >
->    Using the text editor of your choice, like [nano](https://www.linode.com/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/), create a `.repo` file and copy the contents of the example file below. Replace `REV` in the repository URL with your CentOS version (e.g., 8). If unsure, you can find your CentOS version number with `cat /etc/redhat-release`.
+>    Using the text editor of your choice, like [nano](https://www.linode.com/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/), create a `.repo` file and copy the contents of the example file below. Replace `REV` in the repository URL with your CentOS version (e.g., 7). If unsure, you can find your CentOS version number with `cat /etc/redhat-release`.
 >    {{< file "/etc/yum.repos.d/longview.repo" config >}}
 [longview]
 name=Longview Repo
