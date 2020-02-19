@@ -114,7 +114,11 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
     Repeat the process if you intend on hosting multiple websites on your Linode.
 
-1.  Create an `example.com.conf` file in `/etc/apache2/sites-available` with your text editor, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
+1.  Create a copy of the default Apache configuration file for your site:
+
+         sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
+
+1.  Edit the `example.com.conf` file in `/etc/apache2/sites-available` with your text editor, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
 
     {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -150,17 +154,28 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
 {{< /file >}}
 
+1.  Assign ownership of `public_html` directory to the `$USER` environment variable:
 
-1.  Symbolically link your virtual hosts files from the `sites-available` directory to the `sites-enabled` directory. Replace the filename with your own:
+        sudo chown -R $USER:$USER /var/www/html/example.com/public_html
 
-        sudo a2ensite example.com.conf
-        sudo a2ensite example.org.conf
+1. Set the permissions for the `public_html` directory:
+
+        sudo chmod -R 755 /var/www/html/example.com/public_html
+
+1.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
+
+        sudo a2ensite example.com
+        sudo a2ensite example.org
 
     {{< note >}}
 If you need to disable a site, you can use issue the following command:
 
     sudo a2dissite example.com
     {{< /note >}}
+
+1.  Disable the default virtual host to minimize security risks:
+
+        sudo a2dissite 000-default.conf
 
 1.  Restart Apache:
 
