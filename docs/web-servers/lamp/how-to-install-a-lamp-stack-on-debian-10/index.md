@@ -5,7 +5,7 @@ author:
 description: 'Get your website or web application online by setting up Apache, MariaDB, and PHP'
 keywords: ["debian 10 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian", "debian 10", "websites", "apache", "mysql", "php", "apache 2.4", "lamp debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-02
+modified: 2020-02-19
 modified_by:
   name: Linode
 published: 2015-06-29

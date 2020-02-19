@@ -5,7 +5,7 @@ author:
 description: 'Install a LAMP stack on a CentOS 8 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
 keywords: ["LAMP", "CentOS", "CentOS 8", "apache", "mysql", "php", "centos lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-06-21
+modified: 2020-02-19
 modified_by:
     name: Linode
 published: 2015-12-01
