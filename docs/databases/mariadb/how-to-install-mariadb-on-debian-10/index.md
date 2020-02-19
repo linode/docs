@@ -29,7 +29,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and the Linode's [hostname is set](/docs/getting-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
 
     To check your hostname run:
 
@@ -46,7 +46,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     sudo apt install mariadb-server
 
-MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/docs/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel/), which also applies to MariaDB.
+MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
 
 {{< note >}}
 Allowing unrestricted access to MariaDB on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/mysql/my.cnf`. If you decide to bind MariaDB to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
