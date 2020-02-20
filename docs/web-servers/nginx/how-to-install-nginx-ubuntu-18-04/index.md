@@ -31,7 +31,7 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
     - Don't forget to update your `/etc/hosts` file with the public IP and your site's fully qualified domain name as explained in the [Update Your System's hosts File](http://localhost:1313/docs/getting-started/#update-your-system-s-hosts-file) section of the Getting Started guide.
 
-{{< content "limited-user-note-shortguide" >}}
+    {{< content "limited-user-note-shortguide" >}}
 
 ## Install NGINX
 
@@ -46,7 +46,7 @@ Currently, the best way to install NGINX on Ubuntu 18.04 LTS is to use the versi
 
         sudo mkdir /var/www/example.com
 
-1.  This is where you can add your site files. For now, let's just say "hello". Create a new file, `/var/www/example.com/index.html` in the text editor of your choice. Replace `example.com` with your website’s domain name or your Linode’s public IP address.
+1.  NGINX site-specific configuration files are kept in `/etc/nginx/sites-available` and symlinked to  `/etc/nginx/sites-enabled/`. Generally, you will create a new file containing a [*server block*](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/) in the `sites-available` directory for each domain or subdomain you will be hosting. Then, you will set up a symlink to your files in the `sites-enabled` directory.
 
     {{< file "/var/www/example.com/index.html" html >}}
 <!DOCTYPE html>
@@ -66,21 +66,17 @@ Currently, the best way to install NGINX on Ubuntu 18.04 LTS is to use the versi
 
 NGINX site-specific configuration files are kept in `/etc/nginx/sites-available` and symlinked into  `/etc/nginx/sites-enabled/`. Generally you will want to create a separate original file in the `sites-available` directory for each domain or subdomain you will be hosting, and then set up a symlink in the `sites-enabled` directory.
 
-1.  Copy the default configuration file. Replace `example.com` with your website's domain name or your Linode's public IP address.
-
-        sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/example.com
-
 1.  Disable the default configuration file by removing the symlink in `/etc/nginx/sites-enabled/`:
 
         sudo unlink /etc/nginx/sites-enabled/default
 
-1.  Open your site's configuration file in the text editor of your choice. Replace `example.com` in the `server_name` directive with your site's domain name or IP address:
+1.  Create a configuration file for your site in the text editor of your choice. Replace `example.com` in the `server_name` directive with your site's domain name or IP address:
 
     {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 server {
-    listen       80  default_server;
-    listen [::]:80   default_server;
-    server_name      example.com;
+    listen  80;
+    listen [::]:80;
+    server_name example.com;
 
     root /var/www/example.com;
     index index.html;

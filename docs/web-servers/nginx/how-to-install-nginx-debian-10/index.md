@@ -68,7 +68,7 @@ NGINX site-specific configuration files are kept in `/etc/nginx/sites-available`
 
         sudo unlink /etc/nginx/sites-enabled/default
 
-1.  Open your site's configuration file in the text editor of your choice. Replace `example.com` in the `server_name` directive with your site's domain name or IP address:
+1.  Create a configuration file for your site in the text editor of your choice. Replace `example.com` in the `server_name` directive with your site's domain name or IP address:
 
     {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 server {
