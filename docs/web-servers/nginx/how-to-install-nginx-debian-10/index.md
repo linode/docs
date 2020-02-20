@@ -27,9 +27,9 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
 1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/platform/manager/dns-manager/) guide.
 
-    - Don't forget to update your `/etc/hosts` file with the public IP and your site's fully qualified domain name as explained in the [Update Your System's hosts File](http://localhost:1313/docs/getting-started/#update-your-system-s-hosts-file) section of the Getting Started guide.
+    - Don't forget to update your `/etc/hosts` file with the public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/getting-started/#update-your-system-s-hosts-file) section of the [Getting Started]((/docs/getting-started/)) guide.
 
-{{< content "limited-user-note-shortguide" >}}
+    {{< content "limited-user-note-shortguide" >}}
 
 ## Install NGINX
 
@@ -44,7 +44,7 @@ Currently, the best way to install NGINX on Debian 10 is to use the version incl
 
         sudo mkdir /var/www/example.com
 
-1.  This is where you can add your site files. For now, let's just say "hello". Create a new file, `/var/www/example.com/index.html` in the text editor of your choice. Replace `example.com` with your website’s domain name or your Linode’s public IP address.
+1.  You can add your site's files in your `/var/www/example.com` directory. Create an index file with a simple "Hello World" example. Using the text editor of your choice, create a new file, `/var/www/example.com/index.html`. Replace `example.com` with your website’s domain name or your Linode’s public IP address.
 
     {{< file "/var/www/example.com/index.html" html >}}
 <!DOCTYPE html>
@@ -62,11 +62,7 @@ Currently, the best way to install NGINX on Debian 10 is to use the version incl
 
 ## Configure NGINX
 
-NGINX site-specific configuration files are kept in `/etc/nginx/sites-available` and symlinked into  `/etc/nginx/sites-enabled/`. Generally you will want to create a separate original file in the `sites-available` directory for each domain or subdomain you will be hosting, and then set up a symlink in the `sites-enabled` directory.
-
-1.  Copy the default configuration file. Replace `example.com` with your website's domain name or your Linode's public IP address.
-
-        sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/example.com
+NGINX site-specific configuration files are kept in `/etc/nginx/sites-available` and symlinked to  `/etc/nginx/sites-enabled/`. Generally, you will create a new file containing a [*server block*](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/) in the `sites-available` directory for each domain or subdomain you will be hosting. Then, you will set up a symlink to your files in the `sites-enabled` directory.
 
 1.  Disable the default configuration file by removing the symlink in `/etc/nginx/sites-enabled/`:
 
@@ -76,9 +72,8 @@ NGINX site-specific configuration files are kept in `/etc/nginx/sites-available`
 
     {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 server {
-    listen       80  default_server;
-    listen [::]:80   default_server;
-    server_name      example.com;
+    listen       80;
+    server_name  example.com;
 
     root /var/www/example.com;
     index index.html;
