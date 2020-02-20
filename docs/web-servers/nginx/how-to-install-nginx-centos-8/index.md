@@ -31,12 +31,7 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
 1. Install the SELinux core policy Python utilities. This will give you the ability to manage SELinux settings in a fine-grained way.
 
-      sudo yum install -y policycoreutils-python-utils
-
-1.  Set your system to SELinux permissive mode:
-
-        sudo setenforce 0
-        sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
+        sudo yum install -y policycoreutils-python-utils
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -52,6 +47,11 @@ Currently, the best way to install NGINX on CentOS 8 is to use the version inclu
 1.  Create a new directory for your site.
 
         sudo mkdir -p /var/www/example.com
+
+1. Use SELinux's `chcon` command to change the file security context for web content:
+
+        sudo chcon -t httpd_sys_content_t /var/www/example.com -R
+        sudo chcon -t httpd_sys_rw_content_t /var/www/example.com -R
 
 1.  You can add your site's files in your `/var/www/example.com` directory. Create an index file with a simple "Hello World" example. Using the text editor of your choice, create a new file, `/var/www/example.com/index.html`. Replace `example.com` with your website’s domain name or your Linode’s public IP address.
 
@@ -134,9 +134,11 @@ http {
 
 ## Advanced Configuration
 
-For more advanced configuration options, including security and performance optimizations and TLS setup, see our four-part series on NGINX:
+- For more advanced configuration options, including security and performance optimizations and TLS setup, see our four-part series on NGINX:
 
-- [Part 1: Installation and Basic Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)
-- [Part 2: (Slightly More) Advanced Configurations](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/)
-- [Part 3: Enable TLS for HTTPS Connections](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/)
-- [Part 4: TLS Deployment Best Practices](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/)
+  - [Part 1: Installation and Basic Setup](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)
+  - [Part 2: (Slightly More) Advanced Configurations](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/)
+  - [Part 3: Enable TLS for HTTPS Connections](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/)
+  - [Part 4: TLS Deployment Best Practices](/docs/web-servers/nginx/tls-deployment-best-practices-for-nginx/)
+
+- Changes to your NGINX configurations may require updates to your SELinux policies and contexts. For an introduction to SELinux, see our [Getting Started with SELinux](/docs/security/getting-started-with-selinux/) guide.
