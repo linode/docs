@@ -59,7 +59,7 @@ mysql >
 
 1.  Enter the command below to create a `test_db` database:
 
-        Create database test_db;
+        CREATE DATABASE test_db;
 
     Output:
 
@@ -69,7 +69,7 @@ Query OK, 1 row affected (0.01 sec)
 
 1.  Create a database user and grant full access to the `test_db` database. Replace `PASSWORD` with a complex and unique value that follows the [guidelines for MySQL passwords](https://dev.mysql.com/doc/mysql-security-excerpt/5.6/en/user-names.html):
 
-        Create User 'test_user'@'localhost' IDENTIFIED BY 'PASSWORD';
+        CREATE USER 'test_user'@'localhost' IDENTIFIED BY 'PASSWORD';
 
     Output:
 
@@ -101,7 +101,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 1.  Next, switch to the test_db database:
 
-        Use test_db;
+        USE test_db;
 
     Output:
 
@@ -111,7 +111,7 @@ Database changed
 
 1.  Create a `products` table to store sample records:
 
-        Create table products(product_id BIGINT PRIMARY KEY, product_name VARCHAR(50), category_name VARCHAR(50) ) ENGINE=INNODB;
+        CREATE TABLE products(product_id BIGINT PRIMARY KEY, product_name VARCHAR(50), category_name VARCHAR(50) ) ENGINE=INNODB;
 
     Output:
 
@@ -121,22 +121,22 @@ Query OK, 0 rows affected (0.01 sec)
 
 1.  You can now add a few products to the products table by executing the commands below one by one:
 
-        Insert into products (product_id, product_name, category_name) values ('1', 'GAMING KEYBOARD', 'COMPUTER ACCESSORIES');
-        Insert into products (product_id, product_name, category_name) values ('2', 'OPTICAL MOUSE', 'COMPUTER ACCESSORIES');
-        Insert into products (product_id, product_name, category_name) values ('3', 'MOUSE PAD', 'COMPUTER ACCESSORIES');
-        Insert into products (product_id, product_name, category_name) values ('4', 'STEREO SYSTEM', 'ELECTRONICS');
-        Insert into products (product_id, product_name, category_name) values ('5', '32 INCH TV', 'ELECTRONICS');
-        Insert into products (product_id, product_name, category_name) values ('6', 'DVB-T2 RECEIVER', 'ELECTRONICS');
+        INSERT INTO products (product_id, product_name, category_name) VALUES ('1', 'GAMING KEYBOARD', 'COMPUTER ACCESSORIES');
+        INSERT INTO products (product_id, product_name, category_name) VALUES ('2', 'OPTICAL MOUSE', 'COMPUTER ACCESSORIES');
+        INSERT INTO products (product_id, product_name, category_name) VALUES ('3', 'MOUSE PAD', 'COMPUTER ACCESSORIES');
+        INSERT INTO products (product_id, product_name, category_name) VALUES ('4', 'STEREO SYSTEM', 'ELECTRONICS');
+        INSERT INTO products (product_id, product_name, category_name) VALUES ('5', '32 INCH TV', 'ELECTRONICS');
+        INSERT INTO products (product_id, product_name, category_name) VALUES ('6', 'DVB-T2 RECEIVER', 'ELECTRONICS');
 
-    You should get the below output after executing each `Insert` statement.
-Select * from products where category_name=category;
+    You should get the below output after executing each `Insert` statement:
+
     {{< output >}}
 Query OK, 1 row affected (0.00 sec)
 {{< /output >}}
 
 1.  Next. confirm if the sample products were inserted successfully to the database by running the `Select` command below:
 
-        Select * from products;
+        SELECT * FROM products;
 
     Your sample products should listed as shown below:
 
@@ -156,7 +156,7 @@ Query OK, 1 row affected (0.00 sec)
 
 1.  Exit from MySQL server.
 
-        Quit;
+        QUIT;
 
     Output:
 
@@ -221,7 +221,7 @@ MySQL supports three types of parameters:
 
 After understanding the basic syntax, let's create a simple stored procedure to filter products by category name. The category name will be supplied as an `IN` parameter.
 
-1. Log in to the MySQL server using the test_user's credentials that you created when preparing the database:
+1. Log in to the MySQL server using the `test_user`'s credentials that you created when preparing the database:
 
         mysql -u test_user -p
 
@@ -229,7 +229,7 @@ After understanding the basic syntax, let's create a simple stored procedure to 
 
 1. You will get a `mysql >` prompt. Proceed by selecting the `test_db`:
 
-        Use test_db;
+        USE test_db;
 
     Output:
 
@@ -242,7 +242,7 @@ Database changed.
         DELIMITER &&
         CREATE PROCEDURE filter_by_category (IN category VARCHAR(50))
         BEGIN
-        Select * from products where category_name=category;
+        SELECT * FROM products WHERE category_name=category;
         END &&
 
     Output:
@@ -305,7 +305,7 @@ Our stored procedure worked as we expected. Next, we will learn how to drop the 
 
 ## Deleting Stored Procedures
 
-You can delete a MySQL stored procedure if you no longer want to use it or if you want to recreate it from scratch. The basic syntax of dropping the stored procedure is shown below
+You can delete a MySQL stored procedure if you no longer want to use it or if you want to recreate it from scratch. The basic syntax of dropping the stored procedure is shown below:
 
     DROP PROCEDURE IF EXISTS PROCEDURE_NAME;
 
