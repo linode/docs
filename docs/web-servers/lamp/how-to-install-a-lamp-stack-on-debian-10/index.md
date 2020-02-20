@@ -53,7 +53,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< note >}}
 As a best practice, you should create a backup of your Apache configuration file, before making any configuration changes to your Apache installation. To make a backup in your home directory:
 
-    cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+    cp /etc/apache2/apache2.conf ~/apache2.conf.backup
 {{< /note >}}
 
     {{< file "/etc/apache2/mods-available/mpm_prefork.conf" aconf >}}
