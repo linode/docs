@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Debian 9.'
+description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for Debian 9.'
 keywords: ["cassandra", " apache cassandra", " centos 7", "Debian 9", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-30

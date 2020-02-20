@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the CentOS 8.'
+description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for CentOS 8.'
 keywords: ["cassandra", " apache cassandra", " centos 7", "CentOS8", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-30
@@ -38,11 +38,11 @@ After completing this guide, you will have a single-node, production-ready insta
 
         sudo yum install yum-utils -y
 
-1.  Add the [Datastax](https://docs.datastax.com/en/landing_page/doc/landing_page/current.html) repository:
+1.  Add the [Datastax](https://docs.datastax.com/en/landing_page/doc/landing_page/current.html) repository so that we can install the required Cassandra software in a later step:
 
         sudo yum-config-manager --add-repo http://rpm.datastax.com/community
 
-1.  Add the public key for the datastax repository. Create a directory for the downloaded key:
+1.  Add the public key for the Datastax repository. Create a directory for the downloaded key:
 
         mkdir ~/.keys
 
@@ -278,7 +278,7 @@ In this section, you will update your default cluster name from "Test Cluster" t
 
 1.  Save and close.
 
-1. From the Linux terminal (not cqlsh) clear the system cache. This command will not disturb your node's data.
+1. From the Linux terminal (not `cqlsh`) clear the system cache. This command will not disturb your node's data.
 
         nodetool flush system
 
@@ -286,7 +286,7 @@ In this section, you will update your default cluster name from "Test Cluster" t
 
         sudo systemctl restart cassandra
 
-1. Log in with cqlsh and verify the new cluster name is visible.
+1. Log in with `cqlsh` and verify the new cluster name is visible.
 
         cqlsh -u superuser
 

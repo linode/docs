@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Ubuntu 18.04.'
+description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for Ubuntu 18.04.'
 keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 18.04", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-09-24
@@ -58,7 +58,7 @@ You may want to follow the link to the Apache repository to confirm that "40x" i
 
 In this section, you will update your Linux system software and install Java along with Cassandra.
 
-1.  Install Cassandra, Java, and NTP. Answer "yes" to the Java installation prompts regarding the license terms (Ubuntu only). NTP will help keep the Cassandra node synced to the correct time.
+1.  Install Cassandra, Java, and NTP. NTP will help keep the Cassandra node synced to the correct time.
 
         sudo apt-get update && sudo apt-get upgrade
         sudo apt install openjdk-8-jdk
@@ -281,7 +281,7 @@ In this section, you will update your default cluster name from "Test Cluster" t
 
         sudo systemctl restart cassandra
 
-1. Log in with cqlsh and verify the new cluster name is visible.
+1. Log in with `cqlsh` and verify the new cluster name is visible.
 
         cqlsh -u superuser
 
