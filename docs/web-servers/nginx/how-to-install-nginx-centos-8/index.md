@@ -81,7 +81,8 @@ NGINX site-specific configuration files are kept in `/etc/nginx/sites-available`
 
     {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 server {
-    listen       80;
+    listen 80;
+    listen [::]:80;
     server_name  example.com;
 
     root /var/www/example.com;
