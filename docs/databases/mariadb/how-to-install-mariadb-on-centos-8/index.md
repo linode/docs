@@ -44,6 +44,8 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install and Setup MariaDB
 
+Install MariaDB using the package manager.
+
     sudo yum install mariadb-server
 
 Enable MariaDB to start on boot and then start the service:

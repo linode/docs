@@ -44,6 +44,8 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install and Setup MariaDB
 
+Install MariaDB using the package manager.
+
     sudo apt install mariadb-server
 
 MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
