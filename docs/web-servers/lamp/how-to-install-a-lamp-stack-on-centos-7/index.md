@@ -7,7 +7,7 @@ keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-20
 modified_by:
-    name: Edward Angert
+    name: Linode
 published: 2015-12-01
 title: LAMP on CentOS 7
 h1_title: How to Install a LAMP Stack on CentOS 7

@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Get your website or web application online by setting up Apache, MariaDB, and PHP'
+description: 'Install a LAMP stack on a Debian 10. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
 keywords: ["debian 10 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian", "debian 10", "websites", "apache", "mysql", "php", "apache 2.4", "lamp debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-19
@@ -259,7 +259,7 @@ Ensure that all values are uncommented, by making sure they do not start with a 
         sudo chown www-data /var/log/php
 
     {{< note >}}
-If you plan on using your LAMP stack to host a WordPress server, install additional PHP modules: `sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc`
+If you plan on using your LAMP stack to host a WordPress server, install additional PHP modules: `sudo apt install php-gd php-mbstring php-xml php-xmlrpc`
     {{< /note >}}
 
 1.  Restart Apache:
