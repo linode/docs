@@ -16,463 +16,545 @@ external_resources:
 - '[MySQL Trigger Syntax and Examples](https://dev.mysql.com/doc/refman/8.0/en/trigger-syntax.html)'
 ---
 
+A *trigger* is a pre-defined SQL command that is automatically executed when specific actions occur in the database. It can be fired either before or after an `INSERT`, `UPDATE`, or `DELETE` event.
 
-### Introduction
+Triggers are mainly used to maintain software logic in the MySQL server, and they have several benefits:
 
-A trigger is a pre-defined SQL command that is automatically executed when specific actions occur in the database and it can be fired either before or after an `INSERT`, `UPDATE`, or `DELETE` event. 
+-   Triggers help keep global operations centralized in one location.
 
-Triggers are mainly used to maintain software logic in the MySQL server(centralizing global operations) and they also reduce client-side code while still minimizing the round-trips made to the database server. These make application more scalable across different platforms.
+-   They reduce client-side code and help minimize the round-trips made to the database server.
 
-Some common use-cases of triggers include audit logging, pre-computing database values(e.g. cummulative sum) and enforcing complex data integrity and validation rules.
+-   They help make applications more scalable across different platforms.
 
-In this guide, we will take you through the steps of creating, using and dropping triggers in your MySQL server.
+Some common use-cases of triggers include audit logging, pre-computing database values (e.g. cumulative sums), and enforcing complex data integrity and validation rules.
 
-## Before you Begin
+In this guide, you will learn:
 
-1. To follow along with this guide, familiarize yourself with our [Getting Started guide](/docs/getting-started/) and set up a linode server.
-	
-2. Install a MySQL server by following our guide on [How to Install MySQL server](/docs/databases/mysql/install-mysql-on-ubuntu-14-04/). 
-3. Ensure you have root access to your MySQL server.
+- How the [syntax for a trigger](#trigger-syntax) is structured.
 
-## Step 1 - Creating a Test Database, Tables and Sample Data
+- How to create triggers that are executed [before other database events occur](#creating-before-event-triggers).
 
-To better understand how triggers work, we will create a sample database and add sample data into it. Later, we will run triggers on the database to proof of concept.
+- How to create triggers that are executed [after other database events occur](#creating-after-event-triggers).
 
-First, log in to your MySQL Server:
+- [How to delete triggers](#deleting-a-trigger).
 
-    mysql -u root -p
+## Before You Begin
 
-Then, enter the root password of your MySQL server and hit **Enter** to proceed. Next, create a `test_database` by running the command below:
+Make sure you have the following:
 
-    mysql> Create database test_database;
+1.	A configured Linode server. You can learn how to create and setup a Linode server by reading our [Getting Started with Linode](/docs/getting-started/) guide.
 
-Output:
+1.	A MySQL server and client installed on the Linode server. Installation guides for MySQL are available for different distributions in our [MySQL section](/docs/databases/mysql/).
 
-    Query OK, 1 row affected (0.02 sec)
+## Prepare the Database
 
-Switch to the database:
+To better understand how triggers work, we will create a sample database and add sample data into it. Later, we will create different triggers on the database as a proof of concept exercise.
 
-    mysql> Use test_database;
+1.  First, log in to your MySQL Server:
 
-Output:
-    
-    Database changed
+        mysql -u root -p
 
-Once the database is selected, we will create some tables that we will use for demonstrating triggers. We will begin by creating the `stores` table. This table will hold information about two sample stores/offices where our hypothetical business operates from :
+    Then, enter the root password of your MySQL server and hit **Enter** to proceed.
 
-    mysql> Create table stores
-    (
-    store_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    store_name vARCHAR(50)	
-    ) ENGINE=InnoDB;
+1.  Next, you will see a MySQL prompt similar to the one shown below:
 
-Output:
+    {{< output >}}
+mysql >
+{{< /output >}}
 
-    Query OK, 0 rows affected (0.07 sec)
+1.  Create a `test_database` by running the command below:
 
-Next, add two records to the `stores` table by running the commands below:
+        CREATE DATABASE test_database;
 
-    mysql> Insert into stores(store_name) values('Philadelphia');
-    mysql> Insert into stores(store_name) values('Galloway');
+    Output:
 
-After each command, you will get the below output:
+    {{< output >}}
+Query OK, 1 row affected (0.02 sec)
+{{< /output >}}
 
-    Query OK, 1 row affected (0.08 sec)
-    ...
+1.  Switch to the database:
 
-Confirm the records by running the command below:
+        USE test_database;
 
-    mysql> Select * from stores;
+    Output:
 
-Output
+    {{< output >}}
+Database changed
+{{< /output >}}
 
-    +----------+--------------+
-    | store_id | store_name   |
-    +----------+--------------+
-    |        1 | Philadelphia |
-    |        2 | Galloway     |
-    +----------+--------------+
-    2 rows in set (0.01 sec)
+1.  Once the database is selected, we will create some tables that we will use for demonstrating triggers. We will begin by creating the `stores` table. This table will hold information about two sample stores/offices where our hypothetical business operates from:
 
-Next create the `products` table. The table will hold different products being offered in the store. Each product will be uniquely identified by a `product_id` . We will also have a `product_name` field that will specify the names of the items. 
+        CREATE TABLE stores
+        (
+        store_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+        store_name VARCHAR(50)
+        ) ENGINE=InnoDB;
 
-The `cost_price` and `retail_price` fields will determine the buying and selling price respectively. In addition, we will have an `availability` column which will define the product availability in the different stores. If the product is only available in our local store(Philadelphia), we will denote it with a `LOCAL` value. Else, we will use the value of `ALL` to signify a product that is available in both stores(Philadelphia and Galloway).
+    Output:
 
-To create the `products` table, run the command below:
+    {{< output >}}
+Query OK, 0 rows affected (0.07 sec)
+{{< /output >}}
 
-    mysql> Create table products
-    (
-    product_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    product_name VARCHAR(40),
-    cost_price DOUBLE,
-    retail_price DOUBLE,
-    availability VARCHAR(5)
-    ) ENGINE=InnoDB;
+1.  Next, add two records to the `stores` table by running the commands below:
 
-Output:
+        INSERT INTO stores (store_name) VALUES ('Philadelphia');
+        INSERT INTO stores (store_name) VALUES ('Galloway');
 
-    Query OK, 0 rows affected (0.13 sec)
+    After each command, you will get the below output:
 
-Then, add sample data to the `products` table:
+    {{< output >}}
+Query OK, 1 row affected (0.08 sec)
+...
+{{< /output >}}
 
-    mysql> Insert into products (product_name, cost_price, retail_price, availability) values('WIRELESS MOUSE', '18.23', '30.25','ALL');
+1.  Confirm the records by running the command below:
 
-    mysql> Insert into products (product_name, cost_price, retail_price, availability) values('8 MP CAMERA', '60.40', '85.40','ALL');
+        SELECT * FROM stores;
 
-    mysql> Insert into products (product_name, cost_price, retail_price, availability) values('SMART WATCH', '189.60', '225.30','LOCAL');
+    Output:
 
-You will get the output shown below after each insert command:
+    {{< output >}}
++----------+--------------+
+| store_id | store_name   |
++----------+--------------+
+|        1 | Philadelphia |
+|        2 | Galloway     |
++----------+--------------+
+2 rows in set (0.01 sec)
+{{< /output >}}
 
-    Query OK, 1 row affected (0.02 sec)
-    ...
+1.  Next, create the `products` table. The table will hold different products being offered in the store:
 
-Confirm if the products were inserted by running the command below:
+        CREATE TABLE products
+        (
+        product_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+        product_name VARCHAR(40),
+        cost_price DOUBLE,
+        retail_price DOUBLE,
+        availability VARCHAR(5)
+        ) ENGINE=InnoDB;
 
-    mysql> Select * from products;
+    Output:
 
-Output:
+    {{< output >}}
+Query OK, 0 rows affected (0.13 sec)
+{{< /output >}}
 
-    +------------+----------------+------------+--------------+--------------+
-    | product_id | product_name   | cost_price | retail_price | availability |
-    +------------+----------------+------------+--------------+--------------+
-    |          1 | WIRELESS MOUSE |      18.23 |        30.25 | ALL          |
-    |          2 | 8 MP CAMERA    |       60.4 |         85.4 | ALL          |
-    |          3 | SMART WATCH    |      189.6 |        225.3 | LOCAL        |
-    +------------+----------------+------------+--------------+--------------+
-    3 rows in set (0.00 sec)
-    
-Next, the products availability will be mapped to another table named `products_to_stores`. This table will just reference the `product_id` from the `products` table and the `store_id` from the `stores` table where the item is available.
+    - Each product will be uniquely identified by a `product_id`.
 
-Create the `products_to_stores` table by running the code below:
+    - A `product_name` field will specify the names of the items.
 
-	mysql> Create table products_to_stores
-	(
-	ref_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-	product_id BIGINT,
-	store_id BIGINT	
-	) ENGINE=InnoDB;
+    - The `cost_price` and `retail_price` fields will determine the buying and selling price respectively.
 
-Output:
+    - An `availability` column will define the product availability in the different stores. If the product is only available in our local store (Philadelphia), we will denote it with a `LOCAL` value. Else, we will use the value of `ALL` to signify a product that is available in both stores (Philadelphia and Galloway).
 
-    Query OK, 0 rows affected (0.14 sec)
+1.  Add sample data to the `products` table:
 
-Next, we will create an `archived products` table. The table will hold information for deleted products for future reference:
+        INSERT INTO products (product_name, cost_price, retail_price, availability) VALUES ('WIRELESS MOUSE', '18.23', '30.25','ALL');
 
-    mysql> Create table archived_products
-    (
-    product_id BIGINT PRIMARY KEY ,
-    product_name VARCHAR(40),
-    cost_price DOUBLE,
-    retail_price DOUBLE,
-    availability VARCHAR(5) 
-    ) ENGINE=InnoDB;
+        INSERT INTO products (product_name, cost_price, retail_price, availability) VALUES ('8 MP CAMERA', '60.40', '85.40','ALL');
 
-Output:
+        INSERT INTO products (product_name, cost_price, retail_price, availability) VALUES ('SMART WATCH', '189.60', '225.30','LOCAL');
 
-    Query OK, 0 rows affected (0.14 sec)
+    You will get the output shown below after each insert command:
 
-Lastly, we will create another table called the `products_price_history` table for tracking the different prices of each product. To create the `products_price_history`, run the command below:
+    {{< output >}}
+Query OK, 1 row affected (0.02 sec)
+...
+{{< /output >}}
+
+1.  Confirm if the products were inserted by running the command below:
+
+        SELECT * FROM products;
+
+    Output:
+
+    {{< output >}}
++------------+----------------+------------+--------------+--------------+
+| product_id | product_name   | cost_price | retail_price | availability |
++------------+----------------+------------+--------------+--------------+
+|          1 | WIRELESS MOUSE |      18.23 |        30.25 | ALL          |
+|          2 | 8 MP CAMERA    |       60.4 |         85.4 | ALL          |
+|          3 | SMART WATCH    |      189.6 |        225.3 | LOCAL        |
++------------+----------------+------------+--------------+--------------+
+3 rows in set (0.00 sec)
+{{< /output >}}
+
+1.  Next, the products' availability will be mapped to another table named `products_to_stores`. This table will just reference the `product_id` from the `products` table and the `store_id` from the `stores` table where the item is available.
+
+    Create the `products_to_stores` table by running the code below:
+
+        CREATE TABLE products_to_stores
+        (
+        ref_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+        product_id BIGINT,
+        store_id BIGINT
+        ) ENGINE=InnoDB;
+
+    Output:
+
+    {{< output >}}
+Query OK, 0 rows affected (0.14 sec)
+{{< /output >}}
+
+1.  Next, we will create an `archived_products` table. The table will hold information about deleted products for future reference:
+
+        CREATE TABLE archived_products
+        (
+        product_id BIGINT PRIMARY KEY ,
+        product_name VARCHAR(40),
+        cost_price DOUBLE,
+        retail_price DOUBLE,
+        availability VARCHAR(5)
+        ) ENGINE=InnoDB;
+
+    Output:
+
+    {{< output >}}
+Query OK, 0 rows affected (0.14 sec)
+{{< /output >}}
+
+1.  Lastly, we will create a `products_price_history` table for tracking the different prices of each product over time:
 
 
-    mysql> Create table products_price_history
-    (
-    product_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    price_date DATETIME,    
-    retail_price DOUBLE
-    ) ENGINE=InnoDB;
+        CREATE TABLE products_price_history
+        (
+        product_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+        price_date DATETIME,
+        retail_price DOUBLE
+        ) ENGINE=InnoDB;
 
-Output:
+    Output:
 
-    Query OK, 0 rows affected (0.14 sec)
+    {{< output >}}
+Query OK, 0 rows affected (0.14 sec)
+{{< /output >}}
 
 Once our database structure is in place, we can now go ahead and learn the basic syntax of a MySQL database trigger in order to create our first sample.
 
-## Step 2 - Creating a Before Insert, Before Update and Before Delete Trigger
+## Trigger Syntax
 
-As indicated earlier, triggers are fired automatically either before or after an SQL command is run in the database. In this step, we will look into the different types of triggers that are fired before a database operation. These include the `BEFORE INSERT`, `BEFORE UPDATE` AND `BEFORE DELETE` triggers.
+As indicated earlier, triggers are fired automatically either before or after an SQL command is run in the database. The basic syntax for creating triggers is as follows:
 
-Before we create the first trigger, let's look at the trigger syntax.
+    CREATE TRIGGER TRIGGER_NAME
 
-    mysql> CREATE TRIGGER [TRIGGER NAME]
+    TRIGGER_TIME TRIGGER_EVENT
 
-    [TRIGGER TIME] [TRIGGER EVENT]
+    ON TABLE_NAME FOR EACH ROW
 
-    ON [TABLE NAME] FOR EACH ROW
+    [TRIGGER BODY];
 
-    TRIGGER BODY;
+- `TRIGGER_NAME`: Each trigger must have a unique name and you should define it here.
 
-The MySQL trigger syntax above is quite self-explanatory but we will go over it to make it easier for you to understand.
+- `TRIGGER_TIME`: Either `BEFORE` or `AFTER`.
 
-* `TRIGGER NAME` : Each trigger must have a unique name and you should define it here.
-* `TRIGGER TIME` : There are two acceptable values. That is `BEFORE` or `AFTER`.
-* `TRIGGER EVENT`: You need to specify the database event that will invoke the trigger(e.g. `INSERT`, `UPDATE` or `DELETE`).
-* `TRIGGER BODY` : This specifies the actual SQL command that you want to be run by your trigger. 
+- `TRIGGER_EVENT`: You need to specify the database event that will invoke the trigger: `INSERT`, `UPDATE`, or `DELETE`.
 
-{{< note >}}
-Note, if a trigger body has more than one SQL statement, you must enclose it witin a `BEGIN...END` block.
-{{< /note >}}
+- `TRIGGER BODY`: This specifies the actual SQL command (or commands) that you want to be run by your trigger.
 
-### Creating a MySQL Before Insert Trigger
+If a trigger body has more than one SQL statement, you must enclose it within a `BEGIN...END` block. As well, you will need to temporarily change the `DELIMITER` that signals the end of the trigger body to a new value. This ensures that the statements within the body are not prematurely intepreted by your MySQL client. An example of this looks like the following:
 
-We will create our first `BEFORE INSERT` trigger. The trigger will make sure that the retail price of the product is greater than the cost price when the items are being inserted to the `products` table. Otherwise, the database user will get an error.
+    DELIMITER &&
 
-While still on the MySQL prompt, enter the command below:
+    CREATE TRIGGER TRIGGER_NAME
 
-    mysql> DELIMITER $$
+    TRIGGER_TIME TRIGGER_EVENT
 
-    CREATE TRIGGER price_validator
-
-    BEFORE INSERT
-
-    ON products FOR EACH ROW    
-
-    IF NEW.cost_price>=NEW.retail_price
-
-    THEN
-
-    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Retail price must greater than cost price';
-
-    END IF $$
-
-    DELIMITER ;
-
-In the above code, we have switched to a custom delimiter at the top using the syntax `DELIMITER $$`. Then, we have defined the trigger name(price_validator), time(BEFORE), event(INSERT) and the table(products) to be affected. 
-
-Our trigger uses the `NEW` keyword to check the `cost_price` and `retail_price` before a record is inserted to the `products` table using the `IF...THEN...END IF` statement. If the `cost_price` is greater or equal to the `retail price`, we have instructed MySQL to throw a custom exception instructing the user to rectify the error.
-
-To test the trigger above, trying inserting a product that violates the validation rule by running the command below:
-
-    mysql> Insert into products (product_name, cost_price, retail_price, availability) values('GAMING MOUSE PAD', '145.00', '144.00','LOCAL');
-
-Output:
-
-    ERROR 1644 (45000): Retail price must greater than cost price
-
-The above insert commands should fail because the `retail_price`(144.00) is not greater than the `cost_price`(145.00). Apart from a `BEFORE INSERT` trigger, you can also create a `BEFORE UPDATE` trigger by tweaking the code above as we will see in the next step.
-
-### Creating a MySQL Before Update Trigger
-
-Next, we will create a `BEFORE UPDATE` trigger. This trigger will prevent database users from editing a product name once a product has been inserted into the database. If you have multiple users working in the database, a `BEFORE UPDATE` trigger may be used to make values read-only and this can prevent malicious or careless users from modifying records unnecessarily.
-
-To create the `product_name_validator` trigger, run the command below:
-
-    mysql> DELIMITER $$
-
-    CREATE TRIGGER product_name_validator
-
-    BEFORE UPDATE
-
-    ON products FOR EACH ROW
-  
-    IF NEW.product_name<>OLD.product_name
-
-    THEN
-
-    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Product name is read-only and it can not be changed.';
-
-    END IF $$
-
-    DELIMITER ;
-
-The trigger aboves compares the values of the new product_name(NEW.product_name) and the old name already in the database(OLD.product_name). If there is a mismatch, an exception is thrown. 
-
-To invoke the `product_name_validator` trigger, we can attempt to update the product with the id `1`;
-
-    mysql> Update products set product_name='WIRELESS BLUETOOTH MOUSE' where product_id='1';
-
-Output:
-
-    ERROR 1644 (45000): Product name is read-only and it can not be changed.
-
-In the next step, you will see how you can define a `BEFORE DELETE` trigger to prevent users from deleting specific records from a table.
-
-### Defining a MySQL Before Delete Trigger
-
-To prevent products marked with a value of `ALL` in the availability column from being deleted, we will create a `BEFORE DELETE` trigger.
-
-To create the `prevent_delete` trigger, run the command below:
-
-    mysql> DELIMITER $$
-
-    CREATE TRIGGER prevent_delete
-
-    BEFORE DELETE
-
-    ON products FOR EACH ROW  
-
-    IF OLD.availability='ALL'
-
-    THEN
-
-    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'The product can not be deleted because it is available in ALL stores.';
-
-    END IF $$   
-
-    DELIMITER ;
-
-Next, try to delete the first product from the products table and see if the trigger will be invoked:
-
-    mysql > Delete from products where product_id='1';
-
-Output:
-
-    ERROR 1644 (45000): The product can not be deleted because it is available in ALL stores.
-
-We have looked at the different triggers that are invoked before a database operation. Next, we will look into the other types of triggers that are fired after database events.
-
-## Step 3 - Executing an After Insert, After Update and After Delete Trigger
-
-In a production environment, you may want some triggers to be automatically executed after a database event has been executed. For instance inserting records to different tables. The example below demonstrates how these kinds of triggers can be used in our sample database.
-
-### Creating a MySQL After Insert Trigger
-
-This sample creates a trigger named `product_availability` that insert a mapping records to the `products_to_stores` table. This helps to define the product availability on the different stores.
-
-When an item is being inserted to the products table, the trigger will check the availability field and if it is marked with a `LOCAL` value, the product will be made available in one store only. Any other value will instruct the trigger to avail the product to the two stores that we created earlier. This trigger is used to enforce a business logic.
-
-Run the code below to create the `product_availability` trigger. Since we have multiple lines of code in the trigger body, we will use the `BEGIN...END` block as shown below: 
-
-    mysql> DELIMITER $$
-
-    CREATE TRIGGER product_availability
-
-    AFTER INSERT
-
-    ON products FOR EACH ROW
+    ON TABLE_NAME FOR EACH ROW
 
     BEGIN
 
-    IF NEW.availability='LOCAL' then
+    [TRIGGER BODY]
 
-    Insert into products_to_stores (product_id, store_id) values(NEW.product_id, '1');
-
-    ELSE
-
-    Insert into products_to_stores (product_id, store_id) values(NEW.product_id, '1');
-
-    Insert into products_to_stores (product_id, store_id) values(NEW.product_id, '2');
-
-    END IF; 
- 
-    END $$
+    END &&
 
     DELIMITER ;
 
-To see the `product_availability` trigger in action, insert the two records to the products table.
+{{< note >}}
+The last line of this example changes the `DELIMITER` back to the default `;` value.
+{{< /note >}}
 
-    mysql>Insert into products (product_name, cost_price, retail_price, availability) values('BLUETOOTH KEYBOARD', '17.60', '23.30','LOCAL');
-    mysql>Insert into products (product_name, cost_price, retail_price, availability) values('DVB-T2 RECEIVE', '49.80', '53.40','ALL');
+## Creating Before Event Triggers
 
-Then, query the `products_to_stores` table. 
+In this section, we will look into the different types of triggers that are fired before a database operation. These include the `BEFORE INSERT`, `BEFORE UPDATE`, and `BEFORE DELETE` triggers.
 
-    mysql> Select * from products_to_stores;
+### Creating a Before Insert Trigger
 
-You should see an output similar to the one shown below:
+We will create our first `BEFORE INSERT` trigger. The trigger will make sure that the retail price of a product is greater than the cost price whenever items are inserted into the `products` table. Otherwise, the database user will get an error.
 
-    +--------+------------+----------+
-    | ref_id | product_id | store_id |
-    +--------+------------+----------+
-    |      1 |          4 |        1 |
-    |      2 |          5 |        1 |
-    |      3 |          5 |        2 |
-    +--------+------------+----------+
-    3 rows in set (0.00 sec)
+1.  While still on the `mysql >` prompt, enter the command below:
 
-A trigger can also be fired after an update event. We will see how we can leverage this type of trigger to keep track of price changes in our store.
+        DELIMITER $$
 
-### Defining a MySQL After Update Trigger
+        CREATE TRIGGER price_validator
 
-Since a product `retail_price` can change over time, we can use an `UPDATE TRIGGER` to record these changes in a different table. This can help us track the history of the product price irrespective of the varying price.
+        BEFORE INSERT
 
-Create a `product_history_updater` trigger by running the command below:
+        ON products FOR EACH ROW
 
-    mysql> DELIMITER $$
+        IF NEW.cost_price>=NEW.retail_price
 
-    CREATE TRIGGER product_history_updater
+        THEN
 
-    AFTER UPDATE
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Retail price must be greater than cost price.';
 
-    ON products FOR EACH ROW  
+        END IF $$
 
-    Insert into products_price_history(product_id, price_date, retail_price) values(OLD.product_id, NOW(), NEW.retail_price);$$
+        DELIMITER ;
 
-    DELIMITER ;
+    -   The above code defines the trigger name (`price_validator`), time (`BEFORE`), event (`INSERT`), and the table (`products`) to be affected.
 
-Then, try updating the price of the first product by running the command below:
+    -   Our trigger uses the `NEW` keyword to check the `cost_price` and `retail_price` before a record is inserted to the `products` table, using the `IF...THEN...END IF` statement.
 
-    mysql> Update products set retail_price='36.75' where product_id='1';
+    -   If the `cost_price` is greater or equal to the `retail price`, our triggers tells MySQL to throw a custom exception instructing the user to rectify the error.
 
-Next, query the `products_price_history` table to see if the price change was logged.
+1.  To test the trigger above, try inserting a product that violates the validation rule:
 
-    mysql> Select * from products_price_history;
+        INSERT INTO products (product_name, cost_price, retail_price, availability) VALUES ('GAMING MOUSE PAD', '145.00', '144.00','LOCAL');
 
-If the trigger worked as expected, you should get the below output:
+    Output:
 
-    +------------+---------------------+--------------+
-    | product_id | price_date          | retail_price |
-    +------------+---------------------+--------------+
-    |          1 | 2020-01-28 11:46:21 |        36.75 |
-    +------------+---------------------+--------------+
-    1 row in set (0.00 sec)
+    {{< output >}}
+ERROR 1644 (45000): Retail price must be greater than cost price.
+{{< /output >}}
 
-In some cases, you might want to log delete operations after a specific action has occured in the database. You can achieve this by using the `AFTER DELETE` trigger as we will see next.
+    The above insert commands should fail because the `retail_price` (144.00) is not greater than the `cost_price` (145.00).
 
-### Creating a MySQL After Delete Trigger
+### Creating a Before Update Trigger
 
-We will create a trigger named `product_archiver` to archive deleted products in a separate table named `archived_products`. When an item is deleted from the main `products` table, our trigger will automatically log it to the `archived_products` table for future reference.
+Next, we will create a `BEFORE UPDATE` trigger. This trigger will prevent database users from editing a product name once a product has been inserted into the database. If you have multiple users working in the database, a `BEFORE UPDATE` trigger may be used to make values read-only, and this can prevent malicious or careless users from modifying records unnecessarily.
 
-To create the trigger, run the command below:
+1.  Create a new `product_name_validator` trigger with the command below:
 
-    mysql> DELIMITER $$
+        DELIMITER $$
 
-    CREATE TRIGGER product_archiver
+        CREATE TRIGGER product_name_validator
 
-    AFTER DELETE
+        BEFORE UPDATE
 
-    ON products FOR EACH ROW  
+        ON products FOR EACH ROW
 
-    Insert into archived_products (product_id, product_name, cost_price, retail_price, availability)values (OLD.product_id, OLD.product_name, OLD.cost_price, OLD.retail_price, OLD.availability); $$
+        IF NEW.product_name<>OLD.product_name
 
-    DELIMITER ;
+        THEN
 
-Next, delete a product from the `products` table and see if the trigger will be invoked:
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Product name is read-only and it can not be changed.';
 
-    mysql> Delete from products where product_id='3';
+        END IF $$
 
-Now, if you check the `archived_products` table, you should see one record
+        DELIMITER ;
 
-	mysql> Select * from archived_products;
+    This trigger compares the values of the new `product_name` (`NEW.product_name`) and the old name already in the database (`OLD.product_name`). If there is a mismatch, an exception is thrown.
 
-Output:
+1.  To invoke the `product_name_validator` trigger, we can attempt to update the name of the product with the ID `1`:
 
-    +------------+--------------+------------+--------------+--------------+
-    | product_id | product_name | cost_price | retail_price | availability |
-    +------------+--------------+------------+--------------+--------------+
-    |          3 | SMART WATCH  |      189.6 |        225.3 | LOCAL        |
-    +------------+--------------+------------+--------------+--------------+
-    1 row in set (0.00 sec)
+        UPDATE products SET product_name='WIRELESS BLUETOOTH MOUSE' WHERE product_id='1';
 
-You have seen the different types of triggers and how they can be used in a production environment. Sometimes, you may want to remove a trigger from the database and this can be achieved very easily as we will demonstrate next.
+    Output:
 
-## Step 4 - Deleting a MySQL Database Trigger
+    {{< output >}}
+ERROR 1644 (45000): Product name is read-only and it can not be changed.
+{{< /output >}}
+
+### Defining a Before Delete Trigger
+
+In this section, you will see how you can define a `BEFORE DELETE` trigger to prevent users from deleting specific records from a table.
+
+1.  To create the `prevent_delete` trigger, run the command below:
+
+        DELIMITER $$
+
+        CREATE TRIGGER prevent_delete
+
+        BEFORE DELETE
+
+        ON products FOR EACH ROW
+
+        IF OLD.availability='ALL'
+
+        THEN
+
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'The product can not be deleted because it is available in ALL stores.';
+
+        END IF $$
+
+        DELIMITER ;
+
+    This trigger will prevent products marked with a value of `ALL` in the availability column from being deleted.
+
+1.  Next, try to delete the first product from the products table and see if the trigger will be invoked:
+
+        DELETE FROM products WHERE product_id='1';
+
+    Output:
+
+    {{< output >}}
+ERROR 1644 (45000): The product can not be deleted because it is available in ALL stores.
+{{< /output >}}
+
+We have looked at the different triggers that are invoked before a database operation. Next, we will look into the other types of triggers that are fired after database events.
+
+## Creating After Event Triggers
+
+In a production environment, you may want some triggers to be automatically executed after a database event occurs (for example, inserting records into different tables). The examples below demonstrate how these kinds of triggers can be used in our sample database.
+
+### Creating an After Insert Trigger
+
+This example creates a trigger named `product_availability` that inserts mapping records into the `products_to_stores` table. This trigger is used to enforce business logic; in particular, it helps define the product availability for the different stores.
+
+1.  Run the code below to create the `product_availability` trigger. Since we have multiple lines of code in the trigger body, we will use a `BEGIN...END` block:
+
+        DELIMITER $$
+
+        CREATE TRIGGER product_availability
+
+        AFTER INSERT
+
+        ON products FOR EACH ROW
+
+        BEGIN
+
+        IF NEW.availability='LOCAL' then
+
+        INSERT INTO products_to_stores (product_id, store_id) VALUES (NEW.product_id, '1');
+
+        ELSE
+
+        INSERT INTO products_to_stores (product_id, store_id) VALUES (NEW.product_id, '1');
+
+        INSERT INTO products_to_stores (product_id, store_id) VALUES (NEW.product_id, '2');
+
+        END IF;
+
+        END $$
+
+        DELIMITER ;
+
+    -   When an item is being inserted into the `products` table, the trigger will check the `availability` field.
+
+    -   If it is marked with the `LOCAL` value, the product will be made available in one store only.
+
+    -   Any other value will instruct the trigger to make the product available to the two stores that we created earlier.
+
+1.  To see the `product_availability` trigger in action, insert the two records to the products table:
+
+        INSERT INTO products (product_name, cost_price, retail_price, availability) VALUES ('BLUETOOTH KEYBOARD', '17.60', '23.30','LOCAL');
+        INSERT INTO products (product_name, cost_price, retail_price, availability) VALUES ('DVB-T2 RECEIVE', '49.80', '53.40','ALL');
+
+1.  Then, query the `products_to_stores` table:
+
+        SELECT * FROM products_to_stores;
+
+    You should see an output similar to the one shown below:
+
+    {{< output >}}
++--------+------------+----------+
+| ref_id | product_id | store_id |
++--------+------------+----------+
+|      1 |          4 |        1 |
+|      2 |          5 |        1 |
+|      3 |          5 |        2 |
++--------+------------+----------+
+3 rows in set (0.00 sec)
+{{< /output >}}
+
+### Defining an After Update Trigger
+
+A trigger can also be fired after an `UPDATE` event. We will see how we can leverage this type of trigger to keep track of price changes in our store over time.
+
+1.  Create a `product_history_updater` trigger by running the command below:
+
+        CREATE TRIGGER product_history_updater
+
+        AFTER UPDATE
+
+        ON products FOR EACH ROW
+
+        INSERT INTO products_price_history (product_id, price_date, retail_price) VALUES (OLD.product_id, NOW(), NEW.retail_price);
+
+    This trigger records changes to a product's `retail_price` in the `products_price_history` table.
+
+    {{< note >}}
+Unlike previous examples, this trigger only has one statement in the trigger's body, so we do not need to change the `DELIMITER`.
+{{< /note >}}
+
+1.  Then, try updating the price of the first product by running the command below:
+
+        UPDATE products SET retail_price='36.75' WHERE product_id='1';
+
+1.  Next, query the `products_price_history` table to see if the price change was logged:
+
+        SELECT * FROM products_price_history;
+
+    If the trigger worked as expected, you should get the below output:
+
+    {{< output >}}
++------------+---------------------+--------------+
+| product_id | price_date          | retail_price |
++------------+---------------------+--------------+
+|          1 | 2020-01-28 11:46:21 |        36.75 |
++------------+---------------------+--------------+
+1 row in set (0.00 sec)
+{{< /output >}}
+
+### Creating an After Delete Trigger
+
+In some cases, you might want to log delete operations after a specific action has occured in the database. You can achieve this by using the `AFTER DELETE` trigger.
+
+1.  Create a new the `product_archiver` trigger with the command below:
+
+        CREATE TRIGGER product_archiver
+
+        AFTER DELETE
+
+        ON products FOR EACH ROW
+
+        INSERT INTO archived_products (product_id, product_name, cost_price, retail_price, availability) VALUES (OLD.product_id, OLD.product_name, OLD.cost_price, OLD.retail_price, OLD.availability);
+
+    This trigger archives deleted products in a separate table named `archived_products`. When an item is deleted from the main `products` table, our trigger will automatically log it to the `archived_products` table for future reference.
+
+1.  Next, delete a product from the `products` table and see if the trigger will be invoked:
+
+        DELETE FROM products WHERE product_id='3';
+
+1.  Now, if you check the `archived_products` table, you should see one record:
+
+	    SELECT * FROM archived_products;
+
+    Output:
+
+    {{< output >}}
++------------+--------------+------------+--------------+--------------+
+| product_id | product_name | cost_price | retail_price | availability |
++------------+--------------+------------+--------------+--------------+
+|          3 | SMART WATCH  |      189.6 |        225.3 | LOCAL        |
++------------+--------------+------------+--------------+--------------+
+1 row in set (0.00 sec)
+{{< /output >}}
+
+## Deleting a Trigger
+
+You have seen the different types of triggers and how they can be used in a production environment. Sometimes, you may want to remove a trigger from the database.
 
 You can delete a trigger if you don't want to use it anymore using the syntax below:
 
-    mysql> DROP TRIGGER IF EXISTS [TRIGGER NAME];
+    DROP TRIGGER IF EXISTS TRIGGER_NAME;
 
-The `IF EXISTS` keyword is an optional parameters that only deletes a trigger if it exists. So for instance to delete the `product_archiving` trigger that we defined above use the below command:
+{{< note >}}
+The `IF EXISTS` keyword is an optional parameters that only deletes a trigger if it exists.
+{{< /note >}}
 
-    mysql> DROP TRIGGER IF EXISTS product_archiver;
+For example, to delete the `product_archiving` trigger that we defined above, use the below command:
+
+    DROP TRIGGER IF EXISTS product_archiver;
 
 Output:
 
-    Query OK, 0 rows affected (0.00 sec)
+{{< output >}}
+Query OK, 0 rows affected (0.00 sec)
+{{< /output >}}
 
 {{< caution >}}
-Be catious when deleting tables associated with triggers because once a table is dropped from the MySQL database, the related triggers are also automatically deleted.
+Be cautious when deleting tables associated with triggers. Once a table is dropped from the MySQL database, the related triggers are also automatically deleted.
 {{< /caution >}}
-
-## Conclusion
-
-
-In this article, we took you through all the steps of creating, using and dropping triggers in MySQL database. Although this is not a conclusive tutorial on how you can use all types of triggers in your application, it has taken you through most of the best use-cases and you can expand the samples in this guide to suit your needs.
