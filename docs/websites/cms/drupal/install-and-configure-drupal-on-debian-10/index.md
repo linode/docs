@@ -73,7 +73,7 @@ $settings['trusted_host_patterns'] = array(
         sudo a2enmod rewrite
 
 2.  Then specify the rewrite conditions for DocumentRoot in Apache's configuration file.
-    If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/web-servers/lamp/install-lamp-stack-on-debian-10-buster) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
+    If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/web-servers/lamp/install-lamp-stack-on-debian-10) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -113,7 +113,7 @@ Require all granted
 
     ![Drupal 8 choose installation profile.](drupal-choose-installation-profile.png)
 
-3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04) with a MySQL or MariaDB database.
+3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-debian-10) with a MySQL or MariaDB database.
 
     ![Drupal 8 database configuration.](drupal-database-configuration.png)
 
