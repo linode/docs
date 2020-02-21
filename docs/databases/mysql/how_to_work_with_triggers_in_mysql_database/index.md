@@ -2,10 +2,10 @@
 author:
   name: Francis Ndungu
   email: francisndungu83@gmail.com
-description: 'In this guide, we will walk you through the steps of creating and working with triggers in your MySQL database.'
+description: 'A trigger is a pre-defined SQL command that is automatically executed when specific actions occur in the database. In this guide, we will walk you through the steps of creating and working with triggers in your MySQL database.'
 keywords: ['mysql','database','triggers']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-01-28
+published: 2020-02-21
 modified_by:
   name: Linode
 title: "How to Work with Triggers in MySQL Database"
