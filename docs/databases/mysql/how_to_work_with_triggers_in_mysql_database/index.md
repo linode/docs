@@ -43,9 +43,9 @@ In this guide, you will learn:
 
 Make sure you have the following:
 
-1.	A configured Linode server. You can learn how to create and setup a Linode server by reading our [Getting Started with Linode](/docs/getting-started/) guide.
+1.  A configured Linode server. You can learn how to create and setup a Linode server by reading our [Getting Started with Linode](/docs/getting-started/) guide.
 
-1.	A MySQL server and client installed on the Linode server. Installation guides for MySQL are available for different distributions in our [MySQL section](/docs/databases/mysql/).
+1.  A MySQL server and client installed on the Linode server. Installation guides for MySQL are available for different distributions in our [MySQL section](/docs/databases/mysql/).
 
 ## Prepare the Database
 
@@ -254,7 +254,7 @@ As indicated earlier, triggers are fired automatically either before or after an
 
 - `TRIGGER BODY`: This specifies the actual SQL command (or commands) that you want to be run by your trigger.
 
-If a trigger body has more than one SQL statement, you must enclose it within a `BEGIN...END` block. As well, you will need to temporarily change the `DELIMITER` that signals the end of the trigger body to a new value. This ensures that the statements within the body are not prematurely intepreted by your MySQL client. An example of this looks like the following:
+If a trigger body has more than one SQL statement, you must enclose it within a `BEGIN...END` block. As well, you will need to temporarily change the `DELIMITER` that signals the end of the trigger body to a new value. This ensures that the statements within the body are not prematurely interpreted by your MySQL client. An example of this looks like the following:
 
     DELIMITER &&
 
@@ -501,7 +501,7 @@ Unlike previous examples, this trigger only has one statement in the trigger's b
 
 ### Creating an After Delete Trigger
 
-In some cases, you might want to log delete operations after a specific action has occured in the database. You can achieve this by using the `AFTER DELETE` trigger.
+In some cases, you might want to log delete operations after a specific action has occurred in the database. You can achieve this by using the `AFTER DELETE` trigger.
 
 1.  Create a new the `product_archiver` trigger with the command below:
 
@@ -521,7 +521,7 @@ In some cases, you might want to log delete operations after a specific action h
 
 1.  Now, if you check the `archived_products` table, you should see one record:
 
-	    SELECT * FROM archived_products;
+        SELECT * FROM archived_products;
 
     Output:
 
