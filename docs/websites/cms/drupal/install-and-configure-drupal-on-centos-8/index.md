@@ -81,7 +81,7 @@ $settings['trusted_host_patterns'] = array(
 2.  Then specify the rewrite conditions for DocumentRoot in Apache's configuration file.
     If you installed and configured your Apache server using [LAMP stack on CentOS 8](/docs/web-servers/lamp/install-lamp-stack-on-centos-8) guide, the configuration file for your site is located at `/etc/httpd/conf.d/example.com.conf`.
 
-    {{< file "/etc/httpd/conf.d/example.com.conf" conf >}}
+    {{< file "/etc/httpd/sites-enabled/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
      Options Indexes FollowSymLinks
      AllowOverride All
