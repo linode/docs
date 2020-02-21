@@ -1,21 +1,20 @@
 ---
 author:
-    name: Edward Angert
+    name: Linode
     email: docs@linode.com
 description: 'This guide will show you how to update and secure an installation of Drupal 8 CMS on your Linode running Ubuntu or Debian.'
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "update"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2016-05-11
+modified: 2020-02-21
 modified_by:
-    name: Edward Angert
-published: 2016-05-11
-title: Update and Secure Drupal 8 on Ubuntu or Debian
+    name: linode
+published: 2020-02-21
+title: How to Update and Secure Drupal 8 on Ubuntu 18.04 LTS
+h1_title: Updating and Securing Drupal 8 on Ubuntu 18.04 LTS
 ---
 
-Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple incremental update feature is included in version 8.1, manual core updates are required for all preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
+Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple incremental update feature is included in version 8.1, manual core updates are required for all preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Ubuntu.
 
-<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/w7l9omoxr3?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
-<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
 
 ## Before You Begin
 
@@ -23,8 +22,8 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
     -   [Getting Started](/docs/getting-started/)
     -   [Securing Your Server](/docs/security/securing-your-server/)
-    -   [Install a LAMP stack](/docs/web-servers/lamp/lamp-on-ubuntu-14-04/)
-    -   [Install and Configure Drupal 8](/docs/websites/cms/install-and-configure-drupal-8/)
+    -   [Install a LAMP stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
+    -   [Install and Configure Drupal 8](/docs/websites/cms/drupal/install-and-configure-drupal-on-ubuntu-18-04/)
 
 2.  Confirm the name of your site's Document Root folder by running the following command on your Linode:
 
@@ -58,7 +57,7 @@ If **Available updates** is not listed, enable the Update Manager plugin under *
 
 2.  Right click "Download" to the right of the desired version and copy the link address:
 
-    [![A Drupal Update](drupal-updates-download-small.png)](drupal-updates-download.png)
+    ![A Drupal Update](drupal-updates-download.png)
 
 3.  Connect to your Linode over SSH:
 
@@ -67,7 +66,7 @@ If **Available updates** is not listed, enable the Update Manager plugin under *
 4.  Navigate to the Apache DocumentRoot directory. Download the new file by using `wget` and pasting the link address you copied from Step 2:
 
         cd /var/www/html/example.com
-        wget https://ftp.drupal.org/files/projects/drupal-8.1.1.tar.gz
+        sudo wget https://ftp.drupal.org/files/projects/drupal-8.8.2.tar.gz
 
 ## Upgrade Your Site
 
@@ -79,7 +78,7 @@ If **Available updates** is not listed, enable the Update Manager plugin under *
 
 2.  Check the box next to "Put site into maintenance mode." Enter a message if desired, and click **Save Configuration**.
 
-    [![Title](drupal-updates-maintenance2-small.png)](drupal-updates-maintenance2.png)
+    ![Put Site on Maintenance Mode](drupal-updates-maintenance2.png)
 
 ### Replace System Files
 
@@ -87,10 +86,10 @@ If **Available updates** is not listed, enable the Update Manager plugin under *
 
         sudo rm -ifr autoload.php composer.* example.gitignore index.php LICENSE.txt README.txt robots.txt update.php web.config && sudo rm -ifr core/ modules/ vendor/ themes/
 
-2.  Go up one directory, then expand the update into your `public_html` folder. Replace `drupal-8.1.1.tar.gz` with the current update:
+2.  Go up one directory, then expand the update into your `public_html` folder. Replace `drupal-8.8.2.tar.gz` with the current update:
 
         cd ..
-        sudo tar -zxvf drupal-8.1.1.tar.gz --strip-components=1 -C public_html
+        sudo tar -zxvf drupal-8.8.2.tar.gz --strip-components=1 -C public_html
 
 3.  From a browser on your local machine, navigate to `example.com/update.php`:
 
@@ -110,7 +109,7 @@ If `update.php` does not load or returns a 403 Forbidden error, you can try to c
 
 7.  Click **Reports** in the Admin Toolbar, then **Status report**.
 
-8.  From your Linode, open `/var/www/html/example.com/public_html/sites/default/settings.php` and confirm that `$update_free_access = FALSE`.
+8.  From your Linode, open `/var/www/html/example.com/public_html/sites/default/settings.php` and confirm that `$settings[‘update_free_access’] = FALSE;`.
 
 9.  If everything looks good, take the site out of maintenance mode *[described above](/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu/#put-the-site-into-maintenance-mode)* by unchecking the box next to "Put site into maintenance mode."
 
