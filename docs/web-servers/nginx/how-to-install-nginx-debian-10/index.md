@@ -40,7 +40,7 @@ Currently, the best way to install NGINX on Debian 10 is to use the version incl
 
 ## Add a Basic Site
 
-1.  Create a new directory for your site.
+1.  Create a new directory for your site. Replace `example.com` with your site's domain name.
 
         sudo mkdir /var/www/example.com
 

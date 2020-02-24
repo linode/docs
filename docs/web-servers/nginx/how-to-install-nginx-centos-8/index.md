@@ -44,7 +44,7 @@ Currently, the best way to install NGINX on CentOS 8 is to use the version inclu
 
 ## Add a Basic Site
 
-1.  Create a new directory for your site.
+1.  Create a new directory for your site. Replace `example.com` with your site's domain name.
 
         sudo mkdir -p /var/www/example.com
 

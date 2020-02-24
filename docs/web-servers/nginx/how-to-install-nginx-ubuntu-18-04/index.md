@@ -42,11 +42,11 @@ Currently, the best way to install NGINX on Ubuntu 18.04 LTS is to use the versi
 
 ## Add a Basic Site
 
-1.  Create a new directory for your site.
+1.  Create a new directory for your site. Replace `example.com` with your site's domain name.
 
         sudo mkdir /var/www/example.com
 
-1.  NGINX site-specific configuration files are kept in `/etc/nginx/sites-available` and symlinked to  `/etc/nginx/sites-enabled/`. Generally, you will create a new file containing a [*server block*](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/) in the `sites-available` directory for each domain or subdomain you will be hosting. Then, you will set up a symlink to your files in the `sites-enabled` directory.
+1.  You can add your site's files in your `/var/www/example.com` directory. Create an index file with a simple "Hello World" example. Using the text editor of your choice, create a new file, `/var/www/example.com/index.html`. Replace `example.com` with your website’s domain name or your Linode’s public IP address.
 
     {{< file "/var/www/example.com/index.html" html >}}
 <!DOCTYPE html>
