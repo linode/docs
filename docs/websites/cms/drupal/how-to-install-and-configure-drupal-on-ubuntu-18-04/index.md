@@ -2,18 +2,17 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your Debian 10 Linode so you can begin developing your own websites.'
-keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "debian 10"]
+description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your Ubuntu 18.04 Linode so you can begin developing your own websites.'
+keywords: ["cms", "apache", "php", "content management system", "drupal 8", "ubuntu 18.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
 published: 2020-02-18
-title: How to Install and Configure Drupal on Debian 10
-h1_title: Install and Configure Drupal on Debian 10 (Buster)
+title: How to Install and Configure Drupal on Ubuntu 18.04 LTS
+h1_title: Install and Configure Drupal on Ubuntu 18.04
 ---
 
-Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian 10.
-
+Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Ubuntu 18.04.
 
 ## Before You Begin
 
@@ -23,11 +22,11 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
     {{< content "limited-user-note-shortguide" >}}
 
-3.  Install and configure a [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/)
+3.  Install and configure a [LAMP stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
 
 ## Download and Prepare Drupal 8
 
-1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
+1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
 
         cd /var/www/html/example.com
 
@@ -71,7 +70,7 @@ $settings['trusted_host_patterns'] = array(
 
         sudo a2enmod rewrite
 
-2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
+2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -104,7 +103,7 @@ $settings['trusted_host_patterns'] = array(
 
     ![Drupal 8 choose installation profile.](drupal-choose-installation-profile.png)
 
-3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) with a MySQL or MariaDB database.
+3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/) with a MySQL or MariaDB database.
 
     ![Drupal 8 database configuration.](drupal-database-configuration.png)
 
