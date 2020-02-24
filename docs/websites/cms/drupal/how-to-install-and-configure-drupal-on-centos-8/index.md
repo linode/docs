@@ -78,7 +78,7 @@ $settings['trusted_host_patterns'] = array(
 
 1.  Enable Apache's [rewrite module](https://httpd.apache.org/docs/current/mod/mod_rewrite.html). This module is necessary since Drupal 8 enables [Clean URLs](https://www.drupal.org/getting-started/clean-urls) by default. To enable this module, edit your Apache configuration to include the `LoadModule` line displayed in the example file below.
 
-    {{< file "/etc/httpd.conf/httpd.conf" apache >}}
+    {{< file "/etc/httpd/conf/httpd.conf" apache >}}
 LoadModule rewrite_module modules/mod_rewrite.so
     {{</ file >}}
 
