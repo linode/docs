@@ -3,7 +3,7 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your CentOS 8 Linode so you can begin developing your own websites.'
-keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "centos 8"]
+keywords: ["cms", "apache", "php", "content management system", "drupal 8", "centos 8"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
@@ -28,6 +28,10 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 1.  Install the `wget` and `tar` utilities. You will need this in a later section to install the Drupal 8 core.
 
         sudo yum install wget -y && sudo yum install tar
+
+1. In order to work with Drupal 8 and SELinux, you will need to install Python's policy core utilities, which give you access to useful tools to manage SELinux settings.
+
+        sudo yum install policycoreutils-python-utils
 
 ## Download and Prepare Drupal 8
 
@@ -72,17 +76,21 @@ $settings['trusted_host_patterns'] = array(
 
 ## Configure Apache 2.4
 
-1.  Drupal 8 enables [Clean URLs](https://www.drupal.org/getting-started/clean-urls) by default so Apache's rewrite module is enabled on CentOS. However, you will need to set directory permissions and SELinux labels:
+1.  Drupal 8 enables [Clean URLs](https://www.drupal.org/getting-started/clean-urls) by default so Apache's rewrite module must also be enabled. To enable this module, edit your Apache configuration to include the `LoadModule` line displayed in the example file below.
 
-        sudo yum install policycoreutils-python-utils
+    {{< file "/etc/httpd.conf/httpd.conf" apache >}}
+LoadModule rewrite_module modules/mod_rewrite.so
+    {{</ file >}}
+
+1. Set the SELinux context for the directories Drupal 8 and Apache in order to read and write to them. This includes your site's root directory and subdirectories.
+
         sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/html/example.com/public_html(/.*)?"
         sudo semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/example.com/public_html/sites/default/settings.php'
         sudo semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/example.com/public_html/sites/default/files'
         sudo restorecon -Rv /var/www/html/example.com/public_html
         sudo restorecon -v /var/www/html/example.com/public_html/sites/default/settings.php
 
-2.  Then specify the rewrite conditions for your Drupal site's document root in Apache's configuration file.
-    If you installed and configured your Apache server using [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide, the configuration file for your site is located at `/etc/httpd/conf.d/example.com.conf`.
+2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide, the configuration file for your site is located at `/etc/httpd/conf.d/example.com.conf`.
 
     {{< file "/etc/httpd/sites-enabled/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -90,11 +98,9 @@ $settings['trusted_host_patterns'] = array(
      AllowOverride All
     Require all granted
 </Directory>
-
 {{< /file >}}
 
-
-3.  Change the ownership of your site's document root from `root` to `apache`. This allows you to install modules and themes, and to update Drupal, all without being prompted for FTP credentials.
+3.  Change the ownership of your site's document root from `root` to `apache`. This allows you to install modules and themes, and to update Drupal, without being prompted for FTP credentials.
 
         sudo chown apache:apache -R /var/www/html/example.com/public_html
 

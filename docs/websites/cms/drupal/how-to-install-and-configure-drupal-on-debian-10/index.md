@@ -2,8 +2,8 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Drupal 8 is the lastest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode so you can begin developing your own websites.'
-keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8"]
+description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your Debian 10 Linode so you can begin developing your own websites.'
+keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "debian 10"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
@@ -12,48 +12,48 @@ title: How to Install and Configure Drupal on Debian 10
 h1_title: Installing Drupal on Debian 10 (Buster)
 ---
 
-Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Ubuntu.
+Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian 10.
 
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
-3.  Install and configure a [LAMP stack on Debian 10](/docs/web-servers/lamp/install-lamp-stack-on-debian-10-buster)
+    {{< content "limited-user-note-shortguide" >}}
 
+3.  Install and configure a [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/)
 
 ## Download and Prepare Drupal 8
 
-1.  See Drupal's [download page](https://www.drupal.org/project/drupal) for the exact URL of Drupal 8's core tarball.
-
-    If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/web-servers/lamp/install-lamp-stack-on-debian-10-buster) guide, the publicly accessible DocumentRoot should be located at `/var/www/html/example.com/public_html/`. Change to that directory and download Drupal 8 with wget:
+1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
 
         cd /var/www/html/example.com
+
+1. Download the Drupal 8 tarball. As of writing this guide, Drupal 8.8.2 is the latest version. See [Drupal's download page](https://www.drupal.org/project/drupal) for their latest core tarball.
+
         sudo wget http://ftp.drupal.org/files/projects/drupal-8.8.2.tar.gz
 
     {{< caution >}}
 Ensure that the version number matches the Drupal 8 version you wish to download.
 {{< /caution >}}
 
-2.  Extract the downloaded tarball's contents into Apache's DocumentRoot:
+1.  Extract the downloaded tarball's contents into your site's document root:
 
         sudo tar -zxvf drupal-8.*.tar.gz --strip-components=1 -C public_html
 
-3.  Drupal depends on a PHP graphics library called GD. Install GD and other dependencies:
+1.  Drupal depends on a PHP graphics library called GD. Install GD and other dependencies:
 
         sudo apt-get install php-gd php-xml php-dom php-Simplexml php-mbstring
 
-4.  Drupal 8's `settings.php` and `services.yml` files are configured when the first start configuration is run. The files must be created from the default templates and their permissions changed so that Drupal can write to them.
+1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's web configuration in the [Drupal First Start](#drupal-first-start) section.
 
-        cd /var/www/html/example.com/public_html/sites/default
-        sudo cp default.settings.php settings.php && sudo cp default.services.yml services.yml
-        sudo chmod 666 {services.yml,settings.php}
+        sudo cp /var/www/html/example.com/public_html/sites/default/default.settings.php /var/www/html/example.com/public_html/sites/default/settings.php
 
-5.  Enforce [trusted hostnames](https://www.drupal.org/node/2410395) with those that users will access your site from.
+1.  Enforce [trusted hostnames](https://www.drupal.org/node/2410395) with those that users will access your site from. With the text editor of your choice, edit your `settings.php` file replacing the values with your own site's URL(s).
 
-    {{< file "/var/www/html/example.com/public_html/sites/default/settings.php" conf >}}
+    {{< file "/var/www/html/example.com/public_html/sites/default/settings.php" co3nf >}}
 $settings['trusted_host_patterns'] = array(
   '^www\.example\.com$',
   '^example\.com$',
@@ -61,9 +61,8 @@ $settings['trusted_host_patterns'] = array(
 
 {{< /file >}}
 
-
     {{< note >}}
-*trusted_host_patterns* also accepts IP addresses or localhost.
+`trusted_host_patterns` also accepts IP addresses or localhost.
 {{< /note >}}
 
 ## Configure Apache 2.4
