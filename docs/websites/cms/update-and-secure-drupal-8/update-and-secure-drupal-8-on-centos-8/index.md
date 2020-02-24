@@ -13,58 +13,71 @@ title: How to Update and Secure Drupal 8 on CentOS 8
 h1_title: Updating and Securing Drupal 8 on Centos 8
 ---
 
-Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple incremental update feature is included in version 8.1, manual core updates are required for all preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and CentOS.
-
-
+Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple feature for incremental updates is included in version 8.1, manual core updates are required for all preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running a [LAMP stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) and CentOS 8.
 
 ## Before You Begin
 
-1.  Ensure that you have completed the following guides:
+1. Complete all the steps in the [Install and Configure Drupal 8 on CentOS 8](/docs/websites/cms/drupal/how-to-install-and-configure-drupal-on-centos-8/) guide.
 
-    -   [Getting Started](/docs/getting-started/)
-    -   [Securing Your Server](/docs/security/securing-your-server/)
-    -   [Install a LAMP stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/)
-    -   [Install and Configure Drupal 8](/docs/websites/cms/drupal/install-and-configure-drupal-on-centos-8/)
+1. If you followed the [Install and Configure Drupal 8 on CentOS 8](/docs/websites/cms/drupal/how-to-install-and-configure-drupal-on-centos-8/) guide, your site's document root should be in the `/var/www/html/example.com/` directory, where `example.com` is your own site's domain name. You can list all your directories in `/var/www/html` to verify the locations of your site's document root.
 
-2.  Confirm the name of your site's Document Root folder by running the following command on your Linode:
+        ls /var/wwww/html/
 
-        ls /var/www/html
+1. Update your CentOS 8 system if you have not yet done so while you completed the Install and Configure Druapl 8 on CentOS 8 guide.
 
-3.  Update your system:
+        sudo yum update
 
-        sudo apt-get update && sudo apt-get upgrade
-
-{{< note >}}
-- This guide will use `sudo` wherever possible.
-- You may need additional firewall rules for your specific application.
-- Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Linode's IP address or domain name.
-{{< /note >}}
+    {{< content "limited-user-note-shortguide" >}}
 
 ## Create Backups
 
-Back up existing files and move the archive into the backups directory. This process can also be scripted and run on a regular basis using [cron](/docs/tools-reference/tools/schedule-tasks-with-cron/):
+In this section, you will create an archive of your Drupal site's files and store the archive in a `backups` directory. If needed, you could extract the compressed files in your backup archive to restore a specific state of your site.
 
-    cd /var/www/html/example.com/public_html
-    sudo tar -cvzf example.com-BCKP-$(date +%Y%m%d).tar.gz ./
-    sudo mv -v example.com-BCKP-*.tar.gz ../backups
+1. Create a `backups` directory in your site's document root to store any backups you make of your Drupal site.
+
+        sudo mkdir /var/www/html/example.com/backups
+
+1. Create an archive of your existing site files and move it into the `backups` directory. Ensure you replace `example.com` with your own site's domain name.
+
+        cd /var/www/html/example.com/public_html
+        sudo tar -cvzf example.com-BCKP-$(date +%Y%m%d).tar.gz ./
+        sudo mv -v example.com-BCKP-*.tar.gz ../backups
+
+    {{< note >}}
+This process can also be scripted and run on a regular basis using [cron](/docs/tools-reference/tools/schedule-tasks-with-cron/).
+    {{</ note >}}
 
 ## Download Updates
 
-1.  Log in to your Drupal site and navigate to the Admin Toolbar. Click **Reports**, then **Available updates**.
+You are now ready to check your Drupal system for available updates. Once you have identified the necessary updates, you will download them as an archive to your Linode.
+
+1.  Log in to your Drupal site and navigate to the [Admin Toolbar](https://www.drupal.org/project/admin_toolbar). Click on **Reports** and then on **Available updates**.
 
     {{< note >}}
-If **Available updates** is not listed, enable the Update Manager plugin under **Extend**.
+If **Available updates** is not listed, enable the [Update Manager](https://www.drupal.org/docs/8/core/modules/update-manager) module by navigating to the **Extend** menu item in the Admin Toolbar. See [Drupal's documentation](https://www.drupal.org/docs/8/extending-drupal-8/installing-drupal-8-modules#s-step-2-enable-the-module) for more details on enabling modules.
 {{< /note >}}
 
-2.  Right click "Download" to the right of the desired version and copy the link address:
+1.  Right click the link under the **RECOMMENDED VERSION** heading and copy the link address and paste it somewhere you can access later.
 
     ![A Drupal Update](drupal-updates-download.png)
 
-3.  Connect to your Linode over SSH:
+    {{< note >}}
+If you receive an error when your Drupal 8 installation checks for available updates, it may be having issues communicating with the Drupal website to see there are updates. You can check your site's recent log messages, by navigating to **Reports** and selecting **Recent log messages** to further investigate the issue.
 
-        ssh user@203.0.113.52
+If your CentOS installation is running in enforcing mode, ensure you are allowing httpd to make network connections. One way to do this is to set the corresponding SELinux boolean to `true`:
 
-4.  Navigate to the Apache DocumentRoot directory. Download the new file by using `wget` and pasting the link address you copied from Step 2:
+    sudo setsebool httpd_can_network_connect true
+
+Also, ensure that firewalld is allowing `https` traffic:
+
+    sudo firewall-cmd --zone=public --add-service=https
+    {{</ note >}}
+
+1.  Connect to your Linode over SSH:
+
+        ssh user@192.0.2.0
+
+1.  Navigate to your site's document root directory. Download the Drupal core archive using `wget` and pasting the link address you copied from Step 2:
 
         cd /var/www/html/example.com
         sudo wget https://ftp.drupal.org/files/projects/drupal-8.8.2.tar.gz
