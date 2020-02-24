@@ -76,11 +76,26 @@ $settings['trusted_host_patterns'] = array(
 
 ## Configure Apache 2.4
 
-1.  Drupal 8 enables [Clean URLs](https://www.drupal.org/getting-started/clean-urls) by default so Apache's rewrite module must also be enabled. To enable this module, edit your Apache configuration to include the `LoadModule` line displayed in the example file below.
+1.  Enable Apache's [rewrite module](https://httpd.apache.org/docs/current/mod/mod_rewrite.html). This module is necessary since Drupal 8 enables [Clean URLs](https://www.drupal.org/getting-started/clean-urls) by default. To enable this module, edit your Apache configuration to include the `LoadModule` line displayed in the example file below.
 
     {{< file "/etc/httpd.conf/httpd.conf" apache >}}
 LoadModule rewrite_module modules/mod_rewrite.so
     {{</ file >}}
+
+2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide, the configuration file for your site is located at `/etc/httpd/conf.d/example.com.conf`.
+
+    {{< file "/etc/httpd/sites-enabled/example.com.conf" conf >}}
+<Directory /var/www/html/example.com/public_html>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+      RewriteEngine on
+      RewriteBase /
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteCond %{REQUEST_FILENAME} !-d
+      RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+</Directory>
+{{< /file >}}
 
 1. Set the SELinux context for the directories Drupal 8 and Apache in order to read and write to them. This includes your site's root directory and subdirectories.
 
@@ -90,21 +105,11 @@ LoadModule rewrite_module modules/mod_rewrite.so
         sudo restorecon -Rv /var/www/html/example.com/public_html
         sudo restorecon -v /var/www/html/example.com/public_html/sites/default/settings.php
 
-2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide, the configuration file for your site is located at `/etc/httpd/conf.d/example.com.conf`.
-
-    {{< file "/etc/httpd/sites-enabled/example.com.conf" conf >}}
-<Directory /var/www/html/example.com/public_html>
-     Options Indexes FollowSymLinks
-     AllowOverride All
-    Require all granted
-</Directory>
-{{< /file >}}
-
-3.  Change the ownership of your site's document root from `root` to `apache`. This allows you to install modules and themes, and to update Drupal, without being prompted for FTP credentials.
+1.  Change the ownership of your site's document root from `root` to `apache`. This allows you to install modules and themes, and to update Drupal, without being prompted for FTP credentials.
 
         sudo chown apache:apache -R /var/www/html/example.com/public_html
 
-4.  Restart Apache so all your changes are applied.
+1.  Restart Apache so all your changes are applied.
 
         sudo systemctl restart httpd
 
@@ -114,7 +119,7 @@ LoadModule rewrite_module modules/mod_rewrite.so
 
     ![Drupal 8 choose language.](drupal-choose-language.png)
 
-2.  Choose whether you want a Standard or Minimal installation profile.
+2.  Choose whether you want a *Standard* or *Minimal* installation profile.
 
     ![Drupal 8 choose installation profile.](drupal-choose-installation-profile.png)
 

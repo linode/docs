@@ -67,40 +67,32 @@ $settings['trusted_host_patterns'] = array(
 
 ## Configure Apache 2.4
 
-1.  Drupal 8 enables [Clean URLs](https://www.drupal.org/getting-started/clean-urls) by default so Apache's rewrite module must also be enabled:
+1.  Enable Apache's [rewrite module](https://httpd.apache.org/docs/current/mod/mod_rewrite.html). This module is necessary since Drupal 8 enables [Clean URLs](https://www.drupal.org/getting-started/clean-urls) by default.
 
         sudo a2enmod rewrite
 
-2.  Then specify the rewrite conditions for DocumentRoot in Apache's configuration file.
-    If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/web-servers/lamp/install-lamp-stack-on-debian-10) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
+2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
-Options Indexes FollowSymLinks
-AllowOverride All
-Require all granted
-  RewriteEngine on
-    RewriteBase /
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} !=/favicon.ico
-    RewriteRule ^ index.php [L]
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+      RewriteEngine on
+      RewriteBase /
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteCond %{REQUEST_FILENAME} !-d
+      RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
 </Directory>
-
 {{< /file >}}
 
+1.  Change the ownership of your site's document root from `root` to `www-data`. This allows you to install modules and themes, and to update Drupal, without being prompted for FTP credentials.
 
-3.  Change ownership of Apache's DocumentRoot from the system's root user to Apache. This allows you to install modules and themes, and to update Drupal, all without being prompted for FTP credentials.
+        sudo chown -R www-data:www-data /var/www/html/example.com
 
-        sudo chown -R www-data /var/www/html/example.com
-
-4.  Restart Apache so all changes are applied. If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+):
+4.  Restart Apache so all changes are applied.
 
         sudo systemctl restart apache2
-
-    If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
-
-        sudo service apache2 restart
 
 ## Drupal First Start
 
@@ -108,11 +100,11 @@ Require all granted
 
     [![Drupal 8 choose language.](drupal-choose-language-small.png)](drupal-choose-language.png)
 
-2.  Choose whether you want a Standard or Minimal installation profile.
+2.  Choose whether you want a *Standard* or *Minimal* installation profile.
 
     ![Drupal 8 choose installation profile.](drupal-choose-installation-profile.png)
 
-3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-debian-10) with a MySQL or MariaDB database.
+3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) with a MySQL or MariaDB database.
 
     ![Drupal 8 database configuration.](drupal-database-configuration.png)
 
