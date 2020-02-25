@@ -81,7 +81,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 
 1. Create the directories to store your site's virtual hosts files:
 
-        mkdir -p /etc/httpd/sites-available /etc/httpd/sites-enabled
+        sudo mkdir -p /etc/httpd/sites-available /etc/httpd/sites-enabled
 
 1. Edit Apache's configuration file to let it know to look for virtual host files in the `/etc/httpd/sites-enabled` directory. Add the example line to the bottom of your `httpd.conf` file:
 
@@ -115,6 +115,11 @@ IncludeOptional sites-enabled/*.conf
 1.  Reload to apply your new configuration:
 
         sudo systemctl reload httpd.service
+
+    Î{{< note >}}
+If you receive an error when trying to reload your `httpd` service, follow the steps in the [Configure SELinux to Allow HTTP](#configure-selinux-to-allow-http) section and then reattempt to reload the service.
+    {{</ note >}}
+
 
     Additional domains can be added to the `example.com.conf` file as needed.
 
@@ -244,7 +249,7 @@ Ensure that all lines noted above are uncommented. A commented line begins with 
 3.  Create the log directory for PHP and give the Apache user ownership:
 
         sudo mkdir /var/log/php
-        sudo chown apache /var/log/php
+        sudo chown apache:apache /var/log/php
 
     {{< note >}}
 You may need to enable and start the `php-fpm.service`. This service provides an alternative PHP FastCGI implementation.
