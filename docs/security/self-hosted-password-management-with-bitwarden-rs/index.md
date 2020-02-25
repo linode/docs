@@ -19,26 +19,30 @@ contributor:
 [Bitwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your own infrastructure. The [bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs) project provides a lightweight, single-process, API-compatible service ideal for running personal instances. By running your own bitwarden_rs service, you can use Bitwarden browser extensions and mobile applications backed by your own server.
 
 {{< note >}}
-By self-hosting your own password manager, you are taking on the responsibility for the security and resiliency of the passwords stored within bitwarden_rs. Before storing important information and credentials within the application, ensure that you are confident with the security of your server and have taken the necessary backup measures mentioned in this tutorial.
+By self-hosting your own password manager, you are assuming responsibility for the security and resiliency of sensitive information stored within bitwarden_rs. Before storing important information and credentials within the application, ensure that you are confident with the security of your server and have taken the necessary backup measures mentioned in this tutorial.
 {{</ note >}}
 
 ## In this Guide
 
-This guide will use the bitwarden_rs [Docker image](https://github.com/dani-garcia/bitwarden_rs/wiki/Which-container-image-to-use) in order to run an instance of the service. A reverse proxy ([Caddy](https://caddyserver.com/)) will be configured in front of the Docker container and provide TLS termination for both the web-based vault interface as well as the websocket server.
+This guide will use the official bitwarden_rs [Docker image](https://github.com/dani-garcia/bitwarden_rs/wiki/Which-container-image-to-use). A reverse proxy ([Caddy](https://caddyserver.com/)) will be configured in front of the Docker container and provide TLS termination for both the web-based vault interface as well as the websocket server.
 
 This configuration of bitwarden_rs will also use the default SQL backend for the application (sqlite3). The SQL datastore backing bitwarden_rs contains the user data for the application and is therefore the primary concern for a backup scheme to ensure that sensitive data stored within bitwarden_rs is saved in the event of a data loss scenario.
 
 The version of bitwarden_rs that this guide references is 1.13.1, which is the latest version at the time of writing. As part of regular maintenance and to ensure that any relevant security updates are applied to the application, ensure that you follow the [upgrade instructions](https://github.com/dani-garcia/bitwarden_rs/wiki/Updating-the-bitwarden-image) provided by the project regularly to keep your deployment up to date with current upstream releases.
 
-Ubuntu 18.04 is the distribution used in this guide. Generally speaking, any Linux distribution that supports running Docker containers should be equally compatible.
+Ubuntu 18.04 is the distribution used in this guide. Generally speaking, any Linux distribution that supports running Docker containers should be equally compatible with the steps explained in this guide.
 
 ### Before you Begin
 
 1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. Follow the "[How to Secure Your Server](/docs/security/securing-your-server/)" guide in order to properly harden your Linode against malicious users.
+1. Follow the "[How to Secure Your Server](/docs/security/securing-your-server/)" guide in order to properly harden your Linode against malicious users. This step is important to ensure bitwarden_rs is properly secured.
 
-1. Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) DNS records that point to your Linode's public [IPv4 and IPv6 addresses](/docs/getting-started/#find-your-linode-s-ip-address). Consult our [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/platform/manager/dns-manager/) guides for help with setting up a domain.
+   {{< note >}}
+If you choose to configure a firewall, remember to open ports 80 and 443 for the Caddy server when you reach that portion of this tutorial.
+{{</ note >}}
+
+1. Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) DNS records that point to your Linode's public [IPv4 and IPv6 addresses](/docs/getting-started/#find-your-linode-s-ip-address). Consult our [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/platform/manager/dns-manager/) guides for help with setting up a domain. A proper domain name is important to acquire a certificate for HTTPS connectivity.
 
 ## Install Docker
 
@@ -46,7 +50,7 @@ Ubuntu 18.04 is the distribution used in this guide. Generally speaking, any Lin
 
         sudo apt-get remove docker docker-engine docker.io containerd runc
 
-   If `apt-get` indicates that no packages were found, this should not be problematic and you can continue normally.
+   If `apt-get` indicates that no packages were found, continue normally.
 
 1. Install package prerequisites for compatibility with the upstream Docker repository.
 
@@ -114,7 +118,7 @@ External clients will communicate with Caddy, which will automatically manage re
 
 1. Create the following Caddyfile. Be sure to replace `example.com` with the name of your domain that you set up in the "Before You Begin" section of this guide, and have confirmed that the domain points to your Linode's IP address. This domain will serve the web interface for bitwarden_hs hosted and secured by Caddy's automatic TLS.
 
-{{< file "/etc/Caddyfile" aconf >}}
+   {{< file "/etc/Caddyfile" caddy >}}
 example.com {
   encode gzip
 
@@ -129,15 +133,14 @@ example.com {
 }
 {{< /file >}}
 
-1. Prepare a directory for Caddy in `/etc` to store state information like Let's Encrypt certificates.
+1. Prepare a directory for Caddy in `/etc` to store state information such as Let's Encrypt certificates.
 
         sudo mkdir /etc/caddy
         sudo chmod go-rwx /etc/caddy
 
 1. Start another Docker container to run a persistent `caddy` daemon.
 
-        sudo docker run -d --name caddy -v /etc/Caddyfile:/etc/caddy/Caddyfile -v /etc/caddy:/root/.local/share/c
-addy --net host --restart on-failure caddy/caddy:alpine
+        sudo docker run -d --name caddy -v /etc/Caddyfile:/etc/caddy/Caddyfile -v /etc/caddy:/root/.local/share/caddy --net host --restart on-failure caddy/caddy:alpine
 
    Many of these flags passed to the `docker` command are similar to those used in the `bitwarden_rs` instructions, with one notable difference. The `--net host` flag runs Caddy bound to the host machine's networking interface rather than constrained to the container, in order to simplify access to other containers and necessary ports for Caddy's operation over HTTP and HTTPS.
 
@@ -165,9 +168,11 @@ addy --net host --restart on-failure caddy/caddy:alpine
         2020/02/23 05:46:19 [INFO] Unable to deactivate the authorization: <url>
         2020/02/23 05:46:19 [ERROR][example.com] failed to obtain certificate: acme: Error -> One or more domains had a problem:
 
+   In order to avoid rate limiting problems, you should stop your `caddy` server if you find any certificate provisioning issues with `sudo docker stop caddy`. You may start the server again with `sudo docker start caddy` after resolving any issues found in the aforementioned container logs.
+
 ## Initial Setup
 
-1. Navigate to your chosen domain, in this tutorial, `example.com`. Verify that your browser renders the Bitwarden web vault login page.
+1. Navigate to your chosen domain in a local web browser (in this tutorial, `example.com`). Verify that your browser renders the Bitwarden web vault login page, and that the page is served over TLS/SSL.
 
    ![Bitwarden Login](bitwarden_rs_login.png "Bitwarden Login")
    
@@ -205,6 +210,8 @@ As an additional security precaution, you may elect to disable user registration
 1. If you attempt to create a new account after these changes, the following error will appear on the account creation page.
 
    ![Bitwarden Registration Error](bitwarden_rs_signup_error.png "Bitwarden Registration Error")
+
+   Your deployment of bitwarden_rs will not permit any additional user registrations. If you would like to invite users without needing to change the bitwarden_rs container environment variable flags, consider following the upstream documentation to [enable the admin panel](https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-admin-page) to provide user invitation functionality.
 
 ## Backup bitwarden_rs SQLite Database
 
@@ -265,7 +272,7 @@ WantedBy=multi-user.target
 
    This schedules the backup to occur at 4:00 in the time zone set for your linode. You may alter this time to trigger at your desired time of day.
 
-  {{< note >}}
+   {{< note >}}
 The `Persistent=true` line instructs systemd to fire the timer if the timer was unable to trigger at its previous target time, such as if the system was being rebooted.
 {{</ note >}}
 
@@ -284,6 +291,8 @@ The `Persistent=true` line instructs systemd to fire the timer if the timer was 
           Loaded: loaded (/etc/systemd/system/bitwarden-backup.timer; enabled; vendor preset: enabled)
           Active: active (waiting) since Mon 2020-02-24 22:09:44 MST; 7s ago
           Trigger: Tue 2020-02-25 04:00:00 MST; 5h 50min left
+
+   This indicates that a backup will be taken in 5 hours and 50 minutes.
 
 {{< caution >}}
 Ensure that your backups are kept on a volume or host independent of your Linode in case of a disaster recover recovery scenario. Consider using [Linode Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) as one potential solution for permanent backup storage and archival.
