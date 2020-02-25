@@ -150,23 +150,28 @@ example.com {
 
    There will likely be many logs that are returned from this command, so take a moment to read through the logs to verify that lines similar to the following are included in your log output, indicating that certificate provisioning has been successful.
 
-        2020/02/24 04:40:50 [INFO][example.com] Obtain certificate
-        2020/02/24 04:40:50 [INFO][example.com] Obtain: Waiting on rate limiter...
-        2020/02/24 04:40:50 [INFO][example.com] Obtain: Done waiting
-        2020/02/24 04:40:50 [INFO] [example.com] acme: Obtaining bundled SAN certificate
-        2020/02/24 04:40:50 [INFO] [example.com] AuthURL: <url>
-        2020/02/24 04:40:50 [INFO] [example.com] acme: Could not find solver for: tls-alpn-01
-        2020/02/24 04:40:50 [INFO] [example.com] acme: use http-01 solver
-        2020/02/24 04:40:50 [INFO] [example.com] acme: Trying to solve HTTP-01
-        2020/02/24 04:40:50 [INFO][example.com] Served key authentication (distributed)
-        2020/02/24 04:40:53 [INFO] [example.com] The server validated our request
-        2020/02/24 04:40:53 [INFO] [example.com] acme: Validations succeeded; requesting certificates
-        2020/02/24 04:40:54 [INFO] [example.com] Server responded with a certificate.
+
+   {{< output >}}
+2020/02/24 04:40:50 [INFO][example.com] Obtain certificate
+2020/02/24 04:40:50 [INFO][example.com] Obtain: Waiting on rate limiter...
+2020/02/24 04:40:50 [INFO][example.com] Obtain: Done waiting
+2020/02/24 04:40:50 [INFO] [example.com] acme: Obtaining bundled SAN certificate
+2020/02/24 04:40:50 [INFO] [example.com] AuthURL: <url>
+2020/02/24 04:40:50 [INFO] [example.com] acme: Could not find solver for: tls-alpn-01
+2020/02/24 04:40:50 [INFO] [example.com] acme: use http-01 solver
+2020/02/24 04:40:50 [INFO] [example.com] acme: Trying to solve HTTP-01
+2020/02/24 04:40:50 [INFO][example.com] Served key authentication (distributed)
+2020/02/24 04:40:53 [INFO] [example.com] The server validated our request
+2020/02/24 04:40:53 [INFO] [example.com] acme: Validations succeeded; requesting certificates
+2020/02/24 04:40:54 [INFO] [example.com] Server responded with a certificate.
+{{< /output >}}
 
    If you find any log lines similar to the following, which indicate failure, double check that your server is reachable from your chosen domain.
 
-        2020/02/23 05:46:19 [INFO] Unable to deactivate the authorization: <url>
-        2020/02/23 05:46:19 [ERROR][example.com] failed to obtain certificate: acme: Error -> One or more domains had a problem:
+   {{< output >}}
+2020/02/23 05:46:19 [INFO] Unable to deactivate the authorization: <url>
+2020/02/23 05:46:19 [ERROR][example.com] failed to obtain certificate: acme: Error -> One or more domains had a problem:
+{{< /output >}}
 
    In order to avoid rate limiting problems, you should stop your `caddy` server if you find any certificate provisioning issues with `sudo docker stop caddy`. You may start the server again with `sudo docker start caddy` after resolving any issues found in the aforementioned container logs.
 
@@ -205,7 +210,7 @@ As an additional security precaution, you may elect to disable user registration
 
 1. Start a new bitwarden container, but with the `SIGNUPS_ALLOWED` environment variable set to `false`.
 
-        docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -e SIGNUPS_ALLOWED=false -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:1.13.1
+        sudo docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -e SIGNUPS_ALLOWED=false -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:1.13.1
 
 1. If you attempt to create a new account after these changes, the following error will appear on the account creation page.
 
@@ -253,8 +258,10 @@ ExecStart=/usr/bin/find . -type f -mtime +30 -name 'backup*' -delete
 
    This command should return with one backup sqlite3 file shown.
 
-        total 136
-        -rw-r--r-- 1 root root 139264 Feb 24 18:16 backup-2020-02-24T18_16_50-07_00.sq3
+   {{< output >}}
+total 136
+-rw-r--r-- 1 root root 139264 Feb 24 18:16 backup-2020-02-24T18_16_50-07_00.sq3
+{{< /output >}}
 
 1. To schedule regular backups using this backup service unit, create the following systemd timer unit.
 
@@ -270,7 +277,7 @@ Persistent=true
 WantedBy=multi-user.target
 {{< /file >}}
 
-   This schedules the backup to occur at 4:00 in the time zone set for your linode. You may alter this time to trigger at your desired time of day.
+   This schedules the backup to occur at 4:00 in the time zone set for your Linode. You may alter this time to trigger at your desired time of day.
 
    {{< note >}}
 The `Persistent=true` line instructs systemd to fire the timer if the timer was unable to trigger at its previous target time, such as if the system was being rebooted.
@@ -287,10 +294,13 @@ The `Persistent=true` line instructs systemd to fire the timer if the timer was 
 
    You should see output similar to the following:
 
-        ● bitwarden-backup.timer - schedule bitwarden backups
-          Loaded: loaded (/etc/systemd/system/bitwarden-backup.timer; enabled; vendor preset: enabled)
-          Active: active (waiting) since Mon 2020-02-24 22:09:44 MST; 7s ago
-          Trigger: Tue 2020-02-25 04:00:00 MST; 5h 50min left
+
+   {{< output >}}
+● bitwarden-backup.timer - schedule bitwarden backups
+  Loaded: loaded (/etc/systemd/system/bitwarden-backup.timer; enabled; vendor preset: enabled)
+  Active: active (waiting) since Mon 2020-02-24 22:09:44 MST; 7s ago
+  Trigger: Tue 2020-02-25 04:00:00 MST; 5h 50min left
+{{< /output >}}
 
    This indicates that a backup will be taken in 5 hours and 50 minutes.
 
