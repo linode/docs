@@ -98,7 +98,7 @@ This section will outline how to download the bitwarden_rs Docker image, setup v
         sudo docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:1.13.1
 
     This command uses the following flags to establish a persistent container to serve the bitwarden_rs application:
-    
+
     - `-d` daemonizes the container to run in the background.
     - Using `--name bitwarden` gives the container a human-readable name to avoid the need to reference the running container by a temporary identifier.
     - By passing the host path `/srv/bitwarden` to the volume (`-v`) flag, data will be persisted outside of the container whenever it is stopped.
@@ -107,7 +107,7 @@ This section will outline how to download the bitwarden_rs Docker image, setup v
     - `--restart=on-failure` ensures that the container remains up in the event of container failure or host restart.
 
    As part of these steps, note that the container will listen for traffic on the local loopback interface (`127.0.0.1`) and _not_ a publicly reachable IP address. This is to ensure that any traffic originating from outside the host must connect to the Caddy server, which will enforce encrypted TLS connections.
-    
+
 ## Configure Caddy as a Reverse Proxy
 
 External clients will communicate with Caddy, which will automatically manage reverse proxying websocket traffic. Caddy will also provision as well as renew TLS certificates via Let's Encrypt automatically.
@@ -180,7 +180,7 @@ example.com {
 1. Navigate to your chosen domain in a local web browser (in this tutorial, `example.com`). Verify that your browser renders the Bitwarden web vault login page, and that the page is served over TLS/SSL.
 
    ![Bitwarden Login](bitwarden_rs_login.png "Bitwarden Login")
-   
+
    If you see the login page, congratulations! bitwarden_rs is running and operational. The first step in using the password manager is to create an account. Do so now by clicking on the "Create Account" button on the login page.
 
 1. A new page will appear with several fields.
