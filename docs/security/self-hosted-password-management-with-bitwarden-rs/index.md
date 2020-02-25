@@ -116,7 +116,7 @@ External clients will communicate with Caddy, which will automatically manage re
 
         sudo docker pull caddy/caddy:alpine
 
-1. Create the following Caddyfile. Be sure to replace `example.com` with the name of your domain that you set up in the "Before You Begin" section of this guide, and have confirmed that the domain points to your Linode's IP address. This domain will serve the web interface for bitwarden_hs hosted and secured by Caddy's automatic TLS.
+1. Create the following Caddyfile. Be sure to replace `example.com` with the name of your domain that you set up in the "Before You Begin" section of this guide, and have confirmed that the domain points to your Linode's IP address. This domain will serve the web interface for bitwarden_rs hosted and secured by Caddy's automatic TLS.
 
    {{< file "/etc/Caddyfile" caddy >}}
 example.com {
@@ -220,7 +220,7 @@ As an additional security precaution, you may elect to disable user registration
 
 ## Backup bitwarden_rs SQLite Database
 
-Before relying on this service for any important data, you should take additional steps to safeguard the data stored within bitwarden_rs. Encrypted data is stored within a flat file sqlite3 database. In order to reliably backup this data, you should use the sqlite `.backup` command instead of simply copying the file in order to ensure that the database is in a consistent state when the backup is taken.
+Before relying on this service for any important data, you should take additional steps to safeguard the data stored within bitwarden_rs. Encrypted data is stored within a flat file sqlite3 database. In order to reliably backup this data, you should use the sqlite3 `.backup` command instead of simply copying the file in order to ensure that the database is in a consistent state when the backup is taken.
 
 1. Review the ["Backing Up Your Data"](/docs/security/backups/backing-up-your-data/) guide in order to determine the best location to store your backups. In this example, a local filesystem path will be used. In a more resilient setup, these local backups should be replicated onto another service or host to guard against single-host failure.
 
