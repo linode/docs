@@ -107,7 +107,7 @@ Once you are satisfied that NodeBalancer is working normally, you can switch you
 
 Once the DNS changes propagate, traffic will begin flowing through the NodeBalancer. At this point, you will want to wait at least 24 hours for all caches to catch up to the NodeBalancer before proceeding.
 
-# Additional NodeBalancers and Features
+## Additional NodeBalancers and Features
 
 On another Linode, make an exact copy of your current web server. The Linode backups service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply repeat step four of [Configuring a NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/#configuring-a-nodebalancer) to add it to the NodeBalancer configuration.
 
@@ -117,6 +117,6 @@ Once the configuration is sent to the backend, users will be balanced over the t
 
 This is just the beginning; NodeBalancers are extremely flexible and cater to a lot of needs. From here, the API can be used to add many backends. Multiple ports on one backend can be balanced for complex setups. Additionally, new tools like *memcached* can be introduced to the application to allow session stickiness to become irrelevant.
 
-# Limitations
+## Limitations
 
 Nodebalancers do have a maximum connection limit of 10,000 concurrent connections.
