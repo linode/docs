@@ -51,7 +51,7 @@ Ensure that the version number matches the Drupal 8 version you wish to download
 
         sudo cp /var/www/html/example.com/public_html/sites/default/default.settings.php /var/www/html/example.com/public_html/sites/default/settings.php
 
-1.  Enforce [trusted hostnames](https://www.drupal.org/node/2410395) with those that users will access your site from. With the text editor of your choice, edit your `settings.php` file replacing the values with your own site's URL(s).
+1.  Enforce [trusted hostnames](https://www.drupal.org/node/2410395) with those that users will access your site from. With the text editor of your choice, edit your `settings.php` file replacing the [regular expression (RegEx)](https://www.php.net/manual/en/reference.pcre.pattern.syntax.php) with a pattern that matches your own site's URL(s).
 
     {{< file "/var/www/html/example.com/public_html/sites/default/settings.php" conf >}}
 $settings['trusted_host_patterns'] = array(
