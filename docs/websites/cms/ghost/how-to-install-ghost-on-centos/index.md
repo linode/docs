@@ -32,9 +32,9 @@ Replace each instance of `example.com` in this guide with your site’s domain n
 
 ## Before you Begin
 
-1. This guide assumes that you've followed the steps in our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and have created a new user for Ghost with elevated `sudo` privileges. The example in this guide uses `ghostexample`.
+1. This guide assumes that you've followed the steps in our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and have created a new user for Ghost with elevated `sudo` privileges. The example username used in this guide is `ghostexample`.
 
-1. Ensure that you have a valid domain name and properly configured DNS records for your domain.
+1. Ensure that you have a valid domain name and [properly configured DNS records](/docs/platform/manager/dns-manager/) for your domain.
 
 1. Ensure that your system is up to date:
 
@@ -65,7 +65,7 @@ Replace each instance of `example.com` in this guide with your site’s domain n
 
         mysql_secure_installation
 
-    This will have you set a root password and ask you a series of questions. Answer yes to all questions.
+You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
 ### Install Node.js and NPM
 
@@ -84,11 +84,11 @@ NGINX will be used as a reverse proxy for your Ghost application:
 
         sudo dnf install @nginx
 
-1.  Navigate to the directory where you will create some configuration files.
+1.  Navigate to the `/etc/nginx/`  directory which will contain your configuration files:
 
         cd /etc/nginx/
 
-1.  Create the directories for your Ghost configuration files:
+1.  Create new directories for your Ghost configuration files:
 
         sudo mkdir sites-available
         sudo mkdir sites-enabled
@@ -119,9 +119,10 @@ server {
 
         sudo ln -s /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost
 
-1.  Update the NGINX config `/etc/nginx/nginx.conf` file by adding an include for the configuration file you just made, a directive for `server_names_hash_bucket_size`, and comment out the entire `server` block:
+1.  Update the `http` block in your NGINX config `/etc/nginx/nginx.conf` file by adding an include for the configuration file you just made, a directive for `server_names_hash_bucket_size`, and comment out the entire `server` block:
 
     {{< file "/etc/nginx/nginx.conf" >}}
+http {
 ...
     # Load modular configuration files from the /etc/nginx/conf.d directory.
     # See http://nginx.org/en/docs/ngx_core_module.html#include

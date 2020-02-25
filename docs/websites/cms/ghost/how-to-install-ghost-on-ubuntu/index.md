@@ -32,9 +32,9 @@ Replace each instance of `example.com` in this guide with your site’s domain n
 
 ## Before you Begin
 
-1. This guide assumes that you've followed the steps in our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and have created a new user for Ghost with elevated `sudo` privileges. The example in this guide uses `ghostexample`.
+1. This guide assumes that you've followed the steps in our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and have created a new user for Ghost with elevated `sudo` privileges. The example username used in this guide is `ghostexample`.
 
-1. Ensure that you have a valid domain name and properly configured DNS records for your domain.
+1. Ensure that you have a valid domain name and [properly configured DNS records](/docs/platform/manager/dns-manager/) for your domain.
 
 1. Ensure that your system is up to date:
 
