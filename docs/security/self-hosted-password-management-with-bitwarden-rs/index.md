@@ -298,6 +298,16 @@ The `Persistent=true` line instructs systemd to fire the timer if the timer was 
 Ensure that your backups are kept on a volume or host independent of your Linode in case of a disaster recover recovery scenario. Consider using [Linode Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) as one potential solution for permanent backup storage and archival.
 {{< /caution >}}
 
+## Using bitwarden_rs
+
+bitwarden_rs provides a compatible API for many [Bitwarden apps and browser extensions](https://bitwarden.com/). In order to configure these applications to use your hosted instance, you may need to configure your mobile application or browser extension to rely on your custom domain and API endpoint.
+
+1. As an example, this is the initial login screen for the Firefox Bitwarden browser extension. In order to configure a custom server, click on the gear in the upper left corner.
+
+   ![Bitwarden Extension Configuration](bitwarden_browser_extension_login.png "Bitwarden Extension Configuration")
+
+1. On the next page, enter your custom domain under "Server URL", such as `https://example.com`. Similar steps can be taken on the iOS and Android mobile applications - edit your application's settings before login to use a custom Server URL, and you will log in to your custom instance of bitwarden_rs.
+
 ## Additional Reading
 
 With bitwarden_rs running securely over TLS and regularly backed up, you may choose to follow [additional documentation provided by the bitwarden_rs project](https://github.com/dani-garcia/bitwarden_rs/wiki) to add more functionality to your installation. Some of these features include:
