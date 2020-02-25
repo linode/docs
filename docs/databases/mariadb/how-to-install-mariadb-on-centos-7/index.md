@@ -175,25 +175,3 @@ If you forget your root MariaDB password, it can be reset.
 4.  Then restart MariaDB:
 
         sudo systemctl start mariadb
-
-
-## Tune MariaDB
-
-[MySQL Tuning Primer](http://www.day32.com/MySQL/) can be used to optimize your MariaDB server. Ideally, the MariaDB instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will give.
-
-1.  The script needs the [bc language](https://www.gnu.org/software/bc/) installed:
-
-        sudo yum install bc
-
-2.  Download MySQL Tuner to your home directory and make it executable:
-
-        wget http://www.day32.com/MySQL/tuning-primer.sh
-        chmod u+x tuning-primer.sh
-
-3.  To run it:
-
-        sudo ./tuning-primer.sh
-
-    You will be asked if you would like to run the script against a different MySQL socket than `/var/lib/mysql/mysql.sock`. Select `N`. You will then be asked if you have your login. Enter `y`, then the credentials when asked.
-
-MySQL Tuning Primer is an excellent starting point to optimize a MariaDB server but it would be prudent to perform additional research for configurations tailored to the application(s) utilizing MariaDB on your Linode.
