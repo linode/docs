@@ -205,3 +205,93 @@ As an additional security precaution, you may elect to disable user registration
 1. If you attempt to create a new account after these changes, the following error will appear on the account creation page.
 
    ![Bitwarden Registration Error](bitwarden_rs_signup_error.png "Bitwarden Registration Error")
+
+## Backup bitwarden_rs SQLite Database
+
+Before relying on this service for any important data, you should take additional steps to safeguard the data stored within bitwarden_rs. Encrypted data is stored within a flat file sqlite3 database. In order to reliably backup this data, you should use the sqlite `.backup` command instead of simply copying the file in order to ensure that the database is in a consistent state when the backup is taken.
+
+1. Review the ["Backing Up Your Data"](/docs/security/backups/backing-up-your-data/) guide in order to determine the best location to store your backups. In this example, a local filesystem path will be used. In a more resilient setup, these local backups should be replicated onto another service or host to guard against single-host failure.
+
+1. Install the `sqlite3` package, which will provide the `sqlite3` command for the backup script.
+
+        sudo apt-get install sqlite3
+
+1. Create a directory for backups.
+
+        sudo mkdir /srv/backup
+        sudo chmod go-rwx /srv/backup
+
+1. Create the following systemd service.
+
+   {{< file "/etc/systemd/system/bitwarden-backup.service" ini >}}
+[Unit]
+Description=backup the bitwarden sqlite database
+
+[Service]
+Type=oneshot
+WorkingDirectory=/srv/backup
+ExecStart=/usr/bin/env sh -c 'sqlite3 /srv/bitwarden/db.sqlite3 ".backup backup-$(date -Is | tr : _).sq3"'
+ExecStart=/usr/bin/find . -type f -mtime +30 -name 'backup*' -delete
+{{< /file >}}
+
+   This service unit will create a timestamped file and cleanup any backups older than 30 days.
+
+1. To take an initial backup and verify the systemd service works, start the backup service.
+
+        sudo systemctl start bitwarden-backup.service
+
+1. Verify that a backup file is present:
+
+        sudo ls -l /srv/backup/
+
+   This command should return with one backup sqlite3 file shown.
+
+        total 136
+        -rw-r--r-- 1 root root 139264 Feb 24 18:16 backup-2020-02-24T18_16_50-07_00.sq3
+
+1. To schedule regular backups using this backup service unit, create the following systemd timer unit.
+
+   {{< file "/etc/systemd/system/bitwarden-backup.timer" ini >}}
+[Unit]
+Description=schedule bitwarden backups
+
+[Timer]
+OnCalendar=04:00
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target
+{{< /file >}}
+
+   This schedules the backup to occur at 4:00 in the time zone set for your linode. You may alter this time to trigger at your desired time of day.
+
+  {{< note >}}
+The `Persistent=true` line instructs systemd to fire the timer if the timer was unable to trigger at its previous target time, such as if the system was being rebooted.
+{{</ note >}}
+
+1. Start and enable this timer unit.
+
+        sudo systemctl enable bitwarden-backup.timer
+        sudo systemctl start bitwarden-backup.timer
+
+1. Finally, to view the timer's next execution time, check the status of the timer.
+
+        systemctl status bitwarden-backup.timer
+
+   You should see output similar to the following:
+
+        ● bitwarden-backup.timer - schedule bitwarden backups
+          Loaded: loaded (/etc/systemd/system/bitwarden-backup.timer; enabled; vendor preset: enabled)
+          Active: active (waiting) since Mon 2020-02-24 22:09:44 MST; 7s ago
+          Trigger: Tue 2020-02-25 04:00:00 MST; 5h 50min left
+
+{{< caution >}}
+Ensure that your backups are kept on a volume or host independent of your Linode in case of a disaster recover recovery scenario. Consider using [Linode Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) as one potential solution for permanent backup storage and archival.
+{{< /caution >}}
+
+## Additional Reading
+
+With bitwarden_rs running securely over TLS and regularly backed up, you may choose to follow [additional documentation provided by the bitwarden_rs project](https://github.com/dani-garcia/bitwarden_rs/wiki) to add more functionality to your installation. Some of these features include:
+
+- [Support for U2F authentication](https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-U2F-authentication)
+- [SMTP configuration to support sending emails](https://github.com/dani-garcia/bitwarden_rs/wiki/SMTP-configuration) for features like account creation invitation
