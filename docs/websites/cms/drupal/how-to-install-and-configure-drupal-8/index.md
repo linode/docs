@@ -5,7 +5,7 @@ author:
 description: 'Drupal 8 is the lastest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode so you can begin developing your own websites.'
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-applications/cms-guides/drupal/','websites/cms/managing-web-content-with-drupal-8-beta/']
+aliases: ['web-applications/cms-guides/drupal/','websites/cms/managing-web-content-with-drupal-8-beta/', 'websites/cms/install-and-configure-drupal-8/']
 modified: 2015-11-19
 modified_by:
     name: Linode
