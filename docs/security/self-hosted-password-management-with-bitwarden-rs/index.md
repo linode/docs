@@ -14,7 +14,6 @@ h1_title: "Self-Host the bitwarden_rs Password Manager"
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-draft: true
 ---
 
 [Bitwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your own infrastructure. The [bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs) project provides a lightweight, single-process, API-compatible service ideal for running personal instances. By running your own bitwarden_rs service, you can use Bitwarden browser extensions and mobile applications backed by your own server.
@@ -31,7 +30,7 @@ This configuration of bitwarden_rs will also use the default SQL backend for the
 
 The version of bitwarden_rs that this guide references is 1.13.1, which is the latest version at the time of writing. As part of regular maintenance and to ensure that any relevant security updates are applied to the application, ensure that you follow the [upgrade instructions](https://github.com/dani-garcia/bitwarden_rs/wiki/Updating-the-bitwarden-image) provided by the project regularly to keep your deployment up to date with current upstream releases.
 
-Because this guide uses the Docker image for bitwarden_rs, no assumptions are made about the choice of Linux distribution. Aside from installing the system packages for Docker and Caddy, these instructions should apply equally to Debian-based distributions, Red Hat-based distributions, or similar distributions that provide the underlying required packages.
+Ubuntu 18.04 is the distribution used in this guide. Generally speaking, any Linux distribution that supports running Docker containers should be equally compatible.
 
 ### Before you Begin
 
@@ -41,7 +40,41 @@ Because this guide uses the Docker image for bitwarden_rs, no assumptions are ma
 
 1. Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) DNS records that point to your Linode's public [IPv4 and IPv6 addresses](/docs/getting-started/#find-your-linode-s-ip-address). Consult our [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/platform/manager/dns-manager/) guides for help with setting up a domain.
 
-1. Install and configure Docker according to the steps for your chosen Linux distribution. Linode provides a general-purpose guide covering both Ubuntu and CentOS in [this guide](/docs/applications/containers/what-is-docker/).
+## Install Docker
+
+1. First, uninstall any potentially previously-installed packages.
+
+        sudo apt-get remove docker docker-engine docker.io containerd runc
+
+   If `apt-get` indicates that no packages were found, this should not be problematic and you can continue normally.
+
+1. Install package prerequisites for compatibility with the upstream Docker repository.
+
+        sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+
+1. Add the official Docker GPG repository key.
+
+        sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+1. Add the Docker upstream repository.
+
+        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+1. Update the `apt` package cache.
+
+        sudo apt-get update
+
+1. Install the required Docker packages.
+
+        sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+1. Start and enable the `docker` daemon.
+
+        sudo systemctl enable --now docker
+
+1. Confirm that you can run `docker` commands. The following command should return without errors and show zero running containers.
+
+        sudo docker ps
 
 ## Install bitwarden_rs
 
@@ -58,7 +91,7 @@ This section will outline how to download the bitwarden_rs Docker image, setup v
 
 1. Create the Docker container for bitwarden_rs.
 
-        sudo docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -p 127.0.0.1:80:80 -p 127.0.0.1:3012:3012 --restart=on-failure bitwardenrs/server:1.13.1
+        sudo docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:1.13.1
 
     This command uses the following flags to establish a persistent container to serve the bitwarden_rs application:
     
@@ -66,7 +99,7 @@ This section will outline how to download the bitwarden_rs Docker image, setup v
     - Using `--name bitwarden` gives the container a human-readable name to avoid the need to reference the running container by a temporary identifier.
     - By passing the host path `/srv/bitwarden` to the volume (`-v`) flag, data will be persisted outside of the container whenever it is stopped.
     - The environment variable `WEBSOCKET_ENABLED` enables the extra websocket server for bitwarden_rs.
-    - Each `-p` flag forwards the respective host ports to the container (port 80 for the main bitwarden_rs web service and port 3012 for websocket traffic).
+    - Each `-p` flag forwards the respective host ports to the container (port 8080 for the main bitwarden_rs web service and port 3012 for websocket traffic). Normal HTTP and HTTPS ports will be served with Caddy.
     - `--restart=on-failure` ensures that the container remains up in the event of container failure or host restart.
 
    As part of these steps, note that the container will listen for traffic on the local loopback interface (`127.0.0.1`) and _not_ a publicly reachable IP address. This is to ensure that any traffic originating from outside the host must connect to the Caddy server, which will enforce encrypted TLS connections.
@@ -75,6 +108,100 @@ This section will outline how to download the bitwarden_rs Docker image, setup v
 
 External clients will communicate with Caddy, which will automatically manage reverse proxying websocket traffic. Caddy will also provision as well as renew TLS certificates via Let's Encrypt automatically.
 
-1. Install Caddy following the instructions in the [Install and Configure Caddy on CentOS 7](/docs/web-servers/caddy/install-and-configure-caddy-on-centos-7/) guide.
+1. Pull the Caddy `alpine` image.
 
-1. Create the following Caddyfile. Be sure to replace `example.com` with the name of your domain that you set up in the "Before You Begin" section of this guide. This domain will be where the web interface for bitwarden_hs hosted and secured by Caddy's automatic TLS.
+        sudo docker pull caddy/caddy:alpine
+
+1. Create the following Caddyfile. Be sure to replace `example.com` with the name of your domain that you set up in the "Before You Begin" section of this guide, and have confirmed that the domain points to your Linode's IP address. This domain will serve the web interface for bitwarden_hs hosted and secured by Caddy's automatic TLS.
+
+{{< file "/etc/Caddyfile" aconf >}}
+example.com {
+  encode gzip
+
+  # The negotiation endpoint is also proxied to Rocket
+  reverse_proxy /notifications/hub/negotiate 0.0.0.0:8080
+
+  # Notifications redirected to the websockets server
+  reverse_proxy /notifications/hub 0.0.0.0:3012
+
+  # Send all other traffic to the regular bitwarden_rs endpoint
+  reverse_proxy 0.0.0.0:8080
+}
+{{< /file >}}
+
+1. Prepare a directory for Caddy in `/etc` to store state information like Let's Encrypt certificates.
+
+        sudo mkdir /etc/caddy
+        sudo chmod go-rwx /etc/caddy
+
+1. Start another Docker container to run a persistent `caddy` daemon.
+
+        sudo docker run -d --name caddy -v /etc/Caddyfile:/etc/caddy/Caddyfile -v /etc/caddy:/root/.local/share/c
+addy --net host --restart on-failure caddy/caddy:alpine
+
+   Many of these flags passed to the `docker` command are similar to those used in the `bitwarden_rs` instructions, with one notable difference. The `--net host` flag runs Caddy bound to the host machine's networking interface rather than constrained to the container, in order to simplify access to other containers and necessary ports for Caddy's operation over HTTP and HTTPS.
+
+1. View the Caddy container's logs in order to confirm that a Let's Encrypt certificate has been provisioned for your chosen domain.
+
+        sudo docker logs caddy
+
+   There will likely be many logs that are returned from this command, so take a moment to read through the logs to verify that lines similar to the following are included in your log output, indicating that certificate provisioning has been successful.
+
+        2020/02/24 04:40:50 [INFO][example.com] Obtain certificate
+        2020/02/24 04:40:50 [INFO][example.com] Obtain: Waiting on rate limiter...
+        2020/02/24 04:40:50 [INFO][example.com] Obtain: Done waiting
+        2020/02/24 04:40:50 [INFO] [example.com] acme: Obtaining bundled SAN certificate
+        2020/02/24 04:40:50 [INFO] [example.com] AuthURL: <url>
+        2020/02/24 04:40:50 [INFO] [example.com] acme: Could not find solver for: tls-alpn-01
+        2020/02/24 04:40:50 [INFO] [example.com] acme: use http-01 solver
+        2020/02/24 04:40:50 [INFO] [example.com] acme: Trying to solve HTTP-01
+        2020/02/24 04:40:50 [INFO][example.com] Served key authentication (distributed)
+        2020/02/24 04:40:53 [INFO] [example.com] The server validated our request
+        2020/02/24 04:40:53 [INFO] [example.com] acme: Validations succeeded; requesting certificates
+        2020/02/24 04:40:54 [INFO] [example.com] Server responded with a certificate.
+
+   If you find any log lines similar to the following, which indicate failure, double check that your server is reachable from your chosen domain.
+
+        2020/02/23 05:46:19 [INFO] Unable to deactivate the authorization: <url>
+        2020/02/23 05:46:19 [ERROR][example.com] failed to obtain certificate: acme: Error -> One or more domains had a problem:
+
+## Initial Setup
+
+1. Navigate to your chosen domain, in this tutorial, `example.com`. Verify that your browser renders the Bitwarden web vault login page.
+
+   ![Bitwarden Login](bitwarden_rs_login.png "Bitwarden Login")
+   
+   If you see the login page, congratulations! bitwarden_rs is running and operational. The first step in using the password manager is to create an account. Do so now by clicking on the "Create Account" button on the login page.
+
+1. A new page will appear with several fields.
+
+   ![Bitwarden Account Creation](bitwarden_rs_create_account.png "Bitwarden Account Creation")
+
+   Fill each field with the appropriate information, choosing a strong and secure master password.
+
+   {{< note >}}
+Although a user email is required at time of registration, by default, your deployment of bitwarden_rs cannot send email without additional configuration. If you would like to configure SMTP in order to enable bitwarden_rs to send emails such as invitation emails, follow [these instructions on the bitwarden_rs wiki](https://github.com/dani-garcia/bitwarden_rs/wiki/SMTP-configuration) using SMTP information from your chosen SMTP provider.
+{{< /note >}}
+
+1. After registering, you will be returned to the login screen. Log in with your chosen credentials, which should take you to the web vault view.
+
+   ![Bitwarden Web Vault](bitwarden_web_vault.png "Bitwarden Web Vault")
+
+   At this point, your bitwarden_rs installation is functional.
+
+### Disable Anonymous User Sign Up
+
+As an additional security precaution, you may elect to disable user registration. This is recommended on servers that are publicly reachable to avoid abuse of the service.
+
+1. Stop the running bitwarden_rs container and remove it.
+
+        sudo docker stop bitwarden
+        sudo docker rm bitwarden
+
+1. Start a new bitwarden container, but with the `SIGNUPS_ALLOWED` environment variable set to `false`.
+
+        docker run -d --name bitwarden -v /srv/bitwarden:/data -e WEBSOCKET_ENABLED=true -e SIGNUPS_ALLOWED=false -p 127.0.0.1:8080:80 -p 127.0.0.1:3012:3012 --restart on-failure bitwardenrs/server:1.13.1
+
+1. If you attempt to create a new account after these changes, the following error will appear on the account creation page.
+
+   ![Bitwarden Registration Error](bitwarden_rs_signup_error.png "Bitwarden Registration Error")
