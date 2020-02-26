@@ -6,6 +6,8 @@ description: 'This guide will show you how to update and secure an installation 
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "update"]
 aliases: ['websites/cms/update-and-secure-drupal-8-on-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+deprecated: true
+deprecated_link: 'websites/cms/drupal/how-to-update-drupal-8-on-ubuntu-18-04/'
 modified: 2016-05-11
 modified_by:
     name: Edward Angert
