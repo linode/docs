@@ -29,7 +29,12 @@ languages: ["javascript"]
 
 If you haven’t read our [Building and Using VueJS Components](/docs/development/javascript/how-to-build-and-use-vuejs-components/) already go take a look. We've covered regular components, they are very useful for small projects but once your project grows and you start needing more structure and flexibility there is a better option called Single file components. 
 
-Single file components are quite similar to regular components but there are a few key differences which can make the single file component the better tool for your project. ???
+Single file components are quite similar to regular components but there are a few key differences which can make the single file component the better tool for your project. 
+
+- Can be locally defined instead of globally as in the regular component
+- Separating `<template>` allows for syntax highlighting unlike to string templates
+- CSS support
+
 They are contained in separate files with the .vue extension, which allows better structure of your application. Each vue file consists of three parts: template, script, style. 
 Below you can see an example of a barebone component which we will examine part by part:
 {{< file "singleFileComponent.vue" html >}}
