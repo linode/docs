@@ -45,7 +45,7 @@ Below is a table of data center locations where Object Storage is available, and
 | Storage Size | 50 terabytes | This is the maximum amount of data you can store in one cluster. |
 | Object Limit | 50 million objects | This is the maximum amount of objects you can store in a single cluster. |
 | Bucket Count | 1000 buckets | This is the maximum number of buckets you can have in a single cluster. |
-| Maximum Object Size | 5 gigabytes | This is the maximum upload size of a single object. This limitation can be overcome by using multi-part uploads.
+| Maximum Object Size | 5 gigabytes | This is the maximum upload size of a single object. This limitation can be overcome by using multi-part uploads. |
 
 Currently, Object Storage accounts are limited to 50 terabytes of storage per cluster, or 50 million objects per cluster, whichever comes first. Separate clusters have separate limits, so it is possible to store 50 terabytes worth of objects in one cluster and 50 terabytes worth of objects in another.  In the future, individual clusters may have separate storage maximums, and this guide will be updated to include those limits. Accounts can have up to 1000 buckets per cluster.
 
