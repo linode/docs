@@ -18,9 +18,7 @@ external_resources:
 
 ![How to Use Linode Object Storage](how-to-use-linode-object-storage.png "How to Use Linode Object Storage")
 
-{{< note >}}
-[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with the Object Storage service enabled on their account will be billed. For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
-{{</ note >}}
+{{< content "object-storage-ga-shortguide" >}}
 
 {{< content "object-storage-cancellation-shortguide" >}}
 
@@ -96,6 +94,18 @@ Object Storage is not available in the Linode Classic Manager.
 
     You now have the credentials needed to connect to Linode Object Storage.
 
+## Bucket Names
+
+Bucket names, also referred to as labels, need to be unique within the same cluster, including buckets on other users' Linode accounts. This also means if you reserve a bucket name in one cluster, it is not automatically reserved in another. For example, if you have `my-bucket.us-east-1.linode.com` and want `my-bucket.eu-central-1.linode.com` you must manually reserve them both. They are separate clusters and not guaranteed. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:
+
+- Cannot be formatted as IP addresses.
+- Must be between 3 and 63 characters in length.
+- Can only contain lower-case characters, numbers, periods, and dashes.
+- Must start with a lowercase letter or number.
+- Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.).
+
+{{< content "object-storage-cluster-shortguide" >}}
+
 ## Object Storage Tools
 
 There are a number of tools that are available to help manage Linode Object Storage. This guide explains how to install and use the following options:
@@ -126,20 +136,11 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
     ![The Create a Bucket menu.](object-storage-create-a-bucket.png)
 
-1.  Add a label for your bucket.
-
-    {{< note >}}
-Bucket labels need to be unique within the same cluster, including buckets on other users' Linode accounts. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot be formatted as IP addresses</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must be between 3 and 63 characters in length</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Can only contain lower-case characters, numbers, periods, and dashes</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must start with a lowercase letter or number</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
-{{< /note >}}
-
-    {{< content "object-storage-cluster-shortguide" >}}
+1.  Add a label for your bucket. See the [Bucket Name](#bucket-names) section for rules on naming your bucket.
 
 1.  Choose a cluster location for the bucket to reside in.
+
+    {{< content "object-storage-cluster-shortguide" >}}
 
 1.  Click **Submit**. You are now ready to [upload objects to your bucket](#upload-objects-to-a-bucket).
 
@@ -251,20 +252,9 @@ Now you are ready to create buckets and upload objects.
 
 ### Create a Bucket with the CLI
 
-To create a bucket with the Linode CLI, issue the `mb` command.
+To create a bucket with the Linode CLI, issue the `mb` command. See the [Bucket Name](#bucket-names) section for rules on naming your bucket.
 
     linode-cli obj mb my-example-bucket
-
-{{< note >}}
-Bucket labels need to be unique within the same cluster, including buckets on other users' Linode accounts. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot be formatted as IP addresses</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must be between 3 and 63 characters in length</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Can only contain lower-case characters, numbers, periods, and dashes</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must start with a lowercase letter or number</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
-{{< /note >}}
-
-{{< content "object-storage-cluster-shortguide" >}}
 
 To delete a bucket, issue the `rb` command:
 
@@ -282,7 +272,8 @@ If your bucket has objects in it, you will not be able to immediately delete it 
 
         linode-cli obj put --acl-public example.txt my-example-bucket
 
-    The file will now be accessible at the URL `http://my-example-bucket.us-east-1.linodeobjects.com/example.txt`.
+    - If your bucket is in the Newark data center, your file will now be accessible at the URL `http://my-example-bucket.us-east-1.linodeobjects.com/example.txt`.
+    - If your bucket is in the Frankfurt data center, your file will now be accessible at the URL `http://my-example-bucket.eu-central-1.linodeobjects.com/example.txt`.
 
     {{< note >}}
 The `--acl-public` flag is used to make the object publicly accessible, meaning that you will be able to access the object from its URL. By default, all objects are set to private. To make a public file private, or a private file public, use the `setacl` command and supply the corresponding flag.
@@ -306,7 +297,7 @@ Creating a **signed URL** will allow you to create a link to objects with limite
 
     linode-cli obj signurl my-example-bucket example.txt +300
 
-The output of the command will be a url that can be used for a set period of time to access your object, even if your ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link will remain active, or five minutes total. Once this time has passed, your link will expire and can no longer be used.
+The output of the command will be a URL that can be used for a set period of time to access your object, even if your ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link will remain active, or five minutes total. Once this time has passed, your link will expire and can no longer be used.
 
 ### Create a Static Site with the CLI
 
@@ -329,7 +320,10 @@ To create a static website from a bucket:
         linode-cli obj setacl --acl-public my-example-bucket index.html
         linode-cli obj setacl --acl-public my-example-bucket 404.html
 
-1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain. Using `my-example-bucket` as an example, navigate to `http://my-example-bucket.website-us-east-1.linodeobjects.com`.
+1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center, or `website-eu-central-1` subdomain for the Frankfurt data center. Using `my-example-bucket` as an example, navigate to either:
+
+    - `http://my-example-bucket.website-us-east-1.linodeobjects.com` or
+    - `http://my-example-bucket.website-eu-central-1.linodeobjects.com`.
 
 For more information on hosting static websites from Linode Object Storage, see our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
@@ -373,7 +367,7 @@ You will be prompted to agree to the terms and conditions.
 
         s3cmd --configure
 
-    You will be presented with a number of questions. To accept the default answer that appears within the brackets, press enter. Here is an example of the answers you will need to provide:
+    You will be presented with a number of questions. To accept the default answer that appears within the brackets, press enter. Here is an example of the answers you will need to provide. Substitute `eu-central-1` for the subdomain if your bucket is in the Frankfurt data center:
 
         Access Key: 4TQ5CJGZS92LLEQHLXB3
         Secret Key: enteryoursecretkeyhere
@@ -401,6 +395,8 @@ Scroll down until you find the `website_endpoint`, then add the following value:
 
     http://%(bucket)s.website-us-east-1.linodeobjects.com/
 
+**Note:** Use the `website-eu-central-1` subdomain for buckets in the Frankfurt data center.
+
 
 {{</ note >}}
 
@@ -408,20 +404,9 @@ You are now ready to use s3cmd to create a bucket in Object Storage.
 
 ### Create a Bucket with s3cmd
 
-You can create a bucket with s3cmd issuing the following `mb` command, replacing `my-example-bucket` with the label of the bucket you would like to create.
+You can create a bucket with s3cmd issuing the following `mb` command, replacing `my-example-bucket` with the label of the bucket you would like to create. See the [Bucket Name](#bucket-names) section for rules on naming your bucket.
 
     s3cmd mb s3://my-example-bucket
-
-{{< note >}}
-Bucket labels need to be unique within the same cluster, including buckets on other users' Linode accounts. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot be formatted as IP addresses</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must be between 3 and 63 characters in length</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Can only contain lower-case characters, numbers, periods, and dashes</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must start with a lowercase letter or number</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
-{{< /note >}}
-
-{{< content "object-storage-cluster-shortguide" >}}
 
 To remove a bucket, you can use the `rb` command:
 
@@ -495,7 +480,7 @@ Creating a **signed URL** will allow you to create a link to objects with limite
 
     s3cmd signurl s3://my-example-bucket/example.txt +300
 
-The output of the command will be a url that can be used for a set period of time to access your object, even if your ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link will remain active, or five minutes total. Once this time has passed, your link will expire and can no longer be used.
+The output of the command will be a URL that can be used for a set period of time to access your object, even if your ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link will remain active, or five minutes total. Once this time has passed, your link will expire and can no longer be used.
 
 ### Create a Static Site with s3cmd
 
@@ -513,7 +498,10 @@ You can also create a static website using Object Storage and s3cmd:
         echo 'Error page' > 404.html
         s3cmd put index.html 404.html s3://my-example-bucket
 
-1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.website-us-east-1.linodeobjects.com`.
+1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center, and `website-eu-central-1` for the Frankfurt data center. Using `my-example-bucket` as an example, you would navigate to either:
+
+    - `http://my-example-bucket.website-us-east-1.linodeobjects.com` or
+    - `http://my-example-bucket.website-eu-central-1.linodeobjects.com`.
 
 For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
@@ -543,7 +531,7 @@ Cyberduck is a desktop application that facilitates file transfer over FTP, SFTP
 
     ![Open Cyberduck and click on 'Open Connection' to open the connection menu.](object-storage-cyberduck-open-connection.png)
 
-1.  For the Server address, enter `us-east-1.linodeobjects.com`.
+1.  For the Server address, enter either `us-east-1.linodeobjects.com` if your bucket is in the Newark data center or `eu-central-1.linodeobjects.com` if your bucket is in the Frankfurt data center.
 
 1.  Enter your access key in the **Access Key ID** field, and your secret key in the **Secret Access Key** field.
 
@@ -559,20 +547,9 @@ To create a bucket in Cyberduck:
 
     ![Right click or click 'Action', then click 'New Folder'](object-storage-cyberduck-create-bucket.png)
 
-1.  Enter your bucket's label and then click **Create**.
+1.  Enter your bucket's label and then click **Create**. See the [Bucket Name](#bucket-names) section for rules on naming your bucket.
 
-    {{< note >}}
-Bucket labels need to be unique within the same cluster, including buckets on other users' Linode accounts. If the label you enter is already in use, you will have to choose a different label. Additionally, bucket labels have the following rules:</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot be formatted as IP addresses</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must be between 3 and 63 characters in length</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Can only contain lower-case characters, numbers, periods, and dashes</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Must start with a lowercase letter or number</br>
-&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;Cannot contain underscores (_), end with a dash (-) or period (.), have consecutive periods (.), or use dashes (-) adjacent to periods (.)
-{{< /note >}}
-
-    {{< content "object-storage-cluster-shortguide" >}}
-
-To delete the bucket using Cyberduck, right click on the bucket and select **Delete**.
+1.  To delete the bucket using Cyberduck, right click on the bucket and select **Delete**.
 
 ### Upload, Download, and Delete an Object with Cyberduck
 
@@ -592,7 +569,7 @@ To delete the bucket using Cyberduck, right click on the bucket and select **Del
 
     ![Set the permissions for 'Everyone' to READ.](object-storage-cyberduck-object-permissions2.png)
 
-    Your object is now accessible via the internet, at the URL `http://my-example-bucket.us-east-1.linodeobjects.com/example.txt`, where `my-example-bucket` is the label of your bucket, and `example.txt` is the name of your object.
+    Your object is now accessible via the internet, at the URL `http://my-example-bucket.us-east-1.linodeobjects.com/example.txt`, where `my-example-bucket` is the label of your bucket, `us-east-1.linodeobjects.com` is the cluster where your bucket is hosted, and `example.txt` is the name of your object.
 
 1.  To download an object, right click on the object and select **Download**, or click **Download As** if you'd like to specify the location of the download.
 
@@ -612,7 +589,10 @@ To create a static site from your bucket:
 
 1.  You will need to separately upload the `index.html` and `404.html` files (or however you have named the index and error pages) to your bucket. Follow the instructions from the [Upload, Download, and Delete an Object with Cyberduck](#upload-download-and-delete-an-object-with-cyberduck) section to upload these files.
 
-1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain. Using `my-example-bucket` as an example, you would navigate to `http://my-example-bucket.website-us-east-1.linodeobjects.com`.
+1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center, and `website-eu-central-1` for the Frankfurt data center. Using `my-example-bucket` as an example, you would navigate to either:
+
+    - `http://my-example-bucket.website-us-east-1.linodeobjects.com` or
+    - `http://my-example-bucket.website-eu-central-1.linodeobjects.com`.
 
     For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 

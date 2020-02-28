@@ -14,9 +14,7 @@ contributor:
   name: Linode
 ---
 
-{{< note >}}
-[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with the Object Storage service enabled on their account will be billed. For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
-{{</ note >}}
+{{< content "object-storage-ga-shortguide" >}}
 
 {{< content "object-storage-cancellation-shortguide" >}}
 
@@ -76,7 +74,7 @@ The outbound data transfer for Linode Object Storage is part of your Linode acco
 
 ### Backups
 
-Databases and other critical data can be backed up to Object Storage with little effort using a command line client for easier automation. Objects within Object Storage are normally replicated three times, providing resiliency should an error occur with the underlying hardware. Additionally, buckets can be versioned so you never lose access to older backups.
+Databases and other critical data can be backed up to Object Storage with little effort using a command line client for easier automation. Objects within Object Storage are replicated and resilient to underlying hardware errors. Additionally, buckets can be versioned so you never lose access to older backups.
 
 ### Private File Storage
 
