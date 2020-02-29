@@ -23,7 +23,7 @@ Tasks performed using the Linode Cloud Manager or other account specific tools l
 The Events Page will be limited to information tied into User Permissions as set for each individual user on an account. For more information, see our [Accounts and Passwords](https://www.linode.com/docs/platform/manager/accounts-and-passwords/#users-and-permissions) guide.
 {{< /note >}}
 
-## Event's Page
+## Events Page
 
 Your account's [Events Page](https://cloud.linode.com/events) is a history, or a log, of all activity pertaining to your Linode Account. This includes changes to all billable resources, domains using our DNS Manager, StackScripts, and other events that take place affecting your account, like opening a new support ticket.
 
