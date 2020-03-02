@@ -390,6 +390,7 @@ fastopen
 fauxhai
 fb4c
 fcgi
+fcgid
 fcgiwrap
 fcrontab
 fd
