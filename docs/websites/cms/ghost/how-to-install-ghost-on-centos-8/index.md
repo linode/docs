@@ -22,7 +22,7 @@ external_resources:
 
 ## In This Guide
 
-You'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running CentOS 8, using NGINX, MariaDB, Node.js, NPM, and Ghost-CLI. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
+In this guide, you'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running CentOS 8, using NGINX, MariaDB, Node.js, NPM, and Ghost-CLI. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -181,7 +181,7 @@ Install Ghost using the Ghost-CLI tool.
 Installing Ghost in the `/root` or `/home/{user}` folder won’t work and results in a broken setup. Only use `/var/www/{folder}` because it has the correct permissions.
 {{</ note >}}
 
-1. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `ghostexample`:
+1. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `ghostexample` is our username:
 
         sudo chown ghostexample:ghostexample /var/www/ghost
         sudo chmod 775 /var/www/ghost

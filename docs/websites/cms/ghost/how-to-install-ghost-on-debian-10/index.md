@@ -22,7 +22,7 @@ external_resources:
 
 ## In This Guide
 
-You'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running Debian 10, using NGINX, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
+In this guide, you'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running Debian 10, using NGINX, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -63,7 +63,7 @@ NGINX will be used as a reverse proxy for your Ghost application:
         sudo mysql
 
     {{< note >}}
-Even though you are using MariaDB, you access it with the command `mysql` because this was the project it was forked from. Many users are used to using the MySQL database. MariaDB is similar in most ways.
+MariaDB is a fork of the popular MySQL database software, and is meant to be functionally alike, meaning that it can be accessed with the 'mysql' command.
 {{</ note>}}
 
 1.  Set a password for the root user with this command, replacing `password` with a strong password:
@@ -106,7 +106,7 @@ Install Ghost using the Ghost-CLI tool.
 Installing Ghost in the `/root` or `/home/{user}` folder won’t work and results in a broken setup. Only use `/var/www/{folder}` because it has the correct permissions.
 {{</ note >}}
 
-1. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `ghostexample`:
+1. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `ghostexample` is our username:
 
         sudo chown ghostexample:ghostexample /var/www/ghost
         sudo chmod 775 /var/www/ghost

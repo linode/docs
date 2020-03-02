@@ -22,7 +22,7 @@ external_resources:
 
 ## In This Guide
 
-You'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running Ubuntu 18.04 LTS, using NGINX, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
+In this guide, you'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running Ubuntu 18.04 LTS, using NGINX, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -97,7 +97,7 @@ Install Ghost using the Ghost-CLI tool.
 
         sudo mkdir -p /var/www/ghost
 
-1. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `ghostexample`:
+1. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `ghostexample` is our username:
 
         sudo chown ghostexample:ghostexample /var/www/ghost
         sudo chmod 775 /var/www/ghost
