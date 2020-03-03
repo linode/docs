@@ -107,7 +107,7 @@ Before making any changes to your Apache configuration, be sure to back up the c
 
 - On CentOS/Fedora:
 
-        cp /etc/httpd/conf/httpd.config ~/httpd.conf.backup
+        cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 {{</ disclosure-note >}}
 
 ### Prefork
