@@ -8,9 +8,10 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-03
 modified_by:
   name: Linode
-title: "Index"
+title: "How to Provision an Unmanaged Kubernetes Cluster using Terraform"
+h1_title: "Provision an Unmanaged Kubernetes Cluster using Terraform"
 contributor:
-  name: Your Name
+  name: Linode
   link: Github/Twitter Link
 external_resources:
 - '[Link Title 1](http://www.example.com)'
@@ -19,31 +20,86 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. If you are new to Terraform, read through our [A Beginner's Guide to Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) guide to familiarize yourself with key concepts.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+1. For an introduction to Kubernetes concepts, see our [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/) series of guides.
 
-3.  Update your system:
+1. You will need a personal access token for [Linode’s v4 API](https://developers.linode.com/api/v4) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) to get a token.
 
-        sudo apt-get update && sudo apt-get upgrade
+1. [Install Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) on your computer.
 
-<!-- Include one of the following notes if appropriate. --->
+1. [Install kubectl](#install-kubectl) on your computer.
+
+## In this Guide
+
+- Links to key sections and topics in this guide
+- Links to key sections and topics in this guide
+
+## Configure your Local Environment
+
+### Install kubectl
+
+{{< content "how-to-install-kubectl" >}}
+
+### Create an API Token Environment Variable
+When you run terraform commands that need to communicate with Linode's API v4, you will need to issue the command along with your Linode token. In this section, you will create an environment variable to store the token for easy reuse.
+
+1. Create the `TF_VAR_linode_token` environment variable to store your Linode API v4 token. Enter your token after the prompt.
+
+        read -sp "Linode Token: " TF_VAR_linode_token # Enter your Linode Token (it will be hidden)
+        export TF_VAR_linode_token
+
+    {{< note >}}
+To use your environment variable, add the `-var` flag. For example, when you run the `terraform apply` command, you would do so in the following way:
+
+    terraform apply -var linode_token=$LINODE_TOKEN
+    {{</ note >}}
+
+## Create your Terraform Configuration
+
+[Terraform Workspaces](https://www.terraform.io/docs/state/workspaces.html) are a good way to use the same
+1. In the directory where you installed terraform, create a new directory to store your Kubernetes cluster's configuration files.
+
+        cd terraform
+        mkdir k8s-cluster
+
+1. Initialize Terraform in order to install the Linode K8s module.
+
+        terraform init
+
+### Create Your Workspace
+
+
+
+### Create your Main.tf file
+
+* Pin to a specific module version using version = "..." to avoid upgrading to a version with breaking changes. Upgrades to this module could potentially replace all master and worker nodes resulting in data loss. The terraform plan will report this, but it may not be obvious.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+Ensure you have a public key in your home folder, otherwise you'll receive an error
+{{</ note >}}
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+After running `terraform plan`, you may see a similar note:
 
+{{< output >}}
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
+{{</ output >}}
+https://www.terraform.io/docs/commands/plan.html#out-path
+{{</ note >}}
 
-{{< caution >}}
-Highlight warnings that could adversely affect a user's system with the Caution style.
-{{< /caution >}}
+1. Run `terraform apply`
 
-{{< file "/etc/hosts" aconf >}}
-192.0.2.0/24      # Sample IP addresses
-198.51.100.0/24
-203.0.113.0/24
-{{< /file >}}
+    Respond `yes` to the prompt to apply your configurations:
+
+    {{< output >}}
+Do you want to perform these actions in workspace "linode"?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+    {{</ output >}}
+
+    {{< note >}}
+Ensure you have Python installed
+    {{</ note >}}
