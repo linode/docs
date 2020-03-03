@@ -43,7 +43,7 @@ Install Apache 2.4:
 
 ## Multi-Processing Modules
 
-Apache 2.4 offers several multi-processing modules (MPMs) to handle connections. In Debian 10 the default MPM is the *event module*, although the *prefork module* is still recommended if you’re using standard PHP. Below are the basic default settings. For detailed explainations and advanced settings for these modules, see the [Tuning Your Apache Server](/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/#multi-processing-modules) guide.
+Apache 2.4 offers several multi-processing modules (MPMs) to handle connections. In Debian 10 the default MPM is the *event module*, although the *prefork module* is still recommended if you’re using standard PHP. Below are the basic default settings. For detailed explanations and advanced settings for these modules, see the [Tuning Your Apache Server](/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/#multi-processing-modules) guide.
 
 1.  You can check which MPM is currently configured with the following command:
 
@@ -55,7 +55,7 @@ Server MPM:     event
 
 ### The Prefork Module
 
-The Prefork Module is ideal for single threaded applications. It's a single parent with multiple forked child servers that are identical processes that wait for incomming requests. Each child process handles a single request. Prefork is resource intensive but necessary for applications that do not support multi-threading such as PHP.
+The Prefork Module is ideal for single threaded applications. It's a single parent with multiple forked child servers that are identical processes that wait for incoming requests. Each child process handles a single request. Prefork is resource intensive but necessary for applications that do not support multi-threading such as PHP.
 
 1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following are the default values:
 
@@ -94,16 +94,6 @@ The Worker Module is a hybrid Prefork, multi-threaded, multi-processor module. I
 1.  Open `/etc/apache2/mods-available/mpm_worker.conf` in your text editor and edit the values as needed. The following are the default values:
 
     {{< file "/etc/apache2/mods-available/mpm_worker.conf" conf >}}
-# worker MPM
-# StartServers: initial number of server processes to start
-# MinSpareThreads: minimum number of worker threads which are kept spare
-# MaxSpareThreads: maximum number of worker threads which are kept spare
-# ThreadLimit: ThreadsPerChild can be changed to this maximum value during a
-#                         graceful restart. ThreadLimit can only be changed by stopping
-#                         and starting Apache.
-# ThreadsPerChild: constant number of worker threads in each server process
-# MaxRequestWorkers: maximum number of threads
-# MaxConnectionsPerChild: maximum number of requests a server process serves
 
 <IfModule mpm_worker_module>
         StartServers             2
