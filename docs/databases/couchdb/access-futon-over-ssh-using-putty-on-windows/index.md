@@ -24,7 +24,7 @@ external_resources:
 
 **SSH with Windows Using PuTTY**
 
-If you need to get set up with PuTTY, see [our guide](/docs/networking/ssh/ssh-connections-using-putty-on-windows/) on using it and verifying your Linode's SSH key fingerprint.
+If you need to get set up with PuTTY, see [our guide](/docs/networking/ssh/using-ssh-on-windows/) on using it and verifying your Linode's SSH key fingerprint.
 
 To set up the SSH tunnel:
 

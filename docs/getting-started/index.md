@@ -92,7 +92,7 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
 
 * **Linux:** You can use a terminal window, regardless of desktop environment or window manager.
 * **macOS:** *Terminal.app* comes pre-installed and can be launched from Spotlight or Launchpad.
-* **Windows:** There is no native SSH client but you can use a free and open source application called [PuTTY](/docs/networking/ssh/ssh-connections-using-putty-on-windows/).
+* **Windows:** There is no native SSH client but you can use a free and open source application called [PuTTY](/docs/networking/ssh/using-ssh-on-windows/).
 
 ### Find your Linode's IP Address
 
@@ -112,7 +112,7 @@ Your Linode has a unique IP address that identifies it to other devices and user
 
 ### Log in Using SSH
 
-Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and macOS. If you're using PuTTY on Windows, follow [these instructions](/docs/networking/ssh/ssh-connections-using-putty-on-windows/).
+Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and macOS. If you're using PuTTY on Windows, follow [these instructions](/docs/networking/ssh/using-ssh-on-windows/).
 
 ![Copy SSH Command with IP and Log in](getting-started-ssh.gif "Go to the Networking tab and copy the SSH command, then paste it into a terminal.")
 

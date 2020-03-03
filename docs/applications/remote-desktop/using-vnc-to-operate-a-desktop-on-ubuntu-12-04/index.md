@@ -55,7 +55,7 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 
 ### Windows
 
-1.  Open [PuTTY](/docs/networking/ssh/ssh-connections-using-putty-on-windows/) and navigate under the `SSH` menu to `Tunnels`. Add a new forwarded port as shown below, replacing example.com with your Linode's IP address or hostname:
+1.  Open [PuTTY](/docs/networking/ssh/using-ssh-on-windows/) and navigate under the `SSH` menu to `Tunnels`. Add a new forwarded port as shown below, replacing example.com with your Linode's IP address or hostname:
 
     [![Adding a forwarded port to PuTTY.](1648-vnc-putty-1.png)](1648-vnc-putty-1.png)
 
