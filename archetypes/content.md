@@ -10,6 +10,7 @@ published: {{ now.Format "2006-01-02" }}
 modified_by:
   name: Linode
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
+h1_title: "h1 title displayed in the guide."
 contributor:
   name: Your Name
   link: Github/Twitter Link
