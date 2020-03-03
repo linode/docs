@@ -103,7 +103,7 @@ Before making any changes to your Apache configuration, be sure to back up the c
 
  - On Debian/Ubuntu:
 
-        cp /etc/apache2/apache2.config ~/apache2.conf.backup
+        cp /etc/apache2/apache2.conf ~/apache2.conf.backup
 
 - On CentOS/Fedora:
 
