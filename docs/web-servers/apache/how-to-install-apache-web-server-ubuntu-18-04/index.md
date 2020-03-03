@@ -23,7 +23,7 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-{{< /note >}}
+{{</ note >}}
 
 ## Before You Begin
 
@@ -76,7 +76,7 @@ The Prefork Module is ideal for single threaded applications. It's a single pare
 </IfModule>
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-{{< /file >}}
+{{</ file >}}
 
 1.  On Ubuntu 18.04, the *event module* is enabled by default. Disable it, and enable the *prefork module* :
 
@@ -116,7 +116,7 @@ The Worker Module is a hybrid Prefork, multi-threaded, multi-processor module. I
 </IfModule>
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-{{< /file >}}
+{{</ file >}}
 
 1.  On Ubuntu 18.04, the *event module* is enabled by default. Disable it, and enable the *worker module* :
 
@@ -152,7 +152,7 @@ The Event Module is similar to the Worker Module except each thread has a dedica
 </IfModule>
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
-{{< /file >}}
+{{</ file >}}
 
 1.  Restart Apache:
 
@@ -177,7 +177,7 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
      ErrorLog /var/www/example.com/logs/error.log
      CustomLog /var/www/example.com/logs/access.log combined
 </VirtualHost>
-{{< /file >}}
+{{</ file >}}
 
     Repeat this process for any other domains you host.
 
@@ -187,7 +187,7 @@ If you would like to enable Perl support, add the following lines above the clos
 {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
 Options ExecCGI
 AddHandler cgi-script .pl
-{{< /note >}}
+{{</ note >}}
 
 {{< /file >}}
 
@@ -327,12 +327,12 @@ If you had UFW installed before you installed Apache, Apache will have registere
         sudo ufw app list
 
     {{< output >}}
-    Available applications:
-    Apache
-    Apache Full
-    Apache Secure
-    OpenSSH
-    {{< /output >}}
+Available applications:
+Apache
+Apache Full
+Apache Secure
+OpenSSH
+{{</ output >}}
 
 1.  To view what these different configurations do, run this command:
 

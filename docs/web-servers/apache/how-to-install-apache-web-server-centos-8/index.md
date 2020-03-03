@@ -85,7 +85,7 @@ The Prefork Module is ideal for single threaded applications. It's a single pare
         MaxRequestWorkers         150
         MaxConnectionsPerChild    0
 </IfModule>
-{{< /file >}}
+{{</ file >}}
 
 1.  On CentOS 8, the *event module* is enabled by default. Disable it, and enable the *prefork module* edit the `/etc/httpd/conf.modules.d/00-mpm.conf` file. Comment out the line for the event module and uncomment the line for the prefork module:
 
@@ -135,7 +135,7 @@ The Worker Module is a hybrid Prefork, multi-threaded, multi-processor module. I
         MaxRequestWorkers        150
         MaxConnectionsPerChild   0
 </IfModule>
-{{< /file >}}
+{{</ file >}}
 
 1.  On CentOS 8, the *event module* is enabled by default. Disable it, and enable the *worker module* edit the `/etc/httpd/conf.modules.d/00-mpm.conf` file. Comment out the line for the event module and uncomment the line for the worker module:
 
@@ -185,7 +185,7 @@ The Event Module is similar to the Worker Module except each thread has a dedica
         MaxRequestWorkers        150
         MaxConnectionsPerChild   0
 </IfModule>
-{{< /file >}}
+{{</ file >}}
 
 1.  Be sure the *event module* is enabled. Edit the `/etc/httpd/conf.modules.d/00-mpm.conf` file. Comment out the lines for the prefork and worker modules and uncomment the line for the event module:
 
@@ -245,7 +245,7 @@ IncludeOptional sites-enabled/*.conf
      ErrorLog /var/www/example.com/logs/error.log
      CustomLog /var/www/example.com/logs/access.log combined
 </VirtualHost>
-{{< /file >}}
+{{</ file >}}
 
     Repeat this process for any other domains you host.
 
