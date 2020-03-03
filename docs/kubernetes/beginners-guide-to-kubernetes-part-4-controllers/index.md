@@ -13,7 +13,7 @@ contributor:
   name: Linode
 concentrations: ["Kubernetes"]
 external_resources:
-- '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/)'
+- '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/','applications/containers/kubernetes/beginners-guide-to-kubernetes-controllers/']
 ---
@@ -96,7 +96,7 @@ If you issue the `get pods` command, you will see that the Pods the ReplicaSet c
 
 In the above example, four of the Pods have already terminated, and one is in the process of terminating.
 
-For more information on ReplicaSets, view the [Kubernetes ReplicaSets API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#replicaset-v1-apps).
+For more information on ReplicaSets, view the [Kubernetes ReplicaSets API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#replicaset-v1-apps).
 
 ## Deployments
 
@@ -161,7 +161,7 @@ You'll see a long list of details, of which the container image is included:
     ....
 
 
-For more information on Deployments, visit the [Kubernetes Deployments API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#deployment-v1-apps)
+For more information on Deployments, visit the [Kubernetes Deployments API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#deployment-v1-apps)
 
 ## Jobs
 
