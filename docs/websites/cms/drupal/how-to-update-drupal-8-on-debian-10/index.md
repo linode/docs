@@ -3,6 +3,7 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'This guide will show you how to update your Drupal 8 installation running on a Debian 10 Linode.'
+og_description: 'This guide will show you how to update your Drupal 8 installation running on an Debian 10 Linode.'
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "update"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-21
@@ -62,7 +63,7 @@ If **Available updates** is not listed, enable the [Update Manager](https://www.
     ![A Drupal Update](drupal-updates-download.png)
 
     {{< note >}}
-If you receive an error when your Drupal 8 installation checks for available updates, it may be having issues communicating with the Drupal website to see their are updates. You can check your site's recent log messages, by navigating to **Reports** and selecting **Recent log messages** to further investigate the issue.
+If you receive an error when your Drupal 8 installation checks for available updates, it may be having issues communicating with the Drupal website to see if there are updates. You can check your site's recent log messages, by navigating to **Reports** and selecting **Recent log messages** to further investigate the issue.
     {{</ note >}}
 
 1.  Connect to your Linode over SSH:
@@ -80,7 +81,7 @@ Now that the Drupal core archive is saved to your Linode, you are ready to proce
 
 ###  Enable Maintenance Mode
 
-Drupal's *maintenance mode* allows users with the right permissions to use your site while all anyone else will be presented with a message that the site is under maintenance.
+Drupal's *maintenance mode* allows users with the right permissions to use your site while all everyone else will be presented with a message that the site is under maintenance.
 
 1.  While logged into your Drupal site, navigate to **Configuration**. Under the **Development** heading, click on **Maintenance mode**.
 
