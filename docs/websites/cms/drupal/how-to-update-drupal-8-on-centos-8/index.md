@@ -89,7 +89,7 @@ Now that the Drupal core archive is saved to your Linode, you are ready to proce
 
 ###  Enable Maintenance Mode
 
-Drupal's *maintenance mode* allows users with the right permissions to use your site while all everyone else will be presented with a message that the site is under maintenance.
+Drupal's *maintenance mode* allows users with the right permissions to use your site while everyone else will be presented with a message that the site is under maintenance.
 
 1.  While logged into your Drupal site, navigate to **Configuration**. Under the **Development** heading, click on **Maintenance mode**.
 
