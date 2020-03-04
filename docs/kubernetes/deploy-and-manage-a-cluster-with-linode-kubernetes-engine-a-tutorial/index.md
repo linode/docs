@@ -249,9 +249,31 @@ CURRENT   NAME                        CLUSTER           AUTHINFO           NAMES
 Switched to context "lke-admin-ctx".
 {{</ output>}}
 
-1.  You are now ready to interact with your cluster using `kubectl`. You can test the ability to interact with the cluster by retrieving a list of Pods in the `default` namespace:
+1.  You are now ready to interact with your cluster using `kubectl`. You can test the ability to interact with the cluster by retrieving a list of Pods. Use the `get pods` command with the `-A` flag to see all pods running across all namespaces:
 
-        kubectl get pods -n default
+        kubectl get pods -A
+
+    You should see output like the following:
+
+    {{< output >}}
+NAMESPACE     NAME                                      READY   STATUS    RESTARTS   AGE
+kube-system   calico-kube-controllers-dc6cb64cb-4gqf4   1/1     Running   0          11d
+kube-system   calico-node-bx2bj                         1/1     Running   0          11d
+kube-system   calico-node-fg29m                         1/1     Running   0          11d
+kube-system   calico-node-qvvxj                         1/1     Running   0          11d
+kube-system   calico-node-xzvpr                         1/1     Running   0          11d
+kube-system   coredns-6955765f44-r8b79                  1/1     Running   0          11d
+kube-system   coredns-6955765f44-xr5wb                  1/1     Running   0          11d
+kube-system   csi-linode-controller-0                   3/3     Running   0          11d
+kube-system   csi-linode-node-75lts                     2/2     Running   0          11d
+kube-system   csi-linode-node-9qbbh                     2/2     Running   0          11d
+kube-system   csi-linode-node-d7bvc                     2/2     Running   0          11d
+kube-system   csi-linode-node-h4r6b                     2/2     Running   0          11d
+kube-system   kube-proxy-7nk8t                          1/1     Running   0          11d
+kube-system   kube-proxy-cq6jk                          1/1     Running   0          11d
+kube-system   kube-proxy-gz4dc                          1/1     Running   0          11d
+kube-system   kube-proxy-qcjg9                          1/1     Running   0          11d
+{{</ output >}}
 
 ## Modify a Cluster's Node Pools
 
