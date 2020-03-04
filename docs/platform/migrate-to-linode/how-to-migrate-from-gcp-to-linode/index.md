@@ -70,7 +70,7 @@ For further details on deploying your new Linux image, follow the [Getting Start
 
 1. Once you have identified the software you would like to migrate to your Linode, you can reference our [Guides & Tutorials](/docs/) to learn how to set up your system's software on your new Linode.
 
-    For example, if your GCP instance is used to run a WordPress site, you should [install WordPress](/docs/websites/cms/install-wordpress-ubuntu-18-04/), [PHP, MySQl, and Apache](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) or [Nginx](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) (web server) on your Linode instance.
+    For example, if your GCP instance is used to run a WordPress site, you should [install WordPress](/docs/websites/cms/install-wordpress-ubuntu-18-04/), [PHP, MySQl, and Apache](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/) or [Nginx](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) (web server) on your Linode instance.
 
 ### Create a Snapshot of your GCP Data
 

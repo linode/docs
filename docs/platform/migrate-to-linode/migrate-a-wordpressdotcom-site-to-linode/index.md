@@ -16,7 +16,7 @@ external_resources:
 
 This guide describes how to export your content from WordPress.com and self-host your WordPress website on Linode. Read the [Best Practices when Migrating to Linode](/docs/platform/migrate-to-linode/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.
 
-Ubuntu 18.04 is used as the distribution for the new Linode deployment in this guide. If you'd like to choose another distribution, use the examples here as an approximation for the commands you'll need to run. You will also install either a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) environment on your new Linode.
+Ubuntu 18.04 is used as the distribution for the new Linode deployment in this guide. If you'd like to choose another distribution, use the examples here as an approximation for the commands you'll need to run. You will also install either a [LAMP](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) environment on your new Linode.
 
 {{< note >}}
 WordPress.com's export feature will export pages, posts, and comments from your site, but it will not export your themes and widgets. You will need to customize your new self-hosted WordPress site's appearance after completing your migration.

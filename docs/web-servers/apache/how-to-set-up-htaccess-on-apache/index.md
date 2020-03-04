@@ -34,7 +34,7 @@ The purpose of this guide is to show you how to set up htaccess configuration (.
 
         sudo apt-get update && sudo apt-get upgrade
 
-4.  Complete the Apache section in the [Install a Lamp Stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) to install Apache on your Linode.
+4.  Complete the Apache section in the [Install a Lamp Stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/) to install Apache on your Linode.
 
 {{< note >}}
 Throughout this guide, replace each instance of `testuser` with your custom user account. Replace each occurrence of `example.com` with the IP address or Fully Qualified Domain Name (FQDN) of your Linode.

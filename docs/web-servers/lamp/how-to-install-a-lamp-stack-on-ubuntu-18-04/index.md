@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on Ubuntu 18.04 Long Term Support (LTS).'
 keywords: ["install lamp ubuntu 18.04", "apache install", "mysql install", "php", "ubuntu 18.04"]
-aliases: ['web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/']
+aliases: ['web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-08-27
 modified_by:

@@ -90,7 +90,7 @@ The next step is to build the software environment needed for your site to funct
 *  **MySQL:** A database server.
 *  **PHP:** A software language that allows you to create and configure dynamic website content.
 
-To install a LAMP stack on Ubuntu, follow the steps in our [How to Install a LAMP Stack on Ubuntu 18.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) guide.
+To install a LAMP stack on Ubuntu, follow the steps in our [How to Install a LAMP Stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide.
 
 ## Get Your Website Live
 
