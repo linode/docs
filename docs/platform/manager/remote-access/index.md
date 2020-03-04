@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to the remote access area of the Linode Manager.
-keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access"]
+keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access", "add additional ipv4 address", "add ip address", "add additional ip address"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['remote-access/','networking/remote-access/','platform/manager/remote-access-classic-manager/']
 modified: 2019-03-05
