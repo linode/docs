@@ -33,7 +33,7 @@ In this guide you will learn:
 - You'll also need the [*canonical ID*](#retrieve-a-user-s-canonical-id) of every user you wish to grant additional permissions to.
 
 {{< note >}}
-Currently, you can create a new canonical ID, only by creating a completely new Linode account. A canonical ID is not assigned to a limited access user on an existing Linode account.
+Currently, you can only create a new canonical ID by creating a completely new Linode account. A canonical ID is not assigned to a limited access user on an existing Linode account.
 {{< /note >}}
 
 ### Retrieve a User's Canonical ID
