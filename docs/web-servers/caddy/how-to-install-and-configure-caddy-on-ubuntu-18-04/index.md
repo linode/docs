@@ -2,15 +2,15 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide, you will install the Caddy web server on Debian 10. You will also configure Caddy to serve your site''s domain over HTTPS.'
-og_description:  'In this guide, you will install the Caddy web server on Debian 10. You will also configure Caddy to serve your site''s domain over HTTPS.'
+description: 'In this guide, you will install the Caddy web server on Ubuntu 18.04. You will also configure Caddy to serve your site''s domain over HTTPS.'
+og_description:  'In this guide, you will install the Caddy web server on Ubuntu 18.04. You will also configure Caddy to serve your site''s domain over HTTPS.'
 keywords: ['web server','caddy','https','Caddyfile']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-05
 modified_by:
   name: Linode
-title: "How to Install and Configure the Caddy Web Server on Debian 10"
-h1_title: "Install and Configure the Caddy Web Server on Debian 10"
+title: "How to Install and Configure the Caddy Web Server on Ubuntu 18.04"
+h1_title: "Install and Configure the Caddy Web Server on Ubuntu 18.04"
 contributor:
   name: Linode
 ---
