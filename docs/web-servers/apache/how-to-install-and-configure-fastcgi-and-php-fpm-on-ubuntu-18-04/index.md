@@ -68,7 +68,7 @@ You will now configure Apache to pass all requests for files with the *.php* ext
     {{< output >}}
 listen = /run/php/php7.2-fpm.sock
     {{</ output >}}
-    If you see the above output, skip to step 6, otherwise continue to the next step.
+    If you see the above output, skip to step 6, otherwise continue to the next step to manually configure your UNIX sockets.
 
 1.  If no output is returned, you will need to edit your [PHP pool configuration file](https://www.php.net/manual/en/install.fpm.configuration.php) by adding a `listen` setting with the address on which to accept FastCGI requests. Add the line in the example file.
 
@@ -130,13 +130,18 @@ FcgidIOTimeout 300
 
 ## Configuring PHP Pools
 
-[PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of php processes to run php files from a site's root directory. Each pool that is run by PHP-FPM can be run with its own user and group ID. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
+[PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of php processes to run php files from a site's root directory. Each pool that is run by PHP-FPM can be run with separate user and group ID's. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
+
+{{< note >}}
+ To create the example bob user, you can follow the steps outlined in our [Securing Your Server](/docs/security/securing-your-server/#ubuntu) guide.
+{{< /note >}}
 
 1. Create a copy of your original pool file to use as the foundation for your `example.com` pool configuration.
 
         sudo cp /etc/php/7.2/fpm/pool.d/www.conf /etc/php/7.2/fpm/pool.d/example.com.conf
 
-1.  Edit the file to change the socket name, user and group, and socket listen address. Ensure that the listen address is different from the listen address that you set in the main PHP pool configuration file. You can append the name of your site as part of the file name, for example, `listen = /var/run/php/php7.2-fpm_example.com.sock`.
+1.  Edit the file to change the socket name, user and group, and socket listen address. Ensure that the listen address is different from the listen address that you set in the main PHP pool configuration file. You can append the name of your site as part of the file name, for example, `listen = /var/run/php/php7.2-fpm_example.com.sock`. Also, ensure that you comment out any existing `user` and `group` and add or replace your own `user` and `group` settings as shown in the example.
+
 
     {{< file "/etc/php/7.2/fpm/pool.d/example.com.conf" >}}
 ; Start a new pool named 'www'.

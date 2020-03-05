@@ -36,16 +36,9 @@ In this section, you will install the mod_fcgid and PHP-FPM modules on your Cent
 
         sudo yum update && sudo yum install wget -y
 
-1.  Install `mod_fcgid` and `PHP-FPM`. You will need the htop command line utility in a later section of this guide.
+1.  Install `mod_fcgid` and `PHP-FPM`. You will need the `htop` command line utility in a later section of this guide.
 
         sudo yum install mod_fcgid php-fpm
-
-1. Load the `mod_proxy` and `mod_proxy_fcgi` modules by editing your main Apache configuration to add the lines included in the example. Both these modules are included by default in your Apache installation, but the must be explicitly loaded in order to use them. You will need these modules to proxy requests through mod_fcgid to your socket.
-
-    {{< file "/etc/httpd/conf/httpd.conf" >}}
-LoadModule proxy_module /usr/lib/apache2/modules/mod_proxy.so
-LoadModule proxy_fcgi_module /usr/lib/apache2/modules/mod_proxy_fcgi.so
-    {{</ file>}}
 
 1. Verify that the configuration is correct:
 
@@ -63,12 +56,12 @@ You will now configure Apache to pass all requests for files with the *.php* ext
 
         sudo grep -E '^\s*listen\s*=\s*[a-zA-Z/]+' /etc/php-fpm.d/www.conf
 
-    You should see the example output.
+    You should see the following output.
 
     {{< output >}}
 listen = /var/run/php-fpm/www.sock
     {{</ output >}}
-    If you see the above output, skip to step 6, otherwise continue to the next step.
+    If you see the above output, skip to step 6, otherwise continue to the next step to manually configure your UNIX sockets.
 
 1.  If no output is returned, you will need to edit your [PHP pool configuration file](https://www.php.net/manual/en/install.fpm.configuration.php) by adding a `listen` setting with the address on which to accept FastCGI requests. Add the line in the example file.
 
@@ -124,11 +117,11 @@ FcgidIOTimeout 300
 
 1. Check if PHP is working by creating and accessing a page with `phpinfo()` displayed. Create the `info.php` file.
 
-        sudo touch /var/www/example.com/html/public_html/info.php
+        sudo touch /var/www/html/example.com/public_html/info.php
 
 1. Open the `info.php` file with the editor of your choice and add the following line:
 
-    {{< file "/var/www/example.com/html/public_html/info.php" >}}
+    {{< file "/var/www/html/example.com/public_html/info.php" >}}
 <?php phpinfo(); ?>
     {{</ file >}}
 
@@ -136,13 +129,17 @@ FcgidIOTimeout 300
 
 ## Configuring PHP Pools
 
-[PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of php processes to run php files from a site's root directory. Each pool that is run by PHP-FPM can be run with its own user and group ID. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
+[PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of php processes to run php files from a site's root directory. Each pool that is run by PHP-FPM can be run with separate user and group ID's. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
+
+{{< note >}}
+ To create the example **bob** user, you can follow the steps outlined in our [Securing Your User](/docs/security/securing-your-server/#centos-fedora) guide.
+{{< /note >}}
 
 1. Create a copy of your original pool file to use as the foundation for your `example.com` pool configuration.
 
         sudo cp /etc/php-fpm.d/www.conf /etc/php-fpm.d/example.com.conf
 
-1.  Edit the file to change the socket name, user and group, and socket listen address. Ensure that the listen address is different from the listen address that you set in the main PHP pool configuration file. You can append the name of your site as part of the file name, for example, `listen = /var/run/php-fpm/example.com.sock`. Also, ensure that you comment out any existing `user` and `group` and add your own `user` and `group` settings as shown in the example.
+1.  Edit the file to change the socket name, user and group, and socket listen address. Ensure that the listen address is different from the listen address that you set in the main PHP pool configuration file. You can append the name of your site as part of the file name, for example, `listen = /var/run/php-fpm/example.com.sock`. Also, ensure that you comment out or replace any existing `user` and `group` and add your own `user` and `group` settings as shown in the example.
 
     {{< file "/etc/php-fpm.d/example.com.conf" >}}
 ; Start a new pool named 'www'.
