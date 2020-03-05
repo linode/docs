@@ -1,0 +1,128 @@
+---
+author:
+  name: Linode Community
+  email: docs@linode.com
+description: 'In this guide, you will install the Caddy web server on Debian 10. You will also configure Caddy to serve your site''s domain over HTTPS.'
+og_description:  'In this guide, you will install the Caddy web server on Debian 10. You will also configure Caddy to serve your site''s domain over HTTPS.'
+keywords: ['web server','caddy','https','Caddyfile']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2020-03-05
+modified_by:
+  name: Linode
+title: "How to Install and Configure the Caddy Web Server"
+h1_title: "Install and Configure the Caddy Web Server"
+contributor:
+  name: Linode
+---
+
+![Install Caddy on CentOS](Caddy.jpg)
+
+[Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically using [Let's Encrypt](https://letsencrypt.org/).
+
+## Before You Begin
+
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's [hostname] and [timezone](/docs/getting-started/#set-the-timezone).
+
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access) and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
+
+3.  You will need to register your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point your domain to your Linode.
+
+4.  Update your system:
+
+        sudo apt-get update && sudo apt-get upgrade
+
+## Install Caddy
+
+1. Install Caddy. This will install Caddy version 1.0.4. along with the `hook.service` plugin, which gives you access to a systemd unit file that you can use to manage Caddy as a systemd service. See their [downloads page](https://caddyserver.com/v1/download) for more information on available Caddy versions.
+
+        curl https://getcaddy.com | bash -s personal hook.service
+
+    Caddy will be installed to your `/usr/local/bin/caddy` directory.
+
+    {{< note >}}
+To learn about Caddy licensing, please read their [blog post on the topic](https://caddyserver.com/v1/blog/announcing-caddy-1_0-caddy-2-caddy-enterprise). In 2017, commercial use of Caddy and their binaries required a license, however, commercial licenses are no longer required for their use.
+    {{</ note >}}
+
+1. Install Caddy as a systemd service:
+
+        sudo caddy -service install
+
+1. Start the Caddy service:
+
+        sudo systemctl start caddy
+
+## Add Web Content
+
+1.  Set up a *document root* for your website. A document root is the directory where your website files for a domain name are stored.
+
+        sudo mkdir -p /var/www/example-site
+
+1. Change your site's document root to be owned by the `www-data` user.
+
+        sudo chown -R root:www-data /var/www/example-site
+
+1. Create a test index page for your site.
+
+        sudo touch /var/www/example-site/index.html
+
+1. Add the example `html` to your site's index.
+
+        sudo echo '<!doctype html><head><title>Caddy Test Page</title></head><body><h1>Hello, World!</h1></body></html>' | sudo tee /var/www/example-site/index.html
+
+## Configure the Caddyfile
+
+1. Create a directory to store Caddy's configuration files:
+
+        sudo mkdir -p /etc/caddy
+
+1. Update the directory's owner to be the web server user, `www-data`.
+
+        sudo chown -R root:www-data /etc/caddy
+
+1. Create your [Caddyfile](https://caddyserver.com/docs/caddyfile-tutorial). The Caddyfile is Caddy's main configuration file.
+
+        sudo touch /etc/caddy/Caddyfile
+
+1. Using the text editor of your choice, edit the Caddyfile to serve your example site.
+
+      {{< file "/etc/caddy/Caddyfile" >}}
+example.com {
+    root /var/www/example-site
+}
+      {{</ file >}}
+
+1. Tell Caddy where to look for your Caddyfile:
+
+        caddy -conf /etc/caddy/Caddyfile
+
+    Caddy will automatically serve your site over HTTPS using Let's Encrypt. Follow the prompts to to continue. You will see a similar output.
+
+    {{< output >}}
+Activating privacy features...
+
+Your sites will be served over HTTPS automatically using Let's Encrypt.
+By continuing, you agree to the Let's Encrypt Subscriber Agreement at:
+  https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf
+Please enter your email address to signify agreement and to be notified
+in case of issues. You can leave it blank, but we don't recommend it.
+  Email address: admin@example-site.com
+2020/03/05 13:31:25 [INFO] acme: Registering account for lsalazar@gmail.com
+2020/03/05 13:31:25 [INFO] [example-site.com] acme: Obtaining bundled SAN certificate
+2020/03/05 13:31:26 [INFO] [example-site.com] AuthURL: https://acme-v02.api.letsencrypt.org/acme/authz-v3/3180082162
+2020/03/05 13:31:26 [INFO] [example-site.com] acme: Could not find solver for: tls-alpn-01
+2020/03/05 13:31:26 [INFO] [example-site.com] acme: use http-01 solver
+2020/03/05 13:31:26 [INFO] [example-site.com] acme: Trying to solve HTTP-01
+2020/03/05 13:31:26 [INFO] [example-site.com] Served key authentication
+2020/03/05 13:31:26 [INFO] [example-site.com] Served key authentication
+2020/03/05 13:31:26 [INFO] [example-site.com] Served key authentication
+2020/03/05 13:31:36 [INFO] [example-site.com] Served key authentication
+2020/03/05 13:31:40 [INFO] [example-site.com] The server validated our request
+2020/03/05 13:31:40 [INFO] [example-site.com] acme: Validations succeeded; requesting certificates
+2020/03/05 13:31:41 [INFO] [example-site.com] Server responded with a certificate.
+done.
+
+Serving HTTPS on port 443
+https://example-site.com
+    {{</ output >}}
+
+1. Open a web browser and visit your domain. You should see the contents of the `index.html`page that you created in Step 4 of the Add Web Content section.
