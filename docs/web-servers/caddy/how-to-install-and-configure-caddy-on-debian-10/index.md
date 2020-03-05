@@ -21,11 +21,11 @@ contributor:
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's [hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
+1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
 
-3.  Register (purchase) your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point the domain to your Linode.
+1.  Register (purchase) your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point the domain to your Linode.
 
-4.  Update your system:
+1.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -84,7 +84,7 @@ Throughout this section, replace all instances of `example.com` with your own do
 
 1. Change your site's document root to be owned by the `www-data` user.
 
-        sudo chown -R root:www-data /var/www/example-site
+        sudo chown -R www-data:www-data /var/www/example-site
 
 1. Create a test index page for your site. Replace `example.com` with your own domain.
 
@@ -104,7 +104,7 @@ Now that you have your website's document root set up with example content, you 
 
 1. Update the directory's owner to be the web server user, `www-data`.
 
-        sudo chown -R root:www-data /etc/caddy
+        sudo chown -R www-data:www-data /etc/caddy
 
 1. Using the text editor of your choice, create and edit the [Caddyfile](https://caddyserver.com/docs/caddyfile-tutorial) to serve your example site. The Caddyfile is Caddy's main configuration file. Replace `example.com` with your own domain.
 

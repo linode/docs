@@ -2,132 +2,188 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'In this guide, you will install the Caddy web server on CentOS 8. You will also configure Caddy to serve your site''s domain over HTTPS.'
+og_description:  'In this guide, you will install the Caddy web server on CentOS 8. You will also configure Caddy to serve your site''s domain over HTTPS.'
+keywords: ['web server','caddy','https','Caddyfile']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-03-04
+published: 2020-03-05
 modified_by:
   name: Linode
-title: "Index"
+title: "How to Install and Configure the Caddy Web Server on CentOS 8"
+h1_title: "Install and Configure the Caddy Web Server on CentOS 8"
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+  name: Linode
 ---
+
+[Caddy](https://caddyserver.com/) is a fast, open-source, and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically using [Let's Encrypt](https://letsencrypt.org/).
+
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's [hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
 
-3.  Update your system:
+1.  Register (purchase) your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point the domain to your Linode.
 
-        sudo apt-get update && sudo apt-get upgrade
+1.  Update your system:
 
-{{< note >}}
-In this guide, you will install Caddy from source. Caddy is not yet available in the yum and epel upstream repositories on CentOS 8.
-{{</ note >}}
+        sudo yum update
 
-## Install Go
+1. Install the SELinux core policy Python utilities. This will give you the ability to manage SELinux settings in a fine-grained way.
 
-You will need Go version 1.13 in order to use Caddy.
+        sudo yum install -y policycoreutils-python-utils
 
-1. Install `wget`, `tar`, and `git` programs to your system:
+## Install Caddy
 
-        sudo yum install wget -y && sudo yum install tar -y && sudo yum install git -y
+1. Install the `tar` command line utility. The Caddy download script will need `tar` to complete its installation in the next step.
 
-1. Download the Go binary for your CentOS 8 system:
+        yum install tar
 
-        sudo wget https://dl.google.com/go/go1.14.linux-amd64.tar.gz
+1. Install Caddy. This will install Caddy version 1.0.4. along with the `hook.service` plugin, which gives you access to a systemd unit file that you can use to manage Caddy as a systemd service. See their [downloads page](https://caddyserver.com/v1/download) for more information on available Caddy versions.
 
-1. Verify the tarball's checksum:
+        curl https://getcaddy.com | bash -s personal hook.service
 
-        sudo sha256sum go1.14.linux-amd64.tar.gz
-
-    Your output should resemble the following. Ensure that the hash printed from the `sha256sum` command matches the one listed on [Go's downloads page](https://golang.org/dl/) (under the **SHA256 Checksum** heading).
-
-    {{< output >}}
-08df79b46b0adf498ea9f320a0f23d6ec59e9003660b4c9c1ce8e5e2c6f823ca  go1.14.linux-amd64.tar.gz
-    {{</ output >}}
-
-1. Extract the tarball to your system's `/usr/local` directory.
-
-        sudo tar -C /usr/local -xf go1.14.linux-amd64.tar.gz
-
-1. Use the text editor of your choice to add the location of the Go executable to your system's `$PATH`.
-
-    {{< file "/etc/profile">}}
-export PATH=$PATH:/usr/local/go/bin
-    {{</ file >}}
-
-    Load your $PATH environment variable to your shell session.
-
-        source /etc/profile
+    Caddy will be installed to your `/usr/local/bin/caddy` directory.
 
     {{< note >}}
-This will add Go to your `$PATH` system wide.
+To learn about Caddy licensing, please read their [blog post on the topic](https://caddyserver.com/v1/blog/announcing-caddy-1_0-caddy-2-caddy-enterprise). In 2017, commercial use of Caddy and their binaries required a license, however, they have recently updated their licensing and commercial licenses are no longer required for their use.
     {{</ note >}}
 
-1. Ensure that your Go installation was successful by printing its current version
+1. Add Caddy to your system's `$PATH`.
 
-        go version
+        sudo echo 'export PATH=/usr/local/bin/caddy:$PATH' | sudo tee /etc/profile.d/caddy.sh
+
+1. Reload your system's profile or log out and SSH back into your Linode.
+
+        . /etc/profile
+
+    {{< note >}}
+You can verify that the Caddy executable is in your system's `$PATH` with the following command:
+
+      echo $PATH
+
+The output should include the location of your Caddy executable:
+
+    /usr/local/bin/caddy:/home/example_user/.local/bin:/home/example_user/bin:/usr/local/bin/caddy:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+
+    {{</ note >}}
+
+1. Install Caddy as a systemd service.
+
+        sudo env "PATH=$PATH" caddy -service install
+
+1. Temporarily set SELinux to permissive mode in order to start the Caddy service.
+
+        sudo setenforce 0
+
+1. Start the Caddy service:
+
+        sudo systemctl start caddy
+
+1. Verify that the service is active:
+
+        sudo systemctl status caddy
 
     You should see a similar output:
 
-      {{< output >}}
-go version go1.14 linux/amd64
-      {{</ output >}}
+    {{< output >}}
+● caddy.service - Caddy's service
+   Loaded: loaded (/etc/systemd/system/caddy.service; enabled; vendor preset: enabled)
+   Active: active (running) since Thu 2020-03-05 14:56:45 EST; 9s ago
+ Main PID: 19505 (caddy)
+    Tasks: 10 (limit: 4659)
+   CGroup: /system.slice/caddy.service
+           └─19505 /usr/local/bin/caddy
 
-## Build Caddy from Source
-### Install Go
+Mar 05 14:56:45 example_hostname systemd[1]: Started Caddy's service.
+Mar 05 14:56:45 example_hostname caddy[19505]: Activating privacy features... done.
+Mar 05 14:56:45 example_hostname caddy[19505]: Serving HTTP on port 2015
+Mar 05 14:56:45 example_hostname caddy[19505]: http://:2015
+    {{</ output >}}
 
-1. You will need a current version of Go installed on your Linode. Complete the steps in our guide on [installing Go](/docs/development/go/install-go-on-ubuntu/).
+1. Set SELinux back to enforcing mode once you have successfully started the Caddy service.
 
-1. Print your Go installation's current `$GOPATH`:
+        sudo setenforce 1
 
-        go env GOPATH
+## Add Web Content
 
-1. Set the transitional environment variable for Go modules.
+In this section, you will create the necessary directories to host your website files, set their correct permissions, and add a basic index file to your example site.
 
-        cd $GOPATH/src
-        export GO111MODULE=on
+{{< note >}}
+Throughout this section, replace all instances of `example.com` with your own domain.
+{{</ note >}}
 
-### Build Caddy
+1.  Set up a *document root* for your website. A document root is the directory where your website files are stored.
 
-* To build without plugins:
+        sudo mkdir -p /var/www/example-site
 
-        go get github.com/caddyserver/caddy/caddy
+1. Use SELinux’s chcon command to change the file security context for web content:
 
-* To build custom Caddy with plugins:
-    1. Create a folder named `plugins` and add a `main.go` file with the following contents:
+        sudo chcon -t httpd_sys_content_t /var/www/example-site -R
+        sudo chcon -t httpd_sys_rw_content_t /var/www/example-site -R
 
-        {{< file "$GOPATH/plugins/main.go" >}}
-package main
+1. Create a test index page for your site. Replace `example.com` with your own domain.
 
-import (
-  "github.com/caddyserver/caddy/caddy/caddymain"
+        sudo touch /var/www/example-site/index.html
 
-  // plug in plugins here, for example:
-  // _ "import/path/here"
-)
+1. Add the example `html` to your site's index.
 
-func main() {
-  // optional: disable telemetry
-  // caddymain.EnableTelemetry = false
-  caddymain.Run()
+        sudo echo '<!doctype html><head><title>Caddy Test Page</title></head><body><h1>Hello, World!</h1></body></html>' | sudo tee /var/www/example-site/index.html
+
+## Configure the Caddyfile
+
+Now that you have your website's document root set up with example content, you are ready to configure Caddy to serve your website files to the internet. This section will create a basic Caddy configuration, which will [automatically enable HTTPS using Let's Encrypt](https://caddyserver.com/v1/).
+
+1. Create a directory to store Caddy's configuration files:
+
+        sudo mkdir -p /etc/caddy
+
+1. Using the text editor of your choice, create and edit the [Caddyfile](https://caddyserver.com/docs/caddyfile-tutorial) to serve your example site. The Caddyfile is Caddy's main configuration file. Replace `example.com` with your own domain.
+
+      {{< file "/etc/caddy/Caddyfile" >}}
+example.com {
+    root /var/www/example-site
 }
-    {{< /file >}}
-    1. Create a new go module for Caddy:
+      {{</ file >}}
 
-            go mod init caddy
-    1. Download and save the packages in `$GOPATH/src/<import-path>`:
+1. Open the firewall for traffic:
 
-            go get github.com/caddyserver/caddy
-    1. Install Caddy in `$GOPATH/bin`:
+        sudo firewall-cmd --zone=public --permanent --add-service=http
+        sudo firewall-cmd --zone=public --permanent --add-service=https
+        sudo firewall-cmd --reload
 
-            go install
+1. Tell Caddy where to look for your Caddyfile:
 
-          {{< note >}} To install Caddy in the current directory you can run `go build`
-          {{< /note >}}
+        sudo env "PATH=$PATH" caddy -conf /etc/caddy/Caddyfile
+
+    Caddy will automatically serve your site over HTTPS using Let's Encrypt. Follow the prompts to continue. You will see a similar output.
+
+    {{< output >}}
+Activating privacy features...
+
+Your sites will be served over HTTPS automatically using Let's Encrypt.
+By continuing, you agree to the Let's Encrypt Subscriber Agreement at:
+  https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf
+Please enter your email address to signify agreement and to be notified
+in case of issues. You can leave it blank, but we don't recommend it.
+  Email address: admin@example-site.com
+2020/03/05 13:31:25 [INFO] acme: Registering account for lsalazar@gmail.com
+2020/03/05 13:31:25 [INFO] [example-site.com] acme: Obtaining bundled SAN certificate
+2020/03/05 13:31:26 [INFO] [example-site.com] AuthURL: https://acme-v02.api.letsencrypt.org/acme/authz-v3/3180082162
+2020/03/05 13:31:26 [INFO] [example-site.com] acme: Could not find solver for: tls-alpn-01
+2020/03/05 13:31:26 [INFO] [example-site.com] acme: use http-01 solver
+2020/03/05 13:31:26 [INFO] [example-site.com] acme: Trying to solve HTTP-01
+2020/03/05 13:31:26 [INFO] [example-site.com] Served key authentication
+2020/03/05 13:31:26 [INFO] [example-site.com] Served key authentication
+2020/03/05 13:31:26 [INFO] [example-site.com] Served key authentication
+2020/03/05 13:31:36 [INFO] [example-site.com] Served key authentication
+2020/03/05 13:31:40 [INFO] [example-site.com] The server validated our request
+2020/03/05 13:31:40 [INFO] [example-site.com] acme: Validations succeeded; requesting certificates
+2020/03/05 13:31:41 [INFO] [example-site.com] Server responded with a certificate.
+done.
+
+Serving HTTPS on port 443
+https://example-site.com
+    {{</ output >}}
+
+1. Open a web browser and visit your domain. You should see the contents of the `index.html`page that you created in Step 4 of the Add Web Content section.
