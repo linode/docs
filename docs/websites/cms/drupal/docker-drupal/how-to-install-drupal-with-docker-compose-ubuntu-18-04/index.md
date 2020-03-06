@@ -3,6 +3,7 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your Ubuntu 18.04 Linode so you can begin developing your own websites.'
+description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your Ubuntu 18.04 Linode so you can begin developing your own websites.'
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "ubuntu 18.04", "docker compose"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
@@ -18,7 +19,7 @@ h1_title: Install Drupal with Docker Compose on Ubuntu 18.04
 
 **Docker Compose** is a complementary system which helps you link together individual Docker containers so they can work together. This guide walks through the deployment of a Drupal container and another PostgreSQL container that Drupal will use to store its data. Docker Compose will facilitate the networking between them.
 
-Containers for Drupal and PostgreSQL are available from [Docker Hub](https://hub.docker.com/) in the form of *images*. A Docker image is a static snapshot of a container which is used to create new container instances. Docker Hub is an official repository where individuals and organizations can upload Docker images for public consumption.
+Containers for [Drupal](https://www.drupal.org/) and [PostgreSQL](https://www.postgresql.org/) are available from [Docker Hub](https://hub.docker.com/) in the form of *images*. A Docker image is a static snapshot of a container which is used to create new container instances. Docker Hub is an official repository where individuals and organizations can upload Docker images for public consumption.
 
 ## Why Use Docker to Run Drupal?
 
@@ -51,7 +52,7 @@ Using the Drupal and PostgreSQL images from Docker Hub offers the following bene
         mkdir ~/my_drupal/
         cd ~/my_drupal/
 
-2.  Create a file named `docker-compose.yml` in this folder and add the following contents. Set your own password for the `POSTGRES_PASSWORD` option.
+1.  Create a file named `docker-compose.yml` in this folder and add the following contents. Set your own password for the `POSTGRES_PASSWORD` option.
 
     {{< file "docker-compose.yml" yaml >}}
 version: '3.3'
@@ -84,15 +85,15 @@ volumes:
   db_data:
 {{< /file >}}
 
-3.  From the `my_drupal` directory, start your Docker containers:
+1.  From the `my_drupal` directory, start your Docker containers:
 
         docker-compose up -d
 
-4.  The Docker containers will take a minute or two to start up Drupal and PostgreSQL. Afterwards, you can visit your Linode's IP address in your web browser and you should be directed to the Drupal setup form.
+1.  The Docker containers will take a minute or two to start up Drupal and PostgreSQL. Afterwards, you can visit your Linode's IP address in your web browser and you should be directed to the Drupal setup form.
 
     ![Drupal setup screen in the web browser - 'Choose language' page](drupal_setup_choose_language.png "Drupal setup screen in the web browser - 'Choose language' page")
 
-5.  On the *Set up database* page, select `PostgreSQL` as the *Database type* and enter the following values:
+1.  On the **Set up database** page, select `PostgreSQL` as the *Database type* and enter the following values:
 
     -   Database name: `postgres`
 
@@ -104,11 +105,13 @@ volumes:
 
     ![Drupal setup screen in the web browser - 'Set up database' page](drupal_setup_set_up_database.png "Drupal setup screen in the web browser - 'Set up database' page")
 
-6.  Complete the other screens in the setup guide. When creating your Drupal user, be sure to enter a password that is different from your PostgreSQL password.
+1.  Complete the other screens in the setup guide. When creating your Drupal user, be sure to enter a password that is different from your PostgreSQL password.
 
 ## Usage and Maintenance
 
 You do not need to manually start your containers if you reboot your Linode, because the option `restart: always` was assigned to your services in your `docker-compose.yml` file. This option tells Docker Compose to automatically start your services when the server boots.
+
+### Stop Drupal
 
 To stop your Drupal application:
 
@@ -117,11 +120,14 @@ To stop your Drupal application:
 
 This will stop the running Drupal and PostgreSQL containers, but will not remove them.
 
+### Restart Drupal
+
 To restart your Drupal application:
 
     cd ~/my_drupal/
     docker-compose start
 
+### Stop and Remove Drupal
 
 To stop and remove containers, networks and images created by the `docker-compose.yml` file:
 
