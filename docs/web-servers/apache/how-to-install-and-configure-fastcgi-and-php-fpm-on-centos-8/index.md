@@ -3,6 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide will show you how to install `mod_fcgid` and `PHP-FPM` on CentOS 8. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
+og_description: 'This guide will show you how to install `mod_fcgid` and `PHP-FPM` on CentOS 8. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-27
@@ -16,7 +17,7 @@ contributor:
 
 `mod_fcgid` is an [Apache module](https://httpd.apache.org/mod_fcgid/) that uses the [FastCGI](https://en.wikipedia.org/wiki/FastCGI) protocol to provide an interface between Apache and Common Gateway Interface (CGI) programs. CGI helps a web server handle dynamic content generation and processing for scripting languages like PHP. This dynamic functionality is commonly used when running content management systems like WordPress on a LAMP stack.
 
-This guide will show you how to install `mod_fcgid` and `PHP-FPM` on CentOS 8. It will also provide a basic configuration that uses socket based connections, instead of TCP. These steps will enable you to run PHP through `mod_fcgid`. Running PHP through `mod_fcgid` helps to reduce the amount of system resources used by forcing the web server to act as a proxy and only pass files ending with the *php* file extension to PHP-FPM. Additionally, using PHP-FPM allows each virtual host to be configured to run PHP code as individual users.
+This guide will show you how to install `mod_fcgid` and `PHP-FPM` on CentOS 8. It will also provide a basic configuration that uses socket based connections, instead of TCP. These steps will enable you to run PHP through `mod_fcgid`. Running PHP through `mod_fcgid` helps to reduce the amount of system resources used by forcing the web server to act as a proxy and only pass files ending with the *.php* file extension to PHP-FPM. Additionally, using PHP-FPM allows each virtual host to be configured to run PHP code as individual users.
 
 This guide assumes that you are familiar and comfortable with setting up a [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/). If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) guide.
 
@@ -30,13 +31,13 @@ This guide's examples will use PHP version 7.3. When running commands related to
 
 ## Install mod_fcgid and PHP-FPM
 
-In this section, you will install the mod_fcgid and PHP-FPM modules on your CentOS 8 Linode.
+In this section, you will install the `mod_fcgid` and `PHP-FPM` modules on your CentOS 8 Linode.
 
 1.  Update your system if you have not already done so and install the `wget` command line utility.
 
         sudo yum update && sudo yum install wget -y
 
-1.  Install `mod_fcgid` and `PHP-FPM`. You will need the `htop` command line utility in a later section of this guide.
+1.  Install `mod_fcgid` and `PHP-FPM`:
 
         sudo yum install mod_fcgid php-fpm
 
@@ -56,7 +57,7 @@ You will now configure Apache to pass all requests for files with the *.php* ext
 
         sudo grep -E '^\s*listen\s*=\s*[a-zA-Z/]+' /etc/php-fpm.d/www.conf
 
-    You should see the following output.
+    You should see the following output:
 
     {{< output >}}
 listen = /var/run/php-fpm/www.sock
@@ -69,13 +70,13 @@ listen = /var/run/php-fpm/www.sock
 listen = /var/run/php-fpm/www.sock
     {{< /file >}}
 
-1.  If the `listen = 127.0.0.1:9000` is not already uncommented, do so now.
+1.  If the `listen = 127.0.0.1:9000` is not already uncommented, do so now:
 
     {{< file "/etc/php-fpm.d/www.conf" >}}
 listen.allowed_clients = 127.0.0.1
     {{< /file >}}
 
-1.  Restart the php-fpm daemon for these changes to take effect.
+1.  Restart the `php-fpm` daemon for these changes to take effect.
 
         sudo systemctl restart php-fpm
 
@@ -111,7 +112,7 @@ FcgidIOTimeout 300
 
         sudo httpd -t
 
-1.  If you received _Syntax OK_ for steps 8 and 10, restart the Apache service:
+1.  If you received _Syntax OK_ for steps 6 and 8, restart the Apache service:
 
         sudo systemctl restart httpd
 
@@ -129,7 +130,7 @@ FcgidIOTimeout 300
 
 ## Configuring PHP Pools
 
-[PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of php processes to run php files from a site's root directory. Each pool that is run by PHP-FPM can be run with separate user and group ID's. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
+[PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of php processes to run PHP files from a site's root directory. Each pool that is run by PHP-FPM can be run with separate user and group ID's. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
 
 {{< note >}}
  To create the example **bob** user, you can follow the steps outlined in our [Securing Your User](/docs/security/securing-your-server/#centos-fedora) guide.
@@ -143,7 +144,7 @@ FcgidIOTimeout 300
 
     {{< file "/etc/php-fpm.d/example.com.conf" >}}
 ; Start a new pool named 'www'.
-; the variable $pool can we used in any directive and will be replaced by the
+; the variable $pool can be used in any directive and will be replaced by the
 ; pool name ('www' here)
 [example.com]
 
@@ -165,7 +166,7 @@ listen = /var/run/php-fpm/example.com.sock
 
         sudo systemctl restart php-fpm
 
-1.  Edit the virtual host file of `example.com` to use your new PHP-FPM pool. Depending on your current virtual hosts file what you need to add and edit maybe differ. The `<IfModuel mod_fcgid.c>` directive and its contents is what you should add to your file. Ensure you replace any instance of `example.com` with your own domain name.
+1.  Edit the virtual host file of `example.com` to use your new PHP-FPM pool. Depending on your current virtual hosts file what you need to add and edit may differ. The `<IfModuel mod_fcgid.c>` directive and its contents is what you should add to your file. Ensure you replace any instance of `example.com` with your own domain name.
 
     {{< file "/etc/httpd/sites-available/example.com.conf" apache >}}
 <Directory /var/www/html/example.com/public_html>

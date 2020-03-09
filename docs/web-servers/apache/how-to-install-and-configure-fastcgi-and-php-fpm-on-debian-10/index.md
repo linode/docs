@@ -3,6 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide will show you how to install `mod_fcgid` and `PHP-FPM` on Debian 10. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
+og_description: 'This guide will show you how to install `mod_fcgid` and `PHP-FPM` on Debian 10. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-27
@@ -16,7 +17,7 @@ contributor:
 
 `mod_fcgid` is an [Apache module](https://httpd.apache.org/mod_fcgid/) that uses the [FastCGI](https://en.wikipedia.org/wiki/FastCGI) protocol to provide an interface between Apache and Common Gateway Interface (CGI) programs. CGI helps a web server handle dynamic content generation and processing for scripting languages like PHP. This dynamic functionality is commonly used when running content management systems like WordPress on a LAMP stack.
 
-This guide will show you how to install `mod_fcgid` and `PHP-FPM` on Debian 10. It will also provide a basic configuration that uses socket based connections, instead of TCP. These steps will enable you to run PHP through `mod_fcgid`. Running PHP through `mod_fcgid` helps to reduce the amount of system resources used by forcing the web server to act as a proxy and only pass files ending with the *php* file extension to PHP-FPM. Additionally, using PHP-FPM allows each virtual host to be configured to run PHP code as individual users.
+This guide will show you how to install `mod_fcgid` and `PHP-FPM` on Debian 10. It will also provide a basic configuration that uses socket based connections, instead of TCP. These steps will enable you to run PHP through `mod_fcgid`. Running PHP through `mod_fcgid` helps to reduce the amount of system resources used by forcing the web server to act as a proxy and only pass files ending with the *.php* file extension to PHP-FPM. Additionally, using PHP-FPM allows each virtual host to be configured to run PHP code as individual users.
 
 This guide assumes that you are familiar and comfortable with setting up a [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/). If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) guide.
 
@@ -30,7 +31,7 @@ This guide's examples will use PHP version 7.3. When running commands related to
 
 ## Install mod_fcgid and PHP-FPM
 
-In this section, you will install the mod_fcgid and PHP-FPM modules on your Debian 10 Linode.
+In this section, you will install the `mod_fcgid` and `PHP-FPM` modules on your Debian 10 Linode.
 
 1.  Update your system's [Apt repositories](https://wiki.debian.org/SourcesList).
 
@@ -40,7 +41,7 @@ In this section, you will install the mod_fcgid and PHP-FPM modules on your Debi
 
         sudo apt-get install libapache2-mod-fcgid php-fpm htop
 
-1. Load the `mod_proxy` and `mod_proxy_fcgi` modules by editing your main Apache configuration to add the lines included in the example. Both these modules are included by default in your Apache installation, but the must be explicitly loaded in order to use them. You will need these modules to proxy requests through mod_fcgid to your socket.
+1. Load the `mod_proxy` and `mod_proxy_fcgi` modules by editing your main Apache configuration to add the lines included in the example. Both these modules are included by default in your Apache installation, but the must be explicitly loaded in order to use them. You will need these modules to proxy requests through `mod_fcgid` to your socket.
 
     {{< file "/etc/apache2/apache2.conf" >}}
 LoadModule proxy_module /usr/lib/apache2/modules/mod_proxy.so
@@ -57,9 +58,9 @@ LoadModule proxy_fcgi_module /usr/lib/apache2/modules/mod_proxy_fcgi.so
 
 ## Configure Apache with PHP-FPM
 
-You will now configure Apache to pass all requests for files with the *.php* extension, to the PHP wrapper through FastCGI.
+You will now configure Apache to pass all requests for files with the *.php* extension to the PHP wrapper through FastCGI.
 
-1.  Configure `PHP-FPM` to use UNIX sockets instead of TCP. In this command, you will use `grep` to determine if the sockets are already being used. This command will search your `php-fpm` installation's default pool configuration file for the setting.
+1.  Configure `PHP-FPM` to use UNIX sockets instead of TCP. In this command, you will use `grep` to determine if the sockets are already being used. This command will search your `php-fpm` installation's default pool configuration file for the setting:
 
         sudo grep -E '^\s*listen\s*=\s*[a-zA-Z/]+' /etc/php/7.3/fpm/pool.d/www.conf
 
@@ -82,7 +83,7 @@ listen = /var/run/php/php7.3-fpm.sock
 listen = 127.0.0.1:9000
     {{< /file >}}
 
-1.  Restart the php-fpm daemon for these changes to take effect.
+1.  Restart the `php-fpm` daemon for these changes to take effect.
 
         sudo systemctl restart php7.3-fpm
 
@@ -118,7 +119,7 @@ FcgidIOTimeout 300
 
         sudo apache2ctl configtest
 
-1.  If you received _Syntax OK_ for steps 8 and 10, restart the Apache service:
+1.  If you received _Syntax OK_ for steps 6 and 8, restart the Apache service:
 
         sudo systemctl restart apache2
 
@@ -130,7 +131,7 @@ FcgidIOTimeout 300
 
 ## Configuring PHP Pools
 
-[PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of php processes to run php files from a site's root directory. Each pool that is run by PHP-FPM can be run with separate user and group ID's. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
+[PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of PHP processes to run PHP files from a site's root directory. Each pool that is run by PHP-FPM can be run with separate user and group ID's. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
 
 {{< note >}}
  To create the example bob user, you can follow the steps outlined in our [Securing Your Server](/docs/security/securing-your-server/#debian) guide.
@@ -144,7 +145,7 @@ FcgidIOTimeout 300
 
     {{< file "/etc/php/7.3/fpm/pool.d/example.com.conf" >}}
 ; Start a new pool named 'www'.
-; the variable $pool can we used in any directive and will be replaced by the
+; the variable $pool can be used in any directive and will be replaced by the
 ; pool name ('www' here)
 [example.com]
 
@@ -167,7 +168,7 @@ listen = /var/run/php/php7.3-fpm_example.com.sock
 
         sudo systemctl restart php7.3-fpm
 
-1.  Edit the virtual host file of `example.com` to use your new PHP-FPM pool. Depending on your current virtual hosts file what you need to add and edit maybe differ. The `<IfModuel mod_fcgid.c>` directive and its contents is what you should add to your file. Ensure you replace any instance of `example.com` with your own domain name.
+1.  Edit the virtual host file of `example.com` to use your new PHP-FPM pool. Depending on your current virtual hosts file what you need to add and edit may differ. The `<IfModuel mod_fcgid.c>` directive and its contents is what you should add to your file. Ensure you replace any instance of `example.com` with your own domain name.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" apache >}}
 <Directory /var/www/html/example.com/public_html>
