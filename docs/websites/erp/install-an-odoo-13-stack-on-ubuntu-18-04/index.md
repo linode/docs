@@ -143,7 +143,7 @@ The settings in the `pg_hba.conf` file are:
 
 Edit `postgresql.conf` to allow the database server listening to remote connections:
 
-    {{< file "/etc/postgresql/9.6/main/postgresql.conf" conf >}}
+{{< file "/etc/postgresql/10/main/postgresql.conf" conf >}}
 #From CONNECTIONS AND AUTHENTICATION Section
 listen_addresses = '*'
 {{< /file >}}
