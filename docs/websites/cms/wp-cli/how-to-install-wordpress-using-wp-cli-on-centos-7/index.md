@@ -218,10 +218,8 @@ FLUSH PRIVILEGES;
         sudo semanage port -a -t mysqld_port_t -p tcp 3306
 
     {{< note >}}
-Use netstat to view which port is used by MariaDB. The port will typically be `3306`.
-
-    netstat -tln
-    {{</ note >}}
+Use **netstat** to confirm the port used by MariaDB with the command `netstat -tln`. The port in use will typically be `3306`.
+        {{</ note >}}
 
 1. Configure SELinux to allow your Apache web server to make database connections:
 
