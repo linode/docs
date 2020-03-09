@@ -41,6 +41,10 @@ Your account's [Events Page](https://cloud.linode.com/events) is a history, or a
 
 Email event notifications alert you when new events such as booting, shutting down, or updates to a Linode occur on your account. You can enable or disable email event notifications using the Cloud Manager.
 
+{{< note >}}
+Only unrestricted users can receive threshold notification emails.
+{{</ note >}}
+
 1. Click on your user icon at the top-right hand corner of the Cloud Manager and select [**My Profile**](https://cloud.linode.com/profile/display).
 
 1. Select the **Settings** tab. Under the **Notifications** section, toggle the **Email Alerts** button to your desired setting.
