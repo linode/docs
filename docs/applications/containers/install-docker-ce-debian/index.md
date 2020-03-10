@@ -47,7 +47,7 @@ sub   rsa4096 2017-02-22 [S]
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 
     {{< note >}}
-If you get an `E: Package 'docker-ce' has no installation candidate` error, this is because the stable version of docker is not yet available. Therefore, you will need to use the edge / test repository.
+If you get an `E: Package 'docker-ce' has no installation candidate` error, this is because the stable version of Docker is not yet available. Therefore, you will need to use the edge / test repository.
 
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable edge test"
 {{< /note >}}
