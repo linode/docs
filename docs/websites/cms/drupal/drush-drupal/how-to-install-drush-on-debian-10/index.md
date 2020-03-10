@@ -2,8 +2,9 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites.'
-keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", "drush", "debian"]
+description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on Debian 10'
+og_description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on Debian 10'
+keywords: ["drupal", "cms", "content management system", "content management framework", "debian", "drush"]
 aliases: ['websites/cms/drush-drupal/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-28
