@@ -14,67 +14,74 @@ published: 2020-02-29
 title: How to Install Drush on CentOS 8
 h1_title: Install Drush on CentOS 8
 external_resources:
- - '[SSL Certificates](/docs/security/ssl/)'
- - '[Drush Documentation](http://docs.drush.org)'
+ - '[Drush Documentation](https://docs.drush.org/en/master/)'
+ - '[Composer Documentation](https://getcomposer.org/doc/)'
 ---
 
-Drush is a command line tool for creating, maintaining, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands. Drush rhymes with rush or crush. The name comes from combining the words Drupal and shell. Drush is designed only for Drupal and cannot be used with other content management systems.
+[Drush](https://www.drush.org/) is a command line tool for creating, administrating, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands. The name comes from combining the words Drupal and shell. Drush is designed only for Drupal and cannot be used with other content management systems.
 
 Both new and experienced Drupal users can benefit from learning Drush. Users that have worked with a command line interface before have an advantage, but Drush is an excellent application for beginners, too.
 
 ## Before You Begin
 
-Before installing Drush, ensure that the following prerequisites have been met:
+Before installing Drush, ensure that you complete the following steps:
 
-1.  Create a new Linode by following our [Getting Started](/docs/getting-started/) guide.
-2.  Address security concerns with the [Securing Your Server](/docs/securing-your-server) guide.
-3.  Install and configure a [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/)
-4.  Make sure that your system is up to date, using:
+1.  [Create a new Linode](/docs/getting-started/#create-a-linode) by following our [Getting Started](/docs/getting-started/) guide. Complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
+1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) for your Linode.
+1.  Install and configure a [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/).
+1.  Update your system:
 
         sudo yum update
 
-{{< note >}}
+    {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-{{< /note >}}
+    {{< /note >}}
 
 ## Install Git & Composer
 
-The developers of Drush recommend installation through Composer, a PHP dependency manager. The Drush project is hosted on GitHub and controlled with Git, another necessary app to install.
-
+The developers of Drush recommend installing Drush using [Composer](https://getcomposer.org/doc/00-intro.md), a PHP dependency manager. Since the Drush project is hosted on [GitHub](https://github.com/) and controlled with [Git](/docs/development/version-control/how-to-configure-git/), you will also need to install Git. In this section, you will install both dependencies.
 
 1.  Install Git:
 
-        sudo apt-get install git
+        sudo yum install git
 
-2.  Install Composer:
+1. Composer requires several PHP extensions in order to work properly. Install these extensions on your system:
+
+        sudo yum install php-json, php-zip, unzip, php-mbstring, php-gd -y
+
+1.  Install Composer:
 
         curl -sS https://getcomposer.org/installer | php
 
-3.  Move the composer.phar file to `/usr/local/bin/`, so that it can be accessed from any directory:
+1.  Move the `composer.phar` file to `/usr/local/bin/`, so that it can be accessed from any directory:
 
         sudo mv composer.phar /usr/local/bin/composer
 
-### Install Drush for All Users on the Server
+## Install Drush Globally
 
-Composer is designed to install PHP dependencies on a per-project basis, but the steps below will install a global Drush for all projects.
+Composer is designed to install PHP dependencies on a per-project basis. The steps below will install a global Drush for all projects. If you want to install Drush for a specific system user, skip to the [Install Drush for a Limited User Account](#install-drush-for-a-limited-user-account) section.
 
 1.  Create a symbolic link between Composer's local bin directory, `/usr/local/bin/composer`, and the system's bin directory, `/usr/bin/`:
 
         sudo ln -s /usr/local/bin/composer /usr/bin/composer
 
-2.  Use Git to download - or clone - the GitHub Drush project into a new directory:
+2.  Use Git to download - or [clone](/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/#clone-a-github-test-repository) - the [GitHub Drush project](https://github.com/drush-ops/drush) into a new directory, `/usr/local/src/drush`:
 
         sudo git clone https://github.com/drush-ops/drush.git /usr/local/src/drush
 
-3.  Change the working directory to the new Drush directory:
+1. Update the ownership of your new Drush directory to be your limited user account:
+
+        sudo chown example_user:example_user -R /usr/local/src/drush
+
+3.  Change the working directory to your new Drush directory:
 
         cd /usr/local/src/drush
 
-4.  Use Git to checkout the version of Drush that you wish to use. The release page is at [https://github.com/drush-ops/drush/releases](https://github.com/drush-ops/drush/releases).
+4.  Use Git to checkout the version of Drush that you wish to use. View the GitHub project's [releases page](https://github.com/drush-ops/drush/releases) to view all available versions.
 
-    For a different release, replace the version number in the following command:
+    For a different release, replace the version number, `10.2.2`, in the following command:
 
-        sudo git checkout 9.7.2
+        sudo git checkout 10.2.2
 
 5.  Create a symbolic link between the Drush directory in `/usr/local/src` to `/usr/bin`, so that the Drush command can be called from any directory:
 
@@ -82,49 +89,55 @@ Composer is designed to install PHP dependencies on a per-project basis, but the
 
 6.  Now, run the Composer install command:
 
-        sudo composer install
+        composer install
 
-7.  Drush has now been installed for all users on the server. Check for the proper version number:
+7.  Drush has now been installed for all users on your Linode. To verify the installation, check Drush's version number.
 
         drush --version
 
-### Install Drush for the Active User Only
+    You should see a similar output:
 
-You may want to install Drush for only certain users, for example, the **site owner**, **root**, and **apache**. This may be optimal for a shared-hosting environment. Also, individual users can install their different versions of Drush and even install versions specific to a single project. The commands below should be run as the user in question, without `sudo`.
+    {{< output >}}
+Drush Commandline Tool 10.2.2
+    {{</ output >}}
 
-1.  Modify the user's `.bashrc` file to add the composer directory to it's path:
+## Install Drush for a Limited User Account
 
-        nano ~/.bashrc
+You may want to install Drush for only certain system users, for example, the **site admin** or the Apache webserver. This option may be optimal for a shared-hosting environment. Also, this allows individual users to install different versions of Drush and even install separate versions specific to a single project. Ensure you run the commands from the limited user account's home directory. Before you complete this section, ensure you have completed the steps in the [Install Git & Composer](#install-git-composer) section of the guide.
+
+1.  Using the text editor of your choice, edit the user's `.bashrc` file to add the composer directory to it's path:
 
     {{< file "~/.bashrc" >}}
-      export PATH="$HOME/.composer/vendor/bin:$PATH"
-
+export PATH="$HOME/.composer/vendor/bin:$PATH"
     {{< /file >}}
 
-
-2.  Run **source** on `.bashrc` to enable the changes:
+1.  Run the `source` command on the `.bashrc` file to enable the changes:
 
         source ~/.bashrc
 
-3.  Install Drush:
+1.  Install Drush:
 
         composer global require drush/drush:dev-master
 
      {{< note >}}
-     To install a different version of Drush, replace `drush/drush:dev-master` with another version. For example, to install the stable release of Drush 6.x, use `drush/drush:9.*`. For more information, check out the [Drush GitHub](https://github.com/drush-ops/drush) repository.
+To install a different version of Drush, replace `drush/drush:dev-master` with another version. For example, to install the stable release of Drush 6.x, use `drush/drush:9.*`. For more information, visit the [Drush GitHub](https://github.com/drush-ops/drush) repository.
      {{</note >}}
 
-
-4. Check to see that Drush was installed successfully:
+1. To verify the installation, check Drush's version number.
 
         drush --version
 
+    You should see a similar output:
 
-### Using Drush
+    {{< output >}}
+Drush Commandline Tool 10.2.2
+    {{</ output >}}
 
-Drush has dozens of commands with hundreds of options. Drush can interface with MySQL, Drupal, Git, and more.
+## Using Drush
 
-1.  To get started with Drush, run it without any following commands to list the help manual:
+Drush has dozens of [commands](https://www.drupal.org/docs/8/modules/d8-rules-essentials/for-developers/tools/drush-commands) with hundreds of options. Drush can interface with MySQL, Drupal, Git, and more. Below are a few examples of some useful Drush commands to get you started. Refer to the [Drush Commands](https://www.drupal.org/docs/8/modules/d8-rules-essentials/for-developers/tools/drush-commands) documentation for more details.
+
+1.  To get started with Drush, run it without any sub-commands to list the help manual.
 
         drush
 
@@ -132,6 +145,6 @@ Drush has dozens of commands with hundreds of options. Drush can interface with 
 
         drush help site-install
 
-3.  List many of the specs for your server and website with:
+3.  Use the `status` command to list several of the specs for your Linode and Drupal website:
 
         drush status

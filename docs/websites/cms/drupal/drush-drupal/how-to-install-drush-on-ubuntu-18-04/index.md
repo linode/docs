@@ -18,7 +18,7 @@ external_resources:
  - '[Drush Documentation](http://docs.drush.org)'
 ---
 
-Drush is a command line tool for creating, maintaining, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands. Drush rhymes with rush or crush. The name comes from combining the words Drupal and shell. Drush is designed only for Drupal and cannot be used with other content management systems.
+Drush is a command line tool for creating, administrating, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands. The name comes from combining the words Drupal and shell. Drush is designed only for Drupal and cannot be used with other content management systems.
 
 Both new and experienced Drupal users can benefit from learning Drush. Users that have worked with a command line interface before have an advantage, but Drush is an excellent application for beginners, too.
 
