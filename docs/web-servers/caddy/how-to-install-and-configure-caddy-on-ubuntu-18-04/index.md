@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'In this guide, you will install the Caddy web server on Ubuntu 18.04. You will also configure Caddy to serve your site''s domain over HTTPS.'
-og_description:  'In this guide, you will install the Caddy web server on Ubuntu 18.04. You will also configure Caddy to serve your site''s domain over HTTPS.'
+og_description: 'In this guide, you will install the Caddy web server on Ubuntu 18.04. You will also configure Caddy to serve your site''s domain over HTTPS.'
 keywords: ['web server','caddy','https','Caddyfile']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-05
@@ -31,7 +31,7 @@ contributor:
 
 ## Install Caddy
 
-1. Install Caddy. This will install Caddy version 1.0.4. along with the `hook.service` plugin, which gives you access to a systemd unit file that you can use to manage Caddy as a systemd service. See their [downloads page](https://caddyserver.com/v1/download) for more information on available Caddy versions.
+1. Install Caddy. This will install Caddy version 1.0.4. along with the `hook.service` [plugin](https://github.com/hacdias/caddy-service), which gives you access to a systemd unit file that you can use to manage Caddy as a systemd service. See their [downloads page](https://caddyserver.com/v1/download) for more information on available Caddy versions.
 
         curl https://getcaddy.com | bash -s personal hook.service
 
@@ -114,21 +114,14 @@ example.com {
 }
       {{</ file >}}
 
-1. Tell Caddy where to look for your Caddyfile:
+1. Tell Caddy where to look for your Caddyfile, replace `admin@example.com` with your email address:
 
-        caddy -conf /etc/caddy/Caddyfile
+        caddy -agree -conf /etc/caddy/Caddyfile -email admin@example.com &
 
-    Caddy will automatically serve your site over HTTPS using Let's Encrypt. Follow the prompts to continue. You will see a similar output.
+    Caddy will automatically serve your site over HTTPS using Let's Encrypt.
 
     {{< output >}}
 Activating privacy features...
-
-Your sites will be served over HTTPS automatically using Let's Encrypt.
-By continuing, you agree to the Let's Encrypt Subscriber Agreement at:
-  https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf
-Please enter your email address to signify agreement and to be notified
-in case of issues. You can leave it blank, but we don't recommend it.
-  Email address: admin@example.com
 2020/03/05 13:31:25 [INFO] acme: Registering account for admin@example.com
 2020/03/05 13:31:25 [INFO] [example.com] acme: Obtaining bundled SAN certificate
 2020/03/05 13:31:26 [INFO] [example.com] AuthURL: https://acme-v02.api.letsencrypt.org/acme/authz-v3/3180082162
@@ -146,69 +139,9 @@ done.
 
 Serving HTTPS on port 443
 https://example.com
+
+Serving HTTP on port 80
+http://example.com
     {{</ output >}}
 
 1. Open a web browser and visit your domain. You should see the contents of the `index.html`page that you created in Step 4 of the [Add Web Content section](#add-web-content).
-
-## Troubleshooting
-
-If it looks like your Caddy server will not run in the background, it could be that the service plugin has not installed correctly. You will recognize this when you run the `caddy -conf /etc/caddy/Caddyfile` command and the terminal prompt does not come back. Terminating the service will close the server and your site will go down. The following are two methods you can try to run Caddy as a background service.
-
-### Re-download the Service
-
-1.  In a new terminal, open a new session and run the following command:
-
-        ps aux
-
-1.  If you see the following output with `Sl+` in the **STAT** column. This means Caddy is running in the foreground only; the `+` indicates it is a foreground process.
-
-    {{< output >}}
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root     19801  0.0  1.0 117152 10132 ?        Ssl  12:43   0:00 /usr/local/bin/caddy
-example+ 19856  0.0  1.2 117152 12512 pts/0    Sl+  12:51   0:00 caddy -conf /etc/caddy/Caddyfile
-{{</ output >}}
-
-1.  Create a directory for SSL and give it permissions:
-
-        sudo mkdir -p /etc/ssl/caddy
-        sudo chown -R root:www-data /etc/ssl/caddy
-        sudo chmod 0770 /etc/ssl/caddy
-
-1.  Get the Caddy service:
-
-        wget https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service
-        sudo cp caddy.service /etc/systemd/system/
-
-1.  Set permissions for the directory:
-
-        sudo chown root:root /etc/systemd/system/caddy.service
-        sudo chmod 644 /etc/systemd/system/caddy.service
-
-1.  Restart the daemons and re-load the caddy conf:
-
-        sudo systemctl daemon-reload
-        sudo systemctl restart caddy
-        caddy -conf /etc/caddy/Caddyfile
-
-1.  You'll see an output like this indicating that the server has been updated and is listening:
-
-    {{< output >}}
-Activating privacy features... done.
-Listen: listen tcp :443: bind: address already in use
-{{</ output >}}
-
-### Install with Options
-
-Another way to force Caddy to run in the background is to get all your directories and configurations prepared before installing the service.
-
-1.  [Install Caddy](#install-caddy), but do not install the service.
-
-1.  [Add Web Content](#add-web-content) as instructed in these steps.
-
-1.  [Configure the Caddy File](#configure-the-caddyfile), but do not run the step where you tell Caddy where to find your Caddyfile.
-
-1.  Next, run the following command which combines installing the service with telling Caddy where to find your Caddyfile, replace your email address for `admin@example.com`:
-
-        sudo caddy -service install -agree -conf /etc/caddy/Caddyfile -email admin@example.com
-
-    Caddy should start as a background service.
