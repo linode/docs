@@ -757,6 +757,7 @@ longview
 lookups
 loopback
 lspci
+lsb
 lsd
 lsof
 lst

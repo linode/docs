@@ -8,7 +8,7 @@ keywords: ["docker", "containers", "docker CE"]
 modified_by:
   name: Linode
 title: "How to Install Docker CE on Ubuntu 18.04"
-published: 2019-03-17
+published: 2020-03-05
 ---
 
 {{< content "install-docker-ce" >}}

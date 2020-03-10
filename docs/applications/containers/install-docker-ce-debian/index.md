@@ -1,22 +1,21 @@
 ---
 author:
-  name: Sam Foo
-  email: sfoo@linode.com
-description: 'Shortguide for installing Docker CE'
+  name: Linode
+  email: docs@linode.com
+description: 'Install Docker CE on a Linode running Debain 10'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["docker", "containers", "docker CE"]
-modified: 2018-04-24
+modified: 2020-03-06
 modified_by:
-  name: Sam Foo
-title: "How to Install Docker CE"
-published: 2018-01-08
-headless: true
-show_on_rss_feed: false
+  name: Linode
+title: "How to Install Docker CE on Debian 10"
+published: 2020-03-05
+
 ---
 
 <!-- Install Docker CE using the official Docker repositories. -->
 
-These steps install Docker Community Edition (CE) using the official Ubuntu repositories. To install on another distribution, or to install on Mac or Windows, see the official [installation page](https://docs.docker.com/install/).
+These steps install Docker Community Edition (CE) using the official Debian repositories. To install on another distribution, or to install on Mac or Windows, see the official [installation page](https://docs.docker.com/install/).
 
 1.  Remove any older installations of Docker that may be on your system:
 
@@ -28,7 +27,7 @@ These steps install Docker Community Edition (CE) using the official Ubuntu repo
 
 1.  Add Docker's GPG key:
 
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 
 1.  Verify the fingerprint of the GPG key:
 
@@ -45,10 +44,10 @@ sub   rsa4096 2017-02-22 [S]
 
 1.  Add the `stable` Docker repository:
 
-        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 
     {{< note >}}
-For Ubuntu 19.04, if you get an `E: Package 'docker-ce' has no installation candidate` error, this is because the stable version of docker is not yet available. Therefore, you will need to use the edge / test repository.
+If you get an `E: Package 'docker-ce' has no installation candidate` error, this is because the stable version of Docker is not yet available. Therefore, you will need to use the edge / test repository.
 
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable edge test"
 {{< /note >}}
