@@ -926,6 +926,7 @@ newgrp
 newtag
 nextcloud
 nexthop
+nftables
 ng
 nginx
 ngrok
