@@ -187,6 +187,8 @@ server {
     gzip             on;
     gzip_comp_level  3;
     gzip_types       text/html text/plain text/css image/*;
+
+    add_header     Feature-Policy "encrypted-media 'self'; autoplay 'none'"
 }
 {{< /file >}}
 
@@ -227,6 +229,8 @@ http {
     add_header    X-Content-Type-Options nosniff;
     add_header    X-Frame-Options SAMEORIGIN;
     add_header    X-XSS-Protection "1; mode=block";
+    add_header    Referrer-Policy strict-origin-when-cross-origin;
+    add_header    Content-Security-Policy "default-src 'self'; upgrade-insecure-requests;";
 
     proxy_cache_path    /var/www/example.com/cache/ keys_zone=one:10m inactive=60m use_temp_path=off;
     server_tokens       off;

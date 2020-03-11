@@ -238,6 +238,8 @@ http {
     add_header          X-Content-Type-Options nosniff;
     add_header          X-Frame-Options SAMEORIGIN;
     add_header          X-XSS-Protection "1; mode=block";
+    add_header          Referrer-Policy strict-origin-when-cross-origin;
+    add_header          Content-Security-Policy "default-src 'self'; upgrade-insecure-requests;";
 
     ssl_certificate     /root/certs/example.com/example.com.crt;
     ssl_certificate_key /root/certs/example.com/example.com.key;
@@ -275,6 +277,8 @@ server {
          proxy_cache    one;
             proxy_pass  http://localhost:8000;
     }
+
+    add_header          Feature-Policy "encrypted-media 'self'; autoplay 'none'";
 }
 {{< /file >}}
 
