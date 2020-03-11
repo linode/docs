@@ -143,7 +143,7 @@ This header signals to a connecting browser to enable its cross-site scripting f
 
 ### Referrer Policy
 
-This header controls policy of referrer information that should be included with requests. If you have TLS-enabled sites as configured in [Part 3](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/), the header should be:
+This header controls policy of referrer information that should be included with requests. The policy below sends the origin, path, and query string when performing same-origin request, but only send the origin if protocol security level stays the same during cross-origin request, and send no header otherwise:
 
     add_header Referrer-Policy strict-origin-when-cross-origin;
 
