@@ -152,7 +152,7 @@ example.com {
         sudo firewall-cmd --zone=public --permanent --add-service=https
         sudo firewall-cmd --reload
 
-1. Tell Caddy where to look for your Caddyfile:
+1. Tell Caddy where to look for your Caddyfile, replace `admin@example.com` with your email address:
 
         sudo env "PATH=$PATH" caddy -agree -conf /etc/caddy/Caddyfile -email admin@example.com &
 
