@@ -141,6 +141,12 @@ This header signals to a connecting browser to enable its cross-site scripting f
 
     add_header X-XSS-Protection "1; mode=block";
 
+### Referrer Policy
+
+This header controls policy of referrer information that should be included with requests. If you have TLS-enabled sites as configured in [Part 3](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/), the header should be:
+
+    add_header Referrer-Policy strict-origin-when-cross-origin;
+
 ## Configuration Recap
 
 To summarize where we are so far:
