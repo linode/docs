@@ -864,6 +864,7 @@ multicast
 multicraft
 multilib
 multiport
+multisite
 multiuser
 munin
 musl
