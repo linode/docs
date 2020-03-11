@@ -85,7 +85,7 @@ example.com {
 }
       {{</ file >}}
 
-1. Install Caddy as a systemd service and tell it where to find your Caddyfile:
+1. Install Caddy as a systemd service:
 
         sudo caddy -service install
 
