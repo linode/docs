@@ -156,9 +156,9 @@ In server administration, there are many options for user and group permissions.
 
         sudo usermod -a -G apache example_user
 
-4.  Make sure the permissions are set to allow access for the site owner and site owner's group:
+4.  Make sure the permissions are set to allow access for the site owner and site owner's group. Replace `example.com` with your own domain name.
 
-        sudo chmod -R 770 sites/default
+        sudo chmod 774 -R /var/www/html/example.com/public_html
 
     Now, `apache`, `example_user`, and any user within the `apache` group has read, write, and execute permissions for the entire Drupal site directory tree.
 
