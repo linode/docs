@@ -2,8 +2,8 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode so you can begin developing your own websites. To install Drupal, you will use Drush,a command line tool for creating, administrating, and modifying Drupal websites.'
-og_description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode so you can begin developing your own websites. To install Drupal, you will use Drush,a command line tool for creating, administrating, and modifying Drupal websites.'
+description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running Ubuntu 18.04. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
+og_description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running Ubuntu 18.04. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "drush", "ubuntu"]
 aliases: ['websites/cms/drush-drupal/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

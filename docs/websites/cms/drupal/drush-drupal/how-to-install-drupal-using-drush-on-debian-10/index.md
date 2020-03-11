@@ -2,7 +2,8 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Drupal 8 is the lastest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode so you can begin developing your own websites.'
+description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running Debian 10. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
+og_description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running Debian 10. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", " debian", "drush", "ubuntu", "centos"]
 aliases: ['websites/cms/drush-drupal/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -28,13 +29,13 @@ h1_title: Install Drupal using Drush on Debian 10
 
 ## Download and Prepare Drupal 8
 
-1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
+1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
 
         cd /var/www/html/example.com
 
-1. Download the Drupal 8 tarball. As of writing this guide, Drupal 8.8.2 is the latest version. See [Drupal's download page](https://www.drupal.org/project/drupal) for their latest core tarball.
+1. Download the Drupal 8 tarball. As of writing this guide, Drupal 8.8.3 is the latest version. See [Drupal's download page](https://www.drupal.org/project/drupal) for their latest core tarball. Replace `8.8.3` with the version number you wish to download.
 
-        sudo wget http://ftp.drupal.org/files/projects/drupal-8.8.2.tar.gz
+        sudo wget http://ftp.drupal.org/files/projects/drupal-8.8.3.tar.gz
 
     {{< caution >}}
 Ensure that the version number matches the Drupal 8 version you wish to download.
@@ -46,9 +47,9 @@ Ensure that the version number matches the Drupal 8 version you wish to download
 
 1.  Drupal depends on a PHP graphics library called GD. Install GD and other dependencies:
 
-        sudo apt-get install php-gd php-xml php-dom php-Simplexml php-mbstring
+        sudo apt-get install php-gd php-xml php-dom php-simplexml php-mbstring
 
-1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's web configuration in the [Drupal First Start](#drupal-first-start) section.
+1. Create your Drupal 8 installation's `settings.php` file by creating a copy of the default settings file. This file will be configured when you run through Drupal's web configuration in the [Drupal First Start](#drupal-first-start) section.
 
         sudo cp /var/www/html/example.com/public_html/sites/default/default.settings.php /var/www/html/example.com/public_html/sites/default/settings.php
 
@@ -87,7 +88,7 @@ $settings['trusted_host_patterns'] = array(
 </Directory>
 {{< /file >}}
 
-1.  Change the ownership of your site's document root from `root` to `www-data`. This allows you to install modules and themes, and to update Drupal, without being prompted for FTP credentials.
+1.  Change the ownership of your site's document root from `root` to `www-data`. This allows you to install modules and themes, and to update Drupal without being prompted for FTP credentials.
 
         sudo chown -R www-data:www-data /var/www/html/example.com
 
@@ -97,63 +98,66 @@ $settings['trusted_host_patterns'] = array(
 
 ### Create a Drupal Website with Drush
 
-Drush can install a Drupal site with just a few commands.
+In this section, you will use [Drush](https://www.drush.org/) to install a Drupal site with just a few commands.
 
-1.  Change the working directory to the location of the new website. The previous guides created a **/var/www/html/`example.com`/public_html** directory, replacing **`example.com`**, and made **`public_html`** the document root or the publicly viewable directory.
+1.  Change the working directory to the location of your new Drupal website. The previous guides created a `/var/www/html/example.com/public_html` directory, where `public_html` is the document root or the publicly viewable directory. Replace `example.com` with your own site's name.
 
         cd  /var/www/html/example.com/public_html
 
-2.  Now the server is ready for the installation of a Drupal site. Below, provide a MySQL username, password, and database in the mysql://`username`:`password`@localhost/`databasename` link option and the site's name in the --site-name=`example.com` option:
+1.  Your Linode is now ready for you to install a Drupal site. In the command below, replace `mysql://username:password@localhost/databasename` with your own site's username, password, and database. For example, if you followed the [How to Install a LAMP stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04) your username is `webuser`, password is `password`, and the database is `webdata`. Also, replace `--site-name=example.com` with your own website's name.
 
-        sudo drush si standard --db-url=mysql://username:password@localhost/databasename --site-name=example.com
-
+        drush si standard --db-url=mysql://username:password@localhost/databasename --site-name=example.com
 
     {{< note >}}
-    Although MySQL accepts passwords with a special character, for example an exclamation point, the `drush si standard` command does not. If you have a special character in your MySQL password, you may need to change it.
+Although MySQL accepts passwords with a special character, for example an exclamation point, the `drush si standard` command does not. If you have a special character in your MySQL password, you may need to change it.
     {{< /note >}}
 
-    After installation is complete, Drush creates a user, named `admin`, and a random password. An example is pictured below. These credentials are used for the Drupal sign-in page.
+    {{< note >}}
+If you encounter errors related to writing to the `sites/default` directory, follow the steps in the [Setting the Site's Ownership and Permissions](#setting-the-site-s-ownership-and-permissions) section to ensure the web server belongs to the current user's group.
+    {{</ note >}}
+
+    After the installation is complete, Drush creates a user, named `admin`, and a random password. An example is pictured below. These credentials are used for the Drupal sign-in page.
 
 
     ![Drush Username Password](drush-username-password.png)
 
-3.  Optionally, if you'd like to change the admin's password, we recommend you do so with Drush, rather than sending the password over a non-secure HTTP connection. In the following command, replace `newpass` with your new password:
+1.  Optionally, if you'd like to change the admin's password, it is best to do so with Drush, rather than sending the password over a non-secure HTTP connection. To update the amdin password execute the following command and replace `newpass` with your new password:
 
         sudo drush user-password admin user-password=newpass
 
 ### Setting the Site's Ownership and Permissions
 
-In server administration, there are many options for user and group permissions. The directions below create a site owner and a site owner's group. The Apache user, named **www-data**, is added to the site owner's group. Then read, write, and execute permissions are granted to both the site owner and the site owner's group.
+In server administration, there are many options for user and group permissions. The directions below create a site owner and a site owner's group. The Apache user, named `www-data`, is added to the site owner's group. Then, read, write, and execute permissions are granted to both the site owner and the site owner's group.
 
-To create a new user for the site owner position, review the [Securing Your Server](/docs/security/securing-your-server#add-a-limited-user-account) guide.
+1. To create a new user for the site owner position, see the [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account) section of the [Securing Your Server](/docs/security/securing-your-server/) guide.
 
-1.  From the `public_html` directory, change ownership of the site to the chosen owner and that owner's group. Replace `exampleuser` below with the chosen owner's username:
+1.  From the `public_html` directory, change ownership of the site to the site owner and group. Replace `example_user` below with the chosen owner's username:
 
-        sudo chown -R example:exampleuser .
+        sudo chown -R example_user:example_user sites/default
 
-2.  Add Apache's **www-data** user to the site owner's group:
+2.  Add Apache's `www-data` user to the site owner's group:
 
-        sudo usermod -a -G exampleuser www-data
-
-3.  Restart Apache:
-
-        sudo service apache restart
+        sudo usermod -a -G example_user www-data
 
 4.  Make sure the permissions are set to allow access for the site owner and site owner's group:
 
-        sudo chmod -R 770 .
+        sudo chmod -R 770 sites/default
 
-Now, **www-data**, **exampleuser**, and any user within the exampleuser group has read, write, and execute permissions for the entire Drupal site directory tree.
+    Now, `www-data`, `example_user`, and any user within the `example_user` group has read, write, and execute permissions for the entire Drupal site directory tree.
+
+3.  Restart Apache:
+
+        sudo systemctl restart apache2
 
 5.  Finally, check the status of the new site:
 
         drush status
 
-    {{< caution >}}
-        File permissions are a constant concern for the system owner or root user. When installing new files, like a module or theme, make sure the Apache user apache has access rights. Use the command `ls -al` to list the file permissions within a directory.
-    {{< /caution >}}
+    {{< note >}}
+When installing new files, like a module or theme, make sure the Apache user has access rights. Use the command `ls -al` to list the file permissions within a directory to determine which permissions are assigned to it.
+    {{</ note  >}}
 
-Your site is now available at **`example.com`** or **`ipaddress`**. Sign-in with the generated username and password and start delivering content to the world!
+Navigate to your site's domain (or IP address if you did not set up a domain name). Sign-in with the generated username and password to begin [creating content](https://www.drupal.org/docs/8/administering-a-drupal-8-site/managing-content) for your Drupal site.
 
 ## Additional Options
 
@@ -168,6 +172,8 @@ The above setup is designed for ease of use. However, there are setups designed 
 
 ### Multi-site Servers
 
-To start, add a virtual host file with Apache. Next, build another site including the appropriate MySQL, PHP, and CMS configurations.
+At a high-level, the steps you will need to follow to begin configuring a Drupal multisite set up are:
 
-- To add a virtual host file, read Linode's [Configure Name-based Virtual Hosts](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts) guide
+- Add a new [MySQL user, password, and database](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#mysql)
+- Create a new [Apache virtual hosts file and corresponding directories](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#virtual-hosts)
+- See [Drupal's Multisite documentation](https://www.drupal.org/docs/8/multisite/drupal-8-multisite) for more details.
