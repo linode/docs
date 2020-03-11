@@ -24,7 +24,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
         use exampleDB
 
-    Make sure that this database name corresponds with the one for which the user has read and write permissions (we added these permissions in Step 7 of the previous section).
+    Make sure that this database name corresponds with the one for which the user has read and write permissions (we added these permissions in the previous section).
 
     To show the name of the current working database, run the `db` command.
 

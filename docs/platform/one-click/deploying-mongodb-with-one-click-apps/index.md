@@ -56,7 +56,7 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ## Getting Started after Deployment
 
-### Access your MongoDB Site
+### Access MongoDB
 
 After MongoDB has finished installing, you will be able to access MongoDB from the console via ssh with your Linode's IPv4 address:
 
@@ -74,7 +74,7 @@ After MongoDB has finished installing, you will be able to access MongoDB from t
 
     The `-u`, `-p`, and `--authenticationDatabase` options in the above command are required in order to authenticate connections to the shell. Without authentication, the MongoDB shell can be accessed but will not allow connections to databases.
 
-    The `admin` user purely administrative based on the roles specified. It is defined as an administrator of user for all databases, but does not have any database permissions itself. You may use it to create additional users and define their roles. If you are using multiple applications with MongoDB, set up different users with custom permissions for their corresponding databases.
+    The `admin` user is purely administrative based on the roles specified. It is defined as an administrator of users for all databases, but does not have any database permissions itself. You may use it to create additional users and define their roles. If you are using multiple applications with MongoDB, set up different users with custom permissions for their corresponding databases.
 
 1.  As the `admin` user, create a new database to store regular user data for authentication. The following example calls this database `user-data`:
 
