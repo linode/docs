@@ -2,50 +2,58 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'Deploy a Flask on Linode with One-Click Apps.'
+og_description: 'Deploy a Flask on Linode with One-Click Apps.'
+keywords: ['flask','python','one-click']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified_by:
   name: Linode
-title: "Index"
-h1_title: "h1 title displayed in the guide."
+title: "How to Deploy Flask with One-Click Apps"
+h1_title: "Deploy Flask with One-Click Apps"
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
+  name: Linode
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Flask Quickstart](https://flask.palletsprojects.com/en/1.1.x/quickstart/)'
+- '[Flask SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)'
 ---
+[Flask](https://flask.palletsprojects.com/en/1.1.x/) is a quick and light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. It is designed to make getting started quick and easy, with the ability to scale up to support more complex applications.
 
-## Before You Begin
+### Deploy a Flask One-Click App
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+{{< content "deploy-one-click-apps">}}
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+### Linode Options
 
-3.  Update your system:
+After providing the app specific options, provide configurations for your Linode server:
 
-        sudo apt-get update && sudo apt-get upgrade
+| **Configuration** | **Description** |
+|:--------------|:------------|
+| **Select an Image** | Debian 9 is currently the only image supported by MongoDB One-Click Apps, and it is pre-selected on the Linode creation page. *Required*. |
+| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
+| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). Since MongoDB can require a significant amount of RAM, we recommend using a [high memory Linode](https://www.linode.com/pricing/high-memory). You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan later if you feel you don't need you need these resources are needed. *Required*. |
+| **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
+| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required*. |
 
-<!-- Include one of the following notes if appropriate. --->
+When you've provided all required Linode Options, click on the **Create** button. **Your Flask app will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+## Getting Started after Deployment
+### Installed Software
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+In addition to installing Flask, this One-Click app installs and configures software to support running Flask in a production environment. Below is a list of the installed software:
 
+- The [NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) web server is installed with a basic NGINX configuration, located in `/etc/nginx/sites-enabled/flask_app`, and listening on your Linode's IP address.
+- An example Flask application is downloaded to your Linode's `/home/flask_app_project` directory. If you visit your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), you will see the example Flask application running and serving boiler plate blog content.
+- Your example Flask application's environment will be configured with basic settings located in the `/etc/config.json` file.
+- [Gunicorn](https://gunicorn.org/), a Python WSGI (web server gateway interface) HTTP Server for UNIX, is installed and running. It is used to forward requests from your NGINX web server to your Flask application.
+- [Supervisor](http://supervisord.org/), a client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems, is installed and running on your Linode. Its configuration file can be found in the following location, `/etc/supervisor/conf.d/flask_app.conf`.
+- The example Flask app's logs can be found in the following locations, `var/log/flask_app/flask_app.out.log` and `/var/log/flask_app/flask_app.err.log`
 
-{{< caution >}}
-Highlight warnings that could adversely affect a user's system with the Caution style.
-{{< /caution >}}
+### Next Steps
 
-{{< file "/etc/hosts" aconf >}}
-192.0.2.0/24      # Sample IP addresses
-198.51.100.0/24
-203.0.113.0/24
-{{< /file >}}
+Now that you are familiar with all the software installed on your Linode with the Flask One-Click app, you can explore the following steps:
+
+- [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh). You will need your Linode's root password to proceed. You can explore the installed programs and update any configurations as needed. Consider following the steps in the [Securing Your Server](/docs/security/securing-your-server/) guide to continue harding your Linode's security.
+- Read through our [Deploy a Flask Application on Ubuntu](/docs/development/python/flask-and-gunicorn-on-ubuntu/) guide, which takes a deeper dive into the example Flask app that is deployed by the One-Click app.
+- Visit our [Create a GIS Application using Flask, Stadia Maps, and MongoDB](/docs/development/python/how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb/) guide to learn how to create your own GIS application.
+- Consult our [How To Create an OAuth App with the Linode Python API Library](/docs/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/) to learn how to develop a Flask app using Linode's API to automate creating Linode resources.
