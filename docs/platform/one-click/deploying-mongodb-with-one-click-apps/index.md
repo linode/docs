@@ -2,7 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy Mongo DB on Linode using One-Click Apps.'
+description: 'Deploy MongoDB on Linode using One-Click Apps.'
+og_description: 'Deploy MongoDB on Linode using One-Click Apps.'
 keywords: ['mongodb','one-click', 'one-click apps']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
