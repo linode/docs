@@ -58,7 +58,7 @@ The developers of Drush recommend installing Drush using [Composer](https://getc
 
 ## Install Drush Globally
 
-Composer is designed to install PHP dependencies on a per-project basis, but the steps below will install a global Drush for all projects.
+Composer is designed to install PHP dependencies on a per-project basis. The steps below will install a global Drush for all projects. If you want to install Drush for a specific system user, skip to the [Install Drush for a Limited User Account](#install-drush-for-a-limited-user-account) section.
 
 1.  Create a symbolic link between Composer's local bin directory, `/usr/local/bin/composer`, and the system's bin directory, `/usr/bin/`:
 
@@ -103,25 +103,25 @@ Drush Commandline Tool 10.2.2
 ## Install Drush for a Limited User Account
 You may want to install Drush for only certain system users, for example, the **site admin** or the Apache webserver. This option may be optimal for a shared-hosting environment. Also, this allows individual users to install different versions of Drush and even install separate versions specific to a single project. Ensure you run the commands from the limited user account's home directory. Before you complete this section, ensure you have completed the steps in the [Install Git & Composer](#install-git-composer) section of the guide.
 
-1.  Using the text editor of your choice, edit the user's `.bashrc` file to add the composer directory to it's path:
+1.  Install Drush using Composer:
+
+        composer require drush/drush
+
+    This will install Drush in your `~/vendor/bin/drush` directory.
+
+1.  Using the text editor of your choice, edit the user's `.bashrc` file to add the `vendor` directory to your path:
 
       {{< file "~/.bashrc" >}}
-export PATH="/usr/local/bin/composer:$PATH"
+export PATH="$HOME/vendor/bin:$PATH"
       {{< /file >}}
 
 1.  Run the `source` command on the `.bashrc` file to enable the changes:
 
         source ~/.bashrc
 
-1.  Install Drush:
-
-        composer require drush/drush
-
-    This will install Drush in your `~/vendor/bin/drush` directory.
-
 1. Check to see that Drush was installed successfully:
 
-        vendor/bin/drush --version
+        drush --version
 
     {{< note >}}
 You can install the [Drush Launcher](https://github.com/drush-ops/drush-launcher) a utility to be able to call Drush globally. This program listens on your `$PATH` and hands control to a site-local Drush that is in the `~/vendor` directory.
@@ -130,10 +130,6 @@ You can install the [Drush Launcher](https://github.com/drush-ops/drush-launcher
 ## Using Drush
 
 Drush has dozens of [commands](https://www.drupal.org/docs/8/modules/d8-rules-essentials/for-developers/tools/drush-commands) with hundreds of options. Drush can interface with MySQL, Drupal, Git, and more. Below are a few examples of some useful Drush commands to get you started. Refer to the [Drush Commands](https://www.drupal.org/docs/8/modules/d8-rules-essentials/for-developers/tools/drush-commands) documentation for more details.
-
-{{< note >}}
-If you installed Drush following the steps in the [Install Drush for a Limited User Account](#install-drush-for-a-limited-user-account) section, you may have to append `vendor/bin/` to any Drush commands.
-{{</ note >}}
 
 1. To get started with Drush, run it without any following commands to list the help manual:
 

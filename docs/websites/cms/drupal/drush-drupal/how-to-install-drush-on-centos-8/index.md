@@ -65,33 +65,29 @@ Composer is designed to install PHP dependencies on a per-project basis. The ste
 
         sudo ln -s /usr/local/bin/composer /usr/bin/composer
 
-2.  Use Git to download - or [clone](/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/#clone-a-github-test-repository) - the [GitHub Drush project](https://github.com/drush-ops/drush) into a new directory, `/usr/local/src/drush`:
+1.  Use Git to download - or [clone](/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/#clone-a-github-test-repository) - the [GitHub Drush project](https://github.com/drush-ops/drush) into a new directory, `/usr/local/src/drush`:
 
         sudo git clone https://github.com/drush-ops/drush.git /usr/local/src/drush
 
-1. Update the ownership of your new Drush directory to be your limited user account:
-
-        sudo chown example_user:example_user -R /usr/local/src/drush
-
-3.  Change the working directory to your new Drush directory:
+1.  Change the working directory to your new Drush directory:
 
         cd /usr/local/src/drush
 
-4.  Use Git to checkout the version of Drush that you wish to use. View the GitHub project's [releases page](https://github.com/drush-ops/drush/releases) to view all available versions.
+1.  Use Git to checkout the version of Drush that you wish to use. View the GitHub project's [releases page](https://github.com/drush-ops/drush/releases) to view all available versions.
 
     For a different release, replace the version number, `10.2.2`, in the following command:
 
         sudo git checkout 10.2.2
 
-5.  Create a symbolic link between the Drush directory in `/usr/local/src` to `/usr/bin`, so that the Drush command can be called from any directory:
+1.  Create a symbolic link between the Drush directory in `/usr/local/src` to `/usr/bin`, so that the Drush command can be called from any directory:
 
         sudo ln -s /usr/local/src/drush/drush /usr/bin/drush
 
-6.  Now, run the Composer install command:
+1.  Now, run the Composer install command:
 
         composer install
 
-7.  Drush has now been installed for all users on your Linode. To verify the installation, check Drush's version number.
+1.  Drush has now been installed for all users on your Linode. To verify the installation, check Drush's version number.
 
         drush --version
 
@@ -105,19 +101,9 @@ Drush Commandline Tool 10.2.2
 
 You may want to install Drush for only certain system users, for example, the **site admin** or the Apache webserver. This option may be optimal for a shared-hosting environment. Also, this allows individual users to install different versions of Drush and even install separate versions specific to a single project. Ensure you run the commands from the limited user account's home directory. Before you complete this section, ensure you have completed the steps in the [Install Git & Composer](#install-git-composer) section of the guide.
 
-1.  Using the text editor of your choice, edit the user's `.bashrc` file to add the composer directory to it's path:
+1.  Install Drush using Composer:
 
-    {{< file "~/.bashrc" >}}
-export PATH="$HOME/.composer/vendor/bin:$PATH"
-    {{< /file >}}
-
-1.  Run the `source` command on the `.bashrc` file to enable the changes:
-
-        source ~/.bashrc
-
-1.  Install Drush:
-
-        composer global require drush/drush:dev-master
+        composer require drush/drush:dev-master
 
      {{< note >}}
 To install a different version of Drush, replace `drush/drush:dev-master` with another version. For example, to install the stable release of Drush 6.x, use `drush/drush:9.*`. For more information, visit the [Drush GitHub](https://github.com/drush-ops/drush) repository.
@@ -132,6 +118,19 @@ To install a different version of Drush, replace `drush/drush:dev-master` with a
     {{< output >}}
 Drush Commandline Tool 10.2.2
     {{</ output >}}
+
+    {{< note >}}
+If your system is having trouble finding the `drush` command, add the `vendor` directory to your `$PATH`. using the text editor of your choice, edit your `.bashrc` file to add the directory to it's path:
+
+{{< file "~/.bashrc">}}
+export PATH="$HOME/vendor/bin:$PATH"
+{{</ file >}}
+
+Run the `source` command on the `.bashrc` file to enable the changes:
+
+        source ~/.bashrc
+
+    {{</ note >}}
 
 ## Using Drush
 
