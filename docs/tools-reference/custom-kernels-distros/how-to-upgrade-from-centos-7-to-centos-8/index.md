@@ -21,7 +21,7 @@ h1_title: "Upgrading from CentOS 7 to CentOS 8"
 - Default packet filtering with [nftables](https://en.wikipedia.org/wiki/Nftables).
 - Improved security with [OpenSSL 1.1.1](https://www.openssl.org/news/openssl-1.1.1-notes.html) which includes TSL 1.3.
 
-When upgrading from CentOS 7 to CentOS 8, the cleanest path to migration is to spin up a new installation and move your data. While Red Hat provides an upgrade tool for upgrading to RHEL 8, this has been unsuccessful for CentOS usage. Therefore, upgrading in place is not recommended. This guide will show you how to make the clean install and migration process as quick and easy as possible.
+When upgrading from CentOS 7 to CentOS 8, the cleanest path to migration is to spin up a new installation and move your data. While Red Hat provides an upgrade tool for upgrading to RHEL 8, there is currently no reliable equivalent for CentOS usage. Therefore, upgrading in place is not recommended. This guide will show you how to make the clean install and migration process as quick and easy as possible.
 
 ## In This Guide
 This guide will walk you through the steps to migrate from CentOS 7 to CentOS 8 by:
@@ -37,8 +37,16 @@ This guide will walk you through the steps to migrate from CentOS 7 to CentOS 8 
 ### Back Up Your Data
 For this guide you will need a backup of your existing CentOS 7 installation. You can back up your Linode in two ways.
 
-- You can enroll in [Linode's Backup Service](/docs/platform/linode-backup-service/). This will take automatic regular backups for you.
-- You can also make a manual backup yourself. See the [Backing Up Your Data](/docs/security/backups/backing-up-your-data/) guide.
+- You can enroll in [Linode's Backup Service](/docs/platform/linode-backup-service/). This will take automatic regular backups for you, and give you the option of taking a [Manual Snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot) at any time.
+- For alternative backups solutions, see our [Backing Up Your Data](/docs/security/backups/backing-up-your-data/) guide.
+
+When creating your backup, it's recommended that you [Resize Your Disk](https://www.linode.com/docs/quick-answers/linode-platform/resize-a-linode-disk/) to the smallest size possible in advanced in order to ensure that you are able to allocate an extra disk in a later step.
+
+{{< caution >}}
+
+It is important to note that automatic backups using Linode's Backup Service will be overwritten after between 8-14 days have passed. If you would like a backup of your Linode to be preserved for a longer time period, it is recommended that you take a [Snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot) which will never expire unless manually overwritten.
+
+{{< /caution >}}
 
 ### Create a New Deployment
 
@@ -50,10 +58,6 @@ For this guide you will need a backup of your existing CentOS 7 installation. Yo
 
 1.  Click the **Rebuild** Button. This will create a new CentOS 8 disk and configuration profile. You can read more about configuration profiles in the [Disk Images and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/) guide.
 
-1.  Once the rebuild has completed, click **Resize** tab. Turn off Auto Resize Disk.
-
-    ![Turn Off Auto Resize](upgrade-centos8-auto-resize.png "Turn Off Auto Resize")
-
 1.  Shut down the Linode by clicking on the status icon and choosing **Power Off** from the drop down menu.
 
 1.  Click the **Disks/Configs** tab.
@@ -64,9 +68,15 @@ For this guide you will need a backup of your existing CentOS 7 installation. Yo
 
 1.  Leave enough space to make a new disk for your backup.
 
-1.  Click **Backups** tab and click the **More Options Ellipses** next to the backup you created and select **Restore to Existing Linode** from the drop down menu.
+1.  Click the **Backups** tab, followed by the **More Options Ellipses** next to the backup you created, and select **Restore to Existing Linode** from the drop down menu.
 
     ![Restore Backup to Existing Linode](upgrade-centos8-restore-to-existing.png "Restore Backup to Existing Linode")
+
+     {{< note >}}
+
+If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](https://www.linode.com/docs/quick-answers/linode-platform/resize-a-linode-disk/) so that you can take a new [Snapshot]((/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot) ), or [Resize Your Linode](/docs/platform/disk-images/resizing-a-linode/)
+
+{{< /note >}}
 
 1.  Select the current Linode and leave the box for **Overwrite Linode** unchecked. Then click the **Restore** button.
 
@@ -160,7 +170,7 @@ When you are sure you've copied all your files, you can delete the disks and con
 
 Optionally, you can resize the CentOS 8 Disk to expand to the size remaining on your Linode.
 
-1.  Click on the **More Options Ellipses** for the CentOS 8 disk and select **Resize** from the drop down menu.
+1.  From the **Disks/Configs** tab, click on the **More Options Ellipses** for the CentOS 8 disk and select **Resize** from the drop down menu.
 
 1.  Enter the maximum size allowed as provided under the field.
 
