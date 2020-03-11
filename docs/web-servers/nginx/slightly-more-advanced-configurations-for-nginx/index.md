@@ -155,6 +155,12 @@ Another way to minimize cross-site scripting attacks is by only allowing user ag
 
 See [Content-Security-Policy from MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) for complete list of directives.
 
+### Feature Policy (Experimental)
+
+You can allow or deny browser features with this header, depending on whether your site support the feature in question. This header should be set per site basis on corresponding `server` block. For example, to allow the site to use encrypted media on the same origin, and deny automatic playing media without user actions, you would do:
+
+    add_header Feature-Policy "encrypted-media 'self'; autoplay 'none'"
+
 ## Configuration Recap
 
 To summarize where we are so far:
