@@ -147,6 +147,14 @@ This header controls policy of referrer information that should be included with
 
     add_header Referrer-Policy strict-origin-when-cross-origin;
 
+### Content Security Policy
+
+Another way to minimize cross-site scripting attacks is by only allowing user agents to load resources specified in the directives of this header. For example, to only allow loading resources from the same origin (URL and port number), and to upgrade insecure requests (HTTP) to HTTPS:
+
+    add_header Content-Security-Policy "default-src 'self'; upgrade-insecure-requests;"
+
+See [Content-Security-Policy from MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) for complete list of directives.
+
 ## Configuration Recap
 
 To summarize where we are so far:
