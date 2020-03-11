@@ -62,13 +62,13 @@ After MongoDB has finished installing, you will be able to access MongoDB from t
 
 1.  [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) and [create a limited user account](/docs/security/securing-your-server/#add-a-limited-user-account).
 
-1.  Log out and log back in as your limite user account.
+1.  Log out and log back in as your limited user account.
 
 1.  Update your server:
 
         sudo apt-get update && apt-get upgrade
 
-1.  Access MongoDB with the admin account password you set when lanching the One-Click App:
+1.  Access MongoDB with the admin account password you set when launching the One-Click App:
 
         mongo -u admin -p --authenticationDatabase admin
 
