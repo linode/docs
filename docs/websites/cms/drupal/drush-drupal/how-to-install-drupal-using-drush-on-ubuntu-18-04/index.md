@@ -120,7 +120,7 @@ If you encounter errors related to writing to the `sites/default` directory, fol
 
     ![Drush Username Password](drush-username-password.png)
 
-1.  Optionally, if you'd like to change the admin's password, it is best to do so with Drush, rather than sending the password over a non-secure HTTP connection. To update the amdin password execute the following command and replace `newpass` with your new password:
+1.  Optionally, if you'd like to change the admin's password, it is best to do so with Drush, rather than sending the password over a non-secure HTTP connection. To update the admin password execute the following command and replace `newpass` with your new password:
 
         sudo drush user-password admin user-password=newpass
 
