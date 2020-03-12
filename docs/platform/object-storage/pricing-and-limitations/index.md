@@ -13,9 +13,7 @@ contributor:
   name: Linode
 ---
 
-{{< note >}}
-[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with the Object Storage service enabled on their account will be billed.
-{{</ note >}}
+{{< content "object-storage-ga-shortguide" >}}
 
 Linode Object Storage offers affordable and full-featured cloud storage for unstructured data and static sites. This guide will outline Object Storage pricing, storage limitations, and data transfer quotas.
 
@@ -29,11 +27,27 @@ Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabyte
 For more information on enabling Object Storage, cancelling Object Storage, and more, see our [How To Guide](/docs/platform/object-storage/how-to-use-object-storage/#enable-object-storage).
 {{< /note >}}
 
-## Storage Limitations
+## Available Locations
 
-Currently, Object Storage accounts are limited to 50 terabytes of storage per cluster, or 50 million objects per cluster, whichever comes first. Separate clusters have separate limits, so it is possible to store 50 terabytes worth of objects in one cluster and 50 terabytes worth of objects in another.  In the future, individual clusters may have separate storage maximums, and this guide will be updated to include those limits. Accounts can have up to 1000 buckets per cluster.
+Below is a table of data center locations where Object Storage is available, and the corresponding URLs for each region's clusters.
+
+| Data Center | Availability Date | Related Cluster URLs |
+| ------------| ------------------| ---------------------|
+| Newark | November 1, 2019 | us-east-1.linodeobjects.com |
+| Frankfurt | February 28, 2020 | eu-central-1.linodeobjects.com |
 
 {{< content "object-storage-cluster-shortguide" >}}
+
+## Storage Limitations
+
+| Type of Limitation | Limitation|  Notes |
+| ---------- | ------ | --- |
+| Storage Size | 50 terabytes | This is the maximum amount of data you can store in one cluster. |
+| Object Limit | 50 million objects | This is the maximum amount of objects you can store in a single cluster. |
+| Bucket Count | 1000 buckets | This is the maximum number of buckets you can have in a single cluster. |
+| Maximum Object Size | 5 gigabytes | This is the maximum upload size of a single object. This limitation can be overcome by using multi-part uploads. |
+
+Currently, Object Storage accounts are limited to 50 terabytes of storage per cluster, or 50 million objects per cluster, whichever comes first. Separate clusters have separate limits, so it is possible to store 50 terabytes worth of objects in one cluster and 50 terabytes worth of objects in another.  In the future, individual clusters may have separate storage maximums, and this guide will be updated to include those limits. Accounts can have up to 1000 buckets per cluster.
 
 Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) and [cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck) will do this for you automatically if a file exceeds this limit as part of the uploading process.
 

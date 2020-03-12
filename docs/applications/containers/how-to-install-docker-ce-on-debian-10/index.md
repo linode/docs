@@ -2,13 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install Docker CE on a Linode running Debain 10'
+description: 'Install Docker CE on a Linode running Debian 10.'
+og_description: 'Install Docker CE on a Linode running Debian 10.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["docker", "containers", "docker CE"]
 modified: 2020-03-06
 modified_by:
   name: Linode
 title: "How to Install Docker CE on Debian 10"
+h1_title: Install Docker CE on Debian 10
 published: 2020-03-05
 
 ---
