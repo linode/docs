@@ -2,25 +2,24 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'Use Prometheus to collect metrics and receive alerts with this open-source monitoring tool. Easily deploy Prometheus using One-Click Apps.'
+og_description: 'Use Prometheus to collect metrics and receive alerts with this open-source monitoring tool. Easily deploy Prometheus using One-Click Apps.'
+keywords: ['prometheus','monitoring','time series','metrics']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-12
 modified_by:
   name: Linode
-title: "Index"
-h1_title: "h1 title displayed in the guide."
+title: "How to Deploy Prometheus with One-Click Apps"
+h1_title: "Deploy Prometheus with One-Click Apps"
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
+  name: Linode
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Getting Started with Prometheus](https://prometheus.io/docs/prometheus/latest/getting_started/)'
+- '[Prometheus Configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)'
+- '[Grafana Support for Prometheus](https://prometheus.io/docs/visualization/grafana/)'
 ---
 
-Gain metrics and receive alerts with this open-source monitoring tool.
-Prometheus is a powerful monitoring software tool that collects metrics from configurable data points at given intervals, evaluates rule expressions, and can trigger alerts if some condition is observed.
+Use [Prometheus](https://prometheus.io/docs/introduction/overview/) to collect metrics and receive alerts with this open-source monitoring tool. Prometheus monitors targets that you define at given intervals by scraping their metrics HTTP endpoints. This tool is particularly well-suited for numeric time series data, which makes it ideal for machine-centric monitoring as well as monitoring of highly dynamic service-oriented architectures.
 
 ## Deploy Prometheus with One-Click Apps
 
@@ -28,7 +27,7 @@ Prometheus is a powerful monitoring software tool that collects metrics from con
 
 ### Linode Options
 
-After providing the app-specific options, provide configurations for your Linode server:
+Provide configurations for your Linode server. The table below includes details about each configuration option.
 
 | **Configuration** | **Description** |
 |-------------------|-----------------|
@@ -42,5 +41,22 @@ After providing the app-specific options, provide configurations for your Linode
 When you've provided all required Linode Options, click on the **Create** button. **Your Prometheus app will complete installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
 
 ## Getting Started after Deployment
+## Access Your Prometheus Instance
 
-### Access Your Grafana Client
+Now that your Prometheus One-Click App is deployed, you can log into Prometheus to access its [expression browser](https://prometheus.io/docs/prometheus/latest/getting_started/#using-the-graphing-interface), alerts, status, and more.
+
+1. Open a browser and navigate to `http://192.0.2.0:9090/`. Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/). This will bring you to your Prometheus instance's expression browser.
+
+1. Verify that Prometheus is serving metrics by navigating to `http://192.0.2.0:9090/metrics`. Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/). You should see a page of metrics similar to the example below.
+
+    ![Verify that Prometheus is serving metrics by visiting the sample metrics page.](example-metrics.png)
+
+1. [Grafana](https://grafana.com/), the open source analytics and metric visualization tool, supports querying Prometheus. Consider [deploying a Grafana instance with One-Click Apps](/docs/platform/one-click/how-to-deploy-grafana-with-one-click-apps/) to [create visualizations for your Prometheus metrics](https://prometheus.io/docs/visualization/grafana/#using).
+
+### Prometheus Default Settings
+
+- Prometheus' main configuration is located in the `/etc/prometheus/prometheus.yml` file.
+- This file includes a scrape configuration for Prometheus itself.
+- The [scraping interval](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) and evaluation interval are configured globally to be `15s`. The `scrape_interval` parameter defines the time between each Prometheus scrape, while the `evaluation_interval` parameter is the time between each evaluation of [Prometheus' alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).
+- The [Prometheus Node Exporter](https://github.com/prometheus/node_exporter) is added and enabled. This [third-party system exporter](https://prometheus.io/docs/instrumenting/exporters/) is used to collect hardware and OS metrics. Your Node Exporter metrics are sent to port `9100` of your Linode.
+
