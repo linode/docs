@@ -13,6 +13,9 @@ published: 2020-02-29
 title: How to Install Drupal using Drush on Debian 10
 h1_title: Install Drupal using Drush on Debian 10
 ---
+[Drupal](https://www.drupal.org/docs/8) is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive “community” websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
+
+[Drush](https://www.drush.org/) is a command line tool for creating, administrating, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands.
 
 ## Before You Begin
 
@@ -48,7 +51,7 @@ Ensure that the version number matches the Drupal 8 version you wish to download
 
         sudo apt-get install php-gd php-xml php-dom php-simplexml php-mbstring
 
-1. Create your Drupal 8 installation's `settings.php` file by creating a copy of the default settings file. This file will be configured when you run through Drupal's web configuration in the [Drupal First Start](#drupal-first-start) section.
+1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's automated web configuration. See the [Install and Configure Drupal on Debian 10](/docs/websites/cms/drupal/how-to-install-and-configure-drupal-on-debian-10/#drupal-first-start) guide for more details.
 
         sudo cp /var/www/html/example.com/public_html/sites/default/default.settings.php /var/www/html/example.com/public_html/sites/default/settings.php
 

@@ -38,11 +38,6 @@ Before installing themes, modules, and a backup system using Drush, make sure th
 
         sudo yum update
 
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-{{< /note >}}
-
 {{< note >}}
 The Drush commands to download or enable themes and modules vary depending on the version of Drush that you have installed. This guide uses Drush 10.
 {{< /note >}}
@@ -51,7 +46,7 @@ The Drush commands to download or enable themes and modules vary depending on th
 
 In this section you will download, enable, and set a Drupal theme using Drush.
 
-1. Navigate to [Drupal's Download and Extend page](https://www.drupal.org/project/project_theme) to find the theme you want to download. The drush download name is usually appended to the end of the Drupal theme page's URL; for example, `drupal.org/project/project/my_theme`.
+1. Navigate to [Drupal's Download and Extend page](https://www.drupal.org/project/project_theme) to find the theme you want to download. The Drush download name is usually appended to the end of the Drupal theme page's URL; for example, `drupal.org/project/project/my_theme`.
 
 1. Move into your Drupal site's document root, `/var/www/html/example.com/public_html/`. Replace `example.com` with your own domain's name.
 

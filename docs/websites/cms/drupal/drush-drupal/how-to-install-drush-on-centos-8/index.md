@@ -120,7 +120,7 @@ Drush Commandline Tool 10.2.2
     {{</ output >}}
 
     {{< note >}}
-If your system is having trouble finding the `drush` command, add the `vendor` directory to your `$PATH`. using the text editor of your choice, edit your `.bashrc` file to add the directory to it's path:
+If your system is having trouble finding the `drush` command, add the `vendor` directory to your `$PATH`. Using the text editor of your choice, edit your `.bashrc` file to add the directory to it's path:
 
 {{< file "~/.bashrc">}}
 export PATH="$HOME/vendor/bin:$PATH"

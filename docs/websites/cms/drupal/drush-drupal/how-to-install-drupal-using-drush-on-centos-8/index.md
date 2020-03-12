@@ -13,6 +13,9 @@ published: 2020-02-29
 title: How to Install Drupal using Drush on CentOS 8
 h1_title: Install Drupal using Drush on CentOS 8
 ---
+[Drupal](https://www.drupal.org/docs/8) is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive “community” websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
+
+[Drush](https://www.drush.org/) is a command line tool for creating, administrating, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands.
 
 ## Before You Begin
 
@@ -56,7 +59,7 @@ Ensure that the version number matches the Drupal 8 version you wish to download
 
         sudo yum install -y php php-{cli,mysqlnd,json,opcache,xml,mbstring,gd,curl}
 
-1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's web configuration in the [Drupal First Start](#drupal-first-start) section.
+1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's automated web configuration. See the [Install and Configure Drupal on CentOS 8](/docs/websites/cms/drupal/how-to-install-and-configure-drupal-on-centos-8/#drupal-first-start) guide for more details.
 
         sudo cp /var/www/html/example.com/public_html/sites/default/default.settings.php /var/www/html/example.com/public_html/sites/default/settings.php
 
@@ -148,7 +151,7 @@ In server administration, there are many options for user and group permissions.
 
 1. To create a new user for the site owner position, see the [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account) section of the [Securing Your Server](/docs/security/securing-your-server/) guide.
 
-1.  From the `public_html` directory, change ownership of the site to the site owner and group. Replace `example_user` below with the chosen owner's username:
+1.  From the `public_html` directory, change ownership of the site to the `apache` user and group.
 
         sudo chown -R apache:apache sites/default
 
