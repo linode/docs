@@ -81,6 +81,7 @@ A standard Debian Server installation does not include `sudo` by default, but Li
 
         adduser example_user sudo
 
+### For all Linux Distributions
 3.  After creating your limited user, disconnect from your Linode:
 
         exit
