@@ -6,6 +6,7 @@ description: 'This tutorial will teach you how to install Ghost, a publishing pl
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode.'
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 18.04", "docker", "docker compose"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['websites/cms/how-to-install-ghost-cms-with-docker-compose-on-ubuntu-18-04/']
 modified: 2018-08-20
 modified_by:
   name: Linode

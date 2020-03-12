@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 published: 2017-09-12
 title: How to Install Ghost CMS on Ubuntu 16.04
-aliases: ['websites/cms/create-a-professional-blog-with-ghost-on-ubuntu-16-04/']
+aliases: ['websites/cms/create-a-professional-blog-with-ghost-on-ubuntu-16-04/', 'websites/cms/how-to-install-ghost-cms-on-ubuntu-16-04/']
 contributor:
   name: Blago Eres
   link: https://github.com/blagoeres
