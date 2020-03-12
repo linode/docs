@@ -11,6 +11,8 @@ modified_by:
     name: Linode
 published: 2014-11-21
 title: 'Installing & Using Drupal Drush on Debian 7'
+deprecated: true
+deprecated_link: 'websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-10/'
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'
 ---
@@ -243,4 +245,3 @@ To install a different version of Drush, replace `drush/drush:dev-master` with a
 4. Check to see that Drush was installed successfully:
 
        drush --version
-
