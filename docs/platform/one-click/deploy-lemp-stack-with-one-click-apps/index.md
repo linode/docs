@@ -11,6 +11,7 @@ modified: 2020-03-11
 modified_by:
   name: Linode
 title: "Deploy a LEMP Stack With One-Click Apps"
+h1_title: "Deploying a LEMP Stack with One-Click Apps" 
 contributor:
   name: Linode
 external_resources:
