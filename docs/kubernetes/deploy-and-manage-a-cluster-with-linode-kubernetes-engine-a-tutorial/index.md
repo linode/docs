@@ -126,25 +126,29 @@ Anytime after your cluster is created you can download its *kubeconfig*. The kub
 
 {{< file "example-cluster-kubeconfig.yaml" yaml >}}
 apiVersion: v1
+kind: Config
+preferences: {}
+
 clusters:
 - cluster:
     certificate-authority-data: LS0tLS1CRUd...
     server: https://192.0.2.0:6443
   name: kubernetes
+
+users:
+- name: lke-admin
+  user:
+    as-user-extra: {}
+    token: LS0tLS1CRUd...
+
 contexts:
 - context:
     cluster: kubernetes
-    user: kubernetes-admin
-  name: kubernetes-admin@kubernetes
-current-context: kubernetes-admin@kubernetes
-kind: Config
-preferences: {}
-users:
-- name: kubernetes-admin
-  user:
-    client-certificate-data: LS0tLS1CRUd...
-    client-key-data: LS0tLS1CRUd...
+    namespace: default
+    user: lke-admin
+  name: lke-admin-ctx
 
+current-context: lke-admin-ctx
 {{< /file >}}
 
 This configuration file defines your cluster, users, and contexts.
@@ -230,23 +234,46 @@ Optionally, you can give the copied file a different name to help distinguish it
     You should see output similar to the following:
 
     {{< output >}}
-CURRENT&nbsp;&nbsp;NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLUSTER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AUTHINFO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NAMESPACE
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kubernetes-admin@kubernetes&nbsp;&nbsp;kubernetes&nbsp;&nbsp;kubernetes-admin
+CURRENT   NAME                        CLUSTER           AUTHINFO           NAMESPACE
+
+*         lke-admin-ctx               kubernetes        lke-admin          default
 {{</ output >}}
 
 1.  If your context is not already selected, (denoted by an asterisk in the `current` column), switch to this context using the `config use-context` command. Supply the full name of the cluster (including the authorized user and the cluster):
 
-        kubectl config use-context kubernetes-admin@kubernetes
+        kubectl config use-context lke-admin-ctx
 
     You should see output like the following:
 
     {{< output >}}
-Switched to context "kubernetes-admin@kubernetes".
+Switched to context "lke-admin-ctx".
 {{</ output>}}
 
-1.  You are now ready to interact with your cluster using `kubectl`. You can test the ability to interact with the cluster by retrieving a list of Pods in the `kube-system` namespace:
+1.  You are now ready to interact with your cluster using `kubectl`. You can test the ability to interact with the cluster by retrieving a list of Pods. Use the `get pods` command with the `-A` flag to see all pods running across all namespaces:
 
-        kubectl get pods -n kube-system
+        kubectl get pods -A
+
+    You should see output like the following:
+
+    {{< output >}}
+NAMESPACE     NAME                                      READY   STATUS    RESTARTS   AGE
+kube-system   calico-kube-controllers-dc6cb64cb-4gqf4   1/1     Running   0          11d
+kube-system   calico-node-bx2bj                         1/1     Running   0          11d
+kube-system   calico-node-fg29m                         1/1     Running   0          11d
+kube-system   calico-node-qvvxj                         1/1     Running   0          11d
+kube-system   calico-node-xzvpr                         1/1     Running   0          11d
+kube-system   coredns-6955765f44-r8b79                  1/1     Running   0          11d
+kube-system   coredns-6955765f44-xr5wb                  1/1     Running   0          11d
+kube-system   csi-linode-controller-0                   3/3     Running   0          11d
+kube-system   csi-linode-node-75lts                     2/2     Running   0          11d
+kube-system   csi-linode-node-9qbbh                     2/2     Running   0          11d
+kube-system   csi-linode-node-d7bvc                     2/2     Running   0          11d
+kube-system   csi-linode-node-h4r6b                     2/2     Running   0          11d
+kube-system   kube-proxy-7nk8t                          1/1     Running   0          11d
+kube-system   kube-proxy-cq6jk                          1/1     Running   0          11d
+kube-system   kube-proxy-gz4dc                          1/1     Running   0          11d
+kube-system   kube-proxy-qcjg9                          1/1     Running   0          11d
+{{</ output >}}
 
 ## Modify a Cluster's Node Pools
 

@@ -80,3 +80,5 @@ Review our [Tax Information](/docs/platform/billing-and-support/tax-information/
 ## Refunds
 
 If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#cancelling-your-account) within the first seven days and request a full refund, no questions asked.
+
+If you have a credit on your account at the time of cancellation, and this credit is from an overpayment you have made to the account, you are entitled to a refund, minus a $5 processing fee. To request a refund, enter a note in the text field. Note that credits from sources other than prepaying cannot be refunded.

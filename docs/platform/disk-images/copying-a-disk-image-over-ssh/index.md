@@ -97,9 +97,11 @@ You may want to upload your disk image to a new server. For example, if you prev
 
 1.  Prepare the new Linode by first creating a new swap disk. Doing this first means that you can simply use the Linode's remaining space for the system disk without doing any subtraction. A swap disk is typically starts at 256 MB or 512 MB in size, but can be larger or smaller depending upon your needs.
 
-1.  Access your Linode through the Linode Manager. Select **Create a new disk** and select `swap` from the **Type** drop down menu.
+1.  Access your Linode through the Linode Cloud Manager. Click the **Disks/Configs** tab, then select **Add a Disk**.
 
-    [![Create a new disk](copydisk-create-disk.png)](copydisk-create-disk-full.png)
+1.  The **Add Disk** panel will appear. Select `swap` from the **Filesystem** drop down menu.
+
+    [![Create a new disk](copydisk-create-disk.png)](copydisk-create-disk.png "Create a new disk")
 
 1.  Now use the remaining disk space to create the system drive you'll copy your disk image to. Enter a descriptive name in the **Label** field, and be sure the **Size** is large enough to hold the contents of the disk you are uploading. Click **Save Changes**.
 
@@ -118,7 +120,6 @@ You may want to upload your disk image to a new server. For example, if you prev
 {{< /output >}}
 
     Copying your disk can take a while. If you receive a `Write failed: Broken pipe` error, repeat this process.
-
 
 ### Expand the Filesystem
 
@@ -145,14 +146,15 @@ To use all available space on the new disk, execute the following from Rescue Mo
     e2fsck -f /dev/sdx
     resize2fs /dev/sdx
 
-
 ### Boot from the Disk
 
 You will now need to create a new configuration profile on the receiving Linode.
 
-1.  Select your Linode and select **Create a New Configuration Profile**.
+1.  Select your Linode, click the **Disks/Configs** tab, then select and select **Add a Configuration**.
 
-    [![Selecting the configuration profile](1065-migration6-small.png)](1064-migration6.png)
+1.  The **Add Linode Configuration** panel will appear.
+
+    [![Selecting the configuration profile](1064-migration6.png)](1064-migration6.png "Selecting the configuration profile")
 
 1.  Enter a name for the configuration profile in the **Label** field, and in the **Block Device Assignment** section set the `/dev/sda` to the new system disk you created earlier in this section of the guide. Set `/dev/sdb` to the swap image.
 

@@ -105,6 +105,10 @@ Linode uses the contact information on file in your account to notify and bill y
 
 Both the *Account & Billing* and *My Profile* pages have an email address field. The email addresses saved on these pages receive different notifications, as described in the following sections. If you are the only user, you should enter your email address on both webpages. If there are multiple users, verify that the primary account holder's email address is current on the *Account* webpage.
 
+{{< note >}}
+Only unrestricted users can receive threshold notification emails.
+{{</ note >}}
+
 ### Updating Contact Information
 
 Use the *Account & Billing* webpage to update the contact information for the Linode account. The email address saved on this webpage receives invoices, receipts, and credit card expiration warnings. Support tickets are *not* sent to this email address.

@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to the remote access area of the Linode Manager.
-keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access"]
+keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access", "add additional ipv4 address", "add ip address", "add additional ip address"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['remote-access/','networking/remote-access/','platform/manager/remote-access-classic-manager/']
 modified: 2019-03-05
@@ -72,7 +72,7 @@ The reverse DNS will be reset.
 ## Configuring IP Sharing
 
 {{< note >}}
-This feature is not yet supported in the Toronto data center.
+This feature is not yet supported in the Toronto or Sydney data centers.
 {{</ note >}}
 
 *IP sharing*, called IP failover in the Classic Manager, is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability/) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:

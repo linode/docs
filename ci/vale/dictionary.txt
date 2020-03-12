@@ -390,6 +390,7 @@ fastopen
 fauxhai
 fb4c
 fcgi
+fcgid
 fcgiwrap
 fcrontab
 fd
@@ -737,6 +738,7 @@ lish
 listdir
 listserv
 listservs
+lke
 lksemel
 lo0
 loadavg
@@ -756,6 +758,7 @@ longview
 lookups
 loopback
 lspci
+lsb
 lsd
 lsof
 lst
@@ -864,6 +867,7 @@ multicast
 multicraft
 multilib
 multiport
+multisite
 multiuser
 munin
 musl
@@ -923,6 +927,7 @@ newgrp
 newtag
 nextcloud
 nexthop
+nftables
 ng
 nginx
 ngrok

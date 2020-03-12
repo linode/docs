@@ -239,7 +239,7 @@ These are the fingerprints for the Lish gateway in our London data center (lish-
 
 These are the fingerprints for the Lish gateway in our Mumbai data center (lish-mum1.linode.com):
 
-    RSA 5:57:72:e0:79:a6:48:13:2b:8a:cd:1e:35:7c:c1:a2:ed
+    RSA 57:72:e0:79:a6:48:13:2b:8a:cd:1e:35:7c:c1:a2:ed
     ECDSA SHA256:uWVLSBPZ0E72VawrP4yWsW3YYHPM9b7A/seeEy7GG0c
     Ed25519 SHA256:5VkP3/dLsfrKic9p6y9QnFq4sKa92RBzxGJrsX5/dBQ
     Ed25519 MD5:e8:a7:f2:7c:5e:b3:ee:1d:bf:a3:37:68:d7:1d:b2:bf
@@ -268,8 +268,8 @@ These are the fingerprints for the Lish gateway in our Sydney data center (lish-
 
     RSA 31:89:80:92:aa:c0:2f:12:f6:2d:20:3a:27:88:ea:ba
     ECDSA SHA256:whZwcrXeixljj6ZrrRYzLc6UguvkNqKmtXz+JrMSI9w
-    Ed25519 SHA256:NhA76h4AHunCS+MIne1BKkiJUZyCsbkslvx9MI5Yd70
-    Ed25519 MD5:32:1d:95:a1:96:a4:86:6e:d0:45:70:72:fc:c6:07:c8
+    Ed25519 SHA256:0lOHVxRAMMOY3HDFIE4nMz11W4y+9OYqdtFqhi8NkWs
+    Ed25519 MD5:ef:2d:cc:c7:aa:10:6f:cd:de:8f:c1:5d:8b:68:56:2b
 
 ### Tokyo 2
 
