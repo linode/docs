@@ -32,12 +32,12 @@ Before installing themes, modules, and a backup system with Drush, make sure tha
 
     {{< content "limited-user-note-shortguide" >}}
 
-3.  Install and configure a [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10)
+1.  Install and configure a [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10)
 
-4.  Install [Composer and Drush on Debian 10](/docs/websites/cms/drupal/drush-drupal/how-to-install-drush-on-debian-10)
+1.  Install [Composer and Drush on Debian 10](/docs/websites/cms/drupal/drush-drupal/how-to-install-drush-on-debian-10)
 
 
-5.  Make sure that your system is up to date, using:
+1.  Make sure that your system is up to date, using:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -72,11 +72,11 @@ Ensure that your `/var/www/html/example.com/public_html` directory has user and 
     sudo chmod 774 -R /var/www/html/example.com/public_html
     {{</ note >}}
 
-3.  Enable the theme that you downloaded in the previous step. For example, to enable the `bootstrap` theme run the following command. Replace `bootstrap` with the name of your theme.
+1.  Enable the theme that you downloaded in the previous step. For example, to enable the `bootstrap` theme run the following command. Replace `bootstrap` with the name of your theme.
 
         drush theme:enable bootstrap
 
-4.  As an example, set the [Corporate Clean](https://www.drupal.org/project/corporateclean) theme as the default and active theme:
+1.  As an example, set the [Omega](https://www.drupal.org/project/omega) theme as the default and active theme:
 
         drush config-set system.theme default omega
 
@@ -94,11 +94,11 @@ Downloading and enabling a module is similar to working with a theme. However, m
 
         composer require drupal/backup_migrate
 
-2.  Enable the `backup_migrate` module:
+1.  Enable the `backup_migrate` module:
 
         drush en backup_migrate -y
 
-3.  Sign in to your Drupal site's browser interface and navigate to the **Extend** menu item (or **Administration > Extend**). Under the **OTHER** section, the Backup and Migrate module will be listed and selected.
+1.  Sign in to your Drupal site's browser interface and navigate to the **Extend** menu item (or **Administration > Extend**). Under the **OTHER** section, the Backup and Migrate module will be listed and selected.
 
 You have successfully installed and enabled a new module. The module is now running and ready to be used.
 
@@ -108,7 +108,7 @@ It's always important to keep regular backups of a website. Backups protect you 
 
 1.  To configure backup and migrate, navigate to **Administration > Configuration > Development > Backup and Migrate**
 
-2. For a quick backup, select the type of **Backup Source** and select the **Backup Destination**, and click **Backup now**
+1. For a quick backup, select the type of **Backup Source** and select the **Backup Destination**, and click **Backup now**
 
 {{< note >}}
 Always download a backup prior to updating or installing modules.

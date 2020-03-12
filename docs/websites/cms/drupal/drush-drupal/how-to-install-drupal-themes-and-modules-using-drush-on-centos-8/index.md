@@ -69,11 +69,11 @@ Ensure that your `/var/www/html/example.com/public_html` directory has user and 
     sudo chmod 774 -R /var/www/html/example.com/public_html
     {{</ note >}}
 
-3.  Enable the theme that you downloaded in the previous step. For example, to enable the `bootstrap` theme run the following command. Replace `bootstrap` with the name of your theme.
+1.  Enable the theme that you downloaded in the previous step. For example, to enable the `bootstrap` theme run the following command. Replace `bootstrap` with the name of your theme.
 
         drush theme:enable bootstrap
 
-4.  As an example, set the [Corporate Clean](https://www.drupal.org/project/corporateclean) theme as the default and active theme:
+1.  As an example, set the [Omega](https://www.drupal.org/project/omega) theme as the default and active theme:
 
         drush config-set system.theme default omega
 
