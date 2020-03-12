@@ -10,7 +10,8 @@ published: 2018-08-06
 modified: 2020-02-17
 modified_by:
     name: Linode
-title: 'Install WordPress Using WP-CLI on CentOS 7'
+title: 'How to Install WordPress Using WP-CLI on CentOS 7'
+h1_title: 'Install WordPress Using WP-CLI on CentOS 7'
 contributor:
     name: Linode
 external_resources:
