@@ -66,7 +66,7 @@ After Ruby on Rails has finished installing, you will be able to access Ruby on 
 
         sudo apt-get update && apt-get upgrade
 
-1.  Ruby comes with some pre-made scripts to get you started. One of these is a blog, to start this, use the following command:
+1.  Ruby comes with some pre-made scripts to get you started. One of these is a blog. To begin with the blog example, use the following command:
 
         rails new blog
 
@@ -129,7 +129,7 @@ create      app/assets/stylesheets/welcome.scss
 <h1>Hello, World! This is Ruby on Rails!</h1>
 {{</ file >}}
 
-1.  Tell Rails where to find the document root. Edit the file `config/routes.rb`, find and uncomment the line root line as shown:
+1.  Tell Rails where to find the document root. Edit the file `config/routes.rb`, find and uncomment the line root as shown:
 
     {{< file "config/routes" conf >}}
 Rails.application.routes.draw do
