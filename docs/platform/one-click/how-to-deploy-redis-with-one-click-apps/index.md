@@ -40,7 +40,7 @@ When you've provided all required Linode Options, click on the **Create** button
 There are several types of Redis deployments you can use, for example, a standalone Redis installation or a Redis cluster with a master and two replicas. As a next step, you should determine which type of deployment you will need for your use case by reviewing the resources provided below.
 
 -  Learn about Redis Clusters by going through their related [tutorial](https://redis.io/topics/cluster-tutorial).
-- Redis Sentinel is another deployment configuration focused on high availability. See the [Redis Sentinel](https://redis.io/topics/sentinel) documentaiton for more details.
+- Redis Sentinel is another deployment configuration focused on high availability. See the [Redis Sentinel](https://redis.io/topics/sentinel) documentation for more details.
 - Read the [Redis Quickstart](https://redis.io/topics/quickstart) to learn about securing Redis and installing client libraries to use Redis with your applications.
 - Refer to the [Redis configuration documentation](https://redis.io/topics/config) to learn about the Redis configuration file.
 
