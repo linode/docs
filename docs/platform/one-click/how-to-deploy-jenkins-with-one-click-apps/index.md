@@ -41,7 +41,7 @@ After deploying your Jenkins instance, you are ready to log in and continue the 
 
 ### Access Your Jenkins Instance
 
-1. [Connect to your Linode via SSH](Connect to your Linode via SSH).
+1. [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
 
 1. Retrieve your Jenkins admin password by viewing the contents of the `/var/lib/jenkins/secrets/initialAdminPassword` file.
 
