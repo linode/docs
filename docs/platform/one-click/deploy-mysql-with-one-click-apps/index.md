@@ -6,8 +6,8 @@ description: 'MySQL is an open-source database management system that uses a rel
 og_description: 'MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. Easily deploy Prometheus using One-Click Apps.'
 keywords: ['database','mysql','rdbms','relational database','mariadb']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-13-03
-modified: 2020-13-03
+published: 2020-03-13
+modified: 2020-03-13
 modified_by:
   name: Rajakavitha Kodhandapani
 title: "How to Deploy MySQL/MariaDB with One-Click Apps"
