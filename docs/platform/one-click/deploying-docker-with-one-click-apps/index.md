@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Deploy a Docker on Linode using One-Click Apps.'
-description: 'Deploy a Docker on Linode using One-Click Apps.'
+og_description: 'Deploy a Docker on Linode using One-Click Apps.'
 keywords: ['drupal','one-click', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
@@ -47,6 +47,8 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ## Getting Started after Deployment
 
+Docker is now installed and ready to use. The following steps provide a sample application to get you started with an easy example to demonstrate some basic Docker functionality. It is not necessary for Docker set-up.
+
 ### Access Docker
 
 After Docker has finished installing, you will be able to access Docker from the console via SSH with your Linode's IPv4 address:
@@ -55,7 +57,7 @@ After Docker has finished installing, you will be able to access Docker from the
 
 1.  Log out and log back in as your limited user account.
 
-1.  Download unzip:
+1.  Install the unzip package from the package manager:
 
         sudo apt install unzip
 
