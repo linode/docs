@@ -2,16 +2,16 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
-og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
-keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "ubuntu"]
+description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on Debian.'
+og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on Debian.'
+keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-10-19
 modified_by:
-  name: Edward
+  name: Rajakavitha Kodhandapani
 published: 2018-06-04
-title: 'Install a LEMP Stack on Ubuntu 18.04'
-h1_title: How to Install a LEMP Stack on Ubuntu 18.04
+title: 'Install a LEMP Stack on Debian 10 (Buster)'
+h1_title: How to Install a LEMP Stack on Debian 10
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->
@@ -59,7 +59,7 @@ MariaDB [(none)]> SELECT user,host,authentication_string,plugin FROM mysql.user;
 1 row in set (0.00 sec)
 {{< /highlight >}}
 
-    You can keep using the `unix_socket` plugin for the root user; this is considered a secure option for production systems, and it is needed for certain Ubuntu maintenance scripts to run normally. Further reading on this subject is available in `/usr/share/doc/mariadb-server-10.1/README.Debian.gz` on your filesystem.
+    You can keep using the `unix_socket` plugin for the root user; this is considered a secure option for production systems, and it is needed for certain maintenance scripts to run normally. Further reading on this subject is available in `/usr/share/doc/mariadb-server-10.3/README.Debian.gz` on your filesystem.
 
 3.  Create a test database and user with access permission. Replace `testdb` and `testuser` with appropriate names for your setup. Replace `password` with a strong password.
 
@@ -94,7 +94,7 @@ quit
 
 2.  Tell PHP to only accept URIs for files that actually exist on the server. This mitigates a security vulnerability where the PHP interpreter can be tricked into allowing arbitrary code execution if the requested `.php` file is not present in the filesystem. See [this tutorial](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php) for more information about this vulnerability.
 
-        sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.2/fpm/php.ini
+        sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/fpm/php.ini
 
 ## Set an NGINX Site Configuration File
 
@@ -120,7 +120,7 @@ server {
     }
 
     location ~* \.php$ {
-      fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+      fastcgi_pass unix:/run/php/php7.3-fpm.sock;
       include         fastcgi_params;
       fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
       fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
