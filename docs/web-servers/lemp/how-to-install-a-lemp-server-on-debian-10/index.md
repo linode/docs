@@ -103,7 +103,7 @@ quit
         sudo mkdir -p /var/www/html/example.com/public_html
 
 2.  Create a copy of the default configuration file for your site:
-        sudo cp /etc/nginx/sites-enbled/default /etc/nginx/sites-available/example.com.conf
+        sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-available/example.com.conf
 
 3.  Open the new example.com configuration file in your text editor. Create a configuration file with the example content. Replace *example.com* with your domain in both the file name and in the contents of the file:
 
