@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases and more with a suite of hosting automation and optimization tools.  Deploy a cPanel & WHM instance using Linode''s One-Click Apps.'
-og_description: 'cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases and more with a suite of hosting automation and optimization tools.  Deploy a cPanel & WHM instance using Linode''s One-Click Apps.'
+description: 'cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases, and more, with a suite of hosting automation and optimization tools.  Deploy a cPanel & WHM instance using Linode''s One-Click Apps.'
+og_description: 'cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases, and more, with a suite of hosting automation and optimization tools.  Deploy a cPanel & WHM instance using Linode''s One-Click Apps.'
 keywords: ['cpanel','whm','hosting','manager']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
@@ -16,7 +16,7 @@ contributor:
 external_resources:
 - '[WHM Feature Documentation](https://documentation.cpanel.net/display/78Docs/WHM+Features+List)'
 ---
-The [cPanel & WHM](https://cpanel.net/products/) One-Click App streamlines publishing and managing a website on your Linode. cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases and more with a suite of hosting automation and optimization tools.
+The [cPanel & WHM](https://cpanel.net/products/) One-Click App streamlines publishing and managing a website on your Linode. cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases, and more, with a suite of hosting automation and optimization tools.
 
 ## Linode Options
 
@@ -24,7 +24,7 @@ Provide configurations for your Linode server. The table below includes details 
 
 | **Configuration** | **Description** |
 |-------------------|-----------------|
-| **Select an Image** | CentOS 7 is currently the only image supported by the WireGuard One-Click App, and it is pre-selected on the Linode creation page. *Required* |
+| **Select an Image** | CentOS 7 is currently the only image supported by the cPanel One-Click App, and it is pre-selected on the Linode creation page. *Required* |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). cPanel recommends, at minimum, 2 GB of RAM and 40 GB of disk space. This means you should select a 2 GB Linode plan to meet the minimum requirements. See [cPanel's system requirements documentation](https://docs.cpanel.net/installation-guide/system-requirements/) for in-depth details. You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan later if you feel you need to increase or decrease your system resources. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
