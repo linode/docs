@@ -2,7 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy the MEAN stack on Linode with One-Click Apps.'
+description: 'A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web software bundle used to build modern web applications. Easily deploy MEAN using One-Click Apps.'
+og_description: 'A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web software bundle used to build modern web applications. Easily deploy MEAN using One-Click Apps.'
 keywords: ['mongodb','mean','angular','express', 'web app', 'node']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-17
@@ -55,10 +56,6 @@ A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web 
 After your MEAN One-click App has finished installing, you can:
 
 - [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh). You will need your Linode's root password to proceed.
-
-- Consult the following guides to learn more about working with the various components of the MERN stack:
-
-    - [Build Database Clusters with MongoDB](/docs/databases/mongodb/build-database-clusters-with-mongodb/)
 
 
 ### Software Included

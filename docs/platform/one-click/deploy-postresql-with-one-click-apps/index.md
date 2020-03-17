@@ -100,11 +100,11 @@ Run the commands in this section as the `postgres` Linux user.
 
 ### Create Tables
 
-This section contains examples which create a test database with an employee's first and last name, assigning each a unique key. When creating your own tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL client shell, that you opened to create `mytestdb` database.
+This section contains examples which create a test database with an employee's first and last name, assigning each a unique key. When creating your own tables, you may specify as many parameters (columns) as you need and name them appropriately. Run the commands in this section from the PostgreSQL client shell that you opened to create `mytestdb` database.
 
 1.  Create a table called "employees" in your test database:
 
-        CREATE TABLE employees (employee_id int, first_name varchar, last_name varchar);
+        CREATE TABLE employees (employee_id int PRIMARY KEY, first_name varchar, last_name varchar);
 
 2.  Insert a record into the table:
 
