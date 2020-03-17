@@ -5,8 +5,8 @@ author:
 description: 'Deploy the MEAN stack on Linode with One-Click Apps.'
 keywords: ['mongodb','mean','angular','express', 'web app', 'node']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-17-03
-modified: 2019-17-03
+published: 2020-03-17
+modified: 2019-03-17
 modified_by:
   name: Linode
 title: "How to Deploy MEAN with One-Click Apps"
