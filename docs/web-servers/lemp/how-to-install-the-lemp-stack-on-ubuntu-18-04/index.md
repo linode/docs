@@ -18,12 +18,13 @@ h1_title: 'Install the LEMP Stack on Ubuntu 18.04'
 
 ## What is the LEMP Stack?
 
-The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configuration for developing and hosting web applications. The four components of the stack are not tightly coupled, making it possible to substitute your preferred technologies. The **LEMP** stack is a common variant in which the Apache web server is replaced by NGINX.
+The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configuration for developing and hosting web applications. The four components of the stack are not tightly coupled, making it possible to substitute your preferred technologies. The **LEMP** stack is a common variant in which the Apache web server is replaced by NGINX, pronounced "engine-x", thus providing the "E".
 
 ## Before You Begin
 
 1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides and that the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
-2.  Update your system:
+
+1.  Update your system:
 
         sudo apt update && sudo apt upgrade
 
@@ -37,11 +38,11 @@ Install NGINX from the package repository:
 
 ### MariaDB
 
+MariaDB is a popular fork of MySQL, and its development is considered to be more open and transparent than MySQL's. MariaDB is administered with the same commands as MySQL.
+
 1.  Install the MariaDB server and MySQL/MariaDB-PHP support:
 
         sudo apt install mariadb-server php-mysql
-
-    MariaDB is a popular fork of MySQL, and its development is considered to be more open and transparent than MySQL's. MariaDB is administered with the same commands as MySQL.
 
 2.  Log in to MariaDB's SQL shell:
 
@@ -103,6 +104,7 @@ quit
         sudo mkdir -p /var/www/html/example.com/public_html
 
 2.  Create a copy of the default configuration file for your site:
+
         sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-available/example.com.conf
 
 3.  Open the new example.com configuration file in your text editor. Create a configuration file with the example content. Replace *example.com* with your domain in both the file name and in the contents of the file:
