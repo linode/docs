@@ -121,7 +121,13 @@ PEERDNS=no
 # Edit from "yes" to "no".
 IPV6_AUTOCONF=no
 
-...
+# Keep the following lines:
+DEVICE="eth0"
+NAME="eth0"
+ONBOOT="yes"
+IPV6INIT="yes"
+IPV6_ADDR_GEN_MODE="eui64"
+IPV6_PRIVACY="no"
 
 # Add the following lines:
 DOMAIN=members.linode.com
