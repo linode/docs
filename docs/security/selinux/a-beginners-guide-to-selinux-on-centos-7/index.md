@@ -12,7 +12,7 @@ modified_by:
 published: 2020-03-18
 title: A Beginner's Guide to SELinux on CentOS 7
 h1_title: Getting Started with SELinux on CentOS 7
-aliases: ['security/getting-started-with-selinux']
+aliases: ['security/getting-started-with-selinux/']
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
  - '[SELinux User Resources](https://selinuxproject.org/page/User_Resources)'
