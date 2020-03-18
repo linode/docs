@@ -22,7 +22,7 @@ Setting up a personal Virtual Private Network (VPN) server is a great way to avo
 
 However, the configuration process is time-consuming, especially for those with little experience working with remote servers. For example, Linode's guide on setting up a hardened OpenVPN server and client is a [three](/docs/networking/vpn/set-up-a-hardened-openvpn-server/) [part](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/) [series](/docs/networking/vpn/configuring-openvpn-client-devices/).
 
-[Streisand](https://github.com/jlund/streisand) attempts to simplify this process and offer painless, high-quality security. The Streisand script creates a Linode and automatically configures OpenVPN, Shadowsocks, OpenConnect, L2TP/IPSec, Wireguard, a Tor bridge, and SSH. Once the server is set up, users can connect to a gateway containing detailed, personalized instructions for connecting to each of these services.
+[Streisand](https://github.com/jlund/streisand) attempts to simplify this process and offer painless, high-quality security. The Streisand script creates a new Linode and automatically configures OpenVPN, Shadowsocks, OpenConnect, L2TP/IPSec, Wireguard, a Tor bridge, and SSH. Once the new server is set up, users can connect to a gateway containing detailed, personalized instructions for connecting to each of these services. You can then later remove the old Linode (on which you started out) in order of having a lower bill.
 
 ## Before You Begin
 
@@ -47,7 +47,7 @@ Streisand uses open-source platform [Ansible](https://www.ansible.com/) to autom
 
     ![Add a Personal Access Token](get-started-with-linode-api-new-token.png "Add a Personal Access Token")
 
-    When you have finished, click **Submit** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through the Cloud Manager after closing the popup.**
+    When you have finished, click **Submit** to generate an API token string. Copy the token and save it in a secure location. **You will not be able to view the token through the Cloud Manager after closing the popup.** Using the token, an entirely new Linode, just for Streisand, is going to be created. But of course, more software can be added to this new Linode, such as "cockpit".
 
 ## Install Ansible and its Dependencies
 
@@ -128,11 +128,11 @@ You should not receive any errors during the install. If you receive an error re
 
 ## Connect to Your Streisand Gateway
 
-You now have a Linode with multiple VPNs and protocols fully configured for use; the next step is to connect to it. Streisand should automatically open the `streisand.html` file that was generated during the configuration process. If not, you can find the file in `streisand/generated-docs/streisand.html` and open it in any browser.
+You now have a Linode with multiple VPNs and protocols fully configured for use; the next step is to connect to it. Streisand might / should automatically open the `streisand.html` file that was generated during the configuration process. If not, you can find the file in `streisand/generated-docs/streisand.html` and open it in any browser. It is under the directory, into which you "git clone"d the repo in STEP 1 on the new Linode. `streisand.html` has ready-made links to click in order to log into the new Linode's Streisand management webpage.
 
 1.  Click on "Download Certificate" to download an SSL certificate so that you can verify the secure connection to your new gateway. The `streisand.html` file includes instructions on how to mark the certificate as trusted on different systems and devices.
 
-2.  There are two possible ways to connect to your gateway, but for most users the easiest way will be through SSL. Scroll down to "Connecting to your Streisand Gateway" in `streisand.html` and copy the `https://` address into your web browser. Enter the provided username and password when prompted.
+2.  There are two possible ways to connect to your gateway, but for most users the easiest way will be through SSL. Scroll down to "Connecting to your Streisand Gateway" in `streisand.html` and copy the `https://` address into your web browser (or use bookmarks). Enter the provided username and password when prompted.
 
 
 ### Next Steps
