@@ -2,7 +2,7 @@
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'An introduction to basic Go Data Types.'
+description: 'An introduction to several data types in the Go language. Learn about how pointers work in Go, what the available numeric types are, how arrays and slices work and how they differ, and how to use maps.'
 keywords: ["Go", "Golang", "Pointers", "Arrays", "Slices", "Maps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-19
