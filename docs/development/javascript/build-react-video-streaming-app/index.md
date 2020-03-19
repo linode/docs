@@ -86,7 +86,7 @@ We can start writing code for our server. Create a new file in the root of the `
     const express = require('express');
     const fs = require('fs');
     const path = require('path');
-    
+
     const app = express();
 
 {{< / highlight >}}
@@ -190,7 +190,7 @@ Our application will have 2 routes to handle the **List** and **Player** views s
 {{< highlight bash >}}
     // If you are using yarn
     yarn add react-router-dom
-    
+
     // if you are using npm
     npm install --save react-router-dom
     {{< / highlight >}}
@@ -370,7 +370,7 @@ With this in place, let’s create a new route `/videos` that will send this dat
 
 {{< highlight js >}}
     app.use(cors());
-    
+
     app.get('/videos', function(req, res) {
       res.json(videos);
     });
@@ -422,7 +422,7 @@ Let’s create the route for streaming videos.
       if (range) {
         const parts = range.replace(/bytes=/, "").split("-")
         const start = parseInt(parts[0], 10)
-        const end = parts[1] 
+        const end = parts[1]
           ? parseInt(parts[1], 10)
           : fileSize-1
         const chunksize = (end-start)+1
@@ -476,7 +476,7 @@ We get the file size and send the first few chunks of the video.
     if (range) {
       const parts = range.replace(/bytes=/, "").split("-")
       const start = parseInt(parts[0], 10)
-      const end = parts[1] 
+      const end = parts[1]
         ? parseInt(parts[1], 10)
         : fileSize-1
       const chunksize = (end-start)+1
@@ -490,7 +490,7 @@ We get the file size and send the first few chunks of the video.
       res.writeHead(206, head);
       file.pipe(res);
     }
-{{< / highlight >}}    
+{{< / highlight >}}
 
 Subsequent requests will include a range so we handle that in the `if` block. We create a read stream using the `start` and `end` values of the range. We then set the response headers, setting the `Content-Length` to the chunk size we generated. We also use the HTTP code 206 which let’s the browser know this is a partial content. This means the browser will keep making requests until it has fetched all chunks of the video.
 
@@ -510,16 +510,16 @@ To generate a thumbnail, we need to install 2 libraries. First, install [FFmpeg]
 {{< highlight bash >}}
     // using npm
     npm install --save thumbsupply
-    
+
     // using yarn
     yarn add thumbsupply
-{{< / highlight >}}  
- 
+{{< / highlight >}}
+
 Most thumbnail generating packages require `FFmpeg` which is why it’s required. Then update your imports statements in `server/app.js` to include `thumbsupply`.
- 
+
 {{< highlight js >}}
     const thumbsupply = require('thumbsupply');
-{{< / highlight >}}      
+{{< / highlight >}}
 
 Then we’ll create a new route that will handle generating thumbnails:
 
@@ -528,7 +528,7 @@ Then we’ll create a new route that will handle generating thumbnails:
       thumbsupply.generateThumbnail(`assets/${req.params.id}.mp4`)
         .then(thumb => res.sendFile(thumb))
     });
-{{< / highlight >}} 
+{{< / highlight >}}
 
 `thumbsupply` provides a `generateThumbnail` method that accepts a path to a video and then generates the thumbnail. If successful, we send the generated file back to the client.
 
@@ -542,7 +542,7 @@ Save the file which would restart the server. Refresh the application in the bro
 
 ## Add Captions to Videos
 
-To make videos even more accessible, adding captions to videos helps the deaf and hard of hearing to be able to follow along videos. It’s also fair to point out that [captions and subtitles are not the same thing](http://web.archive.org/web/20160117160743/http://screenfont.ca/learn/). Even though they are not the same, they are implemented the same way. 
+To make videos even more accessible, adding captions to videos helps the deaf and hard of hearing to be able to follow along videos. It’s also fair to point out that [captions and subtitles are not the same thing](http://web.archive.org/web/20160117160743/http://screenfont.ca/learn/). Even though they are not the same, they are implemented the same way.
 
 For this section, we’ll need 2 things:
 
@@ -553,10 +553,10 @@ We won’t look at how to create caption files in this tutorial because it’s b
 
 
     WEBVTT
-    
+
     00:00:00.500 --> 00:00:02.000
     The Web is always changing
-    
+
     00:00:02.500 --> 00:00:08.300
     and the way we access it is changing
 
@@ -639,7 +639,7 @@ We can add some styles to make the application look better. Update the React app
       margin-bottom: 5px;
       font-size: 16px;
     }
-{{< / highlight >}}     
+{{< / highlight >}}
 
 Replace `src/index.css` with:
 
@@ -651,13 +651,13 @@ Replace `src/index.css` with:
       -moz-osx-font-smoothing: grayscale;
       background-color: #282c34;
     }
-{{< / highlight >}}    
+{{< / highlight >}}
 
 Add this to the `head` section of `public/index.html`:
 
 {{< highlight html >}}
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-{{< / highlight >}}    
+{{< / highlight >}}
 
 Finally, let’s create `header` and `footer` components:
 
@@ -673,7 +673,7 @@ Finally, let’s create `header` and `footer` components:
       );
     }
     export default Header;
-{{< / highlight >}}    
+{{< / highlight >}}
 
 `src/Footer.js`
 
@@ -687,14 +687,14 @@ Finally, let’s create `header` and `footer` components:
       );
     }
     export default Footer;
-{{< / highlight >}}    
+{{< / highlight >}}
 
 Now import and use them in `src/Home.js` and `src/Player.js` like so:
 
 {{< highlight js >}}
     import Header from './Header';
     import Footer from './Footer';
-    
+
     render() {
       return (
         <div className="App-header">
@@ -704,7 +704,7 @@ Now import and use them in `src/Home.js` and `src/Player.js` like so:
         </div>
       )
     }
-{{< / highlight >}}        
+{{< / highlight >}}
 
 Now the application should look like this:
 
