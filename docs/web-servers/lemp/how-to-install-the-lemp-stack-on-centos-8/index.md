@@ -119,7 +119,7 @@ group = nginx
 
         sudo chown -R $USER:$USER /var/www/html/example.com/public_html
 
-1.  Use SELinux’s chcon command to change the file security context for web content:
+1.  Use SELinux’s `chcon` command to change the file security context for web content:
 
         sudo chcon -t httpd_sys_content_t /var/www/html/example.com -R
         sudo chcon -t httpd_sys_rw_content_t /var/www/html/example.com -R
