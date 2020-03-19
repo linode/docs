@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
-og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
+description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Ubuntu.'
+og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Ubuntu.'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-18
@@ -50,8 +50,9 @@ MariaDB is a popular fork of MySQL, and its development is considered to be more
 
     The database will not prompt you for a password, as it is initially configured to use the `unix_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are connecting from the Linux root user on localhost:
 
+        SELECT user,host,authentication_string,plugin FROM mysql.user;
+
     {{< highlight sql >}}
-MariaDB [(none)]> SELECT user,host,authentication_string,plugin FROM mysql.user;
 +------+-----------+-----------------------+-------------+
 | user | host      | authentication_string | plugin      |
 +------+-----------+-----------------------+-------------+
@@ -76,7 +77,7 @@ GRANT ALL PRIVILEGES ON testdb.* TO 'testuser';
 quit
 {{< /highlight >}}
 
-5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MariaDB root user, but you can skip that step:
 
         sudo mysql_secure_installation
 
@@ -111,8 +112,8 @@ quit
 
     {{< file "/etc/nginx/sites-available/example.com.conf" nginx >}}
 server {
-    listen         80 default_server;
-    listen         [::]:80 default_server;
+    listen         80;
+    listen         [::]:80;
     server_name    example.com www.example.com;
     root           /var/www/html/example.com/public_html;
     index          index.html;
@@ -156,14 +157,13 @@ server {
 
       a. Check the ports that are enabled for `Nginx Full` Profile:
 
-          sudo ufw app info "Nginx Full"
+        sudo ufw app info "Nginx Full"
 
       Ports `80` and `443` should be listed as enabled for `Nginx Full` profile.
 
       b. To allow incoming HTTP and HTTPS traffic for `Nginx Full` profile:
 
-          sudo ufw allow in "Nginx Full"
-
+        sudo ufw allow in "Nginx Full"
 
 ## Test the LEMP Stack
 
@@ -207,17 +207,32 @@ server {
 
 {{< /file >}}
 
-5.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load at all, re-check your configuration. If your DNS changes haven't propagated yet, you can test your page with `curl` instead:
+5.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*.
 
-        $ curl -H "Host: example.com" http://<your-ip-address>/test.php
-        <html>
-        <head>
-        <h2>LEMP Stack Test</h2>
-        </head>
-        <body>
-        <p>Hello,</p><p>You have connected successfully.</p></body>
-        </html>
+    ![LEMP Stack Test Page Success](lemp-stack-test-page.png "LEMP Stack Test Page Success")
+
+    If you see an error message or if the page does not load at all, re-check your configuration. If your DNS changes haven't propagated yet, you can test your page with `curl` instead:
+
+        curl -H "Host: example.com" http://<your-ip-address>/test.php
+
+    {{< highlight html >}}
+<html>
+<head>
+    <h2>LEMP Stack Test</h2>
+</head>
+    <body>
+    <p>Hello,</p><p>You have connected successfully.</p></body>
+</html>
+{{</ highlight >}}
 
 6.  Remove the test file once the stack is working correctly:
 
         sudo rm /var/www/html/example.com/public_html/test.php
+
+## Next Steps
+
+For more on the software in this stack see the following guides:
+
+- [Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)
+- [Set Up MariaDB Clusters with Galera](/docs/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)
+- [Serve PHP with PHP-FPM and NGINX](/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/)

@@ -2,23 +2,23 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on CentOS.'
-og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on CentOS.'
+description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on CentOS.'
+og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on CentOS.'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-10-19
+modified: 2020-03-18
 modified_by:
   name: Edward
 published: 2018-06-04
-title: 'Install a LEMP Stack on CentOS 8'
-h1_title: How to Install a LEMP Stack on CentOS 8
+title: 'How to Install the LEMP Stack on CentOS 8'
+h1_title: 'Install the LEMP Stack on CentOS 8'
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->
 
-## What is a LEMP Stack?
+## What is the LEMP Stack?
 
-The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configuration for developing and hosting web applications. The four components of the stack are not tightly coupled, making it possible to substitute your preferred technologies. The LEMP stack is a common variant in which the Apache web server is replaced by NGINX.
+The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configuration for developing and hosting web applications. The four components of the stack are not tightly coupled, making it possible to substitute your preferred technologies. The **LEMP** stack is a common variant in which the Apache web server is replaced by NGINX, pronounced "engine-x", thus providing the "E".
 
 ## Before You Begin
 
@@ -31,21 +31,32 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 
 ### NGINX
 
-Install NGINX from the package repository:
+1.  Install NGINX from the package repository:
 
-    sudo dnf install nginx
+        sudo dnf install nginx
+
+1.  Enable and start the NGINX service:
+
+        sudo systemctl enable nginx
+        sudo systemctl start nginx
 
 ### MariaDB
 
+MariaDB is a popular fork of MySQL, and its development is considered to be more open and transparent than MySQL's. MariaDB is administered with the same commands as MySQL.
+
 1.  Install the MariaDB server and MySQL/MariaDB-PHP support:
 
-        sudo dnf install mariadb-server php-mysql
+        sudo dnf install mariadb-server php-mysqlnd
 
-    MariaDB is a popular fork of MySQL, and its development is considered to be more open and transparent than MySQL's. MariaDB is administered with the same commands as MySQL.
+1.  Set MariaDB to start at boot and start the daemon for the first time:
 
-2.  Log in to MariaDB's SQL shell:
+        sudo systemctl enable mariadb.service
+        sudo systemctl start mariadb.service
 
-        sudo mysql -u root
+1.  Log in to MariaDB's SQL shell:
+
+        mysql -u root
+
 3.  Create a test database and user with access permission. Replace `testdb` and `testuser` with appropriate names for your setup. Replace `password` with a strong password.
 
     {{< highlight sql >}}
@@ -76,8 +87,15 @@ quit
 1.  Install the PHP FastCGI Processing Manager, which includes the core PHP dependencies:
 
         sudo dnf install php-fpm
-2.  Change the default `user` in `/etc/php-fpm.d/www.conf` from `apache` to `nginx`:
-{{< file "/etc/php-fpm/www.conf" conf >}}
+
+1.  Enable and start the php-fpm.service:
+
+        sudo systemctl enable php-fpm.service
+        sudo systemctl start php-fpm.service
+
+1.  Change the default `user` in `/etc/php-fpm.d/www.conf` from `apache` to `nginx`:
+
+    {{< file "/etc/php-fpm.d/www.conf" conf >}}
 …
 ; RPM: apache user chosen to provide access to the same directories as httpd
 user = nginx
@@ -87,23 +105,31 @@ group = nginx
 
 {{< /file >}}
 
-3.  Tell PHP to only accept URIs for files that actually exist on the server. This mitigates a security vulnerability where the PHP interpreter can be tricked into allowing arbitrary code execution if the requested `.php` file is not present in the filesystem. See [this tutorial](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php) for more information about this vulnerability.
+1.  Tell PHP to only accept URIs for files that actually exist on the server. This mitigates a security vulnerability where the PHP interpreter can be tricked into allowing arbitrary code execution if the requested `.php` file is not present in the filesystem. See [this tutorial](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=pitfalls#passing-uncontrolled-requests-to-php) for more information about this vulnerability.
 
-        sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.2/fpm/php.ini
+        sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php.ini
 
 ## Set an NGINX Site Configuration File
 
 1. Create a root directory where the site's content will live. Replace *example.com* with your site's domain.
 
         sudo mkdir -p /var/www/html/example.com/public_html
+
 2. Assign the ownership of the directory to `$USER`:
 
         sudo chown -R $USER:$USER /var/www/html/example.com/public_html
-3.  Update the location of the web content in `/etc/nginx/nginx.conf` file.
-{{< file "/etc/nginx/nginx.conf" nginx >}}
+
+1.  Use SELinux’s chcon command to change the file security context for web content:
+
+        sudo chcon -t httpd_sys_content_t /var/www/html/example.com -R
+        sudo chcon -t httpd_sys_rw_content_t /var/www/html/example.com -R
+
+3.  Update the document root location of the web content in `/etc/nginx/nginx.conf` file.
+
+    {{< file "/etc/nginx/nginx.conf" nginx >}}
 server {
-    listen       80 default_server;
-    listen       [::]:80 default_server;
+    listen       80;
+    listen       [::]:80;
     server_name  _;
     root         /var/www/html/example.com/public_html;
 
@@ -127,8 +153,8 @@ server {
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
     server {
-    listen         80 default_server;
-    listen         [::]:80 default_server;
+    listen         80;
+    listen         [::]:80;
     server_name    example.com www.example.com;
     root           /var/www/html/example.com/public_html;
     index          index.html;
@@ -136,26 +162,33 @@ server {
     location / {
       try_files $uri $uri/ =404;
     }
-
+    location ~* \.php$ {
+      fastcgi_pass unix:/run/php-fpm/www.sock;
+      include         fastcgi_params;
+      fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+      fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
+    }
 }
 
 {{< /file >}}
 
-5.  Configure FirewallD to Allow HTTP Connections
+## Configure FirewallD
 
-    FirewallD is enabled for CentOS 8 Linodes, but HTTP is not included in the default set of services.
+FirewallD is enabled for CentOS 8 Linodes, but HTTP and HTTPS are not included in the default set of services.
 
-      1. View the default set of services:
+1. View the default set of services:
 
-            sudo firewall-cmd --zone=public --list-services
-        {{< output >}}
-        ssh dhcpv6-client
-        {{< /output >}}
+        sudo firewall-cmd --zone=public --list-services
 
-      1. To allow connections to Apache, add HTTP as a service:
+    {{< output >}}
+cockpit dhcpv6-client ssh
+{{< /output >}}
 
-            sudo firewall-cmd --zone=public --add-service=http --permanent
-            sudo firewall-cmd --zone=public --add-service=http
+1. To allow connections to NGINX, add HTTP and HTTPS as a service:
+
+        sudo firewall-cmd --zone=public --add-service=http --permanent
+        sudo firewall-cmd --zone=public --add-service=https --permanent
+        sudo firewall-cmd --reload
 
 ## Test the LEMP Stack
 
@@ -163,7 +196,7 @@ server {
 
 2.  Restart PHP and reload the NGINX configuration:
 
-        sudo systemctl restart php7.2-fpm
+        sudo systemctl restart php-fpm
         sudo nginx -s reload
 
 3.  Test the NGINX configuration:
@@ -199,17 +232,30 @@ server {
 
 {{< /file >}}
 
-5.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load at all, re-check your configuration. If your DNS changes haven't propagated yet, you can test your page with `curl` instead:
+5.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*.
 
-        $ curl -H "Host: example.com" http://<your-ip-address>/test.php
-        <html>
-        <head>
-        <h2>LEMP Stack Test</h2>
-        </head>
-        <body>
-        <p>Hello,</p><p>You have connected successfully.</p></body>
-        </html>
+    ![LEMP Stack Test Page Success](lemp-stack-test-page.png "LEMP Stack Test Page Success")
+
+    If you see an error message or if the page does not load at all, re-check your configuration. If your DNS changes haven't propagated yet, you can test your page with `curl` instead:
+
+        curl -H "Host: example.com" http://<your-ip-address>/test.php
+
+    {{< highlight html >}}
+<html>
+<head>
+    <h2>LEMP Stack Test</h2>
+</head>
+    <body>
+    <p>Hello,</p><p>You have connected successfully.</p></body>
+</html>
+{{</ highlight >}}
 
 6.  Remove the test file once the stack is working correctly:
 
         sudo rm /var/www/html/example.com/public_html/test.php
+
+## Next Steps
+
+For more on the software in this stack see the following guides:
+- [Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)
+- [Serve PHP with PHP-FPM and NGINX](/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/)
