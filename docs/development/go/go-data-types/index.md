@@ -714,7 +714,7 @@ var aMapOfStringsToIntegers map[string]int
 -   You can create an initalized, empty map with `string` keys and `int` values with the help of the `make()` function:
 
     {{< file "" go >}}
-// Creates an initalized map with strings as the keys and integers as the values:
+// Creates an initialized map with strings as the keys and integers as the values:
 aMapOfStringsToIntegers := make(map[string]int)
 {{< /file >}}
 
@@ -799,7 +799,7 @@ k2 : 13
 
 -   Go also supports maps literals, which is illustrated in the definition of the `mapB` map on lines 14-17.
 
--   You can delete an element of a map using the `delete()` function, as shown on lines 19-23. The `delete()` function can be called for a key that does not already exist without erroring, as shown on line 22.
+-   You can delete an element of a map using the `delete()` function, as shown on lines 19-23. The `delete()` function can be called for a key that does not already exist without generating an error, as shown on line 22.
 
 -   The program also contains a technique that allows you to find out whether a key exists in a map or not, demonstrated on lines 26-32:
 
