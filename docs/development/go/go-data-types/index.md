@@ -711,7 +711,7 @@ While the `bool` data type is comparable, using it for the keys to a map will li
 var aMapOfStringsToIntegers map[string]int
 {{< /file >}}
 
--   You can create an initalized, empty map with `string` keys and `int` values with the help of the `make()` function:
+-   You can create an initialized, empty map with `string` keys and `int` values with the help of the `make()` function:
 
     {{< file "" go >}}
 // Creates an initialized map with strings as the keys and integers as the values:
