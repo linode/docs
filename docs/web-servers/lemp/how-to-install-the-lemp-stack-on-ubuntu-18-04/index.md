@@ -156,7 +156,7 @@ server {
 
 ### Enable Firewall
 
-Eenable web traffic if you configured UFW on your server.
+If you configured UFW on your server, enable the firewall to allow web traffic.
 
 1.  Check the ports that are enabled for `Nginx Full` Profile:
 
