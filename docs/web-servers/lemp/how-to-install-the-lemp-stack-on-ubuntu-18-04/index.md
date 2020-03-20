@@ -154,7 +154,7 @@ server {
 
         sudo ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/
 
-### Enable Firewall
+## Enable Firewall
 
 If you configured UFW on your server, enable the firewall to allow web traffic.
 
