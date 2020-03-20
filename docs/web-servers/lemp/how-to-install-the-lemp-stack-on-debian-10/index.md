@@ -143,7 +143,7 @@ server {
 
     -  The `*` in the `~* \.php$` location directive indicates that PHP file names are not case sensitive. This can be removed if you prefer to enforce letter case.
 
-    -  `fastcgi_pass` specifies the [UNIX socket](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass) where PHP listens for incoming connections from other local processes
+    -  `fastcgi_pass` specifies the [UNIX socket](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass) where PHP listens for incoming connections from other local processes.
 
     -  `include fastcgi_params` tells NGINX to process a list of `fastcgi_param` variables at `/etc/nginx/fastcgi_params`.
 
@@ -153,15 +153,17 @@ server {
 
         sudo ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/
 
-5.  Enable the firewall to allow web traffic. This guide lists the commands to enable web traffic if you configured UFW on your server.
+### Enable Firewall
 
-      a. Check the ports that are enabled for `Nginx Full` Profile:
+If you configured UFW on your server, enable the firewall to allow web traffic.
+
+1.  Check the ports that are enabled for `Nginx Full` Profile:
 
         sudo ufw app info "Nginx Full"
 
-      Ports `80` and `443` should be listed as enabled for `Nginx Full` profile.
+    Ports `80` and `443` should be listed as enabled for `Nginx Full` profile.
 
-      b. To allow incoming HTTP and HTTPS traffic for `Nginx Full` profile:
+1.  If these ports are now allowed, enable them with the following command:
 
         sudo ufw allow in "Nginx Full"
 
