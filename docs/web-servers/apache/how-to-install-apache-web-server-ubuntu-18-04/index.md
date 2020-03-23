@@ -55,7 +55,7 @@ Server MPM:     event
 
 ### The Prefork Module
 
-The Prefork Module is ideal for single threaded applications. It's a single parent with multiple forked child servers that are identical processes that wait for incoming requests. Each child process handles a single request. Prefork is resource intensive but necessary for applications that do not support multi-threading such as PHP.
+The Prefork Module is ideal for single threaded applications. It's a single parent with multiple forked child servers that are identical processes which wait for incoming requests. Each child process handles a single request. The Prefork Module is resource intensive but necessary for applications that do not support multi-threading such as PHP.
 
 1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following are the default values:
 
@@ -129,7 +129,7 @@ The Worker Module is a hybrid Prefork, multi-threaded, multi-processor module. I
 
 ### The Event Module
 
-The Event Module is similar to the Worker Module except each thread has a dedicated listener so that threads are not locked in wait. As of Apache 2.4 the Event Module is considered stable, for versions before 2.4, use Worker.
+The Event Module is similar to the Worker Module except each thread has a dedicated listener so that threads are not locked in wait. As of Apache 2.4 the Event Module is considered stable. For versions before 2.4, use the [Worker Module](#the-worker-module).
 
 1.  If you choose to keep the *event module* enabled, open `/etc/apache2/mods-available/mpm_event.conf` in your text editor and edit the values as needed. The following are the default values:
 
@@ -236,7 +236,7 @@ One of Apache's strengths is its ability to be customized with modules. The defa
 
         sudo apt-get install [module-name]
 
-1.  All mods are located in the `/etc/apache2/mods-avaiable` directory. Edit the `.conf` file of any installed module if needed, then enable the module:
+1.  All mods are located in the `/etc/apache2/mods-available` directory. Edit the `.conf` file of any installed module if needed, then enable the module:
 
         sudo a2enmod [module-name]
 
@@ -264,7 +264,7 @@ To install:
 
 ## Check Server Status
 
-You can check your Apache web server status with the following command:
+You can check your Apache web server status with the command:
 
     sudo systemctl status apache2
 

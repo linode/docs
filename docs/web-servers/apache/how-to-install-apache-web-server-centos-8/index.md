@@ -6,10 +6,10 @@ description: 'Install Apache on your CentOS 8 server, configure virtual hosting,
 og_description: 'Install Apache on your CentOS 8 server, configure virtual hosting, and set up modules and scripting.'
 keywords: ["apache", "centos", "centos 8", "http", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-12-31
+modified: 2020-03-19
 modified_by:
   name: Linode
-published: 2015-07-31
+published: 2020-03-19
 title: 'How to Install Apache Web Server on CentOS 8'
 h1_title: 'Installing Apache Web Server on CentOS 8'
 external_resources:
@@ -17,7 +17,7 @@ external_resources:
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
 
-The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on CentOS 8.
+The *Apache HTTP Web Server* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on CentOS 8.
 
 If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide.
 
@@ -73,7 +73,7 @@ Server MPM:     event
 
 ### The Prefork Module
 
-The Prefork Module is ideal for single threaded applications. It's a single parent with multiple forked child servers that are identical processes that wait for incoming requests. Each child process handles a single request. Prefork is resource intensive but necessary for applications that do not support multi-threading such as PHP.
+The Prefork Module is ideal for single threaded applications. It's a single parent with multiple forked child servers that are identical processes which wait for incoming requests. Each child process handles a single request. The Prefork Module is resource intensive but necessary for applications that do not support multi-threading such as PHP.
 
 1.  Add the following section to the `/etc/httpd/conf/httpd.conf` file in your text editor and edit the values as needed. The following are the default values:
 
@@ -121,7 +121,7 @@ LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
 
 ### The Worker Module
 
-The Worker Module is a hybrid Prefork, multi-threaded, multi-processor module. It's similar to Prefork, but each child is multi-threaded.
+The Worker Module is a hybrid Prefork, multi-threaded, multi-processor module. It's similar to the Prefork Module, but each child is multi-threaded.
 
 1.  Add the following section to the `/etc/httpd/conf/httpd.conf` file in your text editor and edit the values as needed. The following are the default values:
 
@@ -163,7 +163,7 @@ LoadModule mpm_worker_module modules/mod_mpm_worker.so
 # See: http://httpd.apache.org/docs/2.4/mod/event.html
 #
 #LoadModule mpm_event_module modules/mod_mpm_event.so
-{{</ file >}}        
+{{</ file >}}
 
 1.  Restart Apache:
 
@@ -171,7 +171,7 @@ LoadModule mpm_worker_module modules/mod_mpm_worker.so
 
 ### The Event Module
 
-The Event Module is similar to the Worker Module except each thread has a dedicated listener so that threads are not locked in wait. As of Apache 2.4 the Event Module is considered stable, for versions before 2.4, use Worker.
+The Event Module is similar to the Worker Module except each thread has a dedicated listener so that threads are not locked in wait. As of Apache 2.4 the Event Module is considered stable, for versions before 2.4, use the [Worker Module](#the-worker-module).
 
 1.  If you choose to keep the *event module* enabled, open `/etc/httpd/conf/httpd.conf` in your text editor, add this section to the end, and edit the values as needed. The following are the default values:
 
@@ -280,13 +280,13 @@ IncludeOptional sites-enabled/*.conf
 </html>
 {{</ file >}}
 
-1.  Configure SELinux policies on the log directory for each virtual host. This will allow Apache to create and write to the log files. The `restorecon` command applies this setting and persists it after a reboot:
+1.  Configure SELinux policies on the log directory for each virtual host. This will allow Apache to create and write to the log files. The `restorecon` command applies this setting and persists after a reboot:
 
         sudo semanage fcontext -a -t httpd_log_t "/var/www/example.com/logs(/.*)?"
         sudo restorecon -R -v /var/www/example.com/logs
 
-1.  You'll see the following output: 
-   
+1.  You'll see the following output:
+
     {{< output >}}
 Relabeled /var/www/example.com/logs from unconfined_u:object_r:httpd_sys_content_t:s0 to unconfined_u:object_r:httpd_log_t:s0
 {{</ output >}}
