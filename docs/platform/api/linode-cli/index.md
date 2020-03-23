@@ -345,7 +345,7 @@ Other actions are available. Use `linode-cli linodes --help` for a complete list
 
 1.  Revoke an Object Storage Key:
 
-        linode-cli object-storage keys-delete --keyId $key_id
+        linode-cli object-storage keys-delete $key_id
 
 1.  Cancel Object Storage on your Account. All buckets on the Account must be empty before Object Storage can be cancelled.
 
