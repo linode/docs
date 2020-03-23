@@ -56,7 +56,7 @@ spec:
         image: httpd:2.4.35
 {{</ file >}}
 
-The only noticeable difference between this Deployment and the example given in the [ReplicaSet](#replicasets) section is the `kind`. In this example we have chosen to initially install Apache 2.4.35. If you wanted to update that image to Apache 2.4.38, you would issue the following command:
+The only noticeable difference between a Deployment's manifest that of a [ReplicaSet](#replicasets) the `kind`. In this example we have chosen to initially install Apache 2.4.35. If you wanted to update that image to Apache 2.4.38, you would issue the following command:
 
     kubectl --record deployment.apps/apache-deployment set image deployment.v1.apps/apache-deployment apache-container=httpd:2.4.38
 
@@ -96,7 +96,7 @@ For more information on Deployments, visit the [Kubernetes Deployments API docum
 ## ReplicaSets
 
 {{< note >}}
-Kubernetes now [recommends](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#when-to-use-a-replicaset) the use of Deployments instead of ReplicaSets. Deployments provide declarative updates to Pods among other features that allow you to define your application in the spec section. In this way, ReplicaSets have essentially become deprecated.
+Kubernetes now [recommends](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#when-to-use-a-replicaset) the use of Deployments instead of ReplicaSets. Deployments provide declarative updates to Pods, among other features, that allow you to define your application in the spec section. In this way, ReplicaSets have essentially become deprecated.
 {{< /note >}}
 
 As has been mentioned, Kubernetes allows an application to scale horizontally. A *ReplicaSet* is one of the controllers responsible for keeping a given number of replica Pods running. If one Pod goes down in a ReplicaSet, another will be created to replace it. In this way, Kubernetes is *self-healing*. However, for most use cases it is recommended to use a [Deployment](#deployments) instead of a ReplicaSet.
