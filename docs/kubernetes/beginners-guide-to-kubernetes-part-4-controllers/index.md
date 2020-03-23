@@ -56,7 +56,7 @@ spec:
         image: httpd:2.4.35
 {{</ file >}}
 
-As you will see, the only noticeable difference between a Deployment's manifest that of a [ReplicaSet](#replicasets) the `kind`. In this example we have chosen to initially install Apache 2.4.35. If you wanted to update that image to Apache 2.4.38, you would issue the following command:
+As you will see, the only noticeable difference between a Deployment's manifest and that of a [ReplicaSet](#replicasets) the `kind`. In this example we have chosen to initially install Apache 2.4.35. If you wanted to update that image to Apache 2.4.38, you would issue the following command:
 
     kubectl --record deployment.apps/apache-deployment set image deployment.v1.apps/apache-deployment apache-container=httpd:2.4.38
 
