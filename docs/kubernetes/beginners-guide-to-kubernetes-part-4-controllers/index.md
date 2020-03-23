@@ -26,9 +26,78 @@ This is the fourth guide in the [Beginner's Guide to Kubernetes](/docs/kubernete
 
 A Controller is a control loop that continuously watches the Kubernetes API and tries to manage the desired state of certain aspects of the cluster. There are a number of controllers. Below is a short reference of the most popular controllers you might interact with.
 
-In this guide you will learn about [ReplicaSets](#replicasets), [Deployments](#deployments), and [Jobs](#jobs).
+In this guide you will learn about [Deployments](#deployments), [ReplicaSets](#replicasets), and [Jobs](#jobs).
+
+## Deployments
+
+A *Deployment* has the ability to keep a defined number of replica Pods up and running. A Deployment can also update those Pods to resemble the desired state by means of rolling updates. For example, if you wanted to update a container image to a newer version, you would create a Deployment, and the controller would update the container images one by one until the desired state is achieved. This ensures that there is no downtime when updating or altering your Pods.
+
+Below is an example of a Deployment:
+
+{{< file "my-apache-deployment.yaml" yaml>}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-deployment
+  labels:
+    app: web
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: apache-container
+        image: httpd:2.4.35
+{{</ file >}}
+
+The only noticeable difference between this Deployment and the example given in the [ReplicaSet](#replicasets) section is the `kind`. In this example we have chosen to initially install Apache 2.4.35. If you wanted to update that image to Apache 2.4.38, you would issue the following command:
+
+    kubectl --record deployment.apps/apache-deployment set image deployment.v1.apps/apache-deployment apache-container=httpd:2.4.38
+
+You'll see a confirmation that the images have been updated:
+
+    deployment.apps/apache-deployment image updated
+
+To see for yourself that the images have updated, you can grab the Pod name from the `get pods` list:
+
+    kubectl get pods
+
+    NAME                                 READY   STATUS    RESTARTS   AGE
+    apache-deployment-574c8c4874-8zwgl   1/1     Running   0          8m36s
+    apache-deployment-574c8c4874-9pr5j   1/1     Running   0          8m36s
+    apache-deployment-574c8c4874-fbs46   1/1     Running   0          8m34s
+    apache-deployment-574c8c4874-nn7dl   1/1     Running   0          8m36s
+    apache-deployment-574c8c4874-pndgp   1/1     Running   0          8m33s
+
+Issue the `describe` command to view all of the available details of the Pod:
+
+    kubectl describe pod apache-deployment-574c8c4874-pndgp
+
+You'll see a long list of details, of which the container image is included:
+
+    ....
+
+    Containers:
+      apache-container:
+        Container ID:   docker://d7a65e7993ab5bae284f07f59c3ed422222100833b2769ff8ee14f9f384b7b94
+        Image:          httpd:2.4.38
+
+    ....
+
+
+For more information on Deployments, visit the [Kubernetes Deployments API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#deployment-v1-apps)
 
 ## ReplicaSets
+
+{{< note >}}
+Kubernetes now [recommends](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#when-to-use-a-replicaset) the use of Deployments instead of ReplicaSets. Deployments provide declarative updates to Pods among other features that allow you to define your application in the spec section. In this way, ReplicaSets have essentially become deprecated.
+{{< /note >}}
 
 As has been mentioned, Kubernetes allows an application to scale horizontally. A *ReplicaSet* is one of the controllers responsible for keeping a given number of replica Pods running. If one Pod goes down in a ReplicaSet, another will be created to replace it. In this way, Kubernetes is *self-healing*. However, for most use cases it is recommended to use a [Deployment](#deployments) instead of a ReplicaSet.
 
@@ -97,71 +166,6 @@ If you issue the `get pods` command, you will see that the Pods the ReplicaSet c
 In the above example, four of the Pods have already terminated, and one is in the process of terminating.
 
 For more information on ReplicaSets, view the [Kubernetes ReplicaSets API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#replicaset-v1-apps).
-
-## Deployments
-
-A *Deployment* can manage a ReplicaSet, so it shares the ability to keep a defined number of replica Pods up and running. A Deployment can also update those Pods to resemble the desired state by means of rolling updates. For example, if you wanted to update a container image to a newer version, you would create a Deployment, and the controller would update the container images one by one until the desired state is achieved. This ensures that there is no downtime when updating or altering your Pods.
-
-Below is an example of a Deployment:
-
-{{< file "my-apache-deployment.yaml" yaml>}}
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: apache-deployment
-  labels:
-    app: web
-spec:
-  replicas: 5
-  selector:
-    matchLabels:
-      app: web
-  template:
-    metadata:
-      labels:
-        app: web
-    spec:
-      containers:
-      - name: apache-container
-        image: httpd:2.4.35
-{{</ file >}}
-
-The only noticeable difference between this Deployment and the example given in the ReplicaSet section is the `kind`. In this example we have chosen to initially install Apache 2.4.35. If you wanted to update that image to Apache 2.4.38, you would issue the following command:
-
-    kubectl --record deployment.apps/apache-deployment set image deployment.v1.apps/apache-deployment apache-container=httpd:2.4.38
-
-You'll see a confirmation that the images have been updated:
-
-    deployment.apps/apache-deployment image updated
-
-To see for yourself that the images have updated, you can grab the Pod name from the `get pods` list:
-
-    kubectl get pods
-
-    NAME                                 READY   STATUS    RESTARTS   AGE
-    apache-deployment-574c8c4874-8zwgl   1/1     Running   0          8m36s
-    apache-deployment-574c8c4874-9pr5j   1/1     Running   0          8m36s
-    apache-deployment-574c8c4874-fbs46   1/1     Running   0          8m34s
-    apache-deployment-574c8c4874-nn7dl   1/1     Running   0          8m36s
-    apache-deployment-574c8c4874-pndgp   1/1     Running   0          8m33s
-
-Issue the `describe` command to view all of the available details of the Pod:
-
-    kubectl describe pod apache-deployment-574c8c4874-pndgp
-
-You'll see a long list of details, of which the container image is included:
-
-    ....
-
-    Containers:
-      apache-container:
-        Container ID:   docker://d7a65e7993ab5bae284f07f59c3ed422222100833b2769ff8ee14f9f384b7b94
-        Image:          httpd:2.4.38
-
-    ....
-
-
-For more information on Deployments, visit the [Kubernetes Deployments API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#deployment-v1-apps)
 
 ## Jobs
 
