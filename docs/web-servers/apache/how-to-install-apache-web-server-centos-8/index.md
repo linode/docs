@@ -213,7 +213,7 @@ The Event Module is similar to the Worker Module except each thread has a dedica
 # See: http://httpd.apache.org/docs/2.4/mod/event.html
 #
 LoadModule mpm_event_module modules/mod_mpm_event.so
-{{</ file >}}        
+{{</ file >}}
 
 1.  Restart Apache:
 
@@ -403,4 +403,3 @@ You can control the server in the following ways.
 1.  To re-enable Apache if it's been disabled. This will also enable it to restart when the system reboots:
 
         sudo systemctl enable httpd
-
