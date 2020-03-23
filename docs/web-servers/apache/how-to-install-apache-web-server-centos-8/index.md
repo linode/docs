@@ -313,7 +313,7 @@ unconfined_u:object_r:httpd_log_t:s0 /var/www/example.com/logs
 
 ### Install Apache Modules
 
-One of Apache's strengths is its ability to be customized with modules. The default installation directory for Apache modules is the `/etc/httpd/modules/` directory. Configuration directives for the default modules are located in `/etc/httpd/conf/httpd.conf`, while configuration options for optional modules installed with yum are generally placed in `.conf` files in `/etc/httpd/conf.d/`. 
+One of Apache's strengths is its ability to be customized with modules. The default installation directory for Apache modules is the `/etc/httpd/modules/` directory. Configuration directives for the default modules are located in `/etc/httpd/conf/httpd.conf`, while configuration options for optional modules installed with yum are generally placed in `.conf` files in `/etc/httpd/conf.d/`.
 
 1.  List available Apache modules:
 
