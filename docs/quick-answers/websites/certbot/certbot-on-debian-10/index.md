@@ -89,10 +89,13 @@ Certbot recommends pointing your web server configuration to the default certifi
 
     Finally, Certbot will update your web server configuration so that it uses the new certificate, and also redirects HTTP traffic to HTTPS if you chose that option.
 
-1.  If you have a firewall configured on your Linode, you can add a firewall rule to allow incoming and outgoing connections to the HTTPS service. On Debian, *UFW* is a commonly used and simple tool for managing firewall rules. Install and configure UFW for HTTP and HTTPS traffic:
+1. If you have a firewall configured on your Linode, you may need to add [Firewall Rules](https://www.linode.com/docs/security/securing-your-server/#configure-a-firewall) to allow incoming and outgoing connections to the HTTPS service. If you're using *UFW*, you can enable HTTP and HTTPS traffic with the following commands:
 
-        sudo apt install ufw
         sudo systemctl start ufw && sudo systemctl enable ufw
         sudo ufw allow http
         sudo ufw allow https
         sudo ufw enable
+
+     {{< note >}}
+For more information on UFW and how to install it on your Linode, see our [How to Configure a Firewall with UFW guide](https://www.linode.com/docs/security/firewalls/configure-firewall-with-ufw/)
+{{< /note >}}
