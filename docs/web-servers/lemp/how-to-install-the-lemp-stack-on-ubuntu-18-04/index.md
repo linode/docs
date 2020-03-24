@@ -2,28 +2,30 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
-og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
-keywords: ["nginx", "lemp", "php", "mariadb", "mysql"]
+description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Ubuntu.'
+og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Ubuntu.'
+keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-10-19
+modified: 2020-03-18
 modified_by:
-  name: Edward
+  name: Linode
 published: 2018-06-04
-title: 'Install a LEMP Stack on Ubuntu 18.04'
+title: 'How to Install the LEMP Stack on Ubuntu 18.04'
+h1_title: 'Installing the LEMP Stack on Ubuntu 18.04'
+aliases: ['web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/']
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->
 
-## What is a LEMP Stack?
+## What is the LEMP Stack?
 
-The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configuration for developing and hosting web applications. The four components of the stack are not tightly coupled, making it possible to substitute your preferred technologies. The LEMP stack is a common variant in which the Apache web server is replaced by NGINX.
+The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configuration for developing and hosting web applications. The four components of the stack are not tightly coupled, making it possible to substitute your preferred technologies. The **LEMP** stack is a common variant in which the Apache web server is replaced by NGINX, pronounced "engine-x", thus providing the "E".
 
 ## Before You Begin
 
-1.  You will need root access to the system, or a user account with `sudo` privilege.
-2.  Set your system's [hostname](/docs/getting-started/#set-the-hostname).
-3.  Update your system:
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides and that the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
+
+1.  Update your system:
 
         sudo apt update && sudo apt upgrade
 
@@ -37,11 +39,11 @@ Install NGINX from the package repository:
 
 ### MariaDB
 
+MariaDB is a popular fork of MySQL, and its development is considered to be more open and transparent than MySQL's. MariaDB is administered with the same commands as MySQL.
+
 1.  Install the MariaDB server and MySQL/MariaDB-PHP support:
 
         sudo apt install mariadb-server php-mysql
-
-    MariaDB is a popular fork of MySQL, and its development is considered to be more open and transparent than MySQL's. MariaDB is administered with the same commands as MySQL.
 
 2.  Log in to MariaDB's SQL shell:
 
@@ -49,8 +51,9 @@ Install NGINX from the package repository:
 
     The database will not prompt you for a password, as it is initially configured to use the `unix_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are connecting from the Linux root user on localhost:
 
+        SELECT user,host,authentication_string,plugin FROM mysql.user;
+
     {{< highlight sql >}}
-MariaDB [(none)]> SELECT user,host,authentication_string,plugin FROM mysql.user;
 +------+-----------+-----------------------+-------------+
 | user | host      | authentication_string | plugin      |
 +------+-----------+-----------------------+-------------+
@@ -75,7 +78,7 @@ GRANT ALL PRIVILEGES ON testdb.* TO 'testuser';
 quit
 {{< /highlight >}}
 
-5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MariaDB root user, but you can skip that step:
 
         sudo mysql_secure_installation
 
@@ -102,16 +105,16 @@ quit
 
         sudo mkdir -p /var/www/html/example.com/public_html
 
-2.  Delete the default site configuration provided with the package as an example:
+2.  Create a copy of the default configuration file for your site:
 
-        sudo rm -f /etc/nginx/sites-enabled/default
+        sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-available/example.com.conf
 
-3.  Website configuration files should be kept in `/etc/nginx/sites-available/`. Create a configuration file inside this directory with the example content. Replace *example.com* with your domain in both the file name and in the file's contents:
+3.  Open the new example.com configuration file in your text editor. Create a configuration file with the example content. Replace *example.com* with your domain in both the file name and in the contents of the file:
 
     {{< file "/etc/nginx/sites-available/example.com.conf" nginx >}}
 server {
-    listen         80 default_server;
-    listen         [::]:80 default_server;
+    listen         80;
+    listen         [::]:80;
     server_name    example.com www.example.com;
     root           /var/www/html/example.com/public_html;
     index          index.html;
@@ -141,7 +144,7 @@ server {
 
     -  The `*` in the `~* \.php$` location directive indicates that PHP file names are not case sensitive. This can be removed if you prefer to enforce letter case.
 
-    -  `fastcgi_pass` specifies the [UNIX socket](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass) where PHP listens for incoming connections from other local processes
+    -  `fastcgi_pass` specifies the [UNIX socket](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass) where PHP listens for incoming connections from other local processes.
 
     -  `include fastcgi_params` tells NGINX to process a list of `fastcgi_param` variables at `/etc/nginx/fastcgi_params`.
 
@@ -150,6 +153,20 @@ server {
 4.  Create a link to your website configuration file from within the sites-enabled directory. Change the name of the file to the name you used for your domain:
 
         sudo ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/
+
+## Enable Firewall
+
+If you configured UFW on your server, enable the firewall to allow web traffic.
+
+1.  Check the ports that are enabled for `Nginx Full` Profile:
+
+        sudo ufw app info "Nginx Full"
+
+    Ports `80` and `443` should be listed as enabled for `Nginx Full` profile.
+
+1.  If these ports are not allowed, enable them with the following command:
+
+        sudo ufw allow in "Nginx Full"
 
 ## Test the LEMP Stack
 
@@ -193,17 +210,32 @@ server {
 
 {{< /file >}}
 
-5.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*. If you see an error message or if the page does not load at all, re-check your configuration. If your DNS changes haven't propagated yet, you can test your page with `curl` instead:
+5.  Go to `http://example.com/test.php` in a web browser. It should report that *You have connected successfully*.
 
-        $ curl -H "Host: example.com" http://<your-ip-address>/test.php
-        <html>
-        <head>
-        <h2>LEMP Stack Test</h2>
-        </head>
-        <body>
-        <p>Hello,</p><p>You have connected successfully.</p></body>
-        </html>
+    ![LEMP Stack Test Page Success](lemp-stack-test-page.png "LEMP Stack Test Page Success")
+
+    If you see an error message or if the page does not load at all, re-check your configuration. If your DNS changes haven't propagated yet, you can test your page with `curl` instead:
+
+        curl -H "Host: example.com" http://<your-ip-address>/test.php
+
+    {{< highlight html >}}
+<html>
+<head>
+    <h2>LEMP Stack Test</h2>
+</head>
+    <body>
+    <p>Hello,</p><p>You have connected successfully.</p></body>
+</html>
+{{</ highlight >}}
 
 6.  Remove the test file once the stack is working correctly:
 
         sudo rm /var/www/html/example.com/public_html/test.php
+
+## Next Steps
+
+For more on the software in this stack see the following guides:
+
+- [Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/)
+- [Set Up MariaDB Clusters with Galera](/docs/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)
+- [Serve PHP with PHP-FPM and NGINX](/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/)

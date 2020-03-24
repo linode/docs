@@ -126,6 +126,10 @@ Install the Linode CLI to your local computer and generate a Personal Access Tok
 
     Linode's ATO ARN is `3000 1606 0612`.
 
+-   **What is Linode's India GST ID number?**
+
+    Linode's India GST ID number is `9919JEY29001OST`.
+
 -   **How is my tax location determined?**
 
     Your tax location is determined by the contact information you provided during sign up or under the **Account** page in the [Linode Cloud Manager](https://cloud.linode.com).
