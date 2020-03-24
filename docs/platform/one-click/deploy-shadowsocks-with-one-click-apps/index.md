@@ -11,7 +11,7 @@ modified: 2020-03-18
 modified_by:
   name: Linode
 title: "How to Deploy a Shadowsocks Server with One-Click Apps"
-h1_title: "Deploy a Shadowsocks Server with One-Click Apps"
+h1_title: "Deploying a Shadowsocks Server with One-Click Apps"
 contributor:
   name: Linode
 external_resources:

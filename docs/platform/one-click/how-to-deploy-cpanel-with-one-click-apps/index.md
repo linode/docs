@@ -10,7 +10,7 @@ published: 2020-03-13
 modified_by:
   name: Linode
 title: "How to Deploy cPanel with One-Click Apps"
-h1_title: "Deploy cPanel with One-Click Apps"
+h1_title: "Deploying cPanel with One-Click Apps"
 contributor:
   name: Linode
 external_resources:

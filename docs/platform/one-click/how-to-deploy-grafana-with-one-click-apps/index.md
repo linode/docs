@@ -10,7 +10,7 @@ published: 2020-03-11
 modified_by:
   name: Linode
 title: "How to Deploy Grafana with One-Click Apps"
-h1_title: "Deploy Grafana with One-Click Apps"
+h1_title: "Deploying Grafana with One-Click Apps"
 contributor:
   name: Linode
 external_resources:

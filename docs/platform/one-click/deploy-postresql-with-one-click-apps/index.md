@@ -11,7 +11,7 @@ modified: 2020-03-17
 modified_by:
   name: Rajakavitha Kodhandapani
 title: "How to Deploy PostgreSQL with One-Click Apps"
-h1_title: "Deploy PostgreSQL with One-Click Apps"
+h1_title: "Deploying PostgreSQL with One-Click Apps"
 contributor:
   name: Rajakavitha Kodhandapani
 external_resources:

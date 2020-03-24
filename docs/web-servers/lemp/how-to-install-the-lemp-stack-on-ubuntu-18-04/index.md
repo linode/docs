@@ -8,10 +8,10 @@ keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-18
 modified_by:
-  name: Edward
+  name: Linode
 published: 2018-06-04
 title: 'How to Install the LEMP Stack on Ubuntu 18.04'
-h1_title: 'Install the LEMP Stack on Ubuntu 18.04'
+h1_title: 'Installing the LEMP Stack on Ubuntu 18.04'
 aliases: ['web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/']
 ---
 

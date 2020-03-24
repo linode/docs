@@ -11,7 +11,7 @@ modified: 2020-03-13
 modified_by:
   name: Rajakavitha Kodhandapani
 title: "How to Deploy MySQL/MariaDB with One-Click Apps"
-h1_title: "Deploy MySQL/MariaDB with One-Click Apps"
+h1_title: "Deploying MySQL/MariaDB with One-Click Apps"
 contributor:
   name: Rajakavitha Kodhandapani
 external_resources:
