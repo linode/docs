@@ -10,7 +10,7 @@ published: 2020-03-12
 modified_by:
   name: Linode
 title: "How to Deploy Jenkins with One-Click Apps"
-h1_title: "Deploy Jenkins with One-Click Apps"
+h1_title: "Deploying Jenkins with One-Click Apps"
 contributor:
   name: Linode
 external_resources:

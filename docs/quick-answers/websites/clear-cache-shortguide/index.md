@@ -11,7 +11,7 @@ modified: 2018-06-28
 modified_by:
   name: Rajakavitha Kodhandapani
 title: 'How to Clear Cache and Cookies in a Browser'
-h1_title: 'Clear Cache and Cookies in a Browser'
+h1_title: 'Clearing Cache and Cookies in a Browser'
 ---
 
 A browser's cache improves website loading performance by reducing the data processing and fetching.  When a sizeable amount of cached content is  stored, it slows down the system and reduces the performance of the application.

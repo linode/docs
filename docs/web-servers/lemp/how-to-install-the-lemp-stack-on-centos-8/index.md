@@ -8,10 +8,10 @@ keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-18
 modified_by:
-  name: Edward
+  name: Linode
 published: 2018-06-04
 title: 'How to Install the LEMP Stack on CentOS 8'
-h1_title: 'Install the LEMP Stack on CentOS 8'
+h1_title: 'Installing the LEMP Stack on CentOS 8'
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->

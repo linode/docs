@@ -10,7 +10,7 @@ published: 2020-03-11
 modified_by:
   name: Linode
 title: "How to Deploy Flask with One-Click Apps"
-h1_title: "Deploy Flask with One-Click Apps"
+h1_title: "Deploying Flask with One-Click Apps"
 contributor:
   name: Linode
 external_resources:

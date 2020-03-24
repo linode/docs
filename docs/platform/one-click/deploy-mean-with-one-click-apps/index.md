@@ -11,7 +11,7 @@ modified: 2019-03-17
 modified_by:
   name: Linode
 title: "How to Deploy MEAN with One-Click Apps"
-h1_title: "Deploy MEAN with One-Click Apps"
+h1_title: "Deploying MEAN with One-Click Apps"
 contributor:
   name: Linode
 external_resources:

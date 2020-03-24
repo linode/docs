@@ -10,7 +10,7 @@ published: 2020-03-12
 modified_by:
   name: Linode
 title: "How to Deploy Prometheus with One-Click Apps"
-h1_title: "Deploy Prometheus with One-Click Apps"
+h1_title: "Deploying Prometheus with One-Click Apps"
 contributor:
   name: Linode
 external_resources:

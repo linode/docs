@@ -11,7 +11,7 @@ modified: 2019-03-25
 modified_by:
   name: Linode
 title: "How to Deploy Plesk with One-Click Apps"
-h1_title: "Deploy Plesk with One-Click Apps"
+h1_title: "Deploying Plesk with One-Click Apps"
 contributor:
   name: Linode
 external_resources:
