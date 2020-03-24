@@ -137,9 +137,65 @@ ca-east;ca
 
 ## Examples
 
-This section reviews some common examples related to Linodes, Domains, Block Storage Volumes, NodeBalancers, and account details.
+This section reviews some common examples related to [Accounts](#account) and [Events](#events), [Domains](#domains), [Linode Instances](#linode-instances), [Linode Kubernetes Engine (LKE)](#linode-kubernetes-engine-lke), [NodeBalancers](#nodebalancers), [Object Storage](#object-storage), [Block Storage Volumes](#block-storage-volumes), and [Support Tickets](#support-tickets). Other actions are available. Use `linode-cli linodes --help` for a complete list.
 
-### Linodes
+### Account
+
+View or update your account information, add payment methods, view notifications, make payments, create OAuth clients, and do other related tasks through the `account` action:
+
+1.  View your account:
+
+        linode-cli account view
+
+1.  View your account settings:
+
+        linode-cli account settings
+
+1.  Make a payment:
+
+        linode-cli account payment-create --cvv 123 --usd 20.00
+
+1.  View notifications:
+
+        linode-cli account notifications-list
+
+### Events
+
+1.  View a list of events on your account:
+
+        linode-cli events list
+
+1.  View details about a specific event:
+
+        linode-cli events view $event_id
+
+1.  Mark an event as read:
+
+        linode-cli events mark-read $event_id
+
+### Domains
+
+1.  List the Domains on your account:
+
+        linode-cli domains list
+
+1.  View all domain records in a specific Domain:
+
+        linode-cli domains records-list $domain_id
+
+1.  Delete a Domain:
+
+        linode-cli domains delete $domain_id
+
+1.  Create a Domain:
+
+        linode-cli domains create --type master --domain www.example.com --soa_email email@example.com
+
+1.  Create a new A record in a Domain:
+
+        linode-cli domains records-create $domain_id --type A --name subdomain --target 192.0.2.0
+
+### Linode Instances
 
 Tasks related to Linode instances are performed with `linode-cli linodes [ACTION]`.
 
@@ -209,27 +265,45 @@ Tasks related to Linode instances are performed with `linode-cli linodes [ACTION
 
 Many other actions are available. Use `linode-cli linodes --help` for a complete list.
 
-### Domains
+### Linode Kubernetes Engine (LKE)
 
-1.  List the Domains on your account:
+1.  Lists current Kubernetes Clusters available on your account:
 
-        linode-cli domains list
+        linode-cli lke clusters-list
 
-1.  View all domain records in a specific Domain:
+1.  Create a Kubernetes Cluster. The Kubernetes Cluster will be created asynchronously. You can use the events system to determine when the Kubernetes Cluster is ready to use:
 
-        linode-cli domains records-list $domain_id
+        linode-cli lke cluster-create --label my-cluster --region us-central --version 1.16 --node_pools.type g6-standard-4 --node_pools.count 6 --node_pools.type g6-standard-8 --node_pools.count 3
 
-1.  Delete a Domain:
+1.  Update Kubernetes Cluster:
 
-        linode-cli domains delete $domain_id
+        linode-cli lke cluster-update $cluster_id --label my-cluster
 
-1.  Create a Domain:
+1.  Delete a Cluster you have permission to `read_write`:
 
-        linode-cli domains create --type master --domain www.example.com --soa_email email@example.com
+        linode-cli lke cluster-delete $cluster_id
 
-1.  Create a new A record in a Domain:
+1.  List all active Node Pools on a Kubernetes Cluster:
 
-        linode-cli domains records-create $domain_id --type A --name subdomain --target 192.0.2.0
+        linode-cli lke pools-list $cluster_id
+
+1.  Create a Node Pool on a Kubernetes Cluster:
+
+        linode-cli lke pool-create $cluster_id --type g6-standard-4 --count 6
+
+1.  Update Node Pool in a Kubernetes Cluster. When a Node Pool's count is changed, the Nodes in that pool will be replaced in a rolling fashion.
+
+        linode-cli lke pool-update $cluster_id $pool_id --count 6
+
+1.  Delete a Node Pool from a Kubernetes Cluster:
+
+        linode-cli lke pool-delete $cluster_id $pool_id
+
+1.  View the Kubeconfig file for the Kubernetes Cluster:
+
+        linode-cli lke kubeconfig-view $cluster_id
+
+Other actions are available. Use `linode-cli linodes --help` for a complete list.
 
 ### NodeBalancers
 
@@ -248,6 +322,34 @@ Many other actions are available. Use `linode-cli linodes --help` for a complete
 1.  To delete a node, you will need the ID of the NodeBalancer, configuration, and node:
 
         linode-cli nodebalancers node-delete $nodebalancer_id $config_id $node_id
+
+Other actions are available. Use `linode-cli linodes --help` for a complete list.
+
+### Object Storage
+
+1.  List the current Object Storage Clusters available to use:
+
+        linode-cli object-storage clusters-list
+
+1.  Create a new Object Storage Key for your account:
+
+        linode-cli object-storage keys-create --label "my-object-storage-key"
+
+1.  List Object Storage Keys for authenticating to the Object Storage S3 API:
+
+        linode-cli object-storage keys-list
+
+1.  Update an Object Storage Key label:
+
+        linode-cli object-storage keys-update --keyId $key_id --label "my-new-object-storage-key"
+
+1.  Revoke an Object Storage Key:
+
+        linode-cli object-storage keys-delete $key_id
+
+1.  Cancel Object Storage on your Account. All buckets on the Account must be empty before Object Storage can be cancelled.
+
+        linode-cli object-storage cancel
 
 ### Block Storage Volumes
 
@@ -276,26 +378,6 @@ Many other actions are available. Use `linode-cli linodes --help` for a complete
 
         linode-cli volumes delete $volume_id
 
-### Account
-
-View or update your account information, add payment methods, view notifications, make payments, create OAuth clients, and do other related tasks through the `account` action:
-
-1.  View your account:
-
-        linode-cli account view
-
-1.  View your account settings:
-
-        linode-cli account settings
-
-1.  Make a payment:
-
-        linode-cli account payment-create --cvv 123 --usd 20.00
-
-1.  View notifications:
-
-        linode-cli account notifications-list
-
 ### Support Tickets
 
 1.  List your Support Tickets:
@@ -315,17 +397,3 @@ View or update your account information, add payment methods, view notifications
 1.  Reply to a Ticket:
 
         linode-cli tickets reply $ticket_id --description "The content of your reply"
-
-### Events
-
-1.  View a list of events on your account:
-
-        linode-cli events list
-
-1.  View details about a specific event:
-
-        linode-cli events view $event_id
-
-1.  Mark an event as read:
-
-        linode-cli events mark-read $event_id
