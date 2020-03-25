@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Terraform, the popular orchestration tool by HaschiCorp, and Linode's Terraform K8s module to deploy a Kubernetes cluster on Linode. The steps you'll complete in this guide will include configuring your local environment to run Linode's Terraform k8s module and kubectl, and creating your Terraform configuration files and using them to deploy a Kubernetes cluster. Finally, you will connect to your Kubernetes cluster using kubectl. Using Linode''s Terraform k8s module simplifies many of the steps involved in manually deploying a Kubernetes cluster with kubeadm.
+description: 'Use Terraform, the popular orchestration tool by HaschiCorp, and Linode''s Terraform K8s module to deploy a Kubernetes cluster on Linode. The steps you''ll complete in this guide will include configuring your local environment to run Linode''s Terraform k8s module and kubectl, and creating your Terraform configuration files and using them to deploy a Kubernetes cluster. Finally, you will connect to your Kubernetes cluster using kubectl. Using Linode''s Terraform k8s module simplifies many of the steps involved in manually deploying a Kubernetes cluster with kubeadm.'
 keywords: ['terraform','kubernetes','orchestration','containers']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-03
