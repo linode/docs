@@ -18,13 +18,13 @@ show_on_rss_feed: false
 
 <!-- Use title convention: Deploy a X One-Click App. -->
 
-One-Click Apps allow you to easily deploy software on a Linode using the Linode Cloud Manager. To access Linode's One-Click Apps:
+Linode's One-Click App Marketplace allow you to easily deploy software on a Linode using the Linode Cloud Manager. To access Linode's One-Click App Marketplace:
 
 1. Log in to your [Linode Cloud Manager](https://cloud.linode.com) account.
 
-1. From the Linode dashboard, click on the **Create** button in the top right-hand side of the screen and select **Linode** from the dropdown menu.
+1. From the Linode dashboard, click on the **Marketplace** button in the left-hand navigation menu.
 
-1. The Linode creation page will appear. Select the **One-Click** tab.
+1. The Linode creation page will appear, with the **One-Click** and **Marketplace** tabs pre-selected.
 
 1. Under the **Select App** section, select the app you would like to deploy:
 

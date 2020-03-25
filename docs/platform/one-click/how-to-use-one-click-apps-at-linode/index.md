@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'How to deploy a One-Click App using the Linode Cloud Manager.'
-keywords: ['manager','cloud','app','one click']
+keywords: ['manager','cloud','app','one click', 'marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-26
 modified: 2019-03-26
@@ -22,19 +22,15 @@ When a One-Click App is deployed, a new Linode is created and the appropriate so
 
 ## Deploying an App
 
-1.  Log in the the Linode [Cloud Manager](https://cloud.linode.com).
+1.  Log into the Linode [Cloud Manager](https://cloud.linode.com).
 
-1.  Click **Create** at the top of the screen and choose **Linode** from the dropdown menu that appears:
+1. From the Linode dashboard, click on the **Marketplace** option in the left-hand navigation menu:
 
     ![Click 'Create' at the top of the screen and choose 'Linode' from the dropdown menu.](one-click-create-a-linode.png "Click 'Create' at the top of the screen and choose 'Linode' from the dropdown menu.")
 
-1. The Linode creation page will appear. Select the **One-Click** tab:
+1. The Linode creation page will appear, with the **One-Click** tab and the **Create From: Marketplace** option pre-selected.
 
     ![Select the 'One-Click' tab on the Create New Linode page.](one-click-select-one-click-tab.png)
-
-1.  The **Create From** section of the page's form will appear. Ensure that the **One-Click Apps** tab is selected in this section:
-
-    ![The `One-Click` menu.](one-click-create-from-one-click-apps.png)
 
 1.  Select the app you would like to create. For this example, WordPress will be selected:
 
