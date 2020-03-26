@@ -18,7 +18,7 @@ contributor:
 
 One-Click Apps help you easily deploy and configure software on a Linode from a list of various apps that are built into the Linode [Cloud Manager](https://cloud.linode.com), without the hassle of using the command line. Of course, you'll still have full access to your Linode if you want to log in to your server and have a more hands-on approach later on.
 
-When a One-Click App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide. One-Click Apps does not install software to already-existing Linodes in your account. This guide presents instructions for where to find One-Click Apps in the Cloud Manager and how deploy WordPress blogs, WooCommerce stores, your favorite game servers, and more.
+When a One-Click App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide. One-Click Apps do not install software to already-existing Linodes in your account. This guide presents instructions for where to find One-Click Apps in the Cloud Manager and how deploy WordPress blogs, WooCommerce stores, your favorite game servers, and more.
 
 ## Deploying an App
 
@@ -36,7 +36,7 @@ When a One-Click App is deployed, a new Linode is created and the appropriate so
 
     ![Select WordPress.](one-click-select-wordpress.png)
 
-1.  After the **Select App** section you'll find a new section with additional configuration options specific to your app. Fill out the required options; they will be marked with an asterisk. In the case of WordPress, you'll find fields for the WordPress administrator's username, password, and e-mail address.
+1.  After the **Select App** section you'll find a new section with additional configuration options specific to your app. Fill out the required options. In the case of WordPress, you'll find fields for the WordPress administrator's username, password, e-mail address, and database passwords.
 
     ![Fill out the required Options fields, which are marked with an asterisk.](one-click-wordpress-config-options.png)
 
@@ -44,9 +44,9 @@ When a One-Click App is deployed, a new Linode is created and the appropriate so
 
 1.  The **Select an Image** section displays that Debian is pre-selected. This is the underlying operating system that your Linode will run.
 
-1.  Under the **Region** section, choose which data center you would like your app to be deployed. Choose a region that is close to your audience's geographic location. When you are closer to your data center, your network speeds will generally be higher, and your network latency will be lower.
+1.  Under the **Region** section, choose which data center you would like your app to be deployed to. Choose a region that is close to your audience's geographic location. When you are closer to your data center, your network speeds will generally be higher, and your network latency will be lower.
 
-1.  Choose which plan you'd like to use under the **Linode Plan** section. Your plan specifies the hardware resources assigned to your server. The resources that you need are determined by the requirements of your app. Linode's plans are split into four types: Nanode, Standard, Dedicated CPU, and High Memory.
+1.  Choose which plan you'd like to use under the **Linode Plan** section. Your plan specifies the hardware resources assigned to your server. The resources that you need are determined by the requirements of your app. Linode's plans are split into five types: Nanode, Standard, Dedicated CPU, High Memory, and GPU.
 
     For small sites like WordPress blogs a 1GB Nanode is usually enough, and for video game servers a 2GB or 4GB Standard Linode is often a good choice. Some game servers may benefit from the Dedicated CPU plans. Our [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/) guide presents more information about the different use-cases for each plan.
 
