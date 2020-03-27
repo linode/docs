@@ -69,7 +69,7 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
     * Boot and shut down your Linode
     * Access monitoring statistics
-    * Update your [billing](/docs/platform/billing-and-support/billing-and-payments-new-manager/) and [account](/docs/platform/manager/accounts-and-passwords-new-manager/) information
+    * Update your [billing](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) and [account](/docs/platform/manager/accounts-and-passwords-new-manager/) information
     * Add additional Linode services, like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/)
     * Open a [support](/docs/platform/billing-and-support/support-new-manager/) ticket and perform other administrative tasks
 
