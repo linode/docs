@@ -261,7 +261,7 @@ Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will no
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your Linode's IPv6 address.
 
-See our guide to [Adding DNS Records](/docs/websites/hosting-a-website/#add-dns-records) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
+See our guide to [Adding DNS Records](/docs/platform/manager/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
 
 ## Set the Timezone
 
