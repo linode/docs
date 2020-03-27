@@ -192,6 +192,28 @@ kube-system     kube-dns        ClusterIP      10.128.0.10      <none>         5
 nginx-ingress   nginx-ingress   LoadBalancer   10.128.236.245   45.79.62.128   80:30625/TCP,443:32654/TCP   27m   app=nginx-ingress
 {{</ output >}}
 
+#### Setup Your Nodebalancer and Domain in Cloud Manager
+
+Now that you have your Loadbalancer in NGINX, you want to set up a Nodebalancer and domain ... This example has you create two subdomains blog.example.com and shop.example.com in addition to a standard example.com which points to the main Nodebalancer.
+
+1.  Your Nodebalancer should automatically launch within a few minutes. Check this in the Cloud Manager. It will have an IP to match the external IP of the `nginx-ingress` LoadBalancer.
+
+1.  Create a Domain in Cloud Manager by clicking on **Domains** in the sidebar menu.
+
+1.  Click the **Add a Domain** link. A side panel will appear.
+
+1.  Fill out the domain name and email address, but do NOT insert default records. Replace `example.com` with your domain name in this example.
+
+    ![]()
+
+1.  Click on the domain record to enter the detail screen for `example.com`.
+
+1.  Create an A/AAAA record which will point to just `*` and your Nodebalancer.
+
+    ![]()
+
+1.  For each subdomain, create domain records by clicking **Add a Domain** and adding default records for the NodeBalancer.
+
 ### Install with Helm
 
 ## Next Steps
