@@ -73,16 +73,19 @@ In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/d
     # Update SSL certificates to allow HTTPS connections:
     update-ca-certificates
 
-    # Download the iso:
+    # Download the ISO:
     wget <URL for nixos download>
 
     # Verify the checksum:
     sha256sum <the iso (the only file in directory)>
 
-    # Download the ISO and write it to the installer disk:
+    # Write the ISO to the installer disk:
     dd if=<the iso> of=/dev/sda
 
 ## Install NixOS
+
+Now that we have created the installer disk, we need to 
+boot with the installer.
 
 ### Boot the Installer
 
