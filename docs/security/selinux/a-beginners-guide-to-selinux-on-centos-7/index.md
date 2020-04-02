@@ -198,7 +198,7 @@ httpd_can_network_relay --> off
 httpd_can_sendmail --> off
     {{</ output >}}
 
-    You can change the value of any variable using the `setsebool` command. If you set the `-P` flag, the setting will persist through reboots. If, for example, you want to allow HTTPD scripts and modules to connect to the network update the corresponding boolean variable.
+    You can change the value of any variable using the `setsebool` command. If you set the `-P` flag, the setting will persist through reboots. If, for example, you want to allow HTTPD scripts and modules to connect to the network, update the corresponding boolean variable.
 
         sudo setsebool -P httpd_can_network_connect ON
 
