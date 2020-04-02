@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
 og_description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
-keywords: ["Security-enhanced Linux", "secure open source", " SELinux"]
+keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS 7"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
 modified: 2017-07-21
 modified_by:
@@ -64,7 +64,7 @@ selinux-policy-3.13.1-252.el7.noarch
         sudo yum install policycoreutils policycoreutils-python setools setools-console setroubleshoot
 
     - `policycoreuitls` and `policyoreutils-python` contain several management tools to administer your SELinux environment and policies.
-    - `setools` provides command line tools for working with SELinux policies. Some of these tools include, `sediff` which you can use to view differences between policies, `seinfo` a tool to view information about the components that make up SELinux policies, and `sesearch` used to search through your SELinux policies. You can issue the `--help` option after any of the listed tools in order to view more information about each one.
+    - `setools` provides command line tools for working with SELinux policies. Some of these tools include, `sediff` which you can use to view differences between policies, `seinfo` a tool to view information about the components that make up SELinux policies, and `sesearch` used to search through your SELinux policies. `setools-console` consists of `sediff`, `seinfo`, and `sesearch`. You can issue the `--help` option after any of the listed tools in order to view more information about each one.
     - `setroubleshoot` suite of tools help you determine why a script or file may be blocked by SELinux.
 
     Optionally, install `setroubleshoot-server` and `mctrans`. The `setroubleshoot-server` allows, among many other things, for email notifications to be sent from the server to notify you of any policy violations. The `mctrans` daemon translates SELinux's output to human readable text.
@@ -73,7 +73,7 @@ selinux-policy-3.13.1-252.el7.noarch
 
 ### SELinux States
 
-When SELinux is installed on your system, it can be either *enabled* or *disabled*. By default, the CentOS 7 image provided by Linode will have SELinux in an enabled state.
+When SELinux is installed on your system, it can be either *enabled* or *disabled*. By default, the CentOS 7 image provided by Linode has SELinux in an enabled state.
 
 - To disable SELinux, update your SELinux configuration file using the text editor of your choice. Set the `SELINUX` directive to `disabled` as shown in the example.
 
@@ -138,7 +138,7 @@ If SELinux is currently disabled, update your SELinux configuration file with th
 
         sudo sealert -a /var/log/audit/audit.log
 
-    Your output will resemble the example, however, it will vary depending on the programs and configurations on your system.
+    The output resembles the example, however, it varies depending on the programs and configurations on your system. The example was generated using a [Linode running the Apache webserver](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/#apache) with a virtual hosts configuration.
 
     {{< output >}}
 SELinux is preventing /usr/sbin/httpd from write access on the directory logs.
@@ -152,23 +152,21 @@ Do
 # restorecon -v 'logs'
     {{</ output >}}
 
-- The example was generated using a [Linode running the Apache webserver](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/#apache) with a virtual hosts configuration.
-
-- To allow `/usr/sbin/httpd` write access to the directory logs, as shown by the output, you would issue the suggested commands, `semanage fcontext -a -t httpd_sys_rw_content_t 'logs'` and `restorecon -v 'logs'`.
+- To allow `/usr/sbin/httpd` write access to the directory logs, as shown in the output, you can execute the suggested commands, `semanage fcontext -a -t httpd_sys_rw_content_t 'logs'` and `restorecon -v 'logs'`.
 
 ## SELinux Context
 
-SELinux marks every single object on a machine with a *context*. Every file, user, and process has a context. The context is broken into three parts: *user*, *role*, and *type*. An SELinux policy controls which users can get which roles. Each specific role places a constraint on what type of files that user can access. When a user logs in to a system, a role is assigned to the user. which can be seen in the `ls -Z` example above: the output `unconfined_u` is a user role.
+SELinux marks every single object on a machine with a *context*. Every file, user, and process has a context. The context is broken into three parts: *user*, *role*, and *type*. An SELinux policy controls which users can get which roles. Each specific role places a constraint on what type of files that user can access. When a user logs in to a system, a role is assigned to the user as seen in the `ls -Z` example, the output `unconfined_u` is a user role.
 
 1. Create a directory in your home folder:
 
         mkdir ~/example_dir
 
-1. Print the SELinux security context of your home folder's directories and files :
+1. Print the SELinux security context of your home folder's directories and files:
 
         ls -Z ~/
 
-    You should see a similar output:
+    The output is similar to:
 
     {{< output >}}
 drwxrwxr-x. example_user example_user unconfined_u:object_r:user_home_t:s0 example_dir
@@ -200,7 +198,7 @@ httpd_can_network_relay --> off
 httpd_can_sendmail --> off
     {{</ output >}}
 
-    You can change the value of any variable using the `setsebool` command. If you set the `-P` flag, the setting will persist through reboots. If, for example, you want to allow HTTPD scripts and modules to connect to the network update the corresponding boolean variable
+    You can change the value of any variable using the `setsebool` command. If you set the `-P` flag, the setting will persist through reboots. If, for example, you want to allow HTTPD scripts and modules to connect to the network update the corresponding boolean variable.
 
         sudo setsebool -P httpd_can_network_connect ON
 
