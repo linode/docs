@@ -31,9 +31,14 @@ SELinux defaults to denying anything that is not explicitly allowed. SELinux has
 
 ## Before You Begin
 
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
+    {{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< /note >}}
+
 1.  Update your system:
 
-        yum update
+        sudo yum update
 
     {{< note >}}
 The Linode kernel does not support SELinux by default. However, all new Linodes running CentOS 7 use the distribution provided kernel, which has **SELinux enabled by default**.
@@ -47,16 +52,16 @@ In this section, you will install various SELinux packages that will help you wh
 
 1. Verify which SELinux packages are installed on your system:
 
-        rpm -aq | grep selinux
+        sudo rpm -aq | grep selinux
 
     A newly deployed CentOS 7 Linode should have the following packages installed:
 
       {{< output >}}
 libselinux-2.5-14.1.el7.x86_64
-selinux-policy-targeted-3.13.1-252.el7.noarch
+selinux-policy-3.13.1-252.el7_7.6.noarch
+selinux-policy-targeted-3.13.1-252.el7_7.6.noarch
 libselinux-utils-2.5-14.1.el7.x86_64
 libselinux-python-2.5-14.1.el7.x86_64
-selinux-policy-3.13.1-252.el7.noarch
     {{</ output >}}
 
 1. Install the following packages and their associated dependencies:
