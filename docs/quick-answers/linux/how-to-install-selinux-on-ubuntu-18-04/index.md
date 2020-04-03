@@ -21,11 +21,18 @@ Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://
 
 ## Before You Begin
 
-1. Determine whether your Linode is running an upstream kernel, a Linode kernel, or a kernel compiled from source. For details on each type of kernel see the [Which Kernel Am I Running](/docs/platform/how-to-change-your-linodes-kernel/#which-kernel-am-i-running) section of our [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) guide.
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
+    {{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< /note >}}
 
-        uname -ar
+1.  Update your system:
 
-    The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to enable SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+        sudo apt update
+
+    {{< note >}}
+The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+    {{</ note >}}
 
 ### Remove AppArmor
 
@@ -33,7 +40,7 @@ Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://
 
         sudo systemctl stop apparmor
 
-1.  Purge AppArmor from the system.
+1.  Purge AppArmor from the system:
 
     {{< caution >}}
 Do not purge AppArmor if you believe you may reuse it in the future.  If you would like to preserve your AppArmor configuration files, use the `remove` command, instead:
@@ -47,7 +54,7 @@ Do not purge AppArmor if you believe you may reuse it in the future.  If you wou
 
         sudo apt update && sudo apt upgrade -yuf
 
-1. Reboot your Linode
+1. Reboot your Linode:
 
         sudo reboot
 
@@ -63,7 +70,7 @@ During the installation, a prompt will remind you to reboot your system for the 
 
 1. Verify your SELinux installation's status. The status of your SELinux installation should be `disabled`.
 
-        setatus
+        sudo sestatus
 
 1. Reboot your Linode for the installation to complete:
 
@@ -79,7 +86,7 @@ After rebooting your system, SELinux should be enabled, but in *permissive mode*
 
 1. Verify the status of your SELinux installation:
 
-        setatus
+        sudo sestatus
 
     You should see a similar output:
 
@@ -100,7 +107,7 @@ Max kernel policy version:      31
 
         sudo setenforce 1
 
-1.  To maintain `enforcing` mode after reboot, modify the SELinux configuration file in `/etc/selinux/config` from the default `SELINUX=permissive` to `SELINUX=enforcing`:
+1.  To maintain `enforcing` mode after reboot, edit the SELinux configuration file in `/etc/selinux/config` from the default `SELINUX=permissive` to `SELINUX=enforcing`.
 
     {{< file "/etc/selinx/config" >}}
 # This file controls the state of SELinux on the system.
