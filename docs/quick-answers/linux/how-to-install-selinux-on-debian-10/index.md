@@ -20,11 +20,18 @@ Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://
 
 ## Before You Begin
 
-1. Determine whether your Linode is running an upstream kernel, a Linode kernel, or a kernel compiled from source. For details on each type of kernel see the [Which Kernel Am I Running](/docs/platform/how-to-change-your-linodes-kernel/#which-kernel-am-i-running) section of our [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) guide.
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
+    {{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< /note >}}
 
-        uname -ar
+1.  Update your system:
 
-    The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to enable SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+        sudo apt update
+
+    {{< note >}}
+The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+    {{</ note >}}
 
 ### Remove AppArmor
 
@@ -89,7 +96,7 @@ After rebooting your system, SELinux should be enabled, but in *permissive mode*
 
 1. Verify the status of your SELinux installation:
 
-        setatus
+        sudo sestatus
 
     You should see a similar output:
 
