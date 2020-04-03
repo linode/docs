@@ -18,12 +18,6 @@ external_resources:
 aliases: ['applications/containers/kubernetes/static-site-linode-kubernetes-engine/','applications/containers/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/']
 ---
 
-{{< note >}}
-Linode Kubernetes Engine (LKE) is currently in Private Beta, and you may not have access to LKE through the Cloud Manager or other tools. To request access to the Private Beta, [sign up here](https://welcome.linode.com/lkebeta/). Beta access awards you $100/month in free credits for the duration of the beta, which is automatically applied to your account when an LKE cluster is in use. Additionally, you will have access to the `Linode Green Light` community, a new program connecting beta users with our product and engineering teams.
-
-Because LKE is in Beta, there may be breaking changes to how you access and manage LKE. This guide will be updated to reflect these changes if and when they occur.
-{{< /note >}}
-
 *Linode Kubernetes Engine (LKE)* allows you to easily create, scale, and manage Kubernetes clusters to meet your application's demands, reducing the often complicated cluster set-up process to just a few clicks. Linode manages your Kubernetes master node, and you select how many Linodes you want to add as worker nodes to your cluster.
 
 Deploying a static site using an LKE cluster is a great example to follow when learning Kubernetes. A [container](/docs/kubernetes/kubernetes-reference/#container) image for a static site can be written in less than ten lines, and only one container image is needed, so it's less complicated to deploy a static site on Kubernetes than some other applications that require multiple components.
