@@ -153,9 +153,7 @@ Linux uses groups as a way to organize users. Groups organize collections of acc
 
     $ newgrp <marketing>
 
-If the user entering the above-referenced command is a member of the **marketing** group in the `/etc/group` file, then the current group membership will change. It is important to note that any files created will now be associated with the **marketing** group rather than the user's primary group. Users may also change their group by using the `chgrp` command. The syntax for the chgrp command is as follows:
-
-    $ chgrp <newgroup>
+If the user entering the above-referenced command is a member of the **marketing** group in the `/etc/group` file, then the current group membership will change. It is important to note that any files created will now be associated with the **marketing** group rather than the user's primary group.
 
 ### Creating and Removing Directories
 
