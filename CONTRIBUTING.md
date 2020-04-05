@@ -28,27 +28,26 @@ For more information about using Git, refer to the [official Git documentation](
 
 The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you will need to install Hugo on your local computer.
 
-Install a version of Hugo newer than 0.30. Earlier versions of Hugo will not render the site correctly.
+Install a version of Hugo newer than 0.30, but no higher than 0.52. Earlier versions prior to 0.30 of Hugo will not render the site correctly. Newer versions past 0.52 will not render at all.
 
 ### OSX
 
-On OSX, the easiest way to install Hugo is with [Homebrew](https://brew.sh/):
-
-    brew install hugo
+On OSX, the easiest way to install the correct version of Hugo is with [Homebrew](https://brew.sh/):
+  brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/d2c35e3938f6b71d97a54f6b6573345b0f6b0b9f/Formula/hugo.rb
 
 ### Linux
 
-Go to the [Hugo releases](https://github.com/gohugoio/hugo/releases) page and download the most up to date binary for your platform. Replace each instance of `v0.31.1` in this example with the newest version:
+Go to the [Hugo releases](https://github.com/gohugoio/hugo/releases) page and download the most up to date binary for your platform. Replace each instance of `v0.31.1` in this example with v0.52:
 
-    curl -OL https://github.com/gohugoio/hugo/releases/download/v0.31.1/hugo_0.31.1_Linux-64bit.tar.gz
-    tar -xvzf hugo_0.31.1_Linux-64bit.tar.gz
+    curl -OL https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.tar.gz
+    tar -xvzf hugo_0.52_Linux-64bit.tar.gz
     sudo mv hugo /usr/local/bin
 
 ### Windows
 
 Use [Chocolatey](https://chocolatey.org/) to install Hugo on Windows:
 
-    choco install hugo -confirm
+    choco install hugo --version 0.52 -confirm
 
 ## Create a New Guide
 
