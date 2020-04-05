@@ -270,13 +270,15 @@ An octal table showing the numeric equivalent for permissions is provided below.
 
 In addition to the most common read/write/execute file permissions, there are some additional modes that you might find useful, specifically the *+t* mode (*sticky bit*) and the *+s* mode (*setuid bit*). These functions describe the behavior of files and executables in multi-user situations.
 
-When set on a file or directory, the *sticky bit*, or *+t* mode, means that only the owner (or root) can delete the file, regardless of which users have write access to this file/directory by way of group membership or ownership. This is useful when a file or directory is owned by a group through which a number of users share write access to a given set of files.
+When set on a directory, the *sticky bit*, or *+t* mode, means that only the owner (or root) can delete or rename files within that directory, regardless of which users have write access to the directory by way of group membership or ownership. This is useful when a directory is owned by a group through which a number of users share write access to a given set of files.
 
-To set the sticky bit on a file named `/root/sticky.txt`, issue the following command:
+It's important to note that setting the sticky bit on a *file* does not prevent a user with write permissions to the enclosing directory from deleting or renaming the file—the sticky bit must be set on the enclosing *directory*. The sticky bit has no function on modern Linux systems when set on files.
 
-    chmod +t /root/sticky.txt
+To set the sticky bit on a directory named `/root/sticky`, issue the following command:
 
-To remove the sticky bit from a file, use the `chmod -t` command. Note, to change the sticky bit, you need to be either root or the file owner. The root user will be able to delete files regardless of the status of the sticky bit.
+    chmod +t /root/sticky
+
+To remove the sticky bit from a file or directory, use the `chmod -t` command. Note, to change the sticky bit, you need to be either root or the file/directory owner. The root user will be able to delete directories and files within them regardless of the status of the sticky bit.
 
 The *setuid* bit, or *+s*, when set on files allows users with permissions to execute a given file the ability to run that file with the permissions of file owner. For instance, if the file `work` was owned by the `root` user and the `marketing` group, members of the `marketing` group could run the `work` program as if they were the root user. This may pose potential security risks in some cases and executables should be properly evaluated before receiving the `+s` flag. To set the `+s` bit on a file named `/usr/bin/work`, issue the following command:
 
