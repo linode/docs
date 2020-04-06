@@ -25,6 +25,12 @@ languages: ["javascript"]
  - [Building our first single-file-component](#building-our-first-single-file-component)
  - [Communication between components via an EventBus](communication-between-components-via-an-eventbus)
 
+
+{{< note >}}
+You can [download all of the example files for this guide here](vuejs-single-file-components.tar.gz).
+{{< /note >}}
+
+
 ## What are single file components and why choose them over regular components
 
 If you haven’t read our [Building and Using VueJS Components](/docs/development/javascript/how-to-build-and-use-vuejs-components/) already go take a look. We've covered regular components, they are very useful for small projects but once your project grows and you start needing more structure and flexibility there is a better option called Single file components. 
