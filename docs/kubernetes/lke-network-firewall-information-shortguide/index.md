@@ -30,4 +30,4 @@ All of the following types of workloads *can* be reached from the Internet:
 
 -   Most manifests which use hostPort and specify a port.
 
-This provides some convenience, but also carries a security risk. Linode is developing services which will allow for greater flexibility for the network endpoints of these types of workloads in the future. For more information on manually firewalling these types of services, [please see this community post](https://www.linode.com/community/questions/19155/securing-k8s-cluster).
+Exposing workloads to the public Internet through the above methods can be convenient, but they can also carry a security risk. You may wish to manually install firewall rules on your cluster nodes; to do so, [please see this community post](https://www.linode.com/community/questions/19155/securing-k8s-cluster). Linode is developing services which will allow for greater flexibility for the network endpoints of these types of workloads in the future.
