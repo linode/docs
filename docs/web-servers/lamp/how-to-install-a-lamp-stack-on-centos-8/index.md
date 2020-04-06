@@ -162,7 +162,7 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
 {{< note >}}
 In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux boolean variable. To allow HTTPD scripts and modules to connect to the network, use `sudo setsebool -P httpd_can_network_connect on` command.
 {{</ note >}}
-    
+
 ### Configure FirewallD to Allow HTTP and HTTPS Connections
 
 FirewallD is enabled for CentOS 8 Linodes, but HTTP and HTTPS is not included in the default set of services.
