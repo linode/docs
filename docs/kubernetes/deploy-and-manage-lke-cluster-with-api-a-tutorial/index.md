@@ -444,6 +444,10 @@ This step is permanent and will result in the loss of data.
         -X DELETE \
         https://api.linode.com/v4beta/lke/clusters/12345
 
+## General Network and Firewall Information
+
+{{< content "lke-network-firewall-information-shortguide" >}}
+
 ## Where to Go From Here?
 
 Now that you have created an LKE cluster, you can start deploying workloads to it. Review these guides for further help:
