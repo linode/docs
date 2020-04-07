@@ -251,8 +251,6 @@ These instructions are for the Bash terminal. They are similar for other termina
         cp ~/terraform/k8s-cluster/default.conf $HOME/.kube/configs/default.conf
 
     {{< note >}}
-Update the above line with the location of the Downloads folder on your computer.
-
 Optionally, you can give the copied file a different name to help distinguish it from other files in the `configs` directory.
 {{< /note >}}
 
