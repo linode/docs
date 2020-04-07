@@ -77,10 +77,6 @@ LKE is not available in the Linode Classic Manager
 
 1. The **Create a Kubernetes Cluster** page will appear. Select the region where you would like your cluster to reside.
 
-    {{< note >}}
-While in [Private Beta](https://welcome.linode.com/lkebeta/), LKE is only available in the Dallas data center. Cluster region availability will expand when LKE goes into generally availability (GA).
-    {{</ note >}}
-
     ![Select your cluster's region](select-cluster-region.png "Select your cluster's region.")
 
 1. In the **Add Node Pools** section, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
