@@ -177,7 +177,7 @@ variable "nodes" {
 }
       {{</ file >}}
 
-    The example file creates input variables which are referenced in your main configuration file that you created in the previous step. The values for those variables is assigned in a separate file in the next step. You can override the k8s module's default values and provide your own defaults, as done in the example file. For more details about input variables, see the [Input Variables](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/#input-variables) section in our [A Beginner's Guide to Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/) guide.
+    The example file creates input variables which are referenced in your main configuration file that you created in the previous step. The values for those variables are assigned in a separate file in the next step. You can override the k8s module's default values and provide your own defaults, as done in the example file. For more details about input variables, see the [Input Variables](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/#input-variables) section in our [A Beginner's Guide to Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/) guide.
 
 1. Create your input variables values file to provide your main configuration file with values that differ from your input variable file's defaults.
 
@@ -208,7 +208,7 @@ cluster_name = "example-cluster-2"
 
 ### Connect to Your Kubernetes Cluster with kubectl
 
-After Terraform finishes deploying your Kubernetes cluster, your `~/terraform/k8s-cluster/` directory should have a file named `default.conf`. This file contains your [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file. You can use kubectl, along with this file to gain access to your Kubernetes cluster.
+After Terraform finishes deploying your Kubernetes cluster, your `~/terraform/k8s-cluster/` directory should have a file named `default.conf`. This file contains your [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file. You can use kubectl, along with this file, to gain access to your Kubernetes cluster.
 
 1. Save your kubeconfig file's path to the `$KUBECONFIG` environment variable. In the example command, the kubeconfig file is located in the Terraform directory you created at the beginning of this guide.  Ensure that you update the command with the locaton of your `default.conf` file
 
