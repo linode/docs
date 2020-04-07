@@ -9,8 +9,8 @@ modified: 2020-02-19
 modified_by:
     name: Linode
 published: 2015-12-01
-title: Install a LAMP Stack on CentOS 8
-h1_title: How to Install a LAMP Stack on CentOS 8
+title: How to Install a LAMP Stack on CentOS 8
+h1_title: Installing a LAMP Stack on CentOS 8
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -116,7 +116,7 @@ IncludeOptional sites-enabled/*.conf
 
         sudo systemctl reload httpd.service
 
-    Î{{< note >}}
+    {{< note >}}
 If you receive an error when trying to reload your `httpd` service, follow the steps in the [Configure SELinux to Allow HTTP](#configure-selinux-to-allow-http) section and then reattempt to reload the service.
     {{</ note >}}
 
@@ -159,9 +159,13 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
 
-### Configure FirewallD to Allow HTTP Connections
+{{< note >}}
+In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
+{{</ note >}}
 
-FirewallD is enabled for CentOS 8 Linodes, but HTTP is not included in the default set of services.
+### Configure FirewallD to Allow HTTP and HTTPS Connections
+
+FirewallD is enabled for CentOS 8 Linodes, but HTTP and HTTPS is not included in the default set of services.
 
 1. View the default set of services:
 
@@ -170,10 +174,12 @@ FirewallD is enabled for CentOS 8 Linodes, but HTTP is not included in the defau
 ssh dhcpv6-client
 {{< /output >}}
 
-1. To allow connections to Apache, add HTTP as a service:
+1. To allow connections to Apache, add HTTP and HTTPS as a service:
 
         sudo firewall-cmd --zone=public --add-service=http --permanent
+        sudo firewall-cmd --zone=public --add-service=https --permanent
         sudo firewall-cmd --zone=public --add-service=http
+        sudo firewall-cmd --zone=public --add-service=https
 
     Visit your domain or public IP to test the Apache server and view the default Apache page.
 

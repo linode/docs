@@ -29,7 +29,7 @@ This guide's example instructions will result in the creation of three billable 
 
 While kubeadm automates several cluster-provisioning tasks, there are other even faster methods for creating a cluster, all of which are great options for production ready deployments:
 
-- The [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/), currently in beta, allows you to spin up a Kubernetes cluster from the [Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) or the [Linode API](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/), and Linode will handle the management and maintenance of your control plane. To register for the beta, [please complete our signup form](https://welcome.linode.com/lkebeta/).
+- The [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/), allows you to spin up a Kubernetes cluster from the [Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) or the [Linode API](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/), and Linode will handle the management and maintenance of your control plane.
 
 - If you prefer a full featured GUI, [Linode's Rancher integration](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/) enables you to deploy and manage Kubernetes clusters with a simple web interface.
 

@@ -10,5 +10,6 @@ modified: 2014-11-21
 modified_by:
     name: Linode
 published: 2014-11-21
+show_in_lists: true
 title: Drush
 ---
