@@ -16,7 +16,7 @@ external_resources:
 - '[Kubernetes Terraform installer for Linode Instances](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2)'
 ---
 
-Use [Terraform](https://www.terraform.io/), the popular orchestration tool by [HaschiCorp](https://www.hashicorp.com/), to deploy a Kubernetes cluster on Linode. [Linode's Terraform K8s module]((https://registry.terraform.io/modules/linode/k8s/linode/0.1.2)) creates a Kubernetes cluster running on the [CoreOS ContainerLinux operating system](https://coreos.com/os/docs/latest/). After creating a Master and worker nodes, the module connects through SSH to these instances and installs [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/), [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and other Kubernetes binaries to `/opt/bin`. It also handles initializing kubeadm, joining worker nodes to the master, and configuring kubectl. For the cluster's container networking interface, Calico is installed. Finally, a kubectl admin config file is installed to the local environment, which you can use to connect to your cluster's API server.
+Use [Terraform](https://www.terraform.io/), the popular orchestration tool by [HaschiCorp](https://www.hashicorp.com/), to deploy a Kubernetes cluster on Linode. [Linode's Terraform K8s module](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2) creates a Kubernetes cluster running on the [CoreOS ContainerLinux operating system](https://coreos.com/os/docs/latest/). After creating a Master and worker nodes, the module connects through SSH to these instances and installs [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/), [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and other Kubernetes binaries to `/opt/bin`. It also handles initializing kubeadm, joining worker nodes to the master, and configuring kubectl. For the cluster's container networking interface, Calico is installed. Finally, a kubectl admin config file is installed to the local environment, which you can use to connect to your cluster's API server.
 
 Using Linode's Terraform k8s module simplifies many of the steps involved in manually deploying a Kubernetes cluster with kubeadm. To learn more about kubeadm, see our [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) guide.
 
@@ -210,12 +210,12 @@ cluster_name = "example-cluster-2"
 
 After Terraform finishes deploying your Kubernetes cluster, your `~/terraform/k8s-cluster/` directory should have a file named `default.conf`. This file contains your [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file. You can use kubectl, along with this file, to gain access to your Kubernetes cluster.
 
-1. Save your kubeconfig file's path to the `$KUBECONFIG` environment variable. In the example command, the kubeconfig file is located in the Terraform directory you created at the beginning of this guide.  Ensure that you update the command with the locaton of your `default.conf` file
+1. Save your kubeconfig file's path to the `$KUBECONFIG` environment variable. In the example command, the kubeconfig file is located in the Terraform directory you created at the beginning of this guide.  Ensure that you update the command with the location of your `default.conf` file
 
         export KUBECONFIG=~/terraform/k8s-cluster/default.conf
 
     {{< note >}}
-It is common practice to store your kubeconfig files in `~/.kube` directory. By default, kubectl searchs for a kubeconfig file named `config` that is located in the  `~/.kube` directory. You can specify other kubeconfig files by setting the `$KUBECONFIG` environment variable, as done in the step above.
+It is common practice to store your kubeconfig files in `~/.kube` directory. By default, kubectl searches for a kubeconfig file named `config` that is located in the  `~/.kube` directory. You can specify other kubeconfig files by setting the `$KUBECONFIG` environment variable, as done in the step above.
 {{</ note >}}
 
 1. View your cluster's nodes using kubectl.
