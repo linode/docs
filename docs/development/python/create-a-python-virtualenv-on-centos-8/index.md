@@ -22,7 +22,7 @@ languages: ["python"]
 
 A Python Virtual Environment - or `virtualenv` - is a tool to create an isolated Python environment on your Linode. This can be extremely powerful as you can create a virtual environment and install all Python executables/packages to it, leaving no dependencies outside of your created virtual environment.
 
-This guide shows how to create and run Python virtual environments in centos 8 Linode.
+This guide shows how to create and run Python virtual environments in CentOS 8 Linode.
 
 ## Before You Begin
 
