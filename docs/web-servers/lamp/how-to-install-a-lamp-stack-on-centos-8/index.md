@@ -9,8 +9,8 @@ modified: 2020-02-19
 modified_by:
     name: Linode
 published: 2015-12-01
-title: Install a LAMP Stack on CentOS 8
-h1_title: How to Install a LAMP Stack on CentOS 8
+title: How to Install a LAMP Stack on CentOS 8
+h1_title: Installing a LAMP Stack on CentOS 8
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'

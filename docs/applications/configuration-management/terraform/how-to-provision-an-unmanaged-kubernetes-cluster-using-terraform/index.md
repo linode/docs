@@ -9,7 +9,7 @@ published: 2020-03-03
 modified_by:
   name: Linode
 title: "How to Provision an Unmanaged Kubernetes Cluster using Terraform"
-h1_title: "Provision an Unmanaged Kubernetes Cluster using Terraform"
+h1_title: "Provisioning an Unmanaged Kubernetes Cluster using Terraform"
 contributor:
   name: Linode
 external_resources:

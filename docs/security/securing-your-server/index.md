@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2012-02-17
 title: How to Secure Your Server
+h1_title: Securing Your Server
 ---
 
 In the [Getting Started](/docs/getting-started/) guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it's time to harden your Linode against unauthorized access.
