@@ -34,6 +34,7 @@ ap
 apache2
 api
 apiserver
+apparmor
 appimage
 appletalk
 appserver
@@ -420,6 +421,7 @@ filezilla
 filimonov
 finnix
 firewalld
+firewalling
 firstsite
 flamegraph
 flamegraphs

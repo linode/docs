@@ -10,7 +10,7 @@ published: 2019-11-12
 modified_by:
   name: Linode
 title: "How to Deploy a Static Site on Linode Kubernetes Engine"
-h1_title: "Deploy a Static Site on Linode Kubernetes Engine"
+h1_title: "Deploying a Static Site on Linode Kubernetes Engine"
 contributor:
   name: Linode
 external_resources:
@@ -454,6 +454,10 @@ static-site-service&nbsp;&nbsp;LoadBalancer&nbsp;&nbsp;10.128.99.240&nbsp;&nbsp;
 1.  Note the external IP address of the Service you created. This is the IP address of the NodeBalancer, and you can use it to view your static site.
 
 1.  In the above example, the IP address is `192.0.2.1`. Navigate to the external IP address in the browser of your choice to view your static site. You should see the same content as when you tested your Docker image on your workstation.
+
+## General Network and Firewall Information
+
+{{< content "lke-network-firewall-information-shortguide" >}}
 
 ## Next Steps
 

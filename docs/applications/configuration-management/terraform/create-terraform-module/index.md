@@ -16,6 +16,7 @@ external_resources:
 - '[Linode Terraform Provider](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 - '[Terraform - Creating Modules](https://www.terraform.io/docs/modules/create.html)'
 - '[Terraform - Module Sources](https://www.terraform.io/docs/modules/sources.html)'
+aliases: ['applications/configuration-management/create-terraform-module/']
 ---
 Terraform modules allow you to better organize your configuration code and make the code reusable. You can host your Terraform modules on remote version control services, like GitHub, for others to use. The [Terraform Module Registry](https://registry.terraform.io/) hosts community modules that you can reuse for your own Terraform configurations, or you can publish your own modules for consumption by the Terraform community.
 

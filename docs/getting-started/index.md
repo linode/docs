@@ -69,7 +69,7 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
     * Boot and shut down your Linode
     * Access monitoring statistics
-    * Update your [billing](/docs/platform/billing-and-support/billing-and-payments-new-manager/) and [account](/docs/platform/manager/accounts-and-passwords-new-manager/) information
+    * Update your [billing](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) and [account](/docs/platform/manager/accounts-and-passwords-new-manager/) information
     * Add additional Linode services, like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/)
     * Open a [support](/docs/platform/billing-and-support/support-new-manager/) ticket and perform other administrative tasks
 
@@ -261,7 +261,7 @@ Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will no
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your Linode's IPv6 address.
 
-See our guide to [Adding DNS Records](/docs/websites/hosting-a-website/#add-dns-records) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
+See our guide to [Adding DNS Records](/docs/platform/manager/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
 
 ## Set the Timezone
 
