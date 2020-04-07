@@ -10,6 +10,7 @@ modified: 2019-03-26
 modified_by:
   name: Linode
 title: "How to Use Linode's One-Click Apps"
+h1_title: "Using Linode's One-Click Apps"
 contributor:
   name: Linode
 ---

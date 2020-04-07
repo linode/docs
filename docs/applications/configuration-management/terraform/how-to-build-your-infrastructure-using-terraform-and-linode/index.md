@@ -8,7 +8,7 @@ keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-06
 modified: 2018-10-19
-aliases: ['platform/how-to-build-your-infrastructure-using-terraform-and-linode/']
+aliases: ['platform/how-to-build-your-infrastructure-using-terraform-and-linode/','applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/']
 modified_by:
   name: Linode
 title: 'Use Terraform to Provision Linode Environments'
