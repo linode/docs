@@ -160,7 +160,7 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
         sudo systemctl restart httpd.service
 
 {{< note >}}
-In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux boolean variable. To allow HTTPD scripts and modules to connect to the network, use `sudo setsebool -P httpd_can_network_connect on` command.
+In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
 {{</ note >}}
 
 ### Configure FirewallD to Allow HTTP and HTTPS Connections
