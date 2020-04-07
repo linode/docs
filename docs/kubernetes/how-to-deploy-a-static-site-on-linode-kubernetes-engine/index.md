@@ -455,6 +455,10 @@ static-site-service&nbsp;&nbsp;LoadBalancer&nbsp;&nbsp;10.128.99.240&nbsp;&nbsp;
 
 1.  In the above example, the IP address is `192.0.2.1`. Navigate to the external IP address in the browser of your choice to view your static site. You should see the same content as when you tested your Docker image on your workstation.
 
+## General Network and Firewall Information
+
+{{< content "lke-network-firewall-information-shortguide" >}}
+
 ## Next Steps
 
 If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/platform/manager/dns-manager/) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.

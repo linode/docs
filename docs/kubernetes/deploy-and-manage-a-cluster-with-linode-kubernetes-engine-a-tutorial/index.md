@@ -338,6 +338,10 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
 1.  The Kubernetes listing page will appear and you will no longer see your deleted cluster.
 
+## General Network and Firewall Information
+
+{{< content "lke-network-firewall-information-shortguide" >}}
+
 ## Next Steps
 
 Now that you have a running LKE cluster, you can start deploying workloads to it. Refer to our other guides to learn more:
