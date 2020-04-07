@@ -103,7 +103,7 @@ Memory protection checking:     requested (insecure)
 Max kernel policy version:      31
     {{</ output >}}
 
-1. To put SELinux into *enforcing mode*, use the `setenforce` command. When in enforcing mode, any actions not permitted by your system's are blocked and the corresponding event is logged in the audit log.
+1. To put SELinux into *enforcing mode*, use the `setenforce` command. When in enforcing mode, any actions not permitted by your system are blocked and the corresponding event is logged in the audit log.
 
         sudo setenforce 1
 
