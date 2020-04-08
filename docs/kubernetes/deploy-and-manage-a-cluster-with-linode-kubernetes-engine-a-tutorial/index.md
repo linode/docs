@@ -47,16 +47,6 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 ## Before You Begin
 
-### Enable Network Helper
-
-In order to use the Linode Kubernetes Engine, you will need to have *Network Helper* enabled globally on your account. Network Helper is a Linode-provided service that automatically sets a static network configuration for your Linode when it boots. To enable this global account setting, follow [these instructions](/docs/platform/network-helper/#global).
-
-If you don't want to use Network Helper on some Linodes that are not part of your LKE clusters, the service can also be disabled on a per-Linode basis; see instructions [here](/docs/platform/network-helper/#single-per-linode).
-
-{{< note >}}
-If you have already deployed an LKE cluster and did not enable Network Helper, you can [add a new node pool](#add-node-pools) with the same type, size, and count as your initial node pool. Once your new node pool is ready, you can then [delete the original node pool](#delete-a-cluster).
-{{</ note >}}
-
 ### Install kubectl
 
 You will need to install the kubectl client to your computer before proceeding. Follow the steps corresponding to your computer's operating system.
