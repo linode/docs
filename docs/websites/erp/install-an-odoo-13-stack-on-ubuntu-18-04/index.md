@@ -104,33 +104,34 @@ Configure Odoo's `postgresql` database backend Linode. Ubuntu 18.04 official rep
 
 Install the PostgreSQL database and developer libraries by using the command:
 
-        sudo apt install postgresql-10 postgresql-server-dev-10 -y
+    sudo apt install postgresql-10 postgresql-server-dev-10 -y
 
 ### Create PostgreSQL User
 
-Odoo requires a separate PostgreSQL user for communications between the web application Linode and the database Linode.
+Odoo requires a separate PostgreSQL user for communications between the web application Linode and the database Linode. Create the database user `odoo` in charge of all operations. Use a strong password and save it in a secure location, you will need it later:
 
-1. Switch to the `postgres` user:
+    sudo -u postgres createuser odoo -U postgres -dP
 
-        sudo -u postgres 
+The options used are described below:
 
-2. Now, create the database user `odoo` in charge of all operations. Use a strong password and save it in a secure location, you will need it later:
-
-        createuser odoo -U postgres -dRSP
+* `-u`: Executes the command as the `postgres` user.
+* `-U`: Indicates the user name to connect as.
+* `-d`: Grants the user permission to create databases.
+* `-P`: You will be prompted for the new user's password.
 
 ### Configure Host Based Authentication
 
 1. Stop the PostgreSQL service:
 
-        sudo systemctl stop postgresql
+    sudo systemctl stop postgresql
 
-2. Edit `pg_hba.conf` to allow PostgreSQL Linode to communicate with Odoo Linode. Add the following lines to the file:
+2. Edit `pg_hba.conf` to allow PostgreSQL Linode to communicate with Odoo Linode. Add the following line to the file:
 
     {{< file "/etc/postgresql/10/main/pg_hba.conf" conf >}}
 host    all             odoo             odoo.yourdomain.com            md5
 {{< /file >}}
 
-    This line grants the `odoo` user the rights connect to `all` databases within this server.
+This line grants the `odoo` user the rights connect to `all` databases within this server.
 
 The settings in the `pg_hba.conf` file are:
 
@@ -156,78 +157,102 @@ These settings are:
 
 Now that you finished PostgreSQL configuration you can start the `postgresql` service and enable it on startup:
 
-        sudo systemctl start postgresql && sudo systemctl enable postgresql
+    sudo systemctl start postgresql && sudo systemctl enable postgresql
 
 ## Odoo 13 Setup
 
 Configure your Odoo 13 web application to work with the PostgreSQL database backend.
 
-### Create the Odoo User
+{{< note >}}
+Odoo 13 uses Python 3.6+ instead of Python 3 5. If your server is running an older Ubuntu release (for instance 16.04) you will need to compile a newer Python version to meet this requirement.
+{{< /note >}}
 
-In order to separate Odoo from other services, create a new Odoo system user to run its processes:
+### Prepare Linode for Odoo 13 Installation
 
-    sudo adduser --system --home=/opt/odoo --group odoo
+1. In order to separate Odoo from other services, create a new Odoo system user to run its processes:
 
-### Install Odoo 13
+        sudo adduser --system --home=/opt/odoo --group odoo
 
-1. Use Git to clone the Odoo files onto your server:
+2. Install system dependencies that will be needed during Odoo 13 set up:
+
+        sudo apt-get install python3 python3-pip python3-suds python3-all-dev python3-venv \
+        python3-dev python3-setuptools python3-tk libxml2-dev libxslt1-dev libevent-dev \
+        libsasl2-dev libldap2-dev pkg-config libtiff5-dev libjpeg8-dev libjpeg-dev \
+        zlib1g-dev libfreetype6-dev liblcms2-dev liblcms2-utils libwebp-dev tcl8.6-dev \
+        tk8.6-dev libyaml-dev fontconfig xfonts-75dpi xfonts-base xfonts-encodings xfonts-utils -y
+
+3. Use Git to clone the Odoo files onto your server:
 
         sudo git clone https://www.github.com/odoo/odoo.git --depth 1 \
         --branch 13.0 --single-branch /opt/odoo
 
-    {{< note >}}
-Odoo 13 application now uses Python 3.x instead of Python 2.7. If you are using Ubuntu 14.04 this may mean additional steps for your installation. Dependencies are now grouped to highlight the new changes.
-{{< /note >}}
-
-2. Enforce the use of POSIX locale this will prevent possible errors during installation (this has nothing to do with the Odoo language):
+4. Enforce the use of POSIX locale this will prevent possible errors during installation (this has nothing to do with the Odoo language):
 
         export LC_ALL=C
 
-3. Install new Python3 dependencies:
-
-        sudo apt-get install python3 python3-pip python3-suds python3-all-dev \
-        python3-dev python3-setuptools python3-tk
-
-4. Install global dependencies:
-
-        sudo apt install libxml2-dev libxslt1-dev libevent-dev libsasl2-dev libldap2-dev \
-        pkg-config libtiff5-dev libjpeg8-dev libjpeg-dev zlib1g-dev libfreetype6-dev \
-        liblcms2-dev liblcms2-utils libwebp-dev tcl8.6-dev tk8.6-dev libyaml-dev fontconfig \
-        xfonts-75dpi xfonts-base xfonts-encodings xfonts-utils -y
-
-5.  Install Odoo 13 specific Python dependencies:
-
-        sudo -H pip3 install --upgrade pip
-        sudo -H pip3 install -r /opt/odoo/doc/requirements.txt
-        sudo -H pip3 install -r /opt/odoo/requirements.txt
-
-6. Install Less CSS via Node.js and npm:
+5. Install Less CSS via Node.js and npm:
 
         sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - \
         && sudo apt install -y nodejs \
         && sudo npm install -g less less-plugin-clean-css
 
-7. Download `wkhtmltopdf` version `0.12.5` which is the recommended version for Odoo 13. For more information regarding `wkhtmltopdf` recommended versions, visit [Odoo wiki](https://github.com/odoo/odoo/wiki/Wkhtmltopdf)
+6. Download `wkhtmltopdf` version `0.12.5` which is the recommended version for Odoo 13. For more information regarding `wkhtmltopdf` recommended versions, visit [Odoo wiki](https://github.com/odoo/odoo/wiki/Wkhtmltopdf)
 
         cd /tmp
         wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
 
-8. Install the package:
+7. Install the package:
 
         sudo dpkg -i wkhtmltox_0.12.5-1.bionic_amd64.deb
 
-9. To ensure that `wkhtmltopdf` functions properly, copy the binaries to a location in your executable path and give them the necessary permission for execution:
+8. To ensure that `wkhtmltopdf` functions properly, copy the binaries to a location in your executable path and give them the necessary permission for execution:
 
         sudo cp /usr/local/bin/wkhtmlto* /usr/bin/ \
         && sudo chmod a+x /usr/bin/wk*
 
+### Set Up Virtualenv
+
+It is considered a best practice to isolate Odoo's Python modules from the modules included as part of the operating system to prevent unforeseen conflicts in the long run, especially after periodic OS updates. For that reason using `virtualenv` is highly recommended.
+
+1. Create a new `virtualenv` environment for Odoo 13 application:
+
+        python3 -m venv /tmp/odoo-env
+
+2. Activate the `odoo-env` virtual environment you created in the previous step:
+
+        source /tmp/odoo-env/bin/activate
+
+3. Update `pip3` using the following command:
+
+        pip3 install --upgrade pip
+
+4. Install Python's wheel in the virtual environment:
+
+        pip3 install wheel
+
+Let's review the the virtual environment creation:
+
+* `python3 -m venv`: Runs `venv` module using Python 3, this module is in charge of creating the virtual environment.
+* `/tmp/odoo-env`: Indicates the path used for the virtual Python environment. For the purpose of this guide, `tmp` directory was used but you can change it to any location that suits your needs as long as you remember to grant the `odoo` user with proper permissions afterward.
+
+### Install Odoo's Python modules
+
+1. Install the dependencies required by Odoo in the Python 3 environment:
+
+        pip3 install -r /opt/odoo/doc/requirements.txt
+        pip3 install -r /opt/odoo/requirements.txt
+
+4. Exit from the Python virtual environment by issuing the command:
+
+        deactivate
+
 ### Configure the Odoo Server
 
-1.  Copy the included configuration file to `/etc/` and change its name to `odoo-server.conf`
+1. Copy the included configuration file to `/etc/` and change its name to `odoo-server.conf`
 
         sudo cp /opt/odoo/debian/odoo.conf /etc/odoo-server.conf
 
-2.  Modify the configuration file. The complete file should look similar to the following, depending on your deployment needs:
+2. Modify the configuration file. The complete file should look similar to the following, depending on your deployment needs:
 
     {{< file "/etc/odoo-server.conf" conf >}}
 [options]
@@ -262,7 +287,7 @@ PermissionsStartOnly=true
 SyslogIdentifier=odoo-server
 User=odoo
 Group=odoo
-ExecStart=/opt/odoo/odoo-bin --config=/etc/odoo-server.conf --addons-path=/opt/odoo/addons/
+ExecStart=/tmp/odoo-env/bin/python3 /opt/odoo/odoo-bin --config=/etc/odoo-server.conf --addons-path=/opt/odoo/addons/
 WorkingDirectory=/opt/odoo/
 StandardOutput=journal+console
 
@@ -281,11 +306,7 @@ WantedBy=multi-user.target
 
         sudo chown -R odoo: /opt/odoo/
 
-3.  Set the `odoo` user as the owner of log directory as well:
-
-        sudo chown odoo:root /var/log/odoo
-
-4.  Protect the server configuration file. Change its ownership and permissions so no other non-root user can access it:
+3.  Protect the server configuration file. Change its ownership and permissions so no other non-root user can access it:
 
         sudo chown odoo: /etc/odoo-server.conf \
         && sudo chmod 640 /etc/odoo-server.conf
