@@ -186,6 +186,6 @@ The following query uses the `deprecated` and `vendor` fields to return all curr
 
 More complex searches are possible through the use of logical operators. Use `or` to return a list of all Debian and Ubuntu images:
 
-    curl https://api.linode.com/v4/images/ -H "{"+or": [{"vendor":"Debian"}, {"vendor":"Ubuntu"}]}" | json_pp
+    curl https://api.linode.com/v4/images/ -H 'X-Filter: {"+or": [{"vendor":"Debian"}, {"vendor":"Ubuntu"}]}' | json_pp
 
 See the [Linode API documentation](https://developers.linode.com/api/v4/) for a full list of supported operators.
