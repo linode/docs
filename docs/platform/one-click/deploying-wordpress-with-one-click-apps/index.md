@@ -1,15 +1,16 @@
 ---
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
 description: 'Deploy a WordPress website on Linode using One-Click Apps.'
 keywords: ['wordpress','wp cli','one-click apps', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-03-27
-modified: 2019-03-27
+published: 2020-04-09
+modified: 2020-04-09
 modified_by:
   name: Linode
-title: "Deploy WordPress with One-Click Apps"
+title: "How to Deploy WordPress with One-Click Apps"
+h1_title: "Deploying Wordpress with One-Click Apps"
 contributor:
   name: Linode
 external_resources:
@@ -32,10 +33,13 @@ You can configure your WordPress App by providing values for the following field
 
 | **Field** | **Description** |
 |:--------------|:------------|
+| **E-Mail Address** | E-Mail address for your WordPress admin user. *Required*. |
 | **Admin Username** | Username for your WordPress admin user. *Required*. |
 | **Admin Password** | Password for your WordPress admin user. *Required*. |
-| **E-Mail Address** | E-Mail address for your WordPress admin user. *Required*. |
+| **MySQL root Password** | The root password for your MySQL database. *Required*. |
+| **Wordpress Database Password** | The root password for your Wordpress database. *Required*. |
 | **Website Title** | Your WordPress site's title. *Advanced Configuration*. |
+| **Domain** | Your domain name. *Advanced Configuration*. |
 
 ### Linode Options
 
@@ -43,7 +47,7 @@ After providing the app specific options, provide configurations for your Linode
 
 | **Configuration** | **Description** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 |--------------|------------|
-| **Select an Image** | Debian 9 is currently the only image supported by WordPress One-Click Apps, and it is pre-selected on the Linode creation page. *Required*. |
+| **Select an Image** | Debian 10 is currently the only image supported by WordPress One-Click Apps, and it is pre-selected on the Linode creation page. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). WordPress is an extremely flexible CMS that can be supported on any size Linode, but we suggest you build your WordPress app on a Linode plan that reflects how much content you plan on featuring and how much traffic you expect on your site. For small websites, a 1GB Nanode is sufficient. If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
@@ -85,7 +89,7 @@ Once you have set up DNS for your site, you will be able to visit it by entering
 
     ![WordPress general settings menu option highlighted](wordpress_general_settings_menu_option_highlighted.png "WordPress general settings menu option highlighted")
 
-1.  The **General Settings** form will appear. Update the **WordPress Address** and **Site URL** fields with the domain or subdomain you assigned to your site. Specifically, the value for both fields should be `http://example.com`, where `example.com` is replaced by your domain or subdomain.
+1.  The **General Settings** form will appear. Update the **WordPress Address (URL)** and **Site Address (URL)** fields with the domain or subdomain you assigned to your site. Specifically, the value for both fields should be `http://example.com`, where `example.com` is replaced by your domain or subdomain.
 
 1.  Click the **Save Changes** button at the bottom of the form.
 
