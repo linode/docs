@@ -16,8 +16,6 @@ external_resources:
   - '[Salt Masterless Walkthough](https://docs.saltstack.com/en/latest/topics/tutorials/quickstart.html)'
   - '[Salt Fileserver Backend Walthrough](https://docs.saltstack.com/en/latest/topics/tutorials/gitfs.html)'
   - '[Plex Media Server Quick State](https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/)'
-promo_code_amount: '20'
-promo_code: 'Salt20'
 dedicated_cpu_link: true
 ---
 
