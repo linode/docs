@@ -143,6 +143,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-two
+spec:
   replicas: 3
   selector:
     matchLabels:
@@ -166,17 +167,26 @@ metadata:
 
 Next, we'll use Helm to install an ingress controller. While there are a few different versions of NGINX Ingress controllers,we'll be installing the Kubernetes maintained [NGINX Ingress controller](https://github.com/kubernetes/ingress-nginx) for this guide.
 
+First, add the `stable` helm repository if you have not yet:
+
+    helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+Next, install the NGINX ingress controller:
+
     helm install nginx-ingress stable/nginx-ingress --set controller.publishService.enabled=true
 
-Once installation is completed, your LoadBalancer will be deployed, and an external IP will be available. To find this external IP, enter the following command and note the IP address in the output under `EXTERNAL-IP`:
+Once installation is completed, your LoadBalancer will be deployed, and an external IP will be available. To find this external IP, enter the following command and note the IP address for the `nginx-ingress-controller` in the output under `EXTERNAL-IP`:
 
-        kubectl get svc -A -owide
+       kubectl get svc -A -owide
 
-    {{< output >}}
-NAMESPACE       NAME            TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)                      AGE   SELECTOR
-default         kubernetes      ClusterIP      10.128.0.1       <none>         443/TCP                      31d   <none>
-kube-system     kube-dns        ClusterIP      10.128.0.10      <none>         53/UDP,53/TCP,9153/TCP       31d   k8s-app=kube-dns
-nginx-ingress   nginx-ingress   LoadBalancer   10.128.236.245   45.79.62.128   80:30625/TCP,443:32654/TCP   27m   app=nginx-ingress
+{{< output >}}
+NAMESPACE     NAME                            TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)                      AGE    SELECTOR
+default       hello-one                       ClusterIP      10.128.134.154   <none>         80/TCP                       18m    app=hello-ingress
+default       hello-two                       ClusterIP      10.128.164.145   <none>         80/TCP                       18m    app=hello-two
+default       kubernetes                      ClusterIP      10.128.0.1       <none>         443/TCP                      26h    <none>
+default       nginx-ingress-controller        LoadBalancer   10.128.15.94     45.79.61.112   80:31512/TCP,443:32562/TCP   4m3s   app.kubernetes.io/component=controller,app=nginx-ingress,release=nginx-ingress
+default       nginx-ingress-default-backend   ClusterIP      10.128.211.178   <none>         80/TCP                       4m3s   app.kubernetes.io/component=default-backend,app=nginx-ingress,release=nginx-ingress
+kube-system   kube-dns                        ClusterIP      10.128.0.10      <none>         53/UDP,53/TCP,9153/TCP       26h    k8s-app=kube-dns
 {{</ output >}}
 
 #### Setup Your Domain in Cloud Manager
@@ -212,9 +222,11 @@ spec:
 
 Next, deploy your ingress using the following command:
 
-  kubectl create -f my-new-ingress.yaml
+    kubectl create -f my-new-ingress.yaml
 
 Once this is completed, try accessing `blog.example.com` and `shop.example.com` through a web browser. Each time you navigate to the page, you'll see one of three different instances of the replicated server as the active node is rotated. While the application has been deployed to the same cluster, at no point will `blog.example.com` display the same three hostnames as `shop.example.com`, as all requests are being routed correctly.
+
+![Kubernetes on Linode](ingress-complete.png)
 
 ## Next Steps
 
