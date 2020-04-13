@@ -85,7 +85,7 @@ If you have already deployed an LKE cluster and did not enable Network Helper, y
 | `region` | The data center region where your cluster will be deployed. Currently, `us-central` is the only available region for LKE clusters. |
 | `label` | A human readable name to identify your cluster. This must be unique. If no label is provided, one will be assigned automatically. Labels must start with an alpha [a-z][A-Z] character, must only consist of alphanumeric characters and dashes, and must not contain two dashes in a row.
 | `node_pools` | The collections of Linodes that serve as the worker nodes in your LKE cluster. |
-| `version` | The desired version of Kubernetes for this cluster. |
+| `k8s_version` | The desired version of Kubernetes for this cluster. |
 
 {{< note >}}
 The available plan types for LKE worker nodes are [Standard](/docs/platform/how-to-choose-a-linode-plan/#2-standard), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory) plans.
@@ -98,7 +98,7 @@ The available plan types for LKE worker nodes are [Standard](/docs/platform/how-
              -X POST -d '{
                 "label": "cluster12345",
                 "region": "us-central",
-                "version": "1.16",
+                "k8s_version": "1.16",
                 "tags": ["ecomm", "blogs"],
                 "node_pools": [
                   { "type": "g6-standard-2", "count": 2},
@@ -110,7 +110,7 @@ The available plan types for LKE worker nodes are [Standard](/docs/platform/how-
     You will receive a response similar to:
 
     {{< output >}}
-{"version": "1.16", "updated": "2019-08-02T17:17:49", "region": "us-central", "tags": ["ecomm", "blogs"], "label": "cluster12345", "id": 456, "created": "2019-22-02T17:17:49"}%
+{"k8s_version": "1.16", "updated": "2019-08-02T17:17:49", "region": "us-central", "tags": ["ecomm", "blogs"], "label": "cluster12345", "id": 456, "created": "2019-22-02T17:17:49"}%
     {{</ output >}}
 
 1. Make note of your cluster's ID, as you will need it to continue to interact with your cluster in the next sections. In the example above, the cluster's ID is `"id": 456`. You can also access your cluster's ID by [listing all LKE Clusters](#list-lke-clusters) on your account.
@@ -257,7 +257,7 @@ To view a list of all your LKE clusters, send a `GET` request to the `/lke/clust
 The returned response body will display the number of clusters deployed to your account and general details about your LKE clusters:
 
 {{< output >}}
-{"results": 2, "data": [{"updated": "2019-08-02T17:17:49", "region": "us-central", "id": 456, "version": "1.16", "label": "cluster-12345", "created": "2019-08-02T17:17:49", "tags": ["ecomm", "blogs"]}, {"updated": "2019-08-05T17:00:04", "region": "us-central", "id": 789, "version": "1.16", "label": "cluster-56789", "created": "2019-08-05T17:00:04", "tags": ["ecomm", "marketing"]}], "pages": 1, "page": 1}%
+{"results": 2, "data": [{"updated": "2019-08-02T17:17:49", "region": "us-central", "id": 456, "k8s_version": "1.16", "label": "cluster-12345", "created": "2019-08-02T17:17:49", "tags": ["ecomm", "blogs"]}, {"updated": "2019-08-05T17:00:04", "region": "us-central", "id": 789, "k8s_version": "1.16", "label": "cluster-56789", "created": "2019-08-05T17:00:04", "tags": ["ecomm", "marketing"]}], "pages": 1, "page": 1}%
 {{</ output >}}
 
 ### View an LKE Cluster
@@ -276,7 +276,7 @@ To view your LKE cluster, send a `GET` request to the the `/lke/clusters/{cluste
 Your output will resemble the following:
 
 {{< output >}}
-{"created": "2019-08-02T17:17:49", "updated": "2019-08-02T17:17:49", "version": "1.16", "tags": ["ecomm", "blogs"], "label": "cluster-12345", "id": 456, "region": "us-central"}%
+{"created": "2019-08-02T17:17:49", "updated": "2019-08-02T17:17:49", "k8s_version": "1.16", "tags": ["ecomm", "blogs"], "label": "cluster-12345", "id": 456, "region": "us-central"}%
 {{</ output >}}
 
 ### List a Cluster's Node Pools
@@ -348,7 +348,7 @@ To update your LKE cluster's label, send a `PUT` request to the `/lke/clusters/{
 The response body will display the updated cluster label:
 
 {{< output >}}
-{"created": "2019-08-02T17:17:49", "updated": "2019-08-05T19:11:19", "version": "1.16", "tags": ["ecomm", "blogs"], "label": "updated-cluster-name", "id": 456, "region": "us-central"}%
+{"created": "2019-08-02T17:17:49", "updated": "2019-08-05T19:11:19", "k8s_version": "1.16", "tags": ["ecomm", "blogs"], "label": "updated-cluster-name", "id": 456, "region": "us-central"}%
 {{</ output >}}
 
 ### Add a Node Pool to your LKE Cluster
