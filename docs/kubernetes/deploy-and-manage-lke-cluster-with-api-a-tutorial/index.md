@@ -104,7 +104,7 @@ The available plan types for LKE worker nodes are [Standard](/docs/platform/how-
                   { "type": "g6-standard-2", "count": 2},
                   { "type": "g6-standard-4", "count": 3}
                 ]
-             }' https://api.linode.com/v4beta/lke/clusters
+             }' https://api.linode.com/lke/clusters
 
 
     You will receive a response similar to:
@@ -128,7 +128,7 @@ To communicate with your LKE cluster, kubectl requires a copy of your cluster's 
 1. Access your LKE cluster's kubeconfig file by sending a `GET` request to the `/lke/clusters/{clusterId}/kubeconfig` endpoint. Ensure you replace `12345` with your cluster's ID that you recorded in the previous section:
 
         curl -H "Authorization: Bearer $TOKEN" \
-          https://api.linode.com/v4beta/lke/clusters/12345/kubeconfig
+          https://api.linode.com/lke/clusters/12345/kubeconfig
 
     The API returns a [base64](https://en.wikipedia.org/wiki/Base64) encoded string (a useful format for automated pipelines) representing your kubeconfig. Your output will resemble the following:
 
@@ -252,7 +252,7 @@ Once you have created an LKE Cluster, you can access information about its struc
 To view a list of all your LKE clusters, send a `GET` request to the `/lke/clusters` endpoint.
 
     curl -H "Authorization: Bearer $TOKEN" \
-        https://api.linode.com/v4beta/lke/clusters
+        https://api.linode.com/lke/clusters
 
 The returned response body will display the number of clusters deployed to your account and general details about your LKE clusters:
 
@@ -271,7 +271,7 @@ You can use the Linode API to access details about an individual LKE cluster. Yo
 To view your LKE cluster, send a `GET` request to the the `/lke/clusters/{clusterId}` endpoint. In this example, ensure you replace `12345` with your cluster's ID:
 
     curl -H "Authorization: Bearer $TOKEN" \
-            https://api.linode.com/v4beta/lke/clusters/12345
+            https://api.linode.com/lke/clusters/12345
 
 Your output will resemble the following:
 
@@ -290,7 +290,7 @@ A node pool consists of one or more Linodes (worker nodes). Each node in the poo
 To list your cluster's node pools, send a `GET` request to the `/lke/clusters/{clusterId}/pools` endpoint. In this example, replace `12345` with your cluster's ID:
 
     curl -H "Authorization: Bearer $TOKEN" \
-        https://api.linode.com/v4beta/lke/clusters/12345/pools
+        https://api.linode.com/lke/clusters/12345/pools
 
 The response body will include information on each node pool's pool ID, Linode type, and node count; and each node's individual ID and status.
 
@@ -310,7 +310,7 @@ You can use the Linode API to access details about a specific node pool in an LK
 To view a specific node pool, send a `GET` request to the `/lke/clusters/{clusterId}/pools/{poolId}` endpoint. In this example, replace `12345` with your cluster's ID and `456` with the node pool's ID:
 
     curl -H "Authorization: Bearer $TOKEN" \
-        https://api.linode.com/v4beta/lke/clusters/12345/pools/456
+        https://api.linode.com/lke/clusters/12345/pools/456
 
 The response body provides information about the number of nodes in the node pool, the node pool's ID, and type. You will also retrieve information about each individual node in the node pool, including the Linode's ID and status.
 
@@ -322,7 +322,7 @@ The response body provides information about the number of nodes in the node poo
 If desired, you can use your node pool's Linode ID(s) to get more details about each node in the pool. Send a `GET` request  to the `/linode/indstances/{linodeId}` endpoint. In this example, ensure you replace `13841932` with your Linode's ID.
 
     curl -H "Authorization: Bearer $TOKEN" \
-        https://api.linode.com/v4beta/linode/instances/13841932
+        https://api.linode.com/linode/instances/13841932
 
 Although you have access to your cluster's nodes, it is recommended that you only interact with your nodes via the Linode's LKE interfaces (like the LKE endpoints in Linode's API, or the Kubernetes section in the Linode Cloud Manager), or via the Kubernetes API and kubectl.
 {{< /note >}}
@@ -343,7 +343,7 @@ To update your LKE cluster's label, send a `PUT` request to the `/lke/clusters/{
             -H "Authorization: Bearer $TOKEN" \
             -X PUT -d '{
             "label": "updated-cluster-name"
-            }' https://api.linode.com/v4beta/lke/clusters/12345
+            }' https://api.linode.com/lke/clusters/12345
 
 The response body will display the updated cluster label:
 
@@ -370,7 +370,7 @@ To add a node pool to an existing LKE cluster, send a `POST` request to the `/lk
             -X POST -d '{
             "type": "g6-standard-1",
             "count": 5
-            }' https://api.linode.com/v4beta/lke/clusters/12345/pools
+            }' https://api.linode.com/lke/clusters/12345/pools
 
 The response body will resemble the following:
 
@@ -403,7 +403,7 @@ To update your node pool's node count, send a `PUT` request to the `/lke/cluster
         -X PUT -d '{
             "type": "g6-standard-4",
             "count": 6
-        }' https://api.linode.com/v4beta/lke/clusters/12345/pools/196
+        }' https://api.linode.com/lke/clusters/12345/pools/196
 
 {{< note >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
@@ -426,7 +426,7 @@ This step is permanent and will result in the loss of data.
 
     curl -H "Authorization: Bearer $TOKEN" \
         -X DELETE \
-        https://api.linode.com/v4beta/lke/clusters/12345/pools/196
+        https://api.linode.com/lke/clusters/12345/pools/196
 
 ## Delete an LKE Cluster
 
@@ -440,7 +440,7 @@ This step is permanent and will result in the loss of data.
 
     curl -H "Authorization: Bearer $TOKEN" \
         -X DELETE \
-        https://api.linode.com/v4beta/lke/clusters/12345
+        https://api.linode.com/lke/clusters/12345
 
 ## General Network and Firewall Information
 
