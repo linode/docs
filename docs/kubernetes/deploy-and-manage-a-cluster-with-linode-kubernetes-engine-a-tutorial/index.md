@@ -76,19 +76,21 @@ You will need to install the kubectl client to your computer before proceeding. 
 LKE is not available in the Linode Classic Manager
 {{< /note >}}
 
-1.  From the Linode dashboard, click the **Create** button in the top left-hand side of the screen and select **Kubernetes** from the dropdown menu.
+1.  From the Linode dashboard, click the **Create** button in the top right-hand side of the screen and select **Kubernetes** from the dropdown menu.
 
     ![Create a Kubernetes Cluster Screen](create-lke-cluster.png "Create a Kubernetes Cluster screen.")
 
-1. The **Create a Kubernetes Cluster** page will appear. Select the region where you would like your cluster to reside.
+1. The **Create a Kubernetes Cluster** page will appear. At the top of the page, you'll be required to select the following options:
 
-    {{< note >}}
-While in [Private Beta](https://welcome.linode.com/lkebeta/), LKE is only available in the Dallas data center. Cluster region availability will expand when LKE goes into generally availability (GA).
-    {{</ note >}}
+   - In the **Cluster Label** field, provide a name for your cluster. The name must be unique between all of the clusters on your account. This name will be how you identify your cluster in the Cloud Manager’s Dashboard.
 
-    ![Select your cluster's region](select-cluster-region.png "Select your cluster's region.")
+   - From the **region** dropdown menu, select the **region** where you would like your cluster to reside.
 
-1. In the **Add Node Pools** section, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
+   - From the **Version** dropdown menu, select a Kubernetes version to deploy to your cluster.
+
+    ![Set Cluster Settings](cluster-options.png "Select your cluster's setting.")
+
+1. In the **Add Node Pools** section, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time. Once you're satisfied with the number of node's in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
 
     {{< note >}}
 Currently, the available plan types for LKE worker nodes are [Standard](/docs/platform/how-to-choose-a-linode-plan/#2-standard), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory) plans.
@@ -96,25 +98,11 @@ Currently, the available plan types for LKE worker nodes are [Standard](/docs/pl
 
     ![Select your cluster's resources](select-cluster-resources.png "Select your cluster's resources.")
 
-1. Under **Number of Linodes**, input the number of Linode worker nodes you would like to add to your Node Pool. These worker nodes will have the hardware resources selected from the **Add Node Pools** section.
+1. Once a pool has been added to your configuration, you will see it listed in the **Cluster Summary** on the right-hand side of the Cloud Manager detailing your cluster's hardware resources and monthly cost. Additional pools can be added before finalizing the cluster creation process by repeating the previous step for each additional pool.
 
-    ![Select the number of Linode worker nodes](select-number-linodes.png "Select the number of Linode worker nodes.")
+    ![Cluster-Summary](cluster-summary.png "cluster-summary")
 
-1. Click on the **Add Node Pool** button to add the pool to your cluster's configuration. You will see a **Cluster Summary** appear on the right-hand side of the Cloud Manager detailing your cluster's hardware resources and monthly cost.
-
-    A list of pools also appears below the **Add Node Pool** button with quick edit **Node Count** fields. You can easily change the number of nodes by typing a new number in the field, or use the up and down arrows to increment or decrement the number in the field. Each row in this table also has a **Remove** link if you want to remove the node pool.
-
-    ![Add a node pool to your Kubernetes cluster](add-node-pool.png "Add a node pool to your Kubernetes cluster.")
-
-1. In the **Cluster Label** field, provide a name for your cluster. The name must be unique between all of the clusters on your account. This name will be how you identify your cluster in the Cloud Manager’s Dashboard.
-
-    ![Provide a name for your cluster](add-cluster-label.png "Provide a name for your cluster.")
-
-1. From the **Version** dropdown menu, select a Kubernetes version to deploy to your cluster.
-
-    ![Select a Kubernetes version](select-kubernetes-version.png "Select a Kubernetes version.")
-
-1. When you are satisfied with the configuration of your cluster, click the **Create** button on the right hand side of the screen. Your cluster's detail page will appear where you will see your Node Pools listed. From this page, you can [edit your existing Node Pools](#edit-or-remove-existing-node-pools), [add new Node Pools](#add-node-pools) to your cluster, [access your Kubeconfig file](#access-and-download-your-kubeconfig), and view an overview of your cluster's resource details.
+1. When you are satisfied with the configuration of your cluster, click the **Create Cluster** button on the right hand side of the screen. Your cluster's detail page will appear on the following page where you will see your Node Pools listed. From this page, you can [edit your existing Node Pools](#edit-or-remove-existing-node-pools), [access your Kubeconfig file](#access-and-download-your-kubeconfig), and view an overview of your cluster's resource details.
 
 ## Connect to your LKE Cluster with kubectl
 
@@ -250,7 +238,7 @@ Switched to context "kubernetes-admin@kubernetes".
 
 ## Modify a Cluster's Node Pools
 
-You can use the Linode Cloud Manager to modify a cluster's existing node pools by adding or removing nodes. You can also add or remove entire node pools from your cluster. This section will cover completing those tasks. For any other changes to your LKE cluster, you should use kubectl.
+You can use the Linode Cloud Manager to modify a cluster's existing node pools by adding or removing nodes. You can also remove entire node pools from your cluster. This section will cover completing those tasks. For any other changes to your LKE cluster, you should use kubectl.
 
 ### Access your Cluster's Details Page
 
@@ -264,51 +252,32 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
 ### Edit or Remove Existing Node Pools
 
-1. On your [cluster's details page](#access-your-cluster-s-details-page), click the **Resize** tab at the top of the page.
+1. On your [cluster's details page](#access-your-cluster-s-details-page), click the **Resize Pool** option at the top-right of each entry in the **Node Pools** section.
 
     ![Access your cluster's resize page](access-clusters-resize-page.png "Access your cluster's resize page.")
 
-1.  Under the cluster's **Resize** tab, you can now edit your existing node pool or remove it entirely:
+1.  Using the sidebar that appears to the right of the page, you can now remove `-` or add `+` linodes to the pool, and the total cost of your new resources will be displayed. To accept these changes, select the `Save Changes` button to continue.
 
- - The **Node Count** fields are now editable text boxes.
+    ![Edit your cluster's node pool](edit-your-node-pool.png "Edit your cluster's node pool.")
 
- - To remove a node pool, click the **Remove** link to the right.
+1. To remove a node pool from the [cluster's details page](#access-your-cluster-s-details-page), click the **Delete Pool** option at the top right of each entry in the **Node Pools** section. A pop-up message will then appear confirming that you're sure you'd like to proceed with deletion. Select the `Delete` option, and your Node Pool will proceed to be deleted.
 
- - As you make changes you will see an **Updated Monthly Estimate**; contrast this to the current **Monthly Pricing** under the **Details** panel on the right.
+    ![Delete your cluster's node pool](delete-node-pool.png "Delete your cluster's node pool.")
 
-        ![Edit your cluster's node pool](edit-your-node-pool.png "Edit your cluster's node pool.")
-
-1.  Click the **Save** button to save your changes; click the **Clear Changes** button to revert back to the cluster state before you started editing; or click the **Cancel** button to cancel editing.
-
-### Add Node Pools
-
-1. On your [cluster's details page](#access-your-cluster-s-details-page), click the **Resize** tab at the top of the page.
-
-    ![Access your cluster's resize page](access-clusters-resize-page.png "Access your cluster's resize page.")
-
-1.  Under the cluster's **Resize** tab, navigate to the **Add Node Pools** panel. Select the type and size of Linode(s) you want to add to your new pool.
-
-    ![Select a plan size for your new node pool](new-node-pool-select-plan.png "Select a plan size for your new node pool.")
-
-1. Under **Number of Linodes**, input the number of Linode worker nodes you'd like to add to the pool in the text box; you can also use the arrow keys to increment or decrement this number. Click the **Add Node Pool** button.
-
-    ![Add a new node pool to your cluster](add-new-node-pool.png "Add a new node pool to your cluster.")
-
-1.  The new node pool appears in the **Node Pools** list which you can now edit, if desired.
-
-    ![Kubernetes Cluster New Node Pool Created](node-pool-added-to-cluster.png "Kubernetes cluster new node pool created.")
-
+{{< note >}}
+Your cluster must always have at least one active node pool.
+{{< /note >}}
 ## Delete a Cluster
 
  You can delete an entire cluster using the Linode Cloud Manager. These changes cannot be reverted once completed.
 
-1. On your [cluster's details page](#access-your-cluster-s-details-page), click the **Resize** tab at the top of the page.
+1.  Click the **Kubernetes** link in the sidebar. The Kubernetes listing page will appear and you will see all your clusters listed.
 
-    ![Access your cluster's resize page](access-clusters-resize-page.png "Access your cluster's resize page.")
+    ![Kubernetes cluster listing page](kubernetes-listing-page.png "Kubernetes cluster listing page.")
 
-1.  Under the cluster's **Resize** tab, scroll to the bottom and click on the **Delete Cluster** button.
+1. Select the **More Options Ellipsis** to the right of the cluster you'd like to delete, and select the `Delete` option:
 
-    ![Delete your LKE cluster](delete-cluster.png "Delete your LKE cluster.")
+    ![Kubernetes cluster delete](kubernetes-cluster-delete.png "Kubernetes cluster delete.")
 
 1.  A confirmation pop-up will appear. Enter in your cluster's name and click the **Delete** button to confirm.
 
