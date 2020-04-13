@@ -36,7 +36,7 @@ For Docker installation instructions on other operating systems, see [Docker's o
 1. Purchase a domain name from a reliable domain registrar. Using Linode's DNS Manager, [create a new Domain](/docs/platform/manager/dns-manager/#add-a-domain) and [add an DNS "A" record](/docs/platform/manager/dns-manager/#add-dns-records) for a subdomain named `registry`. Your subdomain will host your Docker registry. This guide will use `registry.example.com` as the example domain.
 
     {{< note >}}
-Optionally, you can create a Wildcard DNS record, `*.example.com`. In a later section, you will point your DNS A record to a Linode NodeBalancer's external IP address. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Lionde DNS Manager.
+Optionally, you can create a Wildcard DNS record, `*.example.com`. In a later section, you will point your DNS A record to a Linode NodeBalancer's external IP address. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
     {{</ note >}}
 
 ## In this Guide
@@ -44,7 +44,7 @@ Optionally, you can create a Wildcard DNS record, `*.example.com`. In a later se
 In this guide you will:
 
 - [Install the NGINX Ingress controller](#install-the-nginx-ingress-controller), which will create a Linode NodeBalancer and provide the routing mechanism needed for your cluster's services.
-- [Enable HTTPS](#enable-https) on your Docker registry by creating TLS certiricates.
+- [Enable HTTPS](#enable-https) on your Docker registry by creating TLS certificates.
 - [Deploy a Docker registry](#deploy-your-docker-registry) and [enable access restrictions](#enable-basic-authentication) for it.
 - [Push an image to your private Docker registry](/#push-an-image-to-your-docker-registry).
 - [Verify that your Cluster can pull images from your Docker registry](#create-a-test-deployment-using-an-image-from-your-docker-registry) by creating a test deployment.
@@ -212,7 +212,7 @@ spec:
 The configurations in this example create a Certificate that is valid for 90 days and renews 15 days before expiry.
     {{</ note >}}
 
-1. Create the Certiricate resource:
+1. Create the Certificate resource:
 
         kubectl create -f certificate-prod.yaml
 
@@ -253,7 +253,7 @@ To enabled basic access restriction for your Docker registry, you will use the `
 
         cat my_docker_pass
 
-    Your output will resemble the following. You will need these values when deploying your registry in the [Configure your Docker Reigistry](#configure-your-docker-registry) section of the guide.
+    Your output will resemble the following. You will need these values when deploying your registry in the [Configure your Docker Registry](#configure-your-docker-registry) section of the guide.
 
     {{< output >}}
 example_user:$2y$05$8VhvzCVCB4txq8mNGh8eu.8GMyBEEeUInqQJHKJUD.KUwxastPG4m
@@ -261,7 +261,7 @@ example_user:$2y$05$8VhvzCVCB4txq8mNGh8eu.8GMyBEEeUInqQJHKJUD.KUwxastPG4m
 
 ### Grant your Cluster Access to your Docker Registry
 
-Your LKE Cluster will also need to authenticate to your Docker registry in order to pull images from it. In this section, you will create a Kubernetes [*Secret*](kubernetes.io/docs/concepts/configuration/secret/) that you can use to grant your cluster's kubelet with access to your registry's images.
+Your LKE Cluster will also need to authenticate to your Docker registry in order to pull images from it. In this section, you will create a Kubernetes [*Secret*](https://kubernetes.io/docs/concepts/configuration/secret/) that you can use to grant your cluster's kubelet with access to your registry's images.
 
 1. Create a secret to store your registry's authentication information. Replace the option values with your own registry's details. The `--docker-username` and `--docker-password` should be the username and password that you used when generating credentials using the `htpasswd` utility.
 
