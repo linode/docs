@@ -329,7 +329,7 @@ Although you have access to your cluster's nodes, it is recommended that you onl
 
 ## Modify your LKE Cluster
 
-Once an LKE cluster is created, you can modify two aspects of it: the cluster's label, and the cluster's node pools. In this section you will learn how to modify each of these parts of your cluster.
+Once an LKE cluster is created, you can modify the cluster's label, node pools, and tags. In this section you will learn how to modify each of these parts of your cluster.
 
 ### Update your LKE Cluster Label
 
@@ -408,6 +408,66 @@ To update your node pool's node count, send a `PUT` request to the `/lke/cluster
 {{< note >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
 {{</ note >}}
+
+### Add New Tags to your LKE Cluster
+
+Like many Linode resources, you can [add tags](/docs/quick-answers/linode-platform/tags-and-groups/) to your LKE Cluster for organizational purposes. This section will show you how to add new tags to an existing LKE Cluster.
+
+1. View the tags currently assigned to your cluster:
+
+        curl -H "Authorization: Bearer $TOKEN" \
+          https://api.linode.com/lke/clusters/12345
+
+    The response body will contain an array of your cluster's tags. In the example response, the cluster's tags are `blog`, and `ecomm`.
+
+    {{< output >}}
+{"id": 12345, "status": "ready", "created": "2020-04-13T20:17:22", "updated": "2020-04-13T20:17:22", "label": "cluster-12345", "region": "us-central", "k8s_version": "1.17", "tags": ["blog", "ecomm"]}%
+    {{</ output >}}
+
+1. To add new tags to your cluster's existing tags, your request must include a `tags` array with all **previous** and **new** tags. The example request will add the new tags `prod` and `monitoring` to the cluster.
+
+        curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X PUT -d '{
+                "tags" : ["ecomm", "blog", "prod", "monitoring"]
+              }' \
+              https://api.linode.com/v4beta/lke/clusters/12345
+
+    The response will display all of your cluster's tags. In the example response, the cluster's tags are now `blog`, `ecomm`, `prod`, and `monitoring`.
+
+    {{< output >}}
+{"id": 12345, "status": "ready", "created": "2020-04-13T20:17:22", "updated": "2020-04-13T20:17:22", "label": "cluster-12345", "region": "us-central", "k8s_version": "1.17", "tags": ["blog", "ecomm", "monitoring", "prod"]}%
+    {{</ output >}}
+
+### Delete Tags from your LKE Cluster
+
+This section will show you how to delete tags from your LKE Cluster.
+
+1. View the tags currently assigned to your cluster:
+
+        curl -H "Authorization: Bearer $TOKEN" \
+          https://api.linode.com/lke/clusters/12345
+
+    The response body will contain an array of your cluster's tags.  In the example response, the cluster's tags are `blog`, `ecomm`, `prod`, and `monitoring`.
+
+    {{< output >}}
+{"id": 12345, "status": "ready", "created": "2020-04-13T20:17:22", "updated": "2020-04-13T20:17:22", "label": "cluster-12345", "region": "us-central", "k8s_version": "1.17", "tags": [["blog", "ecomm", "monitoring", "prod"]}%
+    {{</ output >}}
+
+1. To delete a tag from your cluster, issue a request with only the tags you would like to keep assigned to your cluster. In the example request, the tags `monitoring` and `prod` are excluded from the `tags` array and so will be deleted from your cluster.
+
+        curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X PUT -d '{
+                "tags" : ["ecomm", "blog"]
+              }' \
+              https://api.linode.com/v4beta/lke/clusters/12345
+
+    The response will display all of your cluster's current tags.  In the example response, the cluster's tags are now `blog`, and `ecomm`.
+
+    {{< output >}}
+{"id": 12345, "status": "ready", "created": "2020-04-13T20:17:22", "updated": "2020-04-13T20:17:22", "label": "cluster-12345", "region": "us-central", "k8s_version": "1.17", "tags": ["blog", "ecomm"]}%
+    {{</ output >}}
 
 ### Delete a Node Pool from an LKE Cluster
 
