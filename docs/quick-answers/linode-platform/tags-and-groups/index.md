@@ -185,6 +185,17 @@ To remove a tag from a domain:
 
 1.  Click on the **x** icon attached to the tag you would like to remove from your domain.
 
+## Tagging an LKE Cluster
+
+### Tag an LKE Cluster at Creation
+
+1. Navigate to the Kubernets section of the Linode Cloud Manager and [create your LKE cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster).
+
+1. You will be brought to your cluster's summary page. Click on the **Add a tag** link to begin adding tags to your cluster.
+
+      ![Click on the Add Tags link to begin adding tags](add-tags-lke.png)
+
+### Tag an Existing LKE Cluster
 ## Grouping by Tag
 
 You can group the following resources by tag: Linodes, Volumes, NodeBalancers, and Domains.
