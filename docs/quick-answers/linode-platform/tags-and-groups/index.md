@@ -195,7 +195,7 @@ To remove a tag from a domain:
 
       ![Click on the Add Tags link to begin adding tags](add-tags-lke.png)
 
-1. You can create a new tag and assign it to your cluster by typing it into the text entry box.
+1. You can create a new tag and assign it to your cluster by typing the tag into the text entry box and clicking on the **Create my-new-tag** entry that appears.
 
       ![Create a new tag and add it to your LKE cluster](create-new-tag-lke.png)
 
@@ -203,7 +203,7 @@ To remove a tag from a domain:
 
       ![Select and existing tag and add it to your LKE cluster](select-existing-tag-lke.png)
 
-    When your tag has been added to your cluster you will see it appear on your cluster's summary page.
+    When your tag has been added to your cluster, you will see it appear on your cluster's summary page.
 
       ![Select and existing tag and add it to your LKE cluster](view-clusters-tags-lke.png)
 
@@ -215,7 +215,7 @@ To remove a tag from a domain:
 
     ![Click on the Add Tags link to begin adding tags](add-tags-lke.png)
 
-1. You can create a new tag and assign it to your cluster by typing it into the text entry box.
+1. You can create a new tag and assign it to your cluster by typing the tag into the text entry box and clicking on the **Create my-new-tag** entry that appears.
 
     ![Create a new tag and add it to your LKE cluster](create-new-tag-lke.png)
 
@@ -223,7 +223,7 @@ To remove a tag from a domain:
 
       ![Select and existing tag and add it to your LKE cluster](select-existing-tag-lke.png)
 
-    When your tag has been added to your cluster you will see it appear on your cluster's summary page.
+    When your tag has been added to your cluster, you will see it appear on your cluster's summary page.
 
       ![Your tag has been successfully added to your cluster](view-clusters-tags-lke.png)
 
