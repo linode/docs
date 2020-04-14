@@ -5,13 +5,12 @@ author:
 description: Our guide to managing accounts and passwords.
 keywords: ["accounts", "passwords", "Linode Cloud Manager", "manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/manager/accounts-and-passwords-new-manager/','accounts-and-passwords/','platform/accounts-and-passwords/']
+aliases: ['accounts-and-passwords/','platform/accounts-and-passwords/','platform/manager/accounts-and-passwords-classic-manager/','platform/manager/accounts-and-passwords-new-manager/']
 modified: 2018-08-23
 modified_by:
   name: Linode
 published: 2012-04-03
 title: Accounts and Passwords
-classic_manager_link: platform/manager/accounts-and-passwords-classic-manager/
 ---
 ![Accounts and Passwords](Accounts_and_Passwords_smg.jpg)
 
@@ -105,6 +104,10 @@ You can update a username, including your own, from the Linode Cloud Manager.
 Linode uses the contact information on file in your account to notify and bill you. Keep this information current to prevent service interruptions. It's especially important to keep your email address current.
 
 Both the *Account & Billing* and *My Profile* pages have an email address field. The email addresses saved on these pages receive different notifications, as described in the following sections. If you are the only user, you should enter your email address on both webpages. If there are multiple users, verify that the primary account holder's email address is current on the *Account* webpage.
+
+{{< note >}}
+Only unrestricted users can receive threshold notification emails.
+{{</ note >}}
 
 ### Updating Contact Information
 

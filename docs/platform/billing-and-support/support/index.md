@@ -5,13 +5,12 @@ author:
 description: Our guide to submitting support tickets and getting technical support.
 keywords: ["support", "tech support", "tickets", "help desk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['platform/support/','platform/billing-and-support/support-new-manager/','support/']
+aliases: ['platform/billing-and-support/support-classic-manager/','platform/support/','platform/billing-and-support/support-new-manager/','support/']
 modified: 2019-01-07
 modified_by:
   name: Linode
 published: 2012-03-21
 title: Linode Support
-classic_manager_link: platform/billing-and-support/support-classic-manager/
 ---
 
 Linode provides live technical support services 24 hours a day, 7 days a week. Linode Support ensures network availability, verifies that you can access your Linode, resolves performance issues with hosts, and works to fix any service-related issues you may be experiencing.
@@ -22,7 +21,7 @@ Linode also offers a number of resources you can refer to when troubleshooting a
 
 Linode provides community spaces, an AI-powered assistant, libraries of reference material, and status updates for infrastructure components:
 
--   **Linode Community and the Community Site:** Customers and staff discuss the projects they're working on in the [Linode Community Site](/community/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the [IRC channel](/chat/).
+-   **Linode Community and the Community Site:** Customers and staff discuss the projects they're working on in the [Linode Community Site](/community/questions/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the [IRC channel](/chat/).
 
     ![Linode Community Site](community-site-header.png "Linode Community Site")
 
@@ -72,7 +71,15 @@ If you are not able to solve an issue with the resources listed above, you can c
 
 The Linode Support Team will respond as soon as possible.
 
-If you are having difficulty logging in to the Linode Cloud Manager and opening a support ticket, you can email Linode Support at <support@linode.com>. You can also call Linode 24 hours a day at **(609) 380-7100** (international) or **(855) 454-6633** (North America toll-free). If your call is diverted to voicemail, please leave a detailed message explaining your problem. Your call will be returned as quickly as possible.
+If you are having difficulty logging in to the Linode Cloud Manager and opening a support ticket, you can email Linode Support at <support@linode.com>. You can also call Linode 24 hours a day:
+
+- **+1 (609) 380-7100** (international)
+
+- **+1 (855) 454-6633** (North America toll-free)
+
+- **+91 000-800-919-0534** (India toll-free)
+
+If your call is diverted to voicemail, please leave a detailed message explaining your problem. Your call will be returned as quickly as possible.
 
 ## Reporting Abuse
 

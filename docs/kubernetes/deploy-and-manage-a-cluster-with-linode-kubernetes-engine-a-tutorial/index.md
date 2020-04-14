@@ -18,9 +18,11 @@ external_resources:
  - '[Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'
 aliases: ['applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/','applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/']
 ---
+
 {{< note >}}
 This guide uses Linode Kubernetes Engine (LKE) to deploy a managed Kubernetes cluster. For more information on Kubernetes key concepts, see our [Beginner's Guide to Kubernetes](https://www.linode.com/docs/kubernetes/beginners-guide-to-kubernetes/)
 {{< /note >}}
+
 
 ## What is the Linode Kubernetes Engine (LKE)
 The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes. When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
@@ -88,6 +90,7 @@ LKE is not available in the Linode Classic Manager
 
     ![Set Cluster Settings](cluster-options.png "Select your cluster's setting.")
 
+
 1. In the **Add Node Pools** section, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time. Once you're satisfied with the number of nodes in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
 
     {{< note >}}
@@ -112,25 +115,29 @@ Anytime after your cluster is created you can download its *kubeconfig*. The kub
 
 {{< file "example-cluster-kubeconfig.yaml" yaml >}}
 apiVersion: v1
+kind: Config
+preferences: {}
+
 clusters:
 - cluster:
     certificate-authority-data: LS0tLS1CRUd...
     server: https://192.0.2.0:6443
   name: kubernetes
+
+users:
+- name: lke-admin
+  user:
+    as-user-extra: {}
+    token: LS0tLS1CRUd...
+
 contexts:
 - context:
     cluster: kubernetes
-    user: kubernetes-admin
-  name: kubernetes-admin@kubernetes
-current-context: kubernetes-admin@kubernetes
-kind: Config
-preferences: {}
-users:
-- name: kubernetes-admin
-  user:
-    client-certificate-data: LS0tLS1CRUd...
-    client-key-data: LS0tLS1CRUd...
+    namespace: default
+    user: lke-admin
+  name: lke-admin-ctx
 
+current-context: lke-admin-ctx
 {{< /file >}}
 
 This configuration file defines your cluster, users, and contexts.
@@ -216,23 +223,46 @@ Optionally, you can give the copied file a different name to help distinguish it
     You should see output similar to the following:
 
     {{< output >}}
-CURRENT&nbsp;&nbsp;NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLUSTER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AUTHINFO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NAMESPACE
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kubernetes-admin@kubernetes&nbsp;&nbsp;kubernetes&nbsp;&nbsp;kubernetes-admin
+CURRENT   NAME                        CLUSTER           AUTHINFO           NAMESPACE
+
+*         lke-admin-ctx               kubernetes        lke-admin          default
 {{</ output >}}
 
 1.  If your context is not already selected, (denoted by an asterisk in the `current` column), switch to this context using the `config use-context` command. Supply the full name of the cluster (including the authorized user and the cluster):
 
-        kubectl config use-context kubernetes-admin@kubernetes
+        kubectl config use-context lke-admin-ctx
 
     You should see output like the following:
 
     {{< output >}}
-Switched to context "kubernetes-admin@kubernetes".
+Switched to context "lke-admin-ctx".
 {{</ output>}}
 
-1.  You are now ready to interact with your cluster using `kubectl`. You can test the ability to interact with the cluster by retrieving a list of Pods in the `kube-system` namespace:
+1.  You are now ready to interact with your cluster using `kubectl`. You can test the ability to interact with the cluster by retrieving a list of Pods. Use the `get pods` command with the `-A` flag to see all pods running across all namespaces:
 
-        kubectl get pods -n kube-system
+        kubectl get pods -A
+
+    You should see output like the following:
+
+    {{< output >}}
+NAMESPACE     NAME                                      READY   STATUS    RESTARTS   AGE
+kube-system   calico-kube-controllers-dc6cb64cb-4gqf4   1/1     Running   0          11d
+kube-system   calico-node-bx2bj                         1/1     Running   0          11d
+kube-system   calico-node-fg29m                         1/1     Running   0          11d
+kube-system   calico-node-qvvxj                         1/1     Running   0          11d
+kube-system   calico-node-xzvpr                         1/1     Running   0          11d
+kube-system   coredns-6955765f44-r8b79                  1/1     Running   0          11d
+kube-system   coredns-6955765f44-xr5wb                  1/1     Running   0          11d
+kube-system   csi-linode-controller-0                   3/3     Running   0          11d
+kube-system   csi-linode-node-75lts                     2/2     Running   0          11d
+kube-system   csi-linode-node-9qbbh                     2/2     Running   0          11d
+kube-system   csi-linode-node-d7bvc                     2/2     Running   0          11d
+kube-system   csi-linode-node-h4r6b                     2/2     Running   0          11d
+kube-system   kube-proxy-7nk8t                          1/1     Running   0          11d
+kube-system   kube-proxy-cq6jk                          1/1     Running   0          11d
+kube-system   kube-proxy-gz4dc                          1/1     Running   0          11d
+kube-system   kube-proxy-qcjg9                          1/1     Running   0          11d
+{{</ output >}}
 
 ## Modify a Cluster's Node Pools
 
@@ -292,6 +322,10 @@ Your cluster must always have at least one active node pool.
     ![Kubernetes Delete Confirmation Dialog](confirm-delete-cluster.png "Kubernetes delete confirmation dialog.")
 
 1.  The Kubernetes listing page will appear and you will no longer see your deleted cluster.
+
+## General Network and Firewall Information
+
+{{< content "lke-network-firewall-information-shortguide" >}}
 
 ## Next Steps
 

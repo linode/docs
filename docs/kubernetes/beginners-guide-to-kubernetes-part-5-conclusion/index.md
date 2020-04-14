@@ -13,7 +13,7 @@ contributor:
   name: Linode
 concentrations: ["Kubernetes"]
 external_resources:
-- '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/)'
+- '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 aliases: ['applications/containers/kubernetes/beginners-guide-to-kubernetes-conclusion/','applications/containers/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/']
 ---

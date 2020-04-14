@@ -15,9 +15,7 @@ external_resources:
   - '[AWS CLI S3 API command reference](https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html)'
 ---
 
-{{< note >}}
-[Linode Object Storage](/docs/platform/object-storage/) is now available to the general public in the Newark data center! Starting November 1, 2019, all customers with the Object Storage service enabled on their account will be billed. For more information, see our [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/) guide.
-{{</ note >}}
+{{< content "object-storage-ga-shortguide" >}}
 
 {{< content "object-storage-cancellation-shortguide" >}}
 

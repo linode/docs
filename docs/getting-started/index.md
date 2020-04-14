@@ -6,7 +6,7 @@ keywords: ["getting started", "intro", "basics", "first steps"]
 description: 'This guide will help you set up your first Linode.'
 og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['getting-started-new-manager/']
+aliases: ['getting-started-new-manager/','getting-started-classic-manager/']
 modified: 2019-03-08
 modified_by:
   name: Linode
@@ -18,7 +18,6 @@ type: "guide"
 weight: 10
 icon: "book"
 show_on_rss_feed: false
-classic_manager_link: getting-started-classic-manager/
 ---
 
 ![Getting Started with Linode](getting-started.jpg "Getting Started with Linode")
@@ -37,7 +36,7 @@ From there you'll set up a Linux distribution, boot your Linode, and perform som
 
 If you haven't already signed up for a Linode account, start here.
 
-1.  Create a new account at the [Sign Up page](https://login.linode.com/signup).
+1.  Create a new account at the [Sign Up page](https://login.linode.com/signup?promo=DOCS20AA00X1).
 
 1.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 
@@ -70,7 +69,7 @@ Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy softwa
 
     * Boot and shut down your Linode
     * Access monitoring statistics
-    * Update your [billing](/docs/platform/billing-and-support/billing-and-payments-new-manager/) and [account](/docs/platform/manager/accounts-and-passwords-new-manager/) information
+    * Update your [billing](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) and [account](/docs/platform/manager/accounts-and-passwords-new-manager/) information
     * Add additional Linode services, like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/)
     * Open a [support](/docs/platform/billing-and-support/support-new-manager/) ticket and perform other administrative tasks
 
@@ -92,13 +91,8 @@ If Network Helper is unable to determine the operating system during boot, or if
 Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
 
 * **Linux:** You can use a terminal window, regardless of desktop environment or window manager.
-* **macOS:** *Terminal.app* comes pre-installed and can be launched from Spotlight or Launchpad.<!--- You could also use the free [iTerm 2 application](http://www.iterm2.com/). For a walk-through of connecting to your Linode for the first time **with OS X** (which also directly applies to Linux), see the following video: --->
-
-  <!---  <iframe width="560" height="315" src="https://www.youtube.com/embed/VVs9Ed-HkjE" frameborder="0" allowfullscreen></iframe> -->
-
-* **Windows:** There is no native SSH client but you can use a free and open source application called [PuTTY](/docs/networking/ssh/ssh-connections-using-putty-on-windows/). <!--- For a walkthrough of connecting to your Linode in Windows using PuTTY, see the following video: --->
-
-<!---    <iframe width="560" height="315" src="https://www.youtube.com/embed/eEsCD7n17mk" frameborder="0" allowfullscreen></iframe> --->
+* **macOS:** *Terminal.app* comes pre-installed and can be launched from Spotlight or Launchpad.
+* **Windows:** There is no native SSH client but you can use a free and open source application called [PuTTY](/docs/networking/ssh/ssh-connections-using-putty-on-windows/).
 
 ### Find your Linode's IP Address
 
@@ -267,7 +261,7 @@ Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will no
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your Linode's IPv6 address.
 
-See our guide to [Adding DNS Records](/docs/websites/hosting-a-website/#add-dns-records) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
+See our guide to [Adding DNS Records](/docs/platform/manager/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
 
 ## Set the Timezone
 

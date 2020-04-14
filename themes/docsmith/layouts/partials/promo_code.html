@@ -3,15 +3,20 @@
         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
             <span>
                 {{ if and ($.Params.promo_code) ($.Params.promo_code_amount) }}
-                Use promo code <strong>{{ $.Params.promo_code }}</strong> for ${{ $.Params.promo_code_amount }} credit on a new account.
+                Use promo code <strong>{{ $.Params.promo_code }}</strong> for ${{ $.Params.promo_code_amount }} credit on <a href="https://login.linode.com/signup?promo={{ $.Params.promo_code }}">a new account</a>.
                 {{ else }}
-                Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
-                {{ end }}
+                Try this guide out by <strong><a href="https://login.linode.com/signup?promo=DOCS20AA00X1">signing up for a Linode account</a></strong> with a $20 credit.
+		        {{ end }}
             </span>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
             <form action="https://login.linode.com/signup">
-                <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+                {{ if and ($.Params.promo_code) ($.Params.promo_code_amount) }}
+                <input type="hidden" name="promo" value="{{ $.Params.promo_code }}" />
+                {{ else }}
+                <input type="hidden" name="promo" value="DOCS20AA00X1" />
+		        {{ end }}
+                <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Sign Up Here!</button>
             </form>
         </div>
     </div>

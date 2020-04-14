@@ -5,13 +5,12 @@ author:
 description: Our guide to disks and configuration profiles
 keywords: ["disks", "config profiles", "disk space"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['disk-images-config-profiles/','migrate-to-linode/disk-images/disk-images-and-configuration-profiles/']
+aliases: ['migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','disk-images-config-profiles/','platform/disk-images/disk-images-and-configuration-profiles-classic-manager/']
 modified: 2019-07-09
 modified_by:
   name: Linode
 published: 2012-04-24
 title: Disks and Configuration Profiles
-classic_manager_link: 'platform/disk-images/disk-images-and-configuration-profiles-classic-manager/'
 external_resources:
   - '[Types of File Systems](https://en.wikipedia.org/wiki/File_system#Types_of_file_systems)'
 ---

@@ -9,8 +9,7 @@ modified_by:
   name: Linode
 published: 2019-04-09
 title: Tax Information
-aliases: ['platform/billing-and-support/european-union-vat-linode/']
-classic_manager_link: platform/billing-and-support/tax-information-classic-manager/
+aliases: ['platform/billing-and-support/tax-information-classic-manager/','platform/billing-and-support/european-union-vat-linode/', 'platform/billing-and-support/european-union-vat-linode-classic-manager/']
 ---
 
 ##  Which Taxes are Collected by Linode?
@@ -126,6 +125,10 @@ Install the Linode CLI to your local computer and generate a Personal Access Tok
 -  **What is Linode's Australian Taxation Office (ATO) Registration Number (ARN)?**
 
     Linode's ATO ARN is `3000 1606 0612`.
+
+-   **What is Linode's India GST ID number?**
+
+    Linode's India GST ID number is `9919JEY29001OST`.
 
 -   **How is my tax location determined?**
 

@@ -96,10 +96,6 @@ The Helm client software issues commands to your cluster. You run the client sof
 
 ## Before You Begin
 
-{{< note >}}
-The Linode Kubernetes Engine (LKE) is now in Private Beta. If you are in the beta, you can use LKE to stand up your Kubernetes cluster if you wish. Sign up for the beta [here](https://welcome.linode.com/lkebeta/).
-{{</ note >}}
-
 1.   [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
 
 1.   You should have a Kubernetes cluster running prior to starting this guide. One quick way to get a cluster up is with Linode's [`k8s-alpha` CLI command](https://developers.linode.com/kubernetes/). This guide's examples only require a cluster with one worker node. We recommend that you create cluster nodes that are at the Linode 4GB tier (g6-standard-2) or higher.

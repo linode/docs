@@ -9,9 +9,8 @@ modified: 2018-02-01
 modified_by:
   name: Linode
 published: 2018-08-17
-aliases: ['platform/how-to-use-block-storage-with-your-linode/','platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/']
+aliases: ['platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/','platform/how-to-use-block-storage-with-your-linode/','platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/']
 title: How to Use Block Storage with Your Linode
-classic_manager_link: platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/
 ---
 
 Linode’s Block Storage service allows you to attach additional storage Volumes to your Linode. A single Volume can range from 10 GiB to 10,000 GiB in size and costs $0.10/GiB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to eight Volumes can be attached to a single Linode, be it new or already existing, so you do not need to recreate your server to add a Block Storage Volume.
@@ -27,6 +26,10 @@ The Block Storage service is currently available in the Dallas, Fremont, Frankfu
 ## How to Add a Block Storage Volume to a Linode
 
 This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap space mounted as `/dev/sdb`. In this scenario, the Block Storage Volume will be available to the operating system as `/dev/disk/by-id/scsi-0Linode_Volume_EXAMPLE`, where `EXAMPLE` is a label you assign the Volume in the Linode Cloud Manager. Storage Volumes can be added when your Linode is already running, and will show immediately in `/dev/disk/by-id/`.
+
+{{< note >}}
+A Linode can have multiple Block Storage Volumes attached to it. However, a Block Storage Volume can only be attached to one Linode at a time.
+{{</ note >}}
 
 ### Add a Volume from the Linode Detail Page
 
@@ -199,6 +202,27 @@ Storage Volumes **cannot** be sized down, only up. Keep this in mind when sizing
 1.  Mount your volume back onto the filesystem:
 
         mount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1 /mnt/BlockStorage1
+
+## How to Transfer a Volume to a New Linode
+
+1. Follow the steps to safely detach your volume as mentioned [above]
+(#how-to-detach-a-block-storage-volume-from-a-linode).
+
+1.   Click the **more options ellipsis** to open the menu for the Volume you want to attach to a Linode and select **Attach**:
+
+     [![Open Volume menu.](bs-cloud-attach-volume-small.png)](bs-cloud-attach-volume.png)
+
+1.   Since the Volume already has a filesystem on it, create a mountpoint for the new Linode, provided it hasn't already been created:
+
+        mkdir /mnt/BlockStorage1
+
+1.   Mount the new Volume, where FILE_SYSTEM_PATH is your Volume’s file system path:
+
+        mount FILE_SYSTEM_PATH /mnt/BlockStorage1
+
+1.  If you want to mount the new Volume automatically every time your Linode boots, you'll want to add the following line to your **/etc/fstab** file:
+
+        FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2
 
 ## How to Transfer Block Storage Data Between Data Centers
 

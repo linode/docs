@@ -16,6 +16,8 @@ external_resources:
 - '[Ceph Bucket Policy Supported Actions](https://docs.ceph.com/docs/master/radosgw/bucketpolicy/#limitations)'
 ---
 
+{{< content "object-storage-ga-shortguide" >}}
+
 {{< content "object-storage-cancellation-shortguide" >}}
 
 Linode Object Storage allows users to share access to objects and buckets with other Object Storage users. There are two mechanisms for setting up sharing: *Access Control Lists (ACLs)*, and *bucket policies*. These mechanisms perform similar functions: both can be used to restrict and grant access to Object Storage resources.
@@ -31,6 +33,10 @@ In this guide you will learn:
 - This guide will use the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-s3cmd) guide.
 
 - You'll also need the [*canonical ID*](#retrieve-a-user-s-canonical-id) of every user you wish to grant additional permissions to.
+
+{{< note >}}
+Currently, you can only create a new canonical ID by creating a completely new Linode account. A canonical ID is not assigned to a limited access user on an existing Linode account.
+{{< /note >}}
 
 ### Retrieve a User's Canonical ID
 
