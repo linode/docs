@@ -2,9 +2,9 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide you will create a private Docker registry where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let''s Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry''s traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry.'
-og_description: 'In this guide you will create a private Docker registry where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let''s Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry''s traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry'
-keywords: ['docker registry','kubernetes','object storage']
+description: 'In this guide you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let''s Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry''s traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry.'
+og_description: 'In this guide you will create a private Docker registry on Linode Kubernetes Engine where you can securely store your Docker images. Your Docker images will be stored in a Linode Object Storage bucket. You will use Let''s Encrypt and cert-manager to create a TLS certificate for your private registry. To route your registry''s traffic your will use the NGINX Ingress Controller and a Linode NodeBalancer. Finally, you will create a test deployment to ensure that your Linode Kubernetes Engine cluster can pull images from your Docker registry'
+keywords: ['docker registry','kubernetes','object storage', 'lke', 'linode kubernetes engine']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-26
 modified_by:
@@ -46,7 +46,7 @@ In this guide you will:
 - [Install the NGINX Ingress controller](#install-the-nginx-ingress-controller), which will create a Linode NodeBalancer and provide the routing mechanism needed for your cluster's services.
 - [Enable HTTPS](#enable-https) on your Docker registry by creating TLS certificates.
 - [Deploy a Docker registry](#deploy-your-docker-registry) and [enable access restrictions](#enable-basic-authentication) for it.
-- [Push an image to your private Docker registry](/#push-an-image-to-your-docker-registry).
+- [Push an image to your private Docker registry](#push-an-image-to-your-docker-registry).
 - [Verify that your Cluster can pull images from your Docker registry](#create-a-test-deployment-using-an-image-from-your-docker-registry) by creating a test deployment.
 
 ## Install the NGINX Ingress Controller
@@ -55,11 +55,11 @@ An [*Ingress*](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 
 In this section, you will install the NGINX Ingress Controller using Helm, which will create a [Linode NodeBalancer](https://www.linode.com/products/nodebalancers/) to handle your cluster's traffic.
 
-1. Add the Google stable Helm charts repository to your Helm repos
+1. Add the Google stable Helm charts repository to your Helm repos:
 
         helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
-1. Update your Helm repositories
+1. Update your Helm repositories:
 
         helm repo update
 
@@ -89,7 +89,7 @@ You can watch the status by running 'kubectl --namespace default get services -o
 
 1. Access your NodeBalancer's assigned external IP address.
 
-        kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
+        kubectl --namespace default get services -o wide -w nginx-ingress-controller
 
     The command will return a similar output:
 
@@ -103,6 +103,14 @@ my-nginx-ingress-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:3240
 Now that your NGINX Ingress Controller has been deployed and your subdomain's A record has been updated, you are ready to enable HTTPS on your Docker registry.
 
 ## Enable HTTPS
+
+{{< note >}}
+Before performing the commands in this section, ensure that your DNS has had time to propagate across the internet. This process can take several hours. You can query the status of your DNS by using the following command, substituting `registry.example.com` for your subdomain and domain.
+
+    dig +short registry.example.com
+
+If successful, the output should return the IP address of your NodeBalancer.
+{{</ note >}}
 
 To enable HTTPS on your Docker registry, you will create a Transport Layer Security (TLS) certificate from the [Let's Encrypt](https://letsencrypt.org/) certificate authority (CA) using the [ACME protocol](https://tools.ietf.org/html/rfc8555). This will be facilitated by [*cert-manager*](https://cert-manager.io/docs/), the native Kubernetes certificate management controller.
 
@@ -173,14 +181,14 @@ spec:
           class: nginx
     {{</ file >}}
 
-    - This manifest file creates a ClusterIssuer resource that will register an account on an ACME server. The value of `spec.acme.email.server` designates Let's Encrypt's production ACME server, which should be trusted by most browsers.
+    - This manifest file creates a ClusterIssuer resource that will register an account on an ACME server. The value of `spec.acme.server` designates Let's Encrypt's production ACME server, which should be trusted by most browsers.
 
         {{< note >}}
 Let's Encrypt provides a staging ACME server that can be used to test issuing trusted certificates, while not worrying about hitting [Let's Encrypt's production rate limits](https://letsencrypt.org/docs/rate-limits/). The staging URL is `https://acme-staging-v02.api.letsencrypt.org/directory`.
         {{</ note >}}
 
     - The value of `privateKeySecretRef.name` provides the name of a secret containing the private key for this user's ACME server account (this is tied to the email address you provide in the manifest file). The ACME server will use this key to identify you.
-    - To ensure that you own the domain for which you will create a certificate, the ACME server will issue a challenge to a client. cert-manager provides two options for solving challenges, [`http01`](https://cert-manager.io/docs/configuration/acme/http01/) and [`DNS01`](https://cert-manager.io/docs/configuration/acme/dns01/). In this example, the `http01` challenge solver will be used and it is configured in the `solvers` array. cert-manager will spin up *challenge solver* pods to solve the issued challenges and use Ingress resources to route the challenge to the appropriate pod.
+    - To ensure that you own the domain for which you will create a certificate, the ACME server will issue a challenge to a client. cert-manager provides two options for solving challenges, [`http01`](https://cert-manager.io/docs/configuration/acme/http01/) and [`DNS01`](https://cert-manager.io/docs/configuration/acme/dns01/). In this example, the `http01` challenge solver will be used and it is configured in the `solvers` array. cert-manager will spin up *challenge solver* Pods to solve the issued challenges and use Ingress resources to route the challenge to the appropriate Pod.
 
 1. Create the ClusterIssuer resource:
 
@@ -301,7 +309,7 @@ ingress:
   tls:
     - secretName: letsencrypt-secret-prod
       hosts:
-      - registry.madreypadre.com
+      - registry.example.com
 storage: s3
 secrets:
   htpasswd: |-
@@ -367,13 +375,13 @@ In this section, you will create a test deployment using the image that you push
 
 1. Using Linode's DNS manager to [create a new subdomain A record](/docs/platform/manager/dns-manager/#add-dns-records) to host your static site. The example will use `static.example.com`. When creating your record, assign your cluster's NodeBalancer external IP address as the IP address. You can find the external IP address with the following command:
 
-        kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
+        kubectl --namespace default get services -o wide -w nginx-ingress-controller
 
     The command will return a similar output. Use the value of the `EXTERNAL-IP` field to create your static site's new subdomain A record.
 
     {{< output >}}
 NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)                      AGE     SELECTOR
-my-nginx-ingress-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app=nginx-ingress,release=my-nginx-ingress
+nginx-ingress-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app=nginx-ingress,release=nginx-ingress
     {{</ output >}}
 
 1. Using a text editor, create the `static-site-test.yaml` file with the example configurations. This file will create a deployment, service, and an ingress.
