@@ -52,16 +52,6 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 ## Before You Begin
 
-### Enable Network Helper
-
-In order to use the Linode Kubernetes Engine, you will need to have *Network Helper* enabled globally on your account. Network Helper is a Linode-provided service that automatically sets a static network configuration for your Linode when it boots. To enable this global account setting, follow [these instructions](/docs/platform/network-helper/#global).
-
-If you don't want to use Network Helper on some Linodes that are not part of your LKE clusters, the service can also be disabled on a per-Linode basis; see instructions [here](/docs/platform/network-helper/#single-per-linode).
-
-{{< note >}}
-If you have already deployed an LKE cluster and did not enable Network Helper, you can [add a new node pool](#add-node-pools) with the same type, size, and count as your initial node pool. Once your new node pool is ready, you can then [delete the original node pool](#delete-a-cluster).
-{{</ note >}}
-
 ### Install kubectl
 
 You will need to install the kubectl client to your computer before proceeding. Follow the steps corresponding to your computer's operating system.
@@ -72,10 +62,6 @@ You will need to install the kubectl client to your computer before proceeding. 
 
 1.  Log into your [Linode Cloud Manager](https://cloud.linode.com/) account.
 
-    {{< note >}}
-LKE is not available in the Linode Classic Manager
-{{< /note >}}
-
 1.  From the Linode dashboard, click the **Create** button in the top right-hand side of the screen and select **Kubernetes** from the dropdown menu.
 
     ![Create a Kubernetes Cluster Screen](create-lke-cluster.png "Create a Kubernetes Cluster screen.")
@@ -84,7 +70,7 @@ LKE is not available in the Linode Classic Manager
 
    - In the **Cluster Label** field, provide a name for your cluster. The name must be unique between all of the clusters on your account. This name will be how you identify your cluster in the Cloud Manager’s Dashboard.
 
-   - From the **region** dropdown menu, select the **region** where you would like your cluster to reside.
+   - From the **Region** dropdown menu, select the **Region** where you would like your cluster to reside.
 
    - From the **Version** dropdown menu, select a Kubernetes version to deploy to your cluster.
 
@@ -153,13 +139,13 @@ You can also download the kubeconfig from the Kubernetes cluster's details page.
 
 1. When viewing the Kubernetes listing page, click on the cluster for which you'd like to download a kubeconfig file.
 
-1. On the cluster's details page, under the **kubeconfig** section, click the **Download** button. The file will be saved to your `Downloads` folder.
+1. On the cluster's details page, under the **kubeconfig** section, click the **Download icon**. The file will be saved to your `Downloads` folder.
 
-    ![Kubernetes Cluster Download kubeconfig from Details Page](details-page-download-kubeconfig.png "Kubernetes cluster download kubeconfig from details page.")
+    ![Kubernetes Cluster Download kubeconfig from Details Page](lke-download-kubeconfig-2.png "Kubernetes cluster download kubeconfig from details page.")
 
-1. To view the contents of your kubeconfig file, click on the **View** button. A pane will appear with the contents of your cluster's kubeconfig file.
+1. To view the contents of your kubeconfig file, click on the **View icon**. A pane will appear with the contents of your cluster's kubeconfig file.
 
-    ![View the contents of your kubeconfig file](view-kubeconfig-in-manager.png "View the contents of your kubeconfig file.")
+    ![View the contents of your kubeconfig file](lke-view-kube-config.png "View the contents of your kubeconfig file.")
 {{</ disclosure-note >}}
 
 1. Open a terminal shell and save your kubeconfig file's path to the `$KUBECONFIG` environment variable. In the example command, the kubeconfig file is located in the `Downloads` folder, but you should alter this line with this folder's location on your computer:
@@ -284,7 +270,7 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
     ![Add a node pool to your cluster](add-node-pool-cluster.png "Add a node pool to your cluster")
 
-1. In the new window that appears, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) that you'd like to add to your new Node Pool. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time. Once you're satisfied with the number of nodes in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
+1. In the new window that appears, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) that you'd like to add to your new Node Pool. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time. Once you're satisfied with the number of nodes in a node pool, select **Add Pool** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
 
  ![Add node pool window](add-pool-window.png "Add node pool window")
 
