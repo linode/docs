@@ -33,7 +33,7 @@ This guide will show you how to:
 
 - Use [HELM](https://helm.sh/) to install an NGINX Ingress Controller.
 - Create two instances of sample application Deployments to create two separate mock websites on a single Kubernetes cluster served over port 80.
-- Create an Ingress and a NodeBalancer to route traffic from the internet to Kubernetes services.
+- Create an Ingress and a NodeBalancer to route traffic from the internet to Kubernetes Services.
 
 ## Before You Begin
 
