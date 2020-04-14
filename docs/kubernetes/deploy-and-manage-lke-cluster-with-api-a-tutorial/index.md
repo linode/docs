@@ -413,6 +413,20 @@ Each Linode account has a limit to the number of Linode resources they can deplo
 
 Like many Linode resources, you can [add tags](/docs/quick-answers/linode-platform/tags-and-groups/) to your LKE Cluster for organizational purposes. This section will show you how to add new tags to an existing LKE Cluster.
 
+{{< disclosure-note "View all of your account's tags">}}
+To view all of the tags existing on your account, issue the following request against the API:
+
+    curl -H "Authorization: Bearer $TOKEN" \
+        https://api.linode.com/v4/tags
+
+  Your response will resemble the example:
+
+  {{< output >}}
+{"data": [{"label": "blogs"}, {"label": "ecomm"}, {"label": "prod"}, {"label": "monitoring"}], "page": 1, "pages": 1, "results": 4}%
+  {{</ output >}}
+
+{{</ disclosure-note >}}
+
 1. View the tags currently assigned to your cluster:
 
         curl -H "Authorization: Bearer $TOKEN" \
