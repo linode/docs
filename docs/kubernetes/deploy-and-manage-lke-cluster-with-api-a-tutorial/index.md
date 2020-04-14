@@ -64,16 +64,6 @@ This guide will cover how to use the Linode API to:
 
 1. If you are new to Kubernetes, refer to our [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series to learn about general Kubernetes concepts. This guide assumes a general understanding of core Kubernetes concepts.
 
-### Enable Network Helper
-
-In order to use the Linode Kubernetes Engine, you will need to have *Network Helper* enabled globally on your account. Network Helper is a Linode-provided service that automatically sets a static network configuration for your Linode when it boots. To enable this global account setting, follow [these instructions](/docs/platform/network-helper/#global).
-
-If you don't want to use Network Helper on some Linodes that are not part of your LKE clusters, the service can also be disabled on a per-Linode basis; see instructions [here](/docs/platform/network-helper/#single-per-linode).
-
-{{< note >}}
-If you have already deployed an LKE cluster and did not enable Network Helper, you can [add a new node pool](#add-a-node-pool-to-your-lke-cluster) with the same type, size, and count as your initial node pool. Once your new node pool is ready, you can then [delete the original node pool](#delete-a-node-pool-from-an-lke-cluster).
-{{</ note >}}
-
 ### Install kubectl
 
 {{< content "how-to-install-kubectl" >}}
