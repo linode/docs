@@ -178,7 +178,7 @@ NGINX is now listening on port 80 and serving content. It's also configured to p
         sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 
-2.  To start using nvm in the same terminal run the following commands:
+2.  To start using `nvm` in the same terminal run the following commands:
 
         export NVM_DIR="$HOME/.nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -218,7 +218,7 @@ console.log("Server is listening on port 3000.")      //Terminal output
 {{< /file >}}
 
 
-5.  Run a new [tmux](docs/networking/ssh/persistent-terminal-sessions-with-tmux/) session:
+5.  Run a new [tmux](/docs/networking/ssh/persistent-terminal-sessions-with-tmux/) session:
 
         tmux
 

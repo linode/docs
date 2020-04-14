@@ -148,7 +148,7 @@ NGINX is now listening on port 80 and serving content. It's also configured to p
         sudo wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
 
 
-2.  To start using nvm in the same terminal run the following commands:
+2.  To start using `nvm` in the same terminal run the following commands:
 
         export NVM_DIR="$HOME/.nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
