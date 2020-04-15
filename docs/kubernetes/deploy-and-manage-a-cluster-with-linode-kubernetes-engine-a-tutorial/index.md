@@ -281,7 +281,7 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
     ![Access your cluster's resize page](access-clusters-resize-page.png "Access your cluster's resize page.")
 
-1.  Using the sidebar that appears to the right of the page, you can now remove `-` or add `+` linodes to the pool, and the total cost of your new resources will be displayed. To accept these changes, select the `Save Changes` button to continue.
+1.  Using the sidebar that appears to the right of the page, you can now remove `-` or add `+` Linodes to the pool, and the total cost of your new resources will be displayed. To accept these changes, select the `Save Changes` button to continue.
 
     ![Edit your cluster's node pool](edit-your-node-pool.png "Edit your cluster's node pool.")
 
