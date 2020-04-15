@@ -9,13 +9,13 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-11
 modified_by:
   name: Linode
+image: deploy-and-manage-cluster-copy.png
 title: "Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API - A Tutorial"
 h1_title: "A Tutorial for Deploying and Managing a Cluster with Linode Kubernetes Engine and the Linode API"
 contributor:
   name: Linode
 aliases: ['applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
 ---
-!["Deploying and Managing a Cluster with Linode Kubernetes Engine and the Linode API"](deploy-and-manage-cluster-copy.png)
 
 ## What is the Linode Kubernetes Engine (LKE)?
 
