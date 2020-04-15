@@ -9,6 +9,7 @@ published: 2019-07-29
 modified_by:
   name: Linode
 title: "Troubleshooting Kubernetes"
+image: troubleshooting-kube.jpg
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Documentation - Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)'
@@ -21,8 +22,6 @@ aliases: ['applications/containers/troubleshooting-kubernetes/','applications/co
 2. A list of common problems
 
 I can't really think of all the common problems that could might appear, so I've set up a few to start, and I'm imagining that the list could be expanded over time. We should consider advertising to Support that we would welcome JIRA tickets with recommendations to get addeed to the list, if they start to see certain problems more often. -->
-
-!["Troubleshooting Kubernetes"](troubleshooting-kube.jpg)
 
 Troubleshooting issues with Kubernetes can be complex, and it can be difficult to account for all the possible error conditions you may see. This guide tries to equip you with the core tools that can be useful when troubleshooting, and it introduces some situations that you may find yourself in.
 
