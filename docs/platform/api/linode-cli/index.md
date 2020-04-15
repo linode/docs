@@ -337,7 +337,7 @@ Other actions are available. Use `linode-cli lke --help` for a complete list.
 
         linode-cli nodebalancers node-delete $nodebalancer_id $config_id $node_id
 
-Other actions are available. Use `linode-cli linodes --help` for a complete list.
+Other actions are available. Use `linode-cli nodebalancers --help` for a complete list.
 
 ### Object Storage
 
