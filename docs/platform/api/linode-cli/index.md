@@ -317,7 +317,7 @@ Many other actions are available. Use `linode-cli linodes --help` for a complete
 
         linode-cli lke kubeconfig-view $cluster_id
 
-Other actions are available. Use `linode-cli linodes --help` for a complete list.
+Other actions are available. Use `linode-cli lke --help` for a complete list.
 
 ### NodeBalancers
 
