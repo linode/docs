@@ -3,6 +3,7 @@ author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
 description: 'Install the Apache Tomcat Java servlet engine on CentOS 8 by following this guide.'
+og_description: 'Install the Apache Tomcat Java servlet engine on CentOS 8 by following this guide.'
 keywords: ["apache tomcat centos 8", "tomcat java", "java centos 8", "tomcat ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/frameworks/apache-tomcat-on-centos-8/']
@@ -21,7 +22,6 @@ languages: ["java"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
-
 
 ## Before You Begin
 
@@ -43,15 +43,16 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 ## Download and Install Apache Tomcat
 
 1. Create a directory to download Apache Tomcat 9:
+
         sudo mkdir /usr/local/tomcat
 
-1. Change to `/usr/local/tomcat9` and download Apache Tomcat 9. As of writing this guide, Tomcat 9.0.33 is the latest version. See [Apache Tomcat's download page](https://tomcat.apache.org/download-90.cgi) for their latest core tarball:
+1. Change to `/usr/local/tomcat` and download Apache Tomcat 9. As of writing this guide, Tomcat 9.0.33 is the latest version. See [Apache Tomcat's download page](https://tomcat.apache.org/download-90.cgi) for their latest core tarball:
 
         sudo wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
 
       {{< caution >}}
-      Ensure that the version number matches the Tomcat 9 version you wish to download.
-      {{< /caution >}}
+Ensure that the version number matches the Tomcat 9 version you wish to download.
+{{< /caution >}}
 
 1. Extract the downloaded tarball's contents into `/usr/local/tomcat` directory:
 
@@ -59,44 +60,46 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
 1. Create a symbolic link to the latest version of Tomcat, that points to the Tomcat installation directory:
 
-        sudo ln -s /usr/local/tomcat/apache-tomcat-9.0.33 /usr/local/tomcat/tomcat9
+        sudo ln -s /usr/local/tomcat/apache-tomcat-9.0.33 /usr/local/tomcat/tomcat
 
 1. Create a `tomcat` user and change the directory ownership to `tomcat`:
 
         sudo useradd -r tomcat
         sudo chown -R tomcat:tomcat /usr/local/tomcat
-1.  Create a new `systemd` service for Tomcat with the following details:
 
-        sudo vim /etc/systemd/system/tomcat.service
-      {{< file "/etc/systemd/system/conf/tomcat.service" service >}}
-        [Unit]
-        Description=Tomcat Server
-        After=syslog.target network.target
+1.  Create a new `systemd` service file, `/etc/systemd/system/tomcat.service`, in the text editor of your choice with the following details:
 
-        [Service]
-        Type=forking
-        User=tomcat
-        Group=tomcat
+      {{< file "/etc/systemd/system/tomcat.service" service >}}
+[Unit]
+Description=Tomcat Server
+After=syslog.target network.target
 
-        Environment=JAVA_HOME=/usr/lib/jvm/jre        Environment='JAVA_OPTS=-Djava.awt.headless=true'
-        Environment=CATALINA_HOME=/usr/share/tomcat
-        Environment=CATALINA_BASE=/usr/share/tomcat
-        Environment=CATALINA_PID=/usr/share/tomcat/temp/tomcat.pid
-        Environment='CATALINA_OPTS=-Xms512M -Xmx1024M'
-        ExecStart=/usr/share/tomcat/bin/catalina.sh start
-        ExecStop=/usr/share/tomcat/bin/catalina.sh stop
+[Service]
+Type=forking
+User=tomcat
+Group=tomcat
 
-        [Install]
-        WantedBy=multi-user.target
-        {{< /file >}}
+Environment=JAVA_HOME=/usr/lib/jvm/jre        Environment='JAVA_OPTS=-Djava.awt.headless=true'
+Environment=CATALINA_HOME=/usr/local/tomcat
+Environment=CATALINA_BASE=/usr/local/tomcat
+Environment=CATALINA_PID=/usr/local/tomcat/temp/tomcat.pid
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M'
+ExecStart=/usr/local/tomcat/bin/catalina.sh start
+ExecStop=/usr/local/tomcat/bin/catalina.sh stop
 
-1. Update `systemd` about the `tomcat.service` that you created:
+[Install]
+WantedBy=multi-user.target
+{{< /file >}}
+
+1. Reload the `systemd` daemon to let it know about the `tomcat.service` that you created:
 
         sudo systemctl daemon-reload
+
 1. Start and enable Tomcat server:
 
-        sudo systemctl start tomcat
         sudo systemctl enable tomcat
+        sudo systemctl start tomcat
+
 1. Configure your firewall to access Tomcat server on port 8080:
 
         sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
@@ -104,22 +107,34 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
 ## Test and Use Tomcat
 
-You can test your Tomcat installation by pointing your browser at your site's port `:8080`, `http://example.com:8080/`. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat configuration files are located in the `/usr/local/tomcat/conf` directory.
+You can test your Tomcat installation by pointing your browser at your site's port `:8080`, `http://example.com:8080/`, replacing `example.com` with your domain name. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat configuration files are located in the `/usr/local/tomcat/conf` directory.
 
-To use the `tomcat9-admin` web application, add the following lines to the end of your `/usr/local/tomcat/conf/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and secure password. If using Tomcat Admin, include both the "manager-gui" role for the manager and the "admin-gui" role for the host-manager application.
+### Configure tomcat9-admin (optional)
 
-If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
+1.  To use the `tomcat9-admin` web application, add the following lines to the end of your `/usr/local/tomcat/conf/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and secure password. If using Tomcat Admin, include both the "manager-gui" role for the manager and the "admin-gui" role for the host-manager application.
 
-{{< file "/usr/local/tomcat/conf/tomcat-users.xml" xml >}}
+    {{< file "/usr/local/tomcat/conf/tomcat-users.xml" xml >}}
 <role rolename="manager-gui"/>
 <role rolename="admin-gui"/>
 <user username="username" password="password" roles="manager-gui,admin-gui"/>
 
 {{< /file >}}
 
+    {{< note >}}
+If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
+{{</ note >}}
 
-Restart the Tomcat server, which will allow these changes to take effect:
+1.  For Tomcat versions 8+ the managers have been pre-configured to only allow access from the same IP of the server where it's installed. If you're trying to access it from a browser remotely, you'll need to comment out this configuration in the file `/usr/local/tomcat/webapps/manager/META-INF/context.xml`.
 
-    systemctl restart tomcat9
+    {{< file "/usr/local/tomcat/webapps/manager/META-INF/context.xml" xml >}}
+...
+<!--
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+-->
+...
+{{</ file >}}
 
-Congratulations! You now have a working Apache Tomcat installation.
+1.  Restart the Tomcat server, which will allow these changes to take effect:
+
+        sudo systemctl restart tomcat

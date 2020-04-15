@@ -44,31 +44,34 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Install Apache Tomcat
 
-Install Tomcat from the Ubuntu repository:
+1.  Install Tomcat from the Debian repository:
 
-    sudo apt-get install tomcat9
+        sudo apt-get install tomcat9
 
-{{< note >}}
+    {{< note >}}
 OpenJDK will be installed as a dependency when you install the `tomcat9` package. The package `openjdk-11-jre-headless` is included with the `default-jre-headless` metapackage in Ubuntu.
 {{< /note >}}
 
-You may also want to install the `tomcat9-docs`, `tomcat9-examples`, and `tomcat9-admin` tools which provide web-based applications that document, test, and allow you to administer Tomcat. You can install all three with the following command:
+1.  You may also want to install the `tomcat9-docs`, `tomcat9-examples`, and `tomcat9-admin` tools which provide web-based applications that document, test, and allow you to administer Tomcat. You can install all three with the following command:
 
-    sudo apt-get install tomcat9-docs tomcat9-examples tomcat9-admin
+        sudo apt-get install tomcat9-docs tomcat9-examples tomcat9-admin
 
-If you need to start, stop or restart Tomcat you can use the following commands:
+1.  Start the Tomcat service.
 
-    sudo systemctl start tomcat9
-    sudo systemctl stop tomcat9
-    sudo systemctl restart tomcat9
+        sudo systemctl start tomcat9
+
+1.  If you need to stop or restart Tomcat you can use the following commands, respectively:
+
+        sudo systemctl stop tomcat9
+        sudo systemctl restart tomcat9
 
 ## Test and Use Tomcat
 
-You can test your Tomcat installation by pointing your browser at your site's port `:8080`, `http://example.com:8080/`. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat configuration files are located in the `/var/lib/tomcat9/conf` directory.
+You can test your Tomcat installation by pointing your browser at your site's port `:8080`, `http://example.com:8080/`, replacing `example.com` with your domain name. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat configuration files are located in the `/var/lib/tomcat9/conf` directory.
 
-To use the `tomcat9-admin` web application, add the following lines to the end of your `/var/lib/tomcat9/conf/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and secure password. If using Tomcat Admin, include both the "manager-gui" role for the manager and the "admin-gui" role for the host-manager application.
+### Configure tomcat9-admin (optional)
 
-If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
+If you installed the `tomcat9-admin` web application above, you can configure it by adding the following lines to the end of your `/var/lib/tomcat9/conf/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and secure password. If using Tomcat Admin, include both the "manager-gui" role for the manager and the "admin-gui" role for the host-manager application.
 
 {{< file "/var/lib/tomcat9/conf/tomcat-users.xml" xml >}}
 <role rolename="manager-gui"/>
@@ -77,9 +80,10 @@ If you are not using the web application and plan to manage your application(s) 
 
 {{< /file >}}
 
+{{< note >}}
+If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
+{{</ note >}}
 
 Restart the Tomcat server, which will allow these changes to take effect:
 
     systemctl restart tomcat9
-
-Congratulations! You now have a working Apache Tomcat installation.
