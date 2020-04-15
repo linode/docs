@@ -10,6 +10,7 @@ published: 2019-11-06
 modified_by:
   name: Linode
 title: "Using Octant with Kubernetes - A Tutorial"
+image: using-octant-with-kube.jpg
 h1_title: "A Tutorial for Using Octant with Kubernetes"
 external_resources:
 - '[Octant](https://octant.dev/)'
@@ -17,8 +18,6 @@ external_resources:
 - '[Octant on Twitter](https://twitter.com/projectoctant)'
 aliases: ['applications/containers/kubernetes/using-octant-with-kubernetes-a-tutorial/']
 ---
-
-!["Using Octant with Kubernetes"](using-octant-with-kube.jpg)
 
 ## What is Octant?
 
