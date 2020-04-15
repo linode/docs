@@ -11,7 +11,7 @@ modified: 2020-03-25
 modified_by:
   name: Linode
 published: 2020-03-25
-title: 'How to install Apache Tomcat on Debian 10'
+title: 'How to Install Apache Tomcat on Debian 10'
 h1_title: 'Installing Apache Tomcat on Debian 10'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
@@ -86,4 +86,4 @@ If you are not using the web application and plan to manage your application(s) 
 
 Restart the Tomcat server, which will allow these changes to take effect:
 
-    systemctl restart tomcat9
+    sudo systemctl restart tomcat9

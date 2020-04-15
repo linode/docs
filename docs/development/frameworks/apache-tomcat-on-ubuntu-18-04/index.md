@@ -11,7 +11,7 @@ modified: 2020-03-25
 modified_by:
   name: Linode
 published: 2020-03-25
-title: 'How to install Apache Tomcat on Ubuntu 18.04'
+title: 'How to Install Apache Tomcat on Ubuntu 18.04'
 h1_title: 'Installing Apache Tomcat on Ubuntu 18.04'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
@@ -56,7 +56,7 @@ OpenJDK will be installed as a dependency when you install the `tomcat9` package
 
         sudo apt-get install tomcat9-docs tomcat9-examples tomcat9-admin
 
-1.  Start Tomcat
+1.  Start the Tomcat service.
 
         sudo systemctl start tomcat9
 
@@ -71,7 +71,7 @@ You can test your Tomcat installation by pointing your browser at your site's po
 
 ### Configure tomcat9-admin (optional)
 
-If you installed the `tomcat9-admin` web application above, you can configure it by add the following lines to the end of your `/var/lib/tomcat9/conf/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and secure password. If using Tomcat Admin, include both the "manager-gui" role for the manager and the "admin-gui" role for the host-manager application.
+If you installed the `tomcat9-admin` web application above, you can configure it by adding the following lines to the end of your `/var/lib/tomcat9/conf/tomcat-users.xml` file before the `</tomcat-users>` line, substituting your own username and secure password. If using Tomcat Admin, include both the "manager-gui" role for the manager and the "admin-gui" role for the host-manager application.
 
 {{< file "/var/lib/tomcat9/conf/tomcat-users.xml" xml >}}
 <role rolename="manager-gui"/>
@@ -86,4 +86,4 @@ If you are not using the web application and plan to manage your application(s) 
 
 Restart the Tomcat server, which will allow these changes to take effect:
 
-    systemctl restart tomcat9
+    sudo systemctl restart tomcat9
