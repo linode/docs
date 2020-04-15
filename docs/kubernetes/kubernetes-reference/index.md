@@ -12,14 +12,12 @@ title: "Kubernetes Reference Guide"
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
+image: kube-reference-guide.jpg
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 aliases: ['applications/containers/kubernetes-reference/','applications/containers/kubernetes/kubernetes-reference/']
 ---
-!["A reference guide for Kubernetes terminology"](kube-reference-guide.jpg)
-
-This is a reference for common Kubernetes terminology.
 
 {{< content "calico-definition-shortguide" >}}
 
