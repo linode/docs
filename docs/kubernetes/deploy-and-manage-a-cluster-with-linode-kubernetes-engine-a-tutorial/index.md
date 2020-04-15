@@ -83,11 +83,11 @@ You will need to install the kubectl client to your computer before proceeding. 
 Currently, the available plan types for LKE worker nodes are [Standard](/docs/platform/how-to-choose-a-linode-plan/#2-standard), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory) plans.
     {{< /note >}}
 
-    ![Select your cluster's resources](select-cluster-resources.png "Select your cluster's resources.")
+    ![Select your cluster's resources](select-your-cluster-resources.png "Select your cluster's resources.")
 
 1. Once a pool has been added to your configuration, you will see it listed in the **Cluster Summary** on the right-hand side of the Cloud Manager detailing your cluster's hardware resources and monthly cost. Additional pools can be added before finalizing the cluster creation process by repeating the previous step for each additional pool.
 
-    ![Cluster-Summary](cluster-summary.png "cluster-summary")
+    ![Cluster-Summary](your-cluster-summary.png "cluster-summary")
 
 1. When you are satisfied with the configuration of your cluster, click the **Create Cluster** button on the right hand side of the screen. Your cluster's detail page will appear on the following page where you will see your Node Pools listed. From this page, you can [edit your existing Node Pools](#edit-or-remove-existing-node-pools), [access your Kubeconfig file](#access-and-download-your-kubeconfig), and view an overview of your cluster's resource details.
 
@@ -272,7 +272,7 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
 1. In the new window that appears, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) that you'd like to add to your new Node Pool. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time. Once you're satisfied with the number of nodes in a node pool, select **Add Pool** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
 
- ![Add node pool window](add-pool-window.png "Add node pool window")
+    ![Add node pool window](view-add-pool-window.png "Add node pool window")
 
 ### Edit or Remove Existing Node Pools
 
@@ -288,9 +288,10 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
     ![Delete your cluster's node pool](delete-node-pool.png "Delete your cluster's node pool.")
 
-{{< note >}}
+    {{< note >}}
 Your cluster must always have at least one active node pool.
-{{< /note >}}
+    {{< /note >}}
+
 ## Delete a Cluster
 
  You can delete an entire cluster using the Linode Cloud Manager. These changes cannot be reverted once completed.
