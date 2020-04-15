@@ -15,6 +15,7 @@ contributor:
   name: Linode
 aliases: ['applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
 ---
+!["Deploying and Managing a Cluster with Linode Kubernetes Engine and the Linode API"](deploy-and-manage-cluster-copy.png)
 
 ## What is the Linode Kubernetes Engine (LKE)?
 
