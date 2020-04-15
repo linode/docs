@@ -11,13 +11,12 @@ modified_by:
   name: Linode
 title: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
 h1_title: "Deploying NGINX Ingress on Linode Kubernetes Engine"
+image: nginx-ingress.png
 contributor:
   name: Linode
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'
 ---
-!["Deploying NGINX Ingress to Linode Kubernetes Engine"](nginx-ingress.png)
-
 In Kubernetes, an **Ingress** is an API object that manages the routing of external requests to one of the many possible internal services in a Kubernetes cluster. In the majority of cases, the Ingress will rely on an external Load Balancer to accept initial traffic before being routed.
 
 An Ingress is one of the most powerful ways to control external access to your resources, granting the ability to add multiple services under the same IP address, and use plugins like [cert-manager](https://github.com/jetstack/cert-manager) to assist with the management of SSL/TLS certificates.
