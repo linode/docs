@@ -23,6 +23,11 @@ aliases: ['applications/containers/troubleshooting-kubernetes/','applications/co
 
 I can't really think of all the common problems that could might appear, so I've set up a few to start, and I'm imagining that the list could be expanded over time. We should consider advertising to Support that we would welcome JIRA tickets with recommendations to get addeed to the list, if they start to see certain problems more often. -->
 
+<br />
+<!-- Inserting this line-break to fix a styling issue:
+There's no space between header image and the first paragraph of text. Will need to add a margin in the theme to fix this for all guides.
+-->
+
 Troubleshooting issues with Kubernetes can be complex, and it can be difficult to account for all the possible error conditions you may see. This guide tries to equip you with the core tools that can be useful when troubleshooting, and it introduces some situations that you may find yourself in.
 
 {{< disclosure-note "Where to go for help outside this guide" >}}
