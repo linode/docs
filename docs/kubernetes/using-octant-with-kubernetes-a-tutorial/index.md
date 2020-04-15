@@ -18,6 +18,8 @@ external_resources:
 aliases: ['applications/containers/kubernetes/using-octant-with-kubernetes-a-tutorial/']
 ---
 
+!["Using Octant with Kubernetes"](using-octant-with-kube.jpg)
+
 ## What is Octant?
 
 Octant is a web application that talks to your Kubernetes clusters and provides an easy-to-read dashboard for the objects in your clusters. A marquee feature of Octant is its ability to show your objects and their relations in a graph format:

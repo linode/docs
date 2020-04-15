@@ -17,6 +17,7 @@ external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 aliases: ['applications/containers/kubernetes-reference/','applications/containers/kubernetes/kubernetes-reference/']
 ---
+!["A reference guide for Kubernetes terminology"](kube-reference-guide.jpg)
 
 This is a reference for common Kubernetes terminology.
 
