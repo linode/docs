@@ -6,7 +6,7 @@ description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by foll
 og_description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
 keywords: ["apache tomcat debian 10", "tomcat java", "java debian 10", "tomcat debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/frameworks/apache-tomcat-on-debian-10/']
+aliases: ['development/frameworks/apache-tomcat-on-debian-10/','websites/frameworks/apache-tomcat-on-debian-10/']
 modified: 2020-03-25
 modified_by:
   name: Linode

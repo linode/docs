@@ -3,53 +3,38 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 14.'
-keywords: ["apache tomcat fedora 14", "java", "java fedora 14", "java servlets fedora 14", "java fedora"]
+description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 12.'
+keywords: ["apache tomcat fedora 12", "java", "java fedora 12", "java servlets fedora 12", "java fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/apache-tomcat/fedora-14/','websites/frameworks/apache-tomcat-on-fedora-14/']
-modified: 2013-09-27
+aliases: ['development/frameworks/apache-tomcat-on-fedora-12/','websites/frameworks/apache-tomcat-on-fedora-12/','frameworks/apache-tomcat/fedora-12/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 2010-12-07
-title: Apache Tomcat on Fedora 14
+published: 2010-07-23
+title: Apache Tomcat on Fedora 12
 ---
-
-
 
 Apache Tomcat is a free and open source software implementation for Java Servlets. It provides support for the Java Server Pages (JSP) that power many popular web-based applications.
 
-This guide assumes that you have a working installation of Fedora 14, and that you have followed our [getting started guide](/docs/getting-started/) to get your system working and up to date. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
-
-# Set the Hostname
-
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
-
-    hostname
-    hostname -f
-
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+This guide assumes that you have a working installation of Fedora 12, and that you have followed our [getting started guide](/docs/getting-started/) to get your system working and up to date. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
 # Install Apache Tomcat
 
-Issue the following command to install the latest version of Tomcat 6, along with the OpenJDK runtime environment and developer tools:
+Install the latest version of Tomcat 6 with the following command:
 
     yum update
     yum install tomcat6 tomcat6-webapps tomcat6-admin-webapps java-1.6.0-openjdk-devel.i686
     chkconfig tomcat6 on
 
-Issue the following command to ensure that the file permissions of crucial folders are set properly:
+This command will install the tomcat6 service, as well as the OpenJDK runtime environment and developer tools. Start the tomcat6 service with the following command:
 
-    chmod -R g+w /var/log/tomcat6 /etc/tomcat6/Catalina /var/lib/tomcat6/webapps/ /var/log/tomcat6/ /var/cache/tomcat6/temp /var/cache/tomcat6/work
-
-Start the tomcat6 service with the following command:
-
-    /etc/init.d/tomcat6 start
+    service tomcat6 start
 
 Tomcat should now be totally functional. In the future, if you need to start, stop, or restart, you can use the following commands:
 
-    /etc/init.d/tomcat6 start
-    /etc/init.d/tomcat6 stop
-    /etc/init.d/tomcat6 restart
+    service tomcat6 start
+    service tomcat6 stop
+    service tomcat6 restart
 
 # Test and use Tomcat
 
@@ -65,7 +50,7 @@ At this point, you may want to create a user to access the "Tomcat Manager" web 
 
 Once you have saved the `tomcat-users.xml` file, restart the tomcat6 service with the following command:
 
-    /etc/init.d/tomcat6 restart
+    service tomcat6 restart
 
 At this point, you will be able to log in to the Tomcat Manager application and begin deploying Java Servlets with Apache Tomcat!
 

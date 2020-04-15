@@ -6,7 +6,7 @@ description: 'Install the Apache Tomcat Java servlet engine on CentOS 8 by follo
 og_description: 'Install the Apache Tomcat Java servlet engine on CentOS 8 by following this guide.'
 keywords: ["apache tomcat centos 8", "tomcat java", "java centos 8", "tomcat ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/frameworks/apache-tomcat-on-centos-8/']
+aliases: ['websites/frameworks/apache-tomcat-on-centos-8/','development/frameworks/apache-tomcat-on-centos-8/']
 modified: 2020-03-25
 modified_by:
   name: Linode
