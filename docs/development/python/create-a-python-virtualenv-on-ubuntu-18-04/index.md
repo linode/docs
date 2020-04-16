@@ -54,7 +54,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     The command will create a new directory with the name you assigned to your virtual environment. This directory will contain all of the isolated files, packages, modules, and executables that will be used by your new environment.
 
-1.  Validate that the environment is installed with the version of Python that you expect:
+1.  Validate that your environment is installed with the version of Python that you expect:
 
         ls env/lib
 
