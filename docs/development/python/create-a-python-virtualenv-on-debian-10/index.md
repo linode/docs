@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool. You will install the virtualenv tool on an Debian 10 Linode and create a virtual environment running Python3.'
 og_description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool. You will install the virtualenv tool on an Debian 10 Linode and create a virtual environment running Python3.'
-keywords: ["python", "python virtual environment", "virtualenv", "debian"]
+keywords: ["python", "python virtual environment", "virtualenv", "debian 10"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-07
 modified_by:
