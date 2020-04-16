@@ -20,7 +20,7 @@ languages: ["python"]
 
 ## What is a Python Virtual Environment?
 
-A Python virtual environment is an isolated project space on your system that contains its own Python executable, packages, and modules. Your Python applications and projects often have their own specific dependencies. With a virtual environment you can manage each of your project's distinct dependencies without having them interfere with each other. You can use the [*virtualenv*](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. This guide will show you how to use virtualenv to create and run a Python virtual environment on an Debian 10 Linode.
+A Python virtual environment is an isolated project space on your system that contains its own Python executable, packages, and modules. Your Python applications and projects often have their own specific dependencies. With a virtual environment you can manage each of your project's distinct dependencies without having them interfere with each other. You can use the [*virtualenv*](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. This guide will show you how to use virtualenv to create and run a Python virtual environment on a Debian 10 Linode.
 
 ## Before You Begin
 
@@ -60,7 +60,7 @@ If you would like to create a virtual environment using Python3, use the `--pyth
 
     The command will create a new directory with the name you assigned to your virtual environment. This directory will contain all of the isolated files, packages, modules, and executables that will be used by your new environment.
 
-1.  Validate that the environment is installed with the version of Python that you expect:
+1.  Validate your environment is installed with the version of Python that you expect:
 
         ls env/lib
 
