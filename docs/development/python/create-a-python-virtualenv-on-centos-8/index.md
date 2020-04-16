@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows how to create a Python virtual environment on CentOS 8 Linode.'
-og_description: 'This guide shows how to create a Python virtual environment on CentOS 8 Linode.'
+description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool. You will install the virtualenv tool on an CentOS 8 Linode and create a virtual environment running Python3.'
+og_description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool. You will install the virtualenv tool on an CentOS 8 Linode and create a virtual environment running Python3.'
 keywords: ["python", "python virtual environment", "virtualenv", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-07
@@ -13,72 +13,84 @@ published: 2017-08-13
 title: 'How to create a Python Virtual Environment on CentOS 8'
 h1_title: 'Creating a Python Virtual Environment on CentOS 8'
 external_resources:
-- '[virtualenv Documentation](http://virtualenv.pypa.io/)'
+- '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
 languages: ["python"]
 ---
 
 ## What is a Python Virtual Environment?
 
-A Python Virtual Environment - or `virtualenv` - is a tool to create an isolated Python environment on your Linode. This can be extremely powerful as you can create a virtual environment and install all Python executables/packages to it, leaving no dependencies outside of your created virtual environment.
+A Python virtual environment is an isolated project space on your system that contains its own Python executable, packages, and modules. Your Python applications and projects often have their own specific dependencies. With a virtual environment you can manage each of your project's distinct dependencies without having them interfere with each other. You can use the [*virtualenv*](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. This guide will show you how to use virtualenv to create and run a Python virtual environment on a CentOS 8 Linode.
 
-This guide shows how to create and run Python virtual environments in CentOS 8 Linode.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
+1.  Complete the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides to prepare your system.
 
 1.  Update your system:
 
         sudo yum update
 
-{{< note >}}
+    {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-{{< /note >}}
+    {{< /note >}}
 
-## Install Python Virtualenv
+## Create a Python Virtual Environment
+
+{{< note >}}
+By default, [Python 3.6.8](https://docs.python.org/3.6/whatsnew/3.6.html) is installed on Debian 10.
+{{</ note >}}
 
 1.  To install Python's virtual environment:
 
         sudo yum install virtualenv
 
-## Create New Directory in Home
+1.  Create a `python-environments` directory in your user's home directory and navigate to it:
 
-1.  Navigate to your users home directory:
+        mkdir ~/python-environments && cd ~/python-environments
 
-        cd ~
+1. Create a Python virtual environment. By default, virtualenv will attempt to use your system's default Python interpreter to create a new environment. Replace `env` with the name you would like to assign to your virtual environment.
 
-2.  Create a directory named *python-environments*:
+        virtualenv env
 
-        mkdir python-environments
+    {{< note >}}
+If your CentOS 8 system has another version of Python installed and you'd like to use it to create your virtual environment, use th e`--python` option to designate it. For example:
 
-3.  Navigate in the newly created directory:
+    virtualenv --python=python2.7 env
+    {{</ note >}}
 
-        cd python-environments
-
-## Create a Virtual Environment in Python 3
-
-1.  Create a virtual environment in Python 3 with the environment name of *env*:
-
-        virtualenv -p python3 env
-
-2.  Validate that environment is installed with python3:
+1.  Validate that your environment is installed with the version of Python that you expect:
 
         ls env/lib
 
-## Activate Environment
+    You should see your `env` environments Python version:
 
-Activate the newly created virtual environment (the name of the working environment will appear in parentheses):
+    {{< output >}}
+python3.6.8
+    {{</ output >}}
 
-    source env/bin/activate
-    (env) example_user@hostname:~/python-environments$
+## Activate Your Virtual Environment
 
-Now that the environment is active, you can install executables and packages only to this virtual environment.
+1. Activate the newly created virtual environment:
 
-## Deactivate Environment
+        source env/bin/activate
 
-To deactivate an active virtual environment:
+    The name of the working environment will appear in parentheses after it's created.
 
-    deactivate
+      {{< output >}}
+(env) example_user@hostname:~/python-environments$
+      {{</ output >}}
 
-Congratulations! You have created an isolated, Python Virtualenv on your Linode.
+      You can now begin installing Python packages and libraries that will remain isolated to your virtual environment.
+
+## Deactivate a Virtual Environment
+
+1. To deactivate an active virtual environment, issue the following command:
+
+        deactivate
+
+    Your virtual environment will be deactivated and you should no longer see its name listed next to your command line's prompt
+
+    {{< output >}}
+example_user@hostname:~/python-environments$
+    {{</ output >}}
