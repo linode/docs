@@ -13,14 +13,14 @@ published: 2020-04-07
 title: 'How to create a Python Virtual Environment on Ubuntu 18.04'
 h1_title: 'Creating a Python Virtual Environment on Ubuntu 18.04'
 external_resources:
-- '[virtualenv Documentation](http://virtualenv.pypa.io/)'
+- '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
 languages: ["python"]
 ---
 
 ## What is a Python Virtual Environment?
 
-A Python virtual environment is an isolated project space on your system that contains its own Python installation, packages, and modules. Your Python applications and projects often have their own specific dependencies. With a virtual environment you can manage each of your project's distinct dependencies without having them interfere with each other. You can use the [*virtualenv*](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. This guide will show you how to use virtualenv to create and run a Python virtual environment on an Ubuntu 18.04 Linode.
+A Python virtual environment is an isolated project space on your system that contains its own Python executable, packages, and modules. Your Python applications and projects often have their own specific dependencies. With a virtual environment you can manage each of your project's distinct dependencies without having them interfere with each other. You can use the [*virtualenv*](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. This guide will show you how to use virtualenv to create and run a Python virtual environment on an Ubuntu 18.04 Linode.
 
 ## Before You Begin
 
@@ -52,7 +52,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         virtualenv --python=python3 env
 
-    The command will create a new directory with the name you assigned to your virtual environment. This directory will contain all the isolated files and executables that will be used by your new environment.
+    The command will create a new directory with the name you assigned to your virtual environment. This directory will contain all of the isolated files, packages, modules, and executables that will be used by your new environment.
 
 1.  Validate that the environment is installed with the version of Python that you expect:
 
@@ -80,7 +80,7 @@ python3.6
 
 ## Deactivate a Virtual Environment
 
-1. To deactivate an active virtual environment issue the following command:
+1. To deactivate an active virtual environment, issue the following command:
 
         deactivate
 
