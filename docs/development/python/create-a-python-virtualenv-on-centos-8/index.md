@@ -38,7 +38,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## Create a Python Virtual Environment
 
 {{< note >}}
-By default, [Python 3.6.8](https://docs.python.org/3.6/whatsnew/3.6.html) is installed on Debian 10.
+By default, [Python 3.6.8](https://docs.python.org/3.6/whatsnew/3.6.html) is installed on CentOS 8.
 {{</ note >}}
 
 1.  To install Python's virtual environment:
