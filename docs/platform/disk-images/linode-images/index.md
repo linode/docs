@@ -46,7 +46,7 @@ CoreOS disk images are in RAW format. Images made from CoreOS disks will not be 
     ![Image creation status under the bell notifications.](images-image-being-created.png "Image creation status under the bell notifications.")
 
     {{< note >}}
-Linode Images are limited to 6144MB of data per disk.  You will need to ensure that data within your disk does not exceed this size limit. Additionally, Linode Images cannot be created if you are using raw disks or disks that have been formatted using custom filesystems.   {{< /note >}}
+Linode Images are limited to 6144MB of data per disk.  You will need to ensure that data within your disk does not exceed this size limit. Additionally, Linode Images cannot be created if you are using raw disks or disks that have been formatted using custom filesystems. Additionally, the Image will be the smallest possible size based on the data present on the disk rather than the full Disk Allocation. {{< /note >}}
 
     Once the job has completed, your Linode's disk has been captured and stored.
 
