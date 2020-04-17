@@ -12,8 +12,6 @@ modified_by:
 title: 'Configure and Use Salt SSH to Manage Your Linodes'
 contributor:
   name: Sergey Bulavintsev
-promo_code_amount: '20'
-promo_code: 'Salt20'
 ---
 
 ## Introduction to Salt SSH
