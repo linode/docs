@@ -37,7 +37,7 @@ You can configure your WordPress App by providing values for the following field
 | **Admin Username** | Username for your WordPress admin user. *Required*. |
 | **Admin Password** | Password for your WordPress admin user. *Required*. |
 | **MySQL root Password** | The root password for your MySQL database. *Required*. |
-| **WordPress Database Password** | The root password for your Wordpress database. *Required*. |
+| **WordPress Database Password** | The root password for your WordPress database. *Required*. |
 | **Website Title** | Your WordPress site's title. *Advanced Configuration*. |
 | **Domain** | Your domain name. *Advanced Configuration*. |
 
