@@ -108,23 +108,23 @@ preferences: {}
 clusters:
 - cluster:
     certificate-authority-data: LS0tLS1CRUd...
-    server: https://192.0.2.0:6443
-  name: kubernetes
+    server: https://example.us-central.linodelke.net:443
+  name: lke1234
 
 users:
-- name: lke-admin
+- name: lke1234-admin
   user:
     as-user-extra: {}
     token: LS0tLS1CRUd...
 
 contexts:
 - context:
-    cluster: kubernetes
+    cluster: lke1234
     namespace: default
-    user: lke-admin
-  name: lke-admin-ctx
+    user: lke1234-admin
+  name: lke1234-ctx
 
-current-context: lke-admin-ctx
+current-context: lke1234-ctx
 {{< /file >}}
 
 This configuration file defines your cluster, users, and contexts.
@@ -210,19 +210,18 @@ Optionally, you can give the copied file a different name to help distinguish it
     You should see output similar to the following:
 
     {{< output >}}
-CURRENT   NAME                        CLUSTER           AUTHINFO           NAMESPACE
-
-*         lke-admin-ctx               kubernetes        lke-admin          default
+CURRENT   NAME          CLUSTER   AUTHINFO        NAMESPACE
+*         lke1234-ctx   lke1234   lke1234-admin   default
 {{</ output >}}
 
 1.  If your context is not already selected, (denoted by an asterisk in the `current` column), switch to this context using the `config use-context` command. Supply the full name of the cluster (including the authorized user and the cluster):
 
-        kubectl config use-context lke-admin-ctx
+        kubectl config use-context lke1234-ctx
 
     You should see output like the following:
 
     {{< output >}}
-Switched to context "lke-admin-ctx".
+Switched to context "lke1234-ctx".
 {{</ output>}}
 
 1.  You are now ready to interact with your cluster using `kubectl`. You can test the ability to interact with the cluster by retrieving a list of Pods. Use the `get pods` command with the `-A` flag to see all pods running across all namespaces:
