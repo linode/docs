@@ -10,7 +10,7 @@ modified: 2020-04-09
 modified_by:
   name: Linode
 title: "How to Deploy WordPress with One-Click Apps"
-h1_title: "Deploying Wordpress with One-Click Apps"
+h1_title: "Deploying WordPress with One-Click Apps"
 contributor:
   name: Linode
 external_resources:
@@ -37,7 +37,7 @@ You can configure your WordPress App by providing values for the following field
 | **Admin Username** | Username for your WordPress admin user. *Required*. |
 | **Admin Password** | Password for your WordPress admin user. *Required*. |
 | **MySQL root Password** | The root password for your MySQL database. *Required*. |
-| **Wordpress Database Password** | The root password for your Wordpress database. *Required*. |
+| **WordPress Database Password** | The root password for your Wordpress database. *Required*. |
 | **Website Title** | Your WordPress site's title. *Advanced Configuration*. |
 | **Domain** | Your domain name. *Advanced Configuration*. |
 
