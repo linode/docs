@@ -33,7 +33,7 @@ Your account's [Events Page](https://cloud.linode.com/events) is a history, or a
 
 1. To view more events and additional details pertaining to them, select  **View All Events** at the bottom of the list.
 
-1. The following page will list all events attributed to your account, including a description, the duration of the event, and the time that the event was initiated down to the exact second in Coordinated Universal Time (UTC). The list of events contains the *entire* history for the life of your account. It will continue to populate with past entries as you scroll down the page. When there are no entries left to display, you'll see the text "No more events to show" at the bottom of the page.
+1. The following page will list all events attributed to your account, including a description, the duration of the event, and the time that the event was initiated down to the exact second in Coordinated Universal Time (UTC). The list of events contains the history for the past 90 days of your account. It will continue to populate with past entries as you scroll down the page. When there are no entries left to display, you'll see the text "No more events to show" at the bottom of the page.
 
     ![events.png](events.png)
 
