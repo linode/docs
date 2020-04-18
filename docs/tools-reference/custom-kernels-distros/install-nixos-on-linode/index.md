@@ -73,7 +73,7 @@ In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/d
     update-ca-certificates
 
     # Download the ISO and write it to the installer disk
-    curl $iso | dd of=/dev/sda
+    curl -L $iso | dd of=/dev/sda
 
 ## Install NixOS
 
