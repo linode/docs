@@ -27,11 +27,11 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1.  Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
-1. Install and set Java Home Environment [Java Development Kit](/docs/development/java/). Run the following commands to check the version of java that is installed.
+1.  Install and set Java Home Environment [Java Development Kit](/docs/development/java/). Run the following commands to check the version of java that is installed.
 
         java -version
         javac -version
@@ -42,11 +42,11 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
 ## Download and Install Apache Tomcat
 
-1. Create a directory to download Apache Tomcat 9:
+1.  Create a directory to download Apache Tomcat 9:
 
         sudo mkdir /usr/local/tomcat
 
-1. Change to `/usr/local/tomcat` and download Apache Tomcat 9. As of writing this guide, Tomcat 9.0.33 is the latest version. See [Apache Tomcat's download page](https://tomcat.apache.org/download-90.cgi) for their latest core tarball:
+1.  Change to `/usr/local/tomcat` and download Apache Tomcat 9. As of writing this guide, Tomcat 9.0.33 is the latest version. See [Apache Tomcat's download page](https://tomcat.apache.org/download-90.cgi) for their latest core tarball:
 
         sudo wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
 
@@ -54,15 +54,15 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 Ensure that the version number matches the Tomcat 9 version you wish to download.
 {{< /caution >}}
 
-1. Extract the downloaded tarball's contents into `/usr/local/tomcat` directory:
+1.  Extract the downloaded tarball's contents into `/usr/local/tomcat` directory:
 
         sudo tar xvf apache-tomcat-9.0.33.tar.gz --strip-components=1 -C /usr/local/tomcat
 
-1. Create a symbolic link to the latest version of Tomcat, that points to the Tomcat installation directory:
+1.  Create a symbolic link to the latest version of Tomcat, that points to the Tomcat installation directory:
 
         sudo ln -s /usr/local/tomcat/apache-tomcat-9.0.33 /usr/local/tomcat/tomcat
 
-1. Create a `tomcat` user and change the directory ownership to `tomcat`:
+1.  Create a `tomcat` user and change the directory ownership to `tomcat`:
 
         sudo useradd -r tomcat
         sudo chown -R tomcat:tomcat /usr/local/tomcat
@@ -91,16 +91,16 @@ ExecStop=/usr/local/tomcat/bin/catalina.sh stop
 WantedBy=multi-user.target
 {{< /file >}}
 
-1. Reload the `systemd` daemon to let it know about the `tomcat.service` that you created:
+1.  Reload the `systemd` daemon to let it know about the `tomcat.service` that you created:
 
         sudo systemctl daemon-reload
 
-1. Start and enable Tomcat server:
+1.  Start and enable Tomcat server:
 
         sudo systemctl enable tomcat
         sudo systemctl start tomcat
 
-1. Configure your firewall to access Tomcat server on port 8080:
+1.  Configure your firewall to access Tomcat server on port 8080:
 
         sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
         sudo firewall-cmd --reload
