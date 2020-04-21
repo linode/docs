@@ -3,30 +3,36 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 12.'
-keywords: ["apache tomcat fedora 12", "java", "java fedora 12", "java servlets fedora 12", "java fedora"]
+description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 13.'
+keywords: ["apache tomcat fedora 13", "java", "java fedora 13", "java servlets fedora 13", "java fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/apache-tomcat/fedora-12/','websites/frameworks/apache-tomcat-on-fedora-12/']
+aliases: ['development/frameworks/apache-tomcat-on-fedora-13/','websites/frameworks/apache-tomcat-on-fedora-13/','frameworks/apache-tomcat/fedora-13/']
 modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-07-23
-title: Apache Tomcat on Fedora 12
+title: Apache Tomcat on Fedora 13
 ---
+
+
 
 Apache Tomcat is a free and open source software implementation for Java Servlets. It provides support for the Java Server Pages (JSP) that power many popular web-based applications.
 
-This guide assumes that you have a working installation of Fedora 12, and that you have followed our [getting started guide](/docs/getting-started/) to get your system working and up to date. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+This guide assumes that you have a working installation of Fedora 13, and that you have followed our [getting started guide](/docs/getting-started/) to get your system working and up to date. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
 # Install Apache Tomcat
 
-Install the latest version of Tomcat 6 with the following command:
+Issue the following command to install the latest version of Tomcat 6, along with the OpenJDK runtime environment and developer tools:
 
     yum update
     yum install tomcat6 tomcat6-webapps tomcat6-admin-webapps java-1.6.0-openjdk-devel.i686
     chkconfig tomcat6 on
 
-This command will install the tomcat6 service, as well as the OpenJDK runtime environment and developer tools. Start the tomcat6 service with the following command:
+Issue the following command to ensure that the file permissions of crucial folders are set properly:
+
+    chmod -R g+w /var/log/tomcat6 /etc/tomcat6/Catalina /var/lib/tomcat6/webapps/ /var/log/tomcat6/ /var/cache/tomcat6/temp /var/cache/tomcat6/work
+
+Start the tomcat6 service with the following command:
 
     service tomcat6 start
 
