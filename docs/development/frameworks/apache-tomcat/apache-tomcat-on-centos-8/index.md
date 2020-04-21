@@ -31,12 +31,16 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
     {{< content "limited-user-note-shortguide" >}}
 
-1.  Install and set Java Home Environment [Java Development Kit](/docs/development/java/). Run the following commands to check the version of java that is installed.
+1.  Install the Java Development Kit.
+
+        sudo yum install java-1.8.0-openjdk-headless
+
+1.  Run the following commands to check the version of java that is installed.
 
         java -version
         javac -version
 
-1.  Install the `wget` and `tar` utilities. You will need this in a later section to install the Apache Tomcat 9.
+1.  Install the `wget` and `tar` utilities. You will need these in a later section to install the Apache Tomcat 9.
 
         sudo yum install wget -y && sudo yum install tar
 
@@ -79,7 +83,8 @@ Type=forking
 User=tomcat
 Group=tomcat
 
-Environment=JAVA_HOME=/usr/lib/jvm/jre        Environment='JAVA_OPTS=-Djava.awt.headless=true'
+Environment=JAVA_HOME=/usr/lib/jvm/jre
+Environment='JAVA_OPTS=-Djava.awt.headless=true'
 Environment=CATALINA_HOME=/usr/local/tomcat
 Environment=CATALINA_BASE=/usr/local/tomcat
 Environment=CATALINA_PID=/usr/local/tomcat/temp/tomcat.pid
@@ -95,19 +100,19 @@ WantedBy=multi-user.target
 
         sudo systemctl daemon-reload
 
-1.  Start and enable Tomcat server:
+1.  Start and enable the Tomcat server:
 
         sudo systemctl enable tomcat
         sudo systemctl start tomcat
 
-1.  Configure your firewall to access Tomcat server on port 8080:
+1.  Configure your firewall to access the Tomcat server on port 8080:
 
         sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
         sudo firewall-cmd --reload
 
 ## Test and Use Tomcat
 
-You can test your Tomcat installation by pointing your browser at your site's port `:8080`, `http://example.com:8080/`, replacing `example.com` with your domain name. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat configuration files are located in the `/usr/local/tomcat/conf` directory.
+You can test your Tomcat installation by pointing your browser at your domain name specifying port `8080`. For example, you might use `http://example.com:8080/`, replacing `example.com` with your domain name. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat configuration files are located in the `/usr/local/tomcat/conf` directory.
 
 ### Configure tomcat9-admin (optional)
 

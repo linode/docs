@@ -67,7 +67,7 @@ OpenJDK will be installed as a dependency when you install the `tomcat9` package
 
 ## Test and Use Tomcat
 
-You can test your Tomcat installation by pointing your browser at your site's port `:8080`, `http://example.com:8080/`, replacing `example.com` with your domain name. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat configuration files are located in the `/var/lib/tomcat9/conf` directory.
+You can test your Tomcat installation by pointing your browser at your domain name, specifying port `8080`. For example, you might use `http://example.com:8080/`, replacing `example.com` with your domain name. Note that Tomcat listens on network port 8080 and does not accept forced HTTPS connections by default. By default, Tomcat configuration files are located in the `/var/lib/tomcat9/conf` directory.
 
 ### Configure tomcat9-admin (optional)
 
