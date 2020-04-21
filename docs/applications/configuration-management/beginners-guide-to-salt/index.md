@@ -8,6 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-02
 modified_by:
   name: Linode
+image: ABeginnersGuidetoSalt.png
 published: 2018-10-16
 title: A Beginner's Guide to Salt
 external_resources:

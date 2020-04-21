@@ -9,6 +9,7 @@ published: 2018-10-19
 modified: 2019-01-02
 modified_by:
   name: Linode
+image: ConfigureApachewithSaltStack.png
 title: "Configure Apache with Salt Stack"
 external_resources:
 - '[Salt Apache State Module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache.html)'

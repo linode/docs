@@ -9,6 +9,7 @@ published: 2018-10-22
 modified: 2019-01-02
 modified_by:
   name: Linode
+image: CreateaSaltExecutionModule.png
 title: "Create a Salt Execution Module"
 external_resources:
 - '[Writing Execution Modules](https://docs.saltstack.com/en/latest/ref/modules/)'

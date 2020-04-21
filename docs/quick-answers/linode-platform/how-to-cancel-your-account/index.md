@@ -10,6 +10,7 @@ modified: 2020-01-20
 modified_by:
   name: Linode
 published: 2020-01-20
+image: CancellingYourAccount.png
 title: How to Cancel Your Account
 h1_title: Cancelling Your Account
 ---

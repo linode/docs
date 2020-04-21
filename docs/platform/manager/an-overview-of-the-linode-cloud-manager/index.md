@@ -11,6 +11,7 @@ published: 2019-12-20
 modified: 2020-01-29
 modified_by:
   name: Linode
+image: AnOverviewoftheLinodeCloudManager.png
 title: 'An Overview of the Linode Cloud Manager'
 h1_title: 'An Overview of the Linode Cloud Manager'
 contributor:

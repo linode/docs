@@ -8,6 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-14
 modified_by:
   name: Linode
+image: BuildingandUsingVueJSComponents.png
 title: Building and Using VueJS Components - A Tutorial
 h1_title: Building and Using VueJS Components
 contributor:

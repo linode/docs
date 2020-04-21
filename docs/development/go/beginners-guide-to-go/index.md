@@ -8,6 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-11
 modified_by:
   name: Linode
+image: GettingStartedwithGo.png
 title: "A Beginner's Guide to Go"
 h1_title: "Getting Started with Go"
 contributor:

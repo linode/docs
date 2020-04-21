@@ -8,6 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-22
 modified_by:
   name: Linode
+image: UnderstandingCommonCloudManagerErrors.png
 title: "Understanding Common Cloud Manager Errors"
 contributor:
   name: Linode
