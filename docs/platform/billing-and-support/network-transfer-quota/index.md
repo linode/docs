@@ -71,7 +71,7 @@ If you have gone over your quota, or you think you may before the end of the mon
 
 1. Purchase (an) additional Linode(s) with the specific purpose of increasing your pool total. You may want to delete any Linodes created for this purpose at the end of the month if you don't anticipate needing a higher pool total in the future.
 
-When taking one of these actions, keep in mind that the quota amount that will be added is [prorated](#why-is-my-linode-s-quota-less-than-my-plan-s-quota) according to the current date.
+When taking one of these actions, keep in mind that the quota amount that will be added is [prorated](#why-is-my-linodes-network-transfer-less-than-my-plans-transfer) according to the current date.
 
 ## View Network Pool Usage
 
