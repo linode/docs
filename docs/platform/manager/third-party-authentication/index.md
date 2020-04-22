@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to enable Third Party Authentication (TPA) for your Linode account, allowing you to log in to Linode Cloud Manager with third party credentials.'
-og_description: 'How to enable Third Party Authentication (TPA) for your Linode account, allowing you to log in to Linode Cloud Manager with third party credentials.'
+description: 'This guide shows you how to enable Third Party Authentication (TPA) for your Linode account, allowing you to log in to Linode Cloud Manager with third party credentials.'
+og_description: 'This guide shows you how to enable Third Party Authentication (TPA) for your Linode account, allowing you to log in to Linode Cloud Manager with third party credentials.'
 keywords: ['tpa','third party authentication','github','account','password']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-22
@@ -30,14 +30,14 @@ Linode Cloud Manager supports Third-Party Authentication (TPA). This allows you 
 1.  Select the Third Party Authentication provider you would like to enable on your account. You may only have one TPA provider active at a time. You will be asked to confirm that you'd like to enable TPA with this provider.
 
     {{< caution >}}
-Enabling Third Party Authentication disables your current Linode password and Two-Factor Authentication on your Linode account. Any Two-Factor Authentication you require should be handled by the TPA provider your choose.
+Enabling Third Party Authentication disables your current Linode password and Two-Factor Authentication on your Linode account. Any Two-Factor Authentication you require will be handled by the TPA provider you choose.
 {{</ caution >}}
 
     ![Enable Third Party Authentication.](enable-tpa.png)
 
 1.  You will be taken to the TPA provider's website, where you will be prompted to give account access to Linode. You will see a list of permissions that will be granted to Linode. Confirm that you would like to grant Linode the required permissions.
 
-1.  After granting permissions, you will see a confirmation screen. You can now log in to your Cloud Manager account with the TPA provider's credentials.
+1.  After granting permissions, you will see a confirmation screen. You can now log in to your Cloud Manager account using the TPA provider.
 
 ## Disabling Third Party Authentication
 
