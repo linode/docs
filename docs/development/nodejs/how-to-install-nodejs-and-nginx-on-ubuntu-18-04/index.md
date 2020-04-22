@@ -23,7 +23,7 @@ concentrations: ["Web Applications"]
 languages: ["javascript"]
 ---
 
-Node.js is a JavaScript platform which can serve dynamic, responsive content. JavaScript is usually a client-side, browser language like HTML or CSS. However, Node.js is a server-side, JavaScript platform, comparable to PHP. Node.js often works with other popular server applications like NGINX or Apache. In this guide, NGINX is configured to handle front-end, static file requests, and Node.js is configured to handle back-end file requests.
+Node.js is a JavaScript platform which can serve dynamic and responsive content. JavaScript is usually a client-side, browser language like HTML or CSS. However, Node.js is a server-side, JavaScript platform, comparable to PHP. Node.js often works with other popular server applications like NGINX or Apache. In this guide, NGINX is configured to handle front-end, static file requests, and Node.js is configured to handle back-end file requests.
 
 ## Before You Begin
 
