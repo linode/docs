@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: This guide show how to use Squid to create an HTTP proxy server on your Linode running Centos 8.
-og_description: This guide show how to use Squid to create an HTTP proxy server on your Linode running Centos 8.
+description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Centos 8.
+og_description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Centos 8.
 keywords: ["squid", "proxy", "centos", "8", "http"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-14
@@ -16,74 +16,90 @@ external_resources:
  - '[Squid Official Site](http://www.squid-cache.org/)'
  - '[Configure Proxy on Windows](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)'
  - '[Proxy Server Settings on macOS](https://support.apple.com/en-in/guide/mac-help/mchlp2591/mac)'
+ - '[Connection Settings in Firefox](https://support.mozilla.org/en-US/kb/connection-settings-firefox)'
 ---
 
-Squid is a proxy/cache application with a variety of configurations and uses. This guide will cover using Squid as an HTTP proxy. Please note that unless you follow the last section of the guide [Anonymizing Traffic](#anonymizing-traffic), this will not anonymize your traffic to the outside world, as your originating IP address will still be sent in the X-Forwarded-For header. Additionally, the traffic is not encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guide to [Setting up an SSH Tunnel](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing) or [Deploy OpenVPN Access Server with One-Click Apps](/docs/platform/one-click/one-click-openvpn/).
+This guide will show you how to create your own HTTP proxy using Squid, a highly customizable proxy/cache application. An HTTP proxy acts as an intermediary between you and the internet. While connected to your Squid HTTP proxy, you will be able to:
+
+-   Anonymously access internet services.
+-   Bypass certain regional and local network restrictions.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The traffic passed from your client to your Squid HTTP proxy will not be encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guides on [Setting up an SSH Tunnel](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) or [Deploy OpenVPN Access Server with One-Click Apps](/docs/platform/one-click/one-click-openvpn/).
 {{< /note >}}
 
-## Installing Squid
+## Install Squid
 
-1. Squid is available in the CentOS repositories. To ensure your system is up-to-date and install Squid run the following commands:
+1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](https://www.linode.com/docs/security/securing-your-server/), including adding a limited user account and configuring a firewall.
 
-        sudo yum update
-        sudo yum upgrade
+    {{< note >}}
+This guide is written for a limited, non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< /note >}}
+
+1.  Ensure that your system is up-to-date:
+
+        sudo yum update && sudo yum upgrade
+
+1.  Install Squid using the `yum` software package manager:
+
         sudo yum install squid
 
-1. Copy the original configuration file to keep as a backup:
+1.  Copy the original configuration file to keep as a backup:
 
         sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.default
 
-## Configuring Squid as an HTTP proxy
+    {{< note >}}
+The Squid configuration file includes comprehensive documentation in its commented lines, along with several uncommented rules that will remain active. These default rules should not be modified while you are following this guide. To gain a deeper understanding of Squid's options and default settings, you can review the full configuration file.
+{{< /note >}}
 
-Squid Proxy can be used as an HTTP proxy to bypass local network restrictions, or mask your true location to the world.
+## Configure Client Access
 
-### Basic Setup
+Now that you have Squid installed on your Linode, you can configure ways for it to accept connections and serve as an HTTP proxy. The following sections provide different ways for your Squid HTTP proxy to authenticate client connections. You can configure Squid to use either or both authentication methods.
 
-This section covers the easiest way to use Squid as an HTTP proxy, using only the client Linode's IP address for authentication instead of your local IP address.
+### IP Address Authentication
 
-1. Edit the Squid configuration file and add the following lines at the beginning of the file:
+A simple way to use Squid as an HTTP proxy is to use a client's IP address for authentication.
+
+1.  Edit the Squid configuration file and add the following lines at the beginning of the file:
 
     {{< file "/etc/squid/squid.conf" >}}
-acl client src 192.0.2.12 # Home IP
+acl client src 192.0.2.0 # Home IP
 http_access allow client
 {{< /file >}}
 
-    Be sure to replace **client** with a name identifying the connecting computer, and **192.0.2.12** with its local IP address. The comment `# Home IP` isn't required, but comments can be used to help identify clients.
+    Replace `client` with a name that identifies the client computer that will connect to your Squid HTTP proxy, then replace `192.0.2.0` with the client computer's IP address. You can also update the optional comment `# Home IP` to further describe the client.
 
-1. Once you've saved and exited the file, restart Squid:
+1.  Alternatively, you can configure multiple clients by adding new `acl` lines to `/etc/squid/squid.conf` and including them in the `http_access allow` line as follows:
 
-        sudo systemctl restart squid
+    {{< file "/etc/squid/squid.conf" >}}
+acl client1 src 192.0.2.0 # Home IP
+acl client2 src 192.0.2.1 # Work IP
+http_access allow client1 client2
+{{< /file >}}
 
-1. The default service port used by Squid is `3128`. To enable the port:
+    Replace `client1` and `client2` with names that identify the client computers, then replace `192.0.2.0` and `192.0.2.1` with their corresponding IP addresses. Update the optional comments `# Home IP` and `# Work IP` with accurate descriptions to help keep track of multiple clients. Access to the proxy is granted by adding the names defined by each `acl` to the `http_access allow` line.
 
-        sudo firewall-cmd --add-service=squid --permanent
-        sudo firewall-cmd --reload
+### User/Password Authentication
 
-1. At this point, you can configure your local browser or operating system's network settings to use your Linode as an HTTP proxy on port `3128`. How to do this will depend on your choice of OS and browser. Once you've made the change to your settings, test the connection by pointing your browser at a website that tells you your IP address, such as [ifconfig](http://ifconfig.me), [What is my IP](http://www.whatismyip.com/), or by Googling [What is my ip](https://www.google.com/search?q=what+is+my+ip).
+You can also configure your Squid HTTP proxy to accept authentication with usernames and passwords.
 
-1. Additional clients can be defined by adding new `acl` lines to `/etc/squid/squid.conf`. Access to the proxy is granted by adding the name defined by each `acl` to the `http_access allow` line.
-
-### Advanced Authentication
-
-The following configuration allows for authenticated access to the Squid proxy service using usernames and passwords.
-
-1. You will need the `htpasswd` utility. If you've installed Apache on your Linode, you will already have it. Otherwise run:
+1.  Install `htpasswd` by installing the Apache utility programs. If you have installed Apache on your Linode, you will already have it and can skip this step.
 
         sudo yum install httpd-tools
 
-1. Create a file to store Squid users and passwords, and change ownership:
+1.  Create a file to store Squid users and passwords:
 
         sudo touch /etc/squid/squid_passwd
+
+1.  Change ownership of the password file:
+
         sudo chown squid /etc/squid/squid_passwd
 
-1. Create a username password pair:
+1.  Create a username password pair, replacing `user1` with the name of the user you'd like to add:
 
         sudo htpasswd /etc/squid/squid_passwd user1
 
-    Replace **user1** with a username. You will be prompted to create a password for this user:
+    You will be prompted to create a password for this user:
 
     {{< output >}}
 New password:
@@ -93,43 +109,59 @@ Adding password for user user1
 
     You can repeat this step at any time to create new users.
 
-1. Check the location of the `nsca_auth` file:
+1.  Check the location of the `nsca_auth` file:
 
         sudo rpm -ql squid | grep ncsa_auth
 
-1. Edit the Squid configuration file and add the following lines at the beginning of the file:
+1.  Edit the Squid configuration file and add the following lines at the beginning of the file:
 
-    {{< note >}}Ensure that you update `/usr/lib64/squid/basic_ncsa_auth` below with the location of the `nsca_auth` file.{{< /note >}}
+    {{< note >}}
+Ensure that you update `/usr/lib64/squid/basic_ncsa_auth` below with the location of the `nsca_auth` file that you checked in the previous step.
+{{< /note >}}
+
     {{< file "/etc/squid/squid.conf" >}}
 auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid/squid_passwd
 acl ncsa_users proxy_auth REQUIRED
 http_access allow ncsa_users
 {{< /file >}}
 
-1. Once you've saved and exited the file, restart Squid:
+1.  To remove a user's access to the proxy, you must delete the corresponding entry in the `squid_passwd` file. Each user is represented in the file on a single line in the format of `user:passwordhash`:
 
-        sudo systemctl restart squid
-
-1. The default service port used by Squid is `3128`. To enable the port:
-
-        sudo firewall-cmd --add-service=squid --permanent
-        sudo firewall-cmd --reload
-
-1. At this point, you can configure your local browser or operating system's network settings to use your Linode as an HTTP proxy on port `3128`. You will need to specify that the server requires authentication, and provide the username and password. How to do this will depend on your choice of OS and browser. Once you've made the settings change, test the connection by pointing your browser at a website that tells you your IP address, such as [ifconfig](http://ifconfig.me), [What is my IP](http://www.whatismyip.com/), or by Googling [What is my ip](https://www.google.com/search?q=what+is+my+ip).
-
-1. To remove a user's access to the proxy, you must delete their entry in the `squid_passwd` file. Each user is represented in the file on a single line in the format of `user:passwordhash` :
-
-    {{< file "/etc/squid/squid\\_passwd" >}}
-user1:gh48gfno user2:9b83v5hd
+    {{< file "/etc/squid/squid_passwd" >}}
+user1:\$p948w3nvq3489v6npq396g user2:\$q3cn478554387cq34n57vn
 {{< /file >}}
 
-1. If you are using Nano, the command `Control+k` will remove the entire line where the cursor rests. Once you've saved and exited the file, restart Squid:
+    If you are using Nano, the command `Control+k` will remove the entire line where the cursor rests.
+
+    Once you've saved and exited the file, complete user removal by restarting Squid:
 
         sudo systemctl restart squid
 
-## Anonymizing Traffic
+### Combined Authentication
 
-In order to mask your IP address from servers you connect to, you will need to add the following lines to the Squid configuration file.
+You can combine authentication methods using the same `acl` definitions that you have added in the previous two sections by using a single `http_access` rule.
+
+1.  Remove any previous `http_access` lines you have added.
+
+1.  Edit the Squid configuration file so that the lines you have added at the beginning of the file follow this form:
+
+    {{< file "/etc/squid/squid.conf" >}}
+acl client1 src 192.0.2.0 # Home IP
+acl client2 src 192.0.2.1 # Work IP
+auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid/squid_passwd
+acl ncsa_users proxy_auth REQUIRED
+http_access allow client1 client2 ncsa_users
+{{< /file >}}
+
+    {{< note >}}
+Take care to avoid using multiple `http_access` rules when combining authentication methods, as Squid will follow the rules in the order that they appear. By using a single `http_access` rule for your `acl` definitions, you will ensure that several authentication methods will apply to each client that attempts to connect to your Squid HTTP proxy.
+{{< /note >}}
+
+## Anonymize Traffic
+
+Here, you will add rules to mask client IP addresses from the servers that receive traffic from you Squid HTTP proxy. Without these rules, the originating client IP addresses may be passed on through the `X-Forwarded For` HTTP header.
+
+Add the following lines at the beginning of the Squid configuration file:
 
 {{< file "/etc/squid/squid.conf" >}}
 forwarded_for off
@@ -164,6 +196,39 @@ request_header_access Cookie allow all
 request_header_access All deny all
 {{< /file >}}
 
-Once you've saved and exited the file, restart Squid:
+## Enable Connections
 
-    sudo systemctl restart squid
+Next, you will enable clients to connect to your Squid HTTP proxy.
+
+1.  Save and exit the Squid configuration file.
+
+1.  Restart Squid to enable the rules you have added:
+
+        sudo systemctl restart squid
+
+1.  Implement firewall rules to enable port `3128`, which is the default service port used by Squid:
+
+        sudo firewall-cmd --add-port=3128/tcp --permanent
+        sudo firewall-cmd --reload
+
+    You can find more information on configuring firewall rules for CentOS in our guide on [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/).
+
+## Connect to your Squid HTTP Proxy
+
+Your Squid HTTP proxy is now ready to accept client connections and anonymously handle internet traffic.
+
+At this point, you can configure your local browser or operating system's network settings to use your Linode as an HTTP proxy. The settings to do this will vary depending on your OS and browser. Instructions for certain OS and browser settings are located in the [More Information](#more-information) section below.
+
+Generally, connecting to your Squid HTTP proxy requires the following information:
+
+-   The IP address or domain name associated with your Linode.
+-   The port that is being used by Squid. The default port is `3128`.
+-   A username and password if you have configured them for authentication.
+
+Once you have established your OS or browser settings, test the connection by pointing your browser at a website that tells you your IP address, such as:
+
+-   [ifconfig.me](http://ifconfig.me)
+-   [WhatIsMyIP.com](http://www.whatismyip.com/)
+-   [Googling "what is my ip"](https://www.google.com/search?q=what+is+my+ip)
+
+The result should display your Linode's IP address instead of the IP address of your client computer.
