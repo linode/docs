@@ -162,3 +162,5 @@ transfer: 98.86 KiB received, 43.08 KiB sent
 |--------------|-----------------|
 | [**WireGuard**](https://www.wireguard.com) | VPN software. |
 | [**UFW (UncomplicatedFireWall)**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. The Port assigned during the [WireGuard Options](#wireguard-options) step of the deployment will allow outgoing and incoming traffic. |
+
+{{< content "one-click-update-note">}}

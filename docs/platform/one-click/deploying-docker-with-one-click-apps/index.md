@@ -88,6 +88,8 @@ After Docker has finished installing, you will be able to access Docker from the
 
 ## Next Steps
 
+{{< content "one-click-update-note">}}
+
 For more on Docker, checkout the following guides:
 
 - [An Introduction to Docker](/docs/applications/containers/introduction-to-docker/)

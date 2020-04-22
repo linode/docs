@@ -11,7 +11,7 @@ modified: 2020-03-11
 modified_by:
   name: Linode
 title: "Deploy a LEMP Stack With One-Click Apps"
-h1_title: "Deploying a LEMP Stack with One-Click Apps" 
+h1_title: "Deploying a LEMP Stack with One-Click Apps"
 contributor:
   name: Linode
 external_resources:
@@ -78,3 +78,5 @@ The LEMP Stack One-Click App will install the following software on your Linode:
 | [**MySQL Server**](https://www.mysql.com) | Relational database. |
 | [**PHP 7**](https://www.php.net) | General purpose programming language. |
 | [**UFW (Uncomplicated Firewall)**](https://en.wikipedia.org/wiki/Uncomplicated_Firewall) | Firewall utility. Ports 22/tcp and 80/tcp for IPv4 and IPv6 will allow outgoing and incoming traffic. |
+
+{{< content "one-click-update-note">}}

@@ -52,6 +52,8 @@ In addition to installing Flask, this One-Click app installs and configures soft
 
 ### Next Steps
 
+{{< content "one-click-update-note">}}
+
 Now that you are familiar with all the software installed on your Linode with the Flask One-Click app, you can explore the following steps:
 
 - [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh). You will need your Linode's root password to proceed. You can explore the installed programs and update any configurations as needed. Consider following the steps in the [Securing Your Server](/docs/security/securing-your-server/) guide to continue harding your Linode's security.

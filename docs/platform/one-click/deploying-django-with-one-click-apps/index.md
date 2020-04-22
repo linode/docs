@@ -79,3 +79,5 @@ After Django has finished installing, you will be able to access your Django sit
 1.  Once logged in, you will have access to the Admin console. Now you can begin configuring your site.
 
     ![Django Admin Console](django-admin-console.png "Django Admin Console")
+
+{{< content "one-click-update-note">}}
