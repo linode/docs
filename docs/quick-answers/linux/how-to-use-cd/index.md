@@ -56,7 +56,7 @@ You can also change into your home directory by using `cd` without any arguments
 
     cd
 
-To change to the last location, use a hyphpen `-`:
+To change to the last location, use a hyphen `-`:
 
     cd -
 
@@ -82,6 +82,6 @@ The `-P` option tells `cd` to use the physical directory structure and not to fo
 If both `-L` and `-P` are specified, the `-P` option will be ignored.
 {{</ note >}}
 
-Along with the `-P` option you can also specify an additional `-e` option. This will tell `cd` to exit without error if it cannot determine the current working directory. However, if `-P` is not used, `-e` option has no fuction. For example, if `/var/exmaple.com` is not a physical directory, but only a symbolic link, `cd` will not be able to move you into this directory with the `-P` option.
+Along with the `-P` option you can also specify an additional `-e` option. This will tell `cd` to exit without error if it cannot determine the current working directory. However, if `-P` is not used, `-e` option has no function. For example, if `/var/exmaple.com` is not a physical directory, but only a symbolic link, `cd` will not be able to move you into this directory with the `-P` option.
 
     cd -P -e /var/example.com
