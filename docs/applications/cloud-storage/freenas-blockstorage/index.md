@@ -78,7 +78,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 6.  Go to the Linode Cloud Manager and access the dashboard for your Linode.
 
-7.  Click the **Launch Console** to access the [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/) console and start the installation.
+7.  Click the **Launch Console** link to access the [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/) console and start the installation.
 
 ## Install FreeNAS
 
