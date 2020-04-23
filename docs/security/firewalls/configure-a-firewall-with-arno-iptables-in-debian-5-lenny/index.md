@@ -29,7 +29,7 @@ Issue the following command in your terminal:
 
     apt-get install arno-iptables-firewall
 
-You will be led through a series of configuration dialogs. In the example below, we're assuming your Linode has one public IP address on `eth0` and one private IP address on the alias `eth0:0` (a private IP is not required). Please be sure to refer to the "Remote Access" tab in the Linode Manager for your specific settings.
+You will be led through a series of configuration dialogs. In the example below, we're assuming your Linode has one public IP address on `eth0` and one private IP address on the alias `eth0:0` (a private IP is not required). Please be sure to refer to the **Networking** tab in the Linode Cloud Manager for your specific settings.
 
 # Configuring the Firewall
 

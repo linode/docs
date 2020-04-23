@@ -30,9 +30,9 @@ Confirm that the Linode is fully booted.
 
 If you have ensured that your Linode is booted, but do not have SSH access, you can use Lish to access your Linode via SSH and continue any necessary troubleshooting steps.
 
-1.  Log into the Linode Manager and click on the *Dashboard* link for your Linode.
+1.  Log into the Linode Cloud Manager and click on your Linode to open the *Dashboard*.
 
-1.  Click on the *Remote Access* tab. Under the *Console Access* section, click on the *Launch Lish Console* link. This launches the Lish Console via your browser window and you will be prompted to enter your Linode user and password.
+1.  Click on the **Launch Console** link. This launches the Lish Console via your browser window and you will be prompted to enter your Linode user and password.
 
     If you have trouble logging in with your root password, consider [resetting the root password](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/) to rule out any password issues.
 

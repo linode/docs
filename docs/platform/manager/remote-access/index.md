@@ -140,7 +140,7 @@ If the IP is unreachable after a few minutes, you may need to notify the router 
     arping -c5 -I eth0 -S 198.51.100.10 198.51.100.1
     ping -c5 198.51.100.10 198.51.100.1
 
-Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Remote Access tab under "Default Gateways".
+Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Networking tab under "Default Gateways".
 {{< /note >}}
 
 ## Adding Private IP Addresses
