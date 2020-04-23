@@ -65,7 +65,7 @@ server {
     #These lines create a bypass for certain pathnames
     #www.example.com/test.js is now routed to port 3000
     #instead of port 80
-    location /test.js {
+    location ~* \.(js)$ {
         proxy_pass http://localhost:3000;
         proxy_set_header Host $host;
     }
