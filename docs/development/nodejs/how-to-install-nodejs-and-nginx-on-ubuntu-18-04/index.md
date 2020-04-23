@@ -2,8 +2,8 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'In this guide you will install and configure NGINX to serve static site content. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server. '
-og_description: 'In this guide you will install and configure NGINX to serve static site content. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server.'
+description: 'In this guide you will install and configure NGINX to serve static site content on an Ubuntu 18.04 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server. '
+og_description: 'In this guide you will install and configure NGINX to serve static site content on an Ubuntu 18.04 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server.'
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "ubuntu", " front-end requests", " back-end requests"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-14
