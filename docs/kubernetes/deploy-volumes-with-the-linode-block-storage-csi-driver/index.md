@@ -22,22 +22,13 @@ The [Container Storage Interface](https://github.com/container-storage-interface
 
 ## Before You Begin
 
-{{< content "k8s-alpha-deprecation-shortguide" >}}
+This guide assumes you have a working Kubernetes cluster running on Linode. You can deploy a Kubernetes cluster on Linode in the following ways:
 
-- This guide assumes you have a working Kubernetes cluster running on Linode. You can deploy a Kubernetes cluster on Linode in the following ways:
+1. Use the Linode Kubernetes Engine (LKE) to deploy a cluster. Follow the [Deploy and Manage a Cluster with Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide to get started.
 
-    1. Use [Linode's k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) to deploy a Kubernetes cluster via the command line.
+1. Deploy a cluster using Terraform and the [Linode Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.1).
 
-    1. Deploy a cluster using Terraform and the [Linode Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.1).
-
-    1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) guide to do this.
-
-    {{< note >}}
-- If using the k8s-alpha CLI or the Linode Kubernetes Terraform installer methods to deploy a cluster, you can skip the [Installing the CSI Driver](#installing-the-csi-driver) section of this guide, since it will be automatically installed when you deploy a cluster.
-
-    Move on to the [Attach a Pod to the Persistent Volume Claim](#attach-a-pod-to-the-persistent-volume-claim) section to learn how to consume a Block Storage volume as part of your deployment.
-
-{{</ note >}}
+1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) guide to do this.
 
 - The Block Storage CSI supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
 
@@ -152,8 +143,12 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: linode-block-storage
+  storageClassName: linode-block-storage-retain
 {{</ file >}}
+
+{{< caution >}}
+In order to retain your Block Storage volume's data, even after the associated PVC is deleted, you must use the `linode-block-storage-retain` StorageClass.
+{{</ caution >}}
 
 This PVC represents a Block Storage Volume. Because Block Storage Volumes have a minimum size of 10 gigabytes, the storage has been set to `10Gi`. If you choose a size smaller than 10 gigabytes, the PVC will default to 10 gigabytes.
 
