@@ -1,19 +1,18 @@
 ---
 author:
-  name: Phil Zona
-  email: phil.b.zona@gmail.com
-description: 'Learn to deploy a locally developed React application to your Linode using Rsync on CentOS 8.'
-og_description: 'Use Rsync to deploy a React application from your local computer to a Linode on CentOS 8..'
+  name: Linode
+description: This guide will show you how to deploy a React app to a CentOS 8 Linode that is running a web server. You will configure your Linode to host a React app by installing and configuring a web server, like Apache or NGINX. Then, you will configure your computer to ensure you can develop a React app locally. Finally, you will deploy all of your site's build files to your remote Linode using Rsync.
+og_description: This guide will show you how to deploy a React app to a CentOS 8 Linode that is running a web server. You will configure your Linode to host a React app by installing and configuring a web server, like Apache or NGINX. Then, you will configure your computer to ensure you can develop a React app locally. Finally, you will deploy all of your site's build files to your remote Linode using Rsync.
 keywords: ['react','reactjs','deploy','rsync']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-01-31
-modified: 2018-01-31
+published: 2018-04-24
+modified: 2020-04-24
 modified_by:
   name: Linode
-title: "Deploy a React Application on CentOS 8"
+title: "How to Deploy a React Application on CentOS 8"
+h1_title: "Deploying a React Application on CentOS 8"
 contributor:
-  name: Phil Zona
-  link: https://twitter.com/philzona
+  name: Linode
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
 - '[Deploy a React App with Sass Using NGINX](http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
@@ -26,102 +25,137 @@ languages: ["javascript"]
 
 [React](https://reactjs.org/) is a popular JavaScript library for building user interfaces. While React is often used as a frontend for more complex applications, it's also powerful enough to be used for full client-side applications on its own.
 
-Since a basic React app is static (it consists of compiled HTML, CSS, and JavaScript files), it is easy to deploy from a local computer to a Linode using [Rsync](https://rsync.samba.org/). This guide shows how to set up your Linode and local machine so that you can easily deploy your app whenever changes are made.
+Since a basic React app is static (it consists of compiled HTML, CSS, and JavaScript files), it is easy to deploy from a local computer to a Linode using [Rsync](/docs/tools-reference/tools/introduction-to-rsync/). This guide shows how to set up your Linode and local machine so that you can easily deploy your app whenever changes are made. See the [More Information](#more-information) section of this guide for
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your [Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-3.  You will need a [web server](/docs/web-servers/) configured to host a website on your Linode.
+1.  Install and configure a [web server](/docs/web-servers/) to host a website on your Linode. This guide's examples will use the Apache and NGINX web servers. Complete the steps in the [Installing Apache Web Server on CentOS 8](/docs/web-servers/apache/how-to-install-apache-web-server-centos-8/) guide or the [Installing NGINX on CentOS 8](/docs/web-servers/nginx/how-to-install-nginx-centos-8/) guide.
 
-4.  This guide assumes you already have a React app you'd like to deploy. If you don't have one, you can bootstrap a project quickly using [create-react-app](https://github.com/facebookincubator/create-react-app).
+1.  This guide assumes you already have a React app you'd like to deploy. If you don't have one, you can quickly bootstrap a project following the steps in the [Create an Example React App](#create-an-example-react-app)section of this guide. This step should be completed on your local system.
 
-5.  Make sure [Git](/docs/development/version-control/how-to-configure-git/) is installed on your system:
+1.  Update your Linode's system.
 
-        sudo apt install git
+        sudo yum update && sudo yum upgrade
 
-6.  Update your system:
+1. Install the Rsync program on your Linode server.
 
-        sudo apt update && sudo apt-get upgrade
+        sudo yum install rsync
+
+1.  Install [Git](/docs/development/version-control/how-to-configure-git/) on your local computer if it is not already installed.
+
+        sudo yum install git
+
+1. Install the SELinux core policy Python utilities if you have not already done so. This will give you the ability to manage SELinux settings in a fine-grained way.
+
+        sudo yum install -y policycoreutils-python-utils
 
 ## Configure your Linode for Deployment
 
 The steps in this section should be performed on your Linode.
 
-### Create Host Directory
+### Create your Host Directory
 
-1.  Navigate to your *web root*, or the location from which you'll serve your React app, and create a directory where your app will live. Most of the time, this will be `/var/www`, but you can adjust the path and the directory name for your needs:
+1.  If it does not yet exist, create your site's web root directory. Most of the time, it will be located in the `/var/www` directory.
 
-        sudo mkdir -p /var/www/mydomain.com
+        sudo mkdir -p /var/www/example.com
 
-2.  Set permissions for the new directory to allow your regular user account to write to it:
+1.  Set permissions for the new directory to allow your regular user account to write to it:
 
-        sudo chmod 755 -R /var/www/mydomain.com
+        sudo chmod 755 -R /var/www/example.com
 
-3. Use SELinux’s `chcon` command to change the file security context for web content:
+1.  The Rsync program will execute its commands as the user you designate in your deployment script. This user must be the owner of your site's web root. Replace `example_user` with your own user's name and `/var/www/example.com` with the location of your site's web root.
 
-    sudo chcon -t httpd_sys_content_t /var/www/mydomain.com -R
+        sudo chown -R example_user:example_user /var/www/example.com
 
-    sudo chcon -t httpd_sys_rw_content_t /var/www/mydomain.com -R
+1. Use SELinux’s `chcon` command to change the file security context for web content if you have not already done so.
 
-### Configure Web Server
+        sudo chcon -t httpd_sys_content_t /var/www/example.com -R
+        sudo chcon -t httpd_sys_rw_content_t /var/www/example.com -R
 
-1.  Ensure your web server is configured to serve from the file path created in the previous step.
+### Configure your Web Server
 
-    **Apache**
+In this section, you will update your web server configuration to ensure that it is configured to point to your site's web root.
 
-    Modify the `DocumentRoot` in your virtual host file:
+1.  Update your configuration file to point to your site's web root.
 
-    {{< file "/etc/apache2/sites-available/mydomain.com.conf" aconf >}}
-<VirtualHost *:80>
-     ServerAdmin webmaster@mydomain.com
-     ServerName mydomain.com
-     ServerAlias www.mydomain.com
-     DocumentRoot /var/www/mydomain.com/ ## Modify this line as well as others referencing the path to your app
-     ErrorLog /var/www/mydomain.com/logs/error.log
-     CustomLog /var/www/mydomain.com/logs/access.log combined
-</VirtualHost>
-{{< /file >}}
+    >    **Apache**
 
-    **NGINX**
+    >  Modify the `DocumentRoot` in your virtual host file with the path to your site's web root.
 
-    Modify the line starting with `root` in the server block for your site:
+    >  {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
+  <VirtualHost *:80>
+      ServerAdmin webmaster@example.com
+      ServerName example.com
+      ServerAlias www.example.com
+      DocumentRoot /var/www/example.com/ ## Modify this line as well as others referencing the path to your app
+      ErrorLog /var/www/example.com/logs/error.log
+      CustomLog /var/www/example.com/logs/access.log combined
+  </VirtualHost>
+  {{< /file >}}
 
-    {{< file "/etc/nginx/conf.d/myapp.conf" nginx >}}
-server {
-    listen 80;
-    listen [::]:80;
+    >  **NGINX**
 
-    root /var/www/mydomain.com; ## Modify this line
-        index index.html index.htm;
+    >  Modify the `root` parameter with the path to your site's web root.
 
-}
-{{< /file >}}
+    >  {{< file "/etc/nginx/sites-available.example.com" nginx >}}
+  server {
+      listen 80;
+      listen [::]:80;
 
-1. Open the firewall for traffic:
+      root /var/www/example.com; ## Modify this line
+      index index.html index.htm;
 
-    sudo firewall-cmd --zone=public --permanent --add-service=http
-    sudo firewall-cmd --zone=public --permanent --add-service=https
-    sudo firewall-cmd --reload
+  }
+  {{< /file >}}
 
-1.  Restart the web server to apply the changes. Use whichever command applies to your web server:
+1. Open the firewall for traffic if you have not already done so.
 
-        sudo systemctl restart apache2
-        sudo systemctl restart nginx
+        sudo firewall-cmd --zone=public --permanent --add-service=http
+        sudo firewall-cmd --zone=public --permanent --add-service=https
+        sudo firewall-cmd --reload
 
-## Configure Local Computer
+1.  Restart the web server to apply the changes.
 
-1.  Navigate to the directory where your local project lives. For example:
+    > **Apache**
 
-        cd ~/myapp
+    >     sudo systemctl restart apache2
 
-    If you don't have an existing project to use, you can create one using [create-react-app](https://github.com/facebookincubator/create-react-app).
+    >  **NGINX**
 
-2.  Using a text editor, create a deployment script called `deploy` in your app's root directory. Replace `exampleuser` with the username of your limited user account, and `mydomain.com` with your Linode's FQDN or public IP address.
+    >     sudo systemctl restart nginx
 
-    {{< file "~/myapp/deploy" bash >}}
+## Configure your Local Computer
+
+### Install the Node Version Manager and Node.js
+
+You will need Node.js installed on your local computer in order to build your React app prior to copying your site files to the remote Linode server.
+
+{{< content how-to-install-nvm >}}
+
+### Create an Example React App
+
+If you already have a React App that you would like to deploy to your Linode, you can skip this section. Otherwise, follow the steps in this section to create a basic React app using the [create-react-app](https://github.com/facebook/create-react-app#create-react-app--) tool.
+
+1. Use the Node Package Manager to create your React app.
+
+        npm init react-app ~/my-app
+
+### Create your Deployment Script
+
+1.  Navigate your app's directory. Replace `~/my-app` with the location of your React app's directory.
+
+        cd ~/my-app
+
+1.  Using a text editor, create a deployment script called `deploy.sh` in your app's root directory. Replace the following values in the example file:
+  - `example_user` with the username of your limited user account.
+  - `example.com` with your Linode's fully qualified domain name (FQDN) or public IP address.
+  - `/var/www/example.com/` with the location of your site's web root. This is where all of your React app's local `build/` files will be copied to on the remote server.
+
+    {{< file "~/my-app/deploy.sh" bash >}}
 #!/bin/sh
 
 echo "Switching to branch master"
@@ -131,25 +165,29 @@ echo "Building app"
 npm run build
 
 echo "Deploying files to server"
-rsync -avP build/ exampleuser@mydomain.com:/var/www/mydomain.com/
+rsync -avP build/ example_user@example.com:/var/www/example.com/
 echo "Deployment complete"
 {{< /file >}}
 
-    This script will check out the master branch of your project on Git, build the app using `npm run build`, and then sync the build files to the remote Linode using Rsync. If your React app was not built with `create-react-app`, the build command may be different and the built files may be stored in a different directory (such as `dist`). Modify the script accordingly.
+    This script will check out the `master` branch of your project on Git, build the app using `npm run build`, and then sync the build files to the remote Linode using Rsync. If your React app was not built with `create-react-app`, the build command may be different and the built files may be stored in a different directory (such as `dist`). Modify the script accordingly.
 
-3.  Make the script executable:
+    {{< note >}}
+If your React app's directory is not initialized as a Git repository, the command `git checkout master` will return a `fatal: not a git repository (or any of the parent directories): .git` error. However, the script will continue on to the next commands and the files should still be transferred to your remote Linode server. See our [Getting Started with Git](/docs/development/version-control/how-to-configure-git/#use-git-with-a-local-repository) guide to learn how to initialize a Git repository.
+    {{</ note >}}
 
-        sudo chmod u+x deploy
+1.  Make the script executable:
 
-4.  Run the script:
+        sudo chmod u+x deploy.sh
 
-        ./deploy
+1.  Run the deployment script. Entir your Linode user's password when prompted by the script.
 
-    Enter your Unix password when prompted.
+        ./deploy.sh
 
-5.  In a browser, navigate to your Linode's domain name or public IP address. If the deploy was successful, you should see your React app displayed.
+1.  In a browser, navigate to your Linode's domain name or public IP address. If the deploy was successful, you should see your React app displayed.
 
-6.  Make a few changes to your app's `src` directory and then re-run the `deploy` script. Your changes should be visible in the browser after reloading the page.
+      ![View your example React app in a browser.](example-react-app.png)
+
+1.  Make a few changes to your app's `src` directory and then re-run the `deploy` script. Your changes should be visible in the browser after reloading the page.
 
 ## Next Steps
 
