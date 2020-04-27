@@ -1,7 +1,6 @@
 ---
 author:
-  name: Phil Zona
-  email: phil.b.zona@gmail.com
+  name: Linode
 description: This guide will show you how to deploy a React app to a Ubuntu 18.04 Linode that is running a web server. You will configure your Linode to host a React app by installing and configuring a web server, like Apache or NGINX. Then, you will configure your computer to ensure you can develop a React app locally. Finally, you will deploy all of your site's build files to your remote Linode using Rsync.
 og_description: This guide will show you how to deploy a React app to a Ubuntu 18.04 Linode that is running a web server. You will configure your Linode to host a React app by installing and configuring a web server, like Apache or NGINX. Then, you will configure your computer to ensure you can develop a React app locally. Finally, you will deploy all of your site's build files to your remote Linode using Rsync.
 keywords: ['react','reactjs','deploy','rsync']
@@ -12,8 +11,7 @@ modified_by:
   name: Linode
 title: "Deploy a React Application on Ubuntu 18.04"
 contributor:
-  name: Phil Zona
-  link: https://twitter.com/philzona
+  name: Linode
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
 - '[Deploy a React App with Sass Using NGINX](http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
@@ -35,7 +33,7 @@ Since a basic React app is static (it consists of compiled HTML, CSS, and JavaSc
 
 1.  Install and configure a [web server](/docs/web-servers/) to host a website on your Linode. This guide's examples will use the Apache and NGINX web servers. Complete the steps in the [Installing Apache Web Server on Ubuntu 18.04 LTS](/docs/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/) guide or the [Installing NGINX on Ubuntu 18.04 LTS](/docs/web-servers/nginx/how-to-install-nginx-ubuntu-18-04/) guide.
 
-1.  This guide assumes you already have a React app you'd like to deploy. If you don't have one, you can bootstrap a project quickly following the steps in the [Create A React App]()section of this guide. This step should be completed on your local system.
+1.  This guide assumes you already have a React app you'd like to deploy. If you don't have one, you can quickly bootstrap a project following the steps in the [Create an Example React App](#create-an-example-react-app)section of this guide. This step should be completed on your local system.
 
 1.  Update your Linode's system.
 
@@ -111,7 +109,7 @@ In this section, you will update your web server configuration to ensure that it
       listen [::]:80;
 
       root /var/www/example.com; ## Modify this line
-          index index.html index.htm;
+      index index.html index.htm;
 
   }
   {{< /file >}}
