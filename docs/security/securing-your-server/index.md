@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2012-02-17
 title: How to Secure Your Server
+h1_title: Securing Your Server
 ---
 
 In the [Getting Started](/docs/getting-started/) guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it's time to harden your Linode against unauthorized access.
@@ -183,7 +184,7 @@ PermitRootLogin no
 {{< /file >}}
 
 
-2.  **Disable SSH password authentication.** This requires all users connecting via SSH to use key authentication. Depending on the Linux distribution, the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading `#`.
+1.  **Disable SSH password authentication.** This requires all users connecting via SSH to use key authentication. Depending on the Linux distribution, the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading `#`.
 
     {{< file "/etc/ssh/sshd_config" aconf >}}
 # Change to no to disable tunnelled clear text passwords
@@ -191,11 +192,11 @@ PasswordAuthentication no
 
 {{< /file >}}
 
-{{< note >}}
+    {{< note >}}
 You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.
-{{< /note >}}
+    {{< /note >}}
 
-3.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.* Depending on the Linux distribution, the line `AddressFamily` may need to be added, or uncommented by removing the leading `#`
+1.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.* Depending on the Linux distribution, the line `AddressFamily` may need to be added, or uncommented by removing the leading `#`
 
     Use the option:
 
@@ -209,7 +210,7 @@ AddressFamily inet
 {{< /file >}}
 
 
-4.  Restart the SSH service to load the new configuration.
+1.  Restart the SSH service to load the new configuration.
 
     If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+)
 

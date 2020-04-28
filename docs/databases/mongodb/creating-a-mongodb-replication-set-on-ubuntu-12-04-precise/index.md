@@ -63,7 +63,7 @@ hana
 
 It is imperative that the networking configurations are set and working properly, or you will not be able to add members to the replication set. This section will detail how to configure three (3) Linodes as a MongoDB replication set.
 
-Before you begin, you will need to obtain all the private IP addresses for each of your Linodes. This information can be found by logging into the Linode Manager. Under the **Remote Access** tab there is a section called "Private/LAN Network". Click on the "Add a Private IP" link to assign a private IP address to your Linode. Again, we are working with a three-member replication set so you will need to acquire this information for each member.
+Before you begin, you will need to obtain all the private IP addresses for each of your Linodes. This information can be found by logging into the Linode Manager. Under the **Networking** tab, click on the "Add a Private IP" link to assign a private IP address to your Linode. Again, we are working with a three-member replication set so you will need to acquire this information for each member.
 
 [![Finding your private IP address.](1698-private_ip-v2.png)](1698-private_ip-v2.png)
 

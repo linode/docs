@@ -190,6 +190,8 @@ cockpit dhcpv6-client ssh
         sudo firewall-cmd --zone=public --add-service=https --permanent
         sudo firewall-cmd --reload
 
+{{< note >}}In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux boolean variable. To allow HTTPD scripts and modules to connect to the network, use `sudo setsebool -P httpd_can_network_connect on` command.{{< /note >}}
+
 ## Test the LEMP Stack
 
 1. To ensure that your web server can be reached with your domain name, configure the [DNS records](/docs/platform/manager/dns-manager/) for your domain to point to your Linode's IP address.

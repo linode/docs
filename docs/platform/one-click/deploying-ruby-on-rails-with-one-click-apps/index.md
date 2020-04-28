@@ -153,6 +153,8 @@ For more information on setting up a more substantial application, refer to the 
 
 ## Next Steps
 
+{{< content "one-click-update-note">}}
+
 For more on Ruby on Rails, checkout the following guides:
 
 - [Ruby on Rails with NGINX on Debian](/docs/development/ror/ruby-on-rails-nginx-debian/)

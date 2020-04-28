@@ -58,7 +58,7 @@ CoreOS configures no default way to log in except by supplying an option to the 
 
     [![Set /dev/sda to CoreOS disk image](coreos-device-identifier-small.png)](coreos-device-identifier.png)
 
-5.  Use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) to access your Linode. From the **Remote Access** tab, go to the bottom of the page and under **Console Access**, click the link to the right of **Lish via SSH** to open an SSH connection in the local system's terminal.
+5.  Use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
 
 ## Collect Installation Files
 

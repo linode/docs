@@ -356,7 +356,7 @@ bind-interfaces
 {{< /file >}}
 
 
-11. Now that dnsmasq is configured, you will need to add two new lines to /etc/network/interfaces. First, go to the Linode's **Remote Access** page, shown below. You'll need the IP addresses listed under **DNS Resolvers** for the `dns-nameservers` line:
+11. Now that dnsmasq is configured, you will need to add two new lines to /etc/network/interfaces. First, go to the Linode's **Networking** tab, shown below. You'll need the IP addresses listed under **DNS Resolvers** for the `dns-nameservers` line:
 
     [![DNS resolvers in the Linode Manager.](1341-resolvers.png)](1341-resolvers.png)
 

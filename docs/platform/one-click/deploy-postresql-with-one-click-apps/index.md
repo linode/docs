@@ -147,8 +147,9 @@ The example commands in this section should be run as the `postgres` Linux user.
 
 4.  Exit the PostgreSQL shell by entering `\q`.
 
-
 ## Next Steps
+
+{{< content "one-click-update-note">}}
 
 For more on PostgreSQL, checkout the following guides:
 

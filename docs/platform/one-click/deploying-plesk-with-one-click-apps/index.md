@@ -93,3 +93,5 @@ After Plesk has finished installing, you will be able to access your Plesk site 
 1.  After your account is setup you'll be signed into your dashboard and can get started.
 
     ![Plesk Dashboard](plesk-dashboard-screen.png "Plesk Dashboard")
+
+{{< content "one-click-update-note">}}
