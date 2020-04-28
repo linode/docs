@@ -6,7 +6,7 @@ description: 'Deploy Persistent Volume Claims with the Linode Block Storage CSI 
 keywords: ['container','kubernetes','block','storage','volume','csi','interface','driver']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-18
-modified: 2019-04-18
+modified: 2020-04-28
 modified_by:
   name: Linode
 title: "Deploy Persistent Volume Claims with the Linode Block Storage CSI Driver"
@@ -26,13 +26,19 @@ This guide assumes you have a working Kubernetes cluster running on Linode. You 
 
 1. Use the Linode Kubernetes Engine (LKE) to deploy a cluster. Follow the [Deploy and Manage a Cluster with Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide to get started.
 
+    {{< note >}}
+An LKE cluster will already have Linode's Block Storage CSI Driver installed. For this reason, if you use LKE to deploy your cluster, skip the entire [Installing the CSI Driver](#installing-the-csi-driver) section and move directly to [Create a Persistent Volume Claim](#create-a-persistent-volume-claim).
+    {{</ note >}}
+
 1. Deploy a cluster using Terraform and the [Linode Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.1).
 
 1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) guide to do this.
 
-- The Block Storage CSI supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
+    {{< note >}}
+The Block Storage CSI supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
 
-        kubectl version
+    kubectl version
+    {{</ note >}}
 
 ## Installing the CSI Driver
 ### Create a Kubernetes Secret
@@ -81,7 +87,7 @@ Once you have your API token, it's time to create your secret.
 
     For example, if you want to use the Newark, NJ, USA data center, you would use `us-east` as your region.
 
-1.  Create the secret by piping in the following secret manifest to the `kubectl create` command. Issue the following here document:
+1.  Create the secret by piping in the following secret manifest to the `kubectl create` command. Issue the following command:
 
         cat <<EOF | kubectl create -f -
 
@@ -146,9 +152,9 @@ spec:
   storageClassName: linode-block-storage-retain
 {{</ file >}}
 
-{{< caution >}}
-In order to retain your Block Storage volume's data, even after the associated PVC is deleted, you must use the `linode-block-storage-retain` StorageClass.
-{{</ caution >}}
+{{< note >}}
+In order to retain your Block Storage Volume and its data, even after the associated PVC is deleted, you must use the `linode-block-storage-retain` StorageClass. If, instead, you prefer to have your Block Storage Volume and its data deleted along with its PVC, use the `linode-block-storage` StorageClass. See the [Delete a Persistent Volume Claim](#delete-a-persistent-volume-claim) for steps on deleting a PVC.
+{{</ note >}}
 
 This PVC represents a Block Storage Volume. Because Block Storage Volumes have a minimum size of 10 gigabytes, the storage has been set to `10Gi`. If you choose a size smaller than 10 gigabytes, the PVC will default to 10 gigabytes.
 
@@ -248,7 +254,7 @@ spec:
 {{</ file >}}
 
     {{< note >}}
-The service manifest file will use the `NodePort` method to get external traffic to the ownCloud service. NodePort opens a specific port on all cluster Nodes and any traffic that is sent to this port is forwarded to the service. Kubernetes will choose the port to open on the nodes if you do not provide one in your service manifest file. It is recommended to let Kubernetes handle the assignment. Kubernetes will choose a port in the default range, `30000-32767`.
+The service manifest file will use the `NodePort` method to get external traffic to the ownCloud service. NodePort opens a specific port on all cluster Nodes and any traffic that is sent to this port is forwarded to the service. Kubernetes will choose the port to open on the nodes if you do not provide one in your service manifest file. It is recommended to let Kubernetes handle the assignment. Kubernetes will choose a port in the default range, `30000-32768`.
 
 Alternatively, you could use the `LoadBalancer` service type, instead of NodePort, which will create Linode NodeBalancers that will direct traffic to the ownCloud Pods. Linode's Cloud Controller Manager (CCM) is responsible for provisioning the Linode NodeBalancers. For more details, see the [Kubernetes Cloud Controller Manager for Linode](https://github.com/linode/linode-cloud-controller-manager/blob/master/README.md) repository.
     {{</ note >}}
@@ -311,17 +317,22 @@ Alternatively, you could use the `LoadBalancer` service type, instead of NodePor
 
     Once the Pod has finished provisioning you can log back in to ownCloud and view the file you previously uploaded.
 
-You have successfully
 You have successfully created a Block Storage Volume tied to a Persistent Volume Claim and have mounted it with a container in a Pod.
 
 ## Delete a Persistent Volume Claim
 
-To delete the Block Storage volume created in this guide:
+To delete the Block Storage PVC created in this guide:
 
-1. First, delete the ownCloud Pod:
+1. First, delete the ownCloud Pod. This command will also result in your Block Storage Volume being detached from the cluster.
 
         kubectl delete pods owncloud
 
 1.  Then, delete the persistent volume claim:
 
         kubectl delete pvc pvc-example
+
+    {{< note >}}
+If you used the `linode-block-storage-retain` StorageClass when creating your PVC, this command will delete the PVC, however, your Block Storage Volume and its data will persist in a detached state. To permanently remove the Block Storage Volume from your Linode Account, see [How to Delete a Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-delete-a-block-storage-volume).
+
+If, instead, you used the `linode-block-storage` StorageClass when creating your PVC, this command will delete the PVC along with your Block Storage Volume and its data.
+    {{</ note >}}
