@@ -171,14 +171,10 @@ Most of these changes bring the NixOS defaults in line with how Linode's standar
 Root logins via SSH are disabled by default. To access your Linode, enable root login during installation by editing the `services.openssh` lines as follows:
 
 {{< file "/mnt/etc/nixos/configuration.nix" >}}
-...
-
 services.openssh = {
   enable = true;
   permitRootLogin = "yes";
 };
-
-...
 {{< /file >}}
 
 After installation, create a user with limited permissions, then set `permitRootLogin` to `"no"`.
