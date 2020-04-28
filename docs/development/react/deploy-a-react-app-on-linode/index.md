@@ -14,6 +14,7 @@ title: "Deploy a React Application on Linode"
 contributor:
   name: Phil Zona
   link: https://twitter.com/philzona
+aliases: ['development/javascript/deploy-a-react-app-on-linode/']
 deprecated: true
 deprecated_link: 'development/react/'
 external_resources:
