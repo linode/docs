@@ -105,3 +105,5 @@ The Terraria One-Click App will install the following required software on your 
 | [**LinuxGSM**](https://linuxgsm.com) | A command line tool for the deployment and management of Linux game servers. |
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Port 7777, unless otherwise specified, will allow outgoing and incoming tcp and udp traffic. |
 | [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
+
+{{< content "one-click-update-note">}}

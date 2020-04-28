@@ -98,3 +98,5 @@ The Drupal One-Click App will install the following required software on your Li
 | [**Apache HTTP Server**](https://httpd.apache.org) | Web Server used to serve the Drupal site. |
 | [**Drush**](https://www.drush.org) | A command line shell for Drupal. |
 | [**Drupal 8**](https://www.drupal.org/8) | Content management system. |
+
+{{< content "one-click-update-note">}}

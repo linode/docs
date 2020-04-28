@@ -100,6 +100,8 @@ For more information on access control and user management, as well as other tip
 
 ## Next Steps
 
+{{< content "one-click-update-note">}}
+
 For more on MongoDB, checkout the following guides:
 
 - [Creating a MongoDB Replica Set](/docs/databases/mongodb/create-a-mongodb-replica-set/)
