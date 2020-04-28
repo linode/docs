@@ -172,8 +172,8 @@ You can check the status of your PVC by issuing the following command:
 
 You should see output like the following:
 
-    NAME          STATUS   VOLUME                 CAPACITY   ACCESS MODES   STORAGECLASS           AGE
-    pvc-example   Bound    pvc-0e95b811652111e9   10Gi       RWO            linode-block-storage   2m
+    NAME          STATUS   VOLUME                 CAPACITY   ACCESS MODES   STORAGECLASS                  AGE
+    pvc-example   Bound    pvc-0e95b811652111e9   10Gi       RWO            linode-block-storage-retain   2m
 
 Now that you have a PVC, you can attach it to a Pod.
 
