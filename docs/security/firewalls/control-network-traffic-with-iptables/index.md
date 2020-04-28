@@ -623,9 +623,9 @@ To verify the rules are applied and available after the system reboot use the co
 
 When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](/docs/platform/manager/using-the-linode-shell-lish/) in the Linode Manager. The following steps will guide you through using the graphical interface of your Linode to gain access to your server:
 
-1.  Connect to your Linode Manager.
-2.  Click on the Remote Access tab.
-3.  Under the section entitled "Console Access," click on the **Launch Lish Console** link.
+1.  Connect to the Linode Cloud Manager.
+2.  Select the Linode you wish to gain access to.
+3.  Click the **Launch Console** link to launch the Lish Console.
 4.  Login with your root or sudo user name and password.
 5.  [Remove any rules](#configure-iptables) causing the connectivity issues.
 6.  Log out of the Lish window.

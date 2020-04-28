@@ -47,7 +47,7 @@ CPanel requires the distribution-supplied/*upstream* CentOS kernel, as opposed t
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
-Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the `root` user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager).
+Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the `root` user via SSH to its IP address (found on the **Networking** tab in the Linode Cloud Manager).
 
 1. Disable NetworkManager before running the install script:
 
@@ -84,7 +84,7 @@ Before proceeding, make sure you've purchased a cPanel license. You may obtain a
 
     [![cPanel hostname/FQDN entry.](269-cpanel-whm-02-02-networking-hostname.png)](269-cpanel-whm-02-02-networking-hostname.png)
 
-6. Appropriate DNS resolvers should be automatically filled in for you, but you may wish to check the values listed against the "Remote Access" tab in the Linode Manager:
+6. Appropriate DNS resolvers should be automatically filled in for you, but you may wish to check the values listed against the **Networking** tab in the Linode Cloud Manager:
 
     [![cPanel DNS resolver entries.](270-cpanel-whm-02-03-networking-resolvers.png)](270-cpanel-whm-02-03-networking-resolvers.png)
 
