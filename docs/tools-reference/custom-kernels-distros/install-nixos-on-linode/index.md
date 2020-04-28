@@ -151,11 +151,13 @@ boot.loader.grub.extraConfig = ''
 
 ### Configure GRUB
 
-When GRUB detects a partitionless disk, it will warn about the unreliability of blocklists. To force NixOS to ignore the warning and then continue, configure GRUB to use the `forceInstall` option. GRUB will run from the host machine and will read the GRUB file from the disk, so the GRUB on disk will never be used.
+1.  When GRUB detects a partitionless disk, it will warn about the unreliability of blocklists. To force NixOS to ignore the warning and then continue, configure GRUB to use the `forceInstall` option. GRUB will run from the host machine and will read the GRUB file from the disk, so the GRUB on disk will never be used.
 
-Set the timeout for GRUB to be lengthy enough to accommodate LISH connection delays. The following hardware configuration example sets a 10 second timeout. Again, these lines can be placed anywhere within the curly braces `{ }`:
+        boot.loader.grub.forceInstall = true;
 
-{{< file "/mnt/etc/nixos/hardware-configuration.nix" >}}
+1.  Set the timeout for GRUB to be lengthy enough to accommodate LISH connection delays. The following hardware configuration example sets a 10 second timeout. Again, these lines can be placed anywhere within the curly braces `{ }`:
+
+    {{< file "/mnt/etc/nixos/hardware-configuration.nix" >}}
 boot.loader.grub.device = "nodev";
 boot.loader.timeout = 10;
 {{</ file >}}
