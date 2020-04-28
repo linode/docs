@@ -181,7 +181,7 @@ If your React app's directory is not initialized as a Git repository, the comman
 
         sudo chmod u+x deploy.sh
 
-1.  Run the deployment script. Entir your Linode user's password when prompted by the script.
+1.  Run the deployment script. Enter your Linode user's password when prompted by the script.
 
         ./deploy.sh
 
