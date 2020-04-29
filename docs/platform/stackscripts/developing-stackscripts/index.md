@@ -16,35 +16,35 @@ external_resources:
   - '[StackScript Community Library](http://linode.com/stackscripts)'
 ---
 
-[StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of the default Linux distribution images. Linodes deployed with a StackScript run the script as part of the first boot process. This guide explains how StackScripts work, and provides examples of how to use them.
+[StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of the default Linux distribution images. Linodes deployed with a StackScript run the script as part of the first boot process. This guide explains how StackScripts work, and provides examples on how to use them.
 
 ## Introduction
 
-StackScripts are usually Bash scripts, stored in the Linode Cloud Manager, and can be accessed when you deploy a Linode. During the first boot job of the newly created disks, the StackScript run using any variable you add, and executes the scripted commands.
+StackScripts are usually Bash scripts, stored in the Linode Cloud Manager, and can be accessed when you deploy a Linode. During the first boot job of the newly created disks, the StackScript will run using any variables you added, and will execute the scripted commands.
 
 
 ### Creating a New StackScript
 
-1.  Log in to your [Linode Cloud Manager](https://cloud.linode.com) account.
+1.  From the Cloud Manager's sidebar, click on the **StackScripts** link.
 
-1.  At the top of the page, click **Create** and select **Linode**.
+1.  Viewing the StackScripts page, click on the **Create New StackScript** link at the top of the page.
 
-1.  Click the **StackScripts** link in the sidebar and click **Account StackScripts** tab in the **StackScripts** page.
+      ![StackScript selection options.](create-new-stackscript.png "StackScript selection options.")
 
-       ![StackScript selection options.](stackscripts-selection-screen.png "StackScript selection options.")
+1.   On the **Create New StackScript** page, provide the required configurations to create your StackScript:
 
-1.  Click **Create New StackScript** and complete the following fields in the **StackScripts/Create New StackScript** page:
+    | **Field**| **Description** |
+    |:-----------------|:---------------------|
+    | **StackScript Label** | The name with which to identify your StackScript. *Required*. |
+    | **Description** | An overview of what your StackScript does. |
+    | **Target Images** | The images that can run this StackScript. *Required*.|
+    | **Script** | The body of the script. *Required*. |
+    | **Revision Note** | A brief description of the changes made in this update of the StackScript. |
 
-    | Fields               | Description                                                                               |
-    |:-----------------------------------|:------------------------------------------------------------------------------------------|
-    | **StackScript Label (required)** | a name that helps you easily identify the script within the **StackScripts** page.                                                                    |
-    | **Description** |   provides an overview of what the script does.        |
-    | **Target Images (required)**                  | creates a list of available distributions that can run this StackScript.     |
-    | **Script**           | the content of the script. |
-    | **Revision Note**           | provides the change made or updates made in the StackScript and it is an optional field. |
+    {{< disclosure-note "Example Script">}}
+The file below displays an example of a simple script that executes some basic set up steps on a Linode. Review the example's comments for details on what each line of the script does.
 
-    Here's the code used in an example script. The comment lines explain what each section does:
-    {{< file "Initial Setup StackScript" bash >}}
+{{< file "Example Script" bash >}}
 #!/bin/bash
 # This block defines the variables the user of the script needs to provide
 # when deploying using this script.
@@ -71,19 +71,25 @@ hostname -F /etc/hostname
 echo $IPADDR $FQDN $HOSTNAME >> /etc/hosts
 
 {{< /file >}}
+    {{</ disclosure-note >}}
 
-1.  Click **Save** after you write the StackScript. You can always edit the script later.
+1.  Click **Save** when you are done. You can always edit the script later.
 
-    To deploy a new Linode with the StackScript, see [Deploying a StackScript](/docs/platform/stackscripts/deploying-stackscripts/#deploying-from-a-stackscript).
+1. You will be brought back to the **StackScripts** page, where your new StackScript will be visible and ready to use with a new Linode deployment.
 
+    {{< note >}}
+To deploy a new Linode with your new StackScript, follow the steps in the [Deploying a StackScript](/docs/platform/stackscripts/deploying-stackscripts/#deploying-from-a-stackscript) guide.
+    {{</ note >}}
+
+    ![After saving your new StackScript, it will be visible and ready to use on the StackScript page.](new-stackscript-create-success.png "After saving your new StackScript, it will be visible and ready to use on the StackScript page.")
 
 ## StackScript Use Cases
 
-Here are several common use cases for StackScripts.
+This section contains information on common use cases for StackScripts.
 
 ### Calling StackScripts Recursively
 
-StackScripts call call other StackScripts from the library at runtime. This functionality reduces the need to write duplicate code for multiple scripts. For example, the Linode [StackScript Bash Library](https://cloud.linode.com/stackscripts/1) is a set of functions that perform various tasks. The script creates the functions but does not run them. A new StackScript can import the Bash Library and then execute functions from it. This reduces the size and time-to-write of all StackScripts using the functions built into the library script.
+StackScripts can call other StackScripts from the library at runtime. This functionality reduces the need to write duplicate code for multiple scripts. For example, the Linode [StackScript Bash Library](https://cloud.linode.com/stackscripts/1) is a set of functions that perform various tasks. The script creates the functions but does not run them. A new StackScript can import the Bash Library and then execute functions from it. This reduces the size and time-to-write of all StackScripts using the functions built into the library script.
 
 In another example use case for linked StackScripts, you could create a StackScript that updates all software packages on the system. You would most likely want to perform this function on all new Linodes. You could then create a StackScript to build a web server that integrates into the current cluster. Rather than rewrite the commands to update the system,you can call the previous StackScript.
 
