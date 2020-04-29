@@ -33,7 +33,7 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 ## Prepare Your Linode
 
-Start with a pre-existing Linode, or go to the [Create linode page](https://cloud.linode.com/linodes/create).
+Start with a pre-existing Linode, or go to the [Create Linode page](https://cloud.linode.com/linodes/create).
 Under Images, choose any image, this will be replaced with the NixOs installation.
 Then select a region, plan, label, and tags (if desired). Click the **Create** button to start the server.
 
