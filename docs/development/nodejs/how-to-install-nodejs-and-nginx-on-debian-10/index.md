@@ -40,7 +40,7 @@ Don't forget to update your Linode's `/etc/hosts` file with its public IP addres
 
 ## Install and Configure NGINX
 
-1.  Install NGINX and the screen utility. You will use screen in the [Create Your the Node.js Web Server File](#create-your-the-node-js-web-server-file).
+1.  Install NGINX and the screen utility. You will use screen in the [Create Your the Node.js Web Server File](#create-the-node-js-web-server-file).
 
         sudo apt-get install nginx screen
 
@@ -196,7 +196,7 @@ The below button is technically dynamic. You are now using Javascript on both th
 </html>
     {{</ file >}}
 
-### Create Your the Node.js Web Server File
+### Create the Node.js Web Server File
 
 In this section, you will create a file named `server.js` that will use Node.js modules to help you write a simple web server that can handle client requests and return responses to them.
 

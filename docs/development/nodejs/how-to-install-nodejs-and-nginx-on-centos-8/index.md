@@ -239,7 +239,7 @@ The below button is technically dynamic. You are now using Javascript on both th
 </html>
     {{</ file >}}
 
-### Create Your the Node.js Web Server File
+### Create the Node.js Web Server File
 
 In this section, you will create a file named `server.js` that will use Node.js modules to help you write a simple web server that can handle client requests and return responses to them.
 
