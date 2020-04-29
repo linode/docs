@@ -10,7 +10,7 @@ published: 2020-04-27
 modified_by:
   name: Linode
 title: "How to Install Python 3 on Ubuntu 20.04"
-h1_title: "Installing Python 3 on Ubuntu 20.04"
+h1_title: "How to Install Python on Ubuntu 20.04"
 contributor:
   name: Angel Guarisma
   link: Github.com/Guaris
