@@ -41,7 +41,7 @@ The practicality of automatic updates is something you must judge for yourself b
 Up to this point, you have accessed your Linode as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server.
 
 {{< note >}}
-Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
+Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing. 
 {{< /note >}}
 
 To add a new user, first [log in to your Linode](/docs/getting-started/#log-in-for-the-first-time) via SSH.
@@ -330,6 +330,6 @@ PasswordAuthentication yes
 
 ## Next Steps
 
-These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](/docs/uptime/monitoring/ossec-ids-debian-7/) or installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control).
+These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](/docs/uptime/monitoring/ossec-ids-debian-7/), installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control), [fine tuning sudo access](/docs/tools-reference/linux-users-and-groups/#understanding-sudo), and [more](/docs/security/).
 
 Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/migrate-to-linode/migrate-from-shared-hosting) to [enabling two-factor authentication](/docs/security/linode-manager-security-controls) to [hosting a website](/docs/websites/hosting-a-website).
