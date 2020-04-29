@@ -3,13 +3,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'How to deploy a One-Click App using the Linode Cloud Manager.'
-keywords: ['manager','cloud','app','one click']
+keywords: ['manager','cloud','app','one click', 'marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-26
 modified: 2019-03-26
 modified_by:
   name: Linode
 title: "How to Use Linode's One-Click Apps"
+h1_title: "Using Linode's One-Click Apps"
 contributor:
   name: Linode
 ---
@@ -18,29 +19,25 @@ contributor:
 
 One-Click Apps help you easily deploy and configure software on a Linode from a list of various apps that are built into the Linode [Cloud Manager](https://cloud.linode.com), without the hassle of using the command line. Of course, you'll still have full access to your Linode if you want to log in to your server and have a more hands-on approach later on.
 
-When a One-Click App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide. One-Click Apps does not install software to already-existing Linodes in your account. This guide presents instructions for where to find One-Click Apps in the Cloud Manager and how deploy WordPress blogs, WooCommerce stores, your favorite game servers, and more.
+When a One-Click App is deployed, a new Linode is created and the appropriate software is installed with the configurations you provide. One-Click Apps do not install software to already-existing Linodes in your account. This guide presents instructions for where to find One-Click Apps in the Cloud Manager and how deploy WordPress blogs, WooCommerce stores, your favorite game servers, and more.
 
 ## Deploying an App
 
-1.  Log in the the Linode [Cloud Manager](https://cloud.linode.com).
+1.  Log into the Linode [Cloud Manager](https://cloud.linode.com).
 
-1.  Click **Create** at the top of the screen and choose **Linode** from the dropdown menu that appears:
+1. From the Linode dashboard, click on the **Marketplace** option in the left-hand navigation menu:
 
     ![Click 'Create' at the top of the screen and choose 'Linode' from the dropdown menu.](one-click-create-a-linode.png "Click 'Create' at the top of the screen and choose 'Linode' from the dropdown menu.")
 
-1. The Linode creation page will appear. Select the **One-Click** tab:
+1. The Linode creation page will appear, with the **One-Click** tab and the **Create From: Marketplace** option pre-selected.
 
     ![Select the 'One-Click' tab on the Create New Linode page.](one-click-select-one-click-tab.png)
-
-1.  The **Create From** section of the page's form will appear. Ensure that the **One-Click Apps** tab is selected in this section:
-
-    ![The `One-Click` menu.](one-click-create-from-one-click-apps.png)
 
 1.  Select the app you would like to create. For this example, WordPress will be selected:
 
     ![Select WordPress.](one-click-select-wordpress.png)
 
-1.  After the **Select App** section you'll find a new section with additional configuration options specific to your app. Fill out the required options; they will be marked with an asterisk. In the case of WordPress, you'll find fields for the WordPress administrator's username, password, and e-mail address.
+1.  After the **Select App** section you'll find a new section with additional configuration options specific to your app. Fill out the required options. In the case of WordPress, you'll find fields for the WordPress administrator's username, password, e-mail address, and database passwords.
 
     ![Fill out the required Options fields, which are marked with an asterisk.](one-click-wordpress-config-options.png)
 
@@ -48,9 +45,9 @@ When a One-Click App is deployed, a new Linode is created and the appropriate so
 
 1.  The **Select an Image** section displays that Debian is pre-selected. This is the underlying operating system that your Linode will run.
 
-1.  Under the **Region** section, choose which data center you would like your app to be deployed. Choose a region that is close to your audience's geographic location. When you are closer to your data center, your network speeds will generally be higher, and your network latency will be lower.
+1.  Under the **Region** section, choose which data center you would like your app to be deployed to. Choose a region that is close to your audience's geographic location. When you are closer to your data center, your network speeds will generally be higher, and your network latency will be lower.
 
-1.  Choose which plan you'd like to use under the **Linode Plan** section. Your plan specifies the hardware resources assigned to your server. The resources that you need are determined by the requirements of your app. Linode's plans are split into four types: Nanode, Standard, Dedicated CPU, and High Memory.
+1.  Choose which plan you'd like to use under the **Linode Plan** section. Your plan specifies the hardware resources assigned to your server. The resources that you need are determined by the requirements of your app. Linode's plans are split into five types: Nanode, Standard, Dedicated CPU, High Memory, and GPU.
 
     For small sites like WordPress blogs a 1GB Nanode is usually enough, and for video game servers a 2GB or 4GB Standard Linode is often a good choice. Some game servers may benefit from the Dedicated CPU plans. Our [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/) guide presents more information about the different use-cases for each plan.
 
@@ -111,3 +108,5 @@ For information on how to add a domain name to your app, visit our [DNS Manager]
 Every One-Click App is deployed to its own Linode instance, and you can access the operating system for your app's server if you choose to. To gain command-line access to your server, [log in using a Secure Shell (SSH) client](/docs/getting-started/#connect-to-your-linode-via-ssh) on your computer.
 
 When logging in over SSH, use `root` as the username, and supply the root password that you specified when you deployed your app. Follow our [Getting Started guide](/docs/getting-started/#connect-to-your-linode-via-ssh) to learn more about connecting to your Linode via SSH. If you use Windows at home, our [Using SSH on Windows](/docs/networking/ssh/using-ssh-on-windows/) guide has special instructions for Windows SSH clients. If you're new to Linux, some of the guides in our [Linux](/docs/quick-answers/linux/) and [Linux Essentials](/docs/quick-answers/linux-essentials/) sections may be useful.
+
+{{< content "one-click-update-note">}}

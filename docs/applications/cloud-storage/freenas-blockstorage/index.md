@@ -58,7 +58,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Create an Installer Disk
 
-1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/platform/manager/using-the-linode-shell-lish/) from the **Remote Access** tab of the Linode Manager.
+1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/platform/manager/using-the-linode-shell-lish/) from the dashboard of your Linode from the Linode Cloud Manager.
 
 2.  Once in Rescue Mode, run the following command to set the [latest FreeNAS release](http://www.freenas.org/download-freenas-release/) (11.1 at the time of this writing) as a variable:
 
@@ -76,7 +76,9 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
     ![Screenshot of the Dashboard, ready to reboot into the Installer profile.](reboot-installer-profile.png "Screenshot of the Dashboard, ready to reboot into the Installer profile.")
 
-6.  Go to the **Remote Access** tab in the Linode Manager. Access your Linode using [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/) to start the installation.
+6.  Go to the Linode Cloud Manager and access the dashboard for your Linode.
+
+7.  Click the **Launch Console** link to access the [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/) console and start the installation.
 
 ## Install FreeNAS
 
@@ -102,7 +104,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 2.  Use a web browser to navigate to the Linode's IP address. Log in with the user `root` and the password set in Step 4 of the previous section. Close any popup menu that appears when you first log in.
 
-3.  Click the **Network** icon and complete the network information using the Default Gateways and DNS Resolvers found in the [Remote Access](/docs/platform/manager/remote-access/) tab of the Linode Manager. Use the DNS Resolvers information to fill in the Nameserver fields. Click **Save** before continuing.
+3.  Click the **Network** icon and complete the network information using the Default Gateways and DNS Resolvers found in the [Networking](/docs/platform/manager/remote-access/) tab of the Linode Cloud Manager. Use the DNS Resolvers information to fill in the Nameserver fields. Click **Save** before continuing.
 
 4.  Select the **Interfaces** section of the Network tab, and click **Add Interface**. Name the interface and enable DHCP, then click **OK**.
 
@@ -110,7 +112,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 1.  [Add or attach a Block Storage Volume](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) to the Linode. After you attach your Block Storage Volume, the Linode Manager will present command-line instructions for mounting it from your Linode, but you can disregard these.
 
-2.  Reboot the Linode from the Linode Manager. After a few minutes, launch Glish from the **Remote Access** tab again. You can monitor the reboot progress in Glish.
+2.  Reboot the Linode from the Linode Manager. After a few minutes, launch Glish from the dashboard again. You can monitor the reboot progress in Glish.
 
 ### Format Block Storage Volume as ZFS
 

@@ -33,7 +33,7 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
     {{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the Remote Access Tab next to your public IP address.
+Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the **Networking** tab next to your public IP address.
 {{< /note >}}
 
 

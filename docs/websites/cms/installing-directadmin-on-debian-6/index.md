@@ -20,7 +20,7 @@ deprecated: true
 Basic System Configuration
 --------------------------
 
-Edit your `/etc/hosts` file to resemble the following example. Replace "hostname" with a unique name for your server, "example.com" with your domain name, and "12.34.56.78" with your Linode's public IP address. If your Linode has two IPs assigned to it, use the first IP in the list displayed on the "Remote Access" tab of the Linode Manager.
+Edit your `/etc/hosts` file to resemble the following example. Replace "hostname" with a unique name for your server, "example.com" with your domain name, and "12.34.56.78" with your Linode's public IP address. If your Linode has two IPs assigned to it, use the first IP in the list displayed on the **Networking** tab of the Linode Cloud Manager.
 
 {{< file >}}
 /etc/hosts
@@ -33,7 +33,7 @@ Set your system's hostname by issuing the following commands, replacing quoted "
     echo "hostname" >> /etc/hostname
     hostname -F "hostname"
 
-Edit the `/etc/network/interfaces` file to resemble the following, replacing `12.34.56.78` with your Linode's IP address and `12.34.56.1` with its default gateway. If your Linode has two IPs assigned to it, use the first IP in the list displayed on the "Remote Access" tab of the Linode Manager.
+Edit the `/etc/network/interfaces` file to resemble the following, replacing `12.34.56.78` with your Linode's IP address and `12.34.56.1` with its default gateway. If your Linode has two IPs assigned to it, use the first IP in the list displayed on the **Networking** tab of the Linode Cloud Manager.
 
 {{< file >}}
 /etc/network/interfaces
@@ -55,7 +55,7 @@ Restart networking by issuing the following command:
 
     /etc/init.d/networking restart
 
-Edit the `/etc/resolv.conf` to resemble the following, replacing `11.11.11.11` and `22.22.22.22` with the DNS servers listed on the "Remote Access" tab in the Linode Manager.
+Edit the `/etc/resolv.conf` to resemble the following, replacing `11.11.11.11` and `22.22.22.22` with the DNS servers listed on the **Networking** tab in the Linode Cloud Manager.
 
 {{< file >}}
 /etc/resolv.conf
@@ -74,7 +74,7 @@ You'll also need to install a few items to finish preparing your system for Dire
 Installing DirectAdmin
 ----------------------
 
-Before proceeding, make sure you've purchased a DirectAdmin license. You may obtain a license directly from [the DirectAdmin site](https://www.directadmin.com/createclient.php). Next, log into your Linode as the "root" user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager). Issue the following commands to download and install DirectAdmin.
+Before proceeding, make sure you've purchased a DirectAdmin license. You may obtain a license directly from [the DirectAdmin site](https://www.directadmin.com/createclient.php). Next, log into your Linode as the "root" user via SSH to its IP address (found on the **Networking** tab in the Linode Cloud Manager). Issue the following commands to download and install DirectAdmin.
 
     wget http://www.directadmin.com/setup.sh
     chmod 755 setup.sh

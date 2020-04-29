@@ -109,3 +109,5 @@ Click on the **Run the Setup Wizard** button to visit this form and start your s
 | [**WooCommerce**](https://woocommerce.com/) | An online storefront plugin for WordPress. |
 
 {{< content "email-warning-shortguide" >}}
+
+{{< content "one-click-update-note">}}

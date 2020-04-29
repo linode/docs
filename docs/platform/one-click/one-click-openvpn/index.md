@@ -67,3 +67,5 @@ To open a connection to your OpenVPN server from your computer, you'll need to i
 | **Software** | **Description** |
 |--------------|-----------------|
 | [**OpenVPN Access Server**](https://openvpn.net/vpn-server/) | VPN server software. |
+
+{{< content "one-click-update-note">}}

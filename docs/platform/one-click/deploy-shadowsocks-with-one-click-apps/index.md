@@ -63,3 +63,5 @@ When the client has completed the installation process, ensure that you're setti
 After configuration, your `Server Preferences` should be similar to the following image:
 
 ![shadowsocks-one-click.png](shadowsocks-one-click.png)
+
+{{< content "one-click-update-note">}}

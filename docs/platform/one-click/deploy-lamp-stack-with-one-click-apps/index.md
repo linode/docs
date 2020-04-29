@@ -74,3 +74,5 @@ The LAMP Stack One-Click App will install the following software on your Linode:
 | [**MySQL Server**](https://www.mysql.com) | Relational database. |
 | [**PHP 7**](https://www.php.net) | General purpose programming language. |
 | [**UFW (Uncomplicated Firewall)**](https://en.wikipedia.org/wiki/Uncomplicated_Firewall) | Firewall utility. Ports 22/tcp, 80/tcp, and 443/tcp for IPv4 and IPv6 will allow outgoing and incoming traffic. |
+
+{{< content "one-click-update-note">}}

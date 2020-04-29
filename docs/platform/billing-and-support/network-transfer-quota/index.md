@@ -45,7 +45,7 @@ Linode does not offer private IPv6 address allocations. Our IPv6 accounting was 
 
 ## Transfer Resets, Proration, and Overages
 
-Your transfer quota is reset at the beginning of each month.
+Your transfer quota is reset at the beginning of each month at midnight EST/EDT.
 
 ### Why is My Linode's Network Transfer less than My Plan's Transfer?
 

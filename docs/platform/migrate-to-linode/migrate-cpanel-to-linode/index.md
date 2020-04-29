@@ -33,7 +33,7 @@ This guide does not cover how to handle CPanel deployments that are part of a DN
 
 1.  Use the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a limited Linux user with `sudo` privileges.
 
-1.  Stand up a new WHM/CPanel installation by following the [Install CPanel on Linode](/docs/websites/cms/install-cpanel-on-centos/) guide. Use the Linode's generic domain name for WHM's **Hostname** setting. This generic domain will be listed under the Remote Access tab for your Linode in the Linode Manager, and it will have the form `liXY-ABC.members.linode.com`.
+1.  Stand up a new WHM/CPanel installation by following the [Install CPanel on Linode](/docs/websites/cms/install-cpanel-on-centos/) guide. Use the Linode's generic domain name for WHM's **Hostname** setting. This generic domain will be listed under the **Networking** tab for your Linode in the Linode Cloud Manager, and it will have the form `liXY-ABC.members.linode.com`.
 
     {{< note >}}
 You will set the Hostname to be your actual domain name later on in this guide. If you set the Hostname setting as your domain name now, the WHM and CPanel dashboards on your new Linode will redirect to your current host, and you will not be able to access the settings for your new Linode.

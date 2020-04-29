@@ -531,7 +531,7 @@ Make sure that [Network Helper](/docs/platform/network-helper/) is turned **OFF*
 
 Configure IP failover on `galera2` and `galera3` to take on the floating IP address from `galera1` in the event that it fails.
 
-1.  Go to the **Remote Access** tab in the Linode Manager for `galera2`, and click **IP Failover** under your public IP addresses.
+1.  Go to the **Networking** tab in the Linode Cloud Manager for `galera2`, and click **IP Failover** under your public IP addresses.
 
 1.  You'll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP address for `galera1`, which we will now refer to as the floating IP address, and click **Save Changes**.
 

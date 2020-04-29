@@ -72,7 +72,7 @@ The reverse DNS will be reset.
 ## Configuring IP Sharing
 
 {{< note >}}
-This feature is not yet supported in the Toronto or Sydney data centers.
+This feature is not yet supported in the Toronto, Sydney, or Mumbai data centers.
 {{</ note >}}
 
 *IP sharing*, called IP failover in the Classic Manager, is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability/) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:
@@ -140,7 +140,7 @@ If the IP is unreachable after a few minutes, you may need to notify the router 
     arping -c5 -I eth0 -S 198.51.100.10 198.51.100.1
     ping -c5 198.51.100.10 198.51.100.1
 
-Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Remote Access tab under "Default Gateways".
+Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Networking tab under "Default Gateways".
 {{< /note >}}
 
 ## Adding Private IP Addresses

@@ -108,8 +108,7 @@ The applications on your Linode require a certain amount of physical memory to f
   1.  Log in to the [Linode Classic Manager](https://manager.linode.com).
   1.  Click the **Linode** tab. A list of your Linodes appears.
   1.  Select a Linode. The Linode's dashboard appears.
-  1.  Click the **Remote Access** tab.
-  1.  Select the **Launch Lish Console** link. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or upgrade to larger plan.
+  1.  Select the **Launch Console** link. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or upgrade to larger plan.
   1.  Read through the [Troubleshooting Memory and Networking Issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/) guide for troubleshooting commands which display your memory use.
   1.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](https://www.linode.com/pricing) to a larger plan.
     {{</ disclosure-note >}}
