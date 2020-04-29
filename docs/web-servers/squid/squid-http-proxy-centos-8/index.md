@@ -19,7 +19,7 @@ external_resources:
  - '[Connection Settings in Firefox](https://support.mozilla.org/en-US/kb/connection-settings-firefox)'
 ---
 
-This guide will show you how to create your own HTTP proxy using Squid, a highly customizable proxy/cache application. An HTTP proxy acts as an intermediary between you and the internet. While connected to your Squid HTTP proxy, you will be able to:
+This guide will show you how to create your own HTTP proxy using Squid, a highly customizable proxy/cache application, on CentOS 8. An HTTP proxy acts as an intermediary between you and the internet. While connected to your Squid HTTP proxy, you will be able to:
 
 -   Anonymously access internet services.
 -   Bypass certain regional and local network restrictions.
