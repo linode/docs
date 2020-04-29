@@ -24,7 +24,7 @@ languages: ["javascript"]
 
 [React](https://reactjs.org/) is a popular JavaScript library for building user interfaces. While React is often used as a frontend for more complex applications, it's also powerful enough to be used for full client-side applications on its own.
 
-Since a basic React app is static (it consists of compiled HTML, CSS, and JavaScript files), it is easy to deploy from a local computer to a Linode using [Rsync](/docs/tools-reference/tools/introduction-to-rsync/). This guide shows how to set up your Linode and local machine so that you can easily deploy your app whenever changes are made. See the [More Information](#more-information) section of this guide for
+Since a basic React app is static (it consists of compiled HTML, CSS, and JavaScript files), it is easy to deploy from a local computer to a Linode using [Rsync](/docs/tools-reference/tools/introduction-to-rsync/). This guide shows how to set up your Ubuntu 18.04 Linode and local machine so that you can easily deploy your app whenever changes are made.
 
 ## Before You Begin
 
@@ -34,7 +34,7 @@ Since a basic React app is static (it consists of compiled HTML, CSS, and JavaSc
 
 1.  Install and configure a [web server](/docs/web-servers/) to host a website on your Linode. This guide's examples will use the Apache and NGINX web servers. Complete the steps in the [Installing Apache Web Server on Ubuntu 18.04 LTS](/docs/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/) guide or the [Installing NGINX on Ubuntu 18.04 LTS](/docs/web-servers/nginx/how-to-install-nginx-ubuntu-18-04/) guide.
 
-1.  This guide assumes you already have a React app you'd like to deploy. If you don't have one, you can quickly bootstrap a project following the steps in the [Create an Example React App](#create-an-example-react-app)section of this guide. This step should be completed on your local system.
+1.  This guide assumes you already have a React app you'd like to deploy. If you don't have one, you can quickly bootstrap a project following the steps in the [Create an Example React App](#create-an-example-react-app) section of this guide. This step should be completed on your local system.
 
 1.  Update your Linode's system.
 
@@ -143,7 +143,7 @@ If you already have a React App that you would like to deploy to your Linode, yo
 
 ### Create your Deployment Script
 
-1.  Navigate your app's directory. Replace `~/my-app` with the location of your React app's directory.
+1.  Navigate to your app's directory. Replace `~/my-app` with the location of your React app's directory.
 
         cd ~/my-app
 

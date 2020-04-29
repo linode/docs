@@ -25,7 +25,7 @@ languages: ["javascript"]
 
 [React](https://reactjs.org/) is a popular JavaScript library for building user interfaces. While React is often used as a frontend for more complex applications, it's also powerful enough to be used for full client-side applications on its own.
 
-Since a basic React app is static (it consists of compiled HTML, CSS, and JavaScript files), it is easy to deploy from a local computer to a Linode using [Rsync](/docs/tools-reference/tools/introduction-to-rsync/). This guide shows how to set up your Linode and local machine so that you can easily deploy your app whenever changes are made. See the [More Information](#more-information) section of this guide for
+Since a basic React app is static (it consists of compiled HTML, CSS, and JavaScript files), it is easy to deploy from a local computer to a Linode using [Rsync](/docs/tools-reference/tools/introduction-to-rsync/). This guide shows how to set up your Debian 10 Linode and local machine so that you can easily deploy your app whenever changes are made.
 
 ## Before You Begin
 
@@ -148,7 +148,7 @@ If you already have a React App that you would like to deploy to your Linode, yo
 
 ### Create your Deployment Script
 
-1.  Navigate your app's directory. Replace `~/my-app` with the location of your React app's directory.
+1.  Navigate to your app's directory. Replace `~/my-app` with the location of your React app's directory.
 
         cd ~/my-app
 
