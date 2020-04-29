@@ -1266,6 +1266,7 @@ servlets
 setattr
 setenvif
 setguid
+setsebool
 setuid
 setuptools
 sfadmin
