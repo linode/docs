@@ -287,7 +287,7 @@ console.log("Server is listening on port 3000.")      //Terminal output
 
     You should see your terminal return a process ID after issuing the previous command. Return to your command prompt by entering **CTRL+C**.
 
-1.  Exit your screen session.
+1.  Exit your tmux session.
 
         exit
 
