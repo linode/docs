@@ -16,9 +16,9 @@ contributor:
   link: Github.com/Guaris
 ---
 
-Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly taught programming language for people entering into the field of software development. A lot of it's poplularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages. 
+Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly taught programming language for people entering into the field of software development. A lot of it's poplularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
 
-Unlike other Linux distributions, CentOS 8 does not come with a version of Python installed. Currently Python 3.8 is the latest major version of Python. The CentOS package repository includes Python 3.6, but Python 3.8 includes support for many large changes in the Python programming language. Python 3.8 on Centos 8. 
+Unlike other Linux distributions, CentOS 8 does not come with a version of Python installed. Currently Python 3.8 is the latest major version of Python. The CentOS package repository includes Python 3.6, but Python 3.8 includes support for many large changes in the Python programming language. Python 3.8 on Centos 8.
 
 
 ## Before You Begin
@@ -31,7 +31,7 @@ Unlike other Linux distributions, CentOS 8 does not come with a version of Pytho
 
 ## Installing Python 3.8
 
-We are going to have to build Python 3.8 from source to install it on CentOS 8. 
+We are going to have to build Python 3.8 from source to install it on CentOS 8.
 
 1. Download the dependencies to build the package:
 
@@ -101,6 +101,6 @@ Python 2.7.16
 {{< /output >}}
 
 
-It's important to remember that Python2 will no longer be supported by the Python foundation, so there will be no new updates, or fixes. Applications are making the switch to Python 3, and distributions like Ubuntu 20.04 and CentOS 8 are no longer shipping with Python 2 on by default. 
+It's important to remember that Python2 will no longer be supported by the Python foundation, so there will be no new updates, or fixes. Applications are making the switch to Python 3, and distributions like Ubuntu 20.04 and CentOS 8 are no longer shipping with Python 2 on by default.
 
 

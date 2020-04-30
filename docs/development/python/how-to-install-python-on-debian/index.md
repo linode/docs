@@ -16,9 +16,9 @@ contributor:
   link: Github.com/Guaris
 ---
 
-Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly taught programming language for people entering into the field of software development. A lot of it's poplularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages. 
+Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly taught programming language for people entering into the field of software development. A lot of it's poplularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
 
-As of January 1, 2020, the official version of Python is Python 3. Python 2, is no longer a supported language. This guide will walk you through installing the latest version of Python 3 on Debian 10. If you are interested in porting your already existing Python 2 code to Python 3, please refer to the [official documentation](https://docs.python.org/3/howto/pyporting.html), on how to do so. 
+As of January 1, 2020, the official version of Python is Python 3. Python 2, is no longer a supported language. This guide will walk you through installing the latest version of Python 3 on Debian 10. If you are interested in porting your already existing Python 2 code to Python 3, please refer to the [official documentation](https://docs.python.org/3/howto/pyporting.html), on how to do so.
 
 ## Before You Begin
 
@@ -42,7 +42,7 @@ For Python 2:
 Python 2.7.16
 {{< /output>}}
 
-or for Python 3: 
+or for Python 3:
 
     python3 --version
 
@@ -59,26 +59,26 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 {{< /output >}}
 
-In the interpreter you can write Python code in real time, like this: 
+In the interpreter you can write Python code in real time, like this:
 
     print('hello world')
 
-And the interpreter will instantly return: 
+And the interpreter will instantly return:
 
 {{< output >}}
 hello world
 {{< /output >}}
 
 You can exit the interpreter by typing:
-    
+
     exit()
-    
+
 ## How to Upgrade from Python 3.7 to 3.8
 
-The latest stable version of Python 3 is 3.8. On a fresh Debian 10 install, the installed version of Python 3 is 3.7. There were a lot of [major changes](https://docs.python.org/3/whatsnew/3.8.html) between Python 3.7 and 3.8 that could be useful to take advantage of when writing code. Python 3.8 may become a dependency for certain applications running on your system as well. To upgrade our version of Python 3.7 to 3.8, we will need to add the ability to use Debian's testing repositories. 
+The latest stable version of Python 3 is 3.8. On a fresh Debian 10 install, the installed version of Python 3 is 3.7. There were a lot of [major changes](https://docs.python.org/3/whatsnew/3.8.html) between Python 3.7 and 3.8 that could be useful to take advantage of when writing code. Python 3.8 may become a dependency for certain applications running on your system as well. To upgrade our version of Python 3.7 to 3.8, we will need to add the ability to use Debian's testing repositories.
 
 1. Open the `/etc/apt/sources.list` file with:
-        
+
         sudo nano /etc/apt/sources.list
 
 2. Add the testing repo by adding this text to the file:
@@ -86,7 +86,7 @@ The latest stable version of Python 3 is 3.8. On a fresh Debian 10 install, the 
         deb http://http.us.debian.org/debian/ testing non-free contrib main
 
 
-    Your file should match this: 
+    Your file should match this:
 
 
     {{< file "/etc/apt/sources.list" yaml>}}
@@ -105,7 +105,7 @@ deb-src http://mirrors.linode.com/debian-security buster/updates main
 deb http://mirrors.linode.com/debian buster-updates main
 deb-src http://mirrors.linode.com/debian buster-updates main
 
-# Debian Testing Non-Free 
+# Debian Testing Non-Free
 
 deb http://http.us.debian.org/debian/ testing non-free contrib main
 
@@ -131,17 +131,17 @@ deb http://http.us.debian.org/debian/ testing non-free contrib main
 5. Verify the Python version:
 
         python3 --version
-        
+
     {{< output >}}
 Python 3.8.2
 {{< /output >}}
 
 
-Now your Debian 10 system has the latest version of Python 3 installed. Because of Debian's commitment to stability, Python 2 is still installed on the system, there will be default packages that depend on Python 2. On Debian 10, Python 2 will continue to be supported past the EOL date of Python 2. It is not recommended to remove the Python 2 binary from your sytem, but instead interact with Python 3 using the `python3` command. 
+Now your Debian 10 system has the latest version of Python 3 installed. Because of Debian's commitment to stability, Python 2 is still installed on the system, there will be default packages that depend on Python 2. On Debian 10, Python 2 will continue to be supported past the EOL date of Python 2. It is not recommended to remove the Python 2 binary from your sytem, but instead interact with Python 3 using the `python3` command.
 
 ## Additional Information
 
-On Debian 10, the binary for Python 2 is located at `/usr/bin/python`, and the binary for Python3 is located at `/usr/local/bin/python3`. 
+On Debian 10, the binary for Python 2 is located at `/usr/bin/python`, and the binary for Python3 is located at `/usr/local/bin/python3`.
 
-In this guide, you updated from Python 3.7 to Python 3.8 using the Debian Testing repository. There is another method that invovles compiling the binary from source. Both are acceptable methods, but compiling from source may introduce complexity if your previous version of Python had modules installed already. If you are compiling from source, it is important to understand that all public, meaning modules you want to use across your system, must be installed in the Python 3 Modules directiory: `/usr/lib/python3/dist-packages`. 
+In this guide, you updated from Python 3.7 to Python 3.8 using the Debian Testing repository. There is another method that invovles compiling the binary from source. Both are acceptable methods, but compiling from source may introduce complexity if your previous version of Python had modules installed already. If you are compiling from source, it is important to understand that all public, meaning modules you want to use across your system, must be installed in the Python 3 Modules directiory: `/usr/lib/python3/dist-packages`.
 
