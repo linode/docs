@@ -7,6 +7,8 @@ og_description: 'K3s is lightweight Kubernetes, which is easy to install. This g
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "debian 10"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-30
+modified_by:
+  name: Linode
 title: How to Deploy K3s on Linode
 h1_title: Deploying K3s on Linode
 external_resources:
@@ -14,7 +16,7 @@ external_resources:
   - '[Kubernetes Official Docs] (https://kubernetes.io/docs/)'
 ---
 
-K3s is lightweight Kubernetes, which is easy to install. It is a fully compliant Kubernetes distribution with an embedded SQLite database as the default datastore and supports external datastores such as PostgreSQL, MySQL, and etcd. K3s includes a local storage provider, a service load balancer, a Helm controller, and the Traefik ingress controller. It also automates and manages complex cluster operations such as distributing certificates. In other words, you can run a highly available, certified Kubernetes distribution designed for production workloads on [nanodes](https://www.linode.com/products/nanodes/) as well.
+K3s is lightweight Kubernetes, which is easy to install. It is a fully compliant Kubernetes distribution with an embedded SQLite database as the default datastore and supports external datastore such as PostgreSQL, MySQL, and etcd. K3s includes a local storage provider, a service load balancer, a Helm controller, and the Traefik ingress controller. It also automates and manages complex cluster operations such as distributing certificates. In other words, you can run a highly available, certified Kubernetes distribution designed for production workloads on [nanodes](https://www.linode.com/products/nanodes/) as well.
 
   {{< note >}}
   You can deploy a K3s cluster on just about any flavor of Linux. However, K3s is officially tested on Ubuntu 16.04 and Ubuntu 18.04. If you are deploying K3s on CentOS where SELinux is enabled by default, then you must ensure that proper SELinux policies are installed. For more information, see [SELinux support](https://rancher.com/docs/k3s/latest/en/advanced/#experimental-selinux-support).{{< /note >}}
@@ -45,7 +47,7 @@ K3s is lightweight Kubernetes, which is easy to install. It is a fully compliant
 
 ## Install K3s Server
 
-1.  Connect to the linode where you want to install K3s server:
+1.  Connect to the Linode where you want to install K3s server:
 
         ssh example_user@192.0.2.0
 
@@ -75,7 +77,7 @@ K3s is lightweight Kubernetes, which is easy to install. It is a fully compliant
 
 ## Install K3s Agent
 
-1.  Connect to the linode where you want to install K3s agent:
+1.  Connect to the Linode where you want to install K3s agent:
 
         ssh example_user@192.0.2.1
 
