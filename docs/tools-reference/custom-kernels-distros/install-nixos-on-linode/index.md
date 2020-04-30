@@ -33,15 +33,11 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 ## Prepare Your Linode
 
-You can use a pre-existing Linode, or you can create a new one.
-If you're using a pre-existing Linode, go to the `Create Disks for Nix` section,
-and resize your images into that approximate format.
+You can use a pre-existing Linode, or you can create a new one. If you're using a pre-existing Linode, go to the [Create Disks for Nix](create-disks-for-nix) section, and resize your images into that approximate format.
 
 ### Create a new Linode
 
-To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/linodes/create).
-Under Images, deselect the default by clicking X.
-Then select a region, plan, label, and tags (if desired). Click the **Create** button to start the server.
+To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/linodes/create). Under Images, deselect the default by clicking X. Then select a region, plan, label, and tags (if desired). Click the **Create** button to start the server.
 
 ### Create Disks for Nix
 
