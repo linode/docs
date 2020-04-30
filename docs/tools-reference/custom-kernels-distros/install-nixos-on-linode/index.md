@@ -33,8 +33,14 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 ## Prepare Your Linode
 
-Start with a pre-existing Linode, or go to the [Create Linode page](https://cloud.linode.com/linodes/create).
-Under Images, choose any image, this will be replaced with the NixOs installation.
+You can use a pre-existing Linode, or you can create a new one.
+If you're using a pre-existing Linode, go to the `Create Disks for Nix` section,
+and resize your images into that approximate format.
+
+### Create a new Linode
+
+To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/linodes/create).
+Under Images, deselect the default by clicking X.
 Then select a region, plan, label, and tags (if desired). Click the **Create** button to start the server.
 
 ### Create Disks for Nix
@@ -78,8 +84,10 @@ Then select a region, plan, label, and tags (if desired). Click the **Create** b
         # set the iso url to a variable
         iso=<URL for nixos download>
 
-        # Download the ISO and write it to the installer disk:
-        curl -L $iso | dd of=/dev/sda
+        # Download the ISO, write it to the installer disk, and verify the checksum:
+        curl -L $iso | tee >(dd of=/dev/sda) | sha256sum
+
+1.  The checksum should be the same as that in the contents of the checksum file linked next to the download link. Verify it before proceeding.
 
 ## Install NixOS
 
@@ -243,7 +251,7 @@ NixOS is now installed and can be booted from the **Boot** profile created in [C
 
 1.  `ssh` in with the user to test, then set `permitRootLogin` to "no" in `/etc/nixos/configuration.nix`, and rebuild your config:
 
-        nixos-rebuild switch
+        sudo nixos-rebuild switch
 
 ## Create an Image of your Linode
 
