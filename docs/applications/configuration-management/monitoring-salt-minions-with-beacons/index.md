@@ -9,6 +9,7 @@ published: 2018-10-19
 modified: 2019-01-02
 modified_by:
   name: Linode
+image: MonitoringSaltMinionswithBeacons.png
 title: "Monitoring Salt Minions with Beacons"
 external_resources:
 - '[Salt Beacons Documentation](https://docs.saltstack.com/en/latest/topics/beacons/)'

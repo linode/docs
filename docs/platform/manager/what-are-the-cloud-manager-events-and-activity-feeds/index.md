@@ -6,6 +6,7 @@ description: 'Understanding the event and activity feeds in the Linode Cloud Man
 og_description: 'Understanding the event and activity feeds in the Linode Cloud Manager'
 keywords: ["accounts", "passwords", "linode manager", "manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: UnderstandingtheCloudManagerEventsandActivityFeeds.png
 title: "What Are the Cloud Manager Events and Activity Feeds"
 h1_title: "Understanding the Cloud Manager Events and Activity Feeds"
 published: 2019-12-26

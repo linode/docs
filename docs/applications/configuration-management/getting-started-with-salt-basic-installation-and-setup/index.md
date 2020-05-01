@@ -9,6 +9,7 @@ aliases: ['applications/salt/install-salt/','applications/configuration-manageme
 modified: 2019-01-02
 modified_by:
     name: Linode
+image: GettingStartedwithSalt.png
 published: 2015-09-22
 title: Getting Started with Salt - Basic Installation and Setup
 ---

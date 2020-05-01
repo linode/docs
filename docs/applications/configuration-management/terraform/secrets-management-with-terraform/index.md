@@ -9,6 +9,7 @@ published: 2018-12-12
 modified: 2019-08-09
 modified_by:
   name: Linode
+image: SecretsManagementwithTerraform.png
 title: "Secrets Management with Terraform"
 contributor:
   name: Linode

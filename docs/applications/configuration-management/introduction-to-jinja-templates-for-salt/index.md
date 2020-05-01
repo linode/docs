@@ -8,6 +8,7 @@ published: 2018-10-29
 modified: 2019-01-02
 modified_by:
   name: Linode
+image: IntroductiontoJinjaTemplatesforSalt.png
 title: "Introduction to Jinja Templates for Salt"
 contributor:
   name: Linode

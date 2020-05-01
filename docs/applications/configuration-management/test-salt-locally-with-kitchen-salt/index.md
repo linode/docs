@@ -9,6 +9,7 @@ published: 2018-10-15
 modified: 2019-01-02
 modified_by:
   name: Linode
+image: TestSaltStatesLocallywithKitchenSalt.png
 title: "Test Salt States Locally with KitchenSalt"
 external_resources:
 - '[KitchenSalt Documentation](https://kitchen.saltstack.com/docs/file/README.rdoc)'

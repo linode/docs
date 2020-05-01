@@ -10,6 +10,7 @@ published: 2020-01-03
 modified: 2020-01-03
 modified_by:
     name: Linode
+image: UseUnicornandNginxtoConfigureRubyon-RailsApplicationsonUbuntu1804.png
 title: 'Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 18.04'
 external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'

@@ -9,6 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-08
 modified_by:
   name: Linode
+image: Searchinginthe-CloudManager.png
 title: "How to Search in the Cloud Manager"
 h1_title: "Searching in the Cloud Manager"
 contributor:
