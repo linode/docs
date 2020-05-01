@@ -32,7 +32,7 @@ The [Ruby on Rails Options](#ruby-on-rails-options) section of this guide provid
 
 ### Ruby on Rails Options
 
-You can configure your Drupal App by providing values for the following fields:
+You can configure your Ruby on Rails App by providing values for the following fields:
 
 | **Field** | **Description** |
 |:--------------|:------------|
