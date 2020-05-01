@@ -20,8 +20,6 @@ audiences: ["beginner"]
 languages: ["javascript"]
 ---
 
-![How to Build and Use VueJS Components](vue-js-logo.png)
-
 ## What are VueJS Components
 
 In VueJS, [components](https://vuejs.org/v2/guide/components.html) are a way to create custom VueJS instances which can easily be reused in your code. In order to properly explain what VueJS components are we will build a very simple `rating-counter` component.
