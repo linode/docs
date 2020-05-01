@@ -18,9 +18,11 @@ audiences: ["beginner"]
 languages: ["java"]
 ---
 
-This guide will show you how to install OpenJDK 11 on Ubuntu 18.04. Applications that are written with Java can be compiled and run on any system, which has made Java a prized development platform.
+[Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Software written in Java can be compiled and run on any system, making Java a versatile platform that can be used to create anything from software to basic web applications. This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04.
 
-OpenJDK is an open source implementation of the Java Platform Standard Edition (Java SE) Development Kit. OpenJDK includes tools for developing and compiling Java applications as well as OpenJRE, a Java runtime environment (JRE). While there are many available versions of OpenJDK, OpenJDK 11 is the latest Long-Term-Support (LTS) release as of the time of this guide's publication. For this reason, OpenJDK 11 is the recommended version for developing production applications.
+OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit. OpenJDK and Java SE are equivalent JDKs that include a Java runtime environment (JRE) and tools for developing and compiling Java applications.
+
+While there are many available versions of OpenJDK, version 11 is the latest Long-Term-Support (LTS) release as of the time of this guide's publication. For this reason, OpenJDK 11 is the recommended version for developing production applications.
 
 ## Before You Begin
 
