@@ -15,6 +15,12 @@ h1_title: "Enabling Third Party Authentication on Your Linode Account"
 
 Linode Cloud Manager supports Third-Party Authentication (TPA). This allows you to log in to the Linode Cloud Manager with another provider's login credentials.
 
+{{< note >}}
+Enabling TPA disables Two Factor Authentication (TFA) on your Linode account. You should enable TFA with the TPA provider with which you choose to authenticate to Linode.
+
+Additionally, enabling TPA disables password authentication in the Lish console. You can still authenticate to Lish with an SSH key. For more information on SSH key authentication with Lish, visit our [USing the Linode Shell (Lish) guide](/docs/platform/manager/using-the-linode-shell-lish/#add-your-public-key)
+{{</ note >}}
+
 ## Enabling Third Party Authentication
 
 1.  To get started with TPA, log in to the [Linode Cloud Manager](https://cloud.linode.com) using your existing username and password.
@@ -23,7 +29,7 @@ Linode Cloud Manager supports Third-Party Authentication (TPA). This allows you 
 
     ![Navigate to your profile by clicking on your username in the top right of the screen](profile-menu.png)
 
-1.  Click on the **Password & Authentication** tab, then click on the **Third Party Authentication** tab.
+1.  Click on the **Password & Authentication** tab, then click on the **Third Party Authentication** sub-tab.
 
     ![Navigate to the Password & Authentication tab, then the Third Party Authentication tab](third-party-authentication.png)
 
@@ -53,7 +59,7 @@ Enabling Third Party Authentication disables your current Linode password and Tw
 
     ![Disable a Third Party Authentication provider.](disable-tpa.png)
 
-1.  A prompt will appear confirming that you've disabled the TPA provider on your Linode account. You will need to click on the **Reset Password** button to send a password reset link to your email. This will be delivered to the email address associated with the Linode account, and not the email associated with the TPA provider. You will need to follow the link in that email to reset your Linode Cloud Manager password.
+1.  A prompt will appear confirming that you've disabled the TPA provider on your Linode account. At this point, your session will be invalidated and you'll be logged out of Cloud Manager. You will need to click on the **Reset Password** button to send a password reset link to your email. This will be delivered to the email address associated with the Linode account, and not the email associated with the TPA provider. You will need to follow the link in that email to reset your Linode Cloud Manager password.
 
     ![Send password reset email.](confirm-disable-tpa.png)
 
