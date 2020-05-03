@@ -36,7 +36,7 @@ On OSX, the easiest way to install the correct version of Hugo is with [Homebrew
 
 ### Linux
 
-Go to the [0.52 Hugo release page on GitHub](https://github.com/gohugoio/hugo/releases/v0.52) download the most up to date binary for your platform. These commands will download the 64 bit binary for Linux and place it in `/usr/local/bin`:
+Go to the [0.52 Hugo release page on GitHub](https://github.com/gohugoio/hugo/releases/v0.52) and download the most up to date binary for your platform. These commands will download the 64 bit binary for Linux and place it in `/usr/local/bin`:
 
     curl -OL https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.tar.gz
     tar -xvzf hugo_0.52_Linux-64bit.tar.gz
