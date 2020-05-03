@@ -176,7 +176,7 @@ If your web server is responding with an error code, your troubleshooting will v
 
     The web server requested a resource from a process it depends on, but the process did not respond as expected. For example, if a database query needs to be performed for a web request, but the database isn't running, then a 50X code will be returned. To troubleshoot these issues, investigate the service that the web server depends on.
 
-### Troubleshoot Databases
+## Troubleshoot Databases
 
 ### Is your Disk Full?
 
