@@ -16,7 +16,7 @@ contributor:
   link: Github.com/Guaris
 ---
 
-Python is a popular programming language built in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly taught programming language for people entering into the field of software development. A lot of it's poplularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
+Python is a popular programming language built in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of it's poplularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
 
 As of January 1, 2020, the official version of Python is Python 3. Python 2, is no longer a supported language. This guide will walk you through installing the latest version of Python 3 on Ubuntu. If you are interested in porting your already existing Python 2 code to Python 3, please refer to the [official documentation](https://docs.python.org/3/howto/pyporting.html), on how to do so.
 
@@ -44,6 +44,7 @@ Python 3.8.2 (default, Mar 13 2020, 10:14:16)
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 {{< /output >}}
+
 The interpreter outputs the version number, and the version of the C compiler that Python uses on Linux, and some initial commands to get started. The installed version of Python is `3.8.2`.
 
 The Python Interpreter, sometimes referred to as the Python Shell, or the Python Interactive Shell, is a tool that lets you interact with Python from the command line. Try it, type:
@@ -64,10 +65,8 @@ You can exit the interpreter by typing:
 Ubuntu 20.04 is the latest LTS version of Ubuntu. It's also the first version where the previous version of Python, Python 2, is not installed by default. You may run in to compatibility issues installing applications that are still using Python 2. These incompatbility issues will mention:
 
 {{< output >}}
-
 This Package depends on python; however:
   Package python is not installed.
-
 {{< /output >}}
 
 This is because packages that depended on Python 2, labeled the Python 2 binary as `python`, and the Python 3 binary as `python3`. In previous versions of Ubuntu, there existed a symbolic link between Python, `python` and `/usr/bin/python`. You can restore this symbolic link to help fix compatibility issues by installing the `python-is-python3` package.

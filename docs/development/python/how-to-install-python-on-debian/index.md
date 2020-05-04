@@ -16,7 +16,7 @@ contributor:
   link: Github.com/Guaris
 ---
 
-Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly taught programming language for people entering into the field of software development. A lot of it's poplularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
+Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of its popularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
 
 As of January 1, 2020, the official version of Python is Python 3. Python 2, is no longer a supported language. This guide will walk you through installing the latest version of Python 3 on Debian 10. If you are interested in porting your already existing Python 2 code to Python 3, please refer to the [official documentation](https://docs.python.org/3/howto/pyporting.html), on how to do so.
 
@@ -42,7 +42,7 @@ For Python 2:
 Python 2.7.16
 {{< /output>}}
 
-or for Python 3:
+For Python 3:
 
     python3 --version
 
@@ -81,7 +81,7 @@ The latest stable version of Python 3 is 3.8. On a fresh Debian 10 install, the 
 
         sudo nano /etc/apt/sources.list
 
-2. Add the testing repo by adding this text to the file:
+2. Add the official testing repo by adding this text to the file:
 
         deb http://http.us.debian.org/debian/ testing non-free contrib main
 
@@ -125,10 +125,10 @@ deb http://http.us.debian.org/debian/ testing non-free contrib main
         sudo apt upgrade Python3
 
     {{< note >}}
-   Because Python3 requires a lot of dependencies you will be prompted to allow Debian to restart certain services. If you are not running any active proccesses, this is okay. Otherwise, you may decide to restart the services yourself.
+   Because Python3 requires a lot of dependencies you will be prompted to allow Debian to restart certain services. If you are not running any active processes, this is okay. Otherwise, you may decide to restart the services yourself.
    {{< /note >}}
 
-5. Verify the Python version:
+5. Verify that you've upated Python by checking the version:
 
         python3 --version
 

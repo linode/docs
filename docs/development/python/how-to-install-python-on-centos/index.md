@@ -2,23 +2,25 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Centos 8 does not come with Python installed. Python 3 is the only supported version of Python. This guide will walk you through installing Python 3.8, the latest major release of Python, from source. And Installing Python 3.6 on Centos 8.'
-og_description: 'This guide will walk you through Installing Python 3 on Centos 8'
-keywords: ['How to Install Python on Centos 8','Python','Python3','Python 2 end of life']
+description: 'CentOS 8 does not come with Python installed. Python 3 is the only supported version of Python. This guide will walk you through installing Python 3.8, the latest major release of Python, from source. And Installing Python 3.6 on CentOS 8.'
+og_description: 'This guide will walk you through Installing Python 3 on CentOS 8'
+keywords: ['How to Install Python on CentOS 8','Python','Python3','Python 2 end of life']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-27
 modified_by:
   name: Linode
 title: "How to Install Python 3 on CentOS 8"
-h1_title: "How to Install Python on Centos 8"
+h1_title: "How to Install Python on CentOS 8"
 contributor:
   name: Angel Guarisma
   link: Github.com/Guaris
 ---
 
-Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly taught programming language for people entering into the field of software development. A lot of it's poplularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
+Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of it's popularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
 
-Unlike other Linux distributions, CentOS 8 does not come with a version of Python installed. Currently Python 3.8 is the latest major version of Python. The CentOS package repository includes Python 3.6, but Python 3.8 includes support for many large changes in the Python programming language. Python 3.8 on Centos 8.
+As of January 1, 2020, the official version of Python is Python 3. Python 2, is no longer a supported language. This guide will walk you through installing the latest version of Python 3 on Ubuntu. If you are interested in porting your already existing Python 2 code to Python 3, please refer to the [official documentation](https://docs.python.org/3/howto/pyporting.html), on how to do so.
+
+Unlike other Linux distributions, CentOS 8 does not come with a version of Python installed. Currently Python 3.8 is the latest major version of Python. The CentOS package repository includes Python 3.6, but Python 3.8 includes support for many major changes in the Python programming language. This guide will walk you through installing Python 3.8 on CentOS from source. It will also cover how to install Python 3.6 from the CentOS repository.
 
 
 ## Before You Begin
@@ -101,6 +103,6 @@ Python 2.7.16
 {{< /output >}}
 
 
-It's important to remember that Python2 will no longer be supported by the Python foundation, so there will be no new updates, or fixes. Applications are making the switch to Python 3, and distributions like Ubuntu 20.04 and CentOS 8 are no longer shipping with Python 2 on by default.
+It's important to remember that Python2 will no longer be supported by the Python foundation, so there will be no new updates, or fixes. Applications are making the switch to Python 3, and distributions like Ubuntu 20.04 and CentOS 8 are no longer shipping with Python 2 by default.
 
 
