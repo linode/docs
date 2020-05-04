@@ -13,6 +13,8 @@ modified_by:
 published: 2015-01-14
 title: 'How to Install Node.js and NGINX on Debian'
 aliases: ['websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/','websites/nodejs/nodejs-nginx-debian/','websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/index.cfm/']
+deprecated: true
+deprecated_link: 'development/nodejs/how-to-install-nodejs-and-nginx-on-debian-10/'
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
