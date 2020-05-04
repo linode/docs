@@ -13,7 +13,7 @@ title: "How to Install Python 3 on Debian 10"
 h1_title: "How to Install Python on Debian 10"
 contributor:
   name: Angel Guarisma
-  link: Github.com/Guaris
+  link: https://github.com/Guaris/
 ---
 
 Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of its popularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
@@ -128,7 +128,7 @@ deb http://http.us.debian.org/debian/ testing non-free contrib main
    Because Python3 requires a lot of dependencies you will be prompted to allow Debian to restart certain services. If you are not running any active processes, this is okay. Otherwise, you may decide to restart the services yourself.
    {{< /note >}}
 
-5. Verify that you've upated Python by checking the version:
+5. Verify that you've updated Python by checking the version:
 
         python3 --version
 
@@ -137,11 +137,11 @@ Python 3.8.2
 {{< /output >}}
 
 
-Now your Debian 10 system has the latest version of Python 3 installed. Because of Debian's commitment to stability, Python 2 is still installed on the system, there will be default packages that depend on Python 2. On Debian 10, Python 2 will continue to be supported past the EOL date of Python 2. It is not recommended to remove the Python 2 binary from your sytem, but instead interact with Python 3 using the `python3` command.
+Now your Debian 10 system has the latest version of Python 3 installed. Because of Debian's commitment to stability, Python 2 is still installed on the system, there will be default packages that depend on Python 2. On Debian 10, Python 2 will continue to be supported past the EOL date of Python 2. It is not recommended to remove the Python 2 binary from your system, but instead interact with Python 3 using the `python3` command.
 
 ## Additional Information
 
 On Debian 10, the binary for Python 2 is located at `/usr/bin/python`, and the binary for Python3 is located at `/usr/local/bin/python3`.
 
-In this guide, you updated from Python 3.7 to Python 3.8 using the Debian Testing repository. There is another method that invovles compiling the binary from source. Both are acceptable methods, but compiling from source may introduce complexity if your previous version of Python had modules installed already. If you are compiling from source, it is important to understand that all public, meaning modules you want to use across your system, must be installed in the Python 3 Modules directiory: `/usr/lib/python3/dist-packages`.
+In this guide, you updated from Python 3.7 to Python 3.8 using the Debian Testing repository. There is another method that involves compiling the binary from source. Both are acceptable methods, but compiling from source may introduce complexity if your previous version of Python had modules installed already. If you are compiling from source, it is important to understand that all public, meaning modules you want to use across your system, must be installed in the Python 3 Modules directory: `/usr/lib/python3/dist-packages`.
 

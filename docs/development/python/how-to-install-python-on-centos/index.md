@@ -13,7 +13,7 @@ title: "How to Install Python 3 on CentOS 8"
 h1_title: "How to Install Python on CentOS 8"
 contributor:
   name: Angel Guarisma
-  link: Github.com/Guaris
+  link: https://github.com/Guaris/
 ---
 
 Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of it's popularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
