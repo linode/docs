@@ -74,3 +74,5 @@ Your cPanel One-Click App installation will automatically receive a free 15-day 
     ![cPanel home page](cpanel-home-page.png)
 
     Now that you've accessed your WHM homepage, read [cPanel and WHM's user documentation](https://documentation.cpanel.net/display/78Docs/WebHost+Manager+-+WHM+User+Documentation) to learn how to further configure your cPanel instance.
+
+{{< content "one-click-update-note">}}

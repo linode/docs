@@ -60,7 +60,7 @@ Issue the following commands to update your system and install the nginx web ser
     apt-get upgrade
     apt-get install nginx php5-cli php5-cgi spawn-fcgi
 
-Various additional dependency packages will be installed along with the ones we requested. Once the installation process finishes, you may wish to make sure nginx is running by browsing to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com/)). You should get the default NGINX page.
+Various additional dependency packages will be installed along with the ones we requested. Once the installation process finishes, you may wish to make sure nginx is running by browsing to your Linode's IP address (found on the **Networking** tab in the [Linode Cloud Manager](http://cloud.linode.com/)). You should get the default NGINX page.
 
 # Configure Your Site
 

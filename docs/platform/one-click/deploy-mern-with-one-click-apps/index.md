@@ -75,3 +75,5 @@ After your MERN One-click App has finished installing, you can:
 | **React** | JavaScript library |
 | **Node JS** | Runtime environment |
 | **UFW (UncomplicatedFirewall)** | Firewall utility. Ports 22/tcp for IPv4 and IPv6 will allow incoming traffic. All other ports will have the following firewall rules: deny (incoming), allow (outgoing). |
+
+{{< content "one-click-update-note">}}

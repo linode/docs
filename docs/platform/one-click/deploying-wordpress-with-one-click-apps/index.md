@@ -106,3 +106,5 @@ The WordPress One-Click App will install the following required software on your
 | [**WP CLI**](https://wp-cli.org/) | The command line interface for WordPress. |
 
 {{< content "email-warning-shortguide" >}}
+
+{{< content "one-click-update-note">}}

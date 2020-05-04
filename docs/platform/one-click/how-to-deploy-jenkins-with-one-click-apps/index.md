@@ -64,3 +64,5 @@ After deploying your Jenkins instance, you are ready to log in and continue the 
 1. After you have installed the desired plugins, you will be prompted to create your first admin user. Since the login password retrieved in the beginning of this section is temporary, you should create your admin user now.
 
     ![Create your first Jenkins admin user.](create-admin-user.png)
+
+{{< content "one-click-update-note">}}

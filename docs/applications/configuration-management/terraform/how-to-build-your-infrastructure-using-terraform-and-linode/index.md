@@ -642,7 +642,7 @@ Create a deployment for an imaginary client:
 
 1.  Create a `main.tf` configuration file inside `client1/` that uses your module. The module is referenced by providing the path to the module's configuration. Substitute in your API token, SSH key, and root password where indicated:
 
-    {{< file "~/terraform/testing/main.tf" aconf >}}
+    {{< file "~/terraform/client1/main.tf" aconf >}}
 # Client 1 Infrastructure
 provider "linode" {
   token = "YOUR_LINODE_API_TOKEN"

@@ -9,6 +9,7 @@ published: 2018-11-12
 modified: 2019-01-02
 modified_by:
   name: Linode
+image: UseandModifyOfficialSaltStackFormulas.png
 title: "Use and Modify Official SaltStack Formulas"
 contributor:
   name: Linode

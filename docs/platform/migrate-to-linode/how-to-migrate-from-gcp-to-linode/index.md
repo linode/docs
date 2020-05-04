@@ -8,6 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-21
 modified_by:
   name: Linode
+image: MigratingaGoogleCloudPlatformVMInstancetoLinode.png
 title: 'How to Migrate from Google Cloud Platform to Linode'
 h1_title: 'Migrating a Google Cloud Platform VM Instance to Linode'
 contributor:

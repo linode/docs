@@ -9,6 +9,7 @@ published: 2018-11-06
 modified: 2019-01-02
 modified_by:
   name: Linode
+image: SecretsManagementwithSalt.png
 title: "Secrets Management with Salt"
 contributor:
   name: Linode

@@ -9,6 +9,7 @@ published: 2018-12-12
 modified: 2018-12-12
 modified_by:
   name: Linode
+image: CreateaNodeBalancerwitTerraform.png
 title: "Create a NodeBalancer with Terraform"
 contributor:
   name: Linode

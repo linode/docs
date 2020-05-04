@@ -146,8 +146,9 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
         exit
 
-
 ## Next Steps
+
+{{< content "one-click-update-note">}}
 
 For more on MySQL/MariaDB, checkout the following guides:
 

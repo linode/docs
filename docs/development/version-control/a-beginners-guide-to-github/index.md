@@ -25,6 +25,8 @@ The Write For Linode freelance contributor program offers payment for new guides
 
 This guide assumes that you've signed up for a [GitHub account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](/docs/development/version-control/how-to-install-git-on-mac-and-windows/) guide.
 
+This guide will also use [Hugo](https://gohugo.io) to create a new guide within the Linode library's repository. Please visit [CONTRIBUTING.md](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md#install-hugo) for installation instructions for Hugo version 0.52.
+
 {{< note >}}
 If you are following these instructions on a Windows system, all commands will need to be run via the [Git Bash console](http://git-scm.com/downloads).
 {{< /note >}}

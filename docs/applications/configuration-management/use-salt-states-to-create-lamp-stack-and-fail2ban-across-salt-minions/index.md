@@ -9,6 +9,7 @@ aliases: ['applications/salt/use-salt-states-to-create-lamp-stack-and-fail2ban-a
 modified: 2019-01-02
 modified_by:
     name: Linode
+image: UseSaltStatestoCreateLAMPStackandFail2banAcrossSaltminions.png
 published: 2015-07-02
 title: Use Salt States to Create LAMP Stack and Fail2ban Across Salt minions
 ---

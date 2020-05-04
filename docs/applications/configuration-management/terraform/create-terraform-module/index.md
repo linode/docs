@@ -9,6 +9,7 @@ published: 2018-12-12
 modified: 2019-08-08
 modified_by:
   name: Linode
+image: CreateaTerraformModule.png
 title: "Create a Terraform Module"
 contributor:
   name: Linode

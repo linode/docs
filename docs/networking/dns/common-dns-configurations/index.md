@@ -28,9 +28,9 @@ The Domains section of the Cloud Manager can automatically add all of these reco
 
 ## Configure Subdomains
 
-1.  To configure a subdomain (e.g. `staging.example-site-demo.com`), create an A record with the subdomain's hostname. Click **Add an A/AAA Record**:
+1.  To configure a subdomain (e.g. `staging.example-site-demo.com`), create an A record with the subdomain's hostname. Click **Add an A/AAAA Record**:
 
-    [![Create a new A record by first click on "Add an A/AAA Record"](common-dns-add-an-a-record.png)](common-dns-add-an-a-record.png)
+    [![Create a new A record by first click on "Add an A/AAAA Record"](common-dns-add-an-a-record.png)](common-dns-add-an-a-record.png)
 
 1.  Add the subdomain under the **Hostname** field. Assign the IP address of the server you want to host the subdomain:
 

@@ -65,3 +65,4 @@ The Grafana One-Click App will install and enable the [UFW firewall](/docs/secur
 
 1. Once you are logged into Grafana, complete your configurations by [adding a data source](https://grafana.com/docs/grafana/latest/features/datasources/add-a-data-source/#add-a-data-source), [creating dashboards](https://grafana.com/docs/grafana/latest/guides/getting_started/#create-a-dashboard), and [adding users](https://grafana.com/docs/grafana/latest/permissions/overview/).
 
+{{< content "one-click-update-note">}}

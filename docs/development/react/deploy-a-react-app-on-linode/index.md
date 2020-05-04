@@ -14,6 +14,9 @@ title: "Deploy a React Application on Linode"
 contributor:
   name: Phil Zona
   link: https://twitter.com/philzona
+aliases: ['development/javascript/deploy-a-react-app-on-linode/']
+deprecated: true
+deprecated_link: 'development/react/'
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
 - '[Deploy a React App with Sass Using NGINX](http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
