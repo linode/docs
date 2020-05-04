@@ -16,7 +16,7 @@ contributor:
   link: Github.com/Guaris
 ---
 
-Python is a popular programming language built in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of it's poplularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
+Python is a popular programming language built in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of it's popularity is based on Python's high level of abstraction that makes writing and reading the code easier than other languages.
 
 As of January 1, 2020, the official version of Python is Python 3. Python 2, is no longer a supported language. This guide will walk you through installing the latest version of Python 3 on Ubuntu. If you are interested in porting your already existing Python 2 code to Python 3, please refer to the [official documentation](https://docs.python.org/3/howto/pyporting.html), on how to do so.
 
@@ -62,7 +62,7 @@ You can exit the interpreter by typing:
 
 ## Additional Information
 
-Ubuntu 20.04 is the latest LTS version of Ubuntu. It's also the first version where the previous version of Python, Python 2, is not installed by default. You may run in to compatibility issues installing applications that are still using Python 2. These incompatbility issues will mention:
+Ubuntu 20.04 is the latest LTS version of Ubuntu. It's also the first version where the previous version of Python, Python 2, is not installed by default. You may run in to compatibility issues installing applications that are still using Python 2. These incompatibility issues will mention:
 
 {{< output >}}
 This Package depends on python; however:
@@ -84,4 +84,4 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 {{< /output >}}
 
-This package creates a symbolic link between the Python 3 binary at `/usr/bin/python3` and where Python 2 used to be installed `/usr/bin/python`. This allows you to use Python with both the `python`, and `python3` commands. Most importantlt, packages that rely on `python` to be installed in `/usr/bin/python`, will be able to install.
+This package creates a symbolic link between the Python 3 binary at `/usr/bin/python3` and where Python 2 used to be installed `/usr/bin/python`. This allows you to use Python with both the `python`, and `python3` commands. Most important packages that rely on `python` to be installed in `/usr/bin/python`, will be able to install.
