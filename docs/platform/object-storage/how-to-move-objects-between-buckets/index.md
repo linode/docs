@@ -20,11 +20,11 @@ external_resources:
 
 {{< content "object-storage-ga-shortguide" >}}
 
-Linode’s Object Storage is a globally-available, S3-compatible method for storing and accessing data. With Object Storage more widly available, you may have buckets in multiple locations, this guide will show you how to move objects between buckets quickly and easily.
+Linode’s Object Storage is a globally-available, S3-compatible method for storing and accessing data. With Object Storage more widely available, you may have buckets in multiple locations, this guide will show you how to move objects between buckets quickly and easily.
 
 In this guide you will learn how to move objects between buckets using:
 
-- [Cyberduck's Graphical Inteface](#cyberduck-graphical-interface)
+- [Cyberduck's Graphical Interface](#cyberduck-graphical-interface)
 
 - [Cyberduck's CLI, duck](#cyberduck-cli)
 
@@ -62,7 +62,7 @@ To transfer objects within the same cluster on the same account, you only need o
 
 ### Transfer Between Buckets in Different Clusters
 
-To transfer objects between two clusters, whether they are on the same account or not, you will need to open two separate Cyberduck widows so that you can make two seperate connections.
+To transfer objects between two clusters, whether they are on the same account or not, you will need to open two separate Cyberduck widows so that you can make two separate connections.
 
 {{< note >}}
 Transferring objects between two different connections will create a copy of the object(s). If you don't want the original files in the source bucket, you'll need to delete them after the transfer.
