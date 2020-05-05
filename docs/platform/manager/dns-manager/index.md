@@ -177,6 +177,19 @@ To modify a Domain's existing DNS records:
 
 1.  Click **Save**. It can take up to 30 minutes for the record to be updated.
 
+### Subdomains
+
+Add a subdomain by adding an entry under the *A/AAAA Record* heading, with just the subdomain. For example, for `subdomain.example.com`
+
+1. Add `subdomain` under *Host*.
+
+1. Set the IP address.
+
+1. Adjust the TTL if necessary.
+
+1. Click **Save**. It can take up to 30 minutes for the record to be updated.
+
+
 ### Wildcards
 
 A wildcard DNS record will match requests for domains that do not exist. Wildcards are often used to point all non-existing subdomains to an existing top level domain. For example, if a queried first-level subdomain does not exist, the IP address specified in the wildcard DNS record will respond.
@@ -195,7 +208,7 @@ To create a [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_rec
 A wildcard must always be the furthest subdomain from the TLD (top level domain), i.e. `*.example.com`. If you would like to add a wildcard as a subdomain for a subdomain, you will need to add a new domain zone for that subdomain and then add the wildcard record to it. For example, to create `*.subdomain.example.com`, you must add a separate domain zone for `subdomain.example.com` first, then add an A/AAAA DNS record to that zone as indicated above.
 {{</ note >}}
 
-### Subdomains
+### Sub-Subdomains
 
 The Linode Cloud Manager does not support the addition of a subdomain on top of an existing subdomain in the same domain zone. For example, if you have `example.com` as a domain with an A record for `subdomain.example.com`, you cannot create `another.subdomain.example.com` within that same domain zone.
 
