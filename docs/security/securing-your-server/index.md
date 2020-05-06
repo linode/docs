@@ -41,7 +41,7 @@ The practicality of automatic updates is something you must judge for yourself b
 Up to this point, you have accessed your Linode as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server.
 
 {{< note >}}
-Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing. 
+Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
 {{< /note >}}
 
 To add a new user, first [log in to your Linode](/docs/getting-started/#log-in-for-the-first-time) via SSH.
