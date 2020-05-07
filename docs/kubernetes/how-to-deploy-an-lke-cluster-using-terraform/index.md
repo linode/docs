@@ -257,6 +257,10 @@ Now that your Kubernetes cluster is deployed, you can use kubectl to connect to 
 
         export KUBE_VAR=`terraform output kubeconfig` && echo $KUBE_VAR | base64 -D > lke-cluster-config.yaml
 
+    {{< note >}}
+Depending on your local operating system, to decode the kubeconfig's base64 format, you may need to replace `base64 -D` with `base64 -d`. For example, this is update is needed on an Ubuntu 18.04 system.
+    {{</ note >}}
+
 1. Add the kubeconfig file to your `$KUBECONFIG` environment variable. This will give kubectl access to your cluster's kubeconfig file.
 
         export KUBECONFIG=lke-cluster-config.yaml
