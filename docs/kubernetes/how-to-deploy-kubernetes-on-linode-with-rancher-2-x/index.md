@@ -221,14 +221,6 @@ All other node template settings are optional and will not be used in this guide
 
     ![Rancher Add Node Template form - single node pool configuration](add-cluster-form-3-node-all-role-pool.png "A node pool with a count of 3 that runs all cluster components")
 
-    {{< note >}}
-When you set up a cluster for production, avoid having a node pool that runs your workloads alongside your etcd or control plane components. An example node pool configuration which splits the etcd and control plane components from your workloads would look like the following:
-
-![Rancher Add Node Template form - example production node pool configuration](add-cluster-form-example-production-node-pools.png "An example node pool configuration for a production cluster")
-
-Review Rancher's [Production Ready Cluster](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/production/) documentation for more guidance on setting up production clusters.
-    {{< /note >}}
-
 1.  The last part in creating your cluster is to configure Linode's CCM and CSI. In the **Cluster Options** section, toggle on the **Custom** option for the **Cloud Provider** field, then click on the **Edit as YAML** button above the section.
 
     ![Rancher Add Node Template form - example production node pool configuration](add-cluster-form-custom-cloud-provider.png "An example node pool configuration for a production cluster")
