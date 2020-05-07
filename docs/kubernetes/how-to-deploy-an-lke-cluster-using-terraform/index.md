@@ -68,7 +68,7 @@ In this section, you will create Terraform configuration files that define the r
 
 1. Using the text editor of your choice, create your cluster’s main configuration file named `main.tf` which will store your resource definitions. Add the following contents to the file.
 
-    {{< file "~/terraform/lke-cluster/maint.tf" >}}
+    {{< file "~/terraform/lke-cluster/main.tf" >}}
 //Use the Linode Provider
 provider "linode" {
   token = var.token
@@ -191,7 +191,7 @@ If you leave out a variable value in this file, Terraform will use the variable'
 label = "example-lke-cluster"
 k8s_version = "1.17"
 region = "us-west"
-pool = [
+pools = [
   {
     type : "g6-standard-2"
     count : 3
@@ -255,7 +255,7 @@ Now that your Kubernetes cluster is deployed, you can use kubectl to connect to 
 
 1. Use Terraform to access your cluster's kubeconfig, decode its contents, and save them to a file. Terraform returns a [base64](https://en.wikipedia.org/wiki/Base64) encoded string (a useful format for automated pipelines) representing your kubeconfig. Replace `lke-cluster-config.yaml` with your preferred file name.
 
-        export KUBE_VAR=`terraform output kubeconfig` && echo $KUBE_VAR | base64 -d > lke-cluster-config.yaml
+        export KUBE_VAR=`terraform output kubeconfig` && echo $KUBE_VAR | base64 -D > lke-cluster-config.yaml
 
 1. Add the kubeconfig file to your `$KUBECONFIG` environment variable. This will give kubectl access to your cluster's kubeconfig file.
 
