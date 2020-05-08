@@ -24,13 +24,19 @@ The [Container Storage Interface](https://github.com/container-storage-interface
 
 This guide assumes you have a working Kubernetes cluster running on Linode. You can deploy a Kubernetes cluster on Linode in the following ways:
 
-1. Use the Linode Kubernetes Engine (LKE) to deploy a cluster. Follow the [Deploy and Manage a Cluster with Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide to get started.
+1. Use the [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/) to deploy a cluster. LKE is Linode's managed Kubernetes service. You can deploy a Kubernetes cluster using LKE in the following ways:
 
-    {{< note >}}
+    - Using the [Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
+    - Using [Linode's API v4](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/)
+    - Follow the [Deploy and Manage a Cluster with Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide to deploy a Kubernetes cluster using the Linode Cloud Manager.
+
+    - Using [Terraform](/docs/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/).
+
+        {{< note >}}
 An LKE cluster will already have Linode's Block Storage CSI Driver installed. For this reason, if you use LKE to deploy your cluster, skip the entire [Installing the CSI Driver](#installing-the-csi-driver) section and move directly to [Create a Persistent Volume Claim](#create-a-persistent-volume-claim).
-    {{</ note >}}
+        {{</ note >}}
 
-1. Deploy a cluster using Terraform and the [Linode Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.1).
+1. Deploy an [unmanaged Kubernetes cluster using Terraform](/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/).
 
 1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) guide to do this.
 
