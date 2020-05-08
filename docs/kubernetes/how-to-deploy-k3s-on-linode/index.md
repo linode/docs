@@ -19,7 +19,8 @@ external_resources:
 K3s is lightweight Kubernetes, which is easy to install. It is a fully compliant Kubernetes distribution with an embedded SQLite database as the default datastore and supports external datastore such as PostgreSQL, MySQL, and etcd. K3s includes a local storage provider, a service load balancer, a Helm controller, and the Traefik ingress controller. It also automates and manages complex cluster operations such as distributing certificates. In other words, you can run a highly available, certified Kubernetes distribution designed for production workloads on [nanodes](https://www.linode.com/products/nanodes/) as well.
 
   {{< note >}}
-  You can deploy a K3s cluster on just about any flavor of Linux. However, K3s is officially tested on Ubuntu 16.04 and Ubuntu 18.04. If you are deploying K3s on CentOS where SELinux is enabled by default, then you must ensure that proper SELinux policies are installed. For more information, see [SELinux support](https://rancher.com/docs/k3s/latest/en/advanced/#experimental-selinux-support).{{< /note >}}
+  - You can deploy a K3s cluster on just about any flavor of Linux. However, K3s is officially tested on Ubuntu 16.04 and Ubuntu 18.04. If you are deploying K3s on CentOS where SELinux is enabled by default, then you must ensure that proper SELinux policies are installed. For more information, see [SELinux support](https://rancher.com/docs/k3s/latest/en/advanced/#experimental-selinux-support).
+  - Nanode instances are good for low-duty workloads, where performance isn't critical. Depending on your requirements you can choose other instances. {{< /note >}}
 
 ## In this Guide
 
@@ -333,4 +334,4 @@ spec:
         NAME     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
         drupal   LoadBalancer   10.0.0.89      192.0.2.3       8081:31809/TCP   33m
 
-1.  Type the IP address listed under `EXTERNAL_IP` and append the port number `8081`. The Drupal configuration page appears.
+1.  Type the IP address listed under `EXTERNAL_IP` and append the port number `:8081`. The Drupal configuration page appears.
