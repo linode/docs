@@ -142,7 +142,7 @@ You have successfully disabled the two-factor authentication feature for your Li
 
 ### Recovery Procedure
 
-If you lose your token and get locked out of the Manager, or need to have 2FA removed from a Linode acccount for another reason, please submit the following images: 
+If you lose your token and get locked out of the Manager, or need to have 2FA removed from a Linode account for another reason, please submit the following images:
 
 - An image of the front and back of the payment card on file, which clearly shows the last 6 digits of the card number, the expiration date, cardholder name, and bank logos.
 - An image of the front and back of Government-issued photo ID that matches the name on the card.
