@@ -26,7 +26,7 @@ The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration en
 
 This guide will walk you through the steps needed to deploy a Kubernetes cluster using LKE and the popular *infrastructure as code (IaC)* tool, [Terraform](https://www.terraform.io/). Throughout the guide you will:
 
-- [Prepare your local environment by installing Terraform and [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/)](#prepare-your-local-environment).
+- [Prepare your local environment by installing Terraform](#prepare-your-local-environment) and [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/).
 - [Create reusable Terraform configuration files to define your Kubernetes cluster's resources](#create-your-terraform-configuration-files).
 - [Optionally, you will destroy the cluster you create using Terraform](#destroy-your-kubernetes-cluster-optional).
 
