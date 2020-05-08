@@ -351,6 +351,7 @@ elisp
 elgg
 elpaso
 email2email
+emojivoto
 ender
 enix
 env

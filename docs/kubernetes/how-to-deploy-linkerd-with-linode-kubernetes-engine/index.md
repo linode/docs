@@ -221,7 +221,7 @@ linkerd-web              1/1     1            1           105s
 
 ### The Data Plane
 
-Each control plane compontent has a proxy installed in their Pod and therefore is also part of the data plane. This will allow you to take a look at what's going on with the dashboard and other tools that Linkerd has to offer.
+Each control plane component has a proxy installed in their Pod and therefore is also part of the data plane. This will allow you to take a look at what's going on with the dashboard and other tools that Linkerd has to offer.
 
 ### The Dashboards
 
