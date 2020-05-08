@@ -34,7 +34,7 @@ K3s is lightweight Kubernetes, which is easy to install. It is a fully compliant
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone) for two [nanodes](https://www.linode.com/products/nanodes/) running Ubuntu 18.04 to deploy a K3s cluster with one master or server node and one worker or agent node.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone) for two Linode instances that are running Ubuntu 18.04 to deploy a K3s cluster with one master or server node and one worker or agent node.
 
 1.  Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) for K3s [networking requirements](https://rancher.com/docs/k3s/latest/en/installation/installation-requirements/#networking).
 
