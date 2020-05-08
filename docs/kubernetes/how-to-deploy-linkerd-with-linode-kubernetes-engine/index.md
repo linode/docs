@@ -2,7 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linkerd is a service mesh and a platform with its own API and feature set that can help you run a distributed microservice architecture. Linkerd is a tool that you can deploy with few to no code changes to your application allowing you to harness its power without disrupting your development cycle. In conjunction with Kubernetes, Linkerd provides you with insights into your cluster leading to more control over your applications.'
+description: 'Linkerd is an ultra lightweight service mesh that offers monitoring, reporting, and encrypted connections between Kubernetes services without disturbing your existing applications. It does this by employing proxy sidecars along each instance.'
+og_description: 'Linkerd is an ultra lightweight service mesh that offers monitoring, reporting, and encrypted connections between Kubernetes services without disturbing your existing applications. It does this by employing proxy sidecars along each instance.'
 keywords: ['kuberenetes','linkerd','container', 'service mesh', 'k8s']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
@@ -220,7 +221,7 @@ linkerd-web              1/1     1            1           105s
 
 ### The Data Plane
 
-Each control plane compontent has a proxy installed in their pod and therefore is also part of the data plane. This will allow you to take a look at what's going on with the dashboard and other tools that Linkerd has to offer.
+Each control plane compontent has a proxy installed in their Pod and therefore is also part of the data plane. This will allow you to take a look at what's going on with the dashboard and other tools that Linkerd has to offer.
 
 ### The Dashboards
 
@@ -238,7 +239,7 @@ http://localhost:50750/grafana
 Opening Linkerd dashboard in the default browser
 {{</ output >}}
 
-    - This command sets up a port forward from the `linkerd-web` pod.
+    - This command sets up a port forward from the `linkerd-web` Pod.
 
     - If you want to expose the dashboard for others to use as well, you will need to add an [ingress controller](/docs/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
 
@@ -254,7 +255,7 @@ Opening Linkerd dashboard in the default browser
 
         linkerd -n linkerd top deploy/linkerd-web
 
-    To see what the other pods are doing, replace `linkerd-web` with a different pod name, for example, to check on Grafana, use, `linkerd-grafana`.
+    To see what the other Pods are doing, replace `linkerd-web` with a different Pod name, for example, to check on Grafana, use, `linkerd-grafana`.
 
 ## Install Demo Application (Optional)
 

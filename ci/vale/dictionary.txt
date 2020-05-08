@@ -735,6 +735,7 @@ lighttpd
 lighty
 ligttpd
 linewise
+linkerd
 linode
 linodes
 lish
