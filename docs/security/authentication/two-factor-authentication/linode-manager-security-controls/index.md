@@ -142,13 +142,12 @@ You have successfully disabled the two-factor authentication feature for your Li
 
 ### Recovery Procedure
 
-If you lose your token and get locked out of the Manager, email <support@linode.com> to regain access to your account.
+If you lose your token and get locked out of the Manager, or need to have 2FA removed from a Linode acccount for another reason please submit the following images: 
 
-Should you need us to disable your Two-Factor Authentication, the following information is required:
+- An image of the front and back of the payment card on file, which clearly shows the last 6 digits of the card number, the expiration date, cardholder name, and bank logos.
+- An image of the front and back of Government-issued photo ID that matches the name on the card.
 
-1. An image of the front and back of the payment card currently associated with your account, which clearly shows the last 6 digits, expiration date, and cardholder name.
-1. An image of the front and back of a matching government-issued photo ID.
-
+These images may be uploaded as attachments to this ticket via the Linode Manager. If you prefer encrypted communication, you can upload your images to our [Credential Submission Portal](https://www.linode.com/credential-submission/)
 ## Manage Trusted Devices
 
 Whenever you log into the Cloud Manager from a new device or computer, you can choose to _Trust this computer for 30 days_. This means your device will not be prompted for a username or password for 30 days. The Cloud Manager displays a list of all trusted devices for your account and gives you the ability to *untrust* any device on the list. Your account's associated email address will also be notified whenever a new device is trusted. To view and manage your account's trusted devices:
