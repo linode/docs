@@ -120,7 +120,22 @@ output "pool" {
     This configuration file uses the Linode provider to create a Kubernetes cluster. All arguments within the `linode_lke_cluster.foobar` resource are required, except for `tags`. The `pool` argument accepts a list of pool objects. In order to read their input variable values, the configuration file makes use of Terraform's [dynamic blocks](https://www.terraform.io/docs/configuration/expressions.html#dynamic-blocks). Finally, [output values](https://www.terraform.io/docs/configuration/outputs.html) are declared in order to capture your cluster's attribute values that will be returned to Terraform after creating your cluster.
 
     {{< note >}}
-For a complete `linode_lke_cluster` resource argument reference, see the [Linode Provider Terraform documentation](https://www.terraform.io/docs/providers/linode/r/lke_cluster.html). You can update the `main.tf` file to include any additional arguments you would like to use.
+You can set any output value as being sensitive in order to prevent Terraform from printing its value to your terminal after running `terraform apply`. For example, to set the `kubeconfig` output value as sensitive, update its output block in the following way:
+
+{{< file "~/terraform/lke-cluster/main.tf" >}}
+...
+output "kubeconfig" {
+   value = linode_lke_cluster.foobar.kubeconfig
+   sensitive = true
+}
+...
+{{< /file >}}
+
+See [Terraform's output value documentation](https://www.terraform.io/docs/configuration/outputs.html#sensitive-suppressing-values-in-cli-output) for more details on the behavior of the `sensitive` argument.
+    {{</ note >}}
+
+    {{< note >}}
+ For a complete `linode_lke_cluster` resource argument reference, see the [Linode Provider Terraform documentation](https://www.terraform.io/docs/providers/linode/r/lke_cluster.html). You can update the `main.tf` file to include any additional arguments you would like to use.
     {{</ note >}}
 
 ### Define your Input Variables
@@ -132,32 +147,32 @@ You are now ready to define the input variables that were referenced in your `ma
 
     {{< file "~/terraform/lke-cluster/variables.tf" >}}
     variable "token" {
-      description = "Your Linode API Personal Access Token.(required)."
+      description = "Your Linode API Personal Access Token. (required)"
     }
 
     variable "k8s_version" {
-      description = "The Kubernetes version to use for this cluster.(required)"
+      description = "The Kubernetes version to use for this cluster. (required)"
       default = "1.17"
     }
 
     variable "label" {
-      description = "The unique label to assign to this cluster.(required)"
+      description = "The unique label to assign to this cluster. (required)"
       default = "default-lke-cluster"
     }
 
     variable "region" {
-      description = "The region where your cluster will be located.(required)"
+      description = "The region where your cluster will be located. (required)"
       default = "us-east"
     }
 
     variable "tags" {
-      description = "Tags to apply to your cluster for organizational purposes.(optional)"
+      description = "Tags to apply to your cluster for organizational purposes. (optional)"
       type = list(string)
       default = ["testing"]
     }
 
     variable "pools" {
-      description = "The Node Pool specifications for the Kubernetes cluster.(required)"
+      description = "The Node Pool specifications for the Kubernetes cluster. (required)"
       type = list(object({
         type = string
         count = number
@@ -255,10 +270,12 @@ Now that your Kubernetes cluster is deployed, you can use kubectl to connect to 
 
 1. Use Terraform to access your cluster's kubeconfig, decode its contents, and save them to a file. Terraform returns a [base64](https://en.wikipedia.org/wiki/Base64) encoded string (a useful format for automated pipelines) representing your kubeconfig. Replace `lke-cluster-config.yaml` with your preferred file name.
 
-        export KUBE_VAR=`terraform output kubeconfig` && echo $KUBE_VAR | base64 -D > lke-cluster-config.yaml
+        export KUBE_VAR=`terraform output kubeconfig` && echo $KUBE_VAR | base64 -d > lke-cluster-config.yaml
 
     {{< note >}}
-Depending on your local operating system, to decode the kubeconfig's base64 format, you may need to replace `base64 -D` with `base64 -d`. For example, this is update is needed on an Ubuntu 18.04 system.
+Depending on your local operating system, to decode the kubeconfig's base64 format, you may need to replace `base64 -d` with `base64 -D`. To determine which `base64` option to use, issue the following command:
+
+    base64 --help
     {{</ note >}}
 
 1. Add the kubeconfig file to your `$KUBECONFIG` environment variable. This will give kubectl access to your cluster's kubeconfig file.
