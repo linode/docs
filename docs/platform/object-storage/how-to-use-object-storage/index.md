@@ -236,7 +236,7 @@ The Linode Command Line Interface (CLI) is a command line utility that allows yo
 
 1.  Download the Linode CLI, or, if you have already downloaded it, make sure it has been upgraded to the latest version:
 
-        pip install linode-cli --upgrade
+        pip3 install linode-cli --upgrade
 
 1.  Configure the Object Storage plugin:
 
@@ -246,7 +246,7 @@ The Linode Command Line Interface (CLI) is a command line utility that allows yo
 
 1.  Install the `boto` module:
 
-        pip install boto
+        pip3 install boto
 
 Now you are ready to create buckets and upload objects.
 
