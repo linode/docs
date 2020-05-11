@@ -28,7 +28,7 @@ This guide assumes you have a working Kubernetes cluster running on Linode. You 
 
     - The [Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
     - [Linode's API v4](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/).
-    - [Terraform](/docs/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/), the popular infrastructure as code (Iac) tool.
+    - [Terraform](/docs/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
     {{< note >}}
 An LKE cluster will already have Linode's Block Storage CSI Driver installed. For this reason, if you use LKE to deploy your cluster, skip the entire [Installing the CSI Driver](#installing-the-csi-driver) section and move directly to [Create a Persistent Volume Claim](#create-a-persistent-volume-claim).
