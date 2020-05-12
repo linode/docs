@@ -11810,6 +11810,9 @@ img.centered-icon {
   margin: 0 auto;
   display: block;
 }
+.marquee-img {
+  padding-bottom: 35px;
+}
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('../fonts/glyphicons-halflings-regular.eot');
