@@ -13,6 +13,7 @@ contributor:
 modified_by:
   name: Linode
 published: 2020-01-31
+image: Installing_MariaDB_on_Debian9.png
 title: How to Install MariaDB on Debian 9
 h1_title: Installing MariaDB on Debian 9
 external_resources:
