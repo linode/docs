@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: "Install Certbot to obtain TLS certificates on a Debian server."
 og_description: "Install Certbot to obtain TLS certificates on a Debian server."
-keywords: [debian, certbort, TLS]
+keywords: [debian, certbot, TLS]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-22
 modified: 2020-03-22
