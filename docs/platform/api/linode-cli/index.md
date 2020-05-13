@@ -29,7 +29,7 @@ The easiest way to install the CLI is through [Pip](https://pypi.org/project/pip
 
 1.  Install the CLI:
 
-        pip install linode-cli --upgrade
+        pip3 install linode-cli --upgrade
 
 1.  You need a Personal Access Token to use the CLI. Use the [Linode Cloud Manager](https://cloud.linode.com/profile/tokens) to obtain a token.
 
