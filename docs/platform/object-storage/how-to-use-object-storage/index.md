@@ -327,6 +327,26 @@ To create a static website from a bucket:
 
 For more information on hosting static websites from Linode Object Storage, see our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
+### Creating a New Access Key
+
+If for whatever reason the access key you've set up when initially [Configuring the CLI](#install-and-configure-the-cli) has been revoked or deleted, you may see the following error message:
+
+{{< output >}}
+Error: InvalidAccessKeyId
+{{< /output >}}
+
+You can create and configure a new Access Key at any time by issuing the following command:
+
+    linode-cli obj regenerate-keys
+
+Once issued, your access will be restored, and you can see your new key listed at any time using the following command:
+
+    linode-cli-linode-cli object-storage keys-list
+
+{{< note >}}
+Any new object storage keys issued through the CLI will be prefixed with `linode-cli` as their label.
+{{< /note >}}
+
 ### Other CLI Commands
 
 To get a list of all available buckets, issue the `ls` command:
