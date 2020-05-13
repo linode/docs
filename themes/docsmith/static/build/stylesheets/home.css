@@ -22787,6 +22787,8 @@ body.m-oh {
   line-height: 17.9999;
   margin-bottom: 32px;
   list-style-type: none;
+  list-style: none;
+  padding: 0;
   text-align: left;
 }
 .footer-social-outer .footer-sublist {
