@@ -6,7 +6,7 @@ description: 'Deploy Persistent Volume Claims with the Linode Block Storage CSI 
 keywords: ['container','kubernetes','block','storage','volume','csi','interface','driver']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-18
-modified: 2020-04-28
+modified: 2020-05-08
 modified_by:
   name: Linode
 title: "Deploy Persistent Volume Claims with the Linode Block Storage CSI Driver"
@@ -24,13 +24,21 @@ The [Container Storage Interface](https://github.com/container-storage-interface
 
 This guide assumes you have a working Kubernetes cluster running on Linode. You can deploy a Kubernetes cluster on Linode in the following ways:
 
-1. Use the Linode Kubernetes Engine (LKE) to deploy a cluster. Follow the [Deploy and Manage a Cluster with Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide to get started.
+1. Use the [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/) to deploy a cluster. LKE is Linode's managed Kubernetes service. You can deploy a Kubernetes cluster using:
+
+    - The [Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
+    - [Linode's API v4](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/).
+    - [Terraform](/docs/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
     {{< note >}}
 An LKE cluster will already have Linode's Block Storage CSI Driver installed. For this reason, if you use LKE to deploy your cluster, skip the entire [Installing the CSI Driver](#installing-the-csi-driver) section and move directly to [Create a Persistent Volume Claim](#create-a-persistent-volume-claim).
     {{</ note >}}
 
-1. Deploy a cluster using Terraform and the [Linode Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.1).
+1. Deploy an [unmanaged Kubernetes cluster using Terraform](/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) and the [Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2).
+
+    {{< note >}}
+The Kubernetes Terraform installer for Linode will deploy the CSI Driver to your cluster's nodes. For this reason, skip the entire [Installing the CSI Driver](#installing-the-csi-driver) section and move directly to [Create a Persistent Volume Claim](#create-a-persistent-volume-claim).
+    {{</ note >}}
 
 1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) guide to do this.
 
@@ -103,26 +111,26 @@ Once you have your API token, it's time to create your secret.
           region: "$LINODE_REGION"
         EOF
 
-You can check to see if the command was successful by running the `get secrets` command in the `kube-system` namespaces and looking for `linode` in the NAME column of the output:
+    You can check to see if the command was successful by running the `get secrets` command in the `kube-system` namespaces and looking for `linode` in the NAME column of the output:
 
-    kubectl -n kube-system get secrets
+        kubectl -n kube-system get secrets
 
-You should see output similar to the following:
+    You should see output similar to the following:
 
-    NAME                                             TYPE                                  DATA   AGE
-    ...
-    job-controller-token-6zzkw                       kubernetes.io/service-account-token   3      43h
-    kube-proxy-token-td7k8                           kubernetes.io/service-account-token   3      43h
-    linode                                           Opaque                                2      42h
-    ...
+        NAME                                             TYPE                                  DATA   AGE
+        ...
+        job-controller-token-6zzkw                       kubernetes.io/service-account-token   3      43h
+        kube-proxy-token-td7k8                           kubernetes.io/service-account-token   3      43h
+        linode                                           Opaque                                2      42h
+        ...
 
-You are now ready to install the Block Storage CSI driver.
+    You are now ready to install the Block Storage CSI driver.
 
 ### Apply CSI Driver to your Cluster
 
 To install the Block Storage CSI driver, use the `apply` command and specify the following URL:
 
-    kubectl apply -f https://raw.githubusercontent.com/linode/linode-blockstorage-csi-driver/master/pkg/linode-bs/deploy/releases/linode-blockstorage-csi-driver-v0.0.3.yaml
+    kubectl apply -f https://raw.githubusercontent.com/linode/linode-blockstorage-csi-driver/master/pkg/linode-bs/deploy/releases/linode-blockstorage-csi-driver-v0.1.6.yaml
 
 The above file concatenates a few files needed to run the Block Storage CSI driver, including the volume attachment, driver registration, and provisioning sidecars. To see these files individually, visit the project's [GitHub repository](https://github.com/linode/linode-blockstorage-csi-driver/tree/master/pkg/linode-bs/deploy/kubernetes/).
 
@@ -230,7 +238,7 @@ spec:
 
     You should see output similar to the following:
 
-        admin  avatars	files_external	index.html  owncloud.db  owncloud.log
+        admin  avatars	files_external	index.html  lost+found owncloud.db  owncloud.log
 
     These files are created by ownCloud, and those files now live on your Block Storage Volume. The `admin` directory is the directory for the default user, and any files you upload to the `admin` account will appear in this folder.
 
@@ -254,7 +262,7 @@ spec:
 {{</ file >}}
 
     {{< note >}}
-The service manifest file will use the `NodePort` method to get external traffic to the ownCloud service. NodePort opens a specific port on all cluster Nodes and any traffic that is sent to this port is forwarded to the service. Kubernetes will choose the port to open on the nodes if you do not provide one in your service manifest file. It is recommended to let Kubernetes handle the assignment. Kubernetes will choose a port in the default range, `30000-32768`.
+The service manifest file will use the `NodePort` method to get external traffic to the ownCloud service. NodePort opens a specific port on all cluster nodes and any traffic that is sent to this port is forwarded to the service. Kubernetes will choose the port to open on the nodes if you do not provide one in your service manifest file. It is recommended to let Kubernetes handle the assignment. Kubernetes will choose a port in the default range, `30000-32768`.
 
 Alternatively, you could use the `LoadBalancer` service type, instead of NodePort, which will create Linode NodeBalancers that will direct traffic to the ownCloud Pods. Linode's Cloud Controller Manager (CCM) is responsible for provisioning the Linode NodeBalancers. For more details, see the [Kubernetes Cloud Controller Manager for Linode](https://github.com/linode/linode-cloud-controller-manager/blob/master/README.md) repository.
     {{</ note >}}
@@ -286,26 +294,29 @@ Alternatively, you could use the `LoadBalancer` service type, instead of NodePor
 
     Find the `NodePort`. In this example the port is `30068`.
 
-1.  Now you need to find out which Node your Pod is running on. Use the `describe` command on the Pod to find the IP address of the Node:
+1. Get a list of your cluster's nodes. You will need this to find one of your node's external IP addresses.
 
-        kubectl describe pod owncloud
+        kubectl get nodes
 
-    You should see output like the following:
+    You will see a similar output:
 
-        Name:               owncloud
-        Namespace:          default
-        Priority:           0
-        PriorityClassName:  <none>
-        Node:               kube-node/192.0.2.155
-        Start Time:         Mon, 22 Apr 2019 17:07:20 +0000
-        Labels:             app=owncloud
-        Annotations:        <none>
-        Status:             Running
-        IP:                 10.244.1.17
+        NAME                        STATUS   ROLES    AGE    VERSION
+        example-cluster-master-1    Ready    master   104m   v1.17.0
+        example-cluster-node-1      Ready    <none>   103m   v1.17.0
+        example-cluster-node-2      Ready    <none>   104m   v1.17.0
+        example-cluster-node-3      Ready    <none>   103m   v1.17.0
 
-    The IP address of the Node in this example is `192.0.2.155`. Your ownCloud Pod in this example would be accessible from `http://192.9.2.155:30068`.
+1. Describe any one of your nodes in order to retrieve its external IP address. The node which you select does not matter, however, ensure that you do not use your cluster's master.
 
-1.  Navigate to the URL of the Node, including the NodePort you looked up in a previous step. You will be presented with the ownCloud log in page. You can log in with the username `admin` and the password `admin`.
+        kubectl describe nodes example-cluster-node-1 | grep 'ExternalIP'
+
+    The output will include your node's external IP address:
+
+        ExternalIP:  192.0.2.0
+
+    The IP address of the node in this example is `192.0.2.0`. Your ownCloud instance in this example would be accessible from `http://192.9.2.0:30068`.
+
+1.  Navigate to the IP address of the node, including the NodePort you looked up in a previous step. You will be presented with the ownCloud log in page. You can log in with the username `admin` and the password `admin`.
 
 1.  Upload a file. You will use this file to test the Persistent Volume Claim.
 
