@@ -25,7 +25,7 @@
             {{ partial "dedicated_cpu_link" . }}
             {{ if not (eq .Params.show_social_image_in_article false) }}
             {{ with .Params.image }}
-            <img src="{{ . }}" alt="Marquee image for {{ $.Params.title }}" title="Marquee image for {{ $.Params.title }}" />
+            <img src="{{ . }}" class="marquee-img" alt="Marquee image for {{ $.Params.title }}" title="Marquee image for {{ $.Params.title }}" />
             {{ end }}
             {{ end }}
             {{ .Content }}
