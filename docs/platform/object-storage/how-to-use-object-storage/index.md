@@ -70,10 +70,6 @@ Each Object Storage key pair on your Linode account has complete access to all o
 
 1.  Log into the [Linode Cloud Manager](https://cloud.linode.com).
 
-    {{< note >}}
-Object Storage is not available in the Linode Classic Manager.
-{{</ note >}}
-
 1.  Click on the **Object Storage** link in the sidebar, click the **Access Keys** tab, and then click the **Create an Access Key** link.
 
     ![Click on the 'Access Keys' tab.](object-storage-access-keys-tab.png)
