@@ -103,7 +103,7 @@ K3s is lightweight Kubernetes, which is easy to install. It is a fully compliant
 
         scp example_user@192.0.2.0:/etc/rancher/k3s/k3s.yaml ~/.kube/config
 
-1.  Edit the `config` file. Open the `config` file that is located at `/.kube` with a text editor and replace `127.0.0.1` with the IP address of the K3s server and save the file.
+1.  Edit the `k3s.yaml` file. Open the `k3s.yaml` file that is located at `/.kube/config` with a text editor and replace `127.0.0.1` with the IP address of the K3s server and save the file.
 
 1.  Connect to the K3s cluster from the local machine using `kubectl` to get the details of the nodes in the cluster.
 
