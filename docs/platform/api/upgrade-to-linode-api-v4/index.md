@@ -9,6 +9,8 @@ modified: 2018-05-14
 modified_by:
   name: Linode
 title: 'Upgrade to the New Linode API'
+deprecated: true
+deprecated_link: 'platform/api/getting-started-with-the-linode-api/'
 published: 2018-05-14
 external_resources:
  - '[Linode API Documentation](https://developers.linode.com)'
