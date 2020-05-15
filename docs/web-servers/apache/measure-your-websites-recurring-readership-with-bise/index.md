@@ -150,7 +150,7 @@ To run Bise meaningfully, specify as command-line arguments the access logs that
 
 Bise will scan the provided log files in order from newest to oldest, stopping once it reaches reports from more than two weeks ago. As such, you can use a fileglob to hand it all the access logs in your log directory, and Bise will process only those files it needs to before delivering its report.
 
-For example, to run Bise with all your Apache server's access logs, if they have the default locatins and filename conventions:
+For example, to run Bise with all your Apache server's access logs, if they have the default locations and filename conventions:
 
 bin/bise /var/log/apache2/*access.log*
 
@@ -186,7 +186,7 @@ should give you the necessary read-access to the log directory, after you log ou
 
 ## Configuring Bise
 
-Open the file `conf/config.yaml` in your favorite text editor. As its main task, the file defines the rows appearing in Bise's output table: not just their presence and labels, but the criteria that each row uses to come up with its count of unique and regular non-bot vistors to your website. It also lets you define a couple of other, optional behavioral settings for Bise.
+Open the file `conf/config.yaml` in your favorite text editor. As its main task, the file defines the rows appearing in Bise's output table: not just their presence and labels, but the criteria that each row uses to come up with its count of unique and regular non-bot visitors to your website. It also lets you define a couple of other, optional behavioral settings for Bise.
 
 Let's step through the file's available configuration directives, starting with that report setup.
 
@@ -218,7 +218,7 @@ The following row definition will count any request for the the path "`/`", and 
 
 Counts any access whose requested URL path matches the value of `test`, evaluated as a regular expression.
 
-The following "All vistors" definition from the default configuration will match any request path that ends in an HTML, XML, or JSON filename, as well as any request ending in "`/`". (Yes, this means that a request for "`/`", in the default configuration, will match both this row and the "Front page" one defined above.)
+The following "All visitors" definition from the default configuration will match any request path that ends in an HTML, XML, or JSON filename, as well as any request ending in "`/`". (Yes, this means that a request for "`/`", in the default configuration, will match both this row and the "Front page" one defined above.)
 
 ```
 - label: All visitors
