@@ -20,7 +20,7 @@ external_resources:
 - '[Linkerd Slack](https://slack.linkerd.io/#_ga=2.178870372.1577931415.1588870876-1893863222.1588769574)'
 ---
 
-[Linkerd 2](https://linkerd.io) is an ultra lightweight service mesh that offers monitoring, reporting, and encrypted connections between Kubernetes services without disturbing your existing applications. It does this by employing proxy sidecars along each instance.
+[Linkerd 2](https://linkerd.io) is an ultra lightweight service mesh that monitors, reports, and encrypts connections between Kubernetes services without disturbing the existing applications. It does this by employing proxy sidecars along each instance.
 
 Unlike [Istio](/docs/kubernetes/how-to-deploy-istio-with-kubernetes/), another service mesh monitoring tool, it provides it's own proxies written in Rust instead of using Envoy. This makes it both lighter and more secure.
 
@@ -28,7 +28,7 @@ Unlike [Istio](/docs/kubernetes/how-to-deploy-istio-with-kubernetes/), another s
 Linkerd 1.x is still available and is being actively developed as a separate project. However, it is built on the "Twitter stack" and is not for Kubernetes. Linkerd 2 is built in Rust and Go and only supports Kubernetes.
 {{</ note >}}
 
-In this guide you will complete the following tasks:
+In this guide provides instructions to:
 
 - [Create a Kubernetes Cluster](#create-your-lke-cluster)
 - [Install the Linkerd CLI](#install-linkerd)
@@ -36,7 +36,7 @@ In this guide you will complete the following tasks:
 - [Install a Demo Application (Optional)](#install-demo-application-optional)
 
 {{< caution >}}
-This guide’s example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
+This guide’s example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/)  guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{</ caution >}}
@@ -45,9 +45,9 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) and [Advantages of Using Kubernetes](/docs/kubernetes/kubernetes-use-cases/).
 
-## Create Your LKE Cluster
+## Create an LKE Cluster
 
-Follow the instructions in our [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create an LKE cluster.
+Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
 
 {{< note >}}
 Linkerd 2 requires Kubernetes version 1.13+. Linode Kubernetes Engine clusters currently support Kubernetes versions 1.15, 1.16, and 1.17.
@@ -55,17 +55,12 @@ Linkerd 2 requires Kubernetes version 1.13+. Linode Kubernetes Engine clusters c
 
 ## Install Linkerd
 
-Linkerd consists of multiple parts.
-
-- The [command-line interface](#install-the-linkerd-cli) is run on your local machine and allows you to install, update, and interact with the control and data planes.
-- The [control plane](#install-linkerd-control-plane) is a set of services that collect the data, provide the user-facing API, and control the proxies.
-- The [data plane](#the-data-plane) which is the collection of proxies.
-
+Linkerd consists of a <abbr title="runs on the local machine and allows you to install, update, and interact with the control and data planes">Linkered CLI <abbr>, a <abbr title="set of services that collect the data, provide the user-facing API, and control the proxies">control plane<abbr>, and a <abbr title="is a collection of proxies">data plane<abbr>.
 For a more detailed overview, see the Linkerd [architecture](https://linkerd.io/2/reference/architecture/).
 
 ### Install the Linkerd CLI
 
-1.  To control Linkerd you need to have the CLI installed on your local machine. The Linkerd CLI is available for Linux, macOS, and Windows directly on the [release page](https://github.com/linkerd/linkerd2/releases/).
+1.  To manage Linkerd you need to have the CLI installed on a local machine. The Linkerd CLI is available for Linux, macOS, and Windows on the [release page](https://github.com/linkerd/linkerd2/releases/).
 
     - For Linux, you can use the curl command for installation:
 
@@ -75,15 +70,15 @@ For a more detailed overview, see the Linkerd [architecture](https://linkerd.io/
 
             brew install linkerd
 
-1.  Verify the install by checking the version:
+1.  Verify that linkered is installed by checking the version:
 
         linkerd version
 
-1.  Add Linkerd to your path:
+1.  Add Linkerd to the 'PATH' evironment variable:
 
         export PATH=$PATH:$HOME/.linkerd2/bin
 
-1.  Use the following command to ensure that Linkerd will install correctly onto your cluster. If there are any error messages, Linkerd provides links to help you properly configure your cluster.
+1.  Use the following command to ensure that Linkerd installs correctly onto the cluster. If there are any error messages, Linkerd provides links to help you properly configure the cluster.
 
         linkerd check --pre
 
@@ -126,13 +121,13 @@ Status check results are √
 
 ### Install Linkerd Control Plane
 
-1.  The following command installs the Linkerd control plane onto your cluster into it's own namespace, `linkerd`:
+1.  Install the Linkerd control plane onto the cluster into the `linkerd` namespace:
 
         linkerd install | kubectl apply -f -
 
-    This command generates a Kubernetes manifest and control plane resources. It then pipes the manifest to `kubectl apply` which instructs Kubernetes to add these resources to your cluster.
+    This command generates a Kubernetes manifest and control plane resources. It then pipes the manifest to `kubectl apply` which instructs Kubernetes to add these resources to the cluster.
 
-1.  Once this is done, you can validate it by running the following command:
+1.  Validate the installation of Linkered control plane by running the following command:
 
         linkerd check
 
@@ -200,7 +195,7 @@ control-plane-version
 Status check results are √
 {{</ output >}}
 
-1.  Check what components are installed and running:
+1.  Check the components that are installed and running:
 
         kubectl -n linkerd get deploy
 
@@ -221,13 +216,13 @@ linkerd-web              1/1     1            1           105s
 
 ### The Data Plane
 
-Each control plane component has a proxy installed in their Pod and therefore is also part of the data plane. This will allow you to take a look at what's going on with the dashboard and other tools that Linkerd has to offer.
+Each control plane component has a proxy installed in the respective Pod and therefore is also part of the data plane. This enables you to take a look at what's going on with the dashboard and other tools that Linkerd offers.
 
 ### The Dashboards
 
-Linkerd comes with two dashboards, it's own, and [Grafana](https://grafana.com), both are backed by metrics data gathered by [Prometheus](https://prometheus.io).
+Linkerd comes with two dashboards, a Linkered dashboard and [Grafana](https://grafana.com) dashboard; both are backed by metrics data gathered by [Prometheus](https://prometheus.io).
 
-1.  Linkerd comes with a standalone dashboard that runs in the browser. You can start and view it by running the following command:
+1.  Start and view the Linkerd standalone dashboard that runs in the browser.
 
         linkerd dasboard &
 
@@ -241,7 +236,7 @@ Opening Linkerd dashboard in the default browser
 
     - This command sets up a port forward from the `linkerd-web` Pod.
 
-    - If you want to expose the dashboard for others to use as well, you will need to add an [ingress controller](/docs/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
+    - If you want to expose the dashboard for others to use as well, you need to add an [ingress controller](/docs/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
 
 1.  The dashboard opens in the browser. If it does not, you can access it by going to http://localhost:50750:
 
@@ -258,34 +253,239 @@ Opening Linkerd dashboard in the default browser
     To see what the other Pods are doing, replace `linkerd-web` with a different Pod name, for example, to check on Grafana, use, `linkerd-grafana`.
 
 ## Install Demo Application (Optional)
+   
+   Deploy Drupal on the cluster and monitor using Linkerd2 
+   
+1. Create a `drupal` folder on the local machine to contain the `kustamization.yaml`, `mysql-deployment.yaml`, and `drupal-deployment.yaml` files.
 
-Linkerd has a application available called *emojivoto* that you can use to demonstrate what it would be like to deploy Linkerd along with a functioning application.
+        sudo mkdir drupal
 
-1.  To install the emojivoto application, run the following curl command:
+1. Create a `kustomization.yaml` file in the `drupal` folder. Open a text editor and create the file with a secret generator and resource config files for single-instance MySQL, and a single-instance Drupal deployments. In the following file replace `MySQLpassword` with the password that you want to use to access MySQL:
 
-        curl -sL https://run.linkerd.io/emojivoto.yml | kubectl apply -f -
+      {{< file "/drupal/kustomization.yaml" >}}
+secretGenerator:
+- name: mysql-pass
+  literals:
+  - password=MySQLpassword
+resources:
+  - mysql-deployment.yaml
+  - drupal-deployment.yaml
+{{< /file >}}
 
-    This installs emojivoto into the `emojivoto` namespace.
+1. Create a  `mysql-deployment.yaml` file in the `drupal` folder. Open a text editor and create a manifest file that describes a single-instance deployment of MySQL.
 
-1.  Forward the `web-svc` service locally to port `8080`:
+      {{< file "/drupal/mysql-deployment.yaml" >}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: drupal-mysql
+  labels:
+    app: drupal
+spec:
+  ports:
+    - protocol: TCP
+      port: 3306
+  selector:
+    app: drupal
+    tier: mysql
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-claim
+  labels:
+    app: drupal
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: linode-block-storage
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: drupal
+spec:
+  selector:
+    matchLabels:
+      app: drupal
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: drupal
+        tier: mysql
+    spec:
+      containers:
+        - image: mysql:latest
+          name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                 secretKeyRef:
+                  name: mysql-pass
+                  key: password
+          ports:
+            - containerPort: 3306
+              name: mysql
+              protocol: TCP
+                  volumeMounts:
+            - name: mysql
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql
+          persistentVolumeClaim:
+            claimName: mysql-claim
 
-        kubectl -n emojivoto port-forward svc/web-svc 8080:80
+{{< /file >}}
 
-1.  Visit the application in your browser at `http://localhost:8080`.
+1. Create a  `drupal-deployment.yaml` file in the `drupal` folder. Open a text editor and create a manifest file that describes a single-instance deployment of Drupal.
 
-    {{< note >}}
-Some parts of the application are broken by design. There is a [debugging guide](https://linkerd.io/2/debugging-an-app/) located on the Linkerd site if you are curious.
-{{</ note >}}
+      {{< file "/drupal/drupal-deployment.yaml" >}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: drupal
+  labels:
+    app: drupal
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+  selector:
+    app: drupal
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: drupal-claim
+  labels:
+    app: drupal
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: linode-block-storage
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drupal
+  labels:
+    app: drupal
+spec:
+  selector:
+    matchLabels:
+      app: drupal
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: drupal
+        tier: frontend
+    spec:
+      containers:
+        - image: drupal:latest
+          name: drupal
+          ports:
+            - containerPort: 80
+              name: drupal
+          volumeMounts:
+            - name: drupal
+              mountPath: /var/www/html/modules
+              subPath: modules
+            - name: drupal
+              mountPath: /var/www/html/profiles
+              subPath: profiles
+            - name: drupal
+              mountPath: /var/www/html/themes
+              subPath: themes
+      volumes:
+        - name: drupal
+          persistentVolumeClaim:
+            claimName: drupal-claim
 
-1.  Add Linkerd to the emojivoto application with the following command:
+{{< /file >}}
 
-        kubectl get -n emojivoto deploy -o yaml | linkerd inject - | kubectl apply -f -
+1.  Deploy Drupal on K3s cluster. The `kustomization.yaml` file contains all the resources required to deploy Drupal and MySQL.
 
-    This gathers all the deployments in the `emojivoto` namespace, pipes the manifest to `linkerd inject` which adds it's proxies to the container specs, and then applies it to the cluster.
+        kubectl apply -k ./
+
+    The output is similar to:
+
+        secret/mysql-pass-g764cgb8b9 created
+        service/drupal-mysql created
+        service/drupal configured
+        deployment.apps/drupal created
+        deployment.apps/mysql created
+        persistentvolumeclaim/drupal-claim created
+        persistentvolumeclaim/mysql-claim created
+
+1.  Verify that the Secret exists:
+
+        kubectl get secrets
+
+    The output is similar to:
+
+        NAME                    TYPE                                  DATA   AGE
+        default-token-8wt7g     kubernetes.io/service-account-token   3      44m
+        mysql-pass-g764cgb8b9   Opaque                                1      24m
+
+1.  Verify that a PersistentVolume is dynamically provisioned:
+
+        kubectl get pvc
+
+    The output is similar to:
+
+        NAME           STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+        mysql-claim    Bound    pvc-13c1086a-0a4a-4945-b473-0110ebd09725   10Gi       RWO            local-path     24m
+        drupal-claim   Bound    pvc-8d907b17-72c0-4c5b-a3c4-d87e170ad87d   10Gi       RWO            local-path     24m
+
+1.  Verify that the Pod is running:
+
+        kubectl get pods
+
+    The output is similar to:
+
+        NAME                      READY   STATUS    RESTARTS   AGE
+        svclb-drupal-qcnrk        1/1     Running   0          25m
+        svclb-drupal-9kdgk        1/1     Running   0          25m
+        mysql-6bf46f94bf-tcgs2    1/1     Running   0          13m
+        drupal-77f665d45b-568tl   1/1     Running   0          5m1s
+
+1.  Verify that the Service is running:
+
+        kubectl get services drupal
+
+    The output is similar to:
+
+        NAME     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
+        drupal   LoadBalancer   10.0.0.89      192.0.2.3       8081:31809/TCP   33m
+
+1.  Type the IP address listed under `EXTERNAL_IP` and append the port number `:8081`. The Drupal configuration page appears.
+
+1.  Add Linkerd to the Drupal application with the following command:
+
+        kubectl get -n default deploy -o yaml | linkerd inject - | kubectl apply -f -
+
+    This gathers all the deployments in the `default` namespace, pipes the manifest to `linkerd inject` which adds it's proxies to the container specs, and then applies it to the cluster.
 
 1.  Issue the following command to verify that the proxies have been applied:
 
-        linkerd -n emojivoto check --proxy
+        linkerd -n default check --proxy
 
     {{< output >}}
 kubernetes-api
@@ -360,19 +560,18 @@ Status check results are √
 
 1.  You can get live traffic metrics by running the following command:
 
-        linkerd -n emojivoto stat deploy
+        linkerd -n default stat deploy
 
     {{< output >}}
 NAME       MESHED   SUCCESS      RPS   LATENCY_P50   LATENCY_P95   LATENCY_P99   TCP_CONN
-emoji         1/1   100.00%   2.0rps           1ms           1ms           1ms          2
-vote-bot      1/1         -        -             -             -             -          -
-voting        1/1    83.05%   1.0rps           1ms           1ms           1ms          2
-web           1/1    91.38%   1.9rps           6ms          11ms          18ms          2
+drupal      1/1         -     -             -             -             -          -
+mysql       1/1         -     -             -             -             -          -
 {{</ output >}}
 
 1.  To dig deeper, try the following commands:
 
-        linkerd -n emojivoto top deploy
-        linkerd -n emojivoto tap deploy/web
+        linkerd -n default top deploy
+        linkerd -n default
+        tap deploy/web
 
     You can also use the graphical dashboards view to show you these items in the browser.
