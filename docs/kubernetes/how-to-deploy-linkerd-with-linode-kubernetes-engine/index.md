@@ -74,7 +74,7 @@ For a more detailed overview, see the Linkerd [architecture](https://linkerd.io/
 
         linkerd version
 
-1.  Add Linkerd to the 'PATH' evironment variable:
+1.  Add Linkerd to the 'PATH' environment variable:
 
         export PATH=$PATH:$HOME/.linkerd2/bin
 
