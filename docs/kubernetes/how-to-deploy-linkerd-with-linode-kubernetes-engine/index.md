@@ -55,7 +55,7 @@ Linkerd 2 requires Kubernetes version 1.13+. Linode Kubernetes Engine clusters c
 
 ## Install Linkerd
 
-Linkerd consists of a <abbr title="runs on the local machine and allows you to install, update, and interact with the control and data planes">Linkered CLI <abbr>, a <abbr title="set of services that collect the data, provide the user-facing API, and control the proxies">control plane<abbr>, and a <abbr title="is a collection of proxies">data plane<abbr>.
+Linkerd consists of a <abbr title="runs on the local machine and allows you to install, update, and interact with the control and data planes">Linkerd CLI <abbr>, a <abbr title="set of services that collect the data, provide the user-facing API, and control the proxies">control plane<abbr>, and a <abbr title="is a collection of proxies">data plane<abbr>.
 For a more detailed overview, see the Linkerd [architecture](https://linkerd.io/2/reference/architecture/).
 
 ### Install the Linkerd CLI
@@ -70,7 +70,7 @@ For a more detailed overview, see the Linkerd [architecture](https://linkerd.io/
 
             brew install linkerd
 
-1.  Verify that linkered is installed by checking the version:
+1.  Verify that linkerd is installed by checking the version:
 
         linkerd version
 
@@ -127,7 +127,7 @@ Status check results are √
 
     This command generates a Kubernetes manifest and control plane resources. It then pipes the manifest to `kubectl apply` which instructs Kubernetes to add these resources to the cluster.
 
-1.  Validate the installation of Linkered control plane by running the following command:
+1.  Validate the installation of Linkerd control plane by running the following command:
 
         linkerd check
 
@@ -220,7 +220,7 @@ Each control plane component has a proxy installed in the respective Pod and the
 
 ### The Dashboards
 
-Linkerd comes with two dashboards, a Linkered dashboard and [Grafana](https://grafana.com) dashboard; both are backed by metrics data gathered by [Prometheus](https://prometheus.io).
+Linkerd comes with two dashboards, a Linkerd dashboard and [Grafana](https://grafana.com) dashboard; both are backed by metrics data gathered by [Prometheus](https://prometheus.io).
 
 1.  Start and view the Linkerd standalone dashboard that runs in the browser.
 
