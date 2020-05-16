@@ -253,9 +253,8 @@ Opening Linkerd dashboard in the default browser
     To see what the other Pods are doing, replace `linkerd-web` with a different Pod name, for example, to check on Grafana, use, `linkerd-grafana`.
 
 ## Install Demo Application (Optional)
-   
-   Deploy Drupal on the cluster and monitor using Linkerd2 
-   
+
+   Deploy Drupal on the cluster and monitor using Linkerd2.
 1. Create a `drupal` folder on the local machine to contain the `kustamization.yaml`, `mysql-deployment.yaml`, and `drupal-deployment.yaml` files.
 
         sudo mkdir drupal
@@ -573,5 +572,6 @@ mysql       1/1         -     -             -             -             -       
         linkerd -n default top deploy
         linkerd -n default
         tap deploy/web
+
 
     You can also use the graphical dashboards view to show you these items in the browser.
