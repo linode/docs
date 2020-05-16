@@ -55,7 +55,7 @@ Linkerd 2 requires Kubernetes version 1.13+. Linode Kubernetes Engine clusters c
 
 ## Install Linkerd
 
-Linkerd consists of a <abbr title="runs on the local machine and allows you to install, update, and interact with the control and data planes">Linkerd CLI <abbr>, a <abbr title="set of services that collect the data, provide the user-facing API, and control the proxies">control plane<abbr>, and a <abbr title="is a collection of proxies">data plane<abbr>.
+Linkerd consists of a <abbr title="runs on the local machine and allows you to install, update, and interact with the control and data planes">Linkerd CLI</abbr>, a <abbr title="set of services that collect the data, provide the user-facing API, and control the proxies">control plane</abbr>, and a <abbr title="is a collection of proxies">data plane</abbr>.
 For a more detailed overview, see the Linkerd [architecture](https://linkerd.io/2/reference/architecture/).
 
 ### Install the Linkerd CLI
