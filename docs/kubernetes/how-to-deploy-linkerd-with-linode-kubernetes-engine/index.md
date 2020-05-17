@@ -450,9 +450,9 @@ spec:
 
     The output is similar to:
 
-        NAME           STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-        mysql-claim    Bound    pvc-13c1086a-0a4a-4945-b473-0110ebd09725   10Gi       RWO            local-path     24m
-        drupal-claim   Bound    pvc-8d907b17-72c0-4c5b-a3c4-d87e170ad87d   10Gi       RWO            local-path     24m
+        NAME          STATUS  VOLUME                                    CAPACITY  ACCESS MODES   STORAGECLASS            AGE
+        mysql-claim   Bound   pvc-13c1086a-0a4a-4945-b473-0110ebd09725  10Gi       RWO           linode-block-storage    24m
+        drupal-claim  Bound   pvc-8d907b17-72c0-4c5b-a3c4-d87e170ad87d  10Gi       RWO           linode-block-storage    24m
 
 1.  Verify that the Pod is running:
 
@@ -473,7 +473,7 @@ spec:
     The output is similar to:
 
         NAME     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-        drupal   LoadBalancer   10.0.0.89      192.0.2.3       8081:31809/TCP   33m
+        drupal   LoadBalancer   10.0.0.89      192.0.2.3       80:31809/TCP   33m
 
 1.  Type the IP address listed under `EXTERNAL_IP` and append the port number `:8081`. The Drupal configuration page appears.
 
