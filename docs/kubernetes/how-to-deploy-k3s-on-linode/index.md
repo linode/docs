@@ -30,6 +30,7 @@ K3s is lightweight Kubernetes, which is easy to install. It is a fully compliant
   - [Install K3s Agent](#install-k3s-agent).
   - [Connect Remotely to the K3s Cluster](#connect-remotely-to-the-k3s-cluster)
   - [Deploy Drupal on K3s Cluster](#deploy-drupal-on-k3s-cluster).
+  - [Tear Down the K3s Cluster](#tear-down-the-k3s-cluster).
 
 
 ## Before You Begin
@@ -335,3 +336,71 @@ spec:
         drupal   LoadBalancer   10.0.0.89      192.0.2.3       8081:31809/TCP   33m
 
 1.  Type the IP address listed under `EXTERNAL_IP` and append the port number `:8081`. The Drupal configuration page appears.
+
+### Deleting the Deployments or Services
+
+1. Check the services that are running:
+
+        kubectl get services
+
+    The output is similar to:
+
+        NAME     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
+        drupal   LoadBalancer   10.0.0.89      192.0.2.3       8081:31809/TCP   33m
+        drupal-mysql   LoadBalancer   10.0.0.93      192.0.2.4       3306:31790/TCP   33m
+
+1. Delete the `drupal` service that is running:
+
+        kubectl delete services drupal
+
+    The output is:
+
+        service "drupal" deleted
+
+1. Delete the `drupal-mysql` service that is running:
+
+        kubectl delete services drupal-mysql
+
+    The output is:
+
+        service "drupal-mysql" deleted
+
+1. Check the deployments that are running:
+
+        kubectl get deployments
+
+    The output is similar to:
+
+        NAME     READY   UP-TO-DATE   AVAILABLE   AGE
+        drupal   1/1     1            1           17h
+        mysql    1/1     1            1           17h
+
+1. Delete the `drupal` deployment that is running:
+
+        kubectl delete deployment drupal
+
+    The output is:
+
+        deployment.apps "drupal" deleted
+
+1. Delete the `mysql` deployment that is running:
+
+        kubectl delete deployment mysql
+
+    The output is:
+
+        deployment.apps "mysql" deleted
+
+## Tear Down the K3s Cluster
+
+   To uninstall a K3s cluster from the Linodes.
+
+1. Connect to the Linode where you installed K3s agent and run the following commands:
+
+        sudo /usr/local/bin/k3s-agent-uninstall.sh
+        sudo rm -rf /var/lib/rancher
+
+1. Connect to the Linode where you installed K3s master and run the following commands:
+
+        sudo /usr/local/bin/k3s-uninstall.sh
+        sudo rm -rf /var/lib/rancher
