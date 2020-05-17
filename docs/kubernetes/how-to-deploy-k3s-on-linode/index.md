@@ -345,8 +345,8 @@ spec:
 
     The output is similar to:
 
-        NAME     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-        drupal   LoadBalancer   10.0.0.89      192.0.2.3       8081:31809/TCP   33m
+        NAME           TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
+        drupal         LoadBalancer   10.0.0.89      192.0.2.3       8081:31809/TCP   33m
         drupal-mysql   LoadBalancer   10.0.0.93      192.0.2.4       3306:31790/TCP   33m
 
 1. Delete the `drupal` service that is running:
