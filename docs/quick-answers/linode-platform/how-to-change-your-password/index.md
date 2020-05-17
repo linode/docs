@@ -9,6 +9,7 @@ modified: 2020-01-20
 modified_by:
   name: Linode
 published: 2020-01-20
+image: ChangingYourAccountPassword.png
 title: How to Change Your Account Password
 h1_title: Changing Your Account Password
 

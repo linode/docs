@@ -9,6 +9,7 @@ published: 2017-07-25
 modified: 2019-01-02
 modified_by:
   name: Linode
+image: ConfigureandUseSaltSSHtoManageyourLinodes.png
 title: 'Configure and Use Salt SSH to Manage Your Linodes'
 contributor:
   name: Sergey Bulavintsev

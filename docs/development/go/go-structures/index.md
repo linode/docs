@@ -8,6 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-16
 modified_by:
   name: Linode
+image: ATutorialforLearningStructsinGo.png
 title: 'Structs in Go - A Tutorial'
 h1_title: 'A Tutorial for Learning Structs in Go'
 contributor:

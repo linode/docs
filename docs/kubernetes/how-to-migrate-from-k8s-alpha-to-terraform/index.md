@@ -9,6 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-14
 modified_by:
   name: Linode
+image: MigratingFromk8s-alphaCLItoTerraform.png
 title: "How to Migrate From k8s-alpha CLI to Terraform"
 h1_title: "Migrating From k8s-alpha CLI to Terraform"
 contributor:

@@ -13,7 +13,12 @@ title: 'Using Vagrant to Manage Linode Environments'
 external_resources:
  - '[Vagrant](http://www.vagrantup.com)'
  - '[vagrant-linode Plugin](https://github.com/displague/vagrant-linode)'
+deprecated: true
 ---
+
+{{< note >}}
+The Vagrant Linode provider relies on Linode's APIv3, which has been deprecated in favor of [APIv4](https://developers.linode.com/api/v4).
+{{< /note >}}
 
 [Vagrant](http://www.vagrantup.com) is a configuration management tool that allows users to create portable and reproducible work environments. Vagrant excels at providing consistent, easy-to-configure servers that can be used to keep development environments consistent across all users. It is easy to both launch and tear down, and can be supplied to any part of a development team that may need an environment but does not have the means to configure one themselves. Often paired with providers such as Puppet, Salt, and Chef, it offers an easy solution to keeping a consistent workflow.
 

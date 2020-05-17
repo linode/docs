@@ -83,4 +83,4 @@ If your call is diverted to voicemail, please leave a detailed message explainin
 
 ## Reporting Abuse
 
-Email <abuse@linode.com> to report network abuse, unauthorized access attempts, or spam originating from the Linode platform. Please forward spam with the full headers intact, and include logs documenting unauthorized access.
+Use our [Abuse Portal](https://www.linode.com/legal-abuse/) to report network abuse, unauthorized access attempts, or spam originating from the Linode platform. Please forward spam with the full headers intact, and include logs documenting unauthorized access.

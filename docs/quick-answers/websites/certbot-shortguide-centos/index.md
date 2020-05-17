@@ -10,7 +10,7 @@ modified: 2018-06-28
 modified_by:
   name: Linode
 title: 'Install Certbot for TLS on CentOS'
-headless: true
+
 ---
 
 1.  Enable the EPEL repository:

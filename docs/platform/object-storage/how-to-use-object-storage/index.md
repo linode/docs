@@ -236,7 +236,7 @@ The Linode Command Line Interface (CLI) is a command line utility that allows yo
 
 1.  Download the Linode CLI, or, if you have already downloaded it, make sure it has been upgraded to the latest version:
 
-        pip install linode-cli --upgrade
+        pip3 install linode-cli --upgrade
 
 1.  Configure the Object Storage plugin:
 
@@ -246,7 +246,7 @@ The Linode Command Line Interface (CLI) is a command line utility that allows yo
 
 1.  Install the `boto` module:
 
-        pip install boto
+        pip3 install boto
 
 Now you are ready to create buckets and upload objects.
 
@@ -326,6 +326,26 @@ To create a static website from a bucket:
     - `http://my-example-bucket.website-eu-central-1.linodeobjects.com`.
 
 For more information on hosting static websites from Linode Object Storage, see our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+
+### Creating a New Access Key
+
+If for whatever reason the access key you've set up when initially [Configuring the CLI](#install-and-configure-the-cli) has been revoked or deleted, you may see the following error message:
+
+{{< output >}}
+Error: InvalidAccessKeyId
+{{< /output >}}
+
+You can create and configure a new Access Key at any time by issuing the following command:
+
+    linode-cli obj regenerate-keys
+
+Once issued, your access will be restored, and you can see your new key listed at any time using the following command:
+
+    linode-cli-linode-cli object-storage keys-list
+
+{{< note >}}
+Any new object storage keys issued through the CLI will be prefixed with `linode-cli` as their label.
+{{< /note >}}
 
 ### Other CLI Commands
 

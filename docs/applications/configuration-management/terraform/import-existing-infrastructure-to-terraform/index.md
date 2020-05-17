@@ -9,6 +9,7 @@ published: 2018-12-17
 modified: 2019-08-07
 modified_by:
   name: Linode
+image: ImportExistingInfrastructuretoTerraform.png
 title: "Import Existing Infrastructure to Terraform"
 contributor:
   name: Linode

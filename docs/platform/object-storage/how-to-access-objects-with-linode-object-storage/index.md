@@ -10,6 +10,7 @@ published: 2020-01-22
 modified: 2020-01-22
 modified_by:
   name: Linode
+image: AccessingObjectswithLinodeObjectStorage.png
 title: "How to Access Objects with Linode Object Storage"
 h1_title: "Accessing Objects with Linode Object Storage"
 contributor:
