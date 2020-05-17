@@ -255,6 +255,7 @@ Opening Linkerd dashboard in the default browser
 ## Install Demo Application (Optional)
 
    Deploy Drupal on the cluster and monitor using Linkerd2.
+
 1. Create a `drupal` folder on the local machine to contain the `kustamization.yaml`, `mysql-deployment.yaml`, and `drupal-deployment.yaml` files.
 
         sudo mkdir drupal
@@ -419,7 +420,7 @@ spec:
 
 {{< /file >}}
 
-1.  Deploy Drupal on K3s cluster. The `kustomization.yaml` file contains all the resources required to deploy Drupal and MySQL.
+1.  Deploy Drupal on the cluster. The `kustomization.yaml` file contains all the resources required to deploy Drupal and MySQL.
 
         kubectl apply -k ./
 
