@@ -226,7 +226,7 @@ spec:
         persistentvolumeclaim/drupal-claim created
         persistentvolumeclaim/mysql-claim created
 
-1.  Use the follwing command to verify that the Secret exists:
+1.  Use the following command to verify that the Secret exists:
 
         kubectl get secrets
 

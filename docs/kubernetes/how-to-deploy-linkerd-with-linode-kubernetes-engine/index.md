@@ -438,7 +438,7 @@ Upgrading the data plane will upgrade the proxy sidecars, auto-injecting a new v
 
 ## Uninstall Linkerd
 
-Uninstalling Linkerd is done in two steps. First, you remove the data plane proxies, then you remove the control plane. You must have clusterwide permissions.
+Uninstalling Linkerd is done in two steps. First, you remove the data plane proxies, then you remove the control plane. You must have cluster-wide permissions.
 
 1.  Remove the data plane proxies from your manifest files, including any injection annotations.
 
@@ -447,7 +447,7 @@ Uninstalling Linkerd is done in two steps. First, you remove the data plane prox
         linkerd install --ignore-cluster | kubectl delete -f -
 
     {{< note >}}
-You may recieve errors about deleting resources that haven't been created. You can safely ignore these.
+You may receive errors about deleting resources that haven't been created. You can safely ignore these.
 {{</ note >}}
 
 1.  Roll the deployments to redeploy the manifests without the Linkerd proxies, replace `namespace` with the namespace where your deployments reside:
