@@ -31,9 +31,10 @@ Linkerd 1.x is still available and is being actively developed as a separate pro
 In this guide provides instructions to:
 
 - [Create a Kubernetes Cluster](#create-your-lke-cluster)
-- [Install the Linkerd CLI](#install-linkerd)
-- [Install the Linkerd Control Plane](#install-linkerd-control-plane)
+- [Install the Linkerd](#install-linkerd)
 - [Install a Demo Application (Optional)](#install-demo-application-optional)
+- [Upgrade Linkerd](#upgrade-linkerd)
+- [Uninstall Linkerd](#uninstall-linkerd)
 
 {{< caution >}}
 This guide’s example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
@@ -55,7 +56,7 @@ Linkerd 2 requires Kubernetes version 1.13+. Linode Kubernetes Engine clusters c
 
 ## Install Linkerd
 
-Linkerd consists of a <abbr title="runs on the local machine and allows you to install, update, and interact with the control and data planes">Linkerd CLI</abbr>, a <abbr title="set of services that collect the data, provide the user-facing API, and control the proxies">control plane</abbr>, and a <abbr title="is a collection of proxies">data plane</abbr>.
+Linkerd consists of the <abbr title="runs on the local machine and allows you to install, update, and interact with the control and data planes">Linkerd CLI</abbr>, a <abbr title="set of services that collect the data, provide the user-facing API, and control the proxies">control plane</abbr>, and a <abbr title="is a collection of proxies">data plane</abbr>.
 For a more detailed overview, see the Linkerd [architecture](https://linkerd.io/2/reference/architecture/).
 
 ### Install the Linkerd CLI
@@ -220,7 +221,7 @@ Each control plane component has a proxy installed in the respective Pod and the
 
 ### The Dashboards
 
-Linkerd comes with two dashboards, a Linkerd dashboard and [Grafana](https://grafana.com) dashboard; both are backed by metrics data gathered by [Prometheus](https://prometheus.io).
+Linkerd comes with two dashboards, a Linkerd dashboard and the [Grafana](https://grafana.com) dashboard; both are backed by metrics data gathered by [Prometheus](https://prometheus.io).
 
 1.  Start and view the Linkerd standalone dashboard that runs in the browser.
 
@@ -252,236 +253,46 @@ Opening Linkerd dashboard in the default browser
 
     To see what the other Pods are doing, replace `linkerd-web` with a different Pod name, for example, to check on Grafana, use, `linkerd-grafana`.
 
+    {{< note >}}
+Linkerd is not designed to be a long term metrics data store. It only stores data for 6 hours using Prometheus. However, if you can export the data using [several methods](https://linkerd.io/2/tasks/exporting-metrics/).
+{{</ note >}}
+
 ## Install Demo Application (Optional)
 
-   Deploy Drupal on the cluster and monitor using Linkerd2.
+To demonstrate the full ease of use and utility of Linkerd, deploy Drupal on the cluster and monitor it using Linkerd.
 
-1. Create a `drupal` folder on the local machine to contain the `kustamization.yaml`, `mysql-deployment.yaml`, and `drupal-deployment.yaml` files.
+1.  Follow the [How to Install Drupal with Linode Kubernetes Engine](/docs/kubernetes/how-to-install-drupal-with-linode-kubernetes-engine/) guide to install Drupal onto your LKE cluster.
 
-        sudo mkdir drupal
+### Add Linkerd to Drupal
 
-1. Create a `kustomization.yaml` file in the `drupal` folder. Open a text editor and create the file with a secret generator and resource config files for single-instance MySQL, and a single-instance Drupal deployments. In the following file replace `MySQLpassword` with the password that you want to use to access MySQL:
-
-      {{< file "/drupal/kustomization.yaml" >}}
-secretGenerator:
-- name: mysql-pass
-  literals:
-  - password=MySQLpassword
-resources:
-  - mysql-deployment.yaml
-  - drupal-deployment.yaml
-{{< /file >}}
-
-1. Create a  `mysql-deployment.yaml` file in the `drupal` folder. Open a text editor and create a manifest file that describes a single-instance deployment of MySQL.
-
-      {{< file "/drupal/mysql-deployment.yaml" >}}
-apiVersion: v1
-kind: Service
-metadata:
-  name: drupal-mysql
-  labels:
-    app: drupal
-spec:
-  ports:
-    - protocol: TCP
-      port: 3306
-  selector:
-    app: drupal
-    tier: mysql
-  type: LoadBalancer
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mysql-claim
-  labels:
-    app: drupal
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: linode-block-storage
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mysql
-  labels:
-    app: drupal
-spec:
-  selector:
-    matchLabels:
-      app: drupal
-      tier: mysql
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: drupal
-        tier: mysql
-    spec:
-      containers:
-        - image: mysql:latest
-          name: mysql
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                 secretKeyRef:
-                  name: mysql-pass
-                  key: password
-          ports:
-            - containerPort: 3306
-              name: mysql
-              protocol: TCP
-                  volumeMounts:
-            - name: mysql
-              mountPath: /var/lib/mysql
-      volumes:
-        - name: mysql
-          persistentVolumeClaim:
-            claimName: mysql-claim
-
-{{< /file >}}
-
-1. Create a  `drupal-deployment.yaml` file in the `drupal` folder. Open a text editor and create a manifest file that describes a single-instance deployment of Drupal.
-
-      {{< file "/drupal/drupal-deployment.yaml" >}}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: drupal
-  labels:
-    app: drupal
-spec:
-  ports:
-    - protocol: TCP
-      port: 80
-  selector:
-    app: drupal
-  type: LoadBalancer
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: drupal-claim
-  labels:
-    app: drupal
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: linode-block-storage
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: drupal
-  labels:
-    app: drupal
-spec:
-  selector:
-    matchLabels:
-      app: drupal
-      tier: frontend
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: drupal
-        tier: frontend
-    spec:
-      containers:
-        - image: drupal:latest
-          name: drupal
-          ports:
-            - containerPort: 80
-              name: drupal
-          volumeMounts:
-            - name: drupal
-              mountPath: /var/www/html/modules
-              subPath: modules
-            - name: drupal
-              mountPath: /var/www/html/profiles
-              subPath: profiles
-            - name: drupal
-              mountPath: /var/www/html/themes
-              subPath: themes
-      volumes:
-        - name: drupal
-          persistentVolumeClaim:
-            claimName: drupal-claim
-
-{{< /file >}}
-
-1.  Deploy Drupal on the cluster. The `kustomization.yaml` file contains all the resources required to deploy Drupal and MySQL.
-
-        kubectl apply -k ./
-
-    The output is similar to:
-
-        secret/mysql-pass-g764cgb8b9 created
-        service/drupal-mysql created
-        service/drupal configured
-        deployment.apps/drupal created
-        deployment.apps/mysql created
-        persistentvolumeclaim/drupal-claim created
-        persistentvolumeclaim/mysql-claim created
-
-1.  Verify that the Secret exists:
-
-        kubectl get secrets
-
-    The output is similar to:
-
-        NAME                    TYPE                                  DATA   AGE
-        default-token-8wt7g     kubernetes.io/service-account-token   3      44m
-        mysql-pass-g764cgb8b9   Opaque                                1      24m
-
-1.  Verify that a PersistentVolume is dynamically provisioned:
-
-        kubectl get pvc
-
-    The output is similar to:
-
-        NAME          STATUS  VOLUME                                    CAPACITY  ACCESS MODES   STORAGECLASS            AGE
-        mysql-claim   Bound   pvc-13c1086a-0a4a-4945-b473-0110ebd09725  10Gi       RWO           linode-block-storage    24m
-        drupal-claim  Bound   pvc-8d907b17-72c0-4c5b-a3c4-d87e170ad87d  10Gi       RWO           linode-block-storage    24m
-
-1.  Verify that the Pod is running:
-
-        kubectl get pods
-
-    The output is similar to:
-
-        NAME                      READY   STATUS    RESTARTS   AGE
-        svclb-drupal-qcnrk        1/1     Running   0          25m
-        svclb-drupal-9kdgk        1/1     Running   0          25m
-        mysql-6bf46f94bf-tcgs2    1/1     Running   0          13m
-        drupal-77f665d45b-568tl   1/1     Running   0          5m1s
-
-1.  Verify that the Service is running:
-
-        kubectl get services drupal
-
-    The output is similar to:
-
-        NAME     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-        drupal   LoadBalancer   10.0.0.89      192.0.2.3       80:31809/TCP   33m
-
-1.  Type the IP address listed under `EXTERNAL_IP` and append the port number `:8081`. The Drupal configuration page appears.
+Now that Drupal is setup and running successfully on the cluster, you'll add the Linkerd service mesh to monitor the metrics.
 
 1.  Add Linkerd to the Drupal application with the following command:
 
         kubectl get -n default deploy -o yaml | linkerd inject - | kubectl apply -f -
 
     This gathers all the deployments in the `default` namespace, pipes the manifest to `linkerd inject` which adds it's proxies to the container specs, and then applies it to the cluster.
+
+    The output should look similar to this, indicating the Drupal and MySQL deployments have been *injected* with Linkerd.
+
+    {{< output >}}
+deployment "drupal" injected
+deployment "mysql" injected
+
+deployment.apps/drupal configured
+deployment.apps/mysql configured
+{{</ output >}}
+
+1.  Redeploy your Pods with the following command:
+
+        kubectl -n default rollout restart deploy
+
+    This redeploys the deployment manifests now that they have been injected with the Linkerd proxy sidecars. The output will look like this:
+
+    {{< output >}}
+deployment.apps/drupal restarted
+deployment.apps/mysql restarted
+{{</ output >}}
 
 1.  Issue the following command to verify that the proxies have been applied:
 
@@ -563,16 +374,84 @@ Status check results are √
         linkerd -n default stat deploy
 
     {{< output >}}
-NAME       MESHED   SUCCESS      RPS   LATENCY_P50   LATENCY_P95   LATENCY_P99   TCP_CONN
-drupal      1/1         -     -             -             -             -          -
-mysql       1/1         -     -             -             -             -          -
+NAME     MESHED   SUCCESS      RPS   LATENCY_P50   LATENCY_P95   LATENCY_P99   TCP_CONN
+drupal      1/1   100.00%   0.5rps           0ms           0ms           0ms          2
+mysql       1/1     0.00%   1.6rps           0ms           0ms           0ms          6
 {{</ output >}}
 
 1.  To dig deeper, try the following commands:
 
         linkerd -n default top deploy
-        linkerd -n default
-        tap deploy/web
-
+        linkerd -n default tap deploy/drupal
 
     You can also use the graphical dashboards view to show you these items in the browser.
+
+## Upgrade Linkerd
+
+Just as with installing, upgrading Linkerd is done in multiple parts. The CLI, control plane, and data plane must all be updated separately.
+
+### Upgrade the CLI
+
+1.  Upgrade the CLI on your local machine by running the following command:
+
+        curl -sL https://run.linkerd.io/install | sh
+
+    You can also download the current release directly from the [release page](https://github.com/linkerd/linkerd2/releases/).
+
+1.  Verify the version:
+
+        linkerd version --client
+
+    The current version as of the writing of this guide is version `stable-2.7.1`.
+
+### Upgrade the Control Plane
+
+1.  Run the following command to upgrade the control plane:
+
+        linkerd upgrade | kubectl apply --prune -l linkerd.io/control-plane-ns=linkerd -f -
+
+    This will keep your current configuration and any [mTLS](https://linkerd.io/2/features/automatic-mtls/) intact.
+
+1.  Verify the upgrade with the following command:
+
+        linkerd check
+
+### Upgrade the Data Plane
+
+Upgrading the data plane will upgrade the proxy sidecars, auto-injecting a new version of the proxy into the Pods.
+
+1.  Use the following command to inject the new proxies, replacing `namespace` with the namespace you wish to update:
+
+        kubectl -n namespace get deploy -l linkerd.io/control-plane-ns=linkerd -oyaml | linkerd inject --manual - | kubectl apply -f -
+
+1.  Issue a rollout restart of your deployment to restart the Pods, replacing `namespace` with the namespace you updated:
+
+        kubectl -n namespace rollout restart deploy
+
+1.  Verify the upgrade with the following command:
+
+        linkerd check --proxy
+
+1.  Check the version has been updated:
+
+        kubectl get po --all-namespaces -o yaml | grep linkerd.io/proxy-version
+
+## Uninstall Linkerd
+
+Uninstalling Linkerd is done in two steps. First, you remove the data plane proxies, then you remove the control plane. You must have clusterwide permissions.
+
+1.  Remove the data plane proxies from your manifest files, including any injection annotations.
+
+1.  Remove the control plane with the following command:
+
+        linkerd install --ignore-cluster | kubectl delete -f -
+
+    {{< note >}}
+You may recieve errors about deleting resources that haven't been created. You can safely ignore these.
+{{</ note >}}
+
+1.  Roll the deployments to redeploy the manifests without the Linkerd proxies, replace `namespace` with the namespace where your deployments reside:
+
+        kubectl -n namespace rollout restart deploy
+
+    When Kubernetes restarts the Pods, the Linkerd data plane will no longer be attached.
