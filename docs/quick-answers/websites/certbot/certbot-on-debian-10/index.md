@@ -11,7 +11,7 @@ modified: 2020-03-22
 modified_by:
   name: Linode
 title: 'How to Install Certbot for TLS on Debian 10'
-h1_title: 'Install Certbot for TLS on Debian 10'
+h1_title: 'Installing Certbot for TLS on Debian 10'
 ---
 ## What is Certbot?
 
