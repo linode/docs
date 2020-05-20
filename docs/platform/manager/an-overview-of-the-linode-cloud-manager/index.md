@@ -219,7 +219,6 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 - [Changing your account's associated email address](/docs/platform/manager/accounts-and-passwords/#changing-your-email-address) and timezone
 - [Resetting your Account password](/docs/platform/manager/accounts-and-passwords/#changing-or-resetting-your-linode-cloud-manager-password)
 - [Enabling two-factor authentication](/docs/security/linode-manager-security-controls/#enable-two-factor-authentication)
-- [Enabling Third Party Authentication (TPA)](/docs/platform/manager/third-party-authentication/)
 - Managing trusted devices
 - [Adding and managing public SSH keys](/docs/security/authentication/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager)
 - [Managing LISH authentication methods](/docs/platform/manager/using-the-linode-shell-lish/#add-your-public-key)
