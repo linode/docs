@@ -389,6 +389,7 @@ fastcgi
 fastmail
 fastopen
 fauxhai
+favicon
 fb4c
 fcgi
 fcgiwrap
