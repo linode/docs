@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: "Install Certbot to obtain TLS certificates on an Ubuntu server."
 keywords: []
+aliases: ['quick-answers/websites/certbot-shortguide-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-28
 modified: 2018-06-28

@@ -7,6 +7,7 @@ keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-28
 modified: 2018-06-28
+aliases: ['quick-answers/websites/certbot-shortguide-debian/']
 modified_by:
   name: Linode
 title: 'Install Certbot for TLS on Debian'
