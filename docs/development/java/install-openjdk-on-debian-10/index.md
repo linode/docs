@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: Install Java Development Kit on Debian.
-og_description: Install Java Development Kit on Debian.
+description: This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Debian 10. OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit. OpenJDK and Java SE are equivalent JDKs that include a Java runtime environment (JRE) and tools for developing and compiling Java applications. Optionally, you will also test your Open JDK installation by creating a simple "Hello World" application.
+og_description: This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Debian 10. OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit. OpenJDK and Java SE are equivalent JDKs that include a Java runtime environment (JRE) and tools for developing and compiling Java applications. Optionally, you will also test your Open JDK installation by creating a simple "Hello World" application.
 keywords: ["java", "openjdk", "jdk", "11", "Debian", "10"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-25
