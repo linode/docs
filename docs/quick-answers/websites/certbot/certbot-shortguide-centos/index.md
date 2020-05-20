@@ -11,7 +11,7 @@ aliases: ['quick-answers/websites/certbot-shortguide-centos/']
 modified_by:
   name: Linode
 title: 'Install Certbot for TLS on CentOS'
-
+hiddenguide: true
 ---
 
 1.  Enable the EPEL repository:
@@ -50,7 +50,7 @@ Certbot recommends pointing your web server configuration to the default certifi
 
     Finally, Certbot will update your web server configuration so that it uses the new certificate, and also redirects HTTP traffic to HTTPS if you chose that option.
 
-1.  If you have a firewall configured on your Linode, you can add a firewall rule to allow incoming and outgoing connections to the HTTPS service. On CentOS 7, *firewalld* is the default tool for managing firewall rules. Configure firewalld for HTTP and HTTPS traffic:
+1.  If you have a firewall configured on your Linode, you can add a firewall rule to allow incoming and outgoing connections to the HTTPS service. On CentOS, *firewalld* is the default tool for managing firewall rules. Configure firewalld for HTTP and HTTPS traffic:
 
         sudo firewall-cmd --zone=public --permanent --add-service=http
         sudo firewall-cmd --zone=public --permanent --add-service=https
