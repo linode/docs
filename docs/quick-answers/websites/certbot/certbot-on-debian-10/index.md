@@ -2,8 +2,8 @@
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
-description: "Install Certbot to obtain TLS certificates on a Debian server."
-og_description: "Install Certbot to obtain TLS certificates on a Debian server."
+description: "This guide will show you how to install Certbot on the Debian 10 distribution. Certbot is a tool that automates the process of getting a signed Transport Layer Security (TLS) certificate via Let’s Encrypt. This will allow you to enable HTTPS on a web server."
+og_description: "This guide will show you how to install Certbot on the Debian 10 distribution. Certbot is a tool that automates the process of getting a signed Transport Layer Security (TLS) certificate via Let’s Encrypt. This will allow you to enable HTTPS on a web server."
 keywords: [debian, certbot, TLS]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-22
