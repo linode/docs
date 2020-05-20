@@ -21,9 +21,9 @@ audiences: ["beginner"]
 languages: ["javascript"]
 ---
 
-When first learning VueJS, and when using it for smaller projects, you will likely use [regular, globally-defined components](docs/development/javascript/how-to-build-and-use-vuejs-components/). Once your project grows and you start needing more structure and flexibility, *single file components* can be a better option.
+When first learning VueJS, and when using it for smaller projects, you will likely use [regular, globally-defined components](/docs/development/javascript/how-to-build-and-use-vuejs-components/). Once your project grows and you start needing more structure and flexibility, *single file components* can be a better option.
 
-Below you can see an example of a barebone single file component, which we will examine part-by-part later in the guide:
+Below you can see an example of a barebones single file component, which we will examine part-by-part later in the guide:
 
 {{< file "SkeletonComponent.vue" html >}}
 <template>
@@ -117,17 +117,17 @@ h1 {
 
 -   Lines 1-3 of the component define the `<template>`, where we specify the HTML template of our component. In comparison, a regular component's template is represented with a string property inside the component's JavaScript. This can become increasingly confusing for complex components, because there is no syntax highlighting within the string.
 
-	Another benefit for your templates is that you do not have to [adjust the `{{ }}` mustache tag delimiters](https://vuejs.org/v2/api/#delimiters) to `[[ ]]` or something else if you are working with another framework that already uses them.
+    Another benefit for your templates is that you do not have to [adjust the `{{ }}` mustache tag delimiters](https://vuejs.org/v2/api/#delimiters) to `[[ ]]` or something else if you are working with another framework that already uses them.
 
     {{< note >}}
-For example, [Symfony](https://symfony.com/) developers using VueJS would have to update their delimiter configuration, because [Twig](https://twig.symfony.com/) already uses mustache delimeters for its rendering methods. Even though this might be a fairly trivial task, using single file components eliminates that need entirely.
+For example, [Symfony](https://symfony.com/) developers using VueJS would have to update their delimiter configuration, because [Twig](https://twig.symfony.com/) already uses mustache delimiters for its rendering methods. Even though this might be a fairly trivial task, using single file components eliminates that need entirely.
 {{< /note >}}
 
 -   The script section of the component (lines 5-19) defines the component’s properties and business logic. This is similar to how regular components are defined, but instead everything is within an [export statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export).
 
 -   The style section, on lines 21-26, uses the [`scoped` attribute](https://vue-loader.vuejs.org/guide/scoped-css.html) to create component-specific CSS. If you were instead using regular components, you would have no way of adding component-specific CSS, and thus you would have to define your styles globally.
 
-	This makes your components completely independent, so you can now not only use them in your current project, but reuse them among other projects as well. Finally, you can use preprocessors like [SASS](https://sass-lang.com/) and [Babel](https://babeljs.io/) for the styling information in your component.
+    This makes your components completely independent, so you can now not only use them in your current project, but reuse them among other projects as well. Finally, you can use preprocessors like [SASS](https://sass-lang.com/) and [Babel](https://babeljs.io/) for the styling information in your component.
 
 ## Prepare your Development Environment
 
