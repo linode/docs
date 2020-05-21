@@ -7,12 +7,13 @@ og_description: 'This guide shows you how to enable Third Party Authentication (
 keywords: ['tpa','third party authentication','github','account','password']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-22
+image: enable-tpa-hero.png
 modified_by:
   name: Linode
 title: "How to Enable Third Party Authentication on Your Linode Account"
 h1_title: "Enabling Third Party Authentication on Your Linode Account"
 ---
-
+<br>
 Linode Cloud Manager supports Third-Party Authentication (TPA). This allows you to log in to the Linode Cloud Manager with another provider's login credentials.
 
 {{< note >}}
