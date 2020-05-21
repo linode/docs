@@ -212,7 +212,7 @@ spec:
 
         cd drupal
 
-1.  The `kustomization.yaml` file contains all the resources required to deploy Drupal and MySQL.
+1.  Deploy Drupal and MySQL. The `kustomization.yaml` file contains all the resources required to deploy Drupal and MySQL.
 
         kubectl apply -k ./
 
