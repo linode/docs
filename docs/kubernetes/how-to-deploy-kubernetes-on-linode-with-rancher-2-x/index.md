@@ -9,6 +9,7 @@ published: 2019-03-14
 modified_by:
   name: Linode
 title: 'How to Deploy Kubernetes on Linode with Rancher 2.3'
+h1_title: 'Deploying Kubernetes on Linode with Rancher 2.3'
 aliases: ['applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','applications/containers/how-to-deploy-apps-with-rancher/','applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','applications/containers/how-to-deploy-apps-with-rancher-2-3/']
 concentrations: ["Kubernetes"]
 external_resources:
@@ -150,6 +151,12 @@ The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Cont
 ## Deploy a Kubernetes Cluster
 
 ### Add a Node Template
+
+{{< note >}}
+Nodes created using Rancher are dependent on the [Network Helper](/docs/platform/network-helper/) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
+{{< /note >}}
+
+
 
 [*Node templates*](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) are used by Rancher to provision cluster nodes. When you create a node template, you can specify configuration parameters, like the region, instance type, and Linux image that should be used for any node in the cluster. You can set different templates for different clusters, which allows you to choose the right resources for your different workloads.
 

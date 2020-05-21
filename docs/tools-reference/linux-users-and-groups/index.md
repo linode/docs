@@ -12,7 +12,6 @@ modified_by:
 published: 2009-08-31
 title: Linux Users and Groups
 external_resources:
- 
  - '[Users and Groups Administration in Linux @ DebianAdmin](http://www.debianadmin.com/users-and-groups-administration-in-linux.html)'
  - '[Online Chmod Calculator](http://www.onlineconversion.com/html_chmod_calculator.htm)'
 ---
@@ -115,7 +114,7 @@ To remove the user, their home folder, and their files, use this command:
 
 ### Understanding Sudo
 
-Root is the super user and has the ability to do anything on a system. Therefore, in order to have protection against potential damage sudo is used in place of root. Sudo allows users and groups access to commands they normally would not be able to use. Sudo will allow a user to have administration privileges without logging in as root. A sample of the sudo command is as follows:
+Root is the super user and has the ability to do anything on a system. Therefore, in order to have an additional layer of security, a sudo user is generally used in place of root. While sudo is literally used to give another user limited access to another user's account for the purpose of performing tasks (in most cases the `root` user or the superuser) sudo may be best explained as a tool that allows users and groups to have access to commands they normally would not be able to use. Sudo enables a user to have administration privileges without logging in directly as root. A sample of the sudo command is as follows:
 
     sudo apt-get install <package>
 
@@ -127,25 +126,52 @@ For CentOS, the command is as follows:
 
     yum install sudo
 
-In order to provide a user with sudo ability, their name will need to be added to the sudoers file. This file is very important and should not be edited directly with a text editor. If the sudoers file is edited incorrectly it could result in preventing access to the system.
+In order to provide a user with the sudo ability, they will need to be added to a sudo enabled group, or their username will need to be added to the sudoers file with a set of permissions. This file is sensitive and important as an access and security control, and should not be edited directly with a text editor. If the sudoers file is edited incorrectly it could result in preventing access to the system or other unintended permission changes.
 
-Therefore the `visudo` command should be used to edit the sudoers file. At a command line, log into your system as root and enter the command `visudo`.
+{{< note >}}
+For instructions on adding a user to a default sudo enabled group, see our [How to Secure Your Server](#add-a-limited-user-account) guide
+{{< /note >}}
 
-Below is the portion of the sudoers file that shows the users with sudo access.
+The `visudo` command should be used to edit the sudoers file. At a command line, log into your system as root and enter the command `visudo`.
+
+The following `sudoers` excerpt allows the listed users to execute any command they'd like by prefixing it with `sudo`, which gives the user full control of a system.
 
 {{< caution >}}
-The following `sudoers` excerpt allows the listed users to execute any command using `sudo`, which gives the user full control of a system. Never add users to `sudoers` if they are untrusted. You can optionally restrict what users can do with `sudo`; refer to the `sudoers(5)` man page for this restricted usage syntax.
+Users should never be added to the `sudoers` file or group with full permission if they are untrusted. You can optionally restrict what users can do with `sudo` as an additional layer of security; refer to the  [Whitelisting Commands With Sudo](#whitelisting-commands-with-sudo) for some examples on restricted usage syntax.
 {{< /caution >}}
 
-    # User privilege specification
-    root    ALL=(ALL:ALL) ALL
-    cjones  ALL=(ALL:ALL) ALL
-    kbrown  ALL=(ALL:ALL) ALL
-    lmartin ALL=(ALL:ALL) ALL
+{{< file >}}
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+cjones  ALL=(ALL:ALL) ALL
+kbrown  ALL=(ALL:ALL) ALL
+lmartin ALL=(ALL:ALL) ALL
+{{< /file >}}
 
 After you have given your user account sudo privileges, save the sudoers file and log out as root. Now log in as your user and test the privileges as your user with sudo access. When a new user needs sudo access, you will now be able to edit the sudoers file with your own login using the following command:
 
     sudo visudo
+
+### Whitelisting Commands With Sudo
+
+In many cases, while you will want users to have elevated sudo permissions, you will also want to follow the principle of least privilege and grant sudo users access only to the commands that they need. In the following example, the sudoers file has been edited to limit sudo usage to a few clearly defined commands:
+
+{{< file >}}
+    # User privilege specification
+    root    ALL=(ALL:ALL) ALL
+    sudousername   ALL=(ALL:ALL) ALL
+    username ALL=/usr/bin/top, /usr/bin/apt-get
+    # Allow members of group sudo to execute the less, ls, and apt commands
+    %sudo ALL=/usr/bin/less, /usr/bin/ls, /usr/bin/apt
+{{< /file >}}
+
+While the root and `sudousername` users still have full superuser permissions, the user `username` has been limited to only the `top` and `apt-get` commands as a sudo user. Additionally, all users added to the `sudo` group are separately limited only to the `less`, `ls`, and `apt` commands with sudo permissions. If you wanted to give the user `username` sudo access to the additional 3 commands whitelisted for the `sudo` group, you would just need to add them to the `sudo` group and they would still retain their own unique permissions, giving them sudo access to a total of 5 commands. This process can be repeated for as many users and groups as needed.
+
+{{< note >}}
+When whitelisting individual commands using the above syntax, it is important to use the absolute path to the command. The `which` command can be used to find this absolute path:
+
+    which command-name
+{{< /note >}}
 
 ### Working with Groups
 

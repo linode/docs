@@ -330,6 +330,6 @@ PasswordAuthentication yes
 
 ## Next Steps
 
-These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](/docs/uptime/monitoring/ossec-ids-debian-7/) or installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control).
+These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](/docs/uptime/monitoring/ossec-ids-debian-7/), installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control), [fine tuning sudo access](/docs/tools-reference/linux-users-and-groups/#understanding-sudo), and [more](/docs/security/).
 
 Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/migrate-to-linode/migrate-from-shared-hosting) to [enabling two-factor authentication](/docs/security/linode-manager-security-controls) to [hosting a website](/docs/websites/hosting-a-website).
