@@ -216,7 +216,7 @@ spec:
 
         kubectl apply -k ./
 
-    The output will be similar to the following:
+    The output is similar to:
 
         secret/mysql-pass-g764cgb8b9 created
         service/drupal-mysql created
@@ -226,11 +226,11 @@ spec:
         persistentvolumeclaim/drupal-claim created
         persistentvolumeclaim/mysql-claim created
 
-1.  Use the following command to verify that the Secret exists:
+1.  Verify that the Secret exists:
 
         kubectl get secrets
 
-    The output will be similar to the following:
+    The output is similar to:
 
         NAME                    TYPE                                  DATA   AGE
         default-token-8wt7g     kubernetes.io/service-account-token   3      44m
@@ -240,7 +240,7 @@ spec:
 
         kubectl get pvc
 
-    The output will be similar to the following:
+    The output is similar to:
 
         NAME          STATUS  VOLUME                                    CAPACITY  ACCESS MODES   STORAGECLASS            AGE
         mysql-claim   Bound   pvc-13c1086a-0a4a-4945-b473-0110ebd09725  10Gi       RWO           linode-block-storage    24m
@@ -250,7 +250,7 @@ spec:
 
         kubectl get pods
 
-    The output will be similar to the following:
+    The output is similar to:
 
         NAME                      READY   STATUS    RESTARTS   AGE
         mysql-6bf46f94bf-tcgs2    1/1     Running   0          13m
@@ -260,7 +260,7 @@ spec:
 
         kubectl get services drupal
 
-    The output will be similar to the following:
+    The output is similar to:
 
         NAME     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
         drupal   LoadBalancer   10.0.0.89      192.0.2.3       80:31809/TCP   33m
