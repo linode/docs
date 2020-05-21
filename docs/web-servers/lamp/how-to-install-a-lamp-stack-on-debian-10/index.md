@@ -155,9 +155,9 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
 {{< /file >}}
 
-1.  Assign ownership of `public_html` directory to the `$USER` environment variable:
+1.  Assign ownership of `public_html` directory to the `$www-data`:
 
-        sudo chown -R $USER:$USER /var/www/html/example.com/public_html
+        sudo chown -R $www-data:$www-data /var/www/html/example.com/public_html
 
 1. Set the permissions for the `public_html` directory:
 

@@ -166,9 +166,9 @@ The `ServerAlias` directive allows you to include multiple domain names or subdo
 Make sure that you do not put a space after the comma between `public_html` and `logs` because it will create a folder named `{public_html,` and will cause an error when you will reload Apache.
 {{< /note >}}
 
-1.  Assign ownership of `public_html` directory to the `$USER` environment variable:
+1.  Assign ownership of `public_html` directory to the `$www-data`:
 
-        sudo chown -R $USER:$USER /var/www/html/example.com/public_html
+        sudo chown -R $www-data:$www-data /var/www/html/example.com/public_html
 
 1. Set the permissions for the `public_html` directory:
 
