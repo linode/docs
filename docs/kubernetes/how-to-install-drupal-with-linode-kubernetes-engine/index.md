@@ -2,9 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linkerd is an ultra lightweight service mesh that offers monitoring, reporting, and encrypted connections between Kubernetes services without disturbing your existing applications. It does this by employing proxy sidecars along each instance.'
-og_description: 'Linkerd is an ultra lightweight service mesh that offers monitoring, reporting, and encrypted connections between Kubernetes services without disturbing your existing applications. It does this by employing proxy sidecars along each instance.'
-keywords: ['kuberenetes','linkerd','container', 'service mesh', 'k8s']
+description: 'Drupal is a popular content management system. This guide provides instructions to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
+og_description: 'Drupal is a popular content management system. This guide provides instructions to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
+keywords: ['kuberenetes','drupal','websites', 'cms', 'k8s']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
 modified_by:
@@ -12,7 +12,7 @@ modified_by:
 title: "How to Install Drupal with Linode Kubernetes Engine"
 h1_title: "Installing Drupal with Linode Kubernetes Engine"
 contributor:
-  name: Linode
+  name: Rajakavitha Kodhandapani
 
 ---
 
