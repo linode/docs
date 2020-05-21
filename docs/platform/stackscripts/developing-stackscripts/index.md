@@ -31,6 +31,10 @@ This guide will show you how to do the following:
 - [Make your Account StackScript Public](#make-an-account-stackscript-public)
 - [Delete an Account StackScript](#delete-an-account-stackscript)
 
+{{< note >}}
+For information on authoring a script to be used in a Linode StackScript, see the Writing a Script for Linode's StackScripts
+{{</ note >}}
+
 ## Create a New StackScript
 
 {{< note >}}
