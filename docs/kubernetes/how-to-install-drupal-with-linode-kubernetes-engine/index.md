@@ -16,7 +16,7 @@ contributor:
 
 ---
 
-[Drupal](https://www.drupal.org) is a way cool thing.
+[Drupal](https://www.drupal.org) is an advanced and powerful content management framework, built on the PHP scripting language and supported by a database engine like MySQL. Drupal provides a flexible system that can be used to manage websites for a variety of use cases. For example, you can create rich, interactive “community” websites with forums, user blogs, and private messaging.
 
 In this guide provides instructions to:
 
