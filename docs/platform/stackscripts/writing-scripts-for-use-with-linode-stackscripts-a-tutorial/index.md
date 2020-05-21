@@ -9,16 +9,159 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
 modified_by:
   name: Linode
-title: "Index"
-h1_title: "h1 title displayed in the guide."
+title: "Writing Scripts for Use with Linode StackScripts - A Tutorial"
+h1_title: "Writing Scripts for Use with Linode StackScripts"
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
+  name: Linode
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'
 ---
+## What are StackScripts?
 
+[StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top Linode's default Linux distribution images. For example, every time you deploy a new Linode you might execute the same tasks, like updating your system's software, installing your favorite Linux tools, and adding a limited user account. These tasks can be automated using a StackScript that will perform these actions for you as part of your Linode's first boot process.
+
+All StackScripts are stored in the Linode Cloud Manager and can be accessed whenever you deploy a Linode. A StackScript authored by you is an *Account StackScript*. While a *Community StackScript* is a StackScript created by a Linode community member that has made their StackScript publicly available in the Linode Cloud Manager.
+
+## In this Guide
+
+Writing a script for use in a StackScript will generally be the same as writing a script that will be executed from the command line or another program. This guide includes:
+
+-  Information and resources to get you started if you are not familiar with scripting basics.
+-  Documentation on utility Bash functions provided by Linode
+-  How to Bootstrap a StackScript
+-  Information on creating user defined fields (UDF) so users can customize the behavior of a StackScript on a per-deployment basis.
+
+## The StackScript System
+
+- The primary requirement for your scripts are that the interpreter needed to execute your script be installed on the Linode base image you are deploying. While Bash is an obvious choice for a script, you may choose any language.
+
+    {{< note >}}
+Linode images are created using "vanilla" versions of its given distribution. Consult our [Choosing a Linux Distribution](/docs/quick-answers/linux/choosing-a-distribution/) guide to see list of all distributions Linode provides and to access each distribution's corresponding websites. You can find more information on the interpreters available for each distribution on their official websites.
+    {{</ note >}}
+
+- When writing a script, you must use a [*shebang*](https://en.wikipedia.org/wiki/Shebang_(Unix)) as the first line of your script. This indicates to your Linux system which interpreter to use when running the script. For example, if you are writing a Bash script, the beginning of your script should include the following line:
+
+    {{< file >}}
+#!/bin/bash
+    {{</ file >}}
+
+    Or, if you are writing a Python script, the beginning of your script should include the following line:
+
+      {{< file >}}
+#!/usr/bin/env python
+      {{</ file >}}
+
+- Linode provides a [StackScript Bash Library](https://cloud.linode.com/stackscripts/1) that includes a set of functions that perform various common tasks users might wish to execute on their Linodes. This script creates the functions, but does not run them. A new StackScript can import the Bash Library and then execute functions from it. See the [Import a StackScript]() section of this guide to learn how to reuse existing StackScripts in your new StackScripts.
+
+### Import a StackScript
+
+Your scripts can import any Account StackScripts you own or any Community StackScripts. This allows you to reuse code minimizing what you need to write in your own scripts.
+
+- The example below shows the syntax to import another StackScript. As a result of including this line in one a StackScript, the imported StackScript will be downloaded as `ssinclude-[NUMBER]` to your Linode. However, it must be run in order to execute its contents.
+
+    {{< file >}}
+<ssinclude StackScriptID="[NUMBER]">
+    {{</ file >}}
+
+     In Bash, you can download and run the script in the following way:
+
+    {{< file >}}
+source <ssinclude StackScriptID="[NUMBER]">
+    {{</ file >}}
+
+    If you're scripting in another language, import the StackScript, then execute it on a second line:
+
+    {{< file >}}
+<ssinclude StackScriptID="[NUMBER]">
+./ssinclude-[NUMBER]
+    {{</ file >}}
+
+    {{< note >}}
+Linode's [StackScript Bash Library's]((https://cloud.linode.com/stackscripts/1)) ID number is `1`.
+    {{</ note >}}
+
+### Access a StackScript's ID Number
+
+Follow the steps in this section to find the ID number of a StackScript.
+
+1. Log into the [Linode Cloud Manager](https://cloud.linode.com/).
+
+1. Click on the **StackScripts** link in the left-hand navigation menu. You will be brought to the *StackScripts* page.
+
+      ![Click on the StackScripts link in the left-hand navigation menu.](stackscripts-sidebar-link.png)
+
+1. Depending on which type of StackScript whose ID you'd like to find, click on the **Account StackScripts** tab or the **Community StackScripts** tab.
+
+1. Click on the StackScript whose ID you'd like to access. This will bring you to its **StackScript detail page**.
+
+    ![View the details and contents of an Account StackScript.](access-stackscript-detail-page.png)
+
+1. The StackScript detail page's URL will display the StackScript's ID number. You can now use this number to [import the StackScript](#import-a-stackscript) into your own script.
+
+    ![Access a StackScript's ID number.](access-stackscript-id-number.png)
+
+
+### Variables and User Defined Fields (UDFs)
+
+The StackScript system provides a basic markup specification that interfaces with the Linode deployment process so that users can customize the behavior of a StackScript on a per-deployment basis. These `UDF` tags, when processed, insert variables and values into the script's environment.
+
+The UDF tags are explained in the table below:
+
+|Label    | Description           | Requirements
+|:--------|:----------------------|:---------
+|name     | The variable name     | Alphanumeric, len <64, must be unique
+|label    | The question to ask   | Text 0-255
+|default  | The default value     | If not specified then this UDF is required
+|example  | Example input         |
+|oneof    | A comma separated list of values| Optional
+|manyof   | A comma separated list of values| Optional
+
+
+Here is an example implementation of the UDF variables. The UDF tags are commented out to prevent execution errors, as the StackScript system parses the tags without removing them:
+
+{{< file "StackScript" bash >}}
+# [...]
+# <UDF name="var1" Label="A question" default="" example="Enter something here." />
+# <UDF name="var2" Label="Pick one of" oneOf="foo,bar" example="Enter something here." />
+# <UDF name="var3" Label="A question" oneOf="foo,bar" default="foo" />
+# <UDF name="var4" Label="Pick several from" manyOf="foo,bar" default="foo,bar" />
+# [...]
+{{< /file >}}
+
+{{< note >}}
+If you would like to create a masked password input field, use the word 'password' anywhere in the UDF name.
+{{< /note >}}
+
+There are also a set of Linode created environmental variables that can be used for API calls or other tasks from within the script.
+
+| Environment Variable               | Description                                                                               |
+|:-----------------------------------|:------------------------------------------------------------------------------------------|
+| `LINODE_ID=123456`                 | The Linode's ID number                                                                    |
+| `LINODE_LISHUSERNAME=linode123456` | The Linode's full lish-accessible name                                                    |
+| `LINODE_RAM=1024`                  | The RAM available on this Linode's plan                                                   |
+| `LINODE_DATACENTERID=6`            | The ID number of the data center containing the Linode. See our API for more information. |
+
+
+If you do not want to use the StackScript system to set your environment variables, you might consider hosting files with settings on a different system.For example, use the following fragment:
+
+{{< file "StackScript" bash >}}
+# [...]
+IPADDR=$(/sbin/ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://')
+
+wget http://example.com/base.env --output-document=/tmp/base.env
+wget http://example.com/$IPADDR.env --output-document=/tmp/system.env
+
+source /tmp/base.env
+source /tmp/system.env
+# [...]
+
+{{< /file >}}
+
+
+Make sure that there are files accessible through `HTTP` hosted on the `example.com` domain for both basic environment files such as `base.env` and machine specific files such as `[ip-address].env` before launching this StackScript. Also consider the possible security implications of allowing any file with sensitive information regarding your deployment to be publicly accessible.
+
+--------
 ## Developing StackScripts
 
 The only requirements to run a StackScript are that the first line of the script should contain a shebang such as `#!/bin/bash` and the interpreter specified in the shebang should be installed in the Linode base image you are deploying. While `Bash` is an obvious choice for StackScripts, you may choose any language or system.
