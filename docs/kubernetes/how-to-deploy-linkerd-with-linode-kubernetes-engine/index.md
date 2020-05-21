@@ -12,7 +12,7 @@ modified_by:
 title: "How to Deploy Linkerd 2 with Linode Kubernetes Engine"
 h1_title: "Deploying Linkerd 2 with Linode Kubernetes Engine"
 contributor:
-  name: Linode
+  name: Heather Zoppetti
 external_resources:
 - '[Linkerd](https://linkerd.io)'
 - '[Linkerd Documentation](https://linkerd.io/2/overview/)'
