@@ -738,7 +738,7 @@ export default {
         rateHandler: function (weight) {
             this.currentRating = weight;
 
-            // Finding the relecant rating and incrementing the cast votes
+            // Finding the relevant rating and incrementing the cast votes
             let rating = this.ratings.find((obj) => obj.weight == weight);
             rating.votes++;
 
@@ -1119,7 +1119,7 @@ export default {
             this.bigRating = "&#128566;"; // Emoji: 😶
         });
         eventBus.$on("rate", (weight) => {
-            // Finding the relecant rating and incrementing the cast votes
+            // Finding the relevant rating and incrementing the cast votes
             let rating = this.ratings.find((obj) => obj.weight == weight);
             rating.votes++;
 
