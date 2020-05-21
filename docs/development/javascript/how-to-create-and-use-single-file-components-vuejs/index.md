@@ -217,8 +217,7 @@ The `-I node_modules` option will tell `tree` to ignore your `node_modules/` dir
 Files in the `public` folder will not be bundled by webpack. When your project is created, this folder will contain [an index.html file](https://cli.vuejs.org/guide/html-and-static-assets.html#the-index-file):
 
 {{< file "index.html" html >}}
-
-<!DOCTYPE html\>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -411,8 +410,8 @@ To start, replace the content of your `App.vue` with this snippet:
 </template>
 
 <script>
-import Star from "./components/Star";
-import Summary from "./components/Summary";
+import Star from "./components/Star.vue";
+import Summary from "./components/Summary.vue";
 
 export default {
     name: "App",
@@ -681,8 +680,8 @@ At this point, your `App.vue` should be the same as this snippet:
 </template>
 
 <script>
-import Star from "./components/Star";
-import Summary from "./components/Summary";
+import Star from "./components/Star.vue";
+import Summary from "./components/Summary.vue";
 
 export default {
     name: "App",
@@ -996,7 +995,7 @@ It is then imported in each component which accesses it:
 
 {{< file "AnyComponent.vue" js >}}
 // ...
-import { eventBus } from "../main";
+import { eventBus } from "../main.js";
 // ...
 {{< /file >}}
 
@@ -1064,10 +1063,10 @@ new Vue({
 </template>
 
 <script>
-import Star from "./components/Star";
-import Summary from "./components/Summary";
+import Star from "./components/Star.vue";
+import Summary from "./components/Summary.vue";
 
-import { eventBus } from "./main";
+import { eventBus } from "./main.js";
 
 export default {
     name: "App",
@@ -1179,7 +1178,7 @@ export default {
 </template>
 
 <script>
-import { eventBus } from "../main";
+import { eventBus } from "../main.js";
 
 export default {
     name: "Star",
