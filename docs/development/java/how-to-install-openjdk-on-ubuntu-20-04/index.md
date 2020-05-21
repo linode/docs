@@ -2,23 +2,23 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: Install Java Development Kit on Ubuntu.
-og_description: Install Java Development Kit on Ubuntu.
-keywords: ["java", "openjdk", "jdk", "11", "Ubuntu", "18.04"]
+description: This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 20.04. OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit. OpenJDK and Java SE are equivalent JDKs that include a Java runtime environment (JRE) and tools for developing and compiling Java applications. Optionally, you will also test your Open JDK installation by creating a simple "Hello World" application.
+og_description:  This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 20.04. OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit. OpenJDK and Java SE are equivalent JDKs that include a Java runtime environment (JRE) and tools for developing and compiling Java applications. Optionally, you will also test your Open JDK installation by creating a simple "Hello World" application.
+keywords: ["java", "openjdk", "jdk", "11", "Ubuntu", "20.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-25
 modified_by:
   name: Linode
 published: 2020-03-25
-title: How To Install Java Development Kit 11 on Ubuntu 18.04
-h1_title: Installing Java Development Kit 11 on Ubuntu 18.04
+title: How To Install Java Development Kit 11 on Ubuntu 20.04
+h1_title: Installing Java Development Kit 11 on Ubuntu 20.04
 contributor:
   name: Rajakavitha Kodhandapani
 audiences: ["beginner"]
 languages: ["java"]
 ---
 
-[Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Software written in Java can be compiled and run on any system, making Java a versatile platform that can be used to create anything from software to basic web applications. This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04.
+[Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Software written in Java can be compiled and run on any system, making Java a versatile platform that can be used to create anything from software to basic web applications. This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 20.04.
 
 OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit. OpenJDK and Java SE are equivalent JDKs that include a Java runtime environment (JRE) and tools for developing and compiling Java applications.
 
@@ -45,7 +45,7 @@ While there are many available versions of OpenJDK, version 11 is the latest Lon
         sudo apt-get install openjdk-11-jre
 
     {{< note >}}
-While you can run Java applications directly with the JRE, your applications will be compiled every time they are executed. This is generally slower than running applications that have already been compiled into Java bytecode, and may not be suitable if you plan to execute applications many times.
+While you can run Java applications directly with the JRE, your applications will be compiled every time they are executed. This is generally slower than running applications that have already been compiled into Java bytecode, and may not be suitable for frequent application execution.
 {{< /note >}}
 
 1.  Check the version of the JRE to verify that it has been properly installed:
@@ -55,9 +55,9 @@ While you can run Java applications directly with the JRE, your applications wil
     As of the time of this publication, this command should return:
 
     {{< output >}}
-openjdk version "11.0.7" 2020-04-14 LTS
-OpenJDK Runtime Environment 18.9 (build 11.0.7+10-LTS)
-OpenJDK 64-Bit Server VM 18.9 (build 11.0.7+10-LTS, mixed mode, sharing)
+openjdk version "11.0.7" 2020-04-14
+OpenJDK Runtime Environment (build 11.0.7+10-post-Ubuntu-3ubuntu1)
+OpenJDK 64-Bit Server VM (build 11.0.7+10-post-Ubuntu-3ubuntu1, mixed mode, sharing)
 {{< /output >}}
 
 1.  If you have chosen to install the full OpenJDK development kit, check the version of the compiler as well:

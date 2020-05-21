@@ -2,16 +2,16 @@
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
-description: "Install Certbot to obtain TLS certificates on a Debian server."
-og_description: "Install Certbot to obtain TLS certificates on a Debian server."
-keywords: [debian, certbot, TLS]
+description: "This guide will show you how to install Certbot on the CentOS 8 distribution. Certbot is a tool that automates the process of getting a signed Transport Layer Security (TLS) certificate via Let’s Encrypt. This will allow you to enable HTTPS on a web server."
+og_description:  "This guide will show you how to install Certbot on the CentOS 8 distribution. Certbot is a tool that automates the process of getting a signed Transport Layer Security (TLS) certificate via Let’s Encrypt. This will allow you to enable HTTPS on a web server."
+keywords: [centos, certbot, TLS]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-22
 modified: 2020-03-22
 modified_by:
   name: Linode
-title: 'How to Install Certbot for TLS on Debian 10'
-h1_title: 'Install Certbot for TLS on Debian 10'
+title: 'How to Install Certbot for TLS on CentOS 8'
+h1_title: 'Installing Certbot for TLS on CentOS 8'
 ---
 ## What is Certbot?
 
@@ -27,43 +27,35 @@ Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A
 If you're using Apache, change each instance of `nginx` to `apache` in the following sections.
 {{< /note >}}
 
-1.  Install the Certbot and web server-specific packages, then run Certbot:
+1.  Enable the EPEL repository:
 
-        sudo apt install certbot python-certbot-nginx
-        sudo certbot --nginx
+        sudo yum install epel-release
+        sudo yum update
+
+1.  Download and install the Certbot and web server-specific packages:
+
+        sudo curl -O https://dl.eff.org/certbot-auto
+        sudo mv certbot-auto /usr/local/bin/certbot-auto
+        chmod 0755 /usr/local/bin/certbot-auto
+
+1. Run Certbot:
+
+        sudo /usr/local/bin/certbot-auto --nginx
 
 1.  Certbot will ask for information about the site. The responses will be saved as part of the certificate:
 
     {{< output >}}
-# sudo certbot --nginx
+# sudo /usr/local/bin/certbot-auto --nginx
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Plugins selected: Authenticator nginx, Installer nginx
-Enter email address (used for urgent renewal and security notices) (Enter 'c' to
-cancel): admin@example.com
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Please read the Terms of Service at
-https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must
-agree in order to register with the ACME server at
-https://acme-v02.api.letsencrypt.org/directory
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-(A)gree/(C)ancel: A
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Would you be willing to share your email address with the Electronic Frontier
-Foundation, a founding partner of the Let's Encrypt project and the non-profit
-organization that develops Certbot? We'd like to send you email about our work
-encrypting the web, EFF news, campaigns, and ways to support digital freedom.
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-(Y)es/(N)o: N
 No names were found in your configuration files. Please enter in your domain
-name(s) (comma and/or space separated)  (Enter 'c' to cancel): www.rajie.wiki
+name(s) (comma and/or space separated)  (Enter 'c' to cancel): www.example.com
 Obtaining a new certificate
 Performing the following challenges:
 http-01 challenge for www.example.com
 Waiting for verification...
 Cleaning up challenges
-Deploying Certificate to VirtualHost /etc/nginx/sites-enabled/default
+Deploying Certificate to VirtualHost /etc/nginx/nginx.conf
 
 Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -73,7 +65,7 @@ new sites, or if you're confident your site works on HTTPS. You can undo this
 change by editing your web server's configuration.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2
-Redirecting all traffic on port 80 to ssl in /etc/nginx/sites-enabled/default
+Redirecting all traffic on port 80 to ssl in /etc/nginx/nginx.conf
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -89,13 +81,8 @@ Certbot recommends pointing your web server configuration to the default certifi
 
     Finally, Certbot will update your web server configuration so that it uses the new certificate, and also redirects HTTP traffic to HTTPS if you chose that option.
 
-1. If you have a firewall configured on your Linode, you may need to add [Firewall Rules](https://www.linode.com/docs/security/securing-your-server/#configure-a-firewall) to allow incoming and outgoing connections to the HTTPS service. If you're using *UFW*, you can enable HTTP and HTTPS traffic with the following commands:
+1.  If you have a firewall configured on your Linode, you may need to add a firewall rule to allow incoming and outgoing connections to the HTTPS service. On CentOS 8, *firewalld* is the default tool for managing firewall rules. Configure firewalld for HTTP and HTTPS traffic:
 
-        sudo systemctl start ufw && sudo systemctl enable ufw
-        sudo ufw allow http
-        sudo ufw allow https
-        sudo ufw enable
-
-     {{< note >}}
-For more information on UFW and how to install it on your Linode, see our [How to Configure a Firewall with UFW guide](https://www.linode.com/docs/security/firewalls/configure-firewall-with-ufw/)
-{{< /note >}}
+        sudo firewall-cmd --zone=public --permanent --add-service=http
+        sudo firewall-cmd --zone=public --permanent --add-service=https
+        sudo firewall-cmd --reload
