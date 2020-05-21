@@ -10,8 +10,8 @@ modified: 2020-04-22
 modified_by:
   name: Linode
 published: 2020-04-22
-title: How to Develop StackScripts
-h1_title: Developing StackScripts
+title: Create and Manage StackScripts - A Tutorial
+h1_title: A Tutorial for Creating and Managing StackScripts
 external_resources:
   - '[StackScript Community Library](http://linode.com/stackscripts)'
 ---
@@ -22,23 +22,39 @@ external_resources:
 
 All StackScripts are stored in the Linode Cloud Manager and can be accessed whenever you deploy a Linode. A StackScript authored by you is an *Account StackScript*. While a *Community StackScript* is a StackScript created by a Linode community member that has made their StackScript publicly available in the Linode Cloud Manager.
 
-### Creating a New StackScript
+### In this Guide
 
-1.  From the Cloud Manager's sidebar, click on the **StackScripts** link.
+This guide will show you how to do the following:
 
-1.  Viewing the StackScripts page, click on the **Create New StackScript** link at the top of the page.
+- Create an Account StackScript
+- Delete an Account StackScript
+- Make your Account StackScript Public
 
-      ![StackScript selection options.](create-new-stackscript.png "StackScript selection options.")
+## Create a New StackScript
 
-1.   On the **Create New StackScript** page, provide the required configurations to create your StackScript:
+{{< note >}}
+Prior to creating a new StackScript in the Cloud Manager, it is recommended that you review the [Developing a StackScript]() section of this guide. You may consider writing the contents of your script prior to completing the steps in this section.
+{{</ note >}}
+
+1. Log into the [Linode Cloud Manager](https://cloud.linode.com/).
+
+1. Click on the **StackScripts** link in the left-hand navigation menu. You will be brought to the *StackScripts* page.
+
+      ![Click on the StackScripts link in the left-hand navigation menu.](stackscripts-sidebar-link.png)
+
+1. Viewing the **Account StackScripts** section, click on the **Create New StackScript** link at the top of the page.
+
+      ![Click on the Create New StackScript link.](create-new-stackscript-link.png)
+
+1. On the **Create New StackScript** page, provide the required configurations to create your StackScript.
 
     | **Field**| **Description** |
     |:-----------------|:---------------------|
     | **StackScript Label** | The name with which to identify your StackScript. *Required*. |
     | **Description** | An overview of what your StackScript does. |
-    | **Target Images** | The images that can run this StackScript. *Required*.|
-    | **Script** | The body of the script. *Required*. |
-    | **Revision Note** | A brief description of the changes made in this update of the StackScript. |
+    | **Target Images** | The Linux distributions that can run this StackScript. *Required*.|
+    | **Script** | The body of the script. See the [Developing a StackScript]() section for helpful tips on writing a script for use with StackScripts. *Required*. |
+    | **Revision Note** | A short description of the updates made to your StackScript in this version of your script.|
 
     {{< disclosure-note "Example Script">}}
 The file below displays an example of a simple script that executes some basic set up steps on a Linode. Review the example's comments for details on what each line of the script does.
@@ -68,31 +84,30 @@ hostname -F /etc/hostname
 
 # This section sets the Fully Qualified Domain Name (FQDN) in the hosts file.
 echo $IPADDR $FQDN $HOSTNAME >> /etc/hosts
-
 {{< /file >}}
     {{</ disclosure-note >}}
 
-1.  Click **Save** when you are done. You can always edit the script later.
-
-1. You will be brought back to the **StackScripts** page, where your new StackScript will be visible and ready to use with a new Linode deployment.
+1. Click **Save** when you are done. You can always edit your script later if needed. You will be brought back to the **StackScripts** page, where your new StackScript will be visible and ready to use with a new Linode deployment.
 
     {{< note >}}
-To deploy a new Linode with your new StackScript, follow the steps in the [Deploying a StackScript](/docs/platform/stackscripts/deploying-stackscripts/#deploying-from-a-stackscript) guide.
+To deploy a new Linode with your StackScript, follow the steps in the [Deploying a New Linode Using a StackScript](/docs/platform/stackscripts/deploying-stackscripts/#deploy-a-linode-from-an-account-stackscript) guide.
     {{</ note >}}
 
-    ![After saving your new StackScript, it will be visible and ready to use on the StackScript page.](new-stackscript-create-success.png "After saving your new StackScript, it will be visible and ready to use on the StackScript page.")
+    ![View your new StackScript on the StackScripts page.](stackscript-create-success.png)
 
-## StackScript Use Cases
+## Manage StackScripts
+### Edit an Account StackScript
 
-This section contains information on common use cases for StackScripts.
+After you've created an Account StackScript, you may need to edit it to
+### Make an Account StackScript Public
+### Delete a StackScript
 
-### Calling StackScripts Recursively
 
-StackScripts can call other StackScripts from the library at runtime. This functionality reduces the need to write duplicate code for multiple scripts. For example, the Linode [StackScript Bash Library](https://cloud.linode.com/stackscripts/1) is a set of functions that perform various tasks. The script creates the functions but does not run them. A new StackScript can import the Bash Library and then execute functions from it. This reduces the size and time-to-write of all StackScripts using the functions built into the library script.
+## Developing StackScripts
 
-In another example use case for linked StackScripts, you could create a StackScript that updates all software packages on the system. You would most likely want to perform this function on all new Linodes. You could then create a StackScript to build a web server that integrates into the current cluster. Rather than rewrite the commands to update the system,you can call the previous StackScript.
+The only requirements to run a StackScript are that the first line of the script should contain a shebang such as `#!/bin/bash` and the interpreter specified in the shebang should be installed in the Linode base image you are deploying. While `Bash` is an obvious choice for StackScripts, you may choose any language or system.
 
-Let’s then say that some of this web servers run a CMS, like WordPress. You can create a StackScript which invokes the web server script, removing the need to rewrite the commands to install the web server software or update the system.
+**Community StackScripts**, are scripts created by Linode and other community members which are made available publicly to other users. Depending on the type of the script you develop, you may consider sharing your script in this library so that others may deploy instances using the script.
 
 The syntax to pull another StackScript is:
 
@@ -107,23 +122,6 @@ If you're scripting in another language, execute the script on a second line, as
     <ssinclude StackScriptID="[NUMBER]">
     ./ssinclude-[NUMBER]
 
-A great example of this use case is the [StackScript Bash Library](https://cloud.linode.com/stackscripts/1), created by Linode. This script contains several useful functions to perform common tasks such as updating software and installing Apache, MySQL,etc. Run on its own it does nothing to alter your system. Importing the Bash Library script saves time in your own StackScripts.
-
-### Demonstrating or Distributing Software
-
-If you develop software, you can use StackScripts to deploy a demonstration instance of the software. The resulting system may not need to be particularly durable or be fully configured. With a StackScript for demonstrating software, you can let users experience and test the software while giving full control over the deployment. This same kind of procedure with minimal modification may also be an easy way to distribute the software itself. These StackScripts have to be generic so that other users can deploy from this StackScript without complication.
-
-### Deploying Appliances and Cluster Instances
-
-If your deployment includes function-specific *appliance-type* instances, you may want to explore using StackScripts to help manage these nodes, such as job-processing instances.
-
-Application clusters are similar. If your architecture includes some sort of *cluster*, you may be able to automate the deployment of a new cluster-member by using StackScripts to configure the instance. Here, StackScripts, in combination with the API, helps you to elastically automate deployment and management of a cluster.
-
-## Developing StackScripts
-
-The only requirements to run a StackScript are that the first line of the script should contain a shebang such as `#!/bin/bash` and the interpreter specified in the shebang should be installed in the Linode base image you are deploying. While `Bash` is an obvious choice for StackScripts, you may choose any language or system.
-
-**Community StackScripts**, are scripts created by Linode and other community members which are made available publicly to other users. Depending on the type of the script you develop, you may consider sharing your script in this library so that others may deploy instances using the script.
 
 ### Bootstrapping StackScripts
 
