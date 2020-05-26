@@ -73,8 +73,7 @@ spec:
       port: 3306
   selector:
     app: drupal
-    tier: mysql
-  type: LoadBalancer
+    tier: backend
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -100,19 +99,21 @@ spec:
   selector:
     matchLabels:
       app: drupal
-      tier: mysql
+      tier: backend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: drupal
-        tier: mysql
+        tier: backend
     spec:
       containers:
         - image: mysql:latest
           name: mysql
           env:
+            - name: MYSQL_DATABASE
+              value: drupal-db
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                  secretKeyRef:
@@ -144,10 +145,13 @@ metadata:
     app: drupal
 spec:
   ports:
-    - protocol: TCP
-      port: 8081
+    - port: 8081
+      protocol: TCP
+      name: web
+      targetPort: 80
   selector:
     app: drupal
+    tier: frontend
   type: LoadBalancer
 ---
 apiVersion: v1
@@ -170,6 +174,7 @@ metadata:
   name: drupal
   labels:
     app: drupal
+    tier: frontend
 spec:
   selector:
     matchLabels:
@@ -183,9 +188,25 @@ spec:
         app: drupal
         tier: frontend
     spec:
+      initContainers:
+        - name: init-sites-volume
+          image: drupal:latest
+          command: ['/bin/bash', '-c']
+          args: ['cp -r /var/www/html/sites /data; chown www-data:www-data /data/ -R']
+          volumeMounts:
+            - mountPath: /data
+              name: drupal
       containers:
         - image: drupal:latest
           name: drupal
+          env:
+            - name: DRUPAL_DATABASE_HOST
+              value: drupal-mysql
+            - name: DRUPAL_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-pass
+                  key: password
           ports:
             - containerPort: 8081
               name: drupal
@@ -196,6 +217,9 @@ spec:
             - name: drupal
               mountPath: /var/www/html/profiles
               subPath: profiles
+            - name: drupal
+              mountPath: /var/www/html/sites
+              subPath: sites
             - name: drupal
               mountPath: /var/www/html/themes
               subPath: themes
@@ -240,11 +264,13 @@ spec:
 
         kubectl get pvc
 
-    The output is similar to:
+    The output is similar to the following:
 
         NAME          STATUS  VOLUME                                    CAPACITY  ACCESS MODES   STORAGECLASS            AGE
         mysql-claim   Bound   pvc-13c1086a-0a4a-4945-b473-0110ebd09725  10Gi       RWO           linode-block-storage    24m
         drupal-claim  Bound   pvc-8d907b17-72c0-4c5b-a3c4-d87e170ad87d  10Gi       RWO           linode-block-storage    24m
+
+    Note, you may have to wait a few moments for the status to switch from `Pending` to `Bound`.
 
 1.  Verify that the Pod is running with the following command:
 
@@ -255,6 +281,8 @@ spec:
         NAME                      READY   STATUS    RESTARTS   AGE
         mysql-6bf46f94bf-tcgs2    1/1     Running   0          13m
         drupal-77f665d45b-568tl   1/1     Running   0          5m1s
+
+    Note, you may have to wait a few moments for the status to switch from `Container Creating` to `Running`.
 
 1.  Verify that the Service is running:
 
