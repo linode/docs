@@ -64,7 +64,11 @@ To view the details of a StackScript prior to using it to deploy your Linode, cl
 ![View details about this StackScript](stackscript-show-details-drawer.png)
     {{</ disclosure-note >}}
 
-1. In the **StackScript Options** section, fill in values for your StackScript's Options. Not all StackScripts are written to accept [option values](), so your StackScript might not present this section.
+1. In the **StackScript Options** section, fill in values for your StackScript's Options. Not all StackScripts are written to accept option values, so your StackScript might not present this section.
+
+    {{< note >}}
+When [writing a script to be used in a StackScript](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/), these option values are made available to users by including [user defined fields](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs) in your script.
+    {{</ note >}}
 
 1. From the **Select an Image** dropdown menu, select the Linux distribution to use. This list will be limited to the distributions your StackScript supports.
 
@@ -136,7 +140,11 @@ To view the details of a StackScript prior to using it to deploy your Linode, cl
 ![View details about this StackScript](community-stackscript-show-details-drawer.png)
     {{</ disclosure-note >}}
 
-1. In the **StackScript Options** section, fill in values for your StackScript's Options. Not all StackScripts are written to accept [option values](), so your StackScript might not present this section.
+1. In the **StackScript Options** section, fill in values for your StackScript's Options. Not all StackScripts are written to accept option values, so your StackScript might not present this section.
+
+    {{< note >}}
+When [writing a script to be used in a StackScript](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/), these option values are made available to users by including [user defined fields](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs) in your script.
+    {{</ note >}}
 
 1. From the **Select an Image** dropdown menu, select the Linux distribution to use. This list will be limited to the distributions your StackScript supports.
 
@@ -186,4 +194,4 @@ To view the details of a StackScript prior to using it to deploy your Linode, cl
 Depending on the contents of your StackScript, it may take a few minutes for the script to finish executing.
     {{</ note >}}
 
-- To learn how to create your own StackScript see the [Creating a StackScript]() guide.
+- To learn how to create your own StackScript see the [A Tutorial for Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/#make-an-account-stackscript-public) guide.
