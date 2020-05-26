@@ -2,9 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Create custom instances and automate deployment with StackScripts.'
-og_description: 'Create custom instances and automate deployment with StackScripts.'
-keywords: ["automation", "deploy", "cloud", "custom instance", "scripts"]
+description: 'Linode StackScripts allow you to automate system administration and configuration tasks. You can deploy a new Linode using a StackScript that will perform its scripted tasks during the Linode''s first boot process. This guide will show you the various ways that you can deploy a new Linode using StackScripts and the Linode Cloud Manager.'
+og_description: 'Linode StackScripts allow you to automate system administration and configuration tasks. You can deploy a new Linode using a StackScript that will perform its scripted tasks during the Linode''s first boot process. This guide will show you the various ways that you can deploy a new Linode using StackScripts and the Linode Cloud Manager.'
+keywords: ["stackscripts", "automation", "script", "custom instance", "deployment"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-22
 modified_by:

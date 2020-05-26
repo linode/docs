@@ -2,9 +2,9 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide will provide you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
+og_description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide will provide you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
+keywords: ["automation", "scripts", "deployments", "instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
 modified_by:
