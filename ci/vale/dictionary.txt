@@ -1181,6 +1181,7 @@ py
 pyamqp
 pyinotify
 pypa
+pypi
 pypiserver
 pyspark
 pytest
@@ -1608,6 +1609,7 @@ vcs
 vdev
 vdevs
 ve
+venv
 ver
 verisign
 vhost
