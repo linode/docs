@@ -263,8 +263,8 @@ spec:
     The output is similar to:
 
         NAME     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-        drupal   LoadBalancer   10.0.0.89      192.0.2.3       80:31809/TCP   33m
+        drupal   LoadBalancer   10.0.0.89      192.0.2.3       8081:31266/TCP   33m
 
-1.  In your browser, type the IP address listed under `EXTERNAL_IP` above followed by the port `:8081`, for example, `192.0.2.3:8081`. The Drupal configuration page appears.
+1.  In your browser, type the IP address listed under `EXTERNAL_IP` above followed by the port `:8081`, for example, `http://192.0.2.3:8081`. The Drupal configuration page appears.
 
     ![Drupal Configuration Screen](install-drupal-setup.png "Drupal Configuration Screen")
