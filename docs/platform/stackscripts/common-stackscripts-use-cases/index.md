@@ -2,57 +2,48 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'Linode StackScripts can be used for a variety of use cases. This guide covers some of the more common use cases, like automating common system adminstration tasks, demonstrating your software, distributing your software, or deploying cluster instances. There are few limitations to what you can automate using a StackScript, because its underlying mechanism works just like any script you might execute on a Linux system.'
+og_description: 'Linode StackScripts can be used for a variety of use cases. This guide covers some of the more common use cases, like automating common system adminstration tasks, demonstrating your software, distributing your software, or deploying cluster instances. There are few limitations to what you can automate using a StackScript, because its underlying mechanism works just like any script you might execute on a Linux system.'
+keywords: ['scripting','automation','bash','open source']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
 modified_by:
   name: Linode
-title: "Index"
-h1_title: "h1 title displayed in the guide."
+title: "Common Linode StackScripts Use Cases"
+h1_title: "Common Use Cases for Linode StackScripts"
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+  name: Linode
 ---
+## What are StackScripts?
+
+[StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top Linode's default Linux distribution images. For example, every time you deploy a new Linode you might execute the same tasks, like updating your system's software, installing your favorite Linux tools, and adding a limited user account. These tasks can be automated using a StackScript that will perform these actions for you as part of your Linode's first boot process.
+
+All StackScripts are stored in the Linode Cloud Manager and can be accessed whenever you deploy a Linode. A StackScript authored by you is an *Account StackScript*. While a *Community StackScript* is a StackScript created by a Linode community member that has made their StackScript publicly available in the Linode Cloud Manager.
 
 ## StackScript Use Cases
 
-This section contains information on common use cases for StackScripts.
+### Automating Common System Administration Tasks
 
-### Calling StackScripts Recursively
+Whenever you deploy a new Linode, there are basic system administration tasks that you must perform, like installing system software updates, setting your Linode's hostname, setting the timezone, and securing your server. You can create a StackScript to automate all these steps and use it each time you deploy a new Linode. There are few limitations to what you can automate using a StackScript, because its underlying mechanism works just like any script you might execute on a Linux system. StackScripts ensure that each Linode you deploy is configured exactly to your preferences each time.
 
-StackScripts can call other StackScripts from the library at runtime. This functionality reduces the need to write duplicate code for multiple scripts. For example, the Linode [StackScript Bash Library](https://cloud.linode.com/stackscripts/1) is a set of functions that perform various tasks. The script creates the functions but does not run them. A new StackScript can import the Bash Library and then execute functions from it. This reduces the size and time-to-write of all StackScripts using the functions built into the library script.
+Since you can make any StackScript public to the Linode Community, your entire team can use the StackScripts you create to easily deploy base identical systems.
 
-In another example use case for linked StackScripts, you could create a StackScript that updates all software packages on the system. You would most likely want to perform this function on all new Linodes. You could then create a StackScript to build a web server that integrates into the current cluster. Rather than rewrite the commands to update the system,you can call the previous StackScript.
+### Demonstrating your Software
 
-Let’s then say that some of this web servers run a CMS, like WordPress. You can create a StackScript which invokes the web server script, removing the need to rewrite the commands to install the web server software or update the system.
+If you develop software, you can use StackScripts to deploy a demonstration instance of your software. The resulting system may not need to be particularly durable or be fully configured, since you can redeploy a new Linode exactly as written in your StackScript. This is an easy and reproducible way to spin up quick demos of your software.
 
-The syntax to pull another StackScript is:
+### Distributing your Software
 
-    <ssinclude StackScriptID="[NUMBER]">
+Community StackScripts are publicly available to the entire Linode Community. This means if you have an open source project you'd like to make easily available to Linode users, you can write a StackScript that installs and configures your project's software on a Linode. Include [user defined variables](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs) in your StackScript to make it customizable to users during each deployment of the StackScript.
 
-This downloads the StackScript on the Linode as `ssinclude-[NUMBER]`. To download and run the script (assuming it's written as a Bash script) use:
+{{< note >}}
+If you would also like to make your open source project available to the Linode Community as an App in the Linode Marketplace, see the [Linode One-Click App Marketplace page](https://www.linode.com/marketplace/) for details.
+{{</ note >}}
 
-    source <ssinclude StackScriptID="[NUMBER]">
+### Deploy Cluster Instances
 
-If you're scripting in another language, execute the script on a second line, as seen below:
+If your application makes use of a cluster of nodes, you may be able to automate the deployment of a new cluster-member by using StackScripts to configure the instance. StackScripts, in combination with the [Linode API](https://developers.linode.com/api/v4), can help you to elastically automate deployment and management of a cluster's node. Similarly, you can apply the same concept to creating a [server appliance instance](https://en.wikipedia.org/wiki/Computer_appliance).
 
-    <ssinclude StackScriptID="[NUMBER]">
-    ./ssinclude-[NUMBER]
+## Next Steps
 
-A great example of this use case is the [StackScript Bash Library](https://cloud.linode.com/stackscripts/1), created by Linode. This script contains several useful functions to perform common tasks such as updating software and installing Apache, MySQL,etc. Run on its own it does nothing to alter your system. Importing the Bash Library script saves time in your own StackScripts.
-
-### Demonstrating or Distributing Software
-
-If you develop software, you can use StackScripts to deploy a demonstration instance of the software. The resulting system may not need to be particularly durable or be fully configured. With a StackScript for demonstrating software, you can let users experience and test the software while giving full control over the deployment. This same kind of procedure with minimal modification may also be an easy way to distribute the software itself. These StackScripts have to be generic so that other users can deploy from this StackScript without complication.
-
-### Deploying Appliances and Cluster Instances
-
-If your deployment includes function-specific *appliance-type* instances, you may want to explore using StackScripts to help manage these nodes, such as job-processing instances.
-
-Application clusters are similar. If your architecture includes some sort of *cluster*, you may be able to automate the deployment of a new cluster-member by using StackScripts to configure the instance. Here, StackScripts, in combination with the API, helps you to elastically automate deployment and management of a cluster.
-
+To get started creating your first StackScript, see the [A Tutorial for Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/).
