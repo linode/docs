@@ -27,7 +27,7 @@ Writing a script for use in a StackScript will generally be the same as writing 
 -  [Base requirements for any script that will be used as a StackScript](#stackscript-requirements).
 -  [Importing an existing StackScript into your own script for code reuse](#import-a-stackscript).
 -  [Accessing a StackScript's ID number](#access-a-stackscript-s-id-number).
--  [Inlcuding user defined fields (UDFs) in your script to allow for custom behavior when deploying a new Linode with your StackScript](#user-defined-fields-udfs).
+-  [Including user defined fields (UDFs) in your script to allow for custom behavior when deploying a new Linode with your StackScript](#user-defined-fields-udfs).
 -  [Using the StackScript system's default environment variables](#default-environment-variables).
 
 ## The StackScript System
@@ -78,7 +78,7 @@ source <ssinclude StackScriptID="[NUMBER]">
 - Linode provides a [StackScript Bash Library](https://cloud.linode.com/stackscripts/1) that includes a set of functions that perform various common tasks users might wish to execute on their Linodes. This script creates the functions, but does not run them. A new StackScript can import the Bash Library and then execute functions from it.
 
     {{< note >}}
-Linode's [StackScript Bash Library's]((https://cloud.linode.com/stackscripts/1)) ID number is `1`.
+Linode's [StackScript Bash Library's](https://cloud.linode.com/stackscripts/1) ID number is `1`.
     {{</ note >}}
 
 ### Access a StackScript's ID Number
@@ -134,7 +134,7 @@ Linode StackScripts provide a set of default environment variables that you can 
 
 | **Environment Variable**               | **Description**                                                                       |
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
-| `LINODE_ID`           | The deployd Linode's ID number                                                            |
+| `LINODE_ID`           | The deployed Linode's ID number                                                            |
 | `LINODE_LISHUSERNAME` | The deployed Linode's full [Linode Shell (LISH)](/docs/platform/manager/using-the-linode-shell-lish/) accessible name. |
 | `LINODE_RAM`          | The [RAM available on this Linode's plan](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions).                                                   |
 | `LINODE_DATACENTERID` | The ID number of the data center containing the Linode. You can use the [Linode API](https://developers.linode.com/api/v4/regions) to see a list of all data center IDs. |
