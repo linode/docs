@@ -304,7 +304,7 @@ drupal   LoadBalancer   10.0.0.89      192.0.2.3       8081:31266/TCP   33m
 
 ### Configure MySQL
 
-You need to log into the `mysql` pod to set the root password for the Drupal UI to be able to connect during setup.
+You need to log into the `mysql` Pod to set the root password for the Drupal UI to be able to connect during setup.
 
 1.  From the command line, issue the following command which will log into the Pod and open a bash shell. Replace `mysql-6bf46f94bf-tcgs2` with your `mysql` Pod name from the `kubectl get pods` command output above:
 
