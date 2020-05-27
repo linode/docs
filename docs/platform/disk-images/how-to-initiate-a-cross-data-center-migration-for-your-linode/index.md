@@ -9,6 +9,7 @@ modified: 2019-06-20
 modified_by:
   name: Linode
 published: 2019-02-04
+aliases: ['platform/migrating-to-a-different-data-center/']
 title: How to Initiate a Cross Data Center Migration for your Linode
 ---
 
@@ -18,7 +19,7 @@ You can migrate your Linode across data centers using the Linode Cloud Manager. 
 We recommend using our [Choosing a Data Center](/docs/platform/how-to-choose-a-data-center/) guide to learn how to choose and speed test a data center.
 {{< /note >}}
 
-This guide will cover:
+## In this Guide:
 
 - [Important details to know before initiating a cross data center migration](/docs/platform/migrating-to-a-different-data-center/#things-to-know-before-migrating).
 - [How to migrate your Linode to a different data center](/docs/platform/migrating-to-a-different-data-center/#migrating-to-a-new-data-center).
