@@ -381,8 +381,8 @@ mysql       1/1     0.00%   1.6rps           0ms           0ms           0ms    
 
 1.  To dig deeper, try the following commands:
 
-        linkerd -n default top deploy
-        linkerd -n default tap deploy/drupal
+        linkerd top deploy
+        linkerd tap deploy/drupal
 
     You can also use the graphical dashboards view to show you these items in the browser.
 
