@@ -242,13 +242,15 @@ spec:
 
     The output is similar to:
 
-        secret/mysql-pass-g764cgb8b9 created
-        service/drupal-mysql created
-        service/drupal configured
-        deployment.apps/drupal created
-        deployment.apps/mysql created
-        persistentvolumeclaim/drupal-claim created
-        persistentvolumeclaim/mysql-claim created
+    {{< output >}}
+secret/mysql-pass-g764cgb8b9 created
+service/drupal-mysql created
+service/drupal configured
+deployment.apps/drupal created
+deployment.apps/mysql created
+persistentvolumeclaim/drupal-claim created
+persistentvolumeclaim/mysql-claim created
+{{</ output >}}
 
 1.  Verify that the Secret exists:
 
@@ -256,9 +258,11 @@ spec:
 
     The output is similar to:
 
-        NAME                    TYPE                                  DATA   AGE
-        default-token-8wt7g     kubernetes.io/service-account-token   3      44m
-        mysql-pass-g764cgb8b9   Opaque                                1      24m
+    {{< output >}}
+NAME                    TYPE                                  DATA   AGE
+default-token-8wt7g     kubernetes.io/service-account-token   3      44m
+mysql-pass-g764cgb8b9   Opaque                                1      24m
+{{</ output >}}
 
 1.  Verify that a `PersistentVolume` is dynamically provisioned:
 
@@ -266,9 +270,11 @@ spec:
 
     The output is similar to the following:
 
-        NAME          STATUS  VOLUME                                    CAPACITY  ACCESS MODES   STORAGECLASS            AGE
-        mysql-claim   Bound   pvc-13c1086a-0a4a-4945-b473-0110ebd09725  10Gi       RWO           linode-block-storage    24m
-        drupal-claim  Bound   pvc-8d907b17-72c0-4c5b-a3c4-d87e170ad87d  10Gi       RWO           linode-block-storage    24m
+    {{< output >}}
+NAME          STATUS  VOLUME                                    CAPACITY  ACCESS MODES   STORAGECLASS            AGE
+mysql-claim   Bound   pvc-13c1086a-0a4a-4945-b473-0110ebd09725  10Gi       RWO           linode-block-storage    24m
+drupal-claim  Bound   pvc-8d907b17-72c0-4c5b-a3c4-d87e170ad87d  10Gi       RWO           linode-block-storage    24m
+{{</ output >}}
 
     Note, you may have to wait a few moments for the status to switch from `Pending` to `Bound`.
 
@@ -278,9 +284,11 @@ spec:
 
     The output is similar to:
 
-        NAME                      READY   STATUS    RESTARTS   AGE
-        mysql-6bf46f94bf-tcgs2    1/1     Running   0          13m
-        drupal-77f665d45b-568tl   1/1     Running   0          5m1s
+    {{< output >}}
+NAME                      READY   STATUS    RESTARTS   AGE
+mysql-6bf46f94bf-tcgs2    1/1     Running   0          13m
+drupal-77f665d45b-568tl   1/1     Running   0          5m1s
+{{</ output >}}
 
     Note, you may have to wait a few moments for the status to switch from `Container Creating` to `Running`.
 
@@ -289,10 +297,63 @@ spec:
         kubectl get services drupal
 
     The output is similar to:
+    {{< output >}}
+NAME     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
+drupal   LoadBalancer   10.0.0.89      192.0.2.3       8081:31266/TCP   33m
+{{</ output >}}
 
-        NAME     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-        drupal   LoadBalancer   10.0.0.89      192.0.2.3       8081:31266/TCP   33m
+### Configure MySQL
 
-1.  In your browser, type the IP address listed under `EXTERNAL_IP` above followed by the port `:8081`, for example, `http://192.0.2.3:8081`. The Drupal configuration page appears.
+You need to log into the `mysql` pod to set the root password for the Drupal UI to be able to connect during setup.
+
+1.  From the command line, issue the following command which will log into the Pod and open a bash shell. Replace `mysql-6bf46f94bf-tcgs2` with your `mysql` Pod name from the `kubectl get pods` command output above:
+
+        kubectl exec -it mysql-6bf46f94bf-tcgs2 -- /bin/bash
+
+1.  At the prompt, log into MySQL:
+
+        mysql -u root -p
+
+    The system will ask you for a password, this will be the password you set in the `kustomization.yaml` file.
+
+1.  You will now be logged into MySQL and be presented with a MySQL prompt. Here you will issue the following SQL command, where MySQLpassword is the password from `kustomization.yaml`. Then exit MySQL:
+
+        ALTER USER root IDENTIFIED WITH mysql_native_password by 'MySQLpassword';
+        exit;
+
+1.  Exit the Pod:
+
+        exit
+
+## Setup Drupal
+
+1.  In your browser, type the IP address listed under `EXTERNAL_IP` from the `kubectl get services drupal` command above followed by the port `:8081`, for example, `http://192.0.2.3:8081`. The Drupal configuration page appears.
 
     ![Drupal Configuration Screen](install-drupal-setup.png "Drupal Configuration Screen")
+
+1.  Click the **Save and Continue** button to go to the **Chose Profile** screen.
+
+    ![Drupal Choose Profile Screen](drupal-lke-choose-profile.png "Drupal Choose Profile Screen")
+
+1.  Leave the default `Standard` selected and click the **Save and Continue** button. Some verification checks will be performed and then the **Set Up Database** screen will appear.
+
+    ![Drupal Database Set Up Screen](drupal-lke-db-config.png "Drupal Database Set Up Screen")
+
+    - Leave the default for MySQL selected.
+    - In the **Database name** field, use `drupal-db`, or what you used for the `MYSQL_DATABASE` env value in the `mysql-deployment.yaml` file.
+    - The **Database username** is root.
+    - The **Database password** is what you set in the `kustomization.yaml` file and what you used in the [Configure MySQL](#configure-mysql) section.
+    - Under **ADVANCED OPTIONS**, change the **Host** to the value you used for the `DRUPAL_DATABASE_HOST` in `drupal-deployment.yaml`, in this case, `drupal-mysql`.
+    - The **port** should be correctly set to the container port as listed in the `mysql-deployment.yaml`, in this example `3306`.
+
+1.  Click the **Save and Continue** button. Drupal will now take several minutes to install the site.
+
+      ![Drupal Install Site Progress Bar](drupal-lke-progress-install.png "Drupal Install Site Progress Bar")
+
+1.  Once complete, you will be asked some basic configuration information about your site.
+
+      ![Drupal Site Configuration](drupal-lke-site-configuration.png "Drupal Site Configuration")
+
+1.  Click the **Save and Continue** button. Your site will load and you will see the **Welcome Screen**.
+
+      ![Drupal Welcome Screen](drupal-lke-welcome-screen.png "Drupal Welcome Screen")
