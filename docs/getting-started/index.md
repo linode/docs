@@ -210,29 +210,36 @@ A hostname is used to identify your Linode using an easy-to-remember name. Your 
 
 ### Arch / CentOS 7 / Debian 8 / Fedora / Ubuntu 16.04 and above
 
-Replace `example_hostname` with one of your choice.
+Replace `example-hostname` with one of your choice.
 
-    hostnamectl set-hostname example_hostname
+    hostnamectl set-hostname example-hostname
 
 ### CentOS 6
 
-Replace `hostname` with one of your choice.
+Replace `example-hostname` with one of your choice.
 
-    echo "HOSTNAME=example_hostname" >> /etc/sysconfig/network
-    hostname "hostname"
+    echo "HOSTNAME=example-hostname" >> /etc/sysconfig/network
+    hostname "example-hostname"
 
-### Debian 7 / Slackware / Ubuntu 14.04
+### Debian 7 / Ubuntu 14.04
 
-Replace `example_hostname` with one of your choice.
+Replace `example-hostname` with one of your choice.
 
-    echo "example_hostname" > /etc/hostname
+    echo "example-hostname" > /etc/hostname
     hostname -F /etc/hostname
+
+### Slackware
+
+Replace `example-hostname` with one of your choice.
+
+    echo "example-hostname" > /etc/HOSTNAME
+    hostname -F /etc/HOSTNAME
 
 ### Gentoo
 
-Enter the following commands to set the hostname, replacing `example_hostname` with the hostname of your choice:
+Enter the following commands to set the hostname, replacing `example-hostname` with the hostname of your choice:
 
-    echo "HOSTNAME=\"example_hostname\"" > /etc/conf.d/hostname
+    echo "HOSTNAME=\"example-hostname\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
 
 ### OpenSUSE
@@ -248,15 +255,15 @@ The `hosts` file creates static associations between IP addresses and hostnames 
 
   {{< file "/etc/hosts"  conf >}}
 127.0.0.1 localhost.localdomain localhost
-203.0.113.10 hostname.example.com hostname
+203.0.113.10 example-hostname.example.com example-hostname
 {{< /file >}}
 
 Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will not work without this entry:
 
   {{< file "/etc/hosts" conf >}}
 127.0.0.1 localhost.localdomain localhost
-203.0.113.10 hostname.example.com hostname
-2600:3c01::a123:b456:c789:d012 hostname.example.com hostname
+203.0.113.10 example-hostname.example.com example-hostname
+2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname
 {{< /file >}}
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your Linode's IPv6 address.
