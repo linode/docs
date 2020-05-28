@@ -5,7 +5,6 @@ author:
 description: 'An introduction to configuration management with the Ansible IT automation platform including installation, configuration and playbook set up.'
 keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration", "ansible configuration change management", "ansible server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['applications/ansible/getting-started-with-ansible/','applications/configuration-management/getting-started-with-ansible/']
 published: 2015-06-01
 modified: 2015-09-21
 modified_by:
@@ -31,7 +30,7 @@ This guide provides an introduction to Ansible Playbook concepts, like tasks, pl
 
 * Install Ansible on your computer or a Linode following the steps in the [Set up the Control Node](/docs/applications/configuration-management/getting-started-with-ansible/#set-up-the-control-node) section of our [Getting Started With Ansible](/docs/applications/configuration-management/getting-started-with-ansible/) guide.
 
-* Deploy a Linode running Debian 9 to manage with Ansible. All Playbooks created throughout this guide will be executed on this Linode. Follow the [Getting Started With Ansible - Basic Installation and Setup](http://localhost:1313/docs/applications/configuration-management/getting-started-with-ansible/#set-up-the-control-node) to learn how to establish a connection between the Ansible control node and your Linode.
+* Deploy a Linode running Debian 9 to manage with Ansible. All Playbooks created throughout this guide will be executed on this Linode. Follow the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/#set-up-the-control-node) to learn how to establish a connection between the Ansible control node and your Linode.
 
     {{< note >}}
 When following the [Getting Started with Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#set-up-the-control-node) guide to deploy a Linode, it is not necessary to add your Ansible control node's SSH key-pair to your managed Linode. This step will be completed using a Playbook later on in this guide.
