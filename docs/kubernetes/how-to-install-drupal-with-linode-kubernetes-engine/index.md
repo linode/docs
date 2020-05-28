@@ -290,7 +290,7 @@ mysql-6bf46f94bf-tcgs2    1/1     Running   0          13m
 drupal-77f665d45b-568tl   1/1     Running   0          5m1s
 {{</ output >}}
 
-    Note, you may have to wait a few moments for the status to switch from `Container Creating` to `Running`.
+    Note, you may have to wait a few moments for the status to change from `Container Creating` to `Running`.
 
 1.  Verify that the Service is running:
 
@@ -306,17 +306,17 @@ drupal   LoadBalancer   10.0.0.89      192.0.2.3       8081:31266/TCP   33m
 
 You need to log into the `mysql` Pod to set the root password for the Drupal UI to be able to connect during setup.
 
-1.  From the command line, issue the following command which will log into the Pod and open a bash shell. Replace `mysql-6bf46f94bf-tcgs2` with your `mysql` Pod name from the `kubectl get pods` command output above:
+1.  Log into the 'mysql' Pod and open a bash shell. In the following command replace `mysql-6bf46f94bf-tcgs2` with the `mysql` Pod name from the `kubectl get pods` command output above:
 
-        kubectl exec -it mysql-6bf46f94bf-tcgs2 -- /bin/bash
-
+        kubectl exec -it mysql-6bf46f94bf-tcgs2 -- /bin/bash       
+        
 1.  At the prompt, log into MySQL:
 
         mysql -u root -p
 
-    The system will ask you for a password, this will be the password you set in the `kustomization.yaml` file.
+    The system prompts you for a password, this is the password that you set in the `kustomization.yaml` file.
 
-1.  You will now be logged into MySQL and be presented with a MySQL prompt. Here you will issue the following SQL command, where MySQLpassword is the password from `kustomization.yaml`. Then exit MySQL:
+1.  MySQL prompt appears after you are logged into the Pod. Run the following SQL command, where `MySQLpassword` is the password from `kustomization.yaml`:
 
         ALTER USER root IDENTIFIED WITH mysql_native_password by 'MySQLpassword';
         exit;
@@ -327,7 +327,7 @@ You need to log into the `mysql` Pod to set the root password for the Drupal UI 
 
 ## Setup Drupal
 
-1.  In your browser, type the IP address listed under `EXTERNAL_IP` from the `kubectl get services drupal` command above followed by the port `:8081`, for example, `http://192.0.2.3:8081`. The Drupal configuration page appears.
+1.  In the browser, type the IP address listed under `EXTERNAL_IP` from the `kubectl get services drupal` command above followed by the port `:8081`, for example, `http://192.0.2.3:8081`. The Drupal configuration page appears.
 
     ![Drupal Configuration Screen](install-drupal-setup.png "Drupal Configuration Screen")
 
@@ -335,25 +335,25 @@ You need to log into the `mysql` Pod to set the root password for the Drupal UI 
 
     ![Drupal Choose Profile Screen](drupal-lke-choose-profile.png "Drupal Choose Profile Screen")
 
-1.  Leave the default `Standard` selected and click the **Save and Continue** button. Some verification checks will be performed and then the **Set Up Database** screen will appear.
+1.  Leave the default `Standard` selected and click the **Save and Continue** button. Some verification checks are performed and then the **Set Up Database** screen appears.
 
     ![Drupal Database Set Up Screen](drupal-lke-db-config.png "Drupal Database Set Up Screen")
 
     - Leave the default for MySQL selected.
     - In the **Database name** field, use `drupal-db`, or what you used for the `MYSQL_DATABASE` env value in the `mysql-deployment.yaml` file.
-    - The **Database username** is root.
+    - The **Database username** is `root`.
     - The **Database password** is what you set in the `kustomization.yaml` file and what you used in the [Configure MySQL](#configure-mysql) section.
     - Under **ADVANCED OPTIONS**, change the **Host** to the value you used for the `DRUPAL_DATABASE_HOST` in `drupal-deployment.yaml`, in this case, `drupal-mysql`.
     - The **port** should be correctly set to the container port as listed in the `mysql-deployment.yaml`, in this example `3306`.
 
-1.  Click the **Save and Continue** button. Drupal will now take several minutes to install the site.
+1.  Click the **Save and Continue** button. Drupal takes several minutes to install the site.
 
       ![Drupal Install Site Progress Bar](drupal-lke-progress-install.png "Drupal Install Site Progress Bar")
 
-1.  Once complete, you will be asked some basic configuration information about your site.
+1.  After the installation is complete, the system prompts you for some basic configuration information about your site.
 
       ![Drupal Site Configuration](drupal-lke-site-configuration.png "Drupal Site Configuration")
 
-1.  Click the **Save and Continue** button. Your site will load and you will see the **Welcome Screen**.
+1.  Click the **Save and Continue** button. The site loads and the **Welcome Screen** appears.
 
       ![Drupal Welcome Screen](drupal-lke-welcome-screen.png "Drupal Welcome Screen")
