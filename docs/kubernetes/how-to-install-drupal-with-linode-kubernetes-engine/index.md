@@ -40,7 +40,7 @@ Follow the instructions in [Deploying and Managing a Cluster with Linode Kuberne
 
 ## Create Manifest Files
 
-1. Create a `drupal` folder on your local machine that contains the `kustamization.yaml`, `mysql-deployment.yaml`, and `drupal-deployment.yaml` files.
+1. Create a `drupal` folder on your local machine to contain the `kustamization.yaml`, `mysql-deployment.yaml`, and `drupal-deployment.yaml` files.
 
         sudo mkdir drupal
 
