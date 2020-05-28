@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 title: "How to Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 18.04 LTS"
 h1_title: "Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 18.04 LTS"
+image: how-to-use-one-time-passwords-for-two-factor-authentication-ubuntu.png
 contributor:
   name: Linode
 external_resources:
