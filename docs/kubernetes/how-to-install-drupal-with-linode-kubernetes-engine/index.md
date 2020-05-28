@@ -308,8 +308,8 @@ You need to log into the `mysql` Pod to set the root password for the Drupal UI 
 
 1.  Log into the 'mysql' Pod and open a bash shell. In the following command replace `mysql-6bf46f94bf-tcgs2` with the `mysql` Pod name from the `kubectl get pods` command output above:
 
-        kubectl exec -it mysql-6bf46f94bf-tcgs2 -- /bin/bash       
-        
+        kubectl exec -it mysql-6bf46f94bf-tcgs2 -- /bin/bash
+
 1.  At the prompt, log into MySQL:
 
         mysql -u root -p
