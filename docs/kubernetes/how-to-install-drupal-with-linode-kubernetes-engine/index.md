@@ -328,6 +328,9 @@ You need to log into the `mysql` Pod to set the root password for the Drupal UI 
 ## Setup Drupal
 
 1.  In the browser, type the IP address listed under `EXTERNAL_IP` from the `kubectl get services drupal` command above followed by the port `:8081`, for example, `http://192.0.2.3:8081`. The Drupal configuration page appears.
+    {{< note >}}
+If you have a registered domain name that you want to use for the Drupal website, then add the domain and select **Insert default records from one of my NodeBalancers** option. In this case, the `EXTERNAL_IP` address is the IP address of the NodeBalancer. For more information, see [Add a Domain](/docs/platform/manager/dns-manager/#add-a-domain) .  
+{{< /note >}}
 
     ![Drupal Configuration Screen](install-drupal-setup.png "Drupal Configuration Screen")
 
