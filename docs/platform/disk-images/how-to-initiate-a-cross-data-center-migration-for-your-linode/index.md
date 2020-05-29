@@ -23,8 +23,10 @@ We recommend using our [Choosing a Data Center](/docs/platform/how-to-choose-a-d
 
 ## In this Guide:
 
-- [Important details to know before initiating a cross data center migration](/docs/platform/migrating-to-a-different-data-center/#things-to-know-before-migrating).
-- [How to migrate your Linode to a different data center](/docs/platform/migrating-to-a-different-data-center/#migrating-to-a-new-data-center).
+This guide will cover the following topics:
+
+- [Important details to know before initiating a cross data center migration](#things-to-know-before-migrating).
+- [How to migrate your Linode to a different data center](#migrating-to-a-new-data-center).
 
 ## Things to Know Before Migrating
 
