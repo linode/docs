@@ -103,7 +103,7 @@ Follow the steps in this section to find the ID number of a StackScript.
 
 ### User Defined Fields (UDFs)
 
-The StackScript system provides a basic markup specification that interfaces with the Linode deployment process so that users can customize the behavior of a StackScript on a per-deployment basis. When a StackScript contains a user defined filed (UDF), the Linode Cloud Manager will present the UDF as a form field, so a user can insert a corresponding custom value. The values and their related variables are inserted into the script's environment when used to deploy a new Linode.
+The StackScript system provides a basic markup specification that interfaces with the Linode deployment process so that users can customize the behavior of a StackScript on a per-deployment basis. When a StackScript contains a user defined field (UDF), the Linode Cloud Manager will present the UDF as a form field, so a user can insert a corresponding custom value. The values and their related variables are inserted into the script's environment when used to deploy a new Linode.
 
 - Use the following format to insert a UDF tag into a StackScript.
 
@@ -165,7 +165,7 @@ The files you reference within your script must exist and be accessible via `HTT
 
 ### Using an External Script
 
-- If you have an existing deployment script, you can use a StackScripts to deploy Linode instances with it. The following example StackScript installs PHP on the Linode, downloads an external PHP script from the URL `http://example.com/deployment-script.php`, makes it executable, and then runs the downloaded script.
+- If you have an existing deployment script, you can use a StackScript to deploy Linode instances with it. The following example StackScript installs PHP on the Linode, downloads an external PHP script from the URL `http://example.com/deployment-script.php`, makes it executable, and then runs the downloaded script.
 
     {{< file "StackScript" bash >}}
 #!/bin/bash
