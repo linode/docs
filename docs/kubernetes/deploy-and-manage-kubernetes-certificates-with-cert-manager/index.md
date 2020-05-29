@@ -38,7 +38,7 @@ Cert-Manager is divided into a number of components and microservices that are e
 
 ### Issuers and ClusterIssuers
 
-Certificate creation begins at the `Issuers` and `ClusterIssuers` resources that represent certificate authorities and are able to generate signed certificates using a specific issuer `type`. An issuer `type` represents the method used to create your certificate, such as `SelfSigned` for a [Self-Signed Certificate](/docs/security/ssl/create-a-self-signed-tls-certificate/) and `ACME` for requests for certificates from ACME servers, typically used by tools like [Let's Encrypt](https://letsencrypt.org/). A full list of supported issuer types is listes in [Cert-Manager's Documentation](https://cert-manager.io/docs/configuration/).
+Certificate creation begins at the `Issuers` and `ClusterIssuers` resources that represent certificate authorities and are able to generate signed certificates using a specific issuer `type`. An issuer `type` represents the method used to create your certificate, such as `SelfSigned` for a [Self-Signed Certificate](/docs/security/ssl/create-a-self-signed-tls-certificate/) and `ACME` for requests for certificates from ACME servers, typically used by tools like [Let's Encrypt](https://letsencrypt.org/). All supported issuer types is listed in [Cert-Manager's Documentation](https://cert-manager.io/docs/configuration/).
 
 While `Issuers` resources are only able to create certificates in the namespace they were created in, `ClusterIssuers` can create certificates for all namespaces. This guide provides an example that demonstrates how `ClusterIssuers` creates certificates for all namespaces in the cluster.
 
