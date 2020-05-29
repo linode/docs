@@ -27,14 +27,14 @@ Writing a script for use in a StackScript will generally be the same as writing 
 -  [Base requirements for any script that will be used as a StackScript](#stackscript-requirements).
 -  [Importing an existing StackScript into your own script for code reuse](#import-a-stackscript).
 -  [Accessing a StackScript's ID number](#access-a-stackscript-s-id-number).
--  [Including user defined fields (UDFs) in your script to allow for custom behavior when deploying a new Linode with your StackScript](#user-defined-fields-udfs).
+-  [Incorporating user defined fields (UDFs) into your scripts to allow for custom behavior when deploying a new Linode with a StackScript](#user-defined-fields-udfs).
 -  [Using the StackScript system's default environment variables](#default-environment-variables).
 
 ## The StackScript System
 
 ### StackScript Requirements
 
-- The primary requirement for your scripts are that the interpreter needed to execute your script be installed on the Linode base image you are deploying. While Bash is an obvious choice for a script, you may choose any language.
+- The primary requirement for your scripts is that the interpreter needed to execute your script should exist in the Linode base image you are deploying. While Bash is an obvious choice for a script, you may choose any scripting language.
 
     {{< note >}}
 Linode images are created using "vanilla" versions of its given distribution. Consult our [Choosing a Linux Distribution](/docs/quick-answers/linux/choosing-a-distribution/) guide to see list of all distributions Linode provides and to access each distribution's corresponding websites. You can find more information on the interpreters available for each distribution on their official websites.
@@ -54,9 +54,9 @@ Linode images are created using "vanilla" versions of its given distribution. Co
 
 ### Import a StackScript
 
-Your scripts can import any Account StackScripts you own or any Community StackScripts. This allows you to reuse code minimizing what you need to write in your own scripts.
+Your scripts can import any Account StackScript that you own or any Community StackScript. This allows you to reuse code minimizing what you need to write in your own scripts.
 
-- The example below shows the syntax to import another StackScript. As a result of including this line in one a StackScript, the imported StackScript will be downloaded as `ssinclude-[NUMBER]` to your Linode. However, it must be run in order to execute its contents.
+- The example below shows the syntax to import another StackScript. As a result of including this line in a script, the imported StackScript will be downloaded as `ssinclude-[NUMBER]` to your Linode. However, it must be run in order to execute its contents.
 
     {{< file >}}
 <ssinclude StackScriptID="[NUMBER]">
@@ -91,7 +91,7 @@ Follow the steps in this section to find the ID number of a StackScript.
 
       ![Click on the StackScripts link in the left-hand navigation menu.](stackscripts-sidebar-link.png)
 
-1. Depending on which type of StackScript whose ID you'd like to find, click on the **Account StackScripts** tab or the **Community StackScripts** tab.
+1. Click on the **Account StackScripts** tab or the **Community StackScripts** tab, depending on the type of StackScript whose ID you'd like to find
 
 1. Click on the StackScript whose ID you'd like to access. This will bring you to its **StackScript detail page**.
 
@@ -165,7 +165,7 @@ The files you reference within your script must exist and be accessible via `HTT
 
 ### Using an External Script
 
-- If you have an existing deployment script, you can use a StackScripts to deploy Linode instances with it. The following example StackScript installs PHP on the Linode, downloads an external PHP script from the URL `wget http://example.com/deployment-script.php`, makes it executable, and then runs the downloaded script.
+- If you have an existing deployment script, you can use a StackScripts to deploy Linode instances with it. The following example StackScript installs PHP on the Linode, downloads an external PHP script from the URL `http://example.com/deployment-script.php`, makes it executable, and then runs the downloaded script.
 
     {{< file "StackScript" bash >}}
 #!/bin/bash
