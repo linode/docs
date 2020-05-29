@@ -29,17 +29,17 @@ This guide will show you how to do the following:
 - [Access the contents of a Community StackScript to view its underlying script and metadata.](#access-a-community-stackscript)
 
 {{< note >}}
-To learn how to create your own StackScript see the [Creating StackScripts] guide.
+To learn how to create your own StackScript see the [Writing Scripts for Use with Linode StackScripts](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/) guide.
 {{</ note >}}
 
 ## Account StackScripts
 
-An Account StackScripts is any StackScript that you create. It will be stored in the Linode Cloud Manager where you can access it to use when deploying a new Linode. By default, your Account StackScripts are only visible on your account and can only be used by you to deploy a new Linode.
+An Account StackScript is any StackScript that you create. It will be stored in the Linode Cloud Manager where you can access it to use when deploying a new Linode. By default, your Account StackScripts are only visible on your account and can only be used by you to deploy a new Linode.
 
 This section will show you how to deploy a new Linode using an Account StackScript and how to access your Account StackScripts.
 
 {{< note >}}
-To learn how to make your Account StackScript publicly available see the [Create a StackScript]() guide for more details.
+To learn how to make your Account StackScript publicly available see the [A Tutorial for Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/#make-an-account-stackscript-public) guide for more details.
 {{</ note >}}
 
 ### Deploy a Linode from an Account StackScript
