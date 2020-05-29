@@ -16,7 +16,7 @@ external_resources:
 - '[ExplainShell](http://explainshell.com/explain/1/find)'
 ---
 
-`find` is a command for recursively filtering objects in the file system based on a simple conditional mechanism. Use `find` to search for a file or directory on your file system. Using the `-exec` flag, files can be found and immediately [processed within the same command](#how-to-find-and-process-files-using-the-find-command).
+`find` is a command for recursively filtering objects in the file system based on a simple conditional mechanism. Use `find` to search for a file or directory on your file system. Using the `-exec` flag, matches, which can be files, directories, symbolic links, system devices, etc., can be found and immediately [processed within the same command](#how-to-find-and-process-files-using-the-find-command).
 
 ![Find Files in Linux using the command line](find-files-title.jpg "Find Files in Linux using the command line")
 
@@ -50,7 +50,6 @@ This command enables the maximum optimization level (-O3) and allows `find` to f
 | `find /home -name *.jpg`                            | Find all `.jpg` files in the `/home` and sub-directories.                        |
 | `find . -type f -empty`                              | Find an empty file within the current directory.                                 |
 | `find /home -user exampleuser -mtime -7 -iname ".db"` | Find all `.db` files (ignoring text case) modified in the last 7 days by a user named exampleuser.  |
-
 
 ## Options and Optimization for Find
 
@@ -92,7 +91,7 @@ Before the implementation of the `-exec` option, this kind of command might have
 
     find . -type f -print | xargs grep "example"
 
-## How to Find and Process Files Using the Find Command
+## How to Find and Process Matches Using the Find Command
 
 The `-exec` option runs commands against every object that matches the find expression. Consider the following example:
 
@@ -115,7 +114,6 @@ Add the option `-delete` to the end of a match expression to delete all files th
 In the following example, `find` locates all files in the hierarchy starting at the current directory and fully recursing into the directory tree. In this example, `find` will delete all files that end with the characters `.bak`:
 
     find . -name "*.bak" -delete
-
 
 {{< community >}}
 * [Where are My Files?](https://www.linode.com/community/questions/17057/where-are-my-files)
