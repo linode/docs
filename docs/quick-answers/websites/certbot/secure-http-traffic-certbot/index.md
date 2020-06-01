@@ -13,7 +13,6 @@ published: 2018-06-27
 title: Secure HTTP Traffic with Certbot
 deprecated: true
 deprecated_link: 'quick-answers/websites/certbot/'
-aliases: ['quick-answers/websites/secure-http-traffic-certbot/']
 external_resources:
   - '[Certbot Official Documentation](https://certbot.eff.org/docs/)'
 ---
