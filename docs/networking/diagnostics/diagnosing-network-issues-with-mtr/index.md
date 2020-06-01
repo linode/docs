@@ -101,7 +101,7 @@ The `r` option flag generates the report (short for `--report`).
 
 The `w` option flag uses the long-version of the hostname so our technicians and you can see the full hostname of each hop (short for `--report-wide`).
 
-The `c` option flag sets how many packets are sent and recorded in the report. When not used, the default will generally be 10, but for faster intervals you may want to set it to 50 or 100. The report can take longer to finish when doing this.
+The `c` option flag sets how many packets are sent and recorded in the report. When not used, the default will generally be 10, but, for faster intervals, you may want to set it to 50 or 100. The report can take longer to finish when doing this.
 {{< /note >}}
 
 ### Use MTR on Windows Systems
