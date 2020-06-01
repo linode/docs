@@ -222,7 +222,7 @@ The amount of latency jumps significantly between hops 3 and 4 and remains high.
 
 Unfortunately, high latency does not always mean a problem with the current route. A report like the one above means that despite some sort of issue with the 4th hop, traffic is still reaching the destination host *and* returning to the source host. Latency could be caused by a problem with the return route as well. The return route will not be seen in your MTR report, and packets can take completely different routes to and from a particular destination.
 
-In the above example, while there is a large jump in latency between hosts 3 and 4 the latency does not increase unusually in any subsequent hops. From this it is logical to assume that there is some issue with the 4th router.
+In the above example, while there is a large jump in latency between hosts 3 and 4 the latency does not increase unusually in any subsequent hops. From this, it is logical to assume that there is some issue with the 4th router.
 
 ICMP rate limiting can also create the appearance of latency, similar to the way that it can create the appearance of packet loss:
 
