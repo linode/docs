@@ -62,7 +62,7 @@ To install MTR with MacPorts, run:
 
 ## Generate an MTR Report
 
-Because MTR provides an image of the route traffic takes from one host to another, it is essentially a directional tool. The route taken between two points on the Internet can vary a great deal based on location and the routers that are located upstream. For this reason it is a good idea to collect MTR reports in both directions for all hosts that are experiencing connectivity issues.
+Because MTR provides an image of the route traffic takes from one host to another, it is essentially a directional tool. The route taken between two points on the Internet can vary a great deal based on location and the routers that are located upstream. For this reason, it is a good idea to collect MTR reports in both directions for all hosts that are experiencing connectivity issues.
 
 Linode Customer Support will often request MTR reports both **to** and **from** your Linode if you are experiencing networking issues. This is because, from time to time, MTR reports will not detect errors from one direction when there is still packet loss from the opposite direction.
 
