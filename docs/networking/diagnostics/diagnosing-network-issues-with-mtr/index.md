@@ -243,7 +243,7 @@ At first glance, the latency between hops 4 and 5 draws attention. However, afte
 
 ## Common MTR Reports
 
-Some networking issues are novel and require escalation to the operators of the upstream networks. However, there are a selection of common MTR reports that describe common networking issues. If you're experiencing some sort of networking issue and want to diagnose your problem, consider the following examples.
+Some networking issues are novel and require escalation to the operators of the upstream networks. However, there are a number of common MTR reports that describe common networking issues. If you're experiencing some sort of networking issue and want to diagnose your problem, consider the following examples.
 
 ### Destination Host Networking Improperly Configured
 
