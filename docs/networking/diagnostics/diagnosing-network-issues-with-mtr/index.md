@@ -239,7 +239,7 @@ HOST:  localhost                     Loss%   Snt   Last  Avg  Best  Wrst   StDev
     8. gw-in-f147.1e100.net          0.0%    10   39.6  40.5  39.5  46.7   2.2
 {{</ output >}}
 
-At first glance, the latency between hops 4 and 5 draws attention. However, after the fifth hop, the latency drops drastically. The actual latency measured here is about 40ms. In cases like this, MTR draws attention to an issue which does not affect the service. Consider the latency to the final hop when evaluating an MTR report.
+At first glance, the latency between hops 4 and 5 draws attention. However, after the fifth hop, the latency drops drastically. The actual latency measured here is about 40ms. In cases like this, MTR draws attention to an issue that does not affect the service. Consider the latency to the final hop when evaluating an MTR report.
 
 ## Common MTR Reports
 
