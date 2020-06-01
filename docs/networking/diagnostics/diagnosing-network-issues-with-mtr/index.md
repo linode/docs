@@ -48,7 +48,7 @@ Rather than provide a simple outline of the route that traffic takes across the 
 
 ### Windows
 
-For Windows there is a port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](https://sourceforge.net/projects/winmtr/).
+For Windows, there is a port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](https://sourceforge.net/projects/winmtr/).
 
 ### macOS
 
