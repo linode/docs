@@ -195,7 +195,7 @@ HOST: localhost                      Loss%   Snt   Last  Avg  Best  Wrst   StDev
 
 In this case, there is 60% loss between hops 2 and 3 as well as between hops 3 and 4. You can assume that the third and fourth hop is likely losing some amount of traffic because no subsequent host reports zero loss. However, some of the loss is due to rate limiting as several of the final hops are only experiencing 40% loss. When different amounts of loss are reported, always trust the reports from later hops.
 
-Some loss can also be explained by problems in the return route. Packets will reach their destination without error but have a hard time making the return trip. For this reason it is often best to collect MTR reports in both directions when you're experiencing an issue.
+Some loss can also be explained by problems in the return route. Packets will reach their destination without error but have a hard time making the return trip. For this reason, it is often best to collect MTR reports in both directions when you're experiencing an issue.
 
 Resist the temptation to investigate or report all incidences of packet loss in your connections. The Internet protocols are designed to be resilient to some network degradation, and the routes that data takes across the Internet can fluctuate in response to load, brief maintenance events, and other routing issues. If your MTR report shows small amounts of loss in the neighborhood of 10%, there is no cause for real concern as the application layer will compensate for the loss which is likely transient.
 
