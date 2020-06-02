@@ -245,7 +245,7 @@ To uninstall your K3s cluster:
         sudo /usr/local/bin/k3s-agent-uninstall.sh
         sudo rm -rf /var/lib/rancher
 
-1.  Connect to your K3s Server linode and run the following commands:
+1.  Connect to your K3s Server Linode and run the following commands:
 
         sudo /usr/local/bin/k3s-uninstall.sh
         sudo rm -rf /var/lib/rancher
