@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 title: "How to Deploy a Linode Kubernetes Engine Cluster Using Terraform"
 h1_title: "Deploying a Linode Kubernetes Engine Cluster Using Terraform"
+image: deploy-lke-cluster-with-terraform.png
 contributor:
   name: Linode
 external_resources:

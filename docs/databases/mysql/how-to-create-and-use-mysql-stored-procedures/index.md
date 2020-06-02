@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 title: "Creating and Using MySQL Stored Procedures - A Tutorial"
 h1_title: "Creating and Using MySQL Stored Procedures"
+image: creating-and-using-mysql-store-procedures.png
 contributor:
   name: Francis Ndungu
   link: https://twitter.com/francisndungu83
