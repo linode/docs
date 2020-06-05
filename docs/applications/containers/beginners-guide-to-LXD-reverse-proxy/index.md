@@ -278,8 +278,8 @@ server {
         server_name apache1.example.com;
 
         location / {
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
+                include /etc/nginx/proxy_params;
+
                 proxy_pass http://apache1.lxd;
         }
 
@@ -328,8 +328,8 @@ server {
         server_name nginx1.example.com;
 
         location / {
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
+                include /etc/nginx/proxy_params;
+
                 proxy_pass http://nginx1.lxd;
         }
 
