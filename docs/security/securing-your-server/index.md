@@ -32,7 +32,7 @@ The practicality of automatic updates is something you must judge for yourself b
 
 * CentOS uses *[yum-cron](https://fedoraproject.org/wiki/AutoUpdates#Fedora_21_or_earlier_versions)* for automatic updates.
 
-* Debian and Ubuntu use *[unattended upgrades](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)*.
+* Debian and Ubuntu use *[unattended upgrades](https://help.ubuntu.com/community/AutomaticSecurityUpdates)*.
 
 * Fedora uses *[dnf-automatic](https://dnf.readthedocs.org/en/latest/automatic.html)*.
 
