@@ -68,20 +68,16 @@ This shortcut is helpful to toggle between two locations with long absolute path
 
 ### Options in cd
 
-`cd` has two options, `-L` and `-P` [`-e`].
+`cd` has two options, `-L` and `-P`.
 
 The `-L` option forces symbolic links to be followed. This means if you tell `cd` to change into a directory that is a symbolic link, it will follow it and move you into the directory it's pointing at instead of the directory specified. This is the standard behavior of `cd` and does not need to be specified. For example, if you want to change into `/var/example.com` but that's a symbolic link to `/var/www/example.com` by issuing the following command, you will change into `/var/www/example.com`:
 
     cd -L /var/example.com
 
-The `-P` option tells `cd` to use the physical directory structure and not to follow symbolic links. If you use this option, instead of navigating to where the symbolic link points to, you will change into the physical directory, if it exists. For example, say you want to `cd` to a symbolic link `/var/example.com` that points to `/var/www/example.com`, instead you will simply change into the directory:
+The `-P` option tells `cd` to use the physical directory structure and not to follow symbolic links. If you use this option, instead of navigating to where the symbolic link points to, you will change into the physical directory, if it exists. If the directory does not exist, the system will alert you with a `directory does not exist error` and you will remain in the current directory. For example, say you want to `cd` to a symbolic link `/var/example.com` that points to `/var/www/example.com`, you will simply change into the directory and not follow the link:
 
     cd -P /var/example.com
 
 {{< note >}}
 If both `-L` and `-P` are specified, the `-P` option will be ignored.
 {{</ note >}}
-
-Along with the `-P` option you can also specify an additional `-e` option. This will tell `cd` to exit without error if it cannot determine the current working directory. However, if `-P` is not used, `-e` option has no function. For example, if `/var/exmaple.com` is not a physical directory, but only a symbolic link, `cd` will not be able to move you into this directory with the `-P` option.
-
-    cd -P -e /var/example.com
