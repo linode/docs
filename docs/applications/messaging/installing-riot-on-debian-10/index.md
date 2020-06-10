@@ -21,7 +21,7 @@ contributor:
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. 
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -35,7 +35,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Setup DNS
 
-In this demo the base domain will be `demochat.com`. Each service will get a separate subdomain as a general hygiene measure. 
+In this demo the base domain will be `demochat.com`. Each service will get a separate subdomain as a general hygiene measure.
 So in this example, we'll create DNS records for:
 
 - `demochat.com` (General website and hosting for `.well-known` path to advertise Matrix services.)
@@ -57,7 +57,7 @@ Install Synapse via Debian packages:
         sudo apt update
         sudo apt install matrix-synapse-py3
 
-Enable registration on your synapse instance by setting `enable_registration: true` in `/etc/matrix-sysnapse/homeserver.yaml` 
+Enable registration on your synapse instance by setting `enable_registration: true` in `/etc/matrix-sysnapse/homeserver.yaml`
 and restarting synapse with `sudo systemctl restart matrix-synapse`.
 
 Now we need to tell the rest of matrix how to find your server. The easiest way is to publish a `.well-known` file that
@@ -74,7 +74,7 @@ Grab the latest .tgz release from (https://github.com/vector-im/riot-web/release
         cd /var/www/html/riot.demochat.com
         sudo wget https://github.com/vector-im/riot-web/releases/download/v1.5.15/riot-v1.5.15.tar.gz
 
-        # check its GnuPG signature 
+        # check its GnuPG signature
         sudo apt install -y gnupg
         sudo wget https://github.com/vector-im/riot-web/releases/download/v1.5.15/riot-v1.5.15.tar.gz.asc
 
@@ -100,7 +100,7 @@ We'll use Nginx as our webserver and Let's Encrypt to secure the services.
         sudo apt -y install nginx
 
 1.  Create the vhost files for each subdomain
-        
+
         sudo touch /etc/nginx/sites-available/{demochat.com,matrix.demochat.com,riot.demochat.com}
         ln -s /etc/nginx/sites-available/demochat.com /etc/nginx/sites-enabled/demochat.com
         ln -s /etc/nginx/sites-available/matrix.demochat.com /etc/nginx/sites-enabled/matrix.demochat.com
@@ -159,7 +159,7 @@ We'll use Nginx as our webserver and Let's Encrypt to secure the services.
 
 ## Final steps
 
-1.  Add services to the default runlevel and restart services
+1.  Add services to the default run level and restart services
 
         sudo systemctl enable nginx
         sudo systemctl enable matrix-synapse
