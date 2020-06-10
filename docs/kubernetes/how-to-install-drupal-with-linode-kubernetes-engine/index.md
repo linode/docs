@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Drupal is a popular content management system. This guide provides instructions to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
 og_description: 'Drupal is a popular content management system. This guide provides instructions to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
-keywords: ['kuberenetes','drupal','websites', 'cms', 'k8s']
+keywords: ['kubernetes','drupal','websites', 'cms', 'k8s']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
 modified_by:
@@ -18,9 +18,11 @@ contributor:
 
 [Drupal](https://www.drupal.org) is an advanced and powerful content management framework, built on the PHP scripting language and supported by a database engine like MySQL. Drupal provides a flexible system that can be used to manage websites for a variety of use cases. For example, you can create rich, interactive “community” websites with forums, user blogs, and private messaging.
 
-In this guide provides instructions to:
+## In This Guide
 
-- [Create a Kubernetes Cluster](#create-your-lke-cluster)
+This guide provides instructions to:
+
+- [Create a Kubernetes Cluster](#create-an-lke-cluster)
 - [Create Deployment Manifests](#create-manifest-files)
 - [Install Drupal](#install-drupal)
 
@@ -133,6 +135,15 @@ spec:
 
 {{< /file >}}
 
+      This manifest is doing several things:
+
+      - First it sets up the Service called `drupal-mysql` which will be available over TCP on the port 3306.
+      - Next, it will create a Persistant Volume Claim (PVC) for the service, at Linode, this is a Block Storage Volume.
+      - Finally, it declares the deployment for `mysql` and all it's specifications.
+        - The specification will create a container called `mysql`.
+        - It includes two environment variables `MYSQL_DATABASE` and `MYSQL_ROOT_PASSWORD`.
+        - The volumes section associates the PVC created before to this deployment.
+
 1. Create a `drupal-deployment.yaml` file in the `drupal` folder. Open a text editor and create a manifest file that describes a single-instance deployment of Drupal.
 
       {{< file "/drupal/drupal-deployment.yaml" >}}
@@ -229,6 +240,16 @@ spec:
             claimName: drupal-claim
 
 {{< /file >}}
+
+      This manifest is doing several things:
+
+      - First it sets up the Service called `drupal` which will be available over TCP on the port 8081, listening to port 80, with a LoadBalancer. This will create a Linode NodeBalancer.
+      - Next, it will create a Persistant Volume Claim (PVC) for the service, at Linode, this is a Block Storage Volume.
+      - Finally, it declares the deployment for `drupal` and all it's specifications.
+        - The specification will create a container called `drupal`.
+        - Drupal set-up needs to be able to write to some directories during installation, so the `initContainers` sets these permissions.
+        - Similar to the MySql manitfest, this manifest also includes two environment variables `DRUPAL_DATABASE_HOST` and `DRUPAL_DATABASE_PASSWORD`.
+        - The volumes section associates the PVC created before to this deployment.
 
 ## Install Drupal
 
