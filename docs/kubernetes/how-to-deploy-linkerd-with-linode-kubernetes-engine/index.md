@@ -2,9 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linkerd is an ultra lightweight service mesh that offers monitoring, reporting, and encrypted connections between Kubernetes services without disturbing your existing applications. It does this by employing proxy sidecars along each instance.'
-og_description: 'Linkerd is an ultra lightweight service mesh that offers monitoring, reporting, and encrypted connections between Kubernetes services without disturbing your existing applications. It does this by employing proxy sidecars along each instance.'
-keywords: ['kuberenetes','linkerd','container', 'service mesh', 'k8s']
+description: 'Linkerd is an ultra lightweight service mesh that offers monitoring, reporting, and encrypted connections between Kubernetes services without disturbing your existing applications. It does this by employing proxy sidecars along each instance. In this guide, learn how to deploy Linkerd to your Linode Kubernetes Engine cluster.'
+og_description: 'Linkerd is an ultra lightweight service mesh that offers monitoring, reporting, and encrypted connections between Kubernetes services without disturbing your existing applications. It does this by employing proxy sidecars along each instance. In this guide, learn how to deploy Linkerd to your Linode Kubernetes Engine cluster.'
+keywords: ['kubernetes','linkerd','container', 'service mesh', 'k8s']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
 modified_by:
@@ -28,9 +28,11 @@ Unlike [Istio](/docs/kubernetes/how-to-deploy-istio-with-kubernetes/), another s
 Linkerd 1.x is still available and is being actively developed as a separate project. However, it is built on the "Twitter stack" and is not for Kubernetes. Linkerd 2 is built in Rust and Go and only supports Kubernetes.
 {{</ note >}}
 
-In this guide provides instructions to:
+## In This Guide
 
-- [Create a Kubernetes Cluster](#create-your-lke-cluster)
+This guide provides instructions to:
+
+- [Create a Kubernetes Cluster](#create-an-lke-cluster)
 - [Install the Linkerd](#install-linkerd)
 - [Install a Demo Application (Optional)](#install-demo-application-optional)
 - [Upgrade Linkerd](#upgrade-linkerd)
