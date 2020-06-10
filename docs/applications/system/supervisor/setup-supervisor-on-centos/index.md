@@ -31,7 +31,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Introduction
 
-**supervisor** is a process control system based on the client/server model. It can be used to simplify process managment
+**supervisor** is a process control system based on the client/server model. It can be used to simplify process management
 by providing a centralized location for process control. It is most often deployed to control services that don't have
 initialization/auto-start/management scripts. Remote process control is also supported via RPC.
 
@@ -76,7 +76,7 @@ files = supervisord.d/*.conf
 Process configurations can be added directly in `/etc/supervisord.conf` but configuration management can be simplified
 by placing individual configuration files in `/etc/supervisord.d/`.
 
-This guide will use the ficticious `app.py` application as an example.
+This guide will use the fictional `app.py` application as an example.
 
 {{< note >}}
 `supervisord` provides simple logging of `stderr` and `stdout`. If you choose to log those outputs to files make sure
