@@ -352,6 +352,7 @@ elisp
 elgg
 elpaso
 email2email
+emojivoto
 ender
 enix
 env
@@ -738,6 +739,7 @@ lighttpd
 lighty
 ligttpd
 linewise
+linkerd
 linode
 linodes
 lish
