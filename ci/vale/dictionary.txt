@@ -746,6 +746,7 @@ libphp
 libpri
 libracy
 libsasl2
+libyang
 libuv
 lifecycle
 lighthttpd
