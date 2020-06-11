@@ -137,10 +137,10 @@ spec:
 
       This manifest is doing several things:
 
-      - First it sets up the Service called `drupal-mysql` which will be available over TCP on the port 3306.
-      - Next, it will create a Persistant Volume Claim (PVC) for the service, at Linode, this is a Block Storage Volume.
+      - First it sets up the Service called `drupal-mysql` that is available over TCP on the port 3306.
+      - Next, it creates a Persistant Volume Claim (PVC) for the service, at Linode, this is a Block Storage Volume.
       - Finally, it declares the deployment for `mysql` and all it's specifications.
-        - The specification will create a container called `mysql`.
+        - The specification creates a container called `mysql`.
         - It includes two environment variables `MYSQL_DATABASE` and `MYSQL_ROOT_PASSWORD`.
         - The volumes section associates the PVC created before to this deployment.
 
@@ -243,10 +243,10 @@ spec:
 
       This manifest is doing several things:
 
-      - First it sets up the Service called `drupal` which will be available over TCP on the port 8081, listening to port 80, with a LoadBalancer. This will create a Linode NodeBalancer.
-      - Next, it will create a Persistant Volume Claim (PVC) for the service, at Linode, this is a Block Storage Volume.
+      - First it sets up the Service called `drupal` that is available over TCP on the port 8081, listening to port 80, with a LoadBalancer. This creates a Linode NodeBalancer.
+      - Next, it creates a Persistant Volume Claim (PVC) for the service, at Linode, this is a Block Storage Volume.
       - Finally, it declares the deployment for `drupal` and all it's specifications.
-        - The specification will create a container called `drupal`.
+        - The specification creates a container called `drupal`.
         - Drupal set-up needs to be able to write to some directories during installation, so the `initContainers` sets these permissions.
         - Similar to the MySql manitfest, this manifest also includes two environment variables `DRUPAL_DATABASE_HOST` and `DRUPAL_DATABASE_PASSWORD`.
         - The volumes section associates the PVC created before to this deployment.
