@@ -10,7 +10,7 @@ published: 2020-06-02
 modified_by:
   name: Linode
 title: "How to Manually Enable Floating IP on your Linode"
-h1_title: "Manually Enabling Floating IP on your Linode"
+h1_title: "Manually Enable Floating IP on your Linode"
 hiddenguide: true
 contributor:
   name: Linode
