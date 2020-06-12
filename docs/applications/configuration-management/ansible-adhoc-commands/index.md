@@ -2,7 +2,7 @@
 author:
   name: Avi
   email: avi.dunken1991@gmail.com
-description: 'In this tutorial, you'll learn about several Ansible adhoc commands which are used by system and devops engineers. Adhoc commands are commands which you run from the command line, outside of a playbook.'
+description: "In this tutorial, you'll learn about several Ansible adhoc commands which are used by system and devops engineers. Adhoc commands are commands which you run from the command line, outside of a playbook."
 keywords: ["ansible", "commands", "adhoc", "ansible adhoc commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11
