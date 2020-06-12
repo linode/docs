@@ -2,30 +2,63 @@
 author:
   name: Avi
   email: avi.dunken1991@gmail.com
-description: 'This blog talks about the various adhoc commands in Ansible'
+description: 'In this tutorial, you'll learn about several Ansible adhoc commands which are used by system and devops engineers. Adhoc commands are commands which you run from the command line, outside of a playbook.'
 keywords: ["ansible", "commands", "adhoc", "ansible adhoc commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-05-27
+published: 2020-06-11
 modified_by:
   name: Linode
-title: 'Ansible Adhoc Commands'
+title: 'Ansible Adhoc Commands - A Tutorial'
+h1_title: 'A Tutorial for Learning Adhoc Commands in Ansible'
 contributor:
   name: Avi
   link: https://github.com/avidunken/
 ---
 
-## Introduction
-In this tutorial, I will talk about several Ansible adhoc commands which are used by System and DevOps engineers.
+In this tutorial, you'll learn about several Ansible adhoc commands which are used by system and devops engineers.
 
-Adhoc commands are commands which run on the target host to perform a simple/quick task. For example, if you want to install a package on a system, you can just run a simple command to execute it.
+Adhoc commands are commands which you run from the command line, outside of a playbook. These commands run on one or more managed nodes and perform a simple/quick task--most often, these will be tasks that you don't need to repeat. For example, if you want to reload Apache across a cluster of web servers, you can run a single adhoc command to achieve that task.
 
-In Ansible, there are multiple tasks which can be executed through ansible adhoc commands rather than running ansible playbook for it. Ansible uses /use/bin/ansible command line tool
-So, here is a list of most important ansible adhoc commands.
+{{< note >}}
+In Ansible, all modules can be executed in either a playbook or through an adhoc command.
+{{< /note >}}
+
+The basic syntax for invoking an adhoc command is:
+
+    ansible host_pattern -m module_name -a "module_options"
+
+## Before You Begin
+
+To run the commands in this tutorial, you'll need:
+
+- A workstation or server with the Ansible command line tool installed on it that will act as the control node. The [Set Up the Control Node](/docs/applications/configuration-management/getting-started-with-ansible/#set-up-the-control-node)
+ section of the [Getting Started With Ansible](/docs/applications/configuration-management/getting-started-with-ansible/) guide has instructions for setting up a Linode as a control node. Installation instructions for non-Linux distributions can be found on the [Ansible documentation site](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
+
+- At least one other server that will be managed by Ansible. Some commands in this guide will target a non-root user on this server. This user should have sudo privileges. There are a couple options for setting up this user:
+
+    - You can use Ansible to create the user, which is outlined in the [Add a Limited User Account](/docs/applications/configuration-management/running-ansible-playbooks/#add-a-limited-user-account) section of the [Automate Server Configuration with Ansible Playbooks](/docs/applications/configuration-management/running-ansible-playbooks/) guide.
+
+    - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account) section of the [Securing your Server](/docs/security/securing-your-server/) guide.
+
+{{< note >}}
+Follow the [Getting Started with Linode](/docs/getting-started/#create-a-linode) guide for help with creating Linodes.
+{{< /note >}}
+
+The commands in this guide will be run from the control node and will target a host named `Client`. Your control node's Ansible inventory should be configured so that at least one of your managed nodes has this name. The [Create an Ansible Inventory](/docs/applications/configuration-management/getting-started-with-ansible/#create-an-ansible-inventory) section of the [Getting Started With Ansible](/docs/applications/configuration-management/getting-started-with-ansible/) guide outlines how to set up an inventory file.
+
+{{< note >}}
+Alternatively, you can modify the commands in this guide to use a different host name.
+{{< /note >}}
 
 ## Basic Commands
-Inventory file in ansible has all the hosts, the command below runs ping module on Client host. -m flag is used for ansible module.
 
-root@localhost:~# ansible -m ping Client
+### Ping
+
+To check that you can reach your managed node, use the [`ping` module](https://docs.ansible.com/ansible/latest/modules/ping_module.html):
+
+    ansible -m ping Client
+
+{{< output >}}
 node1 | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -33,27 +66,15 @@ node1 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
+{{< /output >}}
 
-Below is an ansible adhoc command which runs setup module on the hosts (Client) to filter all the details of an installed ansible distribution.
+### Run with Privilege Escalation
 
-root@localhost:~# ansible Client -m setup -a "filter=ansible_distribution*"
-node1 | SUCCESS => {
-    "ansible_facts": {
-        "ansible_distribution": "Ubuntu",
-        "ansible_distribution_file_parsed": true,
-        "ansible_distribution_file_path": "/etc/os-release",
-        "ansible_distribution_file_variety": "Debian",
-        "ansible_distribution_major_version": "19",
-        "ansible_distribution_release": "eoan",
-        "ansible_distribution_version": "19.10",
-        "discovered_interpreter_python": "/usr/bin/python"
-    },
-    "changed": false
-}
+This adhoc command demonstrates how a non-root user on the managed node can gain the privileges of a root user when executing a module. Specifically, this example shows how to use [privilege escalation](https://docs.ansible.com/ansible/latest/user_guide/become.html) to run the `fdisk` command through the [`shell` module](https://docs.ansible.com/ansible/latest/modules/shell_module.html):
 
-This adhoc command provides non-root users privileges of a root user using shell module. --become is used to give root user privileges and -K flag for asking password.
+    ansible Client -m shell -a 'fdisk -l' -u non_root_user --become -K
 
-root@localhost:~# ansible Client -m shell -a 'fdisk -l' -u root --become -K
+{{< output >}}
 BECOME password:
 node1 | CHANGED | rc=0 >>
 Disk /dev/sda: 79.51 GiB, 85362475008 bytes, 166723584 sectors
@@ -66,15 +87,44 @@ Disk model: QEMU HARDDISK
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
+{{< /output >}}
 
-Below ansible command reboots the system. -f is used to define number of forks.
+- The `-u` option is used to specify the user on the managed node.
 
-root@localhost:~# ansible Client -a "/sbin/reboot" -f 1
+    {{< note >}}
+By default, Ansible will try to establish a connection to the managed node under the same user that you execute the Ansible CLI with on the control node.
+{{< /note >}}
 
-## Checking System
-This ansible adhoc command is used to check the free disk space on the mounted disk. It lists all the filesystem present on the system with the used and available spaces on it.
+- The `--become` option is used to execute the command with the privileges of the root user.
+- The `-K` option is used to prompt for the privilege escalation password of the user.
 
-root@localhost:~# ansible Client -a "df -h"
+### Reboot a Managed Node
+
+Below is a command that reboots the managed node:
+
+    ansible Client -a "/sbin/reboot" -f 1
+
+This command omits the `-m` option that specifies the module. When the module is not specified, the [`command` module](https://docs.ansible.com/ansible/latest/modules/command_module.html) is the default that's used.
+
+The `command` module is similar to the `shell` module in that both will execute a command that you pass to it. The `shell` module will run the command through a shell on the managed node, while the `command` module will not run it through a shell.
+
+{{< note >}}
+The `-f` option is used to define number of [forks](https://docs.ansible.com/ansible/latest/user_guide/playbooks_strategies.html#setting-the-number-of-forks) that Ansible will use on the control node when running your command.
+{{< /note >}}
+
+{{< note >}}
+If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](https://www.linode.com/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
+{{< /note >}}
+
+## Collecting System Diagnostics
+
+### Check Free Disk Space
+
+This command is used to check the free disk space on all of a managed node's mounted disks. It lists all the filesystems present on the managed node along with the filesystem size, space used, and space available in a human-readable format:
+
+    ansible Client -a "df -h"
+
+{{< output >}}
 node1 | CHANGED | rc=0 >>
 Filesystem      Size  Used Avail Use% Mounted on
 udev            1.9G     0  1.9G   0% /dev
@@ -84,25 +134,36 @@ tmpfs           2.0G  124K  2.0G   1% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 tmpfs           2.0G     0  2.0G   0% /sys/fs/cgroup
 tmpfs           394M     0  394M   0% /run/user/0
+{{< /output >}}
 
-The commands check the available and used space on the defined filesystem in the command. In this case, shell module is checking for root partition space.
+This command checks the available and used space on a specific filesystem:
 
-root@localhost:~# ansible Client -m shell -a 'df -h /dev/sda' --become
+    ansible Client -m shell -a 'df -h /dev/sda'
+
+{{< output >}}
 node1 | CHANGED | rc=0 >>
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda         79G  2.6G   72G   4% /
+{{< /output >}}
 
-This ansible adhoc command frees the memory (RAM) in the system.
+### Check Memory and CPU Usage
 
-root@localhost:~# ansible Client -m shell -a 'free -m' --become
+Use the `free` command with the `shell` module to see the free and used memory of your managed node in megabytes:
+
+    ansible Client -m shell -a 'free -m'
+
+{{< output >}}
 node1 | CHANGED | rc=0 >>
               total        used        free      shared  buff/cache   available
 Mem:           3936         190        3553           0         192        3523
 Swap:           511           0         511
+{{< /output >}}
 
-*mpstat* is used to check CPU usage, I am checking it for all the servers.
+Use the `mpstat` command with the `shell` module to check CPU usage:
 
-root@localhost:~# ansible Client -m shell -a 'mpstat -P ALL' --become
+    ansible Client -m shell -a 'mpstat -P ALL'
+
+{{< output >}}
 node1 | CHANGED | rc=0 >>
 Linux 5.3.0-40-generic (localhost)      03/21/2020      _x86_64_        (2 CPU)
 
@@ -110,19 +171,30 @@ Linux 5.3.0-40-generic (localhost)      03/21/2020      _x86_64_        (2 CPU)
 07:41:27 PM  all    0.96    0.00    0.72    0.08    0.00    0.02    0.01    0.00    0.00   98.21
 07:41:27 PM    0    0.93    0.00    0.73    0.06    0.00    0.03    0.01    0.00    0.00   98.24
 07:41:27 PM    1    1.00    0.00    0.71    0.09    0.00    0.01    0.01    0.00    0.00   98.17
+{{< /output >}}
 
-This ansible adhoc command gives the information on how long the servers has been up and running.
+### Check System Uptime
 
-root@localhost:~# ansible Client -a "uptime"
+This Ansible command will show how long your managed nodes have been up and running:
+
+    ansible Client -a "uptime"
+
+{{< output >}}
 node1 | CHANGED | rc=0 >>
  19:40:11 up 8 min,  2 users,  load average: 0.00, 0.02, 0.00
+{{< /output >}}
 
 ## File Transfer
-Let me talk about few ansible adhoc commands related to file transfer.
 
-*copy* module is used to transfer a file from host to server by defining the source and destination paths. You can define the file owner and file permission in the command.
+### Copy Files
 
-root@localhost:~# ansible Client -m copy -a 'src=/root/test dest=/etc/ owner=root mode=0644' -u root --become -K
+The [`copy` module](https://docs.ansible.com/ansible/latest/modules/copy_module.html) is used to transfer a file or directory from the control node to your managed nodes by defining the source and destination paths. You can define the file owner and file permissions in the command:
+
+    cd ~
+    echo "Hello World" > test.txt
+    ansible Client -m copy -a 'src=test.txt dest=/etc/ owner=root mode=0644' -u non_root_user --become -K
+
+{{< output >}}
 BECOME password:
 node1 | CHANGED => {
     "ansible_facts": {
@@ -141,34 +213,57 @@ node1 | CHANGED => {
     "state": "file",
     "uid": 0
 }
+{{< /output >}}
 
-Check whether your file got copied at your destination location or not.
+You can also use Ansible to check whether your file got copied to your destination location:
 
-root@localhost:~# ls /etc/te*
-/etc/test
+    sudo ansible Client -m shell -a 'ls -l /etc/test*'
 
-*fetch* module is used to transfer the file from the server to host machine. After the command runs successfully, *changed* variable will become true.
+{{< output >}}
+node1 | CHANGED | rc=0 >>
+-rw-r--r-- 1 root root 12 Jun  1 22:35 /etc/test.txt
+{{< /output >}}
 
-root@localhost:~# pwd
-/root
-root@localhost:~# ansible Client -m fetch -a 'src=/etc/ansible/ansible.cfg dest=/root/ flat=yes'
+### Fetch Files
+
+The [`fetch` module](https://docs.ansible.com/ansible/latest/modules/fetch_module.html) is used to transfer a file from a managed node to the control node. After the command runs successfully, the `changed` variable in Ansible's output will be set to `true`.
+
+    ansible Client -m fetch -a 'src=/etc/test.txt dest=/etc/'
+
+{{< output >}}
 node1 | CHANGED => {
     "changed": true,
-    "checksum": "7a54e03066c8161403a24645fa4071e6ee7b1369",
-    "dest": "/root/ansible.cfg",
-    "md5sum": "bfb5f2820229f9d6f67afc6c5b421ce8",
-    "remote_checksum": "7a54e03066c8161403a24645fa4071e6ee7b1369",
+    "checksum": "648a6a6ffffdaa0badb23b8baf90b6168dd16b3a",
+    "dest": "/etc/192.0.2.4/etc/test.txt",
+    "md5sum": "e59ff97941044f85df5297e1c302d260",
+    "remote_checksum": "648a6a6ffffdaa0badb23b8baf90b6168dd16b3a",
     "remote_md5sum": null
 }
+{{< /output >}}
 
-Check whether the file got copied to host or not.
+Note that the fetched file was placed into `/etc/192.0.2.4/etc/test.txt`. By default, the `fetch` module will put fetched files into separate directories for each hostname that you're fetching from. This prevents a file from one managed node from overwriting the file from another managed node.
 
-root@localhost:~# ls
-ansible.cfg  test
+To avoid creating these directories, include the `flat=yes` option:
 
-*file* module is used create file or directory with owner and permission defined in the command.
+    ansible Client -m fetch -a 'src=/etc/test.txt dest=/etc/ flat=yes'
 
-root@localhost:~/dir1/dir2# ansible Client -m file -a "dest=/root/linode/new mode=755 owner=root group=root state=directory"
+{{< output >}}
+node1 | SUCCESS => {
+    "changed": false,
+    "checksum": "648a6a6ffffdaa0badb23b8baf90b6168dd16b3a",
+    "dest": "/etc/test.txt",
+    "file": "/etc/test.txt",
+    "md5sum": "e59ff97941044f85df5297e1c302d260"
+}
+{{< /output >}}
+
+### Create Directories
+
+The [`file` module](https://docs.ansible.com/ansible/latest/modules/file_module.html) is used create, remove, and set permissions on files and directories, and create symlinks. This command will create a directory at `/root/linode/new/` on the the managed node with the owner and permissions defined in the options:
+
+    ansible Client -m file -a "dest=/root/linode/new/ mode=755 owner=root group=root state=directory" -u non_root_user --become -K
+
+{{< output >}}
 node1 | CHANGED => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -183,21 +278,19 @@ node1 | CHANGED => {
     "state": "directory",
     "uid": 0
 }
+{{< /output >}}
 
-You can see, both directory and file got created.
-
-root@localhost:~# ls
-ansible.cfg  linode  test
-root@localhost:~# cd linode/
-root@localhost:~/linode# ls
-new
+Note that all intermediate directories that did not exist will also be created. In this example, if the `linode/` subdirectory did not already exist, then it was created.
 
 ## Managing Packages
-This section has commands which can be used to manage packages using ansible.
 
-*apt* module is used to install a new package on ubuntu machine. This command installs the latest version of nginx on a machine with ubuntu os.
+### Install a Package
 
-root@localhost:~/linode/new# ansible Client -m apt -a 'name=nginx state=latest' --become
+The [`package` module](https://docs.ansible.com/ansible/latest/modules/package_module.html) can be used to install a new package on the managed node. This command installs the latest version of NGINX:
+
+    ansible Client -m package -a 'name=nginx state=present' -u non_root_user --become -K
+
+{{< output >}}
 node1 | CHANGED => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -215,10 +308,19 @@ node1 | CHANGED => {
         "Setting up nginx (1.16.1-0ubuntu2.1) ...",
     ]
 }
+{{< /output >}}
 
-To install a package, you need to use a very similar command as the previous one but in this case the state will be *absent*. The mentioned package in the command will immediately get  uninstalled.
+{{< note >}}
+The `package` module works across distributions. There are also modules for specific package managers (e.g. the [`apt` module](https://docs.ansible.com/ansible/latest/modules/apt_module.html) and the [`yum` module](https://docs.ansible.com/ansible/latest/modules/yum_module.html)). These modules offer more options that are specific to those package managers.
+{{< /note >}}
 
-root@localhost:~# ansible Client -m apt -a 'name=nginx state=absent purge=yes' --become
+### Uninstall a Package
+
+To uninstall a package, set `state=absent` in the command's options:
+
+    ansible Client -m package -a 'name=nginx state=absent' -u non_root_user --become -K
+
+{{< output >}}
 node1 | CHANGED => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -234,13 +336,17 @@ node1 | CHANGED => {
         "Removing nginx (1.16.1-0ubuntu2.1) ..."
     ]
 }
+{{< /output >}}
 
 ## Managing Services
-Hundreds of services run on a machine, managing them can be a difficult task. Ansible make it easy to manage services by simple commands.
 
-*service* module with name and state as *started* is used to start a service. Here, I am starting a nginx service.
+### Start a Service
 
-root@localhost:~# ansible Client -m service -a 'name=nginx state=started enabled=yes' --become
+Use the [`service` module](https://docs.ansible.com/ansible/latest/modules/service_module.html) to start a service on the managed node. This command will start and enable the NGINX service:
+
+    ansible Client -m service -a 'name=nginx state=started enabled=yes' -u non_root_user --become -K
+
+{{< output >}}
 node1 | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -263,10 +369,15 @@ node1 | SUCCESS => {
         "Before": "multi-user.target shutdown.target",
     }
 }
+{{< /output >}}
+
+### Stop a Service
 
 When you change the state to *stopped*, the service will stop running.
 
-root@localhost:~# ansible Client -m service -a 'name=nginx state=stopped' --become
+    ansible Client -m service -a 'name=nginx state=stopped' -u non_root_user --become -K
+
+{{< output >}}
 node1 | CHANGED => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -286,15 +397,19 @@ node1 | CHANGED => {
         "AssertTimestamp": "Sat 2020-03-21 20:04:35 UTC",
 }
 }
+{{< /output >}}
 
 ## Gathering Facts
-This ansible adhoc command is used to get all the information of the system. Its lists all the system variables with its value.
 
-root@localhost:~# ansible all -m setup
+The [`setup` module](https://docs.ansible.com/ansible/latest/modules/setup_module.html) can be used to gather information about your managed nodes:
+
+    ansible Client -m setup
+
+{{< output >}}
 node1 | SUCCESS => {
     "ansible_facts": {
         "ansible_all_ipv4_addresses": [
-            "172.105.42.246"
+            "192.0.2.4"
         ],
         "ansible_all_ipv6_addresses": [
             "2400:8904::f03c:92ff:fee9:dcb3",
@@ -334,15 +449,15 @@ node1 | SUCCESS => {
             "year": "2020"
         },
         "ansible_default_ipv4": {
-            "address": "172.105.42.246",
+            "address": "192.0.2.4",
             "alias": "eth0",
-            "broadcast": "172.105.42.255",
-            "gateway": "172.105.42.1",
+            "broadcast": "192.0.2.255",
+            "gateway": "192.0.2.1",
             "interface": "eth0",
             "macaddress": "f2:3c:92:e9:dc:b3",
             "mtu": 1500,
             "netmask": "255.255.255.0",
-            "network": "172.105.42.0",
+            "network": "192.0.2.0",
             "type": "ether"
         },
         "gather_subset": [
@@ -352,5 +467,26 @@ node1 | SUCCESS => {
     },
     "changed": false
 }
+{{< /output >}}
 
-So, that was all about adhoc command, hope it was useful. Go ahead and try out these commands on your setup.
+### Filtering Facts
+
+Using the `filter` option with the `setup` module will limit what is returned by the module. This command lists the details of your managed nodes' installed distributions:
+
+    ansible Client -m setup -a "filter=ansible_distribution*"
+
+{{< output >}}
+node1 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_distribution": "Ubuntu",
+        "ansible_distribution_file_parsed": true,
+        "ansible_distribution_file_path": "/etc/os-release",
+        "ansible_distribution_file_variety": "Debian",
+        "ansible_distribution_major_version": "19",
+        "ansible_distribution_release": "eoan",
+        "ansible_distribution_version": "19.10",
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false
+}
+{{< /output >}}
