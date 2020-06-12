@@ -159,7 +159,7 @@ The exact form fields will vary depending on the type of DNS record you select.
 
 1.  Select a time interval from the **TTL** menu. *TTL* stands for *time to live*, and affects how long DNS records are cached by DNS resolvers. When the designated time to live is reached, the resolver must query the authoritative name servers for new records.
 
-1.  Click **Save**. It can take up to 30 minutes for new DNS records to become active.
+1.  Click **Save**. It will only take a few minutes for new DNS records to become active.
 
 ### Edit DNS Records
 
@@ -175,7 +175,7 @@ To modify a Domain's existing DNS records:
 
 1.  Edit the DNS record by modifying the existing values in the fields that appear.
 
-1.  Click **Save**. It can take up to 30 minutes for the record to be updated.
+1.  Click **Save**. It will only take a few minutes for the record to be updated.
 
 ### Subdomains
 
@@ -187,7 +187,7 @@ Add a subdomain by adding an entry under the *A/AAAA Record* heading, with just 
 
 1. Adjust the TTL if necessary.
 
-1. Click **Save**. It can take up to 30 minutes for the record to be updated.
+1. Click **Save**. It will only take a few minutes for the record to be updated.
 
 
 ### Wildcards
@@ -202,7 +202,7 @@ To create a [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_rec
 
 1. When the **Create A/AAAA Record** panel appears, enter an asterisk (`*`) in the **Hostname** field and provide a valid IP address in the **IP Address** field.
 
-1. Click **Save**. It can take up to 30 minutes for the record to be updated.
+1. Click **Save**. It will only take a few minutes for the record to be updated.
 
 {{< note >}}
 A wildcard must always be the furthest subdomain from the TLD (top level domain), i.e. `*.example.com`. If you would like to add a wildcard as a subdomain for a subdomain, you will need to add a new domain zone for that subdomain and then add the wildcard record to it. For example, to create `*.subdomain.example.com`, you must add a separate domain zone for `subdomain.example.com` first, then add an A/AAAA DNS record to that zone as indicated above.
@@ -259,7 +259,7 @@ If one of your domain names has expired or if you want to start hosting it on an
 
 1.  From the **Domains** section of the Cloud Manager, find the domain you would like to remove and click its **more options ellipsis**.
 
-1.  Select **Remove** to permanently delete the domain, including all associated DNS records. It can take up to 30 minutes for the changes to take effect.
+1.  Select **Remove** to permanently delete the domain, including all associated DNS records. It will only take a few minutes for the changes to take effect.
 
 ![This menu lets you remove a DNS zone.](domain-remove-a-zone.png "This menu lets you remove a DNS zone.")
 
