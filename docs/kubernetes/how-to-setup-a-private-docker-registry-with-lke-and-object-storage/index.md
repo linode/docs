@@ -308,7 +308,7 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "6000"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "6000"
   tls:
-    - secretName: docker-registry-prod
+    - secretName: letsencrypt-secret-prod
       hosts:
       - registry.example.com
 storage: s3
