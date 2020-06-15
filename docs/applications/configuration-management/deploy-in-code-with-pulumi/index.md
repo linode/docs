@@ -148,7 +148,7 @@ exports.instanceLabel = instance.label;
 
 The file requires two JavaScript modules unique to Pulumi: Pulumi's SDK, and Pulumi's Linode integration. [Pulumi's API Reference Documentation](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/) serves as a reference for the JavaScript you'll see here. It also includes a library of several additional options that enable you to create configurations more specific to your use case.
 
-In this case, your file is only creating a single Nanode instance in the Newark data center running Ubuntu 18.04.
+In this case, your file is only creating a single 1GB Linode (Nanode) instance in the Newark data center running Ubuntu 18.04.
 
 ### Create and Destroy Resources
 
@@ -197,7 +197,7 @@ To better demonstrate the power of Pulumi code, we'll create a new `index.js` fi
 const pulumi = require("@pulumi/pulumi");
 const linode = require("@pulumi/linode");
 
-// Create two new Nanodes using a StackScript to configure them internally.
+// Create two new 1GB Linodes (Nanodes) using a StackScript to configure them internally.
 // The StackScript referenced will install and enable NGINX.
 
 // "linode1" (the first argument passed to the Linode instance constructor function) is the Pulumi-allocated Unique Resource Name (URN) for this resource

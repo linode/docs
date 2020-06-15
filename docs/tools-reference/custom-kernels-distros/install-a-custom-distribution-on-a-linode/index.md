@@ -45,7 +45,7 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 ### Prepare your Linode
 
-1.  Log into the [Cloud Manager](https://cloud.linode.com) and create a Linode. You can use a Nanode for this guide.
+1.  Log into the [Cloud Manager](https://cloud.linode.com) and create a Linode. You can use a 1GB Linode (Nanode) for this guide.
 
 1.  After the Linode is finished provisioning, power it down.
 
