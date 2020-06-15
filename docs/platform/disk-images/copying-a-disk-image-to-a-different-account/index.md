@@ -6,76 +6,115 @@ description: Our guide to copying a disk to a different Linode account
 keywords: ["disk", "migration", "moving to different accounts"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['migration/copy-disk-image-different-account/','linode-platform/manager/managing-disk-images/','migrate-to-linode/disk-images/copying-a-disk-image-to-a-different-account/']
-modified: 2014-06-12
+modified: 2020-06-12
 modified_by:
-  name: Alex Fornuto
-published: 2012-06-01
+  name: Linode
+published: 2020-06-01
 title: Copying a Disk to a Different Account
 ---
 
-You can copy a Linode's disk from one Linode account to another. This is a great way to prepare a disk for another Linode customer and transfer it from your account to the other user's account. Or if you have multiple Linode accounts, you can use this guide to consolidate all of your disks in one account.
+![A guide to copy a disk to a different Linode account](copying_a_disk_to_a_differnet_account_smg.png "A guide to copy a disk to a different Linode account")
 
-![Our guide to copying a disk to a different Linode account](copying_a_disk_to_a_differnet_account_smg.png "Our guide to copying a disk to a different Linode account")
+You can copy a disk of a Linode from one Linode account to another. This is a great way to prepare a disk for another Linode customer and transfer it from one individual account to another individual account. Or if you have multiple Linode accounts, this guide provides instructions to consolidate all the disks in one account.
 
-## Preparing the Source Linode
-
-Before initiating the transfer, you'll need to prepare the *source* Linode that contains the disk you want to copy. Start the Linode in rescue mode to transfer files to the other account. Here's how:
-
-1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode).
-2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode Running in rescue mode](/docs/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
-
-Your Linode is now ready to transfer files to the other account.
-
+{{< note >}}
+ If you are copying a disk of a Linode that hosts applications, then ensure that you complete the backup and migrate steps for the respective applications.
+{{< /note >}}
 ## Preparing the Receiving Linode
 
-You'll also need to prepare the *receiving* Linode before initiating the transfer. First, create a new disk to hold the files from the other Linode. Then start the Linode in rescue mode to receive the files from the other account.
+You need to prepare the *receiving* Linode before initiating the transfer. First, create a Linode with a new disks to hold the files from the other Linode.
 
-### Creating a New Disk
+### Creating a New Receiving Linode
 
-To hold the files that will be transferred from the other Linode, you should create a new disk. Here's how:
+1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
+1.  Click **Create** at the top of the page and select **Linode**.
+1.  Click **X** to not choose any **Image** in the **Choose a Distribution** section of the [Distributions](/docs/quick-answers/linux/choosing-a-distribution/) tab.
 
-1.  Log in to the [Linode Manager](https://manager.linode.com) with the account that will be receiving the disk.
-2.  Click the **Linodes** tab.
-3.  Select the Linode that will be receiving the disk. The Linode's dashboard appears.
-4.  Create a disk to hold the files from the other account's disk. Select **Create a new disk**. The webpage shown below appears.
+    ![Creating a receiving Linode](image-selection.png)
 
-[![Creating a configuration profile](1746-migration3-1_small.png)](1747-migration3-1.png)
+1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
-5.  Enter a descriptive name for the disk in the **Label** field.
-6.  Enter a size for the disk in the **Size** field. You should make the disk large enough to hold the contents of the other disk.
-7.  Click **Save Changes** to create the disk. You can monitor the disk creation process by watching the *Host Job Queue*.
+1. Select a Linode plan.
 
-You have successfully created a disk to hold the files from the other account's disk.
+1.  Give the Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
+
+1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to the Linode through SSH. It must be at least 6 characters long and contain characters from two of the following categories:
+
+    - lowercase and uppercase case letters
+    - numbers
+    - punctuation characters
+
+1.  Click **Create**. The system directs you to the *Linodes* page that reports the status of the Linode as it boots up.
+
+### Creating New Disks
+
+To hold the files transferred from the other Linode, create two new disks labeled `copy` and `swap`:
+
+1.  Select the Linode that is receiving the disk. The Linode's dashboard appears.
+
+1.  Go to the **Disks/Configs** tab and click **Add a Disk** in the **Disks** section. The **Add Disk** window appears.
+
+    ![Adding a disk](add_disk.png)
+
+1.  Type a descriptive name such as `copy` for the disk in the **Label** field.
+1.  Select `ext4` in the **Filesystem** dropdown field.
+1.  Set the size of the disk in the **Size** field. The size of the disk must be large enough to hold the contents of the disk that you want to copy.
+1.  Click **Add** to create the disk.
+1.  Repeat the steps to create a disk labeled `swap` and select `swap` in the **Filesystem** dropdown field.
+     Ensure that the size of the `swap` disk is the same as that of the `swap` disk of the disk that you want to copy.
+The system creates disks to hold the files from the disk of other account.
 
 ### Booting into Rescue Mode
 
-Start the receiving Linode in rescue mode. Here's how:
+Start the receiving Linode in rescue mode:
 
-1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode).
-2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode in Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
-3.  Start SSH. For instructions, see [Start SSH](/docs/troubleshooting/rescue-and-rebuild/#starting-ssh).
+1.  Select the Linode that is receiving the disk. The Linode's dashboard appears.
+1.  Click the **Rescue** tab.
+1.  Set the **/dev/sda** field to `copy` and **/dev/sdb** to `swap`.
+1.  Click **Reboot into Rescue Mode**.
 
-Your Linode is now ready to receive the files from the other Linode account.
+### Access the Linode in Rescue Mode
+
+After the Linode has booted, connect to the Linode through [LISH](/docs/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
+
+1.  Select the Linode that is receiving the disk. The Linode's dashboard appears.
+1.  Click **Launch Console** . A new window appears that displays the Lish console, a `Welcome to Finnix!` message, and a root prompt.
+1.  Set the `root` password for the Finnix rescue environment by entering the following command:
+
+        passwd
+
+    {{< note >}}
+This root password is separate from the root password of the disk that you normally boot from. Setting the root password for Finnix does not affect the root account of the distribution.
+{{< /note >}}
+
+1.  Type the new password for the `root` user.
+1.  Start the SSH server:
+
+        service ssh start
+
+You can now connect to the server as root with the SSH client on the local computer.
+The Linode is now ready to receive the files from the other Linode account.
 
 ## Copying the Disk
 
-Now it's time to start copying the files on the disk from one account to another. Here's how to initiate the file transfer:
+To start copying the files on the disk from one account to another, initiate the file transfer:
 
-1.  On the source Linode, enter the following command to start copying the disk, replacing `12.34.56.78` with your Linode's IP address.:
+1.  Connect to the *source* Linode through an SSH client.
+1.  Type the following command to start copying the disk, replace `192.0.2.0` with  the IP address of the *receiving* Linode:
 
-        dd if=/dev/sda | ssh -C 12.34.56.78 "dd of=/dev/sda"
+        dd if=/dev/sda | ssh -C 192.0.2.0 "dd of=/dev/sda"
 
-2.  The following output appears. Enter `yes` to continue connecting:
+1.  The following output appears. Enter `yes` to continue connecting:
 
-        The authenticity of host '12.34.56.78 (12.34.56.78)' can't be established.
+        The authenticity of host '192.0.2.0 (192.0.2.0)' can't be established.
         RSA key fingerprint is 20:f4:de:4d:5c:6e:a9:c7:e6:1f:8a:ad:60:62:96:3f.
         Are you sure you want to continue connecting (yes/no)?
 
-3.  You will be prompted for the `root` password. Enter the password you created in the last section when you started the SSH server:
+1.  The system prompts you for the `root` password. Enter the password you created in the last section when you started the SSH server:
 
-        root@12.34.56.78's password:
+        root@192.0.2.0's password:
 
-4.  The file transfer will start, as shown below:
+1.  The file transfer starts, as shown below:
 
         2048000+0 records in
         2048000+0 records out
@@ -88,56 +127,59 @@ Wait for the transfer to complete. Note that this process can take a while, depe
 
 ## Verifying the Disk
 
-After the file transfer has completed, you should verify the disk by mounting it on the receiving Linode. Here's how:
+After the file transfer has completed, you should verify the disk by mounting it on the *receiving* Linode. Ensure that the [Network Helper](docs/platform/network-helper/) is on for the *receiving* Linode or the [Static IP](/docs/networking/linux-static-ip-configuration/) is configured to enable networking with the new IP addresses.
 
-1.  Make a new directory for the disk by entering the following command:
+1.  Connect to the *receiving* Linode through SSH as `root`.
+
+1. To check that the disks are transferred successfully
+
+1.  Make a new directory for the disk by typing the following command:
 
         mkdir linode
 
-2.  Mount the disk by entering the following command:
+1.  Mount the disk by typing the following command:
 
         mount /dev/sda linode
 
-3.  View the directories in the disk by entering the following command:
+1.  View the directories in the disk by typing the following command:
 
         ls linode/
 
-4.  The output should appear similar to what's shown below:
+    The output is similar to:
 
         bin   dev  home  lost+found  mnt  proc  sbin     srv  tmp  var
         boot  etc  lib   media       opt  root  selinux  sys  usr
 
-Now that you've ready to boot from the disk.
+  {{< note >}}
+   If the system displays any disk errors, then perform the [Copying the Disk](/docs/platform/disk-images/copying-a-disk-image-to-a-different-account/#copying-the-disk) steps again.
+{{< /note >}}
+
+Now the Linode is ready to boot from the disk.
 
 ## Booting from the Disk
 
-Now it's time to boot from the disk. First, you'll create a configuration profile on the receiving Linode, and then you'll boot the receiving Linode with the disk you just transferred.
+Boot the *receiving* Linode from the disk. First, create a configuration profile on the *receiving* Linode, and then boot the *receiving* Linode with the disk that you just transferred.
 
 ### Creating the Configuration Profile
 
-The boot the receiving Linode from the transferred disk, you'll need to create a new configuration profile. Here's how:
+To boot the *receiving* Linode from the transferred disk, create a new configuration profile:
 
 1.  Click the **Linodes** tab.
-2.  Select the Linode that received the disk. The Linode's dashboard appears.
-3.  Select **Create a new Configuration Profile**. The webpage shown below appears.
-
-[![Selecting the configuration profile](1065-migration6-small.png)](1064-migration6.png)
-
-4.  Enter a name for the configuration profile in the **Label** field, such as *Received disk*.
-5.  In the *Block Device Assignment* section, set `/dev/sda` to **Received disk**.
-6.  Set `/dev/sdb` to a swap disk.
-7.  Click **Save Changes**.
+1.  Select the Linode that received the disk. The Linode's dashboard appears.
+1.  Select **Disks/Configs** tab and in the *Configuration* section click **Add a Configuration**. The **Add a Linode Configuration** window appears.
+1.  Enter a name for the configuration profile in the **Label** field, such as *Received disk*.
+1.  In the *Block Device Assignment* section, set **/dev/sda** to `copy` and **/dev/sdb** to `swap` disk.
+    ![Assigning the Block Device](block-device-assignment.png)
+1.  Click **Submit**.
 
 You have successfully created the configuration profile.
 
 ### Booting the Receiving Linode
 
-Now to start the receiving Linode from the transferred disk, you'll need to select the configuration profile you just created. Here's how:
+Now to start the *receiving* Linode from the transferred disk, select the configuration profile that you created:
 
-1.  From the Linode's dashboard, select the **Received disk** configuration profile you created in the last section, as shown below.
+1.  From the Linode's dashboard, select the *Received disk* configuration profile that you created.
 
-[![Selecting the configuration profile](1060-migration4-small.png)](1061-migration4.png)
-
-2.  Click **Reboot** to restart the Linode from the transferred disk.
-
-Your Linode will boot using the disk you transferred.
+1.  Click **more options ellipsis** and select **Boot This Config** to restart the Linode from the transferred disk.
+     ![Booting the Receiving Linode](boot-this-config.png)
+The Linode boots using the disk you transferred.
