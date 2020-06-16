@@ -73,7 +73,7 @@ To view a full list of the Shared instance plans, visit the [Linode Pricing](htt
 
 ## 2. High Memory
 
-High Memory instances feature higher RAM allocations and relatively fewer vCPUs and less storage. This keeps your costs down and provides power to memory-intensive applications.
+High Memory instances feature higher RAM allocations and relatively fewer vCPUs and less storage. This keeps your costs down and provides power to memory-intensive applications. As of April 16, 2020, all High Memory plans utilize dedicated CPU cores.
 
 ### Use Cases
 
@@ -98,7 +98,7 @@ To view a full list of the High Memory instance plans, visit the [Linode Pricing
 
 Dedicated CPU instances offer entire dedicated CPU cores for your own Linode's use. No other instances can run processes on the same cores that you're using, which means that your software can run at peak speed and efficiency.
 
-Under the Shared and High Memory instances, your processes are scheduled on the same CPU cores as the processes from other servers. This shared scheduling is done in a secure and performant manner, and Linode works to minimize competition for CPU resources between your server and other servers, but the Dedicated CPU instances provide an environment with zero competition. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations.
+Under the Shared instances, your processes are scheduled on the same CPU cores as the processes from other servers. This shared scheduling is done in a secure and performant manner, and Linode works to minimize competition for CPU resources between your server and other servers, but the Dedicated CPU instances provide an environment with zero competition. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations.
 
 ### Dedicated CPUs and the Linode API
 
