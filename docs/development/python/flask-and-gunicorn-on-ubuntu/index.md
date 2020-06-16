@@ -261,7 +261,7 @@ root@localhost:/home/Flask-on-Linode# gunicorn -w 3 flask_app:app
 {{< /output >}}
 
     {{< note >}}
-You can specify the amount of workers you want Gunicorn to use with the `--workers` flag. A good rule of thumb to determine [worker](http://docs.gunicorn.org/en/stable/design.html#server-model) count is to double your system's CPU cores and add 1. For a Nanode with 1 CPU core you should use 3 workers.
+You can specify the amount of workers you want Gunicorn to use with the `--workers` flag. A good rule of thumb to determine [worker](http://docs.gunicorn.org/en/stable/design.html#server-model) count is to double your system's CPU cores and add 1. For a 1GB Linode (Nanode) with 1 CPU core you should use 3 workers.
 {{< /note >}}
 
 1. After running Gunicorn, your Flask application should be live and available over the internet. Open a web browser and enter your Linode's IP address to access your application. If you used the example Flask blog application, you should see the following:

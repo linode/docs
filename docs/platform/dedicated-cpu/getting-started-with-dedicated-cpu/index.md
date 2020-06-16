@@ -15,9 +15,9 @@ This guide will serve as a brief introduction into what a Dedicated CPU Linode i
 
 ## What is a Dedicated CPU Linode?
 
-In contrast with a [Standard Linode](/docs/platform/how-to-choose-a-linode-plan/#2-standard), which gives you access to shared virtual CPU cores, a Dedicated CPU Linode offers entire physical CPU cores that are accessible only by your instance. Because your cores will be isolated to your Linode, no other Linodes can schedule processes on them, so your instance will never have to wait for another process to complete its execution, and your software can run at peak speed and efficiency.
+In contrast with a [Shared Linode](/docs/platform/how-to-choose-a-linode-plan/#1-shared), which gives you access to shared virtual CPU cores, a Dedicated CPU Linode offers entire physical CPU cores that are accessible only by your instance. Because your cores will be isolated to your Linode, no other Linodes can schedule processes on them, so your instance will never have to wait for another process to complete its execution, and your software can run at peak speed and efficiency.
 
-While a Standard Linode is a good fit for most use cases, a Dedicated CPU Linode is recommended for a number of workloads related to high, sustained CPU processing, including:
+While a Shared Linode is a good fit for most use cases, a Dedicated CPU Linode is recommended for a number of workloads related to high, sustained CPU processing, including:
 
 - [CI/CD](/docs/development/ci/introduction-ci-cd/) toolchains and build servers
 - CPU-intensive [game servers](/docs/game-servers/), like Minecraft or Team Fortress
