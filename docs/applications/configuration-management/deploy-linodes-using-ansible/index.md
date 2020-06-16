@@ -26,7 +26,7 @@ In this guide you will learn how to:
 * Create an Ansible inventory for your Linode infrastructure using the dynamic inventory plugin for Linode.
 
 {{< caution >}}
-This guide’s example instructions will create a [1 GB Nanode](https://www.linode.com/pricing) billable resource on your Linode account. If you do not want to keep using the Nanode that you create, be sure to [delete the resource](#delete-your-resources) when you have finished the guide.
+This guide’s example instructions will create a [1GB Linode](https://www.linode.com/pricing) (Nanode) billable resource on your Linode account. If you do not want to keep using the Linode that you create, be sure to [delete the resource](#delete-your-resources) when you have finished the guide.
 
 If you remove the resource afterward, you will only be billed for the hour(s) that the resources were present on your account.
 {{</ caution >}}
@@ -230,7 +230,7 @@ token: !vault |
 
 ### Run the Ansible Playbook
 
-You are now ready to run the Create Linode Playbook. When you run the Playbook, a 1 GB Nanode will be deployed in the Newark data center. Note: you want to run Ansible commands from the directory where your `ansible.cfg` file is located.
+You are now ready to run the Create Linode Playbook. When you run the Playbook, a 1GB Linode (Nanode) will be deployed in the Newark data center. Note: you want to run Ansible commands from the directory where your `ansible.cfg` file is located.
 
 1. Run your playbook to create your Linode instances.
 

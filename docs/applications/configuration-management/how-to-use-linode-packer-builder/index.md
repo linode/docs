@@ -171,7 +171,7 @@ Now that Packer is installed on your local system, you can create a Packer *temp
 In this section you will create a template that uses the Linode Packer builder to create an image using Debian 9 as its base distribution. The template will also configure your system image with a new limited user account, and a public SSH key from your local computer. The additional system configuration will be completed using Packer's Ansible [*provisioner*](https://www.packer.io/docs/provisioners/index.html) and an example Ansible Playbook. A Packer provisioner is a built-in third-party integration that further configures a machine instance during the boot process and prior to taking the machine's snapshot.
 
 {{< note >}}
-The steps in this section will incur charges related to deploying a [1GB Nanode](https://www.linode.com/products/nanodes/). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for details about [hourly billing](/docs/platform/billing-and-support/billing-and-payments/#how-hourly-billing-works).
+The steps in this section will incur charges related to deploying a [1GB Linode]((https://www.linode.com/pricing) (Nanode). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for details about [hourly billing](/docs/platform/billing-and-support/billing-and-payments/#how-hourly-billing-works).
 {{</ note >}}
 
 ### Access Linode and Private Images
@@ -237,13 +237,13 @@ If you would rather not use a provisioner in your Packer template, you can use t
 There are three sections to the Packer template file:
 
   * **variables**: This section allows you to further configure your template with [command-line variables, environment variables, Vault, or variable files](https://www.packer.io/docs/templates/user-variables.html). In the section that follows, you will use a command line variable to pass your Linode account's API token to the template.
-  * **builders**: The builder section contains the definition for the machine image that will be created. In the example template, you use a single builder --the [Linode builder](https://www.packer.io/docs/builders/linode.html). The builder uses the `linode/debian9` image as its base and will assign the image a label of `my-private-packer-image`. It will deploy a 1GB Nanode, take a snapshot, and create a reusable Linode Image. Refer to Packer's official documentation for a complete [Linode Builder configuration reference](https://www.packer.io/docs/builders/linode.html).
+  * **builders**: The builder section contains the definition for the machine image that will be created. In the example template, you use a single builder --the [Linode builder](https://www.packer.io/docs/builders/linode.html). The builder uses the `linode/debian9` image as its base and will assign the image a label of `my-private-packer-image`. It will deploy a 1GB Linode (Nanode), take a snapshot, and create a reusable Linode Image. Refer to Packer's official documentation for a complete [Linode Builder configuration reference](https://www.packer.io/docs/builders/linode.html).
 
     {{< note >}}
 You can use multiple builders in a single template file. This process is known as a [parallel build](https://www.packer.io/intro/getting-started/parallel-builds.html) which allows you to create multiple images for multiple platforms from a single template.
 {{</ note >}}
 
-  * **provisioners**: (*optional*) with a provisioner you can further configure your system by completing common system administration tasks, like adding users, installing and configuring software, and more. The example uses Packer's built-in Ansible provider and executes the tasks defined in the local `limited_user_account.yml` playbook. This means your Linode image will also contain anything executed by the playbook on your Nanode. Packer supports several other [provisioners](https://www.packer.io/docs/provisioners/index.html), like Chef, Salt, and shell scripts.
+  * **provisioners**: (*optional*) with a provisioner you can further configure your system by completing common system administration tasks, like adding users, installing and configuring software, and more. The example uses Packer's built-in Ansible provider and executes the tasks defined in the local `limited_user_account.yml` playbook. This means your Linode image will also contain anything executed by the playbook on your Linode. Packer supports several other [provisioners](https://www.packer.io/docs/provisioners/index.html), like Chef, Salt, and shell scripts.
 
 ### Create your Ansible Playbook (Optional)
 
@@ -342,11 +342,11 @@ Build 'linode' finished.
 --> linode: Linode image: my-private-packer-image (private/7550080)
       {{</ output >}}
 
-      The output will provide you with your new private image's ID. In the example output the image ID is `private/7550080`. This image is now available on your Linode account to use as you desire. As an example, in the next section you will use this newly created image to deploy a new 1 GB Nanode using Linode's API v4.
+      The output will provide you with your new private image's ID. In the example output the image ID is `private/7550080`. This image is now available on your Linode account to use as you desire. As an example, in the next section you will use this newly created image to deploy a new 1GB Linode (Nanode) using Linode's API v4.
 
 ### Deploy a Linode with your New Image
 
-1. Issue the following curl command to deploy a 1GB Nanode to the us-east data center using your new Image to your Linode account. Ensure you replace `private/7550080` with your own Linode Image's ID and assign your own `root_pass` and `label`.
+1. Issue the following curl command to deploy a 1GB Linode (Nanode) to the us-east data center using your new Image to your Linode account. Ensure you replace `private/7550080` with your own Linode Image's ID and assign your own `root_pass` and `label`.
 
         curl -H "Content-Type: application/json" \
           -H "Authorization: Bearer $TOKEN" \
