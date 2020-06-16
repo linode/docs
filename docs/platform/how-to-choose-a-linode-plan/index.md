@@ -73,7 +73,7 @@ To view a full list of the Shared instance plans, visit the [Linode Pricing](htt
 
 ## 2. High Memory
 
-High Memory instances feature higher RAM allocations and relatively fewer vCPUs and less storage. This keeps your costs down and provides power to memory-intensive applications. As of April 16, 2020, all High Memory plans utilize dedicated CPU cores.
+High Memory instances feature higher RAM allocations and relatively fewer vCPUs and less storage. This keeps your costs down and provides power to memory-intensive applications. As of June 16, 2020, all High Memory plans utilize dedicated CPU cores.
 
 ### Use Cases
 
