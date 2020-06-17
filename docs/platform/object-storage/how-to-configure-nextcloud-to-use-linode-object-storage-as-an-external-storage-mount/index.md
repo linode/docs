@@ -2,9 +2,9 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'In this guide you will enable Nextcloud''s External Storage app and then configure it to use Linode Object Storage as a secondary storage location. Nextcloud is a full-featured file hosting and sharing solution that can be easily installed on a Linode using One-Click Apps.'
+og_description: 'In this guide you will enable Nextcloud''s External Storage app and then configure it to use Linode Object Storage as a secondary storage location. Nextcloud is a full-featured file hosting and sharing solution that can be easily installed on a Linode using One-Click Apps.'
+keywords: ['file hosting','nextcloud','object storage','s3']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-16
 modified_by:
@@ -14,7 +14,7 @@ h1_title: "Configuring Nextcloud to use Linode Object Storage as an External Sto
 contributor:
   name: Linode
 external_resources:
-- '[Nextcloud Configuring Extern Storage Documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#)'
+- '[Nextcloud Configuring External Storage Documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#)'
 ---
 [Nextcloud](https://nextcloud.com/) is an open source solution for file hosting and sharing. With Nextcloud, you can synchronize files from your local computer to your Linode server and share them with your collaborators. Nextcloud’s customizable security features and intuitive user interface help keep your files safe and easy to manage.
 
@@ -29,6 +29,12 @@ You can configure Nextcloud to enable external storage devices and services, lik
 1. [Generate Object Storage access keys](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair).
 
 1. If you are not familiar with Linode Object Storage, review the [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
+
+### In This Guide
+
+- Nextcloud provides an app that makes it easy to configure an external storage device or service. You will first [enable this app in Nextcloud's app settings](#enable-the-external-storage-app).
+
+- Once your External Storage app is enabled, you can provide the necessary configurations to connect Nextcloud to a Linode Object Storage bucket. In the [Create a New Linode Object Storage External Storage Mount](#create-a-new-linode-object-storage-external-storage-mount) section you will complete this step.
 
 ## Nextcloud Configurations
 ### Enable the External Storage App
