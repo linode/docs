@@ -81,7 +81,7 @@ You will need to install the kubectl client to your computer before proceeding. 
 1. In the **Add Node Pools** section, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time. Once you're satisfied with the number of nodes in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](#edit-or-remove-existing-node-pools).
 
     {{< note >}}
-Currently, the available plan types for LKE worker nodes are [Standard](/docs/platform/how-to-choose-a-linode-plan/#2-standard), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory) plans.
+Currently, the available plan types for LKE worker nodes are [Shared](/docs/platform/how-to-choose-a-linode-plan/#1-shared), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory) plans.
     {{< /note >}}
 
     ![Select your cluster's resources](select-your-cluster-resources.png "Select your cluster's resources.")

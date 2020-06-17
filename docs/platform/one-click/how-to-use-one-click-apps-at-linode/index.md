@@ -47,17 +47,17 @@ When a One-Click App is deployed, a new Linode is created and the appropriate so
 
 1.  Under the **Region** section, choose which data center you would like your app to be deployed to. Choose a region that is close to your audience's geographic location. When you are closer to your data center, your network speeds will generally be higher, and your network latency will be lower.
 
-1.  Choose which plan you'd like to use under the **Linode Plan** section. Your plan specifies the hardware resources assigned to your server. The resources that you need are determined by the requirements of your app. Linode's plans are split into five types: Nanode, Standard, Dedicated CPU, High Memory, and GPU.
+1.  Choose which plan you'd like to use under the **Linode Plan** section. Your plan specifies the hardware resources assigned to your server. The resources that you need are determined by the requirements of your app. Linode's plans are split into four types: Shared, Dedicated CPU, High Memory, and GPU.
 
-    For small sites like WordPress blogs a 1GB Nanode is usually enough, and for video game servers a 2GB or 4GB Standard Linode is often a good choice. Some game servers may benefit from the Dedicated CPU plans. Our [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/) guide presents more information about the different use-cases for each plan.
+    For small sites like WordPress blogs a 1GB Linode (Nanode) is usually enough, and for video game servers a 2GB or 4GB Shared Linode is often a good choice. Some game servers may benefit from the Dedicated CPU plans. Our [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/) guide presents more information about the different use-cases for each plan.
 
     {{< note >}}
-You can always upgrade your Linode later if you need more memory, CPU cores, or any of the other hardware resources. Also, you can downgrade your plan if you think you don't need as much as you're currently using. Furthermore, you can change plan types entirely, like going from a Standard Linode to a Dedicated CPU Linode.
+You can always upgrade your Linode later if you need more memory, CPU cores, or any of the other hardware resources. Also, you can downgrade your plan if you think you don't need as much as you're currently using. Furthermore, you can change plan types entirely, like going from a Shared Linode to a Dedicated CPU Linode.
 
 Review the [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) guide for upgrading and downgrading instructions. When downgrading your plan, the size of your Linode's disk must fit within the new plan's disk space allocation.
 {{</ note >}}
 
-1.  For this example, a 1GB Nanode is selected.
+1.  For this example, a 1GB Linode (Nanode) is selected.
 
     ![Choose a plan.](one-click-pick-plan.png)
 
