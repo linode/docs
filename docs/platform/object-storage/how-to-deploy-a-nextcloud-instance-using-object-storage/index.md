@@ -43,17 +43,11 @@ You must belong to the `admin` user group in order to install the External stora
 
 1. Click on your user icon (or cog wheel) in the top navigation menu and select **Apps**.
 
-    ![Access Nextcloud App settings.](access-app-settings.png)
-
 1. In the left-hand navigation menu, click on **Files** to access all Nextcloud apps related to file management.
-
-    ![Access the Files App settings.](files-app-settings.png)
 
 1. Use the search field in the top navigation to narrow down the visible apps. You can enter *external* as your search term.
 
-1. Viewing the *External storage support* app, click on its **Enable** button in order to install it to your Nextcloud instance.
-
-    ![Enable the external storage support app.](enable-external-storage.png)
+1. Viewing the *External storage support* app, click on its **Downlaod and enable** button in order to install it to your Nextcloud instance.
 
 ### Create a New Linode Object Storage External Storage Mount
 
@@ -63,13 +57,9 @@ After enabling the External Storage Support app, you are now ready to add a new 
 If you have not yet [enabled Object Storage on your Linode account](/docs/platform/object-storage/how-to-use-object-storage/#enable-object-storage) and [created Object Storage access keys](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair), you should do so now before proceeding with this section.
 {{</ note >}}
 
-1. Click on your user icon (or cog wheel) in the top navigation menu and select **Settings**.
-
-    ![Access Nextcloud settings.](access-settings.png)
+1. Click on your user icon in the top navigation menu and select **Settings**.
 
 1. In the left-hand navigation menu, under the **Administration** heading, click on **External Storages**. You will be brought to the *External Storages* administration page.
-
-    ![Access external storages configurations.](access-external-storages.png)
 
 1. In the **Folder name** text entry box, provide a name for your external storage directory.
 
@@ -105,23 +95,15 @@ Linode Object Storage is *S3-compatible*. Nextcloud will connect to Amazon's Obj
 
 1. In the **Available for** text entry box, enter the group name(s) you would like to give access to your Linode Object Storage external storage. To learn more about user and group permissions related to external storage, see [Nextcloud's documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#user-and-group-permissions).
 
-1. Click on the **check icon**  to save your configurations. If all your configurations are valid, you should see a green check box appear next to your external storage entry.
-
-      ![Save your external storage configurations.](saved-external-storage-configs.png)
+    If all your configurations are valid, you should see a green check box appear next to your external storage entry.
 
 1. Using the top navigation menu, click on the **Files** menu item. You should see your external storage folder in your list of folders.
-
-      ![Access all your Nextcloud files.](view-all-files.png)
 
 1. Click on your external storage folder to view its contents. You should not see anything stored there yet.
 
 1. Test out the external storage mount by adding a file to the folder. Click on the **+** button in the top breadcrumbs area of the screen and select **Upload file**.
 
-      ![Upload a file to your Linode Object Storage bucket.](upload-file-menu.png)
-
 1. Your local file browser will appear. Select a test file to add to the external storage folder and click **Open**. You should see the file appear in the folder.
-
-      ![Your should see your uploaded file appear in the folder.](uploaded-image.png)
 
     {{< note >}}
 The file you uploaded will also be available through the [Linode Cloud Manager](https://cloud.linode.com/). You can verify this by following the steps in the [View Bucket Objects](/docs/platform/object-storage/how-to-use-object-storage/#view-bucket-objects) section  of our [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide. You should not use the Linode Cloud Manager to remove or add files from your Nextcloud external storage Object Storage bucket.
