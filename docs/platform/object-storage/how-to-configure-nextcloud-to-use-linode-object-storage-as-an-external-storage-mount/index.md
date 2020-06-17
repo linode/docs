@@ -75,7 +75,7 @@ If you have not yet [enabled Object Storage on your Linode account](/docs/platfo
 
 1. In the left-hand navigation menu, under the **Administration** heading, click on **External Storages**. You will be brought to the *External Storages* administration page.
 
-    ![Access external storages configurations.](access-external-storages.png)
+    ![Access external storage configurations.](access-external-storage.png)
 
 1. In the **Folder name** text entry box, provide a name for your external storage directory.
 
