@@ -121,7 +121,7 @@ In this section you will install cert-manager using Helm and the required cert-m
 
 1. Install cert-manager's CRDs.
 
-        kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.14.1/cert-manager.crds.yaml
+        kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.1/cert-manager.crds.yaml
 
 1. Create a cert-manager namespace.
 
@@ -140,7 +140,7 @@ In this section you will install cert-manager using Helm and the required cert-m
         helm install \
         cert-manager jetstack/cert-manager \
         --namespace cert-manager \
-        --version v0.14.1
+        --version v0.15.1
 
 1. Verify that the corresponding cert-manager pods are now running.
 
