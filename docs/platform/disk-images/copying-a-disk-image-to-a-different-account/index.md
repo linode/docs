@@ -131,9 +131,7 @@ After the file transfer has completed, you should verify the disk by mounting it
 
 1.  Connect to the *receiving* Linode through SSH as `root`.
 
-1. To check that the disks are transferred successfully
-
-1.  Make a new directory for the disk by typing the following command:
+1.  To check that the disks are transferred successfully make a new directory for the disk by typing the following command:
 
         mkdir linode
 
