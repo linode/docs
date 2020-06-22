@@ -32,7 +32,9 @@ Prior to installing your LAMP stack ensure that:
         hostname
         hostname -f
 
-2.  Update your system:
+    {{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/platform/manager/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+
+1.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -156,9 +158,9 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
 {{< /file >}}
 
-1.  Assign ownership of `public_html` directory to the `$USER` environment variable:
+1.  Assign ownership of `public_html` directory to the user `$www-data`:
 
-        sudo chown -R $USER:$USER /var/www/html/example.com/public_html
+        sudo chown -R $www-data:$www-data /var/www/html/example.com/public_html
 
 1. Set the permissions for the `public_html` directory:
 

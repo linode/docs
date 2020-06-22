@@ -2,12 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Getting Started with Linode GPU Instances.'
+description: This guide will help you get your Linode GPU Instance up and running on a number of popular distributions. To prepare your Linode, you will need to install NVIDIA's proprietary drivers using NVIDIA's CUDA Toolkit.
+og_description: This guide will help you get your Linode GPU Instance up and running on a number of popular distributions. To prepare your Linode, you will need to install NVIDIA's proprietary drivers using NVIDIA's CUDA Toolkit.
 keywords: ["GPU", "AI", "Machine Learning", "Video Encoding", "Linode GPU"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: []
 published: 2019-06-05
-title: Getting Started with Linode GPU Instances
+title: A Beginner's Guide to Linode GPU Instances
+h1_title: Getting Started with Linode GPU Instances
 modified_by:
   name: Linode
 ---
@@ -23,6 +25,12 @@ For details on the CUDA Toolkit's full feature set, see the [official documentat
 {{< disclosure-note "Why do NVIDIA's drivers need to be installed?" >}}
 Linode has chosen not to bundle NVIDIA's proprietary closed-source drivers with its standard Linux distribution images. While some operating systems are packaged with the open source [Nouveau](https://nouveau.freedesktop.org/wiki/) driver, the NVIDIA proprietary driver will provide optimal performance for your GPU-accelerated applications.
 {{< /disclosure-note >}}
+
+{{< caution >}}
+This guide’s example instructions will create several billable resources on your Linode account. If you do not want to keep using the GPU that you create, be sure to delete it when you have finished the guide.
+
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/) guide for detailed information about how hourly billing works, and visit our [pricing page](https://www.linode.com/pricing/#row--compute) for a table of hourly and monthly GPU costs.
+{{</ caution >}}
 
 ## Before You Begin
 

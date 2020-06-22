@@ -2,7 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to Linode Billing.
+description: Linode uses an hourly billing system. Use this guide to learn about how our hourly billing works, when invoices are issued, which payment methods are accepted, and other key billing information.
+og_description: Linode uses an hourly billing system. Use this guide to learn about how our hourly billing works, when invoices are issued, which payment methods are accepted, and other key billing information.
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/', '/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -81,4 +82,4 @@ Review our [Tax Information](/docs/platform/billing-and-support/tax-information/
 
 If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#cancelling-your-account) within the first seven days and request a full refund, no questions asked.
 
-If you have a credit on your account at the time of cancellation, and this credit is from an overpayment you have made to the account, you are entitled to a refund, minus a $5 processing fee. To request a refund, enter a note in the text field. Note that credits from sources other than prepaying cannot be refunded.
+If you have a credit on your account at the time of cancellation, and this credit is from an overpayment you have made to the account, you are entitled to a refund, minus a $5 processing fee. To request a refund, enter a note in the text field. Note that credits from sources other than prepaying cannot be refunded. Only payments made within 180 days of a properly submitted cancellation form shall be eligible for a refund.

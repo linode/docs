@@ -2,7 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use iptables to manage Netfilter rules.'
+description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
+og_description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
 keywords: ["iptables", "networking", "firewalls", "filtering"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/firewalls/iptables/','networking/firewalls/control-network-traffic-with-iptables/']
@@ -10,7 +11,8 @@ modified: 2017-02-28
 modified_by:
   name: Linode
 published: 2010-07-30
-title: Control Network Traffic with iptables
+title: Controlling Network Traffic with iptables - A Tutorial
+h1_title: A Tutorial for Controlling Network Traffic with iptables
 external_resources:
  - '[Security Basics](/docs/security/linux-security-basics)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'
@@ -608,7 +610,7 @@ While some rules are configured in these files already, either file can be edite
 
 ### Save iptables-persistent Rules Through Reboot
 
-By default, iptables-persistent rules save on reboot for IPv4 only. Therefore, if you are running both IPv4 and IPv6 together you will need to manually edit both the `rules.v4` and `rules.v6` files. On older systems, `iptables-save` was used to write the changes to the `rules` file. Now that `iptables-persistent` is an option, do not use the `iptables-save > /etc/iptables/rules.v4` or `iptables-save > /etc/iptables/rules.v6` commands as any IPv6 changes will be overwritten by the IPv4 rules.
+By default, iptables-persistent rules save on reboot for IPv4 only. Therefore, if you are running both IPv4 and IPv6 together you will need to manually edit both the `rules.v4` and `rules.v6` files. On older systems, `iptables-save` was used to write the changes to the `rules` file. Now that `iptables-persistent` is an option, use `ip6tables-save > /etc/iptables/rules.v6` command on reboot for IPv6 .
 
 To enforce the iptables rules and ensure that they persist after reboot run `dpkg-reconfigure` and respond **Yes** when prompted. (If you ever edit your saved rules in the future, use this same command to save them again.)
 
