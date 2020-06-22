@@ -20,7 +20,7 @@ The *Linode Backup Service* is a subscription service add-on that automatically 
 
 Pricing is per Linode and varies depending upon your Linode's plan:
 
-### Standard Plans
+### Shared Plans
 
 | Service      | Backups Hourly Rate | Backups Monthly
 |:-------------|:--------------------|:---------------
