@@ -24,6 +24,12 @@ For details on the CUDA Toolkit's full feature set, see the [official documentat
 Linode has chosen not to bundle NVIDIA's proprietary closed-source drivers with its standard Linux distribution images. While some operating systems are packaged with the open source [Nouveau](https://nouveau.freedesktop.org/wiki/) driver, the NVIDIA proprietary driver will provide optimal performance for your GPU-accelerated applications.
 {{< /disclosure-note >}}
 
+{{< caution >}}
+This guide’s example instructions will create several billable resources on your Linode account. If you do not want to keep using the GPU that you create, be sure to delete it when you have finished the guide.
+
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/) guide for detailed information about how hourly billing works, and visit our [pricing page](https://www.linode.com/pricing/#row--compute) for a table of hourly and monthly GPU costs.
+{{</ caution >}}
+
 ## Before You Begin
 
 1. Follow our [Getting Started](https://www.linode.com/docs/getting-started/) and [Securing Your Server](https://www.linode.com/docs/security/securing-your-server/) guides for instructions on setting up your Linodes.
