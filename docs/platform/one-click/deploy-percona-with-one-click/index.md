@@ -15,9 +15,12 @@ contributor:
 external_resources:
 - '[Percona PMM Documentation](https://www.percona.com/doc/percona-monitoring-and-management/index.html)'
 ---
+
 ## Percona PMM One-Click App
 
-Percona Monitoring and Management (PMM) is a free open-source tool which provides a GUI powered by [Grafana](https://grafana.com/) for monitoring and managing MySQL, MariaDB, PostgreSQL, and MongoDB. With PMM, you can easily observe important metrics, logging, and statistics related to the your databases. Additionally, it includes a number of tools which can optimize your database's performance, manage all database instances, and track and identify potential security threats.
+Percona Monitoring and Management (PMM) is a free open-source tool which provides a GUI powered by [Grafana](https://grafana.com/) for monitoring and managing MySQL, MariaDB, PostgreSQL, and MongoDB databases at scale. With PMM, you can easily observe important metrics, logging, and statistics related to the your databases. Additionally, it includes a number of tools which can help to optimize your database's performance, manage all database instances, and track and identify potential security threats.
+
+The Percona PMM One-Click App will install the PMM server software on to your Linode. The [PMM Client Software](https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html#pmm-client) must then be separately and manually installed on your Database Linodes to begin reporting to your Server.
 
 
 ### Deploy a GitLab One-Click App
@@ -43,7 +46,7 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ### Access your PPM Server
 
-After the Percona PMM has finished installing, you will be able to access it over `http://` with your Linode's IPv4 address. To find your Linode's IPv4 address:
+After the Percona PMM server has finished installing, you will be able to access it over `http://` with your Linode's IPv4 address. To find your Linode's IPv4 address:
 
   1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
 
@@ -58,6 +61,46 @@ After the Percona PMM has finished installing, you will be able to access it ove
 1. On the following screen, you will see the PMM Home Dashboard actively monitoring your server:
 
     ![Percona Home Page](perconahome.png)
+
+### Installing the PMM Client
+
+The PMM client should be installed on a device that contains database software. First, the client itself must be installed, and then databases must be added individually. On most DEB-based distributions the client can be installed in the following steps:
+
+1. First, ensure that your system is up to date:
+
+    sudo apt-get update && sudo apt-get upgrade
+
+1. Set up and configure the Percona repositories:
+
+    wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+    sudo dpkg -i percona-release_latest.generic_all.deb
+
+1. Update your system with the new repository, and install the PMM client:
+
+    sudo apt-get update
+    sudo apt-get install pmm-client
+
+1. Finally, configure your server using the following command, replacing the `IP_ADDRESS` with your PMM Server's IPv4 address:
+
+    pmm-admin config --server IP_ADDRESS
+
+Once complete, you should see output similar to the following:
+
+    PMM Server      | 192.0.2.0
+    Client Name     | li222-111
+    Client Address  | 192.0.2.255
+
+### Setting up Your Database
+
+Once the Client and Server are communicating,the final step is to configure your database to be logged by Percona's monitoring. For MySQL, this can be completed from your client using the following command:
+
+    pmm-admin add mysql --user root --password "mysecurepassword" --host 127.0.0.1
+
+From there, your Percona dashboard should be fully monitoring your database. More databases can then be added as needed for additional monitoring.
+
+![perconafinal.png](perconafinal.png)
+
+
 
 ### Software Included
 
