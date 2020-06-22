@@ -2,14 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use the cd command to change directories.'
-og_description: 'Use the cd command to change directories.'
+description: 'On Linux systems, `cd` is a command that changes the directory you are in when working in the terminal. `cd` is one of the most used commands in Linux and has several shortcuts as well as two options. Review this guide to see how it is invoked.'
+og_description: 'On Linux systems, `cd` is a command that changes the directory you are in when working in the terminal. `cd` is one of the most used commands in Linux and has several shortcuts as well as two options. Review this guide to see how it is invoked.'
 keywords: ["linux", "how to", "cd", "change directory"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-23
 modified_by:
   name: Linode
-published: 2020-04-23
+published: 2020-06-22
 title: How to Use the cd Command
 h1_title: Using the cd Command
 ---

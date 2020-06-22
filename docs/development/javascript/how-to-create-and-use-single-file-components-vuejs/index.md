@@ -3,6 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "VueJS components are a very powerful tool in the JavaScript developer's toolbox, but as your project grows regular components can become hard to read and hard to follow. In this guide you will learn how to add more structure to your VueJS application and make your components more reusable and easy to read."
+og_description: "VueJS components are a very powerful tool in the JavaScript developer's toolbox, but as your project grows regular components can become hard to read and hard to follow. In this guide you will learn how to add more structure to your VueJS application and make your components more reusable and easy to read."
 keywords: ["vue js","javascript","vuejs","vuejs single file components","vuejs eventbus", "vuejs event bus"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-05-20
