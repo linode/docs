@@ -7,6 +7,7 @@ og_description: 'Writing a script for use in a StackScript is similar to writing
 keywords: ["automation", "scripts", "deployments", "instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
+image: Writing_Scripts_for_Use_with_Linode_StackScripts_1200x631.png
 modified_by:
   name: Linode
 title: "Writing Scripts for Use with Linode StackScripts - A Tutorial"

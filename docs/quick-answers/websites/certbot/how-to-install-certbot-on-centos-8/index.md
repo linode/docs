@@ -8,6 +8,7 @@ keywords: [centos, certbot, TLS]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-22
 modified: 2020-03-22
+image: Installing_Certbot_for_TLS_on_Centos8_1200x631.png
 modified_by:
   name: Linode
 title: 'How to Install Certbot for TLS on CentOS 8'

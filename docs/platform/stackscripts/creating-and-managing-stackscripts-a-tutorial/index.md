@@ -7,6 +7,7 @@ og_description: 'This guide shows you how to create a Linode StackScript using t
 keywords: ["automation", "scripts", "deployments", "instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-22
+image: Creating_and_Managing_StackScripts_1200x631.png
 modified_by:
   name: Linode
 published: 2020-04-22

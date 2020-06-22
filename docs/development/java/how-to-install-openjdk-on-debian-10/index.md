@@ -7,6 +7,7 @@ og_description: This guide will show you how to install the Open Java Developmen
 keywords: ["java", "openjdk", "jdk", "11", "Debian", "10"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-25
+image: Installing_Java_Development_Kit_11_on_Debian10_1200x631.png
 modified_by:
   name: Linode
 published: 2020-03-25
