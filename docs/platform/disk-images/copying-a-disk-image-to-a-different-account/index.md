@@ -180,6 +180,6 @@ Now to start the *receiving* Linode from the transferred disk, select the config
 
 1.  From the Linode's dashboard, select the *Received disk* configuration profile that you created.
 
-1.  Click **more options ellipsis** and select **Boot This Config** to restart the Linode from the transferred disk.
+1.  Click the **more options ellipsis** and select **Boot This Config** to restart the Linode from the transferred disk.
      ![Booting the Receiving Linode](boot-this-config.png)
 The Linode boots using the disk you transferred.
