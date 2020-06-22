@@ -1,6 +1,6 @@
 {{ partial "navigation/col_top" . }}
   {{ $urlPre := "https://linode.com/wp-json/menus/v1/menus" }}
-  {{ $menuItems := getJSON $urlPre "/submenu-why-linode-services" }}
+  {{ $menuItems := getJSON $urlPre "/submenu-why-linode-secondary" }}
   <h6 class="sub-menu__header">GET TO KNOW US BETTER</h6>
   {{ if $menuItems }}
     {{ range $menuItems.items }}
