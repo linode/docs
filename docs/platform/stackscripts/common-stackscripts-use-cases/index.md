@@ -7,6 +7,7 @@ og_description: 'Linode StackScripts can be used for a variety of use cases. Thi
 keywords: ['scripting','automation','bash','open source']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
+image: Common_Use_Cases_for_Linode_StackScripts_1200x631.png
 modified_by:
   name: Linode
 title: "Common Linode StackScripts Use Cases"

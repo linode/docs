@@ -7,6 +7,7 @@ og_description: 'Linkerd is an ultra lightweight service mesh that offers monito
 keywords: ['kubernetes','linkerd','container', 'service mesh', 'k8s']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
+image: Deploy_Linkerd_2_with_Linode_Kubernetes_Engine_1200x631.png
 modified_by:
   name: Linode
 title: "How to Deploy Linkerd 2 with Linode Kubernetes Engine"
