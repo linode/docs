@@ -1,7 +1,8 @@
 ---
 author:
   name: Alex Fornuto
-description: 'Use the Linode Backup Service to protect and secure your data.'
+description: The Linode Backup Service automatically performs daily, weekly, and biweekly backups of your Linode. This guide explains how to enable and schedule your backups, make a manual backup snapshot, restore from a backup, and disable the Backup Service.
+og_description: The Linode Backup Service automatically performs daily, weekly, and biweekly backups of your Linode. This guide explains how to enable and schedule your backups, make a manual backup snapshot, restore from a backup, and disable the Backup Service.
 keywords: ["backup service", "linode platform", "linode backup service", "enable a backup", "manage a backup", "schedule a backup", "disable a backup", "restore from a backup", "boot from a backup"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/backups/linode-backup-service/','platform/disk-images/linode-backup-service-new-manager/','backup-service/','platform/backup-service/','platform/disk-images/linode-backup-service-classic-manager/','platform/linode-backup-service/']

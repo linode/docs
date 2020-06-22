@@ -2,7 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use iptables to manage Netfilter rules.'
+description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
+og_description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
 keywords: ["iptables", "networking", "firewalls", "filtering"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['security/firewalls/iptables/','networking/firewalls/control-network-traffic-with-iptables/']
@@ -10,7 +11,8 @@ modified: 2017-02-28
 modified_by:
   name: Linode
 published: 2010-07-30
-title: Control Network Traffic with iptables
+title: Controlling Network Traffic with iptables - A Tutorial
+h1_title: A Tutorial for Controlling Network Traffic with iptables
 external_resources:
  - '[Security Basics](/docs/security/linux-security-basics)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'
