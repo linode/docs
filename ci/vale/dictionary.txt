@@ -8,6 +8,7 @@ addon
 addons
 addr
 adduser
+adhoc
 adminpack
 adnanh
 adodb
@@ -115,6 +116,7 @@ boto
 bounceback
 brackley
 bram
+browserify
 bs4
 bufio
 bugtracker
@@ -351,6 +353,7 @@ elisp
 elgg
 elpaso
 email2email
+emojivoto
 ender
 enix
 env
@@ -390,6 +393,7 @@ fastcgi
 fastmail
 fastopen
 fauxhai
+favicon
 fb4c
 fcgi
 fcgid
@@ -568,6 +572,7 @@ hybla
 hyperefficient
 hypervisor
 hypervisors
+IaC
 Istio
 i386
 iaas
@@ -735,6 +740,7 @@ lighttpd
 lighty
 ligttpd
 linewise
+linkerd
 linode
 linodes
 lish
@@ -749,6 +755,7 @@ loadout
 localdomain
 localhost
 lockdown
+lodash
 logallrefupdates
 logdir
 logfile
@@ -956,6 +963,7 @@ noloadbalance
 noninteractive
 nonprivileged
 nonrecursive
+noscript
 nosync
 nouveau
 novaclient
@@ -1087,6 +1095,7 @@ prepend
 prepended
 prepending
 preprocessing
+preprocessors
 prerotate
 prerouting
 prestashop
@@ -1098,6 +1107,7 @@ procs
 productpage
 prosodyctl
 proto
+protocode
 proxied
 proxying
 pscp
@@ -1442,6 +1452,7 @@ toolchain
 toolchains
 traceroute
 trackbar
+traefik
 transcode
 transcoder
 transcoding
@@ -1573,6 +1584,7 @@ webdriver
 weblish
 webmail
 webmin
+webpack
 webpages
 webpy
 webroot

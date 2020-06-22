@@ -20,10 +20,6 @@ Longview is Linode’s system data graphing service. It tracks metrics for CPU, 
 
 The Longview client is [open source](https://github.com/linode/longview) and provides an agent that can be installed on any Linux distribution–including systems not hosted by Linode. However, Linode only offers technical support for **CentOS**, **Debian**, and **Ubuntu**.
 
-{{< note >}}
-Longview does not currently support CentOS 8.
-{{</ note >}}
-
 ## In this Guide:
 
 This guide provides an overview of Linode Longview. You will learn how to:
@@ -82,7 +78,7 @@ Ensure you replace the example `curl` command below with your own Longview Clien
 
     You should see a similar output:
 
-    > **Centos**:
+    > **CentOS**:
     >
        {{< output >}}
     ● longview.service - SYSV: Longview statistics gathering

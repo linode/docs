@@ -553,7 +553,10 @@ In this subsection we are going to test the implementation of flags in the `my_f
 {{< output >}}
         Developer: Unknown Developer!
         version called
-        go run main.go version --developer "Mihalis Tsoukalos"
+{{< /output >}}
+
+    go run main.go version --developer "Mihalis Tsoukalos"
+{{< output >}}
         Developer: Mihalis Tsoukalos
         version called
 {{< /output >}}

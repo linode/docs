@@ -31,7 +31,7 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
 1. Install the SELinux core policy Python utilities. This will give you the ability to manage SELinux settings in a fine-grained way.
 
-        sudo yum install -y policycoreutils-python-utils
+        sudo dnf install -y policycoreutils-python-utils
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -39,8 +39,9 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
 Currently, the best way to install NGINX on CentOS 8 is to use the version included in CentOS's repositories:
 
-    sudo yum update
-    sudo dnf install @nginx
+    sudo dnf clean all
+    sudo dnf update
+    sudo dnf install nginx
 
 ## Add a Basic Site
 
@@ -52,6 +53,7 @@ Currently, the best way to install NGINX on CentOS 8 is to use the version inclu
 
         sudo chcon -t httpd_sys_content_t /var/www/example.com -R
         sudo chcon -t httpd_sys_rw_content_t /var/www/example.com -R
+        sudo ls -dZ /var/www/example.com
 
 1.  You can add your site's files in your `/var/www/example.com` directory. Create an index file with a simple "Hello World" example. Using the text editor of your choice, create a new file, `/var/www/example.com/index.html`. Replace `example.com` with your website’s domain name or your Linode’s public IP address.
 
@@ -112,8 +114,8 @@ http {
 
 1.  Open the firewall for traffic:
 
-        sudo firewall-cmd --zone=public --permanent --add-service=http
-        sudo firewall-cmd --zone=public --permanent --add-service=https
+        sudo firewall-cmd --zone=public --permanent --add-service={http,https}
+        sudo firewall-cmd --list-all
         sudo firewall-cmd --reload
 
 ### Test and Enable NGINX

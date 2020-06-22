@@ -11810,6 +11810,9 @@ img.centered-icon {
   margin: 0 auto;
   display: block;
 }
+.marquee-img {
+  padding-bottom: 35px;
+}
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('../fonts/glyphicons-halflings-regular.eot');
@@ -22691,11 +22694,12 @@ body.m-oh {
   color: #616266;
 }
 .footer-nav-header {
-  margin-top: 0;
-  margin-bottom: 16px;
   font-size: 18px;
   font-weight: 600;
+  letter-spacing: -0.25px;
   color: #32363b;
+  font-family: Source Sans Pro, sans-serif !important;
+  line-height: 23.9999px;
 }
 .footer-nav a:hover {
   color: #616266;
@@ -22775,10 +22779,17 @@ body.m-oh {
   display: none;
 }
 .footer-sublist {
-  margin-bottom: 32px;
+  color: #32363bbf;
+  font-family: Source Sans Pro, sans-serif;
   font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 17.9999;
+  margin-bottom: 32px;
+  list-style-type: none;
   list-style: none;
   padding: 0;
+  text-align: left;
 }
 .footer-social-outer .footer-sublist {
   display: -webkit-box;

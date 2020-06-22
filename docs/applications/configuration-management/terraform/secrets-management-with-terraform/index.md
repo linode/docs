@@ -114,7 +114,7 @@ Variable values can be set with the `-var` option:
     terraform apply -var 'token=your-token-value'
 
 {{< caution >}}
-This method commits the command-line variable to your shell's history, so take care when using this method.
+This method commits the command-line variable to your shell's history, and exposes it to other users on the system running `ps` - so take care when using this method.
 {{< /caution >}}
 
 ### Supply Variables at Prompt

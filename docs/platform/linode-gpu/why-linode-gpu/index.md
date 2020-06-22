@@ -5,9 +5,9 @@ author:
 description: 'Use Cases for Linode GPU Instances'
 keywords: ["GPU","Linode GPU", "How to use GPU", "Machine Learning", "AI", "Deep Learning", "grub"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-aliases: []
 published: 2019-06-12
 title: Use Cases for Linode GPU Instances
+image: use-cases-for-linode-gpu-instance.png
 modified_by:
   name: Linode
 ---
