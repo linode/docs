@@ -8,6 +8,7 @@ keywords: ["squid", "proxy", "ubuntu", "18.04", "http"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-14
 modified: 2020-04-14
+image: Creating_an_HTTP_Proxy_Using_Squid_on_Ubuntu1804_1200x631.png
 modified_by:
   name: Rajakavitha Kodhandapani
 title: 'How to Create an HTTP Proxy Using Squid on Ubuntu 18.04'

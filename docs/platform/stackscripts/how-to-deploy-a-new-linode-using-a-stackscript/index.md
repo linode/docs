@@ -7,6 +7,7 @@ og_description: 'Linode StackScripts allow you to automate system administration
 keywords: ["stackscripts", "automation", "script", "custom instance", "deployment"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-22
+image: Deploying-a-New-Linode_Using_a_StackScript_1200x631.png
 modified_by:
   name: Linode
 published: 2020-04-22

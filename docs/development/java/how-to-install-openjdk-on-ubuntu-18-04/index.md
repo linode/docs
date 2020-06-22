@@ -8,6 +8,7 @@ keywords: ["java", "openjdk", "jdk", "11", "Ubuntu", "18.04"]
 aliases: ['development/java/install-java-on-ubuntu-18-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-25
+image: Installing_Java_Development_Kit_11_on_Ubuntu1804_1200x631.png
 modified_by:
   name: Linode
 published: 2020-03-25
