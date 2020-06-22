@@ -27,7 +27,7 @@ Linode has chosen not to bundle NVIDIA's proprietary closed-source drivers with 
 {{< caution >}}
 This guide’s example instructions will create several billable resources on your Linode account. If you do not want to keep using the GPU that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works, and visit our [pricing page](https://www.linode.com/pricing/#row--compute) for a table of hourly and monthly GPU costs.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/) guide for detailed information about how hourly billing works, and visit our [pricing page](https://www.linode.com/pricing/#row--compute) for a table of hourly and monthly GPU costs.
 {{</ caution >}}
 
 ## Before You Begin
