@@ -68,27 +68,27 @@ The PMM client should be installed on a device that contains database software. 
 
 1. First, ensure that your system is up to date:
 
-    sudo apt-get update && sudo apt-get upgrade
+        sudo apt-get update && sudo apt-get upgrade
 
 1. Set up and configure the Percona repositories:
 
-    wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
-    sudo dpkg -i percona-release_latest.generic_all.deb
+        wget https://repo.percona.com/apt/percona-release_latest.generic_all.deb
+        sudo dpkg -i percona-release_latest.generic_all.deb
 
 1. Update your system with the new repository, and install the PMM client:
 
-    sudo apt-get update
-    sudo apt-get install pmm-client
+        sudo apt-get update
+        sudo apt-get install pmm-client
 
 1. Finally, configure your server using the following command, replacing the `IP_ADDRESS` with your PMM Server's IPv4 address:
 
-    pmm-admin config --server IP_ADDRESS
+        pmm-admin config --server IP_ADDRESS
 
-Once complete, you should see output similar to the following:
+    Once complete, you should see output similar to the following:
 
-    PMM Server      | 192.0.2.0
-    Client Name     | li222-111
-    Client Address  | 192.0.2.255
+        PMM Server      | 192.0.2.0
+        Client Name     | li222-111
+        Client Address  | 192.0.2.255
 
 ### Setting up Your Database
 
