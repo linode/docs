@@ -2,7 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: How to retain Disks with the Linode Images service
+description: Linode Images allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, along with other use cases.
+og_description: Linode Images allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, along with other use cases.
 keywords: ["linode Images", " imagize"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linode-images/','platform/disk-images/linode-images-new-manager/','platform/disk-images/linode-images-classic-manager/','platform/linode-images/']

@@ -2,7 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to Linode Billing.
+description: Linode uses an hourly billing system. Use this guide to learn about how our hourly billing works, when invoices are issued, which payment methods are accepted, and other key billing information.
+og_description: Linode uses an hourly billing system. Use this guide to learn about how our hourly billing works, when invoices are issued, which payment methods are accepted, and other key billing information.
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/', '/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

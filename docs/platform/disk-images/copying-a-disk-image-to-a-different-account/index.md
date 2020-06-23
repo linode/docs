@@ -2,7 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to copying a disk to a different Linode account
+description: Review this guide to find out how to copy a disk of a Linode from one Linode account to another. This is a great way to prepare a disk for another Linode customer and transfer it from one individual account to another individual account.
+og_description: Review this guide to find out how to copy a disk of a Linode from one Linode account to another. This is a great way to prepare a disk for another Linode customer and transfer it from one individual account to another individual account.
 keywords: ["disk", "migration", "moving to different accounts"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['migration/copy-disk-image-different-account/','linode-platform/manager/managing-disk-images/','migrate-to-linode/disk-images/copying-a-disk-image-to-a-different-account/']
@@ -10,7 +11,8 @@ modified: 2020-06-12
 modified_by:
   name: Linode
 published: 2020-06-01
-title: Copying a Disk to a Different Account
+title: How to Copy a Disk to a Different Account
+h1_title: Copying a Disk to a Different Account
 ---
 
 ![A guide to copy a disk to a different Linode account](copying_a_disk_to_a_differnet_account_smg.png "A guide to copy a disk to a different Linode account")
@@ -178,6 +180,6 @@ Now to start the *receiving* Linode from the transferred disk, select the config
 
 1.  From the Linode's dashboard, select the *Received disk* configuration profile that you created.
 
-1.  Click **more options ellipsis** and select **Boot This Config** to restart the Linode from the transferred disk.
+1.  Click the **more options ellipsis** and select **Boot This Config** to restart the Linode from the transferred disk.
      ![Booting the Receiving Linode](boot-this-config.png)
 The Linode boots using the disk you transferred.
