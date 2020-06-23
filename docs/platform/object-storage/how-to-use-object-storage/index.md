@@ -270,6 +270,7 @@ If your bucket has objects in it, you will not be able to immediately delete it 
 
     - If your bucket is in the Newark data center, your file will now be accessible at the URL `http://my-example-bucket.us-east-1.linodeobjects.com/example.txt`.
     - If your bucket is in the Frankfurt data center, your file will now be accessible at the URL `http://my-example-bucket.eu-central-1.linodeobjects.com/example.txt`.
+    - If your bucket is in the Singapore data center, your file will now be accessible at the URL `https://my-example-bucket.ap-south-1.linodeobjects.com/example.txt`
 
     {{< note >}}
 The `--acl-public` flag is used to make the object publicly accessible, meaning that you will be able to access the object from its URL. By default, all objects are set to private. To make a public file private, or a private file public, use the `setacl` command and supply the corresponding flag.
@@ -316,10 +317,11 @@ To create a static website from a bucket:
         linode-cli obj setacl --acl-public my-example-bucket index.html
         linode-cli obj setacl --acl-public my-example-bucket 404.html
 
-1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center, or `website-eu-central-1` subdomain for the Frankfurt data center. Using `my-example-bucket` as an example, navigate to either:
+1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center, the `website-eu-central-1` subdomain for the Frankfurt data center, or the `website-ap-south-1` subdomain for the Singapore data center. Using `my-example-bucket` as an example, navigate to either:
 
     - `http://my-example-bucket.website-us-east-1.linodeobjects.com` or
-    - `http://my-example-bucket.website-eu-central-1.linodeobjects.com`.
+    - `http://my-example-bucket.website-eu-central-1.linodeobjects.com` or
+    - `http://my-example-bucket.website-ap-south-1.linodeobjects.com`
 
 For more information on hosting static websites from Linode Object Storage, see our [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
@@ -411,7 +413,7 @@ Scroll down until you find the `website_endpoint`, then add the following value:
 
     http://%(bucket)s.website-us-east-1.linodeobjects.com/
 
-**Note:** Use the `website-eu-central-1` subdomain for buckets in the Frankfurt data center.
+**Note:** Use the `website-eu-central-1` subdomain for buckets in the Frankfurt data center, and the `website-ap-south-1` subdomain for buckets in the Singapore data center.
 
 
 {{</ note >}}
@@ -514,7 +516,7 @@ You can also create a static website using Object Storage and s3cmd:
         echo 'Error page' > 404.html
         s3cmd put index.html 404.html s3://my-example-bucket
 
-1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center, and `website-eu-central-1` for the Frankfurt data center. Using `my-example-bucket` as an example, you would navigate to either:
+1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center, the `website-eu-central-1` subdomain for the Frankfurt data center, and the `website-ap-south-1` subdomain for the Singapore data center. Using `my-example-bucket` as an example, you would navigate to either:
 
     - `http://my-example-bucket.website-us-east-1.linodeobjects.com` or
     - `http://my-example-bucket.website-eu-central-1.linodeobjects.com`.
@@ -547,7 +549,7 @@ Cyberduck is a desktop application that facilitates file transfer over FTP, SFTP
 
     ![Open Cyberduck and click on 'Open Connection' to open the connection menu.](object-storage-cyberduck-open-connection.png)
 
-1.  For the Server address, enter either `us-east-1.linodeobjects.com` if your bucket is in the Newark data center or `eu-central-1.linodeobjects.com` if your bucket is in the Frankfurt data center.
+1.  For the Server address, enter either `us-east-1.linodeobjects.com` if your bucket is in the Newark data center, `eu-central-1.linodeobjects.com` if your bucket is in the Frankfurt data center, or `ap-south-1.linodeobjects.com` if your bucket is in the Singapore data center.
 
 1.  Enter your access key in the **Access Key ID** field, and your secret key in the **Secret Access Key** field.
 
@@ -605,10 +607,11 @@ To create a static site from your bucket:
 
 1.  You will need to separately upload the `index.html` and `404.html` files (or however you have named the index and error pages) to your bucket. Follow the instructions from the [Upload, Download, and Delete an Object with Cyberduck](#upload-download-and-delete-an-object-with-cyberduck) section to upload these files.
 
-1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center, and `website-eu-central-1` for the Frankfurt data center. Using `my-example-bucket` as an example, you would navigate to either:
+1.  Your static site is accessed from a different URL than the generic URL for your Object Storage bucket. Static sites are available at the `website-us-east-1` subdomain for the Newark data center,  the `website-eu-central-1` subdomain for the Frankfurt data center, and the `website-ap-south-1` subdomain for the Singapore data center. Using `my-example-bucket` as an example, you would navigate to either:
 
     - `http://my-example-bucket.website-us-east-1.linodeobjects.com` or
-    - `http://my-example-bucket.website-eu-central-1.linodeobjects.com`.
+    - `http://my-example-bucket.website-eu-central-1.linodeobjects.com` or
+    - `https://my-example-bucket.website-ap-south-1.linodeobjects.com`
 
     For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
