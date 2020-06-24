@@ -2,7 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Understanding Common Cloud Manager Errors.'
+description: 'This guide will provide quick answers to common Cloud Manager errors. It includes links to helpful documentation and suggestions on next steps.'
+og_description: 'This guide will provide quick answers to common Cloud Manager errors. It includes links to helpful documentation and suggestions on next steps.'
 keywords: ['error','account limit','limit','activated', 'before you can', 'please try again', 'open a support ticket']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-22
@@ -10,7 +11,8 @@ modified_by:
   name: Linode
 aliases: ['quick-answers/linode-platform/understanding-cloud-manager-errors/']
 image: UnderstandingCommonCloudManagerErrors.png
-title: "Understanding Common Cloud Manager Errors"
+title: "An Overview of Common Cloud Manager Errors"
+h1_title: "Understanding Common Cloud Manager Errors"
 contributor:
   name: Linode
 ---
