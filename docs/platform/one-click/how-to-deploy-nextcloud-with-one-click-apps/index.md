@@ -17,6 +17,8 @@ external_resources:
 - '[Nextcloud Documentation Overview](https://docs.nextcloud.com/)'
 ---
 
+![Installing Nextcloud OCA](deploying_nextcloud_oca.png)
+
 [Nextcloud](https://nextcloud.com/) is an open source solution to file hosting and sharing. With Nextcloud, you can synchronize files from your local computer to your Linode server and share them with your collaborators. Nextcloud’s customizable security features and intuitive user interface help to keep your files safe and easy to manage.
 
 ## Before You Begin
@@ -85,8 +87,6 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ## Getting Started after Deployment
 ### Log Into Your Nextcloud Instance
-
-The Nextcloud One-Click App will create
 
 1. Open a browser window and navigate to your Nextcloud instance's domain. For example, enter `nextcloud.example.com` into the browser, replacing `example.com` with the value of your own domain. If you did not install the App with a domain name, the domain will be the public IP address of your Linode appended with a forward slash and "nextcloud. An example of this would be `192.168.17.43/nextcloud/`.
 
