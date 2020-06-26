@@ -102,6 +102,7 @@ biomes
 bitbucket
 bitnami
 bitrate
+blkid
 blocklists
 blockwise
 bluehost
