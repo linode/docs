@@ -47,7 +47,7 @@ While a Domain Name is not strictly required, it is recommended. If you plan to 
 | **Field** | **Description** |
 |-----------|-----------------|
 | **MySQL database username** | The name of a new MySQL user to create. If no value is provided, the user is named `nextcloud`. *Required*. |
-| **MySQL database name** | The name to assign to the Nextcloud instance's MySQL database. If no value is provided, the database is be named `nextcloud`. *Required*. |
+| **MySQL database name** | The name to assign to the Nextcloud instance's MySQL database. If no value is provided, the database is named `nextcloud`. *Required*. |
 
 ##### Linode Server Security Options
 
@@ -67,8 +67,8 @@ While a Domain Name is not strictly required, it is recommended. If you plan to 
 | **Linode hostname** | The hostname to assign to the Linode server. If no value is provided, the hostname is set as `nextcloud`. *Advanced Configuration*. |
 | **Domain name** | The domain name to use when creating a DNS record for the Linode. The One-Click app creates a subdomain named `nextcloud`. You can access the Nextcloud instance using the `nextcloud` subdomain; for example, `www.nextcloud.example.com`. *Advanced Configuration*. |
 | **Admin email address** | The email address to use for the Nextcloud instance's admin user. *Advanced Configuration*. |
-| **Enable SSL** |  Enable a free [HTTPS CertBot SSL certificate](https://certbot.eff.org/) on the Nextcloud domain. If no value is provided, `no` is set by default.  *Advanced Configuration*. |
-| **Timezone** | The timezone to use for the Linode server. If no value is provided, the Linode data center's timezone is used. Refer to [TZ database names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for possible timezone values. *Advanced Configuration*. |
+| **Enable SSL** |  Enable a free [HTTPS CertBot SSL certificate](https://certbot.eff.org/) on the Nextcloud domain. If you do not provide a value, `no` is set by default.  *Advanced Configuration*. |
+| **Timezone** | The timezone to use for the Linode server. If you do not provide a value, the Linode data center's timezone is used. Refer to [TZ database names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for possible timezone values. *Advanced Configuration*. |
 
 ### Linode Options
 
@@ -77,11 +77,11 @@ After providing the app specific options, provide configurations for the Linode 
 | **Configuration** | **Description** |
 |:--------------|:------------|
 | **Select an Image** | Debian 10 is currently the only image supported by the Nextcloud One-Click App, and it is pre-selected on the Linode creation page. *Required*. |
-| **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that is closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between the Linode server and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). You should select a Linode plan type based on the amount of data you would like to store on your Nextcloud instance. You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan later if you feel you need to increase or decrease the system resources. *Required*. |
+| **Region** | The region where you would like the Linode to reside. In general, it's best to choose a location that is closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between the Linode server and each of our data centers. *Required*. |
+| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). You should select a Linode plan type based on the amount of data you would like to store on the Nextcloud instance. You can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan later if you feel you need to increase or decrease the system resources. *Required*. |
 | **Linode Label** | The name for the Linode server, which must be unique between all of the Linodes on your account. This name helps you identify the server in the Cloud Manager’s Dashboard. *Required*. |
-| **Add Tags** | A tag to help organize and group your Linode resources. [Tags](/docs/quick-answers/linode-platform/tags-and-groups/) can be applied to Linodes, Block Storage Volumes, NodeBalancers, and Domains. |
-| **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to the Linode using SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. The root password can be used to perform any action on the server, so make it long, complex, and unique. *Required*. |
+| **Add Tags** | A tag to help organize and group the Linode resources. [Tags](/docs/quick-answers/linode-platform/tags-and-groups/) can be applied to Linodes, Block Storage Volumes, NodeBalancers, and Domains. |
+| **Root Password** | The primary administrative password for the Linode instance. This password must be provided when you log in to the Linode using SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. The root password can be used to perform any action on the server, so make it long, complex, and unique. *Required*. |
 
 When you've provided all required Linode Options, click the **Create** button. **Your Nextcloud app completes installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
 
