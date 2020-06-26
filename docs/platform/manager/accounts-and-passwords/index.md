@@ -12,6 +12,7 @@ modified_by:
 published: 2012-04-03
 title: Accounts and Passwords
 ---
+
 ![Accounts and Passwords](Accounts_and_Passwords_smg.jpg)
 
 Maintaining your user Linode Cloud Manager accounts, passwords, and contact information is just as important as administering your Linode. This guide shows you how to control access to the Cloud Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Cloud Manager only, except for the section on resetting the root password.
@@ -43,9 +44,9 @@ Here's how to add a user to your Linode account:
 
 If you granted the user full access, the account will be created and no further action is required. If you opted to restrict the user, follow the instructions in the next section.
 
-### Setting Permissions
+### Permissions Explained
 
-Setting permissions restricts a user's access to certain areas of the Linode Cloud Manager. For example, you could limit a user to a single Linode and prevent them from removing the Linode or adding extra services. Don't worry--these settings aren't permanent. You can add or remove access for a user at any time in the future.
+Setting permissions restricts a user's access to certain areas of the Linode Cloud Manager. For example, you could limit a user to a single Linode and prevent them from removing the Linode or adding extra services. Don't worry--these settings aren't permanent. You can add or remove access for a user at any time in the future. User Permissions are divided into three categories. **Global Permissions**, **Billing Access Permissions**, and **Specific Permissions**.
 
 Here's how to set a user's access permissions:
 
@@ -56,13 +57,24 @@ Here's how to set a user's access permissions:
 
     [![Configure User permissions in the Linode Cloud Manager.](accounts-user-permissions-small.png "Configure User permissions in the Linode Cloud Manager")](accounts-user-permissions.png)
 
-1.  Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, and [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/) and frozen [Images](/docs/platform/disk-images/linode-images/), access all billing information, and cancel the entire account.
+1.  Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/), frozen [Images](/docs/platform/disk-images/linode-images/), access all billing information, and cancel the entire account. These permissions are exactly as described and will not add any additional permissions.
 
     {{< note >}}
 Granting access to settings denoted with a dollar sign ($) will allow the user to perform actions that incur billing costs, such as adding or resizing a Linode.
 {{< /note >}}
 
-1.  Select the appropriate permissions (None, Read Only, or Read-Write) in the **Permissions** section to allow the user access your Linodes, StackSripts, Images, NodeBalancers and Domains.
+1. Select an option for Billing Access permissions. These options are as follows:
+
+  - **None**: The user will be unable to view any billing information. This does not prevent a user from creating billable resources, which are instead applied as **Global Permissions** in the previous step.
+  - **Read Only**: The user can [View Billing Info](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), and will recieve copies of all invoices. Will also receive emails related to payments.
+  - **Read-Write**: The user has full access to [Billing Information](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), can make payments, edit billing information, view billing information, will receive copies of all invoices, and will receive email related to payments.
+
+1.  Select the appropriate permissions (None, Read Only, or Read-Write) in the **Specific Permissions** section to allow the user to access individual Linodes, StackSripts, Block Storage Volumes, Images, NodeBalancers and Domains. Unlike Global Permissions, Specific Permissions can apply to individual resources and not the service as a whole. Specific Permission options are as follows:
+
+    - **None**: The user will not be able to view or otherwise interact with the selected resource.
+    - **Read Only**: The user can view the resource and all of it's associated information typically visible within the Linode Manager,however they will not be able to otherwise interact with it any way.
+    - **Read-Write**: The user has full access to the selected resource, and can make any changes that only an administrator is otherwise able to. This includes resource deletion, cloning, and all other applicable edits.
+
 1.  When you have finished configuring the user's permissions, click **Save**. The user's permissions will be saved and effective immediately.
 
 ### Recovering a Lost Username
