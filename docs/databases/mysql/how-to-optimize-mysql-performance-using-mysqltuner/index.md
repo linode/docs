@@ -22,7 +22,7 @@ Running MySQL at optimal settings for specific resources helps handle larger ser
 
 ![Optimize MySQL Performance Using MySQLTuner](optimize_mysql_using_mysql_tuner_title_graphic.png)
 
-Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](/pricing#high-memory) for such setups.
+Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [High Memory Linode](https://www.linode.com/pricing/) for such setups.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
