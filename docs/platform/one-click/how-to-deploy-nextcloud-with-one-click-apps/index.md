@@ -98,7 +98,7 @@ When you've provided all required Linode Options, click the **Create** button. *
 
       ![Provide your MySQL database values](nextcloud-database.png)
 
-1. Click the **Finish setup** button to complete the configuration. The set up takes a couple of minutes to complete. You will then be taken to the Nextcloud Hub where you can begin uploading files to your Nextcloud server.
+1. Click the **Finish setup** button to complete the configuration. The set up takes a couple of minutes to complete. The Nextcloud Hub page appears where you can upload files to the Nextcloud server.
 
       ![Nextcloud Hub](welcome-nextcloud.png)
 
@@ -106,4 +106,4 @@ When you've provided all required Linode Options, click the **Create** button. *
 
 {{< content "one-click-update-note">}}
 
-- Install the [Nextcloud desktop synchronization client](https://docs.nextcloud.com/desktop/2.3/installing.html) to your local computer to easily synch your desktop files to your Nextcloud server.
+- Install the [Nextcloud desktop synchronization client](https://docs.nextcloud.com/desktop/2.3/installing.html) on a local computer to easily sync the desktop files to the Nextcloud server.
