@@ -106,4 +106,4 @@ When you've provided all required Linode Options, click the **Create** button. *
 
 {{< content "one-click-update-note">}}
 
-- Install the [Nextcloud desktop synchronization client](https://docs.nextcloud.com/desktop/2.3/installing.html) on a local computer to easily sync the desktop files to the Nextcloud server.
+- Install the [Nextcloud desktop synchronization client](https://docs.nextcloud.com/desktop/2.3/installing.html) on a local computer to easily synchronize the desktop files to the Nextcloud server.
