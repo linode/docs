@@ -15,6 +15,7 @@ h1_title: 'Installing Apache Web Server on CentOS 8'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
+image: 'How_to_Install_Apache_Web_Server_on_CentOS_8_1200x631.png'
 ---
 
 The *Apache HTTP Web Server* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on CentOS 8.
