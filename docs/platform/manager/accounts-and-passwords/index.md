@@ -66,13 +66,13 @@ Granting access to settings denoted with a dollar sign ($) will allow the user t
 1. Select an option for Billing Access permissions. These options are as follows:
 
   - **None**: The user will be unable to view any billing information. This does not prevent a user from creating billable resources, which are instead applied as **Global Permissions** in the previous step.
-  - **Read Only**: The user can [View Billing Info](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), and will recieve copies of all invoices. Will also receive emails related to payments.
+  - **Read Only**: The user can [View Billing Info](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), and will receive copies of all invoices. Will also receive emails related to payments.
   - **Read-Write**: The user has full access to [Billing Information](https://www.linode.com/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#accessing-billing-history), can make payments, edit billing information, view billing information, will receive copies of all invoices, and will receive email related to payments.
 
 1.  Select the appropriate permissions (None, Read Only, or Read-Write) in the **Specific Permissions** section to allow the user to access individual Linodes, StackSripts, Block Storage Volumes, Images, NodeBalancers and Domains. Unlike Global Permissions, Specific Permissions can apply to individual resources and not the service as a whole. Specific Permission options are as follows:
 
     - **None**: The user will not be able to view or otherwise interact with the selected resource.
-    - **Read Only**: The user can view the resource and all of it's associated information typically visible within the Linode Manager,however they will not be able to otherwise interact with it any way.
+    - **Read Only**: The user can view the resource and all of it's associated information typically visible within the Linode Manager, however they will not be able to otherwise interact with it any way.
     - **Read-Write**: The user has full access to the selected resource, and can make any changes that only an administrator is otherwise able to. This includes resource deletion, cloning, and all other applicable edits.
 
 1.  When you have finished configuring the user's permissions, click **Save**. The user's permissions will be saved and effective immediately.
