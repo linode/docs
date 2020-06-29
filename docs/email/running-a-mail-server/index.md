@@ -59,6 +59,7 @@ If the prospect of managing your own mail server is too daunting, you should con
 
 There are several third-party mail services available:
 
+- [Postmark](https://postmarkapp.com/)
 - [Fastmail](https://www.fastmail.com)
 - [Google Apps](http://www.google.com/intl/en/enterprise/apps/business/) uses the familiar Gmail interface. Check out our guide to [using Google Apps with your Linode](/docs/email/using-google-apps-for-email/).
 - [Office 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
