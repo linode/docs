@@ -22,7 +22,7 @@ You can configure Nextcloud to enable external storage devices and services, lik
 
 ## Before You Begin
 
-1. Deploy a Nextcloud server instance. You can use the [Linode Nextcloud One-Click App] for an easy and quick deployment.
+1. Deploy a Nextcloud server instance. You can use the [Linode Nextcloud One-Click App](/docs/platform/one-click/how-to-deploy-nextcloud-with-one-click-apps/) for an easy and quick deployment.
 
 1. [Enable the Object Storage service on your Linode account](/docs/platform/object-storage/how-to-use-object-storage/#enable-object-storage).
 
@@ -107,6 +107,7 @@ Linode Object Storage is *S3-compatible*. Nextcloud will connect to Amazon's Obj
 |:------:|:------:|:------:|
 | Newark, NJ, USA | `us-east-1` | us-east-1.linodeobjects.com |
 | Frankfurt, Germany | `eu-central-1` | eu-central-1.linodeobjects.com |
+| Singapore, Singapore | `ap-south-1` | ap-south-1.linodeobjects.com |
       {{</ disclosure-note >}}
 
 1. In the **Available for** text entry box, enter the group name(s) you would like to give access to your Linode Object Storage external storage. To learn more about user and group permissions related to external storage, see [Nextcloud's documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#user-and-group-permissions).
