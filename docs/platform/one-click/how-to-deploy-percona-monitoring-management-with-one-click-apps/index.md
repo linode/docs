@@ -11,9 +11,10 @@ modified: 2020-06-11
 modified_by:
   name: Linode
 title: "How to Deploy Percona Monitoring Management (PMM) with One-Click Apps"
-h1_title: "Deploy Percona Monitoring Management (PMM) with One-Click Apps"
+h1_title: "Deploying Percona Monitoring Management (PMM) with One-Click Apps"
 contributor:
   name: Linode
+image: 'deploy-percona-one-click.png'
 ---
 
 ## Percona PMM One-Click App
