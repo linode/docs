@@ -70,7 +70,7 @@ If you have a firewall configured according to our [Securing Your Server](/docs/
 
         wget https://launcher.mojang.com/v1/objects/3737db93722a9e39eeada7c27e7aca28b144ffa7/server.jar -O minecraft_server.1.13.jar
 
-    Refer to the [Minecraft server page](https://minecraft.net/en/download/server) to check for the latest release.
+    Refer to the [Minecraft server page](https://minecraft.net/en-us/download/server) to check for the latest release.
 
 3.  Create a script to run the Minecraft server:
 
