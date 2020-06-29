@@ -2,95 +2,150 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to Getting Starting with Cloud Firewall.
-og_description: Our guide to Getting Starting with Cloud Firewall.
+description: 'This guide shows you how to add a Cloud Firewall and apply it to a Linode service using the Linode Cloud Manager. You will also learn how to edit your Cloud Firewall rules, add new custom rules, and disable and enable Firewalls. Linode Cloud Firewalls analyze traffic against a set of predefined rules at the network layer and determine if the traffic will be permitted to communicate with the Linode Service it secures. Cloud Firewalls are an integral component of your infrastructure''s security.'
+og_description:  'This guide shows you how to add a Cloud Firewall and apply it to a Linode service using the Linode Cloud Manager. You will also learn how to edit your Cloud Firewall rules, add new custom rules, and disable and enable Firewalls. Linode Cloud Firewalls analyze traffic against a set of predefined rules at the network layer and determine if the traffic will be permitted to communicate with the Linode Service it secures. Cloud Firewalls are an integral component of your infrastructure''s security.'
 keywords: ["firewall", "cloud firewall", "security", "securing"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: []
-modified: 2020-03-12
+modified: 2020-07-24
 modified_by:
   name: Linode
-published: 2020-03-12
-title: Getting Started with Cloud Firewall
+published: 2020-07-24
+title: Adding and Configuring Linode Cloud Firewalls - A Tutorial
+h1_title: A Tutorial for Adding and Configuring Linode Cloud Firewalls
 ---
 
-Firewalls are tools that are used to analyze traffic against a set of pre-defined rules that determine whether or not traffic will be permitted to communicate with a host. If you've ever used [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/), [UFW](/docs/security/firewalls/configure-firewall-with-ufw/), or [FirewallD](/docs/security/firewalls/introduction-to-firewalld-on-centos/), then you're already familiar with how firewalls can increase your security by limiting the types of network traffic that will be accepted, enabling you to reduce the size of any potential attack surface to a minimum.
+## What are Linode Cloud Firewalls?
 
-**Linode's Cloud Firewall** is a free add-on service built on Iptables that provides the ability to create and configure a stateful firewall for your Linodes directly from the Linode Cloud Manager and the Linode API. Cloud Firewall works as a whitelist with an implicity deny rule, meaning that a firewall will block all traffic by default until additional rules are added. All rules added to a cloud firewall require you to determine what traffic will be permitted to reach your Linode.
+Linode Cloud Firewalls is a free service used to create, configure, and add stateful network-based firewalls to Linode services using the Linode Cloud Manager and the Linode APIv4. A Cloud Firewall is independent of the service it is attached to, so you can apply a single Firewall to multiple Linode services.
 
-Cloud Firewalls are a network based firewall, meaning that you are able to create both a Cloud Firewall and an internal host based firewall on the Linode itself using tools like `iptables` for a layered defense-in-depth approach to your Linode's security.
+### Features
 
-## Creating a Firewall
+Linode Cloud Firewalls analyze traffic against a set of predefined rules at the network layer and determine if the traffic will be permitted to communicate with the Linode Service it secures. Cloud Firewalls work as a whitelist with an implicit deny rule-- it will block all traffic by default and only pass through network traffic that meets the parameters of the configured rules.
 
-To add a Firewall for your Linode, log into your [Linode Cloud Manager](https://cloud.linode.com/) and select the **Firewalls** option on the navigation sidebar to the left of the page. Next, click on the **Add a Firewall** button on the top right of the page. This will open a Sidebar Menu which requires that you select the following options:
+### Limitations
 
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Label** | The label is used an identifier for your set of firewall rules. This can be recalled later if you want to apply the firewall rules to multiple deployments. *Required*|
-| **Rules** | This allows you to choose from a list of common pre-defined rules for different unique services. While this field is required, you will have the option to customize your rules further in later steps. *Required*|
-| **Linodes**| A list of Linodes on your account that the Firewall can be applied to. Assignment is not required immediately, and you can skip this option to create rules which can be applied later as needed. |
+- Currently Linode Cloud Firewalls can only be applied to Linodes.
+- You can apply up to three Cloud Firewalls per Linode service.
 
-From here your Firewall be created with an initial set of basic rules.
+### Inbound and Outbound Rules
 
-## Additional Configuration Options
+A Cloud Firewall can be configured with *Inbound* and *Outbound* rules. Inbound rules limit incoming network connections to a Linode service based on the port(s) and sources you configure. Outbound rules limit the outgoing network connections coming from a Linode service based on the port(s) and destinations you configure.
 
-Also found in the [Firewall Section](cloud.linode.com/firewalls) of the Cloud Manager, will be a list of all of the Firewalls you have available on your account, listed in alphabetical order by their label. This section will also display a Firewall's `Status`, the number of Inbound and Outbound `Rules`, and list labels for any  `Linodes` that the Firewall has been applied to.
+### Predefined Rules
 
-![firewall-review.png](firewall-review.png)
+The Linode Cloud Manager provides a list of *predefined rules* that you can add to your Cloud Firewalls. The predefined rules support common networking use cases and provide an easy foundation to get started with Cloud Firewalls. Since you can edit any rule applied to a Cloud Firewall you can use the predefined rules as a foundation and further [edit their configurations](#edit-cloud-firewall-rules) and also [add new custom rules](#add-new-cloud-firewall-rules) to your Firewall.
 
-For additional options, select the **more options ellipsis** to the far right of each Firewall. From here, you'll see the following options:
+## Add a Cloud Firewall
 
-| **Option** | **Description** |
-|-------------------|-----------------|
-| **Disable** or **Enable** | This will disable or enable your Firewall, removing the rules from any active Linodes while keeping the list of rules available for you to review so you can reapply and re-enable them later. |
-| **Edit** | This option will open up an additional menu that will enable you to add additional custom rules with a higher level of detail. |
-| **Delete**| This will disable your Firewall, removing the rules from any active Linodes while also permanently deleting the rule set. Unlike the disable option, this means that your rules will not be able to reapplied in the future. |
+1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
-## Customizing your Firewall
+1. From the **Firewalls** listing page, click on the **Add a Firewall** link.
 
-To customize your Firewall further by adding more specific rules, including the ability to select a range of ports, highlight the Firewall you'd like to select and click. From here, you'll be moved to an advanced configuration page:
+1. The **Add a Firewall** drawer will appear with the Firewall configurations needed to add a Firewall. Configure your Firewall with at minimum the required fields:
 
-![firewall-rules.png](firewall-rules.png)
+    | **Configuration** | **Description** |
+    | :---------------: | :---------------: |
+    | **Label** | The label is used an identifier for this Cloud Firewall. *Required*|
+    | **Rules** | The Firewall rule(s) to add to this Firewall. Choose from a list of predefined rules that support common networking use cases. You can select more than one Firewall rule. You will have the option to customize your rules further in a later step [link to section]. *Required*|
+    | **Linodes**| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account will be visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
 
-Included in this page, you'll be able to see a list of all Inbound and outbound rules defined by the following:
+1. Click on the **Create** button. This will create the Cloud Firewall and you will see it appear on the **Firewalls** listing page.
 
-| **Configuration** | ** Description** |
-|-------------------|-----------------|
-| **Type** | An identifier describing the type of rule that you're setting. Options include `SSH`, `HTTP`, `HTTPS`, `MySQL`, `DNS` and `Custom`.|
-| **Protocol** | The protocol your rule will be targeting. Options include `TCP`, `ICMP`, `UDP` and `ALL`. |
-| **Port Range** | The `port` or range of ports you've chosen to whitelist.|
-| **Sources** | The whitelisted source of the traffic. Can be `All`, `IPv4`, `IPv6`, and `IP/Netmask`, which will allow you to select individual IP addresses. Only used for Inbound Rules. |
-| **Destinations** | The whitelisted destination of  traffic.
+## Assign a Cloud Firewall to a Linode Service
 
-### Add an Inbound or Outbound Rule
+1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
-To add a new rule, navigate to the [Firewall](cloud.linode.com/firewalls) section of the Cloud Manager, select the Firewall you'd like to add new rules for and then click on the `Add an Inbound Rule` or `Add an Outbound Rule` to the right of each respective section. Click on this button, and you'll see a sidebar appear to the right of the page which will enable you to add a new rule using the `type`, `protocol`, and `port range`. and `sources` pool.
+1. From the **Firewalls** listing page, click on the Firewall that you would like to attach to a Linode. This will take you to the Firewall's **Rules** page.
 
-![adding-rule.png](adding-rule.png)
+1. Click on the **Linodes** tab. This will take you to the **Firewalls Linodes** page. If the Firewall is assigned to any Linodes they will be displayed on the page.
 
-To add more than one IP, the **Add IP** button can be clicked multiple times to add an additional IP field.
+1. Click on the **Add Linodes to Firewall** link.
 
-### Remove a Rule
+1. From the **Add Linode to Firewall** drawer, click on the dropdown menu and select that Linode to which you'd like to apply this Firewall. You can also start typing the Linode label to narrow down your search.
 
-To remove a rule, navigate to the [Firewall](cloud.linode.com/firewalls) section of the Cloud Manager, select the Firewall you'd like to add new rules for and then click on the `more options ellipsis` next to any rules you'd like to delete. Select the `delete` option to delete your rule.
+    {{< note >}}
+You can assign the Firewall to more than one Linode at a time. Continue the previous step to assign the Firewall to another Linode.
+    {{</ note >}}
 
-### Add Linodes to a Firewall
+1. Click on the **Add** button to assign the Firewall to your Linode(s).
 
-To add Linodes to a firewall you've already created, navigate to the [Firewall](cloud.linode.com/firewalls) section of the Cloud Manager, select the Firewall you'd like to use, then click on the `Linodes` tab towards the top of the page. This will take you to a new page displaying all of the Linodes that this Firewall is currently being applied to.
+## Configure Cloud Firewall Rules
 
-To add a new Linode, click on the "Add Linodes to Firewall" button at the top right of the page, select the Linode you'd like to add using the dropdown menu, and then click the `Add` button. Once completed, your Linode will be successfully added to the firewall.
+Upon initial creation of a Cloud Firewall, you are required to select Firewall rules from a predefined list that supports common networking use cases. This section will show you how to add new Firewall rules to your Firewall's existing rules, edit your Firewall's predefined rules, and delete Firewall rules.
 
-{{< note >}}
-The dropdown menu can be re-opened to add multiple Linodes to your Firewall.
-{{< /note >}}
+### Add New Cloud Firewall Rules
 
-![add-firewall.png](add-firewall.png)
+1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
+1. From the **Firewalls** listing page, click on the Firewall that you would like to add new rules to. This will take you to the Firewall's **Rules** page.
 
+1. Click on the **Add an Inbound/Outbound Rule** link (click on the appropriate link for the type of Rule you would like to add). The **Add an Inbound/Outboud Rule** drawer will appear.
 
+1. Provide the following Rule configurations:
 
+    | **Configuration** | **Description** |
+    | :---------------: | :---------------: |
+    | **Type** | &bull; Select from a list of predefined Firewall rules or select **Custom** to define your own Rule.<br><br>  &bull;Selecting a predefined rule will fill in the remaining Rule configuration values, however, they can all be edited.<br><br> &bull;Selecting **Custom**, will leave all configuration values empty for you to define. *Required*|
+    | **Protocol** | Select the Transport Layer protocol to use for this Firewall rule. *Required*|
+    | **Port Range**| &bull; Provide a port number or a range of ports on which to allow network traffic. <br><br> &bull; This configuration is required for TCP and UDP Firewall rules. `ICMP` does not have a port abstraction, so does not require this configuration.<br><br> &bull; To configure a **Port Range** provide the starting and ending port numbers. For example, `2000-3000`.  *Required*|
+    | **Sources / Destinations**| &bull; When creating an **Inbound Rule**, select from a list of **Sources** that will limit incoming connections to the chosen internet protocol, netmask, or specific IP address(es).<br><br> &bull; When creating an **Outbound Rule**, select from a list of **Destinations** that will limit the outgoing connections to the chosen internet protocol, netmask, or specific IP address(es). |
 
+1. Click on **Add Rule** to add the new rule to this Firewall. If you would like to add any additional rules, repeat the process outlined in this section.
 
+1. When you are done adding new Firewall rules, click on the **Apply Changes** button on the **Rules** page.
 
+    {{< note >}}
+Any newly added rules will not take effect until you **Apply Changes** to the Firewall.
+    {{</ note >}}
 
+### Edit Cloud Firewall Rules
 
+Follow the steps in this section to edit predefined and custom Firewall Rules.
+
+1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
+
+1. From the **Firewalls** listing page, click on the Firewall whose rules you'd like to edit. This will take you to the Firewall's **Rules** page.
+
+1. Click on the ***more options ellipsis*** corresponding to the rule you'd like to edit and select **Edit** from the dropdown menu.
+
+1. From the **Edit Rule** drawer, update the rule's configurations as needed.
+
+1. Click on the **Edit Rule** button to save your changes and apply them to the rule. If you would like to edit any additional rules, repeat the process outlined in this section.
+
+1. When you are done editing your Firewall rules, click on the **Apply Changes** button on the **Rules** page.
+
+    {{< note >}}
+Any edits made to rules will not take effect until you **Apply Changes** to the Firewall.
+    {{</ note >}}
+
+### Delete Cloud Firewall Rules
+
+1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
+
+1. From the **Firewalls** listing page, click on the Firewall whose rule(s) you'd like to delete. This will take you to the Firewall's **Rules** page.
+
+1. Click on the ***more options ellipsis*** corresponding to the rule you'd like to delete and select **Delete** from the dropdown menu. If you would like to delete any additional rules, repeat the process outlined in this section.
+
+1. When you are done, click on the **Apply Changes** button on the **Rules** page.
+
+    {{< note >}}
+Any rule deletion(s) will not take effect until you **Apply Changes** to the Firewall.
+    {{</ note >}}
+
+## Update a Cloud Firewall's Status
+
+When you [add a Cloud Firewall](#add-a-cloud-firewall), the Firewall is enabled by default. Enabled means that the Firewall is active and if it is applied to a Linode service it will filter your Linode service's network traffic according to the Firewall's rules. Disabling a Firewall will deactivate the Firewall and it will no longer filter any traffic for the Linode services it has been applied to.
+
+1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu. This will take you to the **Firewalls** listing page.
+
+1. Click on the **more options ellipsis** corresponding to the Firewall whose status you'd like to update.
+
+1. From the dropdown menu, click on **Enable/Disable** to update the Firewall's status. The **Status** column on the **Firewalls** listing page will update to display the Firewall's current status.
+
+## Delete a Cloud Firewall
+
+1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu. This will take you to the **Firewalls** listing page.
+
+1. Click on the **more options ellipsis** corresponding to the Firewall that you'd like to delete.
+
+1. From the dropdown menu, click on **Delete**. You will be prompted to confirm deleting the Firewall. Click **Delete** to proceed. The Firewall will be deleted and any services that the Firewall was applied to will no longer have their network traffic filtered by the Firewall.
