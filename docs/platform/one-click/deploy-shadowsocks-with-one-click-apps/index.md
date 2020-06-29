@@ -17,6 +17,7 @@ contributor:
 external_resources:
 - '[Shadowsocks Official](https://shadowsocks.org)'
 - '[Shadowsocks-libev Github](https://github.com/shadowsocks/shadowsocks-libev)'
+image: 'How_to_Deploy_a_Shadowsocks_Server_with_OneClick_Apps_1200x631.png'
 ---
 
 ## Shadowsocks One-Click App

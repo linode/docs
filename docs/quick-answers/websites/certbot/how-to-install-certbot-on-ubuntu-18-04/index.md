@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 title: 'How to Install Certbot for TLS on Ubuntu 18.04'
 h1_title: 'Installing Certbot for TLS on Ubuntu 18.04'
+image: 'How-to-Install-Certbot-for-TLS-on-Ubuntu1804_1200x631.png'
 ---
 ## What is Certbot?
 
