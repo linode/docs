@@ -83,7 +83,11 @@ After providing the app specific options, provide configurations for the Linode 
 | **Add Tags** | A tag to help organize and group the Linode resources. [Tags](/docs/quick-answers/linode-platform/tags-and-groups/) can be applied to Linodes, Block Storage Volumes, NodeBalancers, and Domains. |
 | **Root Password** | The primary administrative password for the Linode instance. This password must be provided when you log in to the Linode using SSH. It must be at least 6 characters long and contain characters from two of the following categories: lowercase and uppercase case letters, numbers, and punctuation characters. The root password can be used to perform any action on the server, so make it long, complex, and unique. *Required*. |
 
-When you've provided all required Linode Options, click the **Create** button. **Your Nextcloud app completes installation anywhere between 2-5 minutes after your Linode has finished provisioning**.
+When you've provided all required Linode Options, click the **Create** button.
+
+{{< note >}}
+Your Nextcloud app completes installation anywhere **between 5-7 minutes** after your Linode has finished provisioning. It is recommended that you wait the full 5-7 minutes prior to beginning the steps in the [Getting Started after Deployment](#getting-started-after-deployment) section of this guide. You may experience unexpected behavior if you begin those steps while your Nextcloud instance is still being deployed and setup by the One-Click App on the Linode instance.
+{{</ note >}}
 
 ## Getting Started after Deployment
 ### Log Into Your Nextcloud Instance
