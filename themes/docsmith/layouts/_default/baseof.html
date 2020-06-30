@@ -71,16 +71,17 @@
         <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
         <script>
             Weglot.initialize({
-                api_key: 'WEGLOT_API_KEY',
+                api_key: 'wg_989a7d955bbef022d912fe0679e5eeda3',
                 switchers: [
                         {
                         styleOpt:{
                             fullname: true,
                             withname: true,
                             is_dropdown: true,
-                            classF: "wg-flags flag-1"
+                            with_flags: true,
+                            invert_flags: true,
                         },
-                        target: "div.utility-nav__container",
+                        target: "div.c-weglot-nav",
                         sibling: null
                     }
                 ]
@@ -129,12 +130,15 @@
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.0"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.0/dist/instantsearch.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.0/dist/instantsearch-theme-algolia.min.css">
-	<link href="https://www.linode.com/wp-content/themes/linode-website-theme/dist/trustarc.css" rel="stylesheet" type="text/css">
-
+        <link href="https://www.linode.com/wp-content/themes/linode-website-theme/dist/trustarc.css" rel="stylesheet" type="text/css">
+        <script src="https://kit.fontawesome.com/07f951a406.js" crossorigin="anonymous"></script>
         <link
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600"
           rel="stylesheet"
         />
+        <link id="theme__google-fonts-css" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&family=Oswald:wght@300;400&display=swap" rel="stylesheet">
+
+
         <link rel="canonical" href="{{ .Permalink | safeURL }}">
         {{ range .AlternativeOutputFormats -}}
         <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
@@ -151,7 +155,8 @@
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T5FXXG9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- End Google Tag Manager (noscript) -->
       {{ end }}
-      {{ partial "header" . }}
+        </script>
+        {{ partial "header" . }}
       {{block "main" .}}{{ end }}
       <footer>
         {{ partial "contribute_footer" . }}
