@@ -5,7 +5,7 @@ author:
 description: 'This guide explains how to add many WordPress websites to a LXD setup that already has configured a reverse proxy. In doing so, it adds a container with MySQL as the database for WordPress.'
 keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtual machine", "virtualization", "letsencrypt", "nginx", "apache2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-06-31
+published: 2020-06-30
 modified_by:
   name: Linode
 title: "Set Up WordPress in an LXD Container"
@@ -27,7 +27,7 @@ external_resources:
 
 [LXD](https://linuxcontainers.org/lxd/) (pronounced "Lex-Dee") is a system container manager build on top of Linux Containers (LXC), and is supported by [Canonical](https://canonical.com). The goal of LXD is to provide an experience similar to a virtual machine but through containerization rather than hardware virtualization.
 
-WordPress is the most popular content management system and is used by over 35% of all websites. It is common to install WordPress in a virtual machine (VM) as a way to separate multiple installations from each other. However, within a VM we can further install multiple WordPress instances, each in its own LXD system container. In this guide, we install WordPress in LXD system containers, thus achieving greater density and maintaing good isolation between each WordPress installation.
+WordPress is the most popular content management system and is used by over 35% of all websites. It is common to install WordPress in a virtual machine (VM) as a way to separate multiple installations from each other. However, within a VM we can further install multiple WordPress instances, each in its own LXD system container. In this guide, we install WordPress in LXD system containers, thus achieving greater density and maintaining good isolation between each WordPress installation.
 
 This guide explains how to setup WordPress in LXD system containers in order to host multiple and separate WordPress websites, each in their own system container. We demonstrate the WordPress installation on both NGINX and Apache web servers, relying on NGINX as the reverse proxy. A SQL database is configured in a separate system container.
 
@@ -210,7 +210,7 @@ if ( $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ) {
 1.  Edit the source code of WordPress, the file `/var/www/html/wp-config-sample.php` so that it works behind a TLS Termination Proxy. Add the snippet before line 82.
 
     {{< note >}}
-Once the WordPress setup wizard completes the configuration, it adapts the content of the sample file with the new user configuration. By adding the code in the sample file, we are certain that the handover from the wizard page to the WordPress administration page is uninterruped. The problem that we solve, is that of _mixed content_, where WordPress would be serving some content with `http` URLs and modern Web browsers refuse to display such content if the website URL is `https`. At the moment, WordPress does not automatically detect if it is running behind a TLS Termination Proxy and cannot avoid the a case of mixed content.
+Once the WordPress setup wizard completes the configuration, it adapts the content of the sample file with the new user configuration. By adding the code in the sample file, we are certain that the handover from the wizard page to the WordPress administration page is uninterrupted. The problem that we solve, is that of _mixed content_, where WordPress would be serving some content with `http` URLs and modern Web browsers refuse to display such content if the website URL is `https`. At the moment, WordPress does not automatically detect if it is running behind a TLS Termination Proxy and cannot avoid the a case of mixed content.
 {{< /note >}}
 
     {{< file "/var/www/html/wp-config-sample.php" >}}
@@ -303,7 +303,7 @@ if ( $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ) {
 1.  Edit the source code of WordPress, the file `/var/www/html/wp-config-sample.php` so that it works behind a TLS Termination Proxy. Add the snippet before line 82.
 
     {{< note >}}
-Once the WordPress setup wizard completes the configuration, it adapts the content of the sample file with the new user configuration. By adding the code in the sample file, we are certain that the handover from the wizard page to the WordPress administration page is uninterruped. The problem that we solve, is that of _mixed content_, where WordPress would be serving some content with `http` URLs and modern Web browsers refuse to display such content if the website URL is `https`. At the moment, WordPress does not automatically detect if it is running behind a TLS Termination Proxy and cannot avoid the a case of mixed content.
+Once the WordPress setup wizard completes the configuration, it adapts the content of the sample file with the new user configuration. By adding the code in the sample file, we are certain that the handover from the wizard page to the WordPress administration page is uninterrupted. The problem that we solve, is that of _mixed content_, where WordPress would be serving some content with `http` URLs and modern Web browsers refuse to display such content if the website URL is `https`. At the moment, WordPress does not automatically detect if it is running behind a TLS Termination Proxy and cannot avoid the a case of mixed content.
 {{< /note >}}
 
     {{< file "/var/www/html/wp-config-sample.php" >}}
