@@ -17,6 +17,7 @@ external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
  - '[SELinux User Resources](https://selinuxproject.org/page/User_Resources)'
  - '[CentOS SELinux Wiki](https://wiki.centos.org/HowTos/SELinux)'
+image: 'Getting_Started_with_SELinux_on_CentOS_8_1200x631.png'
 ---
 
 SELinux is a Mandatory Access Control (MAC) system, developed by the NSA. SELinux was developed as a replacement for Discretionary Access Control (DAC) that ships with most Linux distributions.

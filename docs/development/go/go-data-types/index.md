@@ -16,6 +16,7 @@ contributor:
 external_resources:
   - '[Go](https://golang.org)'
   - '[Go Packages](https://golang.org/pkg/)'
+image: 'Go_Data_Types_A_Tutorial_1200x631.png'
 ---
 
 This guide serves as an introduction to several useful data types in Go. Specifically, you'll learn about:

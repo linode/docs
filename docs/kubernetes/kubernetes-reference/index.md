@@ -19,6 +19,9 @@ external_resources:
 aliases: ['applications/containers/kubernetes-reference/','applications/containers/kubernetes/kubernetes-reference/']
 ---
 
+## Introduction
+Kubernetes introduces a whole new dictionary of terms; this guide contains some of the basic terms and their definitions as a reference.
+
 {{< content "calico-definition-shortguide" >}}
 
 {{< content "cluster-definition-shortguide" >}}

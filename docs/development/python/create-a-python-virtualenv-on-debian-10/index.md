@@ -16,6 +16,7 @@ external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
 languages: ["python"]
+image: 'Creating_a_Python_Virtual_Environment_on_Debian_10_1200x631.png'
 ---
 
 ## What is a Python Virtual Environment?

@@ -13,7 +13,7 @@ aliases: ['platform/block-storage/how-to-use-block-storage-with-your-linode-new-
 title: How to Use Block Storage with Your Linode
 ---
 
-Linode’s Block Storage service allows you to attach additional storage Volumes to your Linode. A single Volume can range from 10 GiB to 10,000 GiB in size and costs $0.10/GiB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to eight Volumes can be attached to a single Linode, be it new or already existing, so you do not need to recreate your server to add a Block Storage Volume.
+Linode’s Block Storage service allows you to attach additional storage Volumes to your Linode. A single Volume can range from 10 GiB to 10,000 GiB in size and costs $0.10/GiB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. You can attach up to 8 volumes per Linode. The volumes can be newly created or already existing, so you do not need to recreate your server to add a Block Storage Volume.
 
 The Block Storage service is currently available in the Dallas, Fremont, Frankfurt, London, Newark, Tokyo, Toronto, Mumbai, and Singapore data centers.
 
@@ -59,6 +59,14 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
         mkfs.ext4 FILE_SYSTEM_PATH
 
+    {{< caution >}}
+If a new filesystem is created on a Block Storage Volume that is already using a filesystem, the above command will result in data loss. You can safely check for the filesystem of an unmounted volume with the following command:
+
+    blkid FILE_SYSTEM_PATH
+
+If you do not receive output, there is currently no filesystem on this volume.
+{{< /caution >}}
+
 1.  Once the Volume has a filesystem, you can create a mountpoint for it:
 
         mkdir /mnt/BlockStorage1
@@ -102,12 +110,19 @@ Example:
 The Linodes available in this dropdown menu all share the same region as your Volume.
 {{< /note >}}
 
-
-1.  You'll need to create a filesystem in your new Volume. If your Linode is not already running, boot then SSH into your Linode and execute the following command, where `FILE_SYSTEM_PATH` is your Volume's file system path:
+1.   You'll need to create a filesystem in your new Volume if it does not already have one. If you have created a filesystem previously for this volume on any Linode, you should skip this step. If your Volume does not have a filesystem and it is not already running, boot then SSH into your Linode and execute the following command, where `FILE_SYSTEM_PATH` is your Volume's file system path:
 
         mkfs.ext4 FILE_SYSTEM_PATH
 
-1.  Once the Volume has a filesystem, you can create a mountpoint for it:
+      {{< caution >}}
+If a new filesystem is created on a Block Storage Volume that is already using a filesystem, the above command will result in data loss. You can safely check for the filesystem of an unmounted volume with the following command:
+
+    blkid FILE_SYSTEM_PATH
+
+If you do not receive output, there is currently no filesystem on this volume.
+{{< /caution >}}
+
+1.  Provided the Volume has a filesystem, you can create a mountpoint for it:
 
         mkdir /mnt/BlockStorage1
 
