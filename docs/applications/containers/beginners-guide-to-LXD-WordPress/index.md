@@ -70,18 +70,18 @@ If the version is not 3.3 or later, update to the latest version by installing t
 
 1. This guide will use the hostnames `apache1.example.com` and `nginx1.example.com` for the two example WordPress websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
 
-1. Complete [Set Up a Reverse Proxy in an LXD Container to Host Multiple Websites](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/). The guide instructs you to create a reverse proxy in a `proxy` container, and two websites, `apache1` and `nginx1` running the Apache2 Web server and NGINX respectively. Then, it sets up Let's Encrypt TLS certificates for both websites. You will be using these two websites to install WordPress. Therefore, keep the two containers and the reverse proxy container after you complete the guide. 
+1. Complete [Set Up a Reverse Proxy in an LXD Container to Host Multiple Websites](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/). The guide instructs you to create a reverse proxy in a `proxy` container, and two websites, `apache1` and `nginx1` running the Apache2 Web server and NGINX respectively. Then, it sets up Let's Encrypt TLS certificates for both websites. You will be using these two websites to install WordPress. Therefore, keep the two containers and the reverse proxy container after you complete the guide.
 
 
 ## Creating and setting up the database container
 
-WordPress requires a SQL database server such as _MySQL_ or _MariaDB_. We create a container called `db` and install the SQL server. This SQL server installation will be used by all WordPress installations. Each WordPress installation will have its own SQL database on the SQL server and separate account credentials for their corresponding database. 
+WordPress requires a SQL database server such as _MySQL_ or _MariaDB_. We create a container called `db` and install the SQL server. This SQL server installation will be used by all WordPress installations. Each WordPress installation will have its own SQL database on the SQL server and separate account credentials for their corresponding database.
 
-1.  Create a container called `db`. 
+1.  Create a container called `db`.
 
         lxc launch ubuntu:18.04 db
 
-1.  Start a shell in the `db` container. 
+1.  Start a shell in the `db` container.
 
         lxc exec db -- sudo --user ubuntu --login
 
@@ -113,7 +113,7 @@ The containers reside on a NAT network inside the VM, therefore they do not get 
 
         sudo systemctl restart mysql.service
 
-1.  Log out from the container. 
+1.  Log out from the container.
 
         logout
 
@@ -132,7 +132,7 @@ For each new WordPress installation, we create an empty database and assign an a
 You may also use arbitrary names for the database name and the username. Make sure you have listed the correct container name. Finally, change the password.
 {{< /note >}}
 
-1.  Start a shell in the `db` container. 
+1.  Start a shell in the `db` container.
 
         lxc exec db -- sudo --user ubuntu --login
 
@@ -140,17 +140,17 @@ You may also use arbitrary names for the database name and the username. Make su
 
         sudo mysql
 
-1.  Create the database for the Apache Webserver, then create the account and grant access at the same time. 
+1.  Create the database for the Apache Webserver, then create the account and grant access at the same time.
 
         CREATE DATABASE wpApache1;
         GRANT ALL PRIVILEGES ON wpApache1.* to "wpUserApache1"@"apache1.lxd" IDENTIFIED BY "p100ChangeMe";
 
-1.  Create the database for the NGINX Web server, then create the account and grant access at the same time. 
+1.  Create the database for the NGINX Web server, then create the account and grant access at the same time.
 
         CREATE DATABASE wpNginx1;
         GRANT ALL PRIVILEGES ON wpNginx1.* to "wpUserNginx1"@"nginx1.lxd" IDENTIFIED BY "p100ChangeMe";
 
-1.  Finally, flush the privileges in order to reload the privileges from the grant tables in the *mysql* system database. 
+1.  Finally, flush the privileges in order to reload the privileges from the grant tables in the *mysql* system database.
 
         FLUSH PRIVILEGES;
         EXIT
@@ -167,7 +167,7 @@ Follow the setup tasks for each web server.
 
 ### Setting up WordPress for the Apache web server
 
-In this section you will setup WordPress for the container `apache1`. You will download the latest version of WordPress and extract the archive at the appropriate location. You will then enable PHP support for the Apache web server. Finally, at the end of this section, the container will be in a state that you can then use your browser to complete the installation of WordPress. 
+In this section you will setup WordPress for the container `apache1`. You will download the latest version of WordPress and extract the archive at the appropriate location. You will then enable PHP support for the Apache web server. Finally, at the end of this section, the container will be in a state that you can then use your browser to complete the installation of WordPress.
 
 1.  Start a shell in the `apache1` container.
 
@@ -180,7 +180,7 @@ In this section you will setup WordPress for the container `apache1`. You will d
         sudo chown -R www-data:www-data /var/www/html/
         sudo rm /var/www/html/index.html
 
-1.  Install the PHP module for the Apache web server. 
+1.  Install the PHP module for the Apache web server.
 
         sudo apt install -y libapache2-mod-php php-mysql
 
@@ -189,10 +189,10 @@ In this section you will setup WordPress for the container `apache1`. You will d
         sudo apt install -y php-mbstring php-gd php-imagick php-xml php-curl php-zip
 
     {{< note >}}
-WordPress has a built-in _Site Health_ feature that checks for a small list of required and optional PHP modules. By installing the above PHP modules, your WordPress installation will pass the check for required and optional modules. 
+WordPress has a built-in _Site Health_ feature that checks for a small list of required and optional PHP modules. By installing the above PHP modules, your WordPress installation will pass the check for required and optional modules.
 {{< /note >}}
 
-1.  Restart the Apache Web server in order to refresh the list of PHP modules. 
+1.  Restart the Apache Web server in order to refresh the list of PHP modules.
 
         sudo systemctl restart apache2.service
 
@@ -222,29 +222,29 @@ if ( $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ) {
 }
 {{</ file >}}
 
-1.  Log out from the container. 
+1.  Log out from the container.
 
          logout
 
-You have set up the server with the Apache2 server for WordPress. The next step below is to run the WordPress installation wizard through the Web browser. 
+You have set up the server with the Apache2 server for WordPress. The next step below is to run the WordPress installation wizard through the Web browser.
 
 
 ### Setting up WordPress for the NGINX web server
 
-In this section you will setup WordPress for the container `nginx1`. You will download the latest version of WordPress and extract the archive at the appropriate location, in `/var/www/html/`. You will then enable PHP support for the NGINX web server. Finally, at the end of this section, the container will be in a state that you can then use your browser to complete the installation of WordPress. 
+In this section you will setup WordPress for the container `nginx1`. You will download the latest version of WordPress and extract the archive at the appropriate location, in `/var/www/html/`. You will then enable PHP support for the NGINX web server. Finally, at the end of this section, the container will be in a state that you can then use your browser to complete the installation of WordPress.
 
 1.  Start a shell in the `nginx1` container.
 
         lxc exec nginx1 -- sudo --user ubuntu --login
 
-1.  Download and extract the latest version of WordPress. Place in the appropriate location at `/var/www/html/`. Set up the file permissions so that WordPress can perform updates. Remove the sample `/var/www/html/index.nginx-debian.html` file that comes from the `nginx` package. 
+1.  Download and extract the latest version of WordPress. Place in the appropriate location at `/var/www/html/`. Set up the file permissions so that WordPress can perform updates. Remove the sample `/var/www/html/index.nginx-debian.html` file that comes from the `nginx` package.
 
         wget https://wordpress.org/latest.tar.gz --directory-prefix=/tmp/
         sudo tar xvfa /tmp/latest.tar.gz -C /var/www/html/ --strip-components=1
         sudo chown -R www-data:www-data /var/www/html/
         sudo rm /var/www/html/index.nginx-debian.html
 
-1.  Install the necessary PHP support for the NGINX web server. 
+1.  Install the necessary PHP support for the NGINX web server.
 
         sudo apt install -y php-fpm php-mysql
 
@@ -253,40 +253,40 @@ In this section you will setup WordPress for the container `nginx1`. You will do
         sudo apt install -y php-curl php-dom php-mbstring php-gd php-imagick php-xml php-zip
 
     {{< note >}}
-WordPress has a built-in _Site Health_ feature that checks for a small list of required and optional PHP modules. By installing the above PHP modules, your WordPress installation will pass the check for required and optional modules. 
+WordPress has a built-in _Site Health_ feature that checks for a small list of required and optional PHP modules. By installing the above PHP modules, your WordPress installation will pass the check for required and optional modules.
 {{< /note >}}
 
 1.  Enable PHP in the Web server configuration. Replace the content of the default file with the content below. Compared to the default configuration, we have removed some comments for legibility, set in the `index` keyword to accept `index.php`, and uncommented the section `location ~ .\php$` that enables PHP in nginx.
 
     {{< file "/etc/nginx/sites-enabled/default" >}}
-# Default server configuration                                 
-#                                                              
-server {                                                                   
-        listen 80 default_server;                                          
-        listen [::]:80 default_server;                                     
-                                                                           
-        root /var/www/html;                                                
-                                                                           
-        # Add index.php to the list if you are using PHP                   
-        index index.php;                                                   
-                                                                           
-        server_name _;                                                     
-                                                                           
-        location / {                                                       
-                # First attempt to serve request as file, then             
-                # as directory, then fall back to displaying a 404.        
-                try_files $uri $uri/ =404;                                 
-        }                                                                  
-                                                                           
-        # pass PHP scripts to FastCGI server                               
-        #                                                                  
-        location ~ \.php$ {                                                
-                include snippets/fastcgi-php.conf;                         
-                #                                                          
-                # With php-fpm (or other unix sockets):                    
-                fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;            
-        }                                                                  
-}                                                                          
+# Default server configuration
+#
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+
+        # Add index.php to the list if you are using PHP
+        index index.php;
+
+        server_name _;
+
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
+
+        # pass PHP scripts to FastCGI server
+        #
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                #
+                # With php-fpm (or other unix sockets):
+                fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        }
+}
 {{</ file >}}
 
 1.  Edit the source code of WordPress, file `/var/www/html/wp-admin/setup-config.php` so that it works behind a TLS Termination Proxy. Add the following snippet after line 20.
@@ -315,11 +315,11 @@ if ( $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ) {
 }
 {{</ file >}}
 
-1.  Log out from the container. 
+1.  Log out from the container.
 
          logout
 
-You have set up the server with the NGINX server for WordPress. The next step below is to run the WordPress installation wizard through the Web browser. 
+You have set up the server with the NGINX server for WordPress. The next step below is to run the WordPress installation wizard through the Web browser.
 
 ## Completing the setup using the WordPress installation wizard
 
@@ -353,7 +353,7 @@ Now visit the URL of each WordPress website in order to run the WordPress instal
 1. Finally, you are presented with the main WordPress configuration, including the creation of your WordPress administrative account.  You are asked for a Site Title, which can be changed later. Then, you are asked for the username and password details of your first account, an administrative account, on your WordPress website. Make sure you keep a note of this information. Subsequently, add your email address and select whether you want to make your WordPress website immediately accessible to search engines. Finally, click on _Install WordPress_.
 
    {{< note >}}
-Your WordPress installation will not likely be able to send emails, such as an email to reset your forgotten password. You would need to use an appropriate plugin in WordPress before you are able to receive emails to reset your password and general email notifications. Therefore, make sure you keep a copy of the username and password that you are putting here. 
+Your WordPress installation will not likely be able to send emails, such as an email to reset your forgotten password. You would need to use an appropriate plugin in WordPress before you are able to receive emails to reset your password and general email notifications. Therefore, make sure you keep a copy of the username and password that you are putting here.
 {{< /note >}}
 
    {{< note >}}
@@ -362,11 +362,11 @@ You may select to discourage for now the search engines from indexing your new s
 
     ![WordPress installation Wizard: Install WordPress](wordpress-05-configure.png "WordPress installation wizard: Install WordPress")
 
-At the end of this series of steps, you will be asked to log in into your WordPress instance using the username and password that you set earlier. 
+At the end of this series of steps, you will be asked to log in into your WordPress instance using the username and password that you set earlier.
 
 ## Conclusion
 
-You have installed WordPress in both an Apache2 Web server and the NGINX Web server. You can repeat this process to add more WordPress instances. The default network configuration allows for about 250 WordPress websites. The first limit that you may encounter, though, is that of the host's memory. Each Ubuntu Web server container consumes about 160MB RAM when idle, and 300MB at peak. Therefore, in a server of 2GB RAM you may fit up to ten low-traffic WordPress installations. 
+You have installed WordPress in both an Apache2 Web server and the NGINX Web server. You can repeat this process to add more WordPress instances. The default network configuration allows for about 250 WordPress websites. The first limit that you may encounter, though, is that of the host's memory. Each Ubuntu Web server container consumes about 160MB RAM when idle, and 300MB at peak. Therefore, in a server of 2GB RAM you may fit up to ten low-traffic WordPress installations.
 
 ## Troubleshooting
 
@@ -391,15 +391,15 @@ If your container is `nginx1`, then run the following command to view the curren
 The output should be similar the following. The current memory use in this example is 164MB while the peak memory use was a bit over 300MB.
 
 {{< note >}}
-Resources:                     
-  Processes: 30                
-  Disk usage:                  
-    root: 219.76MB             
-  CPU usage:                   
+Resources:
+  Processes: 30
+  Disk usage:
+    root: 219.76MB
+  CPU usage:
     CPU usage (in seconds): 245
-  Memory usage:                
-    Memory (current): 164.38MB 
-    Memory (peak): 305.23MB    
+  Memory usage:
+    Memory (current): 164.38MB
+    Memory (peak): 305.23MB
 {{< /note >}}
 
 
