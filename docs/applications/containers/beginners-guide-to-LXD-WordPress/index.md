@@ -31,9 +31,8 @@ WordPress is the most popular content management system and is used by over 35% 
 
 This guide explains how to setup WordPress in LXD system containers in order to host multiple and separate WordPress websites, each in their own system container. We demonstrate the WordPress installation on both NGINX and Apache web servers, relying on NGINX as the reverse proxy. A SQL database is configured in a separate system container.
 
-Please refer to the following diagram to understand the WordPress setup created in this guide. TODO
+Please refer to the following diagram to understand the WordPress setup created in this guide. TODO-ADD-DIAGRAM
 
-![Diagram of LXD reverse proxy and web servers](reverse-proxy-lxd-diagram.png "CHANGE ME - Diagram of LXD reverse proxy and web servers")
 
 In this guide you will:
 
