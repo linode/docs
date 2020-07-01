@@ -5,8 +5,8 @@ author:
 contributor:
   name: Linode
   link: https://linode.com
-description: "Deploying Cert-Manager on Kubernetes"
-og_description: "Learn how to cert-manager works, the options to create certificates, and use cert-manager to create two public signed certificates using only Kubernetes."
+description: "Learn how cert-manager works, a tool on Kubernetes designed to assist with the deployment, configuration, and management of certificates on Kubernetes."
+og_description: "Learn how cert-manager works, the options to create certificates, and use cert-manager to create two public signed certificates using only Kubernetes."
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster", "ssl", "certbot", "lets-encrypt", "tls"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-13
@@ -24,7 +24,7 @@ Cert-manager is a Kubernetes add-on designed to assist with the creation and man
 
 ## In This Guide
 
-You learn about how cert-manager works to create certificates, the options available for creating certificates, and then use cert-manager to create two public signed certificates using only Kubernetes and cert-manager tooling.
+In this guide, you will learn about how cert-manager works to create certificates, the options available for creating certificates, and then use cert-manager to create two public signed certificates using only Kubernetes and cert-manager tooling.
 
 ## Before you Begin
 
@@ -38,7 +38,7 @@ Cert-Manager is divided into a number of components and microservices that are e
 
 ### Issuers and ClusterIssuers
 
-Certificate creation begins at the `Issuers` and `ClusterIssuers` resources that represent certificate authorities and are able to generate signed certificates using a specific issuer `type`. An issuer `type` represents the method used to create your certificate, such as `SelfSigned` for a [Self-Signed Certificate](/docs/security/ssl/create-a-self-signed-tls-certificate/) and `ACME` for requests for certificates from ACME servers, typically used by tools like [Let's Encrypt](https://letsencrypt.org/). All supported issuer types is listed in [Cert-Manager's Documentation](https://cert-manager.io/docs/configuration/).
+Certificate creation begins with `Issuers` and `ClusterIssuers`, resources that represent certificate authorities and are able to generate signed certificates using a specific issuer `type`. An issuer `type` represents the method used to create your certificate, such as `SelfSigned` for a [Self-Signed Certificate](/docs/security/ssl/create-a-self-signed-tls-certificate/) and `ACME` for requests for certificates from ACME servers, typically used by tools like [Let's Encrypt](https://letsencrypt.org/). All supported issuer types are listed in [Cert-Manager's Documentation](https://cert-manager.io/docs/configuration/).
 
 While `Issuers` resources are only able to create certificates in the namespace they were created in, `ClusterIssuers` can create certificates for all namespaces. This guide provides an example that demonstrates how `ClusterIssuers` creates certificates for all namespaces in the cluster.
 
@@ -90,7 +90,7 @@ cert-manager-webhook-68d464c8b-86tqw       1/1     Running   0          19m
 
 ### Using Cert-Manager to Create Certificates
 
-The following example creates an ACME certificate signed using let's encrypt.
+The following example creates an ACME certificate signed using Let's Encrypt.
 
 To begin, define a [ClusterIssuer](#issuers-and-clusterissuers) resource manually, replacing `myemail@website.com` with your own personal email address which is used for ACME registration:
 
@@ -113,7 +113,7 @@ spec:
           class: nginx
 {{< /file >}}
 
-In the above example, note that `privateKeySecretRef` attribute, creates a secret resource using the specified name for storing the private key of the account.
+In the above example, note that `privateKeySecretRef` attribute creates a secret resource using the specified name for storing the private key of the account.
 
 Then enter the following to create the resource:
 
