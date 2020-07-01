@@ -1355,6 +1355,7 @@ steamlab
 stopwait
 stopword
 stopwords
+storages
 su
 subcommand
 subcommands
