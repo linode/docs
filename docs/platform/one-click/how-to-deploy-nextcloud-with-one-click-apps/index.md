@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11
 modified_by:
   name: Linode
-title: "How to Deploy Nextcloud on Linode with One-click Apps"
+title: "How to Deploy Nextcloud on Linode with One-Click Apps"
 h1_title: "Deploying Nextcloud on Linode with One-Click Apps"
 contributor:
   name: Linode
