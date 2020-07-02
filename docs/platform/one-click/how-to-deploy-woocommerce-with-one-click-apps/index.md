@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 title: "How to Deploy WooCommerce with One-Click Apps"
 h1_title: "Deploying WooCommerce with One-Click Apps"
+aliases: ['platform/one-click/one-click-woocommerce/']
 contributor:
   name: Linode
 external_resources:
