@@ -35,7 +35,6 @@ You can configure your Django App by providing values for the following fields:
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **Django APP Name** | Name for the Django application. This field cannot have spaces. *Required*. |
 | **Django USER** | Username for your Django application. *Required*. |
 | **Django Password** | Password for the Django USER. *Required*. |
 | **Django USER email** | Email address for the Django USER. The format for the email must be in the form user@email.tld. *Required*. |
@@ -57,6 +56,10 @@ When you've provided all required Linode Options, click on the **Create** button
 ## Getting Started after Deployment
 
 ### Access Django
+
+{{< note >}}
+The Django One-Click App will assign `DjangoApp` as the [Django project name](https://docs.djangoproject.com/en/3.0/intro/tutorial01/#creating-a-project).
+{{</ note >}}
 
 After Django has finished installing, you will be able to access your Django site at your Linode's IPv4 address, for instance: `https://yourlinodeip:8000`.
 
