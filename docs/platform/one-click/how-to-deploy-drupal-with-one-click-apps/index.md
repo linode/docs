@@ -93,7 +93,6 @@ The Drupal One-Click App will install the following required software on your Li
 | [**MariaDB Server**](https://mariadb.org/) | Relational database. |
 | [**PHP 7**](https://www.php.net) | Drupal is written in PHP and requires PHP to operate. |
 | [**Apache HTTP Server**](https://httpd.apache.org) | Web Server used to serve the Drupal site. |
-| [**Drush**](https://www.drush.org) | A command line shell for Drupal. |
 | [**Drupal 9**](https://www.drupal.org/about/9) | Content management system. |
 
 {{< content "one-click-update-note">}}
