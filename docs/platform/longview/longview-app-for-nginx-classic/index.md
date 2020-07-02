@@ -109,7 +109,7 @@ You should now be able to see Longview data for NGINX. If that's not the case, p
 
 To see the output for the Longview Nginx App:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com/).
+1.  Log in to the [Linode Manager](https://cloud.linode.com/).
 2.  Select the **Longview** tab.
 3.  Select the **Nginx** tab.
 

@@ -105,7 +105,7 @@ The applications on your Linode require a certain amount of physical memory to f
     {{< disclosure-note "Steps for the Linode Classic Manager" >}}
   If you are using the Linode Classic Manager, you can follow these steps:
 
-  1.  Log in to the [Linode Classic Manager](https://manager.linode.com).
+  1.  Log in to the [Linode Classic Manager](https://cloud.linode.com).
   1.  Click the **Linode** tab. A list of your Linodes appears.
   1.  Select a Linode. The Linode's dashboard appears.
   1.  Select the **Launch Console** link. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or upgrade to larger plan.
@@ -198,7 +198,7 @@ If you recently upgraded your plan, your Linode won't be able to take advantage 
     {{< disclosure-note "Steps for the Linode Classic Manager" >}}
   If you are using the Linode Classic Manager, you can follow these steps:
 
-  1.  Log in to the [Linode Manager](https://manager.linode.com).
+  1.  Log in to the [Linode Manager](https://cloud.linode.com).
   1.  Click the **Linode** tab. A list of your Linodes appears.
   1.  Select a Linode. The Linode's dashboard appears.
   1.  Examine the *Storage* pane on the sidebar, as shown below. If you have free storage space, you can allocate that space to your existing disks.

@@ -65,7 +65,7 @@ Before you install Linux, decide which distribution to install. Linux comes in s
 
 ### Install Linux to Get Started
 
-Here at Linode, you install Linux with the [Linode Manager](https://manager.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install **Ubuntu 16.04 LTS**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
+Here at Linode, you install Linux with the [Linode Manager](https://cloud.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install **Ubuntu 16.04 LTS**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
 
 After you know which distribution you want to install, follow the instructions for installing Linux in the [Getting Started](/docs/getting-started/) article. Follow that article until you complete [Booting Your Linode](/docs/getting-started#boot-your-linode), then come back here.
 

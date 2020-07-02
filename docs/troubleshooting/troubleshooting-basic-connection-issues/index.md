@@ -46,7 +46,7 @@ Review the installation instructions in Linode's [Diagnosing Network Issues with
 
 ## Is your Linode Running?
 
-Log in to the [Linode Manager](https://manager.linode.com/) and inspect the Linode's dashboard. If the Linode is powered off, turn it on.
+Log in to the [Linode Manager](https://cloud.linode.com/) and inspect the Linode's dashboard. If the Linode is powered off, turn it on.
 
 ### Inspect the Lish Console
 

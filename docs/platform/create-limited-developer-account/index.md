@@ -53,9 +53,9 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 1.  If you suspect that the user may have access to the Linode Manager password, [change that first](/docs/platform/manager/accounts-and-passwords/#changing-your-linode-manager-password).
 
-1.  Log in to the [Linode Manager](https://manager.linode.com/) and click [**Users and Permissions**](https://manager.linode.com/user/index/) in the **Account** tab. You may be prompted to reauthenticate your password.
+1.  Log in to the [Linode Manager](https://cloud.linode.com/) and click [**Users and Permissions**](https://cloud.linode.com/account/users) in the **Account** tab. You may be prompted to reauthenticate your password.
 
-1.  Locate the user in the Username column, and click **Remove** at the end of the row. Click **Yes. Delete!** to confirm deletion.
+1.  Locate the user in the Username column, and click the three dots and select **Delete** to remove the user. Click **Delete** to confirm deletion.
 
 ## SSH Logins
 

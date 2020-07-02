@@ -20,7 +20,7 @@ If you are having issues accessing your Linode after maintenance has been applie
 
 Confirm that the Linode is fully booted.
 
-1. Log in to the Linode Manager. On the [*Linodes*](https://manager.linode.com/linodes) page, under the *Status* column look for *Running* as the status of your Linode.
+1. Log in to the Linode Manager. On the [*Linodes*](https://cloud.linode.com/linodes) page, under the *Status* column look for *Running* as the status of your Linode.
 
 1. If your Linode's status displays *Powered Off*, click on the *Dashboard* link. Under the *Dashboard* section, click the grey **Boot** button to boot your Linode.
 
