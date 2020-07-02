@@ -20727,6 +20727,7 @@ li.list-group-item {
 .library-breadcrumb-search {
   position: -webkit-sticky;
   position: sticky;
+  z-index: 100;
 }
 .library-article-blurb {
   padding-top: 15px;
