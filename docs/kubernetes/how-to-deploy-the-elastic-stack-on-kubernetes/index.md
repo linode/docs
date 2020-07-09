@@ -16,7 +16,7 @@ keywords:
     "helm",
   ]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
-published: 2020-07-
+published: 2020-07-07
 modified_by:
   name: Linode
 title: "How to Deploy the Elastic Stack on Kubernetes"
@@ -59,7 +59,7 @@ This guide uses Kubernetes services which are private by default. Local listener
 
         kubectl config get-contexts
 
-1.  Set up Helm in the Kubernetes cluster by following the [Install Helm](docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) section in the *How to Install Apps on Kubernetes with Helm 3* guide.
+1.  Set up Helm in the Kubernetes cluster by following the [Install Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) section in the *How to Install Apps on Kubernetes with Helm 3* guide.
 
 ## Configure Helm
 
