@@ -55,7 +55,7 @@ While a Domain Name is not strictly required, it is recommended. If you plan to 
 |-----------|-----------------|
 | **Linode limited sudo username** | The username for a new limited user account with sudo privileges. *Advanced Configuration*. |
 | **Linode limited user password** | The password for the new limited user account. *Advanced Configuration*. |
-| **SSH Public Key** | A public key belonging to the user that accesses the Linode. If you do not have an authentication key-pair see the [Securing Your Server](#create-an-authentication-key-pair) guide for steps on creating one. *Advanced Configuration*. |
+| **SSH Public Key** | A public key belonging to the user that accesses the Linode. If you do not have an authentication key-pair see the [Securing Your Server](/docs/security/securing-your-server/#create-an-authentication-key-pair) guide for steps on creating one. *Advanced Configuration*. |
 | **Enable passwordless sudo** | Enable passwordless sudo access for the limited user account. *Advanced Configuration*. |
 | **Disable root access** | Disable root user access for the Linode server. *Advanced Configuration*. |
 
