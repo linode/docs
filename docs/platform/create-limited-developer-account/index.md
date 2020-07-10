@@ -32,7 +32,7 @@ Access to the Linode Manager provides high-level methods for controlling your Li
 
 ### Who Has Access to My Linode Account?
 
-Log in to the Linode Manager and navigate to the [**Users and Permissions**](https://manager.linode.com/user/index/) section of the **Account** tab. You may be prompted to reauthenticate your password. This section will display all of your Linode account's users.
+Log in to the Linode Manager and navigate to the [**Users and Permissions**](https://cloud.linode.com/account/users) section of the **Account** tab. You may be prompted to reauthenticate your password. This section will display all of your Linode account's users.
 
 If you're not sure whether you're logged in as the account administrator, look for a `No` in the **Restricted** column of your username's row in the User Manager.
 
