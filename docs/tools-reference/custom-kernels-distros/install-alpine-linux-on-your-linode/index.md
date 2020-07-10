@@ -43,7 +43,7 @@ While this guide will provide you with a fully operational Alpine installation, 
 
 In this section, we'll create the disk images necessary to install Alpine Linux. Although it is not strictly necessary, giving each disk a descriptive name upon creation will make it easier to keep track of its role in the system.
 
-1.  Log in to the [Linode Manager](https://manager.linode.com/linodes/) and select the Linode to install Alpine Linux on.
+1.  Log in to the [Linode Manager](https://cloud.linode.com/linodes/) and select the Linode to install Alpine Linux on.
 
 2.  Create your boot disk image by selecting **Create a new Disk** under the Disks section. The size should be between 128 and 256 MB, and the type should be **ext4**.
 
