@@ -22,13 +22,13 @@ external_resources:
 ---
 Flask is a light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. After you have developed a Flask application in a local environment, you need to prepare the application's production environment in order to run the application and serve it to the users of the application through the internet.
 
-This guide walks you through the steps to deploy a Flask application to a production environment running on a Linode. Your production environment uses [NGINX](http://localhost:1313/docs/web-servers/nginx/nginx-installation-and-basic-setup/) as the web server and reverse proxy, [Gunicorn](https://gunicorn.org/) as the web server gateway interface (WSGI) application server, and [Supervisor](http://supervisord.org/) for monitoring and auto-reloading Gunicorn should it go down. This guide does not cover creating a Flask application or related Python concepts.
+This guide walks you through the steps to deploy a Flask application to a production environment running on a Linode. The production environment uses [NGINX](http://localhost:1313/docs/web-servers/nginx/nginx-installation-and-basic-setup/) as the web server and reverse proxy, [Gunicorn](https://gunicorn.org/) as the web server gateway interface (WSGI) application server, and [Supervisor](http://supervisord.org/) for monitoring and auto-reloading Gunicorn should it go down. This guide does not cover creating a Flask application or related Python concepts.
 
 In this guide you complete the following:
 
 - [Copy an existing Flask application from a local development environment to a production environment](#copy-your-flask-app-to-your-linode)
 - [Install and configure NGINX](#install-and-configure-nginx)
-- [Configure your Flask application's production environment variables](#configure-flask)
+- [Configure the Flask application's production environment variables](#configure-flask)
 - [Install and configure Gunicorn](#install-and-configure-gunicorn)
 - [Install and configure Supervisor](#install-and-configure-supervisor)
 
@@ -54,21 +54,21 @@ This guide assumes you are familiar with the following concepts and skills:
 
 1. [Create a 1GB Linode](/docs/getting-started/#create-a-linode) to host the Flask web application. Depending on the size of the application and the amount of users you expect to visit it, you may consider a large [Linode plan](/docs/platform/how-to-choose-a-linode-plan/).
 
-1.  Familiarize yourself with the [Getting Started](/docs/getting-started/) guide and complete the steps for [updating your system's software](/docs/getting-started/#install-software-updates), setting the Linode's [hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
+1.  Familiarize yourself with the [Getting Started](/docs/getting-started/) guide and complete the steps for [updating the system's software](/docs/getting-started/#install-software-updates), setting the Linode's [hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of [Securing Your Server](/docs/security/securing-your-server/) to create a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access) and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
+1.  This guide uses `sudo` wherever possible. Complete the sections of [Securing the Server](/docs/security/securing-your-server/) to create a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access) and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
 
 ## Copy the Flask App to Linode
 
-After creating the Flask application in the local development environment, you are now ready to deploy it to a production environment. You need to copy the local Flask application code to the Linode. You can accomplish this by either [cloning your GitHub project to the Linode](#clone-your-app-from-source-control) using Git or by using the [secure copy method](#secure-copy-your-app-from-a-local-machine) to directly transfer the application files to the Linode. This section provides steps for both options.
+After creating the Flask application in the local development environment, you are now ready to deploy it to a production environment. You need to copy the local Flask application code to the Linode. You can accomplish this by either [cloning the GitHub project to the Linode](#clone-your-app-from-source-control) using Git or by using the [secure copy method](#secure-copy-your-app-from-a-local-machine) to directly transfer the application files to the Linode. This section provides steps for both options.
 
 {{< note >}}
-This guide's examples transfer the Flask application files to the Linode's `/home` directory. If you prefer, you can store your application files in a different directory, however, ensure you run the examples in the directory of the application.
+This guide's examples transfer the Flask application files to the Linode's `/home` directory. If you prefer, you can store the application files in a different directory, however, ensure you run the examples in the directory of the application.
 {{< /note >}}
 
 ### Clone the App From Source Control
 
-1. Ensure your latest Flask application code is available in the project's remote repository.
+1. Ensure that the latest Flask application code is available in the project's remote repository.
 
 1.  SSH into the Linode. Replace the example IP address with the IP address of the Linode:
 
@@ -78,7 +78,7 @@ This guide's examples transfer the Flask application files to the Linode's `/hom
 
         cd ~
 
-1. Clone the project from the remote version control system. If you are not using the example repository, [Example Flask Blog Application](https://github.com/abalarin/Flask-on-Linode), replace the example repo with your own:
+1. Clone the project from the remote version control system. If you are not using the example repository, [Example Flask Blog Application](https://github.com/abalarin/Flask-on-Linode), replace the example repo with the name of the repo that you want to use:
 
         git clone https://github.com/abalarin/Flask-on-Linode.git flask_app_project
 
@@ -188,7 +188,7 @@ Collecting flask-wtf (from -r flask_app/requirements.txt (line 4))
 ...
 {{< /output >}}
 
-    Now that your Linode has all required dependencies, you configure Flask in the next section.
+    Now that the Linode has all required dependencies, you configure Flask in the next section.
 
 ### Configure Flask
 Depending on the environment of the Flask application, there are different settings you may need to configure, like toggling the debug mode, setting the secret key, setting the database URI, etc. For more information on Flask's available configuration options see the [configuration docs](https://flask.palletsprojects.com/en/1.1.x/config/#builtin-configuration-values).
@@ -196,7 +196,7 @@ Depending on the environment of the Flask application, there are different setti
 In this section, you create a JSON file to store the configuration of the environment and then load that configuration into the Flask app. The configuration created in this section is a basic example of some Flask environment variables you might include in the application.
 
 {{< caution >}}
-You should keep sensitive configuration files **outside of source control**. If you source control the configuration file, which contains sensitive values, in a remote repository, then someone could access it and use that information to compromise security of the Linode server or the application. To keep the  configuration file out of your Git repository, add it to the `.gitignore` file.
+You should keep sensitive configuration files **outside of source control**. If you source control the configuration file, which contains sensitive values, in a remote repository, then someone could access it and use that information to compromise security of the Linode server or the application. To keep the configuration file out of the Git repository, add it to the `.gitignore` file.
 {{< /caution >}}
 
 1.  Create a JSON configuration file with a text editor:
@@ -241,7 +241,7 @@ from flask_app import routes
     {{</ file >}}
 
 ### Install and Configure Gunicorn
-[Gunicorn](https://gunicorn.org/), *Green Unicorn*, is a Python web server gateway interface (WSGI) HTTP Server for UNIX. It is used to forward requests from your NGINX web server to the Flask application.
+[Gunicorn](https://gunicorn.org/), *Green Unicorn*, is a Python web server gateway interface (WSGI) HTTP Server for UNIX. It is used to forward requests from the NGINX web server to the Flask application.
 
 1. Install Gunicorn on Linode:
 
