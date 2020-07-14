@@ -11,8 +11,11 @@ modified_by:
 title: "Deploy NodeBalancers with the Linode Cloud Controller Manager"
 aliases: ['applications/containers/deploy-nodebalancers-with-linode-ccm/']
 ---
+## What is the Linode Cloud Controller Manager?
 
-The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager) allows Kubernetes to deploy [Linode NodeBalancers](/docs/platform/nodebalancer/) whenever a Service of the "LoadBalancer" type is created. This provides the Kubernetes cluster with a reliable way of exposing resources to the public internet. The CCM handles the creation and deletion of the NodeBalancer, and correctly identifies the resources, and their networking, the NodeBalancer will service.
+The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager) allows Kubernetes to deploy [Linode NodeBalancers](/docs/platform/nodebalancer/) whenever a Service of the `LoadBalancer` type is created. This provides the Kubernetes cluster with a reliable way of exposing resources to the public internet. The CCM handles the creation and deletion of the NodeBalancer, and correctly identifies the resources, and their networking, that the NodeBalancer will service.
+
+### In this Guide
 
 This guide will explain how to:
 
