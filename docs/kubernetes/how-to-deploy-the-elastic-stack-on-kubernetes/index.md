@@ -1,7 +1,7 @@
 ---
 author:
-  name: Linode
-  email: docs@linode.com
+  name: Tyler Langlois
+  email: ty@tjll.net
 description: "Learn how to install components of the Elastic Stack like Elasticsearch and Kibana on Kubernetes."
 keywords:
   [
@@ -90,7 +90,7 @@ https://hub.helm.sh/charts/elastic/elasticsearch  7.8.0        	  7.8.0      	Of
 
 ### Install Elasticsearch
 
-Before installing the chart, ensure that resources are set appropriately. By default, the `elasticsearch` chart allocates 1G of memory to the JVM heap and sets Kubernetes resource requests and limits to 2G. Using a Linode 4GB instance is compatible with these defaults, but if you are using a different instance type, you need to provide different values to the chart at install time in order to ensure that running Pods are within the resource constraints of the node sizes you have chosen.
+Before installing the chart, ensure that resources are set appropriately. By default, the `elasticsearch` chart allocates 1GB of memory to the JVM heap and sets Kubernetes resource requests and limits to 2GB. Using a Linode 4GB instance is compatible with these defaults, but if you are using a different instance type, you need to provide different values to the chart at install time in order to ensure that running Pods are within the resource constraints of the node sizes you have chosen.
 
 1.  Install the `elasticsearch` chart:
 
@@ -142,7 +142,7 @@ Before installing the chart, ensure that resources are set appropriately. By def
 }
 {{</ output >}}
 
-    {{< note >}} The specific version numbers and dates may be different in this json response. Elasticsearch is operational, but not receiving or serving any data. {{< /note >}}
+    {{< note >}} The specific version numbers and dates may be different in this JSON response. Elasticsearch is operational, but not receiving or serving any data. {{< /note >}}
 
 ### Install Filebeat
 
@@ -229,7 +229,7 @@ Before visualizing Pod logs, Kibana must be configured with an index pattern for
 
     ![Kibana Select Discover](kibana-discover.png "Kibana Select Discover")
 
-1.  The Discover page provides a realtime view of logs as they are ingested by Elasticsearch from the Kubernetes cluster. The histogram provides a view of log volume over time, which by default, spans the last 15 minutes. The sidebar on the left side of the user interface displays various fields parsed from json fields sent by Filebeat to Elasticsearch.
+1.  The Discover page provides a realtime view of logs as they are ingested by Elasticsearch from the Kubernetes cluster. The histogram provides a view of log volume over time, which by default, spans the last 15 minutes. The sidebar on the left side of the user interface displays various fields parsed from JSON fields sent by Filebeat to Elasticsearch.
 
 1.  Use the **Filters** box to search only for logs arriving from Kibana Pods by filtering for `kubernetes.container.name : "kibana"`. Click the **Update** button to apply the search filter.
 
@@ -247,7 +247,7 @@ When searching in the filters box, field names and values are auto-populated.
 
     ![Kibana Log Document](kibana-expanded-log.png "Kibana Log Document")
 
-1.  Look closely at the `message` field in the log representation and note that the text field is formatted as json. While the terms in this field can be searched with free text search terms in Kibana, parsing the field generally yields better results.
+1.  Look closely at the `message` field in the log representation and note that the text field is formatted as JSON. While the terms in this field can be searched with free text search terms in Kibana, parsing the field generally yields better results.
 
 ## Metricbeat
 
