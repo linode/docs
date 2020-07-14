@@ -199,7 +199,7 @@ Install Galera and XtraDB on each Linode that will be in the database cluster.
     {{< note >}}
 When installing `Percona-XtraDB-Cluster-57` and `Percona-XtraDB-Cluster-shared-57`, you will be prompted to verify a GPG key from the Percona repository. Before running the third command, you can manually import the GPG key:
 
-    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
+    wget https://repo.percona.com/yum/PERCONA-PACKAGING-KEY &&  rpm --import PERCONA-PACKAGING-KEY
 {{< /note >}}
 
 ### Add Firewall Rules
