@@ -14,6 +14,7 @@ modified_by:
   name: Linode
 title: 'Deploy and Manage Cert-Manager on Kubernetes'
 h1_title: A Tutorial for Deploying and Managing TLS Certificates on Kubernetes with Cert-Manager.
+image: Deploy-and-Manage-Cert-Manager-on-Kubernetes_1200x631.png
 external_resources:
  - '[Cert-Manager Documentation](https://cert-manager.io/docs/)'
 ---
