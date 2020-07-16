@@ -140,7 +140,14 @@ Replace `prom-operator` in the below command with a secure password and save the
         lke-monitor stable/prometheus-operator \
         -f ~/lke-monitor/values.yaml \
         --namespace monitoring \
-        --set grafana.adminPassword=$GRAFANA_ADMINPASSWORD
+        --set grafana.adminPassword=$GRAFANA_ADMINPASSWORD \
+        --set prometheusOperator.createCustomResource=false
+
+    {{< note >}}
+You can safely ignore messages similar to `manifest_sorter.go:192: info: skipping unknown hook: "crd-install"` as discussed in this [Github issues thread](https://github.com/helm/charts/issues/19452).
+
+Alternatively, you can add `--set prometheusOperator.createCustomResource=false` to the above command to prevent the message from appearing.
+    {{< /note >}}
 
 1.  Verify that the Prometheus Operator has been deployed to your LKE cluster and its components are running and ready by checking the pods in the `monitoring` namespace:
 
