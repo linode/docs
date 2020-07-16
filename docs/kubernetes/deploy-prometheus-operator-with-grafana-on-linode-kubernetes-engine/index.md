@@ -49,6 +49,10 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
 1.  Install [kubectl](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl) to your local environment.
 
+1.  Create the `monitoring` namespace on your LKE cluster:
+
+        kubectl create namespace monitoring
+
 1.  Create a directory named `lke-monitor` to store all of your Helm values and Kubernetes manifest files and move into the new directory:
 
         mkdir ~/lke-monitor && cd ~/lke-monitor
@@ -135,7 +139,6 @@ Replace `prom-operator` in the below command with a secure password and save the
         helm install \
         lke-monitor stable/prometheus-operator \
         -f ~/lke-monitor/values.yaml \
-        --create-namespace \
         --namespace monitoring \
         --set grafana.adminPassword=$GRAFANA_ADMINPASSWORD
 
@@ -279,7 +282,6 @@ If successful, the output should return the IP address of your NodeBalancer.
 
         helm install \
         cert-manager jetstack/cert-manager \
-        --create-namespace \
         --namespace cert-manager \
         --version v0.15.2
 
@@ -366,10 +368,6 @@ spec:
     {{< note >}}
 The configurations in this example create a Certificate in the `monitoring` namespace that is valid for 90 days and renews 15 days before expiry.
     {{< /note >}}
-
-1.  Create the `monitoring` namespace on your LKE cluster:
-
-        kubectl create namespace monitoring
 
 1.  Create the Certificate resource:
 
@@ -543,7 +541,6 @@ If you have already deployed a Prometheus Operator release, you can upgrade it b
         helm install \
         lke-monitor stable/prometheus-operator \
         -f ~/lke-monitor/values-https-basic-auth.yaml \
-        --create-namespace \
         --namespace monitoring \
         --set grafana.adminPassword=$GRAFANA_ADMINPASSWORD
 
