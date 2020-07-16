@@ -10,8 +10,8 @@ modified: 2019-12-03
 modified_by:
   name: Linode
 published: 2015-06-10
-title: How to Create Your First Chef Cookbook
-h1_title: Creating Your first Chef Cookbook
+title: How to Create your First Chef Cookbook
+h1_title: Creating your First Chef Cookbook
 external_resources:
  - '[Chef](http://www.chef.io)'
  - '[About Cookbooks](https://docs.chef.io/cookbooks.html)'
@@ -443,7 +443,7 @@ execute "enable-prefork" do
 # [...]
 {{< /file >}}
 
-    Your `apache.rb` is now complete. An [example of the final file is located here](/docs/applications/configuration-management/creating-your-first-chef-cookbook/apache.rb).
+    Your `apache.rb` is now complete. An [example of the final file is located here](apache.rb).
 
 ## MySQL
 
@@ -597,7 +597,7 @@ end
 1.  For easy configuration, the `php.ini` file will be created and used as a cookbook file, much like the MPM module above. You can either:
 
      - Add the PHP recipe, run `chef-client` and copy the file from a node (located in `/etc/php/7.0/cli/php.ini`), or:
-     - Copy it from [this chef-php.ini sample](/docs/applications/configuration-management/creating-your-first-chef-cookbook/chef-php.ini). The file should be moved to the `chef-repo/cookbooks/lamp_stack/files/default/` directory. This can also be turned into a template, if that better suits your configuration.
+     - Copy it from [this chef-php.ini sample](chef-php.ini). The file should be moved to the `chef-repo/cookbooks/lamp_stack/files/default/` directory. This can also be turned into a template, if that better suits your configuration.
 
 1.  `php.ini` is a large file. Search and edit the following values to best suit your Linodes. The values suggested below are for 2GB Linodes:
 
@@ -635,7 +635,7 @@ directory "/var/log/php" do
 end
 {{< /file >}}
 
-    The PHP recipe is now done! View [an example of the php.rb file here](/docs/applications/configuration-management/creating-your-first-chef-cookbook/php.rb).
+    The PHP recipe is now done! View [an example of the php.rb file here](php.rb).
 
 1. Ensure that your Chef server contains the updated cookbook, and that your node's run list is up-to-date. Replace `nodename` with your Chef node's name:
 
