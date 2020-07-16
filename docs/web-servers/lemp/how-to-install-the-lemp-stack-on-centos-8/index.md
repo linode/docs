@@ -12,6 +12,7 @@ modified_by:
 published: 2018-06-04
 title: 'How to Install the LEMP Stack on CentOS 8'
 h1_title: 'Installing the LEMP Stack on CentOS 8'
+image: How-to-Install-LEMP-Stack-on-CentOS-8_1200x631.png
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->

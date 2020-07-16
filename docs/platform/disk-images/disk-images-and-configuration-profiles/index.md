@@ -119,7 +119,7 @@ Duplicating a disk is not yet available in the Cloud Manager, but this feature i
 
 You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#cloning-disks-and-configuration-profiles).) Here's how to duplicate a disk:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Manager](https://cloud.linode.com).
 1.  Click the **Linodes** tab.
 1.  Select a Linode. The Linode's dashboard appears.
 1.  Click **Shut down** to turn your Linode off. Watch the *Host Job Queue* for confirmation that the Linode has shut down.
@@ -211,7 +211,7 @@ You have successfully selected and booted your Linode from a configuration profi
 
 You can remove a configuration profile from the Linode Cloud Manager at any time. Here's how:
 
-1.  Log in to the [Linode Cloud Manager](https://manager.linode.com).
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link from the sidebar.
 3.  Select a Linode. The Linode's detail page appears.
 4.  Click on the **Disks/Configs** tab.
@@ -230,7 +230,7 @@ To clone an entire Linode, see our [Clone Your Linode guide](/docs/platform/disk
 We recommend that you power off your Linode first, and keep it powered off until your disks have completed the cloning process.
 {{< /note >}}
 
-1.  Log in to the [Linode Cloud Manager](https://manager.linode.com).
+1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Linodes** link from the sidebar.
 

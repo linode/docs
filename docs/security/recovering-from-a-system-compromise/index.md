@@ -30,7 +30,7 @@ If you choose to keep your data, you will need to audit all the content on the a
 
 This is the easiest option, but also the most destructive. It will wipe all of the data from your Linode and start over with a fresh disk.
 
-1.  Log in to the [Linode Manager](https://manager.linode.com/).
+1.  Log in to the [Linode Manager](https://cloud.linode.com/).
 2.  Select the **Linodes** tab.
 3.  Select the compromised Linode.
 4.  Select the **Rebuild** tab.

@@ -659,7 +659,7 @@ The *Domain Name System*, or DNS, is the service that the internet uses to assoc
 
 CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://manager.linode.com//), refer to our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
+Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
 
 ### Set Up Subdomains
 

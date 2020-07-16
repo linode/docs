@@ -38,7 +38,7 @@ Create two disks: one for the files on your existing server, and another for a s
 We assume that your existing server has a single root partition. If you have multiple partitions set up, you'll need to add extra disks to accommodate each partition.
 {{< /note >}}
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Manager](https://cloud.linode.com).
 2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Create a disk to hold the files from the existing server. Select **Create a new Disk**. The webpage shown below appears.
@@ -63,7 +63,7 @@ You have successfully created the disks.
 
 You'll need a configuration profile to boot your existing server after you upload the files. Here's how to create the configuration profile:
 
-1.  In the [Linode Manager](https://manager.linode.com), select the Linode's dashboard.
+1.  In the [Linode Manager](https://cloud.linode.com), select the Linode's dashboard.
 2.  Select **Create a new Configuration Profile**. The webpage shown below appears.
 
     [![Creating a configuration profile](migrate-configuration-profile-small.png)](migrate-configuration-profile.png)
@@ -234,7 +234,7 @@ You have successfully fixed persistent rules.
 
 Now it's time to boot your Linode from the new disks. All you have to do is select the new configuration profile you created and then restart the Linode. Here's how:
 
-1.  Log in to the [Linode Manager](https://manager.linode.com).
+1.  Log in to the [Linode Manager](https://cloud.linode.com).
 2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the configuration profile you created earlier, as shown below.

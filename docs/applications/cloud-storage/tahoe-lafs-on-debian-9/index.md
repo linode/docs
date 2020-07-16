@@ -222,7 +222,7 @@ To confirm each successful setup instead of launching all instances before verif
 This StackScript relies on *icanhazip.com* to retrieve each Linode's external IP address. While the site has redundant servers, there is a chance it may unavailable at times.
 {{< /note >}}
 
-1.  [Familiarize yourself with StackScripts](/docs/platform/stackscripts), then navigate to the [StackScripts page](https://manager.linode.com/stackscripts/index) to add a new StackScript.
+1.  [Familiarize yourself with StackScripts](/docs/platform/stackscripts), then navigate to the [StackScripts page](https://cloud.linode.com/stackscripts/index) to add a new StackScript.
 
 2.  Select Debian 9 as the distribution and paste the following in the **Script** section:
 
