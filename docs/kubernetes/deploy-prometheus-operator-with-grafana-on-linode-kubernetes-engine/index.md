@@ -71,7 +71,7 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
 ## Prometheus Operator Minimal Deployment
 
-In this section, you will complete a minimal deployment of the Prometheus Operator for individual/local access with `kubectl` [Port-Forward](). If you require your monitoring interfaces to be publicly accessible over the internet, you can skip to the following section on completing a [Prometheus Operator Deployment with HTTPS and Basic Auth](#prometheus-operator-deployment-with-https-and-basic-auth).
+In this section, you will complete a minimal deployment of the Prometheus Operator for individual/local access with `kubectl` [Port-Forward](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward). If you require your monitoring interfaces to be publicly accessible over the internet, you can skip to the following section on completing a [Prometheus Operator Deployment with HTTPS and Basic Auth](#prometheus-operator-deployment-with-https-and-basic-auth).
 
 ### Deploy Prometheus Operator
 
