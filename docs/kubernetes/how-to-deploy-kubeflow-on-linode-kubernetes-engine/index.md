@@ -44,6 +44,16 @@ _Are you ready to train your model at scale?_
 
 3.  Most Kubeflow pipelines require [Kubernetes Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) that can be attached to several nodes at once (ReadWriteMany). Currently, the only mode supported by the Linode Block Storage CSI driver is ReadWriteOnce, meaning that it can only be connected to one Kubernetes node at a time.
 
+**Caution**
+
+This guide's example instructions create several billable resources on your Linode account.
+
+If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
+
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account.
+
+Consult the Billing and Payments guide for detailed information about how hourly billing works and for a table of plan pricing.
+
 ## Create an LKE Cluster
 
 Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](https://www.linode.com/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
@@ -79,7 +89,23 @@ To install Kubeflow, you need three parts:
 
 You can [download and install `kfctl` from the official repository](https://github.com/kubeflow/kfctl/releases/).
 
-> Please notice that there is no Windows release available at the moment.
+1. Download the latest release of kfctl v1.0.2 from the Kubeflow [releases page](https://github.com/kubeflow/kfctl/releases/).
+
+1. Unpack the tar ball with:
+
+    ```bash
+    tar -xvf kfctl_v1.0.2_.tar.gz
+    ```
+
+1. Add the location of kfctl binary to the path environment variable. If you don't add the location of the binary to the path variable, you must use the full path to the kfctl binary each time you run it.
+
+    ```bash
+    export PATH=$PATH:<path to where kfctl was unpacked>
+    ```
+
+Please notice that there is no Windows release available at the moment.
+
+However, you can use [WSL2](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index) or a [Docker container](https://docs.docker.com/docker-for-windows/) to work around this limitation.
 
 You can verify that the binary is installed correctly with:
 
