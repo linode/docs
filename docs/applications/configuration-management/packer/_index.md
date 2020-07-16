@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "A text passage which will appear below the title of the section on the section's page."
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ["keyword1", "keyword2"]
+description: "Packer is a HashiCorp maintained open source tool that is used to create machine images. A machine image provides the OS, applications, application configurations, and data files that a virtual machine instance will run once it’s deployed."
+og_description: 'Packer is a HashiCorp maintained open source tool that is used to create machine images. A machine image provides the OS, applications, application configurations, and data files that a virtual machine instance will run once it’s deployed.'
+keywords: ["Packer", "virtual machine"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-15
-title: Section Title
+title: Packer
 show_in_lists: true
 ---
 

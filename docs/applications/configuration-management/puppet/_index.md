@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "A text passage which will appear below the title of the section on the section's page."
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ["keyword1", "keyword2"]
+description: "Puppet is a configuration management tool that simplifies system administration. Puppet uses a client/server model in which your managed nodes, running a process called the Puppet agent, talk to and pull down configuration profiles from a Puppet master."
+og_description: 'Puppet is a configuration management tool that simplifies system administration. Puppet uses a client/server model in which your managed nodes, running a process called the Puppet agent, talk to and pull down configuration profiles from a Puppet master.'
+keywords: ["puppet", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-15
-title: Section Title
+title: Puppet
 show_in_lists: true
 ---
 

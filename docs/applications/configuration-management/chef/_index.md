@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "A text passage which will appear below the title of the section on the section's page."
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ["keyword1", "keyword2"]
+description: "Chef is a declarative configuration management and automation platform used to translate infrastructure into code. This methodology enables better testing, efficient and predictable deployments, centralized versioning, and reproducible environments."
+og_description: 'Chef is a declarative configuration management and automation platform used to translate infrastructure into code. This methodology enables better testing, efficient and predictable deployments, centralized versioning, and reproducible environments.'
+keywords: ["chef", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-15
-title: Section Title
+title: Chef
 show_in_lists: true
 ---
 
