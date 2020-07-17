@@ -30,7 +30,7 @@ Similarly, if you would like to deploy an unmanaged Kubernetes cluster on Linode
 If you have used the Linode Kubernetes Engine (LKE) or the Linode Terraform K8s module to deploy your cluster, you should instead refer to the [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/) guide for steps on adding and configuring NodeBalancers on your Kubernetes cluster.
 {{</ note >}}
 
-## In this Gu
+## In this Guide
 
 You will manually install the Linode CCM on your unmanaged Kubernetes cluster. This will include:
 
@@ -118,4 +118,4 @@ The CCM Daemonset manifest may list `latest` as the image version tag. This may 
 
 ## Next Steps
 
-Now that you have the Linode CCM installed on your Kubernetes cluster, you can learn how to [add and configure Linode NodeBalancers on your cluster](/docs/kubernetes/how-to-add-nodebalancers-to-linode-kubernetes-engine-clusters/#configuring-your-linode-nodebalancers-with-annotations).
+Now that you have the Linode CCM installed on your Kubernetes cluster, you can learn how to [add and configure Linode NodeBalancers on your cluster](/docs/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/#configuring-your-linode-nodebalancers-with-annotations).
