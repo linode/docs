@@ -2,18 +2,17 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'The Linode Kubernetes Engine (LKE) provides access to Linode''s load balancing service, NodeBalancers. NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. This guide contains details about the usage of Linode NodeBalancers, including adding NodeBalancers to a Kubernetes Service, and information on various NodeBalancer configurations.'
+og_description: 'The Linode Kubernetes Engine (LKE) provides access to Linode''s load balancing service, NodeBalancers. NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. This guide contains details about the usage of Linode NodeBalancers, including adding NodeBalancers to a Kubernetes Service, and information on various NodeBalancer configurations.'
+keywords: ['load balancers','kubernetes','nodebalancers','services']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-14
 modified_by:
   name: Linode
-title: "Adding NodeBalancers to a Linode Kubernetes Engine Cluster(LKE) - A Tutorial"
-h1_title: "A Tutorial for Adding NodeBalancers to a Linode Kubernetes Engine (LKE) Cluster"
+title: "Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster"
+h1_title: "Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster"
 contributor:
   name: Linode
-  link: Github/Twitter Link
 ---
 The Linode Kubernetes Engine (LKE) is Linode's managed Kubernetes service. When you deploy an LKE cluster, you receive a Kubernetes Master which runs your cluster's control plane components, at no additional cost. The control plane includes [Linode's Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/), which provides a way for your cluster to access additional Linode services. Linode's CCM provides access to Linode's load balancing service, [Linode NodeBalancers](/docs/platform/nodebalancer/).
 
@@ -27,9 +26,18 @@ Adding external Linode NodeBalancers to your LKE cluster will incur additional c
 All existing LKE clusters receive CCM updates automatically every two weeks when a new LKE release is deployed. See the [LKE Changelog](https://developers.linode.com/changelog/linode-kubernetes-engine/) for information on the latest LKE release.
 {{</ note >}}
 
+{{< note >}}
+The [Linode Terraform K8s module](http://localhost:1313/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) also deploys a Kubernetes cluster with the Linode CCM installed by default. Any Kubernetes cluster with a Linode CCM installation can make use of Linode NodeBalancers in the ways described in this guide.
+{{</ note>}}
+
 ## In this Guide
 
-This guide covers the following topics:
+This guide will show you:
+
+- manifest file configurations needed to [add Linode NodeBalancers to your LKE cluster](#adding-linode-nodebalancers-to-your-kubernetes-cluster).
+- [annotations](/#annotations-reference) available to further configure your Linode NodeBalancers behavior and how to incorporate them into a manifest file.
+- prerequisites and annotations needed to configure [TLS termination](#configuring-linode-nodebalancers-for-tls-encryption) on your cluster's NodeBalancers.
+- how to [configure session affinity](#configuring-session-affinity-for-cluster-pods) for the Pods in a cluster.
 
 ### Before You Begin
 
@@ -96,7 +104,7 @@ Annotations:              service.beta.kubernetes.io/linode-loadbalancer-throttl
 Selector:                 app=nginx
 Type:                     LoadBalancer
 IP:                       10.128.171.88
-LoadBalancer Ingress:     45.79.246.55
+LoadBalancer Ingress:     192.0.2.0
 Port:                     http  80/TCP
 TargetPort:               80/TCP
 NodePort:                 http  30028/TCP
@@ -214,9 +222,21 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: nginx
+    app: example-app
   sessionAffinity: ClientIP
   sessionAffinityConfig:
     clientIP:
       timeoutSeconds: 100
 {{</ file >}}
+
+## Removing Linode NodeBalancers from your Kubernetes Cluster
+
+To delete a NodeBalancer and the Service that it represents, you can use the Service manifest file you used to create the NodeBalancer. Simply use the `delete` command and supply your file name with the `f` flag:
+
+    kubectl delete -f example-service.yaml
+
+Similarly, you can delete the Service by name:
+
+    kubectl delete service example-service
+
+After deleting your service, its corresponding NodeBalancer will be removed from your Linode account.
