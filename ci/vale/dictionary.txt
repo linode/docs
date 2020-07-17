@@ -848,6 +848,7 @@ mineshafts
 miniconda
 miniconda3
 minification
+minikf
 minikube
 minimalistic
 minio
