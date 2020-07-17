@@ -156,11 +156,18 @@ In the context of the Linode CCM, Secrets are useful for storing Transport Layer
 
 1.  Generate a TLS key and certificate using a TLS toolkit like [OpenSSL](https://www.openssl.org/). Be sure to change the `CN` and `O` values to those of your own website domain.
 
-        openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.crt -subj "/CN=mywebsite.com/O=mywebsite.com"
+        openssl req -newkey rsa:4096 \
+            -x509 \
+            -sha256 \
+            -days 3650 \
+            -nodes \
+            -out tls.crt \
+            -keyout tls.key \
+            -subj "/CN=mywebsite.com/O=mywebsite.com"
 
 2.  Create the secret using the `create secret tls` command. Ensure you substitute `$SECRET_NAME` for the name you'd like to give to your secret. This will be how you reference the secret in your Service manifest.
 
-        kubectl create secret tls $SECRET_NAME --cert cert.crt --key key.pem
+        kubectl create secret tls $SECRET_NAME --cert tls.crt --key tls.key
 
 3.  You can check to make sure your Secret has been successfully stored by using `describe`:
 
