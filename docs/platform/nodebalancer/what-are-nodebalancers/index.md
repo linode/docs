@@ -15,7 +15,7 @@ h1_title: Understanding NodeBalancers
 image: getting-started-with-nodebalancers.png
 ---
 
-Load balancing allows you to distribute incoming network traffic across multiple servers so that no one server takes on all the demand. This allows high traffic sites and applications to field a large number of users without performance degredation. It also allows you to scale a site or application by adding more servers as your need grows, or remove them if your need diminishes.
+Load balancing allows you to distribute incoming network traffic across multiple servers so that no one server takes on all the demand. This allows high traffic sites and applications to field a large number of users without performance degradation. It also allows you to scale a site or application by adding more servers as your need grows, or remove them if your need diminishes.
 
 Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.
 
@@ -29,7 +29,7 @@ A NodeBalancer is assigned its own public IP address where it will listen for in
 
 ![Basic Web Server Flow Without Load Balancing](basicWebServerFlow.png)
 
-In a standard non-load balanced configuration, traffic comes into a server directly. The application or site might be connected to a database or other services, but the server takes care of all traffic. If the traffic becomes unmanagable, load times may become long and the site may even go down. Additionally, any modifications that require updating DNS will inflict downtime for the user.
+In a standard non-load balanced configuration, traffic comes into a server directly. The application or site might be connected to a database or other services, but the server takes care of all traffic. If the traffic becomes unmanageable, load times may become long and the site may even go down. Additionally, any modifications that require updating DNS will inflict downtime for the user.
 
 ### A Simple Load Balanced Configuration
 
@@ -44,7 +44,7 @@ Adding a load balancer, like a NodeBalancer, to the configuration, traffic comes
 The optimal solution for a highly available site or application is to have multiple Linodes behind a NodeBalancer. Now when traffic comes into the NodeBalancer it can be routed to any one of the Linodes available.
 
 - [Health checks](/docs/platform/nodebalancer/nodebalancer-reference-guide/#health-checks) are performed to make sure that requests are only routed to healthy Linodes.
-- Backend Linodes can be added or removed to the configuration seemlessly, without end users noticing any downtime.
+- Backend Linodes can be added or removed to the configuration seamlessly, without end users noticing any downtime.
 - Configuration be added to ensure the same client requests are routed to the same backend Linode, this is called [sticky sessions](/docs/platform/nodebalancer/nodebalancer-reference-guide/#session-stickiness).
 
 ## Limitations
