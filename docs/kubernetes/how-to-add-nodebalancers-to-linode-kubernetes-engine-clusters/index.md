@@ -12,18 +12,15 @@ modified_by:
 title: "Adding NodeBalancers to a Linode Kubernetes Engine Cluster(LKE) - A Tutorial"
 h1_title: "A Tutorial for Adding NodeBalancers to a Linode Kubernetes Engine (LKE) Cluster"
 contributor:
-  name: Your Name
+  name: Linode
   link: Github/Twitter Link
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 The Linode Kubernetes Engine (LKE) is Linode's managed Kubernetes service. When you deploy an LKE cluster, you receive a Kubernetes Master which runs your cluster's control plane components, at no additional cost. The control plane includes [Linode's Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/), which provides a way for your cluster to access additional Linode services. Linode's CCM provides access to Linode's load balancing service, [Linode NodeBalancers](/docs/platform/nodebalancer/).
 
 NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. The LKE control plane handles the creation and deletion of the NodeBalancer, and correctly identifies the resources, and their networking, that the NodeBalancer will route traffic to. Whenever a Kubernetes Service of the `LoadBalancer` type is created, your Kubernetes cluster will create a Linode NodeBalancer service with the help of the Linode CCM.
 
 {{< note >}}
-Adding external load balancers to your LKE cluster will incur additional costs. See [Linode's Pricing page](https://www.linode.com/pricing/#row--networking) for details.
+Adding external Linode NodeBalancers to your LKE cluster will incur additional costs. See [Linode's Pricing page](https://www.linode.com/pricing/#row--networking) for details.
 {{</ note >}}
 
 {{< note >}}
