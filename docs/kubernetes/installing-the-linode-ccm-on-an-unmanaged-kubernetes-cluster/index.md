@@ -34,8 +34,9 @@ If you have used the Linode Kubernetes Engine (LKE) or the Linode Terraform K8s 
 
 You will manually install the Linode CCM on your unmanaged Kubernetes cluster. This will include:
 
-- Updating your Kubernetes cluster's configuration to use the CCM for Node scheduling.
-- Using a helper script to create a manifest file that will install the Linode CCM and support resources on your cluster.
+- [Updating your Kubernetes cluster's configuration](#update-your-cluster-configuration) to use the CCM for Node scheduling.
+- [Using a helper script to create a manifest file](#install-the-linode-ccm) that will install the Linode CCM and supporting resources on your cluster.
+- [Updating the Linode CCM](#updating-the-linode-ccm) running on your cluster with its latest upstream changes.
 
 ### Before You Begin
 
@@ -90,6 +91,30 @@ You will need your [Linode APIv4](/docs/platform/api/getting-started-with-the-li
     {{< note >}}
 You can create your own `ccm-linode.yaml` manifest file by editing the contents of the `ccm-linode-template.yaml` file and changing the values of the `data.apiToken` and `data.region` fields with your own desired values. This template file is located in the `deploy` directory of the Linode CCM repository.
     {{</ note >}}
+
+## Updating the Linode CCM
+
+The easiest way to update the Linode CCM is to edit the DaemonSet that creates the Linode CCM Pod. To do so:
+
+1. Run the `edit` command to make changes to the CCM Daemonset.
+
+        kubectl edit ds -n kube-system ccm-linode
+
+1. The CCM Daemonset manifest will appear in vim. Press `i` to enter insert mode. Navigate to `spec.template.spec.image` and change the field's value to the desired version tag. For instance, if you had the following image:
+
+        image: linode/linode-cloud-controller-manager:v0.2.2
+
+    You could update the image to `v0.2.3` by changing the image tag:
+
+        image: linode/linode-cloud-controller-manager:v0.2.3
+
+      For a complete list of CCM version tags, visit the [CCM DockerHub page](https://hub.docker.com/r/linode/linode-cloud-controller-manager/tags).
+
+    {{< caution >}}
+The CCM Daemonset manifest may list `latest` as the image version tag. This may or may not be pointed at the latest version. To ensure the latest version, it is recommended to first check the [CCM DockerHub page](https://hub.docker.com/r/linode/linode-cloud-controller-manager/tags), then use the most recent release.
+    {{</ caution>}}
+
+1. Press escape to exit insert mode, then type `:wq` and press enter to save your changes. A new Pod will be created with the new image, and the old Pod will be deleted.
 
 ## Next Steps
 
