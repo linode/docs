@@ -2,7 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using a NodeBalancer to begin managing a simple web application.'
+description: 'Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.'
+og_description: 'Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.'
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-16
