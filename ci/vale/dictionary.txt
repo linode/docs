@@ -289,6 +289,7 @@ dev
 devel
 devops
 devtmpfs
+dex
 df
 dhclient
 dhparams
@@ -571,6 +572,7 @@ hulu
 hvc0
 hybla
 hyperefficient
+hyperparameter
 hypervisor
 hypervisors
 IaC
@@ -608,6 +610,7 @@ impor
 incentivized
 inet
 inet6
+ingressgateway
 ini
 initializer
 initramfs
@@ -704,10 +707,12 @@ kube
 kubeadm
 kubeconfig
 kubectl
+kubeflow
 kubelet
 kubelets
 kubernetes
 kubespray
+kustomize
 kuznetosv
 lambdabunker
 laravel
