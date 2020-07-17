@@ -21,7 +21,7 @@ external_resources:
 - '[Node.js Getting Started](https://nodejs.org/es/docs/guides/getting-started-guide/)'
 ---
 
-## MERN One-Click App
+## MEAN One-Click App
 
 A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web software bundle used to build modern web applications:
 
