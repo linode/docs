@@ -20,7 +20,7 @@ show_on_rss_feed: false
 
 1.  For the example web application, only one NodeBalancer is needed. Add one in the same data center that your backend Linodes are located in.
 
-    {{< image src="nodebalancers-create-choose-region.png" alt="The Nodebalancer Creation Screen" title="The Nodebalancer Creation Screen" >}}
+    {{< image src="nodebalancers-create-choose-region.png" alt="The NodeBalancer Creation Screen" title="The NodeBalancer Creation Screen" >}}
 
 1.  A NodeBalancer is configured using [ports](/docs/platform/nodebalancer/nodebalancer-reference-guide/#port), and in this example web application, you'll use only one, port 80 for regular HTTP traffic.
 
