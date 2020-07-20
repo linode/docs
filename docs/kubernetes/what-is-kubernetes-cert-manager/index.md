@@ -12,15 +12,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-13
 modified_by:
   name: Linode
-<<<<<<< HEAD:docs/kubernetes/deploy-and-manage-kubernetes-certificates-with-cert-manager/index.md
-title: 'Deploy and Manage Cert-Manager on Kubernetes'
-h1_title: A Tutorial for Deploying and Managing TLS Certificates on Kubernetes with Cert-Manager
-image: Deploy-and-Manage-Cert-Manager-on-Kubernetes_1200x631.png
-=======
 title: 'What is Kubernetes cert-manager?'
 h1_title: 'Understanding Kubernetes cert-manager'
 aliases: ['kubernetes/deploy-and-manage-kubernetes-certificates-with-cert-manager/']
->>>>>>> Update A Tutorial for Deploying and Managing TLS Certificates on Kubernetes with Cert-Manager:docs/kubernetes/what-is-kubernetes-cert-manager/index.md
 external_resources:
  - '[Cert-Manager Documentation](https://cert-manager.io/docs/)'
 ---
