@@ -84,3 +84,6 @@ cert-manager-cainjector-6649bbb695-bz999   1/1     Running   0          19m
 cert-manager-webhook-68d464c8b-86tqw       1/1     Running   0          19m
 {{< /output >}}
 
+## Next Steps
+
+To learn how to apply some of the concepts learned in this guide, see the [Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster](/docs/kubernetes/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/) guide.
