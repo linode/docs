@@ -13,6 +13,8 @@ title: "How to Configure Load Balancing with TLS Encryption on a Kubernetes Clus
 h1_title: "Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster"
 contributor:
   name: Linode
+external_resources:
+- '[NGINX Ingress Controller User Guide](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/)'
 ---
 
 This guide will use an example Kubernetes Deployment and Service to demonstrate how to route external traffic to a Kubernetes application over HTTPS. This is accomplished using the [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/#using-helm), [cert-manager](https://cert-manager.io/docs/), and [Linode NodeBalancers](/docs/platform/nodebalancer/). The NGINX Ingress Controller, uses Linode NodeBalancers, which is Linode's load balancing service, to route a Kubernetes Service's traffic to the appropriate backend Pods over HTTP and HTTPS. cert-manager creates a Transport Layer Security (TLS) certificate from the [Let’s Encrypt](https://letsencrypt.org/) certificate authority (CA) providing secure HTTPS access to a Kubernetes Service.
@@ -215,7 +217,7 @@ To enable HTTPS on your example application, you will create a Transport Layer S
 In this section you will install cert-manager using Helm and the required cert-manager [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CRDs). Then, you will create a [ClusterIssuer](https://cert-manager.io/docs/concepts/issuer/) resource to assist in creating a cluster's TLS certificate.
 
 {{< note >}}
-If you would like a deeper dive into cert-manager, see our guide [Understanding Kubernetes cert-manager]().
+If you would like a deeper dive into cert-manager, see our guide [’’]().
 {{</ note >}}
 
 ### Install cert-manager
@@ -354,3 +356,4 @@ ingress.networking.k8s.io/hello-app-ingress created
     Use your browser to view your TLS certificate. You should see that the certificate was issued by *Let's Encrypt Authority X3*.
 
       ![Use your browser to view your TLS certificate.](view-tls-certificate.png)
+
