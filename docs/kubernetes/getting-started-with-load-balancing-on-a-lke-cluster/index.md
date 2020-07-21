@@ -151,8 +151,11 @@ This section describes how to set up TLS termination on your Linode NodeBalancer
 
 Kubernetes allows you to store sensitive information in a Secret object for use within your cluster. This is useful for storing things like passwords and API tokens. In this section, you will create a Kubernetes secret to store Transport Layer Security (TLS) certificates and keys that you will then use to configure TLS termination on your Linode NodeBalancers.
 
+In the context of the Linode CCM, Secrets are useful for storing Transport Layer Security (TLS) certificates and keys. The `linode-loadbalancer-tls` annotation requires TLS certificates and keys to be stored as Kubernetes Secrets with the type `tls`. Follow the steps in this section to create a Kubernetes TLS Secret.
 
-In the context of the Linode CCM, Secrets are useful for storing Transport Layer Security (TLS) certificates and keys. The `linode-loadbalancer-tls` annotation requires TLS certificates and keys to be stored as Kubernetes Secrets with the type of `tls`. Follow the next steps to create a valid `tls` type Secret:
+{{< note >}}
+The steps in this section will create a self-signed TLS certificate. To learn how to create a TLS certificate from the [Let's Encrypt](https://letsencrypt.org/) certificate authority (CA) and apply it to an application running on Kubernetes, see the [Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster](/docs/kubernetes/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/).
+{{</ note >}}
 
 1.  Generate a TLS key and certificate using a TLS toolkit like [OpenSSL](https://www.openssl.org/). Be sure to change the `CN` and `O` values to those of your own website domain.
 
