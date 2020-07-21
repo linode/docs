@@ -23,13 +23,13 @@ external_resources:
 
 ## Introduction
 
-It is incredibly important to have backups of your databases to allow you to restore in the event of a server fault, a user error or - worst-case - a hacking or defacing of your website or applications.
+It is vital to have backups of your databases to allow you to restore in the event of a server fault, a user error or - worst-case - a hacking or defacing of your website or applications.
 
 To be successful, backups should be automatic, reliable and secure. This guide explains how to configure [Restic](https://restic.net/) on your Linode to backup your MariaDB (or MySQL) databases
-off your Linode and onto Linode Object Storage, so they can be recovered in case your Linode is no longer available.
+onto Linode Object Storage, so they can be recovered even if your Linode is no longer accessible.
 
 Restic is a backup utility written in Go. It is cross-platform and works on most Linux distributions with a kernel newer than 2.6.23. Each backup is stored as a "snapshot" in a "repository." 
-The repository can be stored on most cloud storage providers, or even in a separate directory on your Linode (not recommended.) 
+The repository can be stored on most cloud storage providers, or even in a separate directory on your Linode (not recommended.)
 
 This guide will explain how to use Linode Object Storage to hold your backup repository.
 
@@ -72,8 +72,11 @@ Move it to somewhere in your PATH and make it executable for all users:
     
 You can now run Restic using the command "restic":
 
-    $ restic version
-    restic 0.9.6 compiled with go1.13.4 on linux/amd64
+    restic version
+    
+{{< output >}}
+restic 0.9.6 compiled with go1.13.4 on linux/amd64
+{{< /output >}}
 
 ## Create the Restic Repository
 
@@ -93,14 +96,18 @@ Example: for Frankfurt, DE, the command would be:
 You will be prompted to set a password to encrypt your repository's data. Enter your desired password twice, and you should see similar output to the below, confirming your repository has been created:
     
 {{< output >}}
-    enter password for new repository:
-    enter password again:
-    created restic repository c3ffbd1ea6 at s3:us-east-1.linodeobjects.com/restic-backups-example
-    
-    Please note that knowledge of your password is required to access
-    the repository. Losing your password means that your data is
-    irrecoverably lost.
+enter password for new repository:
+enter password again:
+created restic repository c3ffbd1ea6 at s3:us-east-1.linodeobjects.com/restic-backups-example
+
+Please note that knowledge of your password is required to access
+the repository. Losing your password means that your data is
+irrecoverably lost.
 {{< /output >}}
+
+{{< caution >}}
+Store this password securely and somewhere away from your Linode. Your backups will be inaccessible without it!
+{{< /caution >}}
 
 ### Store the access key and secret
 
@@ -110,8 +117,7 @@ To keep it secure, create this script within the root user's home directory, and
 
     sudo nano /root/restic_params
     
-{{< file "/root/restic_params" >}}
-export AWS_ACCESS_KEY_ID=your-key
+{{< file "/root/restic_params" >}}export AWS_ACCESS_KEY_ID=your-key
 export AWS_SECRET_ACCESS_KEY=your-secret
 {{< /file >}}
 
@@ -121,8 +127,7 @@ Whenever you want to use Restic, import this file or include it in your user's l
     
 Create a password file to hold your Restic password:
 
-{{< file "/root/restic_pw" >}}
-YourPasswordGoesHere
+{{< file "/root/restic_pw" >}}YourPasswordGoesHere
 {{< /file >}}
     
 You can pass your password filename to Restic using the "-p" flag:
@@ -146,8 +151,7 @@ Create a file in /usr/local/bin:
 
 Copy the following contents into the file:
 
-{{< file "/usr/local/bin/backup_mariadb" >}}
-#!/bin/bash
+{{< file "/usr/local/bin/backup_mariadb" >}}#!/bin/bash
 source /root/restic_params
 mysql -N -e 'show databases' | while read dbname; do /usr/bin/mysqldump --complete-insert "$dbname" > "/var/backups/mariadb/$dbname".sql; done
 restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw backup /var/backups/mariadb
@@ -162,17 +166,31 @@ You can now run your first backup:
 
     backup_mariadb
 
+{{< output >}}
+mysqldump: Got error: 1044: "Access denied for user 'root'@'localhost' to database 'information_schema'" when using LOCK TABLES
+mysqldump: Got error: 1142: "SELECT, LOCK TABLES command denied to user 'root'@'localhost' for table 'accounts'" when using LOCK TABLES
+repository 1689c602 opened successfully, password is correct
+
+Files:           4 new,     0 changed,     0 unmodified
+Dirs:            2 new,     0 changed,     0 unmodified
+Added to the repo: 470.844 KiB
+
+processed 4 files, 469.825 KiB in 0:01
+snapshot 81072f28 saved
+{{< /output >}}
+
 Check your backups have been created - you should get one file per database:
 
     ls -al /var/backups/mariadb
     
 {{< output >}}
-drwxr-xr-x. 2 root root      4096 Jul 16 23:00 .
-drwxr-xr-x. 3 root root      4096 Jul  5 21:58 ..
--rw-r--r--. 1 root root       811 Jul 19 20:00 information_schema.sql
--rw-r--r--. 1 root root   1787602 Jul 19 20:00 mysql.sql
--rw-r--r--. 1 root root       811 Jul 19 20:00 performance_schema.sql
--rw-r--r--. 1 root root    240863 Jul 19 20:00 wordpress.sql
+total 492
+drwxr-xr-x 2 root root   4096 Jul 21 19:47 .
+drwxr-xr-x 3 root root   4096 Jul 21 19:46 ..
+-rw-r--r-- 1 root root    830 Jul 21 19:47 information_schema.sql
+-rw-r--r-- 1 root root 479441 Jul 21 19:47 mysql.sql
+-rw-r--r-- 1 root root    830 Jul 21 19:47 performance_schema.sql
+-rw-r--r-- 1 root root   1292 Jul 21 19:47 wordpress.sql
 {{< /output >}}
 
 You should also have one snapshot in your Restic repository:
@@ -180,10 +198,12 @@ You should also have one snapshot in your Restic repository:
     restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw snapshots
 
 {{< output >}}
-repository c3ffbd1ea6 opened successfully, password is correct
-ID        Time                 Host                     Tags        Paths
--------------------------------------------------------------------------
-21041dbe  2020-07-19 20:00:02  localhost                            /
+repository 1689c602 opened successfully, password is correct
+ID        Time                 Host        Tags        Paths
+---------------------------------------------------------------------------
+81072f28  2020-07-21 19:47:19  li1356-54               /var/backups/mariadb
+---------------------------------------------------------------------------
+1 snapshots
 {{< /output >}}
 
 ### Run the backup script automatically
@@ -214,8 +234,7 @@ Create the unit configuration file:
 
     sudo nano /etc/systemd/system/backup-mariadb.service
     
-{{< file "/etc/systemd/system/backup-mariadb.service" >}}
-[Unit]
+{{< file "/etc/systemd/system/backup-mariadb.service" >}}[Unit]
 Description=Backup MariaDB databases
 [Service]
 ExecStart=/usr/local/bin/backup_mariadb
@@ -226,8 +245,7 @@ Create the timer configuration file:
 
     sudo nano /etc/systemd/system/backup-mariadb.timer
     
-{{< file "/etc/systemd/system/backup-mariadb.timer" >}}
-[Unit]
+{{< file "/etc/systemd/system/backup-mariadb.timer" >}}[Unit]
 Description=Backup MariaDB databases
 [Timer]
 OnCalendar=*-*-* *:00:00
@@ -287,19 +305,21 @@ To restore a backup from a specific point-in-time, identify the snapshot ID in w
     restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw snapshots
 
 {{< output >}}
-repository c3ffbd1ea6 opened successfully, password is correct
-ID        Time                 Host                     Tags        Paths
--------------------------------------------------------------------------
-21041dbe  2020-07-19 20:00:02  localhost                            /
+repository 1689c602 opened successfully, password is correct
+ID        Time                 Host        Tags        Paths
+---------------------------------------------------------------------------
+81072f28  2020-07-21 19:47:19  li1356-54               /var/backups/mariadb
+---------------------------------------------------------------------------
+1 snapshots
 {{< /output >}}
 
 Pass the selected ID to the restore command instead of "latest":
 
-    restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore 21041dbe -t /root
+    restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore 81072f28 -t /root
     
 The above commands will restore all databases taken in the backup. If you only want a selected backup, pass the filename using the "-i" parameter - along with either "latest" or the snapshot ID, as above:
 
-    restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore 21041dbe -i wordpress.sql -t /root
+    restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore 81072f28 -i wordpress.sql -t /root
     
 ### Maintain your repository
 
