@@ -23,13 +23,9 @@ external_resources:
 
 Cert-manager is a Kubernetes add-on designed to assist with the creation and management of TLS certificates. Similar to [Certbot](https://www.linode.com/docs/quick-answers/websites/secure-http-traffic-certbot/), cert-manager can automate the process of creating and renewing self-signed and signed certificates for a large number of use cases, with a specific focus on container orchestration tools like Kubernetes.
 
-## In This Guide
-
-In this guide, you will learn about how cert-manager works to create certificates, the options available for creating certificates, and then use cert-manager to create two public signed certificates using only Kubernetes and cert-manager tooling.
-
-## Before you Begin
-
-- You should have a working knowledge of Kubernetes' key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series.
+{{< note >}}
+This guide assumes a working knowledge of Kubernetes key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series.
+{{</ note >}}
 
 ## Understanding Cert Manager Concepts
 
