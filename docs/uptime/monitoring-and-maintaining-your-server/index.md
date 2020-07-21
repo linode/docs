@@ -40,20 +40,7 @@ There are several different availability monitoring tools available. Your decisi
 
 ### Configure Shutdown Watchdog
 
-Shutdown Watchdog, also known as *Lassie*, is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Lassie is not technically an availability monitoring tool, but it can help get your Linode back online fast if it's accidentally powered off.
-
-To turn Lassie on and off:
-
-1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Click the **Linodes** link in the sidebar.
-1.  Select your Linode. The Linode's details page appears.
-1.  Click the **Settings** tab. The Shutdown Watchdog settings appear, as shown below.
-
-    [![Configuring Shutdown Watchdog](shutdown-watchdog-small.png)](shutdown-watchdog.png)
-
-1.  Toggle the box to turn Shutdown Watchdog on.
-
-Once Lassie is enabled, your Linode will automatically reboot if it is unexpectedly powered off in the future.
+{{< content "monitoring-configure-watchdog-shortguide" >}}
 
 ## Performance Monitoring
 
@@ -61,46 +48,15 @@ Once Lassie is enabled, your Linode will automatically reboot if it is unexpecte
 
 ### Linode Cloud Manager
 
-If you're new to performance monitoring, you can get started by logging in to the Linode Cloud Manager. There are four simple graphs available on the Dashboard and in the Graphs section:
-
--   **CPU %:** Monitor how your Linode's CPU cores are being utilized. Note that each of your Linode's CPU cores is capable of 100% utilization, which means you could see this graph spike well over 100%, depending on your Linode plan size.
--   **IPv4 Network Traffic:** Keep tabs on how much incoming and outgoing bandwidth your server is using.
--   **IPv6 Network Traffic:** Wondering if any of your visitors are using IPv6? Check this graph to see how much bandwidth has been transferred over IPv6.
--   **Disk I/O:** Watch for [disk input/output bottlenecks](/docs/troubleshooting/troubleshooting/#is-your-disk-full).
-
-When you first start monitoring the graphs, you won't know what numbers are normal. Don't worry. With time and practice, you'll learn what the graphs are supposed to look like when your server is operating normally. Then you'll be able to spot performance abnormalities before they turn into full-blown problems.
+{{< content "monitoring-cloud-manager-graphs-shortguide" >}}
 
 ### Configure Linode Cloud Manager Email Alerts
 
-The Linode Cloud Manager allows you to configure *email alerts* that automatically notify you via email if certain performance thresholds are reached. For example, if you set the threshold for CPU Usage to 90% percent, you'll be notified if your Linode's average CPU usage is greater than 90% for over 2 hours.
-
-To turn on and customize the alerts:
-
-1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Click the **Linodes** link in the sidebar.
-1.  Select your Linode. The Linode's details page appears.
-1.  Click the **Settings** tab. The *Notification Thresholds* panel appears, as shown below.
-
-    [![Configuring Linode Cloud Manager Email Alerts](notification-thresholds-small.png)](notification-thresholds.png)
-
-1.  To enable an email alert, toggle the appropriate switch.
-1.  To configure the threshold for an alert, set a value in the text field.
-1.  Click **Save** to save the email alert thresholds.
-
-You have successfully configured email alerts in the Linode Cloud Manager.
-
- {{< note >}}
-If you receive an email threshold alert from the Linode Cloud Manager, don't panic. There's not necessarily anything wrong with your Linode. For example, your server may be operating above the threshold if you're compiling software or if a major website just linked to your blog.
-{{< /note >}}
+{{< content "monitoring-configure-email-alerts-shortguide" >}}
 
 ### Use Third-Party Tools
 
-The graphs in the Linode Cloud Manager provide basic information for things like CPU utilization and bandwidth consumption. That's good information as far as it goes, but it won't sate the appetite of true geeks who crave detailed statistics on a server's disk, network, system, and service performance. For that kind of information, you'll need to install and configure a third-party performance monitoring tool.
-
-There are several free third-party performance monitoring tools available for your Linode:
-
--   **Munin**: Munin is a system and network monitoring tool that generates graphs of resource usage in an accessible web based interface. Munin also makes it possible to monitor multiple Linodes with a single installation.
--   **Cacti**: If you have advanced monitoring needs, try Cacti. It allows you to monitor larger systems and more complex deployments with its plugin framework and web-based interface.
+{{< content "monitoring-third-party-tools-shortguide" >}}
 
 ## Linode Managed
 
