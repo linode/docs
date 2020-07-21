@@ -25,7 +25,7 @@ The [*Linode Cloud Controller Manager*](https://github.com/linode/linode-cloud-c
 To learn about the various configurations available for Linode NodeBalancers via [Kubernetes annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/), see [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/#configuring-your-linode-nodebalancers-with-annotations).
 {{</ note >}}
 
-### Before you Begin
+## Before you Begin
 
 1. This guide assumes that your Kubernetes cluster has the Linode Cloud Controller Manager (CCM) installed on your Kubernetes cluster. The Linode CCM is installed by default on clusters deployed with the [Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) and the [Linode Terraform K8s module](http://localhost:1313/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/).
 
