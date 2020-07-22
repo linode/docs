@@ -22168,6 +22168,11 @@ blockquote div.btn-copy .glyphicon.glyphicon-copy {
   display: inline-block;
   white-space: nowrap;
 }
+.o-menu__icon {
+  height: 1em;
+  margin-right: .5em;
+  width: 1em;
+}
 .o-menu__caret {
   display: inline-block;
   margin-left: 0.5em;
@@ -22416,7 +22421,6 @@ li.weglot-hide,
   background-color: #fff;
   border-bottom: 1px solid #ededf4;
   color: #32363b;
-  font-weight: 600;
   overflow: visible;
   padding-bottom: 0;
   padding-top: 0;
@@ -22493,6 +22497,7 @@ li.weglot-hide,
 .c-site-header__primary .o-menu__title {
   border: 0 solid transparent;
   border-width: 2px 0;
+  font-weight: 600;
   padding: 10px 0;
 }
 .c-site-header__primary .o-menu__link.current .o-menu__title,
@@ -22700,6 +22705,22 @@ li.weglot-hide,
 .c-sub-menu .o-menu--featured .o-menu__item + .o-menu__item {
   margin-top: 24px;
 }
+.c-sub-menu .o-link--arrow {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 600;
+}
+.c-sub-menu .o-link--arrow:after {
+  content: url("data:image/svg+xml;utf8,<svg viewBox='0 0 7 12' version='1.1' xmlns='http://www.w3.org/2000/svg'><path d='M6.87 6.319l-5.39 5.549a.435.435 0 0 1-.624 0l-.727-.743a.457.457 0 0 1 0-.637L4.48 6 .13 1.512a.457.457 0 0 1 0-.637L.855.132a.435.435 0 0 1 .625 0l5.39 5.55a.457.457 0 0 1 0 .637z' fill='%2302b159' fill-rule='nonzero'/></svg>");
+  display: inline-block;
+  height: auto;
+  margin-left: .5em;
+  width: 7px;
+}
 .c-sub-menu .c-post-preview .c-post-preview__permalink {
   display: block;
 }
@@ -22898,6 +22919,15 @@ body.fixed-header .c-sub-menu {
   font-size: 13px;
   line-height: 1.30769;
 }
+.c-site-header__topbar .c-notification__link {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 600;
+}
 .c-site-header__topbar .c-notification__tag,
 .c-site-header__topbar .c-notification__message {
   padding-bottom: 2px;
@@ -22924,7 +22954,6 @@ body.fixed-header .c-sub-menu {
 .c-site-header__topbar .o-menu__link {
   border: 0 solid transparent;
   border-width: 2px 0;
-  font-weight: 600;
   margin: 0 12px;
 }
 .c-site-header__topbar .o-menu__link:hover {
@@ -22932,6 +22961,7 @@ body.fixed-header .c-sub-menu {
   color: #32363b;
 }
 .c-site-header__topbar .o-menu__title {
+  font-weight: 600;
   padding: 8px 0;
 }
 .c-site-header__topbar .c-weglot-nav {
@@ -23297,6 +23327,33 @@ body.fixed-header .c-sub-menu {
   .c-site-footer__primary .c-social svg {
     margin: 0;
   }
+}
+.c-site-footer__primary .c-social a {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.c-site-footer__primary .c-social svg {
+  color: #32363b;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+}
+.c-site-footer__primary .o-layout__col:first-child .o-menu__heading {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
 }
 .c-site-footer a:hover {
   color: #65686c;
