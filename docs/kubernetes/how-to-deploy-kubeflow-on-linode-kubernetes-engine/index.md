@@ -14,6 +14,7 @@ h1_title: "Deploying Kubeflow on Linode Kubernetes Engine"
 contributor:
   name: Daniele Polencic
   link: https://github.com/danielepolencic
+image: 'deploying_kubeflow_on_linode_kubernetes_engine.png'
 external_resources:
 - '[Multi-user, auth-enabled Kubeflow installation](https://www.kubeflow.org/docs/started/k8s/kfctl-istio-dex/)'
 - '[Kubeflow Jupyter notebooks](https://www.kubeflow.org/docs/notebooks/)'
