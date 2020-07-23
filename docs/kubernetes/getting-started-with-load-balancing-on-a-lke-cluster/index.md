@@ -36,7 +36,7 @@ The [Linode Terraform K8s module](http://localhost:1313/docs/applications/config
 This guide will show you:
 
 - manifest file configurations needed to [add Linode NodeBalancers to your LKE cluster](#adding-linode-nodebalancers-to-your-kubernetes-cluster).
-- [annotations](/#annotations-reference) available to further configure your Linode NodeBalancers behavior and how to incorporate them into a manifest file.
+- [annotations](#annotations-reference) available to further configure your Linode NodeBalancers behavior and how to incorporate them into a manifest file.
 - prerequisites and annotations needed to configure [TLS termination](#configuring-linode-nodebalancers-for-tls-encryption) on your cluster's NodeBalancers.
 - how to [configure session affinity](#configuring-session-affinity-for-cluster-pods) for the Pods in a cluster.
 
@@ -49,13 +49,13 @@ This guide assumes you have a working Kubernetes cluster that was deployed using
 - [Terraform](/docs/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
     {{< note >}}
-An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see How to Add NodeBalancers to a Non-Linode Managed Kubernetes Cluster.
+An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/).
     {{</ note >}}
 
 
 ## Adding Linode NodeBalancers to your Kubernetes Cluster
 
-To add an external load balancer to your Kubernetes cluster you can add the example lines to a new configuration file or more commonly, to a Service file. When the configuration is applied to your cluster, Linode NodeBalancers will be created, and added to your Kubernetes cluster. Your cluster will be accessible via a public IP address and the NodeBalancers will route external traffic to a Service running on healthy nodes in your cluster.
+To add an external load balancer to your Kubernetes cluster you can add the example lines to a new configuration file, or more commonly, to a Service file. When the configuration is applied to your cluster, Linode NodeBalancers will be created, and added to your Kubernetes cluster. Your cluster will be accessible via a public IP address and the NodeBalancers will route external traffic to a Service running on healthy nodes in your cluster.
 
 {{< note >}}
 Billing for Linode NodeBalancers begin as soon as the example configuration is successfully applied to your Kubernetes cluster.
@@ -121,7 +121,7 @@ Events:                   <none>
 The Linode CCM accepts annotations that configure the behavior and settings of your cluster's underlying NodeBalancers.
 
 - The table below provides a list of all available annotation suffixes.
-- Each annotation **must** be prefixed with `service.beta.kubernetes.io/linode-loadbalancer-`. For example, the complete for the `throttle` annotation is `service.beta.kubernetes.io/linode-loadbalancer-throttle`.
+- Each annotation **must** be prefixed with `service.beta.kubernetes.io/linode-loadbalancer-`. For example, the complete value for the `throttle` annotation is `service.beta.kubernetes.io/linode-loadbalancer-throttle`.
 - Annotation values such as `http` are case-sensitive.
 
 #### Annotations Reference
@@ -209,7 +209,7 @@ metadata:
 ...
 {{</ file >}}
 
-- The `service.beta.kubernetes.io/linode-loadbalancer-default-protocol` configures the NodeBalancer's default protocol to use.
+- The `service.beta.kubernetes.io/linode-loadbalancer-default-protocol` annotation configures the NodeBalancer's default protocol.
 
 - `service.beta.kubernetes.io/linode-loadbalancer-port-443` specifies port `443` as the port to be configured. The value of this annotation is a JSON object designating the TLS secret name to use (`example-secret`) and the protocol to use for the port being configured (`https`).
 
@@ -251,3 +251,7 @@ Similarly, you can delete the Service by name:
     kubectl delete service example-service
 
 After deleting your service, its corresponding NodeBalancer will be removed from your Linode account.
+
+{{< note >}}
+If your Service file used the `preserve` annotation, the underlying NodeBalancer will not be removed from your Linode account. See the [annotations reference](#annotations-reference) for details.
+{{</ note >}}
