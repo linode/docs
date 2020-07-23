@@ -95,7 +95,11 @@ The disk will be created. Monitor your bell notifications at the top of the Clou
 Resizing allows you to allocate more storage to a disk so you can store more files on it, or shrink a disk so you have more allocatable space for the other disks.
 
 {{< note >}}
-Resizing a disk requires you to power your Linode off, if it is currently in use by your Linode. Shrinking a disk takes longer than increasing its size.
+Resizing a disk requires you to power your Linode off, if it is currently in use by your Linode.
+
+When shrinking a disk that is using more space than you wish to allocate, you must first delete or compress files until it is within the reduced allocation size. Use the command `df -h` to determine how much space your disk is using.
+
+Shrinking a disk takes longer than increasing its size.
 {{< /note >}}
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
