@@ -35,7 +35,7 @@ In a standard non-load balanced configuration, traffic comes into a server direc
 
 ![Single Web Server Flow With NodeBalancer](singleWebServerNodeBalancer.png)
 
-Adding a load balancer, like a NodeBalancer, to the configuration, traffic comes to the site through the load balancer first. It's then managed before reaching the Linode. In addition to balancing traffic load, NodeBalancers also offer features like [SSL termination](https://en.wikipedia.org/wiki/TLS_termination_proxy). NodeBalancers alleviate this burden from the server allowing them to be faster at other tasks, like serving pages. Therefore, even with only one server on the backend, having a NodeBalancer in front of your server can be an advantage.
+When using a load balancer, like a NodeBalancer, traffic comes to the site through the load balancer first. It's then managed before reaching the Linode. In addition to balancing traffic load, NodeBalancers also offer features like [SSL termination](https://en.wikipedia.org/wiki/TLS_termination_proxy). NodeBalancers alleviate this burden from the server allowing them to be faster at other tasks, like serving pages. Therefore, even with only one server on the backend, having a NodeBalancer in front of your server can be an advantage.
 
 ### A Highly Available Load Balanced Configuration
 
