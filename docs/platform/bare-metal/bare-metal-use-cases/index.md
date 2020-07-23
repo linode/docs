@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+description: 'Why use Bare Metal Linodes? This guide has the answers.'
+og_description: 'Why use Bare Metal Linodes? This guide has the answers.'
 keywords: ['bare metal','IaaS']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-22
