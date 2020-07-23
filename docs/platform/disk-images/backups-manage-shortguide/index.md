@@ -20,8 +20,8 @@ You'll manage your backups with a simple web interface in the Linode Cloud Manag
 
 1. A list of available backups. Listed in this view are the date created, the label, how long the backup took to be created, the disks imaged, and the size of the resulting image.
 
-1. Manually create a backup by taking a *manual snapshot*. For more information, see the [Take a Manual Snapshot](#take-a-manual-snapshot) section.
+1. Manually create a backup by taking a *manual snapshot*. For more information, see the [Take a Manual Snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot) section.
 
-1. Configure backup schedule settings. For more information, see the [Schedule Backups](#schedule-backups) section.
+1. Configure backup schedule settings. For more information, see the [Schedule Backups](/docs/platform/disk-images/linode-backup-service/#schedule-backups) section.
 
 1. Cancel backups. After cancelling your backups you will have to wait 24 hours before you can re-enable them again.

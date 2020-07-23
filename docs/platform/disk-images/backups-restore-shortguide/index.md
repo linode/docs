@@ -14,7 +14,7 @@ headless: true
 show_on_rss_feed: false
 ---
 
-This section shows how to restore a backup to a [new](#restore-to-a-new-linode) Linode, or to an [existing](#restore-to-an-existing-linode) Linode.
+This section shows how to restore a backup to a [new](/docs/platform/disk-images/linode-backup-service/#restore-to-a-new-linode) Linode, or to an [existing](/docs/platform/disk-images/linode-backup-service/#restore-to-an-existing-linode) Linode.
 
 Restoring a backup will create a new [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and a new set of [disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#disks) on your Linode. The restore process does not restore single files or directories automatically. Restoring particular files can be done by completing a normal restore, copying the files off of the new disks, and then removing the disks afterward.
 
@@ -26,7 +26,7 @@ To restore a backup to a different data center, first restore to a Linode in the
 
 ### Restore to a New Linode
 
-This section covers how to restore a backup to a new Linode that does not have any disks deployed to it. The new Linode will be located in the same data center. If you instead wish to restore your backup to an existing Linode, see the [next section](#restore-to-an-existing-linode).
+This section covers how to restore a backup to a new Linode that does not have any disks deployed to it. The new Linode will be located in the same data center. If you instead wish to restore your backup to an existing Linode, see the [next section](/docs/platform/disk-images/linode-backup-service/#restore-to-an-existing-linode).
 
 1.  From the **Linodes** page, select the Linode whose backups you intend to restore, and then click on the **Backups** tab. Select the **more options ellipsis** next to the backup you would like to restore, and click **Deploy New Linode**.
 

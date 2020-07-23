@@ -20,7 +20,7 @@ The removal process is irreversible, and the data will be permanently deleted.
 
 1.  Shut down the attached Linode.
 
-1.  Detach the Volume as described [above](#how-to-detach-a-block-storage-volume-from-a-linode).
+1.  Detach the Volume as described [above](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode).
 
 1.  On the **Volumes** page, click the **more options ellipsis** next to the Volume you would like to delete.
 

@@ -15,7 +15,7 @@ show_on_rss_feed: false
 ---
 
 {{< note >}}
-You can only delete an empty Object Storage bucket. See the [Delete Objects from a Bucket](#delete-objects-from-a-bucket) section for information on deleting a bucket's objects using the Cloud Manager.
+You can only delete an empty Object Storage bucket. See the [Delete Objects from a Bucket](/docs/platform/object-storage/how-to-use-object-storage/#delete-objects-from-a-bucket) section for information on deleting a bucket's objects using the Cloud Manager.
 {{</ note >}}
 
 1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
