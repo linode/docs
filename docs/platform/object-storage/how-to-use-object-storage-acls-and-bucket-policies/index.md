@@ -291,11 +291,6 @@ If you wanted to deny all access to a resource and whitelist by IP address, you 
 }
 {{</ file >}}
 
-{{caution}}
-In the below examples, access to all objects within a bucket are defined with a wildcard `*`. While these resources can be defined to target the bucket resource itself by removing the `/*` where the resource is defined, creation of a policy with this rule can cause the bucket to become inaccessible to the Linode Cloud Manager, API, and CLI.
-{{/caution}}
-
-
 ### Combining Rules
 Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Therefore, if you wanted to enact several of the above rules together, instead of enabling them one at a time, you would need to combine them into a single file with each rule listed as items in the `Statements` array.
 
