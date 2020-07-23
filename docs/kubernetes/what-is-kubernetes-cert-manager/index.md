@@ -6,31 +6,26 @@ contributor:
   name: Linode
   link: https://linode.com
 description: "Learn how cert-manager works, a tool on Kubernetes designed to assist with the deployment, configuration, and management of certificates on Kubernetes."
-og_description: "Learn how cert-manager works, the options to create certificates, and use cert-manager to create two public signed certificates using only Kubernetes."
+og_description: "Learn how cert-manager works, a tool on Kubernetes designed to assist with the deployment, configuration, and management of certificates on Kubernetes."
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster", "ssl", "certbot", "lets-encrypt", "tls"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-13
 modified_by:
   name: Linode
-title: 'Deploy and Manage Cert-Manager on Kubernetes'
-h1_title: A Tutorial for Deploying and Managing TLS Certificates on Kubernetes with Cert-Manager
-image: Deploy-and-Manage-Cert-Manager-on-Kubernetes_1200x631.png
+title: 'What is Kubernetes cert-manager?'
+h1_title: 'Understanding Kubernetes cert-manager'
+aliases: ['kubernetes/deploy-and-manage-kubernetes-certificates-with-cert-manager/']
 external_resources:
  - '[Cert-Manager Documentation](https://cert-manager.io/docs/)'
 ---
 
-## What is cert manager
+## What is cert manager?
 
 Cert-manager is a Kubernetes add-on designed to assist with the creation and management of TLS certificates. Similar to [Certbot](https://www.linode.com/docs/quick-answers/websites/secure-http-traffic-certbot/), cert-manager can automate the process of creating and renewing self-signed and signed certificates for a large number of use cases, with a specific focus on container orchestration tools like Kubernetes.
 
-## In This Guide
-
-In this guide, you will learn about how cert-manager works to create certificates, the options available for creating certificates, and then use cert-manager to create two public signed certificates using only Kubernetes and cert-manager tooling.
-
-## Before you Begin
-
-- Follow our guide to [Deploying an Ingress](/docs/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/). The final example of this guide uses the same configuration, cluster, and domains.
-- You should have a working knowledge of Kubernetes' key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series.
+{{< note >}}
+This guide assumes a working knowledge of Kubernetes key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series.
+{{</ note >}}
 
 ## Understanding Cert Manager Concepts
 
@@ -89,75 +84,6 @@ cert-manager-cainjector-6649bbb695-bz999   1/1     Running   0          19m
 cert-manager-webhook-68d464c8b-86tqw       1/1     Running   0          19m
 {{< /output >}}
 
-### Using Cert-Manager to Create Certificates
+## Next Steps
 
-The following example creates an ACME certificate signed using Let's Encrypt.
-
-To begin, define a [ClusterIssuer](#issuers-and-clusterissuers) resource manually, replacing `myemail@website.com` with your own personal email address which is used for ACME registration:
-
-{{< file "my-new-issuer.yaml" yaml >}}
-apiVersion: cert-manager.io/v1alpha2
-kind: ClusterIssuer
-metadata:
-  name: letsencrypt-certmanager
-spec:
-  acme:
-    # Replace this e-mail with your own to be used for ACME registration
-    email: myemail@website.com
-    server: https://acme-v02.api.letsencrypt.org/directory
-    privateKeySecretRef:
-      name: letsencrypt-private-key
-    # Add a single challenge solver, HTTP01 using nginx
-    solvers:
-    - http01:
-        ingress:
-          class: nginx
-{{< /file >}}
-
-In the above example, note that `privateKeySecretRef` attribute creates a secret resource using the specified name for storing the private key of the account.
-
-Then enter the following to create the resource:
-
-    kubectl create -f my-new-issuer.yaml
-
-You should see a confirmation message that the resource was successfully created.
-
-Finally, edit your Ingress to include the annotation for the cert-manager resource, add the `tls` block to define the domains that need certificates, and the  name of the `privateKeySecretRef ` in the `secretName` field.
-
-{{< file "my-new-ingress.yaml" yaml >}}
-metadata:
-  name: my-new-ingress
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt-certmanager
-spec:
-  tls:
-  - hosts:
-    - shop.example.com
-    - blog.example.com
-    secretName: letsencrypt-private-key
-  rules:
-  - host: shop.example.com
-    http:
-      paths:
-      - backend:
-          serviceName: hello-one
-          servicePort: 80
-  - host: blog.example.com
-    http:
-      paths:
-      - backend:
-          serviceName: hello-two
-          servicePort: 80
-{{< /file >}}
-
-After you have completed the configuration, apply it with the following:
-
-    kubectl apply -f my-new-ingress.yaml
-
-{{< note >}}
-In the `my-new-issuer.yaml` the `http01` stanza specifies that the ACME challenge is performed through the HTTP-01 challenge type. For more information on how this works, see Let's Encrypt's [documentation](https://letsencrypt.org/docs/challenge-types/#http-01-challenge)
-{{< /note >}}
-
-Now that the resource has been applied, you may now navigate to your subdomains `https://blog.example.com` and `https://shop.example.com` to see them resolve using SSL/TLS encryption.
-
+To learn how to apply some of the concepts learned in this guide, see the [Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster](/docs/kubernetes/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/) guide.
