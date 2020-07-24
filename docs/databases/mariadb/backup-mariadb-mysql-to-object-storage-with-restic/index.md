@@ -6,9 +6,9 @@ description: 'This guide shows you how to use Restic to backup your MariaDB or M
 og_description: 'Learn how to backup your MariaDB and MySQL databases off your Linode and onto Linode Object Storage with Restic.'
 keywords: ['mariadb','mysql','backup','backups','restic','off-site backups','Object Storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-08
+published: 2020-07-24
 modified_by:
-  name: Linode
+  name: Andy Heathershaw
 title: "Backup MariaDB databases to Linode Object Storage with Restic"
 h1_title: "Backup MariaDB or MySQL databases to Linode Object Storage with Restic"
 contributor:
@@ -25,11 +25,9 @@ external_resources:
 
 It is vital to have backups of your databases to allow you to restore in the event of a server fault, a user error or - worst-case - a hacking or defacing of your website or applications.
 
-To be successful, backups should be automatic, reliable and secure. This guide explains how to configure [Restic](https://restic.net/) on your Linode to backup your MariaDB (or MySQL) databases
-onto Linode Object Storage, so they can be recovered even if your Linode is no longer accessible.
+To be successful, backups should be automatic, reliable and secure. This guide explains how to configure [Restic](https://restic.net/) on your Linode to backup your MariaDB (or MySQL) databases onto Linode Object Storage, so they can be recovered even if your Linode is no longer accessible.
 
-Restic is a backup utility written in Go. It is cross-platform and works on most Linux distributions with a kernel newer than 2.6.23. Each backup is stored as a "snapshot" in a "repository." 
-The repository can be stored on most cloud storage providers, or even in a separate directory on your Linode (not recommended.)
+Restic is a backup utility written in Go. It is cross-platform and works on most Linux distributions with a kernel newer than 2.6.23. Each backup is stored as a "snapshot" in a "repository." The repository can be stored on most cloud storage providers, or even in a separate directory on your Linode (not recommended.)
 
 This guide will explain how to use Linode Object Storage to hold your backup repository.
 
@@ -48,7 +46,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) section of the How to Use Linode Object Storage guide if you do not already have one.
 
     {{< content "object-storage-cancellation-shortguide" >}}
-    
+
 1.  [Generate Object Storage access keys](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair).
 
 1.  Ensure your Linode has the `wget` and `bzip2` commands available. Run `yum install wget bzip2` (on CentOS/Fedora) or `apt install wget bzip2` on Ubuntu/Debian.
@@ -88,7 +86,7 @@ Make the script executable and create the folder to hold the backup files (if it
 
     chmod u+x /usr/local/bin/backup_mariadb
     mkdir -p /var/backups/mariadb/
-    
+
 You can now run your first backup:
 
     backup_mariadb
@@ -109,7 +107,7 @@ snapshot 81072f28 saved
 Check your backups have been created - you should get one file per database:
 
     ls -al /var/backups/mariadb
-    
+
 {{< output >}}
 total 492
 drwxr-xr-x 2 root root   4096 Jul 21 19:47 .
@@ -146,7 +144,7 @@ Consider your databases' usage, how much data you could potentially lose, and th
 Edit your "crontab" file:
 
     sudo crontab -e
-    
+
 Add a line for your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron/) article for additional scheduling options.
 
     0 * * * * /usr/local/bin/backup_mariadb > /tmp/mariadb-backup-log.txt 2>&1
@@ -160,7 +158,7 @@ To schedule a command, you need 2 configuration files - the command to run (know
 Create the unit configuration file:
 
     sudo nano /etc/systemd/system/backup-mariadb.service
-    
+
 {{< file "/etc/systemd/system/backup-mariadb.service" >}}[Unit]
 Description=Backup MariaDB databases
 [Service]
@@ -171,7 +169,7 @@ Environment=USER=root HOME=/root
 Create the timer configuration file:
 
     sudo nano /etc/systemd/system/backup-mariadb.timer
-    
+
 {{< file "/etc/systemd/system/backup-mariadb.timer" >}}[Unit]
 Description=Backup MariaDB databases
 [Timer]
@@ -185,18 +183,18 @@ The `OnCalendar` line instructs Systemd when to execute this command. In the exa
 Enable the timer:
 
     sudo systemctl enable --now backup-mariadb.timer
-    
+
 Monitor it with:
 
     sudo systemctl list-timers
-    
+
 {{< output >}}
 NEXT                        LEFT          LAST                        PASSED        UNIT                         ACTIVATES
 Mon 2020-07-20 16:00:00 BST 35min left    Mon 2020-07-20 15:00:03 BST 24min ago     backup-mariadb.timer         backup-mariadb.service
 {{< /output >}}
-    
+
 The "NEXT" and "LEFT" column tells you the exact time, and how long until, the command will next be executed. The "LAST" and "PASSED" tells you the same but for the last time the command was executed.
-    
+
 ## Finishing Up
 
 If you view your Object Storage bucket in the Linode Cloud Manager, you should see a set of files like below. These files collectively make up the Restic repository; you will not see your individual database backup files.
@@ -212,11 +210,11 @@ It can get tedious typing out the arguments to the Restic command. To make life 
 In your profile's aliases file, add the line:
 
     alias myrestic='restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw'
-    
+
 After logging out and back in again, you can run restic using your aliased command:
 
     myrestic snapshots
-    
+
 ### Restore a backup
 
 Backups are no good if you cannot restore them. It's a good idea to test our your backups once in a while.
@@ -224,7 +222,7 @@ Backups are no good if you cannot restore them. It's a good idea to test our you
 To restore the latest good backup from Restic, run the "restore latest" command:
 
     restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore latest -t /root
-    
+
 {{< note >}}
 The "-t" (target) parameter tells Restic where to restore your backup. Restic restores the files and recreates the full folder structure at the time of the backup.
 
@@ -232,7 +230,7 @@ The "-t" (target) parameter tells Restic where to restore your backup. Restic re
 
     /home/myuser/var/backups/mariadb/wordpress.sql
 {{< /note >}}
-    
+
 To restore a backup from a specific point-in-time, identify the snapshot ID in which it was backed up using the snapshots command (the first column is the Snapshot ID):
 
     restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw snapshots
@@ -249,11 +247,11 @@ ID        Time                 Host        Tags        Paths
 Pass the selected ID to the restore command instead of "latest":
 
     restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore 81072f28 -t /root
-    
+
 The above commands will restore all databases taken in the backup. If you only want a selected backup, pass the filename using the "-i" parameter - along with either "latest" or the snapshot ID, as above:
 
     restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore 81072f28 -i wordpress.sql -t /root
-    
+
 ### Maintain your repository
 
 Your backups can grow very quickly, especially if you backup a sizeable database every hour.

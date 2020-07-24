@@ -6,6 +6,8 @@ description: 'A shortguide that shows how to install Restic backup.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-24
+modified_by:
+  name: Andy Heathershaw
 title: "Install Restic backup"
 headless: true
 show_on_rss_feed: false
@@ -28,7 +30,7 @@ Ensure the name of your bucket is correct. If the bucket does not exist, Restic 
 {{< /note >}}
 
 You will be prompted to set a password to encrypt your repository's data. Enter your desired password twice, and you should see similar output to the below, confirming your repository has been created:
-    
+
 {{< output >}}
 enter password for new repository:
 enter password again:
@@ -50,7 +52,7 @@ Your access key, secret key and password are required every time Restic communic
 To keep it secure, create this script within the root user's home directory, and run all your Restic scripts as the root user.
 
     sudo nano /root/restic_params
-    
+
 {{< file "/root/restic_params" >}}export AWS_ACCESS_KEY_ID=your-key
 export AWS_SECRET_ACCESS_KEY=your-secret
 {{< /file >}}
@@ -58,7 +60,7 @@ export AWS_SECRET_ACCESS_KEY=your-secret
 Whenever you want to use Restic, import this file or include it in your user's logon script:
 
     source /root/restic_params
-    
+
 Create a password file to hold your Restic password:
 
 {{< file "/root/restic_pw" >}}YourPasswordGoesHere
