@@ -137,7 +137,7 @@ Linux has several ways of running a job on a schedule basis. Pick one of the met
 
 {{< note >}}
 Consider your databases' usage, how much data you could potentially lose, and the storage space required when choosing how often to run your script.
-{{< /note >}} 
+{{< /note >}}
 
 ### 1. Cron
 
@@ -263,5 +263,5 @@ Consider running a policy using the `forget` command as described in Restic's sn
 {{< note >}}
 Don't forget to pass the `--prune` option to the `forget` command or the space won't actually be freed from your repository!
 
-Pruning a repository can take significant time and stops backups taking place while it is being run, so it is best to run it often and non-interactively. 
+Pruning a repository can take significant time and stops backups taking place while it is being run, so it is best to run it often and non-interactively.
 {{< /note >}}

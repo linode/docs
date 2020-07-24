@@ -47,7 +47,7 @@ Store this password securely and somewhere away from your Linode. Your backups w
 
 ### Store the access key and secret
 
-Your access key, secret key and password are required every time Restic communicates with your repository. To make it easier to work with your repository, create a shell script containing your credentials. 
+Your access key, secret key and password are required every time Restic communicates with your repository. To make it easier to work with your repository, create a shell script containing your credentials.
 
 To keep it secure, create this script within the root user's home directory, and run all your Restic scripts as the root user.
 
@@ -65,7 +65,7 @@ Create a password file to hold your Restic password:
 
 {{< file "/root/restic_pw" >}}YourPasswordGoesHere
 {{< /file >}}
-    
+
 You can pass your password filename to Restic using the "-p" flag:
 
     restic -p /root/restic_pw ...
