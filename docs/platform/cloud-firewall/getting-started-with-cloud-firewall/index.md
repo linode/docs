@@ -81,6 +81,10 @@ You can assign the Firewall to more than one Linode service at a time. Continue 
 
     ![Click on the Add button to assign the Firewall to your Linode service.](complete-add-firewall-to-service.png)
 
+{{< note >}}
+If you have a Cloud Firewall attached to a Linode and you attempt to [migrate the Linode to a data center](/docs/platform/disk-images/how-to-initiate-a-cross-data-center-migration-for-your-linode/) that does not support Cloud Firewalls, the migration will fail.
+{{</ note >}}
+
 ## Configure Cloud Firewall Rules
 
 Upon initial creation of a Cloud Firewall, you are required to select Firewall rules from a predefined list that supports common networking use cases. This section will show you how to add new Firewall rules to your Firewall's existing rules, edit your Firewall's predefined rules, and delete Firewall rules.
