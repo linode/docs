@@ -1189,6 +1189,7 @@ resolvconf
 respawn
 resque
 restapi
+restic
 retpoline
 retrans
 reusability
