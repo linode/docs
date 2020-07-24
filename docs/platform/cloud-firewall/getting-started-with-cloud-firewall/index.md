@@ -39,35 +39,47 @@ The Linode Cloud Manager provides a list of *predefined rules* that you can add 
 
 1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
+    ![Access the Firewalls listing page.](access-firewalls-listing.png)
+
 1. From the **Firewalls** listing page, click on the **Add a Firewall** link.
+
+    ![Click on the Add a Firewall link.](add-a-firewall.png)
 
 1. The **Add a Firewall** drawer will appear with the Firewall configurations needed to add a Firewall. Configure your Firewall with at minimum the required fields:
 
     | **Configuration** | **Description** |
     | :---------------: | :---------------: |
     | **Label** | The label is used an identifier for this Cloud Firewall. *Required*|
-    | **Rules** | The Firewall rule(s) to add to this Firewall. Choose from a list of predefined rules that support common networking use cases. You can select more than one Firewall rule. You will have the option to customize your rules further in a later step [link to section]. *Required*|
+    | **Rules** | The Firewall rule(s) to add to this Firewall. Choose from a list of predefined Inbound and Outbound Firewall rules that support common networking use cases. You can select more than one Firewall rule. You can [edit your selected rules](#edit-cloud-firewall-rules) after adding the Firewall, if needed. *Required*|
     | **Linodes**| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account will be visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
 
 1. Click on the **Create** button. This will create the Cloud Firewall and you will see it appear on the **Firewalls** listing page.
+
+    ![Click on the Create button to create your Firewall.](create-your-firewall.png)
 
 ## Assign a Cloud Firewall to a Linode Service
 
 1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
+    ![Access the Firewalls listing page.](access-firewalls-listing.png)
+
 1. From the **Firewalls** listing page, click on the Firewall that you would like to attach to a Linode. This will take you to the Firewall's **Rules** page.
 
-1. Click on the **Linodes** tab. This will take you to the **Firewalls Linodes** page. If the Firewall is assigned to any Linodes they will be displayed on the page.
+1. Click on the **Linodes** tab. This will take you to the **Firewalls Linodes** page. If the Firewall is assigned to any Linode services they will be displayed on the page.
 
 1. Click on the **Add Linodes to Firewall** link.
 
-1. From the **Add Linode to Firewall** drawer, click on the dropdown menu and select that Linode to which you'd like to apply this Firewall. You can also start typing the Linode label to narrow down your search.
+    ![Assign a Cloud Firewall to a Linode service.](assign-firewall-to-linode-service.png)
+
+1. From the **Add Linode to Firewall** drawer, click on the dropdown menu and select the Linode service to which you'd like to apply this Firewall. You can also start typing the Linode service's label to narrow down your search.
 
     {{< note >}}
-You can assign the Firewall to more than one Linode at a time. Continue the previous step to assign the Firewall to another Linode.
+You can assign the Firewall to more than one Linode service at a time. Continue the previous step to assign the Firewall to another Linode service.
     {{</ note >}}
 
 1. Click on the **Add** button to assign the Firewall to your Linode(s).
+
+    ![Click on the Add button to assign the Firewall to your Linode service.](complete-add-firewall-to-service.png)
 
 ## Configure Cloud Firewall Rules
 
@@ -79,7 +91,10 @@ Upon initial creation of a Cloud Firewall, you are required to select Firewall r
 
 1. From the **Firewalls** listing page, click on the Firewall that you would like to add new rules to. This will take you to the Firewall's **Rules** page.
 
-1. Click on the **Add an Inbound/Outbound Rule** link (click on the appropriate link for the type of Rule you would like to add). The **Add an Inbound/Outboud Rule** drawer will appear.
+1. Click on the **Add an Inbound/Outbound Rule** link (click on the appropriate link for the type of Rule you would like to add).
+    ![Click on the Add an Inbound/Outbound Rule link.](add-a-new-firewall-rule.png)
+
+    The **Add an Inbound/Outboud Rule** drawer will appear.
 
 1. Provide the following Rule configurations:
 
@@ -92,11 +107,15 @@ Upon initial creation of a Cloud Firewall, you are required to select Firewall r
 
 1. Click on **Add Rule** to add the new rule to this Firewall. If you would like to add any additional rules, repeat the process outlined in this section.
 
+    ![Click on Add Rule to add the new rule to this Firewall.](add-your-new-rule.png)
+
 1. When you are done adding new Firewall rules, click on the **Apply Changes** button on the **Rules** page.
 
     {{< note >}}
 Any newly added rules will not take effect until you **Apply Changes** to the Firewall.
     {{</ note >}}
+
+    ![Apply your changes to the Firewall.](apply-your-changes-to-the-firewall.png)
 
 ### Edit Cloud Firewall Rules
 
@@ -108,15 +127,21 @@ Follow the steps in this section to edit predefined and custom Firewall Rules.
 
 1. Click on the ***more options ellipsis*** corresponding to the rule you'd like to edit and select **Edit** from the dropdown menu.
 
+    ![Select edit from the dropdown menu.](edit-this-firewall-rule.png)
+
 1. From the **Edit Rule** drawer, update the rule's configurations as needed.
 
 1. Click on the **Edit Rule** button to save your changes and apply them to the rule. If you would like to edit any additional rules, repeat the process outlined in this section.
+
+    ![Save your Firewall rule edits.](edit-firewall-rule.png)
 
 1. When you are done editing your Firewall rules, click on the **Apply Changes** button on the **Rules** page.
 
     {{< note >}}
 Any edits made to rules will not take effect until you **Apply Changes** to the Firewall.
     {{</ note >}}
+
+    ![Apply your edit rule changes to the Firewall.](apply-edit-rule-changes.png)
 
 ### Delete Cloud Firewall Rules
 
@@ -140,7 +165,13 @@ When you [add a Cloud Firewall](#add-a-cloud-firewall), the Firewall is enabled 
 
 1. Click on the **more options ellipsis** corresponding to the Firewall whose status you'd like to update.
 
-1. From the dropdown menu, click on **Enable/Disable** to update the Firewall's status. The **Status** column on the **Firewalls** listing page will update to display the Firewall's current status.
+1. From the dropdown menu, click on **Enable/Disable** to update the Firewall's status.
+
+    ![Update your Firewall's status.](update-the-firewall-status.png)
+
+    The **Status** column on the **Firewalls** listing page will update to display the Firewall's current status.
+
+    ![View the updated status of your Firewall.](view-the-firewall-status.png)
 
 ## Delete a Cloud Firewall
 
@@ -148,4 +179,8 @@ When you [add a Cloud Firewall](#add-a-cloud-firewall), the Firewall is enabled 
 
 1. Click on the **more options ellipsis** corresponding to the Firewall that you'd like to delete.
 
-1. From the dropdown menu, click on **Delete**. You will be prompted to confirm deleting the Firewall. Click **Delete** to proceed. The Firewall will be deleted and any services that the Firewall was applied to will no longer have their network traffic filtered by the Firewall.
+1. From the dropdown menu, click on **Delete**. You will be prompted to confirm deleting the Firewall. Click **Delete** to proceed.
+
+    ![Click on the delete button to delete your Firewall.](delete-your-firewall.png)
+
+    The Firewall will be deleted and any services that the Firewall was applied to will no longer have their network traffic filtered by the Firewall.
