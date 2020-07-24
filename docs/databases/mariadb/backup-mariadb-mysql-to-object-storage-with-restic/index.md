@@ -1,7 +1,7 @@
 ---
 author:
   name: Andy Heathershaw
-  email: docs@linode.com
+  email: andy@andysh.uk
 description: 'This guide shows you how to use Restic to backup your MariaDB or MySQL databases onto Linode Object Storage.'
 og_description: 'Learn how to backup your MariaDB and MySQL databases off your Linode and onto Linode Object Storage with Restic.'
 keywords: ['mariadb','mysql','backup','backups','restic','off-site backups','Object Storage']
@@ -55,90 +55,11 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Install Restic
 
-Download the latest version of Restic from [the Github Releases page](https://github.com/restic/restic/releases) (version 0.9.6 at the time of writing):
-
-    wget https://github.com/restic/restic/releases/download/v0.9.6/restic_0.9.6_linux_amd64.bz2
-    
-{{< note >}}
-Ensure you select the correct file for your system. The above command is correct for most Linuxes on Linode.
-{{< /note >}}
-
-Extract the downloaded file:
-
-    bzip2 -d restic_0.9.6_linux_amd64.bz2
-    
-Move it to somewhere in your PATH and make it executable for all users:
-
-    sudo mv restic_0.9.6_linux_amd64 /usr/local/bin/restic
-    sudo chmod ugo+x /usr/local/bin/restic
-    
-You can now run Restic using the command "restic":
-
-    restic version
-    
-{{< output >}}
-restic 0.9.6 compiled with go1.13.4 on linux/amd64
-{{< /output >}}
+{{< content "applications/backups/install-restic-shortguide" >}}
 
 ## Create the Restic Repository
 
-[Create an Object Storage access key pair](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair) if you have not done so already.
-
-Run the below command, replacing "your-key" with your access key, "your-secret" with your key's secret and "your-bucket-name" with the name of your bucket:
-
-    AWS_ACCESS_KEY_ID=your-key AWS_SECRET_ACCESS_KEY=your-secret restic -r s3:us-east-1.linodeobjects.com/your-bucket-name init
-
-{{< note >}}
-If your bucket is not in the Newark, NJ region, replace "us-east-1.linodeobjects.com" with the cluster name where your bucket is located.
-Example: for Frankfurt, DE, the command would be:
-
-    AWS_ACCESS_KEY_ID=your-key AWS_SECRET_ACCESS_KEY=your-secret restic -r s3:eu-central-1.linodeobjects.com/your-bucket-name init
-{{< /note >}}
-
-{{< note >}}
-Ensure the name of your bucket is correct. If the bucket does not exist, Restic will create it for you on the cluster you are connecting to.
-{{< /note >}}
-
-You will be prompted to set a password to encrypt your repository's data. Enter your desired password twice, and you should see similar output to the below, confirming your repository has been created:
-    
-{{< output >}}
-enter password for new repository:
-enter password again:
-created restic repository c3ffbd1ea6 at s3:us-east-1.linodeobjects.com/restic-backups-example
-
-Please note that knowledge of your password is required to access
-the repository. Losing your password means that your data is
-irrecoverably lost.
-{{< /output >}}
-
-{{< caution >}}
-Store this password securely and somewhere away from your Linode. Your backups will be inaccessible without it!
-{{< /caution >}}
-
-### Store the access key and secret
-
-Your access key, secret key and password are required every time Restic communicates with your repository. To make it easier to work with your repository, create a shell script containing your credentials. 
-
-To keep it secure, create this script within the root user's home directory, and run all your Restic scripts as the root user.
-
-    sudo nano /root/restic_params
-    
-{{< file "/root/restic_params" >}}export AWS_ACCESS_KEY_ID=your-key
-export AWS_SECRET_ACCESS_KEY=your-secret
-{{< /file >}}
-
-Whenever you want to use Restic, import this file or include it in your user's logon script:
-
-    source /root/restic_params
-    
-Create a password file to hold your Restic password:
-
-{{< file "/root/restic_pw" >}}YourPasswordGoesHere
-{{< /file >}}
-    
-You can pass your password filename to Restic using the "-p" flag:
-
-    restic -p /root/restic_pw ...
+{{< content "applications/backups/create-restic-repository-shortguide" >}}
 
 ## Set Up Automated Database Backups
 
