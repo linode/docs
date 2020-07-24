@@ -377,6 +377,10 @@ Each Linode account has a limit to the number of Linode resources they can deplo
 
 You can resize an LKE cluster's node pool to add or decrease its number of nodes. You will need your cluster's ID and the node pool's ID in order to resize it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
 
+{{< caution >}}
+Shrinking a node pool will result in deletion of Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.
+{{< /caution >}}
+
 {{< note >}}
 You cannot modify an existing node pool's plan type. If you would like your LKE cluster to use a different node pool plan type, you can [add a new node pool](#add-a-node-pool-to-your-lke-cluster) to your cluster with the same number of nodes to replace the current node pool. You can then [delete the node pool](#delete-a-node-pool-from-an-lke-cluster) that is no longer needed.
 {{</ note >}}
@@ -399,6 +403,28 @@ To update your node pool's node count, send a `PUT` request to the `/lke/cluster
 {{< note >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
 {{</ note >}}
+
+### Recycle your LKE Node Pool
+
+You can recycle an LKE cluster's node pool to update its nodes to the most recent patch of the cluster's Kubernetes version. Nodes will be recycled on a rolling basis that only one node will be down at a time throughout the recycling process. You will need your cluster's ID and the node pool's ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
+
+{{< caution >}}
+Recycling your node pool involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.
+{{< /caution >}}
+
+| **Required Parameters** | **Description** |
+|-------|-------|
+| `clusterId` | ID of the LKE cluster to lookup. |
+| `poolId` | ID of the LKE node pool to lookup. |
+
+To recycle your node pool, send a `POST` request to the `/lke/clusters/{clusterId}/pools/{poolId}/recycle` endpoint. In the URL of this example, replace `12345` with your cluster's ID and `196` with your node pool's ID:
+
+    curl -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $TOKEN" \
+        -X PUT -d '{
+            "type": "g6-standard-4",
+            "count": 6
+        }' https://api.linode.com/v4/lke/clusters/12345/pools/196/recycle
 
 ### Add New Tags to your LKE Cluster
 
