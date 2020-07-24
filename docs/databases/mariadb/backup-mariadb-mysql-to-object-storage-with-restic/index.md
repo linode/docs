@@ -51,6 +51,8 @@ The steps in this guide require root privileges. Be sure to run the steps below 
     
 1.  [Generate Object Storage access keys](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair).
 
+1.  Ensure your Linode has the `wget` and `bzip2` commands available. Run `yum install wget bzip2` (on CentOS/Fedora) or `apt install wget bzip2` on Ubuntu/Debian.
+
 ## Install Restic
 
 Download the latest version of Restic from [the Github Releases page](https://github.com/restic/restic/releases) (version 0.9.6 at the time of writing):
@@ -91,6 +93,10 @@ If your bucket is not in the Newark, NJ region, replace "us-east-1.linodeobjects
 Example: for Frankfurt, DE, the command would be:
 
     AWS_ACCESS_KEY_ID=your-key AWS_SECRET_ACCESS_KEY=your-secret restic -r s3:eu-central-1.linodeobjects.com/your-bucket-name init
+{{< /note >}}
+
+{{< note >}}
+Ensure the name of your bucket is correct. If the bucket does not exist, Restic will create it for you on the cluster you are connecting to.
 {{< /note >}}
 
 You will be prompted to set a password to encrypt your repository's data. Enter your desired password twice, and you should see similar output to the below, confirming your repository has been created:
@@ -271,6 +277,12 @@ Mon 2020-07-20 16:00:00 BST 35min left    Mon 2020-07-20 15:00:03 BST 24min ago 
 The "NEXT" and "LEFT" column tells you the exact time, and how long until, the command will next be executed. The "LAST" and "PASSED" tells you the same but for the last time the command was executed.
     
 ## Finishing Up
+
+If you view your Object Storage bucket in the Linode Cloud Manager, you should see a set of files like below. These files collectively make up the Restic repository; you will not see your individual database backup files.
+
+To explore the backups and files held within Restic repository, you must use the `restic` command on your Linode, or another machine running Restic.
+
+![Restic Object Storage bucket in Cloud Manager](backup-restic-bucket-object-storage.png)
 
 ### Create an alias
 
