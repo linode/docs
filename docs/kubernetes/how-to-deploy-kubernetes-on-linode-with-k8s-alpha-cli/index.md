@@ -11,6 +11,7 @@ modified_by:
 title: 'How to Deploy Kubernetes on Linode with the k8s-alpha CLI'
 aliases: ['applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/','applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/']
 concentrations: ["Kubernetes"]
+deprecated: true
 external_resources:
   - '[Linode Kubernetes Tools](https://developers.linode.com/kubernetes/)'
 ---

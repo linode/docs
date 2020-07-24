@@ -948,6 +948,7 @@ nexthop
 nftables
 ng
 nginx
+nginxdemos
 ngrok
 ngx
 nickcolor
