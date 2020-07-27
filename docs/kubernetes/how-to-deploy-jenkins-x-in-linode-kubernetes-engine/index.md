@@ -26,6 +26,7 @@ external_resources:
 ## Before You Begin
 
 1. You will need an account on GitHub. If you don't have one, [you can register here](https://github.com/join).
+1. You need a GitHub account for your bot (to triage issues, merge Pull Requests, etc.). [You can register your bot account here.](https://github.com/join).
 1. You will need an account on DockerHub. If you don't have one, [you can register here](https://hub.docker.com/signup).
 
 ## Create an LKE Cluster
@@ -117,14 +118,14 @@ But don't worry, this error can be fixed.
 
 If you inspect the current folder, you should notice that `jx` created a `jenkins-x-boot-config` folder.
 
-In that folder, there's a `jx-requirement.yaml` file with the details of your cluster.
+In that folder, there's a `jx-requirement.yml` file with the details of your cluster.
 
 Open that with your favourite editor and identify the line that starts with: `provider: gke`
 
 You should change that to `provider: kubernetes`.
 
 ```yaml
-# jenkins-x-boot-config/jx-requirement.yaml
+# jenkins-x-boot-config/jx-requirement.yml
 autoUpdate:
   enabled: false
   schedule: ""
@@ -213,13 +214,9 @@ You should choose a name and a password for the admin user.
 
 Next, you should create a Jenkins X Bot.
 
-The bot will help you triage issues and pull requests and execute chores.
+The bot will help you triage issues, Pull Requests and execute chores.
 
-**You need a GitHub account for your bot.**
-
-[You can register your bot account here.](https://github.com/join)
-
-Once you have registered, you can answer the following questions:
+In this part, you should enter the details for your bot (the GitHub account that you created in advance):
 
 {{< output >}}
 ? Pipeline bot Git username
