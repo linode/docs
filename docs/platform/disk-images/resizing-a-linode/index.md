@@ -38,7 +38,11 @@ Here's how to resize your Linode:
 
     [![The Linode resize page.](resize-tab.png)](resize-tab.png)
 
-1.  You can automatically resize your primary disk by selecting the **Auto Resize Disk** checkbox. This option is not available if you are resizing to a smaller plan and have a disk greater in size than the target plan allows. In that case, you must delete resize your disk before selecting a new plan. Additionally, your disks must be of type `ext 4`,`ext 3`, or `swap`.
+1.  You can automatically resize your primary disk by selecting the **Auto Resize Disk** checkbox.
+
+    {{< note >}}
+Automatic resizing is only available when moving to a larger plan, and when you have a single ext disk (or one ext and one swap disk) on your Linode.
+    {{< /note >}}
 
     [![Automatically resize your main disk by checking the resize checkbox.](resize-auto-checkbox.png)](resize-auto-checkbox.png)
 

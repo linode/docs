@@ -148,6 +148,10 @@ To view a list of deprecated annotations, visit the [Linode CCM GitHub repositor
 
 This section describes how to set up TLS termination on your Linode NodeBalancers so a Kubernetes Service can be accessed over HTTPS.
 
+{{< note >}}
+Linode NodeBalancers do not currently support ProxyProtocol. For this reason, Kubernetes LoadBalancer Services running on Linode do not support ProxyProtocol either. This means you cannot both terminate TLS inside your Kubernetes cluster and whitelist client IP addresses. ProxyProtocol support is coming soon to Linode NodeBalancers.
+{{</ note >}}
+
 #### Generating a TLS type Secret
 
 Kubernetes allows you to store sensitive information in a Secret object for use within your cluster. This is useful for storing things like passwords and API tokens. In this section, you will create a Kubernetes secret to store Transport Layer Security (TLS) certificates and keys that you will then use to configure TLS termination on your Linode NodeBalancers.

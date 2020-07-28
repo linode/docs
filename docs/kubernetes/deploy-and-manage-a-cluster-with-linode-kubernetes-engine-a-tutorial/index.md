@@ -69,11 +69,11 @@ You will need to install the kubectl client to your computer before proceeding. 
 
 1. The **Create a Kubernetes Cluster** page will appear. At the top of the page, you'll be required to select the following options:
 
-   - In the **Cluster Label** field, provide a name for your cluster. The name must be unique between all of the clusters on your account. This name will be how you identify your cluster in the Cloud Manager’s Dashboard.
+    - In the **Cluster Label** field, provide a name for your cluster. The name must be unique between all of the clusters on your account. This name will be how you identify your cluster in the Cloud Manager’s Dashboard.
 
-   - From the **Region** dropdown menu, select the **Region** where you would like your cluster to reside.
+    - From the **Region** dropdown menu, select the **Region** where you would like your cluster to reside.
 
-   - From the **Version** dropdown menu, select a Kubernetes version to deploy to your cluster.
+    - From the **Version** dropdown menu, select a Kubernetes version to deploy to your cluster.
 
     ![Set Cluster Settings](cluster-options.png "Select your cluster's setting.")
 
@@ -252,7 +252,7 @@ kube-system   kube-proxy-qcjg9                          1/1     Running   0     
 
 ## Modify a Cluster's Node Pools
 
-You can use the Linode Cloud Manager to modify a cluster's existing node pools by adding or removing nodes. You can also remove entire node pools from your cluster. This section will cover completing those tasks. For any other changes to your LKE cluster, you should use kubectl.
+You can use the Linode Cloud Manager to modify a cluster's existing node pools by adding or removing nodes. You can also recycle your node pools to replace all of their nodes with new ones that are upgraded to the most recent patch of your cluster's Kubernetes version, or remove entire node pools from your cluster. This section will cover completing those tasks. For any other changes to your LKE cluster, you should use kubectl.
 
 ### Access your Cluster's Details Page
 
@@ -274,17 +274,29 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
     ![Add node pool window](view-add-pool-window.png "Add node pool window")
 
-### Edit or Remove Existing Node Pools
+### Edit, Recycle, or Remove Existing Node Pools
 
 1. On your [cluster's details page](#access-your-cluster-s-details-page), click the **Resize Pool** option at the top-right of each entry in the **Node Pools** section.
 
     ![Access your cluster's resize page](access-clusters-resize-page.png "Access your cluster's resize page.")
 
-1.  Using the sidebar that appears to the right of the page, you can now remove `-` or add `+` Linodes to the pool, and the total cost of your new resources will be displayed. To accept these changes, select the `Save Changes` button to continue.
+    Using the sidebar that appears to the right of the page, you can now remove `-` or add `+` Linodes to the pool, and the total cost of your new resources will be displayed. To accept these changes, select the `Save Changes` button to continue.
+
+    {{< caution >}}
+Shrinking a node pool will result in deletion of Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.
+{{< /caution >}}
 
     ![Edit your cluster's node pool](edit-your-node-pool.png "Edit your cluster's node pool.")
 
-1. To remove a node pool from the [cluster's details page](#access-your-cluster-s-details-page), click the **Delete Pool** option at the top right of each entry in the **Node Pools** section. A pop-up message will then appear confirming that you're sure you'd like to proceed with deletion. Select the `Delete` option, and your Node Pool will proceed to be deleted.
+1. To recycle a node pool from the [cluster's details page](#access-your-cluster-s-details-page), click the **Recycle Nodes** option at the top-right of each entry in the **Node Pools** section. Recycling a node pool will update its nodes to the most recent patch of the cluster's Kubernetes version. A pop-up message will appear confirming that you're sure you'd like to proceed with recycling. Select the `Recycle all Nodes` option, and your Node Pool will proceed to recycle its nodes on a rolling basis so that only one node will be down at a time throughout the recycling process.
+
+    {{< caution >}}
+Recycling your node pool involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.
+{{< /caution >}}
+
+    ![Recycle your cluster's node pool](recycle-your-node-pool.png "Recycle your cluster's node pool.")
+
+1. To remove a node pool from the [cluster's details page](#access-your-cluster-s-details-page), click the **Delete Pool** option at the top-right of each entry in the **Node Pools** section. A pop-up message will then appear confirming that you're sure you'd like to proceed with deletion. Select the `Delete` option, and your Node Pool will proceed to be deleted.
 
     ![Delete your cluster's node pool](delete-node-pool.png "Delete your cluster's node pool.")
 
