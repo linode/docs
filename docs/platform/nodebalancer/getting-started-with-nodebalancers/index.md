@@ -19,6 +19,10 @@ Nearly all applications that are built using Linodes can benefit from load balan
 
 This guide provides a high-level overview setting up a NodeBalancer, but it's outside this page's scope to explain each application a NodeBalancer could balance. For more information on various applications that might be useful behind NodeBalancer, see the rest of [Linode Guides & Tutorials on NodeBalancers](/docs/platform/nodebalancer/).
 
+{{< note >}}
+Linode NodeBalancers do not currently support ProxyProtocol. This means you cannot pass client connection information to backend nodes when using Linode NodeBalancers. ProxyProtocol support is coming soon to Linode NodeBalancers.
+{{</ note >}}
+
 ## Configuring a NodeBalancer
 
 {{< content "configure-nodebalancer-shortguide" >}}
