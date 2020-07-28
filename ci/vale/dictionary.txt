@@ -38,6 +38,7 @@ apiserver
 apparmor
 appimage
 appletalk
+approvers
 appserver
 apxs
 aren
@@ -307,6 +308,7 @@ distros
 dists
 django
 dkim
+dlncr
 dmg
 dmitriy
 dmz
@@ -653,6 +655,7 @@ jdbc
 jdk
 Jellyfin
 jenkinsfile
+jenkinsx
 jetpack
 jez
 jk
@@ -671,6 +674,7 @@ jsonpath
 julialang
 jumpbox
 jupyter
+jx
 kakfa
 kbits
 keepalive
@@ -1090,6 +1094,7 @@ pre4
 precompiled
 preconfigured
 prefork
+preinstall
 preinstalled
 premade
 prepend
@@ -1514,6 +1519,7 @@ untruncated
 untrust
 untrusted
 unversioned
+upserted
 upsize
 uri
 uris
