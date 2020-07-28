@@ -20,6 +20,11 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
 Throughout this guide we will offer several suggested values for specific configuration settings; some of these values will be set by default. These settings are shown in the guide as a reference and you may need to modify them to suit your application accordingly.
 {{< /note >}}
 
+{{< note >}}
+Linode NodeBalancers do not currently support ProxyProtocol. This means you cannot pass client connection information to backend nodes when using Linode NodeBalancers. ProxyProtocol support is coming soon to Linode NodeBalancers.
+{{</ note >}}
+
+
 ## Before you Begin
 
 - When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](https://linode.com/docs/security/securing-your-server)
