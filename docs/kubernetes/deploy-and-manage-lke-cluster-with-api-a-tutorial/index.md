@@ -421,10 +421,8 @@ To recycle your node pool, send a `POST` request to the `/lke/clusters/{clusterI
 
     curl -H "Content-Type: application/json" \
         -H "Authorization: Bearer $TOKEN" \
-        -X PUT -d '{
-            "type": "g6-standard-4",
-            "count": 6
-        }' https://api.linode.com/v4/lke/clusters/12345/pools/196/recycle
+        -X POST \
+        https://api.linode.com/v4/lke/clusters/12345/pools/196/recycle
 
 ### Add New Tags to your LKE Cluster
 
