@@ -113,7 +113,7 @@ error: failed to interpret pipeline file /tmp/jenkinsx/jenkins-x-boot-config/jen
 
     Open that with your favourite editor and identify the line that starts with: `provider: gke`. You should change that to `provider: kubernetes`.
 
-    {{< file "jx-requirement.yml" yaml >}}
+    {{< file "jx-requirement.yml" YAML >}}
 autoUpdate:
   enabled: false
   schedule: ""

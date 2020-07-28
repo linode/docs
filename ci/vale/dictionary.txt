@@ -472,6 +472,7 @@ getmail
 getpwent
 gfx
 gfxmode
+gh
 gibibytes
 girocco
 gist
@@ -483,6 +484,7 @@ gitolite
 gitosis
 gitpython
 gitweb
+gke
 glibc
 glish
 globals
@@ -1464,6 +1466,7 @@ transcode
 transcoder
 transcoding
 trello
+triaging
 truststore
 tt
 ttl
