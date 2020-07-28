@@ -21,7 +21,7 @@ Linode also offers a number of resources you can refer to when troubleshooting a
 
 Linode provides community spaces, an AI-powered assistant, libraries of reference material, and status updates for infrastructure components:
 
--   **Linode Community and the Community Site:** Customers and staff discuss the projects they're working on in the [Linode Community Site](/community/questions/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the [IRC channel](/chat/).
+-   **Linode Community and the Community Site:** Customers and staff discuss the projects they're working on in the [Linode Community Site](/community/questions/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the **IRC channel** listed on [Support](https://www.linode.com/support/) page.
 
     ![Linode Community Site](community-site-header.png "Linode Community Site")
 
