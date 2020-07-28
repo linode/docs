@@ -149,7 +149,7 @@ To view a list of deprecated annotations, visit the [Linode CCM GitHub repositor
 This section describes how to set up TLS termination on your Linode NodeBalancers so a Kubernetes Service can be accessed over HTTPS.
 
 {{< note >}}
-Linode NodeBalancers (and thus Kubernetes LoadBalancer Services running on Linode) do not support ProxyProtocol, and so you cannot both terminate TLS inside your Kubernetes cluster and whitelist client IP addresses. ProxyProtocol support is coming soon to Linode NodeBalancers.
+Linode NodeBalancers do not currently support ProxyProtocol. For this reason, Kubernetes LoadBalancer Services running on Linode do not support ProxyProtocol either. This means you cannot both terminate TLS inside your Kubernetes cluster and whitelist client IP addresses. ProxyProtocol support is coming soon to Linode NodeBalancers.
 {{</ note >}}
 
 #### Generating a TLS type Secret
