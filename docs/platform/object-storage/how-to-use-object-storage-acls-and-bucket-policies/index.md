@@ -187,6 +187,10 @@ The owner of the bucket will always have the `full_control` permission.
 
 Bucket policies can offer finer control over the types of permissions you can grant to a user.
 
+{{caution}}
+In the below examples, access to all objects within a bucket are defined with a wildcard `*`. While these resources can be defined to target the bucket resource itself by removing the `/*` where the resource is defined, creation of a policy with this rule can cause the bucket to become inaccessible to the Linode Cloud Manager, API, and CLI.
+{{/caution}}
+
 ### Basic Access Policy
 Below is an example bucket policy written in JSON:
 
@@ -268,7 +272,7 @@ You can also define a finer level of control over the level of access to your bu
 This example shows how you can grant read-only access to a user by allowing them to list buckets and get objects from the bucket only from the `test` directory. However, they will not be able to perform any other actions.
 
 ### Denying Access by IP Address
-If you wanted to deny access to a user by IP address, you can change the `Effect` field from `Allow` to `Deny` and supply an IP address in a condition.
+If you wanted to deny all access to a resource and whitelist by IP address, you can change the `Effect` field from `Allow` to `Deny` and supply an IP address in a condition.
 
 {{< file "bucket-policy-deny.json" json >}}
 {
