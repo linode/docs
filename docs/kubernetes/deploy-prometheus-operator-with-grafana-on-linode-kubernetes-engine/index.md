@@ -25,7 +25,7 @@ In this guide, you will deploy the [Prometheus Operator](https://github.com/helm
 
 ## The Prometheus Operator Monitoring Stack
 
-Effective monitoring of systems enables quick and effective issue resolution. The widespread need for monitoring solutions has led to the development of several prominent, open source tools designed to solve problems associated with monitoring diverse systems. These open source tools are utilized by businesses of all sizes, from small to enterprise, to improve their quality of service.
+When administrating any system, effective monitoring tools can empower users to perform quick and effective issue diagnosis and resolution. This need for monitoring solutions has led to the development of several prominent open source tools designed to solve problems associated with monitoring diverse systems.
 
 Since its release in 2016, [Prometheus](https://prometheus.io/) has become a leading monitoring tool for containerized environments including Kubernetes. [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) is often used with Prometheus to send and manage alerts with tools such as [Slack](https://slack.com/). [Grafana](https://grafana.com/), an open source visualization tool with a robust web interface, is commonly deployed along with Prometheus to provide centralized visualization of system metrics.
 
@@ -43,11 +43,11 @@ While there are several options for deploying the Prometheus Operator, using [He
 This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{< /note >}}
 
-1.  [Deploy an LKE Cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide was written using an example node pool with three [2 GB Linodes](/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using Linodes with higher resources.
+1.  [Deploy an LKE Cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide was written using an example node pool with three [2 GB Linodes](/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using Linodes with more available resources.
 
 1.  Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) to your local environment.
 
-1.  Install [kubectl](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl) to your local environment.
+1.  Install [kubectl](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl) to your local environment and [connect to your cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl).
 
 1.  Create the `monitoring` namespace on your LKE cluster:
 
@@ -81,11 +81,11 @@ In this section, you will complete a minimal deployment of the Prometheus Operat
 
 In this section, you will create a Helm chart values file and use it to deploy Prometheus Operator to your LKE cluster.
 
-1.  Using the text editor of your choice, create a file named `values.yaml` in the `~/lke-monitor` directory and save it with the configurations below, a, and disable metrics collection of the Linode-managed Kubernetes control plane:
+1.  Using the text editor of your choice, create a file named `values.yaml` in the `~/lke-monitor` directory and save it with the configurations below. Since the control plane is Linode-managed, as part of this step we will also disable metrics collection for the control plane component:
 
-    {{< note >}}
+    {{< caution >}}
 The below configuration will establish persistent data storage with three separate 10GiB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
-    {{< /note >}}
+    {{< /caution >}}
 
     {{< file "~/lke-monitor/values.yaml" yaml >}}
 # Prometheus Operator Helm Chart values for Linode Kubernetes Engine minimal deployment
@@ -309,11 +309,7 @@ cert-manager-webhook-7d5d8f856b-4nw9z      1/1     Running   0          19s
 
 Now that cert-manager is installed and running on your cluster, you will need to create a ClusterIssuer resource which defines which CA can create signed certificates when a certificate request is received. A ClusterIssuer is not a namespaced resource, so it can be used by more than one namespace.
 
-1.  Using the text editor of your choice, create a file named `acme-issuer-prod.yaml` with the example configurations:
-
-    {{< note >}}
-Replace the value of `email` with your own email address.
-    {{< /note >}}
+1.  Using the text editor of your choice, create a file named `acme-issuer-prod.yaml` with the example configurations, replacing the value of `email` with your own email address for the ACME challenge:
 
     {{< file "~/lke-monitor/acme-issuer-prod.yaml" yaml>}}
 apiVersion: cert-manager.io/v1alpha2
@@ -403,7 +399,7 @@ In this section, you will use `htpasswd` to generate credentials for basic authe
 
     Follow the prompts to create a secure password, then store your password securely for future reference.
 
-1.  Create a Kubernetes Secret for the `monitoring` namespace using the file you created above:
+1. Create a Kubernetes Secret for the `monitoring` namespace using the file you created above:
 
         kubectl -n monitoring create secret generic basic-auth --from-file=auth
 
@@ -424,15 +420,15 @@ All the necessary components are now in place to be able to enable HTTPS on your
 
 In this section, you will create a Helm chart values file and use it to deploy Prometheus Operator to your LKE cluster.
 
-1.  Using the text editor of your choice, create a file named `values-https-basic-auth.yaml` in the `~/lke-monitor` directory and save it with the configurations below, a, and disable metrics collection of the Linode-managed Kubernetes control plane:
+1.  Using the text editor of your choice, create a file named `values-https-basic-auth.yaml` in the `~/lke-monitor` directory and save it with the configurations below. Since the control plane is Linode-managed, as part of this step we will also disable metrics collection for the control plane component:
 
     {{< note >}}
 Replace all instances of `example.com` below with the [domain you have configured](#before-you-begin), including subdomains, for use with this guide.
     {{< /note >}}
 
-    {{< note >}}
+    {{< caution >}}
 The below configuration will establish persistent data storage with three separate 10GiB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
-    {{< /note >}}
+    {{< /caution >}}
 
     {{< file "~/lke-monitor/values-https-basic-auth.yaml" yaml >}}
 # Helm chart values for Prometheus Operator with HTTPS and basic auth
@@ -551,11 +547,25 @@ If you have already deployed a Prometheus Operator release, you can upgrade it b
         --namespace monitoring \
         --set grafana.adminPassword=$GRAFANA_ADMINPASSWORD
 
+    Once completed, you will see output similar to the following:
+     {{< output >}}
+NAME: lke-monitor
+LAST DEPLOYED: Mon Jul 27 17:03:46 2020
+NAMESPACE: monitoring
+STATUS: deployed
+REVISION: 1
+NOTES:
+The Prometheus Operator has been installed. Check its status by running:
+  kubectl --namespace monitoring get pods -l "release=lke-monitor"
+
+Visit https://github.com/coreos/prometheus-operator for instructions on how
+to create & configure Alertmanager and Prometheus instances using the Operator.
+{{< /output >}}
 1.  Verify that the Prometheus Operator has been deployed to your LKE cluster and its components are running and ready by checking the pods in the `monitoring` namespace:
 
         kubectl -n monitoring get pods
 
-    You should see a similar output to the following:
+    You should see a similar output to the following, confirming that you are ready to access your monitoring interfaces using your domain:
 
     {{< output >}}
 NAME                                                     READY   STATUS    RESTARTS   AGE
@@ -568,8 +578,6 @@ lke-monitor-prometheus-node-exporter-pkc65               1/1     Running   0    
 lke-monitor-prometheus-ope-operator-f87bc9f7c-w56sw      2/2     Running   0          54s
 prometheus-lke-monitor-prometheus-ope-prometheus-0       3/3     Running   1          35s
     {{< /output >}}
-
-You are now ready to access your monitoring interfaces using your domain.
 
 ### Access Monitoring Interfaces from your Domain
 
