@@ -29,7 +29,7 @@ When administrating any system, effective monitoring tools can empower users to 
 
 Since its release in 2016, [Prometheus](https://prometheus.io/) has become a leading monitoring tool for containerized environments including Kubernetes. [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) is often used with Prometheus to send and manage alerts with tools such as [Slack](https://slack.com/). [Grafana](https://grafana.com/), an open source visualization tool with a robust web interface, is commonly deployed along with Prometheus to provide centralized visualization of system metrics.
 
-The community-supported [Prometheus Operator Helm Chart](https://github.com/coreos/prometheus-operator) provides a complete monitoring stack including each of these tools along with [Node Export](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter) and [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics), and is designed to provide robust Kubernetes monitoring in its default configuration.
+The community-supported [Prometheus Operator Helm Chart](https://github.com/coreos/prometheus-operator) provides a complete monitoring stack including each of these tools along with [Node Exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter) and [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics), and is designed to provide robust Kubernetes monitoring in its default configuration.
 
 While there are several options for deploying the Prometheus Operator, using [Helm](https://helm.sh/), a Kubernetes "package manager," to deploy the community-supported the Prometheus Operator enables you to:
 
@@ -43,7 +43,7 @@ While there are several options for deploying the Prometheus Operator, using [He
 This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{< /note >}}
 
-1.  [Deploy an LKE Cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide was written using an example node pool with three [2 GB Linodes](/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using Linodes with more available resources.
+1.  [Deploy an LKE Cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide was written using an example node pool with three [2 GB Linodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using Linodes with more available resources.
 
 1.  Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) to your local environment.
 
@@ -67,7 +67,7 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
 1.  (Optional) For [public access with HTTPS and basic auth](#prometheus-operator-deployment-with-https-and-basic-auth) configured for your web interfaces of your monitoring tools:
 
-    *   Purchase a domain name from a reliable domain registrar and configure your registrar to [use Linode's nameservers](docs/platform/manager/dns-manager/#use-linode-s-name-servers-with-your-domain) with your domain. Using Linode's DNS Manager, [create a new Domain](/docs/platform/manager/dns-manager/#add-a-domain) for the one that you have purchased.
+    *   Purchase a domain name from a reliable domain registrar and configure your registrar to [use Linode's nameservers](/docs/platform/manager/dns-manager/#use-linode-s-name-servers-with-your-domain) with your domain. Using Linode's DNS Manager, [create a new Domain](/docs/platform/manager/dns-manager/#add-a-domain) for the one that you have purchased.
 
     *   Ensure that `htpasswd` is installed to your local environment. For many systems, this tool has already been installed. Debian and Ubuntu users will have to install the apache2-utils package with the following command:
 
@@ -238,7 +238,7 @@ To enable HTTPS on your monitoring interfaces, you will create a Transport Layer
 
 While the Grafana interface is natively password-protected, the Prometheus and Alertmanager interfaces must be secured by other means. This guide covers basic authentication configurations to secure the Prometheus and Alertmanager interfaces.
 
-If you are completing this section of the guide after completing a [Prometheus Operator Minimal Deployment](prometheus-operator-minimal-deployment), you can use Helm to upgrade your release and maintain the persistent data storage for your monitoring stack.
+If you are completing this section of the guide after completing a [Prometheus Operator Minimal Deployment](#prometheus-operator-minimal-deployment), you can use Helm to upgrade your release and maintain the persistent data storage for your monitoring stack.
 
 ### Install the NGINX Ingress Controller
 
@@ -581,7 +581,7 @@ prometheus-lke-monitor-prometheus-ope-prometheus-0       3/3     Running   1    
 
 ### Access Monitoring Interfaces from your Domain
 
-Your monitoring interfaces are now pubicly accessible with HTTPS and basic auth from the [domain you have configured](#before-you-begin) for use with this guide at the following paths:
+Your monitoring interfaces are now publicly accessible with HTTPS and basic auth from the [domain you have configured](#before-you-begin) for use with this guide at the following paths:
 
 | Resource     | Domain and path          |
 | ------------ | ------------------------ |
