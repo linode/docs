@@ -472,7 +472,6 @@ getmail
 getpwent
 gfx
 gfxmode
-gh
 gibibytes
 girocco
 gist

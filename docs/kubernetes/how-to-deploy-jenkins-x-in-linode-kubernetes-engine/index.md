@@ -49,7 +49,7 @@ NAME                        STATUS   ROLES    AGE   VERSION
 lke7189-9006-5f05145fc9a3   Ready    <none>   8h    v1.17.3
 lke7189-9006-5f051460a1e2   Ready    <none>   8h    v1.17.3
 lke7189-9006-5f0514617a87   Ready    <none>   8h    v1.17.3
-{{</ output>}}
+{{</ output >}}
 
 ## Install jx
 
@@ -67,7 +67,7 @@ Commit         b2bd447
 Build date     2020-06-23T15:34:17Z
 Go version     1.13.8
 Git tree state clean
-{{</ output>}}
+{{</ output >}}
 
 ## Bootstrap Jenkins X
 
@@ -88,7 +88,7 @@ Creating boot config with defaults, as not in an existing boot directory with a 
 No Jenkins X pipeline file jenkins-x.yml or no jx boot requirements file jx-requirements.yml found. You are not running this command from inside a Jenkins X Boot git clone
 To continue we will clone https://github.com/jenkins-x/jenkins-x-boot-config.git @ master to jenkins-x-boot-config
 ? Do you want to clone the Jenkins X Boot Git repository? [? for help] (Y/n)
-{{</ output>}}
+{{</ output >}}
 
     _Yes_ is the default answer, so you can press enter and continue to the next step.
 
@@ -107,7 +107,7 @@ STEP: verify-preinstall command: /bin/sh -c jx step verify preinstall --provider
 
 error: : unable to parse lke7389 as &lt;project id&gt;_&lt;zone&gt;_&lt;cluster name&gt;
 error: failed to interpret pipeline file /tmp/jenkinsx/jenkins-x-boot-config/jenkins-x.yml: failed to run '/bin/sh -c jx step verify preinstall --provider-values-dir="kubeProviders"' command in directory '/tmp/jenkinsx/jenkins-x-boot-config', output: ''
-{{</ output>}}
+{{</ output >}}
 
     But don't worry, this error can be fixed. If you inspect the current folder, you should notice that `jx` created a `jenkins-x-boot-config` folder. In that folder, there's a `jx-requirements.yml` file with the details of your cluster.
 
@@ -151,7 +151,7 @@ jx boot has only been validated on GKE and EKS, we'd love feedback and contribut
 
     {{< output >}}
 ? Cluster name
-{{</ output>}}
+{{</ output >}}
 
     Enter `jenkins-x-lke`.
 
@@ -159,7 +159,7 @@ jx boot has only been validated on GKE and EKS, we'd love feedback and contribut
 
     {{< output >}}
 ? Git Owner name for environment repositories
-{{</ output>}}
+{{</ output >}}
 
     Type in your GitHub username, and press enter.
 
@@ -168,7 +168,7 @@ jx boot has only been validated on GKE and EKS, we'd love feedback and contribut
     {{< output >}}
 Environment repos will be private, if you want to create public environment repos, please set environmentGitPublic to true in jx-requirements.yml
 ? Comma-separated git provider usernames of approvers for development environment repository
-{{</ output>}}
+{{</ output >}}
 
 1.  Pay attention to the next question, which describes that the webhooks will be called over HTTP, not HTTPS:
 
@@ -181,7 +181,7 @@ reviewers:
 - &lt;your_GitHub_username&gt;
 WARNING: TLS is not enabled so your webhooks will be called using HTTP. This means your webhook secret will be sent to your cluster in the clear. See https://jenkins-x.io/docs/getting-started/setup/boot/#ingress for more information
 ? Do you wish to continue? [? for help] (y/N)
-{{</ output>}}
+{{</ output >}}
 
     Notice how _No_ is the default answer. However, you should answer **Yes** and move on to the next question.
 
@@ -190,7 +190,7 @@ WARNING: TLS is not enabled so your webhooks will be called using HTTP. This mea
     {{< output >}}
 ? Jenkins X Admin Username (admin)
 ? Jenkins X Admin Password
-{{</ output>}}
+{{</ output >}}
 
     You should choose a name and a password for the admin user.
 
@@ -202,7 +202,7 @@ WARNING: TLS is not enabled so your webhooks will be called using HTTP. This mea
 ? Pipeline bot Git username
 ? Pipeline bot Git email address
 ? Pipeline bot Git token
-{{</ output>}}
+{{</ output >}}
 
     You can create a token for your bot by [visiting this URL](https://github.com/settings/tokens/new?scopes=repo,read:user,read:org,user:email,write:repo_hook,delete_repo).
 
@@ -216,13 +216,13 @@ Please note that you should create the token with the Bot's account and not your
 
     {{< output >}}
 ? HMAC token, used to validate incoming webhooks. Press enter to use the generated token
-{{</ output>}}
+{{</ output >}}
 
 1.  The next question is crucial, as it concerns how Jenkins X will interact with the docker registry:
 
     {{< output >}}
 ? Do you want to configure non default Docker Registry? (y/N)
-{{</ output>}}
+{{</ output >}}
 
     Linode does not offer a container registry at the moment, so you will use Docker Hub as your container registry. You should answer _Yes_ which is **NOT** the default option. Answer the following questions accordingly:
 
@@ -244,7 +244,7 @@ Validated pipeline user &lt;bot-name&gt; on git server https://github.com
 Git tokens seem to be setup correctly
 Installation is currently looking: GOOD
 Using namespace 'jx' from context named 'lke7411-ctx' on server 'https://c50d6328-b182-4fe9-9746-7f6e2b2e1b4d.ap-south-1.linodelke.net:443'.
-{{</ output>}}
+{{</ output >}}
 
 Jenkins X is installed!
 
@@ -287,7 +287,7 @@ You can list the pipelines via: jx get pipelines
 When the pipeline is complete:  jx get applications
 
 For more help on available commands see: https://jenkins-x.io/developing/browsing/
-{{</ output>}}
+{{</ output >}}
 
 1.  You can now run the following command to follow the pipeline output:
 
@@ -306,7 +306,7 @@ For more help on available commands see: https://jenkins-x.io/developing/browsin
 
     {{< output >}}
 Created Pull Request: https://github.com/<your-gh-username>/environment-jenkins-x-lke-staging/pull/1
-{{</ output>}}
+{{</ output >}}
 
     The Pull Request is an automatic promotion to the staging environment. If you merge the Pull Request, the application is automatically promoted to the staging environment.
 
@@ -319,6 +319,6 @@ Created Pull Request: https://github.com/<your-gh-username>/environment-jenkins-
     {{< output >}}
 APPLICATION      STAGING PODS URL
 jenkins-x-demo   0.0.10       http://jenkins-x-staging.178.79.175.247.nip.io
-{{</ output>}}
+{{</ output >}}
 
 It might take some time for your application to start. However, when it's started, you can visit the app at the URL provided and see it running.
