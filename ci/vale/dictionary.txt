@@ -38,6 +38,7 @@ apiserver
 apparmor
 appimage
 appletalk
+approvers
 appserver
 apxs
 aren
@@ -308,6 +309,7 @@ distros
 dists
 django
 dkim
+dlncr
 dmg
 dmitriy
 dmz
@@ -482,6 +484,7 @@ gitolite
 gitosis
 gitpython
 gitweb
+gke
 glibc
 glish
 globals
@@ -656,6 +659,7 @@ jdbc
 jdk
 Jellyfin
 jenkinsfile
+jenkinsx
 jetpack
 jez
 jk
@@ -674,6 +678,7 @@ jsonpath
 julialang
 jumpbox
 jupyter
+jx
 kakfa
 kbits
 keepalive
@@ -1097,6 +1102,7 @@ pre4
 precompiled
 preconfigured
 prefork
+preinstall
 preinstalled
 premade
 prepend
@@ -1466,6 +1472,7 @@ transcode
 transcoder
 transcoding
 trello
+triaging
 truststore
 tt
 ttl
@@ -1521,6 +1528,7 @@ untruncated
 untrust
 untrusted
 unversioned
+upserted
 upsize
 uri
 uris
