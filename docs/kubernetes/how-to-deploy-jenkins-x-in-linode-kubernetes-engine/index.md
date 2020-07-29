@@ -34,7 +34,7 @@ external_resources:
 
 Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](https://www.linode.com/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
 
-We recommend using 3 16GB Linodes to start with.
+We recommend using three 16GB Linodes to start with.
 
 ![Creating a Kubernetes cluster on Linode](create-cluster.png)
 
