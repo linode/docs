@@ -62,7 +62,7 @@ When you've provided all required Linode Options, click on the **Create** button
 The Django One-Click App will assign `DjangoApp` as the [Django project name](https://docs.djangoproject.com/en/3.0/intro/tutorial01/#creating-a-project).
 {{</ note >}}
 
-After Django has finished installing, you will be able to access your Django site at your Linode's IPv4 address, for instance: `https://yourlinodeip:8000`.
+After Django has finished installing, you will be able to access your Django site at your Linode's IPv4 address, for instance: `http://yourlinodeip:8000`.
 
 1.  To find your Linode's IPv4 address. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
 
@@ -76,7 +76,7 @@ After Django has finished installing, you will be able to access your Django sit
 
     ![Django Test Page](django-test-page.png "Django Test Page")
 
-1.  Once you have verified that you can access your Django site via the browser, you can log in using the admin credentials you created when deploying your app. Update the address in the browser to: `https://yourlinodeip:8000/admin`.
+1.  Once you have verified that you can access your Django site via the browser, you can log in using the admin credentials you created when deploying your app. Update the address in the browser to: `http://yourlinodeip:8000/admin`.
 
     ![Login to your Django site.](django-admin-login.png "Login to your Django site")
 
