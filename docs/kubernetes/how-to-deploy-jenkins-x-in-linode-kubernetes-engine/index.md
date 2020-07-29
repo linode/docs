@@ -109,11 +109,11 @@ error: : unable to parse lke7389 as &lt;project id&gt;_&lt;zone&gt;_&lt;cluster 
 error: failed to interpret pipeline file /tmp/jenkinsx/jenkins-x-boot-config/jenkins-x.yml: failed to run '/bin/sh -c jx step verify preinstall --provider-values-dir="kubeProviders"' command in directory '/tmp/jenkinsx/jenkins-x-boot-config', output: ''
 {{</ output>}}
 
-    But don't worry, this error can be fixed. If you inspect the current folder, you should notice that `jx` created a `jenkins-x-boot-config` folder. In that folder, there's a `jx-requirement.yml` file with the details of your cluster.
+    But don't worry, this error can be fixed. If you inspect the current folder, you should notice that `jx` created a `jenkins-x-boot-config` folder. In that folder, there's a `jx-requirements.yml` file with the details of your cluster.
 
     Open that with your favourite editor and identify the line that starts with: `provider: gke`. You should change that to `provider: kubernetes`.
 
-    {{< file "jx-requirement.yml" YAML >}}
+    {{< file "jx-requirements.yml" YAML >}}
 autoUpdate:
   enabled: false
   schedule: ""
