@@ -256,7 +256,7 @@ If you inspect your GitHub profile, you might have noticed that there are three 
 
 The repositories hold the configuration for each environment.
 
-## Your first project
+## Your First Project
 
 In this part, you will set up a CI/CD pipeline for a Java (Spring Boot) application. The same steps are valid for any other language or framework.
 
