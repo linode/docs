@@ -6,7 +6,7 @@ description: 'Learn how to quickly deploy Prometheus Operator monitoring stack i
 og_description: 'Great monitoring means fast issue resolution. Learn how to quickly deploy Prometheus Operator monitoring stack including Grafana on Linode Kubernetes Engine.'
 keywords: ['kubernetes', 'lke', 'prometheus', 'grafana']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-07-16
+published: 2020-07-29
 modified_by:
   name: Linode
 title: "How to Deploy Prometheus Operator and Grafana on Linode Kubernetes Engine"
