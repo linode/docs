@@ -81,7 +81,7 @@ System stability is paramount in providing consistent voice over IP (VOIP) perfo
 Commonly-recommended software for implementing cloud-based VOIP systems include:
 
 -   [FreePBX](https://www.freepbx.org/)
--   [Asterix](https://www.asterisk.org/)
+-   [Asterisk](https://www.asterisk.org/)
 
 ### Legacy System Migration
 
