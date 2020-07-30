@@ -91,6 +91,8 @@ Migrating legacy systems to the cloud to maintain business-critical workloads is
 
 Certain business must adhere to stringent standards such as [HIPAA and PCI DSS](/legal-compliance/) when managing data. Bare Metal Linodes, by virtue of single-tenancy, are best-suited for compliance with such standards as they provide the utmost in security and control over hardware resources.
 
+<!--- Uncomment when Getting Started with Bare Metal guide and pricing pages are updated.
 ## Where to Go From Here
 
 If you're ready to get started with a Bare Metal Linode, our [Getting Started With Bare Metal](/docs/platform/bare-metal/getting-started-with-bare-metal/) guide will walk you through the process of an initial installation. Additionally, see our [Pricing Page](https://www.linode.com/pricing) for a rundown of both hourly and monthly costs.
+--->
