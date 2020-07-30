@@ -173,7 +173,7 @@ When you issue a certificate, append the following options:
 | \-\-fullchain-file | Location to save the file containing the full chain of certificates. |
 | \-\-reloadcmd | Command to run after a certificate has been renewed. |
 
-For example, to put your certificates in /etc/ssl/example.com and restart Apache after a renewal:
+For example, to put your certificates in `/etc/ssl/example.com` and restart Apache after a renewal:
 
     acme.sh --issue --dns dns_linode_v4 --dnssleep 90 -d example.com -d www.example.com \
         --cert-file /etc/ssl/example.com/example.com.cer \
