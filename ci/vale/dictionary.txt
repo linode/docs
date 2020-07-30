@@ -450,6 +450,7 @@ frontmatter
 fs
 fsck
 fstab
+fullchain
 func
 galera
 gamemode
@@ -1188,6 +1189,7 @@ reimported
 reindexing
 reinstalls
 releasever
+reloadcmd
 remi
 remmina
 remotehost

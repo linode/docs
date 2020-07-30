@@ -24,7 +24,7 @@ external_resources:
 
 [acme.sh](https://acme.sh/) is a client application for ACME-compatible services, such as those used by [Let's Encrypt](https://letsencrypt.org/).
 
-It is an alternative to the popular Cerbot application with two big benefits: it is written as pure shell scripting so it has no dependencies, and supports **a lot** more DNS providers.
+It is an alternative to the popular Certbot application with two big benefits: it is written as pure shell scripting so it has no dependencies, and supports **a lot** more DNS providers.
 
 If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates, using Linode DNS as the domain ownership verification.
 
@@ -150,7 +150,7 @@ You can now use the certificate files listed above to secure your website. This 
         ...
     }
 
-## Renewing the certificates
+## Renewing the certificate
 
 Like the official Let's Encrypt client (Certbot) acme.sh will automatically renew your certificates. The installer will have created a cron job to run automatically at a random time each day:
 
@@ -162,7 +162,7 @@ Like the official Let's Encrypt client (Certbot) acme.sh will automatically rene
 
 This job will check for certificates coming up for expiry and will renew them.
 
-You can instruct acme.sh to automatically install the certificates to a location readable by your web server, and to reload the web server post-renewal, so it's completely automated.
+You can instruct acme.sh to automatically install the certificates to a location readable by your web server, and to reload the web server after renewal, so it's completely automated.
 
 When you issue a certificate, append the following options:
 
