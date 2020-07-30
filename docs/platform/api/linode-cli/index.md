@@ -245,7 +245,7 @@ Tasks related to Linode instances are performed with `linode-cli linodes [ACTION
 
 1.  Create a new disk for a Linode:
 
-        linode-cli linodes disk-create $linode_id --size 2700 --root_pass password --filesystem raw --no-defaults
+        linode-cli linodes disk-create $linode_id --size 2700 --root_pass mypassword --filesystem raw --no-defaults
 
     {{< note >}}
 Even if you set the `--filesystem` to `raw`, the defaults you specified when configuring the CLI will be used for setting a Linode's disk image for this disk, overriding the filesystem setting. To create a disk without the default image, using only the parameters you send in this command, use the `--no-defaults` flag.
