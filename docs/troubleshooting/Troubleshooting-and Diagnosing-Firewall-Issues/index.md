@@ -2,15 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Help with common Linode memory use and networking issues.'
-keywords: ["Linode troubleshooting", "Linode troubleshooting", "Linux configuration"]
+description: 'Troubleshooting Linode's Cloud Firewall'
+og_description: 'Troubleshooting the Linode Cloud Firewall'
+keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['troubleshooting/memory-networking/']
-modified: 2013-11-19
-modified_by:
-  name: Linode
-published: 2009-08-05
-title: Troubleshooting Memory and Networking Issues
+published: 2020-08-04
+title: Troubleshooting Cloud Firewall
 ---
 
 This guide presents troubleshooting strategies for Linodes that may be unresponsive due to issues caused by a firewall.
