@@ -55,6 +55,8 @@ Run these steps on the database server.
 
 ### Accept Remote Connections
 
+{{< content "cloud-firewall-shortguide" >}}
+
 1.  Change the `bind-address` to the database server's private IP to configure the MariaDB to accept remote connections:
 
     {{< file "/etc/mysql/mariadb.conf.d/50-server.cnf" >}}

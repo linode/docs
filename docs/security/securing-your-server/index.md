@@ -288,6 +288,8 @@ Run `ss -atup` again to verify that the unwanted services are no longer running.
 
 ## Configure a Firewall
 
+{{< content "cloud-firewall-shortguide" >}}
+
 Using a *firewall* to block unwanted inbound traffic to your Linode provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:
 
 *   [Iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) is the controller for netfilter, the Linux kernel's packet filtering framework. Iptables is included in most Linux distributions by default.
