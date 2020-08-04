@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Troubleshooting Linode's Cloud Firewall'
-og_description: 'Troubleshooting the Linode Cloud Firewall'
+description: 'Troubleshooting your system's Firewalls'
+og_description: 'Troubleshooting your Firewall'
 keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-04
-title: Troubleshooting Cloud Firewall
+title: Firewall Troubleshooting
 ---
 
 This guide presents troubleshooting strategies for Linodes that may be unresponsive due to issues caused by a firewall.
