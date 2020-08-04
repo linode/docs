@@ -7,6 +7,9 @@ og_description: 'Troubleshooting your Firewall'
 keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-04
+modified: 2020-08-04
+modified_by:
+  name: Linode
 title: Firewall Troubleshooting
 ---
 
@@ -38,7 +41,7 @@ If you're using Linode's Cloud Firewall then it's important to check your rules 
 The root user is available in Lish even if root user login is disabled in your SSH configuration.
 {{< /note >}}
 
-To do this, log in to your [Cloud Manager](cloud.linode.com) and access the [Firewalls Section](cloud.linode.com/firewalls) here you will see a list of all the firewalls currently active on your account. To find the Linode that you believe is being affected, look in the `Linodes` column for the label you've assigned it. Next, check the `Status` column to confirm that the firewall is `Enabled`. If so, you can check what rules are currently applied by clicking on the `Edit` button to the right of each row, or by clicking on the label of the Firewall itself.
+To do this, log in to your [Cloud Manager](https://cloud.linode.com) and select the "Firewalls" option from the menu. Here you will see a list of all the firewalls currently active on your account. To find the Linode that you believe is being affected, look in the `Linodes` column for the label you've assigned it. Next, check the `Status` column to confirm that the firewall is `Enabled`. If so, you can check what rules are currently applied by clicking on the `Edit` button to the right of each row, or by clicking on the label of the Firewall itself.
 
 [![firewallhome](firewallhome.png)](firewallhome.png)
 
@@ -52,7 +55,7 @@ Cloud Firewall rules are applied on the host level and will not be detectable in
 
 ## Checking Firewall Rules with UFW
 
-**Uncomplicated Firewall** or **UFW** is an iptables frontend that is designed for ease-of-use. To find more information, see our guide on [Configuring UFW](/security/firewalls/configure-firewall-with-ufw/).
+**Uncomplicated Firewall** or **UFW** is an iptables frontend that is designed for ease-of-use. To find more information, see our guide on [Configuring UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
 
 To see all active UFW rules, enter the following command:
 
@@ -83,7 +86,7 @@ So to delete the Allow rule for port 80, the command would be as follows:
 
 ## Checking Firewall Rules with FirewallD
 
-`firewalld` is the default firewall tool for Centos and Fedora.. While also a frontend for iptables like UFW, firewalld has some behaviours that are unique, like configuration sets and zones.
+`firewalld` is the default firewall tool for CentOS and Fedora.. While also a frontend for iptables like UFW, firewalld has some behaviours that are unique, like configuration sets and zones.
 
 To list all all configurations for all zones, enter the following command:
 
@@ -91,9 +94,9 @@ To list all all configurations for all zones, enter the following command:
 
 If you find a rule that doesn't belong, it can be safely removed using the following syntax:
 
-sudo firewall-cmd --zone=zonename --remove-service=servicename --permanent
+        sudo firewall-cmd --zone=zonename --remove-service=servicename --permanent
 
-For more informaton on understanding firewalld, [see our guide to firewalld](/docs/security/firewalls/introduction-to-firewalld-on-centos/)
+For more information on understanding firewalld, [see our guide to firewalld](/docs/security/firewalls/introduction-to-firewalld-on-centos/)
 
 
 ## Checking Firewall Rules with iptables
