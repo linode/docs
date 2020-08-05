@@ -18,7 +18,7 @@ external_resources:
 - '[Terraform Linode Provider Official Documentation](https://registry.terraform.io/providers/linode/linode/latest/docs)'
 ---
 
-Terraform modules allow you to better organize your configuration code and make the code reusable. You can host your Terraform modules on remote version control services, like GitHub, for others to use. The Terraform Module Registry hosts community modules that you can reuse for your own Terraform configurations, or you can publish your own modules for consumption by the Terraform community.
+Terraform modules allow you to better organize your configuration code and to distribute and reuse it. You can host your Terraform modules on remote version control services, like GitHub, for others to use. The Terraform Module Registry hosts community modules that you can reuse for your own Terraform configurations, or you can publish your own modules for consumption by the Terraform community.
 
 In this guide, you will create a Linode Firewalls module which declares commonly used Cloud Firewall configurations. You will then use the module to create a Linode instance and assign the Linode to the Cloud Firewall. You can adopt the example configurations in this guide to create your own reusable Cloud Firewall configurations.
 
@@ -60,7 +60,7 @@ You can view the files created throughout this tutorial in the [author's GitHub 
 
 ### Create Your Module's Directory Structure
 
-After completing all the sections in [Create Your Cloud Firewalls Module](/docs/applications/configuration-management/terraform/how-to-create-a-cloud-firewall-and-assign-it-to-a-linode-using-terraform/#create-your-cloud-firewalls-module), you will have the directory structure outlined below. In this section, you will create this directory structure.
+After completing all the sections in [Create Your Cloud Firewalls Module](/docs/applications/configuration-management/terraform/how-to-deploy-secure-linodes-using-cloud-firewalls-and-terraform/#create-your-cloud-firewalls-module), you will have the directory structure outlined below. In this section, you will create this directory structure.
 
 {{< output >}}
 main_firewalls/
