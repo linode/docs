@@ -18,7 +18,7 @@ MySQL is a relational database management system (RDBMS) that is used as a backe
 
 Before beginning this guide, please make sure that you have completed the steps outlined in our [getting started guide](/docs/getting-started/). Additionally, make sure you are logged into your system as the root user.
 
-# Installing MySQL
+## Installing MySQL
 
 Issue the following command to make sure that your package repository is up to date:
 
@@ -48,7 +48,7 @@ If you would like MySQL to run when the system boots, issue the following comman
 
     rc-update add mysql default
 
-# Configuring MySQL
+## Configuring MySQL
 
 By default, MySQL binds to localhost. If you wish for MySQL to listen on a public IP, you may change the `bind-address` value in `/etc/mysql/my.cnf` to reflect your Linode's IP address. Allowing unrestricted access to MySQL on a public IP is not advised, and you may wish to consider implementing firewall rules to only allow traffic from specific IP addresses.
 
@@ -58,7 +58,7 @@ Any time you modify the settings in `/etc/mysql/my.cnf`, you will need to restar
 
     /etc/init.d/mysql restart
 
-# Using MySQL
+## Using MySQL
 
 Most interaction with MySQL happens via the `mysql` command line utility. Issue the following command to interact with MySQL:
 
@@ -140,7 +140,7 @@ Now let's log back into the MySQL client as `testuser` and create a sample table
 
 This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. Of course, you'd probably want to store much more information than this on a customer, but it's a good example of a common case nonetheless.
 
-# Tuning MySQL
+## Tuning MySQL
 
 MySQL Tuner is a useful tool that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will provide.
 
@@ -154,7 +154,7 @@ To run MySQL Tuner simply enter:
 
 Please note that this tool is designed to provide configuration suggestions and is an excellent starting point. It would be prudent to perform additional research for tuning configurations based on the application(s) utilizing MySQL.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

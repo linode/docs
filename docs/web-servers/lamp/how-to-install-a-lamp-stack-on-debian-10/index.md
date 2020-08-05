@@ -21,7 +21,7 @@ external_resources:
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on Debian 10 (Buster).
 
-## Before You Begin
+### Before You Begin
 
 Prior to installing your LAMP stack ensure that:
 
@@ -42,9 +42,9 @@ Prior to installing your LAMP stack ensure that:
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
     {{< /note >}}
 
-## Apache
+### Apache
 
-### Install and Configure Apache
+#### Install and Configure Apache
 
 1.  Install Apache 2.4:
 
@@ -75,7 +75,7 @@ As a best practice, you should create a backup of your Apache configuration file
         MaxConnectionsPerChild    4500
 </IfModule>
 
-# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+## vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 
 {{< /file >}}
 
@@ -108,7 +108,7 @@ These settings are good starting points, but they should be adjusted to best sui
         sudo systemctl restart apache2
 
 
-### Configure Name-Based Virtual Hosts
+#### Configure Name-Based Virtual Hosts
 
 There can be as many virtual hosts files as needed to support the amount of domains hosted on the Linode.
 
@@ -186,11 +186,11 @@ If you need to disable a site, you can use issue the following command:
         sudo systemctl restart apache2
 
 
-## MariaDB
+### MariaDB
 
 MariaDB is a *relational database management system* (RDBMS) and is a popular component of many applications.
 
-### Install MariaDB
+#### Install MariaDB
 
 1.  Install MariaDB:
 
@@ -204,7 +204,7 @@ MariaDB is a *relational database management system* (RDBMS) and is a popular co
 
     It is recommended that you select yes (`y`) for all questions. If you already have a secure root password, you do not need to change it.
 
-### Set Up a MariaDB Database
+#### Set Up a MariaDB Database
 
 Next, you can create a database and grant your users permissions to use databases.
 
@@ -223,11 +223,11 @@ Next, you can create a database and grant your users permissions to use database
 
         quit
 
-## PHP
+### PHP
 
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks.
 
-### Install PHP
+#### Install PHP
 
 PHP 7.3 is the [latest version available](http://php.net/supported-versions.php) and has the longest period of support offered as of this guide's publishing:
 
@@ -240,7 +240,7 @@ PHP 7.3 is the [latest version available](http://php.net/supported-versions.php)
         sudo apt install php-curl php-json php-cgi
 
 
-### Configure PHP
+#### Configure PHP
 
 1.  Open `/etc/php/7.3/apache2/php.ini` in your text editor and edit the following values. These settings are optimized for the 2GB Linode:
 
@@ -271,7 +271,7 @@ If you plan on using your LAMP stack to host a WordPress server, install additio
 
 1. Visit your site's domain (or IP address). You should see Apache's default welcome page. Your LAMP stack should be installed and is ready to host your site files.
 
-## Optional: Test and Troubleshoot the LAMP Stack
+### Optional: Test and Troubleshoot the LAMP Stack
 
 In this section, you'll create a test page that shows whether Apache can render PHP and connect to the MariaDB database. This can be helpful in locating the source of an error if one of the elements of your LAMP stack is not communicating with the others.
 

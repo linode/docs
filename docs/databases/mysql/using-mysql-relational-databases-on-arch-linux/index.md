@@ -16,7 +16,7 @@ title: Using MySQL Relational Databases on Arch Linux
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on Arch Linux. If you would like to deploy MySQL as part of an application stack, consider our [LEMP](/docs/lemp-guides/arch-linux/) and [LAMP guides](/docs/lamp-guides/).
 
-# System Configuration
+## System Configuration
 
 Make sure your `/etc/hosts` file has proper entries, similar to the ones shown below. Replace "12.34.56.78" with your Linode's public address, "servername" with your short hostname, and "mydomain.com" with your system's domain name.
 
@@ -29,7 +29,7 @@ Make sure your `/etc/hosts` file has proper entries, similar to the ones shown b
 
 Set your system's hostname by setting the `HOSTNAME=` value in the `/etc/rc.conf` file.
 
-# Install MySQL
+## Install MySQL
 
 Issue the following commands to update your system and install MySQL:
 
@@ -42,7 +42,7 @@ The MySQL server package will be installed on your server, along with dependenci
 
     /etc/rc.d/mysqld start
 
-# Configure MySQL
+## Configure MySQL
 
 After installing MySQL, it's recommended that you run `mysql_secure_installation`, a program that helps secure MySQL. While running `mysql_secure_installation`, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. If you are prompted to reload the privilege tables, select yes. Run the following command to execute the program:
 
@@ -65,7 +65,7 @@ Consult the "More Information" section at the end of this tutorial for additiona
 
 Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel/) for information on connecting to your databases with local clients.
 
-# Use MySQL
+## Use MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client program. To get started, issue the following command at your prompt:
 
@@ -136,7 +136,7 @@ Now let's log back into the MySQL client as `testuser` and create a sample table
 
 This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. Of course, you'd probably want to store much more information than this for a customer, but it's a good example of a common case nonetheless.
 
-# How to Reset MySQL's Root Password
+## How to Reset MySQL's Root Password
 
 If you've forgotten your root MySQL password, you may reset it by issuing the following commands:
 
@@ -155,7 +155,7 @@ Last, restart MySQL by issuing the following command:
 
     /etc/rc.d/mysqld restart
 
-# Tuning MySQL
+## Tuning MySQL
 
 MySQL Tuner is a useful tool that connects to a running instance of MySQL and provides configuration recommendations based on workload. Ideally, the MySQL instance should have been operating for at least 24 hours before running the tuner. The longer the instance has been running, the better advice MySQL Tuner will provide.
 
@@ -171,7 +171,7 @@ To run MySQL Tuner simply enter:
 
 Please note that this tool is designed to provide configuration suggestions and is an excellent starting point. It would be prudent to perform additional research for tuning configurations based on the application(s) utilizing MySQL\**.*\*
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

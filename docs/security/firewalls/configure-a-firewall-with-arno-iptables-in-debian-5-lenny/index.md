@@ -18,7 +18,7 @@ Firewall software is designed to limit access to network resources running on yo
 
 This guide will help you get the `arno-iptables-firewall` package installed and configured under Debian 5 (Lenny). For purposes of this tutorial, we assume the user is logged in as root via SSH, and that the prerequisite steps in the [getting started guide](/docs/getting-started/) have already been followed.
 
-# Installing the Firewall
+## Installing the Firewall
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -31,7 +31,7 @@ Issue the following command in your terminal:
 
 You will be led through a series of configuration dialogs. In the example below, we're assuming your Linode has one public IP address on `eth0` and one private IP address on the alias `eth0:0` (a private IP is not required). Please be sure to refer to the **Networking** tab in the Linode Cloud Manager for your specific settings.
 
-# Configuring the Firewall
+## Configuring the Firewall
 
 As part of the installation process, you'll be presented with a debconf dialog for configuration. Choose "Yes" to allow your configuration to be interactively managed by debconf:
 
@@ -67,7 +67,7 @@ After the initial debconf dialog exits, a few packages that arno-iptables-firewa
 
 Your firewall should be functioning correctly at this point. You can reference the file `/etc/arno-iptables-firewall/firewall.conf` for additional configuration beyond the scope of the debconf dialogs. To start/stop/restart the firewall from the shell, use the command `/etc/init.d/arno-iptables-firewall [start|stop|restart]`.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

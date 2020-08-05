@@ -24,7 +24,7 @@ We assume you've followed the steps outlined in our [getting started guide](/doc
 
 **NOTE: Please carefully read all information presented in this guide.** There are many files and commands that will need to be edited as part of the setup process; please do not simply copy and paste the example blocks.
 
-# Install Required Packages
+## Install Required Packages
 
 Make sure your package repositories and installed programs are up to date by issuing the following command:
 
@@ -52,7 +52,7 @@ Make sure you select a strong password comprised of letters, numbers, and non-al
 
 This completes the initial package configuration steps. Next, we'll build the Courier IMAP server.
 
-# Building and Installing Courier
+## Building and Installing Courier
 
 The Courier build process needs to be completed as a non root user. To simplify the number of users created we will build Courier as the user virtual mail user that will store the users mailboxes when the installation is complete. To create the new account run:
 
@@ -99,7 +99,7 @@ As with building the authentication library for Courier the build process could 
 
 You have now installed of the software needed to server mail from your Linode. Now we will set up MySQL to handle our virtual domains and users.
 
-# Set up MySQL for Virtual Domains and Users
+## Set up MySQL for Virtual Domains and Users
 
 Start the MySQL shell by issuing the following command. You'll be prompted to enter the root password for MySQL that you assigned during the initial setup.
 
@@ -174,7 +174,7 @@ After you changed MySQL's configuration, restart the database server with the fo
 
 Next, we'll perform additional Postfix configuration to set up communication with our database.
 
-# Configure Postfix to work with MySQL
+## Configure Postfix to work with MySQL
 
 Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
 
@@ -240,7 +240,7 @@ Issue the following commands to complete the remaining steps required for Postfi
 
 This completes the configuration for Postfix. Next, we'll make an SSL certificate for the Postfix server that contains values appropriate for your organization.
 
-# Create an SSL Certificate for Postfix
+## Create an SSL Certificate for Postfix
 
 Issue the following commands to create the SSL certificate (the `openssl` command spans two lines, but should be entered as a single command):
 
@@ -263,7 +263,7 @@ Set proper permissions for the key file by issuing the following command:
 
 This completes SSL certificate creation for Postfix. Next, we'll configure `saslauthd` to use MySQL for user authentication.
 
-# Configure saslauthd to use MySQL
+## Configure saslauthd to use MySQL
 
 Edit the file `/etc/sysconfig/saslauthd`, setting "FLAGS" to "-r" as shown below.
 
@@ -302,7 +302,7 @@ Finally, restart Postfix and `saslauthd` by issuing the following commands:
 
 This completes configuration for `saslauthd`. Next, we'll configure Courier to use MySQL for IMAP/POP3 user authentication.
 
-# Configure Courier to use MySQL
+## Configure Courier to use MySQL
 
 Edit the file `/etc/authlib/authdaemonrc`, changing the "authmodulelist" line to read as follows.
 
@@ -350,7 +350,7 @@ You should see output similar to the following in your terminal:
 
 Enter the command "quit" to return to your shell. This completes Courier configuration. Next, we'll make sure aliases are configured properly.
 
-# Configure Mail Aliases
+## Configure Mail Aliases
 
 Edit the file `/etc/aliases`, making sure the "postmaster" and "root" directives are set properly for your organization.
 
@@ -367,7 +367,7 @@ After modifying this file, you must run the following commands to update aliases
 
 This completes alias configuration. Next, we'll test Postfix to make sure it's operating properly.
 
-# Testing Postfix
+## Testing Postfix
 
 To test Postfix for SMTP-AUTH and TLS, issue the following command:
 
@@ -399,7 +399,7 @@ You should see output similar to the following, with the line "250-STARTTLS" inc
 
 Issue the command `quit` to terminate the Postfix connection. Next, we'll populate the MySQL database with domains and email users.
 
-# Setting up Domains and Users
+## Setting up Domains and Users
 
 Please note that you'll need to modify the DNS records for any domains for which you wish to handle email by adding an MX record that points to your mail server's fully qualified domain name. If MX records already exist for a domain you would like to handle the email for, you'll need to either delete them or set them to a larger priority number than your mail server. Smaller priority numbers indicate higher priority for mail delivery, with "0" being the highest priority.
 
@@ -420,7 +420,7 @@ Press `Ctrl+D` to complete the message. This completes the configuration for a n
 
 Congratulations, you've successfully configured Postfix, Courier, and MySQL to provide email services for virtual domains and users on your Linode. When configuring your local email client, use the full email address for the mailbox you wish to connect to as the username. Please consult the "More Information" section for additional resources that may prove useful in the administration of your new email server.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

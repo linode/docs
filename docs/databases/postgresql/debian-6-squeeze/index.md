@@ -15,7 +15,7 @@ title: 'Use PostgreSQL Relational Databases on Debian 6 (Squeeze)'
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Debian 6 (Squeeze). It is assumed that you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
-# Installing PostgreSQL
+## Installing PostgreSQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -26,9 +26,9 @@ Issue the following command to install PostgreSQL, required dependencies, and so
 
     apt-get install postgresql postgresql-contrib
 
-# Configure PostgreSQL
+## Configure PostgreSQL
 
-### Install the adminpack
+#### Install the adminpack
 
 This step is optional. Issue the following command to install the PostgreSQL `adminpack`, which provides additional functionality pertaining to remote management via tools like [pgAdmin](http://www.pgadmin.org/):
 
@@ -46,7 +46,7 @@ You should see output similar to the following:
     CREATE FUNCTION
     CREATE FUNCTION
 
-### Set the postgres User's Password
+#### Set the postgres User's Password
 
 Change the `postgres` user's system account password with the following command. If you are already logged in as the `postgres` user, please issue the `exit` command first to return to a root shell.
 
@@ -57,7 +57,7 @@ Issue the following commands to set a password for the `postgres` administrative
     su - postgres
     psql -c "ALTER USER postgres WITH PASSWORD 'changeme'" -d template1
 
-### Create a Database
+#### Create a Database
 
 Switch to the "postgres" user and create a database by issuing the following commands:
 
@@ -82,7 +82,7 @@ This is the PostgreSQL client shell; you may use it to issue SQL statements. To 
 
 You may find more information on a specific command by adding it after the `\h` command.
 
-### Create Tables
+#### Create Tables
 
 To create a table in your test database called "employees", issue the following command:
 
@@ -108,7 +108,7 @@ To exit the `psql` shell, issue this command:
 
     \q
 
-### Create PostgreSQL Users (Roles)
+#### Create PostgreSQL Users (Roles)
 
 PostgreSQL refers to users as "roles", which may have different privileges on your databases. If a user is classified as a "superuser," it will have total administrative access to the database system. To add a new user to PostgreSQL, issue the following command as the `postgres` user:
 
@@ -150,7 +150,7 @@ To use the database "mytestdb" as "alison", issue the following command:
 
 You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -26,7 +26,7 @@ Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow fo
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
-## Before You Begin
+### Before You Begin
 
 Prior to installing your LAMP stack ensure that:
 
@@ -42,9 +42,9 @@ Prior to installing your LAMP stack ensure that:
 
         sudo apt-get update && sudo apt-get upgrade
 
-## Apache
+### Apache
 
-### Install and Configure Apache
+#### Install and Configure Apache
 
 1.  Install Apache 2.4:
 
@@ -69,7 +69,7 @@ Prior to installing your LAMP stack ensure that:
         MaxConnectionsPerChild    4500
 </IfModule>
 
-# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+## vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 
 {{< /file >}}
 
@@ -88,7 +88,7 @@ These settings are good starting points, but they should be adjusted to best sui
         sudo systemctl restart apache2
 
 
-### Configure Name-Based Virtual Hosts
+#### Configure Name-Based Virtual Hosts
 
 There can be as many virtual hosts files as needed to support the amount of domains hosted on the Linode.
 
@@ -143,11 +143,11 @@ Should you need to disable a site, you can use `a2dissite example.com`.
         sudo systemctl restart apache2
 
 
-## MySQL
+### MySQL
 
 MySQL is a *relational database management system* (RDBMS) and is a popular component of many applications.
 
-### Install MySQL
+#### Install MySQL
 
 1.  Install MySQL:
 
@@ -161,7 +161,7 @@ MySQL is a *relational database management system* (RDBMS) and is a popular comp
 
     It is recommended that you select yes (`y`) for all questions. If you already have a secure root password, you do not need to change it.
 
-### Set Up a MySQL Database
+#### Set Up a MySQL Database
 
 Next, you can create a database and grant your users permissions to use databases.
 
@@ -180,11 +180,11 @@ Next, you can create a database and grant your users permissions to use database
 
         quit
 
-## PHP
+### PHP
 
 PHP makes it possible to produce dynamic and interactive pages using your own scripts and popular web development frameworks.
 
-### Install PHP
+#### Install PHP
 
 PHP 7.3 is the [latest version available](http://php.net/supported-versions.php) and has the longest period of support offered as of this guide's publishing:
 
@@ -199,7 +199,7 @@ PHP 7.3 is the [latest version available](http://php.net/supported-versions.php)
 
         sudo apt-get install php7.3 php-pear
 
-### Configure PHP
+#### Configure PHP
 
 1.  Open `/etc/php/7.3/apache2/php.ini` in your text editor and edit the following values. These settings are optimized for the 2GB Linode:
 

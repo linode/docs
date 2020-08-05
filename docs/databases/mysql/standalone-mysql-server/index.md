@@ -18,7 +18,7 @@ In some kinds of deployments, particularly where rich dynamic applications rely 
 
 As a result, these database servers can more effectively support deployments with high traffic loads. This may help you achieve higher performance for a range of applications, from popular packages such as [WordPress](/docs/web-applications/cms-guides/wordpress/) and [Drupal](/docs/web-applications/cms-guides/drupal/) to custom applications written in [Ruby on Rails](/docs/frameworks/) and [Django](/docs/frameworks/).
 
-# Prerequisites
+## Prerequisites
 
 In this guide we will be using two Linodes. Note that this is different than simply deploying a second configuration profile on your existing Linode account, as both servers will need to be running at the same time. We're assuming you have followed the [getting started](/docs/getting-started/) guide for both Linodes.
 
@@ -27,7 +27,7 @@ In this guide we will be using two Linodes. Note that this is different than sim
 
 Also, you will want to configure aliases for the private IP address of each Linode. You can follow the [Linux Static IP Configuration](/docs/networking/configuring-static-ip-interfaces/) guide for assistance with this. **It is important to note that both Linodes should be in the same data center** for private networking to work. This enables the servers to communicate without having the traffic count against your monthly bandwidth quota. It is necessary to reboot both Linodes after configuring the private IP addresses.
 
-# Edit /etc/hosts
+## Edit /etc/hosts
 
 You will want to create hostnames for each machine so you can keep track of them later. This also saves work, should you find yourself in a situation where you need to change the IP address of the server. Edit the `/etc/hosts` file to include the **private** IP addresses of each Linode. Use the following excerpt from an example `/etc/hosts` file as an example:
 
@@ -38,7 +38,7 @@ Remember to replace `192.168.192.168` and `192.168.192.169` with the actual priv
 
 While this step is optional, configuring `hosts` entries will allow you to avoid hard coding application configurations to specific IP addresses. You will be able to quickly migrate your application and database servers to alternate servers if you ever have to change your IP addresses.
 
-# Configuring the MySQL Server
+## Configuring the MySQL Server
 
 The next step is to modify the `/etc/mysql/my.cnf` file on your MySQL server to listen on your private IP address. Using your favorite editor, open the `/etc/mysql/my.cnf` file and insert the hostname of the MySQL database. For this example, the MySQL database hostname is `mysql`. Locate the `bind-address` line:
 
@@ -50,7 +50,7 @@ You can alternatively use the private IP address. Save the file, and run the fol
 
     /etc/init.d/mysql restart
 
-# Granting Database Access
+## Granting Database Access
 
 On the dedicated database server, you will need to create a database username and password with access rights. This is possible through the MySQL prompt. Issue the following command:
 
@@ -64,7 +64,7 @@ This will provide a MySQL command line. Issue the following commands, substituti
 
 At this stage your application can successfully access the remote database, and you're ready to begin using the database server.
 
-# Using the Database Server
+## Using the Database Server
 
 From this point on, everything is configured and your database server is ready to accept a connection from your web server. You should now be able to point your application at the MySQL server without incident. It is important to remember that when setting up web applications to work with a remote MySQL server you must create a user with rights to the remote system (as shown above).
 

@@ -22,7 +22,7 @@ It is assumed that you've followed the steps outlined in our [getting started gu
 
 To do this, log into the Linode Manager and shut down your Linode. Once your Linode is completely shut down, click the swap disk under the "Disks" heading in the Dashboard. Then change the size to 1,025 MB. If you're already using all of your allocated disk space, you may need to shrink your main disk first to accommodate the larger swap image.
 
-# Configure Networking and Set the Hostname
+## Configure Networking and Set the Hostname
 
 Oracle is very picky about the system hostname with respect to what interfaces it will listen on. You'll be using a private IP on your Linode and setting the hostname a bit differently than usual to account for this, with the added benefit of being able to connect to your Oracle database from other Linodes in the same data center.
 
@@ -69,9 +69,9 @@ Although you'd normally set the system hostname to the short version of its full
 
 You can use the `ip addr show` command to verify your network interfaces. If everything looks correct, you may proceed to Oracle installation.
 
-# Install Required Software
+## Install Required Software
 
-### Add the Oracle GPG Key and Update Repositories
+#### Add the Oracle GPG Key and Update Repositories
 
 Installing the Oracle XE GPG key ensures that you will get verified Oracle software packages from `apt`. Issue the following command to import the key:
 
@@ -90,7 +90,7 @@ Since you added a new repository, issue the following commands to update your pa
     apt-get update
     apt-get upgrade
 
-### Install Oracle XE
+#### Install Oracle XE
 
 Install Oracle XE by running the following command:
 
@@ -110,7 +110,7 @@ You should see output resembling the following:
     tcp        0      0 192.168.146.68:38803    192.168.146.68:1521     ESTABLISHED
     tcp        0      0 192.168.146.68:1521     192.168.146.68:38803    ESTABLISHED
 
-# Connect to the Oracle XE Home Page
+## Connect to the Oracle XE Home Page
 
 Oracle is managed via a web interface, which is installed with the oracle-xe package. By default, it listens on the local address `127.0.0.1` at port 8080. Since you most likely do not have a window manager or web browser installed on your Linode, you must connect to your Oracle home page remotely.
 
@@ -118,7 +118,7 @@ You can do this by using our [Oracle SSH tunnel script](/docs/databases/oracle/s
 
 [![The Oracle XE administration home page.](379-oracle-xe-admin-page.png)](379-oracle-xe-admin-page.png)
 
-# Manage Oracle from the Command Line
+## Manage Oracle from the Command Line
 
 The Oracle XE installation comes bundled with a command line tool called `sqlplus`, which is roughly equivalent to the MySQL client. We highly recommend using your Oracle XE Home Page over an SSH tunnel to administer your Oracle instance, however you may find `sqlplus` useful.
 
@@ -172,7 +172,7 @@ Once sqlplus has started, you'll need to connect to your Oracle XE instance. Iss
 
 Once you have successfully logged in, you may perform most Oracle tasks and query your databases. Oracle commands and syntax differ from those of MySQL. If you are new to Oracle or come from a MySQL background, we recommend that you read the [Oracle getting started guide](http://download.oracle.com/docs/cd/B25329_01/doc/admin.102/b25610/toc.htm) to get a better idea of how Oracle commands work and, more importantly, how the Oracle structure is laid out. The `exit` command will return you to a normal shell prompt.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

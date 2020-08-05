@@ -18,7 +18,7 @@ title: OpenCart on Fedora 15
 
 OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/lamp-guides) on your Linode. You should have also [set the hostname](/docs/getting-started#setting-the-hostname).
 
-# PHP Settings
+## PHP Settings
 
 In order to use OpenCart, you will need to ensure that PHP is configured properly. Make sure the settings below match the values in your `/etc/php.ini` file:
 
@@ -32,7 +32,7 @@ Additionally, you will need to make sure that the following PHP extensions are i
 
     yum install php-mysql php-gd php-common
 
-# MySQL Credentials
+## MySQL Credentials
 
 You will also need to create a database and a database user for OpenCart. To create a database and grant your users permissions on it, issue the following command. Note, the semi-colons (`;`) at the end of the lines are crucial for ending the commands. Your command should look like this:
 
@@ -42,7 +42,7 @@ You will also need to create a database and a database user for OpenCart. To cre
 
 In the example above, `mystore` is the name of the database for your store, `opencart` is the username, and `p@$$w0rD` is the password.
 
-# Install OpenCart
+## Install OpenCart
 
 Issue the following commands to download and unpack OpenCart:
 

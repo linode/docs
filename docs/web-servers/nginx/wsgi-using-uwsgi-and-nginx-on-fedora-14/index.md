@@ -18,7 +18,7 @@ title: WSGI using uWSGI and nginx on Fedora 14
 
 The uWSGI server provides a non-FastCGI method for deploying Python applications with the nginx web server. In coordination with nginx, uWSGI offers great stability, flexibility, and performance. However, to deploy applications with uWSGI and nginx, you must compile nginx manually with the included uwsgi module.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -27,7 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install uWSGI
+## Install uWSGI
 
 Begin by issuing the following command to update your system and install dependencies for uWSGI:
 
@@ -54,7 +54,7 @@ Send the following sequence of commands to set the required file permissions:
     touch /var/log/uwsgi.log
     chown uwsgi /var/log/uwsgi.log
 
-# Configure uWSGI
+## Configure uWSGI
 
 Issue the following command to download an init script to manage the uWSGI process, located at `/etc/init.d/uwsgi`:
 
@@ -101,7 +101,7 @@ Issue the following commands to make this init script executable, ensure that uW
     chkconfig uwsgi on
     /etc/init.d/uwsgi start
 
-# Install nginx
+## Install nginx
 
 Issue the following commands to install and configure the nginx web server:
 
@@ -110,7 +110,7 @@ Issue the following commands to install and configure the nginx web server:
     chkconfig nginx on
     /etc/init.d/nginx start
 
-# Configure nginx
+## Configure nginx
 
 Create an nginx server configuration that resembles the following for the site where the uWSGI app will be accessible:
 
@@ -139,7 +139,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 
     /etc/init.d/nginx restart
 
-# Additional Application Servers
+## Additional Application Servers
 
 If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
 
@@ -174,7 +174,7 @@ server {
 
 In this example, we create the `uwsgicluster` upstream, which has five components. One runs on the local interface, and four run on the local network interface of distinct Linodes (the `192.168.` addresses or the private "back end" network). The application servers that run on those dedicated application servers are identical to the application servers described above. However, the application server process must be configured to bind to the appropriate network interface to be capable of responding to requests.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
