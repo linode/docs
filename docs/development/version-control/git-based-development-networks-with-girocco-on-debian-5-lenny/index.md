@@ -18,7 +18,7 @@ Girocco is the underlying engine created to power one of the first public git ho
 
 Before beginning this guide, we assume that you've completed the [getting started guide](/docs/getting-started/). If you're new to using git, you may also find our [introduction to git](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) a helpful prerequisite. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Install Prerequisites
+## Install Prerequisites
 
 Before beginning the installation of Girocco, issue the following commands to ensure that your system is up to date and that you've installed the latest version of all software packages:
 
@@ -41,7 +41,7 @@ This will install the MTA "Exim." You can configure this MTA by issuing the foll
 
 We are now ready to proceed with the installation and configuration of Girocco.
 
-# Install Girocco
+## Install Girocco
 
 Begin by issuing the following commands to download the source code for Girocco:
 
@@ -50,7 +50,7 @@ Begin by issuing the following commands to download the source code for Girocco:
     cd /opt/girocco/
     git submodule update --init
 
-### Configure Girocco
+#### Configure Girocco
 
 Edit the configuration file for Girocco at `/opt/girocco/Girocco/Config.pm` and tailor the variables set therein. It might be prudent to create a backup of the "base" Girocco configuration, by issuing the following command:
 
@@ -123,7 +123,7 @@ Carefully consider the remaining configuration options in `/opt/girocco/Girocco/
 
     cp /opt/girocco/Girocco/Config.pm /opt/example-girocco-config.pm
 
-### Configure System Files and Accounts
+#### Configure System Files and Accounts
 
 Issue the following commands to create the required directories and symbolic links:
 
@@ -137,7 +137,7 @@ You will need to create the `repo` user and account to isolate privileges for th
 
     adduser --system --no-create-home --disabled-login --disabled-password --group repo
 
-### Configure Helper Scripts
+#### Configure Helper Scripts
 
 Issue the following command to copy the scripts `fixup.sh` and `fixupcheck.sh` to the `/root/repo` directory:
 
@@ -162,14 +162,14 @@ fixup_dir="/root/repo"
 {{< /file >}}
 
 
-### Build and Install Girocco
+#### Build and Install Girocco
 
 Issue the following commands to build and install the Girocco engine:
 
     cd /opt/girocco/
     make install
 
-### Upgrading Girocco
+#### Upgrading Girocco
 
 In most cases, upgrading Girocco is as simple as running a sequence of commands to download new revisions of the software and rebuild the software. Those commands resemble the following:
 
@@ -184,7 +184,7 @@ However, it is prudent to ensure that additional upstream modifications to the `
 
 Modify your configuration file sufficiently with the new configuration options provided by the upstream and complete the rebuild process.
 
-# Run Regular Tasks
+## Run Regular Tasks
 
 To ensure complete functionality of the Girocco system, we need to run the `taskd.pl` and `jobd.sh` scripts as daemons to perform necessary system maintenance. Use or modify the following init script to control the daemon operations:
 
@@ -237,7 +237,7 @@ mount --bind /srv/repo/git /srv/repo/data/srv/git mount --bind /proc /srv/repo/d
 {{< /file >}}
 
 
-# Configure Web Server
+## Configure Web Server
 
 For the purpose of this document we will set up the repository hosting service under the virtual host for the domain `repo.example.com`. You will need to ensure that [DNS is configured](/docs/tools-reference/linux-system-administration-basics#set-up-subdomains) for this domain. Additionally, ensure that the rewrite module is enabled by issuing the following commands:
 
@@ -273,7 +273,7 @@ Furthermore, ensure that the paths specified in this file match the paths that y
 
 Congratulations! You may now visit `http://repo.example.com` to begin using your Girocco repository hosting system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

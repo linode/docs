@@ -18,7 +18,7 @@ title: 'Sinatra Framework and nginx on Debian 5 (Lenny)'
 
 Sinatra is a simple lightweight framework for web application development in the Ruby programming language. Rather than providing a complete development system, Sinatra provides a basic URL-mapping system that developers can use to create powerful custom applications.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -27,7 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Software
+## Install Software
 
 To install a more current version of Ruby Gems, which is required for running Sinatra Applications on Debian 5 (Lenny), you must install several packages from the [Backports project](http://backports.debian.org). Insert the following line in your `/etc/apt/sources.list` file:
 
@@ -66,7 +66,7 @@ Install the `rack`, `rake` and `sinatra` gems:
 
 Your application may require additional dependencies. If this is the case, install these gems at this point using the `gem install` tool.
 
-# Install Nginx
+## Install Nginx
 
 Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site and locate the link for the current source code tarball. Download it as follows (substitute the link for the current version):
 
@@ -83,7 +83,7 @@ Press "Enter" to continue with the installation. When prompted for the Nginx ins
 
 Do **not** remove the Passenger files from `opt` after the install. They need to stay in place or your install will not function correctly.
 
-# Configure Web Server
+## Configure Web Server
 
 Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to control this process. Issue the following sequence of commands to download a script, move it to the proper directory, set the proper permissions and set system startup links:
 
@@ -150,7 +150,7 @@ Your Sinatra application will handle all requests for the `www.example.com` and 
 
     /etc/init.d/nginx restart
 
-# Create a Basic Sinatra Application
+## Create a Basic Sinatra Application
 
 The following is a very basic Sinatra application. Place the following code in the `/srv/www/example.com/application/app.rb` file.
 
@@ -173,7 +173,7 @@ end
 {{< /file >}}
 
 
-# Deploy Sinatra Applications with Rack
+## Deploy Sinatra Applications with Rack
 
 Create a Rack configuration file located at `/srv/www/example.com/application/config.ru` to allow Passenger to run your application properly. Deploy the following `config.ru` file:
 
@@ -193,7 +193,7 @@ The `require 'app'` statement references the `app.rb` file. Modify this line to 
 
 You can now access your Sinatra application by visiting `http://example.com/`in your web browser. If you used the example application above, visit "`http://example.com/`, `http://example.com/hi`, and `http://example.com/bye` to view different messages.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

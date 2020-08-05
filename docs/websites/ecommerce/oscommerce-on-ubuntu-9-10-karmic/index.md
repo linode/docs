@@ -18,9 +18,9 @@ osCommerce is an open source solution for creating your own online store. It run
 
 Before installing osCommerce we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Ubuntu LAMP guide](/docs/lamp-guides/ubuntu-9-10-karmic).
 
-# Installation
+## Installation
 
-### Prerequisites
+#### Prerequisites
 
 Before installing osCommerce, we must ensure that the `universe` repositories are enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines:)
 
@@ -73,11 +73,11 @@ Lastly, change the permissions on the following two `configure.php` files to all
 
     chmod 777 admin/includes/configure.php includes/configure.php
 
-### Web Configuration
+#### Web Configuration
 
 At this point, you can finish the rest of the installation process through the web. Point your browser to the domain or IP of the osCommerce install and append `/install/` to the end. In our example the URL would be `http://www.example.com/install/`. You'll be prompted to fill in your database details. Use "localhost" for the address of the database server, and the credentials for the user and database we created above. The rest of the installation process is self explanatory. After the installation you'll be able to see your store as well as the administrative interface.
 
-# Post Installation
+## Post Installation
 
 After the installation, certain files need to be removed or renamed for security reasons. Be sure to substitute to correct paths for your particular configuration. First, we need to remove the installation folder:
 
@@ -98,7 +98,7 @@ Finally, change the permissions of the `backups` directory to be accessible by t
 
 From here you can begin customizing your store. The default index page will give you instructions for where to begin. You can also check our "More Information" section below.
 
-# SSL Certificates
+## SSL Certificates
 
 You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
 
@@ -121,7 +121,7 @@ define('DIR_WS_HTTPS_CATALOG', '/');
 
 It should be noted that in this example, the certificate was issued without the `www` qualifier. Your specific requirements may require tweaking.
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -132,7 +132,7 @@ Please monitor the osCommerce security forums and mailing lists to ensure that y
 
 When upstream sources offer new releases, repeat the instructions for installing the osCommerce software as needed. These practices are crucial for the ongoing security and functioning of your system
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

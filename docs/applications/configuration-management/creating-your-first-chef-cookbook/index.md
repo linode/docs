@@ -23,7 +23,7 @@ Chef cookbooks describe the *desired state* of your nodes, and allow Chef to pus
 
 ![Creating Your First Chef Cookbook](creating-your-first-chef-cookbook.png "Creating Your First Chef Cookbook")
 
-## Before You Begin
+### Before You Begin
 
 1. Set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/) guide. When following that guide, **choose Ubuntu 16.04 as your Linux image for the Chef node you will bootstrap and manage**. This guide will use the [MySQL Chef cookbook](https://supermarket.chef.io/cookbooks/mysql/), which does not yet support Ubuntu 18.04.
 
@@ -42,7 +42,7 @@ Chef cookbooks describe the *desired state* of your nodes, and allow Chef to pus
     198.51.100.0    node-hostname
     {{</ file >}}
 
-## Create the Cookbook
+### Create the Cookbook
 
 1. From your workstation, move to your `chef-repo/cookbooks` directory:
 
@@ -62,7 +62,7 @@ Chef cookbooks describe the *desired state* of your nodes, and allow Chef to pus
 Berksfile  CHANGELOG.md  chefignore  LICENSE  metadata.rb  README.md  recipes  spec  test
     {{</ output >}}
 
-### default.rb
+#### default.rb
 
 Attributes are pieces of data that help the chef-client determine the current state of a node and any changes that have taken place on the node from one chef-client run to another. Attributes are gathered from the state of the node, cookbooks, roles and environments. Using these sources, an attribute list is created for each chef-client run and is applied to the node. If a `default.rb` file exists within a cookbook, it will be loaded first, but has the lowest attribute precedence.
 
@@ -121,9 +121,9 @@ Uploaded 1 cookbook.
 
     Your output should display a successful Chef run. If not, review your code for any errors, usually defined in the output of the `chef-client` run.
 
-## Apache
+### Apache
 
-### Install and Enable
+#### Install and Enable
 
 1.  In your Chef workstation, Create a new file under the `~/chef-repo/cookbooks/lamp_stack/recipes` directory called `apache.rb`. This will contain all of your Apache configuration information.
 
@@ -183,7 +183,7 @@ Repeat steps 4-7 to upload each recipe to your Chef server as you create it. Run
 This is not the recommended workflow for a production environment. You might consider creating different [Chef environments](https://docs.chef.io/environments.html) for testing, staging, and production.
 {{< /note >}}
 
-### Configure Virtual Hosts
+#### Configure Virtual Hosts
 
 This configuration is based off of the [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) guide.
 
@@ -222,7 +222,7 @@ service "apache2" do
 end
 
 
-# Virtual Host Files
+## Virtual Host Files
 
 node["lamp_stack"]["sites"].each do |sitename, data|
 end
@@ -378,7 +378,7 @@ end
 
 {{< /file >}}
 
-### Apache Configuration
+#### Apache Configuration
 
 With the virtual host files configured and your website enabled, configure Apache to efficiently run on your servers. Do this by enabling and configuring a multi-processing module (MPM), and editing `apache2.conf`.
 
@@ -445,9 +445,9 @@ execute "enable-prefork" do
 
     Your `apache.rb` is now complete. An [example of the final file is located here](/docs/applications/configuration-management/creating-your-first-chef-cookbook/apache.rb).
 
-## MySQL
+### MySQL
 
-### Download the MySQL Library
+#### Download the MySQL Library
 
 1.  The Chef Supermarket has an OpsCode-maintained [MySQL cookbook](https://supermarket.chef.io/cookbooks/mysql) that sets up MySQL *lightweight resources/providers* (LWRPs) to be used. From the workstation, download and install the cookbook:
 
@@ -470,7 +470,7 @@ Check the [MySQL Cookbook's Supermarket page](https://supermarket.chef.io/cookbo
 
         knife cookbook upload mysql --include-dependencies
 
-### Create and Encrypt Your MySQL Password
+#### Create and Encrypt Your MySQL Password
 
 Chef contains a feature known as *data bags*. Data bags store information, and can be encrypted to store passwords, and other sensitive data.
 
@@ -528,7 +528,7 @@ WARNING: Encrypted data bag detected, but no secret provided for decoding.  Disp
       version:        1
 {{</ output >}}
 
-### Set Up MySQL
+#### Set Up MySQL
 
 With the MySQL library downloaded and an encrypted root password prepared, you can now set up the recipe to download and configure MySQL.
 
@@ -572,7 +572,7 @@ cookbook_file "/etc/my.cnf" do
 end
 {{< /file >}}
 
-## PHP
+### PHP
 
 1.  Under the recipes directory, create a new `php.rb` file. The commands below install PHP and all the required packages for working with Apache and MySQL:
 
@@ -642,7 +642,7 @@ end
         knife cookbook upload lamp_stack
         knife node run_list add nodename "recipe[lamp_stack],recipe[lamp_stack::apache],recipe[lamp_stack::mysql],recipe[lamp_stack::php]"
 
-## Testing Your Installation
+### Testing Your Installation
 
 1.  To ensure that the Apache service has been successfully installed and running, you can execute the following command, substituting `node_name` for the name of your node:
 

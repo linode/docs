@@ -20,7 +20,7 @@ The nginx web server is a fast, lightweight server designed to efficiently handl
 
 It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -29,7 +29,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Required Packages
+## Install Required Packages
 
 Issue the following commands to update your system and install the nginx web server and FastCGI components:
 
@@ -37,13 +37,13 @@ Issue the following commands to update your system and install the nginx web ser
     apt-get upgrade
     apt-get install nginx fcgiwrap spawn-fcgi
 
-# Configure DNS
+## Configure DNS
 
 Create an "A" record pointing your domain name to your Linode's IP address. If you're using the Linode DNS Manager interface, please refer to our [Linode DNS manager guide](/docs/dns-guides/configuring-dns-with-the-linode-manager) for instructions.
 
-# Configure Virtual Hosting
+## Configure Virtual Hosting
 
-### Create Directories
+#### Create Directories
 
 In this guide, the domain "example.com" is used as an example site. You should substitute your own domain name in the configuration steps that follow. First, create directories to hold content and log files:
 
@@ -51,7 +51,7 @@ In this guide, the domain "example.com" is used as an example site. You should s
     mkdir /srv/www/www.example.com/logs
     chown -R www-data:www-data /srv/www/www.example.com
 
-### UNIX Sockets Configuration Example
+#### UNIX Sockets Configuration Example
 
 Next, you'll need to define the site's virtual host file. This example uses a UNIX socket to connect to fcgiwrap. Be sure to change all instances of "example.com" to your domain name.
 
@@ -79,7 +79,7 @@ server {
 {{< /file >}}
 
 
-### TCP Sockets Configuration Example
+#### TCP Sockets Configuration Example
 
 Alternately, you may wish to use TCP sockets instead. If so, modify your nginx virtual host configuration file to resemble the following example. Again, make sure to replace all instances of "example.com" with your domain name.
 
@@ -130,7 +130,7 @@ FCGI_GROUP="www-data"
 
 {{< /file >}}
 
-### Enable the Site
+#### Enable the Site
 
 Issue the following commands to enable the site:
 
@@ -142,7 +142,7 @@ Start nginx and fcgiwrap by issuing the following commands:
     /etc/init.d/fcgiwrap start
     /etc/init.d/nginx start
 
-# Test Perl with FastCGI
+## Test Perl with FastCGI
 
 Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
 
@@ -171,7 +171,7 @@ Make the script executable by issuing the following command:
 
 When you visit `http://www.example.com/test.pl` in your browser, your Perl environment variables should be shown. Congratulations, you've configured the nginx web server to use Perl with FastCGI for dynamic content!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

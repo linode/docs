@@ -18,7 +18,7 @@ FluxBB is a web application that powers discussion forums. It strives to be fast
 
 Before beginning with this guide we assume that you have completed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/lamp-guides/) for your operating system.
 
-# Installing Prerequisites
+## Installing Prerequisites
 
 If you're running Debian or Ubuntu systems, ensure that your system's package repository is up to date, that all installed packages have been upgraded with the latest bug fixes and security patches using the following command sequence:
 
@@ -31,7 +31,7 @@ On CentOS and Fedora systems, issue the following commands to ensure your system
 
 For the purpose of this guide we will assume that you have virtual hosting configured for the domain `example.com` with all publicly accessible resources located in the document root `/srv/www/example.com/public_html/`. In this document you will install FluxBB into this document root. Modify all of the instructions below to agree with the architecture of your deployment.
 
-# Install FluxBB
+## Install FluxBB
 
 This document contains specific instructions for installing version 1.2.22 of FluxBB. Check the [upstream](http://fluxbb.org/downloads/) source to confirm that this is the most up to date version of the software and that there are no vulnerabilities or bugs. Issue the following sequence of commands to download, extract, move the FluxBB files to your web server's document root, and properly configure file permissions:
 
@@ -75,7 +75,7 @@ When you have created this file, you will have completed the installation of Flu
 
 Congratulations! You have now successfully deployed FluxBB.
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -83,7 +83,7 @@ Please monitor the [FluxBB Forums](http://fluxbb.org/forums/index.php) to ensure
 
 When upstream sources offer new releases, repeat the instructions for installing the FluxBB software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

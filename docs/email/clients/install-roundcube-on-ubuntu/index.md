@@ -20,13 +20,13 @@ external_resources:
 
 ![Install Roundcube on Ubuntu 16.04 LTS](Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu")
 
-## What is Roundcube?
+### What is Roundcube?
 
 Roundcube is a web-based IMAP email client that offers a user interface similar to Google’s Gmail. It is a server-side application written in PHP designed to access an email server or service. Email users interact with Roundcube using a web browser.
 
 {{< content "email-warning-shortguide" >}}
 
-## Before You Begin
+### Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
@@ -44,11 +44,11 @@ Roundcube is a web-based IMAP email client that offers a user interface similar 
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## Linux, Apache, MySQL and PHP (LAMP) Stack
+### Linux, Apache, MySQL and PHP (LAMP) Stack
 
 This section will cover installing Apache, MySQL, PHP and SSL on your Linode from scratch. If you already have a functioning LAMP stack, skip ahead to the section for [Creating an Apache Virtual Host with SSL](#create-an-apache-virtual-host-with-ssl).
 
-### Install LAMP Stack Packages
+#### Install LAMP Stack Packages
 
 1.  Install the `lamp-server^` metapackage, which installs Apache, MySQL, and PHP as dependencies:
 
@@ -64,7 +64,7 @@ This section will cover installing Apache, MySQL, PHP and SSL on your Linode fro
 
         sudo sed -i -e "s/^;date\.timezone =.*$/date\.timezone = 'UTC'/" /etc/php/7.0/apache2/php.ini
 
-### Create an Apache Virtual Host with SSL
+#### Create an Apache Virtual Host with SSL
 
 We will create a new virtual host for Roundcube in this section. This makes a new webroot for Roundcube, separating it from any other webroots on your Linode.
 
@@ -107,7 +107,7 @@ Make sure the custom directory and desired `.log` files exist **before** specify
 
         sudo a2dissite 000-default.conf default-ssl.conf
 
-### Create a MySQL Database and User
+#### Create a MySQL Database and User
 
 1.  Log into the MySQL command prompt as the **root** user:
 
@@ -133,7 +133,7 @@ Make sure the custom directory and desired `.log` files exist **before** specify
 
         exit
 
-## Final Preparations for Roundcube
+### Final Preparations for Roundcube
 
 1.  Install and enable required PHP packages:
 
@@ -162,7 +162,7 @@ install ok: channel://pear.php.net/Net_SMTP-1.8.0
 install ok: channel://pear.php.net/Mail_mimeDecode-1.5.6
 {{< /output >}}
 
-## Download and Install Roundcube
+### Download and Install Roundcube
 
 1.  Make sure your Linode's shell prompt is operating inside your user's home directory. The `~/Downloads` folder is preferable, but `~/` is also acceptable.
 
@@ -190,7 +190,7 @@ install ok: channel://pear.php.net/Mail_mimeDecode-1.5.6
 
     This utilizes a cron job to run the `cleandb.sh` shell script included with Roundcube once per day at midnight. Read our [Scheduling Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide to learn about Cron.
 
-## Enable Roundcube's Apache Virtual Host
+### Enable Roundcube's Apache Virtual Host
 
 1.  Enable the `webmail.example.com` virtual host you just wrote in the **Creating an Apache Virtual Host with SSL** section:
 
@@ -202,7 +202,7 @@ install ok: channel://pear.php.net/Mail_mimeDecode-1.5.6
 
     The output should be `* Restarting web server apache2 ... [ OK ]`. If an error is given, use the error messages to troubleshoot your configuration. Missing files, incorrect permissions and typos are common causes for Apache not properly restarting.
 
-## Configure Roundcube
+### Configure Roundcube
 
 1.  Navigate to `https://webmail.example.com/installer` in a web browser. Again, make sure to replace `webmail.example.com` with your chosen domain name.
 
@@ -237,7 +237,7 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
 
     ![Roundcube MySQL database initialization](roundcube-mysql-database-initialization.png)
 
-# Remove the Installer Directory
+## Remove the Installer Directory
 
 1.  Delete the `/var/www/roundcube/installer` directory, which contains the web page files just used to configure Roundcube:
 
@@ -245,13 +245,13 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
 
     While Roundcube automatically disabled the installer functionality within its configuration file, deleting the installer directory adds another layer of protection against intruders.
 
-## Verify your Roundcube Installation
+### Verify your Roundcube Installation
 
 1.  Navigate to `https://webmail.example.com` and log in using your email account's username and password. If your configuration is functional, Roundcube will allow you to receive, read and send emails from inside and outside of your domain name.
 
     ![Roundcube login](roundcube-login.png)
 
-## Keeping Roundcube Updated
+### Keeping Roundcube Updated
 
 1.  Compare the **Stable > Complete** package version listed on [Roundcube's download page](http://roundcube.net/download/) to the version currently installed on your Linode.
 
@@ -290,7 +290,7 @@ All done.
 
         cd ~/Downloads && rm -rfd roundcubemail-1.3.3 roundcubemail-1.3.3.tar.gz
 
-## Conclusion
+### Conclusion
 
 Now that you have installed Roundcube, you have a free, web-based email client similar to Google’s Gmail. Users can access their email by navigating to `https://webmail.example.com`.
 

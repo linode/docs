@@ -20,7 +20,7 @@ Logwatch is a utility used to monitor system logs and create reports. These repo
 
 Before installing Logwatch, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Update System Packages
+## Update System Packages
 
 You will need to make sure that your system and installed packages are up to date by issuing the following command:
 
@@ -28,13 +28,13 @@ You will need to make sure that your system and installed packages are up to dat
 
 Once this has completed, you are ready to install Logwatch.
 
-# Install Logwatch
+## Install Logwatch
 
 Issue the following command to install Logwatch:
 
     yum install logwatch
 
-# Configure Logwatch
+## Configure Logwatch
 
 Once you have installed Logwatch, you will need to configure it to email you the reports it generates. You are encouraged to look through the entire configuration, but you may safely use Logwatch after editing the lines below.
 
@@ -53,7 +53,7 @@ Issue the following command to test your logwatch installation:
 
 Once you have issued this command, you will need to check your email to make sure that logwatch is working. Be sure to check your spam folder as these emails may be seen as spam.
 
-# Adding a Cron Job for Logwatch
+## Adding a Cron Job for Logwatch
 
 You can add a cron job for Logwatch in order to receive daily emails of new reports. You can add a new entry to your crontab by running `crontab -e`. The following example cron job runs Logwatch at 1 AM each day, issuing you an email report of the daily activity:
 

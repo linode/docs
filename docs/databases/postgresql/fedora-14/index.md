@@ -16,7 +16,7 @@ title: Use PostgreSQL Relational Databases on Fedora 14
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Fedora 14. We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
-# System Configuration
+## System Configuration
 
 Make sure your `/etc/hosts` file has proper entries, similar to the ones shown below. Replace "12.34.56.78" with your Linode's public address, "servername" with your short hostname, and "mydomain.com" with your system's domain name.
 
@@ -29,7 +29,7 @@ Set your system's hostname by issuing the following commands. Replace "servernam
     echo "HOSTNAME=servername" >> /etc/sysconfig/network
     hostname "servername"
 
-# Install PostgreSQL
+## Install PostgreSQL
 
 Make sure your system is up to date by issuing the following command:
 
@@ -45,9 +45,9 @@ The current version of the database server will be installed, along with several
     /etc/init.d/postgresql initdb
     service postgresql start
 
-# Configure PostgreSQL
+## Configure PostgreSQL
 
-### Set the PostgreSQL Password
+#### Set the PostgreSQL Password
 
 Set a password for the "postgres" user by issuing the following command (be sure to substitute your postgres password for "CHANGME" below):
 
@@ -57,7 +57,7 @@ Set a password for the "postgres" user by issuing the following command (be sure
 
 You should pick a password consisting of numbers, letters, and non-alphanumeric characters. As with other account passwords, it should be a minimum of eight characters in length.
 
-### Create a Database
+#### Create a Database
 
 Create a database and connect to it with `psql` by issuing the following commands:
 
@@ -80,7 +80,7 @@ To get help on a specific command enter it after `\h`, as shown below for the "S
 
     \h SELECT
 
-### Create a Database Table
+#### Create a Database Table
 
 To create a table in your test database called "employees", issue the following command:
 
@@ -106,7 +106,7 @@ To exit the `psql` shell, issue this command:
 
     \q
 
-### Create PostgreSQL Users (Roles)
+#### Create PostgreSQL Users (Roles)
 
 PostgreSQL refers to users as "roles", which may have different privileges on your databases. If a user is classified as a "superuser" it will have administrative access to the database system. To add a new user to PostgreSQL, issue the following command as the "postgres" user:
 
@@ -148,14 +148,14 @@ To use the database "mytestdb" as "alison", issue the following command:
 
 You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
 
-# Secure Remote Database Access
+## Secure Remote Database Access
 
 PostgreSQL listens for connections on localhost, and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
 
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

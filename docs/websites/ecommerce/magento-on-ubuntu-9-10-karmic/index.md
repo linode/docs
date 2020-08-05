@@ -18,7 +18,7 @@ Magento is a self hosted e-commerce solution used by many people to sell product
 
 Before installing Magento, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Installing Prerequisites
+## Installing Prerequisites
 
 Before installing Magento, we must ensure that the `universe` repositories are enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines:)
 
@@ -73,7 +73,7 @@ memory_limit = 64M
 
 At this point your server has the prerequisites to install Magento.
 
-# Installing Magento
+## Installing Magento
 
 Magento requires you to have a cookie on your system in order to download their packages. Alternatively, you can find the latest version of Magento on [this wiki page for installing Magento via ssh](http://www.magentocommerce.com/wiki/1_-_installation_and_configuration/installing_magento_via_shell_ssh). First we'll switch to the directory in which you'd like to install Magento. For this example we'll be installing Magento to our document root directory. After changing to the proper directory, we'll download the latest version of Magento, unpack it, grant the proper permissions and run `pear`. Run the following commands to install Magento:
 
@@ -88,17 +88,17 @@ Magento requires you to have a cookie on your system in order to download their 
     rm -rf downloader/pearlib/cache/* downloader/pearlib/download/*
     rm -rf magento/ magento-1.4.0.1.tar.gz
 
-### Web-based Installer
+#### Web-based Installer
 
 From here you can point your browser to the URL you installed Magento to. All of these steps are straightforward. You'll be prompted to enter your database credentials that you created earlier, as well as an administrative username and password. After you finish the steps through the web-based installer, you will have a fully operating installation of Magento ready to be customized!
 
 **NOTE:** If you receive an error message "example.com is not accessible \# Unable to read response, or response is empty" during the Magento web-based installation procedure, be sure to check the "Skip URL validation" box before clicking continue.
 
-### SSL Certificates
+#### SSL Certificates
 
 You may want to install a commercial SSL certificate on your Magento website in order to encrypt the data passed between your customer's computer and your server. After following our [obtaining a commercial SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate/) document, you can set up your SSL certificate in the Administrative Area. After logging in to Magento, scroll over the "System" tab and select "Configuration". Click the "Web" tab on the left-hand side and drop down the "Secure" listing. From here you can alter your Base URL to include the `https` protocol.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

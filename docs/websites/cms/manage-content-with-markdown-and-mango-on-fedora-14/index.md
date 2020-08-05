@@ -18,7 +18,7 @@ title: Manage Content with Markdown and Mango on Fedora 14
 
 Mango is a simple static content management system for publishing blogs from content stored in plain text files. Built as a dynamic web application using components from the Django framework, Mango is simple to deploy and administer and uses the Markdown lightweight markup language to process text. This guide describes the process for configuring a Mango-based site using the Apache HTTP Server and `mod_wsgi` to handle the dynamic aspects of the website.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -27,7 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Prepare System
+## Prepare System
 
 Issue the following commands to update your system's package database, ensure that all installed applications are up to date, and install all dependencies required for running Mango:
 
@@ -37,7 +37,7 @@ Issue the following commands to update your system's package database, ensure th
 
 This guide describes the process for installing the Mango CMS on the root level of the `example.com`, with the `DocumentRoot` of `/srv/www/example.com/public_html`. Throughout this guide, replace these paths and domains in examples with the actual paths of your site.
 
-# Install Mango
+## Install Mango
 
 Issue the following command to create the required directories for the Mango `VirtualHost`:
 
@@ -108,7 +108,7 @@ application = django.core.handlers.wsgi.WSGIHandler()
 {{< /file >}}
 
 
-# Configure Apache
+## Configure Apache
 
 Create a `VirtualHost` specification based on the following example:
 
@@ -138,7 +138,7 @@ Issue the following commands to restart the web server to load the configuration
 
 You will need to restart the server anytime you make changes to the Apache configuration or `application.wsgi` files.
 
-# Configure the Mango Site
+## Configure the Mango Site
 
 The behavior of the Mango application is controlled the settings in the `/srv/www/example.com/application/mango/settings/default.py` file which you can override in a `/srv/www/example.com/application/mango/settings/custom.py` file. Add configuration values to `custom.py` as needed to produce your site. The most relevant settings are below:
 
@@ -152,7 +152,7 @@ SITE_TITLE = 'example Blog'
 
 The paths specified in this file are relative to the top level of the Django application, for this document: `/srv/example.com/application/`. In the above example, all documents processed by Mango are stored in the `/srv/example.com/application/docs/` directory. Explore each setting in this document while you configure your site.
 
-# Write Content with Mango
+## Write Content with Mango
 
 All content with Mango exists in source as Markdown, a lightweight markup language that mirrors formatting conventions for plain text emails. Markdown is designed to be easy to read and write, and can be translated efficiently into high quality HTML. Consider the following example entry:
 
@@ -174,7 +174,7 @@ All content with Mango exists in source as Markdown, a lightweight markup langua
 
 The first three lines of this file define header values that are processed by the Markdown implementation and used to control how Mango displays and organizes the posts. The format of the date and time fields is very strict, adhere to the format above. You may need to restart the web server as above before viewing your site successfully for the first time. At this point you may visit your site at `http://example.com/`. To add new posts to your site, simply save files using the above format in the `content/` directory.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -20,7 +20,7 @@ Although nginx is a relatively new entrant in the web server field, it has achie
 
 Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-## Set the Hostname
+### Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -29,7 +29,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Installing nginx from EPEL Packages
+## Installing nginx from EPEL Packages
 
 The packages required to install nginx and its dependencies are not available in the standard CentOS repositories. However, there are packages to install nginx in the "[EPEL](https://fedoraproject.org/wiki/EPEL)" system. EPEL, or "Extra Packages for Enterprise Linux", is a product of the Fedora Project that attempts to provide enterprise-grade software that's more current than what is typically available in the CentOS repositories. While using this method will leave you with a working web server, *it is not the preferred method for installing nginx.* Nevertheless, if you want to install in this manner, use the process that follows. Begin by enabling the EPEL repository with the following command:
 
@@ -46,9 +46,9 @@ During the installation process you will need to accept the EPEL repository's ke
 
 You can now continue with the [configuration](/docs/web-servers/nginx/how-to-configure-nginx/) of nginx. Installing nginx in this manner will allow you to rely on the EPEL maintainers to provide quality control, testing, and security teams to ensure that you're running the best possible version of the server. However, the packages provided by the EPEL project do not necessarily track the latest development of the nginx server and do not allow you to enable certain nginx options at compile time. Given the rapid development of nginx and variances between recent versions, installing from distribution packages is not ideal for many users. Continue to the next section to install nginx directly from source.
 
-# Installing nginx from the Source Distribution
+## Installing nginx from the Source Distribution
 
-### Install Prerequisites
+#### Install Prerequisites
 
 Because of the rapid development of the nginx web server and recent changes to the interface, many users of nginx compile their version of the software from sources provided by the nginx developers. Additional benefits include the ability to configure nginx to support additional third party modules and options which must be set at compile time. This document is written against the most recent release in the stable series of the server (version 1.0.0).
 
@@ -62,7 +62,7 @@ You will also need to install several dependent packages before proceeding with 
 
 At this point you can continue with the compilation and installation of nginx.
 
-### Download and Compile nginx
+#### Download and Compile nginx
 
 The source files and binaries will be downloaded in the `/opt/` directory of the file system in this example. Issue the following sequence of commands to enter this directory, download the required files, and extract the source files from the archive:
 
@@ -99,7 +99,7 @@ You will also need to create a user and group for nginx; issue the following com
 
 Nginx is now installed in `/opt/nginx`.
 
-### Monitor for Software Updates and Security Notices
+#### Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -110,7 +110,7 @@ Please follow the announcements, lists, and RSS feeds on the following pages to 
 
 When upstream sources offer new releases, repeat the instructions for installing nginx, spawn-fcgi, and uWSGI, and recompile your software when needed. These practices are crucial for the ongoing security and functioning of your system.
 
-### Create an Init Script to manage nginx
+#### Create an Init Script to manage nginx
 
 Before we can begin to use the nginx server, we must create a means of controlling the daemon process. You can create an "init script" using [this example](/docs/assets/662-init-rpm.sh) to control nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize nginx on boot:
 
@@ -126,7 +126,7 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
 Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/web-servers/nginx/how-to-configure-nginx/) for more information about using and setting up the web server.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -16,11 +16,11 @@ title: Docker
 
 Docker is an extensible, open-source engine powered by [Linux Containers](http://linuxcontainers.org/) that automates the deployment of applications as portable, lightweight, and self-sufficient containers. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Getting Started Guide](/docs/getting-started/), that your system is up to date, and that you've logged in to your Linode as root via SSH.
 
-# Installation
+## Installation
 
 For the purposes of this guide we will show you how to install Docker on both Ubuntu 12.04 and CentOS 6.4 Docker provides repositories for each of these distributions, which makes installation easy.
 
-### Ubuntu 12.04 64bit
+#### Ubuntu 12.04 64bit
 
 Here we will add the Docker-maintained repository for Ubuntu and install the software.
 
@@ -55,7 +55,7 @@ root@145dfc4f6dff:/#
 
 5.  To exit the container, type `exit`.
 
-### CentOS 6 64bit
+#### CentOS 6 64bit
 
 Docker is available on the [EPEL](https://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F) repository as the `docker-io` package for 64bit only.
 
@@ -78,11 +78,11 @@ Docker is available on the [EPEL](https://fedoraproject.org/wiki/EPEL#How_can_I_
 
 6.  To exit the container, type `exit`.
 
-# What Can I Do with Docker?
+## What Can I Do with Docker?
 
 Docker allows users to package their applications and configurations into lightweight images for deployment as portable containers.
 
-### Hello World
+#### Hello World
 
 To run a Docker container that prints "hello world", run the following command:
 
@@ -98,7 +98,7 @@ This tells Docker to do a number of things:
 4.  Run the command `/bin/echo hello world`, and print the output.
 5.  Having completed the main process, the container will exit.
 
-### Writing a Dockerfile for Nginx
+#### Writing a Dockerfile for Nginx
 
 When building an image, Docker follows the instruction set in a file named `Dockerfile`. Note that the file needs to be named `Dockerfile` and all any files or folders required by the Dockerfile need to be under the same directory as the `Dockerfile` itself.
 
@@ -167,7 +167,7 @@ Run the following command to add `/etc/nginx/sites-enabled` and `/var/log/nginx`
 
     docker run -d -p 80:80 -v /etc/nginx/sites-enabled:/etc/nginx/sites-enabled -v /var/log/nginx:/var/log/nginx bsdlp/nginx
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

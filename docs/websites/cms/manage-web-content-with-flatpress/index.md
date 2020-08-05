@@ -18,7 +18,7 @@ FlatPress is a web application for managing and publishing blogs. Modeled on oth
 
 This guide assumes that you have completed the appropriate [Apache Web server](/docs/web-servers/apache/) installation guide for your operating system but you may choose an alternate web server such as [nginx](/docs/web-servers/nginx/) to provide access to your FlatPress powered site.
 
-# Installing Prerequisites
+## Installing Prerequisites
 
 If you're running Debian or Ubuntu systems, ensure that your system's package repository is up to date, that all installed packages have been upgraded with the latest bug fixes and security patches using the following command sequence:
 
@@ -35,7 +35,7 @@ On CentOS and Fedora systems issue the following commands to ensure your system'
 
 For the purpose of this guide we will assume that you have virtual hosting configured for the domain `example.com` with all publicly accessible resources located in the document root `/srv/www/example.com/public_html/`. In this document you will install FlatPress into this document root. Modify all of the instructions below to agree with the architecture of your deployment.
 
-# Install FlatPress
+## Install FlatPress
 
 This document contains specific instructions for installing version 0.909.1 of FlatPress. Please check the [upstream](http://www.flatpress.org/home/) source to confirm that this is the most up to date version of the software and that there are no vulnerabilities or bugs. Issue the following sequence of commands to download, extract, move the FlatPress files to your web server's document root, and properly configure file permissions:
 
@@ -54,7 +54,7 @@ Now visit `http://example.com/setup.php` in your web browser and follow the setu
 
 Congratulations! You have now successfully deployed FlatPress.
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -62,7 +62,7 @@ Please monitor the [Flatpress development list](https://lists.sourceforge.net/li
 
 When upstream sources offer new releases, repeat the instructions for installing the Flatpress software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

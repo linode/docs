@@ -18,7 +18,7 @@ title: 'Use MySQL Relational Databases on Ubuntu 10.10 (Maverick)'
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 10.10 (Maverick) Linode. It is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
-# Basic System Configuration
+## Basic System Configuration
 
 Modify your `/etc/hosts` file to resemble the following example. Replace "example.com" with your own domain name, and select a unique name to replace "systemname" with. This will be your system's FQDN (fully qualified domain name). Replace "12.34.56.78" with your Linode's IP address.
 
@@ -34,7 +34,7 @@ Issue the following commands to set your system's hostname, replacing "systemnam
     echo "systemname" > /etc/hostname
     hostname -F /etc/hostname
 
-# Install MySQL
+## Install MySQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -55,7 +55,7 @@ The MySQL server package will be installed on your server, along with dependenci
 
 After running `mysql_secure_installation`, MySQL is secure and ready to be configured.
 
-# Configure MySQL
+## Configure MySQL
 
 By default, MySQL makes some assumptions about your server environment with respect to memory. To configure MySQL more conservatively, you'll need to edit some settings in its configuration file. Your file should resemble the following:
 
@@ -80,7 +80,7 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secur
 
 Allowing unrestricted access to MySQL on a public IP is not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
-# Using MySQL
+## Using MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client program. To get started, issue the following command at your prompt:
 
@@ -155,7 +155,7 @@ This creates a table with a customer ID field of the type INT for integer (auto-
 
 By default, access to databases will be limited to connections from localhost. To securely administer your databases from a remote location, please follow our guide for [securely administering mysql with an SSH tunnel](/docs/databases/mysql/mysql-ssh-tunnel/). It is *not* a good practice to run MySQL on your public IP address, unless you have a very good reason for doing so.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

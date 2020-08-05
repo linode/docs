@@ -20,7 +20,7 @@ Redmine is a popular open source project management system. Written in Ruby on R
 
 We assume you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
 
-# Basic System Configuration
+## Basic System Configuration
 
 Issue the following commands to update your local package database and install any outstanding updates.
 
@@ -40,9 +40,9 @@ Edit your `/etc/hosts` file to resemble the following, substituting your Linode'
 {{< /file >}}
 
 
-# Nginx Installation and Configuration
+## Nginx Installation and Configuration
 
-### Install Prerequisite Packages
+#### Install Prerequisite Packages
 
 Issue the following command to install packages required for Ruby on Rails and other components.
 
@@ -72,7 +72,7 @@ Install some required gems:
     gem install i18n -v=0.4.2
     gem uninstall i18n -v0.5.0
 
-### Install Passenger and Nginx
+#### Install Passenger and Nginx
 
 Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site and locate the link for the current source code tarball. Download it as follows (substitute the link for the current version):
 
@@ -89,7 +89,7 @@ You'll be greeted by the Phusion Passenger Nginx installer program. Press "Enter
 
 Please do **not** remove the Passenger files from `opt` after the install. They need to stay in place or your install will not function correctly.
 
-### Configure Nginx
+#### Configure Nginx
 
 Nginx is now installed in `/opt/nginx`, but we need a way of controlling it. Issue the following commands to download an "init" script to control the process, set permissions, and configure system startup links:
 
@@ -101,7 +101,7 @@ Nginx is now installed in `/opt/nginx`, but we need a way of controlling it. Iss
 
 You can now start, stop, and restart Nginx like any other server daemon.
 
-# Proxying Redmine with Apache
+## Proxying Redmine with Apache
 
 If you're already running Apache on your Linode, you'll need to tell nginx to run on a different port and proxy requests for your Redmine installation back to it. If you're running another web server, you'll need to perform similar steps to modify its configuration to support this. This section is entirely optional, and only applies to Apache users.
 
@@ -141,9 +141,9 @@ listen 8080;
 {{< /file >}}
 
 
-# Installing and Configuring Redmine
+## Installing and Configuring Redmine
 
-### Obtain Redmine
+#### Obtain Redmine
 
 Check the [Redmine project site](http://www.redmine.org/wiki/redmine/Download) to find the current version number for the stable branch. Issue the following commands to use `svn` to check out the code, replacing the URL on the last line with an updated URL if necessary.
 
@@ -154,7 +154,7 @@ Check the [Redmine project site](http://www.redmine.org/wiki/redmine/Download) t
 
 You can use `svn up` from the `redmine` directory to keep it up to date in the future.
 
-### Create and Configure the Database
+#### Create and Configure the Database
 
 Switch to the `postgres` user and start up the `psql` shell by issuing the following commands:
 
@@ -191,7 +191,7 @@ Issue the following commands to complete database configuration:
     RAILS_ENV=production rake db:migrate
     RAILS_ENV=production rake redmine:load_default_data
 
-### Configure Email Service
+#### Configure Email Service
 
 Issue the following commands to install `exim4` and configure it for outgoing Internet email delivery. You can skip Exim installation if you already have an SMTP server configured that accepts unauthenticated locally sent mail, although you will still need to create Redmin's email configuration file as shown at the end of the section.
 
@@ -252,7 +252,7 @@ production:
 
 This completes email configuration for your Redmine installation.
 
-### Final Configuration and Testing
+#### Final Configuration and Testing
 
 We'll create a "redmine" user to manage the installation. Issue the following commands to set ownership and permissions on your Redmine files, taking care to assign a unique, strong password for the Redmine user:
 
@@ -295,7 +295,7 @@ Start nginx:
 
 Your Redmine installation should be accessible at `http://redmine.example.com`; if you encounter issues, please refer to your log files for a listing of any errors that may have occurred. The default login is username "admin" and password "admin". You should change the admin password immediately. Congratulations, you've installed Redmine for project management on your Linode!
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -306,7 +306,7 @@ Please monitor the Redmine project issue queue and news feed to ensure that you 
 
 When upstream sources offer new releases, repeat the instructions for installing Redmine software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

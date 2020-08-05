@@ -18,11 +18,11 @@ title: 'SSL Certificates with Apache 2 on Ubuntu 9.10 (Karmic)'
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [getting started guide](/docs/getting-started/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 9.10 (Karmic) guide](/docs/web-servers/apache/installation/ubuntu-9-10-karmic). These steps should be performed via an SSH session to your Linode as the root user.
 
-# Use a Self-Signed SSL Certificate with Apache
+## Use a Self-Signed SSL Certificate with Apache
 
 These instructions will help you generate a generic self-signed certificate, which may be used to provide SSL service for all name-based hosts on your Linode. Please note that self-signed certificates will generate warnings in a visitor's browser; proceed to "Installing a Commercial SSL Certificate" if you need to set up SSL on a domain using a certificate signed by a commercial SSL provider.
 
-### Generate a Self-Signed Certificate
+#### Generate a Self-Signed Certificate
 
 At the shell prompt, issue the following commands to enable SSL for Apache and generate a certificate:
 
@@ -52,7 +52,7 @@ You will be asked for several configuration values. Enter values appropriate for
     Common Name (eg, YOUR name) []:archimedes.mydomain.com
     Email Address []:support@mydomain.com
 
-### Configure Apache to use the Self-Signed Certificate
+#### Configure Apache to use the Self-Signed Certificate
 
 SSL name-based virtual hosts are still not supported in `/etc/apache2/ports.conf`, we'll need to add an entry for a specific IP address on your Linode as follows. You may use a single IP to provide self-signed SSL service for multiple vhosts.
 
@@ -86,11 +86,11 @@ Restart Apache:
 
 You should now be able to visit your site with SSL enabled (after accepting your browser's warnings about the certificate).
 
-# Install a Commercial SSL Certificate
+## Install a Commercial SSL Certificate
 
 Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address for SSL-enabled sites.
 
-### Create a Certificate Signing Request
+#### Create a Certificate Signing Request
 
 Issue these commands to create a certificate signing request (CSR) for the site which you'd like to use with SSL. Be sure to change "www.mydomain.com" to reflect the fully qualified domain name (subdomain.domainname.com) of the site you'll be using SSL with. Leave the challenge password blank. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial CA (certificate authority).
 
@@ -135,7 +135,7 @@ Execute the following command to protect the signed certificate:
 
     chmod 400 /etc/apache2/ssl/www.mydomain.com.crt
 
-### Get the CA Root Certificate
+#### Get the CA Root Certificate
 
 Now you'll need to get the root certificate for the CA that you paid to sign your certificate. You may obtain the root certs for various providers from these sites:
 
@@ -146,7 +146,7 @@ Now you'll need to get the root certificate for the CA that you paid to sign you
 
 For example, if we downloaded a root cert for Verisign, we would save it to `/etc/apache2/ssl/verisign.cer`.
 
-### Configure Apache to use the Signed SSL Certificate
+#### Configure Apache to use the Signed SSL Certificate
 
 Next, we'll add an entry to `/etc/apache2/ports.conf` for the IP address you'll be using to host your SSL-enabled site.
 
@@ -179,7 +179,7 @@ Restart Apache:
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
 
-## More Information
+### More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
