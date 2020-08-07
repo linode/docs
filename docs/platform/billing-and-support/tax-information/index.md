@@ -16,7 +16,7 @@ aliases: ['platform/billing-and-support/tax-information-classic-manager/','platf
 
 Linode collects the European Union's Value Added Tax (VAT) for customers that are subject to it. Starting on October 1st, 2019, Linode will also collect Australia and India's Goods and Services Tax (GST) for customers in those countries.
 
-Additionally, starting September 1st, 2020, Linode will collect Singapore's 7% Goods and Services Tax (GST) for customers in Singapore. If you have a business GST ID you can [add it to your account](add-a-tax-id-to-your-linode-account) in the [Cloud Manager](https://cloud.linode.com). When you add your business's GST ID to your Linode account, your invoice will not include tax charges and you will be subject to the reverse charge mechanism (RCM). If your business is registered for GST but you do not add your GST ID to your account, your invoice for usage in September will include the 7% GST charge.
+Additionally, starting September 1st, 2020, Linode will collect Singapore's 7% Goods and Services Tax (GST) for customers in Singapore. If you have a business GST ID you can [add it to your account](#add-a-tax-id-to-your-linode-account) in the [Cloud Manager](https://cloud.linode.com). When you add your business's GST ID to your Linode account, your invoice will not include tax charges and you will be subject to the reverse charge mechanism (RCM). If your business is registered for GST but you do not add your GST ID to your account, your invoice for usage in September will include the 7% GST charge.
 
 The taxes that Linode collects will appear on your invoices, and you can [review these charges](#review-your-charges) by navigating to the **Account** page in the [Linode Cloud Manager](https://cloud.linode.com).
 
