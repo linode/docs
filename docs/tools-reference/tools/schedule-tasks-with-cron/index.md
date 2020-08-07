@@ -12,9 +12,9 @@ modified_by:
   name: Linode
 published: 2009-12-15
 title: Schedule Tasks with Cron
+h1_title: Scheduling Tasks with Cron
+image: schedule-tasks-with-cron.png
 ---
-
-![Schedule Tasks with Cron](schedule_tasks_with_cron_smg.png "Schedule Tasks with Cron")
 
 ## What is Cron?
 
