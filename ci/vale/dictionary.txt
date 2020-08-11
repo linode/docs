@@ -996,6 +996,7 @@ nullval
 num
 numpy
 nvim
+nvm
 octopress
 odoo
 oftc
