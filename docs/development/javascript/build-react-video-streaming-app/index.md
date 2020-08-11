@@ -78,7 +78,7 @@ For the purposes of this tutorial, both the server application and the client ap
 
     - `express` gives us a nice interface to handle routes.
 
-    - `cors` will allow us to make cross-origin requests since our client and server will be running on different pots.
+    - `cors` will allow us to make cross-origin requests since our client and server will be running on different ports.
 
 1. Inside the `server` project, create a folder called `assets`. This will hold the video files for the server application:
 
@@ -151,6 +151,12 @@ app.listen(4000, function () {
         npx create-react-app .
 
     This command generates our application shell and installs the packages required by React. The `.` argument means all this setup happens in the current directory (`client`).
+
+    {{< note >}}
+If you don't have `npx` on your workstation, it can be installed globally with:
+
+    npm install -g npx
+{{< /note >}}
 
 1. Once it is done, open `src/App.js` in your `client` project and replace the contents with:
 
@@ -420,7 +426,7 @@ app.get('/videos', function(req, res) {
 });
 {{< /file >}}
 
-    First, we enable `cors` on the server since we’ll be making the requests from a different origin (domain). `cors` was installed in the [Application Setup](#application-setup) section. Then the `/videos` route is declarted, which returns the array we just created in `json` format.
+    First, we enable `cors` on the server since we’ll be making the requests from a different origin (domain). `cors` was installed in the [Application Setup](#application-setup) section. Then the `/videos` route is declared, which returns the array we just created in `json` format.
 
 1. Save the file and it should automatically restart the server. Once it’s started, switch to your browser and check the React application. Your app should display the names and the duration of the videos, but not the thumbnails:
 
