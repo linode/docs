@@ -292,8 +292,9 @@ services.longview = {
 
 1.  You will then have to create the directory and file from the above configuration and write your Longview api key to the file.
 
-        sudo mkdir /var/lib/longview
+        sudo su # Become root briefly
+        mkdir /var/lib/longview
         export longview_key="01234567-89AB-CDEF-0123456789ABCDEF" # This is an example, fill with your own key
-        echo $longview_key > /var/lib/longview/apiKeyFile | sudo tee /var/lib/longview/apiKeyFile
+        echo $longview_key > /var/lib/longview/apiKeyFile
 
     Replace the value of `longview_key` above with with the one you got from [Longview](https://cloud.linode.com/longview/clients).
