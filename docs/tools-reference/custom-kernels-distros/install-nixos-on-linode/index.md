@@ -281,9 +281,9 @@ Remove the **Installer** disk and reclaim the storage that the NixOS installatio
 
 After installation, Longview can be set up for your NixOS instance.
 
-1.  Add the following [options](https://nixos.org/nixos/options.html#longview) to your `/mnt/etc/nixos/configuration.nix`:
+1.  Add the following [options](https://nixos.org/nixos/options.html#longview) to your `/etc/nixos/configuration.nix`:
 
-    {{< file "/mnt/etc/nixos/configuration.nix" >}}
+    {{< file "/etc/nixos/configuration.nix" >}}
 services.longview = {
   enable = true;
   apiKeyFile = "/var/lib/longview/apiKeyFile";
