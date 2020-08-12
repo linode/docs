@@ -30,7 +30,7 @@ Some of the most popular use cases for VLAN are as follows:
 
 ### Security
 
-It is important that the devices that contain sensitive data are separated from the rest of the network. The isolation of the devices in the network decreases the possibility of confidential information breaches. For example, the devices in an organization can be segmented into VLANs such as management, sales, support, and others. The devices in one VLAN cannot access the files in another VLAN.
+It is important that the devices that contain sensitive data are separated from the rest of the network. The isolation of the devices in the network decreases the possibility of confidential information breaches. For example, the devices in an organization can be segmented into VLANs such as management, sales, support, guests, and others. The devices in one VLAN cannot access the files in another VLAN.
 
 ### Cost Effective
 
@@ -48,4 +48,4 @@ Grouping the Layer 2 networks into multiple broadcast domains reduces unnecessar
 
 ## Next Steps
 
-If you're curious about how to use Object Storage, you can read our guide on [How to Build a Private Network](/docs/networking/how-to-build-a-private network) for detailed instructions on creating buckets and uploading objects.
+If you're curious about how to use Object Storage, you can read our guide on [How to Build a Private Network]() for detailed instructions on creating buckets and uploading objects.
