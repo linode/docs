@@ -76,6 +76,7 @@ You can check your invoice charges by visiting the billing page in the [Linode C
 
 {{< note >}}
 See the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for more information.
+{{</ note >}}
 
 **Linode Cloud Manager**
 
