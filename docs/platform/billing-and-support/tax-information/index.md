@@ -16,6 +16,8 @@ aliases: ['platform/billing-and-support/tax-information-classic-manager/','platf
 
 Linode collects the European Union's Value Added Tax (VAT) for customers that are subject to it. Starting on October 1st, 2019, Linode will also collect Australia and India's Goods and Services Tax (GST) for customers in those countries.
 
+Additionally, starting September 1st, 2020, Linode will collect Singapore's 7% Goods and Services Tax (GST) for customers in Singapore. If you have a business GST ID you can [add it to your account](#add-a-tax-id-to-your-linode-account) in the [Cloud Manager](https://cloud.linode.com). When you add your business's GST ID to your Linode account, your invoice will not include tax charges and you will be subject to the reverse charge mechanism (RCM). If your business is registered for GST but you do not add your GST ID to your account, your invoice for usage in September will include the 7% GST charge.
+
 The taxes that Linode collects will appear on your invoices, and you can [review these charges](#review-your-charges) by navigating to the **Account** page in the [Linode Cloud Manager](https://cloud.linode.com).
 
 {{< note >}}
@@ -39,10 +41,6 @@ If you have documents which state that your organization's services with Linode 
 ## Add a Tax ID to your Linode Account
 
 Your tax ID may be added to your account via the [Linode Cloud Manager](https://cloud.linode.com) or the [Linode CLI](https://github.com/linode/linode-cli).
-
-{{< note >}}
-If you are using the Linode Classic Manager, review the [classic manager version of this guide](/docs/platform/billing-and-support/tax-information-classic-manager/#add-a-tax-id-to-your-linode-account) for alternative instructions.
-{{< /note >}}
 
 **Linode Cloud Manager**
 
@@ -78,9 +76,6 @@ You can check your invoice charges by visiting the billing page in the [Linode C
 
 {{< note >}}
 See the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for more information.
-
-If you are using the Linode Classic Manager, review the [classic manager version of this guide](/docs/platform/billing-and-support/tax-information-classic-manager/#review-your-charges) for alternative instructions.
-{{< /note >}}
 
 **Linode Cloud Manager**
 
@@ -129,6 +124,10 @@ Install the Linode CLI to your local computer and generate a Personal Access Tok
 -   **What is Linode's India GST ID number?**
 
     Linode's India GST ID number is `9919JEY29001OST`.
+
+-   **What is the Linode International Service Co. Singapore GST Registration number?**
+
+    Linode's Singapore GST ID number is `M90373465T`.
 
 -   **How is my tax location determined?**
 
