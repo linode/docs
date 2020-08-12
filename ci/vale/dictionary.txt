@@ -984,6 +984,7 @@ novaclient
 novell
 npm
 npmjs
+npx
 nrcpt
 ns1
 ns2
