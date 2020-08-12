@@ -268,7 +268,7 @@ The Linode Cloud Manager provides a *Rebuild* feature which will perform the fol
 1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of your [saved images](/docs/platform/disk-images/linode-images/).
 
     {{< caution >}}
-If you use the Rebuild feature, the data from the disks that are deleted will not be retrievable.
+If you use the Rebuild feature, the data from the disks that are deleted will not be retrievable. You may [back up your data manually](/docs/security/backups/backing-up-your-data) or [create a snapshot through Linode's Backup Service](/docs/platform/disk-images/linode-backup-service#take-a-manual-snapshot) to preserve your data before using the Rebuild feature.
 
 If you'd like to deploy a new Linux distribution without erasing your existing disks, follow the instructions in the [Creating a Disk with a Linux Distribution Installed](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed) section of the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/) guide. This is a better option for those who need to create a new distribution, but also need to save their existing data.
 
