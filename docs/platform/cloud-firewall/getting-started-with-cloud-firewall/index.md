@@ -20,7 +20,7 @@ Linode Cloud Firewalls is a free service used to create, configure, and add stat
 
 ### Features
 
-Linode Cloud Firewalls analyze traffic against a set of predefined rules at the network layer and determine if the traffic will be permitted to communicate with the Linode Service it secures. Cloud Firewalls work as a whitelist with an implicit deny rule-- it will block all traffic by default and only pass through network traffic that meets the parameters of the configured rules.
+Linode Cloud Firewalls analyze traffic against a set of predefined rules at the network layer and determine if the traffic will be permitted to communicate with the Linode Service it secures. Cloud Firewalls work as an allowlist with an implicit deny rule-- it will block all traffic by default and only pass through network traffic that meets the parameters of the configured rules.
 
 ### Limitations
 
