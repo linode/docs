@@ -148,7 +148,7 @@ When you first create a domain, you'll need to add some DNS records. <!-- The DN
 
 1.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, then click **Add a Record**. The example below shows how to add an A/AAAA record.
 
-    ![This page allows you to create a new A/AAAA record.](domain-add-a-record.png)
+    ![This page allows you to create a new A/AAAA record.](add-dns-record-ipv4.png)
 
     {{< note >}}
 The exact form fields will vary depending on the type of DNS record you select.

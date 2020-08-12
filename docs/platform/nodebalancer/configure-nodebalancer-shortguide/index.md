@@ -36,6 +36,10 @@ show_on_rss_feed: false
 
     Every ten seconds, the NodeBalancer will request the root of the web application and look for a valid response code. With this example setup, there is only one backend node (which you will add shortly); if the backend goes down, the NodeBalancer will serve a plain 503 Service Unavailable error page. This is more desirable than refusing connections or making browsers wait for a timeout.
 
+    {{< note >}}
+The port you select for the NodeBalancer must match the port you are going to use on the backend Linode(s) in the next step. For example, if you are going to be receiving only regular HTTP traffic, it's common to use port `80`. The [NodeBalancer SSL Configuration](/docs/platform/nodebalancer/nodebalancer-ssl-configuration) guide will show you how to redirect port `443`, HTTPS traffic, to port `80` for SSL certificates.
+{{</ note >}}
+
 1.  Now you will add the single backend node to the NodeBalancer's configuration. Point this at the private IP address of your web server Linode.
 
     {{< image src="nodebalancers-backend-nodes.png" alt="Adding a Backend Node to a NodeBalancer" title="Adding a Backend Node to a NodeBalancer" >}}

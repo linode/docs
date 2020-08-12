@@ -5,7 +5,7 @@
                 {{ if and ($.Params.promo_code) ($.Params.promo_code_amount) }}
                 Use promo code <strong>{{ $.Params.promo_code }}</strong> for ${{ $.Params.promo_code_amount }} credit on <a href="https://login.linode.com/signup?promo={{ $.Params.promo_code }}">a new account</a>.
                 {{ else }}
-                Try this guide out by <strong><a href="https://login.linode.com/signup?promo=DOCS20TV12P5">signing up for a Linode account</a></strong> with a $20 credit.
+                Limited time! Try this guide by <strong><a href="https://login.linode.com/signup?promo=DOCS100YR01UF">signing up for a Linode account</a></strong> with a $100 credit.
 		        {{ end }}
             </span>
         </div>
@@ -14,7 +14,7 @@
                 {{ if and ($.Params.promo_code) ($.Params.promo_code_amount) }}
                 <input type="hidden" name="promo" value="{{ $.Params.promo_code }}" />
                 {{ else }}
-                <input type="hidden" name="promo" value="DOCS20TV12P5" />
+                <input type="hidden" name="promo" value="DOCS100YR01UF" />
 		        {{ end }}
                 <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Sign Up Here!</button>
             </form>
