@@ -47,36 +47,31 @@ This guide has been written with the assumption that you are logged in as the ro
 
 ## Install the SSL Certificate and Private Key on your NodeBalancer
 
-1.  Go to your NodeBalancer's configuration page. If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
+1.  On your NodeBalancer **Configurations** page, select **Add another Configuration**.
 
-    [![The NodeBalancer SSL Certificate Fields.](nodebalancer-ssl-cert.png)](nodebalancer-ssl-cert.png)
+1.  Under **Port Configuration**, fill out the values in the fields as shown below:
 
-2.  Copy the contents of your SSL certificate into the **Certificate** field. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another.
+    | Field | Value |
+    | ------| ----- |
+    | **Port** | 443 |
+    | **Protocol** | HTTPS |
+    | **Session Stickiness** | None |
+    | **SSL Certificate** | Paste the contents of your SSL certificate. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another. |
+    | **Private Key** | Paste the contents of your private key. Your private key must not have a passphrase. |
+    | **Algorithm** | Round Robin |
+    | **Health Check Type** | HTTP Status |
+    | **Interval** | 5 |
+    | **Timeout** | 3 |
+    | **Attempts** | 2 |
+    | **Check HTTP Path** | / |
 
-3.  Copy your private key into the **Private Key** field. Your private key must not have a passphrase.
+1.  Select **Save Changes** when you're finished.
 
-4.  On your NodeBalancer **Configurations** page, select **Create Configuration** to configure each port/protocol that you would like to use, i.e. `80` and `443`.
-
-5.  Under **Edit Configuration,**  once selected, fill out the values in the fields as shown below:
-
-    - **Port**                    443
-    - **Protocol**                HTTPS
-    - **Algorithm**               Round Robin
-    - **Session Stickiness**      None
-    - **Certificate**             Insert your signed SSL Certificate
-    - **Private Key**             Insert your Private Key
-    - **Health Check Type**       HTTP Valid Status
-    - **Check Interval**          5
-    - **Check Timeout**           3
-    - **Check Attempts**          2
-    - **Check HTTP Path**         /
-
-    Select **Save Changes** when you're finished.
-
-6.  Add as many nodes as you require for the port configuration by selecting **Add Node**. Once selected, fill out the values in the fields as shown below, replacing `xxx.xxx.xxx.xxx` with your Linode's private IP address:
+1.  Add as many nodes as you require for the port configuration by selecting **Add a Node**. Once selected, fill out the values in the fields as shown below, replacing `xxx.xxx.xxx.xxx` with your Linode's private IP address:
 
     - **Label**                   Backend Linode 1
-    - **Address**                 xxx.xxx.xxx.xxx:80
+    - **IP Address**              xxx.xxx.xxx.xxx
+    - **Port**                    80
     - **Weight**                  100
     - **Mode**                    Accept
 
