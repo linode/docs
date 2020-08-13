@@ -499,6 +499,7 @@ gnulinux
 gnutls
 gogs
 golang
+goldmark
 goroutine
 goroutines
 goto

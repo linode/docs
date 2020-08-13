@@ -12,7 +12,7 @@
 
 1. Fork and clone this repository.
 
-2. Download the latest version of [Hugo](https://gohugo.io/).
+2. Download [Hugo](https://github.com/gohugoio/hugo/releases/tag/v0.52). We recommend this older version as newer versions moved to away from Black Friday to Goldmark; Docs relies on Black Friday.
 
 3. Navigate into the cloned repo and run `hugo server`.
 
