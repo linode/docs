@@ -126,7 +126,7 @@ Install the Linode CLI to your local computer and generate a Personal Access Tok
 
     Linode's India GST ID number is `9919JEY29001OST`.
 
--   **What is the Linode International Service Co. Singapore GST Registration number?**
+-   **What is Linode's Singapore GST Registration number?**
 
     Linode's Singapore GST ID number is `M90373465T`.
 
