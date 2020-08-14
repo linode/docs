@@ -32,7 +32,7 @@ Some of the most popular use cases for VLAN are as follows.
 
 ### Secure Data and Traffic
 
-If you have sensitive data on your network, you can use a VLAN to help keep it secure. By isolating of the devices in the network with privileged data, you decrease the possibility of confidential information breaches. For example, the devices in an organization can be segmented into VLANs such as management, sales, support, guests, and others. The devices in one VLAN cannot access the files in another VLAN.
+If you have sensitive data on your network, you can use a VLAN to help keep it secure. By isolating the devices in the network with privileged data, you decrease the possibility of confidential information breaches. For example, the devices in an organization can be segmented into VLANs such as management, sales, support, guests, and others. The devices in one VLAN cannot access the files in another VLAN.
 
 Likewise, the traffic in the VLAN is secure. All packets sent over the network in the VLAN are private and protected from access by anyone outside of the network.
 
@@ -50,15 +50,11 @@ In the diagram above, Linode 1 and 2 are both in a Kubernetes cluster. Both node
 
 ### Cost Effective Segmentation
 
-VLANs reduce the cost of the networking by efficiently using the existing resources and bandwidth. You can build multiple VLANS within an existing network instead of building multiple networks. Segmenting a network into smaller VLANs costs less than creating separate routed networks with routers. Similarly, you can run a secure VLAN in the cloud that is protected from the rest of the internet that without generating extra outbound network transfer costs since internal VLAN traffic is internal and private.
+VLANs reduce the cost of the networking by efficiently using the existing resources and bandwidth. You can build multiple VLANS within an existing network instead of building multiple networks. Segmenting a network into smaller VLANs costs less than creating separate routed networks with routers. Similarly, you can run a secure VLAN in the cloud that is protected from the rest of the internet without generating extra outbound network transfer costs since internal VLAN traffic is internal and private.
 
 ![Multiple VLAN Configuration](multi-vlan-config.png "Multiple VLAN Configuration")
 
 In the diagram above, Linode 1 can communicate with both VLANs 1 and 2 over `eth1` interface connections as well as the internet over the `eth0` interface. The Linodes in VLAN 1 can communicate securely with each other. Likewise, the Linodes in VLAN 2 can communicate with each other. However, the Linodes in VLAN 1 and VLAN 2 cannot communicate with each other.
-
-### Flexibility
-
-When a user on one VLAN moves to a new physical location but continues to perform the same job function, the devices of that user do not need to be reconfigured. Similarly, if a user changes a job function, the user does not have to change the device. They can update the VLAN membership of the device to that of their new team.
 
 ### Network Management
 
