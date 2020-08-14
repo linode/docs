@@ -41,10 +41,10 @@ The Block Storage CSI Driver supports Kubernetes version 1.13 or higher. To chec
     kubectl version
     {{</ note >}}
 
-    {{< note >}}
-Using any of the methods above to deploy a Linode Kubernetes Engine cluster installs both the Linode Block Storage CSI Driver and the `linode` secret token as part of their deployment methods automatically.
+    After deploying your cluster with kubeadm, to continue with this guide, you'll need to install the CSI driver using the instructions in the [Installing the Linode Block Storage CSI Driver](/docs/kubernetes/how-to-install-the-linode-block-storage-csi-driver) guide.
 
-However, deploying an unmanaged Kubernetes cluster, either with Terraform or with kubeadm does **not** install the CSI driver. If you use either of these methods, follow the instructions in the [Installing the Linode Block Storage CSI Driver](/docs/kubernetes/how-to-install-the-linode-block-storage-csi-driver) guide before continuing with the remainder of this guide.
+    {{< note >}}
+Using either the Linode Kubernetes Engine or Terraform methods above will install both the Linode Block Storage CSI Driver and and the `linode` secret token as part of their deployment methods automatically.
 {{</ note >}}
 
 ## Create a Persistent Volume Claim
