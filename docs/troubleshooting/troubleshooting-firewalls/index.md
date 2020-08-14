@@ -16,17 +16,17 @@ h1_title: Diagnose & Resolve Issues with Firewalls
 
 This guide presents troubleshooting strategies for Linodes that may be unresponsive due to issues caused by a firewall.
 
-In many cases, you will suspect a firewall issue if only some of your services are inaccessible, or in situations of limited access. A firewall may also be suspected if an issue was noticed not long after implementing new firewall rules.
+In many cases, you might suspect a firewall issue if only some of your services are inaccessible, or in situations of limited access. A firewall may also be suspected if an issue was noticed not long after implementing new firewall rules.
 
 It's important to note that while a firewall is often responsible for cases of limited access, these issues may also potentially be caused by a wide array of other issues such as limited network access, resource contention like throttled memory, or internal processes or services that are not configured to communicate over the internet.
 
 ## Before You Begin
 
-You should familiarize yourself with *Lish*. It will be a helpful troubleshooting tool for diagnosing connection problems.
+You should familiarize yourself with *Lish*. It is a helpful troubleshooting tool for diagnosing connection problems.
 
 ### The Linode Shell (Lish)
 
-[*Lish*](/docs/platform/manager/using-the-linode-shell-lish/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. If you find yourself locked out of SSH, much of your troubleshooting for basic connection issues will be performed from the Lish console.
+[*Lish*](/docs/platform/manager/using-the-linode-shell-lish/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. If you find yourself locked out of SSH, you can use Lish to perform much of the troubleshooting for basic connection issues.
 
 To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) guide. In particular, [using your web browser](/docs/platform/manager/using-the-linode-shell-lish/#use-a-web-browser) is a fast and simple way to access Lish.
 
@@ -57,7 +57,7 @@ If you are using Linode's Cloud Firewall then it's important to check your rules
 1.  If these rules seem to be affecting your service or services, you can remove or edit these rules independently by clicking the `Edit` or `Delete` links to the right of each rule respectively.
 
     {{< note >}}
-Cloud Firewall rules are applied on the host level and will not be detectable internally on Linodes. For more on how to setup and use Cloud Firewall, see the guide [A Tutorial for Adding and Configuring Linode Cloud Firewalls](/docs/platform/cloud-firewall/getting-started-with-cloud-firewall).
+Cloud Firewall rules are applied on the host level and are not detectable internally on Linodes. For more on how to setup and use Cloud Firewall, see the guide [A Tutorial for Adding and Configuring Linode Cloud Firewalls](/docs/platform/cloud-firewall/getting-started-with-cloud-firewall).
 {{< /note >}}
 
 ## Checking Firewall Rules with UFW
