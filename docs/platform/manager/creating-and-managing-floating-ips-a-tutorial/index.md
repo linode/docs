@@ -2,15 +2,15 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide provides Linode users with steps to manually enable a floating IP on a Linode. This is meant to support users that are currently using Linode IP Sharing and need an intermediary replacement when migrating to a Next Generation Network data center.'
-og_description: 'This guide provides Linode users with steps to manually enable a floating IP on a Linode. This is meant to support users that are currently using Linode IP Sharing and need an intermediary replacement when migrating to a Next Generation Network data center.'
-keywords: ['networking','floating IP','keywords','and key phrases']
+description: 'This guide provides Linode users with steps to manually enable a Elastic IP on a Linode. This is meant to support users that are currently using Linode IP Sharing and need an intermediary replacement when migrating to a Next Generation Network data center.'
+og_description: 'This guide provides Linode users with steps to manually enable a Elastic IP on a Linode. This is meant to support users that are currently using Linode IP Sharing and need an intermediary replacement when migrating to a Next Generation Network data center.'
+keywords: ['networking','Elastic IP','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-02
 modified_by:
   name: Linode
-title: "How to Manually Enable Floating IP on your Linode"
-h1_title: "Manually Enable Floating IP on your Linode"
+title: "How to Manually Enable Elastic IP on your Linode"
+h1_title: "Manually Enable Elastic IP on your Linode"
 hiddenguide: true
 contributor:
   name: Linode
@@ -18,19 +18,19 @@ external_resources:
 - '[FRRouting Documentation](http://docs.frrouting.org/en/latest/overview.html)'
 ---
 
-This guide provides an alternative to [Linode's IP Sharing](/docs/platform/manager/remote-access/#configuring-ip-sharing). If IP sharing is not available in a Next Generation Network (NGN) [data center](https://www.linode.com/global-infrastructure/), you can install the open source tool [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) to enable *Floating IPs* on your Linode. A Floating IP is a static and public IP address that you can use to route network traffic between Linodes.
+This guide provides an alternative to [Linode's IP Sharing](/docs/platform/manager/remote-access/#configuring-ip-sharing). If IP sharing is not available in a Next Generation Network (NGN) [data center](https://www.linode.com/global-infrastructure/), you can install the open source tool [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) to enable *Elastic IPs* on your Linode. A Elastic IP is a static and public IP address that you can use to route network traffic between Linodes.
 
 ## In this Guide
 
 This guide will cover the following:
 
 - Installing FRRouting (FRR) on your Linode.
-- Configuring FRR to enable Floating IP on a Linode.
-- Suggested next steps when moving from IP sharing to Floating IP.
+- Configuring FRR to enable Elastic IP on a Linode.
+- Suggested next steps when moving from IP sharing to Elastic IP.
 
 ### Before You Begin
 
-1. Prior to beginning the process outlined in this guide, make sure that you have received an IPv4 address(es) from Linode Support to use as your Floating IP(s).
+1. Prior to beginning the process outlined in this guide, make sure that you have received an IPv4 address(es) from Linode Support to use as your Elastic IP(s).
 
 1. Ensure you have set your [Linode's hostname](/docs/getting-started/#set-the-hostname) and you have [updated your Linode's hosts file](/docs/getting-started/#update-your-system-s-hosts-file).
 
@@ -46,7 +46,7 @@ This guide will use Git as the installation method for the FRR tool. For other i
 
 This section provides FRR installation methods for Debian 10, Ubuntu 20.04, Ubuntu 18.04, and CentOS 8. If you are using a different Linux distribution, see FRR's official documentation on [installing](http://docs.frrouting.org/en/latest/installation.html) and [building](http://docs.frrouting.org/projects/dev-guide/en/latest/building.html) FRR.
 
-Once you have installed FRR on your Linode, proceed to the [Configure Floating IP](#configure-floating-ip) section of this guide.
+Once you have installed FRR on your Linode, proceed to the [Configure Elastic IP](#configure-floating-ip) section of this guide.
 
 ### Debian 10 / Ubuntu 18.04
 
@@ -348,30 +348,45 @@ net.ipv6.conf.all.forwarding=1
 
         sudo systemctl start frr
 
-## Configure Floating IP
+## Configure Elastic IP
+
+With FRR installed on your Linode, you can now apply the required configurations to configure Elastic IP.
+
+{{< note >}}
+Prior to starting this section, ensure you have received the following information from Linode Support:
+
+| Information | Value to replace in `linode-config.frr` example |
+| :-------: | :-------: |
+| Neighbor IP| `$NEIGHBOR_IP` (This Linode's IP address) |
+| Data center shortname | `$DC_ID` |
+| Data center ID | `$DC_ID`|
+| This Linode's role (primary or secondary) | `$ROLE` |
+
+
+{{</ note >}}
 
 1. Using a text editor, create a new file to store your Linode provided FRR daemon configurations. Below is an example file. Ensure you replace any values with those sent to you by Linode support.
 
       {{< file "linode-frr.conf">}}
 !
-router bgp 65135
+router bgp 65$DC_ID
 coalesce-time 1000
 bgp bestpath as-path multipath-relax
 neighbor HOST peer-group
 neighbor HOST remote-as external
 neighbor HOST capability extended-nexthop
-neighbor 172.105.145.1 peer-group HOST
+neighbor $NEIGHBOR_IP peer-group HOST
 !
 address-family ipv4 unicast
-  network 45.79.119.13/32 route-map primary
+  network $ELASTIC_IP/32 route-map $ROLE
   redistribute static
 exit-address-family
 !
 route-map primary permit 10
-set large-community 65135:13:1
+set large-community 65$DC_ID5:$DC_ID:1
 !
 route-map secondary permit 10
-set large-community 65135:13:2
+set large-community 65$DC_ID5:13:2
 !
 line vty
 !
@@ -382,8 +397,30 @@ end
 
         sudo vtysh -f linode-frr.conf
 
-1. Ensure that the configurations have been appropriately applied.
+1. Restart the FRR service.
 
-## Next Steps
+        sudo systemctl restart frr.service
 
-[Placeholder section]
+1. Add your Elastic IP CIDR block subnet to each network interface.
+
+        ip a a $ELAIP1/32 dev eth0:2
+        ip a a $ELAIP2/32 dev eth0:3
+        ip a a $ELAIP3/32 dev eth0:4
+        ip a a $ELAIP4/32 dev eth0:5
+
+1. Ensure that the configurations have been appropriately applied by viewing the contents of your `/etc/network/interfaces` file.
+
+        cat /etc/network/interfaces
+
+    You should see a similar output:
+
+      {{< output >}}
+  up   ip addr add $ELAIP1/32 dev eth0 label eth0:2
+  down ip addr del $ELAIP1/32 dev eth0 label eth0:2
+  up   ip addr add $ELAIP2/32 dev eth0 label eth0:3
+  down ip addr del $ELAIP2/32 dev eth0 label eth0:3
+  up   ip addr add $ELAIP3/32 dev eth0 label eth0:4
+  down ip addr del $ELAIP3/32 dev eth0 label eth0:4
+  up   ip addr add $ELAIP4/32 dev eth0 label eth0:5
+  down ip addr del $ELAIP4/32 dev eth0 label eth0:5
+      {{</ output >}}
