@@ -1124,6 +1124,7 @@ procs
 productpage
 prosodyctl
 proto
+protobuf
 protocode
 proxied
 proxying
