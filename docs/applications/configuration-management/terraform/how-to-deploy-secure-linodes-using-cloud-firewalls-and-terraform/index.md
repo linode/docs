@@ -30,7 +30,7 @@ A Cloud Firewall can be configured with Inbound and Outbound rules. Inbound rule
 
 ## Before You Begin
 
-1. If you are new to Terraform, read through our [A Beginner's Guide to Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) guide to familiarize yourself with key concepts.
+1. If you are new to Terraform, read through our [A Beginner's Guide to Terraform](/docs/applications/configuration-management/terraform/beginners-guide-to-terraform/) guide to familiarize yourself with key concepts.
 
 1. See [Create a Terraform Module](/docs/applications/configuration-management/terraform/create-terraform-module/) for a deeper dive into Terraform's standard module structure and other helpful details.
 
@@ -41,14 +41,14 @@ A Cloud Firewall can be configured with Inbound and Outbound rules. Inbound rule
 1. [Install Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) on your local computer.
 
     {{< note >}}
-This guide was written using [Terraform version 0.12.29](https://www.hashicorp.com/blog/announcing-terraform-0-12/).
+This guide was written using [Terraform version 0.13.0](https://www.hashicorp.com/blog/announcing-the-terraform-0-13-beta/).
     {{</ note >}}
 
 1. Install Git on your computer and complete the steps in the **Configure Git** section of the [Getting Started with Git guide](/docs/development/version-control/how-to-configure-git/#configure-git).
 
 ## Create Your Cloud Firewalls Module
 
-The Cloud Firewalls module includes child modules that split up the required resources between the *root module*, an `inbound_ssh` module, a `mysql` module, and a `web-server` module. The root module is the directory that holds the Terraform configuration files that are applied to build your desired infrastructure. These files provide an entry point into any child modules. Each child module uses the `linode_firewall` resource to create reusable Cloud Firewall rules for specific use cases.
+The following steps will create the Cloud Firewalls module, which includes several child modules that split up the required resources between the *root module*, an `inbound_ssh` module, a `mysql` module, and a `web-server` module. The root module is the directory that holds the Terraform configuration files that are applied to build your desired infrastructure. These files provide an entry point into any child modules. Each child module uses the `linode_firewall` resource to create reusable Cloud Firewall rules for specific use cases.
 
 {{< note >}}
 You can apply up to three Cloud Firewalls per Linode instance.
@@ -60,7 +60,7 @@ You can view the files created throughout this tutorial in the [author's GitHub 
 
 ### Create Your Module's Directory Structure
 
-After completing all the sections in [Create Your Cloud Firewalls Module](/docs/applications/configuration-management/terraform/how-to-deploy-secure-linodes-using-cloud-firewalls-and-terraform/#create-your-cloud-firewalls-module), you will have the directory structure outlined below. In this section, you will create this directory structure.
+In this section, you will create the directory structure outlined below, which will contain the module and child module configuration files that you will create in later steps.
 
 {{< output >}}
 main_firewalls/
@@ -122,7 +122,7 @@ resource "linode_firewall" "ssh_inbound" {
       - The `linodes` argument expects a list of Linode IDs. When a Linode ID is passed to the `linodes` argument, the `inbound_ssh` firewall will be assigned to it.
       - The arguments `label`, `tags`, and `linodes` make use of [input variables](https://www.terraform.io/docs/configuration/variables.html), which allow these values to be customized when using the module for your resource configurations.
 
-1. Create the `variables.tf` file to declare the `inbout_ssh` module's input variables. Copy and save the contents of the example below.
+1. Create the `variables.tf` file to declare the `inbound_ssh` module's input variables. Copy and save the contents of the example below.
 
      {{< file "~/main_firewalls/inbound_ssh/variables.tf">}}
 variable "linodes" {
@@ -148,7 +148,7 @@ variable "tags" {
 
 ### Create the MySQL Child Module
 
-The `mysql` child module creates a Cloud Firewall with an inbound rule commonly suited for client connections to a MySQL server. The inbound rule allows `TCP` connections to port `3306`. The `addressses` argument accepts in input variable so that it can be customized to restrict access to a specific IP address(es) or CIDR block.
+The `mysql` child module creates a Cloud Firewall with an inbound rule commonly suited for client connections to a MySQL database server. The inbound rule allows `TCP` connections to port `3306`. The `addressses` argument accepts an input variable so that it can be customized to restrict access to a specific IP address(es) or CIDR block.
 
 1. Using your preferred text editor, create the `inbound_ssh` module's `main.tf` file. Copy and save the contents of the example below.
 
@@ -170,7 +170,7 @@ resource "linode_firewall" "mysql" {
       - The `linodes` argument expects a list of Linode IDs. When a Linode ID is passed to the `linodes` argument, the `mysql` firewall will be assigned to it.
       - The arguments `label`, `tags`, `linodes`, and `addresses` make use of [input variables](https://www.terraform.io/docs/configuration/variables.html), which allow these values to be customized when using the module for your resource configurations.
 
-1. Create the `variables.tf` file to declare the `inbout_ssh` module's input variables. Copy and save the contents of the example below.
+1. Create the `variables.tf` file to declare the `inbound_ssh` module's input variables. Copy and save the contents of the example below.
 
      {{< file "~/main_firewalls/mysql/variables.tf">}}
 variable "linodes" {
@@ -311,21 +311,21 @@ resource "linode_instance" "linode_base" {
       - The `locals` block declares a local variable `key` whose value will be provided by an input variable. The `linode_ids` local variable is used by the `web_server` module instance in the next block to retrieve the Linode ids for the Linodes to be assigned to the Cloud Firewall that will be created.
       - The `module "firewalls_web"` block creates an instance of the `web_server` child module, which when applied will create a new Cloud Firewall with the configurations provided by the child module and input variable values you will provide in a later step.
 
-        The `source` argument provides the location of the child module’s source code and is required whenever you create an instance of a module.
+      - The `source` argument provides the location of the child module’s source code and is required whenever you create an instance of a module.
 
-        All other arguments are determined by the child module. Since the `web_server` child module exposes the `firewall_label`, `tags`, and `linodes` values must be provided for them. Input variables are used in the root module to make it reusable. Depending on the child module that you are using, and the label you'd like to assign to the Cloud Firewall, you should replace the key value for the  `var.firewall_label_map["web"]`. Refer to the `variables.tf` file for details.
+      - All other arguments are determined by the child module. Since the `web_server` child module exposes the `firewall_label`, `tags`, and `linodes`, values must be provided for them. Input variables are used in the root module to make it reusable. Depending on the child module that you are using, and the label you'd like to assign to the Cloud Firewall, you should replace the key value for the  `var.firewall_label_map["web"]`. Refer to the `variables.tf` file for details.
 
-        The `linodes` argument retrieves its value from the local variable defined in the previous block.
+      - The `linodes` argument retrieves its value from the local variable defined in the previous block.
 
       - The `linode_sshkey` resource will create Linode SSH Keys tied to your Linode account. These keys can be reused for future Linode deployments once the resource has been created.
 
-        `ssh_key = chomp(file(local.key))` uses Terraform’s built-in function `file()` to provide a local file path to your public SSH key’s location. The location of the file path is the value of the local variable `key`. The `chomp()` built-in function removes trailing new lines from the SSH key.
+      - `ssh_key = chomp(file(local.key))` uses Terraform’s built-in function `file()` to provide a local file path to your public SSH key’s location. The location of the file path is the value of the local variable `key`. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
       - The `linode_instance` resource creates two Linode instances with configurations provided by its arguments.
 
-        The `count` argument controls how many Linode instances will be created with the configurations provided in the resource block's arguments.
+      - The `count` argument controls how many Linode instances will be created with the configurations provided in the resource block's arguments.
 
-        Since Linode labels must be unique, the `label` argument will create a label based on a value provided to the `var.label` input variable and the index number representing the Linode instance that is created.
+      - Since Linode labels must be unique, the `label` argument will create a label based on a value provided to the `var.label` input variable and the index number representing the Linode instance that is created.
 
       - The `authorized_keys` argument uses the SSH public key provided by the `linode_sshkey` resource in the previous resource block.
 
