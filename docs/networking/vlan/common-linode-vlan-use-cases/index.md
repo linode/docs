@@ -22,7 +22,7 @@ Virtual Local Area Network (VLAN) is a private [Layer 2](https://en.wikipedia.or
 
 ### Benefits
 
-Linode's VLAN helps you create private LANs by creating a physical L2 network in the cloud where devices can communicate privately and securely.
+Linode's VLAN helps you create private LANs by creating an L2 network in the cloud where devices can communicate privately and securely.
 
 ## Use Cases
 
@@ -56,7 +56,7 @@ In the diagram above, Linode 1 has three virtual Ethernet NICs, one to the inter
 
 ### Network Management
 
-Traditional VLANs split L2 networks into multiple broadcast domains reduces unnecessary traffic on the network and increases network performance. Linode's VLAN works by creating a new physical L2 network to create a private network in the cloud.
+Traditional VLANs split L2 networks into multiple broadcast domains reduces unnecessary traffic on the network and increases network performance. Linode's VLAN works by creating a new L2 network to create a private network in the cloud.
 
 #### Example: Add a NodeBalancer
 
