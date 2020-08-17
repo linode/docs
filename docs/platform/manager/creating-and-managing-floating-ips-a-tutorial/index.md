@@ -42,6 +42,8 @@ This guide will use Git as the installation method for the FRR tool. For other i
 
 1. Ensure Python 3 is installed on your system. See [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html#python-dependency-documentation-and-tests) to learn about FRR's Python dependencies.
 
+1. [Disable Network Helper](/docs/platform/network-helper/#single-per-linode) on the Elastic IP Linodes.
+
 ## Install FRR on your Linode
 
 This section provides FRR installation methods for Debian 10, Ubuntu 20.04, Ubuntu 18.04, and CentOS 8. If you are using a different Linux distribution, see FRR's official documentation on [installing](http://docs.frrouting.org/en/latest/installation.html) and [building](http://docs.frrouting.org/projects/dev-guide/en/latest/building.html) FRR.
@@ -401,26 +403,26 @@ end
 
         sudo systemctl restart frr.service
 
-1. Add your Elastic IP CIDR block subnet to each network interface.
+1. Add your Elastic IP CIDR block subnet to each network interface. Replace `$ELASTIC_IP1` - `$ELASTIC_IP4` with your own IP addresses.
 
-        ip a a $ELAIP1/32 dev eth0:2
-        ip a a $ELAIP2/32 dev eth0:3
-        ip a a $ELAIP3/32 dev eth0:4
-        ip a a $ELAIP4/32 dev eth0:5
+        ip a a $ELASTIC_IP1/32 dev eth0:2
+        ip a a $ELASTIC_IP2/32 dev eth0:3
+        ip a a $ELASTIC_IP3/32 dev eth0:4
+        ip a a $ELASTIC_IP4/32 dev eth0:5
 
 1. Ensure that the configurations have been appropriately applied by viewing the contents of your `/etc/network/interfaces` file.
 
         cat /etc/network/interfaces
 
-    You should see a similar output:
+    You should see a similar output with your own IP addresses displayed:
 
       {{< output >}}
-  up   ip addr add $ELAIP1/32 dev eth0 label eth0:2
-  down ip addr del $ELAIP1/32 dev eth0 label eth0:2
-  up   ip addr add $ELAIP2/32 dev eth0 label eth0:3
-  down ip addr del $ELAIP2/32 dev eth0 label eth0:3
-  up   ip addr add $ELAIP3/32 dev eth0 label eth0:4
-  down ip addr del $ELAIP3/32 dev eth0 label eth0:4
-  up   ip addr add $ELAIP4/32 dev eth0 label eth0:5
-  down ip addr del $ELAIP4/32 dev eth0 label eth0:5
+  up   ip addr add $ELASTIC_IP1/32 dev eth0 label eth0:2
+  down ip addr del $ELASTIC_IP1/32 dev eth0 label eth0:2
+  up   ip addr add $ELASTIC_IP2/32 dev eth0 label eth0:3
+  down ip addr del $ELASTIC_IP2/32 dev eth0 label eth0:3
+  up   ip addr add $ELASTIC_IP3/32 dev eth0 label eth0:4
+  down ip addr del $ELASTIC_IP3/32 dev eth0 label eth0:4
+  up   ip addr add $ELASTIC_IP4/32 dev eth0 label eth0:5
+  down ip addr del $ELASTIC_IP4/32 dev eth0 label eth0:5
       {{</ output >}}
