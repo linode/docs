@@ -420,6 +420,7 @@ file1
 filebeat
 filecap
 filecaps
+fileglob
 filemode
 filepath
 filepaths
@@ -1184,7 +1185,9 @@ redmin
 redmine
 reenable
 reenabling
+referer
 refspec
+regexes
 reimported
 reindexing
 reinstalls
