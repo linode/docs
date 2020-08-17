@@ -38,7 +38,7 @@ Likewise, the traffic in the VLAN is secure. All packets sent over the network i
 
 ![Web Server to VLAN Secure Database Configuration](vlan-web-server-db-config.png "Web Server to VLAN Secure Database Configuration")
 
-In the diagram above, Linode 1 is a web server and has access to the internet over the `eth0` interface. It also has access to Linode 2 and the VLAN over the `eth1` interface. Linode 2 on the VLAN is a secure database that houses sensitive data. Communication between Linode 1 and 2 is transmitted over `eth1` and is secure and private.
+In the diagram above, Linode 1 is a web server and has access to the internet over the `eth0` interface. It also has access to Linode 2 and the VLAN over the `eth1` interface. Linode 2 on the VLAN is a secure database that houses sensitive data. Communication between Linode 1 and 2 is transmitted over VLAv and is secure and private.
 
 #### Example: Kubernetes Cluster
 
@@ -46,23 +46,19 @@ In the diagram above, Linode 1 is a web server and has access to the internet ov
 
 In the diagram above, Linode 1 and 2 are both in a Kubernetes cluster. Both nodes have services exposed to the internet over the `eth0` interface and communication between Pods is kept private and secure on the VLAN over the `eth1` interface.
 
-### Cost Effective Segmentation
-
-VLANs reduce the cost of the networking by efficiently using the existing resources and bandwidth. For example, you can run a secure VLAN in the cloud that is protected from the rest of the internet without generating extra outbound network transfer costs since internal VLAN traffic is internal and private.
-
-![Multiple VLAN Configuration](multi-vlan-config.png "Multiple VLAN Configuration")
-
-In the diagram above, Linode 1 has three virtual Ethernet NICs, one to the internet and two others to separate VLANs. The Linodes in VLAN 1 can communicate securely with each other. Likewise, the Linodes in VLAN 2 can communicate with each other. However, the Linodes in VLAN 1 and VLAN 2 cannot communicate with each other.
-
-### Network Management
-
-Traditional VLANs split L2 networks into multiple broadcast domains reduces unnecessary traffic on the network and increases network performance. Linode's VLAN works by creating a new L2 network to create a private network in the cloud.
-
 #### Example: Add a NodeBalancer
 
 ![NodeBalancer with VLAN Configuration](nodebalancer-vlan-config.png "NodeBalancer with VLAN Configuration")
 
 You can increase performance and stability of your application by adding a [NodeBalancer](https://www.linode.com/products/nodebalancers/) while securing the communication between two dedicated servers. In the high availability system above, Linodes 1 and 2 both run the same web application. They both have a connection to the VLAN with the network interface `eth1` so they can communicate securely with each other and with Linode 3 which is a database. All communications made over `eth1` are private and secure. They are also connected to a NodeBalancer to manage the load over the `eth0` interface. The NodeBalancer directs traffic, maintains load balancing, and performs active health checks to make sure the system only directs traffic to healthy servers.
+
+### Cost Effective Network Management
+
+VLANs reduce the cost of the networking by efficiently using the existing resources and bandwidth. For example, you can run a secure VLAN in the cloud that is protected from the rest of the internet without generating extra outbound network transfer costs since internal VLAN traffic is internal and private.
+
+![Multiple VLAN Configuration](multi-vlan-config.png "Multiple VLAN Configuration")
+
+In the diagram above, Linode 1 has three virtual Ethernet NICs, one is attached to the internet and two others to separate VLANs. Linodes 1, 2, and 3 can communicate securely with each other over VLAN 1. Likewise, Linodes 1, 4, and 5 can communicate with each other over VLAN 2. However, Linodes 2 and 3 cannot directly communicate with Linodes 4 and 5.
 
 ## Next Steps
 
