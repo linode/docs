@@ -34,7 +34,7 @@ A Cloud Firewall can be configured with Inbound and Outbound rules. Inbound rule
 
 1. See [Create a Terraform Module](/docs/applications/configuration-management/terraform/create-terraform-module/) for a deeper dive into Terraform's standard module structure and other helpful details.
 
-1. You need a [Linode’s API v4](https://developers.linode.com/api/v4) personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) to get a token.
+1. You need a [Linode API v4](https://developers.linode.com/api/v4) personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide for steps to create a token.
    {{< note >}}When you create a personal access token ensure that you set **Read/Write** access permissions for Linode instances and Cloud Firewalls.
     {{</ note >}}
 
