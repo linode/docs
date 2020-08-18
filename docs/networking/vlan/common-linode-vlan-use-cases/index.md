@@ -20,8 +20,6 @@ contributor:
 
 Virtual Local Area Network (VLAN) is a private [Layer 2](https://en.wikipedia.org/wiki/OSI_model#Layer_2:_Data_Link_Layer) network. This means that two or more Linodes connected via the VLAN can see each other as if they were directly connected to the same physical Ethernet network. This network supports all the logical Ethernet features like L2 broadcast and L2 multicast. Devices outside the network cannot see any traffic within the private network.
 
-### Benefits
-
 Linode's VLAN helps you create private LANs by creating an L2 network in the cloud where devices can communicate privately and securely.
 
 ## Use Cases
@@ -38,7 +36,7 @@ Likewise, the traffic in the VLAN is secure. All packets sent over the network i
 
 ![Web Server to VLAN Secure Database Configuration](vlan-web-server-db-config.png "Web Server to VLAN Secure Database Configuration")
 
-In the diagram above, Linode 1 is a web server and has access to the internet over the `eth0` interface. It also has access to Linode 2 and the VLAN over the `eth1` interface. Linode 2 on the VLAN is a secure database that houses sensitive data. Communication between Linode 1 and 2 is transmitted over VLAv and is secure and private.
+In the diagram above, Linode 1 is a web server and has access to the internet over the `eth0` interface. It also has access to Linode 2 and the VLAN over the `eth1` interface. Linode 2 on the VLAN is a secure database that houses sensitive data. Communication between Linode 1 and 2 is transmitted over VLAN and is secure and private.
 
 #### Example: Kubernetes Cluster
 
