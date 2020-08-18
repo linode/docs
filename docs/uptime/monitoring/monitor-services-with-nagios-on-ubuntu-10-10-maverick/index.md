@@ -20,20 +20,20 @@ Nagios is a monitoring tool that makes it possible to monitor services on a sing
 
 Before installing Nagios, you will need to ensure that your hostname is properly set by following the steps outlined in the [getting started guide](/docs/getting-started/). Additionally, you will need to have a functioning [LAMP stack](/docs/lamp-guides/ubuntu-10-10-maverick/) in order to use Nagios.
 
-# Prepare for Nagios Installation
+## Prepare for Nagios Installation
 
 Ensure that your system's package repository and installed packages are up to date by issuing the following commands:
 
     apt-get update
     apt-get upgrade
 
-### Install Dependencies
+#### Install Dependencies
 
 Before you begin installing Nagios, you must first install several prerequisites. Issue the following command:
 
     apt-get install build-essential php5-gd wget libgd2-xpm libgd2-xpm-dev
 
-### Create Users and Groups
+#### Create Users and Groups
 
 You will need to create a new system user account to run Nagios under. Issue the following commands:
 
@@ -44,9 +44,9 @@ You will need to create a new system user account to run Nagios under. Issue the
 
 You may now proceed with the Nagios installation.
 
-# Install Nagios
+## Install Nagios
 
-### Download Nagios Software
+#### Download Nagios Software
 
 Begin by downloading the latest version of the Nagios Core. At the time of writing the latest version of Nagios is 3.2.3, but be sure that you are downloading the latest version by checking the [Nagios download page](http://www.nagios.org/download/core/thanks/). Issue the following commands:
 
@@ -58,7 +58,7 @@ Next, download the official plugin package for Nagios. At the time of writing th
     cd /opt/
     wget http://prdownloads.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.15.tar.gz
 
-### Build and Install Nagios Core
+#### Build and Install Nagios Core
 
 Issue the following command to extract, compile and install core Nagios files:
 
@@ -74,7 +74,7 @@ Once the configuration script has finished, you will need to compile Nagios and 
     make install-config
     make install-commandmode
 
-### Configure Nagios Core
+#### Configure Nagios Core
 
 Begin by editing the `/usr/local/nagios/etc/objects/contacts.cfg` file's email field, according to the example below:
 
@@ -102,7 +102,7 @@ You will now need to reload the configuration of the web server by issuing the f
 
     /etc/init.d/apache2 reload
 
-### Build and install Nagios Plugins
+#### Build and install Nagios Plugins
 
 To install and configure the Nagios plugins, issue the following commands:
 
@@ -115,7 +115,7 @@ To install and configure the Nagios plugins, issue the following commands:
 
 You're now ready to run Nagios for the first time and continue with the configuration process!
 
-# Running Nagios
+## Running Nagios
 
 Issue the following commands to ensure that Nagios is started when your system boots:
 
@@ -134,11 +134,11 @@ You may now access the web based administration and reporting tools by visiting 
 
 **Please note:** The above example does not use SSL, and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
-# Configure Nagios Alerts
+## Configure Nagios Alerts
 
 A great deal of the power of Nagios is its ability to send notifications and alerts regarding the status of services and devices. While most of this fine-grained configuration is beyond the scope of this document, we have outlined some basic notifications below.
 
-### Installing Prerequisites to send Mail Alerts
+#### Installing Prerequisites to send Mail Alerts
 
 Before Nagios can send alerts by email, basic mail services need to be installed. Issue the following command:
 
@@ -165,7 +165,7 @@ In order for these changes to take effect, you will need to restart Nagios:
 
     /etc/init.d/nagios restart
 
-### Configuring Basic IRC Notifications
+#### Configuring Basic IRC Notifications
 
 You can also configure Nagios to send notifications to an IRC channel through a bot. Issue the following commands to download, extract, and build the IRC bot:
 
@@ -188,7 +188,7 @@ In the above example, "-f /usr/local/nagios/var/status.dat" tells the bot where 
 
 Nagios contains numerous features that are beyond the scope of this document. You are encouraged to explore the resources listed below and the administrative interface for more information regarding the setup and configuration of Nagios. Congratulations on your new Nagios monitoring and notification system!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

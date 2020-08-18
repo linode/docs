@@ -20,7 +20,7 @@ Apache Tomcat is a free and open source software implementation for Java Servlet
 
 This guide assumes that you have a working installation of Fedora 14, and that you have followed our [getting started guide](/docs/getting-started/) to get your system working and up to date. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -29,7 +29,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Apache Tomcat
+## Install Apache Tomcat
 
 Issue the following command to install the latest version of Tomcat 6, along with the OpenJDK runtime environment and developer tools:
 
@@ -51,7 +51,7 @@ Tomcat should now be totally functional. In the future, if you need to start, st
     /etc/init.d/tomcat6 stop
     /etc/init.d/tomcat6 restart
 
-# Test and use Tomcat
+## Test and use Tomcat
 
 You can test your Tomcat installation by pointing your browser to `http://[yourdomain-or-ip-address]:8080/`. By default, files are located at `/usr/share/tomcat6/webapps/`.
 
@@ -69,7 +69,7 @@ Once you have saved the `tomcat-users.xml` file, restart the tomcat6 service wit
 
 At this point, you will be able to log in to the Tomcat Manager application and begin deploying Java Servlets with Apache Tomcat!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

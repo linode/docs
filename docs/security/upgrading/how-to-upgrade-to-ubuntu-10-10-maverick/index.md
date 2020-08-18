@@ -20,7 +20,7 @@ This guide explains how to upgrade your Linode to Ubuntu 10.10 (Maverick). As wi
 
 **Important:** If it isn't already selected in your Linode's configuration profile, you must edit the profile to use the "Latest 3.0" kernel (either 32-bit or 64-bit, depending on what architecture you have deployed).
 
-# Upgrade Instructions
+## Upgrade Instructions
 
 You should stop as many services as possible before upgrading your system. This should include web server daemons (Apache, NGINX, etc), database servers (PostgreSQL, MySQL, etc), and any other non-critical services.
 
@@ -90,7 +90,7 @@ Enter "n" to avoid rebooting from the console. Reboot your Linode using the "Reb
 
 If you were running Ubuntu 9.04 previously and have gone through this guide once, you're now running Ubuntu 9.10. If you were running Ubuntu 9.10, you're now running Ubuntu 10.04, and will need to repeat this process to finish upgrading to Ubuntu 10.10.
 
-# Fixing a Broken System
+## Fixing a Broken System
 
 If you've already attempted to upgrade but your Linode is failing to boot properly, you'll need to start by creating a [Finnix rescue profile](/docs/troubleshooting/finnix-rescue-mode). In that profile, set your Ubuntu disk to attach to `xvda`. Boot into Finnix and issue the following command to open your Linode's `fstab` file for editing:
 

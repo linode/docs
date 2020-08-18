@@ -22,7 +22,7 @@ For the purpose of this guide, we assume that you have running and functional se
 
 Beyond the basics, Piwik requires a functioning LAMP stack. You can install the LAMP software with the [Ubuntu 9.10 LAMP guide](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/). Make sure you follow the steps for installing PHP and PHP-MySQL support. You will also want to be logged in over SSH as root.
 
-# Prerequisites
+## Prerequisites
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -33,7 +33,7 @@ Piwik requires a few additional dependencies beyond LAMP fundamentals. Most impo
 
     apt-get install php5-gd unzip wget
 
-### Configure PHP Memory Settings
+#### Configure PHP Memory Settings
 
 By default, PHP's `memory_limit` value is set to 64 megabytes. For "medium to high traffic" sites, Piwik's creators recommend setting this value to 128 megabytes. If you choose to follow this recommendation edit the `php.ini` file so `memory_limit` setting is as follows:
 
@@ -43,13 +43,13 @@ memory_limit = 128M
 {{< /file >}}
 
 
-### Restart the Web Server
+#### Restart the Web Server
 
 You'll need to restart Apache after installing php5-gd and modifying the PHP settings. You can do this by issuing the following command:
 
     /etc/init.d/apache2 restart
 
-# Configure a Dedicated Virtual Host for Piwik
+## Configure a Dedicated Virtual Host for Piwik
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
@@ -82,7 +82,7 @@ Enable the virtual host and reload the web server's configuration with the follo
 
 Remember that the configuration of a special virtual host for Piwik is optional. If you use a web server other than Apache, you will need to pursue different steps to configure the virtual host.
 
-# Installing Piwik
+## Installing Piwik
 
 First we'll download the latest distribution of the Piwik package. Issue the following two commands:
 

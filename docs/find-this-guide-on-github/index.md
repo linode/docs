@@ -14,13 +14,13 @@ title: Deprecated Guide
 show_on_rss_feed: false
 ---
 
-# Looks like you're trying to find a deprecated guide.
+## Looks like you're trying to find a deprecated guide.
 
 We keep our deprecated guides [in our GitHub repo](https://github.com/linode/docs/tree/master/docs), but they are no longer maintained.
 
 If you followed a link here from another guide, it will show up in our logs, and we'll fix it soon.
 
-## Contribute a Fix or Update
+### Contribute a Fix or Update
 
 If you're using an older guide to work on something new, consider documenting the process and submitting it to our library. If we accept it, we'll pay you for your work.
 

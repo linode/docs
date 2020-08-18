@@ -18,7 +18,7 @@ title: Use MySQL Relational Databases on Fedora 14
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Fedora 14 Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
-# System Configuration
+## System Configuration
 
 Make sure your `/etc/hosts` file has proper entries, similar to the ones shown below. Replace "12.34.56.78" with your Linode's public address, "servername" with your short hostname, and "mydomain.com" with your system's domain name.
 
@@ -34,7 +34,7 @@ Set your system's hostname by issuing the following commands. Replace "servernam
     echo "HOSTNAME=servername" >> /etc/sysconfig/network
     hostname "servername"
 
-# Install MySQL
+## Install MySQL
 
 Issue the following commands to update your system and install MySQL:
 
@@ -46,7 +46,7 @@ The MySQL server package will be installed on your server, along with dependenci
 
     service mysqld start
 
-# Configure MySQL
+## Configure MySQL
 
 After installing MySQL, it's recommended that you run `mysql_secure_installation`, a program that helps secure MySQL. While running `mysql_secure_installation`, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. If you are prompted to reload the privilege tables, select yes. Run the following command to execute the program:
 
@@ -86,7 +86,7 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secur
 
 Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
-# Use MySQL
+## Use MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client program. To get started, issue the following command at your prompt:
 
@@ -155,7 +155,7 @@ Now let's log back into the MySQL client as `testuser` and create a sample table
 
 This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. Of course, you'd probably want to store much more information than this for a customer, but it's a good example of a common case nonetheless.
 
-# How to Reset MySQL's Root Password
+## How to Reset MySQL's Root Password
 
 If you've forgotten your root MySQL password, you may reset it by issuing the following commands:
 
@@ -174,7 +174,7 @@ Last, restart MySQL by issuing the following command:
 
     service mysqld restart
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -23,7 +23,7 @@ external_resources:
 
 ![Introduction to Vim Customization](Vim_Customization.jpg)
 
-## What Is Vim?
+### What Is Vim?
 
 Vim is one of a handful of text editors ubiquitous in nearly all Unix systems. While an initial learning curve is unavoidable, Vim aims to be a hyperefficient text editor and provides an extensive plug-in system which can be configured to user preferences. It also supports  hundreds of programming languages and file extensions.
 
@@ -31,17 +31,17 @@ This guide details the configuration of the Vim text editor and aims at those wh
 
 Upon the completion of this tutorial, you will have fine-tuned your Vim editor to behave more intelligently, as well as acquired exposure to managing external plug-ins.
 
-## Before You Begin
+### Before You Begin
 
 1.  A basic understanding of how to work within the Vim environment is necessary to complete this tutorial. Readers should be familiar with the steps for editing documents with Vim.
 
 2.  Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server#add-a-limited-user-account) guide.
 
-# Customize Your Vim Instance
+## Customize Your Vim Instance
 
 It is possible to customize Vim on a per-user basis or set configurations to apply system-wide. Integrating both options is also possible - and useful in situations where you would like some settings to apply to all accounts on the system, and other settings to apply to your own user account exclusively.
 
-## Customize the Global *vimrc* File
+### Customize the Global *vimrc* File
 
 The configurations in this section will apply system-wide across all user accounts.
 
@@ -66,11 +66,11 @@ set mouse=a› › " Enable mouse usage (all modes)
 {{< /file >}}
 
 
-## Customize the Local *.vimrc* File
+### Customize the Local *.vimrc* File
 
 The configurations in this section will apply only to the active user account.
 
-### Create **.vimrc**
+#### Create **.vimrc**
 
 1.  During Vim's loading sequence, it will automatically check the current user's home directory for a *.vimrc* file. All settings specified in this file will override explicitly contradicted settings in any previously loaded config files, which in this case is the global *vimrc* file.
 
@@ -162,11 +162,11 @@ autocmd BufWinEnter *.* silent loadview"
 {{< /file >}}
 
 
-## Integrate Plug-Ins
+### Integrate Plug-Ins
 
 Plug-ins are a powerful way to customize your Vim instance; they can grant you additional capabilities which can help address more specific usage needs.
 
-### Install the Vim-Plug Plug-In Manager
+#### Install the Vim-Plug Plug-In Manager
 
 The most effective way to install and manage plug-ins requires the use of a plug-in management tool. Instructions for installing Vim-Plug are provided below.
 
@@ -188,7 +188,7 @@ The most effective way to install and manage plug-ins requires the use of a plug
 
         sudo curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-### Install Your First Plug-In With Vim-Plug
+#### Install Your First Plug-In With Vim-Plug
 
 Using a plug-in manager automates both the installation and setup of any plug-ins you choose to add.
 
@@ -249,7 +249,7 @@ If after this step you receive an error similar to `E117 Unknown Function: plug#
 
 4. The commands listed above are by no means exhaustive. Most plug-ins also offer support documentation when installed, which can be accessed by typing `help` in command mode and browsing the *Local Additions* section.
 
-## Where To Go From Here
+### Where To Go From Here
 
 Many additional plug-ins and tools exist to enhance your Vim experience. The Vim official website and online wiki offer additional ways to customize Vim as well as fully documenting its available features and commands. If a visual and interactive approach to creating your .vimrc file is desired, the Vim-Config website simplifies the process and auto generates the file.
 

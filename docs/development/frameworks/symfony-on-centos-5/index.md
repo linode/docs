@@ -19,7 +19,7 @@ Symfony is a PHP web application framework, providing the classes and tools requ
 
 Before installing Symfony, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
-# Basic System Configuration
+## Basic System Configuration
 
 First, update all of the base packages:
 
@@ -41,7 +41,7 @@ exclude=php\*5.3\*
 
 This will ensure that no PHP 5.3 packages will be installed, as Symfony does not use any features of PHP 5.3.
 
-# Install Required Packages
+## Install Required Packages
 
 Install the Apache web server with devel package:
 
@@ -100,7 +100,7 @@ Download the Symfony system configuration check file and run it:
 
 You should get "OK" for all the tests.
 
-# Create Your First Symfony Project
+## Create Your First Symfony Project
 
 Create a project folder under `/home`. We will use sfproject as our project name:
 
@@ -167,7 +167,7 @@ Restart the web server:
 
 Using your browser, browse to your Linode's IP address. You should now see the Symfony Project Created page. From now on, you can easily follow the [official Symfony tutorial](http://www.symfony-project.org/jobeet/1_4/Doctrine/en/).
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

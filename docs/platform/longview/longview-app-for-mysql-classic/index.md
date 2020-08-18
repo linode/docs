@@ -15,14 +15,14 @@ hiddenguide: true
 
 Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.
 
-## Installing
+### Installing
 
 Prerequisites:
 
 -   Install and start [MySQL](/docs/databases/mysql/)
 -   Install the [Longview client](/docs/platform/longview/longview/#installing-the-client)
 
-### Debian and Ubuntu Automatic Configuration
+#### Debian and Ubuntu Automatic Configuration
 
 If MySQL is installed and running when you install the Longview client, the MySQL App should enable and configure itself automatically.
 
@@ -48,7 +48,7 @@ If you receive a failure message or the popup shown below, you should visit the 
 
 [![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](1459-longview_mysql_popup_crop.png)](1459-longview_mysql_popup_crop.png)
 
-### Manual Configuration (All Distributions)
+#### Manual Configuration (All Distributions)
 
 {{< note >}}
 You cannot configure the location of a socket for the Longview client.
@@ -80,7 +80,7 @@ password ***************
 
 You should now be able to see Longview data for MySQL. If that's not the case, proceed to the [Troubleshooting](#troubleshooting) section at the end of this article.
 
-## Viewing Statistics
+### Viewing Statistics
 
 To see the output for the Longview MySQL App:
 
@@ -96,55 +96,55 @@ You'll see the current version of MySQL listed on the upper right.
 
 Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/longview/#longview-s-data-explained). The next sections cover the Longview MySQL App in detail.
 
-### Queries
+#### Queries
 
 The **Queries** graph shows the total number of select, update, insert, and delete queries MySQL handled at the selected time.
 
-### Throughput
+#### Throughput
 
 The **Throughput** graph shows the amount of data that MySQL sent and received at the time selected.
 
-### Connections
+#### Connections
 
 The **Connections** graph shows all of the MySQL connections at the selected time.
 
-### Slow Queries
+#### Slow Queries
 
 The **Slow Queries** graph shows the number of slow MySQL queries at the selected time.
 
-### Aborted
+#### Aborted
 
 The **Aborted** graph shows the number of aborted MySQL connections and clients at the selected time.
 
-### Max Connections
+#### Max Connections
 
 Longview displays the maximum number of MySQL connections.
 
-### Queries in Cache
+#### Queries in Cache
 
 Longview shows the current number of queries in MySQL's cache.
 
-### CPU
+#### CPU
 
 The **CPU** graph shows the percentage of your Linode's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/platform/longview/longview/#overview).
 
-### Memory
+#### Memory
 
 The **Memory** graph shows the amount of RAM being used by MySQL at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/platform/longview/longview/#overview).
 
-### Disk IO
+#### Disk IO
 
 The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/platform/longview/longview/#disks).
 
-### Process Count
+#### Process Count
 
 The **Process Count** graph shows the total number of processes on your Linode spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/platform/longview/longview/#process-explorer).
 
-# Troubleshooting
+## Troubleshooting
 
 If you don't see Longview data for MySQL, you'll instead get an error on the page and instructions on how to fix it. As a general tip, you can check the `/var/log/linode/longview.log` file for errors as well.
 
-### Unable to Automatically Configure MySQL Popup
+#### Unable to Automatically Configure MySQL Popup
 
 If you run the [automatic Longview configuration tool](#debian-and-ubuntu-automatic-configuration), and get the popup message shown below:
 
@@ -159,7 +159,7 @@ Refresh the Longview MySQL tab in the Linode Manager to verify that it's working
 
 If you've added the credentials to MySQL and it still doesn't work, double-check your MySQL installation, and then do a [manual configuration](#manual-configuration-all-distributions).
 
-### Unable to Connect to the Database, No Credentials Found
+#### Unable to Connect to the Database, No Credentials Found
 
 -   You may receive this error:
 
@@ -177,14 +177,14 @@ Unable to connect to the database: Authentication plugin 'sha256_password' canno
 
     If this is the case, follow the above instructions for [manual configuration](#manual-configuration-all-distributions).
 
-### Unable to Connect to the Database
+#### Unable to Connect to the Database
 
 This error will state `Unable to connect to the database:` and then a specific reason. This type of error could occur if the password isn't correct, for example. The list of errors that could cause this issue is pretty long, so you may want to reference the [MySQL documentation](http://dev.mysql.com/doc/refman/5.5/en/error-messages-client.html) if you need help understanding a specific error message.
 
-### Unable to Collect MySQL Status Information
+#### Unable to Collect MySQL Status Information
 
 If you receive the error `Unable to collect MySQL status information`, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode [support](/docs/platform/billing-and-support/support/).
 
-### MySQL Tab is Missing
+#### MySQL Tab is Missing
 
 If the Longview MySQL tab is missing entirely, this indicates that MySQL is either not installed, or has stopped. If you restart MySQL, you will be able to see the tab again and view all of your old data.

@@ -20,7 +20,7 @@ The eGroupware suite provides a group of server-based applications that offer co
 
 Before installing eGroupware, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Additionally, you will need install a [LAMP stack](/docs/web-servers/lamp/lamp-server-on-fedora-13/) as a prerequisite for installing eGroupware.
 
-# Install eGroupware
+## Install eGroupware
 
 In this guide, you will be installing eGroupware from the packages provided by the eGroupware project and built by the OpenSUSE build service for Fedora 13. Begin the installation by issuing the following commands to initialize the eGroupware repositories:
 
@@ -36,7 +36,7 @@ Now you can issue the following command to install the eGroupware package:
 
 Congratulations, you've now installed eGroupware!
 
-# Configure Access to eGroupware
+## Configure Access to eGroupware
 
 The configuration options for eGroupware are located in the file `/etc/httpd/conf.d/egroupware`. Add the following line to your virtual hosting configuration:
 
@@ -48,7 +48,7 @@ Alias /egroupware /usr/share/egroupware
 
 When inserted into the virtual hosting configuration for `example.com`, accessing the URL `http://example.com/egroupware/` will allow you to access your eGroupware site. If you do not have virtual hosting configured, eGroupware will be accessible at `/egroupware` of the default Apache host.
 
-# Configure eGroupware
+## Configure eGroupware
 
 Before you begin the configuration of eGroupware, you need to ensure that a number of directories exist for use by eGroupware. Issue the following sequence of commands:
 
@@ -63,7 +63,7 @@ Visit `http://example.com/egroupware/setup/` in your web browser to begin the se
 
 When all applications have been installed, you will be provided with a number of options that you can use to fine-tune the operations and behavior of your eGroupware instance. If you wish to use eGroupware to help manage email, you will need to have a running email system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

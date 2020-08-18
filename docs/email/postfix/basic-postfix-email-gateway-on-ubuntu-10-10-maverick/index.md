@@ -18,7 +18,7 @@ Postfix is an efficient, stable, and modern Mail Transfer Agent, or "MTA", used 
 
 Prior to beginning this document to install a basic Postfix email gateway, it is assumed that you have completed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -27,7 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Installing Postfix
+## Installing Postfix
 
 Before we begin to install the basic email gateway, issue the following commands to ensure that your system is up to date and that the latest version of the package repository has been installed:
 
@@ -48,7 +48,7 @@ The next prompt will ask for the system mail name. This should correspond to the
 
 When the installation process completes proceed with the configuration of Postfix.
 
-# Fundamental Postfix Configuration
+## Fundamental Postfix Configuration
 
 Begin by editing the `/etc/postfix/main.cf` file. Most of the default values should be correct. Modify the `myhostname` value to correspond to the fully qualified domain name (FQDN) for your server, in this case `lollipop.example.com`:
 
@@ -77,9 +77,9 @@ In the future, if you want to stop, start, or restart Postfix, issue the correct
     /etc/init.d/postfix start
     /etc/init.d/postfix restart
 
-# Email Virtual Hosting
+## Email Virtual Hosting
 
-### Configure Mail Delivery
+#### Configure Mail Delivery
 
 Once Postfix is properly configured, edit the `/etc/postfix/virtual` file to configure virtual hosting for your mail gateway. This provides instructions for the mail agent with regards to processing email that it receives. Prior to beginning, ensure that you have properly configured DNS to direct email to your mail gateway. Create an "A Record" for the machine specific domain name that corresponds to your `myhostname` FQDN (e.g. `lollipop.example.com`). Then, ensure that there are MX records for *all* domains that you want to process with this mail gateway pointed to that FQDN. Consider the following example `/etc/postfix/virtual` file:
 
@@ -115,7 +115,7 @@ This will compile a database located at `/etc/postfix/virtual.db`. Every time th
 
 Reload the server after compiling a new `virtual.db` every time. Mail will now be delivered in accordance with the specification in the `/etc/postfix/virtual` file.
 
-### Create Mail Directories
+#### Create Mail Directories
 
 Issue the following command to ensure that newly created user accounts have a `~/mail` directory:
 
@@ -125,7 +125,7 @@ Every existing user that receives email will also need to make their own `Maildi
 
     mkdir ~/mail/
 
-# Sending Email Securely
+## Sending Email Securely
 
 Typically, authentication for sending email is handled by the daemon that's configured to handle email downloading like Courier or Dovecot. Rather than configure another daemon or deploy a potentially convoluted and difficult to administer authentication system, this guide uses the OpenSSH package that is installed and active on Linodes by default.
 
@@ -161,7 +161,7 @@ $remote_ip   = "127.0.0.1";
 $local_ip    = "127.0.0.1";
 $local_port  = "25";
 
-## You do not need to edit this file beyond this point.
+### You do not need to edit this file beyond this point.
 
 ######################################################################
 
@@ -229,7 +229,7 @@ port 2525
 
 Depending on the location of the `msmtp` binary, you can now send mail using `/usr/bin/msmtp` as your send mail interface. To send mail from the `alternate` account, specify the sendmail interface as `/usr/bin/msmtp --account=alternate`. You can now send mail using your mail gateway using an SSH tunnel.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

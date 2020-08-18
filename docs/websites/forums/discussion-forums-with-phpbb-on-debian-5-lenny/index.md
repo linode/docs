@@ -20,7 +20,7 @@ phpBB is one of the most widely used open source forum solutions. It is easy to 
 
 For this guide, we'll assume you've already followed the [getting started](/docs/getting-started/) guide and have a working [LAMP stack](/docs/lamp-guides/debian-5-lenny/) on your Linode. You should be connected to your server via SSH and logged in as root.
 
-# Downloading and Unpacking
+## Downloading and Unpacking
 
 We'll begin by downloading the latest release of phpBB. As of this writing, the latest stable release of phpBB is version 3.0.7-PL1. You can find the download for the latest link by visiting the [phpBB downloads](http://www.phpbb.com/downloads/) section of the phpBB website.
 
@@ -60,7 +60,7 @@ We'll also need to set the following permissions on these files and folders:
 
 Now, visit the `phpBB3` directory in your browser: In the above example, that would be `http://example.com/phpBB3/`. At this point, you will be guided through the rest of the configuration by phpBB's web-based installer.
 
-# Configure phpBB
+## Configure phpBB
 
 Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/lamp-guides/debian-5-lenny/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
 
@@ -76,7 +76,7 @@ Now you should be on the "Advanced Settings" page. Modify these settings as you 
 
 You should now be done configuring phpBB!
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -87,7 +87,7 @@ Please monitor the phpBB security announcement posts and community forums to ens
 
 When upstream sources offer new releases, repeat the instructions for installing the phpBB software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

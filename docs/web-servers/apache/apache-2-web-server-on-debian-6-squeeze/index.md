@@ -20,7 +20,7 @@ This tutorial explains how to install and configure the Apache web server on Deb
 
 Note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 6](/docs/web-servers/lamp/lamp-server-on-debian-6-squeeze/).
 
-# Before You Begin
+## Before You Begin
 
 -   Make sure you've followed the [Getting Started](/docs/getting-started/) guide.
 -   As part of the Getting Started guide, make sure you [set the hostname](/docs/getting-started/#setting-the-hostname) for your server.
@@ -34,7 +34,7 @@ The first command should show your short hostname, and the second should show yo
 
 All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/security/securing-your-server/#add-a-limited-user-account).
 
-# Install Apache 2
+## Install Apache 2
 
 1.  Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -45,7 +45,7 @@ All of the commands in this article should be executed either as **root** or as 
 
         apt-get install apache2 apache2-doc apache2-utils
 
-# Optional: Install Support for Scripting
+## Optional: Install Support for Scripting
 
 The following commands install Apache support for server-side scripting in PHP, Ruby, Python, and Perl. Support for these languages is optional based on your server environment.
 
@@ -81,7 +81,7 @@ If you want to run PHP with MySQL, then you should also install MySQL support:
 
     apt-get install php5-mysql
 
-# Configure Apache for Named-Based Virtual Hosting
+## Configure Apache for Named-Based Virtual Hosting
 
 Apache supports *name-based virtual hosting*, which allows you to host multiple domains on a single server with a single IP. (IP-based hosting is also available.) In this example, you'll create two virtually hosted sites, example.net and example.org.
 
@@ -165,7 +165,7 @@ Note that whenever you create or edit any virtual host file, you'll need to relo
 
 Congratulations! You have now installed Apache on your Debian Linode and configured it for virtual hosting.
 
-# Install Apache Modules
+## Install Apache Modules
 
 One of Apache's strengths is its ability to be customized with modules. The default installation directory for Apache modules is the `/etc/apache2/mods-available/` directory.
 
@@ -195,7 +195,7 @@ To disable a module that is currently enabled, run this command:
 
     a2dismod [module-name]
 
-# Order of Configuration Options
+## Order of Configuration Options
 
 In the default installation of Apache 2 on Debian, the main configuration file is `/etc/apache2/apache2.conf`. However, Apache loads configuration files directives from a number of other files as well, in a specific order. The configuration files are read in the following order, with *later* directives overriding earlier ones:
 
@@ -223,7 +223,7 @@ In practice, the vast majority of your configuration options should go in site-s
 
 For more help with conflicting directives, see our [Apache Troubleshooting](/docs/troubleshooting/troubleshooting-common-apache-issues/#troubleshooting-conflicting-directives) article.
 
-# Multi-Processing Module
+## Multi-Processing Module
 
 The default Apache configuration uses a tool called MPM-worker. This multi-processing module can handle a large number of requests quickly by using multiple threads per worker process. However, this use of multiple threads is not compatible with some PHP extensions. When PHP is installed, MPM-worker is replaced with MPM-prefork, which allows Apache to handle requests without threading for greater compatibility with some software. Furthermore, using MPM-prefork allows Apache to isolate requests in separate processes so that if one request fails for some reason, other requests will be unaffected.
 
@@ -254,7 +254,7 @@ For more complex setups, however, we recommend that you consider using an altern
 
         /etc/init.d/apache2 reload
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -22,7 +22,7 @@ We assume you've already followed the steps outlined in our [getting started gui
 
 **Note:** As of this writing, Zimbra is not officially supported on Ubuntu 10.04. These instructions result in a working Zimbra installation, but your support options may be limited. If you wish to use a platform that is fully supported by the Zimbra community, please follow our [Zimbra on Debian 5 (Lenny)](/docs/email/zimbra/install-zimbra-debian-5-lenny) or [Zimbra on CentOS 5](/docs/email/zimbra/install-zimbra-centos-5) guides instead.
 
-# Installing Prerequisite Packages
+## Installing Prerequisite Packages
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -35,7 +35,7 @@ Issue the following commands to install several packages required by Zimbra:
 
 Depending on the requirements for the current version of Zimbra, you may need to install additional packages later. The install program will notify you if there additional packages are required.
 
-# System Files Prerequisites
+## System Files Prerequisites
 
 Before proceeding, make sure your `/etc/hosts` file has valid entries. For reference, your file should resemble the following:
 
@@ -58,7 +58,7 @@ Issue the following commands to check your setup:
 
 The first command should return only the one-word hostname for your system, while the second command should return the system's FQDN.
 
-# Installing Zimbra
+## Installing Zimbra
 
 Visit the download page for [Zimbra Open Source Edition](http://www.zimbra.com/community/downloads.html) and copy the link to the current version of the software for Debian 5 (Lenny) to your clipboard. Issue the following commands on your Linode via the shell to download and unpack the install package. Replace the filenames shown below after `wget` and `tar` with the current version. Please note that the version you download (32 or 64-bit) must match your Linode's architecture.
 
@@ -190,7 +190,7 @@ You can configure various options here; but, the most important option is the on
 
 After installation has completed, you may wish to reboot your Linode to make sure everything comes back up properly. After doing so, visit the Zimbra admin URL in your browser. It will be in the form `https://hostname.example.com:7071/`. You'll need to accept the SSL certificate presented to access the admin panel, which you may then use to continue configuring your new Zimbra server. Enjoy!
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -198,7 +198,7 @@ Please monitor the [Zimbra Updates](http://www.zimbra.com/alerts/) page to ensur
 
 When upstream sources offer new releases, repeat the instructions for installing Zimbra and recompile your software when needed. These practices are crucial for the ongoing security and functioning of your system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

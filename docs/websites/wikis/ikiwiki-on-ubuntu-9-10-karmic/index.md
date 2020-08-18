@@ -20,7 +20,7 @@ Unlike some other popular wiki engines, Ikiwiki compiles static HTML pages which
 
 This guide is written for Ubuntu 9.10 (Karmic), and assumes that you've followed our [getting started guide](/docs/getting-started/) and have a running and updated system. Additionally, it is assume that you have a functioning [Apache web server](/docs/web-servers/apache/apache-2-web-server-on-ubuntu-9-10-karmic/) and a working installation of [git](/docs/development/version-control/how-to-configure-git/).
 
-# Installing Ikiwiki
+## Installing Ikiwiki
 
 Before installing Ikiwiki, we must enable the `universe` repository. To enable `universe`, modify your `/etc/apt/sources.list` file to mirror the example file below. You'll need to uncomment the universe lines:
 
@@ -55,7 +55,7 @@ We're ready to install Ikiwiki and its dependencies using the following command:
 
 Now that you have Ikiwiki installed, we can move on to configuring it for use.
 
-# Automatic Ikiwiki Configuration
+## Automatic Ikiwiki Configuration
 
 From the command line, you can issue the following command to generate a basic config file using Ikiwiki's auto-setup script.
 
@@ -75,7 +75,7 @@ In this example, `example` is the machine's hostname, `username` is the admin us
 
 While the auto-setup script is great for getting up and running in a matter of moments, you are encouraged to examine and edit the config file `~/wiki.setup` as needed. If the automatic wiki setup is not ideal for your use case, we recommend manual configuration.
 
-# Manual Ikiwiki Configuration
+## Manual Ikiwiki Configuration
 
 To help you begin a manual configuration, we've included a full-featured [Ikiwiki configuration file](/docs/assets/655-ikiwiki.setup) for you to review and edit. This provides configuration options for common plugins and some additional comments. Issue the following commands to fetch this file:
 
@@ -131,7 +131,7 @@ In this example, `username` is the username, `colab.example.com` is the name of 
 
 If Ikiwiki is configured correctly, when you do a `git push` to the remote repository a "`post-update` hook" will trigger Ikiwiki to refresh the wiki with the content contained in your commit.
 
-# Advanced Ikiwiki Setup
+## Advanced Ikiwiki Setup
 
 While all of the content of an Ikiwiki is stored under version control, the templates and configuration files are stored outside of the source directory. If you want to use git to store these files and track the versions of your configuration we recommend making an "admin" repository located in the `~/wiki-admin` directory. This should reside next to the `~/wiki/` repository/directory where the wiki's source directory is located. To create the directory and initialize the repository, issue the following commands:
 
@@ -180,7 +180,7 @@ In this example, `username` is the username, `colab.example.com` is the name of 
 
 The `wiki-admin` repository is totally optional, however it will simplify backup and mirroring down the road and allow you to version the templates. If you think any of these features will be helpful in your use case, we encourage you to consider storing your files in this manner.
 
-# Using Ikiwiki
+## Using Ikiwiki
 
 Once installed, using Ikiwiki itself is fairly straightforward. You can push content to the bare repository, and Ikiwiki will incrementally update the pages changed in that commit. You can also choose to update pages via the web-based interface. As a result, you may find that you don't actually need to interact with the `ikiwiki` program very much.
 
@@ -192,7 +192,7 @@ In this command, `~/wiki-admin/ikiwiki.setup` represents the path to your setup 
 
 You may find yourself wondering why there are so many git repositories for a single wiki. The setup with a remote "bare" repository allows Ikiwiki to avoid a situation where you might "push" content to a non-bare repository, which would cause the "working copy" of the "source directory" repository to get out of sync with the sequence of commits in the git database. In short, **never push to a non-bare git repository**.
 
-# Notes for Using Gitosis with Ikiwiki
+## Notes for Using Gitosis with Ikiwiki
 
 If you're using `gitosis` to manage the git repositories as described in the [introduction to Git](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) guide, there are a couple of configuration options for Ikiwiki that you'll need to keep in mind as you're setting things up. As `gitosis` needs to "own" the git repositories it manages, the `gitosis` user ends up executing `post-update` hook and wrappers, and as a result many Ikiwiki files need to be owned by the `gitosis` user. This should not present a concern as Ikiwiki's scripts are designed to be run securely by untrusted users. This means running `ikiwiki.cgi` as mode "6755". See the example [Ikiwiki configuration file](/docs/assets/655-ikiwiki.setup) for details on how to configure this.
 
@@ -218,7 +218,7 @@ If you need to drop into a prompt as the `gitosis` user for more complicated ope
 
 Beyond these basic considerations, using Ikiwiki with gitosis is no different than using Ikiwiki with more conventionally managed repositories.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

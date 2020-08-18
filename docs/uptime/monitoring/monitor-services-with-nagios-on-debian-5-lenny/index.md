@@ -18,7 +18,7 @@ Nagios is an open source monitoring tool that monitors services within a server 
 
 Before continuing with this guide, you will need to make sure that you have set your hostname by following the steps outlined in the [getting started guide](/docs/getting-started/). Additionally, you will also need to have a functioning [LAMP stack](/docs/lamp-guides/debian-5-lenny) in order to use Nagios.
 
-# Prepare for Nagios Installation
+## Prepare for Nagios Installation
 
 Issue the following commands to update your system's package repositories and installed packages as well as install dependencies for Nagios:
 
@@ -33,9 +33,9 @@ You will also need to create a new system user account to run Nagios under. Issu
     usermod -G nagcmd nagios
     usermod -a -G nagcmd www-data
 
-# Install Nagios
+## Install Nagios
 
-### Download Nagios Software
+#### Download Nagios Software
 
 Begin by downloading the latest version of the Nagios Core package. At the time of writing the latest version of Nagios is 3.2.3, but be sure that you are downloading the latest version by checking the [Nagios download page](http://www.nagios.org/download/core/thanks/). Issue the following commands:
 
@@ -47,7 +47,7 @@ Next, download the official plugin package for Nagios. At the time of writing th
     cd /opt/
     wget http://prdownloads.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.15.tar.gz
 
-### Build and Install Nagios Core
+#### Build and Install Nagios Core
 
 Issue the following commands to extract, compile, and install the Nagios Core:
 
@@ -60,7 +60,7 @@ Issue the following commands to extract, compile, and install the Nagios Core:
     make install-config
     make install-commandmode
 
-### Configure Nagios Core
+#### Configure Nagios Core
 
 Begin by editing the `/usr/local/nagios/etc/objects/contacts.cfg` file's email field according to the example below:
 
@@ -88,7 +88,7 @@ In order for your configuration changes to be applied, you will need to reload t
 
     /etc/init.d/apache2 reload
 
-### Build and install Nagios Plugins
+#### Build and install Nagios Plugins
 
 To install and configure the Nagios plugins, issue the following commands:
 
@@ -101,7 +101,7 @@ To install and configure the Nagios plugins, issue the following commands:
 
 You're now ready to run Nagios for the first time and continue with the configuration process!
 
-# Running Nagios
+## Running Nagios
 
 Issue the following commands to ensure that Nagios is started when your system boots:
 
@@ -120,11 +120,11 @@ You may now access the web based administration and reporting tools by visiting 
 
 **Please note:** The above example does not use SSL and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
-# Configure Nagios Alerts
+## Configure Nagios Alerts
 
 A great deal of the power of Nagios is its ability to send notifications and alerts regarding the status of services and devices. While most of this fine-grained configuration is beyond the scope of this document, we have outlined some basic notifications below.
 
-### Installing Prerequisites to send Mail Alerts
+#### Installing Prerequisites to send Mail Alerts
 
 Before Nagios can send alerts by email, basic mail services need to be installed. Issue the following command:
 
@@ -151,7 +151,7 @@ In order for these changes to take effect, you will need to restart Nagios:
 
     /etc/init.d/nagios restart
 
-### Configuring Basic IRC Notifications
+#### Configuring Basic IRC Notifications
 
 You can also configure Nagios to send notifications to an IRC channel through a bot. Issue the following commands to download, extract, and build the IRC bot:
 
@@ -174,7 +174,7 @@ In this example, "-f /usr/local/nagios/var/status.dat" tells the bot where to ge
 
 Nagios contains numerous features that are beyond the scope of this document. You are encouraged to explore the resources listed below and the administrative interface for more information regarding the setup and configuration of Nagios.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -16,13 +16,13 @@ title: Monitoring Servers with Zabbix
 
 Zabbix is an open source software application that can monitor servers, networks, and applications. You can use Zabbix with any of our plans, and it works on every Linux distribution we offer. Full hardware and software requirements can be found on the [Zabbix requirements page](http://www.zabbix.com/requirements.php).
 
-# Deciding How to Install Zabbix
+## Deciding How to Install Zabbix
 
 There are two ways to install Zabbix. You can compile and install Zabbix from source, or you can install Zabbix packages, if your distribution supports it.
 
 Installing the packages is faster and makes things easier to maintain, but the installed version might be older than what's available on the Zabbix website. Compiling and installing from source is a longer process, but it works on every distribution, and you'll get the latest version of Zabbix.
 
-### Installing Packages
+#### Installing Packages
 
 If you're running Ubuntu or Debian and would like to install the Zabbix packages, follow these instructions:
 
@@ -48,15 +48,15 @@ Zabbix is now installed and running on your Linode.
 If you install the Zabbix packages, you do not need to follow the rest of the instructions in this guide.
 {{< /note >}}
 
-### Compiling and Installing from Source
+#### Compiling and Installing from Source
 
 If you decide not install the Zabbix packages, or your distribution does not support it, use the instructions in the rest of this guide to compile and install Zabbix from source.
 
-# Prerequisites
+## Prerequisites
 
 You'll need to install some software before you actually install Zabbix itself. It requires a database backend, and in this example we'll use MySQL, but you can also use PostgreSQL, SQLite, Oracle, or IBM DB2. Other mandatory requirements are a C compiler and GNU Make. Optionally, you can also include NET-SNMP for SNMP support, lksemel to enable Jabber messaging, and/or Libcurl to enable the WEB monitoring module.
 
-### Adding a New User
+#### Adding a New User
 
 You'll also want to create a new user to run Zabbix. Here's how:
 
@@ -74,7 +74,7 @@ You'll also want to create a new user to run Zabbix. Here's how:
 
 You have successfully added the `zabbix` user.
 
-### Configuring MySQL
+#### Configuring MySQL
 
 You'll first want to install MySQL on your Linode and create a MySQL user for Zabbix. Here's how:
 
@@ -98,7 +98,7 @@ You'll first want to install MySQL on your Linode and create a MySQL user for Za
 
 You have configured MySQL for Zabbix.
 
-### Installing Apache and PHP
+#### Installing Apache and PHP
 
 Zabbix requires Apache and PHP to be installed. Here's how to install them:
 
@@ -118,7 +118,7 @@ Zabbix requires Apache and PHP to be installed. Here's how to install them:
 
 The required applications, modules, and libraries have been installed on your Linode.
 
-### Configuring PHP
+#### Configuring PHP
 
 Now you'll want to make some adjustments to your `php.ini` file for Zabbix. Here's how:
 
@@ -149,7 +149,7 @@ You can [use this webpage](http://php.net/manual/en/timezones.php) to find the c
 
 PHP is now configured for Zabbix.
 
-### Installing a Compiler
+#### Installing a Compiler
 
 You'll need a C compiler and `make` to install Zabbix. If your Linode is running **Ubuntu or Debian**, use these instructions:
 
@@ -163,11 +163,11 @@ You'll need a C compiler and `make` to install Zabbix. If your Linode is running
 
 You have installed the C compiler and `make` on your Linode.
 
-# Zabbix Server
+## Zabbix Server
 
 Now that all of the Zabbix prerequisites are ready, we can start installing.
 
-### Downloading and Unpacking
+#### Downloading and Unpacking
 
 Let's start by downloading and unpacking Zabbix. Here's how:
 
@@ -181,7 +181,7 @@ Let's start by downloading and unpacking Zabbix. Here's how:
 
 You have successfully downloaded and unpacked Zabbix.
 
-### Configuring MySQL
+#### Configuring MySQL
 
 Populate your Xabbix database by entering the following commands, one by one. Replace `Password` with the Zabbix MySQL user password:
 
@@ -191,7 +191,7 @@ Populate your Xabbix database by entering the following commands, one by one. Re
 
 You have successfully configured MySQL for Zabbix server.
 
-### Compiling and Installing
+#### Compiling and Installing
 
 Now we're ready to compile and install Zabbix server. Here's how:
 
@@ -217,7 +217,7 @@ Now we're ready to compile and install Zabbix server. Here's how:
 
 You have successfully compiled and installed Zabbix.
 
-### Creating the Configuration and Log File
+#### Creating the Configuration and Log File
 
 Now you'll need to create a configuration file for the Zabbix server in your /etc/zabbix directory. Here's how:
 
@@ -260,7 +260,7 @@ A full list of configuration parameters for `zabbix_server.conf` are [available 
 
 You have successfully created the configuration file.
 
-### Setting Zabbix to Start Automatically at Boot
+#### Setting Zabbix to Start Automatically at Boot
 
 To ensure that Zabbix starts every time you reboot your Linode, you'll need to copy the Zabbix `init.d` scripts to the appropriate directory and set the correct permissions. Here's how:
 
@@ -281,7 +281,7 @@ To ensure that Zabbix starts every time you reboot your Linode, you'll need to c
 
 Now the Zabbix server and agent will automatically start every time you boot your Linode.
 
-### Starting Zabbix
+#### Starting Zabbix
 
 Now you can start the Zabbix server and agent by entering the following commands, one by one:
 
@@ -292,11 +292,11 @@ Zabbix is now running on your Linode! To verify, enter the following command:
 
     ps -aux | grep zabbix
 
-# Zabbix Agent
+## Zabbix Agent
 
 The Zabbix Agent (`zabbix_agentd`) is placed on the client servers you want to monitor.
 
-### Creating a New User
+#### Creating a New User
 
 First, you'll want to create a `zabbix user` on the client system. Enter the following command to create the user:
 
@@ -304,7 +304,7 @@ First, you'll want to create a `zabbix user` on the client system. Enter the fol
 
 The user has been created.
 
-### Installing and Configuring
+#### Installing and Configuring
 
 Now you'll want to create directories for the Zabbix files on your client server. You'll also need to copy some files to the new directories. Here's how to do it:
 
@@ -360,7 +360,7 @@ A full listing of supported parameters, as well as their default values, is avai
 
 You have successfully installed and configured the agent.
 
-### Starting the Agent
+#### Starting the Agent
 
 Once you have your files copied and the configuration file in place, start the agent by entering the following command:
 
@@ -368,11 +368,11 @@ Once you have your files copied and the configuration file in place, start the a
 
 The agent is now running.
 
-# Zabbix Web Interface
+## Zabbix Web Interface
 
 Zabbix also has a front-end component that you'll want to install. These instructions show you how.
 
-### Copying Files
+#### Copying Files
 
 The Zabbix frontend is written in PHP. You'll want to copy the front-end files to your web server's public directory. Here's how to create a subdirectory and copy the Zabbix front-end files to it:
 
@@ -398,7 +398,7 @@ We assume that you followed the Hosting a Website guide. If you're using a diffe
 
 You have successfully copied the files.
 
-### Completing the Installation
+#### Completing the Installation
 
 You'll need to complete the installation of the Zabbix web interface with your web browser. Here's how:
 
@@ -434,7 +434,7 @@ You'll need to complete the installation of the Zabbix web interface with your w
 
 After you've finished the front-end installation, you'll be forwarded to the Zabbix login page. The default username is `Admin`, the default password is `zabbix`.
 
-# Monitoring a Host
+## Monitoring a Host
 
 Now you have the Zabbix server and web admin installed, and you just set up the `zabbix_agentd` on your first monitored host. Now you can add that host to your web admin so you can actually monitor it. Here's how:
 
@@ -454,7 +454,7 @@ Now you have the Zabbix server and web admin installed, and you just set up the 
 
 You have successfully added the monitored host.
 
-### Using Graphs
+#### Using Graphs
 
 If you would like the base graphs for your new monitored host, you can copy those from the Zabbix server. Here's how:
 
@@ -466,7 +466,7 @@ If you would like the base graphs for your new monitored host, you can copy thos
 
 Note that the [Zabbix manual](http://www.zabbix.com/documentation/2.0) has complete documentation on setting up the various actions and operations Zabbix can perform.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
