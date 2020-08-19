@@ -985,6 +985,7 @@ novaclient
 novell
 npm
 npmjs
+npx
 nrcpt
 ns1
 ns2
@@ -997,6 +998,7 @@ nullval
 num
 numpy
 nvim
+nvm
 octopress
 odoo
 oftc
