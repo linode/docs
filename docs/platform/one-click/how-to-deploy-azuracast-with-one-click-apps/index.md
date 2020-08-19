@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy AzuraCast on Linode using One-Click Apps.'
 og_description: 'Deploy AzuraCast on Linode using One-Click Apps.'
-keywords: ['shadowsocks','one-click', 'server']
+keywords: ['azuracast','one-click', 'server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-19
 modified: 2020-08-19
