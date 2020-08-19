@@ -22,6 +22,8 @@ alef
 alexey
 alives
 allmasquerade
+allowlist
+allowlisting
 alphanumerics
 amavis
 amavisd
