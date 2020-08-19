@@ -15,9 +15,9 @@ h1_title: "Deploying AzuraCast with One-Click Apps"
 contributor:
   name: Linode
 external_resources:
-- '[About AzuraCraft](https://www.azuracast.com/about/)'
-- '[Troubleshooting AzuraCraft](https://www.azuracast.com/help/)'
-- '[AzuraCraft Github](https://github.com/azuracast/azuracast)'
+- '[About AzuraCast](https://www.azuracast.com/about/)'
+- '[Troubleshooting AzuraCast](https://www.azuracast.com/help/)'
+- '[AzuraCast Github](https://github.com/azuracast/azuracast)'
 ---
 
 ## AzuraCast One-Click App
@@ -34,27 +34,27 @@ After providing the app-specific options, provide configurations for your Linode
 
 | **Configuration** | **Description** |
 |-------------------|-----------------|
-| **Select an Image** | Select either Debian 10 or Ubuntu 20.04 LTS for your image. These are the only two images supported by the AzuraCraft One-Click App. *Required* |
+| **Select an Image** | Select either Debian 10 or Ubuntu 20.04 LTS for your image. These are the only two images supported by the AzuraCast One-Click App. *Required* |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
-| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). You can use any size Linode for your AzuraCraft App. The Linode plan that you select should be appropriate for the amount of data transfer, users, and other stress that may affect the performance of your station. You can create your station on a 1GB Linode (Nanode) or a Linode 2GB with low risk for performance hits. *Required* |
+| **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). You can use any size Linode for your AzuraCast App. The Linode plan that you select should be appropriate for the amount of data transfer, users, and other stress that may affect the performance of your station. You can create your station on a 1GB Linode (Nanode) or a Linode 2GB with low risk for performance hits. *Required* |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
 | **Root Password** | The primary administrative password for your Linode instance. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique. *Required* |
 
-When you've provided all required Linode Options, click on the **Create** button. **Your AzuraCraft app will complete installation anywhere between 1-3 minutes after your Linode has finished provisioning**.
+When you've provided all required Linode Options, click on the **Create** button. **Your AzuraCast app will complete installation anywhere between 1-3 minutes after your Linode has finished provisioning**.
 
 ## Getting Started After Deployment
 
-AzuraCraft is now installed and ready to use.
+AzuraCast is now installed and ready to use.
 
 1.  Navigate to the IP address of the Linode in your browser. You can find the IP address for your Linode on the Linode detail page in the [Cloud Manager](https://cloud.linode.com).
 
 1.  The first thing you want to do is create a *Super Administrator* account that has has system-wide permissions.
 
-!["AzuraCraft Setup Account"](azuracast-setup-account.png "AzuraCraft Setup Account")
+!["AzuraCast Setup Account"](azuracast-setup-account.png "AzuraCast Setup Account")
 
-1.  Next, AzuraCraft prompts you to create a new radio station. Fill out the required fields, then click the **Save Changes** button at the bottom of the screen to continue.
+1.  Next, AzuraCast prompts you to create a new radio station. Fill out the required fields, then click the **Save Changes** button at the bottom of the screen to continue.
 
-!["AzuraCraft Create Station"](azuracast-create-station.png "AzuraCraft Create Station")
+!["AzuraCast Create Station"](azuracast-create-station.png "AzuraCast Create Station")
 
 1.  On the next page you can set other settings including using a custom URL if you have one setup. Learn more about using a custom URL with Linode DNS in our [DNS Manager](/docs/platform/manager/dns-manager/) guide. When you are finished, click the **Save Changes** button at the bottom of the screen to continue.
 
@@ -62,7 +62,7 @@ AzuraCraft is now installed and ready to use.
 
 1.  To manage the station you just created click the **Manage** button in the **Station Overview** section. This will open the Station Dashboard for the station you created during setup.
 
-!["AzuraCraft Manage Station"](azuracast-manage-station.png "AzuraCraft Manage Station")
+!["AzuraCast Manage Station"](azuracast-manage-station.png "AzuraCast Manage Station")
 
 1.  Here you can control your station, add songs, add DJs, take requests, and more.
 
