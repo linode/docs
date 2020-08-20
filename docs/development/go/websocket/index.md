@@ -95,6 +95,9 @@ var PORT = ":1234"
 var upgrader = websocket.Upgrader{
   ReadBufferSize:  1024,
   WriteBufferSize: 1024,
+  CheckOrigin: func(r *http.Request) bool {
+		return true
+	},
 }
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
@@ -104,9 +107,6 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 
 func wsHandler(w http.ResponseWriter, r *http.Request) {
   log.Println("Connection from:", r.Host)
-  upgrader.CheckOrigin = func(r *http.Request) bool {
-    return true
-  }
 
   ws, err := upgrader.Upgrade(w, r, nil)
   if err != nil {
@@ -329,9 +329,9 @@ var SERVER = "ws://localhost:1234/"
 var PATH = ""
 var TIMESWAIT = 0
 var TIMESWAITMAX = 5
+var in = bufio.NewReader(os.Stdin)
 
 func getInput(input chan string) {
-  in := bufio.NewReader(os.Stdin)
   result, err := in.ReadString('\n')
   if err != nil {
     log.Println(err)
