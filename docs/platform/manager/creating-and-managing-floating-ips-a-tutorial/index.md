@@ -18,7 +18,7 @@ external_resources:
 - '[FRRouting Documentation](http://docs.frrouting.org/en/latest/overview.html)'
 ---
 
-This guide provides an alternative to [Linode's IP Sharing](/docs/platform/manager/remote-access/#configuring-ip-sharing). If IP sharing is not available in a Next Generation Network (NGN) [data center](https://www.linode.com/global-infrastructure/), you can install the open source tool [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) to enable *Elastic IPs* on your Linode. A Elastic IP is a static and public IP address that you can use to route network traffic between Linodes.
+This guide provides an alternative to [Linode's IP Sharing](/docs/platform/manager/remote-access/#configuring-ip-sharing). If IP sharing is not available in a Next Generation Network (NGN) [data center](https://www.linode.com/global-infrastructure/), you can install the open source tool [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) to enable *Elastic IPs* on your Linode. A Elastic IP is a static and **public IP address** that you can use to route network traffic between Linodes. For example, two Linodes can share one Elastic IP and in the case one of the Linodes becomes unavailable, the failover to a secondary Linode happens seamlessly.
 
 ## In this Guide
 
@@ -42,7 +42,7 @@ This guide will use Git as the installation method for the FRR tool. For other i
 
 1. Ensure Python 3 is installed on your system. See [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html#python-dependency-documentation-and-tests) to learn about FRR's Python dependencies.
 
-1. [Disable Network Helper](/docs/platform/network-helper/#single-per-linode) on the Elastic IP Linodes.
+1. [Disable Network Helper](/docs/platform/network-helper/#single-per-linode) on the Elastic IP Linodes and reboot them.
 
 ## Install FRR on your Linode
 
@@ -236,6 +236,7 @@ net.mpls.platform_labels=100000
         cd libyang
 
 1. Create a a new directory named `build` and move into it.
+
         mkdir build
         cd build
 
@@ -352,25 +353,33 @@ net.ipv6.conf.all.forwarding=1
 
 ## Configure Elastic IP
 
-With FRR installed on your Linode, you can now apply the required configurations to configure Elastic IP.
+With FRR installed on your Linode, you can now apply the required configurations to enable Elastic IP(s).
 
 {{< note >}}
-Prior to starting this section, ensure you have received the following information from Linode Support:
+Prior to starting this section, ensure you have received the information listed in the table from Linode Support. You need these values to configure Elastic IP on a Linode.
 
-| Information | Value to replace in `linode-config.frr` example |
+| Value to replace in `/etc/frr/frr.conf` example | Description |
 | :-------: | :-------: |
-| Neighbor IP| `$NEIGHBOR_IP` (This Linode's IP address) |
-| Data center shortname | `$DC_ID` |
-| Data center ID | `$DC_ID`|
-| This Linode's role (primary or secondary) | `$ROLE` |
+| `$NEIGHBOR_IP` | This is the Linode's IPv4 address (non-Elastic IP address), which determines the `peer-group HOST` setting. Enter the first 3 octets of the Linode's IPv4 address followed by a `1`. For example, if the Linode's IPv4 address is `192.0.2.0`, the value to enter is `192.0.2.1`.|
+| `$DC_ID` | The ID number of this data center. |
+| `$ELASTIC_IP` |  |
 
+When you configure Elastic IP you need to define the Linode's _ROLE_ within the configuration as `primary` or `secondary`.
+
+- `primary`: All requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
+- `secondary`: If the `primary` Linode fails, all requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
+
+| Information | Value to replace in `/etc/frr/frr.conf` example |
+| :-------: | :-------: |
+| This Linode's role (primary or secondary) | `$ROLE` |
 
 {{</ note >}}
 
-1. Using a text editor, create a new file to store your Linode provided FRR daemon configurations. Below is an example file. Ensure you replace any values with those sent to you by Linode support.
+1. Using a text editor, create a new file using the template below to store your Linode provided FRR daemon configurations. Ensure you replace any instances of `$NEIGHBOR_IP`, `$DC_ID`, and `$ROLE` with the values sent to you by Linode support.
 
-      {{< file "linode-frr.conf">}}
-!
+      {{< file "/etc/frr/frr.conf">}}
+hostname atl-bgp-1.kfubes.com
+
 router bgp 65$DC_ID
 coalesce-time 1000
 bgp bestpath as-path multipath-relax
@@ -378,26 +387,19 @@ neighbor HOST peer-group
 neighbor HOST remote-as external
 neighbor HOST capability extended-nexthop
 neighbor $NEIGHBOR_IP peer-group HOST
-!
 address-family ipv4 unicast
   network $ELASTIC_IP/32 route-map $ROLE
   redistribute static
 exit-address-family
-!
 route-map primary permit 10
 set large-community 65$DC_ID5:$DC_ID:1
-!
 route-map secondary permit 10
 set large-community 65$DC_ID5:13:2
-!
-line vty
-!
-end
       {{</ file >}}
 
 1. Apply the configurations using the VTYSH shell for FRR daemons.
 
-        sudo vtysh -f linode-frr.conf
+        sudo vtysh -f /etc/frr/frr.conf
 
 1. Restart the FRR service.
 
@@ -405,7 +407,7 @@ end
 
 1. Add your Elastic IP CIDR block subnet to each network interface. Replace `$ELASTIC_IP1` - `$ELASTIC_IP4` with your own IP addresses.
 
-        ip a a $ELASTIC_IP1/32 dev eth0:2
+        ip a a $ELASTIC_IP1/24 dev eth0:1
         ip a a $ELASTIC_IP2/32 dev eth0:3
         ip a a $ELASTIC_IP3/32 dev eth0:4
         ip a a $ELASTIC_IP4/32 dev eth0:5
@@ -426,3 +428,5 @@ end
   up   ip addr add $ELASTIC_IP4/32 dev eth0 label eth0:5
   down ip addr del $ELASTIC_IP4/32 dev eth0 label eth0:5
       {{</ output >}}
+
+### Test Elastic IPs
