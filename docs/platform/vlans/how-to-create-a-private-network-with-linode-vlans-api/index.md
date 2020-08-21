@@ -23,7 +23,7 @@ Linode’s Private Local Area Network (LAN) feature allows you to create private
 
 - Linode Private LAN is currently in a closed Beta. In order to use this feature, you must sign up through our [Green Light Beta Program](https://www.linode.com/green-light/).
 
-- During the closed Beta, Linode Private LAN is only available in the Newark data center region (`us-east`).
+- During the closed Beta, Linode Private LAN is only available in the Toronto data center region (`ca-central`).
 
 - You can create up to 10 LANs within each data center region.
 
@@ -61,7 +61,7 @@ The `cidr_block` parameter allows for simple IP Address Management (IPAM) for th
             -H "Authorization: Bearer $TOKEN" \
             -X POST -d '{
               "description": "My example LAN",
-              "region": "us-east",
+              "region": "ca-central",
               "cidr_block": "10.0.0.0/24"
             }' \
             https://api.linode.com/v4beta/networking/vlans
@@ -72,7 +72,7 @@ The `cidr_block` parameter allows for simple IP Address Management (IPAM) for th
 {
   "id": 1234,
   "description": "My example VLAN",
-  "region": "us-east",
+  "region": "ca-central",
   "linodes": [],
   "cidr_block": "10.0.0.0/24"
 }
@@ -114,7 +114,7 @@ Your Linode must exist in the same data center region as the LAN you created in 
               },
               "label": "linode123",
               "type": "g6-standard-2",
-              "region": "us-east"
+              "region": "ca-central"
             }' \
             https://api.linode.com/v4/linode/instances
 
@@ -138,7 +138,7 @@ Your Linode must exist in the same data center region as the LAN you created in 
               },
               "label": "linode123",
               "type": "g6-standard-2",
-              "region": "us-east"
+              "region": "ca-central"
             }' \
             https://api.linode.com/v4/linode/instances
 
@@ -163,7 +163,7 @@ Your Linode must exist in the same data center region as the LAN you created in 
   ],
   "ipv6": "c001:d00d::1234",
   "image": "linode/debian10",
-  "region": "us-east",
+  "region": "ca-central",
   "specs": {
     "disk": 81920,
     "memory": 4096,
