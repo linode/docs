@@ -13,6 +13,7 @@ title: "How to Deploy Grafana with One-Click Apps"
 h1_title: "Deploying Grafana with One-Click Apps"
 contributor:
   name: Linode
+image: How-to-Deploy-Grafana-with-One-Click-Apps_1200x631.png
 external_resources:
 - '[Create Grafana API tokens and dashboards for an organization](https://grafana.com/docs/grafana/latest/tutorials/api_org_token_howto/)'
 - '[Grafana Alerting and Engine Rules](https://grafana.com/docs/grafana/latest/alerting/rules/)'

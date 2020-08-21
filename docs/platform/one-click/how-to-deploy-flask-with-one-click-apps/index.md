@@ -13,6 +13,7 @@ title: "How to Deploy Flask with One-Click Apps"
 h1_title: "Deploying Flask with One-Click Apps"
 contributor:
   name: Linode
+image: How-to-Deploy-Flask-with-One-Click-Apps_1200x631.png
 external_resources:
 - '[Flask Quickstart](https://flask.palletsprojects.com/en/1.1.x/quickstart/)'
 - '[Flask SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)'
