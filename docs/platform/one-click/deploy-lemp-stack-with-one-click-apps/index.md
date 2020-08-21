@@ -14,6 +14,7 @@ title: "Deploy a LEMP Stack With One-Click Apps"
 h1_title: "Deploying a LEMP Stack with One-Click Apps"
 contributor:
   name: Linode
+image: Deploying-a-LEMP-Stack-with-One-Click-apps_1200x631.png
 external_resources:
 - '[NGINX Getting Started](https://www.nginx.com/resources/wiki/start/)'
 ---

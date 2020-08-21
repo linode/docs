@@ -14,6 +14,7 @@ title: "How to Deploy MongoDB with One-Click Apps"
 h1_title: "Deploying MongoDB with One-Click Apps"
 contributor:
   name: Linode
+image: How-to-Install-MongoDB-with-One-Click-Apps_1200x631.png
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'

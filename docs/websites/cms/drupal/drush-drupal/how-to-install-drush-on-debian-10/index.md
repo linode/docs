@@ -13,6 +13,7 @@ modified_by:
 published: 2020-02-28
 title: How to Install Drush on Debian 10
 h1_title: Install Drush on Debian 10
+image: Install-Drush-on-Debian-10_1200x631.png
 external_resources:
  - '[Drush Documentation](https://docs.drush.org/en/master/)'
  - '[Composer Documentation](https://getcomposer.org/doc/)'
