@@ -23,7 +23,7 @@ Linode’s Private Local Area Network (LAN) feature allows you to create private
 
 - Linode Private LAN is currently in a closed Beta. In order to use this feature, you must sign up through our [Green Light Beta Program](https://www.linode.com/green-light/).
 
-- During the closed Beta, Linode Private LAN is only available in the Toronto data center region (`ca-central`).
+- Linode Private LAN is available in Next Generation Network (NGN) [data centers](https://www.linode.com/global-infrastructure/). This includes Toronto (`ca-central`), Mumbai (`ap-west`), and Sydney (`ap-southeast`).
 
 - You can create up to 10 LANs within each data center region.
 
