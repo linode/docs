@@ -49,7 +49,7 @@ This guide shows you how to use [Linode's APIv4](https://developers.linode.com/a
 ## Create a Private Network
 ### Create a LAN
 
-In this section, you use the LANs endpoints to create a LAN. In the examples, when creating the LAN, you do not make use of all available endpoint parameters. To view all available parameters, see the APIv4 reference’s Create LANs documentation. Before attaching a Linode to a LAN, the LAN must exist.
+In this section, you create a LAN using the APIv4's Networking endpoints. In the examples, when creating the LAN, you do not make use of all available endpoint parameters. To view all available parameters, see the APIv4 reference’s Create LANs documentation. Before attaching a Linode to a LAN, the LAN must exist.
 
 1. To create a LAN, send a POST request to the `/networking/vlans` endpoint. Replace the values for `description` and `cidr_block` with your own.
 
@@ -103,13 +103,13 @@ Your Linode must exist in the same data center region as the LAN you created in 
             -X POST -d '{
               "image": "linode/debian10",
               "root_pass": "aComplexP@ssword",
-              “interfaces”: {
-                “eth0”: {
+              "interfaces": {
+                "eth0": {
                   “type”: “default”
                 },
                 "eth1”: {
-                  “type”: “additional”,
-                  “vlan_id”: 1234
+                  "type": "additional",
+                  "vlan_id": 1234
                 }
               },
               "label": "linode123",
@@ -277,6 +277,10 @@ You can now move on to the [Configure your Linode(s) to use Your Private Network
 Once you have created your LAN, you can attach existing Linodes to it. To attach an existing Linode to a LAN you must create the Network Interface(s) needed by your Linode to communicate over the LAN, update your Linode's Configuration Profile with the Network Interface(s), and then, configure your Linode to communicate over the LAN.
 
 {{< note >}}
+When you create a Linode, Network Helper creates your Linode's Network Interfaces for you and no further intervention is need in order to communicate with an External Network using your Linode's Public IP addresses. When attaching a Linode to a Private LAN, however, you must create Interface objects, add them to your Linode's boot Configuration Profile, and configure your Linode to communicate over those Network Interfaces.
+{{</ note >}}
+
+{{< note >}}
 Before completing the steps in this section, ensure you:
 
 - have [created a LAN](0#create-a-vlan).
@@ -397,7 +401,7 @@ You can now update your Linode's Configuration Profile with the Interfaces you c
                   }
                 }
             }' \
-            https://api.dev.linode.com/v4beta/linode/instances/{linodeId}/configs/{configId}
+            https://api.linode.com/v4beta/linode/instances/{linodeId}/configs/{configId}
 
     > **Linode with a Private Network Interfaces (no Public Network Interface)**:
     >
@@ -412,7 +416,7 @@ You can now update your Linode's Configuration Profile with the Interfaces you c
                   }
                 }
             }' \
-            https://api.dev.linode.com/v4beta/linode/instances/{linodeId}/configs/{configId}
+            https://api.linode.com/v4beta/linode/instances/{linodeId}/configs/{configId}
 
 1. Reboot your Linode. Replace `{linodeId}` with your own Linode’s ID number
 
@@ -470,7 +474,7 @@ iface eth1 inet static
 Send a request to the View LANs endpoint (`GET /networking/vlans`) to view all LANs available on your account along with their details, like Private IP address and CIDR Block.
 
     curl -H "Authorization: Bearer $TOKEN" \
-      https://api.dev.linode.com/v4/networking/vlans
+      https://api.linode.com/v4/networking/vlans
 {{</ note >}}
 
 1. Apply the new Network Interface configuration file.
@@ -508,10 +512,10 @@ Retrieve your `{linodeId}` by sending a request to the [List Linodes](https://de
     curl -H "Authorization: Bearer $TOKEN" \
         https://api.linode.com/v4/linode/instances
 
-Find your `{configId}` by sending a request to the [List Configuration Profiles](https://developers.linode.com/api/v4/linode-instances-linode-id-configs) endpoint.
+Find your `{configId}` by sending a request to the [List Configuration Profiles](https://developers.linode.com/api/v4/linode-instances-linode-id-configs) endpoint. Replace `{linodeId}` with your own Linode's ID.
 
     curl -H "Authorization: Bearer $TOKEN" \
-        https://api.linode.com/v4/linode/instances/123/configs/23456
+        https://api.linode.com/v4/linode/instances/{linodeId}/configs
 
     {{</ disclosure-note >}}
 
@@ -522,7 +526,7 @@ Find your `{configId}` by sending a request to the [List Configuration Profiles]
                 "network": false
               }
             }' \
-            https://api.dev.linode.com/v4/linode/instances/{linodeId}/configs/{configId}
+            https://api.linode.com/v4/linode/instances/{linodeId}/configs/{configId}
 
     The API returns a similar response (part of the response is truncated for brevity):
 
@@ -576,10 +580,41 @@ iface eth0 inet static
 Send a request to the View LANs endpoint (`GET /networking/vlans`) to view all LANs available on your account along with their details, like Private IP address and CIDR Block.
 
     curl -H "Authorization: Bearer $TOKEN" \
-      https://api.dev.linode.com/v4/networking/vlans
+      https://api.linode.com/v4/networking/vlans
 {{</ note >}}
 
-1. Apply the new Network Interface configuration file.
+1. Enable the `eth0` Network Interface to apply the Private LAN settings you configured in the previous step.
+
+        ifup eth0
+
+1. Disable the `eth0` Network Interface. This is required for the next step in order to remove the `eth0` entry that was created by Network Helper when the Linode was first deployed.
+
+        ifdown eth0
+
+1. Update your Linode's `/etc/network/interfaces` file to **remove** the `eth0` entry created by Network Helper when the Linode was first deployed. Referring to the example, remove or comment out lines 16 - 18.
+
+      {{< file "/etc/network/interfaces">}}
+# Generated by Linode Network Helper
+...
+# /etc/network/interfaces
+
+auto lo
+iface lo inet loopback
+
+source /etc/network/interfaces.d/*
+
+auto eth
+allow-hotplug eth
+
+iface eth inet6 auto
+
+# Remove this entry
+iface eth inet static
+    address 192.0.2.0/24
+    gateway 192.0.2.0.1
+      {{</ file >}}
+
+1. Enable the `eth0` Network Interface to apply the Private LAN settings you configured in step 5.
 
         ifup eth0
 
