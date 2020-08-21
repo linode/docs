@@ -19,32 +19,7 @@ The *Linode Backup Service* is a subscription service add-on that automatically 
 
 ## Pricing
 
-Pricing is per Linode and varies depending upon your Linode's plan:
-
-### Shared Plans
-
-| Service      | Backups Hourly Rate | Backups Monthly
-|:-------------|:--------------------|:---------------
-| Linode 1GB   | $0.003/hr           | $2/mo
-| Linode 2GB   | $0.004/hr           | $2.50/mo
-| Linode 4GB   | $0.008/hr           | $5/mo
-| Linode 8GB   | $0.016/hr           | $10/mo
-| Linode 16GB  | $0.03/hr            | $20/mo
-| Linode 32GB  | $0.06/hr            | $40/mo
-| Linode 64GB  | $0.12/hr            | $80/mo
-| Linode 96GB  | $0.18/hr            | $120/mo
-| Linode 128GB  | $0.24/hr           | $160/mo
-| Linode 192GB  | $0.36/hr           | $240/mo  |
-
-### High Memory Plans
-
-| Service      | Backups Hourly Rate | Backups Monthly
-|:-------------|:--------------------|:---------------
-| Linode 24GB  | $0.0075/hr           | $5/mo
-| Linode 48GB  | $0.015/hr           | $10/mo
-| Linode 90GB  | $0.03/hr            | $20/mo
-| Linode 150GB | $0.06/hr            | $40/mo
-| Linode 300GB | $0.12/hr            | $80/mo
+Pricing is per Linode and varies depending upon your Linode's plan. See the options on [the pricing page](https://www.linode.com/pricing/#row--storage) under Backups.
 
 ## Enable the Backup Service
 
