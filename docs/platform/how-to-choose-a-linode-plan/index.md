@@ -12,7 +12,7 @@ published: 2019-02-04
 title: How to Choose a Linode Plan
 ---
 
-Linode offers four instance types: **Shared**, **High Memory**, **Dedicated CPU**, and **GPU Instances**. For the Shared, High Memory, Dedicated CPU, and GPU Instance types, there are several hardware resource tiers, or plans, that you can choose from.
+Linode offers four instance types: **Shared**, **High Memory**, **Dedicated CPU**, and **GPU Instances**. For all Linode Instance types, there are several hardware resource tiers, or plans, that you can choose from.
 
 When selecting a plan, it is important to understand the hardware resources allocated to your instance, like CPU, transfer, storage, and RAM. An understanding of your project's own needs and requirements is also useful. This guide provides an overview of all Linode instance types and plans, their corresponding use cases, and how to choose which one is right for you.
 
@@ -40,7 +40,7 @@ The different Linode instance types represent different balances of the above re
 
 At the same time, different kinds of applications have different resource requirements. Some applications may need to store a lot of data but require less processing power, some may need more memory than CPU, and some may be especially CPU-intensive. As a result, certain instance types can better serve certain applications. When creating your instances, consider what resources your application needs and then compare it with the resources specified by each of the instance types. The following sections include common use cases for each type, and one of these may resemble your needs.
 
-Finally, a common strategy when setting up a new server is to start with a smaller instance and then resize your Linode if needed. At a minimum, you will need to choose a plan that offers enough disk space to store your data. For more information, see [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/). You can then [monitor](/docs/uptime/monitoring-and-maintaining-your-server-new-manager/) the CPU,    GPU, memory, and network usage of your application to determine if you need more of those resources.
+Finally, a common strategy when setting up a new server is to start with a smaller instance and then resize your Linode if needed. At a minimum, you will need to choose a plan that offers enough disk space to store your data. For more information, see [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/). You can then [monitor](/docs/uptime/monitoring-and-maintaining-your-server-new-manager/) the CPU, GPU, memory, and network usage of your application to determine if you need more of those resources.
 
 ## 1. Shared
 
@@ -153,3 +153,11 @@ GPU instances are the only plan that give you access to [NVIDIA Quadro RTX 6000 
 | Network Out | 100000 Mbps |
 
 To view a full list of the Dedicated CPU instance plans, visit the [Linode Pricing](https://www.linode.com/pricing/) page.
+
+## Pricing
+
+When considering a Linode plan think about the pricing. You can view all the pricing at [Linode Pricing](https://www.linode.com/pricing/).
+
+You can also compare cost per month and save with Linode's predictable and transparent pricing with our [Cloud Estimator](https://www.linode.com/estimator/). Explore bundled compute, storage, and transfer packages against AWS, GCP, and Azure.
+
+Migrating from on-premise or between cloud providers for hosting, cloud storage, or cloud computing? Use our [Total Cost of Ownership (TCO) cloud pricing calculator](https://www.linode.com/cloud-pricing-calculator/) to receive a full cost breakdown and technical recommendations.
