@@ -223,7 +223,7 @@ resource "linode_firewall" "web_server" {
     addresses = ["0.0.0.0/0"]
   }
 
-    inbound {
+  inbound {
     protocol = "TCP"
     ports = ["443"]
     addresses = ["0.0.0.0/0"]
@@ -269,7 +269,7 @@ variable "tags" {
 
 ### Create the Root Module
 
-Now that all the Cloud Firewalls child modules have been created, you can create your root module. The root module is in charge of defining the infrastructure to be built by Terraform. The root module has access to all the child modules and can make use of all or none of them. In this section, you will create a root module that can create a Cloud Firewall using the rules defined in the `web_server` child module. It also creates two Linode instance and assigns the Cloud Firewall to both Linode instances.
+Now that all the Cloud Firewalls child modules have been created, you can create your root module. The root module is in charge of defining the infrastructure to be built by Terraform. The root module has access to all the child modules and can make use of all or none of them. In this section, you will create a root module that can create a Cloud Firewall using the rules defined in the `web_server` child module. It also creates two Linode instances and assigns the Cloud Firewall to both Linode instances.
 
 1. Using your preferred text editor, create the root module's `main.tf` file. Copy and save the contents of the example below.
 
