@@ -50,19 +50,19 @@ AzuraCast is now installed and ready to use.
 
 1.  The first thing you want to do is create a *Super Administrator* account that has has system-wide permissions.
 
-!["AzuraCast Setup Account"](azuracast-setup-account.png "AzuraCast Setup Account")
+    !["AzuraCast Setup Account"](azuracast-setup-account.png "AzuraCast Setup Account")
 
 1.  Next, AzuraCast prompts you to create a new radio station. Fill out the required fields, then click the **Save Changes** button at the bottom of the screen to continue.
 
-!["AzuraCast Create Station"](azuracast-create-station.png "AzuraCast Create Station")
+    !["AzuraCast Create Station"](azuracast-create-station.png "AzuraCast Create Station")
 
-1.  On the next page you can set other settings including using a custom URL if you have one setup. Learn more about using a custom URL with Linode DNS in our [DNS Manager](/docs/platform/manager/dns-manager/) guide. When you are finished, click the **Save Changes** button at the bottom of the screen to continue.
+1.  On the next page you can set other settings including using a custom URL if you have one set up. Learn more about using a custom URL with Linode DNS in our [DNS Manager](/docs/platform/manager/dns-manager/) guide. When you are finished, click the **Save Changes** button at the bottom of the screen to continue.
 
-1.  Your station is now ready, you are taken to the control panel, and you are ready to start broadcasting your station.
+1.  Your station is now ready. On the following page, you are taken to the control panel, and you are ready to start broadcasting your station.
 
 1.  To manage the station you just created click the **Manage** button in the **Station Overview** section. This will open the Station Dashboard for the station you created during setup.
 
-!["AzuraCast Manage Station"](azuracast-manage-station.png "AzuraCast Manage Station")
+    !["AzuraCast Manage Station"](azuracast-manage-station.png "AzuraCast Manage Station")
 
 1.  Here you can control your station, add songs, add DJs, take requests, and more.
 
