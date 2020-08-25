@@ -41,7 +41,7 @@ A Cloud Firewall can be configured with Inbound and Outbound rules. Inbound rule
 1. [Install Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) on your local computer.
 
     {{< note >}}
-This guide was written using [Terraform version 0.13.0](https://www.hashicorp.com/blog/announcing-the-terraform-0-13-beta/).
+This guide was written using [Terraform version 0.13.0](https://github.com/hashicorp/terraform/releases).
     {{</ note >}}
 
 1. Install Git on your computer and complete the steps in the **Configure Git** section of the [Getting Started with Git guide](/docs/development/version-control/how-to-configure-git/#configure-git).
@@ -104,6 +104,15 @@ When applied to a Terraform configuration, the `inbound_ssh` module will create 
 1. Using your preferred text editor, create the `inbound_ssh` module's `main.tf` file. Copy and save the contents of the example below.
 
     {{< file "~/main_firewalls/inbound_ssh/main.tf">}}
+terraform {
+  required_providers {
+    linode = {
+      source = "terraform-providers/linode"
+    }
+  }
+  required_version = ">= 0.13"
+}
+
 resource "linode_firewall" "ssh_inbound" {
   label = var.firewall_label
   tags  = var.tags
@@ -153,6 +162,15 @@ The `mysql` child module creates a Cloud Firewall with an inbound rule commonly 
 1. Using your preferred text editor, create the `inbound_ssh` module's `main.tf` file. Copy and save the contents of the example below.
 
     {{< file "~/main_firewalls/mysql/main.tf">}}
+terraform {
+  required_providers {
+    linode = {
+      source = "terraform-providers/linode"
+    }
+  }
+  required_version = ">= 0.13"
+}
+
 resource "linode_firewall" "mysql" {
   label = var.firewall_label
   tags  = var.tags
@@ -207,6 +225,15 @@ The `web_server` child module, when applied, creates a Cloud Firewall with inbou
 1. Using your preferred text editor, create the `web_server` module's `main.tf` file. Copy and save the contents of the example below.
 
     {{< file "~/main_firewalls/web_server/main.tf">}}
+terraform {
+  required_providers {
+    linode = {
+      source = "terraform-providers/linode"
+    }
+  }
+  required_version = ">= 0.13"
+}
+
 resource "linode_firewall" "web_server" {
   label = var.firewall_label
   tags  = var.tags
@@ -274,6 +301,15 @@ Now that all the Cloud Firewalls child modules have been created, you can create
 1. Using your preferred text editor, create the root module's `main.tf` file. Copy and save the contents of the example below.
 
     {{< file "~/main_firewalls/main.tf">}}
+terraform {
+  required_providers {
+    linode = {
+      source = "terraform-providers/linode"
+    }
+  }
+  required_version = ">= 0.13"
+}
+
 provider "linode" {
     api_version = "v4beta"
     token = var.token
