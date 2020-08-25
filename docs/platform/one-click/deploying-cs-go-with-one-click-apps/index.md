@@ -62,9 +62,11 @@ When you've provided all required Linode Options, click on the **Create** button
 
 ## Getting Started after Deployment
 
+### Connect with the CS:GO Client
+
 After CS:GO has finished installing, you will be able to access your game server by connecting to its IP address. To find your Linode's IPv4 address:
 
-1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
+1. Click on the **Linodes** link in the [Linode Cloud Manager](https://cloud.linode.com) sidebar. You will see a list of all your Linodes.
 
 1. Find the Linode you just created when deploying your app and select it.
 
@@ -74,13 +76,17 @@ After CS:GO has finished installing, you will be able to access your game server
 
 1. Copy the IPv4 address.
 
-1. In CS:GO, use the back tick key (**&#96;**) to open the developer's console. Type `connect 192.0.2.240` and click **Submit**, where `192.0.2.240` is the IP address of your Linode:
-
-    ![The CS:GO developer's console.](cs-go-developers-console.png)
-
-1.  If pressing the back tick key does not bring up the developer's console, you might need to enable it in the settings. Under *Game Settings* choose **Enable Developer's Console** and select **Yes**:
+1. In CS:GO, use the back tick key (**&#96;**) to open the developer's console. If pressing the back tick key does not bring up the developer's console, you might need to enable it in the settings. Under *Game Settings* choose **Enable Developer's Console** and select **Yes**:
 
     ![Enable the developer's console if it is not currently enabled.](cs-go-enable-developer-console.png)
+
+1. In the CS:GO developer's console, type `connect 192.0.2.240` and click **Submit**, where `192.0.2.240` is the IP address of your Linode.
+
+    {{< note >}}
+If you included a **CS:GO Server Password** in your [CS:GO Options](#cs-go-options) when installing, submit `connect 192.0.2.240; password your_server_password` instead.
+    {{< /note >}}
+
+    ![The CS:GO developer's console.](cs-go-developers-console.png)
 
 ### Software Included
 
