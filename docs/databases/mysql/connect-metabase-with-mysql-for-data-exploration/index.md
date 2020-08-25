@@ -193,6 +193,8 @@ WantedBy=multi-user.target
 
 ### Firewall Rules
 
+{{< content "cloud-firewall-shortguide" >}}
+
 UFW is great for preventing unauthorized access to your database. A reasonable default is to allow port 80/443 and SSH:
 
     sudo ufw allow http
