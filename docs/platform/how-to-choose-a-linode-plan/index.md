@@ -156,7 +156,7 @@ To view a full list of the Dedicated CPU instance plans, visit the [Linode Prici
 
 ## Pricing
 
-When considering a Linode plan think about the pricing. You can view all the pricing at [Linode Pricing](https://www.linode.com/pricing/).
+Think about pricing when considering which Linode plan is right for you. You can view all the pricing at [Linode Pricing](https://www.linode.com/pricing/).
 
 You can also compare cost per month and save with Linode's predictable and transparent pricing with our [Cloud Estimator](https://www.linode.com/estimator/). Explore bundled compute, storage, and transfer packages against AWS, GCP, and Azure.
 
