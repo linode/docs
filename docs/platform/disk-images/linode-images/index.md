@@ -16,7 +16,7 @@ title: Linode Images
 
 ![Linode Images](linode-images.jpg)
 
-*Linode Images* allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future. Linode Images will be retained whether or not you have an active Linode on your account, which also makes them useful for long term storage of a private template that you may need in the future. There is no additional charge to store Images for Linode users. Images are limited to 6GB per Image and 5 Images per account. Additionally, images can only be created on disks with ext3 or ext4 filesystems with a single partition.
+*Linode Images* allows you to take snapshots of your disks, and then deploy them to any Linode under your account. This can be useful for bootstrapping a master image for a large deployment, or retaining a disk for a configuration that you may not need running, but wish to return to in the future. Linode Images will be retained whether or not you have an active Linode on your account, which also makes them useful for long term storage of a private template that you may need in the future. There is no additional charge to store Images for Linode users. Images are limited to 6GB per Image and 3 Images per account. Additionally, images can only be created on disks with ext3 or ext4 filesystems with a single partition.
 
 {{< note >}}
 When saving a Linode image, it is the aspects of the Linode that are on the **disk** that are saved, not any additional aspects such as IP addresses, fully qualified domain names, and MAC addresses.

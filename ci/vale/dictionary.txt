@@ -420,6 +420,7 @@ file1
 filebeat
 filecap
 filecaps
+fileglob
 filemode
 filepath
 filepaths
@@ -499,6 +500,7 @@ gnulinux
 gnutls
 gogs
 golang
+goldmark
 goroutine
 goroutines
 goto
@@ -984,6 +986,7 @@ novaclient
 novell
 npm
 npmjs
+npx
 nrcpt
 ns1
 ns2
@@ -996,6 +999,7 @@ nullval
 num
 numpy
 nvim
+nvm
 octopress
 odoo
 oftc
@@ -1181,9 +1185,12 @@ redir
 redis
 redmin
 redmine
+redstone
 reenable
 reenabling
+referer
 refspec
+regexes
 reimported
 reindexing
 reinstalls

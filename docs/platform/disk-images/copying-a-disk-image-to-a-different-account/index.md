@@ -40,11 +40,7 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 
 1.  Give the Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
 
-1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to the Linode through SSH. It must be at least 6 characters long and contain characters from two of the following categories:
-
-    - lowercase and uppercase case letters
-    - numbers
-    - punctuation characters
+1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to the Linode through SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique.
 
 1.  Click **Create**. The system directs you to the *Linodes* page that reports the status of the Linode as it boots up.
 
