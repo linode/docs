@@ -2,7 +2,8 @@
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
-description: 'This Quick Answer guide will explain how to use export.'
+description: 'This Quick Answer guide explains how to use the export command to view terminal variables, how to assign variable values, and how to pass functions to other processes.'
+og_description: 'This Quick Answer guide explains how to use the export command to view terminal variables, how to assign variable values, and how to pass functions to other processes.' 
 keywords: ["linux", "how to", "export"]
 aliases: ['quick-answers/how-to-use-export/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,9 +14,9 @@ published: 2020-06-08
 title: How to Use Export
 h1_title: Using the export Command
 ---
-Export command is used to pass variables to other processes.
+The Export command is used to pass variables to other processes.
 
-When you open a new terminal session you set environment variables for the process. At any time if you change any of the variable values, the terminal does not pick that change. The export command updates the current terminal session about the change you made to the exported variable. You don’t have to open a new terminal session to use the value of the variable that you changed.
+When you open a new terminal session you set environment variables for the process. At any time if you change any of the variable values, the terminal does not pick up that change. The export command updates the current terminal session about the change you made to the exported variable. You don’t have to open a new terminal session to use the value of the variable that you changed.
 
 ## Use Export command to pass variables
 
@@ -81,7 +82,7 @@ To export names as functions use the following command syntax:
 
     export -f < function_name >
 
-   If you do not use the option `-f` the names is treated as variables.
+   If you do not use the option `-f` the names are treated as variables.
 
    Example:
 
