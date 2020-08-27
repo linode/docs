@@ -20,7 +20,7 @@ show_on_rss_feed: false
 
 1.  Click the **more options ellipsis** to open the menu for the Volume you want to attach to a Linode and select **Attach**:
 
-    {{< image src="bs-cloud-attach-volume-small.png" alt="Open Volume menu" title="Open Volume menu" >}}
+    {{< image src="bs-cloud-attach-volume-sm.png" alt="Open Volume menu" title="Open Volume menu" >}}
 
 1.  Select the label of the Linode you want to attach the Volume to from the dropdown menu, then click **Save**:
 
