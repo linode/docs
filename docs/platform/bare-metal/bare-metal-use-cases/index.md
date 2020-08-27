@@ -15,13 +15,13 @@ h1_title: "Use Cases for Linode Bare Metal Instances."
 
 ## Why Bare Metal
 
-Bare Metal Linodes are single-tenant servers, giving you the utmost in control, security, and performance. This means that when you provision a Bare Metal Linode, you're getting an entire server with exclusive use of its underlying infrastructure processor and memory resources, rather than a virtual machine instance utilizing shared resources with other instances. Accordingly, Bare Metal Linodes come with several advantages:
+Bare Metal Linodes are single-tenant servers providing dedicated hardware resources, giving you the utmost in control, security, and performance. This means that when you provision a Bare Metal Linode, you have access to an entire server with exclusive use of its underlying infrastructure, processor, and memory resources, rather than a virtual machine instance utilizing shared resources with other instances. Accordingly, Bare Metal Linodes come with several advantages:
 
 -   **Top-tier infrastructure performance.** Free from the restrictions that come with virtual machines, Bare Metal Linodes are tailored for use cases that require the lowest possible latency and overhead.
 -   **No CPU steal or noisy neighbors.** Like [Dedicated CPU Linodes](/docs/platform/dedicated-cpu/getting-started-with-dedicated-cpu/), Bare Metal Linodes won't experience CPU contention issues that may come with "noisy neighbors."
--   **Direct access to your hardware.** Bare Metal Linodes broaden the horizons of what you can build, allowing you to bring legacy systems and proprietary environments such as [VMware images](https://www.vmware.com/) or [Microsoft Windows](https://www.microsoft.com/en-us/software-download/windows10ISO) to the cloud.
--   **Security & Compliance.** Direct hardware access also gives you greater control over security and compliance requirements for standards like HIPAA and PCI DSS.
--   **Larger pool of resources.** As single-tenant servers, Bare Metal Linodes offer the most in terms of raw resources for potentially intensive workloads along with the best in per-capita cost efficiency.
+-   **Direct access to your hardware.** Bare Metal Linodes broaden the horizons of what you can build, allowing you to bring legacy systems and proprietary environments such as [VMware images](https://www.vmware.com/) or [Microsoft Windows](https://www.microsoft.com/en-us/software-download/windows10ISO) deployments to the cloud.
+-   **Security & Compliance.** Direct hardware access gives you greater control over security and compliance requirements for standards like HIPAA and PCI DSS.
+-   **Larger pool of resources.** As single-tenant servers, Bare Metal Linodes offer the most in terms of raw resources for potentially intensive workloads along with possible benefits in cost efficiency.
 
 ## Bare Metal Use Cases
 
@@ -50,7 +50,7 @@ Bare Metal Linodes offer the best option for large-scale, activity-intensive dat
 
 Below is a list of common tools used for machine learning and AI that can be installed on a Bare Metal Linode:
 
--   [TensorFlow](https://www.tensorflow.org/) - a free, open-source, machine learning framework and deep learning library. Tensorflow was originally developed by Google for internal use and later fully released to the public under the Apache License.
+-   [TensorFlow](https://www.tensorflow.org/) a free, open-source, machine learning framework and deep learning library. Tensorflow was originally developed by Google for internal use and later fully released to the public under the Apache License.
 -   [PyTorch](https://pytorch.org/) - a machine learning library for Python that uses the popular GPU-optimized Torch framework.
 -   [Apache Mahout](https://mahout.apache.org/) - a scalable library of machine learning algorithms and  distributed linear algebra framework designed to let mathematicians, statisticians, and data scientists quickly implement their own algorithms.
 
@@ -89,7 +89,7 @@ Migrating legacy systems to the cloud to maintain business-critical workloads is
 
 ### Compliance with Security Standards
 
-Certain business must adhere to stringent standards such as [HIPAA and PCI DSS](/legal-compliance/) when managing data. Bare Metal Linodes, by virtue of single-tenancy, are best-suited for compliance with such standards as they provide the utmost in security and control over hardware resources.
+Certain business must adhere to stringent standards such as [HIPAA and PCI DSS](/legal-compliance/) when managing data. Bare Metal Linodes, by virtue of their single-tenancy dedicated hardware resources, are best-suited for meeting compliance standards as they provide the utmost in security and control over hardware resources.
 
 <!--- Uncomment when Getting Started with Bare Metal guide and pricing pages are updated.
 ## Where to Go From Here
