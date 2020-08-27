@@ -1,12 +1,12 @@
 ---
-# Error: gitlab.SentenceSpacing
+# Warning: SentenceSpacing
 #
 # Checks for the following in common content scenarios:
 #
 # - No spaces.
 # - More than one space.
 #
-# For a list of all options, see https://errata-ai.gitbook.io/vale/getting-started/styles
+# Based on Vale rule from GitLab: https://gitlab.com/gitlab-org/gitlab/-/tree/master/doc/.vale/gitlab
 extends: existence
 message: '"%s" must contain one and only one space.'
 link: https://docs.gitlab.com/ee/development/documentation/styleguide.html#punctuation

@@ -1,10 +1,10 @@
 ---
-# Suggestion: gitlab.FutureTense
+# Suggestion: FutureTense
 #
 # Checks for use of future tense in sentences. Present tense is preferred as
 # much as possible.
 #
-# For a list of all options, see https://errata-ai.gitbook.io/vale/getting-started/styles
+# Based on Vale rule from GitLab: https://gitlab.com/gitlab-org/gitlab/-/tree/master/doc/.vale/gitlab
 extends: existence
 message: 'Avoid using future tense: "%s"'
 ignorecase: true
