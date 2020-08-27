@@ -5,3 +5,4 @@ mkdir vale
 tar -xvzf vale_1.2.6_Linux_64-bit.tar.gz -C vale
 git diff --name-only develop | grep 'index.md' | while read -r D ; do
     ./vale/vale --glob=$D docs
+done
