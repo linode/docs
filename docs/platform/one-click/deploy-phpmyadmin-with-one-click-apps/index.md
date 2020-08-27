@@ -28,9 +28,13 @@ external_resources:
 
 | **Configuration** | **Description** |
 |--------------|------------|
-| **phpMyAdmin/MySQL Admin User** | The admin user name for accessing your phpMyAdmin dashboard. *Required*. |
+| **phpMyAdmin/MySQL Admin User** | The admin username for accessing your phpMyAdmin dashboard. *Required*. |
 | **phpMyAdmin/MySQL Admin Password** | The admin user password for accessing your phpMyAdmin dashboard. *Required*. |
 | **MySQL root Password** | The root user password for your MySQL database. *Required*. |
+
+{{< note >}}
+phpMyAdmin doesn't handle user management itself, but passes all user information onto MySQL. The Admin User you create here is created in MySQL.
+{{< /note >}}
 
 ### Linode Options
 
@@ -38,7 +42,7 @@ The following configuration options are possible for your Linode server:
 
 | **Configuration** | **Description** |
 |--------------|------------|
-| **Select an Image** | Debian 9 is currently the only images supported by the phpMyAdmin One-Click App. *Required*. |
+| **Select an Image** | Debian 9 is currently the only image supported by the phpMyAdmin One-Click App, and it is pre-selected on the Linode creation page. *Required*. |
 | **Region** | The region where you would like your Linode to reside. In general, it's best to choose a location that's closest to you. For more information on choosing a DC, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the network routes between you and each of our data centers. *Required*. |
 | **Linode Plan** | Your Linode's [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions). If you decide that you need more or fewer hardware resources after you deploy your app, you can always [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a different plan. *Required*. |
 | **Linode Label** | The name for your Linode, which must be unique between all of the Linodes on your account. This name will be how you identify your server in the Cloud Manager’s Dashboard. *Required*. |
@@ -59,15 +63,15 @@ The phpMyAdmin One-Click App will install the following required software on you
 
 ## Getting Started After Deployment
 
-After installation is complete, the phpMyAdmin dashboard is accessible at the following address:
+After installation is complete, the phpMyAdmin dashboard is accessible at your Linode's IP address followed by `/phpmyadmin` for example:
 
     http://your.linode.ip.address/phpmyadmin
 
-However, entering your phpMyAdmin credentials through an HTTP connection is insecure. This section provides instructions on how to enable HTTPS access to the phpMyAdmin dashboard from your domain using [Certbot](https://certbot.eff.org/) so that you can access your phpMyAdmin deployment securely.
+However, entering your phpMyAdmin credentials through an HTTP connection is insecure. The next section provides instructions on how to enable HTTPS access to the phpMyAdmin dashboard from your domain by using [Certbot](https://certbot.eff.org/) to issue a free Let's Encrypt SSL Certificate so that you can access your phpMyAdmin deployment securely.
 
 ### Configure Your Domain with DNS Manager
 
-The following sections require that you own a domain that has been configured for your use with your phpMyAdmin Linode. Following the instructions in the Linode [DNS Manager](/docs/platform/manager/dns-manager/) guide, ensure to configure your domain's [name servers](/docs/platform/manager/dns-manager/#use-linode-s-name-servers-with-your-domain) and add a [DNS record](/docs/platform/manager/dns-manager/#add-dns-records) so that your domain is pointing to your phpMyAdmin Linode.
+The following sections require that you own a domain that has been configured for your use with your phpMyAdmin Linode. Following the instructions in the Linode [DNS Manager](/docs/platform/manager/dns-manager/) guide, configure your domain's [name servers](/docs/platform/manager/dns-manager/#use-linode-s-name-servers-with-your-domain) and add a [DNS record](/docs/platform/manager/dns-manager/#add-dns-records) so that your domain is pointing to your phpMyAdmin Linode.
 
 ### Enable HTTPS with Certbot
 
@@ -93,7 +97,7 @@ The following sections require that you own a domain that has been configured fo
 
         https://www.example.com/phpmyadmin
 
-1.  At the login screen enter, the **phpMyAdmin/MySQL Admin User** and **phpMyAdmin/MySQL Admin Password** you chose when you deployed the phpMyAdmin One-Click App.
+1.  At the login screen enter the **phpMyAdmin/MySQL Admin User** and **phpMyAdmin/MySQL Admin Password** you chose when you deployed the phpMyAdmin One-Click App.
 
     ![phpMyAdmin Login Page](phpmyadmin-login.png "The phpMyAdmin Login Page.")
 
