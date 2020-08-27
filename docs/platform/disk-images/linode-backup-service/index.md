@@ -62,7 +62,15 @@ The daily and weekly backups are automatically erased when a new backup is perfo
 
 ## Restore from a Backup
 
-{{< content "backups-restore-shortguide" >}}
+This section shows how to restore a backup to a [new](/docs/platform/disk-images/linode-backup-service/#restore-to-a-new-linode) Linode, or to an [existing](/docs/platform/disk-images/linode-backup-service/#restore-to-an-existing-linode) Linode.
+
+### Restore to a New Linode
+
+{{< content "backups-restore-to-a-new-linode-shortguide" >}}
+
+### Restore to an Existing Linode
+
+{{< content "backups-restore-to-an-existing-linode-shortguide" >}}
 
 ## Boot from a Backup
 

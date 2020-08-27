@@ -18,21 +18,23 @@ Prior to installing the driver, you should install the required dependencies. Li
 
 1. Find your Linode's distribution from the list below and install the NVIDIA driver's dependencies:
 
-    ### Ubuntu 18.04
+    **Ubuntu 18.04:**
 
         sudo apt-get install build-essential
 
-    ### Debian 9
+    **Debian 9:**
 
         sudo apt-get install build-essential
         sudo apt-get install linux-headers-`uname -r`
 
-    ### CentOS 7
+    **CentOS 7:**
+
         sudo yum install kernel-devel-$(uname -r) kernel-headers-$(uname -r)
         sudo yum install wget
         sudo yum -y install gcc
 
-    ### OpenSUSE
+    **OpenSUSE:**
+
         zypper install gcc
         zypper install kernel-source
 

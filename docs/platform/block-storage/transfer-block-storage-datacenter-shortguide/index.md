@@ -14,13 +14,11 @@ headless: true
 show_on_rss_feed: false
 ---
 
-Block Storage volumes cannot be directly migrated to a different Data Center. This section will show you how to transfer a volume's data to a different data center.
+Block Storage volumes cannot be directly migrated to a different Data Center. These steps will outline how to transfer a volume's data to a different data center via the [SCP](/docs/security/data-portability/download-files-from-your-linode/#download-specific-files-or-directories-over-ssh) tool.
 
 {{< note >}}
 Consult our [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota/#which-traffic-applies-to-the-transfer-quota) guide for information on charges related to outbound traffic when downloading Linode data outside of Linode's private network.
 {{</ note >}}
-
-### Use SCP to Transfer Block Storage Volume Data to Another Data Center
 
 1. [Attach and mount](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) your Block Storage volume to a Linode, if you have not already.
 

@@ -25,6 +25,14 @@ The Block Storage service is currently available in the Dallas, Fremont, Frankfu
 
 ## How to Add a Block Storage Volume to a Linode
 
+This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap space mounted as `/dev/sdb`. In this scenario, the Block Storage Volume will be available to the operating system as `/dev/disk/by-id/scsi-0Linode_Volume_EXAMPLE`, where `EXAMPLE` is a label you assign the Volume in the Linode Cloud Manager. Storage Volumes can be added when your Linode is already running, and will show immediately in `/dev/disk/by-id/`.
+
+{{< note >}}
+A Linode can have multiple Block Storage Volumes attached to it. However, a Block Storage Volume can only be attached to one Linode at a time.
+{{</ note >}}
+
+### Add a Volume from the Linode Detail Page
+
 {{< content "add-block-storage-volume-shortguide" >}}
 
 ### Attach a Volume from Your Account's Volume List
