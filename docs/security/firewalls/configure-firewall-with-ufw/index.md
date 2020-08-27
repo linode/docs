@@ -65,7 +65,7 @@ Install UFW
 
 ### Set Default Rules
 
-Most systems will need a only a small number of ports open for incoming connections, and all remaining ports closed. To start with an easy basis of rules, the `ufw default` command can be used to set the default response to incoming and outgoing connections. To deny all incoming and allow all outgoing connections, run:
+Most systems need a only a small number of ports open for incoming connections, and all remaining ports closed. To start with an easy basis of rules, the `ufw default` command can be used to set the default response to incoming and outgoing connections. To deny all incoming and allow all outgoing connections, run:
 
     sudo ufw default allow outgoing
     sudo ufw default deny incoming
@@ -92,7 +92,7 @@ Similarly, to **deny** traffic on a certain port (in this example, 111) you woul
 
     sudo ufw deny 111
 
-To further fine-tune your rules, you can also allow packets based on TCP or UDP. The following will allow TCP packets on port 80:
+To further fine-tune your rules, you can also allow packets based on TCP or UDP. The following allows TCP packets on port 80:
 
     sudo ufw allow 80/tcp
     sudo ufw allow http/tcp
