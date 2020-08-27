@@ -7,4 +7,4 @@ files=`git diff --name-only develop | grep 'index.md'`
 for file in $files; do
   echo ${file}
 done
-./vale/vale --glob=$files docs
+./vale/vale $files
