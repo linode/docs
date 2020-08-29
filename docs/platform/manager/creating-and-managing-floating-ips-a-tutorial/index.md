@@ -351,6 +351,18 @@ net.ipv6.conf.all.forwarding=1
 
         sudo systemctl start frr
 
+1. Using a text editor of your choice, enable the `bgpd` daemon, by updating its value to `yes` in the FRR daemons configuration file.
+
+      {{< file "/etc/frr/daemons" >}}
+# The watchfrr and zebra daemons are always started.
+#
+bgpd=yes
+        {{</ file >}}
+
+1. Restart the FRR service.
+
+        sudo systemctl restart frr.service
+
 ## Configure Elastic IP
 
 With FRR installed on your Linode, you can now apply the required configurations to enable Elastic IP(s).
@@ -358,7 +370,7 @@ With FRR installed on your Linode, you can now apply the required configurations
 {{< note >}}
 Prior to starting this section, ensure you have received the information listed in the table from Linode Support. You need these values to configure Elastic IP on a Linode.
 
-| Value to replace in `/etc/frr/frr.conf` example | Description |
+| Value to replace in the configuration template | Description |
 | :-------: | :-------: |
 | `$NEIGHBOR_IP` | This is the Linode's IPv4 address (non-Elastic IP address), which determines the `peer-group HOST` setting. Enter the first 3 octets of the Linode's IPv4 address followed by a `1`. For example, if the Linode's IPv4 address is `192.0.2.0`, the value to enter is `192.0.2.1`.|
 | `$DC_ID` | The ID number of this data center. |
@@ -369,15 +381,15 @@ When you configure Elastic IP you need to define the Linode's _ROLE_ within the 
 - `primary`: All requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
 - `secondary`: If the `primary` Linode fails, all requests are routed to this Linode's Elastic IP address, as long as the Linode is running.
 
-| Information | Value to replace in `/etc/frr/frr.conf` example |
+| Information | Value to replace in the configuration template |
 | :-------: | :-------: |
 | This Linode's role (primary or secondary) | `$ROLE` |
 
 {{</ note >}}
 
-1. Using a text editor, create a new file using the template below to store your Linode provided FRR daemon configurations. Ensure you replace any instances of `$NEIGHBOR_IP`, `$DC_ID`, and `$ROLE` with the values sent to you by Linode support.
+1. The template below includes the Elastic IP configurations to apply to your Linode. Ensure you replace any instances of `$NEIGHBOR_IP`, `$DC_ID`, and `$ROLE` with the values sent to you by Linode support and by referencing the table above. Store the template with your replaced values in your local directory `~/elastic.conf`.
 
-      {{< file "/etc/frr/frr.conf">}}
+      {{< file "~/elastic.conf">}}
 hostname atl-bgp-1.kfubes.com
 
 router bgp 65$DC_ID
@@ -397,7 +409,11 @@ route-map secondary permit 10
 set large-community 65$DC_ID5:13:2
       {{</ file >}}
 
-1. Apply the configurations using the VTYSH shell for FRR daemons.
+    {{< note >}}
+To configure more than one Elastic IP on your Linode, update the template file
+    {{</ note >}}
+
+1. Apply the configurations using the VTYSH shell.
 
         sudo vtysh -f /etc/frr/frr.conf
 
@@ -405,28 +421,64 @@ set large-community 65$DC_ID5:13:2
 
         sudo systemctl restart frr.service
 
-1. Add your Elastic IP CIDR block subnet to each network interface. Replace `$ELASTIC_IP1` - `$ELASTIC_IP4` with your own IP addresses.
+1. View the running FRR configuration to ensure you the settings you applied are correct.
 
-        ip a a $ELASTIC_IP1/24 dev eth0:1
-        ip a a $ELASTIC_IP2/32 dev eth0:3
-        ip a a $ELASTIC_IP3/32 dev eth0:4
-        ip a a $ELASTIC_IP4/32 dev eth0:5
+         vtysh -c "show running-config"
 
-1. Ensure that the configurations have been appropriately applied by viewing the contents of your `/etc/network/interfaces` file.
+1. Configure the Linode's interface(s) with the Elastic IP.
 
-        cat /etc/network/interfaces
+    > **Debian 10, Ubuntu 18.04 and 20.04**
+    >
+    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
+    > {{< file >}}
+up   ip addr add $ELASTIC_IP/24 dev eth0 label eth0:1
+down ip addr del $ELASTIC_IP/24 dev eth0 label eth0:1
+        {{</ file >}}
+    > **CentOS 8**
+    >
+    > Edit your Linode's `/etc/sysconfig/network-scripts/ifcfg-eth0` file with the following entries. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
+    > {{< file >}}
+up   ip addr add $ELASTIC_IP/24 dev eth0 label eth0:1
+down ip addr del $ELASTIC_IP/24 dev eth0 label eth0:1
+        {{</ file >}}
 
-    You should see a similar output with your own IP addresses displayed:
+    {{< note >}}
+If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
 
-      {{< output >}}
-  up   ip addr add $ELASTIC_IP1/32 dev eth0 label eth0:2
-  down ip addr del $ELASTIC_IP1/32 dev eth0 label eth0:2
-  up   ip addr add $ELASTIC_IP2/32 dev eth0 label eth0:3
-  down ip addr del $ELASTIC_IP2/32 dev eth0 label eth0:3
-  up   ip addr add $ELASTIC_IP3/32 dev eth0 label eth0:4
-  down ip addr del $ELASTIC_IP3/32 dev eth0 label eth0:4
-  up   ip addr add $ELASTIC_IP4/32 dev eth0 label eth0:5
-  down ip addr del $ELASTIC_IP4/32 dev eth0 label eth0:5
-      {{</ output >}}
+{{< file >}}
+up   ip addr add $ELASTIC_IP/24 dev eth0 label eth0:1
+down ip addr del $ELASTIC_IP/24 dev eth0 label eth0:1
+up   ip addr add $ELASTIC_IP_2/24 dev eth0 label eth0:2
+down ip addr del $ELASTIC_IP_2/24 dev eth0 label eth0:2
+{{</ file >}}
+    {{</ note >}}
+
+1. Apply the `eth0` network interface configuration.
+
+        sudo ifdown eth0
+        sudo ifup eth0
+
+1. Ensure that your network interface cconfigurations have been applied as expected.
+
+        ip a | grep inet
+
+    You should see a similar output:
+
+    {{< output >}}
+    inet 127.0.0.1/8 scope host lo
+    inet6 ::1/128 scope host
+    inet 192.0.2.0/24 brd 192.0.2.255 scope global dynamic eth0
+    inet 203.0.113.0/24 scope global eth0:1
+    inet6 2600:3c04::f03c:92ff:fe7f:5774/64 scope global dynamic mngtmpaddr
+    inet6 fe80::f03c:92ff:fe7f:5774/64 scope link
+    {{</ output >}}
 
 ### Test Elastic IPs
+
+Depending on how you configured your Linode(s) and Elastic IP(s), testing steps may vary. In general, you can use the `ping` command to test sending a packets to your configured Elastic IP(s).
+
+    ping 203.0.113.0
+
+- For example, if you have two Linodes configured with the same Elastic IP:
+    - ping the Elastic IP when both Linodes are up. The packets should be received by the primary Linode.
+    - shut down the primary Linode and ping the Elastic IP. The packets should be received by the secondary Linode.
