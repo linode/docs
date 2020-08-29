@@ -101,6 +101,7 @@ bgpd=yes
         cd libyang
 
 1. Create a a new directory named `build` and move into it.
+
         mkdir build
         cd build
 
@@ -123,7 +124,10 @@ bgpd=yes
           --gecos "FRR suite" --shell /sbin/nologin frr
         sudo usermod -a -G frrvty frr
 
-1. Ensure you are no longer in the libyang directory.
+1. Ensure you are no longer in the libyang directory. For example, you can move into your home directory.
+
+        cd ~
+
 1. Clone the FRR GitHub repository and move into the cloned repository.
 
         git clone https://github.com/frrouting/frr.git frr
@@ -220,6 +224,18 @@ net.mpls.platform_labels=100000
 1. Start FRR using systemctl.
 
         sudo systemctl start frr
+
+1. Using a text editor of your choice, enable the `bgpd` daemon, by updating its value to `yes` in the FRR daemons configuration file.
+
+      {{< file "/etc/frr/daemons" >}}
+# The watchfrr and zebra daemons are always started.
+#
+bgpd=yes
+        {{</ file >}}
+
+1. Restart the FRR service.
+
+        sudo systemctl restart frr
 
 ### CentOS 8
 
@@ -415,7 +431,7 @@ To configure more than one Elastic IP on your Linode, update the template file
 
 1. Apply the configurations using the VTYSH shell.
 
-        sudo vtysh -f /etc/frr/frr.conf
+        sudo vtysh -f ~/elastic.conf
 
 1. Restart the FRR service.
 
@@ -423,7 +439,7 @@ To configure more than one Elastic IP on your Linode, update the template file
 
 1. View the running FRR configuration to ensure you the settings you applied are correct.
 
-         vtysh -c "show running-config"
+         sudo vtysh -c "show running-config"
 
 1. Configure the Linode's interface(s) with the Elastic IP.
 
@@ -458,7 +474,7 @@ down ip addr del $ELASTIC_IP_2/24 dev eth0 label eth0:2
         sudo ifdown eth0
         sudo ifup eth0
 
-1. Ensure that your network interface cconfigurations have been applied as expected.
+1. Ensure that your network interface configurations have been applied as expected.
 
         ip a | grep inet
 
