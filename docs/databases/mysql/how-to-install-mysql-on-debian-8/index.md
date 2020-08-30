@@ -50,6 +50,10 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     sudo apt-get install mysql-server
 
+{{< note >}}
+The mysql-server package may not be available in the latest versions of Debian in such a case try `sudo apt-get install default-mysql-server`.
+{{< /note >}}
+
 During the installation process, you will be prompted to set a password for the MySQL root user as shown below. Choose a strong password and keep it in a safe place for future reference.
 
 ![Setting the MySQL root password in Debian.](mysql-rootpw-debian.png)
