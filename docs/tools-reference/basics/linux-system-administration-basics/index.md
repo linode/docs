@@ -5,7 +5,7 @@ author:
 description: 'Troubleshooting tips, basic Linux commands, and software usage suggestions for beginner Linux system administrators.'
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['tools-reference/linux-system-administration-basics/','using-linux/administration-basics/']
+aliases: ['/tools-reference/linux-system-administration-basics/','/using-linux/administration-basics/']
 modified: 2016-10-05
 modified_by:
   name: Linode
@@ -581,7 +581,7 @@ For more information about `sed` refer to our full documentation of [text manipu
 
 In many Linode documents, you may be instructed to edit the contents of a file. To do this, you need to use a text editor. Most of the distribution templates that Linode provides come with an implementation of the vi/vim text editor and the nano text editor. These are small, lightweight and powerful text editors that allow you manipulate the text of a file from the terminal environment.
 
-There are other options for text editors, notably emacs and "zile." Feel free to install these programs using your operating system's package manager. Make sure you [search your package database](#find-package-names-and-information) so you can install a version compiled without GUI components (i.e. X11).
+There are other options for text editors, notably Emacs and "zile." Feel free to install these programs using your operating system's package manager. Make sure you [search your package database](#find-package-names-and-information) so you can install a version compiled without GUI components (i.e. X11).
 
 To open a file, issue a command beginning with the name of the editor you wish to run followed by the name of the file you wish to edit. Here are a number of example commands that open the `/etc/hosts` file:
 
@@ -590,7 +590,7 @@ To open a file, issue a command beginning with the name of the editor you wish t
     emacs /etc/hosts
     zile /etc/hosts
 
-When you've edited a file, you can save and exit the editor to return to the prompt. This procedure varies between different editors. In emacs and zile, the key sequence is the same: press control and type x and s to save. This operation is typically notated "C-x C-s" and then "C-x C-c" to close the editor. In nano, press Control-O (notated \^O) and confirm the file name to write the file, and use Control-X to exit from the program.
+When you've edited a file, you can save and exit the editor to return to the prompt. This procedure varies between different editors. In Emacs and zile, the key sequence is the same: press control and type x and s to save. This operation is typically notated "C-x C-s" and then "C-x C-c" to close the editor. In nano, press Control-O (notated \^O) and confirm the file name to write the file, and use Control-X to exit from the program.
 
 Since vi and vim are *modal* editors, their operation is a bit more complex. After opening a file in vi, you can enter "insert" mode by pressing the "i" key; this will let you edit text in the conventional way. To save the file, you must exit into "normal" mode by pressing the escape key (`Control-[` also sends escape), and then type `:wq` to write the file and quit the program.
 
