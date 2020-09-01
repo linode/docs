@@ -5,7 +5,7 @@ author:
 description: 'Set static IP, routes and DNS in Linux.'
 keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['networking/configuring-static-ip-interfaces/','networking/linux-static-ip-configuration/']
+aliases: ['/networking/configuring-static-ip-interfaces/','/networking/linux-static-ip-configuration/']
 modified: 2018-01-02
 modified_by:
   name: Linode
