@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "A text passage which will appear below the title of the section on the section's page."
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ["keyword1", "keyword2"]
+description: "Learn about the different ways to host a website, from a simple static site to a cluster of highly-available web servers."
+og_description: "Learn about the different ways to host a website, from a simple static site to a cluster of highly-available web servers."
+keywords: ["website hosting", "high availability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01
-title: Section Title
+title: Website Hosting
 show_in_lists: true
 ---
 

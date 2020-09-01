@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "A text passage which will appear below the title of the section on the section's page."
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ["keyword1", "keyword2"]
+description: "Apache Solr is an open source search platform that provides administrators with a customizable and scalable solution for managing online content. Solr can be configured to index all uploaded data, resulting in fast search results, whether used enterprise-wide or with a single website."
+og_description: "Apache Solr is an open source search platform that provides administrators with a customizable and scalable solution for managing online content. Solr can be configured to index all uploaded data, resulting in fast search results, whether used enterprise-wide or with a single website."
+keywords: ["apache solr"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01
-title: Section Title
+title: Apache Solr
 show_in_lists: true
 ---
 
