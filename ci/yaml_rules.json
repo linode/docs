@@ -190,6 +190,12 @@
     "type": "date",
     "description": "Date this guide was originally published. Should use the form YYYY-MM-DD."
   },
+  "relations": {
+    "elements": ["platform"],
+    "required": false,
+    "type": "dict",
+    "description": "Specifies any dropdown menus that should appear at the top of a guide. These menus allow users to switch between different versions of a guide topic; for example, switching between distributions for a guide."
+  },
   "shortguide": {
     "elements": false,
     "required": false,
