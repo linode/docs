@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 title: 'How to Install Certbot for TLS on CentOS 8'
 h1_title: 'Installing Certbot for TLS on CentOS 8'
-aliases: ['quick-answers/websites/certbot/how-to-install-certbot-on-centos-8/']
+aliases: ['/quick-answers/websites/certbot/how-to-install-certbot-on-centos-8/']
 ---
 ## What is Certbot?
 

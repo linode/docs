@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 title: 'How to Install Certbot for TLS on Debian 10'
 h1_title: 'Installing Certbot for TLS on Debian 10'
-aliases: ['quick-answers/websites/certbot/how-to-install-certbot-on-debian-10/']
+aliases: ['/quick-answers/websites/certbot/how-to-install-certbot-on-debian-10/']
 ---
 ## What is Certbot?
 
