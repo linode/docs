@@ -5,7 +5,7 @@ author:
 description: 'Troubleshooting tips, basic Linux commands, and software usage suggestions for beginner Linux system administrators.'
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['using-linux/administration-basics/']
+aliases: ['tools-reference/linux-system-administration-basics/','using-linux/administration-basics/']
 modified: 2016-10-05
 modified_by:
   name: Linode
