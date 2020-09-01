@@ -11,7 +11,7 @@ aliases: ['quick-answers/websites/certbot-shortguide-centos/']
 modified_by:
   name: Linode
 title: 'Install Certbot for TLS on CentOS'
-hiddenguide: true
+headless: true
 ---
 
 1.  Enable the EPEL repository:

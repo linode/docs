@@ -10,7 +10,7 @@ published: 2018-06-28
 modified: 2018-06-28
 modified_by:
   name: Linode
-hiddenguide: true
+headless: true
 title: 'Install Certbot for TLS on Ubuntu'
 ---
 
