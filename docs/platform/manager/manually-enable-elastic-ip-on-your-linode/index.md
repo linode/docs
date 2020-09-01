@@ -403,7 +403,7 @@ When you configure Elastic IP you need to define the Linode's _ROLE_ within the 
 
 {{</ note >}}
 
-1. The template below includes the Elastic IP configurations to apply to your Linode. Ensure you replace any instances of `$NEIGHBOR_IP`, `$DC_ID`, and `$ROLE` with the values sent to you by Linode support and by referencing the table above. Store the template with your replaced values in your local directory `~/elastic.conf`.
+1. The template below includes the Elastic IP configurations to apply to your Linode. Ensure you replace any instances of `$NEIGHBOR_IP`, `$DC_ID`, and `$ROLE` with the values sent to you by Linode support and by referencing the table above. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the VTY interactive shell.
 
       {{< file "~/elastic.conf">}}
 hostname atl-bgp-1.kfubes.com
@@ -429,17 +429,31 @@ set large-community 65$DC_ID5:13:2
 To configure more than one Elastic IP on your Linode, update the template file
     {{</ note >}}
 
-1. Apply the configurations using the VTYSH shell.
+1. Run the VTY shell.
 
-        sudo vtysh -f ~/elastic.conf
+        sudo vtysh
 
-1. Restart the FRR service.
+1. Enter configuration mode.
 
-        sudo systemctl restart frr.service
+        conf t
 
-1. View the running FRR configuration to ensure you the settings you applied are correct.
+1. Copy the contents of your template configuration file and paste them into the VTY shell.
 
-         sudo vtysh -c "show running-config"
+1. Tell the VTY shell that you are done entering your configurations.
+
+        end
+
+1. Write your configurations to VTY.
+
+        write
+
+1. Verify that the configurations you entered were correctly written by showing VTY's running configuration.
+
+        show running-config
+
+1. Exit out of the VTY shell.
+
+        q
 
 1. Configure the Linode's interface(s) with the Elastic IP.
 
@@ -488,6 +502,10 @@ down ip addr del $ELASTIC_IP_2/24 dev eth0 label eth0:2
     inet6 2600:3c04::f03c:92ff:fe7f:5774/64 scope global dynamic mngtmpaddr
     inet6 fe80::f03c:92ff:fe7f:5774/64 scope link
     {{</ output >}}
+
+1. Restart the FRR service.
+
+        sudo systemctl restart frr.service
 
 ### Test Elastic IPs
 
