@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "A text passage which will appear below the title of the section on the section's page."
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ["keyword1", "keyword2"]
+description: "ASP.NET is a Microsoft application framework and is traditionally used with the IIS web server on Windows. Software projects like the mod_mono Apache module make it possible to run ASP.NET applications on Linux."
+og_description: "ASP.NET is a Microsoft application framework and is traditionally used with the IIS web server on Windows. Software projects like the mod_mono Apache module make it possible to run ASP.NET applications on Linux."
+keywords: ["asp.net"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31
-title: Section Title
+title: ASP.NET
 show_in_lists: true
 ---
 
