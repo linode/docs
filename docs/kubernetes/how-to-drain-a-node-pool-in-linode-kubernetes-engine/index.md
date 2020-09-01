@@ -125,7 +125,7 @@ metadata:
         NAME       READY   STATUS    RESTARTS   AGE
         new-pod   1/1     Running   0          2m
 
-1.  Connect to a shell in the new pod, type the following command:
+1.  Connect to a shell in the new Pod, type the following command:
 
         kubectl exec -it new-pod -- /bin/bash
 
@@ -133,7 +133,7 @@ metadata:
 
         cp -P $MOUNTPATH $CSIVolumePath.
 
-1. Delete the new pod that you created, and then re-create it:
+1. Delete the new Pod that you created, and then re-create it:
 
         kubectl delete pod new-pod
 
@@ -151,6 +151,6 @@ metadata:
 
 1. You can delete the old Node Pool or choose to keep it for after the maintenance is complete. Note, if you keep the Node Pool, you will be charged for it.
 
-1. When the maintenance has been completed and if you kept your previous Linodes, after they have booted you can mark them as schedulable again by using the following command:
+1. When the maintenance has been completed and if you kept your previous Linodes, after they have booted you can mark them as scheduled again by using the following command:
 
         kubectl uncordon lke9297-11573-5f3e357cb447
