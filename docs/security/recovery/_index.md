@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "A text passage which will appear below the title of the section on the section's page."
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ["keyword1", "keyword2"]
+description: "This section shows how to plan for and recover from potential system compromises."
+og_description: "This section shows how to plan for and recover from potential system compromises."
+keywords: ["linux system recovery", "system compromise recovery"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31
-title: Section Title
+title: System Recovery
 show_in_lists: true
 ---
 
