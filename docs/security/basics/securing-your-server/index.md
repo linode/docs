@@ -6,7 +6,7 @@ description: 'This guide covers basic best practices for securing a production s
 og_description: 'This guide serves as a starting point from which to secure your Linode against unauthorized access and includes topics such as user account set up, configuring a firewall, securing SSH, and disabling unused network services.'
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
+aliases: ['security/basics/','securing-your-server/','security/linux-security-basics/','security/securing-your-server/','security/securing-your-server/index.cfm/']
 modified: 2019-08-19
 modified_by:
   name: Linode
