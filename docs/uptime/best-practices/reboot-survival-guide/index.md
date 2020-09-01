@@ -10,6 +10,7 @@ modified_by:
   name: Alex Fornuto
 published: 2015-02-27
 title: Reboot Survival Guide
+aliases: ['uptime/reboot-survival-guide/']
 ---
 
 ![Reboot Survival Guide](reboot-survival-guide.png "Reboot Survival Guide")
