@@ -119,6 +119,7 @@ boto
 bounceback
 brackley
 bram
+brd
 browserify
 bs4
 bufio
@@ -868,6 +869,7 @@ misconfigured
 mitigations
 mkdir
 mnesia
+mngtmpaddr
 moby
 moddable
 modsecurity
