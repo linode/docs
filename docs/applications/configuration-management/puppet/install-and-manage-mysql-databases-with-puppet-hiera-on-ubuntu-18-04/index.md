@@ -19,6 +19,11 @@ external_resources:
   - '[Hiera documentation](https://docs.puppet.com/hiera/)'
   - '[Facter](https://docs.puppet.com/facter/)'
 aliases: ['applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/']
+relations:
+    platform:
+        key: install-puppet-mysql-hiera
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 [Puppet](https://puppetlabs.com/) is a configuration management system that helps simplify the use and deployment of different types of software, making system administration more reliable and replicable. In this guide, we use Puppet to manage an installation of [MySQL](https://www.mysql.com/), a popular relational database used for applications such as WordPress, Ruby on Rails, and others. [Hiera](https://docs.puppet.com/hiera/) is a method of defining configuration values that Puppet will use to simplify MySQL configuration.
