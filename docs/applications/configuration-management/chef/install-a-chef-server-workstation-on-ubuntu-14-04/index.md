@@ -15,10 +15,10 @@ title: 'Install a Chef Server Workstation on Ubuntu 14.04'
 external_resources:
  - '[Chef](http://www.chef.io)'
 relations:
-  platform:
-    key: how-to-install-chef-server-workstation
-    keywords:
-      - distribution: Ubuntu 14.04
+    platform:
+        key: how-to-install-chef-server-workstation
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 Chef is an automation platform that "turns infrastructure into code," allowing users to manage and deploy resources across multiple servers, or *nodes*. Chef allows users to create and download recipes (stored in cookbooks) to automate content and policies on these nodes.

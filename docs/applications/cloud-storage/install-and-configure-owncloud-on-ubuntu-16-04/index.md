@@ -14,10 +14,10 @@ external_resources:
   - '[ownCloud Official Documentation](https://doc.owncloud.org/)'
   - '[ownCloud Marketplace](https://marketplace.owncloud.com/)'
 relations:
-  platform:
-    key: how-to-install-owncloud
-    keywords:
-      - distribution: Ubuntu 16.04
+    platform:
+        key: how-to-install-owncloud
+        keywords:
+            - distribution: Ubuntu 16.04
 ---
 
 
