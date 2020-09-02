@@ -390,7 +390,7 @@ Prior to starting this section, ensure you have received the information listed 
 | :-------: | :-------: |
 | `$NEIGHBOR_IP` | This is the Linode's IPv4 address (non-Elastic IP address), which determines the `peer-group HOST` setting. Enter the first 3 octets of the Linode's IPv4 address followed by a `1`. For example, if the Linode's IPv4 address is `192.0.2.0`, the value to enter is `192.0.2.1`.|
 | `$DC_ID` | The ID number of this data center. |
-| `$ELASTIC_IP` |  |
+| `$ELASTIC_IP` | The Elastic IP address to assign to this Linode. |
 
 When you configure Elastic IP you need to define the Linode's _ROLE_ within the configuration as `primary` or `secondary`.
 
@@ -399,7 +399,7 @@ When you configure Elastic IP you need to define the Linode's _ROLE_ within the 
 
 | Information | Value to replace in the configuration template |
 | :-------: | :-------: |
-| This Linode's role (primary or secondary) | `$ROLE` |
+| This Linode's role (`primary` or `secondary`) | `$ROLE` |
 
 {{</ note >}}
 
@@ -424,10 +424,6 @@ set large-community 65$DC_ID5:$DC_ID:1
 route-map secondary permit 10
 set large-community 65$DC_ID5:13:2
       {{</ file >}}
-
-    {{< note >}}
-To configure more than one Elastic IP on your Linode, update the template file
-    {{</ note >}}
 
 1. Run the VTY shell.
 
