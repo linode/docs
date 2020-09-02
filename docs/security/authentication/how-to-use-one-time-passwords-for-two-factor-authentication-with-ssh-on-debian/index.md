@@ -2,24 +2,25 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Ubuntu 18.04 LTS'
-og_description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Ubuntu 18.04 LTS'
-keywords: ["two factor authentication", "ssh", "google authenticator", "ubuntu"]
+description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Debian 9'
+og_description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Debian 9'
+keywords: ["two factor authentication", "ssh", "google authenticator", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified_by:
   name: Linode
-title: "How to Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 18.04 LTS"
-h1_title: "Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 18.04 LTS"
-image: how-to-use-one-time-passwords-for-two-factor-authentication-ubuntu.png
+title: "How to Use One-Time Passwords for Two-Factor Authentication with SSH on Debian 9"
+h1_title: "Use One-Time Passwords for Two-Factor Authentication with SSH on Debian 9"
+image: how-to-use-one-time-passwords-for-two-factor-debian-9.png
 contributor:
   name: Linode
 external_resources:
 - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
 - '[Linux PAM Documentation](http://www.linux-pam.org/)'
+aliases: ['security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-debian/']
 ---
 
-In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH on Ubuntu 18.04 LTS. No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from being compromised. By default, you will need a password to log in, and you may also configure an authentication key-pair for even greater security. However, another option exists to complement these methods: [time-based one-time passwords](https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm) (*TOTPs*).
+In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH on Debian 9. No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from being compromised. By default, you will need a password to log in, and you may also configure an authentication key-pair for even greater security. However, another option exists to complement these methods: [time-based one-time passwords](https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm) (*TOTPs*).
 
 TOTPs allow you to enable two-factor authentication for SSH with single-use passwords that change every 30 seconds. By combining this method with a regular password or publickey (or both), you can add an extra layer of security, further ensuring your server is sufficiently protected.
 
@@ -27,9 +28,9 @@ This guide will explain how to install the necessary software, configure your sy
 
 ## Before You Begin
 
-1.  This guide is meant to be used with a Linode running Ubuntu 18.04 LTS. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname), [updating your system's hosts file](/docs/getting-started/#update-your-system-s-hosts-file), and setting the [timezone](/docs/getting-started/#set-the-timezone).
+1.  This guide is meant to be used with a Linode running Debian 9. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname), [updating your system's hosts file](/docs/getting-started/#update-your-system-s-hosts-file), and setting the [timezone](/docs/getting-started/#set-the-timezone).
 
-1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services). This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/security/securing-your-server/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section, [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
+1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services). This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/security/securing-your-server/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
 
     {{< note >}}
 If you plan on [combining two-factor and public key authentication](#combine-two-factor-and-public-key-authentication-optional), ensure you [upload your computer's public key](/docs/security/securing-your-server/#create-an-authentication-key-pair) to your Linode's [standard user account](/docs/security/securing-your-server/#add-a-limited-user-account) before beginning the steps in this guide.
@@ -47,7 +48,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Google Authenticator
 
-In this section, we'll install the Google Authenticator package, which is included in the default repository of Ubuntu 18.04 LTS. This software will generate keys on your Linode, which will then be paired with an app on a client device (often a smartphone) to generate single-use passwords that expire after a set period of time.
+In this section, we'll install the Google Authenticator package, which is included in the default repository of Debian 9. This software will generate keys on your Linode, which will then be paired with an app on a client device (often a smartphone) to generate single-use passwords that expire after a set period of time.
 
 1. Install Google Authenticator:
 
@@ -74,7 +75,7 @@ Be sure to have your phone or mobile device ready, since this is where you'll ad
 
 1.  You should see a [QR code](https://en.wikipedia.org/wiki/QR_code) in your terminal:
 
-    ![The Google Authenticator QR Code and keys on Ubuntu 18.04.](google-authenticator-debian.png)
+    ![The Google Authenticator QR Code and keys on Debian 9.](google-authenticator-debian.png)
 
     Using the authenticator app on your phone or mobile device, scan the code. A new entry should be added to your authenticator app in the format `username@hostname`.
 
@@ -99,15 +100,12 @@ your chances to notice or even prevent man-in-the-middle attacks (y/n)
     This makes your token a true one-time password, preventing the same password from being used twice. For example, if you set this to "no," and your password was intercepted while you logged in, someone may be able to gain entry to your server by entering it before the time expires. We **strongly recommend** answering `y`.
 
     {{< output >}}
-By default, a new token is generated every 30 seconds by the mobile app.
-In order to compensate for possible time-skew between the client and the server,
-we allow an extra token before and after the current time. This allows for a
-time skew of up to 30 seconds between authentication server and client. If you
-experience problems with poor time synchronization, you can increase the window
-from its default size of 3 permitted codes (one previous code, the current
-code, the next code) to 17 permitted codes (the 8 previous codes, the current
-code, and the 8 next codes). This will permit for a time skew of up to 4 minutes
-between client and server.
+By default, tokens are good for 30 seconds. In order to compensate for
+possible time-skew between the client and the server, we allow an extra
+token before and after the current time. If you experience problems with
+poor time synchronization, you can increase the window from its default
+size of +-1min (window size of 3) to about +-4min (window size of
+17 acceptable tokens).
 Do you want to do so (y/n)
     {{</ output >}}
 
@@ -181,6 +179,7 @@ If you want to enforce two-factor authentication globally, you can use the `Auth
 If your SSH client disconnects before you can enter your two-factor token, check if PAM is enabled for SSH. You can do this by editing `/etc/ssh/sshd_config`: look for `UsePAM` and set it to `yes`. Don't forget to restart the SSH daemon.
 {{< /note >}}
 
+
 ## Combine Two-Factor and Public Key Authentication (Optional)
 
 This section is optional. If you'd like to use [public key authentication](/docs/security/authentication/use-public-key-authentication-with-ssh) instead of a password authentication with TOTP, follow the steps in this section.
@@ -201,13 +200,14 @@ Match User example-user
 
 {{< /file >}}
 
+
     Configure this setting in the `AuthenticationMethods` directive for each user as appropriate. When any of these users log in, they will need to provide their SSH key and they will be authenticated via TOTP, as well.
 
 1. Restart your SSH daemon to apply these changes.
 
         sudo systemctl restart ssh
 
-1.  Next, you'll need to make changes to your PAM configuration. Comment out or omit the following lines in your `/etc/pam.d/sshd` file:
+2.  Next, you'll need to make changes to your PAM configuration. Comment out or omit the following lines in your `/etc/pam.d/sshd` file:
 
     {{< file "/etc/pam.d/sshd" >}}
 # @include common-auth
