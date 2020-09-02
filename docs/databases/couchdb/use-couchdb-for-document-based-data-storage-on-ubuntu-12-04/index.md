@@ -15,7 +15,7 @@ title: 'Use CouchDB for Document-Based Data Storage on Ubuntu 12.04'
 external_resources:
  - '[CouchDB Project](http://couchdb.apache.org/)'
  - '[CouchDB Community Wiki](http://wiki.apache.org/couchdb/)'
- relations:
+relations:
     platform:
         key: couchdb-document-data-storage
         keywords:
