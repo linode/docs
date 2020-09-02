@@ -20,6 +20,11 @@ audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["java"]
 image: 'Installing_Apache_Tomcat_on_Ubuntu_18041200x631.png'
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-02-17
 title: 'Sinatra Framework and nginx on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: sinatra-nginx
+        keywords:
+            - distribution: Debian 6
 ---
 
 

@@ -5,7 +5,7 @@ author:
 description: 'Installing and configuring Symfony for developing PHP applications on your CentOS 5 Linode.'
 keywords: ["cakephp", "cakephp debian", "php framework", "debian", "develop php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['frameworks/symfony/','websites/frameworks/symfony-on-centos-5/']
+aliases: ['frameworks/symfony/','websites/frameworks/symfony-on-centos-5/','development/frameworks/symfony-on-centos-5/']
 modified: 2013-09-27
 modified_by:
   name: Linode
@@ -13,6 +13,11 @@ published: 2010-06-08
 expiryDate: 2015-09-27
 title: Symfony on CentOS 5
 deprecated: true
+relations:
+    platform:
+        key: symfony
+        keywords:
+            - distribution: CentOS 5
 ---
 
 Symfony is a PHP web application framework, providing the classes and tools required to build and enhance both simple and complex applications. Featuring easy AJAX integration, an admin interface generator, and more, Symfony has become a very popular choice for web application development.

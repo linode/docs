@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-08-19
 title: 'Ruby on Rails with Nginx on Ubuntu 9.04 (Jaunty)'
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 

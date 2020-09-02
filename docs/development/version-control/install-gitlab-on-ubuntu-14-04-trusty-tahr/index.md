@@ -22,6 +22,11 @@ external_resources:
  - '[GitLab Requirements](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/requirements.md)'
  - '[GitLab Manual Installation](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md)'
 audiences: ["intermediate"]
+relations:
+    platform:
+        key: install-gitlab
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-05-11
 title: 'Django, Apache and mod_wsgi on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: django-apache-modwsgi
+        keywords:
+            - distribution: Debian 5
 ---
 
 

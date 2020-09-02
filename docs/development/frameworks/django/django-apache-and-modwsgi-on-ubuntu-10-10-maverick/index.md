@@ -12,6 +12,11 @@ modified_by:
 published: 2010-10-25
 title: 'Django, Apache and mod_wsgi on Ubuntu 10.10 (Maverick)'
 deprecated: true
+relations:
+    platform:
+        key: django-apache-modwsgi
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 Django is a web development framework for the Python programing language. It was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.

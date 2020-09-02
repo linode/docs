@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-12-07
 title: 'Apache Tomcat on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

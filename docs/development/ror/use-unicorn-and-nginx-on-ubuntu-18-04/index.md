@@ -17,6 +17,11 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["ruby"]
+relations:
+    platform:
+        key: unicorn-nginx
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 18.04.

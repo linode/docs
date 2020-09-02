@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-07-23
 title: Apache Tomcat on Fedora 13
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

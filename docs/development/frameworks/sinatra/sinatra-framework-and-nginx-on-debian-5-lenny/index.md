@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-01-21
 title: 'Sinatra Framework and nginx on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: sinatra-nginx
+        keywords:
+            - distribution: Debian 5
 ---
 
 

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-09-23
 title: 'Apache Tomcat on Debian 5 (Lenny)'
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Debian 5
 ---
 
 

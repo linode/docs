@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-02-22
 title: 'Ruby on Rails with Nginx on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

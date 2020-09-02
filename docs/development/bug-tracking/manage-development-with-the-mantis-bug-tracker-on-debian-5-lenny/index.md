@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-02-16
 title: 'Manage Development with the Mantis Bug Tracker on Debian 5 (Lenny)'
+relations:
+    platform:
+        key:  mantis-bug-tracker
+        keywords:
+            - distribution: Debian 5
 ---
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.

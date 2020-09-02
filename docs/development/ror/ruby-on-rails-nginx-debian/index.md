@@ -23,6 +23,11 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["ruby"]
+relations:
+    platform:
+        key: ruby-on-rails-nginx
+        keywords:
+            - distribution: Debian 9
 ---
 
 ![Ruby on Rails with nginx on Debian](ruby_on_rails_with_nginx_debian_8_smg.png "Ruby on Rails with nginx on Debian 8")

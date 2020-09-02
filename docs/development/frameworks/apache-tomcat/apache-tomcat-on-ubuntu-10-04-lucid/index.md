@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-07-23
 title: 'Apache Tomcat on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

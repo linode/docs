@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-08-06
 title: 'Installing Apache Tomcat on Ubuntu 9.04 (Jaunty)'
+relations:
+    platform:
+        key:  apache-tomcat
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 

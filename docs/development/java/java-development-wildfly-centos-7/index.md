@@ -19,6 +19,11 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Web Applications"]
 languages: ["java"]
+relations:
+    platform:
+        key: java-development-wildfly
+        keywords:
+            - distribution: CentOS 7
 ---
 
 ![Java Development with WildFly on CentOS 7](Java-Development-with-WildFly-on-CentOS-7-smg.jpg)

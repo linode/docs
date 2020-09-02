@@ -17,6 +17,11 @@ external_resources:
 audiences: ["beginner"]
 languages: ["python"]
 image: 'Creating_a_Python_Virtual_Environment_on_Debian_10_1200x631.png'
+relations:
+    platform:
+        key: python-virtual-env
+        keywords:
+            - distribution: Debian 10
 ---
 
 ## What is a Python Virtual Environment?

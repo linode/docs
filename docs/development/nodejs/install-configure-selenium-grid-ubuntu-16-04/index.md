@@ -16,6 +16,11 @@ external_resources:
   - '[Selenium Project Home](https://www.seleniumhq.org/projects/webdriver/)'
   - '[Selenium Node.js Documentation](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index.html)'
 audiences: ["intermediate"]
+relations:
+    platform:
+        key: install-selenium-grid
+        keywords:
+            - distribution: Ubuntu 16.04
 ---
 
 ## What is Selenium Grid?

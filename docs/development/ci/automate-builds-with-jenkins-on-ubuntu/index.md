@@ -13,12 +13,18 @@ published: 2017-11-14
 modified: 2019-02-01
 modified_by:
   name: Linode
-title: 'How to Automate Builds with Jenkins on Ubuntu'
+title: 'How to Automate Builds with Jenkins on Ubuntu 16.04'
+h1_title: 'Automating Builds with Jenkins on Ubuntu 16.04'
 external_resources:
  - '[Jenkins User Documentation](https://jenkins.io/doc/)'
  - '[Blue Ocean Documentation](https://jenkins.io/doc/book/blueocean/)'
 audiences: ["intermediate"]
 dedicated_cpu_link: true
+relations:
+    platform:
+        key:  automate-builds-jenkins
+        keywords:
+            - distribution: Ubuntu 16.04
 ---
 
 [Jenkins](https://jenkins.io) is an open-source automation server that allows you to build pipelines to automate the process of building, testing, and deploying applications. In this guide, you will implement a basic workflow to speed up your Continuous Integration and Continuous Delivery (CI/CD) process.

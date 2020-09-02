@@ -18,6 +18,11 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["ruby"]
+relations:
+    platform:
+        key: ruby-on-rails-apache
+        keywords:
+            - distribution: Debian 9
 ---
 
 ![Ruby on Rails with Apache on Debian](ruby_on_rails_with_apache_debian.jpg "Ruby on Rails with Apache on Debian")
