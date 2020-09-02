@@ -15,6 +15,11 @@ title: 'Provide Authoritative DNS Services with NSD on Ubuntu 12.04'
 external_resources:
  - '[NSD Homepage](http://nlnetlabs.nl/projects/nsd/)'
  - '[NSD Memory Usage Calculator](http://nlnetlabs.nl/projects/nsd/nsd-memsize.html)'
+relations:
+    platform:
+        key: authoritative-dns-nsd
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 NSD is a lightweight yet full-featured open-source name server daemon created to provide an alternative to BIND.

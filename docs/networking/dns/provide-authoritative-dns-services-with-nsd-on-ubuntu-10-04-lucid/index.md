@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-12-06
 title: 'Provide Authoritative DNS Services with NSD on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: authoritative-dns-nsd
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

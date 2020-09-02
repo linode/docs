@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-02-02
 title: 'Use Unbound for Local DNS Resolution on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: unbound-local-dns-resolution
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

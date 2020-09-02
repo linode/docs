@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-01-25
 title: Provide Authoritative DNS Services with NSD on Fedora 14
+relations:
+    platform:
+        key: authoritative-dns-nsd
+        keywords:
+            - distribution: Fedora 14
 ---
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.

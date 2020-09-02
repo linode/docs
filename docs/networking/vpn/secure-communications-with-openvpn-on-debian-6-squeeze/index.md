@@ -12,6 +12,11 @@ modified_by:
 published: 2011-04-05
 title: 'Secure Communications with OpenVPN on Debian 6 (Squeeze)'
 deprecated: true
+relations:
+    platform:
+        key: secure-communications-openvpn
+        keywords:
+            - distribution: Debian 6
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely, but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
@@ -176,7 +181,7 @@ This will scan the `/etc/openvpn` directory on the server for files with a `.con
 
 The process for connecting to the VPN varies depending on your specific operating system and distribution running on the *client* machine. You will need to install the OpenVPN package for your operating system if you have not already done so.
 
-Most network management tools provide some facility for managing connections to a VPN. Configure connections to your OpenVPN through the same interface where you might configure wireless or ethernet connections. If you choose to install and manage OpenVPN manually, you will need to place the `client1.conf` file and the requisite certificate files in the *local* machine's `/etc/openvpn` directory or equivalent location.
+Most network management tools provide some facility for managing connections to a VPN. Configure connections to your OpenVPN through the same interface where you might configure wireless or Ethernet connections. If you choose to install and manage OpenVPN manually, you will need to place the `client1.conf` file and the requisite certificate files in the *local* machine's `/etc/openvpn` directory or equivalent location.
 
 If you use Mac OS X, we have found that the [Tunnelblick](http://code.google.com/p/tunnelblick/) tool provides an easy method for managing OpenVPN connections. If you use Windows, the [OpenVPN GUI](http://openvpn.se/) tool may be an effective tool for managing your connections too. Linux desktop users can install the OpenVPN package and use the network management tools that come with your desktop environment.
 
