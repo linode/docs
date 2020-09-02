@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-09-13
 title: Instant Messaging Services with ejabberd on Fedora 13
+relations:
+    platform:
+        key: how-to-install-ejabberd
+        keywords:
+            - distribution: Fedora 13
 ---
 
 
@@ -131,7 +136,7 @@ Additionally, you may want to enable SSL access for client-to-server (c2s) SSL/T
 
 The `ejabberd.cfg` file is complete and well commented, and from this point forward your server should run. However, you should take the time to become familiar with the options provided in this file.
 
-By default, MUCs or Multi-User-Chats (chatrooms) are accessible on the "conference.[hostname]" subdomain. If you want the public to be able to access MUCs on your domain, you need to create an "A Record" pointing the `conference` hostname (eg. subdomain) to the IP address where the ejabberd instance is running.
+By default, MUCs or Multi-User-Chats (chatrooms) are accessible on the "conference.[hostname]" subdomain. If you want the public to be able to access MUCs on your domain, you need to create an "A Record" pointing the `conference` hostname (e.g. subdomain) to the IP address where the ejabberd instance is running.
 
 # Using Ejabberd
 

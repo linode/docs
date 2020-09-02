@@ -15,6 +15,11 @@ title: 'Create an Aggregate Blog using Planet Venus on Ubuntu 10.04 (Lucid)'
 external_resources:
     - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
     - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
+relations:
+    platform:
+        key: aggregate-blog-planet
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

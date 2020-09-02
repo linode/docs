@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-11-23
 title: 'Manage Projects with Redmine on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: manage-projects-with-redmine
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-10-13
 title: 'Installing Prosody XMPP Server on Ubuntu 9.04 (Jaunty)'
+relations:
+    platform:
+        key: how-to-install-prosody
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 

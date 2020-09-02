@@ -13,6 +13,11 @@ title: 'Install VNC on Ubuntu 18.04'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
  - '[RealVNC](https://www.realvnc.com/)'
+relations:
+    platform:
+        key: install-vnc
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.

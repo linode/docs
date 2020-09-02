@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-09-16
 title: Power Team Collaboration with eGroupware on Fedora 13
+relations:
+    platform:
+        key: collaborate-with-egroupware
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

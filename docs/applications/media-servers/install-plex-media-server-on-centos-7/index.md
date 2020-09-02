@@ -13,6 +13,11 @@ title: Install Plex Media Server on CentOS 7
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 dedicated_cpu_link: true
+relations:
+    platform:
+        key: how-to-install-plex
+        keywords:
+            - distribution: CentOS 7
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. Basic Plex features are [free](https://support.plex.tv/articles/202526943-plex-free-vs-paid/), while the paid Plex Pass adds additional features.
