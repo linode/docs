@@ -19,6 +19,11 @@ external_resources:
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
 - '[WP-CLI Tools](https://make.wordpress.org/cli/handbook/tools/)'
 aliases: ['websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-centos-8/']
+relations:
+    websites:
+        key: how-to-install-wordpress-using-wp-cli
+        keywords:
+           - distribution: CentOS 8
 ---
 
 WordPress is well-known for its rich content management feature set, ease of use, and quick installation time. The [WordPress command line interface (WP-CLI)](https://wp-cli.org/) provides useful commands and utilities to install, configure, and manage a WordPress site. This guide walks you through some common tasks you can complete using the WP-CLI.

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-03-23
 title: Ikiwiki on Fedora 12
+relations:
+    websites:
+        key: using-ikiwiki
+        keywords:
+           - distribution: fedora-12
 ---
 
 

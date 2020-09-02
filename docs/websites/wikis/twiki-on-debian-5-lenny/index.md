@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-01-28
 title: 'TWiki on Debian 5 (Lenny)'
+relations:
+    websites:
+        key: install-twiki
+        keywords:
+           - distribution: Debian 5
 ---
 
 

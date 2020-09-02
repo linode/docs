@@ -15,6 +15,11 @@ external_resources:
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
 aliases: ['websites/cms/install-wordpress-on-ubuntu-16-04/']
+relations:
+    websites:
+        key: how-to-install-wordpress
+        keywords:
+           - distribution: Ubuntu 16.04
 ---
 
 In this guide, you'll learn to how to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.

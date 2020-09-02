@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-09-09
 title: Confluence on Fedora 13
+relations:
+    websites:
+        key: using-confluence
+        keywords:
+           - distribution: Fedora 13
 ---
 
 

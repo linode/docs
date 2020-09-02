@@ -15,6 +15,11 @@ external_resources:
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
 aliases: ['websites/cms/install-wordpress-ubuntu-18-04/']
+relations:
+    websites:
+        key: how-to-install-wordpress
+        keywords:
+           - distribution: Ubuntu 18.04
 ---
 
 ## What is WordPress?

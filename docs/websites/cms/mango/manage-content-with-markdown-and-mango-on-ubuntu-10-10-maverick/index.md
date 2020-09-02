@@ -12,6 +12,11 @@ modified_by:
 published: 2011-04-05
 title: 'Manage Content with Markdown and Mango on Ubuntu 10.10 (Maverick)'
 deprecated: true
+relations:
+    websites:
+        key: manage-content-with-markdown-and-mango
+        keywords:
+           - distribution: Ubuntu 10.10
 ---
 
 Mango is a simple static content management system for publishing blogs from content stored in plain text files. Built as a dynamic web application using components from the Django framework, Mango is simple to deploy and administer and uses the Markdown lightweight markup language to process text. This guide describes the process for configuring a Mango-based site using the Apache HTTP Server and `mod_wsgi` to handle the dynamic aspects of the website.

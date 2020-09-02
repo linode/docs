@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-02-05
 title: 'Magento on Ubuntu 9.10 (Karmic)'
+relations:
+    websites:
+        key: how-to-install-magento
+        keywords:
+           - distribution: Ubuntu 9.10
 ---
 
 Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/) and offers the user a wide variety of options.

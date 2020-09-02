@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-03-08
 title: Using Apache for Proxy and Clustering Services on Fedora 12
+relations:
+    websites:
+        key: how-to-install-phpbb
+        keywords:
+           - distribution: Fedora 12
 ---
 
 

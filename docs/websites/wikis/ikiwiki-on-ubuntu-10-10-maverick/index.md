@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-04-05
 title: 'Ikiwiki on Ubuntu 10.10 (Maverick)'
+relations:
+    websites:
+        key: using-ikiwiki
+        keywords:
+           - distribution: Ubuntu 10.10
 ---
 
 

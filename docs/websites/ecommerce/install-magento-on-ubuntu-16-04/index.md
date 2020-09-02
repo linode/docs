@@ -13,6 +13,11 @@ title: Install Magento on Ubuntu 16.04
 external_resources:
  - '[Magento Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)'
  - '[Magento Resources Library](https://magento.com/resources)'
+relations:
+    websites:
+        key: how-to-install-magento
+        keywords:
+           - distribution: Ubuntu 16.04
 ---
 
 In this guide you'll learn how to install Magento on Ubuntu 16.04. Magento Community Edition (CE) is a free, open-source e-commerce platform. It's one of the most popular solutions for self-hosted online stores due to its simple yet powerful admin panel and large developer community.

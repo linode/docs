@@ -18,6 +18,11 @@ external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
 - '[WP-CLI Tools](https://make.wordpress.org/cli/handbook/tools/)'
+relations:
+    websites:
+        key: how-to-install-wordpress-using-wp-cli
+        keywords:
+           - distribution: Ubuntu 18.04
 ---
 
 Everyone is probably familiar with WordPress and its renowned 5-minute install routine. It's simple and works without fuss. But when you have multiple sites to manage, repeating the same routine can waste plenty of time which you could have used elsewhere.

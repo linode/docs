@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-02-23
 title: Ikiwiki on Arch Linux
+relations:
+    websites:
+        key: using-ikiwiki
+        keywords:
+           - distribution: Arch
 ---
 
 

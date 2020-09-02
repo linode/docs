@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-04-05
 title: Discussion Forums with phpBB on Fedora 14
+relations:
+    websites:
+        key: how-to-install-phpbb
+        keywords:
+           - distribution: Fedora 14
 ---
 
 

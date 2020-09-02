@@ -17,6 +17,11 @@ external_resources:
  - '[Drush Commands](https://docs.drush.org/en/9.x/)'
  - '[Backup and Migrate](https://www.drupal.org/docs/8/modules/backup-and-migrate/howto-for-backup-and-migrate)'
 aliases: ['websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-centos-8/']
+relations:
+    websites:
+        key: how-to-install-drupal-themes
+        keywords:
+           - distribution: centOS 8
 ---
 
 [Drush](https://www.drush.org/) is a command line tool for creating, administrating, and modifying Drupal websites. This tutorial uses Drush to install themes and modules. It will also briefly cover backups and migrations for Drupal websites.

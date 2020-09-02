@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-01-31
 title: 'Ikiwiki on Debian 5 (Lenny)'
+relations:
+    websites:
+        key: using-ikiwiki
+        keywords:
+           - distribution: Debian 5
 ---
 
 

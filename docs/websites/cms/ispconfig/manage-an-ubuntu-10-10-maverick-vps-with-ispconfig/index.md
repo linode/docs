@@ -12,6 +12,11 @@ modified_by:
 published: 2010-10-29
 title: 'Manage an Ubuntu 10.10 (Maverick) Linode with ISPConfig'
 deprecated: true
+relations:
+    websites:
+        key: manage-a-linode-with-ISPConfig
+        keywords:
+           - distribution: Ubuntu 10.10
 ---
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
