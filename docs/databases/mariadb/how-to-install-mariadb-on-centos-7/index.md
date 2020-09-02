@@ -16,6 +16,11 @@ external_resources:
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
  - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
+relations:
+    platform:
+        key: how-to-install-mariadb
+        keywords:
+            - distribution: CentOS 7
 ---
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.
