@@ -15,6 +15,11 @@ published: 2015-02-04
 title: 'Installing Multicraft on Ubuntu'
 aliases: ['applications/game-servers/multicraft-on-ubuntu/']
 dedicated_cpu_link: true
+relations:
+    platform:
+        key: how-to-install-multicraft
+        keywords:
+            - distribution: Ubuntu
 ---
 
 ![Installing Multicraft on Ubuntu](Installing_Multicraft_on_Ubuntu_smg.jpg)

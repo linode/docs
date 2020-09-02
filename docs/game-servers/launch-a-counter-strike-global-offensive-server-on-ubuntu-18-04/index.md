@@ -15,6 +15,11 @@ aliases: ['applications/game-servers/csgo-server-debian-ubuntu/','applications/g
 external_resources:
   - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
 dedicated_cpu_link: true
+relations:
+    platform:
+        key: launch-counterstrike-server
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 ![Launch a Counter Strike: Global Offensive (CS:GO) server on Ubuntu 18.04](launch-a-counter-strike-global-offensive-1804.png "Launch a Counter Strike: Global Offensive server on Ubuntu 18.04")
