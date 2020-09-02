@@ -14,7 +14,7 @@ h1_title: 'Installing a Chef Server Workstation on Ubuntu 18.04'
 aliases: ['applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/']
 relations:
     platform:
-        key: how-to-install-chef-workstation
+        key: install-chef-workstation
         keywords:
             - distribution: Ubuntu 18.04
 ---
