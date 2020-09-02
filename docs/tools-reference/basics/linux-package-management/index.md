@@ -5,7 +5,7 @@ author:
 description: Guides for installing and managing software on major Linux operating systems on a Linode.
 keywords: ["Linux package management", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['using-linux/package-management/']
+aliases: ['/using-linux/package-management/','/tools-reference/linux-package-management/']
 modified: 2017-02-23
 modified_by:
   name: Linode
@@ -92,7 +92,7 @@ The first line specifies the Linode mirror for the Debian 8 (code named Jessie) 
 
 In general, one does not want to add new entries to `sources.list` without a lot of scrutiny and diligence, as updating the package cache with additional repositories and running upgrades can sometimes result in the installation of broken packages, unmet dependencies, and system instability. In Debian systems, downgrading is often difficult.
 
-For Debian systems, the repository names can either refer to the distribution code name (e.g., jessie for current-stable, stretch for testing, sid for unstable, wheezy for old-stable) or to a specific branch (e.g., oldstable, stable, testing, unstable). For more information about Debian versions and choosing a Debian version or branch, read the [Debian releases and branches page](http://www.us.debian.org/releases/).
+For Debian systems, the repository names can either refer to the distribution code name (e.g., Jessie for current-stable, stretch for testing, Sid for unstable, Wheezy for old-stable) or to a specific branch (e.g., oldstable, stable, testing, unstable). For more information about Debian versions and choosing a Debian version or branch, read the [Debian releases and branches page](http://www.us.debian.org/releases/).
 
 The component section of the line divides the repository based on how much support the developers of the operating system are able to offer for the contained packages (e.g. main vs. contrib), or if the software is considered "free-software" or simply freely-distributable (e.g., non-free).
 

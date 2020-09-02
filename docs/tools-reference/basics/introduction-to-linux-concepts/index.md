@@ -5,7 +5,7 @@ author:
 description: 'An introduction to Linux and Unix-like systems covering history, system architecture, and distribution characteristics.'
 keywords: ["Linux", "Unix-Like systems", "history"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['using-linux/linux-concepts/']
+aliases: ['/tools-reference/introduction-to-linux-concepts/','/using-linux/linux-concepts/']
 modified: 2013-12-19
 modified_by:
   name: Linode
@@ -323,7 +323,7 @@ Because we've been working with the Ubuntu 16.04 distribution so far, let's look
 
     apt-get install software
 
-Replace the word **software** in the command above with the package name for the software you want to install. There are thousands of different programs available to install on your server. If you search online for the software you need, you can find the correct package names to use with the APT installer. For example, if you searched for "ubuntu web server," you would find information about the Apache web server, and its package name, **apache2**.
+Replace the word **software** in the command above with the package name for the software you want to install. There are thousands of different programs available to install on your server. If you search online for the software you need, you can find the correct package names to use with the APT installer. For example, if you searched for "Ubuntu web server," you would find information about the Apache web server, and its package name, **apache2**.
 
 Run this command to install the web server Apache, which lets you display websites:
 
