@@ -17,6 +17,11 @@ contributor:
 external_resources:
 - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
 - '[Linux PAM Documentation](http://www.linux-pam.org/)'
+relations:
+    platform:
+        key: one-time-pass-for-2fa
+        keywords:
+            - distribution: CentOS 7
 ---
 !['Header Image: Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS7'](two-factor-authentication-centos-title.png)
 

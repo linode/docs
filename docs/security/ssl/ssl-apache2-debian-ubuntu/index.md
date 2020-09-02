@@ -13,6 +13,11 @@ published: 2014-11-19
 title: 'SSL Certificates with Apache on Debian & Ubuntu'
 external_resources:
  - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.4/)'
+relations:
+    platform:
+        key: ssl-certificate-apache
+        keywords:
+            - distribution: Debian/Ubuntu
 ---
 
 This guide will show you how to enable SSL to secure websites served through Apache on Debian and Ubuntu.

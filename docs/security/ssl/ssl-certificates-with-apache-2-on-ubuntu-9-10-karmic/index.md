@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-02-26
 title: 'SSL Certificates with Apache 2 on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: ssl-certificate-apache
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

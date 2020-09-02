@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-02-26
 title: SSL Certificates with Apache 2 on Fedora 12
+relations:
+    platform:
+        key: ssl-certificate-apache
+        keywords:
+            - distribution: Fedora 12
 ---
 
 

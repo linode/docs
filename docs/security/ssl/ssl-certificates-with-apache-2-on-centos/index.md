@@ -12,6 +12,11 @@ modified_by:
   name: Dave Russell
 published: 2010-02-26
 title: 'SSL Certificates with Apache 2 on CentOS'
+relations:
+    platform:
+        key: ssl-certificate-apache
+        keywords:
+            - distribution: CentOS 6
 ---
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [getting started guide](/docs/getting-started/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 installation guide](/docs/websites/apache/apache-2-web-server-on-centos-6). These steps should be performed via an SSH session to your Linode as the root user.

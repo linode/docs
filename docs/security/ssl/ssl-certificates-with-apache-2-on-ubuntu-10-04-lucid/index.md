@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-08-09
 title: 'SSL Certificates with Apache 2 on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: ssl-certificate-apache
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

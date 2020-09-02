@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-10-13
 title: 'How to Upgrade to Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: how-to-upgrade-ubuntu
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

@@ -13,6 +13,11 @@ title: 'SSL Certificates with Apache on CentOS 7'
 external_resources:
  - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)'
  - '[Setting up an SSL Secured Webserver with CentOS](http://wiki.centos.org/HowTos/Https)'
+relations:
+    platform:
+        key: ssl-certificate-apache
+        keywords:
+            - distribution: CentOS 7
 ---
 
 ![SSL Certificates with Apache on CentOS](SSL_Certificates_with_Apache_on_CentOS_7_smg.jpg)
