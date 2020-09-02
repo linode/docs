@@ -283,7 +283,7 @@ When you create a Linode, Network Helper creates your Linode's Network Interface
 {{< note >}}
 Before completing the steps in this section, ensure you:
 
-- have [created a LAN](0#create-a-vlan).
+- have [created a LAN](#create-a-vlan).
 - know the ID number of your existing Linode. You can find its ID number by sending a request to the [List Linodes](https://developers.linode.com/api/v4/linode-instances) endpoint.
 {{</ note >}}
 
