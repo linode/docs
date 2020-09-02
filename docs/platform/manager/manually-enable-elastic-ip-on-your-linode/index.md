@@ -523,12 +523,12 @@ PREFIX2="24"
     You should see a similar output:
 
     {{< output >}}
-inet 127.0.0.1/8 scope host lo
-inet6 ::1/128 scope host
-inet 192.0.2.0/24 brd 192.0.2.255 scope global dynamic eth0
-inet 203.0.113.0/24 scope global eth0:1
-inet6 2600:3c04::f03c:92ff:fe7f:5774/64 scope global dynamic mngtmpaddr
-inet6 fe80::f03c:92ff:fe7f:5774/64 scope link
+    inet 127.0.0.1/8 scope host lo
+    inet6 ::1/128 scope host
+    inet 192.0.2.0/24 brd 192.0.2.255 scope global dynamic eth0
+    inet 203.0.113.0/24 scope global eth0:1
+    inet6 2600:3c04::f03c:92ff:fe7f:5774/64 scope global dynamic mngtmpaddr
+    inet6 fe80::f03c:92ff:fe7f:5774/64 scope link
     {{</ output >}}
 
 1. Restart the FRR service.
