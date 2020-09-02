@@ -16,6 +16,11 @@ external_resources:
  - '[Using the Graphic Shell (Glish)](/docs/platform/manager/using-the-linode-graphical-shell-glish/)'
  - '[FreeBSD Handbook - Comparing BSD and Linux](https://www.freebsd.org/doc/en/articles/explaining-bsd/comparing-bsd-and-linux.html)'
  - '[FreeBSD Handbook - Linux® Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)'
+relations:
+    platform:
+        key: how-to-install-linux
+        keywords:
+            - distribution: FreeBSD
 ---
 
 ![Install FreeBSD on Linode](install-freebsd-on-linode.png "Install FreeBSD on Linode")

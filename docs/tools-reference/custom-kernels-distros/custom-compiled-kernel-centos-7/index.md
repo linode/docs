@@ -10,6 +10,11 @@ modified_by:
   name: Linode
 published: 2016-08-02
 title: 'Custom Compiled Kernel on CentOS 7'
+relations:
+    platform:
+        key: custom-compiled-kernel
+        keywords:
+            - distribution: CentOS 7
 ---
 
 ![Custom Compiled Kernel on CentOS](custom-compiled-kernel-on-centos-7.png "Custom compiled kernel on CentOS")

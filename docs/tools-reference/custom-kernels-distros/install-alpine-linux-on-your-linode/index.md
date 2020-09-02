@@ -16,6 +16,11 @@ contributor:
   link: http://github.com/andyleap
 external_resources:
 - '[Alpine Linux](http://www.alpinelinux.org/)'
+relations:
+    platform:
+        key: how-to-install-linux
+        keywords:
+            - distribution: Alpine
 ---
 
 ![Install Alpine Linux on your Linode](Install_Alpine_Linux_on_your_Linode_smg.png "Install Alpine Linux on your Linode")

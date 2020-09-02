@@ -16,6 +16,11 @@ contributor:
   link:
   external_resources:
   - '[CoreOS official documentation pages](https://coreos.com/docs/)'
+relations:
+    platform:
+        key: how-to-install-linux
+        keywords:
+            - distribution: CoreOS
 ---
 
 

@@ -13,6 +13,11 @@ title: Install and Configure NixOS on a Linode
 external_resources:
  - '[NixOS](https://nixos.org/nixos/manual/)'
  - '[Nixpkgs](https://nixos.org/nixpkgs/manual/)'
+relations:
+    platform:
+        key: how-to-install-linux
+        keywords:
+            - distribution: NixOS
 ---
 
 ![How to Install NixOS on Linode](nixos-title.png "How to Install NixOS on Linode")
