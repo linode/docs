@@ -16,7 +16,7 @@ external_resources:
  - '[Chef](http://www.chef.io)'
 relations:
     platform:
-        key: how-to-install-chef-workstation
+        key: install-chef-workstation
         keywords:
             - distribution: Ubuntu 14.04
 ---
