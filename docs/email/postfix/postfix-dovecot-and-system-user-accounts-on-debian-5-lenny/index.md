@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-02-17
 title: 'Postfix, Dovecot, and System User Accounts on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: postfix-dovecot-user-accounts
+        keywords:
+            - distribution: Debian 5
 ---
 
 

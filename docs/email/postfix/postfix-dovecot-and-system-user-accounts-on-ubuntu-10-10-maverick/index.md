@@ -13,6 +13,11 @@ published: 2010-12-07
 expiryDate: 2014-10-08
 title: 'Postfix, Dovecot, and System User Accounts on Ubuntu 10.10 (Maverick)'
 deprecated: true
+relations:
+    platform:
+        key: postfix-dovecot-user-accounts
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [basic email gateway with Postfix](/docs/email/postfix/gateway-ubuntu-10-10-maverick) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [email server with Postfix, MySQL and Dovecot](/docs/email/postfix/dovecot-mysql-ubuntu-10-10-maverick/).

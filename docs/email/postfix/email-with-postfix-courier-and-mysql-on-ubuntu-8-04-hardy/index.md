@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-09-22
 title: 'Email with Postfix, Courier and MySQL on Ubuntu 8.04 (Hardy)'
+relations:
+    platform:
+        key: email-postfix-courier-mysql
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 
@@ -28,19 +33,17 @@ We assume you've followed the steps outlined in our [getting started guide](/doc
 
 First, make sure you have the `universe` repositories enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
-{{< file >}}
-/etc/apt/sources.list
-{{< /file >}}
+{{< file "/etc/apt/sources.list" >}}
+deb <http://us.archive.ubuntu.com/ubuntu/> hardy main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy main restricted
 
-> deb <http://us.archive.ubuntu.com/ubuntu/> hardy main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy main restricted
->
-> deb <http://us.archive.ubuntu.com/ubuntu/> hardy-updates main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy-updates main restricted
->
-> deb <http://us.archive.ubuntu.com/ubuntu/> hardy universe deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy universe deb <http://us.archive.ubuntu.com/ubuntu/> hardy-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy-updates universe
->
-> deb <http://us.archive.ubuntu.com/ubuntu/> hardy multiverse deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy multiverse deb <http://us.archive.ubuntu.com/ubuntu/> hardy-updates multiverse deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy-updates multiverse
->
-> deb <http://security.ubuntu.com/ubuntu> hardy-security main restricted deb-src <http://security.ubuntu.com/ubuntu> hardy-security main restricted deb <http://security.ubuntu.com/ubuntu> hardy-security universe deb-src <http://security.ubuntu.com/ubuntu> hardy-security universe deb <http://security.ubuntu.com/ubuntu> hardy-security multiverse deb-src <http://security.ubuntu.com/ubuntu> hardy-security multiverse
+deb <http://us.archive.ubuntu.com/ubuntu/> hardy-updates main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy-updates main restricted
+
+deb <http://us.archive.ubuntu.com/ubuntu/> hardy universe deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy universe deb <http://us.archive.ubuntu.com/ubuntu/> hardy-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy-updates universe
+
+deb <http://us.archive.ubuntu.com/ubuntu/> hardy multiverse deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy multiverse deb <http://us.archive.ubuntu.com/ubuntu/> hardy-updates multiverse deb-src <http://us.archive.ubuntu.com/ubuntu/> hardy-updates multiverse
+
+deb <http://security.ubuntu.com/ubuntu> hardy-security main restricted deb-src <http://security.ubuntu.com/ubuntu> hardy-security main restricted deb <http://security.ubuntu.com/ubuntu> hardy-security universe deb-src <http://security.ubuntu.com/ubuntu> hardy-security universe deb <http://security.ubuntu.com/ubuntu> hardy-security multiverse deb-src <http://security.ubuntu.com/ubuntu> hardy-security multiverse
+{{< /file >}}
 
 If you had to enable new repositories, issue the following command to update your package lists:
 

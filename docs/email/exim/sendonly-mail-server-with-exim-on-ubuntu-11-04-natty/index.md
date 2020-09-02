@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-06-14
 title: 'Send-only Mail Server with Exim on Ubuntu 11.04 (Natty)'
+relations:
+    platform:
+        key: deploy-exim-sendonly-email
+        keywords:
+            - distribution: Ubuntu 11.04
 ---
 
 

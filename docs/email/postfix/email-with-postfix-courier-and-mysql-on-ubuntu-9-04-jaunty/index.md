@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-09-14
 title: 'Email with Postfix, Courier and MySQL on Ubuntu 9.04 (Jaunty)'
+relations:
+    platform:
+        key: email-postfix-courier-mysql
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 
@@ -28,17 +33,15 @@ We assume you've followed the steps outlined in our [getting started guide](/doc
 
 First, make sure you have the `universe` repositories enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
-{{< file >}}
-/etc/apt/sources.list
-{{< /file >}}
+{{< file "/etc/apt/sources.list" >}}
+ \#\# main & restricted repositories deb <http://us.archive.ubuntu.com/ubuntu/> jaunty main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> jaunty main restricted
 
-> \#\# main & restricted repositories deb <http://us.archive.ubuntu.com/ubuntu/> jaunty main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> jaunty main restricted
->
-> deb <http://security.ubuntu.com/ubuntu> jaunty-security main restricted deb-src <http://security.ubuntu.com/ubuntu> jaunty-security main restricted
->
-> \#\# universe repositories deb <http://us.archive.ubuntu.com/ubuntu/> jaunty universe deb-src <http://us.archive.ubuntu.com/ubuntu/> jaunty universe deb <http://us.archive.ubuntu.com/ubuntu/> jaunty-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> jaunty-updates universe
->
-> deb <http://security.ubuntu.com/ubuntu> jaunty-security universe deb-src <http://security.ubuntu.com/ubuntu> jaunty-security universe
+ deb <http://security.ubuntu.com/ubuntu> jaunty-security main restricted deb-src <http://security.ubuntu.com/ubuntu> jaunty-security main restricted
+
+ \#\# universe repositories deb <http://us.archive.ubuntu.com/ubuntu/> jaunty universe deb-src <http://us.archive.ubuntu.com/ubuntu/> jaunty universe deb <http://us.archive.ubuntu.com/ubuntu/> jaunty-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> jaunty-updates universe
+
+ deb <http://security.ubuntu.com/ubuntu> jaunty-security universe deb-src <http://security.ubuntu.com/ubuntu> jaunty-security universe
+{{< /file >}}
 
 If you had to enable new repositories, issue the following command to update your package lists:
 

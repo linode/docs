@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-05-03
 title: 'Send-only Mail Server with Exim on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: deploy-exim-sendonly-email
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-05-09
 title: 'Email with Citadel on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: email-with-citadel
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

@@ -16,6 +16,11 @@ external_resources:
  - '[Zimbra Community Documentation](http://www.zimbra.com/community/documentation.html)'
  - '[Zimbra Wiki](http://wiki.zimbra.com/index.php?title=Main_Page)'
  - '[Zimbra Developer Zone](http://www.zimbra.com/community/developer_zone.html)'
+relations:
+    platform:
+        key: zimbra-groupware
+        keywords:
+            - distribution: CentOS 5
 ---
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get the Open Source Edition installed on your CentOS 5 Linode.

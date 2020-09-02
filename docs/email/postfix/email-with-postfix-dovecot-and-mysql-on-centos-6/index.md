@@ -17,6 +17,11 @@ external_resources:
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Documentation Wiki](http://wiki.dovecot.org/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
+relations:
+    platform:
+        key: email-postfix-dovecot-mysql
+        keywords:
+            - distribution: CentOS 6
 ---
 
 ![Email with Postfix, Dovecot, and MySQL on CentOS](Email-with-Postfix-Dovecot-and-MySQL-on-CentOS-smg.jpg)

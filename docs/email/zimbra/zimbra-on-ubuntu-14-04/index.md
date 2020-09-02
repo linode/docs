@@ -14,6 +14,11 @@ contributor:
     name: Bill Bardon
 external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
+relations:
+    platform:
+        key: zimbra-groupware
+        keywords:
+            - distribution: Ubuntu 14.04
 ---
 
 ![Install Zimbra on Ubuntu](Install_Zimbra_Open_Source_Edition_on_Ubuntu_1404_smg.jpg)

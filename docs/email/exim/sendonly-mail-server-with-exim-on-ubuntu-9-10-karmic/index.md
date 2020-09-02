@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-12-17
 title: 'Send-only Mail Server with Exim on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: deploy-exim-sendonly-email
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

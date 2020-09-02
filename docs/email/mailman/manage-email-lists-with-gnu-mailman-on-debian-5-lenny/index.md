@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-02-12
 title: 'Manage Email Lists with GNU Mailman on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: use-gnu-mailman
+        keywords:
+            - distribution: Debian 5
 ---
 
 

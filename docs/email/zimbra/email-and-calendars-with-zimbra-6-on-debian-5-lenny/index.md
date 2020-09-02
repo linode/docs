@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-04-26
 title: 'Email and Calendars with Zimbra 6 on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: zimbra-groupware
+        keywords:
+            - distribution: Debian 5
 ---
 
 

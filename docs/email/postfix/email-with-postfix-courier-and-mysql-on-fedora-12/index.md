@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-05-26
 title: 'Email with Postfix, Courier and MySQL on Fedora 12'
+relations:
+    platform:
+        key: email-postfix-courier-mysql
+        keywords:
+            - distribution: Fedora 12
 ---
 
 
