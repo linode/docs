@@ -66,6 +66,61 @@ Each Object Storage key pair on the Linode account has complete access to all of
 
 {{< content "object-storage-key-pair-shortguide" >}}
 
+## Limited Access Key Pairs
+
+Limited Access Key Pairs can be used to assign limited access to a single bucket or a group of buckets, instead of the full account access that a [standard key pair](#object-storage-key-pairs) provides. Permissions for limited Limited Access Keys are further divided between `read_write` and `read_only` permissions, which each allow access to a subset of s3 actions.
+
+`read_only` permissions gives access to:
+
+- `s3:GetBucketAcl`
+- `s3:GetBucketCORS`
+- `s3:GetBucketLocation`
+- `s3:GetBucketLogging`
+- `s3:GetBucketNotification`
+- `s3:GetBucketPolicy`
+- `s3:GetBucketTagging`
+- `s3:GetBucketVersioning`
+- `s3:GetBucketWebsite`
+- `s3:GetLifecycleConfiguration`
+- `s3:GetObjectAcl`
+- `s3:GetObject`
+- `s3:GetObjectTorrent`
+- `s3:GetReplicationConfiguration`
+- `s3:GetObjectVersionAcl`
+- `s3:GetObjectVersion`
+- `s3:GetObjectVersionTorrent`
+- `s3:ListBucketMultipartUploads`
+- `s3:ListBucket`
+- `s3:ListBucketVersions`
+- `s3:ListMultipartUploadParts`
+
+
+`read_write` permissions gives access to all of the `read_only` permissions, as well as:
+
+- `s3:AbortMultipartUpload`
+- `s3:DeleteBucketWebsite`
+- `s3:DeleteObject`
+- `s3:DeleteObjectVersion`
+- `s3:DeleteReplicationConfiguration`
+- `s3:PutBucketCORS`
+- `s3:PutBucketLogging`
+- `s3:PutBucketNotification`
+- `s3:PutBucketTagging`
+- `s3:PutBucketVersioning`
+- `s3:PutBucketWebsite`
+- `s3:PutLifecycleConfiguration`
+- `s3:PutObject`
+- `s3:PutObjectAcl`
+- `s3:PutObjectVersionAcl`
+- `s3:PutReplicationConfiguration`
+- `s3:RestoreObject`
+
+Currently, Limited Access Key Pairs are only available using the [Linode API](https://developers.linode.com/api/v4/object-storage-keys/#post).
+
+{{< note >}}
+Limited Access Keys are able to list all Buckets under the Linode user account. Limited access keys do not otherwise have access to buckets on a single user account.
+{{< /note >}}
+
 ## Bucket Names
 
 Bucket names, also referred to as labels, need to be unique within the same cluster, including buckets on other users' Linode accounts. This also means if you reserve a bucket name in one cluster, it is not automatically reserved in another. For example, if you have `my-bucket.us-east-1.linode.com` and want `my-bucket.eu-central-1.linode.com` you must manually reserve them both. They are separate clusters and not guaranteed. If the label you enter is already in use, then choose a different label. Additionally, bucket labels have the following rules:
