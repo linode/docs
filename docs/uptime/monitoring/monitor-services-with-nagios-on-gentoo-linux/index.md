@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-11-15
 title: Monitor Services with Nagios on Gentoo Linux
+relations:
+    platform:
+        key: install-nagios-monitoring
+        keywords:
+            - distribution: Gentoo
 ---
 
 

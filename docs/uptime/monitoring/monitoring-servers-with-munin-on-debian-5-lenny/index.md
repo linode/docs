@@ -13,6 +13,11 @@ modified_by:
 published: 2010-01-07
 expiryDate: 2013-10-08
 title: 'Monitoring Servers with Munin on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: install-munin-monitoring
+        keywords:
+            - distribution: Debian 5
 ---
 
 

@@ -14,6 +14,11 @@ published: 2010-04-17
 title: Webalizer on Centos 5
 external_resources:
  - '[Webalizer Homepage](http://www.mrunix.net/webalizer/)'
+relations:
+    platform:
+        key: using-webalizer-analytics
+        keywords:
+            - distribution: CentOS 5
 ---
 
 Webalizer is an industry standard statistics generation tool. It is useful to analyze traffic to your web server while still remaining lightweight enough not to hinder performance. Webalizer can even identify your user base using GeoIP services.

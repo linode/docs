@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-10-25
 title: Monitor System Logs with Logwatch on Fedora 13
+relations:
+    platform:
+        key: install-logwatch-monitoring
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-05-26
 title: 'Monitor Services with Nagios on Ubuntu 10.04 (Lucid)'
+relations:
+    platform:
+        key: install-nagios-monitoring
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

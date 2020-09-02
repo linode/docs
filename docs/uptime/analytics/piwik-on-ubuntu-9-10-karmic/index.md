@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-12-23
 title: 'Piwik on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: using-piwik-analytics
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

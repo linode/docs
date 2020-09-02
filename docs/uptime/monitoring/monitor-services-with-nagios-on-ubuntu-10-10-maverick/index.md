@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-11-15
 title: 'Monitor Services with Nagios on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: install-nagios-monitoring
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 
