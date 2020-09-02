@@ -12,6 +12,11 @@ modified_by:
   name: Alex Fornuto
 published: 2009-08-11
 title: Use MySQL Relational Databases on CentOS 5
+relations:
+    platform:
+        key: use-mysql-relationaldb
+        keywords:
+            - distribution: CentOS 5
 ---
 
 

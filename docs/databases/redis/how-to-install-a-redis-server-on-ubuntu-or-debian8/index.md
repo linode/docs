@@ -20,6 +20,11 @@ external_resources:
  - '[Redis Configuration](http://redis.io/topics/config)'
  - '[Redis Persistence](http://redis.io/topics/persistence)'
  - '[Redis Security](http://redis.io/security)'
+relations:
+    platform:
+        key: how-to-install-redis
+        keywords:
+            - distribution: Ubuntu/Debian
 ---
 
 

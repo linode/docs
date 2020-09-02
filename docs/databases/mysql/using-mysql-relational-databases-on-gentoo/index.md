@@ -12,6 +12,11 @@ modified_by:
   name: Alex Fornuto
 published: 2011-01-21
 title: Using MySQL Relational Databases on Gentoo
+relations:
+    platform:
+        key: use-mysql-relationaldb
+        keywords:
+            - distribution: Gentoo
 ---
 
 MySQL is a relational database management system (RDBMS) that is used as a backend for countless web and server applications. Originally released in 1995, it remains a popular choice for developers as a database server.

@@ -16,6 +16,11 @@ external_resources:
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
  - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
+relations:
+    platform:
+        key: how-to-install-mysql
+        keywords:
+            - distribution: CentOS 6
 ---
 
 ![How to Install MySQL on CentOS 6](How_to_Install_MySQL_on_CentOS_6_smg.jpg)

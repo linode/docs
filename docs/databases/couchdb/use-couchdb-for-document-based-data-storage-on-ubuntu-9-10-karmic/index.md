@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-02-18
 title: 'Use CouchDB for Document Based Data Storage on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: couchdb-document-data-storage
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

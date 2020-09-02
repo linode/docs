@@ -12,6 +12,11 @@ modified_by:
   name: Alex Fornuto
 published: 2010-12-07
 title: Use MySQL Relational Databases on Fedora 14
+relations:
+    platform:
+        key: use-mysql-relationaldb
+        keywords:
+            - distribution: Fedora 14
 ---
 
 

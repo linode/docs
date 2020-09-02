@@ -14,6 +14,11 @@ title: 'How to Install PostgreSQL on Ubuntu 16.04'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
+relations:
+    platform:
+        key: install-postrgesql-database
+        keywords:
+            - distribution: Ubuntu 16.04
 ---
 
 ![How to Install PostgreSQL on Ubuntu 16.04](how-to-install-postgresql-on-ubuntu-16-04.jpg "How to Install PostgreSQL on Ubuntu 16.04")

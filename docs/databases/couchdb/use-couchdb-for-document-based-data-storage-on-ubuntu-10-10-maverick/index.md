@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-12-06
 title: 'Use CouchDB for Document Based Data Storage on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: couchdb-document-data-storage
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

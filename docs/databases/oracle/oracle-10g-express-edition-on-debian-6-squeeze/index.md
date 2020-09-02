@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-02-23
 title: 'Oracle 10g Express Edition on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: install-oracle10g-express
+        keywords:
+            - distribution: Debian 6
 ---
 
 Oracle 10g is a robust, enterprise-grade relational database management system (RDBMS). The Oracle database platform was the first commercially available SQL-based DBMS, and is a great choice for applications that require large, distributed databases. This guide will help you get started with Oracle 10g XE (Express Edition) on your Debian 6 (Squeeze) Linode.

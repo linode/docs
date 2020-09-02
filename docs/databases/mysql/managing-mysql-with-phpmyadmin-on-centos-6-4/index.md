@@ -14,6 +14,11 @@ title: 'How to Install and Configure phpMyAdmin on CentOS 6'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
+relations:
+    platform:
+        key: manage-mysql-with-phpmyadmin
+        keywords:
+            - distribution: CentOS 6
 ---
 
 ![Install and Configure phpMyAdmin on CentOS 6](how-to-install-and-configure-phpmyadmin-on-centos-6.png "Install and Configure phpMyAdmin on CentOS 6")

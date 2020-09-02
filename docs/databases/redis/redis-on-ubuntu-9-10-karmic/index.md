@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-08-05
 title: 'Redis on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

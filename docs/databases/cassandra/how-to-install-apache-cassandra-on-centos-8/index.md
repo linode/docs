@@ -19,6 +19,11 @@ external_resources:
    - '[Cassandra .yaml Configuration File Overview](http://cassandra.apache.org/doc/latest/configuration/cassandra_config_file.html)'
    - '[Recommended Production Settings For Apache Cassandra](http://docs.datastax.com/en/landing_page/doc/landing_page/recommendedSettings.html)'
    - '[The Cassandra Query Language (CQL)](http://cassandra.apache.org/doc/latest/cql/index.html)'
+relations:
+    platform:
+        key: install-apache-cassandra
+        keywords:
+            - distribution: CentOS 8
 ---
 
 After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running CentOS 8. This tutorial will cover basic configuration options, as well as how to harden and secure your database.

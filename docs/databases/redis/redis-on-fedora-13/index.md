@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-08-05
 title: Redis on Fedora 13
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

@@ -15,6 +15,11 @@ title: 'Manage MySQL with phpMyAdmin on Ubuntu 10.10 (Maverick)'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
+relations:
+    platform:
+        key: manage-mysql-with-phpmyadmin
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

@@ -16,6 +16,11 @@ external_resources:
  - '[Redis Configuration](http://redis.io/topics/config)'
  - '[Redis Persistence](http://redis.io/topics/persistence)'
  - '[Redis Security](http://redis.io/topics/security)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: CentOS 7
 ---
 
 ![Deploy Redis on CentOS 7](install-configure-redis-centos.png "Deploy Redis on CentOS 7")

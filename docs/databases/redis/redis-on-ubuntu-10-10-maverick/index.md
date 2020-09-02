@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-10-28
 title: 'Redis on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: use-postrgesql-database
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

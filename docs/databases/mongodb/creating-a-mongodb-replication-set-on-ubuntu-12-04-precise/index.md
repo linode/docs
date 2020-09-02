@@ -17,6 +17,11 @@ external_resources:
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
  - '[Getting Started with the mongo Shell](https://docs.mongodb.com/manual/tutorial/getting-started-with-the-mongo-shell/)'
  - '[Replication Introduction](https://docs.mongodb.com/manual/core/replication-introduction/)'
+relations:
+    platform:
+        key: create-mongodb-replica-set
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
