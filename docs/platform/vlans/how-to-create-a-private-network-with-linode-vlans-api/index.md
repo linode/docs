@@ -41,7 +41,7 @@ Linodes are connected to Private and Public Networks via their Network Interface
 
  - a Public Network via a Public Interface. In this case, the Linode has public IPv4 and IPv6 addresses. This describes a Linode's default Network Interface configurations when it is first deployed.
 
-Refer to the [Common Use Cases for Linode LAN](/docs/networking/vlan/common-linode-vlan-use-cases/) guide to view graphics demonstrating example scenarios using the Network Interface configurations described above.
+Refer to the [Common Use Cases for Linode LAN] guide to view graphics demonstrating example scenarios using the Network Interface configurations described above.
 
 ## In this Guide
 This guide shows you how to use [Linode's APIv4](https://developers.linode.com/api/v4) to create a Private LAN, attach a Linode to the LAN, and configure a Linode to communicate over the LAN. The steps in this guide can be adopted to create your own Private LAN for your specific use case.
