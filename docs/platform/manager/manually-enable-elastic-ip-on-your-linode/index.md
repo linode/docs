@@ -453,36 +453,68 @@ set large-community 65$DC_ID5:13:2
 
 1. Configure the Linode's interface(s) with the Elastic IP.
 
-    > **Debian 10, Ubuntu 18.04 and 20.04**
+    > **Debian 10 & Ubuntu 18.04**
     >
     > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
     > {{< file >}}
 up   ip addr add $ELASTIC_IP/24 dev eth0 label eth0:1
 down ip addr del $ELASTIC_IP/24 dev eth0 label eth0:1
         {{</ file >}}
-    > **CentOS 8**
-    >
-    > Edit your Linode's `/etc/sysconfig/network-scripts/ifcfg-eth0` file with the following entries. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
-    > {{< file >}}
-up   ip addr add $ELASTIC_IP/24 dev eth0 label eth0:1
-down ip addr del $ELASTIC_IP/24 dev eth0 label eth0:1
-        {{</ file >}}
+    >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
 
-    {{< note >}}
-If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
-
-{{< file >}}
+    >{{< file >}}
 up   ip addr add $ELASTIC_IP/24 dev eth0 label eth0:1
 down ip addr del $ELASTIC_IP/24 dev eth0 label eth0:1
 up   ip addr add $ELASTIC_IP_2/24 dev eth0 label eth0:2
 down ip addr del $ELASTIC_IP_2/24 dev eth0 label eth0:2
-{{</ file >}}
-    {{</ note >}}
+        {{</ file >}}
+    > **Ubuntu 20.04**
+    >
+    > Edit your Linode's `/etc/systemd/network/05-eth0.network` file by adding an `Address` entry for the Elastic IP. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
+    > {{< file >}}
+[Match]
+Name=eth0
+...
+Address=$ELASTIC_IP/24
+        {{</ file >}}
+    >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
+
+    >{{< file >}}
+Address=$ELASTIC_IP/24
+Address=$ELASTIC_IP_2/24
+    {{</ file >}}
+    > **CentOS 8**
+    >
+    > Edit your Linode's `/etc/sysconfig/network-scripts/ifcfg-eth0` file with the following entry. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
+    > {{< file >}}
+IPADDR1=$ELASTIC_IP
+PREFIX1="24"
+        {{</ file >}}
+    >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
+
+    >{{< file >}}
+IPADDR1=$ELASTIC_IP
+PREFIX1="24"
+
+IPADDR2=$ELASTIC_IP_2
+PREFIX2="24"
+    {{</ file >}}
 
 1. Apply the `eth0` network interface configuration.
 
+    > **Debian 10, Ubuntu 18.04 & CentOS 8**
+    >
+    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
+    >
+    >
         sudo ifdown eth0
         sudo ifup eth0
+    > **Ubuntu 20.04**
+    >
+    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
+    >
+    >
+        systemctl restart systemd-networkd
 
 1. Ensure that your network interface configurations have been applied as expected.
 
@@ -491,12 +523,12 @@ down ip addr del $ELASTIC_IP_2/24 dev eth0 label eth0:2
     You should see a similar output:
 
     {{< output >}}
-    inet 127.0.0.1/8 scope host lo
-    inet6 ::1/128 scope host
-    inet 192.0.2.0/24 brd 192.0.2.255 scope global dynamic eth0
-    inet 203.0.113.0/24 scope global eth0:1
-    inet6 2600:3c04::f03c:92ff:fe7f:5774/64 scope global dynamic mngtmpaddr
-    inet6 fe80::f03c:92ff:fe7f:5774/64 scope link
+inet 127.0.0.1/8 scope host lo
+inet6 ::1/128 scope host
+inet 192.0.2.0/24 brd 192.0.2.255 scope global dynamic eth0
+inet 203.0.113.0/24 scope global eth0:1
+inet6 2600:3c04::f03c:92ff:fe7f:5774/64 scope global dynamic mngtmpaddr
+inet6 fe80::f03c:92ff:fe7f:5774/64 scope link
     {{</ output >}}
 
 1. Restart the FRR service.
