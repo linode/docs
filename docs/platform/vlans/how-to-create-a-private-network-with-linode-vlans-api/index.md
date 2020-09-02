@@ -21,7 +21,7 @@ Linode’s Private Local Area Network (LAN) feature allows you to create private
 
 ### Limitations
 
-- Linode Private LAN is currently in a closed Beta. In order to use this feature, you must sign up through our [Green Light Beta Program](https://www.linode.com/green-light/).
+- Linode Private LAN is currently in Beta. In order to use this feature, you must sign up through our [Green Light Beta Program](https://www.linode.com/green-light/).
 
 - Linode Private LAN is available in Next Generation Network (NGN) [data centers](https://www.linode.com/global-infrastructure/). This includes Toronto (`ca-central`), Mumbai (`ap-west`), and Sydney (`ap-southeast`).
 
@@ -35,7 +35,7 @@ Linode’s Private Local Area Network (LAN) feature allows you to create private
 
 Linodes are connected to Private and Public Networks via their Network Interfaces. A single Linode can be connected to:
 
- - both a Private and a Public Network via a Private and a Public Interface. In this case, the Linode has public IPv4 and IPv6 addresses and a private IPv4 address that it can use to communicate over the LAN.
+ - both a Private and a Public Network via a Private and a Public Interface. In this case, the Linode has public IPv4 and IPv6 addresses and a private IPv4 and/or IPv6 address address that it can use to communicate over the LAN.
 
  - a Private LAN via a Private Interface. In this case, the Linode has a private IPv4 address that it can use to communicate over the LAN.
 
@@ -51,7 +51,7 @@ This guide shows you how to use [Linode's APIv4](https://developers.linode.com/a
 
 In this section, you create a LAN using the APIv4's Networking endpoints. In the examples, when creating the LAN, you do not make use of all available endpoint parameters. To view all available parameters, see the APIv4 reference’s Create LANs documentation. Before attaching a Linode to a LAN, the LAN must exist.
 
-1. To create a LAN, send a POST request to the `/networking/vlans` endpoint. Replace the values for `description` and `cidr_block` with your own.
+1. To create a LAN, send a POST request to the `/networking/vlans` endpoint. Replace the values for `description`, `cidr_block`, and `region` with your own.
 
     {{< note >}}
 The `cidr_block` parameter allows for simple IP Address Management (IPAM) for this LAN. If specified, new Interfaces associated with this LAN are assigned a private IPv4 address from within the `cidr_block` range.
@@ -91,7 +91,7 @@ For easy reuse, you can store the VLAN ID in an environment variable to referenc
 After creating a LAN, you can begin assigning Linodes to it. In this section, you use the [Create Linode](https://api.linode.com/v4/linode/instances) endpoint to create a new Linode that is attached to the VLAN you created in the previous section.
 
 {{< note >}}
-Your Linode must exist in the same data center region as the LAN you created in the previous section.
+Your Linode should be created in the same data center region as the LAN you created in the previous section.
 {{</ note >}}
 
 1. Create a new Linode attached to a LAN.
@@ -120,8 +120,8 @@ Your Linode must exist in the same data center region as the LAN you created in 
 
     > This example creates a Linode with **two Network Interfaces**.
      >
-     > - The `eth0` Interface is a **Public** Interface. This Interface gives you access to external Networks (like the Internet). A Network Interface of `type: default` creates a Public Network Interface.
-     > - The `eth1` Interface is a **Private** Interface and can securely communicate with any other Linode connected to the same LAN.  A Network Interface of `type: additional` creates a Private Network Interface.
+     > - The `eth0` Interface (`type: default`) is a Public Interface. This Interface gives you access to external Networks (like the Internet).
+     > - The `eth1` Interface (`type: additional`) is a **Private** Interface and can securely communicate with any other Linode connected to the same LAN.
 
     > **Linode with a Private Network Interface (no Public Interface)**:
     >
@@ -512,7 +512,7 @@ Now that your Private LAN is configured, move on to the [Test Your Private Netwo
 
 ### Configure a Linode with a Private Interface
 
-The steps in this section are for a Linode that has a Private Network Interface that is attached to a LAN and does **not** have a Public Network Interface. Linodes under this circumstance are not reachable via SSH and their Public IPv4 address, so you must use the [Linode Shell (Lish)](https://www.linode.com/docs/platform/manager/using-the-linode-shell-lish/) to manually configure its Private Network Interface. Lish provides console access to your Linodes, which allows you to connect to a Linode even when you are unable to connect to it directly via SSH
+The steps in this section are for a Linode that has a Private Network Interface that is attached to a LAN and does **not** have a Public Network Interface. Linodes under this circumstance are not reachable via SSH and their Public IPv4 address, so you must use the [Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) to manually configure its Private Network Interface. Lish provides console access to your Linodes, which allows you to connect to a Linode even when you are unable to connect to it directly via SSH
 
 1. Disable Network Helper for your Linode. This requires you to send a request to the [Update Configuration Profile](https://developers.linode.com/api/v4/linode-instances-linode-id-configs-config-id/#put) endpoint to change the `network` field's value from `true` to `false`. Ensure you replace `{linodeId}` and `{configId}` with your own ID numbers.
 
@@ -659,7 +659,7 @@ Once you have created your Private Network, verify that you can communicate from
 
 1. Connect to your Linode via SSH, if you have not done so already.
 
-        ssh username@1920.2.0
+        ssh username@192.0.2.0
 
 1. Ping another Linode within the Private VLAN via its Private IP address.
 
