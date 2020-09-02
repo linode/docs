@@ -2,26 +2,21 @@
 author:
   name: Edward Angert
   email: docs@linode.com
-description: "Install Certbot to obtain TLS certificates on a CentOS 7 or Red Hat server."
+description: "Install Certbot to obtain TLS certificates on a Debian server."
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-28
 modified: 2018-06-28
-aliases: ['quick-answers/websites/certbot-shortguide-centos/']
+aliases: ['/quick-answers/websites/certbot-shortguide-debian/']
 modified_by:
   name: Linode
-title: 'Install Certbot for TLS on CentOS'
-hiddenguide: true
+title: 'Install Certbot for TLS on Debian'
+headless: true
 ---
-
-1.  Enable the EPEL repository:
-
-        sudo yum install epel-release
-        sudo yum update
 
 1.  Install the Certbot and web server-specific packages, then run Certbot:
 
-        sudo yum install python2-certbot-nginx nginx
+        sudo apt install certbot python-certbot-nginx
         sudo certbot --nginx
 
 1.  Certbot will ask for information about the site. The responses will be saved as part of the certificate:
@@ -29,7 +24,7 @@ hiddenguide: true
     {{< output >}}
 # sudo certbot --nginx
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
-Plugins selected: Authenticator apache, Installer apache
+Plugins selected: Authenticator nginx, Installer nginx
 
 Which names would you like to activate HTTPS for?
 -------------------------------------------------------------------------------
@@ -50,8 +45,10 @@ Certbot recommends pointing your web server configuration to the default certifi
 
     Finally, Certbot will update your web server configuration so that it uses the new certificate, and also redirects HTTP traffic to HTTPS if you chose that option.
 
-1.  If you have a firewall configured on your Linode, you can add a firewall rule to allow incoming and outgoing connections to the HTTPS service. On CentOS, *firewalld* is the default tool for managing firewall rules. Configure firewalld for HTTP and HTTPS traffic:
+1.  If you have a firewall configured on your Linode, you can add a firewall rule to allow incoming and outgoing connections to the HTTPS service. On Debian, *UFW* is a commonly used and simple tool for managing firewall rules. Install and configure UFW for HTTP and HTTPS traffic:
 
-        sudo firewall-cmd --zone=public --permanent --add-service=http
-        sudo firewall-cmd --zone=public --permanent --add-service=https
-        sudo firewall-cmd --reload
+        sudo apt install ufw
+        sudo systemctl start ufw && sudo systemctl enable ufw
+        sudo ufw allow http
+        sudo ufw allow https
+        sudo ufw enable
