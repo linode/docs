@@ -190,32 +190,6 @@ net.ipv6.conf.all.forwarding=1
 
         sudo sysctl -p
 
-1. Enable the MPLS kernel modules by editing your `/etc/modules-load.d/modules.conf` file to add the following lines.
-
-      {{< file "/etc/modules-load.d/modules.conf">}}
-# Load MPLS Kernel Modules
-mpls_router
-mpls_iptunnel
-        {{</ file >}}
-
-1. Load the MPLS kernel modules on your system.
-
-        sudo modprobe mpls-router mpls-iptunnel
-
-1. Enable MPLS forwarding by editing your `/etc/sysctl.conf` file and adding the lines in the example file.
-
-    {{< note >}}
-You can add a line similar to `net.mpls.conf.eth0.input=1` for each interface you will use with MPLS.
-    {{</ note >}}
-
-      {{< file "/etc/sysctl.conf">}}
-# Enable MPLS Label processing on all interfaces
-net.mpls.conf.eth0.input=1
-net.mpls.conf.eth1.input=1
-net.mpls.conf.eth2.input=1
-net.mpls.platform_labels=100000
-        {{</ file >}}
-
 1. Install the FRR service files to your system.
 
         sudo install -m 644 tools/frr.service /etc/systemd/system/frr.service
@@ -388,9 +362,9 @@ Prior to starting this section, ensure you have received the information listed 
 
 | Value to replace in the configuration template | Description |
 | :-------: | :-------: |
-| `$NEIGHBOR_IP` | This is the Linode's IPv4 address (non-Elastic IP address), which determines the `peer-group HOST` setting. Enter the first 3 octets of the Linode's IPv4 address followed by a `1`. For example, if the Linode's IPv4 address is `192.0.2.0`, the value to enter is `192.0.2.1`.|
-| `$DC_ID` | The ID number of this data center. |
-| `$ELASTIC_IP` | The Elastic IP address to assign to this Linode. |
+| `NEIGHBOR_IP` | This is the Linode's IPv4 address (non-Elastic IP address), which determines the `peer-group HOST` setting. Enter the first 3 octets of the Linode's IPv4 address followed by a `1`. For example, if the Linode's IPv4 address is `192.0.2.0`, the value to enter is `192.0.2.1`.|
+| `DC_ID` | The ID number of this data center. |
+| `ELASTIC_IP` | The Elastic IP address to assign to this Linode. |
 
 When you configure Elastic IP you need to define the Linode's _ROLE_ within the configuration as `primary` or `secondary`.
 
@@ -399,30 +373,30 @@ When you configure Elastic IP you need to define the Linode's _ROLE_ within the 
 
 | Information | Value to replace in the configuration template |
 | :-------: | :-------: |
-| This Linode's role (`primary` or `secondary`) | `$ROLE` |
+| This Linode's role (`primary` or `secondary`) | `ROLE` |
 
 {{</ note >}}
 
-1. The template below includes the Elastic IP configurations to apply to your Linode. Ensure you replace any instances of `$NEIGHBOR_IP`, `$DC_ID`, and `$ROLE` with the values sent to you by Linode support and by referencing the table above. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the VTY interactive shell.
+1. The template below includes the Elastic IP configurations to apply to your Linode. Ensure you replace any instances of `[NEIGHBOR_IP]`, `[DC_ID]`, and `[ROLE]` with the values sent to you by Linode support and by referencing the table above. Store the template with your replaced values somewhere that you can easily access later. In the next step, you copy the contents of the template and paste them into the VTY interactive shell.
 
       {{< file "~/elastic.conf">}}
 hostname atl-bgp-1.kfubes.com
 
-router bgp 65$DC_ID
+router bgp 65[DC_ID]5
 coalesce-time 1000
 bgp bestpath as-path multipath-relax
 neighbor HOST peer-group
 neighbor HOST remote-as external
 neighbor HOST capability extended-nexthop
-neighbor $NEIGHBOR_IP peer-group HOST
+neighbor [NEIGHBOR_IP] peer-group HOST
 address-family ipv4 unicast
-  network $ELASTIC_IP/32 route-map $ROLE
+  network [ELASTIC_IP]/32 route-map $ROLE
   redistribute static
 exit-address-family
 route-map primary permit 10
-set large-community 65$DC_ID5:$DC_ID:1
+set large-community 65[DC_ID]:[DC_ID]:1
 route-map secondary permit 10
-set large-community 65$DC_ID5:13:2
+set large-community 65[DC_ID]5:[DC_ID]:2
       {{</ file >}}
 
 1. Run the VTY shell.
@@ -455,48 +429,48 @@ set large-community 65$DC_ID5:13:2
 
     > **Debian 10 & Ubuntu 18.04**
     >
-    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
+    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `[ELASTIC_IP]` with the Elastic IPv4 address.
     > {{< file >}}
-up   ip addr add $ELASTIC_IP/24 dev eth0 label eth0:1
-down ip addr del $ELASTIC_IP/24 dev eth0 label eth0:1
+up   ip addr add [ELASTIC_IP]/24 dev eth0 label eth0:1
+down ip addr del [ELASTIC_IP]/24 dev eth0 label eth0:1
         {{</ file >}}
     >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
 
     >{{< file >}}
-up   ip addr add $ELASTIC_IP/24 dev eth0 label eth0:1
-down ip addr del $ELASTIC_IP/24 dev eth0 label eth0:1
-up   ip addr add $ELASTIC_IP_2/24 dev eth0 label eth0:2
-down ip addr del $ELASTIC_IP_2/24 dev eth0 label eth0:2
+up   ip addr add [ELASTIC_IP]/24 dev eth0 label eth0:1
+down ip addr del [ELASTIC_IP]/24 dev eth0 label eth0:1
+up   ip addr add [ELASTIC_IP]_2/24 dev eth0 label eth0:2
+down ip addr del [ELASTIC_IP]_2/24 dev eth0 label eth0:2
         {{</ file >}}
     > **Ubuntu 20.04**
     >
-    > Edit your Linode's `/etc/systemd/network/05-eth0.network` file by adding an `Address` entry for the Elastic IP. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
+    > Edit your Linode's `/etc/systemd/network/05-eth0.network` file by adding an `Address` entry for the Elastic IP. Replace `[ELASTIC_IP]` with the Elastic IPv4 address.
     > {{< file >}}
 [Match]
 Name=eth0
 ...
-Address=$ELASTIC_IP/24
+Address=[ELASTIC_IP]/24
         {{</ file >}}
     >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
 
     >{{< file >}}
-Address=$ELASTIC_IP/24
-Address=$ELASTIC_IP_2/24
+Address=[ELASTIC_IP]/24
+Address=[ELASTIC_IP]_2/24
     {{</ file >}}
     > **CentOS 8**
     >
-    > Edit your Linode's `/etc/sysconfig/network-scripts/ifcfg-eth0` file with the following entry. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
+    > Edit your Linode's `/etc/sysconfig/network-scripts/ifcfg-eth0` file with the following entry. Replace `[ELASTIC_IP]` with the Elastic IPv4 address.
     > {{< file >}}
-IPADDR1=$ELASTIC_IP
+IPADDR1=[ELASTIC_IP]
 PREFIX1="24"
         {{</ file >}}
     >If you configured more than one Elastic IP on your Linode, you can add additional interface entries to your network interfaces configuration file as follows:
 
     >{{< file >}}
-IPADDR1=$ELASTIC_IP
+IPADDR1=[ELASTIC_IP]
 PREFIX1="24"
 
-IPADDR2=$ELASTIC_IP_2
+IPADDR2=[ELASTIC_IP]_2
 PREFIX2="24"
     {{</ file >}}
 
@@ -504,14 +478,14 @@ PREFIX2="24"
 
     > **Debian 10, Ubuntu 18.04 & CentOS 8**
     >
-    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
+    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `[ELASTIC_IP]` with the Elastic IPv4 address.
     >
     >
         sudo ifdown eth0
         sudo ifup eth0
     > **Ubuntu 20.04**
     >
-    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `$ELASTIC_IP` with the Elastic IPv4 address.
+    > Edit your Linode's `/etc/network/interfaces` file with the following entries. Replace `[ELASTIC_IP]` with the Elastic IPv4 address.
     >
     >
         systemctl restart systemd-networkd
@@ -537,7 +511,7 @@ inet6 fe80::f03c:92ff:fe7f:5774/64 scope link
 
 ### Test Elastic IPs
 
-Depending on how you configured your Linode(s) and Elastic IP(s), testing steps may vary. In general, you can use the `ping` command to test sending a packets to your configured Elastic IP(s).
+Depending on how you configured your Linode(s) and Elastic IP(s), testing steps may vary. In general, you can use the `ping` command to test sending packets to your configured Elastic IP(s).
 
     ping 203.0.113.0
 
