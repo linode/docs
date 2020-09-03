@@ -15,6 +15,11 @@ h1_title: Installing NGINX on Ubuntu 18.04 LTS
 external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
 aliases: ['web-servers/nginx/install-nginx-ubuntu/']
+relations:
+    platform:
+        key: how-to-install-nginx
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 ![Install NGINX on Ubuntu 18](install-nginx-ubuntu-smg.jpg)

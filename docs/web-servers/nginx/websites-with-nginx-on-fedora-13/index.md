@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-05-25
 title: Websites with nginx on Fedora 13
+relations:
+    platform:
+        key: websites-with-nginx
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

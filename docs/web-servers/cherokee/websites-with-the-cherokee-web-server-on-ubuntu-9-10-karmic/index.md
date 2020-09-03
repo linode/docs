@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-10-29
 title: 'Websites with the Cherokee Web Server on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: install-cherokee-server
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

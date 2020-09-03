@@ -13,6 +13,11 @@ published: 2014-03-03
 title: 'Creating an HTTP Proxy Using Squid on CentOS 6.4'
 external_resources:
  - '[Squid Official Site](http://www.squid-cache.org/)'
+relations:
+    platform:
+        key: install-squid-proxy
+        keywords:
+            - distribution: CentOS 6
 ---
 
 ![HTTP Proxy Using Squid on CentOS](Creating_an_HTTP_Proxy_Using_Squid_on_CentOS_64_smg.jpg)

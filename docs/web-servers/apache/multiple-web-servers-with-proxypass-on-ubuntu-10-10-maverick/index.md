@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-10-22
 title: 'Multiple Web Servers with ProxyPass on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: multiple-servers-proxypass
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-12-06
 title: 'Run PHP Applications under CGI with Apache on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: php-cgi-apache
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

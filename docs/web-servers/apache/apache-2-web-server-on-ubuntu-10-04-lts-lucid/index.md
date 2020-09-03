@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-04-29
 title: 'Apache 2 Web Server on Ubuntu 10.04 LTS (Lucid)'
+relations:
+    platform:
+        key: how-to-install-apache2
+        keywords:
+            - distribution: Ubuntu 10.04
 ---
 
 

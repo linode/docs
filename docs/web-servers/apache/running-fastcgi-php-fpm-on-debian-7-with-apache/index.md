@@ -17,6 +17,11 @@ modified_by:
   name: Linode
 published: 2014-06-16
 title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
+relations:
+    platform:
+        key: install-fastcgi-php-fpm
+        keywords:
+            - distribution: Debian 7
 ---
 
 ![Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache](running-mod-fastcgi-and-php-fpm-debian-7-apache.png)

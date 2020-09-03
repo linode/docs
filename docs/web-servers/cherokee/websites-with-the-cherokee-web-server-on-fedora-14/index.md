@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-05-27
 title: Websites with the Cherokee Web Server on Fedora 14
+relations:
+    platform:
+        key: install-cherokee-server
+        keywords:
+            - distribution: Fedora 14
 ---
 
 

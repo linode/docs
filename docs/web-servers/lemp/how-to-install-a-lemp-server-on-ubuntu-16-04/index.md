@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2016-05-06
 title: 'Install a LEMP Stack on Ubuntu 16.04'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Ubuntu 16.04
 ---
 
 ![LEMP Server on Ubuntu 16.04](lemp-server-on-ubuntu-1604.png "LEMP Server on Ubuntu 16.04")

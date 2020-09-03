@@ -15,6 +15,11 @@ h1_title: Installing NGINX on Debian 10
 external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
 aliases: ['web-servers/nginx/install-nginx-ubuntu/']
+relations:
+    platform:
+        key: how-to-install-nginx
+        keywords:
+            - distribution: Debian 10
 ---
 
 ## What is NGINX?

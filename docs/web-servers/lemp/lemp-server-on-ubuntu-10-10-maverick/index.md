@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-11-22
 title: 'LEMP Server on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

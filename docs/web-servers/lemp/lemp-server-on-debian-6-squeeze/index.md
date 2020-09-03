@@ -14,6 +14,11 @@ published: 2011-06-22
 deprecated: true
 deprecated_link: web-servers/lemp/install-a-lemp-stack-on-debian/
 title: 'LEMP Server on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Debian 6
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x", providing the "E" in LEMP) which can increase the ability of the server to scale in response to demand.

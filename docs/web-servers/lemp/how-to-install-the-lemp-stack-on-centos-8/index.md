@@ -13,6 +13,11 @@ published: 2018-06-04
 title: 'How to Install the LEMP Stack on CentOS 8'
 h1_title: 'Installing the LEMP Stack on CentOS 8'
 image: How-to-Install-LEMP-Stack-on-CentOS-8_1200x631.png
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: CentOS 8
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->
@@ -194,7 +199,7 @@ cockpit dhcpv6-client ssh
         sudo firewall-cmd --zone=public --add-service=https --permanent
         sudo firewall-cmd --reload
 
-{{< note >}}In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux boolean variable. To allow HTTPD scripts and modules to connect to the network, use `sudo setsebool -P httpd_can_network_connect on` command.{{< /note >}}
+{{< note >}}In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use `sudo setsebool -P httpd_can_network_connect on` command.{{< /note >}}
 
 ## Test the LEMP Stack
 

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-12-18
 title: 'Run PHP Applications under CGI with Apache on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: php-cgi-apache
+        keywords:
+            - distribution: Debian 5
 ---
 
 

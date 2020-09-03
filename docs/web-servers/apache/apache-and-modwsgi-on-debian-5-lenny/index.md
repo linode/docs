@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-02-17
 title: 'Apache and mod_wsgi on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: apache-mod-wsgi
+        keywords:
+            - distribution: Debian 5
 ---
 
 

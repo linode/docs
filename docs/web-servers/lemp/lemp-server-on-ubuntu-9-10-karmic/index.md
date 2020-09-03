@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-12-01
 title: 'LEMP Server on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

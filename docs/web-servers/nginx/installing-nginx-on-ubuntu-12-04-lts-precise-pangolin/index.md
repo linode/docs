@@ -17,6 +17,11 @@ external_resources:
  - '[nginx Community Documentation](http://wiki.nginx.org)'
  - '[Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/)'
  - '[Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/)'
+relations:
+    platform:
+        key: how-to-install-nginx
+        keywords:
+            - distribution: Ubuntu 12.04
 ---
 
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.

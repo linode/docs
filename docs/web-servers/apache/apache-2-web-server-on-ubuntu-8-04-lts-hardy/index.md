@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-08-11
 title: 'Apache 2 Web Server on Ubuntu 8.04 LTS (Hardy)'
+relations:
+    platform:
+        key: how-to-install-apache2
+        keywords:
+            - distribution: Ubuntu 8.04
 ---
 
 

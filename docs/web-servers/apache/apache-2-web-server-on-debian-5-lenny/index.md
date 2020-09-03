@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-07-27
 title: 'Apache 2 Web Server on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: how-to-install-apache2
+        keywords:
+            - distribution: Debian 5
 ---
 
 

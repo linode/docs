@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-11-10
 title: WSGI using uWSGI and nginx on Fedora 13
+relations:
+    platform:
+        key: wsgi-uwsgi-nginx
+        keywords:
+            - distribution: Fedora 13
 ---
 
 

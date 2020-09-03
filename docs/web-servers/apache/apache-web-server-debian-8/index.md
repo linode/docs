@@ -14,6 +14,11 @@ title: 'Apache Web Server on Debian 8 (Jessie)'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
+relations:
+    platform:
+        key: install-apache-server
+        keywords:
+            - distribution: Debian 8
 ---
 
 ![How to Install and Configure Apache Web Server on Debian 8](Apache_Web_Server_on_Debian_8_Jessie_smg.jpg)

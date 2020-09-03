@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-02-23
 title: 'Apache 2 Web Server on Debian 6 (Squeeze)'
+relations:
+    platform:
+        key: how-to-install-apache2
+        keywords:
+            - distribution: Debian 6
 ---
 
 

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2009-12-16
 title: 'Nginx and Perl-FastCGI on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: nginx-perl-fastcgi
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

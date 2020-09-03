@@ -13,6 +13,11 @@ published: 2018-06-04
 title: 'How to Install the LEMP Stack on Debian 10'
 h1_title: 'Installing the LEMP Stack on Debian 10'
 image: How-to-Install-LEMP-Stack-on-Debian-10_1200x631.png
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Debian 10
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->

@@ -17,11 +17,16 @@ external_resources:
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
+relations:
+    platform:
+        key: install-lamp-stack
+        keywords:
+            - distribution: Ubuntu 9.04
 ---
 
 
 
-This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 9.04 (eg. Jaunty) system.
+This guide provides step-by-step instructions for installing a full-featured LAMP stack on an Ubuntu 9.04 (e.g. Jaunty) system.
 
 In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 

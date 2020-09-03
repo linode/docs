@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-02-04
 title: 'Multiple Web Servers with ProxyPass on Ubuntu 9.10 (Karmic)'
+relations:
+    platform:
+        key: multiple-servers-proxypass
+        keywords:
+            - distribution: Ubuntu 9.10
 ---
 
 

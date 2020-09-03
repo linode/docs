@@ -14,6 +14,11 @@ title: 'How to Install the LEMP Stack on Ubuntu 18.04'
 h1_title: 'Installing the LEMP Stack on Ubuntu 18.04'
 image: How-to-Install-LEMP-Stack-on-Ubuntu-1804_1200x631.png
 aliases: ['web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/']
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->

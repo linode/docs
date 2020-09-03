@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-02-15
 title: 'Websites with nginx on Ubuntu 10.10 (Maverick)'
+relations:
+    platform:
+        key: websites-with-nginx
+        keywords:
+            - distribution: Ubuntu 10.10
 ---
 
 

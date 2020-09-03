@@ -14,6 +14,11 @@ published: 2010-06-22
 deprecated: true
 deprecated_link: 'web-servers/lemp/install-a-lemp-stack-on-debian/'
 title: 'LEMP Server on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: install-lemp-stack
+        keywords:
+            - distribution: Debian 5
 ---
 
 

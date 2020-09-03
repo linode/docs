@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2011-02-03
 title: 'Nginx and Perl-FastCGI on Arch Linux'
+relations:
+    platform:
+        key: nginx-perl-fastcgi
+        keywords:
+            - distribution: Arch Linux
 ---
 
 

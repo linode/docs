@@ -6,7 +6,7 @@ author:
 description: 'Use PHP CGI to run PHP scripts as indivudual users.'
 keywords: ["php cgi", "php", "apache", "cgi", "php scripts", "web apps", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/apache/php-cgi/debian-7-wheezy/','websites/apache/run-php-applications-under-cgi-with-apache-on-debian-7-wheezy/','websites/apache/run-php-cgi-apapache-debian-7/']
+aliases: ['web-servers/apache/php-cgi/debian-7-wheezy/','websites/apache/run-php-applications-under-cgi-with-apache-on-debian-7-wheezy/','websites/apache/run-php-cgi-apapache-debian-7/','web-servers/apache/run-php-cgi-apapache-debian-7/']
 modified: 2015-11-18
 modified_by:
   name: Linode
@@ -15,6 +15,11 @@ title: 'Run PHP with CGI and Apache on Debian 7 (Wheezy)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
  - '[Apache 2.2 CGI documentation](http://httpd.apache.org/docs/2.2/howto/cgi.html)'
+relations:
+    platform:
+        key: php-cgi-apache
+        keywords:
+            - distribution: Debian 7
 ---
 
 In instances where running the `mod_php` module to run PHP scripts on Apache is not sufficient, PHP can be run as a CGI binary. Combined with the `itk` multi-processing module (MPM), PHP scripts can be run as user processes in a per-virtual host setup. This guide will walk users through the process of setting up Apache and PHP CGI.

@@ -12,6 +12,11 @@ modified_by:
   name: Linode
 published: 2010-02-24
 title: 'Websites with nginx on Debian 5 (Lenny)'
+relations:
+    platform:
+        key: websites-with-nginx
+        keywords:
+            - distribution: Debian 5
 ---
 
 
