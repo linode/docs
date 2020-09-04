@@ -1,12 +1,12 @@
 ---
 title: DDoS Protection
-description: "Linode's global network is protected by advanced DDoS mitigation in all of our data centers, helping to fend off attacks on your infrastructure.  Free for all customers."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
+    description: "Linode's global network is protected by advanced DDoS mitigation in all of our data centers, helping to fend off attacks on your infrastructure.  Free for all customers."
 ---
 
 ## Availability

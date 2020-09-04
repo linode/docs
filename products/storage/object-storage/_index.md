@@ -1,12 +1,12 @@
 ---
 title: Object Storage
-description: "S3-compatible Linode Object Storage makes it easy and more affordable to manage unstructured data such as content assets, as well as sophisticated and data-intensive storage challenges around artificial intelligence and machine learning."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
+    description: "S3-compatible Linode Object Storage makes it easy and more affordable to manage unstructured data such as content assets, as well as sophisticated and data-intensive storage challenges around artificial intelligence and machine learning."
 ---
 
 Object Storage stores data, called objects, in containers, called buckets, and each object is given a unique identifier with which it is accessed. In this way, the physical location of the object does not need to be known. The objects are stored alongside rich, configurable metadata that can be used to describe any number of arbitrary properties about the object. Each object has its own URL, so accessing the data is often as simple as issuing an HTTP request, either by visiting the object in the browser or retrieving it through the command line.

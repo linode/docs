@@ -1,6 +1,5 @@
 ---
 title: Resources
-description: "Linode's global network is protected by advanced DDoS mitigation in all of our data centers, helping to fend off attacks on your infrastructure.  Free for all customers."
 tab_group_main:
     weight: 40
 ---

@@ -1,12 +1,12 @@
 ---
 title: Dedicated CPU Linodes
-description: "Dedicated CPU instances run on their own CPU cores in the Linode infrastructure. These instances are a powerful solution for CPU-intensive applications such as video encoding, machine learning, and data analytics processing."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
+    description: "Dedicated CPU instances run on their own CPU cores in the Linode infrastructure. These instances are a powerful solution for CPU-intensive applications such as video encoding, machine learning, and data analytics processing."
 ---
 
 ## Availability
