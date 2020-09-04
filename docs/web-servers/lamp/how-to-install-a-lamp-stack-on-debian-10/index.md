@@ -160,7 +160,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
 
 1.  Assign ownership of `public_html` directory to the user `$www-data`:
 
-        sudo chown -R $www-data:$www-data /var/www/html/example.com/public_html
+        sudo chown -R www-data:www-data /var/www/html/example.com/public_html
 
 1. Set the permissions for the `public_html` directory:
 
