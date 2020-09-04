@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 9.10 (Karmic) Linode.'
 keywords: ["citadel", "ubuntu 9.10 mail server", "groupware", "email server", "email howto"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/citadel/ubuntu-9-10-karmic/']
 modified: 2011-05-17

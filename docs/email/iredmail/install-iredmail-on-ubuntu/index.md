@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide shows how to install your own iRedMail mail server on Linode with Ubuntu.'
 keywords: ["email", "mail", "iredmail"]
+tags: ["ubuntu", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/installing-iredmail/','/email/iredmail/installing-iredmail/']
 contributor:

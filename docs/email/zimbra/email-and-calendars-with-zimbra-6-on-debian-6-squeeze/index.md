@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Get started with the open source edition of Zimbra groupware on your Debian 6 (Squeeze) Linode.'
 keywords: ["zimbra debian 6", "zimbra squeeze", "zimbra on debian", "zimbra groupware", "zimbra mail server", "linux mail server"]
+tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/zimbra/install-zimbra-debian-6-squeeze/']
 modified: 2011-05-17

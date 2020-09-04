@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Setting up a mail server with Postfix, Dovecot and MySQL on Debian 6 (Squeeze).'
 keywords: ["postfix debian 6", "dovecot debian 6", "debian 6 mail server", "dovecot", "email", "debian", "squeeze"]
+tags: ["debian", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/dovecot-mysql-debian-6-squeeze/']
 modified: 2011-07-01
