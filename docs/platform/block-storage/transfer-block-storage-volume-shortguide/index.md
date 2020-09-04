@@ -15,8 +15,13 @@ show_on_rss_feed: false
 tags: ["linode platform"]
 ---
 
-1. Follow the steps to safely detach your volume as mentioned in [How to Detach a Block Storage Volume from a Linode]
-(/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode).
+Follow these steps to safely detach a Volume from a Linode and attach it to a different Linode in the same data center:
+
+{{< note >}}
+Volumes cannot be attached to Linodes that are in a different data center. See the [Transfer Block Storage Data between Data Centers](/docs/products/storage/block-storage/guides/transfer-volume-data-between-data-centers/) how-to for help with migrating data on a Volume to a different data center.
+{{< /note >}}
+
+1. [Safely detach the Volume](/docs/products/storage/block-storage/guides/detach-volume/).
 
 1.   Click the **more options ellipsis** to open the menu for the Volume you want to attach to a Linode and select **Attach**:
 

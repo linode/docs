@@ -35,4 +35,4 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
     {{< content "object-storage-cluster-shortguide" >}}
 
-1.  Click **Submit**. You are now ready to [upload objects to the bucket](/docs/platform/object-storage/how-to-use-object-storage/#upload-objects-to-a-bucket).
+1.  Click **Submit**. You are now ready to [upload objects to the bucket](/docs/products/storage/object-storage/guides/upload-objects/).

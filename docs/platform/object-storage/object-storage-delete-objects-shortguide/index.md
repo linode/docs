@@ -15,6 +15,8 @@ show_on_rss_feed: false
 tags: ["linode platform"]
 ---
 
+Follow these steps to delete objects in a bucket from the Cloud Manager:
+
 1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Object Storage** link in the sidebar. A list of all the buckets appears. Click the bucket whose objects you'd like to delete.

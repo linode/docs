@@ -15,7 +15,11 @@ show_on_rss_feed: false
 tags: ["linode platform"]
 ---
 
+Follow these steps to increase the size of a Block Storage Volume after it has been created:
+
+{{< note >}}
 Storage Volumes **cannot** be sized down, only up. Keep this in mind when sizing your Volumes.
+{{< /note >}}
 
 1.  Shut down your Linode.
 

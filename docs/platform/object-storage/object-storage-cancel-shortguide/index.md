@@ -15,6 +15,8 @@ show_on_rss_feed: false
 tags: ["linode platform"]
 ---
 
+Follow these steps to cancel the Object Storage service from the Cloud Manager:
+
 1.  To cancel Object Storage, you must first delete all the buckets. To delete a bucket, the bucket must be empty. For buckets that contain large amounts of objects, consider employing [lifecycle policies](/docs/platform/object-storage/lifecycle-policies/) to delete the objects.
 
     {{< caution >}}

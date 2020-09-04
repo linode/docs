@@ -15,6 +15,8 @@ show_on_rss_feed: false
 tags: ["linode platform"]
 ---
 
+Follow these steps to attach a Block Storage Volume that was previously created in the Cloud Manager or through the Linode API.
+
 1.  Click on the **Volumes** link in the sidebar to see your account's Volume list:
 
     ![View your available Volumes](bs-cloud-volumes-list.png "View your available Volumes")
@@ -35,7 +37,7 @@ The Linodes available in this dropdown menu all share the same region as your Vo
 
         mkfs.ext4 FILE_SYSTEM_PATH
 
-      {{< caution >}}
+        {{< caution >}}
 If a new filesystem is created on a Block Storage Volume that is already using a filesystem, the above command will result in data loss. You can safely check for the filesystem of an unmounted volume with the following command:
 
     blkid FILE_SYSTEM_PATH
