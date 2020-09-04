@@ -4,7 +4,8 @@ author:
   name: Jon Chen
   email: docs@linode.com
 description: 'An overview of Installing Docker, with an example use case for Nginx'
-keywords: ["docker", " ubuntu", " 12.04", " centos", " container"]
+keywords: ["docker", "ubuntu", "centos", "container"]
+tags: ["docker", "ubuntu", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-01-28
 modified_by:
@@ -129,7 +130,7 @@ Docker runs through the Dockerfile instructions from top to bottom in order. The
 
     FROM ubuntu:12.04
 
-This sets the [official ubuntu:12.04 image](https://index.docker.io/_/ubuntu/) as the base image. You will also wish to use the MAINTAINER instruction to define the author of the image:
+This sets the [official Ubuntu 12.04 image](https://index.docker.io/_/ubuntu/) as the base image. You will also wish to use the MAINTAINER instruction to define the author of the image:
 
     MAINTAINER Jon Chen "fly@burrito.sh"
 

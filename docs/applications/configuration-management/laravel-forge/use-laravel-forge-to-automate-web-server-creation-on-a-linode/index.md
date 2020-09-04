@@ -4,6 +4,7 @@ author:
     email: dongidomed@gmail.com
 description: 'This guide shows how to use Laravel Forge to automate deployment of your PHP projects on a Linode.'
 keywords: ["content management", "web-server automation", "laravel", "php", "wordpress", "drupal", "cms", "joomla", "Laravel Forge"]
+tags: ["automation", "php", "drupal", "wordpress", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-18
 modified_by:

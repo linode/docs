@@ -4,6 +4,7 @@ author:
 description: 'This guide describes how to effectively use Docker in production using a sample NGINX/Flask/Gunicorn/Redis/Postgresql Application Stack.'
 og_description: 'This guide shows how to deploy a simple microservice using Docker. Best practices for using Docker in production are also demonstrated and explained.'
 keywords: ["docker", "nginx", "flask", "gunicorn", "redis", "postgresql", "microservice"]
+tags: ["docker", "nginx", "postgresql", "database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-01-04
 modified_by:

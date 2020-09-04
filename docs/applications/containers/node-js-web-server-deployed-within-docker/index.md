@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy a Node.js Server in a Docker Container.'
 keywords: ["docker", "node.js", "node", "debian", "ubuntu", "web server", "javascript", "container"]
+tags: ["docker", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-01-18
 modified_by:

@@ -6,6 +6,7 @@ description: 'Install Docker CE on a Linode running Debian 10.'
 og_description: 'Install Docker CE on a Linode running Debian 10.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["docker", "containers", "docker CE"]
+tags: ["docker", "debian"]
 modified: 2020-03-06
 modified_by:
   name: Linode

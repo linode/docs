@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide explains how to create a reverse proxy in an LXD container in order to host multiple websites, each in their own additional containers. You will utilize NGINX and Apache web servers, while also relying on NGINX as a reverse proxy.'
 keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtual machine", "virtualization"]
+tags: ["proxy", "apache", "nginx", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-28
 modified_by:

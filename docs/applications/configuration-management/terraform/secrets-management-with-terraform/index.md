@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to Manage Secrets with Terraform'
 keywords: ['terraform','secrets','secrets management','backend','hcl']
+tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
 modified: 2019-08-09

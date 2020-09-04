@@ -5,6 +5,7 @@ author:
 description: This tutorial shows how to configure and use CoreOS Container Linux on Linode
 keywords: ["linux containers", "docker", "CoreOS"]
 aliases: ['/platform/use-coreos-container-linux-on-linode/','/platform/using-coreos-container-linux-on-linode/','/platform/using-coreos-container-linux-on-your-linode/']
+tags: ["docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-07-17
 modified_by:

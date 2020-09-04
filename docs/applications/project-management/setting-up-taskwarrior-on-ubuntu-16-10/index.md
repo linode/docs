@@ -5,6 +5,7 @@ author:
   email: aguarisma@linode.com
 description: 'This tutorial shows you how to install Taskwarrior on Ubuntu 16.10'
 keywords: ["Install Taskwarrior", "Taskwarrior on Ubuntu", "Taskwarrior server"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/docs/applications/project-manager/setting-up-taskwarrior-on-ubuntu-16-04/']
 modified: 2017-05-23

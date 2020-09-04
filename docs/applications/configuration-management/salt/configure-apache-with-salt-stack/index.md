@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Configure Apache on Ubuntu, Debian and CentOS with Salt Stack.'
 keywords: ['salt','stack','saltstack','apache','httpd','ubuntu','debian','centos']
+tags: ["apache", "ubuntu", "debian", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-19
 modified: 2019-01-02

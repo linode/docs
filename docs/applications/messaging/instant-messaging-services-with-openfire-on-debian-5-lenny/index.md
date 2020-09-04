@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with Openfire on Debian 5 (Lenny), an open source instant messaging server built on the XMPP/Jabber protocol.'
 keywords: ["openfire", "openfire on linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
+tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/openfire/debian-5-lenny/']
 modified: 2012-10-03

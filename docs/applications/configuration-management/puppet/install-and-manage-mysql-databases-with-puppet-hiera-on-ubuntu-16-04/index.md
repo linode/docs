@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'Use this guide to install Puppet with MySQL modules and Puppet Hiera configuration manifests to manage MySQL in a variety of environments.'
 keywords: ["puppet installation", "configuration change management", "server automation", "mysql", "database", "hiera"]
+tags: ["database", "mysql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-11
 modified: 2017-09-11

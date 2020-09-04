@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with Openfire on CentOS 5, an open source instant messaging server built on the XMPP/Jabber protocol.'
 keywords: ["openfire", "openfire centos", "openfire on linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
+tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/communications/xmpp/openfire/centos-5/']
 modified: 2011-08-22

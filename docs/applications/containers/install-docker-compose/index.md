@@ -5,6 +5,7 @@ author:
 description: 'Shortguide for installing Docker Compose'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["docker", "docker compose", "container"]
+tags: ["docker"]
 modified: 2018-06-29
 modified_by:
   name: Sam Foo

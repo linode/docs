@@ -5,6 +5,7 @@ author:
 description: 'Host your own PaaS with Dokku, a highly extensible way to deploy applications built on top of Docker and Git. This guide shows how to use Dokku to quickly deploy a Flask application with SSL and NGINX.'
 og_description: 'Host your own PaaS with Dokku, a highly extensible way to deploy applications built on top of Docker and Git. This guide shows how to use Dokku to quickly deploy a Flask application with SSL and NGINX.'
 keywords: ['docker','containers','nginx', 'heroku', 'PaaS', 'git', 'Platform-as-a-service', 'Platform As a Service']
+tags: ["docker", "ssl", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-03-07
 modified: 2018-12-14
