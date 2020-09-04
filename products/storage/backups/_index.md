@@ -1,12 +1,12 @@
 ---
 title: Backups
-description: "The Linode Backup Service is a subscription service add-on that automatically performs daily, weekly, and biweekly backups of your Linode. It’s affordable, easy to use, and provides peace of mind."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
+    description: "The Linode Backup Service is a subscription service add-on that automatically performs daily, weekly, and biweekly backups of your Linode. It’s affordable, easy to use, and provides peace of mind."
 ---
 
 ## Availability

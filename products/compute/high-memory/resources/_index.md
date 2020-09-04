@@ -1,6 +1,5 @@
 ---
 title: Resources
-description: "High Memory Linodes offer a cost-effective way to run memory-intensive applications on dedicated CPUs. Perfect for when you need more RAM without increasing storage or vCPUs."
 tab_group_main:
     weight: 40
 ---

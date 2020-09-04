@@ -1,12 +1,12 @@
 ---
 title: GPU
-description: "Scientists, artists, and engineers need access to significant parallel computational power. Linode offers GPU-optimized virtual machines accelerated by the NVIDIA Quadro RTX 6000, harnessing the power of CUDA, Tensor, and RT cores to execute complex processing, deep learning, and ray tracing workloads."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
+    description: "Scientists, artists, and engineers need access to significant parallel computational power. Linode offers GPU-optimized virtual machines accelerated by the NVIDIA Quadro RTX 6000, harnessing the power of CUDA, Tensor, and RT cores to execute complex processing, deep learning, and ray tracing workloads."
 ---
 
 ## Availability
