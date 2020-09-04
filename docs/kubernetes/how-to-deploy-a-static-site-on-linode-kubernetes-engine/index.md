@@ -234,11 +234,10 @@ In this section you will create a Docker container for your static site, which y
 
     {{< file "lke-example/Dockerfile" >}}
 # Install the latest Debain operating system.
-FROM debian:latest as HUGO
+FROM alpine:3.12.0 as HUGO
 
 # Install Hugo.
-RUN apt-get update -y
-RUN apt-get install hugo -y
+RUN apk update && apk add hugo
 
 # Copy the contents of the current working directory to the
 # static-site directory.
