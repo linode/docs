@@ -14,6 +14,8 @@ headless: true
 show_on_rss_feed: false
 ---
 
+Follow these steps to upload objects to a bucket using the Cloud Manager:
+
 1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Object Storage** link in the sidebar. A list of all the buckets appears. Click the bucket where you want to upload the objects.
@@ -37,5 +39,5 @@ You can drag and drop multiple files to the **Upload Files Pane** at one time.
     {{< image src="successful-object-upload.png" alt="Successful upload of the object" title="Successful upload of the object" >}}
 
     {{< note >}}
-Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) and [cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck) do this for you automatically if a file exceeds this limit as part of the uploading process.
+Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) and [Cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck) do this for you automatically if a file exceeds this limit as part of the uploading process.
 {{< /note >}}

@@ -14,6 +14,8 @@ headless: true
 show_on_rss_feed: false
 ---
 
+You need a pair of keys to use Object Storage: an access key and a secret key. You can generate them from the Cloud Manager by following these steps:
+
 1.  Log into the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Object Storage** link in the sidebar, click the **Access Keys** tab, and then click the **Create an Access Key** link.
