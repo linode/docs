@@ -1,6 +1,5 @@
 ---
 title: Resources
-description: "Linode's experienced cloud consultants are ready to help you architect your services, carry out site migrations, and deploy software. Achieve your short- and long-term goals in the cloud with us."
 tab_group_main:
     weight: 40
 ---

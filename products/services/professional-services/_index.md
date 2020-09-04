@@ -1,12 +1,12 @@
 ---
 title: Professional Services
-description: "Linode's experienced cloud consultants are ready to help you architect your services, carry out site migrations, and deploy software. Achieve your short- and long-term goals in the cloud with us."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
     date: 2020-06-02
+    description: "Linode's experienced cloud consultants are ready to help you architect your services, carry out site migrations, and deploy software. Achieve your short- and long-term goals in the cloud with us."
 ---
 
 When you hire Linode Professional Services to orchestrate and execute any system administration task – whether for one site or an entire fleet of servers – we’ll make sure it’s done safely, efficiently, and stress-free. In a site migration, for example, we would configure the new Linode servers, sync content, manage the DNS transition, and handle every other aspect of the move.

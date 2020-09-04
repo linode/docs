@@ -1,6 +1,5 @@
 ---
 title: Guides
-description: "Affordable Shared instance plans are ideal for general workloads and include generous amounts of free bundled transfer."
 tab_group_main:
     weight: 30
 ---
