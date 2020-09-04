@@ -14,6 +14,8 @@ headless: true
 show_on_rss_feed: false
 ---
 
+Follow these steps to create a new Block Storage Volume, attach it to your Linode, create a filesystem, and mount your Volume:
+
 1.  Click on the **Linodes** link in the sidebar.
 
 1.  Select the Linode to which you want to attach a Block Storage Volume. The detail page for the Linode will appear.

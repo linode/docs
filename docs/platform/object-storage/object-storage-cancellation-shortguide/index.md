@@ -15,5 +15,5 @@ show_on_rss_feed: false
 ---
 
 {{< caution >}}
-Object Storage is similar to a subscription service. **Once enabled, you will be billed at the flat rate regardless of whether or not there are active buckets on your account.** You must [Cancel Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#cancel-object-storage) to stop billing for this service.
+Object Storage is similar to a subscription service. **Once enabled, you will be billed at the flat rate regardless of whether or not there are active buckets on your account.** You must [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/) to stop billing for this service.
 {{</ caution >}}

@@ -14,6 +14,8 @@ headless: true
 show_on_rss_feed: false
 ---
 
+Follow these steps to view your objects from the Cloud Manager:
+
 1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
 1.  Click the **Object Storage** link in the sidebar. A list of all the buckets appears. Click the bucket whose objects you'd like to view.
