@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install GitLab on Ubuntu 18.04 with SSL'
 keywords: ['git', 'gitlab', 'version control', 'ubuntu']
+tags: ["ubuntu", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-04
 modified: 2019-01-04

@@ -5,6 +5,7 @@ author:
 description: 'Shortguide for installing Java on Ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["java", "jdk", "install java"]
+tags: ["ubuntu"]
 modified: 2017-01-08
 modified_by:
   name: Jared Kobos

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install and begin using Flyspray to track project development.'
 keywords: ["bug tracking", "flyspray", "issue management", "feature development"]
+tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/track-bugs-and-manage-development-with-flyspray/','/applications/development/track-bugs-and-manage-development-with-flyspray/','/web-applications/project-management/flyspray/']
 modified: 2013-10-04

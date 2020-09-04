@@ -3,7 +3,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Unbundle the default nginx server from Omnibus Gitlab and install and configure your own to enable virtual hosting.'
-keywords: ["version control", " git", " gitlab", " install gitlab on ubuntu", " how to manage repositories with gitlab"]
+keywords: ["version control", "git", "gitlab", "install gitlab on ubuntu", "how to manage repositories with gitlab"]
+tags: ["ruby", "nginx", "ubuntu", "email"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: ['/applications/development/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/']
 contributor:

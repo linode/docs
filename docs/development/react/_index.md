@@ -8,4 +8,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-31
 title: React
 show_in_lists: true
+cascade:
+    tags: ["web applications"]
 ---

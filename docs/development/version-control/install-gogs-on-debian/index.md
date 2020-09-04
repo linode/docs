@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server.'
 keywords: ["gogs", "git", "golang", "nginx", " postgresql"]
+tags: ["debian", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-10-09
 aliases: ['/applications/development/install-gogs-on-debian-8-jessie/','/applications/development/install-gogs-on-debian-jessie/','/development/version-control/install-gogs-on-debian-8-jessie/']

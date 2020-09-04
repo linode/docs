@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Centos 5.'
 keywords: ["django", "python", "apache", "mod\\_python", "centos"]
+tags: ["python", "apache", "centos", "database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/django-apache-and-modpython-on-centos-5/','/websites/frameworks/django-apache-and-modpython-on-centos-5/','/frameworks/django-apache-mod-python/centos-5/']
 modified: 2013-09-27

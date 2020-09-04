@@ -5,6 +5,7 @@ author:
 description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 18.04 by following this guide.'
 og_description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 18.04 by following this guide.'
 keywords: ["apache tomcat ubuntu 18.04", "tomcat java", "java ubuntu 18.04", "tomcat ubuntu"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/frameworks/apache-tomcat-on-ubuntu-18-04/','/websites/frameworks/apache-tomcat-on-ubuntu-18-04/']
 modified: 2020-03-25
