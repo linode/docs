@@ -14,6 +14,10 @@ headless: true
 show_on_rss_feed: false
 ---
 
+{{< note >}}
+If you are using **Ubuntu 18.04, CentOS 7, or OpenSUSE**, follow the steps below. If you are using **Debian 9**, proceed to the [Install Manually](/docs/products/compute/gpu/guides/install-nvidia-drivers-manually) instructions instead.
+{{< /note >}}
+
 In this section, you will install your GPU driver using [NVIDIA's CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).
 
 For a full list of native Linux distribution support in CUDA, see the [CUDA toolkit documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements).

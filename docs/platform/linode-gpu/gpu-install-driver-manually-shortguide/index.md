@@ -14,6 +14,10 @@ headless: true
 show_on_rss_feed: false
 ---
 
+{{< note >}}
+If you are using **Debian 9**, follow the steps below. If you are using **Ubuntu 18.04, CentOS 7, or OpenSUSE**, proceed to the [Install with CUDA](/docs/products/compute/gpu/guides/install-nvidia-drivers-with-cuda) instructions instead.
+{{< /note >}}
+
 This section will walk you through the process of downloading and installing the latest NVIDIA driver on Debian 9. This process can also be completed on another distribution of your choice, if needed:
 
 1. Visit NVIDIA's [Driver Downloads Page](https://www.nvidia.com/Download/index.aspx?lang=en-us).
