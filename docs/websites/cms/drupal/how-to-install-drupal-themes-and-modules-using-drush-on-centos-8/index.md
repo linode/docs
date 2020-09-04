@@ -5,6 +5,7 @@ author:
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on CentOS 8.'
 og_description: 'Use Drush to install and enable themes and modules on your Drupal site running on CentOS 8.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "centos", "drush"]
+tags: ["cms", "drupal", "apache", "php", "lamp", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-11
 modified_by:

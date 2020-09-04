@@ -5,6 +5,7 @@ author:
 description: 'This guide will show you how to update your Drupal 8 installation running on an Ubuntu 18.04 Linode.'
 og_description: 'This guide will show you how to update your Drupal 8 installation running on an Ubuntu 18.04 Linode.'
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "update"]
+tags: ["drupal", "cms", "lamp", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-21
 modified_by:

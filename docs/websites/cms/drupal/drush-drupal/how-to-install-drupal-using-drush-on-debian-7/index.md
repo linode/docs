@@ -5,6 +5,7 @@ author:
 description: 'An overview of Drush the Drupal Shell or Command Line Tool'
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", " debian"]
 aliases: ['/websites/cms/drush-drupal/']
+tags: ["drupal", "cms", "debian", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-11-21
 modified_by:

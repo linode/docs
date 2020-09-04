@@ -10,6 +10,7 @@ keywords:
   - ubuntu
   - e-commerce
   - magento ubuntu
+tags: ["ubuntu", "ssl", "lamp", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-29
 modified_by:
