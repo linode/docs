@@ -14,6 +14,7 @@ title: 'Use mysqldump to Back Up MySQL or MariaDB'
 external_resources:
  - '[MySQL Database Backup Methods page](http://dev.mysql.com/doc/refman/5.1/en/backup-methods.html)'
  - '[mysqldump - A Database Backup Program, MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)'
+tags: ["mysql","mariadb"]
 ---
 
 ![Use mysqldump to Back Up MySQL or MariaDB](mysqldump-backup-title.jpg "Use mysqldump to Back Up MySQL or MariaDB")

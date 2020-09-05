@@ -16,6 +16,7 @@ external_resources:
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
  - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
+tags: ["mysql","ubuntu"]
 ---
 
 ![Install MySQL on Ubuntu 14.04](install-mysql-on-ubuntu-1404.png "Install MySQL on Ubuntu 14.04")

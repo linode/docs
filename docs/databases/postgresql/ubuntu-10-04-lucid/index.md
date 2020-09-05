@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2010-04-29
 title: 'Use PostgreSQL Relational Databases on Ubuntu 10.04 LTS (Lucid)'
+tags: ["postgresql","ubuntu"]
 ---
 
 

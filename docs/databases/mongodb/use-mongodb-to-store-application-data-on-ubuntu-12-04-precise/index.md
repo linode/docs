@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2012-10-08
 title: 'Use MongoDB to Store Application Data on Ubuntu 12.04 (Precise)'
+tags: ["nosql","ubuntu"]
 ---
 
 MongoDB is a database engine that provides access to non-relational key-value databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON-based output format and specialized language specific bindings that make it particularly attractive for use in custom application development. Although MongoDB is a relatively new project, the software has been used in a number of large scale [production deployments](http://www.mongodb.org/display/DOCS/Production+Deployments).

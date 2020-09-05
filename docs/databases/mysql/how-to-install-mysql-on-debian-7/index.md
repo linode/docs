@@ -17,6 +17,7 @@ external_resources:
  - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
  - '[MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance/)'
+tags: ["mysql","debian"]
 ---
 
 ![How to Install MySQL on Debian 7](How_to_Install_MySQL_on_Debian_7_smg.jpg)

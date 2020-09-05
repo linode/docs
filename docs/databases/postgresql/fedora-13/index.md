@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2010-05-28
 title: Use PostgreSQL Relational Databases on Fedora 13
+tags: ["postgresql","fedora"]
 ---
 
 

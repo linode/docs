@@ -15,6 +15,7 @@ external_resources:
  - '[The Official MySQL Web Site](http://www.mysql.com/)'
  - '[Metabase](https://metabase.com/)'
  - '[Employees Testing Database](https://github.com/datacharmer/test_db)'
+tags: ["mysql","debian","ubuntu"]
 ---
 
 ![Connect Metabase with mysql for data exploration](Connect_Metabase_with_MySQL_for_Data_Exploration_smg.jpg)

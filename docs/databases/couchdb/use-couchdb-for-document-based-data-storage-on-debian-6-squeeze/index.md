@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2011-02-23
 title: 'Use CouchDB for Document Based Data Storage on Debian 6 (Squeeze)'
+tags: ["debian","nosql"]
 ---
 
 CouchDB is a non-relational document-based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang programing language which supports an innovative concurrency model. CouchDB does not use an SQL interface, opting for an HTTP interface and JSON as a data format for easy integration in application development.

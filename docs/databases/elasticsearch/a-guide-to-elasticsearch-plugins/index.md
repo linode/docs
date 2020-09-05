@@ -19,6 +19,7 @@ modified_by:
   name: Linode
 title: 'How to Install and Use Elasticsearch Plugins'
 dedicated_cpu_link: true
+tags: ["debian","ubuntu","java"]
 ---
 
 ![banner_image](How_to_Install_and_Use_Elasticsearch_Plugins_smg.jpg)

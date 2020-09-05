@@ -11,5 +11,7 @@ show_on_frontpage: true
 title_short: "Databases"
 weight: 90
 icon: "database"
+cascade:
+    tags: ["database"]
 ---
 

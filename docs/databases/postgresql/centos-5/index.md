@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2009-09-13
 title: Use PostgreSQL Relational Databases on CentOS 5
+tags: ["postgresql","centos"]
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on CentOS 5. We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.

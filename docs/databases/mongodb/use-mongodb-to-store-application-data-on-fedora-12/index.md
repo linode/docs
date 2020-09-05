@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2010-03-22
 title: Use MongoDB to Store Application Data on Fedora 12
+tags: ["nosql","fedora"]
 ---
 
 

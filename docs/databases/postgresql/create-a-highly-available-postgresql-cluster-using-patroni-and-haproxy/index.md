@@ -14,6 +14,7 @@ external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
  - '[Patroni Repository](https://github.com/zalando/patroni)'
  - '[etcd Documentation](https://coreos.com/etcd/docs/latest/)'
+tags: ["postgresql"]
 ---
 
 
