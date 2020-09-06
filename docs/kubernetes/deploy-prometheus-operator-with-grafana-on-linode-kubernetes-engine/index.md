@@ -401,7 +401,7 @@ In this section, you will use `htpasswd` to generate credentials for basic authe
 
 1. Create a Kubernetes Secret for the `monitoring` namespace using the file you created above:
 
-        kubectl -n monitoring create secret generic basic-auth --from-file=auth
+        kubectl -n monitoring create secret generic basic-auth --from-file=~/lke-monitor/auth
 
 1.  Verify that the `basic-auth` secret has been created on your LKE cluster:
 
