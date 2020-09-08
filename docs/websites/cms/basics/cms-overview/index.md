@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'An overview of the three content management systems that Linode supports'
-keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framwork", " "]
+keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framwork"]
 tags: ["lamp", "wordpress", "drupal"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-02-15
