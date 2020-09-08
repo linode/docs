@@ -4,6 +4,7 @@ author:
     email: docs@linode.com
 description: 'Install and Configure a Don''t Starve Together Multi-player Game Server for Ubuntu 14.04'
 keywords: ["don''t starve", "don''t starve together", "game servers", "games", "ubuntu", " ubuntu 14.04", "steam cmd", "steamcmd", "token"]
+tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-04-14
 modified: 2019-02-01
@@ -104,7 +105,7 @@ To update DST, run the above 4 commands again.
 
     This is completely normal and we will fix this in the next step.
 
-3.  Press **Control+C** to quit the server. You will return to the linux command prompt.
+3.  Press **Control+C** to quit the server. You will return to the Linux command prompt.
 
 4.  Create a settings file for your Don't Starve Together server in `~/.klei/DoNotStarveTogether/`. Below  is an example configuration file. You may use this and modify it as you need. Note that where several non-binary options exist, they are shown in this file delimited with a `|`, and numerical ranges are denoted with `..`. Choose a single option.
 
