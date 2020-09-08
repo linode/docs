@@ -36,9 +36,10 @@ type algoliaIndex struct {
 }
 
 // This programs updates the Algolia indices defined below.
-// It currently requires to be run from the project root, e.g:
 //
-//     ALGOLIA_ADMIN_API_KEY=<mysecret> go run ./main.go --sourcedir ../../public
+// Usage:
+//
+//     ALGOLIA_ADMIN_API_KEY=<mysecret> update_linode_docs_search_indices --sourcedir ../../public
 //
 // Also note that you need to build the site with Hugo first.
 func main() {
