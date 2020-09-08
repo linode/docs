@@ -1,0 +1,32 @@
+
+# Mounts in this project.
+[[mounts]]
+source = "docs"
+target = "content"
+
+[[mounts]]
+source = "products"
+target = "content/products"
+
+[[mounts]]
+source = "static"
+target = "static"
+
+# The main theme.
+# Note that the theme itself contains the mount configuration.
+[[imports]]
+path = "github.com/bep/linodedocs"
+
+# To add it to the server watch list.
+source = "tailwind.config.js"
+target = "assets/css/tailwind.config.js"
+
+# Linode's OpenAPI definition.
+[[imports]]
+path = "github.com/linode/linode-api-docs"
+
+[[imports.mounts]]
+source = "openapi.yaml"
+target = "assets/api/openapi.yaml"
+
+

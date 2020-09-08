@@ -1,68 +1,112 @@
 baseURL = "https://linode.com/docs/"
 languageCode = "en-us"
 title = "Linode Guides & Tutorials"
-theme = "docsmith"
 
-contentDir = "docs"
-
-# Highlighting config (Pygments)
-
-# Styles created with hugo gen chromastyles --style=perldoc > assets/stylesheets/_syntax-chroma.css
-pygmentsUseClasses =  true
-pygmentsCodeFences = true
-
-# Use the new and fast Chroma highlighter (Pygments port) in Hugo >= 0.28.
-pygmentsUseClassic = false
-
-# See https://help.farbox.com/pygments.html
-# Also see pygmentsUseClasses above.
-pygmentsStyle = "perldoc"
-
-disqusShortname="linode-1"
-
-#disableKinds = ["taxonomy", "taxonomyTerm"]
-
+disableKinds = ["taxonomy", "taxonomyTerm"]
+themeDir = ".."
 rssLimit = 30
+summaryLength = 15
+timeout = "2m"
 
-enableGitInfo = true
+[outputs]
+# The JSON is for the search index. We build this on every build to make sure we have the image thumbnails in sync.
+home = ["HTML", "JSON", "RSS"]
 
 [frontmatter]
 lastmod = [":git", "lastmod", "date", "publishDate"]
 
-[blackfriday]
-fractions = false
-
-[outputs]
-home = [ "HTML", "RSS"]
-section = ["HTML"]
-page = ["HTML"]
-
-[taxonomies]
-audience = "audiences"
-concentration = "concentrations"
-language = "languages"
-
 [params]
 description = "Guides and tutorials on the Linode platform, Linux basics, and software installation and configuration."
-default_image_width = 120
-default_image_height = 120
-
 # Date and time formatting, see https://gohugo.io/functions/format/
 time_format_RFC3339 = "2006-01-02T15:04:05Z07:00"
 time_format_default = "Monday, January 2, 2006"
 
+[params.search_config]
+app_id = "KGUN8FAIPF"
+api_key = "d4847002cd30392fe0fbd00a1da933ed"
+meta_index = "linode-docs-sections-bep"
+explorer_max_leafnodes = 50
+hits_per_page = 4
 
-# Related Content ("See Also") configuration.
-# [related]
-# threshold = 80
-# includeNewer = true
-# toLower = false
-#
-# [[related.indices]]
-# name = "keywords"
-# weight = 100
-# [[related.indices]]
-# name  = "date"
-# weight = 10
-# pattern = "2006"
+[[params.search_config.sections]]
+name = "products"
+index = "linode-docs-bep"
+title = "Products"
+filters = "section.lvl0:products"
+# The icons are fetched from layouts/sections/navigation/explorer-icons.html
+explorer_icon = "#icon-explorer--products"
+explorer_map_title = true
+filtering_facets = [
+    { name = "category", title = "Doc Category" },
+    { name = "skillLevel", title = "Skill Level" },
+    { name = "languages", title = "Languages" }
+]
+explorer_regular_pages_start_level = 2
+hits_per_page = 4
 
+[[params.search_config.sections]]
+name = "docs"
+index = "linode-docs-bep"
+title = "Guides"
+filters = "section.lvl0:docs"
+explorer_icon = "#icon-explorer--guides"
+explorer_map_title = true
+filtering_facets = [
+    { name = "category", title = "Doc Category" },
+    { name = "skillLevel", title = "Skill Level" },
+    { name = "languages", title = "Languages" },
+    { name = "tags", title = "Tags", isTags = true }
+]
+explorer_regular_pages_start_level = 2
+hits_per_page = 4
+
+[[params.search_config.sections]]
+name = "api"
+index = "linode-docs-api-bep"
+title = "API"
+filters = "section.lvl0:api"
+explorer_icon = "#icon-explorer--api"
+explorer_regular_pages_start_level = 2
+hits_per_page = 4
+filtering_facets = [{ name = "category", title = "Doc Category" }]
+
+[[params.search_config.sections]]
+name = "marketplace"
+index = "linode-wp"
+title = "Marketplace"
+filters = "section.lvl0:Marketplace"
+explorer_icon = "#icon-explorer--products"
+explorer_regular_pages_start_level = 2
+hits_per_page = 4
+filtering_facets = [{ name = "category", title = "Doc Category" }]
+
+[[params.search_config.sections]]
+name = "blog"
+index = "linode-wp-blog"
+title = "Blog"
+filters = "section.lvl0:Blog"
+explorer_icon = "#icon-explorer--blog"
+explorer_regular_pages_start_level = 2
+hits_per_page = 4
+filtering_facets = [{ name = "category", title = "Doc Category" }]
+
+[[params.search_config.sections]]
+# Identifier. It's also used as the Algolia index name.
+# If you need to map several sections to one Algolia index,
+# set the index attribute.
+name = "resources"
+index = "linode-wp-resources"
+title = "Resources"
+filters = "section.lvl0:Resources"
+explorer_icon = "#icon-explorer--resources"
+explorer_regular_pages_start_level = 2
+hits_per_page = 4
+filtering_facets = [{ name = "category", title = "Doc Category" }]
+
+[minify]
+disableSVG = true
+
+[imaging]
+resampleFilter = "CatmullRom"
+quality = 75
+anchor = "smart"
