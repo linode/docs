@@ -12,14 +12,18 @@ target = "content/products"
 source = "static"
 target = "static"
 
+[[mounts]]
+# To add it to the server watch list.
+# TODO(bep) this really needs to live in the theme, see
+# https://github.com/gohugoio/hugo/issues/7635
+source = "tailwind.config.js"
+target = "assets/css/tailwind.config.js"
+
 # The main theme.
 # Note that the theme itself contains the mount configuration.
 [[imports]]
 path = "github.com/bep/linodedocs"
 
-# To add it to the server watch list.
-source = "tailwind.config.js"
-target = "assets/css/tailwind.config.js"
 
 # Linode's OpenAPI definition.
 [[imports]]
