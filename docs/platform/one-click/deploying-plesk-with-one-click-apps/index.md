@@ -5,6 +5,7 @@ author:
 description: 'Deploy Plesk on Linode using One-Click Apps.'
 og_description: 'Deploy Plesk on Linode using One-Click Apps.'
 keywords: ['plesk','one-click', 'cms']
+tags: ["cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-25
 modified: 2019-03-25

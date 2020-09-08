@@ -5,6 +5,7 @@ author:
 description: 'cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases, and more, with a suite of hosting automation and optimization tools.  Deploy a cPanel & WHM instance using Linode''s One-Click Apps.'
 og_description: 'cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases, and more, with a suite of hosting automation and optimization tools.  Deploy a cPanel & WHM instance using Linode''s One-Click Apps.'
 keywords: ['cpanel','whm','hosting','manager']
+tags: ["cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
 modified_by:

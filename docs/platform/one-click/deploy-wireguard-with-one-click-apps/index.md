@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Deploy a WireGuard Server on Linode with One-Click Apps.'
 keywords: ['vpn','wireguard','tunnel']
+tags: ["vpn", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-28
 modified_by:

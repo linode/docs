@@ -9,6 +9,8 @@ aliases: ['/manager/']
 published: 2018-07-16
 title: Linode Manager
 show_in_lists: true
+cascade:
+    tags: ["cloud manager"]
 ---
 
 

@@ -5,6 +5,7 @@ author:
 description: 'Using a NodeBalancer to begin managing a simple web application.'
 og_description: 'Get started with Linode NodeBalancers by using a NodeBalancer to begin managing a simple web application.'
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
+tags: ["web applications", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/nodebalancers/getting-started/','/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/','/platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/','/linode-platform/nodebalancer-howto/']
 modified: 2018-08-21

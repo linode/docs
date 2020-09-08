@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to managing your bill in Cloud Manager.
 keywords: ["billing", "payments","cancel account"]
+tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode

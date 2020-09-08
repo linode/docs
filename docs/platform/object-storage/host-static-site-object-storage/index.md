@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Host a Static Site using Linode\'s Object Storage."
-keywords: ['list','of','keywords','and key phrases']
+keywords: ['hugo','static site','object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-09
 modified: 2019-04-09

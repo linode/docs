@@ -5,6 +5,7 @@ author:
 description: "Shortguide for restoring a backup to a new or existing Linode."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: []
+tags: ["cloud manager"]
 modified: 2018-08-10
 modified_by:
   name: Linode

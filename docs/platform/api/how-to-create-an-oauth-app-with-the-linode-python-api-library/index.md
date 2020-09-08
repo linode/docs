@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Create an OAuth 2 app utilizing the Linode API through the Linode APIv4 Python library.'
 keywords: ['linode','api','python','library','oauth']
+tags: ["python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-21
 modified: 2019-01-21

@@ -5,6 +5,7 @@ author:
 description: 'Deploy Percona Monitoring and Management (PMM) on Linode using One-Click Apps. This will install the PMM server on a Linode instance giving you access to monitor and visualize metrics collected from database instances. This guide shows you how to deploy PMM with One-Click Apps and basic configuration steps to get you started monitoring your databases.'
 og_description: 'Deploy Percona Monitoring and Management (PMM) on Linode using One-Click Apps. This will install the PMM server on a Linode instance giving you access to monitor and visualize metrics collected from database instances. This guide shows you how to deploy PMM with One-Click Apps and basic configuration steps to get you started monitoring your databases.'
 keywords: ['percona','one-click apps','monitoring', 'database']
+tags: ["database", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11
 modified: 2020-06-11

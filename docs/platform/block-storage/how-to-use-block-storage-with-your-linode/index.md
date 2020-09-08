@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: This tutorial explains how to use Linode's block storage service.
 keywords: ["block storage", " volume", "media", "resize", "storage", "disk"]
+tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-02-01
 modified_by:

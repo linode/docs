@@ -8,5 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/stackscripts/','/platform/stackscripts-new-manager/','/platform/stackscripts-classic-manager/']
 title: StackScripts
 show_in_lists: true
+cascade:
+    tags: ["automation"]
 ---
 

@@ -5,6 +5,7 @@ author:
 description: 'A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web software bundle used to build modern web applications. Easily deploy MEAN using One-Click Apps.'
 og_description: 'A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web software bundle used to build modern web applications. Easily deploy MEAN using One-Click Apps.'
 keywords: ['mongodb','mean','angular','express', 'web app', 'node']
+tags: ["database", "web server", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-17
 modified: 2019-03-17
