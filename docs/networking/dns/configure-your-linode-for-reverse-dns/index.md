@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Reverse DNS (rDNS) resolves an IP address to the designated domain name. This guide will teach you how to set it up.'
 keywords: ["reverse", "dns", "PTR"]
+tags: ["cloud manager", "linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/setting-up-reverse-dns-lookup/','/networking/dns/configure-your-linode-for-reverse-dns-classic-manager/','/networking/configure-your-linode-for-reverse-dns/','/networking/dns/setting-reverse-dns/']
 modified_by:

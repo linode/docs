@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu Fedora 15.'
 keywords: ["fedora dns", "open source dns", "dns", "resolving", "caching", "unbound"]
+tags: ["fedora", "resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/unbound-dns-resolver-fedora-15/']
 modified: 2013-09-25

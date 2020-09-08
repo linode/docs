@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Learn how to securely tunnel your traffic with OpenVPN and OpenSSL.'
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
+tags: ["ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8/']
 modified: 2019-01-29

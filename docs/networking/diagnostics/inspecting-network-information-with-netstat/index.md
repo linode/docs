@@ -4,6 +4,7 @@ author:
   email: mihalistsoukalos@gmail.com
 description: 'A practical introduction to the netstat utility on Linux, including examples of the different options available.'
 keywords: ["UNIX", "shell", "netstat", "TCP/IP", "UDP", "network", "sockets", "unix sockets", "network connections", "network statistics"]
+tags: ["statistics", "linux", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-02
 modified_by:
@@ -88,7 +89,7 @@ The first table displays network connections, and the columns of this table are 
 | Foreign Address | The address and port number for the connected host. The host name and service name will be displayed by default, similar to the behavior for the Local Address column. |
 | State | The state of the connection. Because raw and UDP connections will generally not have state information, this column will usually be blank for those connection types. For TCP connections, the State column will have a value that matches [one of the states specified by TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Protocol_operation): `SYN_RECV`, `SYN_SENT`, `ESTABLISHED`, etc. By default, connections in the `LISTEN` state will not be displayed. |
 
-The second table displays [unix sockets](https://en.wikipedia.org/wiki/Unix_domain_socket), and the columns of this table are interpreted as follows:
+The second table displays [Unix sockets](https://en.wikipedia.org/wiki/Unix_domain_socket), and the columns of this table are interpreted as follows:
 
 | Column | Description |
 |--------|-------------|
@@ -121,8 +122,8 @@ Some important and frequently-used command line options of `netstat` are as foll
 | `-c` | Displays information continuously (every second). |
 | `-p` | Displays the process ID and the name of the program that owns the socket. It requires root privileges for this. |
 | `-o` | Displays timer information. |
-| `-a` | Shows both listening and non-listening network connections and unix sockets. |
-| `-l` | Displays listening network connections and unix sockets, which are not shown by default. |
+| `-a` | Shows both listening and non-listening network connections and Unix sockets. |
+| `-l` | Displays listening network connections and Unix sockets, which are not shown by default. |
 | `-C` | Displays routing information from the route cache. |
 | `-g` | Displays multicast group membership information for IPv4 and IPv6. |
 
@@ -355,7 +356,7 @@ To show only IPv4 or IPv6 UDP connections, combine `-u` with `-4` or `-6`:
 
 ### Show Extended Output
 
-The `-e` command line parameter tells `netstat` to show extended output, which will add the `User` and `Inode` columns to the displayed table (but only for network connections, not unix sockets). For example, this command will show extended output for a system's listening TCP connections:
+The `-e` command line parameter tells `netstat` to show extended output, which will add the `User` and `Inode` columns to the displayed table (but only for network connections, not Unix sockets). For example, this command will show extended output for a system's listening TCP connections:
 
     netstat -lte
 
@@ -372,7 +373,7 @@ tcp6       0      0 [::]:https              [::]:*                  LISTEN      
 
 ### Show the PID and Program Name
 
-The `-p` option displays the process ID and program name that corresponds to a network connection or unix socket.
+The `-p` option displays the process ID and program name that corresponds to a network connection or Unix socket.
 
 {{< note >}}
 `netstat` requires root privileges to show the PID and program name of processes that are not owned by your user.

@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Configure and run your own DNS resolver using the Unbound Server on Debian 6 (Squeeze).'
 keywords: ["unbound debian 6", "unbound debian squeeze", "dns debian", "dns", "resolving", "caching", "unbound", "debian"]
+tags: ["debian", "resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-guides/unbound-dns-resolver-debian-6-squeeze/']
 modified: 2011-05-13
