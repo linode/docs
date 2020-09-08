@@ -1,0 +1,25 @@
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "no-referrer"
+Content-Security-Policy = "script-src 'self' *.trustarc.com 'unsafe-eval'"
+
+[[headers]]
+for = "/**.{css,jpg,js}"
+
+[headers.values]
+Cache-Control = "public, max-age=2"
+
+[[redirects]]
+from = "/docs/blog/**"
+to = "/docs/blog/"
+status = 200
+
+[[redirects]]
+from = "/docs/sections/**"
+to = "/docs/sections/"
+status = 200
