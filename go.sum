@@ -5,6 +5,7 @@ github.com/bep/hugo-jslibs/instantpage v0.0.0-20200822093604-7b6e0aaba587/go.mod
 github.com/bep/hugo-jslibs/turbolinks v0.1.2/go.mod h1:CQHa51PjmF5gavvhS3JKSE9ywo8h7QgOj3D88ry6qu0=
 github.com/bep/linodedocs v0.0.0-20200907181511-0147907b2c32 h1:zCV40Hxitmya8zWvcUDg7EAPX7llhNZBWgYL02Blhl8=
 github.com/bep/linodedocs v0.0.0-20200907181511-0147907b2c32/go.mod h1:S6J2bvTp/BMG2Qau6jZkapEQZOQZjIPSvNoKToJlHIg=
+github.com/bep/linodedocs v0.0.0-20200908101729-24d9c800d647/go.mod h1:S6J2bvTp/BMG2Qau6jZkapEQZOQZjIPSvNoKToJlHIg=
 github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0/go.mod h1:XvAGp/0tQ8bZpoCcM6rdx1NbzZUy3/KtetedtdgaNek=
 github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1/go.mod h1:N4EUbbL7Cw4Yq+GHeK3MUSiOJQbzfuUFRyvBKvnVBR8=
 github.com/gohugoio/hugo-mod-jslibs/turbolinks v0.5.0/go.mod h1:0COpoSU/YogktyDLZn4aoXioJPq+f4jvdenIZj5ozMQ=

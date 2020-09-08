@@ -1,0 +1,150 @@
+{{ define "main" }}
+  <div class="w-full" x-data="lnSectionsController.New(lnSearchConfig)" x-init="init() " @search:categories-results-filtered.document="receiveData($event.detail);" ,
+    @search:search:results.document="searchUpdated($event.detail);">
+    {{ partial "components/error.html" . }}
+    <div class="mb-8" x-show="loaded">
+      <div class="flex flex-col lg:flex-row lg:items-center mb-8" x-show="data.result.nbHits">
+        <h1 class="tracking-tighter pb-4 lg:pb-0" x-text="data.meta.title"></h1>
+        <div x-show="!uiState.noToggleGuidesLink">
+          <button @click="toggleShowGuides();" x-text="data.result.nbHits + ' Guides Available'"
+                    class="lg:ml-4 py-1 px-3 text-sm text-brand focus:outline-none no-underline font-semibold border border-brand rounded-full"></button>
+        </div>
+        <div x-show="uiState.noToggleGuidesLink">
+          <span x-text="data.result.nbHits + ' Guides Available'" class="lg:ml-4 py-1 px-3 text-sm text-titlecolor no-underline font-semibold border border-titlecolor rounded-full"></span>
+        </div>
+      </div>
+      <div class="mb-8">
+        <p x-html="data.meta.excerpt"></p>
+      </div>
+      <hr class="mb-6">
+    </div>
+    <template x-if="uiState.showSectionsTiles()">
+      <section class="mb-6 w-full">
+        <h2 class="mb-12 text-2" x-text="data.meta.title + ' Categories'"></h2>
+        <div class="flex flex-wrap items-stretch -mx-2">
+          <template x-for="(item, i) in data.sections" :key="item.key">
+            <div class="px-2 w-full md:w-1/3 pb-8">
+              <div class="bg-white h-full rounded-lg overflow-hidden shadow-sm w-full">
+                <a :href="item.href" class="text-base block">
+                  <div class="relative overflow-hidden pb-30/9 sm:pb-16/9">
+                    <img class="absolute h-full w-full object-cover ease-in duration-300" :src="item.thumbnail">
+                  </div>
+                  <div class="p-8">
+                    <h3 class="font-bold text-2xl tracking-tight" x-html="item.title"></h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </template>
+        </div>
+      </section>
+    </template>
+    <div x-show="uiState.showGuidesWithSortOption()">
+      <div class="mb-6 md:mb-8 flex flex-col md:flex-row justify-between md:relative">
+        <div class="flex">
+          <h2 class="text-2 mb-4 md:mb-0 text-titlecolor tracking-tight font-semibold" x-text="data.meta.title + ' Guides'"></h2>
+          <div class="hidden md:block" style="width: 250px;"></div>
+        </div>
+        <div class="md:absolute right-0 w-full md:w-64 rounded border bg-white border-basicgray">
+          <div class="flex items-center justify-between px-4 h-8 border-b-gray">
+            <div class="font-semibold text-xs text-gray-700" x-text="'Sort ' + data.meta.title + ' Guides'"></div>
+            <button @click="uiState.sorting.open = !uiState.sorting.open" type="button" class="btn-icon text-basicgray">
+              <template x-if="uiState.sorting.open">
+                <svg class="text-titlecolor fill-current -mr-1 ml-2 h-3 w-3">
+                  <use href="#icon--times"></use>
+                </svg>
+              </template>
+              <template x-if="!uiState.sorting.open">
+                <svg class="fill-current -mr-1 ml-2 h-3 w-3">
+                  <use href="#icon--arrow-down"></use>
+                </svg>
+              </template>
+            </button>
+          </div>
+          <div x-show.transition="uiState.sorting.open">
+            <template x-for="(sortOption, i) in uiState.sorting.options" :key="sortOption.field">
+              <div class="flex justify-between">
+                <button @click="uiState.sorting.sort(sortOption)" x-text="sortOption.title" :class="{ 'text-titlecolor': sortOption.enabled, 'text-basicgray': !sortOption.enabled }"
+                                class="block px-4 text-xs leading-none focus:outline-none"></button>
+                <div class="flex justify-end pr-2 space-x-1">
+                  <button class="p-2" :class="{ 'focus:outline-none text-sm bg-gray-200 rounded-full text-titlecolor': sortOption.enabled &&  !sortOption.down }"
+                                    @click="sortOption.down = false; uiState.sorting.sort(sortOption)">
+                    <svg :class="{ 'text-titlecolor':  sortOption.enabled &&  !sortOption.down, 'text-basicgray':  !sortOption.enabled ||  sortOption.down }"
+                                        class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                      <path
+                                            d="M304 376h-64a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zM28 128h44v336a16 16 0 0 0 16 16h16a16 16 0 0 0 16-16V128h44a12 12 0 0 0 8.73-20.24l-68-72a12 12 0 0 0-17.44 0l-68 72A12 12 0 0 0 28 128zm404 56H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm64-96H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h256a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zM368 280H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16z" />
+                    </svg>
+                  </button>
+                  <button class="p-2" :class="{ 'focus:outline-none text-sm bg-gray-200 rounded-full text-titlecolor': sortOption.enabled &&  sortOption.down }"
+                                    @click="sortOption.down = true; uiState.sorting.sort(sortOption)">
+                    <svg :class="{ 'text-titlecolor':  sortOption.enabled &&  sortOption.down, 'text-basicgray':  !sortOption.enabled ||  !sortOption.down }"
+                                        class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                      <path
+                                            d="M304 376h-64a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm-140 8h-44V48a16 16 0 0 0-16-16H88a16 16 0 0 0-16 16v336H28a12 12 0 0 0-8.73 20.24l68 72a12 12 0 0 0 17.44 0l68-72A12 12 0 0 0 164 384zm268-200H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zm64-96H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h256a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16zM368 280H240a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="space-y-10">
+      <template x-if="uiState.showGuidesPerSection()" x-for="(k, i) in Object.keys(data.hitsBySection)" :key="k">
+        <div class="">
+          <h4 class="text-2xl mb-5 text-titlecolor tracking-tight font-semibold">
+            <ul class="inline-flex">
+              <template x-for="(s,j) in data.sectionsFromKey(k)">
+                <li class="flex items-center">
+                  <span x-text="s.linkTitle"></span>
+                  <template x-if="j < data.sectionsFromKey(k).length -1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-2 h-6 w-5 text-gray-500" fill="currentColor" viewBox="0 0 192 512">
+                      <path
+                                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z" />
+                    </svg>
+                  </template>
+                </li>
+              </template>
+            </ul>
+          </h4>
+          <ul class="mb-5">
+            <template x-for="(item, j) in data.hitsBySection[k]" :key="item.href">
+              <li class="pb-2">
+                <a :href="item.href" x-html="item.title"></a>
+              </li>
+            </template>
+          </ul>
+          <hr class="my-12">
+        </div>
+      </template>
+    </div>
+    <template x-if="uiState.showSortedGuideList()" x-for="(item, i) in data.result.hits" :key="item.href">
+      <div class="w-2/3 flex flex-col">
+        <a class="mb-1" x-text="item.title" :href="item.href"></a>
+        <div class="text-titlecolor text-sm mb-4">
+          <span x-text="item.firstPublishedDateString"></span>
+          <span x-text="item.sectionTitle"></span>
+        </div>
+      </div>
+    </template>
+    <template x-if="uiState.showGuidesTiles()">
+      <div>
+        <template x-for="(item, i) in data.result.hits">
+          <div :class="{ 'bg-white': i === 0, 'bg-gray-100': i > 0 }" class="w-full break-normal overflow-hidden  md:flex mb-4 border rounded-lg shadow-sm h-40">
+            <div class="bg-gray-200 flex-none bg-cover w-64" :style="'background-image: url(' + item.thumbnailUrl + ')'" title=""></div>
+            <div class="pl-10 pr-2 flex flex-col justify-center content-center leading-normal ">
+              <div>
+                <a class="tracking-tight cursor-pointer" :href="item.href"></a>
+                <h3 class="mb-2 text-2xl " x-html="item.title">
+                </h3>
+              </a>
+                <p class="text-darkgray text-base" x-html="item.excerptTruncated()"></p>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+{{ end }}

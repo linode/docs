@@ -1,0 +1,12 @@
+{{ if not (eq .Params.show_social_image_in_article false) }}
+  {{ $img := partial "funcs/get-social-image.html" . }}
+  {{ if $img.img }}
+    {{ $src := $img.img }}
+    {{ if $img.isResource }}
+      {{ $src = $img.img.Permalink }}
+    {{ end }}
+    <div class="marquee-img-container">
+      <img src="{{ $src }}" class="marquee-img" alt="Marquee image for {{ $.Title }}" title="Marquee image for {{ $.Title }}" />
+    </div>
+  {{ end }}
+{{ end }}

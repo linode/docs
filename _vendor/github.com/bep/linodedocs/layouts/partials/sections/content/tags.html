@@ -1,0 +1,12 @@
+<div class="flex flex-wrap content-center space-x-1 pt-2">
+  {{/* TODO(bep) */}}
+  {{ with .Keywords }}
+    {{ range . }}
+      <a href="#?tags={{ . | lower | htmlEscape }}" data-turbolinks="false" 
+        class="bg-selected cursor-pointer border rounded-sm border-gray-500 text-basicgray text-sm uppercase p-1 mb-2"
+        style="letter-spacing: 1px; line-height: 15px;">
+        {{ . }}
+      </a>
+    {{ end }}
+  {{ end }}
+</div>

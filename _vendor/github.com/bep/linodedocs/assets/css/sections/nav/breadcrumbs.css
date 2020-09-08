@@ -1,0 +1,11 @@
+.navbar__breadcrumbs {
+    @apply bg-white w-full;
+}
+
+.main__breadcrumbs {
+    @apply bg-backgroundcolor max-w-screen-lg;
+}
+
+.main__breadcrumbs a {
+    @apply text-basicgray;
+}

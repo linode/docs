@@ -1,0 +1,14 @@
+{{ $img := dict "img" "" "isResource" false }}
+{{- with $.Params.image }}
+  {{ $img = dict "img" (index . 0 | absURL) "isResource" false }}
+{{ else }}
+  {{ $images := $.Resources.ByType "image" }}
+  {{ $featured := $images.GetMatch "*feature*" }}
+  {{ if not $featured }}
+    {{ $featured = $images.GetMatch "{*cover*,*thumbnail*}" }}
+  {{ end }}
+  {{ with $featured }}
+    {{ $img = dict "img" $featured "isResource" true }}
+  {{ end }}
+{{ end }}
+{{ return $img }}

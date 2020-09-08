@@ -1,0 +1,46 @@
+{{ define "main" }}
+<div class="w-full">
+  <h1 class="pb-8">
+    {{ .Title }}
+    <span class="ml-3 py-1 px-2 align-middle text-sm text-textcolor border rounded-full">
+      {{ len .Pages }} guides
+      available
+    </span>
+  </h1>
+  <p class="max-w-4xl">
+    {{ .Description | $.RenderString }}
+  </p>
+  {{ $pages := slice }}
+  {{ if .Parent.IsHome }}
+    {{ $pages = .Sections }}
+  {{ else }}
+    {{ $pages = .RegularPages }}
+    {{ if not $pages }}
+      {{ $pages = .Sections }}
+    {{ end }}
+  {{ end }}
+  
+  <h2 class="pt-6 pb-10">
+    Guides
+  </h2>
+  
+  {{ range $i, $e := $pages }}
+    {{ $img := partial "funcs/get-bundle-image.html" . }}
+    {{ $img := $img.Fill "640x400" }}
+    <div class="{{ if eq $i 0 }}bg-white{{ else }}bg-gray-200{{ end }} max-w-sm w-full lg:max-w-4xl lg:flex mb-4 border rounded-lg shadow-sm">
+      <div class="h-48 w-full lg:h-auto lg:w-48 flex-none bg-cover text-center overflow-hidden" style="background-image: url('{{  $img.Permalink }}')" title=""></div>
+      <div class="p-4 flex flex-col justify-between leading-normal">
+        <div class="mb-8">
+          <div class="mb-2">
+            <a class="no-underline text-gray-900 font-bold text-xl cursor-pointer" href="{{ .RelPermalink }}">
+              {{ .Title }}
+            </a>
+          </div>
+          <p class="text-gray-700 text-base">
+            {{ .Summary | truncate 100 }}
+          </p>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ end }}

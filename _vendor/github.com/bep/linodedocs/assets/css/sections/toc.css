@@ -1,0 +1,86 @@
+nav.toc {
+    @apply w-full;
+    left: calc(100% - var(--width-right-column));
+    top: calc(var(--height-navbar-row) + 1px);
+    width: var(--width-right-column);
+    height: 90vh;
+}
+
+@screen mobile {
+    nav.toc {
+        height: 100vh;
+    }
+}
+
+nav.toc li > span {
+    @apply relative h-full py-2;
+}
+
+nav.toc li a {
+    @apply font-normal text-textcolor leading-snug box-border w-full h-full truncate;
+}
+
+nav.toc li.active > span > a > span,
+nav.toc li > span > a:hover > span {
+    @apply absolute top-0;
+    z-index: -10;
+    margin-left: -310px;
+    height: 100%;
+    width: 500px;
+}
+
+nav.toc li a:hover > span {
+    background-color: var(--color-brand--light);
+}
+
+nav.toc li.active a > span {
+    @apply bg-gray-200;
+}
+
+nav.toc li {
+    @apply z-10 w-full pr-1 pt-2 pb-2 pl-4;
+    list-style-position: inside;
+}
+
+nav.toc li:last-of-type {
+    @apply pb-0;
+}
+
+nav.toc li:first-of-type {
+    @apply pt-4;
+}
+
+nav .toc__inner > ol {
+    @apply pl-5;
+}
+
+nav.toc li.level-2 {
+    @apply pl-0;
+}
+
+nav.toc li.level-2,
+nav.toc li.level-2 a {
+    @apply font-semibold text-xs text-titlecolor;
+}
+
+nav.toc li.level-2 {
+    list-style-type: decimal-leading-zero;
+    list-style-position: inside;
+}
+
+nav.toc li.level-3,
+nav.toc li.level-3 a,
+nav.toc li.level-4,
+nav.toc li.level-4 a {
+    @apply font-normal text-xs;
+}
+
+nav.toc li.level-3 {
+    list-style-position: inside;
+    list-style-type: upper-alpha;
+}
+
+nav.toc li.level-4 {
+    list-style-position: inside;
+    list-style-type: upper-roman;
+}

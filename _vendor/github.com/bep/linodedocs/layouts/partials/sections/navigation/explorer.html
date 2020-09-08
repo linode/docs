@@ -1,0 +1,89 @@
+{{ partial "sections/navigation/explorer-icons.html" .}}
+<div id="explorer-component" class="explorer box-border" x-data="lnSearchExplorer.New(lnSearchConfig)" x-init="function() { init($refs.searchNodeTemplate, $refs.explorer); }"
+  @nav:toggle.document="receiveToggle($event.detail)" @search:results-blank.once.document="receiveDataInit($event.detail);" @search:results.document.debounce.100ms="receiveData($event.detail);"
+  @hashchange.window="onHashchange();" @turbolinks:before-render.document="onTurbolinksBeforeRender($event.data);" @turbolinks:render.document="onTurbolinksRender($event.data);"
+  @click.away="closeIfMobile()" data-turbolinks-permanent>
+  <nav class="h-full block top-0 overflow-auto">
+    <ul class="search-explorer-root bg-backgroundcolor" x-ref="explorer" x-show="isOpen()" x-transition:enter="transition-transform transition-opacity ease-out duration-500 sm:duration-700"
+      x-transition:enter-start="opacity-0 transform mobile:-translate-x-8 sm:-translate-y-8" x-transition:enter-end="opacity-100 transform mobile:translate-x-0 sm:translate-y-0"></ul>
+  </nav>
+  <template x-ref="searchNodeTemplate">
+    <li class="explorer__node" x-bind:class="{
+      'explorer__node--after-first': data.node.level > 1,
+      'pl-10': data.node.level === 2
+    }" x-show.transition.200ms="!data.hidden" @search:facetfilters.document="applyFacetFilters($event.detail)" @search:toggle-node.document="receiveToggledOpen($event.detail);"
+      @search:toggle-node="receiveToggledOpenDescendant($event.detail);">
+      <div x-bind:class="{
+        'border-l-2 ml-2': data.node.level > 1,
+        'border-gray-500': showBorder2(),
+        'border-brand': showBorder1(),
+        'border-l-transparent': (!showBorder1() && !showBorder2())
+      }">
+        <div x-bind:class="{ 
+      'explorer__row--first pl-container bg-white border-b-gray text-gray-900' : (data.node.level===1), 
+      'bg-gray-300': showBorder1(),
+      'pl-3': data.node.level > 2 && !data.open,
+      'pl-2': data.node.level > 1 && data.open,
+      'explorer__row--after-first text-gray-700' : (data.node.level > 1),
+      }" class="flex items-center justify-between pr-6">
+          <div class="flex content-end">
+            <div x-show="data.node.level === 1">
+              <svg x-bind:class="{
+                  'text-gray-300': data.node.disabled,
+                  'text-brand': data.open }" class="fill-current block w-5" style="height: 16.87px;">
+                <use x-bind:href="data.node.icon"></use>
+              </svg>
+            </div>
+            <a x-bind:href="data.node.href" x-bind:class="{
+                'text-brand': data.node.level === 1 && data.open,
+                'text-titlecolor': !data.node.disabled && data.node.level === 1 && !data.open,
+                'pl-4': data.node.level === 1,
+                'text-textcolor': (data.node.level > 1),
+                'font-semibold': (data.node.level <= 2 || data.node.level > 2 && data.open),
+                'text-sm': (data.node.level === 2),
+                'text-xs': (data.node.level > 2),
+                'text-gray-300': data.node.disabled
+                }" class="block relative w-36 cursor-pointer pr-3 no-underline capitalize z-10" @click="toggleOpen()">
+              <span :class="{ 
+                'after-second': data.node.level > 2
+              }" class="bg-container h-full"></span>
+              <span x-html="data.node.title"></span>
+            </a>
+          </div>
+          <div class="flex items-center h-full">
+            <span x-bind:class="{ 
+                'text-gray-100': data.node.disabled,
+                'text-basicgray': !data.node.disabled }" x-show="data.count !== undefined" x-html="data.count" class="text-xs font-semibold pr-6"></span>
+            <template x-if="data.node.disabled || !data.count">
+              <div class="w-3"></div>
+            </template>
+            <div class="z-10" x-show="!data.node.disabled && data.count">
+              <button type="button" class="btn-icon h-full flex items-center justify-center" x-bind:class="{ 'text-gray-200': data.node.disabled, 'text-textcolor': !data.node.disabled }"
+                @click.stop="toggleOpen()" @mouseover.once.stop="loadPages()">
+                <svg class="w-4 h-3 titlecolor" x-show="data.loading || !data.open">
+                  <use href="#icon--arrow-down"></use>
+                </svg>
+                <svg class="w-4 h-3 titlecolor" x-show="!data.loading && data.open">
+                  <use href="#icon--arrow-up"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="node-tree border-l-transparent pl-2" x-bind:class="{ 
+          'pl-2':  (data.node.level === 2 && !data.open)
+         }" x-show="data.open"></ul>
+        <ul class="explorer-node__pages" x-bind:class="{ 'pl-6': (data.node.level > 1) }" x-show="data.open">
+          <template x-if="data.node.pages" x-for="(p, index) in data.pages" :key="p.href">
+            <li class="w-56">
+              <a @click="data.dirty++" x-html="p.title" x-bind:href="p.href" :class="{
+                  'text-textcolor': !isActive(p),
+                  'text-brand font-semibold': isActive(p),
+                }" class="page-link mr-2 text-xs block capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none"></a>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </li>
+  </template>
+</div>

@@ -1,0 +1,9 @@
+# github.com/bep/linodedocs v0.0.0-20200908101729-24d9c800d647
+# github.com/linode/linode-website-partials v0.0.0-20200907163220-d3856e759e21
+# github.com/gohugoio/hugo-mod-jslibs/alpinejs v0.5.0
+# github.com/alpinejs/alpine v2.6.0+incompatible
+# github.com/gohugoio/hugo-mod-jslibs/turbolinks v0.5.0
+# github.com/turbolinks/turbolinks-source-gem v5.2.0+incompatible
+# github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1
+# github.com/instantpage/instant.page v5.1.0+incompatible
+# github.com/linode/linode-api-docs v4.73.0+incompatible

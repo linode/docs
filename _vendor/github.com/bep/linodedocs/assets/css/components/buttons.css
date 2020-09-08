@@ -1,0 +1,19 @@
+.btn {
+  @apply font-semibold py-2 px-4 rounded no-underline;
+}
+
+.btn:focus {
+  @apply outline-none;
+}
+
+/* Used for the icons that acts as butons. */
+.btn-icon {
+}
+
+.btn-icon:focus {
+  @apply outline-none;
+}
+
+.btn-icon:hover {
+  @apply opacity-75;
+}
