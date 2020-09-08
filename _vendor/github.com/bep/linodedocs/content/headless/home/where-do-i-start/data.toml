@@ -1,0 +1,4 @@
+[[queries.main]]
+key = "Type"
+operator = "in"
+match = ["getting-started", "development", "networking"]

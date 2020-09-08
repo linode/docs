@@ -1,0 +1,25 @@
+<template x-for="(section, i) in searchresult.sections" :key="section.config.name">
+  <div x-show="section && section.isEnabled()">
+    <div class="flex content-start items-center justify-between mb-5">
+      <h2 class="text-titlecolor" x-text="'Top results in ' + section.config.title"></h2>
+      <div class="text-left">
+        <a x-text="section.searchData.result.nbHits + ' hits in ' + section.config.title" href="#" class="text-gray-700 text-sm"></a>
+      </div>
+    </div>
+    <div class="pb-6">
+      <template x-for="(item, j) in section.searchData.result.hits" :key="item.href">
+        <div class="p-3 mb-6" x-bind:class="{ 'bg-selected rounded': (j === 0) }">
+          <a class="font-semibold text-lg mb-2 text-gray-700 no-underline" x-html="item._highlightResult.title.value" x-bind:href="item.href"></a>
+          <div class="text-sm text-textcolor pt-4">
+            <template x-for="(value, label) in item.facets" :key="label">
+              <div class="inline-block">
+                <span class="font-semibold" x-text="label + ':'"></span>
+                <span class="mr-2" x-text="value.string"></span>
+              </div>
+            </template>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>

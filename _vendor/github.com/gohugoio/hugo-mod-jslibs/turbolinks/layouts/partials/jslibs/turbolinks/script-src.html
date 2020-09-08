@@ -1,0 +1,6 @@
+{{- $isProd := eq hugo.Environment "production" -}}
+{{- $alpineJsBridge := resources.Get "jslibs/turbolinks/alpinejs-turbolinks-bridge.js" -}}
+{{- $turbolinks := resources.Get "jslibs/turbolinks/turbolinks.js" -}}
+{{- $js := slice $turbolinks $alpineJsBridge | resources.Concat "jslibs/turbolinks/turbolinks.js" }}
+{{- if $isProd }}{{ $js = $js | minify | fingerprint }}{{ end -}}
+<script src="{{ $js.RelPermalink }}" {{ if $isProd }} integrity="{{ $js.Data.Integrity }}" {{ end }} crossorigin="anonymous" defer></script>

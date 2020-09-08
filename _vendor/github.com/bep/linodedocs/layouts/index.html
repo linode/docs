@@ -1,0 +1,69 @@
+{{ define "main" }}
+  {{ $headlessSection := site.GetPage "headless" }}
+  {{ $whereDoIStart := $headlessSection.GetPage "headless/home/where-do-i-start" }}
+  {{ $whereDoIStartData := $whereDoIStart.Resources.GetMatch "data.*" | transform.Unmarshal }}
+  {{ $pagesWhereDoIStart := partial "funcs/build-query.html" $whereDoIStartData.queries.main | first 6 }}
+  {{ $typesOfDocumentation := site.GetPage "headless/home/types-of-documentation" }}
+  <section class="mb-8 md:mb-16">
+    <div class="max-w-screen-sm mb-10 md:mb-20">
+      <h1 class="pb-5">
+        {{ .Params.h1_title | default .Title }}
+      </h1>
+      <div class="text-lg leading-6 text-textcolor">
+        {{ .Summary }}
+      </div>
+    </div>
+    <div class="pull-out">
+      {{ partial "helpers/bundle-image.html" (dict "page" . "class" "sm:rounded-lg" "command" "Fit" "options" "957x410 center") }}
+    </div>
+  </section>
+  <section class="mb-8 md:mb-16 w-full">
+    <h2 class="mb-5">
+      {{  $whereDoIStart.Title }}
+    </h2>
+    <div class="max-w-xl mb-16 leading-5 text-textcolor">
+      {{ $whereDoIStart.Summary }}
+    </div>
+    <div class="flex flex-wrap items-stretch -mx-2">
+      {{ range $i, $e := $pagesWhereDoIStart }}
+        <div class="px-2 w-full md:w-1/3 py-5">
+          {{ partial "components/card.html" (dict "page" .) }}
+        </div>
+      {{ end }}
+    </div>
+  </section>
+  <section x-data="lnSearch.NewSimpleData()" x-init="init" @search:results-blank.once.document="initSearchResult($event.detail)" class="mb-16 w-full" id="home-type-of-documentation"
+    data-turbolinks-permanent>
+    <h2 class="mb-5">
+      {{ $typesOfDocumentation.Title }}
+    </h2>
+    <div class="max-w-xl pb-16 leading-5 text-textcolor">
+      {{ $typesOfDocumentation.Summary }}
+    </div>
+    <div class="flex flex-wrap items-stretch -mx-4">
+      {{ range $i, $e := $typesOfDocumentation.RegularPages }}
+        <div class="px-4 pb-8 w-full lg:w-1/2">
+          <a href="{{ .RelPermalink }}" class="no-underline text-textcolor text-base">
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div class="relative overflow-hidden pb-30/9 sm:pb-16/9">
+                {{ partial "helpers/bundle-image.html" (dict "page" . "class" "absolute h-full w-full object-cover" "command" "Fit" "options" "470x260 top") }}
+              </div>
+              <div class="px-4 md:px-12 py-4">
+                <div class="flex justify-between items-center mb-5">
+                  <div class="font-bold text-2xl leading-7">
+                    {{ .Title }}
+                  </div>
+                  {{ $searchIndex := .Params.external_ref.index }}
+                  <div class="pr-12 text-gray-400 text-sm" x-show="data.stats['{{ $searchIndex }}']" x-html="sprintfStatsProperty('{{ $searchIndex }}', 'nbHits', '%s Topics')"></div>
+                </div>
+                <p>
+                  {{ .Summary }}
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

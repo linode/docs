@@ -1,0 +1,13 @@
+{{ define "main" }}
+  {{ $api := partial "openapi3/get" . }}
+  {{ $p := . }}
+  <div class="content prose prose-sm md:prose-lg max-w-none">
+    {{ $info := $api.Info }}
+    <h1>
+      {{ $info.Title }}
+    </h1>
+    <p>
+      {{ $info.Description | .RenderString }}
+    </p>
+  </div>
+{{ end }}
