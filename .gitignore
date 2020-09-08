@@ -40,4 +40,5 @@ public/
 resources/_gen/assets
 yarn.lock
 search_index/
+resources/_gen/assets
 hugo_stats.json
