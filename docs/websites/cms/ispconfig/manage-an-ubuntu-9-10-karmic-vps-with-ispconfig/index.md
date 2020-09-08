@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 9.10 (Karmic) Linode.'
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
-tags:  ["cms", "ubuntu"]
+tags:  ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/ispconfig/ubuntu-9-10-karmic/','/websites/cms/manage-an-ubuntu-9-10-karmic-vps-with-ispconfig/']
 modified: 2011-04-29

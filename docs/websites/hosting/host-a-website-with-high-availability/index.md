@@ -3,7 +3,7 @@ author:
   name: Phil Zona
   email: docs@linode.com
 description: 'How to configure a highly available web server stack'
-keywords: ["high availability", "web server", "failover", " "]
+keywords: ["high availability", "web server", "failover"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-07-12
 modified: 2018-07-16

@@ -9,6 +9,8 @@ aliases: ['/web-applications/wikis/']
 published: 2010-03-01
 title: Wikis
 show_in_lists: true
+cascade:
+    tags: ["wiki"]
 ---
 
 

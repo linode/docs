@@ -3,8 +3,8 @@ author:
   name: Edward Angert
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
-keywords: ["install WordPress", " WordPress on Linode", " how to configure WordPress", " Permalink"]
-tags: ["wordpress", "lamp", "lemp", "ubuntu", "cms"]
+keywords: ["install WordPress", "WordPress on Linode", "how to configure WordPress", "Permalink"]
+tags: ["lamp", "lemp", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-10-21
 modified_by:

@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Ubuntu 10.04 (Lucid).'
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/bulletin-boards/phpbb/ubuntu-10-04-lucid/']
 modified: 2013-10-01

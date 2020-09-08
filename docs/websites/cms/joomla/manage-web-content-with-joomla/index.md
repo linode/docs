@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using the Joomla! content management system to ease administration overhead for websites.'
 keywords: ["joomla", "cms", "content management systems"]
-tags:  ["cms", "lamp"]
+tags:  ["lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/manage-web-content-with-joomla/','/web-applications/cms-guides/joomla/']
 modified: 2011-04-19

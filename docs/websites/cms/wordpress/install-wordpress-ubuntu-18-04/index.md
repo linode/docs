@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
 keywords: ["install WordPress", "WordPress on Linode", "how to configure WordPress", "Permalink"]
-tags: ["wordpress", "cms", "lamp", "lemp", "ubuntu"]
+tags: ["lamp", "lemp", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-06-04
 modified_by:

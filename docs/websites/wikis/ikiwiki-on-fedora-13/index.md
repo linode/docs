@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using Ikiwiki on Fedora 13 to power a standard wiki implementation.'
 keywords: ["ikiwiki", "fedora", "fedora 12", "wiki", "perl", "git", "markdown"]
+tags: ["fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/ikiwiki/fedora-13/']
 modified: 2011-04-29

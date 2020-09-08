@@ -5,7 +5,7 @@ author:
 description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on CentOS 8.'
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode running CentOS 8.'
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on CentOS 8", "ghost cms"]
-tags: ["centos", "cms", "mysql", "nginx"]
+tags: ["centos", "mysql", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-02-10
 modified_by:

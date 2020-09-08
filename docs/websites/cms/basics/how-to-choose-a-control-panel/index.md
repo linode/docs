@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Control panels offer simplfied GUIs for complicated Linux system administrastion tasks.'
 keywords: ["control panel", "cpanel", "whm", "plesk", "vesta", "vestacp", "virtualmin", "virtualmin pro", "webmin"]
-tags: ["cms", "cpanel", "monitoring" ]
+tags: ["cms", "cpanel", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-01
 modified_by:

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Creating Accounts on DirectAdmin
 keywords: ["directadmin", " reseller", " accounts"]
-tags: [ "cms", "web server"]
+tags: ["web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/directadmin/directadmin-accounts/','/websites/cms/creating-accounts-on-directadmin/']
 modified: 2013-10-03

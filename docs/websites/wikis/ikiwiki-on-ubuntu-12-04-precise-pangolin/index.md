@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Using Ikiwiki on Ubuntu 12.04 (Precise Pangolin) to power a standard wiki implementation.'
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "Precise Pangolin"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/ikiwiki/ubuntu-12-04-precise-pangolin/']
 modified: 2013-10-04
