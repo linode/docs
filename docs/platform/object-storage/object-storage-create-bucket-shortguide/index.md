@@ -20,13 +20,13 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
 1.  Click the **Object Storage** link in the sidebar, and then click **Add a Bucket**.
 
-    {{< image src="object-storage-add-a-bucket.png" alt="The Object Storage menu" title="The Object Storage menu" >}}
+    ![The Object Storage menu](object-storage-add-a-bucket.png "The Object Storage menu")
 
     If you have not created an access key or a bucket before, you are prompted to enable Object Storage.
 
 1.  The **Create a Bucket** menu appears.
 
-    {{< image src="object-storage-create-a-bucket.png" alt="The Create a Bucket menu" title="The Create a Bucket menu" >}}
+    ![The Create a Bucket menu](object-storage-create-a-bucket.png "The Create a Bucket menu")
 
 1.  Add a label for the bucket. See the [Bucket Name](/docs/platform/object-storage/how-to-use-object-storage/#bucket-names) section for rules on naming the bucket.
 

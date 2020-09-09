@@ -18,19 +18,19 @@ show_on_rss_feed: false
 
 1.  When the Linode is powered off, click on the **Volumes** tab, click the **more options ellipsis** next to the Volume you would like to detach, then click **Detach**.
 
-    {{< image src="bs-cloud-detach-volume.png" alt="Detach a Volume from a Linode from the Volume menu" title="Detach a Volume from a Linode from the Volume menu" >}}
+    ![Detach a Volume from a Linode from the Volume menu](bs-cloud-detach-volume.png "Detach a Volume from a Linode from the Volume menu")
 
 1.  A confirmation screen appears and explains that the Volume will be detached from the Linode. Click **Detach** to confirm:
 
-    {{< image src="bs-cloud-detach-volume-confirm.png" alt="Linode Cloud Manager detach Volume confirmation" title="Linode Cloud Manager detach Volume confirmation" >}}
+    ![Linode Cloud Manager detach Volume confirmation](bs-cloud-detach-volume-confirm.png "Linode Cloud Manager detach Volume confirmation")
 
     The Linode's dashboard does not show the Volume present anymore:
 
-    {{< image src="bs-cloud-add-volume-to-linode-small.png" alt="The Linode's Volumes tab shows no attached Volumes" title="The Linode's Volumes tab shows no attached Volumes" >}}
+    ![The Linode's Volumes tab shows no attached Volumes](bs-cloud-add-volume-to-linode-small.png "The Linode's Volumes tab shows no attached Volumes")
 
     The Volume still exists on your account and you can see it if you view the **Volumes** page:
 
-    {{< image src="bs-cloud-volume-detached-but-still-available.png" alt="Volume not attached, but still exists" title="Volume not attached, but still exists" >}}
+    ![Volume not attached, but still exists](bs-cloud-volume-detached-but-still-available.png "Volume not attached, but still exists")
 
 {{< caution >}}
 If a volume is currently mounted, detaching it while the Linode is powered on could cause data loss or an unexpected reboot. You can unmount the volume for safe live-detaching using the `umount` command:

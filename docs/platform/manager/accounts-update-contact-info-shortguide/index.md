@@ -22,7 +22,7 @@ Here's how to update the contact information and the email address on the *Accou
 1.  Click the **Account & Billing** tab.
 1.  Expand the **Update Contact Information** panel and update the contact information and the email address for the account.
 
-    {{< image src="accounts-update-billing-info.png" alt="Update your Contact Information in the Linode Cloud Manager" title="Update your Contact Information in the Linode Cloud Manager" >}}
+    ![Update your Contact Information in the Linode Cloud Manager](accounts-update-billing-info.png "Update your Contact Information in the Linode Cloud Manager")
 
 1.  Click **Save**.
 

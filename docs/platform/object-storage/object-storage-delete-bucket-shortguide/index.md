@@ -24,10 +24,10 @@ You can only delete an empty Object Storage bucket. See the [Delete Objects from
 
 1. Click the ellipsis menu corresponding to the bucket you'd like to delete. Then, select **Delete**.
 
-    {{< image src="delete-bucket.png" alt="Delete an Object Storage bucket" title="Delete an Object Storage bucket" >}}
+    ![Delete an Object Storage bucket](delete-bucket.png "Delete an Object Storage bucket")
 
 1. A dialog box appears that prompts you to enter the bucket's name as a way to confirm that you'd like to delete the bucket. Type the bucket's name into the text entry field and click **Delete**.
 
-    {{< image src="confirm-bucket-delete.png" alt="Confirm deleting the Object Storage bucket" title="Confirm deleting the Object Storage bucket" >}}
+    ![Confirm deleting the Object Storage bucket](confirm-bucket-delete.png "Confirm deleting the Object Storage bucket")
 
     After the bucket has been deleted, it is no longer be visible on the **Buckets Listing Page**.

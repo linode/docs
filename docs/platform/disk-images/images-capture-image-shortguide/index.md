@@ -22,11 +22,11 @@ While an image can be captured while your Linode is running, we would recommend 
 
 1.  Navigate to your the Images page in the Linode Cloud Manager and select **Add an Image**.
 
-    {{< image src="images-add-an-image.png" alt="Select 'Add an Image'" title="Select 'Add an Image'" >}}
+    ![Select 'Add an Image'](images-add-an-image.png "Select 'Add an Image'")
 
 1.  In the **Create an Image** menu select the Linode and disk you would like to freeze, and provide a label. You may also add an optional description of the image. Then, click **Create**.
 
-    {{< image src="images-create-image-menu.png" alt="Create an Image menu" title="Create an Image menu" >}}
+    ![Create an Image menu](images-create-image-menu.png "Create an Image menu")
 
     {{< caution >}}
 CoreOS disk images are in RAW format. Images made from CoreOS disks will not be able to be used to deploy new Linodes.
@@ -34,7 +34,7 @@ CoreOS disk images are in RAW format. Images made from CoreOS disks will not be 
 
 1.  Once you click the **Create** button, your image will be frozen for later use. You can view the progress under the bell notifications at the top of the page.
 
-    {{< image src="images-image-being-created.png" alt="Image creation status under the bell notifications" title="Image creation status under the bell notifications" >}}
+    ![Image creation status under the bell notifications](images-image-being-created.png "Image creation status under the bell notifications")
 
     {{< note >}}
 Linode Images are limited to 6144MB of data per disk.  You will need to ensure that data within your disk does not exceed this size limit. Additionally, Linode Images cannot be created if you are using raw disks or disks that have been formatted using custom filesystems. Additionally, the Image will be the smallest possible size based on the data present on the disk rather than the full Disk Allocation. {{< /note >}}

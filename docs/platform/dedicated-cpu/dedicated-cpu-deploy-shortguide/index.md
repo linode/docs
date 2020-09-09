@@ -14,7 +14,7 @@ headless: true
 show_on_rss_feed: false
 ---
 
-{{< image src="dedi-cpu-with-new-manager.gif" alt="Create a Dedicated CPU Linode in the Cloud Manager" title="Create a Dedicated CPU Linode in the Cloud Manager" >}}
+![Create a Dedicated CPU Linode in the Cloud Manager](dedi-cpu-with-new-manager.gif "Create a Dedicated CPU Linode in the Cloud Manager")
 
 1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 

@@ -22,7 +22,7 @@ Use the Linode Cloud Manager to enable the Backup Service on a Linode. Here's ho
 
 1.  Click the **Backups** tab.
 
-    {{< image src="backups-enable-backups.png" alt="Enable Linode Backups by navigating to to the individual Linode's backup menu" title="Enable Linode Backups by navigating to to the individual Linode's backup menu" >}}
+    ![Enable Linode Backups by navigating to to the individual Linode's backup menu](backups-enable-backups.png "Enable Linode Backups by navigating to to the individual Linode's backup menu")
 
 1.  Click **Enable Backups**.
 

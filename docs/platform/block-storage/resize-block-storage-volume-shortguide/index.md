@@ -22,15 +22,15 @@ Storage Volumes **cannot** be sized down, only up. Keep this in mind when sizing
 
 1.  Click **Resize**.
 
-    {{< image src="bs-cloud-resize-volume.png" alt="Select Resize from the Volume menu" title="Select Resize from the Volume menu" >}}
+    ![Select Resize from the Volume menu](bs-cloud-resize-volume.png "Select Resize from the Volume menu")
 
 1.  Enter the new Volume size. The minimum size is 10 GiB and maximum is 10,000 GiB. Then click **Submit**.
 
-    {{< image src="bs-cloud-resize-volume-menu.png" alt="Resize Volume menu" title="Resize Volume menu" >}}
+    ![Resize Volume menu](bs-cloud-resize-volume-menu.png "Resize Volume menu")
 
 1.  You'll be returned to the Volume list and the notification bell in the top right of the page will notify you when the resizing is complete.
 
-    {{< image src="bs-cloud-volume-resized.png" alt="Notification bell shows the Volume has been resized" title="Notification bell shows the Volume has been resized" >}}
+    ![Notification bell shows the Volume has been resized](bs-cloud-volume-resized.png "Notification bell shows the Volume has been resized")
 
 1.  Reboot your Linode.
 

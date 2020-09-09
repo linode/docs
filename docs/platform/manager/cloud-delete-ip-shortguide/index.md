@@ -22,7 +22,7 @@ You can delete a public IP addresses within the Cloud Manager from the **Network
 
 1.  Next to the public IPv4 address you wish to delete, click on the **more options ellipses**. Select the option to **Delete IP** from the drop down menu.
 
-    {{< image src="classic-to-cloud-delete-an-ip.png" alt="Cloud Manager Delete a Public IP Address" title="Cloud Manager Delete a Public IP Address" >}}
+    ![Cloud Manager Delete a Public IP Address](classic-to-cloud-delete-an-ip.png "Cloud Manager Delete a Public IP Address")
 
 1.  A confirmation popup will appear where you can confirm the operation.
 

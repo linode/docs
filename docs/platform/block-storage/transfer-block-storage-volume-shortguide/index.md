@@ -19,7 +19,7 @@ show_on_rss_feed: false
 
 1.   Click the **more options ellipsis** to open the menu for the Volume you want to attach to a Linode and select **Attach**:
 
-    {{< image src="bs-cloud-attach-volume.png" alt="Open Volume menu" title="Open Volume menu" >}}
+    ![Open Volume menu](bs-cloud-attach-volume.png "Open Volume menu")
 
 1.   Since the Volume already has a filesystem on it, create a mountpoint for the new Linode, provided it hasn't already been created:
 

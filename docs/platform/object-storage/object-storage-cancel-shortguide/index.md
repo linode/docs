@@ -22,6 +22,6 @@ If you have removed all of the buckets, but you have not also cancelled the Obje
 
 1.  After you've deleted all the buckets, navigate to the **Account** page in the left-hand navigation. Click the *Settings* tab. In the menu, you should see a setting for Object Storage:
 
-    {{< image src="object-storage-cancel-object-storage.png" alt="Cancel Object Storage" title="Cancel Object Storage" >}}
+    ![Cancel Object Storage](object-storage-cancel-object-storage.png "Cancel Object Storage")
 
 1.  Click **Cancel Object Storage**. A prompt appears asking you to confirm the cancellation. If you still have active buckets, you are prompted to delete them.

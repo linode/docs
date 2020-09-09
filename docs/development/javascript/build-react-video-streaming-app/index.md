@@ -28,9 +28,9 @@ Building a video streaming application might seem daunting at first, but this gu
 
 When completed, your application will look as follows:
 
-{{< image src="Image7.png" alt="React Video streaming app" title="React Video streaming app final preview 1" >}}
+![React Video streaming app](Image7.png "React Video streaming app final preview 1")
 
-{{< image src="Image8.png" alt="React Video streaming app" title="React Video streaming app final preview 2" >}}
+![React Video streaming app](Image8.png "React Video streaming app final preview 2")
 
 ### About Video Streams
 
@@ -430,7 +430,7 @@ app.get('/videos', function(req, res) {
 
 1. Save the file and it should automatically restart the server. Once it’s started, switch to your browser and check the React application. Your app should display the names and the duration of the videos, but not the thumbnails:
 
-    {{< image src="Image1.png" alt="React Video streaming app" title="React application" >}}
+    ![React Video streaming app](Image1.png "React application")
 
 ### Return Metadata for a Single Video
 
@@ -449,7 +449,7 @@ If you remember, the `Player` view makes a request to `http://localhost:4000/vid
 
 Now, the `Player` view should look like this:
 
-{{< image src="Image2.png" alt="React Video streaming app" title="React application preview" >}}
+![React Video streaming app](Image2.png "React application preview")
 
 ### Stream a Video
 
@@ -461,7 +461,7 @@ We now need to implement two new features that are not supported by that endpoin
 
 1. We need three videos, so copy the example videos from the tutorial's [source code](https://github.com/slightlynerd/react-node-video-streaming/tree/master/server/assets) into the `assets/` directory of your `server` project. Make sure the filenames for the videos are `0.mp4`, `1.mp4`, and `2.mp4`, as these correspond to the `id`s in the `videos` array:
 
-    {{< image src="Image3.png" alt="React Video streaming app" title="Video Files preview" >}}
+    ![React Video streaming app](Image3.png "Video Files preview")
 
 1. Create the route for streaming videos. Add this snippet below your other routes in `server/app.js`:
 
@@ -502,7 +502,7 @@ app.get('/video/:id', function(req, res) {
 
 1. Save the file, which should automatically restart the server. Then navigate to your browser and refresh the application. You should see something like this:
 
-    {{< image src="Image4.png" alt="React Video streaming app" title="React application Preview" >}}
+    ![React Video streaming app](Image4.png "React application Preview")
 
 #### Inspecting the Streaming Video Route
 
@@ -593,7 +593,7 @@ app.get('/video/:id/poster', function(req, res) {
 
 1. Save the file, which restarts the server. Refresh the application in the browser, and you should see that the `Home` view now includes poster images for the videos:
 
-    {{< image src="Image5.png" alt="React Video streaming app" title="React application with poster Images" >}}
+    ![React Video streaming app](Image5.png "React application with poster Images")
 
 ## Add Captions to Videos
 
@@ -672,7 +672,7 @@ app.get('/video/:id/caption', function(req, res) {
 
 1. Save the file, which restarts the server. You should now see captions appear on the video:
 
-    {{< image src="Image6.png" alt="React Video streaming app" title="React application with Video Captions" >}}
+    ![React Video streaming app](Image6.png "React application with Video Captions")
 
 ## Making Things Pretty
 
@@ -810,9 +810,9 @@ render() {
 
 1. The application should now look like this:
 
-    {{< image src="Image7.png" alt="React Video streaming app" title="React Video streaming app final preview 1" >}}
+    ![React Video streaming app](Image7.png "React Video streaming app final preview 1")
 
-    {{< image src="Image8.png" alt="React Video streaming app" title="React Video streaming app final preview 2" >}}
+    ![React Video streaming app](Image8.png "React Video streaming app final preview 2")
 
 ## Conclusion
 

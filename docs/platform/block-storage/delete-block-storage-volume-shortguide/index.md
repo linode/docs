@@ -26,4 +26,4 @@ The removal process is irreversible, and the data will be permanently deleted.
 
 1.  Click **Delete**.
 
-    {{< image src="bs-cloud-delete-volume-small.png" alt="Delete a Volume" title="Delete a Volume" >}}
+    ![Delete a Volume](bs-cloud-delete-volume-small.png "Delete a Volume")

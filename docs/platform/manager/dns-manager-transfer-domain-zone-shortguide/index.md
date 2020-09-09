@@ -24,7 +24,7 @@ Granting another server access to zone information is potentially dangerous. Do 
 
 1. Viewing your Domain's records, under the **SOA Record** section, click on the **more options ellipsis** corresponding to your Domain's SOA records and select **Edit**.
 
-    {{< image src="edit-soa-record.png" alt="Edit SOA records" title="Edit SOA records" >}}
+    ![Edit SOA records](edit-soa-record.png "Edit SOA records")
 
 1. In the **Edit SOA Record** pane, find the **Domain Transfers** form field and enter in a comma separated list of IP addresses corresponding to the DNS servers you'd like to give access to your Domain's zone file.
 

@@ -22,14 +22,14 @@ Depending on the type of app you created, the app will be accessible in differen
 
 1.  Find the Linode that you created. The IP address is a series of four numbers separated by periods. In the grid view of the Linodes page, your IP address will be located underneath the data center name for your Linode:
 
-    {{< image src="one-click-ip-address-grid.png" alt="Highlight of a Linode's IP address in grid view" title="Highlight of a Linode's IP address in grid view" >}}
+    ![Highlight of a Linode's IP address in grid view](one-click-ip-address-grid.png "Highlight of a Linode's IP address in grid view")
 
 1.  In list view, your IP address will be under the **IP Addresses** column in the row that lists your Linode:
 
-    {{< image src="one-click-ip-address-list.png" alt="Highlight of a Linode's IP address in list view" title="Highlight of a Linode's IP address in list view" >}}
+    ![Highlight of a Linode's IP address in list view](one-click-ip-address-list.png "Highlight of a Linode's IP address in list view")
 
 1.  Alternatively, you can find your IP address by navigating to the **Networking** tab of your Linode's detail page. The address is displayed under the **Address** column in the **IPv4** table:
 
-    {{< image src="one-click-networking-tab.png" alt="View your IP address from the Networking tab of the Linode detail page" title="View your IP address from the Networking tab of the Linode detail page" >}}
+    ![View your IP address from the Networking tab of the Linode detail page](one-click-networking-tab.png "View your IP address from the Networking tab of the Linode detail page")
 
 1. Copy your IP address. For apps like WordPress, WooCommerce, and Drupal, you can navigate to the IP address in your browser to visit your installation. For game servers, connect to the IP address in-game to play on your new server. Other apps like MERN, LAMP, and WireGuard will require you to SSH into your Linode to access or provide more customized configurations.

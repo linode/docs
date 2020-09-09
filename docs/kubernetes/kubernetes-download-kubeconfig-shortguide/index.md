@@ -49,7 +49,7 @@ This configuration file defines your cluster, users, and contexts.
 
 1. From the Kubernetes listing page, click on your cluster's **more options ellipsis** and select **Download kubeconfig**. The file will be saved to your computer's `Downloads` folder.
 
-    {{< image src="download-kubeconfig.png" alt="Download your cluster's kubeconfig" title="Download your cluster's kubeconfig" >}}
+    ![Download your cluster's kubeconfig](download-kubeconfig.png "Download your cluster's kubeconfig")
 
     {{< disclosure-note "Download and view your Kubeconfig from the cluster's details page">}}
 You can also download the kubeconfig from the Kubernetes cluster's details page.
@@ -58,11 +58,11 @@ You can also download the kubeconfig from the Kubernetes cluster's details page.
 
 1. On the cluster's details page, under the **kubeconfig** section, click the **Download icon**. The file will be saved to your `Downloads` folder.
 
-    {{< image src="lke-download-kubeconfig-2.png" alt="Kubernetes Cluster Download kubeconfig from Details Page" title="Kubernetes Cluster Download kubeconfig from Details Page" >}}
+    ![Kubernetes Cluster Download kubeconfig from Details Page](lke-download-kubeconfig-2.png "Kubernetes Cluster Download kubeconfig from Details Page")
 
 1. To view the contents of your kubeconfig file, click on the **View icon**. A pane will appear with the contents of your cluster's kubeconfig file.
 
-    {{< image src="lke-view-kube-config.png" alt="View the contents of your kubeconfig file" title="View the contents of your kubeconfig file" >}}
+    ![View the contents of your kubeconfig file](lke-view-kube-config.png "View the contents of your kubeconfig file")
 
 {{</ disclosure-note >}}
 

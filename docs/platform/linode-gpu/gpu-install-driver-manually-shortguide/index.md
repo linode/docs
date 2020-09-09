@@ -31,13 +31,13 @@ This section will walk you through the process of downloading and installing the
 
     The form will look as follows when completed:
 
-    {{< image src="nvidia-drivers-download-form.png" alt="NVIDIA Drivers Download Form" title="NVIDIA Drivers Download Form" >}}
+    ![NVIDIA Drivers Download Form](nvidia-drivers-download-form.png "NVIDIA Drivers Download Form")
 
 1. Click the **Search** button, and a page will appear that shows information about the driver. Click the green **Download** button on this page. The file will not download to your computer; instead, you will be taken to another download confirmation page.
 
 1. Copy the link for the driver installer script from the green **Download** button on this page:
 
-    {{< image src="copy-driver-download-link.png" alt="Copy Download Link" title="Copy Download Link" >}}
+    ![Copy Download Link](copy-driver-download-link.png "Copy Download Link")
 
 1.  On your Linode, enter the `wget` command and paste in the download link you copied. This example shows the syntax for the command, but you should make sure to use the download link you copied from NVIDIA's site:
 

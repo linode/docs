@@ -20,7 +20,7 @@ If one of your domain names has expired or if you want to start hosting it on an
 
 1.  Select **Remove** to permanently delete the domain, including all associated DNS records. It will only take a few minutes for the changes to take effect.
 
-    {{< image src="domain-remove-a-zone.png" alt="This menu lets you remove a DNS zone" title="This menu lets you remove a DNS zone" >}}
+    ![This menu lets you remove a DNS zone](domain-remove-a-zone.png "This menu lets you remove a DNS zone")
 
     {{< caution >}}
 Once removed, you **MUST** delete the Linode nameserver entries from the domain at the registrar level. This is a very important step; if the entries are not removed, someone could use your domain without your permission.

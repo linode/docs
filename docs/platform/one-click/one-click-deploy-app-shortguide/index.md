@@ -18,19 +18,19 @@ show_on_rss_feed: false
 
 1. From the Linode dashboard, click on the **Marketplace** option in the left-hand navigation menu:
 
-    {{< image src="one-click-create-a-linode.png" alt="Click 'Create' at the top of the screen and choose 'Linode' from the dropdown menu" title="Click 'Create' at the top of the screen and choose 'Linode' from the dropdown menu" >}}
+    ![Click 'Create' at the top of the screen and choose 'Linode' from the dropdown menu](one-click-create-a-linode.png "Click 'Create' at the top of the screen and choose 'Linode' from the dropdown menu")
 
 1. The Linode creation page will appear, with the **One-Click** tab and the **Create From: Marketplace** option pre-selected.
 
-    {{< image src="one-click-select-one-click-tab.png" alt="Select the 'One-Click' tab on the Create New Linode page" title="Select the 'One-Click' tab on the Create New Linode page" >}}
+    ![Select the 'One-Click' tab on the Create New Linode page](one-click-select-one-click-tab.png "Select the 'One-Click' tab on the Create New Linode page")
 
 1.  Select the app you would like to create. For this example, WordPress will be selected:
 
-    {{< image src="one-click-select-wordpress.png" alt="Select WordPress" title="Select WordPress" >}}
+    ![Select WordPress](one-click-select-wordpress.png "Select WordPress")
 
 1.  After the **Select App** section you'll find a new section with additional configuration options specific to your app. Fill out the required options. In the case of WordPress, you'll find fields for the WordPress administrator's username, password, e-mail address, and database passwords.
 
-    {{< image src="one-click-wordpress-config-options.png" alt="Fill out the required Options fields, which are marked with an asterisk" title="Fill out the required Options fields, which are marked with an asterisk" >}}
+    ![Fill out the required Options fields, which are marked with an asterisk](one-click-wordpress-config-options.png "Fill out the required Options fields, which are marked with an asterisk")
 
     You can fill out additional options by clicking on **Show Advanced Options**. For the WordPress example, this option is the site's title.
 
@@ -50,7 +50,7 @@ Review the [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) gu
 
 1.  For this example, a 1GB Linode (Nanode) is selected.
 
-    {{< image src="one-click-pick-plan.png" alt="Choose a plan" title="Choose a plan" >}}
+    ![Choose a plan](one-click-pick-plan.png "Choose a plan")
 
 1.  Create a label and (optionally) select tags for your Linode. The label is your Linode's name and must be unique among all the Linodes on your account. [Tags](/docs/quick-answers/linode-platform/tags-and-groups/) are used to organize your Linodes within the Cloud Manager.
 

@@ -20,4 +20,4 @@ To find the amount of available credit that you have:
 
 1. On the right hand side of the screen you’ll see the **Billing Information** section. If you have credit stored on your account, it’ll appear in green under the **Current Balance** field.
 
-{{< image src="classic-to-cloud-credits-applied.png" alt="Credits Listed under Current Balance" title="Credits Listed under Current Balance" >}}
+![Credits Listed under Current Balance](classic-to-cloud-credits-applied.png "Credits Listed under Current Balance")

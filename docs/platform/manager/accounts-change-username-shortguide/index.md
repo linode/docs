@@ -21,6 +21,6 @@ You can update a username, including your own, from the Linode Cloud Manager.
 1.  Locate the user in the list and click on their current username.
 1.  Enter a new username in the **Username** field.
 
-    {{< image src="accounts-update-a-username.png" alt="Use the Linode Cloud Manager to Update a Username" title="Use the Linode Cloud Manager to Update a Username" >}}
+    ![Use the Linode Cloud Manager to Update a Username](accounts-update-a-username.png "Use the Linode Cloud Manager to Update a Username")
 
 1.  Click **Save**.

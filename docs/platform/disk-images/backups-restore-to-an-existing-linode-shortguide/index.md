@@ -28,11 +28,11 @@ The size of the disk(s) created by the restore process will be equal to the amou
 
 1.  Select the **more options ellipsis** next to the backup you would like to restore, and click **Restore to Existing Linode**.
 
-    {{< image src="backups-restore-existing-linode.png" alt="Click on the ellipsis menu icon to restore to an existing Linode" title="Click on the ellipsis menu icon to restore to an existing Linode" >}}
+    ![Click on the ellipsis menu icon to restore to an existing Linode](backups-restore-existing-linode.png "Click on the ellipsis menu icon to restore to an existing Linode")
 
 1.  A menu will open with the Linodes that you can restore to. Select a Linode and click **Restore**.
 
-    {{< image src="backups-restore-existing-linode-menu.png" alt="Select the Linode you would like to restore your backup to" title="Select the Linode you would like to restore your backup to" >}}
+    ![Select the Linode you would like to restore your backup to](backups-restore-existing-linode-menu.png "Select the Linode you would like to restore your backup to")
 
     You will be notified if you do not have enough space on your Linode to restore your backup. Optionally, you can choose to overwrite the Linode you are restoring to.
 

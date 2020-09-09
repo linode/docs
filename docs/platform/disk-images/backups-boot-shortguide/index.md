@@ -20,6 +20,6 @@ After the backup has been restored, the disks and configuration profiles will be
 
 1.  Select the **more options ellipsis** next to the configuration profile that was restored and select **Boot This Config**.
 
-    {{< image src="backups-boot-this-config.png" alt="Navigate to the Configurations section of your Linode's Disks/Configs tab" title="Navigate to the Configurations section of your Linode's Disks/Configs tab" >}}
+    ![Navigate to the Configurations section of your Linode's Disks/Configs tab](backups-boot-this-config.png "Navigate to the Configurations section of your Linode's Disks/Configs tab")
 
 The Linode will start from the backup disks. Monitor the notifications area for progress.
