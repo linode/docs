@@ -190,6 +190,12 @@
     "type": "date",
     "description": "Date this guide was originally published. Should use the form YYYY-MM-DD."
   },
+  "relations": {
+    "elements": ["platform"],
+    "required": false,
+    "type": "dict",
+    "description": "Specifies any dropdown menus that should appear at the top of a guide. These menus allow users to switch between different versions of a guide topic; for example, switching between distributions for a guide."
+  },
   "shortguide": {
     "elements": false,
     "required": false,
@@ -225,6 +231,12 @@
     "required": false,
     "type": "text",
     "description": "Hugo front matter variable. Specifies the tail of the output URL for this page."
+  },
+  "tags": {
+    "elements": "list",
+    "required": false,
+    "type": "list",
+    "description": "Comma-separated array of tags that are relevant to this guide. These tags will appear at the top of a guide, and they are available as search filters in the new docs UI."
   },
   "title": {
     "elements": false,

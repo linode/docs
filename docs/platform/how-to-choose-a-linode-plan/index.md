@@ -44,7 +44,7 @@ Finally, a common strategy when setting up a new server is to start with a small
 
 ## 1. Shared
 
-Shared instances start with 1GB of RAM and 1 vCPU and can go all the way up to 192GB of RAM with 32 vCPUs. These instances offer a balanced array of resources and can support a wide range of modern cloud applications, from personal projects to production deployments of an enterprise application.
+{{< content "about-shared-shortguide" >}}
 
 ### Use Cases
 
@@ -73,7 +73,7 @@ To view a full list of the Shared instance plans, visit the [Linode Pricing](htt
 
 ## 2. High Memory
 
-High Memory instances feature higher RAM allocations and relatively fewer vCPUs and less storage. This keeps your costs down and provides power to memory-intensive applications. As of June 16, 2020, all High Memory plans utilize dedicated CPU cores.
+{{< content "about-highmem-shortguide" >}}
 
 ### Use Cases
 
@@ -96,9 +96,7 @@ To view a full list of the High Memory instance plans, visit the [Linode Pricing
 
 ## 3. Dedicated CPU
 
-Dedicated CPU instances offer entire dedicated CPU cores for your own Linode's use. No other instances can run processes on the same cores that you're using, which means that your software can run at peak speed and efficiency.
-
-Under the Shared instances, your processes are scheduled on the same CPU cores as the processes from other servers. This shared scheduling is done in a secure and performant manner, and Linode works to minimize competition for CPU resources between your server and other servers, but the Dedicated CPU instances provide an environment with zero competition. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations.
+{{< content "about-dedicated-shortguide" >}}
 
 ### Dedicated CPUs and the Linode API
 
@@ -130,7 +128,7 @@ To view a full list of the Dedicated CPU instance plans, visit the [Linode Prici
 
 ## 4. GPU Instances
 
-GPU instances are the only plan that give you access to [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf) with Tensor, ray tracing (RT), and CUDA cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU, GPUs can perform computations that process large amounts of data in parallel more efficiently.
+{{< content "about-gpu-shortguide" >}}
 
 ### Use Cases
 
