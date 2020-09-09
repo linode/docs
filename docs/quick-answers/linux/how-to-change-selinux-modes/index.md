@@ -5,6 +5,7 @@ author:
 description: 'Security-Enhanced Linux works to filter system access. This Quick Answer will show you how to change the level of policy enforcement SELinux, from full enforcing mode to totally disabled.'
 keywords: ["selinux"]
 aliases: ['/quick-answers/linux/how-to-disable-selinux/']
+tags: ["centos", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-06-22
 modified: 2017-10-18

@@ -5,6 +5,7 @@ author:
 description: 'This quick answer shows how to create CAA records for domains and subdomains.'
 og_description: 'This quick answer will show you how to create a CAA record for domains and subdomains'
 keywords: ["caa", "dns", "records", "subdomain", "domain"]
+tags: ["dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode

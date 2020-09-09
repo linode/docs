@@ -3,7 +3,7 @@ author:
   name: Angel Guarisma
   email: docs@linode.com
 description: 'This guide will walk you through the basics of Fish'
-keywords: ["fish", " fish shell", " fish scripting", " bash", " command line shell", " The Friendly Interactive Shell"]
+keywords: ["fish", "fish shell", "fish scripting", "bash", "command line shell", "The Friendly Interactive Shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-07-18
 modified: 2017-07-18

@@ -5,6 +5,7 @@ author:
 description: 'This quick answer guide shows you how to change your account email address both in the Linode Cloud Manager and by using the Linode API.'
 og_description: 'This quick answer guide shows you how to change your account email address both in the Linode Cloud Manager and by using the Linode API.'
 keywords: ["email address", "email addresses", "address", "addresses"]
+tags: ["email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-01-20
 modified_by:

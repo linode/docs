@@ -3,7 +3,8 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This quick answer guide will show you how to log in to CoreOS Container Linux.'
-keywords: ["coreos", " container linux", " login", " core"]
+keywords: ["coreos", "container linux", "login", "core"]
+tags: ["container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/quick-answers/log-in-to-coreos-container-linux/']
 modified: 2017-05-08

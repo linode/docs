@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Change the root user password for the Linux environment running on your Linode.'
 keywords: ["linux", "linode", "cloud manager", "image"]
+tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-11
 modified_by:
