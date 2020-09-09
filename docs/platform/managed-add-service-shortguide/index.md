@@ -23,7 +23,7 @@ To add a new monitored service to Linode Managed:
 
 1.  Select the **Monitors** tab, then click on the **Add a Monitor** link under this tab.
 
-    {{< image src="managed-monitors.png" alt="Linode Managed Monitored Services" title="Linode Managed Monitored Services" >}}
+    ![Linode Managed Monitored Services](managed-monitors.png "Linode Managed Monitored Services")
 
 1.  A form for your new monitored service will appear with these fields:
 

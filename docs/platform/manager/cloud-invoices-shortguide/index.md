@@ -21,8 +21,8 @@ You can download a printable PDF of your billing invoice from your list of invoi
 
 1.  Click on the **Recent Invoices** menu item in the **Billing** section. This will expand to show you a list of your recent invoices. Each invoice has a **Download PDF** link next to it.
 
-    {{< image src="classic-to-cloud-download-invoice-from-list.png" alt="Cloud Manager Download Invoice from Recent Invoices List" title="Cloud Manager Download Invoice from Recent Invoices List" >}}
+    ![Cloud Manager Download Invoice from Recent Invoices List](classic-to-cloud-download-invoice-from-list.png "Cloud Manager Download Invoice from Recent Invoices List")
 
 1.  You can also click on any invoice to view it within the Cloud Manager. At the top of the invoice there is a **Download PDF** button.
 
-    {{< image src="classic-to-cloud-download-invoice-from-detail.png" alt="Cloud Manager Download Invoice from Detail View" title="Cloud Manager Download Invoice from Detail View" >}}
+    ![Cloud Manager Download Invoice from Detail View](classic-to-cloud-download-invoice-from-detail.png "Cloud Manager Download Invoice from Detail View")

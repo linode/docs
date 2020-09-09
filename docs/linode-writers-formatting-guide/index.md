@@ -412,13 +412,14 @@ List definitions in a table with the definition-table shortcode:
 Put your table data here.</br>
 &#123;&#123;&lt; /definition-table &gt;&#125;&#125;
 
-{{< definition-table>}}
+{{< todo >}}The definition-table shortcode was not ported over to the new UI and was only used here. Remove this section?
+
 | Parameter | Data type/Status | Usage |
 | --------- | -------- | ------|
 | `access_token` | string, *required* | Your Linode API v4 access token. The token should have permission to read and write Linodes. The token can also be specified by exposing the `LINODE_ACCESS_TOKEN` environment variable. |
 | `authorized_keys` | list | A list of SSH public keys or SSH public key file locations on your local system, for example, `['averylongstring','~/.ssh/id_rsa.pub']`. The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode. Ansible will use the public key to SSH into your Linodes as the root user and execute your Playbooks.|
 | `label` | string, *required* | The Linode instance label. The label is used by the module as the main determiner for idempotence and must be a unique value.</br></br> Linode labels have the following constraints:</br></br> <ul><li>Must start with an alpha character.</li><li>May only consist of alphanumeric characters, dashes (-), underscores (_) or periods (.).</li><li>Cannot have two dashes (--), underscores (__) or periods (..) in a row.</li></ul>|
-{{< /definition-table >}}
+{{< /todo >}}
 
 ## Legal Information
 

@@ -17,15 +17,15 @@ tags: ["linode platform"]
 
 1.  Click on the **Volumes** link in the sidebar to see your account's Volume list:
 
-    {{< image src="bs-cloud-volumes-list.png" alt="View your available Volumes" title="View your available Volumes" >}}
+    ![View your available Volumes](bs-cloud-volumes-list.png "View your available Volumes")
 
 1.  Click the **more options ellipsis** to open the menu for the Volume you want to attach to a Linode and select **Attach**:
 
-    {{< image src="bs-cloud-attach-volume-sm.png" alt="Open Volume menu" title="Open Volume menu" >}}
+    ![Open Volume menu](bs-cloud-attach-volume-sm.png "Open Volume menu")
 
 1.  Select the label of the Linode you want to attach the Volume to from the dropdown menu, then click **Save**:
 
-    {{< image src="bs-cloud-attach-volume-menu.png" alt="Attach a Volume to a Linode" title="Attach a Volume to a Linode" >}}
+    ![Attach a Volume to a Linode](bs-cloud-attach-volume-menu.png "Attach a Volume to a Linode")
 
     {{< note >}}
 The Linodes available in this dropdown menu all share the same region as your Volume.

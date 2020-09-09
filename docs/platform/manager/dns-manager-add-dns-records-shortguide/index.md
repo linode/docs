@@ -19,11 +19,11 @@ When you first create a domain, you'll need to add some DNS records. <!-- The DN
 
 1.  Select a domain from within the **Domains** section of the Cloud Manager. The domain's detail page appears:
 
-    {{< image src="domain-details-page-no-records.png" alt="This page has seven sections showing eight different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, SRV, AND CAA" title="This page has seven sections showing eight different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, SRV, AND CAA" >}}
+    ![This page has seven sections showing eight different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, SRV, AND CAA](domain-details-page-no-records.png "This page has seven sections showing eight different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, SRV, AND CAA")
 
 1.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, then click **Add a Record**. The example below shows how to add an A/AAAA record.
 
-    {{< image src="add-dns-record-ipv4.png" alt="This page allows you to create a new A/AAAA record" title="This page allows you to create a new A/AAAA record" >}}
+    ![This page allows you to create a new A/AAAA record](add-dns-record-ipv4.png "This page allows you to create a new A/AAAA record")
 
     {{< note >}}
 The exact form fields will vary depending on the type of DNS record you select.

@@ -23,11 +23,11 @@ Here's how to add a user to your Linode account:
 1.  Click the **Account** link in the sidebar.
 1.  Click the **Users** link.
 
-    {{< image src="accounts-overview.png" alt="Click on the 'Account' link and then click 'Users'" title="Click on the 'Account' link and then click 'Users'" >}}
+    ![Click on the 'Account' link and then click 'Users'](accounts-overview.png "Click on the 'Account' link and then click 'Users'")
 
 1.  Click on **Add a User**. The *Add a User* menu appears.
 
-    {{< image src="accounts-add-a-user-menu.png" alt="The 'Add a User' menu" title="The 'Add a User' menu" >}}
+    ![The 'Add a User' menu](accounts-add-a-user-menu.png "The 'Add a User' menu")
 
 1.  Enter a username for the user in the **Username** field.
 1.  Enter the user's email address in the **Email** field. A password creation link will be sent to the new user's email address.

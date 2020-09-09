@@ -23,7 +23,7 @@ To modify a Domain's existing DNS records:
 
 1.  Select **Edit** from the menu.
 
-    {{< image src="domain-edit-a-record.png" alt="Select 'Edit' from the menu" title="Select 'Edit' from the menu" >}}
+    ![Select 'Edit' from the menu](domain-edit-a-record.png "Select 'Edit' from the menu")
 
 1.  Edit the DNS record by modifying the existing values in the fields that appear.
 

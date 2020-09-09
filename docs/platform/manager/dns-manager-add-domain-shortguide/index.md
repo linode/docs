@@ -23,7 +23,7 @@ Creating a domain also creates its corresponding domain zone.
 
 1.  From the **Domains** section, click on **Add a Domain**. The **Add a New Domain** panel will appear where you can fill out the form fields with your domain's information.
 
-    {{< image src="add-new-domain.png" alt="This page lets you add a new domain" title="This page lets you add a new domain" >}}
+    ![This page lets you add a new domain](add-new-domain.png "This page lets you add a new domain")
 
 1. If you want to add a *slave zone* instead of a master zone, click the **Slave** radio button.
 
@@ -46,7 +46,7 @@ In order for Linode's DNS servers to function as slaves, your DNS master server 
 1.  Enter an administrator's email address in the **SOA Email Address** field.
 1.  If you are unfamiliar with DNS, the DNS Manager can automatically create some basic DNS records to get you started. To have it insert these records, select **Yes, insert a few records to get me started**, then select from the drop-down menu the Linode with which you want this domain zone associated.
 
-    {{< image src="create-default-records.png" alt="Create default DNS records when adding a new domain" title="Create default DNS records when adding a new domain" >}}
+    ![Create default DNS records when adding a new domain](create-default-records.png "Create default DNS records when adding a new domain")
 
      Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **No, I want the zone empty**.
 

@@ -17,7 +17,7 @@ tags: ["linode platform"]
 
 You'll manage your backups with a simple web interface in the Linode Cloud Manager. There's no software to install, and there are no commands to run. Just log in to the Linode Cloud Manager, navigate to the **Linodes** page by clicking on the link in the sidebar, select a Linode, and then click the **Backups** tab. The backups interface is shown below.
 
-{{< image src="backups-menu.png" alt="The Linode Backup Service interface" title="The Linode Backup Service interface" >}}
+![The Linode Backup Service interface](backups-menu.png "The Linode Backup Service interface")
 
 1. A list of available backups. Listed in this view are the date created, the label, how long the backup took to be created, the disks imaged, and the size of the resulting image.
 

@@ -23,7 +23,7 @@ To turn on and customize the alerts:
 1.  Select your Linode. The Linode's details page appears.
 1.  Click the **Settings** tab. The *Notification Thresholds* panel appears, as shown below.
 
-    {{< image src="notification-thresholds.png" alt="Configuring Linode Cloud Manager Email Alerts" title="Configuring Linode Cloud Manager Email Alerts" >}}
+    ![Configuring Linode Cloud Manager Email Alerts](notification-thresholds.png "Configuring Linode Cloud Manager Email Alerts")
 
 1.  To enable an email alert, toggle the appropriate switch.
 1.  To configure the threshold for an alert, set a value in the text field.

@@ -21,11 +21,11 @@ Here's how to change your email address on the *My Profile* webpage:
 
 1.  Select the **My Profile** link by clicking on your username at the top of the page.
 
-    {{< image src="accounts-select-my-profile.png" alt="Select 'My Profile' in the Linode Cloud Manager" title="Select 'My Profile' in the Linode Cloud Manager" >}}
+    ![Select 'My Profile' in the Linode Cloud Manager](accounts-select-my-profile.png "Select 'My Profile' in the Linode Cloud Manager")
 
 1.  In the **Display** tab, enter your email address in the **Email** field.
 
-    {{< image src="accounts-my-profile-change-email.png" alt="Modify the email address associated with your user account" title="Modify the email address associated with your user account" >}}
+    ![Modify the email address associated with your user account](accounts-my-profile-change-email.png "Modify the email address associated with your user account")
 
 1.  Click **Save**.
 

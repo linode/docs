@@ -19,4 +19,4 @@ Email event notifications alert you when new events such as booting, shutting do
 
 You can manage your event notifications in the **Settings** tab from the [**My Profile**](https://cloud.linode.com/profile/display) section of the Cloud Manager.
 
-{{< image src="classic-to-cloud-cloud-manager-email-notifications.png" alt="Cloud Manager Notification Settings" title="Cloud Manager Notification Settings" >}}
+![Cloud Manager Notification Settings](classic-to-cloud-cloud-manager-email-notifications.png "Cloud Manager Notification Settings")

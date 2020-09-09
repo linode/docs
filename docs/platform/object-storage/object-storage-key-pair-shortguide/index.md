@@ -19,20 +19,20 @@ tags: ["linode platform"]
 
 1.  Click the **Object Storage** link in the sidebar, click the **Access Keys** tab, and then click the **Create an Access Key** link.
 
-    {{< image src="object-storage-access-keys-tab.png" alt="Click the 'Access Keys' tab" title="Click the 'Access Keys' tab" >}}
+    ![Click the 'Access Keys' tab](object-storage-access-keys-tab.png "Click the 'Access Keys' tab")
 
 1.  A prompt appears asking you to confirm that you'd like to enable Object Storage. Click **Enable Object Storage**.
 
-    {{< image src="object-storage-enable-object-storage.png" alt="Enable Object Storage" title="Enable Object Storage" >}}
+    ![Enable Object Storage](object-storage-enable-object-storage.png "Enable Object Storage")
 
 2.  The **Create an Access Key** menu appears.
 
-    {{< image src="object-storage-create-key.png" alt="The 'Create an Access Key' menu" title="The 'Create an Access Key' menu" >}}
+    ![The 'Create an Access Key' menu](object-storage-create-key.png "The 'Create an Access Key' menu")
 
 3.  Enter a label for the key pair. This label is how you reference the key pair in the Linode Cloud Manager. Then, click **Submit**.
 
 4.  A window appears that contains the access key and the secret key. Write these down somewhere secure. The access key is visible in the Linode Cloud Manager, but **you can not retrieve the secret key again after you close the window!**
 
-    {{< image src="object-storage-access-keys.png" alt="The access key and secret key" title="The access key and secret key" >}}
+    ![The access key and secret key](object-storage-access-keys.png "The access key and secret key")
 
     You now have the credentials needed to connect to Linode Object Storage.

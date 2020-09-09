@@ -17,15 +17,15 @@ tags: ["linode platform","networking"]
 
 1.  Visit the NodeBalancers page in the Linode [Cloud Manager](http://cloud.linode.com) and select **Add a NodeBalancer**.
 
-    {{< image src="nodebalancers-tab.png" alt="The NodeBalancers Page" title="The NodeBalancers Page" >}}
+    ![The NodeBalancers Page](nodebalancers-tab.png "The NodeBalancers Page")
 
 1.  For the example web application, only one NodeBalancer is needed. Add one in the same data center that your backend Linodes are located in.
 
-    {{< image src="nodebalancers-create-choose-region.png" alt="The NodeBalancer Creation Screen" title="The NodeBalancer Creation Screen" >}}
+    ![The NodeBalancer Creation Screen](nodebalancers-create-choose-region.png "The NodeBalancer Creation Screen")
 
 1.  A NodeBalancer is configured using [ports](/docs/platform/nodebalancer/nodebalancer-reference-guide/#port), and in this example web application, you'll use only one, port 80 for regular HTTP traffic.
 
-    {{< image src="nodebalancers-settings.png" alt="Adding a Port Configuration to a NodeBalancer" title="Adding a Port Configuration to a NodeBalancer" >}}
+    ![Adding a Port Configuration to a NodeBalancer](nodebalancers-settings.png "Adding a Port Configuration to a NodeBalancer")
 
     **HTTP**
 
@@ -43,14 +43,14 @@ The port you select for the NodeBalancer must match the port you are going to us
 
 1.  Now you will add the single backend node to the NodeBalancer's configuration. Point this at the private IP address of your web server Linode.
 
-    {{< image src="nodebalancers-backend-nodes.png" alt="Adding a Backend Node to a NodeBalancer" title="Adding a Backend Node to a NodeBalancer" >}}
+    ![Adding a Backend Node to a NodeBalancer](nodebalancers-backend-nodes.png "Adding a Backend Node to a NodeBalancer")
 
     These configuration changes will take a few moments to be reflected by your NodeBalancer. If everything is configured on your backend correctly, once the changes have gone through, the **Node Status** column will update to **1 up / 0 down**.
 
-    {{< image src="nodebalancers-1up.png" alt="The Backend Node Has Been Added and is Now Status Up" title="The Backend Node Has Been Added and is Now Status Up" >}}
+    ![The Backend Node Has Been Added and is Now Status Up](nodebalancers-1up.png "The Backend Node Has Been Added and is Now Status Up")
 
     If the backend status reports **0 up / 1 down**, check to make sure that your web application is configured to respond on the Linode's private IP address. You do this by adding the private IP address to your `/etc/hosts` file on your Linode and then reboot your Linode. There might be a virtual host mismatch as well -- check the notes in the next section.
 
 1.  Now that the backend is up, go directly to your NodeBalancer's IP address in a browser. You should see your web application as the NodeBalancer proxies the traffic through.
 
-    {{< image src="nodebalancers-hello-world.png" alt="Viewing the NodeBalancer-driven Web Site in a Browser" title="Viewing the NodeBalancer-driven Web Site in a Browser" >}}
+    ![Viewing the NodeBalancer-driven Web Site in a Browser](nodebalancers-hello-world.png "Viewing the NodeBalancer-driven Web Site in a Browser")

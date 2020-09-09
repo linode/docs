@@ -19,15 +19,15 @@ tags: ["linode platform"]
 
 1.  Select the Linode to which you want to attach a Block Storage Volume. The detail page for the Linode will appear.
 
-    {{< image src="bs-cloud-select-linode.png" alt="Select a Linode from the Manager" title="Select a Linode from the Manager" >}}
+    ![Select a Linode from the Manager](bs-cloud-select-linode.png "Select a Linode from the Manager")
 
 1.  Click on the **Volumes** tab, then click **Add a Volume**:
 
-    {{< image src="bs-cloud-add-volume-to-linode.png" alt="Click Add a Volume" title="Click Add a Volume" >}}
+    ![Click Add a Volume](bs-cloud-add-volume-to-linode.png "Click Add a Volume")
 
 1.  Assign the Block Storage Volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum Volume size is 10,000 GiB. When finished, click *Submit*:
 
-    {{< image src="bs-cloud-create-volume.png" alt="Create a Volume with a label" title="Create a Volume with a label" >}}
+    ![Create a Volume with a label](bs-cloud-create-volume.png "Create a Volume with a label")
 
     {{< note >}}
 There is currently a soft limit of 100 TB of Block Storage Volume per account.
@@ -35,7 +35,7 @@ There is currently a soft limit of 100 TB of Block Storage Volume per account.
 
 1.  Once you add a Volume it will appear under Attached Volumes with the new Volume's label, size, and file system path.
 
-    {{< image src="bs-cloud-volume-created.png" alt="A Volume has been created" title="A Volume has been created" >}}
+    ![A Volume has been created](bs-cloud-volume-created.png "A Volume has been created")
 
 1.  You'll need to create a filesystem in your new Volume. If your Linode is not already running, boot then SSH into your Linode and execute the following command, where `FILE_SYSTEM_PATH` is your Volume's file system path:
 

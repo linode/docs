@@ -33,11 +33,11 @@ For a full list of native Linux distribution support in CUDA, see the [CUDA tool
 
     A completed set of selections will resemble the example:
 
-    {{< image src="cuda-downloads-select-target-platform.png" alt="CUDA Downloads Page - Select Target Platform" title="CUDA Downloads Page - Select Target Platform" >}}
+    ![CUDA Downloads Page - Select Target Platform](cuda-downloads-select-target-platform.png "CUDA Downloads Page - Select Target Platform")
 
 1.  A **Download Installer** section will appear below the **Select Target Platform** section. The green **Download** button in this section will link to the installer file. Copy this link to your computer's clipboard:
 
-    {{< image src="copy-cuda-installer-download-link.png" alt="Copy Download Link" title="Copy Download Link" >}}
+    ![Copy Download Link](copy-cuda-installer-download-link.png "Copy Download Link")
 
 1.  On your Linode, enter the `wget` command and paste in the download link you copied. This example shows the syntax for the command, but you should make sure to use the download link appropriate for your Linode:
 
@@ -57,7 +57,7 @@ The installer will take a few moments to run before generating any output.
 
     To only install the driver, uncheck all options directly below the Driver option. This will result in your screen resembling the following:
 
-    {{< image src="cuda-installer.png" alt="Cuda Installer" title="Cuda Installer" >}}
+    ![Cuda Installer](cuda-installer.png "Cuda Installer")
 
 1. Once you have checked your desired options, select **Install** to begin the installation. A full install will take several minutes to complete.
 

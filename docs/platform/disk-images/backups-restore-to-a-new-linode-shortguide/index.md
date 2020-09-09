@@ -27,7 +27,7 @@ The size of the disk(s) created by the restore process will be equal to the amou
 
 1.  From the **Linodes** page, select the Linode whose backups you intend to restore, and then click on the **Backups** tab. Select the **more options ellipsis** next to the backup you would like to restore, and click **Deploy New Linode**.
 
-    {{< image src="backups-restore-new-linode.png" alt="Click on the ellipsis menu icon to restore to a new Linode" title="Click on the ellipsis menu icon to restore to a new Linode" >}}
+    ![Click on the ellipsis menu icon to restore to a new Linode](backups-restore-new-linode.png "Click on the ellipsis menu icon to restore to a new Linode")
 
 1.  You will be taken to the **Create New Linode** screen. The **Create from Backup** tab will already be selected for you, as will the fields corresponding to the Linode and backup that you are restoring from. Choose a Linode plan, enter a label for the new Linode, select any other options you prefer, and click **Create**. The new Linode will be created with the same password and SSH keys (if any) as the original.
 

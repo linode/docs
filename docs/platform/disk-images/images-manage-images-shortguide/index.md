@@ -19,8 +19,8 @@ The images captured from your Linodes are stored for future usage, and can be mo
 
 1.  Click on the **Images** link in the sidebar.
 
-    {{< image src="images-manage-images.png" alt="Manage your Images" title="Manage your Images" >}}
+    ![Manage your Images](images-manage-images.png "Manage your Images")
 
 1.  From this page, you can delete existing disks, edit labels and descriptions, and deploy Linodes from disk images.
 
-    {{< image src="images-edit-image-menu.png" alt="Select the Image menu" title="Select the Image menu" >}}
+    ![Select the Image menu](images-edit-image-menu.png "Select the Image menu")

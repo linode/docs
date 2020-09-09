@@ -21,7 +21,7 @@ If you can't remember the password for the `root` user on a Linode, use the Lino
 1.  Select a Linode. The Linode's details page appears.
 1.  Click **Power Off** from the status menu to turn off your Linode. Monitor your bell notifications at the top of the page for a message indicating that your Linode has shut down.
 
-    {{< image src="accounts-power-off-linode.png" alt="Power Off your Linode" title="Power Off your Linode" >}}
+    ![Power Off your Linode](accounts-power-off-linode.png "Power Off your Linode")
 
 1.  Click the **Settings** tab.
 1.  Under the **Reset Root Password** panel, select your primary disk from the **Disk** menu.

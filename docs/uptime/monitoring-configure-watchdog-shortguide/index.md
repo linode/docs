@@ -23,7 +23,7 @@ To turn Lassie on and off:
 1.  Select your Linode. The Linode's details page appears.
 1.  Click the **Settings** tab. The Shutdown Watchdog settings appear, as shown below.
 
-    {{< image src="shutdown-watchdog.png" alt="Configuring Shutdown Watchdog" title="Configuring Shutdown Watchdog" >}}
+    ![Configuring Shutdown Watchdog](shutdown-watchdog.png "Configuring Shutdown Watchdog")
 
 1.  Toggle the box to turn Shutdown Watchdog on.
 

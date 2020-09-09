@@ -29,6 +29,6 @@ Linode Managed continuously monitors your services for availability. If you are 
 
 1.  Find the service that you want to temporarily disable and click on the corresponding **more options ellipsis**. Select the **Disable** option from the menu that appears.
 
-    {{< image src="managed-disable-monitor.png" alt="Disable Monitoring for a Service" title="Disable Monitoring for a Service" >}}
+    ![Disable Monitoring for a Service](managed-disable-monitor.png "Disable Monitoring for a Service")
 
 The service is now temporarily disabled. Linode Managed won't resume monitoring this service until you reenable monitoring, as described in the next section.

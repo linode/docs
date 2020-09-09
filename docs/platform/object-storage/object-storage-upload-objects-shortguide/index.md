@@ -19,7 +19,7 @@ tags: ["linode platform"]
 
 1.  Click the **Object Storage** link in the sidebar. A list of all the buckets appears. Click the bucket where you want to upload the objects.
 
-    {{< image src="select-bucket.png" alt="Select an Object Storage Bucket" title="Select an Object Storage Bucket" >}}
+    ![Select an Object Storage Bucket](select-bucket.png "Select an Object Storage Bucket")
 
 1. The bucket's **Objects Listing Page** appears. In the example, the *my-example-bucket* does not yet contain any objects. You can use the **Upload Files Pane** to drag and drop a file from the local computer to the object storage bucket.
 
@@ -27,15 +27,15 @@ tags: ["linode platform"]
 You can drag and drop multiple files to the **Upload Files Pane** at one time.
     {{</ note >}}
 
-    {{< image src="drag-drop-image-bucket.png" alt="Drag and drop an object to the bucket" title="Drag and drop an object to the bucket" >}}
+    ![Drag and drop an object to the bucket](drag-drop-image-bucket.png "Drag and drop an object to the bucket")
 
     You can also click the **Browse Files** button to bring up the local computer's file browser and select a file to upload to the bucket.
 
-    {{< image src="upload-with-file-browser.png" alt="Upload an object to the bucket using the file browser" title="Upload an object to the bucket using the file browser" >}}
+    ![Upload an object to the bucket using the file browser](upload-with-file-browser.png "Upload an object to the bucket using the file browser")
 
 1.  When the upload has completed, the object appears in the **Objects Listing Page**.
 
-    {{< image src="successful-object-upload.png" alt="Successful upload of the object" title="Successful upload of the object" >}}
+    ![Successful upload of the object](successful-object-upload.png "Successful upload of the object")
 
     {{< note >}}
 Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) and [cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck) do this for you automatically if a file exceeds this limit as part of the uploading process.

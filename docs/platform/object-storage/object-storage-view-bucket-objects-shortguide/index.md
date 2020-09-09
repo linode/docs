@@ -19,14 +19,14 @@ tags: ["linode platform"]
 
 1.  Click the **Object Storage** link in the sidebar. A list of all the buckets appears. Click the bucket whose objects you'd like to view.
 
-    {{< image src="select-bucket.png" alt="Select an Object Storage Bucket" title="Select an Object Storage Bucket" >}}
+    ![Select an Object Storage Bucket](select-bucket.png "Select an Object Storage Bucket")
 
 1. The bucket's **Objects Listing Page** appears, which displays all the objects in the bucket.
 
-    {{< image src="view-your-objects.png" alt="View all of the bucket's objects" title="View all of the bucket's objects" >}}
+    ![View all of the bucket's objects](view-your-objects.png "View all of the bucket's objects")
 
 1. Click the ellipsis menu corresponding to the object you'd like to view. Then, select **Download**.
 
-    {{< image src="object-storage-download-object.png" alt="Download a bucket's object" title="Download a bucket's object" >}}
+    ![Download a bucket's object](object-storage-download-object.png "Download a bucket's object")
 
 1. The object is downloaded to the local computer.

@@ -19,14 +19,14 @@ You can delete an entire cluster using the Linode Cloud Manager. These changes c
 
 1.  Click the **Kubernetes** link in the sidebar. The Kubernetes listing page will appear and you will see all your clusters listed.
 
-    {{< image src="kubernetes-listing-page.png" alt="Kubernetes cluster listing page" title="Kubernetes cluster listing page" >}}
+    ![Kubernetes cluster listing page](kubernetes-listing-page.png "Kubernetes cluster listing page")
 
 1. Select the **More Options Ellipsis** to the right of the cluster you'd like to delete, and select the `Delete` option:
 
-    {{< image src="kubernetes-cluster-delete.png" alt="Kubernetes cluster delete" title="Kubernetes cluster delete" >}}
+    ![Kubernetes cluster delete](kubernetes-cluster-delete.png "Kubernetes cluster delete")
 
 1.  A confirmation pop-up will appear. Enter in your cluster's name and click the **Delete** button to confirm.
 
-    {{< image src="confirm-delete-cluster.png" alt="Kubernetes Delete Confirmation Dialog" title="Kubernetes Delete Confirmation Dialog" >}}
+    ![Kubernetes Delete Confirmation Dialog](confirm-delete-cluster.png "Kubernetes Delete Confirmation Dialog")
 
 1.  The Kubernetes listing page will appear and you will no longer see your deleted cluster.
