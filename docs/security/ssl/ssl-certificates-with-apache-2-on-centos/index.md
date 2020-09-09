@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on CentOS.'
 keywords: ["apache ssl", "ssl on centos", "web server", "centos 5", "centos 6", "centos 7"]
+tags: ["apache", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/ssl-guides/centos/','/web-servers/ssl/ssl-certificates-with-apache-2-on-centos-5-6/','/security/ssl/ssl-certificates-with-apache-2-on-centos-5-6/']
 modified: 2014-10-21

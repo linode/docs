@@ -5,6 +5,7 @@ description: 'This guide shows you how to set up Fail2Ban, a log-parsing applica
 og_description: 'Fail2ban monitors system logs for symptoms of an automated attack, bans the IP and alerts you of the attack through email. This guide helps you set up Fail2ban to thwart automated system attacks and further secure your server.'
 keywords: ["fail2ban", "ip whitelisting", "jail.local"]
 aliases: ['/security/using-fail2ban-for-security/','/security/using-fail2ban-to-secure-your-server-a-tutorial/','/tools-reference/tools/using-fail2ban-to-block-network-probes/']
+tags: ["monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-08-15
 modified_by:

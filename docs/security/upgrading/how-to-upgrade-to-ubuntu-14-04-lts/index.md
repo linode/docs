@@ -4,6 +4,7 @@ author:
   email: drussell@linode.com
 description: 'Our guide to upgrading to Ubuntu 14.04 LTS'
 keywords: ["upgrading", "ubuntu", "ubuntu 14.04"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 deprecated: true
 modified: 2015-02-22

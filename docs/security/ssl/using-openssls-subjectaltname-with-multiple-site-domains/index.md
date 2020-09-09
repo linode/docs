@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to serve multiple SSL-enabled websites from a single public IP using the SubjectAltName feature of OpenSSL.'
 keywords: ["openssl", "apache ssl", "subjectaltname", "ssl linux"]
+tags: ["apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssl-certificates/subject-alternate-names/','/security/ssl/multipls-ssl-sites-using-subjectaltname/']
 modified: 2017-11-27

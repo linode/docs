@@ -4,6 +4,7 @@ author:
   email: drussell@linode.com
 description: 'Instructions on disabling SSLv3 to protect against the POODLE vulnerability'
 keywords: ["sslv3", "poodle", "security", "patch", "ubuntu", "debian", "centos", "fedora"]
+tags: ["ssl", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-09-20
 modified_by:

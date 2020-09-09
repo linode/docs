@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the HTTPD web server.'
 keywords: ["apache SSL", "ssl on centos", "ssl on fedora", "ssl", "contos", "fedora", "apache", "httpd"]
+tags: ["apache", "centos", "lamp", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-08-17
 modified_by:

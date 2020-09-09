@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Protecting access to your Linode with the arno-iptables-firewall package.'
 keywords: ["arno-iptables-firewall", "Debian firewall", "Linux firewall", "networking"]
+tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/firewalls/arno-iptables-debian-5-lenny/']
 modified: 2013-10-01
