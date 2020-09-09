@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'How to install and configure configuring a LAMP stack with the Hardy Heron (8.04 LTS) release of Ubuntu Linux.'
 keywords: ["ubuntu 8.04 lamp", "lamp guide", "ubuntu lamp"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lamp-guides/ubuntu-8-04-hardy/','/websites/lamp/lamp-server-on-ubuntu-8-04-lts-hardy/']
 modified: 2011-05-02

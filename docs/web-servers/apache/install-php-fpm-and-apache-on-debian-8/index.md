@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install PHP-FPM and Apache on Debian 8 for Improved Website Agility and Security'
 keywords: ["php-fpm", "apache", "debian 8", "php5-mysql", "fastcgi", "php", "cgi", "mod_php", "php pool"]
+tags: ["debian", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/install-php-fpm-and-apache-on-debian-8/']
 modified: 2017-02-21

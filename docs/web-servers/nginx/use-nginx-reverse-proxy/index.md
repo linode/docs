@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'NGINX has advanced load-balancing, security, and optimization features that make it an excellent reverse proxy. This guide shows how to configure NGINX using the proxy_pass directive.'
 keywords: ["nginx","reverse proxy","proxy","node.js"]
+tags: ["proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-26
 modified_by:

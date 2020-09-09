@@ -5,6 +5,7 @@ author:
 description: 'In this guide, you will install the Caddy web server on CentOS 8. You will also configure Caddy to serve your site''s domain over HTTPS.'
 og_description: 'In this guide, you will install the Caddy web server on CentOS 8. You will also configure Caddy to serve your site''s domain over HTTPS.'
 keywords: ['web server','caddy','https','Caddyfile']
+tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-05
 modified_by:

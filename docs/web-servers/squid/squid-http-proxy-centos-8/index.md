@@ -5,6 +5,7 @@ author:
 description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Centos 8.
 og_description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Centos 8.
 keywords: ["squid", "proxy", "centos", "8", "http"]
+tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-04-14
 modified: 2020-04-14

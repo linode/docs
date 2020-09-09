@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Arch Linux.'
 keywords: ["perl fastcgi arch linux", "fastcgi", "nginx arch linux", "nginx arch", "nginx perl"]
+tags: ["perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/perl-fastcgi/arch-linux/','/websites/nginx/nginx-and-perlfastcgi-on-arch-linux/']
 modified: 2013-10-07

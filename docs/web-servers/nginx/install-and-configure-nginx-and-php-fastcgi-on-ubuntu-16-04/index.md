@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Serve Dynamic Websites and Applications with the Lightweight Nginx Web Server and PHP-FastCGI on Ubuntu 16.04 LTS'
 keywords: ["nginx", "ubuntu 16.04", "fastcgi", "php"]
+tags: ["ubuntu", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','/websites/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/']
 modified: 2016-09-13

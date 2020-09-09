@@ -9,5 +9,7 @@ aliases: ['/lemp-guides/','/websites/lemp/']
 published: 2010-06-29
 title: LEMP Guides
 show_in_lists: true
+cascade:
+    tags: ["lemp", "nginx", "mysql", "php"]
 ---
 

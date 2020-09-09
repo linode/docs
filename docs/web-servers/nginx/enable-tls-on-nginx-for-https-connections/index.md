@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Install a TLS certificate into NGINX for HTTPS access.'
 keywords: ["ssl", "tls", "nginx", "https", "certificate"]
+tags: ["security", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssl/ssl-certificates-with-nginx/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/websites/ssl/ssl-certificates-with-nginx.cfm/','/web-servers/nginx/configuration/ssl/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/','/security/ssl/enable-ssl-for-https-configuration-on-nginx/']
 modified: 2018-02-09

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Fedora 14'
 keywords: ["nginx", "nginx fedora 14", "nginx fastcgi", "nginx php"]
+tags: ["php", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/php-fastcgi/fedora-14/','/websites/nginx/nginx-and-phpfastcgi-on-fedora-14/']
 modified: 2013-10-07

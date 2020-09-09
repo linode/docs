@@ -5,6 +5,7 @@ author:
 description: 'Install Apache on your Debian 10 server, configure virtual hosting, and set up modules and scripting.'
 og_description: 'Install Apache on your Debian 10 server, configure virtual hosting, and set up modules and scripting.'
 keywords: ["apache", "debian", "debian 10", "http", "web server"]
+tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-31
 modified_by:

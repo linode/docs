@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["ubuntu lamp server", "ubuntu 12.04 lamp", "lamp", "ubuntu server", "ubuntu", "apache", "mysql", "php", "lamp stacks"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/lamp-guides/ubuntu-12-04-precise-pangolin/','/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/']
 modified: 2015-06-30

@@ -4,6 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'Create a LAMP stack on a CentOS 6 Linode.'
 keywords: ["LAMP", "CentOS", "CentOS 6", "apache", "mysql", "php", "centos lamp"]
+tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/lamp-server-on-centos-6/','/websites/lamp/lamp-on-centos-6/','/lamp-guides/centos-6/']
 modified: 2015-12-01

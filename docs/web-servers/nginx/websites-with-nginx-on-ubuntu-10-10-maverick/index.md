@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 10.10 (Maverick)'
 keywords: ["nginx", "nginx ubuntu 10.10", "http", "web servers", "ubuntu", "ubuntu maverick"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/installation/ubuntu-10-10-maverick/','/websites/nginx/websites-with-nginx-on-ubuntu-10-10-maverick/']
 modified: 2012-10-08

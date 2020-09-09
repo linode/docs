@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'How to use separate web servers to host sites or applications using ProxyPass with Apache.'
 keywords: ["apache", "proxypass", "apache on fedora", "multiple web servers"]
+tags: ["fedora", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache/multiple-web-servers-with-proxypass-on-fedora-12/','/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-fedora-12/']
 modified: 2011-04-29

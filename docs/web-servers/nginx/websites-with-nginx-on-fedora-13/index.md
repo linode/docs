@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: A basic guide to installing nginx from source on Fedora 13
 keywords: ["nginx fedora 13", "nginx fedora", "nginx", "http", "web servers", "fedora 13"]
+tags: ["fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/websites-with-nginx-on-fedora-13/','/web-servers/nginx/installation/fedora-13/']
 modified: 2011-04-29

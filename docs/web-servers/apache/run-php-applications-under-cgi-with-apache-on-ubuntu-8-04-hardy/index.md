@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Methods for enabling dynamic content to run as individual users with PHP on Ubuntu 8.04 (Hardy).'
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
+tags: ["ubuntu", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/php-cgi/ubuntu-8-04-hardy/','/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy/']
 modified: 2012-10-08

@@ -9,6 +9,8 @@ aliases: ['/lamp-guides/','/websites/lamp/']
 published: 2009-07-16
 title: LAMP Guides
 show_in_lists: true
+cascade:
+    tags: ["lamp", "apache", "mysql", "php"]
 ---
 
 

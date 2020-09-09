@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
+tags: ["python", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-13/','/web-servers/nginx/python-uwsgi/fedora-13/']
 modified: 2011-04-29

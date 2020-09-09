@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Get your website or web application online by setting up Apache, MySQL, and PHP'
 keywords: ["debian 8 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian", "debian 8", "websites", "apache", "mysql", "php", "apache 2.4", "lamp debian"]
+tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-02
 modified_by:
