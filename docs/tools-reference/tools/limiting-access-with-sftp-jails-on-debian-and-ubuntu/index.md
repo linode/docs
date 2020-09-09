@@ -5,6 +5,7 @@ author:
 description: 'Restricting remote users to their home directories, only allowing access to SFTP for transferring files.'
 og_description: 'SFTP Jails restricits remote users to their home directories.'
 keywords: ["sftp", "sftp jail", "openssh", "ssh jail"]
+tags: ["ubuntu", "debian", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/sftp-jails/']
 modified: 2018-01-29

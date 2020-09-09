@@ -3,7 +3,8 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 description: 'Instructions for compiling and configuring a custom kernel your Debian or Ubuntu Linode'
-keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom linode", " debian", "ubuntu"]
+keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom linode", "debian", "ubuntu"]
+tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-08-01
 modified_by:
