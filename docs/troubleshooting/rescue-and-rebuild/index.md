@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Our guide to rescuing and rebuilding your Linode.'
 keywords: ["rescue", "rebuild"]
+tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['rescue-and-rebuild/','troubleshooting/rescue-and-rebuild-classic-manager/','troubleshooting/finnix-rescue-mode/']
 modified_by:
