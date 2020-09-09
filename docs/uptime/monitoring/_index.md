@@ -9,6 +9,8 @@ aliases: ['/server-monitoring/']
 published: 2009-07-16
 title: Server Monitoring
 show_in_lists: true
+cascade:
+    tags: ["monitoring"]
 ---
 
 

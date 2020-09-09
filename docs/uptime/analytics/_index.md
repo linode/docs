@@ -9,6 +9,8 @@ aliases: ['/web-applications/analytics/']
 published: 2010-03-01
 title: Analytics
 show_in_lists: true
+cascade:
+    tags: ["analytics", "statistics"]
 ---
 
 

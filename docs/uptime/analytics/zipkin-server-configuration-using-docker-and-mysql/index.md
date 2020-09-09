@@ -4,7 +4,8 @@ author:
   email: docs@linode.com
 description: 'This guide shows you how to use Zipkin in a Docker container for the purpose of tracking systems to collect and search timing data in order to identify latency problems on your websites.'
 og_description: 'Zipkin is a distributed tracing system. This guide shows you how to use Docker to deploy Zipkin on Linode, to diagnose latency problems on your website'
-keywords: ["zipkin", " Docker", " tracking"]
+keywords: ["zipkin", "Docker", "tracking"]
+tags: ["docker", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/zipkin-server-configuration-using-docker-and-mysql/']
 modified: 2017-10-27

@@ -4,7 +4,8 @@ author:
   name: Chris Ciufo
   email: docs@linode.com
 description: Zabbix
-keywords: ["zabbix", " server monitoring", " monitoring", " server monitor"]
+keywords: ["zabbix", "server monitoring", "monitoring", "server monitor"]
+tags: ["database", "apache", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/zabbix/']
 modified: 2012-08-20

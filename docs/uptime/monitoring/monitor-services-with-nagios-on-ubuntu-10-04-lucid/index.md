@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Ubuntu 10.04 (Lucid) Linode.'
 keywords: ["nagios", "monitoring"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/ubuntu-10-04-lucid/']
 modified: 2013-10-01

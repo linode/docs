@@ -5,6 +5,7 @@ author:
   email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["open source analytics", "piwik ubuntu 12.04", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
+tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/analytics/piwik/ubuntu-12-04-precise-pangolin/']
 modified: 2014-01-28
