@@ -22,7 +22,6 @@ before_script:
   - if [ $TRAVIS_BRANCH == master ]; then
       git remote set-branches --add origin master;
       git fetch --unshallow;
-      npm run build;
     fi
   - sleep 7
 
