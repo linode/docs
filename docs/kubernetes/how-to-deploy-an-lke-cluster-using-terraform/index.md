@@ -5,6 +5,7 @@ author:
 description: 'In this guide you will deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform. LKE is Linode''s managed Kubernetes service and Terraform is the popular infrastructure as code (IaC) tool. After completing this guide, you will have Terraform configuration files that can be reused to reliably deploy an LKE cluster.'
 og_description: 'In this guide you will deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform. LKE is Linode''s managed Kubernetes service and Terraform is the popular infrastructure as code (IaC) tool. After completing this guide, you will have Terraform configuration files that can be reused to reliably deploy an LKE cluster.'
 keywords: ['kubernetes','terraform','infrastructure as code','container orchestration']
+tags: ["automation", "linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-05
 modified_by:

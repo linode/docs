@@ -5,6 +5,7 @@ author:
 description: 'How to Install the Linode Block Storage CSI Driver.'
 og_description: 'How to Install the Linode Block Storage CSI Driver.'
 keywords: ['container','kubernetes','block','storage','volume','csi','interface','driver']
+tags: ["container", "linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-29
 modified: 2020-07-29
