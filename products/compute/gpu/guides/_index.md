@@ -22,7 +22,7 @@ These guides will help you with targeted topics like the basics of GPU Linodes, 
 
 - [Getting Started with Linode](/docs/getting-started/)
 
-- [Securing Your Server](/docs/security/securing-your-server/)
+- [Securing Your Server](/docs/security/basics/securing-your-server/)
 
 ### Choosing a Linode Plan
 

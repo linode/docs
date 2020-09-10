@@ -42,7 +42,7 @@ tab_group_main:
 
 - [How many backups do I get with Linode Backup Service?](https://www.linode.com/community/questions/18128/how-many-backups-do-i-get-with-linode-backup-service)
 
-Browse our Linode Community Questions & Answers page for more related questions.
+Browse our [Linode Community Questions & Answers page](https://www.linode.com/community/questions/) for more [related questions](https://www.linode.com/community/questions/search?query=backups).
 
 ## Customer Stories
 

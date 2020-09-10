@@ -6,7 +6,7 @@ tab_group_main:
 
 ## Building Blocks
 
-These introductory guides to Linode Backups will get you up and running with this service.
+These introductory guides to Linode Backups will get you up and running with Linode's Backup Service.
 
 - [Enable the Backup Service](/docs/products/storage/backups/guides/enable/): Use the Cloud Manager to enable the Backup Service.
 

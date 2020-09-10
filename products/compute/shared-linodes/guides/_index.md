@@ -12,13 +12,11 @@ These guides will help you with targeted topics like how to host a website, sett
 
 - [Getting Started with Linode](/docs/getting-started/)
 
-- [Securing Your Server](/docs/security/securing-your-server/)
+- [Securing Your Server](/docs/security/basics/securing-your-server/)
 
 ### Choosing a Linode Plan
 
 - [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/#1-shared)
-
-- [Use Cases for Linode Dedicated CPU Instances](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/) guides.
 
 ### Hosting a Website
 

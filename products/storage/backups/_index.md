@@ -25,4 +25,4 @@ Enable the Backup Service with a single click. It activates instantly, and your 
 
 ## Pricing
 
-Block Storage pricing may be viewed on the [Linode Pricing](https://www.linode.com/pricing/#row--storage) page.
+Backup pricing may be viewed on the [Linode Pricing](https://www.linode.com/pricing/#row--storage) page.

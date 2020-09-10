@@ -33,12 +33,7 @@ Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy softw
 
 1. Enter a label for your new Linode under the **Linode Label** field.
 
-1. Enter a strong root password for your Linode in the **Root Password** field. This password must be at least six characters long and contain characters from at least two of the following categories:
-
-    - lowercase letters
-    - uppercase letters
-    - numbers
-    - punctuation characters
+1. Enter a strong root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique.
 
     {{< note >}}
 You will not be prompted to enter a root password if you are cloning another Linode or restoring from the Linode Backups service.

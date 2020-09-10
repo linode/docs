@@ -10,21 +10,17 @@ These guides will help you with targeted topics like the basics of High Memory L
 
 ### High Memory Basics
 
-- [Getting Started with Dedicated CPUs](/docs/platform/dedicated-cpu/getting-started-with-dedicated-cpu/)
-
 - [Getting Started with Linode](/docs/getting-started/)
 
-- [Securing Your Server](/docs/security/securing-your-server/)
+- [Securing Your Server](/docs/security/basics/securing-your-server/)
 
 ### Choosing a Linode Plan
 
 - [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/#2-high-memory)
 
-- [Use Cases for Linode Dedicated CPU Instances](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/) guides.
-
 ### Databases
 
-- [How to Install a Redis Server on Ubuntu or debian 8](/docs/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
+- [How to Install a Redis Server on Ubuntu or Debian 8](/docs/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
 
 - [Install and Configure Redis on CentOS 7](/docs/databases/redis/install-and-configure-redis-on-centos-7/)
 

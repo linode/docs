@@ -35,9 +35,11 @@ In order for Linode's DNS servers to function as slaves, your DNS master server 
 
 1.  Enter an administrator's email address in the **SOA Email Address** field.
 
-1.  If you are unfamiliar with DNS, the DNS Manager can automatically create some basic DNS records to get you started. To have it insert these records, select **Yes, insert a few records to get me started**, then select from the drop-down menu the Linode with which you want this domain zone associated.
+1.  If you are unfamiliar with DNS, the DNS Manager can automatically create some basic DNS records to get you started.
 
-    Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **No, I want the zone empty**.
+      - To have it insert these records, select **Yes, insert a few records to get me started**, then select from the drop-down menu the Linode with which you want this domain zone associated.
+
+      - Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **No, I want the zone empty**.
 
 1.  Click **Create**. If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible on the Domains detail page. The created records should include SOA, NS, MX, and A/AAA.
 
@@ -51,7 +53,7 @@ When you first create a domain, you'll need to add some DNS records. This sectio
 
 1.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, then click **Add a Record**.
 
-   {{< note >}}
+      {{< note >}}
 The exact form fields will vary depending on the type of DNS record you select.
 {{< /note >}}
 

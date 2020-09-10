@@ -6,8 +6,8 @@ tab_group_main:
 
 ## Linode API
 
-Linode’s API v4 provides the ability to programmatically manage the full range of Linode products and services.
+Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [Enable Linode Managed](https://developers.linode.com/api/v4/account-settings-managed-enable/#post)
+- [Enable Linode Managed](/docs/api/account/#enable-linode-managed)
 
-- [Managed Endpoint Collection](https://developers.linode.com/api/v4/managed-services)
+- [Managed Endpoint Collection](/docs/api/managed)

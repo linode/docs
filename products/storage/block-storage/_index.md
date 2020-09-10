@@ -21,10 +21,10 @@ A Block Storage Volume must be located in the same data center as the Linode it 
 
 A Block Storage Volume augments the raw storage capacity of a cloud instance, which can be useful if your storage needs are greater than your computing demands. Because a Volume is scalable, it can adapt as your data grows in size. Additionally, all data stored with Linode Block Storage is replicated three times, so your Volumes are highly available and fault tolerant.
 
-Create hot-swappable drives with Block Storage when you need to perform the same kind of tasks across a fleet of instances with the same data.
-Provide persistent storage to your containers when using Docker or Kubernetes.
-Store your media library files in Block Storage Volume and increase its size as your library grows.
-Create backups of your data that are scalable and easily transferable between Linodes.
+-   Create hot-swappable drives with Block Storage when you need to perform the same kind of tasks across a fleet of instances with the same data.
+-   Provide persistent storage to your containers when using Docker or Kubernetes.
+-   Store your media library files in Block Storage Volume and increase its size as your library grows.
+-   Create backups of your data that are scalable and easily transferable between Linodes.
 
 ### Resilient and Fault Tolerant
 

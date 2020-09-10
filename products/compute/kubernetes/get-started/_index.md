@@ -16,15 +16,15 @@ Install via [Homebrew](https://brew.sh):
 
 1.  Download the latest kubectl release:
 
-      curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+        curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 
 1.  Make the downloaded file executable:
 
-      chmod +x ./kubectl
+        chmod +x ./kubectl
 
 1.  Move the command into your PATH:
 
-      sudo mv ./kubectl /usr/local/bin/kubectl
+        sudo mv ./kubectl /usr/local/bin/kubectl
 
 **Windows:**
 
@@ -38,11 +38,11 @@ Visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/inst
 
 1. The **Create a Kubernetes Cluster** page will appear. At the top of the page, you'll be required to select the following options:
 
-  - In the **Cluster Label** field, provide a name for your cluster. The name must be unique between all of the clusters on your account. This name will be how you identify your cluster in the Cloud Manager’s Dashboard.
+      - In the **Cluster Label** field, provide a name for your cluster. The name must be unique between all of the clusters on your account. This name will be how you identify your cluster in the Cloud Manager’s Dashboard.
 
-  - From the **Region** dropdown menu, select the **Region** where you would like your cluster to reside.
+      - From the **Region** dropdown menu, select the **Region** where you would like your cluster to reside.
 
-  - From the **Version** dropdown menu, select a Kubernetes version to deploy to your cluster.
+      - From the **Version** dropdown menu, select a Kubernetes version to deploy to your cluster.
 
 1. In the **Add Node Pools** section, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time.
 

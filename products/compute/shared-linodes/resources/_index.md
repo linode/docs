@@ -40,7 +40,7 @@ tab_group_main:
 
 - [Getting started with Linode?](https://www.linode.com/community/questions/17493/get-started-with-linode)
 
-Browse our Linode Community Questions & Answers page for more related questions.
+Browse our [Linode Community Questions & Answers page](https://www.linode.com/community/questions/) for more [related questions](https://www.linode.com/community/questions/search?query=shared+linodes).
 
 ## Customer Stories
 
