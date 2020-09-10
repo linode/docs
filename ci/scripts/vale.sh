@@ -5,12 +5,8 @@ mkdir vale
 tar -xvzf vale_1.2.6_Linux_64-bit.tar.gz -C vale
 branch=$TRAVIS_BRANCH
 echo "branch: "${branch}
-#if ["$branch" == "master"]
-#then
+
 files=$(git diff --name-only origin/${branch} | grep 'index.md')
-#else
-#  files=$(git diff --name-only ${branch} | grep 'index.md')
-#fi
 
 for file in $files; do
   echo ${file}
