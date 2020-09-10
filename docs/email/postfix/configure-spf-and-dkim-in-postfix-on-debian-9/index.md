@@ -269,8 +269,8 @@ example.com
 
     Replace `YYYYMM` with the current year and month as in the key table. This will give you two files, `YYYYMM.private` containing the key and `YYYYMM.txt` containing the TXT record you'll need to set up DNS. Rename the files so they have names matching the third section of the second field of the key table for the domain:
 
-        mv YYYYMM.private example.private
-        mv YYYYMM.txt example.txt
+        mv /etc/opendkim/keys/YYYYMM.private /etc/opendkim/keys/example.private
+        mv /etc/opendkim/keys/YYYYMM.txt /etc/opendkim/keys/example.txt
 
     Repeat the commands in this step for every entry in the key table. The `-b 2048` indicates the number of bits in the RSA key pair used for signing and verification. 1024 bits is the minimum, but with modern hardware 2048 bits is safer. (It's possible 4096 bits will be required at some point.)
 
