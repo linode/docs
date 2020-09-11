@@ -25,7 +25,7 @@ from pathlib import Path
 # Create a regex cookbook!
 
 
-IGNORE_DIRS = ['^/docs/api/[/A-Za-z0-9_-]*']
+IGNORE_DIRS = ['^/home/travis/build/linode/docs/docs/api/[/A-Za-z0-9_-]*']
 REPORT_KEYS = ['files', 'excluded_files', 'directories']
 BASE_URL = 'http://localhost:1313/docs/'
 OPTIONAL_PARAMS = ['args', 'kwargs']
