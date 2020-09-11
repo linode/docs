@@ -140,7 +140,7 @@ def lowercase_filename(filepath):
     elif filename is None:
         return
     elif not filename.islower():
-        print("not lower file found: " + str(filename))
+        print("not lower file found: " + filename)
         return str(filepath), "File name must be all lowercase."
 
 
