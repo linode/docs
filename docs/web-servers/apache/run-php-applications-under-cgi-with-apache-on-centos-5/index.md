@@ -20,7 +20,7 @@ In most cases, we recommend using the `mod_php` module to run PHP scripts with t
 
 Before beginning this guide, we assume that you've completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/), and the article concerning [systems administration basics](/docs/tools-reference/linux-system-administration-basics/). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -29,7 +29,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Installing Apache and PHP
+## Installing Apache and PHP
 
 Make sure your system is up to date by issuing the following command:
 
@@ -49,7 +49,7 @@ You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-se
 
 When this process completes, we can configure Apache to hand PHP scripts to the CGI process for rendering these scripts.
 
-# Configure Apache for PHP CGI
+## Configure Apache for PHP CGI
 
 The directives required to enable PHP CGI may be set anywhere in Apache's [configuration tree](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics/). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For CentOS systems this is located at `/etc/httpd/conf.d/`. Regardless of their location, the relevant settings are:
 
@@ -85,7 +85,7 @@ If you need support for MySQL in PHP, then you must install the php5-mysql packa
 
 Congratulations! Apache is now configured to run PHP scripts using CGI.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

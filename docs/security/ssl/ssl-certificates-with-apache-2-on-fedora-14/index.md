@@ -18,7 +18,7 @@ title: SSL Certificates with Apache 2 on Fedora 14
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [getting started guide](/docs/getting-started/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Fedora 14 guide](/docs/web-servers/apache/installation/fedora-14). These steps should be performed via an SSH session to your Linode as the root user.
 
-# Use a Self-Signed SSL Certificate with Apache
+## Use a Self-Signed SSL Certificate with Apache
 
 These instructions will help you generate a generic self-signed certificate, which may be used to provide SSL service for all name-based hosts on your Linode. Please note that self-signed certificates will generate warnings in a visitor's browser; proceed to "Installing a Commercial SSL Certificate" if you need to set up SSL on a domain using a certificate signed by a commercial SSL provider.
 
@@ -78,7 +78,7 @@ Restart Apache:
 
 You should now be able to visit your site with SSL enabled (after accepting your browser's warnings about the certificate).
 
-# Install a Commercial SSL Certificate
+## Install a Commercial SSL Certificate
 
 Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address for SSL-enabled sites.
 
@@ -165,7 +165,7 @@ Restart Apache:
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

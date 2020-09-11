@@ -22,7 +22,7 @@ For many private networking tasks, we urge users to consider the many capabiliti
 
 Before installing OpenVPN, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/docs/security/securing-your-server/) article as well.
 
-# Install OpenVPN
+## Install OpenVPN
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -129,7 +129,7 @@ If you need to remove a user's access to the VPN server, issue the following com
 
 This will revoke the ability of users who have the `client1` certificate to access the VPN. For this reason, keeping track of which users are in possession of which certificates is crucial.
 
-# Configure the Virtual Private Network
+## Configure the Virtual Private Network
 
 We'll now need to configure our server file. There is an example file in `/usr/share/doc/openvpn/examples/sample-config-files`. Issue the following sequence of commands to retrieve the example configuration file and move it to the `/etc/openvpn` directory:
 
@@ -168,7 +168,7 @@ key client1.key
 
 Copy the `~/client1.conf` file to your client system. You'll need to repeat the entire key generation and distribution process for every user and every key that will connect to your network.
 
-# Connect to the VPN
+## Connect to the VPN
 
 To initialize the OpenVPN server process, run the following command:
 
@@ -182,7 +182,7 @@ Most network management tools provide some facility for managing connections to 
 
 If you use Mac OS X, we have found that the [Tunnelblick](http://code.google.com/p/tunnelblick/) tool provides an easy method for managing OpenVPN connections. If you use Windows, the [OpenVPN GUI](http://openvpn.se/) tool may be an effective tool for managing your connections too. Linux desktop users can install the OpenVPN package and use the network management tools that come with your desktop environment.
 
-# Using OpenVPN
+## Using OpenVPN
 
 ### Connect Remote Networks Securely With the VPN
 
@@ -275,7 +275,7 @@ Finally, before attempting to connect to the VPN in any configuration, restart t
 
 Once these configuration options have been implemented, you can test the VPN connection by connecting to the VPN from your local machine, and access one of the many websites that will display your IP address. If the IP address displayed matches the IP address of your Linode, all network traffic from your local machine will be filtered through your Linode and encrypted over the VPN between your Linode and your local machine. If, however, your apparent public IP address is different from your Linode's IP address, your traffic is not being filtered through your Linode or encrypted by the VPN.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

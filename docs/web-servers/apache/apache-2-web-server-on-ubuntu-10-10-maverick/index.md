@@ -18,7 +18,7 @@ title: 'Apache 2 Web Server on Ubuntu 10.10 (Maverick)'
 
 This tutorial explains how to install and configure the Apache web server on Ubuntu 10.10 (Maverick). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 10.10](/docs/web-servers/lamp/lamp-server-on-ubuntu-10-10-maverick/).
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -27,7 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Apache 2
+## Install Apache 2
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -38,7 +38,7 @@ Enter the following command to install the Apache HTTP server, its documentation
 
     apt-get install apache2 apache2-doc apache2-utils
 
-# Install Support for Scripting
+## Install Support for Scripting
 
 The following commands are optional, and should be run if you want to have support within Apache for server-side scripting in PHP, Ruby, Python, or Perl.
 
@@ -144,7 +144,7 @@ When you create or edit any virtual host file, you'll need to reload the config,
 
 Congratulations! You now have Apache installed on your Ubuntu Linode and have configured the server for virtual hosting.
 
-# Install Apache Modules
+## Install Apache Modules
 
 One of Apache's prime strengths is its extreme customizability and flexibility. With its support for a large number of modules, there are few web serving tasks that Apache cannot fulfill. By default, modules and their configuration files are installed in the `/etc/apache2/mods-available/` directory. Generating a list of this directory will tell you what modules are installed. To enable a module listed in this directory, use the following command:
 
@@ -166,7 +166,7 @@ To install one of these modules use the command:
 
 Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache module documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
 
-# Configuration Options
+## Configuration Options
 
 One of the strengths, and obstacles, of Apache is the immense amount of flexibility offered in its configuration files. In the default installation of Apache 2 on Ubuntu, the main configuration is located in the `/etc/apache2/apache2.conf` files, but Apache configuration directives are loaded from files in a number of different locations, in a specific order. Configuration files are read in the following order, with items specified later taking precedence over earlier and potentially conflicting options:
 
@@ -188,7 +188,7 @@ Generally, as specified in the [LAMP guide](/docs/lamp-guides/ubuntu-10-10-maver
 
 In practice, the vast majority of configuration options will probably be located in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
 
-# Multi-Processing Module
+## Multi-Processing Module
 
 The default Apache configuration uses a tool called MPM-worker. This multi-processing module can handle a large number of requests quickly by utilizing multiple threads per worker process. However, this use of multiple threads is not compatible with some PHP extensions. When PHP is installed MPM-worker is replaced with MPM-prefork, which allows Apache to handle requests without threading for greater compatibility with some software. Furthermore, using MPM-prefork allows Apache to isolate requests in separate processes so that if one request fails for some reason, other requests will be unaffected.
 
@@ -210,7 +210,7 @@ Now, in the `<VirtualHost >` entries for your sites (the site-specific files in 
 
 In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the particular group that "owns" the web server related files and processes. Remember that you must create the user accounts and groups using the `useradd` command.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

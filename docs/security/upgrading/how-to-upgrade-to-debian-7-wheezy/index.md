@@ -16,7 +16,7 @@ title: 'How to Upgrade to Debian 7 (Wheezy)'
 
 Debian 7 (Wheezy) was released in May 2013. This guide explains how to upgrade your system from Debian 6 (Squeeze) to Debian 7 (Wheezy). Before you begin, you should make sure that you have a working [backup](/docs/platform/backup-service) or a copy of your data.
 
-# Preparing to Upgrade
+## Preparing to Upgrade
 
 Prepare your Linode for Debian 7 by installing updates, backing up your Linode, checking your kernel, stopping services, and starting a screen session.
 
@@ -66,7 +66,7 @@ We recommend that you start a screen session to ensure that the updates will con
 
 You are now ready to install Debian 7 on your Linode.
 
-# Upgrading to Debian 7
+## Upgrading to Debian 7
 
 Here's how to upgrade from Debian 6 to Debian 7:
 
@@ -106,7 +106,7 @@ Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentica
 
 Your Linode is now running Debian 7.
 
-# Troubleshooting Problems
+## Troubleshooting Problems
 
 Errors about packages that are removed and not purged may be resolved by installing the latest version of the software or purging the old package. For example, if you receive an error about MySQL, you could try to resolve the issue by entering the following command:
 

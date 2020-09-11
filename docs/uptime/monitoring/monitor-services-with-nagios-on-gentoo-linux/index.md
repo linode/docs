@@ -20,14 +20,14 @@ Nagios is a monitoring tool that makes it possible to monitor services on a sing
 
 Before installing Nagios, you will need to ensure that your hostname is properly set by following the steps outlined in the [getting started guide](/docs/getting-started/). Additionally, you will need to have a functioning [LAMP stack](/docs/lamp-guides/) in order to use Nagios.
 
-# Prepare for Nagios Installation
+## Prepare for Nagios Installation
 
 Ensure that your system's package repository and installed packages are up to date by issuing the following commands:
 
     emerge --sync
     emerge --update world
 
-# Install Nagios
+## Install Nagios
 
 Issue the following command to install Nagios:
 
@@ -40,7 +40,7 @@ This command will install Nagios and place the website files in `/usr/share/nagi
     cd /usr/share/nagios/htdocs
     ln -s /etc/nagios/auth.users
 
-# Configure Apache
+## Configure Apache
 
 Edit the `APACHE2_OPTS` line in your `/etc/conf.d/apache2` so that it resembles the following:
 
@@ -54,7 +54,7 @@ You will also need to copy the Nagios Apache config to `/etc/apache2/modules.d/`
 
     cp /usr/portage/net-analyzer/nagios-core/files/99_nagios3.conf /etc/apache2/modules.d/
 
-# Configure Nagios
+## Configure Nagios
 
 Begin by editing the `/etc/nagios/objects/contacts.cfg` file's email field, according to the example below:
 
@@ -77,7 +77,7 @@ You will now need to restart the web server by issuing the following command:
 
     /etc/init.d/apache2 restart
 
-# Running Nagios
+## Running Nagios
 
 Issue the following commands to ensure that Nagios is started when your system boots:
 
@@ -95,7 +95,7 @@ You may now access the web based administration and reporting tools by visiting 
 
 **Please note:** The above example does not use SSL, and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
-# Configure Nagios Alerts
+## Configure Nagios Alerts
 
 A great deal of the power of Nagios is its ability to send notifications and alerts regarding the status of services and devices. While most of this fine-grained configuration is beyond the scope of this document, we have outlined some basic notifications below.
 
@@ -149,7 +149,7 @@ In the above example, "-f /usr/local/nagios/var/status.dat" tells the bot where 
 
 Nagios contains numerous features that are beyond the scope of this document. You are encouraged to explore the resources listed below and the administrative interface for more information regarding the setup and configuration of Nagios. Congratulations on your new Nagios monitoring and notification system!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

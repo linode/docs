@@ -20,7 +20,7 @@ CouchDB is a non-relational document based database. Like other entrants into th
 
 Before installing CouchDB, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Installing CouchDB
+## Installing CouchDB
 
 Issue the following commands to refresh your system's package database and ensure that you're running the most up to date software:
 
@@ -39,7 +39,7 @@ CouchDB will start as soon as the application is fully installed. You can use th
 
 Congratulations! In most use cases, you will not need to modify CouchDB's configuration file. However, should you need to modify any of its settings, a number of options are set in the `/etc/couchdb/local.ini` file.
 
-# Using CouchDB
+## Using CouchDB
 
 Most of your interaction with CouchDB will occur by way of the system's HTTP and JSON interface. CouchDB comes with a web-based administrative interface called "Futon". Since CouchDB is only accessible over the local interface by default, you will want to [create a secure ssh tunnel](/docs/databases/couchdb/access-futon-over-ssh-using-putty-on-windows/) in order to access CouchDB or Futon from your local machine to avoid sending data in the clear.
 
@@ -63,7 +63,7 @@ Additionally, CouchDB provides an embedded JavaScript interpreter if you would l
 
 Where, `duck-team-check.js` is a file containing JavaScript code for the CouchDB interpreter.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

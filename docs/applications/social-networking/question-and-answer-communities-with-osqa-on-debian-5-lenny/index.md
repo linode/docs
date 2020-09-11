@@ -18,7 +18,7 @@ OSQA, the Open Source Question and Answer platform, is a tool for structured com
 
 Before beginning this guide, we assume that you have completed the [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Furthermore, this guide presumes that you have installed the [Apache HTTP server](/docs/web-servers/apache/apache-2-web-server-on-debian-5-lenny/) and the [MySQL database engine](/docs/databases/mysql/use-mysql-relational-databases-on-debian-5-lenny/). If you want your OSQA instance to be able to send email, install the [Exim send-only MTA](/docs/email/exim/sendonly-mail-server-with-exim-on-debian-5-lenny/).
 
-# Install Prerequisites
+## Install Prerequisites
 
 Before beginning the installation of OSQA, issue the following commands to ensure that your system is up to date and that all required packages have been installed:
 
@@ -85,7 +85,7 @@ Now, to upgrade to the latest version of the `django-sphinx` software, issue the
 
 Continue reading to install the OSQA software. We will assume that your OSQA site will be located at `http://example.com/` which points at an Apache virtual host, with a document root located at `/srv/www/example.com/public_html/`.
 
-# Install OSQA
+## Install OSQA
 
 ### Download Software
 
@@ -208,7 +208,7 @@ You will need to repeat this command sequence any time you update your software 
 
 Congratulations! You will now be able to visit your new OSQA powered site located at `http://example.com`.
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -219,7 +219,7 @@ Please monitor the OSQ mailing lists for users and developers to ensure that you
 
 When upstream sources offer new releases, repeat the instructions for installing the OSQA software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

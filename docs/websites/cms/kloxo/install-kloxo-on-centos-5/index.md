@@ -16,7 +16,7 @@ deprecated: true
 
 Kloxo is a web-based control panel that is a free alternative to options such as cPanel and Plesk. At this time, Kloxo only supports 32 bit systems. If you would like to use Kloxo on a 64 bit system, you can follow the documentation [listed on their wiki page](http://wiki.lxcenter.org/Kloxo-64).
 
-# Initial Setup
+## Initial Setup
 
 Before getting started, you'll need to make sure that your [hostname](/docs/getting-started#setting-the-hostname) has been properly set and that [static networking](/docs/networking/configuring-static-ip-interfaces) has been configured **even if you only have one IP address**. You will also need to install MySQL. To do so, issue the following commands:
 
@@ -28,7 +28,7 @@ Secure the installation by running the following command and answering the promp
 
     /usr/bin/mysql_secure_installation
 
-# Installation
+## Installation
 
 This guide assumes that you would like your instance of Kloxo to be the master node. You will be downloading the master installation script.
 

@@ -18,7 +18,7 @@ title: Apache 2 Web Server on Fedora 13
 
 This tutorial explains how to install and configure the Apache web server on Fedora 13. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 13](/docs/web-servers/lamp/lamp-server-on-fedora-13/).
 
-# Install Apache HTTP Server
+## Install Apache HTTP Server
 
 Before beginning the installation process, ensure that you are running a complete and update version of your system. Issue the following command:
 
@@ -28,7 +28,7 @@ Enter the following command to install the Apache HTTP Server:
 
     yum install httpd
 
-# Install Support for Scripting
+## Install Support for Scripting
 
 The following commands are optional, and should be run if you want to have support within Apache for server-side scripting in PHP, Ruby, Python, or Perl.
 
@@ -58,7 +58,7 @@ If you're also hoping to run PHP with mysql, then also install mySQL support:
 
     yum install php-mysql
 
-# Configure Apache
+## Configure Apache
 
 All configuration for Apache are contained in the `httpd.conf` file, which is located at: `/etc/httpd/conf.d/httpd.conf`. We advise you to make a backup of this file into your home directory, like so:
 
@@ -130,7 +130,7 @@ Any time you change an option in your `vhost.conf` file, or any other Apache con
 
     /etc/init.d/httpd reload
 
-# Configuration Options
+## Configuration Options
 
 One of the strengths, and obstacles, of Apache is the immense amount of flexibility offered in its configuration files. In the default installation of Apache 2 on Fedora 13, the main configuration file is located at `/etc/httpd/conf/httpd.conf`, but Apache configuration is also loaded from files in a number of different locations, in a specific order. Configuration files are read in the following order, with items specified later taking precedence over earlier and potentially conflicting options:
 
@@ -147,7 +147,7 @@ In accordance with best practices, we do not recommend modifying the default con
 
 Generally, as specified above and in our [LAMP guide for Fedora 13](/docs/lamp-guides/fedora-13) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file, such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
 
-# Install Apache Modules
+## Install Apache Modules
 
 One of Apache's prime strengths is its extreme customizability and flexibility. With its support for a large number of modules, there are few web serving tasks that Apache cannot fulfill. By default, modules are located in the `/etc/httpd/modules/` directory. Configuration directives for the default modules are located in `/etc/httpd/conf/httpd.conf`, while configuration options for optional modules installed with yum are generally placed in `.conf` files in `/etc/httpd/conf.d/`.
 
@@ -168,13 +168,13 @@ You can then install one of these modules with the command:
 
 Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache module documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
 
-# Understanding .htaccess Configuration
+## Understanding .htaccess Configuration
 
 The `.htaccess` file is the Apache configuration interface that many webmasters and developers have the most experience with. Entering configuration options in these files allow you to control Apache's behavior on a per-directory basis. This allows you to "lock" a directory behind a password wall (for instance) to prevent general access to it. Additionally, directory specific `.htaccess` files are a common location to specify rules for rewriting URLs.
 
 Remember that options specified in an `.htaccess` file apply to all directories below the file. Furthermore, note that all options specified in `.htaccess` files can specify higher level configuration locations. If this kind of configuration organization is desirable for your setup you can specify directory-level options using `<Directory >` blocks within your virtual host.
 
-# Password Protecting Directories
+## Password Protecting Directories
 
 In a **non** web accessible directory, we need to create a .htpasswd file. For example, if the document root for your Virtual Host is `/srv/www/bleddington.com/public_html/`, use `/srv/www/bleddington.com/`. Enter this directory:
 
@@ -201,7 +201,7 @@ Require valid-user
 
 Note, that the `AuthName` is presented to the user as an explanation in the authentication dialog for what they are requesting access to on the server.
 
-# Rewriting URLs with mod\_rewrite
+## Rewriting URLs with mod\_rewrite
 
 The mod\_rewrite engine is very powerful, and is available for your use by default. Although the capabilities of mod\_rewrite far exceed the scope of this section, we hope to provide a brief outline and some common use cases.
 
@@ -227,7 +227,7 @@ The string in question rewrites all URLs that specify paths that begin with `/po
 
 There are many other possibilities for using mod\_rewrite to allow users to see and interact with useful URLs, while maintaining a file structure that makes sense from a development or deployment perspective.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

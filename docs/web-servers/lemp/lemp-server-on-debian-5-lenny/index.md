@@ -22,7 +22,7 @@ This document describes a compatible alternative to the "LAMP" (Linux, Apache, M
 
 Prior to beginning this guide, please complete the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -31,14 +31,14 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Prepare System For Deployment
+## Prepare System For Deployment
 
 Before beginning with the installation of this web application stack, issue the following commands to ensure that your system's package database is up to date and that all installed software is running at the latest version:
 
     apt-get update
     apt-get upgrade
 
-# Install the Nginx Web Server
+## Install the Nginx Web Server
 
 There are several viable and popular options for installing the nginx software. The first option retrieves packages from the Debian Project's software repository and provides a stable and tested version of the web server. The second option retrieves packages compiled by the Debian Backports project. Backports packages are more up to date than the stable packages provided by the Debian project, but do not necessarily receive the same kind of updates, support, and maintenance that official packages receive.
 
@@ -127,7 +127,7 @@ Now, issue the following command to start the web-server:
 
     /etc/init.d/nginx start
 
-# Configure nginx Virtual Hosting
+## Configure nginx Virtual Hosting
 
 Regardless of the method you use to install nginx, you will need to configure `server` declarations to specify name-based virtual hosts. There are a number of approaches to organizing configuration files with nginx. Regardless of the organizational strategy, all virtual host configurations are contained within `server` configuration blocks that are in turn contained within the `http` block in the `nginx.conf` file. Consider the following nginx virtual host configuration:
 
@@ -198,7 +198,7 @@ Once you've configured and loaded the nginx configuration, restart the web serve
 
 Make sure that the directories referenced in your configuration exist on your file system before restarting.
 
-# Deploy PHP with FastCGI
+## Deploy PHP with FastCGI
 
 In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/debian-5-lenny). Begin the deployment process by issuing the following command to install the required dependencies:
 
@@ -284,7 +284,7 @@ When you've completed the modifications to the configuration, make sure that the
 
 Congratulations! You can now deploy PHP scripts with your LEMP stack.
 
-# Install MySQL Database Server
+## Install MySQL Database Server
 
 The MySQL database engine may be the leading open source relational database engine, and is a popular database solution for web-based applications. Issue the following command to install the MySQL server packages and required PHP support for MySQL:
 
@@ -319,7 +319,7 @@ You may now provide the credentials for the `example` database and the `bagman` 
 
 Congratulations! You now have a fully functional and fully featured LEMP stack for application deployment.
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -331,7 +331,7 @@ Please follow the announcements, lists, and RSS feeds on the pages linked below 
 
 When upstream sources offer new releases, repeat the instructions for installing nginx, and spawn-fcgi, and recompile your software when needed. These practices are crucial for the ongoing security and functioning of your system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

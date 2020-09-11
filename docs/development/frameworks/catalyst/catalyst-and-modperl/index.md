@@ -18,7 +18,7 @@ The Catalyst web framework is a contemporary Perl-based MVC, or Model View Contr
 
 In this document, we outline deploying applications developed with Catalyst using the Apache web server and the `mod_perl` method of running Perl applications embedded in the web server process. Before installing Catalyst, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Installing Catalyst
+## Installing Catalyst
 
 Although the Catalyst framework is packaged and included in the repositories of a number of major Linux-based operating system distributions, this document provides a procedure for installing the Catalyst framework from CPAN repositories. This will ensure that your application will have access to the most recently developed features.
 
@@ -70,7 +70,7 @@ In Catalyst deployments, you will need to restart the Apache web server before b
 
     /etc/init.d/apache2 restart
 
-# Deploying Catalyst Applications
+## Deploying Catalyst Applications
 
 For the purposes of this document we will assume that you have configured virtual hosting for the domain `example.com` in the manner described in the [installing Apache](/docs/web-servers/apache/apache-2-web-server-on-debian-5-lenny/) document. Please note that you can only deploy one Catalyst application in a given instance of Apache.
 
@@ -154,7 +154,7 @@ In this example, all requests are handled by the Catalyst application except for
 
 Congratulations, you have now successfully configured a system for deploying Catalyst powered web applications!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

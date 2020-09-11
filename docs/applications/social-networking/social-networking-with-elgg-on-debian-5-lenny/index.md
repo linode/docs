@@ -24,7 +24,7 @@ Before beginning, we assume that you have followed our [getting started guide](/
 
 If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). You will need to be logged into your Linode as root in order to complete the installation process.
 
-# Prerequisites for Installing Elgg
+## Prerequisites for Installing Elgg
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -45,7 +45,7 @@ Run the following command to restart the Apache Web server so that `mod_rewrite`
 
 You're now ready to install Elgg. For the purposes of this guide, Elgg will be installed at the root level of an Apache virtual host. The `DocumentRoot` for the virtual host will be located at `/srv/www/example.com/public_html/` and the site will be located at `http://example.com/`. You will need to substitute these paths with the paths that you configured in your Elgg virtual host.
 
-# Installing Elgg
+## Installing Elgg
 
 This document is written against version 1.7 of the Elgg package. Consult the [Elgg download page](http://elgg.org/download.php) to see if there is a more up to date version of the software.
 
@@ -114,7 +114,7 @@ When you've saved this file, refresh the page and you'll be presented with the "
 
 Elgg allows you to configure several additional options, including the default language, default access permissions, and an option to turn on the debugging mode. Alter any values as you see fit. When you select "Save", the process will continue and allow you to create an administrative account. When this is complete, Elgg is fully installed and you can begin to customize and develop your site. Congratulations, you now have the beginnings of your very own independent, self-hosted social networking site.
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -122,7 +122,7 @@ Please monitor the [Elgg development mailing list](http://groups.google.com/grou
 
 When upstream sources offer new releases, repeat the instructions for installing the Elgg software as needed.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

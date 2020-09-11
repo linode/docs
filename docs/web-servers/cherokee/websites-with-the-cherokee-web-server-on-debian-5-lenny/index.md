@@ -20,7 +20,7 @@ This tutorial explains how to install and configure the Cherokee web server on D
 
 This document assumes that you already have a working and up to date Debian 5 (Lenny) system. If you have not followed our [getting started guide](/docs/getting-started/), we recommend that you do so prior to following these instructions.
 
-# Install Cherokee
+## Install Cherokee
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -37,7 +37,7 @@ If you need support for SSL sites, issue the following command to install OpenSS
 
     apt-get install openssl
 
-# Configuring Cherokee
+## Configuring Cherokee
 
 The Cherokee web server includes an easy to use, comprehensive administration interface. This interface, known as `cherokee-admin`, is the recommended means of administering your web server.
 
@@ -92,11 +92,11 @@ Click "Open" to connect to your server and start the tunnel. You may receive a w
 
 Click "Yes" to continue, and log into your Linode as you normally would. As long as the SSH session is open you'll be able to navigate to `http://localhost:9090` in your web browser to access the Cherokee admin panel via the secure tunnel.
 
-# Conclusion
+## Conclusion
 
 Be sure to stop `cherokee-admin` using the `killall` command shown above once you're done configuring your system. Congratulations, you've successfully installed the Cherokee web server on your Linode!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

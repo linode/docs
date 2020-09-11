@@ -20,7 +20,7 @@ The Apache HTTP server is a versatile and robust engine for providing access to 
 
 This guide provides a number of configuration examples and suggestions for using Apache as a frontend server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on [installing Apache](/docs/web-servers/apache/apache-2-web-server-on-fedora-14/) before continuing with this guide. Additionally, consider our [getting started](/docs/getting-started/) and [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) documents if you are new to Linode, and our [administration basics](/docs/tools-reference/linux-system-administration-basics/) guide if you are new to Linux server administration.
 
-# Case One: Separating Static Content from Dynamic Content
+## Case One: Separating Static Content from Dynamic Content
 
 In this configuration, Apache provides two or more virtual hosts which perform different functions. Here we might configure our site to use `static.example.com` for hosting static resources for direct delivery like images, JavaScript, CSS files, media files, and static HTML, while using `example.com` to host dynamic content including CGI scripts and PHP pages. In this kind of system it becomes easy to move the `static` subdomain to another Linode instance or content delivery system without modifying any internal configuration.
 
@@ -55,7 +55,7 @@ Reload the web server configuration to create the virtual host. Note that Fedora
 
 Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
-# Case Two: Using ProxyPass to Delegate Services to Alternate Machines
+## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 
 In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-fedora-14/) we outline a method for configuring multiple websites using Apache's `mod_proxy` module. Please follow that guide, particularly the section regarding [configuring mod\_proxy](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-fedora-14/#enabling-the-proxy-module/) to ensure that `mod_proxy` is active.
 
@@ -74,7 +74,7 @@ When added to the virtual host configuration for the `example.com` domain, these
 
 In essence, the `ProxyPass` directive in this manner allows you to distribute serving HTTP resources amongst a larger pool of machines. At the same time, end users will still see a unified and coherent website hosted on a single domain.
 
-# Case Three: Proxy only Some Requests to a Backend
+## Case Three: Proxy only Some Requests to a Backend
 
 While using `ProxyPass` directives allows you to distribute resources by directory amongst a collection of backend servers, this kind of architecture only makes sense for some specific kinds of deployments. In many situations administrators might like to have more fine grained control over the requests passed to external servers. In conjunction with [mod\_rewrite](/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/) we can configure `mod_proxy` to more flexibly pass requests to alternate backends.
 
@@ -120,7 +120,7 @@ In order to ensure that your rewrite rules function as predicted, keep in mind t
 -   If you use the extension to match the request and pass it to a specific backend server, and the backend server expects files with extensions you must add those extensions to the second part of the rewrite rule.
 -   When a rewrite rule with a `proxy` flag is used, and a request matches that rewrite rule, the request will be passed to `mod_proxy` even if a more precise rewrite rule matches further down in the configuration. Ensure that your rules are arranged such that less specific rewrite rules are declared after more precise ones to avoid unintentional conflicts.
 
-# Case Four: Forward All Non-Static Content to an External Server
+## Case Four: Forward All Non-Static Content to an External Server
 
 Using `mod_rewrite` to direct requests to proxied resources gives administrators a great deal of power and fine grained control over where and how requests are passed to the backend servers. At the same time, it can add a great deal of complexity to the configuration of the web server that may be difficult to manage. Minor updates and small changes to a configuration can have large and unintended impacts on the function of a website. For this reason it is always crucial that you fully test your configuration before the initial deployment or before you deploy *any* updates.
 
@@ -145,7 +145,7 @@ The following case presents a more streamlined and simple proxy and rewrite exam
 
 In this example, the `RewriteCond` controls the behavior of the `RewriteEngine` so that requests for resources will *only* be passed to the proxied server (e.g. `http://app.example.com/`) if there is no file in the `/srv/www/example.com/public_html/` directory that matches the request. All other requests are passed to `http://app.example.com/`. This kind of configuration is quite useful in situations where your deployment's dynamic content is powered by an application specific HTTP server, but also requires static content that can be more efficiently served directly from Apache.
 
-# Case Five: Deploy an Apache Proxy Cluster
+## Case Five: Deploy an Apache Proxy Cluster
 
 All of the previous cases presented in this document outline configurations for using `mod_proxy` in various configurations to make it possible to use your Apache HTTP server as a frontend for a more complex architecture. This case takes this one step further, by allowing Apache to proxy requests to a group of identical backend servers, and thus be able to handle a much larger load.
 
@@ -196,7 +196,7 @@ Apache also contains a "Balancer Manager" interface that you can use to monitor 
 
 Modify the `Allow from` directive to allow access *only* from your current local machine's IP address, and read more about [rule-based access control](/docs/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/). Now visit `/balancer-manager` of the domain of your virtual host (e.g. `example.com`,) in our example `http://example.com/balancer-manager` to use Apache's tools for managing your cluster. Ensure that the `/balancer-manager` location is **not** established at a location that is to be passed to a proxied server. Congratulations you are now able to configure a fully functional cluster of web servers using the Apache web server as a frontend!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

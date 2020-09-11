@@ -20,7 +20,7 @@ Nginx is a lightweight and high performance web server designed with the purpose
 
 Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -29,7 +29,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Installing nginx from Ubuntu Packages
+## Installing nginx from Ubuntu Packages
 
 Nginx is included in the Ubuntu software repositories. While this method is sufficient for many cases, nginx development proceeds rapidly and this method may result in a running nginx instance that is older than your application requires. If you want to install in this manner, the following sequence of commands ensure that your system's package databases and installed programs are up to date:
 
@@ -46,7 +46,7 @@ To start the server for the first time use the following command:
 
 Using the Ubuntu packages for nginx allows you to rely on your distribution's quality control, testing, and security teams to ensure that you're running the best possible version of the server. However, the packages provided by the Ubuntu project do not track the latest development of the nginx server. Given the rapid development of nginx, and variances between recent versions this is not ideal for many users. Continue to the next section to install nginx directly from source.
 
-# Installing nginx from the Source Distribution
+## Installing nginx from the Source Distribution
 
 ### Install Prerequisites
 
@@ -133,7 +133,7 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
 Congratulations! You now have a running and fully functional HTTP server powered by nginx. Continue reading our introduction to [basic nginx configuration](/docs/web-servers/nginx/how-to-configure-nginx/) for more information about using and setting up the web server.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

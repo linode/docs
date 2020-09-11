@@ -24,7 +24,7 @@ This document provides an overview of getting started with this Smalltalk web de
 
 Before proceeding with Seaside and Smalltalk installations, we assume that you have followed our [getting started guide](/docs/getting-started/). You'll also need to install [Apache](/docs/web-servers/apache/) in order to serve your Seaside application. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). One final disclaimer: the Smalltalk virtual machines are all built against 32-bit architectures, so for the best performance, do not deploy a 64-bit image with your Linode.
 
-# Installing Smalltalk Environments
+## Installing Smalltalk Environments
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -62,7 +62,7 @@ In this configuration, the Squeak VM instances run in the current terminal sessi
 
 The default configuration of the "Pier" image accessed above binds the Smalltalk server on port `8080` on both the local and the public interface. Ensure that both your application and system firewalls are configured to permit proper access prior to deployment. We're now ready to configure Apache to provide public access to your Smalltalk instance.
 
-# Configuring Apache
+## Configuring Apache
 
 The manner in which you architect your Seaside-based application is quite dependent upon the demands of your deployment. The following approaches cover basic practices for making your Seaside application accessible over the network.
 
@@ -107,7 +107,7 @@ These are the only non-Smalltalk requirements. If your applications requires any
 
     /etc/init.d/apache2 restart
 
-# Case One: Independent Virtual Hosts
+## Case One: Independent Virtual Hosts
 
 ### Configuring Apache to Serve Static Content
 
@@ -181,7 +181,7 @@ RewriteRule ^/(.*)$ http://localhost:8080/seaside/pier/$1 [proxy,last]
 
 In addition, your application may require some extra configuration. Pier requires the hostname to be defined in its control panel as well as in the Seaside control panel. If you're using software written by a third-party, it's best that you follow their specific instructions.
 
-# Case Two: Serve Static and Dynamic Content with One Virtual Host
+## Case Two: Serve Static and Dynamic Content with One Virtual Host
 
 In this example, all content is provided by the same virtual host. The web server looks for static content in the `DocumentRoot`, and if it finds nothing there it hands the request to the Smalltalk server to provide the dynamic content. Modify your virtual host configuration file to resemble the following. Change the `VirtualHost` IP to the IP of your Linode.
 
@@ -220,7 +220,7 @@ RewriteRule ^/(.*)$ http://localhost:8080/seaside/pier/$1 [proxy,last]
 
 In addition, your application may require some extra configuration. Pier requires the hostname to be defined in its control panel, as well as in the Seaside control panel. If you're using software written by a third-party, it's best that you follow their specific instructions.
 
-# Configure Apache Proxy Cluster
+## Configure Apache Proxy Cluster
 
 In this example, we scale our Seaside deployment by providing Apache with multiple Seaside images running in parallel. In this setup, each Seaside instance runs on successive ports. This must be configured inside of the Seaside image. This configuration sets a `stickysession` cookie which allows users to maintain consistent connections to the same Smalltalk image. The various instances of your application will need to be configured to share information, so that updates to one image will be passed to other images. Alternatively, your application may be designed so that user experience will be unaffected by which back-end server they access.
 
@@ -263,7 +263,7 @@ In this example there are a couple of specific settings that you may need to mod
 
 You can specify as many members of the balancing cluster as you need. `mod_proxy_balancer` makes it possible to balance requests among a pool that includes services running on both the local machine and/or various remote locations. It's common to run services on a number of distinct machines and proxy requests over the private network connections. Regardless of the actual architecture of deployment, ensure that each `BalancerMember` directive has a unique `route=` id, and that there is a corresponding `RewriteRule` with a final identifier that matches each of the previously created routes.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

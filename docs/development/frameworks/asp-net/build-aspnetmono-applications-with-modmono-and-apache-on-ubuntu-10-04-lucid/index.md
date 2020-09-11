@@ -18,7 +18,7 @@ deprecated: true
 
 This guide assumes that you've followed the steps outlined in our [getting started guide](/docs/getting-started/). You will install the [Apache web server](/docs/web-servers/apache/installation/ubuntu-10-04-lucid) with very minimal configuration. If you already have Apache installed and configured, you may omit these steps; however, if you have not installed Apache and are unfamiliar with this server read the installation guide for additional documentation. Additionally, `mod_mono` is incompatible with the integrated PHP interpreter described in other guides. If you need to have both mod\_mono and PHP running on the same Apache server you will need to run [PHP scripts using the CGI method](/docs/web-servers/apache/php-cgi/ubuntu-10-04-lucid)
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -27,7 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Required Software
+## Install Required Software
 
 ### Enable Universe Repositories
 
@@ -160,7 +160,7 @@ Note: Should you restart Apache in the future, you will see an error that will l
 
 You can safely ignore this warning, as it won't affect deployment using the methods explained in this guide.
 
-# Installing MySQL Connector/Net for ASP.NET
+## Installing MySQL Connector/Net for ASP.NET
 
 This section assumes that you already have a functioning MySQL installation. Please refer to our [MySQL Installation Guide](/docs/databases/mysql/ubuntu-10-04-lucid) for more detailed instructions for installing MySQL, otherwise issue the following command:
 
@@ -170,7 +170,7 @@ In order for your ASP.NET application to communicate properly with your MySQL se
 
     apt-get install libmysql6.1-cil
 
-# Creating a Database to Test the MySQL Connector
+## Creating a Database to Test the MySQL Connector
 
 Now that the MySQL Connector has been installed, you should test it by creating a sample database and a test table. First you must log in to your MySQL DBMS:
 
@@ -193,7 +193,7 @@ Finally you must create a test user named "testuser" and give that user access t
     GRANT ALL PRIVILEGES ON sample.* TO 'testuser'@'localhost';
     FLUSH PRIVILEGES;
 
-# Creating a Simple ASP.NET Application
+## Creating a Simple ASP.NET Application
 
 Now that you have created a sample database, you can test your installation with the following test page. This will not only test your Mono installation but it will also will test your MySQL connector configuration. First create a file called `testdb.aspx` in your `DocumentRoot` and paste the text below into it. Be sure to change the `User ID` and `Password` to match what you specified above.
 
@@ -261,7 +261,7 @@ Restart the web server process by issuing the following command:
 
 Visit the `testdb.aspx` file in a web browser. If you see the text "Testing Sample Databases" in your browser with the information that you inserted into the database above, you now have a functioning `mod_mono` installation and can continue with the development and deployment of your own application!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

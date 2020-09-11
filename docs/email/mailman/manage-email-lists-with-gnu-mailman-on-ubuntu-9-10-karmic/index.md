@@ -20,7 +20,7 @@ GNU Mailman is a commonly used Listserv Management application that allows users
 
 Before installing Mailman we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Be sure to read this guide in its entirety before continuing. If you have an existing mail system configured before you begin this, take special care to ensure that installing Mailman will not conflict with delivery of existing mail.
 
-# Installing Mailman
+## Installing Mailman
 
 Before proceeding with the installation of Mailman, make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -37,7 +37,7 @@ During the postfix installation, you will want to select "**Internet Site**" as 
 
 During the Mailman installation, you will be required to specify the languages that you wish your Mailman instance support. Select all required languages before continuing. The installation process will also provide a note regarding the next step of the installation process, which you can accept and allow the installation process to continue.
 
-# Configure Mailman
+## Configure Mailman
 
 Consider the "[Configure Virtual Hosting](/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic/#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
 
@@ -81,7 +81,7 @@ Users of your lists will be able to access a web-based interface to subscribe, v
 
 If you have an existing email system configured, or configured your email aliases with another configuration method, you may wish to continue reading for additional instructions on completing the setup of Mailman for alternate deployments.
 
-# Configure Virtual Hosting
+## Configure Virtual Hosting
 
 When constructing lists using the method described above, you must be careful to ensure that you have not created a list that will conflict with an existing user account or email alias. In smaller deployments this may not be an issue, however, as your Mailman instance begins to support a larger number of email lists, managing an `/etc/aliases` file can present a significant burden. For this reason we strongly recommend using a dedicated sub-domain for all Mailman administered listservs, such as `lists.example.com`.
 
@@ -169,7 +169,7 @@ If you created lists using the `/etc/aliases` method, you will have to recreate 
 
 From this point forward, you can create new lists by issuing `newlist` commands as root. Additionally, all administration and functions of the Mailman lists can be accomplished by way of the web based interface.
 
-# Configuring Mailman with Alternate Mail Configurations
+## Configuring Mailman with Alternate Mail Configurations
 
 If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Courier and MySQL](/docs/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic/) or [Postfix with Dovecot and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-9-10-karmic/). configurations described in other documents, consider the following recommendations:
 
@@ -179,7 +179,7 @@ It is absolutely crucial that the `DEFAULT_EMAIL_HOST` and `DEFAULT_URL_HOST` ar
 
 In all other respects, as long as you deploy Mailman with virtual hosting on its own domain using Mailman with an existing email solution poses no complications. Congratulations, you now have a fully functional email list management solution!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

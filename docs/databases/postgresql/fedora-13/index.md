@@ -17,7 +17,7 @@ title: Use PostgreSQL Relational Databases on Fedora 13
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Fedora 13. We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
-# Installing PostgreSQL
+## Installing PostgreSQL
 
 Make sure your system is up to date by issuing the following command:
 
@@ -33,7 +33,7 @@ The current version of the database server will be installed, along with several
     service postgresql initdb
     service postgresql start
 
-# Configuring PostgreSQL
+## Configuring PostgreSQL
 
 ### Setting the postgres Password
 
@@ -140,14 +140,14 @@ To use the database "mytestdb" as "alison", issue the following command:
 
 You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
 
-# Secure Remote Database Access
+## Secure Remote Database Access
 
 PostgreSQL listens for connections on localhost, and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
 
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

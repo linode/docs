@@ -18,7 +18,7 @@ title: 'Nginx and Perl-FastCGI on Arch Linux'
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it capable of handling dynamically generated content. The process described in this document centers on the deployment of a FastCGI wrapper for CGI. This makes it possible to deploy all dynamic content that communicates using the CGI protocol. Typically this kind of script is written in Perl, but other CGI scripts will be compatible with this solution.
 
-# Set the Hostname
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -27,7 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-# Install Required Packages
+## Install Required Packages
 
 Issue the following command to install the required packages from the Arch Linux repositories:
 
@@ -43,7 +43,7 @@ DAEMONS=(syslog-ng network netfs crond sshd ntpd nginx fcgiwrap)
 {{< /file >}}
 
 
-# Configure the FastCGI Wrapper
+## Configure the FastCGI Wrapper
 
 Now, edit the `/etc/conf.d/fcgiwrap` file to resemble the following example:
 
@@ -63,7 +63,7 @@ Issue the following command to start the FastCGI wrapper for the first time:
 
     /etc/rc.d/fcgiwrap start
 
-# Configure Virtual Hosting
+## Configure Virtual Hosting
 
 Create directories for your web content and logs by issuing the following commands. Be sure to replace "example.com" with your domain name.
 
@@ -122,7 +122,7 @@ Issue the following command to start nginx:
 
     /etc/rc.d/nginx start
 
-# Test Perl with FastCGI
+## Test Perl with FastCGI
 
 Create a file called "test.cgi" in your site's "public\_html" directory with the following contents:
 
@@ -151,7 +151,7 @@ Make the script executable by issuing the following command:
 
 When you visit `http://www.example.com/test.cgi` in your browser, your Perl environment variables should be shown. Congratulations, you've configured the nginx web server to use Perl with FastCGI for dynamic content!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

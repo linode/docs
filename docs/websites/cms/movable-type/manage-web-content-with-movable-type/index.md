@@ -18,7 +18,7 @@ Movable Type is a free, open source content management system designed to facili
 
 For this example, we'll be using a LAMP server built on Debian Lenny. Your server environment may be based on a different distribution, but the installation steps should be very similar. For additional help beyond the scope of this document, you may want to consult the [Movable Type Install Guide](http://www.movabletype.org/documentation/installation/).
 
-# Making Sure Perl/CGI Works
+## Making Sure Perl/CGI Works
 
 If your LAMP environment isn't already set up to allow Perl scripts to be run on your website, you'll need to take the following steps. Otherwise, you may proceed to "Download Movable Type" to continue with installation.
 
@@ -46,7 +46,7 @@ We've added a line to the `<VirtualHost>` section of our site's Apache configura
 
     /etc/init.d/apache2 reload
 
-# Installing Support Modules
+## Installing Support Modules
 
 You may skip this step if desired; we're going to install some optional Perl modules that enable enhanced functionality in Movable Type. The installation commands shown here make use of the CPAN interactive shell. First, we need to update our system and install some prerequisite packages:
 
@@ -72,7 +72,7 @@ If this is your first time running the shell, you'll be asked if you'd like most
     install Mail::Sendmail
     install HTML::Parser
 
-# Create a Database for Movable Type
+## Create a Database for Movable Type
 
 From the command line issue the following (inserting MySQL's root password):
 
@@ -88,7 +88,7 @@ In the MySQL console that appears, run the following commands:
 
 Remember to change "changeme" to a strong password; write this down for later reference.
 
-# Download Movable Type
+## Download Movable Type
 
 Visit the [Movable Type download](http://www.movabletype.org/download.html) page. Copy the download link to the most recent version into your clipboard (typically by right-clicking on the download link and selecting "copy link location").
 
@@ -108,7 +108,7 @@ Move the files from the newly create directory to your public HTML and cgi-bin d
     chown www-data:www-data public_html/
     chown www-data:www-data public_html/mt-static/support
 
-# Install Movable Type
+## Install Movable Type
 
 Bring up your website in your favorite browser, and you'll be greeted by the Movable Type installation wizard. Your system will be checked to make sure you meet the requirements for Movable Type. When you reach the "Database Configuration" section, you will be asked to provide some information. We've used these values:
 
@@ -120,7 +120,7 @@ Bring up your website in your favorite browser, and you'll be greeted by the Mov
 
 After basic configuration is complete, you'll be asked to enter a username, display name, and email address for your Movable Type administrator account. Choose a strong password to protect your account. When asked to choose a "Blog URL" you may want to make it the base URL of your site ("example.com" in our case), and for "Publishing Path" you may want to enter the path to your public\_html directory (`/srv/www/example.com/public_html/` in our case). Alternately, you can accept the defaults provided to host the system under a subdirectory of your site's root. You're done!
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
